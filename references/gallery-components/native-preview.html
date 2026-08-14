@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<title>Native 组件预览</title>
+<link rel="stylesheet" href="../themes/paper-ink/assets/design-tokens.css">
+<script src="../../capabilities/layouts/paper-ink-components.js"></script>
+<style>
+  html,body{margin:0;width:1280px;height:720px;overflow:hidden;position:relative;background:var(--wp-color-surface-canvas,#DFE0D9)}
+</style>
+</head>
+<body>
+<script>
+(function(){
+  var num=Number(new URLSearchParams(location.search).get('num')||0);
+  var data=window.PAPER_INK_COMPONENT_DATA||{entries:[]};
+  var e=data.entries.find(function(x){return x.num===num;});
+  if(!e){document.body.textContent='组件 #'+num+' 不存在';return;}
+
+  var st=document.createElement('style');
+  st.textContent=(data.componentCss||'')+(data.componentMotionCss||'');
+  document.head.appendChild(st);
+  document.body.insertAdjacentHTML('beforeend',e.snippet||'');
+
+  /* entry.frame 声明固有画布 {width,height};场馆 1280×720 内 contain 居中 */
+  function fit(){
+    var el=document.querySelector('.pi-card')||document.body;
+    el.style.transform='none';
+    var f=e.frame||{};
+    var w=el.offsetWidth||f.width||600,h=el.offsetHeight||f.height||600;
+    var s=Math.min(1280/w,720/h,1);
+    el.style.transformOrigin='0 0';
+    el.style.transform='scale('+s+')';
+    el.style.position='absolute';
+    el.style.margin='0';
+    el.style.left=((1280-w*s)/2)+'px';
+    el.style.top=((720-h*s)/2)+'px';
+  }
+  window.addEventListener('load',function(){setTimeout(fit,60);});
+  window.addEventListener('resize',fit);
+})();
+</script>
+</body>
+</html>

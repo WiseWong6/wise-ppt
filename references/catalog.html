@@ -4,8 +4,6 @@
 <meta charset="UTF-8">
 <title>Wise PPT 资产目录:非关系页 · 版式 · 组件</title>
 <link rel="stylesheet" href="../themes/paper-ink/assets/design-tokens.css">
-<script src="ppt-component-atlas/catalog-data.js"></script>
-<script src="../themes/paper-ink/adapters/atlas.js"></script>
 <style>
   /* 纸墨配色:色值一律取自 design-tokens.css,catalog 只做本地别名 */
   :root{
@@ -257,14 +255,6 @@ const NATIVE_GROUPS=[
 
 /* ============ 渲染 ============ */
 const $=s=>document.querySelector(s);
-const entries=(window.SWISS_CATALOG_DATA&&window.SWISS_CATALOG_DATA.entries)||[];
-const byNum=n=>entries.find(e=>e.num===n);
-const ADAPTER=(window.WisePPTThemeAdapters||{})['paper-ink.atlas'];
-const rawCss=(window.SWISS_CATALOG_DATA&&window.SWISS_CATALOG_DATA.componentCss)||'';
-/* 组件预览统一纸墨:atlas 原始 swiss 样式过 paper-ink 适配器 */
-const css=ADAPTER?ADAPTER.adaptCss(rawCss):rawCss;
-const motion=(window.SWISS_CATALOG_DATA&&window.SWISS_CATALOG_DATA.componentMotionCss)||'';
-const overrides=(ADAPTER&&ADAPTER.COMPONENT_OVERRIDES)||'';
 
 function layoutCard([id,nm,struct,rel]){
   return `<div class="card">
@@ -274,48 +264,10 @@ function layoutCard([id,nm,struct,rel]){
       <div class="meta">结构:<b>${struct}</b> · 关系:<b>${rel}</b></div>
     </div></div>`;
 }
-function fitFrames(root){
-  root.querySelectorAll('.frame-wrap').forEach(w=>{
-    const s=w.clientWidth/1920;
-    w.querySelector('iframe').style.transform=`scale(${s})`;
-  });
-}
-function compHtml(num){
-  const e=byNum(num);if(!e)return '';
-  /* 画布 = PPT 场馆 1280×720;组件保持原始尺寸,水平垂直居中,仅在超界时缩小 */
-  const fit=`<script>
-  (function(){
-    var VW=1280,VH=720;
-    function fit(){
-      var el=document.querySelector('.swiss-card')||document.body;
-      el.style.transform='none';
-      var w=el.offsetWidth||600,h=el.offsetHeight||600;
-      var s=Math.min(VW/w,VH/h,1);
-      el.style.transformOrigin='0 0';
-      el.style.transform='scale('+s+')';
-      el.style.position='absolute';
-      el.style.margin='0';
-      el.style.left=((VW-w*s)/2)+'px';
-      el.style.top=((VH-h*s)/2)+'px';
-    }
-    window.addEventListener('load',function(){setTimeout(fit,60);});
-    window.addEventListener('resize',fit);
-  })();
-  </`+`script>`;
-  const override=`<style>
-  .swiss-card{border-radius:0 !important;margin:0 !important;flex-shrink:0 !important}
-  </style>`;
-  const snippet=ADAPTER?ADAPTER.adaptMarkup(e.snippet||''):(e.snippet||'');
-  return '<!DOCTYPE html><html><head><meta charset="utf-8">'+
-    '<link rel="stylesheet" href="../themes/paper-ink/assets/design-tokens.css">'+
-    '<style>'+css+motion+overrides+override+
-    '</style><style>html,body{margin:0;width:1280px;height:720px;overflow:hidden;position:relative;background:var(--paper)}</style></head><body>'+
-    snippet+fit+'</body></html>';
-}
 function compCard(c,extra=''){
   const inner=c.ec
     ?`<iframe loading="lazy" src="gallery-components/echarts-frame.html?id=${c.ec[0]}&theme=paper-ink"></iframe>`
-    :`<iframe loading="lazy" data-rep="${c.rep}"></iframe>`;
+    :`<iframe loading="lazy" src="gallery-components/atlas-preview.html?num=${c.rep}"></iframe>`;
   return `<div class="comp-card">
     <div class="comp-wrap">${inner}</div>
     <div class="comp-info">
@@ -367,7 +319,7 @@ const GALLERY_BASE='gallery-components/index.html?theme=paper-ink&motion=0&previ
 function nativeCard(c){
   const src=c.ec
     ?'gallery-components/echarts-frame.html?id='+c.ec+'&theme=paper-ink'
-    :GALLERY_BASE+'#/layout/'+c.num;
+    :'gallery-components/native-preview.html?num='+c.num;
   return `<div class="comp-card">
     <div class="comp-wrap"><iframe loading="lazy" src="${src}"></iframe></div>
     <div class="comp-info">
@@ -380,9 +332,6 @@ $('#native-groups').innerHTML=NATIVE_GROUPS.map(g=>`
     <div class="fam-head"><h2>${g.g}</h2><span class="desc">${g.items.length} 个</span></div>
     <div class="comp-grid">${g.items.map(nativeCard).join('')}</div>
   </div>`).join('');
-
-/* 组件 iframe:srcdoc 直出纸墨适配后的预览(srcdoc 继承父页路径,token 样式表可加载) */
-document.querySelectorAll('iframe[data-rep]').forEach(f=>{f.srcdoc=compHtml(+f.dataset.rep);});
 
 /* tab 切换 */
 function switchTab(id){
