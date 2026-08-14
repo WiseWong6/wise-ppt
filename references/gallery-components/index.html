@@ -13,13 +13,8 @@
   <link rel="stylesheet" href="./source-han.css?v=1">
   <script>
     (function resolveGalleryTheme() {
-      let themeId = 'paper-ink';
-      try {
-        const params = new URLSearchParams(window.location.search);
-        const requested = params.get('theme');
-        if (requested === 'paper-ink' || requested === 'swiss') themeId = requested;
-        else if (params.get('style') === 'swiss') themeId = 'swiss';
-      } catch (err) {}
+      // 组件画册只开放纸墨;swiss 主题与适配器保留在 themes/,暂不提供入口
+      const themeId = 'paper-ink';
       window.WISE_PPT_GALLERY_THEME = themeId;
       document.documentElement.dataset.theme = themeId;
       const link = document.createElement('link');
@@ -104,31 +99,6 @@
       color: var(--gallery-text);
       background: var(--gallery-accent-dim);
     }
-    .style-switch {
-      display: inline-flex;
-      align-items: center;
-      overflow: hidden;
-      border: 0.25px solid var(--gallery-line);
-      border-radius: 9999px;
-    }
-    .style-switch-button {
-      appearance: none;
-      border: 0;
-      background: transparent;
-      color: var(--gallery-muted);
-      cursor: pointer;
-      font: inherit;
-      font-size: 0.85rem;
-      line-height: 1;
-      padding: 0.45rem 0.75rem;
-    }
-    .style-switch-button + .style-switch-button {
-      border-left: 0.25px solid var(--gallery-line);
-    }
-    .style-switch-button[aria-pressed="true"] {
-      background: var(--gallery-text);
-      color: var(--gallery-bg);
-    }
     body {
       font-family: "Wise Han Sans SC";
     }
@@ -143,7 +113,6 @@
       font-weight: 400;
     }
     .meta-pill,
-    .style-switch,
     .filter-btn,
     .component-search,
     .thumb-card,
@@ -156,9 +125,6 @@
       border-width: 1px;
       border-radius: 0;
       box-shadow: none;
-    }
-    .style-switch-button + .style-switch-button {
-      border-left-width: 1px;
     }
     .thumb-card,
     .thumb-preview,
@@ -795,10 +761,6 @@
           <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3 4 7l8 4 8-4-8-4Z"/><path d="M4 11l8 4 8-4"/><path d="M4 15l8 4 8-4"/></svg>
           Skill
         </a>
-        <div class="style-switch" role="group" aria-label="组件视觉风格，左侧 Paper Ink，右侧 Swiss">
-          <button class="style-switch-button" type="button" data-theme-value="paper-ink" aria-pressed="true" title="切换为 Paper Ink（左）">Paper Ink</button>
-          <button class="style-switch-button" type="button" data-theme-value="swiss" aria-pressed="false" title="切换为 Swiss（右）">Swiss</button>
-        </div>
       </div>
     </div>
     <div class="filter-controls" id="filterControls">
@@ -822,9 +784,7 @@
   <script src="../../capabilities/vendors/ppt-component-atlas/catalog-data.js"></script>
   <script src="../../capabilities/layouts/paper-ink-components.js?v=6"></script>
   <script src="../../themes/paper-ink/adapters/atlas.js"></script>
-  <script src="../../themes/swiss/adapters/atlas.js"></script>
   <script src="../../themes/paper-ink/adapters/native.js"></script>
-  <script src="../../themes/swiss/adapters/native.js"></script>
   <script src="./paper-ink-adapter.js?v=2"></script>
   <script src="./echarts-catalog-data.js"></script>
   <script>
@@ -999,26 +959,6 @@
         event.preventDefault();
       });
     }
-
-    function switchTheme(nextTheme) {
-      if (!['paper-ink', 'swiss'].includes(nextTheme) || nextTheme === THEME_ID) return;
-      const url = new URL(window.location.href);
-      url.searchParams.set('theme', nextTheme);
-      url.searchParams.delete('style');
-      window.location.assign(url.toString());
-    }
-
-    const themeSwitchButtons = [...document.querySelectorAll('[data-theme-value]')];
-    themeSwitchButtons.forEach(button => {
-      const isActive = button.dataset.themeValue === THEME_ID;
-      button.setAttribute('aria-pressed', String(isActive));
-      button.addEventListener('click', () => switchTheme(button.dataset.themeValue));
-      button.addEventListener('keydown', event => {
-        if (!['ArrowLeft', 'ArrowRight'].includes(event.key)) return;
-        event.preventDefault();
-        switchTheme(event.key === 'ArrowLeft' ? 'paper-ink' : 'swiss');
-      });
-    });
 
     // ===== Helpers =====
     function esc(s) {

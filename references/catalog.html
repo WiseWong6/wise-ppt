@@ -265,7 +265,7 @@ function compHtml(num){
 }
 function compCard(c,extra=''){
   const inner=c.ec
-    ?`<div class="placeholder"><div class="big">${c.en}</div><div>ECharts 运行时组件</div><div style="font-size:10px">${c.ec.length} 个变体已合并</div></div>`
+    ?`<iframe loading="lazy" src="gallery-components/echarts-frame.html?id=${c.ec[0]}&theme=paper-ink"></iframe>`
     :`<iframe loading="lazy" data-rep="${c.rep}"></iframe>`;
   return `<div class="comp-card">
     <div class="comp-wrap">${inner}</div>
