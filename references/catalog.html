@@ -79,6 +79,9 @@
   .layer-stage .stage-host,.layer-stage .stage-ecbox{position:absolute;left:0;top:0;transform-origin:0 0}
   .layer-info{padding:10px 16px;font-size:13px;color:var(--ink-2);border-top:1px solid var(--line);background:var(--card)}
 
+  /* 单一画布:场馆(16:9)是唯一画布,组件根画板不得自带底色(与场馆同色也强制透明,防止出现"画布套画布") */
+  .comp-stage .swiss-card,.comp-stage .pi-card,.layer-stage .swiss-card,.layer-stage .pi-card{background:transparent !important}
+
   .placeholder{display:flex;flex-direction:column;align-items:center;justify-content:center;height:100%;color:var(--ink-3);font-size:12px;gap:8px}
   .placeholder .big{font-size:22px;letter-spacing:.1em;font-weight:700;color:var(--ink-2)}
 
@@ -133,7 +136,7 @@
 
 <main id="m-str">
   <div class="note"><b>结构 = 页面区域怎么切(矩形分块);组件 = 区域内画什么形状。</b>放射、环形、蛇形、漏斗、矩阵(表格)都是区域内组件的画法,不是页面结构。关系圈定候选结构(2~4 种),二次判断(对象数量 / 有无辅助内容 / 方向偏好)在范围内选定。关系页版式全部归入这 6 种切分。</div>
-  <div class="note"><b>网格 vs 表格(易混)</b>:网格 = 页面切分,均质等价陈列(A7 logo 墙、F4 六宫格);表格/矩阵 = 组件画法,行列双语义在组件内部 —— K4 = 单行(整页矩阵)、E4/K1 = 上下不对称(矩阵 + 收束带)。页面切分只认 6 种矩形分块,不设「表格」。</div>
+  <div class="note"><b>网格 vs 表格(易混)</b>:网格 = 页面切分,均质等价陈列(A7 logo 墙、F4 六宫格);表格/矩阵 = 组件画法,行列双语义在组件内部 —— K4 = 左右3等分(三栏切分,行带是栏内画法)、E4/K1 = 上下不对称(矩阵 + 收束带)。页面切分只认 6 种矩形分块,不设「表格」。</div>
   <div id="str-list"></div>
 </main>
 
@@ -182,7 +185,7 @@ const FAMS=[
     ['E1','对比双面板','左右2等分','对比'],['E2','分水岭双栏','左右2等分','对比'],
     ['E4','前后对比行矩阵','上下不对称','对比 + 矩阵'],['E5','双金字塔映射','左右2等分','映射'],
     ['E6','前后双带演进','上下2等分','对比 + 流动'],['F1','坐标轴象限','单行','矩阵'],
-    ['K1','链阵复合(阶段×维度)','上下不对称','矩阵'],['K4','三栏行带矩阵','单行','矩阵'],['L2','星座映射网','单行','映射'],
+    ['K1','链阵复合(阶段×维度)','上下不对称','矩阵'],['K4','三栏行带矩阵','左右3等分','矩阵'],['L2','星座映射网','单行','映射'],
   ]},
   {id:'connection',cn:'⑥ 连接',desc:'有关联但无方向、无包含',items:[
     ['A1','标本卡(对话批注)','单行','证据'],['A3','文献摘引','上下不对称','证据'],
@@ -565,18 +568,8 @@ $('#extract-groups').innerHTML=EXTRACT_GROUPS.map(g=>`
     }
     host.innerHTML=markup;
     st.appendChild(host);
-    requestAnimationFrame(()=>{
-      const el=host.firstElementChild;
-      if(!el)return;
-      const W=st.clientWidth,H=st.clientHeight;
-      const w=el.offsetWidth||600,h=el.offsetHeight||600;
-      const s=Math.min(W/w,H/h,1);
-      el.style.transformOrigin='0 0';
-      el.style.transform='scale('+s+')';
-      el.style.position='absolute';
-      el.style.left=((W-w*s)/2)+'px';
-      el.style.top=((H-h*s)/2)+'px';
-    });
+    /* 双帧:首帧样式/入场动画可能未就绪,再排一次拿到最终几何 */
+    requestAnimationFrame(()=>{fitStage(st,host);requestAnimationFrame(()=>fitStage(st,host));});
   }
   function renderFrame(url){
     const st=document.getElementById('layer-stage');
@@ -626,7 +619,7 @@ function mountStage(stage){
     host.className='stage-host';
     host.innerHTML=NEW_MARKUP[+stage.dataset.new]||'';
     stage.appendChild(host);
-    requestAnimationFrame(()=>fitStage(stage,host));
+    requestAnimationFrame(()=>{fitStage(stage,host);requestAnimationFrame(()=>fitStage(stage,host));});
     return;
   }
   const parts=(stage.dataset.src||'').split(':');
@@ -646,19 +639,100 @@ function mountStage(stage){
   host.className='stage-host';
   host.innerHTML=markup;
   stage.appendChild(host);
-  requestAnimationFrame(()=>fitStage(stage,host));
+  requestAnimationFrame(()=>{fitStage(stage,host);requestAnimationFrame(()=>fitStage(stage,host));});
 }
+/* 内容包围盒:只算"实际画了东西"的后代(文字 / 非透明背景 / 可见边框 / svg·img 等),
+   排除透明空壳与画板自带留白。缩放与居中都以它为准,而不是整个组件画板。 */
+function contentBounds(el){
+  const r0=el.getBoundingClientRect();
+  let b=null;
+  const grow=r=>{
+    if(!r)return;
+    const bx0=r.left-r0.left,by0=r.top-r0.top,bx1=r.right-r0.left,by1=r.bottom-r0.top;
+    if(bx1-bx0<0.6&&by1-by0<0.6)return;
+    if(!b)b=[bx0,by0,bx1,by1];
+    else{b[0]=Math.min(b[0],bx0);b[1]=Math.min(b[1],by0);b[2]=Math.max(b[2],bx1);b[3]=Math.max(b[3],by1);}
+  };
+  const painted=e=>{
+    if(e===el)return false;
+    const cs=getComputedStyle(e);
+    if(cs.display==='none'||cs.visibility==='hidden')return false;
+    /* 入场动画会让元素从 opacity:0 起步;动画进行中不能据此判定不可见,否则包围盒漏算 */
+    if(parseFloat(cs.opacity)===0&&!(e.getAnimations&&e.getAnimations().length))return false;
+    const tag=e.tagName.toLowerCase();
+    if(tag==='img'||tag==='canvas'||tag==='video'||tag==='iframe')return true;
+    if(tag==='svg'){
+      /* svg 按内部几何 getBBox 折算,剔除 viewBox 内留白;折算失败则退化为整个 svg 矩形 */
+      const r=e.getBoundingClientRect();
+      let vb=null;try{vb=(e.getBBox&&e.getBBox())||null;}catch(err){}
+      if(vb&&vb.width>0&&vb.height>0&&r.width>0&&r.height>0){
+        let kx=1,ky=1;
+        const vw=e.viewBox&&e.viewBox.baseVal;
+        if(vw&&vw.width>0&&vw.height>0){kx=r.width/vw.width;ky=r.height/vw.height;}
+        grow({left:r.left+vb.x*kx,top:r.top+vb.y*ky,right:r.left+(vb.x+vb.width)*kx,bottom:r.top+(vb.y+vb.height)*ky});
+      }else grow(r);
+      return false;
+    }
+    if(cs.backgroundImage&&cs.backgroundImage!=='none')return true;
+    const bg=cs.backgroundColor;
+    if(bg&&bg!=='rgba(0, 0, 0, 0)'&&bg!=='transparent')return true;
+    const ws=['borderTopWidth','borderRightWidth','borderBottomWidth','borderLeftWidth'];
+    const cs2=['borderTopColor','borderRightColor','borderBottomColor','borderLeftColor'];
+    if(ws.some(k=>parseFloat(cs[k])>0)&&cs2.some(k=>{const v=cs[k];return !!v&&v!=='rgba(0, 0, 0, 0)'&&v!=='transparent';}))return true;
+    return false;
+  };
+  el.querySelectorAll('*').forEach(e=>{if(painted(e))grow(e.getBoundingClientRect());});
+  const tw=document.createTreeWalker(el,NodeFilter.SHOW_TEXT);
+  const range=document.createRange();
+  let t;
+  while((t=tw.nextNode())){
+    if(!t.nodeValue||!t.nodeValue.trim())continue;
+    if(t.parentElement&&t.parentElement.closest('svg'))continue;
+    range.selectNodeContents(t);
+    const rects=range.getClientRects();
+    for(let i=0;i<rects.length;i++)grow(rects[i]);
+  }
+  return b;
+}
+
+/* 挂载过的场馆登记,resize / 切回组件 tab 时统一重排 */
+const fittedStages=[];
+function refitComponents(){
+  if(!fittedStages.length)return;
+  requestAnimationFrame(()=>{
+    fittedStages.forEach(s=>{
+      const h=s.querySelector('.stage-host');
+      if(h)fitStage(s,h);
+    });
+  });
+}
+
+/* 场馆缩放:组件内容包围盒 contain 后水平垂直居中于 16:9 画布 */
 function fitStage(stage,host){
   const el=host.firstElementChild;
   if(!el)return;
   const W=stage.clientWidth,H=stage.clientHeight;
-  const w=el.offsetWidth||600,h=el.offsetHeight||600;
-  const s=Math.min(W/w,H/h,1);
-  el.style.transformOrigin='0 0';
-  el.style.transform='scale('+s+')';
+  if(W<2||H<2)return;
+  el.style.transform='none';
   el.style.position='absolute';
-  el.style.left=((W-w*s)/2)+'px';
-  el.style.top=((H-h*s)/2)+'px';
+  el.style.left='0';
+  el.style.top='0';
+  let s=1,left=0,top=0;
+  const b=contentBounds(el);
+  if(b){
+    const bw=b[2]-b[0],bh=b[3]-b[1];
+    s=bw>0&&bh>0?Math.min(W/bw,H/bh,1):1;
+    left=W/2-s*(b[0]+bw/2);
+    top=H/2-s*(b[1]+bh/2);
+  }else{
+    const w=el.offsetWidth||600,h=el.offsetHeight||600;
+    s=Math.min(W/w,H/h,1);
+    left=(W-w*s)/2;
+    top=(H-h*s)/2;
+  }
+  el.style.transformOrigin='0 0';
+  el.style.transform='translate('+left+'px,'+top+'px) scale('+s+')';
+  if(fittedStages.indexOf(stage)<0)fittedStages.push(stage);
 }
 
 /* 3) ECharts 页面内 init:容器固定 1280×720,再统一缩放(字号与画册一致) */
@@ -696,7 +770,7 @@ function mountAllComponents(){
     });
   };
   setTimeout(run,400);
-  if(document.fonts&&document.fonts.ready)document.fonts.ready.then(run);
+  if(document.fonts&&document.fonts.ready)document.fonts.ready.then(()=>{refitComponents();run();});
 }
 const _switchTabOri=switchTab;
 switchTab=function(id){_switchTabOri(id);if(id==='cmp')mountAllComponents();};
@@ -763,7 +837,8 @@ const gHasym=two=>(x,y,w,h)=>{
 };
 /* 上下不对称三种走法:0 上主下收束带 / 1 上主下辅×4 / 2 上辅下主 */
 const gVasym=mode=>(x,y,w,h)=>{
-  const th=h*.32;
+  /* mode 0(E4/K1):主=上大矩阵(68%),收束带=下窄条(32%);mode 1/2 维持上小下大/上小下主 */
+  const th=mode===0?h*.68:h*.32;
   let s=fRect(x,y,w,h)+ln(x,y+th,x+w,y+th);
   if(mode===0){
     s+=`<rect x="${x}" y="${y+th}" width="${w}" height="${h-th}" fill="none" stroke="var(--ink-45)" stroke-dasharray="3 3"/>`;
@@ -884,6 +959,7 @@ function fitAll(){
     f.style.left='0';
     f.style.top='0';
   });
+  refitComponents();
 }
 window.addEventListener('resize',fitAll);
 window.addEventListener('load',fitAll);
