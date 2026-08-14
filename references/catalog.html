@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<title>Wise PPT 资产目录:非关系页 · 版式 · 组件</title>
+<script src="ppt-component-atlas/catalog-data.js"></script>
+<style>
+  :root{
+    --ink:#1a1a1a; --ink-2:#555; --ink-3:#999;
+    --paper:#faf9f6; --line:#e4e1da; --accent:#8b6f47;
+    --fam-focus:#7a5c9e; --fam-parallel:#3d8a5f; --fam-structure:#b0712b;
+    --fam-sequential:#3a6ea5; --fam-comparison:#a54a6e; --fam-connection:#4a8a8a;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:"Songti SC","Noto Serif SC",serif;background:var(--paper);color:var(--ink)}
+  header{position:sticky;top:0;z-index:50;background:var(--paper);border-bottom:1px solid var(--line);padding:18px 32px 0}
+  h1{font-size:20px;letter-spacing:.06em;font-weight:600}
+  .sub{font-size:12px;color:var(--ink-3);margin-top:4px}
+  .tabs{display:flex;gap:4px;margin-top:14px}
+  .tab{padding:10px 20px;font-size:14px;cursor:pointer;border:1px solid transparent;border-bottom:none;color:var(--ink-2);background:transparent;letter-spacing:.04em}
+  .tab.on{background:#fff;border-color:var(--line);color:var(--ink);font-weight:600;position:relative;top:1px}
+  .tab .n{display:inline-block;min-width:18px;text-align:center;font-size:11px;color:var(--ink-3);margin-left:6px}
+  main{padding:24px 32px 80px;display:none}
+  main.on{display:block}
+
+  .fam-section{margin-bottom:40px}
+  .fam-head{display:flex;align-items:baseline;gap:12px;border-bottom:2px solid var(--ink);padding-bottom:8px;margin-bottom:16px}
+  .fam-head h2{font-size:17px;font-weight:700;letter-spacing:.05em}
+  .fam-head .tag{font-size:11px;color:#fff;padding:2px 8px;border-radius:2px;letter-spacing:.06em}
+  .fam-head .desc{font-size:12px;color:var(--ink-3)}
+
+  .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(340px,1fr));gap:18px}
+  .card{background:#fff;border:1px solid var(--line);break-inside:avoid}
+  .frame-wrap{position:relative;width:100%;padding-top:56.25%;overflow:hidden;background:#f2f0eb}
+  .frame-wrap iframe{position:absolute;top:0;left:0;width:1920px;height:1080px;border:0;transform-origin:0 0}
+  .card-info{padding:10px 14px 12px}
+  .card-info .id{font-size:11px;color:var(--accent);letter-spacing:.12em;font-weight:700}
+  .card-info .nm{font-size:14px;font-weight:600;margin-top:2px}
+  .card-info .meta{font-size:11px;color:var(--ink-3);margin-top:4px;line-height:1.6}
+  .card-info .meta b{color:var(--ink-2);font-weight:600}
+
+  /* 组件卡片(近方形) */
+  .comp-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:18px}
+  .comp-card{background:#fff;border:1px solid var(--line)}
+  .comp-wrap{position:relative;width:100%;height:250px;overflow:hidden;background:#f2f0eb;display:flex;align-items:center;justify-content:center}
+  .comp-wrap iframe{width:640px;height:640px;border:0;transform-origin:0 0}
+  .comp-info{padding:10px 14px 12px}
+  .comp-info .nm{font-size:14px;font-weight:700}
+  .comp-info .en{font-size:11px;color:var(--ink-3);letter-spacing:.05em}
+  .comp-info .merged{font-size:11px;color:var(--accent);margin-top:4px}
+  .comp-info .param{font-size:11px;color:var(--ink-2);margin-top:3px;line-height:1.6}
+  .comp-info .rel{display:inline-block;font-size:10px;color:#fff;background:var(--ink-2);padding:1px 6px;margin-top:6px;margin-right:4px;border-radius:2px}
+
+  .placeholder{display:flex;flex-direction:column;align-items:center;justify-content:center;height:250px;color:var(--ink-3);font-size:12px;gap:8px}
+  .placeholder .big{font-size:22px;letter-spacing:.1em;font-weight:700;color:var(--ink-2)}
+
+  .note{background:#fff;border:1px solid var(--line);border-left:3px solid var(--accent);padding:14px 18px;font-size:13px;color:var(--ink-2);line-height:1.8;margin-bottom:24px}
+  .note b{color:var(--ink)}
+</style>
+</head>
+<body>
+<header>
+  <h1>资产目录 · Catalog</h1>
+  <div class="sub">非关系页模板(直接套用) / 关系页版式(六大族) / 组件(合并变体后)</div>
+  <div class="tabs">
+    <button class="tab on" data-t="tpl">非关系页模板<span class="n" id="c-tpl"></span></button>
+    <button class="tab" data-t="lyt">关系页版式<span class="n" id="c-lyt"></span></button>
+    <button class="tab" data-t="cmp">组件<span class="n" id="c-cmp"></span></button>
+  </div>
+</header>
+
+<main id="m-tpl" class="on">
+  <div class="note"><b>非关系页不走关系→结构→组件流程</b>,直接套模板。承担节奏停顿、情绪定调、品牌落版、导航功能。</div>
+  <div class="fam-section">
+    <div class="fam-head"><h2>画册模板(paper-ink)</h2><span class="desc">整页级模板,含版式与视觉</span></div>
+    <div class="grid" id="tpl-gallery"></div>
+  </div>
+  <div class="fam-section">
+    <div class="fam-head"><h2>Atlas 片段级模板</h2><span class="desc">从组件库剔除的封面 / 目录 / 引用 —— 归入非关系页参考</span></div>
+    <div class="comp-grid" id="tpl-atlas"></div>
+  </div>
+</main>
+
+<main id="m-lyt">
+  <div class="note">关系页走 <b>定关系 → 圈候选结构 → 二次判断 → 选组件</b>。同一关系可落到多种结构;结构只负责切区域,区域内由组件负责。</div>
+  <div class="fam-section">
+    <div class="fam-head"><h2>结构参考(纯切分)</h2><span class="tag" style="background:var(--ink-2)">结构</span><span class="desc">Atlas 双栏 / 三栏 / 垂直分栏 —— 它们只切区域不承载信息,是「结构」不是组件</span></div>
+    <div class="comp-grid" id="lyt-struct"></div>
+  </div>
+  <div id="lyt-fams"></div>
+</main>
+
+<main id="m-cmp">
+  <div class="note"><b>组件 = 参数化画法。</b>内容数量是参数不是组件类型;画法不同才是不同组件。原 atlas 61 项 + echarts 12 项,清洗合并后如下。</div>
+  <div id="cmp-groups"></div>
+</main>
+
+<script>
+/* ============ 元数据 ============ */
+const FRAMES='gallery-paper-ink/ai/frames/';
+
+const NON_REL=[
+  ['D1','封面 · 落版','品牌落版'],['D2','粒子尾卡','情绪收尾'],['D3','极简 Outro','金句收尾'],
+  ['D4','目录导航','章节索引'],['D5','章节隔页','节奏停顿'],['D6','联络尾页','联系方式'],['M2','金句页','情绪定调'],
+];
+
+const FAMS=[
+  {id:'focus',cn:'① 重心',color:'var(--fam-focus)',desc:'单一对象作为绝对重心',items:[
+    ['M1','粒子主角 + 对照提问','单行','focus + comparison'],
+  ]},
+  {id:'parallel',cn:'② 并列',color:'var(--fam-parallel)',desc:'对象间无关系,放一起 / 多条独立并行线',items:[
+    ['A5','条文陈列页','左右3等分','陈列'],['A7','Logo 云墙','网格7×4','陈列'],
+    ['C3','案例卡列阵','左右3等分','陈列'],['C5','环形进度环列阵','左右4等分','并行 + 部分整体'],
+    ['C6','KPI 大数字横带','左右4等分','陈列'],['F3','分栏清单柱','左右3等分','拆解(并列面)'],
+    ['F4','图标六宫格','网格2×3','拆解(并列面)'],['I4','并行路径卡','左右3等分','并行(内含时序)'],
+  ]},
+  {id:'structure',cn:'③ 结构',color:'var(--fam-structure)',desc:'包含 / 从属,看边界',items:[
+    ['A8','后台界面 mock(节点树)','左右不对称','层级 + 证据'],['F2','环节树 + 规格单','左右不对称','拆解'],
+    ['G1','三向放射','单行','拆解'],['G2','立绘环绕标注','单行','拆解'],
+    ['G4','中心枢纽 + 卫星','单行','拆解 / 网络'],['H1','同心防线','单行','嵌套'],
+    ['H2','嵌套变焦框','单行','嵌套'],['H3','分层架构栈','上下4等分','层级'],['H4','底座托举三层','上下3等分','层级'],
+  ]},
+  {id:'sequential',cn:'④ 有序',color:'var(--fam-sequential)',desc:'有方向:时序 / 流动 / 循环 / 汇聚 / 漏斗 / 因果',items:[
+    ['A9','手机多屏画廊','左右4等分','时序'],['B1','水平时间轴','单行','时序'],['B2','甘特瀑布','单行','时序'],
+    ['B3','多泳道路线图','上下3等分','时序 + 并行'],['B4','时间轴垂挂画廊','单行','时序 + 证据'],
+    ['B5','阶梯爬升路径','单行','时序'],['B6','蜿蜒道路时间轴','单行','时序'],
+    ['E3','双带列阵(因→策)','上下2等分','因果'],['I1','横向流水线','单行','流动'],['I2','虚实步骤串','单行','流动'],
+    ['I3','双轨转化路径','上下2等分','流动 + 对比'],['J1','循环圆环','单行','循环'],['J2','蛇形回环','单行','循环'],
+    ['J3','旅程曲线','单行','时序'],['K2','痛点→解法→成效','左右3等分','因果'],['K3','左痛右解复合','左右不对称','因果'],
+    ['N1','汇聚流','单行','汇聚'],['O1','漏斗','单行','漏斗'],
+  ]},
+  {id:'comparison',cn:'⑤ 比较',color:'var(--fam-comparison)',desc:'对齐并排看异同 / 对应',items:[
+    ['C7','排行柱图','单行','对比(排名)'],['E1','对比双面板','左右2等分','对比'],['E2','分水岭双栏','左右2等分','对比'],
+    ['E4','前后对比行矩阵','上下2等分 + 底带','对比(表格)'],['E5','双金字塔映射','左右2等分','映射'],
+    ['E6','前后双带演进','上下2等分','对比 + 流动'],['F1','坐标轴象限','单行','矩阵'],
+    ['K1','链阵复合(阶段×维度)','上下不对称','矩阵(表格)'],['K4','三栏行带矩阵','表格','矩阵'],['L2','星座映射网','单行','映射'],
+  ]},
+  {id:'connection',cn:'⑥ 连接',color:'var(--fam-connection)',desc:'有关联但无方向、无包含',items:[
+    ['A1','标本卡(对话批注)','单行','证据'],['A2','场景画','上下不对称','证据'],['A3','文献摘引','上下2等分','证据'],
+    ['A4','策略 + 证据墙','左右不对称','证据'],['A6','资质证书墙','左右不对称','证据'],
+    ['C1','左图右数据格','左右不对称','证据'],['C2','图表联排墙','上下不对称','证据'],
+    ['C4','分布地图','左右不对称','空间'],['L1','权重弧线图','单行','网络'],
+  ]},
+];
+
+/* 组件:合并组。rep=代表 num(src 渲染),nums=吃掉的 atlas 编号,ec=echarts id 列表 */
+const COMP_GROUPS=[
+  {g:'content 文字排版',items:[
+    {en:'list-card',nm:'列表卡片',rep:2,nums:[2,3,4],param:'条目 2~6;开关 workflow',rel:['陈列']},
+    {en:'form-card',nm:'表单卡片',rep:6,nums:[6],param:'字段数 2~6',rel:['陈列']},
+    {en:'alert-box',nm:'提示框',rep:12,nums:[12],param:'单条强调',rel:['陈列']},
+    {en:'terminal-box',nm:'终端框',rep:13,nums:[13],param:'行数 2~8',rel:['陈列']},
+    {en:'code',nm:'代码块',rep:14,nums:[14],param:'行数不限',rel:['陈列']},
+  ]},
+  {g:'comparison 比较',items:[
+    {en:'vs',nm:'对比 VS',rep:15,nums:[15],param:'2 对象',rel:['对比']},
+    {en:'before-after',nm:'前后对比',rep:16,nums:[16,17,18,19],param:'开关 arrow / no-bg / verification',rel:['对比']},
+    {en:'swot',nm:'SWOT 分析',rep:20,nums:[20],param:'固定 2×2',rel:['矩阵']},
+    {en:'quadrant-axis',nm:'象限图',rep:21,nums:[21],param:'四象限,轴可命名',rel:['矩阵']},
+    {en:'comparison-table',nm:'对比表格',rep:22,nums:[22],param:'列 2~5,行 2~6',rel:['对比','矩阵']},
+    {en:'matrix',nm:'矩阵',rep:23,nums:[23],param:'行 2~5,列 2~5',rel:['矩阵']},
+    {en:'impossible-triangle',nm:'不可能三角',rep:24,nums:[24],param:'固定三顶点',rel:['矩阵']},
+  ]},
+  {g:'flow 流程时序',items:[
+    {en:'process',nm:'流程链',rep:25,nums:[25,26,27,28,29,30,31,32,33],param:'步数 2~7;开关 annotated / arrow / wrapped',rel:['时序','流动']},
+    {en:'process-loop',nm:'循环流程',rep:34,nums:[34,35,36,37],param:'节点 3~6;开关 closed-loop',rel:['循环']},
+    {en:'journey',nm:'旅程图',rep:38,nums:[38],param:'阶段 3~6,情绪曲线',rel:['时序']},
+    {en:'timeline',nm:'时间线',rep:39,nums:[39,40,41],param:'节点 3~8;开关 horizontal / vertical',rel:['时序']},
+    {en:'gantt',nm:'甘特图',rep:42,nums:[42],param:'任务行 3~8,时间列 4~12',rel:['时序']},
+  ]},
+  {g:'structure 结构',items:[
+    {en:'concentric',nm:'同心圆',rep:43,nums:[43,44,45,46,47],param:'环数 2~5;开关 align(center/top/bottom)',rel:['层级','嵌套']},
+    {en:'pyramid',nm:'金字塔',rep:48,nums:[48,49],param:'层数 2~5;开关 inverted',rel:['层级']},
+    {en:'fishbone',nm:'鱼骨图',rep:50,nums:[50],param:'主骨 1,刺 3~6',rel:['因果']},
+    {en:'iceberg',nm:'冰山图',rep:51,nums:[51],param:'层 2~3(显/隐)',rel:['拆解']},
+    {en:'venn',nm:'韦恩图',rep:52,nums:[52,53],param:'圆数 2~3',rel:['关联(集合)']},
+    {en:'architecture',nm:'架构图',rep:54,nums:[54],param:'层 2~5,每层节点 2~4',rel:['层级']},
+    {en:'arch-platform',nm:'平台架构图',rep:55,nums:[55,56],param:'层 3~5;开关 complex / 垂直',rel:['层级']},
+    {en:'mind-map',nm:'思维导图',rep:57,nums:[57,58],param:'分支 3~6;开关 horizontal / vertical',rel:['拆解']},
+  ]},
+  {g:'data 数据',items:[
+    {en:'stats',nm:'统计卡片(指标带)',rep:59,nums:[59],param:'指标 2~6,区域 N 等分',rel:['陈列']},
+    {en:'radar',nm:'雷达图',rep:60,nums:[60,61],param:'维度 3~8(六边形为参数)',rel:['对比']},
+  ]},
+  {g:'echarts 图表(需运行时)',items:[
+    {en:'line',nm:'折线图',ec:['echarts.line-basic','echarts.line-smooth','echarts.line-stacked'],param:'点数 3~24;开关 smooth / stacked',rel:['时序']},
+    {en:'bar',nm:'柱状图',ec:['echarts.bar-basic','echarts.bar-dynamic-sort'],param:'类目 3~12;开关 dynamic-sort',rel:['对比']},
+    {en:'pie',nm:'饼图',ec:['echarts.pie-access-source'],param:'扇区 3~8',rel:['部分整体']},
+    {en:'scatter',nm:'散点图',ec:['echarts.scatter-basic','echarts.scatter-to-bar-anim'],param:'点数不限;开关 to-bar 动画',rel:['关联']},
+    {en:'radar-e',nm:'雷达图(ECharts)',ec:['echarts.radar-basic'],param:'维度 3~8',rel:['对比']},
+    {en:'calendar',nm:'日历图',ec:['echarts.calendar-basic'],param:'按日聚合',rel:['时序']},
+    {en:'tree',nm:'树图',ec:['echarts.tree-lr'],param:'节点 3~30',rel:['层级']},
+    {en:'sankey',nm:'桑基图',ec:['echarts.sankey-basic'],param:'节点+流量',rel:['流动']},
+  ]},
+];
+
+/* 非关系页 atlas 片段 */
+const TPL_ATLAS=[
+  {rep:1,en:'cover',nm:'封面',param:'标题落版'},
+  {rep:5,en:'toc-card',nm:'目录卡片',param:'章节 3~8'},
+  {rep:11,en:'quote',nm:'引用金句',param:'单条金句'},
+];
+/* 结构参考 atlas 片段 */
+const STRUCT_ATLAS=[
+  {rep:7,en:'two-col',nm:'双栏布局',struct:'左右2等分'},
+  {rep:8,en:'three-col',nm:'三栏布局',struct:'左右3等分'},
+  {rep:9,en:'split-v',nm:'垂直分栏',struct:'上下分栏'},
+];
+
+/* ============ 渲染 ============ */
+const $=s=>document.querySelector(s);
+const entries=(window.SWISS_CATALOG_DATA&&window.SWISS_CATALOG_DATA.entries)||[];
+const byNum=n=>entries.find(e=>e.num===n);
+const css=(window.SWISS_CATALOG_DATA&&window.SWISS_CATALOG_DATA.componentCss)||'';
+const motion=(window.SWISS_CATALOG_DATA&&window.SWISS_CATALOG_DATA.componentMotionCss)||'';
+
+function layoutCard([id,nm,struct,rel]){
+  return `<div class="card">
+    <div class="frame-wrap"><iframe loading="lazy" src="${FRAMES}layout-${id.toLowerCase()}.html"></iframe></div>
+    <div class="card-info"><span class="id">${id}</span>
+      <div class="nm">${nm}</div>
+      <div class="meta">结构:<b>${struct}</b> · 关系:<b>${rel}</b></div>
+    </div></div>`;
+}
+function fitFrames(root){
+  root.querySelectorAll('.frame-wrap').forEach(w=>{
+    const s=w.clientWidth/1920;
+    w.querySelector('iframe').style.transform=`scale(${s})`;
+  });
+}
+function compHtml(num){
+  const e=byNum(num);if(!e)return '';
+  return '<!DOCTYPE html><html><head><meta charset="utf-8"><style>'+css+motion+
+    '</style><style>html,body{margin:0;padding:24px;background:#f2f0eb;display:flex;align-items:center;justify-content:center;overflow:hidden}</style></head><body>'+
+    (e.snippet||'')+'</body></html>';
+}
+const blobUrls={};
+function compBlobUrl(num){
+  if(!blobUrls[num]){
+    const html=compHtml(num);
+    if(!html)return '';
+    blobUrls[num]=URL.createObjectURL(new Blob([html],{type:'text/html'}));
+  }
+  return blobUrls[num];
+}
+function compCard(c,extra=''){
+  const inner=c.ec
+    ?`<div class="placeholder"><div class="big">${c.en}</div><div>ECharts 运行时组件</div><div style="font-size:10px">${c.ec.length} 个变体已合并</div></div>`
+    :`<iframe loading="lazy" data-rep="${c.rep}"></iframe>`;
+  return `<div class="comp-card">
+    <div class="comp-wrap">${inner}</div>
+    <div class="comp-info">
+      <span class="en">${c.en}</span> <span class="nm">${c.nm}</span>
+      ${c.nums?`<div class="merged">← 合并 ${c.nums.length} 项(#${c.nums.join(',')})</div>`:''}
+      ${c.ec?`<div class="merged">← 合并 ${c.ec.length} 项 ECharts</div>`:''}
+      <div class="param">${c.param||c.struct||''}</div>
+      <div>${(c.rel||[]).map(r=>`<span class="rel">${r}</span>`).join('')}${extra}</div>
+    </div></div>`;
+}
+
+/* 非关系页 */
+$('#tpl-gallery').innerHTML=NON_REL.map(layoutCard).join('');
+$('#tpl-atlas').innerHTML=TPL_ATLAS.map(c=>compCard(c)).join('');
+$('#c-tpl').textContent=NON_REL.length+TPL_ATLAS.length;
+
+/* 版式:结构参考 + 六大族 */
+$('#lyt-struct').innerHTML=STRUCT_ATLAS.map(c=>compCard(c)).join('');
+$('#lyt-fams').innerHTML=FAMS.map(f=>`
+  <div class="fam-section">
+    <div class="fam-head"><h2>${f.cn}</h2><span class="tag" style="background:${f.color}">${f.id}</span><span class="desc">${f.desc} · ${f.items.length} 版式</span></div>
+    <div class="grid">${f.items.map(layoutCard).join('')}</div>
+  </div>`).join('');
+$('#c-lyt').textContent=STRUCT_ATLAS.length+FAMS.reduce((s,f)=>s+f.items.length,0);
+
+/* 组件 */
+$('#cmp-groups').innerHTML=COMP_GROUPS.map(g=>`
+  <div class="fam-section">
+    <div class="fam-head"><h2>${g.g}</h2><span class="desc">${g.items.length} 个组件(合并后)</span></div>
+    <div class="comp-grid">${g.items.map(c=>compCard(c)).join('')}</div>
+  </div>`).join('');
+$('#c-cmp').textContent=COMP_GROUPS.reduce((s,g)=>s+g.items.length,0);
+
+/* 组件 iframe 用 Blob URL 填充 */
+document.querySelectorAll('iframe[data-rep]').forEach(f=>{f.src=compBlobUrl(+f.dataset.rep);});
+
+/* tab 切换 */
+document.querySelectorAll('.tab').forEach(t=>t.onclick=()=>{
+  document.querySelectorAll('.tab').forEach(x=>x.classList.remove('on'));
+  document.querySelectorAll('main').forEach(x=>x.classList.remove('on'));
+  t.classList.add('on');$('#m-'+t.dataset.t).classList.add('on');
+  fitAll();
+});
+function fitAll(){
+  document.querySelectorAll('main.on .frame-wrap').forEach(w=>{
+    const s=w.clientWidth/1920;w.querySelector('iframe').style.transform=`scale(${s})`;
+  });
+  document.querySelectorAll('main.on .comp-wrap iframe').forEach(f=>{
+    const w=f.parentElement;s=Math.min(w.clientWidth/640,w.clientHeight/640);f.style.transform=`scale(${s})`;
+  });
+}
+window.addEventListener('resize',fitAll);
+window.addEventListener('load',fitAll);
+setTimeout(fitAll,300);
+</script>
+</body>
+</html>
