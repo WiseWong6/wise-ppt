@@ -2,7 +2,7 @@
 <html lang="zh-CN">
 <head>
 <meta charset="UTF-8">
-<title>Wise PPT 资产目录:非关系页 · 版式 · 组件</title>
+<title>Wise PPT 资产目录:非关系页 · 版式 · 结构 · 组件</title>
 <link rel="stylesheet" href="../themes/paper-ink/assets/design-tokens.css">
 <style>
   /* 纸墨配色:基础名(--ink/--paper/--ink-80 等)直接来自 design-tokens.css。
@@ -61,15 +61,36 @@
 
   .note{background:var(--card);border:1px solid var(--line);border-left:3px solid var(--ink);padding:14px 18px;font-size:13px;color:var(--ink-2);line-height:1.8;margin-bottom:24px}
   .note b{color:var(--ink)}
+
+  /* 结构枚举 */
+  .struct-body{display:flex;gap:22px;align-items:flex-start;flex-wrap:wrap;margin-bottom:18px}
+  .schem{flex:none;padding:14px 16px 8px;background:var(--card);border:1px solid var(--line)}
+  .schem svg{display:block;max-width:100%;height:auto}
+  .schem text{font-family:var(--wp-font-sans)}
+  .sl-lab{font-size:10px;fill:var(--ink-2)}
+  .sl-labb{font-size:11px;font-weight:600;fill:var(--ink)}
+  .sl-cap{font-size:10px;fill:var(--ink-3)}
+  .struct-info{flex:1;min-width:260px}
+  .s-desc{font-size:13px;line-height:1.8;color:var(--ink)}
+  .s-judge{font-size:12px;color:var(--ink-2);margin-top:8px;line-height:1.7}
+  .s-judge b,.s-members b{font-weight:700;margin-right:8px;color:var(--ink)}
+  .s-rels{margin-top:8px}
+  .s-members{margin-top:10px;display:flex;flex-wrap:wrap;gap:4px;align-items:center;line-height:1.9}
+  .chip{font-family:var(--wp-font-sans);font-weight:600;font-size:11px;letter-spacing:.08em;color:var(--ink-2);background:transparent;border:1px solid var(--ink-45);padding:2px 7px;cursor:pointer;border-radius:2px}
+  .chip:hover{background:var(--ink);color:var(--paper)}
+  .grid.samples{grid-template-columns:repeat(auto-fill,minmax(250px,1fr))}
+  .card.flash{animation:cf 1.5s ease-out}
+  @keyframes cf{0%,55%{box-shadow:0 0 0 3px var(--accent-red)}100%{box-shadow:0 0 0 0 transparent}}
 </style>
 </head>
 <body>
 <header>
   <h1>资产目录 · Catalog</h1>
-  <div class="sub">非关系页模板(直接套用) / 关系页版式(六大族) / 组件(合并变体后)</div>
+  <div class="sub">非关系页模板(直接套用) / 关系页版式(六大族) / 结构枚举(7 种切分) / 组件(合并变体后)</div>
   <div class="tabs">
     <button class="tab on" data-t="tpl">非关系页模板<span class="n" id="c-tpl"></span></button>
     <button class="tab" data-t="lyt">关系页版式<span class="n" id="c-lyt"></span></button>
+    <button class="tab" data-t="str">结构枚举<span class="n" id="c-str"></span></button>
     <button class="tab" data-t="cmp">组件<span class="n" id="c-cmp"></span></button>
   </div>
 </header>
@@ -87,13 +108,15 @@
   <div id="lyt-fams"></div>
 </main>
 
+<main id="m-str">
+  <div class="note"><b>结构 = 页面区域怎么切(矩形分块);组件 = 区域内画什么形状。</b>放射、环形、蛇形、漏斗都是区域内组件的画法,不是页面结构。关系圈定候选结构(2~4 种),二次判断(对象数量 / 有无辅助内容 / 方向偏好)在范围内选定。关系页版式全部归入这 7 种切分,版式编号可点击跳到「关系页版式」tab 对应卡片。</div>
+  <div class="note"><b>网格 vs 表格(易混)</b>:网格均质等价,格与格只是陈列(A7 logo 墙、F4 六宫格);表格行有行语义、列有列语义,交叉格才有内容(K4 场景×阶段、E4 前后×环节)。E4 的「上下2等分 + 底带」按行列双语义计入表格。</div>
+  <div id="str-list"></div>
+</main>
+
 <main id="m-cmp">
-  <div class="note"><b>组件 = 参数化画法。</b>内容数量是参数不是组件类型;画法不同才是不同组件。atlas 合并 27 组 + native 移植 33 + echarts 9 组。</div>
+  <div class="note"><b>组件 = 参数化画法。</b>内容数量是参数不是组件类型;画法不同才是不同组件。atlas + native + ECharts 全部组件,按信息关系六大族统一分组(重心族无独立组件,由非关系页模板承担)。</div>
   <div id="extract-groups"></div>
-  <div class="fam-section">
-    <div class="fam-head"><h2>Native 墨线组件(taxonomy 移植)</h2><span class="desc">来自 wise-ppt-page-expression 组件目录,062+ 编号,纸墨线稿实现</span></div>
-    <div id="native-groups"></div>
-  </div>
   <div id="cmp-groups"></div>
 </main>
 
@@ -145,54 +168,85 @@ const FAMS=[
   ]},
 ];
 
-/* 组件:合并组。rep=代表 num(src 渲染),nums=吃掉的 atlas 编号,ec=echarts id 列表 */
-const COMP_GROUPS=[
-  {g:'content 文字排版',items:[
-    {en:'list-card',nm:'列表卡片',rep:2,nums:[2,3,4],param:'单元卡片,数量是参数;排布由结构负责(单栏×N)',rel:['陈列']},
-    {en:'form-card',nm:'表单卡片',rep:6,nums:[6],param:'字段数 2~6',rel:['陈列']},
-    {en:'alert-box',nm:'提示框',rep:12,nums:[12],param:'单条强调',rel:['陈列']},
-    {en:'terminal-box',nm:'终端框',rep:13,nums:[13],param:'行数 2~8',rel:['陈列']},
-    {en:'code',nm:'代码块',rep:14,nums:[14],param:'行数不限',rel:['陈列']},
+/* 组件统一池:atlas + native + echarts 全部组件,按信息关系六大族分组(MECE)
+   t: 'atlas' | 'native' | 'ec';atlas/native 用 num,ec 用 id */
+const COMPONENTS=[
+  {fam:'并列 · 陈列单元(单元×N,排布归结构)',items:[
+    {t:'atlas',num:2,en:'list-card',nm:'列表卡片',note:'合并 #002-004;单元×N',rel:['陈列']},
+    {t:'atlas',num:6,en:'form-card',nm:'表单卡片',rel:['陈列']},
+    {t:'atlas',num:12,en:'alert-box',nm:'提示框',rel:['陈列']},
+    {t:'atlas',num:13,en:'terminal-box',nm:'终端框',rel:['陈列']},
+    {t:'atlas',num:14,en:'code',nm:'代码块',rel:['陈列']},
+    {t:'atlas',num:59,en:'stats',nm:'指标单元',note:'atlas 打包 4 格;概念上单元×4',rel:['陈列']},
+    {t:'native',num:89,en:'metric-strip',nm:'自适应指标横带',rel:['陈列']},
+    {t:'native',num:85,en:'radial-progress',nm:'环形进度指标',note:'单元×N',rel:['陈列']},
+    {t:'native',num:86,en:'icon-grid',nm:'图标格阵',rel:['陈列']},
+    {t:'native',num:84,en:'profile-card',nm:'人物画像卡',note:'单元×N',rel:['陈列']},
+    {t:'native',num:74,en:'contact-card',nm:'联络名片卡',rel:['陈列']},
+    {t:'native',num:64,en:'doc-excerpt',nm:'文献摘引块',rel:['陈列']},
+    {t:'native',num:65,en:'official-doc',nm:'公文标本框',rel:['陈列']},
+    {t:'native',num:91,en:'pain-list',nm:'痛点根因列',rel:['陈列']},
+    {t:'native',num:93,en:'infra-strip',nm:'基础设施横带',rel:['陈列']},
   ]},
-  {g:'comparison 比较',items:[
-    {en:'vs',nm:'对比 VS',rep:15,nums:[15],param:'2 对象',rel:['对比']},
-    {en:'before-after',nm:'前后对比',rep:16,nums:[16,17,18,19],param:'开关 arrow / no-bg / verification',rel:['对比']},
-    {en:'swot',nm:'SWOT 分析',rep:20,nums:[20],param:'固定 2×2',rel:['矩阵']},
-    {en:'quadrant-axis',nm:'象限图',rep:21,nums:[21],param:'四象限,轴可命名',rel:['矩阵']},
-    {en:'comparison-table',nm:'对比表格',rep:22,nums:[22],param:'列 2~5,行 2~6',rel:['对比','矩阵']},
-    {en:'matrix',nm:'矩阵',rep:23,nums:[23],param:'行 2~5,列 2~5',rel:['矩阵']},
-    {en:'impossible-triangle',nm:'不可能三角',rep:24,nums:[24],param:'固定三顶点',rel:['矩阵']},
+  {fam:'结构 · 包含/构成',items:[
+    {t:'atlas',num:43,en:'concentric',nm:'同心圆',note:'合并 #043-047',rel:['层级','嵌套']},
+    {t:'atlas',num:48,en:'pyramid',nm:'金字塔',note:'合并 #048-049;开关 inverted',rel:['层级']},
+    {t:'atlas',num:51,en:'iceberg',nm:'冰山图',rel:['拆解']},
+    {t:'atlas',num:52,en:'venn',nm:'韦恩图',note:'圆数 2~3',rel:['关联(集合)']},
+    {t:'atlas',num:54,en:'architecture',nm:'架构图',rel:['层级']},
+    {t:'atlas',num:55,en:'arch-platform',nm:'平台架构图',note:'合并 #055-056',rel:['层级']},
+    {t:'atlas',num:57,en:'mind-map',nm:'思维导图',note:'开关 horizontal / vertical',rel:['拆解']},
+    {t:'native',num:79,en:'radial-hub',nm:'放射中心卫星图',rel:['层级']},
+    {t:'native',num:82,en:'arch-table-band',nm:'架构带表',rel:['层级']},
+    {t:'ec',id:'echarts.pie-access-source',en:'pie',nm:'饼图',rel:['部分整体']},
+    {t:'ec',id:'echarts.tree-lr',en:'tree',nm:'树图',rel:['层级']},
   ]},
-  {g:'flow 流程时序',items:[
-    {en:'process',nm:'流程链',rep:25,nums:[25,26,27,28,29,30,31,32,33],param:'步数 2~7;开关 annotated / arrow / wrapped',rel:['时序','流动']},
-    {en:'process-loop',nm:'循环流程',rep:34,nums:[34,35,36,37],param:'节点 3~6;开关 closed-loop',rel:['循环']},
-    {en:'journey',nm:'旅程图',rep:38,nums:[38],param:'阶段 3~6,情绪曲线',rel:['时序']},
-    {en:'timeline',nm:'时间线',rep:39,nums:[39,40,41],param:'节点 3~8;开关 horizontal / vertical',rel:['时序']},
-    {en:'gantt',nm:'甘特图',rep:42,nums:[42],param:'任务行 3~8,时间列 4~12',rel:['时序']},
+  {fam:'有序 · 时序/流动/循环/因果',items:[
+    {t:'atlas',num:25,en:'process',nm:'流程链',note:'合并 #025-033;步数 2~7',rel:['时序','流动']},
+    {t:'atlas',num:34,en:'process-loop',nm:'循环流程',note:'合并 #034-037;节点 3~6',rel:['循环']},
+    {t:'atlas',num:38,en:'journey',nm:'旅程图',rel:['时序']},
+    {t:'atlas',num:39,en:'timeline',nm:'时间线',note:'合并 #039-041;开关横/竖',rel:['时序']},
+    {t:'atlas',num:42,en:'gantt',nm:'甘特图',rel:['时序']},
+    {t:'atlas',num:50,en:'fishbone',nm:'鱼骨图',rel:['因果']},
+    {t:'native',num:63,en:'step-rise',nm:'阶梯爬升图',rel:['时序']},
+    {t:'native',num:70,en:'trace-tree',nm:'树形过程日志',rel:['时序']},
+    {t:'native',num:71,en:'gantt-ink',nm:'墨线甘特图',rel:['时序']},
+    {t:'native',num:72,en:'timeline-gallery',nm:'时间轴垂挂画廊',rel:['时序','证据']},
+    {t:'native',num:73,en:'winding-road',nm:'蜿蜒道路时间轴',rel:['时序']},
+    {t:'native',num:83,en:'swimlane-roadmap',nm:'泳道路线图',rel:['时序']},
+    {t:'native',num:87,en:'funnel',nm:'转化漏斗',rel:['漏斗']},
+    {t:'native',num:90,en:'scenario-column',nm:'单场景纵列',rel:['时序']},
+    {t:'native',num:92,en:'pipeline-strip',nm:'自适应流水线横带',rel:['流动']},
+    {t:'native',num:76,en:'why-how-bands',nm:'因果对位双带',rel:['因果']},
+    {t:'native',num:80,en:'merge-confluence',nm:'双路汇流图',rel:['汇聚']},
+    {t:'ec',id:'echarts.line-basic',en:'line',nm:'折线图',note:'含 smooth / stacked 变体',rel:['时序']},
+    {t:'ec',id:'echarts.calendar-basic',en:'calendar',nm:'日历热力图',rel:['时序']},
+    {t:'ec',id:'echarts.sankey-basic',en:'sankey',nm:'桑基图',rel:['流动']},
   ]},
-  {g:'structure 结构',items:[
-    {en:'concentric',nm:'同心圆',rep:43,nums:[43,44,45,46,47],param:'环数 2~5;开关 align(center/top/bottom)',rel:['层级','嵌套']},
-    {en:'pyramid',nm:'金字塔',rep:48,nums:[48,49],param:'层数 2~5;开关 inverted',rel:['层级']},
-    {en:'fishbone',nm:'鱼骨图',rep:50,nums:[50],param:'主骨 1,刺 3~6',rel:['因果']},
-    {en:'iceberg',nm:'冰山图',rep:51,nums:[51],param:'层 2~3(显/隐)',rel:['拆解']},
-    {en:'venn',nm:'韦恩图',rep:52,nums:[52,53],param:'圆数 2~3',rel:['关联(集合)']},
-    {en:'architecture',nm:'架构图',rep:54,nums:[54],param:'层 2~5,每层节点 2~4',rel:['层级']},
-    {en:'arch-platform',nm:'平台架构图',rep:55,nums:[55,56],param:'层 3~5;开关 complex / 垂直',rel:['层级']},
-    {en:'mind-map',nm:'思维导图',rep:57,nums:[57,58],param:'分支 3~6;开关 horizontal / vertical',rel:['拆解']},
+  {fam:'比较 · 对齐/矩阵/映射',items:[
+    {t:'atlas',num:15,en:'vs',nm:'对比 VS',rel:['对比']},
+    {t:'atlas',num:16,en:'before-after',nm:'前后对比',note:'合并 #016-019',rel:['对比']},
+    {t:'atlas',num:20,en:'swot',nm:'SWOT 分析',rel:['矩阵']},
+    {t:'atlas',num:21,en:'quadrant-axis',nm:'象限图',rel:['矩阵']},
+    {t:'atlas',num:22,en:'comparison-table',nm:'对比表格',rel:['对比','矩阵']},
+    {t:'atlas',num:23,en:'matrix',nm:'矩阵',rel:['矩阵']},
+    {t:'atlas',num:24,en:'impossible-triangle',nm:'不可能三角',rel:['矩阵']},
+    {t:'atlas',num:60,en:'radar',nm:'雷达图',note:'合并 #060-061',rel:['对比']},
+    {t:'native',num:81,en:'watershed-axis',nm:'分水岭中轴对照',rel:['对比']},
+    {t:'native',num:77,en:'before-after-bands',nm:'前后双带演进面板',rel:['对比']},
+    {t:'ec',id:'echarts.bar-basic',en:'bar',nm:'柱状图',note:'含 dynamic-sort 变体',rel:['对比']},
+    {t:'ec',id:'echarts.radar-basic',en:'radar-e',nm:'雷达图(ECharts)',rel:['对比']},
   ]},
-  {g:'data 数据',items:[
-    {en:'stats',nm:'指标单元(统计卡片)',rep:59,nums:[59],param:'指标单元×N(atlas 实现为 4 格打包);排布由结构负责',rel:['陈列']},
-    {en:'radar',nm:'雷达图',rep:60,nums:[60,61],param:'维度 3~8(六边形为参数)',rel:['对比']},
-  ]},
-  {g:'echarts 图表(需运行时)',items:[
-    {en:'line',nm:'折线图',ec:['echarts.line-basic','echarts.line-smooth','echarts.line-stacked'],param:'点数 3~24;开关 smooth / stacked',rel:['时序']},
-    {en:'bar',nm:'柱状图',ec:['echarts.bar-basic','echarts.bar-dynamic-sort'],param:'类目 3~12;开关 dynamic-sort',rel:['对比']},
-    {en:'pie',nm:'饼图',ec:['echarts.pie-access-source'],param:'扇区 3~8',rel:['部分整体']},
-    {en:'scatter',nm:'散点图',ec:['echarts.scatter-basic','echarts.scatter-to-bar-anim'],param:'点数不限;开关 to-bar 动画',rel:['关联']},
-    {en:'radar-e',nm:'雷达图(ECharts)',ec:['echarts.radar-basic'],param:'维度 3~8',rel:['对比']},
-    {en:'calendar',nm:'日历图',ec:['echarts.calendar-basic'],param:'按日聚合',rel:['时序']},
-    {en:'tree',nm:'树图',ec:['echarts.tree-lr'],param:'节点 3~30',rel:['层级']},
-    {en:'sankey',nm:'桑基图',ec:['echarts.sankey-basic'],param:'节点+流量',rel:['流动']},
+  {fam:'连接 · 网络/空间/证据',items:[
+    {t:'native',num:66,en:'evidence-wall',nm:'证据墙标本格',rel:['证据']},
+    {t:'native',num:67,en:'logo-cloud',nm:'品牌云墙',rel:['证据']},
+    {t:'native',num:68,en:'mobile-gallery',nm:'手机屏步骤画廊',rel:['证据']},
+    {t:'native',num:69,en:'admin-console',nm:'后台管理台线稿',rel:['证据']},
+    {t:'native',num:78,en:'chat-dialog',nm:'对话气泡标本',rel:['证据']},
+    {t:'native',num:88,en:'annotation-callout',nm:'环绕引线标注',rel:['证据']},
+    {t:'native',num:75,en:'district-map',nm:'街区示意地图',rel:['空间']},
+    {t:'ec',id:'echarts.geo-choropleth-map',en:'geo-map',nm:'分级填色地图',rel:['空间']},
+    {t:'ec',id:'echarts.scatter-basic',en:'scatter',nm:'散点图',note:'含 to-bar 动画变体',rel:['关联']},
   ]},
 ];
 
@@ -213,51 +267,13 @@ const EXTRACT_GROUPS=[
   ]},
 ];
 
-/* Native 墨线组件(taxonomy 移植,num 对应组件画册路由) */
-const NATIVE_GROUPS=[
-  {g:'流程与时序',items:[
-    {num:63,en:'step-rise',nm:'阶梯爬升图'},{num:70,en:'trace-tree',nm:'树形过程日志'},
-    {num:71,en:'gantt-ink',nm:'墨线甘特图'},{num:72,en:'timeline-gallery',nm:'时间轴垂挂画廊'},
-    {num:73,en:'winding-road',nm:'蜿蜒道路时间轴'},{num:83,en:'swimlane-roadmap',nm:'泳道路线图'},
-    {num:87,en:'funnel',nm:'转化漏斗'},{num:90,en:'scenario-column',nm:'单场景纵列'},
-    {num:92,en:'pipeline-strip',nm:'自适应流水线横带'},
-  ]},
-  {g:'证据与媒体',items:[
-    {num:66,en:'evidence-wall',nm:'证据墙标本格'},{num:67,en:'logo-cloud',nm:'品牌云墙'},
-    {num:68,en:'mobile-gallery',nm:'手机屏步骤画廊'},{num:69,en:'admin-console',nm:'后台管理台线稿'},
-    {num:74,en:'contact-card',nm:'联络名片卡'},{num:78,en:'chat-dialog',nm:'对话气泡标本'},
-    {num:84,en:'profile-card',nm:'人物画像卡'},{num:86,en:'icon-grid',nm:'图标格阵'},
-    {num:88,en:'annotation-callout',nm:'立绘环绕引线标注'},
-  ]},
-  {g:'对比与对照',items:[
-    {num:76,en:'why-how-bands',nm:'因果对位双带'},{num:77,en:'before-after-bands',nm:'前后双带演进面板'},
-    {num:81,en:'watershed-axis',nm:'分水岭中轴对照'},
-  ]},
-  {g:'层级与结构',items:[
-    {num:79,en:'radial-hub',nm:'放射中心卫星图'},{num:82,en:'arch-table-band',nm:'架构带表'},
-  ]},
-  {g:'关系与映射',items:[
-    {num:75,en:'district-map',nm:'街区示意地图'},{num:80,en:'merge-confluence',nm:'双路汇流图'},
-  ]},
-  {g:'文档与文本',items:[
-    {num:64,en:'doc-excerpt',nm:'文献摘引块'},{num:65,en:'official-doc',nm:'公文标本框'},
-    {num:91,en:'pain-list',nm:'自适应痛点根因列'},{num:93,en:'infra-strip',nm:'自适应基础设施横带'},
-  ]},
-  {g:'指标与数据',items:[
-    {num:85,en:'radial-progress',nm:'环形进度指标'},{num:89,en:'metric-strip',nm:'自适应指标横带'},
-  ]},
-  {g:'ECharts 补充',items:[
-    {ec:'echarts.geo-choropleth-map',en:'geo-map',nm:'分级填色地图'},
-  ]},
-];
-
 /* ============ 渲染 ============ */
 const $=s=>document.querySelector(s);
 
 function layoutCard([id,nm,struct,rel]){
   const full=FRAMES+'layout-'+id.toLowerCase()+'.html';
   return `<div class="card" data-href="${full}">
-    <div class="frame-wrap"><iframe data-src="${full}"></iframe></div>
+    <div class="frame-wrap"><iframe loading="lazy" src="${full}"></iframe></div>
     <div class="card-info"><span class="id">${id}</span>
       <div class="nm">${nm}</div>
       <div class="meta">结构:<b>${struct}</b> · 关系:<b>${rel}</b></div>
@@ -265,20 +281,23 @@ function layoutCard([id,nm,struct,rel]){
 }
 /* 详情路由:atlas/native → 画册 #/layout/N;echarts → #/component/{slug}-default */
 function ecSlug(id){return id.toLowerCase().replace(/[^a-z0-9]+/g,'-').replace(/^-|-$/g,'');}
+/* 统一组件卡:atlas/native → num;ec → id */
 function compCard(c,extra=''){
-  const inner=c.ec
-    ?`<iframe data-src="gallery-components/echarts-frame.html?id=${c.ec[0]}&theme=paper-ink"></iframe>`
-    :`<iframe data-src="gallery-components/atlas-preview.html?num=${c.rep}"></iframe>`;
-  const href=c.ec
-    ?'gallery-components/index.html?theme=paper-ink#/component/'+ecSlug(c.ec[0])+'-default'
-    :'gallery-components/index.html?theme=paper-ink#/layout/'+c.rep;
+  let src,href,tag;
+  if(c.t==='ec'){
+    src='gallery-components/echarts-frame.html?id='+c.id+'&theme=paper-ink';
+    href='gallery-components/index.html?theme=paper-ink#/component/'+ecSlug(c.id)+'-default';
+    tag='ECharts';
+  }else{
+    src='gallery-components/'+(c.t==='native'?'native-preview':'atlas-preview')+'.html?num='+c.num;
+    href='gallery-components/index.html?theme=paper-ink#/layout/'+c.num;
+    tag=c.t+' #'+String(c.num).padStart(3,'0');
+  }
   return `<div class="comp-card" data-href="${href}">
-    <div class="comp-wrap">${inner}</div>
+    <div class="comp-wrap"><iframe loading="lazy" src="${src}"></iframe></div>
     <div class="comp-info">
       <span class="en">${c.en}</span> <span class="nm">${c.nm}</span>
-      ${c.nums?`<div class="merged">← 合并 ${c.nums.length} 项(#${c.nums.join(',')})</div>`:''}
-      ${c.ec?`<div class="merged">← 合并 ${c.ec.length} 项 ECharts</div>`:''}
-      <div class="param">${c.param||c.struct||''}</div>
+      <div class="param">${tag}${c.note?' · '+c.note:''}</div>
       <div>${(c.rel||[]).map(r=>`<span class="rel">${r}</span>`).join('')}${extra}</div>
     </div></div>`;
 }
@@ -295,14 +314,13 @@ $('#lyt-fams').innerHTML=FAMS.map(f=>`
   </div>`).join('');
 $('#c-lyt').textContent=FAMS.reduce((s,f)=>s+f.items.length,0);
 
-/* 组件 */
-$('#cmp-groups').innerHTML=COMP_GROUPS.map(g=>`
+/* 组件:统一六大族池 */
+$('#cmp-groups').innerHTML=COMPONENTS.map(g=>`
   <div class="fam-section">
-    <div class="fam-head"><h2>${g.g}</h2><span class="desc">${g.items.length} 个组件(合并后)</span></div>
+    <div class="fam-head"><h2>${g.fam}</h2><span class="desc">${g.items.length} 个</span></div>
     <div class="comp-grid">${g.items.map(c=>compCard(c)).join('')}</div>
   </div>`).join('');
-const nativeTotal=NATIVE_GROUPS.reduce((s,g)=>s+g.items.length,0);
-$('#c-cmp').textContent=(COMP_GROUPS.reduce((s,g)=>s+g.items.length,0)+nativeTotal)+'+'+EXTRACT_GROUPS.reduce((s,g)=>s+g.items.length,0)+'抽';
+$('#c-cmp').textContent=COMPONENTS.reduce((s,g)=>s+g.items.length,0)+'+'+EXTRACT_GROUPS.reduce((s,g)=>s+g.items.length,0)+'抽';
 
 /* 反向抽取候选渲染:待抽取 = 裁剪出组件本体(crop-preview);近似已有 = 整页版式 */
 function extractCard(it){
@@ -311,7 +329,7 @@ function extractCard(it){
     ?'gallery-components/crop-preview.html?u='+encodeURIComponent(full)+'&rect='+it.rect.join(',')
     :full;
   return `<div class="card" data-href="${full}">
-    <div class="frame-wrap"><iframe data-src="${src}"></iframe></div>
+    <div class="frame-wrap"><iframe loading="lazy" src="${src}"></iframe></div>
     <div class="card-info"><span class="id">${it.from} → 组件</span>
       <div class="nm">${it.nm}</div>
       ${it.note?`<div class="meta">${it.note}</div>`:''}
@@ -325,46 +343,202 @@ $('#extract-groups').innerHTML=EXTRACT_GROUPS.map(g=>`
     <div class="grid">${g.items.map(extractCard).join('')}</div>
   </div>`).join('');
 
-/* Native 墨线组件:经组件画册路由渲染(#/layout/N) */
-const GALLERY_BASE='gallery-components/index.html?theme=paper-ink&motion=0&previewScale=fill&previewStage=wide&taxonomyEmbed=2';
-function nativeCard(c){
-  const src=c.ec
-    ?'gallery-components/echarts-frame.html?id='+c.ec+'&theme=paper-ink'
-    :'gallery-components/native-preview.html?num='+c.num;
-  const href=c.ec
-    ?'gallery-components/index.html?theme=paper-ink#/component/'+ecSlug(c.ec)+'-default'
-    :'gallery-components/index.html?theme=paper-ink#/layout/'+c.num;
-  return `<div class="comp-card" data-href="${href}">
-    <div class="comp-wrap"><iframe data-src="${src}"></iframe></div>
-    <div class="comp-info">
-      <span class="en">${c.en}</span> <span class="nm">${c.nm}</span>
-      ${c.num?`<div class="param">#${String(c.num).padStart(3,'0')} · native</div>`:'<div class="param">ECharts</div>'}
-    </div></div>`;
-}
-$('#native-groups').innerHTML=NATIVE_GROUPS.map(g=>`
-  <div class="fam-section">
-    <div class="fam-head"><h2>${g.g}</h2><span class="desc">${g.items.length} 个</span></div>
-    <div class="comp-grid">${g.items.map(nativeCard).join('')}</div>
-  </div>`).join('');
-
 /* 卡片点击 → 打开详情(新标签):版式/整页=layout html;组件=画册 #/layout/N 或 #/component/{slug} */
 document.addEventListener('click',function(e){
   const card=e.target.closest('[data-href]');
   if(card&&card.dataset.href)window.open(card.dataset.href,'_blank');
 });
 
-/* iframe 懒挂载:进入视口前 600px 才设置 src,避免大量 iframe 同时渲染导致进程崩溃 */
-(function lazyMount(){
-  const io=new IntersectionObserver(function(es){
-    es.forEach(function(en){
-      if(!en.isIntersecting)return;
-      const f=en.target;
-      if(f.dataset.src&&!f.getAttribute('src'))f.src=f.dataset.src;
-      io.unobserve(f);
-    });
-  },{rootMargin:'600px'});
-  document.querySelectorAll('iframe[data-src]').forEach(f=>io.observe(f));
-})();
+/* ============ 结构枚举(7 种切分,从 skill-design 第五章 + 55 版式反向抽象) ============ */
+/* SVG 示意图:150×84 的 16:9 小框 + 切线,抽象自版式实拍 */
+const CN_NUM='①②③④⑤';
+function fRect(x,y,w,h){return `<rect x="${x}" y="${y}" width="${w}" height="${h}" fill="rgba(255,255,255,.55)" stroke="var(--ink)" stroke-width="1.5"/>`}
+function ln(x1,y1,x2,y2,ex){return `<line x1="${x1}" y1="${y1}" x2="${x2}" y2="${y2}" stroke="var(--ink-45)" stroke-width="1"${ex?' '+ex:''}/>`}
+function lab(x,y,t,big){return `<text x="${x}" y="${y}" text-anchor="middle" class="${big?'sl-labb':'sl-lab'}">${t}</text>`}
+function schem(caps){
+  const FW=150,FH=84,GAP=18,PAD=3;
+  const W=PAD*2+caps.length*FW+(caps.length-1)*GAP,H=PAD*2+FH+17;
+  let s=`<svg viewBox="0 0 ${W} ${H}" width="${W}" height="${H}">`;
+  caps.forEach((c,i)=>{
+    const x=PAD+i*(FW+GAP);
+    s+=c.d(x,PAD,FW,FH)+`<text x="${x+FW/2}" y="${PAD+FH+14}" text-anchor="middle" class="sl-cap">${c.cap}</text>`;
+  });
+  return s+'</svg>';
+}
+/* 单行:整页一块,虚影提示组件形状自由(放射/环形/漏斗) */
+const gSingle=()=>(x,y,w,h)=>{
+  let s=fRect(x,y,w,h);
+  const cy=y+h/2;
+  let g='<g opacity=".35" stroke="var(--ink-55)" fill="none" stroke-width="1">';
+  g+=`<circle cx="${x+30}" cy="${cy}" r="2.6" fill="var(--ink-55)" stroke="none"/>`;
+  for(let k=0;k<6;k++){const a=k*Math.PI/3+.4;
+    g+=`<line x1="${(x+30+Math.cos(a)*6).toFixed(1)}" y1="${(cy+Math.sin(a)*6).toFixed(1)}" x2="${(x+30+Math.cos(a)*20).toFixed(1)}" y2="${(cy+Math.sin(a)*20).toFixed(1)}"/>`;}
+  g+='</g>';
+  g+=`<g opacity=".35" stroke="var(--ink-55)" fill="none" stroke-width="1"><circle cx="${x+w/2}" cy="${cy}" r="23"/><circle cx="${x+w/2}" cy="${cy}" r="13" stroke-dasharray="3 3"/></g>`;
+  const fx=x+w-48,fy=cy-27;
+  g+=`<g opacity=".35" stroke="var(--ink-55)" fill="none" stroke-width="1">
+    <line x1="${fx}" y1="${fy}" x2="${fx+36}" y2="${fy}"/>
+    <line x1="${fx+5}" y1="${fy+13.5}" x2="${fx+31}" y2="${fy+13.5}"/>
+    <line x1="${fx+10}" y1="${fy+27}" x2="${fx+26}" y2="${fy+27}"/>
+    <line x1="${fx+15}" y1="${fy+40}" x2="${fx+21}" y2="${fy+40}"/>
+    <path d="M ${fx} ${fy} L ${fx+5} ${fy+13.5} L ${fx+10} ${fy+27} L ${fx+15} ${fy+40} M ${fx+36} ${fy} L ${fx+31} ${fy+13.5} L ${fx+26} ${fy+27} L ${fx+21} ${fy+40}"/>
+  </g>`;
+  return s+g;
+};
+const gCols=n=>(x,y,w,h)=>{
+  let s=fRect(x,y,w,h);
+  for(let i=1;i<n;i++)s+=ln(x+w*i/n,y,x+w*i/n,y+h);
+  for(let i=0;i<n;i++)s+=lab(x+w*(i+.5)/n,y+h/2+4,CN_NUM[i]);
+  return s;
+};
+const gRows=n=>(x,y,w,h)=>{
+  let s=fRect(x,y,w,h);
+  for(let i=1;i<n;i++)s+=ln(x,y+h*i/n,x+w,y+h*i/n);
+  for(let i=0;i<n;i++)s+=lab(x+w/2,y+h*(i+.5)/n+4,CN_NUM[i]);
+  return s;
+};
+const gHasym=two=>(x,y,w,h)=>{
+  const mw=w*.64;
+  let s=fRect(x,y,w,h)+ln(x+mw,y,x+mw,y+h)+lab(x+mw/2,y+h/2+4,'主',1);
+  if(two){
+    s+=ln(x+mw,y+h/2,x+w,y+h/2,'stroke-dasharray="3 3"');
+    s+=lab(x+(mw+w)/2,y+h/4+4,'辅')+lab(x+(mw+w)/2,y+h*3/4+4,'辅');
+  }else{
+    s+=`<rect x="${x+mw}" y="${y}" width="${w-mw}" height="${h}" fill="none" stroke="var(--ink-45)" stroke-dasharray="3 3"/>`;
+    s+=lab(x+mw+(w-mw)/2,y+h/2+4,'辅');
+  }
+  return s;
+};
+const gVasym=flip=>(x,y,w,h)=>{
+  const bh=h*.34;
+  let s=fRect(x,y,w,h)+ln(x,y+bh,x+w,y+bh);
+  if(!flip){
+    s+=`<rect x="${x}" y="${y}" width="${w}" height="${bh}" fill="none" stroke="var(--ink-45)" stroke-dasharray="3 3"/>`;
+    s+=lab(x+w/2,y+bh/2+4,'辅(说明带)')+lab(x+w/2,y+bh+(h-bh)/2+4,'主',1);
+  }else{
+    s+=`<rect x="${x}" y="${y+h-bh}" width="${w}" height="${bh}" fill="none" stroke="var(--ink-45)" stroke-dasharray="3 3"/>`;
+    s+=lab(x+w/2,y+h-bh/2+4,'辅(收束带)')+lab(x+w/2,y+(h-bh)/2+4,'主',1);
+  }
+  return s;
+};
+const gGrid=(rows,cols)=>(x,y,w,h)=>{
+  let s=fRect(x,y,w,h);
+  const cw=w/cols,ch=h/rows,thin=cols>5||rows>5?'stroke-width=".7"':'';
+  for(let i=1;i<cols;i++)s+=ln(x+cw*i,y,x+cw*i,y+h,thin);
+  for(let j=1;j<rows;j++)s+=ln(x,y+ch*j,x+w,y+ch*j,thin);
+  return s;
+};
+const gTable=band=>(x,y,w,h)=>{
+  const hh=15,cw=26,th=band?h-20:h;
+  let s=`<rect x="${x}" y="${y}" width="${w}" height="${th}" fill="rgba(255,255,255,.55)"/>`;
+  s+=`<rect x="${x}" y="${y}" width="${w}" height="${hh}" fill="var(--ink-12)"/>`;
+  s+=`<rect x="${x}" y="${y}" width="${cw}" height="${th}" fill="var(--ink-12)"/>`;
+  s+=`<rect x="${x}" y="${y}" width="${w}" height="${th}" fill="none" stroke="var(--ink)" stroke-width="1.5"/>`;
+  s+=ln(x,y+hh,x+w,y+hh)+ln(x+cw,y,x+cw,y+th);
+  const ic=3,ir=3;
+  for(let i=1;i<ic;i++)s+=ln(x+cw+(w-cw)*i/ic,y+hh,x+cw+(w-cw)*i/ic,y+th);
+  for(let j=1;j<ir;j++)s+=ln(x+cw,y+hh+(th-hh)*j/ir,x+w,y+hh+(th-hh)*j/ir);
+  s+=lab(x+(cw+w)/2,y+hh/2+3.5,'列语义 →');
+  s+=`<text x="${x+cw/2}" y="${y+hh+(th-hh)/2}" class="sl-lab" text-anchor="middle" transform="rotate(-90 ${x+cw/2} ${y+hh+(th-hh)/2})">行语义 →</text>`;
+  if(band){
+    const by=y+th+6;
+    s+=`<rect x="${x}" y="${by}" width="${w}" height="${h-th-6}" fill="none" stroke="var(--ink-45)" stroke-dasharray="3 3"/>`;
+    s+=lab(x+w/2,by+(h-th-6)/2+3.5,'收束带 / 汇总行');
+  }
+  return s;
+};
+
+const STRUCTS=[
+  {key:'single',cn:'① 单行',en:'single',judge:'单个对象;或图形需要整页舒展',
+   desc:'整页一块,不再切分。区域内组件形状自由:放射、环形、蛇形、漏斗都是这里的画法,不是页面结构。',
+   rels:['焦点','层级','拆解','部分整体','嵌套','时序','流动','循环','汇聚','漏斗','映射','网络','空间','证据'],
+   caps:[{cap:'整页一块 · 画法自由',d:gSingle()}],samples:['M1','B1','H1','O1']},
+  {key:'heq',cn:'② 左右 x 等分',en:'h-equal-split',judge:'多个并列对象 + 横向阅读流(步骤、时间、对比)',
+   desc:'横向均分,x≥2。左右等分 x=2 是特例。',
+   rels:['陈列','并行','拆解','时序','漏斗','因果','对比','映射'],
+   caps:[{cap:'x=2(E1)',d:gCols(2)},{cap:'x=3(A5)',d:gCols(3)},{cap:'x=4(C6)',d:gCols(4)}],samples:['E1','A5','C6']},
+  {key:'veq',cn:'③ 上下 x 等分',en:'v-equal-split',judge:'多个并列对象 + 纵向阅读流(层级、堆叠、泳道)',
+   desc:'纵向均分,x≥2。分层栈、多泳道、因果双带都是它。',
+   rels:['陈列','并行','层级','拆解','流动','因果','对比','证据'],
+   caps:[{cap:'x=2(E3)',d:gRows(2)},{cap:'x=3(B3)',d:gRows(3)},{cap:'x=4(H3)',d:gRows(4)}],samples:['E3','B3','H3']},
+  {key:'hasym',cn:'④ 左右不对称',en:'h-asymmetric',judge:'有主辅之分:主图 + 规格单 / 数据栏 / 证据墙',
+   desc:'主 + 次,次侧可再分(虚线示意)。辅助内容放次侧。',
+   rels:['层级','拆解','循环','空间','证据'],
+   caps:[{cap:'主+辅,辅可再分(F2/C1)',d:gHasym()},{cap:'主+辅+辅(A8)',d:gHasym(1)}],samples:['F2','C1','A4']},
+  {key:'vasym',cn:'⑤ 上下不对称',en:'v-asymmetric',judge:'有主辅之分 + 纵向阅读流:表格+收束带、画+说明',
+   desc:'主 + 次(纵向)。上表格下收束带(K1)、上画下注(A2/C2)。',
+   rels:['矩阵','证据'],
+   caps:[{cap:'上主下辅(A2/C2)',d:gVasym()},{cap:'上主下收束带(K1)',d:gVasym(1)}],samples:['K1','A2','C2']},
+  {key:'grid',cn:'⑥ 网格 m×n',en:'grid',judge:'等价单元批量陈列(logo 墙、图标格、案例卡)',
+   desc:'均质分格,格与格等价,只是陈列。象限 2×2 是特例。',
+   rels:['陈列','拆解'],
+   caps:[{cap:'2×2(象限特例)',d:gGrid(2,2)},{cap:'2×3(F4)',d:gGrid(2,3)},{cap:'7×4(A7)',d:gGrid(4,7)}],samples:['F4','A7']},
+  {key:'table',cn:'⑦ 表格',en:'table',judge:'行列双语义交叉(阶段×维度、前后×环节)',
+   desc:'行有行语义、列有列语义,交叉格才有内容。格不等价 —— 这是与网格的区别。天然对应矩阵关系。',
+   rels:['矩阵','对比'],
+   caps:[{cap:'行×列 双语义(K4)',d:gTable()},{cap:'表格+收束带(E4)',d:gTable(1)}],samples:['K4','E4']},
+];
+
+/* 版式 → 结构归入:按 FAMS 的结构字段解析;E4「上下2等分 + 底带」按行列双语义计表格 */
+function structKeyOf(s){
+  if(s.includes('+'))return 'table';
+  if(s==='单行')return 'single';
+  if(/^左右\d+等分/.test(s))return 'heq';
+  if(/^上下\d+等分/.test(s))return 'veq';
+  if(s==='左右不对称')return 'hasym';
+  if(s==='上下不对称')return 'vasym';
+  if(/^网格/.test(s))return 'grid';
+  if(s==='表格')return 'table';
+  return 'other';
+}
+const LAYOUT_INDEX={};
+const byStruct={};
+FAMS.forEach(f=>f.items.forEach(it=>{
+  LAYOUT_INDEX[it[0]]=it;
+  const k=structKeyOf(it[2]);
+  (byStruct[k]||(byStruct[k]=[])).push(it);
+}));
+if(byStruct.other)console.warn('未归入结构的版式:',byStruct.other.map(m=>m[0]).join(','));
+
+$('#str-list').innerHTML=STRUCTS.map(d=>{
+  const ms=byStruct[d.key]||[];
+  return `<div class="fam-section">
+    <div class="fam-head"><h2>${d.cn}</h2><span class="tag">${d.en}</span><span class="desc">${ms.length} 版式</span></div>
+    <div class="struct-body">
+      <div class="schem">${schem(d.caps)}</div>
+      <div class="struct-info">
+        <div class="s-desc">${d.desc}</div>
+        <div class="s-judge"><b>判断</b>${d.judge}</div>
+        <div class="s-rels">${d.rels.map(r=>`<span class="rel">${r}</span>`).join('')}</div>
+        <div class="s-members"><b>版式</b>${ms.map(m=>`<button class="chip" data-goto="${m[0]}" title="${m[1]}(${m[2]})">${m[0]}</button>`).join('')}</div>
+      </div>
+    </div>
+    <div class="grid samples">${d.samples.map(id=>{
+      const it=LAYOUT_INDEX[id],full=FRAMES+'layout-'+id.toLowerCase()+'.html';
+      return `<div class="card" data-href="${full}">
+        <div class="frame-wrap"><iframe loading="lazy" src="${full}"></iframe></div>
+        <div class="card-info"><span class="id">${it[0]}</span>
+          <div class="nm">${it[1]}</div>
+          <div class="meta">结构:<b>${it[2]}</b> · 关系:<b>${it[3]}</b></div>
+        </div></div>`;
+    }).join('')}</div>
+  </div>`;
+}).join('');
+$('#c-str').textContent=STRUCTS.length;
+
+/* 结构 chip → 跳到版式 tab 对应卡片并高亮 */
+document.addEventListener('click',function(e){
+  const b=e.target.closest('[data-goto]');
+  if(!b)return;
+  e.stopPropagation();
+  switchTab('lyt');
+  setTimeout(()=>{
+    const el=document.getElementById('lyt-'+b.dataset.goto.toLowerCase());
+    if(!el)return;
+    el.scrollIntoView({behavior:'smooth',block:'center'});
+    el.classList.remove('flash');void el.offsetWidth;el.classList.add('flash');
+  },80);
+});
 
 /* tab 切换 */
 function switchTab(id){
