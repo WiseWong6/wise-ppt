@@ -5,7 +5,7 @@
   <meta charset="UTF-8">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta name="description" content="HTML PPT组件图册，按流程、关系、对比、内容和数据可视化分类浏览，支持预览并复制 HTML 片段。">
+  <meta name="description" content="HTML PPT组件图册，按证据与媒体、指标与数据、流程与时序、对比与对照、层级与结构、关系与映射、文档与文本七个形制族分类浏览，支持预览并复制 HTML 片段。">
   <meta name="keywords" content="HTML PPT组件, PPT组件, 网页PPT, HTML幻灯片, AI生成PPT, Wise, 歪斯">
   <meta name="author" content="Wise">
   <title>HTML PPT组件</title>
@@ -13,8 +13,14 @@
   <link rel="stylesheet" href="./source-han.css?v=1">
   <script>
     (function resolveGalleryTheme() {
-      // 组件画册只开放纸墨;swiss 主题与适配器保留在 themes/,暂不提供入口
-      const themeId = 'paper-ink';
+      let themeId = 'paper-ink';
+      try {
+        const params = new URLSearchParams(window.location.search);
+        const requested = params.get('theme');
+        if (requested === 'paper-ink' || requested === 'swiss') themeId = requested;
+        else if (params.get('style') === 'swiss') themeId = 'swiss';
+        document.documentElement.classList.toggle('accent', params.get('emphasis') === 'accent');
+      } catch (err) {}
       window.WISE_PPT_GALLERY_THEME = themeId;
       document.documentElement.dataset.theme = themeId;
       const link = document.createElement('link');
@@ -99,6 +105,31 @@
       color: var(--gallery-text);
       background: var(--gallery-accent-dim);
     }
+    .style-switch {
+      display: inline-flex;
+      align-items: center;
+      overflow: hidden;
+      border: 0.25px solid var(--gallery-line);
+      border-radius: 9999px;
+    }
+    .style-switch-button {
+      appearance: none;
+      border: 0;
+      background: transparent;
+      color: var(--gallery-muted);
+      cursor: pointer;
+      font: inherit;
+      font-size: 0.85rem;
+      line-height: 1;
+      padding: 0.45rem 0.75rem;
+    }
+    .style-switch-button + .style-switch-button {
+      border-left: 0.25px solid var(--gallery-line);
+    }
+    .style-switch-button[aria-pressed="true"] {
+      background: var(--gallery-text);
+      color: var(--gallery-bg);
+    }
     body {
       font-family: "Wise Han Sans SC";
     }
@@ -113,6 +144,7 @@
       font-weight: 400;
     }
     .meta-pill,
+    .style-switch,
     .filter-btn,
     .component-search,
     .thumb-card,
@@ -125,6 +157,9 @@
       border-width: 1px;
       border-radius: 0;
       box-shadow: none;
+    }
+    .style-switch-button + .style-switch-button {
+      border-left-width: 1px;
     }
     .thumb-card,
     .thumb-preview,
@@ -761,6 +796,10 @@
           <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3 4 7l8 4 8-4-8-4Z"/><path d="M4 11l8 4 8-4"/><path d="M4 15l8 4 8-4"/></svg>
           Skill
         </a>
+        <div class="style-switch" role="group" aria-label="组件视觉风格，左侧 Paper Ink，右侧 Swiss">
+          <button class="style-switch-button" type="button" data-theme-value="paper-ink" aria-pressed="true" title="切换为 Paper Ink（左）">Paper Ink</button>
+          <button class="style-switch-button" type="button" data-theme-value="swiss" aria-pressed="false" title="切换为 Swiss（右）">Swiss</button>
+        </div>
       </div>
     </div>
     <div class="filter-controls" id="filterControls">
@@ -783,8 +822,10 @@
 
   <script src="../../capabilities/vendors/ppt-component-atlas/catalog-data.js"></script>
   <script src="../../capabilities/layouts/paper-ink-components.js?v=6"></script>
-  <script src="../../themes/paper-ink/adapters/atlas.js"></script>
+  <script src="../../themes/paper-ink/adapters/atlas.js?v=4"></script>
+  <script src="../../themes/swiss/adapters/atlas.js"></script>
   <script src="../../themes/paper-ink/adapters/native.js"></script>
+  <script src="../../themes/swiss/adapters/native.js"></script>
   <script src="./paper-ink-adapter.js?v=2"></script>
   <script src="./echarts-catalog-data.js"></script>
   <script>
@@ -792,8 +833,29 @@
     const DATA = window.SWISS_CATALOG_DATA;
     const PI_DATA = window.PAPER_INK_COMPONENT_DATA || { componentCss: '', entries: [] };
     const MODAL_TRANSITION_MS = 180;
+    const PREVIEW_PARAMS = new URLSearchParams(window.location.search);
     const THEME_ID = window.WISE_PPT_GALLERY_THEME || 'paper-ink';
+    const EMPHASIS_MODE = PREVIEW_PARAMS.get('emphasis') === 'accent' ? 'accent' : 'none';
     document.documentElement.dataset.theme = THEME_ID;
+    document.documentElement.classList.toggle('accent', EMPHASIS_MODE === 'accent');
+    // taxonomyEmbed：统一语义画册把本页嵌入为组件预览帧。file:// 下父页面
+    // 无法跨源注入样式（DOM 访问被浏览器拦截），嵌入外壳必须由本页自己应用；
+    // 规则与 gallery/taxonomy/app.js 的同名注入保持一致（同 id，父页面检测到
+    // 已存在即跳过，不会重复注入）。
+    if (PREVIEW_PARAMS.get('taxonomyEmbed')) {
+      const embedStyle = document.createElement('style');
+      embedStyle.id = 'taxonomy-embed-style';
+      embedStyle.textContent = [
+        'html, body, .shell, #detailView, .detail-panel, .detail-panel-body, .detail-preview { width: 100% !important; height: 100% !important; max-width: none !important; }',
+        'html, body { overflow: hidden !important; }',
+        '.shell { margin: 0 !important; padding: 0 !important; }',
+        '.detail-view { padding: 0 !important; overflow: hidden !important; }',
+        '.detail-panel { margin: 0 !important; border: 0 !important; border-radius: 0 !important; }',
+        '.detail-panel-body[data-view-panel="preview"] { display: block !important; }',
+        '.detail-header, .detail-panel-header, .detail-source, .detail-nav, #back-to-top { display: none !important; }'
+      ].join('\n');
+      document.head.appendChild(embedStyle);
+    }
     const ADAPTERS = window.WisePPTThemeAdapters || {};
     const ATLAS_ADAPTER = ADAPTERS[`${THEME_ID}.atlas`];
     const NATIVE_ADAPTER = ADAPTERS[`${THEME_ID}.native-components`];
@@ -823,6 +885,7 @@
     const THEME_ADAPTER_CSS = [ATLAS_ADAPTER.themeCss, NATIVE_ADAPTER.themeCss].filter(Boolean).join('\n');
     const THEME_COMPONENT_OVERRIDES = ATLAS_ADAPTER.COMPONENT_OVERRIDES || '';
     const entries = DATA.entries.concat(PI_DATA.entries || []);
+    const retiredProductionComponentIds = new Set(['atlas.001.cover']);
 
     // ===== ECharts 组件并入（原独立 echarts 画册已下线，数据/渲染迁移至此） =====
     // 渲染走 echarts-frame.html（src iframe）；静态视觉只取正式 Theme adapter，
@@ -843,24 +906,30 @@
       return source.replace(sourceMarker, targetMarker);
     }
 
+    // 视觉形制族：与生产组件路由一致的主分组；tree/sankey 两个非指标类图表单列。
+    const ECHARTS_GROUP_OVERRIDES = {
+      'echarts.tree-lr': { group: 'hierarchy-structure', groupLabel: '层级与结构' },
+      'echarts.sankey-basic': { group: 'relation-mapping', groupLabel: '关系与映射' },
+      'echarts.geo-choropleth-map': { group: 'relation-mapping', groupLabel: '关系与映射' }
+    };
     const ECHARTS_ENTRIES = ((ECHARTS_DATA && ECHARTS_DATA.components) || []).map((item, index) => ({
       name: item.component_id,
       label: item.name,
       num: ECHARTS_BASE_NUM + index + 1,
       variant: null,
-      group: 'data',
-      groupLabel: '数据/图表',
+      group: (ECHARTS_GROUP_OVERRIDES[item.component_id] || {}).group || 'metric-data',
+      groupLabel: (ECHARTS_GROUP_OVERRIDES[item.component_id] || {}).groupLabel || '指标与数据',
       routeGroup: 'echarts',
       description: [item.selection_notes, ...(item.aliases || [])].filter(Boolean).join(' '),
       source: { name: 'Apache ECharts 官方示例', label: 'ECharts 参考', url: item.source_url },
       echartsId: item.component_id,
       echartsSource: bindEchartsThemeSource(item),
-      frame: { width: 600, height: 600, fit: 'fixed' }
+      frame: item.preview_frame || { width: 600, height: 600, fit: 'fixed' }
     }));
     entries.push(...ECHARTS_ENTRIES);
 
     function echartsFrameUrl(entry, mode) {
-      return `./echarts-frame.html?id=${encodeURIComponent(entry.echartsId)}&theme=${THEME_ID}&mode=${mode}&motion=${state.motion ? '1' : '0'}`;
+      return `./echarts-frame.html?id=${encodeURIComponent(entry.echartsId)}&theme=${THEME_ID}&emphasis=${EMPHASIS_MODE}&mode=${mode}&motion=${state.motion ? '1' : '0'}`;
     }
 
     function slugComponentPart(value) {
@@ -888,10 +957,19 @@
       componentIdCounts.set(baseId, count + 1);
       entry.componentId = count > 0 ? `${baseId}-${entry.num}` : baseId;
     });
+    for (let index = entries.length - 1; index >= 0; index -= 1) {
+      const entry = entries[index];
+      const productionId = entry.routeGroup === 'echarts'
+        ? entry.echartsId
+        : entry.num <= 61
+          ? `atlas.${String(entry.num).padStart(3, '0')}.${entry.name}${entry.variant ? `.${entry.variant}` : ''}`
+          : null;
+      if (retiredProductionComponentIds.has(productionId)) entries.splice(index, 1);
+    }
     const entriesByComponentId = new Map(entries.map(entry => [entry.componentId, entry]));
 
-    // Category order — 既有五组固定顺序，其后动态追加新组（如 ECharts 图表）
-    const GROUP_ORDER = ['内容/排版', '对比/评估', '流程/时序', '结构/关系', '数据/图表'];
+    // Category order — 七个视觉形制族固定顺序，其后动态追加新组
+    const GROUP_ORDER = ['证据与媒体', '指标与数据', '流程与时序', '对比与对照', '层级与结构', '关系与映射', '文档与文本'];
     const CAT_ORDER = GROUP_ORDER.filter(g => entries.some(e => e.groupLabel === g))
       .concat([...new Set(entries.map(e => e.groupLabel))].filter(g => g && !GROUP_ORDER.includes(g)));
 
@@ -959,6 +1037,26 @@
         event.preventDefault();
       });
     }
+
+    function switchTheme(nextTheme) {
+      if (!['paper-ink', 'swiss'].includes(nextTheme) || nextTheme === THEME_ID) return;
+      const url = new URL(window.location.href);
+      url.searchParams.set('theme', nextTheme);
+      url.searchParams.delete('style');
+      window.location.assign(url.toString());
+    }
+
+    const themeSwitchButtons = [...document.querySelectorAll('[data-theme-value]')];
+    themeSwitchButtons.forEach(button => {
+      const isActive = button.dataset.themeValue === THEME_ID;
+      button.setAttribute('aria-pressed', String(isActive));
+      button.addEventListener('click', () => switchTheme(button.dataset.themeValue));
+      button.addEventListener('keydown', event => {
+        if (!['ArrowLeft', 'ArrowRight'].includes(event.key)) return;
+        event.preventDefault();
+        switchTheme(event.key === 'ArrowLeft' ? 'paper-ink' : 'swiss');
+      });
+    });
 
     // ===== Helpers =====
     function esc(s) {
@@ -1194,7 +1292,7 @@
         ? entry.snippet
         : adaptComponentMarkup(entry.snippet);
       return `<!DOCTYPE html>
-<html lang="zh-CN" data-theme="${THEME_ID}">
+<html lang="zh-CN" data-theme="${THEME_ID}" class="${EMPHASIS_MODE === 'accent' ? 'accent' : ''}">
 <head>
   <meta charset="UTF-8">
   <link rel="stylesheet" href="./source-han.css?v=1">
@@ -1231,7 +1329,7 @@
       overflow: hidden;
     }
     body[data-preview-mode="detail"] .component-shell {
-      max-width: min(86vw, 640px);
+      max-width: min(96vw, 640px);
       padding: 0;
       overflow: visible;
     }
@@ -1269,6 +1367,10 @@
     ${state.motion ? COMPONENT_MOTION_CSS : ''}
     ${state.motion ? PI_MOTION_CSS : ''}
     ${THEME_COMPONENT_OVERRIDES}
+    /* 057/058 的 vendored SVG 是静态占位坐标。首帧先完成真实几何同步，
+       再一次性显示节点与连线，避免旧线条短暂闪现后跳位。 */
+    .swiss-card .mind-map:not([data-connectors-ready="true"]) { visibility: hidden !important; }
+    .swiss-card .mind-map[data-connectors-ready="true"] { visibility: visible !important; }
   </style>
 </head>
 <body data-preview-mode="${mode}"${entry && entry.paperInkNative ? ' data-pi-native' : ''}>
@@ -1322,8 +1424,9 @@
     }
 
     // ===== 统一尺寸契约 =====
-    // 组件声明固有画布（entry.frame），容器只做 contain-fit：
-    // scale = min(容器宽 / frame.width, 容器高 / frame.height, 1)，居中、不放大。
+    // 组件声明固有画布（entry.frame），容器做等比 contain-fit。
+    // 生产 slot 默认不放大；taxonomy 审阅壳可显式传 previewScale=fill，
+    // 让同一矢量/HTML 组件充分利用审阅画布，不改变导出尺寸合同。
     // vendored atlas 不可逐字节改动，非 600×600 的固有画布在此覆盖（键：name/variant 或 name）。
     const FRAME_OVERRIDES = {
       'process/wrapped': { width: 744, height: 600, fit: 'fixed' }
@@ -1348,7 +1451,12 @@
       if (!frame || !box) return;
       const containerW = box.offsetWidth || frame.width;
       const containerH = box.offsetHeight || frame.height;
-      const scale = Math.min(containerW / frame.width, containerH / frame.height, 1);
+      const allowPreviewUpscale = PREVIEW_PARAMS.get('previewScale') === 'fill';
+      const scale = Math.min(
+        containerW / frame.width,
+        containerH / frame.height,
+        allowPreviewUpscale ? Number.POSITIVE_INFINITY : 1
+      );
       iframe.style.transform = `scale(${scale})`;
     }
 
@@ -1560,17 +1668,18 @@
               appendLine(svg, subSpineX, subNodeRect.centerY, subNodeRect.left, subNodeRect.centerY);
             });
           });
-          return;
+        } else {
+          const firstNodeRect = branchNodes[0].nodeRect;
+          const lastNodeRect = branchNodes[branchNodes.length - 1].nodeRect;
+          const spineY = branchesRect.top;
+          appendLine(svg, rootRect.centerX, rootRect.bottom, rootRect.centerX, spineY);
+          appendLine(svg, firstNodeRect.centerX, spineY, lastNodeRect.centerX, spineY);
+          branchNodes.forEach(({ nodeRect }) => {
+            appendLine(svg, nodeRect.centerX, spineY, nodeRect.centerX, nodeRect.top);
+          });
         }
 
-        const firstNodeRect = branchNodes[0].nodeRect;
-        const lastNodeRect = branchNodes[branchNodes.length - 1].nodeRect;
-        const spineY = branchesRect.top;
-        appendLine(svg, rootRect.centerX, rootRect.bottom, rootRect.centerX, spineY);
-        appendLine(svg, firstNodeRect.centerX, spineY, lastNodeRect.centerX, spineY);
-        branchNodes.forEach(({ nodeRect }) => {
-          appendLine(svg, nodeRect.centerX, spineY, nodeRect.centerX, nodeRect.top);
-        });
+        mm.setAttribute('data-connectors-ready', 'true');
       });
     }
 
@@ -1597,11 +1706,13 @@
     }
     // 7 visually distinct icons — one per group
     const ICON_PATHS = {
-      '流程/时序': '<line x1="6" y1="3" x2="6" y2="15"/><circle cx="18" cy="6" r="3"/><circle cx="6" cy="18" r="3"/><path d="M18 9a9 9 0 01-9 9"/>',
-      '关系/结构': '<circle cx="12" cy="5" r="3"/><circle cx="5" cy="19" r="3"/><circle cx="19" cy="19" r="3"/><line x1="12" y1="8" x2="5" y2="16"/><line x1="12" y1="8" x2="19" y2="16"/>',
-      '对比/评估': '<rect x="3" y="3" width="7" height="18" rx="1"/><rect x="14" y="3" width="7" height="18" rx="1"/>',
-      '内容/排版': '<rect x="8" y="8" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/>',
-      '数据/可视化': '<line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/>',
+      '流程与时序': '<line x1="6" y1="3" x2="6" y2="15"/><circle cx="18" cy="6" r="3"/><circle cx="6" cy="18" r="3"/><path d="M18 9a9 9 0 01-9 9"/>',
+      '层级与结构': '<circle cx="12" cy="5" r="3"/><circle cx="5" cy="19" r="3"/><circle cx="19" cy="19" r="3"/><line x1="12" y1="8" x2="5" y2="16"/><line x1="12" y1="8" x2="19" y2="16"/>',
+      '对比与对照': '<rect x="3" y="3" width="7" height="18" rx="1"/><rect x="14" y="3" width="7" height="18" rx="1"/>',
+      '文档与文本': '<rect x="8" y="8" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/>',
+      '指标与数据': '<line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/>',
+      '证据与媒体': '<rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/>',
+      '关系与映射': '<circle cx="9" cy="12" r="6"/><circle cx="15" cy="12" r="6"/>',
     };
     const DEFAULT_ICON_PATH = '<rect x="8" y="8" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/>';
 
@@ -1659,8 +1770,9 @@
       pageItems.forEach(entry => {
         const cardKey = getCardKey(entry);
         const displayLabel = esc(entry.label);
+        const previewFrame = resolveEntryFrame(entry);
         html += `<div class="thumb-card" data-num="${entry.num}" data-card-key="${esc(cardKey)}">
-          <div class="thumb-preview" data-num="${entry.num}"></div>
+          <div class="thumb-preview" data-num="${entry.num}" style="aspect-ratio:${previewFrame.width} / ${previewFrame.height}"></div>
           <div class="thumb-label">
             <span class="thumb-name">${displayLabel}</span>
           </div>
@@ -1796,15 +1908,18 @@
       const previewBox = document.getElementById('detailPreviewBox');
       const previewPanel = document.getElementById('previewPanel');
       bindMotionSelects(detailViewEl);
-      // Swiss 内容允许 overflow:visible（venn 等），详情画布四周留呼吸边距；
-      // 纸墨原生卡 overflow:hidden，不需要边距
+      // 仅 Swiss Atlas 内容保留 overflow:visible 的呼吸边距（venn 等）；
+      // Paper Ink Atlas 已由 adapter 收敛到固有画布，不能再额外缩小有效内容区。
       const frame = resolveEntryFrame(entry);
-      const edge = entry.paperInkNative ? 0 : 50;
+      const edge = THEME_ID === 'swiss' && !entry.paperInkNative ? 50 : 0;
       const canvas = { width: frame.width + edge * 2, height: frame.height + edge * 2 };
       const iframe = createFramedIframe(canvas);
       iframe.addEventListener('load', () => {
         syncMindMapConnectors(iframe.contentDocument);
         growFrameFromContent(iframe, previewBox);
+        requestAnimationFrame(() => {
+          requestAnimationFrame(() => notifyParentComponentReady(entry));
+        });
       });
       if (entry.echartsId) iframe.src = echartsFrameUrl(entry, 'detail');
       else iframe.srcdoc = previewDoc;
@@ -1929,6 +2044,17 @@
         window.parent.postMessage({
           type: 'html-ppt-components-route',
           component: component || ''
+        }, '*');
+      } catch (err) {}
+    }
+
+    function notifyParentComponentReady(entry) {
+      if (window.parent === window || !entry || !entry.componentId) return;
+      const expectedComponent = PREVIEW_PARAMS.get('taxonomyExpected');
+      try {
+        window.parent.postMessage({
+          type: 'html-ppt-components-ready',
+          component: expectedComponent || entry.componentId
         }, '*');
       } catch (err) {}
     }
@@ -2076,9 +2202,13 @@
       frameRefitTimer = setTimeout(() => {
         gridViewEl.querySelectorAll('.thumb-preview iframe').forEach(iframe => {
           fitIframeToBox(iframe, iframe.parentElement);
+          syncMindMapConnectors(iframe.contentDocument);
         });
         const detailIframe = document.querySelector('#detailPreviewBox iframe');
-        if (detailIframe) fitIframeToBox(detailIframe, detailIframe.parentElement);
+        if (detailIframe) {
+          fitIframeToBox(detailIframe, detailIframe.parentElement);
+          syncMindMapConnectors(detailIframe.contentDocument);
+        }
       }, 120);
     });
 

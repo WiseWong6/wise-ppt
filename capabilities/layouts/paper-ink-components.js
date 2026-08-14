@@ -11,7 +11,7 @@
  * - entry.frame 声明固有画布 {width, height, fit}：图册与 deck 导出统一按
  *   contain-fit 规则（scale = min(容器宽/w, 容器高/h, 1)）适配，新增组件必须声明。
  * - 每个 entry 以行内注释标记出处样张（自有组件，详情页不展示来源行）。
- * - snippet 统一包一层 .pi-card（600×600 构图），SVG 用 viewBox 缩放；
+ * - snippet 统一包一层 .pi-card（默认 600×600；横向组件按 entry.frame 声明固有宽度），SVG 用 viewBox 缩放；
  *   字体/墨色一律引用 componentCss 里的 --pi-* 变量，遵守纸墨线稿纪律
  *   （线条 ≤1.6px、墨色层级、mono 标注）。
  */
@@ -52,7 +52,225 @@ window.PAPER_INK_COMPONENT_DATA = {
   width: 100%;
   height: auto;
 }
-.pi-card text { user-select: none; }`,
+.pi-card text { user-select: none; }
+.pi-metric-strip {
+  box-sizing: border-box;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  align-items: stretch;
+  width: 1050px;
+  min-height: 140px;
+  border-top: 1.3px solid var(--pi-ink-80);
+  border-bottom: .6px solid color-mix(in srgb, var(--pi-ink) 30%, transparent);
+}
+.pi-metric-strip [data-repeat-unit="metric"] {
+  box-sizing: border-box;
+  display: grid;
+  align-content: center;
+  justify-items: center;
+  min-width: 0;
+  padding: 14px 22px 12px;
+  text-align: center;
+}
+.pi-metric-strip [data-repeat-unit="metric"] + [data-repeat-unit="metric"] {
+  border-left: .6px solid color-mix(in srgb, var(--pi-ink) 30%, transparent);
+}
+.pi-metric-strip .pi-metric-value {
+  font-family: var(--pi-serif);
+  font-size: 42px;
+  font-weight: 400;
+  line-height: 1;
+}
+.pi-metric-strip .pi-metric-label {
+  margin-top: 10px;
+  font-family: var(--pi-sans);
+  font-size: 13px;
+  font-weight: 300;
+  line-height: 1.2;
+}
+.pi-metric-strip .pi-metric-code {
+  margin-top: 6px;
+  color: var(--pi-ink-45);
+  font-family: var(--pi-mono);
+  font-size: 9px;
+  letter-spacing: 2px;
+  line-height: 1.1;
+}
+.pi-pain-list {
+  box-sizing: border-box;
+  display: grid;
+  grid-template-rows: auto 1fr;
+  width: 440px;
+  min-height: 650px;
+  padding: 22px 20px 18px;
+}
+.pi-pain-list-head {
+  padding-bottom: 22px;
+  border-bottom: .8px solid color-mix(in srgb, var(--pi-ink) 34%, transparent);
+}
+.pi-pain-list-kicker,
+.pi-pipeline-kicker,
+.pi-infra-kicker {
+  color: var(--pi-ink-45);
+  font-family: var(--pi-mono);
+  font-size: 9px;
+  letter-spacing: 2.6px;
+}
+.pi-pain-list-title,
+.pi-pipeline-title {
+  margin-top: 15px;
+  font-family: var(--pi-sans);
+  font-size: 21px;
+  font-weight: 300;
+  letter-spacing: .4px;
+}
+.pi-pain-list-items {
+  display: grid;
+  align-content: stretch;
+  grid-auto-rows: 1fr;
+}
+.pi-pain-list [data-repeat-unit="cause"] {
+  box-sizing: border-box;
+  display: grid;
+  grid-template-columns: 78px minmax(0, 1fr);
+  align-content: center;
+  gap: 18px;
+  min-height: 0;
+  padding: 18px 0;
+  border-bottom: .6px dashed color-mix(in srgb, var(--pi-ink) 24%, transparent);
+}
+.pi-pain-list [data-repeat-unit="cause"]:last-child { border-bottom: 0; }
+.pi-cause-marker {
+  box-sizing: border-box;
+  display: grid;
+  place-items: center;
+  width: 64px;
+  height: 50px;
+  border: 1px solid var(--pi-ink-70);
+  color: var(--pi-ink-45);
+  font-family: var(--pi-mono);
+  font-size: 8px;
+  letter-spacing: 1.3px;
+  text-align: center;
+}
+.pi-cause-title {
+  display: block;
+  font-family: var(--pi-sans);
+  font-size: 17px;
+  font-weight: 300;
+  line-height: 1.25;
+}
+.pi-cause-detail {
+  display: block;
+  margin-top: 9px;
+  color: var(--pi-ink-60);
+  font-family: var(--pi-sans);
+  font-size: 12px;
+  font-weight: 300;
+  line-height: 1.7;
+}
+.pi-pipeline-strip {
+  box-sizing: border-box;
+  display: grid;
+  grid-template-rows: auto 1fr;
+  width: 1050px;
+  min-height: 260px;
+  padding: 18px 0 12px;
+  border-bottom: .8px solid color-mix(in srgb, var(--pi-ink) 32%, transparent);
+}
+.pi-pipeline-head { padding-bottom: 16px; }
+.pi-pipeline-title { margin-top: 10px; }
+.pi-pipeline-steps {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+  align-items: stretch;
+}
+.pi-pipeline-strip [data-repeat-unit="step"] {
+  box-sizing: border-box;
+  display: grid;
+  align-content: center;
+  justify-items: center;
+  min-width: 0;
+  padding: 12px 16px 8px;
+  position: relative;
+  text-align: center;
+}
+.pi-pipeline-strip [data-repeat-unit="step"]:not(:last-child)::after {
+  content: '›';
+  position: absolute;
+  top: 42%;
+  right: -4px;
+  color: var(--pi-ink-30);
+  font-family: var(--pi-serif);
+  font-size: 25px;
+  line-height: 1;
+}
+.pi-step-index {
+  display: grid;
+  place-items: center;
+  width: 34px;
+  height: 34px;
+  border: 1px solid var(--pi-ink-70);
+  font-family: var(--pi-mono);
+  font-size: 9px;
+}
+.pi-step-title {
+  display: block;
+  margin-top: 16px;
+  font-family: var(--pi-sans);
+  font-size: 14px;
+  font-weight: 300;
+  line-height: 1.2;
+}
+.pi-step-code {
+  display: block;
+  margin-top: 7px;
+  color: var(--pi-ink-45);
+  font-family: var(--pi-mono);
+  font-size: 8px;
+  letter-spacing: 1.5px;
+}
+.pi-infra-strip {
+  box-sizing: border-box;
+  display: grid;
+  grid-template-rows: 26px 1fr;
+  width: 1050px;
+  min-height: 140px;
+  padding: 12px 18px 14px;
+  border: 1px dashed var(--pi-ink-45);
+}
+.pi-infra-items {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(135px, 1fr));
+  gap: 12px;
+  align-items: stretch;
+}
+.pi-infra-strip [data-repeat-unit="item"] {
+  box-sizing: border-box;
+  display: grid;
+  grid-template-columns: 24px minmax(0, 1fr);
+  align-items: center;
+  min-width: 0;
+  padding: 8px 12px;
+  border: .8px dashed color-mix(in srgb, var(--pi-ink) 52%, transparent);
+  background: color-mix(in srgb, var(--pi-paper-panel) 52%, transparent);
+}
+.pi-infra-code {
+  color: var(--pi-ink-45);
+  font-family: var(--pi-mono);
+  font-size: 8px;
+  letter-spacing: .8px;
+}
+.pi-infra-label {
+  min-width: 0;
+  overflow: hidden;
+  color: var(--pi-ink-70);
+  font-family: var(--pi-sans);
+  font-size: 11px;
+  font-weight: 300;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}`,
   /* 动效层（图册「动态」模式与导出时注入；纯 CSS：入场播一次 + 可选持续微动效）
    * 与 atlas componentMotionCss 同一设计语言：分带交错入场；SVG 坐标系内不做
    * 位移动画（避免错位），HTML 列表行用 translate 属性上浮（与 position 无关）。 */
@@ -2101,113 +2319,55 @@ window.PAPER_INK_COMPONENT_DATA = {
     name: 'profile-card',
     group: 'evidence-media',
     groupLabel: '证据与媒体',
-    description: 'Parallel double-framed persona cards with avatar placeholder and key-value attribute rows.',
+    description: 'One independently replaceable portrait profile record in the original C3 tall-card proportions.',
     label: '人物画像卡',
     num: 84,
     variant: null,
     paperInkNative: true,
-    frame: { width: 600, height: 600, fit: 'fixed' },
-    /* 出自样张 layout-c3.html（C3 顶图卡列阵：三卡等宽并列，卡内 图区→角标→卡题→履历→底脚） */
-    snippet: `<div class="pi-card">
-<svg class="pi-art" viewBox="0 0 600 600" xmlns="http://www.w3.org/2000/svg">
+    frame: { width: 500, height: 660, fit: 'fixed' },
+    dataContract: { mode: 'record', unit: 'profile', pointer: '/structured_data/profile', minItems: 1, maxItems: 1 },
+    /* 出自样张 layout-c3.html；单卡自然边界 500×660，C3 由 split-x-3 的三个叶槽各绑定一次 */
+    snippet: `<div class="pi-card" style="width:500px!important;min-height:660px!important">
+<svg class="pi-art" viewBox="0 0 500 660" xmlns="http://www.w3.org/2000/svg">
   <defs>
     <pattern id="pi-hatch-pc" width="8" height="8" patternTransform="rotate(45)" patternUnits="userSpaceOnUse">
-      <line x1="0" y1="0" x2="0" y2="8" stroke="var(--pi-ink)" stroke-width=".7" opacity=".35"/>
+      <line x1="0" y1="0" x2="0" y2="8" stroke="var(--pi-ink)" stroke-width=".7" opacity=".32"/>
     </pattern>
   </defs>
 
-  <!-- 卡一 · 个人用户 -->
-  <rect x="30" y="36" width="168" height="528" fill="var(--pi-paper-panel)" stroke="var(--pi-ink-80)" stroke-width="1.3"/>
-  <rect x="34" y="40" width="160" height="520" fill="none" stroke="var(--pi-ink)" stroke-width=".6" opacity=".3"/>
-  <circle cx="114" cy="140" r="34" fill="url(#pi-hatch-pc)" stroke="var(--pi-ink-80)" stroke-width="1.1"/>
-  <circle cx="114" cy="132" r="11" fill="var(--pi-paper)" stroke="var(--pi-ink-80)" stroke-width="1"/>
-  <path d="M 92 166 A 22 22 0 0 1 136 166" fill="var(--pi-paper)" stroke="var(--pi-ink-80)" stroke-width="1"/>
-  <text x="114" y="196" font-family="var(--pi-mono)" font-size="7.5" letter-spacing="2" text-anchor="middle" fill="var(--pi-ink-45)">PERSONA · DAILY USE</text>
-  <line x1="46" y1="216" x2="182" y2="216" stroke="var(--pi-ink)" stroke-width=".8" opacity=".5"/>
-  <line x1="46" y1="219" x2="82" y2="219" stroke="var(--pi-ink)" stroke-width=".6" opacity=".25"/>
-  <text x="46" y="240" font-family="var(--pi-mono)" font-size="8" letter-spacing="1.5" fill="var(--pi-ink-45)">USER 01</text>
-  <text x="182" y="240" font-family="var(--pi-mono)" font-size="8" letter-spacing="1.5" text-anchor="end" fill="var(--pi-ink-45)">PERSONAL</text>
-  <text x="46" y="268" font-family="var(--pi-sans)" font-weight="300" font-size="12.5" fill="var(--pi-ink)">个人用户 · 随手记录</text>
-  <line x1="46" y1="282" x2="182" y2="282" stroke="var(--pi-ink)" stroke-width=".8" opacity=".5"/>
-  <circle cx="52" cy="304" r="2.6" fill="none" stroke="var(--pi-ink)" stroke-width=".9" opacity=".8"/><circle cx="52" cy="304" r=".9" fill="var(--pi-ink)"/>
-  <text x="64" y="308" font-family="var(--pi-sans)" font-weight="300" font-size="10.5" fill="var(--pi-ink)">核心目标</text>
-  <text x="182" y="307" font-family="var(--pi-mono)" font-size="8" letter-spacing=".5" text-anchor="end" fill="var(--pi-ink-55)">快速记下</text>
-  <line x1="46" y1="324" x2="182" y2="324" stroke="var(--pi-ink)" stroke-width=".6" opacity=".22"/>
-  <circle cx="52" cy="336" r="2.6" fill="none" stroke="var(--pi-ink)" stroke-width=".9" opacity=".8"/><circle cx="52" cy="336" r=".9" fill="var(--pi-ink)"/>
-  <text x="64" y="340" font-family="var(--pi-sans)" font-weight="300" font-size="10.5" fill="var(--pi-ink)">使用频率</text>
-  <text x="182" y="339" font-family="var(--pi-mono)" font-size="8" letter-spacing=".5" text-anchor="end" fill="var(--pi-ink-55)">4 DAYS/WK</text>
-  <line x1="46" y1="356" x2="182" y2="356" stroke="var(--pi-ink)" stroke-width=".6" opacity=".22"/>
-  <circle cx="52" cy="368" r="2.6" fill="none" stroke="var(--pi-ink)" stroke-width=".9" opacity=".8"/><circle cx="52" cy="368" r=".9" fill="var(--pi-ink)"/>
-  <text x="64" y="372" font-family="var(--pi-sans)" font-weight="300" font-size="10.5" fill="var(--pi-ink)">完成时间</text>
-  <text x="182" y="371" font-family="var(--pi-mono)" font-size="8" letter-spacing=".5" text-anchor="end" fill="var(--pi-ink-55)">3 MIN</text>
-  <line x1="46" y1="388" x2="182" y2="388" stroke="var(--pi-ink)" stroke-width=".6" opacity=".22"/>
-  <circle cx="52" cy="400" r="2.6" fill="none" stroke="var(--pi-ink)" stroke-width=".9" opacity=".8"/><circle cx="52" cy="400" r=".9" fill="var(--pi-ink)"/>
-  <text x="64" y="404" font-family="var(--pi-sans)" font-weight="300" font-size="10.5" fill="var(--pi-ink)">常用方式</text>
-  <text x="182" y="403" font-family="var(--pi-mono)" font-size="8" letter-spacing=".5" text-anchor="end" fill="var(--pi-ink-55)">QUICK TMPL</text>
-  <line x1="46" y1="488" x2="182" y2="488" stroke="var(--pi-ink)" stroke-width=".6" opacity=".25"/>
-  <text x="46" y="508" font-family="var(--pi-mono)" font-size="8" letter-spacing="1.5" fill="var(--pi-ink-45)">PERSONA P-01 · SAMPLE</text>
+  <!-- 单张画像卡；实例数量由 topology 叶槽数决定 -->
+  <g data-bind-root="record" data-profile-card="record" transform="scale(1.2690355)">
+    <rect x="15" y="24" width="364" height="472" fill="var(--pi-paper-panel)" stroke="var(--pi-ink-80)" stroke-width="1.3"/>
+    <rect x="19" y="28" width="356" height="464" fill="none" stroke="var(--pi-ink)" stroke-width=".6" opacity=".3"/>
+    <circle cx="197" cy="94" r="34" fill="url(#pi-hatch-pc)" stroke="var(--pi-ink-80)" stroke-width="1.1"/>
+    <circle cx="197" cy="86" r="10" fill="var(--pi-paper)" stroke="var(--pi-ink-80)" stroke-width="1"/>
+    <path d="M 176 124 A 21 21 0 0 1 218 124" fill="var(--pi-paper)" stroke="var(--pi-ink-80)" stroke-width="1"/>
+    <text data-field="illustration_label" x="197" y="146" font-family="var(--pi-mono)" font-size="8" letter-spacing="2" text-anchor="middle" fill="var(--pi-ink-45)">PERSONA · DAILY USE</text>
+    <line x1="35" y1="164" x2="359" y2="164" stroke="var(--pi-ink)" stroke-width=".8" opacity=".5"/>
+    <line x1="35" y1="168" x2="127" y2="168" stroke="var(--pi-ink)" stroke-width=".6" opacity=".25"/>
+    <text data-field="tag" x="35" y="190" font-family="var(--pi-mono)" font-size="8.5" letter-spacing="1.5" fill="var(--pi-ink-45)">USER 01</text>
+    <text data-field="role" x="359" y="190" font-family="var(--pi-mono)" font-size="8.5" letter-spacing="1.5" text-anchor="end" fill="var(--pi-ink-45)">PERSONAL</text>
+    <text data-field="name" x="35" y="218" font-family="var(--pi-sans)" font-weight="300" font-size="15" fill="var(--pi-ink)">个人用户 · 随手记录</text>
+    <line x1="35" y1="234" x2="359" y2="234" stroke="var(--pi-ink)" stroke-width=".8" opacity=".5"/>
+    <circle cx="43" cy="263" r="2.8" fill="none" stroke="var(--pi-ink)" stroke-width=".9" opacity=".8"/><circle cx="43" cy="263" r=".9" fill="var(--pi-ink)"/>
+    <text data-field="attribute_1_label" x="57" y="267" font-family="var(--pi-sans)" font-weight="300" font-size="11.5" fill="var(--pi-ink)">核心目标</text>
+    <text data-field="attribute_1_value" x="359" y="266" font-family="var(--pi-mono)" font-size="9" letter-spacing=".6" text-anchor="end" fill="var(--pi-ink-55)">快速记下</text>
+    <line x1="35" y1="282" x2="359" y2="282" stroke="var(--pi-ink)" stroke-width=".6" opacity=".22"/>
+    <circle cx="43" cy="307" r="2.8" fill="none" stroke="var(--pi-ink)" stroke-width=".9" opacity=".8"/><circle cx="43" cy="307" r=".9" fill="var(--pi-ink)"/>
+    <text data-field="attribute_2_label" x="57" y="311" font-family="var(--pi-sans)" font-weight="300" font-size="11.5" fill="var(--pi-ink)">使用频率</text>
+    <text data-field="attribute_2_value" x="359" y="310" font-family="var(--pi-mono)" font-size="9" letter-spacing=".6" text-anchor="end" fill="var(--pi-ink-55)">4 DAYS / WK</text>
+    <line x1="35" y1="326" x2="359" y2="326" stroke="var(--pi-ink)" stroke-width=".6" opacity=".22"/>
+    <circle cx="43" cy="351" r="2.8" fill="none" stroke="var(--pi-ink)" stroke-width=".9" opacity=".8"/><circle cx="43" cy="351" r=".9" fill="var(--pi-ink)"/>
+    <text data-field="attribute_3_label" x="57" y="355" font-family="var(--pi-sans)" font-weight="300" font-size="11.5" fill="var(--pi-ink)">完成时间</text>
+    <text data-field="attribute_3_value" x="359" y="354" font-family="var(--pi-mono)" font-size="9" letter-spacing=".6" text-anchor="end" fill="var(--pi-ink-55)">3 MIN</text>
+    <line x1="35" y1="370" x2="359" y2="370" stroke="var(--pi-ink)" stroke-width=".6" opacity=".22"/>
+    <circle cx="43" cy="395" r="2.8" fill="none" stroke="var(--pi-ink)" stroke-width=".9" opacity=".8"/><circle cx="43" cy="395" r=".9" fill="var(--pi-ink)"/>
+    <text data-field="attribute_4_label" x="57" y="399" font-family="var(--pi-sans)" font-weight="300" font-size="11.5" fill="var(--pi-ink)">常用方式</text>
+    <text data-field="attribute_4_value" x="359" y="398" font-family="var(--pi-mono)" font-size="9" letter-spacing=".6" text-anchor="end" fill="var(--pi-ink-55)">QUICK TEMPLATE</text>
+    <line x1="35" y1="450" x2="359" y2="450" stroke="var(--pi-ink)" stroke-width=".6" opacity=".25"/>
+    <text data-field="footnote" x="35" y="474" font-family="var(--pi-mono)" font-size="8" letter-spacing="1.5" fill="var(--pi-ink-45)">PERSONA P-01 · SAMPLE</text>
+  </g>
 
-  <!-- 卡二 · 团队用户 -->
-  <rect x="216" y="36" width="168" height="528" fill="var(--pi-paper-panel)" stroke="var(--pi-ink-80)" stroke-width="1.3"/>
-  <rect x="220" y="40" width="160" height="520" fill="none" stroke="var(--pi-ink)" stroke-width=".6" opacity=".3"/>
-  <circle cx="300" cy="140" r="34" fill="url(#pi-hatch-pc)" stroke="var(--pi-ink-80)" stroke-width="1.1"/>
-  <circle cx="300" cy="132" r="11" fill="var(--pi-paper)" stroke="var(--pi-ink-80)" stroke-width="1"/>
-  <path d="M 278 166 A 22 22 0 0 1 322 166" fill="var(--pi-paper)" stroke="var(--pi-ink-80)" stroke-width="1"/>
-  <text x="300" y="196" font-family="var(--pi-mono)" font-size="7.5" letter-spacing="2" text-anchor="middle" fill="var(--pi-ink-45)">PERSONA · TEAM USE</text>
-  <line x1="232" y1="216" x2="368" y2="216" stroke="var(--pi-ink)" stroke-width=".8" opacity=".5"/>
-  <line x1="232" y1="219" x2="268" y2="219" stroke="var(--pi-ink)" stroke-width=".6" opacity=".25"/>
-  <text x="232" y="240" font-family="var(--pi-mono)" font-size="8" letter-spacing="1.5" fill="var(--pi-ink-45)">USER 02</text>
-  <text x="368" y="240" font-family="var(--pi-mono)" font-size="8" letter-spacing="1.5" text-anchor="end" fill="var(--pi-ink-45)">TEAM</text>
-  <text x="232" y="268" font-family="var(--pi-sans)" font-weight="300" font-size="12.5" fill="var(--pi-ink)">团队用户 · 协同推进</text>
-  <line x1="232" y1="282" x2="368" y2="282" stroke="var(--pi-ink)" stroke-width=".8" opacity=".5"/>
-  <circle cx="238" cy="304" r="2.6" fill="none" stroke="var(--pi-ink)" stroke-width=".9" opacity=".8"/><circle cx="238" cy="304" r=".9" fill="var(--pi-ink)"/>
-  <text x="250" y="308" font-family="var(--pi-sans)" font-weight="300" font-size="10.5" fill="var(--pi-ink)">核心目标</text>
-  <text x="368" y="307" font-family="var(--pi-mono)" font-size="8" letter-spacing=".5" text-anchor="end" fill="var(--pi-ink-55)">一起完成</text>
-  <line x1="232" y1="324" x2="368" y2="324" stroke="var(--pi-ink)" stroke-width=".6" opacity=".22"/>
-  <circle cx="238" cy="336" r="2.6" fill="none" stroke="var(--pi-ink)" stroke-width=".9" opacity=".8"/><circle cx="238" cy="336" r=".9" fill="var(--pi-ink)"/>
-  <text x="250" y="340" font-family="var(--pi-sans)" font-weight="300" font-size="10.5" fill="var(--pi-ink)">使用频率</text>
-  <text x="368" y="339" font-family="var(--pi-mono)" font-size="8" letter-spacing=".5" text-anchor="end" fill="var(--pi-ink-55)">5 DAYS/WK</text>
-  <line x1="232" y1="356" x2="368" y2="356" stroke="var(--pi-ink)" stroke-width=".6" opacity=".22"/>
-  <circle cx="238" cy="368" r="2.6" fill="none" stroke="var(--pi-ink)" stroke-width=".9" opacity=".8"/><circle cx="238" cy="368" r=".9" fill="var(--pi-ink)"/>
-  <text x="250" y="372" font-family="var(--pi-sans)" font-weight="300" font-size="10.5" fill="var(--pi-ink)">协作成员</text>
-  <text x="368" y="371" font-family="var(--pi-mono)" font-size="8" letter-spacing=".5" text-anchor="end" fill="var(--pi-ink-55)">6 MEMBERS</text>
-  <line x1="232" y1="388" x2="368" y2="388" stroke="var(--pi-ink)" stroke-width=".6" opacity=".22"/>
-  <circle cx="238" cy="400" r="2.6" fill="none" stroke="var(--pi-ink)" stroke-width=".9" opacity=".8"/><circle cx="238" cy="400" r=".9" fill="var(--pi-ink)"/>
-  <text x="250" y="404" font-family="var(--pi-sans)" font-weight="300" font-size="10.5" fill="var(--pi-ink)">常用提醒</text>
-  <text x="368" y="403" font-family="var(--pi-mono)" font-size="8" letter-spacing=".5" text-anchor="end" fill="var(--pi-ink-55)">WEEKLY PLAN</text>
-  <line x1="232" y1="488" x2="368" y2="488" stroke="var(--pi-ink)" stroke-width=".6" opacity=".25"/>
-  <text x="232" y="508" font-family="var(--pi-mono)" font-size="8" letter-spacing="1.5" fill="var(--pi-ink-45)">PERSONA P-02 · SAMPLE</text>
-
-  <!-- 卡三 · 项目负责人 -->
-  <rect x="402" y="36" width="168" height="528" fill="var(--pi-paper-panel)" stroke="var(--pi-ink-80)" stroke-width="1.3"/>
-  <rect x="406" y="40" width="160" height="520" fill="none" stroke="var(--pi-ink)" stroke-width=".6" opacity=".3"/>
-  <circle cx="486" cy="140" r="34" fill="url(#pi-hatch-pc)" stroke="var(--pi-ink-80)" stroke-width="1.1"/>
-  <circle cx="486" cy="132" r="11" fill="var(--pi-paper)" stroke="var(--pi-ink-80)" stroke-width="1"/>
-  <path d="M 464 166 A 22 22 0 0 1 508 166" fill="var(--pi-paper)" stroke="var(--pi-ink-80)" stroke-width="1"/>
-  <text x="486" y="196" font-family="var(--pi-mono)" font-size="7.5" letter-spacing="2" text-anchor="middle" fill="var(--pi-ink-45)">PERSONA · OVERVIEW</text>
-  <line x1="418" y1="216" x2="554" y2="216" stroke="var(--pi-ink)" stroke-width=".8" opacity=".5"/>
-  <line x1="418" y1="219" x2="454" y2="219" stroke="var(--pi-ink)" stroke-width=".6" opacity=".25"/>
-  <text x="418" y="240" font-family="var(--pi-mono)" font-size="8" letter-spacing="1.5" fill="var(--pi-ink-45)">USER 03</text>
-  <text x="554" y="240" font-family="var(--pi-mono)" font-size="8" letter-spacing="1.5" text-anchor="end" fill="var(--pi-ink-45)">LEAD</text>
-  <text x="418" y="268" font-family="var(--pi-sans)" font-weight="300" font-size="12.5" fill="var(--pi-ink)">负责人 · 进度总览</text>
-  <line x1="418" y1="282" x2="554" y2="282" stroke="var(--pi-ink)" stroke-width=".8" opacity=".5"/>
-  <circle cx="424" cy="304" r="2.6" fill="none" stroke="var(--pi-ink)" stroke-width=".9" opacity=".8"/><circle cx="424" cy="304" r=".9" fill="var(--pi-ink)"/>
-  <text x="436" y="308" font-family="var(--pi-sans)" font-weight="300" font-size="10.5" fill="var(--pi-ink)">核心目标</text>
-  <text x="554" y="307" font-family="var(--pi-mono)" font-size="8" letter-spacing=".5" text-anchor="end" fill="var(--pi-ink-55)">掌握进度</text>
-  <line x1="418" y1="324" x2="554" y2="324" stroke="var(--pi-ink)" stroke-width=".6" opacity=".22"/>
-  <circle cx="424" cy="336" r="2.6" fill="none" stroke="var(--pi-ink)" stroke-width=".9" opacity=".8"/><circle cx="424" cy="336" r=".9" fill="var(--pi-ink)"/>
-  <text x="436" y="340" font-family="var(--pi-sans)" font-weight="300" font-size="10.5" fill="var(--pi-ink)">查看频率</text>
-  <text x="554" y="339" font-family="var(--pi-mono)" font-size="8" letter-spacing=".5" text-anchor="end" fill="var(--pi-ink-55)">2 TIMES/WK</text>
-  <line x1="418" y1="356" x2="554" y2="356" stroke="var(--pi-ink)" stroke-width=".6" opacity=".22"/>
-  <circle cx="424" cy="368" r="2.6" fill="none" stroke="var(--pi-ink)" stroke-width=".9" opacity=".8"/><circle cx="424" cy="368" r=".9" fill="var(--pi-ink)"/>
-  <text x="436" y="372" font-family="var(--pi-sans)" font-weight="300" font-size="10.5" fill="var(--pi-ink)">关注事项</text>
-  <text x="554" y="371" font-family="var(--pi-mono)" font-size="8" letter-spacing=".5" text-anchor="end" fill="var(--pi-ink-55)">5 ITEMS</text>
-  <line x1="418" y1="388" x2="554" y2="388" stroke="var(--pi-ink)" stroke-width=".6" opacity=".22"/>
-  <circle cx="424" cy="400" r="2.6" fill="none" stroke="var(--pi-ink)" stroke-width=".9" opacity=".8"/><circle cx="424" cy="400" r=".9" fill="var(--pi-ink)"/>
-  <text x="436" y="404" font-family="var(--pi-sans)" font-weight="300" font-size="10.5" fill="var(--pi-ink)">复盘节奏</text>
-  <text x="554" y="403" font-family="var(--pi-mono)" font-size="8" letter-spacing=".5" text-anchor="end" fill="var(--pi-ink-55)">FRI REVIEW</text>
-  <line x1="418" y1="488" x2="554" y2="488" stroke="var(--pi-ink)" stroke-width=".6" opacity=".25"/>
-  <text x="418" y="508" font-family="var(--pi-mono)" font-size="8" letter-spacing="1.5" fill="var(--pi-ink-45)">PERSONA P-03 · SAMPLE</text>
 </svg>
 </div>`
   },
@@ -2558,63 +2718,298 @@ window.PAPER_INK_COMPONENT_DATA = {
     name: 'annotation-callout',
     group: 'evidence-media',
     groupLabel: '证据与媒体',
-    description: 'Hand-drawn double-ellipse callouts and anchor-dot elbow leaders overlaid on host content.',
-    label: '圈注引线批注装置',
+    description: 'Self-contained wide annotated hero with a central device, owned anchor-dot leaders, and four expanded side callouts.',
+    label: '立绘环绕引线标注',
     num: 88,
     variant: null,
     paperInkNative: true,
-    frame: { width: 600, height: 600, fit: 'fixed' },
-    /* 出自样张 layout-b2.html / layout-g2.html / layout-a1.html 的圈注与引线形制 */
-    snippet: `<div class="pi-card">
-<svg class="pi-art" viewBox="0 0 600 600" xmlns="http://www.w3.org/2000/svg">
+    frame: { width: 840, height: 600, fit: 'fixed' },
+    /* 出自样张 layout-g2.html；中心立绘、锚点、引线和注释由同一 leaf renderer 完整拥有 */
+    snippet: `<div class="pi-card" style="width:840px!important;min-height:600px!important">
+<svg class="pi-art" viewBox="0 0 840 600" xmlns="http://www.w3.org/2000/svg">
   <!-- 栏签 + 顶部规线 -->
-  <text x="48" y="52" font-family="var(--pi-mono)" font-size="11" letter-spacing="3" fill="var(--pi-ink-45)">ANNOTATION OVERLAY</text>
-  <text x="552" y="52" font-family="var(--pi-mono)" font-size="9" letter-spacing="2" text-anchor="end" fill="var(--pi-ink-45)">3 NOTES</text>
-  <line x1="48" y1="66" x2="552" y2="66" stroke="var(--pi-ink)" stroke-width=".6" opacity=".22"/>
-  <line x1="48" y1="66" x2="118" y2="66" stroke="var(--pi-ink)" stroke-width="1.4" opacity=".7"/>
+  <text x="42" y="44" font-family="var(--pi-mono)" font-size="10" letter-spacing="2.6" fill="var(--pi-ink-45)">ANNOTATED HERO · DEVICE</text>
+  <text x="798" y="44" font-family="var(--pi-mono)" font-size="8.5" letter-spacing="1.6" text-anchor="end" fill="var(--pi-ink-45)">4 CALLOUTS</text>
+  <line x1="42" y1="60" x2="798" y2="60" stroke="var(--pi-ink)" stroke-width=".6" opacity=".22"/>
+  <line x1="42" y1="60" x2="148" y2="60" stroke="var(--pi-ink)" stroke-width="1.3" opacity=".7"/>
 
-  <!-- 宿主内容占位层（被批注层，集成时由宿主槽位替换） -->
-  <rect x="48" y="88" width="376" height="320" fill="var(--pi-paper-panel)" stroke="var(--pi-ink-80)" stroke-width=".9" stroke-dasharray="4 5" opacity=".5"/>
-  <line x1="418" y1="88" x2="430" y2="88" stroke="var(--pi-ink)" stroke-width=".7" opacity=".4"/>
-  <line x1="424" y1="82" x2="424" y2="94" stroke="var(--pi-ink)" stroke-width=".7" opacity=".4"/>
-  <text x="64" y="112" font-family="var(--pi-mono)" font-size="8" letter-spacing="2" fill="var(--pi-ink-45)">HOST CONTENT · 被批注层（占位）</text>
-  <text x="64" y="156" font-family="var(--pi-sans)" font-weight="300" font-size="12.5" fill="var(--pi-ink)">本季召回率提升至 92%，首字延迟降至 0.38s</text>
-  <text x="64" y="196" font-family="var(--pi-sans)" font-weight="300" font-size="12.5" fill="var(--pi-ink)">灰度环境出现 3 次超时回退，集中在晚高峰</text>
-  <text x="64" y="236" font-family="var(--pi-sans)" font-weight="300" font-size="12.5" fill="var(--pi-ink)">知识库 v14 已全量切换，索引重建 42min</text>
-  <text x="64" y="286" font-family="var(--pi-sans)" font-weight="300" font-size="12.5" fill="var(--pi-ink)">下一步：重排策略 A/B，扩展 3 条业务线</text>
+  <!-- 构造基准：十字虚线 + 地面线 -->
+  <line x1="292" y1="310" x2="548" y2="310" stroke="var(--pi-ink)" stroke-width=".5" opacity=".18" stroke-dasharray="2 6"/>
+  <line x1="420" y1="174" x2="420" y2="468" stroke="var(--pi-ink)" stroke-width=".5" opacity=".18" stroke-dasharray="2 6"/>
+  <line x1="318" y1="444" x2="522" y2="444" stroke="var(--pi-ink)" stroke-width=".9" opacity=".55"/>
+  <line x1="318" y1="438" x2="318" y2="450" stroke="var(--pi-ink)" stroke-width=".7" opacity=".55"/>
+  <line x1="522" y1="438" x2="522" y2="450" stroke="var(--pi-ink)" stroke-width=".7" opacity=".55"/>
 
-  <!-- 批注 01 · 手绘双椭圆圈注 + 贝塞尔引线 → 底部注释带（b2 形制） -->
-  <ellipse cx="228" cy="148" rx="152" ry="21" fill="none" stroke="var(--pi-ink-80)" stroke-width="1.3" transform="rotate(-2.5 228 148)"/>
-  <ellipse cx="231" cy="150" rx="159" ry="23.5" fill="none" stroke="var(--pi-ink-80)" stroke-width=".8" opacity=".5" transform="rotate(3 231 150)"/>
-  <path d="M 168 166 Q 108 300 80 438" fill="none" stroke="var(--pi-ink-80)" stroke-width="1" opacity=".7"/>
-  <line x1="48" y1="442" x2="72" y2="442" stroke="var(--pi-ink-80)" stroke-width=".8" opacity=".5"/>
-  <text x="84" y="446" font-family="var(--pi-mono)" font-size="9" letter-spacing="2" fill="var(--pi-ink-45)">NOTE 01 · METRIC VERIFIED</text>
-  <text x="84" y="470" font-family="var(--pi-sans)" font-weight="300" font-size="12.5" fill="var(--pi-ink)">92% 为去重后口径，已与数据组核对</text>
-  <text x="84" y="492" font-family="var(--pi-mono)" font-size="8.5" letter-spacing="1.5" fill="var(--pi-ink-45)">SOURCE · DW-042 · 去重口径</text>
+  <!-- 完整中心对象：端侧 AI 设备立绘 -->
+  <rect x="338" y="294" width="164" height="112" rx="8" fill="var(--pi-paper-panel)" stroke="var(--pi-ink-80)" stroke-width="1.3"/>
+  <path d="M 346 378 L 494 378 L 494 397 Q 494 406 485 406 L 355 406 Q 346 406 346 397 Z" fill="var(--pi-paper-deep)" stroke="none"/>
+  <line x1="346" y1="378" x2="494" y2="378" stroke="var(--pi-ink)" stroke-width=".6" opacity=".35"/>
+  <path d="M 352 389 L 366 378 M 370 402 L 394 378 M 400 406 L 428 378 M 436 406 L 464 378 M 472 406 L 494 384" fill="none" stroke="var(--pi-ink)" stroke-width=".6" opacity=".24"/>
+  <rect x="398" y="320" width="66" height="40" fill="none" stroke="var(--pi-ink)" stroke-width=".8" opacity=".6" stroke-dasharray="4 3"/>
+  <line x1="464" y1="333" x2="473" y2="333" stroke="var(--pi-ink)" stroke-width=".8" opacity=".7"/>
+  <line x1="464" y1="347" x2="473" y2="347" stroke="var(--pi-ink)" stroke-width=".8" opacity=".7"/>
+  <circle cx="372" cy="418" r="17" fill="var(--pi-paper-deep)" stroke="var(--pi-ink-80)" stroke-width="1.2"/>
+  <circle cx="372" cy="418" r="6" fill="none" stroke="var(--pi-ink)" stroke-width=".7" opacity=".6"/>
+  <circle cx="468" cy="418" r="17" fill="var(--pi-paper-deep)" stroke="var(--pi-ink-80)" stroke-width="1.2"/>
+  <circle cx="468" cy="418" r="6" fill="none" stroke="var(--pi-ink)" stroke-width=".7" opacity=".6"/>
 
-  <!-- 批注 02 · 手绘双椭圆圈注 + 曲线引线 → 右列注释块（b2 + g2 形制） -->
-  <ellipse cx="222" cy="228" rx="150" ry="21" fill="none" stroke="var(--pi-ink-80)" stroke-width="1.3" transform="rotate(-3 222 228)"/>
-  <ellipse cx="225" cy="230" rx="157" ry="23" fill="none" stroke="var(--pi-ink-80)" stroke-width=".8" opacity=".5" transform="rotate(3.5 225 230)"/>
-  <path d="M 372 234 Q 412 226 436 214" fill="none" stroke="var(--pi-ink-80)" stroke-width="1" opacity=".7"/>
-  <line x1="444" y1="178" x2="444" y2="248" stroke="var(--pi-ink)" stroke-width=".8" opacity=".5"/>
-  <text x="456" y="190" font-family="var(--pi-mono)" font-size="9" letter-spacing="2" fill="var(--pi-ink-45)">NOTE 02 · INDEX</text>
-  <text x="456" y="216" font-family="var(--pi-sans)" font-weight="300" font-size="13" fill="var(--pi-ink)">索引重建 42min</text>
-  <text x="456" y="240" font-family="var(--pi-mono)" font-size="8.5" letter-spacing="1.5" fill="var(--pi-ink-45)">OFF-PEAK · 可接受</text>
+  <!-- 左侧升降结构 -->
+  <line x1="358" y1="294" x2="358" y2="214" stroke="var(--pi-ink-80)" stroke-width="1.2"/>
+  <line x1="367" y1="294" x2="367" y2="214" stroke="var(--pi-ink-80)" stroke-width="1.2"/>
+  <line x1="354" y1="214" x2="371" y2="214" stroke="var(--pi-ink-80)" stroke-width="1.2"/>
+  <line x1="358" y1="236" x2="367" y2="236" stroke="var(--pi-ink)" stroke-width=".6" opacity=".4"/>
+  <line x1="358" y1="258" x2="367" y2="258" stroke="var(--pi-ink)" stroke-width=".6" opacity=".4"/>
+  <rect x="349" y="246" width="27" height="24" fill="var(--pi-paper-panel)" stroke="var(--pi-ink-80)" stroke-width="1"/>
+  <line x1="349" y1="270" x2="349" y2="279" stroke="var(--pi-ink-80)" stroke-width="1.2"/>
+  <line x1="316" y1="279" x2="349" y2="279" stroke="var(--pi-ink-80)" stroke-width="1.2"/>
 
-  <!-- 批注 03 · 锚点双圈 + 肘形虚线引线 → 右列注释块（g2 形制） -->
-  <circle cx="176" cy="278" r="5" fill="var(--pi-paper)" stroke="var(--pi-ink-80)" stroke-width="1"/>
-  <circle cx="176" cy="278" r="1.6" fill="var(--pi-ink)"/>
-  <path d="M 176 278 L 396 278 L 396 330 L 436 330" fill="none" stroke="var(--pi-ink)" stroke-width=".7" opacity=".45" stroke-dasharray="3 5"/>
-  <circle cx="436" cy="330" r="2.2" fill="var(--pi-ink)" opacity=".6"/>
-  <line x1="444" y1="294" x2="444" y2="364" stroke="var(--pi-ink)" stroke-width=".8" opacity=".5"/>
-  <text x="456" y="306" font-family="var(--pi-mono)" font-size="9" letter-spacing="2" fill="var(--pi-ink-45)">NOTE 03 · ROLLOUT</text>
-  <text x="456" y="332" font-family="var(--pi-sans)" font-weight="300" font-size="13" fill="var(--pi-ink)">重排策略 A/B</text>
-  <text x="456" y="356" font-family="var(--pi-mono)" font-size="8.5" letter-spacing="1.5" fill="var(--pi-ink-45)">3 BIZ LINES · W34</text>
+  <!-- 雷达、相机与安全扫描件 -->
+  <rect x="408" y="268" width="24" height="26" fill="none" stroke="var(--pi-ink-80)" stroke-width="1.1"/>
+  <path d="M 408 268 A 12 12 0 0 1 432 268" fill="none" stroke="var(--pi-ink-80)" stroke-width="1.2"/>
+  <circle cx="420" cy="263" r="2" fill="var(--pi-ink)"/>
+  <path d="M 402 251 A 24 24 0 0 1 411 241 M 438 251 A 24 24 0 0 0 429 241" fill="none" stroke="var(--pi-ink)" stroke-width=".7" opacity=".45"/>
+  <rect x="498" y="315" width="19" height="17" fill="var(--pi-paper-panel)" stroke="var(--pi-ink-80)" stroke-width="1"/>
+  <circle cx="507.5" cy="323.5" r="3.5" fill="none" stroke="var(--pi-ink)" stroke-width=".8" opacity=".75"/>
+  <path d="M 498 378 A 20 20 0 0 1 504 398 M 506 376 A 27 27 0 0 1 514 399" fill="none" stroke="var(--pi-ink-80)" stroke-width=".9" opacity=".7"/>
 
-  <!-- 页脚：定位约定 -->
-  <line x1="48" y1="528" x2="552" y2="528" stroke="var(--pi-ink)" stroke-width=".6" opacity=".22"/>
-  <text x="48" y="550" font-family="var(--pi-mono)" font-size="7.5" letter-spacing="1.5" fill="var(--pi-ink-45)">定位约定 · ANCHOR=(X,Y) 基于 600×600 VIEWBOX · 双椭圆圈注 + 肘形/曲线引线 · 1–4 条</text>
+  <!-- 左上批注：锚点 → 肘形引线 → 注释块 -->
+  <g data-callout-id="p01">
+    <circle data-anchor-id="p01" cx="420" cy="263" r="5" fill="var(--pi-paper)" stroke="var(--pi-ink-80)" stroke-width="1"/>
+    <circle cx="420" cy="263" r="1.6" fill="var(--pi-ink)"/>
+    <path data-leader-for="p01" d="M 420 263 L 420 174 L 260 174 L 260 126" fill="none" stroke="var(--pi-ink)" stroke-width=".7" opacity=".45" stroke-dasharray="3 5"/>
+    <circle cx="260" cy="126" r="2.2" fill="var(--pi-ink)" opacity=".6"/>
+    <line x1="250" y1="88" x2="250" y2="160" stroke="var(--pi-ink)" stroke-width=".8" opacity=".5"/>
+    <text x="230" y="105" font-family="var(--pi-mono)" font-size="8" letter-spacing="1.2" text-anchor="end" fill="var(--pi-ink-45)">P01 · NPU</text>
+    <text x="230" y="128" font-family="var(--pi-sans)" font-weight="300" font-size="12.5" text-anchor="end" fill="var(--pi-ink)">算力芯片</text>
+    <text x="230" y="150" font-family="var(--pi-mono)" font-size="7.5" letter-spacing=".8" text-anchor="end" fill="var(--pi-ink-45)">48 TOPS · INT8</text>
+  </g>
+
+  <!-- 左下批注 -->
+  <g data-callout-id="p02">
+    <circle data-anchor-id="p02" cx="372" cy="401" r="5" fill="var(--pi-paper)" stroke="var(--pi-ink-80)" stroke-width="1"/>
+    <circle cx="372" cy="401" r="1.6" fill="var(--pi-ink)"/>
+    <path data-leader-for="p02" d="M 372 401 L 296 401 L 296 366 L 260 366" fill="none" stroke="var(--pi-ink)" stroke-width=".7" opacity=".45" stroke-dasharray="3 5"/>
+    <circle cx="260" cy="366" r="2.2" fill="var(--pi-ink)" opacity=".6"/>
+    <line x1="250" y1="328" x2="250" y2="400" stroke="var(--pi-ink)" stroke-width=".8" opacity=".5"/>
+    <text x="230" y="345" font-family="var(--pi-mono)" font-size="8" letter-spacing="1.2" text-anchor="end" fill="var(--pi-ink-45)">P02 · POWER</text>
+    <text x="230" y="368" font-family="var(--pi-sans)" font-weight="300" font-size="12.5" text-anchor="end" fill="var(--pi-ink)">电源管理</text>
+    <text x="230" y="390" font-family="var(--pi-mono)" font-size="7.5" letter-spacing=".8" text-anchor="end" fill="var(--pi-ink-45)">65W PD · 92%</text>
+  </g>
+
+  <!-- 右上批注 -->
+  <g data-callout-id="p03">
+    <circle data-anchor-id="p03" cx="507.5" cy="323.5" r="5" fill="var(--pi-paper)" stroke="var(--pi-ink-80)" stroke-width="1"/>
+    <circle cx="507.5" cy="323.5" r="1.6" fill="var(--pi-ink)"/>
+    <path data-leader-for="p03" d="M 507.5 323.5 L 580 323.5 L 580 126 L 594 126" fill="none" stroke="var(--pi-ink)" stroke-width=".7" opacity=".45" stroke-dasharray="3 5"/>
+    <circle cx="594" cy="126" r="2.2" fill="var(--pi-ink)" opacity=".6"/>
+    <line x1="604" y1="88" x2="604" y2="160" stroke="var(--pi-ink)" stroke-width=".8" opacity=".5"/>
+    <text x="624" y="105" font-family="var(--pi-mono)" font-size="8" letter-spacing="1.2" fill="var(--pi-ink-45)">P03 · CAMERA</text>
+    <text x="624" y="128" font-family="var(--pi-sans)" font-weight="300" font-size="12.5" fill="var(--pi-ink)">摄像模组</text>
+    <text x="624" y="150" font-family="var(--pi-mono)" font-size="7.5" letter-spacing=".8" fill="var(--pi-ink-45)">4K · FOV 120°</text>
+  </g>
+
+  <!-- 右下批注 -->
+  <g data-callout-id="p04">
+    <circle data-anchor-id="p04" cx="464" cy="340" r="5" fill="var(--pi-paper)" stroke="var(--pi-ink-80)" stroke-width="1"/>
+    <circle cx="464" cy="340" r="1.6" fill="var(--pi-ink)"/>
+    <path data-leader-for="p04" d="M 464 340 L 570 340 L 570 366 L 594 366" fill="none" stroke="var(--pi-ink)" stroke-width=".7" opacity=".45" stroke-dasharray="3 5"/>
+    <circle cx="594" cy="366" r="2.2" fill="var(--pi-ink)" opacity=".6"/>
+    <line x1="604" y1="328" x2="604" y2="400" stroke="var(--pi-ink)" stroke-width=".8" opacity=".5"/>
+    <text x="624" y="345" font-family="var(--pi-mono)" font-size="8" letter-spacing="1.2" fill="var(--pi-ink-45)">P04 · NET</text>
+    <text x="624" y="368" font-family="var(--pi-sans)" font-weight="300" font-size="12.5" fill="var(--pi-ink)">网络接口</text>
+    <text x="624" y="390" font-family="var(--pi-mono)" font-size="7.5" letter-spacing=".8" fill="var(--pi-ink-45)">WI-FI 6E · GBE</text>
+  </g>
+
+  <!-- 图注 + 页脚 -->
+  <text x="420" y="474" font-family="var(--pi-mono)" font-size="8.5" letter-spacing="2" text-anchor="middle" fill="var(--pi-ink-45)">EDGE AI DEVICE · SIDE VIEW</text>
+  <line x1="304" y1="492" x2="536" y2="492" stroke="var(--pi-ink)" stroke-width=".6" opacity=".25"/>
+  <text x="420" y="522" font-family="var(--pi-sans)" font-weight="300" font-size="13" text-anchor="middle" fill="var(--pi-ink)">算力、供电、摄像与网络共同限定设备的端侧能力</text>
+  <line x1="42" y1="552" x2="798" y2="552" stroke="var(--pi-ink)" stroke-width=".6" opacity=".22"/>
+  <text x="420" y="573" font-family="var(--pi-mono)" font-size="7.5" letter-spacing="1.5" text-anchor="middle" fill="var(--pi-ink-45)">DEVICE ANATOMY · FOUR-PART ANNOTATION</text>
 </svg>
+</div>`
+  },
+
+  {
+    name: 'metric-strip',
+    group: 'metric-data',
+    groupLabel: '指标与数据',
+    description: 'One coherent KPI strip that reflows two to four bound metric records into equal columns.',
+    label: '自适应指标横带',
+    num: 89,
+    variant: null,
+    paperInkNative: true,
+    frame: { width: 1050, height: 140, fit: 'fixed' },
+    dataContract: { mode: 'collection', unit: 'metric', pointer: '/structured_data/metrics', minItems: 2, maxItems: 4 },
+    /* 出自样张 layout-k3.html 第三层 KPI 总账带；只保留一个可重复模板，2–4 条由 materializer 克隆 */
+    snippet: `<div class="pi-card" style="width:1050px!important;min-height:140px!important" data-bind-root="collection">
+  <div class="pi-metric-strip">
+    <div data-repeat-unit="metric">
+      <span class="pi-metric-value" data-field="value">91%</span>
+      <span class="pi-metric-label" data-field="label">召回命中率</span>
+      <span class="pi-metric-code" data-field="code">RECALL@10</span>
+    </div>
+  </div>
+</div>`
+  },
+
+  {
+    name: 'scenario-column',
+    group: 'flow-temporal',
+    groupLabel: '流程与时序',
+    description: 'One independently replaceable scenario record with pain, a three-step fix, and a shipment result.',
+    label: '单场景纵列',
+    num: 90,
+    variant: null,
+    paperInkNative: true,
+    frame: { width: 540, height: 690, fit: 'fixed' },
+    dataContract: { mode: 'record', unit: 'scenario', pointer: '/structured_data/scenario', minItems: 1, maxItems: 1 },
+    /* 出自样张 layout-k4.html 单栏自然边界 CW=540、y=226..915；K4 由三叶槽各绑定一次 */
+    snippet: `<div class="pi-card" style="width:540px!important;min-height:690px!important">
+<svg class="pi-art" viewBox="0 0 540 690" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <pattern id="pi-hatch-sc" width="7" height="7" patternUnits="userSpaceOnUse" patternTransform="rotate(45)">
+      <line x1="0" y1="0" x2="0" y2="7" stroke="var(--pi-ink)" stroke-width=".7" opacity=".35"/>
+    </pattern>
+  </defs>
+  <g data-bind-root="record" data-scenario-column="record">
+    <rect x="0" y="0" width="540" height="42" fill="var(--pi-paper-panel)" stroke="var(--pi-ink-80)" stroke-width="1.2"/>
+    <rect x="0" y="0" width="10" height="42" fill="url(#pi-hatch-sc)" stroke="var(--pi-ink-80)" stroke-width=".9"/>
+    <text data-field="title" x="275" y="28" font-family="var(--pi-sans)" font-weight="300" font-size="19" letter-spacing="2" text-anchor="middle" fill="var(--pi-ink)">智能客服</text>
+    <text data-field="code" x="524" y="26" font-family="var(--pi-mono)" font-size="9" letter-spacing="2" text-anchor="end" fill="var(--pi-ink-45)">SCENE 01</text>
+
+    <line x1="0" y1="74" x2="540" y2="74" stroke="var(--pi-ink)" stroke-width=".6" opacity=".3" stroke-dasharray="3 6"/>
+    <rect x="190" y="58" width="160" height="32" fill="var(--pi-paper)"/>
+    <text x="270" y="80" font-family="var(--pi-mono)" font-size="10" letter-spacing="2" text-anchor="middle" fill="var(--pi-ink-70)">PAIN · 现状</text>
+    <text data-field="pain_1" x="270" y="129" font-family="var(--pi-sans)" font-weight="300" font-size="14" text-anchor="middle" fill="var(--pi-ink-70)">人工客服承接大量重复咨询，</text>
+    <text data-field="pain_2" x="270" y="174" font-family="var(--pi-sans)" font-weight="300" font-size="14" text-anchor="middle" fill="var(--pi-ink-70)">平均响应慢，夜班无人覆盖。</text>
+
+    <line x1="0" y1="224" x2="540" y2="224" stroke="var(--pi-ink)" stroke-width=".6" opacity=".3" stroke-dasharray="3 6"/>
+    <rect x="190" y="208" width="160" height="32" fill="var(--pi-paper)"/>
+    <text x="270" y="230" font-family="var(--pi-mono)" font-size="10" letter-spacing="2" text-anchor="middle" fill="var(--pi-ink-70)">FIX · 解法</text>
+    <g transform="translate(184 275)">
+      <path d="M -14 -10 h 28 v 16 h -18 l -6 6 v -6 h -4 z" fill="none" stroke="var(--pi-ink-80)" stroke-width="1.1"/>
+      <line x1="-8" y1="-4" x2="8" y2="-4" stroke="var(--pi-ink)" stroke-width=".8" opacity=".55"/>
+      <text data-field="step_1" x="30" y="-2" font-family="var(--pi-sans)" font-weight="300" font-size="14" fill="var(--pi-ink)">问句改写</text>
+      <text x="30" y="18" font-family="var(--pi-mono)" font-size="9" letter-spacing="2" fill="var(--pi-ink-45)">STEP 01</text>
+    </g>
+    <path d="M 179 303 l 5 6 l 5 -6 M 179 309 l 5 6 l 5 -6" fill="none" stroke="var(--pi-ink)" stroke-width=".8" opacity=".5" stroke-dasharray="3 3"/>
+    <g transform="translate(184 340)">
+      <path d="M -12 -8 h 14 l 10 8 l -10 8 h -14 z" fill="none" stroke="var(--pi-ink-80)" stroke-width="1.1"/>
+      <circle cx="-6" cy="0" r="2" fill="none" stroke="var(--pi-ink)" stroke-width=".9"/>
+      <text data-field="step_2" x="30" y="-2" font-family="var(--pi-sans)" font-weight="300" font-size="14" fill="var(--pi-ink)">意图路由</text>
+      <text x="30" y="18" font-family="var(--pi-mono)" font-size="9" letter-spacing="2" fill="var(--pi-ink-45)">STEP 02</text>
+    </g>
+    <path d="M 179 368 l 5 6 l 5 -6 M 179 374 l 5 6 l 5 -6" fill="none" stroke="var(--pi-ink)" stroke-width=".8" opacity=".5" stroke-dasharray="3 3"/>
+    <g transform="translate(184 405)">
+      <path d="M -12 -8 L 12 0 L -12 8 L -6 0 Z" fill="none" stroke="var(--pi-ink-80)" stroke-width="1.1"/>
+      <text data-field="step_3" x="30" y="-2" font-family="var(--pi-sans)" font-weight="300" font-size="14" fill="var(--pi-ink)">答案生成</text>
+      <text x="30" y="18" font-family="var(--pi-mono)" font-size="9" letter-spacing="2" fill="var(--pi-ink-45)">STEP 03</text>
+    </g>
+    <text data-field="fix_note" x="500" y="345" font-family="var(--pi-sans)" font-weight="300" font-size="11" text-anchor="end" fill="var(--pi-ink-45)">首答 &lt; 3 s</text>
+
+    <line x1="0" y1="464" x2="540" y2="464" stroke="var(--pi-ink)" stroke-width=".6" opacity=".3" stroke-dasharray="3 6"/>
+    <rect x="190" y="448" width="160" height="32" fill="var(--pi-paper)"/>
+    <text x="270" y="470" font-family="var(--pi-mono)" font-size="10" letter-spacing="2" text-anchor="middle" fill="var(--pi-ink-70)">SHIP · 落地</text>
+    <g transform="translate(72 564)">
+      <rect x="0" y="-20" width="96" height="40" fill="var(--pi-paper-panel)" stroke="var(--pi-ink-80)" stroke-width="1.1"/>
+      <line x1="96" y1="0" x2="150" y2="0" stroke="var(--pi-ink)" stroke-width="1" opacity=".6"/>
+      <rect x="150" y="-20" width="96" height="40" fill="url(#pi-hatch-sc)" stroke="var(--pi-ink-80)" stroke-width="1.1"/>
+      <line x1="246" y1="0" x2="300" y2="0" stroke="var(--pi-ink)" stroke-width="1" opacity=".6"/>
+      <rect x="300" y="-20" width="96" height="40" fill="var(--pi-paper-panel)" stroke="var(--pi-ink-80)" stroke-width="1.1"/>
+      <text data-field="ship_stage_1" x="48" y="5" font-family="var(--pi-sans)" font-weight="300" font-size="11" text-anchor="middle" fill="var(--pi-ink-70)">试点</text>
+      <text data-field="ship_stage_2" x="198" y="5" font-family="var(--pi-sans)" font-weight="300" font-size="11" text-anchor="middle" fill="var(--pi-ink)">铺开</text>
+      <text data-field="ship_stage_3" x="348" y="5" font-family="var(--pi-sans)" font-weight="300" font-size="11" text-anchor="middle" fill="var(--pi-ink-70)">常态</text>
+    </g>
+    <text data-field="result" x="270" y="635" font-family="var(--pi-sans)" font-weight="300" font-size="11" text-anchor="middle" fill="var(--pi-ink-45)">覆盖 32 个客服场景</text>
+    <line x1="0" y1="689" x2="540" y2="689" stroke="var(--pi-ink)" stroke-width=".8" opacity=".5"/>
+  </g>
+</svg>
+</div>`
+  },
+
+  {
+    name: 'pain-list',
+    group: 'document-text',
+    groupLabel: '文档与文本',
+    description: 'One vertical diagnosis component that reflows two to four bound cause records without multiplying the slot renderer.',
+    label: '自适应痛点根因列',
+    num: 91,
+    variant: null,
+    paperInkNative: true,
+    frame: { width: 440, height: 650, fit: 'fixed' },
+    dataContract: { mode: 'collection', unit: 'cause', pointer: '/structured_data/causes', minItems: 2, maxItems: 4 },
+    /* 出自样张 layout-k3.html 左侧 WHY IT HURTS，自然纵横比约 0.68；一个 renderer 内部重复 cause */
+    snippet: `<div class="pi-card" style="width:440px!important;min-height:650px!important" data-bind-root="collection">
+  <div class="pi-pain-list">
+    <div class="pi-pain-list-head">
+      <div class="pi-pain-list-kicker">WHY IT HURTS</div>
+      <div class="pi-pain-list-title">效果不稳的关键根因</div>
+    </div>
+    <div class="pi-pain-list-items">
+      <div data-repeat-unit="cause">
+        <span class="pi-cause-marker" data-field="code">CAUSE 01</span>
+        <span>
+          <span class="pi-cause-title" data-field="title">幻觉频发</span>
+          <span class="pi-cause-detail" data-field="detail">长尾问题缺乏知识库接地，生成答案缺少可靠依据。</span>
+        </span>
+      </div>
+    </div>
+  </div>
+</div>`
+  },
+
+  {
+    name: 'pipeline-strip',
+    group: 'flow-temporal',
+    groupLabel: '流程与时序',
+    description: 'One horizontal pipeline component that reflows three to seven bound steps while preserving the K3 process-band aspect ratio.',
+    label: '自适应流水线横带',
+    num: 92,
+    variant: null,
+    paperInkNative: true,
+    frame: { width: 1050, height: 260, fit: 'fixed' },
+    dataContract: { mode: 'collection', unit: 'step', pointer: '/structured_data/steps', minItems: 3, maxItems: 7 },
+    /* 出自样张 layout-k3.html 右侧第一层 AGENT PIPELINE，自然横向比例约 4.04 */
+    snippet: `<div class="pi-card" style="width:1050px!important;min-height:260px!important" data-bind-root="collection">
+  <div class="pi-pipeline-strip">
+    <div class="pi-pipeline-head">
+      <div class="pi-pipeline-kicker">THE FIX · AGENT PIPELINE</div>
+      <div class="pi-pipeline-title">Agent 基座平台</div>
+    </div>
+    <div class="pi-pipeline-steps">
+      <div data-repeat-unit="step">
+        <span class="pi-step-index" data-field="index">01</span>
+        <span class="pi-step-title" data-field="title">意图解析</span>
+        <span class="pi-step-code" data-field="code">PARSE</span>
+      </div>
+    </div>
+  </div>
+</div>`
+  },
+
+  {
+    name: 'infra-strip',
+    group: 'document-text',
+    groupLabel: '文档与文本',
+    description: 'One horizontal platform-boundary component that reflows three to six bound infrastructure items.',
+    label: '自适应基础设施横带',
+    num: 93,
+    variant: null,
+    paperInkNative: true,
+    frame: { width: 1050, height: 140, fit: 'fixed' },
+    dataContract: { mode: 'collection', unit: 'item', pointer: '/structured_data/items', minItems: 3, maxItems: 6 },
+    /* 出自样张 layout-k3.html 右侧第二层 AGENT INFRA 边界带，保留 7.5:1 自然横向比例 */
+    snippet: `<div class="pi-card" style="width:1050px!important;min-height:140px!important" data-bind-root="collection">
+  <div class="pi-infra-strip">
+    <div class="pi-infra-kicker">AGENT INFRA 1.0 · BASE</div>
+    <div class="pi-infra-items">
+      <div data-repeat-unit="item">
+        <span class="pi-infra-code" data-field="code">I01</span>
+        <span class="pi-infra-label" data-field="label">模型网关</span>
+      </div>
+    </div>
+  </div>
 </div>`
   }
   ]

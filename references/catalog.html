@@ -30,7 +30,7 @@
   .fam-head{display:flex;align-items:baseline;gap:12px;border-bottom:2px solid var(--ink);padding-bottom:8px;margin-bottom:16px}
   .fam-head h2{font-size:17px;font-weight:700;letter-spacing:.05em}
   .fam-head .tag{font-size:11px;color:var(--paper);background:var(--ink-80);padding:2px 8px;border-radius:2px;letter-spacing:.06em}
-  .fam-head .tag.warn{background:var(--accent)}
+  .fam-head .tag.warn{background:var(--ink-80)}
   .fam-head .desc{font-size:12px;color:var(--ink-3)}
 
   .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(340px,1fr));gap:18px}
@@ -38,7 +38,7 @@
   .frame-wrap{position:relative;width:100%;padding-top:56.25%;overflow:hidden;background:var(--paper-deep)}
   .frame-wrap iframe{position:absolute;top:0;left:0;width:1920px;height:1080px;border:0;transform-origin:0 0}
   .card-info{padding:10px 14px 12px}
-  .card-info .id{font-size:11px;color:var(--accent);letter-spacing:.12em;font-weight:700}
+  .card-info .id{font-size:11px;color:var(--ink-2);letter-spacing:.12em;font-weight:700}
   .card-info .nm{font-size:14px;font-weight:600;margin-top:2px}
   .card-info .meta{font-size:11px;color:var(--ink-3);margin-top:4px;line-height:1.6}
   .card-info .meta b{color:var(--ink-2);font-weight:600}
@@ -51,14 +51,14 @@
   .comp-info{padding:10px 14px 12px}
   .comp-info .nm{font-size:14px;font-weight:700}
   .comp-info .en{font-size:11px;color:var(--ink-3);letter-spacing:.05em}
-  .comp-info .merged{font-size:11px;color:var(--accent);margin-top:4px}
+  .comp-info .merged{font-size:11px;color:var(--ink-2);margin-top:4px}
   .comp-info .param{font-size:11px;color:var(--ink-2);margin-top:3px;line-height:1.6}
   .comp-info .rel{display:inline-block;font-size:10px;color:var(--paper);background:var(--ink-2);padding:1px 6px;margin-top:6px;margin-right:4px;border-radius:2px}
 
   .placeholder{display:flex;flex-direction:column;align-items:center;justify-content:center;height:100%;color:var(--ink-3);font-size:12px;gap:8px}
   .placeholder .big{font-size:22px;letter-spacing:.1em;font-weight:700;color:var(--ink-2)}
 
-  .note{background:var(--card);border:1px solid var(--line);border-left:3px solid var(--accent);padding:14px 18px;font-size:13px;color:var(--ink-2);line-height:1.8;margin-bottom:24px}
+  .note{background:var(--card);border:1px solid var(--line);border-left:3px solid var(--ink);padding:14px 18px;font-size:13px;color:var(--ink-2);line-height:1.8;margin-bottom:24px}
   .note b{color:var(--ink)}
 </style>
 </head>
@@ -87,10 +87,11 @@
 </main>
 
 <main id="m-cmp">
-  <div class="note"><b>组件 = 参数化画法。</b>内容数量是参数不是组件类型;画法不同才是不同组件。原 atlas 61 项 + echarts 12 项,清洗合并后如下。</div>
+  <div class="note"><b>组件 = 参数化画法。</b>内容数量是参数不是组件类型;画法不同才是不同组件。atlas 合并 27 组 + native 移植 33 + echarts 9 组。</div>
+  <div id="extract-groups"></div>
   <div class="fam-section">
-    <div class="fam-head"><h2>反向抽取候选(画册版式 → 组件)</h2><span class="tag warn">待去重</span><span class="desc">单行整页的版式其图形即组件;复合版式内也藏有子组件。统一浏览后去重。</span></div>
-    <div class="grid" id="extract-grid"></div>
+    <div class="fam-head"><h2>Native 墨线组件(taxonomy 移植)</h2><span class="desc">来自 wise-ppt-page-expression 组件目录,062+ 编号,纸墨线稿实现</span></div>
+    <div id="native-groups"></div>
   </div>
   <div id="cmp-groups"></div>
 </main>
@@ -194,17 +195,64 @@ const COMP_GROUPS=[
   ]},
 ];
 
-/* 反向抽取:画册版式 → 组件候选(from=版式号,kind=单行图形/子组件,dup=与 atlas 关系) */
-const EXTRACT=[
-  ['L2','映射弧线网','单行图形',''],['L1','权重弧网','单行图形',''],['G1','中心放射图','单行图形',''],
-  ['G4','枢纽卫星图','单行图形',''],['H2','嵌套框','单行图形',''],['B5','阶梯图','单行图形',''],
-  ['B6','道路时间轴','单行图形',''],['N1','汇聚流图','单行图形',''],['O1','漏斗图','单行图形',''],
-  ['B3','泳道图','单行图形',''],['C4','分布地图','单行图形',''],['C7','排行柱图','单行图形','近似 bar'],
-  ['J1','环形循环','单行图形','近似 process-loop'],['J2','蛇形回环','单行图形','近似 process-loop'],
-  ['J3','旅程曲线','单行图形','近似 journey'],['I1','流水线','单行图形','近似 process'],
-  ['B1','时间轴','单行图形','重复 atlas timeline'],['B2','甘特图','单行图形','重复 atlas gantt'],
-  ['H1','同心环','单行图形','重复 atlas concentric'],['M1','粒子效果件','单行图形','存疑(氛围?)'],
-  ['C5','进度环','子组件',''],['C3','档案卡','子组件',''],['A1','标本卡(引文+批注)','子组件',''],['A3','引文卡','子组件',''],
+/* 反向抽取:画册版式 → 组件候选(按落地状态分三类) */
+const EXTRACT_GROUPS=[
+  {g:'① 已有实现 —— native 组件库已落地,无需再抽',tag:'',items:[
+    ['B5','阶梯图','→ 063 step-rise'],['B6','道路时间轴','→ 073 winding-road'],
+    ['N1','汇聚流图','→ 080 merge-confluence'],['O1','漏斗图','→ 087 funnel'],
+    ['B3','泳道图','→ 083 swimlane-roadmap'],['C4','分布地图','→ 075 district-map'],
+    ['G4','枢纽卫星图','→ 079 radial-hub'],['I1','流水线','→ 092 pipeline-strip'],
+    ['C5','进度环','→ 085 radial-progress'],['C3','档案卡','→ 084 profile-card'],
+    ['A1','标本卡(对话批注)','→ 078 chat-dialog'],['A3','引文卡','→ 064 doc-excerpt'],
+    ['B2','甘特图','→ 071 gantt-ink'],['B4','时间轴垂挂画廊','→ 072 timeline-gallery'],
+  ]},
+  {g:'② 仍待抽取 —— atlas 与 native 均无,需要新做',tag:'todo',items:[
+    ['L2','映射弧线网',''],['L1','权重弧网',''],['G1','三向放射图',''],
+    ['H2','嵌套框',''],['C7','排行柱图',''],['J2','蛇形回环',''],
+  ]},
+  {g:'③ 近似已有 —— 语义重合,可并入现有组件',tag:'dup',items:[
+    ['J1','环形循环','≈ process-loop'],['J3','旅程曲线','≈ journey'],
+    ['B1','时间轴','≈ timeline'],['H1','同心环','≈ concentric'],
+    ['M1','粒子效果件','存疑:氛围页'],
+  ]},
+];
+
+/* Native 墨线组件(taxonomy 移植,num 对应组件画册路由) */
+const NATIVE_GROUPS=[
+  {g:'流程与时序',items:[
+    {num:63,en:'step-rise',nm:'阶梯爬升图'},{num:70,en:'trace-tree',nm:'树形过程日志'},
+    {num:71,en:'gantt-ink',nm:'墨线甘特图'},{num:72,en:'timeline-gallery',nm:'时间轴垂挂画廊'},
+    {num:73,en:'winding-road',nm:'蜿蜒道路时间轴'},{num:83,en:'swimlane-roadmap',nm:'泳道路线图'},
+    {num:87,en:'funnel',nm:'转化漏斗'},{num:90,en:'scenario-column',nm:'单场景纵列'},
+    {num:92,en:'pipeline-strip',nm:'自适应流水线横带'},
+  ]},
+  {g:'证据与媒体',items:[
+    {num:66,en:'evidence-wall',nm:'证据墙标本格'},{num:67,en:'logo-cloud',nm:'品牌云墙'},
+    {num:68,en:'mobile-gallery',nm:'手机屏步骤画廊'},{num:69,en:'admin-console',nm:'后台管理台线稿'},
+    {num:74,en:'contact-card',nm:'联络名片卡'},{num:78,en:'chat-dialog',nm:'对话气泡标本'},
+    {num:84,en:'profile-card',nm:'人物画像卡'},{num:86,en:'icon-grid',nm:'图标格阵'},
+    {num:88,en:'annotation-callout',nm:'立绘环绕引线标注'},
+  ]},
+  {g:'对比与对照',items:[
+    {num:76,en:'why-how-bands',nm:'因果对位双带'},{num:77,en:'before-after-bands',nm:'前后双带演进面板'},
+    {num:81,en:'watershed-axis',nm:'分水岭中轴对照'},
+  ]},
+  {g:'层级与结构',items:[
+    {num:79,en:'radial-hub',nm:'放射中心卫星图'},{num:82,en:'arch-table-band',nm:'架构带表'},
+  ]},
+  {g:'关系与映射',items:[
+    {num:75,en:'district-map',nm:'街区示意地图'},{num:80,en:'merge-confluence',nm:'双路汇流图'},
+  ]},
+  {g:'文档与文本',items:[
+    {num:64,en:'doc-excerpt',nm:'文献摘引块'},{num:65,en:'official-doc',nm:'公文标本框'},
+    {num:91,en:'pain-list',nm:'自适应痛点根因列'},{num:93,en:'infra-strip',nm:'自适应基础设施横带'},
+  ]},
+  {g:'指标与数据',items:[
+    {num:85,en:'radial-progress',nm:'环形进度指标'},{num:89,en:'metric-strip',nm:'自适应指标横带'},
+  ]},
+  {g:'ECharts 补充',items:[
+    {ec:'echarts.geo-choropleth-map',en:'geo-map',nm:'分级填色地图'},
+  ]},
 ];
 
 /* ============ 渲染 ============ */
@@ -296,16 +344,41 @@ $('#cmp-groups').innerHTML=COMP_GROUPS.map(g=>`
     <div class="fam-head"><h2>${g.g}</h2><span class="desc">${g.items.length} 个组件(合并后)</span></div>
     <div class="comp-grid">${g.items.map(c=>compCard(c)).join('')}</div>
   </div>`).join('');
-$('#c-cmp').textContent=COMP_GROUPS.reduce((s,g)=>s+g.items.length,0)+'+'+EXTRACT.length+'抽';
+const nativeTotal=NATIVE_GROUPS.reduce((s,g)=>s+g.items.length,0);
+$('#c-cmp').textContent=(COMP_GROUPS.reduce((s,g)=>s+g.items.length,0)+nativeTotal)+'+'+EXTRACT_GROUPS.reduce((s,g)=>s+g.items.length,0)+'抽';
 
-/* 反向抽取候选渲染 */
-$('#extract-grid').innerHTML=EXTRACT.map(([id,nm,kind,dup])=>`
-  <div class="card">
-    <div class="frame-wrap"><iframe loading="lazy" src="${FRAMES}layout-${id.toLowerCase()}.html"></iframe></div>
-    <div class="card-info"><span class="id">${id} → 组件</span>
-      <div class="nm">${nm}</div>
-      <div class="meta">类型:<b>${kind}</b>${dup?' · <b style="color:var(--accent)">'+dup+'</b>':''}</div>
-    </div></div>`).join('');
+/* 反向抽取候选(三组分类)渲染 */
+$('#extract-groups').innerHTML=EXTRACT_GROUPS.map(g=>`
+  <div class="fam-section">
+    <div class="fam-head"><h2>反向抽取 · ${g.g}</h2>${g.tag?`<span class="tag">${g.tag==='todo'?'待新做':'可并入'}</span>`:''}
+      <span class="desc">${g.items.length} 项</span></div>
+    <div class="grid">${g.items.map(([id,nm,dup])=>`
+      <div class="card">
+        <div class="frame-wrap"><iframe loading="lazy" src="${FRAMES}layout-${id.toLowerCase()}.html"></iframe></div>
+        <div class="card-info"><span class="id">${id} → 组件</span>
+          <div class="nm">${nm}</div>
+          ${dup?`<div class="meta"><b>${dup}</b></div>`:''}
+        </div></div>`).join('')}</div>
+  </div>`).join('');
+
+/* Native 墨线组件:经组件画册路由渲染(#/layout/N) */
+const GALLERY_BASE='gallery-components/index.html?theme=paper-ink&motion=0&previewScale=fill&previewStage=wide&taxonomyEmbed=2';
+function nativeCard(c){
+  const src=c.ec
+    ?'gallery-components/echarts-frame.html?id='+c.ec+'&theme=paper-ink'
+    :GALLERY_BASE+'#/layout/'+c.num;
+  return `<div class="comp-card">
+    <div class="comp-wrap"><iframe loading="lazy" src="${src}"></iframe></div>
+    <div class="comp-info">
+      <span class="en">${c.en}</span> <span class="nm">${c.nm}</span>
+      ${c.num?`<div class="param">#${String(c.num).padStart(3,'0')} · native</div>`:'<div class="param">ECharts</div>'}
+    </div></div>`;
+}
+$('#native-groups').innerHTML=NATIVE_GROUPS.map(g=>`
+  <div class="fam-section">
+    <div class="fam-head"><h2>${g.g}</h2><span class="desc">${g.items.length} 个</span></div>
+    <div class="comp-grid">${g.items.map(nativeCard).join('')}</div>
+  </div>`).join('');
 
 /* 组件 iframe:srcdoc 直出纸墨适配后的预览(srcdoc 继承父页路径,token 样式表可加载) */
 document.querySelectorAll('iframe[data-rep]').forEach(f=>{f.srcdoc=compHtml(+f.dataset.rep);});
