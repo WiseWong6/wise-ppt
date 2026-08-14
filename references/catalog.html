@@ -4,6 +4,14 @@
 <meta charset="UTF-8">
 <title>Wise PPT 资产目录:非关系页 · 版式 · 结构 · 组件</title>
 <link rel="stylesheet" href="../themes/paper-ink/assets/design-tokens.css">
+<!-- 组件数据与运行时:页面原生渲染(无 iframe),一次加载全部共享 -->
+<script src="../themes/paper-ink/adapters/atlas.js"></script>
+<script src="ppt-component-atlas/catalog-data.js"></script>
+<script src="../capabilities/layouts/paper-ink-components.js"></script>
+<script src="../capabilities/vendors/echarts/echarts.min.js"></script>
+<script src="../themes/paper-ink/adapters/echarts.js"></script>
+<script src="gallery-components/echarts-catalog-data.js"></script>
+<script src="gallery-components/echarts-theme-adapter.js"></script>
 <style>
   /* 纸墨配色:基础名(--ink/--paper/--ink-80 等)直接来自 design-tokens.css。
      不做 --wp-* 中转别名 —— 与 tokens 的反向映射会形成循环引用,导致变量失效(header 背景变透明)。 */
@@ -37,6 +45,10 @@
   .frame-wrap iframe{position:absolute;top:0;left:0;width:1920px;height:1080px;border:0;transform-origin:0 0}
   .frame-wrap{margin:10px 10px 0;border:0.5px solid var(--ink-45)}
   .comp-wrap{margin:10px 10px 0;border:0.5px solid var(--ink-45)}
+  /* 组件原生渲染场馆(无 iframe) */
+  .comp-stage{position:absolute;inset:0;overflow:hidden;background:var(--paper)}
+  .stage-host{position:absolute;inset:0}
+  .stage-ecbox{position:absolute;left:0;top:0;width:1280px;height:720px;transform-origin:0 0}
   .card,.comp-card{cursor:pointer}
   .card-info{padding:10px 14px 12px}
   .card-info .id{font-size:11px;color:var(--ink-2);letter-spacing:.12em;font-weight:700}
@@ -147,12 +159,12 @@ const FAMS=[
   ]},
   {id:'sequential',cn:'④ 有序',desc:'有方向:时序 / 流动 / 循环 / 汇聚 / 漏斗 / 因果',items:[
     ['A9','手机多屏画廊','左右4等分','时序'],['B1','水平时间轴','单行','时序'],['B2','甘特瀑布','单行','时序'],
-    ['B3','多泳道路线图','上下3等分','时序 + 并行'],['B4','时间轴垂挂画廊','单行','时序 + 证据'],
+    ['B3','多泳道路线图','单行','时序 + 并行'],['B4','时间轴垂挂画廊','单行','时序 + 证据'],
     ['B5','阶梯爬升路径','单行','时序'],['B6','蜿蜒道路时间轴','单行','时序'],
     ['E3','双带列阵(因→策)','上下2等分','因果'],['I1','横向流水线','单行','流动'],['I2','虚实步骤串','单行','流动'],
     ['I3','双轨转化路径','上下2等分','流动 + 对比'],['J1','循环圆环','单行','循环'],['J2','蛇形回环','单行','循环'],
     ['J3','旅程曲线','单行','时序'],['K2','痛点→解法→成效','左右3等分','因果'],['K3','左痛右解复合','左右不对称','因果'],
-    ['N1','汇聚流','单行','汇聚'],['O1','漏斗','单行','漏斗'],
+    ['N1','汇聚流','单行','汇聚'],['O1','漏斗','左右不对称','漏斗'],
   ]},
   {id:'comparison',cn:'⑤ 比较',desc:'对齐并排看异同 / 对应',items:[
     ['C7','排行柱图','单行','对比(排名)'],['E1','对比双面板','左右2等分','对比'],['E2','分水岭双栏','左右2等分','对比'],
@@ -272,7 +284,7 @@ const $=s=>document.querySelector(s);
 
 function layoutCard([id,nm,struct,rel]){
   const full=FRAMES+'layout-'+id.toLowerCase()+'.html';
-  return `<div class="card" data-href="${full}">
+  return `<div class="card" id="lyt-${id.toLowerCase()}" data-href="${full}">
     <div class="frame-wrap"><iframe loading="lazy" src="${full}"></iframe></div>
     <div class="card-info"><span class="id">${id}</span>
       <div class="nm">${nm}</div>
@@ -281,20 +293,18 @@ function layoutCard([id,nm,struct,rel]){
 }
 /* 详情路由:atlas/native → 画册 #/layout/N;echarts → #/component/{slug}-default */
 function ecSlug(id){return id.toLowerCase().replace(/[^a-z0-9]+/g,'-').replace(/^-|-$/g,'');}
-/* 统一组件卡:atlas/native → num;ec → id */
+/* 统一组件卡:原生渲染(无 iframe)
+   atlas/native → snippet 注入 .comp-stage;ec → 页面内 echarts.init */
 function compCard(c,extra=''){
-  let src,href,tag;
-  if(c.t==='ec'){
-    src='gallery-components/echarts-frame.html?id='+c.id+'&theme=paper-ink';
-    href='gallery-components/index.html?theme=paper-ink#/component/'+ecSlug(c.id)+'-default';
-    tag='ECharts';
-  }else{
-    src='gallery-components/'+(c.t==='native'?'native-preview':'atlas-preview')+'.html?num='+c.num;
-    href='gallery-components/index.html?theme=paper-ink#/layout/'+c.num;
-    tag=c.t+' #'+String(c.num).padStart(3,'0');
-  }
+  const href=c.t==='ec'
+    ?'gallery-components/index.html?theme=paper-ink#/component/'+ecSlug(c.id)+'-default'
+    :'gallery-components/index.html?theme=paper-ink#/layout/'+c.num;
+  const tag=c.t==='ec'?'ECharts':c.t+' #'+String(c.num).padStart(3,'0');
+  const stage=c.t==='ec'
+    ?`<div class="comp-stage" data-ec="${c.id}"></div>`
+    :`<div class="comp-stage" data-src="${c.t}:${c.num}"></div>`;
   return `<div class="comp-card" data-href="${href}">
-    <div class="comp-wrap"><iframe loading="lazy" src="${src}"></iframe></div>
+    <div class="comp-wrap">${stage}</div>
     <div class="comp-info">
       <span class="en">${c.en}</span> <span class="nm">${c.nm}</span>
       <div class="param">${tag}${c.note?' · '+c.note:''}</div>
@@ -322,18 +332,15 @@ $('#cmp-groups').innerHTML=COMPONENTS.map(g=>`
   </div>`).join('');
 $('#c-cmp').textContent=COMPONENTS.reduce((s,g)=>s+g.items.length,0)+'+'+EXTRACT_GROUPS.reduce((s,g)=>s+g.items.length,0)+'抽';
 
-/* 反向抽取候选渲染:待抽取 = 裁剪出组件本体(crop-preview);近似已有 = 整页版式 */
+/* 反向抽取候选渲染:整页版式预览(组件本体 = 中央图形) */
 function extractCard(it){
   const full=FRAMES+'layout-'+it.from.toLowerCase()+'.html';
-  const src=it.rect
-    ?'gallery-components/crop-preview.html?u='+encodeURIComponent(full)+'&rect='+it.rect.join(',')
-    :full;
   return `<div class="card" data-href="${full}">
-    <div class="frame-wrap"><iframe loading="lazy" src="${src}"></iframe></div>
+    <div class="frame-wrap"><iframe loading="lazy" src="${full}"></iframe></div>
     <div class="card-info"><span class="id">${it.from} → 组件</span>
       <div class="nm">${it.nm}</div>
       ${it.note?`<div class="meta">${it.note}</div>`:''}
-      <div class="meta">${it.rect?'组件本体(从整页裁出)':'整页预览,组件本体 = 中央图形'} · 点击看整页</div>
+      <div class="meta">整页预览,组件本体 = 中央图形 · 点击看整页</div>
     </div></div>`;
 }
 $('#extract-groups').innerHTML=EXTRACT_GROUPS.map(g=>`
@@ -348,6 +355,95 @@ document.addEventListener('click',function(e){
   const card=e.target.closest('[data-href]');
   if(card&&card.dataset.href)window.open(card.dataset.href,'_blank');
 });
+
+/* ============ 组件原生渲染引擎(无 iframe) ============ */
+/* 1) 样式:atlas(swiss→纸墨适配)与 native(pi)的 componentCss 各注入一次 */
+(function injectComponentCss(){
+  const ADAPTER=(window.WisePPTThemeAdapters||{})['paper-ink.atlas'];
+  const atlasData=window.SWISS_CATALOG_DATA;
+  if(atlasData){
+    const css=ADAPTER?ADAPTER.adaptCss(atlasData.componentCss||''):atlasData.componentCss;
+    const ov=(ADAPTER&&ADAPTER.COMPONENT_OVERRIDES)||'';
+    const st=document.createElement('style');
+    st.textContent=css+(atlasData.componentMotionCss||'')+ov;
+    document.head.appendChild(st);
+  }
+  const pi=window.PAPER_INK_COMPONENT_DATA;
+  if(pi){
+    const st2=document.createElement('style');
+    st2.textContent=(pi.componentCss||'')+(pi.componentMotionCss||'');
+    document.head.appendChild(st2);
+  }
+})();
+
+/* 2) snippet 注入 + 场馆缩放:comp-stage(16:9)内,组件原尺寸 contain 居中 */
+function mountStage(stage){
+  const parts=(stage.dataset.src||'').split(':');
+  const kind=parts[0],num=Number(parts[1]);
+  let entry=null,adapter=null;
+  if(kind==='atlas'){
+    const d=window.SWISS_CATALOG_DATA;
+    entry=d&&d.entries.find(x=>x.num===num);
+    adapter=(window.WisePPTThemeAdapters||{})['paper-ink.atlas'];
+  }else{
+    const d=window.PAPER_INK_COMPONENT_DATA;
+    entry=d&&d.entries.find(x=>x.num===num);
+  }
+  if(!entry){stage.textContent='组件 #'+num+' 缺失';return;}
+  const markup=adapter?adapter.adaptMarkup(entry.snippet||''):(entry.snippet||'');
+  const host=document.createElement('div');
+  host.className='stage-host';
+  host.innerHTML=markup;
+  stage.appendChild(host);
+  requestAnimationFrame(()=>fitStage(stage,host));
+}
+function fitStage(stage,host){
+  const el=host.firstElementChild;
+  if(!el)return;
+  const W=stage.clientWidth,H=stage.clientHeight;
+  const w=el.offsetWidth||600,h=el.offsetHeight||600;
+  const s=Math.min(W/w,H/h,1);
+  el.style.transformOrigin='0 0';
+  el.style.transform='scale('+s+')';
+  el.style.position='absolute';
+  el.style.left=((W-w*s)/2)+'px';
+  el.style.top=((H-h*s)/2)+'px';
+}
+
+/* 3) ECharts 页面内 init:容器固定 1280×720,再统一缩放(字号与画册一致) */
+function cssToken(name){return getComputedStyle(document.documentElement).getPropertyValue(name).trim();}
+function typeSize(role){return Number.parseFloat(cssToken('--type-'+role))||16;}
+function initEChartsStage(stage){
+  const data=window.WISE_PPT_ECHARTS_GALLERY_DATA;
+  const entry=data&&data.components.find(x=>x.component_id===stage.dataset.ec);
+  if(!entry||!window.echarts){stage.textContent='ECharts 数据缺失';return;}
+  const box=document.createElement('div');
+  box.className='stage-ecbox';
+  stage.appendChild(box);
+  const adapter=window.WiseEchartsThemeAdapter;
+  const themeAdapter=(window.WisePPTThemeAdapters||{})['paper-ink.echarts'];
+  if(!adapter||!themeAdapter){stage.textContent='主题适配缺失';return;}
+  const chart=echarts.init(box,null,{renderer:'svg',width:1280,height:720});
+  const option=adapter.previewOption(entry,{isDetail:false,themeAdapter:themeAdapter,themeContext:{root:document.documentElement},typeSize:typeSize,animated:false});
+  chart.setOption(option,true);
+  requestAnimationFrame(()=>{
+    const W=stage.clientWidth,s=W/1280;
+    box.style.transform='scale('+s+')';
+  });
+}
+
+/* 首次进入组件 tab 时挂载全部(ECharts init 需可见尺寸) */
+let cmpMounted=false;
+function mountAllComponents(){
+  if(cmpMounted)return;cmpMounted=true;
+  document.querySelectorAll('.comp-stage[data-src]').forEach(mountStage);
+  let done=false;
+  const run=()=>{if(done)return;done=true;document.querySelectorAll('.comp-stage[data-ec]').forEach(initEChartsStage);};
+  setTimeout(run,400);
+  if(document.fonts&&document.fonts.ready)document.fonts.ready.then(run);
+}
+const _switchTabOri=switchTab;
+switchTab=function(id){_switchTabOri(id);if(id==='cmp')mountAllComponents();};
 
 /* ============ 结构枚举(7 种切分,从 skill-design 第五章 + 55 版式反向抽象) ============ */
 /* SVG 示意图:150×84 的 16:9 小框 + 切线,抽象自版式实拍 */
@@ -451,20 +547,20 @@ const gTable=band=>(x,y,w,h)=>{
 const STRUCTS=[
   {key:'single',cn:'① 单行',en:'single',judge:'单个对象;或图形需要整页舒展',
    desc:'整页一块,不再切分。区域内组件形状自由:放射、环形、蛇形、漏斗都是这里的画法,不是页面结构。',
-   rels:['焦点','层级','拆解','部分整体','嵌套','时序','流动','循环','汇聚','漏斗','映射','网络','空间','证据'],
-   caps:[{cap:'整页一块 · 画法自由',d:gSingle()}],samples:['M1','B1','H1','O1']},
+   rels:['焦点','并行','层级','拆解','部分整体','嵌套','时序','流动','循环','汇聚','漏斗','映射','网络','空间','证据'],
+   caps:[{cap:'整页一块 · 画法自由',d:gSingle()}],samples:['M1','B1','H1','N1']},
   {key:'heq',cn:'② 左右 x 等分',en:'h-equal-split',judge:'多个并列对象 + 横向阅读流(步骤、时间、对比)',
    desc:'横向均分,x≥2。左右等分 x=2 是特例。',
    rels:['陈列','并行','拆解','时序','漏斗','因果','对比','映射'],
    caps:[{cap:'x=2(E1)',d:gCols(2)},{cap:'x=3(A5)',d:gCols(3)},{cap:'x=4(C6)',d:gCols(4)}],samples:['E1','A5','C6']},
-  {key:'veq',cn:'③ 上下 x 等分',en:'v-equal-split',judge:'多个并列对象 + 纵向阅读流(层级、堆叠、泳道)',
-   desc:'纵向均分,x≥2。分层栈、多泳道、因果双带都是它。',
-   rels:['陈列','并行','层级','拆解','流动','因果','对比','证据'],
-   caps:[{cap:'x=2(E3)',d:gRows(2)},{cap:'x=3(B3)',d:gRows(3)},{cap:'x=4(H3)',d:gRows(4)}],samples:['E3','B3','H3']},
-  {key:'hasym',cn:'④ 左右不对称',en:'h-asymmetric',judge:'有主辅之分:主图 + 规格单 / 数据栏 / 证据墙',
-   desc:'主 + 次,次侧可再分(虚线示意)。辅助内容放次侧。',
-   rels:['层级','拆解','循环','空间','证据'],
-   caps:[{cap:'主+辅,辅可再分(F2/C1)',d:gHasym()},{cap:'主+辅+辅(A8)',d:gHasym(1)}],samples:['F2','C1','A4']},
+  {key:'veq',cn:'③ 上下 x 等分',en:'v-equal-split',judge:'多个并列对象 + 纵向阅读流(层级、堆叠)',
+   desc:'纵向均分,x≥2。分层栈(H3/H4)、因果双带(E3)都是它。泳道横线是组件画法,不算切分(B3 归单行)。',
+   rels:['陈列','层级','拆解','流动','因果','对比','证据'],
+   caps:[{cap:'x=2(E3)',d:gRows(2)},{cap:'x=3(H4)',d:gRows(3)},{cap:'x=4(H3)',d:gRows(4)}],samples:['E3','H4','H3']},
+  {key:'hasym',cn:'④ 左右不对称',en:'h-asymmetric',judge:'有主辅之分:主图 + 规格单 / 数据栏 / 证据墙 / 两侧标注',
+   desc:'主 + 次,次侧可再分(虚线示意)。辅助内容放次侧;主图两侧都有辅就是 主+辅+辅(O1 漏斗)。',
+   rels:['层级','拆解','循环','空间','证据','漏斗'],
+   caps:[{cap:'主+辅,辅可再分(F2/C1)',d:gHasym()},{cap:'主+辅+辅(A8/O1)',d:gHasym(1)}],samples:['F2','C1','A4','O1']},
   {key:'vasym',cn:'⑤ 上下不对称',en:'v-asymmetric',judge:'有主辅之分 + 纵向阅读流:表格+收束带、画+说明',
    desc:'主 + 次(纵向)。上表格下收束带(K1)、上画下注(A2/C2)。',
    rels:['矩阵','证据'],
