@@ -79,10 +79,6 @@
     <div class="fam-head"><h2>画册模板(paper-ink)</h2><span class="desc">整页级模板,含版式与视觉</span></div>
     <div class="grid" id="tpl-gallery"></div>
   </div>
-  <div class="fam-section">
-    <div class="fam-head"><h2>Atlas 片段级模板</h2><span class="desc">从组件库剔除的封面 / 目录 / 引用 —— 归入非关系页参考</span></div>
-    <div class="comp-grid" id="tpl-atlas"></div>
-  </div>
 </main>
 
 <main id="m-lyt">
@@ -215,12 +211,6 @@ const EXTRACT=[
   ['C5','进度环','子组件',''],['C3','档案卡','子组件',''],['A1','标本卡(引文+批注)','子组件',''],['A3','引文卡','子组件',''],
 ];
 
-/* 非关系页 atlas 片段 */
-const TPL_ATLAS=[
-  {rep:1,en:'cover',nm:'封面',param:'标题落版'},
-  {rep:5,en:'toc-card',nm:'目录卡片',param:'章节 3~8'},
-  {rep:11,en:'quote',nm:'引用金句',param:'单条金句'},
-];
 /* 结构参考 atlas 片段 */
 const STRUCT_ATLAS=[
   {rep:7,en:'two-col',nm:'双栏布局',struct:'左右2等分'},
@@ -301,8 +291,7 @@ function compCard(c,extra=''){
 
 /* 非关系页 */
 $('#tpl-gallery').innerHTML=NON_REL.map(layoutCard).join('');
-$('#tpl-atlas').innerHTML=TPL_ATLAS.map(c=>compCard(c)).join('');
-$('#c-tpl').textContent=NON_REL.length+TPL_ATLAS.length;
+$('#c-tpl').textContent=NON_REL.length;
 
 /* 版式:结构参考 + 六大族 */
 $('#lyt-struct').innerHTML=STRUCT_ATLAS.map(c=>compCard(c)).join('');
