@@ -109,7 +109,7 @@
 <body>
 <header>
   <h1>资产目录 · Catalog</h1>
-  <div class="sub">非关系页模板(直接套用) / 关系页版式(七大族) / 结构枚举(6 种切分) / 组件(合并变体后)</div>
+  <div class="sub">非关系页模板(直接套用) / 关系页版式(六大族) / 结构枚举(6 种切分) / 组件(合并变体后)</div>
   <div class="tabs">
     <button class="tab on" data-t="tpl">非关系页模板<span class="n" id="c-tpl"></span></button>
     <button class="tab" data-t="lyt">关系页版式<span class="n" id="c-lyt"></span></button>
@@ -138,7 +138,7 @@
 </main>
 
 <main id="m-cmp">
-  <div class="note"><b>组件 = 参数化画法。</b>内容数量是参数不是组件类型;画法不同才是不同组件。atlas + native + ECharts 全部组件,按信息关系六大族统一分组(重心族无独立组件,由非关系页模板承担)。</div>
+  <div class="note"><b>组件 = 参数化画法。</b>内容数量是参数不是组件类型;画法不同才是不同组件。atlas + native + ECharts 全部组件,按信息关系六大族统一分组(重心族组件少,多为示意件;页面级焦点多由非关系页模板承担)。</div>
   <div id="extract-groups"></div>
   <div id="cmp-groups"></div>
 </main>
@@ -157,12 +157,13 @@ const FAMS=[
     ['M1','粒子主角 + 对照提问','单行','焦点 + 对照'],
     ['A2','场景画','单行','示意'],['A8','后台界面 mock(节点树)','单行','示意'],
   ]},
-  {id:'parallel',cn:'② 并列',desc:'对象间无关系,放一起 / 多条独立并行线',items:[
+  {id:'parallel',cn:'② 并列',desc:'对象间无关系,放一起:陈列 / 并行 / 指标 / 分布',items:[
     ['A5','条文陈列页','左右3等分','陈列'],['A7','Logo 云墙','网格7×4','陈列'],
     ['C3','案例卡列阵','左右3等分','陈列'],['F3','分栏清单柱','左右3等分','拆解(并列面)'],
     ['F4','图标六宫格','网格2×3','拆解(并列面)'],['I4','并行路径卡','左右3等分','并行(内含时序)'],
+    ['C6','KPI 大数字横带','左右4等分','指标'],['C4','分布地图','左右不对称','分布'],
   ]},
-  {id:'structure',cn:'③ 结构',desc:'包含 / 从属,看边界',items:[
+  {id:'containment',cn:'③ 包含',desc:'包含 / 从属,看边界',items:[
     ['F2','环节树 + 规格单','左右不对称','拆解'],
     ['G1','三向放射','单行','拆解'],['G2','立绘环绕标注','单行','拆解'],
     ['G4','中心枢纽 + 卫星','单行','拆解 / 网络'],['H1','同心防线','单行','嵌套'],
@@ -178,11 +179,11 @@ const FAMS=[
     ['J3','旅程曲线','单行','时序'],['K2','痛点→解法→成效','左右3等分','因果'],['K3','左痛右解复合','左右不对称','因果'],
     ['N1','汇聚流','单行','汇聚'],['O1','漏斗','左右不对称','漏斗'],
   ]},
-  {id:'comparison',cn:'⑤ 比较',desc:'对齐并排看异同 / 对应',items:[
+  {id:'comparison',cn:'⑤ 比较',desc:'对齐并排看异同 / 对应 / 排名',items:[
     ['E1','对比双面板','左右2等分','对比'],['E2','分水岭双栏','左右2等分','对比'],
     ['E4','前后对比行矩阵','上下不对称','对比 + 矩阵'],['E5','双金字塔映射','左右2等分','映射'],
     ['E6','前后双带演进','上下2等分','对比 + 流动'],['F1','坐标轴象限','单行','矩阵'],
-    ['K1','链阵复合(阶段×维度)','上下不对称','矩阵'],['K4','三栏行带矩阵','左右3等分','矩阵'],['L2','星座映射网','单行','映射'],
+    ['K1','链阵复合(阶段×维度)','上下不对称','矩阵'],['K4','三栏行带矩阵','左右3等分','矩阵'],['L2','星座映射网','单行','映射'],['C7','排行柱图','单行','排名'],
   ]},
   {id:'connection',cn:'⑥ 连接',desc:'有关联但无方向、无包含',items:[
     ['A1','标本卡(对话批注)','单行','证据'],['A3','文献摘引','上下不对称','证据'],
@@ -190,22 +191,22 @@ const FAMS=[
     ['C1','左图右数据格','左右不对称','证据'],['C2','图表联排墙','上下不对称','证据'],
     ['L1','权重弧线图','单行','网络'],
   ]},
-  {id:'data',cn:'⑦ 数据',desc:'定量数据展示:排名 / 分布 / 指标',items:[
-    ['C7','排行柱图','单行','排名'],['C4','分布地图','左右不对称','分布'],['C6','KPI 大数字横带','左右4等分','指标'],
-  ]},
 ];
 
 /* 组件统一池:atlas + native + echarts 全部组件,按信息关系六大族分组(MECE)
    t: 'atlas' | 'native' | 'ec';atlas/native 用 num,ec 用 id */
 const COMPONENTS=[
+  {fam:'重心 · 焦点/示意',items:[
+    {t:'native',num:75,en:'district-map',nm:'街区示意地图',rel:['示意']},
+  ]},
   {fam:'并列 · 陈列单元(单元×N,排布归结构)',items:[
     {t:'atlas',num:2,en:'list-card',nm:'列表卡片',note:'合并 #002-004;单元×N',rel:['陈列']},
     {t:'atlas',num:6,en:'form-card',nm:'表单卡片',rel:['陈列']},
     {t:'atlas',num:12,en:'alert-box',nm:'提示框',rel:['陈列']},
     {t:'atlas',num:13,en:'terminal-box',nm:'终端框',rel:['陈列']},
     {t:'atlas',num:14,en:'code',nm:'代码块',rel:['陈列']},
-    {t:'atlas',num:59,en:'stats',nm:'指标单元',note:'atlas 打包 4 格;概念上单元×4',rel:['陈列']},
-    {t:'native',num:89,en:'metric-strip',nm:'自适应指标横带',rel:['陈列']},
+    {t:'atlas',num:59,en:'stats',nm:'指标单元',note:'atlas 打包 4 格;概念上单元×4',rel:['陈列','指标']},
+    {t:'native',num:89,en:'metric-strip',nm:'自适应指标横带',rel:['陈列','指标']},
     {t:'native',num:85,en:'radial-progress',nm:'环形进度指标',note:'单元×N',rel:['陈列']},
     {t:'native',num:86,en:'icon-grid',nm:'图标格阵',rel:['陈列']},
     {t:'native',num:84,en:'profile-card',nm:'人物画像卡',note:'单元×N',rel:['陈列']},
@@ -214,8 +215,9 @@ const COMPONENTS=[
     {t:'native',num:65,en:'official-doc',nm:'公文标本框',rel:['陈列']},
     {t:'native',num:91,en:'pain-list',nm:'痛点根因列',rel:['陈列']},
     {t:'native',num:93,en:'infra-strip',nm:'基础设施横带',rel:['陈列']},
+    {t:'ec',id:'echarts.geo-choropleth-map',en:'geo-map',nm:'分级填色地图',rel:['分布']},
   ]},
-  {fam:'结构 · 包含/构成',items:[
+  {fam:'包含 · 层级/拆解/嵌套',items:[
     {t:'atlas',num:43,en:'concentric',nm:'同心圆',note:'合并 #043-047',rel:['层级','嵌套']},
     {t:'atlas',num:48,en:'pyramid',nm:'金字塔',note:'合并 #048-049;开关 inverted',rel:['层级']},
     {t:'atlas',num:51,en:'iceberg',nm:'冰山图',rel:['拆解']},
@@ -269,7 +271,7 @@ const COMPONENTS=[
     {t:'ec',id:'echarts.bar-basic',en:'bar',nm:'柱状图',note:'含 dynamic-sort 变体',rel:['对比']},
     {t:'ec',id:'echarts.radar-basic',en:'radar-e',nm:'雷达图(ECharts)',rel:['对比']},
   ]},
-  {fam:'连接 · 网络/空间/证据',items:[
+  {fam:'连接 · 网络/证据',items:[
     {t:'native',num:66,en:'evidence-wall',nm:'证据墙标本格',rel:['证据']},
     {t:'native',num:67,en:'logo-cloud',nm:'品牌云墙',rel:['证据']},
     {t:'native',num:68,en:'mobile-gallery',nm:'手机屏步骤画廊',rel:['证据']},
@@ -277,8 +279,6 @@ const COMPONENTS=[
     {t:'native',num:78,en:'chat-dialog',nm:'对话气泡标本',rel:['证据']},
     {t:'native',num:88,en:'annotation-callout',nm:'环绕引线标注',rel:['证据']},
     {t:'new',mk:1,en:'weighted-arc-web',nm:'权重弧网',note:'新做 · 源 L1;节点 4~7,线宽三档',rel:['网络']},
-    {t:'native',num:75,en:'district-map',nm:'街区示意地图',rel:['空间']},
-    {t:'ec',id:'echarts.geo-choropleth-map',en:'geo-map',nm:'分级填色地图',rel:['空间']},
     {t:'ec',id:'echarts.scatter-basic',en:'scatter',nm:'散点图',note:'含 to-bar 动画变体',rel:['关联']},
   ]},
 ];
