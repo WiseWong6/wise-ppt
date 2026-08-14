@@ -5,11 +5,11 @@
 <title>Wise PPT 资产目录:非关系页 · 版式 · 组件</title>
 <link rel="stylesheet" href="../themes/paper-ink/assets/design-tokens.css">
 <style>
-  /* 纸墨配色:色值一律取自 design-tokens.css,catalog 只做本地别名 */
+  /* 纸墨配色:基础名(--ink/--paper/--ink-80 等)直接来自 design-tokens.css。
+     不做 --wp-* 中转别名 —— 与 tokens 的反向映射会形成循环引用,导致变量失效(header 背景变透明)。 */
   :root{
-    --ink:var(--wp-color-primary); --ink-2:var(--ink-80); --ink-3:var(--ink-55);
-    --paper:var(--wp-color-surface-canvas); --paper-deep:var(--wp-color-surface-recessed);
-    --card:rgba(255,255,255,.45); --line:var(--ink-25); --accent:var(--accent-red);
+    --card:rgba(255,255,255,.45);
+    --ink-2:var(--ink-80); --ink-3:var(--ink-55);
   }
   *{box-sizing:border-box;margin:0;padding:0}
   body{font-family:var(--wp-font-sans);font-weight:300;background:var(--paper);color:var(--ink)}
