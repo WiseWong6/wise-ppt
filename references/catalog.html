@@ -4,14 +4,7 @@
 <meta charset="UTF-8">
 <title>Wise PPT 资产目录:非关系页 · 版式 · 结构 · 组件</title>
 <link rel="stylesheet" href="../themes/paper-ink/assets/design-tokens.css">
-<!-- 组件数据与运行时:页面原生渲染(无 iframe),一次加载全部共享 -->
-<script src="../themes/paper-ink/adapters/atlas.js"></script>
-<script src="ppt-component-atlas/catalog-data.js"></script>
-<script src="../capabilities/layouts/paper-ink-components.js"></script>
-<script src="../capabilities/vendors/echarts/echarts.min.js"></script>
-<script src="../themes/paper-ink/adapters/echarts.js"></script>
-<script src="gallery-components/echarts-catalog-data.js"></script>
-<script src="gallery-components/echarts-theme-adapter.js"></script>
+<!-- 组件数据与 ECharts 在进入组件页、接近对应卡片时按需加载。 -->
 <style>
   /* 纸墨配色:基础名(--ink/--paper/--ink-80 等)直接来自 design-tokens.css。
      不做 --wp-* 中转别名 —— 与 tokens 的反向映射会形成循环引用,导致变量失效(header 背景变透明)。 */
@@ -40,14 +33,18 @@
   .fam-head .desc{font-size:12px;color:var(--ink-3)}
 
   .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(340px,1fr));gap:18px}
-  .card{background:var(--card);border:1px solid var(--line);break-inside:avoid}
-  .frame-wrap{position:relative;padding-top:56.25%;overflow:hidden;background:var(--paper-deep)}
+  .card{background:var(--card);border:1px solid var(--line);break-inside:avoid;content-visibility:auto;contain-intrinsic-size:auto 320px}
+  .frame-wrap{position:relative;box-sizing:content-box;aspect-ratio:16 / 9;overflow:hidden;background:var(--paper-deep)}
   .frame-wrap iframe{position:absolute;top:0;left:0;width:1920px;height:1080px;border:0;transform-origin:0 0}
   .frame-wrap{margin:10px 10px 0;border:0.5px solid var(--ink-45)}
   .comp-wrap{margin:10px 10px 0;border:0.5px solid var(--ink-45)}
   /* 组件原生渲染场馆(无 iframe) */
   .comp-stage{position:absolute;inset:0;overflow:hidden;background:var(--paper)}
+  .comp-stage::after{content:'加载中';position:absolute;inset:0;display:grid;place-items:center;color:var(--ink-3);font-size:11px;letter-spacing:.08em}
+  .comp-stage.is-mounted::after{display:none}
+  .comp-stage:not(.is-visible) *{animation-play-state:paused !important}
   .stage-host{position:absolute;inset:0}
+  .comp-stage .stage-host{inset:auto;width:1280px;height:720px;transform-origin:0 0}
   .stage-ecbox{position:absolute;left:0;top:0;width:1280px;height:720px;transform-origin:0 0}
   .card,.comp-card{cursor:pointer}
   .card-info{padding:10px 14px 12px}
@@ -58,8 +55,8 @@
 
   /* 组件卡片(近方形) */
   .comp-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:18px}
-  .comp-card{background:var(--card);border:1px solid var(--line)}
-  .comp-wrap{position:relative;padding-top:56.25%;overflow:hidden;background:var(--paper-deep)}
+  .comp-card{background:var(--card);border:1px solid var(--line);content-visibility:auto;contain-intrinsic-size:auto 320px}
+  .comp-wrap{position:relative;box-sizing:content-box;aspect-ratio:16 / 9;overflow:hidden;background:var(--paper-deep)}
   .comp-wrap iframe{width:1280px;height:720px;border:0;transform-origin:0 0;position:absolute;left:0;top:0}
   .comp-info{padding:10px 14px 12px}
   .comp-info .nm{font-size:14px;font-weight:700}
@@ -456,7 +453,7 @@ function layoutCard([id,nm,struct,rel]){
   const relTxt=rel?(' · 关系:<b>'+rel+'</b>'):'';
   const mtag='结构:'+struct+(rel?' · 关系:'+rel:'');
   return `<div class="card" id="lyt-${id.toLowerCase()}" data-modal="1" data-frame="${full}" data-mtitle="${id} ${nm}" data-mtag="${mtag}">
-    <div class="frame-wrap"><iframe loading="lazy" src="${full}"></iframe></div>
+    <div class="frame-wrap"><iframe loading="lazy" data-src="${full}"></iframe></div>
     <div class="card-info"><span class="id">${id}</span>
       <div class="nm">${nm}</div>
       <div class="meta">结构:<b>${struct}</b>${relTxt}</div>
@@ -504,7 +501,7 @@ $('#c-cmp').textContent=COMPONENTS.reduce((s,g)=>s+g.items.length,0)+'+'+EXTRACT
 function extractCard(it){
   const full=FRAMES+'layout-'+it.from.toLowerCase()+'.html';
   return `<div class="card" data-modal="1" data-frame="${full}" data-mtitle="${it.from} → ${it.nm}" data-mtag="${it.note||'整页预览'}">
-    <div class="frame-wrap"><iframe loading="lazy" src="${full}"></iframe></div>
+    <div class="frame-wrap"><iframe loading="lazy" data-src="${full}"></iframe></div>
     <div class="card-info"><span class="id">${it.from} → 组件</span>
       <div class="nm">${it.nm}</div>
       ${it.note?`<div class="meta">${it.note}</div>`:''}
@@ -585,6 +582,11 @@ $('#extract-groups').innerHTML=EXTRACT_GROUPS.map(g=>`
     const card=e.target.closest('[data-modal]');
     if(!card)return;
     const d=card.dataset;
+    const preview=card.querySelector('.comp-stage');
+    if(d.spec&&preview&&!preview.classList.contains('is-mounted')){
+      queueComponentStage(preview);
+      return;
+    }
     document.getElementById('layer-info').innerHTML=(d.mtitle||'')+(d.mtag?' · '+d.mtag:'');
     modal.classList.add('on');
     if(d.frame)renderFrame(d.frame);
@@ -593,8 +595,50 @@ $('#extract-groups').innerHTML=EXTRACT_GROUPS.map(g=>`
 })();
 
 /* ============ 组件原生渲染引擎(无 iframe) ============ */
-/* 1) 样式:atlas(swiss→纸墨适配)与 native(pi)的 componentCss 各注入一次 */
-(function injectComponentCss(){
+/* 1) 资源分层:组件页才加载 atlas/native；ECharts 到第一张图表接近视口才加载。 */
+const COMPONENT_CORE_SCRIPTS=[
+  '../themes/paper-ink/adapters/atlas.js',
+  'ppt-component-atlas/catalog-data.js',
+  '../capabilities/layouts/paper-ink-components.js',
+];
+const ECHARTS_SCRIPTS=[
+  '../capabilities/vendors/echarts/echarts.min.js',
+  '../themes/paper-ink/adapters/echarts.js',
+  'gallery-components/echarts-catalog-data.js',
+  'gallery-components/echarts-theme-adapter.js',
+];
+let componentCorePromise=null,echartsAssetsPromise=null,componentCssInjected=false;
+function loadScript(src){
+  return new Promise((resolve,reject)=>{
+    const script=document.createElement('script');
+    script.src=src;
+    script.onload=()=>resolve();
+    script.onerror=()=>reject(new Error('资源加载失败:'+src));
+    document.head.appendChild(script);
+  });
+}
+async function loadScriptsInOrder(sources){
+  for(const src of sources)await loadScript(src);
+}
+function ensureComponentCore(){
+  if(!componentCorePromise){
+    componentCorePromise=Promise.all(COMPONENT_CORE_SCRIPTS.map(loadScript))
+      .then(()=>injectComponentCss())
+      .catch(err=>{componentCorePromise=null;throw err;});
+  }
+  return componentCorePromise;
+}
+function ensureEChartsAssets(){
+  if(!echartsAssetsPromise){
+    echartsAssetsPromise=loadScriptsInOrder(ECHARTS_SCRIPTS)
+      .catch(err=>{echartsAssetsPromise=null;throw err;});
+  }
+  return echartsAssetsPromise;
+}
+
+/* atlas(swiss→纸墨适配)与 native(pi)的 componentCss 各注入一次 */
+function injectComponentCss(){
+  if(componentCssInjected)return;
   const ADAPTER=(window.WisePPTThemeAdapters||{})['paper-ink.atlas'];
   const atlasData=window.SWISS_CATALOG_DATA;
   if(atlasData){
@@ -610,7 +654,8 @@ $('#extract-groups').innerHTML=EXTRACT_GROUPS.map(g=>`
     st2.textContent=(pi.componentCss||'')+(pi.componentMotionCss||'');
     document.head.appendChild(st2);
   }
-})();
+  componentCssInjected=true;
+}
 
 /* 2) snippet 注入 + 场馆缩放:comp-stage(16:9)内,组件原尺寸 contain 居中 */
 function mountStage(stage){
@@ -619,7 +664,8 @@ function mountStage(stage){
     host.className='stage-host';
     host.innerHTML=NEW_MARKUP[+stage.dataset.new]||'';
     stage.appendChild(host);
-    requestAnimationFrame(()=>{fitStage(stage,host);requestAnimationFrame(()=>fitStage(stage,host));});
+    stage.classList.add('is-mounted');
+    requestAnimationFrame(()=>{fitStage(stage,host,true,true);requestAnimationFrame(()=>fitStage(stage,host,true,true));});
     return;
   }
   const parts=(stage.dataset.src||'').split(':');
@@ -633,13 +679,14 @@ function mountStage(stage){
     const d=window.PAPER_INK_COMPONENT_DATA;
     entry=d&&d.entries.find(x=>x.num===num);
   }
-  if(!entry){stage.textContent='组件 #'+num+' 缺失';return;}
+  if(!entry){throw new Error('组件 #'+num+' 缺失');}
   const markup=adapter?adapter.adaptMarkup(entry.snippet||''):(entry.snippet||'');
   const host=document.createElement('div');
   host.className='stage-host';
   host.innerHTML=markup;
   stage.appendChild(host);
-  requestAnimationFrame(()=>{fitStage(stage,host);requestAnimationFrame(()=>fitStage(stage,host));});
+  stage.classList.add('is-mounted');
+  requestAnimationFrame(()=>{fitStage(stage,host,true,true);requestAnimationFrame(()=>fitStage(stage,host,true,true));});
 }
 /* 内容包围盒:只算"实际画了东西"的后代(文字 / 非透明背景 / 可见边框 / svg·img 等),
    排除透明空壳与画板自带留白。缩放与居中都以它为准,而不是整个组件画板。 */
@@ -697,42 +744,59 @@ function contentBounds(el){
 
 /* 挂载过的场馆登记,resize / 切回组件 tab 时统一重排 */
 const fittedStages=[];
-function refitComponents(){
+function refitComponents(remeasure=false){
   if(!fittedStages.length)return;
   requestAnimationFrame(()=>{
     fittedStages.forEach(s=>{
+      if(!s.isConnected)return;
       const h=s.querySelector('.stage-host');
-      if(h)fitStage(s,h);
+      if(h)fitStage(s,h,true,remeasure);
     });
   });
 }
 
-/* 场馆缩放:组件内容包围盒 contain 后水平垂直居中于 16:9 画布 */
-function fitStage(stage,host){
+/* 组件先在 1280×720 PPT 内层画布中保持原尺寸居中；卡片预览再像 iframe 一样整体等比缩小。
+   浮层详情仍按可用区域 contain 放大，避免改变点击后的审阅体验。
+   PPT 内层几何只在首次挂载或字体就绪后测量；resize 仅更新外层缩放。 */
+function fitStage(stage,host,usePptCanvas=false,remeasure=false){
   const el=host.firstElementChild;
   if(!el)return;
-  const W=stage.clientWidth,H=stage.clientHeight;
-  if(W<2||H<2)return;
-  el.style.transform='none';
-  el.style.position='absolute';
-  el.style.left='0';
-  el.style.top='0';
-  let s=1,left=0,top=0;
-  const b=contentBounds(el);
-  if(b){
-    const bw=b[2]-b[0],bh=b[3]-b[1];
-    s=bw>0&&bh>0?Math.min(W/bw,H/bh,1):1;
-    left=W/2-s*(b[0]+bw/2);
-    top=H/2-s*(b[1]+bh/2);
-  }else{
-    const w=el.offsetWidth||600,h=el.offsetHeight||600;
-    s=Math.min(W/w,H/h,1);
-    left=(W-w*s)/2;
-    top=(H-h*s)/2;
+  const stageW=stage.clientWidth,stageH=stage.clientHeight;
+  if(stageW<2||stageH<2)return;
+  const W=usePptCanvas?1280:stageW,H=usePptCanvas?720:stageH;
+  const shouldMeasure=!usePptCanvas||remeasure||host.dataset.innerFitted!=='1';
+  if(shouldMeasure){
+    host.style.transform='none';
+    host.style.left='0';
+    host.style.top='0';
+    el.style.transform='none';
+    el.style.position='absolute';
+    el.style.left='0';
+    el.style.top='0';
+    let s=1,left=0,top=0;
+    const b=contentBounds(el);
+    if(b){
+      const bw=b[2]-b[0],bh=b[3]-b[1];
+      s=bw>0&&bh>0?Math.min(W/bw,H/bh,1):1;
+      left=W/2-s*(b[0]+bw/2);
+      top=H/2-s*(b[1]+bh/2);
+    }else{
+      const w=el.offsetWidth||600,h=el.offsetHeight||600;
+      s=Math.min(W/w,H/h,1);
+      left=(W-w*s)/2;
+      top=(H-h*s)/2;
+    }
+    el.style.transformOrigin='0 0';
+    el.style.transform='translate('+left+'px,'+top+'px) scale('+s+')';
+    if(usePptCanvas)host.dataset.innerFitted='1';
   }
-  el.style.transformOrigin='0 0';
-  el.style.transform='translate('+left+'px,'+top+'px) scale('+s+')';
-  if(fittedStages.indexOf(stage)<0)fittedStages.push(stage);
+  if(usePptCanvas){
+    const previewScale=Math.min(stageW/W,stageH/H);
+    host.style.left=(stageW-W*previewScale)/2+'px';
+    host.style.top=(stageH-H*previewScale)/2+'px';
+    host.style.transform='scale('+previewScale+')';
+    if(fittedStages.indexOf(stage)<0)fittedStages.push(stage);
+  }
 }
 
 /* 3) ECharts 页面内 init:容器固定 1280×720,再统一缩放(字号与画册一致) */
@@ -741,36 +805,88 @@ function typeSize(role){return Number.parseFloat(cssToken('--type-'+role))||16;}
 function initEChartsStage(stage){
   const data=window.WISE_PPT_ECHARTS_GALLERY_DATA;
   const entry=data&&data.components.find(x=>x.component_id===stage.dataset.ec);
-  if(!entry||!window.echarts){stage.textContent='ECharts 数据缺失';return;}
+  if(!entry||!window.echarts)throw new Error('ECharts 数据缺失');
   if(entry.register_maps){Object.keys(entry.register_maps).forEach(n=>echarts.registerMap(n,entry.register_maps[n]));}
   const box=document.createElement('div');
   box.className='stage-ecbox';
   stage.appendChild(box);
   const adapter=window.WiseEchartsThemeAdapter;
   const themeAdapter=(window.WisePPTThemeAdapters||{})['paper-ink.echarts'];
-  if(!adapter||!themeAdapter){stage.textContent='主题适配缺失';return;}
+  if(!adapter||!themeAdapter)throw new Error('ECharts 主题适配缺失');
   const chart=echarts.init(box,null,{renderer:'svg',width:1280,height:720});
   const option=adapter.previewOption(entry,{isDetail:false,themeAdapter:themeAdapter,themeContext:{root:document.documentElement},typeSize:typeSize,animated:false});
   chart.setOption(option,true);
+  stage.classList.add('is-mounted');
   requestAnimationFrame(()=>{
     const W=stage.clientWidth,s=W/1280;
     box.style.transform='scale('+s+')';
   });
 }
 
-/* 首次进入组件 tab 时挂载全部(ECharts init 需可见尺寸) */
-let cmpMounted=false;
-function mountAllComponents(){
-  if(cmpMounted)return;cmpMounted=true;
-  document.querySelectorAll('.comp-stage[data-src],.comp-stage[data-new]').forEach(mountStage);
-  let done=false;
-  const run=()=>{if(done)return;done=true;
-    document.querySelectorAll('.comp-stage[data-ec]').forEach(s=>{
-      try{initEChartsStage(s);}catch(err){s.textContent='ECharts 渲染失败:'+(err&&err.message||err);}
-    });
-  };
-  setTimeout(run,400);
-  if(document.fonts&&document.fonts.ready)document.fonts.ready.then(()=>{refitComponents();run();});
+/* 首次进入组件 tab 只建立观察；每帧最多挂载 2 张临近卡片，避免长任务阻塞滚动。 */
+let cmpMounted=false,componentMountObserver=null,componentVisibilityObserver=null,componentMountRaf=0;
+const componentMountQueue=[];
+function failComponentStage(stage,err){
+  const p=document.createElement('div');
+  p.className='placeholder';
+  p.textContent='加载失败:'+(err&&err.message||err);
+  stage.replaceChildren(p);
+  stage.classList.add('is-mounted');
+  stage.dataset.mountState='error';
+}
+async function mountQueuedStage(stage){
+  if(stage.dataset.mountState==='mounted'||stage.dataset.mountState==='loading')return;
+  stage.dataset.mountState='loading';
+  try{
+    if(stage.dataset.ec!==undefined){
+      await ensureEChartsAssets();
+      initEChartsStage(stage);
+    }else{
+      await ensureComponentCore();
+      mountStage(stage);
+    }
+    stage.dataset.mountState='mounted';
+  }catch(err){failComponentStage(stage,err);}
+}
+function drainComponentQueue(){
+  componentMountRaf=0;
+  let budget=2;
+  while(budget--&&componentMountQueue.length)mountQueuedStage(componentMountQueue.shift());
+  if(componentMountQueue.length)componentMountRaf=requestAnimationFrame(drainComponentQueue);
+}
+function queueComponentStage(stage){
+  if(stage.dataset.mountState)return;
+  stage.dataset.mountState='queued';
+  componentMountQueue.push(stage);
+  if(!componentMountRaf)componentMountRaf=requestAnimationFrame(drainComponentQueue);
+}
+function observeComponentStages(){
+  const stages=document.querySelectorAll('.comp-stage[data-src],.comp-stage[data-new],.comp-stage[data-ec]');
+  if('IntersectionObserver' in window){
+    componentMountObserver=new IntersectionObserver(entries=>{
+      entries.forEach(entry=>{
+        if(!entry.isIntersecting)return;
+        componentMountObserver.unobserve(entry.target);
+        queueComponentStage(entry.target);
+      });
+    },{rootMargin:'640px 0px'});
+    componentVisibilityObserver=new IntersectionObserver(entries=>{
+      entries.forEach(entry=>entry.target.classList.toggle('is-visible',entry.isIntersecting));
+    },{threshold:.01});
+    stages.forEach(stage=>{componentMountObserver.observe(stage);componentVisibilityObserver.observe(stage);});
+  }else stages.forEach(stage=>{stage.classList.add('is-visible');queueComponentStage(stage);});
+}
+async function mountAllComponents(){
+  if(cmpMounted)return;
+  cmpMounted=true;
+  try{
+    await ensureComponentCore();
+    observeComponentStages();
+    if(document.fonts&&document.fonts.ready)document.fonts.ready.then(()=>refitComponents(true));
+  }catch(err){
+    cmpMounted=false;
+    document.querySelectorAll('.comp-stage').forEach(stage=>failComponentStage(stage,err));
+  }
 }
 const _switchTabOri=switchTab;
 switchTab=function(id){_switchTabOri(id);if(id==='cmp')mountAllComponents();};
@@ -922,7 +1038,7 @@ $('#str-list').innerHTML=STRUCTS.map(d=>{
     <div class="grid samples">${ms.map(it=>{
       const full=FRAMES+'layout-'+it[0].toLowerCase()+'.html';
       return `<div class="card" data-modal="1" data-frame="${full}" data-mtitle="${it[0]} ${it[1]}" data-mtag="结构:${it[2]} · 关系:${it[3]}">
-        <div class="frame-wrap"><iframe loading="lazy" src="${full}"></iframe></div>
+        <div class="frame-wrap"><iframe loading="lazy" data-src="${full}"></iframe></div>
         <div class="card-info"><span class="id">${it[0]}</span>
           <div class="nm">${it[1]}</div>
           <div class="meta">结构:<b>${it[2]}</b> · 关系:<b>${it[3]}</b></div>
@@ -932,6 +1048,35 @@ $('#str-list').innerHTML=STRUCTS.map(d=>{
 }).join('');
 $('#c-str').textContent=STRUCTS.length;
 
+/* iframe 不预置 src；只有接近可视区时才创建真实子页面。 */
+let lazyFrameObserver=null,fitAllRaf=0;
+function loadFrame(frame){
+  if(!frame.dataset.src||frame.dataset.loaded==='1')return false;
+  frame.src=frame.dataset.src;
+  frame.dataset.loaded='1';
+  return true;
+}
+function unloadFrame(frame){
+  if(frame.dataset.loaded!=='1')return false;
+  frame.removeAttribute('src');
+  delete frame.dataset.loaded;
+  return true;
+}
+function initLazyFrames(){
+  const frames=document.querySelectorAll('.frame-wrap iframe[data-src]');
+  if('IntersectionObserver' in window){
+    lazyFrameObserver=new IntersectionObserver(entries=>{
+      let changed=false;
+      entries.forEach(entry=>{
+        changed=(entry.isIntersecting?loadFrame(entry.target):unloadFrame(entry.target))||changed;
+      });
+      if(changed)scheduleFitAll();
+    },{rootMargin:'800px 0px'});
+    frames.forEach(frame=>lazyFrameObserver.observe(frame));
+  }else frames.forEach(loadFrame);
+}
+initLazyFrames();
+
 /* tab 切换 */
 function switchTab(id){
   document.querySelectorAll('.tab').forEach(x=>x.classList.remove('on'));
@@ -940,14 +1085,14 @@ function switchTab(id){
   if(t)t.classList.add('on');
   const m=document.getElementById('m-'+id);
   if(m)m.classList.add('on');
-  fitAll();
+  scheduleFitAll();
 }
 document.querySelectorAll('.tab').forEach(t=>t.onclick=()=>switchTab(t.dataset.t));
 try{
   const q=new URLSearchParams(location.search).get('tab');
   if(q&&document.getElementById('m-'+q))switchTab(q);
   const sc=new URLSearchParams(location.search).get('scroll');
-  if(sc){window.scrollTo(0,+sc);setTimeout(()=>{window.scrollTo(0,+sc);fitAll();},400);}
+  if(sc){window.scrollTo(0,+sc);setTimeout(()=>{window.scrollTo(0,+sc);scheduleFitAll();},400);}
 }catch(e){}
 function fitAll(){
   document.querySelectorAll('main.on .frame-wrap').forEach(w=>{
@@ -961,9 +1106,13 @@ function fitAll(){
   });
   refitComponents();
 }
-window.addEventListener('resize',fitAll);
-window.addEventListener('load',fitAll);
-setTimeout(fitAll,300);
+function scheduleFitAll(){
+  if(fitAllRaf)return;
+  fitAllRaf=requestAnimationFrame(()=>{fitAllRaf=0;fitAll();});
+}
+window.addEventListener('resize',scheduleFitAll,{passive:true});
+window.addEventListener('load',scheduleFitAll);
+setTimeout(scheduleFitAll,300);
 </script>
 </body>
 </html>
