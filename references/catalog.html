@@ -2363,7 +2363,7 @@ function initLazyFrames(){
 }
 initLazyFrames();
 
-/* tab 切换 */
+/* tab 切换:同步地址栏,刷新停在当前 tab,链接可直接分享(scroll 深链参数用后即弃) */
 function switchTab(id){
   document.querySelectorAll('.tab').forEach(x=>x.classList.remove('on'));
   document.querySelectorAll('main').forEach(x=>x.classList.remove('on'));
@@ -2371,14 +2371,22 @@ function switchTab(id){
   if(t)t.classList.add('on');
   const m=document.getElementById('m-'+id);
   if(m)m.classList.add('on');
+  if(t){
+    try{
+      const q=new URLSearchParams(location.search);
+      q.set('tab',id);q.delete('scroll');
+      history.replaceState(null,'',location.pathname+'?'+q.toString());
+    }catch(e){}
+  }
   scheduleFitAll();
 }
 document.querySelectorAll('.tab').forEach(t=>t.onclick=()=>switchTab(t.dataset.t));
 try{
-  const q=new URLSearchParams(location.search).get('tab');
-  if(q&&document.getElementById('m-'+q))switchTab(q);
-  const sc=new URLSearchParams(location.search).get('scroll');
+  const params=new URLSearchParams(location.search);
+  const q=params.get('tab'),sc=params.get('scroll');
+  /* 先记下 scroll 再切 tab:切 tab 会把用过的深链参数从地址栏清掉 */
   if(sc){window.scrollTo(0,+sc);setTimeout(()=>{window.scrollTo(0,+sc);scheduleFitAll();},400);}
+  if(q&&document.getElementById('m-'+q))switchTab(q);
 }catch(e){}
 function fitAll(){
   document.querySelectorAll('main.on .frame-wrap').forEach(w=>{
