@@ -109,7 +109,7 @@
 <body>
 <header>
   <h1>资产目录 · Catalog</h1>
-  <div class="sub">非关系页模板(直接套用) / 关系页版式(六大族) / 结构枚举(6 种切分) / 组件(合并变体后)</div>
+  <div class="sub">非关系页模板(直接套用) / 关系页版式(SmartArt 语义分类) / 结构枚举(6 种切分) / 组件(SmartArt 语义分类)</div>
   <div class="tabs">
     <button class="tab on" data-t="tpl">非关系页模板<span class="n" id="c-tpl"></span></button>
     <button class="tab" data-t="lyt">关系页版式<span class="n" id="c-lyt"></span></button>
@@ -127,7 +127,7 @@
 </main>
 
 <main id="m-lyt">
-  <div class="note">关系页走 <b>定关系 → 圈候选结构 → 二次判断 → 选组件</b>。同一关系可落到多种结构;结构只负责切区域,区域内由组件负责。</div>
+  <div class="note"><b>这里借用 SmartArt 的“先问要表达什么”来分类。</b>列表 = 无顺序并列;流程 = 步骤/时间/方向;循环 = 持续重复;层级 = 上下级;关系 = 非方向连接/对照;矩阵 = 二维分类或部分与整体;金字塔 = 比例收窄;图片 = 图片/原文主导。Wise PPT 另补“数据”,收纳图表、指标、排名和地图。分类只负责浏览,卡片下方仍保留项目的六大族关系标签。</div>
   <div id="lyt-fams"></div>
 </main>
 
@@ -138,7 +138,7 @@
 </main>
 
 <main id="m-cmp">
-  <div class="note"><b>组件 = 参数化画法。</b>内容数量是参数不是组件类型;画法不同才是不同组件。atlas + native + ECharts 全部组件,按信息关系六大族统一分组(重心族组件少,多为示意件;页面级焦点多由非关系页模板承担)。</div>
+  <div class="note"><b>组件 = 参数化画法。</b>内容数量是参数不是组件类型;画法不同才是不同组件。atlas + native + ECharts 按与版式相同的 SmartArt 语义入口分组;每个组件只放入最主要的表达类型,避免一件多处重复。“数据”是 Wise PPT 对 SmartArt 的扩展,不是新的关系族。</div>
   <div id="extract-groups"></div>
   <div id="cmp-groups"></div>
 </main>
@@ -152,92 +152,68 @@ const NON_REL=[
   ['D4','目录导航','章节索引'],['D5','章节隔页','节奏停顿'],['D6','联络尾页','联系方式'],['M2','金句页','情绪定调'],
 ];
 
-const FAMS=[
-  {id:'focus',cn:'① 重心',desc:'单一对象:焦点 / 示意(插图·原型展示)',items:[
-    ['M1','粒子主角 + 对照提问','单区','焦点 + 对照'],
-    ['A2','场景画','单区','示意'],['A8','后台界面 mock(节点树)','单区','示意'],
-  ]},
-  {id:'parallel',cn:'② 并列',desc:'对象间无关系,放一起:陈列 / 并行 / 指标 / 分布',items:[
+const SMARTART_TYPES=[
+  {id:'list',cn:'① 列表',desc:'无顺序、无强连接的并列信息',items:[
     ['A5','条文陈列页','左右3等分','陈列'],['A7','Logo 云墙','网格7×4','陈列'],
     ['C3','案例卡列阵','左右3等分','陈列'],['F3','分栏清单柱','左右3等分','拆解(并列面)'],
     ['F4','图标六宫格','网格2×3','拆解(并列面)'],['I4','并行路径卡','左右3等分','并行(内含时序)'],
-    ['C6','KPI 大数字横带','左右4等分','指标'],['C4','分布地图','左右不对称','分布'],
   ]},
-  {id:'containment',cn:'③ 包含',desc:'包含 / 从属,看边界',items:[
-    ['F2','环节树 + 规格单','左右不对称','拆解'],
-    ['G1','三向放射','单区','拆解'],['G2','立绘环绕标注','单区','拆解'],
-    ['G4','中心枢纽 + 卫星','单区','拆解 / 网络'],['H1','同心防线','单区','嵌套'],
-    ['H2','嵌套变焦框','单区','嵌套'],['H3','分层架构栈','上下4等分','层级'],['H4','底座托举三层','上下3等分','层级'],
-    ['C5','环形进度环列阵','上下不对称','拆解'],
-  ]},
-  {id:'sequential',cn:'④ 有序',desc:'有方向:时序 / 流动 / 循环 / 汇聚 / 漏斗 / 因果',items:[
+  {id:'process',cn:'② 流程',desc:'步骤、阶段、时间线或有方向的推进',items:[
     ['A9','手机多屏画廊','左右4等分','时序'],['B1','水平时间轴','单区','时序'],['B2','甘特瀑布','单区','时序'],
     ['B3','多泳道路线图','单区','时序 + 并行'],['B4','时间轴垂挂画廊','单区','时序 + 证据'],
     ['B5','阶梯爬升路径','单区','时序'],['B6','蜿蜒道路时间轴','单区','时序'],
-    ['E3','双带列阵(因→策)','上下2等分','因果'],['I1','横向流水线','单区','流动'],['I2','虚实步骤串','单区','流动'],
-    ['I3','双轨转化路径','上下2等分','流动 + 对比'],['J1','循环圆环','单区','循环'],['J2','蛇形回环','单区','循环'],
+    ['E3','双带列阵(因→策)','上下2等分','因果'],['E6','前后双带演进','上下2等分','对比 + 流动'],
+    ['I1','横向流水线','单区','流动'],['I2','虚实步骤串','单区','流动'],['I3','双轨转化路径','上下2等分','流动 + 对比'],
     ['J3','旅程曲线','单区','时序'],['K2','痛点→解法→成效','左右3等分','因果'],['K3','左痛右解复合','左右不对称','因果'],
-    ['N1','汇聚流','单区','汇聚'],['O1','漏斗','左右不对称','漏斗'],
+    ['N1','汇聚流','单区','汇聚'],
   ]},
-  {id:'comparison',cn:'⑤ 比较',desc:'对齐并排看异同 / 对应 / 排名',items:[
+  {id:'cycle',cn:'③ 循环',desc:'首尾闭合、持续重复的过程',items:[
+    ['J1','循环圆环','单区','循环'],['J2','蛇形回环','单区','循环'],
+  ]},
+  {id:'hierarchy',cn:'④ 层级',desc:'上下级、分层或树状从属',items:[
+    ['F2','环节树 + 规格单','左右不对称','拆解'],['H3','分层架构栈','上下4等分','层级'],['H4','底座托举三层','上下3等分','层级'],
+  ]},
+  {id:'relationship',cn:'⑤ 关系',desc:'非线性的连接、对照、映射、中心辐射或包含',items:[
+    ['M1','粒子主角 + 对照提问','单区','焦点 + 对照'],
+    ['G1','三向放射','单区','拆解'],['G4','中心枢纽 + 卫星','单区','拆解 / 网络'],
+    ['H1','同心防线','单区','嵌套'],['H2','嵌套变焦框','单区','嵌套'],
     ['E1','对比双面板','左右2等分','对比'],['E2','分水岭双栏','左右2等分','对比'],
-    ['E4','前后对比行矩阵','上下不对称','对比 + 矩阵'],['E5','双金字塔映射','左右2等分','映射'],
-    ['E6','前后双带演进','上下2等分','对比 + 流动'],['F1','坐标轴象限','单区','矩阵'],
-    ['K1','链阵复合(阶段×维度)','上下不对称','矩阵'],['K4','三栏行带矩阵','左右3等分','矩阵'],['L2','星座映射网','单区','映射'],['C7','排行柱图','单区','排名'],
+    ['E5','双金字塔映射','左右2等分','映射'],['L1','权重弧线图','单区','网络'],['L2','星座映射网','单区','映射'],
   ]},
-  {id:'connection',cn:'⑥ 连接',desc:'有关联但无方向、无包含',items:[
-    ['A1','标本卡(对话批注)','单区','证据'],['A3','文献摘引','上下不对称','证据'],
-    ['A4','策略 + 证据墙','左右不对称','证据'],['A6','资质证书墙','左右不对称','证据'],
-    ['C1','左图右数据格','左右不对称','证据'],['C2','图表联排墙','上下不对称','证据'],
-    ['L1','权重弧线图','单区','网络'],
+  {id:'matrix',cn:'⑥ 矩阵',desc:'二维交叉分类,或多个部分共同指向整体',items:[
+    ['C5','环形进度环列阵','上下不对称','拆解'],['E4','前后对比行矩阵','上下不对称','对比 + 矩阵'],
+    ['F1','坐标轴象限','单区','矩阵'],['K1','链阵复合(阶段×维度)','上下不对称','矩阵'],['K4','三栏行带矩阵','左右3等分','矩阵'],
+  ]},
+  {id:'pyramid',cn:'⑦ 金字塔',desc:'比例、层层收窄或由大到小',items:[
+    ['O1','漏斗','左右不对称','漏斗'],
+  ]},
+  {id:'picture',cn:'⑧ 图片',desc:'图片、界面、原文或证据本体主导',items:[
+    ['A1','标本卡(对话批注)','单区','证据'],['A2','场景画','单区','示意'],['A3','文献摘引','上下不对称','证据'],
+    ['A4','策略 + 证据墙','左右不对称','证据'],['A6','资质证书墙','左右不对称','证据'],['A8','后台界面 mock(节点树)','单区','示意'],
+    ['C1','左图右数据格','左右不对称','证据'],['G2','立绘环绕标注','单区','拆解'],
+  ]},
+  {id:'data',cn:'⑨ 数据',desc:'Wise PPT 扩展:图表、指标、排名或地理分布',items:[
+    ['C2','图表联排墙','上下不对称','证据'],['C4','分布地图','左右不对称','分布'],
+    ['C6','KPI 大数字横带','左右4等分','指标'],['C7','排行柱图','单区','排名'],
   ]},
 ];
 
-/* 组件统一池:atlas + native + echarts 全部组件,按信息关系六大族分组(MECE)
+/* 组件统一池:atlas + native + echarts 全部组件,按 SmartArt 语义入口 + Wise PPT 数据扩展分组
    t: 'atlas' | 'native' | 'ec';atlas/native 用 num,ec 用 id */
-const COMPONENTS=[
-  {fam:'重心 · 焦点/示意',items:[
-    {t:'native',num:75,en:'district-map',nm:'街区示意地图',rel:['示意']},
-  ]},
-  {fam:'并列 · 陈列单元(单元×N,排布归结构)',items:[
+const SMARTART_COMPONENTS=[
+  {fam:'① 列表 · List',items:[
     {t:'atlas',num:2,en:'list-card',nm:'列表卡片',note:'合并 #002-004;单元×N',rel:['陈列']},
     {t:'atlas',num:6,en:'form-card',nm:'表单卡片',rel:['陈列']},
     {t:'atlas',num:12,en:'alert-box',nm:'提示框',rel:['陈列']},
     {t:'atlas',num:13,en:'terminal-box',nm:'终端框',rel:['陈列']},
     {t:'atlas',num:14,en:'code',nm:'代码块',rel:['陈列']},
-    {t:'atlas',num:59,en:'stats',nm:'指标单元',note:'atlas 打包 4 格;概念上单元×4',rel:['陈列','指标']},
-    {t:'native',num:89,en:'metric-strip',nm:'自适应指标横带',rel:['陈列','指标']},
-    {t:'native',num:85,en:'radial-progress',nm:'环形进度指标',note:'单元×N',rel:['陈列']},
     {t:'native',num:86,en:'icon-grid',nm:'图标格阵',rel:['陈列']},
-    {t:'native',num:84,en:'profile-card',nm:'人物画像卡',note:'单元×N',rel:['陈列']},
     {t:'native',num:74,en:'contact-card',nm:'联络名片卡',rel:['陈列']},
-    {t:'native',num:64,en:'doc-excerpt',nm:'文献摘引块',rel:['陈列']},
-    {t:'native',num:65,en:'official-doc',nm:'公文标本框',rel:['陈列']},
     {t:'native',num:91,en:'pain-list',nm:'痛点根因列',rel:['陈列']},
     {t:'native',num:93,en:'infra-strip',nm:'基础设施横带',rel:['陈列']},
-    {t:'ec',id:'echarts.geo-choropleth-map',en:'geo-map',nm:'分级填色地图',rel:['分布']},
   ]},
-  {fam:'包含 · 层级/拆解/嵌套',items:[
-    {t:'atlas',num:43,en:'concentric',nm:'同心圆',note:'合并 #043-047',rel:['层级','嵌套']},
-    {t:'new',mk:9,en:'concentric-ring',nm:'同心环',note:'源 H1 · 原版抄录',rel:['嵌套']},
-    {t:'atlas',num:48,en:'pyramid',nm:'金字塔',note:'合并 #048-049;开关 inverted',rel:['层级']},
-    {t:'atlas',num:51,en:'iceberg',nm:'冰山图',rel:['拆解']},
-    {t:'atlas',num:52,en:'venn',nm:'韦恩图',note:'圆数 2~3',rel:['关联(集合)']},
-    {t:'atlas',num:54,en:'architecture',nm:'架构图',rel:['层级']},
-    {t:'atlas',num:55,en:'arch-platform',nm:'平台架构图',note:'合并 #055-056',rel:['层级']},
-    {t:'atlas',num:57,en:'mind-map',nm:'思维导图',note:'开关 horizontal / vertical',rel:['拆解']},
-    {t:'new',mk:2,en:'three-way-radial',nm:'三向放射图',note:'源 G1 · 原版抄录',rel:['拆解']},
-    {t:'new',mk:3,en:'nested-frames',nm:'嵌套框',note:'源 H2 · 原版抄录',rel:['嵌套']},
-    {t:'native',num:79,en:'radial-hub',nm:'放射中心卫星图',rel:['层级']},
-    {t:'native',num:82,en:'arch-table-band',nm:'架构带表',rel:['层级']},
-    {t:'ec',id:'echarts.pie-access-source',en:'pie',nm:'饼图',rel:['部分整体']},
-    {t:'ec',id:'echarts.tree-lr',en:'tree',nm:'树图',rel:['层级']},
-  ]},
-  {fam:'有序 · 时序/流动/循环/因果',items:[
+  {fam:'② 流程 · Process',items:[
     {t:'atlas',num:25,en:'process',nm:'流程链',note:'合并 #025-033;步数 2~7',rel:['时序','流动']},
-    {t:'atlas',num:34,en:'process-loop',nm:'循环流程',note:'合并 #034-037;节点 3~6',rel:['循环']},
-    {t:'new',mk:6,en:'cycle-ring',nm:'环形循环',note:'源 J1 · 原版抄录',rel:['循环']},
-    {t:'new',mk:5,en:'serpentine-loop',nm:'蛇形回环',note:'源 J2 · 原版抄录',rel:['循环']},
     {t:'atlas',num:38,en:'journey',nm:'旅程图',rel:['时序']},
     {t:'new',mk:7,en:'journey-curve',nm:'旅程曲线',note:'源 J3 · 原版抄录',rel:['时序']},
     {t:'atlas',num:39,en:'timeline',nm:'时间线',note:'合并 #039-041;开关横/竖',rel:['时序']},
@@ -250,42 +226,100 @@ const COMPONENTS=[
     {t:'native',num:72,en:'timeline-gallery',nm:'时间轴垂挂画廊',rel:['时序','证据']},
     {t:'native',num:73,en:'winding-road',nm:'蜿蜒道路时间轴',rel:['时序']},
     {t:'native',num:83,en:'swimlane-roadmap',nm:'泳道路线图',rel:['时序']},
-    {t:'native',num:87,en:'funnel',nm:'转化漏斗',rel:['漏斗']},
     {t:'native',num:90,en:'scenario-column',nm:'单场景纵列',rel:['时序']},
     {t:'native',num:92,en:'pipeline-strip',nm:'自适应流水线横带',rel:['流动']},
     {t:'native',num:76,en:'why-how-bands',nm:'因果对位双带',rel:['因果']},
     {t:'native',num:80,en:'merge-confluence',nm:'双路汇流图',rel:['汇聚']},
-    {t:'ec',id:'echarts.line-basic',en:'line',nm:'折线图',note:'含 smooth / stacked 变体',rel:['时序']},
-    {t:'ec',id:'echarts.calendar-basic',en:'calendar',nm:'日历热力图',rel:['时序']},
     {t:'ec',id:'echarts.sankey-basic',en:'sankey',nm:'桑基图',rel:['流动']},
   ]},
-  {fam:'比较 · 对齐/矩阵/映射',items:[
+  {fam:'③ 循环 · Cycle',items:[
+    {t:'atlas',num:34,en:'process-loop',nm:'循环流程',note:'合并 #034-037;节点 3~6',rel:['循环']},
+    {t:'new',mk:6,en:'cycle-ring',nm:'环形循环',note:'源 J1 · 原版抄录',rel:['循环']},
+    {t:'new',mk:5,en:'serpentine-loop',nm:'蛇形回环',note:'源 J2 · 原版抄录',rel:['循环']},
+  ]},
+  {fam:'④ 层级 · Hierarchy',items:[
+    {t:'atlas',num:54,en:'architecture',nm:'架构图',rel:['层级']},
+    {t:'atlas',num:55,en:'arch-platform',nm:'平台架构图',note:'合并 #055-056',rel:['层级']},
+    {t:'atlas',num:57,en:'mind-map',nm:'思维导图',note:'开关 horizontal / vertical',rel:['拆解']},
+    {t:'native',num:82,en:'arch-table-band',nm:'架构带表',rel:['层级']},
+    {t:'ec',id:'echarts.tree-lr',en:'tree',nm:'树图',rel:['层级']},
+  ]},
+  {fam:'⑤ 关系 · Relationship',items:[
+    {t:'atlas',num:43,en:'concentric',nm:'同心圆',note:'合并 #043-047',rel:['层级','嵌套']},
+    {t:'new',mk:9,en:'concentric-ring',nm:'同心环',note:'源 H1 · 原版抄录',rel:['嵌套']},
+    {t:'atlas',num:52,en:'venn',nm:'韦恩图',note:'圆数 2~3',rel:['关联(集合)']},
+    {t:'new',mk:2,en:'three-way-radial',nm:'三向放射图',note:'源 G1 · 原版抄录',rel:['拆解']},
+    {t:'new',mk:3,en:'nested-frames',nm:'嵌套框',note:'源 H2 · 原版抄录',rel:['嵌套']},
+    {t:'native',num:79,en:'radial-hub',nm:'放射中心卫星图',rel:['层级']},
     {t:'atlas',num:15,en:'vs',nm:'对比 VS',rel:['对比']},
     {t:'atlas',num:16,en:'before-after',nm:'前后对比',note:'合并 #016-019',rel:['对比']},
+    {t:'atlas',num:24,en:'impossible-triangle',nm:'不可能三角',rel:['矩阵']},
+    {t:'new',mk:0,en:'mapping-arc-network',nm:'映射弧线网',note:'源 L2 · 原版抄录',rel:['映射']},
+    {t:'native',num:81,en:'watershed-axis',nm:'分水岭中轴对照',rel:['对比']},
+    {t:'native',num:77,en:'before-after-bands',nm:'前后双带演进面板',rel:['对比']},
+    {t:'new',mk:1,en:'weighted-arc-web',nm:'权重弧网',note:'源 L1 · 原版抄录',rel:['网络']},
+  ]},
+  {fam:'⑥ 矩阵 · Matrix',items:[
     {t:'atlas',num:20,en:'swot',nm:'SWOT 分析',rel:['矩阵']},
     {t:'atlas',num:21,en:'quadrant-axis',nm:'象限图',rel:['矩阵']},
     {t:'atlas',num:22,en:'comparison-table',nm:'对比表格',rel:['对比','矩阵']},
     {t:'atlas',num:23,en:'matrix',nm:'矩阵',rel:['矩阵']},
-    {t:'atlas',num:24,en:'impossible-triangle',nm:'不可能三角',rel:['矩阵']},
-    {t:'atlas',num:60,en:'radar',nm:'雷达图',note:'合并 #060-061',rel:['对比']},
-    {t:'new',mk:0,en:'mapping-arc-network',nm:'映射弧线网',note:'源 L2 · 原版抄录',rel:['映射']},
-    {t:'new',mk:4,en:'ranking-bars',nm:'排行柱图',note:'源 C7 · 原版抄录',rel:['对比','排名']},
-    {t:'native',num:81,en:'watershed-axis',nm:'分水岭中轴对照',rel:['对比']},
-    {t:'native',num:77,en:'before-after-bands',nm:'前后双带演进面板',rel:['对比']},
-    {t:'ec',id:'echarts.bar-basic',en:'bar',nm:'柱状图',note:'含 dynamic-sort 变体',rel:['对比']},
-    {t:'ec',id:'echarts.radar-basic',en:'radar-e',nm:'雷达图(ECharts)',rel:['对比']},
   ]},
-  {fam:'连接 · 网络/证据',items:[
+  {fam:'⑦ 金字塔 · Pyramid',items:[
+    {t:'atlas',num:48,en:'pyramid',nm:'金字塔',note:'合并 #048-049;开关 inverted',rel:['层级']},
+    {t:'atlas',num:51,en:'iceberg',nm:'冰山图',rel:['拆解']},
+    {t:'native',num:87,en:'funnel',nm:'转化漏斗',rel:['漏斗']},
+  ]},
+  {fam:'⑧ 图片 · Picture',items:[
+    {t:'native',num:75,en:'district-map',nm:'街区示意地图',rel:['示意']},
+    {t:'native',num:84,en:'profile-card',nm:'人物画像卡',note:'单元×N',rel:['陈列']},
+    {t:'native',num:64,en:'doc-excerpt',nm:'文献摘引块',rel:['陈列']},
+    {t:'native',num:65,en:'official-doc',nm:'公文标本框',rel:['陈列']},
     {t:'native',num:66,en:'evidence-wall',nm:'证据墙标本格',rel:['证据']},
     {t:'native',num:67,en:'logo-cloud',nm:'品牌云墙',rel:['证据']},
     {t:'native',num:68,en:'mobile-gallery',nm:'手机屏步骤画廊',rel:['证据']},
     {t:'native',num:69,en:'admin-console',nm:'后台管理台线稿',rel:['证据']},
     {t:'native',num:78,en:'chat-dialog',nm:'对话气泡标本',rel:['证据']},
     {t:'native',num:88,en:'annotation-callout',nm:'环绕引线标注',rel:['证据']},
-    {t:'new',mk:1,en:'weighted-arc-web',nm:'权重弧网',note:'源 L1 · 原版抄录',rel:['网络']},
+  ]},
+  {fam:'⑨ 数据 · Data(Wise PPT 扩展)',items:[
+    {t:'atlas',num:59,en:'stats',nm:'指标单元',note:'atlas 打包 4 格;概念上单元×4',rel:['陈列','指标']},
+    {t:'native',num:89,en:'metric-strip',nm:'自适应指标横带',rel:['陈列','指标']},
+    {t:'native',num:85,en:'radial-progress',nm:'环形进度指标',note:'单元×N',rel:['陈列']},
+    {t:'ec',id:'echarts.geo-choropleth-map',en:'geo-map',nm:'分级填色地图',rel:['分布']},
+    {t:'ec',id:'echarts.pie-access-source',en:'pie',nm:'饼图',rel:['部分整体']},
+    {t:'ec',id:'echarts.line-basic',en:'line',nm:'折线图',note:'含 smooth / stacked 变体',rel:['时序']},
+    {t:'ec',id:'echarts.calendar-basic',en:'calendar',nm:'日历热力图',rel:['时序']},
+    {t:'atlas',num:60,en:'radar',nm:'雷达图',note:'合并 #060-061',rel:['对比']},
+    {t:'new',mk:4,en:'ranking-bars',nm:'排行柱图',note:'源 C7 · 原版抄录',rel:['对比','排名']},
+    {t:'ec',id:'echarts.bar-basic',en:'bar',nm:'柱状图',note:'含 dynamic-sort 变体',rel:['对比']},
+    {t:'ec',id:'echarts.radar-basic',en:'radar-e',nm:'雷达图(ECharts)',rel:['对比']},
     {t:'ec',id:'echarts.scatter-basic',en:'scatter',nm:'散点图',note:'含 to-bar 动画变体',rel:['关联']},
   ]},
 ];
+
+/* 分类闭合门禁:所有版式/组件只出现一次,数量与当前资产池一致。 */
+function assertCatalogClassification(groups,keyOf,expected,label){
+  const seen=new Set(),duplicates=[];
+  let count=0;
+  groups.forEach(group=>group.items.forEach(item=>{
+    const key=keyOf(item);
+    count++;
+    if(seen.has(key))duplicates.push(key);
+    seen.add(key);
+  }));
+  if(duplicates.length||count!==expected){
+    throw new Error(label+' 分类未闭合: count='+count+', expected='+expected+', duplicates='+duplicates.join(','));
+  }
+  return count;
+}
+const SMARTART_LAYOUT_COUNT=assertCatalogClassification(SMARTART_TYPES,item=>item[0],55,'版式');
+const SMARTART_COMPONENT_COUNT=assertCatalogClassification(
+  SMARTART_COMPONENTS,
+  item=>item.t==='ec'?'ec:'+item.id:(item.t==='new'?'new:'+item.mk:item.t+':'+item.num),
+  77,
+  '组件',
+);
 
 /* ============ 版式抽取组件(图形本体逐元素抄录自原版 frames:执行原版 scene 绘制 JS 后序列化,坐标/线宽/字号与原版一致) ============ */
 const NEW_MARKUP=[
@@ -1733,21 +1767,21 @@ function compCard(c,extra=''){
 $('#tpl-gallery').innerHTML=NON_REL.map(layoutCard).join('');
 $('#c-tpl').textContent=NON_REL.length;
 
-/* 版式:六大族 */
-$('#lyt-fams').innerHTML=FAMS.map(f=>`
+/* 版式:SmartArt 语义入口 + Wise PPT 数据扩展 */
+$('#lyt-fams').innerHTML=SMARTART_TYPES.map(f=>`
   <div class="fam-section">
     <div class="fam-head"><h2>${f.cn}</h2><span class="tag">${f.id}</span><span class="desc">${f.desc} · ${f.items.length} 版式</span></div>
     <div class="grid">${f.items.map(layoutCard).join('')}</div>
   </div>`).join('');
-$('#c-lyt').textContent=FAMS.reduce((s,f)=>s+f.items.length,0);
+$('#c-lyt').textContent=SMARTART_LAYOUT_COUNT;
 
-/* 组件:统一六大族池 */
-$('#cmp-groups').innerHTML=COMPONENTS.map(g=>`
+/* 组件:与版式共用同一组 SmartArt 语义入口 */
+$('#cmp-groups').innerHTML=SMARTART_COMPONENTS.map(g=>`
   <div class="fam-section">
     <div class="fam-head"><h2>${g.fam}</h2><span class="desc">${g.items.length} 个</span></div>
     <div class="comp-grid">${g.items.map(c=>compCard(c)).join('')}</div>
   </div>`).join('');
-$('#c-cmp').textContent=COMPONENTS.reduce((s,g)=>s+g.items.length,0)+'+'+EXTRACT_GROUPS.reduce((s,g)=>s+g.items.length,0)+'抽';
+$('#c-cmp').textContent=SMARTART_COMPONENT_COUNT+'+'+EXTRACT_GROUPS.reduce((s,g)=>s+g.items.length,0)+'抽';
 
 /* 反向抽取候选渲染:整页版式预览(组件本体 = 中央图形) */
 function extractCard(it){
@@ -2256,7 +2290,7 @@ const STRUCTS=[
    caps:[{cap:'2×2(象限特例)',d:gGrid(2,2)},{cap:'2×3(F4)',d:gGrid(2,3)},{cap:'7×4(A7)',d:gGrid(4,7)}],samples:['F4','A7']},
 ];
 
-/* 版式 → 结构归入:按 FAMS 的结构字段解析 */
+/* 版式 → 结构归入:按 SmartArt 分类卡片保留的结构字段解析 */
 function structKeyOf(s){
   if(s==='单区')return 'single';
   if(/^左右\d+等分/.test(s))return 'heq';
@@ -2268,7 +2302,7 @@ function structKeyOf(s){
 }
 const LAYOUT_INDEX={};
 const byStruct={};
-FAMS.forEach(f=>f.items.forEach(it=>{
+SMARTART_TYPES.forEach(f=>f.items.forEach(it=>{
   LAYOUT_INDEX[it[0]]=it;
   const k=structKeyOf(it[2]);
   (byStruct[k]||(byStruct[k]=[])).push(it);
