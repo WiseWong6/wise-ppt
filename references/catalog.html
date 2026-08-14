@@ -42,8 +42,8 @@
   /* 组件卡片(近方形) */
   .comp-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:18px}
   .comp-card{background:#fff;border:1px solid var(--line)}
-  .comp-wrap{position:relative;width:100%;height:330px;overflow:hidden;background:#f2f0eb}
-  .comp-wrap iframe{width:640px;height:640px;border:0;transform-origin:0 0;position:absolute;left:0;top:0}
+  .comp-wrap{position:relative;width:100%;padding-top:56.25%;overflow:hidden;background:#f7f5f1}
+  .comp-wrap iframe{width:1280px;height:720px;border:0;transform-origin:0 0;position:absolute;left:0;top:0}
   .comp-info{padding:10px 14px 12px}
   .comp-info .nm{font-size:14px;font-weight:700}
   .comp-info .en{font-size:11px;color:var(--ink-3);letter-spacing:.05em}
@@ -249,23 +249,28 @@ function compHtml(num){
   const e=byNum(num);if(!e)return '';
   const fit=`<script>
   (function(){
+    var VW=1280,VH=720;
     function fit(){
       var el=document.querySelector('.swiss-card')||document.body;
       el.style.margin='0';el.style.position='static';el.style.transform='none';
       var w=el.scrollWidth||600,h=el.scrollHeight||600;
-      var pad=28,s=Math.min((640-2*pad)/w,(640-2*pad)/h,1);
+      var s=Math.min(VW/w,VH/h,1);
       el.style.transformOrigin='0 0';
       el.style.transform='scale('+s+')';
       el.style.position='absolute';
-      el.style.left=((640-w*s)/2)+'px';
-      el.style.top=((640-h*s)/2)+'px';
+      el.style.left=((VW-w*s)/2)+'px';
+      el.style.top=((VH-h*s)/2)+'px';
     }
     window.addEventListener('load',function(){setTimeout(fit,60);});
     window.addEventListener('resize',fit);
   })();
   </`+`script>`;
-  return '<!DOCTYPE html><html><head><meta charset="utf-8"><style>'+css+motion+
-    '</style><style>html,body{margin:0;width:640px;height:640px;overflow:hidden;position:relative;background:#f2f0eb}</style></head><body>'+
+  const override=`<style>
+  .swiss-card{width:1280px !important;min-height:0 !important;height:720px !important;border-radius:0 !important}
+  .swiss-card__content{padding:56px 72px !important;min-height:0 !important;height:720px !important}
+  </style>`;
+  return '<!DOCTYPE html><html><head><meta charset="utf-8"><style>'+css+motion+override+
+    '</style><style>html,body{margin:0;width:1280px;height:720px;overflow:hidden;position:relative;background:#f7f5f1}</style></head><body>'+
     (e.snippet||'')+fit+'</body></html>';
 }
 const blobUrls={};
@@ -346,10 +351,10 @@ function fitAll(){
     const s=w.clientWidth/1920;w.querySelector('iframe').style.transform=`scale(${s})`;
   });
   document.querySelectorAll('main.on .comp-wrap iframe').forEach(f=>{
-    const w=f.parentElement,s=Math.min(w.clientWidth/640,w.clientHeight/640);
+    const w=f.parentElement,s=w.clientWidth/1280;
     f.style.transform=`scale(${s})`;
-    f.style.left=((w.clientWidth-640*s)/2)+'px';
-    f.style.top=((w.clientHeight-640*s)/2)+'px';
+    f.style.left='0';
+    f.style.top='0';
   });
 }
 window.addEventListener('resize',fitAll);
