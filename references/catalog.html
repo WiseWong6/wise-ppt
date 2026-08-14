@@ -33,10 +33,10 @@
 
   .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(340px,1fr));gap:18px}
   .card{background:var(--card);border:1px solid var(--line);break-inside:avoid}
-  .frame-wrap{position:relative;width:100%;padding-top:56.25%;overflow:hidden;background:var(--paper-deep)}
+  .frame-wrap{position:relative;padding-top:56.25%;overflow:hidden;background:var(--paper-deep)}
   .frame-wrap iframe{position:absolute;top:0;left:0;width:1920px;height:1080px;border:0;transform-origin:0 0}
-  .frame-wrap{margin:10px 10px 0;border:1px solid var(--ink-45)}
-  .comp-wrap{margin:10px 10px 0;border:1px solid var(--ink-45)}
+  .frame-wrap{margin:10px 10px 0;border:0.5px solid var(--ink-45)}
+  .comp-wrap{margin:10px 10px 0;border:0.5px solid var(--ink-45)}
   .card,.comp-card{cursor:pointer}
   .card-info{padding:10px 14px 12px}
   .card-info .id{font-size:11px;color:var(--ink-2);letter-spacing:.12em;font-weight:700}
@@ -47,7 +47,7 @@
   /* 组件卡片(近方形) */
   .comp-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:18px}
   .comp-card{background:var(--card);border:1px solid var(--line)}
-  .comp-wrap{position:relative;width:100%;padding-top:56.25%;overflow:hidden;background:var(--paper-deep)}
+  .comp-wrap{position:relative;padding-top:56.25%;overflow:hidden;background:var(--paper-deep)}
   .comp-wrap iframe{width:1280px;height:720px;border:0;transform-origin:0 0;position:absolute;left:0;top:0}
   .comp-info{padding:10px 14px 12px}
   .comp-info .nm{font-size:14px;font-weight:700}
