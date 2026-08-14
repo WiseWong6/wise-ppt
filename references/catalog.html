@@ -92,6 +92,10 @@
 
 <main id="m-cmp">
   <div class="note"><b>组件 = 参数化画法。</b>内容数量是参数不是组件类型;画法不同才是不同组件。原 atlas 61 项 + echarts 12 项,清洗合并后如下。</div>
+  <div class="fam-section">
+    <div class="fam-head"><h2>反向抽取候选(画册版式 → 组件)</h2><span class="tag" style="background:#a33">待去重</span><span class="desc">单行整页的版式其图形即组件;复合版式内也藏有子组件。统一浏览后去重。</span></div>
+    <div class="grid" id="extract-grid"></div>
+  </div>
   <div id="cmp-groups"></div>
 </main>
 
@@ -192,6 +196,19 @@ const COMP_GROUPS=[
     {en:'tree',nm:'树图',ec:['echarts.tree-lr'],param:'节点 3~30',rel:['层级']},
     {en:'sankey',nm:'桑基图',ec:['echarts.sankey-basic'],param:'节点+流量',rel:['流动']},
   ]},
+];
+
+/* 反向抽取:画册版式 → 组件候选(from=版式号,kind=单行图形/子组件,dup=与 atlas 关系) */
+const EXTRACT=[
+  ['L2','映射弧线网','单行图形',''],['L1','权重弧网','单行图形',''],['G1','中心放射图','单行图形',''],
+  ['G4','枢纽卫星图','单行图形',''],['H2','嵌套框','单行图形',''],['B5','阶梯图','单行图形',''],
+  ['B6','道路时间轴','单行图形',''],['N1','汇聚流图','单行图形',''],['O1','漏斗图','单行图形',''],
+  ['B3','泳道图','单行图形',''],['C4','分布地图','单行图形',''],['C7','排行柱图','单行图形','近似 bar'],
+  ['J1','环形循环','单行图形','近似 process-loop'],['J2','蛇形回环','单行图形','近似 process-loop'],
+  ['J3','旅程曲线','单行图形','近似 journey'],['I1','流水线','单行图形','近似 process'],
+  ['B1','时间轴','单行图形','重复 atlas timeline'],['B2','甘特图','单行图形','重复 atlas gantt'],
+  ['H1','同心环','单行图形','重复 atlas concentric'],['M1','粒子效果件','单行图形','存疑(氛围?)'],
+  ['C5','进度环','子组件',''],['C3','档案卡','子组件',''],['A1','标本卡(引文+批注)','子组件',''],['A3','引文卡','子组件',''],
 ];
 
 /* 非关系页 atlas 片段 */
@@ -295,7 +312,16 @@ $('#cmp-groups').innerHTML=COMP_GROUPS.map(g=>`
     <div class="fam-head"><h2>${g.g}</h2><span class="desc">${g.items.length} 个组件(合并后)</span></div>
     <div class="comp-grid">${g.items.map(c=>compCard(c)).join('')}</div>
   </div>`).join('');
-$('#c-cmp').textContent=COMP_GROUPS.reduce((s,g)=>s+g.items.length,0);
+$('#c-cmp').textContent=COMP_GROUPS.reduce((s,g)=>s+g.items.length,0)+'+'+EXTRACT.length+'抽';
+
+/* 反向抽取候选渲染 */
+$('#extract-grid').innerHTML=EXTRACT.map(([id,nm,kind,dup])=>`
+  <div class="card">
+    <div class="frame-wrap"><iframe loading="lazy" src="${FRAMES}layout-${id.toLowerCase()}.html"></iframe></div>
+    <div class="card-info"><span class="id">${id} → 组件</span>
+      <div class="nm">${nm}</div>
+      <div class="meta">类型:<b>${kind}</b>${dup?' · <b style="color:#a33">'+dup+'</b>':''}</div>
+    </div></div>`).join('');
 
 /* 组件 iframe 用 Blob URL 填充 */
 document.querySelectorAll('iframe[data-rep]').forEach(f=>{f.src=compBlobUrl(+f.dataset.rep);});
