@@ -54,6 +54,12 @@
   .comp-info .rel{display:inline-block;font-size:10px;color:var(--ink-2);background:transparent;border:1px solid var(--ink-45);padding:1px 6px;margin-top:6px;margin-right:4px;border-radius:2px}
 
   .placeholder{display:flex;flex-direction:column;align-items:center;justify-content:center;height:100%;color:var(--ink-3);font-size:12px;gap:8px}
+  .map-table{width:100%;border-collapse:collapse;background:#fff;border:1px solid var(--line);font-size:13px}
+  .map-table th,.map-table td{padding:8px 14px;text-align:left;border-bottom:1px solid var(--line)}
+  .map-table th{font-size:11px;color:var(--ink-3);letter-spacing:.06em;font-weight:600}
+  .map-table td:first-child{color:var(--ink-2);font-weight:700;letter-spacing:.08em}
+  .map-table td:nth-child(3){color:var(--ink-2)}
+  .map-table tr:last-child td{border-bottom:none}
   .placeholder .big{font-size:22px;letter-spacing:.1em;font-weight:700;color:var(--ink-2)}
 
   .note{background:var(--card);border:1px solid var(--line);border-left:3px solid var(--ink);padding:14px 18px;font-size:13px;color:var(--ink-2);line-height:1.8;margin-bottom:24px}
@@ -310,23 +316,28 @@ const nativeTotal=NATIVE_GROUPS.reduce((s,g)=>s+g.items.length,0);
 $('#c-cmp').textContent=(COMP_GROUPS.reduce((s,g)=>s+g.items.length,0)+nativeTotal)+'+'+EXTRACT_GROUPS.reduce((s,g)=>s+g.items.length,0)+'抽';
 
 /* 反向抽取候选(三组分类)渲染
-   ① 已有实现:预览 = native 组件本体;②③:预览 = 整页版式(组件本体 = 中央图形) */
+   ① 已有实现:纯映射表(组件本体在下方 Native 区,不重复渲染);
+   ②③:预览 = 整页版式(组件本体 = 中央图形) */
 function extractCard(it){
-  const inner=it.num
-    ?`<div class="frame-wrap"><iframe loading="lazy" src="gallery-components/native-preview.html?num=${it.num}"></iframe></div>`
-    :`<div class="frame-wrap"><iframe loading="lazy" src="${FRAMES}layout-${it.from.toLowerCase()}.html"></iframe></div>`;
-  return `<div class="card">${inner}
-    <div class="card-info"><span class="id">${it.num?'组件 #'+String(it.num).padStart(3,'0'):it.from+' → 组件'}</span>
+  return `<div class="card">
+    <div class="frame-wrap"><iframe loading="lazy" src="${FRAMES}layout-${it.from.toLowerCase()}.html"></iframe></div>
+    <div class="card-info"><span class="id">${it.from} → 组件</span>
       <div class="nm">${it.nm}</div>
       ${it.note?`<div class="meta">${it.note}</div>`:''}
-      ${it.num?`<div class="meta">源版式 ${it.from}</div>`:'<div class="meta">整页预览,组件本体 = 中央图形</div>'}
+      <div class="meta">整页预览,组件本体 = 中央图形</div>
     </div></div>`;
 }
-$('#extract-groups').innerHTML=EXTRACT_GROUPS.map(g=>`
+function extractMapRow(it){
+  return `<tr><td>${it.from}</td><td>${it.nm}</td><td>#${String(it.num).padStart(3,'0')}</td>${it.note?`<td>${it.note}</td>`:'<td></td>'}</tr>`;
+}
+$('#extract-groups').innerHTML=EXTRACT_GROUPS.map((g,gi)=>`
   <div class="fam-section">
     <div class="fam-head"><h2>反向抽取 · ${g.g}</h2>${g.tag?`<span class="tag">${g.tag==='todo'?'待新做':'可并入'}</span>`:''}
       <span class="desc">${g.items.length} 项</span></div>
-    <div class="grid">${g.items.map(extractCard).join('')}</div>
+    ${gi===0
+      ?`<table class="map-table"><thead><tr><th>源版式</th><th>组件</th><th>编号</th><th>备注</th></tr></thead>
+        <tbody>${g.items.map(extractMapRow).join('')}</tbody></table>`
+      :`<div class="grid">${g.items.map(extractCard).join('')}</div>`}
   </div>`).join('');
 
 /* Native 墨线组件:经组件画册路由渲染(#/layout/N) */
