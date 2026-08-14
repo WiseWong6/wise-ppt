@@ -145,7 +145,7 @@ const FAMS=[
 /* 组件:合并组。rep=代表 num(src 渲染),nums=吃掉的 atlas 编号,ec=echarts id 列表 */
 const COMP_GROUPS=[
   {g:'content 文字排版',items:[
-    {en:'list-card',nm:'列表卡片',rep:2,nums:[2,3,4],param:'条目 2~6;开关 workflow',rel:['陈列']},
+    {en:'list-card',nm:'列表卡片',rep:2,nums:[2,3,4],param:'单元卡片,数量是参数;排布由结构负责(单栏×N)',rel:['陈列']},
     {en:'form-card',nm:'表单卡片',rep:6,nums:[6],param:'字段数 2~6',rel:['陈列']},
     {en:'alert-box',nm:'提示框',rep:12,nums:[12],param:'单条强调',rel:['陈列']},
     {en:'terminal-box',nm:'终端框',rep:13,nums:[13],param:'行数 2~8',rel:['陈列']},
@@ -178,7 +178,7 @@ const COMP_GROUPS=[
     {en:'mind-map',nm:'思维导图',rep:57,nums:[57,58],param:'分支 3~6;开关 horizontal / vertical',rel:['拆解']},
   ]},
   {g:'data 数据',items:[
-    {en:'stats',nm:'统计卡片(指标带)',rep:59,nums:[59],param:'指标 2~6,区域 N 等分',rel:['陈列']},
+    {en:'stats',nm:'指标单元(统计卡片)',rep:59,nums:[59],param:'指标单元×N(atlas 实现为 4 格打包);排布由结构负责',rel:['陈列']},
     {en:'radar',nm:'雷达图',rep:60,nums:[60,61],param:'维度 3~8(六边形为参数)',rel:['对比']},
   ]},
   {g:'echarts 图表(需运行时)',items:[
@@ -193,25 +193,34 @@ const COMP_GROUPS=[
   ]},
 ];
 
-/* 反向抽取:画册版式 → 组件候选(按落地状态分三类) */
+/* 反向抽取:画册版式 → 组件候选(按落地状态分三类)
+   ① 预览显示组件本体(native 库纯组件),非整页版式;
+   陈列类为"单元组件×N",排布由结构负责 */
 const EXTRACT_GROUPS=[
   {g:'① 已有实现 —— native 组件库已落地,无需再抽',tag:'',items:[
-    ['B5','阶梯图','→ 063 step-rise'],['B6','道路时间轴','→ 073 winding-road'],
-    ['N1','汇聚流图','→ 080 merge-confluence'],['O1','漏斗图','→ 087 funnel'],
-    ['B3','泳道图','→ 083 swimlane-roadmap'],['C4','分布地图','→ 075 district-map'],
-    ['G4','枢纽卫星图','→ 079 radial-hub'],['I1','流水线','→ 092 pipeline-strip'],
-    ['C5','进度环','→ 085 radial-progress'],['C3','档案卡','→ 084 profile-card'],
-    ['A1','标本卡(对话批注)','→ 078 chat-dialog'],['A3','引文卡','→ 064 doc-excerpt'],
-    ['B2','甘特图','→ 071 gantt-ink'],['B4','时间轴垂挂画廊','→ 072 timeline-gallery'],
+    {from:'B5',num:63,nm:'阶梯爬升图'},
+    {from:'B6',num:73,nm:'蜿蜒道路时间轴'},
+    {from:'N1',num:80,nm:'双路汇流图'},
+    {from:'O1',num:87,nm:'转化漏斗'},
+    {from:'B3',num:83,nm:'泳道路线图'},
+    {from:'C4',num:75,nm:'街区示意地图',note:'C4 右侧指标栏 = 指标单元,另配'},
+    {from:'G4',num:79,nm:'放射中心卫星图'},
+    {from:'I1',num:92,nm:'流水线横带'},
+    {from:'C5',num:85,nm:'环形进度指标',note:'单元×4;C5 的四列排布由结构负责'},
+    {from:'C3',num:84,nm:'人物画像卡',note:'单元×N;C3 的三等分由结构负责'},
+    {from:'A1',num:78,nm:'对话气泡标本'},
+    {from:'A3',num:64,nm:'文献摘引块'},
+    {from:'B2',num:71,nm:'墨线甘特图'},
+    {from:'B4',num:72,nm:'时间轴垂挂画廊'},
   ]},
   {g:'② 仍待抽取 —— atlas 与 native 均无,需要新做',tag:'todo',items:[
-    ['L2','映射弧线网',''],['L1','权重弧网',''],['G1','三向放射图',''],
-    ['H2','嵌套框',''],['C7','排行柱图',''],['J2','蛇形回环',''],
+    {from:'L2',nm:'映射弧线网'},{from:'L1',nm:'权重弧网'},{from:'G1',nm:'三向放射图'},
+    {from:'H2',nm:'嵌套框'},{from:'C7',nm:'排行柱图'},{from:'J2',nm:'蛇形回环'},
   ]},
   {g:'③ 近似已有 —— 语义重合,可并入现有组件',tag:'dup',items:[
-    ['J1','环形循环','≈ process-loop'],['J3','旅程曲线','≈ journey'],
-    ['B1','时间轴','≈ timeline'],['H1','同心环','≈ concentric'],
-    ['M1','粒子效果件','存疑:氛围页'],
+    {from:'J1',nm:'环形循环',note:'≈ process-loop'},{from:'J3',nm:'旅程曲线',note:'≈ journey'},
+    {from:'B1',nm:'时间轴',note:'≈ timeline'},{from:'H1',nm:'同心环',note:'≈ concentric'},
+    {from:'M1',nm:'粒子效果件',note:'存疑:氛围页'},
   ]},
 ];
 
@@ -300,18 +309,24 @@ $('#cmp-groups').innerHTML=COMP_GROUPS.map(g=>`
 const nativeTotal=NATIVE_GROUPS.reduce((s,g)=>s+g.items.length,0);
 $('#c-cmp').textContent=(COMP_GROUPS.reduce((s,g)=>s+g.items.length,0)+nativeTotal)+'+'+EXTRACT_GROUPS.reduce((s,g)=>s+g.items.length,0)+'抽';
 
-/* 反向抽取候选(三组分类)渲染 */
+/* 反向抽取候选(三组分类)渲染
+   ① 已有实现:预览 = native 组件本体;②③:预览 = 整页版式(组件本体 = 中央图形) */
+function extractCard(it){
+  const inner=it.num
+    ?`<div class="frame-wrap"><iframe loading="lazy" src="gallery-components/native-preview.html?num=${it.num}"></iframe></div>`
+    :`<div class="frame-wrap"><iframe loading="lazy" src="${FRAMES}layout-${it.from.toLowerCase()}.html"></iframe></div>`;
+  return `<div class="card">${inner}
+    <div class="card-info"><span class="id">${it.num?'组件 #'+String(it.num).padStart(3,'0'):it.from+' → 组件'}</span>
+      <div class="nm">${it.nm}</div>
+      ${it.note?`<div class="meta">${it.note}</div>`:''}
+      ${it.num?`<div class="meta">源版式 ${it.from}</div>`:'<div class="meta">整页预览,组件本体 = 中央图形</div>'}
+    </div></div>`;
+}
 $('#extract-groups').innerHTML=EXTRACT_GROUPS.map(g=>`
   <div class="fam-section">
     <div class="fam-head"><h2>反向抽取 · ${g.g}</h2>${g.tag?`<span class="tag">${g.tag==='todo'?'待新做':'可并入'}</span>`:''}
       <span class="desc">${g.items.length} 项</span></div>
-    <div class="grid">${g.items.map(([id,nm,dup])=>`
-      <div class="card">
-        <div class="frame-wrap"><iframe loading="lazy" src="${FRAMES}layout-${id.toLowerCase()}.html"></iframe></div>
-        <div class="card-info"><span class="id">${id} → 组件</span>
-          <div class="nm">${nm}</div>
-          ${dup?`<div class="meta"><b>${dup}</b></div>`:''}
-        </div></div>`).join('')}</div>
+    <div class="grid">${g.items.map(extractCard).join('')}</div>
   </div>`).join('');
 
 /* Native 墨线组件:经组件画册路由渲染(#/layout/N) */
