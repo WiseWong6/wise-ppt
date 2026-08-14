@@ -15,7 +15,7 @@
     "root_selector": "section.slide[data-implementation-id=\"paper-ink.temporal.timeline-evidence-gallery.ai\"]",
     "sha256": "sha256:462fdc869394631ac03f08967f7524df287c646a1ae4d9c70dab431780dc551e"
   },
-  "canonical_fingerprint": "sha256:0fb1a7db11fedac00b98a8f26fa2331ea38e9c3dc3aec0c0c7ff952b3260d7b3",
+  "canonical_fingerprint": "sha256:73d415fea1d02b02d0c7298dd632aba8e3ed0cc2945645354ebe9d07e86fd3d4",
   "contract_version": 1,
   "dependency_closure": {
     "files": [
@@ -76,7 +76,7 @@
       "x": 0,
       "y": 0
     },
-    "fingerprint": "sha256:6815ecbfc9172b6d660670434ac6e37841be7d0166349b4bfbf60da09b521667",
+    "fingerprint": "sha256:239d1cd080d86c8a56a41b61746b878e6c9592f6bf8307e08b8ec2b197399718",
     "format": "wise-ppt-layout-geometry@1",
     "relations": [],
     "structure_contract": {
@@ -84,7 +84,7 @@
         "linear-sequence",
         "evidence-annotation"
       ],
-      "region_count": 3,
+      "region_count": 1,
       "required_slot_ids": [
         "milestone-evidence"
       ]
@@ -545,20 +545,6 @@
           "item.canonical.milestone-evidence"
         ],
         "slot_id": "milestone-evidence"
-      },
-      {
-        "asset_refs": [],
-        "content_refs": [
-          "item.canonical.support"
-        ],
-        "slot_id": "support"
-      },
-      {
-        "asset_refs": [],
-        "content_refs": [
-          "item.canonical.takeaway"
-        ],
-        "slot_id": "takeaway"
       }
     ],
     "values": {
@@ -606,9 +592,7 @@
             },
             "slot_id": {
               "enum": [
-                "milestone-evidence",
-                "support",
-                "takeaway"
+                "milestone-evidence"
               ],
               "type": "string"
             }
@@ -620,8 +604,8 @@
           ],
           "type": "object"
         },
-        "maxItems": 3,
-        "minItems": 3,
+        "maxItems": 1,
+        "minItems": 1,
         "type": "array"
       },
       "values": {
@@ -727,7 +711,7 @@
     ],
     "type": "object"
   },
-  "recipe_fingerprint": "sha256:8110875157901b0b663dae3757644df24a3f8a1fa5125ef99036f50e74c1cea9",
+  "recipe_fingerprint": "sha256:590caffcd341b07fc9922cb8828ad3499b49ebdaee0f5d267bec15fef50e417e",
   "recipe_id": "paper-ink.temporal.timeline-evidence-gallery",
   "required_capabilities": [],
   "slots": [
@@ -742,8 +726,7 @@
       ],
       "compatible_component_ids": [
         "codex-host.paper-ink.media.generated-image",
-        "native.paper-ink.072.timeline-gallery",
-        "native.paper-ink.media.reconstructed-image"
+        "native.paper-ink.072.timeline-gallery"
       ],
       "count_unit": "binding",
       "default_component": {
@@ -771,65 +754,6 @@
         "width": 1540
       },
       "visual_role": "primary"
-    },
-    {
-      "allowed_component_sources": [
-        "codex-host",
-        "native"
-      ],
-      "allowed_renderer_kinds": [
-        "typography",
-        "table",
-        "image",
-        "native-html",
-        "svg"
-      ],
-      "compatible_component_ids": [],
-      "count_unit": "binding",
-      "default_component": {
-        "component_id": "native.paper-ink.temporal.timeline-evidence-gallery.support",
-        "component_source": "native",
-        "origin": {
-          "kind": "canonical-frame-island",
-          "path": "gallery/paper-ink/ai/frames/layout-b4.html",
-          "selector": ".doc.tl"
-        },
-        "renderer_kind": "typography"
-      },
-      "max_items": 4,
-      "min_items": 0,
-      "open_for_override": false,
-      "purpose": "辅助证据、标签或解释",
-      "required": false,
-      "slot_id": "support",
-      "visual_role": "support"
-    },
-    {
-      "allowed_component_sources": [
-        "native"
-      ],
-      "allowed_renderer_kinds": [
-        "typography"
-      ],
-      "compatible_component_ids": [],
-      "count_unit": "binding",
-      "default_component": {
-        "component_id": "native.paper-ink.temporal.timeline-evidence-gallery.takeaway",
-        "component_source": "native",
-        "origin": {
-          "kind": "canonical-frame-island",
-          "path": "gallery/paper-ink/ai/frames/layout-b4.html",
-          "selector": ".caption"
-        },
-        "renderer_kind": "typography"
-      },
-      "max_items": 1,
-      "min_items": 0,
-      "open_for_override": false,
-      "purpose": "页面一句话结论",
-      "required": false,
-      "slot_id": "takeaway",
-      "visual_role": "support"
     }
   ],
   "source": {

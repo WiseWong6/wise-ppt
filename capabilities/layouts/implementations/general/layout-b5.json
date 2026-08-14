@@ -15,7 +15,7 @@
     "root_selector": "section.slide[data-implementation-id=\"paper-ink.temporal.step-rise.general\"]",
     "sha256": "sha256:e2b2c4d2afd54f328cd3eb92dd4c969a139987291ebe4faffa58b8da3d7b3da7"
   },
-  "canonical_fingerprint": "sha256:d443db03331eeeab136ad824a97d14c8fb86f32eeda3c84e96858af0b4867461",
+  "canonical_fingerprint": "sha256:a9190bbd04f62e48621ccb83723b755077adf7f0d95575abcddf43e1ab1bbdab",
   "contract_version": 1,
   "dependency_closure": {
     "files": [
@@ -76,14 +76,14 @@
       "x": 0,
       "y": 0
     },
-    "fingerprint": "sha256:11fd34c7fa16c9a9cae5de2b93b9cf48934a24e916b9d1d9184e8b785869e5fd",
+    "fingerprint": "sha256:878774a1a028c9508ce45314461637adf10e14aa92a2c2f09bf59f461727423a",
     "format": "wise-ppt-layout-geometry@1",
     "relations": [],
     "structure_contract": {
       "core_primitives": [
         "linear-sequence"
       ],
-      "region_count": 3,
+      "region_count": 1,
       "required_slot_ids": [
         "stages"
       ]
@@ -534,20 +534,6 @@
           "item.canonical.stages"
         ],
         "slot_id": "stages"
-      },
-      {
-        "asset_refs": [],
-        "content_refs": [
-          "item.canonical.support"
-        ],
-        "slot_id": "support"
-      },
-      {
-        "asset_refs": [],
-        "content_refs": [
-          "item.canonical.takeaway"
-        ],
-        "slot_id": "takeaway"
       }
     ],
     "values": {
@@ -596,9 +582,7 @@
             },
             "slot_id": {
               "enum": [
-                "stages",
-                "support",
-                "takeaway"
+                "stages"
               ],
               "type": "string"
             }
@@ -610,8 +594,8 @@
           ],
           "type": "object"
         },
-        "maxItems": 3,
-        "minItems": 3,
+        "maxItems": 1,
+        "minItems": 1,
         "type": "array"
       },
       "values": {
@@ -715,7 +699,7 @@
     ],
     "type": "object"
   },
-  "recipe_fingerprint": "sha256:7f4ec7398335430ece68917e575c5b917beda13f31110a98938dbc9f59875354",
+  "recipe_fingerprint": "sha256:845394c640df582cfbe7c1c04f5118c6a567963ce6ad8c69760accd1ed8d8245",
   "recipe_id": "paper-ink.temporal.step-rise",
   "required_capabilities": [],
   "slots": [
@@ -755,65 +739,6 @@
         "width": 1540
       },
       "visual_role": "primary"
-    },
-    {
-      "allowed_component_sources": [
-        "codex-host",
-        "native"
-      ],
-      "allowed_renderer_kinds": [
-        "typography",
-        "table",
-        "image",
-        "native-html",
-        "svg"
-      ],
-      "compatible_component_ids": [],
-      "count_unit": "binding",
-      "default_component": {
-        "component_id": "native.paper-ink.temporal.step-rise.support",
-        "component_source": "native",
-        "origin": {
-          "kind": "canonical-frame-island",
-          "path": "gallery/paper-ink/general/frames/layout-b5.html",
-          "selector": ".doc.tl"
-        },
-        "renderer_kind": "typography"
-      },
-      "max_items": 1,
-      "min_items": 0,
-      "open_for_override": false,
-      "purpose": "辅助证据、标签或解释",
-      "required": false,
-      "slot_id": "support",
-      "visual_role": "support"
-    },
-    {
-      "allowed_component_sources": [
-        "native"
-      ],
-      "allowed_renderer_kinds": [
-        "typography"
-      ],
-      "compatible_component_ids": [],
-      "count_unit": "binding",
-      "default_component": {
-        "component_id": "native.paper-ink.temporal.step-rise.takeaway",
-        "component_source": "native",
-        "origin": {
-          "kind": "canonical-frame-island",
-          "path": "gallery/paper-ink/general/frames/layout-b5.html",
-          "selector": ".caption"
-        },
-        "renderer_kind": "typography"
-      },
-      "max_items": 1,
-      "min_items": 0,
-      "open_for_override": false,
-      "purpose": "页面一句话结论",
-      "required": false,
-      "slot_id": "takeaway",
-      "visual_role": "support"
     }
   ],
   "source": {

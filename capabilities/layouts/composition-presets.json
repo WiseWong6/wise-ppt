@@ -60,7 +60,7 @@
       "slot_bindings": [
         {
           "slot_id": "slot-1",
-          "component_id": "native.paper-ink.media.reconstructed-image"
+          "component_id": "codex-host.paper-ink.media.generated-image"
         }
       ],
       "design_evidence": {
@@ -194,7 +194,7 @@
       "legacy_display_code": "A6",
       "name": "资质证书墙",
       "legacy_recipe_fingerprint": "sha256:39d6994b390b02c462bbe112b645fdb546de5f9f4bdf92e03433fbc4645dc5ad",
-      "migration_status": "ready",
+      "migration_status": "needs_component_extraction",
       "layout_id": "topology.split-x-2.dominant-end",
       "page_shell": {
         "managed_fields": [
@@ -208,7 +208,8 @@
       "slot_bindings": [
         {
           "slot_id": "slot-1",
-          "component_id": "native.paper-ink.semantic.credential-badge"
+          "component_id": "legacy.paper-ink.a6.badge",
+          "legacy_component_id": "A6.badge"
         },
         {
           "slot_id": "slot-2",
@@ -329,7 +330,7 @@
       "preset_id": "paper-ink.temporal.timeline",
       "legacy_display_code": "B1",
       "name": "水平时间轴",
-      "legacy_recipe_fingerprint": "sha256:f6982c5ab0aeb06346f51e89366cf08121a0c1c3fa7db76f6f9ae1566feb060f",
+      "legacy_recipe_fingerprint": "sha256:80c91bb2ad84b891fb9d22495b989549bed7556e622c46b57fb3f78ac537379a",
       "migration_status": "ready",
       "layout_id": "topology.leaf",
       "page_shell": {
@@ -362,7 +363,7 @@
       "preset_id": "paper-ink.temporal.gantt-waterfall",
       "legacy_display_code": "B2",
       "name": "甘特瀑布",
-      "legacy_recipe_fingerprint": "sha256:1f7803e92f69140d93064b20f70e40201b6957a5655789d06ecc8ddc80e190d0",
+      "legacy_recipe_fingerprint": "sha256:cf5fd1e529f29ef5533dc3f70aae885c71bda3740e1b19c000baa1e1cc86685d",
       "migration_status": "ready",
       "layout_id": "topology.leaf",
       "page_shell": {
@@ -395,7 +396,7 @@
       "preset_id": "paper-ink.temporal.swimlane-roadmap",
       "legacy_display_code": "B3",
       "name": "多泳道路线图",
-      "legacy_recipe_fingerprint": "sha256:a79b41b672b2d7f7b904ae83c257605050c91d5cf1d3abaf568347d39d7bd47f",
+      "legacy_recipe_fingerprint": "sha256:b0ccfdc6728d600d0b5a1ca764360334e75653db915a5a541569d5dbdc126a26",
       "migration_status": "ready",
       "layout_id": "topology.leaf",
       "page_shell": {
@@ -428,7 +429,7 @@
       "preset_id": "paper-ink.temporal.timeline-evidence-gallery",
       "legacy_display_code": "B4",
       "name": "时间轴垂挂画廊",
-      "legacy_recipe_fingerprint": "sha256:8110875157901b0b663dae3757644df24a3f8a1fa5125ef99036f50e74c1cea9",
+      "legacy_recipe_fingerprint": "sha256:590caffcd341b07fc9922cb8828ad3499b49ebdaee0f5d267bec15fef50e417e",
       "migration_status": "ready",
       "layout_id": "topology.leaf",
       "page_shell": {
@@ -461,7 +462,7 @@
       "preset_id": "paper-ink.temporal.step-rise",
       "legacy_display_code": "B5",
       "name": "阶梯爬升路径",
-      "legacy_recipe_fingerprint": "sha256:7f4ec7398335430ece68917e575c5b917beda13f31110a98938dbc9f59875354",
+      "legacy_recipe_fingerprint": "sha256:845394c640df582cfbe7c1c04f5118c6a567963ce6ad8c69760accd1ed8d8245",
       "migration_status": "ready",
       "layout_id": "topology.leaf",
       "page_shell": {
@@ -494,7 +495,7 @@
       "preset_id": "paper-ink.temporal.winding-road",
       "legacy_display_code": "B6",
       "name": "蜿蜒道路时间轴",
-      "legacy_recipe_fingerprint": "sha256:75ffc50ad255ebb1447c867aeaedc010aabbb95e720a59e1c3937fecd5d1d364",
+      "legacy_recipe_fingerprint": "sha256:78178b61c29369476da7dbcb4d72576b3f7c7413939168c715d9d13cc8ea94c0",
       "migration_status": "ready",
       "layout_id": "topology.leaf",
       "page_shell": {
@@ -542,7 +543,7 @@
       "slot_bindings": [
         {
           "slot_id": "slot-1",
-          "component_id": "native.paper-ink.media.reconstructed-image"
+          "component_id": "codex-host.paper-ink.media.generated-image"
         },
         {
           "slot_id": "slot-2",
@@ -1349,7 +1350,7 @@
       "legacy_display_code": "G1",
       "name": "三向放射",
       "legacy_recipe_fingerprint": "sha256:e002bf3596708853a130797c1b7e5c4ce45143848d54c0d059a815ef47ed19bd",
-      "migration_status": "ready",
+      "migration_status": "needs_component_extraction",
       "layout_id": "topology.leaf",
       "page_shell": {
         "managed_fields": [
@@ -1363,7 +1364,8 @@
       "slot_bindings": [
         {
           "slot_id": "slot-1",
-          "component_id": "native.paper-ink.079.radial-hub"
+          "component_id": "legacy.paper-ink.g1.radial-three-way",
+          "legacy_component_id": "G1.radial-three-way"
         }
       ],
       "design_evidence": {
@@ -1481,7 +1483,7 @@
       "legacy_display_code": "H2",
       "name": "嵌套变焦框",
       "legacy_recipe_fingerprint": "sha256:12a5b46c99463223cf176b3a5cb9198e57d2861216a063d1a1fd3f0f8079338f",
-      "migration_status": "ready",
+      "migration_status": "needs_component_extraction",
       "layout_id": "topology.leaf",
       "page_shell": {
         "managed_fields": [
@@ -1495,7 +1497,8 @@
       "slot_bindings": [
         {
           "slot_id": "slot-1",
-          "component_id": "atlas.043.concentric"
+          "component_id": "legacy.paper-ink.h2.zoom-frames",
+          "legacy_component_id": "H2.zoom-frames"
         }
       ],
       "design_evidence": {
@@ -1646,7 +1649,7 @@
       "legacy_display_code": "I3",
       "name": "双轨转化路径对比",
       "legacy_recipe_fingerprint": "sha256:71c4a0a746203ad1891d33d5dc06a7d57eea02be4a25683c7ccbbe348b0bec15",
-      "migration_status": "ready",
+      "migration_status": "needs_component_extraction",
       "layout_id": "topology.leaf",
       "page_shell": {
         "managed_fields": [
@@ -1660,7 +1663,8 @@
       "slot_bindings": [
         {
           "slot_id": "slot-1",
-          "component_id": "native.paper-ink.083.swimlane-roadmap"
+          "component_id": "legacy.paper-ink.i3.dual-track",
+          "legacy_component_id": "I3.dual-track"
         }
       ],
       "design_evidence": {
@@ -1819,7 +1823,7 @@
       "legacy_display_code": "K1",
       "name": "链阵复合",
       "legacy_recipe_fingerprint": "sha256:39aa07ad8007425cd7695468f958b4b7b0dc87ac32337e25def486e0e0ab40c4",
-      "migration_status": "ready",
+      "migration_status": "needs_component_extraction",
       "layout_id": "topology.leaf",
       "page_shell": {
         "managed_fields": [
@@ -1833,7 +1837,8 @@
       "slot_bindings": [
         {
           "slot_id": "slot-1",
-          "component_id": "atlas.023.matrix"
+          "component_id": "legacy.paper-ink.k1.stage-dimension",
+          "legacy_component_id": "K1.stage-dimension"
         }
       ],
       "design_evidence": {
@@ -1907,19 +1912,19 @@
       "slot_bindings": [
         {
           "slot_id": "slot-1",
-          "component_id": "atlas.003.list-card.default"
+          "component_id": "native.paper-ink.091.pain-list"
         },
         {
           "slot_id": "slot-2",
-          "component_id": "atlas.029.process.wrapped"
+          "component_id": "native.paper-ink.092.pipeline-strip"
         },
         {
           "slot_id": "slot-3",
-          "component_id": "atlas.055.arch-platform"
+          "component_id": "native.paper-ink.093.infra-strip"
         },
         {
           "slot_id": "slot-4",
-          "component_id": "atlas.059.stats"
+          "component_id": "native.paper-ink.089.metric-strip"
         }
       ],
       "design_evidence": {
@@ -1952,15 +1957,15 @@
       "slot_bindings": [
         {
           "slot_id": "slot-1",
-          "component_id": "native.paper-ink.semantic.scenario-column"
+          "component_id": "native.paper-ink.090.scenario-column"
         },
         {
           "slot_id": "slot-2",
-          "component_id": "native.paper-ink.semantic.scenario-column"
+          "component_id": "native.paper-ink.090.scenario-column"
         },
         {
           "slot_id": "slot-3",
-          "component_id": "native.paper-ink.semantic.scenario-column"
+          "component_id": "native.paper-ink.090.scenario-column"
         }
       ],
       "design_evidence": {
@@ -1979,7 +1984,7 @@
       "legacy_display_code": "L1",
       "name": "权重弧线图",
       "legacy_recipe_fingerprint": "sha256:527f981081fcf374ecc387422aa6f527be8619e4e874b2cf820f821a8a267c61",
-      "migration_status": "ready",
+      "migration_status": "needs_component_extraction",
       "layout_id": "topology.leaf",
       "page_shell": {
         "managed_fields": [
@@ -1993,7 +1998,8 @@
       "slot_bindings": [
         {
           "slot_id": "slot-1",
-          "component_id": "native.paper-ink.semantic.weighted-arcs"
+          "component_id": "legacy.paper-ink.l1.weighted-arcs",
+          "legacy_component_id": "L1.weighted-arcs"
         }
       ],
       "design_evidence": {
@@ -2012,7 +2018,7 @@
       "legacy_display_code": "L2",
       "name": "星座映射网",
       "legacy_recipe_fingerprint": "sha256:9bddebe28619b5ec1845924e72572c9f9df8c8c9ebfdefd133204b21252a4308",
-      "migration_status": "ready",
+      "migration_status": "needs_component_extraction",
       "layout_id": "topology.leaf",
       "page_shell": {
         "managed_fields": [
@@ -2026,7 +2032,8 @@
       "slot_bindings": [
         {
           "slot_id": "slot-1",
-          "component_id": "native.paper-ink.semantic.constellation-network"
+          "component_id": "legacy.paper-ink.l2.constellation-network",
+          "legacy_component_id": "L2.constellation-network"
         }
       ],
       "design_evidence": {
@@ -2045,7 +2052,7 @@
       "legacy_display_code": "M1",
       "name": "粒子主角",
       "legacy_recipe_fingerprint": "sha256:308d1cc1707bb17c031881b65f6b671290b4122eaf224202b230c9454aa40d79",
-      "migration_status": "ready",
+      "migration_status": "needs_component_extraction",
       "layout_id": "topology.leaf",
       "page_shell": {
         "managed_fields": [
@@ -2059,7 +2066,8 @@
       "slot_bindings": [
         {
           "slot_id": "slot-1",
-          "component_id": "native.paper-ink.semantic.particle-hero"
+          "component_id": "legacy.paper-ink.m1.particle-hero",
+          "legacy_component_id": "M1.particle-hero"
         }
       ],
       "design_evidence": {

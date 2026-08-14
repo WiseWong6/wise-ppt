@@ -15,7 +15,7 @@
     "root_selector": "section.slide[data-implementation-id=\"paper-ink.temporal.swimlane-roadmap.ai\"]",
     "sha256": "sha256:4230a6fbce2295b691702d2c074529120169f24dcc8cc4cffea8f85e1b93b570"
   },
-  "canonical_fingerprint": "sha256:2a69cebe3c4651d5f08fa26c81b0a7fb3deaf3b01404c522caacd626a6155a88",
+  "canonical_fingerprint": "sha256:5b944d93f353cb13ea4f8ece7d45bd22b3e2a5ae1cf4e1147b92ab55a321dd0d",
   "contract_version": 1,
   "dependency_closure": {
     "files": [
@@ -76,7 +76,7 @@
       "x": 0,
       "y": 0
     },
-    "fingerprint": "sha256:fa4fc5ea164ed99df35c468aea1164d7a19b76272c9ec109a8044e20960f93cd",
+    "fingerprint": "sha256:d8ad667074f733c4fb4e58f2d2ff6da0984e6531849bfa235f83dad480a8254a",
     "format": "wise-ppt-layout-geometry@1",
     "relations": [],
     "structure_contract": {
@@ -85,7 +85,7 @@
         "parallel-tracks",
         "linear-sequence"
       ],
-      "region_count": 3,
+      "region_count": 1,
       "required_slot_ids": [
         "roadmap"
       ]
@@ -861,20 +861,6 @@
           "item.canonical.roadmap"
         ],
         "slot_id": "roadmap"
-      },
-      {
-        "asset_refs": [],
-        "content_refs": [
-          "item.canonical.support"
-        ],
-        "slot_id": "support"
-      },
-      {
-        "asset_refs": [],
-        "content_refs": [
-          "item.canonical.takeaway"
-        ],
-        "slot_id": "takeaway"
       }
     ],
     "values": {
@@ -936,9 +922,7 @@
             },
             "slot_id": {
               "enum": [
-                "roadmap",
-                "support",
-                "takeaway"
+                "roadmap"
               ],
               "type": "string"
             }
@@ -950,8 +934,8 @@
           ],
           "type": "object"
         },
-        "maxItems": 3,
-        "minItems": 3,
+        "maxItems": 1,
+        "minItems": 1,
         "type": "array"
       },
       "values": {
@@ -1120,7 +1104,7 @@
     ],
     "type": "object"
   },
-  "recipe_fingerprint": "sha256:a79b41b672b2d7f7b904ae83c257605050c91d5cf1d3abaf568347d39d7bd47f",
+  "recipe_fingerprint": "sha256:b0ccfdc6728d600d0b5a1ca764360334e75653db915a5a541569d5dbdc126a26",
   "recipe_id": "paper-ink.temporal.swimlane-roadmap",
   "required_capabilities": [],
   "slots": [
@@ -1160,65 +1144,6 @@
         "width": 1540
       },
       "visual_role": "primary"
-    },
-    {
-      "allowed_component_sources": [
-        "codex-host",
-        "native"
-      ],
-      "allowed_renderer_kinds": [
-        "typography",
-        "table",
-        "image",
-        "native-html",
-        "svg"
-      ],
-      "compatible_component_ids": [],
-      "count_unit": "binding",
-      "default_component": {
-        "component_id": "native.paper-ink.temporal.swimlane-roadmap.support",
-        "component_source": "native",
-        "origin": {
-          "kind": "canonical-frame-island",
-          "path": "gallery/paper-ink/ai/frames/layout-b3.html",
-          "selector": ".doc.tl"
-        },
-        "renderer_kind": "typography"
-      },
-      "max_items": 4,
-      "min_items": 0,
-      "open_for_override": false,
-      "purpose": "辅助证据、标签或解释",
-      "required": false,
-      "slot_id": "support",
-      "visual_role": "support"
-    },
-    {
-      "allowed_component_sources": [
-        "native"
-      ],
-      "allowed_renderer_kinds": [
-        "typography"
-      ],
-      "compatible_component_ids": [],
-      "count_unit": "binding",
-      "default_component": {
-        "component_id": "native.paper-ink.temporal.swimlane-roadmap.takeaway",
-        "component_source": "native",
-        "origin": {
-          "kind": "canonical-frame-island",
-          "path": "gallery/paper-ink/ai/frames/layout-b3.html",
-          "selector": ".caption"
-        },
-        "renderer_kind": "typography"
-      },
-      "max_items": 1,
-      "min_items": 0,
-      "open_for_override": false,
-      "purpose": "页面一句话结论",
-      "required": false,
-      "slot_id": "takeaway",
-      "visual_role": "support"
     }
   ],
   "source": {

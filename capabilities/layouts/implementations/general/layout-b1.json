@@ -15,7 +15,7 @@
     "root_selector": "section.slide[data-implementation-id=\"paper-ink.temporal.timeline.general\"]",
     "sha256": "sha256:4ca4f9ea08632ab373d82588ac4480d978983079adda332cfae5a97010d672f6"
   },
-  "canonical_fingerprint": "sha256:8ebff91c2b08287094e84d22a733a13f7a2a522be6b8ada1968fda74efc2d215",
+  "canonical_fingerprint": "sha256:b9417c97303c1b95b82fb46fcaae19736a95d61aefff98278ed554ed64c71001",
   "contract_version": 1,
   "dependency_closure": {
     "files": [
@@ -76,14 +76,14 @@
       "x": 0,
       "y": 0
     },
-    "fingerprint": "sha256:85fb7e99d91f870b4b1e0f0a56d5e95b4a01df55d76876be910bbecb6ac8351f",
+    "fingerprint": "sha256:f4e52c2861d1755ab411e3ba7298096730f9032a4c4ffc0800af96c7cdfbde19",
     "format": "wise-ppt-layout-geometry@1",
     "relations": [],
     "structure_contract": {
       "core_primitives": [
         "linear-sequence"
       ],
-      "region_count": 3,
+      "region_count": 1,
       "required_slot_ids": [
         "milestones"
       ]
@@ -364,20 +364,6 @@
           "item.canonical.milestones"
         ],
         "slot_id": "milestones"
-      },
-      {
-        "asset_refs": [],
-        "content_refs": [
-          "item.canonical.support"
-        ],
-        "slot_id": "support"
-      },
-      {
-        "asset_refs": [],
-        "content_refs": [
-          "item.canonical.takeaway"
-        ],
-        "slot_id": "takeaway"
       }
     ],
     "values": {
@@ -419,9 +405,7 @@
             },
             "slot_id": {
               "enum": [
-                "milestones",
-                "support",
-                "takeaway"
+                "milestones"
               ],
               "type": "string"
             }
@@ -433,8 +417,8 @@
           ],
           "type": "object"
         },
-        "maxItems": 3,
-        "minItems": 3,
+        "maxItems": 1,
+        "minItems": 1,
         "type": "array"
       },
       "values": {
@@ -504,7 +488,7 @@
     ],
     "type": "object"
   },
-  "recipe_fingerprint": "sha256:f6982c5ab0aeb06346f51e89366cf08121a0c1c3fa7db76f6f9ae1566feb060f",
+  "recipe_fingerprint": "sha256:80c91bb2ad84b891fb9d22495b989549bed7556e622c46b57fb3f78ac537379a",
   "recipe_id": "paper-ink.temporal.timeline",
   "required_capabilities": [],
   "slots": [
@@ -544,65 +528,6 @@
         "width": 1540
       },
       "visual_role": "primary"
-    },
-    {
-      "allowed_component_sources": [
-        "codex-host",
-        "native"
-      ],
-      "allowed_renderer_kinds": [
-        "typography",
-        "table",
-        "image",
-        "native-html",
-        "svg"
-      ],
-      "compatible_component_ids": [],
-      "count_unit": "binding",
-      "default_component": {
-        "component_id": "native.paper-ink.temporal.timeline.support",
-        "component_source": "native",
-        "origin": {
-          "kind": "canonical-frame-island",
-          "path": "gallery/paper-ink/general/frames/layout-b1.html",
-          "selector": ".doc.tl"
-        },
-        "renderer_kind": "typography"
-      },
-      "max_items": 1,
-      "min_items": 0,
-      "open_for_override": false,
-      "purpose": "辅助证据、标签或解释",
-      "required": false,
-      "slot_id": "support",
-      "visual_role": "support"
-    },
-    {
-      "allowed_component_sources": [
-        "native"
-      ],
-      "allowed_renderer_kinds": [
-        "typography"
-      ],
-      "compatible_component_ids": [],
-      "count_unit": "binding",
-      "default_component": {
-        "component_id": "native.paper-ink.temporal.timeline.takeaway",
-        "component_source": "native",
-        "origin": {
-          "kind": "canonical-frame-island",
-          "path": "gallery/paper-ink/general/frames/layout-b1.html",
-          "selector": ".caption"
-        },
-        "renderer_kind": "typography"
-      },
-      "max_items": 1,
-      "min_items": 0,
-      "open_for_override": false,
-      "purpose": "页面一句话结论",
-      "required": false,
-      "slot_id": "takeaway",
-      "visual_role": "support"
     }
   ],
   "source": {

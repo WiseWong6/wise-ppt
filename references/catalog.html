@@ -35,6 +35,8 @@
   .card{background:var(--card);border:1px solid var(--line);break-inside:avoid}
   .frame-wrap{position:relative;width:100%;padding-top:56.25%;overflow:hidden;background:var(--paper-deep)}
   .frame-wrap iframe{position:absolute;top:0;left:0;width:1920px;height:1080px;border:0;transform-origin:0 0}
+  .frame-wrap{border-bottom:1px solid var(--line)}
+  .comp-wrap{border-bottom:1px solid var(--line)}
   .card-info{padding:10px 14px 12px}
   .card-info .id{font-size:11px;color:var(--ink-2);letter-spacing:.12em;font-weight:700}
   .card-info .nm{font-size:14px;font-weight:600;margin-top:2px}
@@ -249,7 +251,7 @@ const $=s=>document.querySelector(s);
 
 function layoutCard([id,nm,struct,rel]){
   return `<div class="card">
-    <div class="frame-wrap"><iframe loading="lazy" src="${FRAMES}layout-${id.toLowerCase()}.html"></iframe></div>
+    <div class="frame-wrap"><iframe data-src="${FRAMES}layout-${id.toLowerCase()}.html"></iframe></div>
     <div class="card-info"><span class="id">${id}</span>
       <div class="nm">${nm}</div>
       <div class="meta">结构:<b>${struct}</b> · 关系:<b>${rel}</b></div>
@@ -257,8 +259,8 @@ function layoutCard([id,nm,struct,rel]){
 }
 function compCard(c,extra=''){
   const inner=c.ec
-    ?`<iframe loading="lazy" src="gallery-components/echarts-frame.html?id=${c.ec[0]}&theme=paper-ink"></iframe>`
-    :`<iframe loading="lazy" src="gallery-components/atlas-preview.html?num=${c.rep}"></iframe>`;
+    ?`<iframe data-src="gallery-components/echarts-frame.html?id=${c.ec[0]}&theme=paper-ink"></iframe>`
+    :`<iframe data-src="gallery-components/atlas-preview.html?num=${c.rep}"></iframe>`;
   return `<div class="comp-card">
     <div class="comp-wrap">${inner}</div>
     <div class="comp-info">
@@ -294,7 +296,7 @@ $('#c-cmp').textContent=(COMP_GROUPS.reduce((s,g)=>s+g.items.length,0)+nativeTot
 /* 反向抽取候选渲染:预览 = 整页版式(组件本体 = 中央图形) */
 function extractCard(it){
   return `<div class="card">
-    <div class="frame-wrap"><iframe loading="lazy" src="${FRAMES}layout-${it.from.toLowerCase()}.html"></iframe></div>
+    <div class="frame-wrap"><iframe data-src="${FRAMES}layout-${it.from.toLowerCase()}.html"></iframe></div>
     <div class="card-info"><span class="id">${it.from} → 组件</span>
       <div class="nm">${it.nm}</div>
       ${it.note?`<div class="meta">${it.note}</div>`:''}
@@ -315,7 +317,7 @@ function nativeCard(c){
     ?'gallery-components/echarts-frame.html?id='+c.ec+'&theme=paper-ink'
     :'gallery-components/native-preview.html?num='+c.num;
   return `<div class="comp-card">
-    <div class="comp-wrap"><iframe loading="lazy" src="${src}"></iframe></div>
+    <div class="comp-wrap"><iframe data-src="${src}"></iframe></div>
     <div class="comp-info">
       <span class="en">${c.en}</span> <span class="nm">${c.nm}</span>
       ${c.num?`<div class="param">#${String(c.num).padStart(3,'0')} · native</div>`:'<div class="param">ECharts</div>'}
@@ -326,6 +328,19 @@ $('#native-groups').innerHTML=NATIVE_GROUPS.map(g=>`
     <div class="fam-head"><h2>${g.g}</h2><span class="desc">${g.items.length} 个</span></div>
     <div class="comp-grid">${g.items.map(nativeCard).join('')}</div>
   </div>`).join('');
+
+/* iframe 懒挂载:进入视口前 600px 才设置 src,避免大量 iframe 同时渲染导致进程崩溃 */
+(function lazyMount(){
+  const io=new IntersectionObserver(function(es){
+    es.forEach(function(en){
+      if(!en.isIntersecting)return;
+      const f=en.target;
+      if(f.dataset.src&&!f.getAttribute('src'))f.src=f.dataset.src;
+      io.unobserve(f);
+    });
+  },{rootMargin:'600px'});
+  document.querySelectorAll('iframe[data-src]').forEach(f=>io.observe(f));
+})();
 
 /* tab 切换 */
 function switchTab(id){

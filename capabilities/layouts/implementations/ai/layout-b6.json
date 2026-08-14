@@ -15,7 +15,7 @@
     "root_selector": "section.slide[data-implementation-id=\"paper-ink.temporal.winding-road.ai\"]",
     "sha256": "sha256:83c81199f9a415349fab036493dfc20d9e0834679919c7378dd2c0ae6fade360"
   },
-  "canonical_fingerprint": "sha256:3ddbcb32997e499eaeb39e056245123ec4a300bc058e623cda586bfceddf3eff",
+  "canonical_fingerprint": "sha256:8a28347e099dc8338ee7a9f54f483b0d0d01eadc10cdd09c1ad268e57dc2378f",
   "contract_version": 1,
   "dependency_closure": {
     "files": [
@@ -76,14 +76,14 @@
       "x": 0,
       "y": 0
     },
-    "fingerprint": "sha256:3dc7cffee8de76f2ec9a81d3e40c145f1a37320d2bd3c3b5f3c20e921f138a97",
+    "fingerprint": "sha256:359e8178b9d23d1a0236356ea56a69bbf4bb5107a69f71818cd8e1fb7a3f9c68",
     "format": "wise-ppt-layout-geometry@1",
     "relations": [],
     "structure_contract": {
       "core_primitives": [
         "linear-sequence"
       ],
-      "region_count": 3,
+      "region_count": 1,
       "required_slot_ids": [
         "road-stages"
       ]
@@ -734,20 +734,6 @@
           "item.canonical.road-stages"
         ],
         "slot_id": "road-stages"
-      },
-      {
-        "asset_refs": [],
-        "content_refs": [
-          "item.canonical.support"
-        ],
-        "slot_id": "support"
-      },
-      {
-        "asset_refs": [],
-        "content_refs": [
-          "item.canonical.takeaway"
-        ],
-        "slot_id": "takeaway"
       }
     ],
     "values": {
@@ -804,9 +790,7 @@
             },
             "slot_id": {
               "enum": [
-                "road-stages",
-                "support",
-                "takeaway"
+                "road-stages"
               ],
               "type": "string"
             }
@@ -818,8 +802,8 @@
           ],
           "type": "object"
         },
-        "maxItems": 3,
-        "minItems": 3,
+        "maxItems": 1,
+        "minItems": 1,
         "type": "array"
       },
       "values": {
@@ -963,7 +947,7 @@
     ],
     "type": "object"
   },
-  "recipe_fingerprint": "sha256:75ffc50ad255ebb1447c867aeaedc010aabbb95e720a59e1c3937fecd5d1d364",
+  "recipe_fingerprint": "sha256:78178b61c29369476da7dbcb4d72576b3f7c7413939168c715d9d13cc8ea94c0",
   "recipe_id": "paper-ink.temporal.winding-road",
   "required_capabilities": [],
   "slots": [
@@ -1003,65 +987,6 @@
         "width": 1540
       },
       "visual_role": "primary"
-    },
-    {
-      "allowed_component_sources": [
-        "codex-host",
-        "native"
-      ],
-      "allowed_renderer_kinds": [
-        "typography",
-        "table",
-        "image",
-        "native-html",
-        "svg"
-      ],
-      "compatible_component_ids": [],
-      "count_unit": "binding",
-      "default_component": {
-        "component_id": "native.paper-ink.temporal.winding-road.support",
-        "component_source": "native",
-        "origin": {
-          "kind": "canonical-frame-island",
-          "path": "gallery/paper-ink/ai/frames/layout-b6.html",
-          "selector": ".doc.tl"
-        },
-        "renderer_kind": "typography"
-      },
-      "max_items": 4,
-      "min_items": 0,
-      "open_for_override": false,
-      "purpose": "辅助证据、标签或解释",
-      "required": false,
-      "slot_id": "support",
-      "visual_role": "support"
-    },
-    {
-      "allowed_component_sources": [
-        "native"
-      ],
-      "allowed_renderer_kinds": [
-        "typography"
-      ],
-      "compatible_component_ids": [],
-      "count_unit": "binding",
-      "default_component": {
-        "component_id": "native.paper-ink.temporal.winding-road.takeaway",
-        "component_source": "native",
-        "origin": {
-          "kind": "canonical-frame-island",
-          "path": "gallery/paper-ink/ai/frames/layout-b6.html",
-          "selector": ".caption"
-        },
-        "renderer_kind": "typography"
-      },
-      "max_items": 1,
-      "min_items": 0,
-      "open_for_override": false,
-      "purpose": "页面一句话结论",
-      "required": false,
-      "slot_id": "takeaway",
-      "visual_role": "support"
     }
   ],
   "source": {

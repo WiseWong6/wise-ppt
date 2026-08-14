@@ -15,7 +15,7 @@
     "root_selector": "section.slide[data-implementation-id=\"paper-ink.temporal.gantt-waterfall.ai\"]",
     "sha256": "sha256:fe587b58ee1dc04ac900a6967cd92dbe8f89cf1969de3be269002d43a14bdc39"
   },
-  "canonical_fingerprint": "sha256:dcbc6a469280078f49e6957c4a367e448d225fc6440b5ef7cecc25088afa857e",
+  "canonical_fingerprint": "sha256:6d656a7648b675bd1fc265e721822d25e5d1e1011a6a965a8e0cff2a35835ed8",
   "contract_version": 1,
   "dependency_closure": {
     "files": [
@@ -76,7 +76,7 @@
       "x": 0,
       "y": 0
     },
-    "fingerprint": "sha256:1f68ede4c99c7d211a79cf4b39b94f09b9b2a97ca3f111546486a8f372d42397",
+    "fingerprint": "sha256:2becca95f2e81bd23d7ee7859c9b68bb66b062812d5966d68ef0fe92765e9a6f",
     "format": "wise-ppt-layout-geometry@1",
     "relations": [],
     "structure_contract": {
@@ -84,7 +84,7 @@
         "linear-sequence",
         "matrix-field"
       ],
-      "region_count": 3,
+      "region_count": 1,
       "required_slot_ids": [
         "durations"
       ]
@@ -645,20 +645,6 @@
           "item.canonical.durations"
         ],
         "slot_id": "durations"
-      },
-      {
-        "asset_refs": [],
-        "content_refs": [
-          "item.canonical.support"
-        ],
-        "slot_id": "support"
-      },
-      {
-        "asset_refs": [],
-        "content_refs": [
-          "item.canonical.takeaway"
-        ],
-        "slot_id": "takeaway"
       }
     ],
     "values": {
@@ -710,9 +696,7 @@
             },
             "slot_id": {
               "enum": [
-                "durations",
-                "support",
-                "takeaway"
+                "durations"
               ],
               "type": "string"
             }
@@ -724,8 +708,8 @@
           ],
           "type": "object"
         },
-        "maxItems": 3,
-        "minItems": 3,
+        "maxItems": 1,
+        "minItems": 1,
         "type": "array"
       },
       "values": {
@@ -851,7 +835,7 @@
     ],
     "type": "object"
   },
-  "recipe_fingerprint": "sha256:1f7803e92f69140d93064b20f70e40201b6957a5655789d06ecc8ddc80e190d0",
+  "recipe_fingerprint": "sha256:cf5fd1e529f29ef5533dc3f70aae885c71bda3740e1b19c000baa1e1cc86685d",
   "recipe_id": "paper-ink.temporal.gantt-waterfall",
   "required_capabilities": [],
   "slots": [
@@ -891,65 +875,6 @@
         "width": 1540
       },
       "visual_role": "primary"
-    },
-    {
-      "allowed_component_sources": [
-        "codex-host",
-        "native"
-      ],
-      "allowed_renderer_kinds": [
-        "typography",
-        "table",
-        "image",
-        "native-html",
-        "svg"
-      ],
-      "compatible_component_ids": [],
-      "count_unit": "binding",
-      "default_component": {
-        "component_id": "native.paper-ink.temporal.gantt-waterfall.support",
-        "component_source": "native",
-        "origin": {
-          "kind": "canonical-frame-island",
-          "path": "gallery/paper-ink/ai/frames/layout-b2.html",
-          "selector": ".doc.tl"
-        },
-        "renderer_kind": "typography"
-      },
-      "max_items": 4,
-      "min_items": 0,
-      "open_for_override": false,
-      "purpose": "辅助证据、标签或解释",
-      "required": false,
-      "slot_id": "support",
-      "visual_role": "support"
-    },
-    {
-      "allowed_component_sources": [
-        "native"
-      ],
-      "allowed_renderer_kinds": [
-        "typography"
-      ],
-      "compatible_component_ids": [],
-      "count_unit": "binding",
-      "default_component": {
-        "component_id": "native.paper-ink.temporal.gantt-waterfall.takeaway",
-        "component_source": "native",
-        "origin": {
-          "kind": "canonical-frame-island",
-          "path": "gallery/paper-ink/ai/frames/layout-b2.html",
-          "selector": ".caption"
-        },
-        "renderer_kind": "typography"
-      },
-      "max_items": 1,
-      "min_items": 0,
-      "open_for_override": false,
-      "purpose": "页面一句话结论",
-      "required": false,
-      "slot_id": "takeaway",
-      "visual_role": "support"
     }
   ],
   "source": {
