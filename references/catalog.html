@@ -282,17 +282,19 @@ function fitFrames(root){
 }
 function compHtml(num){
   const e=byNum(num);if(!e)return '';
+  /* 画布 = PPT 场馆 1280×720;组件保持原始尺寸,水平垂直居中,仅在超界时缩小 */
   const fit=`<script>
   (function(){
     var VW=1280,VH=720;
     function fit(){
       var el=document.querySelector('.swiss-card')||document.body;
-      el.style.margin='0';el.style.position='static';el.style.transform='none';
-      var w=el.scrollWidth||600,h=el.scrollHeight||600;
+      el.style.transform='none';
+      var w=el.offsetWidth||600,h=el.offsetHeight||600;
       var s=Math.min(VW/w,VH/h,1);
       el.style.transformOrigin='0 0';
       el.style.transform='scale('+s+')';
       el.style.position='absolute';
+      el.style.margin='0';
       el.style.left=((VW-w*s)/2)+'px';
       el.style.top=((VH-h*s)/2)+'px';
     }
@@ -301,8 +303,7 @@ function compHtml(num){
   })();
   </`+`script>`;
   const override=`<style>
-  .swiss-card{width:1280px !important;min-height:0 !important;height:720px !important;border-radius:0 !important}
-  .swiss-card__content{padding:56px 72px !important;min-height:0 !important;height:720px !important}
+  .swiss-card{border-radius:0 !important;margin:0 !important;flex-shrink:0 !important}
   </style>`;
   const snippet=ADAPTER?ADAPTER.adaptMarkup(e.snippet||''):(e.snippet||'');
   return '<!DOCTYPE html><html><head><meta charset="utf-8">'+
