@@ -83,10 +83,6 @@
 
 <main id="m-lyt">
   <div class="note">关系页走 <b>定关系 → 圈候选结构 → 二次判断 → 选组件</b>。同一关系可落到多种结构;结构只负责切区域,区域内由组件负责。</div>
-  <div class="fam-section">
-    <div class="fam-head"><h2>结构参考(纯切分)</h2><span class="tag">结构</span><span class="desc">Atlas 双栏 / 三栏 / 垂直分栏 —— 它们只切区域不承载信息,是「结构」不是组件</span></div>
-    <div class="comp-grid" id="lyt-struct"></div>
-  </div>
   <div id="lyt-fams"></div>
 </main>
 
@@ -211,13 +207,6 @@ const EXTRACT=[
   ['C5','进度环','子组件',''],['C3','档案卡','子组件',''],['A1','标本卡(引文+批注)','子组件',''],['A3','引文卡','子组件',''],
 ];
 
-/* 结构参考 atlas 片段 */
-const STRUCT_ATLAS=[
-  {rep:7,en:'two-col',nm:'双栏布局',struct:'左右2等分'},
-  {rep:8,en:'three-col',nm:'三栏布局',struct:'左右3等分'},
-  {rep:9,en:'split-v',nm:'垂直分栏',struct:'上下分栏'},
-];
-
 /* ============ 渲染 ============ */
 const $=s=>document.querySelector(s);
 const entries=(window.SWISS_CATALOG_DATA&&window.SWISS_CATALOG_DATA.entries)||[];
@@ -293,14 +282,13 @@ function compCard(c,extra=''){
 $('#tpl-gallery').innerHTML=NON_REL.map(layoutCard).join('');
 $('#c-tpl').textContent=NON_REL.length;
 
-/* 版式:结构参考 + 六大族 */
-$('#lyt-struct').innerHTML=STRUCT_ATLAS.map(c=>compCard(c)).join('');
+/* 版式:六大族 */
 $('#lyt-fams').innerHTML=FAMS.map(f=>`
   <div class="fam-section">
     <div class="fam-head"><h2>${f.cn}</h2><span class="tag">${f.id}</span><span class="desc">${f.desc} · ${f.items.length} 版式</span></div>
     <div class="grid">${f.items.map(layoutCard).join('')}</div>
   </div>`).join('');
-$('#c-lyt').textContent=STRUCT_ATLAS.length+FAMS.reduce((s,f)=>s+f.items.length,0);
+$('#c-lyt').textContent=FAMS.reduce((s,f)=>s+f.items.length,0);
 
 /* 组件 */
 $('#cmp-groups').innerHTML=COMP_GROUPS.map(g=>`
