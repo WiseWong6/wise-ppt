@@ -35,8 +35,9 @@
   .card{background:var(--card);border:1px solid var(--line);break-inside:avoid}
   .frame-wrap{position:relative;width:100%;padding-top:56.25%;overflow:hidden;background:var(--paper-deep)}
   .frame-wrap iframe{position:absolute;top:0;left:0;width:1920px;height:1080px;border:0;transform-origin:0 0}
-  .frame-wrap{border-bottom:1px solid var(--line)}
-  .comp-wrap{border-bottom:1px solid var(--line)}
+  .frame-wrap{margin:10px 10px 0;border:1px solid var(--ink-45)}
+  .comp-wrap{margin:10px 10px 0;border:1px solid var(--ink-45)}
+  .card,.comp-card{cursor:pointer}
   .card-info{padding:10px 14px 12px}
   .card-info .id{font-size:11px;color:var(--ink-2);letter-spacing:.12em;font-weight:700}
   .card-info .nm{font-size:14px;font-weight:600;margin-top:2px}
@@ -198,8 +199,12 @@ const COMP_GROUPS=[
 /* 反向抽取:画册版式 → 组件候选(按落地状态分类) */
 const EXTRACT_GROUPS=[
   {g:'仍待抽取 —— atlas 与 native 均无,需要新做',tag:'todo',items:[
-    {from:'L2',nm:'映射弧线网'},{from:'L1',nm:'权重弧网'},{from:'G1',nm:'三向放射图'},
-    {from:'H2',nm:'嵌套框'},{from:'C7',nm:'排行柱图'},{from:'J2',nm:'蛇形回环'},
+    {from:'L2',nm:'映射弧线网',rect:[150,230,1620,700]},
+    {from:'L1',nm:'权重弧网',rect:[150,250,1620,660]},
+    {from:'G1',nm:'三向放射图',rect:[400,230,1120,680]},
+    {from:'H2',nm:'嵌套框',rect:[260,240,1400,640]},
+    {from:'C7',nm:'排行柱图',rect:[200,220,1520,680]},
+    {from:'J2',nm:'蛇形回环',rect:[200,200,1520,700]},
   ]},
   {g:'近似已有 —— 语义重合,可并入现有组件',tag:'dup',items:[
     {from:'J1',nm:'环形循环',note:'≈ process-loop'},{from:'J3',nm:'旅程曲线',note:'≈ journey'},
@@ -250,18 +255,24 @@ const NATIVE_GROUPS=[
 const $=s=>document.querySelector(s);
 
 function layoutCard([id,nm,struct,rel]){
-  return `<div class="card">
-    <div class="frame-wrap"><iframe data-src="${FRAMES}layout-${id.toLowerCase()}.html"></iframe></div>
+  const full=FRAMES+'layout-'+id.toLowerCase()+'.html';
+  return `<div class="card" data-href="${full}">
+    <div class="frame-wrap"><iframe data-src="${full}"></iframe></div>
     <div class="card-info"><span class="id">${id}</span>
       <div class="nm">${nm}</div>
       <div class="meta">结构:<b>${struct}</b> · 关系:<b>${rel}</b></div>
     </div></div>`;
 }
+/* 详情路由:atlas/native → 画册 #/layout/N;echarts → #/component/{slug}-default */
+function ecSlug(id){return id.toLowerCase().replace(/[^a-z0-9]+/g,'-').replace(/^-|-$/g,'');}
 function compCard(c,extra=''){
   const inner=c.ec
     ?`<iframe data-src="gallery-components/echarts-frame.html?id=${c.ec[0]}&theme=paper-ink"></iframe>`
     :`<iframe data-src="gallery-components/atlas-preview.html?num=${c.rep}"></iframe>`;
-  return `<div class="comp-card">
+  const href=c.ec
+    ?'gallery-components/index.html?theme=paper-ink#/component/'+ecSlug(c.ec[0])+'-default'
+    :'gallery-components/index.html?theme=paper-ink#/layout/'+c.rep;
+  return `<div class="comp-card" data-href="${href}">
     <div class="comp-wrap">${inner}</div>
     <div class="comp-info">
       <span class="en">${c.en}</span> <span class="nm">${c.nm}</span>
@@ -293,14 +304,18 @@ $('#cmp-groups').innerHTML=COMP_GROUPS.map(g=>`
 const nativeTotal=NATIVE_GROUPS.reduce((s,g)=>s+g.items.length,0);
 $('#c-cmp').textContent=(COMP_GROUPS.reduce((s,g)=>s+g.items.length,0)+nativeTotal)+'+'+EXTRACT_GROUPS.reduce((s,g)=>s+g.items.length,0)+'抽';
 
-/* 反向抽取候选渲染:预览 = 整页版式(组件本体 = 中央图形) */
+/* 反向抽取候选渲染:待抽取 = 裁剪出组件本体(crop-preview);近似已有 = 整页版式 */
 function extractCard(it){
-  return `<div class="card">
-    <div class="frame-wrap"><iframe data-src="${FRAMES}layout-${it.from.toLowerCase()}.html"></iframe></div>
+  const full=FRAMES+'layout-'+it.from.toLowerCase()+'.html';
+  const src=it.rect
+    ?'gallery-components/crop-preview.html?u='+encodeURIComponent(full)+'&rect='+it.rect.join(',')
+    :full;
+  return `<div class="card" data-href="${full}">
+    <div class="frame-wrap"><iframe data-src="${src}"></iframe></div>
     <div class="card-info"><span class="id">${it.from} → 组件</span>
       <div class="nm">${it.nm}</div>
       ${it.note?`<div class="meta">${it.note}</div>`:''}
-      <div class="meta">整页预览,组件本体 = 中央图形</div>
+      <div class="meta">${it.rect?'组件本体(从整页裁出)':'整页预览,组件本体 = 中央图形'} · 点击看整页</div>
     </div></div>`;
 }
 $('#extract-groups').innerHTML=EXTRACT_GROUPS.map(g=>`
@@ -316,7 +331,10 @@ function nativeCard(c){
   const src=c.ec
     ?'gallery-components/echarts-frame.html?id='+c.ec+'&theme=paper-ink'
     :'gallery-components/native-preview.html?num='+c.num;
-  return `<div class="comp-card">
+  const href=c.ec
+    ?'gallery-components/index.html?theme=paper-ink#/component/'+ecSlug(c.ec)+'-default'
+    :'gallery-components/index.html?theme=paper-ink#/layout/'+c.num;
+  return `<div class="comp-card" data-href="${href}">
     <div class="comp-wrap"><iframe data-src="${src}"></iframe></div>
     <div class="comp-info">
       <span class="en">${c.en}</span> <span class="nm">${c.nm}</span>
@@ -328,6 +346,12 @@ $('#native-groups').innerHTML=NATIVE_GROUPS.map(g=>`
     <div class="fam-head"><h2>${g.g}</h2><span class="desc">${g.items.length} 个</span></div>
     <div class="comp-grid">${g.items.map(nativeCard).join('')}</div>
   </div>`).join('');
+
+/* 卡片点击 → 打开详情(新标签):版式/整页=layout html;组件=画册 #/layout/N 或 #/component/{slug} */
+document.addEventListener('click',function(e){
+  const card=e.target.closest('[data-href]');
+  if(card&&card.dataset.href)window.open(card.dataset.href,'_blank');
+});
 
 /* iframe 懒挂载:进入视口前 600px 才设置 src,避免大量 iframe 同时渲染导致进程崩溃 */
 (function lazyMount(){
