@@ -68,6 +68,17 @@
   .comp-info .param{font-size:11px;color:var(--ink-2);margin-top:3px;line-height:1.6}
   .comp-info .rel{display:inline-block;font-size:10px;color:var(--ink-2);background:transparent;border:1px solid var(--ink-45);padding:1px 6px;margin-top:6px;margin-right:4px;border-radius:2px}
 
+  /* 浮层:点击卡片,页面内放大(替代详情页) */
+  #layer{position:fixed;inset:0;z-index:300;display:none}
+  #layer.on{display:block}
+  .layer-bg{position:absolute;inset:0;background:rgba(20,20,18,.55)}
+  .layer-box{position:absolute;inset:0;margin:auto;width:min(1180px,94vw);height:min(770px,94vh);background:var(--card);border:1px solid var(--line);box-shadow:0 24px 80px rgba(20,20,18,.35);display:flex;flex-direction:column}
+  .layer-close{position:absolute;top:10px;right:12px;width:34px;height:34px;border:1px solid var(--ink-45);background:var(--card);color:var(--ink);font-size:20px;line-height:1;cursor:pointer;border-radius:2px;z-index:2}
+  .layer-close:hover{background:var(--ink);color:var(--paper)}
+  .layer-stage{position:relative;flex:1;min-height:0;overflow:hidden;background:var(--paper-deep)}
+  .layer-stage .stage-host,.layer-stage .stage-ecbox{position:absolute;left:0;top:0;transform-origin:0 0}
+  .layer-info{padding:10px 16px;font-size:13px;color:var(--ink-2);border-top:1px solid var(--line);background:var(--card)}
+
   .placeholder{display:flex;flex-direction:column;align-items:center;justify-content:center;height:100%;color:var(--ink-3);font-size:12px;gap:8px}
   .placeholder .big{font-size:22px;letter-spacing:.1em;font-weight:700;color:var(--ink-2)}
 
@@ -98,7 +109,7 @@
 <body>
 <header>
   <h1>资产目录 · Catalog</h1>
-  <div class="sub">非关系页模板(直接套用) / 关系页版式(六大族) / 结构枚举(7 种切分) / 组件(合并变体后)</div>
+  <div class="sub">非关系页模板(直接套用) / 关系页版式(七大族) / 结构枚举(6 种切分) / 组件(合并变体后)</div>
   <div class="tabs">
     <button class="tab on" data-t="tpl">非关系页模板<span class="n" id="c-tpl"></span></button>
     <button class="tab" data-t="lyt">关系页版式<span class="n" id="c-lyt"></span></button>
@@ -121,8 +132,8 @@
 </main>
 
 <main id="m-str">
-  <div class="note"><b>结构 = 页面区域怎么切(矩形分块);组件 = 区域内画什么形状。</b>放射、环形、蛇形、漏斗都是区域内组件的画法,不是页面结构。关系圈定候选结构(2~4 种),二次判断(对象数量 / 有无辅助内容 / 方向偏好)在范围内选定。关系页版式全部归入这 7 种切分,版式编号可点击跳到「关系页版式」tab 对应卡片。</div>
-  <div class="note"><b>网格 vs 表格(易混)</b>:网格均质等价,格与格只是陈列(A7 logo 墙、F4 六宫格);表格行有行语义、列有列语义,交叉格才有内容(K4 场景×阶段、E4 前后×环节)。E4 的「上下2等分 + 底带」按行列双语义计入表格。</div>
+  <div class="note"><b>结构 = 页面区域怎么切(矩形分块);组件 = 区域内画什么形状。</b>放射、环形、蛇形、漏斗、矩阵(表格)都是区域内组件的画法,不是页面结构。关系圈定候选结构(2~4 种),二次判断(对象数量 / 有无辅助内容 / 方向偏好)在范围内选定。关系页版式全部归入这 6 种切分。</div>
+  <div class="note"><b>网格 vs 表格(易混)</b>:网格 = 页面切分,均质等价陈列(A7 logo 墙、F4 六宫格);表格/矩阵 = 组件画法,行列双语义在组件内部 —— K4 = 单行(整页矩阵)、E4/K1 = 上下不对称(矩阵 + 收束带)。页面切分只认 6 种矩形分块,不设「表格」。</div>
   <div id="str-list"></div>
 </main>
 
@@ -142,20 +153,21 @@ const NON_REL=[
 ];
 
 const FAMS=[
-  {id:'focus',cn:'① 重心',desc:'单一对象作为绝对重心',items:[
-    ['M1','粒子主角 + 对照提问','单行','focus + comparison'],
+  {id:'focus',cn:'① 重心',desc:'单一对象:焦点 / 示意(插图·原型展示)',items:[
+    ['M1','粒子主角 + 对照提问','单行','焦点 + 对照'],
+    ['A2','场景画','单行','示意'],['A8','后台界面 mock(节点树)','单行','示意'],
   ]},
   {id:'parallel',cn:'② 并列',desc:'对象间无关系,放一起 / 多条独立并行线',items:[
     ['A5','条文陈列页','左右3等分','陈列'],['A7','Logo 云墙','网格7×4','陈列'],
-    ['C3','案例卡列阵','左右3等分','陈列'],['C5','环形进度环列阵','左右4等分','并行 + 部分整体'],
-    ['C6','KPI 大数字横带','左右4等分','陈列'],['F3','分栏清单柱','左右3等分','拆解(并列面)'],
+    ['C3','案例卡列阵','左右3等分','陈列'],['F3','分栏清单柱','左右3等分','拆解(并列面)'],
     ['F4','图标六宫格','网格2×3','拆解(并列面)'],['I4','并行路径卡','左右3等分','并行(内含时序)'],
   ]},
   {id:'structure',cn:'③ 结构',desc:'包含 / 从属,看边界',items:[
-    ['A8','后台界面 mock(节点树)','左右不对称','层级 + 证据'],['F2','环节树 + 规格单','左右不对称','拆解'],
+    ['F2','环节树 + 规格单','左右不对称','拆解'],
     ['G1','三向放射','单行','拆解'],['G2','立绘环绕标注','单行','拆解'],
     ['G4','中心枢纽 + 卫星','单行','拆解 / 网络'],['H1','同心防线','单行','嵌套'],
     ['H2','嵌套变焦框','单行','嵌套'],['H3','分层架构栈','上下4等分','层级'],['H4','底座托举三层','上下3等分','层级'],
+    ['C5','环形进度环列阵','上下不对称','拆解'],
   ]},
   {id:'sequential',cn:'④ 有序',desc:'有方向:时序 / 流动 / 循环 / 汇聚 / 漏斗 / 因果',items:[
     ['A9','手机多屏画廊','左右4等分','时序'],['B1','水平时间轴','单行','时序'],['B2','甘特瀑布','单行','时序'],
@@ -167,16 +179,19 @@ const FAMS=[
     ['N1','汇聚流','单行','汇聚'],['O1','漏斗','左右不对称','漏斗'],
   ]},
   {id:'comparison',cn:'⑤ 比较',desc:'对齐并排看异同 / 对应',items:[
-    ['C7','排行柱图','单行','对比(排名)'],['E1','对比双面板','左右2等分','对比'],['E2','分水岭双栏','左右2等分','对比'],
-    ['E4','前后对比行矩阵','上下2等分 + 底带','对比(表格)'],['E5','双金字塔映射','左右2等分','映射'],
+    ['E1','对比双面板','左右2等分','对比'],['E2','分水岭双栏','左右2等分','对比'],
+    ['E4','前后对比行矩阵','上下不对称','对比 + 矩阵'],['E5','双金字塔映射','左右2等分','映射'],
     ['E6','前后双带演进','上下2等分','对比 + 流动'],['F1','坐标轴象限','单行','矩阵'],
-    ['K1','链阵复合(阶段×维度)','上下不对称','矩阵(表格)'],['K4','三栏行带矩阵','表格','矩阵'],['L2','星座映射网','单行','映射'],
+    ['K1','链阵复合(阶段×维度)','上下不对称','矩阵'],['K4','三栏行带矩阵','单行','矩阵'],['L2','星座映射网','单行','映射'],
   ]},
   {id:'connection',cn:'⑥ 连接',desc:'有关联但无方向、无包含',items:[
-    ['A1','标本卡(对话批注)','单行','证据'],['A2','场景画','单行','证据'],['A3','文献摘引','上下2等分','证据'],
+    ['A1','标本卡(对话批注)','单行','证据'],['A3','文献摘引','上下不对称','证据'],
     ['A4','策略 + 证据墙','左右不对称','证据'],['A6','资质证书墙','左右不对称','证据'],
     ['C1','左图右数据格','左右不对称','证据'],['C2','图表联排墙','上下不对称','证据'],
-    ['C4','分布地图','左右不对称','空间'],['L1','权重弧线图','单行','网络'],
+    ['L1','权重弧线图','单行','网络'],
+  ]},
+  {id:'data',cn:'⑦ 数据',desc:'定量数据展示:排名 / 分布 / 指标',items:[
+    ['C7','排行柱图','单行','排名'],['C4','分布地图','左右不对称','分布'],['C6','KPI 大数字横带','左右4等分','指标'],
   ]},
 ];
 
@@ -435,28 +450,25 @@ const $=s=>document.querySelector(s);
 
 function layoutCard([id,nm,struct,rel]){
   const full=FRAMES+'layout-'+id.toLowerCase()+'.html';
-  return `<div class="card" id="lyt-${id.toLowerCase()}" data-href="${full}">
+  const relTxt=rel?(' · 关系:<b>'+rel+'</b>'):'';
+  const mtag='结构:'+struct+(rel?' · 关系:'+rel:'');
+  return `<div class="card" id="lyt-${id.toLowerCase()}" data-modal="1" data-frame="${full}" data-mtitle="${id} ${nm}" data-mtag="${mtag}">
     <div class="frame-wrap"><iframe loading="lazy" src="${full}"></iframe></div>
     <div class="card-info"><span class="id">${id}</span>
       <div class="nm">${nm}</div>
-      <div class="meta">结构:<b>${struct}</b> · 关系:<b>${rel}</b></div>
+      <div class="meta">结构:<b>${struct}</b>${relTxt}</div>
     </div></div>`;
 }
 /* 详情路由:atlas/native → 画册 #/layout/N;echarts → #/component/{slug}-default */
-function ecSlug(id){return id.toLowerCase().replace(/[^a-z0-9]+/g,'-').replace(/^-|-$/g,'');}
-/* 统一组件卡:原生渲染(无 iframe)
-   atlas/native → snippet 注入 .comp-stage;ec → 页面内 echarts.init */
 function compCard(c,extra=''){
-  const href=c.t==='ec'
-    ?'gallery-components/index.html?theme=paper-ink#/component/'+ecSlug(c.id)+'-default'
-    :(c.t==='new'?'':('gallery-components/index.html?theme=paper-ink#/layout/'+c.num));
+  const spec=c.t==='ec'?('ec:'+c.id):(c.t==='new'?('new:'+c.mk):(c.t+':'+c.num));
   const tag=c.t==='ec'?'ECharts':(c.t==='new'?'新做组件':c.t+' #'+String(c.num).padStart(3,'0'));
   const stage=c.t==='ec'
     ?`<div class="comp-stage" data-ec="${c.id}"></div>`
     :(c.t==='new'
       ?`<div class="comp-stage" data-new="${c.mk}"></div>`
       :`<div class="comp-stage" data-src="${c.t}:${c.num}"></div>`);
-  return `<div class="comp-card" data-href="${href}">
+  return `<div class="comp-card" data-modal="1" data-spec="${spec}" data-mtitle="${c.en} ${c.nm}" data-mtag="${tag}${c.note?' · '+c.note:''}">
     <div class="comp-wrap">${stage}</div>
     <div class="comp-info">
       <span class="en">${c.en}</span> <span class="nm">${c.nm}</span>
@@ -488,7 +500,7 @@ $('#c-cmp').textContent=COMPONENTS.reduce((s,g)=>s+g.items.length,0)+'+'+EXTRACT
 /* 反向抽取候选渲染:整页版式预览(组件本体 = 中央图形) */
 function extractCard(it){
   const full=FRAMES+'layout-'+it.from.toLowerCase()+'.html';
-  return `<div class="card" data-href="${full}">
+  return `<div class="card" data-modal="1" data-frame="${full}" data-mtitle="${it.from} → ${it.nm}" data-mtag="${it.note||'整页预览'}">
     <div class="frame-wrap"><iframe loading="lazy" src="${full}"></iframe></div>
     <div class="card-info"><span class="id">${it.from} → 组件</span>
       <div class="nm">${it.nm}</div>
@@ -503,11 +515,89 @@ $('#extract-groups').innerHTML=EXTRACT_GROUPS.map(g=>`
     <div class="grid">${g.items.map(extractCard).join('')}</div>
   </div>`).join('');
 
-/* 卡片点击 → 打开详情(新标签):版式/整页=layout html;组件=画册 #/layout/N 或 #/component/{slug} */
-document.addEventListener('click',function(e){
-  const card=e.target.closest('[data-href]');
-  if(card&&card.dataset.href)window.open(card.dataset.href,'_blank');
-});
+/* ============ 浮层(替代详情页):点击卡片,页面内放大查看 ============ */
+(function(){
+  const modal=document.createElement('div');
+  modal.id='layer';
+  modal.innerHTML='<div class="layer-bg"></div><div class="layer-box">'+
+    '<button class="layer-close" aria-label="关闭">×</button>'+
+    '<div class="layer-stage" id="layer-stage"></div>'+
+    '<div class="layer-info" id="layer-info"></div></div>';
+  document.body.appendChild(modal);
+  function close(){modal.classList.remove('on');}
+  modal.querySelector('.layer-bg').onclick=close;
+  modal.querySelector('.layer-close').onclick=close;
+  document.addEventListener('keydown',e=>{if(e.key==='Escape')close();});
+
+  /* 渲染主体进浮层:spec = atlas:N / native:N / new:I / ec:ID;frame=URL(版式整页) */
+  function renderSpec(spec){
+    const st=document.getElementById('layer-stage');
+    st.innerHTML='';
+    const kind=spec.split(':')[0],key=spec.slice(kind.length+1);
+    if(kind==='ec'){
+      const box=document.createElement('div');
+      box.className='stage-ecbox';
+      st.appendChild(box);
+      const data=window.WISE_PPT_ECHARTS_GALLERY_DATA;
+      const entry=data&&data.components.find(x=>x.component_id===key);
+      const adapter=window.WiseEchartsThemeAdapter;
+      const themeAdapter=(window.WisePPTThemeAdapters||{})['paper-ink.echarts'];
+      if(entry&&window.echarts&&adapter&&themeAdapter){
+        if(entry.register_maps){Object.keys(entry.register_maps).forEach(n=>echarts.registerMap(n,entry.register_maps[n]));}
+        const chart=echarts.init(box,null,{renderer:'svg',width:1600,height:900});
+        chart.setOption(adapter.previewOption(entry,{isDetail:true,themeAdapter:themeAdapter,themeContext:{root:document.documentElement},typeSize:typeSize,animated:false}),true);
+        requestAnimationFrame(()=>{box.style.transform='scale('+(st.clientWidth/1600)+')';});
+      }else{st.textContent='渲染失败';}
+      return;
+    }
+    const host=document.createElement('div');
+    host.className='stage-host';
+    let markup='';
+    if(kind==='new')markup=NEW_MARKUP[+key]||'';
+    else{
+      const d=(kind==='atlas')?window.SWISS_CATALOG_DATA:window.PAPER_INK_COMPONENT_DATA;
+      const num=Number(key);
+      const entry=d&&d.entries.find(x=>x.num===num);
+      if(entry){
+        const ad=(kind==='atlas')?((window.WisePPTThemeAdapters||{})['paper-ink.atlas']):null;
+        markup=ad?ad.adaptMarkup(entry.snippet||''):(entry.snippet||'');
+      }
+    }
+    host.innerHTML=markup;
+    st.appendChild(host);
+    requestAnimationFrame(()=>{
+      const el=host.firstElementChild;
+      if(!el)return;
+      const W=st.clientWidth,H=st.clientHeight;
+      const w=el.offsetWidth||600,h=el.offsetHeight||600;
+      const s=Math.min(W/w,H/h,1);
+      el.style.transformOrigin='0 0';
+      el.style.transform='scale('+s+')';
+      el.style.position='absolute';
+      el.style.left=((W-w*s)/2)+'px';
+      el.style.top=((H-h*s)/2)+'px';
+    });
+  }
+  function renderFrame(url){
+    const st=document.getElementById('layer-stage');
+    st.innerHTML='';
+    const wrap=document.createElement('div');
+    wrap.style.cssText='position:absolute;inset:0;overflow:hidden';
+    const f=document.createElement('iframe');
+    f.src=url;f.style.cssText='width:1920px;height:1080px;border:0;transform-origin:0 0';
+    wrap.appendChild(f);st.appendChild(wrap);
+    requestAnimationFrame(()=>{f.style.transform='scale('+(st.clientWidth/1920)+')';});
+  }
+  document.addEventListener('click',function(e){
+    const card=e.target.closest('[data-modal]');
+    if(!card)return;
+    const d=card.dataset;
+    document.getElementById('layer-info').innerHTML=(d.mtitle||'')+(d.mtag?' · '+d.mtag:'');
+    modal.classList.add('on');
+    if(d.frame)renderFrame(d.frame);
+    else if(d.spec)renderSpec(d.spec);
+  });
+})();
 
 /* ============ 组件原生渲染引擎(无 iframe) ============ */
 /* 1) 样式:atlas(swiss→纸墨适配)与 native(pi)的 componentCss 各注入一次 */
@@ -578,6 +668,7 @@ function initEChartsStage(stage){
   const data=window.WISE_PPT_ECHARTS_GALLERY_DATA;
   const entry=data&&data.components.find(x=>x.component_id===stage.dataset.ec);
   if(!entry||!window.echarts){stage.textContent='ECharts 数据缺失';return;}
+  if(entry.register_maps){Object.keys(entry.register_maps).forEach(n=>echarts.registerMap(n,entry.register_maps[n]));}
   const box=document.createElement('div');
   box.className='stage-ecbox';
   stage.appendChild(box);
@@ -597,16 +688,20 @@ function initEChartsStage(stage){
 let cmpMounted=false;
 function mountAllComponents(){
   if(cmpMounted)return;cmpMounted=true;
-  document.querySelectorAll('.comp-stage[data-src]').forEach(mountStage);
+  document.querySelectorAll('.comp-stage[data-src],.comp-stage[data-new]').forEach(mountStage);
   let done=false;
-  const run=()=>{if(done)return;done=true;document.querySelectorAll('.comp-stage[data-ec]').forEach(initEChartsStage);};
+  const run=()=>{if(done)return;done=true;
+    document.querySelectorAll('.comp-stage[data-ec]').forEach(s=>{
+      try{initEChartsStage(s);}catch(err){s.textContent='ECharts 渲染失败:'+(err&&err.message||err);}
+    });
+  };
   setTimeout(run,400);
   if(document.fonts&&document.fonts.ready)document.fonts.ready.then(run);
 }
 const _switchTabOri=switchTab;
 switchTab=function(id){_switchTabOri(id);if(id==='cmp')mountAllComponents();};
 
-/* ============ 结构枚举(7 种切分,从 skill-design 第五章 + 55 版式反向抽象) ============ */
+/* ============ 结构枚举(6 种切分,从 skill-design 第五章 + 55 版式反向抽象) ============ */
 /* SVG 示意图:150×84 的 16:9 小框 + 切线,抽象自版式实拍 */
 const CN_NUM='①②③④⑤';
 function fRect(x,y,w,h){return `<rect x="${x}" y="${y}" width="${w}" height="${h}" fill="rgba(255,255,255,.55)" stroke="var(--ink)" stroke-width="1.5"/>`}
@@ -666,15 +761,20 @@ const gHasym=two=>(x,y,w,h)=>{
   }
   return s;
 };
-const gVasym=flip=>(x,y,w,h)=>{
-  const bh=h*.34;
-  let s=fRect(x,y,w,h)+ln(x,y+bh,x+w,y+bh);
-  if(!flip){
-    s+=`<rect x="${x}" y="${y}" width="${w}" height="${bh}" fill="none" stroke="var(--ink-45)" stroke-dasharray="3 3"/>`;
-    s+=lab(x+w/2,y+bh/2+4,'辅(说明带)')+lab(x+w/2,y+bh+(h-bh)/2+4,'主',1);
+/* 上下不对称三种走法:0 上主下收束带 / 1 上主下辅×4 / 2 上辅下主 */
+const gVasym=mode=>(x,y,w,h)=>{
+  const th=h*.32;
+  let s=fRect(x,y,w,h)+ln(x,y+th,x+w,y+th);
+  if(mode===0){
+    s+=`<rect x="${x}" y="${y+th}" width="${w}" height="${h-th}" fill="none" stroke="var(--ink-45)" stroke-dasharray="3 3"/>`;
+    s+=lab(x+w/2,y+th/2+4,'主(矩阵/图表)',1)+lab(x+w/2,y+th+(h-th)/2+4,'辅(收束带/注释)');
+  }else if(mode===1){
+    s+=lab(x+w/2,y+th/2+4,'主(总额)',1);
+    for(let i=1;i<4;i++)s+=ln(x+w*i/4,y+th,x+w*i/4,y+h,'stroke-dasharray="3 3"');
+    for(let i=0;i<4;i++)s+=lab(x+w*(i+.5)/4,y+th+(h-th)/2+4,CN_NUM[i]);
   }else{
-    s+=`<rect x="${x}" y="${y+h-bh}" width="${w}" height="${bh}" fill="none" stroke="var(--ink-45)" stroke-dasharray="3 3"/>`;
-    s+=lab(x+w/2,y+h-bh/2+4,'辅(收束带)')+lab(x+w/2,y+(h-bh)/2+4,'主',1);
+    s+=`<rect x="${x}" y="${y}" width="${w}" height="${th}" fill="none" stroke="var(--ink-45)" stroke-dasharray="3 3"/>`;
+    s+=lab(x+w/2,y+th/2+4,'辅(摘要)')+lab(x+w/2,y+th+(h-th)/2+4,'主(原文/标本)',1);
   }
   return s;
 };
@@ -685,67 +785,42 @@ const gGrid=(rows,cols)=>(x,y,w,h)=>{
   for(let j=1;j<rows;j++)s+=ln(x,y+ch*j,x+w,y+ch*j,thin);
   return s;
 };
-const gTable=band=>(x,y,w,h)=>{
-  const hh=15,cw=26,th=band?h-20:h;
-  let s=`<rect x="${x}" y="${y}" width="${w}" height="${th}" fill="rgba(255,255,255,.55)"/>`;
-  s+=`<rect x="${x}" y="${y}" width="${w}" height="${hh}" fill="var(--ink-12)"/>`;
-  s+=`<rect x="${x}" y="${y}" width="${cw}" height="${th}" fill="var(--ink-12)"/>`;
-  s+=`<rect x="${x}" y="${y}" width="${w}" height="${th}" fill="none" stroke="var(--ink)" stroke-width="1.5"/>`;
-  s+=ln(x,y+hh,x+w,y+hh)+ln(x+cw,y,x+cw,y+th);
-  const ic=3,ir=3;
-  for(let i=1;i<ic;i++)s+=ln(x+cw+(w-cw)*i/ic,y+hh,x+cw+(w-cw)*i/ic,y+th);
-  for(let j=1;j<ir;j++)s+=ln(x+cw,y+hh+(th-hh)*j/ir,x+w,y+hh+(th-hh)*j/ir);
-  s+=lab(x+(cw+w)/2,y+hh/2+3.5,'列语义 →');
-  s+=`<text x="${x+cw/2}" y="${y+hh+(th-hh)/2}" class="sl-lab" text-anchor="middle" transform="rotate(-90 ${x+cw/2} ${y+hh+(th-hh)/2})">行语义 →</text>`;
-  if(band){
-    const by=y+th+6;
-    s+=`<rect x="${x}" y="${by}" width="${w}" height="${h-th-6}" fill="none" stroke="var(--ink-45)" stroke-dasharray="3 3"/>`;
-    s+=lab(x+w/2,by+(h-th-6)/2+3.5,'收束带 / 汇总行');
-  }
-  return s;
-};
 
 const STRUCTS=[
   {key:'single',cn:'① 单行',en:'single',judge:'单个对象;或图形需要整页舒展',
-   desc:'整页一块,不再切分。区域内组件形状自由:放射、环形、蛇形、漏斗都是这里的画法,不是页面结构。',
-   rels:['焦点','并行','层级','拆解','部分整体','嵌套','时序','流动','循环','汇聚','漏斗','映射','网络','空间','证据'],
+   desc:'整页一块,不再切分。区域内组件形状自由:放射、环形、蛇形、漏斗、矩阵(表格)都是这里的画法,不是页面结构。',
+   rels:['焦点','示意','并行','拆解','嵌套','时序','流动','循环','汇聚','漏斗','矩阵','映射','网络','证据','排名'],
    caps:[{cap:'整页一块 · 画法自由',d:gSingle()}],samples:['M1','B1','H1','N1']},
   {key:'heq',cn:'② 左右 x 等分',en:'h-equal-split',judge:'多个并列对象 + 横向阅读流(步骤、时间、对比)',
    desc:'横向均分,x≥2。左右等分 x=2 是特例。',
-   rels:['陈列','并行','拆解','时序','漏斗','因果','对比','映射'],
+   rels:['陈列','并行','拆解','时序','因果','对比','映射','指标'],
    caps:[{cap:'x=2(E1)',d:gCols(2)},{cap:'x=3(A5)',d:gCols(3)},{cap:'x=4(C6)',d:gCols(4)}],samples:['E1','A5','C6']},
   {key:'veq',cn:'③ 上下 x 等分',en:'v-equal-split',judge:'多个并列对象 + 纵向阅读流(层级、堆叠)',
    desc:'纵向均分,x≥2。分层栈(H3/H4)、因果双带(E3)都是它。泳道横线是组件画法,不算切分(B3 归单行)。',
-   rels:['陈列','层级','拆解','流动','因果','对比','证据'],
+   rels:['层级','因果','流动','对比'],
    caps:[{cap:'x=2(E3)',d:gRows(2)},{cap:'x=3(H4)',d:gRows(3)},{cap:'x=4(H3)',d:gRows(4)}],samples:['E3','H4','H3']},
   {key:'hasym',cn:'④ 左右不对称',en:'h-asymmetric',judge:'有主辅之分:主图 + 规格单 / 数据栏 / 证据墙 / 两侧标注',
    desc:'主 + 次,次侧可再分(虚线示意)。辅助内容放次侧;主图两侧都有辅就是 主+辅+辅(O1 漏斗)。',
-   rels:['层级','拆解','循环','空间','证据','漏斗'],
-   caps:[{cap:'主+辅,辅可再分(F2/C1)',d:gHasym()},{cap:'主+辅+辅(A8/O1)',d:gHasym(1)}],samples:['F2','C1','A4','O1']},
-  {key:'vasym',cn:'⑤ 上下不对称',en:'v-asymmetric',judge:'有主辅之分 + 纵向阅读流:图表+注释、表格+收束带',
-   desc:'主 + 次(纵向)。上图表联排下注释(C2)、上链阵下收束带(K1)。仅一行题注带(≤15% 高)不算切分,归单行(A2)。',
-   rels:['矩阵','证据'],
-   caps:[{cap:'上主下辅(C2)',d:gVasym()},{cap:'上主下收束带(K1)',d:gVasym(1)}],samples:['K1','C2']},
+   rels:['拆解','证据','因果','漏斗','分布'],
+   caps:[{cap:'主+辅,辅可再分(F2/C1)',d:gHasym()},{cap:'主+辅+辅(O1)',d:gHasym(1)}],samples:['F2','C1','A4','O1']},
+  {key:'vasym',cn:'⑤ 上下不对称',en:'v-asymmetric',judge:'有主辅之分 + 纵向阅读流:矩阵/图表+收束带、上总额下四环、上摘要下原文',
+   desc:'主 + 次(纵向)。三种走法:上矩阵/图表下收束带或注释(E4/K1/C2)、上总额下四环(C5)、上摘要下原文标本(A3)。',
+   rels:['矩阵','对比','拆解','证据'],
+   caps:[{cap:'上主下收束带(E4/K1)',d:gVasym(0)},{cap:'上主下辅×4(C5)',d:gVasym(1)},{cap:'上辅下主(A3)',d:gVasym(2)}],samples:['E4','C5','A3']},
   {key:'grid',cn:'⑥ 网格 m×n',en:'grid',judge:'等价单元批量陈列(logo 墙、图标格、案例卡)',
    desc:'均质分格,格与格等价,只是陈列。象限 2×2 是特例。',
    rels:['陈列','拆解'],
    caps:[{cap:'2×2(象限特例)',d:gGrid(2,2)},{cap:'2×3(F4)',d:gGrid(2,3)},{cap:'7×4(A7)',d:gGrid(4,7)}],samples:['F4','A7']},
-  {key:'table',cn:'⑦ 表格',en:'table',judge:'行列双语义交叉(阶段×维度、前后×环节)',
-   desc:'行有行语义、列有列语义,交叉格才有内容。格不等价 —— 这是与网格的区别。天然对应矩阵关系。',
-   rels:['矩阵','对比'],
-   caps:[{cap:'行×列 双语义(K4)',d:gTable()},{cap:'表格+收束带(E4)',d:gTable(1)}],samples:['K4','E4']},
 ];
 
-/* 版式 → 结构归入:按 FAMS 的结构字段解析;E4「上下2等分 + 底带」按行列双语义计表格 */
+/* 版式 → 结构归入:按 FAMS 的结构字段解析 */
 function structKeyOf(s){
-  if(s.includes('+'))return 'table';
   if(s==='单行')return 'single';
   if(/^左右\d+等分/.test(s))return 'heq';
   if(/^上下\d+等分/.test(s))return 'veq';
   if(s==='左右不对称')return 'hasym';
   if(s==='上下不对称')return 'vasym';
   if(/^网格/.test(s))return 'grid';
-  if(s==='表格')return 'table';
   return 'other';
 }
 const LAYOUT_INDEX={};
@@ -771,7 +846,7 @@ $('#str-list').innerHTML=STRUCTS.map(d=>{
     </div>
     <div class="grid samples">${ms.map(it=>{
       const full=FRAMES+'layout-'+it[0].toLowerCase()+'.html';
-      return `<div class="card" data-href="${full}">
+      return `<div class="card" data-modal="1" data-frame="${full}" data-mtitle="${it[0]} ${it[1]}" data-mtag="结构:${it[2]} · 关系:${it[3]}">
         <div class="frame-wrap"><iframe loading="lazy" src="${full}"></iframe></div>
         <div class="card-info"><span class="id">${it[0]}</span>
           <div class="nm">${it[1]}</div>
