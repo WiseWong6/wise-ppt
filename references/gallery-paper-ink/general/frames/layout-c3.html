@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-runtime="wise-ppt-specimen" data-typography-mode="mixed" data-page-id="gallery-general-c3" data-page-role="orient" data-theme="paper-ink" data-layout="paper-ink.data.profile-card-array" data-layout-source="gallery">
+<head>
+<meta charset="UTF-8">
+<title>layout-c3 · 顶图卡列阵</title>
+<link rel="stylesheet" href="../../../../themes/paper-ink/assets/design-tokens.css">
+<link rel="stylesheet" href="../../../../themes/paper-ink/assets/slide-components.css">
+<link rel="stylesheet" href="../../../shell.css">
+<style>
+  svg.scene { position: absolute; inset: 0; z-index: 1; }
+  .caption {
+    position: absolute; left: 0; right: 0; bottom: 118px;
+    text-align: center;
+    font-family: var(--sans); font-weight: 400;
+    font-size: var(--type-caption); letter-spacing: .04em;
+    color: var(--ink);
+    z-index: 5;
+  }
+</style>
+</head>
+<body class="slide">
+<div class="stage" data-block-id="gallery-primary" data-renderer-kind="svg" data-component-source="native" data-component-id="native.paper-ink.data.profile-card-array.profiles" data-content-ref="example.c3">
+  <div class="doc tl">产品 · 方案 — C3<br>三类用户的日常场景</div>
+  <div class="folio">C3 / 63 — BY @歪斯WISE</div>
+
+  <svg class="scene" width="1920" height="1080" viewBox="0 0 1920 1080">
+    <defs>
+      <pattern id="hatch34" width="8" height="8" patternTransform="rotate(45)" patternUnits="userSpaceOnUse">
+        <line x1="0" y1="0" x2="0" y2="8" stroke="#191917" stroke-width=".7" opacity=".35"/>
+      </pattern>
+    </defs>
+    <g id="draw"></g>
+  </svg>
+
+  <div class="caption">从个人记录到团队协作与进度总览，一套产品覆盖三种高频日常场景。</div>
+</div>
+
+<script src="../../../../runtime/stage-fit.js"></script>
+<script src="../../../../themes/paper-ink/assets/particles.js"></script>
+<script>
+var NS = 'http://www.w3.org/2000/svg';
+var INK = '#191917';
+var INK80 = 'rgba(25,25,23,.8)';
+var INK70 = 'rgba(25,25,23,.7)';
+var INK45 = 'rgba(25,25,23,.45)';
+var G = document.getElementById('draw');
+function el(tag, attrs) {
+  var e = document.createElementNS(NS, tag);
+  for (var k in attrs) e.setAttribute(k, attrs[k]);
+  G.appendChild(e); return e;
+}
+function txt(x, y, str, attrs) {
+  var t = el('text', Object.assign({x:x, y:y}, attrs||{}));
+  t.textContent = str; return t;
+}
+var MONO = 'var(--mono)', SANS = 'var(--sans)';
+
+G = el('g', {transform:'translate(0 -33.7)'});
+
+
+/* ---------- 三张竖卡（双线框；宽高走变量，非字面阵列） ---------- */
+var CY = 210, CH = 660, CW = 500;
+var cardX = [140, 710, 1280];
+cardX.forEach(function(px){
+  el('rect', {x:px, y:CY, width:CW, height:CH, fill:'rgba(255,255,255,.22)', stroke:INK80, 'stroke-width':1.3});
+  el('rect', {x:px+5, y:CY+5, width:CW-10, height:CH-10, fill:'none', stroke:INK, 'stroke-width':.6, opacity:.3});
+  /* 图区分隔线 */
+  el('line', {x1:px+24, y1:CY+272, x2:px+CW-24, y2:CY+272, stroke:INK, 'stroke-width':.8, opacity:.5});
+  el('line', {x1:px+24, y1:CY+276, x2:px+120, y2:CY+276, stroke:INK, 'stroke-width':.6, opacity:.25});
+});
+
+/* ---------- 卡内文字：mono 角标 → 卡题 → 分隔 → 履历 → 底脚 ---------- */
+function cardText(px, tag, side, name, rows, foot) {
+  txt(px+36, CY+308, tag, {'font-family':MONO, 'font-size':'var(--type-meta)', 'letter-spacing':2, fill:INK45});
+  txt(px+CW-36, CY+308, side, {'font-family':MONO, 'font-size':'var(--type-meta)', 'letter-spacing':2, 'text-anchor':'end', fill:INK45});
+  txt(px+36, CY+348, name, {'font-family':SANS, 'font-weight':300, 'font-size':'var(--type-subheading)', fill:INK});
+  el('line', {x1:px+36, y1:CY+368, x2:px+CW-36, y2:CY+368, stroke:INK, 'stroke-width':.8, opacity:.5});
+  rows.forEach(function(r, i){
+    var y = CY + 404 + i * 42;
+    el('circle', {cx:px+44, cy:y-6, r:3.2, fill:'none', stroke:INK, 'stroke-width':.9, opacity:.8});
+    el('circle', {cx:px+44, cy:y-6, r:1, fill:INK});
+    txt(px+64, y, r[0], {'font-family':SANS, 'font-weight':300, 'font-size':'var(--type-body-small)', fill:INK});
+    txt(px+CW-36, y-1, r[1], {'font-family':MONO, 'font-size':'var(--type-meta)', 'letter-spacing':1, 'text-anchor':'end', fill:'rgba(25,25,23,.5)'});
+    if (i < rows.length-1)
+      el('line', {x1:px+36, y1:y+21, x2:px+CW-36, y2:y+21, stroke:INK, 'stroke-width':.6, opacity:.22});
+  });
+  el('line', {x1:px+36, y1:CY+592, x2:px+CW-36, y2:CY+592, stroke:INK, 'stroke-width':.6, opacity:.25});
+  txt(px+36, CY+624, foot, {'font-family':MONO, 'font-size':'var(--type-meta)', 'letter-spacing':2, fill:INK45});
+}
+
+/* ---------- 卡一图区：个人用户的日常记录 ---------- */
+(function(){
+  var cx = 390, gy = 432;
+  el('rect', {x:cx-78, y:gy-202, width:156, height:210, rx:22, fill:'rgba(255,255,255,.22)', stroke:INK80, 'stroke-width':1.3});
+  el('line', {x1:cx-22, y1:gy-190, x2:cx+22, y2:gy-190, stroke:INK, 'stroke-width':1.3, opacity:.5});
+  el('circle', {cx:cx, cy:gy-145, r:24, fill:'url(#hatch34)', stroke:INK80, 'stroke-width':1.1});
+  el('path', {d:'M '+(cx-10)+' '+(gy-145)+' L '+(cx-2)+' '+(gy-137)+' L '+(cx+13)+' '+(gy-154), fill:'none', stroke:INK80, 'stroke-width':1.6});
+  el('line', {x1:cx-48, y1:gy-102, x2:cx+48, y2:gy-102, stroke:INK, 'stroke-width':1.1, opacity:.65});
+  [[-48,-82],[-48,-50]].forEach(function(p, i){
+    el('rect', {x:cx+p[0], y:gy+p[1], width:96, height:22, rx:4, fill:i === 0 ? 'url(#hatch34)' : 'none', stroke:INK, 'stroke-width':.8, opacity:.6});
+  });
+  el('circle', {cx:cx, cy:gy-4, r:2.2, fill:INK});
+  txt(cx, gy+32, 'QUICK NOTE · DAILY USE', {'font-family':MONO, 'font-size':'var(--type-micro-secondary)', 'letter-spacing':2, 'text-anchor':'middle', fill:INK45});
+})();
+
+/* ---------- 卡二图区：团队协作工作台 ---------- */
+(function(){
+  var cx = 960;
+  el('rect', {x:cx-174, y:248, width:348, height:188, rx:10, fill:'rgba(255,255,255,.22)', stroke:INK80, 'stroke-width':1.2});
+  el('line', {x1:cx-174, y1:286, x2:cx+174, y2:286, stroke:INK, 'stroke-width':.8, opacity:.45});
+  txt(cx-152, 273, 'TEAM WORKSPACE', {'font-family':MONO, 'font-size':'var(--type-micro-secondary)', 'letter-spacing':1.5, fill:INK45});
+  [cx-106, cx, cx+106].forEach(function(kx){
+    el('line', {x1:kx-44, y1:304, x2:kx+44, y2:304, stroke:INK, 'stroke-width':1, opacity:.55});
+    [324, 356, 388].forEach(function(ky){
+      el('rect', {x:kx-44, y:ky, width:88, height:22, fill:ky === 356 ? 'url(#hatch34)' : 'none', stroke:INK, 'stroke-width':.7, opacity:.6});
+    });
+  });
+  [[cx-140,266],[cx+124,266]].forEach(function(p){
+    el('circle', {cx:p[0], cy:p[1], r:7, fill:'none', stroke:INK80, 'stroke-width':1});
+  });
+  /* 三位成员头像，强调协同而非系统监控 */
+  [cx-72, cx, cx+72].forEach(function(ax){
+    el('circle', {cx:ax, cy:424, r:12, fill:'#DFE0D9', stroke:INK80, 'stroke-width':.9});
+  });
+  txt(cx, 470, 'SHARED PLAN · TEAM USE', {'font-family':MONO, 'font-size':'var(--type-micro-secondary)', 'letter-spacing':2, 'text-anchor':'middle', fill:INK45});
+})();
+
+/* ---------- 卡三图区：负责人周计划与进度摘要 ---------- */
+(function(){
+  var cx = 1530;
+  el('rect', {x:cx-174, y:248, width:348, height:188, rx:10, fill:'rgba(255,255,255,.22)', stroke:INK80, 'stroke-width':1.2});
+  el('line', {x1:cx-174, y1:286, x2:cx+174, y2:286, stroke:INK, 'stroke-width':.8, opacity:.45});
+  txt(cx-152, 273, 'WEEKLY OVERVIEW', {'font-family':MONO, 'font-size':'var(--type-micro-secondary)', 'letter-spacing':1.5, fill:INK45});
+  ['MON','TUE','WED','THU','FRI'].forEach(function(day, i){
+    var bx = cx-150 + i*62;
+    txt(bx+24, 316, day, {'font-family':MONO, 'font-size':'var(--type-micro-secondary)', 'text-anchor':'middle', fill:INK45});
+    el('rect', {x:bx, y:328, width:48, height:72, rx:4, fill:i === 3 ? 'url(#hatch34)' : 'none', stroke:INK, 'stroke-width':.7, opacity:.65});
+    el('circle', {cx:bx+24, cy:350+i%2*18, r:4, fill:i === 3 ? '#DFE0D9' : 'none', stroke:INK, 'stroke-width':.7});
+  });
+  txt(cx, 470, 'WEEKLY PLAN · OVERVIEW', {'font-family':MONO, 'font-size':'var(--type-micro-secondary)', 'letter-spacing':2, 'text-anchor':'middle', fill:INK45});
+})();
+
+/* ---------- 三卡履历 ---------- */
+cardText(140, 'USER 01', 'PERSONAL', '个人用户 · 随手记录', [
+  ['核心目标',     '快速记下'],
+  ['使用频率',     '4 DAYS/WK'],
+  ['完成时间',     '3 MIN'],
+  ['常用方式',     'QUICK TEMPLATE']
+], 'PERSONA P-01 · SAMPLE');
+
+cardText(710, 'USER 02', 'TEAM', '团队用户 · 协同推进', [
+  ['核心目标',     '一起完成'],
+  ['使用频率',     '5 DAYS/WK'],
+  ['协作成员',     '6 MEMBERS'],
+  ['常用提醒',     'WEEKLY PLAN']
+], 'PERSONA P-02 · SAMPLE');
+
+cardText(1280, 'USER 03', 'LEAD', '项目负责人 · 进度总览', [
+  ['核心目标',     '掌握进度'],
+  ['查看频率',     '2 TIMES/WK'],
+  ['关注事项',     '5 ITEMS'],
+  ['复盘节奏',     'FRIDAY REVIEW']
+], 'PERSONA P-03 · SAMPLE');
+
+stageFit();
+</script>
+</body>
+</html>

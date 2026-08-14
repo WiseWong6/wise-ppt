@@ -1,0 +1,212 @@
+<!-- GENERATED: Wise PPT formal canonical source; protected Gallery remains provenance-only. -->
+<!DOCTYPE html>
+<html lang="zh-CN" data-runtime="wise-ppt-specimen" data-typography-mode="mixed" data-page-id="gallery-ai-e6" data-page-role="compare" data-theme="paper-ink" data-layout="paper-ink.comparison.before-after-process-bands" data-layout-source="gallery">
+<head>
+<meta charset="UTF-8">
+<title>layout-e6 · 前后双带演进页（AI 主题）</title>
+<link rel="stylesheet" href="../../../../themes/paper-ink/assets/design-tokens.css">
+<link rel="stylesheet" href="../../../../themes/paper-ink/assets/slide-components.css">
+<link rel="stylesheet" href="../../../shell.css">
+<style>
+  svg.scene { position: absolute; inset: 0; z-index: 1; }
+  .caption {
+    position: absolute; left: 0; right: 0; bottom: 118px;
+    text-align: center;;;;;;
+    z-index: 5;
+  }
+</style>
+</head>
+<body class="slide">
+<div class="stage" data-block-id="gallery-primary" data-renderer-kind="svg" data-component-source="native" data-component-id="native.paper-ink.comparison.before-after-process-bands.before-after-flow" data-content-ref="example.e6" data-anchor-id="stage">
+  <span data-geometry-anchor-holder="before-band" data-anchor-id="before-band" hidden aria-hidden="true"></span><span data-geometry-anchor-holder="after-band" data-anchor-id="after-band" hidden aria-hidden="true"></span>
+  <div class="doc tl" data-anchor-id="slot-support">检索增强 — 效率跃迁<br>前后状态</div>
+  <div class="folio">01 / 01 — BY @歪斯WISE</div>
+
+  <svg class="scene" width="1920" height="1080" viewBox="0 0 1920 1080">
+    <g id="draw" data-anchor-id="slot-before-after-flow"></g>
+  </svg>
+
+  <div class="caption" data-anchor-id="slot-takeaway">召回、重排与组装把文档散件变成可追溯上下文，答案稳定性随之提升。</div>
+</div>
+
+<script src="../../../../runtime/stage-fit.js"></script>
+<script src="../../../../themes/paper-ink/assets/particles.js"></script>
+<script>
+var NS = 'http://www.w3.org/2000/svg';
+var INK = __wiseThemeToken("--ink");
+var INK80 = __wiseThemeToken("--ink-80");
+var INK70 = __wiseThemeToken("--ink-70");
+var INK45 = __wiseThemeToken("--ink-45");
+/* accent 触发：读 URL 加类 + 染色常量（详见 design-tokens.md §2） */
+if (location.search.indexOf('accent') >= 0) document.documentElement.classList.add('accent');
+var ACCENT = document.documentElement.classList.contains('accent');
+var RED = getComputedStyle(document.documentElement).getPropertyValue('--accent-red').trim();
+var SERIF = 'var(--serif)';
+var G = document.getElementById('draw');
+function el(tag, attrs) {
+  var e = document.createElementNS(NS, tag);
+  for (var k in attrs) e.setAttribute(k, attrs[k]);
+  G.appendChild(e); return e;
+}
+function txt(x, y, str, attrs) {
+  var t = el('text', Object.assign({x:x, y:y}, attrs||{}));
+  t.textContent = str; return t;
+}
+var MONO = 'var(--mono)', SANS = 'var(--sans)';
+
+G = el('g', {transform:'translate(0 -41.7)'});
+
+
+/* ============ 带一 · BEFORE ============ */
+el('rect', {x:150, y:220, width:1620, height:250, rx:4, fill:__wiseThemeToken("--paper-panel"), stroke:INK80, 'stroke-width':1});
+el('rect', {x:155, y:225, width:1610, height:240, rx:3, fill:'none', stroke:INK, 'stroke-width':.6, opacity:.3});
+/* ✕ 徽章 */
+el('circle', {cx:200, cy:262, r:15, fill:__wiseThemeToken("--paper"), stroke:INK80, 'stroke-width':1.2});
+el('path', {d:'M 194 256 L 206 268 M 206 256 L 194 268', stroke:INK, 'stroke-width':3, 'stroke-linecap':'round'});
+txt(232, 270, 'Before：文档只是文档', {'font-family':SANS, 'font-weight':300, 'font-size':'var(--type-subheading)', fill:INK});
+txt(1730, 268, 'SCATTERED', {'font-family':MONO, 'font-size':'var(--type-micro-secondary)', 'letter-spacing':3, 'text-anchor':'end', fill:INK45});
+
+/* 六张散件卡（内部各异） */
+var CARDS = [
+  {cn:'PDF 手册', mk:'lines'},
+  {cn:'工单导出', mk:'fold'},
+  {cn:'Wiki 页',  mk:'grid'},
+  {cn:'聊天沉淀', mk:'pic'},
+  {cn:'旧 FAQ',  mk:'check'},
+  {cn:'会议纪要', mk:'head'}
+];
+CARDS.forEach(function(c, i){
+  var x = 190 + i*160, y = 300, w = 140, h = 150;
+  el('rect', {x:x, y:y, width:w, height:h, fill:__wiseThemeToken("--paper"), stroke:INK80, 'stroke-width':1.1});
+  var ix = x+22, iy = y+18, iw = w-44, ih = h-62;
+  if (c.mk === 'lines') {
+    [0, 14, 28, 42, 56].forEach(function(dy){ el('line', {x1:ix, y1:iy+dy, x2:ix+iw, y2:iy+dy, stroke:INK, 'stroke-width':.8, opacity:.5}); });
+  } else if (c.mk === 'fold') {
+    el('path', {d:'M '+ix+' '+iy+' h '+(iw-16)+' l 16 16 v '+(ih-16)+' h '+(-iw)+' z', fill:'none', stroke:INK, 'stroke-width':.9, opacity:.7});
+    [22, 34, 46, 58].forEach(function(dy){ el('line', {x1:ix+8, y1:iy+dy, x2:ix+iw-8, y2:iy+dy, stroke:INK, 'stroke-width':.7, opacity:.45}); });
+  } else if (c.mk === 'grid') {
+    el('rect', {x:ix, y:iy, width:iw, height:ih, fill:'none', stroke:INK, 'stroke-width':.9, opacity:.7});
+    el('line', {x1:ix, y1:iy+18, x2:ix+iw, y2:iy+18, stroke:INK, 'stroke-width':.8, opacity:.6});
+    [32, 64].forEach(function(dx){ el('line', {x1:ix+dx, y1:iy, x2:ix+dx, y2:iy+ih, stroke:INK, 'stroke-width':.7, opacity:.5}); });
+    [36, 52].forEach(function(dy){ el('line', {x1:ix, y1:iy+dy, x2:ix+iw, y2:iy+dy, stroke:INK, 'stroke-width':.7, opacity:.5}); });
+  } else if (c.mk === 'pic') {
+    el('rect', {x:ix, y:iy, width:iw, height:34, fill:'none', stroke:INK, 'stroke-width':.9, opacity:.7});
+    el('circle', {cx:ix+10, cy:iy+9, r:3, fill:'none', stroke:INK, 'stroke-width':.7, opacity:.6});
+    el('path', {d:'M '+ix+' '+(iy+28)+' L '+(ix+24)+' '+(iy+12)+' L '+(ix+40)+' '+(iy+26)+' L '+(ix+56)+' '+(iy+14), fill:'none', stroke:INK, 'stroke-width':.7, opacity:.6});
+    [46, 58].forEach(function(dy){ el('line', {x1:ix, y1:iy+dy, x2:ix+iw, y2:iy+dy, stroke:INK, 'stroke-width':.8, opacity:.5}); });
+  } else if (c.mk === 'check') {
+    [0, 20, 40, 58].forEach(function(dy){
+      el('rect', {x:ix, y:iy+dy, width:9, height:9, fill:'none', stroke:INK, 'stroke-width':.8, opacity:.6});
+      el('line', {x1:ix+16, y1:iy+dy+5, x2:ix+iw, y2:iy+dy+5, stroke:INK, 'stroke-width':.7, opacity:.45});
+    });
+  } else {
+    el('line', {x1:ix, y1:iy+4, x2:ix+iw-30, y2:iy+4, stroke:INK, 'stroke-width':1.1, opacity:.7});
+    [18, 32, 46, 60].forEach(function(dy){ el('line', {x1:ix, y1:iy+dy, x2:ix+iw, y2:iy+dy, stroke:INK, 'stroke-width':.7, opacity:.45}); });
+  }
+  txt(x+w/2, y+h-14, c.cn, {'font-family':SANS, 'font-weight':300, 'font-size':'var(--type-meta)', 'text-anchor':'middle', fill:INK70});
+});
+
+/* 虚线分隔 + 右侧注记 */
+el('line', {x1:1190, y1:252, x2:1190, y2:440, stroke:INK, 'stroke-width':.6, opacity:.35, 'stroke-dasharray':'3 5'});
+['文档散在 Wiki、网盘与群聊', '格式杂乱，表格图片模型吃不进', '无向量、无切片、进不了召回链路'].forEach(function(s, i){
+  var y = 330 + i*50;
+  el('rect', {x:1230, y:y-11, width:5, height:5, fill:INK, opacity:.55});
+  txt(1248, y, s, {'font-family':SANS, 'font-weight':300, 'font-size':'var(--type-body-small)', fill:INK70});
+});
+
+/* ============ 带二 · AFTER ============ */
+el('rect', {x:150, y:500, width:1620, height:280, rx:4, fill:__wiseThemeToken("--paper-panel"), stroke:INK80, 'stroke-width':1});
+el('rect', {x:155, y:505, width:1610, height:270, rx:3, fill:'none', stroke:INK, 'stroke-width':.6, opacity:.3});
+/* ✓ 徽章与 After 标题组成同一结果语义组 */
+el('circle', {cx:200, cy:542, r:15, fill:__wiseThemeToken("--paper"), stroke: ACCENT ? RED : INK80, 'stroke-width':1.2});
+el('path', {d:'M 193 542 L 198 548 L 208 535', fill:'none', stroke: ACCENT ? RED : INK, 'stroke-width':3, 'stroke-linecap':'round', 'stroke-linejoin':'round'});
+txt(232, 550, 'After：文档进入召回链路', {'data-accent-group':'positive-outcome', 'font-family':SANS, 'font-weight':300, 'font-size':'var(--type-subheading)', fill:ACCENT ? RED : INK});
+txt(1730, 548, 'PIPELINED', {'font-family':MONO, 'font-size':'var(--type-micro-secondary)', 'letter-spacing':3, 'text-anchor':'end', fill:INK45});
+
+/* 六步流水线 */
+var PX = [270, 430, 590, 750, 910, 1070];
+for (var i = 0; i < 5; i++) {
+  var mx = (PX[i] + PX[i+1]) / 2;
+  [0, 7].forEach(function(dx){
+    el('path', {d:'M '+(mx-6+dx)+' 602 L '+(mx+dx)+' 610 L '+(mx-6+dx)+' 618', fill:'none', stroke:INK, 'stroke-width':.8, opacity:.5, 'stroke-dasharray':'3 3'});
+  });
+}
+/* 1 统一接入 */
+(function(){
+  var x = PX[0], y = 610;
+  [[-20,-20],[0,-24],[20,-20]].forEach(function(p){ el('line', {x1:x+p[0], y1:y+p[1], x2:x, y2:y-6, stroke:INK, 'stroke-width':1, opacity:.6}); });
+  el('path', {d:'M '+(x-14)+' '+(y-6)+' L '+(x+14)+' '+(y-6)+' L '+(x+5)+' '+(y+10)+' L '+(x-5)+' '+(y+10)+' Z', fill:'none', stroke:INK80, 'stroke-width':1.2});
+  el('line', {x1:x, y1:y+10, x2:x, y2:y+20, stroke:INK80, 'stroke-width':1.2});
+})();
+/* 2 结构解析：文档 + 解析括号 */
+(function(){
+  var x = PX[1], y = 610;
+  el('rect', {x:x-12, y:y-18, width:24, height:32, fill:'none', stroke:INK80, 'stroke-width':1.2});
+  [y-8, y, y+8].forEach(function(yy){ el('line', {x1:x-7, y1:yy, x2:x+7, y2:yy, stroke:INK, 'stroke-width':.8, opacity:.55}); });
+  el('path', {d:'M '+(x-20)+' '+(y-14)+' L '+(x-24)+' '+(y-14)+' L '+(x-24)+' '+(y+14)+' L '+(x-20)+' '+(y+14), fill:'none', stroke:INK, 'stroke-width':.9, opacity:.6});
+  el('path', {d:'M '+(x+20)+' '+(y-14)+' L '+(x+24)+' '+(y-14)+' L '+(x+24)+' '+(y+14)+' L '+(x+20)+' '+(y+14), fill:'none', stroke:INK, 'stroke-width':.9, opacity:.6});
+})();
+/* 3 智能切片：页面 + 虚线切分 */
+(function(){
+  var x = PX[2], y = 610;
+  el('rect', {x:x-18, y:y-16, width:36, height:32, fill:'none', stroke:INK80, 'stroke-width':1.2});
+  [x-6, x+6].forEach(function(xx){ el('line', {x1:xx, y1:y-16, x2:xx, y2:y+16, stroke:INK, 'stroke-width':.7, opacity:.55, 'stroke-dasharray':'3 3'}); });
+  el('line', {x1:x-24, y1:y-22, x2:x-14, y2:y-26, stroke:INK, 'stroke-width':1, opacity:.6});
+})();
+/* 4 语义索引：卡片 + 节点链 */
+(function(){
+  var x = PX[3], y = 610;
+  el('rect', {x:x-16, y:y-14, width:32, height:24, fill:'none', stroke:INK80, 'stroke-width':1.2});
+  el('line', {x1:x-10, y1:y-6, x2:x+10, y2:y-6, stroke:INK, 'stroke-width':.8, opacity:.55});
+  el('circle', {cx:x-8, cy:y+16, r:3, fill:'none', stroke:INK, 'stroke-width':.9});
+  el('circle', {cx:x+8, cy:y+16, r:3, fill:'none', stroke:INK, 'stroke-width':.9});
+  el('line', {x1:x-5, y1:y+16, x2:x+5, y2:y+16, stroke:INK, 'stroke-width':.8, opacity:.6});
+  el('line', {x1:x, y1:y+10, x2:x-6, y2:y+14, stroke:INK, 'stroke-width':.7, opacity:.5});
+})();
+/* 5 按需召回：放大镜 + 文档 */
+(function(){
+  var x = PX[4], y = 610;
+  el('rect', {x:x-18, y:y-16, width:24, height:30, fill:'none', stroke:INK80, 'stroke-width':1.1});
+  [y-8, y-1, y+6].forEach(function(yy){ el('line', {x1:x-13, y1:yy, x2:x+1, y2:yy, stroke:INK, 'stroke-width':.7, opacity:.5}); });
+  el('circle', {cx:x+8, cy:y+6, r:10, fill:__wiseThemeToken("--paper"), stroke:INK80, 'stroke-width':1.2});
+  el('line', {x1:x+15, y1:y+13, x2:x+22, y2:y+20, stroke:INK80, 'stroke-width':1.4});
+})();
+/* 6 全员复用：扇出三端 */
+(function(){
+  var x = PX[5], y = 610;
+  el('circle', {cx:x, cy:y-4, r:6, fill:'none', stroke:INK80, 'stroke-width':1.2});
+  [[-20, 16], [0, 20], [20, 16]].forEach(function(p){
+    el('line', {x1:x, y1:y+2, x2:x+p[0], y2:y+p[1], stroke:INK, 'stroke-width':.9, opacity:.6});
+    el('rect', {x:x+p[0]-5, y:y+p[1], width:10, height:8, fill:'none', stroke:INK80, 'stroke-width':1});
+  });
+})();
+['统一接入', '版式解析', '语义切片', '向量索引', '重排召回', 'Agent 复用'].forEach(function(s, i){
+  txt(PX[i], 668, s, {'font-family':SANS, 'font-weight':300, 'font-size':'var(--type-label)', 'text-anchor':'middle', fill:INK});
+});
+
+/* 右侧注记 */
+['文档统一进入向量库', '切片带来源与版本元数据', '稠密、稀疏、图谱三路召回', '引用可回溯到段落级出处'].forEach(function(s, i){
+  var y = 580 + i*44;
+  el('rect', {x:1230, y:y-11, width:5, height:5, fill:INK, opacity:.55});
+  txt(1248, y, s, {'font-family':SANS, 'font-weight':300, 'font-size':'var(--type-body-small)', fill:INK70});
+});
+
+/* 带内底部文字流 */
+txt(300, 742, '散件入库', {'font-family':SANS, 'font-weight':300, 'font-size':'var(--type-body-small)', 'text-anchor':'middle', fill:INK70});
+el('line', {x1:380, y1:737, x2:470, y2:737, stroke:INK, 'stroke-width':1, opacity:.6});
+el('line', {x1:462, y1:732, x2:470, y2:737, stroke:INK, 'stroke-width':1, opacity:.6});
+el('line', {x1:462, y1:742, x2:470, y2:737, stroke:INK, 'stroke-width':1, opacity:.6});
+txt(650, 742, '切片 · 嵌入 · 索引', {'font-family':SANS, 'font-weight':300, 'font-size':'var(--type-body-small)', 'text-anchor':'middle', fill:INK});
+el('line', {x1:790, y1:737, x2:880, y2:737, stroke:INK, 'stroke-width':1, opacity:.6});
+el('line', {x1:872, y1:732, x2:880, y2:737, stroke:INK, 'stroke-width':1, opacity:.6});
+el('line', {x1:872, y1:742, x2:880, y2:737, stroke:INK, 'stroke-width':1, opacity:.6});
+txt(1000, 742, '可被 Agent 调用', {'font-family':SANS, 'font-weight':300, 'font-size':'var(--type-body-small)', 'text-anchor':'middle', fill:INK70});
+
+/* ============ 底部金句条 ============ */
+el('rect', {x:150, y:840, width:6, height:36, fill:INK});
+txt(176, 868, '文档只有进入召回链路，知识才真正开始服役。', {'font-family':SERIF, 'font-size':'var(--type-subheading)', fill:INK});
+
+stageFit();
+</script>
+</body>
+</html>

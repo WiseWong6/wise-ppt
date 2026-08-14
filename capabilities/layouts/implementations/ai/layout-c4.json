@@ -1,0 +1,1164 @@
+{
+  "canonical": {
+    "constraints": {
+      "css_scope": "[data-implementation-id=\"paper-ink.data.geo-bubble-map.ai\"]",
+      "external_links": false,
+      "external_scripts": false,
+      "payload_only_mutation": true,
+      "ready_api": "WisePPT.markSlideReady",
+      "script_query_scope": "current-section.slide",
+      "stage_fit": false
+    },
+    "kind": "recipe-skeleton",
+    "materialization_format": "wise-ppt-formal-slide@1",
+    "path": "capabilities/layouts/recipes/geo-bubble-map/fragment.html",
+    "root_selector": "section.slide[data-implementation-id=\"paper-ink.data.geo-bubble-map.ai\"]",
+    "sha256": "sha256:39058d386b523373a5dafb08159d2aebf6f11eed86a2f6942e07cbcd82f95d75",
+    "skeleton": {
+      "contract_path": "capabilities/layouts/recipes/geo-bubble-map/skeleton.json",
+      "contract_sha256": "sha256:b1881034b1710364a1d37bb87696d7660f43709d479bcf7933145b0ae36c6a6f",
+      "fingerprint": "sha256:a5d1c99e3e5c331ceece784caadc9cea61e1a377ceb32d71a48f0e873284626f"
+    }
+  },
+  "canonical_fingerprint": "sha256:c3a64efb9151e6eda1015173a8bb35e7633c813469b02b21cbcbdabd1da0e6b2",
+  "contract_version": 1,
+  "dependency_closure": {
+    "files": [
+      {
+        "path": "capabilities/vendors/echarts/echarts.min.js",
+        "sha256": "sha256:b66b25aeb4df84e33199dc21694014d336d222cbd9deb0e5a7c14bd6aa0d0fd0"
+      },
+      {
+        "path": "capabilities/vendors/geo/guangdong-geo.js",
+        "sha256": "sha256:1567c72a80811e098c77e94e63ad78b9398727058e736af64d299f75ac5f826b"
+      },
+      {
+        "path": "gallery/shell.css",
+        "sha256": "sha256:aca1428680d2dd5c84e85d66241ee199a16d36bb60a098340528943fb5469f69"
+      },
+      {
+        "path": "runtime/stage-fit.js",
+        "sha256": "sha256:39577a14aac5072789fdeb80abee887d24da5a44eeb38203ef154602330f291d"
+      },
+      {
+        "path": "themes/paper-ink/assets/design-tokens.css",
+        "sha256": "sha256:3f1f0d3562cf1486b87643b16025388557000858d0df13d767b53a576988c330"
+      },
+      {
+        "path": "themes/paper-ink/assets/fonts/CourierPrime-Regular.ttf",
+        "sha256": "sha256:72f793376f8e2841656bf21d77a5de010f2929bd6956a22ee848ad0c7eb978af"
+      },
+      {
+        "path": "themes/paper-ink/assets/fonts/LXGWWenKai-Regular.ttf",
+        "sha256": "sha256:39ad71264b588165b469e35e6afb162a378dacd1f95348160240ba9038ac3009"
+      },
+      {
+        "path": "themes/paper-ink/assets/fonts/SourceHanSansCN-Light.otf",
+        "sha256": "sha256:b6dfc945aae0daf9b15019f59c2f7b18d17da3b92f00c3ec32fb5f0333696d9c"
+      },
+      {
+        "path": "themes/paper-ink/assets/fonts/SourceHanSerifCN-Medium.otf",
+        "sha256": "sha256:8e224937647ae71ba1b1f310bcb3fbc32f21ec7c2c490ba04670455c901f3378"
+      },
+      {
+        "path": "themes/paper-ink/assets/particles.js",
+        "sha256": "sha256:1281d72e81b34e4be061286edd323dd421443dffbf6e0d8a2faa94a5d14094c4"
+      },
+      {
+        "path": "themes/paper-ink/assets/slide-components.css",
+        "sha256": "sha256:20e7334fe5ae51cb229112290e787c1274ad65278a72b084c708682dc9ca5acf"
+      }
+    ],
+    "sha256": "sha256:394de49be679588f4441059badedb121a00f56ee0179deacbf62fbd051e7e5f0"
+  },
+  "format": "wise-ppt-layout-implementation@1",
+  "geometry": {
+    "anchors": [
+      {
+        "anchor_id": "stage",
+        "selector": "[data-anchor-id=\"stage\"]"
+      },
+      {
+        "anchor_id": "c4-main",
+        "selector": "[data-anchor-id=\"c4-main\"]"
+      },
+      {
+        "anchor_id": "c4-map",
+        "selector": "[data-anchor-id=\"c4-map\"]"
+      },
+      {
+        "anchor_id": "c4-legend",
+        "selector": "[data-anchor-id=\"c4-legend\"]"
+      },
+      {
+        "anchor_id": "c4-kpis",
+        "selector": "[data-anchor-id=\"c4-kpis\"]"
+      },
+      {
+        "anchor_id": "c4-support",
+        "selector": "[data-anchor-id=\"c4-support\"]"
+      },
+      {
+        "anchor_id": "c4-takeaway",
+        "selector": "[data-anchor-id=\"c4-takeaway\"]"
+      }
+    ],
+    "canvas": {
+      "height": 1080,
+      "width": 1920
+    },
+    "content_region": {
+      "anchor_id": "c4-main",
+      "zone": "core-content"
+    },
+    "fingerprint": "sha256:0f9c08e9ab90d479bbf5e605a2b8fc93a890f9d2f6e8cf709a809245cda02847",
+    "format": "wise-ppt-layout-geometry@1",
+    "relations": [
+      {
+        "anchors": [
+          "stage",
+          "c4-main"
+        ],
+        "relation_id": "c4-main-in-stage",
+        "tolerance": 0,
+        "type": "contain"
+      },
+      {
+        "anchors": [
+          "c4-main",
+          "c4-map"
+        ],
+        "relation_id": "c4-map-in-main",
+        "tolerance": 0,
+        "type": "contain"
+      },
+      {
+        "anchors": [
+          "c4-main",
+          "c4-legend"
+        ],
+        "relation_id": "c4-legend-in-main",
+        "tolerance": 0,
+        "type": "contain"
+      },
+      {
+        "anchors": [
+          "c4-main",
+          "c4-kpis"
+        ],
+        "relation_id": "c4-kpis-in-main",
+        "tolerance": 0,
+        "type": "contain"
+      },
+      {
+        "anchors": [
+          "c4-map",
+          "c4-kpis"
+        ],
+        "min_gap": 20,
+        "relation_id": "c4-map-kpis-clear",
+        "tolerance": 1,
+        "type": "avoid"
+      },
+      {
+        "anchors": [
+          "c4-main",
+          "c4-kpis"
+        ],
+        "edge": "right",
+        "relation_id": "c4-kpis-right-boundary",
+        "tolerance": 1,
+        "type": "hardBoundary"
+      },
+      {
+        "anchors": [
+          "c4-map",
+          "c4-legend"
+        ],
+        "axis": "x",
+        "offset": 20,
+        "relation_id": "c4-map-legend-left",
+        "tolerance": 1,
+        "type": "offsetEq"
+      },
+      {
+        "anchors": [
+          "c4-map",
+          "c4-kpis"
+        ],
+        "edge": "top",
+        "relation_id": "c4-map-kpis-top",
+        "tolerance": 1,
+        "type": "edgeEq"
+      }
+    ],
+    "structure_contract": {
+      "core_primitives": [
+        "evidence-annotation"
+      ],
+      "region_count": 3,
+      "required_slot_ids": [
+        "map"
+      ]
+    }
+  },
+  "implementation_id": "paper-ink.data.geo-bubble-map.ai",
+  "payload": {
+    "fields": [
+      {
+        "constraints": {
+          "maxLength": 80,
+          "minLength": 1
+        },
+        "context": "skeleton:/support",
+        "default": "FILL = EVENT COUNT · 112°E–115°E · MAP DATA © DATAV.GEOATLAS",
+        "field_id": "payload.support",
+        "kind": "skeleton_payload",
+        "max_length": 80,
+        "span": {
+          "json_pointer": "/support",
+          "kind": "skeleton_payload"
+        },
+        "type": "string"
+      },
+      {
+        "constraints": {
+          "enum": [
+            "广州市",
+            "深圳市",
+            "佛山市",
+            "东莞市",
+            "珠海市",
+            "汕头市",
+            "惠州市",
+            "中山市"
+          ]
+        },
+        "context": "skeleton:/nodes/0/feature_id",
+        "default": "广州市",
+        "field_id": "payload.nodes.0.feature_id",
+        "kind": "skeleton_payload",
+        "max_length": 7,
+        "span": {
+          "json_pointer": "/nodes/0/feature_id",
+          "kind": "skeleton_payload"
+        },
+        "type": "string"
+      },
+      {
+        "constraints": {
+          "maximum": 99,
+          "minimum": 0
+        },
+        "context": "skeleton:/nodes/0/value",
+        "default": 16,
+        "field_id": "payload.nodes.0.value",
+        "kind": "skeleton_payload",
+        "max_length": 2,
+        "span": {
+          "json_pointer": "/nodes/0/value",
+          "kind": "skeleton_payload"
+        },
+        "type": "number"
+      },
+      {
+        "constraints": {
+          "enum": [
+            "广州市",
+            "深圳市",
+            "佛山市",
+            "东莞市",
+            "珠海市",
+            "汕头市",
+            "惠州市",
+            "中山市"
+          ]
+        },
+        "context": "skeleton:/nodes/1/feature_id",
+        "default": "深圳市",
+        "field_id": "payload.nodes.1.feature_id",
+        "kind": "skeleton_payload",
+        "max_length": 7,
+        "span": {
+          "json_pointer": "/nodes/1/feature_id",
+          "kind": "skeleton_payload"
+        },
+        "type": "string"
+      },
+      {
+        "constraints": {
+          "maximum": 99,
+          "minimum": 0
+        },
+        "context": "skeleton:/nodes/1/value",
+        "default": 12,
+        "field_id": "payload.nodes.1.value",
+        "kind": "skeleton_payload",
+        "max_length": 2,
+        "span": {
+          "json_pointer": "/nodes/1/value",
+          "kind": "skeleton_payload"
+        },
+        "type": "number"
+      },
+      {
+        "constraints": {
+          "enum": [
+            "广州市",
+            "深圳市",
+            "佛山市",
+            "东莞市",
+            "珠海市",
+            "汕头市",
+            "惠州市",
+            "中山市"
+          ]
+        },
+        "context": "skeleton:/nodes/2/feature_id",
+        "default": "佛山市",
+        "field_id": "payload.nodes.2.feature_id",
+        "kind": "skeleton_payload",
+        "max_length": 7,
+        "span": {
+          "json_pointer": "/nodes/2/feature_id",
+          "kind": "skeleton_payload"
+        },
+        "type": "string"
+      },
+      {
+        "constraints": {
+          "maximum": 99,
+          "minimum": 0
+        },
+        "context": "skeleton:/nodes/2/value",
+        "default": 8,
+        "field_id": "payload.nodes.2.value",
+        "kind": "skeleton_payload",
+        "max_length": 1,
+        "span": {
+          "json_pointer": "/nodes/2/value",
+          "kind": "skeleton_payload"
+        },
+        "type": "number"
+      },
+      {
+        "constraints": {
+          "enum": [
+            "广州市",
+            "深圳市",
+            "佛山市",
+            "东莞市",
+            "珠海市",
+            "汕头市",
+            "惠州市",
+            "中山市"
+          ]
+        },
+        "context": "skeleton:/nodes/3/feature_id",
+        "default": "东莞市",
+        "field_id": "payload.nodes.3.feature_id",
+        "kind": "skeleton_payload",
+        "max_length": 7,
+        "span": {
+          "json_pointer": "/nodes/3/feature_id",
+          "kind": "skeleton_payload"
+        },
+        "type": "string"
+      },
+      {
+        "constraints": {
+          "maximum": 99,
+          "minimum": 0
+        },
+        "context": "skeleton:/nodes/3/value",
+        "default": 7,
+        "field_id": "payload.nodes.3.value",
+        "kind": "skeleton_payload",
+        "max_length": 1,
+        "span": {
+          "json_pointer": "/nodes/3/value",
+          "kind": "skeleton_payload"
+        },
+        "type": "number"
+      },
+      {
+        "constraints": {
+          "enum": [
+            "广州市",
+            "深圳市",
+            "佛山市",
+            "东莞市",
+            "珠海市",
+            "汕头市",
+            "惠州市",
+            "中山市"
+          ]
+        },
+        "context": "skeleton:/nodes/4/feature_id",
+        "default": "珠海市",
+        "field_id": "payload.nodes.4.feature_id",
+        "kind": "skeleton_payload",
+        "max_length": 7,
+        "span": {
+          "json_pointer": "/nodes/4/feature_id",
+          "kind": "skeleton_payload"
+        },
+        "type": "string"
+      },
+      {
+        "constraints": {
+          "maximum": 99,
+          "minimum": 0
+        },
+        "context": "skeleton:/nodes/4/value",
+        "default": 5,
+        "field_id": "payload.nodes.4.value",
+        "kind": "skeleton_payload",
+        "max_length": 1,
+        "span": {
+          "json_pointer": "/nodes/4/value",
+          "kind": "skeleton_payload"
+        },
+        "type": "number"
+      },
+      {
+        "constraints": {
+          "enum": [
+            "广州市",
+            "深圳市",
+            "佛山市",
+            "东莞市",
+            "珠海市",
+            "汕头市",
+            "惠州市",
+            "中山市"
+          ]
+        },
+        "context": "skeleton:/nodes/5/feature_id",
+        "default": "汕头市",
+        "field_id": "payload.nodes.5.feature_id",
+        "kind": "skeleton_payload",
+        "max_length": 7,
+        "span": {
+          "json_pointer": "/nodes/5/feature_id",
+          "kind": "skeleton_payload"
+        },
+        "type": "string"
+      },
+      {
+        "constraints": {
+          "maximum": 99,
+          "minimum": 0
+        },
+        "context": "skeleton:/nodes/5/value",
+        "default": 4,
+        "field_id": "payload.nodes.5.value",
+        "kind": "skeleton_payload",
+        "max_length": 1,
+        "span": {
+          "json_pointer": "/nodes/5/value",
+          "kind": "skeleton_payload"
+        },
+        "type": "number"
+      },
+      {
+        "constraints": {
+          "maxLength": 10,
+          "minLength": 1
+        },
+        "context": "skeleton:/kpis/0/value",
+        "default": "52",
+        "field_id": "payload.kpis.0.value",
+        "kind": "skeleton_payload",
+        "max_length": 10,
+        "span": {
+          "json_pointer": "/kpis/0/value",
+          "kind": "skeleton_payload"
+        },
+        "type": "string"
+      },
+      {
+        "constraints": {
+          "maxLength": 16,
+          "minLength": 1
+        },
+        "context": "skeleton:/kpis/0/label",
+        "default": "年度城市活动（场）",
+        "field_id": "payload.kpis.0.label",
+        "kind": "skeleton_payload",
+        "max_length": 16,
+        "span": {
+          "json_pointer": "/kpis/0/label",
+          "kind": "skeleton_payload"
+        },
+        "type": "string"
+      },
+      {
+        "constraints": {
+          "maxLength": 10,
+          "minLength": 1
+        },
+        "context": "skeleton:/kpis/1/value",
+        "default": "12.6万",
+        "field_id": "payload.kpis.1.value",
+        "kind": "skeleton_payload",
+        "max_length": 10,
+        "span": {
+          "json_pointer": "/kpis/1/value",
+          "kind": "skeleton_payload"
+        },
+        "type": "string"
+      },
+      {
+        "constraints": {
+          "maxLength": 16,
+          "minLength": 1
+        },
+        "context": "skeleton:/kpis/1/label",
+        "default": "活动报名人数",
+        "field_id": "payload.kpis.1.label",
+        "kind": "skeleton_payload",
+        "max_length": 16,
+        "span": {
+          "json_pointer": "/kpis/1/label",
+          "kind": "skeleton_payload"
+        },
+        "type": "string"
+      },
+      {
+        "constraints": {
+          "maxLength": 10,
+          "minLength": 1
+        },
+        "context": "skeleton:/kpis/2/value",
+        "default": "21",
+        "field_id": "payload.kpis.2.value",
+        "kind": "skeleton_payload",
+        "max_length": 10,
+        "span": {
+          "json_pointer": "/kpis/2/value",
+          "kind": "skeleton_payload"
+        },
+        "type": "string"
+      },
+      {
+        "constraints": {
+          "maxLength": 16,
+          "minLength": 1
+        },
+        "context": "skeleton:/kpis/2/label",
+        "default": "规划覆盖城市（个）",
+        "field_id": "payload.kpis.2.label",
+        "kind": "skeleton_payload",
+        "max_length": 16,
+        "span": {
+          "json_pointer": "/kpis/2/label",
+          "kind": "skeleton_payload"
+        },
+        "type": "string"
+      },
+      {
+        "constraints": {
+          "maxLength": 10,
+          "minLength": 1
+        },
+        "context": "skeleton:/kpis/3/value",
+        "default": "93%",
+        "field_id": "payload.kpis.3.value",
+        "kind": "skeleton_payload",
+        "max_length": 10,
+        "span": {
+          "json_pointer": "/kpis/3/value",
+          "kind": "skeleton_payload"
+        },
+        "type": "string"
+      },
+      {
+        "constraints": {
+          "maxLength": 16,
+          "minLength": 1
+        },
+        "context": "skeleton:/kpis/3/label",
+        "default": "参与者满意度",
+        "field_id": "payload.kpis.3.label",
+        "kind": "skeleton_payload",
+        "max_length": 16,
+        "span": {
+          "json_pointer": "/kpis/3/label",
+          "kind": "skeleton_payload"
+        },
+        "type": "string"
+      },
+      {
+        "constraints": {
+          "maxLength": 96,
+          "minLength": 1
+        },
+        "context": "skeleton:/takeaway",
+        "default": "以广深为核心安排城市活动，再逐步覆盖周边城市与粤东重点区域。",
+        "field_id": "payload.takeaway",
+        "kind": "skeleton_payload",
+        "max_length": 96,
+        "span": {
+          "json_pointer": "/takeaway",
+          "kind": "skeleton_payload"
+        },
+        "type": "string"
+      }
+    ],
+    "format": "wise-ppt-layout-payload@1",
+    "values_schema": {
+      "additionalProperties": false,
+      "minProperties": 1,
+      "properties": {
+        "payload.kpis.0.label": {
+          "maxLength": 16,
+          "minLength": 1,
+          "type": "string"
+        },
+        "payload.kpis.0.value": {
+          "maxLength": 10,
+          "minLength": 1,
+          "type": "string"
+        },
+        "payload.kpis.1.label": {
+          "maxLength": 16,
+          "minLength": 1,
+          "type": "string"
+        },
+        "payload.kpis.1.value": {
+          "maxLength": 10,
+          "minLength": 1,
+          "type": "string"
+        },
+        "payload.kpis.2.label": {
+          "maxLength": 16,
+          "minLength": 1,
+          "type": "string"
+        },
+        "payload.kpis.2.value": {
+          "maxLength": 10,
+          "minLength": 1,
+          "type": "string"
+        },
+        "payload.kpis.3.label": {
+          "maxLength": 16,
+          "minLength": 1,
+          "type": "string"
+        },
+        "payload.kpis.3.value": {
+          "maxLength": 10,
+          "minLength": 1,
+          "type": "string"
+        },
+        "payload.nodes.0.feature_id": {
+          "enum": [
+            "广州市",
+            "深圳市",
+            "佛山市",
+            "东莞市",
+            "珠海市",
+            "汕头市",
+            "惠州市",
+            "中山市"
+          ],
+          "maxLength": 7,
+          "type": "string"
+        },
+        "payload.nodes.0.value": {
+          "maximum": 99,
+          "minimum": 0,
+          "type": "number"
+        },
+        "payload.nodes.1.feature_id": {
+          "enum": [
+            "广州市",
+            "深圳市",
+            "佛山市",
+            "东莞市",
+            "珠海市",
+            "汕头市",
+            "惠州市",
+            "中山市"
+          ],
+          "maxLength": 7,
+          "type": "string"
+        },
+        "payload.nodes.1.value": {
+          "maximum": 99,
+          "minimum": 0,
+          "type": "number"
+        },
+        "payload.nodes.2.feature_id": {
+          "enum": [
+            "广州市",
+            "深圳市",
+            "佛山市",
+            "东莞市",
+            "珠海市",
+            "汕头市",
+            "惠州市",
+            "中山市"
+          ],
+          "maxLength": 7,
+          "type": "string"
+        },
+        "payload.nodes.2.value": {
+          "maximum": 99,
+          "minimum": 0,
+          "type": "number"
+        },
+        "payload.nodes.3.feature_id": {
+          "enum": [
+            "广州市",
+            "深圳市",
+            "佛山市",
+            "东莞市",
+            "珠海市",
+            "汕头市",
+            "惠州市",
+            "中山市"
+          ],
+          "maxLength": 7,
+          "type": "string"
+        },
+        "payload.nodes.3.value": {
+          "maximum": 99,
+          "minimum": 0,
+          "type": "number"
+        },
+        "payload.nodes.4.feature_id": {
+          "enum": [
+            "广州市",
+            "深圳市",
+            "佛山市",
+            "东莞市",
+            "珠海市",
+            "汕头市",
+            "惠州市",
+            "中山市"
+          ],
+          "maxLength": 7,
+          "type": "string"
+        },
+        "payload.nodes.4.value": {
+          "maximum": 99,
+          "minimum": 0,
+          "type": "number"
+        },
+        "payload.nodes.5.feature_id": {
+          "enum": [
+            "广州市",
+            "深圳市",
+            "佛山市",
+            "东莞市",
+            "珠海市",
+            "汕头市",
+            "惠州市",
+            "中山市"
+          ],
+          "maxLength": 7,
+          "type": "string"
+        },
+        "payload.nodes.5.value": {
+          "maximum": 99,
+          "minimum": 0,
+          "type": "number"
+        },
+        "payload.support": {
+          "maxLength": 80,
+          "minLength": 1,
+          "type": "string"
+        },
+        "payload.takeaway": {
+          "maxLength": 96,
+          "minLength": 1,
+          "type": "string"
+        }
+      },
+      "type": "object"
+    }
+  },
+  "payload_defaults": {
+    "bindings": [
+      {
+        "asset_refs": [],
+        "content_refs": [
+          "item.canonical.map"
+        ],
+        "slot_id": "map"
+      },
+      {
+        "asset_refs": [],
+        "content_refs": [
+          "item.canonical.support"
+        ],
+        "slot_id": "support"
+      },
+      {
+        "asset_refs": [],
+        "content_refs": [
+          "item.canonical.takeaway"
+        ],
+        "slot_id": "takeaway"
+      }
+    ],
+    "values": {
+      "payload.kpis.0.label": "年度城市活动（场）",
+      "payload.kpis.0.value": "52",
+      "payload.kpis.1.label": "活动报名人数",
+      "payload.kpis.1.value": "12.6万",
+      "payload.kpis.2.label": "规划覆盖城市（个）",
+      "payload.kpis.2.value": "21",
+      "payload.kpis.3.label": "参与者满意度",
+      "payload.kpis.3.value": "93%",
+      "payload.nodes.0.feature_id": "广州市",
+      "payload.nodes.0.value": 16,
+      "payload.nodes.1.feature_id": "深圳市",
+      "payload.nodes.1.value": 12,
+      "payload.nodes.2.feature_id": "佛山市",
+      "payload.nodes.2.value": 8,
+      "payload.nodes.3.feature_id": "东莞市",
+      "payload.nodes.3.value": 7,
+      "payload.nodes.4.feature_id": "珠海市",
+      "payload.nodes.4.value": 5,
+      "payload.nodes.5.feature_id": "汕头市",
+      "payload.nodes.5.value": 4,
+      "payload.support": "FILL = EVENT COUNT · 112°E–115°E · MAP DATA © DATAV.GEOATLAS",
+      "payload.takeaway": "以广深为核心安排城市活动，再逐步覆盖周边城市与粤东重点区域。"
+    }
+  },
+  "payload_schema": {
+    "additionalProperties": false,
+    "properties": {
+      "bindings": {
+        "items": {
+          "additionalProperties": false,
+          "properties": {
+            "asset_refs": {
+              "items": {
+                "minLength": 1,
+                "type": "string"
+              },
+              "type": "array"
+            },
+            "content_refs": {
+              "items": {
+                "minLength": 1,
+                "type": "string"
+              },
+              "type": "array"
+            },
+            "slot_id": {
+              "enum": [
+                "map",
+                "support",
+                "takeaway"
+              ],
+              "type": "string"
+            }
+          },
+          "required": [
+            "slot_id",
+            "content_refs",
+            "asset_refs"
+          ],
+          "type": "object"
+        },
+        "maxItems": 3,
+        "minItems": 3,
+        "type": "array"
+      },
+      "values": {
+        "additionalProperties": false,
+        "minProperties": 1,
+        "properties": {
+          "payload.kpis.0.label": {
+            "maxLength": 16,
+            "minLength": 1,
+            "type": "string"
+          },
+          "payload.kpis.0.value": {
+            "maxLength": 10,
+            "minLength": 1,
+            "type": "string"
+          },
+          "payload.kpis.1.label": {
+            "maxLength": 16,
+            "minLength": 1,
+            "type": "string"
+          },
+          "payload.kpis.1.value": {
+            "maxLength": 10,
+            "minLength": 1,
+            "type": "string"
+          },
+          "payload.kpis.2.label": {
+            "maxLength": 16,
+            "minLength": 1,
+            "type": "string"
+          },
+          "payload.kpis.2.value": {
+            "maxLength": 10,
+            "minLength": 1,
+            "type": "string"
+          },
+          "payload.kpis.3.label": {
+            "maxLength": 16,
+            "minLength": 1,
+            "type": "string"
+          },
+          "payload.kpis.3.value": {
+            "maxLength": 10,
+            "minLength": 1,
+            "type": "string"
+          },
+          "payload.nodes.0.feature_id": {
+            "enum": [
+              "广州市",
+              "深圳市",
+              "佛山市",
+              "东莞市",
+              "珠海市",
+              "汕头市",
+              "惠州市",
+              "中山市"
+            ],
+            "maxLength": 7,
+            "type": "string"
+          },
+          "payload.nodes.0.value": {
+            "maximum": 99,
+            "minimum": 0,
+            "type": "number"
+          },
+          "payload.nodes.1.feature_id": {
+            "enum": [
+              "广州市",
+              "深圳市",
+              "佛山市",
+              "东莞市",
+              "珠海市",
+              "汕头市",
+              "惠州市",
+              "中山市"
+            ],
+            "maxLength": 7,
+            "type": "string"
+          },
+          "payload.nodes.1.value": {
+            "maximum": 99,
+            "minimum": 0,
+            "type": "number"
+          },
+          "payload.nodes.2.feature_id": {
+            "enum": [
+              "广州市",
+              "深圳市",
+              "佛山市",
+              "东莞市",
+              "珠海市",
+              "汕头市",
+              "惠州市",
+              "中山市"
+            ],
+            "maxLength": 7,
+            "type": "string"
+          },
+          "payload.nodes.2.value": {
+            "maximum": 99,
+            "minimum": 0,
+            "type": "number"
+          },
+          "payload.nodes.3.feature_id": {
+            "enum": [
+              "广州市",
+              "深圳市",
+              "佛山市",
+              "东莞市",
+              "珠海市",
+              "汕头市",
+              "惠州市",
+              "中山市"
+            ],
+            "maxLength": 7,
+            "type": "string"
+          },
+          "payload.nodes.3.value": {
+            "maximum": 99,
+            "minimum": 0,
+            "type": "number"
+          },
+          "payload.nodes.4.feature_id": {
+            "enum": [
+              "广州市",
+              "深圳市",
+              "佛山市",
+              "东莞市",
+              "珠海市",
+              "汕头市",
+              "惠州市",
+              "中山市"
+            ],
+            "maxLength": 7,
+            "type": "string"
+          },
+          "payload.nodes.4.value": {
+            "maximum": 99,
+            "minimum": 0,
+            "type": "number"
+          },
+          "payload.nodes.5.feature_id": {
+            "enum": [
+              "广州市",
+              "深圳市",
+              "佛山市",
+              "东莞市",
+              "珠海市",
+              "汕头市",
+              "惠州市",
+              "中山市"
+            ],
+            "maxLength": 7,
+            "type": "string"
+          },
+          "payload.nodes.5.value": {
+            "maximum": 99,
+            "minimum": 0,
+            "type": "number"
+          },
+          "payload.support": {
+            "maxLength": 80,
+            "minLength": 1,
+            "type": "string"
+          },
+          "payload.takeaway": {
+            "maxLength": 96,
+            "minLength": 1,
+            "type": "string"
+          }
+        },
+        "type": "object"
+      }
+    },
+    "required": [
+      "bindings",
+      "values"
+    ],
+    "type": "object"
+  },
+  "recipe_fingerprint": "sha256:c5dc17cff312fef23dfe4376e69ad28b20be10d967f9504c3f55cee5ffc6a1e9",
+  "recipe_id": "paper-ink.data.geo-bubble-map",
+  "required_capabilities": [
+    "echarts",
+    "geo-demo-data"
+  ],
+  "slots": [
+    {
+      "allowed_component_sources": [
+        "native",
+        "echarts"
+      ],
+      "allowed_renderer_kinds": [
+        "svg",
+        "canvas"
+      ],
+      "compatible_component_ids": [
+        "echarts.geo-choropleth-map",
+        "native.paper-ink.075.district-map"
+      ],
+      "count_unit": "binding",
+      "default_component": {
+        "component_id": "native.paper-ink.data.geo-bubble-map.map",
+        "component_source": "native",
+        "origin": {
+          "kind": "canonical-slot-island",
+          "path": "capabilities/layouts/recipes/geo-bubble-map/fragment.html",
+          "selector": "[data-slot-id=\"map\"]"
+        },
+        "renderer_kind": "svg"
+      },
+      "max_items": 8,
+      "min_items": 1,
+      "open_for_override": true,
+      "purpose": "地理分布",
+      "required": true,
+      "slot_id": "map",
+      "space_contract": {
+        "aspect_ratio": 2.4194,
+        "canvas_height": 1080,
+        "canvas_width": 1920,
+        "height": 620,
+        "space_type": "wide",
+        "width": 1500
+      },
+      "visual_role": "primary"
+    },
+    {
+      "allowed_component_sources": [
+        "codex-host",
+        "native"
+      ],
+      "allowed_renderer_kinds": [
+        "typography",
+        "table",
+        "image",
+        "native-html",
+        "svg"
+      ],
+      "compatible_component_ids": [],
+      "count_unit": "binding",
+      "default_component": {
+        "component_id": "native.paper-ink.data.geo-bubble-map.support",
+        "component_source": "native",
+        "origin": {
+          "kind": "canonical-slot-island",
+          "path": "capabilities/layouts/recipes/geo-bubble-map/fragment.html",
+          "selector": "[data-slot-id=\"support\"]"
+        },
+        "renderer_kind": "typography"
+      },
+      "max_items": 4,
+      "min_items": 0,
+      "open_for_override": false,
+      "purpose": "辅助证据、标签或解释",
+      "required": false,
+      "slot_id": "support",
+      "visual_role": "support"
+    },
+    {
+      "allowed_component_sources": [
+        "native"
+      ],
+      "allowed_renderer_kinds": [
+        "typography"
+      ],
+      "compatible_component_ids": [],
+      "count_unit": "binding",
+      "default_component": {
+        "component_id": "native.paper-ink.data.geo-bubble-map.takeaway",
+        "component_source": "native",
+        "origin": {
+          "kind": "canonical-slot-island",
+          "path": "capabilities/layouts/recipes/geo-bubble-map/fragment.html",
+          "selector": "[data-slot-id=\"takeaway\"]"
+        },
+        "renderer_kind": "typography"
+      },
+      "max_items": 1,
+      "min_items": 0,
+      "open_for_override": false,
+      "purpose": "页面一句话结论",
+      "required": false,
+      "slot_id": "takeaway",
+      "visual_role": "support"
+    }
+  ],
+  "source": {
+    "path": "gallery/paper-ink/ai/frames/layout-c4.html",
+    "sha256": "sha256:e7e85ddb0992f4d710e2303f67ce55bfee8348f42ebc15e436f4b152cf97ab09"
+  },
+  "status": "production",
+  "theme_id": "paper-ink",
+  "variant": "ai"
+}

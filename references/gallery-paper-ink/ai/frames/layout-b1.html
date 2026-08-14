@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-runtime="wise-ppt-specimen" data-typography-mode="mixed" data-page-id="gallery-ai-b1" data-page-role="sequence" data-theme="paper-ink" data-layout="paper-ink.temporal.timeline" data-layout-source="gallery">
+<head>
+<meta charset="UTF-8">
+<title>layout-b1 · 水平时间轴 · 大模型演进</title>
+<link rel="stylesheet" href="../../../../themes/paper-ink/assets/design-tokens.css">
+<link rel="stylesheet" href="../../../../themes/paper-ink/assets/slide-components.css">
+<link rel="stylesheet" href="../../../shell.css">
+<style>
+  svg.scene { position: absolute; inset: 0; z-index: 1; }
+  .caption {
+    position: absolute; left: 0; right: 0; bottom: 118px;
+    text-align: center;
+    font-family: var(--sans); font-weight: 400;
+    font-size: var(--type-caption); letter-spacing: .04em;
+    color: var(--ink);
+    z-index: 5;
+  }
+</style>
+</head>
+<body class="slide">
+<div class="stage" data-block-id="gallery-primary" data-renderer-kind="svg" data-component-source="native" data-component-id="native.paper-ink.temporal.timeline.milestones" data-content-ref="example.b1">
+  <div class="doc tl">大模型演进 — 能力跃迁<br>关键节点</div>
+  <div class="folio">B1 / 63 — BY @歪斯WISE</div>
+
+  <svg class="scene" width="1920" height="1080" viewBox="0 0 1920 1080">
+    <g id="draw"></g>
+  </svg>
+
+  <div class="caption">大模型从补全走向工具调用后，Agent 才具备持续执行任务的能力。</div>
+</div>
+
+<script src="../../../../runtime/stage-fit.js"></script>
+<script src="../../../../themes/paper-ink/assets/particles.js"></script>
+<script>
+var NS = 'http://www.w3.org/2000/svg';
+var INK = '#191917';
+var INK80 = 'rgba(25,25,23,.8)';
+/* accent 触发：读 URL 加类 + 染色常量（详见 design-tokens.md §2） */
+if (location.search.indexOf('accent') >= 0) document.documentElement.classList.add('accent');
+var ACCENT = document.documentElement.classList.contains('accent');
+var RED = getComputedStyle(document.documentElement).getPropertyValue('--accent-red').trim();
+var G = document.getElementById('draw');
+function el(tag, attrs) {
+  var e = document.createElementNS(NS, tag);
+  for (var k in attrs) e.setAttribute(k, attrs[k]);
+  G.appendChild(e); return e;
+}
+function txt(x, y, str, attrs) {
+  var t = el('text', Object.assign({x:x, y:y}, attrs||{}));
+  t.textContent = str; return t;
+}
+var MONO = 'var(--mono)', SANS = 'var(--sans)';
+
+G = el('g', {transform:'translate(0 -50.7)'});
+
+
+/* ---------- 主轴 + 刻度齿 ---------- */
+var AXIS = 560;
+el('line', {x1:200, y1:AXIS, x2:1720, y2:AXIS, stroke:INK80, 'stroke-width':1.2});
+for (var tx = 200, i = 0; tx <= 1720; tx += 38, i++) {
+  var major = (i % 5 === 0);
+  el('line', {x1:tx, y1:AXIS, x2:tx, y2:AXIS + (major?12:7), stroke:INK, 'stroke-width': major?1:.5, opacity: major?.4:.25});
+}
+
+/* ---------- 节点：大语言模型演进 ---------- */
+var nodes = [
+  {x: 280, y: 2018, name:'GPT-1',       org:'预训练雏形',      note:'1.17 亿参数 · 证明可行性', hot:false},
+  {x: 548, y: 2019, name:'GPT-2',       org:'规模跃迁',        note:'',                        hot:false},
+  {x: 816, y: 2020, name:'GPT-3',       org:'涌现能力',        note:'',                        hot:false},
+  {x:1084, y: 2022, name:'ChatGPT',     org:'对话破圈',        note:'',                        hot:false},
+  {x:1352, y: 2023, name:'GPT-4',       org:'多模态',          note:'推理 · 多模态 · 月活破亿', hot:true},
+  {x:1620, y: 2025, name:'o1 / o3',     org:'推理模型',        note:'思维链 · 自我反思',        hot:false}
+];
+
+nodes.forEach(function(n){
+  if (n.hot) {
+    el('circle', {cx:n.x, cy:AXIS, r:5, fill:(n.hot && ACCENT) ? RED : INK});
+    el('circle', {cx:n.x, cy:AXIS, r:16, fill:'none', stroke:(n.hot && ACCENT) ? RED : INK, 'stroke-width':1.4});
+    el('circle', {cx:n.x, cy:AXIS, r:20, fill:'none', stroke:(n.hot && ACCENT) ? RED : INK, 'stroke-width':.6, opacity:.4});
+  } else {
+    el('circle', {cx:n.x, cy:AXIS, r:9, fill:'#DFE0D9', stroke:INK80, 'stroke-width':1.2});
+    el('circle', {cx:n.x, cy:AXIS, r:3, fill:INK});
+  }
+  /* 上方：年份 / 名称 / 机构三段 + 短引线 */
+  txt(n.x, AXIS-104, String(n.y), {'font-family':MONO, 'font-size':'var(--type-subheading)', 'text-anchor':'middle', fill:(n.hot && ACCENT) ? RED : INK});
+  txt(n.x, AXIS-66, n.name, {'font-family':MONO, 'font-size':'var(--type-body-small)', 'letter-spacing':1, 'text-anchor':'middle', fill:(n.hot && ACCENT) ? RED : INK80});
+  txt(n.x, AXIS-42, n.org, {'font-family':SANS, 'font-weight':300, 'font-size':'var(--type-meta)', 'text-anchor':'middle', fill:(n.hot && ACCENT) ? 'var(--accent-red-85)' : 'rgba(25,25,23,.45)'});
+  el('line', {x1:n.x, y1:AXIS-28, x2:n.x, y2:AXIS-12, stroke:INK, 'stroke-width':.6, opacity:.4});
+  /* 下方注释 */
+  if (n.note) {
+    txt(n.x, AXIS+52, n.note, {'font-family':SANS, 'font-weight': n.hot?400:300, 'font-size':'var(--type-body)', 'text-anchor':'middle', fill:(n.hot && ACCENT) ? RED : (n.hot?INK:'rgba(25,25,23,.6)')});
+    if (n.hot) el('line', {x1:n.x-120, y1:AXIS+66, x2:n.x+120, y2:AXIS+66, stroke:(n.hot && ACCENT) ? RED : INK, 'stroke-width':1.2, opacity:.8});
+  }
+});
+
+/* 高亮叙事：手绘弧线标记 */
+el('path', {d:'M 1276 646 Q 1352 700 1428 646', fill:'none', stroke:INK, 'stroke-width':.8, opacity:.35});
+el('path', {d:'M 1284 654 Q 1352 702 1420 654', fill:'none', stroke:INK, 'stroke-width':.6, opacity:.2});
+
+stageFit();
+</script>
+</body>
+</html>

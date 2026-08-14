@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-runtime="wise-ppt-specimen" data-typography-mode="mixed" data-page-id="gallery-general-c2" data-page-role="prove" data-theme="paper-ink" data-layout="paper-ink.data.chart-wall" data-layout-source="gallery">
+<head>
+<meta charset="UTF-8">
+<title>layout-c2 · 图表联排墙</title>
+<link rel="stylesheet" href="../../../../themes/paper-ink/assets/design-tokens.css">
+<link rel="stylesheet" href="../../../../themes/paper-ink/assets/slide-components.css">
+<link rel="stylesheet" href="../../../shell.css">
+<style>
+  svg.scene { position: absolute; inset: 0; z-index: 1; }
+  :root.accent #hatch92-line { stroke: var(--accent-red); }
+  .caption {
+    position: absolute; left: 0; right: 0; bottom: 118px;
+    text-align: center;
+    font-family: var(--sans); font-weight: 400;
+    font-size: var(--type-caption); letter-spacing: .04em;
+    color: var(--ink);
+    z-index: 5;
+  }
+</style>
+</head>
+<body class="slide">
+<div class="stage" data-block-id="gallery-primary" data-renderer-kind="svg" data-component-source="native" data-component-id="native.paper-ink.data.chart-wall.charts" data-content-ref="example.c2">
+  <div class="doc tl">运营 · 汇报 — C2<br>月度运营看板</div>
+  <div class="folio">C2 / 63 — BY @歪斯WISE</div>
+
+  <svg class="scene" width="1920" height="1080" viewBox="0 0 1920 1080">
+    <defs>
+      <pattern id="hatch33" width="7" height="7" patternTransform="rotate(45)" patternUnits="userSpaceOnUse">
+        <line x1="0" y1="0" x2="0" y2="7" stroke="#191917" stroke-width=".7" opacity=".32"/>
+      </pattern>
+      <pattern id="hatch92" width="7" height="7" patternTransform="rotate(45)" patternUnits="userSpaceOnUse">
+        <line id="hatch92-line" x1="0" y1="0" x2="0" y2="7" stroke="#191917" stroke-width=".7" opacity=".55"/>
+      </pattern>
+    </defs>
+    <g id="draw"></g>
+  </svg>
+
+  <div class="caption">月度峰值触达 5.2 万次，拉新、促活与召回占 46%、33% 和 21%。</div>
+</div>
+
+<script src="../../../../runtime/stage-fit.js"></script>
+<script src="../../../../themes/paper-ink/assets/particles.js"></script>
+<script>
+var NS = 'http://www.w3.org/2000/svg';
+var INK = '#191917';
+var INK80 = 'rgba(25,25,23,.8)';
+var INK70 = 'rgba(25,25,23,.7)';
+var INK45 = 'rgba(25,25,23,.45)';
+/* accent 触发：读 URL 加类 + 染色常量（详见 design-tokens.md §2） */
+if (location.search.indexOf('accent') >= 0) document.documentElement.classList.add('accent');
+var ACCENT = document.documentElement.classList.contains('accent');
+var RED = getComputedStyle(document.documentElement).getPropertyValue('--accent-red').trim();
+var G = document.getElementById('draw');
+function el(tag, attrs) {
+  var e = document.createElementNS(NS, tag);
+  for (var k in attrs) e.setAttribute(k, attrs[k]);
+  G.appendChild(e); return e;
+}
+function txt(x, y, str, attrs) {
+  var t = el('text', Object.assign({x:x, y:y}, attrs||{}));
+  t.textContent = str; return t;
+}
+var MONO = 'var(--mono)', SANS = 'var(--sans)';
+
+G = el('g', {transform:'translate(0 -39.7)'});
+
+
+/* ---------- 图表小图题（mono + 短横） ---------- */
+function chartTitle(x, y, label){
+  txt(x, y, label, {'font-family':MONO, 'font-size':'var(--type-meta)', 'letter-spacing':2, fill:INK});
+  el('line', {x1:x, y1:y+10, x2:x+210, y2:y+10, stroke:INK, 'stroke-width':.6, opacity:.3});
+}
+
+/* ========== 顶图：周触达趋势折线 ========== */
+chartTitle(150, 232, 'CHART 01 — WEEKLY REACH (K VIEWS)');
+/* 坐标轴 */
+el('line', {x1:200, y1:260, x2:200, y2:490, stroke:INK, 'stroke-width':1, opacity:.6});
+el('line', {x1:200, y1:490, x2:1800, y2:490, stroke:INK, 'stroke-width':1, opacity:.6});
+[0, 20, 40, 60].forEach(function(v, i){
+  var y = 490 - v * 3.833;
+  el('line', {x1:194, y1:y, x2:200, y2:y, stroke:INK, 'stroke-width':.8, opacity:.5});
+  txt(190, y+4, String(v), {'font-family':MONO, 'font-size':'var(--type-micro-secondary)', 'text-anchor':'end', fill:INK45});
+  el('line', {x1:200, y1:y, x2:1800, y2:y, stroke:INK, 'stroke-width':.4, opacity:.15, 'stroke-dasharray':'2 5'});
+});
+/* 折线 + 数据点 */
+var weeks = [31, 34, 33, 38, 42, 41, 47, 52];
+var PX = [];
+weeks.forEach(function(v, i){
+  var x = 300 + i * 200, y = 490 - v * 3.833;
+  PX.push([x, y]);
+});
+var d = 'M ' + PX.map(function(p){ return p[0] + ' ' + p[1]; }).join(' L ');
+el('path', {d:d, fill:'none', stroke:INK80, 'stroke-width':1.3});
+PX.forEach(function(p, i){
+  var isPeak = i === PX.length - 1;
+  el('circle', {cx:p[0], cy:p[1], r: isPeak ? 4.5 : 3.5, fill: isPeak ? (ACCENT ? RED : INK) : '#DFE0D9', stroke: isPeak ? (ACCENT ? RED : INK80) : INK80, 'stroke-width': isPeak ? 1.4 : 1.1});
+});
+/* 峰值注释 */
+var peak = PX[PX.length - 1];
+el('line', {x1:peak[0], y1:peak[1]-8, x2:peak[0], y2:256, stroke: ACCENT ? RED : INK, 'stroke-width':.6, opacity:.4, 'stroke-dasharray':'3 4'});
+txt(peak[0], 248, 'PEAK 52K', {'font-family':MONO, 'font-size':'var(--type-micro-secondary)', 'letter-spacing':2, 'text-anchor':'middle', fill: ACCENT ? 'var(--accent-red-85)' : INK});
+/* X 轴标签 */
+weeks.forEach(function(v, i){
+  txt(300 + i * 200, 514, 'W' + String(24 + i), {'font-family':MONO, 'font-size':'var(--type-micro-secondary)', 'text-anchor':'middle', fill:INK45});
+});
+
+/* ========== 底左：渠道活跃率柱图 ========== */
+chartTitle(150, 612, 'CHART 02 — CHANNEL ACTIVITY (%)');
+/* 整组下移 13px：使底部渠道标签与 chart03 标签对齐；柱高系数不变 */
+var C2BASE = 843, C2YTOP = 653, C2ZLAB = 865;
+el('line', {x1:200, y1:C2YTOP, x2:200, y2:C2BASE, stroke:INK, 'stroke-width':1, opacity:.6});
+el('line', {x1:200, y1:C2BASE, x2:900, y2:C2BASE, stroke:INK, 'stroke-width':1, opacity:.6});
+var channels = [92, 87, 81, 76, 68, 61];
+var channelCodes = ['APP', 'WEB', 'CRM', 'LIVE', 'SOC', 'STORE'];
+channels.forEach(function(v, i){
+  var x = 240 + i * 108, h = v * 1.9, y = C2BASE - h;
+  var fill = i === 0 ? 'url(#hatch92)' : 'none';
+  el('rect', {x:x, y:y, width:60, height:h, fill:fill, stroke: i === 0 && ACCENT ? RED : INK80, 'stroke-width': i === 0 && ACCENT ? 1.6 : 1.2});
+  txt(x + 30, y - 8, String(v) + '%', {'font-family':MONO, 'font-size':'var(--type-micro-secondary)', 'text-anchor':'middle', fill: i === 0 && ACCENT ? 'var(--accent-red-85)' : INK});
+  txt(x + 30, C2ZLAB, channelCodes[i], {'font-family':MONO, 'font-size':'var(--type-micro-secondary)', 'text-anchor':'middle', fill:INK45});
+});
+
+/* ========== 底右：运营动作结构环图（线稿 donut） ========== */
+chartTitle(1030, 612, 'CHART 03 — ACTION MIX');
+var CCX = 1166, CCY = 745, RO = 86, RI = 52;
+function seg(ang1, ang2, fill, stroke){
+  var a1 = ang1 * Math.PI / 180, a2 = ang2 * Math.PI / 180;
+  var ox = CCX + RO * Math.cos(a1), oy = CCY - RO * Math.sin(a1);
+  var ix = CCX + RI * Math.cos(a1), iy = CCY - RI * Math.sin(a1);
+  var ex = CCX + RO * Math.cos(a2), ey = CCY - RO * Math.sin(a2);
+  var ix2 = CCX + RI * Math.cos(a2), iy2 = CCY - RI * Math.sin(a2);
+  var large = (a2 - a1) > Math.PI ? 1 : 0;
+  el('path', {d:'M '+ix+' '+iy+' L '+ox+' '+oy+' A '+RO+' '+RO+' 0 '+large+' 1 '+ex+' '+ey+
+             ' L '+ix2+' '+iy2+' A '+RI+' '+RI+' 0 '+large+' 0 '+ix+' '+iy+' Z',
+    fill:fill, stroke:stroke || INK80, 'stroke-width':stroke ? 1.4 : .9});
+}
+/* 三段：46% / 33% / 21%（从顶部 -90° 起顺时针） */
+seg(-90, 75.6, 'url(#hatch33)', ACCENT ? RED : null);      /* 拉新 46% */
+seg(75.6, 194.4, 'none', ACCENT ? RED : null);             /* 促活 33% */
+seg(194.4, 270, 'none', ACCENT ? RED : null);              /* 召回 21% */
+/* 分隔线 */
+[75.6, 194.4].forEach(function(a){
+  var rd = a * Math.PI / 180;
+  el('line', {x1:CCX + RI * Math.cos(rd), y1:CCY - RI * Math.sin(rd),
+              x2:CCX + RO * Math.cos(rd), y2:CCY - RO * Math.sin(rd),
+    stroke:(ACCENT ? RED : INK), 'stroke-width':.8, opacity:.6});
+});
+/* 中心 */
+txt(CCX, CCY - 2, '100%', {'font-family':MONO, 'font-size':'var(--type-body-small)', 'letter-spacing':1, 'text-anchor':'middle', fill:(ACCENT ? RED : INK)});
+txt(CCX, CCY + 24, 'N=3 MIX', {'font-family':MONO, 'font-size':'var(--type-micro-secondary)', 'letter-spacing':2, 'text-anchor':'middle', fill:(ACCENT ? 'var(--accent-red-65)' : INK45)});
+/* 扇区标签（引线 + 数值/名称） */
+function segLabel(ang, en, cn, anchor){
+  var mid = ang * Math.PI / 180;
+  var lx = CCX + 132 * Math.cos(mid), ly = CCY - 132 * Math.sin(mid);
+  var rx = CCX + RO * Math.cos(mid), ry = CCY - RO * Math.sin(mid);
+  el('line', {x1:rx, y1:ry, x2:lx, y2:ly, stroke:(ACCENT ? RED : INK), 'stroke-width':.6, opacity:.4, 'stroke-dasharray':'3 4'});
+  txt(lx, ly - 6, en, {'font-family':MONO, 'font-size':'var(--type-meta)', 'letter-spacing':1, 'text-anchor':anchor, fill:(ACCENT ? RED : INK)});
+  txt(lx, ly + 16, cn, {'font-family':SANS, 'font-weight':300, 'font-size':'var(--type-meta)', 'text-anchor':anchor, fill:(ACCENT ? 'var(--accent-red-65)' : INK70)});
+}
+segLabel(-7.2, '46%', '拉新', 'middle');
+segLabel(135, '33%', '促活', 'middle');
+segLabel(232.2, '21%', '召回', 'middle');
+
+stageFit();
+</script>
+</body>
+</html>

@@ -1,0 +1,79 @@
+<section class="slide"
+  {{WISE_PPT_PAGE_ATTRS}}>
+  <style>
+    [data-recipe-id="paper-ink.data.geo-bubble-map"] .c4-main{position:absolute;left:180px;top:182.3px;width:1590px;height:663px;overflow:visible}
+    [data-recipe-id="paper-ink.data.geo-bubble-map"] .c4-map{position:absolute;left:0;top:0;width:1160px;height:624px;z-index:2}
+    [data-recipe-id="paper-ink.data.geo-bubble-map"] .c4-legend{position:absolute;left:20px;top:650px;width:158px;height:13px;opacity:0;pointer-events:none}
+    [data-recipe-id="paper-ink.data.geo-bubble-map"] .c4-kpis{position:absolute;left:1180px;top:0;width:410px;height:624px;opacity:0;pointer-events:none}
+    [data-recipe-id="paper-ink.data.geo-bubble-map"] svg.c4-scene,[data-recipe-id="paper-ink.data.geo-bubble-map"] svg.c4-overlay{position:absolute;left:-180px;top:-182.3px;width:1920px;height:1080px}
+    [data-recipe-id="paper-ink.data.geo-bubble-map"] svg.c4-scene{z-index:1}
+    [data-recipe-id="paper-ink.data.geo-bubble-map"] svg.c4-overlay{z-index:3;pointer-events:none}
+  </style>
+  <div class="stage" data-anchor-id="stage">
+    <div class="c4-main" data-anchor-id="c4-main"
+      data-slot-id="map" data-block-id="block.skeleton.c4.map"
+      data-renderer-kind="svg" data-component-source="native"
+      data-component-id="native.paper-ink.data.geo-bubble-map.map">
+      <div class="c4-map" data-anchor-id="c4-map" data-c4-map></div>
+      <div class="c4-legend" data-anchor-id="c4-legend" data-contract-guide></div>
+      <div class="c4-kpis" data-anchor-id="c4-kpis" data-contract-guide></div>
+      <svg class="c4-scene" viewBox="0 0 1920 1080"><g data-c4-draw transform="translate(0 -25.7)"></g></svg>
+      <svg class="c4-overlay" viewBox="0 0 1920 1080"><g data-c4-nodes></g></svg>
+    </div>
+    <div class="doc tl" data-anchor-id="c4-support"
+      data-slot-id="support" data-block-id="block.skeleton.c4.support"
+      data-renderer-kind="typography" data-component-source="native"
+      data-component-id="native.paper-ink.data.geo-bubble-map.support">品牌 · 规划 — C4<br>广东城市活动规划</div>
+    <div class="folio"></div>
+    <div class="caption" data-anchor-id="c4-takeaway"
+      data-slot-id="takeaway" data-block-id="block.skeleton.c4.takeaway"
+      data-renderer-kind="typography" data-component-source="native"
+      data-component-id="native.paper-ink.data.geo-bubble-map.takeaway"></div>
+  </div>
+  <script type="application/json" data-recipe-payload>{{WISE_PPT_PAYLOAD_JSON}}</script>
+  <script>
+  (function(){
+    var slide=document.currentScript.closest('.slide');
+    var payload=JSON.parse(slide.querySelector('[data-recipe-payload]').textContent);
+    if(!window.echarts||!window.WISE_GUANGDONG_GEO)throw new Error('C4 requires ECharts and Guangdong geo data');
+    var NS='http://www.w3.org/2000/svg',INK=WisePPT.color('primary'),INK70=WisePPT.color('body'),INK55=WisePPT.color('chart-label'),INK45=WisePPT.color('metadata'),RECESSED=WisePPT.color('surface-recessed');
+    var MONO='var(--mono)',SANS='var(--sans)',G=slide.querySelector('[data-c4-draw]'),ONodes=slide.querySelector('[data-c4-nodes]');
+    var computed=getComputedStyle(slide),CANVAS_MONO=computed.getPropertyValue('--mono').trim(),CANVAS_MICRO=parseFloat(computed.getPropertyValue('--type-micro-secondary'))||10;
+    function el(parent,tag,attrs){var e=document.createElementNS(NS,tag);Object.keys(attrs).forEach(function(k){e.setAttribute(k,attrs[k]);});parent.appendChild(e);return e;}
+    function txt(parent,x,y,value,attrs){var t=el(parent,'text',Object.assign({x:x,y:y},attrs||{}));t.textContent=value;return t;}
+    var RAMP=[1,2,3,4,5,6].map(function(level){return WisePPT.color('data-'+level);});
+    var pieces=[{min:14,max:100},{min:11,max:14},{min:8,max:11},{min:6,max:8},{min:5,max:6},{min:0,max:5}].map(function(p,index){return {min:p.min,max:p.max,color:RAMP[5-index]};});
+
+    [740,980].forEach(function(x){el(G,'line',{x1:x,y1:208,x2:x,y2:832,stroke:INK,'stroke-width':.5,opacity:.14,'stroke-dasharray':'2 6'});});
+    el(G,'line',{x1:210,y1:520,x2:1340,y2:520,stroke:INK,'stroke-width':.5,opacity:.14,'stroke-dasharray':'2 6'});
+    txt(G,222,510,'23°N',{'font-family':MONO,'font-size':'var(--type-micro-secondary)','letter-spacing':2,fill:INK45});
+    txt(G,1360,226,'PROVINCE TOTALS',{'font-family':MONO,'font-size':'var(--type-meta)','letter-spacing':3,fill:INK45});
+    el(G,'line',{x1:1360,y1:242,x2:1770,y2:242,stroke:INK,'stroke-width':.8,opacity:.5});
+    payload.kpis.forEach(function(item,index){var y=340+index*157;txt(G,1360,y,item.value,{'font-family':MONO,'font-size':'var(--type-metric)','letter-spacing':1,fill:INK});txt(G,1360,y+40,item.label,{'font-family':SANS,'font-weight':300,'font-size':'var(--type-body-small)',fill:INK70});if(index<payload.kpis.length-1)el(G,'line',{x1:1360,y1:y+66,x2:1770,y2:y+66,stroke:INK,'stroke-width':.6,opacity:.25});});
+    var rampY=845,rampX=200,rampStep=22,rampH=12;
+    txt(G,rampX,rampY+6,'少',{'font-family':SANS,'font-weight':300,'font-size':'var(--type-micro-secondary)',fill:INK45});
+    RAMP.forEach(function(tone,index){el(G,'rect',{x:rampX+24+index*rampStep,y:rampY-rampH/2,width:rampStep-2,height:rampH,fill:tone,stroke:INK,'stroke-width':.5,opacity:.9});});
+    txt(G,rampX+24+6*rampStep+8,rampY+6,'多',{'font-family':SANS,'font-weight':300,'font-size':'var(--type-micro-secondary)',fill:INK45});
+    txt(G,200,228,payload.support,{'font-family':MONO,'font-size':'var(--type-micro-secondary)','letter-spacing':2,fill:INK45});
+
+    var CITY={
+      '广州市':{lng:113.26,lat:23.13,tag:'广州',en:'GUANGZHOU',lx:470,ly:315},
+      '深圳市':{lng:114.06,lat:22.55,tag:'深圳',en:'SHENZHEN',lx:1080,ly:690},
+      '佛山市':{lng:113.12,lat:23.02,tag:'佛山',en:'FOSHAN',lx:350,ly:470},
+      '东莞市':{lng:113.75,lat:23.05,tag:'东莞',en:'DONGGUAN',lx:1080,ly:370},
+      '珠海市':{lng:113.58,lat:22.27,tag:'珠海',en:'ZHUHAI',lx:560,ly:735},
+      '汕头市':{lng:116.68,lat:23.35,tag:'汕头',en:'SHANTOU',lx:1160,ly:500},
+      '惠州市':{lng:114.42,lat:23.12,tag:'惠州',en:'HUIZHOU',lx:870,ly:275},
+      '中山市':{lng:113.38,lat:22.52,tag:'中山',en:'ZHONGSHAN',lx:790,ly:760}
+    };
+    var nodes=payload.nodes.map(function(item){return Object.assign({city:item.feature_id,v:item.value},CITY[item.feature_id]);});
+    echarts.registerMap('wise-guangdong',window.WISE_GUANGDONG_GEO);
+    var chart=echarts.init(slide.querySelector('[data-c4-map]'),null,{renderer:'canvas'});
+    chart.setOption({animation:false,backgroundColor:'transparent',visualMap:{type:'piecewise',pieces:pieces,outOfRange:{color:RECESSED},show:false},series:[{type:'map',map:'wise-guangdong',roam:false,data:nodes.map(function(n){return {name:n.city,value:n.v};}),itemStyle:{areaColor:RECESSED,borderColor:INK,borderWidth:.8,shadowBlur:0},emphasis:{disabled:true,label:{show:false}},select:{disabled:true},label:{show:false,color:INK55,fontFamily:CANVAS_MONO,fontSize:CANVAS_MICRO},layoutCenter:['42%','50%'],layoutSize:'70%'}]});
+    function drawCallouts(){ONodes.innerHTML='';nodes.forEach(function(p){var xy;try{xy=chart.convertToPixel({seriesIndex:0},[p.lng,p.lat]);}catch(e){xy=null;}if(!xy)return;var x=xy[0]+180,y=xy[1]+208,ax=p.lx,ay=p.ly,bendX=ax<x?ax+54:ax-54;el(ONodes,'circle',{cx:x,cy:y,r:2.4,fill:INK,opacity:.7});el(ONodes,'polyline',{points:x+','+y+' '+bendX+','+y+' '+ax+','+ay,fill:'none',stroke:INK,'stroke-width':.7,opacity:.35});el(ONodes,'line',{x1:ax-5,y1:ay,x2:ax+5,y2:ay,stroke:INK,'stroke-width':.9,opacity:.6});txt(ONodes,ax+10,ay-6,p.v+' 场活动',{'font-family':MONO,'font-size':'var(--type-body)','letter-spacing':1,fill:INK});txt(ONodes,ax+10,ay+18,p.tag+' · '+p.en,{'font-family':SANS,'font-weight':300,'font-size':'var(--type-meta)','letter-spacing':1,fill:INK70});});}
+    chart.on('finished',drawCallouts);drawCallouts();
+    slide.querySelector('.caption').textContent=payload.takeaway;
+    WisePPT.markSlideReady(slide);
+  })();
+  </script>
+</section>

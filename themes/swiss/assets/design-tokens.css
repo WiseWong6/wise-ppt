@@ -1,0 +1,174 @@
+/* Swiss International visual tokens · Wise PPT visual contract v1 */
+@font-face {
+  font-family: 'Han Serif';
+  src: url('../../paper-ink/assets/fonts/SourceHanSerifCN-Medium.otf') format('opentype'),
+       url('fonts/SourceHanSerifCN-Medium.otf') format('opentype');
+  font-style: normal;
+  font-weight: 500;
+  font-display: block;
+}
+@font-face {
+  font-family: 'Han Sans';
+  src: url('../../paper-ink/assets/fonts/SourceHanSansCN-Light.otf') format('opentype'),
+       url('fonts/SourceHanSansCN-Light.otf') format('opentype');
+  font-style: normal;
+  font-weight: 300;
+  font-display: block;
+}
+@font-face {
+  font-family: 'Courier Prime';
+  src: url('../../paper-ink/assets/fonts/CourierPrime-Regular.ttf') format('truetype'),
+       url('fonts/CourierPrime-Regular.ttf') format('truetype');
+  font-style: normal;
+  font-weight: 400;
+  font-display: block;
+}
+@font-face {
+  font-family: 'LXGW WenKai';
+  src: url('../../paper-ink/assets/fonts/LXGWWenKai-Regular.ttf') format('truetype'),
+       url('fonts/LXGWWenKai-Regular.ttf') format('truetype');
+  font-style: normal;
+  font-weight: 400;
+  font-display: block;
+}
+
+:root {
+  --wp-color-surface-canvas: #ffffff;
+  --wp-color-surface-recessed: #f2efe9;
+  --wp-color-surface-panel: rgba(217, 94, 0, .05);
+  --wp-color-primary: #1a1a1a;
+  --wp-color-functional: rgba(26, 26, 26, .88);
+  --wp-color-body: rgba(26, 26, 26, .76);
+  --wp-color-chart-label: rgba(26, 26, 26, .64);
+  --wp-color-metadata: rgba(26, 26, 26, .54);
+  --wp-color-divider: rgba(26, 26, 26, .22);
+  --wp-color-construction: rgba(26, 26, 26, .10);
+  --wp-color-focus: #d95e00;
+  --wp-color-focus-secondary: rgba(217, 94, 0, .82);
+  --wp-color-focus-peripheral: rgba(217, 94, 0, .18);
+  --wp-color-data-1: rgba(26, 26, 26, .14);
+  --wp-color-data-2: rgba(26, 26, 26, .24);
+  --wp-color-data-3: rgba(26, 26, 26, .36);
+  --wp-color-data-4: rgba(26, 26, 26, .50);
+  --wp-color-data-5: rgba(26, 26, 26, .68);
+  --wp-color-data-6: rgba(26, 26, 26, .88);
+
+  --wp-font-serif: 'Han Serif', 'Songti SC', serif;
+  --wp-font-sans: 'Han Sans', 'PingFang SC', sans-serif;
+  --wp-font-mono: 'Courier Prime', Menlo, monospace;
+  --wp-font-brush: 'LXGW WenKai', 'Xingkai SC', cursive;
+
+  /* Legacy aliases keep the v2 deck runtime and shared slide primitives stable. */
+  --paper: var(--wp-color-surface-canvas);
+  --paper-deep: var(--wp-color-surface-recessed);
+  --paper-panel: var(--wp-color-surface-panel);
+  --ink: var(--wp-color-primary);
+  --ink-80: var(--wp-color-functional);
+  --ink-70: var(--wp-color-body);
+  --ink-55: var(--wp-color-chart-label);
+  --ink-45: var(--wp-color-metadata);
+  --ink-25: var(--wp-color-divider);
+  --ink-12: var(--wp-color-construction);
+  --accent-red: var(--wp-color-focus);
+  --accent-red-85: var(--wp-color-focus-secondary);
+  --accent-red-65: var(--wp-color-focus-peripheral);
+  --data-ramp-1: var(--wp-color-data-1);
+  --data-ramp-2: var(--wp-color-data-2);
+  --data-ramp-3: var(--wp-color-data-3);
+  --data-ramp-4: var(--wp-color-data-4);
+  --data-ramp-5: var(--wp-color-data-5);
+  --data-ramp-6: var(--wp-color-data-6);
+
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 20px;
+  --space-6: 24px;
+  --space-8: 32px;
+  --space-10: 40px;
+  --space-12: 48px;
+  --space-14: 56px;
+  --space-16: 64px;
+  --space-20: 80px;
+  --space-24: 96px;
+  --space-30: 120px;
+  --space-40: 160px;
+  --shadow-soft: none;
+  --shadow-specimen: none;
+
+  --type-display-mark: 300px;
+  --type-particle-sample: 240px;
+  --type-display: 96px;
+  --type-hero: 76px;
+  --type-title: 60px;
+  --type-metric: 52px;
+  --type-heading: 40px;
+  --type-emphasis: 36px;
+  --type-caption: 33px;
+  --type-subheading: 26px;
+  --type-body: 22px;
+  --type-body-small: 18px;
+  --type-micro-secondary: 16px;
+  --type-label: 15px;
+  --type-meta: 13px;
+
+  --font-serif-family: var(--wp-font-serif);
+  --font-sans-family: var(--wp-font-sans);
+  --font-mono-family: var(--wp-font-mono);
+  --font-brush-family: var(--wp-font-brush);
+  --serif: var(--wp-font-serif);
+  --sans: var(--wp-font-sans);
+  --mono: var(--wp-font-mono);
+  --brush: var(--wp-font-brush);
+
+  /* Native component compatibility values are deliberately separate from
+     broad semantic roles: Swiss annotations keep their historic safety orange. */
+  --wp-compat-pi-paper: #ffffff;
+  --wp-compat-pi-paper-deep: #f2efe9;
+  --wp-compat-pi-paper-panel: rgba(255, 255, 255, .22);
+  --wp-compat-pi-ink: #1a1a1a;
+  --wp-compat-pi-ink-80: rgba(26, 26, 26, .8);
+  --wp-compat-pi-ink-70: rgba(26, 26, 26, .7);
+  --wp-compat-pi-ink-60: rgba(26, 26, 26, .6);
+  --wp-compat-pi-ink-55: rgba(26, 26, 26, .55);
+  --wp-compat-pi-ink-45: rgba(217, 94, 0, .62);
+  --wp-compat-pi-ink-30: rgba(26, 26, 26, .3);
+  --wp-compat-pi-data-1: rgba(26, 26, 26, .14);
+  --wp-compat-pi-data-2: rgba(26, 26, 26, .24);
+  --wp-compat-pi-data-3: rgba(26, 26, 26, .36);
+  --wp-compat-pi-data-4: rgba(26, 26, 26, .50);
+  --wp-compat-pi-data-5: rgba(26, 26, 26, .68);
+  --wp-compat-pi-data-6: rgba(26, 26, 26, .88);
+  --wp-compat-pi-font-sans: var(--wp-font-sans);
+  --wp-compat-pi-font-serif: var(--wp-font-serif);
+  --wp-compat-pi-font-mono: var(--wp-font-mono);
+  --wp-compat-pi-font-brush: var(--wp-font-brush);
+}
+
+:root.accent {
+  /* 强调模式数据色语言：数据保持中性墨阶（与组件/版式同源），
+     仅最强档 data-6 落在主题强调色（安全橙）；强调色不铺满整条 ramp。 */
+  --wp-color-data-1: rgba(26, 26, 26, .12);
+  --wp-color-data-2: rgba(26, 26, 26, .20);
+  --wp-color-data-3: rgba(26, 26, 26, .28);
+  --wp-color-data-4: rgba(26, 26, 26, .36);
+  --wp-color-data-5: rgba(26, 26, 26, .45);
+  --wp-color-data-6: var(--wp-color-focus);
+}
+
+:root[data-typography-mode='mixed'] {
+  --font-display-family: var(--wp-font-serif);
+  --font-heading-family: var(--wp-font-serif);
+  --font-body-family: var(--wp-font-sans);
+}
+:root[data-typography-mode='all-sans'] {
+  --font-display-family: var(--wp-font-sans);
+  --font-heading-family: var(--wp-font-sans);
+  --font-body-family: var(--wp-font-sans);
+}
+:root[data-typography-mode='all-serif'] {
+  --font-display-family: var(--wp-font-serif);
+  --font-heading-family: var(--wp-font-serif);
+  --font-body-family: var(--wp-font-serif);
+}

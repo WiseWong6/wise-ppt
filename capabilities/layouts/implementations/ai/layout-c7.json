@@ -1,0 +1,1045 @@
+{
+  "canonical": {
+    "constraints": {
+      "css_scope": "[data-implementation-id=\"paper-ink.data.ranked-specimen-bars.ai\"]",
+      "external_links": false,
+      "external_scripts": false,
+      "payload_only_mutation": true,
+      "ready_api": "WisePPT.markSlideReady",
+      "script_query_scope": "current-section.slide",
+      "stage_fit": false
+    },
+    "kind": "derived-frame",
+    "materialization_format": "wise-ppt-formal-slide@1",
+    "path": "gallery/paper-ink/ai/frames/layout-c7.html",
+    "root_selector": "section.slide[data-implementation-id=\"paper-ink.data.ranked-specimen-bars.ai\"]",
+    "sha256": "sha256:fd10fbef3fe97aca8d4f211ce72a8da64c8c47d58365c5d4414fe1cb5df01542"
+  },
+  "canonical_fingerprint": "sha256:8fb6bce44b6988c790cde9ac7a62edc80e09c81412516e2b2bbe2cb86829f663",
+  "contract_version": 1,
+  "dependency_closure": {
+    "files": [
+      {
+        "path": "gallery/shell.css",
+        "sha256": "sha256:aca1428680d2dd5c84e85d66241ee199a16d36bb60a098340528943fb5469f69"
+      },
+      {
+        "path": "runtime/stage-fit.js",
+        "sha256": "sha256:39577a14aac5072789fdeb80abee887d24da5a44eeb38203ef154602330f291d"
+      },
+      {
+        "path": "themes/paper-ink/assets/design-tokens.css",
+        "sha256": "sha256:3f1f0d3562cf1486b87643b16025388557000858d0df13d767b53a576988c330"
+      },
+      {
+        "path": "themes/paper-ink/assets/fonts/CourierPrime-Regular.ttf",
+        "sha256": "sha256:72f793376f8e2841656bf21d77a5de010f2929bd6956a22ee848ad0c7eb978af"
+      },
+      {
+        "path": "themes/paper-ink/assets/fonts/LXGWWenKai-Regular.ttf",
+        "sha256": "sha256:39ad71264b588165b469e35e6afb162a378dacd1f95348160240ba9038ac3009"
+      },
+      {
+        "path": "themes/paper-ink/assets/fonts/SourceHanSansCN-Light.otf",
+        "sha256": "sha256:b6dfc945aae0daf9b15019f59c2f7b18d17da3b92f00c3ec32fb5f0333696d9c"
+      },
+      {
+        "path": "themes/paper-ink/assets/fonts/SourceHanSerifCN-Medium.otf",
+        "sha256": "sha256:8e224937647ae71ba1b1f310bcb3fbc32f21ec7c2c490ba04670455c901f3378"
+      },
+      {
+        "path": "themes/paper-ink/assets/particles.js",
+        "sha256": "sha256:1281d72e81b34e4be061286edd323dd421443dffbf6e0d8a2faa94a5d14094c4"
+      },
+      {
+        "path": "themes/paper-ink/assets/slide-components.css",
+        "sha256": "sha256:20e7334fe5ae51cb229112290e787c1274ad65278a72b084c708682dc9ca5acf"
+      }
+    ],
+    "sha256": "sha256:7dcc6f0ac681be95cc8955afb36da97027f341a98f4f9f37518e37bfe13f5be4"
+  },
+  "format": "wise-ppt-layout-implementation@1",
+  "geometry": {
+    "anchors": [
+      {
+        "anchor_id": "stage",
+        "selector": ".stage"
+      }
+    ],
+    "canvas": {
+      "height": 1080,
+      "width": 1920
+    },
+    "content_region": {
+      "height": 1080,
+      "width": 1920,
+      "x": 0,
+      "y": 0
+    },
+    "fingerprint": "sha256:6aaaf6eb8f23d0c1f33aef6a8d8473d128c35c7e8fe65577ce765b10e2557fc7",
+    "format": "wise-ppt-layout-geometry@1",
+    "relations": [],
+    "structure_contract": {
+      "core_primitives": [
+        "peer-array"
+      ],
+      "region_count": 3,
+      "required_slot_ids": [
+        "ranking"
+      ]
+    }
+  },
+  "implementation_id": "paper-ink.data.ranked-specimen-bars.ai",
+  "payload": {
+    "fields": [
+      {
+        "constraints": {
+          "pattern": "^(?!.*[\\u3400-\\u9fff]).+$"
+        },
+        "context": "html:div.doc.tl",
+        "default": "AI ENGINEERING — C7",
+        "field_id": "html.text.001",
+        "kind": "html_text",
+        "max_length": 25,
+        "semantic_role": "mono-label",
+        "span": {
+          "kind": "html_text",
+          "occurrence": 1,
+          "token_sha256": "sha256:3eefa9000c67d5dd7771a1cff53aa3e52f1233eaec98bd2cdbd9a658940d4f0a"
+        },
+        "type": "string"
+      },
+      {
+        "constraints": {
+          "pattern": "^(?!.*[\\u3400-\\u9fff]).+$"
+        },
+        "context": "html:div.doc.tl",
+        "default": "MODEL RANKING",
+        "field_id": "html.text.002",
+        "kind": "html_text",
+        "max_length": 17,
+        "semantic_role": "mono-label",
+        "span": {
+          "kind": "html_text",
+          "occurrence": 2,
+          "token_sha256": "sha256:2cc37a88ac015513bc20630a4e612ebf66b3e1e9bd8a3da12d7a36f6cd67f7ea"
+        },
+        "type": "string"
+      },
+      {
+        "constraints": {
+          "pattern": "^\\d{1,3} / \\d{1,3} — BY .{1,40}$"
+        },
+        "context": "html:div.folio",
+        "default": "01 / 01 — BY WISE PPT",
+        "field_id": "html.text.003",
+        "kind": "html_text",
+        "max_length": 26,
+        "semantic_role": "folio",
+        "source_default": "C7 / 63 — BY @歪斯WISE",
+        "span": {
+          "kind": "html_text",
+          "occurrence": 3,
+          "token_sha256": "sha256:b3a90b2321121b19b912fecd4eb498fd4b83390b3639a4366798b3a97b6bfcf4"
+        },
+        "type": "string"
+      },
+      {
+        "context": "html:div.caption",
+        "default": "模型榜单的头部分差决定竞争位置，单一总分之外仍需继续拆解能力项。",
+        "field_id": "html.text.004",
+        "kind": "html_text",
+        "max_length": 42,
+        "span": {
+          "kind": "html_text",
+          "occurrence": 4,
+          "token_sha256": "sha256:c6a6300fc8bed1b9aea392f5201472548e5769449e1de0a34f127763186d96a4"
+        },
+        "type": "string"
+      },
+      {
+        "constraints": {
+          "pattern": "^(?!.*[\\u3400-\\u9fff]).+$"
+        },
+        "context": "inline-script[1]:object-key:name",
+        "default": "GLM-X",
+        "field_id": "script.literal.001",
+        "kind": "script_literal",
+        "max_length": 9,
+        "semantic_role": "mono-label",
+        "span": {
+          "kind": "script_literal",
+          "occurrence": 1,
+          "quote": "'",
+          "script_index": 1,
+          "sink": "object-key:name",
+          "token_sha256": "sha256:10be059f543af3523d47de8d4dc044a7737cbc38b912b2f7dc634df3eae4f444"
+        },
+        "type": "string"
+      },
+      {
+        "constraints": {
+          "pattern": "^(?!.*[\\u3400-\\u9fff]).+$"
+        },
+        "context": "inline-script[1]:object-key:code",
+        "default": "MODEL-01",
+        "field_id": "script.literal.002",
+        "kind": "script_literal",
+        "max_length": 12,
+        "semantic_role": "mono-label",
+        "span": {
+          "kind": "script_literal",
+          "occurrence": 2,
+          "quote": "'",
+          "script_index": 1,
+          "sink": "object-key:code",
+          "token_sha256": "sha256:211d33202d9140adf46a6f2bdb0c05cd986ad745ed244afb53dedf717ed1758c"
+        },
+        "type": "string"
+      },
+      {
+        "constraints": {
+          "pattern": "^(?!.*[\\u3400-\\u9fff]).+$"
+        },
+        "context": "inline-script[1]:object-key:name",
+        "default": "GPT-X",
+        "field_id": "script.literal.003",
+        "kind": "script_literal",
+        "max_length": 9,
+        "semantic_role": "mono-label",
+        "span": {
+          "kind": "script_literal",
+          "occurrence": 3,
+          "quote": "'",
+          "script_index": 1,
+          "sink": "object-key:name",
+          "token_sha256": "sha256:a187bbe5f4c85a142d8f7fb719f847ad9c260dffd1148455f24929e82eaf8967"
+        },
+        "type": "string"
+      },
+      {
+        "constraints": {
+          "pattern": "^(?!.*[\\u3400-\\u9fff]).+$"
+        },
+        "context": "inline-script[1]:object-key:code",
+        "default": "MODEL-02",
+        "field_id": "script.literal.004",
+        "kind": "script_literal",
+        "max_length": 12,
+        "semantic_role": "mono-label",
+        "span": {
+          "kind": "script_literal",
+          "occurrence": 4,
+          "quote": "'",
+          "script_index": 1,
+          "sink": "object-key:code",
+          "token_sha256": "sha256:502f5f1879bf073ccbd39968a4e6e80cb93a38b2c84c561d810dfda37b071f73"
+        },
+        "type": "string"
+      },
+      {
+        "context": "inline-script[1]:object-key:name",
+        "default": "Claude-X",
+        "field_id": "script.literal.005",
+        "kind": "script_literal",
+        "max_length": 12,
+        "span": {
+          "kind": "script_literal",
+          "occurrence": 5,
+          "quote": "'",
+          "script_index": 1,
+          "sink": "object-key:name",
+          "token_sha256": "sha256:68f1045896485f21c5b80f757815db0983bf329725fd077faf7e98dcd19cbf56"
+        },
+        "type": "string"
+      },
+      {
+        "constraints": {
+          "pattern": "^(?!.*[\\u3400-\\u9fff]).+$"
+        },
+        "context": "inline-script[1]:object-key:code",
+        "default": "MODEL-03",
+        "field_id": "script.literal.006",
+        "kind": "script_literal",
+        "max_length": 12,
+        "semantic_role": "mono-label",
+        "span": {
+          "kind": "script_literal",
+          "occurrence": 6,
+          "quote": "'",
+          "script_index": 1,
+          "sink": "object-key:code",
+          "token_sha256": "sha256:dd91c31b9045782132aed5ffa9dd162eb0120da45a58dfe7ed54b750a2fd5d3c"
+        },
+        "type": "string"
+      },
+      {
+        "context": "inline-script[1]:object-key:name",
+        "default": "Llama-X",
+        "field_id": "script.literal.007",
+        "kind": "script_literal",
+        "max_length": 11,
+        "span": {
+          "kind": "script_literal",
+          "occurrence": 7,
+          "quote": "'",
+          "script_index": 1,
+          "sink": "object-key:name",
+          "token_sha256": "sha256:0c78919c2a2570dc3c90a2909cfa30d80142dd9390c659877f5a3788f694eabd"
+        },
+        "type": "string"
+      },
+      {
+        "constraints": {
+          "pattern": "^(?!.*[\\u3400-\\u9fff]).+$"
+        },
+        "context": "inline-script[1]:object-key:code",
+        "default": "MODEL-04",
+        "field_id": "script.literal.008",
+        "kind": "script_literal",
+        "max_length": 12,
+        "semantic_role": "mono-label",
+        "span": {
+          "kind": "script_literal",
+          "occurrence": 8,
+          "quote": "'",
+          "script_index": 1,
+          "sink": "object-key:code",
+          "token_sha256": "sha256:6c07fecea6e612778c46c1f00e8063c3e26b4b91d716550fdfb9a6e509c15f9f"
+        },
+        "type": "string"
+      },
+      {
+        "context": "inline-script[1]:object-key:name",
+        "default": "Gemini-X",
+        "field_id": "script.literal.009",
+        "kind": "script_literal",
+        "max_length": 12,
+        "span": {
+          "kind": "script_literal",
+          "occurrence": 9,
+          "quote": "'",
+          "script_index": 1,
+          "sink": "object-key:name",
+          "token_sha256": "sha256:d21131365f2796ee40e19d28a4254221d6c7ae1574489c3412c1ba857060554a"
+        },
+        "type": "string"
+      },
+      {
+        "constraints": {
+          "pattern": "^(?!.*[\\u3400-\\u9fff]).+$"
+        },
+        "context": "inline-script[1]:object-key:code",
+        "default": "MODEL-05",
+        "field_id": "script.literal.010",
+        "kind": "script_literal",
+        "max_length": 12,
+        "semantic_role": "mono-label",
+        "span": {
+          "kind": "script_literal",
+          "occurrence": 10,
+          "quote": "'",
+          "script_index": 1,
+          "sink": "object-key:code",
+          "token_sha256": "sha256:a99c22da870ed971a8bed2ed844fddc9bdcf9736e03a9562458c040824323b0c"
+        },
+        "type": "string"
+      },
+      {
+        "context": "inline-script[1]:object-key:name",
+        "default": "Mistral-X",
+        "field_id": "script.literal.011",
+        "kind": "script_literal",
+        "max_length": 13,
+        "span": {
+          "kind": "script_literal",
+          "occurrence": 11,
+          "quote": "'",
+          "script_index": 1,
+          "sink": "object-key:name",
+          "token_sha256": "sha256:2d2271a86f8febf44bba5878274c9ff4bf29fc42f854523bf5b7912f0f4ded7b"
+        },
+        "type": "string"
+      },
+      {
+        "constraints": {
+          "pattern": "^(?!.*[\\u3400-\\u9fff]).+$"
+        },
+        "context": "inline-script[1]:object-key:code",
+        "default": "MODEL-06",
+        "field_id": "script.literal.012",
+        "kind": "script_literal",
+        "max_length": 12,
+        "semantic_role": "mono-label",
+        "span": {
+          "kind": "script_literal",
+          "occurrence": 12,
+          "quote": "'",
+          "script_index": 1,
+          "sink": "object-key:code",
+          "token_sha256": "sha256:3bcb4ba50ed3bcf308c250216440518490d0ec60ef02760d6ce5ce9dd26c634b"
+        },
+        "type": "string"
+      },
+      {
+        "context": "inline-script[1]:object-key:name",
+        "default": "DeepSeek-X",
+        "field_id": "script.literal.013",
+        "kind": "script_literal",
+        "max_length": 14,
+        "span": {
+          "kind": "script_literal",
+          "occurrence": 13,
+          "quote": "'",
+          "script_index": 1,
+          "sink": "object-key:name",
+          "token_sha256": "sha256:1be4b06067efa8e6d87c10a12eae71c198e43a387bd382e4bb9f0e944c12497b"
+        },
+        "type": "string"
+      },
+      {
+        "constraints": {
+          "pattern": "^(?!.*[\\u3400-\\u9fff]).+$"
+        },
+        "context": "inline-script[1]:object-key:code",
+        "default": "MODEL-07",
+        "field_id": "script.literal.014",
+        "kind": "script_literal",
+        "max_length": 12,
+        "semantic_role": "mono-label",
+        "span": {
+          "kind": "script_literal",
+          "occurrence": 14,
+          "quote": "'",
+          "script_index": 1,
+          "sink": "object-key:code",
+          "token_sha256": "sha256:d4b3d684200189ec0d3fecafe460bdd3fae24577c2238d1aa9ee0434d8a9f943"
+        },
+        "type": "string"
+      },
+      {
+        "context": "inline-script[1]:object-key:name",
+        "default": "Qwen-X",
+        "field_id": "script.literal.015",
+        "kind": "script_literal",
+        "max_length": 10,
+        "span": {
+          "kind": "script_literal",
+          "occurrence": 15,
+          "quote": "'",
+          "script_index": 1,
+          "sink": "object-key:name",
+          "token_sha256": "sha256:115159237f8f925775f5998c6c2fa04ace75f30ca047636239a36658cb9a65b4"
+        },
+        "type": "string"
+      },
+      {
+        "constraints": {
+          "pattern": "^(?!.*[\\u3400-\\u9fff]).+$"
+        },
+        "context": "inline-script[1]:object-key:code",
+        "default": "MODEL-08",
+        "field_id": "script.literal.016",
+        "kind": "script_literal",
+        "max_length": 12,
+        "semantic_role": "mono-label",
+        "span": {
+          "kind": "script_literal",
+          "occurrence": 16,
+          "quote": "'",
+          "script_index": 1,
+          "sink": "object-key:code",
+          "token_sha256": "sha256:bc0fe19fa852b610fde74aa87042a11c5d365fda671b04e322670f0ec9ef24cd"
+        },
+        "type": "string"
+      },
+      {
+        "context": "inline-script[1]:call:txt[2]",
+        "default": "综 合 分 · SCORE",
+        "field_id": "script.literal.017",
+        "kind": "script_literal",
+        "max_length": 17,
+        "span": {
+          "kind": "script_literal",
+          "occurrence": 17,
+          "quote": "'",
+          "script_index": 1,
+          "sink": "call:txt[2]",
+          "token_sha256": "sha256:96ef8061564119d3e66ee729da0d40e07d28d4e1e9ddcbfe7cd7826d0df16eb9"
+        },
+        "type": "string"
+      },
+      {
+        "constraints": {
+          "pattern": "^(?!.*[\\u3400-\\u9fff]).+$"
+        },
+        "context": "inline-script[1]:call:txt[2]",
+        "default": "REASONING",
+        "field_id": "script.literal.018",
+        "kind": "script_literal",
+        "max_length": 13,
+        "semantic_role": "mono-label",
+        "span": {
+          "kind": "script_literal",
+          "occurrence": 18,
+          "quote": "'",
+          "script_index": 1,
+          "sink": "call:txt[2]",
+          "token_sha256": "sha256:fad9538338c1b96b35550bb1bf52684b863225160c237dc9ab70083e9f27f465"
+        },
+        "type": "string"
+      },
+      {
+        "constraints": {
+          "pattern": "^(?!.*[\\u3400-\\u9fff]).+$"
+        },
+        "context": "inline-script[1]:call:txt[2]",
+        "default": "CODING",
+        "field_id": "script.literal.019",
+        "kind": "script_literal",
+        "max_length": 10,
+        "semantic_role": "mono-label",
+        "span": {
+          "kind": "script_literal",
+          "occurrence": 19,
+          "quote": "'",
+          "script_index": 1,
+          "sink": "call:txt[2]",
+          "token_sha256": "sha256:c358fbea98c20e10b9ef1e93d28c2b15cc4f1e4906a697f33ea99e979376f738"
+        },
+        "type": "string"
+      },
+      {
+        "constraints": {
+          "pattern": "^(?!.*[\\u3400-\\u9fff]).+$"
+        },
+        "context": "inline-script[1]:call:txt[2]",
+        "default": "MATH",
+        "field_id": "script.literal.020",
+        "kind": "script_literal",
+        "max_length": 8,
+        "semantic_role": "mono-label",
+        "span": {
+          "kind": "script_literal",
+          "occurrence": 20,
+          "quote": "'",
+          "script_index": 1,
+          "sink": "call:txt[2]",
+          "token_sha256": "sha256:62c2f1cb2ead20b339002feee697ba68d779a054abd722afcc362344b1fb7670"
+        },
+        "type": "string"
+      },
+      {
+        "constraints": {
+          "pattern": "^(?!.*[\\u3400-\\u9fff]).+$"
+        },
+        "context": "inline-script[1]:call:txt[2]",
+        "default": "MODEL",
+        "field_id": "script.literal.021",
+        "kind": "script_literal",
+        "max_length": 9,
+        "semantic_role": "mono-label",
+        "span": {
+          "kind": "script_literal",
+          "occurrence": 21,
+          "quote": "'",
+          "script_index": 1,
+          "sink": "call:txt[2]",
+          "token_sha256": "sha256:5c75a1915f86eab77a6dce0094862e0a54ad9e75f3bd5edd10df0100311173ac"
+        },
+        "type": "string"
+      },
+      {
+        "constraints": {
+          "pattern": "^(?!.*[\\u3400-\\u9fff]).+$"
+        },
+        "context": "inline-script[1]:call:txt[2]",
+        "default": "SAMPLE · ",
+        "field_id": "script.literal.022",
+        "kind": "script_literal",
+        "max_length": 13,
+        "semantic_role": "mono-label",
+        "span": {
+          "kind": "script_literal",
+          "occurrence": 22,
+          "quote": "'",
+          "script_index": 1,
+          "sink": "call:txt[2]",
+          "token_sha256": "sha256:2f607115a872ec3baaca780bb97845d38a8359534186deaf3bb45bdaa9685842"
+        },
+        "type": "string"
+      }
+    ],
+    "format": "wise-ppt-layout-payload@1",
+    "values_schema": {
+      "additionalProperties": false,
+      "minProperties": 1,
+      "properties": {
+        "html.text.001": {
+          "maxLength": 25,
+          "pattern": "^(?!.*[\\u3400-\\u9fff]).+$",
+          "type": "string"
+        },
+        "html.text.002": {
+          "maxLength": 17,
+          "pattern": "^(?!.*[\\u3400-\\u9fff]).+$",
+          "type": "string"
+        },
+        "html.text.003": {
+          "maxLength": 26,
+          "pattern": "^\\d{1,3} / \\d{1,3} — BY .{1,40}$",
+          "type": "string"
+        },
+        "html.text.004": {
+          "maxLength": 42,
+          "type": "string"
+        },
+        "script.literal.001": {
+          "maxLength": 9,
+          "pattern": "^(?!.*[\\u3400-\\u9fff]).+$",
+          "type": "string"
+        },
+        "script.literal.002": {
+          "maxLength": 12,
+          "pattern": "^(?!.*[\\u3400-\\u9fff]).+$",
+          "type": "string"
+        },
+        "script.literal.003": {
+          "maxLength": 9,
+          "pattern": "^(?!.*[\\u3400-\\u9fff]).+$",
+          "type": "string"
+        },
+        "script.literal.004": {
+          "maxLength": 12,
+          "pattern": "^(?!.*[\\u3400-\\u9fff]).+$",
+          "type": "string"
+        },
+        "script.literal.005": {
+          "maxLength": 12,
+          "type": "string"
+        },
+        "script.literal.006": {
+          "maxLength": 12,
+          "pattern": "^(?!.*[\\u3400-\\u9fff]).+$",
+          "type": "string"
+        },
+        "script.literal.007": {
+          "maxLength": 11,
+          "type": "string"
+        },
+        "script.literal.008": {
+          "maxLength": 12,
+          "pattern": "^(?!.*[\\u3400-\\u9fff]).+$",
+          "type": "string"
+        },
+        "script.literal.009": {
+          "maxLength": 12,
+          "type": "string"
+        },
+        "script.literal.010": {
+          "maxLength": 12,
+          "pattern": "^(?!.*[\\u3400-\\u9fff]).+$",
+          "type": "string"
+        },
+        "script.literal.011": {
+          "maxLength": 13,
+          "type": "string"
+        },
+        "script.literal.012": {
+          "maxLength": 12,
+          "pattern": "^(?!.*[\\u3400-\\u9fff]).+$",
+          "type": "string"
+        },
+        "script.literal.013": {
+          "maxLength": 14,
+          "type": "string"
+        },
+        "script.literal.014": {
+          "maxLength": 12,
+          "pattern": "^(?!.*[\\u3400-\\u9fff]).+$",
+          "type": "string"
+        },
+        "script.literal.015": {
+          "maxLength": 10,
+          "type": "string"
+        },
+        "script.literal.016": {
+          "maxLength": 12,
+          "pattern": "^(?!.*[\\u3400-\\u9fff]).+$",
+          "type": "string"
+        },
+        "script.literal.017": {
+          "maxLength": 17,
+          "type": "string"
+        },
+        "script.literal.018": {
+          "maxLength": 13,
+          "pattern": "^(?!.*[\\u3400-\\u9fff]).+$",
+          "type": "string"
+        },
+        "script.literal.019": {
+          "maxLength": 10,
+          "pattern": "^(?!.*[\\u3400-\\u9fff]).+$",
+          "type": "string"
+        },
+        "script.literal.020": {
+          "maxLength": 8,
+          "pattern": "^(?!.*[\\u3400-\\u9fff]).+$",
+          "type": "string"
+        },
+        "script.literal.021": {
+          "maxLength": 9,
+          "pattern": "^(?!.*[\\u3400-\\u9fff]).+$",
+          "type": "string"
+        },
+        "script.literal.022": {
+          "maxLength": 13,
+          "pattern": "^(?!.*[\\u3400-\\u9fff]).+$",
+          "type": "string"
+        }
+      },
+      "type": "object"
+    }
+  },
+  "payload_defaults": {
+    "bindings": [
+      {
+        "asset_refs": [],
+        "content_refs": [
+          "item.canonical.ranking"
+        ],
+        "slot_id": "ranking"
+      },
+      {
+        "asset_refs": [],
+        "content_refs": [
+          "item.canonical.support"
+        ],
+        "slot_id": "support"
+      },
+      {
+        "asset_refs": [],
+        "content_refs": [
+          "item.canonical.takeaway"
+        ],
+        "slot_id": "takeaway"
+      }
+    ],
+    "values": {
+      "html.text.001": "AI ENGINEERING — C7",
+      "html.text.002": "MODEL RANKING",
+      "html.text.003": "01 / 01 — BY WISE PPT",
+      "html.text.004": "模型榜单的头部分差决定竞争位置，单一总分之外仍需继续拆解能力项。",
+      "script.literal.001": "GLM-X",
+      "script.literal.002": "MODEL-01",
+      "script.literal.003": "GPT-X",
+      "script.literal.004": "MODEL-02",
+      "script.literal.005": "Claude-X",
+      "script.literal.006": "MODEL-03",
+      "script.literal.007": "Llama-X",
+      "script.literal.008": "MODEL-04",
+      "script.literal.009": "Gemini-X",
+      "script.literal.010": "MODEL-05",
+      "script.literal.011": "Mistral-X",
+      "script.literal.012": "MODEL-06",
+      "script.literal.013": "DeepSeek-X",
+      "script.literal.014": "MODEL-07",
+      "script.literal.015": "Qwen-X",
+      "script.literal.016": "MODEL-08",
+      "script.literal.017": "综 合 分 · SCORE",
+      "script.literal.018": "REASONING",
+      "script.literal.019": "CODING",
+      "script.literal.020": "MATH",
+      "script.literal.021": "MODEL",
+      "script.literal.022": "SAMPLE · "
+    }
+  },
+  "payload_schema": {
+    "additionalProperties": false,
+    "properties": {
+      "bindings": {
+        "items": {
+          "additionalProperties": false,
+          "properties": {
+            "asset_refs": {
+              "items": {
+                "minLength": 1,
+                "type": "string"
+              },
+              "type": "array"
+            },
+            "content_refs": {
+              "items": {
+                "minLength": 1,
+                "type": "string"
+              },
+              "type": "array"
+            },
+            "slot_id": {
+              "enum": [
+                "ranking",
+                "support",
+                "takeaway"
+              ],
+              "type": "string"
+            }
+          },
+          "required": [
+            "slot_id",
+            "content_refs",
+            "asset_refs"
+          ],
+          "type": "object"
+        },
+        "maxItems": 3,
+        "minItems": 3,
+        "type": "array"
+      },
+      "values": {
+        "additionalProperties": false,
+        "minProperties": 1,
+        "properties": {
+          "html.text.001": {
+            "maxLength": 25,
+            "pattern": "^(?!.*[\\u3400-\\u9fff]).+$",
+            "type": "string"
+          },
+          "html.text.002": {
+            "maxLength": 17,
+            "pattern": "^(?!.*[\\u3400-\\u9fff]).+$",
+            "type": "string"
+          },
+          "html.text.003": {
+            "maxLength": 26,
+            "pattern": "^\\d{1,3} / \\d{1,3} — BY .{1,40}$",
+            "type": "string"
+          },
+          "html.text.004": {
+            "maxLength": 42,
+            "type": "string"
+          },
+          "script.literal.001": {
+            "maxLength": 9,
+            "pattern": "^(?!.*[\\u3400-\\u9fff]).+$",
+            "type": "string"
+          },
+          "script.literal.002": {
+            "maxLength": 12,
+            "pattern": "^(?!.*[\\u3400-\\u9fff]).+$",
+            "type": "string"
+          },
+          "script.literal.003": {
+            "maxLength": 9,
+            "pattern": "^(?!.*[\\u3400-\\u9fff]).+$",
+            "type": "string"
+          },
+          "script.literal.004": {
+            "maxLength": 12,
+            "pattern": "^(?!.*[\\u3400-\\u9fff]).+$",
+            "type": "string"
+          },
+          "script.literal.005": {
+            "maxLength": 12,
+            "type": "string"
+          },
+          "script.literal.006": {
+            "maxLength": 12,
+            "pattern": "^(?!.*[\\u3400-\\u9fff]).+$",
+            "type": "string"
+          },
+          "script.literal.007": {
+            "maxLength": 11,
+            "type": "string"
+          },
+          "script.literal.008": {
+            "maxLength": 12,
+            "pattern": "^(?!.*[\\u3400-\\u9fff]).+$",
+            "type": "string"
+          },
+          "script.literal.009": {
+            "maxLength": 12,
+            "type": "string"
+          },
+          "script.literal.010": {
+            "maxLength": 12,
+            "pattern": "^(?!.*[\\u3400-\\u9fff]).+$",
+            "type": "string"
+          },
+          "script.literal.011": {
+            "maxLength": 13,
+            "type": "string"
+          },
+          "script.literal.012": {
+            "maxLength": 12,
+            "pattern": "^(?!.*[\\u3400-\\u9fff]).+$",
+            "type": "string"
+          },
+          "script.literal.013": {
+            "maxLength": 14,
+            "type": "string"
+          },
+          "script.literal.014": {
+            "maxLength": 12,
+            "pattern": "^(?!.*[\\u3400-\\u9fff]).+$",
+            "type": "string"
+          },
+          "script.literal.015": {
+            "maxLength": 10,
+            "type": "string"
+          },
+          "script.literal.016": {
+            "maxLength": 12,
+            "pattern": "^(?!.*[\\u3400-\\u9fff]).+$",
+            "type": "string"
+          },
+          "script.literal.017": {
+            "maxLength": 17,
+            "type": "string"
+          },
+          "script.literal.018": {
+            "maxLength": 13,
+            "pattern": "^(?!.*[\\u3400-\\u9fff]).+$",
+            "type": "string"
+          },
+          "script.literal.019": {
+            "maxLength": 10,
+            "pattern": "^(?!.*[\\u3400-\\u9fff]).+$",
+            "type": "string"
+          },
+          "script.literal.020": {
+            "maxLength": 8,
+            "pattern": "^(?!.*[\\u3400-\\u9fff]).+$",
+            "type": "string"
+          },
+          "script.literal.021": {
+            "maxLength": 9,
+            "pattern": "^(?!.*[\\u3400-\\u9fff]).+$",
+            "type": "string"
+          },
+          "script.literal.022": {
+            "maxLength": 13,
+            "pattern": "^(?!.*[\\u3400-\\u9fff]).+$",
+            "type": "string"
+          }
+        },
+        "type": "object"
+      }
+    },
+    "required": [
+      "bindings",
+      "values"
+    ],
+    "type": "object"
+  },
+  "recipe_fingerprint": "sha256:e7c1e04e5dfd515c7de4c93365d6543b6dcb447a055b765dfe8aec4e4e4d24ad",
+  "recipe_id": "paper-ink.data.ranked-specimen-bars",
+  "required_capabilities": [],
+  "slots": [
+    {
+      "allowed_component_sources": [
+        "native",
+        "echarts"
+      ],
+      "allowed_renderer_kinds": [
+        "svg",
+        "canvas"
+      ],
+      "compatible_component_ids": [
+        "echarts.bar-basic",
+        "echarts.bar-dynamic-sort"
+      ],
+      "count_unit": "binding",
+      "default_component": {
+        "component_id": "native.paper-ink.data.ranked-specimen-bars.ranking",
+        "component_source": "native",
+        "origin": {
+          "kind": "canonical-frame-island",
+          "path": "gallery/paper-ink/ai/frames/layout-c7.html",
+          "selector": ".stage"
+        },
+        "renderer_kind": "svg"
+      },
+      "max_items": 8,
+      "min_items": 1,
+      "open_for_override": false,
+      "purpose": "排行数据",
+      "required": true,
+      "slot_id": "ranking",
+      "space_contract": {
+        "aspect_ratio": 2.4194,
+        "canvas_height": 1080,
+        "canvas_width": 1920,
+        "height": 620,
+        "space_type": "wide",
+        "width": 1500
+      },
+      "visual_role": "primary"
+    },
+    {
+      "allowed_component_sources": [
+        "codex-host",
+        "native"
+      ],
+      "allowed_renderer_kinds": [
+        "typography",
+        "table",
+        "image",
+        "native-html",
+        "svg"
+      ],
+      "compatible_component_ids": [],
+      "count_unit": "binding",
+      "default_component": {
+        "component_id": "native.paper-ink.data.ranked-specimen-bars.support",
+        "component_source": "native",
+        "origin": {
+          "kind": "canonical-frame-island",
+          "path": "gallery/paper-ink/ai/frames/layout-c7.html",
+          "selector": ".doc.tl"
+        },
+        "renderer_kind": "typography"
+      },
+      "max_items": 4,
+      "min_items": 0,
+      "open_for_override": false,
+      "purpose": "辅助证据、标签或解释",
+      "required": false,
+      "slot_id": "support",
+      "visual_role": "support"
+    },
+    {
+      "allowed_component_sources": [
+        "native"
+      ],
+      "allowed_renderer_kinds": [
+        "typography"
+      ],
+      "compatible_component_ids": [],
+      "count_unit": "binding",
+      "default_component": {
+        "component_id": "native.paper-ink.data.ranked-specimen-bars.takeaway",
+        "component_source": "native",
+        "origin": {
+          "kind": "canonical-frame-island",
+          "path": "gallery/paper-ink/ai/frames/layout-c7.html",
+          "selector": ".caption"
+        },
+        "renderer_kind": "typography"
+      },
+      "max_items": 1,
+      "min_items": 0,
+      "open_for_override": false,
+      "purpose": "页面一句话结论",
+      "required": false,
+      "slot_id": "takeaway",
+      "visual_role": "support"
+    }
+  ],
+  "source": {
+    "path": "gallery/paper-ink/ai/frames/layout-c7.html",
+    "sha256": "sha256:fd10fbef3fe97aca8d4f211ce72a8da64c8c47d58365c5d4414fe1cb5df01542"
+  },
+  "status": "production",
+  "theme_id": "paper-ink",
+  "variant": "ai"
+}

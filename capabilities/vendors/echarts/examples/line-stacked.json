@@ -1,0 +1,80 @@
+{
+  "example_id": "echarts.line-stacked",
+  "title": "堆叠折线图",
+  "source_url": "https://echarts.apache.org/examples/zh/index.html#chart-type-line",
+  "upstream_license": "Apache-2.0",
+  "chart_type": "line",
+  "source_note": "改编自 Apache ECharts 官方示例 stacked-line。堆叠通过 series.stack + series.areaStyle 实现；数据抽成 dataset，三条线各引用一列。",
+  "dataset_shape": {
+    "dimensions": ["day", "email", "ads", "video"],
+    "source": [
+      { "day": "周一", "email": 120, "ads": 220, "video": 150 },
+      { "day": "周二", "email": 132, "ads": 182, "video": 232 },
+      { "day": "周三", "email": 101, "ads": 191, "video": 201 },
+      { "day": "周四", "email": 134, "ads": 234, "video": 154 },
+      { "day": "周五", "email": 90, "ads": 290, "video": 190 },
+      { "day": "周六", "email": 230, "ads": 330, "video": 330 },
+      { "day": "周日", "email": 210, "ads": 310, "video": 410 }
+    ]
+  },
+  "render_plan_binding": {
+    "renderer_kind": "svg",
+    "component_source": "echarts",
+    "component_id": "echarts.line-stacked",
+    "theme_adapter_id": "paper-ink.echarts",
+    "data_binding": {
+      "data_ref": {
+        "content_id": "item.traffic-by-channel",
+        "json_pointer": "/structured_data/rows"
+      },
+      "dataset_id": "dataset.line-stacked",
+      "encode": { "x": "day", "y": ["email", "ads", "video"] }
+    }
+  },
+  "html_template": {
+    "container_attrs": "data-block-id=\"block.main\" data-renderer-kind=\"svg\" data-component-source=\"echarts\" data-component-id=\"echarts.line-stacked\" data-theme-adapter-id=\"paper-ink.echarts\" data-content-ref=\"item.traffic-by-channel\" data-dataset-id=\"dataset.line-stacked\"",
+    "dataset_script_id": "dataset.line-stacked"
+  },
+  "option": {
+    "dataset": {
+      "dimensions": ["day", "email", "ads", "video"],
+      "source": [
+        { "day": "周一", "email": 120, "ads": 220, "video": 150 },
+        { "day": "周二", "email": 132, "ads": 182, "video": 232 },
+        { "day": "周三", "email": 101, "ads": 191, "video": 201 },
+        { "day": "周四", "email": 134, "ads": 234, "video": 154 },
+        { "day": "周五", "email": 90, "ads": 290, "video": 190 },
+        { "day": "周六", "email": 230, "ads": 330, "video": 330 },
+        { "day": "周日", "email": 210, "ads": 310, "video": 410 }
+      ]
+    },
+    "tooltip": { "trigger": "axis" },
+    "legend": { "data": ["邮件营销", "联盟广告", "视频广告"] },
+    "xAxis": { "type": "category", "boundaryGap": false },
+    "yAxis": { "type": "value" },
+    "series": [
+      {
+        "name": "邮件营销",
+        "type": "line",
+        "stack": "总量",
+        "areaStyle": {},
+        "encode": { "x": "day", "y": "email" }
+      },
+      {
+        "name": "联盟广告",
+        "type": "line",
+        "stack": "总量",
+        "areaStyle": {},
+        "encode": { "x": "day", "y": "ads" }
+      },
+      {
+        "name": "视频广告",
+        "type": "line",
+        "stack": "总量",
+        "areaStyle": {},
+        "encode": { "x": "day", "y": "video" }
+      }
+    ]
+  },
+  "notes": "堆叠的关键是三个 series 共享 stack 值 \"总量\" 并加 areaStyle。每条线通过 encode.y 引用各自列。原官方示例每个 series 自带 data，本版由 dataset 统一驱动。"
+}

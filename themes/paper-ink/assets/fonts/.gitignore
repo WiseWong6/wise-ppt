@@ -1,0 +1,11 @@
+# 字体文件不进 git（共约 63MB，体积过大）
+# 首次使用请运行：bash download-fonts.sh
+# 下载脚本会检测缺失字体并从官方源拉取
+*.otf
+*.ttf
+*.woff
+*.woff2
+# 但保留本目录的脚本与说明
+!download-fonts.sh
+!.gitignore
+!README.md

@@ -1,0 +1,4809 @@
+{
+  "contract_version": 2,
+  "capability_id": "component-routing",
+  "component_count": 91,
+  "source_counts": {
+    "ppt-component-atlas": 61,
+    "echarts": 12,
+    "native": 17,
+    "codex-host": 1
+  },
+  "components": [
+    {
+      "component_id": "atlas.001.cover",
+      "name": "封面",
+      "canonical_name": "cover",
+      "variant": null,
+      "group": "content",
+      "group_label": "内容/排版",
+      "description": "Title-led opening page.",
+      "tasks": [
+        "content",
+        "narrative"
+      ],
+      "roles": [
+        "hook",
+        "explain",
+        "act"
+      ],
+      "relations": [
+        "focus",
+        "sequence"
+      ],
+      "primitives": [
+        "content-frame",
+        "focus-field"
+      ],
+      "renderer_kinds": [
+        "native-html",
+        "svg"
+      ],
+      "component_sources": [
+        "ppt-component-atlas"
+      ],
+      "aliases": [
+        "cover",
+        "封面",
+        "1"
+      ],
+      "selection_notes": "Title-led opening page.",
+      "requires": [],
+      "space_requirements": {
+        "min_width": 620,
+        "min_height": 420,
+        "min_aspect_ratio": 0.75,
+        "max_aspect_ratio": 3.4
+      },
+      "capacity": {
+        "min_items": 1,
+        "max_items": 8
+      },
+      "dependencies": [
+        "ppt-component-atlas"
+      ]
+    },
+    {
+      "component_id": "atlas.002.list-card",
+      "name": "列表卡片",
+      "canonical_name": "list-card",
+      "variant": null,
+      "group": "content",
+      "group_label": "内容/排版",
+      "description": "Numbered list card.",
+      "tasks": [
+        "content",
+        "narrative"
+      ],
+      "roles": [
+        "hook",
+        "explain",
+        "act"
+      ],
+      "relations": [
+        "focus",
+        "sequence"
+      ],
+      "primitives": [
+        "content-frame",
+        "focus-field"
+      ],
+      "renderer_kinds": [
+        "native-html",
+        "svg"
+      ],
+      "component_sources": [
+        "ppt-component-atlas"
+      ],
+      "aliases": [
+        "list-card",
+        "列表卡片",
+        "2"
+      ],
+      "selection_notes": "Numbered list card.",
+      "requires": [],
+      "space_requirements": {
+        "min_width": 620,
+        "min_height": 420,
+        "min_aspect_ratio": 0.75,
+        "max_aspect_ratio": 3.4
+      },
+      "capacity": {
+        "min_items": 1,
+        "max_items": 8
+      },
+      "dependencies": [
+        "ppt-component-atlas"
+      ]
+    },
+    {
+      "component_id": "atlas.003.list-card.default",
+      "name": "列表卡片-默认变体",
+      "canonical_name": "list-card",
+      "variant": "default",
+      "group": "content",
+      "group_label": "内容/排版",
+      "description": "Numbered list card.",
+      "tasks": [
+        "content",
+        "narrative"
+      ],
+      "roles": [
+        "hook",
+        "explain",
+        "act"
+      ],
+      "relations": [
+        "focus",
+        "sequence"
+      ],
+      "primitives": [
+        "content-frame",
+        "focus-field"
+      ],
+      "renderer_kinds": [
+        "native-html",
+        "svg"
+      ],
+      "component_sources": [
+        "ppt-component-atlas"
+      ],
+      "aliases": [
+        "list-card",
+        "列表卡片-默认变体",
+        "default",
+        "3"
+      ],
+      "selection_notes": "Numbered list card.",
+      "requires": [],
+      "space_requirements": {
+        "min_width": 620,
+        "min_height": 420,
+        "min_aspect_ratio": 0.75,
+        "max_aspect_ratio": 3.4
+      },
+      "capacity": {
+        "min_items": 1,
+        "max_items": 8
+      },
+      "dependencies": [
+        "ppt-component-atlas"
+      ]
+    },
+    {
+      "component_id": "atlas.004.list-card.workflow",
+      "name": "列表卡片-工作流变体",
+      "canonical_name": "list-card",
+      "variant": "workflow",
+      "group": "content",
+      "group_label": "内容/排版",
+      "description": "Numbered list card.",
+      "tasks": [
+        "content",
+        "narrative"
+      ],
+      "roles": [
+        "hook",
+        "explain",
+        "act"
+      ],
+      "relations": [
+        "focus",
+        "sequence"
+      ],
+      "primitives": [
+        "content-frame",
+        "focus-field"
+      ],
+      "renderer_kinds": [
+        "native-html",
+        "svg"
+      ],
+      "component_sources": [
+        "ppt-component-atlas"
+      ],
+      "aliases": [
+        "list-card",
+        "列表卡片-工作流变体",
+        "workflow",
+        "4"
+      ],
+      "selection_notes": "Numbered list card.",
+      "requires": [],
+      "space_requirements": {
+        "min_width": 620,
+        "min_height": 420,
+        "min_aspect_ratio": 0.75,
+        "max_aspect_ratio": 3.4
+      },
+      "capacity": {
+        "min_items": 1,
+        "max_items": 8
+      },
+      "dependencies": [
+        "ppt-component-atlas"
+      ]
+    },
+    {
+      "component_id": "atlas.005.toc-card",
+      "name": "目录卡片",
+      "canonical_name": "toc-card",
+      "variant": null,
+      "group": "content",
+      "group_label": "内容/排版",
+      "description": "Table of contents card.",
+      "tasks": [
+        "content",
+        "narrative"
+      ],
+      "roles": [
+        "hook",
+        "explain",
+        "act"
+      ],
+      "relations": [
+        "focus",
+        "sequence"
+      ],
+      "primitives": [
+        "content-frame",
+        "focus-field"
+      ],
+      "renderer_kinds": [
+        "native-html",
+        "svg"
+      ],
+      "component_sources": [
+        "ppt-component-atlas"
+      ],
+      "aliases": [
+        "toc-card",
+        "目录卡片",
+        "5"
+      ],
+      "selection_notes": "Table of contents card.",
+      "requires": [],
+      "space_requirements": {
+        "min_width": 620,
+        "min_height": 420,
+        "min_aspect_ratio": 0.75,
+        "max_aspect_ratio": 3.4
+      },
+      "capacity": {
+        "min_items": 1,
+        "max_items": 8
+      },
+      "dependencies": [
+        "ppt-component-atlas"
+      ]
+    },
+    {
+      "component_id": "atlas.006.form-card",
+      "name": "表单卡片",
+      "canonical_name": "form-card",
+      "variant": null,
+      "group": "content",
+      "group_label": "内容/排版",
+      "description": "Form summary card.",
+      "tasks": [
+        "content",
+        "narrative"
+      ],
+      "roles": [
+        "hook",
+        "explain",
+        "act"
+      ],
+      "relations": [
+        "focus",
+        "sequence"
+      ],
+      "primitives": [
+        "content-frame",
+        "focus-field"
+      ],
+      "renderer_kinds": [
+        "native-html",
+        "svg"
+      ],
+      "component_sources": [
+        "ppt-component-atlas"
+      ],
+      "aliases": [
+        "form-card",
+        "表单卡片",
+        "6"
+      ],
+      "selection_notes": "Form summary card.",
+      "requires": [],
+      "space_requirements": {
+        "min_width": 620,
+        "min_height": 420,
+        "min_aspect_ratio": 0.75,
+        "max_aspect_ratio": 3.4
+      },
+      "capacity": {
+        "min_items": 1,
+        "max_items": 8
+      },
+      "dependencies": [
+        "ppt-component-atlas"
+      ]
+    },
+    {
+      "component_id": "atlas.007.two-col",
+      "name": "双栏布局",
+      "canonical_name": "two-col",
+      "variant": null,
+      "group": "content",
+      "group_label": "内容/排版",
+      "description": "Two-column content layout.",
+      "tasks": [
+        "content",
+        "narrative"
+      ],
+      "roles": [
+        "hook",
+        "explain",
+        "act"
+      ],
+      "relations": [
+        "focus",
+        "sequence"
+      ],
+      "primitives": [
+        "content-frame",
+        "focus-field"
+      ],
+      "renderer_kinds": [
+        "native-html",
+        "svg"
+      ],
+      "component_sources": [
+        "ppt-component-atlas"
+      ],
+      "aliases": [
+        "two-col",
+        "双栏布局",
+        "7"
+      ],
+      "selection_notes": "Two-column content layout.",
+      "requires": [],
+      "space_requirements": {
+        "min_width": 620,
+        "min_height": 420,
+        "min_aspect_ratio": 0.75,
+        "max_aspect_ratio": 3.4
+      },
+      "capacity": {
+        "min_items": 1,
+        "max_items": 8
+      },
+      "dependencies": [
+        "ppt-component-atlas"
+      ]
+    },
+    {
+      "component_id": "atlas.008.three-col",
+      "name": "三栏布局",
+      "canonical_name": "three-col",
+      "variant": null,
+      "group": "content",
+      "group_label": "内容/排版",
+      "description": "Three-column content layout.",
+      "tasks": [
+        "content",
+        "narrative"
+      ],
+      "roles": [
+        "hook",
+        "explain",
+        "act"
+      ],
+      "relations": [
+        "focus",
+        "sequence"
+      ],
+      "primitives": [
+        "content-frame",
+        "focus-field"
+      ],
+      "renderer_kinds": [
+        "native-html",
+        "svg"
+      ],
+      "component_sources": [
+        "ppt-component-atlas"
+      ],
+      "aliases": [
+        "three-col",
+        "三栏布局",
+        "8"
+      ],
+      "selection_notes": "Three-column content layout.",
+      "requires": [],
+      "space_requirements": {
+        "min_width": 620,
+        "min_height": 420,
+        "min_aspect_ratio": 0.75,
+        "max_aspect_ratio": 3.4
+      },
+      "capacity": {
+        "min_items": 1,
+        "max_items": 8
+      },
+      "dependencies": [
+        "ppt-component-atlas"
+      ]
+    },
+    {
+      "component_id": "atlas.009.split-v",
+      "name": "垂直分栏",
+      "canonical_name": "split-v",
+      "variant": null,
+      "group": "content",
+      "group_label": "内容/排版",
+      "description": "Vertical split panel.",
+      "tasks": [
+        "content",
+        "narrative"
+      ],
+      "roles": [
+        "hook",
+        "explain",
+        "act"
+      ],
+      "relations": [
+        "focus",
+        "sequence"
+      ],
+      "primitives": [
+        "content-frame",
+        "focus-field"
+      ],
+      "renderer_kinds": [
+        "native-html",
+        "svg"
+      ],
+      "component_sources": [
+        "ppt-component-atlas"
+      ],
+      "aliases": [
+        "split-v",
+        "垂直分栏",
+        "9"
+      ],
+      "selection_notes": "Vertical split panel.",
+      "requires": [],
+      "space_requirements": {
+        "min_width": 620,
+        "min_height": 420,
+        "min_aspect_ratio": 0.75,
+        "max_aspect_ratio": 3.4
+      },
+      "capacity": {
+        "min_items": 1,
+        "max_items": 8
+      },
+      "dependencies": [
+        "ppt-component-atlas"
+      ]
+    },
+    {
+      "component_id": "atlas.010.split-v.accent",
+      "name": "垂直分栏-强调变体",
+      "canonical_name": "split-v",
+      "variant": "accent",
+      "group": "content",
+      "group_label": "内容/排版",
+      "description": "Vertical split panel.",
+      "tasks": [
+        "content",
+        "narrative"
+      ],
+      "roles": [
+        "hook",
+        "explain",
+        "act"
+      ],
+      "relations": [
+        "focus",
+        "sequence"
+      ],
+      "primitives": [
+        "content-frame",
+        "focus-field"
+      ],
+      "renderer_kinds": [
+        "native-html",
+        "svg"
+      ],
+      "component_sources": [
+        "ppt-component-atlas"
+      ],
+      "aliases": [
+        "split-v",
+        "垂直分栏-强调变体",
+        "accent",
+        "10"
+      ],
+      "selection_notes": "Vertical split panel.",
+      "requires": [],
+      "space_requirements": {
+        "min_width": 620,
+        "min_height": 420,
+        "min_aspect_ratio": 0.75,
+        "max_aspect_ratio": 3.4
+      },
+      "capacity": {
+        "min_items": 1,
+        "max_items": 8
+      },
+      "dependencies": [
+        "ppt-component-atlas"
+      ]
+    },
+    {
+      "component_id": "atlas.011.quote",
+      "name": "引用",
+      "canonical_name": "quote",
+      "variant": null,
+      "group": "content",
+      "group_label": "内容/排版",
+      "description": "Quote page.",
+      "tasks": [
+        "content",
+        "narrative"
+      ],
+      "roles": [
+        "hook",
+        "explain",
+        "act"
+      ],
+      "relations": [
+        "focus",
+        "sequence"
+      ],
+      "primitives": [
+        "content-frame",
+        "focus-field"
+      ],
+      "renderer_kinds": [
+        "native-html",
+        "svg"
+      ],
+      "component_sources": [
+        "ppt-component-atlas"
+      ],
+      "aliases": [
+        "quote",
+        "引用",
+        "11"
+      ],
+      "selection_notes": "Quote page.",
+      "requires": [],
+      "space_requirements": {
+        "min_width": 620,
+        "min_height": 420,
+        "min_aspect_ratio": 0.75,
+        "max_aspect_ratio": 3.4
+      },
+      "capacity": {
+        "min_items": 1,
+        "max_items": 8
+      },
+      "dependencies": [
+        "ppt-component-atlas"
+      ]
+    },
+    {
+      "component_id": "atlas.012.alert-box",
+      "name": "提示框",
+      "canonical_name": "alert-box",
+      "variant": null,
+      "group": "content",
+      "group_label": "内容/排版",
+      "description": "Alert message stack.",
+      "tasks": [
+        "content",
+        "narrative"
+      ],
+      "roles": [
+        "hook",
+        "explain",
+        "act"
+      ],
+      "relations": [
+        "focus",
+        "sequence"
+      ],
+      "primitives": [
+        "content-frame",
+        "focus-field"
+      ],
+      "renderer_kinds": [
+        "native-html",
+        "svg"
+      ],
+      "component_sources": [
+        "ppt-component-atlas"
+      ],
+      "aliases": [
+        "alert-box",
+        "提示框",
+        "12"
+      ],
+      "selection_notes": "Alert message stack.",
+      "requires": [],
+      "space_requirements": {
+        "min_width": 620,
+        "min_height": 420,
+        "min_aspect_ratio": 0.75,
+        "max_aspect_ratio": 3.4
+      },
+      "capacity": {
+        "min_items": 1,
+        "max_items": 8
+      },
+      "dependencies": [
+        "ppt-component-atlas"
+      ]
+    },
+    {
+      "component_id": "atlas.013.terminal-box",
+      "name": "终端框",
+      "canonical_name": "terminal-box",
+      "variant": null,
+      "group": "content",
+      "group_label": "内容/排版",
+      "description": "Term definition box.",
+      "tasks": [
+        "content",
+        "narrative"
+      ],
+      "roles": [
+        "hook",
+        "explain",
+        "act"
+      ],
+      "relations": [
+        "focus",
+        "sequence"
+      ],
+      "primitives": [
+        "content-frame",
+        "focus-field"
+      ],
+      "renderer_kinds": [
+        "native-html",
+        "svg"
+      ],
+      "component_sources": [
+        "ppt-component-atlas"
+      ],
+      "aliases": [
+        "terminal-box",
+        "终端框",
+        "13"
+      ],
+      "selection_notes": "Term definition box.",
+      "requires": [],
+      "space_requirements": {
+        "min_width": 620,
+        "min_height": 420,
+        "min_aspect_ratio": 0.75,
+        "max_aspect_ratio": 3.4
+      },
+      "capacity": {
+        "min_items": 1,
+        "max_items": 8
+      },
+      "dependencies": [
+        "ppt-component-atlas"
+      ]
+    },
+    {
+      "component_id": "atlas.014.code",
+      "name": "代码块",
+      "canonical_name": "code",
+      "variant": null,
+      "group": "content",
+      "group_label": "内容/排版",
+      "description": "Code or structured source page.",
+      "tasks": [
+        "content",
+        "narrative"
+      ],
+      "roles": [
+        "hook",
+        "explain",
+        "act"
+      ],
+      "relations": [
+        "focus",
+        "sequence"
+      ],
+      "primitives": [
+        "content-frame",
+        "focus-field"
+      ],
+      "renderer_kinds": [
+        "native-html",
+        "svg"
+      ],
+      "component_sources": [
+        "ppt-component-atlas"
+      ],
+      "aliases": [
+        "code",
+        "代码块",
+        "14"
+      ],
+      "selection_notes": "Code or structured source page.",
+      "requires": [],
+      "space_requirements": {
+        "min_width": 620,
+        "min_height": 420,
+        "min_aspect_ratio": 0.75,
+        "max_aspect_ratio": 3.4
+      },
+      "capacity": {
+        "min_items": 1,
+        "max_items": 8
+      },
+      "dependencies": [
+        "ppt-component-atlas"
+      ]
+    },
+    {
+      "component_id": "atlas.015.vs",
+      "name": "对比",
+      "canonical_name": "vs",
+      "variant": null,
+      "group": "comparison",
+      "group_label": "对比/评估",
+      "description": "Two-sided comparison.",
+      "tasks": [
+        "comparison",
+        "evaluation"
+      ],
+      "roles": [
+        "compare",
+        "prove",
+        "synthesize"
+      ],
+      "relations": [
+        "comparison",
+        "matrix"
+      ],
+      "primitives": [
+        "bilateral-split",
+        "matrix-field"
+      ],
+      "renderer_kinds": [
+        "native-html",
+        "svg"
+      ],
+      "component_sources": [
+        "ppt-component-atlas"
+      ],
+      "aliases": [
+        "vs",
+        "对比",
+        "15"
+      ],
+      "selection_notes": "Two-sided comparison.",
+      "requires": [],
+      "space_requirements": {
+        "min_width": 720,
+        "min_height": 420,
+        "min_aspect_ratio": 1.0,
+        "max_aspect_ratio": 3.5
+      },
+      "capacity": {
+        "min_items": 1,
+        "max_items": 8
+      },
+      "dependencies": [
+        "ppt-component-atlas"
+      ]
+    },
+    {
+      "component_id": "atlas.016.before-after.default",
+      "name": "前后对比-默认变体",
+      "canonical_name": "before-after",
+      "variant": "default",
+      "group": "comparison",
+      "group_label": "对比/评估",
+      "description": "Before and after comparison.",
+      "tasks": [
+        "comparison",
+        "evaluation"
+      ],
+      "roles": [
+        "compare",
+        "prove",
+        "synthesize"
+      ],
+      "relations": [
+        "comparison",
+        "matrix"
+      ],
+      "primitives": [
+        "bilateral-split",
+        "matrix-field"
+      ],
+      "renderer_kinds": [
+        "native-html",
+        "svg"
+      ],
+      "component_sources": [
+        "ppt-component-atlas"
+      ],
+      "aliases": [
+        "before-after",
+        "前后对比-默认变体",
+        "default",
+        "16"
+      ],
+      "selection_notes": "Before and after comparison.",
+      "requires": [],
+      "space_requirements": {
+        "min_width": 720,
+        "min_height": 420,
+        "min_aspect_ratio": 1.0,
+        "max_aspect_ratio": 3.5
+      },
+      "capacity": {
+        "min_items": 1,
+        "max_items": 8
+      },
+      "dependencies": [
+        "ppt-component-atlas"
+      ]
+    },
+    {
+      "component_id": "atlas.017.before-after.with-arrow",
+      "name": "前后对比-箭头变体",
+      "canonical_name": "before-after",
+      "variant": "with-arrow",
+      "group": "comparison",
+      "group_label": "对比/评估",
+      "description": "Before and after comparison.",
+      "tasks": [
+        "comparison",
+        "evaluation"
+      ],
+      "roles": [
+        "compare",
+        "prove",
+        "synthesize"
+      ],
+      "relations": [
+        "comparison",
+        "matrix"
+      ],
+      "primitives": [
+        "bilateral-split",
+        "matrix-field"
+      ],
+      "renderer_kinds": [
+        "native-html",
+        "svg"
+      ],
+      "component_sources": [
+        "ppt-component-atlas"
+      ],
+      "aliases": [
+        "before-after",
+        "前后对比-箭头变体",
+        "with-arrow",
+        "17"
+      ],
+      "selection_notes": "Before and after comparison.",
+      "requires": [],
+      "space_requirements": {
+        "min_width": 720,
+        "min_height": 420,
+        "min_aspect_ratio": 1.0,
+        "max_aspect_ratio": 3.5
+      },
+      "capacity": {
+        "min_items": 1,
+        "max_items": 8
+      },
+      "dependencies": [
+        "ppt-component-atlas"
+      ]
+    },
+    {
+      "component_id": "atlas.018.before-after.no-bg",
+      "name": "前后对比-无背景变体",
+      "canonical_name": "before-after",
+      "variant": "no-bg",
+      "group": "comparison",
+      "group_label": "对比/评估",
+      "description": "Before and after comparison.",
+      "tasks": [
+        "comparison",
+        "evaluation"
+      ],
+      "roles": [
+        "compare",
+        "prove",
+        "synthesize"
+      ],
+      "relations": [
+        "comparison",
+        "matrix"
+      ],
+      "primitives": [
+        "bilateral-split",
+        "matrix-field"
+      ],
+      "renderer_kinds": [
+        "native-html",
+        "svg"
+      ],
+      "component_sources": [
+        "ppt-component-atlas"
+      ],
+      "aliases": [
+        "before-after",
+        "前后对比-无背景变体",
+        "no-bg",
+        "18"
+      ],
+      "selection_notes": "Before and after comparison.",
+      "requires": [],
+      "space_requirements": {
+        "min_width": 720,
+        "min_height": 420,
+        "min_aspect_ratio": 1.0,
+        "max_aspect_ratio": 3.5
+      },
+      "capacity": {
+        "min_items": 1,
+        "max_items": 8
+      },
+      "dependencies": [
+        "ppt-component-atlas"
+      ]
+    },
+    {
+      "component_id": "atlas.019.before-after.verification",
+      "name": "前后对比-验证变体",
+      "canonical_name": "before-after",
+      "variant": "verification",
+      "group": "comparison",
+      "group_label": "对比/评估",
+      "description": "Before and after comparison.",
+      "tasks": [
+        "comparison",
+        "evaluation"
+      ],
+      "roles": [
+        "compare",
+        "prove",
+        "synthesize"
+      ],
+      "relations": [
+        "comparison",
+        "matrix"
+      ],
+      "primitives": [
+        "bilateral-split",
+        "matrix-field"
+      ],
+      "renderer_kinds": [
+        "native-html",
+        "svg"
+      ],
+      "component_sources": [
+        "ppt-component-atlas"
+      ],
+      "aliases": [
+        "before-after",
+        "前后对比-验证变体",
+        "verification",
+        "19"
+      ],
+      "selection_notes": "Before and after comparison.",
+      "requires": [],
+      "space_requirements": {
+        "min_width": 720,
+        "min_height": 420,
+        "min_aspect_ratio": 1.0,
+        "max_aspect_ratio": 3.5
+      },
+      "capacity": {
+        "min_items": 1,
+        "max_items": 8
+      },
+      "dependencies": [
+        "ppt-component-atlas"
+      ]
+    },
+    {
+      "component_id": "atlas.020.swot",
+      "name": "SWOT 分析",
+      "canonical_name": "swot",
+      "variant": null,
+      "group": "comparison",
+      "group_label": "对比/评估",
+      "description": "SWOT analysis grid.",
+      "tasks": [
+        "comparison",
+        "evaluation"
+      ],
+      "roles": [
+        "compare",
+        "prove",
+        "synthesize"
+      ],
+      "relations": [
+        "comparison",
+        "matrix"
+      ],
+      "primitives": [
+        "bilateral-split",
+        "matrix-field"
+      ],
+      "renderer_kinds": [
+        "native-html",
+        "svg"
+      ],
+      "component_sources": [
+        "ppt-component-atlas"
+      ],
+      "aliases": [
+        "swot",
+        "SWOT 分析",
+        "20"
+      ],
+      "selection_notes": "SWOT analysis grid.",
+      "requires": [],
+      "space_requirements": {
+        "min_width": 720,
+        "min_height": 420,
+        "min_aspect_ratio": 1.0,
+        "max_aspect_ratio": 3.5
+      },
+      "capacity": {
+        "min_items": 1,
+        "max_items": 8
+      },
+      "dependencies": [
+        "ppt-component-atlas"
+      ]
+    },
+    {
+      "component_id": "atlas.021.quadrant-axis",
+      "name": "象限图",
+      "canonical_name": "quadrant-axis",
+      "variant": null,
+      "group": "comparison",
+      "group_label": "对比/评估",
+      "description": "Two-axis quadrant map.",
+      "tasks": [
+        "comparison",
+        "evaluation"
+      ],
+      "roles": [
+        "compare",
+        "prove",
+        "synthesize"
+      ],
+      "relations": [
+        "comparison",
+        "matrix"
+      ],
+      "primitives": [
+        "bilateral-split",
+        "matrix-field"
+      ],
+      "renderer_kinds": [
+        "native-html",
+        "svg"
+      ],
+      "component_sources": [
+        "ppt-component-atlas"
+      ],
+      "aliases": [
+        "quadrant-axis",
+        "象限图",
+        "21"
+      ],
+      "selection_notes": "Two-axis quadrant map.",
+      "requires": [],
+      "space_requirements": {
+        "min_width": 720,
+        "min_height": 420,
+        "min_aspect_ratio": 1.0,
+        "max_aspect_ratio": 3.5
+      },
+      "capacity": {
+        "min_items": 1,
+        "max_items": 8
+      },
+      "dependencies": [
+        "ppt-component-atlas"
+      ]
+    },
+    {
+      "component_id": "atlas.022.comparison-table",
+      "name": "对比表格",
+      "canonical_name": "comparison-table",
+      "variant": null,
+      "group": "comparison",
+      "group_label": "对比/评估",
+      "description": "Structured comparison table.",
+      "tasks": [
+        "comparison",
+        "evaluation"
+      ],
+      "roles": [
+        "compare",
+        "prove",
+        "synthesize"
+      ],
+      "relations": [
+        "comparison",
+        "matrix"
+      ],
+      "primitives": [
+        "bilateral-split",
+        "matrix-field"
+      ],
+      "renderer_kinds": [
+        "native-html",
+        "svg"
+      ],
+      "component_sources": [
+        "ppt-component-atlas"
+      ],
+      "aliases": [
+        "comparison-table",
+        "对比表格",
+        "22"
+      ],
+      "selection_notes": "Structured comparison table.",
+      "requires": [],
+      "space_requirements": {
+        "min_width": 720,
+        "min_height": 420,
+        "min_aspect_ratio": 1.0,
+        "max_aspect_ratio": 3.5
+      },
+      "capacity": {
+        "min_items": 1,
+        "max_items": 8
+      },
+      "dependencies": [
+        "ppt-component-atlas"
+      ]
+    },
+    {
+      "component_id": "atlas.023.matrix",
+      "name": "矩阵",
+      "canonical_name": "matrix",
+      "variant": null,
+      "group": "comparison",
+      "group_label": "对比/评估",
+      "description": "Grid comparison.",
+      "tasks": [
+        "comparison",
+        "evaluation"
+      ],
+      "roles": [
+        "compare",
+        "prove",
+        "synthesize"
+      ],
+      "relations": [
+        "comparison",
+        "matrix"
+      ],
+      "primitives": [
+        "bilateral-split",
+        "matrix-field"
+      ],
+      "renderer_kinds": [
+        "native-html",
+        "svg"
+      ],
+      "component_sources": [
+        "ppt-component-atlas"
+      ],
+      "aliases": [
+        "matrix",
+        "矩阵",
+        "23"
+      ],
+      "selection_notes": "Grid comparison.",
+      "requires": [],
+      "space_requirements": {
+        "min_width": 720,
+        "min_height": 420,
+        "min_aspect_ratio": 1.0,
+        "max_aspect_ratio": 3.5
+      },
+      "capacity": {
+        "min_items": 1,
+        "max_items": 8
+      },
+      "dependencies": [
+        "ppt-component-atlas"
+      ]
+    },
+    {
+      "component_id": "atlas.024.impossible-triangle.impossible-triangle",
+      "name": "不可能三角",
+      "canonical_name": "impossible-triangle",
+      "variant": "impossible-triangle",
+      "group": "comparison",
+      "group_label": "对比/评估",
+      "description": "Three-point tradeoff triangle.",
+      "tasks": [
+        "comparison",
+        "evaluation"
+      ],
+      "roles": [
+        "compare",
+        "prove",
+        "synthesize"
+      ],
+      "relations": [
+        "comparison",
+        "matrix"
+      ],
+      "primitives": [
+        "bilateral-split",
+        "matrix-field"
+      ],
+      "renderer_kinds": [
+        "native-html",
+        "svg"
+      ],
+      "component_sources": [
+        "ppt-component-atlas"
+      ],
+      "aliases": [
+        "impossible-triangle",
+        "不可能三角",
+        "24"
+      ],
+      "selection_notes": "Three-point tradeoff triangle.",
+      "requires": [],
+      "space_requirements": {
+        "min_width": 720,
+        "min_height": 420,
+        "min_aspect_ratio": 1.0,
+        "max_aspect_ratio": 3.5
+      },
+      "capacity": {
+        "min_items": 1,
+        "max_items": 8
+      },
+      "dependencies": [
+        "ppt-component-atlas"
+      ]
+    },
+    {
+      "component_id": "atlas.025.process.default",
+      "name": "流程-默认变体(3步)",
+      "canonical_name": "process",
+      "variant": "default",
+      "group": "flow",
+      "group_label": "流程/时序",
+      "description": "Step-by-step process.",
+      "tasks": [
+        "process",
+        "timeline"
+      ],
+      "roles": [
+        "sequence",
+        "explain"
+      ],
+      "relations": [
+        "sequence",
+        "flow"
+      ],
+      "primitives": [
+        "linear-sequence",
+        "node-link"
+      ],
+      "renderer_kinds": [
+        "native-html",
+        "svg"
+      ],
+      "component_sources": [
+        "ppt-component-atlas"
+      ],
+      "aliases": [
+        "process",
+        "流程-默认变体(3步)",
+        "default",
+        "25"
+      ],
+      "selection_notes": "Step-by-step process.",
+      "requires": [],
+      "space_requirements": {
+        "min_width": 760,
+        "min_height": 360,
+        "min_aspect_ratio": 1.05,
+        "max_aspect_ratio": 3.8
+      },
+      "capacity": {
+        "min_items": 1,
+        "max_items": 8
+      },
+      "dependencies": [
+        "ppt-component-atlas"
+      ]
+    },
+    {
+      "component_id": "atlas.026.process.default",
+      "name": "流程-默认变体(4步)",
+      "canonical_name": "process",
+      "variant": "default",
+      "group": "flow",
+      "group_label": "流程/时序",
+      "description": "Step-by-step process.",
+      "tasks": [
+        "process",
+        "timeline"
+      ],
+      "roles": [
+        "sequence",
+        "explain"
+      ],
+      "relations": [
+        "sequence",
+        "flow"
+      ],
+      "primitives": [
+        "linear-sequence",
+        "node-link"
+      ],
+      "renderer_kinds": [
+        "native-html",
+        "svg"
+      ],
+      "component_sources": [
+        "ppt-component-atlas"
+      ],
+      "aliases": [
+        "process",
+        "流程-默认变体(4步)",
+        "default",
+        "26"
+      ],
+      "selection_notes": "Step-by-step process.",
+      "requires": [],
+      "space_requirements": {
+        "min_width": 760,
+        "min_height": 360,
+        "min_aspect_ratio": 1.05,
+        "max_aspect_ratio": 3.8
+      },
+      "capacity": {
+        "min_items": 1,
+        "max_items": 8
+      },
+      "dependencies": [
+        "ppt-component-atlas"
+      ]
+    },
+    {
+      "component_id": "atlas.027.process.annotated",
+      "name": "流程-标注变体",
+      "canonical_name": "process",
+      "variant": "annotated",
+      "group": "flow",
+      "group_label": "流程/时序",
+      "description": "Step-by-step process.",
+      "tasks": [
+        "process",
+        "timeline"
+      ],
+      "roles": [
+        "sequence",
+        "explain"
+      ],
+      "relations": [
+        "sequence",
+        "flow"
+      ],
+      "primitives": [
+        "linear-sequence",
+        "node-link"
+      ],
+      "renderer_kinds": [
+        "native-html",
+        "svg"
+      ],
+      "component_sources": [
+        "ppt-component-atlas"
+      ],
+      "aliases": [
+        "process",
+        "流程-标注变体",
+        "annotated",
+        "27"
+      ],
+      "selection_notes": "Step-by-step process.",
+      "requires": [],
+      "space_requirements": {
+        "min_width": 760,
+        "min_height": 360,
+        "min_aspect_ratio": 1.05,
+        "max_aspect_ratio": 3.8
+      },
+      "capacity": {
+        "min_items": 1,
+        "max_items": 8
+      },
+      "dependencies": [
+        "ppt-component-atlas"
+      ]
+    },
+    {
+      "component_id": "atlas.028.process.default",
+      "name": "流程-默认变体(5步)",
+      "canonical_name": "process",
+      "variant": "default",
+      "group": "flow",
+      "group_label": "流程/时序",
+      "description": "Step-by-step process.",
+      "tasks": [
+        "process",
+        "timeline"
+      ],
+      "roles": [
+        "sequence",
+        "explain"
+      ],
+      "relations": [
+        "sequence",
+        "flow"
+      ],
+      "primitives": [
+        "linear-sequence",
+        "node-link"
+      ],
+      "renderer_kinds": [
+        "native-html",
+        "svg"
+      ],
+      "component_sources": [
+        "ppt-component-atlas"
+      ],
+      "aliases": [
+        "process",
+        "流程-默认变体(5步)",
+        "default",
+        "28"
+      ],
+      "selection_notes": "Step-by-step process.",
+      "requires": [],
+      "space_requirements": {
+        "min_width": 760,
+        "min_height": 360,
+        "min_aspect_ratio": 1.05,
+        "max_aspect_ratio": 3.8
+      },
+      "capacity": {
+        "min_items": 1,
+        "max_items": 8
+      },
+      "dependencies": [
+        "ppt-component-atlas"
+      ]
+    },
+    {
+      "component_id": "atlas.029.process.wrapped",
+      "name": "流程-换行变体",
+      "canonical_name": "process",
+      "variant": "wrapped",
+      "group": "flow",
+      "group_label": "流程/时序",
+      "description": "Step-by-step process.",
+      "tasks": [
+        "process",
+        "timeline"
+      ],
+      "roles": [
+        "sequence",
+        "explain"
+      ],
+      "relations": [
+        "sequence",
+        "flow"
+      ],
+      "primitives": [
+        "linear-sequence",
+        "node-link"
+      ],
+      "renderer_kinds": [
+        "native-html",
+        "svg"
+      ],
+      "component_sources": [
+        "ppt-component-atlas"
+      ],
+      "aliases": [
+        "process",
+        "流程-换行变体",
+        "wrapped",
+        "29"
+      ],
+      "selection_notes": "Step-by-step process.",
+      "requires": [],
+      "space_requirements": {
+        "min_width": 760,
+        "min_height": 360,
+        "min_aspect_ratio": 1.05,
+        "max_aspect_ratio": 3.8
+      },
+      "capacity": {
+        "min_items": 1,
+        "max_items": 8
+      },
+      "dependencies": [
+        "ppt-component-atlas"
+      ]
+    },
+    {
+      "component_id": "atlas.030.process.arrow",
+      "name": "流程-箭头变体(3步)",
+      "canonical_name": "process",
+      "variant": "arrow",
+      "group": "flow",
+      "group_label": "流程/时序",
+      "description": "Step-by-step process.",
+      "tasks": [
+        "process",
+        "timeline"
+      ],
+      "roles": [
+        "sequence",
+        "explain"
+      ],
+      "relations": [
+        "sequence",
+        "flow"
+      ],
+      "primitives": [
+        "linear-sequence",
+        "node-link"
+      ],
+      "renderer_kinds": [
+        "native-html",
+        "svg"
+      ],
+      "component_sources": [
+        "ppt-component-atlas"
+      ],
+      "aliases": [
+        "process",
+        "流程-箭头变体(3步)",
+        "arrow",
+        "30"
+      ],
+      "selection_notes": "Step-by-step process.",
+      "requires": [],
+      "space_requirements": {
+        "min_width": 760,
+        "min_height": 360,
+        "min_aspect_ratio": 1.05,
+        "max_aspect_ratio": 3.8
+      },
+      "capacity": {
+        "min_items": 1,
+        "max_items": 8
+      },
+      "dependencies": [
+        "ppt-component-atlas"
+      ]
+    },
+    {
+      "component_id": "atlas.031.process.arrow",
+      "name": "流程-箭头变体(4步)",
+      "canonical_name": "process",
+      "variant": "arrow",
+      "group": "flow",
+      "group_label": "流程/时序",
+      "description": "Step-by-step process.",
+      "tasks": [
+        "process",
+        "timeline"
+      ],
+      "roles": [
+        "sequence",
+        "explain"
+      ],
+      "relations": [
+        "sequence",
+        "flow"
+      ],
+      "primitives": [
+        "linear-sequence",
+        "node-link"
+      ],
+      "renderer_kinds": [
+        "native-html",
+        "svg"
+      ],
+      "component_sources": [
+        "ppt-component-atlas"
+      ],
+      "aliases": [
+        "process",
+        "流程-箭头变体(4步)",
+        "arrow",
+        "31"
+      ],
+      "selection_notes": "Step-by-step process.",
+      "requires": [],
+      "space_requirements": {
+        "min_width": 760,
+        "min_height": 360,
+        "min_aspect_ratio": 1.05,
+        "max_aspect_ratio": 3.8
+      },
+      "capacity": {
+        "min_items": 1,
+        "max_items": 8
+      },
+      "dependencies": [
+        "ppt-component-atlas"
+      ]
+    },
+    {
+      "component_id": "atlas.032.process.annotated-arrow",
+      "name": "流程-标注箭头变体",
+      "canonical_name": "process",
+      "variant": "annotated-arrow",
+      "group": "flow",
+      "group_label": "流程/时序",
+      "description": "Step-by-step process.",
+      "tasks": [
+        "process",
+        "timeline"
+      ],
+      "roles": [
+        "sequence",
+        "explain"
+      ],
+      "relations": [
+        "sequence",
+        "flow"
+      ],
+      "primitives": [
+        "linear-sequence",
+        "node-link"
+      ],
+      "renderer_kinds": [
+        "native-html",
+        "svg"
+      ],
+      "component_sources": [
+        "ppt-component-atlas"
+      ],
+      "aliases": [
+        "process",
+        "流程-标注箭头变体",
+        "annotated-arrow",
+        "32"
+      ],
+      "selection_notes": "Step-by-step process.",
+      "requires": [],
+      "space_requirements": {
+        "min_width": 760,
+        "min_height": 360,
+        "min_aspect_ratio": 1.05,
+        "max_aspect_ratio": 3.8
+      },
+      "capacity": {
+        "min_items": 1,
+        "max_items": 8
+      },
+      "dependencies": [
+        "ppt-component-atlas"
+      ]
+    },
+    {
+      "component_id": "atlas.033.process.arrow",
+      "name": "流程-箭头变体(5步)",
+      "canonical_name": "process",
+      "variant": "arrow",
+      "group": "flow",
+      "group_label": "流程/时序",
+      "description": "Step-by-step process.",
+      "tasks": [
+        "process",
+        "timeline"
+      ],
+      "roles": [
+        "sequence",
+        "explain"
+      ],
+      "relations": [
+        "sequence",
+        "flow"
+      ],
+      "primitives": [
+        "linear-sequence",
+        "node-link"
+      ],
+      "renderer_kinds": [
+        "native-html",
+        "svg"
+      ],
+      "component_sources": [
+        "ppt-component-atlas"
+      ],
+      "aliases": [
+        "process",
+        "流程-箭头变体(5步)",
+        "arrow",
+        "33"
+      ],
+      "selection_notes": "Step-by-step process.",
+      "requires": [],
+      "space_requirements": {
+        "min_width": 760,
+        "min_height": 360,
+        "min_aspect_ratio": 1.05,
+        "max_aspect_ratio": 3.8
+      },
+      "capacity": {
+        "min_items": 1,
+        "max_items": 8
+      },
+      "dependencies": [
+        "ppt-component-atlas"
+      ]
+    },
+    {
+      "component_id": "atlas.034.process-loop.triangle",
+      "name": "循环流程-三角变体",
+      "canonical_name": "process-loop",
+      "variant": "triangle",
+      "group": "flow",
+      "group_label": "流程/时序",
+      "description": "Loop process model.",
+      "tasks": [
+        "process",
+        "timeline"
+      ],
+      "roles": [
+        "sequence",
+        "explain"
+      ],
+      "relations": [
+        "sequence",
+        "flow"
+      ],
+      "primitives": [
+        "linear-sequence",
+        "node-link"
+      ],
+      "renderer_kinds": [
+        "native-html",
+        "svg"
+      ],
+      "component_sources": [
+        "ppt-component-atlas"
+      ],
+      "aliases": [
+        "process-loop",
+        "循环流程-三角变体",
+        "triangle",
+        "34"
+      ],
+      "selection_notes": "Loop process model.",
+      "requires": [],
+      "space_requirements": {
+        "min_width": 760,
+        "min_height": 360,
+        "min_aspect_ratio": 1.05,
+        "max_aspect_ratio": 3.8
+      },
+      "capacity": {
+        "min_items": 1,
+        "max_items": 8
+      },
+      "dependencies": [
+        "ppt-component-atlas"
+      ]
+    },
+    {
+      "component_id": "atlas.035.process-loop.quad",
+      "name": "循环流程-四边变体",
+      "canonical_name": "process-loop",
+      "variant": "quad",
+      "group": "flow",
+      "group_label": "流程/时序",
+      "description": "Loop process model.",
+      "tasks": [
+        "process",
+        "timeline"
+      ],
+      "roles": [
+        "sequence",
+        "explain"
+      ],
+      "relations": [
+        "sequence",
+        "flow"
+      ],
+      "primitives": [
+        "linear-sequence",
+        "node-link"
+      ],
+      "renderer_kinds": [
+        "native-html",
+        "svg"
+      ],
+      "component_sources": [
+        "ppt-component-atlas"
+      ],
+      "aliases": [
+        "process-loop",
+        "循环流程-四边变体",
+        "quad",
+        "35"
+      ],
+      "selection_notes": "Loop process model.",
+      "requires": [],
+      "space_requirements": {
+        "min_width": 760,
+        "min_height": 360,
+        "min_aspect_ratio": 1.05,
+        "max_aspect_ratio": 3.8
+      },
+      "capacity": {
+        "min_items": 1,
+        "max_items": 8
+      },
+      "dependencies": [
+        "ppt-component-atlas"
+      ]
+    },
+    {
+      "component_id": "atlas.036.process-loop.pentagon",
+      "name": "循环流程-五边变体",
+      "canonical_name": "process-loop",
+      "variant": "pentagon",
+      "group": "flow",
+      "group_label": "流程/时序",
+      "description": "Loop process model.",
+      "tasks": [
+        "process",
+        "timeline"
+      ],
+      "roles": [
+        "sequence",
+        "explain"
+      ],
+      "relations": [
+        "sequence",
+        "flow"
+      ],
+      "primitives": [
+        "linear-sequence",
+        "node-link"
+      ],
+      "renderer_kinds": [
+        "native-html",
+        "svg"
+      ],
+      "component_sources": [
+        "ppt-component-atlas"
+      ],
+      "aliases": [
+        "process-loop",
+        "循环流程-五边变体",
+        "pentagon",
+        "36"
+      ],
+      "selection_notes": "Loop process model.",
+      "requires": [],
+      "space_requirements": {
+        "min_width": 760,
+        "min_height": 360,
+        "min_aspect_ratio": 1.05,
+        "max_aspect_ratio": 3.8
+      },
+      "capacity": {
+        "min_items": 1,
+        "max_items": 8
+      },
+      "dependencies": [
+        "ppt-component-atlas"
+      ]
+    },
+    {
+      "component_id": "atlas.037.process-loop.closed-loop",
+      "name": "闭环流程",
+      "canonical_name": "process-loop",
+      "variant": "closed-loop",
+      "group": "flow",
+      "group_label": "流程/时序",
+      "description": "Closed loop process model.",
+      "tasks": [
+        "process",
+        "timeline"
+      ],
+      "roles": [
+        "sequence",
+        "explain"
+      ],
+      "relations": [
+        "sequence",
+        "flow"
+      ],
+      "primitives": [
+        "linear-sequence",
+        "node-link"
+      ],
+      "renderer_kinds": [
+        "native-html",
+        "svg"
+      ],
+      "component_sources": [
+        "ppt-component-atlas"
+      ],
+      "aliases": [
+        "process-loop",
+        "闭环流程",
+        "closed-loop",
+        "37"
+      ],
+      "selection_notes": "Closed loop process model.",
+      "requires": [],
+      "space_requirements": {
+        "min_width": 760,
+        "min_height": 360,
+        "min_aspect_ratio": 1.05,
+        "max_aspect_ratio": 3.8
+      },
+      "capacity": {
+        "min_items": 1,
+        "max_items": 8
+      },
+      "dependencies": [
+        "ppt-component-atlas"
+      ]
+    },
+    {
+      "component_id": "atlas.038.journey",
+      "name": "旅程图",
+      "canonical_name": "journey",
+      "variant": null,
+      "group": "flow",
+      "group_label": "流程/时序",
+      "description": "Journey path diagram.",
+      "tasks": [
+        "process",
+        "timeline"
+      ],
+      "roles": [
+        "sequence",
+        "explain"
+      ],
+      "relations": [
+        "sequence",
+        "flow"
+      ],
+      "primitives": [
+        "linear-sequence",
+        "node-link"
+      ],
+      "renderer_kinds": [
+        "native-html",
+        "svg"
+      ],
+      "component_sources": [
+        "ppt-component-atlas"
+      ],
+      "aliases": [
+        "journey",
+        "旅程图",
+        "38"
+      ],
+      "selection_notes": "Journey path diagram.",
+      "requires": [],
+      "space_requirements": {
+        "min_width": 760,
+        "min_height": 360,
+        "min_aspect_ratio": 1.05,
+        "max_aspect_ratio": 3.8
+      },
+      "capacity": {
+        "min_items": 1,
+        "max_items": 8
+      },
+      "dependencies": [
+        "ppt-component-atlas"
+      ]
+    },
+    {
+      "component_id": "atlas.039.timeline",
+      "name": "时间线",
+      "canonical_name": "timeline",
+      "variant": null,
+      "group": "flow",
+      "group_label": "流程/时序",
+      "description": "Time ordered milestones.",
+      "tasks": [
+        "process",
+        "timeline"
+      ],
+      "roles": [
+        "sequence",
+        "explain"
+      ],
+      "relations": [
+        "sequence",
+        "flow"
+      ],
+      "primitives": [
+        "linear-sequence",
+        "node-link"
+      ],
+      "renderer_kinds": [
+        "native-html",
+        "svg"
+      ],
+      "component_sources": [
+        "ppt-component-atlas"
+      ],
+      "aliases": [
+        "timeline",
+        "时间线",
+        "39"
+      ],
+      "selection_notes": "Time ordered milestones.",
+      "requires": [],
+      "space_requirements": {
+        "min_width": 760,
+        "min_height": 360,
+        "min_aspect_ratio": 1.05,
+        "max_aspect_ratio": 3.8
+      },
+      "capacity": {
+        "min_items": 1,
+        "max_items": 8
+      },
+      "dependencies": [
+        "ppt-component-atlas"
+      ]
+    },
+    {
+      "component_id": "atlas.040.timeline.vertical",
+      "name": "时间线-垂直变体",
+      "canonical_name": "timeline",
+      "variant": "vertical",
+      "group": "flow",
+      "group_label": "流程/时序",
+      "description": "Time ordered milestones.",
+      "tasks": [
+        "process",
+        "timeline"
+      ],
+      "roles": [
+        "sequence",
+        "explain"
+      ],
+      "relations": [
+        "sequence",
+        "flow"
+      ],
+      "primitives": [
+        "linear-sequence",
+        "node-link"
+      ],
+      "renderer_kinds": [
+        "native-html",
+        "svg"
+      ],
+      "component_sources": [
+        "ppt-component-atlas"
+      ],
+      "aliases": [
+        "timeline",
+        "时间线-垂直变体",
+        "vertical",
+        "40"
+      ],
+      "selection_notes": "Time ordered milestones.",
+      "requires": [],
+      "space_requirements": {
+        "min_width": 760,
+        "min_height": 360,
+        "min_aspect_ratio": 1.05,
+        "max_aspect_ratio": 3.8
+      },
+      "capacity": {
+        "min_items": 1,
+        "max_items": 8
+      },
+      "dependencies": [
+        "ppt-component-atlas"
+      ]
+    },
+    {
+      "component_id": "atlas.041.timeline.horizontal",
+      "name": "时间线-水平变体",
+      "canonical_name": "timeline",
+      "variant": "horizontal",
+      "group": "flow",
+      "group_label": "流程/时序",
+      "description": "Time ordered milestones.",
+      "tasks": [
+        "process",
+        "timeline"
+      ],
+      "roles": [
+        "sequence",
+        "explain"
+      ],
+      "relations": [
+        "sequence",
+        "flow"
+      ],
+      "primitives": [
+        "linear-sequence",
+        "node-link"
+      ],
+      "renderer_kinds": [
+        "native-html",
+        "svg"
+      ],
+      "component_sources": [
+        "ppt-component-atlas"
+      ],
+      "aliases": [
+        "timeline",
+        "时间线-水平变体",
+        "horizontal",
+        "41"
+      ],
+      "selection_notes": "Time ordered milestones.",
+      "requires": [],
+      "space_requirements": {
+        "min_width": 760,
+        "min_height": 360,
+        "min_aspect_ratio": 1.05,
+        "max_aspect_ratio": 3.8
+      },
+      "capacity": {
+        "min_items": 1,
+        "max_items": 8
+      },
+      "dependencies": [
+        "ppt-component-atlas"
+      ]
+    },
+    {
+      "component_id": "atlas.042.gantt",
+      "name": "甘特图",
+      "canonical_name": "gantt",
+      "variant": null,
+      "group": "flow",
+      "group_label": "流程/时序",
+      "description": "Task timeline plan.",
+      "tasks": [
+        "process",
+        "timeline"
+      ],
+      "roles": [
+        "sequence",
+        "explain"
+      ],
+      "relations": [
+        "sequence",
+        "flow"
+      ],
+      "primitives": [
+        "linear-sequence",
+        "node-link"
+      ],
+      "renderer_kinds": [
+        "native-html",
+        "svg"
+      ],
+      "component_sources": [
+        "ppt-component-atlas"
+      ],
+      "aliases": [
+        "gantt",
+        "甘特图",
+        "42"
+      ],
+      "selection_notes": "Task timeline plan.",
+      "requires": [],
+      "space_requirements": {
+        "min_width": 760,
+        "min_height": 360,
+        "min_aspect_ratio": 1.05,
+        "max_aspect_ratio": 3.8
+      },
+      "capacity": {
+        "min_items": 1,
+        "max_items": 8
+      },
+      "dependencies": [
+        "ppt-component-atlas"
+      ]
+    },
+    {
+      "component_id": "atlas.043.concentric",
+      "name": "同心圆",
+      "canonical_name": "concentric",
+      "variant": null,
+      "group": "structure",
+      "group_label": "结构/关系",
+      "description": "Layered concentric model.",
+      "tasks": [
+        "structure",
+        "hierarchy"
+      ],
+      "roles": [
+        "explain",
+        "synthesize"
+      ],
+      "relations": [
+        "hierarchy",
+        "decomposition"
+      ],
+      "primitives": [
+        "node-link",
+        "layered-stack"
+      ],
+      "renderer_kinds": [
+        "native-html",
+        "svg"
+      ],
+      "component_sources": [
+        "ppt-component-atlas"
+      ],
+      "aliases": [
+        "concentric",
+        "同心圆",
+        "43"
+      ],
+      "selection_notes": "Layered concentric model.",
+      "requires": [],
+      "space_requirements": {
+        "min_width": 620,
+        "min_height": 500,
+        "min_aspect_ratio": 0.75,
+        "max_aspect_ratio": 2.8
+      },
+      "capacity": {
+        "min_items": 1,
+        "max_items": 8
+      },
+      "dependencies": [
+        "ppt-component-atlas"
+      ]
+    },
+    {
+      "component_id": "atlas.044.concentric.align-center",
+      "name": "同心圆-居中变体",
+      "canonical_name": "concentric",
+      "variant": "align-center",
+      "group": "structure",
+      "group_label": "结构/关系",
+      "description": "Layered concentric model.",
+      "tasks": [
+        "structure",
+        "hierarchy"
+      ],
+      "roles": [
+        "explain",
+        "synthesize"
+      ],
+      "relations": [
+        "hierarchy",
+        "decomposition"
+      ],
+      "primitives": [
+        "node-link",
+        "layered-stack"
+      ],
+      "renderer_kinds": [
+        "native-html",
+        "svg"
+      ],
+      "component_sources": [
+        "ppt-component-atlas"
+      ],
+      "aliases": [
+        "concentric",
+        "同心圆-居中变体",
+        "align-center",
+        "44"
+      ],
+      "selection_notes": "Layered concentric model.",
+      "requires": [],
+      "space_requirements": {
+        "min_width": 620,
+        "min_height": 500,
+        "min_aspect_ratio": 0.75,
+        "max_aspect_ratio": 2.8
+      },
+      "capacity": {
+        "min_items": 1,
+        "max_items": 8
+      },
+      "dependencies": [
+        "ppt-component-atlas"
+      ]
+    },
+    {
+      "component_id": "atlas.045.concentric.center-text-bottom",
+      "name": "同心圆-底部文字变体",
+      "canonical_name": "concentric",
+      "variant": "center-text-bottom",
+      "group": "structure",
+      "group_label": "结构/关系",
+      "description": "Layered concentric model.",
+      "tasks": [
+        "structure",
+        "hierarchy"
+      ],
+      "roles": [
+        "explain",
+        "synthesize"
+      ],
+      "relations": [
+        "hierarchy",
+        "decomposition"
+      ],
+      "primitives": [
+        "node-link",
+        "layered-stack"
+      ],
+      "renderer_kinds": [
+        "native-html",
+        "svg"
+      ],
+      "component_sources": [
+        "ppt-component-atlas"
+      ],
+      "aliases": [
+        "concentric",
+        "同心圆-底部文字变体",
+        "center-text-bottom",
+        "45"
+      ],
+      "selection_notes": "Layered concentric model.",
+      "requires": [],
+      "space_requirements": {
+        "min_width": 620,
+        "min_height": 500,
+        "min_aspect_ratio": 0.75,
+        "max_aspect_ratio": 2.8
+      },
+      "capacity": {
+        "min_items": 1,
+        "max_items": 8
+      },
+      "dependencies": [
+        "ppt-component-atlas"
+      ]
+    },
+    {
+      "component_id": "atlas.046.concentric.align-top",
+      "name": "同心圆-顶部对齐变体",
+      "canonical_name": "concentric",
+      "variant": "align-top",
+      "group": "structure",
+      "group_label": "结构/关系",
+      "description": "Layered concentric model.",
+      "tasks": [
+        "structure",
+        "hierarchy"
+      ],
+      "roles": [
+        "explain",
+        "synthesize"
+      ],
+      "relations": [
+        "hierarchy",
+        "decomposition"
+      ],
+      "primitives": [
+        "node-link",
+        "layered-stack"
+      ],
+      "renderer_kinds": [
+        "native-html",
+        "svg"
+      ],
+      "component_sources": [
+        "ppt-component-atlas"
+      ],
+      "aliases": [
+        "concentric",
+        "同心圆-顶部对齐变体",
+        "align-top",
+        "46"
+      ],
+      "selection_notes": "Layered concentric model.",
+      "requires": [],
+      "space_requirements": {
+        "min_width": 620,
+        "min_height": 500,
+        "min_aspect_ratio": 0.75,
+        "max_aspect_ratio": 2.8
+      },
+      "capacity": {
+        "min_items": 1,
+        "max_items": 8
+      },
+      "dependencies": [
+        "ppt-component-atlas"
+      ]
+    },
+    {
+      "component_id": "atlas.047.concentric.align-bottom",
+      "name": "同心圆-底部对齐变体",
+      "canonical_name": "concentric",
+      "variant": "align-bottom",
+      "group": "structure",
+      "group_label": "结构/关系",
+      "description": "Layered concentric model.",
+      "tasks": [
+        "structure",
+        "hierarchy"
+      ],
+      "roles": [
+        "explain",
+        "synthesize"
+      ],
+      "relations": [
+        "hierarchy",
+        "decomposition"
+      ],
+      "primitives": [
+        "node-link",
+        "layered-stack"
+      ],
+      "renderer_kinds": [
+        "native-html",
+        "svg"
+      ],
+      "component_sources": [
+        "ppt-component-atlas"
+      ],
+      "aliases": [
+        "concentric",
+        "同心圆-底部对齐变体",
+        "align-bottom",
+        "47"
+      ],
+      "selection_notes": "Layered concentric model.",
+      "requires": [],
+      "space_requirements": {
+        "min_width": 620,
+        "min_height": 500,
+        "min_aspect_ratio": 0.75,
+        "max_aspect_ratio": 2.8
+      },
+      "capacity": {
+        "min_items": 1,
+        "max_items": 8
+      },
+      "dependencies": [
+        "ppt-component-atlas"
+      ]
+    },
+    {
+      "component_id": "atlas.048.pyramid",
+      "name": "金字塔",
+      "canonical_name": "pyramid",
+      "variant": null,
+      "group": "structure",
+      "group_label": "结构/关系",
+      "description": "Layered pyramid.",
+      "tasks": [
+        "structure",
+        "hierarchy"
+      ],
+      "roles": [
+        "explain",
+        "synthesize"
+      ],
+      "relations": [
+        "hierarchy",
+        "decomposition"
+      ],
+      "primitives": [
+        "node-link",
+        "layered-stack"
+      ],
+      "renderer_kinds": [
+        "native-html",
+        "svg"
+      ],
+      "component_sources": [
+        "ppt-component-atlas"
+      ],
+      "aliases": [
+        "pyramid",
+        "金字塔",
+        "48"
+      ],
+      "selection_notes": "Layered pyramid.",
+      "requires": [],
+      "space_requirements": {
+        "min_width": 620,
+        "min_height": 500,
+        "min_aspect_ratio": 0.75,
+        "max_aspect_ratio": 2.8
+      },
+      "capacity": {
+        "min_items": 1,
+        "max_items": 8
+      },
+      "dependencies": [
+        "ppt-component-atlas"
+      ]
+    },
+    {
+      "component_id": "atlas.049.pyramid.inverted",
+      "name": "金字塔-倒置变体",
+      "canonical_name": "pyramid",
+      "variant": "inverted",
+      "group": "structure",
+      "group_label": "结构/关系",
+      "description": "Layered pyramid.",
+      "tasks": [
+        "structure",
+        "hierarchy"
+      ],
+      "roles": [
+        "explain",
+        "synthesize"
+      ],
+      "relations": [
+        "hierarchy",
+        "decomposition"
+      ],
+      "primitives": [
+        "node-link",
+        "layered-stack"
+      ],
+      "renderer_kinds": [
+        "native-html",
+        "svg"
+      ],
+      "component_sources": [
+        "ppt-component-atlas"
+      ],
+      "aliases": [
+        "pyramid",
+        "金字塔-倒置变体",
+        "inverted",
+        "49"
+      ],
+      "selection_notes": "Layered pyramid.",
+      "requires": [],
+      "space_requirements": {
+        "min_width": 620,
+        "min_height": 500,
+        "min_aspect_ratio": 0.75,
+        "max_aspect_ratio": 2.8
+      },
+      "capacity": {
+        "min_items": 1,
+        "max_items": 8
+      },
+      "dependencies": [
+        "ppt-component-atlas"
+      ]
+    },
+    {
+      "component_id": "atlas.050.fishbone",
+      "name": "鱼骨图",
+      "canonical_name": "fishbone",
+      "variant": null,
+      "group": "structure",
+      "group_label": "结构/关系",
+      "description": "Cause and effect fishbone.",
+      "tasks": [
+        "structure",
+        "hierarchy"
+      ],
+      "roles": [
+        "explain",
+        "synthesize"
+      ],
+      "relations": [
+        "hierarchy",
+        "decomposition"
+      ],
+      "primitives": [
+        "node-link",
+        "layered-stack"
+      ],
+      "renderer_kinds": [
+        "native-html",
+        "svg"
+      ],
+      "component_sources": [
+        "ppt-component-atlas"
+      ],
+      "aliases": [
+        "fishbone",
+        "鱼骨图",
+        "50"
+      ],
+      "selection_notes": "Cause and effect fishbone.",
+      "requires": [],
+      "space_requirements": {
+        "min_width": 620,
+        "min_height": 500,
+        "min_aspect_ratio": 0.75,
+        "max_aspect_ratio": 2.8
+      },
+      "capacity": {
+        "min_items": 1,
+        "max_items": 8
+      },
+      "dependencies": [
+        "ppt-component-atlas"
+      ]
+    },
+    {
+      "component_id": "atlas.051.iceberg",
+      "name": "冰山图",
+      "canonical_name": "iceberg",
+      "variant": null,
+      "group": "structure",
+      "group_label": "结构/关系",
+      "description": "Surface and depth iceberg model.",
+      "tasks": [
+        "structure",
+        "hierarchy"
+      ],
+      "roles": [
+        "explain",
+        "synthesize"
+      ],
+      "relations": [
+        "hierarchy",
+        "decomposition"
+      ],
+      "primitives": [
+        "node-link",
+        "layered-stack"
+      ],
+      "renderer_kinds": [
+        "native-html",
+        "svg"
+      ],
+      "component_sources": [
+        "ppt-component-atlas"
+      ],
+      "aliases": [
+        "iceberg",
+        "冰山图",
+        "51"
+      ],
+      "selection_notes": "Surface and depth iceberg model.",
+      "requires": [],
+      "space_requirements": {
+        "min_width": 620,
+        "min_height": 500,
+        "min_aspect_ratio": 0.75,
+        "max_aspect_ratio": 2.8
+      },
+      "capacity": {
+        "min_items": 1,
+        "max_items": 8
+      },
+      "dependencies": [
+        "ppt-component-atlas"
+      ]
+    },
+    {
+      "component_id": "atlas.052.venn.double",
+      "name": "韦恩图-双圆变体",
+      "canonical_name": "venn",
+      "variant": "double",
+      "group": "structure",
+      "group_label": "结构/关系",
+      "description": "Venn overlap diagram.",
+      "tasks": [
+        "structure",
+        "hierarchy"
+      ],
+      "roles": [
+        "explain",
+        "synthesize"
+      ],
+      "relations": [
+        "hierarchy",
+        "decomposition"
+      ],
+      "primitives": [
+        "node-link",
+        "layered-stack"
+      ],
+      "renderer_kinds": [
+        "native-html",
+        "svg"
+      ],
+      "component_sources": [
+        "ppt-component-atlas"
+      ],
+      "aliases": [
+        "venn",
+        "韦恩图-双圆变体",
+        "double",
+        "52"
+      ],
+      "selection_notes": "Venn overlap diagram.",
+      "requires": [],
+      "space_requirements": {
+        "min_width": 620,
+        "min_height": 500,
+        "min_aspect_ratio": 0.75,
+        "max_aspect_ratio": 2.8
+      },
+      "capacity": {
+        "min_items": 1,
+        "max_items": 8
+      },
+      "dependencies": [
+        "ppt-component-atlas"
+      ]
+    },
+    {
+      "component_id": "atlas.053.venn.three",
+      "name": "韦恩图-三圆变体",
+      "canonical_name": "venn",
+      "variant": "three",
+      "group": "structure",
+      "group_label": "结构/关系",
+      "description": "Venn overlap diagram.",
+      "tasks": [
+        "structure",
+        "hierarchy"
+      ],
+      "roles": [
+        "explain",
+        "synthesize"
+      ],
+      "relations": [
+        "hierarchy",
+        "decomposition"
+      ],
+      "primitives": [
+        "node-link",
+        "layered-stack"
+      ],
+      "renderer_kinds": [
+        "native-html",
+        "svg"
+      ],
+      "component_sources": [
+        "ppt-component-atlas"
+      ],
+      "aliases": [
+        "venn",
+        "韦恩图-三圆变体",
+        "three",
+        "53"
+      ],
+      "selection_notes": "Venn overlap diagram.",
+      "requires": [],
+      "space_requirements": {
+        "min_width": 620,
+        "min_height": 500,
+        "min_aspect_ratio": 0.75,
+        "max_aspect_ratio": 2.8
+      },
+      "capacity": {
+        "min_items": 1,
+        "max_items": 8
+      },
+      "dependencies": [
+        "ppt-component-atlas"
+      ]
+    },
+    {
+      "component_id": "atlas.054.architecture",
+      "name": "架构图",
+      "canonical_name": "architecture",
+      "variant": null,
+      "group": "structure",
+      "group_label": "结构/关系",
+      "description": "Architecture layer diagram.",
+      "tasks": [
+        "structure",
+        "hierarchy"
+      ],
+      "roles": [
+        "explain",
+        "synthesize"
+      ],
+      "relations": [
+        "hierarchy",
+        "decomposition"
+      ],
+      "primitives": [
+        "node-link",
+        "layered-stack"
+      ],
+      "renderer_kinds": [
+        "native-html",
+        "svg"
+      ],
+      "component_sources": [
+        "ppt-component-atlas"
+      ],
+      "aliases": [
+        "architecture",
+        "架构图",
+        "54"
+      ],
+      "selection_notes": "Architecture layer diagram.",
+      "requires": [],
+      "space_requirements": {
+        "min_width": 620,
+        "min_height": 500,
+        "min_aspect_ratio": 0.75,
+        "max_aspect_ratio": 2.8
+      },
+      "capacity": {
+        "min_items": 1,
+        "max_items": 8
+      },
+      "dependencies": [
+        "ppt-component-atlas"
+      ]
+    },
+    {
+      "component_id": "atlas.055.arch-platform",
+      "name": "平台架构图",
+      "canonical_name": "arch-platform",
+      "variant": null,
+      "group": "structure",
+      "group_label": "结构/关系",
+      "description": "Platform architecture rows.",
+      "tasks": [
+        "structure",
+        "hierarchy"
+      ],
+      "roles": [
+        "explain",
+        "synthesize"
+      ],
+      "relations": [
+        "hierarchy",
+        "decomposition"
+      ],
+      "primitives": [
+        "node-link",
+        "layered-stack"
+      ],
+      "renderer_kinds": [
+        "native-html",
+        "svg"
+      ],
+      "component_sources": [
+        "ppt-component-atlas"
+      ],
+      "aliases": [
+        "arch-platform",
+        "平台架构图",
+        "55"
+      ],
+      "selection_notes": "Platform architecture rows.",
+      "requires": [],
+      "space_requirements": {
+        "min_width": 620,
+        "min_height": 500,
+        "min_aspect_ratio": 0.75,
+        "max_aspect_ratio": 2.8
+      },
+      "capacity": {
+        "min_items": 1,
+        "max_items": 8
+      },
+      "dependencies": [
+        "ppt-component-atlas"
+      ]
+    },
+    {
+      "component_id": "atlas.056.arch-platform-complex-v",
+      "name": "平台架构图-复杂垂直变体",
+      "canonical_name": "arch-platform-complex-v",
+      "variant": null,
+      "group": "structure",
+      "group_label": "结构/关系",
+      "description": "Vertical platform architecture rows.",
+      "tasks": [
+        "structure",
+        "hierarchy"
+      ],
+      "roles": [
+        "explain",
+        "synthesize"
+      ],
+      "relations": [
+        "hierarchy",
+        "decomposition"
+      ],
+      "primitives": [
+        "node-link",
+        "layered-stack"
+      ],
+      "renderer_kinds": [
+        "native-html",
+        "svg"
+      ],
+      "component_sources": [
+        "ppt-component-atlas"
+      ],
+      "aliases": [
+        "arch-platform-complex-v",
+        "平台架构图-复杂垂直变体",
+        "56"
+      ],
+      "selection_notes": "Vertical platform architecture rows.",
+      "requires": [],
+      "space_requirements": {
+        "min_width": 620,
+        "min_height": 500,
+        "min_aspect_ratio": 0.75,
+        "max_aspect_ratio": 2.8
+      },
+      "capacity": {
+        "min_items": 1,
+        "max_items": 8
+      },
+      "dependencies": [
+        "ppt-component-atlas"
+      ]
+    },
+    {
+      "component_id": "atlas.057.mind-map.horizontal",
+      "name": "思维导图-水平变体",
+      "canonical_name": "mind-map",
+      "variant": "horizontal",
+      "group": "structure",
+      "group_label": "结构/关系",
+      "description": "Root and branch mind map.",
+      "tasks": [
+        "structure",
+        "hierarchy"
+      ],
+      "roles": [
+        "explain",
+        "synthesize"
+      ],
+      "relations": [
+        "hierarchy",
+        "decomposition"
+      ],
+      "primitives": [
+        "node-link",
+        "layered-stack"
+      ],
+      "renderer_kinds": [
+        "native-html",
+        "svg"
+      ],
+      "component_sources": [
+        "ppt-component-atlas"
+      ],
+      "aliases": [
+        "mind-map",
+        "思维导图-水平变体",
+        "horizontal",
+        "57"
+      ],
+      "selection_notes": "Root and branch mind map.",
+      "requires": [],
+      "space_requirements": {
+        "min_width": 620,
+        "min_height": 500,
+        "min_aspect_ratio": 0.75,
+        "max_aspect_ratio": 2.8
+      },
+      "capacity": {
+        "min_items": 1,
+        "max_items": 8
+      },
+      "dependencies": [
+        "ppt-component-atlas"
+      ]
+    },
+    {
+      "component_id": "atlas.058.mind-map.vertical",
+      "name": "思维导图-垂直变体",
+      "canonical_name": "mind-map",
+      "variant": "vertical",
+      "group": "structure",
+      "group_label": "结构/关系",
+      "description": "Root and branch mind map.",
+      "tasks": [
+        "structure",
+        "hierarchy"
+      ],
+      "roles": [
+        "explain",
+        "synthesize"
+      ],
+      "relations": [
+        "hierarchy",
+        "decomposition"
+      ],
+      "primitives": [
+        "node-link",
+        "layered-stack"
+      ],
+      "renderer_kinds": [
+        "native-html",
+        "svg"
+      ],
+      "component_sources": [
+        "ppt-component-atlas"
+      ],
+      "aliases": [
+        "mind-map",
+        "思维导图-垂直变体",
+        "vertical",
+        "58"
+      ],
+      "selection_notes": "Root and branch mind map.",
+      "requires": [],
+      "space_requirements": {
+        "min_width": 620,
+        "min_height": 500,
+        "min_aspect_ratio": 0.75,
+        "max_aspect_ratio": 2.8
+      },
+      "capacity": {
+        "min_items": 1,
+        "max_items": 8
+      },
+      "dependencies": [
+        "ppt-component-atlas"
+      ]
+    },
+    {
+      "component_id": "atlas.059.stats",
+      "name": "统计卡片",
+      "canonical_name": "stats",
+      "variant": null,
+      "group": "data",
+      "group_label": "数据/图表",
+      "description": "Metric cards.",
+      "tasks": [
+        "data",
+        "chart"
+      ],
+      "roles": [
+        "prove",
+        "explain",
+        "compare"
+      ],
+      "relations": [
+        "comparison",
+        "profile",
+        "distribution"
+      ],
+      "primitives": [
+        "coordinate-plot",
+        "radial-axis"
+      ],
+      "renderer_kinds": [
+        "native-html",
+        "svg"
+      ],
+      "component_sources": [
+        "ppt-component-atlas"
+      ],
+      "aliases": [
+        "stats",
+        "统计卡片",
+        "59"
+      ],
+      "selection_notes": "Metric cards.",
+      "requires": [],
+      "space_requirements": {
+        "min_width": 620,
+        "min_height": 360,
+        "min_aspect_ratio": 0.85,
+        "max_aspect_ratio": 3.8
+      },
+      "capacity": {
+        "min_items": 1,
+        "max_items": 8
+      },
+      "dependencies": [
+        "ppt-component-atlas"
+      ]
+    },
+    {
+      "component_id": "atlas.060.radar",
+      "name": "雷达图",
+      "canonical_name": "radar",
+      "variant": null,
+      "group": "data",
+      "group_label": "数据/图表",
+      "description": "Radial capability scan.",
+      "tasks": [
+        "data",
+        "chart"
+      ],
+      "roles": [
+        "prove",
+        "explain",
+        "compare"
+      ],
+      "relations": [
+        "comparison",
+        "profile",
+        "distribution"
+      ],
+      "primitives": [
+        "coordinate-plot",
+        "radial-axis"
+      ],
+      "renderer_kinds": [
+        "native-html",
+        "svg"
+      ],
+      "component_sources": [
+        "ppt-component-atlas"
+      ],
+      "aliases": [
+        "radar",
+        "雷达图",
+        "60"
+      ],
+      "selection_notes": "Radial capability scan.",
+      "requires": [],
+      "space_requirements": {
+        "min_width": 620,
+        "min_height": 360,
+        "min_aspect_ratio": 0.85,
+        "max_aspect_ratio": 3.8
+      },
+      "capacity": {
+        "min_items": 1,
+        "max_items": 8
+      },
+      "dependencies": [
+        "ppt-component-atlas"
+      ]
+    },
+    {
+      "component_id": "atlas.061.radar-hex",
+      "name": "六边形雷达图",
+      "canonical_name": "radar-hex",
+      "variant": null,
+      "group": "data",
+      "group_label": "数据/图表",
+      "description": "Hexagonal radar scan.",
+      "tasks": [
+        "data",
+        "chart"
+      ],
+      "roles": [
+        "prove",
+        "explain",
+        "compare"
+      ],
+      "relations": [
+        "comparison",
+        "profile",
+        "distribution"
+      ],
+      "primitives": [
+        "coordinate-plot",
+        "radial-axis"
+      ],
+      "renderer_kinds": [
+        "native-html",
+        "svg"
+      ],
+      "component_sources": [
+        "ppt-component-atlas"
+      ],
+      "aliases": [
+        "radar-hex",
+        "六边形雷达图",
+        "61"
+      ],
+      "selection_notes": "Hexagonal radar scan.",
+      "requires": [],
+      "space_requirements": {
+        "min_width": 620,
+        "min_height": 360,
+        "min_aspect_ratio": 0.85,
+        "max_aspect_ratio": 3.8
+      },
+      "capacity": {
+        "min_items": 1,
+        "max_items": 8
+      },
+      "dependencies": [
+        "ppt-component-atlas"
+      ]
+    },
+    {
+      "component_id": "codex-host.paper-ink.media.generated-image",
+      "name": "宿主生成后冻结图片",
+      "canonical_name": "generated-image",
+      "variant": null,
+      "group": "content",
+      "group_label": "媒体/图片",
+      "description": "由 Codex 宿主生成并在构建前冻结为 deck 本地资产的图片。",
+      "aliases": [
+        "generated-image",
+        "生成图片",
+        "宿主图片"
+      ],
+      "renderer_kinds": [
+        "image"
+      ],
+      "component_sources": [
+        "codex-host"
+      ],
+      "roles": [
+        "hook",
+        "explain",
+        "prove",
+        "compare",
+        "synthesize",
+        "act"
+      ],
+      "relations": [
+        "focus",
+        "evidence",
+        "comparison",
+        "spatial",
+        "mapping"
+      ],
+      "primitives": [
+        "image-region",
+        "scene-canvas",
+        "figure-caption",
+        "evidence-annotation",
+        "document-frame",
+        "focus-field"
+      ],
+      "tasks": [
+        "image",
+        "media",
+        "evidence",
+        "illustration"
+      ],
+      "selection_notes": "生成完成后必须冻结为 deck 内本地资产；生产 HTML 不得保留远程生成 URL。",
+      "requires": [],
+      "space_requirements": {
+        "min_width": 320,
+        "min_height": 220,
+        "min_aspect_ratio": 0.5,
+        "max_aspect_ratio": 4.5
+      },
+      "capacity": {
+        "min_items": 1,
+        "max_items": 1
+      },
+      "frame": {
+        "fit": "fluid"
+      },
+      "dependencies": [
+        "codex-host-image"
+      ],
+      "source": {
+        "kind": "codex-host-frozen-local-asset"
+      }
+    },
+    {
+      "component_id": "echarts.bar-basic",
+      "series_type": "bar",
+      "name": "基础柱状图",
+      "aliases": [
+        "柱状图",
+        "条形图",
+        "bar"
+      ],
+      "tasks": [
+        "comparison",
+        "ranking"
+      ],
+      "roles": [
+        "explain",
+        "prove"
+      ],
+      "relations": [
+        "comparison",
+        "ranking"
+      ],
+      "primitives": [
+        "coordinate-plot"
+      ],
+      "renderer_kinds": [
+        "svg",
+        "canvas"
+      ],
+      "component_sources": [
+        "echarts"
+      ],
+      "dataset_mode": "direct",
+      "example": "capabilities/vendors/echarts/examples/bar-basic.json",
+      "selection_notes": "离散类别的数值比较或排序。",
+      "canonical_name": "基础柱状图",
+      "requires": [],
+      "space_requirements": {
+        "min_width": 640,
+        "min_height": 320,
+        "min_aspect_ratio": 0.9,
+        "max_aspect_ratio": 3.8
+      },
+      "capacity": {
+        "min_items": 1,
+        "max_items": 12
+      },
+      "dependencies": [
+        "echarts"
+      ]
+    },
+    {
+      "component_id": "echarts.bar-dynamic-sort",
+      "series_type": "bar",
+      "name": "动态排序柱状图",
+      "aliases": [
+        "条形图竞赛",
+        "动态排名",
+        "bar race"
+      ],
+      "tasks": [
+        "ranking",
+        "animation",
+        "time-series"
+      ],
+      "roles": [
+        "explain",
+        "prove"
+      ],
+      "relations": [
+        "ranking",
+        "change"
+      ],
+      "primitives": [
+        "coordinate-plot"
+      ],
+      "renderer_kinds": [
+        "svg",
+        "canvas"
+      ],
+      "component_sources": [
+        "echarts"
+      ],
+      "dataset_mode": "runtime-update",
+      "example": "capabilities/vendors/echarts/examples/bar-dynamic-sort.json",
+      "selection_notes": "排名随时间变化；静态交付只显示初始帧，完整动画需增量 setOption。",
+      "canonical_name": "动态排序柱状图",
+      "requires": [],
+      "space_requirements": {
+        "min_width": 640,
+        "min_height": 320,
+        "min_aspect_ratio": 0.9,
+        "max_aspect_ratio": 3.8
+      },
+      "capacity": {
+        "min_items": 1,
+        "max_items": 12
+      },
+      "dependencies": [
+        "echarts"
+      ]
+    },
+    {
+      "component_id": "echarts.calendar-basic",
+      "series_type": "heatmap",
+      "name": "日历热力图",
+      "aliases": [
+        "日历图",
+        "热力图",
+        "calendar",
+        "heatmap"
+      ],
+      "tasks": [
+        "density",
+        "calendar-activity"
+      ],
+      "roles": [
+        "explore",
+        "prove"
+      ],
+      "relations": [
+        "distribution",
+        "time-series"
+      ],
+      "primitives": [
+        "matrix-cells"
+      ],
+      "renderer_kinds": [
+        "svg",
+        "canvas"
+      ],
+      "component_sources": [
+        "echarts"
+      ],
+      "dataset_mode": "direct",
+      "example": "capabilities/vendors/echarts/examples/calendar-basic.json",
+      "selection_notes": "日历活跃度；calendar 是坐标系，实际 series 类型为 heatmap。",
+      "canonical_name": "日历热力图",
+      "requires": [],
+      "space_requirements": {
+        "min_width": 900,
+        "min_height": 300,
+        "min_aspect_ratio": 1.8,
+        "max_aspect_ratio": 4.5
+      },
+      "capacity": {
+        "min_items": 1,
+        "max_items": 12
+      },
+      "dependencies": [
+        "echarts"
+      ]
+    },
+    {
+      "component_id": "echarts.line-basic",
+      "series_type": "line",
+      "name": "基础折线图",
+      "aliases": [
+        "折线图",
+        "趋势图",
+        "line"
+      ],
+      "tasks": [
+        "trend",
+        "time-series",
+        "comparison"
+      ],
+      "roles": [
+        "explain",
+        "prove"
+      ],
+      "relations": [
+        "trend",
+        "comparison"
+      ],
+      "primitives": [
+        "coordinate-plot"
+      ],
+      "renderer_kinds": [
+        "svg",
+        "canvas"
+      ],
+      "component_sources": [
+        "echarts"
+      ],
+      "dataset_mode": "direct",
+      "example": "capabilities/vendors/echarts/examples/line-basic.json",
+      "selection_notes": "连续序列趋势；类目轴或时间轴上的单数值系列。",
+      "canonical_name": "基础折线图",
+      "requires": [],
+      "space_requirements": {
+        "min_width": 640,
+        "min_height": 320,
+        "min_aspect_ratio": 0.9,
+        "max_aspect_ratio": 3.8
+      },
+      "capacity": {
+        "min_items": 1,
+        "max_items": 12
+      },
+      "dependencies": [
+        "echarts"
+      ]
+    },
+    {
+      "component_id": "echarts.line-smooth",
+      "series_type": "line",
+      "name": "平滑折线图",
+      "aliases": [
+        "平滑趋势图",
+        "smooth line"
+      ],
+      "tasks": [
+        "trend",
+        "time-series"
+      ],
+      "roles": [
+        "explain",
+        "prove"
+      ],
+      "relations": [
+        "trend"
+      ],
+      "primitives": [
+        "coordinate-plot"
+      ],
+      "renderer_kinds": [
+        "svg",
+        "canvas"
+      ],
+      "component_sources": [
+        "echarts"
+      ],
+      "dataset_mode": "direct",
+      "example": "capabilities/vendors/echarts/examples/line-smooth.json",
+      "selection_notes": "强调连续变化形态；数据点之间没有连续含义时不用平滑。",
+      "canonical_name": "平滑折线图",
+      "requires": [],
+      "space_requirements": {
+        "min_width": 640,
+        "min_height": 320,
+        "min_aspect_ratio": 0.9,
+        "max_aspect_ratio": 3.8
+      },
+      "capacity": {
+        "min_items": 1,
+        "max_items": 12
+      },
+      "dependencies": [
+        "echarts"
+      ]
+    },
+    {
+      "component_id": "echarts.line-stacked",
+      "series_type": "line",
+      "name": "堆叠折线图",
+      "aliases": [
+        "累计趋势图",
+        "stacked line"
+      ],
+      "tasks": [
+        "trend",
+        "composition",
+        "comparison"
+      ],
+      "roles": [
+        "explain",
+        "prove"
+      ],
+      "relations": [
+        "trend",
+        "composition"
+      ],
+      "primitives": [
+        "coordinate-plot"
+      ],
+      "renderer_kinds": [
+        "svg",
+        "canvas"
+      ],
+      "component_sources": [
+        "echarts"
+      ],
+      "dataset_mode": "direct",
+      "example": "capabilities/vendors/echarts/examples/line-stacked.json",
+      "selection_notes": "多个系列的累计变化；若只比较单系列，使用基础折线图。",
+      "canonical_name": "堆叠折线图",
+      "requires": [],
+      "space_requirements": {
+        "min_width": 640,
+        "min_height": 320,
+        "min_aspect_ratio": 0.9,
+        "max_aspect_ratio": 3.8
+      },
+      "capacity": {
+        "min_items": 1,
+        "max_items": 12
+      },
+      "dependencies": [
+        "echarts"
+      ]
+    },
+    {
+      "component_id": "echarts.pie-access-source",
+      "series_type": "pie",
+      "name": "访问来源饼图",
+      "aliases": [
+        "饼图",
+        "构成图",
+        "pie",
+        "donut"
+      ],
+      "tasks": [
+        "composition",
+        "share-of-total"
+      ],
+      "roles": [
+        "explain",
+        "prove"
+      ],
+      "relations": [
+        "composition"
+      ],
+      "primitives": [
+        "radial-partition"
+      ],
+      "renderer_kinds": [
+        "svg",
+        "canvas"
+      ],
+      "component_sources": [
+        "echarts"
+      ],
+      "dataset_mode": "direct",
+      "example": "capabilities/vendors/echarts/examples/pie-access-source.json",
+      "selection_notes": "少量类别的整体构成；类别过多时改用条形图。",
+      "canonical_name": "访问来源饼图",
+      "requires": [],
+      "space_requirements": {
+        "min_width": 520,
+        "min_height": 420,
+        "min_aspect_ratio": 0.8,
+        "max_aspect_ratio": 3.0
+      },
+      "capacity": {
+        "min_items": 1,
+        "max_items": 12
+      },
+      "dependencies": [
+        "echarts"
+      ]
+    },
+    {
+      "component_id": "echarts.radar-basic",
+      "series_type": "radar",
+      "name": "基础雷达图",
+      "aliases": [
+        "雷达图",
+        "能力图",
+        "radar"
+      ],
+      "tasks": [
+        "profile",
+        "multi-metric-comparison"
+      ],
+      "roles": [
+        "compare",
+        "explain"
+      ],
+      "relations": [
+        "comparison",
+        "profile"
+      ],
+      "primitives": [
+        "radial-axis"
+      ],
+      "renderer_kinds": [
+        "svg",
+        "canvas"
+      ],
+      "component_sources": [
+        "echarts"
+      ],
+      "dataset_mode": "derived",
+      "example": "capabilities/vendors/echarts/examples/radar-basic.json",
+      "selection_notes": "同一量纲体系下的少量对象多指标轮廓；indicator 与值数组需同步。",
+      "canonical_name": "基础雷达图",
+      "requires": [],
+      "space_requirements": {
+        "min_width": 520,
+        "min_height": 420,
+        "min_aspect_ratio": 0.8,
+        "max_aspect_ratio": 3.0
+      },
+      "capacity": {
+        "min_items": 1,
+        "max_items": 12
+      },
+      "dependencies": [
+        "echarts"
+      ]
+    },
+    {
+      "component_id": "echarts.sankey-basic",
+      "series_type": "sankey",
+      "name": "基础桑基图",
+      "aliases": [
+        "桑基图",
+        "流向图",
+        "sankey"
+      ],
+      "tasks": [
+        "flow",
+        "allocation"
+      ],
+      "roles": [
+        "explain",
+        "prove"
+      ],
+      "relations": [
+        "flow"
+      ],
+      "primitives": [
+        "weighted-node-link"
+      ],
+      "renderer_kinds": [
+        "svg",
+        "canvas"
+      ],
+      "component_sources": [
+        "echarts"
+      ],
+      "dataset_mode": "derived",
+      "example": "capabilities/vendors/echarts/examples/sankey-basic.json",
+      "selection_notes": "带权重的多阶段流量分配；nodes 与 links 从关系表派生。",
+      "canonical_name": "基础桑基图",
+      "requires": [],
+      "space_requirements": {
+        "min_width": 760,
+        "min_height": 420,
+        "min_aspect_ratio": 1.1,
+        "max_aspect_ratio": 3.6
+      },
+      "capacity": {
+        "min_items": 1,
+        "max_items": 12
+      },
+      "dependencies": [
+        "echarts"
+      ]
+    },
+    {
+      "component_id": "echarts.scatter-basic",
+      "series_type": "scatter",
+      "name": "基础散点图",
+      "aliases": [
+        "散点图",
+        "气泡图",
+        "scatter",
+        "bubble"
+      ],
+      "tasks": [
+        "distribution",
+        "correlation"
+      ],
+      "roles": [
+        "explore",
+        "prove"
+      ],
+      "relations": [
+        "distribution",
+        "correlation"
+      ],
+      "primitives": [
+        "coordinate-plot"
+      ],
+      "renderer_kinds": [
+        "svg",
+        "canvas"
+      ],
+      "component_sources": [
+        "echarts"
+      ],
+      "dataset_mode": "direct",
+      "example": "capabilities/vendors/echarts/examples/scatter-basic.json",
+      "selection_notes": "两个或三个数值变量的分布、相关与异常点。",
+      "canonical_name": "基础散点图",
+      "requires": [],
+      "space_requirements": {
+        "min_width": 640,
+        "min_height": 320,
+        "min_aspect_ratio": 0.9,
+        "max_aspect_ratio": 3.8
+      },
+      "capacity": {
+        "min_items": 1,
+        "max_items": 12
+      },
+      "dependencies": [
+        "echarts"
+      ]
+    },
+    {
+      "component_id": "echarts.scatter-to-bar-anim",
+      "series_type": "scatter",
+      "name": "散点聚合柱状动画",
+      "aliases": [
+        "散点转柱状",
+        "聚合动画",
+        "scatter to bar"
+      ],
+      "tasks": [
+        "distribution",
+        "aggregation",
+        "animation"
+      ],
+      "roles": [
+        "explain",
+        "prove"
+      ],
+      "relations": [
+        "distribution",
+        "transformation"
+      ],
+      "primitives": [
+        "coordinate-plot"
+      ],
+      "renderer_kinds": [
+        "svg",
+        "canvas"
+      ],
+      "component_sources": [
+        "echarts"
+      ],
+      "dataset_mode": "runtime-update",
+      "example": "capabilities/vendors/echarts/examples/scatter-to-bar-anim.json",
+      "selection_notes": "展示从离散点到聚合柱的变化；完整动画需增量 setOption。",
+      "canonical_name": "散点聚合柱状动画",
+      "requires": [],
+      "space_requirements": {
+        "min_width": 640,
+        "min_height": 320,
+        "min_aspect_ratio": 0.9,
+        "max_aspect_ratio": 3.8
+      },
+      "capacity": {
+        "min_items": 1,
+        "max_items": 12
+      },
+      "dependencies": [
+        "echarts"
+      ]
+    },
+    {
+      "component_id": "echarts.tree-lr",
+      "series_type": "tree",
+      "name": "从左到右树状图",
+      "aliases": [
+        "树图",
+        "层级树",
+        "tree"
+      ],
+      "tasks": [
+        "hierarchy",
+        "decomposition"
+      ],
+      "roles": [
+        "explain"
+      ],
+      "relations": [
+        "hierarchy",
+        "decomposition"
+      ],
+      "primitives": [
+        "node-link"
+      ],
+      "renderer_kinds": [
+        "svg",
+        "canvas"
+      ],
+      "component_sources": [
+        "echarts"
+      ],
+      "dataset_mode": "derived",
+      "example": "capabilities/vendors/echarts/examples/tree-lr.json",
+      "selection_notes": "有唯一父节点的层级结构；扁平 node/parent 表需同步为嵌套树。",
+      "canonical_name": "从左到右树状图",
+      "requires": [],
+      "space_requirements": {
+        "min_width": 760,
+        "min_height": 420,
+        "min_aspect_ratio": 1.1,
+        "max_aspect_ratio": 3.6
+      },
+      "capacity": {
+        "min_items": 1,
+        "max_items": 12
+      },
+      "dependencies": [
+        "echarts"
+      ]
+    },
+    {
+      "component_id": "native.paper-ink.062.agenda-ink",
+      "name": "档案目录",
+      "canonical_name": "agenda-ink",
+      "variant": null,
+      "group": "content",
+      "group_label": "内容/排版",
+      "description": "Archival numbered table of contents.",
+      "aliases": [
+        "agenda-ink",
+        "档案目录",
+        "62"
+      ],
+      "renderer_kinds": [
+        "native-html"
+      ],
+      "component_sources": [
+        "native"
+      ],
+      "roles": [
+        "orient"
+      ],
+      "relations": [
+        "sequence"
+      ],
+      "primitives": [
+        "numbered-list"
+      ],
+      "tasks": [
+        "agenda"
+      ],
+      "selection_notes": "Archival numbered table of contents.",
+      "requires": [],
+      "space_requirements": {
+        "min_width": 760,
+        "min_height": 460,
+        "min_aspect_ratio": 1.0,
+        "max_aspect_ratio": 3.2
+      },
+      "capacity": {
+        "min_items": 3,
+        "max_items": 8
+      },
+      "dependencies": [
+        "paper-ink-components"
+      ],
+      "source": {}
+    },
+    {
+      "component_id": "native.paper-ink.063.step-rise",
+      "name": "阶梯爬升图",
+      "canonical_name": "step-rise",
+      "variant": null,
+      "group": "process",
+      "group_label": "流程/时序",
+      "description": "Step-rise maturity path.",
+      "aliases": [
+        "step-rise",
+        "阶梯爬升图",
+        "63"
+      ],
+      "renderer_kinds": [
+        "svg"
+      ],
+      "component_sources": [
+        "native"
+      ],
+      "roles": [
+        "sequence",
+        "explain"
+      ],
+      "relations": [
+        "sequence",
+        "progression"
+      ],
+      "primitives": [
+        "linear-sequence"
+      ],
+      "tasks": [
+        "maturity",
+        "process"
+      ],
+      "selection_notes": "Step-rise maturity path.",
+      "requires": [],
+      "space_requirements": {
+        "min_width": 900,
+        "min_height": 420,
+        "min_aspect_ratio": 1.45,
+        "max_aspect_ratio": 3.3
+      },
+      "capacity": {
+        "min_items": 3,
+        "max_items": 6
+      },
+      "dependencies": [
+        "paper-ink-components"
+      ],
+      "source": {}
+    },
+    {
+      "component_id": "native.paper-ink.064.doc-excerpt",
+      "name": "文献摘引块",
+      "canonical_name": "doc-excerpt",
+      "variant": null,
+      "group": "content",
+      "group_label": "内容/排版",
+      "description": "Literature excerpt block with double-underlined key sentence.",
+      "aliases": [
+        "doc-excerpt",
+        "文献摘引块",
+        "64"
+      ],
+      "renderer_kinds": [
+        "native-html"
+      ],
+      "component_sources": [
+        "native"
+      ],
+      "roles": [
+        "prove"
+      ],
+      "relations": [
+        "evidence",
+        "focus"
+      ],
+      "primitives": [
+        "evidence-annotation"
+      ],
+      "tasks": [
+        "quotation",
+        "evidence"
+      ],
+      "selection_notes": "Literature excerpt block with double-underlined key sentence.",
+      "requires": [],
+      "space_requirements": {
+        "min_width": 680,
+        "min_height": 480,
+        "min_aspect_ratio": 0.85,
+        "max_aspect_ratio": 1.8
+      },
+      "capacity": {
+        "min_items": 1,
+        "max_items": 3
+      },
+      "dependencies": [
+        "paper-ink-components"
+      ],
+      "source": {}
+    },
+    {
+      "component_id": "native.paper-ink.065.official-doc",
+      "name": "公文标本框",
+      "canonical_name": "official-doc",
+      "variant": null,
+      "group": "content",
+      "group_label": "内容/排版",
+      "description": "Official document specimen in a double-ruled frame.",
+      "aliases": [
+        "official-doc",
+        "公文标本框",
+        "65"
+      ],
+      "renderer_kinds": [
+        "native-html"
+      ],
+      "component_sources": [
+        "native"
+      ],
+      "roles": [
+        "prove"
+      ],
+      "relations": [
+        "evidence",
+        "focus"
+      ],
+      "primitives": [
+        "document-frame"
+      ],
+      "tasks": [
+        "document",
+        "evidence"
+      ],
+      "selection_notes": "Official document specimen in a double-ruled frame.",
+      "requires": [],
+      "space_requirements": {
+        "min_width": 680,
+        "min_height": 500,
+        "min_aspect_ratio": 0.8,
+        "max_aspect_ratio": 1.7
+      },
+      "capacity": {
+        "min_items": 1,
+        "max_items": 2
+      },
+      "dependencies": [
+        "paper-ink-components"
+      ],
+      "source": {}
+    },
+    {
+      "component_id": "native.paper-ink.066.evidence-wall",
+      "name": "证据墙标本格",
+      "canonical_name": "evidence-wall",
+      "variant": null,
+      "group": "content",
+      "group_label": "内容/排版",
+      "description": "Two-by-two evidence wall of framed specimen cells.",
+      "aliases": [
+        "evidence-wall",
+        "证据墙标本格",
+        "66"
+      ],
+      "renderer_kinds": [
+        "native-html",
+        "svg"
+      ],
+      "component_sources": [
+        "native"
+      ],
+      "roles": [
+        "prove",
+        "synthesize"
+      ],
+      "relations": [
+        "matrix",
+        "evidence"
+      ],
+      "primitives": [
+        "evidence-annotation",
+        "peer-array"
+      ],
+      "tasks": [
+        "evidence",
+        "matrix"
+      ],
+      "selection_notes": "Two-by-two evidence wall of framed specimen cells.",
+      "requires": [],
+      "space_requirements": {
+        "min_width": 900,
+        "min_height": 520,
+        "min_aspect_ratio": 1.2,
+        "max_aspect_ratio": 3.2
+      },
+      "capacity": {
+        "min_items": 2,
+        "max_items": 6
+      },
+      "dependencies": [
+        "paper-ink-components"
+      ],
+      "source": {}
+    },
+    {
+      "component_id": "native.paper-ink.067.logo-cloud",
+      "name": "品牌云墙",
+      "canonical_name": "logo-cloud",
+      "variant": null,
+      "group": "content",
+      "group_label": "内容/排版",
+      "description": "Brand cloud wall of geometric line marks.",
+      "aliases": [
+        "logo-cloud",
+        "品牌云墙",
+        "67"
+      ],
+      "renderer_kinds": [
+        "native-html",
+        "svg"
+      ],
+      "component_sources": [
+        "native"
+      ],
+      "roles": [
+        "prove"
+      ],
+      "relations": [
+        "matrix",
+        "evidence"
+      ],
+      "primitives": [
+        "peer-array"
+      ],
+      "tasks": [
+        "logo",
+        "evidence"
+      ],
+      "selection_notes": "Brand cloud wall of geometric line marks.",
+      "requires": [],
+      "space_requirements": {
+        "min_width": 820,
+        "min_height": 460,
+        "min_aspect_ratio": 1.1,
+        "max_aspect_ratio": 3.5
+      },
+      "capacity": {
+        "min_items": 4,
+        "max_items": 16
+      },
+      "dependencies": [
+        "paper-ink-components"
+      ],
+      "source": {}
+    },
+    {
+      "component_id": "native.paper-ink.068.mobile-gallery",
+      "name": "手机屏步骤画廊",
+      "canonical_name": "mobile-gallery",
+      "variant": null,
+      "group": "content",
+      "group_label": "内容/排版",
+      "description": "Two-phone screen step gallery with flow arrow.",
+      "aliases": [
+        "mobile-gallery",
+        "手机屏步骤画廊",
+        "68"
+      ],
+      "renderer_kinds": [
+        "svg"
+      ],
+      "component_sources": [
+        "native"
+      ],
+      "roles": [
+        "prove",
+        "sequence"
+      ],
+      "relations": [
+        "sequence",
+        "evidence"
+      ],
+      "primitives": [
+        "linear-sequence",
+        "evidence-annotation"
+      ],
+      "tasks": [
+        "mobile",
+        "journey"
+      ],
+      "selection_notes": "Two-phone screen step gallery with flow arrow.",
+      "requires": [],
+      "space_requirements": {
+        "min_width": 860,
+        "min_height": 500,
+        "min_aspect_ratio": 1.1,
+        "max_aspect_ratio": 3.0
+      },
+      "capacity": {
+        "min_items": 2,
+        "max_items": 3
+      },
+      "dependencies": [
+        "paper-ink-components"
+      ],
+      "source": {}
+    },
+    {
+      "component_id": "native.paper-ink.069.admin-console",
+      "name": "后台管理台线稿",
+      "canonical_name": "admin-console",
+      "variant": null,
+      "group": "content",
+      "group_label": "内容/排版",
+      "description": "Admin console mock: filter bar, run list and trace tree.",
+      "aliases": [
+        "admin-console",
+        "后台管理台线稿",
+        "69"
+      ],
+      "renderer_kinds": [
+        "native-html"
+      ],
+      "component_sources": [
+        "native"
+      ],
+      "roles": [
+        "prove",
+        "explain"
+      ],
+      "relations": [
+        "hierarchy",
+        "matrix",
+        "evidence"
+      ],
+      "primitives": [
+        "matrix-field",
+        "layered-stack"
+      ],
+      "tasks": [
+        "product-ui",
+        "admin"
+      ],
+      "selection_notes": "Admin console mock: filter bar, run list and trace tree.",
+      "requires": [],
+      "space_requirements": {
+        "min_width": 900,
+        "min_height": 520,
+        "min_aspect_ratio": 1.2,
+        "max_aspect_ratio": 3.3
+      },
+      "capacity": {
+        "min_items": 1,
+        "max_items": 2
+      },
+      "dependencies": [
+        "paper-ink-components"
+      ],
+      "source": {}
+    },
+    {
+      "component_id": "native.paper-ink.070.trace-tree",
+      "name": "树形过程日志",
+      "canonical_name": "trace-tree",
+      "variant": null,
+      "group": "process",
+      "group_label": "流程/时序",
+      "description": "Execution trace tree with node timings and error I/O detail.",
+      "aliases": [
+        "trace-tree",
+        "树形过程日志",
+        "70"
+      ],
+      "renderer_kinds": [
+        "native-html"
+      ],
+      "component_sources": [
+        "native"
+      ],
+      "roles": [
+        "prove",
+        "explain"
+      ],
+      "relations": [
+        "hierarchy",
+        "sequence"
+      ],
+      "primitives": [
+        "node-link",
+        "layered-stack"
+      ],
+      "tasks": [
+        "trace",
+        "process"
+      ],
+      "selection_notes": "Execution trace tree with node timings and error I/O detail.",
+      "requires": [],
+      "space_requirements": {
+        "min_width": 760,
+        "min_height": 500,
+        "min_aspect_ratio": 0.9,
+        "max_aspect_ratio": 3.0
+      },
+      "capacity": {
+        "min_items": 3,
+        "max_items": 12
+      },
+      "dependencies": [
+        "paper-ink-components"
+      ],
+      "source": {}
+    },
+    {
+      "component_id": "native.paper-ink.071.gantt-ink",
+      "name": "墨线甘特图",
+      "canonical_name": "gantt-ink",
+      "variant": null,
+      "group": "process",
+      "group_label": "流程/时序",
+      "description": "Hatched ink gantt with specimen ruler and a broken span.",
+      "aliases": [
+        "gantt-ink",
+        "墨线甘特图",
+        "71"
+      ],
+      "renderer_kinds": [
+        "svg"
+      ],
+      "component_sources": [
+        "native"
+      ],
+      "roles": [
+        "sequence",
+        "prove"
+      ],
+      "relations": [
+        "sequence",
+        "comparison"
+      ],
+      "primitives": [
+        "coordinate-plot",
+        "linear-sequence"
+      ],
+      "tasks": [
+        "gantt",
+        "timeline"
+      ],
+      "selection_notes": "Hatched ink gantt with specimen ruler and a broken span.",
+      "requires": [],
+      "space_requirements": {
+        "min_width": 900,
+        "min_height": 420,
+        "min_aspect_ratio": 1.45,
+        "max_aspect_ratio": 3.5
+      },
+      "capacity": {
+        "min_items": 3,
+        "max_items": 8
+      },
+      "dependencies": [
+        "paper-ink-components"
+      ],
+      "source": {}
+    },
+    {
+      "component_id": "native.paper-ink.072.timeline-gallery",
+      "name": "时间轴垂挂画廊",
+      "canonical_name": "timeline-gallery",
+      "variant": null,
+      "group": "process",
+      "group_label": "流程/时序",
+      "description": "Horizontal timeline with hanging double-framed evidence cards.",
+      "aliases": [
+        "timeline-gallery",
+        "时间轴垂挂画廊",
+        "72"
+      ],
+      "renderer_kinds": [
+        "svg"
+      ],
+      "component_sources": [
+        "native"
+      ],
+      "roles": [
+        "sequence",
+        "prove"
+      ],
+      "relations": [
+        "sequence",
+        "evidence"
+      ],
+      "primitives": [
+        "linear-sequence",
+        "evidence-annotation"
+      ],
+      "tasks": [
+        "timeline",
+        "evidence"
+      ],
+      "selection_notes": "Horizontal timeline with hanging double-framed evidence cards.",
+      "requires": [],
+      "space_requirements": {
+        "min_width": 920,
+        "min_height": 460,
+        "min_aspect_ratio": 1.4,
+        "max_aspect_ratio": 3.5
+      },
+      "capacity": {
+        "min_items": 3,
+        "max_items": 5
+      },
+      "dependencies": [
+        "paper-ink-components"
+      ],
+      "source": {}
+    },
+    {
+      "component_id": "native.paper-ink.073.winding-road",
+      "name": "蜿蜒道路时间轴",
+      "canonical_name": "winding-road",
+      "variant": null,
+      "group": "process",
+      "group_label": "流程/时序",
+      "description": "Winding S-road timeline with walked and future segments.",
+      "aliases": [
+        "winding-road",
+        "蜿蜒道路时间轴",
+        "73"
+      ],
+      "renderer_kinds": [
+        "svg"
+      ],
+      "component_sources": [
+        "native"
+      ],
+      "roles": [
+        "sequence",
+        "explain"
+      ],
+      "relations": [
+        "sequence",
+        "progression"
+      ],
+      "primitives": [
+        "linear-sequence"
+      ],
+      "tasks": [
+        "roadmap",
+        "timeline"
+      ],
+      "selection_notes": "Winding S-road timeline with walked and future segments.",
+      "requires": [],
+      "space_requirements": {
+        "min_width": 900,
+        "min_height": 480,
+        "min_aspect_ratio": 1.25,
+        "max_aspect_ratio": 3.2
+      },
+      "capacity": {
+        "min_items": 4,
+        "max_items": 8
+      },
+      "dependencies": [
+        "paper-ink-components"
+      ],
+      "source": {}
+    },
+    {
+      "component_id": "native.paper-ink.074.contact-card",
+      "name": "联络名片卡",
+      "canonical_name": "contact-card",
+      "variant": null,
+      "group": "content",
+      "group_label": "内容/排版",
+      "description": "Double-framed contact card with channel rows and QR matrix.",
+      "aliases": [
+        "contact-card",
+        "联络名片卡",
+        "74"
+      ],
+      "renderer_kinds": [
+        "native-html",
+        "svg"
+      ],
+      "component_sources": [
+        "native"
+      ],
+      "roles": [
+        "act"
+      ],
+      "relations": [
+        "focus"
+      ],
+      "primitives": [
+        "content-frame"
+      ],
+      "tasks": [
+        "contact",
+        "closing"
+      ],
+      "selection_notes": "Double-framed contact card with channel rows and QR matrix.",
+      "requires": [],
+      "space_requirements": {
+        "min_width": 620,
+        "min_height": 500,
+        "min_aspect_ratio": 0.8,
+        "max_aspect_ratio": 2.8
+      },
+      "capacity": {
+        "min_items": 2,
+        "max_items": 6
+      },
+      "dependencies": [
+        "paper-ink-components"
+      ],
+      "source": {}
+    },
+    {
+      "component_id": "native.paper-ink.075.district-map",
+      "name": "街区示意地图",
+      "canonical_name": "district-map",
+      "variant": null,
+      "group": "data",
+      "group_label": "数据/图表",
+      "description": "Schematic district map with road hierarchy, river trace and locator pin.",
+      "aliases": [
+        "district-map",
+        "街区示意地图",
+        "75"
+      ],
+      "renderer_kinds": [
+        "svg"
+      ],
+      "component_sources": [
+        "native"
+      ],
+      "roles": [
+        "prove",
+        "act"
+      ],
+      "relations": [
+        "spatial",
+        "distribution"
+      ],
+      "primitives": [
+        "coordinate-plot"
+      ],
+      "tasks": [
+        "map",
+        "location"
+      ],
+      "selection_notes": "Schematic district map with road hierarchy, river trace and locator pin.",
+      "requires": [],
+      "space_requirements": {
+        "min_width": 840,
+        "min_height": 500,
+        "min_aspect_ratio": 1.1,
+        "max_aspect_ratio": 3.3
+      },
+      "capacity": {
+        "min_items": 1,
+        "max_items": 12
+      },
+      "dependencies": [
+        "paper-ink-components"
+      ],
+      "source": {}
+    },
+    {
+      "component_id": "native.paper-ink.076.why-how-bands",
+      "name": "因果对位双带",
+      "canonical_name": "why-how-bands",
+      "variant": null,
+      "group": "comparison",
+      "group_label": "对比/评估",
+      "description": "Paired WHY/HOW bands mapping causes to countermeasures column by column.",
+      "aliases": [
+        "why-how-bands",
+        "因果对位双带",
+        "76"
+      ],
+      "renderer_kinds": [
+        "native-html",
+        "svg"
+      ],
+      "component_sources": [
+        "native"
+      ],
+      "roles": [
+        "compare",
+        "synthesize"
+      ],
+      "relations": [
+        "comparison",
+        "mapping"
+      ],
+      "primitives": [
+        "bilateral-split",
+        "peer-array"
+      ],
+      "tasks": [
+        "cause-effect",
+        "comparison"
+      ],
+      "selection_notes": "Paired WHY/HOW bands mapping causes to countermeasures column by column.",
+      "requires": [],
+      "space_requirements": {
+        "min_width": 820,
+        "min_height": 460,
+        "min_aspect_ratio": 1.2,
+        "max_aspect_ratio": 3.4
+      },
+      "capacity": {
+        "min_items": 2,
+        "max_items": 6
+      },
+      "dependencies": [
+        "paper-ink-components"
+      ],
+      "source": {}
+    },
+    {
+      "component_id": "native.paper-ink.077.before-after-bands",
+      "name": "前后双带演进面板",
+      "canonical_name": "before-after-bands",
+      "variant": null,
+      "group": "comparison",
+      "group_label": "对比/评估",
+      "description": "Before/after evolution panel: scattered documents vs retrieval pipeline.",
+      "aliases": [
+        "before-after-bands",
+        "前后双带演进面板",
+        "77"
+      ],
+      "renderer_kinds": [
+        "native-html",
+        "svg"
+      ],
+      "component_sources": [
+        "native"
+      ],
+      "roles": [
+        "compare",
+        "explain"
+      ],
+      "relations": [
+        "comparison",
+        "transformation"
+      ],
+      "primitives": [
+        "bilateral-split",
+        "linear-sequence"
+      ],
+      "tasks": [
+        "before-after",
+        "comparison"
+      ],
+      "selection_notes": "Before/after evolution panel: scattered documents vs retrieval pipeline.",
+      "requires": [],
+      "space_requirements": {
+        "min_width": 840,
+        "min_height": 460,
+        "min_aspect_ratio": 1.2,
+        "max_aspect_ratio": 3.5
+      },
+      "capacity": {
+        "min_items": 2,
+        "max_items": 6
+      },
+      "dependencies": [
+        "paper-ink-components"
+      ],
+      "source": {}
+    },
+    {
+      "component_id": "native.paper-ink.media.reconstructed-image",
+      "name": "已重构本地图片",
+      "canonical_name": "reconstructed-image",
+      "variant": null,
+      "group": "content",
+      "group_label": "媒体/图片",
+      "description": "经裁切、去背景、修复或重绘后冻结为 deck 本地资产的图片。",
+      "aliases": [
+        "reconstructed-image",
+        "本地图片",
+        "重构图片"
+      ],
+      "renderer_kinds": [
+        "image"
+      ],
+      "component_sources": [
+        "native"
+      ],
+      "roles": [
+        "hook",
+        "explain",
+        "prove",
+        "compare",
+        "synthesize",
+        "act"
+      ],
+      "relations": [
+        "focus",
+        "evidence",
+        "comparison",
+        "spatial",
+        "mapping"
+      ],
+      "primitives": [
+        "image-region",
+        "scene-canvas",
+        "figure-caption",
+        "evidence-annotation",
+        "document-frame",
+        "focus-field"
+      ],
+      "tasks": [
+        "image",
+        "media",
+        "evidence",
+        "illustration"
+      ],
+      "selection_notes": "只接受已登记在 content.json assets[] 且位于 deck 内的本地文件。",
+      "requires": [],
+      "space_requirements": {
+        "min_width": 320,
+        "min_height": 220,
+        "min_aspect_ratio": 0.5,
+        "max_aspect_ratio": 4.5
+      },
+      "capacity": {
+        "min_items": 1,
+        "max_items": 1
+      },
+      "frame": {
+        "fit": "fluid"
+      },
+      "dependencies": [
+        "paper-ink-components"
+      ],
+      "source": {
+        "kind": "registered-local-asset"
+      }
+    }
+  ]
+}

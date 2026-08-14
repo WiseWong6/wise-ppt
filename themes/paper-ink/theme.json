@@ -1,0 +1,258 @@
+{
+  "contract_version": 1,
+  "theme_id": "paper-ink",
+  "visual_contract_id": "wise-ppt.visual-contract@1",
+  "name": "纸墨线稿",
+  "status": "default",
+  "description": "以纸底、墨色阶梯、精密细线和出版物字体构成的 16:9 网页 PPT 主题。",
+  "canvas": {
+    "width": 1920,
+    "height": 1080,
+    "aspect_ratio": "16:9",
+    "overflow": "hidden"
+  },
+  "semantic_tokens": {
+    "colors": {
+      "surface-canvas": "--wp-color-surface-canvas",
+      "surface-recessed": "--wp-color-surface-recessed",
+      "surface-panel": "--wp-color-surface-panel",
+      "primary": "--wp-color-primary",
+      "functional": "--wp-color-functional",
+      "body": "--wp-color-body",
+      "chart-label": "--wp-color-chart-label",
+      "metadata": "--wp-color-metadata",
+      "divider": "--wp-color-divider",
+      "construction": "--wp-color-construction",
+      "focus": "--wp-color-focus",
+      "focus-secondary": "--wp-color-focus-secondary",
+      "focus-peripheral": "--wp-color-focus-peripheral",
+      "data-1": "--wp-color-data-1",
+      "data-2": "--wp-color-data-2",
+      "data-3": "--wp-color-data-3",
+      "data-4": "--wp-color-data-4",
+      "data-5": "--wp-color-data-5",
+      "data-6": "--wp-color-data-6"
+    },
+    "fonts": {
+      "serif": "--wp-font-serif",
+      "sans": "--wp-font-sans",
+      "mono": "--wp-font-mono",
+      "brush": "--wp-font-brush"
+    }
+  },
+  "layout_support": {
+    "contract_version": 6,
+    "registry_capability_id": "layout-blueprint-registry",
+    "required_status": "ready",
+    "selection_inputs": ["binding_profile", "content_complexity", "content_groups", "spatial_intent"],
+    "slot_binding": "explicit-component-with-binding-receipt",
+    "page_shell_furniture": ["header", "title", "conclusion", "folio"],
+    "allow_gallery_html_input": false,
+    "layout_variant_scope": "deck"
+  },
+  "extensions": {},
+  "references": {
+    "design_tokens": "themes/paper-ink/references/design-tokens.md",
+    "visual_checklist": "themes/paper-ink/references/visual-checklist.md",
+    "component_adapters": "themes/paper-ink/references/component-adapters.md"
+  },
+  "validation": {
+    "lint_script": "themes/paper-ink/scripts/lint.py",
+    "modes": ["normal", "accent"]
+  },
+  "assets": {
+    "design_tokens": "themes/paper-ink/assets/design-tokens.css",
+    "slide_components": "themes/paper-ink/assets/slide-components.css",
+    "compatibility_stylesheet": "themes/paper-ink/assets/shared.css",
+    "particles": "themes/paper-ink/assets/particles.js",
+    "fonts": "themes/paper-ink/assets/fonts",
+    "deck_shell": "runtime/deck-shell.css",
+    "gallery_shell": "gallery/shell.css",
+    "stage_fit": "runtime/stage-fit.js"
+  },
+  "typography": {
+    "default_mode": "all-sans",
+    "deck_attribute": "data-typography-mode",
+    "page_override_attribute": "data-typography-mode",
+    "modes": ["mixed", "all-sans", "all-serif"],
+    "roles": {
+      "serif": {"family": "Han Serif", "weight": 500, "mode_sensitive": true},
+      "sans": {"family": "Han Sans", "weight": 300, "mode_sensitive": true},
+      "mono": {"family": "Courier Prime", "weight": 400, "mode_sensitive": false},
+      "brush": {"family": "LXGW WenKai", "weight": 400, "mode_sensitive": false}
+    },
+    "required_faces": [
+      {
+        "family": "Han Serif",
+        "style": "normal",
+        "weight": 500,
+        "asset": "themes/paper-ink/assets/fonts/SourceHanSerifCN-Medium.otf",
+        "bundle_path": "fonts/SourceHanSerifCN-Medium.otf"
+      },
+      {
+        "family": "Han Sans",
+        "style": "normal",
+        "weight": 300,
+        "asset": "themes/paper-ink/assets/fonts/SourceHanSansCN-Light.otf",
+        "bundle_path": "fonts/SourceHanSansCN-Light.otf"
+      },
+      {
+        "family": "Courier Prime",
+        "style": "normal",
+        "weight": 400,
+        "asset": "themes/paper-ink/assets/fonts/CourierPrime-Regular.ttf",
+        "bundle_path": "fonts/CourierPrime-Regular.ttf"
+      },
+      {
+        "family": "LXGW WenKai",
+        "style": "normal",
+        "weight": 400,
+        "asset": "themes/paper-ink/assets/fonts/LXGWWenKai-Regular.ttf",
+        "bundle_path": "fonts/LXGWWenKai-Regular.ttf"
+      }
+    ],
+    "micro_secondary": {
+      "token": "--type-micro-secondary",
+      "size_px": 16,
+      "allowed_uses": ["metadata", "secondary-table-note"],
+      "forbidden_uses": ["body-copy", "takeaway", "primary-label"]
+    }
+  },
+  "icons": {
+    "strategy": "self-svg",
+    "registry": "WisePPT.icons",
+    "factory": "WisePPT.createIcon",
+    "source": "runtime/deck-runtime.js",
+    "external_dependencies": []
+  },
+  "media_policy": {
+    "contract_version": 1,
+    "default_min_contain_utilization": 0.58,
+    "semantic_tag_prefix": "visual:",
+    "semantic_match": "all",
+    "allowed_profiles": {
+      "kind": [
+        "illustration",
+        "diagram",
+        "icon",
+        "photo",
+        "screenshot"
+      ],
+      "rendering": [
+        "line-art",
+        "engraving",
+        "ink-wash",
+        "flat-vector",
+        "data-visualization",
+        "ui-capture",
+        "documentary-photo"
+      ],
+      "palette": [
+        "monochrome",
+        "ink-neutral",
+        "muted"
+      ],
+      "background": [
+        "transparent",
+        "paper",
+        "light-neutral"
+      ]
+    },
+    "svg_constraints": {
+      "min_visible_graphics": 1,
+      "max_high_chroma_colors": 0,
+      "max_saturation": 0.45,
+      "max_gradients": 0,
+      "max_filters": 0,
+      "max_embedded_images": 0,
+      "allowed_backgrounds": [
+        "transparent",
+        "paper",
+        "light-neutral"
+      ]
+    },
+    "image_frame": {
+      "border_px": 1,
+      "padding_px": 16,
+      "caption_gap_px": 8,
+      "caption_line_height_px": 24.3
+    }
+  },
+  "adapters": [
+    {
+      "adapter_id": "paper-ink.typography",
+      "renderer_kinds": ["typography"],
+      "component_sources": ["native"],
+      "implementation": {"scripts": [], "styles": [], "targets": ["typography"]}
+    },
+    {
+      "adapter_id": "paper-ink.table",
+      "renderer_kinds": ["table"],
+      "component_sources": ["native"],
+      "implementation": {"scripts": [], "styles": [], "targets": ["table"]}
+    },
+    {
+      "adapter_id": "paper-ink.image",
+      "renderer_kinds": ["image"],
+      "component_sources": ["native", "codex-host"],
+      "implementation": {
+        "scripts": [],
+        "styles": ["themes/paper-ink/assets/image.css"],
+        "targets": ["image"]
+      }
+    },
+    {
+      "adapter_id": "paper-ink.native-html",
+      "renderer_kinds": ["native-html"],
+      "component_sources": ["native"],
+      "implementation": {"scripts": [], "styles": [], "targets": ["native-html"]}
+    },
+    {
+      "adapter_id": "paper-ink.atlas",
+      "renderer_kinds": ["native-html", "svg"],
+      "component_sources": ["ppt-component-atlas"],
+      "implementation": {
+        "scripts": ["themes/paper-ink/adapters/atlas.js"],
+        "styles": ["themes/paper-ink/assets/design-tokens.css"],
+        "targets": ["atlas-package"]
+      }
+    },
+    {
+      "adapter_id": "paper-ink.native-components",
+      "renderer_kinds": ["native-html", "svg"],
+      "component_sources": ["native"],
+      "implementation": {
+        "scripts": ["themes/paper-ink/adapters/native.js"],
+        "styles": ["themes/paper-ink/assets/design-tokens.css"],
+        "targets": ["native-component"]
+      }
+    },
+    {
+      "adapter_id": "paper-ink.svg",
+      "renderer_kinds": ["svg"],
+      "component_sources": ["native"],
+      "implementation": {"scripts": [], "styles": [], "targets": ["svg"]}
+    },
+    {
+      "adapter_id": "paper-ink.canvas",
+      "renderer_kinds": ["canvas"],
+      "component_sources": ["native"],
+      "implementation": {"scripts": [], "styles": [], "targets": ["canvas"]}
+    },
+    {
+      "adapter_id": "paper-ink.echarts",
+      "renderer_kinds": ["svg", "canvas"],
+      "component_sources": ["echarts"],
+      "implementation": {
+        "scripts": ["themes/paper-ink/adapters/echarts.js"],
+        "styles": ["themes/paper-ink/assets/design-tokens.css"],
+        "targets": ["echarts-option"]
+      }
+    }
+  ],
+  "galleries": {
+    "general": "gallery/paper-ink/general/frames",
+    "ai": "gallery/paper-ink/ai/frames"
+  },
+  "output_formats": ["html", "pdf"]
+}

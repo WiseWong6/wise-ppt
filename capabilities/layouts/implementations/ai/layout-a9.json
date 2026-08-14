@@ -1,0 +1,1325 @@
+{
+  "canonical": {
+    "constraints": {
+      "css_scope": "[data-implementation-id=\"paper-ink.evidence.mobile-screen-gallery.ai\"]",
+      "external_links": false,
+      "external_scripts": false,
+      "payload_only_mutation": true,
+      "ready_api": "WisePPT.markSlideReady",
+      "script_query_scope": "current-section.slide",
+      "stage_fit": false
+    },
+    "kind": "derived-frame",
+    "materialization_format": "wise-ppt-formal-slide@1",
+    "path": "gallery/paper-ink/ai/frames/layout-a9.html",
+    "root_selector": "section.slide[data-implementation-id=\"paper-ink.evidence.mobile-screen-gallery.ai\"]",
+    "sha256": "sha256:df91fca2377a8b4c85bfc1265360a23e176924440e84dccb267325f6184b3eaa"
+  },
+  "canonical_fingerprint": "sha256:0c8c8e9811600367b9dc579708bf5fecc1fc2b35e57cc652a7a5010a2fed40d3",
+  "contract_version": 1,
+  "dependency_closure": {
+    "files": [
+      {
+        "path": "gallery/shell.css",
+        "sha256": "sha256:aca1428680d2dd5c84e85d66241ee199a16d36bb60a098340528943fb5469f69"
+      },
+      {
+        "path": "runtime/stage-fit.js",
+        "sha256": "sha256:39577a14aac5072789fdeb80abee887d24da5a44eeb38203ef154602330f291d"
+      },
+      {
+        "path": "themes/paper-ink/assets/design-tokens.css",
+        "sha256": "sha256:3f1f0d3562cf1486b87643b16025388557000858d0df13d767b53a576988c330"
+      },
+      {
+        "path": "themes/paper-ink/assets/fonts/CourierPrime-Regular.ttf",
+        "sha256": "sha256:72f793376f8e2841656bf21d77a5de010f2929bd6956a22ee848ad0c7eb978af"
+      },
+      {
+        "path": "themes/paper-ink/assets/fonts/LXGWWenKai-Regular.ttf",
+        "sha256": "sha256:39ad71264b588165b469e35e6afb162a378dacd1f95348160240ba9038ac3009"
+      },
+      {
+        "path": "themes/paper-ink/assets/fonts/SourceHanSansCN-Light.otf",
+        "sha256": "sha256:b6dfc945aae0daf9b15019f59c2f7b18d17da3b92f00c3ec32fb5f0333696d9c"
+      },
+      {
+        "path": "themes/paper-ink/assets/fonts/SourceHanSerifCN-Medium.otf",
+        "sha256": "sha256:8e224937647ae71ba1b1f310bcb3fbc32f21ec7c2c490ba04670455c901f3378"
+      },
+      {
+        "path": "themes/paper-ink/assets/particles.js",
+        "sha256": "sha256:1281d72e81b34e4be061286edd323dd421443dffbf6e0d8a2faa94a5d14094c4"
+      },
+      {
+        "path": "themes/paper-ink/assets/slide-components.css",
+        "sha256": "sha256:20e7334fe5ae51cb229112290e787c1274ad65278a72b084c708682dc9ca5acf"
+      }
+    ],
+    "sha256": "sha256:7dcc6f0ac681be95cc8955afb36da97027f341a98f4f9f37518e37bfe13f5be4"
+  },
+  "format": "wise-ppt-layout-implementation@1",
+  "geometry": {
+    "anchors": [
+      {
+        "anchor_id": "stage",
+        "selector": ".stage"
+      }
+    ],
+    "canvas": {
+      "height": 1080,
+      "width": 1920
+    },
+    "content_region": {
+      "height": 1080,
+      "width": 1920,
+      "x": 0,
+      "y": 0
+    },
+    "fingerprint": "sha256:f8ddd07699c77cc12eb4d888babd03a7bc984057f2f31ee9965b3f51222bf405",
+    "format": "wise-ppt-layout-geometry@1",
+    "relations": [],
+    "structure_contract": {
+      "core_primitives": [
+        "linear-sequence",
+        "evidence-annotation"
+      ],
+      "region_count": 3,
+      "required_slot_ids": [
+        "screens"
+      ]
+    }
+  },
+  "implementation_id": "paper-ink.evidence.mobile-screen-gallery.ai",
+  "payload": {
+    "fields": [
+      {
+        "constraints": {
+          "pattern": "^(?!.*[\\u3400-\\u9fff]).+$"
+        },
+        "context": "html:div.doc.tl",
+        "default": "AI ENGINEERING — A9",
+        "field_id": "html.text.001",
+        "kind": "html_text",
+        "max_length": 25,
+        "semantic_role": "mono-label",
+        "span": {
+          "kind": "html_text",
+          "occurrence": 1,
+          "token_sha256": "sha256:256dbaf378648eb75bc773f1ac5a905e7b8cfdce23bd530c9678fe54ee921c69"
+        },
+        "type": "string"
+      },
+      {
+        "constraints": {
+          "pattern": "^(?!.*[\\u3400-\\u9fff]).+$"
+        },
+        "context": "html:div.doc.tl",
+        "default": "MOBILE AI ASSISTANT",
+        "field_id": "html.text.002",
+        "kind": "html_text",
+        "max_length": 25,
+        "semantic_role": "mono-label",
+        "span": {
+          "kind": "html_text",
+          "occurrence": 2,
+          "token_sha256": "sha256:b504593efbe02c26eb7ad9cf9cb6337ae6bd23eaa65a069b8c03036b35f668a4"
+        },
+        "type": "string"
+      },
+      {
+        "constraints": {
+          "pattern": "^\\d{1,3} / \\d{1,3} — BY .{1,40}$"
+        },
+        "context": "html:div.folio",
+        "default": "01 / 01 — BY WISE PPT",
+        "field_id": "html.text.003",
+        "kind": "html_text",
+        "max_length": 26,
+        "semantic_role": "folio",
+        "source_default": "A9 / 63 — BY @歪斯WISE",
+        "span": {
+          "kind": "html_text",
+          "occurrence": 3,
+          "token_sha256": "sha256:68a98be186624dbf860d3db76631391371c548fdf61979ae901c11c12b0ab233"
+        },
+        "type": "string"
+      },
+      {
+        "context": "html:div.caption",
+        "default": "从提问、生成、润色到使用统计，移动助手覆盖内容生产的完整闭环。",
+        "field_id": "html.text.004",
+        "kind": "html_text",
+        "max_length": 41,
+        "span": {
+          "kind": "html_text",
+          "occurrence": 4,
+          "token_sha256": "sha256:207cebeca4e7be4eee47be1d08b036678f7c11dc8e609269604d2b92fd6ede20"
+        },
+        "type": "string"
+      },
+      {
+        "constraints": {
+          "pattern": "^(?!.*[\\u3400-\\u9fff]).+$"
+        },
+        "context": "inline-script[1]:call:txt[2]",
+        "default": "9:41",
+        "field_id": "script.literal.001",
+        "kind": "script_literal",
+        "max_length": 8,
+        "semantic_role": "mono-label",
+        "span": {
+          "kind": "script_literal",
+          "occurrence": 1,
+          "quote": "'",
+          "script_index": 1,
+          "sink": "call:txt[2]",
+          "token_sha256": "sha256:d8895c7035ea24f083c18ab12b24f1baef236f76f25dd14a00eb70887ca4d730"
+        },
+        "type": "string"
+      },
+      {
+        "context": "inline-script[1]:call:txt[2]",
+        "default": "AI 助手",
+        "field_id": "script.literal.002",
+        "kind": "script_literal",
+        "max_length": 9,
+        "span": {
+          "kind": "script_literal",
+          "occurrence": 2,
+          "quote": "'",
+          "script_index": 1,
+          "sink": "call:txt[2]",
+          "token_sha256": "sha256:64044933a22299c6d766a792b525b8e4d2b2ad26e74a59ac1a5108061cb610b7"
+        },
+        "type": "string"
+      },
+      {
+        "context": "inline-script[1]:call:txt[2]",
+        "default": "8 条",
+        "field_id": "script.literal.003",
+        "kind": "script_literal",
+        "max_length": 7,
+        "span": {
+          "kind": "script_literal",
+          "occurrence": 3,
+          "quote": "'",
+          "script_index": 1,
+          "sink": "call:txt[2]",
+          "token_sha256": "sha256:bb7f460f3eec9b904c604022b8c7de79cb38ee607e778044f0a70b47af40c9df"
+        },
+        "type": "string"
+      },
+      {
+        "context": "inline-script[1]:call:txt[2]",
+        "default": "生成中",
+        "field_id": "script.literal.004",
+        "kind": "script_literal",
+        "max_length": 7,
+        "span": {
+          "kind": "script_literal",
+          "occurrence": 4,
+          "quote": "'",
+          "script_index": 1,
+          "sink": "call:txt[2]",
+          "token_sha256": "sha256:7ec9147c2e428f5188e885f2418eb06cd854c6608fa3f213dc3c9abc01409302"
+        },
+        "type": "string"
+      },
+      {
+        "constraints": {
+          "pattern": "^(?!.*[\\u3400-\\u9fff]).+$"
+        },
+        "context": "inline-script[1]:call:txt[2]",
+        "default": "GLM-5.2",
+        "field_id": "script.literal.005",
+        "kind": "script_literal",
+        "max_length": 11,
+        "semantic_role": "mono-label",
+        "span": {
+          "kind": "script_literal",
+          "occurrence": 5,
+          "quote": "'",
+          "script_index": 1,
+          "sink": "call:txt[2]",
+          "token_sha256": "sha256:73138b35084f0252873a1b2fb7ad1d767962058cad47e30b8214d8ed5d13ddb0"
+        },
+        "type": "string"
+      },
+      {
+        "context": "inline-script[1]:call:txt[2]",
+        "default": "润色建议",
+        "field_id": "script.literal.006",
+        "kind": "script_literal",
+        "max_length": 8,
+        "span": {
+          "kind": "script_literal",
+          "occurrence": 6,
+          "quote": "'",
+          "script_index": 1,
+          "sink": "call:txt[2]",
+          "token_sha256": "sha256:bb621d9a9dc38ed87ae3a6830e33389bd914117301a858fb6b8f09d93d4cd2c4"
+        },
+        "type": "string"
+      },
+      {
+        "context": "inline-script[1]:call:txt[2]",
+        "default": "3 处可优化",
+        "field_id": "script.literal.007",
+        "kind": "script_literal",
+        "max_length": 10,
+        "span": {
+          "kind": "script_literal",
+          "occurrence": 7,
+          "quote": "'",
+          "script_index": 1,
+          "sink": "call:txt[2]",
+          "token_sha256": "sha256:a0b8922afeb6eaf9098b76dae7d3840831df29a51bd2e27432113321ea2c602b"
+        },
+        "type": "string"
+      },
+      {
+        "context": "inline-script[1]:call:txt[2]",
+        "default": "长度",
+        "field_id": "script.literal.008",
+        "kind": "script_literal",
+        "max_length": 6,
+        "span": {
+          "kind": "script_literal",
+          "occurrence": 8,
+          "quote": "'",
+          "script_index": 1,
+          "sink": "call:txt[2]",
+          "token_sha256": "sha256:1d90fd8160099da4369666639ca9dfdbf3a95a1d967f4b8ff79937dd9e657859"
+        },
+        "type": "string"
+      },
+      {
+        "context": "inline-script[1]:call:txt[2]",
+        "default": "减 12%",
+        "field_id": "script.literal.009",
+        "kind": "script_literal",
+        "max_length": 9,
+        "span": {
+          "kind": "script_literal",
+          "occurrence": 9,
+          "quote": "'",
+          "script_index": 1,
+          "sink": "call:txt[2]",
+          "token_sha256": "sha256:2cf2be060ada8999cc021c36e97f3ab8da88aca9ad68b2e6adb12b5db9ce2dfc"
+        },
+        "type": "string"
+      },
+      {
+        "context": "inline-script[1]:call:txt[2]",
+        "default": "语气",
+        "field_id": "script.literal.010",
+        "kind": "script_literal",
+        "max_length": 6,
+        "span": {
+          "kind": "script_literal",
+          "occurrence": 10,
+          "quote": "'",
+          "script_index": 1,
+          "sink": "call:txt[2]",
+          "token_sha256": "sha256:a262b608f774556acaebac9622961c6b9e8e236a9ba5137427426b0c568eccfa"
+        },
+        "type": "string"
+      },
+      {
+        "context": "inline-script[1]:call:txt[2]",
+        "default": "更正式",
+        "field_id": "script.literal.011",
+        "kind": "script_literal",
+        "max_length": 7,
+        "span": {
+          "kind": "script_literal",
+          "occurrence": 11,
+          "quote": "'",
+          "script_index": 1,
+          "sink": "call:txt[2]",
+          "token_sha256": "sha256:a2060783080c6b34a5b16f5a96fbd53b3abb9689d9db7427d59f243eaf7531a8"
+        },
+        "type": "string"
+      },
+      {
+        "context": "inline-script[1]:call:txt[2]",
+        "default": "错别字",
+        "field_id": "script.literal.012",
+        "kind": "script_literal",
+        "max_length": 7,
+        "span": {
+          "kind": "script_literal",
+          "occurrence": 12,
+          "quote": "'",
+          "script_index": 1,
+          "sink": "call:txt[2]",
+          "token_sha256": "sha256:0f300cbf03b6af78238aae608d86165f90bc588160852ad2d79538a63f1f8b5f"
+        },
+        "type": "string"
+      },
+      {
+        "context": "inline-script[1]:call:txt[2]",
+        "default": "2 处",
+        "field_id": "script.literal.013",
+        "kind": "script_literal",
+        "max_length": 7,
+        "span": {
+          "kind": "script_literal",
+          "occurrence": 13,
+          "quote": "'",
+          "script_index": 1,
+          "sink": "call:txt[2]",
+          "token_sha256": "sha256:92d86f4b49d2b87086e383637c9886da5302784848dc890238bd38256170369b"
+        },
+        "type": "string"
+      },
+      {
+        "context": "inline-script[1]:call:txt[2]",
+        "default": "耗时",
+        "field_id": "script.literal.014",
+        "kind": "script_literal",
+        "max_length": 6,
+        "span": {
+          "kind": "script_literal",
+          "occurrence": 14,
+          "quote": "'",
+          "script_index": 1,
+          "sink": "call:txt[2]",
+          "token_sha256": "sha256:3fb74f9d9139dd29e68f70395cfeb13af1a46c3c87d333ee208df6dc8d9f9deb"
+        },
+        "type": "string"
+      },
+      {
+        "context": "inline-script[1]:call:txt[2]",
+        "default": "1.4s",
+        "field_id": "script.literal.015",
+        "kind": "script_literal",
+        "max_length": 8,
+        "span": {
+          "kind": "script_literal",
+          "occurrence": 15,
+          "quote": "'",
+          "script_index": 1,
+          "sink": "call:txt[2]",
+          "token_sha256": "sha256:de8d94863fdecf29491d07984fbc3d9c61edee2aa8ddfbbb7248ddd1ed6a853b"
+        },
+        "type": "string"
+      },
+      {
+        "context": "inline-script[1]:call:txt[2]",
+        "default": "采纳全部",
+        "field_id": "script.literal.016",
+        "kind": "script_literal",
+        "max_length": 8,
+        "span": {
+          "kind": "script_literal",
+          "occurrence": 16,
+          "quote": "'",
+          "script_index": 1,
+          "sink": "call:txt[2]",
+          "token_sha256": "sha256:a1e8b814855f56ebd446b88b96c6bd3cf3d50f751e2d938d66c5eef56beff2d4"
+        },
+        "type": "string"
+      },
+      {
+        "context": "inline-script[1]:call:txt[2]",
+        "default": "本周用量",
+        "field_id": "script.literal.017",
+        "kind": "script_literal",
+        "max_length": 8,
+        "span": {
+          "kind": "script_literal",
+          "occurrence": 17,
+          "quote": "'",
+          "script_index": 1,
+          "sink": "call:txt[2]",
+          "token_sha256": "sha256:34918c31533c53c5b271b9046f092e44419ae21540536d65dbdd31a68f25ff8a"
+        },
+        "type": "string"
+      },
+      {
+        "constraints": {
+          "pattern": "^(?!.*[\\u3400-\\u9fff]).+$"
+        },
+        "context": "inline-script[1]:call:txt[2]",
+        "default": "W32",
+        "field_id": "script.literal.018",
+        "kind": "script_literal",
+        "max_length": 7,
+        "semantic_role": "mono-label",
+        "span": {
+          "kind": "script_literal",
+          "occurrence": 18,
+          "quote": "'",
+          "script_index": 1,
+          "sink": "call:txt[2]",
+          "token_sha256": "sha256:780d3c21a87a4aacff55aa0e14335c109061c0e269a79618e16db65e44365ff6"
+        },
+        "type": "string"
+      },
+      {
+        "constraints": {
+          "pattern": "^(?!.*[\\u3400-\\u9fff]).+$"
+        },
+        "context": "inline-script[1]:call:txt[2]",
+        "default": "1,284",
+        "field_id": "script.literal.019",
+        "kind": "script_literal",
+        "max_length": 9,
+        "semantic_role": "mono-label",
+        "span": {
+          "kind": "script_literal",
+          "occurrence": 19,
+          "quote": "'",
+          "script_index": 1,
+          "sink": "call:txt[2]",
+          "token_sha256": "sha256:a8520c12e25efe82a220b85526b34594a857c8c3b814ef9971810bd529c26a1a"
+        },
+        "type": "string"
+      },
+      {
+        "context": "inline-script[1]:call:txt[2]",
+        "default": "TOKENS · 本周调用",
+        "field_id": "script.literal.020",
+        "kind": "script_literal",
+        "max_length": 17,
+        "span": {
+          "kind": "script_literal",
+          "occurrence": 20,
+          "quote": "'",
+          "script_index": 1,
+          "sink": "call:txt[2]",
+          "token_sha256": "sha256:f27a6456b5eb87b883526d49325fc364b3d933df681c25be1c56c92d5a667083"
+        },
+        "type": "string"
+      },
+      {
+        "context": "inline-script[1]:call:txt[2]",
+        "default": "提问次数",
+        "field_id": "script.literal.021",
+        "kind": "script_literal",
+        "max_length": 8,
+        "span": {
+          "kind": "script_literal",
+          "occurrence": 21,
+          "quote": "'",
+          "script_index": 1,
+          "sink": "call:txt[2]",
+          "token_sha256": "sha256:c617d4b937c4c54d489754237632e4719cb9209344f22693a36aa1e8d807c180"
+        },
+        "type": "string"
+      },
+      {
+        "constraints": {
+          "pattern": "^(?!.*[\\u3400-\\u9fff]).+$"
+        },
+        "context": "inline-script[1]:call:txt[2]",
+        "default": "87%",
+        "field_id": "script.literal.022",
+        "kind": "script_literal",
+        "max_length": 7,
+        "semantic_role": "mono-label",
+        "span": {
+          "kind": "script_literal",
+          "occurrence": 22,
+          "quote": "'",
+          "script_index": 1,
+          "sink": "call:txt[2]",
+          "token_sha256": "sha256:989872ea5c0be7b60cbe6c53e9db9b88f28c4de7dc2a78340c71af3609d5f983"
+        },
+        "type": "string"
+      },
+      {
+        "context": "inline-script[1]:call:txt[2]",
+        "default": "生成字数",
+        "field_id": "script.literal.023",
+        "kind": "script_literal",
+        "max_length": 8,
+        "span": {
+          "kind": "script_literal",
+          "occurrence": 23,
+          "quote": "'",
+          "script_index": 1,
+          "sink": "call:txt[2]",
+          "token_sha256": "sha256:905122bf0ee463a39aa3c5571ab0e9273f93d2415926a35142cf54c5b3b69db9"
+        },
+        "type": "string"
+      },
+      {
+        "constraints": {
+          "pattern": "^(?!.*[\\u3400-\\u9fff]).+$"
+        },
+        "context": "inline-script[1]:call:txt[2]",
+        "default": "62%",
+        "field_id": "script.literal.024",
+        "kind": "script_literal",
+        "max_length": 7,
+        "semantic_role": "mono-label",
+        "span": {
+          "kind": "script_literal",
+          "occurrence": 24,
+          "quote": "'",
+          "script_index": 1,
+          "sink": "call:txt[2]",
+          "token_sha256": "sha256:09485b0a6e343bdc7a126a9123259c58ad98812ef60dcb695f3b5ed84facd36b"
+        },
+        "type": "string"
+      },
+      {
+        "context": "inline-script[1]:call:txt[2]",
+        "default": "采纳率",
+        "field_id": "script.literal.025",
+        "kind": "script_literal",
+        "max_length": 7,
+        "span": {
+          "kind": "script_literal",
+          "occurrence": 25,
+          "quote": "'",
+          "script_index": 1,
+          "sink": "call:txt[2]",
+          "token_sha256": "sha256:a7cf54a1fde498f0fa9bedf31fcd4b90b0db810c236cfd8604b7b080d2096545"
+        },
+        "type": "string"
+      },
+      {
+        "constraints": {
+          "pattern": "^(?!.*[\\u3400-\\u9fff]).+$"
+        },
+        "context": "inline-script[1]:call:txt[2]",
+        "default": "91%",
+        "field_id": "script.literal.026",
+        "kind": "script_literal",
+        "max_length": 7,
+        "semantic_role": "mono-label",
+        "span": {
+          "kind": "script_literal",
+          "occurrence": 26,
+          "quote": "'",
+          "script_index": 1,
+          "sink": "call:txt[2]",
+          "token_sha256": "sha256:ba3169d275dc2a7b083d76232bddb2337c85a4a6706e3bee7b39aa784ceb5c4d"
+        },
+        "type": "string"
+      },
+      {
+        "constraints": {
+          "pattern": "^(?!.*[\\u3400-\\u9fff]).+$"
+        },
+        "context": "inline-script[1]:call:txt[2]",
+        "default": "STEP 01 — ASK",
+        "field_id": "script.literal.027",
+        "kind": "script_literal",
+        "max_length": 17,
+        "semantic_role": "mono-label",
+        "span": {
+          "kind": "script_literal",
+          "occurrence": 27,
+          "quote": "'",
+          "script_index": 1,
+          "sink": "call:txt[2]",
+          "token_sha256": "sha256:ec635df1f3ffa47c0e09c170ebeabfe95f75f1f9f26f5467216815dfb248d0ce"
+        },
+        "type": "string"
+      },
+      {
+        "context": "inline-script[1]:call:txt[2]",
+        "default": "提问",
+        "field_id": "script.literal.028",
+        "kind": "script_literal",
+        "max_length": 6,
+        "span": {
+          "kind": "script_literal",
+          "occurrence": 28,
+          "quote": "'",
+          "script_index": 1,
+          "sink": "call:txt[2]",
+          "token_sha256": "sha256:60e529f7000db718202e1054ff61282d429ec5ab0369f29620a2f8832ef64b57"
+        },
+        "type": "string"
+      },
+      {
+        "constraints": {
+          "pattern": "^(?!.*[\\u3400-\\u9fff]).+$"
+        },
+        "context": "inline-script[1]:call:txt[2]",
+        "default": "STEP 02 — GENERATE",
+        "field_id": "script.literal.029",
+        "kind": "script_literal",
+        "max_length": 24,
+        "semantic_role": "mono-label",
+        "span": {
+          "kind": "script_literal",
+          "occurrence": 29,
+          "quote": "'",
+          "script_index": 1,
+          "sink": "call:txt[2]",
+          "token_sha256": "sha256:e2f233ed8739a57eb0272fb67735ba2272bd2170bb1008dadd349b1ceece1fbb"
+        },
+        "type": "string"
+      },
+      {
+        "context": "inline-script[1]:call:txt[2]",
+        "default": "生成",
+        "field_id": "script.literal.030",
+        "kind": "script_literal",
+        "max_length": 6,
+        "span": {
+          "kind": "script_literal",
+          "occurrence": 30,
+          "quote": "'",
+          "script_index": 1,
+          "sink": "call:txt[2]",
+          "token_sha256": "sha256:c31c6771ff80f21b258f9dfd9e0712f5c2171276ee676c1dbc46d03698e61cae"
+        },
+        "type": "string"
+      },
+      {
+        "constraints": {
+          "pattern": "^(?!.*[\\u3400-\\u9fff]).+$"
+        },
+        "context": "inline-script[1]:call:txt[2]",
+        "default": "STEP 03 — EDIT",
+        "field_id": "script.literal.031",
+        "kind": "script_literal",
+        "max_length": 18,
+        "semantic_role": "mono-label",
+        "span": {
+          "kind": "script_literal",
+          "occurrence": 31,
+          "quote": "'",
+          "script_index": 1,
+          "sink": "call:txt[2]",
+          "token_sha256": "sha256:f0da9391eb810f561563922e5008410cb3219bcb9bf157ef97e68a97ff42b5d6"
+        },
+        "type": "string"
+      },
+      {
+        "context": "inline-script[1]:call:txt[2]",
+        "default": "润色",
+        "field_id": "script.literal.032",
+        "kind": "script_literal",
+        "max_length": 6,
+        "span": {
+          "kind": "script_literal",
+          "occurrence": 32,
+          "quote": "'",
+          "script_index": 1,
+          "sink": "call:txt[2]",
+          "token_sha256": "sha256:6f784f371dcecaa695d96bdffe81e62d24d4777305e1f9a15db7b10c80e4cbe9"
+        },
+        "type": "string"
+      },
+      {
+        "constraints": {
+          "pattern": "^(?!.*[\\u3400-\\u9fff]).+$"
+        },
+        "context": "inline-script[1]:call:txt[2]",
+        "default": "STEP 04 — INSIGHTS",
+        "field_id": "script.literal.033",
+        "kind": "script_literal",
+        "max_length": 24,
+        "semantic_role": "mono-label",
+        "span": {
+          "kind": "script_literal",
+          "occurrence": 33,
+          "quote": "'",
+          "script_index": 1,
+          "sink": "call:txt[2]",
+          "token_sha256": "sha256:dd8f2fd9ab809b896d8edf927d89df44fa29b3d2a023752e7665d3a4f0e2a998"
+        },
+        "type": "string"
+      },
+      {
+        "context": "inline-script[1]:call:txt[2]",
+        "default": "统计",
+        "field_id": "script.literal.034",
+        "kind": "script_literal",
+        "max_length": 6,
+        "span": {
+          "kind": "script_literal",
+          "occurrence": 34,
+          "quote": "'",
+          "script_index": 1,
+          "sink": "call:txt[2]",
+          "token_sha256": "sha256:e6c09c35be582d350b345153d99f99a8fcc592e7bc4b61f5ce252696845d5f64"
+        },
+        "type": "string"
+      }
+    ],
+    "format": "wise-ppt-layout-payload@1",
+    "values_schema": {
+      "additionalProperties": false,
+      "minProperties": 1,
+      "properties": {
+        "html.text.001": {
+          "maxLength": 25,
+          "pattern": "^(?!.*[\\u3400-\\u9fff]).+$",
+          "type": "string"
+        },
+        "html.text.002": {
+          "maxLength": 25,
+          "pattern": "^(?!.*[\\u3400-\\u9fff]).+$",
+          "type": "string"
+        },
+        "html.text.003": {
+          "maxLength": 26,
+          "pattern": "^\\d{1,3} / \\d{1,3} — BY .{1,40}$",
+          "type": "string"
+        },
+        "html.text.004": {
+          "maxLength": 41,
+          "type": "string"
+        },
+        "script.literal.001": {
+          "maxLength": 8,
+          "pattern": "^(?!.*[\\u3400-\\u9fff]).+$",
+          "type": "string"
+        },
+        "script.literal.002": {
+          "maxLength": 9,
+          "type": "string"
+        },
+        "script.literal.003": {
+          "maxLength": 7,
+          "type": "string"
+        },
+        "script.literal.004": {
+          "maxLength": 7,
+          "type": "string"
+        },
+        "script.literal.005": {
+          "maxLength": 11,
+          "pattern": "^(?!.*[\\u3400-\\u9fff]).+$",
+          "type": "string"
+        },
+        "script.literal.006": {
+          "maxLength": 8,
+          "type": "string"
+        },
+        "script.literal.007": {
+          "maxLength": 10,
+          "type": "string"
+        },
+        "script.literal.008": {
+          "maxLength": 6,
+          "type": "string"
+        },
+        "script.literal.009": {
+          "maxLength": 9,
+          "type": "string"
+        },
+        "script.literal.010": {
+          "maxLength": 6,
+          "type": "string"
+        },
+        "script.literal.011": {
+          "maxLength": 7,
+          "type": "string"
+        },
+        "script.literal.012": {
+          "maxLength": 7,
+          "type": "string"
+        },
+        "script.literal.013": {
+          "maxLength": 7,
+          "type": "string"
+        },
+        "script.literal.014": {
+          "maxLength": 6,
+          "type": "string"
+        },
+        "script.literal.015": {
+          "maxLength": 8,
+          "type": "string"
+        },
+        "script.literal.016": {
+          "maxLength": 8,
+          "type": "string"
+        },
+        "script.literal.017": {
+          "maxLength": 8,
+          "type": "string"
+        },
+        "script.literal.018": {
+          "maxLength": 7,
+          "pattern": "^(?!.*[\\u3400-\\u9fff]).+$",
+          "type": "string"
+        },
+        "script.literal.019": {
+          "maxLength": 9,
+          "pattern": "^(?!.*[\\u3400-\\u9fff]).+$",
+          "type": "string"
+        },
+        "script.literal.020": {
+          "maxLength": 17,
+          "type": "string"
+        },
+        "script.literal.021": {
+          "maxLength": 8,
+          "type": "string"
+        },
+        "script.literal.022": {
+          "maxLength": 7,
+          "pattern": "^(?!.*[\\u3400-\\u9fff]).+$",
+          "type": "string"
+        },
+        "script.literal.023": {
+          "maxLength": 8,
+          "type": "string"
+        },
+        "script.literal.024": {
+          "maxLength": 7,
+          "pattern": "^(?!.*[\\u3400-\\u9fff]).+$",
+          "type": "string"
+        },
+        "script.literal.025": {
+          "maxLength": 7,
+          "type": "string"
+        },
+        "script.literal.026": {
+          "maxLength": 7,
+          "pattern": "^(?!.*[\\u3400-\\u9fff]).+$",
+          "type": "string"
+        },
+        "script.literal.027": {
+          "maxLength": 17,
+          "pattern": "^(?!.*[\\u3400-\\u9fff]).+$",
+          "type": "string"
+        },
+        "script.literal.028": {
+          "maxLength": 6,
+          "type": "string"
+        },
+        "script.literal.029": {
+          "maxLength": 24,
+          "pattern": "^(?!.*[\\u3400-\\u9fff]).+$",
+          "type": "string"
+        },
+        "script.literal.030": {
+          "maxLength": 6,
+          "type": "string"
+        },
+        "script.literal.031": {
+          "maxLength": 18,
+          "pattern": "^(?!.*[\\u3400-\\u9fff]).+$",
+          "type": "string"
+        },
+        "script.literal.032": {
+          "maxLength": 6,
+          "type": "string"
+        },
+        "script.literal.033": {
+          "maxLength": 24,
+          "pattern": "^(?!.*[\\u3400-\\u9fff]).+$",
+          "type": "string"
+        },
+        "script.literal.034": {
+          "maxLength": 6,
+          "type": "string"
+        }
+      },
+      "type": "object"
+    }
+  },
+  "payload_defaults": {
+    "bindings": [
+      {
+        "asset_refs": [],
+        "content_refs": [
+          "item.canonical.screens"
+        ],
+        "slot_id": "screens"
+      },
+      {
+        "asset_refs": [],
+        "content_refs": [
+          "item.canonical.support"
+        ],
+        "slot_id": "support"
+      },
+      {
+        "asset_refs": [],
+        "content_refs": [
+          "item.canonical.takeaway"
+        ],
+        "slot_id": "takeaway"
+      }
+    ],
+    "values": {
+      "html.text.001": "AI ENGINEERING — A9",
+      "html.text.002": "MOBILE AI ASSISTANT",
+      "html.text.003": "01 / 01 — BY WISE PPT",
+      "html.text.004": "从提问、生成、润色到使用统计，移动助手覆盖内容生产的完整闭环。",
+      "script.literal.001": "9:41",
+      "script.literal.002": "AI 助手",
+      "script.literal.003": "8 条",
+      "script.literal.004": "生成中",
+      "script.literal.005": "GLM-5.2",
+      "script.literal.006": "润色建议",
+      "script.literal.007": "3 处可优化",
+      "script.literal.008": "长度",
+      "script.literal.009": "减 12%",
+      "script.literal.010": "语气",
+      "script.literal.011": "更正式",
+      "script.literal.012": "错别字",
+      "script.literal.013": "2 处",
+      "script.literal.014": "耗时",
+      "script.literal.015": "1.4s",
+      "script.literal.016": "采纳全部",
+      "script.literal.017": "本周用量",
+      "script.literal.018": "W32",
+      "script.literal.019": "1,284",
+      "script.literal.020": "TOKENS · 本周调用",
+      "script.literal.021": "提问次数",
+      "script.literal.022": "87%",
+      "script.literal.023": "生成字数",
+      "script.literal.024": "62%",
+      "script.literal.025": "采纳率",
+      "script.literal.026": "91%",
+      "script.literal.027": "STEP 01 — ASK",
+      "script.literal.028": "提问",
+      "script.literal.029": "STEP 02 — GENERATE",
+      "script.literal.030": "生成",
+      "script.literal.031": "STEP 03 — EDIT",
+      "script.literal.032": "润色",
+      "script.literal.033": "STEP 04 — INSIGHTS",
+      "script.literal.034": "统计"
+    }
+  },
+  "payload_schema": {
+    "additionalProperties": false,
+    "properties": {
+      "bindings": {
+        "items": {
+          "additionalProperties": false,
+          "properties": {
+            "asset_refs": {
+              "items": {
+                "minLength": 1,
+                "type": "string"
+              },
+              "type": "array"
+            },
+            "content_refs": {
+              "items": {
+                "minLength": 1,
+                "type": "string"
+              },
+              "type": "array"
+            },
+            "slot_id": {
+              "enum": [
+                "screens",
+                "support",
+                "takeaway"
+              ],
+              "type": "string"
+            }
+          },
+          "required": [
+            "slot_id",
+            "content_refs",
+            "asset_refs"
+          ],
+          "type": "object"
+        },
+        "maxItems": 3,
+        "minItems": 3,
+        "type": "array"
+      },
+      "values": {
+        "additionalProperties": false,
+        "minProperties": 1,
+        "properties": {
+          "html.text.001": {
+            "maxLength": 25,
+            "pattern": "^(?!.*[\\u3400-\\u9fff]).+$",
+            "type": "string"
+          },
+          "html.text.002": {
+            "maxLength": 25,
+            "pattern": "^(?!.*[\\u3400-\\u9fff]).+$",
+            "type": "string"
+          },
+          "html.text.003": {
+            "maxLength": 26,
+            "pattern": "^\\d{1,3} / \\d{1,3} — BY .{1,40}$",
+            "type": "string"
+          },
+          "html.text.004": {
+            "maxLength": 41,
+            "type": "string"
+          },
+          "script.literal.001": {
+            "maxLength": 8,
+            "pattern": "^(?!.*[\\u3400-\\u9fff]).+$",
+            "type": "string"
+          },
+          "script.literal.002": {
+            "maxLength": 9,
+            "type": "string"
+          },
+          "script.literal.003": {
+            "maxLength": 7,
+            "type": "string"
+          },
+          "script.literal.004": {
+            "maxLength": 7,
+            "type": "string"
+          },
+          "script.literal.005": {
+            "maxLength": 11,
+            "pattern": "^(?!.*[\\u3400-\\u9fff]).+$",
+            "type": "string"
+          },
+          "script.literal.006": {
+            "maxLength": 8,
+            "type": "string"
+          },
+          "script.literal.007": {
+            "maxLength": 10,
+            "type": "string"
+          },
+          "script.literal.008": {
+            "maxLength": 6,
+            "type": "string"
+          },
+          "script.literal.009": {
+            "maxLength": 9,
+            "type": "string"
+          },
+          "script.literal.010": {
+            "maxLength": 6,
+            "type": "string"
+          },
+          "script.literal.011": {
+            "maxLength": 7,
+            "type": "string"
+          },
+          "script.literal.012": {
+            "maxLength": 7,
+            "type": "string"
+          },
+          "script.literal.013": {
+            "maxLength": 7,
+            "type": "string"
+          },
+          "script.literal.014": {
+            "maxLength": 6,
+            "type": "string"
+          },
+          "script.literal.015": {
+            "maxLength": 8,
+            "type": "string"
+          },
+          "script.literal.016": {
+            "maxLength": 8,
+            "type": "string"
+          },
+          "script.literal.017": {
+            "maxLength": 8,
+            "type": "string"
+          },
+          "script.literal.018": {
+            "maxLength": 7,
+            "pattern": "^(?!.*[\\u3400-\\u9fff]).+$",
+            "type": "string"
+          },
+          "script.literal.019": {
+            "maxLength": 9,
+            "pattern": "^(?!.*[\\u3400-\\u9fff]).+$",
+            "type": "string"
+          },
+          "script.literal.020": {
+            "maxLength": 17,
+            "type": "string"
+          },
+          "script.literal.021": {
+            "maxLength": 8,
+            "type": "string"
+          },
+          "script.literal.022": {
+            "maxLength": 7,
+            "pattern": "^(?!.*[\\u3400-\\u9fff]).+$",
+            "type": "string"
+          },
+          "script.literal.023": {
+            "maxLength": 8,
+            "type": "string"
+          },
+          "script.literal.024": {
+            "maxLength": 7,
+            "pattern": "^(?!.*[\\u3400-\\u9fff]).+$",
+            "type": "string"
+          },
+          "script.literal.025": {
+            "maxLength": 7,
+            "type": "string"
+          },
+          "script.literal.026": {
+            "maxLength": 7,
+            "pattern": "^(?!.*[\\u3400-\\u9fff]).+$",
+            "type": "string"
+          },
+          "script.literal.027": {
+            "maxLength": 17,
+            "pattern": "^(?!.*[\\u3400-\\u9fff]).+$",
+            "type": "string"
+          },
+          "script.literal.028": {
+            "maxLength": 6,
+            "type": "string"
+          },
+          "script.literal.029": {
+            "maxLength": 24,
+            "pattern": "^(?!.*[\\u3400-\\u9fff]).+$",
+            "type": "string"
+          },
+          "script.literal.030": {
+            "maxLength": 6,
+            "type": "string"
+          },
+          "script.literal.031": {
+            "maxLength": 18,
+            "pattern": "^(?!.*[\\u3400-\\u9fff]).+$",
+            "type": "string"
+          },
+          "script.literal.032": {
+            "maxLength": 6,
+            "type": "string"
+          },
+          "script.literal.033": {
+            "maxLength": 24,
+            "pattern": "^(?!.*[\\u3400-\\u9fff]).+$",
+            "type": "string"
+          },
+          "script.literal.034": {
+            "maxLength": 6,
+            "type": "string"
+          }
+        },
+        "type": "object"
+      }
+    },
+    "required": [
+      "bindings",
+      "values"
+    ],
+    "type": "object"
+  },
+  "recipe_fingerprint": "sha256:6f08f2ca6056508700ab242b860f757105859f351881dae264654f3fbdcb7817",
+  "recipe_id": "paper-ink.evidence.mobile-screen-gallery",
+  "required_capabilities": [],
+  "slots": [
+    {
+      "allowed_component_sources": [
+        "codex-host",
+        "native"
+      ],
+      "allowed_renderer_kinds": [
+        "table",
+        "image",
+        "native-html",
+        "svg"
+      ],
+      "compatible_component_ids": [
+        "codex-host.paper-ink.media.generated-image",
+        "native.paper-ink.068.mobile-gallery",
+        "native.paper-ink.media.reconstructed-image"
+      ],
+      "count_unit": "binding",
+      "default_component": {
+        "component_id": "native.paper-ink.evidence.mobile-screen-gallery.screens",
+        "component_source": "native",
+        "origin": {
+          "kind": "canonical-frame-island",
+          "path": "gallery/paper-ink/ai/frames/layout-a9.html",
+          "selector": ".stage"
+        },
+        "renderer_kind": "svg"
+      },
+      "max_items": 8,
+      "min_items": 1,
+      "open_for_override": false,
+      "purpose": "连续屏幕",
+      "required": true,
+      "slot_id": "screens",
+      "space_contract": {
+        "aspect_ratio": 2.4194,
+        "canvas_height": 1080,
+        "canvas_width": 1920,
+        "height": 620,
+        "space_type": "wide",
+        "width": 1500
+      },
+      "visual_role": "primary"
+    },
+    {
+      "allowed_component_sources": [
+        "codex-host",
+        "native"
+      ],
+      "allowed_renderer_kinds": [
+        "typography",
+        "table",
+        "image",
+        "native-html",
+        "svg"
+      ],
+      "compatible_component_ids": [],
+      "count_unit": "binding",
+      "default_component": {
+        "component_id": "native.paper-ink.evidence.mobile-screen-gallery.support",
+        "component_source": "native",
+        "origin": {
+          "kind": "canonical-frame-island",
+          "path": "gallery/paper-ink/ai/frames/layout-a9.html",
+          "selector": ".doc.tl"
+        },
+        "renderer_kind": "typography"
+      },
+      "max_items": 4,
+      "min_items": 0,
+      "open_for_override": false,
+      "purpose": "辅助证据、标签或解释",
+      "required": false,
+      "slot_id": "support",
+      "visual_role": "support"
+    },
+    {
+      "allowed_component_sources": [
+        "native"
+      ],
+      "allowed_renderer_kinds": [
+        "typography"
+      ],
+      "compatible_component_ids": [],
+      "count_unit": "binding",
+      "default_component": {
+        "component_id": "native.paper-ink.evidence.mobile-screen-gallery.takeaway",
+        "component_source": "native",
+        "origin": {
+          "kind": "canonical-frame-island",
+          "path": "gallery/paper-ink/ai/frames/layout-a9.html",
+          "selector": ".caption"
+        },
+        "renderer_kind": "typography"
+      },
+      "max_items": 1,
+      "min_items": 0,
+      "open_for_override": false,
+      "purpose": "页面一句话结论",
+      "required": false,
+      "slot_id": "takeaway",
+      "visual_role": "support"
+    }
+  ],
+  "source": {
+    "path": "gallery/paper-ink/ai/frames/layout-a9.html",
+    "sha256": "sha256:df91fca2377a8b4c85bfc1265360a23e176924440e84dccb267325f6184b3eaa"
+  },
+  "status": "production",
+  "theme_id": "paper-ink",
+  "variant": "ai"
+}

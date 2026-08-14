@@ -1,0 +1,180 @@
+<!-- GENERATED: Wise PPT formal canonical source; protected Gallery remains provenance-only. -->
+<!DOCTYPE html>
+<html lang="zh-CN" data-runtime="wise-ppt-specimen" data-typography-mode="mixed" data-page-id="gallery-general-j2" data-page-role="explain" data-theme="paper-ink" data-layout="paper-ink.cycle.serpentine-loop" data-layout-source="gallery">
+<head>
+<meta charset="UTF-8">
+<title>layout-j2 · 蛇形回环</title>
+<link rel="stylesheet" href="../../../../themes/paper-ink/assets/design-tokens.css">
+<link rel="stylesheet" href="../../../../themes/paper-ink/assets/slide-components.css">
+<link rel="stylesheet" href="../../../shell.css">
+<style>
+  svg.scene { position: absolute; inset: 0; z-index: 1; }
+  .caption {
+    position: absolute; left: 0; right: 0; bottom: 118px;
+    text-align: center;;;;;;
+    z-index: 5;
+  }
+</style>
+</head>
+<body class="slide">
+<div class="stage" data-block-id="gallery-primary" data-renderer-kind="svg" data-component-source="native" data-component-id="native.paper-ink.cycle.serpentine-loop.loop-steps" data-content-ref="example.j2" data-anchor-id="stage">
+  <span data-geometry-anchor-holder="loop-node-1" data-anchor-id="loop-node-1" hidden aria-hidden="true"></span><span data-geometry-anchor-holder="loop-node-2" data-anchor-id="loop-node-2" hidden aria-hidden="true"></span><span data-geometry-anchor-holder="loop-link-1" data-anchor-id="loop-link-1" hidden aria-hidden="true"></span>
+  <div class="doc tl" data-anchor-id="slot-support">产品 · 述职 — J2<br>产品迭代与发布成果</div>
+  <div class="folio">01 / 01 — BY @歪斯WISE</div>
+
+  <svg class="scene" width="1920" height="1080" viewBox="0 0 1920 1080">
+    <defs>
+      <pattern id="hatch17" width="6" height="6" patternTransform="rotate(45)" patternUnits="userSpaceOnUse">
+        <line x1="0" y1="0" x2="0" y2="6" stroke="var(--ink)" stroke-width=".7" opacity=".35"/>
+      </pattern>
+    </defs>
+    <g id="draw" data-anchor-id="slot-loop-steps"></g>
+  </svg>
+
+  <div class="caption" data-anchor-id="slot-takeaway">从反馈采集到发布复盘，八步闭环沉淀本年度产品迭代成果。</div>
+</div>
+
+<script src="../../../../runtime/stage-fit.js"></script>
+<script src="../../../../themes/paper-ink/assets/particles.js"></script>
+<script>
+var NS = 'http://www.w3.org/2000/svg';
+var INK = __wiseThemeToken("--ink");
+var INK80 = __wiseThemeToken("--ink-80");
+var INK70 = __wiseThemeToken("--ink-70");
+var INK45 = __wiseThemeToken("--ink-45");
+var G = document.getElementById('draw');
+function el(tag, attrs) {
+  var e = document.createElementNS(NS, tag);
+  for (var k in attrs) e.setAttribute(k, attrs[k]);
+  G.appendChild(e); return e;
+}
+function txt(x, y, str, attrs) {
+  var t = el('text', Object.assign({x:x, y:y}, attrs||{}));
+  t.textContent = str; return t;
+}
+var MONO = 'var(--mono)', SANS = 'var(--sans)';
+
+
+/* 回环主体保持内部结构不变，整体落到 FIG 与结论之间的视觉中心。 */
+G = el('g', {transform:'translate(0 -13.7)'});
+
+/* ---------- 蛇形回环：产品迭代与发布成果八步 ----------
+   上排 01→04 左到右；右端大弧弯下（上线闸口）；下排 05→08 右到左；左端回环弧挂迭代标签 */
+var TY = 370, BY = 670;                 /* 上/下排节点中心 y */
+var CXS = [420, 770, 1120, 1470];       /* 四列节点中心 x */
+
+/* 八个仪器化图元（形态随语义变化，各不相同） */
+function gTelemetry(cx, gy){            /* 遥测：信号弧 */
+  [8, 14, 20].forEach(function(r){
+    el('path', {d:'M '+(cx-r)+' '+gy+' A '+r+' '+r+' 0 0 1 '+(cx+r)+' '+gy,
+      fill:'none', stroke:INK80, 'stroke-width':1.1});
+  });
+  el('circle', {cx:cx, cy:gy+5, r:2.4, fill:INK});
+}
+function gReplay(cx, gy){               /* 回放：圆 + 开放三角 */
+  el('circle', {cx:cx, cy:gy, r:17, fill:'none', stroke:INK80, 'stroke-width':1.2});
+  el('line', {x1:cx-5, y1:gy-8, x2:cx+9, y2:gy, stroke:INK80, 'stroke-width':1.2});
+  el('line', {x1:cx+9, y1:gy, x2:cx-5, y2:gy+8, stroke:INK80, 'stroke-width':1.2});
+}
+function gTune(cx, gy){                 /* 调参：刻度表盘 + 指针 */
+  el('circle', {cx:cx, cy:gy, r:17, fill:'none', stroke:INK80, 'stroke-width':1.2});
+  for (var a = 0; a < 360; a += 45) {
+    var r1 = 12, r2 = 17, t = a * Math.PI / 180;
+    el('line', {x1:cx+Math.cos(t)*r1, y1:gy+Math.sin(t)*r1, x2:cx+Math.cos(t)*r2, y2:gy+Math.sin(t)*r2,
+      stroke:INK, 'stroke-width':.7, opacity:.5});
+  }
+  el('line', {x1:cx, y1:gy, x2:cx+9, y2:gy-9, stroke:INK80, 'stroke-width':1.2});
+  el('circle', {cx:cx, cy:gy, r:2, fill:INK});
+}
+function gSim(cx, gy){                  /* 仿真：情景网格 */
+  [[-14,-10],[2,-10],[-14,6],[2,6]].forEach(function(o, i){
+    el('rect', {x:cx+o[0], y:gy+o[1], width:12, height:9, fill: i===1 ? 'url(#hatch17)' : 'none',
+      stroke:INK80, 'stroke-width':1});
+  });
+}
+function gCanary(cx, gy){               /* 灰度：半填剖面圆 */
+  el('path', {d:'M '+cx+' '+(gy-16)+' A 16 16 0 0 0 '+cx+' '+(gy+16)+' Z',
+    fill:'url(#hatch17)', stroke:'none'});
+  el('circle', {cx:cx, cy:gy, r:16, fill:'none', stroke:INK80, 'stroke-width':1.2});
+}
+function gRollout(cx, gy){              /* 全量：数据圆柱 */
+  el('ellipse', {cx:cx, cy:gy-10, rx:14, ry:5, fill:'none', stroke:INK80, 'stroke-width':1.2});
+  el('line', {x1:cx-14, y1:gy-10, x2:cx-14, y2:gy+10, stroke:INK80, 'stroke-width':1.2});
+  el('line', {x1:cx+14, y1:gy-10, x2:cx+14, y2:gy+10, stroke:INK80, 'stroke-width':1.2});
+  el('path', {d:'M '+(cx-14)+' '+(gy+10)+' A 14 5 0 0 0 '+(cx+14)+' '+(gy+10),
+    fill:'none', stroke:INK80, 'stroke-width':1.2});
+}
+function gMonitor(cx, gy){              /* 监控：折线微图 */
+  el('path', {d:'M '+(cx-18)+' '+(gy+9)+' L '+(cx-8)+' '+(gy+1)+' L '+(cx+1)+' '+(gy+6)+' L '+(cx+9)+' '+(gy-7)+' L '+(cx+18)+' '+(gy-2),
+    fill:'none', stroke:INK80, 'stroke-width':1.2});
+  el('circle', {cx:cx+9, cy:gy-7, r:2.2, fill:INK});
+}
+function gRecover(cx, gy){              /* 回收：回环弧箭头 */
+  el('path', {d:'M '+(cx+13)+' '+(gy+6)+' A 15 15 0 1 1 '+(cx+14)+' '+(gy-4),
+    fill:'none', stroke:INK80, 'stroke-width':1.2});
+  el('line', {x1:cx+14, y1:gy-4, x2:cx+7, y2:gy-11, stroke:INK80, 'stroke-width':1.2});
+  el('line', {x1:cx+14, y1:gy-4, x2:cx+21, y2:gy-11, stroke:INK80, 'stroke-width':1.2});
+}
+
+/* 节点：双线框 + 图元 + mono EN + 中文名 + mono 字段行 */
+function node(cx, cy, w, no, en, cn, field, glyphFn){
+  var x = cx - w/2, y = cy - 80;
+  el('rect', {x:x, y:y, width:w, height:160, fill:__wiseThemeToken("--paper-panel"), stroke:INK80, 'stroke-width':1.3});
+  el('rect', {x:x+5, y:y+5, width:w-10, height:150, fill:'none', stroke:INK, 'stroke-width':.6, opacity:.3});
+  txt(x+16, y+28, no, {'font-family':MONO, 'font-size':'var(--type-meta)', 'letter-spacing':2, fill:INK45});
+  glyphFn(cx, cy-40);
+  txt(cx, cy+14, en, {'font-family':MONO, 'font-size':'var(--type-label)', 'letter-spacing':2, 'text-anchor':'middle', fill:INK});
+  txt(cx, cy+40, cn, {'font-family':SANS, 'font-weight':300, 'font-size':'var(--type-body)', 'text-anchor':'middle', fill:INK});
+  txt(cx, cy+65, field, {'font-family':MONO, 'font-size':'var(--type-micro-secondary)', 'letter-spacing':1, 'text-anchor':'middle', fill:INK45});
+  return {l:x, r:x+w};
+}
+
+/* 细线开放箭头（dir=+1 向右 / -1 向左） */
+function arrow(x1, x2, y, dir){
+  el('line', {x1:x1, y1:y, x2:x2, y2:y, stroke:INK80, 'stroke-width':1.2});
+  el('line', {x1:x2, y1:y, x2:x2-dir*10, y2:y-6, stroke:INK80, 'stroke-width':1.2});
+  el('line', {x1:x2, y1:y, x2:x2-dir*10, y2:y+6, stroke:INK80, 'stroke-width':1.2});
+}
+
+/* 上排：01 反馈采集 → 02 问题诊断 → 03 优先级评估 → 04 方案验证 */
+var n1 = node(CXS[0], TY, 200, '01', 'FEEDBACK',   '反馈采集', 'VOICE 420 · 4CH', gTelemetry);
+var n2 = node(CXS[1], TY, 216, '02', 'DIAGNOSE',   '问题诊断', 'ISSUE 1.2K / YEAR', gReplay);
+var n3 = node(CXS[2], TY, 208, '03', 'PRIORITIZE', '优先级评估', 'BACKLOG V18', gTune);
+var n4 = node(CXS[3], TY, 232, '04', 'PROTOTYPE',  '方案验证', 'PROTOTYPE 86', gSim);
+arrow(n1.r+8, n2.l-8, TY, 1);
+arrow(n2.r+8, n3.l-8, TY, 1);
+arrow(n3.r+8, n4.l-8, TY, 1);
+
+/* 右端大弧弯下：上线闸口（本页唯一强调线 2.2px） */
+el('path', {d:'M 1586 370 C 1746 370, 1746 670, 1586 670',
+  fill:'none', stroke:INK, 'stroke-width':2.2, opacity:.95});
+txt(1662, 500, 'GO-LIVE', {'font-family':MONO, 'font-size':'var(--type-meta)', 'letter-spacing':2, 'text-anchor':'middle', fill:INK});
+txt(1662, 530, '发布闸口', {'font-family':SANS, 'font-weight':300, 'font-size':'var(--type-body-small)', 'text-anchor':'middle', fill:INK70});
+
+/* 下排：05 灰度验证 → 06 正式发布 → 07 成果衡量 → 08 复盘沉淀（右到左） */
+var n5 = node(CXS[3], BY, 232, '05', 'BETA',    '灰度验证', '5% USERS · 2 WEEKS', gCanary);
+var n6 = node(CXS[2], BY, 224, '06', 'RELEASE', '正式发布', '100% · 3 CHANNELS', gRollout);
+var n7 = node(CXS[1], BY, 204, '07', 'MEASURE', '成果衡量', 'NPS 38 → 52', gMonitor);
+var n8 = node(CXS[0], BY, 200, '08', 'RETRO',   '复盘沉淀', 'ISSUE 23 → 01', gRecover);
+arrow(n5.l-8, n6.r+8, BY, -1);
+arrow(n6.l-8, n7.r+8, BY, -1);
+arrow(n7.l-8, n8.r+8, BY, -1);
+
+/* 左端回环弧：迭代标签（弧=语义，无标签的回环是装饰） */
+el('path', {d:'M 320 670 C 172 670, 172 370, 320 370',
+  fill:'none', stroke:INK80, 'stroke-width':1.4});
+el('line', {x1:320, y1:370, x2:330, y2:360, stroke:INK80, 'stroke-width':1.2});
+el('line', {x1:320, y1:370, x2:330, y2:380, stroke:INK80, 'stroke-width':1.2});
+txt(246, 500, 'REVIEW · Q4', {'font-family':MONO, 'font-size':'var(--type-meta)', 'letter-spacing':2, 'text-anchor':'middle', fill:INK});
+txt(246, 530, '述职复盘', {'font-family':SANS, 'font-weight':300, 'font-size':'var(--type-body-small)', 'text-anchor':'middle', fill:INK70});
+
+/* 构造线：上下排横向基准（作图痕迹，不擦除） */
+el('line', {x1:180, y1:TY, x2:330, y2:TY, stroke:INK, 'stroke-width':.5, opacity:.18, 'stroke-dasharray':'2 6'});
+el('line', {x1:1586, y1:TY, x2:1780, y2:TY, stroke:INK, 'stroke-width':.5, opacity:.18, 'stroke-dasharray':'2 6'});
+el('line', {x1:180, y1:BY, x2:330, y2:BY, stroke:INK, 'stroke-width':.5, opacity:.18, 'stroke-dasharray':'2 6'});
+el('line', {x1:1586, y1:BY, x2:1780, y2:BY, stroke:INK, 'stroke-width':.5, opacity:.18, 'stroke-dasharray':'2 6'});
+
+stageFit();
+</script>
+</body>
+</html>

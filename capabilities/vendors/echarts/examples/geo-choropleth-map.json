@@ -1,0 +1,578 @@
+{
+  "example_id": "echarts.geo-choropleth-map",
+  "title": "区域活动分级填色地图",
+  "source_url": "https://echarts.apache.org/examples/zh/index.html#chart-type-map",
+  "upstream_license": "Apache-2.0",
+  "chart_type": "map",
+  "source_note": "形制出自纸墨金样帧 gallery/paper-ink/general/frames/layout-c4.html（预设 paper-ink.data.geo-bubble-map，legacy C4）：piecewise visualMap 六档墨色色阶 + outOfRange 深一度纸色 + 墨线边界。底图按任务约定用内联示意多边形替代真实 GeoJSON；数据抽成 dataset + encode（itemName/value）。",
+  "dataset_shape": {
+    "dimensions": [
+      "region",
+      "value"
+    ],
+    "source": [
+      {
+        "region": "临川",
+        "value": 16
+      },
+      {
+        "region": "海湾",
+        "value": 12
+      },
+      {
+        "region": "江洲",
+        "value": 8
+      },
+      {
+        "region": "云岭",
+        "value": 7
+      },
+      {
+        "region": "苍梧",
+        "value": 5
+      },
+      {
+        "region": "东瓯",
+        "value": 4
+      },
+      {
+        "region": "朔原",
+        "value": -1
+      },
+      {
+        "region": "南浦",
+        "value": -1
+      },
+      {
+        "region": "岭西",
+        "value": -1
+      }
+    ]
+  },
+  "render_plan_binding": {
+    "renderer_kind": "svg",
+    "component_source": "echarts",
+    "component_id": "echarts.geo-choropleth-map",
+    "theme_adapter_id": "paper-ink.echarts",
+    "data_binding": {
+      "data_ref": {
+        "content_id": "item.region-activity",
+        "json_pointer": "/structured_data/rows"
+      },
+      "dataset_id": "dataset.geo-choropleth-map",
+      "encode": {
+        "itemName": "region",
+        "value": "value"
+      }
+    }
+  },
+  "html_template": {
+    "container_attrs": "data-block-id=\"block.main\" data-renderer-kind=\"svg\" data-component-source=\"echarts\" data-component-id=\"echarts.geo-choropleth-map\" data-theme-adapter-id=\"paper-ink.echarts\" data-content-ref=\"item.region-activity\" data-dataset-id=\"dataset.geo-choropleth-map\"",
+    "dataset_script_id": "dataset.geo-choropleth-map"
+  },
+  "option": {
+    "dataset": {
+      "dimensions": [
+        "region",
+        "value"
+      ],
+      "source": [
+        {
+          "region": "临川",
+          "value": 16
+        },
+        {
+          "region": "海湾",
+          "value": 12
+        },
+        {
+          "region": "江洲",
+          "value": 8
+        },
+        {
+          "region": "云岭",
+          "value": 7
+        },
+        {
+          "region": "苍梧",
+          "value": 5
+        },
+        {
+          "region": "东瓯",
+          "value": 4
+        },
+        {
+          "region": "朔原",
+          "value": -1
+        },
+        {
+          "region": "南浦",
+          "value": -1
+        },
+        {
+          "region": "岭西",
+          "value": -1
+        }
+      ]
+    },
+    "tooltip": {
+      "trigger": "item"
+    },
+    "visualMap": {
+      "type": "piecewise",
+      "dimension": 1,
+      "show": true,
+      "orient": "horizontal",
+      "left": 8,
+      "bottom": 4,
+      "itemWidth": 14,
+      "itemHeight": 10,
+      "pieces": [
+        {
+          "min": 14,
+          "max": 100,
+          "color": "rgba(25,25,23,0.514)"
+        },
+        {
+          "min": 11,
+          "max": 14,
+          "color": "rgba(25,25,23,0.425)"
+        },
+        {
+          "min": 8,
+          "max": 11,
+          "color": "rgba(25,25,23,0.317)"
+        },
+        {
+          "min": 6,
+          "max": 8,
+          "color": "rgba(25,25,23,0.228)"
+        },
+        {
+          "min": 5,
+          "max": 6,
+          "color": "rgba(25,25,23,0.174)"
+        },
+        {
+          "min": 0,
+          "max": 5,
+          "color": "rgba(25,25,23,0.12)"
+        }
+      ],
+      "outOfRange": {
+        "color": "rgba(212,213,205,0.55)"
+      },
+      "textStyle": {
+        "fontFamily": "Courier Prime",
+        "fontSize": 10,
+        "color": "rgba(25,25,23,0.45)"
+      }
+    },
+    "series": [
+      {
+        "name": "区域活动",
+        "type": "map",
+        "map": "wise-schematic-region",
+        "roam": false,
+        "encode": {
+          "itemName": "region",
+          "value": "value"
+        },
+        "itemStyle": {
+          "areaColor": "rgba(212,213,205,0.55)",
+          "borderColor": "#191917",
+          "borderWidth": 0.8,
+          "shadowBlur": 0
+        },
+        "emphasis": {
+          "disabled": true,
+          "label": {
+            "show": false
+          }
+        },
+        "select": {
+          "disabled": true
+        },
+        "label": {
+          "show": true,
+          "color": "rgba(25,25,23,0.45)",
+          "fontFamily": "Courier Prime",
+          "fontSize": 10
+        },
+        "layoutCenter": [
+          "50%",
+          "48%"
+        ],
+        "layoutSize": "88%"
+      }
+    ]
+  },
+  "geo_asset_caveat": "⚠️ series.map 渲染前必须 echarts.registerMap。本配方的底图登记在 register_maps 字段（9 个无缝拼接的示意多边形区域，不是真实行政区划）；接入真实业务时必须替换 register_maps 为真实 GeoJSON（可放 capabilities/vendors/geo 登记为 window 全局，file:// 安全），并保证 dataset.source 的 region 与 GeoJSON properties.name 完全一致。",
+  "uncovered_region_caveat": "⚠️ 未覆盖（无值）区域必须在 dataset 里显式给 value=-1 哨兵，使其落入 visualMap.outOfRange 渲染深一度纸色。若按证据帧做法让区域缺席，paper-ink 主题 adapter 写入的 series.itemStyle.color（dataRamp 最深档）会把缺席区域盖成实墨，未覆盖反而最抢眼。哨兵值不影响 piecewise 图例（pieces 均 min≥0）。",
+  "map_dataset_caveat": "series.map 通过 encode.itemName/value 消费 dataset；visualMap.dimension=1 指向 value 列。替换数据时 option.dataset、页面 JSON 数据块与（如需改名）GeoJSON 区域名三处必须同步，createEChart 门禁会拦下 dataset 不一致。ECharts piecewise 分段按 min 升序、双闭区间匹配：边界值（如 8、5）落在低一档，与证据帧同配置行为一致。",
+  "notes": "分级填色的标准做法：piecewise visualMap 按 value 分档映射 areaColor，未覆盖区域由 value=-1 哨兵 + outOfRange 回落深一度纸色。色阶、墨线边界（0.8px #191917）、Courier Prime 数字均取自金样帧 layout-c4.html；证据帧的 SVG overlay 引线/双圈标注属于页面级组合（native.paper-ink.075 系），不在本 ECharts 组件内。primitives 取新值 geo-fill（catalog 既有值无一覆盖地理填色）。",
+  "register_maps": {
+    "wise-schematic-region": {
+      "type": "FeatureCollection",
+      "features": [
+        {
+          "type": "Feature",
+          "properties": {
+            "name": "朔原"
+          },
+          "geometry": {
+            "type": "Polygon",
+            "coordinates": [
+              [
+                [
+                  0,
+                  0
+                ],
+                [
+                  40,
+                  0
+                ],
+                [
+                  37,
+                  12
+                ],
+                [
+                  39,
+                  24
+                ],
+                [
+                  18,
+                  24
+                ],
+                [
+                  0,
+                  26
+                ]
+              ]
+            ]
+          }
+        },
+        {
+          "type": "Feature",
+          "properties": {
+            "name": "云岭"
+          },
+          "geometry": {
+            "type": "Polygon",
+            "coordinates": [
+              [
+                [
+                  40,
+                  0
+                ],
+                [
+                  78,
+                  0
+                ],
+                [
+                  82,
+                  13
+                ],
+                [
+                  80,
+                  27
+                ],
+                [
+                  60,
+                  26
+                ],
+                [
+                  39,
+                  24
+                ],
+                [
+                  37,
+                  12
+                ]
+              ]
+            ]
+          }
+        },
+        {
+          "type": "Feature",
+          "properties": {
+            "name": "东瓯"
+          },
+          "geometry": {
+            "type": "Polygon",
+            "coordinates": [
+              [
+                [
+                  78,
+                  0
+                ],
+                [
+                  120,
+                  0
+                ],
+                [
+                  120,
+                  26
+                ],
+                [
+                  100,
+                  25
+                ],
+                [
+                  80,
+                  27
+                ],
+                [
+                  82,
+                  13
+                ]
+              ]
+            ]
+          }
+        },
+        {
+          "type": "Feature",
+          "properties": {
+            "name": "江洲"
+          },
+          "geometry": {
+            "type": "Polygon",
+            "coordinates": [
+              [
+                [
+                  0,
+                  26
+                ],
+                [
+                  18,
+                  24
+                ],
+                [
+                  39,
+                  24
+                ],
+                [
+                  41,
+                  39
+                ],
+                [
+                  37,
+                  53
+                ],
+                [
+                  20,
+                  53
+                ],
+                [
+                  0,
+                  52
+                ]
+              ]
+            ]
+          }
+        },
+        {
+          "type": "Feature",
+          "properties": {
+            "name": "临川"
+          },
+          "geometry": {
+            "type": "Polygon",
+            "coordinates": [
+              [
+                [
+                  39,
+                  24
+                ],
+                [
+                  60,
+                  26
+                ],
+                [
+                  80,
+                  27
+                ],
+                [
+                  77,
+                  40
+                ],
+                [
+                  82,
+                  51
+                ],
+                [
+                  58,
+                  52
+                ],
+                [
+                  37,
+                  53
+                ],
+                [
+                  41,
+                  39
+                ]
+              ]
+            ]
+          }
+        },
+        {
+          "type": "Feature",
+          "properties": {
+            "name": "海湾"
+          },
+          "geometry": {
+            "type": "Polygon",
+            "coordinates": [
+              [
+                [
+                  80,
+                  27
+                ],
+                [
+                  100,
+                  25
+                ],
+                [
+                  120,
+                  26
+                ],
+                [
+                  120,
+                  52
+                ],
+                [
+                  102,
+                  54
+                ],
+                [
+                  82,
+                  51
+                ],
+                [
+                  77,
+                  40
+                ]
+              ]
+            ]
+          }
+        },
+        {
+          "type": "Feature",
+          "properties": {
+            "name": "南浦"
+          },
+          "geometry": {
+            "type": "Polygon",
+            "coordinates": [
+              [
+                [
+                  0,
+                  52
+                ],
+                [
+                  20,
+                  53
+                ],
+                [
+                  37,
+                  53
+                ],
+                [
+                  36,
+                  66
+                ],
+                [
+                  38,
+                  80
+                ],
+                [
+                  0,
+                  80
+                ]
+              ]
+            ]
+          }
+        },
+        {
+          "type": "Feature",
+          "properties": {
+            "name": "苍梧"
+          },
+          "geometry": {
+            "type": "Polygon",
+            "coordinates": [
+              [
+                [
+                  37,
+                  53
+                ],
+                [
+                  58,
+                  52
+                ],
+                [
+                  82,
+                  51
+                ],
+                [
+                  84,
+                  66
+                ],
+                [
+                  80,
+                  80
+                ],
+                [
+                  38,
+                  80
+                ],
+                [
+                  36,
+                  66
+                ]
+              ]
+            ]
+          }
+        },
+        {
+          "type": "Feature",
+          "properties": {
+            "name": "岭西"
+          },
+          "geometry": {
+            "type": "Polygon",
+            "coordinates": [
+              [
+                [
+                  82,
+                  51
+                ],
+                [
+                  102,
+                  54
+                ],
+                [
+                  120,
+                  52
+                ],
+                [
+                  120,
+                  80
+                ],
+                [
+                  80,
+                  80
+                ],
+                [
+                  84,
+                  66
+                ]
+              ]
+            ]
+          }
+        }
+      ]
+    }
+  }
+}

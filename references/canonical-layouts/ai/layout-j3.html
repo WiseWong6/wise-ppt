@@ -1,0 +1,127 @@
+<!-- GENERATED: Wise PPT formal canonical source; protected Gallery remains provenance-only. -->
+<!DOCTYPE html>
+<html lang="zh-CN" data-runtime="wise-ppt-specimen" data-typography-mode="mixed" data-page-id="gallery-ai-j3" data-page-role="sequence" data-theme="paper-ink" data-layout="paper-ink.cycle.journey-curve" data-layout-source="gallery">
+<head>
+<meta charset="UTF-8">
+<title>layout-j3 · 旅程曲线 · AI 产品用户体验旅程</title>
+<link rel="stylesheet" href="../../../../themes/paper-ink/assets/design-tokens.css">
+<link rel="stylesheet" href="../../../../themes/paper-ink/assets/slide-components.css">
+<link rel="stylesheet" href="../../../shell.css">
+<style>
+  svg.scene { position: absolute; inset: 0; z-index: 1; }
+  .caption {
+    position: absolute; left: 0; right: 0; bottom: 118px;
+    text-align: center;;;;;;
+    z-index: 5;
+  }
+</style>
+</head>
+<body class="slide">
+<div class="stage" data-block-id="gallery-primary" data-renderer-kind="svg" data-component-source="native" data-component-id="native.paper-ink.cycle.journey-curve.journey" data-content-ref="example.j3" data-anchor-id="stage">
+  <span data-geometry-anchor-holder="journey-node-1" data-anchor-id="journey-node-1" hidden aria-hidden="true"></span><span data-geometry-anchor-holder="journey-path" data-anchor-id="journey-path" hidden aria-hidden="true"></span>
+  <div class="doc tl" data-anchor-id="slot-support">AI ENGINEERING — J3<br>AI USER JOURNEY</div>
+  <div class="folio">01 / 01 — BY @歪斯WISE</div>
+
+  <svg class="scene" width="1920" height="1080" viewBox="0 0 1920 1080">
+    <g id="draw" data-anchor-id="slot-journey"></g>
+  </svg>
+
+  <div class="caption" data-anchor-id="slot-takeaway">用户从好奇到惊艳后会在深度使用时撞墙，跨过幻觉低谷才形成持续依赖。</div>
+</div>
+
+<script src="../../../../runtime/stage-fit.js"></script>
+<script src="../../../../themes/paper-ink/assets/particles.js"></script>
+<script>
+var NS = 'http://www.w3.org/2000/svg';
+var INK = __wiseThemeToken("--ink");
+var INK80 = __wiseThemeToken("--ink-80");
+var INK70 = __wiseThemeToken("--ink-70");
+var INK45 = __wiseThemeToken("--ink-45");
+/* accent 触发：读 URL 加类 + 染色常量（详见 design-tokens.md §2） */
+if (location.search.indexOf('accent') >= 0) document.documentElement.classList.add('accent');
+var ACCENT = document.documentElement.classList.contains('accent');
+var RED = getComputedStyle(document.documentElement).getPropertyValue('--accent-red').trim();
+var G = document.getElementById('draw');
+function el(tag, attrs) {
+  var e = document.createElementNS(NS, tag);
+  for (var k in attrs) e.setAttribute(k, attrs[k]);
+  G.appendChild(e); return e;
+}
+function txt(x, y, str, attrs) {
+  var t = el('text', Object.assign({x:x, y:y}, attrs||{}));
+  t.textContent = str; return t;
+}
+var MONO = 'var(--mono)', SANS = 'var(--sans)';
+
+G = el('g', {transform:'translate(0 -54.2)'});
+
+
+/* ---------- 顶部 chevron 阶段带（AI 用户体验旅程） ---------- */
+var stages = [
+  ['01','ONBOARD','初次接触'],
+  ['02','WOW','上手使用'],
+  ['03','DEPTH','深度使用'],
+  ['04','STALL','遇到瓶颈'],
+  ['05','BREAK','突破理解']
+];
+stages.forEach(function(s, i){
+  var x = 180 + i*312, w = 290, y = 240, h = 52, tip = 22;
+  var d = 'M '+x+' '+y+' L '+(x+w-tip)+' '+y+' L '+(x+w)+' '+(y+h/2)+
+          ' L '+(x+w-tip)+' '+(y+h)+' L '+x+' '+(y+h)+' L '+(x+tip)+' '+(y+h/2)+' Z';
+  el('path', {d:d, fill:__wiseThemeToken("--paper-panel"), stroke:INK80, 'stroke-width':1.1});
+  txt(x+w/2+6, y+16, s[0]+' '+s[1], {'font-family':MONO, 'font-size':'var(--type-meta)', 'letter-spacing':2, 'text-anchor':'middle', fill:INK});
+  txt(x+w/2+6, y+45, s[2], {'font-family':SANS, 'font-weight':300, 'font-size':'var(--type-label)', 'text-anchor':'middle', fill:INK70});
+});
+
+/* ---------- 主体：连续贝塞尔起伏曲线 ---------- */
+/* 节点：x / y / 类型(0中 1峰 -1谷) / 中文注 / mono 分值 */
+var nodes = [
+  {x:300,  y:560, t:0,  cn:'初次接触·好奇',   sc:'SCORE 74'},
+  {x:590,  y:430, t:1,  cn:'上手使用·惊艳',   sc:'SCORE 92 · PEAK'},
+  {x:830,  y:700, t:-1, cn:'深度使用·撞墙',   sc:'SCORE 41 · PAIN'},
+  {x:1090, y:450, t:1,  cn:'突破理解·掌控',   sc:'SCORE 88 · PEAK'},
+  {x:1330, y:660, t:-1, cn:'遇到幻觉·挫败',   sc:'SCORE 55 · PAIN'},
+  {x:1640, y:500, t:0,  cn:'持续依赖·离不开', sc:'SCORE 90'}
+];
+
+/* 中位基准虚线 + 轴注 */
+el('line', {x1:180, y1:560, x2:1740, y2:560, stroke:INK, 'stroke-width':.5, opacity:.3, 'stroke-dasharray':'2 6'});
+txt(1740, 548, 'EXPERIENCE INDEX 0–100', {'font-family':MONO, 'font-size':'var(--type-micro-secondary)', 'letter-spacing':2, 'text-anchor':'end', fill:INK45});
+
+/* 节点 → 阶段带的竖向构造虚线（峰/中节点在上方标注之上收笔，避让文字） */
+nodes.forEach(function(n){
+  el('line', {x1:n.x, y1:298, x2:n.x, y2:(n.t >= 0 ? n.y-99 : n.y-14), stroke:INK, 'stroke-width':.5, opacity:.22, 'stroke-dasharray':'2 6'});
+});
+
+/* 曲线本体（连续单线，1.4px） */
+el('path', {d:'M 300 560 C 420 560, 470 430, 590 430 C 710 430, 710 700, 830 700 '+
+              'C 950 700, 960 450, 1090 450 C 1220 450, 1210 660, 1330 660 '+
+              'C 1450 660, 1510 500, 1640 500',
+  fill:'none', stroke:INK80, 'stroke-width':1.4});
+
+/* ---------- 节点双圈 + 引线标注 ---------- */
+nodes.forEach(function(n){
+  var pain = (n.t === -1);               /* 谷点=痛点=番茄红否决/警示语义 */
+  var inkN = (ACCENT && pain) ? RED : INK;
+  el('circle', {cx:n.x, cy:n.y, r:9, fill:__wiseThemeToken("--paper"), stroke:(ACCENT && pain ? RED : INK80), 'stroke-width':1.2});
+  el('circle', {cx:n.x, cy:n.y, r:2.4, fill:inkN});
+  var up = (n.t >= 0);   /* 峰/中：标注在上方；谷：下方 */
+  var ly = up ? n.y - 46 : n.y + 58;
+  el('line', {x1:n.x, y1:up ? n.y-13 : n.y+13, x2:n.x, y2:up ? n.y-32 : n.y+34,
+    stroke:INK, 'stroke-width':.7, opacity:.45, 'stroke-dasharray':'3 4'});
+  txt(n.x, ly, n.cn, {'font-family':SANS, 'font-weight':300, 'font-size':'var(--type-body)', 'text-anchor':'middle', fill:inkN});
+  txt(n.x, up ? ly-37 : ly+26, n.sc, {'font-family':MONO, 'font-size':'var(--type-meta)', 'letter-spacing':2, 'text-anchor':'middle', fill:(ACCENT && pain ? RED : INK45)});
+});
+
+/* ---------- 虚线回环弧：尾段痛点引回上手阶段（带标签） ---------- */
+el('path', {d:'M 1330 672 C 1340 850, 600 852, 592 452',
+  fill:'none', stroke:INK, 'stroke-width':.9, opacity:.55, 'stroke-dasharray':'6 5'});
+/* 开放箭头（指向上方节点） */
+el('line', {x1:592, y1:452, x2:583, y2:466, stroke:INK, 'stroke-width':1.1, opacity:.7});
+el('line', {x1:592, y1:452, x2:601, y2:466, stroke:INK, 'stroke-width':1.1, opacity:.7});
+txt(960, 876, 'FEEDBACK: PAIN POINTS → ONBOARDING', {'font-family':MONO, 'font-size':'var(--type-micro-secondary)', 'letter-spacing':2, 'text-anchor':'middle', fill:INK45});
+
+stageFit();
+</script>
+</body>
+</html>

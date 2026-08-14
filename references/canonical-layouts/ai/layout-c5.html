@@ -1,0 +1,112 @@
+<!-- GENERATED: Wise PPT formal canonical source; protected Gallery remains provenance-only. -->
+<!DOCTYPE html>
+<html lang="zh-CN" data-runtime="wise-ppt-specimen" data-typography-mode="mixed" data-page-id="gallery-ai-c5" data-page-role="prove" data-theme="paper-ink" data-layout="paper-ink.data.radial-progress-array" data-layout-source="gallery">
+<head>
+<meta charset="UTF-8">
+<title>layout-c5 · 环形进度环列阵 · AI 预算</title>
+<link rel="stylesheet" href="../../../../themes/paper-ink/assets/design-tokens.css">
+<link rel="stylesheet" href="../../../../themes/paper-ink/assets/slide-components.css">
+<link rel="stylesheet" href="../../../shell.css">
+<style>
+  svg.scene { position: absolute; inset: 0; z-index: 1; }
+  .caption {
+    position: absolute; left: 0; right: 0; bottom: 118px;
+    text-align: center;;;;;;
+    z-index: 5;
+  }
+</style>
+</head>
+<body class="slide">
+<div class="stage" data-block-id="gallery-primary" data-renderer-kind="svg" data-component-source="native" data-component-id="native.paper-ink.data.radial-progress-array.progress-rings" data-content-ref="example.c5" data-anchor-id="stage">
+  <span data-geometry-anchor-holder="donut-1" data-anchor-id="donut-1" hidden aria-hidden="true"></span><span data-geometry-anchor-holder="donut-2" data-anchor-id="donut-2" hidden aria-hidden="true"></span>
+  <div class="doc tl" data-anchor-id="slot-support">AI ENGINEERING — C5<br>AI BUDGET MIX</div>
+  <div class="folio">01 / 01 — BY @歪斯WISE</div>
+
+  <svg class="scene" width="1920" height="1080" viewBox="0 0 1920 1080">
+    <g id="draw" data-anchor-id="slot-progress-rings"></g>
+  </svg>
+
+  <div class="caption" data-anchor-id="slot-takeaway">4200 万元 AI 预算中，训练与推理占 65%，数据与研发承担剩余基础投入。</div>
+</div>
+
+<script src="../../../../runtime/stage-fit.js"></script>
+<script src="../../../../themes/paper-ink/assets/particles.js"></script>
+<script>
+var NS = 'http://www.w3.org/2000/svg';
+var INK = __wiseThemeToken("--ink");
+var INK80 = __wiseThemeToken("--ink-80");
+var INK45 = __wiseThemeToken("--ink-45");
+/* accent 触发：读 URL 加类 + 染色常量（详见 design-tokens.md §2） */
+if (location.search.indexOf('accent') >= 0) document.documentElement.classList.add('accent');
+var ACCENT = document.documentElement.classList.contains('accent');
+var RED = getComputedStyle(document.documentElement).getPropertyValue('--accent-red').trim();
+var G = document.getElementById('draw');
+function el(tag, attrs) {
+  var e = document.createElementNS(NS, tag);
+  for (var k in attrs) e.setAttribute(k, attrs[k]);
+  G.appendChild(e); return e;
+}
+function txt(x, y, str, attrs) {
+  var t = el('text', Object.assign({x:x, y:y}, attrs||{}));
+  t.textContent = str; return t;
+}
+var MONO = 'var(--mono)', SANS = 'var(--sans)';
+
+G = el('g', {transform:'translate(0 -26.7)'});
+
+
+/* ============ 顶部总量：大数字 + 一行注（AI 资源总账） ============ */
+txt(960, 246, 'TOTAL COMPUTE BUDGET / FY2026', {'font-family':MONO, 'font-size':'var(--type-meta)', 'letter-spacing':3, 'text-anchor':'middle', fill:__wiseThemeToken("--wp-compat-layout-ink-50")});
+txt(960, 336, '¥ 42,000,000', {'font-family':MONO, 'font-size':'var(--type-display)', 'letter-spacing':2, 'text-anchor':'middle', fill: ACCENT ? RED : INK});  /* 主角：总额是全页焦点 */
+txt(960, 401, '年度算力预算总额 · 按 AI 资源类别拆分为四份', {'font-family':SANS, 'font-weight':300, 'font-size':'var(--type-body)', 'text-anchor':'middle', fill:__wiseThemeToken("--wp-compat-pi-ink-60")});
+el('line', {x1:560, y1:312, x2:660, y2:312, stroke:INK, 'stroke-width':.8, opacity:.45});
+el('line', {x1:1260, y1:312, x2:1360, y2:312, stroke:INK, 'stroke-width':.8, opacity:.45});
+el('circle', {cx:548, cy:312, r:2.4, fill:INK});
+el('circle', {cx:1372, cy:312, r:2.4, fill:INK});
+
+/* ============ 四个环形进度圈 ============ */
+function donut(cx, cy, pct, zh, en, money) {
+  var R = 95, a0 = -Math.PI / 2, a1 = a0 + pct * 2 * Math.PI;
+  /* 外圈构造圆 + 刻度齿（仪器感） */
+  el('circle', {cx:cx, cy:cy, r:118, fill:'none', stroke:INK, 'stroke-width':.5, 'stroke-dasharray':'2 6', opacity:.28});
+  for (var i = 0; i < 12; i++) {
+    var a = i * Math.PI / 6, major = (i % 3 === 0);
+    el('line', {x1:cx + Math.cos(a) * 108, y1:cy + Math.sin(a) * 108,
+                x2:cx + Math.cos(a) * (major ? 116 : 112), y2:cy + Math.sin(a) * (major ? 116 : 112),
+                stroke:INK, 'stroke-width': major ? .8 : .5, opacity:.4});
+  }
+  /* 底环 + 比例弧 */
+  el('circle', {cx:cx, cy:cy, r:R, fill:'none', stroke:INK, 'stroke-width':.8, opacity:.3});
+  var x0 = cx + R * Math.cos(a0), y0 = cy + R * Math.sin(a0);
+  var x1 = cx + R * Math.cos(a1), y1 = cy + R * Math.sin(a1);
+  el('path', {d:'M ' + x0 + ' ' + y0 + ' A ' + R + ' ' + R + ' 0 ' + (pct > .5 ? 1 : 0) + ' 1 ' + x1 + ' ' + y1,
+    fill:'none', stroke:INK80, 'stroke-width':1.4});
+  el('circle', {cx:x1, cy:y1, r:3, fill:INK});
+  /* 环心百分比 + 环下标签 */
+  txt(cx, cy + 9, (pct * 100).toFixed(0) + '%', {'font-family':MONO, 'font-size':'var(--type-emphasis)', 'text-anchor':'middle', fill:INK});
+  txt(cx, cy + 38, money, {'font-family':MONO, 'font-size':'var(--type-micro-secondary)', 'letter-spacing':1, 'text-anchor':'middle', fill:__wiseThemeToken("--wp-compat-layout-ink-50")});
+  txt(cx, cy + 152, zh, {'font-family':SANS, 'font-weight':300, 'font-size':'var(--type-body)', 'text-anchor':'middle', fill:INK});
+  txt(cx, cy + 180, en, {'font-family':MONO, 'font-size':'var(--type-meta)', 'letter-spacing':2, 'text-anchor':'middle', fill:INK45});
+}
+
+var CY = 580;
+donut(320,  CY, .38, '训练算力',   'TRAINING',     '¥15.96M');
+donut(760,  CY, .27, '推理服务',   'INFERENCE',    '¥11.34M');
+donut(1200, CY, .21, '数据存储',   'DATA STORAGE', '¥ 8.82M');
+donut(1640, CY, .14, '人力研发',   'R&D STAFF',    '¥ 5.88M');
+
+/* ============ 共享基线（合计校验） ============ */
+el('line', {x1:200, y1:800, x2:1720, y2:800, stroke:INK, 'stroke-width':.8, opacity:.5});
+el('line', {x1:200, y1:794, x2:200, y2:806, stroke:INK80, 'stroke-width':1.2});
+el('line', {x1:1720, y1:794, x2:1720, y2:806, stroke:INK80, 'stroke-width':1.2});
+[320, 760, 1200, 1640].forEach(function(x){
+  /* 构造垂线避让环下标签（zh/en 文字区 cy+152/cy+180 附近断开） */
+  el('line', {x1:x, y1:700, x2:x, y2:710, stroke:INK, 'stroke-width':.6, 'stroke-dasharray':'3 6', opacity:.3});
+  el('line', {x1:x, y1:768, x2:x, y2:800, stroke:INK, 'stroke-width':.6, 'stroke-dasharray':'3 6', opacity:.3});
+});
+txt(1720, 826, 'ALLOCATION SUM · 100%', {'font-family':MONO, 'font-size':'var(--type-meta)', 'letter-spacing':2, 'text-anchor':'end', fill:__wiseThemeToken("--wp-compat-layout-ink-50")});
+
+stageFit();
+</script>
+</body>
+</html>

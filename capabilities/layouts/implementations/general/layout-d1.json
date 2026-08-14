@@ -1,0 +1,659 @@
+{
+  "canonical": {
+    "constraints": {
+      "css_scope": "[data-implementation-id=\"paper-ink.scaffold.cover.general\"]",
+      "external_links": false,
+      "external_scripts": false,
+      "payload_only_mutation": true,
+      "ready_api": "WisePPT.markSlideReady",
+      "script_query_scope": "current-section.slide",
+      "stage_fit": false
+    },
+    "kind": "derived-frame",
+    "materialization_format": "wise-ppt-formal-slide@1",
+    "path": "gallery/paper-ink/general/frames/layout-d1.html",
+    "root_selector": "section.slide[data-implementation-id=\"paper-ink.scaffold.cover.general\"]",
+    "sha256": "sha256:0a5a0ed196c137c1acc823facb1be14d8e1ea4e2fbaef7e1fec381016e94bb13"
+  },
+  "canonical_fingerprint": "sha256:805d75fe6914e73881e57c3174e8b5309c1225c92b8f19127853626495ad46ce",
+  "contract_version": 1,
+  "dependency_closure": {
+    "files": [
+      {
+        "path": "gallery/shell.css",
+        "sha256": "sha256:aca1428680d2dd5c84e85d66241ee199a16d36bb60a098340528943fb5469f69"
+      },
+      {
+        "path": "runtime/stage-fit.js",
+        "sha256": "sha256:39577a14aac5072789fdeb80abee887d24da5a44eeb38203ef154602330f291d"
+      },
+      {
+        "path": "themes/paper-ink/assets/design-tokens.css",
+        "sha256": "sha256:3f1f0d3562cf1486b87643b16025388557000858d0df13d767b53a576988c330"
+      },
+      {
+        "path": "themes/paper-ink/assets/fonts/CourierPrime-Regular.ttf",
+        "sha256": "sha256:72f793376f8e2841656bf21d77a5de010f2929bd6956a22ee848ad0c7eb978af"
+      },
+      {
+        "path": "themes/paper-ink/assets/fonts/LXGWWenKai-Regular.ttf",
+        "sha256": "sha256:39ad71264b588165b469e35e6afb162a378dacd1f95348160240ba9038ac3009"
+      },
+      {
+        "path": "themes/paper-ink/assets/fonts/SourceHanSansCN-Light.otf",
+        "sha256": "sha256:b6dfc945aae0daf9b15019f59c2f7b18d17da3b92f00c3ec32fb5f0333696d9c"
+      },
+      {
+        "path": "themes/paper-ink/assets/fonts/SourceHanSerifCN-Medium.otf",
+        "sha256": "sha256:8e224937647ae71ba1b1f310bcb3fbc32f21ec7c2c490ba04670455c901f3378"
+      },
+      {
+        "path": "themes/paper-ink/assets/particles.js",
+        "sha256": "sha256:1281d72e81b34e4be061286edd323dd421443dffbf6e0d8a2faa94a5d14094c4"
+      },
+      {
+        "path": "themes/paper-ink/assets/slide-components.css",
+        "sha256": "sha256:20e7334fe5ae51cb229112290e787c1274ad65278a72b084c708682dc9ca5acf"
+      }
+    ],
+    "sha256": "sha256:7dcc6f0ac681be95cc8955afb36da97027f341a98f4f9f37518e37bfe13f5be4"
+  },
+  "format": "wise-ppt-layout-implementation@1",
+  "geometry": {
+    "anchors": [
+      {
+        "anchor_id": "stage",
+        "selector": ".stage"
+      }
+    ],
+    "canvas": {
+      "height": 1080,
+      "width": 1920
+    },
+    "content_region": {
+      "height": 1080,
+      "width": 1920,
+      "x": 0,
+      "y": 0
+    },
+    "fingerprint": "sha256:cab2e4387e56e0d7d5c28e7ac531599ece794f223af66c89a31f98dd0ae17d5e",
+    "format": "wise-ppt-layout-geometry@1",
+    "relations": [],
+    "structure_contract": {
+      "core_primitives": [
+        "focus-field"
+      ],
+      "region_count": 3,
+      "required_slot_ids": [
+        "cover-lockup"
+      ]
+    }
+  },
+  "implementation_id": "paper-ink.scaffold.cover.general",
+  "payload": {
+    "fields": [
+      {
+        "context": "html:div.doc.tl",
+        "default": "品牌 · 汇报 — D1",
+        "field_id": "html.text.001",
+        "kind": "html_text",
+        "max_length": 16,
+        "span": {
+          "kind": "html_text",
+          "occurrence": 1,
+          "token_sha256": "sha256:7747c5e8f0a014c263a587ee1831f3503315c6e10ec40d72e8af1a345e248401"
+        },
+        "type": "string"
+      },
+      {
+        "context": "html:div.doc.tl",
+        "default": "年度品牌复盘",
+        "field_id": "html.text.002",
+        "kind": "html_text",
+        "max_length": 10,
+        "span": {
+          "kind": "html_text",
+          "occurrence": 2,
+          "token_sha256": "sha256:4153b69624aa891fd7eeb1f5cae7b980f5409c3389c84c3b281fc491185b2d6f"
+        },
+        "type": "string"
+      },
+      {
+        "constraints": {
+          "pattern": "^\\d{1,3} / \\d{1,3} — BY .{1,40}$"
+        },
+        "context": "html:div.folio",
+        "default": "01 / 01 — BY WISE PPT",
+        "field_id": "html.text.003",
+        "kind": "html_text",
+        "max_length": 26,
+        "semantic_role": "folio",
+        "source_default": "D1 / 63 — BY @歪斯WISE",
+        "span": {
+          "kind": "html_text",
+          "occurrence": 3,
+          "token_sha256": "sha256:894b2e70fa751a14903d63ae170ddc3c9ad6d8c9b93993a417b58cd01873a00e"
+        },
+        "type": "string"
+      },
+      {
+        "constraints": {
+          "pattern": "^(?!.*[\\u3400-\\u9fff]).+$"
+        },
+        "context": "html:div.kicker",
+        "default": "ANNUAL BRAND REVIEW — 2026",
+        "field_id": "html.text.004",
+        "kind": "html_text",
+        "max_length": 34,
+        "semantic_role": "mono-label",
+        "span": {
+          "kind": "html_text",
+          "occurrence": 4,
+          "token_sha256": "sha256:77d3fe9678c5e278c6a610f356e1d3a088a592cba8f0ef5090eaeafa7990c45f"
+        },
+        "type": "string"
+      },
+      {
+        "context": "html:div.title",
+        "default": "回响",
+        "field_id": "html.text.005",
+        "kind": "html_text",
+        "max_length": 6,
+        "span": {
+          "kind": "html_text",
+          "occurrence": 5,
+          "token_sha256": "sha256:9672ff454a2c6e4404f3985054e4269a864d32da1fce2d1375ba304437eaa607"
+        },
+        "type": "string"
+      },
+      {
+        "context": "html:div.subtitle",
+        "default": "年度品牌建设与增长成果汇报",
+        "field_id": "html.text.006",
+        "kind": "html_text",
+        "max_length": 17,
+        "span": {
+          "kind": "html_text",
+          "occurrence": 6,
+          "token_sha256": "sha256:b6a15dd0ba2856b193b5791a2342127c4db9ba45cfc56b36f3a578675b1a8958"
+        },
+        "type": "string"
+      },
+      {
+        "constraints": {
+          "pattern": "^(?!.*[\\u3400-\\u9fff]).+$"
+        },
+        "context": "html:b",
+        "default": "SPEAKER",
+        "field_id": "html.text.007",
+        "kind": "html_text",
+        "max_length": 11,
+        "semantic_role": "mono-label",
+        "span": {
+          "kind": "html_text",
+          "occurrence": 7,
+          "token_sha256": "sha256:5bce67f8275094a470180f6a82e8f9660794ac1a17a5eda504ef40b71848671e"
+        },
+        "type": "string"
+      },
+      {
+        "constraints": {
+          "pattern": "^(?!.*[\\u3400-\\u9fff]).+$"
+        },
+        "context": "html:div.meta",
+        "default": "— BRAND TEAM",
+        "field_id": "html.text.008",
+        "kind": "html_text",
+        "max_length": 16,
+        "semantic_role": "mono-label",
+        "span": {
+          "kind": "html_text",
+          "occurrence": 8,
+          "token_sha256": "sha256:73c0328c6ffda05a135edd0b6f2781a9573d1aa24855ff049d59b6cb0f67bf40"
+        },
+        "type": "string"
+      },
+      {
+        "constraints": {
+          "pattern": "^(?!.*[\\u3400-\\u9fff]).+$"
+        },
+        "context": "html:b",
+        "default": "DATE",
+        "field_id": "html.text.009",
+        "kind": "html_text",
+        "max_length": 8,
+        "semantic_role": "mono-label",
+        "span": {
+          "kind": "html_text",
+          "occurrence": 9,
+          "token_sha256": "sha256:17f9a0a512ab113203d92163f62ec215faec49fd2d48bab3cf988573139b8b1b"
+        },
+        "type": "string"
+      },
+      {
+        "constraints": {
+          "pattern": "^(?!.*[\\u3400-\\u9fff]).+$"
+        },
+        "context": "html:div.meta",
+        "default": "— 2026.12.18",
+        "field_id": "html.text.010",
+        "kind": "html_text",
+        "max_length": 16,
+        "semantic_role": "mono-label",
+        "span": {
+          "kind": "html_text",
+          "occurrence": 10,
+          "token_sha256": "sha256:027c41142f820dabd4bc35280f1dc5a3cf90507df27cb7c60a4d2d716922541b"
+        },
+        "type": "string"
+      },
+      {
+        "constraints": {
+          "pattern": "^(?!.*[\\u3400-\\u9fff]).+$"
+        },
+        "context": "html:b",
+        "default": "VERSION",
+        "field_id": "html.text.011",
+        "kind": "html_text",
+        "max_length": 11,
+        "semantic_role": "mono-label",
+        "span": {
+          "kind": "html_text",
+          "occurrence": 11,
+          "token_sha256": "sha256:7b60b8e351cbb80c47459ffe2c79f1a26404871f49294780fe47ad0e58c09350"
+        },
+        "type": "string"
+      },
+      {
+        "constraints": {
+          "pattern": "^(?!.*[\\u3400-\\u9fff]).+$"
+        },
+        "context": "html:div.meta",
+        "default": "— ANNUAL REVIEW",
+        "field_id": "html.text.012",
+        "kind": "html_text",
+        "max_length": 20,
+        "semantic_role": "mono-label",
+        "span": {
+          "kind": "html_text",
+          "occurrence": 12,
+          "token_sha256": "sha256:c3218a8b2ca8d2629269ea3834ce152e3e4ece5e2f919b13bba3acd8d1c277d6"
+        },
+        "type": "string"
+      },
+      {
+        "constraints": {
+          "pattern": "^(?!.*[\\u3400-\\u9fff]).+$"
+        },
+        "context": "html:b",
+        "default": "KEYWORDS",
+        "field_id": "html.text.013",
+        "kind": "html_text",
+        "max_length": 12,
+        "semantic_role": "mono-label",
+        "span": {
+          "kind": "html_text",
+          "occurrence": 13,
+          "token_sha256": "sha256:1ecb607ef82c28f11d0f93b22f06e09cfe33b1cdfa12b4c010dfe22e6c1db3d6"
+        },
+        "type": "string"
+      },
+      {
+        "constraints": {
+          "pattern": "^(?!.*[\\u3400-\\u9fff]).+$"
+        },
+        "context": "html:div.meta",
+        "default": "— REACH / EQUITY / GROWTH",
+        "field_id": "html.text.014",
+        "kind": "html_text",
+        "max_length": 33,
+        "semantic_role": "mono-label",
+        "span": {
+          "kind": "html_text",
+          "occurrence": 14,
+          "token_sha256": "sha256:75e8b13a87090c631f9b15e7227b64fdd0b0c39e97bf11ba06ee825f78d7a720"
+        },
+        "type": "string"
+      },
+      {
+        "constraints": {
+          "pattern": "^(?!.*[\\u3400-\\u9fff]).+$"
+        },
+        "context": "inline-script[1]:call:txt[2]",
+        "default": "BRAND REVIEW — REACH · EQUITY · GROWTH",
+        "field_id": "script.literal.001",
+        "kind": "script_literal",
+        "max_length": 50,
+        "semantic_role": "mono-label",
+        "span": {
+          "kind": "script_literal",
+          "occurrence": 1,
+          "quote": "'",
+          "script_index": 1,
+          "sink": "call:txt[2]",
+          "token_sha256": "sha256:63228cb59c7e791ee19cf3d223be886d84bb05efab338413997c4906e17a3cf9"
+        },
+        "type": "string"
+      }
+    ],
+    "format": "wise-ppt-layout-payload@1",
+    "values_schema": {
+      "additionalProperties": false,
+      "minProperties": 1,
+      "properties": {
+        "html.text.001": {
+          "maxLength": 16,
+          "type": "string"
+        },
+        "html.text.002": {
+          "maxLength": 10,
+          "type": "string"
+        },
+        "html.text.003": {
+          "maxLength": 26,
+          "pattern": "^\\d{1,3} / \\d{1,3} — BY .{1,40}$",
+          "type": "string"
+        },
+        "html.text.004": {
+          "maxLength": 34,
+          "pattern": "^(?!.*[\\u3400-\\u9fff]).+$",
+          "type": "string"
+        },
+        "html.text.005": {
+          "maxLength": 6,
+          "type": "string"
+        },
+        "html.text.006": {
+          "maxLength": 17,
+          "type": "string"
+        },
+        "html.text.007": {
+          "maxLength": 11,
+          "pattern": "^(?!.*[\\u3400-\\u9fff]).+$",
+          "type": "string"
+        },
+        "html.text.008": {
+          "maxLength": 16,
+          "pattern": "^(?!.*[\\u3400-\\u9fff]).+$",
+          "type": "string"
+        },
+        "html.text.009": {
+          "maxLength": 8,
+          "pattern": "^(?!.*[\\u3400-\\u9fff]).+$",
+          "type": "string"
+        },
+        "html.text.010": {
+          "maxLength": 16,
+          "pattern": "^(?!.*[\\u3400-\\u9fff]).+$",
+          "type": "string"
+        },
+        "html.text.011": {
+          "maxLength": 11,
+          "pattern": "^(?!.*[\\u3400-\\u9fff]).+$",
+          "type": "string"
+        },
+        "html.text.012": {
+          "maxLength": 20,
+          "pattern": "^(?!.*[\\u3400-\\u9fff]).+$",
+          "type": "string"
+        },
+        "html.text.013": {
+          "maxLength": 12,
+          "pattern": "^(?!.*[\\u3400-\\u9fff]).+$",
+          "type": "string"
+        },
+        "html.text.014": {
+          "maxLength": 33,
+          "pattern": "^(?!.*[\\u3400-\\u9fff]).+$",
+          "type": "string"
+        },
+        "script.literal.001": {
+          "maxLength": 50,
+          "pattern": "^(?!.*[\\u3400-\\u9fff]).+$",
+          "type": "string"
+        }
+      },
+      "type": "object"
+    }
+  },
+  "payload_defaults": {
+    "bindings": [
+      {
+        "asset_refs": [],
+        "content_refs": [
+          "item.canonical.cover-lockup"
+        ],
+        "slot_id": "cover-lockup"
+      },
+      {
+        "asset_refs": [],
+        "content_refs": [
+          "item.canonical.support"
+        ],
+        "slot_id": "support"
+      }
+    ],
+    "values": {
+      "html.text.001": "品牌 · 汇报 — D1",
+      "html.text.002": "年度品牌复盘",
+      "html.text.003": "01 / 01 — BY WISE PPT",
+      "html.text.004": "ANNUAL BRAND REVIEW — 2026",
+      "html.text.005": "回响",
+      "html.text.006": "年度品牌建设与增长成果汇报",
+      "html.text.007": "SPEAKER",
+      "html.text.008": "— BRAND TEAM",
+      "html.text.009": "DATE",
+      "html.text.010": "— 2026.12.18",
+      "html.text.011": "VERSION",
+      "html.text.012": "— ANNUAL REVIEW",
+      "html.text.013": "KEYWORDS",
+      "html.text.014": "— REACH / EQUITY / GROWTH",
+      "script.literal.001": "BRAND REVIEW — REACH · EQUITY · GROWTH"
+    }
+  },
+  "payload_schema": {
+    "additionalProperties": false,
+    "properties": {
+      "bindings": {
+        "items": {
+          "additionalProperties": false,
+          "properties": {
+            "asset_refs": {
+              "items": {
+                "minLength": 1,
+                "type": "string"
+              },
+              "type": "array"
+            },
+            "content_refs": {
+              "items": {
+                "minLength": 1,
+                "type": "string"
+              },
+              "type": "array"
+            },
+            "slot_id": {
+              "enum": [
+                "cover-lockup",
+                "support"
+              ],
+              "type": "string"
+            }
+          },
+          "required": [
+            "slot_id",
+            "content_refs",
+            "asset_refs"
+          ],
+          "type": "object"
+        },
+        "maxItems": 2,
+        "minItems": 2,
+        "type": "array"
+      },
+      "values": {
+        "additionalProperties": false,
+        "minProperties": 1,
+        "properties": {
+          "html.text.001": {
+            "maxLength": 16,
+            "type": "string"
+          },
+          "html.text.002": {
+            "maxLength": 10,
+            "type": "string"
+          },
+          "html.text.003": {
+            "maxLength": 26,
+            "pattern": "^\\d{1,3} / \\d{1,3} — BY .{1,40}$",
+            "type": "string"
+          },
+          "html.text.004": {
+            "maxLength": 34,
+            "pattern": "^(?!.*[\\u3400-\\u9fff]).+$",
+            "type": "string"
+          },
+          "html.text.005": {
+            "maxLength": 6,
+            "type": "string"
+          },
+          "html.text.006": {
+            "maxLength": 17,
+            "type": "string"
+          },
+          "html.text.007": {
+            "maxLength": 11,
+            "pattern": "^(?!.*[\\u3400-\\u9fff]).+$",
+            "type": "string"
+          },
+          "html.text.008": {
+            "maxLength": 16,
+            "pattern": "^(?!.*[\\u3400-\\u9fff]).+$",
+            "type": "string"
+          },
+          "html.text.009": {
+            "maxLength": 8,
+            "pattern": "^(?!.*[\\u3400-\\u9fff]).+$",
+            "type": "string"
+          },
+          "html.text.010": {
+            "maxLength": 16,
+            "pattern": "^(?!.*[\\u3400-\\u9fff]).+$",
+            "type": "string"
+          },
+          "html.text.011": {
+            "maxLength": 11,
+            "pattern": "^(?!.*[\\u3400-\\u9fff]).+$",
+            "type": "string"
+          },
+          "html.text.012": {
+            "maxLength": 20,
+            "pattern": "^(?!.*[\\u3400-\\u9fff]).+$",
+            "type": "string"
+          },
+          "html.text.013": {
+            "maxLength": 12,
+            "pattern": "^(?!.*[\\u3400-\\u9fff]).+$",
+            "type": "string"
+          },
+          "html.text.014": {
+            "maxLength": 33,
+            "pattern": "^(?!.*[\\u3400-\\u9fff]).+$",
+            "type": "string"
+          },
+          "script.literal.001": {
+            "maxLength": 50,
+            "pattern": "^(?!.*[\\u3400-\\u9fff]).+$",
+            "type": "string"
+          }
+        },
+        "type": "object"
+      }
+    },
+    "required": [
+      "bindings",
+      "values"
+    ],
+    "type": "object"
+  },
+  "recipe_fingerprint": "sha256:4a12ea9e59e5cf137f9538c717c269daeeac112814ae6b1f10b75c9b454509d6",
+  "recipe_id": "paper-ink.scaffold.cover",
+  "required_capabilities": [],
+  "slots": [
+    {
+      "allowed_component_sources": [
+        "native"
+      ],
+      "allowed_renderer_kinds": [
+        "typography",
+        "svg"
+      ],
+      "compatible_component_ids": [],
+      "count_unit": "binding",
+      "default_component": {
+        "component_id": "native.paper-ink.scaffold.cover.cover-lockup",
+        "component_source": "native",
+        "origin": {
+          "kind": "canonical-frame-island",
+          "path": "gallery/paper-ink/general/frames/layout-d1.html",
+          "selector": ".stage"
+        },
+        "renderer_kind": "typography"
+      },
+      "max_items": 2,
+      "min_items": 1,
+      "open_for_override": false,
+      "purpose": "封面落版",
+      "required": true,
+      "slot_id": "cover-lockup",
+      "space_contract": {
+        "aspect_ratio": 2.3239,
+        "canvas_height": 1080,
+        "canvas_width": 1920,
+        "height": 710,
+        "space_type": "full",
+        "width": 1650
+      },
+      "visual_role": "primary"
+    },
+    {
+      "allowed_component_sources": [
+        "codex-host",
+        "native"
+      ],
+      "allowed_renderer_kinds": [
+        "typography",
+        "table",
+        "image",
+        "native-html",
+        "svg"
+      ],
+      "compatible_component_ids": [],
+      "count_unit": "binding",
+      "default_component": {
+        "component_id": "native.paper-ink.scaffold.cover.support",
+        "component_source": "native",
+        "origin": {
+          "kind": "canonical-frame-island",
+          "path": "gallery/paper-ink/general/frames/layout-d1.html",
+          "selector": ".doc.tl"
+        },
+        "renderer_kind": "typography"
+      },
+      "max_items": 1,
+      "min_items": 0,
+      "open_for_override": false,
+      "purpose": "辅助证据、标签或解释",
+      "required": false,
+      "slot_id": "support",
+      "visual_role": "support"
+    }
+  ],
+  "source": {
+    "path": "gallery/paper-ink/general/frames/layout-d1.html",
+    "sha256": "sha256:0a5a0ed196c137c1acc823facb1be14d8e1ea4e2fbaef7e1fec381016e94bb13"
+  },
+  "status": "production",
+  "theme_id": "paper-ink",
+  "variant": "general"
+}

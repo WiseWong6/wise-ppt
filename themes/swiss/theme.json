@@ -1,0 +1,191 @@
+{
+  "contract_version": 1,
+  "theme_id": "swiss",
+  "visual_contract_id": "wise-ppt.visual-contract@1",
+  "name": "瑞士国际主义",
+  "status": "enabled",
+  "description": "以白色画布、中性无衬线层级、安全橙焦点和严格网格构成的 16:9 网页 PPT 主题。",
+  "canvas": {
+    "width": 1920,
+    "height": 1080,
+    "aspect_ratio": "16:9",
+    "overflow": "hidden"
+  },
+  "semantic_tokens": {
+    "colors": {
+      "surface-canvas": "--wp-color-surface-canvas",
+      "surface-recessed": "--wp-color-surface-recessed",
+      "surface-panel": "--wp-color-surface-panel",
+      "primary": "--wp-color-primary",
+      "functional": "--wp-color-functional",
+      "body": "--wp-color-body",
+      "chart-label": "--wp-color-chart-label",
+      "metadata": "--wp-color-metadata",
+      "divider": "--wp-color-divider",
+      "construction": "--wp-color-construction",
+      "focus": "--wp-color-focus",
+      "focus-secondary": "--wp-color-focus-secondary",
+      "focus-peripheral": "--wp-color-focus-peripheral",
+      "data-1": "--wp-color-data-1",
+      "data-2": "--wp-color-data-2",
+      "data-3": "--wp-color-data-3",
+      "data-4": "--wp-color-data-4",
+      "data-5": "--wp-color-data-5",
+      "data-6": "--wp-color-data-6"
+    },
+    "fonts": {
+      "serif": "--wp-font-serif",
+      "sans": "--wp-font-sans",
+      "mono": "--wp-font-mono",
+      "brush": "--wp-font-brush"
+    }
+  },
+  "layout_support": {
+    "sources": ["composition", "free_build"],
+    "exact_recipe_ids": [
+      "paper-ink.evidence.strategy-evidence-wall",
+      "paper-ink.evidence.credential-wall",
+      "paper-ink.data.chart-wall",
+      "paper-ink.data.geo-bubble-map",
+      "paper-ink.scaffold.contact"
+    ]
+  },
+  "extensions": {},
+  "validation": {
+    "lint_script": "themes/swiss/scripts/lint.py",
+    "modes": ["normal", "accent"]
+  },
+  "assets": {
+    "design_tokens": "themes/swiss/assets/design-tokens.css",
+    "slide_components": "themes/swiss/assets/slide-components.css",
+    "compatibility_stylesheet": "themes/swiss/assets/shared.css",
+    "deck_shell": "runtime/deck-shell.css",
+    "gallery_shell": "gallery/shell.css",
+    "stage_fit": "runtime/stage-fit.js"
+  },
+  "typography": {
+    "default_mode": "all-sans",
+    "deck_attribute": "data-typography-mode",
+    "page_override_attribute": "data-typography-mode",
+    "modes": ["mixed", "all-sans", "all-serif"],
+    "roles": {
+      "serif": {"family": "Han Serif", "weight": 500, "mode_sensitive": true},
+      "sans": {"family": "Han Sans", "weight": 300, "mode_sensitive": true},
+      "mono": {"family": "Courier Prime", "weight": 400, "mode_sensitive": false},
+      "brush": {"family": "LXGW WenKai", "weight": 400, "mode_sensitive": false}
+    },
+    "required_faces": [
+      {
+        "family": "Han Serif",
+        "style": "normal",
+        "weight": 500,
+        "asset": "themes/paper-ink/assets/fonts/SourceHanSerifCN-Medium.otf",
+        "bundle_path": "fonts/SourceHanSerifCN-Medium.otf"
+      },
+      {
+        "family": "Han Sans",
+        "style": "normal",
+        "weight": 300,
+        "asset": "themes/paper-ink/assets/fonts/SourceHanSansCN-Light.otf",
+        "bundle_path": "fonts/SourceHanSansCN-Light.otf"
+      },
+      {
+        "family": "Courier Prime",
+        "style": "normal",
+        "weight": 400,
+        "asset": "themes/paper-ink/assets/fonts/CourierPrime-Regular.ttf",
+        "bundle_path": "fonts/CourierPrime-Regular.ttf"
+      },
+      {
+        "family": "LXGW WenKai",
+        "style": "normal",
+        "weight": 400,
+        "asset": "themes/paper-ink/assets/fonts/LXGWWenKai-Regular.ttf",
+        "bundle_path": "fonts/LXGWWenKai-Regular.ttf"
+      }
+    ],
+    "micro_secondary": {
+      "token": "--type-micro-secondary",
+      "size_px": 16,
+      "allowed_uses": ["metadata", "secondary-table-note"],
+      "forbidden_uses": ["body-copy", "takeaway", "primary-label"]
+    }
+  },
+  "icons": {
+    "strategy": "self-svg",
+    "registry": "WisePPT.icons",
+    "factory": "WisePPT.createIcon",
+    "source": "runtime/deck-runtime.js",
+    "external_dependencies": []
+  },
+  "adapters": [
+    {
+      "adapter_id": "swiss.typography",
+      "renderer_kinds": ["typography"],
+      "component_sources": ["native"],
+      "implementation": {"scripts": [], "styles": [], "targets": ["typography"]}
+    },
+    {
+      "adapter_id": "swiss.table",
+      "renderer_kinds": ["table"],
+      "component_sources": ["native"],
+      "implementation": {"scripts": [], "styles": [], "targets": ["table"]}
+    },
+    {
+      "adapter_id": "swiss.image",
+      "renderer_kinds": ["image"],
+      "component_sources": ["native", "codex-host"],
+      "implementation": {"scripts": [], "styles": [], "targets": ["image"]}
+    },
+    {
+      "adapter_id": "swiss.native-html",
+      "renderer_kinds": ["native-html"],
+      "component_sources": ["native"],
+      "implementation": {"scripts": [], "styles": [], "targets": ["native-html"]}
+    },
+    {
+      "adapter_id": "swiss.atlas",
+      "renderer_kinds": ["native-html", "svg"],
+      "component_sources": ["ppt-component-atlas"],
+      "implementation": {
+        "scripts": ["themes/swiss/adapters/atlas.js"],
+        "styles": ["themes/swiss/assets/design-tokens.css"],
+        "targets": ["atlas-package"]
+      }
+    },
+    {
+      "adapter_id": "swiss.native-components",
+      "renderer_kinds": ["native-html", "svg"],
+      "component_sources": ["native"],
+      "implementation": {
+        "scripts": ["themes/swiss/adapters/native.js"],
+        "styles": ["themes/swiss/assets/design-tokens.css"],
+        "targets": ["native-component"]
+      }
+    },
+    {
+      "adapter_id": "swiss.svg",
+      "renderer_kinds": ["svg"],
+      "component_sources": ["native"],
+      "implementation": {"scripts": [], "styles": [], "targets": ["svg"]}
+    },
+    {
+      "adapter_id": "swiss.canvas",
+      "renderer_kinds": ["canvas"],
+      "component_sources": ["native"],
+      "implementation": {"scripts": [], "styles": [], "targets": ["canvas"]}
+    },
+    {
+      "adapter_id": "swiss.echarts",
+      "renderer_kinds": ["svg", "canvas"],
+      "component_sources": ["echarts"],
+      "implementation": {
+        "scripts": ["themes/swiss/adapters/echarts.js"],
+        "styles": ["themes/swiss/assets/design-tokens.css"],
+        "targets": ["echarts-option"]
+      }
+    }
+  ],
+  "galleries": {},
+  "output_formats": ["html", "pdf"]
+}

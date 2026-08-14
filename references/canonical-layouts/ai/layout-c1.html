@@ -1,0 +1,150 @@
+<!-- GENERATED: Wise PPT formal canonical source; protected Gallery remains provenance-only. -->
+<!DOCTYPE html>
+<html lang="zh-CN" data-runtime="wise-ppt-specimen" data-typography-mode="mixed" data-page-id="gallery-ai-c1" data-page-role="prove" data-theme="paper-ink" data-layout="paper-ink.data.visual-kpi-split" data-layout-source="gallery">
+<head>
+<meta charset="UTF-8">
+<title>layout-c1 · 左图右 2×2 数据格 · AI 立绘</title>
+<link rel="stylesheet" href="../../../../themes/paper-ink/assets/design-tokens.css">
+<link rel="stylesheet" href="../../../../themes/paper-ink/assets/slide-components.css">
+<link rel="stylesheet" href="../../../shell.css">
+<style>
+  svg.scene { position: absolute; inset: 0; z-index: 1; }
+  .caption {
+    position: absolute; left: 0; right: 0; bottom: 118px;
+    text-align: center;;;;;;
+    z-index: 5;
+  }
+</style>
+</head>
+<body class="slide">
+<div class="stage" data-block-id="gallery-primary" data-renderer-kind="svg" data-component-source="native" data-component-id="native.paper-ink.data.visual-kpi-split.visual" data-content-ref="example.c1" data-anchor-id="stage">
+  <span data-geometry-anchor-holder="specimen-frame" data-anchor-id="specimen-frame" hidden aria-hidden="true"></span><span data-geometry-anchor-holder="kpi-separator" data-anchor-id="kpi-separator" hidden aria-hidden="true"></span>
+  <div class="doc tl" data-anchor-id="slot-support">AI ENGINEERING — C1<br>AGENT PERFORMANCE</div>
+  <div class="folio">01 / 01 — BY @歪斯WISE</div>
+
+  <svg class="scene" width="1920" height="1080" viewBox="0 0 1920 1080">
+    <defs>
+      <pattern id="hatch" width="7" height="7" patternUnits="userSpaceOnUse" patternTransform="rotate(45)">
+        <line x1="0" y1="0" x2="0" y2="7" stroke="var(--ink)" stroke-width="0.7" opacity="0.35"/>
+      </pattern>
+    </defs>
+    <g id="draw" data-anchor-id="slot-visual"></g>
+  </svg>
+
+  <div class="caption" data-anchor-id="slot-takeaway">Agent 准确率达到 94.2%，仍要结合调用量、峰值 QPS 与平均延迟判断可用性。</div>
+</div>
+
+<script src="../../../../runtime/stage-fit.js"></script>
+<script src="../../../../themes/paper-ink/assets/particles.js"></script>
+<script>
+var NS = 'http://www.w3.org/2000/svg';
+var INK = __wiseThemeToken("--ink");
+var INK80 = __wiseThemeToken("--ink-80");
+var INK45 = __wiseThemeToken("--ink-45");
+/* accent 触发：读 URL 加类 + 染色常量（详见 design-tokens.md §2） */
+if (location.search.indexOf('accent') >= 0) document.documentElement.classList.add('accent');
+var ACCENT = document.documentElement.classList.contains('accent');
+var RED = getComputedStyle(document.documentElement).getPropertyValue('--accent-red').trim();
+var G = document.getElementById('draw');
+function el(tag, attrs) {
+  var e = document.createElementNS(NS, tag);
+  for (var k in attrs) e.setAttribute(k, attrs[k]);
+  G.appendChild(e); return e;
+}
+function txt(x, y, str, attrs) {
+  var t = el('text', Object.assign({x:x, y:y}, attrs||{}));
+  t.textContent = str; return t;
+}
+var MONO = 'var(--mono)', SANS = 'var(--sans)', SERIF = 'var(--serif)';
+
+G = el('g', {transform:'translate(0 -22.7)'});
+
+
+/* ============ 左区：AI 产品立绘（虚构型号 AI-AGENT M1） ============ */
+var FX = 150, FY = 260, FW = 860, FH = 560;
+el('rect', {x:FX, y:FY, width:FW, height:FH, fill:__wiseThemeToken("--paper-panel"), stroke:INK80, 'stroke-width':1.3});
+el('rect', {x:FX+6, y:FY+6, width:FW-12, height:FH-12, fill:'none', stroke:INK, 'stroke-width':.6, opacity:.3});
+/* 编号牌（压框顶边） */
+el('rect', {x:190, y:238, width:330, height:44, fill:__wiseThemeToken("--paper"), stroke:INK, 'stroke-width':1.2});
+txt(355, 267, 'SPECIMEN 01 — AI-AGENT M1', {'font-family':MONO, 'font-size':'var(--type-meta)', 'letter-spacing':2, 'text-anchor':'middle', fill:INK});
+
+/* 构造基准（不擦除） */
+el('line', {x1:555, y1:290, x2:555, y2:790, stroke:INK, 'stroke-width':.5, opacity:.2, 'stroke-dasharray':'2 6'});
+el('circle', {cx:555, cy:530, r:225, fill:'none', stroke:INK, 'stroke-width':.6, opacity:.18, 'stroke-dasharray':'3 6'});
+el('line', {x1:246, y1:304, x2:264, y2:304, stroke:INK, 'stroke-width':.8, opacity:.4});
+el('line', {x1:255, y1:295, x2:255, y2:313, stroke:INK, 'stroke-width':.8, opacity:.4});
+
+/* 地面基线 + 刻度齿 */
+el('line', {x1:210, y1:740, x2:960, y2:740, stroke:INK80, 'stroke-width':1.3});
+for (var gx = 230; gx <= 950; gx += 40)
+  el('line', {x1:gx, y1:740, x2:gx, y2:746, stroke:INK, 'stroke-width':.6, opacity:.4});
+
+/* 货架（右侧背景暗示） */
+el('line', {x1:880, y1:430, x2:880, y2:740, stroke:INK, 'stroke-width':1.1, opacity:.6});
+el('line', {x1:830, y1:480, x2:950, y2:480, stroke:INK, 'stroke-width':.9, opacity:.5});
+el('line', {x1:830, y1:600, x2:950, y2:600, stroke:INK, 'stroke-width':.9, opacity:.5});
+el('rect', {x:846, y:444, width:56, height:34, fill:'url(#hatch)', stroke:INK, 'stroke-width':.8, opacity:.55});
+el('rect', {x:862, y:562, width:66, height:36, fill:'url(#hatch)', stroke:INK, 'stroke-width':.8, opacity:.55});
+
+/* 主体外壳（侧视立绘） */
+el('circle', {cx:470, cy:706, r:28, fill:'none', stroke:INK80, 'stroke-width':1.3});
+el('circle', {cx:470, cy:706, r:19, fill:'none', stroke:INK, 'stroke-width':.7, opacity:.5});
+el('circle', {cx:470, cy:706, r:2.6, fill:INK});
+el('circle', {cx:640, cy:706, r:28, fill:'none', stroke:INK80, 'stroke-width':1.3});
+el('circle', {cx:640, cy:706, r:19, fill:'none', stroke:INK, 'stroke-width':.7, opacity:.5});
+el('circle', {cx:640, cy:706, r:2.6, fill:INK});
+el('rect', {x:442, y:668, width:226, height:12, fill:'none', stroke:INK, 'stroke-width':1.1, opacity:.8});
+/* 主壳体 */
+el('rect', {x:450, y:470, width:210, height:198, rx:12, fill:'none', stroke:INK80, 'stroke-width':1.4});
+el('rect', {x:466, y:488, width:178, height:160, fill:'none', stroke:INK, 'stroke-width':.6, opacity:.3});
+el('rect', {x:466, y:588, width:94, height:60, fill:'url(#hatch)', stroke:INK, 'stroke-width':.8, opacity:.6});
+el('line', {x1:580, y1:520, x2:636, y2:520, stroke:INK, 'stroke-width':.7, opacity:.4});
+el('line', {x1:580, y1:538, x2:636, y2:538, stroke:INK, 'stroke-width':.7, opacity:.4});
+/* 前置深度相机 */
+el('circle', {cx:452, cy:520, r:9, fill:__wiseThemeToken("--paper"), stroke:INK80, 'stroke-width':1.1});
+el('circle', {cx:452, cy:520, r:2.6, fill:INK});
+/* 急停触边 */
+el('rect', {x:444, y:640, width:222, height:24, rx:12, fill:'none', stroke:INK, 'stroke-width':1.1, opacity:.75});
+/* 举升平台 + 周转箱 */
+el('rect', {x:425, y:452, width:270, height:16, rx:4, fill:'none', stroke:INK80, 'stroke-width':1.2});
+el('rect', {x:455, y:390, width:200, height:62, fill:'url(#hatch)', stroke:INK80, 'stroke-width':1.2});
+el('line', {x1:478, y1:421, x2:632, y2:421, stroke:INK, 'stroke-width':.7, opacity:.4});
+/* 顶部激光雷达 */
+el('line', {x1:547, y1:390, x2:547, y2:362, stroke:INK, 'stroke-width':1, opacity:.7});
+el('line', {x1:563, y1:390, x2:563, y2:362, stroke:INK, 'stroke-width':1, opacity:.7});
+el('ellipse', {cx:555, cy:358, rx:27, ry:9, fill:__wiseThemeToken("--paper"), stroke:INK80, 'stroke-width':1.1});
+el('ellipse', {cx:555, cy:346, rx:27, ry:9, fill:'none', stroke:INK, 'stroke-width':.8, opacity:.6});
+el('line', {x1:528, y1:346, x2:528, y2:358, stroke:INK, 'stroke-width':.8, opacity:.6});
+el('line', {x1:582, y1:346, x2:582, y2:358, stroke:INK, 'stroke-width':.8, opacity:.6});
+
+/* 尺寸标注：总高 / 车宽 */
+el('line', {x1:400, y1:346, x2:400, y2:734, stroke:INK, 'stroke-width':.6, opacity:.5, 'stroke-dasharray':'3 5'});
+el('line', {x1:392, y1:346, x2:408, y2:346, stroke:INK, 'stroke-width':.9, opacity:.6});
+el('line', {x1:392, y1:734, x2:408, y2:734, stroke:INK, 'stroke-width':.9, opacity:.6});
+txt(388, 545, '940 MM', {'font-family':MONO, 'font-size':'var(--type-meta)', 'letter-spacing':1, 'text-anchor':'middle',
+  fill:__wiseThemeToken("--ink-55"), transform:'rotate(-90 388 545)'});
+el('line', {x1:425, y1:772, x2:695, y2:772, stroke:INK, 'stroke-width':.6, opacity:.5, 'stroke-dasharray':'3 5'});
+el('line', {x1:425, y1:764, x2:425, y2:780, stroke:INK, 'stroke-width':.9, opacity:.6});
+el('line', {x1:695, y1:764, x2:695, y2:780, stroke:INK, 'stroke-width':.9, opacity:.6});
+txt(560, 794, '655 MM', {'font-family':MONO, 'font-size':'var(--type-meta)', 'letter-spacing':1, 'text-anchor':'middle', fill:__wiseThemeToken("--ink-55")});
+
+/* ============ 右区：2×2 数据格（无边框纯排版，细线十字分隔） ============ */
+el('line', {x1:1440, y1:280, x2:1440, y2:810, stroke:INK, 'stroke-width':.6, opacity:.3});
+el('line', {x1:1080, y1:545, x2:1780, y2:545, stroke:INK, 'stroke-width':.6, opacity:.3});
+
+function cell(cx, ty, num, label, note, focus) {
+  var fc = (ACCENT && focus) ? RED : INK;
+  txt(cx, ty, num, {'font-family':SERIF, 'font-size':'var(--type-hero)', 'text-anchor':'middle', fill:fc});
+  txt(cx, ty + 64, label, {'font-family':SANS, 'font-weight':300, 'font-size':'var(--type-subheading)', 'text-anchor':'middle', fill:(ACCENT && focus) ? 'var(--accent-red-85)' : __wiseThemeToken("--ink-80")});
+  txt(cx, ty + 96, note, {'font-family':MONO, 'font-size':'var(--type-meta)', 'letter-spacing':2, 'text-anchor':'middle', fill:INK45});
+  el('line', {x1:cx-30, y1:ty+114, x2:cx+30, y2:ty+114, stroke:INK, 'stroke-width':.7, opacity:.35});
+}
+cell(1260, 400, '94.2%',  '准确率',         'ACCURACY · 30D AVG', true);   /* 主角：准确率是 AI 交付焦点 */
+cell(1610, 400, '1,284',  '日均调用量（万）', 'DAILY CALLS · AVG');
+cell(1260, 665, '3,200',  '峰值 QPS',        'PEAK QPS · RPS');
+cell(1610, 665, '280ms',  '平均延迟',        'AVG LATENCY · P95');
+
+stageFit();
+</script>
+</body>
+</html>

@@ -1,0 +1,63 @@
+{
+  "example_id": "echarts.bar-basic",
+  "title": "基础柱状图",
+  "source_url": "https://echarts.apache.org/examples/zh/index.html#chart-type-bar",
+  "upstream_license": "Apache-2.0",
+  "chart_type": "bar",
+  "source_note": "改编自 Apache ECharts 官方示例 bar-background。柱状图用 xAxis.type=category；数据抽成 dataset + encode。",
+  "dataset_shape": {
+    "dimensions": ["product", "sales"],
+    "source": [
+      { "product": "奶茶", "sales": 58212 },
+      { "product": "抹茶拿铁", "sales": 78254 },
+      { "product": "芝士可可", "sales": 41032 },
+      { "product": "核桃布朗尼", "sales": 12755 },
+      { "product": "芝士蛋糕", "sales": 20145 },
+      { "product": "柠檬汁", "sales": 79146 }
+    ]
+  },
+  "render_plan_binding": {
+    "renderer_kind": "svg",
+    "component_source": "echarts",
+    "component_id": "echarts.bar-basic",
+    "theme_adapter_id": "paper-ink.echarts",
+    "data_binding": {
+      "data_ref": {
+        "content_id": "item.product-sales",
+        "json_pointer": "/structured_data/rows"
+      },
+      "dataset_id": "dataset.bar-basic",
+      "encode": { "x": "product", "y": "sales" }
+    }
+  },
+  "html_template": {
+    "container_attrs": "data-block-id=\"block.main\" data-renderer-kind=\"svg\" data-component-source=\"echarts\" data-component-id=\"echarts.bar-basic\" data-theme-adapter-id=\"paper-ink.echarts\" data-content-ref=\"item.product-sales\" data-dataset-id=\"dataset.bar-basic\"",
+    "dataset_script_id": "dataset.bar-basic"
+  },
+  "option": {
+    "dataset": {
+      "dimensions": ["product", "sales"],
+      "source": [
+        { "product": "奶茶", "sales": 58212 },
+        { "product": "抹茶拿铁", "sales": 78254 },
+        { "product": "芝士可可", "sales": 41032 },
+        { "product": "核桃布朗尼", "sales": 12755 },
+        { "product": "芝士蛋糕", "sales": 20145 },
+        { "product": "柠檬汁", "sales": 79146 }
+      ]
+    },
+    "tooltip": { "trigger": "axis", "axisPointer": { "type": "shadow" } },
+    "xAxis": { "type": "category" },
+    "yAxis": { "type": "value" },
+    "series": [
+      {
+        "name": "销量",
+        "type": "bar",
+        "encode": { "x": "product", "y": "sales" },
+        "showBackground": true,
+        "backgroundStyle": { "color": "rgba(180, 180, 180, 0.2)" }
+      }
+    ]
+  },
+  "notes": "柱状图的标准 dataset 形式：xAxis.category 由 dataset.product 维度提供类目，series.bar.encode.y 指向 sales 数值列。"
+}

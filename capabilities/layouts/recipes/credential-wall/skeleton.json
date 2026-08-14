@@ -1,0 +1,81 @@
+{
+  "format": "wise-ppt-recipe-skeleton@1",
+  "recipe_id": "paper-ink.evidence.credential-wall",
+  "canvas": {"width": 1920, "height": 1080},
+  "content_region": {"anchor_id": "a6-main", "zone": "core-content"},
+  "fragment": "capabilities/layouts/recipes/credential-wall/fragment.html",
+  "payload_schema": {
+    "type": "object",
+    "additionalProperties": false,
+    "required": ["support", "heading", "badge", "credentials", "takeaway"],
+    "properties": {
+      "support": {"type": "string", "minLength": 1, "maxLength": 32},
+      "heading": {"type": "string", "minLength": 1, "maxLength": 18},
+      "badge": {
+        "type": "object", "additionalProperties": false,
+        "required": ["value", "label", "detail"],
+        "properties": {
+          "value": {"type": "string", "minLength": 1, "maxLength": 12},
+          "label": {"type": "string", "minLength": 1, "maxLength": 18},
+          "detail": {"type": "string", "minLength": 1, "maxLength": 32, "pattern": "[^\\r\\n]+"}
+        }
+      },
+      "credentials": {
+        "type": "array", "minItems": 12, "maxItems": 12,
+        "items": {
+          "type": "object", "additionalProperties": false,
+          "required": ["title", "meta"],
+          "properties": {
+            "title": {"type": "string", "minLength": 1, "maxLength": 18},
+            "meta": {"type": "string", "minLength": 1, "maxLength": 18}
+          }
+        }
+      },
+      "takeaway": {"type": "string", "minLength": 1, "maxLength": 96}
+    }
+  },
+  "default_payload": {
+    "support": "CREDENTIALS / 12 ITEMS",
+    "heading": "服务方案资质与交付",
+    "badge": {"value": "CLASS A", "label": "服务方案交付能力 · 甲级", "detail": "ARCHIVE NO. SV-Q-2026-018"},
+    "credentials": [
+      {"title": "DELIVERY", "meta": "CERT · L4"},
+      {"title": "SOLUTION", "meta": "CLASS A"},
+      {"title": "FLOW DESIGN", "meta": "V2.1 PASSED"},
+      {"title": "QUALITY", "meta": "98 PTS"},
+      {"title": "RESOURCE", "meta": "GRADE 1"},
+      {"title": "METHOD PATENT", "meta": "ZL-7741-A"},
+      {"title": "METHOD PATENT", "meta": "ZL-8126-C"},
+      {"title": "DATA SEC", "meta": "TIER III"},
+      {"title": "SERVICE RELAY", "meta": "PROTOCOL V3"},
+      {"title": "QA SYSTEM", "meta": "HQ-9001"},
+      {"title": "DELIVERY KIT", "meta": "COMPAT V5"},
+      {"title": "INSURANCE", "meta": "SERVICE COVER"}
+    ],
+    "takeaway": "服务资质、方法专利与交付案例，为产品方案落地建立可信门槛。"
+  },
+  "anchors": [
+    {"anchor_id": "stage", "selector": "[data-anchor-id=\"stage\"]"},
+    {"anchor_id": "a6-main", "selector": "[data-anchor-id=\"a6-main\"]"},
+    {"anchor_id": "a6-left", "selector": "[data-anchor-id=\"a6-left\"]"},
+    {"anchor_id": "a6-left-top", "selector": "[data-anchor-id=\"a6-left-top\"]"},
+    {"anchor_id": "a6-badge", "selector": "[data-anchor-id=\"a6-badge\"]"},
+    {"anchor_id": "a6-badge-copy", "selector": "[data-anchor-id=\"a6-badge-copy\"]"},
+    {"anchor_id": "a6-left-bottom", "selector": "[data-anchor-id=\"a6-left-bottom\"]"},
+    {"anchor_id": "a6-badge-detail", "selector": "[data-anchor-id=\"a6-badge-detail\"]"},
+    {"anchor_id": "a6-wall", "selector": "[data-anchor-id=\"a6-wall\"]"},
+    {"anchor_id": "a6-support", "selector": "[data-anchor-id=\"a6-support\"]"},
+    {"anchor_id": "a6-takeaway", "selector": "[data-anchor-id=\"a6-takeaway\"]"}
+  ],
+  "relations": [
+    {"relation_id": "a6-main-in-stage", "type": "contain", "anchors": ["stage", "a6-main"], "tolerance": 0},
+    {"relation_id": "a6-badge-in-left", "type": "contain", "anchors": ["a6-left", "a6-badge"], "tolerance": 0},
+    {"relation_id": "a6-copy-in-badge", "type": "contain", "anchors": ["a6-badge", "a6-badge-copy"], "tolerance": 0},
+    {"relation_id": "a6-left-wall-clear", "type": "avoid", "anchors": ["a6-left", "a6-wall"], "min_gap": 120, "tolerance": 0},
+    {"relation_id": "a6-top-align", "type": "edgeEq", "anchors": ["a6-left-top", "a6-wall"], "edge": "top", "tolerance": 1},
+    {"relation_id": "a6-bottom-align", "type": "edgeEq", "anchors": ["a6-badge-detail", "a6-wall"], "edge": "bottom", "tolerance": 1}
+  ],
+  "allowed_variants": {},
+  "requires": [],
+  "invariants": []
+}

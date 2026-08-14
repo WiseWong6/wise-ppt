@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-runtime="wise-ppt-specimen" data-typography-mode="mixed" data-page-id="gallery-ai-g2" data-page-role="explain" data-theme="paper-ink" data-layout="paper-ink.radial.annotated-hero" data-layout-source="gallery">
+<head>
+<meta charset="UTF-8">
+<title>layout-g2 · 立绘标本 + 环绕引线标注 · AI 设备参数</title>
+<link rel="stylesheet" href="../../../../themes/paper-ink/assets/design-tokens.css">
+<link rel="stylesheet" href="../../../../themes/paper-ink/assets/slide-components.css">
+<link rel="stylesheet" href="../../../shell.css">
+<style>
+  svg.scene { position: absolute; inset: 0; z-index: 1; }
+  .caption {
+    position: absolute; left: 0; right: 0; bottom: 118px;
+    text-align: center;
+    font-family: var(--sans); font-weight: 400;
+    font-size: var(--type-caption); letter-spacing: .04em;
+    color: var(--ink);
+    z-index: 5;
+  }
+</style>
+</head>
+<body class="slide">
+<div class="stage" data-block-id="gallery-primary" data-renderer-kind="svg" data-component-source="native" data-component-id="native.paper-ink.radial.annotated-hero.hero" data-content-ref="example.g2">
+  <div class="doc tl">AI ENGINEERING — G2<br>AI DEVICE ANATOMY</div>
+  <div class="folio">G2 / 63 — BY @歪斯WISE</div>
+
+  <svg class="scene" width="1920" height="1080" viewBox="0 0 1920 1080">
+    <defs>
+      <pattern id="hatch28" width="8" height="8" patternTransform="rotate(45)" patternUnits="userSpaceOnUse">
+        <line x1="0" y1="0" x2="0" y2="8" stroke="#191917" stroke-width=".7" opacity=".28"/>
+      </pattern>
+    </defs>
+    <g id="draw"></g>
+  </svg>
+
+  <div class="caption">芯片、散热、电源、摄像、麦克风与网络共同限定 AI 设备的端侧能力。</div>
+</div>
+
+<script src="../../../../runtime/stage-fit.js"></script>
+<script src="../../../../themes/paper-ink/assets/particles.js"></script>
+<script>
+var NS = 'http://www.w3.org/2000/svg';
+var INK = '#191917';
+var INK80 = 'rgba(25,25,23,.8)';
+var INK70 = 'rgba(25,25,23,.7)';
+var INK45 = 'rgba(25,25,23,.45)';
+var G = document.getElementById('draw');
+function el(tag, attrs) {
+  var e = document.createElementNS(NS, tag);
+  for (var k in attrs) e.setAttribute(k, attrs[k]);
+  G.appendChild(e); return e;
+}
+function txt(x, y, str, attrs) {
+  var t = el('text', Object.assign({x:x, y:y}, attrs||{}));
+  t.textContent = str; return t;
+}
+var MONO = 'var(--mono)', SANS = 'var(--sans)';
+
+G = el('g', {transform:'translate(0 -18.7)'});
+
+
+/* ---------- 构造基准：十字虚线 + 地面线 ---------- */
+el('line', {x1:620, y1:560, x2:1300, y2:560, stroke:INK, 'stroke-width':.5, opacity:.18, 'stroke-dasharray':'2 6'});
+el('line', {x1:960, y1:230, x2:960, y2:330, stroke:INK, 'stroke-width':.5, opacity:.18, 'stroke-dasharray':'2 6'});
+el('line', {x1:680, y1:816, x2:1240, y2:816, stroke:INK, 'stroke-width':1, opacity:.55});
+el('line', {x1:680, y1:810, x2:680, y2:822, stroke:INK, 'stroke-width':.8, opacity:.55});
+el('line', {x1:1240, y1:810, x2:1240, y2:822, stroke:INK, 'stroke-width':.8, opacity:.55});
+
+/* ---------- 主角：AI 设备立绘（侧视，贝塞尔轮廓 + hatch） ---------- */
+/* 底盘 */
+el('rect', {x:740, y:616, width:440, height:150, rx:16, fill:'none', stroke:INK80, 'stroke-width':1.3});
+/* 底盘下沿 hatch 配重带 */
+el('path', {d:'M 756 726 L 1164 726 L 1164 750 Q 1164 766 1148 766 L 772 766 Q 756 766 756 750 Z',
+  fill:'url(#hatch28)', stroke:'none'});
+el('line', {x1:756, y1:726, x2:1164, y2:726, stroke:INK, 'stroke-width':.6, opacity:.35});
+/* 电池舱（内部虚线格） */
+el('rect', {x:900, y:646, width:180, height:70, fill:'none', stroke:INK, 'stroke-width':.8, opacity:.6, 'stroke-dasharray':'5 4'});
+el('line', {x1:1080, y1:668, x2:1096, y2:668, stroke:INK, 'stroke-width':.9, opacity:.7});
+el('line', {x1:1080, y1:694, x2:1096, y2:694, stroke:INK, 'stroke-width':.9, opacity:.7});
+/* 驱动轮（双轮，轮毂双圈） */
+[838, 1082].forEach(function(wx){
+  el('circle', {cx:wx, cy:778, r:38, fill:'#DFE0D9', stroke:INK80, 'stroke-width':1.3});
+  el('circle', {cx:wx, cy:778, r:15, fill:'none', stroke:INK, 'stroke-width':.8, opacity:.6});
+  el('circle', {cx:wx, cy:778, r:2.4, fill:INK});
+});
+/* 升降桅柱（左）：双轨 + 横撑 + 货叉托架 */
+el('line', {x1:790, y1:616, x2:790, y2:336, stroke:INK80, 'stroke-width':1.3});
+el('line', {x1:806, y1:616, x2:806, y2:336, stroke:INK80, 'stroke-width':1.3});
+el('line', {x1:786, y1:336, x2:810, y2:336, stroke:INK80, 'stroke-width':1.3});
+for (var by = 370; by <= 590; by += 55) {
+  el('line', {x1:790, y1:by, x2:806, y2:by, stroke:INK, 'stroke-width':.6, opacity:.4});
+}
+/* 托架 + 货叉 */
+el('rect', {x:776, y:416, width:44, height:40, fill:'rgba(255,255,255,.22)', stroke:INK80, 'stroke-width':1.1});
+el('line', {x1:776, y1:456, x2:776, y2:470, stroke:INK80, 'stroke-width':1.3});
+el('line', {x1:696, y1:470, x2:776, y2:470, stroke:INK80, 'stroke-width':1.3});
+/* 雷达塔：支柱 + 半球罩 + 扫描波暗示 */
+el('rect', {x:938, y:560, width:44, height:56, fill:'none', stroke:INK80, 'stroke-width':1.2});
+el('path', {d:'M 938 560 A 22 22 0 0 1 982 560', fill:'none', stroke:INK80, 'stroke-width':1.3});
+el('circle', {cx:960, cy:552, r:2, fill:INK});
+el('path', {d:'M 932 528 A 40 40 0 0 1 946 512', fill:'none', stroke:INK, 'stroke-width':.7, opacity:.45});
+el('path', {d:'M 988 528 A 40 40 0 0 0 974 512', fill:'none', stroke:INK, 'stroke-width':.7, opacity:.45});
+/* 前视相机（右立面） */
+el('rect', {x:1176, y:640, width:30, height:24, fill:'rgba(255,255,255,.22)', stroke:INK80, 'stroke-width':1.1});
+el('circle', {cx:1191, cy:652, r:5.5, fill:'none', stroke:INK, 'stroke-width':.9, opacity:.75});
+/* 安全扫描仪（右下角弧） */
+el('path', {d:'M 1180 726 A 26 26 0 0 1 1188 752', fill:'none', stroke:INK80, 'stroke-width':1.2});
+el('path', {d:'M 1192 722 A 34 34 0 0 1 1202 752', fill:'none', stroke:INK, 'stroke-width':.6, opacity:.4, 'stroke-dasharray':'3 4'});
+
+/* ---------- 标注锚点与注释块 ---------- */
+/* 锚点：双圈 */
+function anchor(x, y) {
+  el('circle', {cx:x, cy:y, r:5, fill:'#DFE0D9', stroke:INK80, 'stroke-width':1});
+  el('circle', {cx:x, cy:y, r:1.6, fill:INK});
+}
+/* 注释块：竖节线 + 三行文字（左列右对齐止于 x=490、右列左对齐起于 x=1430——与中心严格镜像 960±470） */
+function block(side, y, code, cn, spec) {
+  var isL = side === 'L';
+  var x = isL ? 490 : 1430;
+  var rx = isL ? 504 : 1416;
+  var ta = isL ? 'end' : 'start';
+  el('line', {x1:rx, y1:y-42, x2:rx, y2:y+50, stroke:INK, 'stroke-width':.8, opacity:.5});
+  txt(x, y-24, code, {'font-family':MONO, 'font-size':'var(--type-meta)', 'letter-spacing':2, 'text-anchor':ta, fill:INK45});
+  txt(x, y+8, cn, {'font-family':SANS, 'font-weight':300, 'font-size':'var(--type-body)', 'text-anchor':ta, fill:INK});
+  txt(x, y+40, spec, {'font-family':MONO, 'font-size':'var(--type-meta)', 'letter-spacing':1.5, 'text-anchor':ta, fill:INK45});
+}
+/* 肘形引线：锚点 → 水平 → 竖直 → 水平入块（端点小圆） */
+function elbow(pts, endX, endY) {
+  var d = 'M ' + pts[0][0] + ' ' + pts[0][1];
+  for (var i = 1; i < pts.length; i++) d += ' L ' + pts[i][0] + ' ' + pts[i][1];
+  el('path', {d:d, fill:'none', stroke:INK, 'stroke-width':.7, opacity:.45, 'stroke-dasharray':'3 5'});
+  el('circle', {cx:endX, cy:endY, r:2.2, fill:INK, opacity:.6});
+}
+
+/* 左列（上→下）：算力芯片 / 散热模组 / 电源管理 */
+anchor(960, 538);  elbow([[960,538],[960,266],[500,266]], 500, 266);
+anchor(790, 400);  elbow([[790,400],[600,400],[600,486],[500,486]], 500, 486);
+anchor(838, 748);  elbow([[838,748],[640,748],[640,706],[500,706]], 500, 706);
+block('L', 270, 'PART 01 · NPU',     '算力芯片',    'TOPS 48 · INT8');
+block('L', 490, 'PART 02 · THERMAL', '散热模组',    'VC 均热 · ΔT 8℃');
+block('L', 710, 'PART 03 · POWER',   '电源管理',    '65W PD · 92% 效率');
+
+/* 右列（上→下）：摄像模组 / 麦克风阵列 / 网络接口 */
+anchor(1206, 652); elbow([[1206,652],[1310,652],[1310,266],[1420,266]], 1420, 266);
+anchor(1096, 681); elbow([[1096,681],[1350,681],[1350,486],[1420,486]], 1420, 486);
+anchor(1196, 744); elbow([[1196,744],[1390,744],[1390,706],[1420,706]], 1420, 706);
+block('R', 270, 'PART 04 · CAMERA', '摄像模组',    '4K · FOV 120°');
+block('R', 490, 'PART 05 · MIC',     '麦克风阵列', '6 阵元 · 波束成形');
+block('R', 710, 'PART 06 · NET',     '网络接口',    'Wi-Fi 6E · 千兆以太');
+
+stageFit();
+</script>
+</body>
+</html>

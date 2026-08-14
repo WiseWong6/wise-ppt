@@ -1,0 +1,66 @@
+{
+  "example_id": "echarts.bar-dynamic-sort",
+  "title": "动态排序柱状图",
+  "source_url": "https://echarts.apache.org/examples/zh/index.html#chart-type-bar",
+  "upstream_license": "Apache-2.0",
+  "chart_type": "bar",
+  "source_note": "改编自 Apache ECharts 官方示例 bar-race。动态排序（bar race）依赖运行时按周期更新数据并重设 option；本文件提供初始 option + dataset，动画时序需 deck JS 额外实现。",
+  "dataset_shape": {
+    "dimensions": ["year", "product", "value"],
+    "source": [
+      { "year": "2000", "product": "可可脂", "value": 162 },
+      { "year": "2000", "product": "奶粉", "value": 143 },
+      { "year": "2000", "product": "炼乳", "value": 137 },
+      { "year": "2000", "product": "果葡糖浆", "value": 127 },
+      { "year": "2000", "product": "蔗糖", "value": 105 },
+      { "year": "2000", "product": "蜂蜜", "value": 95 },
+      { "year": "2000", "product": "枫糖浆", "value": 82 }
+    ]
+  },
+  "render_plan_binding": {
+    "renderer_kind": "svg",
+    "component_source": "echarts",
+    "component_id": "echarts.bar-dynamic-sort",
+    "theme_adapter_id": "paper-ink.echarts",
+    "data_binding": {
+      "data_ref": {
+        "content_id": "item.product-race",
+        "json_pointer": "/structured_data/rows"
+      },
+      "dataset_id": "dataset.bar-dynamic-sort",
+      "encode": { "y": "product", "x": "value" }
+    }
+  },
+  "html_template": {
+    "container_attrs": "data-block-id=\"block.main\" data-renderer-kind=\"svg\" data-component-source=\"echarts\" data-component-id=\"echarts.bar-dynamic-sort\" data-theme-adapter-id=\"paper-ink.echarts\" data-content-ref=\"item.product-race\" data-dataset-id=\"dataset.bar-dynamic-sort\"",
+    "dataset_script_id": "dataset.bar-dynamic-sort"
+  },
+  "option": {
+    "dataset": {
+      "dimensions": ["year", "product", "value"],
+      "source": [
+        { "year": "2000", "product": "可可脂", "value": 162 },
+        { "year": "2000", "product": "奶粉", "value": 143 },
+        { "year": "2000", "product": "炼乳", "value": 137 },
+        { "year": "2000", "product": "果葡糖浆", "value": 127 },
+        { "year": "2000", "product": "蔗糖", "value": 105 },
+        { "year": "2000", "product": "蜂蜜", "value": 95 },
+        { "year": "2000", "product": "枫糖浆", "value": 82 }
+      ]
+    },
+    "tooltip": { "trigger": "axis", "axisPointer": { "type": "shadow" } },
+    "xAxis": { "type": "value", "max": "dataMax" },
+    "yAxis": { "type": "category", "inverse": true, "max": 6 },
+    "series": [
+      {
+        "name": "产量",
+        "type": "bar",
+        "encode": { "x": "value", "y": "product" },
+        "realtimeSort": true,
+        "label": { "show": true, "position": "right", "valueAnimation": true }
+      }
+    ]
+  },
+  "animation_notes": "⚠️ 动态排序的完整效果依赖运行时按周期（如每年）更新 dataset 并调用 chart.setOption 增量刷新。wise-ppt 的 createEChart 只调用一次 setOption，因此本 option 渲染的是初始年份（2000）的静态排序。若要呈现完整 bar race 动画，需在 deck JS 中：① 准备多年的数据序列；② 用 setInterval 周期更新 option.dataset.source 并调用 chart.setOption(option)。render_plan_binding.data_binding 只能声明初始 dataset 与一个 encode；多年数据应放在 content.json 的完整数据集里，由 deck JS 按年切片喂给 setOption。",
+  "notes": "横向柱状图（xAxis.value + yAxis.category.inverse）配合 series.realtimeSort=true 自动按值排序。本示例数据为初始状态，仅展示 2000 年排序结果。"
+}

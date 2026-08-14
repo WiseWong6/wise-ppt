@@ -1,0 +1,2160 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-theme="paper-ink">
+<head>
+  <!-- Upstream layout baseline: WiseWong6/wise-labs@6848d36 html-ppt-components/index.html -->
+  <meta charset="UTF-8">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="HTML PPT组件图册，按流程、关系、对比、内容和数据可视化分类浏览，支持预览并复制 HTML 片段。">
+  <meta name="keywords" content="HTML PPT组件, PPT组件, 网页PPT, HTML幻灯片, AI生成PPT, Wise, 歪斯">
+  <meta name="author" content="Wise">
+  <title>HTML PPT组件</title>
+  <link rel="icon" href="data:,">
+  <link rel="stylesheet" href="./source-han.css?v=1">
+  <script>
+    (function resolveGalleryTheme() {
+      let themeId = 'paper-ink';
+      try {
+        const params = new URLSearchParams(window.location.search);
+        const requested = params.get('theme');
+        if (requested === 'paper-ink' || requested === 'swiss') themeId = requested;
+        else if (params.get('style') === 'swiss') themeId = 'swiss';
+      } catch (err) {}
+      window.WISE_PPT_GALLERY_THEME = themeId;
+      document.documentElement.dataset.theme = themeId;
+      const link = document.createElement('link');
+      link.rel = 'stylesheet';
+      link.dataset.wisePptThemeTokens = themeId;
+      link.href = `../../themes/${themeId}/assets/design-tokens.css`;
+      document.head.appendChild(link);
+    })();
+  </script>
+  <style>
+    /* ===== Design System ===== */
+    :root {
+      --gallery-bg: #dfe0d9;
+      --gallery-panel: #d4d5cd;
+      --gallery-surface: #dfe0d9;
+      --gallery-card-bg: rgba(255,255,255,.22);
+      --gallery-card-line: rgba(25,25,23,.25);
+      --gallery-text: #191917;
+      --gallery-muted: rgba(25,25,23,.55);
+      --gallery-line: rgba(25,25,23,.25);
+      --gallery-color-text-muted: var(--gallery-muted);
+      --gallery-accent: #191917;
+      --gallery-accent-dim: rgba(25,25,23,.08);
+      --gallery-radius: 0;
+      --detail-panel-body-h: min(58vh, 520px);
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html, body { min-height: 100%; }
+    body {
+      font-family: "Wise Han Sans SC";
+      font-weight: 400;
+      background: var(--gallery-bg);
+      color: var(--gallery-text);
+      overflow-x: hidden;
+    }
+
+    /* ===== Shell ===== */
+    .shell {
+      max-width: 1240px;
+      margin: 0 auto;
+      padding: 0 2rem;
+    }
+
+    /* ===== Page Header ===== */
+    .page-header {
+      margin-top: 2.5rem;
+      margin-bottom: 0.5rem;
+    }
+    .page-title {
+      font-family: "Wise Han Serif SC";
+      font-size: 2rem;
+      font-weight: 700;
+      letter-spacing: 0;
+      line-height: 1.1;
+    }
+    .page-subtitle {
+      color: var(--gallery-muted);
+      font-size: 0.95rem;
+      margin-top: 0.5rem;
+    }
+    .project-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin: 0.75rem 0 1.5rem;
+      align-items: center;
+    }
+    .meta-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+      padding: 0.25rem 0.75rem;
+      border-radius: 9999px;
+      border: 0.25px solid var(--gallery-line);
+      font-size: 0.85rem;
+      color: var(--gallery-muted);
+      text-decoration: none;
+      transition: border-color .15s, color .15s, background .15s;
+    }
+    .meta-pill:hover {
+      border-color: var(--gallery-accent);
+      color: var(--gallery-text);
+      background: var(--gallery-accent-dim);
+    }
+    .style-switch {
+      display: inline-flex;
+      align-items: center;
+      overflow: hidden;
+      border: 0.25px solid var(--gallery-line);
+      border-radius: 9999px;
+    }
+    .style-switch-button {
+      appearance: none;
+      border: 0;
+      background: transparent;
+      color: var(--gallery-muted);
+      cursor: pointer;
+      font: inherit;
+      font-size: 0.85rem;
+      line-height: 1;
+      padding: 0.45rem 0.75rem;
+    }
+    .style-switch-button + .style-switch-button {
+      border-left: 0.25px solid var(--gallery-line);
+    }
+    .style-switch-button[aria-pressed="true"] {
+      background: var(--gallery-text);
+      color: var(--gallery-bg);
+    }
+    body {
+      font-family: "Wise Han Sans SC";
+    }
+    .page-title,
+    .thumb-name,
+    .detail-title {
+      font-family: "Wise Han Sans SC";
+      font-weight: 500;
+    }
+    .source-panel pre {
+      font-family: "Courier Prime";
+      font-weight: 400;
+    }
+    .meta-pill,
+    .style-switch,
+    .filter-btn,
+    .component-search,
+    .thumb-card,
+    #back-to-top,
+    .offsite-modal-panel,
+    .offsite-btn,
+    .motion-select-menu,
+    .detail-panel,
+    .tag {
+      border-width: 1px;
+      border-radius: 0;
+      box-shadow: none;
+    }
+    .style-switch-button + .style-switch-button {
+      border-left-width: 1px;
+    }
+    .thumb-card,
+    .thumb-preview,
+    .detail-panel,
+    .detail-panel-body,
+    .detail-preview {
+      background: var(--gallery-card-bg);
+      box-shadow: none;
+    }
+    .thumb-card:hover,
+    #back-to-top:hover {
+      box-shadow: none;
+    }
+    svg {
+      stroke-width: 1.5;
+    }
+    .offsite-modal {
+      position: fixed;
+      inset: 0;
+      z-index: 1000;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: clamp(1rem, 4vw, 3rem);
+      background: rgba(29,29,24,0.62);
+      opacity: 0;
+      transition: opacity 0.18s ease;
+    }
+    .offsite-modal[hidden] { display: none; }
+    .offsite-modal.is-open { opacity: 1; }
+    .offsite-modal-panel {
+      width: min(420px, 90%);
+      padding: 1.5rem;
+      border: 0.25px solid var(--gallery-line);
+      border-radius: var(--gallery-radius);
+      background: var(--gallery-card-bg);
+      box-shadow: 0 24px 80px rgba(0,0,0,0.24);
+      transform: translateY(12px) scale(0.98);
+      transition: transform 0.18s ease;
+    }
+    .offsite-modal.is-open .offsite-modal-panel {
+      transform: translateY(0) scale(1);
+    }
+    .offsite-modal-title {
+      margin: 0 0 0.5rem;
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--gallery-text);
+    }
+    .offsite-modal-text {
+      margin: 0 0 1.25rem;
+      color: var(--gallery-muted);
+      font-size: 0.95rem;
+      line-height: 1.5;
+    }
+    .offsite-modal-actions {
+      display: flex;
+      gap: 0.5rem;
+      justify-content: flex-end;
+    }
+    .offsite-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 36px;
+      padding: 0.45rem 0.9rem;
+      border: 0.25px solid var(--gallery-accent);
+      border-radius: 10px;
+      background: var(--gallery-accent);
+      color: #fff;
+      font: inherit;
+      cursor: pointer;
+    }
+    .offsite-btn.secondary {
+      border-color: var(--gallery-line);
+      background: var(--gallery-card-bg);
+      color: var(--gallery-text);
+    }
+
+    /* ===== Filter Bar (tabs) ===== */
+    .filter-controls {
+      display: inline-flex;
+      flex-direction: column;
+      align-items: stretch;
+      width: fit-content;
+      max-width: 100%;
+      gap: 0.75rem;
+      margin: 1rem 0 1.5rem;
+    }
+    .filter-bar {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin: 0;
+      width: 100%;
+    }
+    .filter-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+      padding: 0.4rem 0.9rem;
+      border-radius: 12px;
+      border: 0.25px solid var(--gallery-line);
+      background: var(--gallery-card-bg);
+      font-family: "Wise Han Sans SC";
+      font-size: 0.9rem;
+      font-weight: 400;
+      color: var(--gallery-text);
+      cursor: pointer;
+      transition: background .15s, border-color .15s, color .15s;
+    }
+    .filter-btn:hover {
+      border-color: var(--gallery-accent);
+      background: var(--gallery-accent-dim);
+    }
+    .filter-btn.active {
+      background: var(--gallery-accent) !important;
+      color: #fff !important;
+      border-color: var(--gallery-accent) !important;
+    }
+    .filter-btn svg {
+      width: 14px;
+      height: 14px;
+      flex-shrink: 0;
+    }
+    .filter-btn .filter-count {
+      font-size: 0.75rem;
+      opacity: 0.6;
+    }
+    .search-bar {
+      width: 100%;
+      margin: 0;
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+    .search-input-wrap {
+      position: relative;
+      display: flex;
+      align-items: center;
+      flex: 1;
+      min-width: 0;
+    }
+    /* ===== Motion Select（动态/静态下拉） ===== */
+    .motion-select {
+      position: relative;
+      display: inline-flex;
+      flex-shrink: 0;
+    }
+    .motion-select-chevron {
+      transition: transform 0.15s;
+    }
+    .motion-select.open .motion-select-chevron {
+      transform: rotate(180deg);
+    }
+    .motion-select-menu {
+      position: absolute;
+      top: calc(100% + 6px);
+      right: 0;
+      z-index: 60;
+      min-width: 7.5rem;
+      margin: 0;
+      padding: 4px;
+      background: var(--gallery-card-bg);
+      border: 0.25px solid var(--gallery-line);
+      border-radius: 10px;
+      box-shadow: 0 8px 24px rgba(29, 29, 24, 0.12);
+    }
+    .motion-select-option {
+      display: flex;
+      align-items: center;
+      gap: 0.45rem;
+      width: 100%;
+      border: 0;
+      background: transparent;
+      color: var(--gallery-text);
+      font-family: inherit;
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.05em;
+      padding: 0.5rem 0.6rem;
+      border-radius: 7px;
+      cursor: pointer;
+      text-align: left;
+      transition: background 0.15s, color 0.15s;
+    }
+    .motion-select-option:hover {
+      background: var(--gallery-accent-dim);
+      color: var(--gallery-accent);
+    }
+    .motion-select-option .motion-select-check {
+      margin-left: auto;
+      opacity: 0;
+    }
+    .motion-select-option.active .motion-select-check {
+      opacity: 1;
+      color: var(--gallery-accent);
+    }
+    .search-input-wrap svg {
+      position: absolute;
+      left: 14px;
+      width: 16px;
+      height: 16px;
+      color: rgba(29,29,24,0.48);
+      pointer-events: none;
+    }
+    .component-search {
+      width: 100%;
+      height: 36px;
+      min-height: 36px;
+      padding: 0 0.9rem 0 2.5rem;
+      border: 0.25px solid rgba(29,29,24,0.16);
+      border-radius: 12px;
+      background: var(--gallery-panel);
+      color: var(--gallery-text);
+      font-family: "Wise Han Sans SC";
+      font-weight: 400;
+      font-size: 0.9rem;
+      outline: none;
+      transition: background .15s, border-color .15s, box-shadow .15s;
+    }
+    .component-search::placeholder { color: rgba(29,29,24,0.44); }
+    .component-search:hover {
+      background: #eceae2;
+      border-color: rgba(29,29,24,0.24);
+    }
+    .component-search:focus {
+      background: var(--gallery-surface);
+      border-color: rgba(0,47,167,0.45);
+      box-shadow: 0 0 0 3px rgba(0,47,167,0.06);
+    }
+
+    /* ===== Grid View ===== */
+    .grid-view { padding: 0; }
+    .pagination {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 0.5rem;
+      margin: 1.5rem 0;
+    }
+    .thumb-grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 1rem;
+    }
+    .thumb-card {
+      background: var(--gallery-card-bg);
+      border: 1px solid var(--gallery-card-line);
+      border-radius: var(--gallery-radius);
+      box-shadow: 0 2px 10px rgba(46, 44, 37, 0.06);
+      cursor: pointer;
+      transition: transform 0.15s, box-shadow 0.15s, border-color 0.15s;
+      overflow: hidden;
+      padding: 1.25rem;
+    }
+    .thumb-card:hover {
+      border-color: #cfc6b8;
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px rgba(46, 44, 37, 0.12);
+    }
+    .thumb-preview {
+      position: relative;
+      width: 100%;
+      aspect-ratio: 1 / 1;
+      overflow: hidden;
+      background: #fff;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    .thumb-preview iframe {
+      width: 600px;
+      height: 600px;
+      border: none;
+      pointer-events: none;
+      transform-origin: center center;
+      flex-shrink: 0;
+    }
+    .thumb-label {
+      padding: 12px 0 0 0;
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+      border-top: 0.25px solid var(--gallery-line);
+    }
+    .thumb-name {
+      font-family: "Wise Han Serif SC";
+      font-size: 15px;
+      font-weight: 700;
+      color: #000;
+    }
+    /* ===== Detail View ===== */
+    .detail-view {
+      display: none;
+      padding: 2.5rem 0 28px;
+      max-width: 960px;
+    }
+    .detail-view.active { display: block; }
+    .grid-view.hidden { display: none; }
+
+    .detail-back {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--gallery-muted);
+      cursor: pointer;
+      padding: 0;
+      border: none;
+      background: none;
+      flex-shrink: 0;
+      text-decoration: none;
+      transition: color 0.15s;
+    }
+    .detail-back:hover { color: var(--gallery-text); }
+    .detail-back svg { display: block; }
+
+    /* Back to Top */
+    #back-to-top {
+      position: fixed;
+      right: 1.5rem;
+      bottom: 1.5rem;
+      z-index: 100;
+      cursor: pointer;
+      background: var(--gallery-card-bg);
+      color: var(--gallery-text);
+      border: 0.25px solid var(--gallery-line);
+      border-radius: 12px;
+      width: 44px;
+      height: 44px;
+      padding: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 4px 16px rgba(0,0,0,0.1);
+      opacity: 0;
+      transform: translateY(10px);
+      transition: opacity .3s, transform .3s;
+      pointer-events: none;
+    }
+    #back-to-top.visible {
+      opacity: 1;
+      transform: translateY(0);
+      pointer-events: auto;
+    }
+    #back-to-top:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(0,0,0,0.15);
+    }
+    #back-to-top svg {
+      display: block;
+      width: 20px;
+      height: 20px;
+    }
+
+    .detail-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 2rem;
+    }
+    .detail-title {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-family: "Wise Han Serif SC";
+      font-size: 2rem;
+      font-weight: 700;
+      letter-spacing: 0;
+      line-height: 1.1;
+    }
+    .detail-group-tag {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--gallery-accent);
+    }
+
+    .detail-desc {
+      color: var(--gallery-muted);
+      font-size: 14px;
+      line-height: 1.7;
+      margin-bottom: 16px;
+    }
+    .detail-source {
+      max-width: 700px;
+      margin: -8px 0 20px;
+      padding: 0;
+      border: 0;
+      background: transparent;
+      color: var(--gallery-muted);
+      font-size: 13px;
+      line-height: 1.6;
+    }
+    .detail-source a {
+      color: var(--gallery-accent);
+      text-decoration: none;
+      border-bottom: 1px solid rgba(0,47,167,0.28);
+    }
+    .detail-source a:hover {
+      border-bottom-color: var(--gallery-accent);
+    }
+    .tag-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 28px;
+    }
+    .tag {
+      padding: 5px 10px;
+      border: 1px solid var(--gallery-line);
+      font-size: 11px;
+      letter-spacing: 0.06em;
+      color: var(--gallery-muted);
+    }
+    .tag.accent {
+      border-color: rgba(217,94,0,0.4);
+      color: var(--gallery-accent);
+      background: var(--gallery-accent-dim);
+    }
+
+    /* Detail Panel */
+    .detail-panel {
+      max-width: 700px;
+      background: #fff;
+      border: 1px solid var(--gallery-line);
+      border-radius: var(--gallery-radius);
+      overflow: hidden;
+      margin-bottom: 24px;
+    }
+    .detail-panel-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      min-height: 44px;
+      border-bottom: 1px solid var(--gallery-line);
+      background: var(--gallery-surface);
+    }
+    .view-tabs {
+      display: flex;
+      align-items: center;
+    }
+    .view-tab {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+      min-height: 44px;
+      padding: 0 18px;
+      background: transparent;
+      border: none;
+      color: var(--gallery-muted);
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      cursor: pointer;
+      font-family: inherit;
+      border-bottom: 2px solid transparent;
+    }
+    .view-tab svg {
+      width: 14px;
+      height: 14px;
+      flex-shrink: 0;
+    }
+    .view-tab.active {
+      color: var(--gallery-accent);
+      border-bottom-color: var(--gallery-accent);
+    }
+    .detail-panel-body {
+      display: none;
+      position: relative;
+      background: #fff;
+      overflow: hidden;
+      height: var(--detail-panel-body-h);
+    }
+    .detail-panel-body.active { display: block; }
+    /* 统一尺寸契约：面板高度由 JS 按组件固有画布长宽比自适应，预览盒底色与页面融合，
+       contain-fit 后的余白不可见（替代原纸墨原生加高面板与单组件滚动特例） */
+    .detail-panel-body,
+    .detail-preview {
+      background: var(--gallery-bg);
+    }
+    .detail-preview {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    .detail-preview iframe {
+      width: 600px;
+      height: 600px;
+      border: none;
+      pointer-events: none;
+      transform-origin: center center;
+      flex-shrink: 0;
+    }
+    .source-panel pre {
+      margin: 0;
+      padding: 16px 18px;
+      height: 100%;
+      overflow: auto;
+      overflow-x: auto;
+      color: var(--gallery-text);
+      font-size: 12px;
+      line-height: 1.65;
+      font-family: "Wise Han Sans SC";
+      font-weight: 400;
+      white-space: pre-wrap;
+      word-break: break-word;
+      outline: none;
+    }
+    .source-panel pre:focus-visible {
+      box-shadow: inset 0 0 0 2px var(--gallery-accent);
+    }
+    .code-actions {
+      display: flex;
+      align-items: center;
+      gap: 0.25rem;
+      padding-right: 10px;
+    }
+    .copy-btn,
+    .download-btn,
+    .motion-select-trigger {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+      min-height: 34px;
+      padding: 0 8px;
+      background: transparent;
+      border: 0;
+      color: var(--gallery-muted);
+      font-size: 11px;
+      cursor: pointer;
+      font-family: inherit;
+      font-weight: 500;
+      letter-spacing: 0.05em;
+      outline: none;
+      transition: color .15s;
+    }
+    .copy-btn svg,
+    .download-btn svg,
+    .motion-select-trigger svg {
+      width: 14px;
+      height: 14px;
+      flex-shrink: 0;
+    }
+    .copy-btn:hover,
+    .copy-btn:focus-visible,
+    .copy-btn:active,
+    .copy-btn.copied,
+    .download-btn:hover,
+    .download-btn:focus-visible,
+    .download-btn:active,
+    .download-btn.downloaded,
+    .motion-select-trigger:hover,
+    .motion-select-trigger:focus-visible,
+    .motion-select-trigger:active {
+      color: var(--gallery-accent);
+      font-weight: 700;
+      background: transparent;
+      box-shadow: none;
+    }
+
+    /* Detail Navigation (prev/next) */
+    .detail-nav {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      max-width: 700px;
+      gap: 1rem;
+      margin: 2rem 0 1rem;
+    }
+    .detail-nav-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+      padding: 0.2rem 0.15rem;
+      border: 0;
+      background: transparent;
+      color: var(--gallery-muted);
+      text-decoration: none;
+      font-size: 0.9rem;
+      font-weight: 500;
+      cursor: pointer;
+      font-family: inherit;
+      transition: color 0.15s;
+    }
+    .detail-nav-btn:hover {
+      color: var(--gallery-accent);
+      text-decoration: underline;
+      text-underline-offset: 0.18em;
+    }
+    .detail-nav-spacer { width: 0; }
+
+    /* ===== Empty State ===== */
+    .empty-state {
+      text-align: center;
+      padding: 80px 40px;
+      color: var(--gallery-muted);
+      font-size: 15px;
+    }
+
+    /* ===== Responsive ===== */
+    @media (max-width: 1120px) {
+      .thumb-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+    }
+    @media (max-width: 820px) {
+      .thumb-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    }
+    @media (max-width: 560px) {
+      .shell { padding: 0 1rem; }
+      .thumb-grid { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 900px) {
+      .shell { grid-template-columns: 1fr; }
+      .sidebar { display: none; }
+    }
+  </style>
+</head>
+<body>
+  <div class="shell">
+    <div class="page-header">
+      <h1 class="page-title" style="display:flex;align-items:center;gap:0.5rem;"><a id="back-link" href="../" title="返回" style="display:inline-flex;color:var(--gallery-color-text-muted);text-decoration:none;"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M12 19l-7-7 7-7"/></svg></a>HTML PPT组件</h1>
+      <p class="page-subtitle">面向 AI 生成网页 PPT 的组件图册，按场景分类浏览并复制 HTML 片段。</p>
+      <div class="project-meta">
+        <a class="meta-pill" href="https://github.com/WiseWong6/wise-labs" target="_blank" rel="noopener noreferrer">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
+          源代码
+        </a>
+        <a class="meta-pill" href="https://github.com/WiseWong6/wise-skills/tree/master/ppt-component-atlas" target="_blank" rel="noopener noreferrer" data-skill-offsite-link>
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3 4 7l8 4 8-4-8-4Z"/><path d="M4 11l8 4 8-4"/><path d="M4 15l8 4 8-4"/></svg>
+          Skill
+        </a>
+        <div class="style-switch" role="group" aria-label="组件视觉风格，左侧 Paper Ink，右侧 Swiss">
+          <button class="style-switch-button" type="button" data-theme-value="paper-ink" aria-pressed="true" title="切换为 Paper Ink（左）">Paper Ink</button>
+          <button class="style-switch-button" type="button" data-theme-value="swiss" aria-pressed="false" title="切换为 Swiss（右）">Swiss</button>
+        </div>
+      </div>
+    </div>
+    <div class="filter-controls" id="filterControls">
+      <nav class="filter-bar" id="filterBar"></nav>
+      <div class="search-bar" id="searchBar">
+        <label class="search-input-wrap" for="componentSearch">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+          <input class="component-search" id="componentSearch" type="search" placeholder="搜索组件名称、英文名或分类" autocomplete="off" spellcheck="false">
+        </label>
+      </div>
+    </div>
+    <div id="gridView" class="grid-view"></div>
+    <nav class="pagination" id="pagination"></nav>
+    <div id="detailView" class="detail-view"></div>
+
+    <button id="back-to-top" type="button" aria-label="回到顶部">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 19V5"/><path d="m5 12 7-7 7 7"/></svg>
+    </button>
+  </div>
+
+  <script src="../../capabilities/vendors/ppt-component-atlas/catalog-data.js"></script>
+  <script src="../../capabilities/layouts/paper-ink-components.js?v=6"></script>
+  <script src="../../themes/paper-ink/adapters/atlas.js"></script>
+  <script src="../../themes/swiss/adapters/atlas.js"></script>
+  <script src="../../themes/paper-ink/adapters/native.js"></script>
+  <script src="../../themes/swiss/adapters/native.js"></script>
+  <script src="./paper-ink-adapter.js?v=2"></script>
+  <script src="./echarts-catalog-data.js"></script>
+  <script>
+    // ===== Data =====
+    const DATA = window.SWISS_CATALOG_DATA;
+    const PI_DATA = window.PAPER_INK_COMPONENT_DATA || { componentCss: '', entries: [] };
+    const MODAL_TRANSITION_MS = 180;
+    const THEME_ID = window.WISE_PPT_GALLERY_THEME || 'paper-ink';
+    document.documentElement.dataset.theme = THEME_ID;
+    const ADAPTERS = window.WisePPTThemeAdapters || {};
+    const ATLAS_ADAPTER = ADAPTERS[`${THEME_ID}.atlas`];
+    const NATIVE_ADAPTER = ADAPTERS[`${THEME_ID}.native-components`];
+    if (!ATLAS_ADAPTER || !NATIVE_ADAPTER) {
+      throw new Error(`Theme adapters failed to load: ${THEME_ID}`);
+    }
+
+    function adaptComponentCss(source) {
+      return ATLAS_ADAPTER.adaptCss(source);
+    }
+
+    function adaptComponentMarkup(source) {
+      return ATLAS_ADAPTER.adaptMarkup(source);
+    }
+
+    function adaptComponentHtml(source) {
+      return ATLAS_ADAPTER.adaptHtml(source);
+    }
+
+    const COMPONENT_CSS = adaptComponentCss(DATA.componentCss);
+    // Motion orchestration is not a theme target. Keep the catalog layer byte-for-byte.
+    const COMPONENT_MOTION_CSS = DATA.componentMotionCss || '';
+    // Paper Ink 原生组件的共享样式已是纸墨语言，原样注入、不过 adapter
+    const PI_COMPONENT_CSS = PI_DATA.componentCss || '';
+    // 纸墨原生组件动效层：同样原样注入，与 COMPONENT_MOTION_CSS 并存（选择器互不重叠）
+    const PI_MOTION_CSS = PI_DATA.componentMotionCss || '';
+    const THEME_ADAPTER_CSS = [ATLAS_ADAPTER.themeCss, NATIVE_ADAPTER.themeCss].filter(Boolean).join('\n');
+    const THEME_COMPONENT_OVERRIDES = ATLAS_ADAPTER.COMPONENT_OVERRIDES || '';
+    const entries = DATA.entries.concat(PI_DATA.entries || []);
+
+    // ===== ECharts 组件并入（原独立 echarts 画册已下线，数据/渲染迁移至此） =====
+    // 渲染走 echarts-frame.html（src iframe）；静态视觉只取正式 Theme adapter，
+    // echarts-theme-adapter.js 仅保留画册预览几何与本地动效预览，不进入 Theme/Runtime 合同。
+    // 源码/复制/下载给出 deck 可嵌入的 snippet + init_script（与旧画册行为一致）。
+    const ECHARTS_DATA = window.WISE_PPT_ECHARTS_GALLERY_DATA;
+    const ECHARTS_BASE_NUM = entries.reduce((max, e) => Math.max(max, e.num || 0), 0);
+
+    function bindEchartsThemeSource(item) {
+      const source = `${item.snippet}\n${item.init_script}`;
+      const sourceAdapterId = item.render_plan_binding && item.render_plan_binding.theme_adapter_id;
+      const sourceMarker = `data-theme-adapter-id="${sourceAdapterId}"`;
+      const targetMarker = `data-theme-adapter-id="${THEME_ID}.echarts"`;
+      const occurrences = sourceAdapterId ? source.split(sourceMarker).length - 1 : 0;
+      if (occurrences !== 1) {
+        throw new Error(`ECharts ${item.component_id} 缺少唯一主题绑定`);
+      }
+      return source.replace(sourceMarker, targetMarker);
+    }
+
+    const ECHARTS_ENTRIES = ((ECHARTS_DATA && ECHARTS_DATA.components) || []).map((item, index) => ({
+      name: item.component_id,
+      label: item.name,
+      num: ECHARTS_BASE_NUM + index + 1,
+      variant: null,
+      group: 'data',
+      groupLabel: '数据/图表',
+      routeGroup: 'echarts',
+      description: [item.selection_notes, ...(item.aliases || [])].filter(Boolean).join(' '),
+      source: { name: 'Apache ECharts 官方示例', label: 'ECharts 参考', url: item.source_url },
+      echartsId: item.component_id,
+      echartsSource: bindEchartsThemeSource(item),
+      frame: { width: 600, height: 600, fit: 'fixed' }
+    }));
+    entries.push(...ECHARTS_ENTRIES);
+
+    function echartsFrameUrl(entry, mode) {
+      return `./echarts-frame.html?id=${encodeURIComponent(entry.echartsId)}&theme=${THEME_ID}&mode=${mode}&motion=${state.motion ? '1' : '0'}`;
+    }
+
+    function slugComponentPart(value) {
+      return String(value || '')
+        .toLowerCase()
+        .trim()
+        .replace(/[^a-z0-9]+/g, '-')
+        .replace(/-+/g, '-')
+        .replace(/^-|-$/g, '');
+    }
+
+    function buildComponentId(entry) {
+      const parts = [
+        entry.routeGroup || entry.group,
+        entry.name,
+        entry.variant || 'default'
+      ].map(slugComponentPart).filter(Boolean);
+      return parts.join('-') || `component-${entry.num}`;
+    }
+
+    const componentIdCounts = new Map();
+    entries.forEach(entry => {
+      const baseId = buildComponentId(entry);
+      const count = componentIdCounts.get(baseId) || 0;
+      componentIdCounts.set(baseId, count + 1);
+      entry.componentId = count > 0 ? `${baseId}-${entry.num}` : baseId;
+    });
+    const entriesByComponentId = new Map(entries.map(entry => [entry.componentId, entry]));
+
+    // Category order — 既有五组固定顺序，其后动态追加新组（如 ECharts 图表）
+    const GROUP_ORDER = ['内容/排版', '对比/评估', '流程/时序', '结构/关系', '数据/图表'];
+    const CAT_ORDER = GROUP_ORDER.filter(g => entries.some(e => e.groupLabel === g))
+      .concat([...new Set(entries.map(e => e.groupLabel))].filter(g => g && !GROUP_ORDER.includes(g)));
+
+
+    // ===== Motion Mode（动态/静态） =====
+    const MOTION_STORAGE_KEY = 'htmlPptMotion';
+    function getInitialMotion() {
+      try {
+        const params = new URLSearchParams(window.location.search);
+        if (params.get('motion') === '0') return false;
+        if (params.get('motion') === '1') return true;
+        const saved = window.localStorage.getItem(MOTION_STORAGE_KEY);
+        if (saved === '0') return false;
+        if (saved === '1') return true;
+      } catch (err) {}
+      if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) return false;
+      return true;
+    }
+
+    // ===== State =====
+    const state = {
+      activeGroup: null,
+      search: '',
+      layout: null,    // entry num for detail view
+      lastGridScrollTop: 0,
+      lastGridCardKey: null,
+      detailOpenedFromGrid: false,
+      restoreGridScrollTop: 0,
+      restoreGridCardKey: null,
+      pendingGridRestore: false,
+      page: 1,
+      motion: getInitialMotion(),
+      detailTab: 'preview'
+    };
+
+    // ===== DOM refs =====
+    const filterControlsEl = document.getElementById('filterControls');
+    const filterBarEl = document.getElementById('filterBar');
+    const searchBarEl = document.getElementById('searchBar');
+    const componentSearchEl = document.getElementById('componentSearch');
+    const gridViewEl = document.getElementById('gridView');
+    const detailViewEl = document.getElementById('detailView');
+    const paginationEl = document.getElementById('pagination');
+    const PAGE_SIZE = 12;
+
+    function requestParentClose() {
+      if (window.parent === window) return false;
+      try {
+        if (typeof window.parent.closeTab === 'function') {
+          window.parent.closeTab();
+          return true;
+        }
+      } catch (err) {}
+      try {
+        window.parent.postMessage({ type: 'close-tab' }, '*');
+        return true;
+      } catch (err) {}
+      return false;
+    }
+
+    const backLink = document.getElementById('back-link');
+    if (backLink) {
+      backLink.addEventListener('click', (event) => {
+        if (!requestParentClose()) return;
+        event.preventDefault();
+      });
+    }
+
+    function switchTheme(nextTheme) {
+      if (!['paper-ink', 'swiss'].includes(nextTheme) || nextTheme === THEME_ID) return;
+      const url = new URL(window.location.href);
+      url.searchParams.set('theme', nextTheme);
+      url.searchParams.delete('style');
+      window.location.assign(url.toString());
+    }
+
+    const themeSwitchButtons = [...document.querySelectorAll('[data-theme-value]')];
+    themeSwitchButtons.forEach(button => {
+      const isActive = button.dataset.themeValue === THEME_ID;
+      button.setAttribute('aria-pressed', String(isActive));
+      button.addEventListener('click', () => switchTheme(button.dataset.themeValue));
+      button.addEventListener('keydown', event => {
+        if (!['ArrowLeft', 'ArrowRight'].includes(event.key)) return;
+        event.preventDefault();
+        switchTheme(event.key === 'ArrowLeft' ? 'paper-ink' : 'swiss');
+      });
+    });
+
+    // ===== Helpers =====
+    function esc(s) {
+      return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+    }
+
+    function getCardKey(entry) {
+      return `${entry.name}::${entry.variant || 'default'}`;
+    }
+
+    function getCurrentCardKey() {
+      if (!state.layout) return null;
+      const entry = entries.find(e => e.num === state.layout);
+      return entry ? getCardKey(entry) : null;
+    }
+
+    function getComponentIdByLayout(layout) {
+      const entry = entries.find(e => e.num === layout);
+      return entry ? entry.componentId : null;
+    }
+
+    function getCurrentComponentId() {
+      return getComponentIdByLayout(state.layout);
+    }
+
+    function getSourceLabel(source) {
+      if (!source) return '';
+      return [source.name, source.label].filter(Boolean).join(' ');
+    }
+
+    function normalizeSearchText(value) {
+      return String(value || '')
+        .toLowerCase()
+        .replace(/[\s_-]+/g, '')
+        .trim();
+    }
+
+    function getSearchCorpus(entry) {
+      return [
+        entry.label,
+        entry.name,
+        entry.variant,
+        entry.group,
+        entry.groupLabel,
+        entry.description,
+        getSourceLabel(entry.source)
+      ].filter(Boolean).join(' ');
+    }
+
+    function getPageScrollTop() {
+      return window.scrollY || document.documentElement.scrollTop || 0;
+    }
+
+    function setPageScrollTop(top) {
+      window.scrollTo({ top: Math.max(0, top), behavior: 'auto' });
+    }
+
+    // 内容密度补偿（内容层）：wrapped 流程链在卡内重排为 3×2 网格；组件固有画布 744 宽，见 FRAME_OVERRIDES
+    const WRAPPED_FLOW_CSS = adaptComponentCss(`
+    .swiss-card .process-chain[data-type="wrap"] {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      grid-template-rows: repeat(2, auto);
+      grid-template-areas:
+        "s1 s2 s3"
+        "s6 s5 s4";
+      gap: 24px 32px;
+      position: relative;
+      padding: 10px 20px;
+      overflow: visible;
+    }
+    .swiss-card .process-chain[data-type="wrap"] .step {
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 16px 12px;
+      background: color-mix(in srgb, var(--wp-color-focus) 8%, transparent);
+      border: 2px solid var(--wp-color-focus);
+      border-radius: 8px;
+      font-size: 13px;
+      font-weight: 600;
+      text-align: center;
+    }
+    .swiss-card .process-chain[data-type="wrap"] .arrow {
+      display: none;
+    }
+    .swiss-card .process-chain[data-type="wrap"] .step:nth-child(1) { grid-area: s1; }
+    .swiss-card .process-chain[data-type="wrap"] .step:nth-child(3) { grid-area: s2; }
+    .swiss-card .process-chain[data-type="wrap"] .step:nth-child(5) { grid-area: s3; }
+    .swiss-card .process-chain[data-type="wrap"] .step:nth-child(7) { grid-area: s4; }
+    .swiss-card .process-chain[data-type="wrap"] .step:nth-child(9) { grid-area: s5; }
+    .swiss-card .process-chain[data-type="wrap"] .step:nth-child(11) { grid-area: s6; }
+    .swiss-card .process-chain[data-type="wrap"] .step:nth-child(1)::after,
+    .swiss-card .process-chain[data-type="wrap"] .step:nth-child(3)::after {
+      content: '→';
+      position: absolute;
+      right: -26px;
+      top: 50%;
+      transform: translateY(-50%);
+      color: var(--wp-color-focus);
+      font-size: 16px;
+      font-weight: 700;
+    }
+    .swiss-card .process-chain[data-type="wrap"] .step:nth-child(5)::after {
+      content: '↓';
+      position: absolute;
+      left: 50%;
+      bottom: -26px;
+      transform: translateX(-50%);
+      color: var(--wp-color-focus);
+      font-size: 16px;
+      font-weight: 700;
+    }
+    .swiss-card .process-chain[data-type="wrap"] .step:nth-child(7)::after,
+    .swiss-card .process-chain[data-type="wrap"] .step:nth-child(9)::after {
+      content: '←';
+      position: absolute;
+      left: -26px;
+      top: 50%;
+      transform: translateY(-50%);
+      color: var(--wp-color-focus);
+      font-size: 16px;
+      font-weight: 700;
+      z-index: 2;
+    }
+    .swiss-card .process-chain[data-type="wrap"] .step:nth-child(11)::before {
+      content: '↑';
+      position: absolute;
+      left: 50%;
+      top: -26px;
+      transform: translateX(-50%);
+      color: var(--wp-color-focus);
+      font-size: 16px;
+      font-weight: 700;
+      z-index: 2;
+    }`);
+
+    // ===== Motion Select（动态/静态下拉切换） =====
+    const MOTION_ICON_PLAY = '<polygon points="6 3 20 12 6 21 6 3"/>';
+    const MOTION_ICON_PAUSE = '<rect x="6" y="4" width="4" height="16" rx="1"/><rect x="14" y="4" width="4" height="16" rx="1"/>';
+    const MOTION_SELECT_HTML = `
+      <div class="motion-select" data-motion-select>
+        <button type="button" class="motion-select-trigger" aria-haspopup="listbox" aria-expanded="false" aria-label="组件动效模式">
+          <svg class="motion-select-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${MOTION_ICON_PLAY}</svg>
+          <span class="motion-select-label">动态</span>
+          <svg class="motion-select-chevron" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+        </button>
+        <div class="motion-select-menu" role="listbox" aria-label="组件动效模式" hidden>
+          <button type="button" class="motion-select-option" data-motion="1" role="option" aria-selected="true">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${MOTION_ICON_PLAY}</svg>
+            <span>动态</span>
+            <svg class="motion-select-check" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>
+          </button>
+          <button type="button" class="motion-select-option" data-motion="0" role="option" aria-selected="false">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${MOTION_ICON_PAUSE}</svg>
+            <span>静态</span>
+            <svg class="motion-select-check" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>
+          </button>
+        </div>
+      </div>`;
+
+    function closeMotionSelects() {
+      document.querySelectorAll('[data-motion-select].open').forEach(sel => {
+        sel.classList.remove('open');
+        const menu = sel.querySelector('.motion-select-menu');
+        if (menu) menu.hidden = true;
+        const trigger = sel.querySelector('.motion-select-trigger');
+        if (trigger) trigger.setAttribute('aria-expanded', 'false');
+      });
+    }
+
+    function syncMotionToggleUI() {
+      document.querySelectorAll('[data-motion-select]').forEach(sel => {
+        const label = sel.querySelector('.motion-select-label');
+        if (label) label.textContent = state.motion ? '动态' : '静态';
+        const icon = sel.querySelector('.motion-select-icon');
+        if (icon) icon.innerHTML = state.motion ? MOTION_ICON_PLAY : MOTION_ICON_PAUSE;
+        sel.querySelectorAll('.motion-select-option').forEach(opt => {
+          const isActive = (opt.dataset.motion === '1') === state.motion;
+          opt.classList.toggle('active', isActive);
+          opt.setAttribute('aria-selected', String(isActive));
+        });
+      });
+    }
+
+    function setMotion(next) {
+      next = !!next;
+      if (next === state.motion) {
+        syncMotionToggleUI();
+        return;
+      }
+      state.motion = next;
+      try { window.localStorage.setItem(MOTION_STORAGE_KEY, next ? '1' : '0'); } catch (err) {}
+      try {
+        const url = new URL(window.location.href);
+        url.searchParams.set('motion', next ? '1' : '0');
+        history.replaceState(history.state, '', url);
+      } catch (err) {}
+      render();
+    }
+
+    function bindMotionSelects(root) {
+      root.querySelectorAll('[data-motion-select]').forEach(sel => {
+        if (sel.dataset.motionBound) return;
+        sel.dataset.motionBound = '1';
+        const trigger = sel.querySelector('.motion-select-trigger');
+        const menu = sel.querySelector('.motion-select-menu');
+        if (!trigger || !menu) return;
+        trigger.addEventListener('click', event => {
+          event.stopPropagation();
+          const willOpen = menu.hidden;
+          closeMotionSelects();
+          if (willOpen) {
+            sel.classList.add('open');
+            menu.hidden = false;
+            trigger.setAttribute('aria-expanded', 'true');
+          }
+        });
+        sel.querySelectorAll('.motion-select-option').forEach(opt => {
+          opt.addEventListener('click', event => {
+            event.stopPropagation();
+            closeMotionSelects();
+            setMotion(opt.dataset.motion === '1');
+          });
+        });
+      });
+    }
+
+    // ===== Preview Doc Builder =====
+    function buildPreviewDoc(entry, mode = 'thumb') {
+      const snippet = entry && entry.paperInkNative
+        ? entry.snippet
+        : adaptComponentMarkup(entry.snippet);
+      return `<!DOCTYPE html>
+<html lang="zh-CN" data-theme="${THEME_ID}">
+<head>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" href="./source-han.css?v=1">
+  <link rel="stylesheet" href="../../themes/${THEME_ID}/assets/design-tokens.css">
+    <style>
+    ${THEME_ADAPTER_CSS}
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: var(--wp-font-sans);
+      background: var(--wp-color-surface-canvas);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      padding: 16px;
+    }
+    .component-shell {
+      width: 100%;
+      max-width: 480px;
+      padding: 16px;
+      background: var(--wp-color-surface-canvas);
+      font-family: var(--wp-font-sans);
+    }
+    .swiss-card { width: 100% !important; min-height: auto !important; box-shadow: none !important; }
+    .swiss-card__content { min-height: auto !important; padding: 20px 0 !important; }
+    /* Paper Ink 原生组件固定 600×600 构图（HTML 组件含绝对定位，不可流式缩放），
+       缩略图/详情靠 iframe 外层 transform 缩放适配 */
+    body[data-pi-native] { padding: 0 !important; }
+    body[data-pi-native] .component-shell { max-width: none !important; width: 100% !important; padding: 0 !important; }
+    body[data-pi-native] .pi-card { width: 600px !important; min-height: 600px !important; margin: 0 auto; }
+    .swiss-card--cover .swiss-card__content { padding: 24px 0 !important; }
+    body[data-preview-mode="detail"] {
+      padding: 0 24px;
+      overflow: hidden;
+    }
+    body[data-preview-mode="detail"] .component-shell {
+      max-width: min(86vw, 640px);
+      padding: 0;
+      overflow: visible;
+    }
+    body[data-preview-mode="detail"] .swiss-card,
+    body[data-preview-mode="detail"] .swiss-card__content {
+      overflow: visible !important;
+    }
+    body[data-preview-mode="detail"] .swiss-card__content {
+      padding: 12px 0 !important;
+    }
+    body[data-preview-mode="detail"] .swiss-card--cover .swiss-card__content {
+      padding: 16px 0 !important;
+    }
+    /* 内容密度补偿（内容层，非容器尺寸逻辑）：venn 图形在 600 卡内偏小，详情模式放大填充 */
+    body[data-preview-mode="detail"] .swiss-card .venn {
+      margin: 0 auto !important;
+      transform: scale(1.38);
+      transform-origin: center center;
+    }
+    body[data-preview-mode="detail"] .swiss-card .venn-three {
+      margin: 0 auto !important;
+      transform: scale(1.55);
+      transform-origin: center center;
+    }
+    /* 内容密度补偿：radar 标签为 10px 微字号，600 卡内过小发虚，详情模式放大容器（矢量放大，标签同步变清晰）；
+       倍率受面板 padding 28px 约束，顶部留 margin 避免上溢压住标题 */
+    body[data-preview-mode="detail"] .swiss-card .radar-container {
+      margin-top: 16px;
+      transform: scale(1.25);
+      transform-origin: center center;
+    }
+    ${COMPONENT_CSS}
+    ${PI_COMPONENT_CSS}
+    ${WRAPPED_FLOW_CSS}
+    ${state.motion ? COMPONENT_MOTION_CSS : ''}
+    ${state.motion ? PI_MOTION_CSS : ''}
+    ${THEME_COMPONENT_OVERRIDES}
+  </style>
+</head>
+<body data-preview-mode="${mode}"${entry && entry.paperInkNative ? ' data-pi-native' : ''}>
+  <div class="component-shell">
+    ${snippet}
+  </div>
+</body>
+</html>`;
+    }
+
+    function getSourceStyleOverrides(entry) {
+      return [
+        THEME_ADAPTER_CSS,
+        PI_COMPONENT_CSS,
+        entry.variant === 'wrapped' ? WRAPPED_FLOW_CSS : '',
+        state.motion ? COMPONENT_MOTION_CSS : '',
+        state.motion ? PI_MOTION_CSS : '',
+        THEME_COMPONENT_OVERRIDES
+      ].filter(Boolean).join('\n');
+    }
+
+    function injectThemeStylesheet(html) {
+      if (!html.includes('</head>')) return html;
+      const link = `<link rel="stylesheet" href="../../themes/${THEME_ID}/assets/design-tokens.css">`;
+      return html.replace('</head>', `${link}\n</head>`);
+    }
+
+    function injectStyleOverrides(html, overrides) {
+      if (!overrides || !html.includes('</style>')) return html;
+      return html.replace('</style>', `${overrides}\n</style>`);
+    }
+
+    function buildSourceDoc(entry, previewDoc) {
+      if (!entry.copyHtml) return previewDoc;
+      const adapted = injectStyleOverrides(adaptComponentHtml(entry.copyHtml), getSourceStyleOverrides(entry));
+      return injectThemeStylesheet(adapted);
+    }
+
+    function sanitizeFilenamePart(value) {
+      return String(value || '')
+        .toLowerCase()
+        .replace(/[^a-z0-9\u4e00-\u9fa5-]+/g, '-')
+        .replace(/-+/g, '-')
+        .replace(/^-|-$/g, '');
+    }
+
+    function getDownloadFilename(entry) {
+      const name = sanitizeFilenamePart(entry.name) || 'component';
+      const suffix = sanitizeFilenamePart(entry.variant || entry.num) || String(entry.num);
+      return `html-ppt-${name}-${suffix}${state.motion ? '-animated' : ''}.html`;
+    }
+
+    // ===== 统一尺寸契约 =====
+    // 组件声明固有画布（entry.frame），容器只做 contain-fit：
+    // scale = min(容器宽 / frame.width, 容器高 / frame.height, 1)，居中、不放大。
+    // vendored atlas 不可逐字节改动，非 600×600 的固有画布在此覆盖（键：name/variant 或 name）。
+    const FRAME_OVERRIDES = {
+      'process/wrapped': { width: 744, height: 600, fit: 'fixed' }
+    };
+    const DEFAULT_FRAME = { width: 600, height: 600, fit: 'fixed' };
+
+    function resolveEntryFrame(entry) {
+      const declared = entry && entry.frame;
+      if (declared && declared.width > 0 && declared.height > 0) {
+        return { fit: 'fixed', ...declared };
+      }
+      if (entry) {
+        const override = FRAME_OVERRIDES[`${entry.name}/${entry.variant}`] || FRAME_OVERRIDES[entry.name];
+        if (override) return { fit: 'fixed', ...override };
+      }
+      return { ...DEFAULT_FRAME };
+    }
+
+    // 统一 fit：iframe 按固有画布尺寸创建，transform 等比缩小适配容器
+    function fitIframeToBox(iframe, box) {
+      const frame = iframe._frame;
+      if (!frame || !box) return;
+      const containerW = box.offsetWidth || frame.width;
+      const containerH = box.offsetHeight || frame.height;
+      const scale = Math.min(containerW / frame.width, containerH / frame.height, 1);
+      iframe.style.transform = `scale(${scale})`;
+    }
+
+    function createFramedIframe(frame) {
+      const iframe = document.createElement('iframe');
+      iframe._frame = frame;
+      iframe.style.width = `${frame.width}px`;
+      iframe.style.height = `${frame.height}px`;
+      return iframe;
+    }
+
+    // load 后按内容自然尺寸回补 frame（消化 min-height 生长等未声明的溢出）
+    function growFrameFromContent(iframe, box) {
+      try {
+        const card = iframe.contentDocument && iframe.contentDocument.querySelector('.swiss-card, .pi-card');
+        if (!card) return;
+        const frame = iframe._frame;
+        const w = Math.ceil(card.offsetWidth);
+        const h = Math.ceil(card.offsetHeight);
+        if (w > frame.width || h > frame.height) {
+          iframe._frame = { ...frame, width: Math.max(frame.width, w), height: Math.max(frame.height, h) };
+          iframe.style.width = `${iframe._frame.width}px`;
+          iframe.style.height = `${iframe._frame.height}px`;
+          fitIframeToBox(iframe, box);
+        }
+      } catch (err) { /* srcdoc 同源，防御性兜底 */ }
+    }
+
+    function downloadSourceDoc(sourceDoc, filename) {
+      const blob = new Blob([sourceDoc], { type: 'text/html;charset=utf-8' });
+      const url = URL.createObjectURL(blob);
+      const link = document.createElement('a');
+      link.href = url;
+      link.download = filename;
+      document.body.appendChild(link);
+      link.click();
+      link.remove();
+      window.setTimeout(() => { URL.revokeObjectURL(url); }, 1000);
+    }
+
+    function initSkillOffsiteConfirm() {
+      const skillLink = document.querySelector('[data-skill-offsite-link]');
+      if (!skillLink) return;
+
+      const modal = document.createElement('div');
+      modal.className = 'offsite-modal';
+      modal.setAttribute('role', 'dialog');
+      modal.setAttribute('aria-modal', 'true');
+      modal.setAttribute('aria-label', '离站确认');
+      modal.hidden = true;
+      modal.innerHTML = `
+        <div class="offsite-modal-panel">
+          <h3 class="offsite-modal-title">即将离开本站</h3>
+          <p class="offsite-modal-text">你即将前往 GitHub 查看「HTML PPT组件图册」Skill，是否继续访问？</p>
+          <div class="offsite-modal-actions">
+            <button class="offsite-btn secondary" type="button" data-offsite-cancel>取消</button>
+            <button class="offsite-btn" type="button" data-offsite-confirm>继续访问</button>
+          </div>
+        </div>
+      `;
+      document.body.appendChild(modal);
+
+      const confirmBtn = modal.querySelector('[data-offsite-confirm]');
+
+      function openModal() {
+        modal.hidden = false;
+        requestAnimationFrame(() => {
+          modal.classList.add('is-open');
+          if (confirmBtn) confirmBtn.focus({ preventScroll: true });
+        });
+      }
+
+      function closeModal() {
+        modal.classList.remove('is-open');
+        setTimeout(() => {
+          modal.hidden = true;
+        }, MODAL_TRANSITION_MS);
+      }
+
+      skillLink.addEventListener('click', event => {
+        event.preventDefault();
+        openModal();
+      });
+
+      modal.addEventListener('click', event => {
+        if (event.target === modal || event.target.closest('[data-offsite-cancel]')) {
+          closeModal();
+          return;
+        }
+        if (event.target.closest('[data-offsite-confirm]')) {
+          window.open(skillLink.href, '_blank', 'noopener,noreferrer');
+          closeModal();
+        }
+      });
+
+      document.addEventListener('keydown', event => {
+        if (event.key === 'Escape' && !modal.hidden) {
+          event.preventDefault();
+          event.stopPropagation();
+          closeModal();
+        }
+      }, true);
+    }
+
+    // ===== Mind Map Connector Sync =====
+    const SVG_NS = 'http://www.w3.org/2000/svg';
+
+    function getElementScale(el) {
+      const transform = getComputedStyle(el).transform;
+      if (!transform || transform === 'none') return 1;
+      const matrixMatch = transform.match(/matrix\(([^)]+)\)/);
+      if (matrixMatch) {
+        const values = matrixMatch[1].split(',').map(v => Number.parseFloat(v.trim()));
+        if (values.length >= 2) return Math.hypot(values[0], values[1]) || 1;
+      }
+      return 1;
+    }
+
+    function toLocalRect(el, containerRect, scale) {
+      const rect = el.getBoundingClientRect();
+      const left = (rect.left - containerRect.left) / scale;
+      const top = (rect.top - containerRect.top) / scale;
+      const width = rect.width / scale;
+      const height = rect.height / scale;
+      return { left, top, width, height, right: left + width, bottom: top + height, centerX: left + width / 2, centerY: top + height / 2 };
+    }
+
+    function createSvgOverlay(doc, mm, width, height) {
+      let overlay = mm.querySelector(':scope > .mind-map-overlay');
+      if (!overlay) {
+        overlay = doc.createElementNS(SVG_NS, 'svg');
+        overlay.setAttribute('class', 'mind-map-overlay');
+        overlay.setAttribute('aria-hidden', 'true');
+        mm.appendChild(overlay);
+      }
+      overlay.replaceChildren();
+      overlay.setAttribute('viewBox', `0 0 ${width} ${height}`);
+      return overlay;
+    }
+
+    function syncIframeMindMap(iframe) {
+      const run = () => {
+        if (!iframe.isConnected) return;
+        const doc = iframe.contentDocument;
+        if (!doc || doc.readyState !== 'complete') { requestAnimationFrame(run); return; }
+        syncMindMapConnectors(doc);
+      };
+      requestAnimationFrame(run);
+    }
+
+    function appendLine(svg, x1, y1, x2, y2) {
+      if (![x1, y1, x2, y2].every(Number.isFinite)) return;
+      const line = svg.ownerDocument.createElementNS(SVG_NS, 'line');
+      line.setAttribute('class', 'mind-map-line');
+      line.setAttribute('x1', String(x1));
+      line.setAttribute('y1', String(y1));
+      line.setAttribute('x2', String(x2));
+      line.setAttribute('y2', String(y2));
+      svg.appendChild(line);
+    }
+
+    function syncMindMapConnectors(doc) {
+      if (!doc) return;
+      doc.querySelectorAll('.mind-map').forEach(mm => {
+        const mmRect = mm.getBoundingClientRect();
+        if (!mmRect.width || !mmRect.height) return;
+        const scale = getElementScale(mm);
+        const width = mmRect.width / scale;
+        const height = mmRect.height / scale;
+        const svg = createSvgOverlay(doc, mm, width, height);
+        const rootNode = mm.querySelector(':scope > .root-node');
+        const branches = mm.querySelector('.branches');
+        if (!rootNode || !branches) return;
+
+        const branchNodes = Array.from(branches.querySelectorAll(':scope > .branch'))
+          .map(branch => {
+            const node = branch.querySelector(':scope > .node');
+            return node ? { branch, node, nodeRect: toLocalRect(node, mmRect, scale) } : null;
+          })
+          .filter(Boolean);
+        if (!branchNodes.length) return;
+
+        const rootRect = toLocalRect(rootNode, mmRect, scale);
+        const branchesRect = toLocalRect(branches, mmRect, scale);
+
+        if (mm.dataset.type === 'vertical') {
+          const branchGap = 24;
+          const branchLeft = Math.min(...branchNodes.map(item => item.nodeRect.left));
+          const spineX = Math.max(rootRect.right + 20, branchLeft - branchGap);
+          const spineTop = Math.min(...branchNodes.map(item => item.nodeRect.centerY));
+          const spineBottom = Math.max(...branchNodes.map(item => item.nodeRect.centerY));
+          appendLine(svg, rootRect.right, rootRect.centerY, spineX, rootRect.centerY);
+          appendLine(svg, spineX, spineTop, spineX, spineBottom);
+          branchNodes.forEach(({ branch, nodeRect }) => {
+            appendLine(svg, spineX, nodeRect.centerY, nodeRect.left, nodeRect.centerY);
+            const subBranches = branch.querySelector(':scope > .sub-branches');
+            if (!subBranches) return;
+            const subNodes = Array.from(subBranches.querySelectorAll(':scope > .sub-node'))
+              .map(subNode => toLocalRect(subNode, mmRect, scale));
+            if (!subNodes.length) return;
+            const subGap = 24;
+            const subLeft = Math.min(...subNodes.map(sub => sub.left));
+            const subSpineX = Math.max(nodeRect.right + 18, subLeft - subGap);
+            const subSpineTop = Math.min(nodeRect.centerY, ...subNodes.map(sub => sub.centerY));
+            const subSpineBottom = Math.max(nodeRect.centerY, ...subNodes.map(sub => sub.centerY));
+            appendLine(svg, nodeRect.right, nodeRect.centerY, subSpineX, nodeRect.centerY);
+            appendLine(svg, subSpineX, subSpineTop, subSpineX, subSpineBottom);
+            subNodes.forEach(subNodeRect => {
+              appendLine(svg, subSpineX, subNodeRect.centerY, subNodeRect.left, subNodeRect.centerY);
+            });
+          });
+          return;
+        }
+
+        const firstNodeRect = branchNodes[0].nodeRect;
+        const lastNodeRect = branchNodes[branchNodes.length - 1].nodeRect;
+        const spineY = branchesRect.top;
+        appendLine(svg, rootRect.centerX, rootRect.bottom, rootRect.centerX, spineY);
+        appendLine(svg, firstNodeRect.centerX, spineY, lastNodeRect.centerX, spineY);
+        branchNodes.forEach(({ nodeRect }) => {
+          appendLine(svg, nodeRect.centerX, spineY, nodeRect.centerX, nodeRect.top);
+        });
+      });
+    }
+
+    // ===== Filtering =====
+    // Unique entries — one card per entry (entry = layout + variant combo)
+    function getUniqueEntries() {
+      return entries;
+    }
+
+    function matchesFilter(entry) {
+      if (state.activeGroup && entry.groupLabel !== state.activeGroup) return false;
+      const query = normalizeSearchText(state.search);
+      if (!query) return true;
+      return normalizeSearchText(getSearchCorpus(entry)).includes(query);
+    }
+
+    function getFilteredEntries() {
+      return getUniqueEntries().filter(matchesFilter);
+    }
+
+    // ===== Icon System =====
+    function makeIcon(size, paths) {
+      return `<svg width="${size}" height="${size}" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">${paths}</svg>`;
+    }
+    // 7 visually distinct icons — one per group
+    const ICON_PATHS = {
+      '流程/时序': '<line x1="6" y1="3" x2="6" y2="15"/><circle cx="18" cy="6" r="3"/><circle cx="6" cy="18" r="3"/><path d="M18 9a9 9 0 01-9 9"/>',
+      '关系/结构': '<circle cx="12" cy="5" r="3"/><circle cx="5" cy="19" r="3"/><circle cx="19" cy="19" r="3"/><line x1="12" y1="8" x2="5" y2="16"/><line x1="12" y1="8" x2="19" y2="16"/>',
+      '对比/评估': '<rect x="3" y="3" width="7" height="18" rx="1"/><rect x="14" y="3" width="7" height="18" rx="1"/>',
+      '内容/排版': '<rect x="8" y="8" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/>',
+      '数据/可视化': '<line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/>',
+    };
+    const DEFAULT_ICON_PATH = '<rect x="8" y="8" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/>';
+
+    function renderFilterBar() {
+      const groups = {};
+      entries.forEach(e => { groups[e.groupLabel] = (groups[e.groupLabel] || 0) + 1; });
+
+      let html = '';
+      const totalCount = entries.length;
+      html += `<button class="filter-btn${!state.activeGroup ? ' active' : ''}" data-filter="">
+        全部 <span class="filter-count">${totalCount}</span></button>`;
+
+      CAT_ORDER.forEach(cat => {
+        if (!groups[cat]) return;
+        const icon = makeIcon(14, ICON_PATHS[cat] || DEFAULT_ICON_PATH);
+        html += `<button class="filter-btn${state.activeGroup === cat ? ' active' : ''}" data-filter="${esc(cat)}">
+          ${icon}${esc(cat)} <span class="filter-count">${groups[cat]}</span></button>`;
+      });
+      filterBarEl.innerHTML = html;
+
+      filterBarEl.querySelectorAll('.filter-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+          state.activeGroup = btn.dataset.filter || null;
+          state.page = 1;
+          updateFilterHighlight();
+          window.scrollTo({ top: 0, behavior: 'smooth' });
+          renderGrid();
+        });
+      });
+    }
+
+    function updateFilterHighlight() {
+      filterBarEl.querySelectorAll('.filter-btn').forEach(btn => {
+        const isActive = btn.dataset.filter === (state.activeGroup || '');
+        btn.classList.toggle('active', isActive);
+      });
+    }
+
+    // ===== Grid View =====
+    function renderGrid() {
+      const filtered = getFilteredEntries();
+      if (filtered.length === 0) {
+        gridViewEl.innerHTML = '<div class="empty-state">没有匹配的组件。</div>';
+        paginationEl.style.display = 'none';
+        return;
+      }
+
+      // Pagination
+      const totalPages = Math.max(1, Math.ceil(filtered.length / PAGE_SIZE));
+      if (state.page > totalPages) state.page = totalPages;
+      const start = (state.page - 1) * PAGE_SIZE;
+      const pageItems = filtered.slice(start, start + PAGE_SIZE);
+
+      let html = '<div class="thumb-grid">';
+      pageItems.forEach(entry => {
+        const cardKey = getCardKey(entry);
+        const displayLabel = esc(entry.label);
+        html += `<div class="thumb-card" data-num="${entry.num}" data-card-key="${esc(cardKey)}">
+          <div class="thumb-preview" data-num="${entry.num}"></div>
+          <div class="thumb-label">
+            <span class="thumb-name">${displayLabel}</span>
+          </div>
+        </div>`;
+      });
+      html += '</div>';
+
+      gridViewEl.innerHTML = html;
+
+      // Render pagination
+      renderPagination(totalPages);
+
+      // Lazy-load iframes（统一尺寸契约：固有画布 + contain-fit）
+      requestAnimationFrame(() => {
+        gridViewEl.querySelectorAll('.thumb-preview[data-num]').forEach(el => {
+          const num = parseInt(el.dataset.num);
+          const entry = entries.find(e => e.num === num);
+          if (!entry) return;
+          const iframe = createFramedIframe(resolveEntryFrame(entry));
+          iframe.loading = 'lazy';
+          iframe.addEventListener('load', () => {
+            syncMindMapConnectors(iframe.contentDocument);
+            growFrameFromContent(iframe, el);
+          });
+          if (entry.echartsId) iframe.src = echartsFrameUrl(entry, 'grid');
+          else iframe.srcdoc = buildPreviewDoc(entry);
+          el.appendChild(iframe);
+          fitIframeToBox(iframe, el);
+          syncIframeMindMap(iframe);
+        });
+      });
+
+      // Bind card clicks
+      gridViewEl.querySelectorAll('.thumb-card').forEach(card => {
+        card.addEventListener('click', () => {
+          const num = parseInt(card.dataset.num);
+          state.lastGridScrollTop = getPageScrollTop();
+          state.lastGridCardKey = card.dataset.cardKey;
+          state.detailOpenedFromGrid = true;
+          commitHistory('replace', createSnapshot('grid', { cardKey: card.dataset.cardKey, scrollTop: getPageScrollTop() }));
+          state.layout = num;
+          state.pendingGridRestore = false;
+          commitHistory('push', createSnapshot('detail', { cardKey: card.dataset.cardKey, componentId: getComponentIdByLayout(num), fromGrid: true }));
+          render();
+        });
+      });
+    }
+
+    function renderPagination(totalPages) {
+      if (totalPages <= 1) {
+        paginationEl.style.display = 'none';
+        return;
+      }
+      paginationEl.style.display = 'flex';
+      let html = `<button class="filter-btn" data-page="prev" ${state.page <= 1 ? 'disabled' : ''}>上一页</button>`;
+      for (let p = 1; p <= totalPages; p++) {
+        html += `<button class="filter-btn${p === state.page ? ' active' : ''}" data-page="${p}">${p}</button>`;
+      }
+      html += `<button class="filter-btn" data-page="next" ${state.page >= totalPages ? 'disabled' : ''}>下一页</button>`;
+      paginationEl.innerHTML = html;
+
+      paginationEl.querySelectorAll('.filter-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+          const p = btn.dataset.page;
+          if (p === 'prev' && state.page > 1) state.page--;
+          else if (p === 'next' && state.page < totalPages) state.page++;
+          else if (p !== 'prev' && p !== 'next') state.page = parseInt(p);
+          else return;
+          window.scrollTo({ top: 0, behavior: 'smooth' });
+          renderGrid();
+        });
+      });
+    }
+
+    // ===== Detail View =====
+    function renderDetail() {
+      const entry = entries.find(e => e.num === state.layout);
+      if (!entry) {
+        state.layout = null;
+        commitHistory('replace', createSnapshot('grid'));
+        render();
+        return;
+      }
+
+      const previewDoc = entry.echartsId ? '' : buildPreviewDoc(entry, 'detail');
+      const sourceDoc = entry.echartsId ? entry.echartsSource : buildSourceDoc(entry, previewDoc);
+
+      // Compute prev/next within current group filter
+      const filtered = getFilteredEntries();
+      const currentIdx = filtered.findIndex(e => e.num === state.layout);
+      const prevEntry = currentIdx > 0 ? filtered[currentIdx - 1] : null;
+      const nextEntry = currentIdx < filtered.length - 1 ? filtered[currentIdx + 1] : null;
+      const prevHtml = prevEntry
+        ? `<button class="detail-nav-btn" data-nav="prev" data-num="${prevEntry.num}" title="方向键 ←">&lt; 上一个</button>`
+        : `<span class="detail-nav-spacer"></span>`;
+      const nextHtml = nextEntry
+        ? `<button class="detail-nav-btn" data-nav="next" data-num="${nextEntry.num}" title="方向键 →">下一个 &gt;</button>`
+        : `<span class="detail-nav-spacer"></span>`;
+      const navHtml = `<nav class="detail-nav">${prevHtml}${nextHtml}</nav>`;
+      const sourceHtml = entry.source && entry.source.url
+        ? `<div class="detail-source">参考来源：<a href="${esc(entry.source.url)}" target="_blank" rel="noopener noreferrer">${esc(entry.source.name || entry.source.label || '参考来源')}</a></div>`
+        : (entry.source && (entry.source.name || entry.source.label)
+          ? `<div class="detail-source">来源：${esc(entry.source.name || entry.source.label)}</div>`
+          : '');
+
+      detailViewEl.innerHTML = `
+        <div class="detail-header">
+          <h2 class="detail-title"><button class="detail-back" id="backBtn" title="返回" aria-label="返回目录"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M12 19l-7-7 7-7"/></svg></button>${esc(entry.label)}</h2>
+        </div>
+        <div class="detail-panel">
+          <div class="detail-panel-header">
+            <div class="view-tabs" role="tablist" aria-label="组件详情视图">
+              <button class="view-tab${state.detailTab === 'source' ? '' : ' active'}" type="button" data-view-tab="preview" role="tab" aria-selected="${state.detailTab === 'source' ? 'false' : 'true'}" aria-controls="previewPanel"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M8 12h8"/><path d="M12 8v8"/></svg><span>预览</span></button>
+              <button class="view-tab${state.detailTab === 'source' ? ' active' : ''}" type="button" data-view-tab="source" role="tab" aria-selected="${state.detailTab === 'source' ? 'true' : 'false'}" aria-controls="sourcePanel"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m16 18 6-6-6-6"/><path d="m8 6-6 6 6 6"/></svg><span>源码</span></button>
+            </div>
+            <div class="code-actions">
+              ${MOTION_SELECT_HTML}
+              <button class="copy-btn" type="button" data-copy="html" aria-label="复制代码"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg><span>复制代码</span></button>
+              <button class="download-btn" type="button" data-download="html" aria-label="下载文件"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v12"/><path d="m7 10 5 5 5-5"/><path d="M5 21h14"/></svg><span>下载文件</span></button>
+            </div>
+          </div>
+          <div class="detail-panel-body${state.detailTab === 'source' ? '' : ' active'}" data-view-panel="preview" id="previewPanel" role="tabpanel"${state.detailTab === 'source' ? ' hidden' : ''}>
+            <div class="detail-preview" id="detailPreviewBox"></div>
+          </div>
+          <div class="detail-panel-body source-panel${state.detailTab === 'source' ? ' active' : ''}" data-view-panel="source" id="sourcePanel" role="tabpanel"${state.detailTab === 'source' ? '' : ' hidden'}>
+            <pre id="htmlSourcePre" tabindex="0">${esc(sourceDoc)}</pre>
+          </div>
+        </div>
+        ${sourceHtml}
+        ${navHtml}`;
+
+      // Insert detail iframe（统一尺寸契约：固有画布 + contain-fit + 面板随长宽比自适应）
+      const previewBox = document.getElementById('detailPreviewBox');
+      const previewPanel = document.getElementById('previewPanel');
+      bindMotionSelects(detailViewEl);
+      // Swiss 内容允许 overflow:visible（venn 等），详情画布四周留呼吸边距；
+      // 纸墨原生卡 overflow:hidden，不需要边距
+      const frame = resolveEntryFrame(entry);
+      const edge = entry.paperInkNative ? 0 : 50;
+      const canvas = { width: frame.width + edge * 2, height: frame.height + edge * 2 };
+      const iframe = createFramedIframe(canvas);
+      iframe.addEventListener('load', () => {
+        syncMindMapConnectors(iframe.contentDocument);
+        growFrameFromContent(iframe, previewBox);
+      });
+      if (entry.echartsId) iframe.src = echartsFrameUrl(entry, 'detail');
+      else iframe.srcdoc = previewDoc;
+      // 面板高度按画布长宽比自适应，消灭固定面板高度造成的白边
+      const panelW = previewBox.offsetWidth || canvas.width;
+      const maxBodyH = Math.min(window.innerHeight * 0.84, 760);
+      const bodyH = Math.round(Math.min(Math.max(panelW * canvas.height / canvas.width, 320), maxBodyH));
+      previewPanel.style.height = `${bodyH}px`;
+      previewBox.appendChild(iframe);
+      fitIframeToBox(iframe, previewBox);
+      previewBox.scrollTop = 0;
+      syncIframeMindMap(iframe);
+
+      // Back button
+      document.getElementById('backBtn').addEventListener('click', () => {
+        if (state.detailOpenedFromGrid) {
+          const fallback = createSnapshot('grid', {
+            cardKey: state.lastGridCardKey || getCurrentCardKey(),
+            scrollTop: state.lastGridScrollTop
+          });
+          applySnapshot(fallback);
+          state.detailOpenedFromGrid = false;
+          commitHistory('replace', fallback);
+          render();
+          return;
+        }
+        const fallback = { view: 'grid', search: state.search, layout: null, cardKey: getCurrentCardKey(), scrollTop: 0, fromGrid: false };
+        applySnapshot(fallback);
+        state.detailOpenedFromGrid = false;
+        commitHistory('replace', fallback);
+        render();
+      });
+
+      detailViewEl.querySelectorAll('.view-tab').forEach(btn => {
+        btn.addEventListener('click', () => {
+          const nextView = btn.dataset.viewTab;
+          state.detailTab = nextView;
+          detailViewEl.querySelectorAll('.view-tab').forEach(tab => {
+            const isActive = tab.dataset.viewTab === nextView;
+            tab.classList.toggle('active', isActive);
+            tab.setAttribute('aria-selected', String(isActive));
+          });
+          detailViewEl.querySelectorAll('.detail-panel-body').forEach(panel => {
+            const isActive = panel.dataset.viewPanel === nextView;
+            panel.classList.toggle('active', isActive);
+            panel.hidden = !isActive;
+          });
+        });
+      });
+
+      // Copy buttons
+      detailViewEl.querySelectorAll('.copy-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+          navigator.clipboard.writeText(sourceDoc).then(() => {
+            btn.querySelector('span').textContent = '已复制';
+            btn.classList.add('copied');
+            setTimeout(() => { btn.querySelector('span').textContent = '复制代码'; btn.classList.remove('copied'); }, 1500);
+          });
+        });
+      });
+
+      detailViewEl.querySelectorAll('.download-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+          downloadSourceDoc(sourceDoc, getDownloadFilename(entry));
+          btn.querySelector('span').textContent = '已下载';
+          btn.classList.add('downloaded');
+          setTimeout(() => { btn.querySelector('span').textContent = '下载文件'; btn.classList.remove('downloaded'); }, 1500);
+        });
+      });
+
+      // Detail navigation (prev/next)
+      detailViewEl.querySelectorAll('.detail-nav-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+          const num = parseInt(btn.dataset.num);
+          state.lastGridScrollTop = getPageScrollTop();
+          state.lastGridCardKey = getCurrentCardKey();
+          state.detailOpenedFromGrid = true;
+          commitHistory('replace', createSnapshot('detail', { cardKey: getCurrentCardKey(), fromGrid: true }));
+          state.layout = num;
+          state.pendingGridRestore = false;
+          commitHistory('push', createSnapshot('detail', { cardKey: getCardKey(entries.find(e => e.num === num)), componentId: getComponentIdByLayout(num), fromGrid: true }));
+          render();
+        });
+      });
+
+      renderFilterBar();
+    }
+
+    // ===== History Router =====
+    function buildHash(snapshot) {
+      if (snapshot.view === 'detail' && snapshot.layout) {
+        const componentId = snapshot.componentId || getComponentIdByLayout(snapshot.layout);
+        if (componentId) return '#/component/' + encodeURIComponent(componentId);
+        return '#/layout/' + encodeURIComponent(snapshot.layout);
+      }
+      return '#/';
+    }
+
+    function createSnapshot(view, overrides = {}) {
+      return Object.assign({
+        view,
+        search: state.search,
+        layout: view === 'detail' ? state.layout : null,
+        componentId: view === 'detail' ? getCurrentComponentId() : null,
+        cardKey: view === 'detail' ? getCurrentCardKey() : null,
+        scrollTop: 0,
+        fromGrid: false
+      }, overrides);
+    }
+
+    function commitHistory(mode, snapshot) {
+      history[mode + 'State'](snapshot, '', location.search + buildHash(snapshot));
+      notifyParentRoute(snapshot);
+    }
+
+    function notifyParentRoute(snapshot) {
+      if (window.parent === window) return;
+      const component = snapshot.view === 'detail'
+        ? (snapshot.componentId || getComponentIdByLayout(snapshot.layout))
+        : null;
+      try {
+        window.parent.postMessage({
+          type: 'html-ppt-components-route',
+          component: component || ''
+        }, '*');
+      } catch (err) {}
+    }
+
+    function applySnapshot(snapshot) {
+      state.search = snapshot.search || '';
+      state.layout = snapshot.view === 'detail' ? (snapshot.layout || null) : null;
+      state.restoreGridCardKey = snapshot.view === 'grid' ? (snapshot.cardKey || null) : null;
+      state.restoreGridScrollTop = snapshot.view === 'grid' && Number.isFinite(snapshot.scrollTop) ? snapshot.scrollTop : 0;
+      state.pendingGridRestore = snapshot.view === 'grid' && !!(snapshot.cardKey || snapshot.scrollTop > 0);
+    }
+
+    function findGridCardByKey(cardKey) {
+      if (!cardKey) return null;
+      return Array.from(gridViewEl.querySelectorAll('.thumb-card')).find(card => card.dataset.cardKey === cardKey) || null;
+    }
+
+    function snapshotFromHash() {
+      const h = location.hash || '#/';
+      const hashBody = h.replace('#/', '');
+      if (!hashBody) return { view: 'grid', search: '', layout: null, cardKey: null, scrollTop: 0, fromGrid: false };
+      const parts = hashBody.split('/');
+      if (parts[0] === 'component' && parts[1]) {
+        const componentId = decodeURIComponent(parts[1]);
+        const entry = entriesByComponentId.get(componentId);
+        if (entry) {
+          return { view: 'detail', search: '', layout: entry.num, componentId: entry.componentId, cardKey: getCardKey(entry), scrollTop: 0, fromGrid: false };
+        }
+      }
+      if (parts[0] === 'layout' && parts[1]) {
+        const num = parseInt(decodeURIComponent(parts[1]));
+        const entry = entries.find(e => e.num === num);
+        if (entry) {
+          return { view: 'detail', search: '', layout: num, componentId: entry.componentId, cardKey: getCardKey(entry), scrollTop: 0, fromGrid: false };
+        }
+      }
+      return { view: 'grid', search: '', layout: null, cardKey: null, scrollTop: 0, fromGrid: false };
+    }
+
+    function getActiveSnapshot(fallbackState) {
+      if (fallbackState && (fallbackState.view === 'grid' || fallbackState.view === 'detail')) return fallbackState;
+      return snapshotFromHash();
+    }
+
+    // ===== Main Render =====
+    function render() {
+      if (state.layout) {
+        // Detail view: hide grid, filter bar, header
+        gridViewEl.classList.add('hidden');
+        detailViewEl.classList.add('active');
+        filterControlsEl.style.display = 'none';
+        filterBarEl.style.display = 'none';
+        searchBarEl.style.display = 'none';
+        document.querySelector('.page-header').style.display = 'none';
+        paginationEl.style.display = 'none';
+        renderDetail();
+        setPageScrollTop(0);
+      } else {
+        gridViewEl.classList.remove('hidden');
+        detailViewEl.classList.remove('active');
+        detailViewEl.innerHTML = '';
+        filterControlsEl.style.display = '';
+        filterBarEl.style.display = '';
+        searchBarEl.style.display = '';
+        componentSearchEl.value = state.search;
+        document.querySelector('.page-header').style.display = '';
+        paginationEl.style.display = '';
+        renderFilterBar();
+        renderGrid();
+        if (state.pendingGridRestore) {
+          requestAnimationFrame(() => {
+            const targetCard = findGridCardByKey(state.restoreGridCardKey);
+            if (targetCard) {
+              targetCard.scrollIntoView({ block: 'center' });
+            } else if (state.restoreGridScrollTop > 0) {
+              setPageScrollTop(state.restoreGridScrollTop);
+            } else {
+              setPageScrollTop(0);
+            }
+            state.pendingGridRestore = false;
+            state.restoreGridCardKey = null;
+            state.restoreGridScrollTop = 0;
+          });
+        }
+      }
+      syncMotionToggleUI();
+    }
+
+    window.addEventListener('popstate', event => {
+      const snapshot = getActiveSnapshot(event.state);
+      applySnapshot(snapshot);
+      state.detailOpenedFromGrid = false;
+      render();
+      notifyParentRoute(snapshot);
+    });
+
+    componentSearchEl.addEventListener('input', () => {
+      state.search = componentSearchEl.value;
+      state.page = 1;
+      renderGrid();
+    });
+
+    document.addEventListener('keydown', e => {
+      if (e.key === 'Escape' && state.layout) {
+        const backBtn = document.getElementById('backBtn');
+        if (backBtn) backBtn.click();
+      }
+      if (state.layout && ['ArrowLeft', 'ArrowRight'].includes(e.key)) {
+        const target = e.target;
+        const isEditing = target instanceof Element && target.closest('input, textarea, select, [contenteditable="true"]');
+        if (!isEditing) {
+          const nav = document.querySelector(e.key === 'ArrowLeft' ? '[data-nav="prev"]' : '[data-nav="next"]');
+          if (nav) {
+            e.preventDefault();
+            nav.click();
+          }
+        }
+      }
+      if ((e.metaKey || e.ctrlKey) && e.key === 'a') {
+        const pre = e.target.closest('.source-panel pre');
+        if (pre) {
+          e.preventDefault();
+          const range = document.createRange();
+          range.selectNodeContents(pre);
+          const sel = window.getSelection();
+          sel.removeAllRanges();
+          sel.addRange(range);
+        }
+      }
+    });
+
+    // Back to top button
+    const backToTopBtn = document.getElementById('back-to-top');
+    backToTopBtn.addEventListener('click', () => {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+    window.addEventListener('scroll', () => {
+      backToTopBtn.classList.toggle('visible', window.scrollY > 300);
+    }, { passive: true });
+
+    // 窗口尺寸变化时按统一 contain-fit 规则重算所有可见 iframe
+    let frameRefitTimer = null;
+    window.addEventListener('resize', () => {
+      clearTimeout(frameRefitTimer);
+      frameRefitTimer = setTimeout(() => {
+        gridViewEl.querySelectorAll('.thumb-preview iframe').forEach(iframe => {
+          fitIframeToBox(iframe, iframe.parentElement);
+        });
+        const detailIframe = document.querySelector('#detailPreviewBox iframe');
+        if (detailIframe) fitIframeToBox(detailIframe, detailIframe.parentElement);
+      }, 120);
+    });
+
+    // ===== Init =====
+    const initialSnapshot = snapshotFromHash();
+    applySnapshot(initialSnapshot);
+    state.detailOpenedFromGrid = false;
+    commitHistory('replace', initialSnapshot);
+    initSkillOffsiteConfirm();
+    bindMotionSelects(document);
+    syncMotionToggleUI();
+    document.addEventListener('click', () => { closeMotionSelects(); });
+    document.addEventListener('keydown', event => {
+      if (event.key === 'Escape') closeMotionSelects();
+    });
+    render();
+  </script>
+</body>
+</html>

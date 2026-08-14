@@ -1,0 +1,175 @@
+/* Swiss International slide components. Application shells own viewport and body layout. */
+.slide,
+.slide * { margin: 0; padding: 0; box-sizing: border-box; }
+
+.slide .scene { position: absolute; inset: 0; width: 100%; height: 100%; }
+.slide .stage {
+  flex: none;
+  width: 1920px;
+  height: 1080px;
+  position: relative;
+  overflow: hidden;
+  background: var(--wp-color-surface-canvas);
+  color: var(--wp-color-primary);
+  transform-origin: center center;
+  -webkit-user-select: text;
+  user-select: text;
+}
+.slide .stage * {
+  -webkit-user-select: text;
+  user-select: text;
+}
+.slide .stage::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(to right, var(--wp-color-construction) 1px, transparent 1px),
+    linear-gradient(to bottom, var(--wp-color-construction) 1px, transparent 1px);
+  background-size: 64px 64px;
+  opacity: .22;
+  pointer-events: none;
+  z-index: 0;
+}
+.stage > * { position: relative; z-index: 1; }
+.slide .stage > .scene { position: absolute; }
+
+.slide .stage .caption {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 118px;
+  z-index: 6;
+  text-align: center;
+  font-family: var(--wp-font-sans);
+  font-size: var(--type-caption);
+  font-weight: 300;
+  letter-spacing: .02em;
+  color: var(--wp-color-primary);
+}
+.slide .stage .doc {
+  position: absolute;
+  font-family: var(--wp-font-mono);
+  font-size: var(--type-meta);
+  letter-spacing: .22em;
+  text-transform: uppercase;
+  color: var(--wp-color-metadata);
+  line-height: 2.1;
+  z-index: 6;
+  white-space: pre;
+}
+.slide .stage .doc.tl { top: 44px; left: 48px; }
+.slide .stage .folio {
+  position: absolute;
+  left: 48px;
+  bottom: 44px;
+  display: none;
+  font-family: var(--wp-font-mono);
+  font-size: var(--type-meta);
+  letter-spacing: .22em;
+  text-transform: uppercase;
+  color: var(--wp-color-metadata);
+  z-index: 5;
+}
+
+.accent .slide[data-emphasis-mode="semantic-focus"] [data-emphasis-role] {
+  color: var(--wp-color-focus);
+  border-color: var(--wp-color-focus);
+  stroke: var(--wp-color-focus);
+}
+
+.slide .mono { font-family: var(--wp-font-mono); font-weight: 400; }
+.slide .serif { font-family: var(--wp-font-serif); font-weight: 500; }
+.slide .sans { font-family: var(--wp-font-sans); font-weight: 300; }
+.slide .kai { font-family: var(--wp-font-brush); font-weight: 400; }
+.slide .dim { color: var(--wp-color-metadata); }
+
+.slide .giant {
+  font-family: var(--font-display-family);
+  font-weight: 500;
+  font-size: var(--type-hero);
+  line-height: 1.12;
+  letter-spacing: -.02em;
+}
+.slide .h1 {
+  font-family: var(--font-heading-family);
+  font-weight: 500;
+  font-size: var(--type-title);
+  line-height: 1.18;
+  letter-spacing: -.01em;
+}
+.slide .h2 {
+  font-family: var(--font-heading-family);
+  font-weight: 500;
+  font-size: var(--type-heading);
+  line-height: 1.25;
+  letter-spacing: 0;
+}
+.slide .lead {
+  font-family: var(--font-body-family);
+  font-weight: 300;
+  font-size: var(--type-subheading);
+  line-height: 1.6;
+  color: var(--wp-color-body);
+}
+.slide .hairline { border: 1px solid var(--wp-color-divider); }
+.slide .hr-ink { height: 1px; background: var(--wp-color-divider); border: 0; }
+
+.slide .stage .verdict {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 108px;
+  text-align: center;
+  font-family: var(--font-heading-family);
+  font-weight: 500;
+  font-size: var(--type-emphasis);
+  letter-spacing: .01em;
+  color: var(--wp-color-primary);
+  z-index: 6;
+}
+.slide .verdict .sub {
+  display: block;
+  margin-top: var(--space-4);
+  font-family: var(--wp-font-sans);
+  font-weight: 300;
+  font-size: var(--type-body-small);
+  letter-spacing: .08em;
+  color: var(--wp-color-metadata);
+}
+
+.slide .dot {
+  position: absolute;
+  width: 6px;
+  height: 6px;
+  background: var(--wp-color-focus);
+  border-radius: 50%;
+}
+.slide .fig-title {
+  font-family: var(--wp-font-mono);
+  font-size: var(--type-label);
+  letter-spacing: .22em;
+  fill: var(--wp-color-metadata);
+  text-transform: uppercase;
+}
+.slide .fig-cap {
+  font-family: var(--wp-font-sans);
+  font-weight: 300;
+  font-size: var(--type-body-small);
+  letter-spacing: .04em;
+  fill: var(--wp-color-body);
+}
+
+[data-theme-adapter-id="swiss.atlas"] .swiss-card {
+  --swiss-accent: var(--wp-color-focus);
+  --atlas-orange: var(--wp-color-focus);
+  background: var(--wp-color-surface-canvas);
+  color: var(--wp-color-primary);
+  box-shadow: none;
+}
+[data-theme-adapter-id="swiss.atlas"] .swiss-card--cover {
+  background: var(--wp-color-surface-recessed);
+}
+[data-theme-adapter-id="swiss.atlas"] .swiss-card--body {
+  background: var(--wp-color-surface-canvas);
+}

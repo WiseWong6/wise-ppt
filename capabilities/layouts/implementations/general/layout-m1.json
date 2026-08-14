@@ -1,0 +1,515 @@
+{
+  "canonical": {
+    "constraints": {
+      "css_scope": "[data-implementation-id=\"paper-ink.emotion.particle-hero.general\"]",
+      "external_links": false,
+      "external_scripts": false,
+      "payload_only_mutation": true,
+      "ready_api": "WisePPT.markSlideReady",
+      "script_query_scope": "current-section.slide",
+      "stage_fit": false
+    },
+    "kind": "derived-frame",
+    "materialization_format": "wise-ppt-formal-slide@1",
+    "path": "gallery/paper-ink/general/frames/layout-m1.html",
+    "root_selector": "section.slide[data-implementation-id=\"paper-ink.emotion.particle-hero.general\"]",
+    "sha256": "sha256:17b67fe02b50957ab8390147d43464ce2ecf935bc945dbd1d459f041ca8d56b5"
+  },
+  "canonical_fingerprint": "sha256:228e5a4b861ec3afe29893b7db731790cbcba190b21a925fed38f37b8b387035",
+  "contract_version": 1,
+  "dependency_closure": {
+    "files": [
+      {
+        "path": "gallery/shell.css",
+        "sha256": "sha256:aca1428680d2dd5c84e85d66241ee199a16d36bb60a098340528943fb5469f69"
+      },
+      {
+        "path": "runtime/stage-fit.js",
+        "sha256": "sha256:39577a14aac5072789fdeb80abee887d24da5a44eeb38203ef154602330f291d"
+      },
+      {
+        "path": "themes/paper-ink/assets/design-tokens.css",
+        "sha256": "sha256:3f1f0d3562cf1486b87643b16025388557000858d0df13d767b53a576988c330"
+      },
+      {
+        "path": "themes/paper-ink/assets/fonts/CourierPrime-Regular.ttf",
+        "sha256": "sha256:72f793376f8e2841656bf21d77a5de010f2929bd6956a22ee848ad0c7eb978af"
+      },
+      {
+        "path": "themes/paper-ink/assets/fonts/LXGWWenKai-Regular.ttf",
+        "sha256": "sha256:39ad71264b588165b469e35e6afb162a378dacd1f95348160240ba9038ac3009"
+      },
+      {
+        "path": "themes/paper-ink/assets/fonts/SourceHanSansCN-Light.otf",
+        "sha256": "sha256:b6dfc945aae0daf9b15019f59c2f7b18d17da3b92f00c3ec32fb5f0333696d9c"
+      },
+      {
+        "path": "themes/paper-ink/assets/fonts/SourceHanSerifCN-Medium.otf",
+        "sha256": "sha256:8e224937647ae71ba1b1f310bcb3fbc32f21ec7c2c490ba04670455c901f3378"
+      },
+      {
+        "path": "themes/paper-ink/assets/particles.js",
+        "sha256": "sha256:1281d72e81b34e4be061286edd323dd421443dffbf6e0d8a2faa94a5d14094c4"
+      },
+      {
+        "path": "themes/paper-ink/assets/slide-components.css",
+        "sha256": "sha256:20e7334fe5ae51cb229112290e787c1274ad65278a72b084c708682dc9ca5acf"
+      }
+    ],
+    "sha256": "sha256:7dcc6f0ac681be95cc8955afb36da97027f341a98f4f9f37518e37bfe13f5be4"
+  },
+  "format": "wise-ppt-layout-implementation@1",
+  "geometry": {
+    "anchors": [
+      {
+        "anchor_id": "stage",
+        "selector": ".stage"
+      }
+    ],
+    "canvas": {
+      "height": 1080,
+      "width": 1920
+    },
+    "content_region": {
+      "height": 1080,
+      "width": 1920,
+      "x": 0,
+      "y": 0
+    },
+    "fingerprint": "sha256:67d1bc67f56b4dea51b93062e9264ee9e575f584bf519ac52a733253116fcf98",
+    "format": "wise-ppt-layout-geometry@1",
+    "relations": [],
+    "structure_contract": {
+      "core_primitives": [
+        "focus-field"
+      ],
+      "region_count": 3,
+      "required_slot_ids": [
+        "metaphor"
+      ]
+    }
+  },
+  "implementation_id": "paper-ink.emotion.particle-hero.general",
+  "payload": {
+    "fields": [
+      {
+        "context": "html:div.doc.tl",
+        "default": "产品 · 策划 — M1",
+        "field_id": "html.text.001",
+        "kind": "html_text",
+        "max_length": 16,
+        "span": {
+          "kind": "html_text",
+          "occurrence": 1,
+          "token_sha256": "sha256:bb0deaf3059c8b55a9d17fc4456a8cd1be69df610f9d332cebe0d4faae761692"
+        },
+        "type": "string"
+      },
+      {
+        "context": "html:div.doc.tl",
+        "default": "看不见的产品引擎",
+        "field_id": "html.text.002",
+        "kind": "html_text",
+        "max_length": 12,
+        "span": {
+          "kind": "html_text",
+          "occurrence": 2,
+          "token_sha256": "sha256:ef42263e8950e3a462b5dbb07e6b299098d5c6d487e75b7e0dcda2849df52af8"
+        },
+        "type": "string"
+      },
+      {
+        "constraints": {
+          "pattern": "^\\d{1,3} / \\d{1,3} — BY .{1,40}$"
+        },
+        "context": "html:div.folio",
+        "default": "01 / 01 — BY WISE PPT",
+        "field_id": "html.text.003",
+        "kind": "html_text",
+        "max_length": 26,
+        "semantic_role": "folio",
+        "source_default": "M1 / 63 — BY @歪斯WISE",
+        "span": {
+          "kind": "html_text",
+          "occurrence": 3,
+          "token_sha256": "sha256:7fcc469f4953eedecca581efa4ca4bb8a581febe280a09ddb8c52c9d6925478d"
+        },
+        "type": "string"
+      },
+      {
+        "context": "html:span",
+        "default": "看得见",
+        "field_id": "html.text.004",
+        "kind": "html_text",
+        "max_length": 7,
+        "span": {
+          "kind": "html_text",
+          "occurrence": 4,
+          "token_sha256": "sha256:c1f0d6204dc73bea7dafa15db4ef14b53c37bd4398b591dec80a96c19f5bc346"
+        },
+        "type": "string"
+      },
+      {
+        "context": "html:span",
+        "default": "产品功能",
+        "field_id": "html.text.005",
+        "kind": "html_text",
+        "max_length": 8,
+        "span": {
+          "kind": "html_text",
+          "occurrence": 5,
+          "token_sha256": "sha256:3689d44bc68da1a363f9ec7c219cd157cfe18f1e4b2d3f37eee9110d696c4c63"
+        },
+        "type": "string"
+      },
+      {
+        "context": "html:span",
+        "default": "持续体验",
+        "field_id": "html.text.006",
+        "kind": "html_text",
+        "max_length": 8,
+        "span": {
+          "kind": "html_text",
+          "occurrence": 6,
+          "token_sha256": "sha256:a2188e5676dee88b8bf6d1dc65c461104b3936d91077e07f7353e997f34e74ed"
+        },
+        "type": "string"
+      },
+      {
+        "constraints": {
+          "pattern": "^(?!.*[\\u3400-\\u9fff]).+$"
+        },
+        "context": "html:div.t1",
+        "default": "PRODUCT",
+        "field_id": "html.text.007",
+        "kind": "html_text",
+        "max_length": 11,
+        "semantic_role": "mono-label",
+        "span": {
+          "kind": "html_text",
+          "occurrence": 7,
+          "token_sha256": "sha256:9212c50698c7db3cbeb543fc5000989766171e9f136e250d53480dafb24e4763"
+        },
+        "type": "string"
+      },
+      {
+        "constraints": {
+          "pattern": "^(?!.*[\\u3400-\\u9fff]).+$"
+        },
+        "context": "html:div.t2",
+        "default": "PRODUCT ENGINE",
+        "field_id": "html.text.008",
+        "kind": "html_text",
+        "max_length": 18,
+        "semantic_role": "mono-label",
+        "span": {
+          "kind": "html_text",
+          "occurrence": 8,
+          "token_sha256": "sha256:f421eba88f24bcad08072c586b1eea6ea0b0a1cd9731ea87b51763c0ac596c4b"
+        },
+        "type": "string"
+      },
+      {
+        "constraints": {
+          "pattern": "^(?!.*[\\u3400-\\u9fff]).+$"
+        },
+        "context": "inline-script[1]:call:txt[2]",
+        "default": "270 PX",
+        "field_id": "script.literal.001",
+        "kind": "script_literal",
+        "max_length": 10,
+        "semantic_role": "mono-label",
+        "span": {
+          "kind": "script_literal",
+          "occurrence": 1,
+          "quote": "'",
+          "script_index": 1,
+          "sink": "call:txt[2]",
+          "token_sha256": "sha256:5f887f954d775320e42c8b39449b0ac9c959edfe42814dbf435f1ad8c68c2416"
+        },
+        "type": "string"
+      },
+      {
+        "constraints": {
+          "pattern": "^(?!.*[\\u3400-\\u9fff]).+$"
+        },
+        "context": "inline-script[1]:call:txt[2]",
+        "default": "FIG. M1 — PRODUCT ENGINE · ALWAYS ON",
+        "field_id": "script.literal.002",
+        "kind": "script_literal",
+        "max_length": 48,
+        "semantic_role": "mono-label",
+        "span": {
+          "kind": "script_literal",
+          "occurrence": 2,
+          "quote": "'",
+          "script_index": 1,
+          "sink": "call:txt[2]",
+          "token_sha256": "sha256:eb16e84203b7a8ef47b6e64a393fdc5ef65df3395cdc55abb5f924eb661ef9e3"
+        },
+        "type": "string"
+      }
+    ],
+    "format": "wise-ppt-layout-payload@1",
+    "values_schema": {
+      "additionalProperties": false,
+      "minProperties": 1,
+      "properties": {
+        "html.text.001": {
+          "maxLength": 16,
+          "type": "string"
+        },
+        "html.text.002": {
+          "maxLength": 12,
+          "type": "string"
+        },
+        "html.text.003": {
+          "maxLength": 26,
+          "pattern": "^\\d{1,3} / \\d{1,3} — BY .{1,40}$",
+          "type": "string"
+        },
+        "html.text.004": {
+          "maxLength": 7,
+          "type": "string"
+        },
+        "html.text.005": {
+          "maxLength": 8,
+          "type": "string"
+        },
+        "html.text.006": {
+          "maxLength": 8,
+          "type": "string"
+        },
+        "html.text.007": {
+          "maxLength": 11,
+          "pattern": "^(?!.*[\\u3400-\\u9fff]).+$",
+          "type": "string"
+        },
+        "html.text.008": {
+          "maxLength": 18,
+          "pattern": "^(?!.*[\\u3400-\\u9fff]).+$",
+          "type": "string"
+        },
+        "script.literal.001": {
+          "maxLength": 10,
+          "pattern": "^(?!.*[\\u3400-\\u9fff]).+$",
+          "type": "string"
+        },
+        "script.literal.002": {
+          "maxLength": 48,
+          "pattern": "^(?!.*[\\u3400-\\u9fff]).+$",
+          "type": "string"
+        }
+      },
+      "type": "object"
+    }
+  },
+  "payload_defaults": {
+    "bindings": [
+      {
+        "asset_refs": [],
+        "content_refs": [
+          "item.canonical.metaphor"
+        ],
+        "slot_id": "metaphor"
+      },
+      {
+        "asset_refs": [],
+        "content_refs": [
+          "item.canonical.support"
+        ],
+        "slot_id": "support"
+      }
+    ],
+    "values": {
+      "html.text.001": "产品 · 策划 — M1",
+      "html.text.002": "看不见的产品引擎",
+      "html.text.003": "01 / 01 — BY WISE PPT",
+      "html.text.004": "看得见",
+      "html.text.005": "产品功能",
+      "html.text.006": "持续体验",
+      "html.text.007": "PRODUCT",
+      "html.text.008": "PRODUCT ENGINE",
+      "script.literal.001": "270 PX",
+      "script.literal.002": "FIG. M1 — PRODUCT ENGINE · ALWAYS ON"
+    }
+  },
+  "payload_schema": {
+    "additionalProperties": false,
+    "properties": {
+      "bindings": {
+        "items": {
+          "additionalProperties": false,
+          "properties": {
+            "asset_refs": {
+              "items": {
+                "minLength": 1,
+                "type": "string"
+              },
+              "type": "array"
+            },
+            "content_refs": {
+              "items": {
+                "minLength": 1,
+                "type": "string"
+              },
+              "type": "array"
+            },
+            "slot_id": {
+              "enum": [
+                "metaphor",
+                "support"
+              ],
+              "type": "string"
+            }
+          },
+          "required": [
+            "slot_id",
+            "content_refs",
+            "asset_refs"
+          ],
+          "type": "object"
+        },
+        "maxItems": 2,
+        "minItems": 2,
+        "type": "array"
+      },
+      "values": {
+        "additionalProperties": false,
+        "minProperties": 1,
+        "properties": {
+          "html.text.001": {
+            "maxLength": 16,
+            "type": "string"
+          },
+          "html.text.002": {
+            "maxLength": 12,
+            "type": "string"
+          },
+          "html.text.003": {
+            "maxLength": 26,
+            "pattern": "^\\d{1,3} / \\d{1,3} — BY .{1,40}$",
+            "type": "string"
+          },
+          "html.text.004": {
+            "maxLength": 7,
+            "type": "string"
+          },
+          "html.text.005": {
+            "maxLength": 8,
+            "type": "string"
+          },
+          "html.text.006": {
+            "maxLength": 8,
+            "type": "string"
+          },
+          "html.text.007": {
+            "maxLength": 11,
+            "pattern": "^(?!.*[\\u3400-\\u9fff]).+$",
+            "type": "string"
+          },
+          "html.text.008": {
+            "maxLength": 18,
+            "pattern": "^(?!.*[\\u3400-\\u9fff]).+$",
+            "type": "string"
+          },
+          "script.literal.001": {
+            "maxLength": 10,
+            "pattern": "^(?!.*[\\u3400-\\u9fff]).+$",
+            "type": "string"
+          },
+          "script.literal.002": {
+            "maxLength": 48,
+            "pattern": "^(?!.*[\\u3400-\\u9fff]).+$",
+            "type": "string"
+          }
+        },
+        "type": "object"
+      }
+    },
+    "required": [
+      "bindings",
+      "values"
+    ],
+    "type": "object"
+  },
+  "recipe_fingerprint": "sha256:308d1cc1707bb17c031881b65f6b671290b4122eaf224202b230c9454aa40d79",
+  "recipe_id": "paper-ink.emotion.particle-hero",
+  "required_capabilities": [],
+  "slots": [
+    {
+      "allowed_component_sources": [
+        "native"
+      ],
+      "allowed_renderer_kinds": [
+        "svg"
+      ],
+      "compatible_component_ids": [],
+      "count_unit": "binding",
+      "default_component": {
+        "component_id": "native.paper-ink.emotion.particle-hero.metaphor",
+        "component_source": "native",
+        "origin": {
+          "kind": "canonical-frame-island",
+          "path": "gallery/paper-ink/general/frames/layout-m1.html",
+          "selector": ".stage"
+        },
+        "renderer_kind": "svg"
+      },
+      "max_items": 2,
+      "min_items": 1,
+      "open_for_override": false,
+      "purpose": "粒子隐喻",
+      "required": true,
+      "slot_id": "metaphor",
+      "space_contract": {
+        "aspect_ratio": 2.4194,
+        "canvas_height": 1080,
+        "canvas_width": 1920,
+        "height": 620,
+        "space_type": "wide",
+        "width": 1500
+      },
+      "visual_role": "primary"
+    },
+    {
+      "allowed_component_sources": [
+        "codex-host",
+        "native"
+      ],
+      "allowed_renderer_kinds": [
+        "typography",
+        "table",
+        "image",
+        "native-html",
+        "svg"
+      ],
+      "compatible_component_ids": [],
+      "count_unit": "binding",
+      "default_component": {
+        "component_id": "native.paper-ink.emotion.particle-hero.support",
+        "component_source": "native",
+        "origin": {
+          "kind": "canonical-frame-island",
+          "path": "gallery/paper-ink/general/frames/layout-m1.html",
+          "selector": ".doc.tl"
+        },
+        "renderer_kind": "typography"
+      },
+      "max_items": 1,
+      "min_items": 0,
+      "open_for_override": false,
+      "purpose": "辅助证据、标签或解释",
+      "required": false,
+      "slot_id": "support",
+      "visual_role": "support"
+    }
+  ],
+  "source": {
+    "path": "gallery/paper-ink/general/frames/layout-m1.html",
+    "sha256": "sha256:17b67fe02b50957ab8390147d43464ce2ecf935bc945dbd1d459f041ca8d56b5"
+  },
+  "status": "production",
+  "theme_id": "paper-ink",
+  "variant": "general"
+}

@@ -1,0 +1,163 @@
+<!-- GENERATED: Wise PPT formal canonical source; protected Gallery remains provenance-only. -->
+<!DOCTYPE html>
+<html lang="zh-CN" data-runtime="wise-ppt-specimen" data-typography-mode="mixed" data-page-id="gallery-general-k2" data-page-role="synthesize" data-theme="paper-ink" data-layout="paper-ink.matrix.problem-solution-outcome" data-layout-source="gallery">
+<head>
+<meta charset="UTF-8">
+<title>layout-k2 · 痛点→解法→成效三栏</title>
+<link rel="stylesheet" href="../../../../themes/paper-ink/assets/design-tokens.css">
+<link rel="stylesheet" href="../../../../themes/paper-ink/assets/slide-components.css">
+<link rel="stylesheet" href="../../../shell.css">
+<style>
+  svg.scene { position: absolute; inset: 0; z-index: 1; }
+  canvas { position: absolute; inset: 0; z-index: 2; }
+  .caption {
+    position: absolute; left: 0; right: 0; bottom: 118px;
+    text-align: center;;;;;;
+    z-index: 5;
+  }
+</style>
+</head>
+<body class="slide">
+<div class="stage" data-block-id="gallery-primary" data-renderer-kind="svg" data-component-source="native" data-component-id="native.paper-ink.matrix.problem-solution-outcome.story-loop" data-content-ref="example.k2" data-anchor-id="stage">
+  <span data-geometry-anchor-holder="problem-region" data-anchor-id="problem-region" hidden aria-hidden="true"></span><span data-geometry-anchor-holder="solution-region" data-anchor-id="solution-region" hidden aria-hidden="true"></span><span data-geometry-anchor-holder="problem-solution-arrow" data-anchor-id="problem-solution-arrow" hidden aria-hidden="true"></span>
+  <div class="doc tl" data-anchor-id="slot-support">品牌 · 述职 — K2<br>用户增长负责人年度复盘</div>
+  <div class="folio">01 / 01 — BY @歪斯WISE</div>
+
+  <svg class="scene" width="1920" height="1080" viewBox="0 0 1920 1080">
+    <g id="draw" data-anchor-id="slot-story-loop"></g>
+  </svg>
+  <canvas id="cv" width="1920" height="1080"></canvas>
+
+  <div class="caption" data-anchor-id="slot-takeaway">本年度以渠道重组、激活改版和会员升级完成增长目标，次留提升 62%，付费用户增至 2.1 倍。</div>
+</div>
+
+<script src="../../../../runtime/stage-fit.js"></script>
+<script src="../../../../themes/paper-ink/assets/particles.js"></script>
+<script>
+var NS = 'http://www.w3.org/2000/svg';
+var INK = __wiseThemeToken("--ink");
+var INK80 = __wiseThemeToken("--ink-80");
+var INK70 = __wiseThemeToken("--ink-70");
+var INK45 = __wiseThemeToken("--ink-45");
+/* accent 触发：读 URL 加类 + 染色常量（详见 design-tokens.md §2） */
+if (location.search.indexOf('accent') >= 0) document.documentElement.classList.add('accent');
+var ACCENT = document.documentElement.classList.contains('accent');
+var RED = getComputedStyle(document.documentElement).getPropertyValue('--accent-red').trim();
+var SERIF = 'var(--serif)';
+var G = document.getElementById('draw');
+function el(tag, attrs) {
+  var e = document.createElementNS(NS, tag);
+  for (var k in attrs) e.setAttribute(k, attrs[k]);
+  G.appendChild(e); return e;
+}
+function txt(x, y, str, attrs) {
+  var t = el('text', Object.assign({x:x, y:y}, attrs||{}));
+  t.textContent = str; return t;
+}
+var MONO = 'var(--mono)', SANS = 'var(--sans)';
+G = el('g', {transform:'translate(0 -73.2)'});
+
+
+
+
+/* 主体包络整体配平：FIG 等固定件不参与位移 */
+G = el('g', {id:'body', 'data-balance':'structural', transform:'translate(65 +95)'});
+
+/* ---------- 栏头：mono 栏题 + 短横 + 中文栏题 ---------- */
+var heads = [
+  {x:150,  en:'PAIN POINTS', cn:'现状痛点'},
+  {x:700,  en:'THE FIX',    cn:'运营动作'},
+  {x:1330, en:'OUTCOME',    cn:'年度成果'}
+];
+heads.forEach(function(h){
+  txt(h.x, 238, h.en, {'font-family':MONO, 'font-size':'var(--type-label)', 'letter-spacing':3, fill:INK45});
+  el('line', {x1:h.x, y1:254, x2:h.x+100, y2:254, stroke:INK, 'stroke-width':.8, opacity:.5});
+  txt(h.x, 296, h.cn, {'font-family':SANS, 'font-weight':300, 'font-size':'var(--type-subheading)', fill:INK});
+});
+
+/* ---------- 栏间细线开放箭头 ---------- */
+function colArrow(x1, x2, y){
+  el('line', {x1:x1, y1:y, x2:x2, y2:y, stroke:INK, 'stroke-width':1.2, opacity:.6});
+  el('line', {x1:x2-10, y1:y-6, x2:x2, y2:y, stroke:INK, 'stroke-width':1.2, opacity:.6});
+  el('line', {x1:x2-10, y1:y+6, x2:x2, y2:y, stroke:INK, 'stroke-width':1.2, opacity:.6});
+}
+function svgGroup(attrs, draw){
+  var parent = G;
+  var group = el('g', attrs || {});
+  G = group;
+  draw();
+  G = parent;
+  return group;
+}
+function centeredColArrow(leftRegion, rightRegion, y){
+  var width = 48;
+  var arrow = svgGroup({'data-layout-role':'flow-arrow'}, function(){
+    colArrow(0, width, y);
+  });
+  function place(){
+    var left = leftRegion.getBBox();
+    var right = rightRegion.getBBox();
+    var x = (left.x + left.width + right.x - width) / 2;
+    arrow.setAttribute('transform', 'translate('+x+' 0)');
+  }
+  place();
+  if (document.fonts && document.fonts.ready) document.fonts.ready.then(place);
+}
+
+/* ---------- 编号条目（左右栏同构对位；x = 栏头 x，圆圈左缘与栏头共线，同右栏 1330） ---------- */
+function item(x, y, no, title, note1, note2, tag){
+  el('circle', {cx:x+13, cy:y, r:13, fill:__wiseThemeToken("--paper"), stroke:INK80, 'stroke-width':1.2});
+  el('circle', {cx:x+13, cy:y, r:10, fill:'none', stroke:INK, 'stroke-width':.6, opacity:.3});
+  txt(x+13, y+4.5, no, {'font-family':MONO, 'font-size':'var(--type-meta)', 'text-anchor':'middle', fill:INK});
+  txt(x+43, y+7, title, {'font-family':SANS, 'font-weight':300, 'font-size':'var(--type-body)', fill:INK});
+  txt(x+43, y+40, note1, {'font-family':SANS, 'font-weight':300, 'font-size':'var(--type-body-small)', fill:INK70});
+  if (note2) txt(x+43, y+66, note2, {'font-family':SANS, 'font-weight':300, 'font-size':'var(--type-body-small)', fill:INK70});
+}
+
+var pains = [
+  ['1', '获客承压', '渠道成本同比上升，', '自然新增连续 3 月下滑。', 'CPA↑'],
+  ['2', '激活不足', '新用户激活仅 35%，', '首周关键行为偏低。', 'RETENTION↓'],
+  ['3', '会员转弱', '付费率仅 3.2%，', '续费动机与权益感知不足。', 'ARPU↓']
+];
+var fixes = [
+  ['1', '渠道重组', '内容与合作渠道并行，', '自然新增占比提升 60%。', 'REFERRAL'],
+  ['2', '激活改版', '首周 3 步任务 + 提醒，', '关键动作完成率升至 78%。', 'ONBOARDING'],
+  ['3', '会员升级', '重做月卡 + 年卡权益，', '付费率 3 月内翻倍。', 'MEMBERSHIP']
+];
+var YS = [372, 522, 672];
+var painRegion = svgGroup({'data-arrow-region':'pain'}, function(){
+  YS.forEach(function(y, i){
+    item(150, y, pains[i][0], pains[i][1], pains[i][2], pains[i][3], pains[i][4]);
+  });
+});
+var fixRegion = svgGroup({'data-arrow-region':'fix'}, function(){
+  YS.forEach(function(y, i){
+    item(700, y, fixes[i][0], fixes[i][1], fixes[i][2], fixes[i][3], fixes[i][4]);
+  });
+});
+YS.forEach(function(y, i){
+  /* 对位虚线（栏间短桥，编号对齐语义） */
+  el('line', {x1:616, y1:y, x2:680, y2:y, stroke:INK, 'stroke-width':.5, opacity:.3, 'stroke-dasharray':'2 5'});
+});
+
+/* ---------- 右栏：成效大数字（左对齐 OUTCOME 栏头） ---------- */
+var CXR = 1330;
+var KPI_TOP = 352, KPI_BOTTOM = 760, KPI_BAND = (KPI_BOTTOM - KPI_TOP) / 2;
+function kpi(index, value, label, highlight){
+  var top = KPI_TOP + index * KPI_BAND;
+  txt(CXR, top+20, 'KPI · 0'+(index+1), {'font-family':MONO, 'font-size':'var(--type-micro-secondary)', 'letter-spacing':2, fill:INK45});
+  txt(CXR, top+112, value, {'font-family':SERIF, 'font-size':'var(--type-hero)', fill:highlight && ACCENT ? RED : INK});
+  txt(CXR, top+168, label, {'font-family':SANS, 'font-weight':300, 'font-size':'var(--type-body)', fill:highlight && ACCENT ? 'var(--accent-red-85)' : INK});
+}
+var outcomeRegion = svgGroup({'data-arrow-region':'outcome'}, function(){
+  kpi(0, '+62%', '次日留存率', true);
+  el('line', {x1:1330, y1:KPI_TOP+KPI_BAND, x2:1640, y2:KPI_TOP+KPI_BAND, stroke:INK, 'stroke-width':.6, opacity:.3});
+  kpi(1, '2.1倍', '月度付费用户', true);
+});
+centeredColArrow(painRegion, fixRegion, 485);
+centeredColArrow(fixRegion, outcomeRegion, 485);
+
+stageFit();
+</script>
+</body>
+</html>

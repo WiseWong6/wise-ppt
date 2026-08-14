@@ -1,0 +1,51 @@
+{
+  "contract_version": 4,
+  "content_file": "content.json",
+  "deck_plan_file": "deck-plan.json",
+  "theme_id": "swiss",
+  "layout_variant": "general",
+  "typography_mode": "all-sans",
+  "pages": [
+    {
+      "page_id": "page.swiss.contract",
+      "layout_decision": {
+        "recipe_id": "swiss.focus.contract-fact",
+        "implementation_id": "swiss.focus.contract-fact.theme-private",
+        "fit": "exact_fit",
+        "payload": {
+          "bindings": [
+            {
+              "slot_id": "main",
+              "content_refs": [
+                "item.swiss.result",
+                "atom.swiss.tokens"
+              ],
+              "asset_refs": []
+            }
+          ],
+          "values": {
+            "headline": "Swiss 主题合同",
+            "metric": "23 个语义令牌"
+          }
+        },
+        "slot_overrides": [],
+        "registry_fingerprint": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "contract_fingerprint": "sha256:bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+        "candidate_set_fingerprint": "sha256:cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
+        "candidate_evaluations": [
+          {
+            "implementation_id": "swiss.focus.contract-fact.theme-private",
+            "reason": "Swiss 主题私有实现完整覆盖单一合同事实、关键数字与焦点阅读顺序。"
+          }
+        ],
+        "selection_reason": "使用 Swiss 自有合同实现绑定唯一主槽，不接入 Paper Ink 公共实现注册表。"
+      },
+      "rationale": "单焦点主题私有实现可隔离验证 Swiss typography adapter。",
+      "emphasis": {
+        "mode": "none",
+        "reason": "单页只有一个焦点，无需额外强调。"
+      }
+    }
+  ],
+  "output_file": "index.html"
+}

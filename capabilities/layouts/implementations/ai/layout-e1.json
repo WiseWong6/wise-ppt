@@ -1,0 +1,786 @@
+{
+  "canonical": {
+    "constraints": {
+      "css_scope": "[data-implementation-id=\"paper-ink.comparison.dual-panel.ai\"]",
+      "external_links": false,
+      "external_scripts": false,
+      "payload_only_mutation": true,
+      "ready_api": "WisePPT.markSlideReady",
+      "script_query_scope": "current-section.slide",
+      "stage_fit": false
+    },
+    "kind": "derived-frame",
+    "materialization_format": "wise-ppt-formal-slide@1",
+    "path": "gallery/paper-ink/ai/frames/layout-e1.html",
+    "root_selector": "section.slide[data-implementation-id=\"paper-ink.comparison.dual-panel.ai\"]",
+    "sha256": "sha256:5ec8008e5578ec50190007b560e7e31534a8aaa29116184d77fd6913c1a981fc"
+  },
+  "canonical_fingerprint": "sha256:03c5e24bd1b7fc16d2625560a9b3a9c948d68291b620a831f81f70d0dcabe572",
+  "contract_version": 1,
+  "dependency_closure": {
+    "files": [
+      {
+        "path": "gallery/shell.css",
+        "sha256": "sha256:aca1428680d2dd5c84e85d66241ee199a16d36bb60a098340528943fb5469f69"
+      },
+      {
+        "path": "runtime/stage-fit.js",
+        "sha256": "sha256:39577a14aac5072789fdeb80abee887d24da5a44eeb38203ef154602330f291d"
+      },
+      {
+        "path": "themes/paper-ink/assets/design-tokens.css",
+        "sha256": "sha256:3f1f0d3562cf1486b87643b16025388557000858d0df13d767b53a576988c330"
+      },
+      {
+        "path": "themes/paper-ink/assets/fonts/CourierPrime-Regular.ttf",
+        "sha256": "sha256:72f793376f8e2841656bf21d77a5de010f2929bd6956a22ee848ad0c7eb978af"
+      },
+      {
+        "path": "themes/paper-ink/assets/fonts/LXGWWenKai-Regular.ttf",
+        "sha256": "sha256:39ad71264b588165b469e35e6afb162a378dacd1f95348160240ba9038ac3009"
+      },
+      {
+        "path": "themes/paper-ink/assets/fonts/SourceHanSansCN-Light.otf",
+        "sha256": "sha256:b6dfc945aae0daf9b15019f59c2f7b18d17da3b92f00c3ec32fb5f0333696d9c"
+      },
+      {
+        "path": "themes/paper-ink/assets/fonts/SourceHanSerifCN-Medium.otf",
+        "sha256": "sha256:8e224937647ae71ba1b1f310bcb3fbc32f21ec7c2c490ba04670455c901f3378"
+      },
+      {
+        "path": "themes/paper-ink/assets/particles.js",
+        "sha256": "sha256:1281d72e81b34e4be061286edd323dd421443dffbf6e0d8a2faa94a5d14094c4"
+      },
+      {
+        "path": "themes/paper-ink/assets/slide-components.css",
+        "sha256": "sha256:20e7334fe5ae51cb229112290e787c1274ad65278a72b084c708682dc9ca5acf"
+      }
+    ],
+    "sha256": "sha256:7dcc6f0ac681be95cc8955afb36da97027f341a98f4f9f37518e37bfe13f5be4"
+  },
+  "format": "wise-ppt-layout-implementation@1",
+  "geometry": {
+    "anchors": [
+      {
+        "anchor_id": "stage",
+        "selector": ".stage"
+      }
+    ],
+    "canvas": {
+      "height": 1080,
+      "width": 1920
+    },
+    "content_region": {
+      "height": 1080,
+      "width": 1920,
+      "x": 0,
+      "y": 0
+    },
+    "fingerprint": "sha256:c7ea90111f5c0460c5ebb047457188e4833922cc55dbb4227b913b019ed555b6",
+    "format": "wise-ppt-layout-geometry@1",
+    "relations": [],
+    "structure_contract": {
+      "core_primitives": [
+        "bilateral-split"
+      ],
+      "region_count": 3,
+      "required_slot_ids": [
+        "comparison"
+      ]
+    }
+  },
+  "implementation_id": "paper-ink.comparison.dual-panel.ai",
+  "payload": {
+    "fields": [
+      {
+        "context": "html:div.doc.tl",
+        "default": "系统对比 — 核心差异",
+        "field_id": "html.text.001",
+        "kind": "html_text",
+        "max_length": 15,
+        "span": {
+          "kind": "html_text",
+          "occurrence": 1,
+          "token_sha256": "sha256:46b3bc0adcd837effbf90e6d838a9b2035d10c0f2dcce48f5ad04fbc75739f04"
+        },
+        "type": "string"
+      },
+      {
+        "context": "html:div.doc.tl",
+        "default": "软件与 Agent",
+        "field_id": "html.text.002",
+        "kind": "html_text",
+        "max_length": 13,
+        "span": {
+          "kind": "html_text",
+          "occurrence": 2,
+          "token_sha256": "sha256:44ce1a642872377f80ac693385e69a20a9c2b273bcda15906c837645d0fd0c8c"
+        },
+        "type": "string"
+      },
+      {
+        "constraints": {
+          "pattern": "^\\d{1,3} / \\d{1,3} — BY .{1,40}$"
+        },
+        "context": "html:div.folio",
+        "default": "01 / 01 — BY WISE PPT",
+        "field_id": "html.text.003",
+        "kind": "html_text",
+        "max_length": 26,
+        "semantic_role": "folio",
+        "source_default": "E1 / 63 — BY @歪斯WISE",
+        "span": {
+          "kind": "html_text",
+          "occurrence": 3,
+          "token_sha256": "sha256:06fad091d17795f36a74f74777e6552923cef120290389351a42e42b3b832b28"
+        },
+        "type": "string"
+      },
+      {
+        "context": "html:div.caption",
+        "default": "传统软件执行预设路径，Agent 会结合上下文持续判断并调用工具完成目标。",
+        "field_id": "html.text.004",
+        "kind": "html_text",
+        "max_length": 49,
+        "span": {
+          "kind": "html_text",
+          "occurrence": 4,
+          "token_sha256": "sha256:72e2a96194ab901999ebfe8a676bb23e4cece16cd952ec9b0985f9a336d99557"
+        },
+        "type": "string"
+      },
+      {
+        "context": "inline-script[1]:call:txt[2]",
+        "default": "传统软件",
+        "field_id": "script.literal.001",
+        "kind": "script_literal",
+        "max_length": 8,
+        "span": {
+          "kind": "script_literal",
+          "occurrence": 1,
+          "quote": "'",
+          "script_index": 1,
+          "sink": "call:txt[2]",
+          "token_sha256": "sha256:9a17e764320bd1f50042ebc6649771c211e5226ec29362d1749758e110dbdb55"
+        },
+        "type": "string"
+      },
+      {
+        "constraints": {
+          "pattern": "^(?!.*[\\u3400-\\u9fff]).+$"
+        },
+        "context": "inline-script[1]:call:txt[2]",
+        "default": "CLASSIC SOFTWARE",
+        "field_id": "script.literal.002",
+        "kind": "script_literal",
+        "max_length": 21,
+        "semantic_role": "mono-label",
+        "span": {
+          "kind": "script_literal",
+          "occurrence": 2,
+          "quote": "'",
+          "script_index": 1,
+          "sink": "call:txt[2]",
+          "token_sha256": "sha256:dc2253b02ddf0bf76beb7ae91659344601f9449e949bd78342dc09872cbeeed7"
+        },
+        "type": "string"
+      },
+      {
+        "context": "inline-script[1]:call:txt[2]",
+        "default": "Agent",
+        "field_id": "script.literal.003",
+        "kind": "script_literal",
+        "max_length": 9,
+        "span": {
+          "kind": "script_literal",
+          "occurrence": 3,
+          "quote": "'",
+          "script_index": 1,
+          "sink": "call:txt[2]",
+          "token_sha256": "sha256:c523c80c70e4132cbeea1f5f92d01fa504873305a2d7e847dabdb0938e1794ed"
+        },
+        "type": "string"
+      },
+      {
+        "constraints": {
+          "pattern": "^(?!.*[\\u3400-\\u9fff]).+$"
+        },
+        "context": "inline-script[1]:call:txt[2]",
+        "default": "AGENTIC",
+        "field_id": "script.literal.004",
+        "kind": "script_literal",
+        "max_length": 11,
+        "semantic_role": "mono-label",
+        "span": {
+          "kind": "script_literal",
+          "occurrence": 4,
+          "quote": "'",
+          "script_index": 1,
+          "sink": "call:txt[2]",
+          "token_sha256": "sha256:8031491755306db9b63a170609b808c6eb6752c05804376b59e940ce66675574"
+        },
+        "type": "string"
+      },
+      {
+        "context": "inline-script[1]:call:txt[2]",
+        "default": "错了中断",
+        "field_id": "script.literal.005",
+        "kind": "script_literal",
+        "max_length": 8,
+        "span": {
+          "kind": "script_literal",
+          "occurrence": 5,
+          "quote": "'",
+          "script_index": 1,
+          "sink": "call:txt[2]",
+          "token_sha256": "sha256:2a2ad48a2fa40a086a6fdb7cd8c221cecc6854133bc81bed7e500ff67f29104c"
+        },
+        "type": "string"
+      },
+      {
+        "constraints": {
+          "pattern": "^(?!.*[\\u3400-\\u9fff]).+$"
+        },
+        "context": "inline-script[1]:call:txt[2]",
+        "default": "ERRORS HALT THE FLOW",
+        "field_id": "script.literal.006",
+        "kind": "script_literal",
+        "max_length": 26,
+        "semantic_role": "mono-label",
+        "span": {
+          "kind": "script_literal",
+          "occurrence": 6,
+          "quote": "'",
+          "script_index": 1,
+          "sink": "call:txt[2]",
+          "token_sha256": "sha256:bcf68bda6006fc5381e9f66b41fd2bcb45c4357f57573d46f738c9f92af43f6a"
+        },
+        "type": "string"
+      },
+      {
+        "constraints": {
+          "pattern": "^(?!.*[\\u3400-\\u9fff]).+$"
+        },
+        "context": "inline-script[1]:call:txt[2]",
+        "default": "42 MIN · NEEDS HUMAN FIX",
+        "field_id": "script.literal.007",
+        "kind": "script_literal",
+        "max_length": 32,
+        "semantic_role": "mono-label",
+        "span": {
+          "kind": "script_literal",
+          "occurrence": 7,
+          "quote": "'",
+          "script_index": 1,
+          "sink": "call:txt[2]",
+          "token_sha256": "sha256:3016f966deb90092d8de92e4053d88e017c01c6ca5d7c1be4fec1cebd752ad45"
+        },
+        "type": "string"
+      },
+      {
+        "context": "inline-script[1]:call:txt[2]",
+        "default": "报错即停，等人工介入",
+        "field_id": "script.literal.008",
+        "kind": "script_literal",
+        "max_length": 14,
+        "span": {
+          "kind": "script_literal",
+          "occurrence": 8,
+          "quote": "'",
+          "script_index": 1,
+          "sink": "call:txt[2]",
+          "token_sha256": "sha256:1104c29f5117b72962d7589dc794c1cb32197ac2105751a9d5954b55c02c67f3"
+        },
+        "type": "string"
+      },
+      {
+        "context": "inline-script[1]:call:txt[2]",
+        "default": "错了继续",
+        "field_id": "script.literal.009",
+        "kind": "script_literal",
+        "max_length": 8,
+        "span": {
+          "kind": "script_literal",
+          "occurrence": 9,
+          "quote": "'",
+          "script_index": 1,
+          "sink": "call:txt[2]",
+          "token_sha256": "sha256:2094bcae5b1c06e560e14abb3f0e8dd882b70bfb9201688df7af3231798aa681"
+        },
+        "type": "string"
+      },
+      {
+        "constraints": {
+          "pattern": "^(?!.*[\\u3400-\\u9fff]).+$"
+        },
+        "context": "inline-script[1]:call:txt[2]",
+        "default": "SELF-HEALING RELAY",
+        "field_id": "script.literal.010",
+        "kind": "script_literal",
+        "max_length": 24,
+        "semantic_role": "mono-label",
+        "span": {
+          "kind": "script_literal",
+          "occurrence": 10,
+          "quote": "'",
+          "script_index": 1,
+          "sink": "call:txt[2]",
+          "token_sha256": "sha256:115c3b4329d5c94189dffdf41d8d6a464849c49ba4c3db7ffbcab552f7aa3ac4"
+        },
+        "type": "string"
+      },
+      {
+        "constraints": {
+          "pattern": "^(?!.*[\\u3400-\\u9fff]).+$"
+        },
+        "context": "inline-script[1]:call:txt[2]",
+        "default": "STATION",
+        "field_id": "script.literal.011",
+        "kind": "script_literal",
+        "max_length": 11,
+        "semantic_role": "mono-label",
+        "span": {
+          "kind": "script_literal",
+          "occurrence": 11,
+          "quote": "'",
+          "script_index": 1,
+          "sink": "call:txt[2]",
+          "token_sha256": "sha256:5938ef7e5232924cba40cc1c2460cbd81d5cc3804534ac28d19ae6d81c19172b"
+        },
+        "type": "string"
+      },
+      {
+        "constraints": {
+          "pattern": "^(?!.*[\\u3400-\\u9fff]).+$"
+        },
+        "context": "inline-script[1]:call:txt[2]",
+        "default": "3 MIN · SELF-RECOVERY",
+        "field_id": "script.literal.012",
+        "kind": "script_literal",
+        "max_length": 28,
+        "semantic_role": "mono-label",
+        "span": {
+          "kind": "script_literal",
+          "occurrence": 12,
+          "quote": "'",
+          "script_index": 1,
+          "sink": "call:txt[2]",
+          "token_sha256": "sha256:5baeacc3a55df7430c3599600d37feb1a4f6f3ce75234f75760764409a47c285"
+        },
+        "type": "string"
+      },
+      {
+        "context": "inline-script[1]:call:txt[2]",
+        "default": "Agent 自己重试、自己修复",
+        "field_id": "script.literal.013",
+        "kind": "script_literal",
+        "max_length": 20,
+        "span": {
+          "kind": "script_literal",
+          "occurrence": 13,
+          "quote": "'",
+          "script_index": 1,
+          "sink": "call:txt[2]",
+          "token_sha256": "sha256:266180890764c8f5f4eff5ed22b17db8dd6fdd54e043c36a6de69e89b2727d4b"
+        },
+        "type": "string"
+      },
+      {
+        "constraints": {
+          "pattern": "^(?!.*[\\u3400-\\u9fff]).+$"
+        },
+        "context": "inline-script[1]:call:txt[2]",
+        "default": "VS",
+        "field_id": "script.literal.014",
+        "kind": "script_literal",
+        "max_length": 6,
+        "semantic_role": "mono-label",
+        "span": {
+          "kind": "script_literal",
+          "occurrence": 14,
+          "quote": "'",
+          "script_index": 1,
+          "sink": "call:txt[2]",
+          "token_sha256": "sha256:234241b391becb7940c5a692ed8bd8a55b82c3b7df5d23484aab705f26382fe9"
+        },
+        "type": "string"
+      }
+    ],
+    "format": "wise-ppt-layout-payload@1",
+    "values_schema": {
+      "additionalProperties": false,
+      "minProperties": 1,
+      "properties": {
+        "html.text.001": {
+          "maxLength": 15,
+          "type": "string"
+        },
+        "html.text.002": {
+          "maxLength": 13,
+          "type": "string"
+        },
+        "html.text.003": {
+          "maxLength": 26,
+          "pattern": "^\\d{1,3} / \\d{1,3} — BY .{1,40}$",
+          "type": "string"
+        },
+        "html.text.004": {
+          "maxLength": 49,
+          "type": "string"
+        },
+        "script.literal.001": {
+          "maxLength": 8,
+          "type": "string"
+        },
+        "script.literal.002": {
+          "maxLength": 21,
+          "pattern": "^(?!.*[\\u3400-\\u9fff]).+$",
+          "type": "string"
+        },
+        "script.literal.003": {
+          "maxLength": 9,
+          "type": "string"
+        },
+        "script.literal.004": {
+          "maxLength": 11,
+          "pattern": "^(?!.*[\\u3400-\\u9fff]).+$",
+          "type": "string"
+        },
+        "script.literal.005": {
+          "maxLength": 8,
+          "type": "string"
+        },
+        "script.literal.006": {
+          "maxLength": 26,
+          "pattern": "^(?!.*[\\u3400-\\u9fff]).+$",
+          "type": "string"
+        },
+        "script.literal.007": {
+          "maxLength": 32,
+          "pattern": "^(?!.*[\\u3400-\\u9fff]).+$",
+          "type": "string"
+        },
+        "script.literal.008": {
+          "maxLength": 14,
+          "type": "string"
+        },
+        "script.literal.009": {
+          "maxLength": 8,
+          "type": "string"
+        },
+        "script.literal.010": {
+          "maxLength": 24,
+          "pattern": "^(?!.*[\\u3400-\\u9fff]).+$",
+          "type": "string"
+        },
+        "script.literal.011": {
+          "maxLength": 11,
+          "pattern": "^(?!.*[\\u3400-\\u9fff]).+$",
+          "type": "string"
+        },
+        "script.literal.012": {
+          "maxLength": 28,
+          "pattern": "^(?!.*[\\u3400-\\u9fff]).+$",
+          "type": "string"
+        },
+        "script.literal.013": {
+          "maxLength": 20,
+          "type": "string"
+        },
+        "script.literal.014": {
+          "maxLength": 6,
+          "pattern": "^(?!.*[\\u3400-\\u9fff]).+$",
+          "type": "string"
+        }
+      },
+      "type": "object"
+    }
+  },
+  "payload_defaults": {
+    "bindings": [
+      {
+        "asset_refs": [],
+        "content_refs": [
+          "item.canonical.comparison"
+        ],
+        "slot_id": "comparison"
+      },
+      {
+        "asset_refs": [],
+        "content_refs": [
+          "item.canonical.support"
+        ],
+        "slot_id": "support"
+      },
+      {
+        "asset_refs": [],
+        "content_refs": [
+          "item.canonical.takeaway"
+        ],
+        "slot_id": "takeaway"
+      }
+    ],
+    "values": {
+      "html.text.001": "系统对比 — 核心差异",
+      "html.text.002": "软件与 Agent",
+      "html.text.003": "01 / 01 — BY WISE PPT",
+      "html.text.004": "传统软件执行预设路径，Agent 会结合上下文持续判断并调用工具完成目标。",
+      "script.literal.001": "传统软件",
+      "script.literal.002": "CLASSIC SOFTWARE",
+      "script.literal.003": "Agent",
+      "script.literal.004": "AGENTIC",
+      "script.literal.005": "错了中断",
+      "script.literal.006": "ERRORS HALT THE FLOW",
+      "script.literal.007": "42 MIN · NEEDS HUMAN FIX",
+      "script.literal.008": "报错即停，等人工介入",
+      "script.literal.009": "错了继续",
+      "script.literal.010": "SELF-HEALING RELAY",
+      "script.literal.011": "STATION",
+      "script.literal.012": "3 MIN · SELF-RECOVERY",
+      "script.literal.013": "Agent 自己重试、自己修复",
+      "script.literal.014": "VS"
+    }
+  },
+  "payload_schema": {
+    "additionalProperties": false,
+    "properties": {
+      "bindings": {
+        "items": {
+          "additionalProperties": false,
+          "properties": {
+            "asset_refs": {
+              "items": {
+                "minLength": 1,
+                "type": "string"
+              },
+              "type": "array"
+            },
+            "content_refs": {
+              "items": {
+                "minLength": 1,
+                "type": "string"
+              },
+              "type": "array"
+            },
+            "slot_id": {
+              "enum": [
+                "comparison",
+                "support",
+                "takeaway"
+              ],
+              "type": "string"
+            }
+          },
+          "required": [
+            "slot_id",
+            "content_refs",
+            "asset_refs"
+          ],
+          "type": "object"
+        },
+        "maxItems": 3,
+        "minItems": 3,
+        "type": "array"
+      },
+      "values": {
+        "additionalProperties": false,
+        "minProperties": 1,
+        "properties": {
+          "html.text.001": {
+            "maxLength": 15,
+            "type": "string"
+          },
+          "html.text.002": {
+            "maxLength": 13,
+            "type": "string"
+          },
+          "html.text.003": {
+            "maxLength": 26,
+            "pattern": "^\\d{1,3} / \\d{1,3} — BY .{1,40}$",
+            "type": "string"
+          },
+          "html.text.004": {
+            "maxLength": 49,
+            "type": "string"
+          },
+          "script.literal.001": {
+            "maxLength": 8,
+            "type": "string"
+          },
+          "script.literal.002": {
+            "maxLength": 21,
+            "pattern": "^(?!.*[\\u3400-\\u9fff]).+$",
+            "type": "string"
+          },
+          "script.literal.003": {
+            "maxLength": 9,
+            "type": "string"
+          },
+          "script.literal.004": {
+            "maxLength": 11,
+            "pattern": "^(?!.*[\\u3400-\\u9fff]).+$",
+            "type": "string"
+          },
+          "script.literal.005": {
+            "maxLength": 8,
+            "type": "string"
+          },
+          "script.literal.006": {
+            "maxLength": 26,
+            "pattern": "^(?!.*[\\u3400-\\u9fff]).+$",
+            "type": "string"
+          },
+          "script.literal.007": {
+            "maxLength": 32,
+            "pattern": "^(?!.*[\\u3400-\\u9fff]).+$",
+            "type": "string"
+          },
+          "script.literal.008": {
+            "maxLength": 14,
+            "type": "string"
+          },
+          "script.literal.009": {
+            "maxLength": 8,
+            "type": "string"
+          },
+          "script.literal.010": {
+            "maxLength": 24,
+            "pattern": "^(?!.*[\\u3400-\\u9fff]).+$",
+            "type": "string"
+          },
+          "script.literal.011": {
+            "maxLength": 11,
+            "pattern": "^(?!.*[\\u3400-\\u9fff]).+$",
+            "type": "string"
+          },
+          "script.literal.012": {
+            "maxLength": 28,
+            "pattern": "^(?!.*[\\u3400-\\u9fff]).+$",
+            "type": "string"
+          },
+          "script.literal.013": {
+            "maxLength": 20,
+            "type": "string"
+          },
+          "script.literal.014": {
+            "maxLength": 6,
+            "pattern": "^(?!.*[\\u3400-\\u9fff]).+$",
+            "type": "string"
+          }
+        },
+        "type": "object"
+      }
+    },
+    "required": [
+      "bindings",
+      "values"
+    ],
+    "type": "object"
+  },
+  "recipe_fingerprint": "sha256:60afd8f34a35553acd3447434fc0c02aca35d609fbd37f93c60563b8b537c096",
+  "recipe_id": "paper-ink.comparison.dual-panel",
+  "required_capabilities": [],
+  "slots": [
+    {
+      "allowed_component_sources": [
+        "native"
+      ],
+      "allowed_renderer_kinds": [
+        "svg"
+      ],
+      "compatible_component_ids": [],
+      "count_unit": "binding",
+      "default_component": {
+        "component_id": "native.paper-ink.comparison.dual-panel.comparison",
+        "component_source": "native",
+        "origin": {
+          "kind": "canonical-frame-island",
+          "path": "gallery/paper-ink/ai/frames/layout-e1.html",
+          "selector": ".stage"
+        },
+        "renderer_kind": "svg"
+      },
+      "max_items": 6,
+      "min_items": 1,
+      "open_for_override": false,
+      "purpose": "强对比双面板",
+      "required": true,
+      "slot_id": "comparison",
+      "space_contract": {
+        "aspect_ratio": 2.4194,
+        "canvas_height": 1080,
+        "canvas_width": 1920,
+        "height": 620,
+        "space_type": "wide",
+        "width": 1500
+      },
+      "visual_role": "primary"
+    },
+    {
+      "allowed_component_sources": [
+        "codex-host",
+        "native"
+      ],
+      "allowed_renderer_kinds": [
+        "typography",
+        "table",
+        "image",
+        "native-html",
+        "svg"
+      ],
+      "compatible_component_ids": [],
+      "count_unit": "binding",
+      "default_component": {
+        "component_id": "native.paper-ink.comparison.dual-panel.support",
+        "component_source": "native",
+        "origin": {
+          "kind": "canonical-frame-island",
+          "path": "gallery/paper-ink/ai/frames/layout-e1.html",
+          "selector": ".doc.tl"
+        },
+        "renderer_kind": "typography"
+      },
+      "max_items": 4,
+      "min_items": 0,
+      "open_for_override": false,
+      "purpose": "辅助证据、标签或解释",
+      "required": false,
+      "slot_id": "support",
+      "visual_role": "support"
+    },
+    {
+      "allowed_component_sources": [
+        "native"
+      ],
+      "allowed_renderer_kinds": [
+        "typography"
+      ],
+      "compatible_component_ids": [],
+      "count_unit": "binding",
+      "default_component": {
+        "component_id": "native.paper-ink.comparison.dual-panel.takeaway",
+        "component_source": "native",
+        "origin": {
+          "kind": "canonical-frame-island",
+          "path": "gallery/paper-ink/ai/frames/layout-e1.html",
+          "selector": ".caption"
+        },
+        "renderer_kind": "typography"
+      },
+      "max_items": 1,
+      "min_items": 0,
+      "open_for_override": false,
+      "purpose": "页面一句话结论",
+      "required": false,
+      "slot_id": "takeaway",
+      "visual_role": "support"
+    }
+  ],
+  "source": {
+    "path": "gallery/paper-ink/ai/frames/layout-e1.html",
+    "sha256": "sha256:5ec8008e5578ec50190007b560e7e31534a8aaa29116184d77fd6913c1a981fc"
+  },
+  "status": "production",
+  "theme_id": "paper-ink",
+  "variant": "ai"
+}

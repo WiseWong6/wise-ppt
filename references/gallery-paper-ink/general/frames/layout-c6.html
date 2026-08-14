@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-runtime="wise-ppt-specimen" data-typography-mode="mixed" data-page-id="gallery-general-c6" data-page-role="prove" data-theme="paper-ink" data-layout="paper-ink.data.kpi-band" data-layout-source="gallery">
+<head>
+<meta charset="UTF-8">
+<title>layout-c6 · KPI 大数字横带</title>
+<link rel="stylesheet" href="../../../../themes/paper-ink/assets/design-tokens.css">
+<link rel="stylesheet" href="../../../../themes/paper-ink/assets/slide-components.css">
+<link rel="stylesheet" href="../../../shell.css">
+<style>
+  svg.scene { position: absolute; inset: 0; z-index: 1; }
+  .doc.tl, .folio { color: rgba(25,25,23,.45); }
+  .caption {
+    position: absolute; left: 0; right: 0; bottom: 118px;
+    text-align: center;
+    font-family: var(--sans); font-weight: 400;
+    font-size: var(--type-caption); letter-spacing: .04em;
+    color: #191917;
+    z-index: 5;
+  }
+</style>
+</head>
+<body class="slide">
+<div class="stage" data-block-id="gallery-primary" data-renderer-kind="svg" data-component-source="native" data-component-id="native.paper-ink.data.kpi-band.kpis" data-content-ref="example.c6">
+  <div class="doc tl">产品 · 述职 — C6<br>产品负责人述职数字</div>
+  <div class="folio">C6 / 63 — BY @歪斯WISE</div>
+
+  <svg class="scene" width="1920" height="1080" viewBox="0 0 1920 1080">
+    <g id="draw"></g>
+  </svg>
+
+  <div class="caption">本年度产品负责人以交付、质量、协作与目标达成率构成述职总账。</div>
+</div>
+
+<script src="../../../../runtime/stage-fit.js"></script>
+<script src="../../../../themes/paper-ink/assets/particles.js"></script>
+<script>
+var NS = 'http://www.w3.org/2000/svg';
+var INK = '#191917';
+var INK80 = 'rgba(25,25,23,.8)';
+var INK70 = 'rgba(25,25,23,.7)';
+var INK45 = 'rgba(25,25,23,.45)';
+if (location.search.indexOf('accent') >= 0) document.documentElement.classList.add('accent');
+var ACCENT = document.documentElement.classList.contains('accent');
+var RED = getComputedStyle(document.documentElement).getPropertyValue('--accent-red').trim();
+var G = document.getElementById('draw');
+function el(tag, attrs) {
+  var e = document.createElementNS(NS, tag);
+  for (var k in attrs) e.setAttribute(k, attrs[k]);
+  G.appendChild(e); return e;
+}
+function txt(x, y, str, attrs) {
+  var t = el('text', Object.assign({x:x, y:y}, attrs||{}));
+  t.textContent = str; return t;
+}
+var MONO = 'var(--mono)', SANS = 'var(--sans)';
+
+G = el('g', {transform:'translate(0 -7.2)'});
+
+/* ---------- 引子 ---------- */
+txt(960, 316, '本年度 · 产品负责人述职总账', {'font-family':SANS, 'font-weight':300, 'font-size':'var(--type-body)', 'text-anchor':'middle', fill:INK70});
+txt(960, 350, 'PRODUCT REVIEW · FY2026', {'font-family':MONO, 'font-size':'var(--type-meta)', 'letter-spacing':3, 'text-anchor':'middle', fill:INK45});
+
+/* ---------- 主角：通栏大数字横带（x120–1800，y380–640，4 格均分） ---------- */
+var CW = 64.8;   /* mono 108px 单字符宽 */
+var cells = [
+  {num:'3,214', unit:'项',   uw:24, label:'需求交付',   en:'DELIVERED'},
+  {num:'42',    unit:'%',    uw:24, label:'版本准时率', en:'ON-TIME RELEASE'},
+  {num:'6.8',   unit:'%',    uw:24, label:'缺陷逃逸率', en:'DEFECT ESCAPE'},
+  {num:'9.97',  unit:'分',   uw:24, label:'协作满意度', en:'TEAM SCORE'}
+];
+cells.forEach(function(C, i){
+  var cx = 120 + 420*i + 210;
+  /* 主角判定：版本准时率是全页唯一焦点 → 数字/单位/中文标签染色；编号与 EN 保持墨色 */
+  var focus = ACCENT && i === 1;
+  var fc = focus ? RED : null;
+  /* 格编号（不跟随染色） */
+  txt(cx, 408, 'No.0' + (i+1), {'font-family':MONO, 'font-size':'var(--type-micro-secondary)', 'letter-spacing':2, 'text-anchor':'middle', fill: INK45});
+  /* 超大数字 + 降级单位 */
+  var w = C.num.length * CW, gap = 16;
+  var numEnd = cx + w/2 - (C.uw + gap)/2;
+  txt(numEnd, 532, C.num, {'font-family':MONO, 'font-size':'var(--type-display)', 'text-anchor':'end', fill: fc || INK});
+  txt(numEnd + gap, 532, C.unit, {'font-family':SANS, 'font-weight':300, 'font-size':'var(--type-subheading)', 'text-anchor':'start', fill: fc || INK70});
+  /* 中文标签 + mono EN（EN 不跟随染色，保持档案感） */
+  txt(cx, 600, C.label, {'font-family':SANS, 'font-weight':300, 'font-size':'var(--type-body)', 'text-anchor':'middle', fill: fc || INK80});
+  txt(cx, 632, C.en, {'font-family':MONO, 'font-size':'var(--type-meta)', 'letter-spacing':2, 'text-anchor':'middle', fill: INK45});
+});
+/* 格间 0.6px 竖线分隔（无外框） */
+[540, 960, 1380].forEach(function(x){
+  el('line', {x1:x, y1:402, x2:x, y2:636, stroke:INK, 'stroke-width':.6, opacity:.3});
+});
+
+/* ---------- 底部 mono 口号行（竖线分隔） ---------- */
+var words = ['PLAN', 'DELIVER', 'REVIEW', 'IMPROVE'];
+var wx = [762, 908, 1048, 1170];
+var sx = [832, 984, 1112];
+words.forEach(function(wd, i){
+  txt(wx[i], 732, wd, {'font-family':MONO, 'font-size':'var(--type-label)', 'letter-spacing':3, 'text-anchor':'middle', fill:INK70});
+});
+sx.forEach(function(x){
+  el('line', {x1:x, y1:718, x2:x, y2:736, stroke:INK, 'stroke-width':.8, opacity:.4});
+});
+
+stageFit();
+</script>
+</body>
+</html>

@@ -1,0 +1,69 @@
+{
+  "example_id": "echarts.scatter-to-bar-anim",
+  "title": "散点图聚合为柱状图动画",
+  "source_url": "https://echarts.apache.org/examples/zh/index.html#chart-type-scatter",
+  "upstream_license": "Apache-2.0",
+  "chart_type": "scatter",
+  "source_note": "改编自 Apache ECharts 官方示例 scatter-cluster。该效果把散点按类聚合动画过渡为柱状图，依赖运行时切换 series.type 并 setOption 刷新；本文件提供初始散点 option + dataset。",
+  "dataset_shape": {
+    "dimensions": ["group", "x", "y"],
+    "source": [
+      { "group": "A", "x": 2.5, "y": 3.2 },
+      { "group": "A", "x": 3.1, "y": 2.8 },
+      { "group": "A", "x": 2.8, "y": 3.5 },
+      { "group": "B", "x": 6.5, "y": 7.2 },
+      { "group": "B", "x": 7.1, "y": 6.8 },
+      { "group": "B", "x": 6.8, "y": 7.5 },
+      { "group": "C", "x": 9.5, "y": 4.2 },
+      { "group": "C", "x": 10.1, "y": 3.8 },
+      { "group": "C", "x": 9.8, "y": 4.5 }
+    ]
+  },
+  "render_plan_binding": {
+    "renderer_kind": "svg",
+    "component_source": "echarts",
+    "component_id": "echarts.scatter-to-bar-anim",
+    "theme_adapter_id": "paper-ink.echarts",
+    "data_binding": {
+      "data_ref": {
+        "content_id": "item.cluster-points",
+        "json_pointer": "/structured_data/rows"
+      },
+      "dataset_id": "dataset.scatter-to-bar-anim",
+      "encode": { "x": "x", "y": "y" }
+    }
+  },
+  "html_template": {
+    "container_attrs": "data-block-id=\"block.main\" data-renderer-kind=\"svg\" data-component-source=\"echarts\" data-component-id=\"echarts.scatter-to-bar-anim\" data-theme-adapter-id=\"paper-ink.echarts\" data-content-ref=\"item.cluster-points\" data-dataset-id=\"dataset.scatter-to-bar-anim\"",
+    "dataset_script_id": "dataset.scatter-to-bar-anim"
+  },
+  "option": {
+    "dataset": {
+      "dimensions": ["group", "x", "y"],
+      "source": [
+        { "group": "A", "x": 2.5, "y": 3.2 },
+        { "group": "A", "x": 3.1, "y": 2.8 },
+        { "group": "A", "x": 2.8, "y": 3.5 },
+        { "group": "B", "x": 6.5, "y": 7.2 },
+        { "group": "B", "x": 7.1, "y": 6.8 },
+        { "group": "B", "x": 6.8, "y": 7.5 },
+        { "group": "C", "x": 9.5, "y": 4.2 },
+        { "group": "C", "x": 10.1, "y": 3.8 },
+        { "group": "C", "x": 9.8, "y": 4.5 }
+      ]
+    },
+    "tooltip": { "trigger": "item" },
+    "xAxis": { "type": "value", "scale": true },
+    "yAxis": { "type": "value", "scale": true },
+    "series": [
+      {
+        "name": "点簇",
+        "type": "scatter",
+        "encode": { "x": "x", "y": "y" },
+        "symbolSize": 14
+      }
+    ]
+  },
+  "animation_notes": "⚠️ 「散点聚合为柱状图」的完整动画依赖运行时：① 初始渲染散点（type:scatter）；② 按数据触发，将同一 group 的点聚合并切换为柱状（type:bar + 聚合后的统计 dataset）；③ 用 chart.setOption(option, { merge: false }) 刷新。wise-ppt 的 createEChart 只调用一次 setOption，因此本 option 渲染的是初始散点状态。若要呈现聚合动画，需在 deck JS 中：准备聚合后的 dataset（每个 group 的均值/计数），在动画时点切换 series.type 并 setOption。聚合后的 dataset 仍需与页面 <script> 数据块一致（或为独立 dataset_id）。",
+  "notes": "初始状态是按 (x,y) 分布的散点，group 列用于聚合分组。聚合后通常用 group 作为 xAxis 类目、y 作为聚合值（均值/计数）。"
+}

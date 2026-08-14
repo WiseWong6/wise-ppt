@@ -1,0 +1,132 @@
+<!-- GENERATED: Wise PPT formal canonical source; protected Gallery remains provenance-only. -->
+<!DOCTYPE html>
+<html lang="zh-CN" data-runtime="wise-ppt-specimen" data-typography-mode="mixed" data-page-id="gallery-ai-g1" data-page-role="explain" data-theme="paper-ink" data-layout="paper-ink.radial.three-way" data-layout-source="gallery">
+<head>
+<meta charset="UTF-8">
+<title>layout-g1 · 三向放射（爆炸图） · LLM 调用节点</title>
+<link rel="stylesheet" href="../../../../themes/paper-ink/assets/design-tokens.css">
+<link rel="stylesheet" href="../../../../themes/paper-ink/assets/slide-components.css">
+<link rel="stylesheet" href="../../../shell.css">
+<style>
+  svg.scene { position: absolute; inset: 0; z-index: 1; }
+  .doc.tl, .folio { color: var(--ink-45); }
+  .caption {
+    position: absolute; left: 0; right: 0; bottom: 118px;
+    text-align: center;;;;;;
+    z-index: 5;
+  }
+</style>
+</head>
+<body class="slide">
+<div class="stage" data-block-id="gallery-primary" data-renderer-kind="svg" data-component-source="native" data-component-id="native.paper-ink.radial.three-way.dimensions" data-content-ref="example.g1" data-anchor-id="stage">
+  <span data-geometry-anchor-holder="port-left" data-anchor-id="port-left" hidden aria-hidden="true"></span><span data-geometry-anchor-holder="port-right" data-anchor-id="port-right" hidden aria-hidden="true"></span><span data-geometry-anchor-holder="core-frame" data-anchor-id="core-frame" hidden aria-hidden="true"></span>
+  <div class="doc tl" data-anchor-id="slot-support">AI ENGINEERING — G1<br>LLM NODE I/O</div>
+  <div class="folio">01 / 01 — BY @歪斯WISE</div>
+
+  <svg class="scene" width="1920" height="1080" viewBox="0 0 1920 1080">
+    <g id="draw" data-anchor-id="slot-dimensions"></g>
+  </svg>
+
+  <div class="caption" data-anchor-id="slot-takeaway">LLM 调用把提示词、意图、检索片段与工具声明转成回复、调用请求和可观测指标。</div>
+</div>
+
+<script src="../../../../runtime/stage-fit.js"></script>
+<script src="../../../../themes/paper-ink/assets/particles.js"></script>
+<script>
+var NS = 'http://www.w3.org/2000/svg';
+var INK = __wiseThemeToken("--ink");
+var INK80 = __wiseThemeToken("--ink-80");
+var INK45 = __wiseThemeToken("--ink-45");
+var G = document.getElementById('draw');
+function el(tag, attrs) {
+  var e = document.createElementNS(NS, tag);
+  for (var k in attrs) e.setAttribute(k, attrs[k]);
+  G.appendChild(e); return e;
+}
+function txt(x, y, str, attrs) {
+  var t = el('text', Object.assign({x:x, y:y}, attrs||{}));
+  t.textContent = str; return t;
+}
+var MONO = 'var(--mono)', SANS = 'var(--sans)';
+
+G = el('g', {transform:'translate(0 -55.2)'});
+
+
+/* ---------- 中央主节点（双线框），中心 (960,520) ---------- */
+var NW = 380, NH = 116, NX = 960 - NW/2, NY = 520 - NH/2;
+el('rect', {x:NX, y:NY, width:NW, height:NH, fill:__wiseThemeToken("--paper-panel"), stroke:INK80, 'stroke-width':1.4});
+el('rect', {x:NX+5, y:NY+5, width:NW-10, height:NH-10, fill:'none', stroke:INK, 'stroke-width':.6, opacity:.4});
+txt(960, NY+46, 'MODEL NODE', {'font-family':MONO, 'font-size':'var(--type-subheading)', 'letter-spacing':3, 'text-anchor':'middle', fill:INK});
+txt(960, NY+84, 'LLM 调用节点', {'font-family':SANS, 'font-weight':300, 'font-size':'var(--type-body)', 'letter-spacing':4, 'text-anchor':'middle', fill:INK});
+
+/* ---------- 分支线：左输入 / 右输出 / 下参数 ---------- */
+var LTX = 560, RTX = 1360;
+el('line', {x1:NX, y1:520, x2:LTX, y2:520, stroke:INK, 'stroke-width':.8, opacity:.5});
+el('line', {x1:NX+NW, y1:520, x2:RTX, y2:520, stroke:INK, 'stroke-width':.8, opacity:.5});
+el('line', {x1:960, y1:NY+NH, x2:960, y2:700, stroke:INK, 'stroke-width':.8, opacity:.5});
+[[LTX,520],[RTX,520],[960,700]].forEach(function(p){ el('circle', {cx:p[0], cy:p[1], r:2.4, fill:INK, opacity:.7}); });
+txt((NX+LTX)/2, 506, 'IN',  {'font-family':MONO, 'font-size':'var(--type-meta)', 'letter-spacing':2, 'text-anchor':'middle', fill:INK45});
+txt((NX+NW+RTX)/2, 506, 'OUT', {'font-family':MONO, 'font-size':'var(--type-meta)', 'letter-spacing':2, 'text-anchor':'middle', fill:INK45});
+
+/* 字段行：mono 上行 + 中文 300/16 下行 */
+function field(x, y, en, cn, anchor) {
+  txt(x, y, en, {'font-family':MONO, 'font-size':'var(--type-body-small)', 'text-anchor':anchor, fill:INK});
+  txt(x, y+26, cn, {'font-family':SANS, 'font-weight':300, 'font-size':'var(--type-body-small)', 'text-anchor':anchor, fill:__wiseThemeToken("--wp-compat-pi-ink-60")});
+}
+
+/* ---------- 左支 · 输入（右对齐） ---------- */
+var inRows = [
+  ['system_prompt',  '系统提示词与人设'],
+  ['user_message',   '用户消息与意图'],
+  ['context',        '上下文与检索片段'],
+  ['tools',          '可调用工具声明']
+];
+txt(LTX, 268, '输 入', {'font-family':SANS, 'font-weight':300, 'font-size':'var(--type-subheading)', 'text-anchor':'end', fill:INK});
+txt(LTX, 296, 'INPUT', {'font-family':MONO, 'font-size':'var(--type-meta)', 'letter-spacing':2, 'text-anchor':'end', fill:INK45});
+el('line', {x1:LTX, y1:320, x2:LTX, y2:800, stroke:INK, 'stroke-width':.8, opacity:.5});
+inRows.forEach(function(r, j){
+  var ry = 348 + j * 116;
+  el('line', {x1:LTX, y1:ry, x2:LTX-18, y2:ry, stroke:INK, 'stroke-width':.8, opacity:.5});
+  field(LTX-30, ry+6, r[0], r[1], 'end');
+});
+
+/* ---------- 右支 · 输出（左对齐） ---------- */
+var outRows = [
+  ['completion',       '生成文本与回复'],
+  ['tool_calls',       '工具调用请求'],
+  ['token_usage',      'Token 用量统计'],
+  ['finish_reason',    '结束原因与状态'],
+  ['logprobs',         '对数概率回传'],
+  ['latency',          '首字与总耗时']
+];
+txt(RTX, 268, '输 出', {'font-family':SANS, 'font-weight':300, 'font-size':'var(--type-subheading)', fill:INK});
+txt(RTX, 296, 'OUTPUT', {'font-family':MONO, 'font-size':'var(--type-meta)', 'letter-spacing':2, fill:INK45});
+el('line', {x1:RTX, y1:320, x2:RTX, y2:860, stroke:INK, 'stroke-width':.8, opacity:.5});
+outRows.forEach(function(r, j){
+  var ry = 348 + j * 100;
+  el('line', {x1:RTX, y1:ry, x2:RTX+18, y2:ry, stroke:INK, 'stroke-width':.8, opacity:.5});
+  field(RTX+30, ry+6, r[0], r[1], 'start');
+});
+
+/* ---------- 下支 · 参数（横轴均布） ---------- */
+var paramRows = [
+  ['temperature',      '采样温度'],
+  ['top_p',            '核采样阈值'],
+  ['max_tokens',       '最大生成长度'],
+  ['frequency_penalty','频率惩罚'],
+  ['stop',             '停止序列']
+];
+txt(984, 668, '参 数', {'font-family':SANS, 'font-weight':300, 'font-size':'var(--type-subheading)', fill:INK});
+txt(984, 696, 'PARAMS', {'font-family':MONO, 'font-size':'var(--type-meta)', 'letter-spacing':2, fill:INK45});
+el('line', {x1:620, y1:700, x2:1300, y2:700, stroke:INK, 'stroke-width':.8, opacity:.5});
+paramRows.forEach(function(r, j){
+  var rx = 660 + j * 150;
+  el('line', {x1:rx, y1:700, x2:rx, y2:716, stroke:INK, 'stroke-width':.8, opacity:.5});
+  txt(rx, 744, r[0], {'font-family':MONO, 'font-size':'var(--type-body-small)', 'text-anchor':'middle', fill:INK});
+  txt(rx, 772, r[1], {'font-family':SANS, 'font-weight':300, 'font-size':'var(--type-body-small)', 'text-anchor':'middle', fill:__wiseThemeToken("--wp-compat-pi-ink-60")});
+});
+
+stageFit();
+</script>
+</body>
+</html>

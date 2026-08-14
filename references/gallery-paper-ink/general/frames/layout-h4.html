@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-runtime="wise-ppt-specimen" data-typography-mode="mixed" data-page-id="gallery-general-h4" data-page-role="explain" data-theme="paper-ink" data-layout="paper-ink.nested.foundation-stack" data-layout-source="gallery">
+<head>
+<meta charset="UTF-8">
+<title>layout-h4 · 底座托举三层</title>
+<link rel="stylesheet" href="../../../../themes/paper-ink/assets/design-tokens.css">
+<link rel="stylesheet" href="../../../../themes/paper-ink/assets/slide-components.css">
+<link rel="stylesheet" href="../../../shell.css">
+<style>
+  svg.scene { position: absolute; inset: 0; z-index: 1; }
+  canvas { position: absolute; inset: 0; z-index: 2; }
+  .caption {
+    position: absolute; left: 0; right: 0; bottom: 118px;
+    text-align: center;
+    font-family: var(--sans); font-weight: 400;
+    font-size: var(--type-caption); letter-spacing: .04em;
+    color: var(--ink);
+    z-index: 5;
+  }
+</style>
+</head>
+<body class="slide">
+<div class="stage" data-block-id="gallery-primary" data-renderer-kind="svg" data-component-source="native" data-component-id="native.paper-ink.nested.foundation-stack.support-layers" data-content-ref="example.h4">
+  <div class="doc tl">运营 · 方案 — H4<br>内容运营平台三层方案</div>
+  <div class="folio">H4 / 63 — BY @歪斯WISE</div>
+
+  <svg class="scene" width="1920" height="1080" viewBox="0 0 1920 1080">
+    <defs>
+      <pattern id="hatch20" width="9" height="9" patternTransform="rotate(45)" patternUnits="userSpaceOnUse">
+        <line x1="0" y1="0" x2="0" y2="9" stroke="#191917" stroke-width=".7" opacity=".3"/>
+      </pattern>
+    </defs>
+    <g id="draw"></g>
+  </svg>
+  <canvas id="cv" width="1920" height="1080"></canvas>
+
+  <div class="caption">统一内容资产底座托起策划、协作与复盘，再支撑内容工作台、多渠道发布和社群互动。</div>
+</div>
+
+<script src="../../../../runtime/stage-fit.js"></script>
+<script src="../../../../themes/paper-ink/assets/particles.js"></script>
+<script>
+var NS = 'http://www.w3.org/2000/svg';
+var INK = '#191917';
+var INK80 = 'rgba(25,25,23,.8)';
+var INK70 = 'rgba(25,25,23,.7)';
+var INK45 = 'rgba(25,25,23,.45)';
+var G = document.getElementById('draw');
+function el(tag, attrs) {
+  var e = document.createElementNS(NS, tag);
+  for (var k in attrs) e.setAttribute(k, attrs[k]);
+  G.appendChild(e); return e;
+}
+function txt(x, y, str, attrs) {
+  var t = el('text', Object.assign({x:x, y:y}, attrs||{}));
+  t.textContent = str; return t;
+}
+var MONO = 'var(--mono)', SANS = 'var(--sans)';
+
+G = el('g', {transform:'translate(0 -58.7)'});
+
+
+function nodeDot(cx, cy){
+  el('circle', {cx:cx, cy:cy, r:4.5, fill:'none', stroke:INK80, 'stroke-width':1});
+  el('circle', {cx:cx, cy:cy, r:1.6, fill:INK});
+}
+
+/* ---------- 细线开放箭头（托举语义，自下而上） ---------- */
+function liftArrow(x, y1, y2, label){          /* y1 下 → y2 上 */
+  el('line', {x1:x, y1:y1, x2:x, y2:y2, stroke:INK, 'stroke-width':1.2, opacity:.7});
+  el('line', {x1:x-8, y1:y2+11, x2:x, y2:y2, stroke:INK, 'stroke-width':1.2, opacity:.7});
+  el('line', {x1:x+8, y1:y2+11, x2:x, y2:y2, stroke:INK, 'stroke-width':1.2, opacity:.7});
+  if (label) txt(x+16, (y1+y2)/2+4, label, {'font-family':MONO, 'font-size':'var(--type-micro-secondary)', 'letter-spacing':2, fill:INK45});
+}
+/* 3 组箭头，每组对齐对应模块的水平中心（产品卡/能力卡中心 x=460/960/1460），自下而上逐级托举 */
+[460, 960, 1460].forEach(function(x){
+  liftArrow(x, 776, 692, 'LIFT');               /* 底座 → 能力层 */
+  liftArrow(x, 533, 424);                       /* 能力层 → 产品层 */
+});
+
+/* ---------- 卡带图元（形态随语义变化） ---------- */
+function gPlan(cx, cy){
+  el('rect', {x:cx-28, y:cy-22, width:56, height:44, rx:3, fill:'none', stroke:INK80, 'stroke-width':1.2});
+  el('line', {x1:cx-28, y1:cy-10, x2:cx+28, y2:cy-10, stroke:INK, 'stroke-width':.8, opacity:.55});
+  [-14, 0, 14].forEach(function(dx){ nodeDot(cx+dx, cy+6); });
+}
+function gReview(cx, cy){
+  el('rect', {x:cx-26, y:cy-22, width:40, height:44, fill:'none', stroke:INK80, 'stroke-width':1.2});
+  [-10, 0, 10].forEach(function(dy){
+    el('line', {x1:cx-18, y1:cy+dy, x2:cx+4, y2:cy+dy, stroke:INK, 'stroke-width':.8, opacity:.6});
+  });
+  el('path', {d:'M '+(cx+6)+' '+(cy+12)+' L '+(cx+14)+' '+(cy+20)+' L '+(cx+28)+' '+(cy+2), fill:'none', stroke:INK80, 'stroke-width':1.3, 'stroke-linecap':'round', 'stroke-linejoin':'round'});
+}
+function gInsight(cx, cy){
+  [-18, 0, 18].forEach(function(dx, i){
+    el('rect', {x:cx+dx-5, y:cy+14-i*12, width:10, height:8+i*12, fill:'none', stroke:INK80, 'stroke-width':1.1});
+  });
+  el('path', {d:'M '+(cx-24)+' '+(cy+8)+' L '+cx+' '+(cy-8)+' L '+(cx+24)+' '+(cy-20), fill:'none', stroke:INK, 'stroke-width':1, opacity:.6});
+}
+function gDesk(cx, cy){
+  el('rect', {x:cx-30, y:cy-24, width:60, height:48, rx:3, fill:'none', stroke:INK80, 'stroke-width':1.2});
+  el('line', {x1:cx-30, y1:cy-12, x2:cx+30, y2:cy-12, stroke:INK80, 'stroke-width':1});
+  el('circle', {cx:cx-23, cy:cy-18, r:2.2, fill:'none', stroke:INK80, 'stroke-width':1});
+  el('line', {x1:cx-20, y1:cy-3, x2:cx+14, y2:cy-3, stroke:INK, 'stroke-width':.8, opacity:.6});
+  el('line', {x1:cx-20, y1:cy+6, x2:cx+8, y2:cy+6, stroke:INK, 'stroke-width':.8, opacity:.6});
+  el('rect', {x:cx+14, y:cy+7, width:9, height:9, fill:'none', stroke:INK80, 'stroke-width':1.1});
+  el('circle', {cx:cx+18.5, cy:cy+11.5, r:1.5, fill:INK});
+}
+function gPublish(cx, cy){
+  el('line', {x1:cx-28, y1:cy+18, x2:cx+28, y2:cy+18, stroke:INK80, 'stroke-width':1.3});
+  [-22, 0, 22].forEach(function(dx){
+    el('rect', {x:cx+dx-7, y:cy+10, width:14, height:16, rx:2, fill:'none', stroke:INK, 'stroke-width':1, opacity:.7});
+  });
+  el('rect', {x:cx-12, y:cy-24, width:24, height:30, fill:'none', stroke:INK80, 'stroke-width':1.1});
+  el('path', {d:'M '+cx+' '+(cy+6)+' L '+cx+' '+(cy+18)+' M '+cx+' '+(cy+13)+' L '+(cx-22)+' '+(cy+18)+' M '+cx+' '+(cy+13)+' L '+(cx+22)+' '+(cy+18), fill:'none', stroke:INK80, 'stroke-width':1.1});
+  el('circle', {cx:cx-6, cy:cy-15, r:2.6, fill:'none', stroke:INK, 'stroke-width':1});
+  el('line', {x1:cx, y1:cy-15, x2:cx+7, y2:cy-15, stroke:INK, 'stroke-width':1});
+}
+function gCommunity(cx, cy){
+  el('path', {d:'M '+(cx-28)+' '+(cy-18)+' H '+(cx+8)+' V '+(cy+4)+' H '+(cx-10)+' L '+(cx-18)+' '+(cy+12)+' V '+(cy+4)+' H '+(cx-28)+' Z', fill:'none', stroke:INK80, 'stroke-width':1.1});
+  el('path', {d:'M '+(cx-4)+' '+(cy-8)+' H '+(cx+28)+' V '+(cy+12)+' H '+(cx+18)+' V '+(cy+20)+' L '+(cx+8)+' '+(cy+12)+' H '+(cx-4)+' Z', fill:'none', stroke:INK80, 'stroke-width':1.1});
+  [[-17,-7],[-7,-7],[7,2],[17,2]].forEach(function(p){
+    el('circle', {cx:cx+p[0], cy:cy+p[1], r:2.2, fill:INK, opacity:.65});
+  });
+  el('circle', {cx:cx-18, cy:cy+22, r:4, fill:'none', stroke:INK80, 'stroke-width':1.1});
+  el('circle', {cx:cx+18, cy:cy+25, r:4, fill:'none', stroke:INK80, 'stroke-width':1.1});
+}
+
+/* ---------- 卡带（双线框卡） ---------- */
+function card(x, y, w, h, item){
+  el('rect', {x:x, y:y, width:w, height:h, fill:'rgba(255,255,255,.22)', stroke:INK80, 'stroke-width':1.2});
+  el('rect', {x:x+5, y:y+5, width:w-10, height:h-10, fill:'none', stroke:INK, 'stroke-width':.6, opacity:.3});
+  item.g(x+62, y+h/2);
+  txt(x+112, y+40, item.en, {'font-family':MONO, 'font-size':'var(--type-micro-secondary)', 'letter-spacing':2, fill:INK45});
+  txt(x+112, y+72, item.cn, {'font-family':SANS, 'font-weight':300, 'font-size':'var(--type-body)', fill:INK});
+  el('line', {x1:x+112, y1:y+88, x2:x+w-28, y2:y+88, stroke:INK, 'stroke-width':.6, opacity:.25});
+  txt(x+112, y+114, item.note, {'font-family':SANS, 'font-weight':300, 'font-size':'var(--type-label)', fill:INK70});
+}
+
+/* 顶层：内容运营触点卡带 y270–420 */
+var topItems = [
+  {g:gDesk,      en:'CONTENT DESK', cn:'内容工作台',   note:'选题、稿件与素材集中协作'},
+  {g:gPublish,   en:'CHANNEL',      cn:'多渠道发布',   note:'一次编辑适配不同渠道'},
+  {g:gCommunity, en:'COMMUNITY',    cn:'社群互动',     note:'话题、反馈与成员持续连接'}
+];
+[260, 760, 1260].forEach(function(x, i){ card(x, 270, 400, 150, topItems[i]); });
+
+/* 中层：能力卡带 y535–685 */
+var midItems = [
+  {g:gPlan,    en:'PLAN',    cn:'选题策划', note:'主题日历与内容节奏'},
+  {g:gReview,  en:'REVIEW',  cn:'协作审阅', note:'评论、版本与责任清晰'},
+  {g:gInsight, en:'INSIGHT', cn:'数据复盘', note:'阅读互动变化可追踪'}
+];
+[260, 760, 1260].forEach(function(x, i){ card(x, 535, 400, 150, midItems[i]); });
+
+/* ---------- 底层：通栏底座带 y780–860 ---------- */
+el('rect', {x:150, y:780, width:1620, height:80, fill:'url(#hatch20)', stroke:INK80, 'stroke-width':1.3});
+el('rect', {x:156, y:786, width:1608, height:68, fill:'none', stroke:INK, 'stroke-width':.6, opacity:.3});
+txt(960, 819, 'CONTENT OPERATIONS — SHARED ASSET FOUNDATION', {'font-family':MONO, 'font-size':'var(--type-body-small)', 'letter-spacing':3, 'text-anchor':'middle', fill:INK});
+txt(960, 845, '内容资产与统一标签 · 权限和版本共同管理', {'font-family':SANS, 'font-weight':300, 'font-size':'var(--type-body-small)', 'text-anchor':'middle', fill:INK});
+txt(186, 845, 'PLAN 2026', {'font-family':MONO, 'font-size':'var(--type-micro-secondary)', 'letter-spacing':2, fill:INK45});
+txt(1734, 845, 'ONE SOURCE', {'font-family':MONO, 'font-size':'var(--type-micro-secondary)', 'letter-spacing':2, 'text-anchor':'end', fill:INK45});
+
+stageFit();
+</script>
+</body>
+</html>

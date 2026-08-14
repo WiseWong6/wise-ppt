@@ -1,0 +1,1074 @@
+{
+  "canonical": {
+    "constraints": {
+      "css_scope": "[data-implementation-id=\"paper-ink.temporal.winding-road.ai\"]",
+      "external_links": false,
+      "external_scripts": false,
+      "payload_only_mutation": true,
+      "ready_api": "WisePPT.markSlideReady",
+      "script_query_scope": "current-section.slide",
+      "stage_fit": false
+    },
+    "kind": "derived-frame",
+    "materialization_format": "wise-ppt-formal-slide@1",
+    "path": "gallery/paper-ink/ai/frames/layout-b6.html",
+    "root_selector": "section.slide[data-implementation-id=\"paper-ink.temporal.winding-road.ai\"]",
+    "sha256": "sha256:83c81199f9a415349fab036493dfc20d9e0834679919c7378dd2c0ae6fade360"
+  },
+  "canonical_fingerprint": "sha256:3ddbcb32997e499eaeb39e056245123ec4a300bc058e623cda586bfceddf3eff",
+  "contract_version": 1,
+  "dependency_closure": {
+    "files": [
+      {
+        "path": "gallery/shell.css",
+        "sha256": "sha256:aca1428680d2dd5c84e85d66241ee199a16d36bb60a098340528943fb5469f69"
+      },
+      {
+        "path": "runtime/stage-fit.js",
+        "sha256": "sha256:39577a14aac5072789fdeb80abee887d24da5a44eeb38203ef154602330f291d"
+      },
+      {
+        "path": "themes/paper-ink/assets/design-tokens.css",
+        "sha256": "sha256:3f1f0d3562cf1486b87643b16025388557000858d0df13d767b53a576988c330"
+      },
+      {
+        "path": "themes/paper-ink/assets/fonts/CourierPrime-Regular.ttf",
+        "sha256": "sha256:72f793376f8e2841656bf21d77a5de010f2929bd6956a22ee848ad0c7eb978af"
+      },
+      {
+        "path": "themes/paper-ink/assets/fonts/LXGWWenKai-Regular.ttf",
+        "sha256": "sha256:39ad71264b588165b469e35e6afb162a378dacd1f95348160240ba9038ac3009"
+      },
+      {
+        "path": "themes/paper-ink/assets/fonts/SourceHanSansCN-Light.otf",
+        "sha256": "sha256:b6dfc945aae0daf9b15019f59c2f7b18d17da3b92f00c3ec32fb5f0333696d9c"
+      },
+      {
+        "path": "themes/paper-ink/assets/fonts/SourceHanSerifCN-Medium.otf",
+        "sha256": "sha256:8e224937647ae71ba1b1f310bcb3fbc32f21ec7c2c490ba04670455c901f3378"
+      },
+      {
+        "path": "themes/paper-ink/assets/particles.js",
+        "sha256": "sha256:1281d72e81b34e4be061286edd323dd421443dffbf6e0d8a2faa94a5d14094c4"
+      },
+      {
+        "path": "themes/paper-ink/assets/slide-components.css",
+        "sha256": "sha256:20e7334fe5ae51cb229112290e787c1274ad65278a72b084c708682dc9ca5acf"
+      }
+    ],
+    "sha256": "sha256:7dcc6f0ac681be95cc8955afb36da97027f341a98f4f9f37518e37bfe13f5be4"
+  },
+  "format": "wise-ppt-layout-implementation@1",
+  "geometry": {
+    "anchors": [
+      {
+        "anchor_id": "stage",
+        "selector": ".stage"
+      }
+    ],
+    "canvas": {
+      "height": 1080,
+      "width": 1920
+    },
+    "content_region": {
+      "height": 1080,
+      "width": 1920,
+      "x": 0,
+      "y": 0
+    },
+    "fingerprint": "sha256:3dc7cffee8de76f2ec9a81d3e40c145f1a37320d2bd3c3b5f3c20e921f138a97",
+    "format": "wise-ppt-layout-geometry@1",
+    "relations": [],
+    "structure_contract": {
+      "core_primitives": [
+        "linear-sequence"
+      ],
+      "region_count": 3,
+      "required_slot_ids": [
+        "road-stages"
+      ]
+    }
+  },
+  "implementation_id": "paper-ink.temporal.winding-road.ai",
+  "payload": {
+    "fields": [
+      {
+        "constraints": {
+          "pattern": "^(?!.*[\\u3400-\\u9fff]).+$"
+        },
+        "context": "html:div.doc.tl",
+        "default": "AI ENGINEERING — B6",
+        "field_id": "html.text.001",
+        "kind": "html_text",
+        "max_length": 25,
+        "semantic_role": "mono-label",
+        "span": {
+          "kind": "html_text",
+          "occurrence": 1,
+          "token_sha256": "sha256:664e1d323de192a4a79160e2517e9119e267fdfc518b0cb29fabcdcf773bb4fe"
+        },
+        "type": "string"
+      },
+      {
+        "constraints": {
+          "pattern": "^(?!.*[\\u3400-\\u9fff]).+$"
+        },
+        "context": "html:div.doc.tl",
+        "default": "ATTENTION TO AGENTS",
+        "field_id": "html.text.002",
+        "kind": "html_text",
+        "max_length": 25,
+        "semantic_role": "mono-label",
+        "span": {
+          "kind": "html_text",
+          "occurrence": 2,
+          "token_sha256": "sha256:8c2d37238b8871aacea4eac34c1e97654ca5727220c83e5abe8c90a687402589"
+        },
+        "type": "string"
+      },
+      {
+        "constraints": {
+          "pattern": "^\\d{1,3} / \\d{1,3} — BY .{1,40}$"
+        },
+        "context": "html:div.folio",
+        "default": "01 / 01 — BY WISE PPT",
+        "field_id": "html.text.003",
+        "kind": "html_text",
+        "max_length": 26,
+        "semantic_role": "folio",
+        "source_default": "B6 / 63 — BY @歪斯WISE",
+        "span": {
+          "kind": "html_text",
+          "occurrence": 3,
+          "token_sha256": "sha256:135c8f35359aecea022085450adf177e144b19e046f58b17e74d51dd9d3d6782"
+        },
+        "type": "string"
+      },
+      {
+        "context": "html:div.caption",
+        "default": "从 Attention、预训练和 RLHF 走到 Agent，十年演进的下一形态仍未确定。",
+        "field_id": "html.text.004",
+        "kind": "html_text",
+        "max_length": 60,
+        "span": {
+          "kind": "html_text",
+          "occurrence": 4,
+          "token_sha256": "sha256:8aab4ff6db5c1b21deba616d78562349054c84ef723f2283b5eb8cf4b39c0a1f"
+        },
+        "type": "string"
+      },
+      {
+        "constraints": {
+          "pattern": "^(?!.*[\\u3400-\\u9fff]).+$"
+        },
+        "context": "inline-script[1]:object-key:yr",
+        "default": "2014",
+        "field_id": "script.literal.001",
+        "kind": "script_literal",
+        "max_length": 8,
+        "semantic_role": "mono-label",
+        "span": {
+          "kind": "script_literal",
+          "occurrence": 1,
+          "quote": "'",
+          "script_index": 1,
+          "sink": "object-key:yr",
+          "token_sha256": "sha256:2355d21d3ea8a55909a0c72d98e295d11b9e2c60b200588ca220d35b978ee9f2"
+        },
+        "type": "string"
+      },
+      {
+        "constraints": {
+          "pattern": "^(?!.*[\\u3400-\\u9fff]).+$"
+        },
+        "context": "inline-script[1]:object-key:en",
+        "default": "ATTENTION MECHANISM",
+        "field_id": "script.literal.002",
+        "kind": "script_literal",
+        "max_length": 25,
+        "semantic_role": "mono-label",
+        "span": {
+          "kind": "script_literal",
+          "occurrence": 2,
+          "quote": "'",
+          "script_index": 1,
+          "sink": "object-key:en",
+          "token_sha256": "sha256:9a8a083e82e095126b17d6d5c71d8972429e5dfc7c0ed947d2c11f3841217f06"
+        },
+        "type": "string"
+      },
+      {
+        "context": "inline-script[1]:object-key:ti",
+        "default": "Attention 机制",
+        "field_id": "script.literal.003",
+        "kind": "script_literal",
+        "max_length": 16,
+        "span": {
+          "kind": "script_literal",
+          "occurrence": 3,
+          "quote": "'",
+          "script_index": 1,
+          "sink": "object-key:ti",
+          "token_sha256": "sha256:c599b0b9b9e3d8a51bbb04121a0d996d54ec58dc09cc321e66a618c1ed5409ce"
+        },
+        "type": "string"
+      },
+      {
+        "context": "inline-script[1]:object-key:tx",
+        "default": "序列建模对齐走向，长程依赖被打通",
+        "field_id": "script.literal.004",
+        "kind": "script_literal",
+        "max_length": 21,
+        "span": {
+          "kind": "script_literal",
+          "occurrence": 4,
+          "quote": "'",
+          "script_index": 1,
+          "sink": "object-key:tx",
+          "token_sha256": "sha256:1c04152738afe2ed0f19e0a365ef90903981eb9cb850e1cb2ae27b27cae6aa94"
+        },
+        "type": "string"
+      },
+      {
+        "constraints": {
+          "pattern": "^(?!.*[\\u3400-\\u9fff]).+$"
+        },
+        "context": "inline-script[1]:object-key:yr",
+        "default": "2017",
+        "field_id": "script.literal.005",
+        "kind": "script_literal",
+        "max_length": 8,
+        "semantic_role": "mono-label",
+        "span": {
+          "kind": "script_literal",
+          "occurrence": 5,
+          "quote": "'",
+          "script_index": 1,
+          "sink": "object-key:yr",
+          "token_sha256": "sha256:ef43cf235382dd4633bee15f3cbcabb7a20d265ef01416fa9c9d0a124c2c683f"
+        },
+        "type": "string"
+      },
+      {
+        "constraints": {
+          "pattern": "^(?!.*[\\u3400-\\u9fff]).+$"
+        },
+        "context": "inline-script[1]:object-key:en",
+        "default": "TRANSFORMER",
+        "field_id": "script.literal.006",
+        "kind": "script_literal",
+        "max_length": 15,
+        "semantic_role": "mono-label",
+        "span": {
+          "kind": "script_literal",
+          "occurrence": 6,
+          "quote": "'",
+          "script_index": 1,
+          "sink": "object-key:en",
+          "token_sha256": "sha256:e6667b88c8b18eb429ac92ead5d53df2edc0c758305e578fe8660bd941407d04"
+        },
+        "type": "string"
+      },
+      {
+        "context": "inline-script[1]:object-key:ti",
+        "default": "Transformer",
+        "field_id": "script.literal.007",
+        "kind": "script_literal",
+        "max_length": 15,
+        "span": {
+          "kind": "script_literal",
+          "occurrence": 7,
+          "quote": "'",
+          "script_index": 1,
+          "sink": "object-key:ti",
+          "token_sha256": "sha256:80da526521bb04e234030130f8bf384b994a77397caf81b1037b178692301848"
+        },
+        "type": "string"
+      },
+      {
+        "context": "inline-script[1]:object-key:tx",
+        "default": "完全自注意架构，并行训练成为可能",
+        "field_id": "script.literal.008",
+        "kind": "script_literal",
+        "max_length": 21,
+        "span": {
+          "kind": "script_literal",
+          "occurrence": 8,
+          "quote": "'",
+          "script_index": 1,
+          "sink": "object-key:tx",
+          "token_sha256": "sha256:646e112c70cf0e7aecc5f63adf1a4c70f8f8163f300dd61b4693be8fb7579196"
+        },
+        "type": "string"
+      },
+      {
+        "constraints": {
+          "pattern": "^(?!.*[\\u3400-\\u9fff]).+$"
+        },
+        "context": "inline-script[1]:object-key:yr",
+        "default": "2018",
+        "field_id": "script.literal.009",
+        "kind": "script_literal",
+        "max_length": 8,
+        "semantic_role": "mono-label",
+        "span": {
+          "kind": "script_literal",
+          "occurrence": 9,
+          "quote": "'",
+          "script_index": 1,
+          "sink": "object-key:yr",
+          "token_sha256": "sha256:b70200cbb9a5ebc9b79cee33c5e0a1b0c882a8a7ea5b3c0feac91e93e58892cb"
+        },
+        "type": "string"
+      },
+      {
+        "constraints": {
+          "pattern": "^(?!.*[\\u3400-\\u9fff]).+$"
+        },
+        "context": "inline-script[1]:object-key:en",
+        "default": "PRETRAIN ERA",
+        "field_id": "script.literal.010",
+        "kind": "script_literal",
+        "max_length": 16,
+        "semantic_role": "mono-label",
+        "span": {
+          "kind": "script_literal",
+          "occurrence": 10,
+          "quote": "'",
+          "script_index": 1,
+          "sink": "object-key:en",
+          "token_sha256": "sha256:29d7453c7a724ab55d51885ae5d2cf3ea83711ce1c578b0ab43a798671ffc4cf"
+        },
+        "type": "string"
+      },
+      {
+        "context": "inline-script[1]:object-key:ti",
+        "default": "预训练时代",
+        "field_id": "script.literal.011",
+        "kind": "script_literal",
+        "max_length": 9,
+        "span": {
+          "kind": "script_literal",
+          "occurrence": 11,
+          "quote": "'",
+          "script_index": 1,
+          "sink": "object-key:ti",
+          "token_sha256": "sha256:9ed90c5f2db21e47a04d70546807769041234b9a177c47ae01471b778e65d335"
+        },
+        "type": "string"
+      },
+      {
+        "context": "inline-script[1]:object-key:tx",
+        "default": "BERT / GPT 双线登场，迁移学习爆发",
+        "field_id": "script.literal.012",
+        "kind": "script_literal",
+        "max_length": 29,
+        "span": {
+          "kind": "script_literal",
+          "occurrence": 12,
+          "quote": "'",
+          "script_index": 1,
+          "sink": "object-key:tx",
+          "token_sha256": "sha256:c736c11d6f864ad233d9dd6fecd35bb634a9c2ec80acd70fb7338e0e3411c816"
+        },
+        "type": "string"
+      },
+      {
+        "constraints": {
+          "pattern": "^(?!.*[\\u3400-\\u9fff]).+$"
+        },
+        "context": "inline-script[1]:object-key:yr",
+        "default": "2022",
+        "field_id": "script.literal.013",
+        "kind": "script_literal",
+        "max_length": 8,
+        "semantic_role": "mono-label",
+        "span": {
+          "kind": "script_literal",
+          "occurrence": 13,
+          "quote": "'",
+          "script_index": 1,
+          "sink": "object-key:yr",
+          "token_sha256": "sha256:a6615eb49afc6bfabdee2def0fab78b9f8018765ce3f5b8593fb6a2c2c5fb738"
+        },
+        "type": "string"
+      },
+      {
+        "constraints": {
+          "pattern": "^(?!.*[\\u3400-\\u9fff]).+$"
+        },
+        "context": "inline-script[1]:object-key:en",
+        "default": "RLHF",
+        "field_id": "script.literal.014",
+        "kind": "script_literal",
+        "max_length": 8,
+        "semantic_role": "mono-label",
+        "span": {
+          "kind": "script_literal",
+          "occurrence": 14,
+          "quote": "'",
+          "script_index": 1,
+          "sink": "object-key:en",
+          "token_sha256": "sha256:655fa026a3b5744b5459302bdb413b77460aac17506b41607ca18d5f3d5d51f2"
+        },
+        "type": "string"
+      },
+      {
+        "context": "inline-script[1]:object-key:ti",
+        "default": "RLHF 对齐",
+        "field_id": "script.literal.015",
+        "kind": "script_literal",
+        "max_length": 11,
+        "span": {
+          "kind": "script_literal",
+          "occurrence": 15,
+          "quote": "'",
+          "script_index": 1,
+          "sink": "object-key:ti",
+          "token_sha256": "sha256:3ee96677aabdf4382f3e139ad79ba9f9d39f7508fa79c33c9c51a391a5c8b3fa"
+        },
+        "type": "string"
+      },
+      {
+        "context": "inline-script[1]:object-key:tx",
+        "default": "人类反馈强化学习，对齐走向可用",
+        "field_id": "script.literal.016",
+        "kind": "script_literal",
+        "max_length": 20,
+        "span": {
+          "kind": "script_literal",
+          "occurrence": 16,
+          "quote": "'",
+          "script_index": 1,
+          "sink": "object-key:tx",
+          "token_sha256": "sha256:127e813e0762cb58c5d629cdd5324464c8010a44313ba9089f380cb9e7b7b9ca"
+        },
+        "type": "string"
+      },
+      {
+        "constraints": {
+          "pattern": "^(?!.*[\\u3400-\\u9fff]).+$"
+        },
+        "context": "inline-script[1]:object-key:yr",
+        "default": "2024",
+        "field_id": "script.literal.017",
+        "kind": "script_literal",
+        "max_length": 8,
+        "semantic_role": "mono-label",
+        "span": {
+          "kind": "script_literal",
+          "occurrence": 17,
+          "quote": "'",
+          "script_index": 1,
+          "sink": "object-key:yr",
+          "token_sha256": "sha256:94b580963ac39780e9dfc865886382c323262d7e8fda9d3599d7049243a844d0"
+        },
+        "type": "string"
+      },
+      {
+        "constraints": {
+          "pattern": "^(?!.*[\\u3400-\\u9fff]).+$"
+        },
+        "context": "inline-script[1]:object-key:en",
+        "default": "AGENT",
+        "field_id": "script.literal.018",
+        "kind": "script_literal",
+        "max_length": 9,
+        "semantic_role": "mono-label",
+        "span": {
+          "kind": "script_literal",
+          "occurrence": 18,
+          "quote": "'",
+          "script_index": 1,
+          "sink": "object-key:en",
+          "token_sha256": "sha256:326aafe165fb9d912373e8abcb21293b96d825dddb888aa0a96c93dcab6d250b"
+        },
+        "type": "string"
+      },
+      {
+        "context": "inline-script[1]:object-key:ti",
+        "default": "Agent 上线",
+        "field_id": "script.literal.019",
+        "kind": "script_literal",
+        "max_length": 12,
+        "span": {
+          "kind": "script_literal",
+          "occurrence": 19,
+          "quote": "'",
+          "script_index": 1,
+          "sink": "object-key:ti",
+          "token_sha256": "sha256:b818b6a0d15fc508c9b422043dd84255ab10f67f9f425b6d659912a513ce4f03"
+        },
+        "type": "string"
+      },
+      {
+        "context": "inline-script[1]:object-key:tx",
+        "default": "模型开始调用工具，任务闭环成形",
+        "field_id": "script.literal.020",
+        "kind": "script_literal",
+        "max_length": 20,
+        "span": {
+          "kind": "script_literal",
+          "occurrence": 20,
+          "quote": "'",
+          "script_index": 1,
+          "sink": "object-key:tx",
+          "token_sha256": "sha256:11e789162117c78a7ce2b3236e12c4417085ce99b4a42b4b37dce6dfa0f754c6"
+        },
+        "type": "string"
+      },
+      {
+        "constraints": {
+          "pattern": "^(?!.*[\\u3400-\\u9fff]).+$"
+        },
+        "context": "inline-script[1]:object-key:yr",
+        "default": "2026",
+        "field_id": "script.literal.021",
+        "kind": "script_literal",
+        "max_length": 8,
+        "semantic_role": "mono-label",
+        "span": {
+          "kind": "script_literal",
+          "occurrence": 21,
+          "quote": "'",
+          "script_index": 1,
+          "sink": "object-key:yr",
+          "token_sha256": "sha256:e5fe83d580e6b9402afcd30993cc759789124d4caed5c6789949eb69c43a246b"
+        },
+        "type": "string"
+      },
+      {
+        "constraints": {
+          "pattern": "^(?!.*[\\u3400-\\u9fff]).+$"
+        },
+        "context": "inline-script[1]:object-key:en",
+        "default": "FUTURE · UNKNOWN",
+        "field_id": "script.literal.022",
+        "kind": "script_literal",
+        "max_length": 21,
+        "semantic_role": "mono-label",
+        "span": {
+          "kind": "script_literal",
+          "occurrence": 22,
+          "quote": "'",
+          "script_index": 1,
+          "sink": "object-key:en",
+          "token_sha256": "sha256:b40ab6ac0e55d489afdd943559bae16d268b5c77c4ecd7d4320720a32615fad9"
+        },
+        "type": "string"
+      },
+      {
+        "context": "inline-script[1]:object-key:ti",
+        "default": "? 未来",
+        "field_id": "script.literal.023",
+        "kind": "script_literal",
+        "max_length": 8,
+        "span": {
+          "kind": "script_literal",
+          "occurrence": 23,
+          "quote": "'",
+          "script_index": 1,
+          "sink": "object-key:ti",
+          "token_sha256": "sha256:e3fad02ddeb59f24e6f6a727fe7bd00d31a83b2acf01d58b51d6d18cbce01a34"
+        },
+        "type": "string"
+      },
+      {
+        "context": "inline-script[1]:object-key:tx",
+        "default": "下一形态未定，路还在延伸",
+        "field_id": "script.literal.024",
+        "kind": "script_literal",
+        "max_length": 16,
+        "span": {
+          "kind": "script_literal",
+          "occurrence": 24,
+          "quote": "'",
+          "script_index": 1,
+          "sink": "object-key:tx",
+          "token_sha256": "sha256:bba4b94b6f017341236e56220afca4a7a6e2555307b5e0b754e4c65977a16ecc"
+        },
+        "type": "string"
+      }
+    ],
+    "format": "wise-ppt-layout-payload@1",
+    "values_schema": {
+      "additionalProperties": false,
+      "minProperties": 1,
+      "properties": {
+        "html.text.001": {
+          "maxLength": 25,
+          "pattern": "^(?!.*[\\u3400-\\u9fff]).+$",
+          "type": "string"
+        },
+        "html.text.002": {
+          "maxLength": 25,
+          "pattern": "^(?!.*[\\u3400-\\u9fff]).+$",
+          "type": "string"
+        },
+        "html.text.003": {
+          "maxLength": 26,
+          "pattern": "^\\d{1,3} / \\d{1,3} — BY .{1,40}$",
+          "type": "string"
+        },
+        "html.text.004": {
+          "maxLength": 60,
+          "type": "string"
+        },
+        "script.literal.001": {
+          "maxLength": 8,
+          "pattern": "^(?!.*[\\u3400-\\u9fff]).+$",
+          "type": "string"
+        },
+        "script.literal.002": {
+          "maxLength": 25,
+          "pattern": "^(?!.*[\\u3400-\\u9fff]).+$",
+          "type": "string"
+        },
+        "script.literal.003": {
+          "maxLength": 16,
+          "type": "string"
+        },
+        "script.literal.004": {
+          "maxLength": 21,
+          "type": "string"
+        },
+        "script.literal.005": {
+          "maxLength": 8,
+          "pattern": "^(?!.*[\\u3400-\\u9fff]).+$",
+          "type": "string"
+        },
+        "script.literal.006": {
+          "maxLength": 15,
+          "pattern": "^(?!.*[\\u3400-\\u9fff]).+$",
+          "type": "string"
+        },
+        "script.literal.007": {
+          "maxLength": 15,
+          "type": "string"
+        },
+        "script.literal.008": {
+          "maxLength": 21,
+          "type": "string"
+        },
+        "script.literal.009": {
+          "maxLength": 8,
+          "pattern": "^(?!.*[\\u3400-\\u9fff]).+$",
+          "type": "string"
+        },
+        "script.literal.010": {
+          "maxLength": 16,
+          "pattern": "^(?!.*[\\u3400-\\u9fff]).+$",
+          "type": "string"
+        },
+        "script.literal.011": {
+          "maxLength": 9,
+          "type": "string"
+        },
+        "script.literal.012": {
+          "maxLength": 29,
+          "type": "string"
+        },
+        "script.literal.013": {
+          "maxLength": 8,
+          "pattern": "^(?!.*[\\u3400-\\u9fff]).+$",
+          "type": "string"
+        },
+        "script.literal.014": {
+          "maxLength": 8,
+          "pattern": "^(?!.*[\\u3400-\\u9fff]).+$",
+          "type": "string"
+        },
+        "script.literal.015": {
+          "maxLength": 11,
+          "type": "string"
+        },
+        "script.literal.016": {
+          "maxLength": 20,
+          "type": "string"
+        },
+        "script.literal.017": {
+          "maxLength": 8,
+          "pattern": "^(?!.*[\\u3400-\\u9fff]).+$",
+          "type": "string"
+        },
+        "script.literal.018": {
+          "maxLength": 9,
+          "pattern": "^(?!.*[\\u3400-\\u9fff]).+$",
+          "type": "string"
+        },
+        "script.literal.019": {
+          "maxLength": 12,
+          "type": "string"
+        },
+        "script.literal.020": {
+          "maxLength": 20,
+          "type": "string"
+        },
+        "script.literal.021": {
+          "maxLength": 8,
+          "pattern": "^(?!.*[\\u3400-\\u9fff]).+$",
+          "type": "string"
+        },
+        "script.literal.022": {
+          "maxLength": 21,
+          "pattern": "^(?!.*[\\u3400-\\u9fff]).+$",
+          "type": "string"
+        },
+        "script.literal.023": {
+          "maxLength": 8,
+          "type": "string"
+        },
+        "script.literal.024": {
+          "maxLength": 16,
+          "type": "string"
+        }
+      },
+      "type": "object"
+    }
+  },
+  "payload_defaults": {
+    "bindings": [
+      {
+        "asset_refs": [],
+        "content_refs": [
+          "item.canonical.road-stages"
+        ],
+        "slot_id": "road-stages"
+      },
+      {
+        "asset_refs": [],
+        "content_refs": [
+          "item.canonical.support"
+        ],
+        "slot_id": "support"
+      },
+      {
+        "asset_refs": [],
+        "content_refs": [
+          "item.canonical.takeaway"
+        ],
+        "slot_id": "takeaway"
+      }
+    ],
+    "values": {
+      "html.text.001": "AI ENGINEERING — B6",
+      "html.text.002": "ATTENTION TO AGENTS",
+      "html.text.003": "01 / 01 — BY WISE PPT",
+      "html.text.004": "从 Attention、预训练和 RLHF 走到 Agent，十年演进的下一形态仍未确定。",
+      "script.literal.001": "2014",
+      "script.literal.002": "ATTENTION MECHANISM",
+      "script.literal.003": "Attention 机制",
+      "script.literal.004": "序列建模对齐走向，长程依赖被打通",
+      "script.literal.005": "2017",
+      "script.literal.006": "TRANSFORMER",
+      "script.literal.007": "Transformer",
+      "script.literal.008": "完全自注意架构，并行训练成为可能",
+      "script.literal.009": "2018",
+      "script.literal.010": "PRETRAIN ERA",
+      "script.literal.011": "预训练时代",
+      "script.literal.012": "BERT / GPT 双线登场，迁移学习爆发",
+      "script.literal.013": "2022",
+      "script.literal.014": "RLHF",
+      "script.literal.015": "RLHF 对齐",
+      "script.literal.016": "人类反馈强化学习，对齐走向可用",
+      "script.literal.017": "2024",
+      "script.literal.018": "AGENT",
+      "script.literal.019": "Agent 上线",
+      "script.literal.020": "模型开始调用工具，任务闭环成形",
+      "script.literal.021": "2026",
+      "script.literal.022": "FUTURE · UNKNOWN",
+      "script.literal.023": "? 未来",
+      "script.literal.024": "下一形态未定，路还在延伸"
+    }
+  },
+  "payload_schema": {
+    "additionalProperties": false,
+    "properties": {
+      "bindings": {
+        "items": {
+          "additionalProperties": false,
+          "properties": {
+            "asset_refs": {
+              "items": {
+                "minLength": 1,
+                "type": "string"
+              },
+              "type": "array"
+            },
+            "content_refs": {
+              "items": {
+                "minLength": 1,
+                "type": "string"
+              },
+              "type": "array"
+            },
+            "slot_id": {
+              "enum": [
+                "road-stages",
+                "support",
+                "takeaway"
+              ],
+              "type": "string"
+            }
+          },
+          "required": [
+            "slot_id",
+            "content_refs",
+            "asset_refs"
+          ],
+          "type": "object"
+        },
+        "maxItems": 3,
+        "minItems": 3,
+        "type": "array"
+      },
+      "values": {
+        "additionalProperties": false,
+        "minProperties": 1,
+        "properties": {
+          "html.text.001": {
+            "maxLength": 25,
+            "pattern": "^(?!.*[\\u3400-\\u9fff]).+$",
+            "type": "string"
+          },
+          "html.text.002": {
+            "maxLength": 25,
+            "pattern": "^(?!.*[\\u3400-\\u9fff]).+$",
+            "type": "string"
+          },
+          "html.text.003": {
+            "maxLength": 26,
+            "pattern": "^\\d{1,3} / \\d{1,3} — BY .{1,40}$",
+            "type": "string"
+          },
+          "html.text.004": {
+            "maxLength": 60,
+            "type": "string"
+          },
+          "script.literal.001": {
+            "maxLength": 8,
+            "pattern": "^(?!.*[\\u3400-\\u9fff]).+$",
+            "type": "string"
+          },
+          "script.literal.002": {
+            "maxLength": 25,
+            "pattern": "^(?!.*[\\u3400-\\u9fff]).+$",
+            "type": "string"
+          },
+          "script.literal.003": {
+            "maxLength": 16,
+            "type": "string"
+          },
+          "script.literal.004": {
+            "maxLength": 21,
+            "type": "string"
+          },
+          "script.literal.005": {
+            "maxLength": 8,
+            "pattern": "^(?!.*[\\u3400-\\u9fff]).+$",
+            "type": "string"
+          },
+          "script.literal.006": {
+            "maxLength": 15,
+            "pattern": "^(?!.*[\\u3400-\\u9fff]).+$",
+            "type": "string"
+          },
+          "script.literal.007": {
+            "maxLength": 15,
+            "type": "string"
+          },
+          "script.literal.008": {
+            "maxLength": 21,
+            "type": "string"
+          },
+          "script.literal.009": {
+            "maxLength": 8,
+            "pattern": "^(?!.*[\\u3400-\\u9fff]).+$",
+            "type": "string"
+          },
+          "script.literal.010": {
+            "maxLength": 16,
+            "pattern": "^(?!.*[\\u3400-\\u9fff]).+$",
+            "type": "string"
+          },
+          "script.literal.011": {
+            "maxLength": 9,
+            "type": "string"
+          },
+          "script.literal.012": {
+            "maxLength": 29,
+            "type": "string"
+          },
+          "script.literal.013": {
+            "maxLength": 8,
+            "pattern": "^(?!.*[\\u3400-\\u9fff]).+$",
+            "type": "string"
+          },
+          "script.literal.014": {
+            "maxLength": 8,
+            "pattern": "^(?!.*[\\u3400-\\u9fff]).+$",
+            "type": "string"
+          },
+          "script.literal.015": {
+            "maxLength": 11,
+            "type": "string"
+          },
+          "script.literal.016": {
+            "maxLength": 20,
+            "type": "string"
+          },
+          "script.literal.017": {
+            "maxLength": 8,
+            "pattern": "^(?!.*[\\u3400-\\u9fff]).+$",
+            "type": "string"
+          },
+          "script.literal.018": {
+            "maxLength": 9,
+            "pattern": "^(?!.*[\\u3400-\\u9fff]).+$",
+            "type": "string"
+          },
+          "script.literal.019": {
+            "maxLength": 12,
+            "type": "string"
+          },
+          "script.literal.020": {
+            "maxLength": 20,
+            "type": "string"
+          },
+          "script.literal.021": {
+            "maxLength": 8,
+            "pattern": "^(?!.*[\\u3400-\\u9fff]).+$",
+            "type": "string"
+          },
+          "script.literal.022": {
+            "maxLength": 21,
+            "pattern": "^(?!.*[\\u3400-\\u9fff]).+$",
+            "type": "string"
+          },
+          "script.literal.023": {
+            "maxLength": 8,
+            "type": "string"
+          },
+          "script.literal.024": {
+            "maxLength": 16,
+            "type": "string"
+          }
+        },
+        "type": "object"
+      }
+    },
+    "required": [
+      "bindings",
+      "values"
+    ],
+    "type": "object"
+  },
+  "recipe_fingerprint": "sha256:75ffc50ad255ebb1447c867aeaedc010aabbb95e720a59e1c3937fecd5d1d364",
+  "recipe_id": "paper-ink.temporal.winding-road",
+  "required_capabilities": [],
+  "slots": [
+    {
+      "allowed_component_sources": [
+        "native"
+      ],
+      "allowed_renderer_kinds": [
+        "svg"
+      ],
+      "compatible_component_ids": [
+        "native.paper-ink.073.winding-road"
+      ],
+      "count_unit": "binding",
+      "default_component": {
+        "component_id": "native.paper-ink.temporal.winding-road.road-stages",
+        "component_source": "native",
+        "origin": {
+          "kind": "canonical-frame-island",
+          "path": "gallery/paper-ink/ai/frames/layout-b6.html",
+          "selector": ".stage"
+        },
+        "renderer_kind": "svg"
+      },
+      "max_items": 7,
+      "min_items": 1,
+      "open_for_override": false,
+      "purpose": "道路节点",
+      "required": true,
+      "slot_id": "road-stages",
+      "space_contract": {
+        "aspect_ratio": 2.5667,
+        "canvas_height": 1080,
+        "canvas_width": 1920,
+        "height": 600,
+        "space_type": "wide",
+        "width": 1540
+      },
+      "visual_role": "primary"
+    },
+    {
+      "allowed_component_sources": [
+        "codex-host",
+        "native"
+      ],
+      "allowed_renderer_kinds": [
+        "typography",
+        "table",
+        "image",
+        "native-html",
+        "svg"
+      ],
+      "compatible_component_ids": [],
+      "count_unit": "binding",
+      "default_component": {
+        "component_id": "native.paper-ink.temporal.winding-road.support",
+        "component_source": "native",
+        "origin": {
+          "kind": "canonical-frame-island",
+          "path": "gallery/paper-ink/ai/frames/layout-b6.html",
+          "selector": ".doc.tl"
+        },
+        "renderer_kind": "typography"
+      },
+      "max_items": 4,
+      "min_items": 0,
+      "open_for_override": false,
+      "purpose": "辅助证据、标签或解释",
+      "required": false,
+      "slot_id": "support",
+      "visual_role": "support"
+    },
+    {
+      "allowed_component_sources": [
+        "native"
+      ],
+      "allowed_renderer_kinds": [
+        "typography"
+      ],
+      "compatible_component_ids": [],
+      "count_unit": "binding",
+      "default_component": {
+        "component_id": "native.paper-ink.temporal.winding-road.takeaway",
+        "component_source": "native",
+        "origin": {
+          "kind": "canonical-frame-island",
+          "path": "gallery/paper-ink/ai/frames/layout-b6.html",
+          "selector": ".caption"
+        },
+        "renderer_kind": "typography"
+      },
+      "max_items": 1,
+      "min_items": 0,
+      "open_for_override": false,
+      "purpose": "页面一句话结论",
+      "required": false,
+      "slot_id": "takeaway",
+      "visual_role": "support"
+    }
+  ],
+  "source": {
+    "path": "gallery/paper-ink/ai/frames/layout-b6.html",
+    "sha256": "sha256:83c81199f9a415349fab036493dfc20d9e0834679919c7378dd2c0ae6fade360"
+  },
+  "status": "production",
+  "theme_id": "paper-ink",
+  "variant": "ai"
+}

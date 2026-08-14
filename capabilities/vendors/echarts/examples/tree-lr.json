@@ -1,0 +1,106 @@
+{
+  "example_id": "echarts.tree-lr",
+  "title": "从左到右树状图",
+  "source_url": "https://echarts.apache.org/examples/zh/index.html#chart-type-tree",
+  "upstream_license": "Apache-2.0",
+  "chart_type": "tree",
+  "source_note": "改编自 Apache ECharts 官方示例 tree-basic。树图使用嵌套层级数据 series.data，而非表格 dataset；本文件用扁平化表描述节点供 content 追踪，option 保留层级结构。",
+  "dataset_shape": {
+    "dimensions": ["node", "parent"],
+    "source": [
+      { "node": "软件架构", "parent": null },
+      { "node": "前端", "parent": "软件架构" },
+      { "node": "后端", "parent": "软件架构" },
+      { "node": "基础设施", "parent": "软件架构" },
+      { "node": "Web", "parent": "前端" },
+      { "node": "移动端", "parent": "前端" },
+      { "node": "API", "parent": "后端" },
+      { "node": "数据库", "parent": "后端" },
+      { "node": "容器", "parent": "基础设施" },
+      { "node": "监控", "parent": "基础设施" }
+    ]
+  },
+  "render_plan_binding": {
+    "renderer_kind": "svg",
+    "component_source": "echarts",
+    "component_id": "echarts.tree-lr",
+    "theme_adapter_id": "paper-ink.echarts",
+    "data_binding": {
+      "data_ref": {
+        "content_id": "item.arch-tree",
+        "json_pointer": "/structured_data/rows"
+      },
+      "dataset_id": "dataset.tree-lr",
+      "encode": { "nodeName": "node", "parentName": "parent" }
+    }
+  },
+  "html_template": {
+    "container_attrs": "data-block-id=\"block.main\" data-renderer-kind=\"svg\" data-component-source=\"echarts\" data-component-id=\"echarts.tree-lr\" data-theme-adapter-id=\"paper-ink.echarts\" data-content-ref=\"item.arch-tree\" data-dataset-id=\"dataset.tree-lr\"",
+    "dataset_script_id": "dataset.tree-lr"
+  },
+  "option": {
+    "dataset": {
+      "dimensions": ["node", "parent"],
+      "source": [
+        { "node": "软件架构", "parent": null },
+        { "node": "前端", "parent": "软件架构" },
+        { "node": "后端", "parent": "软件架构" },
+        { "node": "基础设施", "parent": "软件架构" },
+        { "node": "Web", "parent": "前端" },
+        { "node": "移动端", "parent": "前端" },
+        { "node": "API", "parent": "后端" },
+        { "node": "数据库", "parent": "后端" },
+        { "node": "容器", "parent": "基础设施" },
+        { "node": "监控", "parent": "基础设施" }
+      ]
+    },
+    "tooltip": { "trigger": "item", "triggerOn": "mousemove" },
+    "series": [
+      {
+        "type": "tree",
+        "data": [
+          {
+            "name": "软件架构",
+            "children": [
+              {
+                "name": "前端",
+                "children": [
+                  { "name": "Web" },
+                  { "name": "移动端" }
+                ]
+              },
+              {
+                "name": "后端",
+                "children": [
+                  { "name": "API" },
+                  { "name": "数据库" }
+                ]
+              },
+              {
+                "name": "基础设施",
+                "children": [
+                  { "name": "容器" },
+                  { "name": "监控" }
+                ]
+              }
+            ]
+          }
+        ],
+        "left": "10%",
+        "right": "20%",
+        "top": "8%",
+        "bottom": "8%",
+        "symbolSize": 8,
+        "orient": "LR",
+        "label": { "position": "left", "verticalAlign": "middle", "align": "right" },
+        "leaves": { "label": { "position": "right", "verticalAlign": "middle", "align": "left" } },
+        "emphasis": { "focus": "descendant" },
+        "expandAndCollapse": true,
+        "animationDuration": 550,
+        "animationDurationUpdate": 750
+      }
+    ]
+  },
+  "tree_dataset_caveat": "⚠️ ECharts tree 系列使用嵌套层级 data（series.data 是 {name, children:[...]} 的树），不直接消费行式 dataset。本文件的 dataset.source（扁平化节点表）用于：① content.json 数据可追溯；② render_plan_binding 的 encode 校验列名合法。但 option.series[0].data 是手工维护的层级结构，与扁平表语义等价但不自动同步。若数据更新，需同时改 dataset.source（扁平表）和 series.data（层级树）。",
+  "notes": "树图 orient:'LR' 表示从左到右展开。扁平表用 node/parent 描述父子关系，层级树 series.data 是其展开形式。两者必须保持一致。"
+}

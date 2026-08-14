@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-runtime="wise-ppt-specimen" data-typography-mode="mixed" data-page-id="gallery-ai-a1" data-page-role="prove" data-theme="paper-ink" data-layout="paper-ink.evidence.specimen-card" data-layout-source="gallery">
+<head>
+<meta charset="UTF-8">
+<title>layout-a1 · 标本卡 · Agent 幻觉对话</title>
+<link rel="stylesheet" href="../../../../themes/paper-ink/assets/design-tokens.css">
+<link rel="stylesheet" href="../../../../themes/paper-ink/assets/slide-components.css">
+<link rel="stylesheet" href="../../../shell.css">
+<style>
+  svg.scene { position: absolute; inset: 0; z-index: 3; pointer-events: none; }
+
+  /* 标本面板：AI 估分对话原件 */
+  .specimen {
+    position: absolute;
+    left: 500px; top: 161.5px;
+    width: 920px;
+    background: rgba(255,255,255,.22);
+    border: 1px solid rgba(25,25,23,.32);
+    border-radius: 18px;
+    box-shadow: var(--shadow-specimen);
+    overflow: hidden;
+    z-index: 2;
+  }
+  .specbar {
+    display: flex; align-items: center; gap: var(--space-3);
+    padding: var(--space-4) var(--space-6);
+    border-bottom: 1px solid rgba(25,25,23,.25);
+  }
+  .specbar .dot { width: 10px; height: 10px; border-radius: 50%; border: 1px solid rgba(25,25,23,.3); }
+  .specbar .t {
+    font-family: var(--mono); font-size: var(--type-meta); letter-spacing: .25em;
+    color: var(--ink-45); margin-left: var(--space-3);
+  }
+  .specbody { padding: 28px var(--space-8) var(--space-6); }
+
+  .msg { display: flex; gap: var(--space-4); margin-bottom: var(--space-6); align-items: flex-start; }
+  .avatar {
+    flex: none; width: 52px; height: 52px; border-radius: 50%;
+    border: 1px solid rgba(25,25,23,.38);
+    display: grid; place-items: center;
+    font-family: var(--sans); font-weight: 400; font-size: var(--type-label);
+    background: rgba(255,255,255,.22);
+  }
+  .bub {
+    max-width: 740px;
+    padding: var(--space-4) var(--space-6);
+    border: 1px solid rgba(25,25,23,.38);
+    border-radius: 16px;
+    box-shadow: var(--shadow-soft);
+    font-family: var(--sans); font-weight: 300;
+    font-size: var(--type-body); line-height: 1.8;
+  }
+  .msg.user { flex-direction: row-reverse; }
+  .msg.user .bub { border-bottom-right-radius: 4px; font-weight: 400; background: rgba(255,255,255,.22); }
+  .msg.ai .bub { border-bottom-left-radius: 4px; }
+  .bub .sc { font-family: var(--mono); font-size: var(--type-subheading); color: var(--ink); }
+  .bub .rs { color: var(--ink-45); font-size: var(--type-body-small); }
+  .bub .item { display: flex; gap: var(--space-3); margin-top: var(--space-2); }
+  .bub .item .pt { flex: none; padding-top: var(--space-3); font-size: var(--type-micro-secondary); color: var(--ink-45); }
+  .bub .wrong { font-weight: 400; }
+
+  /* 居中手写批注 */
+  .note {
+    position: absolute; left: 50%; top: 697.5px;
+    transform: translateX(-50%) rotate(-1.5deg);
+    text-align: center;
+    z-index: 4;
+    font-family: var(--brush);
+    color: var(--ink);
+  }
+  .note .big { font-size: var(--type-hero); line-height: 1.2; }
+  .note .sub { font-size: var(--type-heading); margin-top: var(--space-2); color: var(--ink-70); }
+
+  .caption {
+    position: absolute; left: 0; right: 0; bottom: 108px;
+    text-align: center;
+    font-family: var(--sans); font-weight: 400;
+    font-size: var(--type-caption); letter-spacing: .04em;
+    color: var(--ink);
+    z-index: 5;
+  }
+
+  /* accent：错处染番茄红（否决/警示语义） */
+  :root.accent .bub .wrong { color: var(--accent-red); }
+  /* accent：居中批注的计算式大字染番茄红 */
+  :root.accent .note .big { color: var(--accent-red); }
+</style>
+</head>
+<body class="slide">
+<div class="stage" data-block-id="gallery-primary" data-renderer-kind="svg" data-component-source="native" data-component-id="native.paper-ink.evidence.specimen-card.evidence" data-content-ref="example.a1">
+  <div class="doc tl">AI ENGINEERING — A1<br>CALCULATION HALLUCINATION</div>
+  <div class="folio">A1 / 63 — BY @歪斯WISE</div>
+
+  <div class="specimen">
+    <div class="specbar">
+      <span class="dot"></span><span class="dot"></span><span class="dot"></span>
+      <span class="t">AI ASSISTANT · CONVERSATION NO.017</span>
+    </div>
+    <div class="specbody">
+      <div class="msg user">
+        <div class="avatar">我</div>
+        <div class="bub">你要是参加高考，能考多少分呢？</div>
+      </div>
+      <div class="msg ai">
+        <div class="avatar">AI</div>
+        <div class="bub">
+          按新高考 750 分制，最贴近真实阅卷的估分：
+          <div class="item"><span class="pt">●</span><div><b>语文</b> <span class="sc" id="wrong">143</span> 分 <span class="rs">—— 基础题近满分，作文缺个人情感与生活体验，扣 17 分</span></div></div>
+          <div class="item"><span class="pt">●</span><div><b>数学</b> <span class="sc">150</span> 分 <span class="rs">—— 计算、推理、步骤都能做到满分</span></div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="note">
+    <div class="big">150 − 17 = 133</div>
+    <div class="sub">不是 143。</div>
+  </div>
+
+  <svg class="scene" width="1920" height="1080" viewBox="0 0 1920 1080">
+    <g id="anno"></g>
+  </svg>
+
+  <div class="caption">语文满分 150，扣 17 分应得 133 分；143 暴露了模型“解释正确、计算错误”的幻觉。</div>
+</div>
+
+<script src="../../../../runtime/stage-fit.js"></script>
+<script src="../../../../themes/paper-ink/assets/particles.js"></script>
+<script>
+/* 细线圈住「143」+ 引线到居中批注（程序化定位） */
+(function(){
+  var NS = 'http://www.w3.org/2000/svg';
+  function el(tag, attrs, parent) {
+    var e = document.createElementNS(NS, tag);
+    for (var k in attrs) e.setAttribute(k, attrs[k]);
+    parent.appendChild(e); return e;
+  }
+  var g = document.getElementById('anno');
+  var t = document.getElementById('wrong').getBoundingClientRect();
+  var s = document.querySelector('.stage').getBoundingClientRect();
+  var k = s.width / 1920;
+  var cx = (t.left + t.width/2 - s.left)/k, cy = (t.top + t.height/2 - s.top)/k;
+  var INK = '#191917';
+  el('ellipse', {cx:cx, cy:cy, rx:t.width/k*.82, ry:t.height/k*.98, fill:'none',
+    stroke:INK, 'stroke-width':2, transform:'rotate(-4 '+cx+' '+cy+')'}, g);
+  el('ellipse', {cx:cx+3, cy:cy+2, rx:t.width/k*.88, ry:t.height/k*1.05, fill:'none',
+    stroke:INK, 'stroke-width':1, opacity:.45, transform:'rotate(6 '+cx+' '+cy+')'}, g);
+  /* 引线向下到批注 */
+  el('path', {d:'M '+(cx+6)+' '+(cy+36)+' C '+(cx+10)+' '+(cy+150)+' '+(cx+90)+' '+(cy+210)+' '+(cx+150)+' 547.5',
+    fill:'none', stroke:INK, 'stroke-width':1.4, 'stroke-linecap':'round'}, g);
+  el('path', {d:'M '+(cx+132)+' 537.5 L '+(cx+152)+' 549.5 L '+(cx+128)+' 557.5',
+    fill:'none', stroke:INK, 'stroke-width':1.4, 'stroke-linecap':'round', 'stroke-linejoin':'round'}, g);
+})();
+
+stageFit();
+</script>
+</body>
+</html>

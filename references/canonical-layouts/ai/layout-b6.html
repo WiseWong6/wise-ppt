@@ -1,0 +1,147 @@
+<!-- GENERATED: Wise PPT formal canonical source; protected Gallery remains provenance-only. -->
+<!DOCTYPE html>
+<html lang="zh-CN" data-runtime="wise-ppt-specimen" data-typography-mode="mixed" data-page-id="gallery-ai-b6" data-page-role="sequence" data-theme="paper-ink" data-layout="paper-ink.temporal.winding-road" data-layout-source="gallery">
+<head>
+<meta charset="UTF-8">
+<title>layout-b6 · 蜿蜒道路时间轴 · 大模型十年</title>
+<link rel="stylesheet" href="../../../../themes/paper-ink/assets/design-tokens.css">
+<link rel="stylesheet" href="../../../../themes/paper-ink/assets/slide-components.css">
+<link rel="stylesheet" href="../../../shell.css">
+<style>
+  svg.scene { position: absolute; inset: 0; z-index: 1; }
+  .doc.tl, .folio { color: var(--ink-45); }
+  .caption {
+    position: absolute; left: 0; right: 0; bottom: 118px;
+    text-align: center;;;;;;
+    z-index: 5;
+  }
+</style>
+</head>
+<body class="slide">
+<div class="stage" data-block-id="gallery-primary" data-renderer-kind="svg" data-component-source="native" data-component-id="native.paper-ink.temporal.winding-road.road-stages" data-content-ref="example.b6" data-anchor-id="stage">
+  <span data-geometry-anchor-holder="year-node-2021" data-anchor-id="year-node-2021" hidden aria-hidden="true"></span><span data-geometry-anchor-holder="road-midline" data-anchor-id="road-midline" hidden aria-hidden="true"></span>
+  <div class="doc tl" data-anchor-id="slot-support">AI ENGINEERING — B6<br>ATTENTION TO AGENTS</div>
+  <div class="folio">01 / 01 — BY @歪斯WISE</div>
+
+  <svg class="scene" width="1920" height="1080" viewBox="0 0 1920 1080">
+    <g id="draw" data-anchor-id="slot-road-stages"></g>
+  </svg>
+
+  <div class="caption" data-anchor-id="slot-takeaway">从 Attention、预训练和 RLHF 走到 Agent，十年演进的下一形态仍未确定。</div>
+
+</div>
+
+<script src="../../../../runtime/stage-fit.js"></script>
+<script src="../../../../themes/paper-ink/assets/particles.js"></script>
+<script>
+var NS = 'http://www.w3.org/2000/svg';
+var INK = __wiseThemeToken("--ink");
+var INK80 = __wiseThemeToken("--ink-80");
+var INK70 = __wiseThemeToken("--ink-70");
+var INK45 = __wiseThemeToken("--ink-45");
+/* accent 触发：读 URL 加类 + 染色常量（详见 design-tokens.md §2） */
+if (location.search.indexOf('accent') >= 0) document.documentElement.classList.add('accent');
+var ACCENT = document.documentElement.classList.contains('accent');
+var RED = getComputedStyle(document.documentElement).getPropertyValue('--accent-red').trim();
+var G = document.getElementById('draw');
+function el(tag, attrs) {
+  var e = document.createElementNS(NS, tag);
+  for (var k in attrs) e.setAttribute(k, attrs[k]);
+  G.appendChild(e); return e;
+}
+function txt(x, y, str, attrs) {
+  var t = el('text', Object.assign({x:x, y:y}, attrs||{}));
+  t.textContent = str; return t;
+}
+var MONO = 'var(--mono)', SANS = 'var(--sans)';
+
+G = el('g', {transform:'translate(0 -36.8)'});
+
+
+/* ---------- 主角：S 形道路带（大模型十年演进路） ---------- */
+var SEG = [
+  [[140,838],[420,805],[560,758],[720,688]],
+  [[720,688],[880,616],[1000,520],[1160,446]],
+  [[1160,446],[1330,366],[1520,300],[1780,262]]
+];
+function bez(p, u){ var v = 1-u; return [
+  v*v*v*p[0][0]+3*v*v*u*p[1][0]+3*v*u*u*p[2][0]+u*u*u*p[3][0],
+  v*v*v*p[0][1]+3*v*v*u*p[1][1]+3*v*u*u*p[2][1]+u*u*u*p[3][1]]; }
+function bezD(p, u){ var v = 1-u; return [
+  3*v*v*(p[1][0]-p[0][0])+6*v*u*(p[2][0]-p[1][0])+3*u*u*(p[3][0]-p[2][0]),
+  3*v*v*(p[1][1]-p[0][1])+6*v*u*(p[2][1]-p[1][1])+3*u*u*(p[3][1]-p[2][1])]; }
+function cpoint(t){ var s = Math.min(2, Math.floor(t*3)); return bez(SEG[s], t*3-s); }
+function cnorm(t){ var s = Math.min(2, Math.floor(t*3)); var d = bezD(SEG[s], t*3-s);
+  var l = Math.hypot(d[0], d[1]); return [-d[1]/l, d[0]/l]; }
+function halfw(t){ return 56 - 14*t; }            /* 带宽 112 → 84，随透视微变 */
+
+function strip(t0, t1, side){                     /* 路带边缘采样折线 */
+  var d = '', n = 60;
+  for (var i = 0; i <= n; i++){
+    var t = t0 + (t1-t0)*i/n, p = cpoint(t), m = cnorm(t), h = halfw(t)*side;
+    d += (i ? ' L ' : 'M ') + (p[0]+m[0]*h).toFixed(1) + ' ' + (p[1]+m[1]*h).toFixed(1);
+  }
+  return d;
+}
+function midline(t0, t1){
+  var d = '', n = 60;
+  for (var i = 0; i <= n; i++){
+    var p = cpoint(t0 + (t1-t0)*i/n);
+    d += (i ? ' L ' : 'M ') + p[0].toFixed(1) + ' ' + p[1].toFixed(1);
+  }
+  return d;
+}
+
+var T_SPLIT = 0.83;                               /* 已行驶 / 未来段分界 */
+/* 路带双线轮廓：走过段实线，未来段渐虚 */
+[-1, 1].forEach(function(s){
+  el('path', {d:strip(0, T_SPLIT, s), fill:'none', stroke:INK80, 'stroke-width':1.3});
+  el('path', {d:strip(T_SPLIT, 1, s), fill:'none', stroke:INK, 'stroke-width':1, opacity:.55, 'stroke-dasharray':'7 6'});
+});
+/* 中央分道线：走过段为本页唯一强调线，未来段疏虚 */
+el('path', {d:midline(0, T_SPLIT), fill:'none', stroke:INK, 'stroke-width':2.2});
+el('path', {d:midline(T_SPLIT, 1), fill:'none', stroke:INK, 'stroke-width':1, opacity:.4, 'stroke-dasharray':'3 9'});
+
+/* 起讫套准十字 */
+[cpoint(0), cpoint(1)].forEach(function(p){
+  el('line', {x1:p[0]-10, y1:p[1], x2:p[0]+10, y2:p[1], stroke:INK, 'stroke-width':.8, opacity:.4});
+  el('line', {x1:p[0], y1:p[1]-10, x2:p[0], y2:p[1]+10, stroke:INK, 'stroke-width':.8, opacity:.4});
+});
+
+/* ---------- 年份节点 + 交替注记 ---------- */
+var notes = [
+  {t:.10, yr:'2014', en:'ATTENTION MECHANISM', ti:'Attention 机制', tx:'序列建模对齐走向，长程依赖被打通'},
+  {t:.28, yr:'2017', en:'TRANSFORMER',         ti:'Transformer',   tx:'完全自注意架构，并行训练成为可能'},
+  {t:.46, yr:'2018', en:'PRETRAIN ERA',        ti:'预训练时代',     tx:'BERT / GPT 双线登场，迁移学习爆发'},
+  {t:.62, yr:'2022', en:'RLHF',                ti:'RLHF 对齐',     tx:'人类反馈强化学习，对齐走向可用'},
+  {t:.80, yr:'2024', en:'AGENT',               ti:'Agent 上线',    tx:'模型开始调用工具，任务闭环成形'},
+  {t:.94, yr:'2026', en:'FUTURE · UNKNOWN',    ti:'? 未来',        tx:'下一形态未定，路还在延伸'}
+];
+notes.forEach(function(N, i){
+  var p = cpoint(N.t);
+  var above = (i % 2 === 0);
+  var future = (i === notes.length - 1);
+  /* 节点：双圈 + 实心核 */
+  el('circle', {cx:p[0], cy:p[1], r:9, fill:__wiseThemeToken("--paper"), stroke: future && ACCENT ? RED : INK80, 'stroke-width':1.2});
+  el('circle', {cx:p[0], cy:p[1], r:5, fill:'none', stroke: future && ACCENT ? RED : INK, 'stroke-width':.6, opacity:.5});
+  el('circle', {cx:p[0], cy:p[1], r:2.2, fill: future && ACCENT ? RED : INK});
+  /* 注记块（上下交替） */
+  var ax = Math.max(430, Math.min(1500, p[0]));
+  var yEn = p[1] + (above ? -152 : 98);
+  var yYr = p[1] + (above ? -124 : 124);
+  var yTx = p[1] + (above ? -96  : 148);
+  /* 引线：虚线 + 中点小圆点 */
+  var ly = above ? yTx + 8 : yEn - 6;
+  el('line', {x1:p[0], y1:p[1] + (above ? -11 : 11), x2:ax, y2:ly, stroke:INK, 'stroke-width':.7, opacity:.45, 'stroke-dasharray':'3 5'});
+  el('circle', {cx:(p[0]+ax)/2, cy:(p[1]+ly)/2, r:2.4, fill:INK, opacity:.6});
+  /* 三行：mono EN 标签 → 年份+中文标题 → 注 */
+  txt(ax, yEn, N.en, {'font-family':MONO, 'font-size':'var(--type-micro-secondary)', 'letter-spacing':2, 'text-anchor':'middle', fill:INK45});
+  txt(ax-8, yYr, N.yr, {'font-family':MONO, 'font-size':'var(--type-body)', 'letter-spacing':2, 'text-anchor':'end', fill: future && ACCENT ? RED : INK});
+  txt(ax+8, yYr, N.ti, {'font-family':SANS, 'font-weight':300, 'font-size':'var(--type-body)', 'text-anchor':'start', fill: future && ACCENT ? RED : INK});
+  txt(ax, yTx, N.tx, {'font-family':SANS, 'font-weight':300, 'font-size':'var(--type-body-small)', 'text-anchor':'middle', fill: future && ACCENT ? RED : INK70});
+});
+
+stageFit();
+</script>
+</body>
+</html>

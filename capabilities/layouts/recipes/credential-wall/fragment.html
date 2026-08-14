@@ -1,0 +1,93 @@
+<section class="slide"
+  {{WISE_PPT_PAGE_ATTRS}}>
+  <style>
+    [data-recipe-id="paper-ink.evidence.credential-wall"] svg.scene{position:absolute;inset:0;z-index:1}
+  </style>
+  <div class="stage" data-anchor-id="stage">
+    <svg class="scene" width="1920" height="1080" viewBox="0 0 1920 1080">
+      <g transform="translate(0 -31.2)" data-a6-root data-anchor-id="a6-main"
+        data-slot-id="credentials" data-block-id="block.skeleton.a6.credentials"
+        data-renderer-kind="svg" data-component-source="native"
+        data-component-id="native.paper-ink.evidence.credential-wall.credentials">
+        <g data-anchor-id="a6-left" data-a6-left>
+          <rect data-anchor-id="a6-left-top" data-contract-guide x="150" y="210" width="610" height="1" opacity="0"/>
+          <g data-anchor-id="a6-badge" data-a6-badge>
+            <g data-anchor-id="a6-badge-copy" data-a6-badge-copy></g>
+          </g>
+          <rect data-anchor-id="a6-left-bottom" data-contract-guide x="150" y="830" width="610" height="15" opacity="0"/>
+          <g data-anchor-id="a6-badge-detail" data-a6-detail></g>
+        </g>
+        <g data-anchor-id="a6-wall" data-a6-wall></g>
+      </g>
+    </svg>
+    <div class="doc tl" data-anchor-id="a6-support"
+      data-slot-id="support" data-block-id="block.skeleton.a6.support"
+      data-renderer-kind="typography" data-component-source="native"
+      data-component-id="native.paper-ink.evidence.credential-wall.support">产品 · 方案 — A6<br>服务资质与交付能力</div>
+    <div class="folio"></div>
+    <div class="caption" data-anchor-id="a6-takeaway"
+      data-slot-id="takeaway" data-block-id="block.skeleton.a6.takeaway"
+      data-renderer-kind="typography" data-component-source="native"
+      data-component-id="native.paper-ink.evidence.credential-wall.takeaway"></div>
+  </div>
+  <script type="application/json" data-recipe-payload>{{WISE_PPT_PAYLOAD_JSON}}</script>
+  <script>
+  (function(){
+    var slide=document.currentScript.closest('.slide');
+    var payload=JSON.parse(slide.querySelector('[data-recipe-payload]').textContent);
+    var NS='http://www.w3.org/2000/svg',INK=WisePPT.color('primary'),INK80=WisePPT.color('functional'),INK55=WisePPT.color('chart-label'),INK45=WisePPT.color('metadata'),PANEL=WisePPT.color('surface-panel');
+    var MONO='var(--mono)',SANS='var(--sans)';
+    var left=slide.querySelector('[data-a6-left]');
+    var badge=slide.querySelector('[data-a6-badge]');
+    var copy=slide.querySelector('[data-a6-badge-copy]');
+    var detail=slide.querySelector('[data-a6-detail]');
+    var wall=slide.querySelector('[data-a6-wall]');
+    function el(target,tag,attrs){var e=document.createElementNS(NS,tag);Object.keys(attrs).forEach(function(k){e.setAttribute(k,attrs[k]);});target.appendChild(e);return e;}
+    function txt(target,x,y,value,attrs){var t=el(target,'text',Object.assign({x:x,y:y},attrs||{}));t.textContent=value;return t;}
+
+    txt(left,150,221,payload.support,{'font-family':MONO,'font-size':'var(--type-meta)','letter-spacing':2,fill:INK55});
+    txt(left,150,257,payload.heading,{'font-family':SANS,'font-weight':300,'font-size':'var(--type-subheading)',fill:INK});
+    el(left,'line',{x1:150,y1:306,x2:330,y2:306,stroke:INK,'stroke-width':.8,opacity:.5});
+
+    var BC={x:460,y:560};
+    el(badge,'circle',{cx:BC.x,cy:BC.y,r:182,fill:'none',stroke:INK,'stroke-width':.5,'stroke-dasharray':'2 6',opacity:.28});
+    el(badge,'circle',{cx:BC.x,cy:BC.y,r:160,fill:PANEL,stroke:INK80,'stroke-width':1.3});
+    el(badge,'circle',{cx:BC.x,cy:BC.y,r:150,fill:'none',stroke:INK,'stroke-width':.6,opacity:.35});
+    el(badge,'circle',{cx:BC.x,cy:BC.y,r:96,fill:'none',stroke:INK80,'stroke-width':1.2});
+    el(badge,'circle',{cx:BC.x,cy:BC.y,r:90,fill:'none',stroke:INK,'stroke-width':.6,opacity:.3});
+    [-1,1].forEach(function(side){
+      el(badge,'path',{d:'M '+(BC.x+side*40)+' '+(BC.y+128)+' A 122 122 0 0 '+(side<0?1:0)+' '+(BC.x+side*118)+' '+(BC.y-46),fill:'none',stroke:INK,'stroke-width':.8,opacity:.55});
+      for(var i=0;i<7;i++){var a=(68+i*14)*Math.PI/180,px=BC.x+side*Math.cos(a)*122,py=BC.y+Math.sin(a)*122;el(badge,'line',{x1:px,y1:py,x2:px+side*10,y2:py-12,stroke:INK,'stroke-width':.7,opacity:.5});}
+    });
+    txt(copy,BC.x,BC.y-105,'SERVICE DELIVERY',{'font-family':MONO,'font-size':'var(--type-meta)','letter-spacing':3,'text-anchor':'middle',fill:INK});
+    el(copy,'line',{x1:BC.x-52,y1:BC.y-98,x2:BC.x+52,y2:BC.y-98,stroke:INK,'stroke-width':.6,opacity:.4});
+    el(copy,'path',{d:'M '+BC.x+' '+(BC.y-78)+' l 7 12 l -7 12 l -7 -12 Z',fill:'none',stroke:INK80,'stroke-width':1});
+    txt(copy,BC.x,BC.y+8,payload.badge.value,{'font-family':MONO,'font-size':'var(--type-subheading)','letter-spacing':4,'text-anchor':'middle',fill:INK});
+    txt(badge,BC.x,776,payload.badge.label,{'font-family':SANS,'font-weight':300,'font-size':'var(--type-body)','text-anchor':'middle',fill:INK});
+
+    el(detail,'line',{x1:150,y1:821,x2:262,y2:821,stroke:INK,'stroke-width':.6,opacity:.35});
+    txt(detail,150,839,payload.badge.detail,{'font-family':MONO,'font-size':'var(--type-micro-secondary)','letter-spacing':2,fill:INK45});
+
+    function badgeGlyph(target,cx,cy,s,style){
+      if(style===0){el(target,'circle',{cx:cx,cy:cy,r:s,fill:'none',stroke:INK80,'stroke-width':1});}
+      else if(style===1){el(target,'circle',{cx:cx,cy:cy,r:s,fill:'none',stroke:INK80,'stroke-width':1});el(target,'circle',{cx:cx,cy:cy,r:s-5,fill:'none',stroke:INK,'stroke-width':.6,opacity:.4});el(target,'circle',{cx:cx,cy:cy,r:2,fill:INK});}
+      else if(style===2){var p='';for(var i=0;i<6;i++){var a=Math.PI/6+i*Math.PI/3;p+=(i?' L ':'M ')+(cx+Math.cos(a)*s)+' '+(cy+Math.sin(a)*s);}el(target,'path',{d:p+' Z',fill:'none',stroke:INK80,'stroke-width':1});}
+      else if(style===3){el(target,'path',{d:'M '+cx+' '+(cy-s)+' L '+(cx+s)+' '+cy+' L '+cx+' '+(cy+s)+' L '+(cx-s)+' '+cy+' Z',fill:'none',stroke:INK80,'stroke-width':1});el(target,'line',{x1:cx-s-8,y1:cy+s+6,x2:cx+s+8,y2:cy+s+6,stroke:INK,'stroke-width':.6,opacity:.45});}
+      else{el(target,'circle',{cx:cx,cy:cy,r:s,fill:'none',stroke:INK80,'stroke-width':1});el(target,'path',{d:'M '+(cx-s-4)+' '+(cy+6)+' A '+(s+5)+' '+(s+5)+' 0 0 1 '+(cx-s+2)+' '+(cy-s-2),fill:'none',stroke:INK,'stroke-width':.7,opacity:.5});el(target,'path',{d:'M '+(cx+s+4)+' '+(cy+6)+' A '+(s+5)+' '+(s+5)+' 0 0 0 '+(cx+s-2)+' '+(cy-s-2),fill:'none',stroke:INK,'stroke-width':.7,opacity:.5});}
+    }
+    function cert(target,x,y,w,h,item,style){
+      el(target,'rect',{x:x,y:y,width:w,height:h,fill:PANEL,stroke:INK,'stroke-width':1,opacity:.75});
+      el(target,'rect',{x:x+4,y:y+4,width:w-8,height:h-8,fill:'none',stroke:INK,'stroke-width':.6,opacity:.3});
+      badgeGlyph(target,x+w/2,y+58,22,style);
+      [0,1,2].forEach(function(i){var lw=w-64-i*22;el(target,'line',{x1:x+(w-lw)/2,y1:y+104+i*13,x2:x+(w+lw)/2,y2:y+104+i*13,stroke:INK,'stroke-width':.6,opacity:.28});});
+      txt(target,x+w/2,y+162,item.title,{'font-family':MONO,'font-size':'var(--type-micro-secondary)','letter-spacing':1,'text-anchor':'middle',fill:INK});
+      txt(target,x+w/2,y+181,item.meta,{'font-family':MONO,'font-size':'var(--type-micro-secondary)','letter-spacing':1,'text-anchor':'middle',fill:INK45});
+    }
+    el(wall,'rect',{'data-contract-guide':'',x:880,y:210,width:880,height:635,opacity:0});
+    var styles=[1,4,2,0,3,2,1,4,0,3,2,4],CW=205,CH=195;
+    payload.credentials.forEach(function(item,index){cert(wall,880+(index%4)*225,210+Math.floor(index/4)*220,CW,CH,item,styles[index]);});
+    slide.querySelector('.caption').textContent=payload.takeaway;
+    WisePPT.markSlideReady(slide);
+  })();
+  </script>
+</section>

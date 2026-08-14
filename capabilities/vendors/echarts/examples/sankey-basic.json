@@ -1,0 +1,79 @@
+{
+  "example_id": "echarts.sankey-basic",
+  "title": "基础桑基图",
+  "source_url": "https://echarts.apache.org/examples/zh/index.html#chart-type-sankey",
+  "upstream_license": "Apache-2.0",
+  "chart_type": "sankey",
+  "source_note": "改编自 Apache ECharts 官方示例 sankey-energy。桑基图需要 nodes 与 links 两类数据；本文件用一张行式表描述 link 流向（source→target→value），nodes 从 link 端点推导。",
+  "dataset_shape": {
+    "dimensions": ["source", "target", "value"],
+    "source": [
+      { "source": "原始能源", "target": "电力", "value": 5 },
+      { "source": "原始能源", "target": "损耗", "value": 1 },
+      { "source": "电力", "target": "工业", "value": 2 },
+      { "source": "电力", "target": "民用", "value": 2 },
+      { "source": "电力", "target": "损耗", "value": 1 },
+      { "source": "工业", "target": "最终消费", "value": 2 },
+      { "source": "民用", "target": "最终消费", "value": 2 }
+    ]
+  },
+  "render_plan_binding": {
+    "renderer_kind": "svg",
+    "component_source": "echarts",
+    "component_id": "echarts.sankey-basic",
+    "theme_adapter_id": "paper-ink.echarts",
+    "data_binding": {
+      "data_ref": {
+        "content_id": "item.energy-flow",
+        "json_pointer": "/structured_data/rows"
+      },
+      "dataset_id": "dataset.sankey-basic",
+      "encode": { "source": "source", "target": "target", "value": "value" }
+    }
+  },
+  "html_template": {
+    "container_attrs": "data-block-id=\"block.main\" data-renderer-kind=\"svg\" data-component-source=\"echarts\" data-component-id=\"echarts.sankey-basic\" data-theme-adapter-id=\"paper-ink.echarts\" data-content-ref=\"item.energy-flow\" data-dataset-id=\"dataset.sankey-basic\"",
+    "dataset_script_id": "dataset.sankey-basic"
+  },
+  "option": {
+    "dataset": {
+      "dimensions": ["source", "target", "value"],
+      "source": [
+        { "source": "原始能源", "target": "电力", "value": 5 },
+        { "source": "原始能源", "target": "损耗", "value": 1 },
+        { "source": "电力", "target": "工业", "value": 2 },
+        { "source": "电力", "target": "民用", "value": 2 },
+        { "source": "电力", "target": "损耗", "value": 1 },
+        { "source": "工业", "target": "最终消费", "value": 2 },
+        { "source": "民用", "target": "最终消费", "value": 2 }
+      ]
+    },
+    "tooltip": { "trigger": "item", "triggerOn": "mousemove" },
+    "series": [
+      {
+        "type": "sankey",
+        "data": [
+          { "name": "原始能源" },
+          { "name": "电力" },
+          { "name": "损耗" },
+          { "name": "工业" },
+          { "name": "民用" },
+          { "name": "最终消费" }
+        ],
+        "links": [
+          { "source": "原始能源", "target": "电力", "value": 5 },
+          { "source": "原始能源", "target": "损耗", "value": 1 },
+          { "source": "电力", "target": "工业", "value": 2 },
+          { "source": "电力", "target": "民用", "value": 2 },
+          { "source": "电力", "target": "损耗", "value": 1 },
+          { "source": "工业", "target": "最终消费", "value": 2 },
+          { "source": "民用", "target": "最终消费", "value": 2 }
+        ],
+        "emphasis": { "focus": "adjacency" },
+        "lineStyle": { "color": "gradient", "curveness": 0.5 }
+      }
+    ]
+  },
+  "sankey_dataset_caveat": "⚠️ ECharts sankey 系列需要 series.data（nodes 列表）和 series.links（流向列表）两个独立结构，不直接消费行式 dataset。本文件的 dataset.source 是 link 流向表；option.series[0].data（nodes）从 link 的端点推导得出，links 直接复制 link 表。三者必须保持一致：dataset.source == option.series[0].links，nodes 覆盖所有 link 端点。",
+  "notes": "桑基图描述流量/能量流转。行式表用 source/target/value 描述每条流，nodes 列表是去重的节点名集合。data 与 links 不自动同步，数据更新时三处都要改。"
+}

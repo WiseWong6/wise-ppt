@@ -1,0 +1,1018 @@
+{
+  "canonical": {
+    "constraints": {
+      "css_scope": "[data-implementation-id=\"paper-ink.comparison.watershed-columns.ai\"]",
+      "external_links": false,
+      "external_scripts": false,
+      "payload_only_mutation": true,
+      "ready_api": "WisePPT.markSlideReady",
+      "script_query_scope": "current-section.slide",
+      "stage_fit": false
+    },
+    "kind": "derived-frame",
+    "materialization_format": "wise-ppt-formal-slide@1",
+    "path": "gallery/paper-ink/ai/frames/layout-e2.html",
+    "root_selector": "section.slide[data-implementation-id=\"paper-ink.comparison.watershed-columns.ai\"]",
+    "sha256": "sha256:91351ff3c72a9f54372d8accbb6c572ce40905c05ce9c44147e8a769a6ba4996"
+  },
+  "canonical_fingerprint": "sha256:34758beabf7bff24849e53602e50ad17fde8e0097673fe4b974ccaacb6f4d5dc",
+  "contract_version": 1,
+  "dependency_closure": {
+    "files": [
+      {
+        "path": "gallery/shell.css",
+        "sha256": "sha256:aca1428680d2dd5c84e85d66241ee199a16d36bb60a098340528943fb5469f69"
+      },
+      {
+        "path": "runtime/stage-fit.js",
+        "sha256": "sha256:39577a14aac5072789fdeb80abee887d24da5a44eeb38203ef154602330f291d"
+      },
+      {
+        "path": "themes/paper-ink/assets/design-tokens.css",
+        "sha256": "sha256:3f1f0d3562cf1486b87643b16025388557000858d0df13d767b53a576988c330"
+      },
+      {
+        "path": "themes/paper-ink/assets/fonts/CourierPrime-Regular.ttf",
+        "sha256": "sha256:72f793376f8e2841656bf21d77a5de010f2929bd6956a22ee848ad0c7eb978af"
+      },
+      {
+        "path": "themes/paper-ink/assets/fonts/LXGWWenKai-Regular.ttf",
+        "sha256": "sha256:39ad71264b588165b469e35e6afb162a378dacd1f95348160240ba9038ac3009"
+      },
+      {
+        "path": "themes/paper-ink/assets/fonts/SourceHanSansCN-Light.otf",
+        "sha256": "sha256:b6dfc945aae0daf9b15019f59c2f7b18d17da3b92f00c3ec32fb5f0333696d9c"
+      },
+      {
+        "path": "themes/paper-ink/assets/fonts/SourceHanSerifCN-Medium.otf",
+        "sha256": "sha256:8e224937647ae71ba1b1f310bcb3fbc32f21ec7c2c490ba04670455c901f3378"
+      },
+      {
+        "path": "themes/paper-ink/assets/particles.js",
+        "sha256": "sha256:1281d72e81b34e4be061286edd323dd421443dffbf6e0d8a2faa94a5d14094c4"
+      },
+      {
+        "path": "themes/paper-ink/assets/slide-components.css",
+        "sha256": "sha256:20e7334fe5ae51cb229112290e787c1274ad65278a72b084c708682dc9ca5acf"
+      }
+    ],
+    "sha256": "sha256:7dcc6f0ac681be95cc8955afb36da97027f341a98f4f9f37518e37bfe13f5be4"
+  },
+  "format": "wise-ppt-layout-implementation@1",
+  "geometry": {
+    "anchors": [
+      {
+        "anchor_id": "stage",
+        "selector": ".stage"
+      }
+    ],
+    "canvas": {
+      "height": 1080,
+      "width": 1920
+    },
+    "content_region": {
+      "height": 1080,
+      "width": 1920,
+      "x": 0,
+      "y": 0
+    },
+    "fingerprint": "sha256:c04d1e81b37183c6f6358af83ef0887fa221820d45880025836445aa6361b6be",
+    "format": "wise-ppt-layout-geometry@1",
+    "relations": [],
+    "structure_contract": {
+      "core_primitives": [
+        "bilateral-split"
+      ],
+      "region_count": 3,
+      "required_slot_ids": [
+        "comparison-fields"
+      ]
+    }
+  },
+  "implementation_id": "paper-ink.comparison.watershed-columns.ai",
+  "payload": {
+    "fields": [
+      {
+        "constraints": {
+          "pattern": "^(?!.*[\\u3400-\\u9fff]).+$"
+        },
+        "context": "html:div.doc.tl",
+        "default": "AI ENGINEERING — E2",
+        "field_id": "html.text.001",
+        "kind": "html_text",
+        "max_length": 25,
+        "semantic_role": "mono-label",
+        "span": {
+          "kind": "html_text",
+          "occurrence": 1,
+          "token_sha256": "sha256:44ccca72fe41daa513261d10e36750bc21ac15112a8a20db13eab96dd3b9e47c"
+        },
+        "type": "string"
+      },
+      {
+        "constraints": {
+          "pattern": "^(?!.*[\\u3400-\\u9fff]).+$"
+        },
+        "context": "html:div.doc.tl",
+        "default": "RAG VS FINETUNE",
+        "field_id": "html.text.002",
+        "kind": "html_text",
+        "max_length": 20,
+        "semantic_role": "mono-label",
+        "span": {
+          "kind": "html_text",
+          "occurrence": 2,
+          "token_sha256": "sha256:c1e6dc22c46f14e5a6db9b41e46e8d6eb73ef2f22ef2d6709f396fb080fd6715"
+        },
+        "type": "string"
+      },
+      {
+        "constraints": {
+          "pattern": "^\\d{1,3} / \\d{1,3} — BY .{1,40}$"
+        },
+        "context": "html:div.folio",
+        "default": "01 / 01 — BY WISE PPT",
+        "field_id": "html.text.003",
+        "kind": "html_text",
+        "max_length": 26,
+        "semantic_role": "folio",
+        "source_default": "E2 / 63 — BY @歪斯WISE",
+        "span": {
+          "kind": "html_text",
+          "occurrence": 3,
+          "token_sha256": "sha256:9d030dd56311e155f347618e54d25777e9510a25e940d14bc831479ce00f10f2"
+        },
+        "type": "string"
+      },
+      {
+        "context": "html:div.caption",
+        "default": "RAG 适合频繁变化的知识，微调适合稳定重复的任务；更新频率决定技术选择。",
+        "field_id": "html.text.004",
+        "kind": "html_text",
+        "max_length": 49,
+        "span": {
+          "kind": "html_text",
+          "occurrence": 4,
+          "token_sha256": "sha256:b808c53e985f5add100bf01338f16d83c0c0f59485ea25361c3f5a33c57ead12"
+        },
+        "type": "string"
+      },
+      {
+        "constraints": {
+          "pattern": "^(?!.*[\\u3400-\\u9fff]).+$"
+        },
+        "context": "inline-script[1]:call:txt[2]",
+        "default": "VS",
+        "field_id": "script.literal.001",
+        "kind": "script_literal",
+        "max_length": 6,
+        "semantic_role": "mono-label",
+        "span": {
+          "kind": "script_literal",
+          "occurrence": 1,
+          "quote": "'",
+          "script_index": 1,
+          "sink": "call:txt[2]",
+          "token_sha256": "sha256:234241b391becb7940c5a692ed8bd8a55b82c3b7df5d23484aab705f26382fe9"
+        },
+        "type": "string"
+      },
+      {
+        "constraints": {
+          "pattern": "^(?!.*[\\u3400-\\u9fff]).+$"
+        },
+        "context": "inline-script[1]:call:txt[2]",
+        "default": "RAG × FINETUNE",
+        "field_id": "script.literal.002",
+        "kind": "script_literal",
+        "max_length": 18,
+        "semantic_role": "mono-label",
+        "span": {
+          "kind": "script_literal",
+          "occurrence": 2,
+          "quote": "'",
+          "script_index": 1,
+          "sink": "call:txt[2]",
+          "token_sha256": "sha256:089a1a72fd3a72b831424901fa0a7f6cef50855d130f4a11ba29b23126442c75"
+        },
+        "type": "string"
+      },
+      {
+        "context": "inline-script[1]:object-key:title",
+        "default": "RAG · 来一条查一条",
+        "field_id": "script.literal.003",
+        "kind": "script_literal",
+        "max_length": 16,
+        "span": {
+          "kind": "script_literal",
+          "occurrence": 3,
+          "quote": "'",
+          "script_index": 1,
+          "sink": "object-key:title",
+          "token_sha256": "sha256:9384242e8f79aff42c06cec99ebabdcc2440112242ee109dc46eb2d64fd4baab"
+        },
+        "type": "string"
+      },
+      {
+        "constraints": {
+          "pattern": "^(?!.*[\\u3400-\\u9fff]).+$"
+        },
+        "context": "inline-script[1]:object-key:tag",
+        "default": "MODE: RETRIEVE · LATENCY: 200 MS",
+        "field_id": "script.literal.004",
+        "kind": "script_literal",
+        "max_length": 42,
+        "semantic_role": "mono-label",
+        "span": {
+          "kind": "script_literal",
+          "occurrence": 4,
+          "quote": "'",
+          "script_index": 1,
+          "sink": "object-key:tag",
+          "token_sha256": "sha256:592b5dae0a5da620ec6f2d0b5419c933cbba5729da4d425b6d7f3094170a56ca"
+        },
+        "type": "string"
+      },
+      {
+        "context": "inline-script[1]:object-key:label",
+        "default": "触发时机",
+        "field_id": "script.literal.005",
+        "kind": "script_literal",
+        "max_length": 8,
+        "span": {
+          "kind": "script_literal",
+          "occurrence": 5,
+          "quote": "'",
+          "script_index": 1,
+          "sink": "object-key:label",
+          "token_sha256": "sha256:0a783c59def014692a7d33cf44852f8c3a353a6661bb888a7c14bb2623376964"
+        },
+        "type": "string"
+      },
+      {
+        "constraints": {
+          "pattern": "^(?!.*[\\u3400-\\u9fff]).+$"
+        },
+        "context": "inline-script[1]:object-key:code",
+        "default": "TRIGGER",
+        "field_id": "script.literal.006",
+        "kind": "script_literal",
+        "max_length": 11,
+        "semantic_role": "mono-label",
+        "span": {
+          "kind": "script_literal",
+          "occurrence": 6,
+          "quote": "'",
+          "script_index": 1,
+          "sink": "object-key:code",
+          "token_sha256": "sha256:e1ff200ba342eb4da81efac42e6d5e689effab1c63ccb4a0ce29a77fd4d4b87f"
+        },
+        "type": "string"
+      },
+      {
+        "context": "inline-script[1]:object-key:label",
+        "default": "更新成本",
+        "field_id": "script.literal.007",
+        "kind": "script_literal",
+        "max_length": 8,
+        "span": {
+          "kind": "script_literal",
+          "occurrence": 7,
+          "quote": "'",
+          "script_index": 1,
+          "sink": "object-key:label",
+          "token_sha256": "sha256:45e8cb1351fb7c7162770bdca82fed408ed400922a8eb3057ef5a9da4092c6d6"
+        },
+        "type": "string"
+      },
+      {
+        "constraints": {
+          "pattern": "^(?!.*[\\u3400-\\u9fff]).+$"
+        },
+        "context": "inline-script[1]:object-key:code",
+        "default": "UPDATE",
+        "field_id": "script.literal.008",
+        "kind": "script_literal",
+        "max_length": 10,
+        "semantic_role": "mono-label",
+        "span": {
+          "kind": "script_literal",
+          "occurrence": 8,
+          "quote": "'",
+          "script_index": 1,
+          "sink": "object-key:code",
+          "token_sha256": "sha256:afce0625d957666fcd8502118a1e2b3b01ac36eab9393747ab2235be0270d7cc"
+        },
+        "type": "string"
+      },
+      {
+        "context": "inline-script[1]:object-key:label",
+        "default": "知识时效",
+        "field_id": "script.literal.009",
+        "kind": "script_literal",
+        "max_length": 8,
+        "span": {
+          "kind": "script_literal",
+          "occurrence": 9,
+          "quote": "'",
+          "script_index": 1,
+          "sink": "object-key:label",
+          "token_sha256": "sha256:d16694290b70944458e606a0ffb1eceea52535d7cd9f3d290176b149805a6995"
+        },
+        "type": "string"
+      },
+      {
+        "constraints": {
+          "pattern": "^(?!.*[\\u3400-\\u9fff]).+$"
+        },
+        "context": "inline-script[1]:object-key:code",
+        "default": "FRESH",
+        "field_id": "script.literal.010",
+        "kind": "script_literal",
+        "max_length": 9,
+        "semantic_role": "mono-label",
+        "span": {
+          "kind": "script_literal",
+          "occurrence": 10,
+          "quote": "'",
+          "script_index": 1,
+          "sink": "object-key:code",
+          "token_sha256": "sha256:065338ec4f9ed8ddc1c6f95a7c2986e03d83bba8174b413311b4d8243d79470f"
+        },
+        "type": "string"
+      },
+      {
+        "context": "inline-script[1]:object-key:label",
+        "default": "适用场景",
+        "field_id": "script.literal.011",
+        "kind": "script_literal",
+        "max_length": 8,
+        "span": {
+          "kind": "script_literal",
+          "occurrence": 11,
+          "quote": "'",
+          "script_index": 1,
+          "sink": "object-key:label",
+          "token_sha256": "sha256:21fba5210e184ab0a6db29ce1a451f1591efa33680873be871d66bb3b67708ce"
+        },
+        "type": "string"
+      },
+      {
+        "constraints": {
+          "pattern": "^(?!.*[\\u3400-\\u9fff]).+$"
+        },
+        "context": "inline-script[1]:object-key:code",
+        "default": "SCENE",
+        "field_id": "script.literal.012",
+        "kind": "script_literal",
+        "max_length": 9,
+        "semantic_role": "mono-label",
+        "span": {
+          "kind": "script_literal",
+          "occurrence": 12,
+          "quote": "'",
+          "script_index": 1,
+          "sink": "object-key:code",
+          "token_sha256": "sha256:81fc70618fd3c20d41e825001f170e20ff1e1b60d123165539e0062c1b2b381a"
+        },
+        "type": "string"
+      },
+      {
+        "context": "inline-script[1]:object-key:title",
+        "default": "微调 · 攒一批训一次",
+        "field_id": "script.literal.013",
+        "kind": "script_literal",
+        "max_length": 15,
+        "span": {
+          "kind": "script_literal",
+          "occurrence": 13,
+          "quote": "'",
+          "script_index": 1,
+          "sink": "object-key:title",
+          "token_sha256": "sha256:0254f67c8f580176640a2f5838bceffe2249ffc8bd0554aec6e2e7059c4b06dc"
+        },
+        "type": "string"
+      },
+      {
+        "context": "inline-script[1]:object-key:tag",
+        "default": "MODE: FINETUNE · CYCLE: 数日",
+        "field_id": "script.literal.014",
+        "kind": "script_literal",
+        "max_length": 34,
+        "span": {
+          "kind": "script_literal",
+          "occurrence": 14,
+          "quote": "'",
+          "script_index": 1,
+          "sink": "object-key:tag",
+          "token_sha256": "sha256:f00905972d2fbc5f86d38f4a5db3f85e01c96cb1c7b292697bf9497451faa0c5"
+        },
+        "type": "string"
+      },
+      {
+        "context": "inline-script[1]:object-key:label",
+        "default": "触发时机",
+        "field_id": "script.literal.015",
+        "kind": "script_literal",
+        "max_length": 8,
+        "span": {
+          "kind": "script_literal",
+          "occurrence": 15,
+          "quote": "'",
+          "script_index": 1,
+          "sink": "object-key:label",
+          "token_sha256": "sha256:0a783c59def014692a7d33cf44852f8c3a353a6661bb888a7c14bb2623376964"
+        },
+        "type": "string"
+      },
+      {
+        "constraints": {
+          "pattern": "^(?!.*[\\u3400-\\u9fff]).+$"
+        },
+        "context": "inline-script[1]:object-key:code",
+        "default": "TRIGGER",
+        "field_id": "script.literal.016",
+        "kind": "script_literal",
+        "max_length": 11,
+        "semantic_role": "mono-label",
+        "span": {
+          "kind": "script_literal",
+          "occurrence": 16,
+          "quote": "'",
+          "script_index": 1,
+          "sink": "object-key:code",
+          "token_sha256": "sha256:e1ff200ba342eb4da81efac42e6d5e689effab1c63ccb4a0ce29a77fd4d4b87f"
+        },
+        "type": "string"
+      },
+      {
+        "context": "inline-script[1]:object-key:label",
+        "default": "更新成本",
+        "field_id": "script.literal.017",
+        "kind": "script_literal",
+        "max_length": 8,
+        "span": {
+          "kind": "script_literal",
+          "occurrence": 17,
+          "quote": "'",
+          "script_index": 1,
+          "sink": "object-key:label",
+          "token_sha256": "sha256:45e8cb1351fb7c7162770bdca82fed408ed400922a8eb3057ef5a9da4092c6d6"
+        },
+        "type": "string"
+      },
+      {
+        "constraints": {
+          "pattern": "^(?!.*[\\u3400-\\u9fff]).+$"
+        },
+        "context": "inline-script[1]:object-key:code",
+        "default": "UPDATE",
+        "field_id": "script.literal.018",
+        "kind": "script_literal",
+        "max_length": 10,
+        "semantic_role": "mono-label",
+        "span": {
+          "kind": "script_literal",
+          "occurrence": 18,
+          "quote": "'",
+          "script_index": 1,
+          "sink": "object-key:code",
+          "token_sha256": "sha256:afce0625d957666fcd8502118a1e2b3b01ac36eab9393747ab2235be0270d7cc"
+        },
+        "type": "string"
+      },
+      {
+        "context": "inline-script[1]:object-key:label",
+        "default": "知识时效",
+        "field_id": "script.literal.019",
+        "kind": "script_literal",
+        "max_length": 8,
+        "span": {
+          "kind": "script_literal",
+          "occurrence": 19,
+          "quote": "'",
+          "script_index": 1,
+          "sink": "object-key:label",
+          "token_sha256": "sha256:d16694290b70944458e606a0ffb1eceea52535d7cd9f3d290176b149805a6995"
+        },
+        "type": "string"
+      },
+      {
+        "constraints": {
+          "pattern": "^(?!.*[\\u3400-\\u9fff]).+$"
+        },
+        "context": "inline-script[1]:object-key:code",
+        "default": "FRESH",
+        "field_id": "script.literal.020",
+        "kind": "script_literal",
+        "max_length": 9,
+        "semantic_role": "mono-label",
+        "span": {
+          "kind": "script_literal",
+          "occurrence": 20,
+          "quote": "'",
+          "script_index": 1,
+          "sink": "object-key:code",
+          "token_sha256": "sha256:065338ec4f9ed8ddc1c6f95a7c2986e03d83bba8174b413311b4d8243d79470f"
+        },
+        "type": "string"
+      },
+      {
+        "context": "inline-script[1]:object-key:label",
+        "default": "适用场景",
+        "field_id": "script.literal.021",
+        "kind": "script_literal",
+        "max_length": 8,
+        "span": {
+          "kind": "script_literal",
+          "occurrence": 21,
+          "quote": "'",
+          "script_index": 1,
+          "sink": "object-key:label",
+          "token_sha256": "sha256:21fba5210e184ab0a6db29ce1a451f1591efa33680873be871d66bb3b67708ce"
+        },
+        "type": "string"
+      },
+      {
+        "constraints": {
+          "pattern": "^(?!.*[\\u3400-\\u9fff]).+$"
+        },
+        "context": "inline-script[1]:object-key:code",
+        "default": "SCENE",
+        "field_id": "script.literal.022",
+        "kind": "script_literal",
+        "max_length": 9,
+        "semantic_role": "mono-label",
+        "span": {
+          "kind": "script_literal",
+          "occurrence": 22,
+          "quote": "'",
+          "script_index": 1,
+          "sink": "object-key:code",
+          "token_sha256": "sha256:81fc70618fd3c20d41e825001f170e20ff1e1b60d123165539e0062c1b2b381a"
+        },
+        "type": "string"
+      }
+    ],
+    "format": "wise-ppt-layout-payload@1",
+    "values_schema": {
+      "additionalProperties": false,
+      "minProperties": 1,
+      "properties": {
+        "html.text.001": {
+          "maxLength": 25,
+          "pattern": "^(?!.*[\\u3400-\\u9fff]).+$",
+          "type": "string"
+        },
+        "html.text.002": {
+          "maxLength": 20,
+          "pattern": "^(?!.*[\\u3400-\\u9fff]).+$",
+          "type": "string"
+        },
+        "html.text.003": {
+          "maxLength": 26,
+          "pattern": "^\\d{1,3} / \\d{1,3} — BY .{1,40}$",
+          "type": "string"
+        },
+        "html.text.004": {
+          "maxLength": 49,
+          "type": "string"
+        },
+        "script.literal.001": {
+          "maxLength": 6,
+          "pattern": "^(?!.*[\\u3400-\\u9fff]).+$",
+          "type": "string"
+        },
+        "script.literal.002": {
+          "maxLength": 18,
+          "pattern": "^(?!.*[\\u3400-\\u9fff]).+$",
+          "type": "string"
+        },
+        "script.literal.003": {
+          "maxLength": 16,
+          "type": "string"
+        },
+        "script.literal.004": {
+          "maxLength": 42,
+          "pattern": "^(?!.*[\\u3400-\\u9fff]).+$",
+          "type": "string"
+        },
+        "script.literal.005": {
+          "maxLength": 8,
+          "type": "string"
+        },
+        "script.literal.006": {
+          "maxLength": 11,
+          "pattern": "^(?!.*[\\u3400-\\u9fff]).+$",
+          "type": "string"
+        },
+        "script.literal.007": {
+          "maxLength": 8,
+          "type": "string"
+        },
+        "script.literal.008": {
+          "maxLength": 10,
+          "pattern": "^(?!.*[\\u3400-\\u9fff]).+$",
+          "type": "string"
+        },
+        "script.literal.009": {
+          "maxLength": 8,
+          "type": "string"
+        },
+        "script.literal.010": {
+          "maxLength": 9,
+          "pattern": "^(?!.*[\\u3400-\\u9fff]).+$",
+          "type": "string"
+        },
+        "script.literal.011": {
+          "maxLength": 8,
+          "type": "string"
+        },
+        "script.literal.012": {
+          "maxLength": 9,
+          "pattern": "^(?!.*[\\u3400-\\u9fff]).+$",
+          "type": "string"
+        },
+        "script.literal.013": {
+          "maxLength": 15,
+          "type": "string"
+        },
+        "script.literal.014": {
+          "maxLength": 34,
+          "type": "string"
+        },
+        "script.literal.015": {
+          "maxLength": 8,
+          "type": "string"
+        },
+        "script.literal.016": {
+          "maxLength": 11,
+          "pattern": "^(?!.*[\\u3400-\\u9fff]).+$",
+          "type": "string"
+        },
+        "script.literal.017": {
+          "maxLength": 8,
+          "type": "string"
+        },
+        "script.literal.018": {
+          "maxLength": 10,
+          "pattern": "^(?!.*[\\u3400-\\u9fff]).+$",
+          "type": "string"
+        },
+        "script.literal.019": {
+          "maxLength": 8,
+          "type": "string"
+        },
+        "script.literal.020": {
+          "maxLength": 9,
+          "pattern": "^(?!.*[\\u3400-\\u9fff]).+$",
+          "type": "string"
+        },
+        "script.literal.021": {
+          "maxLength": 8,
+          "type": "string"
+        },
+        "script.literal.022": {
+          "maxLength": 9,
+          "pattern": "^(?!.*[\\u3400-\\u9fff]).+$",
+          "type": "string"
+        }
+      },
+      "type": "object"
+    }
+  },
+  "payload_defaults": {
+    "bindings": [
+      {
+        "asset_refs": [],
+        "content_refs": [
+          "item.canonical.comparison-fields"
+        ],
+        "slot_id": "comparison-fields"
+      },
+      {
+        "asset_refs": [],
+        "content_refs": [
+          "item.canonical.support"
+        ],
+        "slot_id": "support"
+      },
+      {
+        "asset_refs": [],
+        "content_refs": [
+          "item.canonical.takeaway"
+        ],
+        "slot_id": "takeaway"
+      }
+    ],
+    "values": {
+      "html.text.001": "AI ENGINEERING — E2",
+      "html.text.002": "RAG VS FINETUNE",
+      "html.text.003": "01 / 01 — BY WISE PPT",
+      "html.text.004": "RAG 适合频繁变化的知识，微调适合稳定重复的任务；更新频率决定技术选择。",
+      "script.literal.001": "VS",
+      "script.literal.002": "RAG × FINETUNE",
+      "script.literal.003": "RAG · 来一条查一条",
+      "script.literal.004": "MODE: RETRIEVE · LATENCY: 200 MS",
+      "script.literal.005": "触发时机",
+      "script.literal.006": "TRIGGER",
+      "script.literal.007": "更新成本",
+      "script.literal.008": "UPDATE",
+      "script.literal.009": "知识时效",
+      "script.literal.010": "FRESH",
+      "script.literal.011": "适用场景",
+      "script.literal.012": "SCENE",
+      "script.literal.013": "微调 · 攒一批训一次",
+      "script.literal.014": "MODE: FINETUNE · CYCLE: 数日",
+      "script.literal.015": "触发时机",
+      "script.literal.016": "TRIGGER",
+      "script.literal.017": "更新成本",
+      "script.literal.018": "UPDATE",
+      "script.literal.019": "知识时效",
+      "script.literal.020": "FRESH",
+      "script.literal.021": "适用场景",
+      "script.literal.022": "SCENE"
+    }
+  },
+  "payload_schema": {
+    "additionalProperties": false,
+    "properties": {
+      "bindings": {
+        "items": {
+          "additionalProperties": false,
+          "properties": {
+            "asset_refs": {
+              "items": {
+                "minLength": 1,
+                "type": "string"
+              },
+              "type": "array"
+            },
+            "content_refs": {
+              "items": {
+                "minLength": 1,
+                "type": "string"
+              },
+              "type": "array"
+            },
+            "slot_id": {
+              "enum": [
+                "comparison-fields",
+                "support",
+                "takeaway"
+              ],
+              "type": "string"
+            }
+          },
+          "required": [
+            "slot_id",
+            "content_refs",
+            "asset_refs"
+          ],
+          "type": "object"
+        },
+        "maxItems": 3,
+        "minItems": 3,
+        "type": "array"
+      },
+      "values": {
+        "additionalProperties": false,
+        "minProperties": 1,
+        "properties": {
+          "html.text.001": {
+            "maxLength": 25,
+            "pattern": "^(?!.*[\\u3400-\\u9fff]).+$",
+            "type": "string"
+          },
+          "html.text.002": {
+            "maxLength": 20,
+            "pattern": "^(?!.*[\\u3400-\\u9fff]).+$",
+            "type": "string"
+          },
+          "html.text.003": {
+            "maxLength": 26,
+            "pattern": "^\\d{1,3} / \\d{1,3} — BY .{1,40}$",
+            "type": "string"
+          },
+          "html.text.004": {
+            "maxLength": 49,
+            "type": "string"
+          },
+          "script.literal.001": {
+            "maxLength": 6,
+            "pattern": "^(?!.*[\\u3400-\\u9fff]).+$",
+            "type": "string"
+          },
+          "script.literal.002": {
+            "maxLength": 18,
+            "pattern": "^(?!.*[\\u3400-\\u9fff]).+$",
+            "type": "string"
+          },
+          "script.literal.003": {
+            "maxLength": 16,
+            "type": "string"
+          },
+          "script.literal.004": {
+            "maxLength": 42,
+            "pattern": "^(?!.*[\\u3400-\\u9fff]).+$",
+            "type": "string"
+          },
+          "script.literal.005": {
+            "maxLength": 8,
+            "type": "string"
+          },
+          "script.literal.006": {
+            "maxLength": 11,
+            "pattern": "^(?!.*[\\u3400-\\u9fff]).+$",
+            "type": "string"
+          },
+          "script.literal.007": {
+            "maxLength": 8,
+            "type": "string"
+          },
+          "script.literal.008": {
+            "maxLength": 10,
+            "pattern": "^(?!.*[\\u3400-\\u9fff]).+$",
+            "type": "string"
+          },
+          "script.literal.009": {
+            "maxLength": 8,
+            "type": "string"
+          },
+          "script.literal.010": {
+            "maxLength": 9,
+            "pattern": "^(?!.*[\\u3400-\\u9fff]).+$",
+            "type": "string"
+          },
+          "script.literal.011": {
+            "maxLength": 8,
+            "type": "string"
+          },
+          "script.literal.012": {
+            "maxLength": 9,
+            "pattern": "^(?!.*[\\u3400-\\u9fff]).+$",
+            "type": "string"
+          },
+          "script.literal.013": {
+            "maxLength": 15,
+            "type": "string"
+          },
+          "script.literal.014": {
+            "maxLength": 34,
+            "type": "string"
+          },
+          "script.literal.015": {
+            "maxLength": 8,
+            "type": "string"
+          },
+          "script.literal.016": {
+            "maxLength": 11,
+            "pattern": "^(?!.*[\\u3400-\\u9fff]).+$",
+            "type": "string"
+          },
+          "script.literal.017": {
+            "maxLength": 8,
+            "type": "string"
+          },
+          "script.literal.018": {
+            "maxLength": 10,
+            "pattern": "^(?!.*[\\u3400-\\u9fff]).+$",
+            "type": "string"
+          },
+          "script.literal.019": {
+            "maxLength": 8,
+            "type": "string"
+          },
+          "script.literal.020": {
+            "maxLength": 9,
+            "pattern": "^(?!.*[\\u3400-\\u9fff]).+$",
+            "type": "string"
+          },
+          "script.literal.021": {
+            "maxLength": 8,
+            "type": "string"
+          },
+          "script.literal.022": {
+            "maxLength": 9,
+            "pattern": "^(?!.*[\\u3400-\\u9fff]).+$",
+            "type": "string"
+          }
+        },
+        "type": "object"
+      }
+    },
+    "required": [
+      "bindings",
+      "values"
+    ],
+    "type": "object"
+  },
+  "recipe_fingerprint": "sha256:6569f5946f0963f36bc39286a127f8a84686e153afff0f856b2163bba55792d3",
+  "recipe_id": "paper-ink.comparison.watershed-columns",
+  "required_capabilities": [],
+  "slots": [
+    {
+      "allowed_component_sources": [
+        "native"
+      ],
+      "allowed_renderer_kinds": [
+        "svg"
+      ],
+      "compatible_component_ids": [
+        "native.paper-ink.081.watershed-axis"
+      ],
+      "count_unit": "binding",
+      "default_component": {
+        "component_id": "native.paper-ink.comparison.watershed-columns.comparison-fields",
+        "component_source": "native",
+        "origin": {
+          "kind": "canonical-frame-island",
+          "path": "gallery/paper-ink/ai/frames/layout-e2.html",
+          "selector": ".stage"
+        },
+        "renderer_kind": "svg"
+      },
+      "max_items": 8,
+      "min_items": 1,
+      "open_for_override": false,
+      "purpose": "字段对比",
+      "required": true,
+      "slot_id": "comparison-fields",
+      "space_contract": {
+        "aspect_ratio": 2.4194,
+        "canvas_height": 1080,
+        "canvas_width": 1920,
+        "height": 620,
+        "space_type": "wide",
+        "width": 1500
+      },
+      "visual_role": "primary"
+    },
+    {
+      "allowed_component_sources": [
+        "codex-host",
+        "native"
+      ],
+      "allowed_renderer_kinds": [
+        "typography",
+        "table",
+        "image",
+        "native-html",
+        "svg"
+      ],
+      "compatible_component_ids": [],
+      "count_unit": "binding",
+      "default_component": {
+        "component_id": "native.paper-ink.comparison.watershed-columns.support",
+        "component_source": "native",
+        "origin": {
+          "kind": "canonical-frame-island",
+          "path": "gallery/paper-ink/ai/frames/layout-e2.html",
+          "selector": ".doc.tl"
+        },
+        "renderer_kind": "typography"
+      },
+      "max_items": 4,
+      "min_items": 0,
+      "open_for_override": false,
+      "purpose": "辅助证据、标签或解释",
+      "required": false,
+      "slot_id": "support",
+      "visual_role": "support"
+    },
+    {
+      "allowed_component_sources": [
+        "native"
+      ],
+      "allowed_renderer_kinds": [
+        "typography"
+      ],
+      "compatible_component_ids": [],
+      "count_unit": "binding",
+      "default_component": {
+        "component_id": "native.paper-ink.comparison.watershed-columns.takeaway",
+        "component_source": "native",
+        "origin": {
+          "kind": "canonical-frame-island",
+          "path": "gallery/paper-ink/ai/frames/layout-e2.html",
+          "selector": ".caption"
+        },
+        "renderer_kind": "typography"
+      },
+      "max_items": 1,
+      "min_items": 0,
+      "open_for_override": false,
+      "purpose": "页面一句话结论",
+      "required": false,
+      "slot_id": "takeaway",
+      "visual_role": "support"
+    }
+  ],
+  "source": {
+    "path": "gallery/paper-ink/ai/frames/layout-e2.html",
+    "sha256": "sha256:91351ff3c72a9f54372d8accbb6c572ce40905c05ce9c44147e8a769a6ba4996"
+  },
+  "status": "production",
+  "theme_id": "paper-ink",
+  "variant": "ai"
+}

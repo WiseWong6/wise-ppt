@@ -1,0 +1,136 @@
+<!-- GENERATED: Wise PPT formal canonical source; protected Gallery remains provenance-only. -->
+<!DOCTYPE html>
+<html lang="zh-CN" data-runtime="wise-ppt-specimen" data-typography-mode="mixed" data-page-id="gallery-ai-e5" data-page-role="compare" data-theme="paper-ink" data-layout="paper-ink.comparison.dual-pyramid-map" data-layout-source="gallery">
+<head>
+<meta charset="UTF-8">
+<title>layout-e5 · 双金字塔对照映射 · 职级 vs AI 能力</title>
+<link rel="stylesheet" href="../../../../themes/paper-ink/assets/design-tokens.css">
+<link rel="stylesheet" href="../../../../themes/paper-ink/assets/slide-components.css">
+<link rel="stylesheet" href="../../../shell.css">
+<style>
+  svg.scene { position: absolute; inset: 0; z-index: 1; }
+  .doc.tl, .folio { color: var(--ink-45); }
+  .caption {
+    position: absolute; left: 0; right: 0; bottom: 118px;
+    text-align: center;;;;;;
+    z-index: 5;
+  }
+</style>
+</head>
+<body class="slide">
+<div class="stage" data-block-id="gallery-primary" data-renderer-kind="svg" data-component-source="native" data-component-id="native.paper-ink.comparison.dual-pyramid-map.hierarchy-map" data-content-ref="example.e5" data-anchor-id="stage">
+  <span data-geometry-anchor-holder="tower-left" data-anchor-id="tower-left" hidden aria-hidden="true"></span><span data-geometry-anchor-holder="tower-right" data-anchor-id="tower-right" hidden aria-hidden="true"></span><span data-geometry-anchor-holder="map-axis" data-anchor-id="map-axis" hidden aria-hidden="true"></span>
+  <div class="doc tl" data-anchor-id="slot-support">AI 能力栈 — 职责边界<br>分层映射</div>
+  <div class="folio">01 / 01 — BY @歪斯WISE</div>
+
+  <svg class="scene" width="1920" height="1080" viewBox="0 0 1920 1080">
+    <g id="draw" data-anchor-id="slot-hierarchy-map"></g>
+  </svg>
+
+  <div class="caption" data-anchor-id="slot-takeaway">模型、工具、编排与应用逐层对齐，跨层依赖决定系统的最终稳定性。</div>
+
+</div>
+
+<script src="../../../../runtime/stage-fit.js"></script>
+<script src="../../../../themes/paper-ink/assets/particles.js"></script>
+<script>
+var NS = 'http://www.w3.org/2000/svg';
+var INK = __wiseThemeToken("--ink");
+var INK80 = __wiseThemeToken("--ink-80");
+var INK70 = __wiseThemeToken("--ink-70");
+var INK45 = __wiseThemeToken("--ink-45");
+var G = document.getElementById('draw');
+function el(tag, attrs) {
+  var e = document.createElementNS(NS, tag);
+  for (var k in attrs) e.setAttribute(k, attrs[k]);
+  G.appendChild(e); return e;
+}
+function txt(x, y, str, attrs) {
+  var t = el('text', Object.assign({x:x, y:y}, attrs||{}));
+  t.textContent = str; return t;
+}
+var MONO = 'var(--mono)', SANS = 'var(--sans)';
+
+G = el('g', {transform:'translate(0 -37.2)'});
+
+
+/* ---------- 双金字塔：传统班组职级 → 平台任务等级 ---------- */
+/* 视觉平衡的等腰三角形塔身（底宽 500、高 460），较原宽度放大约 14% */
+var TOP = 270, BASE = 730, HALF = 250;
+var LX = 560, RX = 1360;                            /* 左/右塔中心（原 470/1450） */
+var mids = [335, 445, 560, 675];                    /* 四层中位线（在 270-730 间均分） */
+function halfAt(y){ return HALF * (y - TOP) / (BASE - TOP); }
+
+/* 对位构造虚线（先画，压在塔与箭头下）+ 中轴 */
+mids.forEach(function(y){
+  el('line', {x1:280, y1:y, x2:1640, y2:y, stroke:INK, 'stroke-width':.5, opacity:.18, 'stroke-dasharray':'2 6'});
+});
+el('line', {x1:960, y1:286, x2:960, y2:726, stroke:INK, 'stroke-width':.5, opacity:.2, 'stroke-dasharray':'2 6'});
+
+function tower(cx, layers){
+  el('path', {d:'M '+cx+' '+TOP+' L '+(cx+HALF)+' '+BASE+' L '+(cx-HALF)+' '+BASE+' Z',
+    fill:'none', stroke:INK80, 'stroke-width':1.3});
+  [390, 500, 615].forEach(function(y){
+    var h = halfAt(y);
+    el('line', {x1:cx-h, y1:y, x2:cx+h, y2:y, stroke:INK, 'stroke-width':.9, opacity:.5});
+  });
+  /* 仅前 4 项是层级对（[中,EN]）；layers[4]/[5] 是塔题字符串，下方单独取用 */
+  layers.slice(0, 4).forEach(function(L, i){
+    txt(cx, mids[i]+2, L[0], {'font-family':SANS, 'font-weight':300, 'font-size':'var(--type-body-small)', 'text-anchor':'middle', fill:INK});
+    txt(cx, mids[i]+24, L[1], {'font-family':MONO, 'font-size':'var(--type-micro-secondary)', 'letter-spacing':2, 'text-anchor':'middle', fill:INK45});
+  });
+  /* 塔题在基座下 */
+  el('line', {x1:cx-80, y1:754, x2:cx+80, y2:754, stroke:INK, 'stroke-width':.6, opacity:.3});
+  txt(cx, 784, layers[4], {'font-family':SANS, 'font-weight':300, 'font-size':'var(--type-body)', 'text-anchor':'middle', fill:INK});
+  txt(cx, 812, layers[5], {'font-family':MONO, 'font-size':'var(--type-micro-secondary)', 'letter-spacing':3, 'text-anchor':'middle', fill:INK45});
+}
+tower(LX, [
+  ['总监','L4'],['经理','L3 · MGR'],['组长','L2 · LEAD'],['专员','L1 · OPS'],
+  '传统职级体系','LEGACY CAREER LADDER']);
+tower(RX, [
+  ['架构者','S4'],['决策者','S3 · POLICY'],['协调者','S2 · COORD'],['执行者','S1 · EXEC'],
+  'AI 能力分级体系','AI CAPABILITY TIERS']);
+
+/* ---------- 主角：层间映射箭头（线宽 = 映射强度） ---------- */
+function arrow(x1, y1, x2, y2, w, dash, op){
+  el('line', {x1:x1, y1:y1, x2:x2, y2:y2, stroke:INK, 'stroke-width':w, opacity:op||1, 'stroke-dasharray':dash||'none'});
+  el('line', {x1:x2, y1:y2, x2:x2-14, y2:y2-7, stroke:INK, 'stroke-width':1.2, opacity:.8});
+  el('line', {x1:x2, y1:y2, x2:x2-14, y2:y2+7, stroke:INK, 'stroke-width':1.2, opacity:.8});
+}
+function edge(cx, y, dir){ return cx + dir * halfAt(y); }
+/* L4 → S4（弱，虚线） */
+arrow(edge(LX,335,1)+16, 335, edge(RX,335,-1)-16, 335, .8, '4 5', .55);
+txt(960, 324, 'w .31', {'font-family':MONO, 'font-size':'var(--type-micro-secondary)', 'letter-spacing':2, 'text-anchor':'middle', fill:INK45});
+/* L3 → S3（最强，本页唯一强调线） */
+arrow(edge(LX,445,1)+16, 445, edge(RX,445,-1)-16, 445, 2.2);
+txt(960, 434, 'w .92', {'font-family':MONO, 'font-size':'var(--type-micro-secondary)', 'letter-spacing':2, 'text-anchor':'middle', fill:INK45});
+/* L3 → S2（一对多扇出，弧线） */
+el('path', {d:'M '+(edge(LX,445,1)+20)+' 452 C 780 484, 1040 502, '+(edge(RX,560,-1)-18)+' 530',
+  fill:'none', stroke:INK, 'stroke-width':1, opacity:.7});
+el('line', {x1:edge(RX,560,-1)-18, y1:530, x2:edge(RX,560,-1)-32, y2:522, stroke:INK, 'stroke-width':1.1, opacity:.7});
+el('line', {x1:edge(RX,560,-1)-18, y1:530, x2:edge(RX,560,-1)-33, y2:535, stroke:INK, 'stroke-width':1.1, opacity:.7});
+txt(915, 512, 'w .48', {'font-family':MONO, 'font-size':'var(--type-micro-secondary)', 'letter-spacing':2, 'text-anchor':'middle', fill:INK45});
+/* L2 → S2（中） */
+arrow(edge(LX,560,1)+16, 560, edge(RX,560,-1)-16, 560, 1.3, null, .85);
+txt(960, 587, 'w .74', {'font-family':MONO, 'font-size':'var(--type-micro-secondary)', 'letter-spacing':2, 'text-anchor':'middle', fill:INK45});
+/* L1 → S1（轻） */
+arrow(edge(LX,675,1)+16, 675, edge(RX,675,-1)-16, 675, .9, null, .65);
+txt(960, 666, 'w .36', {'font-family':MONO, 'font-size':'var(--type-micro-secondary)', 'letter-spacing':2, 'text-anchor':'middle', fill:INK45});
+
+/* ---------- 塔外侧弧形引线侧注 ---------- */
+el('path', {d:'M '+(LX-halfAt(500))+' 500 C 380 522, 298 540, 282 566', fill:'none', stroke:INK, 'stroke-width':.7, opacity:.45, 'stroke-dasharray':'3 5'});
+el('circle', {cx:282, cy:566, r:2.4, fill:INK, opacity:.6});
+txt(150, 572, 'HUMAN ROLES IN', {'font-family':MONO, 'font-size':'var(--type-micro-secondary)', 'letter-spacing':2, fill:INK45});
+txt(150, 600, '人的职级与分工', {'font-family':SANS, 'font-weight':300, 'font-size':'var(--type-body-small)', fill:INK80});
+txt(150, 628, '映射为 AI 能力', {'font-family':SANS, 'font-weight':300, 'font-size':'var(--type-body-small)', fill:INK70});
+
+el('path', {d:'M '+(RX+halfAt(560))+' 560 C 1540 586, 1658 608, 1672 638', fill:'none', stroke:INK, 'stroke-width':.7, opacity:.45, 'stroke-dasharray':'3 5'});
+el('circle', {cx:1672, cy:638, r:2.4, fill:INK, opacity:.6});
+txt(1770, 642, 'CAPABILITY OUT', {'font-family':MONO, 'font-size':'var(--type-micro-secondary)', 'letter-spacing':2, 'text-anchor':'end', fill:INK45});
+txt(1770, 670, 'AI 能力分级', {'font-family':SANS, 'font-weight':300, 'font-size':'var(--type-body-small)', 'text-anchor':'end', fill:INK80});
+txt(1770, 698, '逐层对译人的职级', {'font-family':SANS, 'font-weight':300, 'font-size':'var(--type-body-small)', 'text-anchor':'end', fill:INK70});
+
+stageFit();
+</script>
+</body>
+</html>

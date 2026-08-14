@@ -1,0 +1,71 @@
+{
+  "example_id": "echarts.line-smooth",
+  "title": "基础平滑折线图",
+  "source_url": "https://echarts.apache.org/examples/zh/index.html#chart-type-line",
+  "upstream_license": "Apache-2.0",
+  "chart_type": "line",
+  "source_note": "改编自 Apache ECharts 官方示例 doc-example/tutorial-api-2。series.smooth=true 实现平滑曲线；数据已抽成 dataset + encode。",
+  "dataset_shape": {
+    "dimensions": ["date", "min", "max"],
+    "source": [
+      { "date": "05-01", "min": 14, "max": 23 },
+      { "date": "05-02", "min": 16, "max": 25 },
+      { "date": "05-03", "min": 15, "max": 24 },
+      { "date": "05-04", "min": 13, "max": 21 },
+      { "date": "05-05", "min": 12, "max": 20 },
+      { "date": "05-06", "min": 14, "max": 22 },
+      { "date": "05-07", "min": 17, "max": 26 }
+    ]
+  },
+  "render_plan_binding": {
+    "renderer_kind": "svg",
+    "component_source": "echarts",
+    "component_id": "echarts.line-smooth",
+    "theme_adapter_id": "paper-ink.echarts",
+    "data_binding": {
+      "data_ref": {
+        "content_id": "item.temperature-range",
+        "json_pointer": "/structured_data/rows"
+      },
+      "dataset_id": "dataset.line-smooth",
+      "encode": { "x": "date", "y": ["min", "max"] }
+    }
+  },
+  "html_template": {
+    "container_attrs": "data-block-id=\"block.main\" data-renderer-kind=\"svg\" data-component-source=\"echarts\" data-component-id=\"echarts.line-smooth\" data-theme-adapter-id=\"paper-ink.echarts\" data-content-ref=\"item.temperature-range\" data-dataset-id=\"dataset.line-smooth\"",
+    "dataset_script_id": "dataset.line-smooth"
+  },
+  "option": {
+    "dataset": {
+      "dimensions": ["date", "min", "max"],
+      "source": [
+        { "date": "05-01", "min": 14, "max": 23 },
+        { "date": "05-02", "min": 16, "max": 25 },
+        { "date": "05-03", "min": 15, "max": 24 },
+        { "date": "05-04", "min": 13, "max": 21 },
+        { "date": "05-05", "min": 12, "max": 20 },
+        { "date": "05-06", "min": 14, "max": 22 },
+        { "date": "05-07", "min": 17, "max": 26 }
+      ]
+    },
+    "tooltip": { "trigger": "axis" },
+    "legend": { "data": ["最低气温", "最高气温"] },
+    "xAxis": { "type": "category", "boundaryGap": false },
+    "yAxis": { "type": "value", "axisLabel": { "formatter": "{value} °C" } },
+    "series": [
+      {
+        "name": "最低气温",
+        "type": "line",
+        "encode": { "x": "date", "y": "min" },
+        "smooth": true
+      },
+      {
+        "name": "最高气温",
+        "type": "line",
+        "encode": { "x": "date", "y": "max" },
+        "smooth": true
+      }
+    ]
+  },
+  "notes": "多 series 共享同一 dataset：每个 series 通过 encode.y 指向不同列（min / max）。原官方示例每条线各自带 data 数组，本版统一由 dataset 驱动。"
+}

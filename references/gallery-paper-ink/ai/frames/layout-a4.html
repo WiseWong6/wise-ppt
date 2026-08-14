@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-runtime="wise-ppt-specimen" data-typography-mode="mixed" data-page-id="gallery-ai-a4" data-page-role="prove" data-theme="paper-ink" data-layout="paper-ink.evidence.strategy-evidence-wall" data-layout-source="gallery">
+<head>
+<meta charset="UTF-8">
+<title>layout-a4 · 左策略右证据墙 · Agent 工程化</title>
+<link rel="stylesheet" href="../../../../themes/paper-ink/assets/design-tokens.css">
+<link rel="stylesheet" href="../../../../themes/paper-ink/assets/slide-components.css">
+<link rel="stylesheet" href="../../../shell.css">
+<style>
+  /* B22 左策略右证据墙 · 纸底 */
+  .doc.tl, .folio { color: rgba(25,25,23,.45); }
+  svg.scene { position: absolute; inset: 0; z-index: 1; }
+  .caption {
+    position: absolute; left: 0; right: 0; bottom: 118px;
+    text-align: center;
+    font-family: var(--sans); font-weight: 400;
+    font-size: var(--type-caption); letter-spacing: .04em;
+    color: #191917;
+    z-index: 5;
+  }
+</style>
+</head>
+<body class="slide">
+<div class="stage" data-block-id="gallery-primary" data-renderer-kind="svg" data-component-source="native" data-component-id="native.paper-ink.evidence.strategy-evidence-wall.evidence-wall" data-content-ref="example.a4">
+  <div class="doc tl">AI ENGINEERING — A4<br>ENGINEERING EVIDENCE</div>
+  <div class="folio">A4 / 63 — BY @歪斯WISE</div>
+
+  <svg class="scene" width="1920" height="1080" viewBox="0 0 1920 1080">
+    <defs>
+      <pattern id="hatch22" width="8" height="8" patternTransform="rotate(45)" patternUnits="userSpaceOnUse">
+        <line x1="0" y1="0" x2="0" y2="8" stroke="#191917" stroke-width=".7" opacity=".35"/>
+      </pattern>
+    </defs>
+    <g id="draw"></g>
+  </svg>
+
+  <div class="caption">上下文、评测、工具护栏与全链 Trace，共同把 Agent 从演示推向可控工程。</div>
+</div>
+
+<script src="../../../../runtime/stage-fit.js"></script>
+<script src="../../../../themes/paper-ink/assets/particles.js"></script>
+<script>
+var NS = 'http://www.w3.org/2000/svg';
+var INK = '#191917';
+var INK80 = 'rgba(25,25,23,.8)';
+var INK70 = 'rgba(25,25,23,.7)';
+var INK45 = 'rgba(25,25,23,.45)';
+var G = document.getElementById('draw');
+function el(tag, attrs) {
+  var e = document.createElementNS(NS, tag);
+  for (var k in attrs) e.setAttribute(k, attrs[k]);
+  G.appendChild(e); return e;
+}
+function txt(x, y, str, attrs) {
+  var t = el('text', Object.assign({x:x, y:y}, attrs||{}));
+  t.textContent = str; return t;
+}
+var MONO = 'var(--mono)', SANS = 'var(--sans)';
+
+G = el('g', {transform:'translate(0 -54.7)'});
+
+
+/* ---------- 左栏：策略列表（x150–670） ---------- */
+txt(150, 262, 'STRATEGY · HARNESS ENG', {'font-family':MONO, 'font-size':'var(--type-meta)', 'letter-spacing':3, fill:INK45});
+txt(150, 300, '四条工程化打法，各有实据', {'font-family':SANS, 'font-weight':300, 'font-size':'var(--type-subheading)', fill:INK});
+el('line', {x1:150, y1:320, x2:670, y2:320, stroke:INK, 'stroke-width':.8, opacity:.5});
+
+var strategies = [
+  ['01', '上下文管控',   '摘要做成交接文档，窗口只留当下任务', '幻觉率比裸调下降一半'],
+  ['02', '评测前置',     '每个版本先过基准集再灰度，不靠手感', '回归用例从 40 条涨到 600 条'],
+  ['03', '工具护栏',     '高风险动作加确认门，Agent 不能擅自执行', '越权调用被拦在执行前'],
+  ['04', '全链可溯',     '每一步推理留 Trace，错了能定位到哪一跳', '故障定位从小时级到分钟级']
+];
+strategies.forEach(function(s, i){
+  var y = 372 + i * 139;
+  txt(150, y, s[0], {'font-family':MONO, 'font-size':'var(--type-body-small)', 'letter-spacing':2, fill:INK});
+  el('line', {x1:150, y1:y+12, x2:186, y2:y+12, stroke:INK, 'stroke-width':.6, opacity:.3});
+  txt(206, y, s[1], {'font-family':SANS, 'font-weight':300, 'font-size':'var(--type-subheading)', fill:INK});
+  txt(206, y+34, s[2], {'font-family':SANS, 'font-weight':300, 'font-size':'var(--type-body-small)', fill:INK70});
+  txt(206, y+60, s[3], {'font-family':SANS, 'font-weight':300, 'font-size':'var(--type-body-small)', fill:INK45});
+  if (i < strategies.length-1)
+    el('line', {x1:150, y1:y+88, x2:670, y2:y+88, stroke:INK, 'stroke-width':.6, opacity:.22});
+});
+
+/* ---------- 中央开放箭头（x720–848, y540）：本页唯一强调线 ---------- */
+txt(784, 500, 'PROOF', {'font-family':MONO, 'font-size':'var(--type-meta)', 'letter-spacing':3, 'text-anchor':'middle', fill:INK45});
+el('line', {x1:720, y1:540, x2:848, y2:540, stroke:INK, 'stroke-width':2});
+el('line', {x1:848, y1:540, x2:822, y2:520, stroke:INK80, 'stroke-width':1.3});
+el('line', {x1:848, y1:540, x2:822, y2:560, stroke:INK80, 'stroke-width':1.3});
+/* 箭头两侧构造虚线 */
+el('line', {x1:706, y1:540, x2:720, y2:540, stroke:INK, 'stroke-width':.6, opacity:.3, 'stroke-dasharray':'2 4'});
+el('line', {x1:848, y1:540, x2:882, y2:540, stroke:INK, 'stroke-width':.6, opacity:.3, 'stroke-dasharray':'2 4'});
+
+/* ---------- 右区：2×2 证据墙标本格（等高等宽，整体对齐左栏上下边界） ---------- */
+/* 列1 x=910、列2 x=1350（CW=400, 间隙40）；两排 CH=276、间隙50 */
+var CW = 400, CH = 276, ART_DY = 8;
+var COL1X = 910, COL2X = 1350;
+var ROW_TOP = 251.5, ROW_BOT = 577.5;
+function specFrame(px, py, tag) {
+  el('rect', {x:px, y:py, width:CW, height:CH, fill:'rgba(255,255,255,.22)', stroke:INK80, 'stroke-width':1.3});
+  el('rect', {x:px+5, y:py+5, width:CW-10, height:CH-10, fill:'none', stroke:INK, 'stroke-width':.6, opacity:.3});
+  txt(px+24, py+32, tag, {'font-family':MONO, 'font-size':'var(--type-micro-secondary)', 'letter-spacing':2.5, fill:INK45});
+}
+function specLabel(px, py, str) {
+  el('line', {x1:px+24, y1:py+CH-52, x2:px+CW-24, y2:py+CH-52, stroke:INK, 'stroke-width':.6, opacity:.35});
+  txt(px+24, py+CH-22, str, {'font-family':MONO, 'font-size':'var(--type-meta)', 'letter-spacing':2, fill:INK});
+}
+
+/* 格 1 · 调度台界面线稿（地图网格 + 机器人落点 + 路径） */
+(function(){
+  var px = COL1X, py = ROW_TOP;
+  specFrame(px, py, 'EXHIBIT 01 — CONTEXT MGR');
+  var mx = px+40, my = py+58+ART_DY, mw = CW-80, mh = 116;
+  el('rect', {x:mx, y:my, width:mw, height:mh, fill:'none', stroke:INK, 'stroke-width':1.1, opacity:.8});
+  for (var i = 1; i < 4; i++) {
+    el('line', {x1:mx+i*mw/4, y1:my, x2:mx+i*mw/4, y2:my+mh, stroke:INK, 'stroke-width':.5, opacity:.3});
+    if (i < 3) el('line', {x1:mx, y1:my+i*mh/3, x2:mx+mw, y2:my+i*mh/3, stroke:INK, 'stroke-width':.5, opacity:.3});
+  }
+  var bots = [[.14,.72],[.32,.3],[.55,.62],[.7,.22],[.86,.55]];
+  bots.forEach(function(b){
+    var bx = mx+b[0]*mw, by = my+b[1]*mh;
+    el('circle', {cx:bx, cy:by, r:4.6, fill:'none', stroke:INK80, 'stroke-width':1});
+    el('circle', {cx:bx, cy:by, r:1.7, fill:INK});
+  });
+  el('path', {d:'M '+(mx+.14*mw)+' '+(my+.72*mh)+' L '+(mx+.32*mw)+' '+(my+.3*mh)+' L '+(mx+.7*mw)+' '+(my+.22*mh),
+    fill:'none', stroke:INK, 'stroke-width':.8, opacity:.55, 'stroke-dasharray':'4 4'});
+  specLabel(px, py, 'HALLUCINATION −48%');
+})();
+
+/* 格 2 · 吞吐曲线（峰值落点） */
+(function(){
+  var px = COL2X, py = ROW_TOP;
+  specFrame(px, py, 'EXHIBIT 02 — EVAL SUITE');
+  var ax = px+48, ay = py+58+ART_DY, aw = CW-96, ah = 116;
+  el('line', {x1:ax, y1:ay+ah, x2:ax+aw, y2:ay+ah, stroke:INK, 'stroke-width':.9, opacity:.7});
+  el('line', {x1:ax, y1:ay, x2:ax, y2:ay+ah, stroke:INK, 'stroke-width':.9, opacity:.7});
+  for (var i = 1; i <= 4; i++)
+    el('line', {x1:ax+i*aw/5, y1:ay+ah, x2:ax+i*aw/5, y2:ay+ah+6, stroke:INK, 'stroke-width':.7, opacity:.5});
+  el('path', {d:'M '+ax+' '+(ay+ah-14)+' L '+(ax+aw*.2)+' '+(ay+ah-30)+' L '+(ax+aw*.42)+' '+(ay+ah-52)+
+    ' L '+(ax+aw*.58)+' '+(ay+16)+' L '+(ax+aw*.76)+' '+(ay+ah-44)+' L '+(ax+aw)+' '+(ay+ah-24),
+    fill:'none', stroke:INK80, 'stroke-width':1.3});
+  el('circle', {cx:ax+aw*.58, cy:ay+16, r:5, fill:'none', stroke:INK80, 'stroke-width':1.1});
+  el('circle', {cx:ax+aw*.58, cy:ay+16, r:2, fill:INK});
+  el('line', {x1:ax, y1:ay+16, x2:ax+aw*.58, y2:ay+16, stroke:INK, 'stroke-width':.5, opacity:.35, 'stroke-dasharray':'2 5'});
+  specLabel(px, py, 'CASES · 40 → 600');
+})();
+
+/* 格 3 · 机器人实物轮廓（立绘） */
+(function(){
+  var px = COL1X, py = ROW_BOT;
+  specFrame(px, py, 'EXHIBIT 03 — GUARDRAIL');
+  var cx = px + CW/2, base = py + 178 + ART_DY;
+  el('rect', {x:px+40, y:base+8, width:CW-80, height:12, fill:'url(#hatch22)', stroke:'none'});
+  el('line', {x1:px+40, y1:base+8, x2:px+CW-40, y2:base+8, stroke:INK, 'stroke-width':.9, opacity:.6});
+  el('rect', {x:cx-72, y:base-52, width:144, height:52, rx:8, fill:'none', stroke:INK80, 'stroke-width':1.3});
+  el('rect', {x:cx-72+5, y:base-52+5, width:144-10, height:52-10, rx:5, fill:'none', stroke:INK, 'stroke-width':.6, opacity:.3});
+  el('circle', {cx:cx-42, cy:base+2, r:11, fill:'none', stroke:INK80, 'stroke-width':1.2});
+  el('circle', {cx:cx+42, cy:base+2, r:11, fill:'none', stroke:INK80, 'stroke-width':1.2});
+  el('circle', {cx:cx-42, cy:base+2, r:2, fill:INK});
+  el('circle', {cx:cx+42, cy:base+2, r:2, fill:INK});
+  el('line', {x1:cx, y1:base-52, x2:cx, y2:base-112, stroke:INK80, 'stroke-width':1.2});
+  el('rect', {x:cx-30, y:base-128, width:60, height:20, fill:'none', stroke:INK80, 'stroke-width':1.1});
+  el('line', {x1:cx-18, y1:base-118, x2:cx+18, y2:base-118, stroke:INK, 'stroke-width':.6, opacity:.4});
+  el('circle', {cx:cx, cy:base-136, r:3, fill:'none', stroke:INK, 'stroke-width':.9, opacity:.7});
+  specLabel(px, py, 'BLOCKED · 312 CALLS');
+})();
+
+/* 格 4 · 波次甘特（三条错峰带） */
+(function(){
+  var px = COL2X, py = ROW_BOT;
+  specFrame(px, py, 'EXHIBIT 04 — TRACE');
+  var gx = px+48, gw = CW-96, gy = py+76+ART_DY;
+  el('line', {x1:gx, y1:gy+84, x2:gx+gw, y2:gy+84, stroke:INK, 'stroke-width':.9, opacity:.7});
+  for (var i = 0; i <= 6; i++)
+    el('line', {x1:gx+i*gw/6, y1:gy+84, x2:gx+i*gw/6, y2:gy+90, stroke:INK, 'stroke-width':.7, opacity:.5});
+  var bars = [[0, .52, 0, true], [.28, .5, 34, false], [.62, .38, 68, true]];
+  bars.forEach(function(b){
+    var bx = gx + b[0]*gw, bw = b[1]*gw, by = gy + b[2];
+    el('rect', {x:bx, y:by, width:bw, height:22, fill: b[3] ? 'url(#hatch22)' : 'none', stroke:INK80, 'stroke-width':1.1});
+    el('line', {x1:bx, y1:by-6, x2:bx, y2:by+28, stroke:INK, 'stroke-width':.9, opacity:.6});
+    el('line', {x1:bx+bw, y1:by-6, x2:bx+bw, y2:by+28, stroke:INK, 'stroke-width':.9, opacity:.6});
+  });
+  specLabel(px, py, 'MTTR · 8 MIN');
+})();
+
+stageFit();
+</script>
+</body>
+</html>

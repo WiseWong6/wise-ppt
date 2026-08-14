@@ -1,0 +1,74 @@
+{
+  "example_id": "echarts.scatter-basic",
+  "title": "基础散点图",
+  "source_url": "https://echarts.apache.org/examples/zh/index.html#chart-type-scatter",
+  "upstream_license": "Apache-2.0",
+  "chart_type": "scatter",
+  "source_note": "改编自 Apache ECharts 官方示例 scatter-simple。散点图 xAxis/yAxis 都是 value 类型；dataset 两列分别映射到 x、y。",
+  "dataset_shape": {
+    "dimensions": ["height", "weight"],
+    "source": [
+      { "height": 161.2, "weight": 51.6 },
+      { "height": 167.5, "weight": 59.0 },
+      { "height": 159.5, "weight": 49.2 },
+      { "height": 157.0, "weight": 63.0 },
+      { "height": 155.8, "weight": 53.6 },
+      { "height": 170.0, "weight": 59.0 },
+      { "height": 176.2, "weight": 66.2 },
+      { "height": 160.2, "weight": 52.1 },
+      { "height": 172.5, "weight": 62.0 },
+      { "height": 170.9, "weight": 63.4 }
+    ]
+  },
+  "render_plan_binding": {
+    "renderer_kind": "svg",
+    "component_source": "echarts",
+    "component_id": "echarts.scatter-basic",
+    "theme_adapter_id": "paper-ink.echarts",
+    "data_binding": {
+      "data_ref": {
+        "content_id": "item.height-weight",
+        "json_pointer": "/structured_data/rows"
+      },
+      "dataset_id": "dataset.scatter-basic",
+      "encode": { "x": "height", "y": "weight" }
+    }
+  },
+  "html_template": {
+    "container_attrs": "data-block-id=\"block.main\" data-renderer-kind=\"svg\" data-component-source=\"echarts\" data-component-id=\"echarts.scatter-basic\" data-theme-adapter-id=\"paper-ink.echarts\" data-content-ref=\"item.height-weight\" data-dataset-id=\"dataset.scatter-basic\"",
+    "dataset_script_id": "dataset.scatter-basic"
+  },
+  "option": {
+    "dataset": {
+      "dimensions": ["height", "weight"],
+      "source": [
+        { "height": 161.2, "weight": 51.6 },
+        { "height": 167.5, "weight": 59.0 },
+        { "height": 159.5, "weight": 49.2 },
+        { "height": 157.0, "weight": 63.0 },
+        { "height": 155.8, "weight": 53.6 },
+        { "height": 170.0, "weight": 59.0 },
+        { "height": 176.2, "weight": 66.2 },
+        { "height": 160.2, "weight": 52.1 },
+        { "height": 172.5, "weight": 62.0 },
+        { "height": 170.9, "weight": 63.4 }
+      ]
+    },
+    "tooltip": {
+      "trigger": "item",
+      "formatter": "身高 {c|{c}} cm<br/>体重 {c1|{c}} kg",
+      "position": "top"
+    },
+    "xAxis": { "type": "value", "scale": true, "name": "身高", "nameLocation": "middle", "nameGap": 30 },
+    "yAxis": { "type": "value", "scale": true, "name": "体重", "nameLocation": "middle", "nameGap": 30 },
+    "series": [
+      {
+        "name": "样本",
+        "type": "scatter",
+        "encode": { "x": "height", "y": "weight" },
+        "symbolSize": 12
+      }
+    ]
+  },
+  "notes": "散点图两个轴都是 value 类型（连续数值），encode.x/encode.y 分别映射身高和体重。原官方示例用二维数组 data: [[161.2,51.6],...]，本版用行式对象 dataset。"
+}

@@ -1,0 +1,1028 @@
+{
+  "canonical": {
+    "constraints": {
+      "css_scope": "[data-implementation-id=\"paper-ink.decomposition.icon-grid.general\"]",
+      "external_links": false,
+      "external_scripts": false,
+      "payload_only_mutation": true,
+      "ready_api": "WisePPT.markSlideReady",
+      "script_query_scope": "current-section.slide",
+      "stage_fit": false
+    },
+    "kind": "derived-frame",
+    "materialization_format": "wise-ppt-formal-slide@1",
+    "path": "gallery/paper-ink/general/frames/layout-f4.html",
+    "root_selector": "section.slide[data-implementation-id=\"paper-ink.decomposition.icon-grid.general\"]",
+    "sha256": "sha256:d41c4ff8830c3ef38f861cb75504f15714fed70678ec3cfee13fae8d96121a2e"
+  },
+  "canonical_fingerprint": "sha256:4ee889c9af7fce557880a6ea8308c97c86fb89f4fe30d228c007faf0d6a57020",
+  "contract_version": 1,
+  "dependency_closure": {
+    "files": [
+      {
+        "path": "gallery/shell.css",
+        "sha256": "sha256:aca1428680d2dd5c84e85d66241ee199a16d36bb60a098340528943fb5469f69"
+      },
+      {
+        "path": "runtime/stage-fit.js",
+        "sha256": "sha256:39577a14aac5072789fdeb80abee887d24da5a44eeb38203ef154602330f291d"
+      },
+      {
+        "path": "themes/paper-ink/assets/design-tokens.css",
+        "sha256": "sha256:3f1f0d3562cf1486b87643b16025388557000858d0df13d767b53a576988c330"
+      },
+      {
+        "path": "themes/paper-ink/assets/fonts/CourierPrime-Regular.ttf",
+        "sha256": "sha256:72f793376f8e2841656bf21d77a5de010f2929bd6956a22ee848ad0c7eb978af"
+      },
+      {
+        "path": "themes/paper-ink/assets/fonts/LXGWWenKai-Regular.ttf",
+        "sha256": "sha256:39ad71264b588165b469e35e6afb162a378dacd1f95348160240ba9038ac3009"
+      },
+      {
+        "path": "themes/paper-ink/assets/fonts/SourceHanSansCN-Light.otf",
+        "sha256": "sha256:b6dfc945aae0daf9b15019f59c2f7b18d17da3b92f00c3ec32fb5f0333696d9c"
+      },
+      {
+        "path": "themes/paper-ink/assets/fonts/SourceHanSerifCN-Medium.otf",
+        "sha256": "sha256:8e224937647ae71ba1b1f310bcb3fbc32f21ec7c2c490ba04670455c901f3378"
+      },
+      {
+        "path": "themes/paper-ink/assets/particles.js",
+        "sha256": "sha256:1281d72e81b34e4be061286edd323dd421443dffbf6e0d8a2faa94a5d14094c4"
+      },
+      {
+        "path": "themes/paper-ink/assets/slide-components.css",
+        "sha256": "sha256:20e7334fe5ae51cb229112290e787c1274ad65278a72b084c708682dc9ca5acf"
+      }
+    ],
+    "sha256": "sha256:7dcc6f0ac681be95cc8955afb36da97027f341a98f4f9f37518e37bfe13f5be4"
+  },
+  "format": "wise-ppt-layout-implementation@1",
+  "geometry": {
+    "anchors": [
+      {
+        "anchor_id": "stage",
+        "selector": ".stage"
+      }
+    ],
+    "canvas": {
+      "height": 1080,
+      "width": 1920
+    },
+    "content_region": {
+      "height": 1080,
+      "width": 1920,
+      "x": 0,
+      "y": 0
+    },
+    "fingerprint": "sha256:7a1e08db311147352254c71195a9b13d60b6f3825b679da6bde1136f13c5bb36",
+    "format": "wise-ppt-layout-geometry@1",
+    "relations": [],
+    "structure_contract": {
+      "core_primitives": [
+        "peer-array"
+      ],
+      "region_count": 3,
+      "required_slot_ids": [
+        "concepts"
+      ]
+    }
+  },
+  "implementation_id": "paper-ink.decomposition.icon-grid.general",
+  "payload": {
+    "fields": [
+      {
+        "context": "html:div.doc.tl",
+        "default": "产品 · 述职 — F4",
+        "field_id": "html.text.001",
+        "kind": "html_text",
+        "max_length": 16,
+        "span": {
+          "kind": "html_text",
+          "occurrence": 1,
+          "token_sha256": "sha256:d37510d5659b5b4b9a8257dc5f47280f8678a49281c2ad8f04863c6172675c8e"
+        },
+        "type": "string"
+      },
+      {
+        "context": "html:div.doc.tl",
+        "default": "产品经理六项能力复盘",
+        "field_id": "html.text.002",
+        "kind": "html_text",
+        "max_length": 14,
+        "span": {
+          "kind": "html_text",
+          "occurrence": 2,
+          "token_sha256": "sha256:d1721a9dd77a467b64da4db5d47bc0a72fbd45bbeb43b81da05a4bbac26edac3"
+        },
+        "type": "string"
+      },
+      {
+        "constraints": {
+          "pattern": "^\\d{1,3} / \\d{1,3} — BY .{1,40}$"
+        },
+        "context": "html:div.folio",
+        "default": "01 / 01 — BY WISE PPT",
+        "field_id": "html.text.003",
+        "kind": "html_text",
+        "max_length": 26,
+        "semantic_role": "folio",
+        "source_default": "F4 / 63 — BY @歪斯WISE",
+        "span": {
+          "kind": "html_text",
+          "occurrence": 3,
+          "token_sha256": "sha256:cfbce91f361fbd6d9f46a66859e5e1cb44cc92634645d4adc509319198a70828"
+        },
+        "type": "string"
+      },
+      {
+        "context": "html:div.caption",
+        "default": "洞察、规划、设计、协作、数据与质量，构成产品经理持续交付用户价值的六项能力。",
+        "field_id": "html.text.004",
+        "kind": "html_text",
+        "max_length": 50,
+        "span": {
+          "kind": "html_text",
+          "occurrence": 4,
+          "token_sha256": "sha256:a8fb4bf9ab2c498b5711ef877b26be30b9a48aa0710be4509db1390db49c21e6"
+        },
+        "type": "string"
+      },
+      {
+        "context": "inline-script[1]:call:cell[3]",
+        "default": "用户洞察",
+        "field_id": "script.literal.001",
+        "kind": "script_literal",
+        "max_length": 8,
+        "span": {
+          "kind": "script_literal",
+          "occurrence": 1,
+          "quote": "'",
+          "script_index": 1,
+          "sink": "call:cell[3]",
+          "token_sha256": "sha256:2dc7b83142ebae9fec6645d7b7f16b8513ca205edf5d6ec27a7d97235e945703"
+        },
+        "type": "string"
+      },
+      {
+        "constraints": {
+          "pattern": "^(?!.*[\\u3400-\\u9fff]).+$"
+        },
+        "context": "inline-script[1]:call:cell[4]",
+        "default": "INSIGHT",
+        "field_id": "script.literal.002",
+        "kind": "script_literal",
+        "max_length": 11,
+        "semantic_role": "mono-label",
+        "span": {
+          "kind": "script_literal",
+          "occurrence": 2,
+          "quote": "'",
+          "script_index": 1,
+          "sink": "call:cell[4]",
+          "token_sha256": "sha256:e75af0eb0cf7cc7076a3bdf992d5259b4d8716aaba2e53fb23597e4b216f4ee3"
+        },
+        "type": "string"
+      },
+      {
+        "context": "inline-script[1]:call:cell[5]",
+        "default": "访谈与反馈持续归因",
+        "field_id": "script.literal.003",
+        "kind": "script_literal",
+        "max_length": 13,
+        "span": {
+          "kind": "script_literal",
+          "occurrence": 3,
+          "quote": "'",
+          "script_index": 1,
+          "sink": "call:cell[5]",
+          "token_sha256": "sha256:12db8b57aac9347a9d88669285646b1bf291eae548753e4083a940986405673d"
+        },
+        "type": "string"
+      },
+      {
+        "context": "inline-script[1]:call:cell[6]",
+        "default": "找到真实需求与阻力",
+        "field_id": "script.literal.004",
+        "kind": "script_literal",
+        "max_length": 13,
+        "span": {
+          "kind": "script_literal",
+          "occurrence": 4,
+          "quote": "'",
+          "script_index": 1,
+          "sink": "call:cell[6]",
+          "token_sha256": "sha256:7bdd8768a7f49d60bc5ffc2cf05bea2a16e0ef57153bd13c3b6fe6c6270f49ec"
+        },
+        "type": "string"
+      },
+      {
+        "context": "inline-script[1]:call:cell[3]",
+        "default": "产品规划",
+        "field_id": "script.literal.005",
+        "kind": "script_literal",
+        "max_length": 8,
+        "span": {
+          "kind": "script_literal",
+          "occurrence": 5,
+          "quote": "'",
+          "script_index": 1,
+          "sink": "call:cell[3]",
+          "token_sha256": "sha256:a7dc8a6e1c89bd55f5db4a57b1ad089b5845e24437bb36b332d6449361ee488b"
+        },
+        "type": "string"
+      },
+      {
+        "constraints": {
+          "pattern": "^(?!.*[\\u3400-\\u9fff]).+$"
+        },
+        "context": "inline-script[1]:call:cell[4]",
+        "default": "ROADMAP",
+        "field_id": "script.literal.006",
+        "kind": "script_literal",
+        "max_length": 11,
+        "semantic_role": "mono-label",
+        "span": {
+          "kind": "script_literal",
+          "occurrence": 6,
+          "quote": "'",
+          "script_index": 1,
+          "sink": "call:cell[4]",
+          "token_sha256": "sha256:05c82aeba65cb295e9c60aa363e61efe8b00c505206c5621ca6657c0b79ee51d"
+        },
+        "type": "string"
+      },
+      {
+        "context": "inline-script[1]:call:cell[5]",
+        "default": "目标拆解为阶段路线",
+        "field_id": "script.literal.007",
+        "kind": "script_literal",
+        "max_length": 13,
+        "span": {
+          "kind": "script_literal",
+          "occurrence": 7,
+          "quote": "'",
+          "script_index": 1,
+          "sink": "call:cell[5]",
+          "token_sha256": "sha256:bebed6ae39c4967c6f020e50ea2b728987cc52b5c5b90ada65315e5d598e03f5"
+        },
+        "type": "string"
+      },
+      {
+        "context": "inline-script[1]:call:cell[6]",
+        "default": "关键假设进入验证队列",
+        "field_id": "script.literal.008",
+        "kind": "script_literal",
+        "max_length": 14,
+        "span": {
+          "kind": "script_literal",
+          "occurrence": 8,
+          "quote": "'",
+          "script_index": 1,
+          "sink": "call:cell[6]",
+          "token_sha256": "sha256:a2d04262d24d23feb13f5824be2b2f225998d21480d6ed5a6adbb097a8bb4967"
+        },
+        "type": "string"
+      },
+      {
+        "context": "inline-script[1]:call:cell[3]",
+        "default": "功能设计",
+        "field_id": "script.literal.009",
+        "kind": "script_literal",
+        "max_length": 8,
+        "span": {
+          "kind": "script_literal",
+          "occurrence": 9,
+          "quote": "'",
+          "script_index": 1,
+          "sink": "call:cell[3]",
+          "token_sha256": "sha256:c5d4546d98857f884cec6c1bd894646c0d32a9cd6f70cfc34ca44724bfbd2d99"
+        },
+        "type": "string"
+      },
+      {
+        "constraints": {
+          "pattern": "^(?!.*[\\u3400-\\u9fff]).+$"
+        },
+        "context": "inline-script[1]:call:cell[4]",
+        "default": "FEATURE",
+        "field_id": "script.literal.010",
+        "kind": "script_literal",
+        "max_length": 11,
+        "semantic_role": "mono-label",
+        "span": {
+          "kind": "script_literal",
+          "occurrence": 10,
+          "quote": "'",
+          "script_index": 1,
+          "sink": "call:cell[4]",
+          "token_sha256": "sha256:2fea32b763abd9b0074d37506ce29081b2ef44d20df8bcdd0c7d5ea8baa4afd4"
+        },
+        "type": "string"
+      },
+      {
+        "context": "inline-script[1]:call:cell[5]",
+        "default": "信息架构保持清晰",
+        "field_id": "script.literal.011",
+        "kind": "script_literal",
+        "max_length": 12,
+        "span": {
+          "kind": "script_literal",
+          "occurrence": 11,
+          "quote": "'",
+          "script_index": 1,
+          "sink": "call:cell[5]",
+          "token_sha256": "sha256:993b149c6209031320f0118b3f5cee3b5fc248ec0f9f83b51b6dc657fff53687"
+        },
+        "type": "string"
+      },
+      {
+        "context": "inline-script[1]:call:cell[6]",
+        "default": "核心流程减少无效步骤",
+        "field_id": "script.literal.012",
+        "kind": "script_literal",
+        "max_length": 14,
+        "span": {
+          "kind": "script_literal",
+          "occurrence": 12,
+          "quote": "'",
+          "script_index": 1,
+          "sink": "call:cell[6]",
+          "token_sha256": "sha256:ecd2e62b63f0e77d282552cea026b0a30dd845b0657717f96e8ea50b9d6da394"
+        },
+        "type": "string"
+      },
+      {
+        "context": "inline-script[1]:call:cell[3]",
+        "default": "团队协作",
+        "field_id": "script.literal.013",
+        "kind": "script_literal",
+        "max_length": 8,
+        "span": {
+          "kind": "script_literal",
+          "occurrence": 13,
+          "quote": "'",
+          "script_index": 1,
+          "sink": "call:cell[3]",
+          "token_sha256": "sha256:75f1c7c4e6e80e34fd8e896cf47eed24005f891bedda907fcfa7790aaa232a6b"
+        },
+        "type": "string"
+      },
+      {
+        "constraints": {
+          "pattern": "^(?!.*[\\u3400-\\u9fff]).+$"
+        },
+        "context": "inline-script[1]:call:cell[4]",
+        "default": "COLLAB",
+        "field_id": "script.literal.014",
+        "kind": "script_literal",
+        "max_length": 10,
+        "semantic_role": "mono-label",
+        "span": {
+          "kind": "script_literal",
+          "occurrence": 14,
+          "quote": "'",
+          "script_index": 1,
+          "sink": "call:cell[4]",
+          "token_sha256": "sha256:9b87fcd331e2935f4e1f71a895da278b03b1a8cde989ff9dba7423111040263e"
+        },
+        "type": "string"
+      },
+      {
+        "context": "inline-script[1]:call:cell[5]",
+        "default": "设计研发运营共同决策",
+        "field_id": "script.literal.015",
+        "kind": "script_literal",
+        "max_length": 14,
+        "span": {
+          "kind": "script_literal",
+          "occurrence": 15,
+          "quote": "'",
+          "script_index": 1,
+          "sink": "call:cell[5]",
+          "token_sha256": "sha256:e03e66a359a79a122bcf3444edd4a129774cc3409463b744bac1ec5fa2a2c781"
+        },
+        "type": "string"
+      },
+      {
+        "context": "inline-script[1]:call:cell[6]",
+        "default": "边界与交付节奏透明",
+        "field_id": "script.literal.016",
+        "kind": "script_literal",
+        "max_length": 13,
+        "span": {
+          "kind": "script_literal",
+          "occurrence": 16,
+          "quote": "'",
+          "script_index": 1,
+          "sink": "call:cell[6]",
+          "token_sha256": "sha256:39aa2c2f8f098537458028da7795cce49129b3a9cd6e71082ac7e3a2436d4f6b"
+        },
+        "type": "string"
+      },
+      {
+        "context": "inline-script[1]:call:cell[3]",
+        "default": "数据分析",
+        "field_id": "script.literal.017",
+        "kind": "script_literal",
+        "max_length": 8,
+        "span": {
+          "kind": "script_literal",
+          "occurrence": 17,
+          "quote": "'",
+          "script_index": 1,
+          "sink": "call:cell[3]",
+          "token_sha256": "sha256:70f83ba9407a77625707cfca9415725bec6505d1627d848aa2a2254681e8d588"
+        },
+        "type": "string"
+      },
+      {
+        "constraints": {
+          "pattern": "^(?!.*[\\u3400-\\u9fff]).+$"
+        },
+        "context": "inline-script[1]:call:cell[4]",
+        "default": "METRICS",
+        "field_id": "script.literal.018",
+        "kind": "script_literal",
+        "max_length": 11,
+        "semantic_role": "mono-label",
+        "span": {
+          "kind": "script_literal",
+          "occurrence": 18,
+          "quote": "'",
+          "script_index": 1,
+          "sink": "call:cell[4]",
+          "token_sha256": "sha256:411349348eb4f6650bfc2383878dd995c5698c4732b754296f2311baebb5a15d"
+        },
+        "type": "string"
+      },
+      {
+        "context": "inline-script[1]:call:cell[5]",
+        "default": "定义北极星与护栏指标",
+        "field_id": "script.literal.019",
+        "kind": "script_literal",
+        "max_length": 14,
+        "span": {
+          "kind": "script_literal",
+          "occurrence": 19,
+          "quote": "'",
+          "script_index": 1,
+          "sink": "call:cell[5]",
+          "token_sha256": "sha256:dbe34836a7e1de8e7e13749c6b1a1729d55a2815079f4e7d4c9efedc2b3d31cb"
+        },
+        "type": "string"
+      },
+      {
+        "context": "inline-script[1]:call:cell[6]",
+        "default": "用结果校准产品判断",
+        "field_id": "script.literal.020",
+        "kind": "script_literal",
+        "max_length": 13,
+        "span": {
+          "kind": "script_literal",
+          "occurrence": 20,
+          "quote": "'",
+          "script_index": 1,
+          "sink": "call:cell[6]",
+          "token_sha256": "sha256:d3062e939e7083b0f40a06413b905192957342d5e14c61d80e5d5a3d668766df"
+        },
+        "type": "string"
+      },
+      {
+        "context": "inline-script[1]:call:cell[3]",
+        "default": "质量守门",
+        "field_id": "script.literal.021",
+        "kind": "script_literal",
+        "max_length": 8,
+        "span": {
+          "kind": "script_literal",
+          "occurrence": 21,
+          "quote": "'",
+          "script_index": 1,
+          "sink": "call:cell[3]",
+          "token_sha256": "sha256:e8020ff6188cd588bbe7c04bc0103f30c673f498a9a49834ce601a366d3a5862"
+        },
+        "type": "string"
+      },
+      {
+        "constraints": {
+          "pattern": "^(?!.*[\\u3400-\\u9fff]).+$"
+        },
+        "context": "inline-script[1]:call:cell[4]",
+        "default": "QUALITY",
+        "field_id": "script.literal.022",
+        "kind": "script_literal",
+        "max_length": 11,
+        "semantic_role": "mono-label",
+        "span": {
+          "kind": "script_literal",
+          "occurrence": 22,
+          "quote": "'",
+          "script_index": 1,
+          "sink": "call:cell[4]",
+          "token_sha256": "sha256:a99b7a9e3b2963aafb14f09eb57bd636739f69185beb32128ea9b7fa6e1bcfea"
+        },
+        "type": "string"
+      },
+      {
+        "context": "inline-script[1]:call:cell[5]",
+        "default": "上线前覆盖关键场景",
+        "field_id": "script.literal.023",
+        "kind": "script_literal",
+        "max_length": 13,
+        "span": {
+          "kind": "script_literal",
+          "occurrence": 23,
+          "quote": "'",
+          "script_index": 1,
+          "sink": "call:cell[5]",
+          "token_sha256": "sha256:b73b3da998a060ca503961cbcddee361dd5e2af250024c4b6f9cdbbdf43e0dee"
+        },
+        "type": "string"
+      },
+      {
+        "context": "inline-script[1]:call:cell[6]",
+        "default": "风险可追踪可回滚",
+        "field_id": "script.literal.024",
+        "kind": "script_literal",
+        "max_length": 12,
+        "span": {
+          "kind": "script_literal",
+          "occurrence": 24,
+          "quote": "'",
+          "script_index": 1,
+          "sink": "call:cell[6]",
+          "token_sha256": "sha256:9d0b6981f6f5068cc93be70aceba727c6d5c7111cc0eb3522031817f09c9664e"
+        },
+        "type": "string"
+      }
+    ],
+    "format": "wise-ppt-layout-payload@1",
+    "values_schema": {
+      "additionalProperties": false,
+      "minProperties": 1,
+      "properties": {
+        "html.text.001": {
+          "maxLength": 16,
+          "type": "string"
+        },
+        "html.text.002": {
+          "maxLength": 14,
+          "type": "string"
+        },
+        "html.text.003": {
+          "maxLength": 26,
+          "pattern": "^\\d{1,3} / \\d{1,3} — BY .{1,40}$",
+          "type": "string"
+        },
+        "html.text.004": {
+          "maxLength": 50,
+          "type": "string"
+        },
+        "script.literal.001": {
+          "maxLength": 8,
+          "type": "string"
+        },
+        "script.literal.002": {
+          "maxLength": 11,
+          "pattern": "^(?!.*[\\u3400-\\u9fff]).+$",
+          "type": "string"
+        },
+        "script.literal.003": {
+          "maxLength": 13,
+          "type": "string"
+        },
+        "script.literal.004": {
+          "maxLength": 13,
+          "type": "string"
+        },
+        "script.literal.005": {
+          "maxLength": 8,
+          "type": "string"
+        },
+        "script.literal.006": {
+          "maxLength": 11,
+          "pattern": "^(?!.*[\\u3400-\\u9fff]).+$",
+          "type": "string"
+        },
+        "script.literal.007": {
+          "maxLength": 13,
+          "type": "string"
+        },
+        "script.literal.008": {
+          "maxLength": 14,
+          "type": "string"
+        },
+        "script.literal.009": {
+          "maxLength": 8,
+          "type": "string"
+        },
+        "script.literal.010": {
+          "maxLength": 11,
+          "pattern": "^(?!.*[\\u3400-\\u9fff]).+$",
+          "type": "string"
+        },
+        "script.literal.011": {
+          "maxLength": 12,
+          "type": "string"
+        },
+        "script.literal.012": {
+          "maxLength": 14,
+          "type": "string"
+        },
+        "script.literal.013": {
+          "maxLength": 8,
+          "type": "string"
+        },
+        "script.literal.014": {
+          "maxLength": 10,
+          "pattern": "^(?!.*[\\u3400-\\u9fff]).+$",
+          "type": "string"
+        },
+        "script.literal.015": {
+          "maxLength": 14,
+          "type": "string"
+        },
+        "script.literal.016": {
+          "maxLength": 13,
+          "type": "string"
+        },
+        "script.literal.017": {
+          "maxLength": 8,
+          "type": "string"
+        },
+        "script.literal.018": {
+          "maxLength": 11,
+          "pattern": "^(?!.*[\\u3400-\\u9fff]).+$",
+          "type": "string"
+        },
+        "script.literal.019": {
+          "maxLength": 14,
+          "type": "string"
+        },
+        "script.literal.020": {
+          "maxLength": 13,
+          "type": "string"
+        },
+        "script.literal.021": {
+          "maxLength": 8,
+          "type": "string"
+        },
+        "script.literal.022": {
+          "maxLength": 11,
+          "pattern": "^(?!.*[\\u3400-\\u9fff]).+$",
+          "type": "string"
+        },
+        "script.literal.023": {
+          "maxLength": 13,
+          "type": "string"
+        },
+        "script.literal.024": {
+          "maxLength": 12,
+          "type": "string"
+        }
+      },
+      "type": "object"
+    }
+  },
+  "payload_defaults": {
+    "bindings": [
+      {
+        "asset_refs": [],
+        "content_refs": [
+          "item.canonical.concepts"
+        ],
+        "slot_id": "concepts"
+      },
+      {
+        "asset_refs": [],
+        "content_refs": [
+          "item.canonical.support"
+        ],
+        "slot_id": "support"
+      },
+      {
+        "asset_refs": [],
+        "content_refs": [
+          "item.canonical.takeaway"
+        ],
+        "slot_id": "takeaway"
+      }
+    ],
+    "values": {
+      "html.text.001": "产品 · 述职 — F4",
+      "html.text.002": "产品经理六项能力复盘",
+      "html.text.003": "01 / 01 — BY WISE PPT",
+      "html.text.004": "洞察、规划、设计、协作、数据与质量，构成产品经理持续交付用户价值的六项能力。",
+      "script.literal.001": "用户洞察",
+      "script.literal.002": "INSIGHT",
+      "script.literal.003": "访谈与反馈持续归因",
+      "script.literal.004": "找到真实需求与阻力",
+      "script.literal.005": "产品规划",
+      "script.literal.006": "ROADMAP",
+      "script.literal.007": "目标拆解为阶段路线",
+      "script.literal.008": "关键假设进入验证队列",
+      "script.literal.009": "功能设计",
+      "script.literal.010": "FEATURE",
+      "script.literal.011": "信息架构保持清晰",
+      "script.literal.012": "核心流程减少无效步骤",
+      "script.literal.013": "团队协作",
+      "script.literal.014": "COLLAB",
+      "script.literal.015": "设计研发运营共同决策",
+      "script.literal.016": "边界与交付节奏透明",
+      "script.literal.017": "数据分析",
+      "script.literal.018": "METRICS",
+      "script.literal.019": "定义北极星与护栏指标",
+      "script.literal.020": "用结果校准产品判断",
+      "script.literal.021": "质量守门",
+      "script.literal.022": "QUALITY",
+      "script.literal.023": "上线前覆盖关键场景",
+      "script.literal.024": "风险可追踪可回滚"
+    }
+  },
+  "payload_schema": {
+    "additionalProperties": false,
+    "properties": {
+      "bindings": {
+        "items": {
+          "additionalProperties": false,
+          "properties": {
+            "asset_refs": {
+              "items": {
+                "minLength": 1,
+                "type": "string"
+              },
+              "type": "array"
+            },
+            "content_refs": {
+              "items": {
+                "minLength": 1,
+                "type": "string"
+              },
+              "type": "array"
+            },
+            "slot_id": {
+              "enum": [
+                "concepts",
+                "support",
+                "takeaway"
+              ],
+              "type": "string"
+            }
+          },
+          "required": [
+            "slot_id",
+            "content_refs",
+            "asset_refs"
+          ],
+          "type": "object"
+        },
+        "maxItems": 3,
+        "minItems": 3,
+        "type": "array"
+      },
+      "values": {
+        "additionalProperties": false,
+        "minProperties": 1,
+        "properties": {
+          "html.text.001": {
+            "maxLength": 16,
+            "type": "string"
+          },
+          "html.text.002": {
+            "maxLength": 14,
+            "type": "string"
+          },
+          "html.text.003": {
+            "maxLength": 26,
+            "pattern": "^\\d{1,3} / \\d{1,3} — BY .{1,40}$",
+            "type": "string"
+          },
+          "html.text.004": {
+            "maxLength": 50,
+            "type": "string"
+          },
+          "script.literal.001": {
+            "maxLength": 8,
+            "type": "string"
+          },
+          "script.literal.002": {
+            "maxLength": 11,
+            "pattern": "^(?!.*[\\u3400-\\u9fff]).+$",
+            "type": "string"
+          },
+          "script.literal.003": {
+            "maxLength": 13,
+            "type": "string"
+          },
+          "script.literal.004": {
+            "maxLength": 13,
+            "type": "string"
+          },
+          "script.literal.005": {
+            "maxLength": 8,
+            "type": "string"
+          },
+          "script.literal.006": {
+            "maxLength": 11,
+            "pattern": "^(?!.*[\\u3400-\\u9fff]).+$",
+            "type": "string"
+          },
+          "script.literal.007": {
+            "maxLength": 13,
+            "type": "string"
+          },
+          "script.literal.008": {
+            "maxLength": 14,
+            "type": "string"
+          },
+          "script.literal.009": {
+            "maxLength": 8,
+            "type": "string"
+          },
+          "script.literal.010": {
+            "maxLength": 11,
+            "pattern": "^(?!.*[\\u3400-\\u9fff]).+$",
+            "type": "string"
+          },
+          "script.literal.011": {
+            "maxLength": 12,
+            "type": "string"
+          },
+          "script.literal.012": {
+            "maxLength": 14,
+            "type": "string"
+          },
+          "script.literal.013": {
+            "maxLength": 8,
+            "type": "string"
+          },
+          "script.literal.014": {
+            "maxLength": 10,
+            "pattern": "^(?!.*[\\u3400-\\u9fff]).+$",
+            "type": "string"
+          },
+          "script.literal.015": {
+            "maxLength": 14,
+            "type": "string"
+          },
+          "script.literal.016": {
+            "maxLength": 13,
+            "type": "string"
+          },
+          "script.literal.017": {
+            "maxLength": 8,
+            "type": "string"
+          },
+          "script.literal.018": {
+            "maxLength": 11,
+            "pattern": "^(?!.*[\\u3400-\\u9fff]).+$",
+            "type": "string"
+          },
+          "script.literal.019": {
+            "maxLength": 14,
+            "type": "string"
+          },
+          "script.literal.020": {
+            "maxLength": 13,
+            "type": "string"
+          },
+          "script.literal.021": {
+            "maxLength": 8,
+            "type": "string"
+          },
+          "script.literal.022": {
+            "maxLength": 11,
+            "pattern": "^(?!.*[\\u3400-\\u9fff]).+$",
+            "type": "string"
+          },
+          "script.literal.023": {
+            "maxLength": 13,
+            "type": "string"
+          },
+          "script.literal.024": {
+            "maxLength": 12,
+            "type": "string"
+          }
+        },
+        "type": "object"
+      }
+    },
+    "required": [
+      "bindings",
+      "values"
+    ],
+    "type": "object"
+  },
+  "recipe_fingerprint": "sha256:dc7c6be89436d0b08041c5b85b407442d5ef3cfa9d765e575fa8e75edc084c33",
+  "recipe_id": "paper-ink.decomposition.icon-grid",
+  "required_capabilities": [],
+  "slots": [
+    {
+      "allowed_component_sources": [
+        "native",
+        "ppt-component-atlas"
+      ],
+      "allowed_renderer_kinds": [
+        "native-html",
+        "svg"
+      ],
+      "compatible_component_ids": [
+        "native.paper-ink.086.icon-grid"
+      ],
+      "count_unit": "binding",
+      "default_component": {
+        "component_id": "native.paper-ink.decomposition.icon-grid.concepts",
+        "component_source": "native",
+        "origin": {
+          "kind": "canonical-frame-island",
+          "path": "gallery/paper-ink/general/frames/layout-f4.html",
+          "selector": ".stage"
+        },
+        "renderer_kind": "svg"
+      },
+      "max_items": 8,
+      "min_items": 1,
+      "open_for_override": false,
+      "purpose": "并列概念",
+      "required": true,
+      "slot_id": "concepts",
+      "space_contract": {
+        "aspect_ratio": 1.9412,
+        "canvas_height": 1080,
+        "canvas_width": 1920,
+        "height": 680,
+        "space_type": "balanced",
+        "width": 1320
+      },
+      "visual_role": "primary"
+    },
+    {
+      "allowed_component_sources": [
+        "codex-host",
+        "native"
+      ],
+      "allowed_renderer_kinds": [
+        "typography",
+        "table",
+        "image",
+        "native-html",
+        "svg"
+      ],
+      "compatible_component_ids": [],
+      "count_unit": "binding",
+      "default_component": {
+        "component_id": "native.paper-ink.decomposition.icon-grid.support",
+        "component_source": "native",
+        "origin": {
+          "kind": "canonical-frame-island",
+          "path": "gallery/paper-ink/general/frames/layout-f4.html",
+          "selector": ".doc.tl"
+        },
+        "renderer_kind": "typography"
+      },
+      "max_items": 4,
+      "min_items": 0,
+      "open_for_override": false,
+      "purpose": "辅助证据、标签或解释",
+      "required": false,
+      "slot_id": "support",
+      "visual_role": "support"
+    },
+    {
+      "allowed_component_sources": [
+        "native"
+      ],
+      "allowed_renderer_kinds": [
+        "typography"
+      ],
+      "compatible_component_ids": [],
+      "count_unit": "binding",
+      "default_component": {
+        "component_id": "native.paper-ink.decomposition.icon-grid.takeaway",
+        "component_source": "native",
+        "origin": {
+          "kind": "canonical-frame-island",
+          "path": "gallery/paper-ink/general/frames/layout-f4.html",
+          "selector": ".caption"
+        },
+        "renderer_kind": "typography"
+      },
+      "max_items": 1,
+      "min_items": 0,
+      "open_for_override": false,
+      "purpose": "页面一句话结论",
+      "required": false,
+      "slot_id": "takeaway",
+      "visual_role": "support"
+    }
+  ],
+  "source": {
+    "path": "gallery/paper-ink/general/frames/layout-f4.html",
+    "sha256": "sha256:d41c4ff8830c3ef38f861cb75504f15714fed70678ec3cfee13fae8d96121a2e"
+  },
+  "status": "production",
+  "theme_id": "paper-ink",
+  "variant": "general"
+}

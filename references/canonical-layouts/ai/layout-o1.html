@@ -1,0 +1,144 @@
+<!-- GENERATED: Wise PPT formal canonical source; protected Gallery remains provenance-only. -->
+<!DOCTYPE html>
+<html lang="zh-CN" data-runtime="wise-ppt-specimen" data-typography-mode="mixed" data-page-id="gallery-ai-o1" data-page-role="explain" data-theme="paper-ink" data-layout="paper-ink.funnel.conversion" data-layout-source="gallery">
+<head>
+<meta charset="UTF-8">
+<title>layout-o1 · 漏斗（连续收敛）· RAG 检索漏斗</title>
+<link rel="stylesheet" href="../../../../themes/paper-ink/assets/design-tokens.css">
+<link rel="stylesheet" href="../../../../themes/paper-ink/assets/slide-components.css">
+<link rel="stylesheet" href="../../../shell.css">
+<style>
+  svg.scene { position: absolute; inset: 0; z-index: 1; }
+  .doc.tl, .folio { color: var(--ink-45); }
+  .caption {
+    position: absolute; left: 0; right: 0; bottom: 118px;
+    text-align: center;;;;;;
+    z-index: 5;
+  }
+</style>
+</head>
+<body class="slide">
+<div class="stage" data-block-id="gallery-primary" data-renderer-kind="svg" data-component-source="native" data-component-id="native.paper-ink.funnel.conversion.funnel-stages" data-content-ref="example.o1" data-anchor-id="stage">
+  <span data-geometry-anchor-holder="funnel-side-left" data-anchor-id="funnel-side-left" hidden aria-hidden="true"></span><span data-geometry-anchor-holder="funnel-side-right" data-anchor-id="funnel-side-right" hidden aria-hidden="true"></span><span data-geometry-anchor-holder="funnel-axis-stem" data-anchor-id="funnel-axis-stem" hidden aria-hidden="true"></span>
+  <div class="doc tl" data-anchor-id="slot-support">AI ENGINEERING — O1<br>RAG RETRIEVAL FUNNEL</div>
+  <div class="folio">01 / 01 — BY @歪斯WISE</div>
+
+  <svg class="scene" width="1920" height="1080" viewBox="0 0 1920 1080">
+    <g id="draw" data-anchor-id="slot-funnel-stages"></g>
+  </svg>
+
+  <div class="caption" data-anchor-id="slot-takeaway">48 个候选片段经过混合检索、过滤、去重与重排，最终只把高相关内容送进上下文。</div>
+</div>
+
+<script src="../../../../runtime/stage-fit.js"></script>
+<script src="../../../../themes/paper-ink/assets/particles.js"></script>
+<script>
+var NS = 'http://www.w3.org/2000/svg';
+var INK = __wiseThemeToken("--ink");
+var INK80 = __wiseThemeToken("--ink-80");
+var INK45 = __wiseThemeToken("--ink-45");
+/* accent 触发：读 URL 加类 + 染色常量（详见 design-tokens.md §2） */
+if (location.search.indexOf('accent') >= 0) document.documentElement.classList.add('accent');
+var ACCENT = document.documentElement.classList.contains('accent');
+var RED = getComputedStyle(document.documentElement).getPropertyValue('--accent-red').trim();
+var G = document.getElementById('draw');
+function el(tag, attrs) {
+  var e = document.createElementNS(NS, tag);
+  for (var k in attrs) e.setAttribute(k, attrs[k]);
+  G.appendChild(e); return e;
+}
+function txt(x, y, str, attrs) {
+  var t = el('text', Object.assign({x:x, y:y}, attrs||{}));
+  t.textContent = str; return t;
+}
+var MONO = 'var(--mono)', SANS = 'var(--sans)';
+
+G = el('g', {transform:'translate(0 -37.7)'});
+
+
+/* ---------- 连续漏斗：一个大倒三角，两侧边一路收为塔尖 ---------- */
+var topY = 240, botY = 770;          /* 漏斗顶 / 塔尖（收为点） */
+var cX = 660;                        /* 漏斗中轴 */
+var topW = 720;                      /* 顶宽 */
+function wAt(y) { return topW * (botY - y) / (botY - topY); }
+
+/* 外轮廓：顶线 + 两条连续侧边 */
+el('line', {x1:cX-topW/2, y1:topY, x2:cX+topW/2, y2:topY, stroke:INK80, 'stroke-width':1.4});
+el('line', {x1:cX-topW/2, y1:topY, x2:cX, y2:botY, stroke:INK80, 'stroke-width':1.4});
+el('line', {x1:cX+topW/2, y1:topY, x2:cX, y2:botY, stroke:INK80, 'stroke-width':1.4});
+
+/* 两条横向分隔线切出三层 */
+[440, 600].forEach(function(sy){
+  var w = wAt(sy);
+  el('line', {x1:cX-w/2, y1:sy, x2:cX+w/2, y2:sy, stroke:INK, 'stroke-width':.9, opacity:.55});
+});
+
+/* 顶部刻度尺 */
+for (var i = 0; i <= 20; i++) {
+  var tx = cX - topW/2 + i * (topW/20);
+  el('line', {x1:tx, y1:topY, x2:tx, y2:topY - (i%5===0?12:6), stroke:INK, 'stroke-width':.6, opacity:.35});
+}
+
+var layers = [
+  {y0:topY, y1:440, n:'≈ 1,200,000', tag:'CORPUS',  t:'语料库', en:'CHUNKS',
+   notes:['文档切片','向量化入库','语义召回','混合检索']},
+  {y0:440,  y1:600, n:'≈ 8,600',     tag:'RECALL',  t:'召回',   en:'CANDIDATES',
+   notes:['向量召回','关键词匹配','相关度过滤','去重合并']},
+  {y0:600,  y1:740, n:'≈ 48',        tag:'RERANK',  t:'重排',   en:'TOP-K',
+   notes:['交叉编码重排','业务规则加权','截断 Top-K','拼装上下文']}
+];
+
+layers.forEach(function(L, i){
+  var last = (i === layers.length - 1);   /* 最底层=重排=漏斗出口=业务结果 */
+  var inkLayer = (ACCENT && last) ? RED : INK;
+  var midY = (L.y0 + L.y1)/2;
+  /* 层名 */
+  txt(cX, midY-4, L.t, {'font-family':SANS, 'font-weight':300, 'font-size':'var(--type-subheading)', 'text-anchor':'middle', fill:inkLayer});
+  txt(cX, midY+26, L.en, {'font-family':MONO, 'font-size':'var(--type-meta)', 'letter-spacing':2, 'text-anchor':'middle', fill:(ACCENT && last ? 'var(--accent-red-65)' : INK45)});
+  /* 左侧：虚线引出 mono 数量 */
+  var lw = wAt(midY);
+  el('line', {x1:cX-lw/2-16, y1:midY, x2:cX-lw/2-30, y2:midY, stroke:inkLayer, 'stroke-width':.6, 'stroke-dasharray':'3 4', opacity:.5});
+  txt(cX-lw/2-46, midY-4, L.n, {'font-family':MONO, 'font-size':'var(--type-subheading)', 'text-anchor':'end', fill:inkLayer});
+  txt(cX-lw/2-46, midY+22, L.tag, {'font-family':MONO, 'font-size':'var(--type-micro-secondary)', 'letter-spacing':2, 'text-anchor':'end', fill:(ACCENT && last ? 'var(--accent-red-65)' : INK45)});
+  /* 右侧：实线引出字段注记 */
+  el('line', {x1:cX+lw/2+16, y1:midY, x2:cX+lw/2+70, y2:midY, stroke:INK, 'stroke-width':.6, opacity:.5});
+  L.notes.forEach(function(n, j){
+    txt(cX+lw/2+86, midY - 45 + j*30, n, {'font-family':SANS, 'font-weight':300, 'font-size':'var(--type-body-small)', fill:__wiseThemeToken("--ink-70")});
+  });
+});
+
+/* 底部收口：塔尖墨点 → 双线小框（出口） */
+el('line', {x1:cX, y1:botY, x2:cX, y2:botY+30, stroke:INK, 'stroke-width':1.2});
+el('circle', {cx:cX, cy:botY+38, r:3.5, fill:INK});
+el('rect', {x:cX-70, y:botY+46, width:140, height:44, fill:'none', stroke:INK80, 'stroke-width':1.2});
+el('rect', {x:cX-66, y:botY+50, width:132, height:36, fill:'none', stroke:INK, 'stroke-width':.6, opacity:.35});
+txt(cX, botY+74, 'TO LLM', {'font-family':MONO, 'font-size':'var(--type-body-small)', 'letter-spacing':2, 'text-anchor':'middle', fill:INK});
+
+/* ---------- 右侧规格单：召回片段清单（标本面板） ---------- */
+(function(){
+  var x = 1380, y = 330, w = 400;
+  el('rect', {x:x, y:y, width:w, height:330, fill:__wiseThemeToken("--paper-panel"), stroke:INK80, 'stroke-width':1.2});
+  el('rect', {x:x+5, y:y+5, width:w-10, height:320, fill:'none', stroke:INK, 'stroke-width':.6, opacity:.35});
+  txt(x+26, y+42, 'RETRIEVED', {'font-family':MONO, 'font-size':'var(--type-body-small)', 'letter-spacing':2, fill:INK});
+  el('line', {x1:x+26, y1:y+56, x2:x+90, y2:y+56, stroke:INK, 'stroke-width':1});
+  txt(x+26, y+88, '本次查询 · 召回 48 片段', {'font-family':SANS, 'font-weight':300, 'font-size':'var(--type-body-small)', fill:__wiseThemeToken("--ink-55")});
+  var rows = [
+    ['CHK #04217', 'API 文档',  'score .92'],
+    ['CHK #04188', 'FAQ',      'score .89'],
+    ['CHK #04155', '产品手册', 'score .86'],
+    ['CHK #04102', '博客',     'score .82'],
+    ['CHK #04071', '工单',     'score .78']
+  ];
+  rows.forEach(function(r, i){
+    var ry = y + 128 + i * 38;
+    txt(x+26, ry, r[0], {'font-family':MONO, 'font-size':'var(--type-body-small)', fill:INK});
+    txt(x+w-120, ry, r[1], {'font-family':MONO, 'font-size':'var(--type-body-small)', 'text-anchor':'end', fill:__wiseThemeToken("--ink-70")});
+    txt(x+w-26, ry, r[2], {'font-family':MONO, 'font-size':'var(--type-micro-secondary)', 'text-anchor':'end', fill:INK45});
+    if (i < rows.length-1) el('line', {x1:x+26, y1:ry+14, x2:x+w-26, y2:ry+14, stroke:INK, 'stroke-width':.5, 'stroke-dasharray':'2 5', opacity:.25});
+  });
+})();
+
+stageFit();
+</script>
+</body>
+</html>

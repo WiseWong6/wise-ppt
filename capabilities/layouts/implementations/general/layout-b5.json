@@ -1,0 +1,826 @@
+{
+  "canonical": {
+    "constraints": {
+      "css_scope": "[data-implementation-id=\"paper-ink.temporal.step-rise.general\"]",
+      "external_links": false,
+      "external_scripts": false,
+      "payload_only_mutation": true,
+      "ready_api": "WisePPT.markSlideReady",
+      "script_query_scope": "current-section.slide",
+      "stage_fit": false
+    },
+    "kind": "derived-frame",
+    "materialization_format": "wise-ppt-formal-slide@1",
+    "path": "gallery/paper-ink/general/frames/layout-b5.html",
+    "root_selector": "section.slide[data-implementation-id=\"paper-ink.temporal.step-rise.general\"]",
+    "sha256": "sha256:e2b2c4d2afd54f328cd3eb92dd4c969a139987291ebe4faffa58b8da3d7b3da7"
+  },
+  "canonical_fingerprint": "sha256:d443db03331eeeab136ad824a97d14c8fb86f32eeda3c84e96858af0b4867461",
+  "contract_version": 1,
+  "dependency_closure": {
+    "files": [
+      {
+        "path": "gallery/shell.css",
+        "sha256": "sha256:aca1428680d2dd5c84e85d66241ee199a16d36bb60a098340528943fb5469f69"
+      },
+      {
+        "path": "runtime/stage-fit.js",
+        "sha256": "sha256:39577a14aac5072789fdeb80abee887d24da5a44eeb38203ef154602330f291d"
+      },
+      {
+        "path": "themes/paper-ink/assets/design-tokens.css",
+        "sha256": "sha256:3f1f0d3562cf1486b87643b16025388557000858d0df13d767b53a576988c330"
+      },
+      {
+        "path": "themes/paper-ink/assets/fonts/CourierPrime-Regular.ttf",
+        "sha256": "sha256:72f793376f8e2841656bf21d77a5de010f2929bd6956a22ee848ad0c7eb978af"
+      },
+      {
+        "path": "themes/paper-ink/assets/fonts/LXGWWenKai-Regular.ttf",
+        "sha256": "sha256:39ad71264b588165b469e35e6afb162a378dacd1f95348160240ba9038ac3009"
+      },
+      {
+        "path": "themes/paper-ink/assets/fonts/SourceHanSansCN-Light.otf",
+        "sha256": "sha256:b6dfc945aae0daf9b15019f59c2f7b18d17da3b92f00c3ec32fb5f0333696d9c"
+      },
+      {
+        "path": "themes/paper-ink/assets/fonts/SourceHanSerifCN-Medium.otf",
+        "sha256": "sha256:8e224937647ae71ba1b1f310bcb3fbc32f21ec7c2c490ba04670455c901f3378"
+      },
+      {
+        "path": "themes/paper-ink/assets/particles.js",
+        "sha256": "sha256:1281d72e81b34e4be061286edd323dd421443dffbf6e0d8a2faa94a5d14094c4"
+      },
+      {
+        "path": "themes/paper-ink/assets/slide-components.css",
+        "sha256": "sha256:20e7334fe5ae51cb229112290e787c1274ad65278a72b084c708682dc9ca5acf"
+      }
+    ],
+    "sha256": "sha256:7dcc6f0ac681be95cc8955afb36da97027f341a98f4f9f37518e37bfe13f5be4"
+  },
+  "format": "wise-ppt-layout-implementation@1",
+  "geometry": {
+    "anchors": [
+      {
+        "anchor_id": "stage",
+        "selector": ".stage"
+      }
+    ],
+    "canvas": {
+      "height": 1080,
+      "width": 1920
+    },
+    "content_region": {
+      "height": 1080,
+      "width": 1920,
+      "x": 0,
+      "y": 0
+    },
+    "fingerprint": "sha256:11fd34c7fa16c9a9cae5de2b93b9cf48934a24e916b9d1d9184e8b785869e5fd",
+    "format": "wise-ppt-layout-geometry@1",
+    "relations": [],
+    "structure_contract": {
+      "core_primitives": [
+        "linear-sequence"
+      ],
+      "region_count": 3,
+      "required_slot_ids": [
+        "stages"
+      ]
+    }
+  },
+  "implementation_id": "paper-ink.temporal.step-rise.general",
+  "payload": {
+    "fields": [
+      {
+        "context": "html:div.doc.tl",
+        "default": "运营 · 培训 — B5",
+        "field_id": "html.text.001",
+        "kind": "html_text",
+        "max_length": 16,
+        "span": {
+          "kind": "html_text",
+          "occurrence": 1,
+          "token_sha256": "sha256:dc0736aecbe93a519b28ac7ed9b1c4dca7dfd3497761015c44970005850aad1f"
+        },
+        "type": "string"
+      },
+      {
+        "context": "html:div.doc.tl",
+        "default": "运营能力五级进阶",
+        "field_id": "html.text.002",
+        "kind": "html_text",
+        "max_length": 12,
+        "span": {
+          "kind": "html_text",
+          "occurrence": 2,
+          "token_sha256": "sha256:5fac732a713d1ab97b713f09a07b9d42cd961e8d2290c227ae64539225a2f3d6"
+        },
+        "type": "string"
+      },
+      {
+        "constraints": {
+          "pattern": "^\\d{1,3} / \\d{1,3} — BY .{1,40}$"
+        },
+        "context": "html:div.folio",
+        "default": "01 / 01 — BY WISE PPT",
+        "field_id": "html.text.003",
+        "kind": "html_text",
+        "max_length": 26,
+        "semantic_role": "folio",
+        "source_default": "B5 / 63 — BY @歪斯WISE",
+        "span": {
+          "kind": "html_text",
+          "occurrence": 3,
+          "token_sha256": "sha256:fdc563ac183c4f461ab206dde407e312975c3bf2eea2130980af242754051fb9"
+        },
+        "type": "string"
+      },
+      {
+        "context": "html:div.caption",
+        "default": "从明确目标到独立策划，训练营把运营能力拆成五个可练习、可复盘的阶段。",
+        "field_id": "html.text.004",
+        "kind": "html_text",
+        "max_length": 45,
+        "span": {
+          "kind": "html_text",
+          "occurrence": 4,
+          "token_sha256": "sha256:bf220119354948da70d9c62174d60cbf4a501827811a1899f1376b1639761b7e"
+        },
+        "type": "string"
+      },
+      {
+        "constraints": {
+          "pattern": "^(?!.*[\\u3400-\\u9fff]).+$"
+        },
+        "context": "inline-script[1]:object-key:level",
+        "default": "LEVEL 01",
+        "field_id": "script.literal.001",
+        "kind": "script_literal",
+        "max_length": 12,
+        "semantic_role": "mono-label",
+        "span": {
+          "kind": "script_literal",
+          "occurrence": 1,
+          "quote": "'",
+          "script_index": 1,
+          "sink": "object-key:level",
+          "token_sha256": "sha256:b15a08f3f047537d660c5ac1e565e998b6ee3a048d82c793a098b8d626fa1d5f"
+        },
+        "type": "string"
+      },
+      {
+        "context": "inline-script[1]:object-key:ev",
+        "default": "明确目标",
+        "field_id": "script.literal.002",
+        "kind": "script_literal",
+        "max_length": 8,
+        "span": {
+          "kind": "script_literal",
+          "occurrence": 2,
+          "quote": "'",
+          "script_index": 1,
+          "sink": "object-key:ev",
+          "token_sha256": "sha256:3fa092cf70191856bcbb34aa4a4a3c56538d143ecb489f3759754553d19cd982"
+        },
+        "type": "string"
+      },
+      {
+        "context": "inline-script[1]:object-key:note",
+        "default": "知道为谁服务、要解决什么",
+        "field_id": "script.literal.003",
+        "kind": "script_literal",
+        "max_length": 16,
+        "span": {
+          "kind": "script_literal",
+          "occurrence": 3,
+          "quote": "'",
+          "script_index": 1,
+          "sink": "object-key:note",
+          "token_sha256": "sha256:8d9a43d100b9bf7f75eebb284220dea21bf9247a1f011984fe71a170722a1d53"
+        },
+        "type": "string"
+      },
+      {
+        "constraints": {
+          "pattern": "^(?!.*[\\u3400-\\u9fff]).+$"
+        },
+        "context": "inline-script[1]:object-key:level",
+        "default": "LEVEL 02",
+        "field_id": "script.literal.004",
+        "kind": "script_literal",
+        "max_length": 12,
+        "semantic_role": "mono-label",
+        "span": {
+          "kind": "script_literal",
+          "occurrence": 4,
+          "quote": "'",
+          "script_index": 1,
+          "sink": "object-key:level",
+          "token_sha256": "sha256:9684832827dce6ab8e18641dc4f37940a0e2cb6111fe570be372bb39ca39aa31"
+        },
+        "type": "string"
+      },
+      {
+        "context": "inline-script[1]:object-key:ev",
+        "default": "拆解任务",
+        "field_id": "script.literal.005",
+        "kind": "script_literal",
+        "max_length": 8,
+        "span": {
+          "kind": "script_literal",
+          "occurrence": 5,
+          "quote": "'",
+          "script_index": 1,
+          "sink": "object-key:ev",
+          "token_sha256": "sha256:fcca15cf967e8afedf05770295f8d2c3927d4919366b9b2689000f4727cbd755"
+        },
+        "type": "string"
+      },
+      {
+        "context": "inline-script[1]:object-key:note",
+        "default": "把目标拆成内容、渠道与节奏",
+        "field_id": "script.literal.006",
+        "kind": "script_literal",
+        "max_length": 17,
+        "span": {
+          "kind": "script_literal",
+          "occurrence": 6,
+          "quote": "'",
+          "script_index": 1,
+          "sink": "object-key:note",
+          "token_sha256": "sha256:dc459f9dea83cfcf8f990de4e6c375aa9a8f57dd8ac4499a643935d0fd3686ec"
+        },
+        "type": "string"
+      },
+      {
+        "constraints": {
+          "pattern": "^(?!.*[\\u3400-\\u9fff]).+$"
+        },
+        "context": "inline-script[1]:object-key:level",
+        "default": "LEVEL 03",
+        "field_id": "script.literal.007",
+        "kind": "script_literal",
+        "max_length": 12,
+        "semantic_role": "mono-label",
+        "span": {
+          "kind": "script_literal",
+          "occurrence": 7,
+          "quote": "'",
+          "script_index": 1,
+          "sink": "object-key:level",
+          "token_sha256": "sha256:8ac2af329df32f4b6e00d87c9e234da64282b4d4dd0e96e1ceaa5886b46b6bfb"
+        },
+        "type": "string"
+      },
+      {
+        "context": "inline-script[1]:object-key:ev",
+        "default": "执行活动",
+        "field_id": "script.literal.008",
+        "kind": "script_literal",
+        "max_length": 8,
+        "span": {
+          "kind": "script_literal",
+          "occurrence": 8,
+          "quote": "'",
+          "script_index": 1,
+          "sink": "object-key:ev",
+          "token_sha256": "sha256:215819221296402b93c47b684185892a1351a113953102de537034a3135593b5"
+        },
+        "type": "string"
+      },
+      {
+        "context": "inline-script[1]:object-key:note",
+        "default": "按清单推进，及时同步进度",
+        "field_id": "script.literal.009",
+        "kind": "script_literal",
+        "max_length": 16,
+        "span": {
+          "kind": "script_literal",
+          "occurrence": 9,
+          "quote": "'",
+          "script_index": 1,
+          "sink": "object-key:note",
+          "token_sha256": "sha256:5c8a1d440a170f108a0125810ac7436cf17ec3a2a51f80f1f3e02ffd715bb6e6"
+        },
+        "type": "string"
+      },
+      {
+        "constraints": {
+          "pattern": "^(?!.*[\\u3400-\\u9fff]).+$"
+        },
+        "context": "inline-script[1]:object-key:level",
+        "default": "LEVEL 04",
+        "field_id": "script.literal.010",
+        "kind": "script_literal",
+        "max_length": 12,
+        "semantic_role": "mono-label",
+        "span": {
+          "kind": "script_literal",
+          "occurrence": 10,
+          "quote": "'",
+          "script_index": 1,
+          "sink": "object-key:level",
+          "token_sha256": "sha256:f85f9728d4d666c96af2f76ee9e0e60e62cfa9556c95a61ff0d38fb73469d5df"
+        },
+        "type": "string"
+      },
+      {
+        "context": "inline-script[1]:object-key:ev",
+        "default": "复盘数据",
+        "field_id": "script.literal.011",
+        "kind": "script_literal",
+        "max_length": 8,
+        "span": {
+          "kind": "script_literal",
+          "occurrence": 11,
+          "quote": "'",
+          "script_index": 1,
+          "sink": "object-key:ev",
+          "token_sha256": "sha256:2991d84d1e9f36834330bc1a82e4614b8eb4348a2afec274b9f672ac58217d39"
+        },
+        "type": "string"
+      },
+      {
+        "context": "inline-script[1]:object-key:note",
+        "default": "找到有效动作与下次改进",
+        "field_id": "script.literal.012",
+        "kind": "script_literal",
+        "max_length": 15,
+        "span": {
+          "kind": "script_literal",
+          "occurrence": 12,
+          "quote": "'",
+          "script_index": 1,
+          "sink": "object-key:note",
+          "token_sha256": "sha256:32d29d30cb4ee5fb58bc0f5a0e03f50a1b2f7038e356427429fac78cee816fde"
+        },
+        "type": "string"
+      },
+      {
+        "constraints": {
+          "pattern": "^(?!.*[\\u3400-\\u9fff]).+$"
+        },
+        "context": "inline-script[1]:object-key:level",
+        "default": "LEVEL 05",
+        "field_id": "script.literal.013",
+        "kind": "script_literal",
+        "max_length": 12,
+        "semantic_role": "mono-label",
+        "span": {
+          "kind": "script_literal",
+          "occurrence": 13,
+          "quote": "'",
+          "script_index": 1,
+          "sink": "object-key:level",
+          "token_sha256": "sha256:2bbf8448d50fdde457c675ccfdf9141e620665d88b1d82991a1c1713121bd9fd"
+        },
+        "type": "string"
+      },
+      {
+        "context": "inline-script[1]:object-key:ev",
+        "default": "独立策划",
+        "field_id": "script.literal.014",
+        "kind": "script_literal",
+        "max_length": 8,
+        "span": {
+          "kind": "script_literal",
+          "occurrence": 14,
+          "quote": "'",
+          "script_index": 1,
+          "sink": "object-key:ev",
+          "token_sha256": "sha256:e43ddd34ca934de15937e5beab19a1111123c64ce9a8d879af017170c373a716"
+        },
+        "type": "string"
+      },
+      {
+        "context": "inline-script[1]:object-key:note",
+        "default": "独立完成一份运营方案",
+        "field_id": "script.literal.015",
+        "kind": "script_literal",
+        "max_length": 14,
+        "span": {
+          "kind": "script_literal",
+          "occurrence": 15,
+          "quote": "'",
+          "script_index": 1,
+          "sink": "object-key:note",
+          "token_sha256": "sha256:d6916029795d0a95ad44f6ac8b9d91375b105b440348c177037886e64cc43052"
+        },
+        "type": "string"
+      },
+      {
+        "constraints": {
+          "pattern": "^(?!.*[\\u3400-\\u9fff]).+$"
+        },
+        "context": "inline-script[1]:assignment:textContent",
+        "default": "ABILITY · LEVEL × 5",
+        "field_id": "script.literal.016",
+        "kind": "script_literal",
+        "max_length": 25,
+        "semantic_role": "mono-label",
+        "span": {
+          "kind": "script_literal",
+          "occurrence": 16,
+          "quote": "'",
+          "script_index": 1,
+          "sink": "assignment:textContent",
+          "token_sha256": "sha256:992f9ba1d18e536903c50291a827b06a55815a877447e65214cf1b10f7abec25"
+        },
+        "type": "string"
+      }
+    ],
+    "format": "wise-ppt-layout-payload@1",
+    "values_schema": {
+      "additionalProperties": false,
+      "minProperties": 1,
+      "properties": {
+        "html.text.001": {
+          "maxLength": 16,
+          "type": "string"
+        },
+        "html.text.002": {
+          "maxLength": 12,
+          "type": "string"
+        },
+        "html.text.003": {
+          "maxLength": 26,
+          "pattern": "^\\d{1,3} / \\d{1,3} — BY .{1,40}$",
+          "type": "string"
+        },
+        "html.text.004": {
+          "maxLength": 45,
+          "type": "string"
+        },
+        "script.literal.001": {
+          "maxLength": 12,
+          "pattern": "^(?!.*[\\u3400-\\u9fff]).+$",
+          "type": "string"
+        },
+        "script.literal.002": {
+          "maxLength": 8,
+          "type": "string"
+        },
+        "script.literal.003": {
+          "maxLength": 16,
+          "type": "string"
+        },
+        "script.literal.004": {
+          "maxLength": 12,
+          "pattern": "^(?!.*[\\u3400-\\u9fff]).+$",
+          "type": "string"
+        },
+        "script.literal.005": {
+          "maxLength": 8,
+          "type": "string"
+        },
+        "script.literal.006": {
+          "maxLength": 17,
+          "type": "string"
+        },
+        "script.literal.007": {
+          "maxLength": 12,
+          "pattern": "^(?!.*[\\u3400-\\u9fff]).+$",
+          "type": "string"
+        },
+        "script.literal.008": {
+          "maxLength": 8,
+          "type": "string"
+        },
+        "script.literal.009": {
+          "maxLength": 16,
+          "type": "string"
+        },
+        "script.literal.010": {
+          "maxLength": 12,
+          "pattern": "^(?!.*[\\u3400-\\u9fff]).+$",
+          "type": "string"
+        },
+        "script.literal.011": {
+          "maxLength": 8,
+          "type": "string"
+        },
+        "script.literal.012": {
+          "maxLength": 15,
+          "type": "string"
+        },
+        "script.literal.013": {
+          "maxLength": 12,
+          "pattern": "^(?!.*[\\u3400-\\u9fff]).+$",
+          "type": "string"
+        },
+        "script.literal.014": {
+          "maxLength": 8,
+          "type": "string"
+        },
+        "script.literal.015": {
+          "maxLength": 14,
+          "type": "string"
+        },
+        "script.literal.016": {
+          "maxLength": 25,
+          "pattern": "^(?!.*[\\u3400-\\u9fff]).+$",
+          "type": "string"
+        }
+      },
+      "type": "object"
+    }
+  },
+  "payload_defaults": {
+    "bindings": [
+      {
+        "asset_refs": [],
+        "content_refs": [
+          "item.canonical.stages"
+        ],
+        "slot_id": "stages"
+      },
+      {
+        "asset_refs": [],
+        "content_refs": [
+          "item.canonical.support"
+        ],
+        "slot_id": "support"
+      },
+      {
+        "asset_refs": [],
+        "content_refs": [
+          "item.canonical.takeaway"
+        ],
+        "slot_id": "takeaway"
+      }
+    ],
+    "values": {
+      "html.text.001": "运营 · 培训 — B5",
+      "html.text.002": "运营能力五级进阶",
+      "html.text.003": "01 / 01 — BY WISE PPT",
+      "html.text.004": "从明确目标到独立策划，训练营把运营能力拆成五个可练习、可复盘的阶段。",
+      "script.literal.001": "LEVEL 01",
+      "script.literal.002": "明确目标",
+      "script.literal.003": "知道为谁服务、要解决什么",
+      "script.literal.004": "LEVEL 02",
+      "script.literal.005": "拆解任务",
+      "script.literal.006": "把目标拆成内容、渠道与节奏",
+      "script.literal.007": "LEVEL 03",
+      "script.literal.008": "执行活动",
+      "script.literal.009": "按清单推进，及时同步进度",
+      "script.literal.010": "LEVEL 04",
+      "script.literal.011": "复盘数据",
+      "script.literal.012": "找到有效动作与下次改进",
+      "script.literal.013": "LEVEL 05",
+      "script.literal.014": "独立策划",
+      "script.literal.015": "独立完成一份运营方案",
+      "script.literal.016": "ABILITY · LEVEL × 5"
+    }
+  },
+  "payload_schema": {
+    "additionalProperties": false,
+    "properties": {
+      "bindings": {
+        "items": {
+          "additionalProperties": false,
+          "properties": {
+            "asset_refs": {
+              "items": {
+                "minLength": 1,
+                "type": "string"
+              },
+              "type": "array"
+            },
+            "content_refs": {
+              "items": {
+                "minLength": 1,
+                "type": "string"
+              },
+              "type": "array"
+            },
+            "slot_id": {
+              "enum": [
+                "stages",
+                "support",
+                "takeaway"
+              ],
+              "type": "string"
+            }
+          },
+          "required": [
+            "slot_id",
+            "content_refs",
+            "asset_refs"
+          ],
+          "type": "object"
+        },
+        "maxItems": 3,
+        "minItems": 3,
+        "type": "array"
+      },
+      "values": {
+        "additionalProperties": false,
+        "minProperties": 1,
+        "properties": {
+          "html.text.001": {
+            "maxLength": 16,
+            "type": "string"
+          },
+          "html.text.002": {
+            "maxLength": 12,
+            "type": "string"
+          },
+          "html.text.003": {
+            "maxLength": 26,
+            "pattern": "^\\d{1,3} / \\d{1,3} — BY .{1,40}$",
+            "type": "string"
+          },
+          "html.text.004": {
+            "maxLength": 45,
+            "type": "string"
+          },
+          "script.literal.001": {
+            "maxLength": 12,
+            "pattern": "^(?!.*[\\u3400-\\u9fff]).+$",
+            "type": "string"
+          },
+          "script.literal.002": {
+            "maxLength": 8,
+            "type": "string"
+          },
+          "script.literal.003": {
+            "maxLength": 16,
+            "type": "string"
+          },
+          "script.literal.004": {
+            "maxLength": 12,
+            "pattern": "^(?!.*[\\u3400-\\u9fff]).+$",
+            "type": "string"
+          },
+          "script.literal.005": {
+            "maxLength": 8,
+            "type": "string"
+          },
+          "script.literal.006": {
+            "maxLength": 17,
+            "type": "string"
+          },
+          "script.literal.007": {
+            "maxLength": 12,
+            "pattern": "^(?!.*[\\u3400-\\u9fff]).+$",
+            "type": "string"
+          },
+          "script.literal.008": {
+            "maxLength": 8,
+            "type": "string"
+          },
+          "script.literal.009": {
+            "maxLength": 16,
+            "type": "string"
+          },
+          "script.literal.010": {
+            "maxLength": 12,
+            "pattern": "^(?!.*[\\u3400-\\u9fff]).+$",
+            "type": "string"
+          },
+          "script.literal.011": {
+            "maxLength": 8,
+            "type": "string"
+          },
+          "script.literal.012": {
+            "maxLength": 15,
+            "type": "string"
+          },
+          "script.literal.013": {
+            "maxLength": 12,
+            "pattern": "^(?!.*[\\u3400-\\u9fff]).+$",
+            "type": "string"
+          },
+          "script.literal.014": {
+            "maxLength": 8,
+            "type": "string"
+          },
+          "script.literal.015": {
+            "maxLength": 14,
+            "type": "string"
+          },
+          "script.literal.016": {
+            "maxLength": 25,
+            "pattern": "^(?!.*[\\u3400-\\u9fff]).+$",
+            "type": "string"
+          }
+        },
+        "type": "object"
+      }
+    },
+    "required": [
+      "bindings",
+      "values"
+    ],
+    "type": "object"
+  },
+  "recipe_fingerprint": "sha256:7f4ec7398335430ece68917e575c5b917beda13f31110a98938dbc9f59875354",
+  "recipe_id": "paper-ink.temporal.step-rise",
+  "required_capabilities": [],
+  "slots": [
+    {
+      "allowed_component_sources": [
+        "native"
+      ],
+      "allowed_renderer_kinds": [
+        "svg"
+      ],
+      "compatible_component_ids": [
+        "native.paper-ink.063.step-rise"
+      ],
+      "count_unit": "binding",
+      "default_component": {
+        "component_id": "native.paper-ink.temporal.step-rise.stages",
+        "component_source": "native",
+        "origin": {
+          "kind": "canonical-frame-island",
+          "path": "gallery/paper-ink/general/frames/layout-b5.html",
+          "selector": ".stage"
+        },
+        "renderer_kind": "svg"
+      },
+      "max_items": 8,
+      "min_items": 1,
+      "open_for_override": false,
+      "purpose": "爬升阶段",
+      "required": true,
+      "slot_id": "stages",
+      "space_contract": {
+        "aspect_ratio": 2.5667,
+        "canvas_height": 1080,
+        "canvas_width": 1920,
+        "height": 600,
+        "space_type": "wide",
+        "width": 1540
+      },
+      "visual_role": "primary"
+    },
+    {
+      "allowed_component_sources": [
+        "codex-host",
+        "native"
+      ],
+      "allowed_renderer_kinds": [
+        "typography",
+        "table",
+        "image",
+        "native-html",
+        "svg"
+      ],
+      "compatible_component_ids": [],
+      "count_unit": "binding",
+      "default_component": {
+        "component_id": "native.paper-ink.temporal.step-rise.support",
+        "component_source": "native",
+        "origin": {
+          "kind": "canonical-frame-island",
+          "path": "gallery/paper-ink/general/frames/layout-b5.html",
+          "selector": ".doc.tl"
+        },
+        "renderer_kind": "typography"
+      },
+      "max_items": 1,
+      "min_items": 0,
+      "open_for_override": false,
+      "purpose": "辅助证据、标签或解释",
+      "required": false,
+      "slot_id": "support",
+      "visual_role": "support"
+    },
+    {
+      "allowed_component_sources": [
+        "native"
+      ],
+      "allowed_renderer_kinds": [
+        "typography"
+      ],
+      "compatible_component_ids": [],
+      "count_unit": "binding",
+      "default_component": {
+        "component_id": "native.paper-ink.temporal.step-rise.takeaway",
+        "component_source": "native",
+        "origin": {
+          "kind": "canonical-frame-island",
+          "path": "gallery/paper-ink/general/frames/layout-b5.html",
+          "selector": ".caption"
+        },
+        "renderer_kind": "typography"
+      },
+      "max_items": 1,
+      "min_items": 0,
+      "open_for_override": false,
+      "purpose": "页面一句话结论",
+      "required": false,
+      "slot_id": "takeaway",
+      "visual_role": "support"
+    }
+  ],
+  "source": {
+    "path": "gallery/paper-ink/general/frames/layout-b5.html",
+    "sha256": "sha256:e2b2c4d2afd54f328cd3eb92dd4c969a139987291ebe4faffa58b8da3d7b3da7"
+  },
+  "status": "production",
+  "theme_id": "paper-ink",
+  "variant": "general"
+}

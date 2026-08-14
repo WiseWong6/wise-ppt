@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-runtime="wise-ppt-specimen" data-typography-mode="mixed" data-page-id="gallery-ai-b4" data-page-role="sequence" data-theme="paper-ink" data-layout="paper-ink.temporal.timeline-evidence-gallery" data-layout-source="gallery">
+<head>
+<meta charset="UTF-8">
+<title>layout-b4 · 时间轴垂挂画廊 · AI 里程碑</title>
+<link rel="stylesheet" href="../../../../themes/paper-ink/assets/design-tokens.css">
+<link rel="stylesheet" href="../../../../themes/paper-ink/assets/slide-components.css">
+<link rel="stylesheet" href="../../../shell.css">
+<style>
+  /* B25 时间轴垂挂画廊 · 纸底 */
+  .doc.tl, .folio { color: rgba(25,25,23,.45); }
+  svg.scene { position: absolute; inset: 0; z-index: 1; }
+  .caption {
+    position: absolute; left: 0; right: 0; bottom: 118px;
+    text-align: center;
+    font-family: var(--sans); font-weight: 400;
+    font-size: var(--type-caption); letter-spacing: .04em;
+    color: #191917;
+    z-index: 5;
+  }
+</style>
+</head>
+<body class="slide">
+<div class="stage" data-block-id="gallery-primary" data-renderer-kind="svg" data-component-source="native" data-component-id="native.paper-ink.temporal.timeline-evidence-gallery.milestone-evidence" data-content-ref="example.b4">
+  <div class="doc tl">AI ENGINEERING — B4<br>MODEL MILESTONES</div>
+  <div class="folio">B4 / 63 — BY @歪斯WISE</div>
+
+  <svg class="scene" width="1920" height="1080" viewBox="0 0 1920 1080">
+    <defs>
+      <pattern id="hatch25" width="8" height="8" patternTransform="rotate(45)" patternUnits="userSpaceOnUse">
+        <line x1="0" y1="0" x2="0" y2="8" stroke="#191917" stroke-width=".7" opacity=".35"/>
+      </pattern>
+    </defs>
+    <g id="draw"></g>
+  </svg>
+
+  <div class="caption">从 Transformer 到推理模型，用户规模与 MMLU、GSM8K、AIME 记录了每次能力跃迁。</div>
+</div>
+
+<script src="../../../../runtime/stage-fit.js"></script>
+<script src="../../../../themes/paper-ink/assets/particles.js"></script>
+<script>
+var NS = 'http://www.w3.org/2000/svg';
+var INK = '#191917';
+var INK80 = 'rgba(25,25,23,.8)';
+var INK70 = 'rgba(25,25,23,.7)';
+var INK45 = 'rgba(25,25,23,.45)';
+var G = document.getElementById('draw');
+function el(tag, attrs) {
+  var e = document.createElementNS(NS, tag);
+  for (var k in attrs) e.setAttribute(k, attrs[k]);
+  G.appendChild(e); return e;
+}
+function txt(x, y, str, attrs) {
+  var t = el('text', Object.assign({x:x, y:y}, attrs||{}));
+  t.textContent = str; return t;
+}
+var MONO = 'var(--mono)', SANS = 'var(--sans)';
+
+G = el('g', {transform:'translate(0 -20.7)'});
+
+
+/* ---------- 主骨：水平时间轴（y290，本页唯一强调线） ---------- */
+el('line', {x1:220, y1:290, x2:1720, y2:290, stroke:INK, 'stroke-width':2});
+el('line', {x1:220, y1:282, x2:220, y2:298, stroke:INK80, 'stroke-width':1});
+el('line', {x1:1720, y1:282, x2:1720, y2:298, stroke:INK80, 'stroke-width':1});
+
+/* ---------- 卡内微场景（cx,cy 为场景中心） ---------- */
+function sceneSite(cx, cy) {                       /* 仓库平面 */
+  el('rect', {x:cx-92, y:cy-44, width:184, height:88, fill:'none', stroke:INK80, 'stroke-width':1.2});
+  [-46, 0, 46].forEach(function(dx){
+    el('line', {x1:cx+dx, y1:cy-44, x2:cx+dx, y2:cy+44, stroke:INK, 'stroke-width':.6, opacity:.35});
+  });
+  [[-68,-18],[0,12],[68,-10]].forEach(function(p){
+    el('circle', {cx:cx+p[0], cy:cy+p[1], r:5, fill:'none', stroke:INK80, 'stroke-width':1});
+    el('circle', {cx:cx+p[0], cy:cy+p[1], r:1.8, fill:INK});
+  });
+  el('line', {x1:cx-92, y1:cy+56, x2:cx+92, y2:cy+56, stroke:INK, 'stroke-width':.5, opacity:.3, 'stroke-dasharray':'2 5'});
+}
+function sceneCurve(cx, cy) {                      /* 并发阶梯曲线 */
+  el('line', {x1:cx-92, y1:cy+44, x2:cx+92, y2:cy+44, stroke:INK, 'stroke-width':.9, opacity:.7});
+  el('line', {x1:cx-92, y1:cy-44, x2:cx-92, y2:cy+44, stroke:INK, 'stroke-width':.9, opacity:.7});
+  var pts = [[-92,30],[-52,30],[-52,8],[-8,8],[-8,-14],[38,-14],[38,-36],[80,-36]];
+  var d = 'M ' + pts.map(function(p){ return (cx+p[0])+' '+(cy+p[1]); }).join(' L ');
+  el('path', {d:d, fill:'none', stroke:INK80, 'stroke-width':1.3});
+  [[-52,30],[-8,8],[38,-14],[80,-36]].forEach(function(p){
+    el('circle', {cx:cx+p[0], cy:cy+p[1], r:3, fill:'#DFE0D9', stroke:INK80, 'stroke-width':1});
+  });
+}
+function sceneGantt(cx, cy) {                      /* 甘特微场景 */
+  var gx = cx-84;
+  el('line', {x1:gx, y1:cy+40, x2:gx+168, y2:cy+40, stroke:INK, 'stroke-width':.8, opacity:.6});
+  for (var i = 0; i <= 6; i++)
+    el('line', {x1:gx+i*28, y1:cy+40, x2:gx+i*28, y2:cy+45, stroke:INK, 'stroke-width':.6, opacity:.5});
+  el('rect', {x:gx, y:cy-36, width:78, height:16, fill:'url(#hatch25)', stroke:INK80, 'stroke-width':1.1});
+  el('rect', {x:gx+44, y:cy-8, width:88, height:16, fill:'none', stroke:INK80, 'stroke-width':1.1});
+  el('rect', {x:gx+100, y:cy+18, width:62, height:16, fill:'none', stroke:INK80, 'stroke-width':1.1});
+}
+function sceneForecast(cx, cy) {                   /* 网格 + 预测渐虚线 */
+  for (var i = 0; i <= 4; i++) {
+    el('line', {x1:cx-80+i*40, y1:cy-40, x2:cx-80+i*40, y2:cy+40, stroke:INK, 'stroke-width':.5, opacity:.28});
+    el('line', {x1:cx-80, y1:cy-40+i*20, x2:cx+80, y2:cy-40+i*20, stroke:INK, 'stroke-width':.5, opacity:.28});
+  }
+  el('path', {d:'M '+(cx-80)+' '+(cy+26)+' L '+(cx-40)+' '+(cy+10)+' L '+(cx-4)+' '+(cy+16)+' L '+(cx+22)+' '+(cy-12),
+    fill:'none', stroke:INK80, 'stroke-width':1.3});
+  el('path', {d:'M '+(cx+22)+' '+(cy-12)+' L '+(cx+50)+' '+(cy-22)+' L '+(cx+78)+' '+(cy-38),
+    fill:'none', stroke:INK, 'stroke-width':.9, opacity:.5, 'stroke-dasharray':'3 5'});
+  el('circle', {cx:cx+22, cy:cy-12, r:4, fill:'none', stroke:INK80, 'stroke-width':1});
+  el('circle', {cx:cx+78, cy:cy-38, r:2.2, fill:INK, opacity:.6});
+}
+function sceneLink(cx, cy) {                       /* 双仓连线 */
+  [[-58],[58]].forEach(function(p){
+    var bx = cx+p[0];
+    el('rect', {x:bx-26, y:cy-18, width:52, height:36, fill:'none', stroke:INK80, 'stroke-width':1.2});
+    el('line', {x1:bx-26, y1:cy, x2:bx+26, y2:cy, stroke:INK, 'stroke-width':.6, opacity:.35});
+    el('line', {x1:bx, y1:cy-18, x2:bx, y2:cy+18, stroke:INK, 'stroke-width':.6, opacity:.35});
+  });
+  el('line', {x1:cx-30, y1:cy, x2:cx+30, y2:cy, stroke:INK80, 'stroke-width':1.3});
+  el('circle', {cx:cx, cy:cy, r:2.6, fill:INK});
+  el('path', {d:'M '+(cx-52)+' '+(cy-24)+' A 54 24 0 0 1 '+(cx+52)+' '+(cy-24), fill:'none',
+    stroke:INK, 'stroke-width':.7, opacity:.45, 'stroke-dasharray':'3 5'});
+  el('circle', {cx:cx-20, cy:cy-30, r:2, fill:INK, opacity:.55});
+  el('circle', {cx:cx+24, cy:cy-29, r:2, fill:INK, opacity:.55});
+}
+
+/* ---------- 节点 + 垂挂证据卡 ---------- */
+var NODES = [
+  {x:320,  date:'2017.06', ver:'V1 — TRANSFORMER', name:'Transformer 诞生', data:'WMT EN-DE 28.4 BLEU', scene:sceneSite},
+  {x:640,  date:'2020.05', ver:'V3 — GPT-3',       name:'GPT-3 涌现', data:'175B PARAMS · FEW-SHOT', scene:sceneCurve},
+  {x:960,  date:'2022.11', ver:'V4 — CHATGPT',     name:'ChatGPT 破圈', data:'5D · 100M USERS',       scene:sceneGantt},
+  {x:1280, date:'2023.03', ver:'V5 — GPT-4',       name:'GPT-4 多模态', data:'MMLU 86.4%',             scene:sceneForecast},
+  {x:1600, date:'2024.12', ver:'V6 — O1',          name:'推理模型 o1', data:'GSM8K 96.4% · AIME 83%', scene:sceneLink}
+];
+var CW = 300, CH = 240;
+NODES.forEach(function(N, i){
+  var top = (i % 2 === 0) ? 360 : 560;
+  /* 轴上落点：双圈+实心核 */
+  el('circle', {cx:N.x, cy:290, r:7, fill:'#DFE0D9', stroke:INK80, 'stroke-width':1.2});
+  el('circle', {cx:N.x, cy:290, r:2.6, fill:INK});
+  txt(N.x, 264, N.date, {'font-family':MONO, 'font-size':'var(--type-meta)', 'letter-spacing':2, 'text-anchor':'middle', fill:INK});
+  /* 垂挂细线 + 中点小圆 */
+  el('line', {x1:N.x, y1:297, x2:N.x, y2:top, stroke:INK, 'stroke-width':.7, opacity:.55});
+  el('circle', {cx:N.x, cy:(297+top)/2, r:2.4, fill:INK, opacity:.55});
+  /* 双线框证据卡 */
+  var px = N.x - CW/2;
+  el('rect', {x:px, y:top, width:CW, height:CH, fill:'rgba(255,255,255,.22)', stroke:INK80, 'stroke-width':1.3});
+  el('rect', {x:px+5, y:top+5, width:CW-10, height:CH-10, fill:'none', stroke:INK, 'stroke-width':.6, opacity:.3});
+  txt(px+18, top+30, N.ver, {'font-family':MONO, 'font-size':'var(--type-micro-secondary)', 'letter-spacing':2, fill:INK45});
+  N.scene(N.x, top+112);
+  el('line', {x1:px+18, y1:top+CH-46, x2:px+CW-18, y2:top+CH-46, stroke:INK, 'stroke-width':.6, opacity:.35});
+  txt(px+18, top+CH-18, N.name, {'font-family':SANS, 'font-weight':300, 'font-size':'var(--type-body-small)', fill:INK});
+});
+
+stageFit();
+</script>
+</body>
+</html>

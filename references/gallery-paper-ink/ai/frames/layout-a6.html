@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-runtime="wise-ppt-specimen" data-typography-mode="mixed" data-page-id="gallery-ai-a6" data-page-role="prove" data-theme="paper-ink" data-layout="paper-ink.evidence.credential-wall" data-layout-source="gallery">
+<head>
+<meta charset="UTF-8">
+<title>layout-a6 · 资质证书墙 · 模型 benchmark</title>
+<link rel="stylesheet" href="../../../../themes/paper-ink/assets/design-tokens.css">
+<link rel="stylesheet" href="../../../../themes/paper-ink/assets/slide-components.css">
+<link rel="stylesheet" href="../../../shell.css">
+<style>
+  svg.scene { position: absolute; inset: 0; z-index: 1; }
+  .caption {
+    position: absolute; left: 0; right: 0; bottom: 118px;
+    text-align: center;
+    font-family: var(--sans); font-weight: 400;
+    font-size: var(--type-caption); letter-spacing: .04em;
+    color: var(--ink);
+    z-index: 5;
+  }
+</style>
+</head>
+<body class="slide">
+<div class="stage" data-block-id="gallery-primary" data-renderer-kind="svg" data-component-source="native" data-component-id="native.paper-ink.evidence.credential-wall.credentials" data-content-ref="example.a6">
+  <div class="doc tl">AI ENGINEERING — A6<br>MODEL BENCHMARKS</div>
+  <div class="folio">A6 / 63 — BY @歪斯WISE</div>
+
+  <svg class="scene" width="1920" height="1080" viewBox="0 0 1920 1080">
+    <g id="draw"></g>
+  </svg>
+
+  <div class="caption">综合能力、数学推理与长上下文不能用单一分数替代，评测需要多维交叉验证。</div>
+</div>
+
+<script src="../../../../runtime/stage-fit.js"></script>
+<script src="../../../../themes/paper-ink/assets/particles.js"></script>
+<script>
+var NS = 'http://www.w3.org/2000/svg';
+var INK = '#191917';
+var INK80 = 'rgba(25,25,23,.8)';
+var INK45 = 'rgba(25,25,23,.45)';
+var G = document.getElementById('draw');
+function el(tag, attrs) {
+  var e = document.createElementNS(NS, tag);
+  for (var k in attrs) e.setAttribute(k, attrs[k]);
+  G.appendChild(e); return e;
+}
+function txt(x, y, str, attrs) {
+  var t = el('text', Object.assign({x:x, y:y}, attrs||{}));
+  t.textContent = str; return t;
+}
+var MONO = 'var(--mono)', SANS = 'var(--sans)';
+
+G = el('g', {transform:'translate(0 -21.2)'});
+
+
+/* ============ 左侧：大徽章（同心圆 + 月桂枝线稿，AI 模型评测） ============ */
+txt(150, 221, 'CREDENTIALS / 12 ITEMS', {'font-family':MONO, 'font-size':'var(--type-meta)', 'letter-spacing':2, fill:'rgba(25,25,23,.5)'});
+txt(150, 257, '模型评测与合规背书', {'font-family':SANS, 'font-weight':300, 'font-size':'var(--type-subheading)', fill:INK});
+el('line', {x1:150, y1:306, x2:330, y2:306, stroke:INK, 'stroke-width':.8, opacity:.5});
+
+var BC = {x: 460, y: 560};
+el('circle', {cx:BC.x, cy:BC.y, r:182, fill:'none', stroke:INK, 'stroke-width':.5, 'stroke-dasharray':'2 6', opacity:.28});
+el('circle', {cx:BC.x, cy:BC.y, r:160, fill:'rgba(255,255,255,.22)', stroke:INK80, 'stroke-width':1.3});
+el('circle', {cx:BC.x, cy:BC.y, r:150, fill:'none', stroke:INK, 'stroke-width':.6, opacity:.35});
+el('circle', {cx:BC.x, cy:BC.y, r:96,  fill:'none', stroke:INK80, 'stroke-width':1.2});
+el('circle', {cx:BC.x, cy:BC.y, r:90,  fill:'none', stroke:INK, 'stroke-width':.6, opacity:.3});
+/* 月桂枝：两侧弧线 + 叶齿 */
+[-1, 1].forEach(function(side){
+  el('path', {d:'M ' + (BC.x + side * 40) + ' ' + (BC.y + 128) +
+    ' A 122 122 0 0 ' + (side < 0 ? 1 : 0) + ' ' + (BC.x + side * 118) + ' ' + (BC.y - 46),
+    fill:'none', stroke:INK, 'stroke-width':.8, opacity:.55});
+  for (var i = 0; i < 7; i++) {
+    var a = (68 + i * 14) * Math.PI / 180;
+    var px = BC.x + side * Math.cos(a) * 122, py = BC.y + Math.sin(a) * 122;
+    el('line', {x1:px, y1:py, x2:px + side * 10, y2:py - 12, stroke:INK, 'stroke-width':.7, opacity:.5});
+  }
+});
+/* 环带文字 + 芯 */
+txt(BC.x, BC.y - 112, 'MODEL EVALUATION', {'font-family':MONO, 'font-size':'var(--type-meta)', 'letter-spacing':3, 'text-anchor':'middle', fill:INK});
+el('line', {x1:BC.x - 52, y1:BC.y - 98, x2:BC.x + 52, y2:BC.y - 98, stroke:INK, 'stroke-width':.6, opacity:.4});
+el('path', {d:'M ' + BC.x + ' ' + (BC.y - 78) + ' l 7 12 l -7 12 l -7 -12 Z', fill:'none', stroke:INK80, 'stroke-width':1});
+txt(BC.x, BC.y + 8, 'TIER S', {'font-family':MONO, 'font-size':'var(--type-subheading)', 'letter-spacing':4, 'text-anchor':'middle', fill:INK});
+txt(BC.x, BC.y + 40, '综合能力 · 顶级', {'font-family':SANS, 'font-weight':300, 'font-size':'var(--type-body)', 'text-anchor':'middle', fill:INK});
+txt(BC.x, BC.y + 68, 'WISE-BENCH', {'font-family':MONO, 'font-size':'var(--type-micro-secondary)', 'letter-spacing':1.5, 'text-anchor':'middle', fill:'rgba(25,25,23,.5)'});
+
+/* 左下微型档案字块 */
+txt(150, 800, 'ARCHIVE NO. HJ-Q-2026-018', {'font-family':MONO, 'font-size':'var(--type-micro-secondary)', 'letter-spacing':2, fill:INK45});
+txt(150, 820, 'ISSUED BY FICTIONAL BOARD', {'font-family':MONO, 'font-size':'var(--type-micro-secondary)', 'letter-spacing':2, fill:INK45});
+txt(150, 840, 'SPECIMEN — NOT A REAL CERT', {'font-family':MONO, 'font-size':'var(--type-micro-secondary)', 'letter-spacing':2, fill:INK45});
+el('line', {x1:150, y1:776, x2:262, y2:776, stroke:INK, 'stroke-width':.6, opacity:.35});
+
+/* ============ 右侧：证书缩略墙 4×3（内有徽章与文字行暗示，非空框） ============ */
+function badgeGlyph(cx, cy, s, style) {
+  if (style === 0) {          /* 单圆 */
+    el('circle', {cx:cx, cy:cy, r:s, fill:'none', stroke:INK80, 'stroke-width':1});
+  } else if (style === 1) {   /* 双圆 + 芯 */
+    el('circle', {cx:cx, cy:cy, r:s, fill:'none', stroke:INK80, 'stroke-width':1});
+    el('circle', {cx:cx, cy:cy, r:s - 5, fill:'none', stroke:INK, 'stroke-width':.6, opacity:.4});
+    el('circle', {cx:cx, cy:cy, r:2, fill:INK});
+  } else if (style === 2) {   /* 六边形 */
+    var p = '';
+    for (var i = 0; i < 6; i++) {
+      var a = Math.PI / 6 + i * Math.PI / 3;
+      p += (i ? ' L ' : 'M ') + (cx + Math.cos(a) * s) + ' ' + (cy + Math.sin(a) * s);
+    }
+    el('path', {d:p + ' Z', fill:'none', stroke:INK80, 'stroke-width':1});
+  } else if (style === 3) {   /* 菱形 + 横带 */
+    el('path', {d:'M ' + cx + ' ' + (cy - s) + ' L ' + (cx + s) + ' ' + cy + ' L ' + cx + ' ' + (cy + s) + ' L ' + (cx - s) + ' ' + cy + ' Z',
+      fill:'none', stroke:INK80, 'stroke-width':1});
+    el('line', {x1:cx - s - 8, y1:cy + s + 6, x2:cx + s + 8, y2:cy + s + 6, stroke:INK, 'stroke-width':.6, opacity:.45});
+  } else {                    /* 圆 + 月桂 mini */
+    el('circle', {cx:cx, cy:cy, r:s, fill:'none', stroke:INK80, 'stroke-width':1});
+    el('path', {d:'M ' + (cx - s - 4) + ' ' + (cy + 6) + ' A ' + (s + 5) + ' ' + (s + 5) + ' 0 0 1 ' + (cx - s + 2) + ' ' + (cy - s - 2),
+      fill:'none', stroke:INK, 'stroke-width':.7, opacity:.5});
+    el('path', {d:'M ' + (cx + s + 4) + ' ' + (cy + 6) + ' A ' + (s + 5) + ' ' + (s + 5) + ' 0 0 0 ' + (cx + s - 2) + ' ' + (cy - s - 2),
+      fill:'none', stroke:INK, 'stroke-width':.7, opacity:.5});
+  }
+}
+function cert(x, y, w, h, n1, n2, style) {
+  el('rect', {x:x, y:y, width:w, height:h, fill:'rgba(255,255,255,.22)', stroke:INK, 'stroke-width':1, opacity:.75});
+  el('rect', {x:x + 4, y:y + 4, width:w - 8, height:h - 8, fill:'none', stroke:INK, 'stroke-width':.6, opacity:.3});
+  badgeGlyph(x + w / 2, y + 58, 22, style);
+  /* 文字行暗示（0.6px 短横，长度递减） */
+  [0, 1, 2].forEach(function(i){
+    var lw = w - 64 - i * 22;
+    el('line', {x1:x + (w - lw) / 2, y1:y + 104 + i * 13, x2:x + (w + lw) / 2, y2:y + 104 + i * 13,
+      stroke:INK, 'stroke-width':.6, opacity:.28});
+  });
+  txt(x + w / 2, y + 162, n1, {'font-family':MONO, 'font-size':'var(--type-micro-secondary)', 'letter-spacing':1, 'text-anchor':'middle', fill:INK});
+  txt(x + w / 2, y + 181, n2, {'font-family':MONO, 'font-size':'var(--type-micro-secondary)', 'letter-spacing':1, 'text-anchor':'middle', fill:INK45});
+}
+
+var WALL = [
+  ['MMLU PRO',      'ACC 82.3',     1],
+  ['HUMANEVAL',     'PASS 74.1',    4],
+  ['GSM8K',         'ACC 89.5',     2],
+  ['MATH',          'ACC 52.7',     0],
+  ['BBH',           'ACC 83.0',     3],
+  ['PATENT',        'ZL-7741-A',    2],
+  ['PATENT',        'ZL-8126-C',    1],
+  ['SAFETY ALIGN',  'TIER III',     4],
+  ['TOXICITY',      'FILTER V3',    0],
+  ['PRIVACY',       'ISO 27001',    3],
+  ['MULTI-LANG',    '54 LANG',      2],
+  ['CONTEXT',       '128K PASS',    4]
+];
+var CW = 205, CH = 195;
+WALL.forEach(function(c, i){
+  var col = i % 4, row = (i / 4) | 0;
+  cert(880 + col * 225, 210 + row * 220, CW, CH, c[0], c[1], c[2]);
+});
+
+stageFit();
+</script>
+</body>
+</html>

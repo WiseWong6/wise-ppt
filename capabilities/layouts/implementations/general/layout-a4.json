@@ -1,0 +1,1432 @@
+{
+  "canonical": {
+    "constraints": {
+      "css_scope": "[data-implementation-id=\"paper-ink.evidence.strategy-evidence-wall.general\"]",
+      "external_links": false,
+      "external_scripts": false,
+      "payload_only_mutation": true,
+      "ready_api": "WisePPT.markSlideReady",
+      "script_query_scope": "current-section.slide",
+      "stage_fit": false
+    },
+    "kind": "recipe-skeleton",
+    "materialization_format": "wise-ppt-formal-slide@1",
+    "path": "capabilities/layouts/recipes/strategy-evidence-wall/fragment.html",
+    "root_selector": "section.slide[data-implementation-id=\"paper-ink.evidence.strategy-evidence-wall.general\"]",
+    "sha256": "sha256:de3bb7fad3a85590a05abc5be43d19efda322cc8864566d669b05cc07e169540",
+    "skeleton": {
+      "contract_path": "capabilities/layouts/recipes/strategy-evidence-wall/skeleton.json",
+      "contract_sha256": "sha256:f3c3ec924debf2e24c358ea3332eac2ce44bb0d1a685226383423f0918f87dc2",
+      "fingerprint": "sha256:0dacc4ecf60539ee9078bca18c6e8737ed9e6d1e4a6dce0f8c548ec92db1990e"
+    }
+  },
+  "canonical_fingerprint": "sha256:6bed3374a04543e1ecd8cc097bf7ce501ccf857805ce2d6aff5e0a27a246a3bd",
+  "contract_version": 1,
+  "dependency_closure": {
+    "files": [
+      {
+        "path": "gallery/shell.css",
+        "sha256": "sha256:aca1428680d2dd5c84e85d66241ee199a16d36bb60a098340528943fb5469f69"
+      },
+      {
+        "path": "runtime/stage-fit.js",
+        "sha256": "sha256:39577a14aac5072789fdeb80abee887d24da5a44eeb38203ef154602330f291d"
+      },
+      {
+        "path": "themes/paper-ink/assets/design-tokens.css",
+        "sha256": "sha256:3f1f0d3562cf1486b87643b16025388557000858d0df13d767b53a576988c330"
+      },
+      {
+        "path": "themes/paper-ink/assets/fonts/CourierPrime-Regular.ttf",
+        "sha256": "sha256:72f793376f8e2841656bf21d77a5de010f2929bd6956a22ee848ad0c7eb978af"
+      },
+      {
+        "path": "themes/paper-ink/assets/fonts/LXGWWenKai-Regular.ttf",
+        "sha256": "sha256:39ad71264b588165b469e35e6afb162a378dacd1f95348160240ba9038ac3009"
+      },
+      {
+        "path": "themes/paper-ink/assets/fonts/SourceHanSansCN-Light.otf",
+        "sha256": "sha256:b6dfc945aae0daf9b15019f59c2f7b18d17da3b92f00c3ec32fb5f0333696d9c"
+      },
+      {
+        "path": "themes/paper-ink/assets/fonts/SourceHanSerifCN-Medium.otf",
+        "sha256": "sha256:8e224937647ae71ba1b1f310bcb3fbc32f21ec7c2c490ba04670455c901f3378"
+      },
+      {
+        "path": "themes/paper-ink/assets/particles.js",
+        "sha256": "sha256:1281d72e81b34e4be061286edd323dd421443dffbf6e0d8a2faa94a5d14094c4"
+      },
+      {
+        "path": "themes/paper-ink/assets/slide-components.css",
+        "sha256": "sha256:20e7334fe5ae51cb229112290e787c1274ad65278a72b084c708682dc9ca5acf"
+      }
+    ],
+    "sha256": "sha256:7dcc6f0ac681be95cc8955afb36da97027f341a98f4f9f37518e37bfe13f5be4"
+  },
+  "format": "wise-ppt-layout-implementation@1",
+  "geometry": {
+    "anchors": [
+      {
+        "anchor_id": "stage",
+        "selector": "[data-anchor-id=\"stage\"]"
+      },
+      {
+        "anchor_id": "a4-main",
+        "selector": "[data-anchor-id=\"a4-main\"]"
+      },
+      {
+        "anchor_id": "a4-left",
+        "selector": "[data-anchor-id=\"a4-left\"]"
+      },
+      {
+        "anchor_id": "a4-arrow",
+        "selector": "[data-anchor-id=\"a4-arrow\"]"
+      },
+      {
+        "anchor_id": "a4-right",
+        "selector": "[data-anchor-id=\"a4-right\"]"
+      },
+      {
+        "anchor_id": "a4-card-1",
+        "selector": "[data-anchor-id=\"a4-card-1\"]"
+      },
+      {
+        "anchor_id": "a4-card-2",
+        "selector": "[data-anchor-id=\"a4-card-2\"]"
+      },
+      {
+        "anchor_id": "a4-card-3",
+        "selector": "[data-anchor-id=\"a4-card-3\"]"
+      },
+      {
+        "anchor_id": "a4-card-4",
+        "selector": "[data-anchor-id=\"a4-card-4\"]"
+      },
+      {
+        "anchor_id": "a4-support",
+        "selector": "[data-anchor-id=\"a4-support\"]"
+      },
+      {
+        "anchor_id": "a4-takeaway",
+        "selector": "[data-anchor-id=\"a4-takeaway\"]"
+      }
+    ],
+    "canvas": {
+      "height": 1080,
+      "width": 1920
+    },
+    "content_region": {
+      "anchor_id": "a4-main",
+      "zone": "core-content"
+    },
+    "fingerprint": "sha256:fd0879b9ea3bdb044d51a882dfbca6e0fc91c1dd8449e71f9c5b5a7b0e3be38f",
+    "format": "wise-ppt-layout-geometry@1",
+    "relations": [
+      {
+        "anchors": [
+          "stage",
+          "a4-main"
+        ],
+        "relation_id": "a4-main-in-stage",
+        "tolerance": 0.25,
+        "type": "contain"
+      },
+      {
+        "anchors": [
+          "a4-main",
+          "a4-left"
+        ],
+        "relation_id": "a4-left-in-main",
+        "tolerance": 0.25,
+        "type": "contain"
+      },
+      {
+        "anchors": [
+          "a4-main",
+          "a4-arrow"
+        ],
+        "relation_id": "a4-arrow-in-main",
+        "tolerance": 0.25,
+        "type": "contain"
+      },
+      {
+        "anchors": [
+          "a4-main",
+          "a4-right"
+        ],
+        "relation_id": "a4-right-in-main",
+        "tolerance": 0.25,
+        "type": "contain"
+      },
+      {
+        "anchors": [
+          "a4-right",
+          "a4-card-1"
+        ],
+        "relation_id": "a4-card-1-in-wall",
+        "tolerance": 0.25,
+        "type": "contain"
+      },
+      {
+        "anchors": [
+          "a4-right",
+          "a4-card-2"
+        ],
+        "relation_id": "a4-card-2-in-wall",
+        "tolerance": 0.25,
+        "type": "contain"
+      },
+      {
+        "anchors": [
+          "a4-right",
+          "a4-card-3"
+        ],
+        "relation_id": "a4-card-3-in-wall",
+        "tolerance": 0.25,
+        "type": "contain"
+      },
+      {
+        "anchors": [
+          "a4-right",
+          "a4-card-4"
+        ],
+        "relation_id": "a4-card-4-in-wall",
+        "tolerance": 0.25,
+        "type": "contain"
+      },
+      {
+        "anchors": [
+          "a4-left",
+          "a4-arrow"
+        ],
+        "min_gap": 28,
+        "relation_id": "a4-left-arrow-clear",
+        "tolerance": 1,
+        "type": "avoid"
+      },
+      {
+        "anchors": [
+          "a4-arrow",
+          "a4-right"
+        ],
+        "min_gap": 24,
+        "relation_id": "a4-arrow-right-clear",
+        "tolerance": 1,
+        "type": "avoid"
+      },
+      {
+        "anchors": [
+          "a4-card-1",
+          "a4-card-2"
+        ],
+        "min_gap": 40,
+        "relation_id": "a4-top-row-clear",
+        "tolerance": 1,
+        "type": "avoid"
+      },
+      {
+        "anchors": [
+          "a4-card-3",
+          "a4-card-4"
+        ],
+        "min_gap": 40,
+        "relation_id": "a4-bottom-row-clear",
+        "tolerance": 1,
+        "type": "avoid"
+      },
+      {
+        "anchors": [
+          "a4-card-1",
+          "a4-card-3"
+        ],
+        "min_gap": 50,
+        "relation_id": "a4-left-column-clear",
+        "tolerance": 1,
+        "type": "avoid"
+      },
+      {
+        "anchors": [
+          "a4-card-2",
+          "a4-card-4"
+        ],
+        "min_gap": 50,
+        "relation_id": "a4-right-column-clear",
+        "tolerance": 1,
+        "type": "avoid"
+      },
+      {
+        "anchors": [
+          "a4-left",
+          "a4-right"
+        ],
+        "edge": "top",
+        "relation_id": "a4-wall-top-align",
+        "tolerance": 1,
+        "type": "edgeEq"
+      },
+      {
+        "anchors": [
+          "a4-left",
+          "a4-right"
+        ],
+        "edge": "bottom",
+        "relation_id": "a4-wall-bottom-align",
+        "tolerance": 1,
+        "type": "edgeEq"
+      },
+      {
+        "anchors": [
+          "a4-card-1",
+          "a4-card-3"
+        ],
+        "edge": "left",
+        "relation_id": "a4-card-left-column",
+        "tolerance": 1,
+        "type": "edgeEq"
+      },
+      {
+        "anchors": [
+          "a4-card-2",
+          "a4-card-4"
+        ],
+        "edge": "left",
+        "relation_id": "a4-card-right-column",
+        "tolerance": 1,
+        "type": "edgeEq"
+      },
+      {
+        "anchors": [
+          "a4-card-1",
+          "a4-card-2"
+        ],
+        "edge": "top",
+        "relation_id": "a4-card-top-row",
+        "tolerance": 1,
+        "type": "edgeEq"
+      },
+      {
+        "anchors": [
+          "a4-card-3",
+          "a4-card-4"
+        ],
+        "edge": "top",
+        "relation_id": "a4-card-bottom-row",
+        "tolerance": 1,
+        "type": "edgeEq"
+      },
+      {
+        "anchors": [
+          "a4-arrow",
+          "a4-left",
+          "a4-right"
+        ],
+        "relation_id": "a4-arrow-centered",
+        "tolerance": 6,
+        "type": "centerBetween"
+      }
+    ],
+    "structure_contract": {
+      "core_primitives": [
+        "bilateral-split",
+        "evidence-annotation"
+      ],
+      "region_count": 3,
+      "required_slot_ids": [
+        "evidence-wall"
+      ]
+    }
+  },
+  "implementation_id": "paper-ink.evidence.strategy-evidence-wall.general",
+  "payload": {
+    "fields": [
+      {
+        "constraints": {
+          "maxLength": 36,
+          "minLength": 1,
+          "pattern": "[^\\r\\n]+"
+        },
+        "context": "skeleton:/doc/line_1",
+        "default": "品牌 · 策划 — A4",
+        "field_id": "payload.doc.line_1",
+        "kind": "skeleton_payload",
+        "max_length": 36,
+        "span": {
+          "json_pointer": "/doc/line_1",
+          "kind": "skeleton_payload"
+        },
+        "type": "string"
+      },
+      {
+        "constraints": {
+          "maxLength": 40,
+          "minLength": 1,
+          "pattern": "[^\\r\\n]+"
+        },
+        "context": "skeleton:/doc/line_2",
+        "default": "年度传播策略证据墙",
+        "field_id": "payload.doc.line_2",
+        "kind": "skeleton_payload",
+        "max_length": 40,
+        "span": {
+          "json_pointer": "/doc/line_2",
+          "kind": "skeleton_payload"
+        },
+        "type": "string"
+      },
+      {
+        "constraints": {
+          "maxLength": 40,
+          "minLength": 1,
+          "pattern": "[^\\r\\n]+"
+        },
+        "context": "skeleton:/kicker",
+        "default": "BRAND · YEAR PLAN",
+        "field_id": "payload.kicker",
+        "kind": "skeleton_payload",
+        "max_length": 40,
+        "span": {
+          "json_pointer": "/kicker",
+          "kind": "skeleton_payload"
+        },
+        "type": "string"
+      },
+      {
+        "constraints": {
+          "maxLength": 18,
+          "minLength": 1,
+          "pattern": "[^\\r\\n]+"
+        },
+        "context": "skeleton:/heading",
+        "default": "年度策略，依据清楚",
+        "field_id": "payload.heading",
+        "kind": "skeleton_payload",
+        "max_length": 18,
+        "span": {
+          "json_pointer": "/heading",
+          "kind": "skeleton_payload"
+        },
+        "type": "string"
+      },
+      {
+        "constraints": {
+          "pattern": "[0-9]{2}"
+        },
+        "context": "skeleton:/strategies/0/number",
+        "default": "01",
+        "field_id": "payload.strategies.0.number",
+        "kind": "skeleton_payload",
+        "max_length": 6,
+        "span": {
+          "json_pointer": "/strategies/0/number",
+          "kind": "skeleton_payload"
+        },
+        "type": "string"
+      },
+      {
+        "constraints": {
+          "maxLength": 14,
+          "minLength": 1,
+          "pattern": "[^\\r\\n]+"
+        },
+        "context": "skeleton:/strategies/0/title",
+        "default": "品牌主张",
+        "field_id": "payload.strategies.0.title",
+        "kind": "skeleton_payload",
+        "max_length": 14,
+        "span": {
+          "json_pointer": "/strategies/0/title",
+          "kind": "skeleton_payload"
+        },
+        "type": "string"
+      },
+      {
+        "constraints": {
+          "maxLength": 24,
+          "minLength": 1,
+          "pattern": "[^\\r\\n]+"
+        },
+        "context": "skeleton:/strategies/0/action",
+        "default": "从用户印象中提炼一句清楚主张",
+        "field_id": "payload.strategies.0.action",
+        "kind": "skeleton_payload",
+        "max_length": 24,
+        "span": {
+          "json_pointer": "/strategies/0/action",
+          "kind": "skeleton_payload"
+        },
+        "type": "string"
+      },
+      {
+        "constraints": {
+          "maxLength": 24,
+          "minLength": 1,
+          "pattern": "[^\\r\\n]+"
+        },
+        "context": "skeleton:/strategies/0/evidence",
+        "default": "依据：用户访谈与关键词归纳",
+        "field_id": "payload.strategies.0.evidence",
+        "kind": "skeleton_payload",
+        "max_length": 24,
+        "span": {
+          "json_pointer": "/strategies/0/evidence",
+          "kind": "skeleton_payload"
+        },
+        "type": "string"
+      },
+      {
+        "constraints": {
+          "pattern": "[0-9]{2}"
+        },
+        "context": "skeleton:/strategies/1/number",
+        "default": "02",
+        "field_id": "payload.strategies.1.number",
+        "kind": "skeleton_payload",
+        "max_length": 6,
+        "span": {
+          "json_pointer": "/strategies/1/number",
+          "kind": "skeleton_payload"
+        },
+        "type": "string"
+      },
+      {
+        "constraints": {
+          "maxLength": 14,
+          "minLength": 1,
+          "pattern": "[^\\r\\n]+"
+        },
+        "context": "skeleton:/strategies/1/title",
+        "default": "内容主题",
+        "field_id": "payload.strategies.1.title",
+        "kind": "skeleton_payload",
+        "max_length": 14,
+        "span": {
+          "json_pointer": "/strategies/1/title",
+          "kind": "skeleton_payload"
+        },
+        "type": "string"
+      },
+      {
+        "constraints": {
+          "maxLength": 24,
+          "minLength": 1,
+          "pattern": "[^\\r\\n]+"
+        },
+        "context": "skeleton:/strategies/1/action",
+        "default": "把年度重点拆成季度内容主题",
+        "field_id": "payload.strategies.1.action",
+        "kind": "skeleton_payload",
+        "max_length": 24,
+        "span": {
+          "json_pointer": "/strategies/1/action",
+          "kind": "skeleton_payload"
+        },
+        "type": "string"
+      },
+      {
+        "constraints": {
+          "maxLength": 24,
+          "minLength": 1,
+          "pattern": "[^\\r\\n]+"
+        },
+        "context": "skeleton:/strategies/1/evidence",
+        "default": "依据：内容表现与评论反馈",
+        "field_id": "payload.strategies.1.evidence",
+        "kind": "skeleton_payload",
+        "max_length": 24,
+        "span": {
+          "json_pointer": "/strategies/1/evidence",
+          "kind": "skeleton_payload"
+        },
+        "type": "string"
+      },
+      {
+        "constraints": {
+          "pattern": "[0-9]{2}"
+        },
+        "context": "skeleton:/strategies/2/number",
+        "default": "03",
+        "field_id": "payload.strategies.2.number",
+        "kind": "skeleton_payload",
+        "max_length": 6,
+        "span": {
+          "json_pointer": "/strategies/2/number",
+          "kind": "skeleton_payload"
+        },
+        "type": "string"
+      },
+      {
+        "constraints": {
+          "maxLength": 14,
+          "minLength": 1,
+          "pattern": "[^\\r\\n]+"
+        },
+        "context": "skeleton:/strategies/2/title",
+        "default": "节点计划",
+        "field_id": "payload.strategies.2.title",
+        "kind": "skeleton_payload",
+        "max_length": 14,
+        "span": {
+          "json_pointer": "/strategies/2/title",
+          "kind": "skeleton_payload"
+        },
+        "type": "string"
+      },
+      {
+        "constraints": {
+          "maxLength": 24,
+          "minLength": 1,
+          "pattern": "[^\\r\\n]+"
+        },
+        "context": "skeleton:/strategies/2/action",
+        "default": "围绕新品、节日与线下活动排期",
+        "field_id": "payload.strategies.2.action",
+        "kind": "skeleton_payload",
+        "max_length": 24,
+        "span": {
+          "json_pointer": "/strategies/2/action",
+          "kind": "skeleton_payload"
+        },
+        "type": "string"
+      },
+      {
+        "constraints": {
+          "maxLength": 24,
+          "minLength": 1,
+          "pattern": "[^\\r\\n]+"
+        },
+        "context": "skeleton:/strategies/2/evidence",
+        "default": "依据：业务节奏与公众日历",
+        "field_id": "payload.strategies.2.evidence",
+        "kind": "skeleton_payload",
+        "max_length": 24,
+        "span": {
+          "json_pointer": "/strategies/2/evidence",
+          "kind": "skeleton_payload"
+        },
+        "type": "string"
+      },
+      {
+        "constraints": {
+          "pattern": "[0-9]{2}"
+        },
+        "context": "skeleton:/strategies/3/number",
+        "default": "04",
+        "field_id": "payload.strategies.3.number",
+        "kind": "skeleton_payload",
+        "max_length": 6,
+        "span": {
+          "json_pointer": "/strategies/3/number",
+          "kind": "skeleton_payload"
+        },
+        "type": "string"
+      },
+      {
+        "constraints": {
+          "maxLength": 14,
+          "minLength": 1,
+          "pattern": "[^\\r\\n]+"
+        },
+        "context": "skeleton:/strategies/3/title",
+        "default": "渠道协同",
+        "field_id": "payload.strategies.3.title",
+        "kind": "skeleton_payload",
+        "max_length": 14,
+        "span": {
+          "json_pointer": "/strategies/3/title",
+          "kind": "skeleton_payload"
+        },
+        "type": "string"
+      },
+      {
+        "constraints": {
+          "maxLength": 24,
+          "minLength": 1,
+          "pattern": "[^\\r\\n]+"
+        },
+        "context": "skeleton:/strategies/3/action",
+        "default": "统一官网、社媒与线下物料表达",
+        "field_id": "payload.strategies.3.action",
+        "kind": "skeleton_payload",
+        "max_length": 24,
+        "span": {
+          "json_pointer": "/strategies/3/action",
+          "kind": "skeleton_payload"
+        },
+        "type": "string"
+      },
+      {
+        "constraints": {
+          "maxLength": 24,
+          "minLength": 1,
+          "pattern": "[^\\r\\n]+"
+        },
+        "context": "skeleton:/strategies/3/evidence",
+        "default": "依据：渠道清单与发布检查",
+        "field_id": "payload.strategies.3.evidence",
+        "kind": "skeleton_payload",
+        "max_length": 24,
+        "span": {
+          "json_pointer": "/strategies/3/evidence",
+          "kind": "skeleton_payload"
+        },
+        "type": "string"
+      },
+      {
+        "constraints": {
+          "maxLength": 8,
+          "minLength": 1,
+          "pattern": "[A-Z0-9 .·_-]+"
+        },
+        "context": "skeleton:/proof_label",
+        "default": "PROOF",
+        "field_id": "payload.proof_label",
+        "kind": "skeleton_payload",
+        "max_length": 8,
+        "span": {
+          "json_pointer": "/proof_label",
+          "kind": "skeleton_payload"
+        },
+        "type": "string"
+      },
+      {
+        "constraints": {
+          "maxLength": 28,
+          "minLength": 1,
+          "pattern": "[^\\r\\n]+"
+        },
+        "context": "skeleton:/evidence/0/tag",
+        "default": "EXHIBIT 01 — USER VOICE",
+        "field_id": "payload.evidence.0.tag",
+        "kind": "skeleton_payload",
+        "max_length": 28,
+        "span": {
+          "json_pointer": "/evidence/0/tag",
+          "kind": "skeleton_payload"
+        },
+        "type": "string"
+      },
+      {
+        "constraints": {
+          "maxLength": 30,
+          "minLength": 1,
+          "pattern": "[^\\r\\n]+"
+        },
+        "context": "skeleton:/evidence/0/label",
+        "default": "INTERVIEWS · KEYWORDS",
+        "field_id": "payload.evidence.0.label",
+        "kind": "skeleton_payload",
+        "max_length": 30,
+        "span": {
+          "json_pointer": "/evidence/0/label",
+          "kind": "skeleton_payload"
+        },
+        "type": "string"
+      },
+      {
+        "constraints": {
+          "maxLength": 28,
+          "minLength": 1,
+          "pattern": "[^\\r\\n]+"
+        },
+        "context": "skeleton:/evidence/1/tag",
+        "default": "EXHIBIT 02 — CONTENT REVIEW",
+        "field_id": "payload.evidence.1.tag",
+        "kind": "skeleton_payload",
+        "max_length": 28,
+        "span": {
+          "json_pointer": "/evidence/1/tag",
+          "kind": "skeleton_payload"
+        },
+        "type": "string"
+      },
+      {
+        "constraints": {
+          "maxLength": 30,
+          "minLength": 1,
+          "pattern": "[^\\r\\n]+"
+        },
+        "context": "skeleton:/evidence/1/label",
+        "default": "TOPICS · RESPONSE",
+        "field_id": "payload.evidence.1.label",
+        "kind": "skeleton_payload",
+        "max_length": 30,
+        "span": {
+          "json_pointer": "/evidence/1/label",
+          "kind": "skeleton_payload"
+        },
+        "type": "string"
+      },
+      {
+        "constraints": {
+          "maxLength": 28,
+          "minLength": 1,
+          "pattern": "[^\\r\\n]+"
+        },
+        "context": "skeleton:/evidence/2/tag",
+        "default": "EXHIBIT 03 — VISUAL DRAFT",
+        "field_id": "payload.evidence.2.tag",
+        "kind": "skeleton_payload",
+        "max_length": 28,
+        "span": {
+          "json_pointer": "/evidence/2/tag",
+          "kind": "skeleton_payload"
+        },
+        "type": "string"
+      },
+      {
+        "constraints": {
+          "maxLength": 30,
+          "minLength": 1,
+          "pattern": "[^\\r\\n]+"
+        },
+        "context": "skeleton:/evidence/2/label",
+        "default": "DIRECTION · CONSISTENCY",
+        "field_id": "payload.evidence.2.label",
+        "kind": "skeleton_payload",
+        "max_length": 30,
+        "span": {
+          "json_pointer": "/evidence/2/label",
+          "kind": "skeleton_payload"
+        },
+        "type": "string"
+      },
+      {
+        "constraints": {
+          "maxLength": 28,
+          "minLength": 1,
+          "pattern": "[^\\r\\n]+"
+        },
+        "context": "skeleton:/evidence/3/tag",
+        "default": "EXHIBIT 04 — CALENDAR",
+        "field_id": "payload.evidence.3.tag",
+        "kind": "skeleton_payload",
+        "max_length": 28,
+        "span": {
+          "json_pointer": "/evidence/3/tag",
+          "kind": "skeleton_payload"
+        },
+        "type": "string"
+      },
+      {
+        "constraints": {
+          "maxLength": 30,
+          "minLength": 1,
+          "pattern": "[^\\r\\n]+"
+        },
+        "context": "skeleton:/evidence/3/label",
+        "default": "OWNED · SOCIAL · OFFLINE",
+        "field_id": "payload.evidence.3.label",
+        "kind": "skeleton_payload",
+        "max_length": 30,
+        "span": {
+          "json_pointer": "/evidence/3/label",
+          "kind": "skeleton_payload"
+        },
+        "type": "string"
+      },
+      {
+        "constraints": {
+          "maxLength": 48,
+          "minLength": 1,
+          "pattern": "[^\\r\\n]+"
+        },
+        "context": "skeleton:/takeaway",
+        "default": "用访谈、内容回看、视觉提案与渠道排期，让年度品牌策划从判断走向行动。",
+        "field_id": "payload.takeaway",
+        "kind": "skeleton_payload",
+        "max_length": 48,
+        "span": {
+          "json_pointer": "/takeaway",
+          "kind": "skeleton_payload"
+        },
+        "type": "string"
+      }
+    ],
+    "format": "wise-ppt-layout-payload@1",
+    "values_schema": {
+      "additionalProperties": false,
+      "minProperties": 1,
+      "properties": {
+        "payload.doc.line_1": {
+          "maxLength": 36,
+          "minLength": 1,
+          "pattern": "[^\\r\\n]+",
+          "type": "string"
+        },
+        "payload.doc.line_2": {
+          "maxLength": 40,
+          "minLength": 1,
+          "pattern": "[^\\r\\n]+",
+          "type": "string"
+        },
+        "payload.evidence.0.label": {
+          "maxLength": 30,
+          "minLength": 1,
+          "pattern": "[^\\r\\n]+",
+          "type": "string"
+        },
+        "payload.evidence.0.tag": {
+          "maxLength": 28,
+          "minLength": 1,
+          "pattern": "[^\\r\\n]+",
+          "type": "string"
+        },
+        "payload.evidence.1.label": {
+          "maxLength": 30,
+          "minLength": 1,
+          "pattern": "[^\\r\\n]+",
+          "type": "string"
+        },
+        "payload.evidence.1.tag": {
+          "maxLength": 28,
+          "minLength": 1,
+          "pattern": "[^\\r\\n]+",
+          "type": "string"
+        },
+        "payload.evidence.2.label": {
+          "maxLength": 30,
+          "minLength": 1,
+          "pattern": "[^\\r\\n]+",
+          "type": "string"
+        },
+        "payload.evidence.2.tag": {
+          "maxLength": 28,
+          "minLength": 1,
+          "pattern": "[^\\r\\n]+",
+          "type": "string"
+        },
+        "payload.evidence.3.label": {
+          "maxLength": 30,
+          "minLength": 1,
+          "pattern": "[^\\r\\n]+",
+          "type": "string"
+        },
+        "payload.evidence.3.tag": {
+          "maxLength": 28,
+          "minLength": 1,
+          "pattern": "[^\\r\\n]+",
+          "type": "string"
+        },
+        "payload.heading": {
+          "maxLength": 18,
+          "minLength": 1,
+          "pattern": "[^\\r\\n]+",
+          "type": "string"
+        },
+        "payload.kicker": {
+          "maxLength": 40,
+          "minLength": 1,
+          "pattern": "[^\\r\\n]+",
+          "type": "string"
+        },
+        "payload.proof_label": {
+          "maxLength": 8,
+          "minLength": 1,
+          "pattern": "[A-Z0-9 .·_-]+",
+          "type": "string"
+        },
+        "payload.strategies.0.action": {
+          "maxLength": 24,
+          "minLength": 1,
+          "pattern": "[^\\r\\n]+",
+          "type": "string"
+        },
+        "payload.strategies.0.evidence": {
+          "maxLength": 24,
+          "minLength": 1,
+          "pattern": "[^\\r\\n]+",
+          "type": "string"
+        },
+        "payload.strategies.0.number": {
+          "maxLength": 6,
+          "pattern": "[0-9]{2}",
+          "type": "string"
+        },
+        "payload.strategies.0.title": {
+          "maxLength": 14,
+          "minLength": 1,
+          "pattern": "[^\\r\\n]+",
+          "type": "string"
+        },
+        "payload.strategies.1.action": {
+          "maxLength": 24,
+          "minLength": 1,
+          "pattern": "[^\\r\\n]+",
+          "type": "string"
+        },
+        "payload.strategies.1.evidence": {
+          "maxLength": 24,
+          "minLength": 1,
+          "pattern": "[^\\r\\n]+",
+          "type": "string"
+        },
+        "payload.strategies.1.number": {
+          "maxLength": 6,
+          "pattern": "[0-9]{2}",
+          "type": "string"
+        },
+        "payload.strategies.1.title": {
+          "maxLength": 14,
+          "minLength": 1,
+          "pattern": "[^\\r\\n]+",
+          "type": "string"
+        },
+        "payload.strategies.2.action": {
+          "maxLength": 24,
+          "minLength": 1,
+          "pattern": "[^\\r\\n]+",
+          "type": "string"
+        },
+        "payload.strategies.2.evidence": {
+          "maxLength": 24,
+          "minLength": 1,
+          "pattern": "[^\\r\\n]+",
+          "type": "string"
+        },
+        "payload.strategies.2.number": {
+          "maxLength": 6,
+          "pattern": "[0-9]{2}",
+          "type": "string"
+        },
+        "payload.strategies.2.title": {
+          "maxLength": 14,
+          "minLength": 1,
+          "pattern": "[^\\r\\n]+",
+          "type": "string"
+        },
+        "payload.strategies.3.action": {
+          "maxLength": 24,
+          "minLength": 1,
+          "pattern": "[^\\r\\n]+",
+          "type": "string"
+        },
+        "payload.strategies.3.evidence": {
+          "maxLength": 24,
+          "minLength": 1,
+          "pattern": "[^\\r\\n]+",
+          "type": "string"
+        },
+        "payload.strategies.3.number": {
+          "maxLength": 6,
+          "pattern": "[0-9]{2}",
+          "type": "string"
+        },
+        "payload.strategies.3.title": {
+          "maxLength": 14,
+          "minLength": 1,
+          "pattern": "[^\\r\\n]+",
+          "type": "string"
+        },
+        "payload.takeaway": {
+          "maxLength": 48,
+          "minLength": 1,
+          "pattern": "[^\\r\\n]+",
+          "type": "string"
+        }
+      },
+      "type": "object"
+    }
+  },
+  "payload_defaults": {
+    "bindings": [
+      {
+        "asset_refs": [],
+        "content_refs": [
+          "item.canonical.evidence-wall"
+        ],
+        "slot_id": "evidence-wall"
+      },
+      {
+        "asset_refs": [],
+        "content_refs": [
+          "item.canonical.support"
+        ],
+        "slot_id": "support"
+      },
+      {
+        "asset_refs": [],
+        "content_refs": [
+          "item.canonical.takeaway"
+        ],
+        "slot_id": "takeaway"
+      }
+    ],
+    "values": {
+      "payload.doc.line_1": "品牌 · 策划 — A4",
+      "payload.doc.line_2": "年度传播策略证据墙",
+      "payload.evidence.0.label": "INTERVIEWS · KEYWORDS",
+      "payload.evidence.0.tag": "EXHIBIT 01 — USER VOICE",
+      "payload.evidence.1.label": "TOPICS · RESPONSE",
+      "payload.evidence.1.tag": "EXHIBIT 02 — CONTENT REVIEW",
+      "payload.evidence.2.label": "DIRECTION · CONSISTENCY",
+      "payload.evidence.2.tag": "EXHIBIT 03 — VISUAL DRAFT",
+      "payload.evidence.3.label": "OWNED · SOCIAL · OFFLINE",
+      "payload.evidence.3.tag": "EXHIBIT 04 — CALENDAR",
+      "payload.heading": "年度策略，依据清楚",
+      "payload.kicker": "BRAND · YEAR PLAN",
+      "payload.proof_label": "PROOF",
+      "payload.strategies.0.action": "从用户印象中提炼一句清楚主张",
+      "payload.strategies.0.evidence": "依据：用户访谈与关键词归纳",
+      "payload.strategies.0.number": "01",
+      "payload.strategies.0.title": "品牌主张",
+      "payload.strategies.1.action": "把年度重点拆成季度内容主题",
+      "payload.strategies.1.evidence": "依据：内容表现与评论反馈",
+      "payload.strategies.1.number": "02",
+      "payload.strategies.1.title": "内容主题",
+      "payload.strategies.2.action": "围绕新品、节日与线下活动排期",
+      "payload.strategies.2.evidence": "依据：业务节奏与公众日历",
+      "payload.strategies.2.number": "03",
+      "payload.strategies.2.title": "节点计划",
+      "payload.strategies.3.action": "统一官网、社媒与线下物料表达",
+      "payload.strategies.3.evidence": "依据：渠道清单与发布检查",
+      "payload.strategies.3.number": "04",
+      "payload.strategies.3.title": "渠道协同",
+      "payload.takeaway": "用访谈、内容回看、视觉提案与渠道排期，让年度品牌策划从判断走向行动。"
+    }
+  },
+  "payload_schema": {
+    "additionalProperties": false,
+    "properties": {
+      "bindings": {
+        "items": {
+          "additionalProperties": false,
+          "properties": {
+            "asset_refs": {
+              "items": {
+                "minLength": 1,
+                "type": "string"
+              },
+              "type": "array"
+            },
+            "content_refs": {
+              "items": {
+                "minLength": 1,
+                "type": "string"
+              },
+              "type": "array"
+            },
+            "slot_id": {
+              "enum": [
+                "evidence-wall",
+                "support",
+                "takeaway"
+              ],
+              "type": "string"
+            }
+          },
+          "required": [
+            "slot_id",
+            "content_refs",
+            "asset_refs"
+          ],
+          "type": "object"
+        },
+        "maxItems": 3,
+        "minItems": 3,
+        "type": "array"
+      },
+      "values": {
+        "additionalProperties": false,
+        "minProperties": 1,
+        "properties": {
+          "payload.doc.line_1": {
+            "maxLength": 36,
+            "minLength": 1,
+            "pattern": "[^\\r\\n]+",
+            "type": "string"
+          },
+          "payload.doc.line_2": {
+            "maxLength": 40,
+            "minLength": 1,
+            "pattern": "[^\\r\\n]+",
+            "type": "string"
+          },
+          "payload.evidence.0.label": {
+            "maxLength": 30,
+            "minLength": 1,
+            "pattern": "[^\\r\\n]+",
+            "type": "string"
+          },
+          "payload.evidence.0.tag": {
+            "maxLength": 28,
+            "minLength": 1,
+            "pattern": "[^\\r\\n]+",
+            "type": "string"
+          },
+          "payload.evidence.1.label": {
+            "maxLength": 30,
+            "minLength": 1,
+            "pattern": "[^\\r\\n]+",
+            "type": "string"
+          },
+          "payload.evidence.1.tag": {
+            "maxLength": 28,
+            "minLength": 1,
+            "pattern": "[^\\r\\n]+",
+            "type": "string"
+          },
+          "payload.evidence.2.label": {
+            "maxLength": 30,
+            "minLength": 1,
+            "pattern": "[^\\r\\n]+",
+            "type": "string"
+          },
+          "payload.evidence.2.tag": {
+            "maxLength": 28,
+            "minLength": 1,
+            "pattern": "[^\\r\\n]+",
+            "type": "string"
+          },
+          "payload.evidence.3.label": {
+            "maxLength": 30,
+            "minLength": 1,
+            "pattern": "[^\\r\\n]+",
+            "type": "string"
+          },
+          "payload.evidence.3.tag": {
+            "maxLength": 28,
+            "minLength": 1,
+            "pattern": "[^\\r\\n]+",
+            "type": "string"
+          },
+          "payload.heading": {
+            "maxLength": 18,
+            "minLength": 1,
+            "pattern": "[^\\r\\n]+",
+            "type": "string"
+          },
+          "payload.kicker": {
+            "maxLength": 40,
+            "minLength": 1,
+            "pattern": "[^\\r\\n]+",
+            "type": "string"
+          },
+          "payload.proof_label": {
+            "maxLength": 8,
+            "minLength": 1,
+            "pattern": "[A-Z0-9 .·_-]+",
+            "type": "string"
+          },
+          "payload.strategies.0.action": {
+            "maxLength": 24,
+            "minLength": 1,
+            "pattern": "[^\\r\\n]+",
+            "type": "string"
+          },
+          "payload.strategies.0.evidence": {
+            "maxLength": 24,
+            "minLength": 1,
+            "pattern": "[^\\r\\n]+",
+            "type": "string"
+          },
+          "payload.strategies.0.number": {
+            "maxLength": 6,
+            "pattern": "[0-9]{2}",
+            "type": "string"
+          },
+          "payload.strategies.0.title": {
+            "maxLength": 14,
+            "minLength": 1,
+            "pattern": "[^\\r\\n]+",
+            "type": "string"
+          },
+          "payload.strategies.1.action": {
+            "maxLength": 24,
+            "minLength": 1,
+            "pattern": "[^\\r\\n]+",
+            "type": "string"
+          },
+          "payload.strategies.1.evidence": {
+            "maxLength": 24,
+            "minLength": 1,
+            "pattern": "[^\\r\\n]+",
+            "type": "string"
+          },
+          "payload.strategies.1.number": {
+            "maxLength": 6,
+            "pattern": "[0-9]{2}",
+            "type": "string"
+          },
+          "payload.strategies.1.title": {
+            "maxLength": 14,
+            "minLength": 1,
+            "pattern": "[^\\r\\n]+",
+            "type": "string"
+          },
+          "payload.strategies.2.action": {
+            "maxLength": 24,
+            "minLength": 1,
+            "pattern": "[^\\r\\n]+",
+            "type": "string"
+          },
+          "payload.strategies.2.evidence": {
+            "maxLength": 24,
+            "minLength": 1,
+            "pattern": "[^\\r\\n]+",
+            "type": "string"
+          },
+          "payload.strategies.2.number": {
+            "maxLength": 6,
+            "pattern": "[0-9]{2}",
+            "type": "string"
+          },
+          "payload.strategies.2.title": {
+            "maxLength": 14,
+            "minLength": 1,
+            "pattern": "[^\\r\\n]+",
+            "type": "string"
+          },
+          "payload.strategies.3.action": {
+            "maxLength": 24,
+            "minLength": 1,
+            "pattern": "[^\\r\\n]+",
+            "type": "string"
+          },
+          "payload.strategies.3.evidence": {
+            "maxLength": 24,
+            "minLength": 1,
+            "pattern": "[^\\r\\n]+",
+            "type": "string"
+          },
+          "payload.strategies.3.number": {
+            "maxLength": 6,
+            "pattern": "[0-9]{2}",
+            "type": "string"
+          },
+          "payload.strategies.3.title": {
+            "maxLength": 14,
+            "minLength": 1,
+            "pattern": "[^\\r\\n]+",
+            "type": "string"
+          },
+          "payload.takeaway": {
+            "maxLength": 48,
+            "minLength": 1,
+            "pattern": "[^\\r\\n]+",
+            "type": "string"
+          }
+        },
+        "type": "object"
+      }
+    },
+    "required": [
+      "bindings",
+      "values"
+    ],
+    "type": "object"
+  },
+  "recipe_fingerprint": "sha256:e52d6ee63de9722fd8a1910b7beaabeb91ebc452362d032618c7f9d493732ada",
+  "recipe_id": "paper-ink.evidence.strategy-evidence-wall",
+  "required_capabilities": [],
+  "slots": [
+    {
+      "allowed_component_sources": [
+        "codex-host",
+        "native"
+      ],
+      "allowed_renderer_kinds": [
+        "table",
+        "image",
+        "native-html",
+        "svg"
+      ],
+      "compatible_component_ids": [
+        "codex-host.paper-ink.media.generated-image",
+        "native.paper-ink.066.evidence-wall",
+        "native.paper-ink.media.reconstructed-image"
+      ],
+      "count_unit": "binding",
+      "default_component": {
+        "component_id": "native.paper-ink.evidence.strategy-evidence-wall.evidence-wall",
+        "component_source": "native",
+        "origin": {
+          "kind": "canonical-slot-island",
+          "path": "capabilities/layouts/recipes/strategy-evidence-wall/fragment.html",
+          "selector": "[data-slot-id=\"evidence-wall\"]"
+        },
+        "renderer_kind": "svg"
+      },
+      "max_items": 8,
+      "min_items": 1,
+      "open_for_override": true,
+      "purpose": "证据墙",
+      "required": true,
+      "slot_id": "evidence-wall",
+      "space_contract": {
+        "aspect_ratio": 2.4194,
+        "canvas_height": 1080,
+        "canvas_width": 1920,
+        "height": 620,
+        "space_type": "wide",
+        "width": 1500
+      },
+      "visual_role": "primary"
+    },
+    {
+      "allowed_component_sources": [
+        "codex-host",
+        "native"
+      ],
+      "allowed_renderer_kinds": [
+        "typography",
+        "table",
+        "image",
+        "native-html",
+        "svg"
+      ],
+      "compatible_component_ids": [],
+      "count_unit": "binding",
+      "default_component": {
+        "component_id": "native.paper-ink.evidence.strategy-evidence-wall.support",
+        "component_source": "native",
+        "origin": {
+          "kind": "canonical-slot-island",
+          "path": "capabilities/layouts/recipes/strategy-evidence-wall/fragment.html",
+          "selector": "[data-slot-id=\"support\"]"
+        },
+        "renderer_kind": "typography"
+      },
+      "max_items": 4,
+      "min_items": 0,
+      "open_for_override": false,
+      "purpose": "辅助证据、标签或解释",
+      "required": false,
+      "slot_id": "support",
+      "visual_role": "support"
+    },
+    {
+      "allowed_component_sources": [
+        "native"
+      ],
+      "allowed_renderer_kinds": [
+        "typography"
+      ],
+      "compatible_component_ids": [],
+      "count_unit": "binding",
+      "default_component": {
+        "component_id": "native.paper-ink.evidence.strategy-evidence-wall.takeaway",
+        "component_source": "native",
+        "origin": {
+          "kind": "canonical-slot-island",
+          "path": "capabilities/layouts/recipes/strategy-evidence-wall/fragment.html",
+          "selector": "[data-slot-id=\"takeaway\"]"
+        },
+        "renderer_kind": "typography"
+      },
+      "max_items": 1,
+      "min_items": 0,
+      "open_for_override": false,
+      "purpose": "页面一句话结论",
+      "required": false,
+      "slot_id": "takeaway",
+      "visual_role": "support"
+    }
+  ],
+  "source": {
+    "path": "gallery/paper-ink/general/frames/layout-a4.html",
+    "sha256": "sha256:03f66da75e85fd35e53123c262ef3b3d8058c765974107267bfb1f5fd674643c"
+  },
+  "status": "production",
+  "theme_id": "paper-ink",
+  "variant": "general"
+}

@@ -1,0 +1,894 @@
+{
+  "canonical": {
+    "constraints": {
+      "css_scope": "[data-implementation-id=\"paper-ink.data.visual-kpi-split.general\"]",
+      "external_links": false,
+      "external_scripts": false,
+      "payload_only_mutation": true,
+      "ready_api": "WisePPT.markSlideReady",
+      "script_query_scope": "current-section.slide",
+      "stage_fit": false
+    },
+    "kind": "derived-frame",
+    "materialization_format": "wise-ppt-formal-slide@1",
+    "path": "gallery/paper-ink/general/frames/layout-c1.html",
+    "root_selector": "section.slide[data-implementation-id=\"paper-ink.data.visual-kpi-split.general\"]",
+    "sha256": "sha256:f2dc79aaa895ed90ead3d45f4e624cc4dde1ad8ffab3632b657c2272375a64c3"
+  },
+  "canonical_fingerprint": "sha256:9911e067d4b4ff91039603015d76460a9b81630275d2cb1f6dd5a6244616bbd9",
+  "contract_version": 1,
+  "dependency_closure": {
+    "files": [
+      {
+        "path": "gallery/shell.css",
+        "sha256": "sha256:aca1428680d2dd5c84e85d66241ee199a16d36bb60a098340528943fb5469f69"
+      },
+      {
+        "path": "runtime/stage-fit.js",
+        "sha256": "sha256:39577a14aac5072789fdeb80abee887d24da5a44eeb38203ef154602330f291d"
+      },
+      {
+        "path": "themes/paper-ink/assets/design-tokens.css",
+        "sha256": "sha256:3f1f0d3562cf1486b87643b16025388557000858d0df13d767b53a576988c330"
+      },
+      {
+        "path": "themes/paper-ink/assets/fonts/CourierPrime-Regular.ttf",
+        "sha256": "sha256:72f793376f8e2841656bf21d77a5de010f2929bd6956a22ee848ad0c7eb978af"
+      },
+      {
+        "path": "themes/paper-ink/assets/fonts/LXGWWenKai-Regular.ttf",
+        "sha256": "sha256:39ad71264b588165b469e35e6afb162a378dacd1f95348160240ba9038ac3009"
+      },
+      {
+        "path": "themes/paper-ink/assets/fonts/SourceHanSansCN-Light.otf",
+        "sha256": "sha256:b6dfc945aae0daf9b15019f59c2f7b18d17da3b92f00c3ec32fb5f0333696d9c"
+      },
+      {
+        "path": "themes/paper-ink/assets/fonts/SourceHanSerifCN-Medium.otf",
+        "sha256": "sha256:8e224937647ae71ba1b1f310bcb3fbc32f21ec7c2c490ba04670455c901f3378"
+      },
+      {
+        "path": "themes/paper-ink/assets/particles.js",
+        "sha256": "sha256:1281d72e81b34e4be061286edd323dd421443dffbf6e0d8a2faa94a5d14094c4"
+      },
+      {
+        "path": "themes/paper-ink/assets/slide-components.css",
+        "sha256": "sha256:20e7334fe5ae51cb229112290e787c1274ad65278a72b084c708682dc9ca5acf"
+      }
+    ],
+    "sha256": "sha256:7dcc6f0ac681be95cc8955afb36da97027f341a98f4f9f37518e37bfe13f5be4"
+  },
+  "format": "wise-ppt-layout-implementation@1",
+  "geometry": {
+    "anchors": [
+      {
+        "anchor_id": "stage",
+        "selector": ".stage"
+      }
+    ],
+    "canvas": {
+      "height": 1080,
+      "width": 1920
+    },
+    "content_region": {
+      "height": 1080,
+      "width": 1920,
+      "x": 0,
+      "y": 0
+    },
+    "fingerprint": "sha256:40dc840d765227609fb2e657ec43d95e9b0047858c26d89a9665b0043054f7cd",
+    "format": "wise-ppt-layout-geometry@1",
+    "relations": [],
+    "structure_contract": {
+      "core_primitives": [
+        "bilateral-split"
+      ],
+      "region_count": 3,
+      "required_slot_ids": [
+        "visual"
+      ]
+    }
+  },
+  "implementation_id": "paper-ink.data.visual-kpi-split.general",
+  "payload": {
+    "fields": [
+      {
+        "context": "html:div.doc.tl",
+        "default": "产品 · 汇报 — C1",
+        "field_id": "html.text.001",
+        "kind": "html_text",
+        "max_length": 16,
+        "span": {
+          "kind": "html_text",
+          "occurrence": 1,
+          "token_sha256": "sha256:64d1c9202e96b62185d917523a9a635e7574d26745853e4c3db5bdd96974215e"
+        },
+        "type": "string"
+      },
+      {
+        "context": "html:div.doc.tl",
+        "default": "会员服务月报",
+        "field_id": "html.text.002",
+        "kind": "html_text",
+        "max_length": 10,
+        "span": {
+          "kind": "html_text",
+          "occurrence": 2,
+          "token_sha256": "sha256:d691e08afa1e14be9508c4ebb81b670e1b33a2b23246982c59479773d2018fef"
+        },
+        "type": "string"
+      },
+      {
+        "constraints": {
+          "pattern": "^\\d{1,3} / \\d{1,3} — BY .{1,40}$"
+        },
+        "context": "html:div.folio",
+        "default": "01 / 01 — BY WISE PPT",
+        "field_id": "html.text.003",
+        "kind": "html_text",
+        "max_length": 26,
+        "semantic_role": "folio",
+        "source_default": "C1 / 63 — BY @歪斯WISE",
+        "span": {
+          "kind": "html_text",
+          "occurrence": 3,
+          "token_sha256": "sha256:06a987c974a15798aa0c5887be3629cf1615bca3fb25f4e4dc35ae6146dd975e"
+        },
+        "type": "string"
+      },
+      {
+        "context": "html:div.caption",
+        "default": "本月会员活跃度与服务好评同步提升，常用业务办理用时下降 31%。",
+        "field_id": "html.text.004",
+        "kind": "html_text",
+        "max_length": 42,
+        "span": {
+          "kind": "html_text",
+          "occurrence": 4,
+          "token_sha256": "sha256:a28a85362bb49d925dc898f4bf237d5fb39070bb2bafd887674c6048c61def92"
+        },
+        "type": "string"
+      },
+      {
+        "constraints": {
+          "pattern": "^(?!.*[\\u3400-\\u9fff]).+$"
+        },
+        "context": "inline-script[1]:call:txt[2]",
+        "default": "SPECIMEN 01 — MEMBER SERVICE",
+        "field_id": "script.literal.001",
+        "kind": "script_literal",
+        "max_length": 37,
+        "semantic_role": "mono-label",
+        "span": {
+          "kind": "script_literal",
+          "occurrence": 1,
+          "quote": "'",
+          "script_index": 1,
+          "sink": "call:txt[2]",
+          "token_sha256": "sha256:fc72239920201ad5dc17edd4841ede58f20833bf30f87f60c842947e65b99d36"
+        },
+        "type": "string"
+      },
+      {
+        "constraints": {
+          "pattern": "^(?!.*[\\u3400-\\u9fff]).+$"
+        },
+        "context": "inline-script[1]:call:txt[2]",
+        "default": "MEMBER SERVICE",
+        "field_id": "script.literal.002",
+        "kind": "script_literal",
+        "max_length": 18,
+        "semantic_role": "mono-label",
+        "span": {
+          "kind": "script_literal",
+          "occurrence": 2,
+          "quote": "'",
+          "script_index": 1,
+          "sink": "call:txt[2]",
+          "token_sha256": "sha256:458323e4a184db6814a307002a70f87286a29eb0d2628452193da201da837dcb"
+        },
+        "type": "string"
+      },
+      {
+        "constraints": {
+          "pattern": "^(?!.*[\\u3400-\\u9fff]).+$"
+        },
+        "context": "inline-script[1]:call:txt[2]",
+        "default": "MY CARD",
+        "field_id": "script.literal.003",
+        "kind": "script_literal",
+        "max_length": 11,
+        "semantic_role": "mono-label",
+        "span": {
+          "kind": "script_literal",
+          "occurrence": 3,
+          "quote": "'",
+          "script_index": 1,
+          "sink": "call:txt[2]",
+          "token_sha256": "sha256:47952c9b0be772650c570938b070220100f18599dc12b37c0c1b32fa4facba64"
+        },
+        "type": "string"
+      },
+      {
+        "constraints": {
+          "pattern": "^(?!.*[\\u3400-\\u9fff]).+$"
+        },
+        "context": "inline-script[1]:call:txt[2]",
+        "default": "SERVICE PAGE",
+        "field_id": "script.literal.004",
+        "kind": "script_literal",
+        "max_length": 16,
+        "semantic_role": "mono-label",
+        "span": {
+          "kind": "script_literal",
+          "occurrence": 4,
+          "quote": "'",
+          "script_index": 1,
+          "sink": "call:txt[2]",
+          "token_sha256": "sha256:4ab9859c50cce8012f33ad832f5448b53c4c44160e7b902acf2aa81559baf6d4"
+        },
+        "type": "string"
+      },
+      {
+        "constraints": {
+          "pattern": "^(?!.*[\\u3400-\\u9fff]).+$"
+        },
+        "context": "inline-script[1]:call:txt[2]",
+        "default": "MEMBER CARD",
+        "field_id": "script.literal.005",
+        "kind": "script_literal",
+        "max_length": 15,
+        "semantic_role": "mono-label",
+        "span": {
+          "kind": "script_literal",
+          "occurrence": 5,
+          "quote": "'",
+          "script_index": 1,
+          "sink": "call:txt[2]",
+          "token_sha256": "sha256:f9421e0a40063ae44353d59c89df5a625c1182c875c87e2b17dfd20191e5cea4"
+        },
+        "type": "string"
+      },
+      {
+        "context": "inline-script[1]:call:cell[2]",
+        "default": "12.8万",
+        "field_id": "script.literal.006",
+        "kind": "script_literal",
+        "max_length": 9,
+        "span": {
+          "kind": "script_literal",
+          "occurrence": 6,
+          "quote": "'",
+          "script_index": 1,
+          "sink": "call:cell[2]",
+          "token_sha256": "sha256:45462126a1e2270111744271717462f588f32f6bb4cfe231ebd701821764c1e0"
+        },
+        "type": "string"
+      },
+      {
+        "context": "inline-script[1]:call:cell[3]",
+        "default": "月活会员",
+        "field_id": "script.literal.007",
+        "kind": "script_literal",
+        "max_length": 8,
+        "span": {
+          "kind": "script_literal",
+          "occurrence": 7,
+          "quote": "'",
+          "script_index": 1,
+          "sink": "call:cell[3]",
+          "token_sha256": "sha256:91bed1bfad44aebb6b4859eafd2ccbc45555788f033143a27282ed3a56f1af3e"
+        },
+        "type": "string"
+      },
+      {
+        "constraints": {
+          "pattern": "^(?!.*[\\u3400-\\u9fff]).+$"
+        },
+        "context": "inline-script[1]:call:cell[4]",
+        "default": "MONTHLY ACTIVE · +18%",
+        "field_id": "script.literal.008",
+        "kind": "script_literal",
+        "max_length": 28,
+        "semantic_role": "mono-label",
+        "span": {
+          "kind": "script_literal",
+          "occurrence": 8,
+          "quote": "'",
+          "script_index": 1,
+          "sink": "call:cell[4]",
+          "token_sha256": "sha256:1bfc57b11152f795eb062b5bc1d06e1633ed1dc6d64902510584b2f9c8770a4a"
+        },
+        "type": "string"
+      },
+      {
+        "constraints": {
+          "pattern": "^(?!.*[\\u3400-\\u9fff]).+$"
+        },
+        "context": "inline-script[1]:call:cell[2]",
+        "default": "63%",
+        "field_id": "script.literal.009",
+        "kind": "script_literal",
+        "max_length": 7,
+        "semantic_role": "mono-label",
+        "span": {
+          "kind": "script_literal",
+          "occurrence": 9,
+          "quote": "'",
+          "script_index": 1,
+          "sink": "call:cell[2]",
+          "token_sha256": "sha256:165a81905e91cc2bb28a0c5cb40f897ccc81d7648c68f2d4930c36961653b7c0"
+        },
+        "type": "string"
+      },
+      {
+        "context": "inline-script[1]:call:cell[3]",
+        "default": "七日留存",
+        "field_id": "script.literal.010",
+        "kind": "script_literal",
+        "max_length": 8,
+        "span": {
+          "kind": "script_literal",
+          "occurrence": 10,
+          "quote": "'",
+          "script_index": 1,
+          "sink": "call:cell[3]",
+          "token_sha256": "sha256:924573e18cc6a3a2f2a8c1ab8647c4f1fce913a9e77f71d5cf59de90ef9a6c51"
+        },
+        "type": "string"
+      },
+      {
+        "constraints": {
+          "pattern": "^(?!.*[\\u3400-\\u9fff]).+$"
+        },
+        "context": "inline-script[1]:call:cell[4]",
+        "default": "7-DAY RETENTION · +6PT",
+        "field_id": "script.literal.011",
+        "kind": "script_literal",
+        "max_length": 29,
+        "semantic_role": "mono-label",
+        "span": {
+          "kind": "script_literal",
+          "occurrence": 11,
+          "quote": "'",
+          "script_index": 1,
+          "sink": "call:cell[4]",
+          "token_sha256": "sha256:31cf63c6beccb11298e875bcd60c99ccc56f8a0ae8da36bd0a20426083f4fcb5"
+        },
+        "type": "string"
+      },
+      {
+        "constraints": {
+          "pattern": "^(?!.*[\\u3400-\\u9fff]).+$"
+        },
+        "context": "inline-script[1]:call:cell[2]",
+        "default": "96.4%",
+        "field_id": "script.literal.012",
+        "kind": "script_literal",
+        "max_length": 9,
+        "semantic_role": "mono-label",
+        "span": {
+          "kind": "script_literal",
+          "occurrence": 12,
+          "quote": "'",
+          "script_index": 1,
+          "sink": "call:cell[2]",
+          "token_sha256": "sha256:7cb659e5a72986cf2ef1a5792fd974343a213f224f37e0c1e7d664a4b16f4ec8"
+        },
+        "type": "string"
+      },
+      {
+        "context": "inline-script[1]:call:cell[3]",
+        "default": "服务好评率",
+        "field_id": "script.literal.013",
+        "kind": "script_literal",
+        "max_length": 9,
+        "span": {
+          "kind": "script_literal",
+          "occurrence": 13,
+          "quote": "'",
+          "script_index": 1,
+          "sink": "call:cell[3]",
+          "token_sha256": "sha256:c55da5fc7b0e75b28672f97191139eb50797fb3ae720510ebe1c13c659116114"
+        },
+        "type": "string"
+      },
+      {
+        "constraints": {
+          "pattern": "^(?!.*[\\u3400-\\u9fff]).+$"
+        },
+        "context": "inline-script[1]:call:cell[4]",
+        "default": "POSITIVE REVIEWS · 30D",
+        "field_id": "script.literal.014",
+        "kind": "script_literal",
+        "max_length": 29,
+        "semantic_role": "mono-label",
+        "span": {
+          "kind": "script_literal",
+          "occurrence": 14,
+          "quote": "'",
+          "script_index": 1,
+          "sink": "call:cell[4]",
+          "token_sha256": "sha256:8168851b35fc5cd6818019a6deb1ed7bed63dd8b4ef6b592c3f376197ff8d3ae"
+        },
+        "type": "string"
+      },
+      {
+        "constraints": {
+          "pattern": "^(?!.*[\\u3400-\\u9fff]).+$"
+        },
+        "context": "inline-script[1]:call:cell[2]",
+        "default": "-31%",
+        "field_id": "script.literal.015",
+        "kind": "script_literal",
+        "max_length": 8,
+        "semantic_role": "mono-label",
+        "span": {
+          "kind": "script_literal",
+          "occurrence": 15,
+          "quote": "'",
+          "script_index": 1,
+          "sink": "call:cell[2]",
+          "token_sha256": "sha256:6e18b1ea145e2831d3ef86eb2e2c504ac04b04a3679eb275f73b68d17cbcb4c6"
+        },
+        "type": "string"
+      },
+      {
+        "context": "inline-script[1]:call:cell[3]",
+        "default": "业务办理用时",
+        "field_id": "script.literal.016",
+        "kind": "script_literal",
+        "max_length": 10,
+        "span": {
+          "kind": "script_literal",
+          "occurrence": 16,
+          "quote": "'",
+          "script_index": 1,
+          "sink": "call:cell[3]",
+          "token_sha256": "sha256:068d83a2f06ee5dbaf7e42b4a1b104608ba4169109174a190abf5dc63e5255d6"
+        },
+        "type": "string"
+      },
+      {
+        "constraints": {
+          "pattern": "^(?!.*[\\u3400-\\u9fff]).+$"
+        },
+        "context": "inline-script[1]:call:cell[4]",
+        "default": "TIME TO COMPLETE · VS LAST",
+        "field_id": "script.literal.017",
+        "kind": "script_literal",
+        "max_length": 34,
+        "semantic_role": "mono-label",
+        "span": {
+          "kind": "script_literal",
+          "occurrence": 17,
+          "quote": "'",
+          "script_index": 1,
+          "sink": "call:cell[4]",
+          "token_sha256": "sha256:f3febb5554b5ca1c5ec68b01dc97a44ac6708de3ebaca6c0beaf3aacb0f166ec"
+        },
+        "type": "string"
+      }
+    ],
+    "format": "wise-ppt-layout-payload@1",
+    "values_schema": {
+      "additionalProperties": false,
+      "minProperties": 1,
+      "properties": {
+        "html.text.001": {
+          "maxLength": 16,
+          "type": "string"
+        },
+        "html.text.002": {
+          "maxLength": 10,
+          "type": "string"
+        },
+        "html.text.003": {
+          "maxLength": 26,
+          "pattern": "^\\d{1,3} / \\d{1,3} — BY .{1,40}$",
+          "type": "string"
+        },
+        "html.text.004": {
+          "maxLength": 42,
+          "type": "string"
+        },
+        "script.literal.001": {
+          "maxLength": 37,
+          "pattern": "^(?!.*[\\u3400-\\u9fff]).+$",
+          "type": "string"
+        },
+        "script.literal.002": {
+          "maxLength": 18,
+          "pattern": "^(?!.*[\\u3400-\\u9fff]).+$",
+          "type": "string"
+        },
+        "script.literal.003": {
+          "maxLength": 11,
+          "pattern": "^(?!.*[\\u3400-\\u9fff]).+$",
+          "type": "string"
+        },
+        "script.literal.004": {
+          "maxLength": 16,
+          "pattern": "^(?!.*[\\u3400-\\u9fff]).+$",
+          "type": "string"
+        },
+        "script.literal.005": {
+          "maxLength": 15,
+          "pattern": "^(?!.*[\\u3400-\\u9fff]).+$",
+          "type": "string"
+        },
+        "script.literal.006": {
+          "maxLength": 9,
+          "type": "string"
+        },
+        "script.literal.007": {
+          "maxLength": 8,
+          "type": "string"
+        },
+        "script.literal.008": {
+          "maxLength": 28,
+          "pattern": "^(?!.*[\\u3400-\\u9fff]).+$",
+          "type": "string"
+        },
+        "script.literal.009": {
+          "maxLength": 7,
+          "pattern": "^(?!.*[\\u3400-\\u9fff]).+$",
+          "type": "string"
+        },
+        "script.literal.010": {
+          "maxLength": 8,
+          "type": "string"
+        },
+        "script.literal.011": {
+          "maxLength": 29,
+          "pattern": "^(?!.*[\\u3400-\\u9fff]).+$",
+          "type": "string"
+        },
+        "script.literal.012": {
+          "maxLength": 9,
+          "pattern": "^(?!.*[\\u3400-\\u9fff]).+$",
+          "type": "string"
+        },
+        "script.literal.013": {
+          "maxLength": 9,
+          "type": "string"
+        },
+        "script.literal.014": {
+          "maxLength": 29,
+          "pattern": "^(?!.*[\\u3400-\\u9fff]).+$",
+          "type": "string"
+        },
+        "script.literal.015": {
+          "maxLength": 8,
+          "pattern": "^(?!.*[\\u3400-\\u9fff]).+$",
+          "type": "string"
+        },
+        "script.literal.016": {
+          "maxLength": 10,
+          "type": "string"
+        },
+        "script.literal.017": {
+          "maxLength": 34,
+          "pattern": "^(?!.*[\\u3400-\\u9fff]).+$",
+          "type": "string"
+        }
+      },
+      "type": "object"
+    }
+  },
+  "payload_defaults": {
+    "bindings": [
+      {
+        "asset_refs": [],
+        "content_refs": [
+          "item.canonical.visual"
+        ],
+        "slot_id": "visual"
+      },
+      {
+        "asset_refs": [],
+        "content_refs": [
+          "item.canonical.support"
+        ],
+        "slot_id": "support"
+      },
+      {
+        "asset_refs": [],
+        "content_refs": [
+          "item.canonical.takeaway"
+        ],
+        "slot_id": "takeaway"
+      }
+    ],
+    "values": {
+      "html.text.001": "产品 · 汇报 — C1",
+      "html.text.002": "会员服务月报",
+      "html.text.003": "01 / 01 — BY WISE PPT",
+      "html.text.004": "本月会员活跃度与服务好评同步提升，常用业务办理用时下降 31%。",
+      "script.literal.001": "SPECIMEN 01 — MEMBER SERVICE",
+      "script.literal.002": "MEMBER SERVICE",
+      "script.literal.003": "MY CARD",
+      "script.literal.004": "SERVICE PAGE",
+      "script.literal.005": "MEMBER CARD",
+      "script.literal.006": "12.8万",
+      "script.literal.007": "月活会员",
+      "script.literal.008": "MONTHLY ACTIVE · +18%",
+      "script.literal.009": "63%",
+      "script.literal.010": "七日留存",
+      "script.literal.011": "7-DAY RETENTION · +6PT",
+      "script.literal.012": "96.4%",
+      "script.literal.013": "服务好评率",
+      "script.literal.014": "POSITIVE REVIEWS · 30D",
+      "script.literal.015": "-31%",
+      "script.literal.016": "业务办理用时",
+      "script.literal.017": "TIME TO COMPLETE · VS LAST"
+    }
+  },
+  "payload_schema": {
+    "additionalProperties": false,
+    "properties": {
+      "bindings": {
+        "items": {
+          "additionalProperties": false,
+          "properties": {
+            "asset_refs": {
+              "items": {
+                "minLength": 1,
+                "type": "string"
+              },
+              "type": "array"
+            },
+            "content_refs": {
+              "items": {
+                "minLength": 1,
+                "type": "string"
+              },
+              "type": "array"
+            },
+            "slot_id": {
+              "enum": [
+                "visual",
+                "support",
+                "takeaway"
+              ],
+              "type": "string"
+            }
+          },
+          "required": [
+            "slot_id",
+            "content_refs",
+            "asset_refs"
+          ],
+          "type": "object"
+        },
+        "maxItems": 3,
+        "minItems": 3,
+        "type": "array"
+      },
+      "values": {
+        "additionalProperties": false,
+        "minProperties": 1,
+        "properties": {
+          "html.text.001": {
+            "maxLength": 16,
+            "type": "string"
+          },
+          "html.text.002": {
+            "maxLength": 10,
+            "type": "string"
+          },
+          "html.text.003": {
+            "maxLength": 26,
+            "pattern": "^\\d{1,3} / \\d{1,3} — BY .{1,40}$",
+            "type": "string"
+          },
+          "html.text.004": {
+            "maxLength": 42,
+            "type": "string"
+          },
+          "script.literal.001": {
+            "maxLength": 37,
+            "pattern": "^(?!.*[\\u3400-\\u9fff]).+$",
+            "type": "string"
+          },
+          "script.literal.002": {
+            "maxLength": 18,
+            "pattern": "^(?!.*[\\u3400-\\u9fff]).+$",
+            "type": "string"
+          },
+          "script.literal.003": {
+            "maxLength": 11,
+            "pattern": "^(?!.*[\\u3400-\\u9fff]).+$",
+            "type": "string"
+          },
+          "script.literal.004": {
+            "maxLength": 16,
+            "pattern": "^(?!.*[\\u3400-\\u9fff]).+$",
+            "type": "string"
+          },
+          "script.literal.005": {
+            "maxLength": 15,
+            "pattern": "^(?!.*[\\u3400-\\u9fff]).+$",
+            "type": "string"
+          },
+          "script.literal.006": {
+            "maxLength": 9,
+            "type": "string"
+          },
+          "script.literal.007": {
+            "maxLength": 8,
+            "type": "string"
+          },
+          "script.literal.008": {
+            "maxLength": 28,
+            "pattern": "^(?!.*[\\u3400-\\u9fff]).+$",
+            "type": "string"
+          },
+          "script.literal.009": {
+            "maxLength": 7,
+            "pattern": "^(?!.*[\\u3400-\\u9fff]).+$",
+            "type": "string"
+          },
+          "script.literal.010": {
+            "maxLength": 8,
+            "type": "string"
+          },
+          "script.literal.011": {
+            "maxLength": 29,
+            "pattern": "^(?!.*[\\u3400-\\u9fff]).+$",
+            "type": "string"
+          },
+          "script.literal.012": {
+            "maxLength": 9,
+            "pattern": "^(?!.*[\\u3400-\\u9fff]).+$",
+            "type": "string"
+          },
+          "script.literal.013": {
+            "maxLength": 9,
+            "type": "string"
+          },
+          "script.literal.014": {
+            "maxLength": 29,
+            "pattern": "^(?!.*[\\u3400-\\u9fff]).+$",
+            "type": "string"
+          },
+          "script.literal.015": {
+            "maxLength": 8,
+            "pattern": "^(?!.*[\\u3400-\\u9fff]).+$",
+            "type": "string"
+          },
+          "script.literal.016": {
+            "maxLength": 10,
+            "type": "string"
+          },
+          "script.literal.017": {
+            "maxLength": 34,
+            "pattern": "^(?!.*[\\u3400-\\u9fff]).+$",
+            "type": "string"
+          }
+        },
+        "type": "object"
+      }
+    },
+    "required": [
+      "bindings",
+      "values"
+    ],
+    "type": "object"
+  },
+  "recipe_fingerprint": "sha256:db46a8f0231bf9c37da45116ed3a69cff07fbe341312eadc4f070ae9aab337f2",
+  "recipe_id": "paper-ink.data.visual-kpi-split",
+  "required_capabilities": [],
+  "slots": [
+    {
+      "allowed_component_sources": [
+        "codex-host",
+        "echarts",
+        "native"
+      ],
+      "allowed_renderer_kinds": [
+        "image",
+        "svg",
+        "canvas"
+      ],
+      "compatible_component_ids": [
+        "codex-host.paper-ink.media.generated-image",
+        "echarts.bar-basic",
+        "echarts.line-basic",
+        "native.paper-ink.media.reconstructed-image"
+      ],
+      "count_unit": "binding",
+      "default_component": {
+        "component_id": "native.paper-ink.data.visual-kpi-split.visual",
+        "component_source": "native",
+        "origin": {
+          "kind": "canonical-frame-island",
+          "path": "gallery/paper-ink/general/frames/layout-c1.html",
+          "selector": ".stage"
+        },
+        "renderer_kind": "svg"
+      },
+      "max_items": 7,
+      "min_items": 1,
+      "open_for_override": false,
+      "purpose": "主图或场景",
+      "required": true,
+      "slot_id": "visual",
+      "space_contract": {
+        "aspect_ratio": 2.4194,
+        "canvas_height": 1080,
+        "canvas_width": 1920,
+        "height": 620,
+        "space_type": "wide",
+        "width": 1500
+      },
+      "visual_role": "primary"
+    },
+    {
+      "allowed_component_sources": [
+        "codex-host",
+        "native"
+      ],
+      "allowed_renderer_kinds": [
+        "typography",
+        "table",
+        "image",
+        "native-html",
+        "svg"
+      ],
+      "compatible_component_ids": [],
+      "count_unit": "binding",
+      "default_component": {
+        "component_id": "native.paper-ink.data.visual-kpi-split.support",
+        "component_source": "native",
+        "origin": {
+          "kind": "canonical-frame-island",
+          "path": "gallery/paper-ink/general/frames/layout-c1.html",
+          "selector": ".doc.tl"
+        },
+        "renderer_kind": "typography"
+      },
+      "max_items": 4,
+      "min_items": 0,
+      "open_for_override": false,
+      "purpose": "辅助证据、标签或解释",
+      "required": false,
+      "slot_id": "support",
+      "visual_role": "support"
+    },
+    {
+      "allowed_component_sources": [
+        "native"
+      ],
+      "allowed_renderer_kinds": [
+        "typography"
+      ],
+      "compatible_component_ids": [],
+      "count_unit": "binding",
+      "default_component": {
+        "component_id": "native.paper-ink.data.visual-kpi-split.takeaway",
+        "component_source": "native",
+        "origin": {
+          "kind": "canonical-frame-island",
+          "path": "gallery/paper-ink/general/frames/layout-c1.html",
+          "selector": ".caption"
+        },
+        "renderer_kind": "typography"
+      },
+      "max_items": 1,
+      "min_items": 0,
+      "open_for_override": false,
+      "purpose": "页面一句话结论",
+      "required": false,
+      "slot_id": "takeaway",
+      "visual_role": "support"
+    }
+  ],
+  "source": {
+    "path": "gallery/paper-ink/general/frames/layout-c1.html",
+    "sha256": "sha256:f2dc79aaa895ed90ead3d45f4e624cc4dde1ad8ffab3632b657c2272375a64c3"
+  },
+  "status": "production",
+  "theme_id": "paper-ink",
+  "variant": "general"
+}

@@ -1,0 +1,175 @@
+<section class="slide"
+  {{WISE_PPT_PAGE_ATTRS}}>
+  <style>
+    [data-recipe-id="paper-ink.evidence.strategy-evidence-wall"] .doc.tl,
+    [data-recipe-id="paper-ink.evidence.strategy-evidence-wall"] .folio{color:var(--ink-45)}
+    [data-recipe-id="paper-ink.evidence.strategy-evidence-wall"] svg.scene{position:absolute;inset:0;z-index:1}
+  </style>
+  <div class="stage" data-anchor-id="stage">
+    <svg class="scene" width="1920" height="1080" viewBox="0 0 1920 1080">
+      <defs>
+        <pattern id="hatch22" width="8" height="8" patternTransform="rotate(45)" patternUnits="userSpaceOnUse">
+          <line x1="0" y1="0" x2="0" y2="8" stroke="var(--ink)" stroke-width=".7" opacity=".35"/>
+        </pattern>
+      </defs>
+      <g data-anchor-id="a4-main" data-a4-root transform="translate(0 -54.7)"
+        data-slot-id="evidence-wall" data-block-id="block.skeleton.a4.evidence-wall"
+        data-renderer-kind="svg" data-component-source="native"
+        data-component-id="native.paper-ink.evidence.strategy-evidence-wall.evidence-wall">
+        <g data-anchor-id="a4-left" data-a4-left></g>
+        <g data-anchor-id="a4-arrow" data-a4-arrow></g>
+        <g data-anchor-id="a4-right" data-a4-right>
+          <g data-anchor-id="a4-card-1" data-a4-card="0"></g>
+          <g data-anchor-id="a4-card-2" data-a4-card="1"></g>
+          <g data-anchor-id="a4-card-3" data-a4-card="2"></g>
+          <g data-anchor-id="a4-card-4" data-a4-card="3"></g>
+        </g>
+      </g>
+    </svg>
+    <div class="doc tl" data-anchor-id="a4-support"
+      data-slot-id="support" data-block-id="block.skeleton.a4.support"
+      data-renderer-kind="typography" data-component-source="native"
+      data-component-id="native.paper-ink.evidence.strategy-evidence-wall.support"><span data-a4-doc-line="1"></span><br><span data-a4-doc-line="2"></span></div>
+    <div class="folio"></div>
+    <div class="caption" data-anchor-id="a4-takeaway"
+      data-slot-id="takeaway" data-block-id="block.skeleton.a4.takeaway"
+      data-renderer-kind="typography" data-component-source="native"
+      data-component-id="native.paper-ink.evidence.strategy-evidence-wall.takeaway"></div>
+  </div>
+  <script type="application/json" data-recipe-payload>{{WISE_PPT_PAYLOAD_JSON}}</script>
+  <script>
+  (function(){
+    var slide=document.currentScript.closest('.slide');
+    var payload=JSON.parse(slide.querySelector('[data-recipe-payload]').textContent);
+    var NS='http://www.w3.org/2000/svg';
+    var INK=WisePPT.color('primary');
+    var INK80=WisePPT.color('functional');
+    var INK70=WisePPT.color('body');
+    var INK45=WisePPT.color('metadata');
+    var PANEL=WisePPT.color('surface-panel');
+    var MONO='var(--mono)';
+    var SANS='var(--sans)';
+    var left=slide.querySelector('[data-a4-left]');
+    var arrow=slide.querySelector('[data-a4-arrow]');
+    var cards=Array.prototype.slice.call(slide.querySelectorAll('[data-a4-card]'));
+
+    function el(target,tag,attrs){
+      var node=document.createElementNS(NS,tag);
+      Object.keys(attrs).forEach(function(key){node.setAttribute(key,attrs[key]);});
+      target.appendChild(node);
+      return node;
+    }
+    function txt(target,x,y,value,attrs){
+      var node=el(target,'text',Object.assign({x:x,y:y},attrs||{}));
+      node.textContent=value;
+      return node;
+    }
+
+    slide.querySelector('[data-a4-doc-line="1"]').textContent=payload.doc.line_1;
+    slide.querySelector('[data-a4-doc-line="2"]').textContent=payload.doc.line_2;
+    slide.querySelector('.caption').textContent=payload.takeaway;
+
+    txt(left,150,262,payload.kicker,{'font-family':MONO,'font-size':'var(--type-meta)','letter-spacing':3,fill:INK45});
+    txt(left,150,300,payload.heading,{'font-family':SANS,'font-weight':300,'font-size':'var(--type-subheading)',fill:INK});
+    el(left,'line',{x1:150,y1:320,x2:670,y2:320,stroke:INK,'stroke-width':.8,opacity:.5});
+    payload.strategies.forEach(function(item,index){
+      var y=372+index*139;
+      txt(left,150,y,item.number,{'font-family':MONO,'font-size':'var(--type-body-small)','letter-spacing':2,fill:INK});
+      el(left,'line',{x1:150,y1:y+12,x2:186,y2:y+12,stroke:INK,'stroke-width':.6,opacity:.3});
+      txt(left,206,y,item.title,{'font-family':SANS,'font-weight':300,'font-size':'var(--type-subheading)',fill:INK});
+      txt(left,206,y+34,item.action,{'font-family':SANS,'font-weight':300,'font-size':'var(--type-body-small)',fill:INK70});
+      txt(left,206,y+60,item.evidence,{'font-family':SANS,'font-weight':300,'font-size':'var(--type-body-small)',fill:INK45});
+      if(index<payload.strategies.length-1){
+        el(left,'line',{x1:150,y1:y+88,x2:670,y2:y+88,stroke:INK,'stroke-width':.6,opacity:.22});
+      }
+    });
+
+    txt(arrow,784,500,payload.proof_label,{'font-family':MONO,'font-size':'var(--type-meta)','letter-spacing':3,'text-anchor':'middle',fill:INK45});
+    el(arrow,'line',{x1:720,y1:540,x2:848,y2:540,stroke:INK,'stroke-width':2});
+    el(arrow,'line',{x1:848,y1:540,x2:822,y2:520,stroke:INK80,'stroke-width':1.3});
+    el(arrow,'line',{x1:848,y1:540,x2:822,y2:560,stroke:INK80,'stroke-width':1.3});
+    el(arrow,'line',{x1:706,y1:540,x2:720,y2:540,stroke:INK,'stroke-width':.6,opacity:.3,'stroke-dasharray':'2 4'});
+    el(arrow,'line',{x1:848,y1:540,x2:882,y2:540,stroke:INK,'stroke-width':.6,opacity:.3,'stroke-dasharray':'2 4'});
+
+    var CW=400;
+    var CH=276;
+    var ART_DY=8;
+    var COL1X=910;
+    var COL2X=1350;
+    var ROW_TOP=251.5;
+    var ROW_BOT=577.5;
+    function specFrame(target,px,py,tag){
+      el(target,'rect',{x:px,y:py,width:CW,height:CH,fill:PANEL,stroke:INK80,'stroke-width':1.3});
+      el(target,'rect',{x:px+5,y:py+5,width:CW-10,height:CH-10,fill:'none',stroke:INK,'stroke-width':.6,opacity:.3});
+      txt(target,px+24,py+32,tag,{'font-family':MONO,'font-size':'var(--type-micro-secondary)','letter-spacing':2.5,fill:INK45});
+    }
+    function specLabel(target,px,py,value){
+      el(target,'line',{x1:px+24,y1:py+CH-52,x2:px+CW-24,y2:py+CH-52,stroke:INK,'stroke-width':.6,opacity:.35});
+      txt(target,px+24,py+CH-22,value,{'font-family':MONO,'font-size':'var(--type-meta)','letter-spacing':2,fill:INK});
+    }
+
+    (function(){
+      var target=cards[0],px=COL1X,py=ROW_TOP;
+      specFrame(target,px,py,payload.evidence[0].tag);
+      var mx=px+40,my=py+58+ART_DY,mw=CW-80,mh=116;
+      el(target,'rect',{x:mx,y:my,width:mw,height:mh,fill:'none',stroke:INK,'stroke-width':1.1,opacity:.8});
+      for(var i=1;i<4;i++){
+        el(target,'line',{x1:mx+i*mw/4,y1:my,x2:mx+i*mw/4,y2:my+mh,stroke:INK,'stroke-width':.5,opacity:.3});
+        if(i<3){el(target,'line',{x1:mx,y1:my+i*mh/3,x2:mx+mw,y2:my+i*mh/3,stroke:INK,'stroke-width':.5,opacity:.3});}
+      }
+      [[.14,.72],[.32,.3],[.55,.62],[.7,.22],[.86,.55]].forEach(function(point){
+        var bx=mx+point[0]*mw,by=my+point[1]*mh;
+        el(target,'circle',{cx:bx,cy:by,r:4.6,fill:'none',stroke:INK80,'stroke-width':1});
+        el(target,'circle',{cx:bx,cy:by,r:1.7,fill:INK});
+      });
+      el(target,'path',{d:'M '+(mx+.14*mw)+' '+(my+.72*mh)+' L '+(mx+.32*mw)+' '+(my+.3*mh)+' L '+(mx+.7*mw)+' '+(my+.22*mh),fill:'none',stroke:INK,'stroke-width':.8,opacity:.55,'stroke-dasharray':'4 4'});
+      specLabel(target,px,py,payload.evidence[0].label);
+    })();
+
+    (function(){
+      var target=cards[1],px=COL2X,py=ROW_TOP;
+      specFrame(target,px,py,payload.evidence[1].tag);
+      var ax=px+48,ay=py+58+ART_DY,aw=CW-96,ah=116;
+      el(target,'line',{x1:ax,y1:ay+ah,x2:ax+aw,y2:ay+ah,stroke:INK,'stroke-width':.9,opacity:.7});
+      el(target,'line',{x1:ax,y1:ay,x2:ax,y2:ay+ah,stroke:INK,'stroke-width':.9,opacity:.7});
+      for(var i=1;i<=4;i++){el(target,'line',{x1:ax+i*aw/5,y1:ay+ah,x2:ax+i*aw/5,y2:ay+ah+6,stroke:INK,'stroke-width':.7,opacity:.5});}
+      el(target,'path',{d:'M '+ax+' '+(ay+ah-14)+' L '+(ax+aw*.2)+' '+(ay+ah-30)+' L '+(ax+aw*.42)+' '+(ay+ah-52)+' L '+(ax+aw*.58)+' '+(ay+16)+' L '+(ax+aw*.76)+' '+(ay+ah-44)+' L '+(ax+aw)+' '+(ay+ah-24),fill:'none',stroke:INK80,'stroke-width':1.3});
+      el(target,'circle',{cx:ax+aw*.58,cy:ay+16,r:5,fill:'none',stroke:INK80,'stroke-width':1.1});
+      el(target,'circle',{cx:ax+aw*.58,cy:ay+16,r:2,fill:INK});
+      el(target,'line',{x1:ax,y1:ay+16,x2:ax+aw*.58,y2:ay+16,stroke:INK,'stroke-width':.5,opacity:.35,'stroke-dasharray':'2 5'});
+      specLabel(target,px,py,payload.evidence[1].label);
+    })();
+
+    (function(){
+      var target=cards[2],px=COL1X,py=ROW_BOT;
+      specFrame(target,px,py,payload.evidence[2].tag);
+      var cx=px+CW/2,base=py+178+ART_DY;
+      el(target,'rect',{x:cx-86,y:base-126,width:172,height:134,fill:PANEL,stroke:INK80,'stroke-width':1.3});
+      el(target,'rect',{x:cx-78,y:base-118,width:156,height:118,fill:'none',stroke:INK,'stroke-width':.6,opacity:.3});
+      el(target,'circle',{cx:cx,cy:base-80,r:34,fill:'url(#hatch22)',stroke:INK80,'stroke-width':1.1});
+      el(target,'path',{d:'M '+(cx-56)+' '+(base-38)+' Q '+cx+' '+(base-68)+' '+(cx+56)+' '+(base-38),fill:'none',stroke:INK80,'stroke-width':1.2});
+      el(target,'line',{x1:cx-58,y1:base-22,x2:cx+58,y2:base-22,stroke:INK,'stroke-width':.8,opacity:.6});
+      el(target,'line',{x1:cx-38,y1:base-10,x2:cx+38,y2:base-10,stroke:INK,'stroke-width':.6,opacity:.35});
+      el(target,'line',{x1:cx-104,y1:base+10,x2:cx+104,y2:base+10,stroke:INK,'stroke-width':1.1});
+      specLabel(target,px,py,payload.evidence[2].label);
+    })();
+
+    (function(){
+      var target=cards[3],px=COL2X,py=ROW_BOT;
+      specFrame(target,px,py,payload.evidence[3].tag);
+      var gx=px+48,gw=CW-96,gy=py+76+ART_DY,axisY=gy+112;
+      el(target,'line',{x1:gx,y1:axisY,x2:gx+gw,y2:axisY,stroke:INK,'stroke-width':.9,opacity:.7});
+      for(var i=0;i<=6;i++){el(target,'line',{x1:gx+i*gw/6,y1:axisY,x2:gx+i*gw/6,y2:axisY+6,stroke:INK,'stroke-width':.7,opacity:.5});}
+      [[0,.52,0,true],[.28,.5,34,false],[.62,.38,68,true]].forEach(function(bar){
+        var bx=gx+bar[0]*gw,bw=bar[1]*gw,by=gy+bar[2];
+        el(target,'rect',{x:bx,y:by,width:bw,height:22,fill:bar[3]?'url(#hatch22)':'none',stroke:INK80,'stroke-width':1.1});
+        el(target,'line',{x1:bx,y1:by-6,x2:bx,y2:by+28,stroke:INK,'stroke-width':.9,opacity:.6});
+        el(target,'line',{x1:bx+bw,y1:by-6,x2:bx+bw,y2:by+28,stroke:INK,'stroke-width':.9,opacity:.6});
+      });
+      specLabel(target,px,py,payload.evidence[3].label);
+    })();
+
+    WisePPT.markSlideReady(slide);
+  })();
+  </script>
+</section>

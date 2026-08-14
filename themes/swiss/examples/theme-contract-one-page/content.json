@@ -1,0 +1,56 @@
+{
+  "contract_version": 2,
+  "brief": {
+    "title": "Swiss Theme Contract · 单页金样",
+    "objective": "验证同一内容结构可由 Swiss 视觉合同稳定渲染。",
+    "audience": "Wise PPT 维护者",
+    "scenario": "主题合同回归测试",
+    "language": "zh-CN",
+    "user_constraints": [
+      {
+        "constraint_id": "constraint.swiss.one-page",
+        "type": "page_limit",
+        "exact_pages": 1,
+        "source_refs": ["src.swiss-contract"],
+        "note": "独立 Swiss 金样固定为一页。"
+      }
+    ],
+    "gaps": []
+  },
+  "sources": [
+    {
+      "id": "src.swiss-contract",
+      "kind": "file",
+      "title": "Swiss Theme Contract 测试说明",
+      "locator": "repo:themes/swiss/theme.json",
+      "synthetic": false,
+      "notes": "仅验证主题合同、语义 token 与静态 HTML 绑定。"
+    }
+  ],
+  "assets": [],
+  "content_items": [
+    {
+      "id": "item.swiss.result",
+      "epistemic_role": "fact",
+      "content_form": "metric",
+      "statement": "Swiss 主题完整实现 23 个公共视觉 token。",
+      "priority": "must",
+      "status": "sourced",
+      "status_note": "数量来自 visual-contract.json。",
+      "source_refs": ["src.swiss-contract"],
+      "atomic_values": [
+        {
+          "id": "atom.swiss.tokens",
+          "label": "公共视觉 token",
+          "value": 23,
+          "unit": "个"
+        }
+      ],
+      "structured_data": {
+        "groups": ["颜色", "字体"]
+      },
+      "relations": [],
+      "tags": ["theme-contract", "swiss"]
+    }
+  ]
+}

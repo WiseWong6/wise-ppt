@@ -1,0 +1,90 @@
+<section class="slide"
+  {{WISE_PPT_PAGE_ATTRS}}>
+  <style>
+    [data-recipe-id="paper-ink.data.chart-wall"] svg.scene{position:absolute;inset:0;z-index:1}
+    .accent [data-recipe-id="paper-ink.data.chart-wall"] [data-c2-hatch92-line]{stroke:var(--accent-red)}
+  </style>
+  <div class="stage" data-anchor-id="stage">
+    <svg class="scene" width="1920" height="1080" viewBox="0 0 1920 1080">
+      <defs>
+        <pattern id="c2-hatch33" width="7" height="7" patternTransform="rotate(45)" patternUnits="userSpaceOnUse"><line x1="0" y1="0" x2="0" y2="7" stroke="var(--ink)" stroke-width=".7" opacity=".32"/></pattern>
+        <pattern id="c2-hatch92" width="7" height="7" patternTransform="rotate(45)" patternUnits="userSpaceOnUse"><line data-c2-hatch92-line x1="0" y1="0" x2="0" y2="7" stroke="var(--ink)" stroke-width=".7" opacity=".55"/></pattern>
+      </defs>
+      <g transform="translate(0 -39.7)" data-anchor-id="c2-main"
+        data-slot-id="charts" data-block-id="block.skeleton.c2.charts"
+        data-renderer-kind="svg" data-component-source="native"
+        data-component-id="native.paper-ink.data.chart-wall.charts">
+        <g data-anchor-id="c2-panel-1" data-c2-panel="1">
+          <rect data-anchor-id="c2-title-1" data-contract-guide x="150" y="218" width="210" height="24" opacity="0"/>
+          <rect data-anchor-id="c2-plot-1" data-contract-guide x="200" y="260" width="1600" height="230" opacity="0"/>
+          <g data-c2-title="1"></g><g data-c2-plot="1"></g>
+        </g>
+        <g data-anchor-id="c2-panel-2" data-c2-panel="2">
+          <rect data-anchor-id="c2-title-2" data-contract-guide x="150" y="598" width="210" height="24" opacity="0"/>
+          <rect data-anchor-id="c2-plot-2" data-contract-guide x="200" y="653" width="700" height="212" opacity="0"/>
+          <g data-c2-title="2"></g><g data-c2-plot="2"></g>
+        </g>
+        <g data-anchor-id="c2-panel-3" data-c2-panel="3">
+          <rect data-anchor-id="c2-title-3" data-contract-guide x="1030" y="598" width="210" height="24" opacity="0"/>
+          <rect data-anchor-id="c2-plot-3" data-contract-guide x="1080" y="653" width="360" height="212" opacity="0"/>
+          <g data-c2-title="3"></g><g data-c2-plot="3"></g>
+        </g>
+      </g>
+    </svg>
+    <div class="doc tl" data-anchor-id="c2-support"
+      data-slot-id="support" data-block-id="block.skeleton.c2.support"
+      data-renderer-kind="typography" data-component-source="native"
+      data-component-id="native.paper-ink.data.chart-wall.support">运营 · 汇报 — C2<br>月度运营看板</div>
+    <div class="folio"></div>
+    <div class="caption" data-anchor-id="c2-takeaway"
+      data-slot-id="takeaway" data-block-id="block.skeleton.c2.takeaway"
+      data-renderer-kind="typography" data-component-source="native"
+      data-component-id="native.paper-ink.data.chart-wall.takeaway"></div>
+  </div>
+  <script type="application/json" data-recipe-payload>{{WISE_PPT_PAYLOAD_JSON}}</script>
+  <script>
+  (function(){
+    var slide=document.currentScript.closest('.slide');
+    var payload=JSON.parse(slide.querySelector('[data-recipe-payload]').textContent);
+    var NS='http://www.w3.org/2000/svg',INK=WisePPT.color('primary'),INK80=WisePPT.color('functional'),INK70=WisePPT.color('body'),INK45=WisePPT.color('metadata'),PAPER=WisePPT.color('surface-canvas');
+    var ACCENT=document.documentElement.classList.contains('accent')||location.search.indexOf('accent')>=0;
+    var RED=WisePPT.color('focus'),RED85=WisePPT.color('focus-secondary'),RED65=WisePPT.color('focus-peripheral');
+    var MONO='var(--mono)',SANS='var(--sans)';
+    function target(selector){return slide.querySelector(selector);}
+    function el(parent,tag,attrs){var e=document.createElementNS(NS,tag);Object.keys(attrs).forEach(function(k){e.setAttribute(k,attrs[k]);});parent.appendChild(e);return e;}
+    function txt(parent,x,y,value,attrs){var t=el(parent,'text',Object.assign({x:x,y:y},attrs||{}));t.textContent=value;return t;}
+    function chartTitle(parent,x,y,label){txt(parent,x,y,label,{'font-family':MONO,'font-size':'var(--type-meta)','letter-spacing':2,fill:INK});el(parent,'line',{x1:x,y1:y+10,x2:x+210,y2:y+10,stroke:INK,'stroke-width':.6,opacity:.3});}
+
+    var title1=target('[data-c2-title="1"]'),plot1=target('[data-c2-plot="1"]');
+    chartTitle(title1,150,232,'CHART 01 — WEEKLY REACH (K VIEWS)');
+    el(plot1,'line',{x1:200,y1:260,x2:200,y2:490,stroke:INK,'stroke-width':1,opacity:.6});
+    el(plot1,'line',{x1:200,y1:490,x2:1800,y2:490,stroke:INK,'stroke-width':1,opacity:.6});
+    [0,20,40,60].forEach(function(v){var y=490-v*3.833;el(plot1,'line',{x1:194,y1:y,x2:200,y2:y,stroke:INK,'stroke-width':.8,opacity:.5});txt(plot1,190,y+4,String(v),{'font-family':MONO,'font-size':'var(--type-micro-secondary)','text-anchor':'end',fill:INK45});el(plot1,'line',{x1:200,y1:y,x2:1800,y2:y,stroke:INK,'stroke-width':.4,opacity:.15,'stroke-dasharray':'2 5'});});
+    var points=payload.trend.map(function(item,index){return [300+index*200,490-item.value*3.833];});
+    el(plot1,'path',{d:'M '+points.map(function(p){return p[0]+' '+p[1];}).join(' L '),fill:'none',stroke:INK80,'stroke-width':1.3});
+    var peakIndex=0;payload.trend.forEach(function(item,index){if(item.value>payload.trend[peakIndex].value)peakIndex=index;});
+    points.forEach(function(p,index){var peak=index===peakIndex;el(plot1,'circle',{cx:p[0],cy:p[1],r:peak?4.5:3.5,fill:peak?(ACCENT?RED:INK):PAPER,stroke:peak?(ACCENT?RED:INK80):INK80,'stroke-width':peak?1.4:1.1});});
+    var peak=points[peakIndex];el(plot1,'line',{x1:peak[0],y1:peak[1]-8,x2:peak[0],y2:256,stroke:ACCENT?RED:INK,'stroke-width':.6,opacity:.4,'stroke-dasharray':'3 4'});
+    txt(plot1,peak[0],248,'PEAK '+payload.trend[peakIndex].value+'K',{'font-family':MONO,'font-size':'var(--type-micro-secondary)','letter-spacing':2,'text-anchor':'middle',fill:ACCENT?RED85:INK});
+    payload.trend.forEach(function(item,index){txt(plot1,300+index*200,514,item.label,{'font-family':MONO,'font-size':'var(--type-micro-secondary)','text-anchor':'middle',fill:INK45});});
+
+    var title2=target('[data-c2-title="2"]'),plot2=target('[data-c2-plot="2"]');
+    chartTitle(title2,150,612,'CHART 02 — CHANNEL ACTIVITY (%)');
+    var BASE=843,YTOP=653,ZLAB=865;
+    el(plot2,'line',{x1:200,y1:YTOP,x2:200,y2:BASE,stroke:INK,'stroke-width':1,opacity:.6});el(plot2,'line',{x1:200,y1:BASE,x2:900,y2:BASE,stroke:INK,'stroke-width':1,opacity:.6});
+    var barMax=0;payload.bars.forEach(function(item,index){if(item.value>payload.bars[barMax].value)barMax=index;});
+    payload.bars.forEach(function(item,index){var x=240+index*108,h=item.value*1.9,y=BASE-h,highlight=index===barMax;el(plot2,'rect',{x:x,y:y,width:60,height:h,fill:highlight?'url(#c2-hatch92)':'none',stroke:highlight&&ACCENT?RED:INK80,'stroke-width':highlight&&ACCENT?1.6:1.2});txt(plot2,x+30,y-8,item.value+'%',{'font-family':MONO,'font-size':'var(--type-micro-secondary)','text-anchor':'middle',fill:highlight&&ACCENT?RED85:INK});txt(plot2,x+30,ZLAB,item.label,{'font-family':MONO,'font-size':'var(--type-micro-secondary)','text-anchor':'middle',fill:INK45});});
+
+    var title3=target('[data-c2-title="3"]'),plot3=target('[data-c2-plot="3"]');
+    chartTitle(title3,1030,612,'CHART 03 — ACTION MIX');
+    var CCX=1166,CCY=745,RO=86,RI=52;
+    function seg(a1d,a2d,fill){var a1=a1d*Math.PI/180,a2=a2d*Math.PI/180,ox=CCX+RO*Math.cos(a1),oy=CCY-RO*Math.sin(a1),ix=CCX+RI*Math.cos(a1),iy=CCY-RI*Math.sin(a1),ex=CCX+RO*Math.cos(a2),ey=CCY-RO*Math.sin(a2),ix2=CCX+RI*Math.cos(a2),iy2=CCY-RI*Math.sin(a2),large=(a2-a1)>Math.PI?1:0;el(plot3,'path',{d:'M '+ix+' '+iy+' L '+ox+' '+oy+' A '+RO+' '+RO+' 0 '+large+' 1 '+ex+' '+ey+' L '+ix2+' '+iy2+' A '+RI+' '+RI+' 0 '+large+' 0 '+ix+' '+iy+' Z',fill:fill,stroke:ACCENT?RED:INK80,'stroke-width':ACCENT?1.4:.9});}
+    var start=-90,bounds=[];payload.mix.forEach(function(item,index){var end=start+item.value*3.6;seg(start,end,index===0?'url(#c2-hatch33)':'none');if(index<payload.mix.length-1)bounds.push(end);start=end;});
+    bounds.forEach(function(a){var r=a*Math.PI/180;el(plot3,'line',{x1:CCX+RI*Math.cos(r),y1:CCY-RI*Math.sin(r),x2:CCX+RO*Math.cos(r),y2:CCY-RO*Math.sin(r),stroke:ACCENT?RED:INK,'stroke-width':.8,opacity:.6});});
+    txt(plot3,CCX,CCY-2,'100%',{'font-family':MONO,'font-size':'var(--type-body-small)','letter-spacing':1,'text-anchor':'middle',fill:ACCENT?RED:INK});txt(plot3,CCX,CCY+24,'N=3 MIX',{'font-family':MONO,'font-size':'var(--type-micro-secondary)','letter-spacing':2,'text-anchor':'middle',fill:ACCENT?RED65:INK45});
+    var labels=[{a:-7.2},{a:135},{a:232.2}];labels.forEach(function(pos,index){var mid=pos.a*Math.PI/180,lx=CCX+132*Math.cos(mid),ly=CCY-132*Math.sin(mid),rx=CCX+RO*Math.cos(mid),ry=CCY-RO*Math.sin(mid),item=payload.mix[index];el(plot3,'line',{x1:rx,y1:ry,x2:lx,y2:ly,stroke:ACCENT?RED:INK,'stroke-width':.6,opacity:.4,'stroke-dasharray':'3 4'});txt(plot3,lx,ly-6,item.value+'%',{'font-family':MONO,'font-size':'var(--type-meta)','letter-spacing':1,'text-anchor':'middle',fill:ACCENT?RED:INK});txt(plot3,lx,ly+16,item.label,{'font-family':SANS,'font-weight':300,'font-size':'var(--type-meta)','text-anchor':'middle',fill:ACCENT?RED65:INK70});});
+    slide.querySelector('.caption').textContent=payload.takeaway;
+    WisePPT.markSlideReady(slide);
+  })();
+  </script>
+</section>

@@ -1,0 +1,955 @@
+{
+  "canonical": {
+    "constraints": {
+      "css_scope": "[data-implementation-id=\"paper-ink.decomposition.quadrant.general\"]",
+      "external_links": false,
+      "external_scripts": false,
+      "payload_only_mutation": true,
+      "ready_api": "WisePPT.markSlideReady",
+      "script_query_scope": "current-section.slide",
+      "stage_fit": false
+    },
+    "kind": "derived-frame",
+    "materialization_format": "wise-ppt-formal-slide@1",
+    "path": "gallery/paper-ink/general/frames/layout-f1.html",
+    "root_selector": "section.slide[data-implementation-id=\"paper-ink.decomposition.quadrant.general\"]",
+    "sha256": "sha256:8a70ecba68ed0a8a2a00673a83f5aa5b5d514893a5523f94a5500cf198798bfd"
+  },
+  "canonical_fingerprint": "sha256:9b758c48016a944e0eea80c04b910ec434778bf20e8f453295e3fed7b86fc3dd",
+  "contract_version": 1,
+  "dependency_closure": {
+    "files": [
+      {
+        "path": "gallery/shell.css",
+        "sha256": "sha256:aca1428680d2dd5c84e85d66241ee199a16d36bb60a098340528943fb5469f69"
+      },
+      {
+        "path": "runtime/stage-fit.js",
+        "sha256": "sha256:39577a14aac5072789fdeb80abee887d24da5a44eeb38203ef154602330f291d"
+      },
+      {
+        "path": "themes/paper-ink/assets/design-tokens.css",
+        "sha256": "sha256:3f1f0d3562cf1486b87643b16025388557000858d0df13d767b53a576988c330"
+      },
+      {
+        "path": "themes/paper-ink/assets/fonts/CourierPrime-Regular.ttf",
+        "sha256": "sha256:72f793376f8e2841656bf21d77a5de010f2929bd6956a22ee848ad0c7eb978af"
+      },
+      {
+        "path": "themes/paper-ink/assets/fonts/LXGWWenKai-Regular.ttf",
+        "sha256": "sha256:39ad71264b588165b469e35e6afb162a378dacd1f95348160240ba9038ac3009"
+      },
+      {
+        "path": "themes/paper-ink/assets/fonts/SourceHanSansCN-Light.otf",
+        "sha256": "sha256:b6dfc945aae0daf9b15019f59c2f7b18d17da3b92f00c3ec32fb5f0333696d9c"
+      },
+      {
+        "path": "themes/paper-ink/assets/fonts/SourceHanSerifCN-Medium.otf",
+        "sha256": "sha256:8e224937647ae71ba1b1f310bcb3fbc32f21ec7c2c490ba04670455c901f3378"
+      },
+      {
+        "path": "themes/paper-ink/assets/particles.js",
+        "sha256": "sha256:1281d72e81b34e4be061286edd323dd421443dffbf6e0d8a2faa94a5d14094c4"
+      },
+      {
+        "path": "themes/paper-ink/assets/slide-components.css",
+        "sha256": "sha256:20e7334fe5ae51cb229112290e787c1274ad65278a72b084c708682dc9ca5acf"
+      }
+    ],
+    "sha256": "sha256:7dcc6f0ac681be95cc8955afb36da97027f341a98f4f9f37518e37bfe13f5be4"
+  },
+  "format": "wise-ppt-layout-implementation@1",
+  "geometry": {
+    "anchors": [
+      {
+        "anchor_id": "stage",
+        "selector": ".stage"
+      }
+    ],
+    "canvas": {
+      "height": 1080,
+      "width": 1920
+    },
+    "content_region": {
+      "height": 1080,
+      "width": 1920,
+      "x": 0,
+      "y": 0
+    },
+    "fingerprint": "sha256:9de9494b1ce86386ef6f671a35555998c30879689e618eb7f9620feaab153cbb",
+    "format": "wise-ppt-layout-geometry@1",
+    "relations": [],
+    "structure_contract": {
+      "core_primitives": [
+        "matrix-field"
+      ],
+      "region_count": 3,
+      "required_slot_ids": [
+        "quadrants"
+      ]
+    }
+  },
+  "implementation_id": "paper-ink.decomposition.quadrant.general",
+  "payload": {
+    "fields": [
+      {
+        "context": "html:div.doc.tl",
+        "default": "品牌 · 策划 — F1",
+        "field_id": "html.text.001",
+        "kind": "html_text",
+        "max_length": 16,
+        "span": {
+          "kind": "html_text",
+          "occurrence": 1,
+          "token_sha256": "sha256:487fc64b45f1a36480e732a7af90f60debae5f5611fd52bf52720306821e5f05"
+        },
+        "type": "string"
+      },
+      {
+        "context": "html:div.doc.tl",
+        "default": "渠道价值 × 内容势能",
+        "field_id": "html.text.002",
+        "kind": "html_text",
+        "max_length": 15,
+        "span": {
+          "kind": "html_text",
+          "occurrence": 2,
+          "token_sha256": "sha256:ce34737b3fd10d6fb1610b011125875b5f7f198fa840a9052b8579c94b775445"
+        },
+        "type": "string"
+      },
+      {
+        "constraints": {
+          "pattern": "^\\d{1,3} / \\d{1,3} — BY .{1,40}$"
+        },
+        "context": "html:div.folio",
+        "default": "01 / 01 — BY WISE PPT",
+        "field_id": "html.text.003",
+        "kind": "html_text",
+        "max_length": 26,
+        "semantic_role": "folio",
+        "source_default": "F1 / 63 — BY @歪斯WISE",
+        "span": {
+          "kind": "html_text",
+          "occurrence": 3,
+          "token_sha256": "sha256:79ddc0f7f1a345c0bf314a4daba3c6707448906835dfaf50862c044e7a599c16"
+        },
+        "type": "string"
+      },
+      {
+        "context": "html:div.caption",
+        "default": "渠道价值决定触达效率，内容势能决定传播深度；两者都高，才值得长期经营。",
+        "field_id": "html.text.004",
+        "kind": "html_text",
+        "max_length": 46,
+        "span": {
+          "kind": "html_text",
+          "occurrence": 4,
+          "token_sha256": "sha256:9117316d34dc8bc80a1282168fcb794301763c0798782361592b8b30711d8466"
+        },
+        "type": "string"
+      },
+      {
+        "context": "inline-script[1]:call:txt[2]",
+        "default": "高势能",
+        "field_id": "script.literal.001",
+        "kind": "script_literal",
+        "max_length": 7,
+        "span": {
+          "kind": "script_literal",
+          "occurrence": 1,
+          "quote": "'",
+          "script_index": 1,
+          "sink": "call:txt[2]",
+          "token_sha256": "sha256:de25ac9353a28693e96669ff9b8c67162158dff63d7d310c7e7439999949a675"
+        },
+        "type": "string"
+      },
+      {
+        "constraints": {
+          "pattern": "^(?!.*[\\u3400-\\u9fff]).+$"
+        },
+        "context": "inline-script[1]:call:txt[2]",
+        "default": "CONTENT ↑",
+        "field_id": "script.literal.002",
+        "kind": "script_literal",
+        "max_length": 13,
+        "semantic_role": "mono-label",
+        "span": {
+          "kind": "script_literal",
+          "occurrence": 2,
+          "quote": "'",
+          "script_index": 1,
+          "sink": "call:txt[2]",
+          "token_sha256": "sha256:f2f188c710132c167abfba04ea54c5601bb1b3002bae81a77709496c0cd40bca"
+        },
+        "type": "string"
+      },
+      {
+        "context": "inline-script[1]:call:txt[2]",
+        "default": "高价值 →",
+        "field_id": "script.literal.003",
+        "kind": "script_literal",
+        "max_length": 9,
+        "span": {
+          "kind": "script_literal",
+          "occurrence": 3,
+          "quote": "'",
+          "script_index": 1,
+          "sink": "call:txt[2]",
+          "token_sha256": "sha256:1e2a09e68434e6b6d6e81e07fb2b9c480569991d4afe0969685c9084c8c6ee90"
+        },
+        "type": "string"
+      },
+      {
+        "constraints": {
+          "pattern": "^(?!.*[\\u3400-\\u9fff]).+$"
+        },
+        "context": "inline-script[1]:call:txt[2]",
+        "default": "CHANNEL",
+        "field_id": "script.literal.004",
+        "kind": "script_literal",
+        "max_length": 11,
+        "semantic_role": "mono-label",
+        "span": {
+          "kind": "script_literal",
+          "occurrence": 4,
+          "quote": "'",
+          "script_index": 1,
+          "sink": "call:txt[2]",
+          "token_sha256": "sha256:0901f12d9b607278e1c5ae675532aba8a42474196914ab99da82f511249fe3af"
+        },
+        "type": "string"
+      },
+      {
+        "constraints": {
+          "pattern": "^(?!.*[\\u3400-\\u9fff]).+$"
+        },
+        "context": "inline-script[1]:call:txt[2]",
+        "default": "0",
+        "field_id": "script.literal.005",
+        "kind": "script_literal",
+        "max_length": 5,
+        "semantic_role": "mono-label",
+        "span": {
+          "kind": "script_literal",
+          "occurrence": 5,
+          "quote": "'",
+          "script_index": 1,
+          "sink": "call:txt[2]",
+          "token_sha256": "sha256:59a984d6e30211daccf6e26a37b9072d26fe6a602047a6bbda948ed227f67a8b"
+        },
+        "type": "string"
+      },
+      {
+        "context": "inline-script[1]:object-key:cn",
+        "default": "声量放大",
+        "field_id": "script.literal.006",
+        "kind": "script_literal",
+        "max_length": 8,
+        "span": {
+          "kind": "script_literal",
+          "occurrence": 6,
+          "quote": "'",
+          "script_index": 1,
+          "sink": "object-key:cn",
+          "token_sha256": "sha256:3c297da06dff5e1f2ece11bf31e7528b953c9f684ff38abeee17bcce180c374d"
+        },
+        "type": "string"
+      },
+      {
+        "context": "inline-script[1]:call:txt[2]",
+        "default": "内容有话题与记忆点，",
+        "field_id": "script.literal.007",
+        "kind": "script_literal",
+        "max_length": 14,
+        "span": {
+          "kind": "script_literal",
+          "occurrence": 7,
+          "quote": "'",
+          "script_index": 1,
+          "sink": "call:txt[2]",
+          "token_sha256": "sha256:b5cdd256f2328d7d198b67d6deca6e7e93766dd2de142378eb8683b9c084394a"
+        },
+        "type": "string"
+      },
+      {
+        "context": "inline-script[1]:object-key:d2",
+        "default": "但渠道承接仍然偏弱",
+        "field_id": "script.literal.008",
+        "kind": "script_literal",
+        "max_length": 13,
+        "span": {
+          "kind": "script_literal",
+          "occurrence": 8,
+          "quote": "'",
+          "script_index": 1,
+          "sink": "object-key:d2",
+          "token_sha256": "sha256:0a968a0f8d98fe2cde8622df4994c50ffdaf65456bd56beb31a303e486d744ea"
+        },
+        "type": "string"
+      },
+      {
+        "constraints": {
+          "pattern": "^(?!.*[\\u3400-\\u9fff]).+$"
+        },
+        "context": "inline-script[1]:object-key:tag",
+        "default": "CONTENT · HIGH",
+        "field_id": "script.literal.009",
+        "kind": "script_literal",
+        "max_length": 18,
+        "semantic_role": "mono-label",
+        "span": {
+          "kind": "script_literal",
+          "occurrence": 9,
+          "quote": "'",
+          "script_index": 1,
+          "sink": "object-key:tag",
+          "token_sha256": "sha256:aafb2ebef6525dc0b3225972a47638731f47a7e570dbf9e2bdc214bec3086b00"
+        },
+        "type": "string"
+      },
+      {
+        "context": "inline-script[1]:object-key:cn",
+        "default": "核心阵地",
+        "field_id": "script.literal.010",
+        "kind": "script_literal",
+        "max_length": 8,
+        "span": {
+          "kind": "script_literal",
+          "occurrence": 10,
+          "quote": "'",
+          "script_index": 1,
+          "sink": "object-key:cn",
+          "token_sha256": "sha256:d811021e570172866bac3b5520af6321b91f07af2c6048ed60ad558c02acfb29"
+        },
+        "type": "string"
+      },
+      {
+        "context": "inline-script[1]:call:txt[2]",
+        "default": "稳定触达核心人群，",
+        "field_id": "script.literal.011",
+        "kind": "script_literal",
+        "max_length": 13,
+        "span": {
+          "kind": "script_literal",
+          "occurrence": 11,
+          "quote": "'",
+          "script_index": 1,
+          "sink": "call:txt[2]",
+          "token_sha256": "sha256:d017e0bc5d98bd9f16ac1f9346759d47d48d01b62f7b1e513f2957d146938f5c"
+        },
+        "type": "string"
+      },
+      {
+        "context": "inline-script[1]:object-key:d2",
+        "default": "内容持续沉淀品牌资产",
+        "field_id": "script.literal.012",
+        "kind": "script_literal",
+        "max_length": 14,
+        "span": {
+          "kind": "script_literal",
+          "occurrence": 12,
+          "quote": "'",
+          "script_index": 1,
+          "sink": "object-key:d2",
+          "token_sha256": "sha256:8454389d62bb6c44b8168f66331f0f83508069b9e3813076446cef5f4e47eb16"
+        },
+        "type": "string"
+      },
+      {
+        "constraints": {
+          "pattern": "^(?!.*[\\u3400-\\u9fff]).+$"
+        },
+        "context": "inline-script[1]:object-key:tag",
+        "default": "VALUE · GROW",
+        "field_id": "script.literal.013",
+        "kind": "script_literal",
+        "max_length": 16,
+        "semantic_role": "mono-label",
+        "span": {
+          "kind": "script_literal",
+          "occurrence": 13,
+          "quote": "'",
+          "script_index": 1,
+          "sink": "object-key:tag",
+          "token_sha256": "sha256:db2a81a9ce41413d5d965adbc780128fe84e2178bffc24e9f6a211b412cbef90"
+        },
+        "type": "string"
+      },
+      {
+        "context": "inline-script[1]:object-key:cn",
+        "default": "低效占位",
+        "field_id": "script.literal.014",
+        "kind": "script_literal",
+        "max_length": 8,
+        "span": {
+          "kind": "script_literal",
+          "occurrence": 14,
+          "quote": "'",
+          "script_index": 1,
+          "sink": "object-key:cn",
+          "token_sha256": "sha256:b2b68bf0723babc0adc67cc1cfc6c6c132a8b27b376c1e15ed64033ba55a5718"
+        },
+        "type": "string"
+      },
+      {
+        "context": "inline-script[1]:call:txt[2]",
+        "default": "更新频率与互动都低，",
+        "field_id": "script.literal.015",
+        "kind": "script_literal",
+        "max_length": 14,
+        "span": {
+          "kind": "script_literal",
+          "occurrence": 15,
+          "quote": "'",
+          "script_index": 1,
+          "sink": "call:txt[2]",
+          "token_sha256": "sha256:d31e9f14a9ac71d93515b7a67eaa83e179ebe550fda604911f596b2cdce92a94"
+        },
+        "type": "string"
+      },
+      {
+        "context": "inline-script[1]:object-key:d2",
+        "default": "投入难以形成有效回报",
+        "field_id": "script.literal.016",
+        "kind": "script_literal",
+        "max_length": 14,
+        "span": {
+          "kind": "script_literal",
+          "occurrence": 16,
+          "quote": "'",
+          "script_index": 1,
+          "sink": "object-key:d2",
+          "token_sha256": "sha256:a07989cb227850c67b71cf813ce33c7b8bb1521705eec7f05be2603c0c3c6267"
+        },
+        "type": "string"
+      },
+      {
+        "constraints": {
+          "pattern": "^(?!.*[\\u3400-\\u9fff]).+$"
+        },
+        "context": "inline-script[1]:object-key:tag",
+        "default": "PAUSE · REVIEW",
+        "field_id": "script.literal.017",
+        "kind": "script_literal",
+        "max_length": 18,
+        "semantic_role": "mono-label",
+        "span": {
+          "kind": "script_literal",
+          "occurrence": 17,
+          "quote": "'",
+          "script_index": 1,
+          "sink": "object-key:tag",
+          "token_sha256": "sha256:1c2bb335aacf64ddd287ae3a60ff222bb86a14be221682483d7d75db49462c12"
+        },
+        "type": "string"
+      },
+      {
+        "context": "inline-script[1]:object-key:cn",
+        "default": "流量入口",
+        "field_id": "script.literal.018",
+        "kind": "script_literal",
+        "max_length": 8,
+        "span": {
+          "kind": "script_literal",
+          "occurrence": 18,
+          "quote": "'",
+          "script_index": 1,
+          "sink": "object-key:cn",
+          "token_sha256": "sha256:08b1a1cf8c6e4711fa2ea284b86adb9c0c641b60bd19df5044a20d5a2ed1fd61"
+        },
+        "type": "string"
+      },
+      {
+        "context": "inline-script[1]:call:txt[2]",
+        "default": "渠道触达稳定且高效，",
+        "field_id": "script.literal.019",
+        "kind": "script_literal",
+        "max_length": 14,
+        "span": {
+          "kind": "script_literal",
+          "occurrence": 19,
+          "quote": "'",
+          "script_index": 1,
+          "sink": "call:txt[2]",
+          "token_sha256": "sha256:8d78b084c2483bc859e9c34a54088cd44d3a96df3e70c28aa22da2080a707972"
+        },
+        "type": "string"
+      },
+      {
+        "context": "inline-script[1]:object-key:d2",
+        "default": "需要更强内容承接转化",
+        "field_id": "script.literal.020",
+        "kind": "script_literal",
+        "max_length": 14,
+        "span": {
+          "kind": "script_literal",
+          "occurrence": 20,
+          "quote": "'",
+          "script_index": 1,
+          "sink": "object-key:d2",
+          "token_sha256": "sha256:a13260ae47b8de0f33fe7a8f9b0bd4bc81d33b3e831cac463b76e2864f8493a9"
+        },
+        "type": "string"
+      },
+      {
+        "constraints": {
+          "pattern": "^(?!.*[\\u3400-\\u9fff]).+$"
+        },
+        "context": "inline-script[1]:object-key:tag",
+        "default": "REACH · CONVERT",
+        "field_id": "script.literal.021",
+        "kind": "script_literal",
+        "max_length": 20,
+        "semantic_role": "mono-label",
+        "span": {
+          "kind": "script_literal",
+          "occurrence": 21,
+          "quote": "'",
+          "script_index": 1,
+          "sink": "object-key:tag",
+          "token_sha256": "sha256:219a6a5a12eea0d37d758f8e7fc9a5164cd57d8efc92af19049d0b12cdedda8e"
+        },
+        "type": "string"
+      }
+    ],
+    "format": "wise-ppt-layout-payload@1",
+    "values_schema": {
+      "additionalProperties": false,
+      "minProperties": 1,
+      "properties": {
+        "html.text.001": {
+          "maxLength": 16,
+          "type": "string"
+        },
+        "html.text.002": {
+          "maxLength": 15,
+          "type": "string"
+        },
+        "html.text.003": {
+          "maxLength": 26,
+          "pattern": "^\\d{1,3} / \\d{1,3} — BY .{1,40}$",
+          "type": "string"
+        },
+        "html.text.004": {
+          "maxLength": 46,
+          "type": "string"
+        },
+        "script.literal.001": {
+          "maxLength": 7,
+          "type": "string"
+        },
+        "script.literal.002": {
+          "maxLength": 13,
+          "pattern": "^(?!.*[\\u3400-\\u9fff]).+$",
+          "type": "string"
+        },
+        "script.literal.003": {
+          "maxLength": 9,
+          "type": "string"
+        },
+        "script.literal.004": {
+          "maxLength": 11,
+          "pattern": "^(?!.*[\\u3400-\\u9fff]).+$",
+          "type": "string"
+        },
+        "script.literal.005": {
+          "maxLength": 5,
+          "pattern": "^(?!.*[\\u3400-\\u9fff]).+$",
+          "type": "string"
+        },
+        "script.literal.006": {
+          "maxLength": 8,
+          "type": "string"
+        },
+        "script.literal.007": {
+          "maxLength": 14,
+          "type": "string"
+        },
+        "script.literal.008": {
+          "maxLength": 13,
+          "type": "string"
+        },
+        "script.literal.009": {
+          "maxLength": 18,
+          "pattern": "^(?!.*[\\u3400-\\u9fff]).+$",
+          "type": "string"
+        },
+        "script.literal.010": {
+          "maxLength": 8,
+          "type": "string"
+        },
+        "script.literal.011": {
+          "maxLength": 13,
+          "type": "string"
+        },
+        "script.literal.012": {
+          "maxLength": 14,
+          "type": "string"
+        },
+        "script.literal.013": {
+          "maxLength": 16,
+          "pattern": "^(?!.*[\\u3400-\\u9fff]).+$",
+          "type": "string"
+        },
+        "script.literal.014": {
+          "maxLength": 8,
+          "type": "string"
+        },
+        "script.literal.015": {
+          "maxLength": 14,
+          "type": "string"
+        },
+        "script.literal.016": {
+          "maxLength": 14,
+          "type": "string"
+        },
+        "script.literal.017": {
+          "maxLength": 18,
+          "pattern": "^(?!.*[\\u3400-\\u9fff]).+$",
+          "type": "string"
+        },
+        "script.literal.018": {
+          "maxLength": 8,
+          "type": "string"
+        },
+        "script.literal.019": {
+          "maxLength": 14,
+          "type": "string"
+        },
+        "script.literal.020": {
+          "maxLength": 14,
+          "type": "string"
+        },
+        "script.literal.021": {
+          "maxLength": 20,
+          "pattern": "^(?!.*[\\u3400-\\u9fff]).+$",
+          "type": "string"
+        }
+      },
+      "type": "object"
+    }
+  },
+  "payload_defaults": {
+    "bindings": [
+      {
+        "asset_refs": [],
+        "content_refs": [
+          "item.canonical.quadrants"
+        ],
+        "slot_id": "quadrants"
+      },
+      {
+        "asset_refs": [],
+        "content_refs": [
+          "item.canonical.support"
+        ],
+        "slot_id": "support"
+      },
+      {
+        "asset_refs": [],
+        "content_refs": [
+          "item.canonical.takeaway"
+        ],
+        "slot_id": "takeaway"
+      }
+    ],
+    "values": {
+      "html.text.001": "品牌 · 策划 — F1",
+      "html.text.002": "渠道价值 × 内容势能",
+      "html.text.003": "01 / 01 — BY WISE PPT",
+      "html.text.004": "渠道价值决定触达效率，内容势能决定传播深度；两者都高，才值得长期经营。",
+      "script.literal.001": "高势能",
+      "script.literal.002": "CONTENT ↑",
+      "script.literal.003": "高价值 →",
+      "script.literal.004": "CHANNEL",
+      "script.literal.005": "0",
+      "script.literal.006": "声量放大",
+      "script.literal.007": "内容有话题与记忆点，",
+      "script.literal.008": "但渠道承接仍然偏弱",
+      "script.literal.009": "CONTENT · HIGH",
+      "script.literal.010": "核心阵地",
+      "script.literal.011": "稳定触达核心人群，",
+      "script.literal.012": "内容持续沉淀品牌资产",
+      "script.literal.013": "VALUE · GROW",
+      "script.literal.014": "低效占位",
+      "script.literal.015": "更新频率与互动都低，",
+      "script.literal.016": "投入难以形成有效回报",
+      "script.literal.017": "PAUSE · REVIEW",
+      "script.literal.018": "流量入口",
+      "script.literal.019": "渠道触达稳定且高效，",
+      "script.literal.020": "需要更强内容承接转化",
+      "script.literal.021": "REACH · CONVERT"
+    }
+  },
+  "payload_schema": {
+    "additionalProperties": false,
+    "properties": {
+      "bindings": {
+        "items": {
+          "additionalProperties": false,
+          "properties": {
+            "asset_refs": {
+              "items": {
+                "minLength": 1,
+                "type": "string"
+              },
+              "type": "array"
+            },
+            "content_refs": {
+              "items": {
+                "minLength": 1,
+                "type": "string"
+              },
+              "type": "array"
+            },
+            "slot_id": {
+              "enum": [
+                "quadrants",
+                "support",
+                "takeaway"
+              ],
+              "type": "string"
+            }
+          },
+          "required": [
+            "slot_id",
+            "content_refs",
+            "asset_refs"
+          ],
+          "type": "object"
+        },
+        "maxItems": 3,
+        "minItems": 3,
+        "type": "array"
+      },
+      "values": {
+        "additionalProperties": false,
+        "minProperties": 1,
+        "properties": {
+          "html.text.001": {
+            "maxLength": 16,
+            "type": "string"
+          },
+          "html.text.002": {
+            "maxLength": 15,
+            "type": "string"
+          },
+          "html.text.003": {
+            "maxLength": 26,
+            "pattern": "^\\d{1,3} / \\d{1,3} — BY .{1,40}$",
+            "type": "string"
+          },
+          "html.text.004": {
+            "maxLength": 46,
+            "type": "string"
+          },
+          "script.literal.001": {
+            "maxLength": 7,
+            "type": "string"
+          },
+          "script.literal.002": {
+            "maxLength": 13,
+            "pattern": "^(?!.*[\\u3400-\\u9fff]).+$",
+            "type": "string"
+          },
+          "script.literal.003": {
+            "maxLength": 9,
+            "type": "string"
+          },
+          "script.literal.004": {
+            "maxLength": 11,
+            "pattern": "^(?!.*[\\u3400-\\u9fff]).+$",
+            "type": "string"
+          },
+          "script.literal.005": {
+            "maxLength": 5,
+            "pattern": "^(?!.*[\\u3400-\\u9fff]).+$",
+            "type": "string"
+          },
+          "script.literal.006": {
+            "maxLength": 8,
+            "type": "string"
+          },
+          "script.literal.007": {
+            "maxLength": 14,
+            "type": "string"
+          },
+          "script.literal.008": {
+            "maxLength": 13,
+            "type": "string"
+          },
+          "script.literal.009": {
+            "maxLength": 18,
+            "pattern": "^(?!.*[\\u3400-\\u9fff]).+$",
+            "type": "string"
+          },
+          "script.literal.010": {
+            "maxLength": 8,
+            "type": "string"
+          },
+          "script.literal.011": {
+            "maxLength": 13,
+            "type": "string"
+          },
+          "script.literal.012": {
+            "maxLength": 14,
+            "type": "string"
+          },
+          "script.literal.013": {
+            "maxLength": 16,
+            "pattern": "^(?!.*[\\u3400-\\u9fff]).+$",
+            "type": "string"
+          },
+          "script.literal.014": {
+            "maxLength": 8,
+            "type": "string"
+          },
+          "script.literal.015": {
+            "maxLength": 14,
+            "type": "string"
+          },
+          "script.literal.016": {
+            "maxLength": 14,
+            "type": "string"
+          },
+          "script.literal.017": {
+            "maxLength": 18,
+            "pattern": "^(?!.*[\\u3400-\\u9fff]).+$",
+            "type": "string"
+          },
+          "script.literal.018": {
+            "maxLength": 8,
+            "type": "string"
+          },
+          "script.literal.019": {
+            "maxLength": 14,
+            "type": "string"
+          },
+          "script.literal.020": {
+            "maxLength": 14,
+            "type": "string"
+          },
+          "script.literal.021": {
+            "maxLength": 20,
+            "pattern": "^(?!.*[\\u3400-\\u9fff]).+$",
+            "type": "string"
+          }
+        },
+        "type": "object"
+      }
+    },
+    "required": [
+      "bindings",
+      "values"
+    ],
+    "type": "object"
+  },
+  "recipe_fingerprint": "sha256:439c8f26c48ad7816494cd902e042ce3ad32ca8a8d892a54558c3a6f10d2ba67",
+  "recipe_id": "paper-ink.decomposition.quadrant",
+  "required_capabilities": [],
+  "slots": [
+    {
+      "allowed_component_sources": [
+        "native"
+      ],
+      "allowed_renderer_kinds": [
+        "svg"
+      ],
+      "compatible_component_ids": [],
+      "count_unit": "binding",
+      "default_component": {
+        "component_id": "native.paper-ink.decomposition.quadrant.quadrants",
+        "component_source": "native",
+        "origin": {
+          "kind": "canonical-frame-island",
+          "path": "gallery/paper-ink/general/frames/layout-f1.html",
+          "selector": ".stage"
+        },
+        "renderer_kind": "svg"
+      },
+      "max_items": 6,
+      "min_items": 1,
+      "open_for_override": false,
+      "purpose": "象限内容",
+      "required": true,
+      "slot_id": "quadrants",
+      "space_contract": {
+        "aspect_ratio": 1.9412,
+        "canvas_height": 1080,
+        "canvas_width": 1920,
+        "height": 680,
+        "space_type": "balanced",
+        "width": 1320
+      },
+      "visual_role": "primary"
+    },
+    {
+      "allowed_component_sources": [
+        "codex-host",
+        "native"
+      ],
+      "allowed_renderer_kinds": [
+        "typography",
+        "table",
+        "image",
+        "native-html",
+        "svg"
+      ],
+      "compatible_component_ids": [],
+      "count_unit": "binding",
+      "default_component": {
+        "component_id": "native.paper-ink.decomposition.quadrant.support",
+        "component_source": "native",
+        "origin": {
+          "kind": "canonical-frame-island",
+          "path": "gallery/paper-ink/general/frames/layout-f1.html",
+          "selector": ".doc.tl"
+        },
+        "renderer_kind": "typography"
+      },
+      "max_items": 4,
+      "min_items": 0,
+      "open_for_override": false,
+      "purpose": "辅助证据、标签或解释",
+      "required": false,
+      "slot_id": "support",
+      "visual_role": "support"
+    },
+    {
+      "allowed_component_sources": [
+        "native"
+      ],
+      "allowed_renderer_kinds": [
+        "typography"
+      ],
+      "compatible_component_ids": [],
+      "count_unit": "binding",
+      "default_component": {
+        "component_id": "native.paper-ink.decomposition.quadrant.takeaway",
+        "component_source": "native",
+        "origin": {
+          "kind": "canonical-frame-island",
+          "path": "gallery/paper-ink/general/frames/layout-f1.html",
+          "selector": ".caption"
+        },
+        "renderer_kind": "typography"
+      },
+      "max_items": 1,
+      "min_items": 0,
+      "open_for_override": false,
+      "purpose": "页面一句话结论",
+      "required": false,
+      "slot_id": "takeaway",
+      "visual_role": "support"
+    }
+  ],
+  "source": {
+    "path": "gallery/paper-ink/general/frames/layout-f1.html",
+    "sha256": "sha256:8a70ecba68ed0a8a2a00673a83f5aa5b5d514893a5523f94a5500cf198798bfd"
+  },
+  "status": "production",
+  "theme_id": "paper-ink",
+  "variant": "general"
+}

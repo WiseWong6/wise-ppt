@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-runtime="wise-ppt-specimen" data-typography-mode="mixed" data-page-id="gallery-ai-b2" data-page-role="sequence" data-theme="paper-ink" data-layout="paper-ink.temporal.gantt-waterfall" data-layout-source="gallery">
+<head>
+<meta charset="UTF-8">
+<title>layout-b2 · 甘特瀑布 · 模型训练耗时</title>
+<link rel="stylesheet" href="../../../../themes/paper-ink/assets/design-tokens.css">
+<link rel="stylesheet" href="../../../../themes/paper-ink/assets/slide-components.css">
+<link rel="stylesheet" href="../../../shell.css">
+<style>
+  svg.scene { position: absolute; inset: 0; z-index: 1; }
+  canvas { position: absolute; inset: 0; transform: translateY(-73.7px); z-index: 2; pointer-events: none; }
+  .caption {
+    position: absolute; left: 0; right: 0; bottom: 118px;
+    text-align: center;
+    font-family: var(--sans); font-weight: 400;
+    font-size: var(--type-caption); letter-spacing: .04em;
+    color: var(--ink);
+    z-index: 5;
+  }
+</style>
+</head>
+<body class="slide">
+<div class="stage" data-block-id="gallery-primary" data-renderer-kind="svg" data-component-source="native" data-component-id="native.paper-ink.temporal.gantt-waterfall.durations" data-content-ref="example.b2">
+  <div class="doc tl">AI ENGINEERING — B2<br>TRAINING LATENCY TRACE</div>
+  <div class="folio">B2 / 63 — BY @歪斯WISE</div>
+
+  <svg class="scene" width="1920" height="1080" viewBox="0 0 1920 1080">
+    <defs>
+      <pattern id="hatch" width="6" height="6" patternUnits="userSpaceOnUse" patternTransform="rotate(45)">
+        <line x1="0" y1="0" x2="0" y2="6" stroke="#191917" stroke-width="0.7" opacity="0.35"/>
+      </pattern>
+    </defs>
+    <g id="draw"></g>
+  </svg>
+  <canvas id="cv" width="1920" height="1080"></canvas>
+
+  <div class="caption">模型上线的主要中断发生在监督微调阶段，显存溢出后必须依赖检查点回滚。</div>
+</div>
+
+<script src="../../../../runtime/stage-fit.js"></script>
+<script src="../../../../themes/paper-ink/assets/particles.js"></script>
+<script>
+var NS = 'http://www.w3.org/2000/svg';
+var INK = '#191917';
+var INK80 = 'rgba(25,25,23,.8)';
+var INK45 = 'rgba(25,25,23,.45)';
+/* accent 触发：读 URL 加类 + 染色常量（详见 design-tokens.md §2） */
+if (location.search.indexOf('accent') >= 0) document.documentElement.classList.add('accent');
+var ACCENT = document.documentElement.classList.contains('accent');
+var RED = getComputedStyle(document.documentElement).getPropertyValue('--accent-red').trim();
+var G = document.getElementById('draw');
+function el(tag, attrs) {
+  var e = document.createElementNS(NS, tag);
+  for (var k in attrs) e.setAttribute(k, attrs[k]);
+  G.appendChild(e); return e;
+}
+function txt(x, y, str, attrs) {
+  var t = el('text', Object.assign({x:x, y:y}, attrs||{}));
+  t.textContent = str; return t;
+}
+var MONO = 'var(--mono)', SANS = 'var(--sans)';
+
+G = el('g', {transform:'translate(0 -12.7)'});
+
+
+/* ============ 时间刻度尺：0–90S（模型训练 · 单次完整周期） ============ */
+var X0 = 480, X1 = 1800, RY = 210;            // 14.67 px/s
+function mx(s){ return X0 + s * (X1 - X0) / 90; }
+
+el('line', {x1:X0-14, y1:RY, x2:X1+14, y2:RY, stroke:INK80, 'stroke-width':1.4});
+for (var s = 0; s <= 90; s += 5) {
+  var major = (s % 15 === 0);
+  el('line', {x1:mx(s), y1:RY, x2:mx(s), y2:RY + (major ? 15 : 8),
+    stroke:INK80, 'stroke-width': major ? 1.2 : 0.8, opacity: major ? 1 : .55});
+  if (major) {
+    txt(mx(s), RY - 14, String(s),
+      {'font-family':MONO, 'font-size':'var(--type-body-small)', 'text-anchor':'middle', fill:'rgba(25,25,23,.7)'});
+  }
+}
+txt(X1 + 30, RY - 14, 'SEC', {'font-family':MONO, 'font-size':'var(--type-meta)', 'letter-spacing':2, fill:'rgba(25,25,23,.5)'});
+txt(X0 - 14, RY - 14, 'T0', {'font-family':MONO, 'font-size':'var(--type-meta)', 'text-anchor':'end', fill:'rgba(25,25,23,.45)'});
+
+/* 主刻度竖向构造栅格（虚线，贯穿图区） */
+[0, 15, 30, 45, 60, 75, 90].forEach(function(s){
+  el('line', {x1:mx(s), y1:RY + 22, x2:mx(s), y2:856,
+    stroke:INK, 'stroke-width':0.6, 'stroke-dasharray':'3 6', opacity:.3});
+});
+
+/* ============ 四条甘特条带 ============ */
+var BARH = 54;
+function rowLabel(y, en, zh, idx){
+  txt(440, y + 26, en, {'font-family':MONO, 'font-size':'var(--type-body-small)', 'letter-spacing':2, 'text-anchor':'end', fill:INK80});
+  txt(440, y + 50, zh, {'font-family':SANS, 'font-weight':300, 'font-size':'var(--type-body)', 'text-anchor':'end', fill:'rgba(25,25,23,.5)'});
+  txt(140, y + 34, idx, {'font-family':MONO, 'font-size':'var(--type-meta)', fill:'rgba(25,25,23,.4)'});
+  el('line', {x1:140, y1:y + BARH + 22, x2:X1 + 14, y2:y + BARH + 22,
+    stroke:INK, 'stroke-width':0.6, opacity:.3});
+}
+function bar(x1, x2, y){
+  el('rect', {x:x1, y:y, width:x2 - x1, height:BARH,
+    fill:'url(#hatch)', stroke:INK80, 'stroke-width':1.4});
+  el('line', {x1:x1, y1:y - 6, x2:x1, y2:y + BARH + 6, stroke:INK80, 'stroke-width':1.4});
+  el('line', {x1:x2, y1:y - 6, x2:x2, y2:y + BARH + 6, stroke:INK80, 'stroke-width':1.4});
+}
+function durTag(x, y, str){
+  txt(x, y + 20, str, {'font-family':MONO, 'font-size':'var(--type-meta)', 'letter-spacing':1, fill:'rgba(25,25,23,.55)'});
+}
+
+/* 行 1 · DATA 数据准备 2–11s */
+var y1 = 320;
+rowLabel(y1, 'DATA', '数据准备', 'SPAN 01');
+bar(mx(2), mx(11), y1);
+durTag(mx(2) + 10, y1 - 12, '02 → 11 · 9S');
+
+/* 行 2 · PRETRAIN 预训练 8–24s */
+var y2 = 470;
+rowLabel(y2, 'PRETRAIN', '预训练', 'SPAN 02');
+bar(mx(8), mx(24), y2);
+durTag(mx(8) + 10, y2 - 12, '08 → 24 · 16S');
+
+/* 行 3 · SFT 监督微调 20–58s，断口 34–47s */
+var y3 = 620;
+rowLabel(y3, 'SFT', '监督微调', 'SPAN 03');
+bar(mx(20), mx(34), y3);
+bar(mx(47), mx(58), y3);
+durTag(mx(20) + 10, y3 - 12, '20 → 58');
+el('rect', {x:mx(34), y:y3 + 8, width:mx(47) - mx(34), height:BARH - 16,
+  fill:'none', stroke:INK, 'stroke-width':0.6, 'stroke-dasharray':'3 5', opacity:.3});
+function fray(x, dir){
+  for (var i = 0; i < 5; i++) {
+    var yy = y3 + 6 + i * 10;
+    el('line', {x1:x, y1:yy, x2:x + dir * (5 + Math.random() * 8), y2:yy + 3 + Math.random() * 5,
+      stroke:INK80, 'stroke-width':0.9, opacity:.6});
+  }
+}
+fray(mx(34), -1);
+fray(mx(47), 1);
+
+/* 行 4 · RLHF 人类反馈对齐 52–84s */
+var y4 = 770;
+rowLabel(y4, 'RLHF', '人类反馈对齐', 'SPAN 04');
+bar(mx(52), mx(84), y4);
+durTag(mx(52) + 10, y4 - 12, '52 → 84 · 32S');
+
+/* ============ 断口圈注：手绘双椭圆 + 引线归因 ============ */
+var GCX = (mx(34) + mx(47)) / 2, GCY = y3 + BARH / 2;
+el('ellipse', {cx:GCX, cy:GCY, rx:132, ry:66, fill:'none',
+  stroke: ACCENT ? RED : INK80, 'stroke-width':1.4, transform:'rotate(-3 ' + GCX + ' ' + GCY + ')'});
+el('ellipse', {cx:GCX + 4, cy:GCY + 3, rx:140, ry:72, fill:'none',
+  stroke: ACCENT ? RED : INK80, 'stroke-width':0.9, opacity:.5, transform:'rotate(4 ' + GCX + ' ' + GCY + ')'});
+
+/* 竖向构造线：断口中心 → 刻度尺（T+40S） */
+el('line', {x1:GCX, y1:GCY - 66, x2:GCX, y2:RY + 24,
+  stroke:INK, 'stroke-width':0.6, 'stroke-dasharray':'3 6', opacity:.3});
+el('circle', {cx:GCX, cy:RY, r:3.5, fill:'none', stroke: ACCENT ? RED : INK80, 'stroke-width':1});
+txt(GCX + 12, RY + 44, 'T+40S', {'font-family':MONO, 'font-size':'var(--type-meta)', fill:'rgba(25,25,23,.5)'});
+
+/* 细引线：圈底 → 归因标注 */
+el('path', {d:'M ' + (GCX + 16) + ' ' + (GCY + 64) + ' Q ' + (GCX + 66) + ' ' + (GCY + 78) + ' ' + (GCX + 112) + ' ' + (GCY + 86),
+  fill:'none', stroke:INK80, 'stroke-width':1, opacity:.7});
+txt(GCX + 185, GCY + 88, 'SFT HALT · GPU OOM@N-128',
+  {'font-family':MONO, 'font-size':'var(--type-body-small)', 'letter-spacing':1.5, 'text-anchor':'end', fill: ACCENT ? RED : INK});
+txt(GCX + 185, GCY + 114, '显存溢出中断，触发检查点回滚',
+  {'font-family':SANS, 'font-weight':300, 'font-size':'var(--type-body-small)', 'text-anchor':'end', fill: ACCENT ? RED : 'rgba(25,25,23,.6)'});
+el('line', {x1:GCX + 185 - 292, y1:GCY + 101, x2:GCX + 185 - 250, y2:GCY + 101,
+  stroke:INK80, 'stroke-width':0.8, opacity:.5});
+
+/* ============ 粒子：断口崩解质感 ============ */
+(function(){
+  var ctx = document.getElementById('cv').getContext('2d');
+  PART.dust(ctx, mx(34) - 10, y3 + 4, mx(47) - mx(34) + 20, BARH + 30, 90, .3);
+  PART.cluster(ctx, mx(34) - 8, GCY + 6, 20, 40, .4);
+  PART.cluster(ctx, mx(47) + 8, GCY - 4, 18, 34, .4);
+})();
+
+stageFit();
+</script>
+</body>
+</html>

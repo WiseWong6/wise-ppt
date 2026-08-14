@@ -1,0 +1,61 @@
+{
+  "format": "wise-ppt-recipe-skeleton@1",
+  "recipe_id": "paper-ink.scaffold.contact",
+  "canvas": {"width": 1920, "height": 1080},
+  "content_region": {"anchor_id": "d6-main", "zone": "functional-edge"},
+  "fragment": "capabilities/layouts/recipes/contact/fragment.html",
+  "payload_schema": {
+    "type": "object", "additionalProperties": false,
+    "required": ["identity", "contacts", "card_channels", "note", "qr", "takeaway"],
+    "properties": {
+      "identity": {"type": "object", "additionalProperties": false, "required": ["name", "handle"], "properties": {"name": {"type": "string", "minLength": 1, "maxLength": 16}, "handle": {"type": "string", "minLength": 1, "maxLength": 24}}},
+      "contacts": {"type": "array", "minItems": 3, "maxItems": 3, "items": {"type": "object", "additionalProperties": false, "required": ["label", "value"], "properties": {"label": {"type": "string", "minLength": 1, "maxLength": 6}, "value": {"type": "string", "minLength": 1, "maxLength": 30}}}},
+      "card_channels": {"type": "array", "minItems": 4, "maxItems": 4, "items": {"type": "object", "additionalProperties": false, "required": ["label", "value"], "properties": {"label": {"type": "string", "minLength": 1, "maxLength": 12}, "value": {"type": "string", "minLength": 1, "maxLength": 28}}}},
+      "note": {"type": "object", "additionalProperties": false, "required": ["line_1", "line_2"], "properties": {"line_1": {"type": "string", "minLength": 1, "maxLength": 28}, "line_2": {"type": "string", "minLength": 1, "maxLength": 36}}},
+      "qr": {"type": "object", "additionalProperties": false, "required": ["kind"], "properties": {"kind": {"type": "string", "enum": ["matrix", "asset"]}, "matrix": {"type": "array", "minItems": 37, "maxItems": 37, "items": {"type": "string", "pattern": "[01]{37}"}}, "asset": {"type": "string", "minLength": 1, "maxLength": 160}, "payload": {"type": "string", "minLength": 1, "maxLength": 160}}},
+      "takeaway": {"type": "string", "minLength": 1, "maxLength": 96}
+    }
+  },
+  "default_payload": {
+    "identity": {"name": "歪斯 Wise", "handle": "@歪斯WISE"},
+    "contacts": [{"label": "微信", "value": "扫码或搜索 @歪斯Wise"}, {"label": "小红书", "value": "@歪斯Wise"}, {"label": "官网", "value": "wisewong.com"}],
+    "card_channels": [{"label": "小红书", "value": "@歪斯Wise"}, {"label": "微信搜一搜", "value": "歪斯Wise"}, {"label": "WEB", "value": "wisewong.com"}, {"label": "ADDR", "value": "SHENZHEN"}],
+    "note": {"line_1": "扫码或微信搜一搜“歪斯Wise”", "line_2": "WECHAT SEARCH · 歪斯WISE"},
+    "qr": {
+      "kind": "matrix", "payload": "http://weixin.qq.com/r/mp/sDgNFUrEMRdOrQ52922i",
+      "matrix": [
+        "1111111010010100111110000000001111111", "1000001001100110110101011011001000001", "1011101000101010011001110000001011101", "1011101001001100100110110011101011101", "1011101010100101110011011100101011101", "1000001010001111001110000111101000001", "1111111010101010101010101010101111111", "0000000001111001111011100100100000000", "0111111101100100100011100010100110001", "1100010101110110010111010001001111101", "0100101000010100011000000111101010011", "1010110110001010111001010011001111000", "1101001101101110011000011111001001010", "0110110100111100111101110100110101110", "0001111010011101101101001111010011011", "1000010010111000010111101010010000011", "1000011111111110100101010111111010101", "0001010101010101010110101100100101000", "0000001101101001001000100111111110011", "0011100100100010010011001010111001000", "1001101010100100110010000110011111110", "0011000010111010111111011010001100000", "1101101101001011100111100001101001111", "0010010000000100100011001010111100000", "0001111000110011011100101000001100001", "1000100100010010110000011011111000101", "1011111011010111010101001010000101111", "1001010111011101011011101010100000110", "1100101101010000010100000110111111011", "0000000010101100010000110100100010010", "1111111011110000100000100011101011011", "1000001011010011111000001010100010000", "1011101011010111011011111111111110110", "1011101011110000101001000010001110100", "1011101010100011100010011100100101101", "1000001010000100100001010001110100001", "1111111001101010101010010011011101111"
+      ]
+    },
+    "takeaway": "关注 @歪斯Wise，及时获取更新资讯。"
+  },
+  "anchors": [
+    {"anchor_id": "stage", "selector": "[data-anchor-id=\"stage\"]"},
+    {"anchor_id": "d6-main", "selector": "[data-anchor-id=\"d6-main\"]"},
+    {"anchor_id": "d6-contact", "selector": "[data-anchor-id=\"d6-contact\"]"},
+    {"anchor_id": "d6-contact-top", "selector": "[data-anchor-id=\"d6-contact-top\"]"},
+    {"anchor_id": "d6-channels", "selector": "[data-anchor-id=\"d6-channels\"]"},
+    {"anchor_id": "d6-card", "selector": "[data-anchor-id=\"d6-card\"]"},
+    {"anchor_id": "d6-divider", "selector": "[data-anchor-id=\"d6-divider\"]"},
+    {"anchor_id": "d6-qr", "selector": "[data-anchor-id=\"d6-qr\"]"},
+    {"anchor_id": "d6-qr-content", "selector": "[data-anchor-id=\"d6-qr-content\"]"},
+    {"anchor_id": "d6-support", "selector": "[data-anchor-id=\"d6-support\"]"},
+    {"anchor_id": "d6-takeaway", "selector": "[data-anchor-id=\"d6-takeaway\"]"}
+  ],
+  "relations": [
+    {"relation_id": "d6-main-in-stage", "type": "contain", "anchors": ["stage", "d6-main"], "tolerance": 0},
+    {"relation_id": "d6-contact-in-main", "type": "contain", "anchors": ["d6-main", "d6-contact"], "tolerance": 0},
+    {"relation_id": "d6-card-in-main", "type": "contain", "anchors": ["d6-main", "d6-card"], "tolerance": 0},
+    {"relation_id": "d6-qr-in-card", "type": "contain", "anchors": ["d6-card", "d6-qr"], "tolerance": 0},
+    {"relation_id": "d6-qr-content-in-frame", "type": "contain", "anchors": ["d6-qr", "d6-qr-content"], "tolerance": 0},
+    {"relation_id": "d6-contact-card-clear", "type": "avoid", "anchors": ["d6-contact", "d6-card"], "min_gap": 170, "tolerance": 0},
+    {"relation_id": "d6-divider-qr-gap", "type": "clear", "anchors": ["d6-divider", "d6-qr"], "min_gap": 24, "tolerance": 0},
+    {"relation_id": "d6-qr-right-boundary", "type": "hardBoundary", "anchors": ["d6-divider", "d6-qr"], "edge": "right", "tolerance": 1},
+    {"relation_id": "d6-divider-qr-right", "type": "edgeEq", "anchors": ["d6-divider", "d6-qr"], "edge": "right", "tolerance": 1},
+    {"relation_id": "d6-contact-card-top", "type": "edgeEq", "anchors": ["d6-contact-top", "d6-card"], "edge": "top", "tolerance": 1},
+    {"relation_id": "d6-divider-qr-top-gap", "type": "offsetEq", "anchors": ["d6-divider", "d6-qr"], "axis": "y", "offset": 24, "tolerance": 1}
+  ],
+  "allowed_variants": {"qr.kind": ["matrix", "asset"]},
+  "requires": [],
+  "invariants": [{"type": "qr_source", "field": "qr", "size": 37}]
+}

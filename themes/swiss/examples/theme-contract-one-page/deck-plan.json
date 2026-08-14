@@ -1,0 +1,95 @@
+{
+  "contract_version": 3,
+  "content_file": "content.json",
+  "thesis": "视觉规范属于主题层，页面结构与组件身份保持稳定。",
+  "narrative_type": "argument-evidence",
+  "planning_basis": {
+    "mode": "user-constrained",
+    "scenario": "主题合同回归测试",
+    "scenario_origin": "user",
+    "user_constraint_refs": ["constraint.swiss.one-page"],
+    "research_source_refs": [],
+    "assumptions": [],
+    "reason": "独立单页足以验证主题选择、渲染绑定和静态交付。"
+  },
+  "page_budget": {
+    "target": 1,
+    "basis": [
+      {
+        "type": "user_constraint",
+        "constraint_refs": ["constraint.swiss.one-page"],
+        "reason": "测试约束固定为一页。"
+      },
+      {
+        "type": "content_structure",
+        "content_refs": ["item.swiss.result", "atom.swiss.tokens"],
+        "reason": "只有一个主题合同事实。"
+      }
+    ],
+    "reason": "单页可完整覆盖测试内容。"
+  },
+  "confirmation": {
+    "mode": "adaptive",
+    "decision": "proceed",
+    "assessments": [],
+    "user_questions": []
+  },
+  "sections": [
+    {
+      "section_id": "section.swiss",
+      "title": "主题合同",
+      "purpose": "验证 Swiss 主题实现",
+      "page_refs": ["page.swiss.contract"]
+    }
+  ],
+  "pages": [
+    {
+      "page_id": "page.swiss.contract",
+      "order": 1,
+      "section_id": "section.swiss",
+      "role": "prove",
+      "assertion_title": "结构稳定，视觉规范可替换",
+      "audience_question": "主题切换是否会改变页面结构？",
+      "takeaway": "Theme Contract 只替换视觉语义和适配器，不改变内容与版式身份。",
+      "content_refs": ["item.swiss.result", "atom.swiss.tokens"],
+      "evidence_refs": ["item.swiss.result", "atom.swiss.tokens"],
+      "relation_shape": {
+        "primary": "focus",
+        "secondary": ["evidence"],
+        "reason": "单一结论由 token 数量提供证据。"
+      },
+      "spatial_primitive": "focus-field",
+      "page_expression": {
+        "question_intent": "result",
+        "page_mode": "content",
+        "topology": {"weight": "single", "depth": "flat", "flow": "none"},
+        "conclusion_mode": "bottom-keyword",
+        "primary_units": 1,
+        "enhancements": []
+      },
+      "blocks": [
+        {
+          "block_id": "block.swiss.main",
+          "purpose": "显示主题合同结论与指标",
+          "importance": "primary",
+          "semantic_form": "metrics",
+          "content_refs": ["item.swiss.result", "atom.swiss.tokens"]
+        }
+      ]
+    }
+  ],
+  "coverage_decisions": [
+    {
+      "content_ref": "item.swiss.result",
+      "disposition": "include",
+      "page_refs": ["page.swiss.contract"],
+      "reason": "主题合同核心事实。"
+    },
+    {
+      "content_ref": "atom.swiss.tokens",
+      "disposition": "include",
+      "page_refs": ["page.swiss.contract"],
+      "reason": "必须显示的精确数量。"
+    }
+  ]
+}

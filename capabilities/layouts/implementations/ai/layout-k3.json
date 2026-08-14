@@ -1,0 +1,1583 @@
+{
+  "canonical": {
+    "constraints": {
+      "css_scope": "[data-implementation-id=\"paper-ink.matrix.problem-solution-composite.ai\"]",
+      "external_links": false,
+      "external_scripts": false,
+      "payload_only_mutation": true,
+      "ready_api": "WisePPT.markSlideReady",
+      "script_query_scope": "current-section.slide",
+      "stage_fit": false
+    },
+    "kind": "derived-frame",
+    "materialization_format": "wise-ppt-formal-slide@1",
+    "path": "gallery/paper-ink/ai/frames/layout-k3.html",
+    "root_selector": "section.slide[data-implementation-id=\"paper-ink.matrix.problem-solution-composite.ai\"]",
+    "sha256": "sha256:f21adcb50914e93e14f0bd5005baf2ed7b3d7c3452f0fa72f8b3177aa02e8e55"
+  },
+  "canonical_fingerprint": "sha256:ac04847ea1ffbf2bb20b86569f5be4e0f2861878404e82c5780341b7f8ac5a5b",
+  "contract_version": 1,
+  "dependency_closure": {
+    "files": [
+      {
+        "path": "gallery/shell.css",
+        "sha256": "sha256:aca1428680d2dd5c84e85d66241ee199a16d36bb60a098340528943fb5469f69"
+      },
+      {
+        "path": "runtime/stage-fit.js",
+        "sha256": "sha256:39577a14aac5072789fdeb80abee887d24da5a44eeb38203ef154602330f291d"
+      },
+      {
+        "path": "themes/paper-ink/assets/design-tokens.css",
+        "sha256": "sha256:3f1f0d3562cf1486b87643b16025388557000858d0df13d767b53a576988c330"
+      },
+      {
+        "path": "themes/paper-ink/assets/fonts/CourierPrime-Regular.ttf",
+        "sha256": "sha256:72f793376f8e2841656bf21d77a5de010f2929bd6956a22ee848ad0c7eb978af"
+      },
+      {
+        "path": "themes/paper-ink/assets/fonts/LXGWWenKai-Regular.ttf",
+        "sha256": "sha256:39ad71264b588165b469e35e6afb162a378dacd1f95348160240ba9038ac3009"
+      },
+      {
+        "path": "themes/paper-ink/assets/fonts/SourceHanSansCN-Light.otf",
+        "sha256": "sha256:b6dfc945aae0daf9b15019f59c2f7b18d17da3b92f00c3ec32fb5f0333696d9c"
+      },
+      {
+        "path": "themes/paper-ink/assets/fonts/SourceHanSerifCN-Medium.otf",
+        "sha256": "sha256:8e224937647ae71ba1b1f310bcb3fbc32f21ec7c2c490ba04670455c901f3378"
+      },
+      {
+        "path": "themes/paper-ink/assets/particles.js",
+        "sha256": "sha256:1281d72e81b34e4be061286edd323dd421443dffbf6e0d8a2faa94a5d14094c4"
+      },
+      {
+        "path": "themes/paper-ink/assets/slide-components.css",
+        "sha256": "sha256:20e7334fe5ae51cb229112290e787c1274ad65278a72b084c708682dc9ca5acf"
+      }
+    ],
+    "sha256": "sha256:7dcc6f0ac681be95cc8955afb36da97027f341a98f4f9f37518e37bfe13f5be4"
+  },
+  "format": "wise-ppt-layout-implementation@1",
+  "geometry": {
+    "anchors": [
+      {
+        "anchor_id": "stage",
+        "selector": ".stage"
+      }
+    ],
+    "canvas": {
+      "height": 1080,
+      "width": 1920
+    },
+    "content_region": {
+      "height": 1080,
+      "width": 1920,
+      "x": 0,
+      "y": 0
+    },
+    "fingerprint": "sha256:33cdfefe91270bdb165b377ad929884ed225094f77079d13589dfca2139d5700",
+    "format": "wise-ppt-layout-geometry@1",
+    "relations": [],
+    "structure_contract": {
+      "core_primitives": [
+        "bilateral-split",
+        "linear-sequence"
+      ],
+      "region_count": 3,
+      "required_slot_ids": [
+        "problem-solution"
+      ]
+    }
+  },
+  "implementation_id": "paper-ink.matrix.problem-solution-composite.ai",
+  "payload": {
+    "fields": [
+      {
+        "constraints": {
+          "pattern": "^(?!.*[\\u3400-\\u9fff]).+$"
+        },
+        "context": "html:div.doc.tl",
+        "default": "AI ENGINEERING — K3",
+        "field_id": "html.text.001",
+        "kind": "html_text",
+        "max_length": 25,
+        "semantic_role": "mono-label",
+        "span": {
+          "kind": "html_text",
+          "occurrence": 1,
+          "token_sha256": "sha256:74f73cba37447a03b1216cfe48c47a72c6a5a90b86f3b112ed0e0e4974525be7"
+        },
+        "type": "string"
+      },
+      {
+        "constraints": {
+          "pattern": "^(?!.*[\\u3400-\\u9fff]).+$"
+        },
+        "context": "html:div.doc.tl",
+        "default": "AGENT PLATFORM",
+        "field_id": "html.text.002",
+        "kind": "html_text",
+        "max_length": 18,
+        "semantic_role": "mono-label",
+        "span": {
+          "kind": "html_text",
+          "occurrence": 2,
+          "token_sha256": "sha256:d5dd3b71b9a5659ca74eda8cf6186cd01bffb1b8c70d2d9d40ef1be0627e98a4"
+        },
+        "type": "string"
+      },
+      {
+        "constraints": {
+          "pattern": "^\\d{1,3} / \\d{1,3} — BY .{1,40}$"
+        },
+        "context": "html:div.folio",
+        "default": "01 / 01 — BY WISE PPT",
+        "field_id": "html.text.003",
+        "kind": "html_text",
+        "max_length": 26,
+        "semantic_role": "folio",
+        "source_default": "K3 / 63 — BY @歪斯WISE",
+        "span": {
+          "kind": "html_text",
+          "occurrence": 3,
+          "token_sha256": "sha256:99ee5e443ac5ac66da238cf78cb527b4caa4f4ac7b7786fe7063616e387a6b5e"
+        },
+        "type": "string"
+      },
+      {
+        "context": "html:div.caption",
+        "default": "Agent 基座把幻觉、知识滞后与工具断裂纳入同一链路，召回命中率达到 91%。",
+        "field_id": "html.text.004",
+        "kind": "html_text",
+        "max_length": 53,
+        "span": {
+          "kind": "html_text",
+          "occurrence": 4,
+          "token_sha256": "sha256:705c90cfc80fe609b61ab073015306100d09c5718c4de5ecc01a866790641eb7"
+        },
+        "type": "string"
+      },
+      {
+        "constraints": {
+          "pattern": "^(?!.*[\\u3400-\\u9fff]).+$"
+        },
+        "context": "inline-script[1]:call:txt[2]",
+        "default": "WHY IT HURTS",
+        "field_id": "script.literal.001",
+        "kind": "script_literal",
+        "max_length": 16,
+        "semantic_role": "mono-label",
+        "span": {
+          "kind": "script_literal",
+          "occurrence": 1,
+          "quote": "'",
+          "script_index": 1,
+          "sink": "call:txt[2]",
+          "token_sha256": "sha256:ef4789a63bfc2824f3da95da10eb27f1f4945de7423116d6f4518d4933a5e9f3"
+        },
+        "type": "string"
+      },
+      {
+        "context": "inline-script[1]:call:txt[2]",
+        "default": "效果不稳的三个根因",
+        "field_id": "script.literal.002",
+        "kind": "script_literal",
+        "max_length": 13,
+        "span": {
+          "kind": "script_literal",
+          "occurrence": 2,
+          "quote": "'",
+          "script_index": 1,
+          "sink": "call:txt[2]",
+          "token_sha256": "sha256:29d5cd0c46032c62954cb11ac9b59982c11ec6f591844a3275f5207ac184b71a"
+        },
+        "type": "string"
+      },
+      {
+        "context": "inline-script[1]:call:txt[2]",
+        "default": "幻觉频发",
+        "field_id": "script.literal.003",
+        "kind": "script_literal",
+        "max_length": 8,
+        "span": {
+          "kind": "script_literal",
+          "occurrence": 3,
+          "quote": "'",
+          "script_index": 1,
+          "sink": "call:txt[2]",
+          "token_sha256": "sha256:dd1e7b11cb23e292ef1c45a2fc93ec617130c10d2d3e70b57820f8f99e79c93c"
+        },
+        "type": "string"
+      },
+      {
+        "context": "inline-script[1]:call:txt[2]",
+        "default": "长尾问题缺乏知识库接地，",
+        "field_id": "script.literal.004",
+        "kind": "script_literal",
+        "max_length": 16,
+        "span": {
+          "kind": "script_literal",
+          "occurrence": 4,
+          "quote": "'",
+          "script_index": 1,
+          "sink": "call:txt[2]",
+          "token_sha256": "sha256:89e1241a257c69de20f50e2255124a9b396d6329eae4152137f59fbf45d54ce0"
+        },
+        "type": "string"
+      },
+      {
+        "context": "inline-script[1]:call:txt[2]",
+        "default": "生成答案幻觉率一度超 12%。",
+        "field_id": "script.literal.005",
+        "kind": "script_literal",
+        "max_length": 20,
+        "span": {
+          "kind": "script_literal",
+          "occurrence": 5,
+          "quote": "'",
+          "script_index": 1,
+          "sink": "call:txt[2]",
+          "token_sha256": "sha256:a634eec619407f259a2c58b1d6eb33188a2df022be373d3dbb38cdf709d32a5d"
+        },
+        "type": "string"
+      },
+      {
+        "context": "inline-script[1]:call:txt[2]",
+        "default": "知识滞后",
+        "field_id": "script.literal.006",
+        "kind": "script_literal",
+        "max_length": 8,
+        "span": {
+          "kind": "script_literal",
+          "occurrence": 6,
+          "quote": "'",
+          "script_index": 1,
+          "sink": "call:txt[2]",
+          "token_sha256": "sha256:5488ae2fcd261b627ad52840d5377cb13b77a0ddbb0cb7046af09e3adddb19e1"
+        },
+        "type": "string"
+      },
+      {
+        "context": "inline-script[1]:call:txt[2]",
+        "default": "产品以周迭代、文档以月更新，",
+        "field_id": "script.literal.007",
+        "kind": "script_literal",
+        "max_length": 18,
+        "span": {
+          "kind": "script_literal",
+          "occurrence": 7,
+          "quote": "'",
+          "script_index": 1,
+          "sink": "call:txt[2]",
+          "token_sha256": "sha256:a1e7e0e0230613bd640ec32298b0c4af2bc96e55f37be7cde938708aa49ab5cf"
+        },
+        "type": "string"
+      },
+      {
+        "context": "inline-script[1]:call:txt[2]",
+        "default": "检索命中过期文档频发。",
+        "field_id": "script.literal.008",
+        "kind": "script_literal",
+        "max_length": 15,
+        "span": {
+          "kind": "script_literal",
+          "occurrence": 8,
+          "quote": "'",
+          "script_index": 1,
+          "sink": "call:txt[2]",
+          "token_sha256": "sha256:f5e388ef083a47e2a5e090debd5c9406c28f90f9a4ccd2241a81813a0013730d"
+        },
+        "type": "string"
+      },
+      {
+        "context": "inline-script[1]:call:txt[2]",
+        "default": "工具断裂",
+        "field_id": "script.literal.009",
+        "kind": "script_literal",
+        "max_length": 8,
+        "span": {
+          "kind": "script_literal",
+          "occurrence": 9,
+          "quote": "'",
+          "script_index": 1,
+          "sink": "call:txt[2]",
+          "token_sha256": "sha256:234400840c327d58087a0976c9382676dad2fdeac11d9a8dbc9a7ad4f7738a1b"
+        },
+        "type": "string"
+      },
+      {
+        "context": "inline-script[1]:call:txt[2]",
+        "default": "检索、工具、生成链路黑盒，",
+        "field_id": "script.literal.010",
+        "kind": "script_literal",
+        "max_length": 17,
+        "span": {
+          "kind": "script_literal",
+          "occurrence": 10,
+          "quote": "'",
+          "script_index": 1,
+          "sink": "call:txt[2]",
+          "token_sha256": "sha256:7445c79f17291c75b67a881dd3a9266f334908b20e0fd89e0d9bbc622c907204"
+        },
+        "type": "string"
+      },
+      {
+        "context": "inline-script[1]:call:txt[2]",
+        "default": "坏例定位平均耗时 2.6 天。",
+        "field_id": "script.literal.011",
+        "kind": "script_literal",
+        "max_length": 20,
+        "span": {
+          "kind": "script_literal",
+          "occurrence": 11,
+          "quote": "'",
+          "script_index": 1,
+          "sink": "call:txt[2]",
+          "token_sha256": "sha256:e9cadcf10cab01758c19ef68cf126547c608a33209faba8b753edc87068bdddc"
+        },
+        "type": "string"
+      },
+      {
+        "constraints": {
+          "pattern": "^(?!.*[\\u3400-\\u9fff]).+$"
+        },
+        "context": "inline-script[1]:call:txt[2]",
+        "default": "THE FIX · AGENT PIPELINE",
+        "field_id": "script.literal.012",
+        "kind": "script_literal",
+        "max_length": 32,
+        "semantic_role": "mono-label",
+        "span": {
+          "kind": "script_literal",
+          "occurrence": 12,
+          "quote": "'",
+          "script_index": 1,
+          "sink": "call:txt[2]",
+          "token_sha256": "sha256:f271055025a53f0695a78547c0803749d832ffcb65e9d2a77b82dedd3f1461f2"
+        },
+        "type": "string"
+      },
+      {
+        "context": "inline-script[1]:call:txt[2]",
+        "default": "Agent 基座平台",
+        "field_id": "script.literal.013",
+        "kind": "script_literal",
+        "max_length": 14,
+        "span": {
+          "kind": "script_literal",
+          "occurrence": 13,
+          "quote": "'",
+          "script_index": 1,
+          "sink": "call:txt[2]",
+          "token_sha256": "sha256:251a8382e65cf3f11b0b382511976a06b16ebf0c6c8fde00ced18a247ec3af13"
+        },
+        "type": "string"
+      },
+      {
+        "context": "inline-script[1]:call:txt[2]",
+        "default": "意图解析",
+        "field_id": "script.literal.014",
+        "kind": "script_literal",
+        "max_length": 8,
+        "span": {
+          "kind": "script_literal",
+          "occurrence": 14,
+          "quote": "'",
+          "script_index": 1,
+          "sink": "call:txt[2]",
+          "token_sha256": "sha256:1a102917a7dc7ee0cb18d0918ef2253f0a70d9d1135b5fc2879d81e0850dfe3f"
+        },
+        "type": "string"
+      },
+      {
+        "context": "inline-script[1]:call:txt[2]",
+        "default": "知识召回",
+        "field_id": "script.literal.015",
+        "kind": "script_literal",
+        "max_length": 8,
+        "span": {
+          "kind": "script_literal",
+          "occurrence": 15,
+          "quote": "'",
+          "script_index": 1,
+          "sink": "call:txt[2]",
+          "token_sha256": "sha256:020051adf0a36598970cb855bb5f62a2b68e3adcb73c19478fefb309378f38e4"
+        },
+        "type": "string"
+      },
+      {
+        "context": "inline-script[1]:call:txt[2]",
+        "default": "工具编排",
+        "field_id": "script.literal.016",
+        "kind": "script_literal",
+        "max_length": 8,
+        "span": {
+          "kind": "script_literal",
+          "occurrence": 16,
+          "quote": "'",
+          "script_index": 1,
+          "sink": "call:txt[2]",
+          "token_sha256": "sha256:d1e067a3d2d8531663d2caf32803cc76da93b5cb03d1574876c3a38400e7f91d"
+        },
+        "type": "string"
+      },
+      {
+        "context": "inline-script[1]:call:txt[2]",
+        "default": "生成校验",
+        "field_id": "script.literal.017",
+        "kind": "script_literal",
+        "max_length": 8,
+        "span": {
+          "kind": "script_literal",
+          "occurrence": 17,
+          "quote": "'",
+          "script_index": 1,
+          "sink": "call:txt[2]",
+          "token_sha256": "sha256:62a87c8edab3154ebb2d7a16486629760538e8e6b08493d0c18fa4882ee53d85"
+        },
+        "type": "string"
+      },
+      {
+        "context": "inline-script[1]:call:txt[2]",
+        "default": "灰度放量",
+        "field_id": "script.literal.018",
+        "kind": "script_literal",
+        "max_length": 8,
+        "span": {
+          "kind": "script_literal",
+          "occurrence": 18,
+          "quote": "'",
+          "script_index": 1,
+          "sink": "call:txt[2]",
+          "token_sha256": "sha256:a776d17983ac4b1d2dc746ad793045eab13e4dc730cf7baee90ec19dca2daa0f"
+        },
+        "type": "string"
+      },
+      {
+        "context": "inline-script[1]:call:txt[2]",
+        "default": "追踪回放",
+        "field_id": "script.literal.019",
+        "kind": "script_literal",
+        "max_length": 8,
+        "span": {
+          "kind": "script_literal",
+          "occurrence": 19,
+          "quote": "'",
+          "script_index": 1,
+          "sink": "call:txt[2]",
+          "token_sha256": "sha256:d8ccae4fb4acd512f0a3a492299d91aec0fa8406651cad5d1c0c431dff335daf"
+        },
+        "type": "string"
+      },
+      {
+        "constraints": {
+          "pattern": "^(?!.*[\\u3400-\\u9fff]).+$"
+        },
+        "context": "inline-script[1]:call:txt[2]",
+        "default": "PARSE",
+        "field_id": "script.literal.020",
+        "kind": "script_literal",
+        "max_length": 9,
+        "semantic_role": "mono-label",
+        "span": {
+          "kind": "script_literal",
+          "occurrence": 20,
+          "quote": "'",
+          "script_index": 1,
+          "sink": "call:txt[2]",
+          "token_sha256": "sha256:d3d4fcb1b7f9d26312a06f24dbf0b36548cc2196f6c20f4ac582eded65cf3aed"
+        },
+        "type": "string"
+      },
+      {
+        "constraints": {
+          "pattern": "^(?!.*[\\u3400-\\u9fff]).+$"
+        },
+        "context": "inline-script[1]:call:txt[2]",
+        "default": "RETRIEVE",
+        "field_id": "script.literal.021",
+        "kind": "script_literal",
+        "max_length": 12,
+        "semantic_role": "mono-label",
+        "span": {
+          "kind": "script_literal",
+          "occurrence": 21,
+          "quote": "'",
+          "script_index": 1,
+          "sink": "call:txt[2]",
+          "token_sha256": "sha256:0919bdf841853be50ad049dff444bfafb0ac4993c1d1673f481c85eefcaa7748"
+        },
+        "type": "string"
+      },
+      {
+        "constraints": {
+          "pattern": "^(?!.*[\\u3400-\\u9fff]).+$"
+        },
+        "context": "inline-script[1]:call:txt[2]",
+        "default": "ORCHESTRATE",
+        "field_id": "script.literal.022",
+        "kind": "script_literal",
+        "max_length": 15,
+        "semantic_role": "mono-label",
+        "span": {
+          "kind": "script_literal",
+          "occurrence": 22,
+          "quote": "'",
+          "script_index": 1,
+          "sink": "call:txt[2]",
+          "token_sha256": "sha256:b6548f7298dfe5a277ce01321d7248fc2863f24efc04cabe4eff0d9fa639f994"
+        },
+        "type": "string"
+      },
+      {
+        "constraints": {
+          "pattern": "^(?!.*[\\u3400-\\u9fff]).+$"
+        },
+        "context": "inline-script[1]:call:txt[2]",
+        "default": "VERIFY",
+        "field_id": "script.literal.023",
+        "kind": "script_literal",
+        "max_length": 10,
+        "semantic_role": "mono-label",
+        "span": {
+          "kind": "script_literal",
+          "occurrence": 23,
+          "quote": "'",
+          "script_index": 1,
+          "sink": "call:txt[2]",
+          "token_sha256": "sha256:275876e15933f68fdce34e7a302ad98211cd4815a776060d23af964d9957f833"
+        },
+        "type": "string"
+      },
+      {
+        "constraints": {
+          "pattern": "^(?!.*[\\u3400-\\u9fff]).+$"
+        },
+        "context": "inline-script[1]:call:txt[2]",
+        "default": "CANARY",
+        "field_id": "script.literal.024",
+        "kind": "script_literal",
+        "max_length": 10,
+        "semantic_role": "mono-label",
+        "span": {
+          "kind": "script_literal",
+          "occurrence": 24,
+          "quote": "'",
+          "script_index": 1,
+          "sink": "call:txt[2]",
+          "token_sha256": "sha256:6f831058feedf61faa9c0eb37f0ee11ba6acd832170e4902575be32ad5ebf1af"
+        },
+        "type": "string"
+      },
+      {
+        "constraints": {
+          "pattern": "^(?!.*[\\u3400-\\u9fff]).+$"
+        },
+        "context": "inline-script[1]:call:txt[2]",
+        "default": "REPLAY",
+        "field_id": "script.literal.025",
+        "kind": "script_literal",
+        "max_length": 10,
+        "semantic_role": "mono-label",
+        "span": {
+          "kind": "script_literal",
+          "occurrence": 25,
+          "quote": "'",
+          "script_index": 1,
+          "sink": "call:txt[2]",
+          "token_sha256": "sha256:05dabfe2e59e76d828ccbc7ab25ca45843499d680e431bbc93eeed012b868e09"
+        },
+        "type": "string"
+      },
+      {
+        "constraints": {
+          "pattern": "^(?!.*[\\u3400-\\u9fff]).+$"
+        },
+        "context": "inline-script[1]:call:txt[2]",
+        "default": "AGENT INFRA 1.0 · BASE",
+        "field_id": "script.literal.026",
+        "kind": "script_literal",
+        "max_length": 29,
+        "semantic_role": "mono-label",
+        "span": {
+          "kind": "script_literal",
+          "occurrence": 26,
+          "quote": "'",
+          "script_index": 1,
+          "sink": "call:txt[2]",
+          "token_sha256": "sha256:058fb7dd7a9255e6b6d00bc8e660f05e4d3f5d20840861c9a70a7a21881fff38"
+        },
+        "type": "string"
+      },
+      {
+        "context": "inline-script[1]:object-key:cn",
+        "default": "模型网关",
+        "field_id": "script.literal.027",
+        "kind": "script_literal",
+        "max_length": 8,
+        "span": {
+          "kind": "script_literal",
+          "occurrence": 27,
+          "quote": "'",
+          "script_index": 1,
+          "sink": "object-key:cn",
+          "token_sha256": "sha256:efcb1234f5eff63fa326e061ceaade9d43809de71c8e97a56fcb41f4adfc7e0f"
+        },
+        "type": "string"
+      },
+      {
+        "context": "inline-script[1]:object-key:cn",
+        "default": "向量检索",
+        "field_id": "script.literal.028",
+        "kind": "script_literal",
+        "max_length": 8,
+        "span": {
+          "kind": "script_literal",
+          "occurrence": 28,
+          "quote": "'",
+          "script_index": 1,
+          "sink": "object-key:cn",
+          "token_sha256": "sha256:ece9c7c43ca8609a424195cbeb481c70a41d1b8f8303234c15987d9a6cf90cd1"
+        },
+        "type": "string"
+      },
+      {
+        "context": "inline-script[1]:object-key:cn",
+        "default": "提示词版本",
+        "field_id": "script.literal.029",
+        "kind": "script_literal",
+        "max_length": 9,
+        "span": {
+          "kind": "script_literal",
+          "occurrence": 29,
+          "quote": "'",
+          "script_index": 1,
+          "sink": "object-key:cn",
+          "token_sha256": "sha256:24e7ce7b4542f4d68e56776460c5d497f848aa4dc9de16b3e65eebb3680d3746"
+        },
+        "type": "string"
+      },
+      {
+        "context": "inline-script[1]:object-key:cn",
+        "default": "评测台",
+        "field_id": "script.literal.030",
+        "kind": "script_literal",
+        "max_length": 7,
+        "span": {
+          "kind": "script_literal",
+          "occurrence": 30,
+          "quote": "'",
+          "script_index": 1,
+          "sink": "object-key:cn",
+          "token_sha256": "sha256:18464b69555a8490db22ee7656fc9eac6f5893abac855ef30fb545228da17a01"
+        },
+        "type": "string"
+      },
+      {
+        "context": "inline-script[1]:object-key:cn",
+        "default": "可观测",
+        "field_id": "script.literal.031",
+        "kind": "script_literal",
+        "max_length": 7,
+        "span": {
+          "kind": "script_literal",
+          "occurrence": 31,
+          "quote": "'",
+          "script_index": 1,
+          "sink": "object-key:cn",
+          "token_sha256": "sha256:70c3d53327fe967579ad917838b31cb0a4be2f0643e4443c2c2dbacef89c6fb2"
+        },
+        "type": "string"
+      },
+      {
+        "constraints": {
+          "pattern": "^(?!.*[\\u3400-\\u9fff]).+$"
+        },
+        "context": "inline-script[1]:call:kpi[1]",
+        "default": "-58%",
+        "field_id": "script.literal.032",
+        "kind": "script_literal",
+        "max_length": 8,
+        "semantic_role": "mono-label",
+        "span": {
+          "kind": "script_literal",
+          "occurrence": 32,
+          "quote": "'",
+          "script_index": 1,
+          "sink": "call:kpi[1]",
+          "token_sha256": "sha256:49cb5cc2ad551423e593338512ae94a04be2b42e8a8e86c363afbc7ea8435541"
+        },
+        "type": "string"
+      },
+      {
+        "constraints": {
+          "pattern": "^(?!.*[\\u3400-\\u9fff]).+$"
+        },
+        "context": "inline-script[1]:call:kpi[2]",
+        "default": "TTFT P95",
+        "field_id": "script.literal.033",
+        "kind": "script_literal",
+        "max_length": 12,
+        "semantic_role": "mono-label",
+        "span": {
+          "kind": "script_literal",
+          "occurrence": 33,
+          "quote": "'",
+          "script_index": 1,
+          "sink": "call:kpi[2]",
+          "token_sha256": "sha256:a813866484dca08aabd154abeab0f6a96e49e3ee7d89ec7bbbb96fa213664eba"
+        },
+        "type": "string"
+      },
+      {
+        "constraints": {
+          "pattern": "^(?!.*[\\u3400-\\u9fff]).+$"
+        },
+        "context": "inline-script[1]:call:kpi[3]",
+        "default": "LATENCY",
+        "field_id": "script.literal.034",
+        "kind": "script_literal",
+        "max_length": 11,
+        "semantic_role": "mono-label",
+        "span": {
+          "kind": "script_literal",
+          "occurrence": 34,
+          "quote": "'",
+          "script_index": 1,
+          "sink": "call:kpi[3]",
+          "token_sha256": "sha256:e5623b65eecce87e4a47c970c24dd4c57abfc9092d7c3e3ccc5fd18994ac6e6c"
+        },
+        "type": "string"
+      },
+      {
+        "constraints": {
+          "pattern": "^(?!.*[\\u3400-\\u9fff]).+$"
+        },
+        "context": "inline-script[1]:call:kpi[1]",
+        "default": "91%",
+        "field_id": "script.literal.035",
+        "kind": "script_literal",
+        "max_length": 7,
+        "semantic_role": "mono-label",
+        "span": {
+          "kind": "script_literal",
+          "occurrence": 35,
+          "quote": "'",
+          "script_index": 1,
+          "sink": "call:kpi[1]",
+          "token_sha256": "sha256:ba3169d275dc2a7b083d76232bddb2337c85a4a6706e3bee7b39aa784ceb5c4d"
+        },
+        "type": "string"
+      },
+      {
+        "context": "inline-script[1]:call:kpi[2]",
+        "default": "召回命中率",
+        "field_id": "script.literal.036",
+        "kind": "script_literal",
+        "max_length": 9,
+        "span": {
+          "kind": "script_literal",
+          "occurrence": 36,
+          "quote": "'",
+          "script_index": 1,
+          "sink": "call:kpi[2]",
+          "token_sha256": "sha256:8dfe0f41ef38d288888964f82dc1ec577cd41243533725439bb6a519df0cc285"
+        },
+        "type": "string"
+      },
+      {
+        "constraints": {
+          "pattern": "^(?!.*[\\u3400-\\u9fff]).+$"
+        },
+        "context": "inline-script[1]:call:kpi[3]",
+        "default": "RECALL@10",
+        "field_id": "script.literal.037",
+        "kind": "script_literal",
+        "max_length": 13,
+        "semantic_role": "mono-label",
+        "span": {
+          "kind": "script_literal",
+          "occurrence": 37,
+          "quote": "'",
+          "script_index": 1,
+          "sink": "call:kpi[3]",
+          "token_sha256": "sha256:6469c7278a006f64cb2901b8cc8cb8d8528e184078d7db8f301e9df165c2a35f"
+        },
+        "type": "string"
+      },
+      {
+        "context": "inline-script[1]:call:kpi[1]",
+        "default": "420万",
+        "field_id": "script.literal.038",
+        "kind": "script_literal",
+        "max_length": 8,
+        "span": {
+          "kind": "script_literal",
+          "occurrence": 38,
+          "quote": "'",
+          "script_index": 1,
+          "sink": "call:kpi[1]",
+          "token_sha256": "sha256:17872b604265e6402eca6d2ce73f1cdf04b8ad4294e940940f7b3b6bfc739bcd"
+        },
+        "type": "string"
+      },
+      {
+        "context": "inline-script[1]:call:kpi[2]",
+        "default": "日调用量",
+        "field_id": "script.literal.039",
+        "kind": "script_literal",
+        "max_length": 8,
+        "span": {
+          "kind": "script_literal",
+          "occurrence": 39,
+          "quote": "'",
+          "script_index": 1,
+          "sink": "call:kpi[2]",
+          "token_sha256": "sha256:ac5af76c2fb9313874f996ae5e529c27ae122553d5c0ce3957c4f5ad826047a5"
+        },
+        "type": "string"
+      },
+      {
+        "constraints": {
+          "pattern": "^(?!.*[\\u3400-\\u9fff]).+$"
+        },
+        "context": "inline-script[1]:call:kpi[3]",
+        "default": "CALLS/DAY",
+        "field_id": "script.literal.040",
+        "kind": "script_literal",
+        "max_length": 13,
+        "semantic_role": "mono-label",
+        "span": {
+          "kind": "script_literal",
+          "occurrence": 40,
+          "quote": "'",
+          "script_index": 1,
+          "sink": "call:kpi[3]",
+          "token_sha256": "sha256:cdd29ea062041a8d2b96584816ce257ef6eb6580792a0d6caeae979079aa01e3"
+        },
+        "type": "string"
+      },
+      {
+        "constraints": {
+          "pattern": "^(?!.*[\\u3400-\\u9fff]).+$"
+        },
+        "context": "inline-script[1]:call:kpi[1]",
+        "default": "96%",
+        "field_id": "script.literal.041",
+        "kind": "script_literal",
+        "max_length": 7,
+        "semantic_role": "mono-label",
+        "span": {
+          "kind": "script_literal",
+          "occurrence": 41,
+          "quote": "'",
+          "script_index": 1,
+          "sink": "call:kpi[1]",
+          "token_sha256": "sha256:f47affb3d3c54312d423c3af08c3f6320b1a2e839422b6204c0380f1bfa38c69"
+        },
+        "type": "string"
+      },
+      {
+        "context": "inline-script[1]:call:kpi[2]",
+        "default": "质检达标率",
+        "field_id": "script.literal.042",
+        "kind": "script_literal",
+        "max_length": 9,
+        "span": {
+          "kind": "script_literal",
+          "occurrence": 42,
+          "quote": "'",
+          "script_index": 1,
+          "sink": "call:kpi[2]",
+          "token_sha256": "sha256:e94b6e78632aac160feda59f0ad5c084653fc3f049788cbc00ad8a291c139df4"
+        },
+        "type": "string"
+      },
+      {
+        "constraints": {
+          "pattern": "^(?!.*[\\u3400-\\u9fff]).+$"
+        },
+        "context": "inline-script[1]:call:kpi[3]",
+        "default": "QUALITY",
+        "field_id": "script.literal.043",
+        "kind": "script_literal",
+        "max_length": 11,
+        "semantic_role": "mono-label",
+        "span": {
+          "kind": "script_literal",
+          "occurrence": 43,
+          "quote": "'",
+          "script_index": 1,
+          "sink": "call:kpi[3]",
+          "token_sha256": "sha256:a99b7a9e3b2963aafb14f09eb57bd636739f69185beb32128ea9b7fa6e1bcfea"
+        },
+        "type": "string"
+      }
+    ],
+    "format": "wise-ppt-layout-payload@1",
+    "values_schema": {
+      "additionalProperties": false,
+      "minProperties": 1,
+      "properties": {
+        "html.text.001": {
+          "maxLength": 25,
+          "pattern": "^(?!.*[\\u3400-\\u9fff]).+$",
+          "type": "string"
+        },
+        "html.text.002": {
+          "maxLength": 18,
+          "pattern": "^(?!.*[\\u3400-\\u9fff]).+$",
+          "type": "string"
+        },
+        "html.text.003": {
+          "maxLength": 26,
+          "pattern": "^\\d{1,3} / \\d{1,3} — BY .{1,40}$",
+          "type": "string"
+        },
+        "html.text.004": {
+          "maxLength": 53,
+          "type": "string"
+        },
+        "script.literal.001": {
+          "maxLength": 16,
+          "pattern": "^(?!.*[\\u3400-\\u9fff]).+$",
+          "type": "string"
+        },
+        "script.literal.002": {
+          "maxLength": 13,
+          "type": "string"
+        },
+        "script.literal.003": {
+          "maxLength": 8,
+          "type": "string"
+        },
+        "script.literal.004": {
+          "maxLength": 16,
+          "type": "string"
+        },
+        "script.literal.005": {
+          "maxLength": 20,
+          "type": "string"
+        },
+        "script.literal.006": {
+          "maxLength": 8,
+          "type": "string"
+        },
+        "script.literal.007": {
+          "maxLength": 18,
+          "type": "string"
+        },
+        "script.literal.008": {
+          "maxLength": 15,
+          "type": "string"
+        },
+        "script.literal.009": {
+          "maxLength": 8,
+          "type": "string"
+        },
+        "script.literal.010": {
+          "maxLength": 17,
+          "type": "string"
+        },
+        "script.literal.011": {
+          "maxLength": 20,
+          "type": "string"
+        },
+        "script.literal.012": {
+          "maxLength": 32,
+          "pattern": "^(?!.*[\\u3400-\\u9fff]).+$",
+          "type": "string"
+        },
+        "script.literal.013": {
+          "maxLength": 14,
+          "type": "string"
+        },
+        "script.literal.014": {
+          "maxLength": 8,
+          "type": "string"
+        },
+        "script.literal.015": {
+          "maxLength": 8,
+          "type": "string"
+        },
+        "script.literal.016": {
+          "maxLength": 8,
+          "type": "string"
+        },
+        "script.literal.017": {
+          "maxLength": 8,
+          "type": "string"
+        },
+        "script.literal.018": {
+          "maxLength": 8,
+          "type": "string"
+        },
+        "script.literal.019": {
+          "maxLength": 8,
+          "type": "string"
+        },
+        "script.literal.020": {
+          "maxLength": 9,
+          "pattern": "^(?!.*[\\u3400-\\u9fff]).+$",
+          "type": "string"
+        },
+        "script.literal.021": {
+          "maxLength": 12,
+          "pattern": "^(?!.*[\\u3400-\\u9fff]).+$",
+          "type": "string"
+        },
+        "script.literal.022": {
+          "maxLength": 15,
+          "pattern": "^(?!.*[\\u3400-\\u9fff]).+$",
+          "type": "string"
+        },
+        "script.literal.023": {
+          "maxLength": 10,
+          "pattern": "^(?!.*[\\u3400-\\u9fff]).+$",
+          "type": "string"
+        },
+        "script.literal.024": {
+          "maxLength": 10,
+          "pattern": "^(?!.*[\\u3400-\\u9fff]).+$",
+          "type": "string"
+        },
+        "script.literal.025": {
+          "maxLength": 10,
+          "pattern": "^(?!.*[\\u3400-\\u9fff]).+$",
+          "type": "string"
+        },
+        "script.literal.026": {
+          "maxLength": 29,
+          "pattern": "^(?!.*[\\u3400-\\u9fff]).+$",
+          "type": "string"
+        },
+        "script.literal.027": {
+          "maxLength": 8,
+          "type": "string"
+        },
+        "script.literal.028": {
+          "maxLength": 8,
+          "type": "string"
+        },
+        "script.literal.029": {
+          "maxLength": 9,
+          "type": "string"
+        },
+        "script.literal.030": {
+          "maxLength": 7,
+          "type": "string"
+        },
+        "script.literal.031": {
+          "maxLength": 7,
+          "type": "string"
+        },
+        "script.literal.032": {
+          "maxLength": 8,
+          "pattern": "^(?!.*[\\u3400-\\u9fff]).+$",
+          "type": "string"
+        },
+        "script.literal.033": {
+          "maxLength": 12,
+          "pattern": "^(?!.*[\\u3400-\\u9fff]).+$",
+          "type": "string"
+        },
+        "script.literal.034": {
+          "maxLength": 11,
+          "pattern": "^(?!.*[\\u3400-\\u9fff]).+$",
+          "type": "string"
+        },
+        "script.literal.035": {
+          "maxLength": 7,
+          "pattern": "^(?!.*[\\u3400-\\u9fff]).+$",
+          "type": "string"
+        },
+        "script.literal.036": {
+          "maxLength": 9,
+          "type": "string"
+        },
+        "script.literal.037": {
+          "maxLength": 13,
+          "pattern": "^(?!.*[\\u3400-\\u9fff]).+$",
+          "type": "string"
+        },
+        "script.literal.038": {
+          "maxLength": 8,
+          "type": "string"
+        },
+        "script.literal.039": {
+          "maxLength": 8,
+          "type": "string"
+        },
+        "script.literal.040": {
+          "maxLength": 13,
+          "pattern": "^(?!.*[\\u3400-\\u9fff]).+$",
+          "type": "string"
+        },
+        "script.literal.041": {
+          "maxLength": 7,
+          "pattern": "^(?!.*[\\u3400-\\u9fff]).+$",
+          "type": "string"
+        },
+        "script.literal.042": {
+          "maxLength": 9,
+          "type": "string"
+        },
+        "script.literal.043": {
+          "maxLength": 11,
+          "pattern": "^(?!.*[\\u3400-\\u9fff]).+$",
+          "type": "string"
+        }
+      },
+      "type": "object"
+    }
+  },
+  "payload_defaults": {
+    "bindings": [
+      {
+        "asset_refs": [],
+        "content_refs": [
+          "item.canonical.problem-solution"
+        ],
+        "slot_id": "problem-solution"
+      },
+      {
+        "asset_refs": [],
+        "content_refs": [
+          "item.canonical.support"
+        ],
+        "slot_id": "support"
+      },
+      {
+        "asset_refs": [],
+        "content_refs": [
+          "item.canonical.takeaway"
+        ],
+        "slot_id": "takeaway"
+      }
+    ],
+    "values": {
+      "html.text.001": "AI ENGINEERING — K3",
+      "html.text.002": "AGENT PLATFORM",
+      "html.text.003": "01 / 01 — BY WISE PPT",
+      "html.text.004": "Agent 基座把幻觉、知识滞后与工具断裂纳入同一链路，召回命中率达到 91%。",
+      "script.literal.001": "WHY IT HURTS",
+      "script.literal.002": "效果不稳的三个根因",
+      "script.literal.003": "幻觉频发",
+      "script.literal.004": "长尾问题缺乏知识库接地，",
+      "script.literal.005": "生成答案幻觉率一度超 12%。",
+      "script.literal.006": "知识滞后",
+      "script.literal.007": "产品以周迭代、文档以月更新，",
+      "script.literal.008": "检索命中过期文档频发。",
+      "script.literal.009": "工具断裂",
+      "script.literal.010": "检索、工具、生成链路黑盒，",
+      "script.literal.011": "坏例定位平均耗时 2.6 天。",
+      "script.literal.012": "THE FIX · AGENT PIPELINE",
+      "script.literal.013": "Agent 基座平台",
+      "script.literal.014": "意图解析",
+      "script.literal.015": "知识召回",
+      "script.literal.016": "工具编排",
+      "script.literal.017": "生成校验",
+      "script.literal.018": "灰度放量",
+      "script.literal.019": "追踪回放",
+      "script.literal.020": "PARSE",
+      "script.literal.021": "RETRIEVE",
+      "script.literal.022": "ORCHESTRATE",
+      "script.literal.023": "VERIFY",
+      "script.literal.024": "CANARY",
+      "script.literal.025": "REPLAY",
+      "script.literal.026": "AGENT INFRA 1.0 · BASE",
+      "script.literal.027": "模型网关",
+      "script.literal.028": "向量检索",
+      "script.literal.029": "提示词版本",
+      "script.literal.030": "评测台",
+      "script.literal.031": "可观测",
+      "script.literal.032": "-58%",
+      "script.literal.033": "TTFT P95",
+      "script.literal.034": "LATENCY",
+      "script.literal.035": "91%",
+      "script.literal.036": "召回命中率",
+      "script.literal.037": "RECALL@10",
+      "script.literal.038": "420万",
+      "script.literal.039": "日调用量",
+      "script.literal.040": "CALLS/DAY",
+      "script.literal.041": "96%",
+      "script.literal.042": "质检达标率",
+      "script.literal.043": "QUALITY"
+    }
+  },
+  "payload_schema": {
+    "additionalProperties": false,
+    "properties": {
+      "bindings": {
+        "items": {
+          "additionalProperties": false,
+          "properties": {
+            "asset_refs": {
+              "items": {
+                "minLength": 1,
+                "type": "string"
+              },
+              "type": "array"
+            },
+            "content_refs": {
+              "items": {
+                "minLength": 1,
+                "type": "string"
+              },
+              "type": "array"
+            },
+            "slot_id": {
+              "enum": [
+                "problem-solution",
+                "support",
+                "takeaway"
+              ],
+              "type": "string"
+            }
+          },
+          "required": [
+            "slot_id",
+            "content_refs",
+            "asset_refs"
+          ],
+          "type": "object"
+        },
+        "maxItems": 3,
+        "minItems": 3,
+        "type": "array"
+      },
+      "values": {
+        "additionalProperties": false,
+        "minProperties": 1,
+        "properties": {
+          "html.text.001": {
+            "maxLength": 25,
+            "pattern": "^(?!.*[\\u3400-\\u9fff]).+$",
+            "type": "string"
+          },
+          "html.text.002": {
+            "maxLength": 18,
+            "pattern": "^(?!.*[\\u3400-\\u9fff]).+$",
+            "type": "string"
+          },
+          "html.text.003": {
+            "maxLength": 26,
+            "pattern": "^\\d{1,3} / \\d{1,3} — BY .{1,40}$",
+            "type": "string"
+          },
+          "html.text.004": {
+            "maxLength": 53,
+            "type": "string"
+          },
+          "script.literal.001": {
+            "maxLength": 16,
+            "pattern": "^(?!.*[\\u3400-\\u9fff]).+$",
+            "type": "string"
+          },
+          "script.literal.002": {
+            "maxLength": 13,
+            "type": "string"
+          },
+          "script.literal.003": {
+            "maxLength": 8,
+            "type": "string"
+          },
+          "script.literal.004": {
+            "maxLength": 16,
+            "type": "string"
+          },
+          "script.literal.005": {
+            "maxLength": 20,
+            "type": "string"
+          },
+          "script.literal.006": {
+            "maxLength": 8,
+            "type": "string"
+          },
+          "script.literal.007": {
+            "maxLength": 18,
+            "type": "string"
+          },
+          "script.literal.008": {
+            "maxLength": 15,
+            "type": "string"
+          },
+          "script.literal.009": {
+            "maxLength": 8,
+            "type": "string"
+          },
+          "script.literal.010": {
+            "maxLength": 17,
+            "type": "string"
+          },
+          "script.literal.011": {
+            "maxLength": 20,
+            "type": "string"
+          },
+          "script.literal.012": {
+            "maxLength": 32,
+            "pattern": "^(?!.*[\\u3400-\\u9fff]).+$",
+            "type": "string"
+          },
+          "script.literal.013": {
+            "maxLength": 14,
+            "type": "string"
+          },
+          "script.literal.014": {
+            "maxLength": 8,
+            "type": "string"
+          },
+          "script.literal.015": {
+            "maxLength": 8,
+            "type": "string"
+          },
+          "script.literal.016": {
+            "maxLength": 8,
+            "type": "string"
+          },
+          "script.literal.017": {
+            "maxLength": 8,
+            "type": "string"
+          },
+          "script.literal.018": {
+            "maxLength": 8,
+            "type": "string"
+          },
+          "script.literal.019": {
+            "maxLength": 8,
+            "type": "string"
+          },
+          "script.literal.020": {
+            "maxLength": 9,
+            "pattern": "^(?!.*[\\u3400-\\u9fff]).+$",
+            "type": "string"
+          },
+          "script.literal.021": {
+            "maxLength": 12,
+            "pattern": "^(?!.*[\\u3400-\\u9fff]).+$",
+            "type": "string"
+          },
+          "script.literal.022": {
+            "maxLength": 15,
+            "pattern": "^(?!.*[\\u3400-\\u9fff]).+$",
+            "type": "string"
+          },
+          "script.literal.023": {
+            "maxLength": 10,
+            "pattern": "^(?!.*[\\u3400-\\u9fff]).+$",
+            "type": "string"
+          },
+          "script.literal.024": {
+            "maxLength": 10,
+            "pattern": "^(?!.*[\\u3400-\\u9fff]).+$",
+            "type": "string"
+          },
+          "script.literal.025": {
+            "maxLength": 10,
+            "pattern": "^(?!.*[\\u3400-\\u9fff]).+$",
+            "type": "string"
+          },
+          "script.literal.026": {
+            "maxLength": 29,
+            "pattern": "^(?!.*[\\u3400-\\u9fff]).+$",
+            "type": "string"
+          },
+          "script.literal.027": {
+            "maxLength": 8,
+            "type": "string"
+          },
+          "script.literal.028": {
+            "maxLength": 8,
+            "type": "string"
+          },
+          "script.literal.029": {
+            "maxLength": 9,
+            "type": "string"
+          },
+          "script.literal.030": {
+            "maxLength": 7,
+            "type": "string"
+          },
+          "script.literal.031": {
+            "maxLength": 7,
+            "type": "string"
+          },
+          "script.literal.032": {
+            "maxLength": 8,
+            "pattern": "^(?!.*[\\u3400-\\u9fff]).+$",
+            "type": "string"
+          },
+          "script.literal.033": {
+            "maxLength": 12,
+            "pattern": "^(?!.*[\\u3400-\\u9fff]).+$",
+            "type": "string"
+          },
+          "script.literal.034": {
+            "maxLength": 11,
+            "pattern": "^(?!.*[\\u3400-\\u9fff]).+$",
+            "type": "string"
+          },
+          "script.literal.035": {
+            "maxLength": 7,
+            "pattern": "^(?!.*[\\u3400-\\u9fff]).+$",
+            "type": "string"
+          },
+          "script.literal.036": {
+            "maxLength": 9,
+            "type": "string"
+          },
+          "script.literal.037": {
+            "maxLength": 13,
+            "pattern": "^(?!.*[\\u3400-\\u9fff]).+$",
+            "type": "string"
+          },
+          "script.literal.038": {
+            "maxLength": 8,
+            "type": "string"
+          },
+          "script.literal.039": {
+            "maxLength": 8,
+            "type": "string"
+          },
+          "script.literal.040": {
+            "maxLength": 13,
+            "pattern": "^(?!.*[\\u3400-\\u9fff]).+$",
+            "type": "string"
+          },
+          "script.literal.041": {
+            "maxLength": 7,
+            "pattern": "^(?!.*[\\u3400-\\u9fff]).+$",
+            "type": "string"
+          },
+          "script.literal.042": {
+            "maxLength": 9,
+            "type": "string"
+          },
+          "script.literal.043": {
+            "maxLength": 11,
+            "pattern": "^(?!.*[\\u3400-\\u9fff]).+$",
+            "type": "string"
+          }
+        },
+        "type": "object"
+      }
+    },
+    "required": [
+      "bindings",
+      "values"
+    ],
+    "type": "object"
+  },
+  "recipe_fingerprint": "sha256:eff5cf76df2422ccd0f1efdebf1d8455f20b931bdb3d02a7e5f5a4baf1306783",
+  "recipe_id": "paper-ink.matrix.problem-solution-composite",
+  "required_capabilities": [],
+  "slots": [
+    {
+      "allowed_component_sources": [
+        "native",
+        "echarts",
+        "ppt-component-atlas"
+      ],
+      "allowed_renderer_kinds": [
+        "table",
+        "native-html",
+        "svg",
+        "canvas"
+      ],
+      "compatible_component_ids": [],
+      "count_unit": "binding",
+      "default_component": {
+        "component_id": "native.paper-ink.matrix.problem-solution-composite.problem-solution",
+        "component_source": "native",
+        "origin": {
+          "kind": "canonical-frame-island",
+          "path": "gallery/paper-ink/ai/frames/layout-k3.html",
+          "selector": ".stage"
+        },
+        "renderer_kind": "svg"
+      },
+      "max_items": 8,
+      "min_items": 1,
+      "open_for_override": false,
+      "purpose": "左痛右解",
+      "required": true,
+      "slot_id": "problem-solution",
+      "space_contract": {
+        "aspect_ratio": 2.4194,
+        "canvas_height": 1080,
+        "canvas_width": 1920,
+        "height": 620,
+        "space_type": "wide",
+        "width": 1500
+      },
+      "visual_role": "primary"
+    },
+    {
+      "allowed_component_sources": [
+        "codex-host",
+        "native"
+      ],
+      "allowed_renderer_kinds": [
+        "typography",
+        "table",
+        "image",
+        "native-html",
+        "svg"
+      ],
+      "compatible_component_ids": [],
+      "count_unit": "binding",
+      "default_component": {
+        "component_id": "native.paper-ink.matrix.problem-solution-composite.support",
+        "component_source": "native",
+        "origin": {
+          "kind": "canonical-frame-island",
+          "path": "gallery/paper-ink/ai/frames/layout-k3.html",
+          "selector": ".doc.tl"
+        },
+        "renderer_kind": "typography"
+      },
+      "max_items": 4,
+      "min_items": 0,
+      "open_for_override": false,
+      "purpose": "辅助证据、标签或解释",
+      "required": false,
+      "slot_id": "support",
+      "visual_role": "support"
+    },
+    {
+      "allowed_component_sources": [
+        "native"
+      ],
+      "allowed_renderer_kinds": [
+        "typography"
+      ],
+      "compatible_component_ids": [],
+      "count_unit": "binding",
+      "default_component": {
+        "component_id": "native.paper-ink.matrix.problem-solution-composite.takeaway",
+        "component_source": "native",
+        "origin": {
+          "kind": "canonical-frame-island",
+          "path": "gallery/paper-ink/ai/frames/layout-k3.html",
+          "selector": ".caption"
+        },
+        "renderer_kind": "typography"
+      },
+      "max_items": 1,
+      "min_items": 0,
+      "open_for_override": false,
+      "purpose": "页面一句话结论",
+      "required": false,
+      "slot_id": "takeaway",
+      "visual_role": "support"
+    }
+  ],
+  "source": {
+    "path": "gallery/paper-ink/ai/frames/layout-k3.html",
+    "sha256": "sha256:f21adcb50914e93e14f0bd5005baf2ed7b3d7c3452f0fa72f8b3177aa02e8e55"
+  },
+  "status": "production",
+  "theme_id": "paper-ink",
+  "variant": "ai"
+}

@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-runtime="wise-ppt-specimen" data-typography-mode="mixed" data-page-id="gallery-ai-e4" data-page-role="compare" data-theme="paper-ink" data-layout="paper-ink.comparison.before-after-matrix" data-layout-source="gallery">
+<head>
+<meta charset="UTF-8">
+<title>layout-e4 · 前后对比行矩阵 + KPI 底带 · AI Workflow</title>
+<link rel="stylesheet" href="../../../../themes/paper-ink/assets/design-tokens.css">
+<link rel="stylesheet" href="../../../../themes/paper-ink/assets/slide-components.css">
+<link rel="stylesheet" href="../../../shell.css">
+<style>
+  svg.scene { position: absolute; inset: 0; z-index: 1; }
+  .caption {
+    position: absolute; left: 0; right: 0; bottom: 118px;
+    text-align: center;
+    font-family: var(--sans); font-weight: 400;
+    font-size: var(--type-caption); letter-spacing: .04em;
+    color: var(--ink);
+    z-index: 5;
+  }
+</style>
+</head>
+<body class="slide">
+<div class="stage" data-block-id="gallery-primary" data-renderer-kind="svg" data-component-source="native" data-component-id="native.paper-ink.comparison.before-after-matrix.before-after" data-content-ref="example.e4">
+  <div class="doc tl">AI ENGINEERING — E4<br>AI WORKFLOW SHIFT</div>
+  <div class="folio">E4 / 63 — BY @歪斯WISE</div>
+
+  <svg class="scene" width="1920" height="1080" viewBox="0 0 1920 1080">
+    <defs>
+      <pattern id="hatch" width="7" height="7" patternUnits="userSpaceOnUse" patternTransform="rotate(45)">
+        <line x1="0" y1="0" x2="0" y2="7" stroke="#191917" stroke-width="0.7" opacity="0.35"/>
+      </pattern>
+    </defs>
+    <g id="draw"></g>
+  </svg>
+
+  <div class="caption">AI 工作流把创作、审阅、发布与复盘串联起来，产出周期缩短 65%，准时率达到 92%。</div>
+</div>
+
+<script src="../../../../runtime/stage-fit.js"></script>
+<script src="../../../../themes/paper-ink/assets/particles.js"></script>
+<script>
+var NS = 'http://www.w3.org/2000/svg';
+var INK = '#191917';
+var INK80 = 'rgba(25,25,23,.8)';
+var INK45 = 'rgba(25,25,23,.45)';
+if (location.search.indexOf('accent') >= 0) document.documentElement.classList.add('accent');
+var ACCENT = document.documentElement.classList.contains('accent');
+var RED = getComputedStyle(document.documentElement).getPropertyValue('--accent-red').trim();
+var G = document.getElementById('draw');
+function el(tag, attrs) {
+  var e = document.createElementNS(NS, tag);
+  for (var k in attrs) e.setAttribute(k, attrs[k]);
+  G.appendChild(e); return e;
+}
+function elp(P, tag, attrs) {
+  var e = document.createElementNS(NS, tag);
+  for (var k in attrs) e.setAttribute(k, attrs[k]);
+  P.appendChild(e); return e;
+}
+function txt(x, y, str, attrs) {
+  var t = el('text', Object.assign({x:x, y:y}, attrs||{}));
+  t.textContent = str; return t;
+}
+var MONO = 'var(--mono)', SANS = 'var(--sans)', SERIF = 'var(--serif)';
+
+G = el('g', {transform:'translate(0 -35.7)'});
+
+
+/* ============ 列骨架：4 个环节 ============ */
+/* 4 列整体几何中心 = 960 = 页面中线，整块矩阵水平居中 */
+var COLS = [
+  {x:534,  en:'CREATE',  cn:'创作', oldV:'AVG 3 天',  newV:'AI 0.5 天'},
+  {x:874,  en:'REVIEW',  cn:'审阅', oldV:'邮件 48 H', newV:'实时 2 H'},
+  {x:1214, en:'PUBLISH', cn:'发布', oldV:'手动排版',  newV:'一键多端'},
+  {x:1554, en:'ANALYZE', cn:'复盘', oldV:'Excel 统计', newV:'看板自动'}
+];
+COLS.forEach(function(c, i){
+  txt(c.x, 220, '0' + (i+1) + ' · ' + c.en, {'font-family':MONO, 'font-size':'var(--type-meta)', 'letter-spacing':2, 'text-anchor':'middle', fill:INK45});
+  txt(c.x, 262, c.cn, {'font-family':SANS, 'font-weight':300, 'font-size':'var(--type-subheading)', 'text-anchor':'middle', fill:INK});
+  /* 列向虚线栅格（矩阵感）：在图标/文字带处断开成三段，避免穿字 */
+  [[282,312],[458,546],[712,728]].forEach(function(seg){
+    el('line', {x1:c.x, y1:seg[0], x2:c.x, y2:seg[1], stroke:INK, 'stroke-width':.5, opacity:.16, 'stroke-dasharray':'2 6'});
+  });
+});
+
+/* 行标签 + 行分隔虚线（中心 x=960，与 KPI 带 200-1720 中心对齐） */
+el('line', {x1:334, y1:465, x2:1754, y2:465, stroke:INK, 'stroke-width':.6, opacity:.25, 'stroke-dasharray':'3 6'});
+el('line', {x1:334, y1:725, x2:1754, y2:725, stroke:INK, 'stroke-width':.6, opacity:.25, 'stroke-dasharray':'3 6'});
+txt(344, 344, 'BEFORE', {'font-family':MONO, 'font-size':'var(--type-label)', 'letter-spacing':3, 'text-anchor':'end', fill:'rgba(25,25,23,.5)'});
+txt(344, 372, '旧流程', {'font-family':SANS, 'font-weight':300, 'font-size':'var(--type-body-small)', 'text-anchor':'end', fill:'rgba(25,25,23,.5)'});
+txt(344, 604, 'AFTER', {'font-family':MONO, 'font-size':'var(--type-label)', 'letter-spacing':3, 'text-anchor':'end', fill:INK});
+txt(344, 632, '新平台', {'font-family':SANS, 'font-weight':300, 'font-size':'var(--type-body-small)', 'text-anchor':'end', fill:INK});
+
+/* ============ 前行（灰阶虚线）：旧流程四态 ============ */
+var GOLD = elp(G, 'g', {opacity:.45});
+/* 01 创作：手写文稿（稿纸+横线+笔） */
+elp(GOLD, 'rect', {x:490, y:318, width:88, height:106, fill:'none', stroke:INK, 'stroke-width':1.1, 'stroke-dasharray':'4 4'});
+elp(GOLD, 'path', {d:'M 494 318 L 494 340 L 472 340', fill:'none', stroke:INK, 'stroke-width':.9, 'stroke-dasharray':'3 3'});
+[342, 364, 386].forEach(function(yy){
+  elp(GOLD, 'line', {x1:502, y1:yy, x2:566, y2:yy, stroke:INK, 'stroke-width':.8, 'stroke-dasharray':'3 3'});
+});
+/* 斜放的笔：笔杆 + 笔尖 */
+elp(GOLD, 'line', {x1:540, y1:358, x2:582, y2:400, stroke:INK, 'stroke-width':1.2, 'stroke-dasharray':'4 3'});
+elp(GOLD, 'line', {x1:534, y1:364, x2:546, y2:352, stroke:INK, 'stroke-width':1, 'stroke-dasharray':'3 3'});
+elp(GOLD, 'path', {d:'M 582 400 l -6 -2 l 2 6 z', fill:INK, stroke:'none', opacity:.5});
+/* 02 审阅：邮件信封（矩形+三角盖+横线） */
+elp(GOLD, 'rect', {x:830, y:342, width:88, height:64, rx:3, fill:'none', stroke:INK, 'stroke-width':1.1, 'stroke-dasharray':'4 4'});
+elp(GOLD, 'path', {d:'M 830 346 L 874 380 L 918 346', fill:'none', stroke:INK, 'stroke-width':1, 'stroke-dasharray':'3 3'});
+elp(GOLD, 'line', {x1:830, y1:346, x2:852, y2:368, stroke:INK, 'stroke-width':.8, 'stroke-dasharray':'2 3'});
+elp(GOLD, 'line', {x1:918, y1:346, x2:896, y2:368, stroke:INK, 'stroke-width':.8, 'stroke-dasharray':'2 3'});
+elp(GOLD, 'line', {x1:848, y1:398, x2:900, y2:398, stroke:INK, 'stroke-width':.8, 'stroke-dasharray':'3 3'});
+/* 03 发布（旧·手动排版）：文档框 + 文字线 + 小图框 */
+elp(GOLD, 'rect', {x:1162, y:330, width:104, height:90, rx:2, fill:'none', stroke:INK, 'stroke-width':1.1, 'stroke-dasharray':'4 4'});
+/* 小图框（左上） */
+elp(GOLD, 'rect', {x:1172, y:340, width:30, height:22, fill:'none', stroke:INK, 'stroke-width':.8, 'stroke-dasharray':'2 3'});
+elp(GOLD, 'circle', {cx:1180, cy:346, r:2, fill:'none', stroke:INK, 'stroke-width':.6});
+elp(GOLD, 'path', {d:'M 1172 361 L 1180 355 L 1188 360 L 1200 350', fill:'none', stroke:INK, 'stroke-width':.6, 'stroke-dasharray':'2 3'});
+/* 文字线（右侧 + 下方） */
+[344, 352, 360].forEach(function(yy){
+  elp(GOLD, 'line', {x1:1208, y1:yy, x2:1258, y2:yy, stroke:INK, 'stroke-width':.7, 'stroke-dasharray':'3 3'});
+});
+[372, 380, 388, 396, 404].forEach(function(yy){
+  elp(GOLD, 'line', {x1:1172, y1:yy, x2:1258, y2:yy, stroke:INK, 'stroke-width':.7, 'stroke-dasharray':'3 3'});
+});
+/* 04 复盘（旧·Excel 统计）：表格网格 + 单元格 */
+elp(GOLD, 'rect', {x:1510, y:336, width:88, height:80, fill:'none', stroke:INK, 'stroke-width':1.1, 'stroke-dasharray':'4 4'});
+/* 表头分隔 */
+elp(GOLD, 'line', {x1:1510, y1:352, x2:1598, y2:352, stroke:INK, 'stroke-width':.9, 'stroke-dasharray':'3 3'});
+/* 列分隔（3 列） */
+[1539, 1569].forEach(function(xx){
+  elp(GOLD, 'line', {x1:xx, y1:336, x2:xx, y2:416, stroke:INK, 'stroke-width':.7, 'stroke-dasharray':'2 3'});
+});
+/* 行分隔（4 行） */
+[368, 384, 400].forEach(function(yy){
+  elp(GOLD, 'line', {x1:1510, y1:yy, x2:1598, y2:yy, stroke:INK, 'stroke-width':.7, 'stroke-dasharray':'2 3'});
+});
+/* 一个填色单元格（强调统计结果） */
+elp(GOLD, 'rect', {x:1539, y:384, width:30, height:16, fill:'url(#hatch)', stroke:'none', opacity:.6});
+
+/* 前行字段行 */
+COLS.forEach(function(c){
+  txt(c.x, 448, c.oldV, {'font-family':MONO, 'font-size':'var(--type-meta)', 'letter-spacing':1, 'text-anchor':'middle', fill:'rgba(25,25,23,.45)'});
+});
+
+/* ============ 列间下行箭头（前 → 新） ============ */
+COLS.forEach(function(c){
+  el('line', {x1:c.x, y1:482, x2:c.x, y2:520, stroke:INK80, 'stroke-width':1.1});
+  el('line', {x1:c.x-7, y1:511, x2:c.x, y2:521, stroke:INK80, 'stroke-width':1.1});
+  el('line', {x1:c.x+7, y1:511, x2:c.x, y2:521, stroke:INK80, 'stroke-width':1.1});
+});
+
+/* ============ 新行（全墨实线）：新平台链路四态 ============ */
+/* 01 创作（新·AI 生成）：方框 + 内部闪光 + AI 标 */
+el('rect', {x:494, y:586, width:80, height:64, rx:4, fill:'none', stroke:INK80, 'stroke-width':1.3});
+/* 中心四角闪光 */
+el('line', {x1:534, y1:604, x2:534, y2:632, stroke:INK80, 'stroke-width':1.2});
+el('line', {x1:520, y1:618, x2:548, y2:618, stroke:INK80, 'stroke-width':1.2});
+/* 两侧小亮点 */
+el('line', {x1:512, y1:608, x2:516, y2:608, stroke:INK80, 'stroke-width':1});
+el('line', {x1:552, y1:628, x2:556, y2:628, stroke:INK80, 'stroke-width':1});
+el('line', {x1:558, y1:600, x2:560, y2:600, stroke:INK80, 'stroke-width':1});
+el('line', {x1:510, y1:630, x2:512, y2:630, stroke:INK80, 'stroke-width':1});
+el('line', {x1:494, y1:576, x2:584, y2:576, stroke:INK, 'stroke-width':.6, opacity:.4, 'stroke-dasharray':'2 4'});
+txt(535, 570, 'AI', {'font-family':MONO, 'font-size':'var(--type-micro-secondary)', 'letter-spacing':2, 'text-anchor':'middle', fill:'rgba(25,25,23,.6)'});
+/* 02 审阅（新·协作批注）：文档 + 右侧批注气泡 */
+el('rect', {x:834, y:576, width:50, height:66, rx:2, fill:'none', stroke:INK80, 'stroke-width':1.3});
+[592, 604, 616, 628].forEach(function(yy){
+  el('line', {x1:842, y1:yy, x2:876, y2:yy, stroke:INK80, 'stroke-width':.8});
+});
+/* 批注气泡：圆角矩形 + 三角小尾巴指向文档 */
+el('path', {d:'M 904 584 Q 900 584 900 588 L 900 614 Q 900 618 904 618 L 918 618 L 918 624 L 924 618 L 934 618 Q 938 618 938 614 L 938 588 Q 938 584 934 584 Z',
+  fill:'none', stroke:INK80, 'stroke-width':1.2});
+/* 气泡内两行批注线 */
+el('line', {x1:906, y1:596, x2:932, y2:596, stroke:INK80, 'stroke-width':.7});
+el('line', {x1:906, y1:606, x2:926, y2:606, stroke:INK80, 'stroke-width':.7});
+txt(874, 668, 'REVIEW', {'font-family':MONO, 'font-size':'var(--type-meta)', 'letter-spacing':2, 'text-anchor':'middle', fill:INK});
+/* 03 发布（新·一键多端）：底部按钮 + 向上扇出多端箭头 */
+/* 底部按钮（发布源） */
+el('rect', {x:1190, y:624, width:48, height:20, rx:3, fill:'none', stroke:INK80, 'stroke-width':1.3});
+/* 按钮内三角播放符（线稿） */
+el('path', {d:'M 1209 630 L 1209 640 L 1218 635 Z', fill:'none', stroke:INK80, 'stroke-width':1});
+/* 三条向上扇出的箭头线 + 端点小框（手机/平板/电脑） */
+/* 左：手机 */
+el('line', {x1:1214, y1:624, x2:1110, y2:586, stroke:INK80, 'stroke-width':1.2});
+el('line', {x1:1116, y1:586, x2:1110, y2:586, stroke:INK80, 'stroke-width':1});
+el('line', {x1:1110, y1:586, x2:1113, y2:592, stroke:INK80, 'stroke-width':1});
+el('rect', {x:1094, y:566, width:14, height:22, rx:2, fill:'none', stroke:INK80, 'stroke-width':1.1});
+el('line', {x1:1098, y1:572, x2:1104, y2:572, stroke:INK80, 'stroke-width':.7});
+/* 中：平板 */
+el('line', {x1:1214, y1:624, x2:1214, y2:574, stroke:INK80, 'stroke-width':1.4});
+el('line', {x1:1209, y1:580, x2:1214, y2:574, stroke:INK80, 'stroke-width':1});
+el('line', {x1:1219, y1:580, x2:1214, y2:574, stroke:INK80, 'stroke-width':1});
+el('rect', {x:1202, y:556, width:24, height:18, rx:2, fill:'none', stroke:INK80, 'stroke-width':1.1});
+/* 右：电脑显示器 */
+el('line', {x1:1214, y1:624, x2:1318, y2:586, stroke:INK80, 'stroke-width':1.2});
+el('line', {x1:1312, y1:586, x2:1318, y2:586, stroke:INK80, 'stroke-width':1});
+el('line', {x1:1318, y1:586, x2:1315, y2:592, stroke:INK80, 'stroke-width':1});
+el('rect', {x:1300, y:564, width:32, height:20, rx:2, fill:'none', stroke:INK80, 'stroke-width':1.1});
+el('line', {x1:1316, y1:584, x2:1324, y2:592, stroke:INK80, 'stroke-width':.8});
+el('line', {x1:1312, y1:592, x2:1328, y2:592, stroke:INK80, 'stroke-width':.8});
+/* 04 复盘（新·数据看板）：卡片 + 柱状图 + 折线 */
+/* 看板卡片框 + 标题栏 */
+el('rect', {x:1496, y:566, width:108, height:84, rx:3, fill:'none', stroke:INK80, 'stroke-width':1.3});
+el('line', {x1:1496, y1:584, x2:1604, y2:584, stroke:INK80, 'stroke-width':.9});
+el('circle', {cx:1504, cy:575, r:2, fill:'none', stroke:INK80, 'stroke-width':.7});
+el('circle', {cx:1512, cy:575, r:2, fill:'none', stroke:INK80, 'stroke-width':.7});
+/* 柱状图（3 根递增柱） */
+el('rect', {x:1510, y:624, width:12, height:16, fill:'url(#hatch)', stroke:INK80, 'stroke-width':.9});
+el('rect', {x:1528, y:614, width:12, height:26, fill:'url(#hatch)', stroke:INK80, 'stroke-width':.9});
+el('rect', {x:1546, y:604, width:12, height:36, fill:'url(#hatch)', stroke:INK80, 'stroke-width':.9});
+/* 基线 */
+el('line', {x1:1506, y1:640, x2:1564, y2:640, stroke:INK80, 'stroke-width':.8});
+/* 折线（右上区域，趋势上扬） */
+el('polyline', {points:'1572,636 1582,626 1590,616 1598,600',
+  fill:'none', stroke:INK80, 'stroke-width':1.1});
+[[1572,636],[1582,626],[1590,616],[1598,600]].forEach(function(p){
+  el('circle', {cx:p[0], cy:p[1], r:1.8, fill:INK});
+});
+
+/* 新行字段行 */
+COLS.forEach(function(c){
+  txt(c.x, 700, c.newV, {'font-family':MONO, 'font-size':'var(--type-meta)', 'letter-spacing':1, 'text-anchor':'middle', fill:'rgba(25,25,23,.7)'});
+});
+
+/* ============ 底部 KPI 通栏带（总账三数） ============ */
+el('line', {x1:200, y1:786, x2:1720, y2:786, stroke:INK80, 'stroke-width':1.3});
+el('line', {x1:200, y1:874, x2:1720, y2:874, stroke:INK, 'stroke-width':.6, opacity:.3});
+el('line', {x1:192, y1:786, x2:208, y2:786, stroke:INK80, 'stroke-width':1.3});
+el('line', {x1:1712, y1:786, x2:1728, y2:786, stroke:INK80, 'stroke-width':1.3});
+el('line', {x1:820, y1:794, x2:820, y2:866, stroke:INK, 'stroke-width':.6, opacity:.3});
+el('line', {x1:1360, y1:794, x2:1360, y2:866, stroke:INK, 'stroke-width':.6, opacity:.3});
+
+function kpi(nx, num, label, note) {
+  /* KPI 三个数字是本页总账焦点 → accent 模式下数字染番茄红，标签/注释保持墨色 */
+  var nc = ACCENT ? RED : INK;
+  txt(nx, 852, num, {'font-family':SERIF, 'font-size':'var(--type-metric)', 'text-anchor':'end', fill:nc});
+  txt(nx + 24, 832, label, {'font-family':SANS, 'font-weight':300, 'font-size':'var(--type-body)', fill:'rgba(25,25,23,.8)'});
+  txt(nx + 24, 858, note, {'font-family':MONO, 'font-size':'var(--type-micro-secondary)', 'letter-spacing':2, fill:INK45});
+}
+kpi(520,  '-65%', '产出周期', 'CYCLE TIME');
+kpi(1080, '×3.1',  '内容量',   'OUTPUT');
+kpi(1540, '92%',  '准时率',   'ON-TIME');
+
+stageFit();
+</script>
+</body>
+</html>

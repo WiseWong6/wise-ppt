@@ -1,0 +1,183 @@
+<!-- GENERATED: Wise PPT formal canonical source; protected Gallery remains provenance-only. -->
+<!DOCTYPE html>
+<html lang="zh-CN" data-runtime="wise-ppt-specimen" data-typography-mode="mixed" data-page-id="gallery-ai-m1" data-page-role="hook" data-theme="paper-ink" data-layout="paper-ink.emotion.particle-hero" data-layout-source="gallery">
+<head>
+<meta charset="UTF-8">
+<title>layout-m1 · 粒子主角 + 对照提问 · 大模型黑盒</title>
+<link rel="stylesheet" href="../../../../themes/paper-ink/assets/design-tokens.css">
+<link rel="stylesheet" href="../../../../themes/paper-ink/assets/slide-components.css">
+<link rel="stylesheet" href="../../../shell.css">
+<style>
+  canvas.scene { position: absolute; inset: 0; z-index: 1; }
+  svg.overlay { position: absolute; inset: 0; z-index: 2; pointer-events: none; }
+
+  /* 方块上方：对照行 */
+  .compare {
+    position: absolute; left: 0; right: 0; top: 297px;
+    display: flex; align-items: center; justify-content: center;
+    gap: var(--space-5); z-index: 3;
+    font-family: var(--sans); font-weight: 300;
+    font-size: var(--type-subheading); color: var(--ink-70);
+    letter-spacing: .06em;
+  }
+  .compare .arr { font-style: normal; color: var(--ink-45); }
+  .compare .sep { width: 1px; height: 26px; background: var(--ink-25); margin: 0 var(--space-6); }
+  .compare .q {
+    font-family: var(--serif); font-size: var(--type-heading);
+    color: var(--ink); transform: translateY(2px);
+  }
+  /* 方块刻字（纸色反色） */
+  .boxtext {
+    position: absolute; z-index: 3;
+    display: flex; flex-direction: column;
+    align-items: center; justify-content: center;
+    color: var(--paper); pointer-events: none;
+  }
+  .boxtext .t1 {
+    font-family: var(--mono); font-size: var(--type-emphasis);
+    letter-spacing: .16em; text-indent: .16em;
+  }
+  .boxtext .divi {
+    width: 140px; height: 1px;
+    background: var(--wp-compat-layout-paper-55);
+    margin: var(--space-6) 0 var(--space-5);
+  }
+  .boxtext .t2 {
+    font-family: var(--mono); font-size: var(--type-meta);
+    letter-spacing: .4em; text-indent: .4em;
+    color: var(--wp-compat-layout-paper-80);
+  }
+
+  .caption {
+    position: absolute; left: 0; right: 0; bottom: 108px;
+    text-align: center;;;;;;
+    z-index: 5;
+  }
+</style>
+</head>
+<body class="slide">
+<div class="stage" data-block-id="gallery-primary" data-renderer-kind="svg" data-component-source="native" data-component-id="native.paper-ink.emotion.particle-hero.metaphor" data-content-ref="example.m1" data-anchor-id="stage">
+  <div class="doc tl" data-anchor-id="slot-support">AI ENGINEERING — M1<br>LLM BLACK BOX</div>
+  <div class="folio">01 / 01 — BY @歪斯WISE</div>
+
+  <canvas class="scene" id="cv" width="1920" height="1080"></canvas>
+
+  <div class="compare">
+    <span>规则引擎</span><i class="arr">→</i><span>可解释</span>
+    <span class="sep"></span>
+    <span>大模型</span><i class="arr">→</i><span class="q">？</span>
+  </div>
+
+  <svg class="overlay" width="1920" height="1080" viewBox="0 0 1920 1080">
+    <defs>
+      <pattern id="hatch" width="5.6" height="5.6" patternUnits="userSpaceOnUse" patternTransform="rotate(45)">
+        <line x1="0" y1="0" x2="0" y2="5.6" stroke="var(--ink)" stroke-width="0.7" opacity="0.35"/>
+      </pattern>
+    </defs>
+    <g id="draw"></g>
+  </svg>
+
+  <div class="boxtext" data-anchor-id="slot-metaphor">
+    <div class="t1">LLM</div>
+    <div class="divi"></div>
+    <div class="t2">GIANT BLACKBOX</div>
+  </div>
+
+  <div class="caption" data-anchor-id="slot-takeaway">输入一句话，输出一个答案——中间发生了什么，没人看得见。</div>
+</div>
+
+<script src="../../../../runtime/stage-fit.js"></script>
+<script src="../../../../themes/paper-ink/assets/particles.js"></script>
+<script>
+var HERO = {x:825, y:379, size:270};
+var boxText = document.querySelector('.boxtext');
+boxText.style.left = HERO.x + 'px';
+boxText.style.top = HERO.y + 'px';
+boxText.style.width = HERO.size + 'px';
+boxText.style.height = HERO.size + 'px';
+
+/* ============ 粒子黑方块（极密 + 毛糙边缘） ============ */
+(function(){
+  var ctx = document.getElementById('cv').getContext('2d');
+  var BX = HERO.x, BY = HERO.y, BS = HERO.size;
+
+  // 极密实心填充
+  for (var y = BY; y < BY + BS; y += 2.6) {
+    for (var x = BX; x < BX + BS; x += 2.6) {
+      var e = Math.min(x - BX, BX + BS - x, y - BY, BY + BS - y);
+      if (e < 4 && Math.random() < (4 - e) / 4 * .75) continue;
+      PART.dot(ctx,
+        x + (Math.random() - .5) * 1.6,
+        y + (Math.random() - .5) * 1.6,
+        1.5 + Math.random() * .7,
+        .75 + Math.random() * .25);
+    }
+  }
+  // 边缘向外毛糙散落
+  for (var i = 0; i < 460; i++) {
+    var side = (Math.random() * 4) | 0, t = Math.random() * BS;
+    var d = Math.pow(Math.random(), 2) * 11;
+    var px, py;
+    if (side === 0)      { px = BX + BS + d; py = BY + t; }
+    else if (side === 1) { px = BX - d;      py = BY + t; }
+    else if (side === 2) { px = BX + t;      py = BY + BS + d; }
+    else                 { px = BX + t;      py = BY - d; }
+    PART.dot(ctx, px, py, .6 + Math.random() * 1.1, .1 + Math.random() * .42 * (1 - d / 11));
+  }
+  // 氛围尘埃（极淡，避开文字区）
+  PART.dust(ctx, 320, HERO.y+25, 1280, 440, 110, .1);
+})();
+
+/* ============ SVG 构造线 / 尺寸标注 / 剖面影 ============ */
+(function(){
+  var NS = 'http://www.w3.org/2000/svg';
+  var INK8 = __wiseThemeToken("--ink-80");
+  var G = document.getElementById('draw');
+  function el(tag, attrs) {
+    var e = document.createElementNS(NS, tag);
+    for (var k in attrs) e.setAttribute(k, attrs[k]);
+    G.appendChild(e); return e;
+  }
+  function txt(x, y, str, attrs) {
+    var t = el('text', Object.assign({x:x, y:y}, attrs||{}));
+    t.textContent = str; return t;
+  }
+  var MONO = 'var(--mono)';
+
+G = el('g', {transform:'translate(0 0)'});
+  var BX = HERO.x, BY = HERO.y, BS = HERO.size;
+
+  // 构造框（虚线，比方块大一圈）
+  el('rect', {x:BX-18, y:BY-18, width:BS+36, height:BS+36, fill:'none',
+    stroke:INK8, 'stroke-width':.6, opacity:.3, 'stroke-dasharray':'3 5'});
+  // 构造框四角短刻度
+  [[BX-18,BY-18],[BX+BS+18,BY-18],[BX-18,BY+BS+18],[BX+BS+18,BY+BS+18]].forEach(function(c){
+    el('line', {x1:c[0]-7, y1:c[1], x2:c[0]+7, y2:c[1], stroke:INK8, 'stroke-width':.8, opacity:.5});
+    el('line', {x1:c[0], y1:c[1]-7, x2:c[0], y2:c[1]+7, stroke:INK8, 'stroke-width':.8, opacity:.5});
+  });
+
+  // 左侧尺寸标注：270 px
+  var dx = BX - 74;
+  el('line', {x1:BX-30, y1:BY, x2:dx-10, y2:BY, stroke:INK8, 'stroke-width':.6, opacity:.3, 'stroke-dasharray':'2 4'});
+  el('line', {x1:BX-30, y1:BY+BS, x2:dx-10, y2:BY+BS, stroke:INK8, 'stroke-width':.6, opacity:.3, 'stroke-dasharray':'2 4'});
+  el('line', {x1:dx, y1:BY, x2:dx, y2:BY+BS, stroke:INK8, 'stroke-width':1.2});
+  el('line', {x1:dx-8, y1:BY, x2:dx+8, y2:BY, stroke:INK8, 'stroke-width':1.2});
+  el('line', {x1:dx-8, y1:BY+BS, x2:dx+8, y2:BY+BS, stroke:INK8, 'stroke-width':1.2});
+  txt(dx-16, BY+BS/2, '270 PX', {'font-family':MONO, 'font-size':'var(--type-meta)', 'letter-spacing':3,
+    fill:__wiseThemeToken("--wp-compat-pi-ink-60"), 'text-anchor':'middle',
+    transform:'rotate(-90 '+(dx-16)+' '+(BY+BS/2)+')'});
+
+  // 底部剖面影（hatch）
+  el('path', {d:'M '+BX+' '+(BY+BS+10)+' L '+(BX+BS)+' '+(BY+BS+10)+
+    ' L '+(BX+BS-14)+' '+(BY+BS+21)+' L '+(BX-14)+' '+(BY+BS+21)+' Z', fill:'url(#hatch)'});
+  el('line', {x1:BX-14, y1:BY+BS+21, x2:BX+BS-14, y2:BY+BS+21, stroke:INK8, 'stroke-width':1, opacity:.5});
+
+  // 图注
+  txt(BX+BS/2, BY+BS+62, 'FIG. M1 — PARTICLE MASS · DENSITY 1.0', {'font-family':MONO,
+    'font-size':'var(--type-meta)', 'letter-spacing':4, 'text-anchor':'middle', fill:__wiseThemeToken("--ink-45")});
+})();
+
+stageFit();
+</script>
+</body>
+</html>

@@ -1,0 +1,61 @@
+{
+  "contract_version": 2,
+  "brief": {
+    "title": "留存复盘",
+    "objective": "说明本轮改版的留存结果",
+    "audience": "产品团队",
+    "scenario": "内部复盘会",
+    "language": "zh-CN",
+    "user_constraints": [
+      {
+        "constraint_id": "constraint.one-page",
+        "type": "page_limit",
+        "exact_pages": 1,
+        "source_refs": [
+          "src.user"
+        ]
+      }
+    ],
+    "gaps": []
+  },
+  "sources": [
+    {
+      "id": "src.user",
+      "kind": "user_statement",
+      "title": "用户说明",
+      "locator": "inline:user",
+      "synthetic": false
+    }
+  ],
+  "assets": [],
+  "content_items": [
+    {
+      "id": "item.metric",
+      "epistemic_role": "fact",
+      "content_form": "metric",
+      "statement": "本轮留存达到 55%",
+      "priority": "must",
+      "status": "sourced",
+      "status_note": "用户明确提供",
+      "source_refs": [
+        "src.user"
+      ],
+      "atomic_values": [],
+      "structured_data": {
+        "metrics": [
+          {
+            "label": "改版前",
+            "value": 42,
+            "unit": "%"
+          },
+          {
+            "label": "改版后",
+            "value": 55,
+            "unit": "%"
+          }
+        ]
+      },
+      "relations": []
+    }
+  ]
+}

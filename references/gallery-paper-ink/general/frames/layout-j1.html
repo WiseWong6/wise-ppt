@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-runtime="wise-ppt-specimen" data-typography-mode="mixed" data-page-id="gallery-general-j1" data-page-role="explain" data-theme="paper-ink" data-layout="paper-ink.cycle.ring" data-layout-source="gallery">
+<head>
+<meta charset="UTF-8">
+<title>layout-j1 · 循环圆环</title>
+<link rel="stylesheet" href="../../../../themes/paper-ink/assets/design-tokens.css">
+<link rel="stylesheet" href="../../../../themes/paper-ink/assets/slide-components.css">
+<link rel="stylesheet" href="../../../shell.css">
+<style>
+  svg.scene { position: absolute; inset: 0; z-index: 1; }
+  .doc.tl, .folio { color: rgba(25,25,23,.45); }
+  .caption {
+    position: absolute; left: 0; right: 0; bottom: 118px;
+    text-align: center;
+    font-family: var(--sans); font-weight: 400;
+    font-size: var(--type-caption); letter-spacing: .04em;
+    color: var(--ink);
+    z-index: 5;
+  }
+</style>
+</head>
+<body class="slide">
+<div class="stage" data-block-id="gallery-primary" data-renderer-kind="svg" data-component-source="native" data-component-id="native.paper-ink.cycle.ring.cycle-steps" data-content-ref="example.j1">
+  <div class="doc tl">运营 · 策划 — J1<br>活动增长闭环</div>
+  <div class="folio">J1 / 63 — BY @歪斯WISE</div>
+
+  <svg class="scene" width="1920" height="1080" viewBox="0 0 1920 1080">
+    <defs>
+      <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+        <path d="M 0 0 L 10 5 L 0 10" fill="none" stroke="#191917" stroke-width="1.4"/>
+      </marker>
+    </defs>
+    <g id="draw"></g>
+  </svg>
+
+  <div class="caption">活动从洞察、触达、承接到复盘持续循环，每轮数据反哺下一轮策划。</div>
+</div>
+
+<script src="../../../../runtime/stage-fit.js"></script>
+<script src="../../../../themes/paper-ink/assets/particles.js"></script>
+<script>
+var NS = 'http://www.w3.org/2000/svg';
+var INK = '#191917';
+var INK80 = 'rgba(25,25,23,.8)';
+var INK45 = 'rgba(25,25,23,.45)';
+var G = document.getElementById('draw');
+function el(tag, attrs) {
+  var e = document.createElementNS(NS, tag);
+  for (var k in attrs) e.setAttribute(k, attrs[k]);
+  G.appendChild(e); return e;
+}
+function txt(x, y, str, attrs) {
+  var t = el('text', Object.assign({x:x, y:y}, attrs||{}));
+  t.textContent = str; return t;
+}
+var MONO = 'var(--mono)', SANS = 'var(--sans)';
+
+G = el('g', {transform:'translate(0 -8.7)'});
+
+/* ---------- 圆心主环 ---------- */
+var CX = 960, CY = 515, R = 240;
+el('circle', {cx:CX, cy:CY, r:R, fill:'none', stroke:INK80, 'stroke-width':1.4});
+el('circle', {cx:CX, cy:CY, r:R-14, fill:'none', stroke:INK, 'stroke-width':.6, 'stroke-dasharray':'2 6', opacity:.3});
+
+/* 15° 刻度齿（避让节点角度） */
+for (var d = 0; d < 360; d += 15) {
+  if (d % 45 === 0) continue;
+  var a = d * Math.PI / 180;
+  el('line', {
+    x1: CX + Math.cos(a) * (R - 12), y1: CY + Math.sin(a) * (R - 12),
+    x2: CX + Math.cos(a) * (R - 5),  y2: CY + Math.sin(a) * (R - 5),
+    stroke: INK, 'stroke-width': .6, opacity: .3
+  });
+}
+
+/* 4 段顺时针弧箭头（位于相邻节点中点） */
+function polar(deg, r) {
+  var a = deg * Math.PI / 180;
+  return [CX + Math.cos(a) * (r || R), CY + Math.sin(a) * (r || R)];
+}
+[0, 90, 180, 270].forEach(function(dd){
+  var p1 = polar(dd - 8), p2 = polar(dd + 8);
+  el('path', {
+    d: 'M ' + p1[0].toFixed(1) + ' ' + p1[1].toFixed(1) +
+       ' A ' + R + ' ' + R + ' 0 0 1 ' + p2[0].toFixed(1) + ' ' + p2[1].toFixed(1),
+    fill: 'none', stroke: INK, 'stroke-width': 1.4, 'marker-end': 'url(#arrow)'
+  });
+});
+
+/* 圆心十字 + mono 主题字 */
+el('line', {x1:CX-16, y1:CY, x2:CX+16, y2:CY, stroke:INK, 'stroke-width':.5, opacity:.3});
+el('line', {x1:CX, y1:CY-16, x2:CX, y2:CY+16, stroke:INK, 'stroke-width':.5, opacity:.3});
+txt(CX, CY-10, 'LOOP', {'font-family':MONO, 'font-size':'var(--type-body-small)', 'letter-spacing':6, 'text-anchor':'middle', fill:INK});
+txt(CX, CY+22, '活动增长', {'font-family':SANS, 'font-weight':300, 'font-size':'var(--type-body-small)', 'text-anchor':'middle', fill:'rgba(25,25,23,.55)'});
+
+/* ---------- 四角双线卡（虚线引线挂到环上 45° 双圈节点） ---------- */
+var steps = [
+  {no:'01', en:'INSIGHT', t:'洞察', d:'汇总人群反馈、渠道表现与历史素材，确定本轮增长命题', side:'R', y:268},
+  {no:'02', en:'REACH',   t:'触达', d:'按人群、场景与渠道编排内容，形成活动触达节奏', side:'R', y:610},
+  {no:'03', en:'CONVERT', t:'承接', d:'落地页、报名与社群协同承接，实时记录关键行为',   side:'L', y:610},
+  {no:'04', en:'REVIEW',  t:'复盘', d:'回看转化路径，沉淀有效话术与流失原因，反哺策划', side:'L', y:268}
+];
+var W = 556, H = 152, OFF = 169.7;
+
+steps.forEach(function(s){
+  var x = (s.side === 'R') ? 1240 : 124;
+  var y = s.y;
+  var cyCard = y + H / 2;
+  var sgn = (s.side === 'R') ? 1 : -1;
+  var nx = CX + sgn * OFF, ny = CY + (y < 500 ? -OFF : OFF);
+  /* 引线：卡 → 节点（细虚线 + 中点小圆点） */
+  var ex = (s.side === 'R') ? x : x + W;
+  el('line', {x1:ex, y1:cyCard, x2:nx + sgn*12, y2:ny, stroke:INK, 'stroke-width':.7, 'stroke-dasharray':'3 5', opacity:.45});
+  el('circle', {cx:(ex + nx)/2, cy:(cyCard + ny)/2, r:2.4, fill:INK, opacity:.6});
+  /* 双圈节点落在环上 */
+  el('circle', {cx:nx, cy:ny, r:10, fill:'none', stroke:INK80, 'stroke-width':1.2});
+  el('circle', {cx:nx, cy:ny, r:3.5, fill:INK});
+  /* 双线卡框 */
+  el('rect', {x:x, y:y, width:W, height:H, fill:'rgba(255,255,255,.22)', stroke:INK80, 'stroke-width':1.2});
+  el('rect', {x:x+5, y:y+5, width:W-10, height:H-10, fill:'none', stroke:INK, 'stroke-width':.6, opacity:.35});
+  /* 编号角标 + 短横 */
+  txt(x+30, y+46, s.no, {'font-family':MONO, 'font-size':'var(--type-body)', fill:INK});
+  el('line', {x1:x+30, y1:y+58, x2:x+62, y2:y+58, stroke:INK, 'stroke-width':1});
+  /* EN 角标 */
+  txt(x+W-30, y+44, s.en, {'font-family':MONO, 'font-size':'var(--type-meta)', 'letter-spacing':2, 'text-anchor':'end', fill:INK45});
+  /* 卡题 + 一行说明 */
+  txt(x+30, y+94, s.t, {'font-family':SANS, 'font-weight':300, 'font-size':'var(--type-subheading)', fill:INK});
+  txt(x+30, y+128, s.d, {'font-family':SANS, 'font-weight':300, 'font-size':'var(--type-body-small)', fill:'rgba(25,25,23,.7)'});
+});
+
+stageFit();
+</script>
+</body>
+</html>

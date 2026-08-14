@@ -1,0 +1,50 @@
+{
+  "contract_version": 1,
+  "contract_id": "wise-ppt.visual-contract@1",
+  "semantic_tokens": {
+    "colors": {
+      "surface-canvas": "--wp-color-surface-canvas",
+      "surface-recessed": "--wp-color-surface-recessed",
+      "surface-panel": "--wp-color-surface-panel",
+      "primary": "--wp-color-primary",
+      "functional": "--wp-color-functional",
+      "body": "--wp-color-body",
+      "chart-label": "--wp-color-chart-label",
+      "metadata": "--wp-color-metadata",
+      "divider": "--wp-color-divider",
+      "construction": "--wp-color-construction",
+      "focus": "--wp-color-focus",
+      "focus-secondary": "--wp-color-focus-secondary",
+      "focus-peripheral": "--wp-color-focus-peripheral",
+      "data-1": "--wp-color-data-1",
+      "data-2": "--wp-color-data-2",
+      "data-3": "--wp-color-data-3",
+      "data-4": "--wp-color-data-4",
+      "data-5": "--wp-color-data-5",
+      "data-6": "--wp-color-data-6"
+    },
+    "fonts": {
+      "serif": "--wp-font-serif",
+      "sans": "--wp-font-sans",
+      "mono": "--wp-font-mono",
+      "brush": "--wp-font-brush"
+    }
+  },
+  "layout_sources": [
+    "gallery",
+    "composition",
+    "free_build"
+  ],
+  "adapter_targets": [
+    "typography",
+    "table",
+    "image",
+    "native-html",
+    "svg",
+    "canvas",
+    "atlas-package",
+    "native-component",
+    "echarts-option"
+  ],
+  "extensions": {}
+}

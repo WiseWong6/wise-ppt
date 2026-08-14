@@ -1,0 +1,133 @@
+/* Wise PPT deck application shell. Theme slide CSS owns no viewport selectors. */
+[data-runtime="wise-ppt-deck"],
+[data-runtime="wise-ppt-deck"] body { min-height: 100%; }
+
+[data-runtime="wise-ppt-deck"] body {
+  margin: 0;
+  background: var(--paper-deep);
+  color: var(--ink);
+  font-family: var(--sans);
+  font-weight: 300;
+  -webkit-font-smoothing: antialiased;
+}
+
+[data-runtime="wise-ppt-deck"] .slide {
+  position: relative;
+  width: 1920px;
+  height: 1080px;
+  flex: none;
+  overflow: hidden;
+}
+[data-runtime="wise-ppt-deck"] .slide > .stage {
+  width: 1920px;
+  height: 1080px;
+  transform: none !important;
+  transform-origin: top left !important;
+}
+
+#board { padding: 48px 40px 80px; min-height: 100vh; }
+.board-head,
+.section-label,
+.board-grid { max-width: 1560px; margin-inline: auto; }
+.board-head h1 { font-family: var(--sans); font-size: var(--type-subheading); font-weight: 300; }
+.board-head p,
+.section-label,
+.board-title { font-family: var(--mono); }
+.board-head p { color: var(--ink-70); }
+.section-label { margin-top: 34px; padding-bottom: 10px; border-bottom: 1px solid var(--ink-45); letter-spacing: .16em; }
+.board-grid { display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); gap: 24px; margin-top: 18px; }
+.board-card { appearance: none; border: 0; background: none; color: inherit; text-align: left; cursor: pointer; padding: 0; }
+.board-preview { position: relative; overflow: hidden; aspect-ratio: 16/9; border: 1px solid var(--ink-45); background: var(--paper); }
+.board-clone { position: absolute !important; inset: 0 !important; transform: scale(var(--board-scale)); transform-origin: top left; pointer-events: none; -webkit-user-select: none !important; user-select: none !important; }
+.board-title { margin-top: 10px; font-size: var(--type-meta); }
+.board-summary { margin-top: 5px; color: var(--ink-70); line-height: 1.5; }
+.board-card:hover .board-preview,
+.board-card.active .board-preview { border-color: var(--ink); outline: 1px solid var(--ink); }
+
+#deck {
+  position: fixed;
+  left: var(--wise-viewport-left, 0);
+  top: var(--wise-viewport-top, 0);
+  width: var(--wise-viewport-width, 100vw);
+  height: var(--wise-viewport-height, 100vh);
+  background: var(--paper-deep);
+  visibility: hidden;
+  overflow: hidden;
+}
+#deck-stage {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 1920px;
+  height: 1080px;
+  margin-left: -960px;
+  margin-top: -540px;
+  overflow: hidden;
+  transform-origin: center center;
+}
+#track { display: flex; width: max-content; height: 1080px; transition: transform .25s ease; }
+
+#presentation-controls {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  bottom: max(24px, env(safe-area-inset-bottom));
+  z-index: 8;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--ink);
+  -webkit-user-select: none;
+  user-select: none;
+  transition: opacity .3s ease;
+}
+#presentation-controls.controls-idle { opacity: 0; pointer-events: none; }
+.deck-control,
+#pager {
+  box-sizing: border-box;
+  min-width: 40px;
+  height: 40px;
+  border: 1px solid var(--ink-25);
+  background: color-mix(in srgb, var(--paper) 92%, transparent);
+  color: var(--ink);
+  box-shadow: var(--shadow-soft);
+  font: var(--type-meta) var(--mono);
+}
+.deck-control {
+  display: inline-grid;
+  place-items: center;
+  padding: 0;
+  cursor: pointer;
+}
+.deck-control:hover,
+.deck-control:focus-visible { border-color: var(--ink); outline: 1px solid var(--ink); outline-offset: 2px; }
+.deck-control svg { width: 18px; height: 18px; fill: none; stroke: currentColor; stroke-width: 1.25; stroke-linecap: square; }
+#pager { display: inline-flex; align-items: center; justify-content: center; padding: 0 12px; letter-spacing: .08em; }
+.visually-hidden { position: absolute !important; width: 1px !important; height: 1px !important; padding: 0 !important; margin: -1px !important; overflow: hidden !important; clip: rect(0,0,0,0) !important; white-space: nowrap !important; border: 0 !important; }
+
+.mode-deck #board { display: none; }
+.mode-deck #deck { visibility: visible; }
+.mode-board #presentation-controls { display: none; }
+.print-mode .slide .folio,
+.mode-deck .slide .folio { display: block; }
+
+@page { size: 20in 11.25in; margin: 0; }
+.print-mode,
+.print-mode body { background: #fff; }
+.print-mode #board,
+.print-mode #presentation-controls { display: none !important; }
+.print-mode #deck { position: static; display: block; visibility: visible; width: 1920px; height: auto; background: #fff; overflow: visible; }
+.print-mode #deck-stage { position: static; width: 1920px; height: auto; margin: 0; overflow: visible; transform: none !important; }
+.print-mode #track { display: block; width: 1920px; height: auto; transform: none !important; transition: none !important; }
+.print-mode .slide { break-after: page; page-break-after: always; }
+.print-mode .slide:last-child { break-after: auto; page-break-after: auto; }
+
+@media print {
+  * { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+}
+@media (max-width: 900px) {
+  .board-grid { grid-template-columns: 1fr; }
+}
+@media (prefers-reduced-motion: reduce) {
+  #track { transition: none; }
+}

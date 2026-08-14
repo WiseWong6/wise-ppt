@@ -1,0 +1,331 @@
+<!doctype html>
+<!-- Generated shell: edit slides only between WISE_PPT_SLIDES markers, then run scripts/build_deck.py. -->
+<html lang="zh-CN" data-runtime="wise-ppt-deck" data-typography-mode="mixed" data-deck-title="Wise PPT · 分镜示例">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Wise PPT Skill · 六页示例</title>
+<link rel="stylesheet" href="../../assets/shared.css">
+<script src="../../../../runtime/deck-runtime.js"></script>
+</head>
+<body class="mode-board">
+<main id="board"><header class="board-head"><h1 id="deck-title"></h1><p id="deck-subtitle"></p></header><div id="board-sections"></div></main>
+<section id="deck" aria-label="横向放映"><div id="deck-stage"><div id="track">
+<!-- WISE_PPT_SLIDES_START -->
+<section class="slide" data-render-pending="true" data-page-id="page.story.why" data-page-role="compare" data-theme="paper-ink" data-layout-source="gallery" data-recipe-id="paper-ink.comparison.dual-panel" data-page-title="AI 做 PPT 总是千篇一律，因为缺的是设计判断" data-page-summary="AI 缺的不是生成页面的能力，而是好的设计标准。" data-section-id="section.problem" data-section-title="问题与标准" data-emphasis-mode="none"><main class="stage" data-balance="structural" data-balance-frame="0,140,1920,980">
+    <div class="doc tl" data-balance-exclude="true" data-slot-id="support" data-block-id="block.story.why-support" data-renderer-kind="typography" data-component-source="native" data-component-id="native.paper-ink.comparison.dual-panel.support" data-theme-adapter-id="paper-ink.typography" data-content-ref="item.story.why">WISE PPT SKILL — 01<br>THE GAPS OF AI-MADE PPT</div>
+    <div class="folio" data-balance-exclude="true">01 / 06 — BY @歪斯WISE</div>
+    <svg class="scene" viewBox="0 0 1920 1080" role="img" aria-label="AI做PPT总是千篇一律" aria-describedby="why-desc"
+      data-slot-id="comparison" data-block-id="block.story.why-comparison" data-renderer-kind="svg" data-component-source="native" data-component-id="native.paper-ink.comparison.dual-panel.comparison" data-theme-adapter-id="paper-ink.svg" data-content-ref="item.story.why">
+      <desc id="why-desc">左侧展示 AI 做 PPT 容易千篇一律的四个表现：喜欢格子布局、颜色花里胡哨、信息密度不足，以及 ICON、EMOJI 滥用；右侧展示内容规划、版式适配、组件供给和视觉强调四项设计决策。</desc>
+    </svg>
+    <div class="caption" data-slot-id="takeaway" data-block-id="block.story.why-takeaway" data-renderer-kind="typography" data-component-source="native" data-component-id="native.paper-ink.comparison.dual-panel.takeaway" data-theme-adapter-id="paper-ink.typography" data-content-ref="item.story.why-takeaway">AI缺的不是生成页面的能力，而是好的设计标准。</div>
+  </main><script>(function () {
+      const slide=document.currentScript.closest('.slide');
+      const svg = slide.querySelector('.scene'), NS = 'http://www.w3.org/2000/svg';
+      const INK = '#191917', INK80 = 'rgba(25,25,23,.80)', INK70 = 'rgba(25,25,23,.70)', INK45 = 'rgba(25,25,23,.45)';
+      const SANS = 'var(--sans)', MONO = 'var(--mono)', SERIF = 'var(--serif)';
+      const el = (tag, attrs = {}, parent = svg) => { const n = document.createElementNS(NS, tag); Object.entries(attrs).forEach(([k,v]) => n.setAttribute(k,v)); parent.appendChild(n); return n; };
+      const txt = (text, x, y, attrs = {}, parent = svg) => { const n = el('text', {x, y, fill:INK, 'font-family':SANS, ...attrs}, parent); n.textContent = text; return n; };
+      const line = (x1,y1,x2,y2,attrs={},parent=svg) => el('line',{x1,y1,x2,y2,stroke:INK,'stroke-width':1.1,...attrs},parent);
+      const panel = (x) => { el('rect',{x,y:270,width:610,height:530,fill:'rgba(255,255,255,.22)',stroke:INK80,'stroke-width':1.3}); el('rect',{x:x+5,y:275,width:600,height:520,fill:'none',stroke:INK,'stroke-width':.6,opacity:.32}); };
+
+      txt('FIG. 01 — THE GAPS OF AI-MADE PPT',200,176,{'font-family':MONO,'font-size':WisePPT.typeSize('label'),'letter-spacing':2.2,fill:INK45});
+      line(200,194,560,194,{stroke:INK45,'stroke-width':.7});
+      panel(205); panel(1105);
+
+      el('rect',{x:360,y:248,width:300,height:44,fill:'#DFE0D9',stroke:INK,'stroke-width':1.2});
+      txt('DEFAULT AI OUTPUT',510,277,{'font-family':MONO,'font-size':WisePPT.typeSize('meta'),'letter-spacing':2,'text-anchor':'middle',fill:INK70});
+      el('rect',{x:1260,y:248,width:300,height:44,fill:'#DFE0D9',stroke:INK,'stroke-width':1.2});
+      txt('PRESENTATION INTENT',1410,277,{'font-family':MONO,'font-size':WisePPT.typeSize('meta'),'letter-spacing':2,'text-anchor':'middle',fill:INK70});
+
+      line(850,530,1045,530,{stroke:INK70,'stroke-width':1.2});
+      el('path',{d:'M 1035 522 L 1045 530 L 1035 538',fill:'none',stroke:INK70,'stroke-width':1.2});
+      txt('AI做PPT总是千篇一律',510,356,{'font-family':SANS,'font-size':WisePPT.typeSize('emphasis'),'font-weight':300,'text-anchor':'middle'});
+      const grid = el('g');
+      [0,1,2].forEach(row => [0,1,2].forEach(col => {
+        const x = 295 + col * 150, y = 432 + row * 54;
+        el('rect',{x,y,width:130,height:40,fill:'none',stroke:INK45,'stroke-width':1},grid);
+        line(x+16,y+14,x+98,y+14,{stroke:INK45,'stroke-width':.8},grid);
+        line(x+16,y+27,x+78,y+27,{stroke:INK45,'stroke-width':.8},grid);
+      }));
+      const faults = [
+        ['GRID FIRST','喜欢格子布局'], ['COLOUR FIRST','颜色花里胡哨'], ['NO FOCUS','信息密度不足'], ['ICON UGLY','ICON、EMOJI滥用']
+      ];
+      // 2×2，整体水平居中于左面板中心 x=510；每项英文一行、中文一行，按列中心对齐。
+      faults.forEach((f,i) => {
+        const col = i % 2, row = Math.floor(i / 2);
+        const cx = 510 + (col === 0 ? -110 : 110), y = 676 + row * 56;
+        txt(f[0],cx,y,{'font-family':MONO,'font-size':WisePPT.typeSize('meta'),'letter-spacing':1.5,'text-anchor':'middle',fill:INK70});
+        txt(f[1],cx,y+24,{'font-size':WisePPT.typeSize('body-small'),'font-weight':300,'text-anchor':'middle',fill:INK70});
+      });
+
+      txt('让我们告别审美疲劳',1410,356,{'font-family':SANS,'font-size':WisePPT.typeSize('emphasis'),'font-weight':300,'text-anchor':'middle'});
+      txt('再决定内容、版式与强调',1410,388,{'font-size':WisePPT.typeSize('body-small'),'font-weight':300,'text-anchor':'middle',fill:INK70});
+      const focus = el('g'), FCX = 1410, FCY = 530, FCR = 90, NODE_R = 28;
+      const points = [
+        [1218,438,'01','内容规划'], [1602,438,'02','版式适配'],
+        [1218,650,'03','组件供给'], [1602,650,'04','视觉强调']
+      ];
+      points.forEach(([x,y]) => {
+        const dx = FCX - x, dy = FCY - y, distance = Math.hypot(dx, dy);
+        const ux = dx / distance, uy = dy / distance;
+        line(x + ux * NODE_R, y + uy * NODE_R, FCX - ux * FCR, FCY - uy * FCR, {stroke:INK45,'stroke-width':.9,'stroke-dasharray':'3 7'}, focus);
+      });
+      el('circle',{cx:FCX,cy:FCY,r:FCR,fill:'none',stroke:INK80,'stroke-width':1.3},focus);
+      el('circle',{cx:FCX,cy:FCY,r:57,fill:'rgba(255,255,255,.22)',stroke:INK,'stroke-width':.7,opacity:.7},focus);
+      el('circle',{cx:FCX,cy:FCY,r:5,fill:INK},focus);
+      txt('ONE',FCX,FCY-8,{'font-family':MONO,'font-size':WisePPT.typeSize('meta'),'letter-spacing':2,'text-anchor':'middle',fill:INK70},focus);
+      txt('CLAIM',FCX,FCY+12,{'font-family':MONO,'font-size':WisePPT.typeSize('meta'),'letter-spacing':1.4,'text-anchor':'middle',fill:INK70},focus);
+      points.forEach(p => {
+        const [x,y,no,label] = p; el('circle',{cx:x,cy:y,r:28,fill:'#DFE0D9',stroke:INK,'stroke-width':1.2}); txt(no,x,y+5,{'font-family':MONO,'font-size':WisePPT.typeSize('meta'),'text-anchor':'middle'}); txt(label,x,y+76,{'font-size':WisePPT.typeSize('body-small'),'font-weight':300,'text-anchor':'middle',fill:INK70});
+      });
+    WisePPT.markSlideReady(slide);
+    })();</script></section>
+<section class="slide" data-render-pending="true" data-page-id="page.story.workflow" data-page-role="explain" data-theme="paper-ink" data-layout-source="composition" data-recipe-id="paper-ink.flow.pipeline" data-page-title="五步编排链把原始资料变成可放映网页" data-page-summary="先理解内容，再安排重点、层级与关系。" data-section-id="section.workflow" data-section-title="从内容到放映" data-emphasis-mode="none"><main class="stage" data-balance="structural" data-balance-frame="0,140,1920,980">
+    <div class="doc tl" data-balance-exclude="true" data-block-id="block.story.workflow-support" data-renderer-kind="typography" data-component-source="native" data-component-id="support" data-theme-adapter-id="paper-ink.typography" data-content-ref="item.story.workflow">WISE PPT SKILL — 02<br>CONTENT TO PLAYBACK</div>
+    <div class="folio" data-balance-exclude="true">02 / 06 — BY @歪斯WISE</div>
+    <svg class="scene" viewBox="0 0 1920 1080" role="img" aria-label="Wise PPT Skill 的内容编排流程" aria-describedby="how-desc"
+      data-block-id="block.story.workflow" data-renderer-kind="svg" data-component-source="native" data-component-id="pipeline" data-theme-adapter-id="paper-ink.svg" data-content-ref="item.story.workflow">
+      <desc id="how-desc">Skill 依次分析内容、梳理叙事、判断版式、组合组件，并生成可放映的网页PPT。</desc>
+    </svg>
+    <div class="caption" data-block-id="block.story.workflow-takeaway" data-renderer-kind="typography" data-component-source="native" data-component-id="takeaway" data-theme-adapter-id="paper-ink.typography" data-content-ref="item.story.workflow-takeaway">先理解内容，再安排重点、层级与关系。</div>
+  </main><script>(function(){
+      const slide=document.currentScript.closest('.slide');
+      const svg=slide.querySelector('.scene'),NS='http://www.w3.org/2000/svg';
+      const INK='#191917', INK80='rgba(25,25,23,.80)', INK70='rgba(25,25,23,.70)', INK45='rgba(25,25,23,.45)';
+      const SANS='var(--sans)',MONO='var(--mono)',SERIF='var(--serif)';
+      const el=(tag,attrs={},parent=svg)=>{const n=document.createElementNS(NS,tag);Object.entries(attrs).forEach(([k,v])=>n.setAttribute(k,v));parent.appendChild(n);return n;};
+      const txt=(text,x,y,attrs={},parent=svg)=>{const n=el('text',{x,y,fill:INK,'font-family':SANS,...attrs},parent);n.textContent=text;return n;};
+      const line=(x1,y1,x2,y2,attrs={},parent=svg)=>el('line',{x1,y1,x2,y2,stroke:INK,'stroke-width':1.1,...attrs},parent);
+      const C=[250,580,910,1240,1570], BY=580;
+      txt('FIG. 02 — CONTENT → STRUCTURE → PLAYBACK',200,176,{'font-family':MONO,'font-size':WisePPT.typeSize('label'),'letter-spacing':2.2,fill:INK45});
+      line(200,194,560,194,{stroke:INK45,'stroke-width':.7});
+      line(190,BY,1730,BY,{stroke:INK45,'stroke-width':1});
+      C.forEach(x=>{el('line',{x1:x,y1:BY-9,x2:x,y2:BY+9,stroke:INK,'stroke-width':1});el('circle',{cx:x,cy:BY,r:3.6,fill:INK});});
+      for(let i=0;i<C.length-1;i++){const a=C[i]+88,b=C[i+1]-88;line(a,BY,b,BY,{stroke:INK80,'stroke-width':1.25});el('path',{d:`M ${b-11} ${BY-6} L ${b} ${BY} L ${b-11} ${BY+6}`,fill:'none',stroke:INK80,'stroke-width':1.25,'stroke-linecap':'round','stroke-linejoin':'round'});}
+
+      const doc=el('g');el('path',{d:'M 188 330 L 276 330 L 312 366 L 312 496 L 188 496 Z',fill:'rgba(255,255,255,.22)',stroke:INK80,'stroke-width':1.3},doc);el('path',{d:'M 276 330 L 276 366 L 312 366',fill:'none',stroke:INK,'stroke-width':.8,opacity:.6},doc);[390,418,446].forEach((y,i)=>line(212,y, i===1?282:268,y,{stroke:INK45,'stroke-width':1},doc));
+      const structure=el('g');[0,1,2].forEach(i=>{el('rect',{x:518+i*18,y:354-i*14,width:100,height:112,fill:'none',stroke:i===2?INK:INK45,'stroke-width':1.1},structure);line(536+i*18,382-i*14,590+i*18,382-i*14,{stroke:INK45,'stroke-width':.8},structure);line(536+i*18,410-i*14,580+i*18,410-i*14,{stroke:INK45,'stroke-width':.8},structure);});
+      const judge=el('g');el('circle',{cx:910,cy:410,r:82,fill:'rgba(255,255,255,.22)',stroke:INK80,'stroke-width':1.3},judge);for(let a=0;a<360;a+=30){const r=a*Math.PI/180;line(910+Math.cos(r)*60,410+Math.sin(r)*60,910+Math.cos(r)*73,410+Math.sin(r)*73,{stroke:INK45,'stroke-width':.8},judge);}line(910,410,954,378,{stroke:INK,'stroke-width':1.4},judge);el('circle',{cx:910,cy:410,r:4,fill:INK},judge);
+      const compose=el('g');[[1168,344,74,54],[1252,344,58,54],[1168,408,58,58],[1236,408,74,58]].forEach((r,i)=>{el('rect',{x:r[0],y:r[1],width:r[2],height:r[3],fill:i===3?'rgba(255,255,255,.22)':'none',stroke:i===3?INK:INK45,'stroke-width':i===3?1.2:1},compose);});
+      const deck=el('g');
+      el('rect',{x:1492,y:338,width:156,height:126,fill:'rgba(255,255,255,.22)',stroke:INK,'stroke-width':1.3},deck);
+      el('rect',{x:1500,y:346,width:140,height:110,fill:'none',stroke:INK,'stroke-width':.6,opacity:.35},deck);
+      line(1520,378,1617,378,{stroke:INK45,'stroke-width':1},deck);
+      line(1520,407,1590,407,{stroke:INK45,'stroke-width':1},deck);
+      el('circle',{cx:1530,cy:432,r:3,fill:INK},deck);
+      line(1541,432,1607,432,{stroke:INK45,'stroke-width':1},deck);
+      const steps=[['01','ANALYSE','分析内容'],['02','STRUCTURE','梳理叙事'],['03','JUDGE','判断版式'],['04','COMPOSE','组合组件'],['05','DELIVER','生成网页 PPT']];
+      steps.forEach((s,i)=>{const x=C[i];el('circle',{cx:x,cy:BY+59,r:19,fill:'#DFE0D9',stroke:INK,'stroke-width':1.2});txt(s[0],x,BY+64,{'font-family':MONO,'font-size':WisePPT.typeSize('meta'),'text-anchor':'middle'});txt(s[1],x,BY+112,{'font-family':MONO,'font-size':WisePPT.typeSize('label'),'letter-spacing':1.8,'text-anchor':'middle',fill:INK70});txt(s[2],x,BY+146,{'font-size':WisePPT.typeSize('body-small'),'font-weight':300,'text-anchor':'middle',fill:INK70});});
+      txt('RAW MATERIAL',250,806,{'font-family':MONO,'font-size':WisePPT.typeSize('meta'),'letter-spacing':1.8,'text-anchor':'middle',fill:INK45});txt('NARRATIVE',580,806,{'font-family':MONO,'font-size':WisePPT.typeSize('meta'),'letter-spacing':1.8,'text-anchor':'middle',fill:INK45});txt('LAYOUT',910,806,{'font-family':MONO,'font-size':WisePPT.typeSize('meta'),'letter-spacing':1.8,'text-anchor':'middle',fill:INK45});txt('COMPONENTS',1240,806,{'font-family':MONO,'font-size':WisePPT.typeSize('meta'),'letter-spacing':1.8,'text-anchor':'middle',fill:INK45});txt('PLAYBACK',1570,806,{'font-family':MONO,'font-size':WisePPT.typeSize('meta'),'letter-spacing':1.8,'text-anchor':'middle',fill:INK45});
+    WisePPT.markSlideReady(slide);
+    })();</script></section>
+<section class="slide" data-render-pending="true" data-page-id="page.story.principles" data-page-role="explain" data-theme="paper-ink" data-layout-source="gallery" data-recipe-id="paper-ink.radial.three-way" data-page-title="一页一个重心，三项原则共同决定阅读顺序" data-page-summary="设计不是把信息填满，而是为观众的阅读顺序作出取舍。" data-section-id="section.design" data-section-title="设计取舍" data-emphasis-mode="none"><main class="stage" data-balance="structural" data-balance-frame="0,140,1920,980">
+    <div class="doc tl" data-balance-exclude="true" data-slot-id="support" data-block-id="block.story.principles-support" data-renderer-kind="typography" data-component-source="native" data-component-id="native.paper-ink.radial.three-way.support" data-theme-adapter-id="paper-ink.typography" data-content-ref="item.story.principles">WISE PPT SKILL — 03<br>DESIGN PRINCIPLES</div>
+    <div class="folio" data-balance-exclude="true">03 / 06 — BY @歪斯WISE</div>
+    <svg class="scene" viewBox="0 0 1920 1080" role="img" aria-label="Wise PPT Skill 的三项设计取舍" aria-describedby="principle-desc"
+      data-slot-id="dimensions" data-block-id="block.story.design-principles" data-renderer-kind="svg" data-component-source="native" data-component-id="native.paper-ink.radial.three-way.dimensions" data-theme-adapter-id="paper-ink.svg" data-content-ref="item.story.principles">
+      <desc id="principle-desc">中心是一页一个重心，向左、右、下分别展开内容优先、颜色有义和密度分层三项设计原则。</desc>
+    </svg>
+    <div class="caption" data-slot-id="takeaway" data-block-id="block.story.principles-takeaway" data-renderer-kind="typography" data-component-source="native" data-component-id="native.paper-ink.radial.three-way.takeaway" data-theme-adapter-id="paper-ink.typography" data-content-ref="item.story.principles-takeaway">设计不是把信息填满，而是为观众的阅读顺序作出取舍。</div>
+  </main><script>(function(){
+      const slide=document.currentScript.closest('.slide');
+      const svg=slide.querySelector('.scene'),NS='http://www.w3.org/2000/svg';
+      const INK='#191917',INK80='rgba(25,25,23,.80)',INK70='rgba(25,25,23,.70)',INK45='rgba(25,25,23,.45)';
+      const SANS='var(--sans)',MONO='var(--mono)',SERIF='var(--serif)';
+      const el=(tag,attrs={},parent=svg)=>{const n=document.createElementNS(NS,tag);Object.entries(attrs).forEach(([k,v])=>n.setAttribute(k,v));parent.appendChild(n);return n;};
+      const txt=(text,x,y,attrs={},parent=svg)=>{const n=el('text',{x,y,fill:INK,'font-family':SANS,...attrs},parent);n.textContent=text;return n;};
+      const line=(x1,y1,x2,y2,attrs={},parent=svg)=>el('line',{x1,y1,x2,y2,stroke:INK,'stroke-width':1.1,...attrs},parent);
+      // 主图垂直居中于 FIG 分隔线与结论文案之间的可用高度，内部三点保持舒展。
+      const CX=960,CY=386;
+      txt('FIG. 03 — DESIGN IS A READING ORDER',200,176,{'font-family':MONO,'font-size':WisePPT.typeSize('label'),'letter-spacing':2.2,fill:INK45});line(200,194,560,194,{stroke:INK45,'stroke-width':.7});
+      line(478,CY,760,CY,{stroke:INK45,'stroke-width':1,'stroke-dasharray':'3 5'});line(1160,CY,1442,CY,{stroke:INK45,'stroke-width':1,'stroke-dasharray':'3 5'});line(CX,468,CX,656,{stroke:INK45,'stroke-width':1,'stroke-dasharray':'3 5'});
+      [[760,CY],[1160,CY],[CX,468]].forEach(p=>{el('circle',{cx:p[0],cy:p[1],r:3.2,fill:INK});});
+      el('rect',{x:760,y:304,width:400,height:164,fill:'rgba(255,255,255,.22)',stroke:INK80,'stroke-width':1.4});el('rect',{x:767,y:311,width:386,height:150,fill:'none',stroke:INK,'stroke-width':.6,opacity:.35});
+      txt('DESIGN INTENT',CX,354,{'font-family':MONO,'font-size':WisePPT.typeSize('label'),'letter-spacing':2.8,'text-anchor':'middle',fill:INK70});txt('一页一个重心',CX,406,{'font-family':SANS,'font-size':WisePPT.typeSize('heading'),'font-weight':300,'text-anchor':'middle'});txt('先决定观众应该先看见什么',CX,440,{'font-size':WisePPT.typeSize('body-small'),'font-weight':300,'text-anchor':'middle',fill:INK70});
+      const block=(x,y,side,code,title,lines)=>{const anchor=side==='left'?'end':side==='right'?'start':'middle';txt(code,x,y-62,{'font-family':MONO,'font-size':WisePPT.typeSize('meta'),'letter-spacing':2,'text-anchor':anchor,fill:INK45});txt(title,x,y-20,{'font-family':SANS,'font-size':WisePPT.typeSize('subheading'),'font-weight':300,'text-anchor':anchor});lines.forEach((t,i)=>txt(t,x,y+18+i*28,{'font-size':WisePPT.typeSize('body-small'),'font-weight':300,'text-anchor':anchor,fill:INK70}));};
+      block(450,406,'left','01 · CONTENT BEFORE DECORATION','内容先于装饰',['先回答这页要讲什么，','再决定它需要什么形式。']);
+      block(1470,406,'right','02 · COLOUR HAS A JOB','颜色必须有语义',['大面积保持克制，','强调只服务关键信息。']);
+      block(CX,772,'bottom','03 · DENSITY FOLLOWS HIERARCHY','密度服从层级',['该留白的留白，该密集的有序；','让信息有进入和停留的位置。']);
+      el('circle',{cx:478,cy:CY,r:18,fill:'#DFE0D9',stroke:INK,'stroke-width':1.1});txt('01',478,CY+5,{'font-family':MONO,'font-size':WisePPT.typeSize('meta'),'text-anchor':'middle'});el('circle',{cx:1442,cy:CY,r:18,fill:'#DFE0D9',stroke:INK,'stroke-width':1.1});txt('02',1442,CY+5,{'font-family':MONO,'font-size':WisePPT.typeSize('meta'),'text-anchor':'middle'});el('circle',{cx:CX,cy:656,r:18,fill:'#DFE0D9',stroke:INK,'stroke-width':1.1});txt('03',CX,661,{'font-family':MONO,'font-size':WisePPT.typeSize('meta'),'text-anchor':'middle'});
+    WisePPT.markSlideReady(slide);
+    })();</script></section>
+<section class="slide" data-render-pending="true" data-page-id="page.story.layout-atlas" data-page-role="explain" data-theme="paper-ink" data-layout-source="free_build" data-page-title="版式图册提供结构候选，但内容关系拥有最终决定权" data-page-summary="从信息关系出发，让每一种内容都拥有恰当的阅读结构。" data-section-id="section.expression" data-section-title="表达资源" data-emphasis-mode="none"><main class="stage" data-balance="structural" data-balance-frame="0,140,1920,980">
+    <div class="doc tl" data-balance-exclude="true" data-block-id="block.story.layout-atlas-support" data-renderer-kind="typography" data-component-source="native" data-component-id="layout-atlas-support" data-theme-adapter-id="paper-ink.typography" data-content-ref="item.story.layout-atlas">WISE PPT SKILL — 04<br>READING STRUCTURES FOR EVERY PAGE</div>
+    <div class="folio" data-balance-exclude="true">04 / 06 — BY @歪斯WISE</div>
+    <svg class="scene" viewBox="0 0 1920 1080" role="img" aria-label="每一页都有合适的阅读结构" aria-describedby="atlas-desc"
+      data-block-id="block.story.layout-atlas" data-renderer-kind="svg" data-component-source="native" data-component-id="layout-atlas-overview" data-theme-adapter-id="paper-ink.svg" data-content-ref="item.story.layout-atlas">
+      <desc id="atlas-desc">左侧解释结构应从内容关系出发，右侧示意六种阅读结构：双面板比较、横向流水线、三向放射、分层架构、图表联排和四象限矩阵。</desc>
+    </svg>
+    <div class="caption" data-block-id="block.story.layout-atlas-takeaway" data-renderer-kind="typography" data-component-source="native" data-component-id="takeaway" data-theme-adapter-id="paper-ink.typography" data-content-ref="item.story.layout-atlas-takeaway">从信息关系出发，让每一种内容都拥有恰当的阅读结构。</div>
+  </main><script>(function(){
+      const slide=document.currentScript.closest('.slide');
+      const svg=slide.querySelector('.scene'),NS='http://www.w3.org/2000/svg';
+      const INK='#191917',INK80='rgba(25,25,23,.80)',INK70='rgba(25,25,23,.70)',INK45='rgba(25,25,23,.45)';
+      const SANS='var(--sans)',MONO='var(--mono)',SERIF='var(--serif)';
+      const el=(tag,attrs={},parent=svg)=>{const n=document.createElementNS(NS,tag);Object.entries(attrs).forEach(([k,v])=>n.setAttribute(k,v));parent.appendChild(n);return n;};
+      const txt=(text,x,y,attrs={},parent=svg)=>{const n=el('text',{x,y,fill:INK,'font-family':SANS,...attrs},parent);n.textContent=text;return n;};
+      const line=(x1,y1,x2,y2,attrs={},parent=svg)=>el('line',{x1,y1,x2,y2,stroke:INK,'stroke-width':1.1,...attrs},parent);
+      txt('FIG. 04 — READING STRUCTURES BY RELATION',200,176,{'font-family':MONO,'font-size':WisePPT.typeSize('label'),'letter-spacing':2.2,fill:INK45});line(200,194,560,194,{stroke:INK45,'stroke-width':.7});
+      const cardTop=360,cardGap=28,cardHeight=140,cardBottom=cardTop+2*(cardHeight+cardGap)+cardHeight;
+      line(690,270,690,cardBottom,{stroke:INK45,'stroke-width':.9});
+
+      txt('版式不是模板',225,277,{'font-family':SANS,'font-size':WisePPT.typeSize('emphasis'),'font-weight':300});
+      txt('它先决定一页的阅读关系',225,319,{'font-family':SANS,'font-size':WisePPT.typeSize('body'),'font-weight':300,fill:INK70});
+      const introTop=cardTop+13;
+      txt('同一段内容，因关系不同，',225,introTop,{'font-size':WisePPT.typeSize('body-small'),'font-weight':300,fill:INK70});
+      txt('应当拥有不同的组织方式。',225,introTop+28,{'font-size':WisePPT.typeSize('body-small'),'font-weight':300,fill:INK70});
+      const principle=(y,no,title,lines)=>{el('circle',{cx:246,cy:y-5,r:18,fill:'#DFE0D9',stroke:INK,'stroke-width':1});txt(no,246,y,{'font-family':MONO,'font-size':WisePPT.typeSize('meta'),'text-anchor':'middle'});txt(title,282,y,{'font-family':SANS,'font-size':WisePPT.typeSize('body'),'font-weight':300});lines.forEach((t,i)=>txt(t,282,y+29+i*23,{'font-size':WisePPT.typeSize('body-small'),'font-weight':300,fill:INK70}));};
+      const principleStart=477,principleLast=cardBottom-60,principleStep=(principleLast-principleStart)/2;
+      [['01','先判断信息关系',['对比、流程、层级、数据，','不是同一种表达任务。']],['02','再确定阅读重心',['一页只保留一种主要的','阅读动作与视觉结构。']],['03','结构服务关系',['需要时提供明确构图；','不需要时，仍从内容出发。']]].forEach((item,i)=>principle(principleStart+i*principleStep,item[0],item[1],item[2]));
+
+      txt('每页都有合适的阅读结构',748,277,{'font-family':SANS,'font-size':WisePPT.typeSize('emphasis'),'font-weight':300});
+      txt('按信息关系选择',748,319,{'font-family':SANS,'font-size':WisePPT.typeSize('body'),'font-weight':300,fill:INK70});
+      const preview=(kind,x,y)=>{
+        const px=x+224,py=y+28;
+        if(kind==='compare'){el('rect',{x:px,y:py,width:80,height:82,fill:'none',stroke:INK45,'stroke-width':.8});el('rect',{x:px+94,y:py,width:80,height:82,fill:'rgba(255,255,255,.22)',stroke:INK,'stroke-width':.9});line(px+17,py+25,px+63,py+25,{stroke:INK45,'stroke-width':.8});line(px+111,py+25,px+157,py+25,{stroke:INK45,'stroke-width':.8});}
+        if(kind==='flow'){line(px+4,py+42,px+182,py+42,{stroke:INK45,'stroke-width':1});[0,1,2,3].forEach(i=>{const cx=px+16+i*54;el('circle',{cx,cy:py+42,r:13,fill:'#DFE0D9',stroke:INK,'stroke-width':.9});txt(String(i+1),cx,py+46,{'font-family':MONO,'font-size':WisePPT.typeSize('micro-secondary'),'text-anchor':'middle'});});}
+        if(kind==='radial'){el('circle',{cx:px+93,cy:py+43,r:26,fill:'none',stroke:INK,'stroke-width':1});[[px+38,py+22],[px+148,py+22],[px+93,py+82]].forEach(p=>{line(px+93,py+43,p[0],p[1],{stroke:INK45,'stroke-width':.8});el('circle',{cx:p[0],cy:p[1],r:9,fill:'#DFE0D9',stroke:INK,'stroke-width':.8});});}
+        if(kind==='stack'){[0,1,2].forEach(i=>{el('rect',{x:px+18+i*12,y:py+12+i*23,width:150-i*24,height:18,fill:i===1?'rgba(255,255,255,.22)':'none',stroke:INK,'stroke-width':.8});});}
+        if(kind==='chart'){[0,1,2].forEach(i=>{const bx=px+8+i*57;el('rect',{x:bx,y:py+10,width:46,height:74,fill:'none',stroke:INK45,'stroke-width':.8});[0,1,2].forEach(n=>line(bx+10+n*10,py+68,bx+10+n*10,py+50-(i*6+n*7),{stroke:INK,'stroke-width':1.4}));});}
+        if(kind==='matrix'){line(px+92,py+4,px+92,py+86,{stroke:INK,'stroke-width':.9});line(px+40,py+45,px+144,py+45,{stroke:INK,'stroke-width':.9});[[67,27],[116,26],[68,65],[118,64]].forEach(p=>el('circle',{cx:px+p[0],cy:py+p[1],r:4,fill:INK}));}
+      };
+      const card=(x,y,code,title,kind)=>{el('rect',{x,y,width:440,height:cardHeight,fill:'rgba(255,255,255,.22)',stroke:INK80,'stroke-width':1.1});el('rect',{x:x+5,y:y+5,width:430,height:cardHeight-10,fill:'none',stroke:INK,'stroke-width':.55,opacity:.3});txt(code,x+22,y+31,{'font-family':MONO,'font-size':WisePPT.typeSize('meta'),'letter-spacing':1.8,fill:INK45});txt(title,x+22,y+71,{'font-family':SANS,'font-size':WisePPT.typeSize('subheading'),'font-weight':300});line(x+198,y+21,x+198,y+119,{stroke:INK45,'stroke-width':.7});preview(kind,x,y);};
+      [['01','双面板比较','compare'],['02','横向流水线','flow'],['03','三向放射','radial'],['04','分层架构堆栈','stack'],['05','图表联排墙','chart'],['06','四象限矩阵','matrix']].forEach((item,i)=>card(i%2?1240:748,cardTop+Math.floor(i/2)*(cardHeight+cardGap),item[0],item[1],item[2]));
+    WisePPT.markSlideReady(slide);
+    })();</script></section>
+<section class="slide" data-render-pending="true" data-page-id="page.story.component-atlas" data-page-role="explain" data-theme="paper-ink" data-layout-source="free_build" data-page-title="组件沉淀成熟表达，但是否调用仍由页面内容决定" data-page-summary="提供成熟的表达组件，并由页面内容决定是否调用。" data-section-id="section.expression" data-section-title="表达资源" data-emphasis-mode="none"><main class="stage" data-balance="structural" data-balance-frame="0,140,1920,980">
+    <div class="doc tl" data-balance-exclude="true" data-block-id="block.story.component-atlas-support" data-renderer-kind="typography" data-component-source="native" data-component-id="component-atlas-support" data-theme-adapter-id="paper-ink.typography" data-content-ref="item.story.component-atlas">WISE PPT SKILL — 05<br>REUSABLE EXPRESSION UNITS</div>
+    <div class="folio" data-balance-exclude="true">05 / 06 — BY @歪斯WISE</div>
+    <svg class="scene" viewBox="0 0 1920 1080" role="img" aria-label="成熟表达沉淀为可复用单元" aria-describedby="component-desc"
+      data-block-id="block.story.component-atlas" data-renderer-kind="svg" data-component-source="native" data-component-id="component-atlas-overview" data-theme-adapter-id="paper-ink.svg" data-content-ref="item.story.component-atlas">
+      <desc id="component-desc">左侧说明组件是按需调用的表达积木。右侧示意流程、同心圆、架构、统计卡片、数据图表和关系矩阵六种可复用单元。</desc>
+    </svg>
+    <div class="caption" data-block-id="block.story.component-atlas-takeaway" data-renderer-kind="typography" data-component-source="native" data-component-id="takeaway" data-theme-adapter-id="paper-ink.typography" data-content-ref="item.story.component-atlas-takeaway">提供成熟的表达组件，并由页面内容决定是否调用。</div>
+  </main><script>(function(){
+      const slide=document.currentScript.closest('.slide');
+      const svg=slide.querySelector('.scene'),NS='http://www.w3.org/2000/svg';
+      const INK='#191917',INK80='rgba(25,25,23,.80)',INK70='rgba(25,25,23,.70)',INK45='rgba(25,25,23,.45)';
+      const SANS='var(--sans)',MONO='var(--mono)',SERIF='var(--serif)';
+      const el=(tag,attrs={},parent=svg)=>{const n=document.createElementNS(NS,tag);Object.entries(attrs).forEach(([k,v])=>n.setAttribute(k,v));parent.appendChild(n);return n;};
+      const txt=(text,x,y,attrs={},parent=svg)=>{const n=el('text',{x,y,fill:INK,'font-family':SANS,...attrs},parent);n.textContent=text;return n;};
+      const line=(x1,y1,x2,y2,attrs={},parent=svg)=>el('line',{x1,y1,x2,y2,stroke:INK,'stroke-width':1.1,...attrs},parent);
+      txt('FIG. 05 — OPTIONAL, REUSABLE EXPRESSION UNITS',200,176,{'font-family':MONO,'font-size':WisePPT.typeSize('label'),'letter-spacing':2.2,fill:INK45});line(200,194,560,194,{stroke:INK45,'stroke-width':.7});
+      const cardTop=360,cardGap=28,cardHeight=140,cardBottom=cardTop+2*(cardHeight+cardGap)+cardHeight;
+      line(690,270,690,cardBottom,{stroke:INK45,'stroke-width':.9});
+
+      txt('组件不是设计替身',225,277,{'font-family':SANS,'font-size':WisePPT.typeSize('emphasis'),'font-weight':300});
+      txt('它是可复用的表达单元',225,319,{'font-family':SANS,'font-size':WisePPT.typeSize('body'),'font-weight':300,fill:INK70});
+      const introTop=cardTop+13;
+      txt('版式决定阅读结构；组件决定',225,introTop,{'font-size':WisePPT.typeSize('body-small'),'font-weight':300,fill:INK70});
+      txt('一个内容插槽如何被准确画出来。',225,introTop+28,{'font-size':WisePPT.typeSize('body-small'),'font-weight':300,fill:INK70});
+      const principle=(y,no,title,lines)=>{el('circle',{cx:246,cy:y-5,r:18,fill:'#DFE0D9',stroke:INK,'stroke-width':1});txt(no,246,y,{'font-family':MONO,'font-size':WisePPT.typeSize('meta'),'text-anchor':'middle'});txt(title,282,y,{'font-family':SANS,'font-size':WisePPT.typeSize('body'),'font-weight':300});lines.forEach((t,i)=>txt(t,282,y+29+i*23,{'font-size':WisePPT.typeSize('body-small'),'font-weight':300,fill:INK70}));};
+      const principleStart=477,principleLast=cardBottom-60,principleStep=(principleLast-principleStart)/2;
+      [['01','沉淀成熟表达',['把数据、流程、结构等','反复出现的形式规范下来。']],['02','按内容按需调用',['组件可装进不同版式，','也可以完全不使用。']],['03','让生成更加稳定',['减少随机的视觉偏差，','保留内容与构图的自由。']]].forEach((item,i)=>principle(principleStart+i*principleStep,item[0],item[1],item[2]));
+
+      txt('成熟表达沉淀为单元',748,277,{'font-family':SANS,'font-size':WisePPT.typeSize('emphasis'),'font-weight':300});
+      txt('按内容按需调用',748,319,{'font-family':SANS,'font-size':WisePPT.typeSize('body'),'font-weight':300,fill:INK70});
+      const componentPreview=(kind,x,y)=>{
+        const previewCenter=x+310,previewOffset={process:95.5,concentric:96,architecture:85,stats:87,chart:102,matrix:104};
+        const px=previewCenter-previewOffset[kind],py=y+18;
+        if(kind==='process'){
+          ['需求','设计','开发','测试'].forEach((label,i)=>{const bx=px+i*51;el('rect',{x:bx,y:py+34,width:38,height:30,fill:i===1?'rgba(255,255,255,.22)':'none',stroke:INK,'stroke-width':.8});txt(label,bx+19,py+53,{'font-size':WisePPT.typeSize('micro-secondary'),'text-anchor':'middle'});if(i<3){line(bx+39,py+49,bx+49,py+49,{stroke:INK,'stroke-width':.8});el('path',{d:`M ${bx+45} ${py+45} L ${bx+49} ${py+49} L ${bx+45} ${py+53}`,fill:'none',stroke:INK,'stroke-width':.8});}});
+        }
+        if(kind==='concentric'){
+          [[58,'生态层'],[40,'服务层'],[23,'内核']].forEach((p,i)=>{el('circle',{cx:px+96,cy:py+51,r:p[0],fill:i===0?'rgba(255,255,255,.12)':'none',stroke:INK,'stroke-width':i===0?1:.8});});txt('内核',px+96,py+55,{'font-size':WisePPT.typeSize('micro-secondary'),'text-anchor':'middle'});
+        }
+        if(kind==='architecture'){
+          // 行块 y+20..y+120 与左侧分隔线（y+20..y+120）同区间、共中线；22px 行高给 16px 文字留上下内边距
+          ['应用','资源','评测','追踪'].forEach((label,i)=>{const yy=py+2+i*26;el('rect',{x:px,y:yy,width:48,height:22,fill:'rgba(255,255,255,.22)',stroke:INK,'stroke-width':.7});txt(label,px+24,yy+16.5,{'font-size':WisePPT.typeSize('micro-secondary'),'text-anchor':'middle'});[0,1,2].forEach(n=>el('rect',{x:px+56+n*40,y:yy,width:34,height:22,fill:'none',stroke:INK45,'stroke-width':.6}));});
+        }
+        if(kind==='stats'){
+          // 统计卡片 96×72：'METRIC A'（micro-secondary mono + ls0.6）约需 81px，卡片须 ≥96px 才能容纳 bx+8 起的标签；两卡间距 28 不变，整体仍居中于预览中心。
+          [[-110,'42','METRIC A'],[14,'7%','METRIC B']].forEach(p=>{const bx=previewCenter+p[0];el('rect',{x:bx,y:py+16,width:96,height:72,fill:'none',stroke:INK,'stroke-width':.8});txt(p[2],bx+8,py+35,{'font-family':MONO,'font-size':WisePPT.typeSize('micro-secondary'),'letter-spacing':.6,fill:INK70});txt(p[1],bx+8,py+74,{'font-family':SANS,'font-size':WisePPT.typeSize('subheading'),'font-weight':300});});
+        }
+        if(kind==='chart'){
+          [0,1,2].forEach(i=>{
+            const bx=px+16+i*62;
+            el('rect',{x:bx,y:py+20,width:48,height:70,fill:'none',stroke:INK45,'stroke-width':.8});
+            [0,1,2].forEach(n=>line(bx+12+n*10,py+82,bx+12+n*10,py+82-(18+i*7+n*6),{stroke:INK,'stroke-width':1.3}));
+          });
+        }
+        if(kind==='matrix'){
+          const mx=px+104,my=py+58;
+          line(mx,my-40,mx,my+40,{stroke:INK,'stroke-width':.9});line(mx-64,my,mx+64,my,{stroke:INK,'stroke-width':.9});
+          [[-35,-24],[35,-24],[-35,24],[35,24]].forEach(p=>el('circle',{cx:mx+p[0],cy:my+p[1],r:4,fill:INK}));
+        }
+      };
+      const componentCard=(x,y,num,title,kind)=>{el('rect',{x,y,width:440,height:cardHeight,fill:'rgba(255,255,255,.22)',stroke:INK80,'stroke-width':1.1});el('rect',{x:x+5,y:y+5,width:430,height:cardHeight-10,fill:'none',stroke:INK,'stroke-width':.55,opacity:.3});txt(num,x+21,y+29,{'font-family':MONO,'font-size':WisePPT.typeSize('meta'),'letter-spacing':1.5,fill:INK45});txt(title,x+21,y+86,{'font-family':SANS,'font-size':WisePPT.typeSize('subheading'),'font-weight':300});line(x+184,y+20,x+184,y+120,{stroke:INK45,'stroke-width':.7});componentPreview(kind,x,y);};
+      [['01','流程','process'],['02','同心圆','concentric'],['03','架构','architecture'],['04','统计卡片','stats'],['05','数据图表','chart'],['06','关系矩阵','matrix']].forEach((item,i)=>componentCard(i%2?1240:748,cardTop+Math.floor(i/2)*(cardHeight+cardGap),item[0],item[1],item[2]));
+    WisePPT.markSlideReady(slide);
+    })();</script></section>
+<section class="slide" data-render-pending="true" data-page-id="page.story.contact" data-page-role="act" data-theme="paper-ink" data-layout-source="gallery" data-recipe-id="paper-ink.scaffold.contact" data-page-title="通过三条可执行渠道继续获取 Wise PPT 更新" data-page-summary="关注 @歪斯Wise，及时获取更新资讯。" data-section-id="section.close" data-section-title="保持联系" data-emphasis-mode="none"><main class="stage" data-balance="structural" data-balance-frame="0,140,1920,980">
+    <div class="doc tl" data-balance-exclude="true" data-slot-id="support" data-block-id="block.story.contact-support" data-renderer-kind="typography" data-component-source="native" data-component-id="native.paper-ink.scaffold.contact.support" data-theme-adapter-id="paper-ink.typography" data-content-ref="item.story.contact">WISE PPT SKILL — 06<br>STAY IN TOUCH</div>
+    <div class="folio" data-balance-exclude="true">06 / 06 — BY @歪斯WISE</div>
+    <svg class="scene" viewBox="0 0 1920 1080" role="img" aria-label="关注歪斯 Wise，及时获取更新资讯" aria-describedby="contact-desc"
+      data-slot-id="contact" data-block-id="block.story.contact" data-renderer-kind="svg" data-component-source="native" data-component-id="native.paper-ink.scaffold.contact.contact" data-theme-adapter-id="paper-ink.svg" data-content-ref="item.story.contact">
+      <desc id="contact-desc">左侧是抽象联络网格，右侧是歪斯 Wise 的联系卡片与二维码。</desc>
+    </svg>
+    <div class="caption" data-slot-id="takeaway" data-block-id="block.story.contact-takeaway" data-renderer-kind="typography" data-component-source="native" data-component-id="native.paper-ink.scaffold.contact.takeaway" data-theme-adapter-id="paper-ink.typography" data-content-ref="item.story.contact-takeaway">关注 @歪斯Wise，及时获取更新资讯。</div>
+  </main><script>(function(){
+      const slide=document.currentScript.closest('.slide');
+      const svg=slide.querySelector('.scene'),NS='http://www.w3.org/2000/svg';
+      const INK='#191917',INK80='rgba(25,25,23,.8)',INK45='rgba(25,25,23,.45)';
+      const MONO='var(--mono)',SANS='var(--sans)';
+      const el=(tag,attrs={},parent=svg)=>{const n=document.createElementNS(NS,tag);Object.entries(attrs).forEach(([k,v])=>n.setAttribute(k,v));parent.appendChild(n);return n;};
+      const txt=(text,x,y,attrs={},parent=svg)=>{const n=el('text',{x,y,fill:INK,'font-family':SANS,...attrs},parent);n.textContent=text;return n;};
+      const line=(x1,y1,x2,y2,attrs={},parent=svg)=>el('line',{x1,y1,x2,y2,stroke:INK,'stroke-width':1.1,...attrs},parent);
+      const g=el('g');
+      const draw=(tag,attrs={})=>el(tag,attrs,g);
+
+      txt('FIG. 06 — STAY IN TOUCH',200,176,{'font-family':MONO,'font-size':WisePPT.typeSize('label'),'letter-spacing':2.2,fill:INK45});line(200,194,560,194,{stroke:INK45,'stroke-width':.7});
+
+      const MX=150,MY=220,MW=770,MH=420;
+      draw('rect',{x:MX,y:MY,width:MW,height:MH,fill:'none',stroke:INK,'stroke-width':.6,opacity:.3,'stroke-dasharray':'2 6'});
+      [[MX,MY],[MX+MW,MY],[MX,MY+MH],[MX+MW,MY+MH]].forEach(([x,y])=>{draw('line',{x1:x-8,y1:y,x2:x+8,y2:y,stroke:INK,'stroke-width':.7,opacity:.35});draw('line',{x1:x,y1:y-8,x2:x,y2:y+8,stroke:INK,'stroke-width':.7,opacity:.35});});
+      draw('path',{d:'M 700 220 C 760 320, 700 420, 800 500 C 850 540, 880 600, 870 640',fill:'none',stroke:INK,'stroke-width':.9,opacity:.5});
+      draw('path',{d:'M 726 220 C 786 320, 726 420, 826 500 C 876 540, 906 600, 896 640',fill:'none',stroke:INK,'stroke-width':.9,opacity:.5});
+      txt('ABSTRACT TRACE',846,336,{'font-family':MONO,'font-size':WisePPT.typeSize('micro-secondary'),'letter-spacing':2,fill:INK45,transform:'rotate(74 846 336)'});
+      draw('path',{d:'M 150 310 C 360 296, 640 324, 920 306',fill:'none',stroke:INK80,'stroke-width':1.2});
+      draw('path',{d:'M 150 452 C 400 444, 660 460, 920 448',fill:'none',stroke:INK,'stroke-width':.7,opacity:.6});
+      draw('path',{d:'M 150 570 C 380 580, 660 562, 920 574',fill:'none',stroke:INK,'stroke-width':.7,opacity:.6});
+      draw('path',{d:'M 330 220 C 324 360, 336 500, 328 640',fill:'none',stroke:INK,'stroke-width':.7,opacity:.6});
+      draw('path',{d:'M 560 220 C 566 340, 554 520, 562 640',fill:'none',stroke:INK80,'stroke-width':1.2});
+      txt('CONTACT GRID',196,290,{'font-family':MONO,'font-size':WisePPT.typeSize('micro-secondary'),'letter-spacing':2,fill:INK45});
+      txt('LINK PATH',576,252,{'font-family':MONO,'font-size':WisePPT.typeSize('micro-secondary'),'letter-spacing':2,fill:INK45,transform:'rotate(88 576 252)'});
+      draw('rect',{x:380,y:346,width:150,height:92,fill:'rgba(255,255,255,.22)',stroke:INK,'stroke-width':.9,opacity:.85});
+      draw('rect',{x:385,y:351,width:140,height:82,fill:'none',stroke:INK,'stroke-width':.5,opacity:.3});
+      txt('WISE',455,396,{'font-family':MONO,'font-size':WisePPT.typeSize('meta'),'letter-spacing':3,'text-anchor':'middle',fill:INK,opacity:.7});
+      txt('CONTACT',455,416,{'font-family':MONO,'font-size':WisePPT.typeSize('meta'),'letter-spacing':3,'text-anchor':'middle',fill:INK,opacity:.7});
+      draw('circle',{cx:560,cy:452,r:10,fill:'none',stroke:INK,'stroke-width':1.2});draw('circle',{cx:560,cy:452,r:14,fill:'none',stroke:INK,'stroke-width':.6,opacity:.4});draw('circle',{cx:560,cy:452,r:3,fill:INK});
+      draw('path',{d:'M 560 466 L 560 500',stroke:INK,'stroke-width':.8,opacity:.5});draw('path',{d:'M 560 500 L 596 500',stroke:INK,'stroke-width':.8,opacity:.5});
+      txt('WISE · SHENZHEN',604,505,{'font-family':MONO,'font-size':WisePPT.typeSize('meta'),'letter-spacing':2,fill:INK,opacity:.75});
+      line(180,616,280,616,{stroke:INK,'stroke-width':1,opacity:.6});line(180,610,180,622,{stroke:INK,'stroke-width':1,opacity:.6});line(280,610,280,622,{stroke:INK,'stroke-width':1,opacity:.6});
+      txt('NOT TO SCALE',292,620,{'font-family':MONO,'font-size':WisePPT.typeSize('micro-secondary'),'letter-spacing':2,fill:INK45});
+
+      const KX=1100,KY=220,KW=620,KH=630;
+      const QR_SIZE=37,QR_PAD=16,QCS=3.0,QY=KY+292+3*62,qrBottom=QY+QR_SIZE*QCS+QR_PAD;
+      [['微信','扫码或搜索 @歪斯Wise'],['小红书','@歪斯Wise'],['官网','wisewong.com']].forEach((c,i)=>{const y=KY+KH-5-(2-i)*52;draw('circle',{cx:158,cy:y-6,r:3,fill:'none',stroke:INK,'stroke-width':.9,opacity:.7});draw('circle',{cx:158,cy:y-6,r:1,fill:INK});txt(c[0],178,y,{'font-size':WisePPT.typeSize('body-small'),'font-weight':300});txt(c[1],292,y,{'font-size':WisePPT.typeSize('body-small'),'font-weight':300,fill:'rgba(25,25,23,.75)'});});
+
+      draw('rect',{x:KX,y:KY,width:KW,height:KH,fill:'rgba(255,255,255,.22)',stroke:INK80,'stroke-width':1.3});
+      draw('rect',{x:KX+5,y:KY+5,width:KW-10,height:KH-10,fill:'none',stroke:INK,'stroke-width':.6,opacity:.3});
+      txt('WISE — CONTACT',KX+44,KY+64,{'font-family':MONO,'font-size':WisePPT.typeSize('label'),'letter-spacing':3,fill:INK45});line(KX+44,KY+84,KX+200,KY+84,{stroke:INK,'stroke-width':.8,opacity:.5});
+      txt('歪斯 Wise',KX+44,KY+156,{'font-size':WisePPT.typeSize('heading'),'font-weight':300});txt('@歪斯WISE',KX+46,KY+196,{'font-size':WisePPT.typeSize('label'),'letter-spacing':2,fill:'rgba(25,25,23,.6)'});line(KX+44,KY+232,KX+KW-44,KY+232,{stroke:INK,'stroke-width':.8,opacity:.4});
+      [['小红书','@歪斯Wise'],['微信搜一搜','歪斯Wise'],['WEB','wisewong.com'],['ADDR','SHENZHEN']].forEach((item,i)=>{const y=KY+292+i*62;txt(item[0],KX+44,y,{'font-family':MONO,'font-size':WisePPT.typeSize('meta'),'letter-spacing':3,fill:INK45});txt(item[1],KX+150,y,{'font-family':MONO,'font-size':WisePPT.typeSize('body-small'),'letter-spacing':1});if(i<3)line(KX+44,y+22,KX+KW-44,y+22,{stroke:INK,'stroke-width':.6,opacity:.18});});
+
+      const QR_PAYLOAD='http://weixin.qq.com/r/mp/sDgNFUrEMRdOrQ52922i';
+      const QR_DATA=[
+        '1111111010010100111110000000001111111','1000001001100110110101011011001000001','1011101000101010011001110000001011101','1011101001001100100110110011101011101','1011101010100101110011011100101011101','1000001010001111001110000111101000001','1111111010101010101010101010101111111','0000000001111001111011100100100000000','0111111101100100100011100010100110001','1100010101110110010111010001001111101','0100101000010100011000000111101010011','1010110110001010111001010011001111000','1101001101101110011000011111001001010','0110110100111100111101110100110101110','0001111010011101101101001111010011011','1000010010111000010111101010010000011','1000011111111110100101010111111010101','0001010101010101010110101100100101000','0000001101101001001000100111111110011','0011100100100010010011001010111001000','1001101010100100110010000110011111110','0011000010111010111111011010001100000','1101101101001011100111100001101001111','0010010000000100100011001010111100000','0001111000110011011100101000001100001','1000100100010010110000011011111000101','1011111011010111010101001010000101111','1001010111011101011011101010100000110','1100101101010000010100000110111111011','0000000010101100010000110100100010010','1111111011110000100000100011101011011','1000001011010011111000001010100010000','1011101011010111011011111111111110110','1011101011110000101001000010001110100','1011101010100011100010011100100101101','1000001010000100100001010001110100001','1111111001101010101010010011011101111'
+      ];
+      const QX=(KX+KW-44)-QR_PAD-QR_SIZE*QCS;
+      const qr=draw('g',location.search.indexOf('ppt')>=0?{'data-qr-payload':QR_PAYLOAD}:{});
+      el('rect',{x:QX-QR_PAD,y:QY-QR_PAD,width:QR_SIZE*QCS+QR_PAD*2,height:QR_SIZE*QCS+QR_PAD*2,fill:'none',stroke:INK,'stroke-width':.7,opacity:.7},qr);
+      for(let ri=0;ri<QR_SIZE;ri++)for(let rj=0;rj<QR_SIZE;rj++)if(QR_DATA[ri][rj]==='1')el('rect',{x:QX+rj*QCS,y:QY+ri*QCS,width:QCS,height:QCS,fill:'rgba(25,25,23,.8)'},qr);
+      txt('扫码或微信搜一搜“歪斯Wise”',KX+44,qrBottom-40,{'font-size':WisePPT.typeSize('body-small'),'font-weight':300,fill:'rgba(25,25,23,.7)'});txt('WECHAT SEARCH · 歪斯WISE',KX+44,qrBottom-6,{'font-size':WisePPT.typeSize('micro-secondary'),'letter-spacing':2.5,fill:INK45});
+    WisePPT.markSlideReady(slide);
+    })();</script></section>
+<!-- WISE_PPT_SLIDES_END -->
+</div></div><div id="presentation-controls" aria-label="放映控制"><button id="board-toggle" class="deck-control" type="button" data-icon="gallery" aria-label="返回画册"><span class="visually-hidden">返回画册</span></button><output id="pager" aria-live="polite"></output></div></section>
+</body>
+</html>

@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-runtime="wise-ppt-specimen" data-typography-mode="mixed" data-page-id="gallery-general-f1" data-page-role="explain" data-theme="paper-ink" data-layout="paper-ink.decomposition.quadrant" data-layout-source="gallery">
+<head>
+<meta charset="UTF-8">
+<title>layout-f1 · 坐标轴象限</title>
+<link rel="stylesheet" href="../../../../themes/paper-ink/assets/design-tokens.css">
+<link rel="stylesheet" href="../../../../themes/paper-ink/assets/slide-components.css">
+<link rel="stylesheet" href="../../../shell.css">
+<style>
+  svg.scene { position: absolute; inset: 0; z-index: 1; }
+  .caption {
+    position: absolute; left: 0; right: 0; bottom: 118px;
+    text-align: center;
+    font-family: var(--sans); font-weight: 400;
+    font-size: var(--type-caption); letter-spacing: .04em;
+    color: var(--ink);
+    z-index: 5;
+  }
+</style>
+</head>
+<body class="slide">
+<div class="stage" data-block-id="gallery-primary" data-renderer-kind="svg" data-component-source="native" data-component-id="native.paper-ink.decomposition.quadrant.quadrants" data-content-ref="example.f1">
+  <div class="doc tl">品牌 · 策划 — F1<br>渠道价值 × 内容势能</div>
+  <div class="folio">F1 / 63 — BY @歪斯WISE</div>
+
+  <svg class="scene" width="1920" height="1080" viewBox="0 0 1920 1080">
+    <g id="draw"></g>
+  </svg>
+
+  <div class="caption">渠道价值决定触达效率，内容势能决定传播深度；两者都高，才值得长期经营。</div>
+</div>
+
+<script src="../../../../runtime/stage-fit.js"></script>
+<script src="../../../../themes/paper-ink/assets/particles.js"></script>
+<script>
+var NS = 'http://www.w3.org/2000/svg';
+var INK = '#191917';
+var INK80 = 'rgba(25,25,23,.8)';
+var INK45 = 'rgba(25,25,23,.45)';
+var G = document.getElementById('draw');
+function el(tag, attrs) {
+  var e = document.createElementNS(NS, tag);
+  for (var k in attrs) e.setAttribute(k, attrs[k]);
+  G.appendChild(e); return e;
+}
+function txt(x, y, str, attrs) {
+  var t = el('text', Object.assign({x:x, y:y}, attrs||{}));
+  t.textContent = str; return t;
+}
+var MONO = 'var(--mono)', SANS = 'var(--sans)';
+
+G = el('g', {transform:'translate(0 -28)'});
+
+
+/* ---------- 坐标轴：横轴 X（渠道价值）、纵轴 Y（内容势能），交叉于画面中心 ---------- */
+/* 轴贯穿区：x 280–1640，y 300–820；交叉点 = 象限中心 */
+var AX_L = 280, AX_R = 1640, AX_T = 300, AX_B = 820;
+var CX = (AX_L + AX_R) / 2;          /* 960 横轴中点 */
+var CY = (AX_T + AX_B) / 2;          /* 560 纵轴中点 */
+
+/* 纵轴（带端箭头） */
+el('line', {x1:CX, y1:AX_T-6, x2:CX, y2:AX_B+6, stroke:INK80, 'stroke-width':1.3});
+el('line', {x1:CX, y1:AX_T-6, x2:CX-7, y2:AX_T+8, stroke:INK80, 'stroke-width':1.2});
+el('line', {x1:CX, y1:AX_T-6, x2:CX+7, y2:AX_T+8, stroke:INK80, 'stroke-width':1.2});
+/* 横轴（带端箭头） */
+el('line', {x1:AX_L-6, y1:CY, x2:AX_R+6, y2:CY, stroke:INK80, 'stroke-width':1.3});
+el('line', {x1:AX_R+6, y1:CY, x2:AX_R-8, y2:CY-7, stroke:INK80, 'stroke-width':1.2});
+el('line', {x1:AX_R+6, y1:CY, x2:AX_R-8, y2:CY+7, stroke:INK80, 'stroke-width':1.2});
+
+/* 轴端标签 */
+txt(CX, AX_T-22, '高势能', {'font-family':SANS, 'font-weight':300, 'font-size':'var(--type-body-small)', 'text-anchor':'middle', fill:INK45});
+txt(CX, AX_T-44, 'CONTENT ↑', {'font-family':MONO, 'font-size':'var(--type-micro-secondary)', 'letter-spacing':2.5, 'text-anchor':'middle', fill:INK45});
+txt(AX_R+24, CY-10, '高价值 →', {'font-family':SANS, 'font-weight':300, 'font-size':'var(--type-body-small)', fill:INK45});
+txt(AX_R+24, CY-32, 'CHANNEL', {'font-family':MONO, 'font-size':'var(--type-micro-secondary)', 'letter-spacing':2.5, fill:INK45});
+
+/* 原点标记 */
+el('circle', {cx:CX, cy:CY, r:3, fill:INK});
+txt(CX-12, CY+20, '0', {'font-family':MONO, 'font-size':'var(--type-micro-secondary)', 'text-anchor':'end', fill:INK45});
+
+/* ---------- 四象限内容（左上/右上/左下/右下） ---------- */
+var quads = [
+  /* 左上：高势能 · 低价值 */
+  {qx:AX_L+70,  qy:AX_T+40,  en:'Q2 · AMPLIFIER', cn:'声量放大',
+   d:'内容有话题与记忆点，', d2:'但渠道承接仍然偏弱', tag:'CONTENT · HIGH'},
+  /* 右上：高势能 · 高价值 */
+  {qx:CX+70,    qy:AX_T+40,  en:'Q1 · CORE FIELD', cn:'核心阵地',
+   d:'稳定触达核心人群，', d2:'内容持续沉淀品牌资产', tag:'VALUE · GROW'},
+  /* 左下：低势能 · 低价值 */
+  {qx:AX_L+70,  qy:CY+40,    en:'Q3 · LOW RETURN', cn:'低效占位',
+   d:'更新频率与互动都低，', d2:'投入难以形成有效回报', tag:'PAUSE · REVIEW'},
+  /* 右下：低势能 · 高价值 */
+  {qx:CX+70,    qy:CY+40,    en:'Q4 · TRAFFIC GATE', cn:'流量入口',
+   d:'渠道触达稳定且高效，', d2:'需要更强内容承接转化', tag:'REACH · CONVERT'}
+];
+
+quads.forEach(function(q, i){
+  /* 象限编号（大号淡墨压底） */
+  txt(q.qx, q.qy+30, q.en.split(' · ')[0], {'font-family':MONO, 'font-size':'var(--type-metric)', 'letter-spacing':3, fill:INK, opacity:.12});
+  /* mono 英文题 + 短横 */
+  txt(q.qx, q.qy+62, q.en, {'font-family':MONO, 'font-size':'var(--type-meta)', 'letter-spacing':2.5, fill:INK45});
+  el('line', {x1:q.qx, y1:q.qy+76, x2:q.qx+60, y2:q.qy+76, stroke:INK, 'stroke-width':.8, opacity:.5});
+  /* 中文小标题 */
+  txt(q.qx, q.qy+112, q.cn, {'font-family':SANS, 'font-weight':300, 'font-size':'var(--type-subheading)', fill:INK});
+  /* 说明两行 */
+  txt(q.qx, q.qy+146, q.d,  {'font-family':SANS, 'font-weight':300, 'font-size':'var(--type-body-small)', fill:'rgba(25,25,23,.7)'});
+  txt(q.qx, q.qy+170, q.d2, {'font-family':SANS, 'font-weight':300, 'font-size':'var(--type-body-small)', fill:'rgba(25,25,23,.55)'});
+  /* 象限角落 mono tag */
+  var tagX = (i % 2 === 0) ? q.qx : q.qx + 580;
+  var tagA = (i % 2 === 0) ? 'start' : 'end';
+  /* 右上象限(Q1)与左下(Q3)做主角强调：挂一枚微图元 */
+});
+
+/* ---------- 主角象限标记：Q1 核心阵地（右上）放触点阵列，作为视觉重心 ---------- */
+(function(){
+  var bx = CX + 360, by = AX_T + 150;     /* 右上象限内 */
+  /* 5×4 点阵（内容触点） */
+  for (var r = 0; r < 4; r++) for (var c = 0; c < 5; c++) {
+    var dx = bx + c * 34, dy = by + r * 34;
+    el('circle', {cx:dx, cy:dy, r:3.2, fill:'none', stroke:INK80, 'stroke-width':1, opacity:.7});
+  }
+  /* 中心双圈核（品牌主张） */
+  el('circle', {cx:bx+68, cy:by+51, r:14, fill:'none', stroke:INK80, 'stroke-width':1.2});
+  el('circle', {cx:bx+68, cy:by+51, r:6, fill:INK, opacity:.8});
+})();
+
+stageFit();
+</script>
+</body>
+</html>

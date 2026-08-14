@@ -1,0 +1,105 @@
+<!-- GENERATED: Wise PPT formal canonical source; protected Gallery remains provenance-only. -->
+<!DOCTYPE html>
+<html lang="zh-CN" data-runtime="wise-ppt-specimen" data-typography-mode="mixed" data-page-id="gallery-ai-c6" data-page-role="prove" data-theme="paper-ink" data-layout="paper-ink.data.kpi-band" data-layout-source="gallery">
+<head>
+<meta charset="UTF-8">
+<title>layout-c6 · KPI 大数字横带 · AI 成效</title>
+<link rel="stylesheet" href="../../../../themes/paper-ink/assets/design-tokens.css">
+<link rel="stylesheet" href="../../../../themes/paper-ink/assets/slide-components.css">
+<link rel="stylesheet" href="../../../shell.css">
+<style>
+  svg.scene { position: absolute; inset: 0; z-index: 1; }
+  .doc.tl, .folio { color: var(--ink-45); }
+  .caption {
+    position: absolute; left: 0; right: 0; bottom: 118px;
+    text-align: center;;;;;;
+    z-index: 5;
+  }
+</style>
+</head>
+<body class="slide">
+<div class="stage" data-block-id="gallery-primary" data-renderer-kind="svg" data-component-source="native" data-component-id="native.paper-ink.data.kpi-band.kpis" data-content-ref="example.c6" data-anchor-id="stage">
+  <span data-geometry-anchor-holder="kpi-separator-1" data-anchor-id="kpi-separator-1" hidden aria-hidden="true"></span><span data-geometry-anchor-holder="kpi-separator-2" data-anchor-id="kpi-separator-2" hidden aria-hidden="true"></span>
+  <div class="doc tl" data-anchor-id="slot-support">AI ENGINEERING — C6<br>AI IMPACT SCORECARD</div>
+  <div class="folio">01 / 01 — BY @歪斯WISE</div>
+
+  <svg class="scene" width="1920" height="1080" viewBox="0 0 1920 1080">
+    <g id="draw" data-anchor-id="slot-kpis"></g>
+  </svg>
+
+  <div class="caption" data-anchor-id="slot-takeaway">上线 18 个月后，调用量、完成率、延迟与覆盖用户共同回答 AI 是否产生真实成效。</div>
+</div>
+
+<script src="../../../../runtime/stage-fit.js"></script>
+<script src="../../../../themes/paper-ink/assets/particles.js"></script>
+<script>
+var NS = 'http://www.w3.org/2000/svg';
+var INK = __wiseThemeToken("--ink");
+var INK80 = __wiseThemeToken("--ink-80");
+var INK70 = __wiseThemeToken("--ink-70");
+var INK45 = __wiseThemeToken("--ink-45");
+if (location.search.indexOf('accent') >= 0) document.documentElement.classList.add('accent');
+var ACCENT = document.documentElement.classList.contains('accent');
+var RED = getComputedStyle(document.documentElement).getPropertyValue('--accent-red').trim();
+var G = document.getElementById('draw');
+function el(tag, attrs) {
+  var e = document.createElementNS(NS, tag);
+  for (var k in attrs) e.setAttribute(k, attrs[k]);
+  G.appendChild(e); return e;
+}
+function txt(x, y, str, attrs) {
+  var t = el('text', Object.assign({x:x, y:y}, attrs||{}));
+  t.textContent = str; return t;
+}
+var MONO = 'var(--mono)', SANS = 'var(--sans)';
+
+G = el('g', {transform:'translate(0 -7.2)'});
+
+/* ---------- 引子 ---------- */
+txt(960, 316, '上线 18 个月 · AI 产品成效总账', {'font-family':SANS, 'font-weight':300, 'font-size':'var(--type-body)', 'text-anchor':'middle', fill:INK70});
+txt(960, 350, 'AI IMPACT · 2026 H1', {'font-family':MONO, 'font-size':'var(--type-meta)', 'letter-spacing':3, 'text-anchor':'middle', fill:INK45});
+
+/* ---------- 主角：通栏大数字横带（x120–1800，y380–640，4 格均分） ---------- */
+var CW = 64.8;   /* mono 108px 单字符宽 */
+var cells = [
+  {num:'1.28',  unit:'M',    uw:24, label:'日均调用量', en:'DAILY CALLS'},
+  {num:'94.2',  unit:'%',    uw:24, label:'任务完成率', en:'TASK SUCCESS'},
+  {num:'280',   unit:'ms',   uw:30, label:'平均延迟',   en:'AVG LATENCY'},
+  {num:'86,400',unit:'人',   uw:24, label:'覆盖用户数', en:'ACTIVE USERS'}
+];
+cells.forEach(function(C, i){
+  var cx = 120 + 420*i + 210;
+  /* 主角判定：94.2% 任务完成率是全页唯一焦点 → 数字/单位/中文标签 染色；No.编号与 EN 保持墨色 */
+  var focus = ACCENT && i === 1;
+  var fc = focus ? RED : null;
+  /* 格编号（不跟随染色） */
+  txt(cx, 408, 'No.0' + (i+1), {'font-family':MONO, 'font-size':'var(--type-micro-secondary)', 'letter-spacing':2, 'text-anchor':'middle', fill: INK45});
+  /* 超大数字 + 降级单位 */
+  var w = C.num.length * CW, gap = 16;
+  var numEnd = cx + w/2 - (C.uw + gap)/2;
+  txt(numEnd, 532, C.num, {'font-family':MONO, 'font-size':'var(--type-display)', 'text-anchor':'end', fill: fc || INK});
+  txt(numEnd + gap, 532, C.unit, {'font-family':SANS, 'font-weight':300, 'font-size':'var(--type-subheading)', 'text-anchor':'start', fill: fc || INK70});
+  /* 中文标签 + mono EN（EN 不跟随染色，保持档案感） */
+  txt(cx, 600, C.label, {'font-family':SANS, 'font-weight':300, 'font-size':'var(--type-body)', 'text-anchor':'middle', fill: fc || INK80});
+  txt(cx, 632, C.en, {'font-family':MONO, 'font-size':'var(--type-meta)', 'letter-spacing':2, 'text-anchor':'middle', fill: INK45});
+});
+/* 格间 0.6px 竖线分隔（无外框） */
+[540, 960, 1380].forEach(function(x){
+  el('line', {x1:x, y1:402, x2:x, y2:636, stroke:INK, 'stroke-width':.6, opacity:.3});
+});
+
+/* ---------- 底部 mono 口号行（竖线分隔） ---------- */
+var words = ['RETRIEVE', 'REASON', 'GENERATE', 'DELIVER'];
+var wx = [762, 908, 1048, 1170];
+var sx = [832, 984, 1112];
+words.forEach(function(wd, i){
+  txt(wx[i], 732, wd, {'font-family':MONO, 'font-size':'var(--type-label)', 'letter-spacing':3, 'text-anchor':'middle', fill:INK70});
+});
+sx.forEach(function(x){
+  el('line', {x1:x, y1:718, x2:x, y2:736, stroke:INK, 'stroke-width':.8, opacity:.4});
+});
+
+stageFit();
+</script>
+</body>
+</html>

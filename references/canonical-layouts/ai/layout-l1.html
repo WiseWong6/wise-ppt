@@ -1,0 +1,140 @@
+<!-- GENERATED: Wise PPT formal canonical source; protected Gallery remains provenance-only. -->
+<!DOCTYPE html>
+<html lang="zh-CN" data-runtime="wise-ppt-specimen" data-typography-mode="mixed" data-page-id="gallery-ai-l1" data-page-role="explain" data-theme="paper-ink" data-layout="paper-ink.mapping.weighted-arcs" data-layout-source="gallery">
+<head>
+<meta charset="UTF-8">
+<title>layout-l1 · 权重弧线图 · Transformer 注意力</title>
+<link rel="stylesheet" href="../../../../themes/paper-ink/assets/design-tokens.css">
+<link rel="stylesheet" href="../../../../themes/paper-ink/assets/slide-components.css">
+<link rel="stylesheet" href="../../../shell.css">
+<style>
+  svg.scene { position: absolute; inset: 0; z-index: 1; }
+  .caption {
+    position: absolute; left: 0; right: 0; bottom: 118px;
+    text-align: center;;;;;;
+    z-index: 5;
+  }
+</style>
+</head>
+<body class="slide">
+<div class="stage" data-block-id="gallery-primary" data-renderer-kind="svg" data-component-source="native" data-component-id="native.paper-ink.mapping.weighted-arcs.weighted-links" data-content-ref="example.l1" data-anchor-id="stage">
+  <span data-geometry-anchor-holder="strong-edge-source" data-anchor-id="strong-edge-source" hidden aria-hidden="true"></span><span data-geometry-anchor-holder="strong-edge-path" data-anchor-id="strong-edge-path" hidden aria-hidden="true"></span>
+  <div class="doc tl" data-anchor-id="slot-support">注意力分析 — 连接强弱<br>上下文关系</div>
+  <div class="folio">01 / 01 — BY @歪斯WISE</div>
+
+  <svg class="scene" width="1920" height="1080" viewBox="0 0 1920 1080">
+    <g id="draw" data-anchor-id="slot-weighted-links"></g>
+  </svg>
+
+  <div class="caption" data-anchor-id="slot-takeaway">高权重连接把关键上下文传向目标 token，被屏蔽的关系不再参与当前判断。</div>
+</div>
+
+<script src="../../../../runtime/stage-fit.js"></script>
+<script src="../../../../themes/paper-ink/assets/particles.js"></script>
+<script>
+var NS = 'http://www.w3.org/2000/svg';
+var INK = __wiseThemeToken("--ink");
+var INK80 = __wiseThemeToken("--ink-80");
+var INK45 = __wiseThemeToken("--ink-45");
+
+/* accent 触发：读 URL 加类 + 染色常量（详见 design-tokens.md §2） */
+if (location.search.indexOf('accent') >= 0) document.documentElement.classList.add('accent');
+var ACCENT = document.documentElement.classList.contains('accent');
+var RED = getComputedStyle(document.documentElement).getPropertyValue('--accent-red').trim();
+
+var G = document.getElementById('draw');
+function el(tag, attrs) {
+  var e = document.createElementNS(NS, tag);
+  for (var k in attrs) e.setAttribute(k, attrs[k]);
+  G.appendChild(e); return e;
+}
+function txt(x, y, str, attrs) {
+  var t = el('text', Object.assign({x:x, y:y}, attrs||{}));
+  t.textContent = str; return t;
+}
+var MONO = 'var(--mono)', SANS = 'var(--sans)';
+
+G = el('g', {transform:'translate(0 -5.2)'});
+
+
+/* ---------- 节点芯片（双线框，y 顶 532） ---------- */
+var chips = [
+  {x: 534, w:120, t:'The'},
+  {x: 694, w:110, t:'cat'},
+  {x: 844, w: 96, t:'sat'},
+  {x: 980, w: 96, t:'on'},
+  {x:1116, w:110, t:'the'},
+  {x:1266, w:120, t:'mat.'}
+];
+var TOP = 532, H = 56;
+chips.forEach(function(c, i){
+  c.cx = c.x + c.w/2;
+  var hot = ACCENT && (i===0 || i===1);  /* 强弧两端节点（The t0 / cat t1）染红 */
+  el('rect', {x:c.x, y:TOP, width:c.w, height:H, fill:__wiseThemeToken("--paper-panel"),
+    stroke: hot ? RED : INK80, 'stroke-width':1.2});
+  el('rect', {x:c.x+4, y:TOP+4, width:c.w-8, height:H-8, fill:'none',
+    stroke: hot ? RED : INK, 'stroke-width':.7, opacity:.5});
+  txt(c.cx, TOP+H/2+8, c.t, {'font-family':SANS, 'font-weight':300,
+    'font-size':'var(--type-body)', 'text-anchor':'middle', fill: hot ? RED : INK});
+  /* 下方索引刻度 t0–tn */
+  el('line', {x1:c.cx, y1:TOP+H, x2:c.cx, y2:TOP+H+9, stroke:INK, 'stroke-width':.6, opacity:.3});
+  txt(c.cx, TOP+H+30, 't'+i, {'font-family':MONO, 'font-size':'var(--type-meta)',
+    'text-anchor':'middle', fill:INK45});
+});
+/* 构造基线（虚线 0.6 / .3） */
+el('line', {x1:510, y1:636, x2:1410, y2:636, stroke:INK, 'stroke-width':.6,
+  'stroke-dasharray':'2 5', opacity:.3});
+
+/* ---------- 权重弧线：三档线宽编码连接强度 ---------- */
+function arc(x1, x2, lift, w, op, dash, ac) {
+  var mx = (x1+x2)/2;
+  var a = {d:'M '+x1+' '+TOP+' Q '+mx+' '+(TOP-2*lift)+' '+x2+' '+TOP,
+    fill:'none', stroke: ac && ACCENT ? RED : INK, 'stroke-width':w, opacity:op, 'stroke-linecap':'round'};
+  if (dash) a['stroke-dasharray'] = dash;
+  return el('path', a);
+}
+function node(x, r, op, ac) { el('circle', {cx:x, cy:TOP, r:r, fill: ac && ACCENT ? RED : INK, opacity:op}); }
+
+/* 弱（0.6px @ .2）：背景共现关系 */
+arc(594,  892,  60, .6, .2);   /* The ↔ sat */
+arc(892, 1171,  42, .6, .2);   /* sat ↔ the */
+arc(749, 1326, 170, .6, .2);   /* cat ↔ mat. */
+arc(1028,1171,  30, .6, .2);   /* on ↔ the */
+arc(1171,1326,  36, .6, .2);   /* the ↔ mat. */
+
+/* 中（1.1px @ .4）：语义关联关系 */
+arc(594, 1028, 140, 1.1, .4);  /* The ↔ on */
+arc(749, 1171, 110, 1.1, .4);  /* cat ↔ the */
+arc(594, 1171, 190, 1.1, .4);  /* The ↔ the */
+node(1028, 2, .5); node(1171, 2, .5);
+txt(811, 372, 'w ≈ 0.46 · MID', {'font-family':MONO, 'font-size':'var(--type-meta)',
+  'text-anchor':'middle', fill:__wiseThemeToken("--wp-compat-pi-ink-60")});
+
+/* 强（1.8px @ .9）：The 绑定 cat，本页唯一强调线 */
+arc(594, 749, 110, 1.8, .9, null, true);
+node(594, 2.4, .9, true); node(749, 2.4, .9, true);
+txt(672, 400, 'w ≈ 0.87 · STRONG ATTEND', {'font-family':MONO, 'font-size':'var(--type-label)',
+  'text-anchor':'middle', fill: ACCENT ? RED : __wiseThemeToken("--wp-compat-layout-ink-85")});
+el('line', {x1:672, y1:408, x2:672, y2:416, stroke: ACCENT ? RED : INK, 'stroke-width':.6, opacity:.6});
+
+/* 断裂弧：sat ↔ mat.，断口擦除 + ✕ + 引线标注 */
+arc(892, 1326, 100, .8, .55, '5 5');
+el('rect', {x:1090, y:412, width:40, height:36, fill:__wiseThemeToken("--paper"), stroke:'none'});
+el('line', {x1:1102, y1:424, x2:1116, y2:438, stroke:INK, 'stroke-width':1.1, opacity:.85});
+el('line', {x1:1116, y1:424, x2:1102, y2:438, stroke:INK, 'stroke-width':1.1, opacity:.85});
+el('line', {x1:1136, y1:430, x2:1204, y2:404, stroke:INK, 'stroke-width':.6, opacity:.5});
+el('circle', {cx:1136, cy:430, r:1.4, fill:INK, opacity:.5});
+txt(1212, 408, 'w ≈ 0.04 · ATTENTION BREAK', {'font-family':MONO, 'font-size':'var(--type-meta)',
+  'text-anchor':'start', fill:__wiseThemeToken("--wp-compat-layout-ink-75")});
+
+/* 底部刻度排（mono 档案刻度，贴安全区下缘） */
+for (var i = 0; i <= 10; i++) {
+  el('line', {x1:510 + i*90, y1:652, x2:510 + i*90, y2:660, stroke:INK, 'stroke-width':.6, opacity:.3});
+  txt(510 + i*90, 676, String(i*10), {'font-family':MONO, 'font-size':'var(--type-micro-secondary)',
+    'text-anchor':'middle', fill:INK45});
+}
+
+stageFit();
+</script>
+</body>
+</html>

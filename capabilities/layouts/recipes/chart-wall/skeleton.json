@@ -1,0 +1,67 @@
+{
+  "format": "wise-ppt-recipe-skeleton@1",
+  "recipe_id": "paper-ink.data.chart-wall",
+  "canvas": {"width": 1920, "height": 1080},
+  "content_region": {"anchor_id": "c2-main", "zone": "core-content"},
+  "fragment": "capabilities/layouts/recipes/chart-wall/fragment.html",
+  "payload_schema": {
+    "type": "object", "additionalProperties": false,
+    "required": ["trend", "bars", "mix", "takeaway"],
+    "properties": {
+      "trend": {
+        "type": "array", "minItems": 8, "maxItems": 8,
+        "items": {"type": "object", "additionalProperties": false, "required": ["label", "value"], "properties": {"label": {"type": "string", "minLength": 1, "maxLength": 4}, "value": {"type": "number", "minimum": 0, "maximum": 60}}}
+      },
+      "bars": {
+        "type": "array", "minItems": 6, "maxItems": 6,
+        "items": {"type": "object", "additionalProperties": false, "required": ["label", "value"], "properties": {"label": {"type": "string", "minLength": 1, "maxLength": 6}, "value": {"type": "number", "minimum": 0, "maximum": 100}}}
+      },
+      "mix": {
+        "type": "array", "minItems": 3, "maxItems": 3,
+        "items": {"type": "object", "additionalProperties": false, "required": ["label", "value"], "properties": {"label": {"type": "string", "minLength": 1, "maxLength": 6}, "value": {"type": "number", "minimum": 10, "maximum": 80}}}
+      },
+      "takeaway": {"type": "string", "minLength": 1, "maxLength": 96}
+    }
+  },
+  "default_payload": {
+    "trend": [
+      {"label": "W24", "value": 31}, {"label": "W25", "value": 34}, {"label": "W26", "value": 33}, {"label": "W27", "value": 38},
+      {"label": "W28", "value": 42}, {"label": "W29", "value": 41}, {"label": "W30", "value": 47}, {"label": "W31", "value": 52}
+    ],
+    "bars": [
+      {"label": "APP", "value": 92}, {"label": "WEB", "value": 87}, {"label": "CRM", "value": 81},
+      {"label": "LIVE", "value": 76}, {"label": "SOC", "value": 68}, {"label": "STORE", "value": 61}
+    ],
+    "mix": [{"label": "拉新", "value": 46}, {"label": "促活", "value": 33}, {"label": "召回", "value": 21}],
+    "takeaway": "月度峰值触达 5.2 万次，拉新、促活与召回占 46%、33% 和 21%。"
+  },
+  "anchors": [
+    {"anchor_id": "stage", "selector": "[data-anchor-id=\"stage\"]"},
+    {"anchor_id": "c2-main", "selector": "[data-anchor-id=\"c2-main\"]"},
+    {"anchor_id": "c2-panel-1", "selector": "[data-anchor-id=\"c2-panel-1\"]"},
+    {"anchor_id": "c2-title-1", "selector": "[data-anchor-id=\"c2-title-1\"]"},
+    {"anchor_id": "c2-plot-1", "selector": "[data-anchor-id=\"c2-plot-1\"]"},
+    {"anchor_id": "c2-panel-2", "selector": "[data-anchor-id=\"c2-panel-2\"]"},
+    {"anchor_id": "c2-title-2", "selector": "[data-anchor-id=\"c2-title-2\"]"},
+    {"anchor_id": "c2-plot-2", "selector": "[data-anchor-id=\"c2-plot-2\"]"},
+    {"anchor_id": "c2-panel-3", "selector": "[data-anchor-id=\"c2-panel-3\"]"},
+    {"anchor_id": "c2-title-3", "selector": "[data-anchor-id=\"c2-title-3\"]"},
+    {"anchor_id": "c2-plot-3", "selector": "[data-anchor-id=\"c2-plot-3\"]"},
+    {"anchor_id": "c2-support", "selector": "[data-anchor-id=\"c2-support\"]"},
+    {"anchor_id": "c2-takeaway", "selector": "[data-anchor-id=\"c2-takeaway\"]"}
+  ],
+  "relations": [
+    {"relation_id": "c2-main-in-stage", "type": "contain", "anchors": ["stage", "c2-main"], "tolerance": 0},
+    {"relation_id": "c2-plot-1-in-panel", "type": "contain", "anchors": ["c2-panel-1", "c2-plot-1"], "tolerance": 0},
+    {"relation_id": "c2-plot-2-in-panel", "type": "contain", "anchors": ["c2-panel-2", "c2-plot-2"], "tolerance": 0},
+    {"relation_id": "c2-plot-3-in-panel", "type": "contain", "anchors": ["c2-panel-3", "c2-plot-3"], "tolerance": 0},
+    {"relation_id": "c2-lower-panels-clear", "type": "avoid", "anchors": ["c2-panel-2", "c2-panel-3"], "min_gap": 130, "tolerance": 0},
+    {"relation_id": "c2-offset-1", "type": "offsetEq", "anchors": ["c2-title-1", "c2-plot-1"], "axis": "x", "offset": 50, "tolerance": 1},
+    {"relation_id": "c2-offset-2", "type": "offsetEq", "anchors": ["c2-title-2", "c2-plot-2"], "axis": "x", "offset": 50, "tolerance": 1},
+    {"relation_id": "c2-offset-3", "type": "offsetEq", "anchors": ["c2-title-3", "c2-plot-3"], "axis": "x", "offset": 50, "tolerance": 1},
+    {"relation_id": "c2-lower-bottom", "type": "bottomEq", "anchors": ["c2-plot-2", "c2-plot-3"], "tolerance": 1}
+  ],
+  "allowed_variants": {},
+  "requires": [],
+  "invariants": [{"type": "sum_equals", "field": "mix", "value_key": "value", "value": 100}]
+}

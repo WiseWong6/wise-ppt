@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-runtime="wise-ppt-specimen" data-typography-mode="mixed" data-page-id="gallery-general-d6" data-page-role="act" data-theme="paper-ink" data-layout="paper-ink.scaffold.contact" data-layout-source="gallery">
+<head>
+<meta charset="UTF-8">
+<title>layout-d6 · 联络尾页 · @歪斯Wise</title>
+<!--
+  纸墨线稿样张 · C7 联络尾页
+  与六页示例（themes/paper-ink/examples/wise-ppt-story-six-page/index.html#6）保持一致
+  版式纪律（layouts C7）：左地图线稿 + 三行联系文字，右名片双线卡；约 6:4；二维码只做矩阵暗示
+-->
+<link rel="stylesheet" href="../../../../themes/paper-ink/assets/design-tokens.css">
+<link rel="stylesheet" href="../../../../themes/paper-ink/assets/slide-components.css">
+<link rel="stylesheet" href="../../../shell.css">
+<style>
+  svg.scene { position: absolute; inset: 0; z-index: 1; }
+  .doc.tl, .folio { color: rgba(25,25,23,.45); }
+  .caption {
+    position: absolute; left: 0; right: 0; bottom: 118px;
+    text-align: center;
+    font-family: var(--sans); font-weight: 400;
+    font-size: var(--type-caption); letter-spacing: .04em;
+    color: #191917;
+    z-index: 5;
+  }
+</style>
+</head>
+<body class="slide">
+<div class="stage" data-block-id="gallery-primary" data-renderer-kind="svg" data-component-source="native" data-component-id="native.paper-ink.scaffold.contact.contact" data-content-ref="example.d6">
+  <div class="doc tl">WISE PPT SKILL — 06<br>STAY IN TOUCH</div>
+  <div class="folio">D6 / 63 — BY @歪斯WISE</div>
+
+  <svg class="scene" width="1920" height="1080" viewBox="0 0 1920 1080">
+    <g id="draw"></g>
+  </svg>
+
+  <div class="caption">关注 @歪斯Wise，及时获取更新资讯。</div>
+</div>
+
+<script src="../../../../runtime/stage-fit.js"></script>
+<script src="../../../../themes/paper-ink/assets/particles.js"></script>
+<script>
+var NS = 'http://www.w3.org/2000/svg';
+var INK = '#191917';
+var INK80 = 'rgba(25,25,23,.8)';
+var INK45 = 'rgba(25,25,23,.45)';
+var G = document.getElementById('draw');
+function el(tag, attrs) {
+  var e = document.createElementNS(NS, tag);
+  for (var k in attrs) e.setAttribute(k, attrs[k]);
+  G.appendChild(e); return e;
+}
+function txt(x, y, str, attrs) {
+  var t = el('text', Object.assign({x:x, y:y}, attrs||{}));
+  t.textContent = str; return t;
+}
+var MONO = 'var(--mono)', SANS = 'var(--sans)';
+
+G = el('g', {transform:'translate(0 -8.7)'});
+
+
+/* ================= 左块：地图线稿 x150–920, y220–640（抄六页示例联络页） ================= */
+var MX = 150, MY = 220, MW = 770, MH = 420;
+el('rect', {x:MX, y:MY, width:MW, height:MH, fill:'none', stroke:INK, 'stroke-width':.6, opacity:.3, 'stroke-dasharray':'2 6'});
+/* 四角套准十字 */
+[[MX,MY],[MX+MW,MY],[MX,MY+MH],[MX+MW,MY+MH]].forEach(function(p){
+  el('line', {x1:p[0]-8, y1:p[1], x2:p[0]+8, y2:p[1], stroke:INK, 'stroke-width':.7, opacity:.35});
+  el('line', {x1:p[0], y1:p[1]-8, x2:p[0], y2:p[1]+8, stroke:INK, 'stroke-width':.7, opacity:.35});
+});
+/* 河：右下斜穿的贝塞尔双细线 */
+el('path', {d:'M 700 220 C 760 320, 700 420, 800 500 C 850 540, 880 600, 870 640', fill:'none', stroke:INK, 'stroke-width':.9, opacity:.5});
+el('path', {d:'M 726 220 C 786 320, 726 420, 826 500 C 876 540, 906 600, 896 640', fill:'none', stroke:INK, 'stroke-width':.9, opacity:.5});
+txt(846, 336, 'ABSTRACT TRACE', {'font-family':MONO, 'font-size':'var(--type-micro-secondary)', 'letter-spacing':2, fill:INK45, transform:'rotate(74 846 336)'});
+/* 横向路网（主干道 1.2px，次道 .7px） */
+el('path', {d:'M 150 310 C 360 296, 640 324, 920 306', fill:'none', stroke:INK80, 'stroke-width':1.2});
+el('path', {d:'M 150 452 C 400 444, 660 460, 920 448', fill:'none', stroke:INK, 'stroke-width':.7, opacity:.6});
+el('path', {d:'M 150 570 C 380 580, 660 562, 920 574', fill:'none', stroke:INK, 'stroke-width':.7, opacity:.6});
+/* 纵向路网 */
+el('path', {d:'M 330 220 C 324 360, 336 500, 328 640', fill:'none', stroke:INK, 'stroke-width':.7, opacity:.6});
+el('path', {d:'M 560 220 C 566 340, 554 520, 562 640', fill:'none', stroke:INK80, 'stroke-width':1.2});
+/* 街区名 */
+txt(196, 290, 'CONTACT GRID', {'font-family':MONO, 'font-size':'var(--type-micro-secondary)', 'letter-spacing':2, fill:INK45});
+txt(576, 252, 'LINK PATH', {'font-family':MONO, 'font-size':'var(--type-micro-secondary)', 'letter-spacing':2, fill:INK45, transform:'rotate(88 576 252)'});
+/* 园区块：双线框 */
+el('rect', {x:380, y:346, width:150, height:92, fill:'rgba(255,255,255,.22)', stroke:INK, 'stroke-width':.9, opacity:.85});
+el('rect', {x:385, y:351, width:140, height:82, fill:'none', stroke:INK, 'stroke-width':.5, opacity:.3});
+txt(455, 396, 'WISE', {'font-family':MONO, 'font-size':'var(--type-meta)', 'letter-spacing':3, 'text-anchor':'middle', fill:INK, opacity:.7});
+txt(455, 416, 'CONTACT', {'font-family':MONO, 'font-size':'var(--type-meta)', 'letter-spacing':3, 'text-anchor':'middle', fill:INK, opacity:.7});
+/* 定位钉：双圈 + 钉尖 */
+el('circle', {cx:560, cy:452, r:10, fill:'none', stroke:INK, 'stroke-width':1.2});
+el('circle', {cx:560, cy:452, r:14, fill:'none', stroke:INK, 'stroke-width':.6, opacity:.4});
+el('circle', {cx:560, cy:452, r:3, fill:INK});
+el('path', {d:'M 560 466 L 560 500', stroke:INK, 'stroke-width':.8, opacity:.5});
+el('path', {d:'M 560 500 L 596 500', stroke:INK, 'stroke-width':.8, opacity:.5});
+txt(604, 505, 'WISE · SHENZHEN', {'font-family':MONO, 'font-size':'var(--type-meta)', 'letter-spacing':2, fill:INK, opacity:.75});
+/* 比例尺 */
+el('line', {x1:180, y1:616, x2:280, y2:616, stroke:INK, 'stroke-width':1, opacity:.6});
+el('line', {x1:180, y1:610, x2:180, y2:622, stroke:INK, 'stroke-width':1, opacity:.6});
+el('line', {x1:280, y1:610, x2:280, y2:622, stroke:INK, 'stroke-width':1, opacity:.6});
+txt(292, 620, 'NOT TO SCALE', {'font-family':MONO, 'font-size':'var(--type-micro-secondary)', 'letter-spacing':2, fill:INK45});
+
+/* ================= 右块名片卡常量（左下三行联系文字需对齐卡片底部） ================= */
+var KX = 1100, KY = 220, KW = 620, KH = 630;
+
+/* ================= 左块下方：三行联系文字 ================= */
+var contact = [
+  ['微信', '扫码或搜索 @歪斯Wise'],
+  ['小红书', '@歪斯Wise'],
+  ['官网', 'wisewong.com']
+];
+contact.forEach(function(c, i){
+  var y = KY + KH - 5 - (2 - i) * 52;
+  el('circle', {cx:158, cy:y-6, r:3, fill:'none', stroke:INK, 'stroke-width':.9, opacity:.7});
+  el('circle', {cx:158, cy:y-6, r:1, fill:INK});
+  txt(178, y, c[0], {'font-family':SANS, 'font-weight':300, 'font-size':'var(--type-body-small)', fill:INK});
+  txt(292, y, c[1], {'font-family':SANS, 'font-weight':300, 'font-size':'var(--type-body-small)', fill:'rgba(25,25,23,.75)'});
+});
+
+/* ================= 右块：名片双线卡 x1100–1720, y220–850 ================= */
+el('rect', {x:KX, y:KY, width:KW, height:KH, fill:'rgba(255,255,255,.22)', stroke:INK80, 'stroke-width':1.3});
+el('rect', {x:KX+5, y:KY+5, width:KW-10, height:KH-10, fill:'none', stroke:INK, 'stroke-width':.6, opacity:.3});
+/* 卡头 */
+txt(KX+44, KY+64, 'WISE — CONTACT', {'font-family':MONO, 'font-size':'var(--type-label)', 'letter-spacing':3, fill:INK45});
+el('line', {x1:KX+44, y1:KY+84, x2:KX+200, y2:KY+84, stroke:INK, 'stroke-width':.8, opacity:.5});
+/* 姓名 + 职务 */
+txt(KX+44, KY+156, '歪斯 Wise', {'font-family':SANS, 'font-weight':300, 'font-size':'var(--type-heading)', fill:INK});
+txt(KX+46, KY+196, '@歪斯WISE', {'font-family':MONO, 'font-size':'var(--type-label)', 'letter-spacing':2, fill:'rgba(25,25,23,.6)'});
+el('line', {x1:KX+44, y1:KY+232, x2:KX+KW-44, y2:KY+232, stroke:INK, 'stroke-width':.8, opacity:.4});
+/* 渠道行 */
+var lines = [
+  ['小红书',   '@歪斯Wise'],
+  ['微信搜一搜', '歪斯Wise'],
+  ['WEB',   'wisewong.com'],
+  ['ADDR',  'SHENZHEN']
+];
+lines.forEach(function(L, i){
+  var y = KY + 292 + i * 62;
+  txt(KX+44, y, L[0], {'font-family':MONO, 'font-size':'var(--type-meta)', 'letter-spacing':3, fill:INK45});
+  txt(KX+150, y, L[1], {'font-family':MONO, 'font-size':'var(--type-body-small)', 'letter-spacing':1, fill:INK});
+  if (i < lines.length-1)
+    el('line', {x1:KX+44, y1:y+22, x2:KX+KW-44, y2:y+22, stroke:INK, 'stroke-width':.6, opacity:.18});
+});
+
+/* 二维码（抄六页示例数据：描边框、带 QR_PAYLOAD 与 data-qr-payload）
+   定位约束：QR 右边缘（含描边 pad 框）= 渠道行分隔线右端 KX+KW-44，不超出分隔线；
+   QCS 收窄（3.6→3.0）使整体向左上缩小。 */
+var QR_PAYLOAD = 'http://weixin.qq.com/r/mp/sDgNFUrEMRdOrQ52922i';
+var QR_SIZE = 37, QR_PAD = 16, QCS = 3.0;
+var QR_DATA = [
+  '1111111010010100111110000000001111111',
+  '1000001001100110110101011011001000001',
+  '1011101000101010011001110000001011101',
+  '1011101001001100100110110011101011101',
+  '1011101010100101110011011100101011101',
+  '1000001010001111001110000111101000001',
+  '1111111010101010101010101010101111111',
+  '0000000001111001111011100100100000000',
+  '0111111101100100100011100010100110001',
+  '1100010101110110010111010001001111101',
+  '0100101000010100011000000111101010011',
+  '1010110110001010111001010011001111000',
+  '1101001101101110011000011111001001010',
+  '0110110100111100111101110100110101110',
+  '0001111010011101101101001111010011011',
+  '1000010010111000010111101010010000011',
+  '1000011111111110100101010111111010101',
+  '0001010101010101010110101100100101000',
+  '0000001101101001001000100111111110011',
+  '0011100100100010010011001010111001000',
+  '1001101010100100110010000110011111110',
+  '0011000010111010111111011010001100000',
+  '1101101101001011100111100001101001111',
+  '0010010000000100100011001010111100000',
+  '0001111000110011011100101000001100001',
+  '1000100100010010110000011011111000101',
+  '1011111011010111010101001010000101111',
+  '1001010111011101011011101010100000110',
+  '1100101101010000010100000110111111011',
+  '0000000010101100010000110100100010010',
+  '1111111011110000100000100011101011011',
+  '1000001011010011111000001010100010000',
+  '1011101011010111011011111111111110110',
+  '1011101011110000101001000010001110100',
+  '1011101010100011100010011100100101101',
+  '1000001010000100100001010001110100001',
+  '1111111001101010101010010011011101111'
+];
+/* QX：让 QR 描边框右边缘 = 分隔线右端（KX+KW-44），矩阵右缘留一格 QR_PAD 内缩 */
+var QX = (KX + KW - 44) - QR_PAD - QR_SIZE*QCS, QY = KY + 292 + 3*62;
+/* QR 容器：URL 含 ppt 时输出 data-qr-payload（供截图/扫描工具读取真实链接） */
+var qr = el('g', location.search.indexOf('ppt') >= 0 ? {'data-qr-payload': QR_PAYLOAD} : {});
+/* 把后续 QR 矩阵与描边框挂到 qr 这个 <g> 下（el 默认 append 到 G，这里需要临时切换宿主） */
+var __origEl = el;
+function qrEl(tag, attrs) {
+  var e = document.createElementNS(NS, tag);
+  for (var k in attrs) e.setAttribute(k, attrs[k]);
+  qr.appendChild(e); return e;
+}
+qrEl('rect', {x:QX-QR_PAD, y:QY-QR_PAD, width:QR_SIZE*QCS+QR_PAD*2, height:QR_SIZE*QCS+QR_PAD*2, fill:'none', stroke:INK, 'stroke-width':.7, opacity:.7});
+for (var ri = 0; ri < QR_SIZE; ri++) {
+  for (var rj = 0; rj < QR_SIZE; rj++) {
+    if (QR_DATA[ri][rj] === '1')
+      qrEl('rect', {x:QX + rj*QCS, y:QY + ri*QCS, width:QCS, height:QCS, fill:'rgba(25,25,23,.82)'});
+  }
+}
+
+/* 卡内左下：两行小注（baseline 对齐二维码描边框底部） */
+var noteBottom = QY + QR_SIZE*QCS + QR_PAD;
+txt(KX+44, noteBottom - 40, '扫码或微信搜一搜“歪斯Wise”', {'font-family':SANS, 'font-weight':300, 'font-size':'var(--type-body-small)', fill:'rgba(25,25,23,.7)'});
+txt(KX+44, noteBottom - 6, 'WECHAT SEARCH · 歪斯WISE', {'font-family':MONO, 'font-size':'var(--type-micro-secondary)', 'letter-spacing':2.5, fill:INK45});
+
+stageFit();
+</script>
+</body>
+</html>

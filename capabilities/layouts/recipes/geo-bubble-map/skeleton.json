@@ -1,0 +1,51 @@
+{
+  "format": "wise-ppt-recipe-skeleton@1",
+  "recipe_id": "paper-ink.data.geo-bubble-map",
+  "canvas": {"width": 1920, "height": 1080},
+  "content_region": {"anchor_id": "c4-main", "zone": "core-content"},
+  "fragment": "capabilities/layouts/recipes/geo-bubble-map/fragment.html",
+  "payload_schema": {
+    "type": "object", "additionalProperties": false,
+    "required": ["support", "nodes", "kpis", "takeaway"],
+    "properties": {
+      "support": {"type": "string", "minLength": 1, "maxLength": 80},
+      "nodes": {
+        "type": "array", "minItems": 1, "maxItems": 8,
+        "items": {"type": "object", "additionalProperties": false, "required": ["feature_id", "value"], "properties": {"feature_id": {"type": "string", "enum": ["广州市", "深圳市", "佛山市", "东莞市", "珠海市", "汕头市", "惠州市", "中山市"]}, "value": {"type": "number", "minimum": 0, "maximum": 99}}}
+      },
+      "kpis": {
+        "type": "array", "minItems": 4, "maxItems": 4,
+        "items": {"type": "object", "additionalProperties": false, "required": ["value", "label"], "properties": {"value": {"type": "string", "minLength": 1, "maxLength": 10}, "label": {"type": "string", "minLength": 1, "maxLength": 16}}}
+      },
+      "takeaway": {"type": "string", "minLength": 1, "maxLength": 96}
+    }
+  },
+  "default_payload": {
+    "support": "FILL = EVENT COUNT · 112°E–115°E · MAP DATA © DATAV.GEOATLAS",
+    "nodes": [{"feature_id": "广州市", "value": 16}, {"feature_id": "深圳市", "value": 12}, {"feature_id": "佛山市", "value": 8}, {"feature_id": "东莞市", "value": 7}, {"feature_id": "珠海市", "value": 5}, {"feature_id": "汕头市", "value": 4}],
+    "kpis": [{"value": "52", "label": "年度城市活动（场）"}, {"value": "12.6万", "label": "活动报名人数"}, {"value": "21", "label": "规划覆盖城市（个）"}, {"value": "93%", "label": "参与者满意度"}],
+    "takeaway": "以广深为核心安排城市活动，再逐步覆盖周边城市与粤东重点区域。"
+  },
+  "anchors": [
+    {"anchor_id": "stage", "selector": "[data-anchor-id=\"stage\"]"},
+    {"anchor_id": "c4-main", "selector": "[data-anchor-id=\"c4-main\"]"},
+    {"anchor_id": "c4-map", "selector": "[data-anchor-id=\"c4-map\"]"},
+    {"anchor_id": "c4-legend", "selector": "[data-anchor-id=\"c4-legend\"]"},
+    {"anchor_id": "c4-kpis", "selector": "[data-anchor-id=\"c4-kpis\"]"},
+    {"anchor_id": "c4-support", "selector": "[data-anchor-id=\"c4-support\"]"},
+    {"anchor_id": "c4-takeaway", "selector": "[data-anchor-id=\"c4-takeaway\"]"}
+  ],
+  "relations": [
+    {"relation_id": "c4-main-in-stage", "type": "contain", "anchors": ["stage", "c4-main"], "tolerance": 0},
+    {"relation_id": "c4-map-in-main", "type": "contain", "anchors": ["c4-main", "c4-map"], "tolerance": 0},
+    {"relation_id": "c4-legend-in-main", "type": "contain", "anchors": ["c4-main", "c4-legend"], "tolerance": 0},
+    {"relation_id": "c4-kpis-in-main", "type": "contain", "anchors": ["c4-main", "c4-kpis"], "tolerance": 0},
+    {"relation_id": "c4-map-kpis-clear", "type": "avoid", "anchors": ["c4-map", "c4-kpis"], "min_gap": 20, "tolerance": 1},
+    {"relation_id": "c4-kpis-right-boundary", "type": "hardBoundary", "anchors": ["c4-main", "c4-kpis"], "edge": "right", "tolerance": 1},
+    {"relation_id": "c4-map-legend-left", "type": "offsetEq", "anchors": ["c4-map", "c4-legend"], "axis": "x", "offset": 20, "tolerance": 1},
+    {"relation_id": "c4-map-kpis-top", "type": "edgeEq", "anchors": ["c4-map", "c4-kpis"], "edge": "top", "tolerance": 1}
+  ],
+  "allowed_variants": {"color_mode": ["normal", "accent"]},
+  "requires": ["echarts", "geo-demo-data"],
+  "invariants": [{"type": "unique_by", "field": "nodes", "key": "feature_id"}]
+}

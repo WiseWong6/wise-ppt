@@ -1,0 +1,64 @@
+{
+  "example_id": "echarts.line-basic",
+  "title": "基础折线图",
+  "source_url": "https://echarts.apache.org/examples/zh/index.html#chart-type-line",
+  "upstream_license": "Apache-2.0",
+  "chart_type": "line",
+  "source_note": "改编自 Apache ECharts 官方示例 doc-example/tutorial-api-1。原示例 series[].data 硬编码，已抽成 dataset.source 并通过 series.encode 引用列名。",
+  "dataset_shape": {
+    "dimensions": ["week", "amount"],
+    "source": [
+      { "week": "周一", "amount": 150 },
+      { "week": "周二", "amount": 230 },
+      { "week": "周三", "amount": 224 },
+      { "week": "周四", "amount": 218 },
+      { "week": "周五", "amount": 135 },
+      { "week": "周六", "amount": 147 },
+      { "week": "周日", "amount": 260 }
+    ]
+  },
+  "render_plan_binding": {
+    "renderer_kind": "svg",
+    "component_source": "echarts",
+    "component_id": "echarts.line-basic",
+    "theme_adapter_id": "paper-ink.echarts",
+    "data_binding": {
+      "data_ref": {
+        "content_id": "item.weekly-visits",
+        "json_pointer": "/structured_data/rows"
+      },
+      "dataset_id": "dataset.line-basic",
+      "encode": { "x": "week", "y": "amount" }
+    }
+  },
+  "html_template": {
+    "container_attrs": "data-block-id=\"block.main\" data-renderer-kind=\"svg\" data-component-source=\"echarts\" data-component-id=\"echarts.line-basic\" data-theme-adapter-id=\"paper-ink.echarts\" data-content-ref=\"item.weekly-visits\" data-dataset-id=\"dataset.line-basic\"",
+    "dataset_script_id": "dataset.line-basic"
+  },
+  "option": {
+    "dataset": {
+      "dimensions": ["week", "amount"],
+      "source": [
+        { "week": "周一", "amount": 150 },
+        { "week": "周二", "amount": 230 },
+        { "week": "周三", "amount": 224 },
+        { "week": "周四", "amount": 218 },
+        { "week": "周五", "amount": 135 },
+        { "week": "周六", "amount": 147 },
+        { "week": "周日", "amount": 260 }
+      ]
+    },
+    "tooltip": { "trigger": "axis" },
+    "xAxis": { "type": "category" },
+    "yAxis": { "type": "value" },
+    "series": [
+      {
+        "name": "访问量",
+        "type": "line",
+        "encode": { "x": "week", "y": "amount" },
+        "smooth": false
+      }
+    ]
+  },
+  "notes": "原官方示例把数据写在 series[0].data 里；本版用 dataset + encode，数据与页面 JSON 块逐值相等，满足 wise-ppt 运行时门禁 createEChart 的 dataset 一致性校验。"
+}

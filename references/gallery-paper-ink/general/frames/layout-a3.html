@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-runtime="wise-ppt-specimen" data-typography-mode="mixed" data-page-id="gallery-general-a3" data-page-role="prove" data-theme="paper-ink" data-layout="paper-ink.evidence.document-excerpt" data-layout-source="gallery">
+<head>
+<meta charset="UTF-8">
+<title>layout-a3 · 文献摘引页</title>
+<link rel="stylesheet" href="../../../../themes/paper-ink/assets/design-tokens.css">
+<link rel="stylesheet" href="../../../../themes/paper-ink/assets/slide-components.css">
+<link rel="stylesheet" href="../../../shell.css">
+<style>
+  svg.scene { position: absolute; inset: 0; z-index: 1; }
+  .caption {
+    position: absolute; left: 0; right: 0; bottom: 108px;
+    text-align: center;
+    font-family: var(--sans); font-weight: 400;
+    font-size: var(--type-caption); letter-spacing: .04em;
+    color: var(--ink);
+    z-index: 5;
+  }
+</style>
+</head>
+<body class="slide">
+<div class="stage" data-block-id="gallery-primary" data-renderer-kind="svg" data-component-source="native" data-component-id="native.paper-ink.evidence.document-excerpt.excerpt" data-content-ref="example.a3">
+  <div class="doc tl">产品 · 培训 — A3<br>新手引导研究摘引</div>
+  <div class="folio">A3 / 63 — BY @歪斯WISE</div>
+
+  <svg class="scene" width="1920" height="1080" viewBox="0 0 1920 1080">
+    <g id="draw"></g>
+  </svg>
+
+  <div class="caption">研究指出：产品培训先降低新手行动成本，后续留存改善才可持续。</div>
+</div>
+
+<script src="../../../../runtime/stage-fit.js"></script>
+<script src="../../../../themes/paper-ink/assets/particles.js"></script>
+<script>
+var NS = 'http://www.w3.org/2000/svg';
+var INK = '#191917';
+var INK80 = 'rgba(25,25,23,.8)';
+var INK70 = 'rgba(25,25,23,.7)';
+var INK45 = 'rgba(25,25,23,.45)';
+/* accent 触发：读 URL 加类 + 染色常量（详见 design-tokens.md §2） */
+if (location.search.indexOf('accent') >= 0) document.documentElement.classList.add('accent');
+var ACCENT = document.documentElement.classList.contains('accent');
+var RED = getComputedStyle(document.documentElement).getPropertyValue('--accent-red').trim();
+var G = document.getElementById('draw');
+function el(tag, attrs) {
+  var e = document.createElementNS(NS, tag);
+  for (var k in attrs) e.setAttribute(k, attrs[k]);
+  G.appendChild(e); return e;
+}
+function txt(x, y, str, attrs) {
+  var t = el('text', Object.assign({x:x, y:y}, attrs||{}));
+  t.textContent = str; return t;
+}
+function tspan(parent, str, attrs) {
+  var s = document.createElementNS(NS, 'tspan');
+  for (var k in (attrs || {})) s.setAttribute(k, attrs[k]);
+  s.textContent = str; parent.appendChild(s); return s;
+}
+var MONO = 'var(--mono)', SANS = 'var(--sans)';
+
+G = el('g', {transform:'translate(0 -34.2)'});
+
+
+/* ============ 上半部 · 转述摘要（整段 300/21，关键句双线 underline） ============ */
+txt(200, 224, 'ABSTRACT', {'font-family':MONO, 'font-size':'var(--type-meta)', 'letter-spacing':3, fill:INK45});
+txt(320, 224, '转述', {'font-family':SANS, 'font-weight':300, 'font-size':'var(--type-label)', fill:INK45});
+var sourceLine = txt(200, 272, '', {'font-family':SANS, 'font-weight':300, 'font-size':'var(--type-body)', fill:INK});
+tspan(sourceLine, '《xx 产品新手引导研究（培训试行稿）》', {id:'accent-source-citation', 'data-accent-group':'source-identity', fill:ACCENT ? RED : INK});
+tspan(sourceLine, '提出：在首次使用阶段，新用户的', {fill:INK});
+txt(200, 314, '首个关键任务应在 14 分钟内完成，并通过「分步培训」串联核心功能与反馈。',
+  {'font-family':SANS, 'font-weight':300, 'font-size':'var(--type-body)', fill:INK});
+
+/* 关键句：升 400 + 双线 underline（不用彩色高亮） */
+var KX = 200, KY = 372, KW = 640;
+txt(KX, KY, '研究首次将「任务完成反馈」列为新手引导必备环节。',
+  {'font-family':SANS, 'font-weight':300, 'font-size':'var(--type-subheading)', fill:INK});
+el('line', {x1:KX, y1:KY+13, x2:KX+KW, y2:KY+13, stroke:INK, 'stroke-width':.8, opacity:.7});
+el('line', {x1:KX, y1:KY+18, x2:KX+KW, y2:KY+18, stroke:INK, 'stroke-width':.6, opacity:.35});
+
+txt(200, 424, '—— 本产品新手培训方案的设计依据，正来自这一条。',
+  {'font-family':SANS, 'font-weight':300, 'font-size':'var(--type-body)', fill:INK70});
+
+/* ============ 下半部 · 原文标本框（双线框模拟红头文件版式） ============ */
+var FX = 300, FY = 478, FW = 1320, FH = 396;
+el('rect', {x:FX, y:FY, width:FW, height:FH, fill:'rgba(255,255,255,.22)', stroke:INK80, 'stroke-width':1.3});
+el('rect', {x:FX+5, y:FY+5, width:FW-10, height:FH-10, fill:'none', stroke:INK, 'stroke-width':.6, opacity:.35});
+
+/* 顶部页签 */
+el('rect', {x:960-170, y:FY-22, width:340, height:44, fill:'#DFE0D9', stroke:INK, 'stroke-width':1.2});
+txt(918, FY+7, 'SOURCE', {'font-family':MONO, 'font-size':'var(--type-label)', 'letter-spacing':2, 'text-anchor':'end', fill:INK});
+txt(938, FY+7, '原文标本', {'font-family':SANS, 'font-weight':300, 'font-size':'var(--type-body-small)', fill:INK});
+
+/* 报头：机构名 + 文号 + 横线 */
+txt(960, FY+76, 'xx 产品体验研究团队', {id:'accent-source-authority', 'data-accent-group':'source-identity', 'font-family':SANS, 'font-weight':300, 'font-size':'var(--type-subheading)', 'letter-spacing':6, 'text-anchor':'middle', fill:ACCENT ? RED : INK});
+txt(960, FY+106, 'XX [2026] NO.14', {'font-family':MONO, 'font-size':'var(--type-meta)', 'letter-spacing':3, 'text-anchor':'middle', fill:INK45});
+el('line', {x1:FX+44, y1:FY+126, x2:FX+FW-44, y2:FY+126, stroke:INK80, 'stroke-width':1.4});
+el('line', {x1:FX+44, y1:FY+131, x2:FX+560, y2:FY+131, stroke:INK, 'stroke-width':.6, opacity:.3});
+
+/* 标题行 */
+txt(960, FY+176, 'xx 产品新手引导研究（培训试行稿）', {id:'accent-source-title', 'data-accent-group':'source-identity', 'font-family':SANS, 'font-weight':300, 'font-size':'var(--type-subheading)', 'text-anchor':'middle', fill:(ACCENT ? RED : INK)});
+txt(960, FY+206, 'DRAFT FOR COMMENT · CHAPTER III', {'font-family':MONO, 'font-size':'var(--type-meta)', 'letter-spacing':3, 'text-anchor':'middle', fill:INK45});
+
+/* 正文灰行暗示（条文号 + 圆点字段行） */
+txt(FX+80, FY+252, 'ART. 12', {'font-family':MONO, 'font-size':'var(--type-meta)', 'letter-spacing':2, fill:INK45});
+[[FY+252, 1010], [FY+282, 1080], [FY+312, 860], [FY+342, 620]].forEach(function(L, i){
+  el('circle', {cx:FX+96, cy:L[0]-6, r:2, fill:INK, opacity:.55});
+  el('line', {x1:FX+112, y1:L[0], x2:FX+112+L[1], y2:L[0], stroke:INK, 'stroke-width':.8, opacity:.4});
+});
+
+/* 印章双圈（右下） */
+var SX = FX+FW-90, SY = FY+FH-58;
+el('circle', {cx:SX, cy:SY, r:20, fill:'none', stroke:INK, 'stroke-width':1.2, opacity:.8});
+el('circle', {cx:SX, cy:SY, r:14, fill:'none', stroke:INK, 'stroke-width':.6, opacity:.45});
+el('path', {d:'M '+(SX-6)+' '+SY+' L '+(SX-1.5)+' '+(SY+5)+' L '+(SX+7)+' '+(SY-6),
+  fill:'none', stroke:INK, 'stroke-width':1.4, 'stroke-linecap':'round', 'stroke-linejoin':'round'});
+
+/* 页码（左下） */
+txt(FX+80, FY+FH-48, 'PAGE 03 / 11', {'font-family':MONO, 'font-size':'var(--type-meta)', 'letter-spacing':2, fill:INK45});
+
+stageFit();
+</script>
+</body>
+</html>

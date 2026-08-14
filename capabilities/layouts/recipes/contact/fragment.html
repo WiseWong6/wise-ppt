@@ -1,0 +1,81 @@
+<section class="slide"
+  {{WISE_PPT_PAGE_ATTRS}}>
+  <style>
+    [data-recipe-id="paper-ink.scaffold.contact"] svg.scene{position:absolute;inset:0;z-index:1}
+    [data-recipe-id="paper-ink.scaffold.contact"] .doc.tl,[data-recipe-id="paper-ink.scaffold.contact"] .folio{color:var(--ink-45)}
+  </style>
+  <div class="stage" data-anchor-id="stage">
+    <svg class="scene" width="1920" height="1080" viewBox="0 0 1920 1080">
+      <g transform="translate(0 -8.7)" data-d6-root data-anchor-id="d6-main"
+      data-slot-id="contact" data-block-id="block.skeleton.d6.contact"
+      data-renderer-kind="svg" data-component-source="native"
+      data-component-id="native.paper-ink.scaffold.contact.contact">
+        <g data-anchor-id="d6-contact" data-d6-contact></g>
+        <line data-anchor-id="d6-contact-top" x1="150" y1="220" x2="920" y2="220" stroke="transparent" stroke-width=".1"/>
+        <g data-anchor-id="d6-channels" data-d6-left-channels></g>
+        <g data-anchor-id="d6-card" data-d6-card></g>
+        <line data-anchor-id="d6-divider" data-d6-divider x1="1144" y1="658" x2="1676" y2="658" stroke="transparent" stroke-width=".1"/>
+        <g data-anchor-id="d6-qr" data-d6-qr></g>
+        <g data-anchor-id="d6-qr-content" data-d6-qr-content data-color-role="functional" data-color-target="fill" style="fill:var(--ink-80)"></g>
+      </g>
+    </svg>
+    <div class="doc tl" data-anchor-id="d6-support"
+      data-slot-id="support" data-block-id="block.skeleton.d6.support"
+      data-renderer-kind="typography" data-component-source="native"
+      data-component-id="native.paper-ink.scaffold.contact.support">WISE PPT SKILL — 06<br>STAY IN TOUCH</div>
+    <div class="folio"></div>
+    <div class="caption" data-anchor-id="d6-takeaway"
+      data-slot-id="takeaway" data-block-id="block.skeleton.d6.takeaway"
+      data-renderer-kind="typography" data-component-source="native"
+      data-component-id="native.paper-ink.scaffold.contact.takeaway"></div>
+  </div>
+  <script type="application/json" data-recipe-payload>{{WISE_PPT_PAYLOAD_JSON}}</script>
+  <script>
+  (function(){
+    var slide=document.currentScript.closest('.slide');
+    var payload=JSON.parse(slide.querySelector('[data-recipe-payload]').textContent);
+    var NS='http://www.w3.org/2000/svg',INK=WisePPT.color('primary'),INK80=WisePPT.color('functional'),INK70=WisePPT.color('body'),INK55=WisePPT.color('chart-label'),INK45=WisePPT.color('metadata'),PANEL=WisePPT.color('surface-panel'),MONO='var(--mono)',SANS='var(--sans)';
+    var contact=slide.querySelector('[data-d6-contact]'),leftChannels=slide.querySelector('[data-d6-left-channels]'),card=slide.querySelector('[data-d6-card]'),qr=slide.querySelector('[data-d6-qr]'),qrContent=slide.querySelector('[data-d6-qr-content]');
+    function el(parent,tag,attrs){var e=document.createElementNS(NS,tag);Object.keys(attrs).forEach(function(k){e.setAttribute(k,attrs[k]);});parent.appendChild(e);return e;}
+    function txt(parent,x,y,value,attrs){var t=el(parent,'text',Object.assign({x:x,y:y},attrs||{}));t.textContent=value;return t;}
+
+    var MX=150,MY=220,MW=770,MH=420;
+    el(contact,'rect',{x:MX,y:MY,width:MW,height:MH,fill:'none',stroke:INK,'stroke-width':.6,opacity:.3,'stroke-dasharray':'2 6'});
+    [[MX,MY],[MX+MW,MY],[MX,MY+MH],[MX+MW,MY+MH]].forEach(function(p){el(contact,'line',{x1:p[0]-8,y1:p[1],x2:p[0]+8,y2:p[1],stroke:INK,'stroke-width':.7,opacity:.35});el(contact,'line',{x1:p[0],y1:p[1]-8,x2:p[0],y2:p[1]+8,stroke:INK,'stroke-width':.7,opacity:.35});});
+    el(contact,'path',{d:'M 700 220 C 760 320, 700 420, 800 500 C 850 540, 880 600, 870 640',fill:'none',stroke:INK,'stroke-width':.9,opacity:.5});
+    el(contact,'path',{d:'M 726 220 C 786 320, 726 420, 826 500 C 876 540, 906 600, 896 640',fill:'none',stroke:INK,'stroke-width':.9,opacity:.5});
+    txt(contact,846,336,'ABSTRACT TRACE',{'font-family':MONO,'font-size':'var(--type-micro-secondary)','letter-spacing':2,fill:INK45,transform:'rotate(74 846 336)'});
+    el(contact,'path',{d:'M 150 310 C 360 296, 640 324, 920 306',fill:'none',stroke:INK80,'stroke-width':1.2});
+    el(contact,'path',{d:'M 150 452 C 400 444, 660 460, 920 448',fill:'none',stroke:INK,'stroke-width':.7,opacity:.6});
+    el(contact,'path',{d:'M 150 570 C 380 580, 660 562, 920 574',fill:'none',stroke:INK,'stroke-width':.7,opacity:.6});
+    el(contact,'path',{d:'M 330 220 C 324 360, 336 500, 328 640',fill:'none',stroke:INK,'stroke-width':.7,opacity:.6});
+    el(contact,'path',{d:'M 560 220 C 566 340, 554 520, 562 640',fill:'none',stroke:INK80,'stroke-width':1.2});
+    txt(contact,196,290,'CONTACT GRID',{'font-family':MONO,'font-size':'var(--type-micro-secondary)','letter-spacing':2,fill:INK45});
+    txt(contact,576,252,'LINK PATH',{'font-family':MONO,'font-size':'var(--type-micro-secondary)','letter-spacing':2,fill:INK45,transform:'rotate(88 576 252)'});
+    el(contact,'rect',{x:380,y:346,width:150,height:92,fill:PANEL,stroke:INK,'stroke-width':.9,opacity:.85});el(contact,'rect',{x:385,y:351,width:140,height:82,fill:'none',stroke:INK,'stroke-width':.5,opacity:.3});
+    txt(contact,455,396,'WISE',{'font-family':MONO,'font-size':'var(--type-meta)','letter-spacing':3,'text-anchor':'middle',fill:INK,opacity:.7});txt(contact,455,416,'CONTACT',{'font-family':MONO,'font-size':'var(--type-meta)','letter-spacing':3,'text-anchor':'middle',fill:INK,opacity:.7});
+    el(contact,'circle',{cx:560,cy:452,r:10,fill:'none',stroke:INK,'stroke-width':1.2});el(contact,'circle',{cx:560,cy:452,r:14,fill:'none',stroke:INK,'stroke-width':.6,opacity:.4});el(contact,'circle',{cx:560,cy:452,r:3,fill:INK});el(contact,'path',{d:'M 560 466 L 560 500',stroke:INK,'stroke-width':.8,opacity:.5});el(contact,'path',{d:'M 560 500 L 596 500',stroke:INK,'stroke-width':.8,opacity:.5});
+    txt(contact,604,505,'WISE · SHENZHEN',{'font-family':MONO,'font-size':'var(--type-meta)','letter-spacing':2,fill:INK,opacity:.75});
+    el(contact,'line',{x1:180,y1:616,x2:280,y2:616,stroke:INK,'stroke-width':1,opacity:.6});el(contact,'line',{x1:180,y1:610,x2:180,y2:622,stroke:INK,'stroke-width':1,opacity:.6});el(contact,'line',{x1:280,y1:610,x2:280,y2:622,stroke:INK,'stroke-width':1,opacity:.6});txt(contact,292,620,'NOT TO SCALE',{'font-family':MONO,'font-size':'var(--type-micro-secondary)','letter-spacing':2,fill:INK45});
+
+    var KX=1100,KY=220,KW=620,KH=630;
+    payload.contacts.forEach(function(item,index){var y=KY+KH-5-(2-index)*52;el(leftChannels,'circle',{cx:158,cy:y-6,r:3,fill:'none',stroke:INK,'stroke-width':.9,opacity:.7});el(leftChannels,'circle',{cx:158,cy:y-6,r:1,fill:INK});txt(leftChannels,178,y,item.label,{'font-family':SANS,'font-weight':300,'font-size':'var(--type-body-small)',fill:INK});txt(leftChannels,292,y,item.value,{'font-family':SANS,'font-weight':300,'font-size':'var(--type-body-small)',fill:INK70});});
+    el(card,'rect',{x:KX,y:KY,width:KW,height:KH,fill:PANEL,stroke:INK80,'stroke-width':1.3});el(card,'rect',{x:KX+5,y:KY+5,width:KW-10,height:KH-10,fill:'none',stroke:INK,'stroke-width':.6,opacity:.3});
+    txt(card,KX+44,KY+64,'WISE — CONTACT',{'font-family':MONO,'font-size':'var(--type-label)','letter-spacing':3,fill:INK45});el(card,'line',{x1:KX+44,y1:KY+84,x2:KX+200,y2:KY+84,stroke:INK,'stroke-width':.8,opacity:.5});
+    txt(card,KX+44,KY+156,payload.identity.name,{'font-family':SANS,'font-weight':300,'font-size':'var(--type-heading)',fill:INK});txt(card,KX+46,KY+196,payload.identity.handle,{'font-family':MONO,'font-size':'var(--type-label)','letter-spacing':2,fill:INK55});el(card,'line',{x1:KX+44,y1:KY+232,x2:KX+KW-44,y2:KY+232,stroke:INK,'stroke-width':.8,opacity:.4});
+    payload.card_channels.forEach(function(item,index){var y=KY+292+index*62;txt(card,KX+44,y,item.label,{'font-family':MONO,'font-size':'var(--type-meta)','letter-spacing':3,fill:INK45});txt(card,KX+150,y,item.value,{'font-family':MONO,'font-size':'var(--type-body-small)','letter-spacing':1,fill:INK});if(index<payload.card_channels.length-1)el(card,'line',{x1:KX+44,y1:y+22,x2:KX+KW-44,y2:y+22,stroke:INK,'stroke-width':.6,opacity:.18});});
+
+    var SIZE=37,PAD=16,CS=3,QX=(KX+KW-44)-PAD-SIZE*CS,QY=KY+292+3*62;
+    el(qr,'rect',{x:QX-PAD,y:QY-PAD,width:SIZE*CS+PAD*2,height:SIZE*CS+PAD*2,fill:'none',stroke:INK,'stroke-width':.7,opacity:.7});
+    if(payload.qr.payload)qr.setAttribute('data-qr-payload',payload.qr.payload);
+    if(payload.qr.kind==='asset'){
+      el(qrContent,'image',{href:payload.qr.asset,x:QX,y:QY,width:SIZE*CS,height:SIZE*CS,preserveAspectRatio:'xMidYMid meet'});
+    }else{
+      payload.qr.matrix.forEach(function(row,ri){row.split('').forEach(function(bit,ci){if(bit==='1')el(qrContent,'rect',{x:QX+ci*CS,y:QY+ri*CS,width:CS,height:CS,fill:INK80});});});
+    }
+    var noteBottom=QY+SIZE*CS+PAD;txt(card,KX+44,noteBottom-40,payload.note.line_1,{'font-family':SANS,'font-weight':300,'font-size':'var(--type-body-small)',fill:INK70});txt(card,KX+44,noteBottom-6,payload.note.line_2,{'font-family':MONO,'font-size':'var(--type-micro-secondary)','letter-spacing':2.5,fill:INK45});
+    slide.querySelector('.caption').textContent=payload.takeaway;
+    WisePPT.markSlideReady(slide);
+  })();
+  </script>
+</section>

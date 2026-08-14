@@ -1,0 +1,101 @@
+/* Gallery and standalone-specimen shells. Theme slide CSS never owns these rules. */
+* { box-sizing: border-box; }
+
+[data-runtime="wise-ppt-gallery"],
+[data-runtime="wise-ppt-gallery"] body,
+[data-runtime="wise-ppt-specimen"],
+[data-runtime="wise-ppt-specimen"] body { height: 100%; }
+
+[data-runtime="wise-ppt-gallery"] body {
+  margin: 0;
+  display: flex;
+  overflow: hidden;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--sans);
+  font-weight: 300;
+  -webkit-font-smoothing: antialiased;
+}
+
+[data-runtime="wise-ppt-specimen"] body {
+  margin: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  background: var(--paper-deep);
+  color: var(--ink);
+  font-family: var(--sans);
+  font-weight: 300;
+  -webkit-font-smoothing: antialiased;
+}
+[data-runtime="wise-ppt-specimen"] .slide .folio { display: block; }
+
+#side {
+  width: 292px;
+  flex-shrink: 0;
+  border-right: 1px solid var(--ink-25);
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
+#side .brand {
+  height: 76px;
+  display: flex;
+  align-items: center;
+  padding: 0 24px;
+  border-bottom: 1px solid var(--ink-25);
+}
+#side .brand .en,
+#side .brand .count,
+#toc .fam,
+#toc .item .code,
+#bar .code,
+#bar .idx,
+#bar .acc-btn { font-family: var(--mono); }
+#side .brand .en,
+#side .brand .count,
+#toc .fam,
+#toc .item .code,
+#bar .acc-btn { font-size: var(--type-micro-secondary); }
+#side .brand .en { letter-spacing: .3em; color: var(--ink-45); }
+#side .brand .cn { font-size: var(--type-subheading); letter-spacing: .06em; }
+#side .brand .count { margin-top: 10px; letter-spacing: .22em; color: var(--ink-45); }
+
+#toc { flex: 1; overflow-y: auto; padding: 12px 0 40px; }
+#toc .fam { padding: 18px 24px 6px; letter-spacing: .26em; color: var(--ink-45); text-transform: uppercase; }
+#toc .item { display: flex; align-items: baseline; gap: 10px; padding: 7px 24px; cursor: pointer; border-left: 2px solid transparent; }
+#toc .item .code { width: 38px; flex-shrink: 0; letter-spacing: .08em; color: var(--ink-45); }
+#toc .item .name { font-size: var(--type-label); }
+#toc .item:hover,
+#toc .item.active { background: rgba(255,255,255,.22); }
+#toc .item.active { border-left-color: var(--ink); }
+#toc .item.active .code { color: var(--ink); }
+#toc .item.active .name { font-weight: 400; }
+
+#main { flex: 1; display: flex; flex-direction: column; height: 100vh; min-width: 0; }
+#bar { height: 76px; display: flex; align-items: center; gap: 18px; padding: 0 36px; border-bottom: 1px solid var(--ink-25); }
+#bar .code { font-size: var(--type-subheading); letter-spacing: .12em; }
+#bar .name { font-size: var(--type-body); font-weight: 400; letter-spacing: .04em; }
+#bar .use { flex: 1; min-width: 0; font-size: var(--type-label); color: var(--ink-70); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+#bar .idx { font-size: var(--type-meta); letter-spacing: .2em; color: var(--ink-45); }
+#bar .acc-btn { margin-left: auto; padding: 8px 14px; min-height: 40px; display: inline-flex; align-items: center; border: 1px solid var(--ink-45); cursor: pointer; user-select: none; color: var(--ink-70); letter-spacing: .12em; }
+#bar .acc-btn:hover { border-color: var(--ink); color: var(--ink); }
+#bar .acc-btn.on { border-color: var(--accent-red); color: var(--accent-red); }
+
+#viewport { flex: 1; position: relative; overflow: hidden; }
+#stagebox { position: absolute; width: 1920px; height: 1080px; transform-origin: top left; }
+/* Gallery 样张是只读预览：不让 iframe 抢走壳文档的鼠标/键盘焦点。
+   否则默认 file:// 安全源下，点击样张后方向键无法再由画册壳接收。 */
+#stagebox iframe { position: absolute; inset: 0; width: 1920px; height: 1080px; border: 0; display: block; background: var(--paper); visibility: hidden; pointer-events: none; }
+#stagebox iframe.is-visible { visibility: visible; }
+#frame-line { position: absolute; pointer-events: none; border: 1px solid var(--ink-25); }
+
+.nav { position: absolute; top: 50%; transform: translateY(-50%); width: 56px; height: 56px; display: flex; align-items: center; justify-content: center; cursor: pointer; z-index: 10; font-family: var(--mono); font-size: var(--type-subheading); color: var(--ink); opacity: .5; user-select: none; }
+.nav, button.nav { padding: 0; border: 0; background: transparent; font-family: var(--mono); font-size: var(--type-subheading); color: var(--ink); }
+.nav:hover { opacity: 1; }
+.nav:focus-visible { outline: 1px solid var(--ink-45); outline-offset: 2px; opacity: 1; }
+/* 加载态：视觉变淡 + 等待光标，但保留可点击（连点意图由 go() 软锁排队，不禁用） */
+.nav.is-busy { opacity: .3; cursor: wait; }
+#prev { left: 24px; }
+#next { right: 24px; }

@@ -1,0 +1,125 @@
+<!-- GENERATED: Wise PPT formal canonical source; protected Gallery remains provenance-only. -->
+<!DOCTYPE html>
+<html lang="zh-CN" data-runtime="wise-ppt-specimen" data-typography-mode="mixed" data-page-id="gallery-general-c1" data-page-role="prove" data-theme="paper-ink" data-layout="paper-ink.data.visual-kpi-split" data-layout-source="gallery">
+<head>
+<meta charset="UTF-8">
+<title>layout-c1 · 左图右 2×2 数据格</title>
+<link rel="stylesheet" href="../../../../themes/paper-ink/assets/design-tokens.css">
+<link rel="stylesheet" href="../../../../themes/paper-ink/assets/slide-components.css">
+<link rel="stylesheet" href="../../../shell.css">
+<style>
+  svg.scene { position: absolute; inset: 0; z-index: 1; }
+  .caption {
+    position: absolute; left: 0; right: 0; bottom: 118px;
+    text-align: center;;;;;;
+    z-index: 5;
+  }
+</style>
+</head>
+<body class="slide">
+<div class="stage" data-block-id="gallery-primary" data-renderer-kind="svg" data-component-source="native" data-component-id="native.paper-ink.data.visual-kpi-split.visual" data-content-ref="example.c1" data-anchor-id="stage">
+  <span data-geometry-anchor-holder="specimen-frame" data-anchor-id="specimen-frame" hidden aria-hidden="true"></span><span data-geometry-anchor-holder="kpi-separator" data-anchor-id="kpi-separator" hidden aria-hidden="true"></span>
+  <div class="doc tl" data-anchor-id="slot-support">产品 · 汇报 — C1<br>会员服务月报</div>
+  <div class="folio">01 / 01 — BY @歪斯WISE</div>
+
+  <svg class="scene" width="1920" height="1080" viewBox="0 0 1920 1080">
+    <defs>
+      <pattern id="hatch" width="7" height="7" patternUnits="userSpaceOnUse" patternTransform="rotate(45)">
+        <line x1="0" y1="0" x2="0" y2="7" stroke="var(--ink)" stroke-width="0.7" opacity="0.35"/>
+      </pattern>
+    </defs>
+    <g id="draw" data-anchor-id="slot-visual"></g>
+  </svg>
+
+  <div class="caption" data-anchor-id="slot-takeaway">本月会员活跃度与服务好评同步提升，常用业务办理用时下降 31%。</div>
+</div>
+
+<script src="../../../../runtime/stage-fit.js"></script>
+<script src="../../../../themes/paper-ink/assets/particles.js"></script>
+<script>
+var NS = 'http://www.w3.org/2000/svg';
+var INK = __wiseThemeToken("--ink");
+var INK80 = __wiseThemeToken("--ink-80");
+var INK45 = __wiseThemeToken("--ink-45");
+/* accent 触发：读 URL 加类 + 染色常量（详见 design-tokens.md §2） */
+if (location.search.indexOf('accent') >= 0) document.documentElement.classList.add('accent');
+var ACCENT = document.documentElement.classList.contains('accent');
+var RED = getComputedStyle(document.documentElement).getPropertyValue('--accent-red').trim();
+var G = document.getElementById('draw');
+function el(tag, attrs) {
+  var e = document.createElementNS(NS, tag);
+  for (var k in attrs) e.setAttribute(k, attrs[k]);
+  G.appendChild(e); return e;
+}
+function txt(x, y, str, attrs) {
+  var t = el('text', Object.assign({x:x, y:y}, attrs||{}));
+  t.textContent = str; return t;
+}
+var MONO = 'var(--mono)', SANS = 'var(--sans)', SERIF = 'var(--serif)';
+
+G = el('g', {transform:'translate(0 -22.7)'});
+
+
+/* ============ 左区：会员服务页与会员卡标本 ============ */
+var FX = 150, FY = 260, FW = 860, FH = 560;
+el('rect', {x:FX, y:FY, width:FW, height:FH, fill:__wiseThemeToken("--paper-panel"), stroke:INK80, 'stroke-width':1.3});
+el('rect', {x:FX+6, y:FY+6, width:FW-12, height:FH-12, fill:'none', stroke:INK, 'stroke-width':.6, opacity:.3});
+/* 编号牌（压框顶边） */
+el('rect', {x:190, y:238, width:336, height:44, fill:__wiseThemeToken("--paper"), stroke:INK, 'stroke-width':1.2});
+txt(358, 267, 'SPECIMEN 01 — MEMBER SERVICE', {'font-family':MONO, 'font-size':'var(--type-meta)', 'letter-spacing':2, 'text-anchor':'middle', fill:INK});
+
+/* 日常会员服务页 */
+el('rect', {x:250, y:348, width:500, height:330, rx:18, fill:'none', stroke:INK80, 'stroke-width':1.4});
+el('rect', {x:264, y:362, width:472, height:302, rx:10, fill:__wiseThemeToken("--paper-panel"), stroke:INK, 'stroke-width':.6, opacity:.4});
+el('line', {x1:264, y1:410, x2:736, y2:410, stroke:INK, 'stroke-width':.8, opacity:.45});
+txt(286, 392, 'MEMBER SERVICE', {'font-family':MONO, 'font-size':'var(--type-meta)', 'letter-spacing':2, fill:INK});
+el('circle', {cx:704, cy:386, r:8, fill:'none', stroke:INK80, 'stroke-width':1});
+el('line', {x1:352, y1:410, x2:352, y2:664, stroke:INK, 'stroke-width':.7, opacity:.35});
+[442, 486, 530, 574, 618].forEach(function(y){
+  el('line', {x1:284, y1:y, x2:328, y2:y, stroke:INK, 'stroke-width':1, opacity:.5});
+});
+/* 欢迎卡与三项常用服务 */
+el('rect', {x:380, y:432, width:334, height:62, rx:8, fill:'url(#hatch)', stroke:INK, 'stroke-width':.8, opacity:.72});
+el('circle', {cx:410, cy:463, r:13, fill:__wiseThemeToken("--paper"), stroke:INK80, 'stroke-width':1});
+el('line', {x1:438, y1:451, x2:548, y2:451, stroke:INK, 'stroke-width':1.2, opacity:.7});
+el('line', {x1:438, y1:473, x2:618, y2:473, stroke:INK, 'stroke-width':.7, opacity:.42});
+[[380,516],[494,516],[608,516]].forEach(function(p, i){
+  el('rect', {x:p[0], y:p[1], width:106, height:86, rx:6, fill:'none', stroke:INK, 'stroke-width':.8, opacity:.65});
+  el('circle', {cx:p[0]+53, cy:p[1]+28, r:12, fill:i === 1 ? 'url(#hatch)' : 'none', stroke:INK, 'stroke-width':.8, opacity:.75});
+  el('line', {x1:p[0]+24, y1:p[1]+58, x2:p[0]+82, y2:p[1]+58, stroke:INK, 'stroke-width':1, opacity:.55});
+  el('line', {x1:p[0]+34, y1:p[1]+70, x2:p[0]+72, y2:p[1]+70, stroke:INK, 'stroke-width':.6, opacity:.3});
+});
+el('line', {x1:380, y1:626, x2:684, y2:626, stroke:INK, 'stroke-width':1, opacity:.38});
+el('line', {x1:380, y1:640, x2:596, y2:640, stroke:INK, 'stroke-width':.7, opacity:.25});
+/* 随身会员卡 */
+el('rect', {x:800, y:382, width:132, height:296, rx:22, fill:__wiseThemeToken("--paper-panel"), stroke:INK80, 'stroke-width':1.4});
+el('line', {x1:838, y1:396, x2:894, y2:396, stroke:INK, 'stroke-width':1.3, opacity:.5});
+txt(820, 430, 'MY CARD', {'font-family':MONO, 'font-size':'var(--type-micro-secondary)', 'letter-spacing':1, fill:INK45});
+el('circle', {cx:866, cy:478, r:30, fill:'url(#hatch)', stroke:INK80, 'stroke-width':1.1});
+[[820,530],[820,574],[820,618]].forEach(function(p, i){
+  el('rect', {x:p[0], y:p[1], width:92, height:30, rx:5, fill:i === 0 ? 'url(#hatch)' : 'none', stroke:INK, 'stroke-width':.8, opacity:.6});
+});
+el('path', {d:'M 750 520 C 770 490 780 490 800 520', fill:'none', stroke:INK, 'stroke-width':.8, opacity:.5, 'stroke-dasharray':'3 5'});
+txt(500, 718, 'SERVICE PAGE', {'font-family':MONO, 'font-size':'var(--type-meta)', 'letter-spacing':2, 'text-anchor':'middle', fill:INK45});
+txt(866, 718, 'MEMBER CARD', {'font-family':MONO, 'font-size':'var(--type-meta)', 'letter-spacing':2, 'text-anchor':'middle', fill:INK45});
+
+/* ============ 右区：2×2 数据格（无边框纯排版，细线十字分隔） ============ */
+el('line', {x1:1440, y1:280, x2:1440, y2:810, stroke:INK, 'stroke-width':.6, opacity:.3});
+el('line', {x1:1080, y1:545, x2:1780, y2:545, stroke:INK, 'stroke-width':.6, opacity:.3});
+
+function cell(cx, ty, num, label, note, focus) {
+  var fc = (ACCENT && focus) ? RED : INK;
+  txt(cx, ty, num, {'font-family':SERIF, 'font-size':'var(--type-hero)', 'text-anchor':'middle', fill:fc});
+  txt(cx, ty + 64, label, {'font-family':SANS, 'font-weight':300, 'font-size':'var(--type-subheading)', 'text-anchor':'middle', fill:(ACCENT && focus) ? 'var(--accent-red-85)' : __wiseThemeToken("--ink-80")});
+  txt(cx, ty + 96, note, {'font-family':MONO, 'font-size':'var(--type-meta)', 'letter-spacing':2, 'text-anchor':'middle', fill:INK45});
+  el('line', {x1:cx-30, y1:ty+114, x2:cx+30, y2:ty+114, stroke:INK, 'stroke-width':.7, opacity:.35});
+}
+cell(1260, 400, '12.8万', '月活会员',   'MONTHLY ACTIVE · +18%');
+cell(1610, 400, '63%',    '七日留存',   '7-DAY RETENTION · +6PT');
+cell(1260, 665, '96.4%',  '服务好评率', 'POSITIVE REVIEWS · 30D');
+cell(1610, 665, '-31%',   '业务办理用时','TIME TO COMPLETE · VS LAST', true);  /* 主角：负增长契合番茄红"降幅"语义 */
+
+stageFit();
+</script>
+</body>
+</html>

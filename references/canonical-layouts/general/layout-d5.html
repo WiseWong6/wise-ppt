@@ -1,0 +1,72 @@
+<!-- GENERATED: Wise PPT formal canonical source; protected Gallery remains provenance-only. -->
+<!DOCTYPE html>
+<html lang="zh-CN" data-runtime="wise-ppt-specimen" data-typography-mode="mixed" data-page-id="gallery-general-d5" data-page-role="orient" data-theme="paper-ink" data-layout="paper-ink.scaffold.section-divider" data-layout-source="gallery">
+<head>
+<meta charset="UTF-8">
+<title>layout-d5 · 章节隔页</title>
+<!--
+  纸墨线稿样张 · C6 章节隔页
+  新品发布策划 · 第三章
+  版式纪律（layouts C6）：超大空心编号 + 章节名 + mono 导语；元素 ≤3；留白 >60%；无 FIG、无 caption
+-->
+<link rel="stylesheet" href="../../../../themes/paper-ink/assets/design-tokens.css">
+<link rel="stylesheet" href="../../../../themes/paper-ink/assets/slide-components.css">
+<link rel="stylesheet" href="../../../shell.css">
+<style>
+  svg.scene { position: absolute; inset: 0; z-index: 1; }
+  .doc.tl, .folio { color: var(--ink-45); }
+  .chapter {
+    position: absolute; left: 756px; top: 449.8px;
+    font-family: var(--serif); font-weight: 400;
+    font-size: var(--type-hero); letter-spacing: .1em;
+    color: var(--ink);
+    z-index: 5;
+  }
+  .lead {
+    position: absolute; left: 760px; top: 573.8px;
+    font-family: var(--mono); font-weight: 400;
+    font-size: var(--type-meta); letter-spacing: .3em;
+    color: var(--wp-compat-layout-ink-50);
+    text-transform: uppercase;
+    z-index: 5;
+  }
+</style>
+</head>
+<body class="slide">
+<div class="stage" data-block-id="gallery-primary" data-renderer-kind="typography" data-component-source="native" data-component-id="native.paper-ink.scaffold.section-divider.section-lockup" data-content-ref="example.d5" data-anchor-id="stage">
+  <div class="doc tl" data-anchor-id="slot-support">产品 · 策划 — D5<br>新品发布策划章节</div>
+  <div class="folio">01 / 01 — BY @歪斯WISE</div>
+
+  <svg class="scene" width="1920" height="1080" viewBox="0 0 1920 1080">
+    <g id="draw"></g>
+  </svg>
+
+  <div class="chapter" data-anchor-id="slot-section-lockup">发布策划</div>
+  <div class="lead">Chapter 03 — From Insight to Launch</div>
+</div>
+
+<script src="../../../../runtime/stage-fit.js"></script>
+<script src="../../../../themes/paper-ink/assets/particles.js"></script>
+<script>
+var NS = 'http://www.w3.org/2000/svg';
+var INK = __wiseThemeToken("--ink");
+var G = document.getElementById('draw');
+function el(tag, attrs) {
+  var e = document.createElementNS(NS, tag);
+  for (var k in attrs) e.setAttribute(k, attrs[k]);
+  G.appendChild(e); return e;
+}
+function txt(x, y, str, attrs) {
+  var t = el('text', Object.assign({x:x, y:y}, attrs||{}));
+  t.textContent = str; return t;
+}
+var MONO = 'var(--mono)';
+G = el('g', {transform:'translate(0 -110.2)'});
+
+/* ===== ① 超大空心章节编号（左侧，文字组在其右，测绘感） ===== */
+var t = txt(316, 736, '03', {'font-family':MONO, 'font-size':'var(--type-display-mark)', fill:'none', stroke:INK, 'stroke-width':1.2, opacity:.5});
+
+stageFit();
+</script>
+</body>
+</html>

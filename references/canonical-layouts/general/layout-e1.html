@@ -1,0 +1,132 @@
+<!-- GENERATED: Wise PPT formal canonical source; protected Gallery remains provenance-only. -->
+<!DOCTYPE html>
+<html lang="zh-CN" data-runtime="wise-ppt-specimen" data-typography-mode="mixed" data-page-id="gallery-general-e1" data-page-role="compare" data-theme="paper-ink" data-layout="paper-ink.comparison.dual-panel" data-layout-source="gallery">
+<head>
+<meta charset="UTF-8">
+<title>layout-e1 · 对比双面板</title>
+<link rel="stylesheet" href="../../../../themes/paper-ink/assets/design-tokens.css">
+<link rel="stylesheet" href="../../../../themes/paper-ink/assets/slide-components.css">
+<link rel="stylesheet" href="../../../shell.css">
+<style>
+  svg.scene { position: absolute; inset: 0; z-index: 1; }
+  .caption {
+    position: absolute; left: 0; right: 0; bottom: 118px;
+    text-align: center;;;;;;
+    z-index: 5;
+  }
+</style>
+</head>
+<body class="slide">
+<div class="stage" data-block-id="gallery-primary" data-renderer-kind="svg" data-component-source="native" data-component-id="native.paper-ink.comparison.dual-panel.comparison" data-content-ref="example.e1" data-anchor-id="stage">
+  <span data-geometry-anchor-holder="panel-left" data-anchor-id="panel-left" hidden aria-hidden="true"></span><span data-geometry-anchor-holder="panel-right" data-anchor-id="panel-right" hidden aria-hidden="true"></span><span data-geometry-anchor-holder="vs-axis" data-anchor-id="vs-axis" hidden aria-hidden="true"></span>
+  <div class="doc tl" data-anchor-id="slot-support">产品 · 方案 — E1<br>旧工具 vs 协同工作台</div>
+  <div class="folio">01 / 01 — BY @歪斯WISE</div>
+
+  <svg class="scene" width="1920" height="1080" viewBox="0 0 1920 1080">
+    <g id="draw" data-anchor-id="slot-comparison"></g>
+  </svg>
+
+  <div class="caption" data-anchor-id="slot-takeaway">旧工具让信息跨表格、邮件与群聊往返，协同工作台把任务、判断与执行收进一处。</div>
+</div>
+
+<script src="../../../../runtime/stage-fit.js"></script>
+<script src="../../../../themes/paper-ink/assets/particles.js"></script>
+<script>
+var NS = 'http://www.w3.org/2000/svg';
+var INK = __wiseThemeToken("--ink");
+var INK80 = __wiseThemeToken("--ink-80");
+var INK45 = __wiseThemeToken("--ink-45");
+/* accent 触发：读 URL 加类 + 染色常量（详见 design-tokens.md §2） */
+if (location.search.indexOf('accent') >= 0) document.documentElement.classList.add('accent');
+var ACCENT = document.documentElement.classList.contains('accent');
+var RED = getComputedStyle(document.documentElement).getPropertyValue('--accent-red').trim();
+var G = document.getElementById('draw');
+function el(tag, attrs) {
+  var e = document.createElementNS(NS, tag);
+  for (var k in attrs) e.setAttribute(k, attrs[k]);
+  G.appendChild(e); return e;
+}
+function txt(x, y, str, attrs) {
+  var t = el('text', Object.assign({x:x, y:y}, attrs||{}));
+  t.textContent = str; return t;
+}
+var MONO = 'var(--mono)', SANS = 'var(--sans)';
+
+G = el('g', {transform:'translate(0 -32.7)'});
+
+/* ---------- 双面板（520×560 双线框 + 顶部页签） ---------- */
+var PY = 270, PH = 560, PW = 520;
+var LX = 300, RX = 1100;                 /* 面板左缘；中心 560 / 1360 */
+[LX, RX].forEach(function(px){
+  el('rect', {x:px, y:PY, width:PW, height:PH, fill:__wiseThemeToken("--paper-panel"), stroke:INK80, 'stroke-width':1.3});
+  el('rect', {x:px+5, y:PY+5, width:PW-10, height:PH-10, fill:'none', stroke:INK, 'stroke-width':.6, opacity:.3});
+});
+el('rect', {x:560-160, y:248, width:320, height:44, fill:__wiseThemeToken("--paper"), stroke:INK, 'stroke-width':1.2});
+txt(486, 277, '旧工具链', {'font-family':SANS, 'font-weight':300, 'font-size':'var(--type-label)', fill:INK});
+txt(555, 277, 'FRAGMENTED TOOLS', {'font-family':MONO, 'font-size':'var(--type-meta)', 'letter-spacing':2, fill:__wiseThemeToken("--wp-compat-pi-ink-60")});
+el('rect', {x:1360-160, y:248, width:320, height:44, fill:__wiseThemeToken("--paper"), stroke:INK, 'stroke-width':1.2});
+txt(1283, 277, '协同工作台', {'font-family':SANS, 'font-weight':300, 'font-size':'var(--type-label)', fill:INK});
+txt(1375, 277, 'ONE WORKSPACE', {'font-family':MONO, 'font-size':'var(--type-meta)', 'letter-spacing':2, fill:__wiseThemeToken("--wp-compat-pi-ink-60")});
+
+/* ---------- 左面板：工具间找信息 ✗ ---------- */
+txt(560, 420, '工具间找信息', {'font-family':SANS, 'font-weight':300, 'font-size':'var(--type-emphasis)', 'letter-spacing':4, 'text-anchor':'middle', fill:INK});
+el('path', {d:'M 543 333 L 577 367 M 577 333 L 543 367', stroke:INK, 'stroke-width':3.5, 'stroke-linecap':'round', fill:'none'});
+txt(560, 462, 'CONTEXT ACROSS TOOLS', {'font-family':MONO, 'font-size':'var(--type-meta)', 'letter-spacing':2, 'text-anchor':'middle', fill:INK45});
+
+/* 小图形：表格、邮件与群聊之间的检索路径（虚线折返 + 工具标签） */
+(function(){
+  var x0 = 390, x1 = 730, y0 = 540;
+  /* 三排工具标签 */
+  [y0, y0+52, y0+104].forEach(function(ay){
+    for (var i = 0; i < 8; i++) {
+      el('line', {x1:x0+i*46, y1:ay, x2:x0+i*46+26, y2:ay, stroke:INK, 'stroke-width':1, opacity:.5});
+    }
+  });
+  /* 上下文的折返虚线路径 */
+  el('path', {d:'M '+(x0+12)+' '+(y0-26)+' L '+(x0+12)+' '+(y0+26)+' L '+(x0+104)+' '+(y0+26)
+    +' L '+(x0+104)+' '+(y0+78)+' L '+(x0+230)+' '+(y0+78)+' L '+(x0+230)+' '+(y0+130)+' L '+(x0+320)+' '+(y0+130),
+    fill:'none', stroke:INK, 'stroke-width':1.1, 'stroke-dasharray':'5 5', opacity:.7});
+  el('circle', {cx:x0+12, cy:y0-26, r:3, fill:'none', stroke:INK, 'stroke-width':1.2});
+  el('circle', {cx:x0+320, cy:y0+130, r:2.4, fill:INK});
+  /* 耗时标注 */
+  txt(560, y0+186, '42 MIN · 6 APP SWITCHES', {'font-family':MONO, 'font-size':'var(--type-label)', 'letter-spacing':2, 'text-anchor':'middle', fill:__wiseThemeToken("--ink-70")});
+})();
+txt(560, 806, '信息在表格、邮件与群聊间往返', {'font-family':SANS, 'font-weight':300, 'font-size':'var(--type-body)', 'text-anchor':'middle', fill:__wiseThemeToken("--wp-compat-pi-ink-60")});
+
+/* ---------- 右面板：信息围着人 ✓ ---------- */
+txt(1360, 420, '信息围着人', {'data-accent-group':'positive-outcome', 'font-family':SANS, 'font-weight':300, 'font-size':'var(--type-emphasis)', 'letter-spacing':4, 'text-anchor':'middle', fill:ACCENT ? RED : INK});
+el('path', {d:'M 1343 350 L 1355 367 L 1378 333', fill:'none', stroke: ACCENT ? RED : INK, 'stroke-width':3.5, 'stroke-linecap':'round', 'stroke-linejoin':'round'});
+txt(1360, 462, 'CONTEXT IN ONE PLACE', {'font-family':MONO, 'font-size':'var(--type-meta)', 'letter-spacing':2, 'text-anchor':'middle', fill:INK45});
+
+/* 小图形：任务卡沿单一路径汇入协同工作台 */
+(function(){
+  var y = 620, x0 = 1190, x1 = 1530;
+  /* 起点：带锚点的任务卡 */
+  el('circle', {cx:x0, cy:y+34, r:16, fill:'none', stroke:INK, 'stroke-width':1.2});
+  el('circle', {cx:x0, cy:y+34, r:2.4, fill:INK});
+  el('rect', {x:x0-26, y:y-14, width:52, height:34, fill:'none', stroke:INK80, 'stroke-width':1.2});
+  el('line', {x1:x0-26, y1:y+3, x2:x0+26, y2:y+3, stroke:INK, 'stroke-width':.6, opacity:.4});
+  /* 直线路径（实线开放箭头） */
+  el('line', {x1:x0+40, y1:y+34, x2:x1-40, y2:y+34, stroke:INK, 'stroke-width':1.4});
+  el('path', {d:'M '+(x1-56)+' '+(y+26)+' L '+(x1-40)+' '+(y+34)+' L '+(x1-56)+' '+(y+42), fill:'none', stroke:INK, 'stroke-width':1.4, 'stroke-linecap':'round', 'stroke-linejoin':'round'});
+  /* 终点：协同工作台（双圈+实心核） */
+  el('circle', {cx:x1, cy:y+34, r:12, fill:'none', stroke:INK, 'stroke-width':1.2});
+  el('circle', {cx:x1, cy:y+34, r:16, fill:'none', stroke:INK, 'stroke-width':.6, opacity:.4});
+  el('circle', {cx:x1, cy:y+34, r:2.4, fill:INK});
+  txt(x1, y+78, 'WORKSPACE', {'font-family':MONO, 'font-size':'var(--type-micro-secondary)', 'letter-spacing':2, 'text-anchor':'middle', fill:INK45});
+  /* 耗时标注 */
+  txt(1360, y+146, '3 MIN · ONE SOURCE', {'font-family':MONO, 'font-size':'var(--type-label)', 'letter-spacing':2, 'text-anchor':'middle', fill:__wiseThemeToken("--ink-70")});
+})();
+txt(1360, 806, '任务、判断与执行留在同一工作台', {'font-family':SANS, 'font-weight':300, 'font-size':'var(--type-body)', 'text-anchor':'middle', fill:__wiseThemeToken("--wp-compat-pi-ink-60")});
+
+/* ---------- 中央 VS 双圈徽章 + 构造引线 ---------- */
+el('circle', {cx:960, cy:460, r:34, fill:__wiseThemeToken("--paper"), stroke:INK80, 'stroke-width':1.2});
+el('circle', {cx:960, cy:460, r:40, fill:'none', stroke:INK, 'stroke-width':.6, opacity:.35});
+txt(960, 468, 'VS', {'font-family':MONO, 'font-size':'var(--type-body)', 'letter-spacing':2, 'text-anchor':'middle', fill:INK});
+el('line', {x1:LX+PW+14, y1:460, x2:960-46, y2:460, stroke:INK, 'stroke-width':.6, opacity:.3, 'stroke-dasharray':'2 5'});
+el('line', {x1:960+46, y1:460, x2:RX-14, y2:460, stroke:INK, 'stroke-width':.6, opacity:.3, 'stroke-dasharray':'2 5'});
+
+stageFit();
+</script>
+</body>
+</html>

@@ -1,0 +1,222 @@
+<!-- GENERATED: Wise PPT formal canonical source; protected Gallery remains provenance-only. -->
+<!DOCTYPE html>
+<html lang="zh-CN" data-runtime="wise-ppt-specimen" data-typography-mode="mixed" data-page-id="gallery-general-h3" data-page-role="explain" data-theme="paper-ink" data-layout="paper-ink.nested.architecture-stack" data-layout-source="gallery">
+<head>
+<meta charset="UTF-8">
+<title>layout-h3 · 分层架构堆栈</title>
+<link rel="stylesheet" href="../../../../themes/paper-ink/assets/design-tokens.css">
+<link rel="stylesheet" href="../../../../themes/paper-ink/assets/slide-components.css">
+<link rel="stylesheet" href="../../../shell.css">
+<style>
+  svg.scene { position: absolute; inset: 0; z-index: 1; }
+  canvas { position: absolute; inset: 0; z-index: 2; }
+  .caption {
+    position: absolute; left: 0; right: 0; bottom: 118px;
+    text-align: center;;;;;;
+    z-index: 5;
+  }
+</style>
+</head>
+<body class="slide">
+<div class="stage" data-block-id="gallery-primary" data-renderer-kind="svg" data-component-source="native" data-component-id="native.paper-ink.nested.architecture-stack.architecture" data-content-ref="example.h3" data-anchor-id="stage">
+  <span data-geometry-anchor-holder="layer-line-1" data-anchor-id="layer-line-1" hidden aria-hidden="true"></span><span data-geometry-anchor-holder="layer-line-2" data-anchor-id="layer-line-2" hidden aria-hidden="true"></span>
+  <div class="doc tl" data-anchor-id="slot-support">产品 · 规划 — H3<br>会员产品能力架构</div>
+  <div class="folio">01 / 01 — BY @歪斯WISE</div>
+
+  <svg class="scene" width="1920" height="1080" viewBox="0 0 1920 1080">
+    <g id="draw" data-anchor-id="slot-architecture"></g>
+  </svg>
+  <canvas id="cv" width="1920" height="1080"></canvas>
+
+  <div class="caption" data-anchor-id="slot-takeaway">数字会员产品由体验、服务、运营与基础能力共同支撑，每一层都服务于用户价值。</div>
+</div>
+
+<script src="../../../../runtime/stage-fit.js"></script>
+<script src="../../../../themes/paper-ink/assets/particles.js"></script>
+<script>
+var NS = 'http://www.w3.org/2000/svg';
+var INK = __wiseThemeToken("--ink");
+var INK80 = __wiseThemeToken("--ink-80");
+var INK70 = __wiseThemeToken("--ink-70");
+var INK45 = __wiseThemeToken("--ink-45");
+var G = document.getElementById('draw');
+function el(tag, attrs) {
+  var e = document.createElementNS(NS, tag);
+  for (var k in attrs) e.setAttribute(k, attrs[k]);
+  G.appendChild(e); return e;
+}
+function txt(x, y, str, attrs) {
+  var t = el('text', Object.assign({x:x, y:y}, attrs||{}));
+  t.textContent = str; return t;
+}
+var MONO = 'var(--mono)', SANS = 'var(--sans)';
+
+G = el('g', {transform:'translate(0 +2.3)'});
+
+/* ---------- 骨架：4 层横带，层间 0.6px 贯通 ---------- */
+var BT = 240, BH = 132, BB = BT + BH*4;      /* y240–768 */
+[BT, BT+BH, BT+BH*2, BT+BH*3, BB].forEach(function(y, i){
+  el('line', {x1:150, y1:y, x2:1770, y2:y, stroke:INK,
+    'stroke-width': (i===0||i===4) ? .8 : .6, opacity: (i===0||i===4) ? .45 : .3});
+});
+el('line', {x1:310, y1:BT, x2:310, y2:BB, stroke:INK, 'stroke-width':.6, opacity:.3});
+
+/* ---------- 图元族（形态随语义变化） ---------- */
+function nodeDot(cx, cy){
+  el('circle', {cx:cx, cy:cy, r:5, fill:'none', stroke:INK80, 'stroke-width':1});
+  el('circle', {cx:cx, cy:cy, r:1.8, fill:INK});
+}
+/* L1 体验：服务气泡 / 权益面板 / 入口分支 */
+function gSocket(cx, cy){
+  /* 服务气泡：圆角矩形 + 尾角 + 三个入口点 */
+  el('rect', {x:cx-30, y:cy-22, width:60, height:36, rx:8, ry:8, fill:'none', stroke:INK80, 'stroke-width':1.2});
+  el('path', {d:'M '+(cx-8)+' '+(cy+14)+' L '+(cx-14)+' '+(cy+26)+' L '+(cx+2)+' '+(cy+14), fill:'none', stroke:INK80, 'stroke-width':1.2, 'stroke-linejoin':'round'});
+  [-12, 0, 12].forEach(function(dx){
+    el('circle', {cx:cx+dx, cy:cy-4, r:2.2, fill:INK});
+  });
+}
+function gPlug(cx, cy){
+  /* 权益面板：外框 + 顶栏 + 2x2 网格 */
+  el('rect', {x:cx-26, y:cy-22, width:52, height:44, rx:3, ry:3, fill:'none', stroke:INK80, 'stroke-width':1.2});
+  el('line', {x1:cx-26, y1:cy-10, x2:cx+26, y2:cy-10, stroke:INK, 'stroke-width':.7, opacity:.45});
+  el('circle', {cx:cx-20, cy:cy-16, r:1.8, fill:INK});
+  el('circle', {cx:cx-13, cy:cy-16, r:1.8, fill:'none', stroke:INK, 'stroke-width':.7, opacity:.5});
+  [-6, 8].forEach(function(dy){
+    [-12, 6].forEach(function(dx){
+      el('rect', {x:cx+dx, y:cy+dy, width:12, height:10, fill:'none', stroke:INK, 'stroke-width':.8, opacity:.7});
+    });
+  });
+}
+function gAntenna(cx, cy){
+  /* 服务入口：主干 + 三向分支端点 */
+  el('line', {x1:cx, y1:cy+24, x2:cx, y2:cy, stroke:INK80, 'stroke-width':1.3});
+  el('line', {x1:cx, y1:cy, x2:cx-22, y2:cy-14, stroke:INK80, 'stroke-width':1.2});
+  el('line', {x1:cx, y1:cy, x2:cx, y2:cy-18, stroke:INK80, 'stroke-width':1.2});
+  el('line', {x1:cx, y1:cy, x2:cx+22, y2:cy-14, stroke:INK80, 'stroke-width':1.2});
+  nodeDot(cx, cy+26);
+  nodeDot(cx-24, cy-15);
+  nodeDot(cx, cy-20);
+  nodeDot(cx+24, cy-15);
+}
+/* L2 服务：身份规则 / 权益查看 / 生命周期节点 */
+function gGear(cx, cy){
+  el('circle', {cx:cx, cy:cy, r:22, fill:'none', stroke:INK80, 'stroke-width':1.3});
+  el('circle', {cx:cx, cy:cy, r:7, fill:'none', stroke:INK80, 'stroke-width':1.1});
+  for (var a = 0; a < 8; a++) {
+    var t = a*Math.PI/4;
+    el('line', {x1:cx+Math.cos(t)*22, y1:cy+Math.sin(t)*22, x2:cx+Math.cos(t)*29, y2:cy+Math.sin(t)*29, stroke:INK80, 'stroke-width':1.6});
+  }
+}
+function gDial(cx, cy){
+  /* 文档 + 放大镜：左文档，右放大镜 */
+  el('rect', {x:cx-28, y:cy-20, width:26, height:34, fill:'none', stroke:INK80, 'stroke-width':1.2});
+  el('line', {x1:cx-23, y1:cy-12, x2:cx-7, y2:cy-12, stroke:INK, 'stroke-width':.8, opacity:.6});
+  el('line', {x1:cx-23, y1:cy-5, x2:cx-7, y2:cy-5, stroke:INK, 'stroke-width':.8, opacity:.6});
+  el('line', {x1:cx-23, y1:cy+2, x2:cx-12, y2:cy+2, stroke:INK, 'stroke-width':.8, opacity:.6});
+  el('circle', {cx:cx+12, cy:cy-2, r:11, fill:'none', stroke:INK80, 'stroke-width':1.3});
+  el('line', {x1:cx+20, y1:cy+6, x2:cx+28, y2:cy+14, stroke:INK80, 'stroke-width':1.8, 'stroke-linecap':'round'});
+}
+function gRoute(cx, cy){
+  /* 节点连线图：中心节点连四个外围节点 */
+  nodeDot(cx, cy);
+  [[-26,-14],[26,-14],[-26,16],[26,16]].forEach(function(p){
+    el('line', {x1:cx, y1:cy, x2:cx+p[0], y2:cy+p[1], stroke:INK80, 'stroke-width':1.1});
+    nodeDot(cx+p[0], cy+p[1]);
+  });
+  el('line', {x1:cx-26, y1:cy-14, x2:cx+26, y2:cy-14, stroke:INK, 'stroke-width':.6, opacity:.35, 'stroke-dasharray':'3 4'});
+  el('line', {x1:cx-26, y1:cy+16, x2:cx+26, y2:cy+16, stroke:INK, 'stroke-width':.6, opacity:.35, 'stroke-dasharray':'3 4'});
+}
+/* L3 运营：内容资料 / 活动手册 / 反馈循环 */
+function gCylinder(cx, cy, w, h){
+  el('ellipse', {cx:cx, cy:cy-h/2, rx:w/2, ry:8, fill:'none', stroke:INK80, 'stroke-width':1.2});
+  el('line', {x1:cx-w/2, y1:cy-h/2, x2:cx-w/2, y2:cy+h/2, stroke:INK80, 'stroke-width':1.2});
+  el('line', {x1:cx+w/2, y1:cy-h/2, x2:cx+w/2, y2:cy+h/2, stroke:INK80, 'stroke-width':1.2});
+  el('path', {d:'M '+(cx-w/2)+' '+(cy+h/2)+' A '+(w/2)+' 8 0 0 0 '+(cx+w/2)+' '+(cy+h/2), fill:'none', stroke:INK80, 'stroke-width':1.2});
+}
+function gDisks(cx, cy){
+  /* 翻开的书：左右两页 + 书脊 + 文字行 */
+  el('path', {d:'M '+(cx-2)+' '+(cy-18)+' C '+(cx-14)+' '+(cy-22)+', '+(cx-30)+' '+(cy-20)+', '+(cx-30)+' '+(cy-14)+' L '+(cx-30)+' '+(cy+16)+' C '+(cx-30)+' '+(cy+22)+', '+(cx-14)+' '+(cy+24)+', '+(cx-2)+' '+(cy+20), fill:'none', stroke:INK80, 'stroke-width':1.2, 'stroke-linejoin':'round'});
+  el('path', {d:'M '+(cx+2)+' '+(cy-18)+' C '+(cx+14)+' '+(cy-22)+', '+(cx+30)+' '+(cy-20)+', '+(cx+30)+' '+(cy-14)+' L '+(cx+30)+' '+(cy+16)+' C '+(cx+30)+' '+(cy+22)+', '+(cx+14)+' '+(cy+24)+', '+(cx+2)+' '+(cy+20), fill:'none', stroke:INK80, 'stroke-width':1.2, 'stroke-linejoin':'round'});
+  el('line', {x1:cx, y1:cy-18, x2:cx, y2:cy+20, stroke:INK80, 'stroke-width':1, opacity:.5});
+  [-20, -10, 0, 10].forEach(function(dy){
+    el('line', {x1:cx-25, y1:cy+dy, x2:cx-7, y2:cy+dy, stroke:INK, 'stroke-width':.6, opacity:.5});
+    el('line', {x1:cx+7, y1:cy+dy, x2:cx+25, y2:cy+dy, stroke:INK, 'stroke-width':.6, opacity:.5});
+  });
+}
+/* L4 基础：账号循环 / 权限阵列 / 质量观察 */
+function gChip(cx, cy){
+  /* 循环箭头：圆形回流 + 两个箭头头 */
+  var r = 22;
+  el('path', {d:'M '+(cx+r)+' '+(cy-r*.4)+' A '+r+' '+r+' 0 1 1 '+(cx-r*.7)+' '+(cy-r*.7), fill:'none', stroke:INK80, 'stroke-width':1.4});
+  el('path', {d:'M '+(cx-r)+' '+(cy+r*.4)+' A '+r+' '+r+' 0 1 1 '+(cx+r*.7)+' '+(cy+r*.7), fill:'none', stroke:INK80, 'stroke-width':1.4});
+  el('path', {d:'M '+(cx+r)+' '+(cy-r*.4)+' L '+(cx+r+5)+' '+(cy-r*.4-6)+' L '+(cx+r-6)+' '+(cy-r*.4-3), fill:'none', stroke:INK80, 'stroke-width':1.4, 'stroke-linejoin':'round', 'stroke-linecap':'round'});
+  el('path', {d:'M '+(cx-r)+' '+(cy+r*.4)+' L '+(cx-r-5)+' '+(cy+r*.4+6)+' L '+(cx-r+6)+' '+(cy+r*.4+3), fill:'none', stroke:INK80, 'stroke-width':1.4, 'stroke-linejoin':'round', 'stroke-linecap':'round'});
+}
+function gScope(cx, cy){
+  /* 方块阵列：3x3 网格代表权限规则单元 */
+  var s = 14, gap = 4;
+  for (var row = 0; row < 3; row++) {
+    for (var col = 0; col < 3; col++) {
+      var x = cx - (s*3+gap*2)/2 + col*(s+gap);
+      var y = cy - (s*3+gap*2)/2 + row*(s+gap);
+      var lit = (row+col) % 2 === 0;
+      el('rect', {x:x, y:y, width:s, height:s, fill:'none', stroke:INK80, 'stroke-width':1.1, opacity: lit ? 1 : .5});
+      if (lit) el('rect', {x:x+3, y:y+3, width:s-6, height:s-6, fill:'none', stroke:INK, 'stroke-width':.6, opacity:.5});
+    }
+  }
+}
+function gCluster(cx, cy){
+  var s = 20, gap = 7;
+  [[-1,-1],[1,-1],[-1,1],[1,1]].forEach(function(p, i){
+    var x = cx + p[0]*(s/2+gap/2) - s/2, y = cy + p[1]*(s/2+gap/2) - s/2;
+    el('rect', {x:x, y:y, width:s, height:s, fill:'none', stroke:INK80, 'stroke-width':1.1, opacity: i===3 ? .45 : 1, 'stroke-dasharray': i===3 ? '3 3' : 'none'});
+  });
+  el('line', {x1:cx-s-gap/2+10, y1:cy, x2:cx+s+gap/2-10, y2:cy, stroke:INK, 'stroke-width':.7, opacity:.4});
+  el('line', {x1:cx, y1:cy-s-gap/2+10, x2:cx, y2:cy+s+gap/2-10, stroke:INK, 'stroke-width':.7, opacity:.4});
+}
+
+/* ---------- 层定义 ---------- */
+var layers = [
+  {no:'L1', cn:'体验层', en:'EXPERIENCE', items:[
+    {g:gSocket,  en:'HOME',     cn:'会员首页'},
+    {g:gPlug,    en:'BENEFIT',  cn:'权益中心'},
+    {g:gAntenna, en:'SERVICE',  cn:'服务入口'}
+  ]},
+  {no:'L2', cn:'服务层', en:'SERVICE', items:[
+    {g:gGear,  en:'PROFILE', cn:'会员身份'},
+    {g:gDial,  en:'REWARD',  cn:'积分任务'},
+    {g:gRoute, en:'JOURNEY', cn:'生命周期'}
+  ]},
+  {no:'L3', cn:'运营层', en:'OPERATION', items:[
+    {g:function(cx,cy){ gCylinder(cx,cy,46,44); }, en:'CONTENT',  cn:'内容配置'},
+    {g:gDisks,                                      en:'CAMPAIGN', cn:'活动编排'},
+    {g:gChip,                                       en:'FEEDBACK', cn:'用户反馈'}
+  ]},
+  {no:'L4', cn:'基础层', en:'FOUNDATION', items:[
+    {g:gScope,   en:'ACCOUNT',    cn:'账号体系'},
+    {g:gAntenna, en:'PERMISSION', cn:'权限规则'},
+    {g:gCluster, en:'QUALITY',    cn:'体验监测'}
+  ]}
+];
+
+var IXS = [620, 1065, 1510];                 /* 带内能力件均布 */
+layers.forEach(function(L, r){
+  var midY = BT + r*BH + BH/2;
+  /* 左列层标（与横带严格左对齐） */
+  txt(160, midY-16, L.no, {'font-family':MONO, 'font-size':'var(--type-body)', 'letter-spacing':2, fill:INK});
+  txt(160, midY+12, L.cn, {'font-family':SANS, 'font-weight':300, 'font-size':'var(--type-body)', fill:INK});
+  txt(160, midY+34, L.en, {'font-family':MONO, 'font-size':'var(--type-micro-secondary)', 'letter-spacing':2, fill:INK45});
+  el('line', {x1:160, y1:midY+48, x2:230, y2:midY+48, stroke:INK, 'stroke-width':.6, opacity:.3});
+  /* 带内能力件 */
+  L.items.forEach(function(it, i){
+    var cx = IXS[i];
+    it.g(cx-70, midY);
+    txt(cx-16, midY-4, it.en, {'font-family':MONO, 'font-size':'var(--type-meta)', 'letter-spacing':1.5, fill:__wiseThemeToken("--ink-55")});
+    txt(cx-16, midY+22, it.cn, {'font-family':SANS, 'font-weight':300, 'font-size':'var(--type-body-small)', fill:INK});
+  });
+});
+
+stageFit();
+</script>
+</body>
+</html>

@@ -1,0 +1,192 @@
+{
+  "contract_version": 2,
+  "registry_id": "wise-ppt-capabilities",
+  "renderer_kinds": [
+    {
+      "renderer_kind": "typography",
+      "description": "用可选中的文本排版表达信息"
+    },
+    {
+      "renderer_kind": "table",
+      "description": "用表格表达需要精确查值的数据"
+    },
+    {
+      "renderer_kind": "image",
+      "description": "用本地位图或矢量图片文件表达信息"
+    },
+    {
+      "renderer_kind": "native-html",
+      "description": "用原生 HTML 与 CSS 结构表达信息"
+    },
+    {
+      "renderer_kind": "svg",
+      "description": "用内联或本地 SVG 表达信息"
+    },
+    {
+      "renderer_kind": "canvas",
+      "description": "用 Canvas 绘制信息"
+    }
+  ],
+  "component_sources": [
+    {
+      "component_source": "native",
+      "description": "Wise PPT 自有组件",
+      "allowed_renderer_kinds": [
+        "typography",
+        "table",
+        "image",
+        "native-html",
+        "svg",
+        "canvas"
+      ]
+    },
+    {
+      "component_source": "echarts",
+      "description": "Apache ECharts 图表组件",
+      "allowed_renderer_kinds": [
+        "svg",
+        "canvas"
+      ]
+    },
+    {
+      "component_source": "ppt-component-atlas",
+      "description": "PPT Component Atlas 导出的组件",
+      "allowed_renderer_kinds": [
+        "native-html",
+        "svg"
+      ]
+    },
+    {
+      "component_source": "codex-host",
+      "description": "Codex 宿主内置图片能力生成或重构的媒体",
+      "allowed_renderer_kinds": [
+        "image"
+      ]
+    }
+  ],
+  "human_gallery": {
+    "entrypoint": "gallery/taxonomy/index.html",
+    "status": "production",
+    "unique": true,
+    "description": "唯一人工浏览入口；统一查看画册蓝图、几何审计、62 个组合证据和生产组件。General、AI 与 components Gallery 仅作为内部渲染器和设计证据。"
+  },
+  "capabilities": [
+    {
+      "capability_id": "unified-human-gallery",
+      "capability_kind": "human-gallery-entrypoint",
+      "entrypoint": "gallery/taxonomy/index.html",
+      "status": "audit-only",
+      "production_selectable": false,
+      "unique": true,
+      "manifest": "capabilities/taxonomy/asset-taxonomy.json",
+      "reference": "capabilities/references/asset-taxonomy.md"
+    },
+    {
+      "capability_id": "layout-topology-registry",
+      "capability_kind": "layout-topology-registry",
+      "manifest": "capabilities/layouts/topology-registry.json",
+      "topology_count": 14,
+      "status": "audit-only",
+      "production_selectable": false,
+      "reference": "capabilities/references/layout-gallery.md"
+    },
+    {
+      "capability_id": "layout-blueprint-registry",
+      "capability_kind": "layout-blueprint-registry",
+      "manifest": "capabilities/layouts/layout-blueprint-registry.json",
+      "blueprint_count": 124,
+      "ready_count": 114,
+      "blocked_count": 10,
+      "status": "production",
+      "reference": "capabilities/references/layout-gallery.md"
+    },
+    {
+      "capability_id": "composition-presets",
+      "capability_kind": "composition-preset-catalog",
+      "manifest": "capabilities/layouts/composition-presets.json",
+      "preset_count": 62,
+      "status": "derived-evidence",
+      "production_selectable": false,
+      "reference": "capabilities/references/asset-taxonomy.md"
+    },
+    {
+      "capability_id": "layout-gallery",
+      "capability_kind": "layout-catalog",
+      "manifest": "capabilities/layouts/gallery-manifest.json",
+      "status": "internal-design-evidence",
+      "production_selectable": false,
+      "reference": "capabilities/references/layout-gallery.md"
+    },
+    {
+      "capability_id": "layout-implementation-registry",
+      "capability_kind": "layout-implementation-registry",
+      "manifest": "capabilities/layouts/implementation-registry.json",
+      "implementation_count": 124,
+      "status": "internal-renderer-evidence",
+      "production_selectable": false,
+      "reference": "capabilities/references/layout-gallery.md"
+    },
+    {
+      "capability_id": "echarts",
+      "capability_kind": "component-source",
+      "component_source": "echarts",
+      "runtime": "capabilities/vendors/echarts/echarts.min.js",
+      "version": "6.1.0",
+      "license": "Apache-2.0",
+      "dataset_docs": "https://echarts.apache.org/handbook/en/concepts/dataset/",
+      "catalog": "capabilities/vendors/echarts/catalog.json",
+      "internal_gallery": "gallery/components/index.html",
+      "visibility": "internal-renderer-evidence",
+      "component_count": 13,
+      "examples": "capabilities/vendors/echarts/examples/",
+      "example_count": 13,
+      "reference": "capabilities/references/component-routing.md"
+    },
+    {
+      "capability_id": "ppt-component-atlas",
+      "capability_kind": "component-source",
+      "component_source": "ppt-component-atlas",
+      "catalog": "capabilities/vendors/ppt-component-atlas/catalog-data.js",
+      "internal_gallery": "gallery/components/index.html",
+      "visibility": "internal-renderer-evidence",
+      "version": "bd14958",
+      "license": "MIT",
+      "component_count": 61,
+      "reference": "capabilities/references/component-routing.md"
+    },
+    {
+      "capability_id": "paper-ink-components",
+      "capability_kind": "component-source",
+      "component_source": "native",
+      "catalog": "capabilities/layouts/paper-ink-components.js",
+      "internal_gallery": "gallery/components/index.html",
+      "visibility": "internal-renderer-evidence",
+      "license": "MIT",
+      "component_count": 27,
+      "description": "从 gallery/paper-ink/ai/frames/ 样张烘焙的纸墨原生组件（静态 snippet，num 62–88），与上游 atlas catalog 相互独立",
+      "reference": "capabilities/references/component-routing.md"
+    },
+    {
+      "capability_id": "component-routing",
+      "capability_kind": "component-router",
+      "manifest": "capabilities/components/routing-manifest.json",
+      "component_count": 108,
+      "status": "production",
+      "reference": "capabilities/references/component-routing.md"
+    },
+    {
+      "capability_id": "codex-host-image",
+      "capability_kind": "component-source",
+      "component_source": "codex-host",
+      "reference": "capabilities/references/media-contract.md"
+    },
+    {
+      "capability_id": "geo-demo-data",
+      "capability_kind": "geo-data",
+      "data": "capabilities/vendors/geo/",
+      "runtime": "capabilities/vendors/geo/guangdong-geo.js",
+      "description": "Gallery 地理样张（c4）离线演示用的边界数据；原始数据 © DataV GeoAtlas（阿里云 DataV 行政区划边界，区划代码 440000）；不是业务数据来源，正式 deck 不得引用",
+      "reference": "capabilities/vendors/geo/README.md"
+    }
+  ]
+}

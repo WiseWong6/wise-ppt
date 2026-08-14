@@ -1,0 +1,212 @@
+<!-- GENERATED: Wise PPT formal canonical source; protected Gallery remains provenance-only. -->
+<!DOCTYPE html>
+<html lang="zh-CN" data-runtime="wise-ppt-specimen" data-typography-mode="mixed" data-page-id="gallery-general-a9" data-page-role="prove" data-theme="paper-ink" data-layout="paper-ink.evidence.mobile-screen-gallery" data-layout-source="gallery">
+<head>
+<meta charset="UTF-8">
+<title>layout-a9 · 手机多屏画廊</title>
+<link rel="stylesheet" href="../../../../themes/paper-ink/assets/design-tokens.css">
+<link rel="stylesheet" href="../../../../themes/paper-ink/assets/slide-components.css">
+<link rel="stylesheet" href="../../../shell.css">
+<style>
+  svg.scene { position: absolute; inset: 0; z-index: 1; }
+  .caption {
+    position: absolute; left: 0; right: 0; bottom: 118px;
+    text-align: center;;;;;; z-index: 5;
+  }
+</style>
+</head>
+<body class="slide">
+<div class="stage" data-block-id="gallery-primary" data-renderer-kind="svg" data-component-source="native" data-component-id="native.paper-ink.evidence.mobile-screen-gallery.screens" data-content-ref="example.a9" data-anchor-id="stage">
+  <span data-geometry-anchor-holder="screen-1-frame" data-anchor-id="screen-1-frame" hidden aria-hidden="true"></span><span data-geometry-anchor-holder="screen-2-frame" data-anchor-id="screen-2-frame" hidden aria-hidden="true"></span>
+  <div class="doc tl" data-anchor-id="slot-support">产品 · 方案 — A9<br>会员 APP 多屏方案</div>
+  <div class="folio">01 / 01 — BY @歪斯WISE</div>
+
+  <svg class="scene" width="1920" height="1080" viewBox="0 0 1920 1080">
+    <g id="draw" data-anchor-id="slot-screens"></g>
+  </svg>
+
+  <div class="caption" data-anchor-id="slot-takeaway">从权益、成长到续费与洞察，四屏串起会员 App 核心产品方案。</div>
+</div>
+
+<script src="../../../../runtime/stage-fit.js"></script>
+<script src="../../../../themes/paper-ink/assets/particles.js"></script>
+<script>
+var NS = 'http://www.w3.org/2000/svg';
+var INK = __wiseThemeToken("--ink");
+var INK80 = __wiseThemeToken("--ink-80");
+var INK45 = __wiseThemeToken("--ink-45");
+/* accent 触发：读 URL 加类 + 染色常量（详见 design-tokens.md §2） */
+if (location.search.indexOf('accent') >= 0) document.documentElement.classList.add('accent');
+var ACCENT = document.documentElement.classList.contains('accent');
+var RED = getComputedStyle(document.documentElement).getPropertyValue('--accent-red').trim();
+var G = document.getElementById('draw');
+function el(tag, attrs) {
+  var e = document.createElementNS(NS, tag);
+  for (var k in attrs) e.setAttribute(k, attrs[k]);
+  G.appendChild(e); return e;
+}
+function txt(x, y, str, attrs) {
+  var t = el('text', Object.assign({x:x, y:y}, attrs||{}));
+  t.textContent = str; return t;
+}
+var MONO = 'var(--mono)', SANS = 'var(--sans)';
+
+G = el('g', {transform:'translate(0 -45.7)'});
+
+
+/* ---------- 4 屏机身：280×600 at x220/640/1060/1480, y220 ---------- */
+var PW = 280, PH = 600, PY = 220;
+var XS = [220, 640, 1060, 1480];
+
+/* 文字暗示行：一条"标题线" + 一条"副题线"，宽度随手变化 */
+function hintLines(x, y, w1, w2) {
+  el('rect', {x:x, y:y, width:w1, height:4, fill:INK, opacity:.55});
+  el('rect', {x:x, y:y+13, width:w2, height:3, fill:INK, opacity:.28});
+}
+/* 状态栏：时间 + 信号/电量暗示 */
+function statusBar(x) {
+  txt(x+22, PY+38, '9:41', {'font-family':MONO, 'font-size':'var(--type-micro-secondary)', fill:INK45, 'letter-spacing':1});
+  el('rect', {x:x+PW-66, y:PY+28, width:14, height:9, fill:'none', stroke:INK, 'stroke-width':.8, opacity:.5});
+  el('rect', {x:x+PW-48, y:PY+28, width:22, height:9, fill:'none', stroke:INK, 'stroke-width':.8, opacity:.5});
+  el('rect', {x:x+PW-46, y:PY+30, width:12, height:5, fill:INK, opacity:.5});
+  el('line', {x1:x+18, y1:PY+52, x2:x+PW-18, y2:PY+52, stroke:INK, 'stroke-width':.6, opacity:.25});
+}
+/* 底部 home 指示 */
+function homeBar(x) {
+  el('line', {x1:x+PW/2-36, y1:PY+PH-18, x2:x+PW/2+36, y2:PY+PH-18, stroke:INK, 'stroke-width':1.4, opacity:.6});
+}
+
+/* ===== 屏 1 · 会员权益列表 ===== */
+function screen1(x) {
+  statusBar(x);
+  txt(x+22, PY+96, '会员权益', {'font-family':SANS, 'font-weight':300, 'font-size':'var(--type-body)', fill:INK});
+  txt(x+PW-22, PY+94, '12 项', {'font-family':MONO, 'font-size':'var(--type-micro-secondary)', fill:INK45, 'text-anchor':'end'});
+  var dots = ['open', 'open', 'half', 'full', 'open'];
+  var widths = [[150, 96], [128, 84], [142, 102], [118, 78], [136, 90]];
+  dots.forEach(function(d, i) {
+    var y = PY + 136 + i * 76;
+    el('circle', {cx:x+30, cy:y-4, r:5, fill:'none', stroke:INK, 'stroke-width':1.1, opacity:.8});
+    if (d === 'full') el('circle', {cx:x+30, cy:y-4, r:5, fill:INK, opacity:.8});
+    if (d === 'half') el('path', {d:'M '+(x+30)+' '+(y-9)+' A 5 5 0 0 1 '+(x+30)+' '+(y+1)+' Z', fill:INK, opacity:.8});
+    hintLines(x+48, y-8, widths[i][0], widths[i][1]);
+    txt(x+PW-24, y-2, ['GIFT-A','GIFT-B','POINT-C','VIP-D','CARE-E'][i], {'font-family':MONO, 'font-size':'var(--type-micro-secondary)', fill:INK45, 'text-anchor':'end'});
+    el('line', {x1:x+22, y1:y+22, x2:x+PW-22, y2:y+22, stroke:INK, 'stroke-width':.6, opacity:.18});
+  });
+  homeBar(x);
+}
+
+/* ===== 屏 2 · 会员成长地图 ===== */
+function screen2(x) {
+  statusBar(x);
+  txt(x+22, PY+96, '成长地图', {'font-family':SANS, 'font-weight':300, 'font-size':'var(--type-body)', fill:INK});
+  txt(x+PW-22, PY+94, 'LV-12', {'font-family':MONO, 'font-size':'var(--type-micro-secondary)', fill:INK45, 'text-anchor':'end'});
+  /* 成长阶段栅格（构造虚线） */
+  var gx0 = x+26, gy0 = PY+128, gw = PW-52, gh = 300;
+  el('rect', {x:gx0, y:gy0, width:gw, height:gh, fill:'none', stroke:INK, 'stroke-width':.8, opacity:.4});
+  var c;
+  for (c = 1; c < 4; c++) {
+    el('line', {x1:gx0+gw*c/4, y1:gy0, x2:gx0+gw*c/4, y2:gy0+gh, stroke:INK, 'stroke-width':.5, opacity:.2, 'stroke-dasharray':'3 5'});
+  }
+  for (c = 1; c < 5; c++) {
+    el('line', {x1:gx0, y1:gy0+gh*c/5, x2:gx0+gw, y2:gy0+gh*c/5, stroke:INK, 'stroke-width':.5, opacity:.2, 'stroke-dasharray':'3 5'});
+  }
+  /* 阶段权益卡 */
+  [[gx0+14, gy0+16, 52, 40], [gx0+gw-70, gy0+gh-58, 56, 42]].forEach(function(r) {
+    el('rect', {x:r[0], y:r[1], width:r[2], height:r[3], fill:'none', stroke:INK, 'stroke-width':.9, opacity:.7});
+    var k;
+    for (k = 1; k < 4; k++)
+      el('line', {x1:r[0], y1:r[1]+r[3]*k/4, x2:r[0]+r[2], y2:r[1]+r[3]*k/4, stroke:INK, 'stroke-width':.5, opacity:.3});
+  });
+  /* 已完成成长线（实线）+ 下一阶段（虚线） */
+  el('path', {d:'M '+(gx0+30)+' '+(gy0+gh-24)+' L '+(gx0+30)+' '+(gy0+150)+' L '+(gx0+120)+' '+(gy0+150)+' L '+(gx0+120)+' '+(gy0+70),
+    fill:'none', stroke:INK80, 'stroke-width':1.4});
+  el('path', {d:'M '+(gx0+120)+' '+(gy0+70)+' L '+(gx0+200)+' '+(gy0+70)+' L '+(gx0+200)+' '+(gy0+30),
+    fill:'none', stroke:INK, 'stroke-width':1, opacity:.55, 'stroke-dasharray':'4 5'});
+  /* 当前等级：双圈 + 实心核 */
+  el('circle', {cx:gx0+120, cy:gy0+70, r:9, fill:'none', stroke:INK, 'stroke-width':1.1});
+  el('circle', {cx:gx0+120, cy:gy0+70, r:5.5, fill:'none', stroke:INK, 'stroke-width':.6, opacity:.6});
+  el('circle', {cx:gx0+120, cy:gy0+70, r:2.4, fill:INK});
+  /* 下一项权益标记 */
+  el('rect', {x:gx0+192, y:gy0+16, width:16, height:16, fill:'none', stroke:INK, 'stroke-width':1.1, opacity:.8});
+  hintLines(x+26, PY+PH-96, 132, 88);
+  homeBar(x);
+}
+
+/* ===== 屏 3 · 续费提醒 ===== */
+function screen3(x) {
+  statusBar(x);
+  /* 提醒徽章：圆 + 时钟指针 */
+  el('circle', {cx:x+PW/2, cy:PY+150, r:34, fill:'none', stroke:INK80, 'stroke-width':1.3});
+  el('circle', {cx:x+PW/2, cy:PY+150, r:40, fill:'none', stroke:INK, 'stroke-width':.6, opacity:.3});
+  el('path', {d:'M '+(x+PW/2)+' '+(PY+150)+' L '+(x+PW/2)+' '+(PY+137)+' M '+(x+PW/2)+' '+(PY+150)+' L '+(x+PW/2+11)+' '+(PY+159),
+    fill:'none', stroke:ACCENT ? RED : INK, 'stroke-width':2.6, 'stroke-linecap':'round'});
+  txt(x+PW/2, PY+232, '会员即将到期', {'font-family':SANS, 'font-weight':300, 'font-size':'var(--type-body)', fill:INK, 'text-anchor':'middle'});
+  txt(x+PW/2, PY+258, 'MEMBERSHIP EXPIRY', {'font-family':MONO, 'font-size':'var(--type-micro-secondary)', fill:INK45, 'text-anchor':'middle', 'letter-spacing':2});
+  /* 字段行 */
+  var fields = [['PLAN', 'YEARLY'], ['LEVEL', 'LV-12'], ['BENEFIT', '11%'], ['REMAIN', '60d']];
+  fields.forEach(function(f, i) {
+    var y = PY + 312 + i * 44;
+    txt(x+26, y, f[0], {'font-family':MONO, 'font-size':'var(--type-micro-secondary)', fill:INK45, 'letter-spacing':1.5});
+    txt(x+PW-26, y, f[1], {'font-family':MONO, 'font-size':'var(--type-meta)', fill:INK, 'text-anchor':'end'});
+    el('line', {x1:x+26, y1:y+14, x2:x+PW-26, y2:y+14, stroke:INK, 'stroke-width':.6, opacity:.18});
+  });
+  /* 操作按钮暗示 */
+  el('rect', {x:x+26, y:PY+PH-108, width:PW-52, height:40, fill:'none', stroke:INK80, 'stroke-width':1.2});
+  txt(x+PW/2, PY+PH-82, '立即续费', {'font-family':SANS, 'font-weight':300, 'font-size':'var(--type-label)', fill:INK, 'text-anchor':'middle'});
+  homeBar(x);
+}
+
+/* ===== 屏 4 · 会员洞察 ===== */
+function screen4(x) {
+  statusBar(x);
+  txt(x+22, PY+96, '会员洞察', {'font-family':SANS, 'font-weight':300, 'font-size':'var(--type-body)', fill:INK});
+  txt(x+PW-22, PY+94, 'MONTH-B', {'font-family':MONO, 'font-size':'var(--type-micro-secondary)', fill:INK45, 'text-anchor':'end'});
+  /* 大数字 */
+  txt(x+26, PY+180, '94.2', {'font-family':MONO, 'font-size':'var(--type-metric)', fill:INK});
+  txt(x+26, PY+206, 'MEMBER · 活跃指数', {'font-family':SANS, 'font-weight':300, 'font-size':'var(--type-meta)', fill:INK45});
+  /* 三条指标横条：外框 + 部分填充线 */
+  var bars = [['权益使用', '87%', .87], ['任务完成', '62%', .62], ['续费意愿', '91%', .91]];
+  bars.forEach(function(b, i) {
+    var y = PY + 260 + i * 84;
+    txt(x+26, y, b[0], {'font-family':SANS, 'font-weight':300, 'font-size':'var(--type-label)', fill:__wiseThemeToken("--ink-70")});
+    txt(x+PW-26, y, b[1], {'font-family':MONO, 'font-size':'var(--type-meta)', fill:INK, 'text-anchor':'end'});
+    el('rect', {x:x+26, y:y+14, width:PW-52, height:14, fill:'none', stroke:INK, 'stroke-width':.9, opacity:.7});
+    el('rect', {x:x+29, y:y+17, width:(PW-58)*b[2], height:8, fill:INK, opacity:.55});
+  });
+  hintLines(x+26, PY+PH-96, 120, 84);
+  homeBar(x);
+}
+
+var screens = [screen1, screen2, screen3, screen4];
+XS.forEach(function(x, i) {
+  /* 机身：圆角外框 1.2px + 内圈 0.6px */
+  el('rect', {x:x, y:PY, width:PW, height:PH, rx:30, fill:__wiseThemeToken("--paper-panel"), stroke:INK80, 'stroke-width':1.3});
+  el('rect', {x:x+7, y:PY+7, width:PW-14, height:PH-14, rx:24, fill:'none', stroke:INK, 'stroke-width':.6, opacity:.3});
+  /* 听筒暗示 */
+  el('line', {x1:x+PW/2-22, y1:PY+14, x2:x+PW/2+22, y2:PY+14, stroke:INK, 'stroke-width':1.6, opacity:.5});
+  screens[i](x);
+});
+
+/* 屏间开放箭头（细线 + 两笔箭头） */
+for (var i = 0; i < 3; i++) {
+  var ax1 = XS[i] + PW + 30, ax2 = XS[i+1] - 30, ay = PY + PH/2;
+  el('line', {x1:ax1, y1:ay, x2:ax2-10, y2:ay, stroke:INK, 'stroke-width':1.1, opacity:.7});
+  el('path', {d:'M '+(ax2-22)+' '+(ay-8)+' L '+(ax2-10)+' '+ay+' L '+(ax2-22)+' '+(ay+8),
+    fill:'none', stroke:INK, 'stroke-width':1.1, opacity:.7});
+  /* 构造十字准星 */
+  txt((ax1+ax2)/2, ay-22, '+', {'font-family':MONO, 'font-size':'var(--type-meta)', fill:INK45, 'text-anchor':'middle'});
+}
+
+/* 屏下 mono 步骤标签 + 中文小注 */
+var steps = [['STEP 01 — BENEFITS', '权益'], ['STEP 02 — GROWTH', '成长'],
+             ['STEP 03 — RENEW', '续费'], ['STEP 04 — INSIGHT', '洞察']];
+steps.forEach(function(s, i) {
+  var cx = XS[i] + PW/2;
+  txt(cx, 856, s[0], {'font-family':MONO, 'font-size':'var(--type-meta)', 'letter-spacing':2, fill:INK45, 'text-anchor':'middle'});
+  txt(cx, 880, s[1], {'font-family':SANS, 'font-weight':300, 'font-size':'var(--type-meta)', fill:__wiseThemeToken("--wp-compat-pi-ink-60"), 'text-anchor':'middle'});
+});
+
+stageFit();
+</script>
+</body>
+</html>

@@ -1,0 +1,153 @@
+<!-- GENERATED: Wise PPT formal canonical source; protected Gallery remains provenance-only. -->
+<!DOCTYPE html>
+<html lang="zh-CN" data-runtime="wise-ppt-specimen" data-typography-mode="mixed" data-page-id="gallery-ai-k1" data-page-role="synthesize" data-theme="paper-ink" data-layout="paper-ink.matrix.stage-dimension" data-layout-source="gallery">
+<head>
+<meta charset="UTF-8">
+<title>layout-k1 · 链阵复合 · AI 落地阶段 × 维度框架</title>
+<link rel="stylesheet" href="../../../../themes/paper-ink/assets/design-tokens.css">
+<link rel="stylesheet" href="../../../../themes/paper-ink/assets/slide-components.css">
+<link rel="stylesheet" href="../../../shell.css">
+<style>
+  svg.scene { position: absolute; inset: 0; z-index: 1; }
+  canvas { position: absolute; inset: 0; z-index: 2; }
+  .caption {
+    position: absolute; left: 0; right: 0; bottom: 118px;
+    text-align: center;;;;;;
+    z-index: 5;
+  }
+</style>
+</head>
+<body class="slide">
+<div class="stage" data-block-id="gallery-primary" data-renderer-kind="svg" data-component-source="native" data-component-id="native.paper-ink.matrix.stage-dimension.framework" data-content-ref="example.k1" data-anchor-id="stage">
+  <span data-geometry-anchor-holder="matrix-phase-2" data-anchor-id="matrix-phase-2" hidden aria-hidden="true"></span><span data-geometry-anchor-holder="matrix-divider-left" data-anchor-id="matrix-divider-left" hidden aria-hidden="true"></span><span data-geometry-anchor-holder="matrix-divider-right" data-anchor-id="matrix-divider-right" hidden aria-hidden="true"></span>
+  <div class="doc tl" data-anchor-id="slot-support">AI 落地 — 执行地图<br>阶段与能力</div>
+  <div class="folio">01 / 01 — BY @歪斯WISE</div>
+
+  <svg class="scene" width="1920" height="1080" viewBox="0 0 1920 1080">
+    <g id="draw" data-anchor-id="slot-framework"></g>
+  </svg>
+  <canvas id="cv" width="1920" height="1080"></canvas>
+
+  <div class="caption" data-anchor-id="slot-takeaway">AI 落地的四个阶段需要同时推进数据、模型与组织三条能力线。</div>
+</div>
+
+<script src="../../../../runtime/stage-fit.js"></script>
+<script src="../../../../themes/paper-ink/assets/particles.js"></script>
+<script>
+var NS = 'http://www.w3.org/2000/svg';
+var INK = __wiseThemeToken("--ink");
+var INK80 = __wiseThemeToken("--ink-80");
+var INK70 = __wiseThemeToken("--ink-70");
+var INK45 = __wiseThemeToken("--ink-45");
+var G = document.getElementById('draw');
+function el(tag, attrs) {
+  var e = document.createElementNS(NS, tag);
+  for (var k in attrs) e.setAttribute(k, attrs[k]);
+  G.appendChild(e); return e;
+}
+function txt(x, y, str, attrs) {
+  var t = el('text', Object.assign({x:x, y:y}, attrs||{}));
+  t.textContent = str; return t;
+}
+var MONO = 'var(--mono)', SANS = 'var(--sans)';
+
+G = el('g', {transform:'translate(0 -31.2)'});
+
+
+/* ---------- 顶部：四站阶段链 ---------- */
+var CXS = [477, 832, 1187, 1542];           /* 列心 = 站心，列区 x300–1720 */
+var stages = [
+  {no:'01', en:'AWARE',   cn:'认知'},
+  {no:'02', en:'PILOT',   cn:'试点'},
+  {no:'03', en:'SCALE',   cn:'推广'},
+  {no:'04', en:'NATIVE',  cn:'原生'}
+];
+stages.forEach(function(s, i){
+  var cx = CXS[i];
+  txt(cx, 240, s.en, {'font-family':MONO, 'font-size':'var(--type-micro-secondary)', 'letter-spacing':2, 'text-anchor':'middle', fill:INK45});
+  el('circle', {cx:cx, cy:275, r:16, fill:__wiseThemeToken("--paper"), stroke:INK80, 'stroke-width':1.2});
+  el('circle', {cx:cx, cy:275, r:12.5, fill:'none', stroke:INK, 'stroke-width':.6, opacity:.3});
+  txt(cx, 278, s.no, {'font-family':MONO, 'font-size':'var(--type-meta)', 'text-anchor':'middle', fill:INK});
+  el('line', {x1:cx-24, y1:302, x2:cx+24, y2:302, stroke:INK, 'stroke-width':.8, opacity:.5});
+  txt(cx, 332, s.cn, {'font-family':SANS, 'font-weight':300, 'font-size':'var(--type-body)', 'text-anchor':'middle', fill:INK});
+  /* 站心 → 矩阵列的锚定虚线（构造线不擦除） */
+  el('line', {x1:cx, y1:344, x2:cx, y2:376, stroke:INK, 'stroke-width':.5, opacity:.25, 'stroke-dasharray':'2 5'});
+});
+/* 站间细线开放箭头 */
+for (var i = 0; i < 3; i++) {
+  var x1 = CXS[i]+38, x2 = CXS[i+1]-38;
+  el('line', {x1:x1, y1:275, x2:x2, y2:275, stroke:INK, 'stroke-width':1.1, opacity:.55});
+  el('line', {x1:x2-9, y1:269, x2:x2, y2:275, stroke:INK, 'stroke-width':1.1, opacity:.55});
+  el('line', {x1:x2-9, y1:281, x2:x2, y2:275, stroke:INK, 'stroke-width':1.1, opacity:.55});
+}
+
+/* ---------- 中部：维度矩阵（3 维度 × 4 阶段） ---------- */
+var MT = 380, ROWH = 137, MB = MT + ROWH*3;  /* y380–791 */
+var COLS = [300, 655, 1010, 1365, 1720];
+/* 横分隔线（贯通） */
+[MT, MT+ROWH, MT+ROWH*2, MB].forEach(function(y, i){
+  el('line', {x1:150, y1:y, x2:1720, y2:y, stroke:INK,
+    'stroke-width': (i===0||i===3) ? .8 : .6, opacity: (i===0||i===3) ? .45 : .3});
+});
+/* 维度栏竖分隔 */
+el('line', {x1:285, y1:MT, x2:285, y2:MB, stroke:INK, 'stroke-width':.6, opacity:.3});
+/* 列分隔（虚线构造线） */
+[COLS[1], COLS[2], COLS[3]].forEach(function(x){
+  el('line', {x1:x, y1:MT, x2:x, y2:MB, stroke:INK, 'stroke-width':.5, opacity:.22, 'stroke-dasharray':'3 5'});
+});
+
+var dims = [
+  {en:'ACTION', cn:'关键动作', cells:[
+    [['DEMO','场景演示'],['EDU','全员科普'],['MAP','场景盘点'],['VET','外部专家']],
+    [['PILOT','小范围试点'],['PROMPT','提示工程'],['SCOPE','场景筛选'],['REVIEW','专家评审']],
+    [['ROLL','跨部门推广'],['FLOW','流程改造'],['TRAIN','员工培训'],['PLATFORM','平台沉淀']],
+    [['EMBED','业务原生'],['AGENT','智能体编排'],['AUTOMA','自动决策'],['OPS','AI 运维']]
+  ]},
+  {en:'METRIC', cn:'核心指标', cells:[
+    [['8 %','渗透率'],['120','调用量/日'],['92 %','准确率'],['1.2x','ROI']],
+    [['35 %','渗透率'],['4.6K','调用量/日'],['95 %','准确率'],['2.4x','ROI']],
+    [['68 %','渗透率'],['38K','调用量/日'],['97 %','准确率'],['3.8x','ROI']],
+    [['92 %','渗透率'],['260K','调用量/日'],['99 %','准确率'],['6.5x','ROI']]
+  ]},
+  {en:'STACK', cn:'技术栈', cells:[
+    [['API','模型接口'],['CHAT','对话工具'],['DOC','知识入口'],['BROWSE','浏览器']],
+    [['RAG','检索增强'],['EVAL','评测平台'],['SDK','应用集成'],['DATA','数据接入']],
+    [['AGENT','智能体框架'],['VECTOR','向量库'],['PIPE','流水线'],['HUB','能力中心']],
+    [['MESH','智能体网络'],['MEMORY','长期记忆'],['RLHF','反馈闭环'],['EDGE','端侧推理']]
+  ]}
+];
+
+dims.forEach(function(d, r){
+  var rt = MT + r*ROWH;
+  /* 维度栏标签 */
+  txt(165, rt+62, d.en, {'font-family':MONO, 'font-size':'var(--type-meta)', 'letter-spacing':2, fill:INK});
+  txt(165, rt+90, d.cn, {'font-family':SANS, 'font-weight':300, 'font-size':'var(--type-body-small)', fill:INK70});
+  /* 各阶段列内 1 列 2 字段（水平居中于单元格列） */
+  d.cells.forEach(function(fields, c){
+    var colL = COLS[c];
+    var colR = COLS[c+1];
+    var cx = (colL + colR) / 2;
+    fields.slice(0, 2).forEach(function(f, k){
+      var fy = rt + 42 + k*58;
+      txt(cx, fy, f[0], {'font-family':MONO, 'font-size':'var(--type-meta)', 'letter-spacing':1, 'text-anchor':'middle', fill:__wiseThemeToken("--ink-55")});
+      txt(cx, fy+24, f[1], {'font-family':SANS, 'font-weight':300, 'font-size':'var(--type-label)', 'text-anchor':'middle', fill:INK80});
+    });
+  });
+});
+
+/* ---------- 底部：chevron 收束条 ---------- */
+var CY = 806, CH = 42, CW = 355;
+var concl = ['SPARK INTEREST', 'PROVE VALUE', 'SCALE ORG-WIDE', 'AI-NATIVE OPS'];
+for (var i = 0; i < 4; i++) {
+  var x = COLS[i];
+  var d = (i === 0)
+    ? 'M '+x+' '+CY+' L '+(x+CW-16)+' '+CY+' L '+(x+CW)+' '+(CY+CH/2)+' L '+(x+CW-16)+' '+(CY+CH)+' L '+x+' '+(CY+CH)+' Z'
+    : 'M '+x+' '+CY+' L '+(x+CW-16)+' '+CY+' L '+(x+CW)+' '+(CY+CH/2)+' L '+(x+CW-16)+' '+(CY+CH)+' L '+x+' '+(CY+CH)+' L '+(x+16)+' '+(CY+CH/2)+' Z';
+  el('path', {d:d, fill:__wiseThemeToken("--paper-panel"), stroke:INK80, 'stroke-width':1.2});
+  txt(x+CW/2+(i===0?8:16), CY+27, concl[i], {'font-family':MONO, 'font-size':'var(--type-micro-secondary)', 'letter-spacing':2, 'text-anchor':'middle', fill:INK});
+}
+
+stageFit();
+</script>
+</body>
+</html>

@@ -1,0 +1,733 @@
+{
+  "canonical": {
+    "constraints": {
+      "css_scope": "[data-implementation-id=\"paper-ink.flow.known-unknown-chain.general\"]",
+      "external_links": false,
+      "external_scripts": false,
+      "payload_only_mutation": true,
+      "ready_api": "WisePPT.markSlideReady",
+      "script_query_scope": "current-section.slide",
+      "stage_fit": false
+    },
+    "kind": "derived-frame",
+    "materialization_format": "wise-ppt-formal-slide@1",
+    "path": "gallery/paper-ink/general/frames/layout-i2.html",
+    "root_selector": "section.slide[data-implementation-id=\"paper-ink.flow.known-unknown-chain.general\"]",
+    "sha256": "sha256:37c69cb5c616bde3ee3138f93fcbf651bd592e5c1366f3e14370add567b0d90f"
+  },
+  "canonical_fingerprint": "sha256:85acae1f83bbea153620caec424aa09efaec88a34eb050f4a471754832d77d05",
+  "contract_version": 1,
+  "dependency_closure": {
+    "files": [
+      {
+        "path": "gallery/shell.css",
+        "sha256": "sha256:aca1428680d2dd5c84e85d66241ee199a16d36bb60a098340528943fb5469f69"
+      },
+      {
+        "path": "runtime/stage-fit.js",
+        "sha256": "sha256:39577a14aac5072789fdeb80abee887d24da5a44eeb38203ef154602330f291d"
+      },
+      {
+        "path": "themes/paper-ink/assets/design-tokens.css",
+        "sha256": "sha256:3f1f0d3562cf1486b87643b16025388557000858d0df13d767b53a576988c330"
+      },
+      {
+        "path": "themes/paper-ink/assets/fonts/CourierPrime-Regular.ttf",
+        "sha256": "sha256:72f793376f8e2841656bf21d77a5de010f2929bd6956a22ee848ad0c7eb978af"
+      },
+      {
+        "path": "themes/paper-ink/assets/fonts/LXGWWenKai-Regular.ttf",
+        "sha256": "sha256:39ad71264b588165b469e35e6afb162a378dacd1f95348160240ba9038ac3009"
+      },
+      {
+        "path": "themes/paper-ink/assets/fonts/SourceHanSansCN-Light.otf",
+        "sha256": "sha256:b6dfc945aae0daf9b15019f59c2f7b18d17da3b92f00c3ec32fb5f0333696d9c"
+      },
+      {
+        "path": "themes/paper-ink/assets/fonts/SourceHanSerifCN-Medium.otf",
+        "sha256": "sha256:8e224937647ae71ba1b1f310bcb3fbc32f21ec7c2c490ba04670455c901f3378"
+      },
+      {
+        "path": "themes/paper-ink/assets/particles.js",
+        "sha256": "sha256:1281d72e81b34e4be061286edd323dd421443dffbf6e0d8a2faa94a5d14094c4"
+      },
+      {
+        "path": "themes/paper-ink/assets/slide-components.css",
+        "sha256": "sha256:20e7334fe5ae51cb229112290e787c1274ad65278a72b084c708682dc9ca5acf"
+      }
+    ],
+    "sha256": "sha256:7dcc6f0ac681be95cc8955afb36da97027f341a98f4f9f37518e37bfe13f5be4"
+  },
+  "format": "wise-ppt-layout-implementation@1",
+  "geometry": {
+    "anchors": [
+      {
+        "anchor_id": "stage",
+        "selector": ".stage"
+      }
+    ],
+    "canvas": {
+      "height": 1080,
+      "width": 1920
+    },
+    "content_region": {
+      "height": 1080,
+      "width": 1920,
+      "x": 0,
+      "y": 0
+    },
+    "fingerprint": "sha256:284e9157bc273e0b28d21d840e268cf993481ac36a15bfd3c8ecce742be9f7a5",
+    "format": "wise-ppt-layout-geometry@1",
+    "relations": [],
+    "structure_contract": {
+      "core_primitives": [
+        "linear-sequence"
+      ],
+      "region_count": 3,
+      "required_slot_ids": [
+        "visible-steps"
+      ]
+    }
+  },
+  "implementation_id": "paper-ink.flow.known-unknown-chain.general",
+  "payload": {
+    "fields": [
+      {
+        "context": "html:div.doc.tl",
+        "default": "产品 · 培训 — I2",
+        "field_id": "html.text.001",
+        "kind": "html_text",
+        "max_length": 16,
+        "span": {
+          "kind": "html_text",
+          "occurrence": 1,
+          "token_sha256": "sha256:4d79aa3b0170930a633cfeeb0206b6f2433a8ead728d272bca97a98a57abada7"
+        },
+        "type": "string"
+      },
+      {
+        "context": "html:div.doc.tl",
+        "default": "推荐引擎案例拆解",
+        "field_id": "html.text.002",
+        "kind": "html_text",
+        "max_length": 12,
+        "span": {
+          "kind": "html_text",
+          "occurrence": 2,
+          "token_sha256": "sha256:32d058b39e4c1450dfb3420a88a0e0a57d9e65d436c90c20d5bc466ca839ae4f"
+        },
+        "type": "string"
+      },
+      {
+        "constraints": {
+          "pattern": "^\\d{1,3} / \\d{1,3} — BY .{1,40}$"
+        },
+        "context": "html:div.folio",
+        "default": "01 / 01 — BY WISE PPT",
+        "field_id": "html.text.003",
+        "kind": "html_text",
+        "max_length": 26,
+        "semantic_role": "folio",
+        "source_default": "I2 / 63 — BY @歪斯WISE",
+        "span": {
+          "kind": "html_text",
+          "occurrence": 3,
+          "token_sha256": "sha256:b4052d77797a7b294ec204a8a4fd659bdeb722bb3ca28d16d6e9b70dc5819b45"
+        },
+        "type": "string"
+      },
+      {
+        "context": "html:div.caption",
+        "default": "从用户兴趣到推荐清单，四个关键决策拆开讲清推荐引擎。",
+        "field_id": "html.text.004",
+        "kind": "html_text",
+        "max_length": 34,
+        "span": {
+          "kind": "html_text",
+          "occurrence": 4,
+          "token_sha256": "sha256:1ab495b59d7b1e5096d31821a803e0a31f1d64fd29b729479c5365097268f9be"
+        },
+        "type": "string"
+      },
+      {
+        "constraints": {
+          "pattern": "^(?!.*[\\u3400-\\u9fff]).+$"
+        },
+        "context": "inline-script[1]:call:txt[2]",
+        "default": "RECOMMENDATION ENGINE · CASE WALKTHROUGH",
+        "field_id": "script.literal.001",
+        "kind": "script_literal",
+        "max_length": 53,
+        "semantic_role": "mono-label",
+        "span": {
+          "kind": "script_literal",
+          "occurrence": 1,
+          "quote": "'",
+          "script_index": 1,
+          "sink": "call:txt[2]",
+          "token_sha256": "sha256:64d250216a230edee4560154a7210c7f6075da6b07c76edca510838c4ddedb59"
+        },
+        "type": "string"
+      },
+      {
+        "context": "inline-script[1]:call:txt[2]",
+        "default": "用户浏览 3 类内容",
+        "field_id": "script.literal.002",
+        "kind": "script_literal",
+        "max_length": 14,
+        "span": {
+          "kind": "script_literal",
+          "occurrence": 2,
+          "quote": "'",
+          "script_index": 1,
+          "sink": "call:txt[2]",
+          "token_sha256": "sha256:4aa634482803e278ba04011a0353134ec28735015c75240fc2d68b102b6743c2"
+        },
+        "type": "string"
+      },
+      {
+        "context": "inline-script[1]:call:txt[2]",
+        "default": "携带兴趣标签",
+        "field_id": "script.literal.003",
+        "kind": "script_literal",
+        "max_length": 10,
+        "span": {
+          "kind": "script_literal",
+          "occurrence": 3,
+          "quote": "'",
+          "script_index": 1,
+          "sink": "call:txt[2]",
+          "token_sha256": "sha256:010df5008d3ae94b0e7780c36ca373359bb799f8bdc840789969ea07e054cd89"
+        },
+        "type": "string"
+      },
+      {
+        "context": "inline-script[1]:call:txt[2]",
+        "default": "已知 · 输入",
+        "field_id": "script.literal.004",
+        "kind": "script_literal",
+        "max_length": 11,
+        "span": {
+          "kind": "script_literal",
+          "occurrence": 4,
+          "quote": "'",
+          "script_index": 1,
+          "sink": "call:txt[2]",
+          "token_sha256": "sha256:c11ff4eb4b8477a2cc2fa757bf0115d854a8e44f70451926ed06275ac34cb986"
+        },
+        "type": "string"
+      },
+      {
+        "context": "inline-script[1]:call:txt[2]",
+        "default": "推荐清单已生成",
+        "field_id": "script.literal.005",
+        "kind": "script_literal",
+        "max_length": 11,
+        "span": {
+          "kind": "script_literal",
+          "occurrence": 5,
+          "quote": "'",
+          "script_index": 1,
+          "sink": "call:txt[2]",
+          "token_sha256": "sha256:f17f6f48066fada3fe6431d601efc8c6fe07397381c96138b945f997b5e1aaba"
+        },
+        "type": "string"
+      },
+      {
+        "context": "inline-script[1]:call:txt[2]",
+        "default": "进入排序展示",
+        "field_id": "script.literal.006",
+        "kind": "script_literal",
+        "max_length": 10,
+        "span": {
+          "kind": "script_literal",
+          "occurrence": 6,
+          "quote": "'",
+          "script_index": 1,
+          "sink": "call:txt[2]",
+          "token_sha256": "sha256:71e509289197fa46ed78e07c73675f0db7b48075b5be76a194ade4ab20ebbdd6"
+        },
+        "type": "string"
+      },
+      {
+        "context": "inline-script[1]:call:txt[2]",
+        "default": "已知 · 输出",
+        "field_id": "script.literal.007",
+        "kind": "script_literal",
+        "max_length": 11,
+        "span": {
+          "kind": "script_literal",
+          "occurrence": 7,
+          "quote": "'",
+          "script_index": 1,
+          "sink": "call:txt[2]",
+          "token_sha256": "sha256:a79525971169fd7b5e65a5f3684071c245504ceb89ecfed356646ba47745daf1"
+        },
+        "type": "string"
+      },
+      {
+        "context": "inline-script[1]:call:txt[2]",
+        "default": "特征如何提取？",
+        "field_id": "script.literal.008",
+        "kind": "script_literal",
+        "max_length": 11,
+        "span": {
+          "kind": "script_literal",
+          "occurrence": 8,
+          "quote": "'",
+          "script_index": 1,
+          "sink": "call:txt[2]",
+          "token_sha256": "sha256:036dca0c92ca3534e039a1a90fd7d4c98425b1604172489e177b27ae1ef97bdd"
+        },
+        "type": "string"
+      },
+      {
+        "context": "inline-script[1]:call:txt[2]",
+        "default": "候选如何召回？",
+        "field_id": "script.literal.009",
+        "kind": "script_literal",
+        "max_length": 11,
+        "span": {
+          "kind": "script_literal",
+          "occurrence": 9,
+          "quote": "'",
+          "script_index": 1,
+          "sink": "call:txt[2]",
+          "token_sha256": "sha256:0ef3ffa4c0d5fe9ab15731d813ad3f3203e5a62f353b9041437abffd6e345a59"
+        },
+        "type": "string"
+      },
+      {
+        "context": "inline-script[1]:call:txt[2]",
+        "default": "排序如何打分？",
+        "field_id": "script.literal.010",
+        "kind": "script_literal",
+        "max_length": 11,
+        "span": {
+          "kind": "script_literal",
+          "occurrence": 10,
+          "quote": "'",
+          "script_index": 1,
+          "sink": "call:txt[2]",
+          "token_sha256": "sha256:d6314fa85114ae1a2188797cc376ed91cd648378535bfcec82d6d040ea873c9c"
+        },
+        "type": "string"
+      },
+      {
+        "context": "inline-script[1]:call:txt[2]",
+        "default": "反馈如何回流？",
+        "field_id": "script.literal.011",
+        "kind": "script_literal",
+        "max_length": 11,
+        "span": {
+          "kind": "script_literal",
+          "occurrence": 11,
+          "quote": "'",
+          "script_index": 1,
+          "sink": "call:txt[2]",
+          "token_sha256": "sha256:fc94320f867d50dc7d986382363480081c82298e2dd3fa74748b87c09bff6ed1"
+        },
+        "type": "string"
+      },
+      {
+        "constraints": {
+          "pattern": "^(?!.*[\\u3400-\\u9fff]).+$"
+        },
+        "context": "inline-script[1]:call:txt[2]",
+        "default": "STEP 0",
+        "field_id": "script.literal.012",
+        "kind": "script_literal",
+        "max_length": 10,
+        "semantic_role": "mono-label",
+        "span": {
+          "kind": "script_literal",
+          "occurrence": 12,
+          "quote": "'",
+          "script_index": 1,
+          "sink": "call:txt[2]",
+          "token_sha256": "sha256:57cf085a95a0217b5123d6b49ad9483ecdd4a9d0fb471c2b6ed4cced8aaab8fe"
+        },
+        "type": "string"
+      },
+      {
+        "constraints": {
+          "pattern": "^(?!.*[\\u3400-\\u9fff]).+$"
+        },
+        "context": "inline-script[1]:call:txt[2]",
+        "default": "CASE WALKTHROUGH · FOUR DECISIONS EXPLAINED",
+        "field_id": "script.literal.013",
+        "kind": "script_literal",
+        "max_length": 57,
+        "semantic_role": "mono-label",
+        "span": {
+          "kind": "script_literal",
+          "occurrence": 13,
+          "quote": "'",
+          "script_index": 1,
+          "sink": "call:txt[2]",
+          "token_sha256": "sha256:fcbc812db0e439ed9f9d4922fd65c20dbe7c689e287dc2448701cd143ade7e91"
+        },
+        "type": "string"
+      }
+    ],
+    "format": "wise-ppt-layout-payload@1",
+    "values_schema": {
+      "additionalProperties": false,
+      "minProperties": 1,
+      "properties": {
+        "html.text.001": {
+          "maxLength": 16,
+          "type": "string"
+        },
+        "html.text.002": {
+          "maxLength": 12,
+          "type": "string"
+        },
+        "html.text.003": {
+          "maxLength": 26,
+          "pattern": "^\\d{1,3} / \\d{1,3} — BY .{1,40}$",
+          "type": "string"
+        },
+        "html.text.004": {
+          "maxLength": 34,
+          "type": "string"
+        },
+        "script.literal.001": {
+          "maxLength": 53,
+          "pattern": "^(?!.*[\\u3400-\\u9fff]).+$",
+          "type": "string"
+        },
+        "script.literal.002": {
+          "maxLength": 14,
+          "type": "string"
+        },
+        "script.literal.003": {
+          "maxLength": 10,
+          "type": "string"
+        },
+        "script.literal.004": {
+          "maxLength": 11,
+          "type": "string"
+        },
+        "script.literal.005": {
+          "maxLength": 11,
+          "type": "string"
+        },
+        "script.literal.006": {
+          "maxLength": 10,
+          "type": "string"
+        },
+        "script.literal.007": {
+          "maxLength": 11,
+          "type": "string"
+        },
+        "script.literal.008": {
+          "maxLength": 11,
+          "type": "string"
+        },
+        "script.literal.009": {
+          "maxLength": 11,
+          "type": "string"
+        },
+        "script.literal.010": {
+          "maxLength": 11,
+          "type": "string"
+        },
+        "script.literal.011": {
+          "maxLength": 11,
+          "type": "string"
+        },
+        "script.literal.012": {
+          "maxLength": 10,
+          "pattern": "^(?!.*[\\u3400-\\u9fff]).+$",
+          "type": "string"
+        },
+        "script.literal.013": {
+          "maxLength": 57,
+          "pattern": "^(?!.*[\\u3400-\\u9fff]).+$",
+          "type": "string"
+        }
+      },
+      "type": "object"
+    }
+  },
+  "payload_defaults": {
+    "bindings": [
+      {
+        "asset_refs": [],
+        "content_refs": [
+          "item.canonical.visible-steps"
+        ],
+        "slot_id": "visible-steps"
+      },
+      {
+        "asset_refs": [],
+        "content_refs": [
+          "item.canonical.support"
+        ],
+        "slot_id": "support"
+      },
+      {
+        "asset_refs": [],
+        "content_refs": [
+          "item.canonical.takeaway"
+        ],
+        "slot_id": "takeaway"
+      }
+    ],
+    "values": {
+      "html.text.001": "产品 · 培训 — I2",
+      "html.text.002": "推荐引擎案例拆解",
+      "html.text.003": "01 / 01 — BY WISE PPT",
+      "html.text.004": "从用户兴趣到推荐清单，四个关键决策拆开讲清推荐引擎。",
+      "script.literal.001": "RECOMMENDATION ENGINE · CASE WALKTHROUGH",
+      "script.literal.002": "用户浏览 3 类内容",
+      "script.literal.003": "携带兴趣标签",
+      "script.literal.004": "已知 · 输入",
+      "script.literal.005": "推荐清单已生成",
+      "script.literal.006": "进入排序展示",
+      "script.literal.007": "已知 · 输出",
+      "script.literal.008": "特征如何提取？",
+      "script.literal.009": "候选如何召回？",
+      "script.literal.010": "排序如何打分？",
+      "script.literal.011": "反馈如何回流？",
+      "script.literal.012": "STEP 0",
+      "script.literal.013": "CASE WALKTHROUGH · FOUR DECISIONS EXPLAINED"
+    }
+  },
+  "payload_schema": {
+    "additionalProperties": false,
+    "properties": {
+      "bindings": {
+        "items": {
+          "additionalProperties": false,
+          "properties": {
+            "asset_refs": {
+              "items": {
+                "minLength": 1,
+                "type": "string"
+              },
+              "type": "array"
+            },
+            "content_refs": {
+              "items": {
+                "minLength": 1,
+                "type": "string"
+              },
+              "type": "array"
+            },
+            "slot_id": {
+              "enum": [
+                "visible-steps",
+                "support",
+                "takeaway"
+              ],
+              "type": "string"
+            }
+          },
+          "required": [
+            "slot_id",
+            "content_refs",
+            "asset_refs"
+          ],
+          "type": "object"
+        },
+        "maxItems": 3,
+        "minItems": 3,
+        "type": "array"
+      },
+      "values": {
+        "additionalProperties": false,
+        "minProperties": 1,
+        "properties": {
+          "html.text.001": {
+            "maxLength": 16,
+            "type": "string"
+          },
+          "html.text.002": {
+            "maxLength": 12,
+            "type": "string"
+          },
+          "html.text.003": {
+            "maxLength": 26,
+            "pattern": "^\\d{1,3} / \\d{1,3} — BY .{1,40}$",
+            "type": "string"
+          },
+          "html.text.004": {
+            "maxLength": 34,
+            "type": "string"
+          },
+          "script.literal.001": {
+            "maxLength": 53,
+            "pattern": "^(?!.*[\\u3400-\\u9fff]).+$",
+            "type": "string"
+          },
+          "script.literal.002": {
+            "maxLength": 14,
+            "type": "string"
+          },
+          "script.literal.003": {
+            "maxLength": 10,
+            "type": "string"
+          },
+          "script.literal.004": {
+            "maxLength": 11,
+            "type": "string"
+          },
+          "script.literal.005": {
+            "maxLength": 11,
+            "type": "string"
+          },
+          "script.literal.006": {
+            "maxLength": 10,
+            "type": "string"
+          },
+          "script.literal.007": {
+            "maxLength": 11,
+            "type": "string"
+          },
+          "script.literal.008": {
+            "maxLength": 11,
+            "type": "string"
+          },
+          "script.literal.009": {
+            "maxLength": 11,
+            "type": "string"
+          },
+          "script.literal.010": {
+            "maxLength": 11,
+            "type": "string"
+          },
+          "script.literal.011": {
+            "maxLength": 11,
+            "type": "string"
+          },
+          "script.literal.012": {
+            "maxLength": 10,
+            "pattern": "^(?!.*[\\u3400-\\u9fff]).+$",
+            "type": "string"
+          },
+          "script.literal.013": {
+            "maxLength": 57,
+            "pattern": "^(?!.*[\\u3400-\\u9fff]).+$",
+            "type": "string"
+          }
+        },
+        "type": "object"
+      }
+    },
+    "required": [
+      "bindings",
+      "values"
+    ],
+    "type": "object"
+  },
+  "recipe_fingerprint": "sha256:f51c5fdd3d084b16db08438b238d2221514614bc038ce30f758487400280bbca",
+  "recipe_id": "paper-ink.flow.known-unknown-chain",
+  "required_capabilities": [],
+  "slots": [
+    {
+      "allowed_component_sources": [
+        "native",
+        "ppt-component-atlas"
+      ],
+      "allowed_renderer_kinds": [
+        "native-html",
+        "svg"
+      ],
+      "compatible_component_ids": [],
+      "count_unit": "binding",
+      "default_component": {
+        "component_id": "native.paper-ink.flow.known-unknown-chain.visible-steps",
+        "component_source": "native",
+        "origin": {
+          "kind": "canonical-frame-island",
+          "path": "gallery/paper-ink/general/frames/layout-i2.html",
+          "selector": ".stage"
+        },
+        "renderer_kind": "svg"
+      },
+      "max_items": 7,
+      "min_items": 1,
+      "open_for_override": false,
+      "purpose": "可见步骤",
+      "required": true,
+      "slot_id": "visible-steps",
+      "space_contract": {
+        "aspect_ratio": 2.5667,
+        "canvas_height": 1080,
+        "canvas_width": 1920,
+        "height": 600,
+        "space_type": "wide",
+        "width": 1540
+      },
+      "visual_role": "primary"
+    },
+    {
+      "allowed_component_sources": [
+        "codex-host",
+        "native"
+      ],
+      "allowed_renderer_kinds": [
+        "typography",
+        "table",
+        "image",
+        "native-html",
+        "svg"
+      ],
+      "compatible_component_ids": [],
+      "count_unit": "binding",
+      "default_component": {
+        "component_id": "native.paper-ink.flow.known-unknown-chain.support",
+        "component_source": "native",
+        "origin": {
+          "kind": "canonical-frame-island",
+          "path": "gallery/paper-ink/general/frames/layout-i2.html",
+          "selector": ".doc.tl"
+        },
+        "renderer_kind": "typography"
+      },
+      "max_items": 1,
+      "min_items": 0,
+      "open_for_override": false,
+      "purpose": "辅助证据、标签或解释",
+      "required": false,
+      "slot_id": "support",
+      "visual_role": "support"
+    },
+    {
+      "allowed_component_sources": [
+        "native"
+      ],
+      "allowed_renderer_kinds": [
+        "typography"
+      ],
+      "compatible_component_ids": [],
+      "count_unit": "binding",
+      "default_component": {
+        "component_id": "native.paper-ink.flow.known-unknown-chain.takeaway",
+        "component_source": "native",
+        "origin": {
+          "kind": "canonical-frame-island",
+          "path": "gallery/paper-ink/general/frames/layout-i2.html",
+          "selector": ".caption"
+        },
+        "renderer_kind": "typography"
+      },
+      "max_items": 1,
+      "min_items": 0,
+      "open_for_override": false,
+      "purpose": "页面一句话结论",
+      "required": false,
+      "slot_id": "takeaway",
+      "visual_role": "support"
+    }
+  ],
+  "source": {
+    "path": "gallery/paper-ink/general/frames/layout-i2.html",
+    "sha256": "sha256:37c69cb5c616bde3ee3138f93fcbf651bd592e5c1366f3e14370add567b0d90f"
+  },
+  "status": "production",
+  "theme_id": "paper-ink",
+  "variant": "general"
+}

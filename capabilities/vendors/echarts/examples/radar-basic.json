@@ -1,0 +1,80 @@
+{
+  "example_id": "echarts.radar-basic",
+  "title": "基础雷达图",
+  "source_url": "https://echarts.apache.org/examples/zh/index.html#chart-type-radar",
+  "upstream_license": "Apache-2.0",
+  "chart_type": "radar",
+  "source_note": "改编自 Apache ECharts 官方示例 radar。雷达图的维度定义在 radar.indicator，series 通过 dataset + encode.value 取数。",
+  "dataset_shape": {
+    "dimensions": ["dimension", "budget", "actual"],
+    "source": [
+      { "dimension": "销售", "budget": 4300, "actual": 5000 },
+      { "dimension": "管理", "budget": 10000, "actual": 14000 },
+      { "dimension": "信息技术", "budget": 28000, "actual": 28000 },
+      { "dimension": "客服", "budget": 35000, "actual": 31000 },
+      { "dimension": "研发", "budget": 50000, "actual": 42000 },
+      { "dimension": "市场", "budget": 19000, "actual": 21000 }
+    ]
+  },
+  "render_plan_binding": {
+    "renderer_kind": "svg",
+    "component_source": "echarts",
+    "component_id": "echarts.radar-basic",
+    "theme_adapter_id": "paper-ink.echarts",
+    "data_binding": {
+      "data_ref": {
+        "content_id": "item.budget-vs-actual",
+        "json_pointer": "/structured_data/rows"
+      },
+      "dataset_id": "dataset.radar-basic",
+      "encode": { "dimension": "dimension", "value": ["budget", "actual"] }
+    }
+  },
+  "html_template": {
+    "container_attrs": "data-block-id=\"block.main\" data-renderer-kind=\"svg\" data-component-source=\"echarts\" data-component-id=\"echarts.radar-basic\" data-theme-adapter-id=\"paper-ink.echarts\" data-content-ref=\"item.budget-vs-actual\" data-dataset-id=\"dataset.radar-basic\"",
+    "dataset_script_id": "dataset.radar-basic"
+  },
+  "option": {
+    "dataset": {
+      "dimensions": ["dimension", "budget", "actual"],
+      "source": [
+        { "dimension": "销售", "budget": 4300, "actual": 5000 },
+        { "dimension": "管理", "budget": 10000, "actual": 14000 },
+        { "dimension": "信息技术", "budget": 28000, "actual": 28000 },
+        { "dimension": "客服", "budget": 35000, "actual": 31000 },
+        { "dimension": "研发", "budget": 50000, "actual": 42000 },
+        { "dimension": "市场", "budget": 19000, "actual": 21000 }
+      ]
+    },
+    "tooltip": { "trigger": "axis" },
+    "legend": { "data": ["预算", "实际"] },
+    "radar": {
+      "indicator": [
+        { "name": "销售", "max": 6500 },
+        { "name": "管理", "max": 16000 },
+        { "name": "信息技术", "max": 30000 },
+        { "name": "客服", "max": 38000 },
+        { "name": "研发", "max": 52000 },
+        { "name": "市场", "max": 25000 }
+      ]
+    },
+    "series": [
+      {
+        "name": "预算 vs 实际",
+        "type": "radar",
+        "data": [
+          {
+            "name": "预算",
+            "value": [4300, 10000, 28000, 35000, 50000, 19000]
+          },
+          {
+            "name": "实际",
+            "value": [5000, 14000, 28000, 31000, 42000, 21000]
+          }
+        ]
+      }
+    ]
+  },
+  "radar_dataset_caveat": "ECharts 雷达图需要 indicator 与多维 value 数组。本配方可直接渲染，但 dataset.source、radar.indicator、预算 value、实际 value 四处具有派生关系；替换业务数据时必须同步生成，不能只改其中一处。render_plan_binding.encode 保留 dimension/value 列名供合同校验。",
+  "notes": "雷达图的特殊性：维度需要在 radar.indicator 显式声明 name 和 max，series.data 的每个 value 数组顺序必须与 indicator 完全一致。"
+}

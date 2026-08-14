@@ -1,0 +1,133 @@
+<!-- GENERATED: Wise PPT formal canonical source; protected Gallery remains provenance-only. -->
+<!DOCTYPE html>
+<html lang="zh-CN" data-runtime="wise-ppt-specimen" data-typography-mode="mixed" data-page-id="gallery-ai-g4" data-page-role="explain" data-theme="paper-ink" data-layout="paper-ink.radial.hub-satellites" data-layout-source="gallery">
+<head>
+<meta charset="UTF-8">
+<title>layout-g4 · 中心枢纽 + 环绕卫星 · AI 平台中枢</title>
+<link rel="stylesheet" href="../../../../themes/paper-ink/assets/design-tokens.css">
+<link rel="stylesheet" href="../../../../themes/paper-ink/assets/slide-components.css">
+<link rel="stylesheet" href="../../../shell.css">
+<style>
+  svg.scene { position: absolute; inset: 0; z-index: 1; }
+  .caption {
+    position: absolute; left: 0; right: 0; bottom: 118px;
+    text-align: center;;;;;;
+    z-index: 5;
+  }
+</style>
+</head>
+<body class="slide">
+<div class="stage" data-block-id="gallery-primary" data-renderer-kind="svg" data-component-source="native" data-component-id="native.paper-ink.radial.hub-satellites.capabilities" data-content-ref="example.g4" data-anchor-id="stage">
+  <span data-geometry-anchor-holder="satellite-left" data-anchor-id="satellite-left" hidden aria-hidden="true"></span><span data-geometry-anchor-holder="satellite-right" data-anchor-id="satellite-right" hidden aria-hidden="true"></span><span data-geometry-anchor-holder="hub" data-anchor-id="hub" hidden aria-hidden="true"></span>
+  <div class="doc tl" data-anchor-id="slot-support">AI 平台 — 协同网络<br>能力中枢</div>
+  <div class="folio">01 / 01 — BY @歪斯WISE</div>
+
+  <svg class="scene" width="1920" height="1080" viewBox="0 0 1920 1080">
+    <g id="draw" data-anchor-id="slot-capabilities"></g>
+  </svg>
+
+  <div class="caption" data-anchor-id="slot-takeaway">统一 AI 平台连接模型、数据、工具与评测，使跨场景能力能够复用。</div>
+</div>
+
+<script src="../../../../runtime/stage-fit.js"></script>
+<script src="../../../../themes/paper-ink/assets/particles.js"></script>
+<script>
+var NS = 'http://www.w3.org/2000/svg';
+var INK = __wiseThemeToken("--ink");
+var INK80 = __wiseThemeToken("--ink-80");
+var INK70 = __wiseThemeToken("--ink-70");
+var INK45 = __wiseThemeToken("--ink-45");
+var G = document.getElementById('draw');
+function el(tag, attrs) {
+  var e = document.createElementNS(NS, tag);
+  for (var k in attrs) e.setAttribute(k, attrs[k]);
+  G.appendChild(e); return e;
+}
+function txt(x, y, str, attrs) {
+  var t = el('text', Object.assign({x:x, y:y}, attrs||{}));
+  t.textContent = str; return t;
+}
+var MONO = 'var(--mono)', SANS = 'var(--sans)';
+
+G = el('g', {transform:'translate(0 -33.7)'});
+var CX = 960, CY = 540, R = 320;
+var HUB_R = 134;        /* 中心墨核外圈 */
+var SAT_R = 62, SAT_RI = 54;  /* 卫星外/内圈：内圈容纳最长 mono 码 + 8px 内边距 */
+
+
+/* ---------- 构造基准：十字虚线（在墨核与水平卫星处断开，不穿文字） ---------- */
+el('line', {x1:CX-R+SAT_R, y1:CY, x2:CX-HUB_R, y2:CY, stroke:INK, 'stroke-width':.5, opacity:.16, 'stroke-dasharray':'2 6'});
+el('line', {x1:CX+HUB_R, y1:CY, x2:CX+R-SAT_R, y2:CY, stroke:INK, 'stroke-width':.5, opacity:.16, 'stroke-dasharray':'2 6'});
+el('line', {x1:CX, y1:200, x2:CX, y2:CY-HUB_R, stroke:INK, 'stroke-width':.5, opacity:.16, 'stroke-dasharray':'2 6'});
+el('line', {x1:CX, y1:CY+HUB_R, x2:CX, y2:880, stroke:INK, 'stroke-width':.5, opacity:.16, 'stroke-dasharray':'2 6'});
+
+/* ---------- 轨道虚线圆 ---------- */
+el('circle', {cx:CX, cy:CY, r:R, fill:'none', stroke:INK, 'stroke-width':.7, opacity:.4, 'stroke-dasharray':'4 7'});
+
+/* ---------- 中心空心墨核（双圈+实心核，与卫星同语言；墨字非反白） ---------- */
+el('circle', {cx:CX, cy:CY, r:HUB_R, fill:'none', stroke:INK, 'stroke-width':.6, opacity:.45});
+el('circle', {cx:CX, cy:CY, r:120, fill:'none', stroke:INK, 'stroke-width':1.6});
+txt(CX, CY-6, 'AI 平台中枢', {'font-family':SANS, 'font-weight':400, 'font-size':'var(--type-emphasis)', 'letter-spacing':4, 'text-anchor':'middle', fill:INK});
+txt(CX, CY+34, 'MAAS CORE', {'font-family':MONO, 'font-size':'var(--type-meta)', 'letter-spacing':4, 'text-anchor':'middle', fill:INK45});
+
+/* ---------- 六颗卫星：双圈节点 + mono 码 ---------- */
+/* 角度：左 150/180/210，右 30/0/330（顶底留空，呼吸） */
+var SAT = [
+  {a:150, code:'SERV'},
+  {a:180, code:'DATA'},
+  {a:210, code:'EVAL'},
+  {a:30,  code:'GATE'},
+  {a:0,   code:'METER'},
+  {a:330, code:'GOVN'}
+];
+SAT.forEach(function(s){
+  var rad = s.a * Math.PI / 180;
+  s.x = CX + R * Math.cos(rad);
+  s.y = CY - R * Math.sin(rad);
+  el('circle', {cx:s.x, cy:s.y, r:SAT_R, fill:__wiseThemeToken("--paper"), stroke:INK80, 'stroke-width':1.2});
+  el('circle', {cx:s.x, cy:s.y, r:SAT_RI, fill:'none', stroke:INK, 'stroke-width':.6, opacity:.35});
+  txt(s.x, s.y+4, s.code, {'font-family':MONO, 'font-size':'var(--type-micro-secondary)', 'letter-spacing':1.5, 'text-anchor':'middle', fill:INK});
+});
+
+/* ---------- 注释块 + 肘形引线 ---------- */
+/* 左列右对齐止于 x=520、右列左对齐起于 x=1400——与中心严格镜像（960±440） */
+function block(side, y, code, cn, d1, d2) {
+  var isL = side === 'L';
+  var x = isL ? 520 : 1400;
+  var rx = isL ? 534 : 1386;
+  var ta = isL ? 'end' : 'start';
+  el('line', {x1:rx, y1:y-58, x2:rx, y2:y+62, stroke:INK, 'stroke-width':.8, opacity:.5});
+  txt(x, y-45, code, {'font-family':MONO, 'font-size':'var(--type-meta)', 'letter-spacing':2, 'text-anchor':ta, fill:INK45});
+  txt(x, y-8, cn, {'font-family':SANS, 'font-weight':300, 'font-size':'var(--type-subheading)', 'text-anchor':ta, fill:INK});
+  txt(x, y+26, d1, {'font-family':SANS, 'font-weight':300, 'font-size':'var(--type-body-small)', 'text-anchor':ta, fill:INK70});
+  txt(x, y+52, d2, {'font-family':SANS, 'font-weight':300, 'font-size':'var(--type-body-small)', 'text-anchor':ta, fill:INK70});
+}
+function elbow(pts, endX, endY) {
+  var d = 'M ' + pts[0][0] + ' ' + pts[0][1];
+  for (var i = 1; i < pts.length; i++) d += ' L ' + pts[i][0] + ' ' + pts[i][1];
+  el('path', {d:d, fill:'none', stroke:INK, 'stroke-width':.7, opacity:.45, 'stroke-dasharray':'3 5'});
+  el('circle', {cx:endX, cy:endY, r:2.2, fill:INK, opacity:.6});
+}
+
+/* 左列：SERV(150°)→上，DATA(180°)→中，EVAL(210°)→下 */
+var L = SAT[0], M = SAT[1], B = SAT[2];
+elbow([[L.x-SAT_R, L.y],[570, L.y],[570, 300],[540, 300]], 540, 300);
+elbow([[M.x-SAT_R, M.y],[540, 540]], 540, 540);
+elbow([[B.x-SAT_R, B.y],[570, B.y],[570, 780],[540, 780]], 540, 780);
+block('L', 300, 'MOD 01 · SERV', '模型服务', '多模型统一接入与路由', '首字延迟 0.4 秒级');
+block('L', 540, 'MOD 02 · DATA', '数据管线', '语料采集清洗到训练就绪', '管线日处理亿级');
+block('L', 780, 'MOD 03 · EVAL',  '评测体系', '离线基准与线上 A/B 双轨', '评测集覆盖率 99%');
+
+/* 右列：GATE(30°)→上，METER(0°)→中，GOVN(330°)→下 */
+var RT = SAT[3], RM = SAT[4], RB = SAT[5];
+elbow([[RT.x+SAT_R, RT.y],[1350, RT.y],[1350, 300],[1380, 300]], 1380, 300);
+elbow([[RM.x+SAT_R, RM.y],[1380, 540]], 1380, 540);
+elbow([[RB.x+SAT_R, RB.y],[1350, RB.y],[1350, 780],[1380, 780]], 1380, 780);
+block('R', 300, 'MOD 04 · GATE', '部署网关', '灰度发布与流量调度', '切流 200ms 内');
+block('R', 540, 'MOD 05 · METER',  '监控告警', '延迟·成本·质量三维监控', '告警响应 3 秒内');
+block('R', 780, 'MOD 06 · GOVN',  '治理合规', '内容安全与隐私脱敏审计', '审计定位到调用级');
+
+stageFit();
+</script>
+</body>
+</html>

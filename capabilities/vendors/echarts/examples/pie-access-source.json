@@ -1,0 +1,60 @@
+{
+  "example_id": "echarts.pie-access-source",
+  "title": "某站点用户访问来源",
+  "source_url": "https://echarts.apache.org/examples/zh/index.html#chart-type-pie",
+  "upstream_license": "Apache-2.0",
+  "chart_type": "pie",
+  "source_note": "改编自 Apache ECharts 官方示例 pie-rose-type / doc-example/pie-simple。饼图无坐标系，用 series.encode.itemName + value 映射 dataset 列。",
+  "dataset_shape": {
+    "dimensions": ["source", "count"],
+    "source": [
+      { "source": "直接访问", "count": 335 },
+      { "source": "邮件营销", "count": 310 },
+      { "source": "联盟广告", "count": 234 },
+      { "source": "视频广告", "count": 135 },
+      { "source": "搜索引擎", "count": 1548 }
+    ]
+  },
+  "render_plan_binding": {
+    "renderer_kind": "svg",
+    "component_source": "echarts",
+    "component_id": "echarts.pie-access-source",
+    "theme_adapter_id": "paper-ink.echarts",
+    "data_binding": {
+      "data_ref": {
+        "content_id": "item.access-source",
+        "json_pointer": "/structured_data/rows"
+      },
+      "dataset_id": "dataset.pie-access-source",
+      "encode": { "itemName": "source", "value": "count" }
+    }
+  },
+  "html_template": {
+    "container_attrs": "data-block-id=\"block.main\" data-renderer-kind=\"svg\" data-component-source=\"echarts\" data-component-id=\"echarts.pie-access-source\" data-theme-adapter-id=\"paper-ink.echarts\" data-content-ref=\"item.access-source\" data-dataset-id=\"dataset.pie-access-source\"",
+    "dataset_script_id": "dataset.pie-access-source"
+  },
+  "option": {
+    "dataset": {
+      "dimensions": ["source", "count"],
+      "source": [
+        { "source": "直接访问", "count": 335 },
+        { "source": "邮件营销", "count": 310 },
+        { "source": "联盟广告", "count": 234 },
+        { "source": "视频广告", "count": 135 },
+        { "source": "搜索引擎", "count": 1548 }
+      ]
+    },
+    "tooltip": { "trigger": "item" },
+    "legend": { "orient": "vertical", "left": "left" },
+    "series": [
+      {
+        "name": "访问来源",
+        "type": "pie",
+        "encode": { "itemName": "source", "value": "count" },
+        "radius": "60%",
+        "label": { "formatter": "{b}: {d}%" }
+      }
+    ]
+  },
+  "notes": "饼图没有 xAxis/yAxis，dataset 通过 series.encode.itemName（类目）和 value（数值）映射。encode 的 key 与折线/柱状的 x/y 不同。"
+}
