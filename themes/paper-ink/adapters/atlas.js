@@ -265,8 +265,34 @@
       gap: 12px !important;
       padding: 16px !important;
     }
+    .swiss-card .form-card-title {
+      font-size: var(--type-subheading) !important;
+      line-height: 1.25 !important;
+    }
+    .swiss-card .form-card-meta,
+    .swiss-card .form-field-label,
+    .swiss-card .form-card-action {
+      font-size: var(--type-meta) !important;
+    }
+    .swiss-card .form-card-prompt {
+      font-size: var(--type-label) !important;
+      line-height: 1.5 !important;
+    }
     .swiss-card .form-card-fields {
+      grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
       gap: 8px 12px !important;
+    }
+    .swiss-card .form-field {
+      min-height: 72px !important;
+      padding: 12px !important;
+    }
+    .swiss-card .form-field--wide {
+      grid-column: 1 / -1 !important;
+      min-height: 64px !important;
+    }
+    .swiss-card .form-field-value {
+      font-size: var(--type-micro-secondary) !important;
+      line-height: 1.45 !important;
     }
 
     /* --- 055 平台架构：四列资源卡需要真实横向槽位，避免 13px 标签越出小格 --- */
@@ -580,17 +606,29 @@
       background: var(--wp-compat-atlas-ink-55);
       pointer-events: none;
     }
+    .swiss-card .mind-map:not([data-type="vertical"]) {
+      --mind-map-root-gap: 52px;
+      --mind-map-branch-gap: 32px;
+      --mind-map-node-gap: 20px;
+    }
+    .swiss-card .mind-map:not([data-type="vertical"]) .branches {
+      gap: var(--mind-map-branch-gap) !important;
+      margin-top: var(--mind-map-root-gap) !important;
+    }
+    .swiss-card .mind-map:not([data-type="vertical"]) .node {
+      margin-top: var(--mind-map-node-gap) !important;
+    }
     .swiss-card .mind-map:not([data-type="vertical"]) .root-node::after {
       top: 100%;
       left: 50%;
       width: .6px;
-      height: 50px;
+      height: var(--mind-map-root-gap);
       transform: translateX(-50%);
     }
     .swiss-card .mind-map:not([data-type="vertical"]) .branches::before {
       top: 0;
-      left: 12.5%;
-      right: 12.5%;
+      left: calc((100% - (3 * var(--mind-map-branch-gap))) / 8);
+      right: calc((100% - (3 * var(--mind-map-branch-gap))) / 8);
       height: .6px;
     }
     .swiss-card .mind-map:not([data-type="vertical"]) .branch {
@@ -601,7 +639,7 @@
       top: 0;
       left: 50%;
       width: .6px;
-      height: 18px;
+      height: var(--mind-map-node-gap);
       transform: translateX(-50%);
     }
     .swiss-card .mind-map[data-type="vertical"] {

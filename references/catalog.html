@@ -200,7 +200,7 @@
 </main>
 
 <main id="m-cmp">
-  <div class="note"><b>组件 = 参数化画法。</b>内容数量是参数不是组件类型;画法不同才是不同组件。atlas + native + ECharts 按与版式相同的 SmartArt 语义入口分组;每个组件只放入最主要的表达类型,避免一件多处重复。“数据”是 Wise PPT 对 SmartArt 的扩展,不是新的关系族。</div>
+  <div class="note"><b>组件 = 参数化画法。</b>内容数量是参数不是组件类型;画法不同才是不同组件。atlas + native + ECharts 按与版式相同的 SmartArt 语义入口分组;每个组件只放入最主要的表达类型,避免一件多处重复。卡片按当前目录顺序统一使用 catalog #001–#071 连续编号,源组件编号只用于内部路由。“数据”是 Wise PPT 对 SmartArt 的扩展,不是新的关系族。</div>
   <div id="extract-groups"></div>
   <div id="cmp-groups"></div>
 </main>
@@ -274,7 +274,7 @@ const SMARTART_COMPONENTS=[
     {t:'native',num:93,en:'infra-strip',nm:'基础设施横带',rel:['陈列']},
   ]},
   {fam:'② 流程 · Process',items:[
-    {t:'atlas',num:25,en:'process',nm:'流程链',note:'合并 #025-033;步数 2~7',rel:['时序','流动'],vr:[['atlas:25','默认·3步'],['atlas:26','默认·4步'],['atlas:27','标注'],['atlas:28','默认·5步'],['atlas:29','换行'],['atlas:30','箭头·3步'],['atlas:31','箭头·4步'],['atlas:32','标注箭头'],['atlas:33','箭头·5步']]},
+    {t:'atlas',num:25,en:'process',nm:'流程链',note:'合并 9 个源变体;步数 2~7',rel:['时序','流动'],vr:[['atlas:25','默认·3步'],['atlas:26','默认·4步'],['atlas:27','标注'],['atlas:28','默认·5步'],['atlas:29','换行'],['atlas:30','箭头·3步'],['atlas:31','箭头·4步'],['atlas:32','标注箭头'],['atlas:33','箭头·5步']]},
     {t:'atlas',num:38,en:'journey',nm:'旅程图',rel:['时序']},
     {t:'new',mk:7,en:'journey-curve',nm:'旅程曲线',note:'源 J3 · 原版抄录',rel:['时序']},
     {t:'new',mk:8,en:'timeline-axis',nm:'时间轴',note:'源 B1 · 横/竖',rel:['时序'],vr:[['new:8','横排·源 B1'],['new:10','竖排']]},
@@ -292,18 +292,18 @@ const SMARTART_COMPONENTS=[
     {t:'ec',id:'echarts.sankey-basic',en:'sankey',nm:'桑基图',rel:['流动']},
   ]},
   {fam:'③ 循环 · Cycle',items:[
-    {t:'atlas',num:34,en:'process-loop',nm:'循环流程',note:'合并 #034-037;节点 3~6',pageScale:.8,rel:['循环'],vr:[['atlas:34','三角'],['atlas:35','四边'],['atlas:36','五边'],['atlas:37','闭环']]},
+    {t:'atlas',num:34,en:'process-loop',nm:'循环流程',note:'合并 4 个源变体;节点 3~6',pageScale:.8,rel:['循环'],vr:[['atlas:34','三角'],['atlas:35','四边'],['atlas:36','五边'],['atlas:37','闭环']]},
     {t:'new',mk:6,en:'cycle-ring',nm:'环形循环',note:'源 J1 · 原版抄录',rel:['循环']},
     {t:'new',mk:5,en:'serpentine-loop',nm:'蛇形回环',note:'源 J2 · 原版抄录',rel:['循环']},
   ]},
   {fam:'④ 层级 · Hierarchy',items:[
     {t:'atlas',num:54,en:'architecture',nm:'架构图',pageScale:.9,rel:['层级']},
-    {t:'atlas',num:55,en:'arch-platform',nm:'平台架构图',note:'合并 #055-056',pageScale:.9,rel:['层级'],vr:[['atlas:55','标准'],['atlas:56','复杂垂直']]},
+    {t:'atlas',num:55,en:'arch-platform',nm:'平台架构图',note:'合并 2 个源变体',pageScale:.9,rel:['层级'],vr:[['atlas:55','标准'],['atlas:56','复杂垂直']]},
     {t:'atlas',num:57,en:'mind-map',nm:'思维导图',note:'开关 horizontal / vertical',rel:['拆解'],vr:[['atlas:57','水平'],['atlas:58','垂直']]},
     {t:'ec',id:'echarts.tree-lr',en:'tree',nm:'树图',rel:['层级']},
   ]},
   {fam:'⑤ 关系 · Relationship',items:[
-    {t:'atlas',num:43,en:'concentric',nm:'同心圆',note:'合并 #043-044/#046-047',pageScale:.9,rel:['层级','嵌套'],vr:[['atlas:43','默认'],['atlas:44','居中'],['atlas:46','顶部对齐'],['atlas:47','底部对齐']]},
+    {t:'atlas',num:43,en:'concentric',nm:'同心圆',note:'合并 4 个源变体',pageScale:.9,rel:['层级','嵌套'],vr:[['atlas:43','默认'],['atlas:44','居中'],['atlas:46','顶部对齐'],['atlas:47','底部对齐']]},
     {t:'new',mk:9,en:'concentric-ring',nm:'同心环',note:'源 H1 · 原版抄录',rel:['嵌套']},
     {t:'atlas',num:52,en:'venn',nm:'韦恩图',note:'圆数 2~3',pageScale:.8,rel:['关联(集合)'],vr:[['atlas:52','双圆'],['atlas:53','三圆']]},
     {t:'new',mk:2,en:'three-way-radial',nm:'三向放射图',note:'源 G1 · 原版抄录',rel:['拆解']},
@@ -323,7 +323,7 @@ const SMARTART_COMPONENTS=[
     {t:'atlas',num:23,en:'matrix',nm:'矩阵',pageScale:.8,rel:['矩阵']},
   ]},
   {fam:'⑦ 金字塔 · Pyramid',items:[
-    {t:'atlas',num:48,en:'pyramid',nm:'金字塔',note:'合并 #048-049;开关 inverted',rel:['层级'],vr:[['atlas:48','正立'],['atlas:49','倒置']]},
+    {t:'atlas',num:48,en:'pyramid',nm:'金字塔',note:'合并 2 个源变体;开关 inverted',rel:['层级'],vr:[['atlas:48','正立'],['atlas:49','倒置']]},
     {t:'atlas',num:51,en:'iceberg',nm:'冰山图',rel:['拆解']},
     {t:'native',num:87,en:'funnel',nm:'转化漏斗',rel:['漏斗']},
   ]},
@@ -370,12 +370,30 @@ function assertCatalogClassification(groups,keyOf,expected,label){
   return count;
 }
 const SMARTART_LAYOUT_COUNT=assertCatalogClassification(SMARTART_TYPES,item=>item[0],54,'版式');
+const CATALOG_COMPONENTS=SMARTART_COMPONENTS.flatMap(group=>group.items);
+CATALOG_COMPONENTS.forEach((item,index)=>{item.catalogNo=index+1;});
 const SMARTART_COMPONENT_COUNT=assertCatalogClassification(
   SMARTART_COMPONENTS,
   item=>item.t==='ec'?'ec:'+item.id:(item.t==='new'?'new:'+item.mk:item.t+':'+item.num),
   71,
   '组件',
 );
+function componentCatalogCode(item){
+  return 'catalog #'+String(item.catalogNo).padStart(3,'0');
+}
+function componentSourceType(item){
+  if(item.t==='ec')return 'ECharts';
+  if(item.t==='new')return '版式抄录';
+  return item.t;
+}
+function assertContinuousComponentCatalogNumbers(){
+  const numbers=CATALOG_COMPONENTS.map(item=>item.catalogNo);
+  const expected=Array.from({length:SMARTART_COMPONENT_COUNT},(_,index)=>index+1);
+  if(numbers.some((number,index)=>number!==expected[index])||new Set(numbers).size!==numbers.length){
+    throw new Error('组件 catalog 编号不连续:'+numbers.join(','));
+  }
+}
+assertContinuousComponentCatalogNumbers();
 
 /* ============ 版式抽取组件(图形本体逐元素抄录自原版 frames:执行原版 scene 绘制 JS 后序列化,坐标/线宽/字号与原版一致) ============ */
 const NEW_MARKUP=[
@@ -1876,12 +1894,13 @@ function layoutCard([id,nm,struct,rel]){
 function compCard(c,extra=''){
   const spec=componentSpec(c);
   const thumb=componentThumb(spec);
-  const tag=c.t==='ec'?'ECharts':(c.t==='new'?'版式抄录':c.t+' #'+String(c.num).padStart(3,'0'));
-  return `<div class="comp-card" data-modal="1" data-spec="${spec}" data-thumb="${thumb}"${c.vr?` data-vr='${JSON.stringify(c.vr)}'`:''} data-mtitle="${c.en} ${c.nm}" data-mtag="${tag}${c.note?' · '+c.note:''}${c.vr?' · 变体×'+c.vr.length:''}">
-    ${thumbMarkup(thumb,c.en+' '+c.nm,'comp-wrap')}
+  const code=componentCatalogCode(c);
+  const sourceType=componentSourceType(c);
+  return `<div class="comp-card" id="cmp-${String(c.catalogNo).padStart(3,'0')}" data-modal="1" data-catalog-no="${String(c.catalogNo).padStart(3,'0')}" data-spec="${spec}" data-thumb="${thumb}"${c.vr?` data-vr='${JSON.stringify(c.vr)}'`:''} data-mtitle="${code} · ${c.en} ${c.nm}" data-mtag="${sourceType}${c.note?' · '+c.note:''}${c.vr?' · 变体×'+c.vr.length:''}">
+    ${thumbMarkup(thumb,code+' '+c.en+' '+c.nm,'comp-wrap')}
     <div class="comp-info">
       <span class="en">${c.en}</span> <span class="nm">${c.nm}</span>
-      <div class="param">${tag}${c.note?' · '+c.note:''}</div>
+      <div class="param">${code} · ${sourceType}${c.note?' · '+c.note:''}</div>
       <div>${(c.rel||[]).map(r=>`<span class="rel">${r}</span>`).join('')}${extra}</div>
     </div></div>`;
 }
