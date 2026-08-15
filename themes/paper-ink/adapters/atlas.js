@@ -23,6 +23,27 @@
   const DATA_RE = /(?:chart|series|bar\b|heat|map\b|wedge|slice|segment|radar|data-|tone-[a-f]\b)/i;
   const TEXT_RE = /(?:\btext\b|\btspan\b|label|title|caption|axis|legend|value|year)/i;
 
+  // Atlas upstream owns a 600px specimen canvas and brings its own 5.5–200px
+  // type scale. Once the specimen is enlarged into a real PPT slot those values
+  // no longer form a coherent hierarchy. Snap them to the paper-ink type roles
+  // here, while keeping the nearest source size so component hierarchy survives.
+  const TYPE_ROLES = Object.freeze([
+    ['meta', 13],
+    ['label', 15],
+    ['micro-secondary', 16],
+    ['body-small', 18],
+    ['body', 22],
+    ['subheading', 26],
+    ['emphasis', 36],
+    ['heading', 40],
+    ['metric', 52],
+    ['title', 60],
+    ['hero', 76],
+    ['display', 96],
+    ['particle-sample', 240],
+    ['display-mark', 300]
+  ]);
+
   // Real token values are owned by the theme stylesheet. The adapter emits only
   // theme-owned compatibility tokens (plus public font tokens), preserving the
   // established Atlas neutral ramp across Gallery, Runtime and Node exporters.
@@ -37,9 +58,13 @@
       border-radius: 0 !important;
       box-shadow: none !important;
       font-family: var(--wp-font-sans) !important;
+      font-weight: 300 !important;
     }
     .swiss-card--cover { background: var(--wp-compat-atlas-paper-deep) !important; }
     .swiss-card--body { background: var(--wp-compat-atlas-paper) !important; }
+    .swiss-card .swiss-card__content:not([style]) {
+      padding: 48px !important;
+    }
     .swiss-card *, .swiss-card *::before, .swiss-card *::after {
       box-shadow: none !important;
       text-shadow: none !important;
@@ -57,6 +82,7 @@
     .swiss-card [class*="number"], .swiss-card [class*="metric"],
     .swiss-card [class*="value"] {
       font-family: var(--wp-font-mono) !important;
+      font-weight: 400 !important;
     }
     .swiss-card pre, .swiss-card .code-block, .swiss-card .code-header {
       background: var(--wp-compat-atlas-paper-deep) !important;
@@ -77,6 +103,38 @@
     .swiss-card [class*="card"], .swiss-card [class*="panel"] {
       border-radius: 0 !important;
     }
+    .swiss-card th {
+      font-size: var(--type-label) !important;
+      font-weight: 400 !important;
+      color: var(--wp-compat-atlas-ink) !important;
+    }
+    .swiss-card td {
+      font-size: var(--type-label) !important;
+      font-weight: 300 !important;
+      color: var(--wp-compat-atlas-ink-70) !important;
+    }
+    .swiss-card strong,
+    .swiss-card h1, .swiss-card h2, .swiss-card h3,
+    .swiss-card h4, .swiss-card h5, .swiss-card h6 {
+      font-weight: 400 !important;
+    }
+
+    /* Atlas 原始终端使用 Emoji 灯泡；纸墨主题改为本地可控的信息符号。 */
+    .swiss-card .terminal-box .term-header::before {
+      content: 'i' !important;
+      width: 16px !important;
+      height: 16px !important;
+      box-sizing: border-box !important;
+      display: inline-grid !important;
+      place-items: center !important;
+      flex: 0 0 16px !important;
+      border: .6px solid var(--wp-compat-atlas-ink-55) !important;
+      border-radius: 50% !important;
+      color: var(--wp-compat-atlas-ink-70) !important;
+      font-family: var(--wp-font-mono) !important;
+      font-size: 11px !important;
+      line-height: 1 !important;
+    }
 
     /* ===== 专项组件覆盖 ===== */
     /* 修正三类通用启发式误判：深底白字（dark-on-dark）、容器误命中数据阶梯、
@@ -84,16 +142,16 @@
 
     /* --- 004 工作流列表：11px 轻字在详情 contain-fit 下发虚，提升到可读正文档 --- */
     .swiss-card .list-card--workflow .workflow-kicker {
-      font-size: 12px !important;
+      font-size: var(--type-meta) !important;
       line-height: 1.2 !important;
       color: var(--wp-compat-atlas-ink-55) !important;
     }
     .swiss-card .list-card--workflow .workflow-item-title {
-      font-size: 16px !important;
+      font-size: var(--type-micro-secondary) !important;
       line-height: 1.4 !important;
     }
     .swiss-card .list-card--workflow .workflow-item-copy {
-      font-size: 13px !important;
+      font-size: var(--type-meta) !important;
       line-height: 1.65 !important;
       color: var(--wp-compat-atlas-ink-70) !important;
     }
@@ -129,22 +187,154 @@
       margin-inline: auto !important;
     }
 
-    /* --- 014 代码块：终端容器保留单一圆角矩形身份，内部仍无装饰性圆角 --- */
+    /* --- 012 提示框：保留框内留白，只收紧三条提示之间的纵向节奏 --- */
+    .swiss-card .alert-box {
+      margin: 8px 0 !important;
+    }
+
+    /* --- 014 代码块：保留细线纸墨外框，恢复完整的 macOS 窗口圆角 --- */
     .swiss-card .code-block {
       overflow: hidden !important;
       border: 1px solid var(--wp-compat-atlas-ink-25) !important;
-      border-radius: 10px !important;
+      border-radius: 12px !important;
     }
     .swiss-card .code-header {
-      border-radius: 9px 9px 0 0 !important;
+      border-radius: 12px 12px 0 0 !important;
     }
     .swiss-card .code-block pre {
-      border-radius: 0 0 9px 9px !important;
+      border-radius: 0 0 12px 12px !important;
+    }
+    .swiss-card .code-block .code-dot {
+      width: 14px !important;
+      height: 14px !important;
+      position: relative !important;
+      display: block !important;
+      background: transparent !important;
+      border: 1px solid var(--wp-compat-atlas-ink-55) !important;
+      border-radius: 50% !important;
+    }
+    .swiss-card .code-block .code-dot::before,
+    .swiss-card .code-block .code-dot::after {
+      content: '';
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      background: var(--wp-compat-atlas-ink-70);
+    }
+    .swiss-card .code-block .code-dot.red::before,
+    .swiss-card .code-block .code-dot.red::after {
+      width: 7px;
+      height: 1px;
+    }
+    .swiss-card .code-block .code-dot.red::before {
+      transform: translate(-50%, -50%) rotate(45deg);
+    }
+    .swiss-card .code-block .code-dot.red::after {
+      transform: translate(-50%, -50%) rotate(-45deg);
+    }
+    .swiss-card .code-block .code-dot.yellow::before {
+      width: 7px;
+      height: 1px;
+      transform: translate(-50%, -50%);
+    }
+    .swiss-card .code-block .code-dot.yellow::after,
+    .swiss-card .code-block .code-dot.green::after {
+      display: none;
+    }
+    .swiss-card .code-block .code-dot.green::before {
+      width: 5px;
+      height: 5px;
+      box-sizing: border-box;
+      background: transparent;
+      border: 1px solid var(--wp-compat-atlas-ink-70);
+      transform: translate(-50%, -50%);
+    }
+
+    /* --- 006 表单：由竖向方卡改成 PPT 内的横向规格单，字段关系与顺序不变 --- */
+    .swiss-card:has(.form-card) {
+      width: 840px !important;
+      min-height: 0 !important;
+    }
+    .swiss-card:has(.form-card) .swiss-card__content {
+      min-height: 0 !important;
+      padding: 32px !important;
+    }
+    .swiss-card .form-card {
+      min-height: 0 !important;
+      gap: 12px !important;
+      padding: 16px !important;
+    }
+    .swiss-card .form-card-fields {
+      gap: 8px 12px !important;
+    }
+
+    /* --- 055 平台架构：四列资源卡需要真实横向槽位，避免 13px 标签越出小格 --- */
+    .swiss-card:has(.arch-platform .ap-grid) {
+      width: 840px !important;
+      min-height: 0 !important;
+    }
+    .swiss-card:has(.arch-platform .ap-grid) .swiss-card__content {
+      min-height: 0 !important;
+      padding: 32px !important;
+    }
+    .swiss-card:has(.arch-platform .ap-grid) .arch-platform {
+      width: 776px !important;
+      margin-inline: auto !important;
+    }
+
+    /* --- 056 复杂垂直架构：去 480px 方卡挤压，放宽后再压缩纵向密度 --- */
+    .swiss-card:has(.arch-complex-v) {
+      width: 840px !important;
+      min-height: 0 !important;
+    }
+    .swiss-card:has(.arch-complex-v) .swiss-card__content {
+      min-height: 0 !important;
+      padding: 32px !important;
+    }
+    .swiss-card .arch-complex-v {
+      width: 776px !important;
+      margin: 0 auto !important;
+    }
+    .swiss-card .arch-complex-v .av-row {
+      grid-template-columns: 52px minmax(0, 1fr) !important;
+      min-height: 60px !important;
+      border-bottom-width: .6px !important;
+    }
+    .swiss-card .arch-complex-v .av-content {
+      padding: 8px !important;
+    }
+    .swiss-card .arch-complex-v .av-label {
+      padding: 4px 0 !important;
+      font-size: var(--type-meta) !important;
+      font-weight: 400 !important;
+    }
+    .swiss-card .arch-complex-v .av-chip {
+      min-height: 32px !important;
+      padding: 4px !important;
+      font-size: var(--type-meta) !important;
+      font-weight: 300 !important;
+    }
+    .swiss-card .arch-complex-v .av-card-title {
+      min-height: 28px !important;
+      padding: 4px !important;
+      font-size: var(--type-label) !important;
+      font-weight: 400 !important;
+    }
+    .swiss-card .arch-complex-v .av-items {
+      padding: 4px !important;
+      gap: 4px !important;
+    }
+    .swiss-card .arch-complex-v .av-item {
+      min-height: 20px !important;
+      padding: 4px !important;
+      font-size: var(--type-meta) !important;
+      line-height: 1.2 !important;
+      font-weight: 300 !important;
     }
 
     /* --- 020 SWOT：不用彩色象限，靠大首字、细规则与字阶建立四块辨识度 --- */
     .swiss-card .swot {
-      gap: 14px !important;
+      gap: 16px !important;
     }
     .swiss-card .swot .cell {
       background: var(--wp-compat-atlas-paper-panel) !important;
@@ -152,20 +342,20 @@
     }
     .swiss-card .swot .cell::before {
       color: var(--wp-compat-atlas-ink) !important;
-      font-size: 60px !important;
+      font-size: var(--type-title) !important;
       opacity: .28 !important;
     }
     .swiss-card .swot .cell h4 {
       padding-bottom: 8px !important;
       border-bottom: .6px solid var(--wp-compat-atlas-ink-25) !important;
       color: var(--wp-compat-atlas-ink) !important;
-      font-size: 16px !important;
+      font-size: var(--type-micro-secondary) !important;
     }
 
     /* --- 021 象限：恢复清楚坐标骨架，中心为唯一功能焦点，四区用线面分层 --- */
     .swiss-card .quadrant-axis {
-      gap: 14px 16px !important;
-      padding: 38px 34px !important;
+      gap: 16px !important;
+      padding: 40px 32px !important;
     }
     .swiss-card .quadrant-axis::before,
     .swiss-card .quadrant-axis::after {
@@ -178,9 +368,9 @@
     .swiss-card .quadrant-axis .axis-center {
       width: 52px !important;
       height: 52px !important;
-      background: var(--wp-compat-atlas-ink-80) !important;
-      color: var(--wp-compat-atlas-paper) !important;
-      border: 1px solid var(--wp-compat-atlas-ink) !important;
+      background: var(--wp-compat-atlas-paper) !important;
+      color: var(--wp-compat-atlas-ink) !important;
+      border: .6px solid var(--wp-compat-atlas-ink-55) !important;
     }
     .swiss-card .quadrant-axis .quadrant {
       background: var(--wp-compat-atlas-paper-panel) !important;
@@ -196,6 +386,16 @@
       color: var(--wp-compat-atlas-ink-70) !important;
     }
 
+    /* --- 023 矩阵：两列轨道锁为零最小宽，四格不再受长文案撑列 --- */
+    .swiss-card .matrix-grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+    }
+    .swiss-card .matrix-grid .cell {
+      box-sizing: border-box !important;
+      width: 100% !important;
+      min-width: 0 !important;
+    }
+
     /* --- 038 旅程图：整体等比收窄，保留路径、节点和标签的相对几何 --- */
     .swiss-card .journey {
       width: 72% !important;
@@ -208,12 +408,17 @@
       margin-inline: auto !important;
     }
 
-    /* --- 043–047 同心圆、052/053 韦恩图：集合轮廓统一为 0.4px 发丝线 --- */
-    .swiss-card .concentric .layer,
-    .swiss-card .venn .v-circle,
-    .swiss-card .venn-three .circle {
+    /* --- 043–047 同心圆：集合轮廓统一为 0.4px 发丝线 --- */
+    .swiss-card .concentric .layer {
       border-width: .4px !important;
       border-color: var(--wp-compat-atlas-ink-55) !important;
+    }
+
+    /* --- 052–053 韦恩图：避免小数 border 被量化回 1px，改用浅色圆形内描边 --- */
+    .swiss-card .venn .v-circle,
+    .swiss-card .venn-three .circle {
+      border: 0 !important;
+      box-shadow: inset 0 0 0 .5px var(--wp-compat-atlas-ink-25) !important;
     }
 
     /* --- 流程-换行变体：纸面步骤块 + 墨线直角边框 --- */
@@ -242,10 +447,10 @@
       background: var(--wp-compat-atlas-data-3) !important; color: var(--wp-compat-atlas-ink) !important;
     }
     .swiss-card .process-chain[data-type="arrow"] .step:nth-child(5) {
-      background: var(--wp-compat-atlas-data-4) !important; color: var(--wp-compat-atlas-paper) !important;
+      background: var(--wp-compat-atlas-data-4) !important; color: var(--wp-compat-atlas-ink) !important;
     }
     .swiss-card .process-chain[data-type="arrow"] .step:nth-child(7) {
-      background: var(--wp-compat-atlas-data-5) !important; color: var(--wp-compat-atlas-paper) !important;
+      background: var(--wp-compat-atlas-data-5) !important; color: var(--wp-compat-atlas-ink) !important;
     }
     .swiss-card .process-chain[data-type="arrow"] .step:nth-child(9) {
       background: var(--wp-compat-atlas-data-6) !important; color: var(--wp-compat-atlas-paper) !important;
@@ -259,10 +464,10 @@
       background: var(--wp-compat-atlas-data-3) !important; color: var(--wp-compat-atlas-ink) !important;
     }
     .swiss-card .process-annotated-grid--arrow .step-node.tone-3 {
-      background: var(--wp-compat-atlas-data-4) !important; color: var(--wp-compat-atlas-paper) !important;
+      background: var(--wp-compat-atlas-data-4) !important; color: var(--wp-compat-atlas-ink) !important;
     }
     .swiss-card .process-annotated-grid--arrow .step-node.tone-4 {
-      background: var(--wp-compat-atlas-data-5) !important; color: var(--wp-compat-atlas-paper) !important;
+      background: var(--wp-compat-atlas-data-5) !important; color: var(--wp-compat-atlas-ink) !important;
     }
     .swiss-card .process-chain .arrow,
     .swiss-card .process-annotated-grid .step-link {
@@ -272,11 +477,21 @@
     /* --- 循环流程 / 闭环流程：纸面圆点 + 墨环，虚线连接环比节点框深一档 --- */
     .swiss-card .process-loop .loop-item {
       background: var(--wp-compat-atlas-paper) !important;
-      border: 1px solid var(--wp-compat-atlas-ink-80) !important;
+      border: 0 !important;
+      box-shadow: inset 0 0 0 0.4px var(--wp-compat-atlas-ink-80) !important;
       color: var(--wp-compat-atlas-ink) !important;
     }
     .swiss-card .process-loop::before {
-      border: 0.6px dashed var(--wp-compat-atlas-ink-45) !important;
+      border: 0 !important;
+      background: var(--wp-compat-atlas-ink-45) !important;
+      -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='50' r='49.5' fill='none' stroke='white' stroke-width='.28' stroke-dasharray='2.4 2.8'/%3E%3C/svg%3E") center / 100% 100% no-repeat;
+      mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='50' r='49.5' fill='none' stroke='white' stroke-width='.28' stroke-dasharray='2.4 2.8'/%3E%3C/svg%3E") center / 100% 100% no-repeat;
+    }
+    .swiss-card .process-loop .loop-closed-track {
+      stroke: var(--wp-compat-atlas-ink-45) !important;
+      stroke-width: 0.8px !important;
+      opacity: 1 !important;
+      vector-effect: non-scaling-stroke;
     }
 
     /* --- 甘特图：纸深轨道 + 墨条进度，表头降为弱分隔 --- */
@@ -295,31 +510,16 @@
       background: var(--wp-compat-atlas-data-6) !important; color: var(--wp-compat-atlas-paper) !important;
     }
     .swiss-card .pyramid .level-2 {
-      background: var(--wp-compat-atlas-data-5) !important; color: var(--wp-compat-atlas-paper) !important;
+      background: var(--wp-compat-atlas-data-5) !important; color: var(--wp-compat-atlas-ink) !important;
     }
     .swiss-card .pyramid .level-3 {
-      background: var(--wp-compat-atlas-data-4) !important; color: var(--wp-compat-atlas-paper) !important;
+      background: var(--wp-compat-atlas-data-4) !important; color: var(--wp-compat-atlas-ink) !important;
     }
     .swiss-card .pyramid .level-4 {
       background: var(--wp-compat-atlas-data-3) !important; color: var(--wp-compat-atlas-ink) !important;
     }
     .swiss-card .pyramid .level-5 {
       background: var(--wp-compat-atlas-data-2) !important; color: var(--wp-compat-atlas-ink) !important;
-    }
-
-    /* --- 冰山图：自定义属性回到纸墨 token，去掉纯黑兜底块 --- */
-    .swiss-card .iceberg {
-      --iceberg-line: var(--wp-compat-atlas-ink-55);
-      --iceberg-top: var(--wp-compat-atlas-paper-panel);
-      --iceberg-top-facet: var(--wp-compat-atlas-paper-deep);
-      --iceberg-bottom: var(--wp-compat-atlas-paper-deep);
-      --iceberg-bottom-facet: var(--wp-compat-atlas-data-2);
-    }
-    .swiss-card .iceberg__stage::after {
-      background: none !important;
-    }
-    .swiss-card .iceberg__shadow {
-      fill: var(--wp-compat-atlas-ink-12) !important;
     }
 
     /* --- 架构图系：tone 色族归一为纸墨中性层级，芯片改线稿 --- */
@@ -363,6 +563,104 @@
       transform-origin: center center !important;
     }
 
+    /* 057–058 思维导图：旧 SVG 坐标不会跟字阶后的节点尺寸同步，改为跟随 DOM 的连线。 */
+    .swiss-card .mind-map .mind-map-overlay {
+      display: none !important;
+    }
+    .swiss-card .mind-map .root-node::after,
+    .swiss-card .mind-map .branches::before,
+    .swiss-card .mind-map .branch::before,
+    .swiss-card .mind-map[data-type="vertical"] .node::after,
+    .swiss-card .mind-map[data-type="vertical"] .sub-branches::before,
+    .swiss-card .mind-map[data-type="vertical"] .sub-node::before {
+      content: '';
+      position: absolute;
+      display: block;
+      background: var(--wp-compat-atlas-ink-55);
+      pointer-events: none;
+    }
+    .swiss-card .mind-map:not([data-type="vertical"]) .root-node::after {
+      top: 100%;
+      left: 50%;
+      width: .6px;
+      height: 50px;
+      transform: translateX(-50%);
+    }
+    .swiss-card .mind-map:not([data-type="vertical"]) .branches::before {
+      top: 0;
+      left: 12.5%;
+      right: 12.5%;
+      height: .6px;
+    }
+    .swiss-card .mind-map:not([data-type="vertical"]) .branch {
+      flex: 1 1 0 !important;
+      min-width: 0 !important;
+    }
+    .swiss-card .mind-map:not([data-type="vertical"]) .branch::before {
+      top: 0;
+      left: 50%;
+      width: .6px;
+      height: 18px;
+      transform: translateX(-50%);
+    }
+    .swiss-card .mind-map[data-type="vertical"] {
+      --mind-map-root-gap: 80px;
+      --mind-map-branch-gap: 48px;
+      gap: var(--mind-map-root-gap) !important;
+    }
+    .swiss-card .mind-map[data-type="vertical"] .root-node::after {
+      top: 50%;
+      left: 100%;
+      width: calc(var(--mind-map-root-gap) / 2);
+      height: .6px;
+      transform: translateY(-50%);
+    }
+    .swiss-card .mind-map[data-type="vertical"] .branches::before {
+      top: 18px;
+      bottom: 18px;
+      left: calc(var(--mind-map-root-gap) / -2);
+      width: .6px;
+    }
+    .swiss-card .mind-map[data-type="vertical"] .branches:has(.branch:first-child .sub-node:nth-child(2))::before {
+      top: 41px;
+    }
+    .swiss-card .mind-map[data-type="vertical"] .branches:has(.branch:last-child .sub-node:nth-child(2))::before {
+      bottom: 41px;
+    }
+    .swiss-card .mind-map[data-type="vertical"] .branch {
+      gap: var(--mind-map-branch-gap) !important;
+    }
+    .swiss-card .mind-map[data-type="vertical"] .branch::before {
+      top: 50%;
+      right: 100%;
+      width: calc(var(--mind-map-root-gap) / 2);
+      height: .6px;
+      transform: translateY(-50%);
+    }
+    .swiss-card .mind-map[data-type="vertical"] .sub-branches {
+      padding-left: 0 !important;
+    }
+    .swiss-card .mind-map[data-type="vertical"] .node::after {
+      top: 50%;
+      left: 100%;
+      width: calc(var(--mind-map-branch-gap) / 2);
+      height: .6px;
+      transform: translateY(-50%);
+    }
+    .swiss-card .mind-map[data-type="vertical"] .sub-branches::before {
+      top: 18px;
+      bottom: 18px;
+      left: calc(var(--mind-map-branch-gap) / -2);
+      width: .6px;
+    }
+    .swiss-card .mind-map[data-type="vertical"] .sub-node::before {
+      top: 50%;
+      right: 100%;
+      width: calc(var(--mind-map-branch-gap) / 2);
+      height: .6px;
+      transform: translateY(-50%);
+    }
+
     /* --- 雷达图 / 六边形雷达：纸面面板，数据区淡填 + 墨线轮廓 --- */
     .swiss-card .radar {
       background: var(--wp-compat-atlas-paper-panel) !important;
@@ -402,6 +700,78 @@
     .swiss-card .arch-complex-v .av-content * {
       font-family: var(--wp-font-sans) !important;
       font-weight: 300 !important;
+    }
+
+    /* --- 054–056 架构图：全文统一 13px，模块标题只用字重分层，矩形收为 0.5px 发丝内描边 --- */
+    .swiss-card .arch-platform .ap-label,
+    .swiss-card .arch-platform .ap-chip,
+    .swiss-card .arch-platform .ap-card-title,
+    .swiss-card .arch-platform .ap-item,
+    .swiss-card .arch-complex-v .av-label,
+    .swiss-card .arch-complex-v .av-chip,
+    .swiss-card .arch-complex-v .av-card-title,
+    .swiss-card .arch-complex-v .av-item {
+      font-size: var(--type-meta) !important;
+    }
+    .swiss-card .arch-platform .ap-label,
+    .swiss-card .arch-platform .ap-card-title,
+    .swiss-card .arch-complex-v .av-label,
+    .swiss-card .arch-complex-v .av-card-title {
+      font-weight: 400 !important;
+    }
+    .swiss-card .arch-platform .ap-flat,
+    .swiss-card .arch-platform .ap-grid-wrap,
+    .swiss-card .arch-platform .ap-card {
+      border: 0 !important;
+      box-shadow: inset 0 0 0 .5px var(--wp-compat-atlas-ink-25) !important;
+    }
+    .swiss-card .arch-platform .ap-chip,
+    .swiss-card .arch-platform .ap-item {
+      border: 0 !important;
+      box-shadow: inset 0 0 0 .5px var(--wp-compat-atlas-ink-55) !important;
+    }
+    .swiss-card .arch-platform .ap-card-title {
+      border: 0 !important;
+      box-shadow: inset 0 -.5px 0 var(--wp-compat-atlas-ink-25) !important;
+    }
+    .swiss-card .arch-complex-v {
+      border: 0 !important;
+      box-shadow: inset 0 0 0 .5px var(--wp-compat-atlas-ink-55) !important;
+    }
+    .swiss-card .arch-complex-v .av-row {
+      border: 0 !important;
+      box-shadow: inset 0 -.5px 0 var(--wp-compat-atlas-ink-55) !important;
+    }
+    .swiss-card .arch-complex-v .av-row:last-child {
+      box-shadow: none !important;
+    }
+    .swiss-card .arch-complex-v .av-label {
+      border: 0 !important;
+      box-shadow: inset -.5px 0 0 var(--wp-compat-atlas-ink-55) !important;
+    }
+    .swiss-card .arch-complex-v .av-chip,
+    .swiss-card .arch-complex-v .av-card,
+    .swiss-card .arch-complex-v .av-item {
+      border: 0 !important;
+      box-shadow: inset 0 0 0 .5px var(--wp-compat-atlas-ink-55) !important;
+    }
+    .swiss-card .arch-complex-v .av-card-title {
+      border: 0 !important;
+      box-shadow: inset 0 -.5px 0 var(--wp-compat-atlas-ink-25) !important;
+    }
+
+    /* --- 059 指标单元：不同字号的数字与单位按视觉底边对齐 --- */
+    .swiss-card .stat-grid .stat-card-value {
+      display: flex !important;
+      align-items: flex-end !important;
+    }
+
+    /* --- 051 冰山图：Atlas 字阶吸附后错开百分比与英文标签基线 --- */
+    .swiss-card .iceberg-diagram > text:nth-of-type(4) {
+      transform: translateY(11px);
+    }
+    .swiss-card .iceberg-diagram > text:nth-of-type(6) {
+      transform: translateY(13px);
     }`;
 
   function hasPaint(value) {
@@ -441,6 +811,7 @@
   }
 
   function textToken(selector) {
+    if (HEADING_RE.test(selector)) return 'var(--wp-compat-atlas-ink)';
     if (META_RE.test(selector)) return 'var(--wp-compat-atlas-ink-45)';
     if (BODY_RE.test(selector) && !HEADING_RE.test(selector)) return 'var(--wp-compat-atlas-ink-70)';
     return 'var(--wp-compat-atlas-ink)';
@@ -464,7 +835,7 @@
     if (LINE_PSEUDO_RE.test(selector)) return lineToken(selector);
     if (SMALL_MARK_RE.test(selector) && !/step-node/i.test(selector)) return 'var(--wp-compat-atlas-ink-80)';
     if (DATA_RE.test(selector)) return dataRampFor(value);
-    if (/(?:recess|muted|inactive|code|header|body|cell|step|node|item|layer)/i.test(selector)) {
+    if (/(?:recess|muted|inactive|code|header|body)/i.test(selector)) {
       return 'var(--wp-compat-atlas-paper-deep)';
     }
     return 'var(--wp-compat-atlas-paper-panel)';
@@ -499,6 +870,48 @@
     return 'var(--wp-font-sans)';
   }
 
+  function nearestTypeRole(numeric, roles = TYPE_ROLES) {
+    return roles.reduce((best, candidate) => {
+      const delta = Math.abs(candidate[1] - numeric);
+      return delta < best.delta ? { role: candidate[0], delta } : best;
+    }, { role: roles[0][0], delta: Infinity }).role;
+  }
+
+  function fontSizeToken(selector, value) {
+    const numeric = Number.parseFloat(String(value));
+    if (!Number.isFinite(numeric) || numeric <= 0) return value;
+    let roles = TYPE_ROLES;
+    if (HEADING_RE.test(selector)) roles = TYPE_ROLES.slice(3, 12);
+    else if (/(?:^|[\s,.>])t[hd](?:$|[\s,.>:#[])/i.test(selector)) roles = TYPE_ROLES.slice(1, 4);
+    else if (META_RE.test(selector)) roles = TYPE_ROLES.slice(0, 3);
+    else if (BODY_RE.test(selector)) roles = TYPE_ROLES.slice(3, 5);
+    else if (MONO_RE.test(selector)) roles = TYPE_ROLES.slice(0, 6);
+    return `var(--type-${nearestTypeRole(numeric, roles)})`;
+  }
+
+  function fontWeightToken(selector, value) {
+    const lowered = String(value).trim().toLowerCase();
+    const numeric = lowered === 'bold' || lowered === 'bolder'
+      ? 700
+      : lowered === 'normal' || lowered === 'lighter'
+        ? 300
+        : Number.parseFloat(lowered);
+    if (!Number.isFinite(numeric)) return value;
+    if (MONO_RE.test(selector) || BRUSH_RE.test(selector)) return '400';
+    return numeric > 300 && /(?:strong|bold|title|heading|metric|value|number|index|root|\bh[1-6]\b)/i.test(selector)
+      ? '400'
+      : '300';
+  }
+
+  function normalizeSpaceScale(value) {
+    return String(value).replace(/(-?[0-9.]+)px\b/gi, (match, raw) => {
+      const numeric = Number(raw);
+      if (!Number.isFinite(numeric) || numeric <= 0) return match;
+      const snapped = Math.max(4, Math.round(numeric / 4) * 4);
+      return `${snapped}px`;
+    });
+  }
+
   function transformDeclaration(selector, property, rawValue) {
     const prop = property.toLowerCase();
     const value = String(rawValue).trim();
@@ -508,6 +921,11 @@
     if (prop === 'background-image') return 'none';
     if (prop === 'border-radius') return /(?:^|\s)50%(?:\s|$)/.test(value) ? '50%' : '0';
     if (prop === 'font-family') return fontToken(selector, value);
+    if (prop === 'font-size') return fontSizeToken(selector, value);
+    if (prop === 'font-weight') return fontWeightToken(selector, value);
+    if (/^(?:gap|row-gap|column-gap|padding(?:-(?:top|right|bottom|left))?|margin(?:-(?:top|right|bottom|left))?)$/.test(prop)) {
+      return normalizeSpaceScale(value);
+    }
     if (prop === 'stroke-width') return normalizeStrokeWidth(selector, value);
     if (/^border(?:-(?:top|right|bottom|left))?$/.test(prop)) {
       return replacePaint(normalizeBorder(selector, value), lineToken(selector));
@@ -581,6 +999,10 @@
         (attrSource, quote, value) => `stroke-width=${quote}${normalizeStrokeWidth(selector, value)}${quote}`);
       next = next.replace(/\bfont-family=(['"])(.*?)\1/gi,
         (attrSource, quote, value) => `font-family=${quote}${fontToken(selector, value)}${quote}`);
+      next = next.replace(/\bfont-size=(['"])(.*?)\1/gi,
+        (attrSource, quote, value) => `font-size=${quote}${fontSizeToken(selector, value)}${quote}`);
+      next = next.replace(/\bfont-weight=(['"])(.*?)\1/gi,
+        (attrSource, quote, value) => `font-weight=${quote}${fontWeightToken(selector, value)}${quote}`);
       return `<${tagName}${next}>`;
     });
   }

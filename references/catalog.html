@@ -3,12 +3,16 @@
 <head>
 <meta charset="UTF-8">
 <title>Wise PPT 资产目录:非关系页 · 版式 · 结构 · 组件</title>
-<link rel="stylesheet" href="../themes/paper-ink/assets/design-tokens.css">
-<!-- 组件数据与 ECharts 在进入组件页、接近对应卡片时按需加载。 -->
+<!-- Catalog 外壳只用系统字体；完整纸墨 tokens/字体与组件脚本在打开组件浮层时按需加载。 -->
 <style>
-  /* 纸墨配色:基础名(--ink/--paper/--ink-80 等)直接来自 design-tokens.css。
-     不做 --wp-* 中转别名 —— 与 tokens 的反向映射会形成循环引用,导致变量失效(header 背景变透明)。 */
   :root{
+    --paper:#DFE0D9;--paper-deep:#D4D5CD;--paper-panel:rgba(255,255,255,.22);
+    --ink:#191917;--ink-80:rgba(25,25,23,.8);--ink-55:rgba(25,25,23,.55);
+    --ink-45:rgba(25,25,23,.45);--ink-25:rgba(25,25,23,.25);
+    --line:rgba(25,25,23,.25);--shadow-specimen:2px 2px 0 rgba(25,25,23,.04);
+    --wp-font-sans:-apple-system,BlinkMacSystemFont,"PingFang SC","Microsoft YaHei",sans-serif;
+    --wp-font-mono:Menlo,Monaco,Consolas,monospace;
+    --catalog-header-h:125px;--struct-nav-h:58px;
     --card:var(--paper-panel);
     --scrim:color-mix(in srgb, var(--ink) 55%, transparent);
     --ink-2:var(--ink-80); --ink-3:var(--ink-55);
@@ -36,14 +40,12 @@
   .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(340px,1fr));gap:18px}
   .card{background:var(--card);border:1px solid var(--line);break-inside:avoid;content-visibility:auto;contain-intrinsic-size:auto 320px}
   .frame-wrap{position:relative;box-sizing:content-box;aspect-ratio:16 / 9;overflow:hidden;background:var(--paper-deep)}
-  .frame-wrap iframe{position:absolute;top:0;left:0;width:1920px;height:1080px;border:0;transform-origin:0 0}
   .frame-wrap{margin:10px 10px 0;border:0.5px solid var(--ink-45)}
   .comp-wrap{margin:10px 10px 0;border:0.5px solid var(--ink-45)}
-  /* 组件原生渲染场馆(无 iframe) */
+  .catalog-thumb{display:block;width:100%;height:100%;object-fit:cover;background:var(--paper-deep);color:transparent}
+  .catalog-thumb.is-missing{object-fit:none}
+  /* 组件原生渲染场馆只供浮层和 ?thumbgen=1 使用。 */
   .comp-stage{position:absolute;inset:0;overflow:hidden;background:var(--paper)}
-  .comp-stage::after{content:'加载中';position:absolute;inset:0;display:grid;place-items:center;color:var(--ink-3);font-size:13px;letter-spacing:.08em}
-  .comp-stage.is-mounted::after{display:none}
-  .comp-stage:not(.is-visible) *{animation-play-state:paused !important}
   .stage-host{position:absolute;inset:0}
   .comp-stage .stage-host{inset:auto;width:1280px;height:720px;transform-origin:0 0}
   .stage-ecbox{position:absolute;left:0;top:0;width:1280px;height:720px;transform-origin:0 0}
@@ -74,15 +76,30 @@
   .layer-close{position:absolute;top:10px;right:12px;width:34px;height:34px;border:1px solid var(--ink-45);background:var(--paper);color:var(--ink);font-size:20px;line-height:1;cursor:pointer;z-index:2}
   .layer-close:hover{background:var(--ink);color:var(--paper)}
   .layer-stage{position:relative;flex:1;min-height:0;overflow:hidden;background:var(--paper-deep)}
+  .layer-thumb,.layer-live{position:absolute;inset:0;width:100%;height:100%}
+  .layer-thumb{object-fit:contain;background:var(--paper);opacity:1;transition:opacity .18s ease}
+  .layer-live{overflow:hidden;background:var(--paper);opacity:0;transition:opacity .18s ease}
+  .layer-live.is-ready{opacity:1}
+  .layer-stage[data-live-ready="1"] .layer-thumb{opacity:0}
   .layer-stage .stage-host,.layer-stage .stage-ecbox{position:absolute;left:0;top:0;transform-origin:0 0}
-  .layer-info{padding:10px 16px;font-size:13px;color:var(--ink-2);border-top:1px solid var(--line);background:var(--paper);display:flex;justify-content:space-between;align-items:baseline;gap:16px;flex-wrap:wrap}
+  .layer-info{min-height:49px;padding:9px 16px;font-size:13px;color:var(--ink-2);border-top:1px solid var(--line);background:var(--paper);display:flex;align-items:center;gap:16px}
+  #layer-title{min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
   .layer-info .layer-count{font-family:var(--wp-font-mono);font-size:13px;color:var(--ink-3);letter-spacing:.06em;white-space:nowrap}
-  /* 变体 tab:合并组在浮层信息栏逐变体挂源码(代表 + 被合并的变体),‹ › 仍跨卡片翻页 */
-  #layer-variants{display:flex;gap:6px;flex-wrap:wrap;justify-content:flex-end;margin-left:auto}
+  /* 变体选择器:信息栏只显示当前项,菜单向上展开;不再把 2~9 个 tab 堆在右下角 */
+  #layer-variants{position:relative;margin-left:auto;flex:0 0 auto}
   #layer-variants:empty{display:none}
-  #layer-variants .vtab{font:inherit;font-size:12px;line-height:1;padding:5px 9px;border:1px solid var(--line);background:var(--paper);color:var(--ink-2);cursor:pointer;border-radius:0;letter-spacing:.02em}
-  #layer-variants .vtab.on{background:var(--ink);border-color:var(--ink);color:var(--paper)}
-  #layer-variants .vtab:hover:not(.on){border-color:var(--ink-3);color:var(--ink)}
+  .variant-trigger{height:31px;display:flex;align-items:center;gap:8px;padding:0 9px;border:1px solid var(--ink-45);border-radius:0;background:transparent;color:var(--ink);font:inherit;cursor:pointer;white-space:nowrap}
+  .variant-trigger:hover,.variant-trigger[aria-expanded="true"]{border-color:var(--ink);background:var(--paper-panel)}
+  .variant-trigger:focus-visible,.variant-option:focus-visible{outline:1px solid var(--ink);outline-offset:2px}
+  .variant-kicker,.variant-index{font-family:var(--wp-font-mono);font-size:11px;color:var(--ink-3);letter-spacing:.08em}
+  .variant-current{font-size:13px;font-weight:400;min-width:48px;text-align:left}
+  .variant-caret{font-size:10px;color:var(--ink-3);transition:transform .15s ease}
+  .variant-trigger[aria-expanded="true"] .variant-caret{transform:rotate(180deg)}
+  .variant-menu{position:absolute;right:0;bottom:calc(100% + 8px);z-index:5;min-width:220px;max-width:min(320px,80vw);max-height:min(360px,70vh);overflow:auto;padding:5px;background:var(--paper);border:1px solid var(--ink-45);box-shadow:var(--shadow-specimen)}
+  .variant-option{width:100%;min-height:34px;display:grid;grid-template-columns:34px minmax(0,1fr);align-items:center;gap:8px;padding:5px 9px;border:0;border-left:2px solid transparent;border-radius:0;background:transparent;color:var(--ink-2);font:inherit;font-size:13px;text-align:left;cursor:pointer}
+  .variant-option:hover{background:var(--paper-panel);color:var(--ink)}
+  .variant-option[aria-selected="true"]{border-left-color:var(--ink);background:var(--paper-deep);color:var(--ink);font-weight:400}
+  .variant-option-index{font-family:var(--wp-font-mono);font-size:11px;color:var(--ink-3);letter-spacing:.06em}
   /* 浮层左右切换:当前 tab 卡片连续翻,到头禁用不循环 */
   .layer-nav{position:absolute;top:50%;transform:translateY(-50%);width:36px;height:64px;border:1px solid var(--ink-45);background:var(--paper);color:var(--ink);font-size:22px;line-height:1;cursor:pointer;z-index:2}
   .layer-nav:hover:not(:disabled){background:var(--ink);color:var(--paper)}
@@ -99,28 +116,65 @@
   .note{background:var(--card);border:1px solid var(--line);border-left:2px solid var(--ink);padding:14px 18px;font-size:13px;color:var(--ink-2);line-height:1.8;margin-bottom:24px}
   .note b{color:var(--ink);font-weight:500}
 
-  /* 结构枚举:定义行 + 空槽大图卡 */
-  .struct-info{margin-bottom:14px;min-width:260px}
+  /* 结构总览:6 类折叠章节,每个空槽变体紧跟对应真实示例 */
+  .struct-nav{position:sticky;top:var(--catalog-header-h);z-index:45;display:flex;flex-wrap:wrap;gap:8px;margin:0 0 14px;padding:12px;background:var(--paper);border:1px solid var(--line);box-shadow:0 5px 8px rgba(25,25,23,.05)}
+  .struct-nav button{font:inherit;font-size:13px;line-height:1.2;color:var(--ink-2);background:transparent;border:1px solid var(--ink-45);padding:7px 10px;cursor:pointer;letter-spacing:.02em}
+  .struct-nav button:hover,.struct-nav button.on{background:var(--ink);border-color:var(--ink);color:var(--paper)}
+  .struct-nav button:focus-visible,.struct-toggle:focus-visible{outline:2px solid var(--ink);outline-offset:2px}
+  .struct-section{margin-bottom:14px;border:1px solid var(--line);background:var(--paper-panel);scroll-margin-top:calc(var(--catalog-header-h) + var(--struct-nav-h) + 12px)}
+  .struct-toggle-head{font-size:inherit}
+  .struct-toggle{width:100%;display:grid;grid-template-columns:minmax(180px,auto) 1fr auto;align-items:center;gap:18px;padding:16px 18px;border:0;background:transparent;color:var(--ink);text-align:left;cursor:pointer}
+  .struct-toggle:hover{background:var(--paper-deep)}
+  .struct-toggle-title{display:flex;align-items:baseline;gap:10px;font-size:18px;font-weight:400;letter-spacing:.05em}
+  .struct-toggle-title .tag{font-family:var(--wp-font-mono);font-size:12px;color:var(--ink-3);border:1px solid var(--ink-45);padding:2px 7px;letter-spacing:.05em}
+  .struct-toggle-meta{font-size:13px;color:var(--ink-3)}
+  .struct-toggle-mark{font-family:var(--wp-font-mono);font-size:16px;font-weight:300;transition:transform .18s ease}
+  .struct-section.is-open .struct-toggle-mark{transform:rotate(180deg)}
+  .struct-panel{padding:0 18px 22px;border-top:1px solid var(--line)}
+  .struct-panel[hidden]{display:none}
+  .struct-info{padding:16px 0 14px;min-width:260px}
   .s-desc{font-size:13px;line-height:1.8;color:var(--ink)}
   .s-judge{font-size:13px;color:var(--ink-2);margin-top:8px;line-height:1.7}
   .s-judge b{font-weight:500;margin-right:8px;color:var(--ink)}
   .s-rels{margin-top:8px}
   .chip{font-family:var(--wp-font-sans);font-weight:400;font-size:13px;letter-spacing:.08em;color:var(--ink-3);background:transparent;border:1px solid var(--ink-45);padding:2px 7px;cursor:pointer}
   .chip:hover{background:var(--ink);color:var(--paper)}
-  .grid.samples{grid-template-columns:repeat(auto-fill,minmax(250px,1fr))}
+  .struct-callout{margin:0 0 16px;padding:10px 12px;border-left:2px solid var(--ink);background:var(--paper-deep);font-size:13px;line-height:1.7;color:var(--ink-2)}
+  .struct-variant{padding:18px 0;border-top:1px solid var(--ink-25)}
+  .struct-variant:first-of-type{border-top:0}
+  .variant-head{display:flex;align-items:baseline;gap:10px;flex-wrap:wrap;margin-bottom:8px}
+  .variant-head .code{font-family:var(--wp-font-mono);font-size:12px;color:var(--ink-3);border:1px solid var(--ink-45);padding:2px 7px;letter-spacing:.06em}
+  .variant-head h3{font-size:16px;font-weight:400;letter-spacing:.04em}
+  .variant-body{display:grid;grid-template-columns:minmax(310px,.9fr) minmax(0,1.7fr);grid-template-areas:"source-title examples-title" "empty examples";column-gap:18px;row-gap:8px;align-items:start}
+  .variant-source-title,.variant-examples-title{font-size:13px;line-height:1.6;align-self:center}
+  .variant-source-title{grid-area:source-title;color:var(--ink-3)}
+  .variant-examples-title{grid-area:examples-title;color:var(--ink-2)}
+  .variant-empty{grid-area:empty;position:sticky;top:calc(var(--catalog-header-h) + var(--struct-nav-h) + 12px);align-self:start}
+  .variant-examples{grid-area:examples}
+  .variant-examples-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:14px}
+  .variant-empty-state{min-height:180px;display:grid;place-items:center;border:1px dashed var(--ink-45);color:var(--ink-3);font-size:13px;line-height:1.8;text-align:center;padding:24px;background:var(--paper-deep)}
+  @media(max-width:900px){
+    .struct-toggle{grid-template-columns:1fr auto;gap:8px}
+    .struct-toggle-meta{grid-column:1 / -1}
+    .variant-body{grid-template-columns:1fr;grid-template-areas:"source-title" "empty" "examples-title" "examples"}
+    .variant-examples-title{margin-top:10px}
+    .variant-empty{position:static}
+  }
   .card.flash{animation:cf 1.5s ease-out}
   @keyframes cf{0%,55%{box-shadow:0 0 0 3px var(--ink)}100%{box-shadow:0 0 0 0 transparent}}
+  #thumbgen-stage{display:none;position:fixed;left:0;top:0;width:1280px;height:720px;z-index:1000;background:var(--paper);overflow:hidden}
+  body.thumbgen>*:not(#thumbgen-stage){display:none!important}
+  body.thumbgen #thumbgen-stage{display:block}
 </style>
 </head>
 <body>
 <header>
   <h1>资产目录 · Catalog</h1>
-  <div class="sub">非关系页模板(直接套用) / 关系页版式(SmartArt 语义分类) / 结构切分(6 种 · 空槽大图) / 结构示例(按切分归组) / 组件(SmartArt 语义分类)</div>
+  <div class="sub">非关系页模板(直接套用) / 关系页版式(SmartArt 语义分类) / 结构(6 种切分 · 空槽与示例联看) / 组件(SmartArt 语义分类)</div>
   <div class="tabs">
     <button class="tab on" data-t="tpl">非关系页模板<span class="n" id="c-tpl"></span></button>
     <button class="tab" data-t="lyt">关系页版式<span class="n" id="c-lyt"></span></button>
-    <button class="tab" data-t="str">结构切分<span class="n" id="c-str"></span></button>
-    <button class="tab" data-t="strex">结构示例<span class="n" id="c-strex"></span></button>
+    <button class="tab" data-t="str">结构<span class="n" id="c-str"></span></button>
     <button class="tab" data-t="cmp">组件<span class="n" id="c-cmp"></span></button>
   </div>
 </header>
@@ -140,15 +194,9 @@
 
 <main id="m-str">
   <div class="note"><b>结构 = 页面区域怎么切(矩形分块);组件 = 区域内画什么形状。</b>结构切的是<b>版心</b>:每页固定的左上页眉 / 左下页码 / 底部题注行是外框,一律不算切分;单区 = 版心剩一整块,内容水平垂直居中。放射、环形、蛇形、漏斗、矩阵(表格)都是区域内组件的画法,不是页面结构。关系圈定候选结构(2~4 种),二次判断(对象数量 / 有无辅助内容 / 方向偏好)在范围内选定。关系页版式全部归入这 6 种切分。</div>
-  <div class="note"><b>大图 = 空槽版式,不是示意图。</b>10 张来自 taxonomy(wise-ppt-page-expression)110 张成熟蓝图按槽位几何去重的空槽图:虚线框是槽位,细线是装饰锚点,灰字是页眉/页码/题注固定件。taxonomy 的空槽版式里<b>没有「上下等分」「网格」整类,也没有「左右4等分」变体</b>(上下切分全是不对称;整版网格墙和多屏画廊在 taxonomy 折叠成单槽),这 7 张按同一规格<b>补造</b>,卡片上有标注。空槽图清单与来源见 taxonomy-empty/manifest.json。</div>
-  <div class="note"><b>分点跟着「结构示例」走。</b>每个分点(空槽变体)标注它对应哪些示例页,与「结构示例」tab 的归组同一批数据;页面加载时逐结构校验:示例页不漏归、不重归、不跨结构。每节的「承载关系」chips 也从示例页的关系标签实时推导,不手写维护。</div>
+  <div class="note"><b>空槽与示例现在放在一起。</b>每个空槽变体下面只展示与它对应的真实关系页;10 张空槽来自 taxonomy 成熟蓝图,7 张 taxonomy 缺失的变体按同一规格补造并逐卡标注。页面仍会校验 54 个示例不漏归、不重归、不跨结构。</div>
+  <nav class="struct-nav" id="struct-nav" aria-label="结构类型"></nav>
   <div id="str-list"></div>
-</main>
-
-<main id="m-strex">
-  <div class="note"><b>54 个关系页版式按 6 种切分归组,全部展示。</b>切分判据见上一 tab;同一页从 SmartArt 语义入口看(「关系页版式」tab)和从结构看(本 tab)是两个视角,卡片是同一批。</div>
-  <div class="note"><b>网格 vs 表格(易混)</b>:网格 = 页面切分,均质等价陈列(A7 logo 墙、F4 六宫格);表格/矩阵 = 组件画法,行列双语义在组件内部 —— K4 = 左右3等分(三栏切分,行带是栏内画法)、E4/K1 = 上下不对称(矩阵 + 收束带)。页面切分只认 6 种矩形分块,不设「表格」。</div>
-  <div id="strex-list"></div>
 </main>
 
 <main id="m-cmp">
@@ -212,16 +260,16 @@ const SMARTART_TYPES=[
   ]},
 ];
 
-/* 组件统一池:atlas + native + echarts 全部组件,按 SmartArt 语义入口 + Wise PPT 数据扩展分组
-   t: 'atlas' | 'native' | 'ec';atlas/native 用 num,ec 用 id */
+/* 组件统一池:atlas + native + echarts + 版式抄录组件,按 SmartArt 语义入口 + Wise PPT 数据扩展分组
+   t: 'atlas' | 'native' | 'ec' | 'new';atlas/native 用 num,ec 用 id,new 用 mk */
 const SMARTART_COMPONENTS=[
   {fam:'① 列表 · List',items:[
-    {t:'atlas',num:2,en:'list-card',nm:'列表卡片',note:'合并 #002-004;单元×N',rel:['陈列'],vr:[['atlas:2','基础'],['atlas:3','长列表'],['atlas:4','工作流']]},
+    {t:'atlas',num:2,en:'list-card',nm:'列表卡片',note:'单元×N',rel:['陈列']},
     {t:'atlas',num:6,en:'form-card',nm:'表单卡片',rel:['陈列']},
     {t:'atlas',num:12,en:'alert-box',nm:'提示框',rel:['陈列']},
-    {t:'atlas',num:13,en:'terminal-box',nm:'终端框',rel:['陈列']},
-    {t:'atlas',num:14,en:'code',nm:'代码块',rel:['陈列']},
-    {t:'native',num:86,en:'icon-grid',nm:'图标格阵',rel:['陈列']},
+    {t:'atlas',num:13,en:'terminal-box',nm:'终端框',pageScale:.7,rel:['陈列']},
+    {t:'atlas',num:14,en:'code',nm:'代码块',pageScale:.8,rel:['陈列']},
+    {t:'native',num:86,en:'icon-grid',nm:'图标格阵',pageScale:1.1,rel:['陈列']},
     {t:'native',num:74,en:'contact-card',nm:'联络名片卡',rel:['陈列']},
     {t:'native',num:93,en:'infra-strip',nm:'基础设施横带',rel:['陈列']},
   ]},
@@ -229,8 +277,7 @@ const SMARTART_COMPONENTS=[
     {t:'atlas',num:25,en:'process',nm:'流程链',note:'合并 #025-033;步数 2~7',rel:['时序','流动'],vr:[['atlas:25','默认·3步'],['atlas:26','默认·4步'],['atlas:27','标注'],['atlas:28','默认·5步'],['atlas:29','换行'],['atlas:30','箭头·3步'],['atlas:31','箭头·4步'],['atlas:32','标注箭头'],['atlas:33','箭头·5步']]},
     {t:'atlas',num:38,en:'journey',nm:'旅程图',rel:['时序']},
     {t:'new',mk:7,en:'journey-curve',nm:'旅程曲线',note:'源 J3 · 原版抄录',rel:['时序']},
-    {t:'atlas',num:39,en:'timeline',nm:'时间线',note:'合并 #039-041;开关横/竖',rel:['时序'],vr:[['atlas:39','横排·阶段'],['atlas:40','竖排'],['atlas:41','横排·年份']]},
-    {t:'new',mk:8,en:'timeline-axis',nm:'水平时间轴',note:'源 B1 · 原版抄录',rel:['时序']},
+    {t:'new',mk:8,en:'timeline-axis',nm:'时间轴',note:'源 B1 · 横/竖',rel:['时序'],vr:[['new:8','横排·源 B1'],['new:10','竖排']]},
     {t:'atlas',num:42,en:'gantt',nm:'甘特图',rel:['时序']},
     {t:'atlas',num:50,en:'fishbone',nm:'鱼骨图',rel:['因果']},
     {t:'native',num:63,en:'step-rise',nm:'阶梯爬升图',rel:['时序']},
@@ -245,24 +292,24 @@ const SMARTART_COMPONENTS=[
     {t:'ec',id:'echarts.sankey-basic',en:'sankey',nm:'桑基图',rel:['流动']},
   ]},
   {fam:'③ 循环 · Cycle',items:[
-    {t:'atlas',num:34,en:'process-loop',nm:'循环流程',note:'合并 #034-037;节点 3~6',rel:['循环'],vr:[['atlas:34','三角'],['atlas:35','四边'],['atlas:36','五边'],['atlas:37','闭环']]},
+    {t:'atlas',num:34,en:'process-loop',nm:'循环流程',note:'合并 #034-037;节点 3~6',pageScale:.8,rel:['循环'],vr:[['atlas:34','三角'],['atlas:35','四边'],['atlas:36','五边'],['atlas:37','闭环']]},
     {t:'new',mk:6,en:'cycle-ring',nm:'环形循环',note:'源 J1 · 原版抄录',rel:['循环']},
     {t:'new',mk:5,en:'serpentine-loop',nm:'蛇形回环',note:'源 J2 · 原版抄录',rel:['循环']},
   ]},
   {fam:'④ 层级 · Hierarchy',items:[
-    {t:'atlas',num:54,en:'architecture',nm:'架构图',rel:['层级']},
-    {t:'atlas',num:55,en:'arch-platform',nm:'平台架构图',note:'合并 #055-056',rel:['层级'],vr:[['atlas:55','标准'],['atlas:56','复杂垂直']]},
+    {t:'atlas',num:54,en:'architecture',nm:'架构图',pageScale:.9,rel:['层级']},
+    {t:'atlas',num:55,en:'arch-platform',nm:'平台架构图',note:'合并 #055-056',pageScale:.9,rel:['层级'],vr:[['atlas:55','标准'],['atlas:56','复杂垂直']]},
     {t:'atlas',num:57,en:'mind-map',nm:'思维导图',note:'开关 horizontal / vertical',rel:['拆解'],vr:[['atlas:57','水平'],['atlas:58','垂直']]},
     {t:'ec',id:'echarts.tree-lr',en:'tree',nm:'树图',rel:['层级']},
   ]},
   {fam:'⑤ 关系 · Relationship',items:[
-    {t:'atlas',num:43,en:'concentric',nm:'同心圆',note:'合并 #043-047',rel:['层级','嵌套'],vr:[['atlas:43','默认'],['atlas:44','居中'],['atlas:45','底部文字'],['atlas:46','顶部对齐'],['atlas:47','底部对齐']]},
+    {t:'atlas',num:43,en:'concentric',nm:'同心圆',note:'合并 #043-044/#046-047',pageScale:.9,rel:['层级','嵌套'],vr:[['atlas:43','默认'],['atlas:44','居中'],['atlas:46','顶部对齐'],['atlas:47','底部对齐']]},
     {t:'new',mk:9,en:'concentric-ring',nm:'同心环',note:'源 H1 · 原版抄录',rel:['嵌套']},
-    {t:'atlas',num:52,en:'venn',nm:'韦恩图',note:'圆数 2~3',rel:['关联(集合)'],vr:[['atlas:52','双圆'],['atlas:53','三圆']]},
+    {t:'atlas',num:52,en:'venn',nm:'韦恩图',note:'圆数 2~3',pageScale:.8,rel:['关联(集合)'],vr:[['atlas:52','双圆'],['atlas:53','三圆']]},
     {t:'new',mk:2,en:'three-way-radial',nm:'三向放射图',note:'源 G1 · 原版抄录',rel:['拆解']},
     {t:'new',mk:3,en:'nested-frames',nm:'嵌套框',note:'源 H2 · 原版抄录',rel:['嵌套']},
     {t:'native',num:79,en:'radial-hub',nm:'放射中心卫星图',rel:['层级']},
-    {t:'atlas',num:16,en:'before-after',nm:'前后对比',note:'合并 #016-019',rel:['对比'],vr:[['atlas:16','默认'],['atlas:17','箭头'],['atlas:18','无背景'],['atlas:19','验证']]},
+    {t:'atlas',num:19,en:'before-after',nm:'前后对比',note:'验证',rel:['对比']},
     {t:'atlas',num:24,en:'impossible-triangle',nm:'不可能三角',rel:['矩阵']},
     {t:'new',mk:0,en:'mapping-arc-network',nm:'映射弧线网',note:'源 L2 · 原版抄录',rel:['映射']},
     {t:'native',num:81,en:'watershed-axis',nm:'分水岭中轴对照',rel:['对比']},
@@ -270,10 +317,10 @@ const SMARTART_COMPONENTS=[
     {t:'new',mk:1,en:'weighted-arc-web',nm:'权重弧网',note:'源 L1 · 原版抄录',rel:['网络']},
   ]},
   {fam:'⑥ 矩阵 · Matrix',items:[
-    {t:'atlas',num:20,en:'swot',nm:'SWOT 分析',rel:['矩阵']},
+    {t:'atlas',num:20,en:'swot',nm:'SWOT 分析',pageScale:.8,rel:['矩阵']},
     {t:'atlas',num:21,en:'quadrant-axis',nm:'象限图',rel:['矩阵']},
-    {t:'atlas',num:22,en:'comparison-table',nm:'对比表格',rel:['对比','矩阵']},
-    {t:'atlas',num:23,en:'matrix',nm:'矩阵',rel:['矩阵']},
+    {t:'atlas',num:22,en:'comparison-table',nm:'对比表格',pageScale:.9,rel:['对比','矩阵']},
+    {t:'atlas',num:23,en:'matrix',nm:'矩阵',pageScale:.8,rel:['矩阵']},
   ]},
   {fam:'⑦ 金字塔 · Pyramid',items:[
     {t:'atlas',num:48,en:'pyramid',nm:'金字塔',note:'合并 #048-049;开关 inverted',rel:['层级'],vr:[['atlas:48','正立'],['atlas:49','倒置']]},
@@ -293,7 +340,7 @@ const SMARTART_COMPONENTS=[
     {t:'native',num:88,en:'annotation-callout',nm:'环绕引线标注',rel:['证据']},
   ]},
   {fam:'⑨ 数据 · Data(Wise PPT 扩展)',items:[
-    {t:'atlas',num:59,en:'stats',nm:'指标单元',note:'atlas 打包 4 格;概念上单元×4',rel:['陈列','指标']},
+    {t:'atlas',num:59,en:'stats',nm:'指标单元',note:'atlas 打包 4 格;概念上单元×4',pageScale:.8,rel:['陈列','指标']},
     {t:'native',num:89,en:'metric-strip',nm:'自适应指标横带',rel:['陈列','指标']},
     {t:'native',num:85,en:'radial-progress',nm:'环形进度指标',note:'单元×N',rel:['陈列']},
     {t:'ec',id:'echarts.geo-choropleth-map',en:'geo-map',nm:'分级填色地图',rel:['分布']},
@@ -326,7 +373,7 @@ const SMARTART_LAYOUT_COUNT=assertCatalogClassification(SMARTART_TYPES,item=>ite
 const SMARTART_COMPONENT_COUNT=assertCatalogClassification(
   SMARTART_COMPONENTS,
   item=>item.t==='ec'?'ec:'+item.id:(item.t==='new'?'new:'+item.mk:item.t+':'+item.num),
-  72,
+  71,
   '组件',
 );
 
@@ -1730,19 +1777,96 @@ FAIL-SAFE · AUDITED PER CALL
 </svg></div>`
 ];
 
+/* 10 timeline-axis 竖排变体 —— 沿用 B1 的节点、刻度、年份和说明层级,改为左年份 / 中轴线 / 右说明 */
+NEW_MARKUP.push(`<div class="pi-card" style="width:auto;min-height:0;overflow:visible"><svg viewBox="0 0 900 1000" width="540" height="600">
+  <line x1="250" y1="72" x2="250" y2="928" stroke="rgba(25,25,23,.8)" stroke-width="1.2"/>
+  <g stroke="#191917" fill="none">
+    <line x1="238" y1="72" x2="250" y2="72" stroke-width="1" opacity=".4"/>
+    <line x1="243" y1="112" x2="250" y2="112" stroke-width=".5" opacity=".25"/>
+    <line x1="243" y1="152" x2="250" y2="152" stroke-width=".5" opacity=".25"/>
+    <line x1="243" y1="192" x2="250" y2="192" stroke-width=".5" opacity=".25"/>
+    <line x1="243" y1="232" x2="250" y2="232" stroke-width=".5" opacity=".25"/>
+    <line x1="238" y1="272" x2="250" y2="272" stroke-width="1" opacity=".4"/>
+    <line x1="243" y1="312" x2="250" y2="312" stroke-width=".5" opacity=".25"/>
+    <line x1="243" y1="352" x2="250" y2="352" stroke-width=".5" opacity=".25"/>
+    <line x1="243" y1="392" x2="250" y2="392" stroke-width=".5" opacity=".25"/>
+    <line x1="238" y1="432" x2="250" y2="432" stroke-width="1" opacity=".4"/>
+    <line x1="243" y1="472" x2="250" y2="472" stroke-width=".5" opacity=".25"/>
+    <line x1="243" y1="512" x2="250" y2="512" stroke-width=".5" opacity=".25"/>
+    <line x1="243" y1="552" x2="250" y2="552" stroke-width=".5" opacity=".25"/>
+    <line x1="238" y1="592" x2="250" y2="592" stroke-width="1" opacity=".4"/>
+    <line x1="243" y1="632" x2="250" y2="632" stroke-width=".5" opacity=".25"/>
+    <line x1="243" y1="672" x2="250" y2="672" stroke-width=".5" opacity=".25"/>
+    <line x1="243" y1="712" x2="250" y2="712" stroke-width=".5" opacity=".25"/>
+    <line x1="238" y1="752" x2="250" y2="752" stroke-width="1" opacity=".4"/>
+    <line x1="243" y1="792" x2="250" y2="792" stroke-width=".5" opacity=".25"/>
+    <line x1="243" y1="832" x2="250" y2="832" stroke-width=".5" opacity=".25"/>
+    <line x1="243" y1="872" x2="250" y2="872" stroke-width=".5" opacity=".25"/>
+    <line x1="238" y1="928" x2="250" y2="928" stroke-width="1" opacity=".4"/>
+  </g>
+  <g font-family="var(--pi-mono)" font-size="var(--type-subheading)" text-anchor="end" fill="#191917">
+    <text x="205" y="124">2018</text><text x="205" y="284">2019</text><text x="205" y="444">2020</text>
+    <text x="205" y="604">2022</text><text x="205" y="764">2023</text><text x="205" y="924">2025</text>
+  </g>
+  <g fill="#DFE0D9" stroke="rgba(25,25,23,.8)" stroke-width="1.2">
+    <circle cx="250" cy="118" r="9"/><circle cx="250" cy="278" r="9"/><circle cx="250" cy="438" r="9"/>
+    <circle cx="250" cy="598" r="9"/><circle cx="250" cy="918" r="9"/>
+  </g>
+  <g fill="#191917">
+    <circle cx="250" cy="118" r="3"/><circle cx="250" cy="278" r="3"/><circle cx="250" cy="438" r="3"/>
+    <circle cx="250" cy="598" r="3"/><circle cx="250" cy="758" r="5"/><circle cx="250" cy="918" r="3"/>
+  </g>
+  <circle cx="250" cy="758" r="16" fill="none" stroke="#191917" stroke-width="1.4"/>
+  <circle cx="250" cy="758" r="20" fill="none" stroke="#191917" stroke-width=".6" opacity=".4"/>
+  <g stroke="#191917" stroke-width=".6" opacity=".4">
+    <line x1="262" y1="118" x2="286" y2="118"/><line x1="262" y1="278" x2="286" y2="278"/>
+    <line x1="262" y1="438" x2="286" y2="438"/><line x1="262" y1="598" x2="286" y2="598"/>
+    <line x1="272" y1="758" x2="286" y2="758"/><line x1="262" y1="918" x2="286" y2="918"/>
+  </g>
+  <g text-anchor="start">
+    <text x="312" y="103" font-family="var(--pi-mono)" font-size="var(--type-body-small)" letter-spacing="1" fill="rgba(25,25,23,.8)">GPT-1</text>
+    <text x="312" y="130" font-family="var(--pi-sans)" font-weight="300" font-size="var(--type-body)" fill="#191917">预训练雏形</text>
+    <text x="312" y="154" font-family="var(--pi-sans)" font-weight="300" font-size="var(--type-meta)" fill="rgba(25,25,23,.55)">1.17 亿参数 · 证明可行性</text>
+    <text x="312" y="263" font-family="var(--pi-mono)" font-size="var(--type-body-small)" letter-spacing="1" fill="rgba(25,25,23,.8)">GPT-2</text>
+    <text x="312" y="290" font-family="var(--pi-sans)" font-weight="300" font-size="var(--type-body)" fill="#191917">规模跃迁</text>
+    <text x="312" y="423" font-family="var(--pi-mono)" font-size="var(--type-body-small)" letter-spacing="1" fill="rgba(25,25,23,.8)">GPT-3</text>
+    <text x="312" y="450" font-family="var(--pi-sans)" font-weight="300" font-size="var(--type-body)" fill="#191917">涌现能力</text>
+    <text x="312" y="583" font-family="var(--pi-mono)" font-size="var(--type-body-small)" letter-spacing="1" fill="rgba(25,25,23,.8)">CHATGPT</text>
+    <text x="312" y="610" font-family="var(--pi-sans)" font-weight="300" font-size="var(--type-body)" fill="#191917">对话破圈</text>
+    <text x="312" y="743" font-family="var(--pi-mono)" font-size="var(--type-body-small)" letter-spacing="1" fill="rgba(25,25,23,.8)">GPT-4</text>
+    <text x="312" y="770" font-family="var(--pi-sans)" font-weight="400" font-size="var(--type-body)" fill="#191917">多模态</text>
+    <text x="312" y="796" font-family="var(--pi-sans)" font-weight="400" font-size="var(--type-meta)" fill="#191917">推理 · 多模态 · 月活破亿</text>
+    <line x1="312" y1="810" x2="596" y2="810" stroke="#191917" stroke-width="1.2" opacity=".8"/>
+    <text x="312" y="903" font-family="var(--pi-mono)" font-size="var(--type-body-small)" letter-spacing="1" fill="rgba(25,25,23,.8)">o1 / o3</text>
+    <text x="312" y="930" font-family="var(--pi-sans)" font-weight="300" font-size="var(--type-body)" fill="#191917">推理模型</text>
+    <text x="312" y="954" font-family="var(--pi-sans)" font-weight="300" font-size="var(--type-meta)" fill="rgba(25,25,23,.55)">思维链 · 自我反思</text>
+  </g>
+</svg></div>`);
+
 /* 反向抽取:10 个抽取组件已按原版 scene 抄录入池(t:'new'),可并入项均不并入、独立入池;
    M1 粒子件是氛围 canvas 效果、非关系页图形本体,整页归非关系页模板,存疑区清空 */
 const EXTRACT_GROUPS=[];
 
 /* ============ 渲染 ============ */
 const $=s=>document.querySelector(s);
+const THUMB_DIR='catalog-thumbnails/';
+const THUMBGEN=new URLSearchParams(location.search).get('thumbgen')==='1';
+function thumbSlug(value){
+  return String(value).toLowerCase().replace(/\.html$/,'').replace(/[^a-z0-9]+/g,'-').replace(/^-|-$/g,'');
+}
+function pageThumb(src){return THUMB_DIR+'page-'+thumbSlug(src)+'.webp';}
+function componentThumb(spec){return THUMB_DIR+'component-'+thumbSlug(spec)+'.webp';}
+function thumbMarkup(thumb,alt,wrapClass='frame-wrap'){
+  return `<div class="${wrapClass}"><img class="catalog-thumb" data-thumb-src="${thumb}" width="640" height="360" decoding="async" alt="${String(alt||'').replace(/"/g,'&quot;')}"></div>`;
+}
 
 function layoutCard([id,nm,struct,rel]){
   const full=FRAMES+'layout-'+id.toLowerCase()+'.html';
+  const thumb=pageThumb(full);
   const relTxt=rel?(' · 关系:<b>'+rel+'</b>'):'';
   const mtag='结构:'+struct+(rel?' · 关系:'+rel:'');
-  return `<div class="card" id="lyt-${id.toLowerCase()}" data-modal="1" data-frame="${full}" data-mtitle="${id} ${nm}" data-mtag="${mtag}">
-    <div class="frame-wrap"><iframe loading="lazy" data-src="${full}"></iframe></div>
+  return `<div class="card" id="lyt-${id.toLowerCase()}" data-modal="1" data-frame="${full}" data-thumb="${thumb}" data-mtitle="${id} ${nm}" data-mtag="${mtag}">
+    ${thumbMarkup(thumb,id+' '+nm)}
     <div class="card-info"><span class="id">${id}</span>
       <div class="nm">${nm}</div>
       <div class="meta">结构:<b>${struct}</b>${relTxt}</div>
@@ -1750,20 +1874,27 @@ function layoutCard([id,nm,struct,rel]){
 }
 /* 详情路由:atlas/native → 画册 #/layout/N;echarts → #/component/{slug}-default */
 function compCard(c,extra=''){
-  const spec=c.t==='ec'?('ec:'+c.id):(c.t==='new'?('new:'+c.mk):(c.t+':'+c.num));
+  const spec=componentSpec(c);
+  const thumb=componentThumb(spec);
   const tag=c.t==='ec'?'ECharts':(c.t==='new'?'版式抄录':c.t+' #'+String(c.num).padStart(3,'0'));
-  const stage=c.t==='ec'
-    ?`<div class="comp-stage" data-ec="${c.id}"></div>`
-    :(c.t==='new'
-      ?`<div class="comp-stage" data-new="${c.mk}"></div>`
-      :`<div class="comp-stage" data-src="${c.t}:${c.num}"></div>`);
-  return `<div class="comp-card" data-modal="1" data-spec="${spec}"${c.vr?` data-vr='${JSON.stringify(c.vr)}'`:''} data-mtitle="${c.en} ${c.nm}" data-mtag="${tag}${c.note?' · '+c.note:''}${c.vr?' · 变体×'+c.vr.length:''}">
-    <div class="comp-wrap">${stage}</div>
+  return `<div class="comp-card" data-modal="1" data-spec="${spec}" data-thumb="${thumb}"${c.vr?` data-vr='${JSON.stringify(c.vr)}'`:''} data-mtitle="${c.en} ${c.nm}" data-mtag="${tag}${c.note?' · '+c.note:''}${c.vr?' · 变体×'+c.vr.length:''}">
+    ${thumbMarkup(thumb,c.en+' '+c.nm,'comp-wrap')}
     <div class="comp-info">
       <span class="en">${c.en}</span> <span class="nm">${c.nm}</span>
       <div class="param">${tag}${c.note?' · '+c.note:''}</div>
       <div>${(c.rel||[]).map(r=>`<span class="rel">${r}</span>`).join('')}${extra}</div>
     </div></div>`;
+}
+
+function componentSpec(c){
+  return c.t==='ec'?('ec:'+c.id):(c.t==='new'?('new:'+c.mk):(c.t+':'+c.num));
+}
+function componentPageScale(spec){
+  const item=SMARTART_COMPONENTS.flatMap(group=>group.items).find(candidate=>
+    componentSpec(candidate)===spec||(candidate.vr||[]).some(([variantSpec])=>variantSpec===spec)
+  );
+  const scale=Number(item&&item.pageScale);
+  return Number.isFinite(scale)&&scale>0&&scale<=2?scale:1;
 }
 
 /* 非关系页 */
@@ -1789,8 +1920,9 @@ $('#c-cmp').textContent=SMARTART_COMPONENT_COUNT+(EXTRACT_GROUPS.length?'+'+EXTR
 /* 反向抽取候选渲染:整页版式预览(组件本体 = 中央图形) */
 function extractCard(it){
   const full=FRAMES+'layout-'+it.from.toLowerCase()+'.html';
-  return `<div class="card" data-modal="1" data-frame="${full}" data-mtitle="${it.from} → ${it.nm}" data-mtag="${it.note||'整页预览'}">
-    <div class="frame-wrap"><iframe loading="lazy" data-src="${full}"></iframe></div>
+  const thumb=pageThumb(full);
+  return `<div class="card" data-modal="1" data-frame="${full}" data-thumb="${thumb}" data-mtitle="${it.from} → ${it.nm}" data-mtag="${it.note||'整页预览'}">
+    ${thumbMarkup(thumb,it.from+' '+it.nm)}
     <div class="card-info"><span class="id">${it.from} → 组件</span>
       <div class="nm">${it.nm}</div>
       ${it.note?`<div class="meta">${it.note}</div>`:''}
@@ -1816,13 +1948,29 @@ $('#extract-groups').innerHTML=EXTRACT_GROUPS.map(g=>`
     '<div class="layer-info"><span id="layer-title"></span><span id="layer-variants"></span><span class="layer-count" id="layer-count"></span></div></div>';
   document.body.appendChild(modal);
   const prevBtn=modal.querySelector('.layer-nav.prev'),
-        nextBtn=modal.querySelector('.layer-nav.next');
+        nextBtn=modal.querySelector('.layer-nav.next'),
+        layerStage=modal.querySelector('#layer-stage');
   let ecChart=null;
-  /* 翻页序列 = 当前 tab 的全部可弹卡片;token 防连续快翻时慢资源回写旧舞台 */
-  let navCards=[],openToken=0;
-  function close(){
+  /* 列表始终只有缩略图；浮层任意时刻只保留一个实时舞台。token 防连续快翻时慢资源回写旧舞台。 */
+  let navCards=[],openToken=0,currentCard=null;
+  function dismissVariantMenu(returnFocus=false){
+    const trigger=modal.querySelector('.variant-trigger');
+    const menu=modal.querySelector('.variant-menu');
+    if(!trigger||!menu||trigger.getAttribute('aria-expanded')!=='true')return false;
+    menu.hidden=true;
+    trigger.setAttribute('aria-expanded','false');
+    if(returnFocus)trigger.focus();
+    return true;
+  }
+  function disposeLive(){
     if(ecChart){ecChart.dispose();ecChart=null;}
+    layerStage.replaceChildren();
+    layerStage.dataset.liveReady='0';
+  }
+  function close(){
     openToken++;
+    currentCard=null;
+    disposeLive();
     modal.classList.remove('on');
   }
   modal.querySelector('.layer-bg').onclick=close;
@@ -1831,16 +1979,49 @@ $('#extract-groups').innerHTML=EXTRACT_GROUPS.map(g=>`
   nextBtn.onclick=()=>step(1);
   document.addEventListener('keydown',e=>{
     if(!modal.classList.contains('on'))return;
-    if(e.key==='Escape')close();
+    if(e.key==='Escape'){
+      if(dismissVariantMenu(true))return;
+      close();
+    }
+    else if(modal.querySelector('.variant-trigger[aria-expanded="true"]')&&(e.key==='ArrowLeft'||e.key==='ArrowRight'))return;
     else if(e.key==='ArrowLeft')step(-1);
     else if(e.key==='ArrowRight')step(1);
   });
+  document.addEventListener('click',e=>{
+    const box=modal.querySelector('#layer-variants');
+    if(box&&!box.contains(e.target))dismissVariantMenu();
+  });
 
-  /* 渲染主体进浮层:spec = atlas:N / native:N / new:I / ec:ID;frame=URL(版式整页) */
-  function renderSpec(spec){
-    const st=document.getElementById('layer-stage');
-    if(ecChart){ecChart.dispose();ecChart=null;}
-    st.innerHTML='';
+  function prepareFacade(card){
+    disposeLive();
+    const img=document.createElement('img');
+    img.className='layer-thumb';
+    img.width=640;img.height=360;
+    img.alt=card.dataset.mtitle||'预览';
+    img.src=card.dataset.thumb||'';
+    layerStage.appendChild(img);
+  }
+  function createLiveLayer(){
+    const live=document.createElement('div');
+    live.className='layer-live';
+    layerStage.appendChild(live);
+    return live;
+  }
+  function revealLive(live,token){
+    if(token!==openToken||!live.isConnected){live.remove();return false;}
+    live.classList.add('is-ready');
+    layerStage.dataset.liveReady='1';
+    return true;
+  }
+  function twoFrames(){return new Promise(resolve=>requestAnimationFrame(()=>requestAnimationFrame(resolve)));}
+  async function waitForFonts(doc=document){
+    try{
+      if(doc.fonts&&doc.fonts.ready)await Promise.race([doc.fonts.ready,new Promise(resolve=>setTimeout(resolve,4000))]);
+    }catch(err){}
+  }
+
+  /* 渲染主体进指定实时层:spec = atlas:N / native:N / new:I / ec:ID。 */
+  async function renderSpec(spec,st){
     const kind=spec.split(':')[0],key=spec.slice(kind.length+1);
     if(kind==='ec'){
       const box=document.createElement('div');
@@ -1861,7 +2042,9 @@ $('#extract-groups').innerHTML=EXTRACT_GROUPS.map(g=>`
           box.style.transform='translate('+((st.clientWidth-1600*s)/2)+'px,'+((st.clientHeight-900*s)/2)+'px) scale('+s+')';
         };
         requestAnimationFrame(()=>{fitEc();requestAnimationFrame(fitEc);});
-      }else{st.textContent='渲染失败';}
+      }else throw new Error('ECharts 渲染资源不完整:'+key);
+      await waitForFonts();
+      await twoFrames();
       return;
     }
     const host=document.createElement('div');
@@ -1879,94 +2062,151 @@ $('#extract-groups').innerHTML=EXTRACT_GROUPS.map(g=>`
     }
     host.innerHTML=markup;
     st.appendChild(host);
+    host.dataset.pageScale=String(componentPageScale(spec));
     /* atlas 画板内容天然偏小,详情与预览同样放开放大 */
     if(kind==='atlas')host.dataset.scaleUp='1';
-    /* 弹窗不套声明框:声明框是卡片预览/导出的适配基准,reshape 按整块 viewBox 取均匀比例,
-       内容只占声明框的一部分(如 #085 内容只占框上部约四成高),按框居中会把内容顶偏。
-       审阅视图按 snippet 原生比例渲染,由 fitStage 量实际绘制内容居中,与 atlas/抄录一致。 */
+    /* Native 卡片与详情必须共用同一份自然内容框和声明 frame；二者只允许整体缩放不同。 */
+    if(kind==='native'&&entry)applyDeclaredFrame(host,entry);
     requestAnimationFrame(()=>{
       fitStage(st,host);
       requestAnimationFrame(()=>fitStage(st,host));
       /* 入场淡入最长约 1s,动画放完再复量一次,兜住测量时序 */
       setTimeout(()=>{if(modal.classList.contains('on')&&host.isConnected)fitStage(st,host);},1100);
     });
+    await waitForFonts();
+    await twoFrames();
   }
-  function renderFrame(url){
-    const st=document.getElementById('layer-stage');
-    if(ecChart){ecChart.dispose();ecChart=null;}
-    st.innerHTML='';
+  async function renderFrame(url,st){
     const wrap=document.createElement('div');
     /* 等比缩放取 min(宽比,高比)并居中;补边染纸色,舞台的深一档底色(paper-deep)不能露出来 */
     wrap.style.cssText='position:absolute;inset:0;overflow:hidden;background:var(--paper)';
     const f=document.createElement('iframe');
-    f.src=url;f.style.cssText='width:1920px;height:1080px;border:0;transform-origin:0 0';
+    f.style.cssText='width:1920px;height:1080px;border:0;transform-origin:0 0';
     wrap.appendChild(f);st.appendChild(wrap);
     const fit=()=>{
       const s=Math.min(st.clientWidth/1920,st.clientHeight/1080);
       const dx=(st.clientWidth-1920*s)/2,dy=(st.clientHeight-1080*s)/2;
       f.style.transform='translate('+dx+'px,'+dy+'px) scale('+s+')';
     };
+    const loaded=new Promise(resolve=>{
+      const timer=setTimeout(resolve,8000);
+      f.addEventListener('load',async()=>{
+        clearTimeout(timer);
+        try{await waitForFonts(f.contentDocument);}catch(err){}
+        resolve();
+      },{once:true});
+    });
+    f.src=url;
     requestAnimationFrame(()=>{fit();requestAnimationFrame(fit);});
+    await loaded;
+    await twoFrames();
   }
-  /* 变体 tab:合并组的被藏变体源码在浮层逐个可见(每个 tab 重渲该变体 snippet/option);‹ › 的跨卡片序列不受影响 */
+  /* 变体选择器:默认只露出当前名称与序号,点击后向上展开全部变体;‹ › 的跨卡片序列不受影响 */
   function renderVariants(card){
     const box=document.getElementById('layer-variants');
-    box.innerHTML='';
+    box.replaceChildren();
     let vr=null;
     try{vr=card.dataset.vr?JSON.parse(card.dataset.vr):null;}catch(err){vr=null;}
     if(!vr||vr.length<2)return;
-    vr.forEach(([spec,label],i)=>{
-      const b=document.createElement('button');
-      b.type='button';
-      b.className='vtab'+(i===0?' on':'');
-      b.textContent=label;
-      b.onclick=()=>{
-        if(b.classList.contains('on'))return;
-        box.querySelectorAll('.vtab').forEach(x=>x.classList.remove('on'));
-        b.classList.add('on');
-        renderSpec(spec);
+    const trigger=document.createElement('button');
+    trigger.type='button';
+    trigger.className='variant-trigger';
+    trigger.setAttribute('aria-haspopup','listbox');
+    trigger.setAttribute('aria-expanded','false');
+    trigger.innerHTML='<span class="variant-kicker">变体</span><span class="variant-current"></span><span class="variant-index"></span><span class="variant-caret">▲</span>';
+    const current=trigger.querySelector('.variant-current');
+    const index=trigger.querySelector('.variant-index');
+    const menu=document.createElement('div');
+    menu.className='variant-menu';
+    menu.setAttribute('role','listbox');
+    menu.hidden=true;
+    const closeMenu=()=>{menu.hidden=true;trigger.setAttribute('aria-expanded','false');};
+    const openMenu=()=>{menu.hidden=false;trigger.setAttribute('aria-expanded','true');};
+    const options=vr.map(([spec,label],i)=>{
+      const option=document.createElement('button');
+      option.type='button';
+      option.className='variant-option';
+      option.setAttribute('role','option');
+      option.setAttribute('aria-selected',i===0?'true':'false');
+      option.innerHTML='<span class="variant-option-index">'+String(i+1).padStart(2,'0')+'</span><span></span>';
+      option.lastElementChild.textContent=label;
+      option.onclick=e=>{
+        e.stopPropagation();
+        if(option.getAttribute('aria-selected')==='true'){closeMenu();trigger.focus();return;}
+        options.forEach(x=>x.setAttribute('aria-selected','false'));
+        option.setAttribute('aria-selected','true');
+        current.textContent=label;
+        index.textContent=String(i+1).padStart(2,'0')+' / '+String(vr.length).padStart(2,'0');
+        closeMenu();
+        trigger.focus();
+        loadCard(card,spec);
       };
-      box.appendChild(b);
+      option.onkeydown=e=>{
+        if(e.key==='Escape'){e.preventDefault();e.stopPropagation();closeMenu();trigger.focus();return;}
+        if(e.key!=='ArrowDown'&&e.key!=='ArrowUp')return;
+        e.preventDefault();
+        const next=(i+(e.key==='ArrowDown'?1:-1)+options.length)%options.length;
+        options[next].focus();
+      };
+      menu.appendChild(option);
+      return option;
     });
+    current.textContent=vr[0][1];
+    index.textContent='01 / '+String(vr.length).padStart(2,'0');
+    trigger.onclick=e=>{
+      e.stopPropagation();
+      if(menu.hidden){openMenu();options.find(x=>x.getAttribute('aria-selected')==='true')?.focus();}
+      else closeMenu();
+    };
+    trigger.onkeydown=e=>{
+      if(e.key!=='ArrowDown'&&e.key!=='ArrowUp')return;
+      e.preventDefault();openMenu();
+      options.find(x=>x.getAttribute('aria-selected')==='true')?.focus();
+    };
+    box.append(trigger,menu);
   }
-  /* 打开/翻页:序列取当前 tab 全部 [data-modal] 卡;组件卡点开仍走两段守卫,键盘与按钮翻页直接渲染 */
+  /* 打开/翻页:先展示静态图，再异步启动真实页面或组件并无闪白替换。 */
   let navIndex=-1;
-  async function show(card){
+  async function loadCard(card,overrideSpec=''){
     const d=card.dataset;
+    const token=++openToken;
+    prepareFacade(card);
+    const live=createLiveLayer();
+    try{
+      if(d.frame)await renderFrame(d.frame,live);
+      else{
+        const spec=overrideSpec||d.spec;
+        if(!spec)return;
+        const kind=spec.split(':')[0];
+        if(kind==='ec')await ensureEChartsAssets();
+        else await ensureComponentCore();
+        assertVariantRefs();
+        if(token!==openToken)return;
+        await renderSpec(spec,live);
+      }
+      revealLive(live,token);
+    }catch(err){
+      if(token!==openToken)return;
+      live.innerHTML='<div class="placeholder"><span class="big">加载失败</span><span></span></div>';
+      live.querySelector('span:last-child').textContent=err&&err.message||String(err);
+      revealLive(live,token);
+      console.error(err);
+    }
+  }
+  function show(card){
+    const d=card.dataset;
+    currentCard=card;
     document.getElementById('layer-title').innerHTML=(d.mtitle||'')+(d.mtag?' · '+d.mtag:'');
     navIndex=navCards.indexOf(card);
     document.getElementById('layer-count').textContent=navIndex<0?'':(navIndex+1)+' / '+navCards.length;
     prevBtn.disabled=navIndex<=0;
     nextBtn.disabled=navIndex<0||navIndex>=navCards.length-1;
     modal.classList.add('on');
-    const token=++openToken;
-    if(d.frame){renderFrame(d.frame);return;}
-    if(!d.spec)return;
-    /* 翻到未挂载过的组件卡:数据脚本没就绪才显示占位并等待,否则直接渲染(避免每次打开闪"加载中") */
-    const kind=d.spec.split(':')[0];
-    if(kind==='ec'||kind==='atlas'||kind==='native'){
-      const ready=kind==='ec'
-        ?!!(window.WISE_PPT_ECHARTS_GALLERY_DATA&&window.echarts&&window.WiseEchartsThemeAdapter)
-        :!!(kind==='atlas'?window.SWISS_CATALOG_DATA:window.PAPER_INK_COMPONENT_DATA);
-      if(!ready){
-        const st=document.getElementById('layer-stage');
-        if(ecChart){ecChart.dispose();ecChart=null;}
-        st.innerHTML='<div class="placeholder"><span class="big">加载中</span></div>';
-        try{
-          if(kind==='ec'){await ensureEChartsAssets();assertVariantRefs();}
-          else await ensureComponentCore();
-        }catch(err){
-          st.textContent='加载失败:'+(err&&err.message||err);
-          return;
-        }
-        if(token!==openToken)return;
-      }
-    }
     renderVariants(card);
-    renderSpec(d.spec);
+    loadCard(card);
   }
   function open(card){
-    navCards=[...document.querySelectorAll('main.on [data-modal]')];
+    navCards=[...document.querySelectorAll('main.on [data-modal]')].filter(x=>x.getClientRects().length);
     show(card);
   }
   function step(dir){
@@ -1980,18 +2220,13 @@ $('#extract-groups').innerHTML=EXTRACT_GROUPS.map(g=>`
   document.addEventListener('click',function(e){
     const card=e.target.closest('[data-modal]');
     if(!card)return;
-    const d=card.dataset;
-    const preview=card.querySelector('.comp-stage');
-    if(d.spec&&preview&&!preview.classList.contains('is-mounted')){
-      queueComponentStage(preview);
-      return;
-    }
     open(card);
   });
 })();
 
-/* ============ 组件原生渲染引擎(无 iframe) ============ */
-/* 1) 资源分层:组件页才加载 atlas/native；ECharts 到第一张图表接近视口才加载。 */
+/* ============ 组件原生渲染引擎(只用于浮层和缩略图生成) ============ */
+/* 1) 资源分层:浏览组件列表不加载；首次打开相应组件浮层时才加载 tokens、数据与脚本。 */
+const THEME_STYLE='../themes/paper-ink/assets/design-tokens.css';
 const COMPONENT_CORE_SCRIPTS=[
   '../themes/paper-ink/adapters/atlas.js',
   'ppt-component-atlas/catalog-data.js',
@@ -2003,7 +2238,19 @@ const ECHARTS_SCRIPTS=[
   'gallery-components/echarts-catalog-data.js',
   'gallery-components/echarts-theme-adapter.js',
 ];
-let componentCorePromise=null,echartsAssetsPromise=null,componentCssInjected=false;
+let themeAssetsPromise=null,componentCorePromise=null,echartsAssetsPromise=null,componentCssInjected=false;
+function ensureThemeAssets(){
+  if(!themeAssetsPromise){
+    themeAssetsPromise=new Promise((resolve,reject)=>{
+      const link=document.createElement('link');
+      link.rel='stylesheet';link.href=THEME_STYLE;
+      link.onload=resolve;
+      link.onerror=()=>reject(new Error('主题资源加载失败:'+THEME_STYLE));
+      document.head.appendChild(link);
+    }).catch(err=>{themeAssetsPromise=null;throw err;});
+  }
+  return themeAssetsPromise;
+}
 function loadScript(src){
   return new Promise((resolve,reject)=>{
     const script=document.createElement('script');
@@ -2018,7 +2265,8 @@ async function loadScriptsInOrder(sources){
 }
 function ensureComponentCore(){
   if(!componentCorePromise){
-    componentCorePromise=Promise.all(COMPONENT_CORE_SCRIPTS.map(loadScript))
+    componentCorePromise=ensureThemeAssets()
+      .then(()=>Promise.all(COMPONENT_CORE_SCRIPTS.map(loadScript)))
       .then(()=>injectComponentCss())
       .catch(err=>{componentCorePromise=null;throw err;});
   }
@@ -2026,7 +2274,8 @@ function ensureComponentCore(){
 }
 function ensureEChartsAssets(){
   if(!echartsAssetsPromise){
-    echartsAssetsPromise=loadScriptsInOrder(ECHARTS_SCRIPTS)
+    echartsAssetsPromise=ensureThemeAssets()
+      .then(()=>loadScriptsInOrder(ECHARTS_SCRIPTS))
       .catch(err=>{echartsAssetsPromise=null;throw err;});
   }
   return echartsAssetsPromise;
@@ -2053,11 +2302,9 @@ function injectComponentCss(){
   componentCssInjected=true;
 }
 
-/* native 旧证据片段统一用 600×600 做过坐标归一化。这里按 entry.frame 反归一化：
-   - HTML 组件直接重排到声明宽高；
-   - SVG 的空间坐标恢复真实纵横比，但文字、圆点和小型语义组做反向补偿，避免被拉宽/压扁；
-   - 线宽使用 non-scaling-stroke，保持纸墨线稿粗细不变。
-   这样 frame 是唯一比例真值，不再由历史 .pi-card 的 600×600 默认值决定预览。 */
+/* native 旧证据片段统一用 600×600 做过坐标归一化。反归一化必须先裁掉历史方画板留白，
+   再把“实际绘制内容”映射到 entry.frame；否则会把内容已经自带的宽高比再拉一次。
+   HTML 组件直接重排；SVG 保持文字、圆点和小型语义组形状，线宽使用 non-scaling-stroke。 */
 function nativeFrame(entry){
   const frame=entry&&entry.paperInkNative&&entry.frame;
   const width=frame&&Number(frame.width),height=frame&&Number(frame.height);
@@ -2088,8 +2335,41 @@ function ratioLockPlan(svg,counterX,counterY){
     return {node,parent,x:point.x,y:point.y,counterX,counterY};
   }).filter(Boolean);
 }
+function nativeSvgContentBox(svg){
+  const matrix=svg&&svg.getScreenCTM&&svg.getScreenCTM();
+  if(!matrix)return null;
+  let inverse;
+  try{inverse=matrix.inverse();}catch(err){return null;}
+  let left=Infinity,top=Infinity,right=-Infinity,bottom=-Infinity;
+  const nodes=[...svg.querySelectorAll('path,line,polyline,polygon,rect,circle,ellipse,text,image,use,foreignObject')]
+    .filter(node=>!node.closest('defs'));
+  nodes.forEach(node=>{
+    const cs=getComputedStyle(node);
+    if(cs.display==='none'||cs.visibility==='hidden')return;
+    const rect=node.getBoundingClientRect();
+    if(!Number.isFinite(rect.left)||!Number.isFinite(rect.top)||(!rect.width&&!rect.height))return;
+    const points=[
+      new DOMPoint(rect.left,rect.top),new DOMPoint(rect.right,rect.top),
+      new DOMPoint(rect.right,rect.bottom),new DOMPoint(rect.left,rect.bottom)
+    ].map(point=>point.matrixTransform(inverse));
+    points.forEach(point=>{
+      left=Math.min(left,point.x);top=Math.min(top,point.y);
+      right=Math.max(right,point.x);bottom=Math.max(bottom,point.y);
+    });
+  });
+  if(!Number.isFinite(left)||right<=left||bottom<=top)return null;
+  const width=right-left,height=bottom-top;
+  /* 给端点、细线与字体抗锯齿留安全边，不把预览裁到贴边。 */
+  const padX=Math.max(4,width*.025),padY=Math.max(4,height*.025);
+  return {x:left-padX,y:top-padY,width:width+padX*2,height:height+padY*2};
+}
 function reshapeNativeSvg(svg,frame){
   if(!svg||svg.dataset.declaredFrameApplied==='1')return;
+  const natural=nativeSvgContentBox(svg);
+  if(natural){
+    svg.setAttribute('viewBox',[natural.x,natural.y,natural.width,natural.height].join(' '));
+    svg.dataset.naturalViewBox=[natural.x,natural.y,natural.width,natural.height].map(n=>n.toFixed(3)).join(' ');
+  }
   const vb=svg.viewBox&&svg.viewBox.baseVal;
   if(!vb||vb.width<=0||vb.height<=0)return;
   const scaleX=frame.width/vb.width,scaleY=frame.height/vb.height;
@@ -2131,11 +2411,36 @@ function applyDeclaredFrame(host,entry){
   host.dataset.frameApplied='1';
 }
 
+/* collection 组件保留单一生产模板；Catalog 只在预览层用样例记录克隆，避免把样例数量写死进 renderer。 */
+function materializeNativePreview(host,entry){
+  const records=entry&&entry.previewRecords;
+  const contract=entry&&entry.dataContract;
+  if(!Array.isArray(records)||!records.length||!contract||contract.mode!=='collection')return;
+  const templates=[...host.querySelectorAll('[data-repeat-unit]')]
+    .filter(node=>node.dataset.repeatUnit===contract.unit);
+  const template=templates[0];
+  if(!template||!template.parentNode)return;
+  const parent=template.parentNode;
+  const marker=document.createComment('catalog-preview-records');
+  parent.insertBefore(marker,template);
+  templates.forEach(node=>node.remove());
+  records.forEach(record=>{
+    const clone=template.cloneNode(true);
+    clone.querySelectorAll('[data-field]').forEach(field=>{
+      const key=field.dataset.field;
+      if(Object.prototype.hasOwnProperty.call(record,key))field.textContent=String(record[key]);
+    });
+    parent.insertBefore(clone,marker);
+  });
+  marker.remove();
+}
+
 /* 2) snippet 注入 + 场馆缩放:comp-stage(16:9)内,组件原尺寸 contain 居中 */
 function mountStage(stage){
   if(stage.dataset.new!==undefined){
     const host=document.createElement('div');
     host.className='stage-host';
+    host.dataset.pageScale=String(componentPageScale('new:'+stage.dataset.new));
     host.innerHTML=NEW_MARKUP[+stage.dataset.new]||'';
     stage.appendChild(host);
     stage.classList.add('is-mounted');
@@ -2158,8 +2463,10 @@ function mountStage(stage){
   const markup=adapter?adapter.adaptMarkup(entry.snippet||''):(entry.snippet||'');
   const host=document.createElement('div');
   host.className='stage-host';
+  host.dataset.pageScale=String(componentPageScale(stage.dataset.src||''));
   if(kind==='atlas')host.dataset.scaleUp='1';
   host.innerHTML=markup;
+  if(kind==='native')materializeNativePreview(host,entry);
   stage.appendChild(host);
   applyDeclaredFrame(host,entry);
   stage.classList.add('is-mounted');
@@ -2279,6 +2586,8 @@ function fitStage(stage,host,usePptCanvas=false,remeasure=false){
   if(stageW<2||stageH<2)return;
   const W=usePptCanvas?1280:stageW,H=usePptCanvas?720:stageH;
   const scaleUp=host.dataset.scaleUp==='1';
+  const rawPageScale=Number(host.dataset.pageScale);
+  const pageScale=Number.isFinite(rawPageScale)&&rawPageScale>0&&rawPageScale<=2?rawPageScale:1;
   const maxScale=(w,h)=>scaleUp?Math.max(1,Math.min(880/w,520/h)):1;
   const shouldMeasure=!usePptCanvas||remeasure||host.dataset.innerFitted!=='1';
   if(shouldMeasure){
@@ -2294,12 +2603,12 @@ function fitStage(stage,host,usePptCanvas=false,remeasure=false){
     const b=host.dataset.frameApplied==='1'&&frameW>0&&frameH>0?[0,0,frameW,frameH]:contentBounds(el);
     if(b){
       const bw=b[2]-b[0],bh=b[3]-b[1];
-      s=bw>0&&bh>0?Math.min(W/bw,H/bh,maxScale(bw,bh)):1;
+      s=(bw>0&&bh>0?Math.min(W/bw,H/bh,maxScale(bw,bh)):1)*pageScale;
       left=W/2-s*(b[0]+bw/2);
       top=H/2-s*(b[1]+bh/2);
     }else{
       const w=el.offsetWidth||600,h=el.offsetHeight||600;
-      s=Math.min(W/w,H/h,maxScale(w,h));
+      s=Math.min(W/w,H/h,maxScale(w,h))*pageScale;
       left=(W-w*s)/2;
       top=(H-h*s)/2;
     }
@@ -2338,76 +2647,10 @@ function initEChartsStage(stage){
     const W=stage.clientWidth,s=W/1280;
     box.style.transform='scale('+s+')';
   });
+  return chart;
 }
 
-/* 首次进入组件 tab 只建立观察；每帧最多挂载 2 张临近卡片，避免长任务阻塞滚动。 */
-let cmpMounted=false,componentMountObserver=null,componentVisibilityObserver=null,componentMountRaf=0;
-const componentMountQueue=[];
-function failComponentStage(stage,err){
-  const p=document.createElement('div');
-  p.className='placeholder';
-  p.textContent='加载失败:'+(err&&err.message||err);
-  stage.replaceChildren(p);
-  stage.classList.add('is-mounted');
-  stage.dataset.mountState='error';
-}
-async function mountQueuedStage(stage){
-  if(stage.dataset.mountState==='mounted'||stage.dataset.mountState==='loading')return;
-  stage.dataset.mountState='loading';
-  try{
-    if(stage.dataset.ec!==undefined){
-      await ensureEChartsAssets();
-      assertVariantRefs();
-      initEChartsStage(stage);
-    }else{
-      await ensureComponentCore();
-      mountStage(stage);
-    }
-    stage.dataset.mountState='mounted';
-  }catch(err){failComponentStage(stage,err);}
-}
-function drainComponentQueue(){
-  componentMountRaf=0;
-  let budget=2;
-  while(budget--&&componentMountQueue.length)mountQueuedStage(componentMountQueue.shift());
-  if(componentMountQueue.length)componentMountRaf=requestAnimationFrame(drainComponentQueue);
-}
-function queueComponentStage(stage){
-  if(stage.dataset.mountState)return;
-  stage.dataset.mountState='queued';
-  componentMountQueue.push(stage);
-  if(!componentMountRaf)componentMountRaf=requestAnimationFrame(drainComponentQueue);
-}
-function observeComponentStages(){
-  const stages=document.querySelectorAll('.comp-stage[data-src],.comp-stage[data-new],.comp-stage[data-ec]');
-  if('IntersectionObserver' in window){
-    componentMountObserver=new IntersectionObserver(entries=>{
-      entries.forEach(entry=>{
-        if(!entry.isIntersecting)return;
-        componentMountObserver.unobserve(entry.target);
-        queueComponentStage(entry.target);
-      });
-    },{rootMargin:'640px 0px'});
-    componentVisibilityObserver=new IntersectionObserver(entries=>{
-      entries.forEach(entry=>entry.target.classList.toggle('is-visible',entry.isIntersecting));
-    },{threshold:.01});
-    stages.forEach(stage=>{componentMountObserver.observe(stage);componentVisibilityObserver.observe(stage);});
-  }else stages.forEach(stage=>{stage.classList.add('is-visible');queueComponentStage(stage);});
-}
-async function mountAllComponents(){
-  if(cmpMounted)return;
-  cmpMounted=true;
-  try{
-    await ensureComponentCore();
-    assertVariantRefs();
-    observeComponentStages();
-    if(document.fonts&&document.fonts.ready)document.fonts.ready.then(()=>refitComponents(true));
-  }catch(err){
-    cmpMounted=false;
-    document.querySelectorAll('.comp-stage').forEach(stage=>failComponentStage(stage,err));
-  }
-}
-/* 变体表门禁:data-vr 至少两项、首项须等于卡片的代表 spec、引用的画册/ECharts 条目须真实存在(未加载的源跳过,由各自加载点复检) */
+/* 变体表门禁:data-vr 至少两项、首项须等于卡片的代表 spec、引用的画册/ECharts/抄录条目须真实存在(未加载的源跳过,由各自加载点复检) */
 function assertVariantRefs(){
   const atlasNums=window.SWISS_CATALOG_DATA?new Set(window.SWISS_CATALOG_DATA.entries.map(e=>e.num)):null;
   const ecIds=window.WISE_PPT_ECHARTS_GALLERY_DATA?new Set(window.WISE_PPT_ECHARTS_GALLERY_DATA.components.map(c=>c.component_id)):null;
@@ -2421,14 +2664,57 @@ function assertVariantRefs(){
         if(atlasNums&&!atlasNums.has(Number(key)))throw new Error('变体缺画册条目:'+spec+' · '+card.dataset.mtitle);
       }else if(k==='ec'){
         if(ecIds&&!ecIds.has(key))throw new Error('变体缺 ECharts 条目:'+spec+' · '+card.dataset.mtitle);
-      }else throw new Error('变体只收 atlas/ec:'+spec+' · '+card.dataset.mtitle);
+      }else if(k==='new'){
+        const index=Number(key);
+        if(!Number.isInteger(index)||!NEW_MARKUP[index])throw new Error('变体缺版式抄录条目:'+spec+' · '+card.dataset.mtitle);
+      }else throw new Error('变体只收 atlas/ec/new:'+spec+' · '+card.dataset.mtitle);
     });
   });
 }
-const _switchTabOri=switchTab;
-switchTab=function(id){_switchTabOri(id);if(id==='cmp')mountAllComponents();};
 
-/* ============ 结构枚举(6 种切分,从 skill-design 第五章 + 55 版式反向抽象) ============ */
+/* 构建专用渲染模式:生成器逐个请求 spec，页面只保留一个 1280×720 舞台。 */
+if(THUMBGEN){
+  const stage=document.createElement('div');
+  stage.id='thumbgen-stage';stage.className='comp-stage';
+  document.body.appendChild(stage);
+  document.body.classList.add('thumbgen');
+  let thumbgenChart=null;
+  window.WiseCatalogThumbgen={
+    async renderSpec(spec){
+      if(thumbgenChart){thumbgenChart.dispose();thumbgenChart=null;}
+      stage.replaceChildren();
+      stage.className='comp-stage';
+      delete stage.dataset.src;delete stage.dataset.new;delete stage.dataset.ec;
+      delete stage.dataset.innerFitted;delete stage.dataset.mountState;
+      const kind=spec.split(':')[0],key=spec.slice(kind.length+1);
+      if(kind==='ec'){
+        await ensureEChartsAssets();
+        stage.dataset.ec=key;
+        thumbgenChart=initEChartsStage(stage);
+      }else{
+        await ensureComponentCore();
+        if(kind==='new')stage.dataset.new=key;
+        else stage.dataset.src=spec;
+        mountStage(stage);
+      }
+      assertVariantRefs();
+      if(document.fonts&&document.fonts.ready)await document.fonts.ready;
+      await new Promise(resolve=>requestAnimationFrame(()=>requestAnimationFrame(resolve)));
+      await new Promise(resolve=>setTimeout(resolve,1150));
+      const host=stage.querySelector('.stage-host');
+      if(host)fitStage(stage,host,true,true);
+      stage.dataset.renderReady='1';
+      return true;
+    },
+    inventory(){
+      return [...document.querySelectorAll('[data-modal][data-thumb]')].map(card=>({
+        frame:card.dataset.frame||null,spec:card.dataset.spec||null,thumb:card.dataset.thumb,title:card.dataset.mtitle||''
+      }));
+    }
+  };
+}
+
+/* ============ 结构枚举(6 种切分,从 skill-design 第五章 + 54 版式反向抽象) ============ */
 /* 空槽大图:taxonomy-empty/ 下 10 张是 taxonomy(wise-ppt-page-expression)110 张成熟蓝图
    按槽位几何去重出的空槽版式原样提取;上下等分、网格整类与左右4等分变体 taxonomy 无空槽实例,
    按同规格补造 7 张。来源与拓扑对应关系见 taxonomy-empty/manifest.json。
@@ -2522,9 +2808,10 @@ STRUCTS.forEach(d=>{
     throw new Error(d.cn+' 分点与示例未闭合: 漏='+miss+' 重='+dup+' 多='+extra);
 });
 
-/* 结构切分 tab:定义行 + 空槽大图(点击整页放大);每张分点标对应示例页 */
+/* 结构页:每个空槽变体与它的真实示例相邻展示,不再把定义和示例拆成两个 tab。 */
 function emptyCard(d,e){
   const full=EMPTY_DIR+e.f;
+  const thumb=pageThumb(full);
   const src=e.syn?'补造 · taxonomy 无此空槽版式':'taxonomy 空槽版式 · '+e.src;
   const codes=(byStruct[d.key]||[]).map(it=>it[0]);
   const exTxt=e.ex==='all'
@@ -2532,69 +2819,160 @@ function emptyCard(d,e){
     :e.ex.length
       ?'示例:'+e.ex.join(' / ')
       :'示例:无(象限是组件画法,F1 象限归单区)';
-  return `<div class="card" data-modal="1" data-frame="${full}" data-mtitle="${d.cn} · ${e.cap}" data-mtag="${src} · ${exTxt}">
-    <div class="frame-wrap"><iframe loading="lazy" data-src="${full}"></iframe></div>
+  return `<div class="card" data-modal="1" data-frame="${full}" data-thumb="${thumb}" data-mtitle="${d.cn} · ${e.cap}" data-mtag="${src} · ${exTxt}">
+    ${thumbMarkup(thumb,d.cn+' '+e.cap)}
     <div class="card-info"><span class="id">${e.code}</span>
       <div class="nm">${e.cap}</div>
       <div class="meta">${src}<br>${exTxt}</div>
     </div></div>`;
 }
+function structureExampleCard(it){
+  const full=FRAMES+'layout-'+it[0].toLowerCase()+'.html';
+  const thumb=pageThumb(full);
+  return `<div class="card" data-modal="1" data-frame="${full}" data-thumb="${thumb}" data-mtitle="${it[0]} ${it[1]}" data-mtag="结构:${it[2]} · 关系:${it[3]}">
+    ${thumbMarkup(thumb,it[0]+' '+it[1])}
+    <div class="card-info"><span class="id">${it[0]}</span>
+      <div class="nm">${it[1]}</div>
+      <div class="meta">结构:<b>${it[2]}</b> · 关系:<b>${it[3]}</b></div>
+    </div></div>`;
+}
+function examplesOf(d,e){
+  const codes=e.ex==='all'?(byStruct[d.key]||[]).map(it=>it[0]):e.ex;
+  return codes.map(code=>LAYOUT_INDEX[code]);
+}
+function requestedStructureKey(){
+  try{
+    const key=new URLSearchParams(location.search).get('structure');
+    if(STRUCTS.some(d=>d.key===key))return key;
+  }catch(e){}
+  return STRUCTS[0].key;
+}
+const INITIAL_STRUCTURE_KEY=requestedStructureKey();
+function structureVariant(d,e){
+  const examples=examplesOf(d,e);
+  const source=e.syn?'补造 · taxonomy 无此空槽版式':'taxonomy 空槽版式';
+  const exampleGrid=examples.length
+    ?`<div class="variant-examples-grid">${examples.map(structureExampleCard).join('')}</div>`
+    :'<div class="variant-empty-state">暂无关系页示例<br>象限是组件画法,F1 仍归单区</div>';
+  return `<section class="struct-variant">
+    <div class="variant-head"><span class="code">${e.code}</span><h3>${e.cap}</h3></div>
+    <div class="variant-body">
+      <div class="variant-source-title">${source} · ${examples.length} 个对应示例</div>
+      <div class="variant-examples-title">对应示例 · ${examples.length}</div>
+      <div class="variant-empty">${emptyCard(d,e)}</div>
+      <div class="variant-examples">${exampleGrid}</div>
+    </div>
+  </section>`;
+}
+$('#struct-nav').innerHTML=STRUCTS.map(d=>{
+  const count=(byStruct[d.key]||[]).length;
+  const current=d.key===INITIAL_STRUCTURE_KEY;
+  return `<button type="button" data-struct-jump="${d.key}" class="${current?'on':''}" aria-current="${current?'true':'false'}">${d.cn} · ${count}</button>`;
+}).join('');
 $('#str-list').innerHTML=STRUCTS.map(d=>{
   const count=(byStruct[d.key]||[]).length;
-  return `<div class="fam-section">
-    <div class="fam-head"><h2>${d.cn}</h2><span class="tag">${d.en}</span><span class="desc">${d.empties.length} 张空槽大图 · 归入 ${count} 版式</span></div>
-    <div class="struct-info">
-      <div class="s-desc">${d.desc}</div>
-      <div class="s-judge"><b>判断</b>${d.judge}</div>
-      <div class="s-rels">${relsOf(d.key).map(r=>`<span class="rel">${r}</span>`).join('')}</div>
+  const open=d.key===INITIAL_STRUCTURE_KEY;
+  const panelId='struct-panel-'+d.key;
+  const toggleId='struct-toggle-'+d.key;
+  const gridNote=d.key==='grid'
+    ?'<div class="struct-callout"><b>网格 ≠ 表格。</b>网格是页面切分:A7 是 4×7、F4 是 2×3;K4 是左右 3 等分,E4/K1 是上下不对称,它们的行列表格都属于槽内组件画法。</div>'
+    :'';
+  return `<section class="struct-section${open?' is-open':''}" data-struct="${d.key}">
+    <h2 class="struct-toggle-head"><button class="struct-toggle" id="${toggleId}" type="button" aria-expanded="${open}" aria-controls="${panelId}">
+      <span class="struct-toggle-title">${d.cn}<span class="tag">${d.en}</span></span>
+      <span class="struct-toggle-meta">${d.empties.length} 张空槽 · ${count} 个示例</span><span class="struct-toggle-mark" aria-hidden="true">▾</span>
+    </button></h2>
+    <div class="struct-panel" id="${panelId}" role="region" aria-labelledby="${toggleId}"${open?'':' hidden'}>
+      <div class="struct-info"><div class="s-desc">${d.desc}</div><div class="s-judge"><b>判断</b>${d.judge}</div>
+        <div class="s-rels">${relsOf(d.key).map(r=>`<span class="rel">${r}</span>`).join('')}</div></div>
+      ${gridNote}${d.empties.map(e=>structureVariant(d,e)).join('')}
     </div>
-    <div class="grid samples">${d.empties.map(e=>emptyCard(d,e)).join('')}</div>
-  </div>`;
+  </section>`;
 }).join('');
-$('#c-str').textContent=STRUCTS.length;
+$('#c-str').textContent=STRUCTS.length+'类 · '+SMARTART_LAYOUT_COUNT+'例';
 
-/* 结构示例 tab:54 版式按切分归组(卡片与「关系页版式」tab 同一批,只是视角不同) */
-$('#strex-list').innerHTML=STRUCTS.map(d=>{
-  const ms=byStruct[d.key]||[];
-  return `<div class="fam-section">
-    <div class="fam-head"><h2>${d.cn}</h2><span class="tag">${d.en}</span><span class="desc">${ms.length} 版式 · 全部展示</span></div>
-    <div class="grid samples">${ms.map(it=>{
-      const full=FRAMES+'layout-'+it[0].toLowerCase()+'.html';
-      return `<div class="card" data-modal="1" data-frame="${full}" data-mtitle="${it[0]} ${it[1]}" data-mtag="结构:${it[2]} · 关系:${it[3]}">
-        <div class="frame-wrap"><iframe loading="lazy" data-src="${full}"></iframe></div>
-        <div class="card-info"><span class="id">${it[0]}</span>
-          <div class="nm">${it[1]}</div>
-          <div class="meta">结构:<b>${it[2]}</b> · 关系:<b>${it[3]}</b></div>
-        </div></div>`;
-    }).join('')}</div>
-  </div>`;
-}).join('');
-$('#c-strex').textContent=SMARTART_LAYOUT_COUNT;
+/* 当前页签首行立即加载；其余图片交给浏览器原生懒加载。隐藏结构章节在展开前不设置 src。 */
+let fitAllRaf=0;
+function activateThumbs(id){
+  if(THUMBGEN)return;
+  const main=document.getElementById('m-'+id);
+  if(!main)return;
+  requestAnimationFrame(()=>{
+    const imgs=[...main.querySelectorAll('img.catalog-thumb[data-thumb-src]')].filter(img=>img.getClientRects().length);
+    if(!imgs.length)return;
+    const firstTop=Math.min(...imgs.map(img=>img.getBoundingClientRect().top));
+    imgs.forEach(img=>{
+      if(img.dataset.thumbActivated==='1')return;
+      const eager=Math.abs(img.getBoundingClientRect().top-firstTop)<8;
+      img.loading=eager?'eager':'lazy';
+      img.fetchPriority=eager?'high':'auto';
+      img.addEventListener('error',()=>img.classList.add('is-missing'),{once:true});
+      img.src=img.dataset.thumbSrc;
+      img.dataset.thumbActivated='1';
+    });
+  });
+}
 
-/* iframe 不预置 src；只有接近可视区时才创建真实子页面。 */
-let lazyFrameObserver=null,fitAllRaf=0;
-function loadFrame(frame){
-  if(!frame.dataset.src||frame.dataset.loaded==='1')return false;
-  frame.src=frame.dataset.src;
-  frame.dataset.loaded='1';
-  return true;
+/* 结构章节就是一组页内 tab:始终恰好展开一类，隐藏章节不激活缩略图。 */
+function currentStructureKey(){
+  return document.querySelector('.struct-section.is-open')?.dataset.struct||INITIAL_STRUCTURE_KEY;
 }
-/* 加载后不卸载:滚回来的 iframe 不重载(不闪白、不重复执行帧内绘制脚本);
-   离屏卡片的绘制成本由 .card 的 content-visibility 兜底。 */
-function initLazyFrames(){
-  const frames=document.querySelectorAll('.frame-wrap iframe[data-src]');
-  if('IntersectionObserver' in window){
-    lazyFrameObserver=new IntersectionObserver(entries=>{
-      entries.forEach(entry=>{
-        if(!entry.isIntersecting)return;
-        lazyFrameObserver.unobserve(entry.target);
-        if(loadFrame(entry.target))scheduleFitAll();
-      });
-    },{rootMargin:'800px 0px'});
-    frames.forEach(frame=>lazyFrameObserver.observe(frame));
-  }else frames.forEach(loadFrame);
+function syncStructureOffsets(){
+  const header=document.querySelector('header');
+  const nav=document.getElementById('struct-nav');
+  if(header)document.documentElement.style.setProperty('--catalog-header-h',Math.ceil(header.getBoundingClientRect().height)+'px');
+  if(nav&&document.getElementById('m-str').classList.contains('on'))
+    document.documentElement.style.setProperty('--struct-nav-h',Math.ceil(nav.getBoundingClientRect().height)+'px');
 }
-initLazyFrames();
+function setStructureOpen(key,{scroll=false,syncUrl=true}={}){
+  const target=document.querySelector('.struct-section[data-struct="'+key+'"]');
+  if(!target)return;
+  const nextKey=target.dataset.struct;
+  document.querySelectorAll('.struct-section').forEach(section=>{
+    const open=section.dataset.struct===nextKey;
+    section.classList.toggle('is-open',open);
+    const button=section.querySelector('.struct-toggle');
+    const panel=section.querySelector('.struct-panel');
+    button.setAttribute('aria-expanded',String(open));
+    panel.hidden=!open;
+  });
+  document.querySelectorAll('[data-struct-jump]').forEach(button=>{
+    const current=button.dataset.structJump===nextKey;
+    button.classList.toggle('on',current);
+    button.setAttribute('aria-current',String(current));
+  });
+  if(syncUrl){
+    try{
+      const q=new URLSearchParams(location.search);
+      if(nextKey)q.set('structure',nextKey);else q.delete('structure');
+      history.replaceState(null,'',location.pathname+'?'+q.toString());
+    }catch(e){}
+  }
+  activateThumbs('str');scheduleFitAll();
+  requestAnimationFrame(()=>{
+    syncStructureOffsets();
+    if(scroll)target.scrollIntoView({block:'start'});
+  });
+}
+document.querySelectorAll('.struct-toggle').forEach(button=>button.onclick=()=>{
+  const section=button.closest('.struct-section');
+  if(!section.classList.contains('is-open'))setStructureOpen(section.dataset.struct,{scroll:true});
+});
+const structureJumpButtons=[...document.querySelectorAll('[data-struct-jump]')];
+structureJumpButtons.forEach((button,index)=>{
+  button.onclick=()=>setStructureOpen(button.dataset.structJump,{scroll:true});
+  button.onkeydown=e=>{
+    let next=index;
+    if(e.key==='ArrowRight'||e.key==='ArrowDown')next=(index+1)%structureJumpButtons.length;
+    else if(e.key==='ArrowLeft'||e.key==='ArrowUp')next=(index-1+structureJumpButtons.length)%structureJumpButtons.length;
+    else if(e.key==='Home')next=0;
+    else if(e.key==='End')next=structureJumpButtons.length-1;
+    else return;
+    e.preventDefault();
+    structureJumpButtons[next].focus();
+    setStructureOpen(structureJumpButtons[next].dataset.structJump,{scroll:true});
+  };
+});
 
 /* tab 切换:同步地址栏,刷新停在当前 tab,链接可直接分享(scroll 深链参数用后即弃) */
 function switchTab(id){
@@ -2608,10 +2986,12 @@ function switchTab(id){
     try{
       const q=new URLSearchParams(location.search);
       q.set('tab',id);q.delete('scroll');
+      if(id==='str')q.set('structure',currentStructureKey());
+      else q.delete('structure');
       history.replaceState(null,'',location.pathname+'?'+q.toString());
     }catch(e){}
   }
-  scheduleFitAll();
+  requestAnimationFrame(()=>{syncStructureOffsets();activateThumbs(id);scheduleFitAll();});
 }
 document.querySelectorAll('.tab').forEach(t=>t.onclick=()=>switchTab(t.dataset.t));
 try{
@@ -2619,26 +2999,20 @@ try{
   const q=params.get('tab'),sc=params.get('scroll');
   /* 先记下 scroll 再切 tab:切 tab 会把用过的深链参数从地址栏清掉 */
   if(sc){window.scrollTo(0,+sc);setTimeout(()=>{window.scrollTo(0,+sc);scheduleFitAll();},400);}
-  if(q&&document.getElementById('m-'+q))switchTab(q);
+  if(q==='strex')switchTab('str');
+  else if(q&&document.getElementById('m-'+q))switchTab(q);
 }catch(e){}
 function fitAll(){
-  document.querySelectorAll('main.on .frame-wrap').forEach(w=>{
-    const s=w.clientWidth/1920;w.querySelector('iframe').style.transform=`scale(${s})`;
-  });
-  document.querySelectorAll('main.on .comp-wrap iframe').forEach(f=>{
-    const w=f.parentElement,s=w.clientWidth/1280;
-    f.style.transform=`scale(${s})`;
-    f.style.left='0';
-    f.style.top='0';
-  });
   refitComponents();
 }
 function scheduleFitAll(){
   if(fitAllRaf)return;
   fitAllRaf=requestAnimationFrame(()=>{fitAllRaf=0;fitAll();});
 }
-window.addEventListener('resize',scheduleFitAll,{passive:true});
-window.addEventListener('load',scheduleFitAll);
+window.addEventListener('resize',()=>{syncStructureOffsets();scheduleFitAll();},{passive:true});
+window.addEventListener('load',()=>{syncStructureOffsets();scheduleFitAll();});
+syncStructureOffsets();
+activateThumbs(document.querySelector('.tab.on')?.dataset.t||'tpl');
 setTimeout(scheduleFitAll,300);
 </script>
 </body>

@@ -522,7 +522,7 @@ window.SWISS_CATALOG_DATA = {
       "label": "冰山图",
       "num": 51,
       "variant": null,
-      "snippet": "<div class=\"swiss-card swiss-card--body\">\n  <div class=\"swiss-card__content\">\n    \n  \n  <div class=\"iceberg\">\n    <div class=\"iceberg__callout iceberg__callout--surface\">\n      <strong>表层</strong>\n      <span>界面混乱、样式不一致</span>\n    </div>\n    <div class=\"iceberg__visual\" aria-hidden=\"true\">\n      <div class=\"iceberg__stage\">\n        <div class=\"iceberg__waterline\"></div>\n        <svg class=\"iceberg__art\" viewBox=\"0 0 420 420\" preserveAspectRatio=\"xMidYMid meet\">\n          <path class=\"iceberg__shadow\" d=\"M118 182 L340 182 L316 266 L279 332 L246 378 L212 362 L185 400 L160 333 L128 346 L108 272 Z\" />\n          <path class=\"iceberg__mass iceberg__mass--top\" d=\"M118 174 L154 112 L200 96 L236 36 L252 122 L301 158 L340 174 L292 174 L241 149 L194 174 Z\" />\n          <path class=\"iceberg__facet iceberg__facet--top\" d=\"M200 96 L236 36 L252 122 L207 158 Z\" />\n          <path class=\"iceberg__mass iceberg__mass--bottom\" d=\"M118 174 L340 174 L316 266 L279 332 L246 378 L212 362 L185 400 L160 333 L128 346 L108 272 Z\" />\n          <path class=\"iceberg__facet iceberg__facet--bottom\" d=\"M160 333 L184 400 L209 296 L236 336 L246 378 L279 332 L316 266 L278 252 L236 290 L198 246 L154 260 Z\" />\n          <path class=\"iceberg__edge\" d=\"M154 112 L200 96 L236 36 L252 122\" />\n          <path class=\"iceberg__edge\" d=\"M198 246 L209 296 L184 400\" />\n        </svg>\n      </div>\n    </div>\n    <div class=\"iceberg__callout iceberg__callout--depth\">\n      <strong>深层</strong>\n      <span>缺少统一设计系统和组件规范</span>\n    </div>\n  </div>\n\n  </div>\n</div>"
+      "snippet": "<div class=\"swiss-card swiss-card--body\">\n  <div class=\"swiss-card__content\" style=\"padding:24px;min-height:0\">\n    <svg class=\"iceberg-diagram\" viewBox=\"0 0 480 360\" width=\"480\" height=\"360\" xmlns=\"http://www.w3.org/2000/svg\" role=\"img\" aria-labelledby=\"ice51-title ice51-desc\">\n      <title id=\"ice51-title\">冰山模型</title>\n      <desc id=\"ice51-desc\">水面上方是百分之十的可见现象，水面下方是百分之九十的行为模式与系统根因。</desc>\n      <defs>\n        <pattern id=\"ice51Hatch\" width=\"6\" height=\"6\" patternTransform=\"rotate(45)\" patternUnits=\"userSpaceOnUse\">\n          <line x1=\"0\" y1=\"0\" x2=\"0\" y2=\"6\" style=\"stroke:var(--wp-compat-atlas-ink);stroke-width:.5;opacity:.18\"/>\n        </pattern>\n        <pattern id=\"ice51Water\" width=\"8\" height=\"7\" patternUnits=\"userSpaceOnUse\">\n          <line x1=\"0\" y1=\"3.5\" x2=\"8\" y2=\"3.5\" style=\"stroke:var(--wp-compat-atlas-ink);stroke-width:.5;opacity:.10\"/>\n        </pattern>\n      </defs>\n      <text x=\"0\" y=\"14\" font-family=\"var(--wp-font-mono)\" font-size=\"8.5\" letter-spacing=\"2\" style=\"fill:var(--wp-compat-atlas-ink-45)\">ICEBERG MODEL · VISIBLE / HIDDEN</text>\n      <text x=\"480\" y=\"14\" text-anchor=\"end\" font-family=\"var(--wp-font-mono)\" font-size=\"7.5\" letter-spacing=\"1.5\" style=\"fill:var(--wp-compat-atlas-ink-45)\">10 / 90</text>\n      <line x1=\"0\" y1=\"26\" x2=\"480\" y2=\"26\" style=\"stroke:var(--wp-compat-atlas-ink);stroke-width:.6;opacity:.22\"/>\n\n      <text x=\"18\" y=\"84\" font-family=\"var(--wp-font-mono)\" font-size=\"28\" font-weight=\"400\" style=\"fill:var(--wp-compat-atlas-ink)\">10%</text>\n      <text x=\"18\" y=\"103\" font-family=\"var(--wp-font-mono)\" font-size=\"7.5\" letter-spacing=\"1.4\" style=\"fill:var(--wp-compat-atlas-ink-45)\">VISIBLE</text>\n      <text x=\"18\" y=\"224\" font-family=\"var(--wp-font-mono)\" font-size=\"28\" font-weight=\"400\" style=\"fill:var(--wp-compat-atlas-ink)\">90%</text>\n      <text x=\"18\" y=\"243\" font-family=\"var(--wp-font-mono)\" font-size=\"7.5\" letter-spacing=\"1.4\" style=\"fill:var(--wp-compat-atlas-ink-45)\">HIDDEN</text>\n\n      <rect x=\"84\" y=\"131\" width=\"368\" height=\"229\" fill=\"url(#ice51Water)\"/>\n\n      <path d=\"M154 130 L170 100 L192 74 L214 84 L236 52 L258 82 L278 104 L296 130 Z\" style=\"fill:var(--wp-compat-atlas-paper-panel);stroke:var(--wp-compat-atlas-ink-80);stroke-width:.9\"/>\n      <path d=\"M236 52 L214 84 L226 90 L244 64 Z\" style=\"fill:var(--wp-compat-atlas-paper-deep);stroke:none\"/>\n      <path d=\"M226 90 L232 108\" style=\"fill:none;stroke:var(--wp-compat-atlas-ink-25);stroke-width:.6\"/>\n\n      <path d=\"M154 130 L128 170 L118 214 L138 252 L150 288 L182 328 L240 340 L282 322 L310 288 L322 244 L338 200 L322 162 Z\" style=\"fill:var(--wp-compat-atlas-paper-deep);stroke:var(--wp-compat-atlas-ink-80);stroke-width:.9\"/>\n      <path d=\"M296 130 L322 162 L338 200 L312 196 L294 158 Z\" style=\"fill:var(--wp-compat-atlas-paper-panel);stroke:none\"/>\n      <path d=\"M150 288 L182 328 L240 340 L262 306 L212 284 L172 278 Z\" fill=\"url(#ice51Hatch)\" style=\"stroke:none\"/>\n      <path d=\"M118 214 L164 228 L212 284\" style=\"fill:none;stroke:var(--wp-compat-atlas-ink-25);stroke-width:.6\"/>\n\n      <line x1=\"84\" y1=\"130\" x2=\"452\" y2=\"130\" style=\"stroke:var(--wp-compat-atlas-ink-55);stroke-width:.8\"/>\n      <text x=\"84\" y=\"121\" font-family=\"var(--wp-font-mono)\" font-size=\"7.5\" letter-spacing=\"1.4\" style=\"fill:var(--wp-compat-atlas-ink-45)\">WATERLINE</text>\n\n      <circle cx=\"262\" cy=\"86\" r=\"2.2\" style=\"fill:var(--wp-compat-atlas-ink-55)\"/>\n      <line x1=\"262\" y1=\"86\" x2=\"358\" y2=\"72\" style=\"stroke:var(--wp-compat-atlas-ink-55);stroke-width:.6\"/>\n      <text x=\"366\" y=\"68\" font-family=\"var(--wp-font-sans)\" font-size=\"11.5\" font-weight=\"400\" style=\"fill:var(--wp-compat-atlas-ink)\">可见现象</text>\n      <text x=\"366\" y=\"87\" font-family=\"var(--wp-font-sans)\" font-size=\"8.5\" style=\"fill:var(--wp-compat-atlas-ink-70)\">界面混乱 · 样式不一</text>\n\n      <circle cx=\"334\" cy=\"190\" r=\"2.2\" style=\"fill:var(--wp-compat-atlas-ink-55)\"/>\n      <line x1=\"334\" y1=\"190\" x2=\"358\" y2=\"174\" style=\"stroke:var(--wp-compat-atlas-ink-55);stroke-width:.6\"/>\n      <text x=\"366\" y=\"170\" font-family=\"var(--wp-font-sans)\" font-size=\"11.5\" font-weight=\"400\" style=\"fill:var(--wp-compat-atlas-ink)\">行为模式</text>\n      <text x=\"366\" y=\"189\" font-family=\"var(--wp-font-sans)\" font-size=\"8.5\" style=\"fill:var(--wp-compat-atlas-ink-70)\">重复返工 · 体验漂移</text>\n\n      <circle cx=\"278\" cy=\"310\" r=\"2.2\" style=\"fill:var(--wp-compat-atlas-ink-55)\"/>\n      <line x1=\"278\" y1=\"310\" x2=\"358\" y2=\"286\" style=\"stroke:var(--wp-compat-atlas-ink-55);stroke-width:.6\"/>\n      <text x=\"366\" y=\"282\" font-family=\"var(--wp-font-sans)\" font-size=\"11.5\" font-weight=\"400\" style=\"fill:var(--wp-compat-atlas-ink)\">系统根因</text>\n      <text x=\"366\" y=\"301\" font-family=\"var(--wp-font-sans)\" font-size=\"8.5\" style=\"fill:var(--wp-compat-atlas-ink-70)\">缺少统一规范与治理</text>\n    </svg>\n  </div>\n</div>"
     },
     {
       "name": "venn",
@@ -636,3 +636,62 @@ window.SWISS_CATALOG_DATA = {
     }
   ]
 };
+
+/* #050 fishbone: the paper-ink adapter raises all SVG labels to the 13px floor,
+   so the specimen coordinates must leave real type-sized gaps around every bone. */
+{
+  const fishbone = window.SWISS_CATALOG_DATA.entries.find(entry => entry.num === 50);
+  if (fishbone) {
+    const setTextAttrs = (label, attrs) => {
+      const escaped = label.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+      const matcher = new RegExp(`<text\\s+([^>]*)>${escaped}</text>`);
+      if (!matcher.test(fishbone.snippet)) throw new Error(`fishbone label missing: ${label}`);
+      fishbone.snippet = fishbone.snippet.replace(matcher, (_, sourceAttrs) => {
+        let nextAttrs = sourceAttrs;
+        Object.entries(attrs).forEach(([name, value]) => {
+          const attrMatcher = new RegExp(`${name}="[^"]*"`);
+          nextAttrs = attrMatcher.test(nextAttrs)
+            ? nextAttrs.replace(attrMatcher, `${name}="${value}"`)
+            : `${nextAttrs} ${name}="${value}"`;
+        });
+        return `<text ${nextAttrs}>${label}</text>`;
+      });
+    };
+    const replaceOnce = (from, to) => {
+      if (!fishbone.snippet.includes(from)) throw new Error(`fishbone geometry missing: ${from}`);
+      fishbone.snippet = fishbone.snippet.replace(from, to);
+    };
+
+    setTextAttrs('ISHIKAWA · ROOT CAUSE', { y: 18 });
+    setTextAttrs('6 CAUSES', { y: 18 });
+    replaceOnce('class="fb-divider" x1="0" y1="26" x2="480" y2="26"', 'class="fb-divider" x1="0" y1="30" x2="480" y2="30"');
+
+    replaceOnce('<rect x="400" y="176" width="62" height="48" style="fill:var(--wp-compat-atlas-ink);stroke:none"/>', '<rect class="fb-effect" x="400" y="176" width="62" height="48" style="fill:var(--wp-compat-atlas-paper);stroke:var(--wp-compat-atlas-ink-55);stroke-width:1"/>');
+    replaceOnce('<rect x="406" y="182" width="50" height="36" fill="url(#fbHatch)" style="stroke:var(--wp-compat-atlas-paper);opacity:.35"/>', '<rect class="fb-effect-hatch" x="406" y="182" width="50" height="36" fill="url(#fbHatch)" style="stroke:var(--wp-compat-atlas-ink-25);opacity:.55"/>');
+    setTextAttrs('结果', { style: 'fill:var(--wp-compat-atlas-ink)' });
+
+    [
+      ['技能不熟', 88.7, 153.7], ['排班不足', 76.7, 128.7],
+      ['步骤缺失', 200.7, 153.7], ['标准过时', 188.7, 128.7],
+      ['设备老化', 312.7, 153.7], ['校准漂移', 300.7, 128.7]
+    ].forEach(([label, x, y]) => setTextAttrs(label, { x, y, 'text-anchor': 'end' }));
+    ['PEOPLE', 'METHODS', 'MACHINE'].forEach(label => setTextAttrs(label, { y: 66 }));
+    ['人员', '方法', '机器'].forEach(label => setTextAttrs(label, { y: 90 }));
+
+    [
+      [80.7, 240.3, 114.7], [68.7, 265.3, 102.7],
+      [192.7, 240.3, 226.7], [180.7, 265.3, 214.7],
+      [304.7, 240.3, 338.7], [292.7, 265.3, 326.7]
+    ].forEach(([x1, y, x2]) => {
+      const oldX2 = x1 - 34;
+      replaceOnce(`class="fb-guide" x1="${x1}" y1="${y}" x2="${oldX2}" y2="${y}"`, `class="fb-guide" x1="${x1}" y1="${y}" x2="${x2}" y2="${y}"`);
+    });
+    [
+      ['批次波动', 118.7, 234.3], ['供应不稳', 106.7, 259.3],
+      ['取样偏差', 230.7, 234.3], ['量具精度', 218.7, 259.3],
+      ['温湿波动', 342.7, 234.3], ['粉尘超标', 330.7, 259.3]
+    ].forEach(([label, x, y]) => setTextAttrs(label, { x, y, 'text-anchor': 'start' }));
+    ['物料', '测量', '环境'].forEach(label => setTextAttrs(label, { y: 320 }));
+    ['MATERIAL', 'MEASUREMENT', 'ENVIRONMENT'].forEach(label => setTextAttrs(label, { y: 343 }));
+  }
+}

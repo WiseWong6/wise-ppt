@@ -151,12 +151,13 @@
   --wp-compat-atlas-ink-45: rgba(25, 25, 23, .45);
   --wp-compat-atlas-ink-25: rgba(25, 25, 23, .25);
   --wp-compat-atlas-ink-12: rgba(25, 25, 23, .12);
-  --wp-compat-atlas-data-1: rgba(25, 25, 23, .18);
-  --wp-compat-atlas-data-2: rgba(25, 25, 23, .28);
-  --wp-compat-atlas-data-3: rgba(25, 25, 23, .38);
-  --wp-compat-atlas-data-4: rgba(25, 25, 23, .50);
-  --wp-compat-atlas-data-5: rgba(25, 25, 23, .64);
-  --wp-compat-atlas-data-6: rgba(25, 25, 23, .80);
+  /* Atlas 与 Native 共用同一条数据墨阶，避免兼容组件比原生组件更黑。 */
+  --wp-compat-atlas-data-1: var(--data-ramp-1);
+  --wp-compat-atlas-data-2: var(--data-ramp-2);
+  --wp-compat-atlas-data-3: var(--data-ramp-3);
+  --wp-compat-atlas-data-4: var(--data-ramp-4);
+  --wp-compat-atlas-data-5: var(--data-ramp-5);
+  --wp-compat-atlas-data-6: var(--data-ramp-6);
   --wp-compat-atlas-font-sans: "Wise Han Sans SC";
   --wp-compat-atlas-font-serif: "Wise Han Sans SC";
   --wp-compat-atlas-font-mono: "Courier Prime";

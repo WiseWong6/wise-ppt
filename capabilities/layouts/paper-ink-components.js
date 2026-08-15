@@ -751,7 +751,7 @@ window.PAPER_INK_COMPONENT_DATA = {
     num: 68,
     variant: null,
     paperInkNative: true,
-    frame: { width: 870, height: 480, fit: 'fixed' },
+    frame: { width: 600, height: 600, fit: 'fixed' },
     /* 出自样张 layout-a9.html */
     snippet: `<div class="pi-card">
 <svg class="pi-art" viewBox="0 0 600 600" xmlns="http://www.w3.org/2000/svg">
@@ -2619,8 +2619,6 @@ window.PAPER_INK_COMPONENT_DATA = {
   <!-- 格阵下缘构造虚线 -->
   <line x1="36" y1="528" x2="564" y2="528" stroke="var(--pi-ink)" stroke-width=".6" opacity=".22" stroke-dasharray="2 6"/>
 
-  <!-- 底部 mono 页脚 -->
-  <text x="300" y="566" font-family="var(--pi-mono)" font-size="7" letter-spacing="2" text-anchor="middle" fill="var(--pi-ink-45)">SIX CAPABILITIES · GRID 2 × 3</text>
 </svg>
 </div>`
   },
@@ -2842,6 +2840,11 @@ window.PAPER_INK_COMPONENT_DATA = {
     paperInkNative: true,
     frame: { width: 1050, height: 140, fit: 'fixed' },
     dataContract: { mode: 'collection', unit: 'metric', pointer: '/structured_data/metrics', minItems: 2, maxItems: 4 },
+    previewRecords: [
+      { value: '91%', label: '召回命中率', code: 'RECALL@10' },
+      { value: '1.2s', label: '平均响应时间', code: 'P95 LATENCY' },
+      { value: '37%', label: '人工成本下降', code: 'COST SAVED' }
+    ],
     /* 出自样张 layout-k3.html 第三层 KPI 总账带；只保留一个可重复模板，2–4 条由 materializer 克隆 */
     snippet: `<div class="pi-card" style="width:1050px!important;min-height:140px!important" data-bind-root="collection">
   <div class="pi-metric-strip">
