@@ -9,28 +9,29 @@
   /* 纸墨配色:基础名(--ink/--paper/--ink-80 等)直接来自 design-tokens.css。
      不做 --wp-* 中转别名 —— 与 tokens 的反向映射会形成循环引用,导致变量失效(header 背景变透明)。 */
   :root{
-    --card:rgba(255,255,255,.45);
+    --card:var(--paper-panel);
+    --scrim:color-mix(in srgb, var(--ink) 55%, transparent);
     --ink-2:var(--ink-80); --ink-3:var(--ink-55);
   }
   *{box-sizing:border-box;margin:0;padding:0}
   body{font-family:var(--wp-font-sans);font-weight:300;background:var(--paper);color:var(--ink)}
   header{position:sticky;top:0;z-index:50;background:var(--paper);border-bottom:1px solid var(--line);padding:18px 32px 0;transform:translateZ(0)}
   main{position:relative;z-index:1}
-  h1{font-size:20px;letter-spacing:.06em;font-weight:600}
-  .sub{font-size:12px;color:var(--ink-3);margin-top:4px}
+  h1{font-size:20px;letter-spacing:.08em;font-weight:400}
+  .sub{font-size:13px;color:var(--ink-3);margin-top:4px;letter-spacing:.02em}
   .tabs{display:flex;gap:4px;margin-top:14px}
-  .tab{padding:10px 20px;font-size:14px;cursor:pointer;border:1px solid transparent;border-bottom:none;color:var(--ink-2);background:transparent;letter-spacing:.04em}
-  .tab.on{background:#fff;border-color:var(--line);color:var(--ink);font-weight:600;position:relative;top:1px}
-  .tab .n{display:inline-block;min-width:18px;text-align:center;font-size:11px;color:var(--ink-3);margin-left:6px}
+  .tab{padding:10px 20px;font-size:15px;cursor:pointer;border:1px solid transparent;border-bottom:none;color:var(--ink-3);background:transparent;letter-spacing:.04em;font-weight:300}
+  .tab.on{background:var(--paper-panel);border-color:var(--line);color:var(--ink);font-weight:400;position:relative;top:1px}
+  .tab .n{display:inline-block;min-width:18px;text-align:center;font-family:var(--wp-font-mono);font-size:13px;color:var(--ink-3);margin-left:8px;letter-spacing:.04em}
   main{padding:24px 32px 80px;display:none}
   main.on{display:block}
 
   .fam-section{margin-bottom:40px}
-  .fam-head{display:flex;align-items:baseline;gap:12px;border-bottom:2px solid var(--ink);padding-bottom:8px;margin-bottom:16px}
-  .fam-head h2{font-size:17px;font-weight:700;letter-spacing:.05em}
-  .fam-head .tag{font-size:11px;color:var(--ink-2);background:transparent;border:1px solid var(--ink-45);padding:2px 8px;border-radius:2px;letter-spacing:.06em}
+  .fam-head{display:flex;align-items:baseline;gap:12px;border-bottom:1px solid var(--ink-25);padding-bottom:8px;margin-bottom:16px}
+  .fam-head h2{font-size:18px;font-weight:400;letter-spacing:.06em}
+  .fam-head .tag{font-family:var(--wp-font-mono);font-size:13px;color:var(--ink-3);background:transparent;border:1px solid var(--ink-45);padding:2px 8px;letter-spacing:.06em}
   .fam-head .tag.warn{border-color:var(--ink-45)}
-  .fam-head .desc{font-size:12px;color:var(--ink-3)}
+  .fam-head .desc{font-size:13px;color:var(--ink-3)}
 
   .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(340px,1fr));gap:18px}
   .card{background:var(--card);border:1px solid var(--line);break-inside:avoid;content-visibility:auto;contain-intrinsic-size:auto 320px}
@@ -40,7 +41,7 @@
   .comp-wrap{margin:10px 10px 0;border:0.5px solid var(--ink-45)}
   /* 组件原生渲染场馆(无 iframe) */
   .comp-stage{position:absolute;inset:0;overflow:hidden;background:var(--paper)}
-  .comp-stage::after{content:'加载中';position:absolute;inset:0;display:grid;place-items:center;color:var(--ink-3);font-size:11px;letter-spacing:.08em}
+  .comp-stage::after{content:'加载中';position:absolute;inset:0;display:grid;place-items:center;color:var(--ink-3);font-size:13px;letter-spacing:.08em}
   .comp-stage.is-mounted::after{display:none}
   .comp-stage:not(.is-visible) *{animation-play-state:paused !important}
   .stage-host{position:absolute;inset:0}
@@ -48,10 +49,10 @@
   .stage-ecbox{position:absolute;left:0;top:0;width:1280px;height:720px;transform-origin:0 0}
   .card,.comp-card{cursor:pointer}
   .card-info{padding:10px 14px 12px}
-  .card-info .id{font-size:11px;color:var(--ink-2);letter-spacing:.12em;font-weight:700}
-  .card-info .nm{font-size:14px;font-weight:600;margin-top:2px}
-  .card-info .meta{font-size:11px;color:var(--ink-3);margin-top:4px;line-height:1.6}
-  .card-info .meta b{color:var(--ink-2);font-weight:600}
+  .card-info .id{font-family:var(--wp-font-mono);font-size:13px;color:var(--ink-3);letter-spacing:.12em}
+  .card-info .nm{font-size:15px;font-weight:400;margin-top:2px}
+  .card-info .meta{font-size:13px;color:var(--ink-3);margin-top:4px;line-height:1.6}
+  .card-info .meta b{color:var(--ink-2);font-weight:500}
 
   /* 组件卡片(近方形) */
   .comp-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:18px}
@@ -59,61 +60,67 @@
   .comp-wrap{position:relative;box-sizing:content-box;aspect-ratio:16 / 9;overflow:hidden;background:var(--paper-deep)}
   .comp-wrap iframe{width:1280px;height:720px;border:0;transform-origin:0 0;position:absolute;left:0;top:0}
   .comp-info{padding:10px 14px 12px}
-  .comp-info .nm{font-size:14px;font-weight:700}
-  .comp-info .en{font-size:11px;color:var(--ink-3);letter-spacing:.05em}
-  .comp-info .merged{font-size:11px;color:var(--ink-2);margin-top:4px}
-  .comp-info .param{font-size:11px;color:var(--ink-2);margin-top:3px;line-height:1.6}
-  .comp-info .rel{display:inline-block;font-size:10px;color:var(--ink-2);background:transparent;border:1px solid var(--ink-45);padding:1px 6px;margin-top:6px;margin-right:4px;border-radius:2px}
+  .comp-info .nm{font-size:15px;font-weight:400}
+  .comp-info .en{font-family:var(--wp-font-mono);font-size:13px;color:var(--ink-3);letter-spacing:.05em}
+  .comp-info .merged{font-size:13px;color:var(--ink-3);margin-top:4px}
+  .comp-info .param{font-size:13px;color:var(--ink-3);margin-top:3px;line-height:1.6}
+  .comp-info .rel{display:inline-block;font-size:13px;color:var(--ink-3);background:transparent;border:1px solid var(--ink-45);padding:1px 6px;margin-top:6px;margin-right:4px}
 
   /* 浮层:点击卡片,页面内放大(替代详情页) */
   #layer{position:fixed;inset:0;z-index:300;display:none}
   #layer.on{display:block}
-  .layer-bg{position:absolute;inset:0;background:rgba(20,20,18,.55)}
-  .layer-box{position:absolute;inset:0;margin:auto;width:min(1180px,94vw);height:min(770px,94vh);background:var(--card);border:1px solid var(--line);box-shadow:0 24px 80px rgba(20,20,18,.35);display:flex;flex-direction:column}
-  .layer-close{position:absolute;top:10px;right:12px;width:34px;height:34px;border:1px solid var(--ink-45);background:var(--card);color:var(--ink);font-size:20px;line-height:1;cursor:pointer;border-radius:2px;z-index:2}
+  .layer-bg{position:absolute;inset:0;background:var(--scrim)}
+  .layer-box{position:absolute;inset:0;margin:auto;width:min(1180px,94vw);height:min(770px,94vh);background:var(--paper);border:1px solid var(--ink-45);box-shadow:var(--shadow-specimen);display:flex;flex-direction:column}
+  .layer-close{position:absolute;top:10px;right:12px;width:34px;height:34px;border:1px solid var(--ink-45);background:var(--paper);color:var(--ink);font-size:20px;line-height:1;cursor:pointer;z-index:2}
   .layer-close:hover{background:var(--ink);color:var(--paper)}
   .layer-stage{position:relative;flex:1;min-height:0;overflow:hidden;background:var(--paper-deep)}
   .layer-stage .stage-host,.layer-stage .stage-ecbox{position:absolute;left:0;top:0;transform-origin:0 0}
-  .layer-info{padding:10px 16px;font-size:13px;color:var(--ink-2);border-top:1px solid var(--line);background:var(--card)}
+  .layer-info{padding:10px 16px;font-size:13px;color:var(--ink-2);border-top:1px solid var(--line);background:var(--paper);display:flex;justify-content:space-between;align-items:baseline;gap:16px;flex-wrap:wrap}
+  .layer-info .layer-count{font-family:var(--wp-font-mono);font-size:13px;color:var(--ink-3);letter-spacing:.06em;white-space:nowrap}
+  /* 变体 tab:合并组在浮层信息栏逐变体挂源码(代表 + 被合并的变体),‹ › 仍跨卡片翻页 */
+  #layer-variants{display:flex;gap:6px;flex-wrap:wrap;justify-content:flex-end;margin-left:auto}
+  #layer-variants:empty{display:none}
+  #layer-variants .vtab{font:inherit;font-size:12px;line-height:1;padding:5px 9px;border:1px solid var(--line);background:var(--paper);color:var(--ink-2);cursor:pointer;border-radius:0;letter-spacing:.02em}
+  #layer-variants .vtab.on{background:var(--ink);border-color:var(--ink);color:var(--paper)}
+  #layer-variants .vtab:hover:not(.on){border-color:var(--ink-3);color:var(--ink)}
+  /* 浮层左右切换:当前 tab 卡片连续翻,到头禁用不循环 */
+  .layer-nav{position:absolute;top:50%;transform:translateY(-50%);width:36px;height:64px;border:1px solid var(--ink-45);background:var(--paper);color:var(--ink);font-size:22px;line-height:1;cursor:pointer;z-index:2}
+  .layer-nav:hover:not(:disabled){background:var(--ink);color:var(--paper)}
+  .layer-nav:disabled{opacity:.25;cursor:default}
+  .layer-nav.prev{left:12px}
+  .layer-nav.next{right:12px}
 
   /* 单一画布:场馆(16:9)是唯一画布,组件根画板不得自带底色(与场馆同色也强制透明,防止出现"画布套画布") */
   .comp-stage .swiss-card,.comp-stage .pi-card,.layer-stage .swiss-card,.layer-stage .pi-card{background:transparent !important}
 
-  .placeholder{display:flex;flex-direction:column;align-items:center;justify-content:center;height:100%;color:var(--ink-3);font-size:12px;gap:8px}
-  .placeholder .big{font-size:22px;letter-spacing:.1em;font-weight:700;color:var(--ink-2)}
+  .placeholder{display:flex;flex-direction:column;align-items:center;justify-content:center;height:100%;color:var(--ink-3);font-size:13px;gap:8px}
+  .placeholder .big{font-size:22px;letter-spacing:.1em;font-weight:400;color:var(--ink-2)}
 
-  .note{background:var(--card);border:1px solid var(--line);border-left:3px solid var(--ink);padding:14px 18px;font-size:13px;color:var(--ink-2);line-height:1.8;margin-bottom:24px}
-  .note b{color:var(--ink)}
+  .note{background:var(--card);border:1px solid var(--line);border-left:2px solid var(--ink);padding:14px 18px;font-size:13px;color:var(--ink-2);line-height:1.8;margin-bottom:24px}
+  .note b{color:var(--ink);font-weight:500}
 
-  /* 结构枚举 */
-  .struct-body{display:flex;gap:22px;align-items:flex-start;flex-wrap:wrap;margin-bottom:18px}
-  .schem{flex:none;padding:14px 16px 8px;background:var(--card);border:1px solid var(--line)}
-  .schem svg{display:block;max-width:100%;height:auto}
-  .schem text{font-family:var(--wp-font-sans)}
-  .sl-lab{font-size:10px;fill:var(--ink-2)}
-  .sl-labb{font-size:11px;font-weight:600;fill:var(--ink)}
-  .sl-cap{font-size:10px;fill:var(--ink-3)}
-  .struct-info{flex:1;min-width:260px}
+  /* 结构枚举:定义行 + 空槽大图卡 */
+  .struct-info{margin-bottom:14px;min-width:260px}
   .s-desc{font-size:13px;line-height:1.8;color:var(--ink)}
-  .s-judge{font-size:12px;color:var(--ink-2);margin-top:8px;line-height:1.7}
-  .s-judge b,.s-members b{font-weight:700;margin-right:8px;color:var(--ink)}
+  .s-judge{font-size:13px;color:var(--ink-2);margin-top:8px;line-height:1.7}
+  .s-judge b{font-weight:500;margin-right:8px;color:var(--ink)}
   .s-rels{margin-top:8px}
-  .s-members{margin-top:10px;display:flex;flex-wrap:wrap;gap:4px;align-items:center;line-height:1.9}
-  .chip{font-family:var(--wp-font-sans);font-weight:600;font-size:11px;letter-spacing:.08em;color:var(--ink-2);background:transparent;border:1px solid var(--ink-45);padding:2px 7px;cursor:pointer;border-radius:2px}
+  .chip{font-family:var(--wp-font-sans);font-weight:400;font-size:13px;letter-spacing:.08em;color:var(--ink-3);background:transparent;border:1px solid var(--ink-45);padding:2px 7px;cursor:pointer}
   .chip:hover{background:var(--ink);color:var(--paper)}
   .grid.samples{grid-template-columns:repeat(auto-fill,minmax(250px,1fr))}
   .card.flash{animation:cf 1.5s ease-out}
-  @keyframes cf{0%,55%{box-shadow:0 0 0 3px var(--accent-red)}100%{box-shadow:0 0 0 0 transparent}}
+  @keyframes cf{0%,55%{box-shadow:0 0 0 3px var(--ink)}100%{box-shadow:0 0 0 0 transparent}}
 </style>
 </head>
 <body>
 <header>
   <h1>资产目录 · Catalog</h1>
-  <div class="sub">非关系页模板(直接套用) / 关系页版式(SmartArt 语义分类) / 结构枚举(6 种切分) / 组件(SmartArt 语义分类)</div>
+  <div class="sub">非关系页模板(直接套用) / 关系页版式(SmartArt 语义分类) / 结构切分(6 种 · 空槽大图) / 结构示例(按切分归组) / 组件(SmartArt 语义分类)</div>
   <div class="tabs">
     <button class="tab on" data-t="tpl">非关系页模板<span class="n" id="c-tpl"></span></button>
     <button class="tab" data-t="lyt">关系页版式<span class="n" id="c-lyt"></span></button>
-    <button class="tab" data-t="str">结构枚举<span class="n" id="c-str"></span></button>
+    <button class="tab" data-t="str">结构切分<span class="n" id="c-str"></span></button>
+    <button class="tab" data-t="strex">结构示例<span class="n" id="c-strex"></span></button>
     <button class="tab" data-t="cmp">组件<span class="n" id="c-cmp"></span></button>
   </div>
 </header>
@@ -133,8 +140,15 @@
 
 <main id="m-str">
   <div class="note"><b>结构 = 页面区域怎么切(矩形分块);组件 = 区域内画什么形状。</b>结构切的是<b>版心</b>:每页固定的左上页眉 / 左下页码 / 底部题注行是外框,一律不算切分;单区 = 版心剩一整块,内容水平垂直居中。放射、环形、蛇形、漏斗、矩阵(表格)都是区域内组件的画法,不是页面结构。关系圈定候选结构(2~4 种),二次判断(对象数量 / 有无辅助内容 / 方向偏好)在范围内选定。关系页版式全部归入这 6 种切分。</div>
-  <div class="note"><b>网格 vs 表格(易混)</b>:网格 = 页面切分,均质等价陈列(A7 logo 墙、F4 六宫格);表格/矩阵 = 组件画法,行列双语义在组件内部 —— K4 = 左右3等分(三栏切分,行带是栏内画法)、E4/K1 = 上下不对称(矩阵 + 收束带)。页面切分只认 6 种矩形分块,不设「表格」。</div>
+  <div class="note"><b>大图 = 空槽版式,不是示意图。</b>10 张来自 taxonomy(wise-ppt-page-expression)110 张成熟蓝图按槽位几何去重的空槽图:虚线框是槽位,细线是装饰锚点,灰字是页眉/页码/题注固定件。taxonomy 的空槽版式里<b>没有「上下等分」「网格」整类,也没有「左右4等分」变体</b>(上下切分全是不对称;整版网格墙和多屏画廊在 taxonomy 折叠成单槽),这 7 张按同一规格<b>补造</b>,卡片上有标注。空槽图清单与来源见 taxonomy-empty/manifest.json。</div>
+  <div class="note"><b>分点跟着「结构示例」走。</b>每个分点(空槽变体)标注它对应哪些示例页,与「结构示例」tab 的归组同一批数据;页面加载时逐结构校验:示例页不漏归、不重归、不跨结构。每节的「承载关系」chips 也从示例页的关系标签实时推导,不手写维护。</div>
   <div id="str-list"></div>
+</main>
+
+<main id="m-strex">
+  <div class="note"><b>54 个关系页版式按 6 种切分归组,全部展示。</b>切分判据见上一 tab;同一页从 SmartArt 语义入口看(「关系页版式」tab)和从结构看(本 tab)是两个视角,卡片是同一批。</div>
+  <div class="note"><b>网格 vs 表格(易混)</b>:网格 = 页面切分,均质等价陈列(A7 logo 墙、F4 六宫格);表格/矩阵 = 组件画法,行列双语义在组件内部 —— K4 = 左右3等分(三栏切分,行带是栏内画法)、E4/K1 = 上下不对称(矩阵 + 收束带)。页面切分只认 6 种矩形分块,不设「表格」。</div>
+  <div id="strex-list"></div>
 </main>
 
 <main id="m-cmp">
@@ -150,6 +164,7 @@ const FRAMES='gallery-paper-ink/ai/frames/';
 const NON_REL=[
   ['D1','封面 · 落版','品牌落版'],['D2','粒子尾卡','情绪收尾'],['D3','极简 Outro','金句收尾'],
   ['D4','目录导航','章节索引'],['D5','章节隔页','节奏停顿'],['D6','联络尾页','联系方式'],['M2','金句页','情绪定调'],
+  ['M1','粒子主角 + 对照提问','情绪定调 · 提问'],
 ];
 
 const SMARTART_TYPES=[
@@ -174,7 +189,6 @@ const SMARTART_TYPES=[
     ['F2','环节树 + 规格单','左右不对称','拆解'],['H3','分层架构栈','上下4等分','层级'],['H4','底座托举三层','上下3等分','层级'],
   ]},
   {id:'relationship',cn:'⑤ 关系',desc:'非线性的连接、对照、映射、中心辐射或包含',items:[
-    ['M1','粒子主角 + 对照提问','单区','焦点 + 对照'],
     ['G1','三向放射','单区','拆解'],['G4','中心枢纽 + 卫星','单区','拆解 / 网络'],
     ['H1','同心防线','单区','嵌套'],['H2','嵌套变焦框','单区','嵌套'],
     ['E1','对比双面板','左右2等分','对比'],['E2','分水岭双栏','左右2等分','对比'],
@@ -202,21 +216,20 @@ const SMARTART_TYPES=[
    t: 'atlas' | 'native' | 'ec';atlas/native 用 num,ec 用 id */
 const SMARTART_COMPONENTS=[
   {fam:'① 列表 · List',items:[
-    {t:'atlas',num:2,en:'list-card',nm:'列表卡片',note:'合并 #002-004;单元×N',rel:['陈列']},
+    {t:'atlas',num:2,en:'list-card',nm:'列表卡片',note:'合并 #002-004;单元×N',rel:['陈列'],vr:[['atlas:2','基础'],['atlas:3','长列表'],['atlas:4','工作流']]},
     {t:'atlas',num:6,en:'form-card',nm:'表单卡片',rel:['陈列']},
     {t:'atlas',num:12,en:'alert-box',nm:'提示框',rel:['陈列']},
     {t:'atlas',num:13,en:'terminal-box',nm:'终端框',rel:['陈列']},
     {t:'atlas',num:14,en:'code',nm:'代码块',rel:['陈列']},
     {t:'native',num:86,en:'icon-grid',nm:'图标格阵',rel:['陈列']},
     {t:'native',num:74,en:'contact-card',nm:'联络名片卡',rel:['陈列']},
-    {t:'native',num:91,en:'pain-list',nm:'痛点根因列',rel:['陈列']},
     {t:'native',num:93,en:'infra-strip',nm:'基础设施横带',rel:['陈列']},
   ]},
   {fam:'② 流程 · Process',items:[
-    {t:'atlas',num:25,en:'process',nm:'流程链',note:'合并 #025-033;步数 2~7',rel:['时序','流动']},
+    {t:'atlas',num:25,en:'process',nm:'流程链',note:'合并 #025-033;步数 2~7',rel:['时序','流动'],vr:[['atlas:25','默认·3步'],['atlas:26','默认·4步'],['atlas:27','标注'],['atlas:28','默认·5步'],['atlas:29','换行'],['atlas:30','箭头·3步'],['atlas:31','箭头·4步'],['atlas:32','标注箭头'],['atlas:33','箭头·5步']]},
     {t:'atlas',num:38,en:'journey',nm:'旅程图',rel:['时序']},
     {t:'new',mk:7,en:'journey-curve',nm:'旅程曲线',note:'源 J3 · 原版抄录',rel:['时序']},
-    {t:'atlas',num:39,en:'timeline',nm:'时间线',note:'合并 #039-041;开关横/竖',rel:['时序']},
+    {t:'atlas',num:39,en:'timeline',nm:'时间线',note:'合并 #039-041;开关横/竖',rel:['时序'],vr:[['atlas:39','横排·阶段'],['atlas:40','竖排'],['atlas:41','横排·年份']]},
     {t:'new',mk:8,en:'timeline-axis',nm:'水平时间轴',note:'源 B1 · 原版抄录',rel:['时序']},
     {t:'atlas',num:42,en:'gantt',nm:'甘特图',rel:['时序']},
     {t:'atlas',num:50,en:'fishbone',nm:'鱼骨图',rel:['因果']},
@@ -227,32 +240,29 @@ const SMARTART_COMPONENTS=[
     {t:'native',num:73,en:'winding-road',nm:'蜿蜒道路时间轴',rel:['时序']},
     {t:'native',num:83,en:'swimlane-roadmap',nm:'泳道路线图',rel:['时序']},
     {t:'native',num:90,en:'scenario-column',nm:'单场景纵列',rel:['时序']},
-    {t:'native',num:92,en:'pipeline-strip',nm:'自适应流水线横带',rel:['流动']},
     {t:'native',num:76,en:'why-how-bands',nm:'因果对位双带',rel:['因果']},
     {t:'native',num:80,en:'merge-confluence',nm:'双路汇流图',rel:['汇聚']},
     {t:'ec',id:'echarts.sankey-basic',en:'sankey',nm:'桑基图',rel:['流动']},
   ]},
   {fam:'③ 循环 · Cycle',items:[
-    {t:'atlas',num:34,en:'process-loop',nm:'循环流程',note:'合并 #034-037;节点 3~6',rel:['循环']},
+    {t:'atlas',num:34,en:'process-loop',nm:'循环流程',note:'合并 #034-037;节点 3~6',rel:['循环'],vr:[['atlas:34','三角'],['atlas:35','四边'],['atlas:36','五边'],['atlas:37','闭环']]},
     {t:'new',mk:6,en:'cycle-ring',nm:'环形循环',note:'源 J1 · 原版抄录',rel:['循环']},
     {t:'new',mk:5,en:'serpentine-loop',nm:'蛇形回环',note:'源 J2 · 原版抄录',rel:['循环']},
   ]},
   {fam:'④ 层级 · Hierarchy',items:[
     {t:'atlas',num:54,en:'architecture',nm:'架构图',rel:['层级']},
-    {t:'atlas',num:55,en:'arch-platform',nm:'平台架构图',note:'合并 #055-056',rel:['层级']},
-    {t:'atlas',num:57,en:'mind-map',nm:'思维导图',note:'开关 horizontal / vertical',rel:['拆解']},
-    {t:'native',num:82,en:'arch-table-band',nm:'架构带表',rel:['层级']},
+    {t:'atlas',num:55,en:'arch-platform',nm:'平台架构图',note:'合并 #055-056',rel:['层级'],vr:[['atlas:55','标准'],['atlas:56','复杂垂直']]},
+    {t:'atlas',num:57,en:'mind-map',nm:'思维导图',note:'开关 horizontal / vertical',rel:['拆解'],vr:[['atlas:57','水平'],['atlas:58','垂直']]},
     {t:'ec',id:'echarts.tree-lr',en:'tree',nm:'树图',rel:['层级']},
   ]},
   {fam:'⑤ 关系 · Relationship',items:[
-    {t:'atlas',num:43,en:'concentric',nm:'同心圆',note:'合并 #043-047',rel:['层级','嵌套']},
+    {t:'atlas',num:43,en:'concentric',nm:'同心圆',note:'合并 #043-047',rel:['层级','嵌套'],vr:[['atlas:43','默认'],['atlas:44','居中'],['atlas:45','底部文字'],['atlas:46','顶部对齐'],['atlas:47','底部对齐']]},
     {t:'new',mk:9,en:'concentric-ring',nm:'同心环',note:'源 H1 · 原版抄录',rel:['嵌套']},
-    {t:'atlas',num:52,en:'venn',nm:'韦恩图',note:'圆数 2~3',rel:['关联(集合)']},
+    {t:'atlas',num:52,en:'venn',nm:'韦恩图',note:'圆数 2~3',rel:['关联(集合)'],vr:[['atlas:52','双圆'],['atlas:53','三圆']]},
     {t:'new',mk:2,en:'three-way-radial',nm:'三向放射图',note:'源 G1 · 原版抄录',rel:['拆解']},
     {t:'new',mk:3,en:'nested-frames',nm:'嵌套框',note:'源 H2 · 原版抄录',rel:['嵌套']},
     {t:'native',num:79,en:'radial-hub',nm:'放射中心卫星图',rel:['层级']},
-    {t:'atlas',num:15,en:'vs',nm:'对比 VS',rel:['对比']},
-    {t:'atlas',num:16,en:'before-after',nm:'前后对比',note:'合并 #016-019',rel:['对比']},
+    {t:'atlas',num:16,en:'before-after',nm:'前后对比',note:'合并 #016-019',rel:['对比'],vr:[['atlas:16','默认'],['atlas:17','箭头'],['atlas:18','无背景'],['atlas:19','验证']]},
     {t:'atlas',num:24,en:'impossible-triangle',nm:'不可能三角',rel:['矩阵']},
     {t:'new',mk:0,en:'mapping-arc-network',nm:'映射弧线网',note:'源 L2 · 原版抄录',rel:['映射']},
     {t:'native',num:81,en:'watershed-axis',nm:'分水岭中轴对照',rel:['对比']},
@@ -266,7 +276,7 @@ const SMARTART_COMPONENTS=[
     {t:'atlas',num:23,en:'matrix',nm:'矩阵',rel:['矩阵']},
   ]},
   {fam:'⑦ 金字塔 · Pyramid',items:[
-    {t:'atlas',num:48,en:'pyramid',nm:'金字塔',note:'合并 #048-049;开关 inverted',rel:['层级']},
+    {t:'atlas',num:48,en:'pyramid',nm:'金字塔',note:'合并 #048-049;开关 inverted',rel:['层级'],vr:[['atlas:48','正立'],['atlas:49','倒置']]},
     {t:'atlas',num:51,en:'iceberg',nm:'冰山图',rel:['拆解']},
     {t:'native',num:87,en:'funnel',nm:'转化漏斗',rel:['漏斗']},
   ]},
@@ -288,13 +298,12 @@ const SMARTART_COMPONENTS=[
     {t:'native',num:85,en:'radial-progress',nm:'环形进度指标',note:'单元×N',rel:['陈列']},
     {t:'ec',id:'echarts.geo-choropleth-map',en:'geo-map',nm:'分级填色地图',rel:['分布']},
     {t:'ec',id:'echarts.pie-access-source',en:'pie',nm:'饼图',rel:['部分整体']},
-    {t:'ec',id:'echarts.line-basic',en:'line',nm:'折线图',note:'含 smooth / stacked 变体',rel:['时序']},
+    {t:'ec',id:'echarts.line-basic',en:'line',nm:'折线图',note:'含 smooth / stacked 变体',rel:['时序'],vr:[['ec:echarts.line-basic','基础'],['ec:echarts.line-smooth','平滑'],['ec:echarts.line-stacked','堆叠']]},
     {t:'ec',id:'echarts.calendar-basic',en:'calendar',nm:'日历热力图',rel:['时序']},
-    {t:'atlas',num:60,en:'radar',nm:'雷达图',note:'合并 #060-061',rel:['对比']},
     {t:'new',mk:4,en:'ranking-bars',nm:'排行柱图',note:'源 C7 · 原版抄录',rel:['对比','排名']},
-    {t:'ec',id:'echarts.bar-basic',en:'bar',nm:'柱状图',note:'含 dynamic-sort 变体',rel:['对比']},
+    {t:'ec',id:'echarts.bar-basic',en:'bar',nm:'柱状图',note:'含 dynamic-sort 变体',rel:['对比'],vr:[['ec:echarts.bar-basic','基础'],['ec:echarts.bar-dynamic-sort','动态排序']]},
     {t:'ec',id:'echarts.radar-basic',en:'radar-e',nm:'雷达图(ECharts)',rel:['对比']},
-    {t:'ec',id:'echarts.scatter-basic',en:'scatter',nm:'散点图',note:'含 to-bar 动画变体',rel:['关联']},
+    {t:'ec',id:'echarts.scatter-basic',en:'scatter',nm:'散点图',note:'含 to-bar 动画变体',rel:['关联'],vr:[['ec:echarts.scatter-basic','基础'],['ec:echarts.scatter-to-bar-anim','聚合柱动画']]},
   ]},
 ];
 
@@ -313,11 +322,11 @@ function assertCatalogClassification(groups,keyOf,expected,label){
   }
   return count;
 }
-const SMARTART_LAYOUT_COUNT=assertCatalogClassification(SMARTART_TYPES,item=>item[0],55,'版式');
+const SMARTART_LAYOUT_COUNT=assertCatalogClassification(SMARTART_TYPES,item=>item[0],54,'版式');
 const SMARTART_COMPONENT_COUNT=assertCatalogClassification(
   SMARTART_COMPONENTS,
   item=>item.t==='ec'?'ec:'+item.id:(item.t==='new'?'new:'+item.mk:item.t+':'+item.num),
-  77,
+  72,
   '组件',
 );
 
@@ -538,13 +547,13 @@ t5
       <path d="M 594 532 Q 882.5 152 1171 532" fill="none" stroke="#191917" stroke-width="1.1" opacity="0.4" stroke-linecap="round"/>
       <circle cx="1028" cy="532" r="2" fill="#191917" opacity="0.5"/>
       <circle cx="1171" cy="532" r="2" fill="#191917" opacity="0.5"/>
-      <text x="811" y="372" font-family="var(--pi-mono)" font-size="var(--type-meta)" text-anchor="middle" fill="rgba(25,25,23,.6)">
+      <text x="811" y="372" font-family="var(--pi-mono)" font-size="var(--type-meta)" text-anchor="middle" fill="rgba(25,25,23,.55)">
 w ≈ 0.46 · MID
       </text>
       <path d="M 594 532 Q 671.5 312 749 532" fill="none" stroke="#191917" stroke-width="1.8" opacity="0.9" stroke-linecap="round"/>
       <circle cx="594" cy="532" r="2.4" fill="#191917" opacity="0.9"/>
       <circle cx="749" cy="532" r="2.4" fill="#191917" opacity="0.9"/>
-      <text x="672" y="400" font-family="var(--pi-mono)" font-size="var(--type-label)" text-anchor="middle" fill="rgba(25,25,23,.85)">
+      <text x="672" y="400" font-family="var(--pi-mono)" font-size="var(--type-label)" text-anchor="middle" fill="rgba(25,25,23,.8)">
 w ≈ 0.87 · STRONG ATTEND
       </text>
       <line x1="672" y1="408" x2="672" y2="416" stroke="#191917" stroke-width="0.6" opacity="0.6"/>
@@ -554,7 +563,7 @@ w ≈ 0.87 · STRONG ATTEND
       <line x1="1116" y1="424" x2="1102" y2="438" stroke="#191917" stroke-width="1.1" opacity="0.85"/>
       <line x1="1136" y1="430" x2="1204" y2="404" stroke="#191917" stroke-width="0.6" opacity="0.5"/>
       <circle cx="1136" cy="430" r="1.4" fill="#191917" opacity="0.5"/>
-      <text x="1212" y="408" font-family="var(--pi-mono)" font-size="var(--type-meta)" text-anchor="start" fill="rgba(25,25,23,.75)">
+      <text x="1212" y="408" font-family="var(--pi-mono)" font-size="var(--type-meta)" text-anchor="start" fill="rgba(25,25,23,.7)">
 w ≈ 0.04 · ATTENTION BREAK
       </text>
       <line x1="510" y1="652" x2="510" y2="660" stroke="#191917" stroke-width="0.6" opacity="0.3"/>
@@ -637,28 +646,28 @@ INPUT
       <text x="530" y="354" font-family="var(--pi-mono)" font-size="var(--type-body-small)" text-anchor="end" fill="#191917">
 system_prompt
       </text>
-      <text x="530" y="380" font-family="var(--pi-sans)" font-weight="300" font-size="var(--type-body-small)" text-anchor="end" fill="rgba(25,25,23,.6)">
+      <text x="530" y="380" font-family="var(--pi-sans)" font-weight="300" font-size="var(--type-body-small)" text-anchor="end" fill="rgba(25,25,23,.55)">
 系统提示词与人设
       </text>
       <line x1="560" y1="464" x2="542" y2="464" stroke="#191917" stroke-width="0.8" opacity="0.5"/>
       <text x="530" y="470" font-family="var(--pi-mono)" font-size="var(--type-body-small)" text-anchor="end" fill="#191917">
 user_message
       </text>
-      <text x="530" y="496" font-family="var(--pi-sans)" font-weight="300" font-size="var(--type-body-small)" text-anchor="end" fill="rgba(25,25,23,.6)">
+      <text x="530" y="496" font-family="var(--pi-sans)" font-weight="300" font-size="var(--type-body-small)" text-anchor="end" fill="rgba(25,25,23,.55)">
 用户消息与意图
       </text>
       <line x1="560" y1="580" x2="542" y2="580" stroke="#191917" stroke-width="0.8" opacity="0.5"/>
       <text x="530" y="586" font-family="var(--pi-mono)" font-size="var(--type-body-small)" text-anchor="end" fill="#191917">
 context
       </text>
-      <text x="530" y="612" font-family="var(--pi-sans)" font-weight="300" font-size="var(--type-body-small)" text-anchor="end" fill="rgba(25,25,23,.6)">
+      <text x="530" y="612" font-family="var(--pi-sans)" font-weight="300" font-size="var(--type-body-small)" text-anchor="end" fill="rgba(25,25,23,.55)">
 上下文与检索片段
       </text>
       <line x1="560" y1="696" x2="542" y2="696" stroke="#191917" stroke-width="0.8" opacity="0.5"/>
       <text x="530" y="702" font-family="var(--pi-mono)" font-size="var(--type-body-small)" text-anchor="end" fill="#191917">
 tools
       </text>
-      <text x="530" y="728" font-family="var(--pi-sans)" font-weight="300" font-size="var(--type-body-small)" text-anchor="end" fill="rgba(25,25,23,.6)">
+      <text x="530" y="728" font-family="var(--pi-sans)" font-weight="300" font-size="var(--type-body-small)" text-anchor="end" fill="rgba(25,25,23,.55)">
 可调用工具声明
       </text>
       <text x="1360" y="268" font-family="var(--pi-sans)" font-weight="300" font-size="var(--type-subheading)" fill="#191917">
@@ -672,42 +681,42 @@ OUTPUT
       <text x="1390" y="354" font-family="var(--pi-mono)" font-size="var(--type-body-small)" text-anchor="start" fill="#191917">
 completion
       </text>
-      <text x="1390" y="380" font-family="var(--pi-sans)" font-weight="300" font-size="var(--type-body-small)" text-anchor="start" fill="rgba(25,25,23,.6)">
+      <text x="1390" y="380" font-family="var(--pi-sans)" font-weight="300" font-size="var(--type-body-small)" text-anchor="start" fill="rgba(25,25,23,.55)">
 生成文本与回复
       </text>
       <line x1="1360" y1="448" x2="1378" y2="448" stroke="#191917" stroke-width="0.8" opacity="0.5"/>
       <text x="1390" y="454" font-family="var(--pi-mono)" font-size="var(--type-body-small)" text-anchor="start" fill="#191917">
 tool_calls
       </text>
-      <text x="1390" y="480" font-family="var(--pi-sans)" font-weight="300" font-size="var(--type-body-small)" text-anchor="start" fill="rgba(25,25,23,.6)">
+      <text x="1390" y="480" font-family="var(--pi-sans)" font-weight="300" font-size="var(--type-body-small)" text-anchor="start" fill="rgba(25,25,23,.55)">
 工具调用请求
       </text>
       <line x1="1360" y1="548" x2="1378" y2="548" stroke="#191917" stroke-width="0.8" opacity="0.5"/>
       <text x="1390" y="554" font-family="var(--pi-mono)" font-size="var(--type-body-small)" text-anchor="start" fill="#191917">
 token_usage
       </text>
-      <text x="1390" y="580" font-family="var(--pi-sans)" font-weight="300" font-size="var(--type-body-small)" text-anchor="start" fill="rgba(25,25,23,.6)">
+      <text x="1390" y="580" font-family="var(--pi-sans)" font-weight="300" font-size="var(--type-body-small)" text-anchor="start" fill="rgba(25,25,23,.55)">
 Token 用量统计
       </text>
       <line x1="1360" y1="648" x2="1378" y2="648" stroke="#191917" stroke-width="0.8" opacity="0.5"/>
       <text x="1390" y="654" font-family="var(--pi-mono)" font-size="var(--type-body-small)" text-anchor="start" fill="#191917">
 finish_reason
       </text>
-      <text x="1390" y="680" font-family="var(--pi-sans)" font-weight="300" font-size="var(--type-body-small)" text-anchor="start" fill="rgba(25,25,23,.6)">
+      <text x="1390" y="680" font-family="var(--pi-sans)" font-weight="300" font-size="var(--type-body-small)" text-anchor="start" fill="rgba(25,25,23,.55)">
 结束原因与状态
       </text>
       <line x1="1360" y1="748" x2="1378" y2="748" stroke="#191917" stroke-width="0.8" opacity="0.5"/>
       <text x="1390" y="754" font-family="var(--pi-mono)" font-size="var(--type-body-small)" text-anchor="start" fill="#191917">
 logprobs
       </text>
-      <text x="1390" y="780" font-family="var(--pi-sans)" font-weight="300" font-size="var(--type-body-small)" text-anchor="start" fill="rgba(25,25,23,.6)">
+      <text x="1390" y="780" font-family="var(--pi-sans)" font-weight="300" font-size="var(--type-body-small)" text-anchor="start" fill="rgba(25,25,23,.55)">
 对数概率回传
       </text>
       <line x1="1360" y1="848" x2="1378" y2="848" stroke="#191917" stroke-width="0.8" opacity="0.5"/>
       <text x="1390" y="854" font-family="var(--pi-mono)" font-size="var(--type-body-small)" text-anchor="start" fill="#191917">
 latency
       </text>
-      <text x="1390" y="880" font-family="var(--pi-sans)" font-weight="300" font-size="var(--type-body-small)" text-anchor="start" fill="rgba(25,25,23,.6)">
+      <text x="1390" y="880" font-family="var(--pi-sans)" font-weight="300" font-size="var(--type-body-small)" text-anchor="start" fill="rgba(25,25,23,.55)">
 首字与总耗时
       </text>
       <text x="984" y="668" font-family="var(--pi-sans)" font-weight="300" font-size="var(--type-subheading)" fill="#191917">
@@ -721,35 +730,35 @@ PARAMS
       <text x="660" y="744" font-family="var(--pi-mono)" font-size="var(--type-body-small)" text-anchor="middle" fill="#191917">
 temperature
       </text>
-      <text x="660" y="772" font-family="var(--pi-sans)" font-weight="300" font-size="var(--type-body-small)" text-anchor="middle" fill="rgba(25,25,23,.6)">
+      <text x="660" y="772" font-family="var(--pi-sans)" font-weight="300" font-size="var(--type-body-small)" text-anchor="middle" fill="rgba(25,25,23,.55)">
 采样温度
       </text>
       <line x1="810" y1="700" x2="810" y2="716" stroke="#191917" stroke-width="0.8" opacity="0.5"/>
       <text x="810" y="744" font-family="var(--pi-mono)" font-size="var(--type-body-small)" text-anchor="middle" fill="#191917">
 top_p
       </text>
-      <text x="810" y="772" font-family="var(--pi-sans)" font-weight="300" font-size="var(--type-body-small)" text-anchor="middle" fill="rgba(25,25,23,.6)">
+      <text x="810" y="772" font-family="var(--pi-sans)" font-weight="300" font-size="var(--type-body-small)" text-anchor="middle" fill="rgba(25,25,23,.55)">
 核采样阈值
       </text>
       <line x1="960" y1="700" x2="960" y2="716" stroke="#191917" stroke-width="0.8" opacity="0.5"/>
       <text x="960" y="744" font-family="var(--pi-mono)" font-size="var(--type-body-small)" text-anchor="middle" fill="#191917">
 max_tokens
       </text>
-      <text x="960" y="772" font-family="var(--pi-sans)" font-weight="300" font-size="var(--type-body-small)" text-anchor="middle" fill="rgba(25,25,23,.6)">
+      <text x="960" y="772" font-family="var(--pi-sans)" font-weight="300" font-size="var(--type-body-small)" text-anchor="middle" fill="rgba(25,25,23,.55)">
 最大生成长度
       </text>
       <line x1="1110" y1="700" x2="1110" y2="716" stroke="#191917" stroke-width="0.8" opacity="0.5"/>
       <text x="1110" y="744" font-family="var(--pi-mono)" font-size="var(--type-body-small)" text-anchor="middle" fill="#191917">
 frequency_penalty
       </text>
-      <text x="1110" y="772" font-family="var(--pi-sans)" font-weight="300" font-size="var(--type-body-small)" text-anchor="middle" fill="rgba(25,25,23,.6)">
+      <text x="1110" y="772" font-family="var(--pi-sans)" font-weight="300" font-size="var(--type-body-small)" text-anchor="middle" fill="rgba(25,25,23,.55)">
 频率惩罚
       </text>
       <line x1="1260" y1="700" x2="1260" y2="716" stroke="#191917" stroke-width="0.8" opacity="0.5"/>
       <text x="1260" y="744" font-family="var(--pi-mono)" font-size="var(--type-body-small)" text-anchor="middle" fill="#191917">
 stop
       </text>
-      <text x="1260" y="772" font-family="var(--pi-sans)" font-weight="300" font-size="var(--type-body-small)" text-anchor="middle" fill="rgba(25,25,23,.6)">
+      <text x="1260" y="772" font-family="var(--pi-sans)" font-weight="300" font-size="var(--type-body-small)" text-anchor="middle" fill="rgba(25,25,23,.55)">
 停止序列
       </text>
     </g>
@@ -845,10 +854,7 @@ stop
         <pattern id="c7-hatch30" width="7" height="7" patternTransform="rotate(45)" patternUnits="userSpaceOnUse">
           <line x1="0" y1="0" x2="0" y2="7" stroke="#191917" stroke-width=".7" opacity=".35"/>
         </pattern>
-        <pattern id="c7-c7-hatch30red" width="7" height="7" patternTransform="rotate(45)" patternUnits="userSpaceOnUse">
-          <line x1="0" y1="0" x2="0" y2="7" stroke="var(--accent-red)" stroke-width="1" opacity=".5"/>
-        </pattern>
-      
+
   </defs>
     <g transform="translate(0 -24.2)">
       <line x1="192" y1="820" x2="200" y2="820" stroke="#191917" stroke-width="0.9" opacity="0.6"/>
@@ -1509,7 +1515,7 @@ GPT-1
 预训练雏形
       </text>
       <line x1="280" y1="532" x2="280" y2="548" stroke="#191917" stroke-width="0.6" opacity="0.4"/>
-      <text x="280" y="612" font-family="var(--pi-sans)" font-weight="300" font-size="var(--type-body)" text-anchor="middle" fill="rgba(25,25,23,.6)">
+      <text x="280" y="612" font-family="var(--pi-sans)" font-weight="300" font-size="var(--type-body)" text-anchor="middle" fill="rgba(25,25,23,.7)">
 1.17 亿参数 · 证明可行性
       </text>
       <circle cx="548" cy="560" r="9" fill="#DFE0D9" stroke="rgba(25,25,23,.8)" stroke-width="1.2"/>
@@ -1577,7 +1583,7 @@ o1 / o3
 推理模型
       </text>
       <line x1="1620" y1="532" x2="1620" y2="548" stroke="#191917" stroke-width="0.6" opacity="0.4"/>
-      <text x="1620" y="612" font-family="var(--pi-sans)" font-weight="300" font-size="var(--type-body)" text-anchor="middle" fill="rgba(25,25,23,.6)">
+      <text x="1620" y="612" font-family="var(--pi-sans)" font-weight="300" font-size="var(--type-body)" text-anchor="middle" fill="rgba(25,25,23,.7)">
 思维链 · 自我反思
       </text>
       <path d="M 1276 646 Q 1352 700 1428 646" fill="none" stroke="#191917" stroke-width="0.8" opacity="0.35"/>
@@ -1632,13 +1638,13 @@ LLM CORE
       <text x="1050" y="552" font-family="var(--pi-sans)" font-weight="300" font-size="var(--type-body)" text-anchor="middle" fill="#191917">
 模型内核
       </text>
-      <text x="1050" y="184" font-family="var(--pi-mono)" font-size="var(--type-meta)" letter-spacing="3" text-anchor="middle" fill="rgba(25,25,23,.5)">
+      <text x="1050" y="184" font-family="var(--pi-mono)" font-size="var(--type-meta)" letter-spacing="3" text-anchor="middle" fill="rgba(25,25,23,.55)">
 OUTPUT · LAYER
       </text>
       <text x="1050" y="212" font-family="var(--pi-sans)" font-weight="300" font-size="var(--type-body)" text-anchor="middle" fill="#191917">
 输出防护
       </text>
-      <text x="1050" y="272" font-family="var(--pi-mono)" font-size="var(--type-meta)" letter-spacing="3" text-anchor="middle" fill="rgba(25,25,23,.5)">
+      <text x="1050" y="272" font-family="var(--pi-mono)" font-size="var(--type-meta)" letter-spacing="3" text-anchor="middle" fill="rgba(25,25,23,.55)">
 INPUT · LAYER
       </text>
       <text x="1050" y="300" font-family="var(--pi-sans)" font-weight="300" font-size="var(--type-body)" text-anchor="middle" fill="#191917">
@@ -1694,25 +1700,25 @@ PII 脱敏
       <text x="184" y="682" font-family="var(--pi-sans)" font-weight="300" font-size="var(--type-body)" fill="#191917">
 FALLBACK 兜底接管
       </text>
-      <text x="184" y="706" font-family="var(--pi-mono)" font-size="var(--type-meta)" letter-spacing="2" fill="rgba(25,25,23,.5)">
+      <text x="184" y="706" font-family="var(--pi-mono)" font-size="var(--type-meta)" letter-spacing="2" fill="rgba(25,25,23,.55)">
 FALLBACK · LAYER
       </text>
       <line x1="184" y1="722" x2="516" y2="722" stroke="#191917" stroke-width="0.8" opacity="0.5"/>
       <line x1="184" y1="726" x2="516" y2="726" stroke="#191917" stroke-width="0.6" opacity="0.25"/>
       <path d="M 186 745 L 191 751 L 202 738" fill="none" stroke="#191917" stroke-width="1.1" stroke-linecap="round" stroke-linejoin="round"/>
-      <text x="218" y="752" font-family="var(--pi-sans)" font-weight="300" font-size="var(--type-body-small)" fill="rgba(25,25,23,.85)">
+      <text x="218" y="752" font-family="var(--pi-sans)" font-weight="300" font-size="var(--type-body-small)" fill="rgba(25,25,23,.8)">
 降级模型
       </text>
       <path d="M 186 771 L 191 777 L 202 764" fill="none" stroke="#191917" stroke-width="1.1" stroke-linecap="round" stroke-linejoin="round"/>
-      <text x="218" y="778" font-family="var(--pi-sans)" font-weight="300" font-size="var(--type-body-small)" fill="rgba(25,25,23,.85)">
+      <text x="218" y="778" font-family="var(--pi-sans)" font-weight="300" font-size="var(--type-body-small)" fill="rgba(25,25,23,.8)">
 人工接管
       </text>
       <path d="M 186 797 L 191 803 L 202 790" fill="none" stroke="#191917" stroke-width="1.1" stroke-linecap="round" stroke-linejoin="round"/>
-      <text x="218" y="804" font-family="var(--pi-sans)" font-weight="300" font-size="var(--type-body-small)" fill="rgba(25,25,23,.85)">
+      <text x="218" y="804" font-family="var(--pi-sans)" font-weight="300" font-size="var(--type-body-small)" fill="rgba(25,25,23,.8)">
 安全回复
       </text>
       <path d="M 186 823 L 191 829 L 202 816" fill="none" stroke="#191917" stroke-width="1.1" stroke-linecap="round" stroke-linejoin="round"/>
-      <text x="218" y="830" font-family="var(--pi-sans)" font-weight="300" font-size="var(--type-body-small)" fill="rgba(25,25,23,.85)">
+      <text x="218" y="830" font-family="var(--pi-sans)" font-weight="300" font-size="var(--type-body-small)" fill="rgba(25,25,23,.8)">
 告警上报
       </text>
       <path d="M 550 624 C 720 620, 840 560, 964 528" fill="none" stroke="#191917" stroke-width="0.7" stroke-dasharray="3 5" opacity="0.45"/>
@@ -1724,12 +1730,9 @@ FAIL-SAFE · AUDITED PER CALL
 </svg></div>`
 ];
 
-/* 反向抽取:10 个抽取组件已按原版 scene 抄录入池(t:'new'),可并入项均不并入、独立入池;仅剩 M1 存疑 */
-const EXTRACT_GROUPS=[
-  {g:'存疑 —— 氛围/装饰件,是否入池待定',tag:'hold',items:[
-    {from:'M1',nm:'粒子效果件',note:'存疑:氛围页,粒子为 canvas 动态效果,非关系页图形本体'},
-  ]},
-];
+/* 反向抽取:10 个抽取组件已按原版 scene 抄录入池(t:'new'),可并入项均不并入、独立入池;
+   M1 粒子件是氛围 canvas 效果、非关系页图形本体,整页归非关系页模板,存疑区清空 */
+const EXTRACT_GROUPS=[];
 
 /* ============ 渲染 ============ */
 const $=s=>document.querySelector(s);
@@ -1754,7 +1757,7 @@ function compCard(c,extra=''){
     :(c.t==='new'
       ?`<div class="comp-stage" data-new="${c.mk}"></div>`
       :`<div class="comp-stage" data-src="${c.t}:${c.num}"></div>`);
-  return `<div class="comp-card" data-modal="1" data-spec="${spec}" data-mtitle="${c.en} ${c.nm}" data-mtag="${tag}${c.note?' · '+c.note:''}">
+  return `<div class="comp-card" data-modal="1" data-spec="${spec}"${c.vr?` data-vr='${JSON.stringify(c.vr)}'`:''} data-mtitle="${c.en} ${c.nm}" data-mtag="${tag}${c.note?' · '+c.note:''}${c.vr?' · 变体×'+c.vr.length:''}">
     <div class="comp-wrap">${stage}</div>
     <div class="comp-info">
       <span class="en">${c.en}</span> <span class="nm">${c.nm}</span>
@@ -1781,7 +1784,7 @@ $('#cmp-groups').innerHTML=SMARTART_COMPONENTS.map(g=>`
     <div class="fam-head"><h2>${g.fam}</h2><span class="desc">${g.items.length} 个</span></div>
     <div class="comp-grid">${g.items.map(c=>compCard(c)).join('')}</div>
   </div>`).join('');
-$('#c-cmp').textContent=SMARTART_COMPONENT_COUNT+'+'+EXTRACT_GROUPS.reduce((s,g)=>s+g.items.length,0)+'抽';
+$('#c-cmp').textContent=SMARTART_COMPONENT_COUNT+(EXTRACT_GROUPS.length?'+'+EXTRACT_GROUPS.reduce((s,g)=>s+g.items.length,0)+'抽':'');
 
 /* 反向抽取候选渲染:整页版式预览(组件本体 = 中央图形) */
 function extractCard(it){
@@ -1801,23 +1804,42 @@ $('#extract-groups').innerHTML=EXTRACT_GROUPS.map(g=>`
     <div class="grid">${g.items.map(extractCard).join('')}</div>
   </div>`).join('');
 
-/* ============ 浮层(替代详情页):点击卡片,页面内放大查看 ============ */
+/* ============ 浮层(替代详情页):点击卡片,页面内放大查看;当前 tab 内可左右切换 ============ */
 (function(){
   const modal=document.createElement('div');
   modal.id='layer';
   modal.innerHTML='<div class="layer-bg"></div><div class="layer-box">'+
     '<button class="layer-close" aria-label="关闭">×</button>'+
+    '<button class="layer-nav prev" aria-label="上一张">‹</button>'+
+    '<button class="layer-nav next" aria-label="下一张">›</button>'+
     '<div class="layer-stage" id="layer-stage"></div>'+
-    '<div class="layer-info" id="layer-info"></div></div>';
+    '<div class="layer-info"><span id="layer-title"></span><span id="layer-variants"></span><span class="layer-count" id="layer-count"></span></div></div>';
   document.body.appendChild(modal);
-  function close(){modal.classList.remove('on');}
+  const prevBtn=modal.querySelector('.layer-nav.prev'),
+        nextBtn=modal.querySelector('.layer-nav.next');
+  let ecChart=null;
+  /* 翻页序列 = 当前 tab 的全部可弹卡片;token 防连续快翻时慢资源回写旧舞台 */
+  let navCards=[],openToken=0;
+  function close(){
+    if(ecChart){ecChart.dispose();ecChart=null;}
+    openToken++;
+    modal.classList.remove('on');
+  }
   modal.querySelector('.layer-bg').onclick=close;
   modal.querySelector('.layer-close').onclick=close;
-  document.addEventListener('keydown',e=>{if(e.key==='Escape')close();});
+  prevBtn.onclick=()=>step(-1);
+  nextBtn.onclick=()=>step(1);
+  document.addEventListener('keydown',e=>{
+    if(!modal.classList.contains('on'))return;
+    if(e.key==='Escape')close();
+    else if(e.key==='ArrowLeft')step(-1);
+    else if(e.key==='ArrowRight')step(1);
+  });
 
   /* 渲染主体进浮层:spec = atlas:N / native:N / new:I / ec:ID;frame=URL(版式整页) */
   function renderSpec(spec){
     const st=document.getElementById('layer-stage');
+    if(ecChart){ecChart.dispose();ecChart=null;}
     st.innerHTML='';
     const kind=spec.split(':')[0],key=spec.slice(kind.length+1);
     if(kind==='ec'){
@@ -1831,19 +1853,25 @@ $('#extract-groups').innerHTML=EXTRACT_GROUPS.map(g=>`
       if(entry&&window.echarts&&adapter&&themeAdapter){
         if(entry.register_maps){Object.keys(entry.register_maps).forEach(n=>echarts.registerMap(n,entry.register_maps[n]));}
         const chart=echarts.init(box,null,{renderer:'svg',width:1600,height:900});
+        ecChart=chart;
         chart.setOption(adapter.previewOption(entry,{isDetail:true,themeAdapter:themeAdapter,themeContext:{root:document.documentElement},typeSize:typeSize,animated:false}),true);
-        requestAnimationFrame(()=>{box.style.transform='scale('+(st.clientWidth/1600)+')';});
+        /* 舞台不是 16:9(约 1178×729),只按宽缩放会把图钉在顶部;等比 contain 后平移居中 */
+        const fitEc=()=>{
+          const s=Math.min(st.clientWidth/1600,st.clientHeight/900);
+          box.style.transform='translate('+((st.clientWidth-1600*s)/2)+'px,'+((st.clientHeight-900*s)/2)+'px) scale('+s+')';
+        };
+        requestAnimationFrame(()=>{fitEc();requestAnimationFrame(fitEc);});
       }else{st.textContent='渲染失败';}
       return;
     }
     const host=document.createElement('div');
     host.className='stage-host';
-    let markup='';
+    let markup='',entry=null;
     if(kind==='new')markup=NEW_MARKUP[+key]||'';
     else{
       const d=(kind==='atlas')?window.SWISS_CATALOG_DATA:window.PAPER_INK_COMPONENT_DATA;
       const num=Number(key);
-      const entry=d&&d.entries.find(x=>x.num===num);
+      entry=d&&d.entries.find(x=>x.num===num);
       if(entry){
         const ad=(kind==='atlas')?((window.WisePPTThemeAdapters||{})['paper-ink.atlas']):null;
         markup=ad?ad.adaptMarkup(entry.snippet||''):(entry.snippet||'');
@@ -1851,18 +1879,103 @@ $('#extract-groups').innerHTML=EXTRACT_GROUPS.map(g=>`
     }
     host.innerHTML=markup;
     st.appendChild(host);
-    /* 双帧:首帧样式/入场动画可能未就绪,再排一次拿到最终几何 */
-    requestAnimationFrame(()=>{fitStage(st,host);requestAnimationFrame(()=>fitStage(st,host));});
+    /* atlas 画板内容天然偏小,详情与预览同样放开放大 */
+    if(kind==='atlas')host.dataset.scaleUp='1';
+    /* 弹窗不套声明框:声明框是卡片预览/导出的适配基准,reshape 按整块 viewBox 取均匀比例,
+       内容只占声明框的一部分(如 #085 内容只占框上部约四成高),按框居中会把内容顶偏。
+       审阅视图按 snippet 原生比例渲染,由 fitStage 量实际绘制内容居中,与 atlas/抄录一致。 */
+    requestAnimationFrame(()=>{
+      fitStage(st,host);
+      requestAnimationFrame(()=>fitStage(st,host));
+      /* 入场淡入最长约 1s,动画放完再复量一次,兜住测量时序 */
+      setTimeout(()=>{if(modal.classList.contains('on')&&host.isConnected)fitStage(st,host);},1100);
+    });
   }
   function renderFrame(url){
     const st=document.getElementById('layer-stage');
+    if(ecChart){ecChart.dispose();ecChart=null;}
     st.innerHTML='';
     const wrap=document.createElement('div');
-    wrap.style.cssText='position:absolute;inset:0;overflow:hidden';
+    /* 等比缩放取 min(宽比,高比)并居中;补边染纸色,舞台的深一档底色(paper-deep)不能露出来 */
+    wrap.style.cssText='position:absolute;inset:0;overflow:hidden;background:var(--paper)';
     const f=document.createElement('iframe');
     f.src=url;f.style.cssText='width:1920px;height:1080px;border:0;transform-origin:0 0';
     wrap.appendChild(f);st.appendChild(wrap);
-    requestAnimationFrame(()=>{f.style.transform='scale('+(st.clientWidth/1920)+')';});
+    const fit=()=>{
+      const s=Math.min(st.clientWidth/1920,st.clientHeight/1080);
+      const dx=(st.clientWidth-1920*s)/2,dy=(st.clientHeight-1080*s)/2;
+      f.style.transform='translate('+dx+'px,'+dy+'px) scale('+s+')';
+    };
+    requestAnimationFrame(()=>{fit();requestAnimationFrame(fit);});
+  }
+  /* 变体 tab:合并组的被藏变体源码在浮层逐个可见(每个 tab 重渲该变体 snippet/option);‹ › 的跨卡片序列不受影响 */
+  function renderVariants(card){
+    const box=document.getElementById('layer-variants');
+    box.innerHTML='';
+    let vr=null;
+    try{vr=card.dataset.vr?JSON.parse(card.dataset.vr):null;}catch(err){vr=null;}
+    if(!vr||vr.length<2)return;
+    vr.forEach(([spec,label],i)=>{
+      const b=document.createElement('button');
+      b.type='button';
+      b.className='vtab'+(i===0?' on':'');
+      b.textContent=label;
+      b.onclick=()=>{
+        if(b.classList.contains('on'))return;
+        box.querySelectorAll('.vtab').forEach(x=>x.classList.remove('on'));
+        b.classList.add('on');
+        renderSpec(spec);
+      };
+      box.appendChild(b);
+    });
+  }
+  /* 打开/翻页:序列取当前 tab 全部 [data-modal] 卡;组件卡点开仍走两段守卫,键盘与按钮翻页直接渲染 */
+  let navIndex=-1;
+  async function show(card){
+    const d=card.dataset;
+    document.getElementById('layer-title').innerHTML=(d.mtitle||'')+(d.mtag?' · '+d.mtag:'');
+    navIndex=navCards.indexOf(card);
+    document.getElementById('layer-count').textContent=navIndex<0?'':(navIndex+1)+' / '+navCards.length;
+    prevBtn.disabled=navIndex<=0;
+    nextBtn.disabled=navIndex<0||navIndex>=navCards.length-1;
+    modal.classList.add('on');
+    const token=++openToken;
+    if(d.frame){renderFrame(d.frame);return;}
+    if(!d.spec)return;
+    /* 翻到未挂载过的组件卡:数据脚本没就绪才显示占位并等待,否则直接渲染(避免每次打开闪"加载中") */
+    const kind=d.spec.split(':')[0];
+    if(kind==='ec'||kind==='atlas'||kind==='native'){
+      const ready=kind==='ec'
+        ?!!(window.WISE_PPT_ECHARTS_GALLERY_DATA&&window.echarts&&window.WiseEchartsThemeAdapter)
+        :!!(kind==='atlas'?window.SWISS_CATALOG_DATA:window.PAPER_INK_COMPONENT_DATA);
+      if(!ready){
+        const st=document.getElementById('layer-stage');
+        if(ecChart){ecChart.dispose();ecChart=null;}
+        st.innerHTML='<div class="placeholder"><span class="big">加载中</span></div>';
+        try{
+          if(kind==='ec'){await ensureEChartsAssets();assertVariantRefs();}
+          else await ensureComponentCore();
+        }catch(err){
+          st.textContent='加载失败:'+(err&&err.message||err);
+          return;
+        }
+        if(token!==openToken)return;
+      }
+    }
+    renderVariants(card);
+    renderSpec(d.spec);
+  }
+  function open(card){
+    navCards=[...document.querySelectorAll('main.on [data-modal]')];
+    show(card);
+  }
+  function step(dir){
+    if(!modal.classList.contains('on'))return;
+    const n=navIndex+dir;
+    if(n<0||n>=navCards.length)return;
+    /* 幕后同步滚动:关浮层时正好停在当前卡,顺带触发它懒挂载 */
+    navCards[n].scrollIntoView({block:'center'});
+    show(navCards[n]);
   }
   document.addEventListener('click',function(e){
     const card=e.target.closest('[data-modal]');
@@ -1873,10 +1986,7 @@ $('#extract-groups').innerHTML=EXTRACT_GROUPS.map(g=>`
       queueComponentStage(preview);
       return;
     }
-    document.getElementById('layer-info').innerHTML=(d.mtitle||'')+(d.mtag?' · '+d.mtag:'');
-    modal.classList.add('on');
-    if(d.frame)renderFrame(d.frame);
-    else if(d.spec)renderSpec(d.spec);
+    open(card);
   });
 })();
 
@@ -1943,6 +2053,84 @@ function injectComponentCss(){
   componentCssInjected=true;
 }
 
+/* native 旧证据片段统一用 600×600 做过坐标归一化。这里按 entry.frame 反归一化：
+   - HTML 组件直接重排到声明宽高；
+   - SVG 的空间坐标恢复真实纵横比，但文字、圆点和小型语义组做反向补偿，避免被拉宽/压扁；
+   - 线宽使用 non-scaling-stroke，保持纸墨线稿粗细不变。
+   这样 frame 是唯一比例真值，不再由历史 .pi-card 的 600×600 默认值决定预览。 */
+function nativeFrame(entry){
+  const frame=entry&&entry.paperInkNative&&entry.frame;
+  const width=frame&&Number(frame.width),height=frame&&Number(frame.height);
+  return Number.isFinite(width)&&width>0&&Number.isFinite(height)&&height>0?{width,height}:null;
+}
+function ratioLockPlan(svg,counterX,counterY){
+  const vb=svg.viewBox&&svg.viewBox.baseVal;
+  if(!vb||vb.width<=0||vb.height<=0)return [];
+  const groups=[...svg.querySelectorAll('g')].filter(g=>{
+    if(g.closest('defs'))return false;
+    let b;
+    try{b=g.getBBox();}catch(err){return false;}
+    return b.width>0&&b.height>0&&b.width<=vb.width*.44&&b.height<=vb.height*.44;
+  });
+  /* 优先锁住一个完整的小卡片/节点，不再重复锁它内部的文字与图标。 */
+  const semanticGroups=groups.filter(g=>!groups.some(p=>p!==g&&p.contains(g)));
+  const primitives=[...svg.querySelectorAll('text,circle,ellipse,image')]
+    .filter(node=>!node.closest('defs')&&!semanticGroups.some(g=>g.contains(node)));
+  return [...semanticGroups,...primitives].map(node=>{
+    const parent=node.parentNode;
+    const matrix=parent&&parent.getScreenCTM&&parent.getScreenCTM();
+    const rect=node.getBoundingClientRect();
+    if(!parent||!matrix||(!rect.width&&!rect.height))return null;
+    let point;
+    try{
+      point=new DOMPoint(rect.left+rect.width/2,rect.top+rect.height/2).matrixTransform(matrix.inverse());
+    }catch(err){return null;}
+    return {node,parent,x:point.x,y:point.y,counterX,counterY};
+  }).filter(Boolean);
+}
+function reshapeNativeSvg(svg,frame){
+  if(!svg||svg.dataset.declaredFrameApplied==='1')return;
+  const vb=svg.viewBox&&svg.viewBox.baseVal;
+  if(!vb||vb.width<=0||vb.height<=0)return;
+  const scaleX=frame.width/vb.width,scaleY=frame.height/vb.height;
+  const uniform=Math.min(scaleX,scaleY);
+  const counterX=uniform/scaleX,counterY=uniform/scaleY;
+  if(Math.abs(counterX-1)>.001||Math.abs(counterY-1)>.001){
+    const plans=ratioLockPlan(svg,counterX,counterY);
+    plans.forEach(plan=>{
+      if(!plan.node.isConnected||plan.node.parentNode!==plan.parent)return;
+      const wrap=document.createElementNS('http://www.w3.org/2000/svg','g');
+      wrap.dataset.ratioLock='1';
+      wrap.setAttribute('transform','translate('+plan.x+' '+plan.y+') scale('+plan.counterX+' '+plan.counterY+') translate('+(-plan.x)+' '+(-plan.y)+')');
+      plan.parent.insertBefore(wrap,plan.node);
+      wrap.appendChild(plan.node);
+    });
+  }
+  svg.querySelectorAll('path,line,polyline,polygon,rect,circle,ellipse').forEach(node=>{
+    node.setAttribute('vector-effect','non-scaling-stroke');
+  });
+  svg.setAttribute('preserveAspectRatio','none');
+  svg.style.setProperty('width','100%','important');
+  svg.style.setProperty('height','100%','important');
+  svg.dataset.declaredFrameApplied='1';
+}
+function applyDeclaredFrame(host,entry){
+  const frame=nativeFrame(entry);
+  const root=host&&host.firstElementChild;
+  if(!frame||!root)return;
+  const svg=root.matches('svg.pi-art')?root:root.querySelector(':scope > svg.pi-art');
+  /* 必须在改根画布尺寸前取 SVG 的原始 CTM，ratio-lock 才能拿到正确的节点中心。 */
+  if(svg)reshapeNativeSvg(svg,frame);
+  root.style.setProperty('width',frame.width+'px','important');
+  root.style.setProperty('height',frame.height+'px','important');
+  root.style.setProperty('min-height','0','important');
+  root.style.setProperty('max-width','none','important');
+  root.style.setProperty('max-height','none','important');
+  host.dataset.frameWidth=String(frame.width);
+  host.dataset.frameHeight=String(frame.height);
+  host.dataset.frameApplied='1';
+}
+
 /* 2) snippet 注入 + 场馆缩放:comp-stage(16:9)内,组件原尺寸 contain 居中 */
 function mountStage(stage){
   if(stage.dataset.new!==undefined){
@@ -1952,6 +2140,7 @@ function mountStage(stage){
     stage.appendChild(host);
     stage.classList.add('is-mounted');
     requestAnimationFrame(()=>{fitStage(stage,host,true,true);requestAnimationFrame(()=>fitStage(stage,host,true,true));});
+    refitAfterMotion(stage,host);
     return;
   }
   const parts=(stage.dataset.src||'').split(':');
@@ -1969,10 +2158,17 @@ function mountStage(stage){
   const markup=adapter?adapter.adaptMarkup(entry.snippet||''):(entry.snippet||'');
   const host=document.createElement('div');
   host.className='stage-host';
+  if(kind==='atlas')host.dataset.scaleUp='1';
   host.innerHTML=markup;
   stage.appendChild(host);
+  applyDeclaredFrame(host,entry);
   stage.classList.add('is-mounted');
   requestAnimationFrame(()=>{fitStage(stage,host,true,true);requestAnimationFrame(()=>fitStage(stage,host,true,true));});
+  refitAfterMotion(stage,host);
+}
+/* 入场淡入最长约 1s,播放中的 opacity 不可靠;动画放完再按最终淡墨复量一次包围盒 */
+function refitAfterMotion(stage,host){
+  setTimeout(()=>{if(stage.isConnected)fitStage(stage,host,true,true);},1100);
 }
 /* 内容包围盒:只算"实际画了东西"的后代(文字 / 非透明背景 / 可见边框 / svg·img 等),
    排除透明空壳与画板自带留白。缩放与居中都以它为准,而不是整个组件画板。 */
@@ -1995,15 +2191,45 @@ function contentBounds(el){
     const tag=e.tagName.toLowerCase();
     if(tag==='img'||tag==='canvas'||tag==='video'||tag==='iframe')return true;
     if(tag==='svg'){
-      /* svg 按内部几何 getBBox 折算,剔除 viewBox 内留白;折算失败则退化为整个 svg 矩形 */
+      /* svg 按"可见元素联合盒"折算:逐后代累计 effective opacity ≥ .35 且有填色/描边/文本的
+         元素矩形,剔除 viewBox 留白与淡墨注脚(注脚会把包围盒拉偏,预览主体就不居中)。
+         全部过滤为空或折算失败时,退化为整体 getBBox,再不行退化为整个 svg 矩形。 */
       const r=e.getBoundingClientRect();
-      let vb=null;try{vb=(e.getBBox&&e.getBBox())||null;}catch(err){}
-      if(vb&&vb.width>0&&vb.height>0&&r.width>0&&r.height>0){
-        let kx=1,ky=1;
-        const vw=e.viewBox&&e.viewBox.baseVal;
-        if(vw&&vw.width>0&&vw.height>0){kx=r.width/vw.width;ky=r.height/vw.height;}
+      const vw=e.viewBox&&e.viewBox.baseVal;
+      const kx=(vw&&vw.width>0)?r.width/vw.width:1,ky=(vw&&vw.height>0)?r.height/vw.height:1;
+      let box=null;
+      /* 入场淡入播放中,后代当前 opacity 不可靠(常从 0 起步),此时不做淡墨过滤;
+         全量几何先粗定位,动画放完后的复量(fitStage 的再次调用)再收紧到真实淡墨 */
+      const animating=!!(e.getAnimations&&e.getAnimations({subtree:true}).length);
+      e.querySelectorAll('*').forEach(node=>{
+        const tn=node.tagName.toLowerCase();
+        if(tn==='defs'||tn==='clippath'||tn==='pattern'||tn==='lineargradient'||tn==='radialgradient'||tn==='filter'||tn==='mask')return;
+        let op=1,cur=node;
+        while(cur&&cur!==e){
+          const f=parseFloat(getComputedStyle(cur).opacity);
+          if(!isNaN(f))op*=f;
+          cur=cur.parentElement;
+        }
+        const eo=parseFloat(getComputedStyle(e).opacity);
+        if(!isNaN(eo))op*=eo;
+        const st=getComputedStyle(node);
+        /* 淡墨判定:累计 opacity(含祖先与 svg 根)低于 .35 视为注脚级,不参与包围盒 */
+        if(op<.35&&!animating)return;
+        const hasPaint=(st.fill&&st.fill!=='none'&&st.fill!=='rgba(0, 0, 0, 0)'&&st.fill!=='transparent')
+          ||(st.stroke&&st.stroke!=='none'&&st.stroke!=='rgba(0, 0, 0, 0)'&&st.stroke!=='transparent');
+        if(!hasPaint&&tn!=='text'&&tn!=='tspan'&&tn!=='image')return;
+        const rr=node.getBoundingClientRect();
+        if(rr.width<=0&&rr.height<=0)return;
+        const ux0=(rr.left-r.left)/kx,uy0=(rr.top-r.top)/ky,ux1=(rr.right-r.left)/kx,uy1=(rr.bottom-r.top)/ky;
+        if(!box)box=[ux0,uy0,ux1,uy1];
+        else{box[0]=Math.min(box[0],ux0);box[1]=Math.min(box[1],uy0);box[2]=Math.max(box[2],ux1);box[3]=Math.max(box[3],uy1);}
+      });
+      let vb=null;
+      if(box)grow({left:r.left+box[0]*kx,top:r.top+box[1]*ky,right:r.left+box[2]*kx,bottom:r.top+box[3]*ky});
+      else{try{vb=(e.getBBox&&e.getBBox())||null;}catch(err){}}
+      if(!box&&vb&&vb.width>0&&vb.height>0&&r.width>0&&r.height>0){
         grow({left:r.left+vb.x*kx,top:r.top+vb.y*ky,right:r.left+(vb.x+vb.width)*kx,bottom:r.top+(vb.y+vb.height)*ky});
-      }else grow(r);
+      }else if(!box&&!vb)grow(r);
       return false;
     }
     if(cs.backgroundImage&&cs.backgroundImage!=='none')return true;
@@ -2043,13 +2269,17 @@ function refitComponents(remeasure=false){
 
 /* 组件先在 1280×720 PPT 内层画布中保持原尺寸居中；卡片预览再像 iframe 一样整体等比缩小。
    浮层详情仍按可用区域 contain 放大，避免改变点击后的审阅体验。
-   PPT 内层几何只在首次挂载或字体就绪后测量；resize 仅更新外层缩放。 */
+   PPT 内层几何只在首次挂载或字体就绪后测量；resize 仅更新外层缩放。
+   缩放上限:atlas 画板是 600×600 方形预览遗产,内容天然偏小,允许放大并 contain 进 880×520 组件
+   标准盒(与 native/抄录同盒,只放大不缩小);native/抄录已重定标到标准盒,维持 1.0 封顶不被吹大。 */
 function fitStage(stage,host,usePptCanvas=false,remeasure=false){
   const el=host.firstElementChild;
   if(!el)return;
   const stageW=stage.clientWidth,stageH=stage.clientHeight;
   if(stageW<2||stageH<2)return;
   const W=usePptCanvas?1280:stageW,H=usePptCanvas?720:stageH;
+  const scaleUp=host.dataset.scaleUp==='1';
+  const maxScale=(w,h)=>scaleUp?Math.max(1,Math.min(880/w,520/h)):1;
   const shouldMeasure=!usePptCanvas||remeasure||host.dataset.innerFitted!=='1';
   if(shouldMeasure){
     host.style.transform='none';
@@ -2060,15 +2290,16 @@ function fitStage(stage,host,usePptCanvas=false,remeasure=false){
     el.style.left='0';
     el.style.top='0';
     let s=1,left=0,top=0;
-    const b=contentBounds(el);
+    const frameW=Number(host.dataset.frameWidth),frameH=Number(host.dataset.frameHeight);
+    const b=host.dataset.frameApplied==='1'&&frameW>0&&frameH>0?[0,0,frameW,frameH]:contentBounds(el);
     if(b){
       const bw=b[2]-b[0],bh=b[3]-b[1];
-      s=bw>0&&bh>0?Math.min(W/bw,H/bh,1):1;
+      s=bw>0&&bh>0?Math.min(W/bw,H/bh,maxScale(bw,bh)):1;
       left=W/2-s*(b[0]+bw/2);
       top=H/2-s*(b[1]+bh/2);
     }else{
       const w=el.offsetWidth||600,h=el.offsetHeight||600;
-      s=Math.min(W/w,H/h,1);
+      s=Math.min(W/w,H/h,maxScale(w,h));
       left=(W-w*s)/2;
       top=(H-h*s)/2;
     }
@@ -2126,6 +2357,7 @@ async function mountQueuedStage(stage){
   try{
     if(stage.dataset.ec!==undefined){
       await ensureEChartsAssets();
+      assertVariantRefs();
       initEChartsStage(stage);
     }else{
       await ensureComponentCore();
@@ -2167,6 +2399,7 @@ async function mountAllComponents(){
   cmpMounted=true;
   try{
     await ensureComponentCore();
+    assertVariantRefs();
     observeComponentStages();
     if(document.fonts&&document.fonts.ready)document.fonts.ready.then(()=>refitComponents(true));
   }catch(err){
@@ -2174,120 +2407,75 @@ async function mountAllComponents(){
     document.querySelectorAll('.comp-stage').forEach(stage=>failComponentStage(stage,err));
   }
 }
+/* 变体表门禁:data-vr 至少两项、首项须等于卡片的代表 spec、引用的画册/ECharts 条目须真实存在(未加载的源跳过,由各自加载点复检) */
+function assertVariantRefs(){
+  const atlasNums=window.SWISS_CATALOG_DATA?new Set(window.SWISS_CATALOG_DATA.entries.map(e=>e.num)):null;
+  const ecIds=window.WISE_PPT_ECHARTS_GALLERY_DATA?new Set(window.WISE_PPT_ECHARTS_GALLERY_DATA.components.map(c=>c.component_id)):null;
+  document.querySelectorAll('#cmp-groups [data-vr]').forEach(card=>{
+    let vr;
+    try{vr=JSON.parse(card.dataset.vr);}catch(err){throw new Error('变体表解析失败:'+card.dataset.mtitle);}
+    if(!(vr.length>1)||vr[0][0]!==card.dataset.spec)throw new Error('变体表首项须为代表组件:'+card.dataset.mtitle);
+    vr.forEach(([spec])=>{
+      const k=spec.split(':')[0],key=spec.slice(k.length+1);
+      if(k==='atlas'){
+        if(atlasNums&&!atlasNums.has(Number(key)))throw new Error('变体缺画册条目:'+spec+' · '+card.dataset.mtitle);
+      }else if(k==='ec'){
+        if(ecIds&&!ecIds.has(key))throw new Error('变体缺 ECharts 条目:'+spec+' · '+card.dataset.mtitle);
+      }else throw new Error('变体只收 atlas/ec:'+spec+' · '+card.dataset.mtitle);
+    });
+  });
+}
 const _switchTabOri=switchTab;
 switchTab=function(id){_switchTabOri(id);if(id==='cmp')mountAllComponents();};
 
 /* ============ 结构枚举(6 种切分,从 skill-design 第五章 + 55 版式反向抽象) ============ */
-/* SVG 示意图:150×84 的 16:9 小框 + 切线,抽象自版式实拍 */
-const CN_NUM='①②③④⑤';
-function fRect(x,y,w,h){return `<rect x="${x}" y="${y}" width="${w}" height="${h}" fill="rgba(255,255,255,.55)" stroke="var(--ink)" stroke-width="1.5"/>`}
-function ln(x1,y1,x2,y2,ex){return `<line x1="${x1}" y1="${y1}" x2="${x2}" y2="${y2}" stroke="var(--ink-45)" stroke-width="1"${ex?' '+ex:''}/>`}
-function lab(x,y,t,big){return `<text x="${x}" y="${y}" text-anchor="middle" class="${big?'sl-labb':'sl-lab'}">${t}</text>`}
-function schem(caps){
-  const FW=150,FH=84,GAP=18,PAD=3;
-  const W=PAD*2+caps.length*FW+(caps.length-1)*GAP,H=PAD*2+FH+17;
-  let s=`<svg viewBox="0 0 ${W} ${H}" width="${W}" height="${H}">`;
-  caps.forEach((c,i)=>{
-    const x=PAD+i*(FW+GAP);
-    s+=c.d(x,PAD,FW,FH)+`<text x="${x+FW/2}" y="${PAD+FH+14}" text-anchor="middle" class="sl-cap">${c.cap}</text>`;
-  });
-  return s+'</svg>';
-}
-/* 单区:版心一块,虚影提示组件形状自由(放射/环形/漏斗) */
-const gSingle=()=>(x,y,w,h)=>{
-  let s=fRect(x,y,w,h);
-  const cy=y+h/2;
-  let g='<g opacity=".35" stroke="var(--ink-55)" fill="none" stroke-width="1">';
-  g+=`<circle cx="${x+30}" cy="${cy}" r="2.6" fill="var(--ink-55)" stroke="none"/>`;
-  for(let k=0;k<6;k++){const a=k*Math.PI/3+.4;
-    g+=`<line x1="${(x+30+Math.cos(a)*6).toFixed(1)}" y1="${(cy+Math.sin(a)*6).toFixed(1)}" x2="${(x+30+Math.cos(a)*20).toFixed(1)}" y2="${(cy+Math.sin(a)*20).toFixed(1)}"/>`;}
-  g+='</g>';
-  g+=`<g opacity=".35" stroke="var(--ink-55)" fill="none" stroke-width="1"><circle cx="${x+w/2}" cy="${cy}" r="23"/><circle cx="${x+w/2}" cy="${cy}" r="13" stroke-dasharray="3 3"/></g>`;
-  const fx=x+w-48,fy=cy-27;
-  g+=`<g opacity=".35" stroke="var(--ink-55)" fill="none" stroke-width="1">
-    <line x1="${fx}" y1="${fy}" x2="${fx+36}" y2="${fy}"/>
-    <line x1="${fx+5}" y1="${fy+13.5}" x2="${fx+31}" y2="${fy+13.5}"/>
-    <line x1="${fx+10}" y1="${fy+27}" x2="${fx+26}" y2="${fy+27}"/>
-    <line x1="${fx+15}" y1="${fy+40}" x2="${fx+21}" y2="${fy+40}"/>
-    <path d="M ${fx} ${fy} L ${fx+5} ${fy+13.5} L ${fx+10} ${fy+27} L ${fx+15} ${fy+40} M ${fx+36} ${fy} L ${fx+31} ${fy+13.5} L ${fx+26} ${fy+27} L ${fx+21} ${fy+40}"/>
-  </g>`;
-  return s+g;
-};
-const gCols=n=>(x,y,w,h)=>{
-  let s=fRect(x,y,w,h);
-  for(let i=1;i<n;i++)s+=ln(x+w*i/n,y,x+w*i/n,y+h);
-  for(let i=0;i<n;i++)s+=lab(x+w*(i+.5)/n,y+h/2+4,CN_NUM[i]);
-  return s;
-};
-const gRows=n=>(x,y,w,h)=>{
-  let s=fRect(x,y,w,h);
-  for(let i=1;i<n;i++)s+=ln(x,y+h*i/n,x+w,y+h*i/n);
-  for(let i=0;i<n;i++)s+=lab(x+w/2,y+h*(i+.5)/n+4,CN_NUM[i]);
-  return s;
-};
-const gHasym=two=>(x,y,w,h)=>{
-  const mw=w*.64;
-  let s=fRect(x,y,w,h)+ln(x+mw,y,x+mw,y+h)+lab(x+mw/2,y+h/2+4,'主',1);
-  if(two){
-    s+=ln(x+mw,y+h/2,x+w,y+h/2,'stroke-dasharray="3 3"');
-    s+=lab(x+(mw+w)/2,y+h/4+4,'辅')+lab(x+(mw+w)/2,y+h*3/4+4,'辅');
-  }else{
-    s+=`<rect x="${x+mw}" y="${y}" width="${w-mw}" height="${h}" fill="none" stroke="var(--ink-45)" stroke-dasharray="3 3"/>`;
-    s+=lab(x+mw+(w-mw)/2,y+h/2+4,'辅');
-  }
-  return s;
-};
-/* 上下不对称三种走法:0 上主下收束带 / 1 上主下辅×4 / 2 上辅下主 */
-const gVasym=mode=>(x,y,w,h)=>{
-  /* mode 0(E4/K1):主=上大矩阵(68%),收束带=下窄条(32%);mode 1/2 维持上小下大/上小下主 */
-  const th=mode===0?h*.68:h*.32;
-  let s=fRect(x,y,w,h)+ln(x,y+th,x+w,y+th);
-  if(mode===0){
-    s+=`<rect x="${x}" y="${y+th}" width="${w}" height="${h-th}" fill="none" stroke="var(--ink-45)" stroke-dasharray="3 3"/>`;
-    s+=lab(x+w/2,y+th/2+4,'主(矩阵/图表)',1)+lab(x+w/2,y+th+(h-th)/2+4,'辅(收束带/注释)');
-  }else if(mode===1){
-    s+=lab(x+w/2,y+th/2+4,'主(总额)',1);
-    for(let i=1;i<4;i++)s+=ln(x+w*i/4,y+th,x+w*i/4,y+h,'stroke-dasharray="3 3"');
-    for(let i=0;i<4;i++)s+=lab(x+w*(i+.5)/4,y+th+(h-th)/2+4,CN_NUM[i]);
-  }else{
-    s+=`<rect x="${x}" y="${y}" width="${w}" height="${th}" fill="none" stroke="var(--ink-45)" stroke-dasharray="3 3"/>`;
-    s+=lab(x+w/2,y+th/2+4,'辅(摘要)')+lab(x+w/2,y+th+(h-th)/2+4,'主(原文/标本)',1);
-  }
-  return s;
-};
-const gGrid=(rows,cols)=>(x,y,w,h)=>{
-  let s=fRect(x,y,w,h);
-  const cw=w/cols,ch=h/rows,thin=cols>5||rows>5?'stroke-width=".7"':'';
-  for(let i=1;i<cols;i++)s+=ln(x+cw*i,y,x+cw*i,y+h,thin);
-  for(let j=1;j<rows;j++)s+=ln(x,y+ch*j,x+w,y+ch*j,thin);
-  return s;
-};
+/* 空槽大图:taxonomy-empty/ 下 10 张是 taxonomy(wise-ppt-page-expression)110 张成熟蓝图
+   按槽位几何去重出的空槽版式原样提取;上下等分、网格整类与左右4等分变体 taxonomy 无空槽实例,
+   按同规格补造 7 张。来源与拓扑对应关系见 taxonomy-empty/manifest.json。
+   ex = 该分点对应的示例页,与「结构示例」tab 同一批('all' = 本结构全部示例;空数组 = 无示例的特例);
+   加载时逐结构校验不漏不重,关系 chips 也从示例实时推导,不手写。 */
+const EMPTY_DIR='taxonomy-empty/';
 
 const STRUCTS=[
   {key:'single',cn:'① 单区',en:'single',judge:'单个对象;或图形需要整版舒展',
    desc:'版心一整块,不再切分;组件水平垂直居中。区域内组件形状自由:放射、环形、蛇形、漏斗、矩阵(表格)都是这里的画法,不是页面结构。',
-   rels:['焦点','示意','并行','拆解','嵌套','时序','流动','循环','汇聚','漏斗','矩阵','映射','网络','证据','排名'],
-   caps:[{cap:'版心一块 · 画法自由',d:gSingle()}],samples:['M1','B1','H1','N1']},
+   empties:[{f:'empty-a1.html',code:'A1',cap:'版心一块,组件居中',src:'A1/A2/A7…共 37 页同槽合并 · topology.leaf',ex:'all'}]},
   {key:'heq',cn:'② 左右 x 等分',en:'h-equal-split',judge:'多个并列对象 + 横向阅读流(步骤、时间、对比)',
    desc:'横向均分,x≥2。左右等分 x=2 是特例。',
-   rels:['陈列','并行','拆解','时序','因果','对比','映射','指标'],
-   caps:[{cap:'x=2(E1)',d:gCols(2)},{cap:'x=3(A5)',d:gCols(3)},{cap:'x=4(C6)',d:gCols(4)}],samples:['E1','A5','C6']},
+   empties:[
+    {f:'empty-e5.html',code:'E5',cap:'x=2 等分',src:'E5 · split-x-2.equal',ex:['E1','E2','E5']},
+    {f:'empty-a5.html',code:'A5',cap:'x=3 等分',src:'A5/C3/F3/I4/K2/K4 同槽合并 · split-x-3.equal',ex:['A5','C3','F3','I4','K2','K4']},
+    {f:'synth-heq-4.html',code:'补造',cap:'x=4 等分',syn:1,ex:['A9','C6']},
+   ]},
   {key:'veq',cn:'③ 上下 x 等分',en:'v-equal-split',judge:'多个并列对象 + 纵向阅读流(层级、堆叠)',
-   desc:'纵向均分,x≥2。分层栈(H3/H4)、因果双带(E3)都是它。泳道横线是组件画法,不算切分(B3 归单区)。',
-   rels:['层级','因果','流动','对比'],
-   caps:[{cap:'x=2(E3)',d:gRows(2)},{cap:'x=3(H4)',d:gRows(3)},{cap:'x=4(H3)',d:gRows(4)}],samples:['E3','H4','H3']},
+   desc:'纵向均分,x≥2。分层栈(H3/H4)、因果双带(E3)都是它。泳道横线是组件画法,不算切分(B3 归单区)。taxonomy 无此空槽版式(它的上下切分全是不对称),下面 3 张按同规格补造。',
+   empties:[
+    {f:'synth-veq-2.html',code:'补造',cap:'x=2 等分',syn:1,ex:['E3','E6','I3']},
+    {f:'synth-veq-3.html',code:'补造',cap:'x=3 等分',syn:1,ex:['H4']},
+    {f:'synth-veq-4.html',code:'补造',cap:'x=4 等分',syn:1,ex:['H3']},
+   ]},
   {key:'hasym',cn:'④ 左右不对称',en:'h-asymmetric',judge:'有主辅之分:主图 + 规格单 / 数据栏 / 证据墙 / 两侧标注',
-   desc:'版心横向不等分切一刀,任意一侧可再分(虚线示意)。通常一主一辅,辅助内容放次侧;主图两侧都有辅就是 主+辅+辅(O1 漏斗)。',
-   rels:['拆解','证据','因果','漏斗','分布'],
-   caps:[{cap:'主+辅,辅可再分(F2/C1)',d:gHasym()},{cap:'主+辅+辅(O1)',d:gHasym(1)}],samples:['F2','C1','A4','O1']},
+   desc:'版心横向不等分切一刀,任意一侧可再分。通常一主一辅,辅助内容放次侧;主图两侧都有辅就是 主+辅+辅(O1 漏斗)。',
+   empties:[
+    {f:'empty-c4.html',code:'C4',cap:'主左 + 辅右',src:'C4/O1 同槽合并 · split-x-2.dominant-start',ex:['C4','O1']},
+    {f:'empty-a4.html',code:'A4',cap:'辅左 + 主右',src:'A4/A6 同槽合并 · split-x-2.dominant-end',ex:['A4','A6']},
+    {f:'empty-c1.html',code:'C1',cap:'主图 + 数据格',src:'C1/F2 同槽合并 · split-x-2',ex:['C1','F2']},
+    {f:'empty-k3.html',code:'K3',cap:'左列 + 右侧再分',src:'K3 · split-x-y3@1',ex:['K3']},
+   ]},
   {key:'vasym',cn:'⑤ 上下不对称',en:'v-asymmetric',judge:'有主辅之分 + 纵向阅读流:矩阵/图表+收束带、上总额下四环、上摘要下原文',
    desc:'版心纵向不等分切一刀,任意一侧可再分。常见走法:上矩阵/图表下收束带或注释(E4/K1/C2)、上总额下四环(C5)、上摘要下原文标本(A3)。',
-   rels:['矩阵','对比','拆解','证据'],
-   caps:[{cap:'上主下收束带(E4/K1)',d:gVasym(0)},{cap:'上主下辅×4(C5)',d:gVasym(1)},{cap:'上辅下主(A3)',d:gVasym(2)}],samples:['E4','C5','A3']},
+   empties:[
+    {f:'empty-e4.html',code:'E4',cap:'上主 + 下收束带',src:'E4 · split-y-2.dominant-start',ex:['E4','K1']},
+    {f:'empty-a3.html',code:'A3',cap:'上辅 + 下主',src:'A3/C5 同槽合并 · split-y-2.dominant-end',ex:['A3','C5']},
+    {f:'empty-c2.html',code:'C2',cap:'上大块 + 下二分',src:'C2 · recursive-y-equal-then-x',ex:['C2']},
+   ]},
   {key:'grid',cn:'⑥ 网格 m×n',en:'grid',judge:'等价单元批量陈列(logo 墙、图标格、案例卡)',
-   desc:'均质分格,格与格等价,只是陈列。象限 2×2 是特例。',
-   rels:['陈列','拆解'],
-   caps:[{cap:'2×2(象限特例)',d:gGrid(2,2)},{cap:'2×3(F4)',d:gGrid(2,3)},{cap:'7×4(A7)',d:gGrid(4,7)}],samples:['F4','A7']},
+   desc:'均质分格,格与格等价,只是陈列。象限 2×2 是特例(整页象限暂无示例:F1 坐标轴象限是组件画法,归单区)。taxonomy 里整版网格墙(logo 墙/宫格)折叠成单槽,无此空槽版式,下面 3 张按同规格补造。',
+   empties:[
+    {f:'synth-grid-2x2.html',code:'补造',cap:'2×2(象限特例,无示例页)',syn:1,ex:[]},
+    {f:'synth-grid-2x3.html',code:'补造',cap:'2×3',syn:1,ex:['F4']},
+    {f:'synth-grid-4x7.html',code:'补造',cap:'4×7(logo 墙)',syn:1,ex:['A7']},
+   ]},
 ];
 
 /* 版式 → 结构归入:按 SmartArt 分类卡片保留的结构字段解析 */
@@ -2309,18 +2497,67 @@ SMARTART_TYPES.forEach(f=>f.items.forEach(it=>{
 }));
 if(byStruct.other)console.warn('未归入结构的版式:',byStruct.other.map(m=>m[0]).join(','));
 
+/* 分点跟着示例走:关系 chips 从本结构示例的关系标签实时推导(去括号限定、拆复合标签、按出现顺序) */
+function relsOf(key){
+  const seen=[];
+  (byStruct[key]||[]).forEach(it=>String(it[3]).split(/[\/+]/).forEach(part=>{
+    const name=part.replace(/\(.*\)/,'').trim();
+    if(name&&!seen.includes(name))seen.push(name);
+  }));
+  return seen;
+}
+/* 分点 → 示例页闭合门禁:每结构的示例页必须被它的分点恰好覆盖一次(不漏、不重、不跨结构) */
+STRUCTS.forEach(d=>{
+  const codes=(byStruct[d.key]||[]).map(it=>it[0]);
+  const got=[];
+  d.empties.forEach(e=>{
+    if(e.ex==='all')got.push(...codes);
+    else if(Array.isArray(e.ex))got.push(...e.ex);
+    else throw new Error(d.cn+' 分点缺 ex 字段:'+(e.f||'?'));
+  });
+  const miss=codes.filter(c=>!got.includes(c));
+  const dup=got.filter((c,i)=>got.indexOf(c)!==i);
+  const extra=got.filter(c=>!codes.includes(c));
+  if(miss.length||dup.length||extra.length)
+    throw new Error(d.cn+' 分点与示例未闭合: 漏='+miss+' 重='+dup+' 多='+extra);
+});
+
+/* 结构切分 tab:定义行 + 空槽大图(点击整页放大);每张分点标对应示例页 */
+function emptyCard(d,e){
+  const full=EMPTY_DIR+e.f;
+  const src=e.syn?'补造 · taxonomy 无此空槽版式':'taxonomy 空槽版式 · '+e.src;
+  const codes=(byStruct[d.key]||[]).map(it=>it[0]);
+  const exTxt=e.ex==='all'
+    ?'示例:单区全部 '+codes.length+' 版式'
+    :e.ex.length
+      ?'示例:'+e.ex.join(' / ')
+      :'示例:无(象限是组件画法,F1 象限归单区)';
+  return `<div class="card" data-modal="1" data-frame="${full}" data-mtitle="${d.cn} · ${e.cap}" data-mtag="${src} · ${exTxt}">
+    <div class="frame-wrap"><iframe loading="lazy" data-src="${full}"></iframe></div>
+    <div class="card-info"><span class="id">${e.code}</span>
+      <div class="nm">${e.cap}</div>
+      <div class="meta">${src}<br>${exTxt}</div>
+    </div></div>`;
+}
 $('#str-list').innerHTML=STRUCTS.map(d=>{
+  const count=(byStruct[d.key]||[]).length;
+  return `<div class="fam-section">
+    <div class="fam-head"><h2>${d.cn}</h2><span class="tag">${d.en}</span><span class="desc">${d.empties.length} 张空槽大图 · 归入 ${count} 版式</span></div>
+    <div class="struct-info">
+      <div class="s-desc">${d.desc}</div>
+      <div class="s-judge"><b>判断</b>${d.judge}</div>
+      <div class="s-rels">${relsOf(d.key).map(r=>`<span class="rel">${r}</span>`).join('')}</div>
+    </div>
+    <div class="grid samples">${d.empties.map(e=>emptyCard(d,e)).join('')}</div>
+  </div>`;
+}).join('');
+$('#c-str').textContent=STRUCTS.length;
+
+/* 结构示例 tab:54 版式按切分归组(卡片与「关系页版式」tab 同一批,只是视角不同) */
+$('#strex-list').innerHTML=STRUCTS.map(d=>{
   const ms=byStruct[d.key]||[];
   return `<div class="fam-section">
     <div class="fam-head"><h2>${d.cn}</h2><span class="tag">${d.en}</span><span class="desc">${ms.length} 版式 · 全部展示</span></div>
-    <div class="struct-body">
-      <div class="schem">${schem(d.caps)}</div>
-      <div class="struct-info">
-        <div class="s-desc">${d.desc}</div>
-        <div class="s-judge"><b>判断</b>${d.judge}</div>
-        <div class="s-rels">${d.rels.map(r=>`<span class="rel">${r}</span>`).join('')}</div>
-      </div>
-    </div>
     <div class="grid samples">${ms.map(it=>{
       const full=FRAMES+'layout-'+it[0].toLowerCase()+'.html';
       return `<div class="card" data-modal="1" data-frame="${full}" data-mtitle="${it[0]} ${it[1]}" data-mtag="结构:${it[2]} · 关系:${it[3]}">
@@ -2332,7 +2569,7 @@ $('#str-list').innerHTML=STRUCTS.map(d=>{
     }).join('')}</div>
   </div>`;
 }).join('');
-$('#c-str').textContent=STRUCTS.length;
+$('#c-strex').textContent=SMARTART_LAYOUT_COUNT;
 
 /* iframe 不预置 src；只有接近可视区时才创建真实子页面。 */
 let lazyFrameObserver=null,fitAllRaf=0;
@@ -2342,21 +2579,17 @@ function loadFrame(frame){
   frame.dataset.loaded='1';
   return true;
 }
-function unloadFrame(frame){
-  if(frame.dataset.loaded!=='1')return false;
-  frame.removeAttribute('src');
-  delete frame.dataset.loaded;
-  return true;
-}
+/* 加载后不卸载:滚回来的 iframe 不重载(不闪白、不重复执行帧内绘制脚本);
+   离屏卡片的绘制成本由 .card 的 content-visibility 兜底。 */
 function initLazyFrames(){
   const frames=document.querySelectorAll('.frame-wrap iframe[data-src]');
   if('IntersectionObserver' in window){
     lazyFrameObserver=new IntersectionObserver(entries=>{
-      let changed=false;
       entries.forEach(entry=>{
-        changed=(entry.isIntersecting?loadFrame(entry.target):unloadFrame(entry.target))||changed;
+        if(!entry.isIntersecting)return;
+        lazyFrameObserver.unobserve(entry.target);
+        if(loadFrame(entry.target))scheduleFitAll();
       });
-      if(changed)scheduleFitAll();
     },{rootMargin:'800px 0px'});
     frames.forEach(frame=>lazyFrameObserver.observe(frame));
   }else frames.forEach(loadFrame);

@@ -34,15 +34,16 @@
       mapOption(option.legend, (legend) => {
         legend.orient = 'horizontal';
         legend.left = 'center';
-        delete legend.top;
-        legend.bottom = isDetail ? 12 : 2;
+        /* 与饼图合并计算边界:图例钉在饼缘下方 16–20px,组合在 16:9 画布内垂直居中,不钉画布底 */
+        delete legend.bottom;
+        legend.top = isDetail ? '72%' : '74%';
         legend.itemWidth = isDetail ? 14 : 10;
         legend.itemHeight = isDetail ? 8 : 6;
         legend.itemGap = isDetail ? 18 : 7;
       });
       mapOption(option.series, (series) => {
-        series.center = ['50%', isDetail ? '43%' : '42%'];
-        series.radius = isDetail ? '39%' : '34%';
+        series.center = ['50%', '47%'];
+        series.radius = isDetail ? '44%' : '48%';
         series.label = Object.assign({}, series.label, isDetail ? {
           show: true,
           alignTo: 'edge',
@@ -60,16 +61,18 @@
     }
 
     if (entry.component_id === 'echarts.sankey-basic') {
+      /* 左右留白基本对称,标签宽度计入右缘,整图在画布内水平居中 */
       mapOption(option.series, (series) => {
-        series.left = isDetail ? '7%' : '4%';
-        series.right = isDetail ? '16%' : '26%';
-        series.top = isDetail ? '7%' : '6%';
-        series.bottom = isDetail ? '7%' : '6%';
-        series.nodeWidth = isDetail ? 18 : 8;
-        series.nodeGap = isDetail ? 10 : 6;
+        series.orient = 'horizontal';
+        series.left = isDetail ? '6%' : '5%';
+        series.right = isDetail ? '12%' : '11%';
+        series.top = isDetail ? '10%' : '9%';
+        series.bottom = isDetail ? '10%' : '9%';
+        series.nodeWidth = isDetail ? 18 : 14;
+        series.nodeGap = isDetail ? 12 : 10;
         series.label = Object.assign({}, series.label, {
-          distance: isDetail ? 5 : 2,
-          width: isDetail ? 92 : 52,
+          distance: isDetail ? 6 : 4,
+          width: isDetail ? 110 : 96,
           overflow: 'truncate',
           fontSize: isDetail
             ? previewTypeSize(typeSize, 'meta', 10)
@@ -79,20 +82,39 @@
     }
 
     if (entry.component_id === 'echarts.calendar-basic') {
-      /* 日历是天然宽扁构图：格宽被 53 周锁死（≈11px），格高取 12 保持近方形，
-         整块内容在外框内垂直居中，不拉伸格子去填满高度 */
-      mapOption(option.visualMap, (visualMap) => {
-        visualMap.show = isDetail;
-        visualMap.top = isDetail ? 250 : 8;
-      });
-      mapOption(option.calendar, (calendar) => {
-        calendar.top = isDetail ? 350 : 258;
-        calendar.left = isDetail ? 40 : 28;
-        calendar.right = isDetail ? 40 : 8;
-        calendar.cellSize = ['auto', 12];
-        calendar.yearLabel = Object.assign({}, calendar.yearLabel, { show: isDetail });
-        calendar.monthLabel = Object.assign({}, calendar.monthLabel, { show: isDetail });
-      });
+      /* 日历是天然宽扁构图:16:9 画布下格宽按 53 周锁定近方形(11px),整块内容水平居中,
+         不拉伸格子去填满宽度;详情逐项保留官方 calendar-heatmap 构图,缩略图只做可读性降噪 */
+      if (isDetail) {
+        /* 说明、分段图例与日历作为一个组合在画布内垂直居中 */
+        mapOption(option.title, (title) => { title.top = '33%'; });
+        mapOption(option.visualMap, (visualMap) => {
+          visualMap.show = true;
+          visualMap.top = '39%';
+          visualMap.itemWidth = 10;
+          visualMap.itemHeight = 10;
+          visualMap.itemGap = 4;
+          visualMap.textStyle = Object.assign({}, visualMap.textStyle, {
+            fontSize: Math.min(10, previewTypeSize(typeSize, 'meta', 10))
+          });
+        });
+        mapOption(option.calendar, (calendar) => {
+          calendar.top = '51%';
+          calendar.left = 'center';
+          delete calendar.right;
+          calendar.cellSize = [11, 13];
+        });
+      } else {
+        mapOption(option.title, (title) => { title.show = false; });
+        mapOption(option.visualMap, (visualMap) => { visualMap.show = false; });
+        mapOption(option.calendar, (calendar) => {
+          calendar.top = '45%';
+          calendar.left = 'center';
+          delete calendar.right;
+          calendar.cellSize = [11, 12];
+          calendar.monthLabel = Object.assign({}, calendar.monthLabel, { show: true });
+          calendar.yearLabel = Object.assign({}, calendar.yearLabel, { show: false });
+        });
+      }
     }
   }
 

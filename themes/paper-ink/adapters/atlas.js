@@ -269,14 +269,14 @@
       color: var(--wp-compat-atlas-ink-55) !important;
     }
 
-    /* --- 循环流程 / 闭环流程：纸面圆点 + 墨环，虚线连接环降为构造线 --- */
+    /* --- 循环流程 / 闭环流程：纸面圆点 + 墨环，虚线连接环比节点框深一档 --- */
     .swiss-card .process-loop .loop-item {
       background: var(--wp-compat-atlas-paper) !important;
       border: 1px solid var(--wp-compat-atlas-ink-80) !important;
       color: var(--wp-compat-atlas-ink) !important;
     }
     .swiss-card .process-loop::before {
-      border: 0.6px dashed var(--wp-compat-atlas-ink-25) !important;
+      border: 0.6px dashed var(--wp-compat-atlas-ink-45) !important;
     }
 
     /* --- 甘特图：纸深轨道 + 墨条进度，表头降为弱分隔 --- */

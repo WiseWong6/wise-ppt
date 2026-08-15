@@ -384,7 +384,7 @@ window.PAPER_INK_COMPONENT_DATA = {
       num: 63,
       variant: null,
       paperInkNative: true,
-      frame: { width: 600, height: 600, fit: 'fixed' },
+      frame: { width: 960, height: 440, fit: 'fixed' },
       /* 出自样张 layout-b5.html（已复原样张坡度：级宽 108 : 级高 41 ≈ 原稿 340:130，标签块贴台阶；
          内容 bbox x24..592 y220..526，translate(-8 -73) 使视觉中心对准 600×600 画布中心） */
       snippet: `<div class="pi-card">
@@ -465,7 +465,7 @@ window.PAPER_INK_COMPONENT_DATA = {
     num: 64,
     variant: null,
     paperInkNative: true,
-    frame: { width: 600, height: 600, fit: 'fixed' },
+    frame: { width: 720, height: 580, fit: 'fixed' },
     /* 出自样张 layout-a3.html */
     snippet: `<div class="pi-card">
 <svg class="pi-art" viewBox="0 0 600 600" xmlns="http://www.w3.org/2000/svg">
@@ -511,7 +511,7 @@ window.PAPER_INK_COMPONENT_DATA = {
     num: 65,
     variant: null,
     paperInkNative: true,
-    frame: { width: 600, height: 600, fit: 'fixed' },
+    frame: { width: 700, height: 600, fit: 'fixed' },
     /* 出自样张 layout-a3.html */
     snippet: `<div class="pi-card">
 <svg class="pi-art" viewBox="0 0 600 600" xmlns="http://www.w3.org/2000/svg">
@@ -564,7 +564,7 @@ window.PAPER_INK_COMPONENT_DATA = {
     num: 66,
     variant: null,
     paperInkNative: true,
-    frame: { width: 600, height: 600, fit: 'fixed' },
+    frame: { width: 910, height: 460, fit: 'fixed' },
     /* 出自样张 layout-a4.html */
     snippet: `<div class="pi-card">
 <svg class="pi-art" viewBox="0 0 600 600" xmlns="http://www.w3.org/2000/svg">
@@ -673,7 +673,7 @@ window.PAPER_INK_COMPONENT_DATA = {
     num: 67,
     variant: null,
     paperInkNative: true,
-    frame: { width: 600, height: 600, fit: 'fixed' },
+    frame: { width: 910, height: 460, fit: 'fixed' },
     /* 出自样张 layout-a7.html */
     snippet: `<div class="pi-card">
 <svg class="pi-art" viewBox="0 0 600 600" xmlns="http://www.w3.org/2000/svg">
@@ -751,7 +751,7 @@ window.PAPER_INK_COMPONENT_DATA = {
     num: 68,
     variant: null,
     paperInkNative: true,
-    frame: { width: 600, height: 600, fit: 'fixed' },
+    frame: { width: 870, height: 480, fit: 'fixed' },
     /* 出自样张 layout-a9.html */
     snippet: `<div class="pi-card">
 <svg class="pi-art" viewBox="0 0 600 600" xmlns="http://www.w3.org/2000/svg">
@@ -842,7 +842,7 @@ window.PAPER_INK_COMPONENT_DATA = {
     num: 69,
     variant: null,
     paperInkNative: true,
-    frame: { width: 600, height: 600, fit: 'fixed' },
+    frame: { width: 910, height: 460, fit: 'fixed' },
     /* 出自样张 layout-a8.html */
     snippet: `<div class="pi-card">
 <style>
@@ -965,7 +965,7 @@ window.PAPER_INK_COMPONENT_DATA = {
     num: 70,
     variant: null,
     paperInkNative: true,
-    frame: { width: 600, height: 600, fit: 'fixed' },
+    frame: { width: 830, height: 510, fit: 'fixed' },
     /* 出自样张 layout-a8.html */
     snippet: `<div class="pi-card">
 <style>
@@ -1022,7 +1022,7 @@ window.PAPER_INK_COMPONENT_DATA = {
     num: 71,
     variant: null,
     paperInkNative: true,
-    frame: { width: 600, height: 600, fit: 'fixed' },
+    frame: { width: 970, height: 430, fit: 'fixed' },
     /* 出自样张 layout-b2.html */
     snippet: `<div class="pi-card">
 <svg class="pi-art" viewBox="0 0 600 600" xmlns="http://www.w3.org/2000/svg">
@@ -1142,7 +1142,7 @@ window.PAPER_INK_COMPONENT_DATA = {
     num: 72,
     variant: null,
     paperInkNative: true,
-    frame: { width: 600, height: 600, fit: 'fixed' },
+    frame: { width: 960, height: 440, fit: 'fixed' },
     /* 出自样张 layout-b4.html */
     /* 出自样张 layout-b4.html：卡片复原原稿 300×240 横版比例（150×120），
        卡间留 25px 呼吸间隙（节点 x125/300/475），上下排交错 110 */
@@ -1242,7 +1242,7 @@ window.PAPER_INK_COMPONENT_DATA = {
     num: 73,
     variant: null,
     paperInkNative: true,
-    frame: { width: 600, height: 600, fit: 'fixed' },
+    frame: { width: 920, height: 460, fit: 'fixed' },
     /* 出自样张 layout-b6.html */
     snippet: `<div class="pi-card">
 <svg class="pi-art" viewBox="0 0 600 600" xmlns="http://www.w3.org/2000/svg">
@@ -1325,7 +1325,7 @@ window.PAPER_INK_COMPONENT_DATA = {
     num: 74,
     variant: null,
     paperInkNative: true,
-    frame: { width: 600, height: 600, fit: 'fixed' },
+    frame: { width: 580, height: 720, fit: 'fixed' },
     /* 出自样张 layout-d6.html */
     snippet: `<div class="pi-card">
 <svg class="pi-art" viewBox="0 0 600 600" xmlns="http://www.w3.org/2000/svg">
@@ -1373,7 +1373,7 @@ window.PAPER_INK_COMPONENT_DATA = {
     num: 75,
     variant: null,
     paperInkNative: true,
-    frame: { width: 600, height: 600, fit: 'fixed' },
+    frame: { width: 890, height: 470, fit: 'fixed' },
     /* 出自样张 layout-d6.html */
     snippet: `<div class="pi-card">
 <svg class="pi-art" viewBox="0 0 600 600" xmlns="http://www.w3.org/2000/svg">
@@ -1427,7 +1427,7 @@ window.PAPER_INK_COMPONENT_DATA = {
     num: 76,
     variant: null,
     paperInkNative: true,
-    frame: { width: 600, height: 600, fit: 'fixed' },
+    frame: { width: 920, height: 460, fit: 'fixed' },
     /* 出自样张 layout-e3.html */
     snippet: `<div class="pi-card">
 <svg class="pi-art" viewBox="0 0 600 600" xmlns="http://www.w3.org/2000/svg">
@@ -1539,7 +1539,7 @@ window.PAPER_INK_COMPONENT_DATA = {
     num: 77,
     variant: null,
     paperInkNative: true,
-    frame: { width: 600, height: 600, fit: 'fixed' },
+    frame: { width: 930, height: 450, fit: 'fixed' },
     /* 出自样张 layout-e6.html */
     snippet: `<div class="pi-card">
 <svg class="pi-art" viewBox="0 0 600 600" xmlns="http://www.w3.org/2000/svg">
@@ -1654,7 +1654,7 @@ window.PAPER_INK_COMPONENT_DATA = {
     num: 78,
     variant: null,
     paperInkNative: true,
-    frame: { width: 600, height: 600, fit: 'fixed' },
+    frame: { width: 780, height: 540, fit: 'fixed' },
     /* 出自样张 layout-a1.html */
     snippet: `<div class="pi-card">
 <svg class="pi-art" viewBox="0 0 600 600" xmlns="http://www.w3.org/2000/svg">
@@ -1725,7 +1725,7 @@ window.PAPER_INK_COMPONENT_DATA = {
     num: 79,
     variant: null,
     paperInkNative: true,
-    frame: { width: 600, height: 600, fit: 'fixed' },
+    frame: { width: 760, height: 550, fit: 'fixed' },
     /* 出自样张 layout-g4.html */
     snippet: `<div class="pi-card">
 <svg class="pi-art" viewBox="0 0 600 600" xmlns="http://www.w3.org/2000/svg">
@@ -1828,7 +1828,7 @@ window.PAPER_INK_COMPONENT_DATA = {
     num: 80,
     variant: null,
     paperInkNative: true,
-    frame: { width: 600, height: 600, fit: 'fixed' },
+    frame: { width: 910, height: 460, fit: 'fixed' },
     /* 出自样张 layout-n1.html */
     snippet: `<div class="pi-card">
 <svg class="pi-art" viewBox="0 0 600 600" xmlns="http://www.w3.org/2000/svg">
@@ -1943,7 +1943,7 @@ window.PAPER_INK_COMPONENT_DATA = {
     num: 81,
     variant: null,
     paperInkNative: true,
-    frame: { width: 600, height: 600, fit: 'fixed' },
+    frame: { width: 850, height: 490, fit: 'fixed' },
     /* 出自样张 layout-e2.html */
     snippet: `<div class="pi-card">
 <svg class="pi-art" viewBox="0 0 600 600" xmlns="http://www.w3.org/2000/svg">
@@ -2045,9 +2045,9 @@ window.PAPER_INK_COMPONENT_DATA = {
   </g>
 
   <!-- 页脚 -->
-  <line x1="140" y1="552" x2="240" y2="552" stroke="var(--pi-ink)" stroke-width=".6" opacity=".3"/>
-  <line x1="360" y1="552" x2="460" y2="552" stroke="var(--pi-ink)" stroke-width=".6" opacity=".3"/>
-  <text x="300" y="556" font-family="var(--pi-mono)" font-size="8" letter-spacing="3" text-anchor="middle" fill="var(--pi-ink-45)">WATERSHED · 4 PAIRS</text>
+  <line x1="140" y1="522" x2="240" y2="522" stroke="var(--pi-ink)" stroke-width=".6" opacity=".3"/>
+  <line x1="360" y1="522" x2="460" y2="522" stroke="var(--pi-ink)" stroke-width=".6" opacity=".3"/>
+  <text x="300" y="526" font-family="var(--pi-mono)" font-size="8" letter-spacing="3" text-anchor="middle" fill="var(--pi-ink-45)">WATERSHED · 4 PAIRS</text>
 </svg>
 </div>`
   },
@@ -2060,7 +2060,7 @@ window.PAPER_INK_COMPONENT_DATA = {
     num: 82,
     variant: null,
     paperInkNative: true,
-    frame: { width: 600, height: 600, fit: 'fixed' },
+    frame: { width: 800, height: 520, fit: 'fixed' },
     /* 出自样张 layout-h3.html */
     snippet: `<div class="pi-card">
 <svg class="pi-art" viewBox="0 0 600 600" xmlns="http://www.w3.org/2000/svg">
@@ -2202,7 +2202,7 @@ window.PAPER_INK_COMPONENT_DATA = {
     num: 83,
     variant: null,
     paperInkNative: true,
-    frame: { width: 600, height: 600, fit: 'fixed' },
+    frame: { width: 980, height: 430, fit: 'fixed' },
     /* 出自样张 layout-b3.html */
     snippet: `<div class="pi-card">
 <svg class="pi-art" viewBox="0 0 600 600" xmlns="http://www.w3.org/2000/svg">
@@ -2381,114 +2381,114 @@ window.PAPER_INK_COMPONENT_DATA = {
     num: 85,
     variant: null,
     paperInkNative: true,
-    frame: { width: 600, height: 600, fit: 'fixed' },
-    /* 出自样张 layout-c5.html */
+    frame: { width: 950, height: 440, fit: 'fixed' },
+    /* 出自样张 layout-c5.html;单元×N 改为水平排布(同一 renderer 内部重复 ring 单元) */
     snippet: `<div class="pi-card">
 <svg class="pi-art" viewBox="0 0 600 600" xmlns="http://www.w3.org/2000/svg">
-  <!-- 顶部 mono 引题（证据帧顶部 TOTAL 注记的组件化收束；总量大数字由同页 stats 组件承担） -->
+  <!-- 顶部 mono 引题 -->
   <text x="300" y="48" font-family="var(--pi-mono)" font-size="9.5" letter-spacing="3" text-anchor="middle" fill="var(--pi-ink-45)">CAPACITY ALLOCATION · FY2026</text>
-  <line x1="232" y1="62" x2="368" y2="62" stroke="var(--pi-ink)" stroke-width=".6" opacity=".3"/>
-  <circle cx="224" cy="62" r="1.8" fill="var(--pi-ink)" opacity=".6"/>
-  <circle cx="376" cy="62" r="1.8" fill="var(--pi-ink)" opacity=".6"/>
+  <line x1="140" y1="62" x2="460" y2="62" stroke="var(--pi-ink)" stroke-width=".6" opacity=".3"/>
+  <circle cx="132" cy="62" r="1.8" fill="var(--pi-ink)" opacity=".6"/>
+  <circle cx="468" cy="62" r="1.8" fill="var(--pi-ink)" opacity=".6"/>
 
-  <!-- 环一 · 内容制作 38% -->
+  <!-- 环1 · 内容制作 38% -->
   <g>
-    <circle cx="170" cy="190" r="90" fill="none" stroke="var(--pi-ink)" stroke-width=".5" stroke-dasharray="2 6" opacity=".28"/>
+    <circle cx="97.5" cy="200" r="56" fill="none" stroke="var(--pi-ink)" stroke-width=".5" stroke-dasharray="2 6" opacity=".28"/>
     <g stroke="var(--pi-ink)" opacity=".4">
-      <line x1="252" y1="190" x2="260" y2="190" stroke-width=".8"/>
-      <line x1="241" y1="231" x2="244.5" y2="233" stroke-width=".5"/>
-      <line x1="211" y1="261" x2="213" y2="264.5" stroke-width=".5"/>
-      <line x1="170" y1="272" x2="170" y2="280" stroke-width=".8"/>
-      <line x1="129" y1="261" x2="127" y2="264.5" stroke-width=".5"/>
-      <line x1="99" y1="231" x2="95.5" y2="233" stroke-width=".5"/>
-      <line x1="88" y1="190" x2="80" y2="190" stroke-width=".8"/>
-      <line x1="99" y1="149" x2="95.5" y2="147" stroke-width=".5"/>
-      <line x1="129" y1="119" x2="127" y2="115.5" stroke-width=".5"/>
-      <line x1="170" y1="108" x2="170" y2="100" stroke-width=".8"/>
-      <line x1="211" y1="119" x2="213" y2="115.5" stroke-width=".5"/>
-      <line x1="241" y1="149" x2="244.5" y2="147" stroke-width=".5"/>
+      <line x1="97.5" y1="150.0" x2="97.5" y2="144.0" stroke-width=".8"/>
+      <line x1="122.5" y1="156.7" x2="125.5" y2="151.5" stroke-width=".5"/>
+      <line x1="140.8" y1="175.0" x2="146.0" y2="172.0" stroke-width=".5"/>
+      <line x1="147.5" y1="200.0" x2="153.5" y2="200.0" stroke-width=".8"/>
+      <line x1="140.8" y1="225.0" x2="146.0" y2="228.0" stroke-width=".5"/>
+      <line x1="122.5" y1="243.3" x2="125.5" y2="248.5" stroke-width=".5"/>
+      <line x1="97.5" y1="250.0" x2="97.5" y2="256.0" stroke-width=".8"/>
+      <line x1="72.5" y1="243.3" x2="69.5" y2="248.5" stroke-width=".5"/>
+      <line x1="54.2" y1="225.0" x2="49.0" y2="228.0" stroke-width=".5"/>
+      <line x1="47.5" y1="200.0" x2="41.5" y2="200.0" stroke-width=".8"/>
+      <line x1="54.2" y1="175.0" x2="49.0" y2="172.0" stroke-width=".5"/>
+      <line x1="72.5" y1="156.7" x2="69.5" y2="151.5" stroke-width=".5"/>
     </g>
-    <circle cx="170" cy="190" r="72" fill="none" stroke="var(--pi-ink)" stroke-width=".8" opacity=".3"/>
-    <path d="M 170 118 A 72 72 0 0 1 219.3 242.5" fill="none" stroke="var(--pi-ink-80)" stroke-width="1.4"/>
-    <circle cx="219.3" cy="242.5" r="3" fill="var(--pi-ink)"/>
-    <text x="170" y="199" font-family="var(--pi-mono)" font-size="26" text-anchor="middle" fill="var(--pi-ink)">38%</text>
-    <text x="170" y="220" font-family="var(--pi-mono)" font-size="8.5" letter-spacing="1" text-anchor="middle" fill="var(--pi-ink-45)">38 / 100</text>
-    <text x="170" y="306" font-family="var(--pi-sans)" font-weight="300" font-size="13" text-anchor="middle" fill="var(--pi-ink)">内容制作</text>
+    <circle cx="97.5" cy="200" r="45" fill="none" stroke="var(--pi-ink)" stroke-width=".8" opacity=".3"/>
+    <path d="M 97.5 155 A 45 45 0 0 1 128.3 232.8" fill="none" stroke="var(--pi-ink-80)" stroke-width="1.4"/>
+    <circle cx="128.3" cy="232.8" r="3" fill="var(--pi-ink)"/>
+    <text x="97.5" y="206" font-family="var(--pi-mono)" font-size="17" text-anchor="middle" fill="var(--pi-ink)">38%</text>
+    <text x="97.5" y="221" font-family="var(--pi-mono)" font-size="7.5" letter-spacing="1" text-anchor="middle" fill="var(--pi-ink-45)">38 / 100</text>
+    <text x="97.5" y="278" font-family="var(--pi-sans)" font-weight="300" font-size="11.5" text-anchor="middle" fill="var(--pi-ink)">内容制作</text>
   </g>
 
-  <!-- 环二 · 活动执行 27% -->
+  <!-- 环2 · 活动执行 27% -->
   <g>
-    <circle cx="430" cy="190" r="90" fill="none" stroke="var(--pi-ink)" stroke-width=".5" stroke-dasharray="2 6" opacity=".28"/>
+    <circle cx="232.5" cy="200" r="56" fill="none" stroke="var(--pi-ink)" stroke-width=".5" stroke-dasharray="2 6" opacity=".28"/>
     <g stroke="var(--pi-ink)" opacity=".4">
-      <line x1="512" y1="190" x2="520" y2="190" stroke-width=".8"/>
-      <line x1="501" y1="231" x2="504.5" y2="233" stroke-width=".5"/>
-      <line x1="471" y1="261" x2="473" y2="264.5" stroke-width=".5"/>
-      <line x1="430" y1="272" x2="430" y2="280" stroke-width=".8"/>
-      <line x1="389" y1="261" x2="387" y2="264.5" stroke-width=".5"/>
-      <line x1="359" y1="231" x2="355.5" y2="233" stroke-width=".5"/>
-      <line x1="348" y1="190" x2="340" y2="190" stroke-width=".8"/>
-      <line x1="359" y1="149" x2="355.5" y2="147" stroke-width=".5"/>
-      <line x1="389" y1="119" x2="387" y2="115.5" stroke-width=".5"/>
-      <line x1="430" y1="108" x2="430" y2="100" stroke-width=".8"/>
-      <line x1="471" y1="119" x2="473" y2="115.5" stroke-width=".5"/>
-      <line x1="501" y1="149" x2="504.5" y2="147" stroke-width=".5"/>
+      <line x1="232.5" y1="150.0" x2="232.5" y2="144.0" stroke-width=".8"/>
+      <line x1="257.5" y1="156.7" x2="260.5" y2="151.5" stroke-width=".5"/>
+      <line x1="275.8" y1="175.0" x2="281.0" y2="172.0" stroke-width=".5"/>
+      <line x1="282.5" y1="200.0" x2="288.5" y2="200.0" stroke-width=".8"/>
+      <line x1="275.8" y1="225.0" x2="281.0" y2="228.0" stroke-width=".5"/>
+      <line x1="257.5" y1="243.3" x2="260.5" y2="248.5" stroke-width=".5"/>
+      <line x1="232.5" y1="250.0" x2="232.5" y2="256.0" stroke-width=".8"/>
+      <line x1="207.5" y1="243.3" x2="204.5" y2="248.5" stroke-width=".5"/>
+      <line x1="189.2" y1="225.0" x2="184.0" y2="228.0" stroke-width=".5"/>
+      <line x1="182.5" y1="200.0" x2="176.5" y2="200.0" stroke-width=".8"/>
+      <line x1="189.2" y1="175.0" x2="184.0" y2="172.0" stroke-width=".5"/>
+      <line x1="207.5" y1="156.7" x2="204.5" y2="151.5" stroke-width=".5"/>
     </g>
-    <circle cx="430" cy="190" r="72" fill="none" stroke="var(--pi-ink)" stroke-width=".8" opacity=".3"/>
-    <path d="M 430 118 A 72 72 0 0 1 501.4 199" fill="none" stroke="var(--pi-ink-80)" stroke-width="1.4"/>
-    <circle cx="501.4" cy="199" r="3" fill="var(--pi-ink)"/>
-    <text x="430" y="199" font-family="var(--pi-mono)" font-size="26" text-anchor="middle" fill="var(--pi-ink)">27%</text>
-    <text x="430" y="220" font-family="var(--pi-mono)" font-size="8.5" letter-spacing="1" text-anchor="middle" fill="var(--pi-ink-45)">27 / 100</text>
-    <text x="430" y="306" font-family="var(--pi-sans)" font-weight="300" font-size="13" text-anchor="middle" fill="var(--pi-ink)">活动执行</text>
+    <circle cx="232.5" cy="200" r="45" fill="none" stroke="var(--pi-ink)" stroke-width=".8" opacity=".3"/>
+    <path d="M 232.5 155 A 45 45 0 0 1 277.1 205.6" fill="none" stroke="var(--pi-ink-80)" stroke-width="1.4"/>
+    <circle cx="277.1" cy="205.6" r="3" fill="var(--pi-ink)"/>
+    <text x="232.5" y="206" font-family="var(--pi-mono)" font-size="17" text-anchor="middle" fill="var(--pi-ink)">27%</text>
+    <text x="232.5" y="221" font-family="var(--pi-mono)" font-size="7.5" letter-spacing="1" text-anchor="middle" fill="var(--pi-ink-45)">27 / 100</text>
+    <text x="232.5" y="278" font-family="var(--pi-sans)" font-weight="300" font-size="11.5" text-anchor="middle" fill="var(--pi-ink)">活动执行</text>
   </g>
 
-  <!-- 环三 · 用户沟通 21% -->
+  <!-- 环3 · 用户沟通 21% -->
   <g>
-    <circle cx="170" cy="430" r="90" fill="none" stroke="var(--pi-ink)" stroke-width=".5" stroke-dasharray="2 6" opacity=".28"/>
+    <circle cx="367.5" cy="200" r="56" fill="none" stroke="var(--pi-ink)" stroke-width=".5" stroke-dasharray="2 6" opacity=".28"/>
     <g stroke="var(--pi-ink)" opacity=".4">
-      <line x1="252" y1="430" x2="260" y2="430" stroke-width=".8"/>
-      <line x1="241" y1="471" x2="244.5" y2="473" stroke-width=".5"/>
-      <line x1="211" y1="501" x2="213" y2="504.5" stroke-width=".5"/>
-      <line x1="170" y1="512" x2="170" y2="520" stroke-width=".8"/>
-      <line x1="129" y1="501" x2="127" y2="504.5" stroke-width=".5"/>
-      <line x1="99" y1="471" x2="95.5" y2="473" stroke-width=".5"/>
-      <line x1="88" y1="430" x2="80" y2="430" stroke-width=".8"/>
-      <line x1="99" y1="389" x2="95.5" y2="387" stroke-width=".5"/>
-      <line x1="129" y1="359" x2="127" y2="355.5" stroke-width=".5"/>
-      <line x1="170" y1="348" x2="170" y2="340" stroke-width=".8"/>
-      <line x1="211" y1="359" x2="213" y2="355.5" stroke-width=".5"/>
-      <line x1="241" y1="389" x2="244.5" y2="387" stroke-width=".5"/>
+      <line x1="367.5" y1="150.0" x2="367.5" y2="144.0" stroke-width=".8"/>
+      <line x1="392.5" y1="156.7" x2="395.5" y2="151.5" stroke-width=".5"/>
+      <line x1="410.8" y1="175.0" x2="416.0" y2="172.0" stroke-width=".5"/>
+      <line x1="417.5" y1="200.0" x2="423.5" y2="200.0" stroke-width=".8"/>
+      <line x1="410.8" y1="225.0" x2="416.0" y2="228.0" stroke-width=".5"/>
+      <line x1="392.5" y1="243.3" x2="395.5" y2="248.5" stroke-width=".5"/>
+      <line x1="367.5" y1="250.0" x2="367.5" y2="256.0" stroke-width=".8"/>
+      <line x1="342.5" y1="243.3" x2="339.5" y2="248.5" stroke-width=".5"/>
+      <line x1="324.2" y1="225.0" x2="319.0" y2="228.0" stroke-width=".5"/>
+      <line x1="317.5" y1="200.0" x2="311.5" y2="200.0" stroke-width=".8"/>
+      <line x1="324.2" y1="175.0" x2="319.0" y2="172.0" stroke-width=".5"/>
+      <line x1="342.5" y1="156.7" x2="339.5" y2="151.5" stroke-width=".5"/>
     </g>
-    <circle cx="170" cy="430" r="72" fill="none" stroke="var(--pi-ink)" stroke-width=".8" opacity=".3"/>
-    <path d="M 170 358 A 72 72 0 0 1 239.7 412.1" fill="none" stroke="var(--pi-ink-80)" stroke-width="1.4"/>
-    <circle cx="239.7" cy="412.1" r="3" fill="var(--pi-ink)"/>
-    <text x="170" y="439" font-family="var(--pi-mono)" font-size="26" text-anchor="middle" fill="var(--pi-ink)">21%</text>
-    <text x="170" y="460" font-family="var(--pi-mono)" font-size="8.5" letter-spacing="1" text-anchor="middle" fill="var(--pi-ink-45)">21 / 100</text>
-    <text x="170" y="546" font-family="var(--pi-sans)" font-weight="300" font-size="13" text-anchor="middle" fill="var(--pi-ink)">用户沟通</text>
+    <circle cx="367.5" cy="200" r="45" fill="none" stroke="var(--pi-ink)" stroke-width=".8" opacity=".3"/>
+    <path d="M 367.5 155 A 45 45 0 0 1 411.1 188.8" fill="none" stroke="var(--pi-ink-80)" stroke-width="1.4"/>
+    <circle cx="411.1" cy="188.8" r="3" fill="var(--pi-ink)"/>
+    <text x="367.5" y="206" font-family="var(--pi-mono)" font-size="17" text-anchor="middle" fill="var(--pi-ink)">21%</text>
+    <text x="367.5" y="221" font-family="var(--pi-mono)" font-size="7.5" letter-spacing="1" text-anchor="middle" fill="var(--pi-ink-45)">21 / 100</text>
+    <text x="367.5" y="278" font-family="var(--pi-sans)" font-weight="300" font-size="11.5" text-anchor="middle" fill="var(--pi-ink)">用户沟通</text>
   </g>
 
-  <!-- 环四 · 数据复盘 14% -->
+  <!-- 环4 · 数据复盘 14% -->
   <g>
-    <circle cx="430" cy="430" r="90" fill="none" stroke="var(--pi-ink)" stroke-width=".5" stroke-dasharray="2 6" opacity=".28"/>
+    <circle cx="502.5" cy="200" r="56" fill="none" stroke="var(--pi-ink)" stroke-width=".5" stroke-dasharray="2 6" opacity=".28"/>
     <g stroke="var(--pi-ink)" opacity=".4">
-      <line x1="512" y1="430" x2="520" y2="430" stroke-width=".8"/>
-      <line x1="501" y1="471" x2="504.5" y2="473" stroke-width=".5"/>
-      <line x1="471" y1="501" x2="473" y2="504.5" stroke-width=".5"/>
-      <line x1="430" y1="512" x2="430" y2="520" stroke-width=".8"/>
-      <line x1="389" y1="501" x2="387" y2="504.5" stroke-width=".5"/>
-      <line x1="359" y1="471" x2="355.5" y2="473" stroke-width=".5"/>
-      <line x1="348" y1="430" x2="340" y2="430" stroke-width=".8"/>
-      <line x1="359" y1="389" x2="355.5" y2="387" stroke-width=".5"/>
-      <line x1="389" y1="359" x2="387" y2="355.5" stroke-width=".5"/>
-      <line x1="430" y1="348" x2="430" y2="340" stroke-width=".8"/>
-      <line x1="471" y1="359" x2="473" y2="355.5" stroke-width=".5"/>
-      <line x1="501" y1="389" x2="504.5" y2="387" stroke-width=".5"/>
+      <line x1="502.5" y1="150.0" x2="502.5" y2="144.0" stroke-width=".8"/>
+      <line x1="527.5" y1="156.7" x2="530.5" y2="151.5" stroke-width=".5"/>
+      <line x1="545.8" y1="175.0" x2="551.0" y2="172.0" stroke-width=".5"/>
+      <line x1="552.5" y1="200.0" x2="558.5" y2="200.0" stroke-width=".8"/>
+      <line x1="545.8" y1="225.0" x2="551.0" y2="228.0" stroke-width=".5"/>
+      <line x1="527.5" y1="243.3" x2="530.5" y2="248.5" stroke-width=".5"/>
+      <line x1="502.5" y1="250.0" x2="502.5" y2="256.0" stroke-width=".8"/>
+      <line x1="477.5" y1="243.3" x2="474.5" y2="248.5" stroke-width=".5"/>
+      <line x1="459.2" y1="225.0" x2="454.0" y2="228.0" stroke-width=".5"/>
+      <line x1="452.5" y1="200.0" x2="446.5" y2="200.0" stroke-width=".8"/>
+      <line x1="459.2" y1="175.0" x2="454.0" y2="172.0" stroke-width=".5"/>
+      <line x1="477.5" y1="156.7" x2="474.5" y2="151.5" stroke-width=".5"/>
     </g>
-    <circle cx="430" cy="430" r="72" fill="none" stroke="var(--pi-ink)" stroke-width=".8" opacity=".3"/>
-    <path d="M 430 358 A 72 72 0 0 1 485.5 384.1" fill="none" stroke="var(--pi-ink-80)" stroke-width="1.4"/>
-    <circle cx="485.5" cy="384.1" r="3" fill="var(--pi-ink)"/>
-    <text x="430" y="439" font-family="var(--pi-mono)" font-size="26" text-anchor="middle" fill="var(--pi-ink)">14%</text>
-    <text x="430" y="460" font-family="var(--pi-mono)" font-size="8.5" letter-spacing="1" text-anchor="middle" fill="var(--pi-ink-45)">14 / 100</text>
-    <text x="430" y="546" font-family="var(--pi-sans)" font-weight="300" font-size="13" text-anchor="middle" fill="var(--pi-ink)">数据复盘</text>
+    <circle cx="502.5" cy="200" r="45" fill="none" stroke="var(--pi-ink)" stroke-width=".8" opacity=".3"/>
+    <path d="M 502.5 155 A 45 45 0 0 1 537.2 171.3" fill="none" stroke="var(--pi-ink-80)" stroke-width="1.4"/>
+    <circle cx="537.2" cy="171.3" r="3" fill="var(--pi-ink)"/>
+    <text x="502.5" y="206" font-family="var(--pi-mono)" font-size="17" text-anchor="middle" fill="var(--pi-ink)">14%</text>
+    <text x="502.5" y="221" font-family="var(--pi-mono)" font-size="7.5" letter-spacing="1" text-anchor="middle" fill="var(--pi-ink-45)">14 / 100</text>
+    <text x="502.5" y="278" font-family="var(--pi-sans)" font-weight="300" font-size="11.5" text-anchor="middle" fill="var(--pi-ink)">数据复盘</text>
   </g>
 </svg>
 </div>`
@@ -2503,9 +2503,9 @@ window.PAPER_INK_COMPONENT_DATA = {
     num: 86,
     variant: null,
     paperInkNative: true,
-    frame: { width: 600, height: 600, fit: 'fixed' },
+    frame: { width: 810, height: 520, fit: 'fixed' },
     /* 出自样张 layout-f4.html（2 行 × 3 列规则格阵；格内：细线图标居中 → 标题 → mono EN code →
-       短规线 → 两行说明；格阵上下缘各一条构造虚线；底部居中说明句） */
+       短规线 → 两行说明；格阵上下缘各一条构造虚线；上下两行各占一半版心,行内容在行带内居中） */
     snippet: `<div class="pi-card">
 <svg class="pi-art" viewBox="0 0 600 600" xmlns="http://www.w3.org/2000/svg">
   <defs>
@@ -2515,9 +2515,9 @@ window.PAPER_INK_COMPONENT_DATA = {
   </defs>
 
   <!-- 格阵上缘构造虚线 -->
-  <line x1="36" y1="84" x2="564" y2="84" stroke="var(--pi-ink)" stroke-width=".6" opacity=".22" stroke-dasharray="2 6"/>
+  <line x1="36" y1="64" x2="564" y2="64" stroke="var(--pi-ink)" stroke-width=".6" opacity=".22" stroke-dasharray="2 6"/>
 
-  <!-- 格 1 · 用户洞察：分叉路径 + 节点 -->
+  <g transform="translate(0 -6)"><!-- 格 1 · 用户洞察：分叉路径 + 节点 -->
   <g>
     <circle cx="102" cy="140" r="3.5" fill="none" stroke="var(--pi-ink-80)" stroke-width="1.1"/>
     <circle cx="102" cy="140" r="1.2" fill="var(--pi-ink)"/>
@@ -2569,8 +2569,9 @@ window.PAPER_INK_COMPONENT_DATA = {
     <text x="476" y="235" font-family="var(--pi-sans)" font-weight="300" font-size="9" text-anchor="middle" fill="var(--pi-ink-70)">信息架构保持清晰</text>
     <text x="476" y="250" font-family="var(--pi-sans)" font-weight="300" font-size="9" text-anchor="middle" fill="var(--pi-ink-55)">核心流程减少无效步骤</text>
   </g>
+  </g>
 
-  <!-- 格 4 · 团队协作：三道沟通弧 + 共识点 -->
+  <g transform="translate(0 37)"><!-- 格 4 · 团队协作：三道沟通弧 + 共识点 -->
   <g>
     <circle cx="124" cy="335" r="3" fill="none" stroke="var(--pi-ink-80)" stroke-width="1.2"/>
     <circle cx="124" cy="335" r="1.2" fill="var(--pi-ink)"/>
@@ -2613,13 +2614,13 @@ window.PAPER_INK_COMPONENT_DATA = {
     <text x="476" y="423" font-family="var(--pi-sans)" font-weight="300" font-size="9" text-anchor="middle" fill="var(--pi-ink-70)">上线前覆盖关键场景</text>
     <text x="476" y="438" font-family="var(--pi-sans)" font-weight="300" font-size="9" text-anchor="middle" fill="var(--pi-ink-55)">风险可追踪可回滚</text>
   </g>
+  </g>
 
   <!-- 格阵下缘构造虚线 -->
-  <line x1="36" y1="472" x2="564" y2="472" stroke="var(--pi-ink)" stroke-width=".6" opacity=".22" stroke-dasharray="2 6"/>
+  <line x1="36" y1="528" x2="564" y2="528" stroke="var(--pi-ink)" stroke-width=".6" opacity=".22" stroke-dasharray="2 6"/>
 
-  <!-- 底部居中说明句（对应帧 caption） -->
-  <text x="300" y="516" font-family="var(--pi-sans)" font-weight="300" font-size="10.5" letter-spacing=".4" text-anchor="middle" fill="var(--pi-ink)">洞察、规划、设计、协作、数据与质量，构成持续交付用户价值的六项能力。</text>
-  <text x="300" y="540" font-family="var(--pi-mono)" font-size="7" letter-spacing="2" text-anchor="middle" fill="var(--pi-ink-45)">SIX CAPABILITIES · GRID 2 × 3</text>
+  <!-- 底部 mono 页脚 -->
+  <text x="300" y="566" font-family="var(--pi-mono)" font-size="7" letter-spacing="2" text-anchor="middle" fill="var(--pi-ink-45)">SIX CAPABILITIES · GRID 2 × 3</text>
 </svg>
 </div>`
   },
@@ -2633,7 +2634,7 @@ window.PAPER_INK_COMPONENT_DATA = {
     num: 87,
     variant: null,
     paperInkNative: true,
-    frame: { width: 600, height: 600, fit: 'fixed' },
+    frame: { width: 840, height: 500, fit: 'fixed' },
     /* 出自样张 layout-o1.html（连续漏斗：单一大倒三角收为塔尖，横线切层，左侧虚线引 mono 数量、
        右侧实线引级间转化率，顶部刻度尺，塔尖墨点 + 双线小框出口） */
     snippet: `<div class="pi-card">
@@ -2992,24 +2993,111 @@ window.PAPER_INK_COMPONENT_DATA = {
     name: 'infra-strip',
     group: 'document-text',
     groupLabel: '文档与文本',
-    description: 'One horizontal platform-boundary component that reflows three to six bound infrastructure items.',
+    description: 'Complete platform-base band: layer label plus three to six fine-line service glyphs between two rules.',
     label: '自适应基础设施横带',
     num: 93,
     variant: null,
     paperInkNative: true,
-    frame: { width: 1050, height: 140, fit: 'fixed' },
+    frame: { width: 1050, height: 260, fit: 'fixed' },
     dataContract: { mode: 'collection', unit: 'item', pointer: '/structured_data/items', minItems: 3, maxItems: 6 },
-    /* 出自样张 layout-k3.html 右侧第二层 AGENT INFRA 边界带，保留 7.5:1 自然横向比例 */
-    snippet: `<div class="pi-card" style="width:1050px!important;min-height:140px!important" data-bind-root="collection">
-  <div class="pi-infra-strip">
-    <div class="pi-infra-kicker">AGENT INFRA 1.0 · BASE</div>
-    <div class="pi-infra-items">
-      <div data-repeat-unit="item">
-        <span class="pi-infra-code" data-field="code">I01</span>
-        <span class="pi-infra-label" data-field="label">模型网关</span>
-      </div>
-    </div>
-  </div>
+    /* 出自样张 layout-k3.html 第二层 AGENT INFRA 边界带;补全为完整层带:上下规线 + 左层标 + 5 个
+       细线图标能力件,图标画法对齐 H3 分层架构栈基础层(gAntenna / gRoute / gDial 同族) */
+    snippet: `<div class="pi-card" style="width:1050px!important;min-height:260px!important">
+<svg class="pi-art" viewBox="0 0 1050 260" xmlns="http://www.w3.org/2000/svg">
+  <!-- 头部 mono 引题 -->
+  <text x="40" y="36" font-family="var(--pi-mono)" font-size="9" letter-spacing="2.2" fill="var(--pi-ink-45)">AGENT INFRA · PLATFORM BASE</text>
+  <text x="1010" y="36" font-family="var(--pi-mono)" font-size="8" letter-spacing="1.6" text-anchor="end" fill="var(--pi-ink-45)">5 SERVICES</text>
+
+  <!-- 横带骨架:上下两条规线 + 左侧层标分隔线(画法对齐 H3 分层架构栈的层带) -->
+  <line x1="40" y1="70" x2="1010" y2="70" stroke="var(--pi-ink)" stroke-width=".8" opacity=".45"/>
+  <line x1="40" y1="210" x2="1010" y2="210" stroke="var(--pi-ink)" stroke-width=".8" opacity=".45"/>
+  <line x1="240" y1="70" x2="240" y2="210" stroke="var(--pi-ink)" stroke-width=".6" opacity=".3"/>
+
+  <!-- 左列层标 -->
+  <text x="60" y="116" font-family="var(--pi-mono)" font-size="17" letter-spacing="2" fill="var(--pi-ink)">L4</text>
+  <text x="60" y="142" font-family="var(--pi-sans)" font-weight="300" font-size="15" fill="var(--pi-ink)">基础层</text>
+  <text x="60" y="160" font-family="var(--pi-mono)" font-size="7" letter-spacing="1.8" fill="var(--pi-ink-45)">INFRASTRUCTURE</text>
+  <line x1="60" y1="176" x2="140" y2="176" stroke="var(--pi-ink)" stroke-width=".6" opacity=".3"/>
+
+  <!-- 件 1 · 模型网关:主干 + 三向分支端点(H3 gAntenna 同族画法) -->
+  <g>
+    <line x1="294" y1="157" x2="294" y2="140" stroke="var(--pi-ink-80)" stroke-width="1"/>
+    <line x1="294" y1="140" x2="278.6" y2="130.2" stroke="var(--pi-ink-80)" stroke-width=".9"/>
+    <line x1="294" y1="140" x2="294" y2="127.4" stroke="var(--pi-ink-80)" stroke-width=".9"/>
+    <line x1="294" y1="140" x2="309.4" y2="130.2" stroke="var(--pi-ink-80)" stroke-width=".9"/>
+    <circle cx="294" cy="158.2" r="3.4" fill="none" stroke="var(--pi-ink-80)" stroke-width=".8"/>
+    <circle cx="294" cy="158.2" r="1.2" fill="var(--pi-ink)"/>
+    <circle cx="277.2" cy="129.5" r="3.4" fill="none" stroke="var(--pi-ink-80)" stroke-width=".8"/>
+    <circle cx="277.2" cy="129.5" r="1.2" fill="var(--pi-ink)"/>
+    <circle cx="294" cy="126" r="3.4" fill="none" stroke="var(--pi-ink-80)" stroke-width=".8"/>
+    <circle cx="294" cy="126" r="1.2" fill="var(--pi-ink)"/>
+    <circle cx="310.8" cy="129.5" r="3.4" fill="none" stroke="var(--pi-ink-80)" stroke-width=".8"/>
+    <circle cx="310.8" cy="129.5" r="1.2" fill="var(--pi-ink)"/>
+    <text x="330" y="133" font-family="var(--pi-mono)" font-size="7.5" letter-spacing="1.5" fill="rgba(25,25,23,.55)">GATEWAY</text>
+    <text x="330" y="156" font-family="var(--pi-sans)" font-weight="300" font-size="12.5" fill="var(--pi-ink)">模型网关</text>
+  </g>
+
+  <!-- 件 2 · 向量检索:中心节点连四外围节点(H3 gRoute 同族画法) -->
+  <g>
+    <line x1="444" y1="140" x2="426" y2="130" stroke="var(--pi-ink-80)" stroke-width=".8"/>
+    <line x1="444" y1="140" x2="462" y2="130" stroke="var(--pi-ink-80)" stroke-width=".8"/>
+    <line x1="444" y1="140" x2="426" y2="150" stroke="var(--pi-ink-80)" stroke-width=".8"/>
+    <line x1="444" y1="140" x2="462" y2="150" stroke="var(--pi-ink-80)" stroke-width=".8"/>
+    <circle cx="444" cy="140" r="3.4" fill="none" stroke="var(--pi-ink-80)" stroke-width=".8"/>
+    <circle cx="444" cy="140" r="1.2" fill="var(--pi-ink)"/>
+    <circle cx="426" cy="130" r="3.4" fill="none" stroke="var(--pi-ink-80)" stroke-width=".8"/>
+    <circle cx="426" cy="130" r="1.2" fill="var(--pi-ink)"/>
+    <circle cx="462" cy="130" r="3.4" fill="none" stroke="var(--pi-ink-80)" stroke-width=".8"/>
+    <circle cx="462" cy="130" r="1.2" fill="var(--pi-ink)"/>
+    <circle cx="426" cy="150" r="3.4" fill="none" stroke="var(--pi-ink-80)" stroke-width=".8"/>
+    <circle cx="426" cy="150" r="1.2" fill="var(--pi-ink)"/>
+    <circle cx="462" cy="150" r="3.4" fill="none" stroke="var(--pi-ink-80)" stroke-width=".8"/>
+    <circle cx="462" cy="150" r="1.2" fill="var(--pi-ink)"/>
+    <line x1="426" y1="130" x2="462" y2="130" stroke="var(--pi-ink)" stroke-width=".5" opacity=".35" stroke-dasharray="3 4"/>
+    <line x1="426" y1="150" x2="462" y2="150" stroke="var(--pi-ink)" stroke-width=".5" opacity=".35" stroke-dasharray="3 4"/>
+    <text x="480" y="133" font-family="var(--pi-mono)" font-size="7.5" letter-spacing="1.5" fill="rgba(25,25,23,.55)">VECTOR</text>
+    <text x="480" y="156" font-family="var(--pi-sans)" font-weight="300" font-size="12.5" fill="var(--pi-ink)">向量检索</text>
+  </g>
+
+  <!-- 件 3 · 提示词版本:文档 + 行线(H3 gDial 文档侧同族画法) -->
+  <g>
+    <rect x="584" y="126" width="18.2" height="23.8" fill="none" stroke="var(--pi-ink-80)" stroke-width=".9"/>
+    <line x1="587.5" y1="131.6" x2="598.7" y2="131.6" stroke="var(--pi-ink)" stroke-width=".6" opacity=".6"/>
+    <line x1="587.5" y1="136.6" x2="598.7" y2="136.6" stroke="var(--pi-ink)" stroke-width=".6" opacity=".6"/>
+    <line x1="587.5" y1="141.6" x2="595.3" y2="141.6" stroke="var(--pi-ink)" stroke-width=".6" opacity=".6"/>
+    <line x1="610" y1="145" x2="619" y2="154" stroke="var(--pi-ink-80)" stroke-width="1.3" stroke-linecap="round"/>
+    <circle cx="606" cy="141" r="7.7" fill="none" stroke="var(--pi-ink-80)" stroke-width=".9"/>
+    <text x="630" y="133" font-family="var(--pi-mono)" font-size="7.5" letter-spacing="1.5" fill="rgba(25,25,23,.55)">PROMPT OPS</text>
+    <text x="630" y="156" font-family="var(--pi-sans)" font-weight="300" font-size="12.5" fill="var(--pi-ink)">提示词版本</text>
+  </g>
+
+  <!-- 件 4 · 评测台:刻度表盘 + 指针(icon-grid 表盘同族画法) -->
+  <g>
+    <path d="M 726 144 A 14 14 0 0 1 754 144" fill="none" stroke="var(--pi-ink-80)" stroke-width=".9"/>
+    <line x1="732.9" y1="134.5" x2="731.2" y2="132.3" stroke="var(--pi-ink)" stroke-width=".5" opacity=".5"/>
+    <line x1="736.2" y1="132.8" x2="735.4" y2="130.1" stroke="var(--pi-ink)" stroke-width=".5" opacity=".5"/>
+    <line x1="740" y1="132.2" x2="740" y2="129.4" stroke="var(--pi-ink)" stroke-width=".5" opacity=".5"/>
+    <line x1="743.8" y1="132.8" x2="744.6" y2="130.1" stroke="var(--pi-ink)" stroke-width=".5" opacity=".5"/>
+    <line x1="747.1" y1="134.5" x2="748.8" y2="132.3" stroke="var(--pi-ink)" stroke-width=".5" opacity=".5"/>
+    <line x1="740" y1="144" x2="747" y2="134.2" stroke="var(--pi-ink)" stroke-width="1.1"/>
+    <circle cx="740" cy="144" r="1.3" fill="var(--pi-ink)"/>
+    <text x="770" y="133" font-family="var(--pi-mono)" font-size="7.5" letter-spacing="1.5" fill="rgba(25,25,23,.55)">EVALUATION</text>
+    <text x="770" y="156" font-family="var(--pi-sans)" font-weight="300" font-size="12.5" fill="var(--pi-ink)">评测台</text>
+  </g>
+
+  <!-- 件 5 · 可观测:表盘时钟(K3 infra 边界带 clock 记号同族画法) -->
+  <g>
+    <circle cx="894" cy="140" r="10" fill="none" stroke="var(--pi-ink-80)" stroke-width=".9"/>
+    <line x1="894" y1="140" x2="894" y2="133" stroke="var(--pi-ink)" stroke-width=".8"/>
+    <line x1="894" y1="140" x2="898.5" y2="141.4" stroke="var(--pi-ink)" stroke-width=".8"/>
+    <line x1="894" y1="128" x2="894" y2="125" stroke="var(--pi-ink)" stroke-width=".6" opacity=".5"/>
+    <line x1="906" y1="140" x2="909" y2="140" stroke="var(--pi-ink)" stroke-width=".6" opacity=".5"/>
+    <line x1="894" y1="152" x2="894" y2="155" stroke="var(--pi-ink)" stroke-width=".6" opacity=".5"/>
+    <line x1="882" y1="140" x2="879" y2="140" stroke="var(--pi-ink)" stroke-width=".6" opacity=".5"/>
+    <text x="920" y="133" font-family="var(--pi-mono)" font-size="7.5" letter-spacing="1.5" fill="rgba(25,25,23,.55)">OBSERVE</text>
+    <text x="920" y="156" font-family="var(--pi-sans)" font-weight="300" font-size="12.5" fill="var(--pi-ink)">可观测</text>
+  </g>
+</svg>
 </div>`
   }
   ]
