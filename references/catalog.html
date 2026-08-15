@@ -1894,7 +1894,10 @@ function componentPageScale(spec){
     componentSpec(candidate)===spec||(candidate.vr||[]).some(([variantSpec])=>variantSpec===spec)
   );
   const scale=Number(item&&item.pageScale);
-  return Number.isFinite(scale)&&scale>0&&scale<=2?scale:1;
+  const itemScale=Number.isFinite(scale)&&scale>0&&scale<=2?scale:1;
+  /* Atlas 旧 600×600 specimen 经 contain 放大后比 Native 更顶画布；
+     统一留出约 18% 呼吸区，单卡已经确认的缩放继续在此基础上叠乘。 */
+  return String(spec).startsWith('atlas:')?itemScale*.82:itemScale;
 }
 
 /* 非关系页 */
@@ -2574,11 +2577,27 @@ function refitComponents(remeasure=false){
   });
 }
 
+const ATLAS_TYPE_ROLE_NAMES=[
+  'meta','label','micro-secondary','body-small','body','subheading','emphasis',
+  'heading','metric','title','hero','display','particle-sample','display-mark'
+];
+function resetAtlasTypeCompensation(el){
+  ATLAS_TYPE_ROLE_NAMES.forEach(role=>el.style.removeProperty('--type-'+role));
+}
+function compensateAtlasTypeScale(el,scale){
+  const factor=Number.isFinite(scale)&&scale>0?scale:1;
+  const themeStyle=getComputedStyle(document.documentElement);
+  ATLAS_TYPE_ROLE_NAMES.forEach(role=>{
+    const base=Number.parseFloat(themeStyle.getPropertyValue('--type-'+role));
+    if(Number.isFinite(base)&&base>0)el.style.setProperty('--type-'+role,(base/factor)+'px');
+  });
+}
+
 /* 组件先在 1280×720 PPT 内层画布中保持原尺寸居中；卡片预览再像 iframe 一样整体等比缩小。
    浮层详情仍按可用区域 contain 放大，避免改变点击后的审阅体验。
    PPT 内层几何只在首次挂载或字体就绪后测量；resize 仅更新外层缩放。
-   缩放上限:atlas 画板是 600×600 方形预览遗产,内容天然偏小,允许放大并 contain 进 880×520 组件
-   标准盒(与 native/抄录同盒,只放大不缩小);native/抄录已重定标到标准盒,维持 1.0 封顶不被吹大。 */
+   Atlas 几何仍可 contain 进标准盒，但主题字阶按放大倍数反向补偿，避免 13–26px 文本随几何膨胀到 30–80px；
+   native/抄录已重定标到标准盒，维持 1.0 封顶不被吹大。 */
 function fitStage(stage,host,usePptCanvas=false,remeasure=false){
   const el=host.firstElementChild;
   if(!el)return;
@@ -2598,17 +2617,28 @@ function fitStage(stage,host,usePptCanvas=false,remeasure=false){
     el.style.position='absolute';
     el.style.left='0';
     el.style.top='0';
+    if(scaleUp)resetAtlasTypeCompensation(el);
     let s=1,left=0,top=0;
     const frameW=Number(host.dataset.frameWidth),frameH=Number(host.dataset.frameHeight);
-    const b=host.dataset.frameApplied==='1'&&frameW>0&&frameH>0?[0,0,frameW,frameH]:contentBounds(el);
+    let b=host.dataset.frameApplied==='1'&&frameW>0&&frameH>0?[0,0,frameW,frameH]:contentBounds(el);
     if(b){
-      const bw=b[2]-b[0],bh=b[3]-b[1];
+      let bw=b[2]-b[0],bh=b[3]-b[1];
       s=(bw>0&&bh>0?Math.min(W/bw,H/bh,maxScale(bw,bh)):1)*pageScale;
+      if(scaleUp){
+        compensateAtlasTypeScale(el,s);
+        const adjusted=contentBounds(el);
+        if(adjusted){
+          b=adjusted;
+          bw=b[2]-b[0];
+          bh=b[3]-b[1];
+        }
+      }
       left=W/2-s*(b[0]+bw/2);
       top=H/2-s*(b[1]+bh/2);
     }else{
       const w=el.offsetWidth||600,h=el.offsetHeight||600;
       s=Math.min(W/w,H/h,maxScale(w,h))*pageScale;
+      if(scaleUp)compensateAtlasTypeScale(el,s);
       left=(W-w*s)/2;
       top=(H-h*s)/2;
     }

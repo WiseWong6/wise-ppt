@@ -15,7 +15,8 @@
   const BRUSH_RE = /(?:\.brush\b|\.kai\b|handwrit|annotation)/i;
   const META_RE = /(?:meta|caption|note|hint|source|legend|axis|tick|label|date|year|eyebrow|subtitle|secondary|dim|muted)/i;
   const BODY_RE = /(?:\bp\b|\bli\b|description|\bdesc\b|body|copy|content)/i;
-  const HEADING_RE = /(?:\bh[1-6]\b|title|heading|strong|metric|value|kpi|year)/i;
+  const DISPLAY_RE = /(?:metric|value|kpi|stat-(?:number|amount)|big-number)/i;
+  const HEADING_RE = /(?:\bh[1-6]\b|title|heading|strong|root)/i;
   const WEAK_LINE_RE = /(?:grid|axis|tick|construction|guide|divider|separator|\bhr\b|table|\btd\b|\bth\b|caption)/i;
   const FUNCTIONAL_LINE_RE = /(?:track|edge|connector|link|arrow|path|spine|rib|timeline|outline|ring|shape|line)/i;
   const LINE_PSEUDO_RE = /(?:::before|::after|\bhr\b|divider|separator|track|connector|timeline|spine|rib|guide|axis|line)/i;
@@ -880,12 +881,13 @@
   function fontSizeToken(selector, value) {
     const numeric = Number.parseFloat(String(value));
     if (!Number.isFinite(numeric) || numeric <= 0) return value;
-    let roles = TYPE_ROLES;
-    if (HEADING_RE.test(selector)) roles = TYPE_ROLES.slice(3, 12);
+    let roles = TYPE_ROLES.slice(0, 6);
+    if (DISPLAY_RE.test(selector)) roles = TYPE_ROLES.slice(6, 9);
+    else if (HEADING_RE.test(selector)) roles = TYPE_ROLES.slice(3, 6);
     else if (/(?:^|[\s,.>])t[hd](?:$|[\s,.>:#[])/i.test(selector)) roles = TYPE_ROLES.slice(1, 4);
-    else if (META_RE.test(selector)) roles = TYPE_ROLES.slice(0, 3);
-    else if (BODY_RE.test(selector)) roles = TYPE_ROLES.slice(3, 5);
-    else if (MONO_RE.test(selector)) roles = TYPE_ROLES.slice(0, 6);
+    else if (META_RE.test(selector)) roles = TYPE_ROLES.slice(0, 2);
+    else if (BODY_RE.test(selector)) roles = TYPE_ROLES.slice(1, 4);
+    else if (MONO_RE.test(selector)) roles = TYPE_ROLES.slice(0, 4);
     return `var(--type-${nearestTypeRole(numeric, roles)})`;
   }
 
