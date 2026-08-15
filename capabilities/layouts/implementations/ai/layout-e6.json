@@ -13,9 +13,9 @@
     "materialization_format": "wise-ppt-formal-slide@1",
     "path": "gallery/paper-ink/ai/frames/layout-e6.html",
     "root_selector": "section.slide[data-implementation-id=\"paper-ink.comparison.before-after-process-bands.ai\"]",
-    "sha256": "sha256:a0b52a494eb084431c73b22c12891a40c9f06e19eb11c5ebc88542f3de498ced"
+    "sha256": "sha256:773637abecb355daee0f3d7d0b6eb7095f77581d3a4d6b7a54da05031107fa60"
   },
-  "canonical_fingerprint": "sha256:f3ff1c17865a08cef0f36524983f30a1af3f7e36e76452287347f51106dee522",
+  "canonical_fingerprint": "sha256:0539124fde3868615a9e1ccec9a9c8dcc4e769281ef950a3e15cc529426e39ce",
   "contract_version": 1,
   "dependency_closure": {
     "files": [
@@ -572,22 +572,6 @@
           "token_sha256": "sha256:235db9232e2bd1ad44a9996dd21eef0cf3ce71ca6974124dac90b761650e1ad9"
         },
         "type": "string"
-      },
-      {
-        "context": "inline-script[1]:call:txt[2]",
-        "default": "文档只有进入召回链路，知识才真正开始服役。",
-        "field_id": "script.literal.027",
-        "kind": "script_literal",
-        "max_length": 28,
-        "span": {
-          "kind": "script_literal",
-          "occurrence": 27,
-          "quote": "'",
-          "script_index": 1,
-          "sink": "call:txt[2]",
-          "token_sha256": "sha256:3fa1dd177876bede1852508bb151f414db326f02ab060e600f95bb54e7b9a549"
-        },
-        "type": "string"
       }
     ],
     "format": "wise-ppt-layout-payload@1",
@@ -717,10 +701,6 @@
         "script.literal.026": {
           "maxLength": 15,
           "type": "string"
-        },
-        "script.literal.027": {
-          "maxLength": 28,
-          "type": "string"
         }
       },
       "type": "object"
@@ -780,8 +760,7 @@
       "script.literal.023": "引用可回溯到段落级出处",
       "script.literal.024": "散件入库",
       "script.literal.025": "切片 · 嵌入 · 索引",
-      "script.literal.026": "可被 Agent 调用",
-      "script.literal.027": "文档只有进入召回链路，知识才真正开始服役。"
+      "script.literal.026": "可被 Agent 调用"
     }
   },
   "payload_schema": {
@@ -951,10 +930,6 @@
           "script.literal.026": {
             "maxLength": 15,
             "type": "string"
-          },
-          "script.literal.027": {
-            "maxLength": 28,
-            "type": "string"
           }
         },
         "type": "object"
@@ -1069,7 +1044,7 @@
   ],
   "source": {
     "path": "gallery/paper-ink/ai/frames/layout-e6.html",
-    "sha256": "sha256:a0b52a494eb084431c73b22c12891a40c9f06e19eb11c5ebc88542f3de498ced"
+    "sha256": "sha256:773637abecb355daee0f3d7d0b6eb7095f77581d3a4d6b7a54da05031107fa60"
   },
   "status": "production",
   "theme_id": "paper-ink",

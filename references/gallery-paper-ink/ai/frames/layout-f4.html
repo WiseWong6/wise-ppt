@@ -55,14 +55,13 @@ function txt(x, y, str, attrs) {
 var MONO = 'var(--mono)', SANS = 'var(--sans)';
 
 
-/* 六宫格主体连同上下构造线整体上移，避开底部结论并回到可用区中心。 */
-G = el('g', {transform:'translate(0 -85.7)'});
+/* 六宫格对齐网格2×3空槽规范(版心 1500×620 @ 210,196)，六格 500×310 严格等分，不再整体平移。 */
+G = el('g', {transform:'translate(0 0)'});
 
-/* ---------- 6 格：2 行 × 3 列，整体水平居中 ---------- */
-/* 画面 1920，每格宽 440，3 格总宽 1320，居中 → 左缘 (1920-1320)/2=300 */
-var COLS = [300, 740, 1180];          /* 三列左缘 x */
-var ROWS = [290, 620];                /* 两行顶部 y */
-var CW = 440;
+/* ---------- 6 格：2 行 × 3 列，六等分版心 ---------- */
+var COLS = [210, 710, 1210];          /* 三列左缘 x，每格宽 500 */
+var ROWS = [196, 506];                /* 两行顶部 y，每格高 310 */
+var CW = 500;
 
 /* 通用：每格画图标(居中)+标题+说明 */
 function cell(col, row, drawIcon, title, en, desc1, desc2) {
@@ -154,9 +153,11 @@ cell(2, 1, function(cx, cy){
     fill:'none', stroke:INK, 'stroke-width':1.8});
 }, '生成', 'GENERATE', '文本·代码·图像产出', '一次成稿可读可运行');
 
-/* 网格上下缘构造虚线 */
-el('line', {x1:300, y1:264, x2:1620, y2:264, stroke:INK, 'stroke-width':.6, opacity:.22, 'stroke-dasharray':'2 6'});
-el('line', {x1:300, y1:920, x2:1620, y2:920, stroke:INK, 'stroke-width':.6, opacity:.22, 'stroke-dasharray':'2 6'});
+/* 网格构造虚线：外框 + 十字中缝，六等分可见 */
+el('rect', {x:210, y:196, width:1500, height:620, fill:'none', stroke:INK, 'stroke-width':.6, opacity:.22, 'stroke-dasharray':'2 6'});
+el('line', {x1:710, y1:196, x2:710, y2:816, stroke:INK, 'stroke-width':.6, opacity:.22, 'stroke-dasharray':'2 6'});
+el('line', {x1:1210, y1:196, x2:1210, y2:816, stroke:INK, 'stroke-width':.6, opacity:.22, 'stroke-dasharray':'2 6'});
+el('line', {x1:210, y1:506, x2:1710, y2:506, stroke:INK, 'stroke-width':.6, opacity:.22, 'stroke-dasharray':'2 6'});
 
 stageFit();
 </script>

@@ -41,7 +41,6 @@ var INK45 = __wiseThemeToken("--ink-45");
 if (location.search.indexOf('accent') >= 0) document.documentElement.classList.add('accent');
 var ACCENT = document.documentElement.classList.contains('accent');
 var RED = getComputedStyle(document.documentElement).getPropertyValue('--accent-red').trim();
-var SERIF = 'var(--serif)';
 var G = document.getElementById('draw');
 function el(tag, attrs) {
   var e = document.createElementNS(NS, tag);
@@ -54,17 +53,17 @@ function txt(x, y, str, attrs) {
 }
 var MONO = 'var(--mono)', SANS = 'var(--sans)';
 
-G = el('g', {transform:'translate(0 -41.7)'});
+G = el('g', {transform:'translate(0 +20)'});
 
 
 /* ============ 带一 · BEFORE ============ */
-el('rect', {x:150, y:220, width:1620, height:250, rx:4, fill:__wiseThemeToken("--paper-panel"), stroke:INK80, 'stroke-width':1});
-el('rect', {x:155, y:225, width:1610, height:240, rx:3, fill:'none', stroke:INK, 'stroke-width':.6, opacity:.3});
+el('rect', {x:150, y:190, width:1620, height:280, rx:4, fill:__wiseThemeToken("--paper-panel"), stroke:INK80, 'stroke-width':1});
+el('rect', {x:155, y:195, width:1610, height:270, rx:3, fill:'none', stroke:INK, 'stroke-width':.6, opacity:.3});
 /* ✕ 徽章 */
-el('circle', {cx:200, cy:262, r:15, fill:__wiseThemeToken("--paper"), stroke:INK80, 'stroke-width':1.2});
-el('path', {d:'M 194 256 L 206 268 M 206 256 L 194 268', stroke:INK, 'stroke-width':3, 'stroke-linecap':'round'});
-txt(232, 270, 'Before：品牌资料是散件', {'font-family':SANS, 'font-weight':300, 'font-size':'var(--type-subheading)', fill:INK});
-txt(1730, 268, 'SCATTERED', {'font-family':MONO, 'font-size':'var(--type-micro-secondary)', 'letter-spacing':3, 'text-anchor':'end', fill:INK45});
+el('circle', {cx:200, cy:232, r:15, fill:__wiseThemeToken("--paper"), stroke:INK80, 'stroke-width':1.2});
+el('path', {d:'M 194 226 L 206 238 M 206 226 L 194 238', stroke:INK, 'stroke-width':3, 'stroke-linecap':'round'});
+txt(232, 240, 'Before：品牌资料是散件', {'font-family':SANS, 'font-weight':300, 'font-size':'var(--type-subheading)', fill:INK});
+txt(1730, 238, 'SCATTERED', {'font-family':MONO, 'font-size':'var(--type-micro-secondary)', 'letter-spacing':3, 'text-anchor':'end', fill:INK45});
 
 /* 六张散件卡（内部各异） */
 var CARDS = [
@@ -76,7 +75,7 @@ var CARDS = [
   {cn:'复盘纪要', mk:'head'}
 ];
 CARDS.forEach(function(c, i){
-  var x = 190 + i*160, y = 300, w = 140, h = 150;
+  var x = 190 + i*160, y = 285, w = 140, h = 150;
   el('rect', {x:x, y:y, width:w, height:h, fill:__wiseThemeToken("--paper"), stroke:INK80, 'stroke-width':1.1});
   var ix = x+22, iy = y+18, iw = w-44, ih = h-62;
   if (c.mk === 'lines') {
@@ -107,9 +106,9 @@ CARDS.forEach(function(c, i){
 });
 
 /* 虚线分隔 + 右侧注记 */
-el('line', {x1:1190, y1:252, x2:1190, y2:440, stroke:INK, 'stroke-width':.6, opacity:.35, 'stroke-dasharray':'3 5'});
+el('line', {x1:1190, y1:222, x2:1190, y2:425, stroke:INK, 'stroke-width':.6, opacity:.35, 'stroke-dasharray':'3 5'});
 ['资料散在网盘、在线表与 PDF', '案例跨团队渠道，关联薄弱', '不可检索、不可比较、不可复用'].forEach(function(s, i){
-  var y = 330 + i*50;
+  var y = 315 + i*50;
   el('rect', {x:1230, y:y-11, width:5, height:5, fill:INK, opacity:.55});
   txt(1248, y, s, {'font-family':SANS, 'font-weight':300, 'font-size':'var(--type-body-small)', fill:INK70});
 });
@@ -201,10 +200,6 @@ el('line', {x1:790, y1:737, x2:880, y2:737, stroke:INK, 'stroke-width':1, opacit
 el('line', {x1:872, y1:732, x2:880, y2:737, stroke:INK, 'stroke-width':1, opacity:.6});
 el('line', {x1:872, y1:742, x2:880, y2:737, stroke:INK, 'stroke-width':1, opacity:.6});
 txt(1000, 742, '可被团队检索复用', {'font-family':SANS, 'font-weight':300, 'font-size':'var(--type-body-small)', 'text-anchor':'middle', fill:INK70});
-
-/* ============ 底部金句条 ============ */
-el('rect', {x:150, y:840, width:6, height:36, fill:INK});
-txt(176, 868, '品牌经验只有被整理与复用，才会从文件变成能力。', {'font-family':SERIF, 'font-size':'var(--type-subheading)', fill:INK});
 
 stageFit();
 </script>
