@@ -194,6 +194,7 @@ description: 表驱动的网页 PPT 编排 skill。输入 PDF/链接/口语稿/�
 ### 红线(违反即返工)
 
 - 1920×1080 定画布绝对坐标;SVG 文字尺寸一律 `WisePPT.typeSize('role')`,不裸写 px 字号。
+- **typography mode 默认 all-sans**(与 wise-ppt 生产合同对齐):`--serif` 与 `--sans` 都解析为黑体;`mixed`/`all-serif` 须用户明确要求才用;mono 与 brush 三种 mode 下固定不变。
 - 颜色只用 design-tokens 变量(--paper/--ink 阶/--accent 默认关);一 deck 一主题。
 - 页面家具(眉题/页码/题注)不算切分;内容避开家具带,切分对齐空槽几何(`references/taxonomy-empty/`)。
 - **页面无标题制**(skill-design 9.4):关系页不设页面大标题,主张句由底部题注承载;顶部只有左上角眉题;禁 FIG 式图号标签及其下划线、禁右下角自创角标;大字宣言/金句/焦点宣言页与非关系页(含尾页)**零题注**,"每页正文可选择"合同由 HTML 正文节点(素材行/出处行,带 data-content-ref)满足。
