@@ -152,7 +152,7 @@
   .variant-trigger:focus-visible,.variant-option:focus-visible{outline:1px solid var(--ink);outline-offset:2px}
   .variant-kicker,.variant-current{height:18px;display:flex;align-items:center;font-family:var(--wp-font-sans);font-size:13px;line-height:18px}
   .variant-kicker{color:var(--ink-3);letter-spacing:.08em}
-  .variant-current{font-weight:400;min-width:48px;text-align:left}
+  .variant-current{flex:none;font-weight:400;min-width:48px;text-align:left}
   .variant-chevron{display:block;flex:none;width:14px;height:14px;fill:none;stroke:currentColor;stroke-width:1.35;stroke-linecap:round;stroke-linejoin:round;color:var(--ink-3);transition:transform .15s ease}
   .variant-trigger[aria-expanded="true"] .variant-chevron{transform:rotate(180deg)}
   .variant-menu{position:absolute;right:0;bottom:calc(100% + 10px);z-index:5;min-width:190px;max-width:min(280px,80vw);max-height:min(360px,70vh);overflow:auto;padding:6px;background:var(--paper);border:1px solid var(--ink-45);box-shadow:0 8px 24px rgba(25,25,23,.12)}
@@ -278,7 +278,7 @@
 </main>
 
 <main id="m-cmp">
-  <div class="note"><b>组件 = 参数化画法:内容数量是参数,画法不同才是不同组件。</b><br>atlas / native / ECharts 按与版式相同的 SmartArt 语义入口分组;每个组件只放最主要的表达类型,不在多个入口重复出现。ECharts 类保留 <a href="https://github.com/apache/echarts/tree/6.1.0" target="_blank" rel="noreferrer">Apache ECharts 6.1.0</a> 官方来源与 Apache-2.0 许可署名。卡片统一用 catalog #001–#072 连续编号,源组件编号只做内部路由。</div>
+  <div class="note"><b>组件 = 参数化画法:内容数量是参数,画法不同才是不同组件。</b><br>atlas / native / ECharts 按与版式相同的 SmartArt 语义入口分组;每个组件只放最主要的表达类型,不在多个入口重复出现。ECharts 类保留 <a href="https://github.com/apache/echarts/tree/6.1.0" target="_blank" rel="noreferrer">Apache ECharts 6.1.0</a> 官方来源与 Apache-2.0 许可署名。卡片统一用 catalog #001–#074 连续编号,源组件编号只做内部路由。</div>
   <div id="extract-groups"></div>
   <div id="cmp-groups"></div>
 </main>
@@ -378,7 +378,8 @@ const SMARTART_COMPONENTS=[
     {t:'native',num:93,en:'infra-strip',nm:'基础设施横带',rel:['陈列'],bo:1},
   ]},
   {fam:'② 流程 · Process',items:[
-    {t:'atlas',num:25,en:'process',nm:'流程链',note:'合并 9 个源变体;步数 2~7',rel:['时序','流动'],vr:[['atlas:25','默认·3步'],['atlas:26','默认·4步'],['atlas:27','标注'],['atlas:28','默认·5步'],['atlas:29','换行'],['atlas:30','箭头·3步'],['atlas:31','箭头·4步'],['atlas:32','标注箭头'],['atlas:33','箭头·5步']]},
+    {t:'atlas',num:26,en:'process',nm:'流程链',note:'非箭头流程;4步代表',rel:['时序','流动'],vr:[['atlas:26','4步'],['atlas:27','标注'],['atlas:29','换行']]},
+    {t:'atlas',num:31,en:'process-arrow',nm:'箭头流程链',note:'箭头流程;4步代表',catalogNo:73,rel:['时序','流动'],vr:[['atlas:31','4步箭头'],['atlas:32','标注箭头']]},
     {t:'atlas',num:38,en:'journey',nm:'旅程图',rel:['时序']},
     {t:'new',mk:7,en:'journey-curve',nm:'旅程曲线',note:'源 J3 · 原版抄录',rel:['时序'],bo:1},
     {t:'new',mk:8,en:'timeline-axis',nm:'时间轴',note:'源 B1 · 横/竖',rel:['时序'],bo:1,vr:[['new:8','横排·源 B1'],['new:10','竖排']]},
@@ -453,9 +454,10 @@ const SMARTART_COMPONENTS=[
     {t:'ec',id:'echarts.line-basic',en:'line',nm:'折线图',note:'含 smooth / stacked 变体',rel:['时序'],vr:[['ec:echarts.line-basic','基础'],['ec:echarts.line-smooth','平滑'],['ec:echarts.line-stacked','堆叠']]},
     {t:'ec',id:'echarts.calendar-basic',en:'calendar',nm:'日历热力图',rel:['时序']},
     {t:'new',mk:4,en:'ranking-bars',nm:'排行柱图',note:'源 C7 · 原版抄录',rel:['排名'],bo:1},
-    {t:'ec',id:'echarts.bar-basic',en:'bar',nm:'柱状图',note:'含 dynamic-sort 变体',rel:['对比'],vr:[['ec:echarts.bar-basic','基础'],['ec:echarts.bar-dynamic-sort','动态排序']]},
+    {t:'ec',id:'echarts.bar-basic',en:'bar',nm:'纵向柱状图',rel:['对比']},
+    {t:'ec',id:'echarts.bar-dynamic-sort',en:'bar-horizontal',nm:'横向柱状图',note:'静态排序',catalogNo:74,rel:['排名']},
     {t:'ec',id:'echarts.radar-basic',en:'radar-e',nm:'雷达图(ECharts)',rel:['对比']},
-    {t:'ec',id:'echarts.scatter-basic',en:'scatter',nm:'散点图',note:'含 to-bar 动画变体',rel:['关联'],vr:[['ec:echarts.scatter-basic','基础'],['ec:echarts.scatter-to-bar-anim','聚合柱动画']]},
+    {t:'ec',id:'echarts.scatter-basic',en:'scatter',nm:'散点图',rel:['关联']},
   ]},
 ];
 
@@ -476,11 +478,18 @@ function assertCatalogClassification(groups,keyOf,expected,label){
 }
 const SMARTART_LAYOUT_COUNT=assertCatalogClassification(SMARTART_TYPES,item=>item[0],56,'版式');
 const CATALOG_COMPONENTS=SMARTART_COMPONENTS.flatMap(group=>group.items);
-CATALOG_COMPONENTS.forEach((item,index)=>{item.catalogNo=index+1;});
+/* 新拆出的组件使用末尾新编号，但仍留在原语义分组相邻展示，避免改写既有 #010–#072。 */
+const PINNED_COMPONENT_NUMBERS=new Set(CATALOG_COMPONENTS.map(item=>item.catalogNo).filter(Number.isInteger));
+let nextComponentNumber=1;
+CATALOG_COMPONENTS.forEach(item=>{
+  if(Number.isInteger(item.catalogNo))return;
+  while(PINNED_COMPONENT_NUMBERS.has(nextComponentNumber))nextComponentNumber++;
+  item.catalogNo=nextComponentNumber++;
+});
 const SMARTART_COMPONENT_COUNT=assertCatalogClassification(
   SMARTART_COMPONENTS,
   item=>item.t==='ec'?'ec:'+item.id:(item.t==='new'?'new:'+item.mk:item.t+':'+item.num),
-  72,
+  74,
   '组件',
 );
 function componentCatalogCode(item){
@@ -492,7 +501,7 @@ function componentSourceType(item){
   return item.t;
 }
 function assertContinuousComponentCatalogNumbers(){
-  const numbers=CATALOG_COMPONENTS.map(item=>item.catalogNo);
+  const numbers=CATALOG_COMPONENTS.map(item=>item.catalogNo).sort((a,b)=>a-b);
   const expected=Array.from({length:SMARTART_COMPONENT_COUNT},(_,index)=>index+1);
   if(numbers.some((number,index)=>number!==expected[index])||new Set(numbers).size!==numbers.length){
     throw new Error('组件 catalog 编号不连续:'+numbers.join(','));
@@ -2167,7 +2176,6 @@ $('#extract-groups').innerHTML=EXTRACT_GROUPS.map(g=>`
   const prevBtn=modal.querySelector('.layer-nav.prev'),
         nextBtn=modal.querySelector('.layer-nav.next'),
         layerStage=modal.querySelector('#layer-stage');
-  let ecChart=null;
   /* 列表始终只有缩略图；浮层任意时刻只保留一个实时舞台。token 防连续快翻时慢资源回写旧舞台。 */
   let navCards=[],openToken=0,currentCard=null;
   function dismissVariantMenu(returnFocus=false){
@@ -2179,9 +2187,12 @@ $('#extract-groups').innerHTML=EXTRACT_GROUPS.map(g=>`
     if(returnFocus)trigger.focus();
     return true;
   }
+  function disposeLayerNode(node){
+    if(node&&node._wiseEchart){node._wiseEchart.dispose();node._wiseEchart=null;}
+    if(node)node.remove();
+  }
   function disposeLive(){
-    if(ecChart){ecChart.dispose();ecChart=null;}
-    layerStage.replaceChildren();
+    [...layerStage.children].forEach(disposeLayerNode);
     layerStage.dataset.liveReady='0';
   }
   function close(){
@@ -2227,10 +2238,17 @@ $('#extract-groups').innerHTML=EXTRACT_GROUPS.map(g=>`
     return live;
   }
   function revealLive(live,token){
-    if(token!==openToken||!live.isConnected){live.remove();return false;}
+    if(token!==openToken||!live.isConnected){disposeLayerNode(live);return false;}
     live.classList.add('is-ready');
     layerStage.dataset.liveReady='1';
     return true;
+  }
+  function settleVariantSwap(live,token){
+    /* 新样式在旧样式上方完成淡入；过渡结束后再清掉旧实时层与默认缩略图，避免切换瞬间回跳。 */
+    setTimeout(()=>{
+      if(token!==openToken||!live.isConnected)return;
+      [...layerStage.children].forEach(node=>{if(node!==live)disposeLayerNode(node);});
+    },220);
   }
   function twoFrames(){return new Promise(resolve=>requestAnimationFrame(()=>requestAnimationFrame(resolve)));}
   async function waitForFonts(doc=document){
@@ -2265,7 +2283,7 @@ $('#extract-groups').innerHTML=EXTRACT_GROUPS.map(g=>`
       if(entry&&window.echarts&&adapter&&themeAdapter){
         if(entry.register_maps){Object.keys(entry.register_maps).forEach(n=>echarts.registerMap(n,entry.register_maps[n]));}
         const chart=echarts.init(box,null,{renderer:'svg',width:1600,height:900});
-        ecChart=chart;
+        st._wiseEchart=chart;
         chart.setOption(adapter.previewOption(entry,{isDetail:true,themeAdapter:themeAdapter,themeContext:{root:document.documentElement},typeSize:typeSize,animated:false}),true);
         /* 舞台不是 16:9(约 1178×729),只按宽缩放会把图钉在顶部;等比 contain 后平移居中 */
         const fitEc=()=>{
@@ -2395,6 +2413,18 @@ $('#extract-groups').innerHTML=EXTRACT_GROUPS.map(g=>`
       options.find(x=>x.getAttribute('aria-selected')==='true')?.focus();
     };
     box.append(trigger,menu);
+    /* 当前名称长短不同也不能推动底栏；按本组件最长样式名锁定按钮文字区宽度。 */
+    const widthProbe=document.createElement('span');
+    widthProbe.className='variant-current';
+    widthProbe.style.cssText='position:absolute;visibility:hidden;width:auto;white-space:nowrap;pointer-events:none';
+    box.appendChild(widthProbe);
+    let currentWidth=48;
+    vr.forEach(([,label])=>{
+      widthProbe.textContent=label;
+      currentWidth=Math.max(currentWidth,widthProbe.getBoundingClientRect().width);
+    });
+    widthProbe.remove();
+    current.style.width=Math.ceil(currentWidth)+'px';
   }
   /* 参考来源：卡片上不展示，浮层信息条右侧给跳链。ec 13 例用数据自带 source_url
      （文案与图册 radar-hex 同款："ECharts Radar 参考"）；atlas 沿用 vendor 数据里
@@ -2437,8 +2467,11 @@ $('#extract-groups').innerHTML=EXTRACT_GROUPS.map(g=>`
   async function loadCard(card,overrideSpec=''){
     const d=card.dataset;
     const token=++openToken;
-    updateLayerSource(null);
-    prepareFacade(card);
+    const retainCurrent=Boolean(overrideSpec&&layerStage.querySelector('.layer-live.is-ready'));
+    if(!retainCurrent){
+      updateLayerSource(null);
+      prepareFacade(card);
+    }
     const live=createLiveLayer();
     try{
       if(d.frame)await renderFrame(d.frame,live);
@@ -2449,13 +2482,14 @@ $('#extract-groups').innerHTML=EXTRACT_GROUPS.map(g=>`
         if(kind==='ec')await ensureEChartsAssets();
         else if(kind!=='icon'&&kind!=='tabler')await ensureComponentCore();
         assertVariantRefs();
-        updateLayerSource(spec);
-        if(token!==openToken)return;
+        if(token!==openToken){disposeLayerNode(live);return;}
         await renderSpec(spec,live);
+        if(token!==openToken){disposeLayerNode(live);return;}
+        updateLayerSource(spec);
       }
-      revealLive(live,token);
+      if(revealLive(live,token)&&retainCurrent)settleVariantSwap(live,token);
     }catch(err){
-      if(token!==openToken)return;
+      if(token!==openToken){disposeLayerNode(live);return;}
       live.innerHTML='<div class="placeholder"><span class="big">加载失败</span><span></span></div>';
       live.querySelector('span:last-child').textContent=err&&err.message||String(err);
       revealLive(live,token);
