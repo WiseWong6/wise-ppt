@@ -2,9 +2,11 @@
 
 机器权威是 `capabilities/components/routing-manifest.json`。生产顺序固定为：从 Content/Deck Plan 推导组件中立 BindingProfile → 对当前 variant 的全部 ready 空槽蓝图评估 slot → 为每个 slot 显式选择组件 → 核对 renderer、空间、容量、adapter 和依赖 → 写入 Render Plan v6。蓝图不能携带默认内容组件，前端画册筛选结果也不能进入生产链。
 
+> **relation_keys 口径(v122)**:每条组件在 `relations`(上游生成器多标签)之外带 `relation_keys` 字段——映射到 glm skill 的 23 关系细种统一词表(与 SKILL.md 表A/表B/第五章同一套;词表见 manifest 顶层 `relation_key_vocabulary`)。glm 逐页四步④按 `relation_keys` 过滤;23 细种每个至少 1 个组件；新增 `overlap/交叠`，Atlas Venn `.052/.053` 明确登记为 `[overlap,comparison]`。基础映射脚本是 `scripts/_relation_keys_once.py`；Catalog 可见标签由 `scripts/build_component_routing_data.py` 从生产 manifest 确定性生成，禁止再手写第二套关系。改过名的组件查 `aliases`(swimlane→swimlane-roadmap、weighted-arcs、constellation、terminal→terminal-box)。
+
 ## 单向生成链
 
-`scripts/generate_component_routing.py` 从 Atlas、ECharts 和 Paper Ink 原生 catalog 读取稳定 ID、浏览标签与来源元数据；55 个 Atlas 和 26 个旧原生组件的生产合同由同一物化器使用的 typed binding specs 提供。它不读取或改写 `gallery-manifest.json`，也不维护一份与真实 renderer 脱节的路由 profile。
+基础路由由 Atlas、ECharts 和 Paper Ink 原生 catalog 的稳定 ID、浏览标签与来源元数据组成；原 14 张“仅浏览”卡由 `scripts/promote_catalog_components.py` 确定性转成 15 个稳定 ID（横/竖时间轴拆开），同时核对 snippet、typed data contract 与 production readiness。该脚本不读取或改写 `gallery-manifest.json`。
 
 每个 production component 同时声明：
 
@@ -17,7 +19,7 @@
 
 输入族与视觉动作均由 catalog 的 canonical name、group、tasks、relations 和 renderer 确定性派生，保留原多标签作为 affordance，但不会产生第二套主分类。
 
-当前 routing 闭合为 107 个 production-ready ID：55 个 Atlas、13 个 ECharts、38 个 native（26 个旧原生组件、11 个语义原生组件和 1 个本地重构图片入口）以及 1 个 Codex Host 冻结图片入口。上游 Atlas snapshot 仍保留完整 61 条设计证据；以下 6 个页面脚手架或导航构件不作为内容组件进入路由：
+当前 routing 闭合为 123 个 production-ready ID：55 个 Atlas、13 个 ECharts、54 个 native（原 39 个 + 本轮转正 15 个）以及 1 个 Codex Host 冻结图片入口。上游 Atlas snapshot 仍保留完整 61 条设计证据；以下 6 个页面脚手架或导航构件不作为内容组件进入路由：
 
 - `atlas.001.cover` → `topology.leaf`
 - `atlas.005.toc-card` → `scaffold.agenda`
@@ -48,7 +50,7 @@ Paper Ink catalog 中的 `native.paper-ink.062.agenda-ink` 同样是页面导航
 
 ## 来源与导出
 
-- Native：`native.paper-ink.*`。语义组件与 26 个旧稳定 ID 均由无样例的结构化 renderer 生成；`capabilities/layouts/paper-ink-components.js` 仅保留历史设计证据。
+- Native：`native.paper-ink.*`。语义组件与原有稳定 ID 继续按各自 typed renderer 物化；本轮转正的 15 个固定几何组件以 `capabilities/layouts/paper-ink-components.js` 为正式 snippet 源，并在 routing manifest 中声明独立 data contract、frame 与容量。
 - ECharts：catalog 位于 `capabilities/vendors/echarts/catalog.json`，业务数据与 option 分离。
 - Atlas：catalog 位于 `capabilities/vendors/ppt-component-atlas/catalog-data.js`，保留精确稳定 ID 和设计证据；production 使用对应 typed renderer。
 - 图片：仅允许 `native.paper-ink.media.reconstructed-image` 和 `codex-host.paper-ink.media.generated-image`，生成完成后必须冻结为 deck 内本地文件。
@@ -56,6 +58,8 @@ Paper Ink catalog 中的 `native.paper-ink.062.agenda-ink` 同样是页面导航
 `scripts/export_component.py` 只接受精确 `component_id` 与已启用 theme。零候选、空间不兼容、容量越界、依赖缺失、adapter 不支持或 ID 未登记时均失败关闭。
 
 ```bash
-python3 -B scripts/generate_component_routing.py
-python3 -B scripts/generate-asset-taxonomy.py --check
+python3 -B scripts/promote_catalog_components.py --check
+python3 -B scripts/build_component_routing_data.py --check
+python3 -B scripts/audit_relationship_assets.py
+python3 -B references/build_catalog_thumbnails.py --check
 ```

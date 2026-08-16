@@ -4,7 +4,7 @@
   "name": "Wise PPT Layout Gallery",
   "description": "跨主题可查询的布局配方目录；paper-ink 样张提供当前已验证实现。",
   "protected_references": "capabilities/layouts/protected-references.json",
-  "recipe_count": 64,
+  "recipe_count": 68,
   "recipes": [
     {
       "recipe_id": "paper-ink.evidence.specimen-card",
@@ -16,7 +16,6 @@
         "prove"
       ],
       "relations": [
-        "focus",
         "evidence"
       ],
       "primitives": [
@@ -187,9 +186,7 @@
         "prove"
       ],
       "relations": [
-        "sequence",
-        "spatial",
-        "evidence"
+        "illustration"
       ],
       "primitives": [
         "scene-canvas",
@@ -358,7 +355,6 @@
         "prove"
       ],
       "relations": [
-        "focus",
         "evidence"
       ],
       "primitives": [
@@ -527,8 +523,6 @@
         "synthesize"
       ],
       "relations": [
-        "comparison",
-        "matrix",
         "evidence"
       ],
       "primitives": [
@@ -705,8 +699,7 @@
         "prove"
       ],
       "relations": [
-        "matrix",
-        "evidence"
+        "display"
       ],
       "primitives": [
         "equal-columns",
@@ -870,7 +863,6 @@
         "prove"
       ],
       "relations": [
-        "matrix",
         "evidence"
       ],
       "primitives": [
@@ -1047,8 +1039,7 @@
         "prove"
       ],
       "relations": [
-        "matrix",
-        "evidence"
+        "display"
       ],
       "primitives": [
         "logo-field",
@@ -1219,9 +1210,7 @@
         "explain"
       ],
       "relations": [
-        "hierarchy",
-        "matrix",
-        "evidence"
+        "illustration"
       ],
       "primitives": [
         "ui-frame",
@@ -1453,8 +1442,7 @@
         "sequence"
       ],
       "relations": [
-        "sequence",
-        "evidence"
+        "sequence"
       ],
       "primitives": [
         "screen-row",
@@ -1739,8 +1727,7 @@
         "prove"
       ],
       "relations": [
-        "sequence",
-        "comparison"
+        "sequence"
       ],
       "primitives": [
         "time-grid",
@@ -1862,7 +1849,7 @@
       ],
       "relations": [
         "sequence",
-        "matrix"
+        "parallel"
       ],
       "primitives": [
         "time-grid",
@@ -2105,8 +2092,7 @@
         "sequence"
       ],
       "relations": [
-        "sequence",
-        "hierarchy"
+        "sequence"
       ],
       "primitives": [
         "ascending-steps",
@@ -2223,8 +2209,7 @@
         "sequence"
       ],
       "relations": [
-        "sequence",
-        "spatial"
+        "sequence"
       ],
       "primitives": [
         "winding-path",
@@ -2341,8 +2326,6 @@
         "synthesize"
       ],
       "relations": [
-        "comparison",
-        "matrix",
         "evidence"
       ],
       "primitives": [
@@ -2515,7 +2498,6 @@
         "prove"
       ],
       "relations": [
-        "matrix",
         "evidence"
       ],
       "primitives": [
@@ -2693,8 +2675,7 @@
         "prove"
       ],
       "relations": [
-        "matrix",
-        "evidence"
+        "display"
       ],
       "primitives": [
         "profile-columns",
@@ -2861,8 +2842,7 @@
         "prove"
       ],
       "relations": [
-        "spatial",
-        "evidence"
+        "distribution"
       ],
       "primitives": [
         "map-region",
@@ -3037,8 +3017,7 @@
         "prove"
       ],
       "relations": [
-        "matrix",
-        "evidence"
+        "decomposition"
       ],
       "primitives": [
         "hero-number",
@@ -3208,9 +3187,7 @@
         "synthesize"
       ],
       "relations": [
-        "focus",
-        "matrix",
-        "evidence"
+        "metric"
       ],
       "primitives": [
         "kpi-band",
@@ -3377,8 +3354,7 @@
         "prove"
       ],
       "relations": [
-        "comparison",
-        "evidence"
+        "ranking"
       ],
       "primitives": [
         "ranked-bars",
@@ -3544,9 +3520,7 @@
       "roles": [
         "hook"
       ],
-      "relations": [
-        "focus"
-      ],
+      "relations": [],
       "primitives": [
         "asymmetric-type",
         "hero-mark"
@@ -3700,9 +3674,7 @@
       "roles": [
         "close"
       ],
-      "relations": [
-        "focus"
-      ],
+      "relations": [],
       "primitives": [
         "particle-field",
         "hero-type"
@@ -3857,9 +3829,7 @@
       "roles": [
         "close"
       ],
-      "relations": [
-        "focus"
-      ],
+      "relations": [],
       "primitives": [
         "centered-type"
       ],
@@ -4013,9 +3983,7 @@
       "roles": [
         "orient"
       ],
-      "relations": [
-        "hierarchy"
-      ],
+      "relations": [],
       "primitives": [
         "agenda-list",
         "section-index"
@@ -4174,9 +4142,7 @@
       "roles": [
         "orient"
       ],
-      "relations": [
-        "focus"
-      ],
+      "relations": [],
       "primitives": [
         "centered-type",
         "section-index"
@@ -4333,9 +4299,7 @@
         "act",
         "close"
       ],
-      "relations": [
-        "hierarchy"
-      ],
+      "relations": [],
       "primitives": [
         "contact-columns",
         "qr-code"
@@ -4824,8 +4788,7 @@
         "compare"
       ],
       "relations": [
-        "comparison",
-        "mapping"
+        "causal"
       ],
       "primitives": [
         "parallel-bands",
@@ -4991,8 +4954,7 @@
       ],
       "relations": [
         "comparison",
-        "matrix",
-        "evidence"
+        "matrix"
       ],
       "primitives": [
         "before-after-rows",
@@ -5163,9 +5125,7 @@
         "compare"
       ],
       "relations": [
-        "comparison",
-        "mapping",
-        "hierarchy"
+        "mapping"
       ],
       "primitives": [
         "dual-pyramid",
@@ -5335,7 +5295,7 @@
       ],
       "relations": [
         "comparison",
-        "sequence"
+        "flow"
       ],
       "primitives": [
         "before-after-bands",
@@ -5500,7 +5460,6 @@
         "explain"
       ],
       "relations": [
-        "decomposition",
         "matrix"
       ],
       "primitives": [
@@ -5663,8 +5622,7 @@
         "prove"
       ],
       "relations": [
-        "decomposition",
-        "hierarchy"
+        "decomposition"
       ],
       "primitives": [
         "asymmetric-split",
@@ -5830,8 +5788,7 @@
         "explain"
       ],
       "relations": [
-        "decomposition",
-        "matrix"
+        "decomposition"
       ],
       "primitives": [
         "equal-columns",
@@ -5996,8 +5953,7 @@
         "explain"
       ],
       "relations": [
-        "decomposition",
-        "matrix"
+        "decomposition"
       ],
       "primitives": [
         "icon-grid",
@@ -6162,8 +6118,7 @@
         "explain"
       ],
       "relations": [
-        "decomposition",
-        "spatial"
+        "decomposition"
       ],
       "primitives": [
         "radial-spokes",
@@ -6326,8 +6281,7 @@
       ],
       "relations": [
         "focus",
-        "spatial",
-        "evidence"
+        "decomposition"
       ],
       "primitives": [
         "hero-object",
@@ -6499,7 +6453,6 @@
       ],
       "relations": [
         "decomposition",
-        "spatial",
         "network"
       ],
       "primitives": [
@@ -6667,7 +6620,6 @@
         "explain"
       ],
       "relations": [
-        "hierarchy",
         "nesting"
       ],
       "primitives": [
@@ -6833,7 +6785,6 @@
         "explain"
       ],
       "relations": [
-        "hierarchy",
         "nesting"
       ],
       "primitives": [
@@ -7328,8 +7279,7 @@
         "sequence"
       ],
       "relations": [
-        "flow",
-        "sequence"
+        "flow"
       ],
       "primitives": [
         "pipeline",
@@ -7496,8 +7446,7 @@
         "sequence"
       ],
       "relations": [
-        "flow",
-        "sequence"
+        "flow"
       ],
       "primitives": [
         "known-endpoints",
@@ -7662,7 +7611,6 @@
       ],
       "relations": [
         "flow",
-        "sequence",
         "comparison"
       ],
       "primitives": [
@@ -7829,8 +7777,8 @@
         "decide"
       ],
       "relations": [
-        "flow",
-        "comparison"
+        "parallel",
+        "sequence"
       ],
       "primitives": [
         "dual-panel",
@@ -7999,8 +7947,7 @@
         "sequence"
       ],
       "relations": [
-        "cycle",
-        "flow"
+        "cycle"
       ],
       "primitives": [
         "cycle-ring",
@@ -8168,8 +8115,7 @@
         "sequence"
       ],
       "relations": [
-        "cycle",
-        "sequence"
+        "cycle"
       ],
       "primitives": [
         "serpentine-path",
@@ -8334,9 +8280,7 @@
         "prove"
       ],
       "relations": [
-        "sequence",
-        "cycle",
-        "evidence"
+        "sequence"
       ],
       "primitives": [
         "journey-curve",
@@ -8502,8 +8446,7 @@
         "synthesize"
       ],
       "relations": [
-        "matrix",
-        "sequence"
+        "matrix"
       ],
       "primitives": [
         "stage-chain",
@@ -8674,9 +8617,7 @@
         "prove"
       ],
       "relations": [
-        "flow",
-        "matrix",
-        "evidence"
+        "causal"
       ],
       "primitives": [
         "three-column-flow",
@@ -8847,9 +8788,7 @@
         "prove"
       ],
       "relations": [
-        "flow",
-        "comparison",
-        "evidence"
+        "causal"
       ],
       "primitives": [
         "asymmetric-split",
@@ -9023,9 +8962,7 @@
         "prove"
       ],
       "relations": [
-        "matrix",
-        "comparison",
-        "evidence"
+        "matrix"
       ],
       "primitives": [
         "column-grid",
@@ -9196,9 +9133,7 @@
         "prove"
       ],
       "relations": [
-        "network",
-        "mapping",
-        "evidence"
+        "network"
       ],
       "primitives": [
         "weighted-arc",
@@ -9366,9 +9301,7 @@
         "prove"
       ],
       "relations": [
-        "network",
-        "mapping",
-        "evidence"
+        "mapping"
       ],
       "primitives": [
         "constellation-network",
@@ -9534,9 +9467,7 @@
         "hook",
         "orient"
       ],
-      "relations": [
-        "focus"
-      ],
+      "relations": [],
       "primitives": [
         "particle-field",
         "hero-symbol"
@@ -9690,9 +9621,7 @@
         "hook",
         "close"
       ],
-      "relations": [
-        "focus"
-      ],
+      "relations": [],
       "primitives": [
         "centered-type",
         "quote-mark"
@@ -9849,8 +9778,7 @@
         "synthesize"
       ],
       "relations": [
-        "convergence",
-        "flow"
+        "convergence"
       ],
       "primitives": [
         "convergence-stream",
@@ -10017,9 +9945,7 @@
         "prove"
       ],
       "relations": [
-        "funnel",
-        "flow",
-        "evidence"
+        "funnel"
       ],
       "primitives": [
         "funnel-shape",
@@ -10510,6 +10436,754 @@
           ]
         }
       }
+    },
+    {
+      "recipe_id": "paper-ink.connection.overlap-venn",
+      "display_code": "Q1",
+      "name": "交叠集合",
+      "family": "连接",
+      "description": "用两个或三个集合的共同区域表达必须同时成立的条件",
+      "roles": [
+        "explain",
+        "synthesize"
+      ],
+      "relations": [
+        "overlap"
+      ],
+      "primitives": [
+        "overlap-set",
+        "shared-intersection"
+      ],
+      "reading_order": [
+        "overlap",
+        "support",
+        "takeaway"
+      ],
+      "structure_contract": {
+        "region_count": 3,
+        "required_slot_ids": [
+          "overlap"
+        ],
+        "core_primitives": [
+          "set-relation",
+          "focus-field"
+        ]
+      },
+      "structure_fingerprint": "sha256:b31e16d27be1ea5d46035851e5e01b31adfb68c25b306a956e867fe90b2f8f5f",
+      "slots": [
+        {
+          "slot_id": "overlap",
+          "purpose": "集合及其共同区域",
+          "required": true,
+          "visual_role": "primary",
+          "min_items": 2,
+          "max_items": 3,
+          "count_unit": "set",
+          "allowed_renderer_kinds": [
+            "native-html"
+          ],
+          "allowed_component_sources": [
+            "ppt-component-atlas"
+          ],
+          "default_renderer": {
+            "renderer_kind": "native-html",
+            "component_source": "ppt-component-atlas",
+            "component_id": "atlas.053.venn.three"
+          },
+          "space_contract": {
+            "canvas_width": 1920,
+            "canvas_height": 1080,
+            "width": 1100,
+            "height": 620,
+            "aspect_ratio": 1.7742,
+            "space_type": "standard"
+          },
+          "recommended_component_ids": [
+            "atlas.052.venn.double",
+            "atlas.053.venn.three"
+          ]
+        },
+        {
+          "slot_id": "support",
+          "purpose": "集合解释或旁注",
+          "required": false,
+          "visual_role": "support",
+          "min_items": 0,
+          "max_items": 3,
+          "count_unit": "binding",
+          "allowed_renderer_kinds": [
+            "typography"
+          ],
+          "allowed_component_sources": [
+            "native"
+          ],
+          "default_renderer": {
+            "renderer_kind": "typography",
+            "component_source": "native",
+            "component_id": "native.paper-ink.connection.overlap-venn.support"
+          }
+        },
+        {
+          "slot_id": "takeaway",
+          "purpose": "页面一句话结论",
+          "required": false,
+          "visual_role": "support",
+          "min_items": 0,
+          "max_items": 1,
+          "count_unit": "binding",
+          "allowed_renderer_kinds": [
+            "typography"
+          ],
+          "allowed_component_sources": [
+            "native"
+          ],
+          "default_renderer": {
+            "renderer_kind": "typography",
+            "component_source": "native",
+            "component_id": "native.paper-ink.connection.overlap-venn.takeaway"
+          }
+        }
+      ],
+      "examples": {
+        "general": "gallery/paper-ink/general/frames/layout-q1.html",
+        "ai": "gallery/paper-ink/ai/frames/layout-q1.html"
+      },
+      "selection_notes": "两个或三个集合需要强调共同区域，而不是简单左右对比时使用。",
+      "anti_patterns": [
+        "不要把没有共同元素的并列对象画成交叠",
+        "超过三个集合时不要继续叠圆"
+      ],
+      "shape": [
+        "居中聚焦"
+      ],
+      "expression_profile": {
+        "contract_version": 1,
+        "page_modes": [
+          "content"
+        ],
+        "question_affinities": [
+          "what",
+          "why"
+        ],
+        "topology": {
+          "weights": [
+            "single"
+          ],
+          "depths": [
+            "flat"
+          ],
+          "flows": [
+            "radial"
+          ]
+        },
+        "conclusion_modes": [
+          "bottom-statement"
+        ],
+        "primary_units": {
+          "min": 2,
+          "max": 3
+        },
+        "primary_forms": [
+          "diagram"
+        ],
+        "enhancements": [
+          "annotation"
+        ],
+        "logic_contract": {
+          "primary": "overlap",
+          "secondary": [
+            "comparison"
+          ]
+        }
+      }
+    },
+    {
+      "recipe_id": "paper-ink.containment.part-whole-evidence",
+      "display_code": "Q2",
+      "name": "整体构成 + 分项证据",
+      "family": "包含",
+      "description": "左侧给出整体构成，右侧逐项补充比例背后的证据",
+      "roles": [
+        "explain",
+        "prove"
+      ],
+      "relations": [
+        "part-whole",
+        "evidence"
+      ],
+      "primitives": [
+        "radial-partition",
+        "content-frame"
+      ],
+      "reading_order": [
+        "whole",
+        "parts",
+        "takeaway"
+      ],
+      "structure_contract": {
+        "region_count": 3,
+        "required_slot_ids": [
+          "whole",
+          "parts"
+        ],
+        "core_primitives": [
+          "bilateral-split",
+          "radial-partition",
+          "evidence-annotation"
+        ]
+      },
+      "structure_fingerprint": "sha256:db971ba00a3d99407c2b72dc470d4be095eaeaa55b0e6dec767bc97a3a263df7",
+      "slots": [
+        {
+          "slot_id": "whole",
+          "purpose": "整体及各部分占比",
+          "required": true,
+          "visual_role": "primary",
+          "min_items": 2,
+          "max_items": 8,
+          "count_unit": "data-point",
+          "allowed_renderer_kinds": [
+            "echarts"
+          ],
+          "allowed_component_sources": [
+            "echarts"
+          ],
+          "default_renderer": {
+            "renderer_kind": "echarts",
+            "component_source": "echarts",
+            "component_id": "echarts.pie-access-source"
+          },
+          "space_contract": {
+            "canvas_width": 1920,
+            "canvas_height": 1080,
+            "width": 620,
+            "height": 560,
+            "aspect_ratio": 1.1071,
+            "space_type": "standard"
+          },
+          "recommended_component_ids": [
+            "echarts.pie-access-source"
+          ]
+        },
+        {
+          "slot_id": "parts",
+          "purpose": "分项说明与可核查证据",
+          "required": true,
+          "visual_role": "support",
+          "min_items": 2,
+          "max_items": 8,
+          "count_unit": "evidence-item",
+          "allowed_renderer_kinds": [
+            "native-html"
+          ],
+          "allowed_component_sources": [
+            "native"
+          ],
+          "default_renderer": {
+            "renderer_kind": "native-html",
+            "component_source": "native",
+            "component_id": "native.paper-ink.semantic.evidence-panel"
+          },
+          "space_contract": {
+            "canvas_width": 1920,
+            "canvas_height": 1080,
+            "width": 820,
+            "height": 560,
+            "aspect_ratio": 1.4643,
+            "space_type": "standard"
+          },
+          "recommended_component_ids": [
+            "native.paper-ink.semantic.evidence-panel"
+          ]
+        },
+        {
+          "slot_id": "takeaway",
+          "purpose": "页面一句话结论",
+          "required": false,
+          "visual_role": "support",
+          "min_items": 0,
+          "max_items": 1,
+          "count_unit": "binding",
+          "allowed_renderer_kinds": [
+            "typography"
+          ],
+          "allowed_component_sources": [
+            "native"
+          ],
+          "default_renderer": {
+            "renderer_kind": "typography",
+            "component_source": "native",
+            "component_id": "native.paper-ink.containment.part-whole-evidence.takeaway"
+          }
+        }
+      ],
+      "examples": {
+        "general": "gallery/paper-ink/general/frames/layout-q2.html",
+        "ai": "gallery/paper-ink/ai/frames/layout-q2.html"
+      },
+      "selection_notes": "既要说明整体由什么构成，又要逐项给出数据来源或证据时使用。",
+      "anti_patterns": [
+        "各部分不能组成一个整体时不要使用占比图",
+        "右栏不要重复左侧百分比而不提供新证据"
+      ],
+      "shape": [
+        "左右分栏"
+      ],
+      "expression_profile": {
+        "contract_version": 1,
+        "page_modes": [
+          "content"
+        ],
+        "question_affinities": [
+          "what",
+          "why",
+          "result"
+        ],
+        "topology": {
+          "weights": [
+            "dominant-support"
+          ],
+          "depths": [
+            "flat"
+          ],
+          "flows": [
+            "parallel"
+          ]
+        },
+        "conclusion_modes": [
+          "bottom-statement"
+        ],
+        "primary_units": {
+          "min": 2,
+          "max": 8
+        },
+        "primary_forms": [
+          "chart",
+          "evidence"
+        ],
+        "enhancements": [
+          "evidence",
+          "annotation"
+        ],
+        "logic_contract": {
+          "primary": "part-whole",
+          "secondary": [
+            "evidence",
+            "decomposition"
+          ]
+        }
+      }
+    },
+    {
+      "recipe_id": "paper-ink.comparison.stacked-process-pair",
+      "display_code": "Q3",
+      "name": "上下双槽流程对照",
+      "family": "比较",
+      "description": "把两条独立流程放在上下等分槽位中逐项对照",
+      "roles": [
+        "compare",
+        "sequence"
+      ],
+      "relations": [
+        "comparison",
+        "flow"
+      ],
+      "primitives": [
+        "parallel-tracks",
+        "linear-sequence"
+      ],
+      "reading_order": [
+        "baseline",
+        "traced",
+        "takeaway"
+      ],
+      "structure_contract": {
+        "region_count": 3,
+        "required_slot_ids": [
+          "baseline",
+          "traced"
+        ],
+        "core_primitives": [
+          "parallel-tracks",
+          "linear-sequence"
+        ]
+      },
+      "structure_fingerprint": "sha256:cecc5379f2d4f0e1f000e179540167d57908c50876f0809071b3fa0dac2892b3",
+      "slots": [
+        {
+          "slot_id": "baseline",
+          "purpose": "第一条流程",
+          "required": true,
+          "visual_role": "primary",
+          "min_items": 2,
+          "max_items": 8,
+          "count_unit": "step",
+          "allowed_renderer_kinds": [
+            "native-html"
+          ],
+          "allowed_component_sources": [
+            "native"
+          ],
+          "default_renderer": {
+            "renderer_kind": "native-html",
+            "component_source": "native",
+            "component_id": "native.paper-ink.semantic.process-strip"
+          },
+          "space_contract": {
+            "canvas_width": 1920,
+            "canvas_height": 1080,
+            "width": 1500,
+            "height": 260,
+            "aspect_ratio": 5.7692,
+            "space_type": "wide"
+          },
+          "recommended_component_ids": [
+            "native.paper-ink.semantic.process-strip"
+          ]
+        },
+        {
+          "slot_id": "traced",
+          "purpose": "第二条流程",
+          "required": true,
+          "visual_role": "primary",
+          "min_items": 2,
+          "max_items": 8,
+          "count_unit": "step",
+          "allowed_renderer_kinds": [
+            "native-html"
+          ],
+          "allowed_component_sources": [
+            "native"
+          ],
+          "default_renderer": {
+            "renderer_kind": "native-html",
+            "component_source": "native",
+            "component_id": "native.paper-ink.semantic.process-strip"
+          },
+          "space_contract": {
+            "canvas_width": 1920,
+            "canvas_height": 1080,
+            "width": 1500,
+            "height": 260,
+            "aspect_ratio": 5.7692,
+            "space_type": "wide"
+          },
+          "recommended_component_ids": [
+            "native.paper-ink.semantic.process-strip"
+          ]
+        },
+        {
+          "slot_id": "takeaway",
+          "purpose": "页面一句话结论",
+          "required": false,
+          "visual_role": "support",
+          "min_items": 0,
+          "max_items": 1,
+          "count_unit": "binding",
+          "allowed_renderer_kinds": [
+            "typography"
+          ],
+          "allowed_component_sources": [
+            "native"
+          ],
+          "default_renderer": {
+            "renderer_kind": "typography",
+            "component_source": "native",
+            "component_id": "native.paper-ink.comparison.stacked-process-pair.takeaway"
+          }
+        }
+      ],
+      "examples": {
+        "general": "gallery/paper-ink/general/frames/layout-q3.html",
+        "ai": "gallery/paper-ink/ai/frames/layout-q3.html"
+      },
+      "selection_notes": "两条流程都需要完整保留，并按相同阅读方向比较时使用。",
+      "anti_patterns": [
+        "只有一条流程时不要为了填满页面复制一条",
+        "两条流程方向不同或无法对位时不要强行上下等分"
+      ],
+      "shape": [
+        "横带"
+      ],
+      "expression_profile": {
+        "contract_version": 1,
+        "page_modes": [
+          "content"
+        ],
+        "question_affinities": [
+          "how",
+          "why"
+        ],
+        "topology": {
+          "weights": [
+            "equal"
+          ],
+          "depths": [
+            "flat"
+          ],
+          "flows": [
+            "parallel"
+          ]
+        },
+        "conclusion_modes": [
+          "bottom-statement"
+        ],
+        "primary_units": {
+          "min": 2,
+          "max": 8
+        },
+        "primary_forms": [
+          "diagram"
+        ],
+        "enhancements": [
+          "annotation"
+        ],
+        "logic_contract": {
+          "primary": "comparison",
+          "secondary": [
+            "flow",
+            "sequence"
+          ]
+        }
+      }
+    },
+    {
+      "recipe_id": "paper-ink.evidence.panel-grid-2x2",
+      "display_code": "Q4",
+      "name": "四组证据卡阵",
+      "family": "证据",
+      "description": "四个可独立换数据的证据槽组成二乘二整页网格",
+      "roles": [
+        "prove"
+      ],
+      "relations": [
+        "evidence",
+        "display"
+      ],
+      "primitives": [
+        "matrix-field",
+        "content-frame"
+      ],
+      "reading_order": [
+        "evidence-a",
+        "evidence-b",
+        "evidence-c",
+        "evidence-d",
+        "takeaway"
+      ],
+      "structure_contract": {
+        "region_count": 5,
+        "required_slot_ids": [
+          "evidence-a",
+          "evidence-b",
+          "evidence-c",
+          "evidence-d"
+        ],
+        "core_primitives": [
+          "matrix-field",
+          "content-frame"
+        ]
+      },
+      "structure_fingerprint": "sha256:17bc4dff0022f1e4999eadeae5770eb8a78173879a5c437e6281bb65495b3d02",
+      "slots": [
+        {
+          "slot_id": "evidence-a",
+          "purpose": "左上证据组",
+          "required": true,
+          "visual_role": "primary",
+          "min_items": 2,
+          "max_items": 4,
+          "count_unit": "evidence-item",
+          "allowed_renderer_kinds": [
+            "native-html"
+          ],
+          "allowed_component_sources": [
+            "native"
+          ],
+          "default_renderer": {
+            "renderer_kind": "native-html",
+            "component_source": "native",
+            "component_id": "native.paper-ink.semantic.evidence-panel"
+          },
+          "space_contract": {
+            "canvas_width": 1920,
+            "canvas_height": 1080,
+            "width": 720,
+            "height": 300,
+            "aspect_ratio": 2.4,
+            "space_type": "wide"
+          },
+          "recommended_component_ids": [
+            "native.paper-ink.semantic.evidence-panel"
+          ]
+        },
+        {
+          "slot_id": "evidence-b",
+          "purpose": "右上证据组",
+          "required": true,
+          "visual_role": "primary",
+          "min_items": 2,
+          "max_items": 4,
+          "count_unit": "evidence-item",
+          "allowed_renderer_kinds": [
+            "native-html"
+          ],
+          "allowed_component_sources": [
+            "native"
+          ],
+          "default_renderer": {
+            "renderer_kind": "native-html",
+            "component_source": "native",
+            "component_id": "native.paper-ink.semantic.evidence-panel"
+          },
+          "space_contract": {
+            "canvas_width": 1920,
+            "canvas_height": 1080,
+            "width": 720,
+            "height": 300,
+            "aspect_ratio": 2.4,
+            "space_type": "wide"
+          },
+          "recommended_component_ids": [
+            "native.paper-ink.semantic.evidence-panel"
+          ]
+        },
+        {
+          "slot_id": "evidence-c",
+          "purpose": "左下证据组",
+          "required": true,
+          "visual_role": "primary",
+          "min_items": 2,
+          "max_items": 4,
+          "count_unit": "evidence-item",
+          "allowed_renderer_kinds": [
+            "native-html"
+          ],
+          "allowed_component_sources": [
+            "native"
+          ],
+          "default_renderer": {
+            "renderer_kind": "native-html",
+            "component_source": "native",
+            "component_id": "native.paper-ink.semantic.evidence-panel"
+          },
+          "space_contract": {
+            "canvas_width": 1920,
+            "canvas_height": 1080,
+            "width": 720,
+            "height": 300,
+            "aspect_ratio": 2.4,
+            "space_type": "wide"
+          },
+          "recommended_component_ids": [
+            "native.paper-ink.semantic.evidence-panel"
+          ]
+        },
+        {
+          "slot_id": "evidence-d",
+          "purpose": "右下证据组",
+          "required": true,
+          "visual_role": "primary",
+          "min_items": 2,
+          "max_items": 4,
+          "count_unit": "evidence-item",
+          "allowed_renderer_kinds": [
+            "native-html"
+          ],
+          "allowed_component_sources": [
+            "native"
+          ],
+          "default_renderer": {
+            "renderer_kind": "native-html",
+            "component_source": "native",
+            "component_id": "native.paper-ink.semantic.evidence-panel"
+          },
+          "space_contract": {
+            "canvas_width": 1920,
+            "canvas_height": 1080,
+            "width": 720,
+            "height": 300,
+            "aspect_ratio": 2.4,
+            "space_type": "wide"
+          },
+          "recommended_component_ids": [
+            "native.paper-ink.semantic.evidence-panel"
+          ]
+        },
+        {
+          "slot_id": "takeaway",
+          "purpose": "页面一句话结论",
+          "required": false,
+          "visual_role": "support",
+          "min_items": 0,
+          "max_items": 1,
+          "count_unit": "binding",
+          "allowed_renderer_kinds": [
+            "typography"
+          ],
+          "allowed_component_sources": [
+            "native"
+          ],
+          "default_renderer": {
+            "renderer_kind": "typography",
+            "component_source": "native",
+            "component_id": "native.paper-ink.evidence.panel-grid-2x2.takeaway"
+          }
+        }
+      ],
+      "examples": {
+        "general": "gallery/paper-ink/general/frames/layout-q4.html",
+        "ai": "gallery/paper-ink/ai/frames/layout-q4.html"
+      },
+      "selection_notes": "四类证据必须各自换数据、各自验收时使用整页网格。",
+      "anti_patterns": [
+        "四格只是同一组件内部重复单元时仍应归单区",
+        "证据不足四组时不要用空卡凑数"
+      ],
+      "shape": [
+        "网格"
+      ],
+      "expression_profile": {
+        "contract_version": 1,
+        "page_modes": [
+          "content"
+        ],
+        "question_affinities": [
+          "what",
+          "result"
+        ],
+        "topology": {
+          "weights": [
+            "equal"
+          ],
+          "depths": [
+            "flat"
+          ],
+          "flows": [
+            "matrix"
+          ]
+        },
+        "conclusion_modes": [
+          "bottom-statement"
+        ],
+        "primary_units": {
+          "min": 4,
+          "max": 4
+        },
+        "primary_forms": [
+          "evidence"
+        ],
+        "enhancements": [
+          "evidence",
+          "annotation"
+        ],
+        "logic_contract": {
+          "primary": "evidence",
+          "secondary": [
+            "display"
+          ]
+        }
+      }
     }
   ],
   "shape_vocabulary": [
@@ -10527,7 +11201,7 @@
   ],
   "page_expression_contract": {
     "contract_version": 1,
-    "profile_count": 64,
+    "profile_count": 68,
     "vocabulary": {
       "question_intents": [
         "why",
@@ -10598,6 +11272,7 @@
         "evidence",
         "decomposition",
         "mapping",
+        "overlap",
         "nesting",
         "parallel",
         "part-whole"

@@ -39,7 +39,7 @@
     },
     "component_routing": {
       "path": "capabilities/components/routing-manifest.json",
-      "sha256": "sha256:1a7a8a73c50a05136e62aa2d1587b02e6866d5fcb4acc749000e01b9b5d579e7"
+      "sha256": "sha256:957cfa738ff5bf2afad253d1262c640a845707a8dea190d6f66671f4909a4b4f"
     },
     "scaffold_registry": {
       "path": "capabilities/layouts/scaffold-registry.json",
@@ -49,7 +49,7 @@
   "layout_count": 14,
   "blueprint_count": 124,
   "preset_count": 62,
-  "component_count": 108,
+  "component_count": 123,
   "scaffold_count": 5,
   "retired_components": [
     {
@@ -18536,6 +18536,561 @@
         "min_items": 1,
         "max_items": 4,
         "unit": "message"
+      },
+      "dependencies": [
+        "paper-ink-components"
+      ]
+    },
+    {
+      "component_id": "native.paper-ink.089.metric-strip",
+      "name": "自适应指标横带",
+      "source": "native",
+      "group": "metric-data",
+      "group_label": "指标与数据",
+      "renderer_kinds": [
+        "native-html"
+      ],
+      "description": "Two to four bound metrics in one adaptive horizontal band.",
+      "semantic_contract": {
+        "input_family": "quantitative-series",
+        "role": "primary-proof",
+        "visual_action": "quantify",
+        "capacity": {
+          "mode": "range",
+          "unit": "metric",
+          "min": 2,
+          "max": 4
+        },
+        "derivation": "explicit-data-bound-v1"
+      },
+      "space_requirements": {
+        "min_width": 680,
+        "min_height": 140,
+        "min_aspect_ratio": 3.41,
+        "max_aspect_ratio": 10.0
+      },
+      "capacity": {
+        "min_items": 2,
+        "max_items": 4,
+        "unit": "metric"
+      },
+      "dependencies": [
+        "paper-ink-components"
+      ]
+    },
+    {
+      "component_id": "native.paper-ink.090.scenario-column",
+      "name": "单场景纵列（K4 固定版）",
+      "source": "native",
+      "group": "flow-temporal",
+      "group_label": "流程与时序",
+      "renderer_kinds": [
+        "svg"
+      ],
+      "description": "One fixed K4 scenario column binding pain, three fix steps and rollout result.",
+      "semantic_contract": {
+        "input_family": "temporal-series",
+        "role": "primary-proof",
+        "visual_action": "sequence",
+        "capacity": {
+          "mode": "fixed",
+          "unit": "scenario",
+          "min": 1,
+          "max": 1
+        },
+        "derivation": "explicit-data-bound-v1"
+      },
+      "space_requirements": {
+        "min_width": 350,
+        "min_height": 450,
+        "min_aspect_ratio": 0.45,
+        "max_aspect_ratio": 1.72
+      },
+      "capacity": {
+        "min_items": 1,
+        "max_items": 1,
+        "unit": "scenario"
+      },
+      "dependencies": [
+        "paper-ink-components"
+      ]
+    },
+    {
+      "component_id": "native.paper-ink.093.infra-strip",
+      "name": "自适应基础设施横带",
+      "source": "native",
+      "group": "document-text",
+      "group_label": "文档与文本",
+      "renderer_kinds": [
+        "svg"
+      ],
+      "description": "Three to six infrastructure capabilities in one complete platform band.",
+      "semantic_contract": {
+        "input_family": "hierarchy",
+        "role": "primary-proof",
+        "visual_action": "show-hierarchy",
+        "capacity": {
+          "mode": "range",
+          "unit": "item",
+          "min": 3,
+          "max": 6
+        },
+        "derivation": "explicit-data-bound-v1"
+      },
+      "space_requirements": {
+        "min_width": 680,
+        "min_height": 170,
+        "min_aspect_ratio": 1.84,
+        "max_aspect_ratio": 8.88
+      },
+      "capacity": {
+        "min_items": 3,
+        "max_items": 6,
+        "unit": "item"
+      },
+      "dependencies": [
+        "paper-ink-components"
+      ]
+    },
+    {
+      "component_id": "native.paper-ink.094.mapping-arc-network",
+      "name": "映射弧线网",
+      "source": "native",
+      "group": "relation-mapping",
+      "group_label": "关系与映射",
+      "renderer_kinds": [
+        "svg"
+      ],
+      "description": "A two-sided mapping network with primary and shared curved links.",
+      "semantic_contract": {
+        "input_family": "network-flow",
+        "role": "primary-proof",
+        "visual_action": "show-flow",
+        "capacity": {
+          "mode": "range",
+          "unit": "node",
+          "min": 4,
+          "max": 12
+        },
+        "derivation": "explicit-data-bound-v1"
+      },
+      "space_requirements": {
+        "min_width": 720,
+        "min_height": 400,
+        "min_aspect_ratio": 0.81,
+        "max_aspect_ratio": 3.91
+      },
+      "capacity": {
+        "min_items": 4,
+        "max_items": 12,
+        "unit": "node"
+      },
+      "dependencies": [
+        "paper-ink-components"
+      ]
+    },
+    {
+      "component_id": "native.paper-ink.095.weighted-arc-web",
+      "name": "权重弧网",
+      "source": "native",
+      "group": "relation-mapping",
+      "group_label": "关系与映射",
+      "renderer_kinds": [
+        "svg"
+      ],
+      "description": "A fixed-geometry node row with weighted relationship arcs.",
+      "semantic_contract": {
+        "input_family": "causal-network",
+        "role": "primary-proof",
+        "visual_action": "connect-causality",
+        "capacity": {
+          "mode": "range",
+          "unit": "node",
+          "min": 4,
+          "max": 8
+        },
+        "derivation": "explicit-data-bound-v1"
+      },
+      "space_requirements": {
+        "min_width": 1160,
+        "min_height": 650,
+        "min_aspect_ratio": 0.81,
+        "max_aspect_ratio": 3.91
+      },
+      "capacity": {
+        "min_items": 4,
+        "max_items": 8,
+        "unit": "node"
+      },
+      "dependencies": [
+        "paper-ink-components"
+      ]
+    },
+    {
+      "component_id": "native.paper-ink.096.three-way-radial",
+      "name": "三向放射图",
+      "source": "native",
+      "group": "hierarchy-structure",
+      "group_label": "层级与结构",
+      "renderer_kinds": [
+        "svg"
+      ],
+      "description": "A central statement decomposed into exactly three radial branches.",
+      "semantic_contract": {
+        "input_family": "hierarchy",
+        "role": "primary-proof",
+        "visual_action": "show-hierarchy",
+        "capacity": {
+          "mode": "fixed",
+          "unit": "branch",
+          "min": 3,
+          "max": 3
+        },
+        "derivation": "explicit-data-bound-v1"
+      },
+      "space_requirements": {
+        "min_width": 940,
+        "min_height": 530,
+        "min_aspect_ratio": 0.81,
+        "max_aspect_ratio": 3.91
+      },
+      "capacity": {
+        "min_items": 3,
+        "max_items": 3,
+        "unit": "branch"
+      },
+      "dependencies": [
+        "paper-ink-components"
+      ]
+    },
+    {
+      "component_id": "native.paper-ink.097.nested-frames",
+      "name": "嵌套框",
+      "source": "native",
+      "group": "hierarchy-structure",
+      "group_label": "层级与结构",
+      "renderer_kinds": [
+        "svg"
+      ],
+      "description": "Three to five nested frames for containment and zoom levels.",
+      "semantic_contract": {
+        "input_family": "hierarchy",
+        "role": "primary-proof",
+        "visual_action": "show-hierarchy",
+        "capacity": {
+          "mode": "range",
+          "unit": "layer",
+          "min": 3,
+          "max": 5
+        },
+        "derivation": "explicit-data-bound-v1"
+      },
+      "space_requirements": {
+        "min_width": 960,
+        "min_height": 540,
+        "min_aspect_ratio": 0.81,
+        "max_aspect_ratio": 3.91
+      },
+      "capacity": {
+        "min_items": 3,
+        "max_items": 5,
+        "unit": "layer"
+      },
+      "dependencies": [
+        "paper-ink-components"
+      ]
+    },
+    {
+      "component_id": "native.paper-ink.098.ranking-bars",
+      "name": "排行柱图",
+      "source": "native",
+      "group": "metric-data",
+      "group_label": "指标与数据",
+      "renderer_kinds": [
+        "svg"
+      ],
+      "description": "Three to eight ranked items rendered as specimen bars.",
+      "semantic_contract": {
+        "input_family": "quantitative-series",
+        "role": "primary-proof",
+        "visual_action": "show-distribution",
+        "capacity": {
+          "mode": "range",
+          "unit": "ranked-item",
+          "min": 3,
+          "max": 8
+        },
+        "derivation": "explicit-data-bound-v1"
+      },
+      "space_requirements": {
+        "min_width": 630,
+        "min_height": 360,
+        "min_aspect_ratio": 0.81,
+        "max_aspect_ratio": 3.91
+      },
+      "capacity": {
+        "min_items": 3,
+        "max_items": 8,
+        "unit": "ranked-item"
+      },
+      "dependencies": [
+        "paper-ink-components"
+      ]
+    },
+    {
+      "component_id": "native.paper-ink.099.serpentine-loop",
+      "name": "蛇形回环",
+      "source": "native",
+      "group": "flow-temporal",
+      "group_label": "流程与时序",
+      "renderer_kinds": [
+        "svg"
+      ],
+      "description": "A five-to-eight-step serpentine closed loop.",
+      "semantic_contract": {
+        "input_family": "temporal-series",
+        "role": "primary-proof",
+        "visual_action": "cycle",
+        "capacity": {
+          "mode": "range",
+          "unit": "step",
+          "min": 5,
+          "max": 8
+        },
+        "derivation": "explicit-data-bound-v1"
+      },
+      "space_requirements": {
+        "min_width": 660,
+        "min_height": 370,
+        "min_aspect_ratio": 0.81,
+        "max_aspect_ratio": 3.91
+      },
+      "capacity": {
+        "min_items": 5,
+        "max_items": 8,
+        "unit": "step"
+      },
+      "dependencies": [
+        "paper-ink-components"
+      ]
+    },
+    {
+      "component_id": "native.paper-ink.100.cycle-ring",
+      "name": "环形循环",
+      "source": "native",
+      "group": "flow-temporal",
+      "group_label": "流程与时序",
+      "renderer_kinds": [
+        "svg"
+      ],
+      "description": "A three-to-six-stage circular governance loop with callouts.",
+      "semantic_contract": {
+        "input_family": "temporal-series",
+        "role": "primary-proof",
+        "visual_action": "cycle",
+        "capacity": {
+          "mode": "range",
+          "unit": "step",
+          "min": 3,
+          "max": 6
+        },
+        "derivation": "explicit-data-bound-v1"
+      },
+      "space_requirements": {
+        "min_width": 640,
+        "min_height": 360,
+        "min_aspect_ratio": 0.81,
+        "max_aspect_ratio": 3.91
+      },
+      "capacity": {
+        "min_items": 3,
+        "max_items": 6,
+        "unit": "step"
+      },
+      "dependencies": [
+        "paper-ink-components"
+      ]
+    },
+    {
+      "component_id": "native.paper-ink.101.journey-curve",
+      "name": "旅程曲线",
+      "source": "native",
+      "group": "flow-temporal",
+      "group_label": "流程与时序",
+      "renderer_kinds": [
+        "svg"
+      ],
+      "description": "A four-to-six-milestone journey plotted on a curved route.",
+      "semantic_contract": {
+        "input_family": "temporal-series",
+        "role": "primary-proof",
+        "visual_action": "sequence",
+        "capacity": {
+          "mode": "range",
+          "unit": "milestone",
+          "min": 4,
+          "max": 6
+        },
+        "derivation": "explicit-data-bound-v1"
+      },
+      "space_requirements": {
+        "min_width": 680,
+        "min_height": 380,
+        "min_aspect_ratio": 0.81,
+        "max_aspect_ratio": 3.91
+      },
+      "capacity": {
+        "min_items": 4,
+        "max_items": 6,
+        "unit": "milestone"
+      },
+      "dependencies": [
+        "paper-ink-components"
+      ]
+    },
+    {
+      "component_id": "native.paper-ink.102.timeline-axis-horizontal",
+      "name": "时间轴（横排）",
+      "source": "native",
+      "group": "flow-temporal",
+      "group_label": "流程与时序",
+      "renderer_kinds": [
+        "svg"
+      ],
+      "description": "A horizontal ruled timeline with milestone annotations.",
+      "semantic_contract": {
+        "input_family": "temporal-series",
+        "role": "primary-proof",
+        "visual_action": "sequence",
+        "capacity": {
+          "mode": "range",
+          "unit": "milestone",
+          "min": 3,
+          "max": 6
+        },
+        "derivation": "explicit-data-bound-v1"
+      },
+      "space_requirements": {
+        "min_width": 680,
+        "min_height": 380,
+        "min_aspect_ratio": 0.81,
+        "max_aspect_ratio": 3.91
+      },
+      "capacity": {
+        "min_items": 3,
+        "max_items": 6,
+        "unit": "milestone"
+      },
+      "dependencies": [
+        "paper-ink-components"
+      ]
+    },
+    {
+      "component_id": "native.paper-ink.103.concentric-ring",
+      "name": "同心环",
+      "source": "native",
+      "group": "hierarchy-structure",
+      "group_label": "层级与结构",
+      "renderer_kinds": [
+        "svg"
+      ],
+      "description": "Three to five concentric containment rings with side explanations.",
+      "semantic_contract": {
+        "input_family": "hierarchy",
+        "role": "primary-proof",
+        "visual_action": "show-hierarchy",
+        "capacity": {
+          "mode": "range",
+          "unit": "layer",
+          "min": 3,
+          "max": 5
+        },
+        "derivation": "explicit-data-bound-v1"
+      },
+      "space_requirements": {
+        "min_width": 810,
+        "min_height": 460,
+        "min_aspect_ratio": 0.81,
+        "max_aspect_ratio": 3.91
+      },
+      "capacity": {
+        "min_items": 3,
+        "max_items": 5,
+        "unit": "layer"
+      },
+      "dependencies": [
+        "paper-ink-components"
+      ]
+    },
+    {
+      "component_id": "native.paper-ink.104.timeline-axis-vertical",
+      "name": "时间轴（竖排）",
+      "source": "native",
+      "group": "flow-temporal",
+      "group_label": "流程与时序",
+      "renderer_kinds": [
+        "svg"
+      ],
+      "description": "A vertical ruled timeline for narrow slots.",
+      "semantic_contract": {
+        "input_family": "temporal-series",
+        "role": "primary-proof",
+        "visual_action": "sequence",
+        "capacity": {
+          "mode": "range",
+          "unit": "milestone",
+          "min": 3,
+          "max": 6
+        },
+        "derivation": "explicit-data-bound-v1"
+      },
+      "space_requirements": {
+        "min_width": 350,
+        "min_height": 390,
+        "min_aspect_ratio": 0.45,
+        "max_aspect_ratio": 1.98
+      },
+      "capacity": {
+        "min_items": 3,
+        "max_items": 6,
+        "unit": "milestone"
+      },
+      "dependencies": [
+        "paper-ink-components"
+      ]
+    },
+    {
+      "component_id": "native.paper-ink.105.diamond-edge-labels",
+      "name": "菱形四边标注",
+      "source": "native",
+      "group": "relation-mapping",
+      "group_label": "关系与映射",
+      "renderer_kinds": [
+        "svg"
+      ],
+      "description": "Four fixed nodes in a diamond with independently labelled edges.",
+      "semantic_contract": {
+        "input_family": "causal-network",
+        "role": "primary-proof",
+        "visual_action": "connect-causality",
+        "capacity": {
+          "mode": "fixed",
+          "unit": "node",
+          "min": 4,
+          "max": 4
+        },
+        "derivation": "explicit-data-bound-v1"
+      },
+      "space_requirements": {
+        "min_width": 720,
+        "min_height": 400,
+        "min_aspect_ratio": 0.81,
+        "max_aspect_ratio": 3.91
+      },
+      "capacity": {
+        "min_items": 4,
+        "max_items": 4,
+        "unit": "node"
       },
       "dependencies": [
         "paper-ink-components"

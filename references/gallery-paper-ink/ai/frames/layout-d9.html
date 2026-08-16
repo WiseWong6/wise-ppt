@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-runtime="wise-ppt-specimen" data-typography-mode="mixed" data-page-id="gallery-ai-d9" data-page-role="orient" data-theme="paper-ink" data-layout="paper-ink.scaffold.agenda-split" data-layout-source="gallery">
+<head>
+<meta charset="UTF-8">
+<title>layout-d9 · 目录 · 分栏大字 · AI Engineering</title>
+<!--
+  纸墨线稿样张 · D9 目录 · 分栏大字
+  @歪斯Wise「AI 工程化实战」分享
+  版式纪律:左大字题区 + 右紧凑条目列,一道竖向发丝线分栏;条目无预告句,适合章节少(3~5)的 deck;无 FIG、无 caption
+-->
+<link rel="stylesheet" href="../../../../themes/paper-ink/assets/design-tokens.css">
+<link rel="stylesheet" href="../../../../themes/paper-ink/assets/slide-components.css">
+<link rel="stylesheet" href="../../../shell.css">
+<style>
+  svg.scene { position: absolute; inset: 0; z-index: 1; }
+  .doc.tl, .folio { color: rgba(25,25,23,.45); }
+</style>
+</head>
+<body class="slide">
+<div class="stage" data-block-id="gallery-primary" data-renderer-kind="svg" data-component-source="native" data-component-id="native.paper-ink.scaffold.agenda-split.agenda-split" data-content-ref="example.d9">
+  <div class="doc tl">AI ENGINEERING — D9<br>CONTENTS · FIVE CHAPTERS</div>
+  <div class="folio">D9 / 63 — BY @歪斯WISE</div>
+
+  <svg class="scene" width="1920" height="1080" viewBox="0 0 1920 1080">
+    <g id="draw"></g>
+  </svg>
+</div>
+
+<script src="../../../../runtime/stage-fit.js"></script>
+<script src="../../../../themes/paper-ink/assets/particles.js"></script>
+<script>
+var NS = 'http://www.w3.org/2000/svg';
+var INK = '#191917';
+var G = document.getElementById('draw');
+function el(tag, attrs) {
+  var e = document.createElementNS(NS, tag);
+  for (var k in attrs) e.setAttribute(k, attrs[k]);
+  G.appendChild(e); return e;
+}
+function txt(x, y, str, attrs) {
+  var t = el('text', Object.assign({x:x, y:y}, attrs||{}));
+  t.textContent = str; return t;
+}
+var MONO = 'var(--mono)', SANS = 'var(--sans)', SERIF = 'var(--serif)';
+
+G = el('g', {transform:'translate(0 -16.2)'});
+
+/* ===== 左栏:大字题区(x150–700) ===== */
+txt(150, 268, 'CONTENTS', {'font-family':MONO, 'font-size':'var(--type-meta)', 'letter-spacing':4, fill:'rgba(25,25,23,.45)'});
+txt(146, 386, '目录', {'font-family':SERIF, 'font-size':'var(--type-display)', 'letter-spacing':6, fill:INK});
+el('line', {x1:152, y1:438, x2:224, y2:438, stroke:INK, 'stroke-width':2});
+txt(150, 502, 'FIVE CHAPTERS — 2026', {'font-family':MONO, 'font-size':'var(--type-meta)', 'letter-spacing':3, fill:'rgba(25,25,23,.45)'});
+/* 左栏底部一处极细装饰:短横 + 小圆(双圈+实心核) */
+el('line', {x1:150, y1:806, x2:228, y2:806, stroke:INK, 'stroke-width':.8, opacity:.55});
+el('circle', {cx:246, cy:806, r:4.5, fill:'none', stroke:INK, 'stroke-width':.9, opacity:.7});
+el('circle', {cx:246, cy:806, r:1.6, fill:INK, opacity:.8});
+
+/* ===== 竖向发丝分栏线 ===== */
+el('line', {x1:780, y1:250, x2:780, y2:830, stroke:INK, 'stroke-width':.6, opacity:.22});
+
+/* ===== 右栏:紧凑条目列(x860–1770,y258 起,行高 112) ===== */
+var rows = [
+  {no:'01', cn:'认知奠基'},
+  {no:'02', cn:'工程化思维'},
+  {no:'03', cn:'Agent 实战'},
+  {no:'04', cn:'评测体系'},
+  {no:'05', cn:'落地路径'}
+];
+var X0 = 860, X1 = 1770, Y0 = 258, GAP = 112;
+
+rows.forEach(function(r, i){
+  var cy = Y0 + i * GAP + 40;           /* 行文字基线 */
+  txt(X0, cy, r.no, {'font-family':MONO, 'font-size':'var(--type-subheading)', 'letter-spacing':2, fill:'rgba(25,25,23,.5)'});
+  txt(X0 + 96, cy, r.cn, {'font-family':SANS, 'font-weight':300, 'font-size':'var(--type-caption)', 'letter-spacing':2, fill:INK});
+  txt(X1, cy, 'P.' + (i*4+3), {'font-family':MONO, 'font-size':'var(--type-meta)', 'letter-spacing':2, 'text-anchor':'end', fill:'rgba(25,25,23,.5)'});
+  /* 行间 0.6px 分隔线 */
+  if (i < rows.length-1)
+    el('line', {x1:X0, y1:Y0 + (i+1)*GAP - 26, x2:X1, y2:Y0 + (i+1)*GAP - 26, stroke:INK, 'stroke-width':.6, opacity:.22});
+});
+/* 首行上方分隔线 */
+el('line', {x1:X0, y1:Y0-26, x2:X1, y2:Y0-26, stroke:INK, 'stroke-width':.6, opacity:.22});
+
+stageFit();
+</script>
+</body>
+</html>

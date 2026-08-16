@@ -123,6 +123,7 @@
     "registry": "WisePPT.icons",
     "factory": "WisePPT.createIcon",
     "source": "runtime/deck-runtime.js",
+    "note": "现状:组件与版式帧的图标均为内联手绘几何细线 SVG,不按名引用 registry;本仓库 runtime 的 WisePPT.icons 仅放映壳自用(仅 1 个 gallery 图标)。纸墨重绘成品(708 枚 approved)与 189 个注册名在兄弟仓库 wise-ppt/capabilities/vendors/tabler-outline(redraw-v3 + registry-v2.json),按需打包进 deck 的 icon-registry 链路尚未落地本仓库。",
     "external_dependencies": []
   },
   "media_policy": {

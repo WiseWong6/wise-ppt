@@ -33,7 +33,7 @@ MANIFEST = OUTPUT_DIR / "manifest.json"
 WIDTH = 640
 HEIGHT = 360
 QUALITY = 82
-EXPECTED_PAGES = 84
+EXPECTED_PAGES = 89
 EXPECTED_COMPONENTS = 74
 EXPECTED_TOTAL = EXPECTED_PAGES + EXPECTED_COMPONENTS
 CHROME_CANDIDATES = (
@@ -42,6 +42,7 @@ CHROME_CANDIDATES = (
 )
 COMPONENT_INPUTS = (
     "references/catalog.html",
+    "references/component-routing-data.js",
     "themes/paper-ink/assets/design-tokens.css",
     "themes/paper-ink/adapters/atlas.js",
     "themes/paper-ink/adapters/echarts.js",
@@ -526,7 +527,7 @@ def run_interaction_audit(browser, file_url: str) -> dict:
         options.nth(1).click()
         page.wait_for_function("document.querySelector('#layer-stage').dataset.liveReady === '1'", timeout=20000)
         page.keyboard.press("Escape")
-        timeline = page.locator('#m-cmp [data-spec="new:8"]')
+        timeline = page.locator('#m-cmp [data-spec="native:102"]')
         timeline.evaluate("card => card.click()")
         page.wait_for_function("document.querySelector('#layer-stage').dataset.liveReady === '1'", timeout=20000)
         timeline_trigger = page.locator("#layer-variants .variant-trigger")
@@ -537,9 +538,16 @@ def run_interaction_audit(browser, file_url: str) -> dict:
         if timeline_options.count() != 2:
             fail("时间轴横竖变体数量不是 2")
         timeline_options.nth(1).click()
-        page.wait_for_function("document.querySelector('#layer-stage').dataset.liveReady === '1'", timeout=20000)
-        if page.locator('#layer-stage svg[viewBox="0 0 900 1000"]').count() != 1:
-            fail("时间轴竖排变体未渲染正确画布")
+        page.wait_for_function(
+            "document.querySelectorAll('#layer-stage svg').length === 1"
+            " && document.querySelector('#layer-stage').dataset.liveReady === '1'",
+            timeout=20000,
+        )
+        host = page.locator('#layer-stage .stage-host').first
+        frame_w = int(host.get_attribute('data-frame-width') or 0)
+        frame_h = int(host.get_attribute('data-frame-height') or 0)
+        if not (0 < frame_w < frame_h):
+            fail(f"时间轴竖排变体画布应为竖构图,实测 {frame_w}x{frame_h}")
         page.keyboard.press("Escape")
         if errors:
             fail("交互回归出现控制台错误: " + " | ".join(errors[:5]))

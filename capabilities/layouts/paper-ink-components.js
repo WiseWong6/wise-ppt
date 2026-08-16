@@ -3103,6 +3103,1630 @@ window.PAPER_INK_COMPONENT_DATA = {
   </g>
 </svg>
 </div>`
+  },
+
+  /* BEGIN promoted catalog components v120 */
+  {
+    name: "mapping-arc-network",
+    group: "relation-mapping",
+    groupLabel: "关系与映射",
+    description: "A two-sided mapping network with primary and shared curved links.",
+    label: "映射弧线网",
+    num: 94,
+    variant: null,
+    paperInkNative: true,
+    frame: { width: 1100, height: 619, fit: 'fixed' },
+    dataContract: {"mode":"record","unit":"node","pointer":"/structured_data","minItems":4,"maxItems":12},
+    /* production promotion: Catalog new:0 → native.paper-ink.094.mapping-arc-network */
+    snippet: `<div class="pi-card" data-bind-root="record" style="width:auto;min-height:0;overflow:visible"><svg class="pi-art" viewBox="0 0 1920 1080" width="1100" height="619">
+    <g transform="translate(0 -34.7)">
+      <text x="352" y="246" font-family="var(--pi-mono)" font-size="var(--type-meta)" letter-spacing="3" text-anchor="end" fill="rgba(25,25,23,.45)">
+ATOMIC EVAL
+      </text>
+      <line x1="192" y1="258" x2="352" y2="258" stroke="#191917" stroke-width="0.6" opacity="0.3"/>
+      <text x="1404" y="246" font-family="var(--pi-mono)" font-size="var(--type-meta)" letter-spacing="3" fill="rgba(25,25,23,.45)">
+CAPABILITY
+      </text>
+      <line x1="1404" y1="258" x2="1530" y2="258" stroke="#191917" stroke-width="0.6" opacity="0.3"/>
+      <line x1="360" y1="270" x2="360" y2="810" stroke="#191917" stroke-width="0.5" opacity="0.2" stroke-dasharray="2 6"/>
+      <line x1="1380" y1="270" x2="1380" y2="810" stroke="#191917" stroke-width="0.5" opacity="0.2" stroke-dasharray="2 6"/>
+      <path d="M 368 300 C 870 300, 870 290, 1372 290" fill="none" stroke="#191917" stroke-width="1.8" opacity="0.9"/>
+      <circle cx="1372" cy="290" r="2.4" fill="#191917" opacity="0.6"/>
+      <path d="M 368 684 C 870 684, 870 290, 1372 290" fill="none" stroke="#191917" stroke-width="1.1" opacity="0.4"/>
+      <circle cx="1372" cy="290" r="2.4" fill="#191917" opacity="0.6"/>
+      <path d="M 368 396 C 870 396, 870 386, 1372 386" fill="none" stroke="#191917" stroke-width="1.8" opacity="0.9"/>
+      <circle cx="1372" cy="386" r="2.4" fill="#191917" opacity="0.6"/>
+      <path d="M 368 588 C 870 588, 870 386, 1372 386" fill="none" stroke="#191917" stroke-width="1.1" opacity="0.4"/>
+      <circle cx="1372" cy="386" r="2.4" fill="#191917" opacity="0.6"/>
+      <path d="M 368 492 C 870 492, 870 482, 1372 482" fill="none" stroke="#191917" stroke-width="1.8" opacity="0.9"/>
+      <circle cx="1372" cy="482" r="2.4" fill="#191917" opacity="0.6"/>
+      <path d="M 368 780 C 870 780, 870 482, 1372 482" fill="none" stroke="#191917" stroke-width="1.1" opacity="0.4"/>
+      <circle cx="1372" cy="482" r="2.4" fill="#191917" opacity="0.6"/>
+      <path d="M 368 588 C 870 588, 870 578, 1372 578" fill="none" stroke="#191917" stroke-width="1.8" opacity="0.9"/>
+      <circle cx="1372" cy="578" r="2.4" fill="#191917" opacity="0.6"/>
+      <path d="M 368 300 C 870 300, 870 578, 1372 578" fill="none" stroke="#191917" stroke-width="1.1" opacity="0.4"/>
+      <circle cx="1372" cy="578" r="2.4" fill="#191917" opacity="0.6"/>
+      <path d="M 368 492 C 870 492, 870 578, 1372 578" fill="none" stroke="#191917" stroke-width="0.6" opacity="0.2"/>
+      <circle cx="1372" cy="578" r="2.4" fill="#191917" opacity="0.6"/>
+      <path d="M 368 684 C 870 684, 870 674, 1372 674" fill="none" stroke="#191917" stroke-width="1.8" opacity="0.9"/>
+      <circle cx="1372" cy="674" r="2.4" fill="#191917" opacity="0.6"/>
+      <path d="M 368 300 C 870 300, 870 674, 1372 674" fill="none" stroke="#191917" stroke-width="1.1" opacity="0.4"/>
+      <circle cx="1372" cy="674" r="2.4" fill="#191917" opacity="0.6"/>
+      <path d="M 368 588 C 870 588, 870 770, 1372 770" fill="none" stroke="#191917" stroke-width="1.8" opacity="0.9"/>
+      <circle cx="1372" cy="770" r="2.4" fill="#191917" opacity="0.6"/>
+      <path d="M 368 780 C 870 780, 870 770, 1372 770" fill="none" stroke="#191917" stroke-width="1.1" opacity="0.4"/>
+      <circle cx="1372" cy="770" r="2.4" fill="#191917" opacity="0.6"/>
+      <path d="M 368 396 C 870 396, 870 770, 1372 770" fill="none" stroke="#191917" stroke-width="0.6" opacity="0.2"/>
+      <circle cx="1372" cy="770" r="2.4" fill="#191917" opacity="0.6"/>
+      <rect x="355" y="295" width="10" height="10" fill="#DFE0D9" stroke="rgba(25,25,23,.8)" stroke-width="1.2"/>
+      <circle cx="360" cy="300" r="1.6" fill="#191917"/>
+      <text x="342" y="302" font-family="var(--pi-mono)" font-size="var(--type-label)" letter-spacing="1.5" text-anchor="end" fill="#191917">
+MMLU
+      </text>
+      <text x="342" y="322" font-family="var(--pi-sans)" font-weight="300" font-size="var(--type-meta)" text-anchor="end" fill="rgba(25,25,23,.45)">
+综合知识
+      </text>
+      <rect x="355" y="391" width="10" height="10" fill="#DFE0D9" stroke="rgba(25,25,23,.8)" stroke-width="1.2"/>
+      <circle cx="360" cy="396" r="1.6" fill="#191917"/>
+      <text x="342" y="398" font-family="var(--pi-mono)" font-size="var(--type-label)" letter-spacing="1.5" text-anchor="end" fill="#191917">
+HUMANEVAL
+      </text>
+      <text x="342" y="418" font-family="var(--pi-sans)" font-weight="300" font-size="var(--type-meta)" text-anchor="end" fill="rgba(25,25,23,.45)">
+代码生成
+      </text>
+      <rect x="355" y="487" width="10" height="10" fill="#DFE0D9" stroke="rgba(25,25,23,.8)" stroke-width="1.2"/>
+      <circle cx="360" cy="492" r="1.6" fill="#191917"/>
+      <text x="342" y="494" font-family="var(--pi-mono)" font-size="var(--type-label)" letter-spacing="1.5" text-anchor="end" fill="#191917">
+GSM8K
+      </text>
+      <text x="342" y="514" font-family="var(--pi-sans)" font-weight="300" font-size="var(--type-meta)" text-anchor="end" fill="rgba(25,25,23,.45)">
+数学推理
+      </text>
+      <rect x="355" y="583" width="10" height="10" fill="#DFE0D9" stroke="rgba(25,25,23,.8)" stroke-width="1.2"/>
+      <circle cx="360" cy="588" r="1.6" fill="#191917"/>
+      <text x="342" y="590" font-family="var(--pi-mono)" font-size="var(--type-label)" letter-spacing="1.5" text-anchor="end" fill="#191917">
+BBH
+      </text>
+      <text x="342" y="610" font-family="var(--pi-sans)" font-weight="300" font-size="var(--type-meta)" text-anchor="end" fill="rgba(25,25,23,.45)">
+复杂推理
+      </text>
+      <rect x="355" y="679" width="10" height="10" fill="#DFE0D9" stroke="rgba(25,25,23,.8)" stroke-width="1.2"/>
+      <circle cx="360" cy="684" r="1.6" fill="#191917"/>
+      <text x="342" y="686" font-family="var(--pi-mono)" font-size="var(--type-label)" letter-spacing="1.5" text-anchor="end" fill="#191917">
+TRUTHFULQA
+      </text>
+      <text x="342" y="706" font-family="var(--pi-sans)" font-weight="300" font-size="var(--type-meta)" text-anchor="end" fill="rgba(25,25,23,.45)">
+事实准确
+      </text>
+      <rect x="355" y="775" width="10" height="10" fill="#DFE0D9" stroke="rgba(25,25,23,.8)" stroke-width="1.2"/>
+      <circle cx="360" cy="780" r="1.6" fill="#191917"/>
+      <text x="342" y="782" font-family="var(--pi-mono)" font-size="var(--type-label)" letter-spacing="1.5" text-anchor="end" fill="#191917">
+MATH
+      </text>
+      <text x="342" y="802" font-family="var(--pi-sans)" font-weight="300" font-size="var(--type-meta)" text-anchor="end" fill="rgba(25,25,23,.45)">
+高难数学
+      </text>
+      <circle cx="1380" cy="290" r="7" fill="none" stroke="rgba(25,25,23,.8)" stroke-width="1.2"/>
+      <circle cx="1380" cy="290" r="2.4" fill="#191917"/>
+      <text x="1404" y="292" font-family="var(--pi-sans)" font-weight="300" font-size="var(--type-body)" fill="#191917">
+语言理解 / 常识问答
+      </text>
+      <text x="1404" y="318" font-family="var(--pi-mono)" font-size="var(--type-meta)" letter-spacing="2" fill="rgba(25,25,23,.45)">
+LANG
+      </text>
+      <circle cx="1380" cy="386" r="7" fill="none" stroke="rgba(25,25,23,.8)" stroke-width="1.2"/>
+      <circle cx="1380" cy="386" r="2.4" fill="#191917"/>
+      <text x="1404" y="388" font-family="var(--pi-sans)" font-weight="300" font-size="var(--type-body)" fill="#191917">
+代码生成 / 编程能力
+      </text>
+      <text x="1404" y="414" font-family="var(--pi-mono)" font-size="var(--type-meta)" letter-spacing="2" fill="rgba(25,25,23,.45)">
+CODE
+      </text>
+      <circle cx="1380" cy="482" r="7" fill="none" stroke="rgba(25,25,23,.8)" stroke-width="1.2"/>
+      <circle cx="1380" cy="482" r="2.4" fill="#191917"/>
+      <text x="1404" y="484" font-family="var(--pi-sans)" font-weight="300" font-size="var(--type-body)" fill="#191917">
+数学推理 / 数值计算
+      </text>
+      <text x="1404" y="510" font-family="var(--pi-mono)" font-size="var(--type-meta)" letter-spacing="2" fill="rgba(25,25,23,.45)">
+MATH
+      </text>
+      <circle cx="1380" cy="578" r="7" fill="none" stroke="rgba(25,25,23,.8)" stroke-width="1.2"/>
+      <circle cx="1380" cy="578" r="2.4" fill="#191917"/>
+      <text x="1404" y="580" font-family="var(--pi-sans)" font-weight="300" font-size="var(--type-body)" fill="#191917">
+逻辑推理 / 多步推导
+      </text>
+      <text x="1404" y="606" font-family="var(--pi-mono)" font-size="var(--type-meta)" letter-spacing="2" fill="rgba(25,25,23,.45)">
+LOGIC
+      </text>
+      <circle cx="1380" cy="674" r="7" fill="none" stroke="rgba(25,25,23,.8)" stroke-width="1.2"/>
+      <circle cx="1380" cy="674" r="2.4" fill="#191917"/>
+      <text x="1404" y="676" font-family="var(--pi-sans)" font-weight="300" font-size="var(--type-body)" fill="#191917">
+事实准确 / 抗幻觉
+      </text>
+      <text x="1404" y="702" font-family="var(--pi-mono)" font-size="var(--type-meta)" letter-spacing="2" fill="rgba(25,25,23,.45)">
+FACT
+      </text>
+      <circle cx="1380" cy="770" r="7" fill="none" stroke="rgba(25,25,23,.8)" stroke-width="1.2"/>
+      <circle cx="1380" cy="770" r="2.4" fill="#191917"/>
+      <text x="1404" y="772" font-family="var(--pi-sans)" font-weight="300" font-size="var(--type-body)" fill="#191917">
+复杂推理 / 综合任务
+      </text>
+      <text x="1404" y="798" font-family="var(--pi-mono)" font-size="var(--type-meta)" letter-spacing="2" fill="rgba(25,25,23,.45)">
+COMPLEX
+      </text>
+      <line x1="1380" y1="836" x2="1432" y2="836" stroke="#191917" stroke-width="1.8" opacity="0.9"/>
+      <text x="1444" y="841" font-family="var(--pi-mono)" font-size="var(--type-micro-secondary)" letter-spacing="2" fill="rgba(25,25,23,.45)">
+PRIMARY
+      </text>
+      <line x1="1550" y1="836" x2="1602" y2="836" stroke="#191917" stroke-width="1.1" opacity="0.4"/>
+      <text x="1614" y="841" font-family="var(--pi-mono)" font-size="var(--type-micro-secondary)" letter-spacing="2" fill="rgba(25,25,23,.45)">
+SHARED
+      </text>
+    </g>
+</svg></div>`
+  },
+
+  {
+    name: "weighted-arc-web",
+    group: "relation-mapping",
+    groupLabel: "关系与映射",
+    description: "A fixed-geometry node row with weighted relationship arcs.",
+    label: "权重弧网",
+    num: 95,
+    variant: null,
+    paperInkNative: true,
+    frame: { width: 1781, height: 1002, fit: 'fixed' },
+    dataContract: {"mode":"record","unit":"node","pointer":"/structured_data","minItems":4,"maxItems":8},
+    /* production promotion: Catalog new:1 → native.paper-ink.095.weighted-arc-web */
+    snippet: `<div class="pi-card" data-bind-root="record" style="width:auto;min-height:0;overflow:visible"><svg class="pi-art" viewBox="0 0 1920 1080" width="1781" height="1002">
+    <g transform="translate(0 -5.2)">
+      <rect x="534" y="532" width="120" height="56" fill="rgba(255,255,255,.22)" stroke="rgba(25,25,23,.8)" stroke-width="1.2"/>
+      <rect x="538" y="536" width="112" height="48" fill="none" stroke="#191917" stroke-width="0.7" opacity="0.5"/>
+      <text x="594" y="568" font-family="var(--pi-sans)" font-weight="300" font-size="var(--type-body)" text-anchor="middle" fill="#191917">
+The
+      </text>
+      <line x1="594" y1="588" x2="594" y2="597" stroke="#191917" stroke-width="0.6" opacity="0.3"/>
+      <text x="594" y="618" font-family="var(--pi-mono)" font-size="var(--type-meta)" text-anchor="middle" fill="rgba(25,25,23,.45)">
+t0
+      </text>
+      <rect x="694" y="532" width="110" height="56" fill="rgba(255,255,255,.22)" stroke="rgba(25,25,23,.8)" stroke-width="1.2"/>
+      <rect x="698" y="536" width="102" height="48" fill="none" stroke="#191917" stroke-width="0.7" opacity="0.5"/>
+      <text x="749" y="568" font-family="var(--pi-sans)" font-weight="300" font-size="var(--type-body)" text-anchor="middle" fill="#191917">
+cat
+      </text>
+      <line x1="749" y1="588" x2="749" y2="597" stroke="#191917" stroke-width="0.6" opacity="0.3"/>
+      <text x="749" y="618" font-family="var(--pi-mono)" font-size="var(--type-meta)" text-anchor="middle" fill="rgba(25,25,23,.45)">
+t1
+      </text>
+      <rect x="844" y="532" width="96" height="56" fill="rgba(255,255,255,.22)" stroke="rgba(25,25,23,.8)" stroke-width="1.2"/>
+      <rect x="848" y="536" width="88" height="48" fill="none" stroke="#191917" stroke-width="0.7" opacity="0.5"/>
+      <text x="892" y="568" font-family="var(--pi-sans)" font-weight="300" font-size="var(--type-body)" text-anchor="middle" fill="#191917">
+sat
+      </text>
+      <line x1="892" y1="588" x2="892" y2="597" stroke="#191917" stroke-width="0.6" opacity="0.3"/>
+      <text x="892" y="618" font-family="var(--pi-mono)" font-size="var(--type-meta)" text-anchor="middle" fill="rgba(25,25,23,.45)">
+t2
+      </text>
+      <rect x="980" y="532" width="96" height="56" fill="rgba(255,255,255,.22)" stroke="rgba(25,25,23,.8)" stroke-width="1.2"/>
+      <rect x="984" y="536" width="88" height="48" fill="none" stroke="#191917" stroke-width="0.7" opacity="0.5"/>
+      <text x="1028" y="568" font-family="var(--pi-sans)" font-weight="300" font-size="var(--type-body)" text-anchor="middle" fill="#191917">
+on
+      </text>
+      <line x1="1028" y1="588" x2="1028" y2="597" stroke="#191917" stroke-width="0.6" opacity="0.3"/>
+      <text x="1028" y="618" font-family="var(--pi-mono)" font-size="var(--type-meta)" text-anchor="middle" fill="rgba(25,25,23,.45)">
+t3
+      </text>
+      <rect x="1116" y="532" width="110" height="56" fill="rgba(255,255,255,.22)" stroke="rgba(25,25,23,.8)" stroke-width="1.2"/>
+      <rect x="1120" y="536" width="102" height="48" fill="none" stroke="#191917" stroke-width="0.7" opacity="0.5"/>
+      <text x="1171" y="568" font-family="var(--pi-sans)" font-weight="300" font-size="var(--type-body)" text-anchor="middle" fill="#191917">
+the
+      </text>
+      <line x1="1171" y1="588" x2="1171" y2="597" stroke="#191917" stroke-width="0.6" opacity="0.3"/>
+      <text x="1171" y="618" font-family="var(--pi-mono)" font-size="var(--type-meta)" text-anchor="middle" fill="rgba(25,25,23,.45)">
+t4
+      </text>
+      <rect x="1266" y="532" width="120" height="56" fill="rgba(255,255,255,.22)" stroke="rgba(25,25,23,.8)" stroke-width="1.2"/>
+      <rect x="1270" y="536" width="112" height="48" fill="none" stroke="#191917" stroke-width="0.7" opacity="0.5"/>
+      <text x="1326" y="568" font-family="var(--pi-sans)" font-weight="300" font-size="var(--type-body)" text-anchor="middle" fill="#191917">
+mat.
+      </text>
+      <line x1="1326" y1="588" x2="1326" y2="597" stroke="#191917" stroke-width="0.6" opacity="0.3"/>
+      <text x="1326" y="618" font-family="var(--pi-mono)" font-size="var(--type-meta)" text-anchor="middle" fill="rgba(25,25,23,.45)">
+t5
+      </text>
+      <line x1="510" y1="636" x2="1410" y2="636" stroke="#191917" stroke-width="0.6" stroke-dasharray="2 5" opacity="0.3"/>
+      <path d="M 594 532 Q 743 412 892 532" fill="none" stroke="#191917" stroke-width="0.6" opacity="0.2" stroke-linecap="round"/>
+      <path d="M 892 532 Q 1031.5 448 1171 532" fill="none" stroke="#191917" stroke-width="0.6" opacity="0.2" stroke-linecap="round"/>
+      <path d="M 749 532 Q 1037.5 192 1326 532" fill="none" stroke="#191917" stroke-width="0.6" opacity="0.2" stroke-linecap="round"/>
+      <path d="M 1028 532 Q 1099.5 472 1171 532" fill="none" stroke="#191917" stroke-width="0.6" opacity="0.2" stroke-linecap="round"/>
+      <path d="M 1171 532 Q 1248.5 460 1326 532" fill="none" stroke="#191917" stroke-width="0.6" opacity="0.2" stroke-linecap="round"/>
+      <path d="M 594 532 Q 811 252 1028 532" fill="none" stroke="#191917" stroke-width="1.1" opacity="0.4" stroke-linecap="round"/>
+      <path d="M 749 532 Q 960 312 1171 532" fill="none" stroke="#191917" stroke-width="1.1" opacity="0.4" stroke-linecap="round"/>
+      <path d="M 594 532 Q 882.5 152 1171 532" fill="none" stroke="#191917" stroke-width="1.1" opacity="0.4" stroke-linecap="round"/>
+      <circle cx="1028" cy="532" r="2" fill="#191917" opacity="0.5"/>
+      <circle cx="1171" cy="532" r="2" fill="#191917" opacity="0.5"/>
+      <text x="811" y="372" font-family="var(--pi-mono)" font-size="var(--type-meta)" text-anchor="middle" fill="rgba(25,25,23,.55)">
+w ≈ 0.46 · MID
+      </text>
+      <path d="M 594 532 Q 671.5 312 749 532" fill="none" stroke="#191917" stroke-width="1.8" opacity="0.9" stroke-linecap="round"/>
+      <circle cx="594" cy="532" r="2.4" fill="#191917" opacity="0.9"/>
+      <circle cx="749" cy="532" r="2.4" fill="#191917" opacity="0.9"/>
+      <text x="672" y="400" font-family="var(--pi-mono)" font-size="var(--type-label)" text-anchor="middle" fill="rgba(25,25,23,.8)">
+w ≈ 0.87 · STRONG ATTEND
+      </text>
+      <line x1="672" y1="408" x2="672" y2="416" stroke="#191917" stroke-width="0.6" opacity="0.6"/>
+      <path d="M 892 532 Q 1109 332 1326 532" fill="none" stroke="#191917" stroke-width="0.8" opacity="0.55" stroke-linecap="round" stroke-dasharray="5 5"/>
+      <rect x="1090" y="412" width="40" height="36" fill="#DFE0D9" stroke="none"/>
+      <line x1="1102" y1="424" x2="1116" y2="438" stroke="#191917" stroke-width="1.1" opacity="0.85"/>
+      <line x1="1116" y1="424" x2="1102" y2="438" stroke="#191917" stroke-width="1.1" opacity="0.85"/>
+      <line x1="1136" y1="430" x2="1204" y2="404" stroke="#191917" stroke-width="0.6" opacity="0.5"/>
+      <circle cx="1136" cy="430" r="1.4" fill="#191917" opacity="0.5"/>
+      <text x="1212" y="408" font-family="var(--pi-mono)" font-size="var(--type-meta)" text-anchor="start" fill="rgba(25,25,23,.7)">
+w ≈ 0.04 · ATTENTION BREAK
+      </text>
+      <line x1="510" y1="652" x2="510" y2="660" stroke="#191917" stroke-width="0.6" opacity="0.3"/>
+      <text x="510" y="676" font-family="var(--pi-mono)" font-size="var(--type-micro-secondary)" text-anchor="middle" fill="rgba(25,25,23,.45)">
+0
+      </text>
+      <line x1="600" y1="652" x2="600" y2="660" stroke="#191917" stroke-width="0.6" opacity="0.3"/>
+      <text x="600" y="676" font-family="var(--pi-mono)" font-size="var(--type-micro-secondary)" text-anchor="middle" fill="rgba(25,25,23,.45)">
+10
+      </text>
+      <line x1="690" y1="652" x2="690" y2="660" stroke="#191917" stroke-width="0.6" opacity="0.3"/>
+      <text x="690" y="676" font-family="var(--pi-mono)" font-size="var(--type-micro-secondary)" text-anchor="middle" fill="rgba(25,25,23,.45)">
+20
+      </text>
+      <line x1="780" y1="652" x2="780" y2="660" stroke="#191917" stroke-width="0.6" opacity="0.3"/>
+      <text x="780" y="676" font-family="var(--pi-mono)" font-size="var(--type-micro-secondary)" text-anchor="middle" fill="rgba(25,25,23,.45)">
+30
+      </text>
+      <line x1="870" y1="652" x2="870" y2="660" stroke="#191917" stroke-width="0.6" opacity="0.3"/>
+      <text x="870" y="676" font-family="var(--pi-mono)" font-size="var(--type-micro-secondary)" text-anchor="middle" fill="rgba(25,25,23,.45)">
+40
+      </text>
+      <line x1="960" y1="652" x2="960" y2="660" stroke="#191917" stroke-width="0.6" opacity="0.3"/>
+      <text x="960" y="676" font-family="var(--pi-mono)" font-size="var(--type-micro-secondary)" text-anchor="middle" fill="rgba(25,25,23,.45)">
+50
+      </text>
+      <line x1="1050" y1="652" x2="1050" y2="660" stroke="#191917" stroke-width="0.6" opacity="0.3"/>
+      <text x="1050" y="676" font-family="var(--pi-mono)" font-size="var(--type-micro-secondary)" text-anchor="middle" fill="rgba(25,25,23,.45)">
+60
+      </text>
+      <line x1="1140" y1="652" x2="1140" y2="660" stroke="#191917" stroke-width="0.6" opacity="0.3"/>
+      <text x="1140" y="676" font-family="var(--pi-mono)" font-size="var(--type-micro-secondary)" text-anchor="middle" fill="rgba(25,25,23,.45)">
+70
+      </text>
+      <line x1="1230" y1="652" x2="1230" y2="660" stroke="#191917" stroke-width="0.6" opacity="0.3"/>
+      <text x="1230" y="676" font-family="var(--pi-mono)" font-size="var(--type-micro-secondary)" text-anchor="middle" fill="rgba(25,25,23,.45)">
+80
+      </text>
+      <line x1="1320" y1="652" x2="1320" y2="660" stroke="#191917" stroke-width="0.6" opacity="0.3"/>
+      <text x="1320" y="676" font-family="var(--pi-mono)" font-size="var(--type-micro-secondary)" text-anchor="middle" fill="rgba(25,25,23,.45)">
+90
+      </text>
+      <line x1="1410" y1="652" x2="1410" y2="660" stroke="#191917" stroke-width="0.6" opacity="0.3"/>
+      <text x="1410" y="676" font-family="var(--pi-mono)" font-size="var(--type-micro-secondary)" text-anchor="middle" fill="rgba(25,25,23,.45)">
+100
+      </text>
+    </g>
+</svg></div>`
+  },
+
+  {
+    name: "three-way-radial",
+    group: "hierarchy-structure",
+    groupLabel: "层级与结构",
+    description: "A central statement decomposed into exactly three radial branches.",
+    label: "三向放射图",
+    num: 96,
+    variant: null,
+    paperInkNative: true,
+    frame: { width: 1443, height: 812, fit: 'fixed' },
+    dataContract: {"mode":"collection","unit":"branch","pointer":"/structured_data","minItems":3,"maxItems":3},
+    /* production promotion: Catalog new:2 → native.paper-ink.096.three-way-radial */
+    snippet: `<div class="pi-card" data-bind-root="record" style="width:auto;min-height:0;overflow:visible"><svg class="pi-art" viewBox="0 0 1920 1080" width="1443" height="812">
+    <g transform="translate(0 -55.2)">
+      <rect x="770" y="462" width="380" height="116" fill="rgba(255,255,255,.22)" stroke="rgba(25,25,23,.8)" stroke-width="1.4"/>
+      <rect x="775" y="467" width="370" height="106" fill="none" stroke="#191917" stroke-width="0.6" opacity="0.4"/>
+      <text x="960" y="508" font-family="var(--pi-mono)" font-size="var(--type-subheading)" letter-spacing="3" text-anchor="middle" fill="#191917">
+MODEL NODE
+      </text>
+      <text x="960" y="546" font-family="var(--pi-sans)" font-weight="300" font-size="var(--type-body)" letter-spacing="4" text-anchor="middle" fill="#191917">
+LLM 调用节点
+      </text>
+      <line x1="770" y1="520" x2="560" y2="520" stroke="#191917" stroke-width="0.8" opacity="0.5"/>
+      <line x1="1150" y1="520" x2="1360" y2="520" stroke="#191917" stroke-width="0.8" opacity="0.5"/>
+      <line x1="960" y1="578" x2="960" y2="700" stroke="#191917" stroke-width="0.8" opacity="0.5"/>
+      <circle cx="560" cy="520" r="2.4" fill="#191917" opacity="0.7"/>
+      <circle cx="1360" cy="520" r="2.4" fill="#191917" opacity="0.7"/>
+      <circle cx="960" cy="700" r="2.4" fill="#191917" opacity="0.7"/>
+      <text x="665" y="506" font-family="var(--pi-mono)" font-size="var(--type-meta)" letter-spacing="2" text-anchor="middle" fill="rgba(25,25,23,.45)">
+IN
+      </text>
+      <text x="1255" y="506" font-family="var(--pi-mono)" font-size="var(--type-meta)" letter-spacing="2" text-anchor="middle" fill="rgba(25,25,23,.45)">
+OUT
+      </text>
+      <text x="560" y="268" font-family="var(--pi-sans)" font-weight="300" font-size="var(--type-subheading)" text-anchor="end" fill="#191917">
+输 入
+      </text>
+      <text x="560" y="296" font-family="var(--pi-mono)" font-size="var(--type-meta)" letter-spacing="2" text-anchor="end" fill="rgba(25,25,23,.45)">
+INPUT
+      </text>
+      <line x1="560" y1="320" x2="560" y2="800" stroke="#191917" stroke-width="0.8" opacity="0.5"/>
+      <line x1="560" y1="348" x2="542" y2="348" stroke="#191917" stroke-width="0.8" opacity="0.5"/>
+      <text x="530" y="354" font-family="var(--pi-mono)" font-size="var(--type-body-small)" text-anchor="end" fill="#191917">
+system_prompt
+      </text>
+      <text x="530" y="380" font-family="var(--pi-sans)" font-weight="300" font-size="var(--type-body-small)" text-anchor="end" fill="rgba(25,25,23,.55)">
+系统提示词与人设
+      </text>
+      <line x1="560" y1="464" x2="542" y2="464" stroke="#191917" stroke-width="0.8" opacity="0.5"/>
+      <text x="530" y="470" font-family="var(--pi-mono)" font-size="var(--type-body-small)" text-anchor="end" fill="#191917">
+user_message
+      </text>
+      <text x="530" y="496" font-family="var(--pi-sans)" font-weight="300" font-size="var(--type-body-small)" text-anchor="end" fill="rgba(25,25,23,.55)">
+用户消息与意图
+      </text>
+      <line x1="560" y1="580" x2="542" y2="580" stroke="#191917" stroke-width="0.8" opacity="0.5"/>
+      <text x="530" y="586" font-family="var(--pi-mono)" font-size="var(--type-body-small)" text-anchor="end" fill="#191917">
+context
+      </text>
+      <text x="530" y="612" font-family="var(--pi-sans)" font-weight="300" font-size="var(--type-body-small)" text-anchor="end" fill="rgba(25,25,23,.55)">
+上下文与检索片段
+      </text>
+      <line x1="560" y1="696" x2="542" y2="696" stroke="#191917" stroke-width="0.8" opacity="0.5"/>
+      <text x="530" y="702" font-family="var(--pi-mono)" font-size="var(--type-body-small)" text-anchor="end" fill="#191917">
+tools
+      </text>
+      <text x="530" y="728" font-family="var(--pi-sans)" font-weight="300" font-size="var(--type-body-small)" text-anchor="end" fill="rgba(25,25,23,.55)">
+可调用工具声明
+      </text>
+      <text x="1360" y="268" font-family="var(--pi-sans)" font-weight="300" font-size="var(--type-subheading)" fill="#191917">
+输 出
+      </text>
+      <text x="1360" y="296" font-family="var(--pi-mono)" font-size="var(--type-meta)" letter-spacing="2" fill="rgba(25,25,23,.45)">
+OUTPUT
+      </text>
+      <line x1="1360" y1="320" x2="1360" y2="860" stroke="#191917" stroke-width="0.8" opacity="0.5"/>
+      <line x1="1360" y1="348" x2="1378" y2="348" stroke="#191917" stroke-width="0.8" opacity="0.5"/>
+      <text x="1390" y="354" font-family="var(--pi-mono)" font-size="var(--type-body-small)" text-anchor="start" fill="#191917">
+completion
+      </text>
+      <text x="1390" y="380" font-family="var(--pi-sans)" font-weight="300" font-size="var(--type-body-small)" text-anchor="start" fill="rgba(25,25,23,.55)">
+生成文本与回复
+      </text>
+      <line x1="1360" y1="448" x2="1378" y2="448" stroke="#191917" stroke-width="0.8" opacity="0.5"/>
+      <text x="1390" y="454" font-family="var(--pi-mono)" font-size="var(--type-body-small)" text-anchor="start" fill="#191917">
+tool_calls
+      </text>
+      <text x="1390" y="480" font-family="var(--pi-sans)" font-weight="300" font-size="var(--type-body-small)" text-anchor="start" fill="rgba(25,25,23,.55)">
+工具调用请求
+      </text>
+      <line x1="1360" y1="548" x2="1378" y2="548" stroke="#191917" stroke-width="0.8" opacity="0.5"/>
+      <text x="1390" y="554" font-family="var(--pi-mono)" font-size="var(--type-body-small)" text-anchor="start" fill="#191917">
+token_usage
+      </text>
+      <text x="1390" y="580" font-family="var(--pi-sans)" font-weight="300" font-size="var(--type-body-small)" text-anchor="start" fill="rgba(25,25,23,.55)">
+Token 用量统计
+      </text>
+      <line x1="1360" y1="648" x2="1378" y2="648" stroke="#191917" stroke-width="0.8" opacity="0.5"/>
+      <text x="1390" y="654" font-family="var(--pi-mono)" font-size="var(--type-body-small)" text-anchor="start" fill="#191917">
+finish_reason
+      </text>
+      <text x="1390" y="680" font-family="var(--pi-sans)" font-weight="300" font-size="var(--type-body-small)" text-anchor="start" fill="rgba(25,25,23,.55)">
+结束原因与状态
+      </text>
+      <line x1="1360" y1="748" x2="1378" y2="748" stroke="#191917" stroke-width="0.8" opacity="0.5"/>
+      <text x="1390" y="754" font-family="var(--pi-mono)" font-size="var(--type-body-small)" text-anchor="start" fill="#191917">
+logprobs
+      </text>
+      <text x="1390" y="780" font-family="var(--pi-sans)" font-weight="300" font-size="var(--type-body-small)" text-anchor="start" fill="rgba(25,25,23,.55)">
+对数概率回传
+      </text>
+      <line x1="1360" y1="848" x2="1378" y2="848" stroke="#191917" stroke-width="0.8" opacity="0.5"/>
+      <text x="1390" y="854" font-family="var(--pi-mono)" font-size="var(--type-body-small)" text-anchor="start" fill="#191917">
+latency
+      </text>
+      <text x="1390" y="880" font-family="var(--pi-sans)" font-weight="300" font-size="var(--type-body-small)" text-anchor="start" fill="rgba(25,25,23,.55)">
+首字与总耗时
+      </text>
+      <text x="984" y="668" font-family="var(--pi-sans)" font-weight="300" font-size="var(--type-subheading)" fill="#191917">
+参 数
+      </text>
+      <text x="984" y="696" font-family="var(--pi-mono)" font-size="var(--type-meta)" letter-spacing="2" fill="rgba(25,25,23,.45)">
+PARAMS
+      </text>
+      <line x1="620" y1="700" x2="1300" y2="700" stroke="#191917" stroke-width="0.8" opacity="0.5"/>
+      <line x1="660" y1="700" x2="660" y2="716" stroke="#191917" stroke-width="0.8" opacity="0.5"/>
+      <text x="660" y="744" font-family="var(--pi-mono)" font-size="var(--type-body-small)" text-anchor="middle" fill="#191917">
+temperature
+      </text>
+      <text x="660" y="772" font-family="var(--pi-sans)" font-weight="300" font-size="var(--type-body-small)" text-anchor="middle" fill="rgba(25,25,23,.55)">
+采样温度
+      </text>
+      <line x1="810" y1="700" x2="810" y2="716" stroke="#191917" stroke-width="0.8" opacity="0.5"/>
+      <text x="810" y="744" font-family="var(--pi-mono)" font-size="var(--type-body-small)" text-anchor="middle" fill="#191917">
+top_p
+      </text>
+      <text x="810" y="772" font-family="var(--pi-sans)" font-weight="300" font-size="var(--type-body-small)" text-anchor="middle" fill="rgba(25,25,23,.55)">
+核采样阈值
+      </text>
+      <line x1="960" y1="700" x2="960" y2="716" stroke="#191917" stroke-width="0.8" opacity="0.5"/>
+      <text x="960" y="744" font-family="var(--pi-mono)" font-size="var(--type-body-small)" text-anchor="middle" fill="#191917">
+max_tokens
+      </text>
+      <text x="960" y="772" font-family="var(--pi-sans)" font-weight="300" font-size="var(--type-body-small)" text-anchor="middle" fill="rgba(25,25,23,.55)">
+最大生成长度
+      </text>
+      <line x1="1110" y1="700" x2="1110" y2="716" stroke="#191917" stroke-width="0.8" opacity="0.5"/>
+      <text x="1110" y="744" font-family="var(--pi-mono)" font-size="var(--type-body-small)" text-anchor="middle" fill="#191917">
+frequency_penalty
+      </text>
+      <text x="1110" y="772" font-family="var(--pi-sans)" font-weight="300" font-size="var(--type-body-small)" text-anchor="middle" fill="rgba(25,25,23,.55)">
+频率惩罚
+      </text>
+      <line x1="1260" y1="700" x2="1260" y2="716" stroke="#191917" stroke-width="0.8" opacity="0.5"/>
+      <text x="1260" y="744" font-family="var(--pi-mono)" font-size="var(--type-body-small)" text-anchor="middle" fill="#191917">
+stop
+      </text>
+      <text x="1260" y="772" font-family="var(--pi-sans)" font-weight="300" font-size="var(--type-body-small)" text-anchor="middle" fill="rgba(25,25,23,.55)">
+停止序列
+      </text>
+    </g>
+</svg></div>`
+  },
+
+  {
+    name: "nested-frames",
+    group: "hierarchy-structure",
+    groupLabel: "层级与结构",
+    description: "Three to five nested frames for containment and zoom levels.",
+    label: "嵌套框",
+    num: 97,
+    variant: null,
+    paperInkNative: true,
+    frame: { width: 1476, height: 830, fit: 'fixed' },
+    dataContract: {"mode":"collection","unit":"layer","pointer":"/structured_data","minItems":3,"maxItems":5},
+    /* production promotion: Catalog new:3 → native.paper-ink.097.nested-frames */
+    snippet: `<div class="pi-card" data-bind-root="record" style="width:auto;min-height:0;overflow:visible"><svg class="pi-art" viewBox="0 0 1920 1080" width="1476" height="830">
+  <defs>
+
+        <pattern id="h2-hatch16" width="8" height="8" patternTransform="rotate(45)" patternUnits="userSpaceOnUse">
+          <line x1="0" y1="0" x2="0" y2="8" stroke="#191917" stroke-width=".7" opacity=".35"/>
+        </pattern>
+
+  </defs>
+    <g transform="translate(0 -13.7)">
+      <line x1="460" y1="520" x2="1100" y2="520" stroke="#191917" stroke-width="0.5" opacity="0.22" stroke-dasharray="2 6"/>
+      <line x1="780" y1="200" x2="780" y2="840" stroke="#191917" stroke-width="0.5" opacity="0.22" stroke-dasharray="2 6"/>
+      <line x1="475" y1="224" x2="493" y2="224" stroke="#191917" stroke-width="0.8" opacity="0.4"/>
+      <line x1="484" y1="215" x2="484" y2="233" stroke="#191917" stroke-width="0.8" opacity="0.4"/>
+      <line x1="1067" y1="224" x2="1085" y2="224" stroke="#191917" stroke-width="0.8" opacity="0.4"/>
+      <line x1="1076" y1="215" x2="1076" y2="233" stroke="#191917" stroke-width="0.8" opacity="0.4"/>
+      <line x1="475" y1="816" x2="493" y2="816" stroke="#191917" stroke-width="0.8" opacity="0.4"/>
+      <line x1="484" y1="807" x2="484" y2="825" stroke="#191917" stroke-width="0.8" opacity="0.4"/>
+      <line x1="1067" y1="816" x2="1085" y2="816" stroke="#191917" stroke-width="0.8" opacity="0.4"/>
+      <line x1="1076" y1="807" x2="1076" y2="825" stroke="#191917" stroke-width="0.8" opacity="0.4"/>
+      <rect x="514" y="254" width="532" height="532" fill="none" stroke="#191917" stroke-width="1.1" opacity="0.5" stroke-dasharray="3 6"/>
+      <rect x="578" y="318" width="404" height="404" fill="none" stroke="#191917" stroke-width="1.1" opacity="0.6" stroke-dasharray="6 4"/>
+      <rect x="642" y="382" width="276" height="276" fill="none" stroke="#191917" stroke-width="1.2" opacity="0.7" stroke-dasharray="none"/>
+      <rect x="706" y="446" width="148" height="148" fill="url(#h2-hatch16)" stroke="#191917" stroke-width="1.4" opacity="0.9" stroke-dasharray="none"/>
+      <circle cx="780" cy="520" r="3" fill="#191917"/>
+      <circle cx="780" cy="520" r="8" fill="none" stroke="#191917" stroke-width="0.8" opacity="0.6"/>
+      <circle cx="1046" cy="254" r="5" fill="none" stroke="rgba(25,25,23,.8)" stroke-width="1"/>
+      <circle cx="1046" cy="254" r="1.8" fill="#191917"/>
+      <path d="M 1046 254 L 1116 254 L 1160 280" fill="none" stroke="#191917" stroke-width="0.7" opacity="0.45" stroke-dasharray="3 5"/>
+      <circle cx="1160" cy="280" r="2.4" fill="#191917" opacity="0.6"/>
+      <line x1="1160" y1="280" x2="1200" y2="280" stroke="#191917" stroke-width="0.7" opacity="0.45"/>
+      <text x="1210" y="278" font-family="var(--pi-mono)" font-size="var(--type-body-small)" letter-spacing="2" fill="#191917">
+04 · OUTCOME
+      </text>
+      <text x="1210" y="312" font-family="var(--pi-sans)" font-weight="300" font-size="var(--type-body)" fill="#191917">
+业务结果
+      </text>
+      <text x="1210" y="340" font-family="var(--pi-sans)" font-weight="300" font-size="var(--type-body-small)" fill="rgba(25,25,23,.7)">
+（最终的产出影响）
+      </text>
+      <circle cx="982" cy="318" r="5" fill="none" stroke="rgba(25,25,23,.8)" stroke-width="1"/>
+      <circle cx="982" cy="318" r="1.8" fill="#191917"/>
+      <path d="M 982 318 L 1052 318 L 1160 430" fill="none" stroke="#191917" stroke-width="0.7" opacity="0.45" stroke-dasharray="3 5"/>
+      <circle cx="1160" cy="430" r="2.4" fill="#191917" opacity="0.6"/>
+      <line x1="1160" y1="430" x2="1200" y2="430" stroke="#191917" stroke-width="0.7" opacity="0.45"/>
+      <text x="1210" y="428" font-family="var(--pi-mono)" font-size="var(--type-body-small)" letter-spacing="2" fill="#191917">
+03 · TASK
+      </text>
+      <text x="1210" y="462" font-family="var(--pi-sans)" font-weight="300" font-size="var(--type-body)" fill="#191917">
+任务过程
+      </text>
+      <text x="1210" y="490" font-family="var(--pi-sans)" font-weight="300" font-size="var(--type-body-small)" fill="rgba(25,25,23,.7)">
+（这一整轮执行）
+      </text>
+      <circle cx="918" cy="382" r="5" fill="none" stroke="rgba(25,25,23,.8)" stroke-width="1"/>
+      <circle cx="918" cy="382" r="1.8" fill="#191917"/>
+      <path d="M 918 382 L 988 382 L 1160 580" fill="none" stroke="#191917" stroke-width="0.7" opacity="0.45" stroke-dasharray="3 5"/>
+      <circle cx="1160" cy="580" r="2.4" fill="#191917" opacity="0.6"/>
+      <line x1="1160" y1="580" x2="1200" y2="580" stroke="#191917" stroke-width="0.7" opacity="0.45"/>
+      <text x="1210" y="578" font-family="var(--pi-mono)" font-size="var(--type-body-small)" letter-spacing="2" fill="#191917">
+02 · SESSION
+      </text>
+      <text x="1210" y="612" font-family="var(--pi-sans)" font-weight="300" font-size="var(--type-body)" fill="#191917">
+单次会话
+      </text>
+      <text x="1210" y="640" font-family="var(--pi-sans)" font-weight="300" font-size="var(--type-body-small)" fill="rgba(25,25,23,.7)">
+（这一段对话）
+      </text>
+      <circle cx="854" cy="446" r="5" fill="none" stroke="rgba(25,25,23,.8)" stroke-width="1"/>
+      <circle cx="854" cy="446" r="1.8" fill="#191917"/>
+      <path d="M 854 446 L 924 446 L 1160 730" fill="none" stroke="#191917" stroke-width="0.7" opacity="0.45" stroke-dasharray="3 5"/>
+      <circle cx="1160" cy="730" r="2.4" fill="#191917" opacity="0.6"/>
+      <line x1="1160" y1="730" x2="1200" y2="730" stroke="#191917" stroke-width="0.7" opacity="0.45"/>
+      <text x="1210" y="728" font-family="var(--pi-mono)" font-size="var(--type-body-small)" letter-spacing="2" fill="#191917">
+01 · CALL
+      </text>
+      <text x="1210" y="762" font-family="var(--pi-sans)" font-weight="300" font-size="var(--type-body)" fill="#191917">
+单轮调用
+      </text>
+      <text x="1210" y="790" font-family="var(--pi-sans)" font-weight="300" font-size="var(--type-body-small)" fill="rgba(25,25,23,.7)">
+（这一次请求）
+      </text>
+    </g>
+</svg></div>`
+  },
+
+  {
+    name: "ranking-bars",
+    group: "metric-data",
+    groupLabel: "指标与数据",
+    description: "Three to eight ranked items rendered as specimen bars.",
+    label: "排行柱图",
+    num: 98,
+    variant: null,
+    paperInkNative: true,
+    frame: { width: 972, height: 547, fit: 'fixed' },
+    dataContract: {"mode":"collection","unit":"ranked-item","pointer":"/structured_data","minItems":3,"maxItems":8},
+    /* production promotion: Catalog new:4 → native.paper-ink.098.ranking-bars */
+    snippet: `<div class="pi-card" data-bind-root="record" style="width:auto;min-height:0;overflow:visible"><svg class="pi-art" viewBox="0 0 1920 1080" width="972" height="547">
+  <defs>
+
+        <pattern id="c7-hatch30" width="7" height="7" patternTransform="rotate(45)" patternUnits="userSpaceOnUse">
+          <line x1="0" y1="0" x2="0" y2="7" stroke="#191917" stroke-width=".7" opacity=".35"/>
+        </pattern>
+
+  </defs>
+    <g transform="translate(0 -24.2)">
+      <line x1="192" y1="820" x2="200" y2="820" stroke="#191917" stroke-width="0.9" opacity="0.6"/>
+      <text x="184" y="824" font-family="var(--pi-mono)" font-size="var(--type-micro-secondary)" text-anchor="end" fill="rgba(25,25,23,.45)">
+0
+      </text>
+      <line x1="200" y1="712" x2="1720" y2="712" stroke="#191917" stroke-width="0.5" opacity="0.12" stroke-dasharray="2 6"/>
+      <line x1="192" y1="712" x2="200" y2="712" stroke="#191917" stroke-width="0.9" opacity="0.6"/>
+      <text x="184" y="716" font-family="var(--pi-mono)" font-size="var(--type-micro-secondary)" text-anchor="end" fill="rgba(25,25,23,.45)">
+100
+      </text>
+      <line x1="200" y1="604" x2="1720" y2="604" stroke="#191917" stroke-width="0.5" opacity="0.12" stroke-dasharray="2 6"/>
+      <line x1="192" y1="604" x2="200" y2="604" stroke="#191917" stroke-width="0.9" opacity="0.6"/>
+      <text x="184" y="608" font-family="var(--pi-mono)" font-size="var(--type-micro-secondary)" text-anchor="end" fill="rgba(25,25,23,.45)">
+200
+      </text>
+      <line x1="200" y1="496" x2="1720" y2="496" stroke="#191917" stroke-width="0.5" opacity="0.12" stroke-dasharray="2 6"/>
+      <line x1="192" y1="496" x2="200" y2="496" stroke="#191917" stroke-width="0.9" opacity="0.6"/>
+      <text x="184" y="500" font-family="var(--pi-mono)" font-size="var(--type-micro-secondary)" text-anchor="end" fill="rgba(25,25,23,.45)">
+300
+      </text>
+      <line x1="200" y1="388" x2="1720" y2="388" stroke="#191917" stroke-width="0.5" opacity="0.12" stroke-dasharray="2 6"/>
+      <line x1="192" y1="388" x2="200" y2="388" stroke="#191917" stroke-width="0.9" opacity="0.6"/>
+      <text x="184" y="392" font-family="var(--pi-mono)" font-size="var(--type-micro-secondary)" text-anchor="end" fill="rgba(25,25,23,.45)">
+400
+      </text>
+      <line x1="200" y1="300" x2="200" y2="820" stroke="#191917" stroke-width="1" opacity="0.6"/>
+      <text x="184" y="290" font-family="var(--pi-mono)" font-size="var(--type-micro-secondary)" letter-spacing="2" text-anchor="end" fill="rgba(25,25,23,.45)">
+综 合 分 · SCORE
+      </text>
+      <line x1="200" y1="820" x2="1720" y2="820" stroke="rgba(25,25,23,.8)" stroke-width="1.2"/>
+      <line x1="300" y1="820" x2="300" y2="830" stroke="#191917" stroke-width="1" opacity="0.7"/>
+      <line x1="395" y1="820" x2="395" y2="826" stroke="#191917" stroke-width="0.5" opacity="0.4"/>
+      <line x1="490" y1="820" x2="490" y2="830" stroke="#191917" stroke-width="1" opacity="0.7"/>
+      <line x1="585" y1="820" x2="585" y2="826" stroke="#191917" stroke-width="0.5" opacity="0.4"/>
+      <line x1="680" y1="820" x2="680" y2="830" stroke="#191917" stroke-width="1" opacity="0.7"/>
+      <line x1="775" y1="820" x2="775" y2="826" stroke="#191917" stroke-width="0.5" opacity="0.4"/>
+      <line x1="870" y1="820" x2="870" y2="830" stroke="#191917" stroke-width="1" opacity="0.7"/>
+      <line x1="965" y1="820" x2="965" y2="826" stroke="#191917" stroke-width="0.5" opacity="0.4"/>
+      <line x1="1060" y1="820" x2="1060" y2="830" stroke="#191917" stroke-width="1" opacity="0.7"/>
+      <line x1="1155" y1="820" x2="1155" y2="826" stroke="#191917" stroke-width="0.5" opacity="0.4"/>
+      <line x1="1250" y1="820" x2="1250" y2="830" stroke="#191917" stroke-width="1" opacity="0.7"/>
+      <line x1="1345" y1="820" x2="1345" y2="826" stroke="#191917" stroke-width="0.5" opacity="0.4"/>
+      <line x1="1440" y1="820" x2="1440" y2="830" stroke="#191917" stroke-width="1" opacity="0.7"/>
+      <line x1="1535" y1="820" x2="1535" y2="826" stroke="#191917" stroke-width="0.5" opacity="0.4"/>
+      <line x1="1630" y1="820" x2="1630" y2="830" stroke="#191917" stroke-width="1" opacity="0.7"/>
+      <rect x="268" y="357.76" width="64" height="462.24" fill="url(#c7-hatch30)" stroke="rgba(25,25,23,.8)" stroke-width="1.4"/>
+      <text x="300" y="343.76" font-family="var(--pi-mono)" font-size="var(--type-body-small)" letter-spacing="1" text-anchor="middle" fill="#191917">
+428
+      </text>
+      <text x="300" y="854" font-family="var(--pi-sans)" font-weight="300" font-size="var(--type-body-small)" text-anchor="middle" fill="#191917">
+GLM-X
+      </text>
+      <text x="300" y="876" font-family="var(--pi-mono)" font-size="var(--type-micro-secondary)" letter-spacing="2" text-anchor="middle" fill="rgba(25,25,23,.45)">
+MODEL-01
+      </text>
+      <rect x="458" y="397.71999999999997" width="64" height="422.28000000000003" fill="none" stroke="rgba(25,25,23,.8)" stroke-width="1.2"/>
+      <text x="490" y="383.71999999999997" font-family="var(--pi-mono)" font-size="var(--type-body-small)" letter-spacing="1" text-anchor="middle" fill="#191917">
+391
+      </text>
+      <text x="490" y="854" font-family="var(--pi-sans)" font-weight="300" font-size="var(--type-body-small)" text-anchor="middle" fill="#191917">
+GPT-X
+      </text>
+      <text x="490" y="876" font-family="var(--pi-mono)" font-size="var(--type-micro-secondary)" letter-spacing="2" text-anchor="middle" fill="rgba(25,25,23,.45)">
+MODEL-02
+      </text>
+      <rect x="648" y="436.59999999999997" width="64" height="383.40000000000003" fill="none" stroke="rgba(25,25,23,.8)" stroke-width="1.2"/>
+      <text x="680" y="422.59999999999997" font-family="var(--pi-mono)" font-size="var(--type-body-small)" letter-spacing="1" text-anchor="middle" fill="#191917">
+355
+      </text>
+      <text x="680" y="854" font-family="var(--pi-sans)" font-weight="300" font-size="var(--type-body-small)" text-anchor="middle" fill="#191917">
+Claude-X
+      </text>
+      <text x="680" y="876" font-family="var(--pi-mono)" font-size="var(--type-micro-secondary)" letter-spacing="2" text-anchor="middle" fill="rgba(25,25,23,.45)">
+MODEL-03
+      </text>
+      <rect x="838" y="498.15999999999997" width="64" height="321.84000000000003" fill="none" stroke="rgba(25,25,23,.8)" stroke-width="1.2"/>
+      <text x="870" y="484.15999999999997" font-family="var(--pi-mono)" font-size="var(--type-body-small)" letter-spacing="1" text-anchor="middle" fill="#191917">
+298
+      </text>
+      <text x="870" y="854" font-family="var(--pi-sans)" font-weight="300" font-size="var(--type-body-small)" text-anchor="middle" fill="#191917">
+Llama-X
+      </text>
+      <text x="870" y="876" font-family="var(--pi-mono)" font-size="var(--type-micro-secondary)" letter-spacing="2" text-anchor="middle" fill="rgba(25,25,23,.45)">
+MODEL-04
+      </text>
+      <rect x="1028" y="534.88" width="64" height="285.12" fill="none" stroke="rgba(25,25,23,.8)" stroke-width="1.2"/>
+      <text x="1060" y="520.88" font-family="var(--pi-mono)" font-size="var(--type-body-small)" letter-spacing="1" text-anchor="middle" fill="#191917">
+264
+      </text>
+      <text x="1060" y="854" font-family="var(--pi-sans)" font-weight="300" font-size="var(--type-body-small)" text-anchor="middle" fill="#191917">
+Gemini-X
+      </text>
+      <text x="1060" y="876" font-family="var(--pi-mono)" font-size="var(--type-micro-secondary)" letter-spacing="2" text-anchor="middle" fill="rgba(25,25,23,.45)">
+MODEL-05
+      </text>
+      <rect x="1218" y="574.8399999999999" width="64" height="245.16000000000003" fill="none" stroke="rgba(25,25,23,.8)" stroke-width="1.2"/>
+      <text x="1250" y="560.8399999999999" font-family="var(--pi-mono)" font-size="var(--type-body-small)" letter-spacing="1" text-anchor="middle" fill="#191917">
+227
+      </text>
+      <text x="1250" y="854" font-family="var(--pi-sans)" font-weight="300" font-size="var(--type-body-small)" text-anchor="middle" fill="#191917">
+Mistral-X
+      </text>
+      <text x="1250" y="876" font-family="var(--pi-mono)" font-size="var(--type-micro-secondary)" letter-spacing="2" text-anchor="middle" fill="rgba(25,25,23,.45)">
+MODEL-06
+      </text>
+      <rect x="1408" y="608.3199999999999" width="64" height="211.68" fill="none" stroke="rgba(25,25,23,.8)" stroke-width="1.2"/>
+      <text x="1440" y="594.3199999999999" font-family="var(--pi-mono)" font-size="var(--type-body-small)" letter-spacing="1" text-anchor="middle" fill="#191917">
+196
+      </text>
+      <text x="1440" y="854" font-family="var(--pi-sans)" font-weight="300" font-size="var(--type-body-small)" text-anchor="middle" fill="#191917">
+DeepSeek-X
+      </text>
+      <text x="1440" y="876" font-family="var(--pi-mono)" font-size="var(--type-micro-secondary)" letter-spacing="2" text-anchor="middle" fill="rgba(25,25,23,.45)">
+MODEL-07
+      </text>
+      <rect x="1598" y="638.56" width="64" height="181.44" fill="none" stroke="rgba(25,25,23,.8)" stroke-width="1.2"/>
+      <text x="1630" y="624.56" font-family="var(--pi-mono)" font-size="var(--type-body-small)" letter-spacing="1" text-anchor="middle" fill="#191917">
+168
+      </text>
+      <text x="1630" y="854" font-family="var(--pi-sans)" font-weight="300" font-size="var(--type-body-small)" text-anchor="middle" fill="#191917">
+Qwen-X
+      </text>
+      <text x="1630" y="876" font-family="var(--pi-mono)" font-size="var(--type-micro-secondary)" letter-spacing="2" text-anchor="middle" fill="rgba(25,25,23,.45)">
+MODEL-08
+      </text>
+      <line x1="300" y1="298" x2="300" y2="317.76" stroke="#191917" stroke-width="0.7" opacity="0.45" stroke-dasharray="3 5"/>
+      <circle cx="300" cy="303" r="2.2" fill="#191917" opacity="0.6"/>
+      <rect x="194" y="180" width="212" height="118" fill="rgba(255,255,255,.22)" stroke="rgba(25,25,23,.8)" stroke-width="1.2"/>
+      <rect x="199" y="185" width="202" height="108" fill="none" stroke="#191917" stroke-width="0.6" opacity="0.3"/>
+      <text x="208" y="204" font-family="var(--pi-mono)" font-size="var(--type-meta)" letter-spacing="2" fill="#191917">
+01
+      </text>
+      <text x="392" y="204" font-family="var(--pi-mono)" font-size="var(--type-micro-secondary)" letter-spacing="1" text-anchor="end" fill="rgba(25,25,23,.45)">
+REASONING
+      </text>
+      <circle cx="300" cy="230" r="14" stroke="rgba(25,25,23,.8)" stroke-width="1.1" fill="none"/>
+      <path d="M 278 258 Q 300 238 322 258" stroke="rgba(25,25,23,.8)" stroke-width="1.1" fill="none"/>
+      <text x="300" y="279" font-family="var(--pi-mono)" font-size="var(--type-micro-secondary)" text-anchor="middle" fill="rgba(25,25,23,.45)">
+SAMPLE · MODEL-01
+      </text>
+      <line x1="490" y1="298" x2="490" y2="357.71999999999997" stroke="#191917" stroke-width="0.7" opacity="0.45" stroke-dasharray="3 5"/>
+      <circle cx="490" cy="303" r="2.2" fill="#191917" opacity="0.6"/>
+      <rect x="384" y="180" width="212" height="118" fill="rgba(255,255,255,.22)" stroke="rgba(25,25,23,.8)" stroke-width="1.2"/>
+      <rect x="389" y="185" width="202" height="108" fill="none" stroke="#191917" stroke-width="0.6" opacity="0.3"/>
+      <text x="398" y="204" font-family="var(--pi-mono)" font-size="var(--type-meta)" letter-spacing="2" fill="#191917">
+02
+      </text>
+      <text x="582" y="204" font-family="var(--pi-mono)" font-size="var(--type-micro-secondary)" letter-spacing="1" text-anchor="end" fill="rgba(25,25,23,.45)">
+CODING
+      </text>
+      <ellipse cx="490" cy="234" rx="13" ry="14" stroke="rgba(25,25,23,.8)" stroke-width="1.1" fill="none"/>
+      <line x1="472" y1="226" x2="508" y2="226" stroke="rgba(25,25,23,.8)" stroke-width="1.1" fill="none"/>
+      <path d="M 470 258 Q 490 242 510 258" stroke="rgba(25,25,23,.8)" stroke-width="1.1" fill="none"/>
+      <text x="490" y="279" font-family="var(--pi-mono)" font-size="var(--type-micro-secondary)" text-anchor="middle" fill="rgba(25,25,23,.45)">
+SAMPLE · MODEL-02
+      </text>
+      <line x1="680" y1="298" x2="680" y2="396.59999999999997" stroke="#191917" stroke-width="0.7" opacity="0.45" stroke-dasharray="3 5"/>
+      <circle cx="680" cy="303" r="2.2" fill="#191917" opacity="0.6"/>
+      <rect x="574" y="180" width="212" height="118" fill="rgba(255,255,255,.22)" stroke="rgba(25,25,23,.8)" stroke-width="1.2"/>
+      <rect x="579" y="185" width="202" height="108" fill="none" stroke="#191917" stroke-width="0.6" opacity="0.3"/>
+      <text x="588" y="204" font-family="var(--pi-mono)" font-size="var(--type-meta)" letter-spacing="2" fill="#191917">
+03
+      </text>
+      <text x="772" y="204" font-family="var(--pi-mono)" font-size="var(--type-micro-secondary)" letter-spacing="1" text-anchor="end" fill="rgba(25,25,23,.45)">
+MATH
+      </text>
+      <circle cx="680" cy="230" r="14" stroke="rgba(25,25,23,.8)" stroke-width="1.1" fill="none"/>
+      <rect x="668" y="226" width="10" height="7" stroke="rgba(25,25,23,.8)" stroke-width="1.1" fill="none"/>
+      <rect x="682" y="226" width="10" height="7" stroke="rgba(25,25,23,.8)" stroke-width="1.1" fill="none"/>
+      <line x1="678" y1="229" x2="682" y2="229" stroke="rgba(25,25,23,.8)" stroke-width="1.1" fill="none"/>
+      <path d="M 658 258 Q 680 238 702 258" stroke="rgba(25,25,23,.8)" stroke-width="1.1" fill="none"/>
+      <text x="680" y="279" font-family="var(--pi-mono)" font-size="var(--type-micro-secondary)" text-anchor="middle" fill="rgba(25,25,23,.45)">
+SAMPLE · MODEL-03
+      </text>
+    </g>
+</svg></div>`
+  },
+
+  {
+    name: "serpentine-loop",
+    group: "flow-temporal",
+    groupLabel: "流程与时序",
+    description: "A five-to-eight-step serpentine closed loop.",
+    label: "蛇形回环",
+    num: 99,
+    variant: null,
+    paperInkNative: true,
+    frame: { width: 1017, height: 572, fit: 'fixed' },
+    dataContract: {"mode":"collection","unit":"step","pointer":"/structured_data","minItems":5,"maxItems":8},
+    /* production promotion: Catalog new:5 → native.paper-ink.099.serpentine-loop */
+    snippet: `<div class="pi-card" data-bind-root="record" style="width:auto;min-height:0;overflow:visible"><svg class="pi-art" viewBox="0 0 1920 1080" width="1017" height="572">
+  <defs>
+
+        <pattern id="j2-hatch17" width="6" height="6" patternTransform="rotate(45)" patternUnits="userSpaceOnUse">
+          <line x1="0" y1="0" x2="0" y2="6" stroke="#191917" stroke-width=".7" opacity=".35"/>
+        </pattern>
+
+  </defs>
+    <g transform="translate(0 -13.7)">
+      <rect x="320" y="290" width="200" height="160" fill="rgba(255,255,255,.22)" stroke="rgba(25,25,23,.8)" stroke-width="1.3"/>
+      <rect x="325" y="295" width="190" height="150" fill="none" stroke="#191917" stroke-width="0.6" opacity="0.3"/>
+      <text x="336" y="318" font-family="var(--pi-mono)" font-size="var(--type-meta)" letter-spacing="2" fill="rgba(25,25,23,.45)">
+01
+      </text>
+      <path d="M 412 330 A 8 8 0 0 1 428 330" fill="none" stroke="rgba(25,25,23,.8)" stroke-width="1.1"/>
+      <path d="M 406 330 A 14 14 0 0 1 434 330" fill="none" stroke="rgba(25,25,23,.8)" stroke-width="1.1"/>
+      <path d="M 400 330 A 20 20 0 0 1 440 330" fill="none" stroke="rgba(25,25,23,.8)" stroke-width="1.1"/>
+      <circle cx="420" cy="335" r="2.4" fill="#191917"/>
+      <text x="420" y="384" font-family="var(--pi-mono)" font-size="var(--type-label)" letter-spacing="2" text-anchor="middle" fill="#191917">
+PERCEIVE
+      </text>
+      <text x="420" y="410" font-family="var(--pi-sans)" font-weight="300" font-size="var(--type-body)" text-anchor="middle" fill="#191917">
+感知输入
+      </text>
+      <text x="420" y="435" font-family="var(--pi-mono)" font-size="var(--type-micro-secondary)" letter-spacing="1" text-anchor="middle" fill="rgba(25,25,23,.45)">
+INPUT · 4HZ
+      </text>
+      <rect x="662" y="290" width="216" height="160" fill="rgba(255,255,255,.22)" stroke="rgba(25,25,23,.8)" stroke-width="1.3"/>
+      <rect x="667" y="295" width="206" height="150" fill="none" stroke="#191917" stroke-width="0.6" opacity="0.3"/>
+      <text x="678" y="318" font-family="var(--pi-mono)" font-size="var(--type-meta)" letter-spacing="2" fill="rgba(25,25,23,.45)">
+02
+      </text>
+      <circle cx="770" cy="330" r="17" fill="none" stroke="rgba(25,25,23,.8)" stroke-width="1.2"/>
+      <line x1="765" y1="322" x2="779" y2="330" stroke="rgba(25,25,23,.8)" stroke-width="1.2"/>
+      <line x1="779" y1="330" x2="765" y2="338" stroke="rgba(25,25,23,.8)" stroke-width="1.2"/>
+      <text x="770" y="384" font-family="var(--pi-mono)" font-size="var(--type-label)" letter-spacing="2" text-anchor="middle" fill="#191917">
+PARSE
+      </text>
+      <text x="770" y="410" font-family="var(--pi-sans)" font-weight="300" font-size="var(--type-body)" text-anchor="middle" fill="#191917">
+意图解析
+      </text>
+      <text x="770" y="435" font-family="var(--pi-mono)" font-size="var(--type-micro-secondary)" letter-spacing="1" text-anchor="middle" fill="rgba(25,25,23,.45)">
+INTENT 1.2M / DAY
+      </text>
+      <rect x="1016" y="290" width="208" height="160" fill="rgba(255,255,255,.22)" stroke="rgba(25,25,23,.8)" stroke-width="1.3"/>
+      <rect x="1021" y="295" width="198" height="150" fill="none" stroke="#191917" stroke-width="0.6" opacity="0.3"/>
+      <text x="1032" y="318" font-family="var(--pi-mono)" font-size="var(--type-meta)" letter-spacing="2" fill="rgba(25,25,23,.45)">
+03
+      </text>
+      <circle cx="1120" cy="330" r="17" fill="none" stroke="rgba(25,25,23,.8)" stroke-width="1.2"/>
+      <line x1="1132" y1="330" x2="1137" y2="330" stroke="#191917" stroke-width="0.7" opacity="0.5"/>
+      <line x1="1128.4852813742386" y1="338.4852813742386" x2="1132.0208152801713" y2="342.0208152801713" stroke="#191917" stroke-width="0.7" opacity="0.5"/>
+      <line x1="1120" y1="342" x2="1120" y2="347" stroke="#191917" stroke-width="0.7" opacity="0.5"/>
+      <line x1="1111.5147186257614" y1="338.4852813742386" x2="1107.9791847198287" y2="342.0208152801713" stroke="#191917" stroke-width="0.7" opacity="0.5"/>
+      <line x1="1108" y1="330" x2="1103" y2="330" stroke="#191917" stroke-width="0.7" opacity="0.5"/>
+      <line x1="1111.5147186257614" y1="321.5147186257614" x2="1107.9791847198287" y2="317.9791847198287" stroke="#191917" stroke-width="0.7" opacity="0.5"/>
+      <line x1="1120" y1="318" x2="1120" y2="313" stroke="#191917" stroke-width="0.7" opacity="0.5"/>
+      <line x1="1128.4852813742386" y1="321.5147186257614" x2="1132.0208152801713" y2="317.9791847198287" stroke="#191917" stroke-width="0.7" opacity="0.5"/>
+      <line x1="1120" y1="330" x2="1129" y2="321" stroke="rgba(25,25,23,.8)" stroke-width="1.2"/>
+      <circle cx="1120" cy="330" r="2" fill="#191917"/>
+      <text x="1120" y="384" font-family="var(--pi-mono)" font-size="var(--type-label)" letter-spacing="2" text-anchor="middle" fill="#191917">
+PLAN
+      </text>
+      <text x="1120" y="410" font-family="var(--pi-sans)" font-weight="300" font-size="var(--type-body)" text-anchor="middle" fill="#191917">
+规划分解
+      </text>
+      <text x="1120" y="435" font-family="var(--pi-mono)" font-size="var(--type-micro-secondary)" letter-spacing="1" text-anchor="middle" fill="rgba(25,25,23,.45)">
+STEPS SET V18
+      </text>
+      <rect x="1354" y="290" width="232" height="160" fill="rgba(255,255,255,.22)" stroke="rgba(25,25,23,.8)" stroke-width="1.3"/>
+      <rect x="1359" y="295" width="222" height="150" fill="none" stroke="#191917" stroke-width="0.6" opacity="0.3"/>
+      <text x="1370" y="318" font-family="var(--pi-mono)" font-size="var(--type-meta)" letter-spacing="2" fill="rgba(25,25,23,.45)">
+04
+      </text>
+      <rect x="1456" y="320" width="12" height="9" fill="none" stroke="rgba(25,25,23,.8)" stroke-width="1"/>
+      <rect x="1472" y="320" width="12" height="9" fill="url(#j2-hatch17)" stroke="rgba(25,25,23,.8)" stroke-width="1"/>
+      <rect x="1456" y="336" width="12" height="9" fill="none" stroke="rgba(25,25,23,.8)" stroke-width="1"/>
+      <rect x="1472" y="336" width="12" height="9" fill="none" stroke="rgba(25,25,23,.8)" stroke-width="1"/>
+      <text x="1470" y="384" font-family="var(--pi-mono)" font-size="var(--type-label)" letter-spacing="2" text-anchor="middle" fill="#191917">
+TOOL CALL
+      </text>
+      <text x="1470" y="410" font-family="var(--pi-sans)" font-weight="300" font-size="var(--type-body)" text-anchor="middle" fill="#191917">
+工具调用
+      </text>
+      <text x="1470" y="435" font-family="var(--pi-mono)" font-size="var(--type-micro-secondary)" letter-spacing="1" text-anchor="middle" fill="rgba(25,25,23,.45)">
+CALLS 860
+      </text>
+      <line x1="528" y1="370" x2="654" y2="370" stroke="rgba(25,25,23,.8)" stroke-width="1.2"/>
+      <line x1="654" y1="370" x2="644" y2="364" stroke="rgba(25,25,23,.8)" stroke-width="1.2"/>
+      <line x1="654" y1="370" x2="644" y2="376" stroke="rgba(25,25,23,.8)" stroke-width="1.2"/>
+      <line x1="886" y1="370" x2="1008" y2="370" stroke="rgba(25,25,23,.8)" stroke-width="1.2"/>
+      <line x1="1008" y1="370" x2="998" y2="364" stroke="rgba(25,25,23,.8)" stroke-width="1.2"/>
+      <line x1="1008" y1="370" x2="998" y2="376" stroke="rgba(25,25,23,.8)" stroke-width="1.2"/>
+      <line x1="1232" y1="370" x2="1346" y2="370" stroke="rgba(25,25,23,.8)" stroke-width="1.2"/>
+      <line x1="1346" y1="370" x2="1336" y2="364" stroke="rgba(25,25,23,.8)" stroke-width="1.2"/>
+      <line x1="1346" y1="370" x2="1336" y2="376" stroke="rgba(25,25,23,.8)" stroke-width="1.2"/>
+      <path d="M 1586 370 C 1746 370, 1746 670, 1586 670" fill="none" stroke="rgba(25,25,23,.8)" stroke-width="1.4"/>
+      <line x1="1586" y1="670" x2="1598" y2="662" stroke="rgba(25,25,23,.8)" stroke-width="1.2"/>
+      <line x1="1586" y1="670" x2="1598" y2="678" stroke="rgba(25,25,23,.8)" stroke-width="1.2"/>
+      <text x="1662" y="500" font-family="var(--pi-mono)" font-size="var(--type-meta)" letter-spacing="2" text-anchor="middle" fill="#191917">
+GO-LIVE
+      </text>
+      <text x="1662" y="530" font-family="var(--pi-sans)" font-weight="300" font-size="var(--type-body-small)" text-anchor="middle" fill="rgba(25,25,23,.7)">
+上线闸口
+      </text>
+      <rect x="1354" y="590" width="232" height="160" fill="rgba(255,255,255,.22)" stroke="rgba(25,25,23,.8)" stroke-width="1.3"/>
+      <rect x="1359" y="595" width="222" height="150" fill="none" stroke="#191917" stroke-width="0.6" opacity="0.3"/>
+      <text x="1370" y="618" font-family="var(--pi-mono)" font-size="var(--type-meta)" letter-spacing="2" fill="rgba(25,25,23,.45)">
+05
+      </text>
+      <path d="M 1470 614 A 16 16 0 0 0 1470 646 Z" fill="url(#j2-hatch17)" stroke="none"/>
+      <circle cx="1470" cy="630" r="16" fill="none" stroke="rgba(25,25,23,.8)" stroke-width="1.2"/>
+      <text x="1470" y="684" font-family="var(--pi-mono)" font-size="var(--type-label)" letter-spacing="2" text-anchor="middle" fill="#191917">
+VERIFY
+      </text>
+      <text x="1470" y="710" font-family="var(--pi-sans)" font-weight="300" font-size="var(--type-body)" text-anchor="middle" fill="#191917">
+结果校验
+      </text>
+      <text x="1470" y="735" font-family="var(--pi-mono)" font-size="var(--type-micro-secondary)" letter-spacing="1" text-anchor="middle" fill="rgba(25,25,23,.45)">
+5% SAMPLE · 2 RULES
+      </text>
+      <rect x="1008" y="590" width="224" height="160" fill="rgba(255,255,255,.22)" stroke="rgba(25,25,23,.8)" stroke-width="1.3"/>
+      <rect x="1013" y="595" width="214" height="150" fill="none" stroke="#191917" stroke-width="0.6" opacity="0.3"/>
+      <text x="1024" y="618" font-family="var(--pi-mono)" font-size="var(--type-meta)" letter-spacing="2" fill="rgba(25,25,23,.45)">
+06
+      </text>
+      <ellipse cx="1120" cy="620" rx="14" ry="5" fill="none" stroke="rgba(25,25,23,.8)" stroke-width="1.2"/>
+      <line x1="1106" y1="620" x2="1106" y2="640" stroke="rgba(25,25,23,.8)" stroke-width="1.2"/>
+      <line x1="1134" y1="620" x2="1134" y2="640" stroke="rgba(25,25,23,.8)" stroke-width="1.2"/>
+      <path d="M 1106 640 A 14 5 0 0 0 1134 640" fill="none" stroke="rgba(25,25,23,.8)" stroke-width="1.2"/>
+      <text x="1120" y="684" font-family="var(--pi-mono)" font-size="var(--type-label)" letter-spacing="2" text-anchor="middle" fill="#191917">
+MEMORY
+      </text>
+      <text x="1120" y="710" font-family="var(--pi-sans)" font-weight="300" font-size="var(--type-body)" text-anchor="middle" fill="#191917">
+记忆更新
+      </text>
+      <text x="1120" y="735" font-family="var(--pi-mono)" font-size="var(--type-micro-secondary)" letter-spacing="1" text-anchor="middle" fill="rgba(25,25,23,.45)">
+100% · 3 STORES
+      </text>
+      <rect x="668" y="590" width="204" height="160" fill="rgba(255,255,255,.22)" stroke="rgba(25,25,23,.8)" stroke-width="1.3"/>
+      <rect x="673" y="595" width="194" height="150" fill="none" stroke="#191917" stroke-width="0.6" opacity="0.3"/>
+      <text x="684" y="618" font-family="var(--pi-mono)" font-size="var(--type-meta)" letter-spacing="2" fill="rgba(25,25,23,.45)">
+07
+      </text>
+      <path d="M 752 639 L 762 631 L 771 636 L 779 623 L 788 628" fill="none" stroke="rgba(25,25,23,.8)" stroke-width="1.2"/>
+      <circle cx="779" cy="623" r="2.2" fill="#191917"/>
+      <text x="770" y="684" font-family="var(--pi-mono)" font-size="var(--type-label)" letter-spacing="2" text-anchor="middle" fill="#191917">
+REFLECT
+      </text>
+      <text x="770" y="710" font-family="var(--pi-sans)" font-weight="300" font-size="var(--type-body)" text-anchor="middle" fill="#191917">
+反思调整
+      </text>
+      <text x="770" y="735" font-family="var(--pi-mono)" font-size="var(--type-micro-secondary)" letter-spacing="1" text-anchor="middle" fill="rgba(25,25,23,.45)">
+P95 38S → 29S
+      </text>
+      <rect x="320" y="590" width="200" height="160" fill="rgba(255,255,255,.22)" stroke="rgba(25,25,23,.8)" stroke-width="1.3"/>
+      <rect x="325" y="595" width="190" height="150" fill="none" stroke="#191917" stroke-width="0.6" opacity="0.3"/>
+      <text x="336" y="618" font-family="var(--pi-mono)" font-size="var(--type-meta)" letter-spacing="2" fill="rgba(25,25,23,.45)">
+08
+      </text>
+      <path d="M 433 636 A 15 15 0 1 1 434 626" fill="none" stroke="rgba(25,25,23,.8)" stroke-width="1.2"/>
+      <line x1="434" y1="626" x2="427" y2="619" stroke="rgba(25,25,23,.8)" stroke-width="1.2"/>
+      <line x1="434" y1="626" x2="441" y2="619" stroke="rgba(25,25,23,.8)" stroke-width="1.2"/>
+      <text x="420" y="684" font-family="var(--pi-mono)" font-size="var(--type-label)" letter-spacing="2" text-anchor="middle" fill="#191917">
+DELIVER
+      </text>
+      <text x="420" y="710" font-family="var(--pi-sans)" font-weight="300" font-size="var(--type-body)" text-anchor="middle" fill="#191917">
+输出交付
+      </text>
+      <text x="420" y="735" font-family="var(--pi-mono)" font-size="var(--type-micro-secondary)" letter-spacing="1" text-anchor="middle" fill="rgba(25,25,23,.45)">
+ISSUE 23 → 01
+      </text>
+      <line x1="1346" y1="670" x2="1240" y2="670" stroke="rgba(25,25,23,.8)" stroke-width="1.2"/>
+      <line x1="1240" y1="670" x2="1250" y2="664" stroke="rgba(25,25,23,.8)" stroke-width="1.2"/>
+      <line x1="1240" y1="670" x2="1250" y2="676" stroke="rgba(25,25,23,.8)" stroke-width="1.2"/>
+      <line x1="1000" y1="670" x2="880" y2="670" stroke="rgba(25,25,23,.8)" stroke-width="1.2"/>
+      <line x1="880" y1="670" x2="890" y2="664" stroke="rgba(25,25,23,.8)" stroke-width="1.2"/>
+      <line x1="880" y1="670" x2="890" y2="676" stroke="rgba(25,25,23,.8)" stroke-width="1.2"/>
+      <line x1="660" y1="670" x2="528" y2="670" stroke="rgba(25,25,23,.8)" stroke-width="1.2"/>
+      <line x1="528" y1="670" x2="538" y2="664" stroke="rgba(25,25,23,.8)" stroke-width="1.2"/>
+      <line x1="528" y1="670" x2="538" y2="676" stroke="rgba(25,25,23,.8)" stroke-width="1.2"/>
+      <path d="M 320 670 C 172 670, 172 370, 320 370" fill="none" stroke="rgba(25,25,23,.8)" stroke-width="1.4"/>
+      <line x1="320" y1="370" x2="308" y2="362" stroke="rgba(25,25,23,.8)" stroke-width="1.2"/>
+      <line x1="320" y1="370" x2="308" y2="378" stroke="rgba(25,25,23,.8)" stroke-width="1.2"/>
+      <text x="246" y="500" font-family="var(--pi-mono)" font-size="var(--type-meta)" letter-spacing="2" text-anchor="middle" fill="#191917">
+ITERATE · W01
+      </text>
+      <text x="246" y="530" font-family="var(--pi-sans)" font-weight="300" font-size="var(--type-body-small)" text-anchor="middle" fill="rgba(25,25,23,.7)">
+持续迭代
+      </text>
+      <line x1="180" y1="370" x2="330" y2="370" stroke="#191917" stroke-width="0.5" opacity="0.18" stroke-dasharray="2 6"/>
+      <line x1="1586" y1="370" x2="1780" y2="370" stroke="#191917" stroke-width="0.5" opacity="0.18" stroke-dasharray="2 6"/>
+      <line x1="180" y1="670" x2="330" y2="670" stroke="#191917" stroke-width="0.5" opacity="0.18" stroke-dasharray="2 6"/>
+      <line x1="1586" y1="670" x2="1780" y2="670" stroke="#191917" stroke-width="0.5" opacity="0.18" stroke-dasharray="2 6"/>
+    </g>
+</svg></div>`
+  },
+
+  {
+    name: "cycle-ring",
+    group: "flow-temporal",
+    groupLabel: "流程与时序",
+    description: "A three-to-six-stage circular governance loop with callouts.",
+    label: "环形循环",
+    num: 100,
+    variant: null,
+    paperInkNative: true,
+    frame: { width: 978, height: 550, fit: 'fixed' },
+    dataContract: {"mode":"collection","unit":"step","pointer":"/structured_data","minItems":3,"maxItems":6},
+    /* production promotion: Catalog new:6 → native.paper-ink.100.cycle-ring */
+    snippet: `<div class="pi-card" data-bind-root="record" style="width:auto;min-height:0;overflow:visible"><svg class="pi-art" viewBox="0 0 1920 1080" width="978" height="550">
+  <defs>
+
+        <marker id="j1-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+          <path d="M 0 0 L 10 5 L 0 10" fill="none" stroke="#191917" stroke-width="1.4"/>
+        </marker>
+
+  </defs>
+    <g transform="translate(0 -8.7)">
+      <circle cx="960" cy="515" r="240" fill="none" stroke="rgba(25,25,23,.8)" stroke-width="1.4"/>
+      <circle cx="960" cy="515" r="226" fill="none" stroke="#191917" stroke-width="0.6" stroke-dasharray="2 6" opacity="0.3"/>
+      <line x1="1180.2310883939076" y1="574.0107422833747" x2="1186.992569177931" y2="575.8224755990924" stroke="#191917" stroke-width="0.6" opacity="0.3"/>
+      <line x1="1157.453792062852" y1="629" x2="1163.515969889343" y2="632.5" stroke="#191917" stroke-width="0.6" opacity="0.3"/>
+      <line x1="1074" y1="712.453792062852" x2="1077.5" y2="718.5159698893431" stroke="#191917" stroke-width="0.6" opacity="0.3"/>
+      <line x1="1019.0107422833747" y1="735.2310883939076" x2="1020.8224755990924" y2="741.992569177931" stroke="#191917" stroke-width="0.6" opacity="0.3"/>
+      <line x1="900.9892577166253" y1="735.2310883939076" x2="899.1775244009076" y2="741.992569177931" stroke="#191917" stroke-width="0.6" opacity="0.3"/>
+      <line x1="846" y1="712.453792062852" x2="842.5" y2="718.5159698893431" stroke="#191917" stroke-width="0.6" opacity="0.3"/>
+      <line x1="762.546207937148" y1="629" x2="756.4840301106569" y2="632.5" stroke="#191917" stroke-width="0.6" opacity="0.3"/>
+      <line x1="739.7689116060924" y1="574.0107422833748" x2="733.007430822069" y2="575.8224755990924" stroke="#191917" stroke-width="0.6" opacity="0.3"/>
+      <line x1="739.7689116060924" y1="455.9892577166254" x2="733.007430822069" y2="454.1775244009077" stroke="#191917" stroke-width="0.6" opacity="0.3"/>
+      <line x1="762.546207937148" y1="401" x2="756.4840301106569" y2="397.5" stroke="#191917" stroke-width="0.6" opacity="0.3"/>
+      <line x1="845.9999999999999" y1="317.546207937148" x2="842.4999999999999" y2="311.48403011065693" stroke="#191917" stroke-width="0.6" opacity="0.3"/>
+      <line x1="900.9892577166253" y1="294.7689116060924" x2="899.1775244009076" y2="288.00743082206895" stroke="#191917" stroke-width="0.6" opacity="0.3"/>
+      <line x1="1019.0107422833748" y1="294.76891160609244" x2="1020.8224755990925" y2="288.00743082206895" stroke="#191917" stroke-width="0.6" opacity="0.3"/>
+      <line x1="1074" y1="317.546207937148" x2="1077.5" y2="311.48403011065693" stroke="#191917" stroke-width="0.6" opacity="0.3"/>
+      <line x1="1157.453792062852" y1="400.9999999999999" x2="1163.515969889343" y2="397.4999999999999" stroke="#191917" stroke-width="0.6" opacity="0.3"/>
+      <line x1="1180.2310883939076" y1="455.9892577166253" x2="1186.992569177931" y2="454.17752440090766" stroke="#191917" stroke-width="0.6" opacity="0.3"/>
+      <path d="M 1197.7 481.6 A 240 240 0 0 1 1197.7 548.4" fill="none" stroke="#191917" stroke-width="1.4" marker-end="url(#j1-arrow)"/>
+      <path d="M 993.4 752.7 A 240 240 0 0 1 926.6 752.7" fill="none" stroke="#191917" stroke-width="1.4" marker-end="url(#j1-arrow)"/>
+      <path d="M 722.3 548.4 A 240 240 0 0 1 722.3 481.6" fill="none" stroke="#191917" stroke-width="1.4" marker-end="url(#j1-arrow)"/>
+      <path d="M 926.6 277.3 A 240 240 0 0 1 993.4 277.3" fill="none" stroke="#191917" stroke-width="1.4" marker-end="url(#j1-arrow)"/>
+      <line x1="944" y1="515" x2="976" y2="515" stroke="#191917" stroke-width="0.5" opacity="0.3"/>
+      <line x1="960" y1="499" x2="960" y2="531" stroke="#191917" stroke-width="0.5" opacity="0.3"/>
+      <text x="960" y="505" font-family="var(--pi-mono)" font-size="var(--type-body-small)" letter-spacing="6" text-anchor="middle" fill="#191917">
+LOOP
+      </text>
+      <text x="960" y="537" font-family="var(--pi-sans)" font-weight="300" font-size="var(--type-body-small)" text-anchor="middle" fill="rgba(25,25,23,.55)">
+评测治理闭环
+      </text>
+      <line x1="1240" y1="344" x2="1141.7" y2="345.3" stroke="#191917" stroke-width="0.7" stroke-dasharray="3 5" opacity="0.45"/>
+      <circle cx="1184.85" cy="344.65" r="2.4" fill="#191917" opacity="0.6"/>
+      <circle cx="1129.7" cy="345.3" r="10" fill="none" stroke="rgba(25,25,23,.8)" stroke-width="1.2"/>
+      <circle cx="1129.7" cy="345.3" r="3.5" fill="#191917"/>
+      <rect x="1240" y="268" width="556" height="152" fill="rgba(255,255,255,.22)" stroke="rgba(25,25,23,.8)" stroke-width="1.2"/>
+      <rect x="1245" y="273" width="546" height="142" fill="none" stroke="#191917" stroke-width="0.6" opacity="0.35"/>
+      <text x="1270" y="314" font-family="var(--pi-mono)" font-size="var(--type-body)" fill="#191917">
+01
+      </text>
+      <line x1="1270" y1="326" x2="1302" y2="326" stroke="#191917" stroke-width="1"/>
+      <text x="1766" y="312" font-family="var(--pi-mono)" font-size="var(--type-meta)" letter-spacing="2" text-anchor="end" fill="rgba(25,25,23,.45)">
+DEFINE
+      </text>
+      <text x="1270" y="362" font-family="var(--pi-sans)" font-weight="300" font-size="var(--type-subheading)" fill="#191917">
+定位
+      </text>
+      <text x="1270" y="396" font-family="var(--pi-sans)" font-weight="300" font-size="var(--type-body-small)" fill="rgba(25,25,23,.7)">
+定义评测目标与基准，圈定能力范围与合格阈值
+      </text>
+      <line x1="1240" y1="686" x2="1141.7" y2="684.7" stroke="#191917" stroke-width="0.7" stroke-dasharray="3 5" opacity="0.45"/>
+      <circle cx="1184.85" cy="685.35" r="2.4" fill="#191917" opacity="0.6"/>
+      <circle cx="1129.7" cy="684.7" r="10" fill="none" stroke="rgba(25,25,23,.8)" stroke-width="1.2"/>
+      <circle cx="1129.7" cy="684.7" r="3.5" fill="#191917"/>
+      <rect x="1240" y="610" width="556" height="152" fill="rgba(255,255,255,.22)" stroke="rgba(25,25,23,.8)" stroke-width="1.2"/>
+      <rect x="1245" y="615" width="546" height="142" fill="none" stroke="#191917" stroke-width="0.6" opacity="0.35"/>
+      <text x="1270" y="656" font-family="var(--pi-mono)" font-size="var(--type-body)" fill="#191917">
+02
+      </text>
+      <line x1="1270" y1="668" x2="1302" y2="668" stroke="#191917" stroke-width="1"/>
+      <text x="1766" y="654" font-family="var(--pi-mono)" font-size="var(--type-meta)" letter-spacing="2" text-anchor="end" fill="rgba(25,25,23,.45)">
+TUNE
+      </text>
+      <text x="1270" y="704" font-family="var(--pi-sans)" font-weight="300" font-size="var(--type-subheading)" fill="#191917">
+调优
+      </text>
+      <text x="1270" y="738" font-family="var(--pi-sans)" font-weight="300" font-size="var(--type-body-small)" fill="rgba(25,25,23,.7)">
+迭代 prompt、参数与工具调用，逐轮逼近目标分数
+      </text>
+      <line x1="680" y1="686" x2="778.3" y2="684.7" stroke="#191917" stroke-width="0.7" stroke-dasharray="3 5" opacity="0.45"/>
+      <circle cx="735.15" cy="685.35" r="2.4" fill="#191917" opacity="0.6"/>
+      <circle cx="790.3" cy="684.7" r="10" fill="none" stroke="rgba(25,25,23,.8)" stroke-width="1.2"/>
+      <circle cx="790.3" cy="684.7" r="3.5" fill="#191917"/>
+      <rect x="124" y="610" width="556" height="152" fill="rgba(255,255,255,.22)" stroke="rgba(25,25,23,.8)" stroke-width="1.2"/>
+      <rect x="129" y="615" width="546" height="142" fill="none" stroke="#191917" stroke-width="0.6" opacity="0.35"/>
+      <text x="154" y="656" font-family="var(--pi-mono)" font-size="var(--type-body)" fill="#191917">
+03
+      </text>
+      <line x1="154" y1="668" x2="186" y2="668" stroke="#191917" stroke-width="1"/>
+      <text x="650" y="654" font-family="var(--pi-mono)" font-size="var(--type-meta)" letter-spacing="2" text-anchor="end" fill="rgba(25,25,23,.45)">
+EVAL
+      </text>
+      <text x="154" y="704" font-family="var(--pi-sans)" font-weight="300" font-size="var(--type-subheading)" fill="#191917">
+评测
+      </text>
+      <text x="154" y="738" font-family="var(--pi-sans)" font-weight="300" font-size="var(--type-body-small)" fill="rgba(25,25,23,.7)">
+跑基准集，人工与自动双轨打分，记录失败样本
+      </text>
+      <line x1="680" y1="344" x2="778.3" y2="345.3" stroke="#191917" stroke-width="0.7" stroke-dasharray="3 5" opacity="0.45"/>
+      <circle cx="735.15" cy="344.65" r="2.4" fill="#191917" opacity="0.6"/>
+      <circle cx="790.3" cy="345.3" r="10" fill="none" stroke="rgba(25,25,23,.8)" stroke-width="1.2"/>
+      <circle cx="790.3" cy="345.3" r="3.5" fill="#191917"/>
+      <rect x="124" y="268" width="556" height="152" fill="rgba(255,255,255,.22)" stroke="rgba(25,25,23,.8)" stroke-width="1.2"/>
+      <rect x="129" y="273" width="546" height="142" fill="none" stroke="#191917" stroke-width="0.6" opacity="0.35"/>
+      <text x="154" y="314" font-family="var(--pi-mono)" font-size="var(--type-body)" fill="#191917">
+04
+      </text>
+      <line x1="154" y1="326" x2="186" y2="326" stroke="#191917" stroke-width="1"/>
+      <text x="650" y="312" font-family="var(--pi-mono)" font-size="var(--type-meta)" letter-spacing="2" text-anchor="end" fill="rgba(25,25,23,.45)">
+GOVERN
+      </text>
+      <text x="154" y="362" font-family="var(--pi-sans)" font-weight="300" font-size="var(--type-subheading)" fill="#191917">
+治理
+      </text>
+      <text x="154" y="396" font-family="var(--pi-sans)" font-weight="300" font-size="var(--type-body-small)" fill="rgba(25,25,23,.7)">
+上线审批、线上监控与回滚，沉淀缺陷反哺下一轮
+      </text>
+    </g>
+</svg></div>`
+  },
+
+  {
+    name: "journey-curve",
+    group: "flow-temporal",
+    groupLabel: "流程与时序",
+    description: "A four-to-six-milestone journey plotted on a curved route.",
+    label: "旅程曲线",
+    num: 101,
+    variant: null,
+    paperInkNative: true,
+    frame: { width: 1049, height: 590, fit: 'fixed' },
+    dataContract: {"mode":"collection","unit":"milestone","pointer":"/structured_data","minItems":4,"maxItems":6},
+    /* production promotion: Catalog new:7 → native.paper-ink.101.journey-curve */
+    snippet: `<div class="pi-card" data-bind-root="record" style="width:auto;min-height:0;overflow:visible"><svg class="pi-art" viewBox="0 0 1920 1080" width="1049" height="590">
+    <g transform="translate(0 -54.2)">
+      <path d="M 180 240 L 448 240 L 470 266 L 448 292 L 180 292 L 202 266 Z" fill="rgba(255,255,255,.22)" stroke="rgba(25,25,23,.8)" stroke-width="1.1"/>
+      <text x="331" y="256" font-family="var(--pi-mono)" font-size="var(--type-meta)" letter-spacing="2" text-anchor="middle" fill="#191917">
+01 ONBOARD
+      </text>
+      <text x="331" y="285" font-family="var(--pi-sans)" font-weight="300" font-size="var(--type-label)" text-anchor="middle" fill="rgba(25,25,23,.7)">
+初次接触
+      </text>
+      <path d="M 492 240 L 760 240 L 782 266 L 760 292 L 492 292 L 514 266 Z" fill="rgba(255,255,255,.22)" stroke="rgba(25,25,23,.8)" stroke-width="1.1"/>
+      <text x="643" y="256" font-family="var(--pi-mono)" font-size="var(--type-meta)" letter-spacing="2" text-anchor="middle" fill="#191917">
+02 WOW
+      </text>
+      <text x="643" y="285" font-family="var(--pi-sans)" font-weight="300" font-size="var(--type-label)" text-anchor="middle" fill="rgba(25,25,23,.7)">
+上手使用
+      </text>
+      <path d="M 804 240 L 1072 240 L 1094 266 L 1072 292 L 804 292 L 826 266 Z" fill="rgba(255,255,255,.22)" stroke="rgba(25,25,23,.8)" stroke-width="1.1"/>
+      <text x="955" y="256" font-family="var(--pi-mono)" font-size="var(--type-meta)" letter-spacing="2" text-anchor="middle" fill="#191917">
+03 DEPTH
+      </text>
+      <text x="955" y="285" font-family="var(--pi-sans)" font-weight="300" font-size="var(--type-label)" text-anchor="middle" fill="rgba(25,25,23,.7)">
+深度使用
+      </text>
+      <path d="M 1116 240 L 1384 240 L 1406 266 L 1384 292 L 1116 292 L 1138 266 Z" fill="rgba(255,255,255,.22)" stroke="rgba(25,25,23,.8)" stroke-width="1.1"/>
+      <text x="1267" y="256" font-family="var(--pi-mono)" font-size="var(--type-meta)" letter-spacing="2" text-anchor="middle" fill="#191917">
+04 STALL
+      </text>
+      <text x="1267" y="285" font-family="var(--pi-sans)" font-weight="300" font-size="var(--type-label)" text-anchor="middle" fill="rgba(25,25,23,.7)">
+遇到瓶颈
+      </text>
+      <path d="M 1428 240 L 1696 240 L 1718 266 L 1696 292 L 1428 292 L 1450 266 Z" fill="rgba(255,255,255,.22)" stroke="rgba(25,25,23,.8)" stroke-width="1.1"/>
+      <text x="1579" y="256" font-family="var(--pi-mono)" font-size="var(--type-meta)" letter-spacing="2" text-anchor="middle" fill="#191917">
+05 BREAK
+      </text>
+      <text x="1579" y="285" font-family="var(--pi-sans)" font-weight="300" font-size="var(--type-label)" text-anchor="middle" fill="rgba(25,25,23,.7)">
+突破理解
+      </text>
+      <line x1="180" y1="560" x2="1740" y2="560" stroke="#191917" stroke-width="0.5" opacity="0.3" stroke-dasharray="2 6"/>
+      <text x="1740" y="548" font-family="var(--pi-mono)" font-size="var(--type-micro-secondary)" letter-spacing="2" text-anchor="end" fill="rgba(25,25,23,.45)">
+EXPERIENCE INDEX 0–100
+      </text>
+      <line x1="300" y1="298" x2="300" y2="461" stroke="#191917" stroke-width="0.5" opacity="0.22" stroke-dasharray="2 6"/>
+      <line x1="590" y1="298" x2="590" y2="331" stroke="#191917" stroke-width="0.5" opacity="0.22" stroke-dasharray="2 6"/>
+      <line x1="830" y1="298" x2="830" y2="686" stroke="#191917" stroke-width="0.5" opacity="0.22" stroke-dasharray="2 6"/>
+      <line x1="1090" y1="298" x2="1090" y2="351" stroke="#191917" stroke-width="0.5" opacity="0.22" stroke-dasharray="2 6"/>
+      <line x1="1330" y1="298" x2="1330" y2="646" stroke="#191917" stroke-width="0.5" opacity="0.22" stroke-dasharray="2 6"/>
+      <line x1="1640" y1="298" x2="1640" y2="401" stroke="#191917" stroke-width="0.5" opacity="0.22" stroke-dasharray="2 6"/>
+      <path d="M 300 560 C 420 560, 470 430, 590 430 C 710 430, 710 700, 830 700 C 950 700, 960 450, 1090 450 C 1220 450, 1210 660, 1330 660 C 1450 660, 1510 500, 1640 500" fill="none" stroke="rgba(25,25,23,.8)" stroke-width="1.4"/>
+      <circle cx="300" cy="560" r="9" fill="#DFE0D9" stroke="rgba(25,25,23,.8)" stroke-width="1.2"/>
+      <circle cx="300" cy="560" r="2.4" fill="#191917"/>
+      <line x1="300" y1="547" x2="300" y2="528" stroke="#191917" stroke-width="0.7" opacity="0.45" stroke-dasharray="3 4"/>
+      <text x="300" y="514" font-family="var(--pi-sans)" font-weight="300" font-size="var(--type-body)" text-anchor="middle" fill="#191917">
+初次接触·好奇
+      </text>
+      <text x="300" y="477" font-family="var(--pi-mono)" font-size="var(--type-meta)" letter-spacing="2" text-anchor="middle" fill="rgba(25,25,23,.45)">
+SCORE 74
+      </text>
+      <circle cx="590" cy="430" r="9" fill="#DFE0D9" stroke="rgba(25,25,23,.8)" stroke-width="1.2"/>
+      <circle cx="590" cy="430" r="2.4" fill="#191917"/>
+      <line x1="590" y1="417" x2="590" y2="398" stroke="#191917" stroke-width="0.7" opacity="0.45" stroke-dasharray="3 4"/>
+      <text x="590" y="384" font-family="var(--pi-sans)" font-weight="300" font-size="var(--type-body)" text-anchor="middle" fill="#191917">
+上手使用·惊艳
+      </text>
+      <text x="590" y="347" font-family="var(--pi-mono)" font-size="var(--type-meta)" letter-spacing="2" text-anchor="middle" fill="rgba(25,25,23,.45)">
+SCORE 92 · PEAK
+      </text>
+      <circle cx="830" cy="700" r="9" fill="#DFE0D9" stroke="rgba(25,25,23,.8)" stroke-width="1.2"/>
+      <circle cx="830" cy="700" r="2.4" fill="#191917"/>
+      <line x1="830" y1="713" x2="830" y2="734" stroke="#191917" stroke-width="0.7" opacity="0.45" stroke-dasharray="3 4"/>
+      <text x="830" y="758" font-family="var(--pi-sans)" font-weight="300" font-size="var(--type-body)" text-anchor="middle" fill="#191917">
+深度使用·撞墙
+      </text>
+      <text x="830" y="784" font-family="var(--pi-mono)" font-size="var(--type-meta)" letter-spacing="2" text-anchor="middle" fill="rgba(25,25,23,.45)">
+SCORE 41 · PAIN
+      </text>
+      <circle cx="1090" cy="450" r="9" fill="#DFE0D9" stroke="rgba(25,25,23,.8)" stroke-width="1.2"/>
+      <circle cx="1090" cy="450" r="2.4" fill="#191917"/>
+      <line x1="1090" y1="437" x2="1090" y2="418" stroke="#191917" stroke-width="0.7" opacity="0.45" stroke-dasharray="3 4"/>
+      <text x="1090" y="404" font-family="var(--pi-sans)" font-weight="300" font-size="var(--type-body)" text-anchor="middle" fill="#191917">
+突破理解·掌控
+      </text>
+      <text x="1090" y="367" font-family="var(--pi-mono)" font-size="var(--type-meta)" letter-spacing="2" text-anchor="middle" fill="rgba(25,25,23,.45)">
+SCORE 88 · PEAK
+      </text>
+      <circle cx="1330" cy="660" r="9" fill="#DFE0D9" stroke="rgba(25,25,23,.8)" stroke-width="1.2"/>
+      <circle cx="1330" cy="660" r="2.4" fill="#191917"/>
+      <line x1="1330" y1="673" x2="1330" y2="694" stroke="#191917" stroke-width="0.7" opacity="0.45" stroke-dasharray="3 4"/>
+      <text x="1330" y="718" font-family="var(--pi-sans)" font-weight="300" font-size="var(--type-body)" text-anchor="middle" fill="#191917">
+遇到幻觉·挫败
+      </text>
+      <text x="1330" y="744" font-family="var(--pi-mono)" font-size="var(--type-meta)" letter-spacing="2" text-anchor="middle" fill="rgba(25,25,23,.45)">
+SCORE 55 · PAIN
+      </text>
+      <circle cx="1640" cy="500" r="9" fill="#DFE0D9" stroke="rgba(25,25,23,.8)" stroke-width="1.2"/>
+      <circle cx="1640" cy="500" r="2.4" fill="#191917"/>
+      <line x1="1640" y1="487" x2="1640" y2="468" stroke="#191917" stroke-width="0.7" opacity="0.45" stroke-dasharray="3 4"/>
+      <text x="1640" y="454" font-family="var(--pi-sans)" font-weight="300" font-size="var(--type-body)" text-anchor="middle" fill="#191917">
+持续依赖·离不开
+      </text>
+      <text x="1640" y="417" font-family="var(--pi-mono)" font-size="var(--type-meta)" letter-spacing="2" text-anchor="middle" fill="rgba(25,25,23,.45)">
+SCORE 90
+      </text>
+      <path d="M 1330 672 C 1340 850, 600 852, 592 452" fill="none" stroke="#191917" stroke-width="0.9" opacity="0.55" stroke-dasharray="6 5"/>
+      <line x1="592" y1="452" x2="583" y2="466" stroke="#191917" stroke-width="1.1" opacity="0.7"/>
+      <line x1="592" y1="452" x2="601" y2="466" stroke="#191917" stroke-width="1.1" opacity="0.7"/>
+      <text x="960" y="876" font-family="var(--pi-mono)" font-size="var(--type-micro-secondary)" letter-spacing="2" text-anchor="middle" fill="rgba(25,25,23,.45)">
+FEEDBACK: PAIN POINTS → ONBOARDING
+      </text>
+    </g>
+</svg></div>`
+  },
+
+  {
+    name: "timeline-axis-horizontal",
+    group: "flow-temporal",
+    groupLabel: "流程与时序",
+    description: "A horizontal ruled timeline with milestone annotations.",
+    label: "时间轴（横排）",
+    num: 102,
+    variant: null,
+    paperInkNative: true,
+    frame: { width: 1044, height: 587, fit: 'fixed' },
+    dataContract: {"mode":"collection","unit":"milestone","pointer":"/structured_data","minItems":3,"maxItems":6},
+    /* production promotion: Catalog new:8 → native.paper-ink.102.timeline-axis-horizontal */
+    snippet: `<div class="pi-card" data-bind-root="record" style="width:auto;min-height:0;overflow:visible"><svg class="pi-art" viewBox="0 0 1920 1080" width="1044" height="587">
+    <g transform="translate(0 -50.7)">
+      <line x1="200" y1="560" x2="1720" y2="560" stroke="rgba(25,25,23,.8)" stroke-width="1.2"/>
+      <line x1="200" y1="560" x2="200" y2="572" stroke="#191917" stroke-width="1" opacity="0.4"/>
+      <line x1="238" y1="560" x2="238" y2="567" stroke="#191917" stroke-width="0.5" opacity="0.25"/>
+      <line x1="276" y1="560" x2="276" y2="567" stroke="#191917" stroke-width="0.5" opacity="0.25"/>
+      <line x1="314" y1="560" x2="314" y2="567" stroke="#191917" stroke-width="0.5" opacity="0.25"/>
+      <line x1="352" y1="560" x2="352" y2="567" stroke="#191917" stroke-width="0.5" opacity="0.25"/>
+      <line x1="390" y1="560" x2="390" y2="572" stroke="#191917" stroke-width="1" opacity="0.4"/>
+      <line x1="428" y1="560" x2="428" y2="567" stroke="#191917" stroke-width="0.5" opacity="0.25"/>
+      <line x1="466" y1="560" x2="466" y2="567" stroke="#191917" stroke-width="0.5" opacity="0.25"/>
+      <line x1="504" y1="560" x2="504" y2="567" stroke="#191917" stroke-width="0.5" opacity="0.25"/>
+      <line x1="542" y1="560" x2="542" y2="567" stroke="#191917" stroke-width="0.5" opacity="0.25"/>
+      <line x1="580" y1="560" x2="580" y2="572" stroke="#191917" stroke-width="1" opacity="0.4"/>
+      <line x1="618" y1="560" x2="618" y2="567" stroke="#191917" stroke-width="0.5" opacity="0.25"/>
+      <line x1="656" y1="560" x2="656" y2="567" stroke="#191917" stroke-width="0.5" opacity="0.25"/>
+      <line x1="694" y1="560" x2="694" y2="567" stroke="#191917" stroke-width="0.5" opacity="0.25"/>
+      <line x1="732" y1="560" x2="732" y2="567" stroke="#191917" stroke-width="0.5" opacity="0.25"/>
+      <line x1="770" y1="560" x2="770" y2="572" stroke="#191917" stroke-width="1" opacity="0.4"/>
+      <line x1="808" y1="560" x2="808" y2="567" stroke="#191917" stroke-width="0.5" opacity="0.25"/>
+      <line x1="846" y1="560" x2="846" y2="567" stroke="#191917" stroke-width="0.5" opacity="0.25"/>
+      <line x1="884" y1="560" x2="884" y2="567" stroke="#191917" stroke-width="0.5" opacity="0.25"/>
+      <line x1="922" y1="560" x2="922" y2="567" stroke="#191917" stroke-width="0.5" opacity="0.25"/>
+      <line x1="960" y1="560" x2="960" y2="572" stroke="#191917" stroke-width="1" opacity="0.4"/>
+      <line x1="998" y1="560" x2="998" y2="567" stroke="#191917" stroke-width="0.5" opacity="0.25"/>
+      <line x1="1036" y1="560" x2="1036" y2="567" stroke="#191917" stroke-width="0.5" opacity="0.25"/>
+      <line x1="1074" y1="560" x2="1074" y2="567" stroke="#191917" stroke-width="0.5" opacity="0.25"/>
+      <line x1="1112" y1="560" x2="1112" y2="567" stroke="#191917" stroke-width="0.5" opacity="0.25"/>
+      <line x1="1150" y1="560" x2="1150" y2="572" stroke="#191917" stroke-width="1" opacity="0.4"/>
+      <line x1="1188" y1="560" x2="1188" y2="567" stroke="#191917" stroke-width="0.5" opacity="0.25"/>
+      <line x1="1226" y1="560" x2="1226" y2="567" stroke="#191917" stroke-width="0.5" opacity="0.25"/>
+      <line x1="1264" y1="560" x2="1264" y2="567" stroke="#191917" stroke-width="0.5" opacity="0.25"/>
+      <line x1="1302" y1="560" x2="1302" y2="567" stroke="#191917" stroke-width="0.5" opacity="0.25"/>
+      <line x1="1340" y1="560" x2="1340" y2="572" stroke="#191917" stroke-width="1" opacity="0.4"/>
+      <line x1="1378" y1="560" x2="1378" y2="567" stroke="#191917" stroke-width="0.5" opacity="0.25"/>
+      <line x1="1416" y1="560" x2="1416" y2="567" stroke="#191917" stroke-width="0.5" opacity="0.25"/>
+      <line x1="1454" y1="560" x2="1454" y2="567" stroke="#191917" stroke-width="0.5" opacity="0.25"/>
+      <line x1="1492" y1="560" x2="1492" y2="567" stroke="#191917" stroke-width="0.5" opacity="0.25"/>
+      <line x1="1530" y1="560" x2="1530" y2="572" stroke="#191917" stroke-width="1" opacity="0.4"/>
+      <line x1="1568" y1="560" x2="1568" y2="567" stroke="#191917" stroke-width="0.5" opacity="0.25"/>
+      <line x1="1606" y1="560" x2="1606" y2="567" stroke="#191917" stroke-width="0.5" opacity="0.25"/>
+      <line x1="1644" y1="560" x2="1644" y2="567" stroke="#191917" stroke-width="0.5" opacity="0.25"/>
+      <line x1="1682" y1="560" x2="1682" y2="567" stroke="#191917" stroke-width="0.5" opacity="0.25"/>
+      <line x1="1720" y1="560" x2="1720" y2="572" stroke="#191917" stroke-width="1" opacity="0.4"/>
+      <circle cx="280" cy="560" r="9" fill="#DFE0D9" stroke="rgba(25,25,23,.8)" stroke-width="1.2"/>
+      <circle cx="280" cy="560" r="3" fill="#191917"/>
+      <text x="280" y="456" font-family="var(--pi-mono)" font-size="var(--type-subheading)" text-anchor="middle" fill="#191917">
+2018
+      </text>
+      <text x="280" y="494" font-family="var(--pi-mono)" font-size="var(--type-body-small)" letter-spacing="1" text-anchor="middle" fill="rgba(25,25,23,.8)">
+GPT-1
+      </text>
+      <text x="280" y="518" font-family="var(--pi-sans)" font-weight="300" font-size="var(--type-meta)" text-anchor="middle" fill="rgba(25,25,23,.45)">
+预训练雏形
+      </text>
+      <line x1="280" y1="532" x2="280" y2="548" stroke="#191917" stroke-width="0.6" opacity="0.4"/>
+      <text x="280" y="612" font-family="var(--pi-sans)" font-weight="300" font-size="var(--type-body)" text-anchor="middle" fill="rgba(25,25,23,.7)">
+1.17 亿参数 · 证明可行性
+      </text>
+      <circle cx="548" cy="560" r="9" fill="#DFE0D9" stroke="rgba(25,25,23,.8)" stroke-width="1.2"/>
+      <circle cx="548" cy="560" r="3" fill="#191917"/>
+      <text x="548" y="456" font-family="var(--pi-mono)" font-size="var(--type-subheading)" text-anchor="middle" fill="#191917">
+2019
+      </text>
+      <text x="548" y="494" font-family="var(--pi-mono)" font-size="var(--type-body-small)" letter-spacing="1" text-anchor="middle" fill="rgba(25,25,23,.8)">
+GPT-2
+      </text>
+      <text x="548" y="518" font-family="var(--pi-sans)" font-weight="300" font-size="var(--type-meta)" text-anchor="middle" fill="rgba(25,25,23,.45)">
+规模跃迁
+      </text>
+      <line x1="548" y1="532" x2="548" y2="548" stroke="#191917" stroke-width="0.6" opacity="0.4"/>
+      <circle cx="816" cy="560" r="9" fill="#DFE0D9" stroke="rgba(25,25,23,.8)" stroke-width="1.2"/>
+      <circle cx="816" cy="560" r="3" fill="#191917"/>
+      <text x="816" y="456" font-family="var(--pi-mono)" font-size="var(--type-subheading)" text-anchor="middle" fill="#191917">
+2020
+      </text>
+      <text x="816" y="494" font-family="var(--pi-mono)" font-size="var(--type-body-small)" letter-spacing="1" text-anchor="middle" fill="rgba(25,25,23,.8)">
+GPT-3
+      </text>
+      <text x="816" y="518" font-family="var(--pi-sans)" font-weight="300" font-size="var(--type-meta)" text-anchor="middle" fill="rgba(25,25,23,.45)">
+涌现能力
+      </text>
+      <line x1="816" y1="532" x2="816" y2="548" stroke="#191917" stroke-width="0.6" opacity="0.4"/>
+      <circle cx="1084" cy="560" r="9" fill="#DFE0D9" stroke="rgba(25,25,23,.8)" stroke-width="1.2"/>
+      <circle cx="1084" cy="560" r="3" fill="#191917"/>
+      <text x="1084" y="456" font-family="var(--pi-mono)" font-size="var(--type-subheading)" text-anchor="middle" fill="#191917">
+2022
+      </text>
+      <text x="1084" y="494" font-family="var(--pi-mono)" font-size="var(--type-body-small)" letter-spacing="1" text-anchor="middle" fill="rgba(25,25,23,.8)">
+ChatGPT
+      </text>
+      <text x="1084" y="518" font-family="var(--pi-sans)" font-weight="300" font-size="var(--type-meta)" text-anchor="middle" fill="rgba(25,25,23,.45)">
+对话破圈
+      </text>
+      <line x1="1084" y1="532" x2="1084" y2="548" stroke="#191917" stroke-width="0.6" opacity="0.4"/>
+      <circle cx="1352" cy="560" r="5" fill="#191917"/>
+      <circle cx="1352" cy="560" r="16" fill="none" stroke="#191917" stroke-width="1.4"/>
+      <circle cx="1352" cy="560" r="20" fill="none" stroke="#191917" stroke-width="0.6" opacity="0.4"/>
+      <text x="1352" y="456" font-family="var(--pi-mono)" font-size="var(--type-subheading)" text-anchor="middle" fill="#191917">
+2023
+      </text>
+      <text x="1352" y="494" font-family="var(--pi-mono)" font-size="var(--type-body-small)" letter-spacing="1" text-anchor="middle" fill="rgba(25,25,23,.8)">
+GPT-4
+      </text>
+      <text x="1352" y="518" font-family="var(--pi-sans)" font-weight="300" font-size="var(--type-meta)" text-anchor="middle" fill="rgba(25,25,23,.45)">
+多模态
+      </text>
+      <line x1="1352" y1="532" x2="1352" y2="548" stroke="#191917" stroke-width="0.6" opacity="0.4"/>
+      <text x="1352" y="612" font-family="var(--pi-sans)" font-weight="400" font-size="var(--type-body)" text-anchor="middle" fill="#191917">
+推理 · 多模态 · 月活破亿
+      </text>
+      <line x1="1232" y1="626" x2="1472" y2="626" stroke="#191917" stroke-width="1.2" opacity="0.8"/>
+      <circle cx="1620" cy="560" r="9" fill="#DFE0D9" stroke="rgba(25,25,23,.8)" stroke-width="1.2"/>
+      <circle cx="1620" cy="560" r="3" fill="#191917"/>
+      <text x="1620" y="456" font-family="var(--pi-mono)" font-size="var(--type-subheading)" text-anchor="middle" fill="#191917">
+2025
+      </text>
+      <text x="1620" y="494" font-family="var(--pi-mono)" font-size="var(--type-body-small)" letter-spacing="1" text-anchor="middle" fill="rgba(25,25,23,.8)">
+o1 / o3
+      </text>
+      <text x="1620" y="518" font-family="var(--pi-sans)" font-weight="300" font-size="var(--type-meta)" text-anchor="middle" fill="rgba(25,25,23,.45)">
+推理模型
+      </text>
+      <line x1="1620" y1="532" x2="1620" y2="548" stroke="#191917" stroke-width="0.6" opacity="0.4"/>
+      <text x="1620" y="612" font-family="var(--pi-sans)" font-weight="300" font-size="var(--type-body)" text-anchor="middle" fill="rgba(25,25,23,.7)">
+思维链 · 自我反思
+      </text>
+      <path d="M 1276 646 Q 1352 700 1428 646" fill="none" stroke="#191917" stroke-width="0.8" opacity="0.35"/>
+      <path d="M 1284 654 Q 1352 702 1420 654" fill="none" stroke="#191917" stroke-width="0.6" opacity="0.2"/>
+    </g>
+</svg></div>`
+  },
+
+  {
+    name: "concentric-ring",
+    group: "hierarchy-structure",
+    groupLabel: "层级与结构",
+    description: "Three to five concentric containment rings with side explanations.",
+    label: "同心环",
+    num: 103,
+    variant: null,
+    paperInkNative: true,
+    frame: { width: 1249, height: 702, fit: 'fixed' },
+    dataContract: {"mode":"collection","unit":"layer","pointer":"/structured_data","minItems":3,"maxItems":5},
+    /* production promotion: Catalog new:9 → native.paper-ink.103.concentric-ring */
+    snippet: `<div class="pi-card" data-bind-root="record" style="width:auto;min-height:0;overflow:visible"><svg class="pi-art" viewBox="0 0 1920 1080" width="1249" height="702">
+  <defs>
+
+        <pattern id="h1-hatch" width="6" height="6" patternUnits="userSpaceOnUse" patternTransform="rotate(45)">
+          <line x1="0" y1="0" x2="0" y2="6" stroke="#191917" stroke-width="0.7" opacity="0.35"/>
+        </pattern>
+
+  </defs>
+    <g transform="translate(0 -23.7)">
+      <line x1="1050" y1="170" x2="1050" y2="890" stroke="#191917" stroke-width="0.5" stroke-dasharray="2 6" opacity="0.22"/>
+      <line x1="660" y1="530" x2="1460" y2="530" stroke="#191917" stroke-width="0.5" stroke-dasharray="2 6" opacity="0.22"/>
+      <circle cx="1050" cy="530" r="300" fill="none" stroke="rgba(25,25,23,.8)" stroke-width="1.3"/>
+      <circle cx="1050" cy="530" r="292" fill="none" stroke="#191917" stroke-width="0.6" opacity="0.3"/>
+      <circle cx="1050" cy="530" r="190" fill="none" stroke="rgba(25,25,23,.8)" stroke-width="1.2"/>
+      <circle cx="1050" cy="530" r="183" fill="none" stroke="#191917" stroke-width="0.6" opacity="0.3"/>
+      <circle cx="1050" cy="530" r="80" fill="none" stroke="rgba(25,25,23,.8)" stroke-width="1.4"/>
+      <circle cx="1050" cy="530" r="73" fill="none" stroke="#191917" stroke-width="0.6" opacity="0.35"/>
+      <line x1="1127.6457135307562" y1="240.22225211327952" x2="1129.975084936679" y2="231.5289196766779" stroke="#191917" stroke-width="0.6" opacity="0.3"/>
+      <line x1="1200" y1="270.1923788646684" x2="1204.5" y2="262.39815023060845" stroke="#191917" stroke-width="0.6" opacity="0.3"/>
+      <line x1="1309.8076211353316" y1="380" x2="1317.6018497693915" y2="375.5" stroke="#191917" stroke-width="0.6" opacity="0.3"/>
+      <line x1="1339.7777478867206" y1="452.3542864692438" x2="1348.471080323322" y2="450.0249150633211" stroke="#191917" stroke-width="0.6" opacity="0.3"/>
+      <line x1="1339.7777478867206" y1="607.6457135307562" x2="1348.471080323322" y2="609.975084936679" stroke="#191917" stroke-width="0.6" opacity="0.3"/>
+      <line x1="1309.8076211353316" y1="680" x2="1317.6018497693915" y2="684.5" stroke="#191917" stroke-width="0.6" opacity="0.3"/>
+      <line x1="1200" y1="789.8076211353316" x2="1204.5" y2="797.6018497693915" stroke="#191917" stroke-width="0.6" opacity="0.3"/>
+      <line x1="1127.6457135307562" y1="819.7777478867205" x2="1129.975084936679" y2="828.4710803233221" stroke="#191917" stroke-width="0.6" opacity="0.3"/>
+      <line x1="972.3542864692439" y1="819.7777478867206" x2="970.0249150633213" y2="828.4710803233222" stroke="#191917" stroke-width="0.6" opacity="0.3"/>
+      <line x1="900" y1="789.8076211353316" x2="895.5" y2="797.6018497693915" stroke="#191917" stroke-width="0.6" opacity="0.3"/>
+      <line x1="790.1923788646684" y1="680.0000000000001" x2="782.3981502306085" y2="684.5000000000001" stroke="#191917" stroke-width="0.6" opacity="0.3"/>
+      <line x1="760.2222521132795" y1="607.6457135307562" x2="751.5289196766779" y2="609.9750849366789" stroke="#191917" stroke-width="0.6" opacity="0.3"/>
+      <line x1="760.2222521132795" y1="452.3542864692437" x2="751.5289196766779" y2="450.024915063321" stroke="#191917" stroke-width="0.6" opacity="0.3"/>
+      <line x1="790.1923788646684" y1="380" x2="782.3981502306085" y2="375.5" stroke="#191917" stroke-width="0.6" opacity="0.3"/>
+      <line x1="899.9999999999999" y1="270.1923788646685" x2="895.4999999999999" y2="262.39815023060856" stroke="#191917" stroke-width="0.6" opacity="0.3"/>
+      <line x1="972.3542864692438" y1="240.22225211327952" x2="970.0249150633211" y2="231.5289196766779" stroke="#191917" stroke-width="0.6" opacity="0.3"/>
+      <line x1="1145" y1="365.4551732809566" x2="1148.5" y2="359.39299545446556" stroke="#191917" stroke-width="0.5" opacity="0.25"/>
+      <line x1="1214.5448267190434" y1="435" x2="1220.6070045455344" y2="431.5" stroke="#191917" stroke-width="0.5" opacity="0.25"/>
+      <line x1="1214.5448267190434" y1="625" x2="1220.6070045455344" y2="628.5" stroke="#191917" stroke-width="0.5" opacity="0.25"/>
+      <line x1="1145" y1="694.5448267190434" x2="1148.5" y2="700.6070045455344" stroke="#191917" stroke-width="0.5" opacity="0.25"/>
+      <line x1="955" y1="694.5448267190434" x2="951.5" y2="700.6070045455344" stroke="#191917" stroke-width="0.5" opacity="0.25"/>
+      <line x1="885.4551732809567" y1="625.0000000000001" x2="879.3929954544656" y2="628.5000000000001" stroke="#191917" stroke-width="0.5" opacity="0.25"/>
+      <line x1="885.4551732809566" y1="435" x2="879.3929954544656" y2="431.5" stroke="#191917" stroke-width="0.5" opacity="0.25"/>
+      <line x1="954.9999999999999" y1="365.4551732809567" x2="951.4999999999999" y2="359.3929954544657" stroke="#191917" stroke-width="0.5" opacity="0.25"/>
+      <text x="1050" y="522" font-family="var(--pi-mono)" font-size="var(--type-body-small)" letter-spacing="3" text-anchor="middle" fill="#191917">
+LLM CORE
+      </text>
+      <text x="1050" y="552" font-family="var(--pi-sans)" font-weight="300" font-size="var(--type-body)" text-anchor="middle" fill="#191917">
+模型内核
+      </text>
+      <text x="1050" y="184" font-family="var(--pi-mono)" font-size="var(--type-meta)" letter-spacing="3" text-anchor="middle" fill="rgba(25,25,23,.55)">
+OUTPUT · LAYER
+      </text>
+      <text x="1050" y="212" font-family="var(--pi-sans)" font-weight="300" font-size="var(--type-body)" text-anchor="middle" fill="#191917">
+输出防护
+      </text>
+      <text x="1050" y="272" font-family="var(--pi-mono)" font-size="var(--type-meta)" letter-spacing="3" text-anchor="middle" fill="rgba(25,25,23,.55)">
+INPUT · LAYER
+      </text>
+      <text x="1050" y="300" font-family="var(--pi-sans)" font-weight="300" font-size="var(--type-body)" text-anchor="middle" fill="#191917">
+输入校验
+      </text>
+      <circle cx="1184.350288425444" cy="395.64971157455597" r="2.2" fill="#191917" opacity="0.6"/>
+      <line x1="1184.350288425444" y1="395.64971157455597" x2="1194.2497833620557" y2="385.7502166379443" stroke="#191917" stroke-width="0.6" opacity="0.35"/>
+      <text x="1204.1492782986675" y="380.85072170133265" font-family="var(--pi-mono)" font-weight="300" font-size="var(--type-label)" text-anchor="start" fill="rgba(25,25,23,.8)">
+SCHEMA
+      </text>
+      <circle cx="1184.350288425444" cy="664.350288425444" r="2.2" fill="#191917" opacity="0.6"/>
+      <line x1="1184.350288425444" y1="664.350288425444" x2="1194.2497833620557" y2="674.2497833620557" stroke="#191917" stroke-width="0.6" opacity="0.35"/>
+      <text x="1204.1492782986675" y="689.1492782986674" font-family="var(--pi-sans)" font-weight="300" font-size="var(--type-body-small)" text-anchor="start" fill="rgba(25,25,23,.8)">
+越狱拦截
+      </text>
+      <circle cx="915.649711574556" cy="664.3502884254441" r="2.2" fill="#191917" opacity="0.6"/>
+      <line x1="915.649711574556" y1="664.3502884254441" x2="905.7502166379443" y2="674.2497833620557" stroke="#191917" stroke-width="0.6" opacity="0.35"/>
+      <text x="895.8507217013326" y="689.1492782986674" font-family="var(--pi-sans)" font-weight="300" font-size="var(--type-body-small)" text-anchor="end" fill="rgba(25,25,23,.8)">
+注入检测
+      </text>
+      <circle cx="915.6497115745559" cy="395.649711574556" r="2.2" fill="#191917" opacity="0.6"/>
+      <line x1="915.6497115745559" y1="395.649711574556" x2="905.7502166379443" y2="385.75021663794433" stroke="#191917" stroke-width="0.6" opacity="0.35"/>
+      <text x="895.8507217013326" y="380.85072170133265" font-family="var(--pi-sans)" font-weight="300" font-size="var(--type-body-small)" text-anchor="end" fill="rgba(25,25,23,.8)">
+敏感词过滤
+      </text>
+      <circle cx="1262.1320343559642" cy="317.86796564403573" r="2.2" fill="#191917" opacity="0.6"/>
+      <line x1="1262.1320343559642" y1="317.86796564403573" x2="1272.031529292576" y2="307.9684707074241" stroke="#191917" stroke-width="0.6" opacity="0.35"/>
+      <text x="1281.9310242291876" y="303.06897577081236" font-family="var(--pi-sans)" font-weight="300" font-size="var(--type-body-small)" text-anchor="start" fill="rgba(25,25,23,.8)">
+毒性过滤
+      </text>
+      <circle cx="1262.1320343559642" cy="742.1320343559643" r="2.2" fill="#191917" opacity="0.6"/>
+      <line x1="1262.1320343559642" y1="742.1320343559643" x2="1272.031529292576" y2="752.0315292925759" stroke="#191917" stroke-width="0.6" opacity="0.35"/>
+      <text x="1281.9310242291876" y="766.9310242291875" font-family="var(--pi-sans)" font-weight="300" font-size="var(--type-body-small)" text-anchor="start" fill="rgba(25,25,23,.8)">
+PII 脱敏
+      </text>
+      <circle cx="837.8679656440357" cy="742.1320343559643" r="2.2" fill="#191917" opacity="0.6"/>
+      <line x1="837.8679656440357" y1="742.1320343559643" x2="827.9684707074241" y2="752.031529292576" stroke="#191917" stroke-width="0.6" opacity="0.35"/>
+      <text x="818.0689757708125" y="766.9310242291876" font-family="var(--pi-sans)" font-weight="300" font-size="var(--type-body-small)" text-anchor="end" fill="rgba(25,25,23,.8)">
+事实核查
+      </text>
+      <circle cx="837.8679656440357" cy="317.8679656440358" r="2.2" fill="#191917" opacity="0.6"/>
+      <line x1="837.8679656440357" y1="317.8679656440358" x2="827.968470707424" y2="307.9684707074241" stroke="#191917" stroke-width="0.6" opacity="0.35"/>
+      <text x="818.0689757708124" y="303.0689757708125" font-family="var(--pi-sans)" font-weight="300" font-size="var(--type-body-small)" text-anchor="end" fill="rgba(25,25,23,.8)">
+内容分级
+      </text>
+      <rect x="150" y="570" width="400" height="280" fill="rgba(255,255,255,.22)" stroke="rgba(25,25,23,.8)" stroke-width="1.3"/>
+      <rect x="155" y="575" width="390" height="270" fill="none" stroke="#191917" stroke-width="0.6" opacity="0.35"/>
+      <text x="184" y="628" font-family="var(--pi-mono)" font-size="var(--type-subheading)" fill="#191917">
+01
+      </text>
+      <line x1="182" y1="644" x2="238" y2="644" stroke="#191917" stroke-width="1.2"/>
+      <rect x="490" y="594" width="30" height="30" fill="url(#h1-hatch)" stroke="rgba(25,25,23,.8)" stroke-width="1.2"/>
+      <text x="184" y="682" font-family="var(--pi-sans)" font-weight="300" font-size="var(--type-body)" fill="#191917">
+FALLBACK 兜底接管
+      </text>
+      <text x="184" y="706" font-family="var(--pi-mono)" font-size="var(--type-meta)" letter-spacing="2" fill="rgba(25,25,23,.55)">
+FALLBACK · LAYER
+      </text>
+      <line x1="184" y1="722" x2="516" y2="722" stroke="#191917" stroke-width="0.8" opacity="0.5"/>
+      <line x1="184" y1="726" x2="516" y2="726" stroke="#191917" stroke-width="0.6" opacity="0.25"/>
+      <path d="M 186 745 L 191 751 L 202 738" fill="none" stroke="#191917" stroke-width="1.1" stroke-linecap="round" stroke-linejoin="round"/>
+      <text x="218" y="752" font-family="var(--pi-sans)" font-weight="300" font-size="var(--type-body-small)" fill="rgba(25,25,23,.8)">
+降级模型
+      </text>
+      <path d="M 186 771 L 191 777 L 202 764" fill="none" stroke="#191917" stroke-width="1.1" stroke-linecap="round" stroke-linejoin="round"/>
+      <text x="218" y="778" font-family="var(--pi-sans)" font-weight="300" font-size="var(--type-body-small)" fill="rgba(25,25,23,.8)">
+人工接管
+      </text>
+      <path d="M 186 797 L 191 803 L 202 790" fill="none" stroke="#191917" stroke-width="1.1" stroke-linecap="round" stroke-linejoin="round"/>
+      <text x="218" y="804" font-family="var(--pi-sans)" font-weight="300" font-size="var(--type-body-small)" fill="rgba(25,25,23,.8)">
+安全回复
+      </text>
+      <path d="M 186 823 L 191 829 L 202 816" fill="none" stroke="#191917" stroke-width="1.1" stroke-linecap="round" stroke-linejoin="round"/>
+      <text x="218" y="830" font-family="var(--pi-sans)" font-weight="300" font-size="var(--type-body-small)" fill="rgba(25,25,23,.8)">
+告警上报
+      </text>
+      <path d="M 550 624 C 720 620, 840 560, 964 528" fill="none" stroke="#191917" stroke-width="0.7" stroke-dasharray="3 5" opacity="0.45"/>
+      <circle cx="964" cy="528" r="2.4" fill="#191917" opacity="0.6"/>
+      <text x="1050" y="866" font-family="var(--pi-mono)" font-size="var(--type-micro-secondary)" letter-spacing="2" text-anchor="middle" fill="rgba(25,25,23,.45)">
+FAIL-SAFE · AUDITED PER CALL
+      </text>
+    </g>
+</svg></div>`
+  },
+
+  {
+    name: "timeline-axis-vertical",
+    group: "flow-temporal",
+    groupLabel: "流程与时序",
+    description: "A vertical ruled timeline for narrow slots.",
+    label: "时间轴（竖排）",
+    num: 104,
+    variant: null,
+    paperInkNative: true,
+    frame: { width: 540, height: 600, fit: 'fixed' },
+    dataContract: {"mode":"collection","unit":"milestone","pointer":"/structured_data","minItems":3,"maxItems":6},
+    /* production promotion: Catalog new:10 → native.paper-ink.104.timeline-axis-vertical */
+    snippet: `<div class="pi-card" data-bind-root="record" style="width:auto;min-height:0;overflow:visible"><svg class="pi-art" viewBox="0 0 900 1000" width="540" height="600">
+  <line x1="250" y1="72" x2="250" y2="928" stroke="rgba(25,25,23,.8)" stroke-width="1.2"/>
+  <g stroke="#191917" fill="none">
+    <line x1="238" y1="72" x2="250" y2="72" stroke-width="1" opacity=".4"/>
+    <line x1="243" y1="112" x2="250" y2="112" stroke-width=".5" opacity=".25"/>
+    <line x1="243" y1="152" x2="250" y2="152" stroke-width=".5" opacity=".25"/>
+    <line x1="243" y1="192" x2="250" y2="192" stroke-width=".5" opacity=".25"/>
+    <line x1="243" y1="232" x2="250" y2="232" stroke-width=".5" opacity=".25"/>
+    <line x1="238" y1="272" x2="250" y2="272" stroke-width="1" opacity=".4"/>
+    <line x1="243" y1="312" x2="250" y2="312" stroke-width=".5" opacity=".25"/>
+    <line x1="243" y1="352" x2="250" y2="352" stroke-width=".5" opacity=".25"/>
+    <line x1="243" y1="392" x2="250" y2="392" stroke-width=".5" opacity=".25"/>
+    <line x1="238" y1="432" x2="250" y2="432" stroke-width="1" opacity=".4"/>
+    <line x1="243" y1="472" x2="250" y2="472" stroke-width=".5" opacity=".25"/>
+    <line x1="243" y1="512" x2="250" y2="512" stroke-width=".5" opacity=".25"/>
+    <line x1="243" y1="552" x2="250" y2="552" stroke-width=".5" opacity=".25"/>
+    <line x1="238" y1="592" x2="250" y2="592" stroke-width="1" opacity=".4"/>
+    <line x1="243" y1="632" x2="250" y2="632" stroke-width=".5" opacity=".25"/>
+    <line x1="243" y1="672" x2="250" y2="672" stroke-width=".5" opacity=".25"/>
+    <line x1="243" y1="712" x2="250" y2="712" stroke-width=".5" opacity=".25"/>
+    <line x1="238" y1="752" x2="250" y2="752" stroke-width="1" opacity=".4"/>
+    <line x1="243" y1="792" x2="250" y2="792" stroke-width=".5" opacity=".25"/>
+    <line x1="243" y1="832" x2="250" y2="832" stroke-width=".5" opacity=".25"/>
+    <line x1="243" y1="872" x2="250" y2="872" stroke-width=".5" opacity=".25"/>
+    <line x1="238" y1="928" x2="250" y2="928" stroke-width="1" opacity=".4"/>
+  </g>
+  <g font-family="var(--pi-mono)" font-size="var(--type-subheading)" text-anchor="end" fill="#191917">
+    <text x="205" y="124">2018</text><text x="205" y="284">2019</text><text x="205" y="444">2020</text>
+    <text x="205" y="604">2022</text><text x="205" y="764">2023</text><text x="205" y="924">2025</text>
+  </g>
+  <g fill="#DFE0D9" stroke="rgba(25,25,23,.8)" stroke-width="1.2">
+    <circle cx="250" cy="118" r="9"/><circle cx="250" cy="278" r="9"/><circle cx="250" cy="438" r="9"/>
+    <circle cx="250" cy="598" r="9"/><circle cx="250" cy="918" r="9"/>
+  </g>
+  <g fill="#191917">
+    <circle cx="250" cy="118" r="3"/><circle cx="250" cy="278" r="3"/><circle cx="250" cy="438" r="3"/>
+    <circle cx="250" cy="598" r="3"/><circle cx="250" cy="758" r="5"/><circle cx="250" cy="918" r="3"/>
+  </g>
+  <circle cx="250" cy="758" r="16" fill="none" stroke="#191917" stroke-width="1.4"/>
+  <circle cx="250" cy="758" r="20" fill="none" stroke="#191917" stroke-width=".6" opacity=".4"/>
+  <g stroke="#191917" stroke-width=".6" opacity=".4">
+    <line x1="262" y1="118" x2="286" y2="118"/><line x1="262" y1="278" x2="286" y2="278"/>
+    <line x1="262" y1="438" x2="286" y2="438"/><line x1="262" y1="598" x2="286" y2="598"/>
+    <line x1="272" y1="758" x2="286" y2="758"/><line x1="262" y1="918" x2="286" y2="918"/>
+  </g>
+  <g text-anchor="start">
+    <text x="312" y="103" font-family="var(--pi-mono)" font-size="var(--type-body-small)" letter-spacing="1" fill="rgba(25,25,23,.8)">GPT-1</text>
+    <text x="312" y="130" font-family="var(--pi-sans)" font-weight="300" font-size="var(--type-body)" fill="#191917">预训练雏形</text>
+    <text x="312" y="154" font-family="var(--pi-sans)" font-weight="300" font-size="var(--type-meta)" fill="rgba(25,25,23,.55)">1.17 亿参数 · 证明可行性</text>
+    <text x="312" y="263" font-family="var(--pi-mono)" font-size="var(--type-body-small)" letter-spacing="1" fill="rgba(25,25,23,.8)">GPT-2</text>
+    <text x="312" y="290" font-family="var(--pi-sans)" font-weight="300" font-size="var(--type-body)" fill="#191917">规模跃迁</text>
+    <text x="312" y="423" font-family="var(--pi-mono)" font-size="var(--type-body-small)" letter-spacing="1" fill="rgba(25,25,23,.8)">GPT-3</text>
+    <text x="312" y="450" font-family="var(--pi-sans)" font-weight="300" font-size="var(--type-body)" fill="#191917">涌现能力</text>
+    <text x="312" y="583" font-family="var(--pi-mono)" font-size="var(--type-body-small)" letter-spacing="1" fill="rgba(25,25,23,.8)">CHATGPT</text>
+    <text x="312" y="610" font-family="var(--pi-sans)" font-weight="300" font-size="var(--type-body)" fill="#191917">对话破圈</text>
+    <text x="312" y="743" font-family="var(--pi-mono)" font-size="var(--type-body-small)" letter-spacing="1" fill="rgba(25,25,23,.8)">GPT-4</text>
+    <text x="312" y="770" font-family="var(--pi-sans)" font-weight="400" font-size="var(--type-body)" fill="#191917">多模态</text>
+    <text x="312" y="796" font-family="var(--pi-sans)" font-weight="400" font-size="var(--type-meta)" fill="#191917">推理 · 多模态 · 月活破亿</text>
+    <line x1="312" y1="810" x2="596" y2="810" stroke="#191917" stroke-width="1.2" opacity=".8"/>
+    <text x="312" y="903" font-family="var(--pi-mono)" font-size="var(--type-body-small)" letter-spacing="1" fill="rgba(25,25,23,.8)">o1 / o3</text>
+    <text x="312" y="930" font-family="var(--pi-sans)" font-weight="300" font-size="var(--type-body)" fill="#191917">推理模型</text>
+    <text x="312" y="954" font-family="var(--pi-sans)" font-weight="300" font-size="var(--type-meta)" fill="rgba(25,25,23,.55)">思维链 · 自我反思</text>
+  </g>
+</svg></div>`
+  },
+
+  {
+    name: "diamond-edge-labels",
+    group: "relation-mapping",
+    groupLabel: "关系与映射",
+    description: "Four fixed nodes in a diamond with independently labelled edges.",
+    label: "菱形四边标注",
+    num: 105,
+    variant: null,
+    paperInkNative: true,
+    frame: { width: 1100, height: 619, fit: 'fixed' },
+    dataContract: {"mode":"record","unit":"node","pointer":"/structured_data","minItems":4,"maxItems":4},
+    /* production promotion: Catalog new:11 → native.paper-ink.105.diamond-edge-labels */
+    snippet: `<div class="pi-card" data-bind-root="record" style="width:auto;min-height:0;overflow:visible"><svg class="pi-art" viewBox="0 0 1920 1080" width="1100" height="619">
+<line x1="480" y1="566" x2="810" y2="740" transform="translate(0 -22)" stroke="#191917" stroke-width="0.9" opacity="0.5"></line>
+<g transform="translate(0 -22)"><line x1="480" y1="474" x2="810" y2="300" stroke="#191917" stroke-width="0.9" opacity="0.5"></line><line x1="960" y1="694" x2="960" y2="394" stroke="#191917" stroke-width="0.9" opacity="0.5"></line><line x1="1110" y1="300" x2="1440" y2="474" stroke="#191917" stroke-width="0.9" opacity="0.5"></line><line x1="1110" y1="740" x2="1440" y2="566" stroke="#191917" stroke-width="0.9" opacity="0.5"></line><line x1="630" y1="520" x2="948" y2="520" stroke="#191917" stroke-width="0.9" opacity="0.5"></line><line x1="972" y1="520" x2="1290" y2="520" stroke="#191917" stroke-width="0.9" opacity="0.5"></line><text x="605" y="355" font-family="var(--pi-mono)" font-size="var(--type-meta)" letter-spacing="1.5" text-anchor="end" fill="#191917">CONTEXT RECALL / PRECISION</text><text x="605" y="379" font-family="var(--pi-sans)" font-weight="400" font-size="var(--type-label)" text-anchor="end" fill="rgba(25,25,23,.6)">检索覆盖</text><path d="M 637 363 L 946 402" stroke="#191917" stroke-width="0.6" opacity="0.4" stroke-dasharray="2 4" fill="none"></path><circle cx="950" cy="404" r="2" fill="#191917" opacity="0.5"></circle><circle cx="645" cy="387" r="2.4" fill="#191917" opacity="0.7"></circle><text x="1315" y="355" font-family="var(--pi-mono)" font-size="var(--type-meta)" letter-spacing="1.5" text-anchor="start" fill="#191917">FAITHFULNESS</text><text x="1315" y="379" font-family="var(--pi-sans)" font-weight="400" font-size="var(--type-label)" text-anchor="start" fill="rgba(25,25,23,.6)">忠实度</text><circle cx="1275" cy="387" r="2.4" fill="#191917" opacity="0.7"></circle><text x="720" y="552" font-family="var(--pi-mono)" font-size="var(--type-meta)" letter-spacing="1.5" text-anchor="middle" fill="#191917">RESPONSE RELEVANCY</text><text x="720" y="576" font-family="var(--pi-sans)" font-weight="400" font-size="var(--type-label)" text-anchor="middle" fill="rgba(25,25,23,.6)">回答相关</text><circle cx="720" cy="520" r="2.4" fill="#191917" opacity="0.7"></circle><text x="1315" y="687" font-family="var(--pi-mono)" font-size="var(--type-meta)" letter-spacing="1.5" text-anchor="start" fill="#191917">FACTUAL CORRECTNESS</text><text x="1315" y="711" font-family="var(--pi-sans)" font-weight="400" font-size="var(--type-label)" text-anchor="start" fill="rgba(25,25,23,.6)">事实正确</text><circle cx="1275" cy="653" r="2.4" fill="#191917" opacity="0.7"></circle><rect x="330" y="474" width="300" height="92" fill="#DFE0D9" stroke="none"></rect><rect x="330" y="474" width="300" height="92" fill="none" stroke="rgba(25,25,23,.8)" stroke-width="1.3"></rect><rect x="335" y="479" width="290" height="82" fill="none" stroke="#191917" stroke-width="0.6" opacity="0.35"></rect><text x="480" y="516" font-family="var(--pi-mono)" font-size="var(--type-label)" letter-spacing="2" text-anchor="middle" fill="#191917">USER INPUT</text><text x="480" y="548" font-family="var(--pi-sans)" font-weight="400" font-size="var(--type-body)" text-anchor="middle" fill="rgba(25,25,23,.8)">用户问题</text><rect x="810" y="254" width="300" height="92" fill="#DFE0D9" stroke="none"></rect><rect x="810" y="254" width="300" height="92" fill="none" stroke="rgba(25,25,23,.8)" stroke-width="1.3"></rect><rect x="815" y="259" width="290" height="82" fill="none" stroke="#191917" stroke-width="0.6" opacity="0.35"></rect><text x="960" y="296" font-family="var(--pi-mono)" font-size="var(--type-label)" letter-spacing="2" text-anchor="middle" fill="#191917">RETRIEVED CONTEXTS</text><text x="960" y="328" font-family="var(--pi-sans)" font-weight="400" font-size="var(--type-body)" text-anchor="middle" fill="rgba(25,25,23,.8)">检索上下文</text><rect x="1290" y="474" width="300" height="92" fill="#DFE0D9" stroke="none"></rect><rect x="1290" y="474" width="300" height="92" fill="none" stroke="rgba(25,25,23,.8)" stroke-width="1.3"></rect><rect x="1295" y="479" width="290" height="82" fill="none" stroke="#191917" stroke-width="0.6" opacity="0.35"></rect><text x="1440" y="516" font-family="var(--pi-mono)" font-size="var(--type-label)" letter-spacing="2" text-anchor="middle" fill="#191917">RESPONSE</text><text x="1440" y="548" font-family="var(--pi-sans)" font-weight="400" font-size="var(--type-body)" text-anchor="middle" fill="rgba(25,25,23,.8)">模型回答</text><rect x="810" y="694" width="300" height="92" fill="#DFE0D9" stroke="none"></rect><rect x="810" y="694" width="300" height="92" fill="none" stroke="rgba(25,25,23,.8)" stroke-width="1.3"></rect><rect x="815" y="699" width="290" height="82" fill="none" stroke="#191917" stroke-width="0.6" opacity="0.35"></rect><text x="960" y="736" font-family="var(--pi-mono)" font-size="var(--type-label)" letter-spacing="2" text-anchor="middle" fill="#191917">REFERENCE</text><text x="960" y="768" font-family="var(--pi-sans)" font-weight="400" font-size="var(--type-body)" text-anchor="middle" fill="rgba(25,25,23,.8)">参考答案</text><text x="960" y="376" font-family="var(--pi-mono)" font-size="var(--type-meta)" letter-spacing="2" text-anchor="middle" fill="rgba(25,25,23,.45)">RECALL@K · PRECISION@K · MRR · NDCG@K</text></g>
+</svg></div>`
   }
+  /* END promoted catalog components v120 */
   ]
 };

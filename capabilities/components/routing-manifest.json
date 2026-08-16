@@ -1,11 +1,11 @@
 {
   "contract_version": 3,
   "capability_id": "component-routing",
-  "component_count": 108,
+  "component_count": 123,
   "source_counts": {
     "ppt-component-atlas": 55,
     "echarts": 13,
-    "native": 39,
+    "native": 54,
     "codex-host": 1
   },
   "retired_components": [
@@ -113,6 +113,9 @@
       "relations": [
         "focus",
         "sequence"
+      ],
+      "relation_keys": [
+        "display"
       ],
       "primitives": [
         "content-frame",
@@ -245,6 +248,9 @@
       "relations": [
         "focus",
         "sequence"
+      ],
+      "relation_keys": [
+        "display"
       ],
       "primitives": [
         "content-frame",
@@ -379,6 +385,9 @@
         "focus",
         "sequence"
       ],
+      "relation_keys": [
+        "display"
+      ],
       "primitives": [
         "content-frame",
         "focus-field"
@@ -511,6 +520,9 @@
       "relations": [
         "focus",
         "sequence"
+      ],
+      "relation_keys": [
+        "focus"
       ],
       "primitives": [
         "content-frame",
@@ -665,6 +677,9 @@
         "focus",
         "sequence"
       ],
+      "relation_keys": [
+        "focus"
+      ],
       "primitives": [
         "content-frame",
         "focus-field"
@@ -776,6 +791,9 @@
       "relations": [
         "focus",
         "sequence"
+      ],
+      "relation_keys": [
+        "focus"
       ],
       "primitives": [
         "content-frame",
@@ -916,6 +934,9 @@
         "focus",
         "sequence"
       ],
+      "relation_keys": [
+        "focus"
+      ],
       "primitives": [
         "content-frame",
         "focus-field"
@@ -929,7 +950,8 @@
       "aliases": [
         "terminal-box",
         "终端框",
-        "13"
+        "13",
+        "terminal"
       ],
       "selection_notes": "Term definition box.",
       "requires": [],
@@ -1054,6 +1076,9 @@
         "focus",
         "sequence"
       ],
+      "relation_keys": [
+        "focus"
+      ],
       "primitives": [
         "content-frame",
         "focus-field"
@@ -1165,6 +1190,9 @@
       "relations": [
         "comparison",
         "matrix"
+      ],
+      "relation_keys": [
+        "comparison"
       ],
       "primitives": [
         "bilateral-split",
@@ -1297,6 +1325,9 @@
       "relations": [
         "comparison",
         "matrix"
+      ],
+      "relation_keys": [
+        "comparison"
       ],
       "primitives": [
         "bilateral-split",
@@ -1431,6 +1462,9 @@
         "comparison",
         "matrix"
       ],
+      "relation_keys": [
+        "comparison"
+      ],
       "primitives": [
         "bilateral-split",
         "matrix-field"
@@ -1564,6 +1598,9 @@
         "comparison",
         "matrix"
       ],
+      "relation_keys": [
+        "comparison"
+      ],
       "primitives": [
         "bilateral-split",
         "matrix-field"
@@ -1696,6 +1733,9 @@
       "relations": [
         "comparison",
         "matrix"
+      ],
+      "relation_keys": [
+        "comparison"
       ],
       "primitives": [
         "bilateral-split",
@@ -1842,6 +1882,9 @@
         "comparison",
         "matrix"
       ],
+      "relation_keys": [
+        "matrix"
+      ],
       "primitives": [
         "bilateral-split",
         "matrix-field"
@@ -1972,6 +2015,9 @@
       ],
       "relations": [
         "comparison",
+        "matrix"
+      ],
+      "relation_keys": [
         "matrix"
       ],
       "primitives": [
@@ -2139,6 +2185,9 @@
         "comparison",
         "matrix"
       ],
+      "relation_keys": [
+        "matrix"
+      ],
       "primitives": [
         "bilateral-split",
         "matrix-field"
@@ -2293,6 +2342,9 @@
         "comparison",
         "matrix"
       ],
+      "relation_keys": [
+        "matrix"
+      ],
       "primitives": [
         "bilateral-split",
         "matrix-field"
@@ -2425,6 +2477,10 @@
         "comparison",
         "matrix"
       ],
+      "relation_keys": [
+        "comparison",
+        "matrix"
+      ],
       "primitives": [
         "bilateral-split",
         "matrix-field"
@@ -2554,6 +2610,9 @@
       ],
       "relations": [
         "sequence",
+        "flow"
+      ],
+      "relation_keys": [
         "flow"
       ],
       "primitives": [
@@ -2692,6 +2751,9 @@
         "sequence",
         "flow"
       ],
+      "relation_keys": [
+        "flow"
+      ],
       "primitives": [
         "linear-sequence",
         "node-link"
@@ -2826,6 +2888,9 @@
       ],
       "relations": [
         "sequence",
+        "flow"
+      ],
+      "relation_keys": [
         "flow"
       ],
       "primitives": [
@@ -2964,6 +3029,9 @@
         "sequence",
         "flow"
       ],
+      "relation_keys": [
+        "flow"
+      ],
       "primitives": [
         "linear-sequence",
         "node-link"
@@ -3098,6 +3166,9 @@
       ],
       "relations": [
         "sequence",
+        "flow"
+      ],
+      "relation_keys": [
         "flow"
       ],
       "primitives": [
@@ -3236,6 +3307,9 @@
         "sequence",
         "flow"
       ],
+      "relation_keys": [
+        "flow"
+      ],
       "primitives": [
         "linear-sequence",
         "node-link"
@@ -3370,6 +3444,9 @@
       ],
       "relations": [
         "sequence",
+        "flow"
+      ],
+      "relation_keys": [
         "flow"
       ],
       "primitives": [
@@ -3508,6 +3585,9 @@
         "sequence",
         "flow"
       ],
+      "relation_keys": [
+        "flow"
+      ],
       "primitives": [
         "linear-sequence",
         "node-link"
@@ -3642,6 +3722,9 @@
       ],
       "relations": [
         "sequence",
+        "flow"
+      ],
+      "relation_keys": [
         "flow"
       ],
       "primitives": [
@@ -3780,6 +3863,9 @@
         "sequence",
         "flow"
       ],
+      "relation_keys": [
+        "cycle"
+      ],
       "primitives": [
         "linear-sequence",
         "node-link"
@@ -3915,6 +4001,9 @@
       "relations": [
         "sequence",
         "flow"
+      ],
+      "relation_keys": [
+        "cycle"
       ],
       "primitives": [
         "linear-sequence",
@@ -4052,6 +4141,9 @@
         "sequence",
         "flow"
       ],
+      "relation_keys": [
+        "cycle"
+      ],
       "primitives": [
         "linear-sequence",
         "node-link"
@@ -4188,6 +4280,9 @@
         "sequence",
         "flow"
       ],
+      "relation_keys": [
+        "cycle"
+      ],
       "primitives": [
         "linear-sequence",
         "node-link"
@@ -4323,6 +4418,9 @@
       "relations": [
         "sequence",
         "flow"
+      ],
+      "relation_keys": [
+        "sequence"
       ],
       "primitives": [
         "linear-sequence",
@@ -4463,6 +4561,9 @@
         "sequence",
         "flow"
       ],
+      "relation_keys": [
+        "sequence"
+      ],
       "primitives": [
         "linear-sequence",
         "node-link"
@@ -4601,6 +4702,9 @@
       "relations": [
         "sequence",
         "flow"
+      ],
+      "relation_keys": [
+        "sequence"
       ],
       "primitives": [
         "linear-sequence",
@@ -4742,6 +4846,9 @@
         "sequence",
         "flow"
       ],
+      "relation_keys": [
+        "sequence"
+      ],
       "primitives": [
         "linear-sequence",
         "node-link"
@@ -4880,6 +4987,9 @@
       ],
       "relations": [
         "sequence",
+        "flow"
+      ],
+      "relation_keys": [
         "flow"
       ],
       "primitives": [
@@ -5030,6 +5140,10 @@
         "hierarchy",
         "decomposition"
       ],
+      "relation_keys": [
+        "nesting",
+        "decomposition"
+      ],
       "primitives": [
         "node-link",
         "layered-stack"
@@ -5158,6 +5272,10 @@
       ],
       "relations": [
         "hierarchy",
+        "decomposition"
+      ],
+      "relation_keys": [
+        "nesting",
         "decomposition"
       ],
       "primitives": [
@@ -5291,6 +5409,10 @@
         "hierarchy",
         "decomposition"
       ],
+      "relation_keys": [
+        "nesting",
+        "decomposition"
+      ],
       "primitives": [
         "node-link",
         "layered-stack"
@@ -5420,6 +5542,10 @@
       ],
       "relations": [
         "hierarchy",
+        "decomposition"
+      ],
+      "relation_keys": [
+        "nesting",
         "decomposition"
       ],
       "primitives": [
@@ -5553,6 +5679,10 @@
         "hierarchy",
         "decomposition"
       ],
+      "relation_keys": [
+        "nesting",
+        "decomposition"
+      ],
       "primitives": [
         "node-link",
         "layered-stack"
@@ -5682,6 +5812,10 @@
       ],
       "relations": [
         "hierarchy",
+        "decomposition"
+      ],
+      "relation_keys": [
+        "part-whole",
         "decomposition"
       ],
       "primitives": [
@@ -5814,6 +5948,10 @@
         "hierarchy",
         "decomposition"
       ],
+      "relation_keys": [
+        "part-whole",
+        "decomposition"
+      ],
       "primitives": [
         "node-link",
         "layered-stack"
@@ -5944,6 +6082,9 @@
       "relations": [
         "hierarchy",
         "decomposition"
+      ],
+      "relation_keys": [
+        "causal"
       ],
       "primitives": [
         "node-link",
@@ -6080,6 +6221,9 @@
         "hierarchy",
         "decomposition"
       ],
+      "relation_keys": [
+        "decomposition"
+      ],
       "primitives": [
         "node-link",
         "layered-stack"
@@ -6209,6 +6353,10 @@
       "relations": [
         "hierarchy",
         "decomposition"
+      ],
+      "relation_keys": [
+        "overlap",
+        "comparison"
       ],
       "primitives": [
         "node-link",
@@ -6346,6 +6494,10 @@
         "hierarchy",
         "decomposition"
       ],
+      "relation_keys": [
+        "overlap",
+        "comparison"
+      ],
       "primitives": [
         "node-link",
         "layered-stack"
@@ -6481,6 +6633,9 @@
       "relations": [
         "hierarchy",
         "decomposition"
+      ],
+      "relation_keys": [
+        "hierarchy"
       ],
       "primitives": [
         "node-link",
@@ -6633,6 +6788,9 @@
         "hierarchy",
         "decomposition"
       ],
+      "relation_keys": [
+        "nesting"
+      ],
       "primitives": [
         "node-link",
         "layered-stack"
@@ -6783,6 +6941,9 @@
       "relations": [
         "hierarchy",
         "decomposition"
+      ],
+      "relation_keys": [
+        "nesting"
       ],
       "primitives": [
         "node-link",
@@ -6935,6 +7096,9 @@
         "hierarchy",
         "decomposition"
       ],
+      "relation_keys": [
+        "hierarchy"
+      ],
       "primitives": [
         "node-link",
         "layered-stack"
@@ -7066,6 +7230,9 @@
       "relations": [
         "hierarchy",
         "decomposition"
+      ],
+      "relation_keys": [
+        "hierarchy"
       ],
       "primitives": [
         "node-link",
@@ -7200,6 +7367,9 @@
         "comparison",
         "profile",
         "distribution"
+      ],
+      "relation_keys": [
+        "metric"
       ],
       "primitives": [
         "coordinate-plot",
@@ -7340,6 +7510,9 @@
         "profile",
         "distribution"
       ],
+      "relation_keys": [
+        "comparison"
+      ],
       "primitives": [
         "coordinate-plot",
         "radial-axis"
@@ -7477,6 +7650,9 @@
         "comparison",
         "profile",
         "distribution"
+      ],
+      "relation_keys": [
+        "comparison"
       ],
       "primitives": [
         "coordinate-plot",
@@ -7628,6 +7804,9 @@
         "spatial",
         "mapping"
       ],
+      "relation_keys": [
+        "illustration"
+      ],
       "primitives": [
         "image-region",
         "scene-canvas",
@@ -7702,6 +7881,10 @@
         "prove"
       ],
       "relations": [
+        "comparison",
+        "ranking"
+      ],
+      "relation_keys": [
         "comparison",
         "ranking"
       ],
@@ -7787,6 +7970,9 @@
         "ranking",
         "change"
       ],
+      "relation_keys": [
+        "ranking"
+      ],
       "primitives": [
         "coordinate-plot"
       ],
@@ -7868,6 +8054,9 @@
       "relations": [
         "distribution",
         "time-series"
+      ],
+      "relation_keys": [
+        "distribution"
       ],
       "primitives": [
         "matrix-cells"
@@ -7952,6 +8141,9 @@
         "distribution",
         "comparison"
       ],
+      "relation_keys": [
+        "distribution"
+      ],
       "primitives": [
         "geo-fill"
       ],
@@ -8034,6 +8226,9 @@
         "trend",
         "comparison"
       ],
+      "relation_keys": [
+        "sequence"
+      ],
       "primitives": [
         "coordinate-plot"
       ],
@@ -8112,6 +8307,9 @@
       ],
       "relations": [
         "trend"
+      ],
+      "relation_keys": [
+        "sequence"
       ],
       "primitives": [
         "coordinate-plot"
@@ -8194,6 +8392,10 @@
         "trend",
         "composition"
       ],
+      "relation_keys": [
+        "sequence",
+        "part-whole"
+      ],
       "primitives": [
         "coordinate-plot"
       ],
@@ -8274,6 +8476,9 @@
       ],
       "relations": [
         "composition"
+      ],
+      "relation_keys": [
+        "part-whole"
       ],
       "primitives": [
         "radial-partition"
@@ -8356,6 +8561,9 @@
         "comparison",
         "profile"
       ],
+      "relation_keys": [
+        "comparison"
+      ],
       "primitives": [
         "radial-axis"
       ],
@@ -8435,6 +8643,10 @@
       ],
       "relations": [
         "flow"
+      ],
+      "relation_keys": [
+        "flow",
+        "convergence"
       ],
       "primitives": [
         "weighted-node-link"
@@ -8518,6 +8730,9 @@
         "distribution",
         "correlation"
       ],
+      "relation_keys": [
+        "distribution"
+      ],
       "primitives": [
         "coordinate-plot"
       ],
@@ -8600,6 +8815,9 @@
         "distribution",
         "transformation"
       ],
+      "relation_keys": [
+        "distribution"
+      ],
       "primitives": [
         "coordinate-plot"
       ],
@@ -8679,6 +8897,9 @@
       "relations": [
         "hierarchy",
         "decomposition"
+      ],
+      "relation_keys": [
+        "hierarchy"
       ],
       "primitives": [
         "node-link"
@@ -8766,6 +8987,9 @@
       "relations": [
         "sequence",
         "progression"
+      ],
+      "relation_keys": [
+        "sequence"
       ],
       "primitives": [
         "linear-sequence"
@@ -8916,6 +9140,9 @@
       "relations": [
         "evidence",
         "focus"
+      ],
+      "relation_keys": [
+        "evidence"
       ],
       "primitives": [
         "evidence-annotation"
@@ -9075,6 +9302,9 @@
       "relations": [
         "evidence",
         "focus"
+      ],
+      "relation_keys": [
+        "evidence"
       ],
       "primitives": [
         "document-frame"
@@ -9238,6 +9468,10 @@
       "relations": [
         "matrix",
         "evidence"
+      ],
+      "relation_keys": [
+        "evidence",
+        "matrix"
       ],
       "primitives": [
         "evidence-annotation",
@@ -9405,6 +9639,9 @@
         "matrix",
         "evidence"
       ],
+      "relation_keys": [
+        "display"
+      ],
       "primitives": [
         "peer-array"
       ],
@@ -9561,6 +9798,9 @@
       ],
       "relations": [
         "sequence",
+        "evidence"
+      ],
+      "relation_keys": [
         "evidence"
       ],
       "primitives": [
@@ -9764,6 +10004,10 @@
       "relations": [
         "hierarchy",
         "matrix",
+        "evidence"
+      ],
+      "relation_keys": [
+        "illustration",
         "evidence"
       ],
       "primitives": [
@@ -10004,6 +10248,9 @@
         "hierarchy",
         "sequence"
       ],
+      "relation_keys": [
+        "hierarchy"
+      ],
       "primitives": [
         "node-link",
         "layered-stack"
@@ -10215,6 +10462,9 @@
       "relations": [
         "sequence",
         "comparison"
+      ],
+      "relation_keys": [
+        "flow"
       ],
       "primitives": [
         "coordinate-plot",
@@ -10468,6 +10718,9 @@
         "sequence",
         "evidence"
       ],
+      "relation_keys": [
+        "sequence"
+      ],
       "primitives": [
         "linear-sequence",
         "evidence-annotation"
@@ -10627,6 +10880,9 @@
         "sequence",
         "progression"
       ],
+      "relation_keys": [
+        "sequence"
+      ],
       "primitives": [
         "linear-sequence"
       ],
@@ -10774,6 +11030,9 @@
         "act"
       ],
       "relations": [
+        "focus"
+      ],
+      "relation_keys": [
         "focus"
       ],
       "primitives": [
@@ -10926,6 +11185,9 @@
       ],
       "relations": [
         "spatial",
+        "distribution"
+      ],
+      "relation_keys": [
         "distribution"
       ],
       "primitives": [
@@ -11095,6 +11357,10 @@
       ],
       "relations": [
         "comparison",
+        "mapping"
+      ],
+      "relation_keys": [
+        "causal",
         "mapping"
       ],
       "primitives": [
@@ -11306,6 +11572,9 @@
         "comparison",
         "transformation"
       ],
+      "relation_keys": [
+        "comparison"
+      ],
       "primitives": [
         "bilateral-split",
         "linear-sequence"
@@ -11454,6 +11723,9 @@
       "relations": [
         "evidence",
         "sequence"
+      ],
+      "relation_keys": [
+        "evidence"
       ],
       "primitives": [
         "content-frame",
@@ -11643,6 +11915,9 @@
         "hierarchy",
         "mapping"
       ],
+      "relation_keys": [
+        "decomposition"
+      ],
       "primitives": [
         "node-link",
         "radial-axis"
@@ -11804,6 +12079,9 @@
       "relations": [
         "flow",
         "mapping"
+      ],
+      "relation_keys": [
+        "convergence"
       ],
       "primitives": [
         "node-link"
@@ -11985,6 +12263,9 @@
         "prove"
       ],
       "relations": [
+        "comparison"
+      ],
+      "relation_keys": [
         "comparison"
       ],
       "primitives": [
@@ -12178,6 +12459,9 @@
         "hierarchy",
         "decomposition"
       ],
+      "relation_keys": [
+        "hierarchy"
+      ],
       "primitives": [
         "layered-stack",
         "matrix-field"
@@ -12358,7 +12642,8 @@
       "aliases": [
         "swimlane-roadmap",
         "泳道路线图",
-        "83"
+        "83",
+        "swimlane"
       ],
       "renderer_kinds": [
         "svg"
@@ -12373,6 +12658,9 @@
       "relations": [
         "sequence",
         "comparison"
+      ],
+      "relation_keys": [
+        "parallel"
       ],
       "primitives": [
         "coordinate-plot",
@@ -12602,6 +12890,9 @@
         "comparison",
         "profile"
       ],
+      "relation_keys": [
+        "focus"
+      ],
       "primitives": [
         "peer-array",
         "content-frame"
@@ -12773,6 +13064,9 @@
         "distribution",
         "comparison"
       ],
+      "relation_keys": [
+        "metric"
+      ],
       "primitives": [
         "radial-axis"
       ],
@@ -12924,6 +13218,9 @@
       "relations": [
         "decomposition",
         "matrix"
+      ],
+      "relation_keys": [
+        "display"
       ],
       "primitives": [
         "peer-array",
@@ -13084,6 +13381,9 @@
         "flow",
         "sequence"
       ],
+      "relation_keys": [
+        "funnel"
+      ],
       "primitives": [
         "layered-stack"
       ],
@@ -13236,6 +13536,9 @@
       "relations": [
         "focus",
         "evidence"
+      ],
+      "relation_keys": [
+        "focus"
       ],
       "primitives": [
         "annotation-leader",
@@ -13416,6 +13719,2319 @@
       }
     },
     {
+      "component_id": "native.paper-ink.089.metric-strip",
+      "name": "自适应指标横带",
+      "canonical_name": "metric-strip",
+      "variant": null,
+      "group": "metric-data",
+      "group_label": "指标与数据",
+      "description": "Two to four bound metrics in one adaptive horizontal band.",
+      "aliases": [
+        "metric-strip",
+        "自适应指标横带",
+        "89"
+      ],
+      "renderer_kinds": [
+        "native-html"
+      ],
+      "component_sources": [
+        "native"
+      ],
+      "roles": [
+        "explain",
+        "prove"
+      ],
+      "relations": [
+        "metric"
+      ],
+      "relation_keys": [
+        "metric"
+      ],
+      "primitives": [
+        "metric-band"
+      ],
+      "tasks": [
+        "metric",
+        "content"
+      ],
+      "selection_notes": "Use native.paper-ink.089.metric-strip only when slot geometry and the typed data contract both fit.",
+      "requires": [],
+      "space_requirements": {
+        "min_width": 680,
+        "min_height": 140,
+        "min_aspect_ratio": 3.41,
+        "max_aspect_ratio": 10.0
+      },
+      "capacity": {
+        "min_items": 2,
+        "max_items": 4,
+        "unit": "metric"
+      },
+      "frame": {
+        "width": 1050,
+        "height": 140,
+        "fit": "fixed"
+      },
+      "semantic_contract": {
+        "input_family": "quantitative-series",
+        "role": "primary-proof",
+        "visual_action": "quantify",
+        "capacity": {
+          "mode": "range",
+          "unit": "metric",
+          "min": 2,
+          "max": 4
+        },
+        "derivation": "explicit-data-bound-v1"
+      },
+      "binding_archetype": "metric-band",
+      "data_contract": {
+        "mode": "typed-structured-content",
+        "contract_id": "native.paper-ink.089.metric-strip@1",
+        "reference_mode": "one-item-plus-owned-atoms",
+        "content_ref_cardinality": {
+          "min": 1,
+          "max": 1
+        },
+        "schema": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "metrics"
+          ],
+          "properties": {
+            "title": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 240
+            },
+            "metrics": {
+              "type": "array",
+              "minItems": 2,
+              "maxItems": 4,
+              "items": {
+                "type": "object",
+                "additionalProperties": false,
+                "required": [
+                  "id",
+                  "label"
+                ],
+                "properties": {
+                  "id": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 160,
+                    "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]{0,159}$"
+                  },
+                  "label": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 240
+                  },
+                  "description": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 4000
+                  },
+                  "code": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 240
+                  },
+                  "value": {
+                    "type": [
+                      "string",
+                      "number"
+                    ]
+                  },
+                  "unit": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 80
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "production_readiness": {
+        "status": "ready"
+      },
+      "dependencies": [
+        "paper-ink-components"
+      ],
+      "source": {
+        "kind": "paper-ink-snippet",
+        "module": "capabilities/layouts/paper-ink-components.js",
+        "entry_num": 89
+      },
+      "binding_contract": {
+        "mode": "collection",
+        "unit": "metric"
+      }
+    },
+    {
+      "component_id": "native.paper-ink.090.scenario-column",
+      "name": "单场景纵列（K4 固定版）",
+      "canonical_name": "scenario-column",
+      "variant": null,
+      "group": "flow-temporal",
+      "group_label": "流程与时序",
+      "description": "One fixed K4 scenario column binding pain, three fix steps and rollout result.",
+      "aliases": [
+        "scenario-column",
+        "单场景纵列（K4 固定版）",
+        "90"
+      ],
+      "renderer_kinds": [
+        "svg"
+      ],
+      "component_sources": [
+        "native"
+      ],
+      "roles": [
+        "explain",
+        "prove"
+      ],
+      "relations": [
+        "sequence"
+      ],
+      "relation_keys": [
+        "sequence"
+      ],
+      "primitives": [
+        "linear-sequence"
+      ],
+      "tasks": [
+        "sequence",
+        "content"
+      ],
+      "selection_notes": "Use native.paper-ink.090.scenario-column only when slot geometry and the typed data contract both fit.",
+      "requires": [],
+      "space_requirements": {
+        "min_width": 350,
+        "min_height": 450,
+        "min_aspect_ratio": 0.45,
+        "max_aspect_ratio": 1.72
+      },
+      "capacity": {
+        "min_items": 1,
+        "max_items": 1,
+        "unit": "scenario"
+      },
+      "frame": {
+        "width": 540,
+        "height": 690,
+        "fit": "fixed"
+      },
+      "semantic_contract": {
+        "input_family": "temporal-series",
+        "role": "primary-proof",
+        "visual_action": "sequence",
+        "capacity": {
+          "mode": "fixed",
+          "unit": "scenario",
+          "min": 1,
+          "max": 1
+        },
+        "derivation": "explicit-data-bound-v1"
+      },
+      "binding_archetype": "scenario-pain-fix-ship",
+      "data_contract": {
+        "mode": "typed-structured-content",
+        "contract_id": "native.paper-ink.090.scenario-column@1",
+        "reference_mode": "one-item-plus-owned-atoms",
+        "content_ref_cardinality": {
+          "min": 1,
+          "max": 1
+        },
+        "schema": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "title",
+            "pain",
+            "steps",
+            "result"
+          ],
+          "properties": {
+            "title": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 240
+            },
+            "code": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 80
+            },
+            "pain": {
+              "type": "array",
+              "minItems": 1,
+              "maxItems": 2,
+              "items": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 4000
+              }
+            },
+            "steps": {
+              "type": "array",
+              "minItems": 3,
+              "maxItems": 3,
+              "items": {
+                "type": "object",
+                "additionalProperties": false,
+                "required": [
+                  "id",
+                  "label"
+                ],
+                "properties": {
+                  "id": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 160,
+                    "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]{0,159}$"
+                  },
+                  "label": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 240
+                  },
+                  "description": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 4000
+                  },
+                  "code": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 240
+                  }
+                }
+              }
+            },
+            "stages": {
+              "type": "array",
+              "minItems": 3,
+              "maxItems": 3,
+              "items": {
+                "type": "object",
+                "additionalProperties": false,
+                "required": [
+                  "id",
+                  "label"
+                ],
+                "properties": {
+                  "id": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 160,
+                    "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]{0,159}$"
+                  },
+                  "label": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 240
+                  },
+                  "description": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 4000
+                  },
+                  "code": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 240
+                  }
+                }
+              }
+            },
+            "result": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 4000
+            }
+          }
+        }
+      },
+      "production_readiness": {
+        "status": "ready"
+      },
+      "dependencies": [
+        "paper-ink-components"
+      ],
+      "source": {
+        "kind": "paper-ink-snippet",
+        "module": "capabilities/layouts/paper-ink-components.js",
+        "entry_num": 90
+      },
+      "binding_contract": {
+        "mode": "collection",
+        "unit": "scenario"
+      }
+    },
+    {
+      "component_id": "native.paper-ink.093.infra-strip",
+      "name": "自适应基础设施横带",
+      "canonical_name": "infra-strip",
+      "variant": null,
+      "group": "document-text",
+      "group_label": "文档与文本",
+      "description": "Three to six infrastructure capabilities in one complete platform band.",
+      "aliases": [
+        "infra-strip",
+        "自适应基础设施横带",
+        "93"
+      ],
+      "renderer_kinds": [
+        "svg"
+      ],
+      "component_sources": [
+        "native"
+      ],
+      "roles": [
+        "explain",
+        "prove"
+      ],
+      "relations": [
+        "display"
+      ],
+      "relation_keys": [
+        "display"
+      ],
+      "primitives": [
+        "content-frame"
+      ],
+      "tasks": [
+        "display",
+        "content"
+      ],
+      "selection_notes": "Use native.paper-ink.093.infra-strip only when slot geometry and the typed data contract both fit.",
+      "requires": [],
+      "space_requirements": {
+        "min_width": 680,
+        "min_height": 170,
+        "min_aspect_ratio": 1.84,
+        "max_aspect_ratio": 8.88
+      },
+      "capacity": {
+        "min_items": 3,
+        "max_items": 6,
+        "unit": "item"
+      },
+      "frame": {
+        "width": 1050,
+        "height": 260,
+        "fit": "fixed"
+      },
+      "semantic_contract": {
+        "input_family": "hierarchy",
+        "role": "primary-proof",
+        "visual_action": "show-hierarchy",
+        "capacity": {
+          "mode": "range",
+          "unit": "item",
+          "min": 3,
+          "max": 6
+        },
+        "derivation": "explicit-data-bound-v1"
+      },
+      "binding_archetype": "capability-band",
+      "data_contract": {
+        "mode": "typed-structured-content",
+        "contract_id": "native.paper-ink.093.infra-strip@1",
+        "reference_mode": "one-item-plus-owned-atoms",
+        "content_ref_cardinality": {
+          "min": 1,
+          "max": 1
+        },
+        "schema": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "items"
+          ],
+          "properties": {
+            "title": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 240
+            },
+            "items": {
+              "type": "array",
+              "minItems": 3,
+              "maxItems": 6,
+              "items": {
+                "type": "object",
+                "additionalProperties": false,
+                "required": [
+                  "id",
+                  "label"
+                ],
+                "properties": {
+                  "id": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 160,
+                    "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]{0,159}$"
+                  },
+                  "label": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 240
+                  },
+                  "description": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 4000
+                  },
+                  "code": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 240
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "production_readiness": {
+        "status": "ready"
+      },
+      "dependencies": [
+        "paper-ink-components"
+      ],
+      "source": {
+        "kind": "paper-ink-snippet",
+        "module": "capabilities/layouts/paper-ink-components.js",
+        "entry_num": 93
+      },
+      "binding_contract": {
+        "mode": "collection",
+        "unit": "item"
+      }
+    },
+    {
+      "component_id": "native.paper-ink.094.mapping-arc-network",
+      "name": "映射弧线网",
+      "canonical_name": "mapping-arc-network",
+      "variant": null,
+      "group": "relation-mapping",
+      "group_label": "关系与映射",
+      "description": "A two-sided mapping network with primary and shared curved links.",
+      "aliases": [
+        "mapping-arc-network",
+        "映射弧线网",
+        "94"
+      ],
+      "renderer_kinds": [
+        "svg"
+      ],
+      "component_sources": [
+        "native"
+      ],
+      "roles": [
+        "explain",
+        "prove"
+      ],
+      "relations": [
+        "mapping"
+      ],
+      "relation_keys": [
+        "mapping"
+      ],
+      "primitives": [
+        "node-link"
+      ],
+      "tasks": [
+        "mapping",
+        "content"
+      ],
+      "selection_notes": "Use native.paper-ink.094.mapping-arc-network only when slot geometry and the typed data contract both fit.",
+      "requires": [],
+      "space_requirements": {
+        "min_width": 720,
+        "min_height": 400,
+        "min_aspect_ratio": 0.81,
+        "max_aspect_ratio": 3.91
+      },
+      "capacity": {
+        "min_items": 4,
+        "max_items": 12,
+        "unit": "node"
+      },
+      "frame": {
+        "width": 1100,
+        "height": 619,
+        "fit": "fixed"
+      },
+      "semantic_contract": {
+        "input_family": "network-flow",
+        "role": "primary-proof",
+        "visual_action": "show-flow",
+        "capacity": {
+          "mode": "range",
+          "unit": "node",
+          "min": 4,
+          "max": 12
+        },
+        "derivation": "explicit-data-bound-v1"
+      },
+      "binding_archetype": "bipartite-mapping",
+      "data_contract": {
+        "mode": "typed-structured-content",
+        "contract_id": "native.paper-ink.094.mapping-arc-network@1",
+        "reference_mode": "one-item-plus-owned-atoms",
+        "content_ref_cardinality": {
+          "min": 1,
+          "max": 1
+        },
+        "schema": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "nodes",
+            "links"
+          ],
+          "properties": {
+            "title": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 240
+            },
+            "nodes": {
+              "type": "array",
+              "minItems": 4,
+              "maxItems": 12,
+              "items": {
+                "type": "object",
+                "additionalProperties": false,
+                "required": [
+                  "id",
+                  "label"
+                ],
+                "properties": {
+                  "id": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 160,
+                    "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]{0,159}$"
+                  },
+                  "label": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 240
+                  },
+                  "description": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 4000
+                  },
+                  "code": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 240
+                  }
+                }
+              }
+            },
+            "links": {
+              "type": "array",
+              "minItems": 3,
+              "maxItems": 36,
+              "items": {
+                "type": "object",
+                "additionalProperties": false,
+                "required": [
+                  "source",
+                  "target"
+                ],
+                "properties": {
+                  "source": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 160
+                  },
+                  "target": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 160
+                  },
+                  "label": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 240
+                  },
+                  "weight": {
+                    "type": "number"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "production_readiness": {
+        "status": "ready"
+      },
+      "dependencies": [
+        "paper-ink-components"
+      ],
+      "source": {
+        "kind": "paper-ink-snippet",
+        "module": "capabilities/layouts/paper-ink-components.js",
+        "entry_num": 94
+      },
+      "binding_contract": {
+        "mode": "collection",
+        "unit": "node"
+      }
+    },
+    {
+      "component_id": "native.paper-ink.095.weighted-arc-web",
+      "name": "权重弧网",
+      "canonical_name": "weighted-arc-web",
+      "variant": null,
+      "group": "relation-mapping",
+      "group_label": "关系与映射",
+      "description": "A fixed-geometry node row with weighted relationship arcs.",
+      "aliases": [
+        "weighted-arc-web",
+        "权重弧网",
+        "95"
+      ],
+      "renderer_kinds": [
+        "svg"
+      ],
+      "component_sources": [
+        "native"
+      ],
+      "roles": [
+        "explain",
+        "prove"
+      ],
+      "relations": [
+        "network"
+      ],
+      "relation_keys": [
+        "network"
+      ],
+      "primitives": [
+        "node-link"
+      ],
+      "tasks": [
+        "network",
+        "content"
+      ],
+      "selection_notes": "Use native.paper-ink.095.weighted-arc-web only when slot geometry and the typed data contract both fit.",
+      "requires": [],
+      "space_requirements": {
+        "min_width": 1160,
+        "min_height": 650,
+        "min_aspect_ratio": 0.81,
+        "max_aspect_ratio": 3.91
+      },
+      "capacity": {
+        "min_items": 4,
+        "max_items": 8,
+        "unit": "node"
+      },
+      "frame": {
+        "width": 1781,
+        "height": 1002,
+        "fit": "fixed"
+      },
+      "semantic_contract": {
+        "input_family": "causal-network",
+        "role": "primary-proof",
+        "visual_action": "connect-causality",
+        "capacity": {
+          "mode": "range",
+          "unit": "node",
+          "min": 4,
+          "max": 8
+        },
+        "derivation": "explicit-data-bound-v1"
+      },
+      "binding_archetype": "weighted-arc-network",
+      "data_contract": {
+        "mode": "typed-structured-content",
+        "contract_id": "native.paper-ink.095.weighted-arc-web@1",
+        "reference_mode": "one-item-plus-owned-atoms",
+        "content_ref_cardinality": {
+          "min": 1,
+          "max": 1
+        },
+        "schema": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "nodes",
+            "links"
+          ],
+          "properties": {
+            "title": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 240
+            },
+            "nodes": {
+              "type": "array",
+              "minItems": 4,
+              "maxItems": 8,
+              "items": {
+                "type": "object",
+                "additionalProperties": false,
+                "required": [
+                  "id",
+                  "label"
+                ],
+                "properties": {
+                  "id": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 160,
+                    "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]{0,159}$"
+                  },
+                  "label": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 240
+                  },
+                  "description": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 4000
+                  },
+                  "code": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 240
+                  }
+                }
+              }
+            },
+            "links": {
+              "type": "array",
+              "minItems": 3,
+              "maxItems": 24,
+              "items": {
+                "type": "object",
+                "additionalProperties": false,
+                "required": [
+                  "source",
+                  "target"
+                ],
+                "properties": {
+                  "source": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 160
+                  },
+                  "target": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 160
+                  },
+                  "label": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 240
+                  },
+                  "weight": {
+                    "type": "number"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "production_readiness": {
+        "status": "ready"
+      },
+      "dependencies": [
+        "paper-ink-components"
+      ],
+      "source": {
+        "kind": "paper-ink-snippet",
+        "module": "capabilities/layouts/paper-ink-components.js",
+        "entry_num": 95
+      },
+      "binding_contract": {
+        "mode": "collection",
+        "unit": "node"
+      }
+    },
+    {
+      "component_id": "native.paper-ink.096.three-way-radial",
+      "name": "三向放射图",
+      "canonical_name": "three-way-radial",
+      "variant": null,
+      "group": "hierarchy-structure",
+      "group_label": "层级与结构",
+      "description": "A central statement decomposed into exactly three radial branches.",
+      "aliases": [
+        "three-way-radial",
+        "三向放射图",
+        "96"
+      ],
+      "renderer_kinds": [
+        "svg"
+      ],
+      "component_sources": [
+        "native"
+      ],
+      "roles": [
+        "explain",
+        "prove"
+      ],
+      "relations": [
+        "decomposition"
+      ],
+      "relation_keys": [
+        "decomposition"
+      ],
+      "primitives": [
+        "radial-axis"
+      ],
+      "tasks": [
+        "decomposition",
+        "content"
+      ],
+      "selection_notes": "Use native.paper-ink.096.three-way-radial only when slot geometry and the typed data contract both fit.",
+      "requires": [],
+      "space_requirements": {
+        "min_width": 940,
+        "min_height": 530,
+        "min_aspect_ratio": 0.81,
+        "max_aspect_ratio": 3.91
+      },
+      "capacity": {
+        "min_items": 3,
+        "max_items": 3,
+        "unit": "branch"
+      },
+      "frame": {
+        "width": 1443,
+        "height": 812,
+        "fit": "fixed"
+      },
+      "semantic_contract": {
+        "input_family": "hierarchy",
+        "role": "primary-proof",
+        "visual_action": "show-hierarchy",
+        "capacity": {
+          "mode": "fixed",
+          "unit": "branch",
+          "min": 3,
+          "max": 3
+        },
+        "derivation": "explicit-data-bound-v1"
+      },
+      "binding_archetype": "radial-decomposition",
+      "data_contract": {
+        "mode": "typed-structured-content",
+        "contract_id": "native.paper-ink.096.three-way-radial@1",
+        "reference_mode": "one-item-plus-owned-atoms",
+        "content_ref_cardinality": {
+          "min": 1,
+          "max": 1
+        },
+        "schema": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "branches"
+          ],
+          "properties": {
+            "title": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 240
+            },
+            "branches": {
+              "type": "array",
+              "minItems": 3,
+              "maxItems": 3,
+              "items": {
+                "type": "object",
+                "additionalProperties": false,
+                "required": [
+                  "id",
+                  "label"
+                ],
+                "properties": {
+                  "id": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 160,
+                    "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]{0,159}$"
+                  },
+                  "label": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 240
+                  },
+                  "description": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 4000
+                  },
+                  "code": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 240
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "production_readiness": {
+        "status": "ready"
+      },
+      "dependencies": [
+        "paper-ink-components"
+      ],
+      "source": {
+        "kind": "paper-ink-snippet",
+        "module": "capabilities/layouts/paper-ink-components.js",
+        "entry_num": 96
+      },
+      "binding_contract": {
+        "mode": "collection",
+        "unit": "branch"
+      }
+    },
+    {
+      "component_id": "native.paper-ink.097.nested-frames",
+      "name": "嵌套框",
+      "canonical_name": "nested-frames",
+      "variant": null,
+      "group": "hierarchy-structure",
+      "group_label": "层级与结构",
+      "description": "Three to five nested frames for containment and zoom levels.",
+      "aliases": [
+        "nested-frames",
+        "嵌套框",
+        "97"
+      ],
+      "renderer_kinds": [
+        "svg"
+      ],
+      "component_sources": [
+        "native"
+      ],
+      "roles": [
+        "explain",
+        "prove"
+      ],
+      "relations": [
+        "nesting"
+      ],
+      "relation_keys": [
+        "nesting"
+      ],
+      "primitives": [
+        "layered-stack"
+      ],
+      "tasks": [
+        "nesting",
+        "content"
+      ],
+      "selection_notes": "Use native.paper-ink.097.nested-frames only when slot geometry and the typed data contract both fit.",
+      "requires": [],
+      "space_requirements": {
+        "min_width": 960,
+        "min_height": 540,
+        "min_aspect_ratio": 0.81,
+        "max_aspect_ratio": 3.91
+      },
+      "capacity": {
+        "min_items": 3,
+        "max_items": 5,
+        "unit": "layer"
+      },
+      "frame": {
+        "width": 1476,
+        "height": 830,
+        "fit": "fixed"
+      },
+      "semantic_contract": {
+        "input_family": "hierarchy",
+        "role": "primary-proof",
+        "visual_action": "show-hierarchy",
+        "capacity": {
+          "mode": "range",
+          "unit": "layer",
+          "min": 3,
+          "max": 5
+        },
+        "derivation": "explicit-data-bound-v1"
+      },
+      "binding_archetype": "nested-layers",
+      "data_contract": {
+        "mode": "typed-structured-content",
+        "contract_id": "native.paper-ink.097.nested-frames@1",
+        "reference_mode": "one-item-plus-owned-atoms",
+        "content_ref_cardinality": {
+          "min": 1,
+          "max": 1
+        },
+        "schema": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "layers"
+          ],
+          "properties": {
+            "title": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 240
+            },
+            "layers": {
+              "type": "array",
+              "minItems": 3,
+              "maxItems": 5,
+              "items": {
+                "type": "object",
+                "additionalProperties": false,
+                "required": [
+                  "id",
+                  "label"
+                ],
+                "properties": {
+                  "id": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 160,
+                    "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]{0,159}$"
+                  },
+                  "label": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 240
+                  },
+                  "description": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 4000
+                  },
+                  "code": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 240
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "production_readiness": {
+        "status": "ready"
+      },
+      "dependencies": [
+        "paper-ink-components"
+      ],
+      "source": {
+        "kind": "paper-ink-snippet",
+        "module": "capabilities/layouts/paper-ink-components.js",
+        "entry_num": 97
+      },
+      "binding_contract": {
+        "mode": "collection",
+        "unit": "layer"
+      }
+    },
+    {
+      "component_id": "native.paper-ink.098.ranking-bars",
+      "name": "排行柱图",
+      "canonical_name": "ranking-bars",
+      "variant": null,
+      "group": "metric-data",
+      "group_label": "指标与数据",
+      "description": "Three to eight ranked items rendered as specimen bars.",
+      "aliases": [
+        "ranking-bars",
+        "排行柱图",
+        "98"
+      ],
+      "renderer_kinds": [
+        "svg"
+      ],
+      "component_sources": [
+        "native"
+      ],
+      "roles": [
+        "explain",
+        "prove"
+      ],
+      "relations": [
+        "ranking"
+      ],
+      "relation_keys": [
+        "ranking"
+      ],
+      "primitives": [
+        "coordinate-plot"
+      ],
+      "tasks": [
+        "ranking",
+        "content"
+      ],
+      "selection_notes": "Use native.paper-ink.098.ranking-bars only when slot geometry and the typed data contract both fit.",
+      "requires": [],
+      "space_requirements": {
+        "min_width": 630,
+        "min_height": 360,
+        "min_aspect_ratio": 0.81,
+        "max_aspect_ratio": 3.91
+      },
+      "capacity": {
+        "min_items": 3,
+        "max_items": 8,
+        "unit": "ranked-item"
+      },
+      "frame": {
+        "width": 972,
+        "height": 547,
+        "fit": "fixed"
+      },
+      "semantic_contract": {
+        "input_family": "quantitative-series",
+        "role": "primary-proof",
+        "visual_action": "show-distribution",
+        "capacity": {
+          "mode": "range",
+          "unit": "ranked-item",
+          "min": 3,
+          "max": 8
+        },
+        "derivation": "explicit-data-bound-v1"
+      },
+      "binding_archetype": "ranked-bars",
+      "data_contract": {
+        "mode": "typed-structured-content",
+        "contract_id": "native.paper-ink.098.ranking-bars@1",
+        "reference_mode": "one-item-plus-owned-atoms",
+        "content_ref_cardinality": {
+          "min": 1,
+          "max": 1
+        },
+        "schema": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "items"
+          ],
+          "properties": {
+            "title": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 240
+            },
+            "items": {
+              "type": "array",
+              "minItems": 3,
+              "maxItems": 8,
+              "items": {
+                "type": "object",
+                "additionalProperties": false,
+                "required": [
+                  "id",
+                  "label"
+                ],
+                "properties": {
+                  "id": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 160,
+                    "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]{0,159}$"
+                  },
+                  "label": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 240
+                  },
+                  "description": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 4000
+                  },
+                  "code": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 240
+                  },
+                  "value": {
+                    "type": [
+                      "string",
+                      "number"
+                    ]
+                  },
+                  "unit": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 80
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "production_readiness": {
+        "status": "ready"
+      },
+      "dependencies": [
+        "paper-ink-components"
+      ],
+      "source": {
+        "kind": "paper-ink-snippet",
+        "module": "capabilities/layouts/paper-ink-components.js",
+        "entry_num": 98
+      },
+      "binding_contract": {
+        "mode": "collection",
+        "unit": "ranked-item"
+      }
+    },
+    {
+      "component_id": "native.paper-ink.099.serpentine-loop",
+      "name": "蛇形回环",
+      "canonical_name": "serpentine-loop",
+      "variant": null,
+      "group": "flow-temporal",
+      "group_label": "流程与时序",
+      "description": "A five-to-eight-step serpentine closed loop.",
+      "aliases": [
+        "serpentine-loop",
+        "蛇形回环",
+        "99"
+      ],
+      "renderer_kinds": [
+        "svg"
+      ],
+      "component_sources": [
+        "native"
+      ],
+      "roles": [
+        "explain",
+        "prove"
+      ],
+      "relations": [
+        "cycle"
+      ],
+      "relation_keys": [
+        "cycle"
+      ],
+      "primitives": [
+        "cyclic-sequence"
+      ],
+      "tasks": [
+        "cycle",
+        "content"
+      ],
+      "selection_notes": "Use native.paper-ink.099.serpentine-loop only when slot geometry and the typed data contract both fit.",
+      "requires": [],
+      "space_requirements": {
+        "min_width": 660,
+        "min_height": 370,
+        "min_aspect_ratio": 0.81,
+        "max_aspect_ratio": 3.91
+      },
+      "capacity": {
+        "min_items": 5,
+        "max_items": 8,
+        "unit": "step"
+      },
+      "frame": {
+        "width": 1017,
+        "height": 572,
+        "fit": "fixed"
+      },
+      "semantic_contract": {
+        "input_family": "temporal-series",
+        "role": "primary-proof",
+        "visual_action": "cycle",
+        "capacity": {
+          "mode": "range",
+          "unit": "step",
+          "min": 5,
+          "max": 8
+        },
+        "derivation": "explicit-data-bound-v1"
+      },
+      "binding_archetype": "serpentine-cycle",
+      "data_contract": {
+        "mode": "typed-structured-content",
+        "contract_id": "native.paper-ink.099.serpentine-loop@1",
+        "reference_mode": "one-item-plus-owned-atoms",
+        "content_ref_cardinality": {
+          "min": 1,
+          "max": 1
+        },
+        "schema": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "steps"
+          ],
+          "properties": {
+            "title": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 240
+            },
+            "steps": {
+              "type": "array",
+              "minItems": 5,
+              "maxItems": 8,
+              "items": {
+                "type": "object",
+                "additionalProperties": false,
+                "required": [
+                  "id",
+                  "label"
+                ],
+                "properties": {
+                  "id": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 160,
+                    "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]{0,159}$"
+                  },
+                  "label": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 240
+                  },
+                  "description": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 4000
+                  },
+                  "code": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 240
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "production_readiness": {
+        "status": "ready"
+      },
+      "dependencies": [
+        "paper-ink-components"
+      ],
+      "source": {
+        "kind": "paper-ink-snippet",
+        "module": "capabilities/layouts/paper-ink-components.js",
+        "entry_num": 99
+      },
+      "binding_contract": {
+        "mode": "collection",
+        "unit": "step"
+      }
+    },
+    {
+      "component_id": "native.paper-ink.100.cycle-ring",
+      "name": "环形循环",
+      "canonical_name": "cycle-ring",
+      "variant": null,
+      "group": "flow-temporal",
+      "group_label": "流程与时序",
+      "description": "A three-to-six-stage circular governance loop with callouts.",
+      "aliases": [
+        "cycle-ring",
+        "环形循环",
+        "100"
+      ],
+      "renderer_kinds": [
+        "svg"
+      ],
+      "component_sources": [
+        "native"
+      ],
+      "roles": [
+        "explain",
+        "prove"
+      ],
+      "relations": [
+        "cycle"
+      ],
+      "relation_keys": [
+        "cycle"
+      ],
+      "primitives": [
+        "cyclic-sequence"
+      ],
+      "tasks": [
+        "cycle",
+        "content"
+      ],
+      "selection_notes": "Use native.paper-ink.100.cycle-ring only when slot geometry and the typed data contract both fit.",
+      "requires": [],
+      "space_requirements": {
+        "min_width": 640,
+        "min_height": 360,
+        "min_aspect_ratio": 0.81,
+        "max_aspect_ratio": 3.91
+      },
+      "capacity": {
+        "min_items": 3,
+        "max_items": 6,
+        "unit": "step"
+      },
+      "frame": {
+        "width": 978,
+        "height": 550,
+        "fit": "fixed"
+      },
+      "semantic_contract": {
+        "input_family": "temporal-series",
+        "role": "primary-proof",
+        "visual_action": "cycle",
+        "capacity": {
+          "mode": "range",
+          "unit": "step",
+          "min": 3,
+          "max": 6
+        },
+        "derivation": "explicit-data-bound-v1"
+      },
+      "binding_archetype": "ring-cycle",
+      "data_contract": {
+        "mode": "typed-structured-content",
+        "contract_id": "native.paper-ink.100.cycle-ring@1",
+        "reference_mode": "one-item-plus-owned-atoms",
+        "content_ref_cardinality": {
+          "min": 1,
+          "max": 1
+        },
+        "schema": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "steps"
+          ],
+          "properties": {
+            "title": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 240
+            },
+            "steps": {
+              "type": "array",
+              "minItems": 3,
+              "maxItems": 6,
+              "items": {
+                "type": "object",
+                "additionalProperties": false,
+                "required": [
+                  "id",
+                  "label"
+                ],
+                "properties": {
+                  "id": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 160,
+                    "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]{0,159}$"
+                  },
+                  "label": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 240
+                  },
+                  "description": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 4000
+                  },
+                  "code": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 240
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "production_readiness": {
+        "status": "ready"
+      },
+      "dependencies": [
+        "paper-ink-components"
+      ],
+      "source": {
+        "kind": "paper-ink-snippet",
+        "module": "capabilities/layouts/paper-ink-components.js",
+        "entry_num": 100
+      },
+      "binding_contract": {
+        "mode": "collection",
+        "unit": "step"
+      }
+    },
+    {
+      "component_id": "native.paper-ink.101.journey-curve",
+      "name": "旅程曲线",
+      "canonical_name": "journey-curve",
+      "variant": null,
+      "group": "flow-temporal",
+      "group_label": "流程与时序",
+      "description": "A four-to-six-milestone journey plotted on a curved route.",
+      "aliases": [
+        "journey-curve",
+        "旅程曲线",
+        "101"
+      ],
+      "renderer_kinds": [
+        "svg"
+      ],
+      "component_sources": [
+        "native"
+      ],
+      "roles": [
+        "explain",
+        "prove"
+      ],
+      "relations": [
+        "sequence"
+      ],
+      "relation_keys": [
+        "sequence"
+      ],
+      "primitives": [
+        "linear-sequence"
+      ],
+      "tasks": [
+        "sequence",
+        "content"
+      ],
+      "selection_notes": "Use native.paper-ink.101.journey-curve only when slot geometry and the typed data contract both fit.",
+      "requires": [],
+      "space_requirements": {
+        "min_width": 680,
+        "min_height": 380,
+        "min_aspect_ratio": 0.81,
+        "max_aspect_ratio": 3.91
+      },
+      "capacity": {
+        "min_items": 4,
+        "max_items": 6,
+        "unit": "milestone"
+      },
+      "frame": {
+        "width": 1049,
+        "height": 590,
+        "fit": "fixed"
+      },
+      "semantic_contract": {
+        "input_family": "temporal-series",
+        "role": "primary-proof",
+        "visual_action": "sequence",
+        "capacity": {
+          "mode": "range",
+          "unit": "milestone",
+          "min": 4,
+          "max": 6
+        },
+        "derivation": "explicit-data-bound-v1"
+      },
+      "binding_archetype": "journey-curve",
+      "data_contract": {
+        "mode": "typed-structured-content",
+        "contract_id": "native.paper-ink.101.journey-curve@1",
+        "reference_mode": "one-item-plus-owned-atoms",
+        "content_ref_cardinality": {
+          "min": 1,
+          "max": 1
+        },
+        "schema": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "milestones"
+          ],
+          "properties": {
+            "title": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 240
+            },
+            "milestones": {
+              "type": "array",
+              "minItems": 4,
+              "maxItems": 6,
+              "items": {
+                "type": "object",
+                "additionalProperties": false,
+                "required": [
+                  "id",
+                  "label"
+                ],
+                "properties": {
+                  "id": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 160,
+                    "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]{0,159}$"
+                  },
+                  "label": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 240
+                  },
+                  "description": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 4000
+                  },
+                  "code": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 240
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "production_readiness": {
+        "status": "ready"
+      },
+      "dependencies": [
+        "paper-ink-components"
+      ],
+      "source": {
+        "kind": "paper-ink-snippet",
+        "module": "capabilities/layouts/paper-ink-components.js",
+        "entry_num": 101
+      },
+      "binding_contract": {
+        "mode": "collection",
+        "unit": "milestone"
+      }
+    },
+    {
+      "component_id": "native.paper-ink.102.timeline-axis-horizontal",
+      "name": "时间轴（横排）",
+      "canonical_name": "timeline-axis-horizontal",
+      "variant": null,
+      "group": "flow-temporal",
+      "group_label": "流程与时序",
+      "description": "A horizontal ruled timeline with milestone annotations.",
+      "aliases": [
+        "timeline-axis-horizontal",
+        "时间轴（横排）",
+        "102"
+      ],
+      "renderer_kinds": [
+        "svg"
+      ],
+      "component_sources": [
+        "native"
+      ],
+      "roles": [
+        "explain",
+        "prove"
+      ],
+      "relations": [
+        "sequence"
+      ],
+      "relation_keys": [
+        "sequence"
+      ],
+      "primitives": [
+        "linear-sequence"
+      ],
+      "tasks": [
+        "sequence",
+        "content"
+      ],
+      "selection_notes": "Use native.paper-ink.102.timeline-axis-horizontal only when slot geometry and the typed data contract both fit.",
+      "requires": [],
+      "space_requirements": {
+        "min_width": 680,
+        "min_height": 380,
+        "min_aspect_ratio": 0.81,
+        "max_aspect_ratio": 3.91
+      },
+      "capacity": {
+        "min_items": 3,
+        "max_items": 6,
+        "unit": "milestone"
+      },
+      "frame": {
+        "width": 1044,
+        "height": 587,
+        "fit": "fixed"
+      },
+      "semantic_contract": {
+        "input_family": "temporal-series",
+        "role": "primary-proof",
+        "visual_action": "sequence",
+        "capacity": {
+          "mode": "range",
+          "unit": "milestone",
+          "min": 3,
+          "max": 6
+        },
+        "derivation": "explicit-data-bound-v1"
+      },
+      "binding_archetype": "timeline-horizontal",
+      "data_contract": {
+        "mode": "typed-structured-content",
+        "contract_id": "native.paper-ink.102.timeline-axis-horizontal@1",
+        "reference_mode": "one-item-plus-owned-atoms",
+        "content_ref_cardinality": {
+          "min": 1,
+          "max": 1
+        },
+        "schema": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "milestones"
+          ],
+          "properties": {
+            "title": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 240
+            },
+            "milestones": {
+              "type": "array",
+              "minItems": 3,
+              "maxItems": 6,
+              "items": {
+                "type": "object",
+                "additionalProperties": false,
+                "required": [
+                  "id",
+                  "label"
+                ],
+                "properties": {
+                  "id": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 160,
+                    "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]{0,159}$"
+                  },
+                  "label": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 240
+                  },
+                  "description": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 4000
+                  },
+                  "code": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 240
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "production_readiness": {
+        "status": "ready"
+      },
+      "dependencies": [
+        "paper-ink-components"
+      ],
+      "source": {
+        "kind": "paper-ink-snippet",
+        "module": "capabilities/layouts/paper-ink-components.js",
+        "entry_num": 102
+      },
+      "binding_contract": {
+        "mode": "collection",
+        "unit": "milestone"
+      }
+    },
+    {
+      "component_id": "native.paper-ink.103.concentric-ring",
+      "name": "同心环",
+      "canonical_name": "concentric-ring",
+      "variant": null,
+      "group": "hierarchy-structure",
+      "group_label": "层级与结构",
+      "description": "Three to five concentric containment rings with side explanations.",
+      "aliases": [
+        "concentric-ring",
+        "同心环",
+        "103"
+      ],
+      "renderer_kinds": [
+        "svg"
+      ],
+      "component_sources": [
+        "native"
+      ],
+      "roles": [
+        "explain",
+        "prove"
+      ],
+      "relations": [
+        "nesting"
+      ],
+      "relation_keys": [
+        "nesting"
+      ],
+      "primitives": [
+        "layered-stack"
+      ],
+      "tasks": [
+        "nesting",
+        "content"
+      ],
+      "selection_notes": "Use native.paper-ink.103.concentric-ring only when slot geometry and the typed data contract both fit.",
+      "requires": [],
+      "space_requirements": {
+        "min_width": 810,
+        "min_height": 460,
+        "min_aspect_ratio": 0.81,
+        "max_aspect_ratio": 3.91
+      },
+      "capacity": {
+        "min_items": 3,
+        "max_items": 5,
+        "unit": "layer"
+      },
+      "frame": {
+        "width": 1249,
+        "height": 702,
+        "fit": "fixed"
+      },
+      "semantic_contract": {
+        "input_family": "hierarchy",
+        "role": "primary-proof",
+        "visual_action": "show-hierarchy",
+        "capacity": {
+          "mode": "range",
+          "unit": "layer",
+          "min": 3,
+          "max": 5
+        },
+        "derivation": "explicit-data-bound-v1"
+      },
+      "binding_archetype": "concentric-layers",
+      "data_contract": {
+        "mode": "typed-structured-content",
+        "contract_id": "native.paper-ink.103.concentric-ring@1",
+        "reference_mode": "one-item-plus-owned-atoms",
+        "content_ref_cardinality": {
+          "min": 1,
+          "max": 1
+        },
+        "schema": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "layers"
+          ],
+          "properties": {
+            "title": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 240
+            },
+            "layers": {
+              "type": "array",
+              "minItems": 3,
+              "maxItems": 5,
+              "items": {
+                "type": "object",
+                "additionalProperties": false,
+                "required": [
+                  "id",
+                  "label"
+                ],
+                "properties": {
+                  "id": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 160,
+                    "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]{0,159}$"
+                  },
+                  "label": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 240
+                  },
+                  "description": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 4000
+                  },
+                  "code": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 240
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "production_readiness": {
+        "status": "ready"
+      },
+      "dependencies": [
+        "paper-ink-components"
+      ],
+      "source": {
+        "kind": "paper-ink-snippet",
+        "module": "capabilities/layouts/paper-ink-components.js",
+        "entry_num": 103
+      },
+      "binding_contract": {
+        "mode": "collection",
+        "unit": "layer"
+      }
+    },
+    {
+      "component_id": "native.paper-ink.104.timeline-axis-vertical",
+      "name": "时间轴（竖排）",
+      "canonical_name": "timeline-axis-vertical",
+      "variant": null,
+      "group": "flow-temporal",
+      "group_label": "流程与时序",
+      "description": "A vertical ruled timeline for narrow slots.",
+      "aliases": [
+        "timeline-axis-vertical",
+        "时间轴（竖排）",
+        "104"
+      ],
+      "renderer_kinds": [
+        "svg"
+      ],
+      "component_sources": [
+        "native"
+      ],
+      "roles": [
+        "explain",
+        "prove"
+      ],
+      "relations": [
+        "sequence"
+      ],
+      "relation_keys": [
+        "sequence"
+      ],
+      "primitives": [
+        "linear-sequence"
+      ],
+      "tasks": [
+        "sequence",
+        "content"
+      ],
+      "selection_notes": "Use native.paper-ink.104.timeline-axis-vertical only when slot geometry and the typed data contract both fit.",
+      "requires": [],
+      "space_requirements": {
+        "min_width": 350,
+        "min_height": 390,
+        "min_aspect_ratio": 0.45,
+        "max_aspect_ratio": 1.98
+      },
+      "capacity": {
+        "min_items": 3,
+        "max_items": 6,
+        "unit": "milestone"
+      },
+      "frame": {
+        "width": 540,
+        "height": 600,
+        "fit": "fixed"
+      },
+      "semantic_contract": {
+        "input_family": "temporal-series",
+        "role": "primary-proof",
+        "visual_action": "sequence",
+        "capacity": {
+          "mode": "range",
+          "unit": "milestone",
+          "min": 3,
+          "max": 6
+        },
+        "derivation": "explicit-data-bound-v1"
+      },
+      "binding_archetype": "timeline-vertical",
+      "data_contract": {
+        "mode": "typed-structured-content",
+        "contract_id": "native.paper-ink.104.timeline-axis-vertical@1",
+        "reference_mode": "one-item-plus-owned-atoms",
+        "content_ref_cardinality": {
+          "min": 1,
+          "max": 1
+        },
+        "schema": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "milestones"
+          ],
+          "properties": {
+            "title": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 240
+            },
+            "milestones": {
+              "type": "array",
+              "minItems": 3,
+              "maxItems": 6,
+              "items": {
+                "type": "object",
+                "additionalProperties": false,
+                "required": [
+                  "id",
+                  "label"
+                ],
+                "properties": {
+                  "id": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 160,
+                    "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]{0,159}$"
+                  },
+                  "label": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 240
+                  },
+                  "description": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 4000
+                  },
+                  "code": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 240
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "production_readiness": {
+        "status": "ready"
+      },
+      "dependencies": [
+        "paper-ink-components"
+      ],
+      "source": {
+        "kind": "paper-ink-snippet",
+        "module": "capabilities/layouts/paper-ink-components.js",
+        "entry_num": 104
+      },
+      "binding_contract": {
+        "mode": "collection",
+        "unit": "milestone"
+      }
+    },
+    {
+      "component_id": "native.paper-ink.105.diamond-edge-labels",
+      "name": "菱形四边标注",
+      "canonical_name": "diamond-edge-labels",
+      "variant": null,
+      "group": "relation-mapping",
+      "group_label": "关系与映射",
+      "description": "Four fixed nodes in a diamond with independently labelled edges.",
+      "aliases": [
+        "diamond-edge-labels",
+        "菱形四边标注",
+        "105"
+      ],
+      "renderer_kinds": [
+        "svg"
+      ],
+      "component_sources": [
+        "native"
+      ],
+      "roles": [
+        "explain",
+        "prove"
+      ],
+      "relations": [
+        "mapping"
+      ],
+      "relation_keys": [
+        "mapping"
+      ],
+      "primitives": [
+        "node-link"
+      ],
+      "tasks": [
+        "mapping",
+        "content"
+      ],
+      "selection_notes": "Use native.paper-ink.105.diamond-edge-labels only when slot geometry and the typed data contract both fit.",
+      "requires": [],
+      "space_requirements": {
+        "min_width": 720,
+        "min_height": 400,
+        "min_aspect_ratio": 0.81,
+        "max_aspect_ratio": 3.91
+      },
+      "capacity": {
+        "min_items": 4,
+        "max_items": 4,
+        "unit": "node"
+      },
+      "frame": {
+        "width": 1100,
+        "height": 619,
+        "fit": "fixed"
+      },
+      "semantic_contract": {
+        "input_family": "causal-network",
+        "role": "primary-proof",
+        "visual_action": "connect-causality",
+        "capacity": {
+          "mode": "fixed",
+          "unit": "node",
+          "min": 4,
+          "max": 4
+        },
+        "derivation": "explicit-data-bound-v1"
+      },
+      "binding_archetype": "diamond-edge-mapping",
+      "data_contract": {
+        "mode": "typed-structured-content",
+        "contract_id": "native.paper-ink.105.diamond-edge-labels@1",
+        "reference_mode": "one-item-plus-owned-atoms",
+        "content_ref_cardinality": {
+          "min": 1,
+          "max": 1
+        },
+        "schema": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "nodes",
+            "links"
+          ],
+          "properties": {
+            "title": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 240
+            },
+            "nodes": {
+              "type": "array",
+              "minItems": 4,
+              "maxItems": 4,
+              "items": {
+                "type": "object",
+                "additionalProperties": false,
+                "required": [
+                  "id",
+                  "label"
+                ],
+                "properties": {
+                  "id": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 160,
+                    "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]{0,159}$"
+                  },
+                  "label": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 240
+                  },
+                  "description": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 4000
+                  },
+                  "code": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 240
+                  }
+                }
+              }
+            },
+            "links": {
+              "type": "array",
+              "minItems": 3,
+              "maxItems": 12,
+              "items": {
+                "type": "object",
+                "additionalProperties": false,
+                "required": [
+                  "source",
+                  "target"
+                ],
+                "properties": {
+                  "source": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 160
+                  },
+                  "target": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 160
+                  },
+                  "label": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 240
+                  },
+                  "weight": {
+                    "type": "number"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "production_readiness": {
+        "status": "ready"
+      },
+      "dependencies": [
+        "paper-ink-components"
+      ],
+      "source": {
+        "kind": "paper-ink-snippet",
+        "module": "capabilities/layouts/paper-ink-components.js",
+        "entry_num": 105
+      },
+      "binding_contract": {
+        "mode": "collection",
+        "unit": "node"
+      }
+    },
+    {
       "component_id": "native.paper-ink.media.reconstructed-image",
       "name": "已重构本地图片",
       "canonical_name": "reconstructed-image",
@@ -13448,6 +16064,10 @@
         "comparison",
         "spatial",
         "mapping"
+      ],
+      "relation_keys": [
+        "illustration",
+        "evidence"
       ],
       "primitives": [
         "image-region",
@@ -13558,6 +16178,9 @@
         "comparison",
         "matrix"
       ],
+      "relation_keys": [
+        "matrix"
+      ],
       "primitives": [
         "bilateral-split",
         "matrix-field"
@@ -13621,7 +16244,8 @@
       "description": "由 Content v2 结构化内容确定性生成，不含样例业务文本。",
       "aliases": [
         "constellation relationship network",
-        "native.paper-ink.semantic.constellation-network"
+        "native.paper-ink.semantic.constellation-network",
+        "constellation"
       ],
       "roles": [
         "explain",
@@ -13630,6 +16254,9 @@
       "relations": [
         "hierarchy",
         "decomposition"
+      ],
+      "relation_keys": [
+        "network"
       ],
       "primitives": [
         "node-link",
@@ -13705,6 +16332,9 @@
         "focus",
         "sequence"
       ],
+      "relation_keys": [
+        "focus"
+      ],
       "primitives": [
         "content-frame",
         "focus-field"
@@ -13779,6 +16409,9 @@
         "focus",
         "sequence"
       ],
+      "relation_keys": [
+        "evidence"
+      ],
       "primitives": [
         "content-frame",
         "focus-field"
@@ -13851,6 +16484,9 @@
       "relations": [
         "hierarchy",
         "decomposition"
+      ],
+      "relation_keys": [
+        "hierarchy"
       ],
       "primitives": [
         "node-link",
@@ -13925,6 +16561,9 @@
       "relations": [
         "focus",
         "sequence"
+      ],
+      "relation_keys": [
+        "display"
       ],
       "primitives": [
         "content-frame",
@@ -14001,6 +16640,9 @@
         "profile",
         "distribution"
       ],
+      "relation_keys": [
+        "metric"
+      ],
       "primitives": [
         "coordinate-plot",
         "radial-axis"
@@ -14075,6 +16717,9 @@
         "comparison",
         "matrix"
       ],
+      "relation_keys": [
+        "comparison"
+      ],
       "primitives": [
         "bilateral-split",
         "matrix-field"
@@ -14146,6 +16791,9 @@
       ],
       "relations": [
         "sequence",
+        "flow"
+      ],
+      "relation_keys": [
         "flow"
       ],
       "primitives": [
@@ -14222,6 +16870,9 @@
         "focus",
         "sequence"
       ],
+      "relation_keys": [
+        "display"
+      ],
       "primitives": [
         "content-frame",
         "focus-field"
@@ -14296,6 +16947,9 @@
         "focus",
         "sequence"
       ],
+      "relation_keys": [
+        "focus"
+      ],
       "primitives": [
         "content-frame",
         "focus-field"
@@ -14359,7 +17013,8 @@
       "description": "由 Content v2 结构化内容确定性生成，不含样例业务文本。",
       "aliases": [
         "weighted relationship arcs",
-        "native.paper-ink.semantic.weighted-arcs"
+        "native.paper-ink.semantic.weighted-arcs",
+        "weighted-arcs"
       ],
       "roles": [
         "explain",
@@ -14368,6 +17023,10 @@
       "relations": [
         "hierarchy",
         "decomposition"
+      ],
+      "relation_keys": [
+        "mapping",
+        "network"
       ],
       "primitives": [
         "node-link",
@@ -14390,5 +17049,30 @@
         "module": "scripts/_semantic_native_components.py"
       }
     }
-  ]
+  ],
+  "relation_key_vocabulary": {
+    "focus": "焦点",
+    "illustration": "示意",
+    "display": "陈列",
+    "parallel": "并行",
+    "metric": "指标",
+    "distribution": "分布",
+    "hierarchy": "层级",
+    "decomposition": "拆解",
+    "part-whole": "部分整体",
+    "nesting": "嵌套",
+    "sequence": "时序",
+    "flow": "流动",
+    "cycle": "循环",
+    "convergence": "汇聚",
+    "funnel": "漏斗",
+    "causal": "因果",
+    "comparison": "对比",
+    "matrix": "矩阵",
+    "mapping": "映射",
+    "overlap": "交叠",
+    "ranking": "排名",
+    "network": "网络",
+    "evidence": "证据"
+  }
 }

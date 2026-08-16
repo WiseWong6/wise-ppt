@@ -118,6 +118,17 @@
   --wp-font-mono: var(--font-mono-family);
   --wp-font-brush: var(--font-brush-family);
 
+  /* Icon registry v2: F4/A7/E6-style line and ink hierarchy on 64 units. */
+  --wp-icon-main-width: 1.2;
+  --wp-icon-main-opacity: .80;
+  --wp-icon-detail-width: .8;
+  --wp-icon-detail-opacity: .55;
+  --wp-icon-hairline-width: .55;
+  --wp-icon-hairline-opacity: .35;
+  --wp-icon-emphasis-width: 1.6;
+  --wp-icon-emphasis-opacity: .90;
+  --wp-icon-ink-dot-opacity: .70;
+
   /* Private compatibility roles preserve the standardized native/Atlas
      galleries while their component source remains free of literal colors. */
   --wp-compat-pi-paper: #DFE0D9;
