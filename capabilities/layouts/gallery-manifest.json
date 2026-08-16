@@ -11305,9 +11305,9 @@
     {
       "recipe_id": "paper-ink.display.capability-grid-2x3",
       "display_code": "R3",
-      "name": "六格能力地图",
+      "name": "六宫格能力地图",
       "family": "陈列",
-      "description": "六个可独立换数据的槽位组成二乘三页面网格",
+      "description": "沿用组件目录 #006 图标格阵的母板视觉，并拆成六个可独立换数据的二乘三页面槽位",
       "roles": ["explain"],
       "relations": ["display"],
       "primitives": ["matrix-field", "content-frame"],
@@ -11328,7 +11328,7 @@
         {"slot_id": "takeaway", "purpose": "页面一句话结论", "required": false, "visual_role": "support", "min_items": 0, "max_items": 1, "count_unit": "binding", "allowed_renderer_kinds": ["typography"], "allowed_component_sources": ["native"], "default_renderer": {"renderer_kind": "typography", "component_source": "native", "component_id": "native.paper-ink.display.capability-grid-2x3.takeaway"}}
       ],
       "examples": {"general": "gallery/paper-ink/general/frames/layout-r3.html", "ai": "gallery/paper-ink/ai/frames/layout-r3.html"},
-      "selection_notes": "六项同级内容都要独立承载信息，且信息量相近时使用。",
+      "selection_notes": "六项同级内容都要独立承载信息，且希望采用组件目录 #006 的细线图标母板视觉时使用。",
       "anti_patterns": ["六项有明显先后时应使用流程", "不足六项时不要用空卡凑满"],
       "shape": ["网格"],
       "expression_profile": {

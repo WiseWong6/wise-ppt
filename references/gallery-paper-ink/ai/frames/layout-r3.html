@@ -1,12 +1,100 @@
 <!DOCTYPE html>
 <html lang="zh-CN" data-runtime="wise-ppt-specimen" data-typography-mode="mixed" data-page-id="gallery-ai-r3" data-page-role="explain" data-theme="paper-ink" data-layout="paper-ink.display.capability-grid-2x3" data-layout-source="gallery">
-<head><meta charset="UTF-8"><title>layout-r3 · 六格能力地图 · AI 产品能力盘点</title><link rel="stylesheet" href="../../../../themes/paper-ink/assets/design-tokens.css"><link rel="stylesheet" href="../../../../themes/paper-ink/assets/slide-components.css"><link rel="stylesheet" href="../../../shell.css"><style>svg.scene{position:absolute;inset:0;z-index:1}.caption{position:absolute;left:0;right:0;bottom:68px;text-align:center;font-family:var(--sans);font-size:var(--type-caption);letter-spacing:.04em;color:var(--ink);z-index:5}</style></head>
-<body class="slide"><div class="stage" data-block-id="gallery-primary" data-renderer-kind="native-html" data-component-source="native" data-component-id="native.paper-ink.semantic.icon-grid" data-content-ref="example.r3"><div class="doc tl">AI 产品 — 六格能力地图<br>二乘三独立区域</div><div class="folio">R3 / 79 — BY @歪斯WISE</div>
-<svg class="scene" width="1920" height="1080" viewBox="0 0 1920 1080" aria-label="六个独立槽位组成的二乘三能力地图"><g font-family="var(--sans)" fill="#191917">
-  <g data-slot-id="cell-a" data-component-id="native.paper-ink.semantic.icon-grid"><rect x="210" y="225" width="460" height="270" fill="rgba(255,255,255,.2)" stroke="#191917"/><text x="248" y="278" font-family="var(--mono)" font-size="14" letter-spacing="3" opacity=".5">01 / PERCEIVE</text><text x="248" y="350" font-size="31">感知</text><text x="248" y="406" font-size="17" opacity=".67">文本 · 图像 · 语音</text></g>
-  <g data-slot-id="cell-b" data-component-id="native.paper-ink.semantic.icon-grid"><rect x="730" y="225" width="460" height="270" fill="#DFE0D9" stroke="#191917"/><text x="768" y="278" font-family="var(--mono)" font-size="14" letter-spacing="3" opacity=".5">02 / RETRIEVE</text><text x="768" y="350" font-size="31">检索</text><text x="768" y="406" font-size="17" opacity=".67">知识 · 权限 · 时效</text></g>
-  <g data-slot-id="cell-c" data-component-id="native.paper-ink.semantic.icon-grid"><rect x="1250" y="225" width="460" height="270" fill="rgba(255,255,255,.2)" stroke="#191917"/><text x="1288" y="278" font-family="var(--mono)" font-size="14" letter-spacing="3" opacity=".5">03 / REASON</text><text x="1288" y="350" font-size="31">推理</text><text x="1288" y="406" font-size="17" opacity=".67">拆解 · 规划 · 判断</text></g>
-  <g data-slot-id="cell-d" data-component-id="native.paper-ink.semantic.icon-grid"><rect x="210" y="555" width="460" height="270" fill="#DFE0D9" stroke="#191917"/><text x="248" y="608" font-family="var(--mono)" font-size="14" letter-spacing="3" opacity=".5">04 / ACT</text><text x="248" y="680" font-size="31">执行</text><text x="248" y="736" font-size="17" opacity=".67">工具 · 流程 · 回退</text></g>
-  <g data-slot-id="cell-e" data-component-id="native.paper-ink.semantic.icon-grid"><rect x="730" y="555" width="460" height="270" fill="rgba(255,255,255,.2)" stroke="#191917"/><text x="768" y="608" font-family="var(--mono)" font-size="14" letter-spacing="3" opacity=".5">05 / VERIFY</text><text x="768" y="680" font-size="31">校验</text><text x="768" y="736" font-size="17" opacity=".67">事实 · 规则 · 质量</text></g>
-  <g data-slot-id="cell-f" data-component-id="native.paper-ink.semantic.icon-grid"><rect x="1250" y="555" width="460" height="270" fill="#DFE0D9" stroke="#191917"/><text x="1288" y="608" font-family="var(--mono)" font-size="14" letter-spacing="3" opacity=".5">06 / LEARN</text><text x="1288" y="680" font-size="31">迭代</text><text x="1288" y="736" font-size="17" opacity=".67">反馈 · 评测 · 优化</text></g>
-</g></svg><div class="caption">适合六项同级能力盘点；如果六项有先后，就应该改用流程而不是网格。</div></div><script src="../../../../runtime/stage-fit.js"></script><script>stageFit();</script></body></html>
+<head>
+<meta charset="UTF-8">
+<title>layout-r3 · 六宫格能力地图 · AI 六大能力</title>
+<link rel="stylesheet" href="../../../../themes/paper-ink/assets/design-tokens.css">
+<link rel="stylesheet" href="../../../../themes/paper-ink/assets/slide-components.css">
+<link rel="stylesheet" href="../../../shell.css">
+<style>
+  svg.scene{position:absolute;inset:0;z-index:1}
+  .caption{position:absolute;left:0;right:0;bottom:118px;text-align:center;font-family:var(--sans);font-weight:400;font-size:var(--type-caption);letter-spacing:.04em;color:var(--ink);z-index:5}
+  .slot-title{font-family:var(--sans);font-weight:300;font-size:24px;text-anchor:middle;fill:#191917}
+  .slot-code{font-family:var(--mono);font-size:11px;letter-spacing:2.5px;text-anchor:middle;fill:rgba(25,25,23,.45)}
+  .slot-note{font-family:var(--sans);font-weight:300;font-size:15px;text-anchor:middle;fill:rgba(25,25,23,.7)}
+  .slot-note.secondary{fill:rgba(25,25,23,.55)}
+</style>
+</head>
+<body class="slide">
+<div class="stage" data-block-id="gallery-primary" data-renderer-kind="native-html" data-component-source="native" data-component-id="native.paper-ink.semantic.icon-grid" data-content-ref="example.r3">
+  <div class="doc tl">AI ENGINEERING — R3<br>SIX INDEPENDENT CAPABILITIES</div>
+  <div class="folio">R3 / 79 — BY @歪斯WISE</div>
+
+  <svg class="scene" width="1920" height="1080" viewBox="0 0 1920 1080" aria-label="采用组件目录第006号图标格阵视觉语言的二乘三独立页面网格">
+    <defs>
+      <pattern id="r3-hatch" width="7" height="7" patternTransform="rotate(45)" patternUnits="userSpaceOnUse">
+        <line x1="0" y1="0" x2="0" y2="7" stroke="#191917" stroke-width=".6" opacity=".3"/>
+      </pattern>
+    </defs>
+
+    <!-- #006 icon-grid 母板视觉；每一格仍是可独立换数据的页面槽位。 -->
+    <g data-slot-id="cell-a" data-component-id="native.paper-ink.semantic.icon-grid" transform="translate(460 196)">
+      <circle cx="-38" cy="70" r="6" fill="none" stroke="#191917" stroke-width="1.2" opacity=".8"/>
+      <circle cx="-38" cy="70" r="2" fill="#191917"/>
+      <circle cx="38" cy="44" r="5" fill="none" stroke="#191917" stroke-width="1.1" opacity=".8"/>
+      <circle cx="38" cy="96" r="5" fill="none" stroke="#191917" stroke-width="1.1" opacity=".8"/>
+      <path d="M-32 70 Q-2 70 2 70 Q14 70 20 54 L34 46 M-32 70 Q14 70 20 86 L34 94" fill="none" stroke="#191917" stroke-width="1.3" opacity=".8"/>
+      <circle cx="2" cy="70" r="3" fill="#191917" opacity=".7"/>
+      <text y="188" class="slot-title">推理</text><text y="212" class="slot-code">REASONING</text>
+      <line x1="-24" y1="224" x2="24" y2="224" stroke="#191917" stroke-width=".6" opacity=".4"/>
+      <text y="250" class="slot-note">思维链 · 多步规划</text><text y="272" class="slot-note secondary">复杂问题分步求解</text>
+    </g>
+
+    <g data-slot-id="cell-b" data-component-id="native.paper-ink.semantic.icon-grid" transform="translate(960 196)">
+      <rect x="-34" y="50" width="60" height="40" fill="none" stroke="#191917" stroke-width="1.3" opacity=".8"/>
+      <rect x="26" y="60" width="6" height="20" fill="none" stroke="#191917" stroke-width="1.2" opacity=".8"/>
+      <rect x="-28" y="56" width="16" height="28" fill="url(#r3-hatch)"/><rect x="-10" y="56" width="16" height="28" fill="none" stroke="#191917" stroke-width=".5" opacity=".3"/><rect x="8" y="56" width="16" height="28" fill="none" stroke="#191917" stroke-width=".5" opacity=".3"/>
+      <line x1="-34" y1="96" x2="-34" y2="102" stroke="#191917" stroke-width=".6" opacity=".4"/><line x1="-19" y1="96" x2="-19" y2="102" stroke="#191917" stroke-width=".6" opacity=".4"/><line x1="-4" y1="96" x2="-4" y2="102" stroke="#191917" stroke-width=".6" opacity=".4"/><line x1="11" y1="96" x2="11" y2="102" stroke="#191917" stroke-width=".6" opacity=".4"/>
+      <text y="188" class="slot-title">记忆</text><text y="212" class="slot-code">MEMORY</text>
+      <line x1="-24" y1="224" x2="24" y2="224" stroke="#191917" stroke-width=".6" opacity=".4"/>
+      <text y="250" class="slot-note">上下文窗口与容量</text><text y="272" class="slot-note secondary">向量检索召回相关片段</text>
+    </g>
+
+    <g data-slot-id="cell-c" data-component-id="native.paper-ink.semantic.icon-grid" transform="translate(1460 196)">
+      <g transform="translate(-33 37)" fill="none" stroke="#191917" stroke-width=".9" opacity=".55">
+        <rect x="0" y="0" width="19" height="19"/><rect x="22" y="0" width="19" height="19"/><rect x="44" y="0" width="19" height="19"/><rect x="0" y="22" width="19" height="19"/><rect x="44" y="22" width="19" height="19"/><rect x="0" y="44" width="19" height="19"/><rect x="22" y="44" width="19" height="19"/><rect x="44" y="44" width="19" height="19"/>
+        <rect x="22" y="22" width="19" height="19" fill="url(#r3-hatch)" stroke-width="1" opacity="1"/>
+      </g>
+      <circle cx="-1.5" cy="68.5" r="2" fill="#191917"/>
+      <text y="188" class="slot-title">工具</text><text y="212" class="slot-code">TOOLS</text>
+      <line x1="-24" y1="224" x2="24" y2="224" stroke="#191917" stroke-width=".6" opacity=".4"/>
+      <text y="250" class="slot-note">函数调用 · API 编排</text><text y="272" class="slot-note secondary">多工具串行自动调度</text>
+    </g>
+
+    <g data-slot-id="cell-d" data-component-id="native.paper-ink.semantic.icon-grid" transform="translate(460 506)">
+      <circle cx="0" cy="82" r="5" fill="none" stroke="#191917" stroke-width="1.3" opacity=".8"/><circle cx="0" cy="82" r="2" fill="#191917"/>
+      <path d="M-16 72 A18 18 0 0 1 16 72 M-26 66 A30 30 0 0 1 26 66 M-36 60 A42 42 0 0 1 36 60" fill="none" stroke="#191917" stroke-width="1.1" opacity=".55"/>
+      <text y="188" class="slot-title">多模态</text><text y="212" class="slot-code">MULTIMODAL</text>
+      <line x1="-24" y1="224" x2="24" y2="224" stroke="#191917" stroke-width=".6" opacity=".4"/>
+      <text y="250" class="slot-note">图文音视融合理解</text><text y="272" class="slot-note secondary">跨模态对齐与检索</text>
+    </g>
+
+    <g data-slot-id="cell-e" data-component-id="native.paper-ink.semantic.icon-grid" transform="translate(960 506)">
+      <path d="M-34 82 A34 34 0 0 1 34 82" fill="none" stroke="#191917" stroke-width="1.3" opacity=".8"/>
+      <line x1="-20" y1="57" x2="-24" y2="52" stroke="#191917" stroke-width=".7" opacity=".5"/><line x1="-10" y1="51" x2="-12" y2="45" stroke="#191917" stroke-width=".7" opacity=".5"/><line x1="0" y1="48" x2="0" y2="42" stroke="#191917" stroke-width=".7" opacity=".5"/><line x1="10" y1="51" x2="12" y2="45" stroke="#191917" stroke-width=".7" opacity=".5"/><line x1="20" y1="57" x2="24" y2="52" stroke="#191917" stroke-width=".7" opacity=".5"/>
+      <line x1="0" y1="82" x2="18" y2="56" stroke="#191917" stroke-width="1.6"/><circle cx="0" cy="82" r="3" fill="#191917"/>
+      <text y="188" class="slot-title">理解</text><text y="212" class="slot-code">COMPREHEND</text>
+      <line x1="-24" y1="224" x2="24" y2="224" stroke="#191917" stroke-width=".6" opacity=".4"/>
+      <text y="250" class="slot-note">自然语言意图解析</text><text y="272" class="slot-note secondary">模糊提问精准定位</text>
+    </g>
+
+    <g data-slot-id="cell-f" data-component-id="native.paper-ink.semantic.icon-grid" transform="translate(1460 506)">
+      <path d="M-26 42 H26 V76 Q26 100 0 106 Q-26 100 -26 76 Z" fill="none" stroke="#191917" stroke-width="1.3" opacity=".8"/>
+      <path d="M-26 50 H26 M-12 70 L-3 80 L14 58" fill="none" stroke="#191917" stroke-width="1.6"/>
+      <text y="188" class="slot-title">生成</text><text y="212" class="slot-code">GENERATE</text>
+      <line x1="-24" y1="224" x2="24" y2="224" stroke="#191917" stroke-width=".6" opacity=".4"/>
+      <text y="250" class="slot-note">文本 · 代码 · 图像产出</text><text y="272" class="slot-note secondary">一次成稿可读可运行</text>
+    </g>
+
+    <rect x="210" y="196" width="1500" height="620" fill="none" stroke="#191917" stroke-width=".6" opacity=".22" stroke-dasharray="2 6"/>
+    <line x1="710" y1="196" x2="710" y2="816" stroke="#191917" stroke-width=".6" opacity=".22" stroke-dasharray="2 6"/>
+    <line x1="1210" y1="196" x2="1210" y2="816" stroke="#191917" stroke-width=".6" opacity=".22" stroke-dasharray="2 6"/>
+    <line x1="210" y1="506" x2="1710" y2="506" stroke="#191917" stroke-width=".6" opacity=".22" stroke-dasharray="2 6"/>
+  </svg>
+
+  <div class="caption">沿用组件目录 #006 的细线图标语言，但六格均为可独立换数据的页面槽位。</div>
+</div>
+<script src="../../../../runtime/stage-fit.js"></script>
+<script>stageFit();</script>
+</body>
+</html>
