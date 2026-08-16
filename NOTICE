@@ -1,0 +1,52 @@
+wise-ppt-glm
+Copyright © 2026 Wise Wong
+
+Licensed under the GNU Affero General Public License v3.0 (AGPL-3.0).
+See LICENSE for the full license text.
+
+This product bundles the following third-party components, each retaining
+its original license (these are NOT relicensed under AGPL-3.0):
+
+—————————————————————————————————————————————————————————————————————————————
+Apache ECharts 6.1.0
+  Path:     capabilities/vendors/echarts/echarts.min.js
+  License:  Apache License 2.0
+  Copyright: Copyright The Apache Software Foundation
+  Source:   https://echarts.apache.org
+  Local:    capabilities/vendors/echarts/LICENSE
+  ——————————————————————————————————————————————————————
+
+ECharts 示例(13 个官方改编示例)
+  Path:     capabilities/vendors/echarts/examples/
+  License:  Apache License 2.0(改编自 Apache ECharts 官方示例)
+  Source:   https://echarts.apache.org/examples/zh/index.html
+  Note:     数据结构与动画时序已适配本仓库的 dataset 契约
+  ——————————————————————————————————————————————————————
+
+PPT Component Atlas(61 个组件目录)
+  Path:     capabilities/vendors/ppt-component-atlas/ 与 references/ppt-component-atlas/
+  License:  MIT
+  Copyright: Copyright (c) 2026 Wise
+  Source:   https://github.com/WiseWong6/wise-labs/tree/main/html-ppt-components
+  Local:    capabilities/vendors/ppt-component-atlas/LICENSE
+  ——————————————————————————————————————————————————————
+
+纸墨图标重绘成品(源自 Tabler Icons)
+  Path:     references/icon-catalog-data.js(精选重绘 SVG)
+  License:  MIT(上游 Tabler Icons v3.46.0,Copyright (c) 2020-2026 Paweł Kuna)
+  Source:   https://github.com/tabler/tabler-icons
+  Note:     图标为纸墨风格重绘的衍生作品;deck 内联使用。
+  ——————————————————————————————————————————————————————
+
+广东 GeoJSON
+  Path:     capabilities/vendors/geo/guangdong-geo.json
+  License:  来源 DataV.GeoAtlas,使用时必须保留来源标注
+  Source:   https://datav.aliyun.com/portal/school/atlas/area_selector
+  ——————————————————————————————————————————————————————
+
+字体(不进 git,交付 deck 时随包分发,均 SIL Open Font License 1.1)
+  思源宋体 Source Han Serif   Copyright © Adobe
+  思源黑体 Source Han Sans    Copyright © Adobe
+  霞鹜文楷 LXGW WenKai        Copyright © LXGW (https://github.com/lxgw/LxgwWenKai)
+  Courier Prime               Copyright © Quote-Unquote Apps
+  Path:     themes/paper-ink/assets/fonts/(上游 URL 见 font-manifest.json)

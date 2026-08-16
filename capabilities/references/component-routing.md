@@ -19,7 +19,7 @@
 
 输入族与视觉动作均由 catalog 的 canonical name、group、tasks、relations 和 renderer 确定性派生，保留原多标签作为 affordance，但不会产生第二套主分类。
 
-当前 routing 闭合为 123 个 production-ready ID：55 个 Atlas、13 个 ECharts、54 个 native（原 39 个 + 本轮转正 15 个）以及 1 个 Codex Host 冻结图片入口。上游 Atlas snapshot 仍保留完整 61 条设计证据；以下 6 个页面脚手架或导航构件不作为内容组件进入路由：
+当前 routing 闭合为 125 个 production-ready ID：55 个 Atlas、13 个 ECharts、56 个 native（含经典关系组件 `balance-scale`、`interlocking-gears`）以及 1 个 Codex Host 冻结图片入口。上游 Atlas snapshot 仍保留完整 61 条设计证据；以下 6 个页面脚手架或导航构件不作为内容组件进入路由：
 
 - `atlas.001.cover` → `topology.leaf`
 - `atlas.005.toc-card` → `scaffold.agenda`

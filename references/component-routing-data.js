@@ -376,6 +376,18 @@ window.WISE_PPT_COMPONENT_ROUTING = Object.freeze({
         "mapping"
       ]
     },
+    "native:106": {
+      "component_id": "native.paper-ink.106.balance-scale",
+      "relation_keys": [
+        "comparison"
+      ]
+    },
+    "native:107": {
+      "component_id": "native.paper-ink.107.interlocking-gears",
+      "relation_keys": [
+        "network"
+      ]
+    },
     "native:63": {
       "component_id": "native.paper-ink.063.step-rise",
       "relation_keys": [

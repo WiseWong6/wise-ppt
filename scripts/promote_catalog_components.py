@@ -435,11 +435,11 @@ def check() -> None:
                 rf"\{{t:'native',num:{meta['num']}(?=,)", catalog
             ), f"Catalog 未引用 {cid}"
 
-    assert len(manifest["components"]) == 123, f"路由应为 123，当前 {len(manifest['components'])}"
-    assert manifest["source_counts"]["native"] == 54, "native 路由应为 54"
+    assert len(manifest["components"]) == 125, f"路由应为 125，当前 {len(manifest['components'])}"
+    assert manifest["source_counts"]["native"] == 56, "native 路由应为 56"
     print(
         "检查通过: 14 张原仅浏览卡全部转正，15 个稳定 ID ready；"
-        f"Catalog {len(set(specs))} 个主卡/变体 spec 均有路由；routing 123 = native 54 + 其他 69。"
+        f"Catalog {len(set(specs))} 个主卡/变体 spec 均有路由；routing 125 = native 56 + 其他 69。"
     )
 
 

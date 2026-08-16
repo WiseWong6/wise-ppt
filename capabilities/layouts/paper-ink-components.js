@@ -4726,6 +4726,87 @@ FAIL-SAFE · AUDITED PER CALL
 <line x1="480" y1="566" x2="810" y2="740" transform="translate(0 -22)" stroke="#191917" stroke-width="0.9" opacity="0.5"></line>
 <g transform="translate(0 -22)"><line x1="480" y1="474" x2="810" y2="300" stroke="#191917" stroke-width="0.9" opacity="0.5"></line><line x1="960" y1="694" x2="960" y2="394" stroke="#191917" stroke-width="0.9" opacity="0.5"></line><line x1="1110" y1="300" x2="1440" y2="474" stroke="#191917" stroke-width="0.9" opacity="0.5"></line><line x1="1110" y1="740" x2="1440" y2="566" stroke="#191917" stroke-width="0.9" opacity="0.5"></line><line x1="630" y1="520" x2="948" y2="520" stroke="#191917" stroke-width="0.9" opacity="0.5"></line><line x1="972" y1="520" x2="1290" y2="520" stroke="#191917" stroke-width="0.9" opacity="0.5"></line><text x="605" y="355" font-family="var(--pi-mono)" font-size="var(--type-meta)" letter-spacing="1.5" text-anchor="end" fill="#191917">CONTEXT RECALL / PRECISION</text><text x="605" y="379" font-family="var(--pi-sans)" font-weight="400" font-size="var(--type-label)" text-anchor="end" fill="rgba(25,25,23,.6)">检索覆盖</text><path d="M 637 363 L 946 402" stroke="#191917" stroke-width="0.6" opacity="0.4" stroke-dasharray="2 4" fill="none"></path><circle cx="950" cy="404" r="2" fill="#191917" opacity="0.5"></circle><circle cx="645" cy="387" r="2.4" fill="#191917" opacity="0.7"></circle><text x="1315" y="355" font-family="var(--pi-mono)" font-size="var(--type-meta)" letter-spacing="1.5" text-anchor="start" fill="#191917">FAITHFULNESS</text><text x="1315" y="379" font-family="var(--pi-sans)" font-weight="400" font-size="var(--type-label)" text-anchor="start" fill="rgba(25,25,23,.6)">忠实度</text><circle cx="1275" cy="387" r="2.4" fill="#191917" opacity="0.7"></circle><text x="720" y="552" font-family="var(--pi-mono)" font-size="var(--type-meta)" letter-spacing="1.5" text-anchor="middle" fill="#191917">RESPONSE RELEVANCY</text><text x="720" y="576" font-family="var(--pi-sans)" font-weight="400" font-size="var(--type-label)" text-anchor="middle" fill="rgba(25,25,23,.6)">回答相关</text><circle cx="720" cy="520" r="2.4" fill="#191917" opacity="0.7"></circle><text x="1315" y="687" font-family="var(--pi-mono)" font-size="var(--type-meta)" letter-spacing="1.5" text-anchor="start" fill="#191917">FACTUAL CORRECTNESS</text><text x="1315" y="711" font-family="var(--pi-sans)" font-weight="400" font-size="var(--type-label)" text-anchor="start" fill="rgba(25,25,23,.6)">事实正确</text><circle cx="1275" cy="653" r="2.4" fill="#191917" opacity="0.7"></circle><rect x="330" y="474" width="300" height="92" fill="#DFE0D9" stroke="none"></rect><rect x="330" y="474" width="300" height="92" fill="none" stroke="rgba(25,25,23,.8)" stroke-width="1.3"></rect><rect x="335" y="479" width="290" height="82" fill="none" stroke="#191917" stroke-width="0.6" opacity="0.35"></rect><text x="480" y="516" font-family="var(--pi-mono)" font-size="var(--type-label)" letter-spacing="2" text-anchor="middle" fill="#191917">USER INPUT</text><text x="480" y="548" font-family="var(--pi-sans)" font-weight="400" font-size="var(--type-body)" text-anchor="middle" fill="rgba(25,25,23,.8)">用户问题</text><rect x="810" y="254" width="300" height="92" fill="#DFE0D9" stroke="none"></rect><rect x="810" y="254" width="300" height="92" fill="none" stroke="rgba(25,25,23,.8)" stroke-width="1.3"></rect><rect x="815" y="259" width="290" height="82" fill="none" stroke="#191917" stroke-width="0.6" opacity="0.35"></rect><text x="960" y="296" font-family="var(--pi-mono)" font-size="var(--type-label)" letter-spacing="2" text-anchor="middle" fill="#191917">RETRIEVED CONTEXTS</text><text x="960" y="328" font-family="var(--pi-sans)" font-weight="400" font-size="var(--type-body)" text-anchor="middle" fill="rgba(25,25,23,.8)">检索上下文</text><rect x="1290" y="474" width="300" height="92" fill="#DFE0D9" stroke="none"></rect><rect x="1290" y="474" width="300" height="92" fill="none" stroke="rgba(25,25,23,.8)" stroke-width="1.3"></rect><rect x="1295" y="479" width="290" height="82" fill="none" stroke="#191917" stroke-width="0.6" opacity="0.35"></rect><text x="1440" y="516" font-family="var(--pi-mono)" font-size="var(--type-label)" letter-spacing="2" text-anchor="middle" fill="#191917">RESPONSE</text><text x="1440" y="548" font-family="var(--pi-sans)" font-weight="400" font-size="var(--type-body)" text-anchor="middle" fill="rgba(25,25,23,.8)">模型回答</text><rect x="810" y="694" width="300" height="92" fill="#DFE0D9" stroke="none"></rect><rect x="810" y="694" width="300" height="92" fill="none" stroke="rgba(25,25,23,.8)" stroke-width="1.3"></rect><rect x="815" y="699" width="290" height="82" fill="none" stroke="#191917" stroke-width="0.6" opacity="0.35"></rect><text x="960" y="736" font-family="var(--pi-mono)" font-size="var(--type-label)" letter-spacing="2" text-anchor="middle" fill="#191917">REFERENCE</text><text x="960" y="768" font-family="var(--pi-sans)" font-weight="400" font-size="var(--type-body)" text-anchor="middle" fill="rgba(25,25,23,.8)">参考答案</text><text x="960" y="376" font-family="var(--pi-mono)" font-size="var(--type-meta)" letter-spacing="2" text-anchor="middle" fill="rgba(25,25,23,.45)">RECALL@K · PRECISION@K · MRR · NDCG@K</text></g>
 </svg></div>`
+  },
+
+  {
+    name: "balance-scale",
+    group: "comparison",
+    groupLabel: "对比与对照",
+    description: "A two-sided balance for explicit trade-offs, with independently bound evidence on both sides.",
+    label: "权衡天平",
+    num: 106,
+    variant: null,
+    paperInkNative: true,
+    frame: { width: 1050, height: 560, fit: 'fixed' },
+    dataContract: { mode: 'record', unit: 'side', pointer: '/structured_data', minItems: 2, maxItems: 2 },
+    /* classic relationship component → native.paper-ink.106.balance-scale */
+    snippet: `<div class="pi-card" data-bind-root="record" style="width:1050px!important;min-height:560px!important"><svg class="pi-art" viewBox="0 0 1050 560" xmlns="http://www.w3.org/2000/svg" aria-label="双侧权衡天平">
+  <defs>
+    <pattern id="pi-balance-hatch" width="8" height="8" patternUnits="userSpaceOnUse" patternTransform="rotate(35)"><line x1="0" y1="0" x2="0" y2="8" stroke="var(--pi-ink)" stroke-width=".6" opacity=".24"/></pattern>
+  </defs>
+  <text x="525" y="36" text-anchor="middle" font-family="var(--pi-mono)" font-size="10" letter-spacing="2.6" fill="var(--pi-ink-45)">TRADE-OFF · TWO-SIDED EVIDENCE</text>
+  <g stroke="var(--pi-ink-80)" fill="none">
+    <line x1="232" y1="242" x2="818" y2="242" stroke-width="1.6"/>
+    <circle cx="525" cy="242" r="8" fill="var(--pi-paper)" stroke-width="1.2"/>
+    <line x1="525" y1="250" x2="525" y2="416" stroke-width="1.2"/>
+    <path d="M 466 476 L 525 416 L 584 476 Z" fill="url(#pi-balance-hatch)" stroke-width="1.2"/>
+    <line x1="445" y1="476" x2="605" y2="476" stroke-width="1.2"/>
+    <line x1="282" y1="242" x2="282" y2="320" stroke-width=".9" opacity=".7"/>
+    <line x1="768" y1="242" x2="768" y2="320" stroke-width=".9" opacity=".7"/>
+    <path d="M 174 320 Q 282 374 390 320" stroke-width="1.2"/>
+    <path d="M 660 320 Q 768 374 876 320" stroke-width="1.2"/>
+  </g>
+  <g font-family="var(--pi-sans)" fill="var(--pi-ink)">
+    <text data-field="left_title" x="282" y="92" text-anchor="middle" font-size="23" font-weight="300">增长速度</text>
+    <text data-field="right_title" x="768" y="92" text-anchor="middle" font-size="23" font-weight="300">风险控制</text>
+    <text x="282" y="119" text-anchor="middle" font-family="var(--pi-mono)" font-size="9" letter-spacing="2" fill="var(--pi-ink-45)">OPTION A</text>
+    <text x="768" y="119" text-anchor="middle" font-family="var(--pi-mono)" font-size="9" letter-spacing="2" fill="var(--pi-ink-45)">OPTION B</text>
+    <text data-field="left_point_1" x="282" y="156" text-anchor="middle" font-size="13" font-weight="300">更快验证市场</text>
+    <text data-field="left_point_2" x="282" y="182" text-anchor="middle" font-size="13" font-weight="300">更早形成反馈</text>
+    <text data-field="right_point_1" x="768" y="156" text-anchor="middle" font-size="13" font-weight="300">降低返工概率</text>
+    <text data-field="right_point_2" x="768" y="182" text-anchor="middle" font-size="13" font-weight="300">保留审计证据</text>
+    <text data-field="decision" x="525" y="528" text-anchor="middle" font-size="15" font-weight="300">用可逆试点换取速度，不牺牲关键控制点</text>
+  </g>
+</svg></div>`
+  },
+
+  {
+    name: "interlocking-gears",
+    group: "relation-mapping",
+    groupLabel: "关系与映射",
+    description: "Two to four mutually driving modules shown as an interlocking gear system.",
+    label: "互锁齿轮",
+    num: 107,
+    variant: null,
+    paperInkNative: true,
+    frame: { width: 1050, height: 560, fit: 'fixed' },
+    dataContract: { mode: 'collection', unit: 'module', pointer: '/structured_data/modules', minItems: 2, maxItems: 4 },
+    /* classic relationship component → native.paper-ink.107.interlocking-gears */
+    snippet: `<div class="pi-card" data-bind-root="collection" style="width:1050px!important;min-height:560px!important"><svg class="pi-art" viewBox="0 0 1050 560" xmlns="http://www.w3.org/2000/svg" aria-label="互锁齿轮关系图">
+  <defs>
+    <pattern id="pi-gear-dots" width="10" height="10" patternUnits="userSpaceOnUse"><circle cx="2" cy="2" r=".8" fill="var(--pi-ink)" opacity=".2"/></pattern>
+    <g id="pi-gear-large" fill="none" stroke="var(--pi-ink-80)">
+      <circle cx="0" cy="0" r="93" stroke-width="1.3"/><circle cx="0" cy="0" r="36" stroke-width="1"/>
+      <g stroke-width="8" stroke-linecap="square"><line x1="0" y1="-94" x2="0" y2="-111"/><line x1="0" y1="94" x2="0" y2="111"/><line x1="94" y1="0" x2="111" y2="0"/><line x1="-94" y1="0" x2="-111" y2="0"/><line x1="66" y1="-66" x2="79" y2="-79"/><line x1="-66" y1="66" x2="-79" y2="79"/><line x1="66" y1="66" x2="79" y2="79"/><line x1="-66" y1="-66" x2="-79" y2="-79"/></g>
+    </g>
+    <g id="pi-gear-small" fill="none" stroke="var(--pi-ink-80)">
+      <circle cx="0" cy="0" r="72" stroke-width="1.2"/><circle cx="0" cy="0" r="27" stroke-width=".9"/>
+      <g stroke-width="7" stroke-linecap="square"><line x1="0" y1="-73" x2="0" y2="-87"/><line x1="0" y1="73" x2="0" y2="87"/><line x1="73" y1="0" x2="87" y2="0"/><line x1="-73" y1="0" x2="-87" y2="0"/><line x1="52" y1="-52" x2="62" y2="-62"/><line x1="-52" y1="52" x2="-62" y2="62"/><line x1="52" y1="52" x2="62" y2="62"/><line x1="-52" y1="-52" x2="-62" y2="-62"/></g>
+    </g>
+  </defs>
+  <text x="525" y="36" text-anchor="middle" font-family="var(--pi-mono)" font-size="10" letter-spacing="2.6" fill="var(--pi-ink-45)">COUPLED SYSTEM · MUTUAL DRIVE</text>
+  <g data-repeat-unit="module">
+    <g transform="translate(385 255)"><use href="#pi-gear-large"/><circle cx="0" cy="0" r="86" fill="url(#pi-gear-dots)" stroke="none"/><text data-field="module_1" x="0" y="7" text-anchor="middle" font-family="var(--pi-sans)" font-size="20" font-weight="300" fill="var(--pi-ink)">内容</text></g>
+    <g transform="translate(610 245)"><use href="#pi-gear-small"/><text data-field="module_2" x="0" y="7" text-anchor="middle" font-family="var(--pi-sans)" font-size="18" font-weight="300" fill="var(--pi-ink)">模型</text></g>
+    <g transform="translate(545 423)"><use href="#pi-gear-small"/><text data-field="module_3" x="0" y="7" text-anchor="middle" font-family="var(--pi-sans)" font-size="18" font-weight="300" fill="var(--pi-ink)">评测</text></g>
+  </g>
+  <g font-family="var(--pi-sans)" font-size="13" font-weight="300" fill="var(--pi-ink-60)">
+    <text x="120" y="228">输入质量决定上限</text><line x1="252" y1="224" x2="292" y2="224" stroke="var(--pi-ink)" stroke-width=".7" opacity=".35"/>
+    <text x="790" y="218">能力边界影响产出</text><line x1="748" y1="214" x2="776" y2="214" stroke="var(--pi-ink)" stroke-width=".7" opacity=".35"/>
+    <text x="710" y="448">反馈持续反推调整</text><line x1="640" y1="438" x2="696" y2="444" stroke="var(--pi-ink)" stroke-width=".7" opacity=".35"/>
+  </g>
+  <text data-field="system_result" x="525" y="530" text-anchor="middle" font-family="var(--pi-sans)" font-size="15" font-weight="300" fill="var(--pi-ink)">系统结果来自模块之间的持续咬合，而不是单点最优</text>
+</svg></div>`
   }
   /* END promoted catalog components v120 */
   ]

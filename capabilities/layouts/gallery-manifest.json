@@ -4,7 +4,7 @@
   "name": "Wise PPT Layout Gallery",
   "description": "跨主题可查询的布局配方目录；paper-ink 样张提供当前已验证实现。",
   "protected_references": "capabilities/layouts/protected-references.json",
-  "recipe_count": 68,
+  "recipe_count": 73,
   "recipes": [
     {
       "recipe_id": "paper-ink.evidence.specimen-card",
@@ -11184,6 +11184,225 @@
           ]
         }
       }
+    },
+    {
+      "recipe_id": "paper-ink.display.four-pillar-slots",
+      "display_code": "R1",
+      "name": "四柱能力页",
+      "family": "陈列",
+      "description": "四个可独立换数据的纵向槽位组成左右四等分页面",
+      "roles": ["explain"],
+      "relations": ["display"],
+      "primitives": ["parallel-columns", "content-frame"],
+      "reading_order": ["pillar-a", "pillar-b", "pillar-c", "pillar-d", "takeaway"],
+      "structure_contract": {
+        "region_count": 5,
+        "required_slot_ids": ["pillar-a", "pillar-b", "pillar-c", "pillar-d"],
+        "core_primitives": ["parallel-columns", "content-frame"]
+      },
+      "structure_fingerprint": "sha256:e95ca044af94ee6dbb433f5b613b6099a23f301fc5b3ba5b7ce8da7e78f07a96",
+      "slots": [
+        {
+          "slot_id": "pillar-a", "purpose": "第一能力柱", "required": true, "visual_role": "primary", "min_items": 1, "max_items": 6, "count_unit": "item",
+          "allowed_renderer_kinds": ["native-html"], "allowed_component_sources": ["native"],
+          "default_renderer": {"renderer_kind": "native-html", "component_source": "native", "component_id": "native.paper-ink.semantic.scenario-column"},
+          "space_contract": {"canvas_width": 1920, "canvas_height": 1080, "width": 345, "height": 580, "aspect_ratio": 0.5948, "space_type": "tall"},
+          "recommended_component_ids": ["native.paper-ink.semantic.scenario-column"]
+        },
+        {
+          "slot_id": "pillar-b", "purpose": "第二能力柱", "required": true, "visual_role": "primary", "min_items": 1, "max_items": 6, "count_unit": "item",
+          "allowed_renderer_kinds": ["native-html"], "allowed_component_sources": ["native"],
+          "default_renderer": {"renderer_kind": "native-html", "component_source": "native", "component_id": "native.paper-ink.semantic.scenario-column"},
+          "space_contract": {"canvas_width": 1920, "canvas_height": 1080, "width": 345, "height": 580, "aspect_ratio": 0.5948, "space_type": "tall"},
+          "recommended_component_ids": ["native.paper-ink.semantic.scenario-column"]
+        },
+        {
+          "slot_id": "pillar-c", "purpose": "第三能力柱", "required": true, "visual_role": "primary", "min_items": 1, "max_items": 6, "count_unit": "item",
+          "allowed_renderer_kinds": ["native-html"], "allowed_component_sources": ["native"],
+          "default_renderer": {"renderer_kind": "native-html", "component_source": "native", "component_id": "native.paper-ink.semantic.scenario-column"},
+          "space_contract": {"canvas_width": 1920, "canvas_height": 1080, "width": 345, "height": 580, "aspect_ratio": 0.5948, "space_type": "tall"},
+          "recommended_component_ids": ["native.paper-ink.semantic.scenario-column"]
+        },
+        {
+          "slot_id": "pillar-d", "purpose": "第四能力柱", "required": true, "visual_role": "primary", "min_items": 1, "max_items": 6, "count_unit": "item",
+          "allowed_renderer_kinds": ["native-html"], "allowed_component_sources": ["native"],
+          "default_renderer": {"renderer_kind": "native-html", "component_source": "native", "component_id": "native.paper-ink.semantic.scenario-column"},
+          "space_contract": {"canvas_width": 1920, "canvas_height": 1080, "width": 345, "height": 580, "aspect_ratio": 0.5948, "space_type": "tall"},
+          "recommended_component_ids": ["native.paper-ink.semantic.scenario-column"]
+        },
+        {
+          "slot_id": "takeaway", "purpose": "页面一句话结论", "required": false, "visual_role": "support", "min_items": 0, "max_items": 1, "count_unit": "binding",
+          "allowed_renderer_kinds": ["typography"], "allowed_component_sources": ["native"],
+          "default_renderer": {"renderer_kind": "typography", "component_source": "native", "component_id": "native.paper-ink.display.four-pillar-slots.takeaway"}
+        }
+      ],
+      "examples": {"general": "gallery/paper-ink/general/frames/layout-r1.html", "ai": "gallery/paper-ink/ai/frames/layout-r1.html"},
+      "selection_notes": "四项同级能力都需要独立承载内容，且纵向信息密度相近时使用。",
+      "anti_patterns": ["四格只是同一组件的重复单元时仍应归单区", "能力项有先后或因果时不要用四柱陈列"],
+      "shape": ["左中右"],
+      "expression_profile": {
+        "contract_version": 1, "page_modes": ["content"], "question_affinities": ["what"],
+        "topology": {"weights": ["equal"], "depths": ["flat"], "flows": ["parallel"]},
+        "conclusion_modes": ["bottom-statement"], "primary_units": {"min": 4, "max": 4}, "primary_forms": ["card"], "enhancements": ["annotation"],
+        "logic_contract": {"primary": "display", "secondary": ["parallel"]}
+      }
+    },
+    {
+      "recipe_id": "paper-ink.hierarchy.three-independent-bands",
+      "display_code": "R2",
+      "name": "三层策略落地页",
+      "family": "层级",
+      "description": "三个可独立换数据的横向槽位组成上下三等分页面",
+      "roles": ["explain", "act"],
+      "relations": ["hierarchy"],
+      "primitives": ["stacked-bands", "directed-axis"],
+      "reading_order": ["strategy", "capability", "execution", "takeaway"],
+      "structure_contract": {
+        "region_count": 4,
+        "required_slot_ids": ["strategy", "capability", "execution"],
+        "core_primitives": ["stacked-bands", "directed-axis"]
+      },
+      "structure_fingerprint": "sha256:c6db7fdf905a5fe3695eac1d5eb54d7f8e0523932077103475bdda5e67d0131a",
+      "slots": [
+        {
+          "slot_id": "strategy", "purpose": "战略层", "required": true, "visual_role": "primary", "min_items": 1, "max_items": 4, "count_unit": "item",
+          "allowed_renderer_kinds": ["native-html"], "allowed_component_sources": ["native"],
+          "default_renderer": {"renderer_kind": "native-html", "component_source": "native", "component_id": "native.paper-ink.semantic.statement-band"},
+          "space_contract": {"canvas_width": 1920, "canvas_height": 1080, "width": 1440, "height": 185, "aspect_ratio": 7.7838, "space_type": "wide"},
+          "recommended_component_ids": ["native.paper-ink.semantic.statement-band"]
+        },
+        {
+          "slot_id": "capability", "purpose": "能力层", "required": true, "visual_role": "primary", "min_items": 1, "max_items": 6, "count_unit": "item",
+          "allowed_renderer_kinds": ["native-html"], "allowed_component_sources": ["native"],
+          "default_renderer": {"renderer_kind": "native-html", "component_source": "native", "component_id": "native.paper-ink.semantic.process-strip"},
+          "space_contract": {"canvas_width": 1920, "canvas_height": 1080, "width": 1440, "height": 185, "aspect_ratio": 7.7838, "space_type": "wide"},
+          "recommended_component_ids": ["native.paper-ink.semantic.process-strip"]
+        },
+        {
+          "slot_id": "execution", "purpose": "执行层", "required": true, "visual_role": "primary", "min_items": 1, "max_items": 6, "count_unit": "item",
+          "allowed_renderer_kinds": ["native-html"], "allowed_component_sources": ["native"],
+          "default_renderer": {"renderer_kind": "native-html", "component_source": "native", "component_id": "native.paper-ink.semantic.metric-band"},
+          "space_contract": {"canvas_width": 1920, "canvas_height": 1080, "width": 1440, "height": 185, "aspect_ratio": 7.7838, "space_type": "wide"},
+          "recommended_component_ids": ["native.paper-ink.semantic.metric-band"]
+        },
+        {
+          "slot_id": "takeaway", "purpose": "页面一句话结论", "required": false, "visual_role": "support", "min_items": 0, "max_items": 1, "count_unit": "binding",
+          "allowed_renderer_kinds": ["typography"], "allowed_component_sources": ["native"],
+          "default_renderer": {"renderer_kind": "typography", "component_source": "native", "component_id": "native.paper-ink.hierarchy.three-independent-bands.takeaway"}
+        }
+      ],
+      "examples": {"general": "gallery/paper-ink/general/frames/layout-r2.html", "ai": "gallery/paper-ink/ai/frames/layout-r2.html"},
+      "selection_notes": "三层内容有明确上下级关系，且每层都要独立承载内容时使用。",
+      "anti_patterns": ["只有三个词时不要强行切成三层", "三项同级时应使用并列结构"],
+      "shape": ["横带"],
+      "expression_profile": {
+        "contract_version": 1, "page_modes": ["content"], "question_affinities": ["how"],
+        "topology": {"weights": ["equal"], "depths": ["flat"], "flows": ["linear"]},
+        "conclusion_modes": ["bottom-statement"], "primary_units": {"min": 3, "max": 3}, "primary_forms": ["diagram"], "enhancements": ["annotation"],
+        "logic_contract": {"primary": "hierarchy", "secondary": ["sequence"]}
+      }
+    },
+    {
+      "recipe_id": "paper-ink.display.capability-grid-2x3",
+      "display_code": "R3",
+      "name": "六格能力地图",
+      "family": "陈列",
+      "description": "六个可独立换数据的槽位组成二乘三页面网格",
+      "roles": ["explain"],
+      "relations": ["display"],
+      "primitives": ["matrix-field", "content-frame"],
+      "reading_order": ["cell-a", "cell-b", "cell-c", "cell-d", "cell-e", "cell-f", "takeaway"],
+      "structure_contract": {
+        "region_count": 7,
+        "required_slot_ids": ["cell-a", "cell-b", "cell-c", "cell-d", "cell-e", "cell-f"],
+        "core_primitives": ["matrix-field", "content-frame"]
+      },
+      "structure_fingerprint": "sha256:bc09cb33943539fb6f388d2a41de1d73ab4d2cc0bc0f3be2dee4e206b3f106a3",
+      "slots": [
+        {"slot_id": "cell-a", "purpose": "左上能力", "required": true, "visual_role": "primary", "min_items": 1, "max_items": 4, "count_unit": "item", "allowed_renderer_kinds": ["native-html"], "allowed_component_sources": ["native"], "default_renderer": {"renderer_kind": "native-html", "component_source": "native", "component_id": "native.paper-ink.semantic.icon-grid"}, "space_contract": {"canvas_width": 1920, "canvas_height": 1080, "width": 460, "height": 270, "aspect_ratio": 1.7037, "space_type": "standard"}, "recommended_component_ids": ["native.paper-ink.semantic.icon-grid"]},
+        {"slot_id": "cell-b", "purpose": "中上能力", "required": true, "visual_role": "primary", "min_items": 1, "max_items": 4, "count_unit": "item", "allowed_renderer_kinds": ["native-html"], "allowed_component_sources": ["native"], "default_renderer": {"renderer_kind": "native-html", "component_source": "native", "component_id": "native.paper-ink.semantic.icon-grid"}, "space_contract": {"canvas_width": 1920, "canvas_height": 1080, "width": 460, "height": 270, "aspect_ratio": 1.7037, "space_type": "standard"}, "recommended_component_ids": ["native.paper-ink.semantic.icon-grid"]},
+        {"slot_id": "cell-c", "purpose": "右上能力", "required": true, "visual_role": "primary", "min_items": 1, "max_items": 4, "count_unit": "item", "allowed_renderer_kinds": ["native-html"], "allowed_component_sources": ["native"], "default_renderer": {"renderer_kind": "native-html", "component_source": "native", "component_id": "native.paper-ink.semantic.icon-grid"}, "space_contract": {"canvas_width": 1920, "canvas_height": 1080, "width": 460, "height": 270, "aspect_ratio": 1.7037, "space_type": "standard"}, "recommended_component_ids": ["native.paper-ink.semantic.icon-grid"]},
+        {"slot_id": "cell-d", "purpose": "左下能力", "required": true, "visual_role": "primary", "min_items": 1, "max_items": 4, "count_unit": "item", "allowed_renderer_kinds": ["native-html"], "allowed_component_sources": ["native"], "default_renderer": {"renderer_kind": "native-html", "component_source": "native", "component_id": "native.paper-ink.semantic.icon-grid"}, "space_contract": {"canvas_width": 1920, "canvas_height": 1080, "width": 460, "height": 270, "aspect_ratio": 1.7037, "space_type": "standard"}, "recommended_component_ids": ["native.paper-ink.semantic.icon-grid"]},
+        {"slot_id": "cell-e", "purpose": "中下能力", "required": true, "visual_role": "primary", "min_items": 1, "max_items": 4, "count_unit": "item", "allowed_renderer_kinds": ["native-html"], "allowed_component_sources": ["native"], "default_renderer": {"renderer_kind": "native-html", "component_source": "native", "component_id": "native.paper-ink.semantic.icon-grid"}, "space_contract": {"canvas_width": 1920, "canvas_height": 1080, "width": 460, "height": 270, "aspect_ratio": 1.7037, "space_type": "standard"}, "recommended_component_ids": ["native.paper-ink.semantic.icon-grid"]},
+        {"slot_id": "cell-f", "purpose": "右下能力", "required": true, "visual_role": "primary", "min_items": 1, "max_items": 4, "count_unit": "item", "allowed_renderer_kinds": ["native-html"], "allowed_component_sources": ["native"], "default_renderer": {"renderer_kind": "native-html", "component_source": "native", "component_id": "native.paper-ink.semantic.icon-grid"}, "space_contract": {"canvas_width": 1920, "canvas_height": 1080, "width": 460, "height": 270, "aspect_ratio": 1.7037, "space_type": "standard"}, "recommended_component_ids": ["native.paper-ink.semantic.icon-grid"]},
+        {"slot_id": "takeaway", "purpose": "页面一句话结论", "required": false, "visual_role": "support", "min_items": 0, "max_items": 1, "count_unit": "binding", "allowed_renderer_kinds": ["typography"], "allowed_component_sources": ["native"], "default_renderer": {"renderer_kind": "typography", "component_source": "native", "component_id": "native.paper-ink.display.capability-grid-2x3.takeaway"}}
+      ],
+      "examples": {"general": "gallery/paper-ink/general/frames/layout-r3.html", "ai": "gallery/paper-ink/ai/frames/layout-r3.html"},
+      "selection_notes": "六项同级内容都要独立承载信息，且信息量相近时使用。",
+      "anti_patterns": ["六项有明显先后时应使用流程", "不足六项时不要用空卡凑满"],
+      "shape": ["网格"],
+      "expression_profile": {
+        "contract_version": 1, "page_modes": ["content"], "question_affinities": ["what"],
+        "topology": {"weights": ["equal"], "depths": ["flat"], "flows": ["matrix"]},
+        "conclusion_modes": ["bottom-statement"], "primary_units": {"min": 6, "max": 6}, "primary_forms": ["card"], "enhancements": ["annotation"],
+        "logic_contract": {"primary": "display", "secondary": ["matrix"]}
+      }
+    },
+    {
+      "recipe_id": "paper-ink.comparison.balance-tradeoff",
+      "display_code": "R4",
+      "name": "权衡天平",
+      "family": "对比",
+      "description": "用天平表达两个方案的显式取舍与最终决策",
+      "roles": ["compare", "decide"],
+      "relations": ["comparison"],
+      "primitives": ["bilateral-split", "balance-axis"],
+      "reading_order": ["balance", "takeaway"],
+      "structure_contract": {"region_count": 2, "required_slot_ids": ["balance"], "core_primitives": ["bilateral-split", "balance-axis"]},
+      "structure_fingerprint": "sha256:f6a751cdc092d0119e53407056c10d68170a625e6a041e85095058d5447ccf18",
+      "slots": [
+        {
+          "slot_id": "balance", "purpose": "两侧权衡及结论", "required": true, "visual_role": "primary", "min_items": 2, "max_items": 2, "count_unit": "side",
+          "allowed_renderer_kinds": ["svg"], "allowed_component_sources": ["native"],
+          "default_renderer": {"renderer_kind": "svg", "component_source": "native", "component_id": "native.paper-ink.106.balance-scale"},
+          "space_contract": {"canvas_width": 1920, "canvas_height": 1080, "width": 1050, "height": 560, "aspect_ratio": 1.875, "space_type": "standard"},
+          "recommended_component_ids": ["native.paper-ink.106.balance-scale"]
+        },
+        {"slot_id": "takeaway", "purpose": "页面一句话结论", "required": false, "visual_role": "support", "min_items": 0, "max_items": 1, "count_unit": "binding", "allowed_renderer_kinds": ["typography"], "allowed_component_sources": ["native"], "default_renderer": {"renderer_kind": "typography", "component_source": "native", "component_id": "native.paper-ink.comparison.balance-tradeoff.takeaway"}}
+      ],
+      "examples": {"general": "gallery/paper-ink/general/frames/layout-r4.html", "ai": "gallery/paper-ink/ai/frames/layout-r4.html"},
+      "selection_notes": "两个方案存在真实取舍，且两侧都有独立论据时使用。",
+      "anti_patterns": ["普通左右并列不要画天平", "两侧不是同一决策维度时不要强行比较"],
+      "shape": ["居中聚焦"],
+      "expression_profile": {
+        "contract_version": 1, "page_modes": ["content"], "question_affinities": ["why", "result"],
+        "topology": {"weights": ["single"], "depths": ["flat"], "flows": ["none"]},
+        "conclusion_modes": ["bottom-statement"], "primary_units": {"min": 2, "max": 2}, "primary_forms": ["diagram"], "enhancements": ["annotation"],
+        "logic_contract": {"primary": "comparison", "secondary": []}
+      }
+    },
+    {
+      "recipe_id": "paper-ink.network.interlocking-system",
+      "display_code": "R5",
+      "name": "互锁齿轮",
+      "family": "网络",
+      "description": "用互锁齿轮表达两个到四个模块的互相驱动关系",
+      "roles": ["explain", "synthesize"],
+      "relations": ["network"],
+      "primitives": ["interlocking-system", "node-link"],
+      "reading_order": ["system", "takeaway"],
+      "structure_contract": {"region_count": 2, "required_slot_ids": ["system"], "core_primitives": ["interlocking-system", "node-link"]},
+      "structure_fingerprint": "sha256:e345fcde316c18f298e0218924f3d9fa04d03d4e1218abe51877ba7b66e9c91d",
+      "slots": [
+        {
+          "slot_id": "system", "purpose": "互相驱动的模块系统", "required": true, "visual_role": "primary", "min_items": 2, "max_items": 4, "count_unit": "module",
+          "allowed_renderer_kinds": ["svg"], "allowed_component_sources": ["native"],
+          "default_renderer": {"renderer_kind": "svg", "component_source": "native", "component_id": "native.paper-ink.107.interlocking-gears"},
+          "space_contract": {"canvas_width": 1920, "canvas_height": 1080, "width": 1050, "height": 560, "aspect_ratio": 1.875, "space_type": "standard"},
+          "recommended_component_ids": ["native.paper-ink.107.interlocking-gears"]
+        },
+        {"slot_id": "takeaway", "purpose": "页面一句话结论", "required": false, "visual_role": "support", "min_items": 0, "max_items": 1, "count_unit": "binding", "allowed_renderer_kinds": ["typography"], "allowed_component_sources": ["native"], "default_renderer": {"renderer_kind": "typography", "component_source": "native", "component_id": "native.paper-ink.network.interlocking-system.takeaway"}}
+      ],
+      "examples": {"general": "gallery/paper-ink/general/frames/layout-r5.html", "ai": "gallery/paper-ink/ai/frames/layout-r5.html"},
+      "selection_notes": "模块之间互相驱动或互相制约，且要表达系统协同时使用。",
+      "anti_patterns": ["普通并列模块不要画齿轮", "严格单向流程应使用箭头流程而不是齿轮"],
+      "shape": ["居中聚焦"],
+      "expression_profile": {
+        "contract_version": 1, "page_modes": ["content"], "question_affinities": ["how", "why"],
+        "topology": {"weights": ["single"], "depths": ["flat"], "flows": ["radial"]},
+        "conclusion_modes": ["bottom-statement"], "primary_units": {"min": 2, "max": 4}, "primary_forms": ["diagram"], "enhancements": ["annotation"],
+        "logic_contract": {"primary": "network", "secondary": ["causal"]}
+      }
     }
   ],
   "shape_vocabulary": [
@@ -11201,7 +11420,7 @@
   ],
   "page_expression_contract": {
     "contract_version": 1,
-    "profile_count": 68,
+    "profile_count": 73,
     "vocabulary": {
       "question_intents": [
         "why",

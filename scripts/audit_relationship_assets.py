@@ -106,9 +106,9 @@ def main() -> None:
         r"\[\s*'([A-Z]\d+)'\s*,\s*'([^']*)'\s*,\s*'([^']*)'\s*,\s*'([^']*)'\s*\]",
         relation_block,
     )
-    assert len(rows) == 60, f"关系版式应为 60，当前 {len(rows)}"
+    assert len(rows) == 65, f"关系版式应为 65，当前 {len(rows)}"
     by_code = {code: (name, structure, relation) for code, name, structure, relation in rows}
-    assert len(by_code) == 60, "关系版式编号有重复"
+    assert len(by_code) == 65, "关系版式编号有重复"
 
     corrected = {"A7", "F4", "A9", "E3", "E6", "I3", "H3", "H4", "E1", "E2", "K1", "C6"}
     wrong = sorted(code for code in corrected if by_code[code][1] != "单区")
@@ -118,6 +118,11 @@ def main() -> None:
         "Q2": ("左右不对称", ["part-whole", "evidence"]),
         "Q3": ("上下2等分", ["comparison", "flow"]),
         "Q4": ("网格2×2", ["evidence", "display"]),
+        "R1": ("左右4等分", ["display"]),
+        "R2": ("上下3等分", ["hierarchy"]),
+        "R3": ("网格2×3", ["display"]),
+        "R4": ("单区", ["comparison"]),
+        "R5": ("单区", ["network"]),
     }
     for code, (structure, relations) in expected_new.items():
         assert by_code[code][1] == structure, f"{code} 结构不符"
@@ -125,12 +130,12 @@ def main() -> None:
 
     counts = collections.Counter(structure_key(row[2]) for row in rows)
     expected_counts = {
-        "single": 38,
-        "heq": 7,
-        "veq": 1,
+        "single": 40,
+        "heq": 8,
+        "veq": 2,
         "hasym": 8,
         "vasym": 5,
-        "grid": 1,
+        "grid": 2,
     }
     assert dict(counts) == expected_counts, f"六结构计数不符: {dict(counts)}"
 
@@ -138,15 +143,15 @@ def main() -> None:
         path.stem.removeprefix("layout-").upper()
         for path in FRAMES.glob("layout-*.html")
     }
-    assert len(frame_codes) == 72, f"画册帧应为 72，当前 {len(frame_codes)}"
+    assert len(frame_codes) == 77, f"画册帧应为 77，当前 {len(frame_codes)}"
     assert set(by_code).issubset(frame_codes), "有关系版式缺 HTML 帧"
 
     layouts = json.loads(LAYOUTS.read_text(encoding="utf-8"))
     recipes = layouts["recipes"]
-    assert layouts["recipe_count"] == len(recipes) == 68, "recipe_count 不闭合"
-    assert layouts["page_expression_contract"]["profile_count"] == 68, "profile_count 不闭合"
+    assert layouts["recipe_count"] == len(recipes) == 73, "recipe_count 不闭合"
+    assert layouts["page_expression_contract"]["profile_count"] == 73, "profile_count 不闭合"
     recipes_by_code = {recipe["display_code"]: recipe for recipe in recipes}
-    assert len(recipes_by_code) == 68, "gallery-manifest display_code 有重复"
+    assert len(recipes_by_code) == 73, "gallery-manifest display_code 有重复"
     assert set(by_code).issubset(recipes_by_code), "有关系版式缺 gallery recipe"
     for code, (_, _, label) in by_code.items():
         recipe = recipes_by_code[code]
@@ -177,14 +182,28 @@ def main() -> None:
     assert len(venn) == 2 and all(
         item.get("relation_keys") == ["overlap", "comparison"] for item in venn
     ), "Venn 路由未明确交叠关系"
+    classics = {
+        item["component_id"]: item
+        for item in routing["components"]
+        if item["component_id"] in {
+            "native.paper-ink.106.balance-scale",
+            "native.paper-ink.107.interlocking-gears",
+        }
+    }
+    assert set(classics) == {
+        "native.paper-ink.106.balance-scale",
+        "native.paper-ink.107.interlocking-gears",
+    }, "经典关系组件缺生产路由"
+    assert classics["native.paper-ink.106.balance-scale"].get("relation_keys") == ["comparison"]
+    assert classics["native.paper-ink.107.interlocking-gears"].get("relation_keys") == ["network"]
 
     assert "./component-routing-data.js" in catalog, "Catalog 未加载组件路由投影"
     assert ROUTING_DATA.exists(), "缺 component-routing-data.js"
     assert "componentRelationLabels(c)" in catalog, "组件卡仍未使用生产关系标签"
 
-    print("检查通过: 60 张关系版式 + 12 张非关系模板 = 72 帧。")
-    print("六结构计数: 单区38 / 左右等分7 / 上下等分1 / 左右不对称8 / 上下不对称5 / 网格1。")
-    print("23 细种均有版式与生产组件覆盖；Q1–Q4 槽位、配方、指纹和路由闭合。")
+    print("检查通过: 65 张关系版式 + 12 张非关系模板 = 77 帧。")
+    print("六结构计数: 单区40 / 左右等分8 / 上下等分2 / 左右不对称8 / 上下不对称5 / 网格2。")
+    print("23 细种均有版式与生产组件覆盖；Q1–Q4、R1–R5 槽位、配方、指纹和路由闭合。")
     print("边界: 本仓库只登记 GLM Catalog 与 gallery recipe；内核 blueprint/composition preset 未手填。")
 
 

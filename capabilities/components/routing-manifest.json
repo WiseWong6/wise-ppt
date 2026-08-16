@@ -1,11 +1,11 @@
 {
   "contract_version": 3,
   "capability_id": "component-routing",
-  "component_count": 123,
+  "component_count": 125,
   "source_counts": {
     "ppt-component-atlas": 55,
     "echarts": 13,
-    "native": 54,
+    "native": 56,
     "codex-host": 1
   },
   "retired_components": [
@@ -16029,6 +16029,306 @@
       "binding_contract": {
         "mode": "collection",
         "unit": "node"
+      }
+    },
+    {
+      "component_id": "native.paper-ink.106.balance-scale",
+      "name": "权衡天平",
+      "canonical_name": "balance-scale",
+      "variant": null,
+      "group": "comparison",
+      "group_label": "对比与对照",
+      "description": "A two-sided balance for explicit trade-offs, with independently bound evidence on both sides.",
+      "aliases": [
+        "balance-scale",
+        "权衡天平",
+        "天平",
+        "106"
+      ],
+      "renderer_kinds": [
+        "svg"
+      ],
+      "component_sources": [
+        "native"
+      ],
+      "roles": [
+        "compare",
+        "decide"
+      ],
+      "relations": [
+        "comparison"
+      ],
+      "relation_keys": [
+        "comparison"
+      ],
+      "primitives": [
+        "bilateral-split",
+        "balance-axis"
+      ],
+      "tasks": [
+        "comparison",
+        "decision",
+        "content"
+      ],
+      "selection_notes": "两个方案需要显式权衡，且两侧各有独立论据时使用；简单并排陈列不要使用天平。",
+      "requires": [],
+      "space_requirements": {
+        "min_width": 680,
+        "min_height": 360,
+        "min_aspect_ratio": 0.85,
+        "max_aspect_ratio": 4.13
+      },
+      "capacity": {
+        "min_items": 2,
+        "max_items": 2,
+        "unit": "side"
+      },
+      "frame": {
+        "width": 1050,
+        "height": 560,
+        "fit": "fixed"
+      },
+      "semantic_contract": {
+        "input_family": "comparison-set",
+        "role": "primary-proof",
+        "visual_action": "compare",
+        "capacity": {
+          "mode": "fixed",
+          "unit": "side",
+          "min": 2,
+          "max": 2
+        },
+        "derivation": "explicit-data-bound-v1"
+      },
+      "binding_archetype": "two-sided-tradeoff",
+      "data_contract": {
+        "mode": "typed-structured-content",
+        "contract_id": "native.paper-ink.106.balance-scale@1",
+        "reference_mode": "one-item-plus-owned-atoms",
+        "content_ref_cardinality": {
+          "min": 1,
+          "max": 1
+        },
+        "schema": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "left",
+            "right"
+          ],
+          "properties": {
+            "title": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 240
+            },
+            "decision": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 4000
+            },
+            "left": {
+              "$ref": "#/$defs/side"
+            },
+            "right": {
+              "$ref": "#/$defs/side"
+            }
+          },
+          "$defs": {
+            "side": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "id",
+                "title",
+                "points"
+              ],
+              "properties": {
+                "id": {
+                  "type": "string",
+                  "minLength": 1,
+                  "maxLength": 160,
+                  "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]{0,159}$"
+                },
+                "title": {
+                  "type": "string",
+                  "minLength": 1,
+                  "maxLength": 240
+                },
+                "points": {
+                  "type": "array",
+                  "minItems": 1,
+                  "maxItems": 4,
+                  "items": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 1000
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "production_readiness": {
+        "status": "ready"
+      },
+      "dependencies": [
+        "paper-ink-components"
+      ],
+      "source": {
+        "kind": "paper-ink-snippet",
+        "module": "capabilities/layouts/paper-ink-components.js",
+        "entry_num": 106
+      },
+      "binding_contract": {
+        "mode": "record",
+        "unit": "side"
+      }
+    },
+    {
+      "component_id": "native.paper-ink.107.interlocking-gears",
+      "name": "互锁齿轮",
+      "canonical_name": "interlocking-gears",
+      "variant": null,
+      "group": "relation-mapping",
+      "group_label": "关系与映射",
+      "description": "Two to four interlocking modules for showing mutually dependent operation or coupled causality.",
+      "aliases": [
+        "interlocking-gears",
+        "互锁齿轮",
+        "齿轮",
+        "107"
+      ],
+      "renderer_kinds": [
+        "svg"
+      ],
+      "component_sources": [
+        "native"
+      ],
+      "roles": [
+        "explain",
+        "synthesize"
+      ],
+      "relations": [
+        "network"
+      ],
+      "relation_keys": [
+        "network"
+      ],
+      "primitives": [
+        "interlocking-system",
+        "node-link"
+      ],
+      "tasks": [
+        "network",
+        "system",
+        "content"
+      ],
+      "selection_notes": "模块之间必须互相驱动或互相制约时使用；普通并列要点不要使用齿轮。",
+      "requires": [],
+      "space_requirements": {
+        "min_width": 680,
+        "min_height": 360,
+        "min_aspect_ratio": 0.85,
+        "max_aspect_ratio": 4.13
+      },
+      "capacity": {
+        "min_items": 2,
+        "max_items": 4,
+        "unit": "module"
+      },
+      "frame": {
+        "width": 1050,
+        "height": 560,
+        "fit": "fixed"
+      },
+      "semantic_contract": {
+        "input_family": "causal-network",
+        "role": "primary-proof",
+        "visual_action": "connect-causality",
+        "capacity": {
+          "mode": "bounded",
+          "unit": "module",
+          "min": 2,
+          "max": 4
+        },
+        "derivation": "explicit-data-bound-v1"
+      },
+      "binding_archetype": "coupled-modules",
+      "data_contract": {
+        "mode": "typed-structured-content",
+        "contract_id": "native.paper-ink.107.interlocking-gears@1",
+        "reference_mode": "one-item-plus-owned-atoms",
+        "content_ref_cardinality": {
+          "min": 1,
+          "max": 1
+        },
+        "schema": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "modules"
+          ],
+          "properties": {
+            "title": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 240
+            },
+            "result": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 4000
+            },
+            "modules": {
+              "type": "array",
+              "minItems": 2,
+              "maxItems": 4,
+              "items": {
+                "type": "object",
+                "additionalProperties": false,
+                "required": [
+                  "id",
+                  "label"
+                ],
+                "properties": {
+                  "id": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 160,
+                    "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]{0,159}$"
+                  },
+                  "label": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 240
+                  },
+                  "description": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 4000
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "production_readiness": {
+        "status": "ready"
+      },
+      "dependencies": [
+        "paper-ink-components"
+      ],
+      "source": {
+        "kind": "paper-ink-snippet",
+        "module": "capabilities/layouts/paper-ink-components.js",
+        "entry_num": 107
+      },
+      "binding_contract": {
+        "mode": "collection",
+        "unit": "module"
       }
     },
     {

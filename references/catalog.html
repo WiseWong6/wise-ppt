@@ -271,7 +271,7 @@
     <div class="legend-body">
       <div><b>版式 A1–Q4</b>:字母+序号是源画册的历史分组痕迹,不代表六大关系族、也不代表六种结构;判定以卡片的「结构 · 关系」标签为准。G3 为退役空位,不重编。</div>
       <div><b>非关系页 D1–D10 / M1–M2</b>:D 系为 deck 模板帧(封面/目录/隔页/收尾/联络),M 系为情绪页;不进关系→结构→组件流程。</div>
-      <div><b>组件 catalog #001–#074</b>:连续浏览编号。源编号 atlas:N / native:N / ec:id 只做内部路由;生产合同 id(如 atlas.041.timeline.horizontal)见 capabilities/components/routing-manifest.json。</div>
+      <div><b>组件 catalog #001–#076</b>:连续浏览编号。源编号 atlas:N / native:N / ec:id 只做内部路由;生产合同 id(如 atlas.041.timeline.horizontal)见 capabilities/components/routing-manifest.json。</div>
       <div><b>结构页空槽</b>:徽标为代表版式号(如 A1/E5)或几何短码(x4=横向4等分、y2=纵向2等分、2×3=网格);标注「补造」= taxonomy 无此空槽,按同规格补画。</div>
       <div><b>图标</b>:无编号,卡片名即 Tabler 源名(icon:名)。</div>
     </div>
@@ -284,17 +284,17 @@
 </main>
 
 <main id="m-lyt">
-  <div class="note"><b>这页是浏览入口,不是正式分类。</b><br>借 SmartArt「先问要表达什么」的九个语义入口逛 60 张关系页版式,每类入口的定义见各组标题;每张卡下方标注本项目的 23 细种关系标签(六大族的细分口径,词表见 SKILL.md 表A),选版式以关系标签为准,不以这里的入口为准。</div>
+  <div class="note"><b>这页是浏览入口,不是正式分类。</b><br>借 SmartArt「先问要表达什么」的九个语义入口逛 65 张关系页版式,每类入口的定义见各组标题;每张卡下方标注本项目的 23 细种关系标签(六大族的细分口径,词表见 SKILL.md 表A),选版式以关系标签为准,不以这里的入口为准。</div>
   <div id="lyt-fams"></div>
 </main>
 
 <main id="m-str">
-  <div class="note"><b>结构 = 版心怎么切(矩形分块);组件 = 区域内画什么形状。</b><br>页眉、页码、题注等固定件不算切分;放射、环形、漏斗、表格这些形状是组件画法,不影响结构归属。关系先圈定候选结构(2~4 种),再按对象数量、有无辅助内容、方向偏好在范围内选定。每类结构 = 空槽蓝图 + 对应真实版式成对展示:空槽取自 taxonomy 成熟蓝图,缺失的变体按同规格补造并逐卡标注;60 个版式全部归入这 6 种切分,不漏归、不重归、不跨结构。</div>
+  <div class="note"><b>结构 = 版心怎么切(矩形分块);组件 = 区域内画什么形状。</b><br>页眉、页码、题注等固定件不算切分;放射、环形、漏斗、表格这些形状是组件画法,不影响结构归属。关系先圈定候选结构(2~4 种),再按对象数量、有无辅助内容、方向偏好在范围内选定。每类结构 = 空槽蓝图 + 对应真实版式成对展示:空槽取自 taxonomy 成熟蓝图,缺失的变体按同规格补造并逐卡标注;65 个版式全部归入这 6 种切分,不漏归、不重归、不跨结构。</div>
   <div id="str-list"></div>
 </main>
 
 <main id="m-cmp">
-  <div class="note"><b>组件 = 参数化画法:内容数量是参数,画法不同才是不同组件。</b><br>atlas / native / ECharts 按与版式相同的 SmartArt 语义入口分组;每个组件只放最主要的表达类型,不在多个入口重复出现。ECharts 类保留 <a href="https://github.com/apache/echarts/tree/6.1.0" target="_blank" rel="noreferrer">Apache ECharts 6.1.0</a> 官方来源与 Apache-2.0 许可署名。卡片统一用 catalog #001–#074 连续编号,源组件编号只做内部路由。</div>
+  <div class="note"><b>组件 = 参数化画法:内容数量是参数,画法不同才是不同组件。</b><br>atlas / native / ECharts 按与版式相同的 SmartArt 语义入口分组;每个组件只放最主要的表达类型,不在多个入口重复出现。ECharts 类保留 <a href="https://github.com/apache/echarts/tree/6.1.0" target="_blank" rel="noreferrer">Apache ECharts 6.1.0</a> 官方来源与 Apache-2.0 许可署名。卡片统一用 catalog #001–#076 连续编号,源组件编号只做内部路由。</div>
   <div id="cmp-groups"></div>
 </main>
 
@@ -340,6 +340,7 @@ const SMARTART_TYPES=[
     ['A5','条文陈列页','左右3等分','陈列'],['A7','Logo 云墙','单区','陈列'],
     ['C3','案例卡列阵','左右3等分','陈列'],['F3','分栏清单柱','左右3等分','拆解(并列面)'],
     ['F4','图标六宫格','单区','拆解(并列面)'],['I4','并行路径卡','左右3等分','并行(内含时序)'],
+    ['R1','四柱能力页','左右4等分','陈列'],['R3','六格能力地图','网格2×3','陈列'],
   ]},
   {id:'process',cn:'② 流程',desc:'步骤、阶段、时间线或有方向的推进',items:[
     ['A9','手机多屏画廊','单区','时序'],['B1','水平时间轴','单区','时序'],['B2','甘特瀑布','单区','时序'],
@@ -356,6 +357,7 @@ const SMARTART_TYPES=[
   ]},
   {id:'hierarchy',cn:'④ 层级',desc:'上下级、分层或树状从属',items:[
     ['F2','环节树 + 规格单','左右不对称','拆解'],['H3','分层架构栈','单区','层级'],['H4','底座托举三层','单区','层级'],
+    ['R2','三层策略落地页','上下3等分','层级'],
   ]},
   {id:'relationship',cn:'⑤ 关系',desc:'非线性的连接、对照、映射、中心辐射或包含',items:[
     ['G1','三向放射','单区','拆解'],['G4','中心枢纽 + 卫星','单区','拆解 / 网络'],
@@ -363,6 +365,7 @@ const SMARTART_TYPES=[
     ['E1','对比双面板','单区','对比'],['E2','分水岭双栏','单区','对比'],
     ['E5','双金字塔映射','左右2等分','映射'],['L1','权重弧线图','单区','网络'],['L2','星座映射网','单区','映射'],
     ['P2','菱形四边标注','单区','映射'],['Q1','交叠集合','单区','交叠'],
+    ['R4','权衡天平','单区','对比'],['R5','互锁齿轮','单区','网络'],
   ]},
   {id:'matrix',cn:'⑥ 矩阵',desc:'二维交叉分类,或多个部分共同指向整体',items:[
     ['C5','环形进度环列阵','上下不对称','拆解'],['E4','前后对比行矩阵','上下不对称','对比 + 矩阵'],
@@ -441,6 +444,8 @@ const SMARTART_COMPONENTS=[
     {t:'native',num:81,en:'watershed-axis',nm:'分水岭中轴对照',rel:['对比']},
     {t:'native',num:77,en:'before-after-bands',nm:'前后双带演进面板',rel:['对比']},
     {t:'native',num:95,en:'weighted-arc-web',nm:'权重弧网',note:'源 L1 · 原版抄录',rel:['网络']},
+    {t:'native',num:106,en:'balance-scale',nm:'权衡天平',note:'经典双侧取舍',rel:['对比']},
+    {t:'native',num:107,en:'interlocking-gears',nm:'互锁齿轮',note:'2~4 个相互驱动模块',rel:['网络']},
   ]},
   {fam:'⑥ 矩阵 · Matrix',items:[
     {t:'atlas',num:20,en:'swot',nm:'SWOT 分析',pageScale:.8,rel:['矩阵']},
@@ -496,7 +501,7 @@ function assertCatalogClassification(groups,keyOf,expected,label){
   }
   return count;
 }
-const SMARTART_LAYOUT_COUNT=assertCatalogClassification(SMARTART_TYPES,item=>item[0],60,'版式');
+const SMARTART_LAYOUT_COUNT=assertCatalogClassification(SMARTART_TYPES,item=>item[0],65,'版式');
 const CATALOG_COMPONENTS=SMARTART_COMPONENTS.flatMap(group=>group.items);
 /* 新拆出的组件使用末尾新编号，但仍留在原语义分组相邻展示，避免改写既有 #001–#072。 */
 const PINNED_COMPONENT_NUMBERS=new Set(CATALOG_COMPONENTS.map(item=>item.catalogNo).filter(Number.isInteger));
@@ -509,7 +514,7 @@ CATALOG_COMPONENTS.forEach(item=>{
 const SMARTART_COMPONENT_COUNT=assertCatalogClassification(
   SMARTART_COMPONENTS,
   item=>item.t==='ec'?'ec:'+item.id:item.t+':'+item.num,
-  74,
+  76,
   '组件',
 );
 function componentCatalogCode(item){
@@ -1598,14 +1603,14 @@ const STRUCTS=[
    empties:[
     {f:'empty-e5.html',code:'E5',cap:'x=2 等分',src:'E5 · split-x-2.equal',ex:['E5']},
     {f:'empty-a5.html',code:'A5',cap:'x=3 等分',src:'A5/C3/F3/I4/K2/K4 同槽合并 · split-x-3.equal',ex:['A5','C3','F3','I4','K2','K4']},
-    {f:'synth-heq-4.html',code:'x4',cap:'x=4 等分',syn:1,ex:[]},
+    {f:'synth-heq-4.html',code:'x4',cap:'x=4 等分',syn:1,ex:['R1']},
    ]},
   {key:'veq',cn:'③ 上下 x 等分',en:'v-equal-split',judge:'多个并列对象 + 纵向阅读流(层级、堆叠)',
    cut:'纵向均分,x≥2',
    note:'当前真实版式只有 Q3 的上下双流程槽;H3/H4/E3 的层带都属于单区内组件画法',
    empties:[
     {f:'synth-veq-2.html',code:'y2',cap:'x=2 等分',syn:1,ex:['Q3']},
-    {f:'synth-veq-3.html',code:'y3',cap:'x=3 等分',syn:1,ex:[]},
+    {f:'synth-veq-3.html',code:'y3',cap:'x=3 等分',syn:1,ex:['R2']},
     {f:'synth-veq-4.html',code:'y4',cap:'x=4 等分',syn:1,ex:[]},
    ]},
   {key:'hasym',cn:'④ 左右不对称',en:'h-asymmetric',judge:'有主辅之分:主图 + 规格单 / 数据栏 / 证据墙 / 两侧标注',
@@ -1630,7 +1635,7 @@ const STRUCTS=[
    note:'Q4 是四个独立证据槽的真实页网格;F1/F4/A7 的象限、六宫格和云墙都是单区内组件画法',
    empties:[
     {f:'synth-grid-2x2.html',code:'2×2',cap:'2×2',syn:1,ex:['Q4']},
-    {f:'synth-grid-2x3.html',code:'2×3',cap:'2×3(当前无整页实例)',syn:1,ex:[]},
+    {f:'synth-grid-2x3.html',code:'2×3',cap:'2×3',syn:1,ex:['R3']},
     {f:'synth-grid-4x7.html',code:'4×7',cap:'4×7(当前无整页实例)',syn:1,ex:[]},
    ]},
 ];
