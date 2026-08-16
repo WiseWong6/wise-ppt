@@ -16,9 +16,9 @@ description: 表驱动的网页 PPT 编排 skill。输入 PDF/链接/口语稿/�
 | 路径 | 是什么 | 什么时候用 |
 |---|---|---|
 | `skill-design.md` | 方法论出处(九个阶段各章的判定理由与设计原则)+修订记录 | 要"为什么这么判"时查 |
-| `references/catalog.html` | 资产总目录(模板/版式/结构/组件/图标五 tab);65 版式的数据层(`SMARTART_TYPES`,编号+名称+结构+关系四元组)就是套版式的查表源 | 套版式、选组件、看模板实拍 |
-| `references/gallery-paper-ink/ai/frames/` | 77 张整页版式帧(65 关系版式+12 模板),完整 1920×1080 可执行 HTML | 套版式时的复制底稿 |
-| `capabilities/layouts/gallery-manifest.json` | 73 份可查询版式配方(槽位/结构合同/推荐组件;D7-D10 为画册模板,不进关系配方) | 套版式时查槽位几何 |
+| `references/catalog.html` | 资产总目录(模板/版式/结构/组件/图标五 tab);67 版式的数据层(`SMARTART_TYPES`,编号+名称+结构+关系四元组)就是套版式的查表源 | 套版式、选组件、看模板实拍 |
+| `references/gallery-paper-ink/ai/frames/` | 79 张整页版式帧(67 关系版式+12 模板),完整 1920×1080 可执行 HTML | 套版式时的复制底稿 |
+| `capabilities/layouts/gallery-manifest.json` | 75 份可查询版式配方(槽位/结构合同/推荐组件;D7-D10 为画册模板,不进关系配方) | 套版式时查槽位几何 |
 | `capabilities/components/routing-manifest.json` | 125 条组件机器数据(relation_keys/frame/容量),`relation_keys` 用 23 细种口径,与表B 同一套词 | 表B 不够用时查全量、核对物化 |
 | `references/component-routing-data.js` | `routing-manifest.json` 的 file:// 安全投影；Catalog 组件关系标签由它生成 | 浏览时防止手写标签与生产路由漂移 |
 | `references/taxonomy-empty/` | 6 种结构 × 17 张空槽大图 | 切区域前对几何 |
@@ -87,7 +87,7 @@ description: 表驱动的网页 PPT 编排 skill。输入 PDF/链接/口语稿/�
 
 ### 4 逐页四步
 
-**第 0 步 · 套版式(能套则套)**:先查 `references/catalog.html` 版式 tab 的数据层(65 张,`编号+名称+结构+关系标签`,关系标签就是①的 23 细种口径)。语义(关系标签)、槽位数量、方向三点都合 → 复制 `references/gallery-paper-ink/ai/frames/` 里对应整页帧作底稿,只替换文案/数据/图标,槽位几何不动,deck-plan ④列登记 `套版式:版式号`;槽位数差一(如指标 4→3)允许等分微调;再不合 → 走①~④组件链。套版式同样守渲染合同全部红线(无标题制、字档、几何契约、配平)。查槽位几何用 `capabilities/layouts/gallery-manifest.json`。
+**第 0 步 · 套版式(能套则套)**:先查 `references/catalog.html` 版式 tab 的数据层(67 张,`编号+名称+结构+关系标签`,关系标签就是①的 23 细种口径)。语义(关系标签)、槽位数量、方向三点都合 → 复制 `references/gallery-paper-ink/ai/frames/` 里对应整页帧作底稿,只替换文案/数据/图标,槽位几何不动,deck-plan ④列登记 `套版式:版式号`;槽位数差一(如指标 4→3)允许等分微调;再不合 → 走①~④组件链。套版式同样守渲染合同全部红线(无标题制、字档、几何契约、配平)。查槽位几何用 `capabilities/layouts/gallery-manifest.json`。
 
 **① 定关系**:走 skill-design 第五章判断流程(六大族 23 种):**每页 1 个主关系 + 最多 2 个辅关系**——关系决定版式,数量只决定容量。数字是内容不是关系:排名归比较、指标/分布归并列、示意图归重心;趋势归时序(按时间对齐看变化),不单列。
 
@@ -142,17 +142,17 @@ description: 表驱动的网页 PPT 编排 skill。输入 PDF/链接/口语稿/�
 
 ---
 
-## 表A · 关系 → 结构候选(经 65 版式反向验证;版式号 G3 为历史退役位,不重编)
+## 表A · 关系 → 结构候选(经 67 版式反向验证;版式号 G3 为历史退役位,不重编)
 
 | 关系 | 候选结构 | 版式例 |
 |---|---|---|
 | 焦点 focus | 单区 | G2 |
 | 示意 illustration | 单区(插图/原型展示) | A2、A8 |
-| 陈列 display | 单区(云墙/格阵) / 左右x等分 / 网格mxn(独立槽) | A7、F4、A5、R1、Q4、R3 |
+| 陈列 display | 单区(云墙/格阵) / 左右x等分 / 网格mxn(独立槽) | A7、F4、A5、R1、Q4、R3、R7 |
 | 并行 parallel | 左右x等分 / 单区(泳道图) | I4、B3 |
 | 指标 metric | 单区(组件内 KPI 横带) / 左右x等分(独立指标槽) | C6 |
 | 分布 distribution | 左右不对称(地图+数据栏) | C4 |
-| 层级 hierarchy | 单区(树/分层栈/同心环) / 上下x等分(独立层带) / 左右不对称(树+规格) | H3、H4、R2、F2 |
+| 层级 hierarchy | 单区(树/分层栈/同心环) / 上下x等分(独立层带) / 左右不对称(树+规格) | H3、H4、R2、R6、F2 |
 | 拆解 decomposition | 单区(放射/组件内格阵) / 左右x等分 / 左右不对称 / 上下不对称(上总额下四环) | G1、F4、F3、F2、C5 |
 | 部分整体 part-whole | 单区(整体构成图) / 左右不对称(整体+分项证据) | Q2 |
 | 嵌套 nesting | 单区(同心环/嵌套框) | H1、H2 |

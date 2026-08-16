@@ -198,7 +198,6 @@
   .variant-body{display:grid;grid-template-columns:minmax(310px,.9fr) minmax(0,1.7fr);column-gap:18px;align-items:start}
   .variant-examples-title{font-size:13px;color:var(--ink-2)}
   .variant-empty{position:sticky;top:24px;align-self:start}
-  .variant-empty-meta{margin-top:8px;font-size:13px;line-height:1.6;color:var(--ink-3)}
   .variant-examples-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:14px}
   .variant-empty-state{min-height:180px;display:grid;place-items:center;border:1px dashed var(--ink-45);color:var(--ink-3);font-size:13px;line-height:1.8;text-align:center;padding:24px;background:var(--paper-deep)}
   @media(max-width:900px){
@@ -261,12 +260,12 @@
 </main>
 
 <main id="m-lyt">
-  <div class="note"><b>这页是浏览入口,不是正式分类。</b><br>借 SmartArt「先问要表达什么」的九个语义入口逛 65 张关系页版式,每类入口的定义见各组标题;字母编号只是源画册历史分组,不代表六大族/六种结构(G3 为退役空位,不重编),判定看每张卡的 23 细种关系标签(词表见 SKILL.md 表A),不以这里的入口为准。</div>
+  <div class="note"><b>这页是浏览入口,不是正式分类。</b><br>借 SmartArt「先问要表达什么」的九个语义入口逛 67 张关系页版式,每类入口的定义见各组标题;字母编号只是源画册历史分组,不代表六大族/六种结构(G3 为退役空位,不重编),判定看每张卡的 23 细种关系标签(词表见 SKILL.md 表A),不以这里的入口为准。</div>
   <div id="lyt-fams"></div>
 </main>
 
 <main id="m-str">
-  <div class="note"><b>结构 = 版心怎么切(矩形分块);组件 = 区域内画什么形状。</b><br>页眉、页码、题注等固定件不算切分;放射、环形、漏斗、表格这些形状是组件画法,不影响结构归属。关系先圈定候选结构(2~4 种),再按对象数量、有无辅助内容、方向偏好在范围内选定。每类结构 = 空槽蓝图 + 对应真实版式成对展示:空槽取自 taxonomy 成熟蓝图,缺失的变体按同规格补造并逐卡标注;65 个版式全部归入这 6 种切分,不漏归、不重归、不跨结构。</div>
+  <div class="note"><b>结构 = 版心怎么切(矩形分块);组件 = 区域内画什么形状。</b><br>页眉、页码、题注等固定件不算切分;放射、环形、漏斗、表格这些形状是组件画法,不影响结构归属。关系先圈定候选结构(2~4 种),再按对象数量、有无辅助内容、方向偏好在范围内选定。每类结构 = 空槽蓝图 + 对应真实版式成对展示;67 个版式全部归入这 6 种切分,不漏归、不重归、不跨结构。</div>
   <div id="str-list"></div>
 </main>
 
@@ -317,6 +316,7 @@ const SMARTART_TYPES=[
     ['C3','案例卡列阵','左右3等分','陈列'],['F3','分栏清单柱','左右3等分','拆解(并列面)'],
     ['F4','图标六宫格','单区','拆解(并列面)'],['I4','并行路径卡','左右3等分','并行(内含时序)'],
     ['R1','四柱能力页','左右4等分','陈列'],['R3','六格能力地图','网格2×3','陈列'],
+    ['R7','二十八项能力地图','网格4×7','陈列'],
   ]},
   {id:'process',cn:'② 流程',desc:'步骤、阶段、时间线或有方向的推进',items:[
     ['A9','手机多屏画廊','单区','时序'],['B1','水平时间轴','单区','时序'],['B2','甘特瀑布','单区','时序'],
@@ -333,7 +333,7 @@ const SMARTART_TYPES=[
   ]},
   {id:'hierarchy',cn:'④ 层级',desc:'上下级、分层或树状从属',items:[
     ['F2','环节树 + 规格单','左右不对称','拆解'],['H3','分层架构栈','单区','层级'],['H4','底座托举三层','单区','层级'],
-    ['R2','三层策略落地页','上下3等分','层级'],
+    ['R2','三层策略落地页','上下3等分','层级'],['R6','四层可信交付栈','上下4等分','层级'],
   ]},
   {id:'relationship',cn:'⑤ 关系',desc:'非线性的连接、对照、映射、中心辐射或包含',items:[
     ['G1','三向放射','单区','拆解'],['G4','中心枢纽 + 卫星','单区','拆解 / 网络'],
@@ -477,7 +477,7 @@ function assertCatalogClassification(groups,keyOf,expected,label){
   }
   return count;
 }
-const SMARTART_LAYOUT_COUNT=assertCatalogClassification(SMARTART_TYPES,item=>item[0],65,'版式');
+const SMARTART_LAYOUT_COUNT=assertCatalogClassification(SMARTART_TYPES,item=>item[0],67,'版式');
 const CATALOG_COMPONENTS=SMARTART_COMPONENTS.flatMap(group=>group.items);
 /* 新拆出的组件使用末尾新编号，但仍留在原语义分组相邻展示，避免改写既有 #001–#072。 */
 const PINNED_COMPONENT_NUMBERS=new Set(CATALOG_COMPONENTS.map(item=>item.catalogNo).filter(Number.isInteger));
@@ -1556,9 +1556,8 @@ if(THUMBGEN){
 }
 
 /* ============ 结构枚举(6 种切分,从 skill-design 第五章 + 60 版式反向抽象) ============ */
-/* 空槽大图:taxonomy-empty/ 下 10 张是 taxonomy(wise-ppt-page-expression)110 张成熟蓝图
-   按槽位几何去重出的空槽版式原样提取;上下等分、网格整类与左右4等分变体 taxonomy 无空槽实例,
-   按同规格补造 7 张。来源与拓扑对应关系见 taxonomy-empty/manifest.json。
+/* 空槽大图统一从 taxonomy-empty/ 读取；来源与拓扑映射只保留在 taxonomy-empty/manifest.json，
+   Catalog 卡片不重复展示内部来源说明。
    ex = 该分点对应的版式页,与「版式」tab 同一批('all' = 本结构全部版式;空数组 = 无版式的特例);
    加载时逐结构校验不漏不重。 */
 const EMPTY_DIR='taxonomy-empty/';
@@ -1567,46 +1566,46 @@ const STRUCTS=[
   {key:'single',cn:'① 单区',en:'single',judge:'单个对象;或图形需要整版舒展',
    cut:'版心一整块,不再切分;组件水平垂直居中',
    note:'区域内形状自由 —— 放射、环形、蛇形、表格(矩阵)页都画在这一块里,仍是单区',
-   empties:[{f:'empty-a1.html',code:'A1',cap:'版心一块,组件居中',src:'A1/A2/A7…共 38 页同槽合并 · topology.leaf',ex:'all'}]},
+   empties:[{f:'empty-a1.html',code:'A1',cap:'版心一块,组件居中',ex:'all'}]},
   {key:'heq',cn:'② 左右 x 等分',en:'h-equal-split',judge:'多个并列对象 + 横向阅读流(步骤、时间、对比)',
    cut:'横向均分,x≥2;左右等分 x=2 是特例',
    empties:[
-    {f:'empty-e5.html',code:'E5',cap:'x=2 等分',src:'E5 · split-x-2.equal',ex:['E5']},
-    {f:'empty-a5.html',code:'A5',cap:'x=3 等分',src:'A5/C3/F3/I4/K2/K4 同槽合并 · split-x-3.equal',ex:['A5','C3','F3','I4','K2','K4']},
-    {f:'synth-heq-4.html',code:'x4',cap:'x=4 等分',syn:1,ex:['R1']},
+    {f:'empty-e5.html',code:'E5',cap:'x=2 等分',ex:['E5']},
+    {f:'empty-a5.html',code:'A5',cap:'x=3 等分',ex:['A5','C3','F3','I4','K2','K4']},
+    {f:'synth-heq-4.html',code:'x4',cap:'x=4 等分',ex:['R1']},
    ]},
-  {key:'veq',cn:'③ 上下 x 等分',en:'v-equal-split',judge:'多个并列对象 + 纵向阅读流(层级、堆叠)',
-   cut:'纵向均分,x≥2',
-   note:'当前真实版式只有 Q3 的上下双流程槽;H3/H4/E3 的层带都属于单区内组件画法',
+  {key:'veq',cn:'③ 上下 y 等分',en:'v-equal-split',judge:'多个并列对象 + 纵向阅读流(层级、堆叠)',
+   cut:'纵向均分,y≥2',
+   note:'Q3、R2、R6 分别覆盖上下 2、3、4 个独立槽位;H3/H4/E3 的层带仍属于单区内组件画法',
    empties:[
-    {f:'synth-veq-2.html',code:'y2',cap:'x=2 等分',syn:1,ex:['Q3']},
-    {f:'synth-veq-3.html',code:'y3',cap:'x=3 等分',syn:1,ex:['R2']},
-    {f:'synth-veq-4.html',code:'y4',cap:'x=4 等分',syn:1,ex:[]},
+    {f:'synth-veq-2.html',code:'y2',cap:'y=2 等分',ex:['Q3']},
+    {f:'synth-veq-3.html',code:'y3',cap:'y=3 等分',ex:['R2']},
+    {f:'synth-veq-4.html',code:'y4',cap:'y=4 等分',ex:['R6']},
    ]},
   {key:'hasym',cn:'④ 左右不对称',en:'h-asymmetric',judge:'有主辅之分:主图 + 规格单 / 数据栏 / 证据墙 / 两侧标注',
    cut:'版心横向不等分切一刀,任意一侧可再分;通常一主一辅,辅助内容放次侧',
    note:'主图两侧都有辅 = 主+辅+辅(O1 漏斗)',
    empties:[
-    {f:'empty-c4.html',code:'C4',cap:'主左 + 辅右',src:'C4/O1 同槽合并 · split-x-2.dominant-start',ex:['C4','O1','Q2']},
-    {f:'empty-a4.html',code:'A4',cap:'辅左 + 主右',src:'A4/A6 同槽合并 · split-x-2.dominant-end',ex:['A4','A6']},
-    {f:'empty-c1.html',code:'C1',cap:'主图 + 数据格',src:'C1/F2 同槽合并 · split-x-2.equal(与 E5 同拓扑;C1 栏内主图+数据格不等分,按视觉归④)',ex:['C1','F2']},
-    {f:'empty-k3.html',code:'K3',cap:'左列 + 右侧再分',src:'K3 · split-x-y3@1',ex:['K3']},
+    {f:'empty-c4.html',code:'C4',cap:'主左 + 辅右',ex:['C4','O1','Q2']},
+    {f:'empty-a4.html',code:'A4',cap:'辅左 + 主右',ex:['A4','A6']},
+    {f:'empty-c1.html',code:'C1',cap:'主图 + 数据格',ex:['C1','F2']},
+    {f:'empty-k3.html',code:'K3',cap:'左列 + 右侧再分',ex:['K3']},
    ]},
   {key:'vasym',cn:'⑤ 上下不对称',en:'v-asymmetric',judge:'有主辅之分 + 纵向阅读流',
    cut:'版心纵向不等分切一刀,任意一侧可再分',
    note:'常见走法:上矩阵/图表下收束带(E4/C2)、上黑箱流下编号标注(P1)、上总额下四环(C5)、上摘要下原文(A3)',
    empties:[
-    {f:'empty-e4.html',code:'E4',cap:'上主 + 下收束带',src:'E4/P1 · split-y-2.dominant-start',ex:['E4','P1']},
-    {f:'empty-a3.html',code:'A3',cap:'上辅 + 下主',src:'A3/C5 同槽合并 · split-y-2.dominant-end',ex:['A3','C5']},
-    {f:'empty-c2.html',code:'C2',cap:'上大块 + 下二分',src:'C2 · recursive-y-equal-then-x',ex:['C2']},
+    {f:'empty-e4.html',code:'E4',cap:'上主 + 下收束带',ex:['E4','P1']},
+    {f:'empty-a3.html',code:'A3',cap:'上辅 + 下主',ex:['A3','C5']},
+    {f:'empty-c2.html',code:'C2',cap:'上大块 + 下二分',ex:['C2']},
    ]},
   {key:'grid',cn:'⑥ 网格 m×n',en:'grid',judge:'等价单元批量陈列(logo 墙、图标格、案例卡)',
    cut:'均质分格,格与格等价,只是陈列',
-   note:'Q4 是四个独立证据槽的真实页网格;F1/F4/A7 的象限、六宫格和云墙都是单区内组件画法',
+   note:'Q4、R3、R7 分别覆盖 2×2、2×3、4×7 独立页面网格;F1/F4/A7 的象限、六宫格和云墙仍是单区内组件画法',
    empties:[
-    {f:'synth-grid-2x2.html',code:'2×2',cap:'2×2',syn:1,ex:['Q4']},
-    {f:'synth-grid-2x3.html',code:'2×3',cap:'2×3',syn:1,ex:['R3']},
-    {f:'synth-grid-4x7.html',code:'4×7',cap:'4×7(当前无整页实例)',syn:1,ex:[]},
+    {f:'synth-grid-2x2.html',code:'2×2',cap:'2×2',ex:['Q4']},
+    {f:'synth-grid-2x3.html',code:'2×3',cap:'2×3',ex:['R3']},
+    {f:'synth-grid-4x7.html',code:'4×7',cap:'4×7',ex:['R7']},
    ]},
 ];
 
@@ -1646,7 +1645,7 @@ STRUCTS.forEach(d=>{
 });
 
 /* 结构页:每类结构 = 判断/切法/备注三行 + 空槽蓝图与对应版式成对展示。 */
-function emptyCard(d,e,src){
+function emptyCard(d,e){
   const full=EMPTY_DIR+e.f;
   const thumb=pageThumb(full);
   const codes=(byStruct[d.key]||[]).map(it=>it[0]);
@@ -1655,7 +1654,7 @@ function emptyCard(d,e,src){
     :e.ex.length
       ?'对应版式:'+e.ex.join(' / ')
       :'对应版式:无(整页象限暂无实例)';
-  return `<div class="card" data-modal="1" data-frame="${full}" data-thumb="${thumb}" data-mtitle="${d.cn} · ${e.cap}" data-mtag="${src} · ${exTxt}">
+  return `<div class="card" data-modal="1" data-frame="${full}" data-thumb="${thumb}" data-mtitle="${d.cn} · ${e.cap}" data-mtag="${exTxt}">
     ${thumbMarkup(thumb,d.cn+' '+e.cap)}</div>`;
 }
 function structureExampleCard(it){
@@ -1682,7 +1681,6 @@ function requestedStructureKey(){
 const INITIAL_STRUCTURE_KEY=requestedStructureKey();
 function structureVariant(d,e){
   const examples=examplesOf(d,e);
-  const src=e.syn?'补造 · taxonomy 无此空槽版式':'taxonomy 空槽版式 · '+e.src;
   const exampleGrid=examples.length
     ?`<div class="variant-examples-grid">${examples.map(structureExampleCard).join('')}</div>`
     :'<div class="variant-empty-state">暂无对应版式<br>整页象限暂无实例</div>';
@@ -1692,7 +1690,7 @@ function structureVariant(d,e){
       <div class="variant-examples-title">对应版式 · ${examples.length}</div>
     </div>
     <div class="variant-body">
-      <div class="variant-empty">${emptyCard(d,e,src)}<div class="variant-empty-meta">${src}</div></div>
+      <div class="variant-empty">${emptyCard(d,e)}</div>
       <div class="variant-examples">${exampleGrid}</div>
     </div>
   </section>`;
@@ -1708,7 +1706,7 @@ $('#str-list').innerHTML=STRUCTS.map(d=>{
   const panelId='struct-panel-'+d.key;
   const toggleId='struct-toggle-'+d.key;
   const gridNote=d.key==='grid'
-    ?'<div class="struct-callout"><b>网格 ≠ 表格。</b>网格是页面切分:A7 是 4×7、F4 是 2×3;K4 是左右 3 等分,E4/K1 是上下不对称,它们的行列表格都属于槽内组件画法。</div>'
+    ?'<div class="struct-callout"><b>网格 ≠ 表格。</b>页面网格只有逐格独立绑定才成立:Q4 是 2×2、R3 是 2×3、R7 是 4×7;A7/F4 的分格和 K4/E4/K1 的行列表格都属于槽内组件画法。</div>'
     :'';
   return `<section class="struct-section${open?' is-open':''}" data-struct="${d.key}">
     <h2 class="struct-toggle-head"><button class="struct-toggle" id="${toggleId}" type="button" aria-expanded="${open}" aria-controls="${panelId}">

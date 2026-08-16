@@ -4,7 +4,7 @@
   "name": "Wise PPT Layout Gallery",
   "description": "跨主题可查询的布局配方目录；paper-ink 样张提供当前已验证实现。",
   "protected_references": "capabilities/layouts/protected-references.json",
-  "recipe_count": 73,
+  "recipe_count": 75,
   "recipes": [
     {
       "recipe_id": "paper-ink.evidence.specimen-card",
@@ -11403,6 +11403,126 @@
         "conclusion_modes": ["bottom-statement"], "primary_units": {"min": 2, "max": 4}, "primary_forms": ["diagram"], "enhancements": ["annotation"],
         "logic_contract": {"primary": "network", "secondary": ["causal"]}
       }
+    },
+    {
+      "recipe_id": "paper-ink.hierarchy.four-independent-bands",
+      "display_code": "R6",
+      "name": "四层可信交付栈",
+      "family": "层级",
+      "description": "四个可独立换数据的横向槽位组成上下四等分页面",
+      "roles": ["explain", "synthesize"],
+      "relations": ["hierarchy"],
+      "primitives": ["stacked-bands", "content-frame"],
+      "reading_order": ["input", "reasoning", "evaluation", "governance", "takeaway"],
+      "structure_contract": {
+        "region_count": 5,
+        "required_slot_ids": ["input", "reasoning", "evaluation", "governance"],
+        "core_primitives": ["stacked-bands", "content-frame"]
+      },
+      "structure_fingerprint": "sha256:c640dafd4e8fc970e861dd1338ed0d060de542f31ca5b7f81c0de3d4bf530975",
+      "slots": [
+        {
+          "slot_id": "input", "purpose": "输入边界层", "required": true, "visual_role": "primary", "min_items": 1, "max_items": 3, "count_unit": "item",
+          "allowed_renderer_kinds": ["native-html"], "allowed_component_sources": ["native"],
+          "default_renderer": {"renderer_kind": "native-html", "component_source": "native", "component_id": "native.paper-ink.semantic.statement-band"},
+          "space_contract": {"canvas_width": 1920, "canvas_height": 1080, "width": 1500, "height": 145, "aspect_ratio": 10.3448, "space_type": "wide"},
+          "recommended_component_ids": ["native.paper-ink.semantic.statement-band"]
+        },
+        {
+          "slot_id": "reasoning", "purpose": "推理约束层", "required": true, "visual_role": "primary", "min_items": 1, "max_items": 3, "count_unit": "item",
+          "allowed_renderer_kinds": ["native-html"], "allowed_component_sources": ["native"],
+          "default_renderer": {"renderer_kind": "native-html", "component_source": "native", "component_id": "native.paper-ink.semantic.process-strip"},
+          "space_contract": {"canvas_width": 1920, "canvas_height": 1080, "width": 1500, "height": 145, "aspect_ratio": 10.3448, "space_type": "wide"},
+          "recommended_component_ids": ["native.paper-ink.semantic.process-strip"]
+        },
+        {
+          "slot_id": "evaluation", "purpose": "结果评测层", "required": true, "visual_role": "primary", "min_items": 1, "max_items": 3, "count_unit": "item",
+          "allowed_renderer_kinds": ["native-html"], "allowed_component_sources": ["native"],
+          "default_renderer": {"renderer_kind": "native-html", "component_source": "native", "component_id": "native.paper-ink.semantic.metric-band"},
+          "space_contract": {"canvas_width": 1920, "canvas_height": 1080, "width": 1500, "height": 145, "aspect_ratio": 10.3448, "space_type": "wide"},
+          "recommended_component_ids": ["native.paper-ink.semantic.metric-band"]
+        },
+        {
+          "slot_id": "governance", "purpose": "上线治理层", "required": true, "visual_role": "primary", "min_items": 1, "max_items": 3, "count_unit": "item",
+          "allowed_renderer_kinds": ["native-html"], "allowed_component_sources": ["native"],
+          "default_renderer": {"renderer_kind": "native-html", "component_source": "native", "component_id": "native.paper-ink.semantic.evidence-panel"},
+          "space_contract": {"canvas_width": 1920, "canvas_height": 1080, "width": 1500, "height": 145, "aspect_ratio": 10.3448, "space_type": "wide"},
+          "recommended_component_ids": ["native.paper-ink.semantic.evidence-panel"]
+        },
+        {
+          "slot_id": "takeaway", "purpose": "页面一句话结论", "required": false, "visual_role": "support", "min_items": 0, "max_items": 1, "count_unit": "binding",
+          "allowed_renderer_kinds": ["typography"], "allowed_component_sources": ["native"],
+          "default_renderer": {"renderer_kind": "typography", "component_source": "native", "component_id": "native.paper-ink.hierarchy.four-independent-bands.takeaway"}
+        }
+      ],
+      "examples": {"general": "gallery/paper-ink/general/frames/layout-r6.html", "ai": "gallery/paper-ink/ai/frames/layout-r6.html"},
+      "selection_notes": "四层内容有明确上下级或保障关系，且每层都要独立承载内容时使用。",
+      "anti_patterns": ["四项同级且无层级时应使用并列结构", "只有四个短词时不要切成四层"],
+      "shape": ["横带"],
+      "expression_profile": {
+        "contract_version": 1, "page_modes": ["content"], "question_affinities": ["how"],
+        "topology": {"weights": ["equal"], "depths": ["flat"], "flows": ["linear"]},
+        "conclusion_modes": ["bottom-statement"], "primary_units": {"min": 4, "max": 4}, "primary_forms": ["diagram"], "enhancements": ["annotation", "evidence"],
+        "logic_contract": {"primary": "hierarchy", "secondary": ["sequence"]}
+      }
+    },
+    {
+      "recipe_id": "paper-ink.display.capability-grid-4x7",
+      "display_code": "R7",
+      "name": "二十八项能力地图",
+      "family": "陈列",
+      "description": "二十八个可独立换数据的槽位组成四乘七页面网格",
+      "roles": ["explain"],
+      "relations": ["display"],
+      "primitives": ["matrix-field", "content-frame"],
+      "reading_order": ["capability-01", "capability-02", "capability-03", "capability-04", "capability-05", "capability-06", "capability-07", "capability-08", "capability-09", "capability-10", "capability-11", "capability-12", "capability-13", "capability-14", "capability-15", "capability-16", "capability-17", "capability-18", "capability-19", "capability-20", "capability-21", "capability-22", "capability-23", "capability-24", "capability-25", "capability-26", "capability-27", "capability-28", "takeaway"],
+      "structure_contract": {
+        "region_count": 29,
+        "required_slot_ids": ["capability-01", "capability-02", "capability-03", "capability-04", "capability-05", "capability-06", "capability-07", "capability-08", "capability-09", "capability-10", "capability-11", "capability-12", "capability-13", "capability-14", "capability-15", "capability-16", "capability-17", "capability-18", "capability-19", "capability-20", "capability-21", "capability-22", "capability-23", "capability-24", "capability-25", "capability-26", "capability-27", "capability-28"],
+        "core_primitives": ["matrix-field", "content-frame"]
+      },
+      "structure_fingerprint": "sha256:fdb7819aa4c6667b52178801626f0b31fc866c529f886c7fbc17863113328a88",
+      "slots": [
+        {"slot_id": "capability-01", "purpose": "第01项能力", "required": true, "visual_role": "primary", "min_items": 1, "max_items": 1, "count_unit": "capability", "allowed_renderer_kinds": ["native-html"], "allowed_component_sources": ["native"], "default_renderer": {"renderer_kind": "native-html", "component_source": "native", "component_id": "native.paper-ink.semantic.icon-grid"}, "space_contract": {"canvas_width": 1920, "canvas_height": 1080, "width": 204, "height": 146, "aspect_ratio": 1.3973, "space_type": "compact"}, "recommended_component_ids": ["native.paper-ink.semantic.icon-grid"]},
+        {"slot_id": "capability-02", "purpose": "第02项能力", "required": true, "visual_role": "primary", "min_items": 1, "max_items": 1, "count_unit": "capability", "allowed_renderer_kinds": ["native-html"], "allowed_component_sources": ["native"], "default_renderer": {"renderer_kind": "native-html", "component_source": "native", "component_id": "native.paper-ink.semantic.icon-grid"}, "space_contract": {"canvas_width": 1920, "canvas_height": 1080, "width": 204, "height": 146, "aspect_ratio": 1.3973, "space_type": "compact"}, "recommended_component_ids": ["native.paper-ink.semantic.icon-grid"]},
+        {"slot_id": "capability-03", "purpose": "第03项能力", "required": true, "visual_role": "primary", "min_items": 1, "max_items": 1, "count_unit": "capability", "allowed_renderer_kinds": ["native-html"], "allowed_component_sources": ["native"], "default_renderer": {"renderer_kind": "native-html", "component_source": "native", "component_id": "native.paper-ink.semantic.icon-grid"}, "space_contract": {"canvas_width": 1920, "canvas_height": 1080, "width": 204, "height": 146, "aspect_ratio": 1.3973, "space_type": "compact"}, "recommended_component_ids": ["native.paper-ink.semantic.icon-grid"]},
+        {"slot_id": "capability-04", "purpose": "第04项能力", "required": true, "visual_role": "primary", "min_items": 1, "max_items": 1, "count_unit": "capability", "allowed_renderer_kinds": ["native-html"], "allowed_component_sources": ["native"], "default_renderer": {"renderer_kind": "native-html", "component_source": "native", "component_id": "native.paper-ink.semantic.icon-grid"}, "space_contract": {"canvas_width": 1920, "canvas_height": 1080, "width": 204, "height": 146, "aspect_ratio": 1.3973, "space_type": "compact"}, "recommended_component_ids": ["native.paper-ink.semantic.icon-grid"]},
+        {"slot_id": "capability-05", "purpose": "第05项能力", "required": true, "visual_role": "primary", "min_items": 1, "max_items": 1, "count_unit": "capability", "allowed_renderer_kinds": ["native-html"], "allowed_component_sources": ["native"], "default_renderer": {"renderer_kind": "native-html", "component_source": "native", "component_id": "native.paper-ink.semantic.icon-grid"}, "space_contract": {"canvas_width": 1920, "canvas_height": 1080, "width": 204, "height": 146, "aspect_ratio": 1.3973, "space_type": "compact"}, "recommended_component_ids": ["native.paper-ink.semantic.icon-grid"]},
+        {"slot_id": "capability-06", "purpose": "第06项能力", "required": true, "visual_role": "primary", "min_items": 1, "max_items": 1, "count_unit": "capability", "allowed_renderer_kinds": ["native-html"], "allowed_component_sources": ["native"], "default_renderer": {"renderer_kind": "native-html", "component_source": "native", "component_id": "native.paper-ink.semantic.icon-grid"}, "space_contract": {"canvas_width": 1920, "canvas_height": 1080, "width": 204, "height": 146, "aspect_ratio": 1.3973, "space_type": "compact"}, "recommended_component_ids": ["native.paper-ink.semantic.icon-grid"]},
+        {"slot_id": "capability-07", "purpose": "第07项能力", "required": true, "visual_role": "primary", "min_items": 1, "max_items": 1, "count_unit": "capability", "allowed_renderer_kinds": ["native-html"], "allowed_component_sources": ["native"], "default_renderer": {"renderer_kind": "native-html", "component_source": "native", "component_id": "native.paper-ink.semantic.icon-grid"}, "space_contract": {"canvas_width": 1920, "canvas_height": 1080, "width": 204, "height": 146, "aspect_ratio": 1.3973, "space_type": "compact"}, "recommended_component_ids": ["native.paper-ink.semantic.icon-grid"]},
+        {"slot_id": "capability-08", "purpose": "第08项能力", "required": true, "visual_role": "primary", "min_items": 1, "max_items": 1, "count_unit": "capability", "allowed_renderer_kinds": ["native-html"], "allowed_component_sources": ["native"], "default_renderer": {"renderer_kind": "native-html", "component_source": "native", "component_id": "native.paper-ink.semantic.icon-grid"}, "space_contract": {"canvas_width": 1920, "canvas_height": 1080, "width": 204, "height": 146, "aspect_ratio": 1.3973, "space_type": "compact"}, "recommended_component_ids": ["native.paper-ink.semantic.icon-grid"]},
+        {"slot_id": "capability-09", "purpose": "第09项能力", "required": true, "visual_role": "primary", "min_items": 1, "max_items": 1, "count_unit": "capability", "allowed_renderer_kinds": ["native-html"], "allowed_component_sources": ["native"], "default_renderer": {"renderer_kind": "native-html", "component_source": "native", "component_id": "native.paper-ink.semantic.icon-grid"}, "space_contract": {"canvas_width": 1920, "canvas_height": 1080, "width": 204, "height": 146, "aspect_ratio": 1.3973, "space_type": "compact"}, "recommended_component_ids": ["native.paper-ink.semantic.icon-grid"]},
+        {"slot_id": "capability-10", "purpose": "第10项能力", "required": true, "visual_role": "primary", "min_items": 1, "max_items": 1, "count_unit": "capability", "allowed_renderer_kinds": ["native-html"], "allowed_component_sources": ["native"], "default_renderer": {"renderer_kind": "native-html", "component_source": "native", "component_id": "native.paper-ink.semantic.icon-grid"}, "space_contract": {"canvas_width": 1920, "canvas_height": 1080, "width": 204, "height": 146, "aspect_ratio": 1.3973, "space_type": "compact"}, "recommended_component_ids": ["native.paper-ink.semantic.icon-grid"]},
+        {"slot_id": "capability-11", "purpose": "第11项能力", "required": true, "visual_role": "primary", "min_items": 1, "max_items": 1, "count_unit": "capability", "allowed_renderer_kinds": ["native-html"], "allowed_component_sources": ["native"], "default_renderer": {"renderer_kind": "native-html", "component_source": "native", "component_id": "native.paper-ink.semantic.icon-grid"}, "space_contract": {"canvas_width": 1920, "canvas_height": 1080, "width": 204, "height": 146, "aspect_ratio": 1.3973, "space_type": "compact"}, "recommended_component_ids": ["native.paper-ink.semantic.icon-grid"]},
+        {"slot_id": "capability-12", "purpose": "第12项能力", "required": true, "visual_role": "primary", "min_items": 1, "max_items": 1, "count_unit": "capability", "allowed_renderer_kinds": ["native-html"], "allowed_component_sources": ["native"], "default_renderer": {"renderer_kind": "native-html", "component_source": "native", "component_id": "native.paper-ink.semantic.icon-grid"}, "space_contract": {"canvas_width": 1920, "canvas_height": 1080, "width": 204, "height": 146, "aspect_ratio": 1.3973, "space_type": "compact"}, "recommended_component_ids": ["native.paper-ink.semantic.icon-grid"]},
+        {"slot_id": "capability-13", "purpose": "第13项能力", "required": true, "visual_role": "primary", "min_items": 1, "max_items": 1, "count_unit": "capability", "allowed_renderer_kinds": ["native-html"], "allowed_component_sources": ["native"], "default_renderer": {"renderer_kind": "native-html", "component_source": "native", "component_id": "native.paper-ink.semantic.icon-grid"}, "space_contract": {"canvas_width": 1920, "canvas_height": 1080, "width": 204, "height": 146, "aspect_ratio": 1.3973, "space_type": "compact"}, "recommended_component_ids": ["native.paper-ink.semantic.icon-grid"]},
+        {"slot_id": "capability-14", "purpose": "第14项能力", "required": true, "visual_role": "primary", "min_items": 1, "max_items": 1, "count_unit": "capability", "allowed_renderer_kinds": ["native-html"], "allowed_component_sources": ["native"], "default_renderer": {"renderer_kind": "native-html", "component_source": "native", "component_id": "native.paper-ink.semantic.icon-grid"}, "space_contract": {"canvas_width": 1920, "canvas_height": 1080, "width": 204, "height": 146, "aspect_ratio": 1.3973, "space_type": "compact"}, "recommended_component_ids": ["native.paper-ink.semantic.icon-grid"]},
+        {"slot_id": "capability-15", "purpose": "第15项能力", "required": true, "visual_role": "primary", "min_items": 1, "max_items": 1, "count_unit": "capability", "allowed_renderer_kinds": ["native-html"], "allowed_component_sources": ["native"], "default_renderer": {"renderer_kind": "native-html", "component_source": "native", "component_id": "native.paper-ink.semantic.icon-grid"}, "space_contract": {"canvas_width": 1920, "canvas_height": 1080, "width": 204, "height": 146, "aspect_ratio": 1.3973, "space_type": "compact"}, "recommended_component_ids": ["native.paper-ink.semantic.icon-grid"]},
+        {"slot_id": "capability-16", "purpose": "第16项能力", "required": true, "visual_role": "primary", "min_items": 1, "max_items": 1, "count_unit": "capability", "allowed_renderer_kinds": ["native-html"], "allowed_component_sources": ["native"], "default_renderer": {"renderer_kind": "native-html", "component_source": "native", "component_id": "native.paper-ink.semantic.icon-grid"}, "space_contract": {"canvas_width": 1920, "canvas_height": 1080, "width": 204, "height": 146, "aspect_ratio": 1.3973, "space_type": "compact"}, "recommended_component_ids": ["native.paper-ink.semantic.icon-grid"]},
+        {"slot_id": "capability-17", "purpose": "第17项能力", "required": true, "visual_role": "primary", "min_items": 1, "max_items": 1, "count_unit": "capability", "allowed_renderer_kinds": ["native-html"], "allowed_component_sources": ["native"], "default_renderer": {"renderer_kind": "native-html", "component_source": "native", "component_id": "native.paper-ink.semantic.icon-grid"}, "space_contract": {"canvas_width": 1920, "canvas_height": 1080, "width": 204, "height": 146, "aspect_ratio": 1.3973, "space_type": "compact"}, "recommended_component_ids": ["native.paper-ink.semantic.icon-grid"]},
+        {"slot_id": "capability-18", "purpose": "第18项能力", "required": true, "visual_role": "primary", "min_items": 1, "max_items": 1, "count_unit": "capability", "allowed_renderer_kinds": ["native-html"], "allowed_component_sources": ["native"], "default_renderer": {"renderer_kind": "native-html", "component_source": "native", "component_id": "native.paper-ink.semantic.icon-grid"}, "space_contract": {"canvas_width": 1920, "canvas_height": 1080, "width": 204, "height": 146, "aspect_ratio": 1.3973, "space_type": "compact"}, "recommended_component_ids": ["native.paper-ink.semantic.icon-grid"]},
+        {"slot_id": "capability-19", "purpose": "第19项能力", "required": true, "visual_role": "primary", "min_items": 1, "max_items": 1, "count_unit": "capability", "allowed_renderer_kinds": ["native-html"], "allowed_component_sources": ["native"], "default_renderer": {"renderer_kind": "native-html", "component_source": "native", "component_id": "native.paper-ink.semantic.icon-grid"}, "space_contract": {"canvas_width": 1920, "canvas_height": 1080, "width": 204, "height": 146, "aspect_ratio": 1.3973, "space_type": "compact"}, "recommended_component_ids": ["native.paper-ink.semantic.icon-grid"]},
+        {"slot_id": "capability-20", "purpose": "第20项能力", "required": true, "visual_role": "primary", "min_items": 1, "max_items": 1, "count_unit": "capability", "allowed_renderer_kinds": ["native-html"], "allowed_component_sources": ["native"], "default_renderer": {"renderer_kind": "native-html", "component_source": "native", "component_id": "native.paper-ink.semantic.icon-grid"}, "space_contract": {"canvas_width": 1920, "canvas_height": 1080, "width": 204, "height": 146, "aspect_ratio": 1.3973, "space_type": "compact"}, "recommended_component_ids": ["native.paper-ink.semantic.icon-grid"]},
+        {"slot_id": "capability-21", "purpose": "第21项能力", "required": true, "visual_role": "primary", "min_items": 1, "max_items": 1, "count_unit": "capability", "allowed_renderer_kinds": ["native-html"], "allowed_component_sources": ["native"], "default_renderer": {"renderer_kind": "native-html", "component_source": "native", "component_id": "native.paper-ink.semantic.icon-grid"}, "space_contract": {"canvas_width": 1920, "canvas_height": 1080, "width": 204, "height": 146, "aspect_ratio": 1.3973, "space_type": "compact"}, "recommended_component_ids": ["native.paper-ink.semantic.icon-grid"]},
+        {"slot_id": "capability-22", "purpose": "第22项能力", "required": true, "visual_role": "primary", "min_items": 1, "max_items": 1, "count_unit": "capability", "allowed_renderer_kinds": ["native-html"], "allowed_component_sources": ["native"], "default_renderer": {"renderer_kind": "native-html", "component_source": "native", "component_id": "native.paper-ink.semantic.icon-grid"}, "space_contract": {"canvas_width": 1920, "canvas_height": 1080, "width": 204, "height": 146, "aspect_ratio": 1.3973, "space_type": "compact"}, "recommended_component_ids": ["native.paper-ink.semantic.icon-grid"]},
+        {"slot_id": "capability-23", "purpose": "第23项能力", "required": true, "visual_role": "primary", "min_items": 1, "max_items": 1, "count_unit": "capability", "allowed_renderer_kinds": ["native-html"], "allowed_component_sources": ["native"], "default_renderer": {"renderer_kind": "native-html", "component_source": "native", "component_id": "native.paper-ink.semantic.icon-grid"}, "space_contract": {"canvas_width": 1920, "canvas_height": 1080, "width": 204, "height": 146, "aspect_ratio": 1.3973, "space_type": "compact"}, "recommended_component_ids": ["native.paper-ink.semantic.icon-grid"]},
+        {"slot_id": "capability-24", "purpose": "第24项能力", "required": true, "visual_role": "primary", "min_items": 1, "max_items": 1, "count_unit": "capability", "allowed_renderer_kinds": ["native-html"], "allowed_component_sources": ["native"], "default_renderer": {"renderer_kind": "native-html", "component_source": "native", "component_id": "native.paper-ink.semantic.icon-grid"}, "space_contract": {"canvas_width": 1920, "canvas_height": 1080, "width": 204, "height": 146, "aspect_ratio": 1.3973, "space_type": "compact"}, "recommended_component_ids": ["native.paper-ink.semantic.icon-grid"]},
+        {"slot_id": "capability-25", "purpose": "第25项能力", "required": true, "visual_role": "primary", "min_items": 1, "max_items": 1, "count_unit": "capability", "allowed_renderer_kinds": ["native-html"], "allowed_component_sources": ["native"], "default_renderer": {"renderer_kind": "native-html", "component_source": "native", "component_id": "native.paper-ink.semantic.icon-grid"}, "space_contract": {"canvas_width": 1920, "canvas_height": 1080, "width": 204, "height": 146, "aspect_ratio": 1.3973, "space_type": "compact"}, "recommended_component_ids": ["native.paper-ink.semantic.icon-grid"]},
+        {"slot_id": "capability-26", "purpose": "第26项能力", "required": true, "visual_role": "primary", "min_items": 1, "max_items": 1, "count_unit": "capability", "allowed_renderer_kinds": ["native-html"], "allowed_component_sources": ["native"], "default_renderer": {"renderer_kind": "native-html", "component_source": "native", "component_id": "native.paper-ink.semantic.icon-grid"}, "space_contract": {"canvas_width": 1920, "canvas_height": 1080, "width": 204, "height": 146, "aspect_ratio": 1.3973, "space_type": "compact"}, "recommended_component_ids": ["native.paper-ink.semantic.icon-grid"]},
+        {"slot_id": "capability-27", "purpose": "第27项能力", "required": true, "visual_role": "primary", "min_items": 1, "max_items": 1, "count_unit": "capability", "allowed_renderer_kinds": ["native-html"], "allowed_component_sources": ["native"], "default_renderer": {"renderer_kind": "native-html", "component_source": "native", "component_id": "native.paper-ink.semantic.icon-grid"}, "space_contract": {"canvas_width": 1920, "canvas_height": 1080, "width": 204, "height": 146, "aspect_ratio": 1.3973, "space_type": "compact"}, "recommended_component_ids": ["native.paper-ink.semantic.icon-grid"]},
+        {"slot_id": "capability-28", "purpose": "第28项能力", "required": true, "visual_role": "primary", "min_items": 1, "max_items": 1, "count_unit": "capability", "allowed_renderer_kinds": ["native-html"], "allowed_component_sources": ["native"], "default_renderer": {"renderer_kind": "native-html", "component_source": "native", "component_id": "native.paper-ink.semantic.icon-grid"}, "space_contract": {"canvas_width": 1920, "canvas_height": 1080, "width": 204, "height": 146, "aspect_ratio": 1.3973, "space_type": "compact"}, "recommended_component_ids": ["native.paper-ink.semantic.icon-grid"]},
+        {"slot_id": "takeaway", "purpose": "页面一句话结论", "required": false, "visual_role": "support", "min_items": 0, "max_items": 1, "count_unit": "binding", "allowed_renderer_kinds": ["typography"], "allowed_component_sources": ["native"], "default_renderer": {"renderer_kind": "typography", "component_source": "native", "component_id": "native.paper-ink.display.capability-grid-4x7.takeaway"}}
+      ],
+      "examples": {"general": "gallery/paper-ink/general/frames/layout-r7.html", "ai": "gallery/paper-ink/ai/frames/layout-r7.html"},
+      "selection_notes": "二十八项同级短内容都要独立承载，且信息量接近时使用。",
+      "anti_patterns": ["存在明显分组或层级时应改用分区结构", "内容不足二十八项时不要用空卡凑满"],
+      "shape": ["网格"],
+      "expression_profile": {
+        "contract_version": 1, "page_modes": ["content"], "question_affinities": ["what"],
+        "topology": {"weights": ["equal"], "depths": ["flat"], "flows": ["matrix"]},
+        "conclusion_modes": ["bottom-statement"], "primary_units": {"min": 28, "max": 28}, "primary_forms": ["card"], "enhancements": ["annotation"],
+        "logic_contract": {"primary": "display", "secondary": ["matrix"]}
+      }
     }
   ],
   "shape_vocabulary": [
@@ -11420,7 +11540,7 @@
   ],
   "page_expression_contract": {
     "contract_version": 1,
-    "profile_count": 73,
+    "profile_count": 75,
     "vocabulary": {
       "question_intents": [
         "why",

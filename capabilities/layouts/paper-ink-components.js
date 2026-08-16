@@ -4740,32 +4740,30 @@ FAIL-SAFE · AUDITED PER CALL
     frame: { width: 1050, height: 560, fit: 'fixed' },
     dataContract: { mode: 'record', unit: 'side', pointer: '/structured_data', minItems: 2, maxItems: 2 },
     /* classic relationship component → native.paper-ink.106.balance-scale */
-    snippet: `<div class="pi-card" data-bind-root="record" style="width:1050px!important;min-height:560px!important"><svg class="pi-art" viewBox="0 0 1050 560" xmlns="http://www.w3.org/2000/svg" aria-label="双侧权衡天平">
-  <defs>
-    <pattern id="pi-balance-hatch" width="8" height="8" patternUnits="userSpaceOnUse" patternTransform="rotate(35)"><line x1="0" y1="0" x2="0" y2="8" stroke="var(--pi-ink)" stroke-width=".6" opacity=".24"/></pattern>
-  </defs>
-  <text x="525" y="36" text-anchor="middle" font-family="var(--pi-mono)" font-size="10" letter-spacing="2.6" fill="var(--pi-ink-45)">TRADE-OFF · TWO-SIDED EVIDENCE</text>
-  <g stroke="var(--pi-ink-80)" fill="none">
-    <line x1="232" y1="242" x2="818" y2="242" stroke-width="1.2"/>
-    <circle cx="525" cy="242" r="8" fill="var(--pi-paper)" stroke-width="1"/>
-    <line x1="525" y1="250" x2="525" y2="416" stroke-width="1"/>
-    <path d="M 466 476 L 525 416 L 584 476 Z" fill="url(#pi-balance-hatch)" stroke-width="1"/>
-    <line x1="445" y1="476" x2="605" y2="476" stroke-width="1"/>
-    <line x1="282" y1="242" x2="282" y2="320" stroke-width=".9" opacity=".7"/>
-    <line x1="768" y1="242" x2="768" y2="320" stroke-width=".9" opacity=".7"/>
-    <path d="M 174 320 Q 282 374 390 320" stroke-width="1.2"/>
-    <path d="M 660 320 Q 768 374 876 320" stroke-width="1.2"/>
-  </g>
-  <g font-family="var(--pi-sans)" fill="var(--pi-ink)">
-    <text data-field="left_title" x="282" y="92" text-anchor="middle" font-size="23" font-weight="300">增长速度</text>
-    <text data-field="right_title" x="768" y="92" text-anchor="middle" font-size="23" font-weight="300">风险控制</text>
-    <text x="282" y="119" text-anchor="middle" font-family="var(--pi-mono)" font-size="9" letter-spacing="2" fill="var(--pi-ink-45)">OPTION A</text>
-    <text x="768" y="119" text-anchor="middle" font-family="var(--pi-mono)" font-size="9" letter-spacing="2" fill="var(--pi-ink-45)">OPTION B</text>
-    <text data-field="left_point_1" x="282" y="156" text-anchor="middle" font-size="13" font-weight="300">更快验证市场</text>
-    <text data-field="left_point_2" x="282" y="182" text-anchor="middle" font-size="13" font-weight="300">更早形成反馈</text>
-    <text data-field="right_point_1" x="768" y="156" text-anchor="middle" font-size="13" font-weight="300">降低返工概率</text>
-    <text data-field="right_point_2" x="768" y="182" text-anchor="middle" font-size="13" font-weight="300">保留审计证据</text>
-    <text data-field="decision" x="525" y="528" text-anchor="middle" font-size="15" font-weight="300">用可逆试点换取速度，不牺牲关键控制点</text>
+    snippet: `<div class="pi-card" data-bind-root="record" style="width:1050px!important;min-height:560px!important;background:transparent"><svg class="pi-art" viewBox="0 0 1050 560" xmlns="http://www.w3.org/2000/svg" aria-label="双侧权衡天平">
+  <g fill="var(--pi-ink)" font-family="var(--pi-sans)">
+    <line x1="525" y1="0" x2="525" y2="455" stroke="var(--pi-ink)" stroke-width="1.8"/>
+    <path d="M 415 485 H 635 L 587 451 H 463 Z" fill="var(--pi-paper)" stroke="var(--pi-ink)" stroke-width="1"/>
+    <circle cx="525" cy="32" r="28" fill="var(--pi-paper)" stroke="var(--pi-ink)" stroke-width="1.4"/>
+    <line x1="65" y1="95" x2="985" y2="15" stroke="var(--pi-ink)" stroke-width="2"/>
+
+    <line x1="130" y1="89" x2="130" y2="290" stroke="var(--pi-ink)" stroke-width="1"/>
+    <line x1="0" y1="290" x2="260" y2="290" stroke="var(--pi-ink)" stroke-width="1"/>
+    <path d="M 0 290 Q 130 460 260 290" fill="rgba(255,255,255,.25)" stroke="var(--pi-ink)" stroke-width="1"/>
+
+    <line x1="920" y1="21" x2="920" y2="222" stroke="var(--pi-ink)" stroke-width="1"/>
+    <line x1="790" y1="222" x2="1050" y2="222" stroke="var(--pi-ink)" stroke-width="1"/>
+    <path d="M 790 222 Q 920 392 1050 222" fill="var(--pi-paper)" stroke="var(--pi-ink)" stroke-width="1"/>
+
+    <text x="130" y="415" text-anchor="middle" font-family="var(--pi-mono)" font-size="14" letter-spacing="3" fill="var(--pi-ink-45)">SPEED</text>
+    <text data-field="left_title" x="130" y="460" text-anchor="middle" font-size="31" font-weight="300">增长速度</text>
+    <text x="130" y="504" text-anchor="middle" font-size="17" font-weight="300" fill="var(--pi-ink-60)"><tspan data-field="left_point_1">更快验证市场</tspan><tspan> · </tspan><tspan data-field="left_point_2">更早形成反馈</tspan></text>
+
+    <text x="920" y="347" text-anchor="middle" font-family="var(--pi-mono)" font-size="14" letter-spacing="3" fill="var(--pi-ink-45)">GOVERNANCE</text>
+    <text data-field="right_title" x="920" y="392" text-anchor="middle" font-size="31" font-weight="300">风险控制</text>
+    <text x="920" y="436" text-anchor="middle" font-size="17" font-weight="300" fill="var(--pi-ink-60)"><tspan data-field="right_point_1">降低返工概率</tspan><tspan> · </tspan><tspan data-field="right_point_2">保留审计证据</tspan></text>
+
+    <text data-field="decision" x="525" y="548" text-anchor="middle" font-size="22" font-weight="300">用可逆试点换取速度，不牺牲关键控制点</text>
   </g>
 </svg></div>`
   },
@@ -4785,27 +4783,34 @@ FAIL-SAFE · AUDITED PER CALL
     snippet: `<div class="pi-card" data-bind-root="collection" style="width:1050px!important;min-height:560px!important"><svg class="pi-art" viewBox="0 0 1050 560" xmlns="http://www.w3.org/2000/svg" aria-label="互锁齿轮关系图">
   <defs>
     <pattern id="pi-gear-dots" width="10" height="10" patternUnits="userSpaceOnUse"><circle cx="2" cy="2" r=".8" fill="var(--pi-ink)" opacity=".2"/></pattern>
-    <g id="pi-gear-large" fill="none" stroke="var(--pi-ink-80)">
-      <circle cx="0" cy="0" r="93" stroke-width="1.3"/><circle cx="0" cy="0" r="36" stroke-width="1"/>
-      <g stroke-width="8" stroke-linecap="square"><line x1="0" y1="-94" x2="0" y2="-111"/><line x1="0" y1="94" x2="0" y2="111"/><line x1="94" y1="0" x2="111" y2="0"/><line x1="-94" y1="0" x2="-111" y2="0"/><line x1="66" y1="-66" x2="79" y2="-79"/><line x1="-66" y1="66" x2="-79" y2="79"/><line x1="66" y1="66" x2="79" y2="79"/><line x1="-66" y1="-66" x2="-79" y2="-79"/></g>
-    </g>
-    <g id="pi-gear-small" fill="none" stroke="var(--pi-ink-80)">
-      <circle cx="0" cy="0" r="72" stroke-width="1.2"/><circle cx="0" cy="0" r="27" stroke-width=".9"/>
-      <g stroke-width="7" stroke-linecap="square"><line x1="0" y1="-73" x2="0" y2="-87"/><line x1="0" y1="73" x2="0" y2="87"/><line x1="73" y1="0" x2="87" y2="0"/><line x1="-73" y1="0" x2="-87" y2="0"/><line x1="52" y1="-52" x2="62" y2="-62"/><line x1="-52" y1="52" x2="-62" y2="62"/><line x1="52" y1="52" x2="62" y2="62"/><line x1="-52" y1="-52" x2="-62" y2="-62"/></g>
-    </g>
+    <path id="pi-gear-outline" d="M -21.7 -81.1 L -13.1 -83.0 L -10.5 -99.5 L 10.5 -99.5 L 13.1 -83.0 L 21.7 -81.1 L 30.1 -78.4 L 40.7 -91.4 L 58.8 -80.9 L 52.9 -65.3 L 59.4 -59.4 L 65.3 -52.9 L 80.9 -58.8 L 91.4 -40.7 L 78.4 -30.1 L 81.1 -21.7 L 83.0 -13.1 L 99.5 -10.5 L 99.5 10.5 L 83.0 13.1 L 81.1 21.7 L 78.4 30.1 L 91.4 40.7 L 80.9 58.8 L 65.3 52.9 L 59.4 59.4 L 52.9 65.3 L 58.8 80.9 L 40.7 91.4 L 30.1 78.4 L 21.7 81.1 L 13.1 83.0 L 10.5 99.5 L -10.5 99.5 L -13.1 83.0 L -21.7 81.1 L -30.1 78.4 L -40.7 91.4 L -58.8 80.9 L -52.9 65.3 L -59.4 59.4 L -65.3 52.9 L -80.9 58.8 L -91.4 40.7 L -78.4 30.1 L -81.1 21.7 L -83.0 13.1 L -99.5 10.5 L -99.5 -10.5 L -83.0 -13.1 L -81.1 -21.7 L -78.4 -30.1 L -91.4 -40.7 L -80.9 -58.8 L -65.3 -52.9 L -59.4 -59.4 L -52.9 -65.3 L -58.8 -80.9 L -40.7 -91.4 L -30.1 -78.4 Z"/>
   </defs>
   <text x="525" y="36" text-anchor="middle" font-family="var(--pi-mono)" font-size="10" letter-spacing="2.6" fill="var(--pi-ink-45)">COUPLED SYSTEM · MUTUAL DRIVE</text>
   <g data-repeat-unit="module">
-    <g transform="translate(385 255)"><use href="#pi-gear-large"/><circle cx="0" cy="0" r="86" fill="url(#pi-gear-dots)" stroke="none"/><text data-field="module_1" x="0" y="7" text-anchor="middle" font-family="var(--pi-sans)" font-size="20" font-weight="300" fill="var(--pi-ink)">内容</text></g>
-    <g transform="translate(610 245)"><use href="#pi-gear-small"/><text data-field="module_2" x="0" y="7" text-anchor="middle" font-family="var(--pi-sans)" font-size="18" font-weight="300" fill="var(--pi-ink)">模型</text></g>
-    <g transform="translate(545 423)"><use href="#pi-gear-small"/><text data-field="module_3" x="0" y="7" text-anchor="middle" font-family="var(--pi-sans)" font-size="18" font-weight="300" fill="var(--pi-ink)">评测</text></g>
+    <g transform="translate(330 285) scale(1.28)">
+      <use href="#pi-gear-outline" fill="url(#pi-gear-dots)" stroke="var(--pi-ink-80)" stroke-width="1.15" stroke-linejoin="round" vector-effect="non-scaling-stroke"/>
+      <circle r="57" fill="var(--pi-paper)" stroke="var(--pi-ink-80)" stroke-width=".85" vector-effect="non-scaling-stroke"/>
+      <text data-field="module_1" x="0" y="-4" text-anchor="middle" font-family="var(--pi-sans)" font-size="18" font-weight="300" fill="var(--pi-ink)">内容</text>
+      <text data-field="module_1_desc" x="0" y="22" text-anchor="middle" font-family="var(--pi-sans)" font-size="10" font-weight="300" fill="var(--pi-ink-60)">知识与任务</text>
+    </g>
+    <g transform="translate(543 205) rotate(15) scale(.98)">
+      <use href="#pi-gear-outline" fill="rgba(255,255,255,.24)" stroke="var(--pi-ink-80)" stroke-width="1.15" stroke-linejoin="round" vector-effect="non-scaling-stroke"/>
+      <circle r="57" fill="var(--pi-paper)" stroke="var(--pi-ink-80)" stroke-width=".85" vector-effect="non-scaling-stroke"/>
+      <g transform="rotate(-15)"><text data-field="module_2" x="0" y="-4" text-anchor="middle" font-family="var(--pi-sans)" font-size="18" font-weight="300" fill="var(--pi-ink)">模型</text><text data-field="module_2_desc" x="0" y="22" text-anchor="middle" font-family="var(--pi-sans)" font-size="10" font-weight="300" fill="var(--pi-ink-60)">推理与执行</text></g>
+    </g>
+    <g transform="translate(522 400) rotate(15) scale(1.02)">
+      <use href="#pi-gear-outline" fill="rgba(255,255,255,.14)" stroke="var(--pi-ink-80)" stroke-width="1.15" stroke-linejoin="round" vector-effect="non-scaling-stroke"/>
+      <circle r="57" fill="var(--pi-paper)" stroke="var(--pi-ink-80)" stroke-width=".85" vector-effect="non-scaling-stroke"/>
+      <g transform="rotate(-15)"><text data-field="module_3" x="0" y="-4" text-anchor="middle" font-family="var(--pi-sans)" font-size="18" font-weight="300" fill="var(--pi-ink)">评测</text><text data-field="module_3_desc" x="0" y="22" text-anchor="middle" font-family="var(--pi-sans)" font-size="10" font-weight="300" fill="var(--pi-ink-60)">反馈与校准</text></g>
+    </g>
   </g>
-  <g font-family="var(--pi-sans)" font-size="13" font-weight="300" fill="var(--pi-ink-60)">
-    <text x="120" y="228">输入质量决定上限</text><line x1="252" y1="224" x2="292" y2="224" stroke="var(--pi-ink)" stroke-width=".7" opacity=".35"/>
-    <text x="790" y="218">能力边界影响产出</text><line x1="748" y1="214" x2="776" y2="214" stroke="var(--pi-ink)" stroke-width=".7" opacity=".35"/>
-    <text x="710" y="448">反馈持续反推调整</text><line x1="640" y1="438" x2="696" y2="444" stroke="var(--pi-ink)" stroke-width=".7" opacity=".35"/>
+  <g transform="translate(690 280)">
+    <text x="115" y="-30" text-anchor="middle" font-family="var(--pi-mono)" font-size="9" letter-spacing="2" fill="var(--pi-ink-45)">SYSTEM OUTPUT</text>
+    <line x1="0" y1="0" x2="230" y2="0" stroke="var(--pi-ink-80)" stroke-width="1"/>
+    <path d="M 218 -8 L 230 0 L 218 8" fill="none" stroke="var(--pi-ink-80)" stroke-width="1"/>
+    <text data-field="system_result" x="115" y="49" text-anchor="middle" font-family="var(--pi-sans)" font-size="23" font-weight="300" fill="var(--pi-ink)">稳定交付</text>
   </g>
-  <text data-field="system_result" x="525" y="530" text-anchor="middle" font-family="var(--pi-sans)" font-size="15" font-weight="300" fill="var(--pi-ink)">系统结果来自模块之间的持续咬合，而不是单点最优</text>
+  <text x="525" y="530" text-anchor="middle" font-family="var(--pi-sans)" font-size="14" font-weight="300" fill="var(--pi-ink-60)">齿轮只表达彼此驱动：任一模块停转，系统能力都会失速</text>
 </svg></div>`
   }
   /* END promoted catalog components v120 */

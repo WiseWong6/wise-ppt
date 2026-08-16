@@ -106,9 +106,9 @@ def main() -> None:
         r"\[\s*'([A-Z]\d+)'\s*,\s*'([^']*)'\s*,\s*'([^']*)'\s*,\s*'([^']*)'\s*\]",
         relation_block,
     )
-    assert len(rows) == 65, f"关系版式应为 65，当前 {len(rows)}"
+    assert len(rows) == 67, f"关系版式应为 67，当前 {len(rows)}"
     by_code = {code: (name, structure, relation) for code, name, structure, relation in rows}
-    assert len(by_code) == 65, "关系版式编号有重复"
+    assert len(by_code) == 67, "关系版式编号有重复"
 
     corrected = {"A7", "F4", "A9", "E3", "E6", "I3", "H3", "H4", "E1", "E2", "K1", "C6"}
     wrong = sorted(code for code in corrected if by_code[code][1] != "单区")
@@ -123,6 +123,8 @@ def main() -> None:
         "R3": ("网格2×3", ["display"]),
         "R4": ("单区", ["comparison"]),
         "R5": ("单区", ["network"]),
+        "R6": ("上下4等分", ["hierarchy"]),
+        "R7": ("网格4×7", ["display"]),
     }
     for code, (structure, relations) in expected_new.items():
         assert by_code[code][1] == structure, f"{code} 结构不符"
@@ -132,10 +134,10 @@ def main() -> None:
     expected_counts = {
         "single": 40,
         "heq": 8,
-        "veq": 2,
+        "veq": 3,
         "hasym": 8,
         "vasym": 5,
-        "grid": 2,
+        "grid": 3,
     }
     assert dict(counts) == expected_counts, f"六结构计数不符: {dict(counts)}"
 
@@ -143,15 +145,15 @@ def main() -> None:
         path.stem.removeprefix("layout-").upper()
         for path in FRAMES.glob("layout-*.html")
     }
-    assert len(frame_codes) == 77, f"画册帧应为 77，当前 {len(frame_codes)}"
+    assert len(frame_codes) == 79, f"画册帧应为 79，当前 {len(frame_codes)}"
     assert set(by_code).issubset(frame_codes), "有关系版式缺 HTML 帧"
 
     layouts = json.loads(LAYOUTS.read_text(encoding="utf-8"))
     recipes = layouts["recipes"]
-    assert layouts["recipe_count"] == len(recipes) == 73, "recipe_count 不闭合"
-    assert layouts["page_expression_contract"]["profile_count"] == 73, "profile_count 不闭合"
+    assert layouts["recipe_count"] == len(recipes) == 75, "recipe_count 不闭合"
+    assert layouts["page_expression_contract"]["profile_count"] == 75, "profile_count 不闭合"
     recipes_by_code = {recipe["display_code"]: recipe for recipe in recipes}
-    assert len(recipes_by_code) == 73, "gallery-manifest display_code 有重复"
+    assert len(recipes_by_code) == 75, "gallery-manifest display_code 有重复"
     assert set(by_code).issubset(recipes_by_code), "有关系版式缺 gallery recipe"
     for code, (_, _, label) in by_code.items():
         recipe = recipes_by_code[code]
@@ -163,10 +165,37 @@ def main() -> None:
         missing = [slot for slot in required if f'data-slot-id="{slot}"' not in frame]
         assert not missing, f"{code} 帧缺必需槽位: {missing}"
 
-    r4_frame = (FRAMES / "layout-r4.html").read_text(encoding="utf-8")
-    assert "../../../../capabilities/layouts/paper-ink-components.js" in r4_frame, "R4 未加载组件唯一源码"
-    assert "item.num===106" in r4_frame and "host.innerHTML=entry.snippet" in r4_frame, (
-        "R4 必须直接物化 106 号组件，不得另画一套天平"
+    for code, expected_slot_count in (("R6", 4), ("R7", 28)):
+        frame = (FRAMES / f"layout-{code.lower()}.html").read_text(encoding="utf-8")
+        page_slots = re.findall(r'data-slot-id="([^"]+)"', frame)
+        required = recipes_by_code[code]["structure_contract"]["required_slot_ids"]
+        assert len(required) == expected_slot_count, f"{code} 配方必需槽位数不符"
+        assert len(page_slots) == expected_slot_count == len(set(page_slots)), (
+            f"{code} 必须逐槽独立绑定，当前页面槽位 {len(page_slots)} / 唯一 {len(set(page_slots))}"
+        )
+        assert set(page_slots) == set(required), f"{code} 页面槽位与配方不一致"
+
+    for code, number, label in (("R4", 106, "天平"), ("R5", 107, "齿轮")):
+        frame = (FRAMES / f"layout-{code.lower()}.html").read_text(encoding="utf-8")
+        assert "../../../../capabilities/layouts/paper-ink-components.js" in frame, (
+            f"{code} 未加载{label}组件源码"
+        )
+        assert f"item.num==={number}" in frame and "host.innerHTML=entry.snippet" in frame, (
+            f"{code} 必须直接物化 {number} 号组件，不得另画一套{label}"
+        )
+    assert "const full=FRAMES+'layout-'+it[0].toLowerCase()+'.html';" in catalog, (
+        "结构页示例必须直接复用关系页帧，不得维护第三套页面图形"
+    )
+    q3_frame = (FRAMES / "layout-q3.html").read_text(encoding="utf-8")
+    traced = re.search(
+        r'<g data-slot-id="traced".*?<rect x="210" y="([\d.]+)" width="1500" height="([\d.]+)"',
+        q3_frame,
+        re.S,
+    )
+    assert traced, "Q3 缺 traced 流程框几何"
+    traced_bottom = float(traced.group(1)) + float(traced.group(2))
+    assert traced_bottom <= 890, (
+        f"Q3 下层流程框侵入页底结论安全区: bottom={traced_bottom:g} > 890"
     )
 
     routing = json.loads(ROUTING.read_text(encoding="utf-8"))
@@ -206,10 +235,24 @@ def main() -> None:
     assert "./component-routing-data.js" in catalog, "Catalog 未加载组件路由投影"
     assert ROUTING_DATA.exists(), "缺 component-routing-data.js"
     assert "componentRelationLabels(c)" in catalog, "组件卡仍未使用生产关系标签"
+    for forbidden in (
+        "variant-empty-meta",
+        "taxonomy 无此空槽版式",
+        "taxonomy 空槽版式 ·",
+        "同槽合并 ·",
+        "A7 是 4×7",
+        "F4 是 2×3",
+    ):
+        assert forbidden not in catalog, f"结构空槽卡仍显示来源说明: {forbidden}"
+    for required_grid_example in ("Q4 是 2×2", "R3 是 2×3", "R7 是 4×7"):
+        assert required_grid_example in catalog, f"真实页面网格说明缺失: {required_grid_example}"
 
-    print("检查通过: 65 张关系版式 + 12 张非关系模板 = 77 帧。")
-    print("六结构计数: 单区40 / 左右等分8 / 上下等分2 / 左右不对称8 / 上下不对称5 / 网格2。")
-    print("23 细种均有版式与生产组件覆盖；Q1–Q4、R1–R5 槽位、配方、指纹和路由闭合。")
+    print("检查通过: 67 张关系版式 + 12 张非关系模板 = 79 帧。")
+    print("六结构计数: 单区40 / 左右等分8 / 上下等分3 / 左右不对称8 / 上下不对称5 / 网格3。")
+    print("23 细种均有版式与生产组件覆盖；Q1–Q4、R1–R7 槽位、配方、指纹和路由闭合。")
+    print("R6 四槽、R7 二十八槽均逐槽独立绑定；没有用组件内部重复单元冒充页面结构。")
+    print("R4/R5 关系页直接物化组件；结构页示例直接复用关系页帧，三入口无私有副本。")
+    print("Q3 下层流程框已收在 y<=890，页底结论保留独立安全区。")
     print("边界: 本仓库只登记 GLM Catalog 与 gallery recipe；内核 blueprint/composition preset 未手填。")
 
 
