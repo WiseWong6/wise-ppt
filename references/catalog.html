@@ -119,7 +119,8 @@
   #layer.on{display:block}
   .layer-bg{position:absolute;inset:0;background:var(--scrim)}
   .layer-box{position:absolute;inset:0;margin:auto;width:min(1180px,94vw);height:min(770px,94vh);background:var(--paper);border:1px solid var(--ink-45);box-shadow:var(--shadow-specimen);display:flex;flex-direction:column}
-  .layer-close{position:absolute;top:-17px;right:-17px;width:34px;height:34px;border:1px solid var(--ink-45);background:var(--paper);color:var(--ink);font-size:20px;line-height:1;cursor:pointer;z-index:2}
+  /* 中心点压弹窗右上角外框顶点:-18 = 半宽 17 + 1px 边框(定位基准是 padding box) */
+  .layer-close{position:absolute;top:-18px;right:-18px;width:34px;height:34px;border:1px solid var(--ink-45);background:var(--paper);color:var(--ink);font-size:20px;line-height:1;cursor:pointer;z-index:2}
   .layer-close:hover{background:var(--ink);color:var(--paper)}
   .layer-stage{position:relative;flex:1;min-height:0;overflow:hidden;background:var(--paper-deep)}
   .layer-thumb,.layer-live{position:absolute;inset:0;width:100%;height:100%}
@@ -1990,7 +1991,7 @@ function compCard(c){
   const code=componentCatalogCode(c);
   const no=String(c.catalogNo).padStart(3,'0');
   const sourceType=componentSourceType(c);
-  return `<div class="comp-card" id="cmp-${no}" data-modal="1" data-catalog-no="${no}" data-spec="${spec}" data-thumb="${thumb}"${c.vr?` data-vr='${JSON.stringify(c.vr)}'`:''} data-mtitle="${code} · ${c.en} ${c.nm}" data-mtag="${sourceType}${c.note?' · '+c.note:''}${c.vr?' · 变体×'+c.vr.length:''}">
+  return `<div class="comp-card" id="cmp-${no}" data-modal="1" data-catalog-no="${no}" data-spec="${spec}" data-thumb="${thumb}"${c.vr?` data-vr='${JSON.stringify(c.vr)}'`:''} data-mtitle="#${no} · ${c.en} ${c.nm}" data-mtag="${sourceType}${c.note?' · '+c.note:''}${c.vr?' · 变体×'+c.vr.length:''}">
     ${thumbMarkup(thumb,code+' '+c.en+' '+c.nm,'comp-wrap')}
     <div class="comp-info">
       <div class="card-head"><span class="id">#${no}</span><span class="nm">${c.nm}</span></div>
