@@ -9,27 +9,27 @@
 <style>
   svg.scene { position: absolute; inset: 0; z-index: 1; pointer-events: none; }
 
-  /* 左侧落版文字块 */
+  /* 左侧落版文字块:与右侧线稿小图同轴垂直居中(块中心 = 版心中心 540) */
   .kicker {
-    position: absolute; left: 300px; top: 225.5px;
+    position: absolute; left: 288px; top: 407.5px;
     font-family: var(--mono); font-size: var(--type-meta);
     letter-spacing: .3em; color: var(--ink-45);
     z-index: 2;
   }
   .title {
-    position: absolute; left: 294px; top: 267.5px;
+    position: absolute; left: 282px; top: 449.5px;
     font-family: var(--serif); font-weight: 400;
     font-size: var(--type-display); letter-spacing: .06em;
     color: var(--ink); z-index: 2;
   }
   .title-bar {
-    position: absolute; left: 302px; top: 423.5px;
+    position: absolute; left: 290px; top: 605.5px;
     width: 72px; height: 0;
     border-top: 2px solid var(--ink);
     z-index: 2;
   }
   .subtitle {
-    position: absolute; left: 300px; top: 459.5px;
+    position: absolute; left: 288px; top: 641.5px;
     font-family: var(--sans); font-weight: 400;
     font-size: var(--type-subheading); letter-spacing: .1em;
     color: var(--ink-70); z-index: 2;
@@ -37,16 +37,6 @@
   /* 主角判定：封面标题"AI 工程化"是全页焦点 → 标题整词 + 下划线 bar 一起染色，形成落版焦点；右侧线稿小图（图形）保持墨黑，不上彩 */
   :root.accent .title { color: var(--accent-red); }
   :root.accent .title-bar { border-top-color: var(--accent-red); }
-
-  /* 左下 mono 元数据块（与 kicker / title / subtitle 同列左对齐） */
-  .meta {
-    position: absolute; left: 300px; bottom: 120px;
-    font-family: var(--mono); font-size: var(--type-meta);
-    letter-spacing: .3em; line-height: 2.3;
-    color: var(--ink-45); text-align: left;
-    z-index: 2; white-space: pre;
-  }
-  .meta b { font-weight: 400; color: var(--ink-70); }
 </style>
 </head>
 <body class="slide">
@@ -62,11 +52,6 @@
   <div class="title">AI 工程化</div>
   <div class="title-bar"></div>
   <div class="subtitle">从模型到产品的工程鸿沟 · Agent 实战第一课</div>
-
-  <div class="meta"><b>SPEAKER</b> — @歪斯Wise
-<b>DATE</b> — 2026.08
-<b>VERSION</b> — V1.0
-<b>KEYWORDS</b> — AGENT / EVAL / HARNESS / INFRA</div>
 </div>
 
 <script src="../../../../runtime/stage-fit.js"></script>
@@ -87,12 +72,11 @@ function txt(x, y, str, attrs) {
   t.textContent = str; return t;
 }
 var MONO = 'var(--mono)';
-G = el('g', {transform:'translate(0 -44.5)'});
 
 
 /* ===== 右侧极细线稿小图：产品界面俯视（导航 / 侧栏 / 内容卡 / AI 入口） ===== */
 (function(){
-  var X = 1138, Y = 330, W = 330, H = 216, S = 1.5;  // S=缩放倍数；Y 与左侧 kicker 顶部对齐
+  var X = 1126, Y = 330, W = 330, H = 216, S = 1.5;  // S=缩放倍数；左右两栏作为一个组合在版心水平居中,并共用 y=540 中轴
 
   // 以 (X,Y) 为原点整体缩放，内部所有偏移同比放大，不变形
   var layer = el('g', {transform:'translate(' + X + ',' + Y + ') scale(' + S + ') translate(' + (-X) + ',' + (-Y) + ')'});

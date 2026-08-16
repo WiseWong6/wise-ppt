@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-runtime="wise-ppt-specimen" data-typography-mode="mixed" data-page-id="gallery-ai-d7" data-page-role="hook" data-theme="paper-ink" data-layout="paper-ink.scaffold.cover-center" data-layout-source="gallery">
+<head>
+<meta charset="UTF-8">
+<title>layout-d7 · 封面 · 上图下题 · AI 工程化</title>
+<!--
+  纸墨线稿样张 · D7 封面 · 上图下题
+  上半幅:模型核心 → 编排层 → 记忆/工具层 → 评测底座的爆炸式 Agent 工程栈;下半幅:kicker → 大字 → 落版 bar → 副题
+  版式纪律:插画与标题上下分区,不把装饰线穿过正文;不放讲者、日期、版本或关键词区块;无 FIG、无 caption
+-->
+<link rel="stylesheet" href="../../../../themes/paper-ink/assets/design-tokens.css">
+<link rel="stylesheet" href="../../../../themes/paper-ink/assets/slide-components.css">
+<link rel="stylesheet" href="../../../shell.css">
+<style>
+  svg.scene { position: absolute; inset: 0; z-index: 1; pointer-events: none; }
+
+  /* 下方中轴落版文字块(全部居中) */
+  .kicker {
+    position: absolute; left: 0; right: 0; top: 700px;
+    text-align: center;
+    font-family: var(--mono); font-size: var(--type-meta);
+    letter-spacing: .3em; text-indent: .3em; color: var(--ink-45);
+    z-index: 2;
+  }
+  .title {
+    position: absolute; left: 0; right: 0; top: 742px;
+    text-align: center;
+    font-family: var(--serif); font-weight: 400;
+    font-size: var(--type-display); letter-spacing: .06em; text-indent: .06em;
+    color: var(--ink); z-index: 2;
+  }
+  .title-bar {
+    position: absolute; left: 50%; top: 892px;
+    width: 72px; height: 0; margin-left: -36px;
+    border-top: 2px solid var(--ink);
+    z-index: 2;
+  }
+  .subtitle {
+    position: absolute; left: 0; right: 0; top: 926px;
+    text-align: center;
+    font-family: var(--sans); font-weight: 400;
+    font-size: var(--type-subheading); letter-spacing: .1em; text-indent: .1em;
+    color: var(--ink-70); z-index: 2;
+  }
+  /* 主角判定:封面标题"AI 工程化"是全页焦点 → 标题整词 + 落版 bar 一起染色;上方工程栈保持墨黑,不上彩 */
+  :root.accent .title { color: var(--accent-red); }
+  :root.accent .title-bar { border-top-color: var(--accent-red); }
+
+</style>
+</head>
+<body class="slide">
+<div class="stage" data-block-id="gallery-primary" data-renderer-kind="typography" data-component-source="native" data-component-id="native.paper-ink.scaffold.cover-center.center-lockup" data-content-ref="example.d7">
+  <div class="doc tl">AI ENGINEERING — D7<br>AI ENGINEERING</div>
+  <div class="folio">D7 / 63 — BY @歪斯WISE</div>
+
+  <svg class="scene" width="1920" height="1080" viewBox="0 0 1920 1080">
+    <g id="draw"></g>
+  </svg>
+
+  <div class="kicker">AGENT ENGINEERING — 2026 SUMMER</div>
+  <div class="title">AI 工程化</div>
+  <div class="title-bar"></div>
+  <div class="subtitle">从模型到产品的工程鸿沟 · Agent 实战第一课</div>
+</div>
+
+<script src="../../../../runtime/stage-fit.js"></script>
+<script src="../../../../themes/paper-ink/assets/particles.js"></script>
+<script>
+/* accent 触发:立即读 URL 加 .accent 类,让 :root.accent .title 染色不依赖 stageFit() 末尾时序 */
+if (location.search.indexOf('accent') >= 0) document.documentElement.classList.add('accent');
+var NS = 'http://www.w3.org/2000/svg';
+var INK = '#191917';
+var PAPER = '#DFE0D9';
+var MONO = 'var(--mono)';
+var G = document.getElementById('draw');
+function el(tag, attrs) {
+  var e = document.createElementNS(NS, tag);
+  for (var k in attrs) e.setAttribute(k, attrs[k]);
+  G.appendChild(e); return e;
+}
+function txt(x, y, value, attrs) {
+  var t = el('text', Object.assign({x:x, y:y}, attrs || {}));
+  t.textContent = value; return t;
+}
+
+/* ===== 爆炸式 Agent 工程栈:四层结构共同组成一个完整主体 ===== */
+(function(){
+  var CX = 960;
+  var labelStyle = {'font-family':MONO, 'font-size':12, 'letter-spacing':3.2, fill:INK, opacity:.48};
+
+  /* 中轴与层间连接器:明确这是同一台系统,不是四张散卡 */
+  el('line', {x1:CX, y1:112, x2:CX, y2:660, stroke:INK, 'stroke-width':.65,
+    opacity:.22, 'stroke-dasharray':'4 8'});
+  [286, 424, 558].forEach(function(y){
+    el('circle', {cx:CX, cy:y, r:7, fill:PAPER, stroke:INK, 'stroke-width':.9, opacity:.68});
+    el('circle', {cx:CX, cy:y, r:2.2, fill:INK, opacity:.72});
+  });
+
+  /* 01 模型核心:菱形主板 + 放射神经核 */
+  el('path', {d:'M 700 210 L 960 140 L 1220 210 L 960 280 Z', fill:'rgba(255,255,255,.08)',
+    stroke:INK, 'stroke-width':1.15, opacity:.68});
+  el('path', {d:'M 736 210 L 960 150 L 1184 210 L 960 270 Z', fill:'none',
+    stroke:INK, 'stroke-width':.55, opacity:.28, 'stroke-dasharray':'4 6'});
+  for (var i=0;i<8;i++) {
+    var a=i*Math.PI/4, x1=CX+50*Math.cos(a), y1=210+34*Math.sin(a), x2=CX+118*Math.cos(a), y2=210+60*Math.sin(a);
+    el('line', {x1:x1, y1:y1, x2:x2, y2:y2, stroke:INK, 'stroke-width':.8, opacity:.46});
+    el('circle', {cx:x2, cy:y2, r:i%2?4.5:6, fill:PAPER, stroke:INK, 'stroke-width':.8, opacity:.66});
+  }
+  el('ellipse', {cx:CX, cy:210, rx:58, ry:42, fill:PAPER, stroke:INK, 'stroke-width':1.2, opacity:.78});
+  el('ellipse', {cx:CX, cy:210, rx:34, ry:24, fill:'none', stroke:INK, 'stroke-width':.8, opacity:.52});
+  el('circle', {cx:CX, cy:210, r:7, fill:INK, opacity:.76});
+  [[772,192],[1082,192],[772,222],[1082,222]].forEach(function(p, n){
+    el('rect', {x:p[0], y:p[1], width:66, height:15, rx:3, fill:'none', stroke:INK,
+      'stroke-width':.65, opacity:n%2?.36:.5});
+    el('line', {x1:p[0]+8, y1:p[1]+7.5, x2:p[0]+50, y2:p[1]+7.5, stroke:INK, 'stroke-width':.55, opacity:.32});
+  });
+  el('line', {x1:1222, y1:210, x2:1360, y2:210, stroke:INK, 'stroke-width':.7, opacity:.32});
+  el('circle', {cx:1380, cy:210, r:4.5, fill:PAPER, stroke:INK, 'stroke-width':.7, opacity:.5});
+  txt(1400, 214, 'MODEL CORE / 01', labelStyle);
+
+  /* 02 编排层:带厚度的主板 + 可执行任务链 */
+  el('path', {d:'M 650 346 L 960 292 L 1270 346 L 960 400 Z', fill:'rgba(255,255,255,.1)',
+    stroke:INK, 'stroke-width':1.2, opacity:.72});
+  el('path', {d:'M 650 346 L 960 400 L 960 426 L 650 372 Z', fill:'none', stroke:INK, 'stroke-width':.8, opacity:.42});
+  el('path', {d:'M 960 400 L 1270 346 L 1270 372 L 960 426 Z', fill:'none', stroke:INK, 'stroke-width':.8, opacity:.42});
+  el('line', {x1:748, y1:346, x2:1172, y2:346, stroke:INK, 'stroke-width':1, opacity:.56});
+  [0,1,2,3,4].forEach(function(n){
+    var x=748+n*106;
+    el('circle', {cx:x, cy:346, r:n===2?16:11, fill:PAPER, stroke:INK, 'stroke-width':.9, opacity:.74});
+    el('circle', {cx:x, cy:346, r:n===2?5:3, fill:INK, opacity:.7});
+    if(n<4) el('path', {d:'M '+(x+18)+' 346 L '+(x+82)+' 346 M '+(x+74)+' 340 L '+(x+82)+' 346 L '+(x+74)+' 352',
+      fill:'none', stroke:INK, 'stroke-width':.75, opacity:.44});
+  });
+  el('line', {x1:648, y1:346, x2:508, y2:346, stroke:INK, 'stroke-width':.7, opacity:.32});
+  el('circle', {cx:488, cy:346, r:4.5, fill:PAPER, stroke:INK, 'stroke-width':.7, opacity:.5});
+  txt(300, 350, 'ORCHESTRATION / 02', labelStyle);
+
+  /* 03 记忆与工具层:三枚独立功能舱共享同一底板 */
+  el('path', {d:'M 620 474 L 960 416 L 1300 474 L 960 532 Z', fill:'rgba(255,255,255,.08)',
+    stroke:INK, 'stroke-width':1.2, opacity:.7});
+  el('path', {d:'M 620 474 L 960 532 L 960 558 L 620 500 Z', fill:'none', stroke:INK, 'stroke-width':.8, opacity:.4});
+  el('path', {d:'M 960 532 L 1300 474 L 1300 500 L 960 558 Z', fill:'none', stroke:INK, 'stroke-width':.8, opacity:.4});
+  [780,960,1140].forEach(function(x, n){
+    el('path', {d:'M '+(x-70)+' 474 L '+x+' 456 L '+(x+70)+' 474 L '+x+' 492 Z', fill:PAPER,
+      stroke:INK, 'stroke-width':.85, opacity:.68});
+    if(n===0){
+      [0,1,2].forEach(function(k){ el('path', {d:'M '+(x-28)+' '+(466+k*7)+' Q '+x+' '+(458+k*7)+' '+(x+28)+' '+(466+k*7), fill:'none', stroke:INK, 'stroke-width':.65, opacity:.45}); });
+    } else if(n===1){
+      el('circle', {cx:x, cy:474, r:12, fill:'none', stroke:INK, 'stroke-width':.75, opacity:.55});
+      el('circle', {cx:x, cy:474, r:3.5, fill:INK, opacity:.68});
+      [0,1,2,3].forEach(function(k){ var a=k*Math.PI/2; el('line', {x1:x+12*Math.cos(a), y1:474+8*Math.sin(a), x2:x+24*Math.cos(a), y2:474+15*Math.sin(a), stroke:INK, 'stroke-width':.7, opacity:.42}); });
+    } else {
+      [0,1,2,3].forEach(function(k){ el('line', {x1:x-28+k*18, y1:484, x2:x-28+k*18, y2:480-k*8, stroke:INK, 'stroke-width':3, opacity:.36+k*.08}); });
+    }
+  });
+  el('line', {x1:1302, y1:474, x2:1402, y2:474, stroke:INK, 'stroke-width':.7, opacity:.32});
+  el('circle', {cx:1422, cy:474, r:4.5, fill:PAPER, stroke:INK, 'stroke-width':.7, opacity:.5});
+  txt(1442, 478, 'MEMORY + TOOLS / 03', labelStyle);
+
+  /* 04 评测底座:最宽的一层承托整台系统,内置观测曲线 */
+  el('path', {d:'M 560 584 L 960 520 L 1360 584 L 960 650 Z', fill:'rgba(255,255,255,.12)',
+    stroke:INK, 'stroke-width':1.25, opacity:.74});
+  el('path', {d:'M 560 584 L 960 650 L 960 680 L 560 614 Z', fill:'none', stroke:INK, 'stroke-width':.9, opacity:.46});
+  el('path', {d:'M 960 650 L 1360 584 L 1360 614 L 960 680 Z', fill:'none', stroke:INK, 'stroke-width':.9, opacity:.46});
+  el('polyline', {points:'700,590 778,574 850,588 930,558 1004,570 1080,548 1160,566 1238,546', fill:'none',
+    stroke:INK, 'stroke-width':1.05, opacity:.58});
+  [[700,590],[778,574],[850,588],[930,558],[1004,570],[1080,548],[1160,566],[1238,546]].forEach(function(p){
+    el('circle', {cx:p[0], cy:p[1], r:3.2, fill:PAPER, stroke:INK, 'stroke-width':.7, opacity:.68});
+  });
+  el('line', {x1:558, y1:584, x2:458, y2:584, stroke:INK, 'stroke-width':.7, opacity:.32});
+  el('circle', {cx:438, cy:584, r:4.5, fill:PAPER, stroke:INK, 'stroke-width':.7, opacity:.5});
+  txt(276, 588, 'EVALUATION / 04', labelStyle);
+
+  /* 输入与输出端:把工程栈连接到真实工作流 */
+  [
+    {x:390,y:174,side:1}, {x:1390,y:266,side:-1}
+  ].forEach(function(c, n){
+    el('rect', {x:c.x, y:c.y, width:146, height:68, rx:10, fill:PAPER, stroke:INK, 'stroke-width':.85, opacity:.58});
+    el('circle', {cx:c.x+26, cy:c.y+34, r:8, fill:'none', stroke:INK, 'stroke-width':.75, opacity:.5});
+    el('circle', {cx:c.x+26, cy:c.y+34, r:2.2, fill:INK, opacity:.68});
+    el('line', {x1:c.x+48, y1:c.y+26, x2:c.x+120, y2:c.y+26, stroke:INK, 'stroke-width':.65, opacity:.36});
+    el('line', {x1:c.x+48, y1:c.y+42, x2:c.x+102, y2:c.y+42, stroke:INK, 'stroke-width':.65, opacity:.28});
+    el('path', {d:n===0 ? 'M 536 208 C 610 208 650 210 700 210' : 'M 1220 210 C 1322 210 1336 300 1390 300',
+      fill:'none', stroke:INK, 'stroke-width':.75, opacity:.34, 'stroke-dasharray':'4 5'});
+  });
+})();
+
+stageFit();
+</script>
+</body>
+</html>

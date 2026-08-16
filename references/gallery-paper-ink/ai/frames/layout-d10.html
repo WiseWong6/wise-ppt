@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-runtime="wise-ppt-specimen" data-typography-mode="mixed" data-page-id="gallery-ai-d10" data-page-role="hook" data-theme="paper-ink" data-layout="paper-ink.scaffold.cover-texture" data-layout-source="gallery">
+<head>
+<meta charset="UTF-8">
+<title>layout-d10 · 封面 · 居中纹理 · AI 工程化</title>
+<!--
+  纸墨线稿样张 · D10 封面 · 居中纹理
+  整页:连续雕刻波纹 + 纸纤维形成背景纹理场;中心:kicker → 大字 → 落版 bar → 副题
+  版式纪律:纹理覆盖整页但在文字周围柔和降噪,不使用卡片或独立插画;不放讲者、日期、版本或关键词区块;无 FIG、无 caption
+-->
+<link rel="stylesheet" href="../../../../themes/paper-ink/assets/design-tokens.css">
+<link rel="stylesheet" href="../../../../themes/paper-ink/assets/slide-components.css">
+<link rel="stylesheet" href="../../../shell.css">
+<style>
+  canvas.texture { position: absolute; inset: 0; z-index: 1; pointer-events: none; }
+  svg.overlay { position: absolute; inset: 0; z-index: 1; pointer-events: none; }
+  .title-wash {
+    position: absolute; left: 300px; top: 320px; width: 1320px; height: 460px; z-index: 1;
+    background: radial-gradient(ellipse at center,
+      rgba(223,224,217,.98) 0%, rgba(223,224,217,.92) 34%,
+      rgba(223,224,217,.68) 58%, rgba(223,224,217,0) 79%);
+    pointer-events: none;
+  }
+  .kicker {
+    position: absolute; left: 0; right: 0; top: 430px;
+    text-align: center; z-index: 2;
+    font-family: var(--mono); font-size: var(--type-meta);
+    letter-spacing: .34em; text-indent: .34em; color: var(--ink-45);
+  }
+  .title {
+    position: absolute; left: 0; right: 0; top: 486px;
+    text-align: center; z-index: 2;
+    font-family: var(--serif); font-weight: 400;
+    font-size: var(--type-display); letter-spacing: .065em; text-indent: .065em;
+    color: var(--ink);
+  }
+  .title-bar {
+    position: absolute; left: 50%; top: 642px; z-index: 2;
+    width: 72px; height: 0; margin-left: -36px;
+    border-top: 2px solid var(--ink);
+  }
+  .subtitle {
+    position: absolute; left: 0; right: 0; top: 678px;
+    text-align: center; z-index: 2;
+    font-family: var(--sans); font-weight: 400;
+    font-size: var(--type-subheading); letter-spacing: .1em; text-indent: .1em;
+    color: var(--ink-70);
+  }
+  :root.accent .title { color: var(--accent-red); }
+  :root.accent .title-bar { border-top-color: var(--accent-red); }
+</style>
+</head>
+<body class="slide">
+<div class="stage" data-block-id="gallery-primary" data-renderer-kind="canvas" data-component-source="native" data-component-id="native.paper-ink.scaffold.cover-texture.center-lockup" data-content-ref="example.d10">
+  <div class="doc tl">AI ENGINEERING — D10<br>ENGRAVED FIELD</div>
+  <div class="folio">D10 / 63 — BY @歪斯WISE</div>
+
+  <canvas class="texture" id="texture" width="1920" height="1080"></canvas>
+  <svg class="overlay" width="1920" height="1080" viewBox="0 0 1920 1080" aria-hidden="true">
+    <g fill="none" stroke="#191917">
+      <path d="M 120 182 L 120 112 L 190 112 M 1730 112 L 1800 112 L 1800 182 M 120 898 L 120 968 L 190 968 M 1730 968 L 1800 968 L 1800 898" stroke-width="0.8" opacity="0.26"/>
+      <path d="M 120 540 L 184 540 M 1736 540 L 1800 540" stroke-width="0.7" opacity="0.22" stroke-dasharray="3 6"/>
+      <circle cx="210" cy="540" r="4.5" fill="#DFE0D9" stroke-width="0.7" opacity="0.42"/>
+      <circle cx="1710" cy="540" r="4.5" fill="#DFE0D9" stroke-width="0.7" opacity="0.42"/>
+    </g>
+  </svg>
+  <div class="title-wash"></div>
+
+  <div class="kicker">AGENT ENGINEERING — 2026 SUMMER</div>
+  <div class="title">AI 工程化</div>
+  <div class="title-bar"></div>
+  <div class="subtitle">从模型到产品的工程鸿沟 · Agent 实战第一课</div>
+</div>
+
+<script src="../../../../runtime/stage-fit.js"></script>
+<script>
+if (location.search.indexOf('accent') >= 0) document.documentElement.classList.add('accent');
+
+/* ===== 连续雕刻纹理:确定性波纹 + 纸纤维,不依赖随机运行时 ===== */
+(function(){
+  var canvas = document.getElementById('texture');
+  var ctx = canvas.getContext('2d');
+  var INK = '25,25,23';
+
+  /* 固定种子,保证 Gallery 缩略图与真实打开完全一致 */
+  var seed = 0x5eed10;
+  function rand(){
+    seed = (Math.imul(seed, 1664525) + 1013904223) >>> 0;
+    return seed / 4294967296;
+  }
+
+  ctx.save();
+  ctx.beginPath();
+  ctx.rect(108, 96, 1704, 888);
+  ctx.clip();
+  ctx.lineCap = 'round';
+
+  /* 纸纤维:方向一致但长度、密度和明暗有层次 */
+  for (var i=0; i<2800; i++) {
+    var x = 112 + rand()*1696;
+    var y = 100 + rand()*880;
+    var len = 5 + rand()*28;
+    var lift = (rand()-.5)*2.2;
+    ctx.beginPath();
+    ctx.moveTo(x, y);
+    ctx.lineTo(x+len, y+lift);
+    ctx.strokeStyle = 'rgba('+INK+','+(0.022+rand()*0.04)+')';
+    ctx.lineWidth = .45 + rand()*.45;
+    ctx.stroke();
+  }
+
+  /* 主纹理:像铜版雕刻一样贯穿整页,主次线每五道形成节奏 */
+  for (var row=0; row<92; row++) {
+    var base = 118 + row*9.2;
+    ctx.beginPath();
+    for (var x2=112; x2<=1808; x2+=8) {
+      var centerPull = Math.exp(-Math.pow((x2-960)/520, 2));
+      var longWave = 17*Math.sin(x2*.0092 + row*.22);
+      var shortWave = 5.5*Math.sin(x2*.026 - row*.37);
+      var field = 23*centerPull*Math.sin(row*.31 + x2*.003);
+      var y2 = base + longWave + shortWave + field;
+      if (x2===112) ctx.moveTo(x2,y2); else ctx.lineTo(x2,y2);
+    }
+    var major = row%5===0;
+    ctx.strokeStyle = 'rgba('+INK+','+(major?.17:.075)+')';
+    ctx.lineWidth = major ? .9 : .52;
+    ctx.stroke();
+  }
+
+  /* 两侧斜向密纹:中心仍保持呼吸,边缘增加可见的材料感 */
+  ctx.strokeStyle = 'rgba('+INK+',.075)';
+  ctx.lineWidth = .55;
+  for (var h=0; h<34; h++) {
+    ctx.beginPath();
+    ctx.moveTo(112, 210+h*18);
+    ctx.lineTo(430, 110+h*18);
+    ctx.moveTo(1490, 110+h*18);
+    ctx.lineTo(1808, 210+h*18);
+    ctx.stroke();
+  }
+
+  ctx.restore();
+})();
+
+stageFit();
+</script>
+</body>
+</html>
