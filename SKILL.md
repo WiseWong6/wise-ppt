@@ -88,12 +88,16 @@ description: 表驱动的网页 PPT 编排 skill。输入 PDF/链接/口语稿/�
 2. 有无辅助内容(规格单/收束带/说明栏)→ 单区/等分升级为主+辅不对称
 3. 方向偏好:横向阅读流(步骤/时间)→左右;纵向(层级/堆叠)→上下
 
-**④ 表B 选组件**,过滤顺序固定:
+**④ 选组件(三段式,组件优先)**:
 
-1. **关系匹配**(表B 行)
-2. **形状**:组件 frame 宽高比 vs 区域(routing-manifest `space_requirements`;横条组件进不了窄栏)
-3. **容量**:条目数在 min~max 内;超容量换画法或拆页,不缩字硬塞
-4. **节奏**:主适配分不出高下时,优先近三页未用过的组件
+**第一段 · 优先选组件**——表B 圈候选后在 `routing-manifest.json` 核对(component_id / frame / capacity / renderer_kinds 全部就绪才算选中),过滤:①关系匹配 ②形状:组件 frame 宽高比 vs 区域(横条进不了窄栏) ③容量:条目数在 min~max 内,超了换画法或拆页 ④节奏:分不出高下时优先近三页未用的组件。**选中后在 deck-plan ④列登记 `component_id{参数}`**(如 `atlas.041.timeline.horizontal{N:6,hot:2}`)。
+
+**第二段 · 组件物化**(按 renderer_kinds,构建期静态展开,槽 div 带 `data-layout-slot` + `data-component-id` 指纹属性):
+- **atlas/native snippet 类**:复制资产进 deck `assets/components/`(atlas→`catalog-data.js`+`themes/paper-ink/adapters/atlas.js`;native→`capabilities/layouts/paper-ink-components.js`,依赖 design-tokens 的 --wp-compat-pi-* 映射),注入 snippet+componentCss;**按 snippet 的 DOM 结构替换文案,不改结构**;fixed frame 按 contain-fit 缩放进槽
+- **echarts 类**:复制 `echarts.min.js`+`adapters/echarts.js`,页面 JSON 数据块 + `WisePPT.createEChart`,option 走纸墨 adapter,不改数据
+- 多槽页(不对称/组合结构)一槽一组件;**禁止改写 content 语义迎合组件**,不合适就换组件
+
+**第三段 · 重绘兜底**——语义/形状/容量均无合适组件才手绘:deck-plan ④列标 `重绘:理由`,新画法完成后回填表B。手绘仍守渲染合同(typeSize/token/无标题制/居中实测)。
 
 陈列类组件 = **单元 × N**,排布由结构负责(指标单元×4 + 左右4等分),不存在"指标带组件"这种阵列级组件。
 
@@ -174,6 +178,9 @@ description: 表驱动的网页 PPT 编排 skill。输入 PDF/链接/口语稿/�
     deck-shell.css        ← 放映壳 chrome(源:runtime/)
     deck-runtime.js       ← 放映/键盘/打印(源:runtime/)
     fonts/                ← 四套字体文件
+    components/           ← 选中组件的资产(catalog-data/paper-ink-components/adapter)
+    registered-components.css ← 全部选中组件的 scoped CSS 汇总
+    vendors/echarts/      ← 仅当选中 echarts 组件时复制
 ```
 
 ### slide 结构样板(照 references/six-page-example)
