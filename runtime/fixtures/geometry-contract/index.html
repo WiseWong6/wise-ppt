@@ -27,6 +27,9 @@
 
 <section class="slide" data-page-id="fixture.edge" data-page-role="compare" data-page-title="共同边对齐" data-page-summary="共同边和边界关系同时成立" data-section-id="fixture" data-section-title="几何契约" data-emphasis-mode="none">
   <main class="stage">
+    <div class="doc tl"><span>GEOMETRY — 01</span><strong>共同边对齐</strong></div>
+    <div class="folio">01 / 04 — BY TEST</div>
+    <div class="caption">共同边让同级关系可见。</div>
     <div class="fixture-region" data-layout-slot="true" data-slot-id="edge-region" data-anchor-id="edge.region">
       <div class="fixture-slot edge-left" data-layout-slot="true" data-slot-id="edge-left" data-anchor-id="edge.left"><p data-content-ref="fixture.edge.left" data-anchor-id="edge.left.text">左侧同级内容</p></div>
       <div class="fixture-slot edge-right" data-layout-slot="true" data-slot-id="edge-right" data-anchor-id="edge.right"><p data-content-ref="fixture.edge.right">右侧同级内容</p></div>
@@ -53,6 +56,9 @@
 
 <section class="slide" data-page-id="fixture.path" data-page-role="sequence" data-page-title="路径锚定" data-page-summary="节点锚定路径且路径不穿字" data-section-id="fixture" data-section-title="几何契约" data-emphasis-mode="none">
   <main class="stage">
+    <div class="doc tl"><span>GEOMETRY — 02</span><strong>路径锚定</strong></div>
+    <div class="folio">02 / 04 — BY TEST</div>
+    <div class="caption">路径和节点共同声明推进秩序。</div>
     <div class="fixture-region" data-layout-slot="true" data-slot-id="path-region" data-anchor-id="path.region">
       <svg class="path-canvas" viewBox="0 0 1400 560" aria-label="路径锚定夹具">
         <path data-anchor-id="path.track" d="M 150 280 L 1250 280" fill="none" stroke="var(--ink-45)" stroke-width="1"/>
@@ -81,6 +87,9 @@
 
 <section class="slide" data-page-id="fixture.center" data-page-role="hook" data-page-title="中心型对齐" data-page-summary="唯一主角位于两侧锚点之间" data-section-id="fixture" data-section-title="几何契约" data-emphasis-mode="none">
   <main class="stage">
+    <div class="doc tl"><span>GEOMETRY — 03</span><strong>中心型对齐</strong></div>
+    <div class="folio">03 / 04 — BY TEST</div>
+    <div class="caption">只有中心型结构使用最终中心配平。</div>
     <div class="fixture-region" data-layout-slot="true" data-slot-id="center-region" data-anchor-id="center.region">
       <div class="fixture-slot center-left" data-layout-slot="true" data-slot-id="center-left" data-anchor-id="center.left"><p data-content-ref="fixture.center.left">左锚点</p></div>
       <div class="fixture-slot center-focus" data-layout-slot="true" data-slot-id="center-focus" data-anchor-id="center.focus"><p data-content-ref="fixture.center.focus">唯一主角</p></div>
@@ -105,6 +114,9 @@
 
 <section class="slide" data-page-id="fixture.overlap" data-page-role="explain" data-page-title="合法归属重叠" data-page-summary="有归属理由的重叠可以通过" data-section-id="fixture" data-section-title="几何契约" data-emphasis-mode="none">
   <main class="stage">
+    <div class="doc tl"><span>GEOMETRY — 04</span><strong>合法归属重叠</strong></div>
+    <div class="folio">04 / 04 — BY TEST</div>
+    <div class="caption">重叠必须声明归属和理由。</div>
     <div class="fixture-region" data-layout-slot="true" data-slot-id="overlap-region" data-anchor-id="overlap.region">
       <div class="fixture-slot overlap-base" data-layout-slot="true" data-slot-id="overlap-base" data-anchor-id="overlap.base"><p data-content-ref="fixture.overlap.base">证据主体</p></div>
       <div class="fixture-slot overlap-tag" data-layout-slot="true" data-slot-id="overlap-tag" data-anchor-id="overlap.tag"><p data-content-ref="fixture.overlap.tag">所属编号牌</p></div>
@@ -150,7 +162,7 @@
   else if (caseName === 'contain-overflow') slides[0].querySelector('[data-anchor-id="edge.left.text"]').style.cssText='position:absolute;left:-20px;top:24px;width:300px';
   else if (caseName === 'hard-boundary') slides[0].querySelector('.edge-left').style.left='-12px';
   else if (caseName === 'path-clear') slides[1].querySelector('.path-label').style.top='260px';
-  else if (caseName === 'relation-order') { const value=readContract(0); value.relations=[value.relations[3],value.relations[0],value.relations[1],value.relations[2]]; writeContract(0,value); }
+  else if (caseName === 'relation-order') { const value=readContract(0); value.relations=[value.relations[value.relations.length-1],...value.relations.slice(0,-1)]; writeContract(0,value); }
 }());
 </script>
 </body>
