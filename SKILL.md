@@ -1,6 +1,6 @@
 ---
 name: wise-ppt-glm
-description: 表驱动的网页 PPT 编排 skill。输入 PDF/链接/口语稿/成型 PPT，经 材料解析 → 页面规划(thesis/叙事/页数/主张句) → 页面分流 → 逐页四步(套版式优先,否则 关系→结构→组件，查两张映射表) → 渲染，产出 16:9 自包含 HTML deck 与 PDF。判定逻辑全部沉在表里，照表走路不发挥；默认主题 paper-ink(纸墨线稿)。
+description: 表驱动的网页 PPT 编排 skill。输入 PDF/链接/口语稿/成型 PPT，经 材料解析 → 页面规划(thesis/叙事/页数/主张句) → 页面分流 → 逐页四步(问句定关系→试套版式,套不上才 结构→组件，查两张映射表) → 渲染，产出 16:9 自包含 HTML deck 与 PDF。判定逻辑全部沉在表里，照表走路不发挥；默认主题 paper-ink(纸墨线稿)。
 ---
 
 # Wise PPT GLM · 表驱动网页 PPT 编排
@@ -23,12 +23,11 @@ description: 表驱动的网页 PPT 编排 skill。输入 PDF/链接/口语稿/�
 | `references/component-routing-data.js` | `routing-manifest.json` 的 file:// 安全投影；Catalog 组件关系标签由它生成 | 浏览时防止手写标签与生产路由漂移 |
 | `references/taxonomy-empty/` | 6 种结构 × 17 张空槽大图 | 切区域前对几何 |
 | `themes/paper-ink/examples/wise-ppt-story-six-page/` | 六页成品样例(含 `deck-plan.md` 格式范文) | 写 slide 的样板、deck-plan 格式照抄 |
+| `references/landing-playbook.md` | 组件落地操作单:帧→slide 拆解、物化链路映射、注入示例、几何岛样例、图标内联、deck 装配 | 落地/渲染期照抄执行 |
 | `runtime/` | 放映壳 + 浏览器检查 + PDF 导出 | 渲染与交付 |
 | `themes/paper-ink/` | 主题合同;数值唯一出处是本仓库 `themes/paper-ink/assets/design-tokens.css` | 所有颜色/字阶/字体 |
 
-> catalog 组件 tab 当前全部可选；原 14 张“仅浏览”卡已转正为 15 个稳定 production ID（时间轴拆为横/竖两个变体），按 `routing-manifest.json` 的 frame、容量和 data contract 使用。
-
-> 图标现状(灯牌):版式帧与组件内的图标一律是**内联手绘几何细线 SVG**,不按图标名引用。纸墨重绘成品(865 枚 approved,精选 536)与 Tabler 母库(5,130)已收进本仓库 `capabilities/vendors/tabler-outline/`;catalog 图标 tab 的数据由 `references/build_icon_catalog_data.py` 生成(`icon-catalog-data.js`),选图标看图去那里。deck 不走按名引用的 icon-registry 链路;`WisePPT.icons` 在本仓库 runtime 仅供放映壳自用,选组件/套版式时不要按名引用图标。
+> 图标(灯牌):deck 里一律**内联 SVG 本体**,不走运行时按名查找。优先取纸墨重绘成品——在 `references/icon-catalog-data.js` 按名/tags 查到图标名,再到 `capabilities/vendors/tabler-outline/redraw-v3/svg/<name>.svg` 取本体复制内联(步骤见《组件落地操作单》§6);没有贴合的才手绘几何细线。`WisePPT.icons` 仅供放映壳自用。
 
 ## 数据流
 
@@ -37,7 +36,7 @@ description: 表驱动的网页 PPT 编排 skill。输入 PDF/链接/口语稿/�
   → ① 材料解析 → 内容池(事实/数字/引语/素材,标来源)
   → ② 页面规划 → 页清单(thesis/叙事/页数/主张句)      [skill-design 第三章]
   → ③ 页面分流 → 非关系页套模板 | 关系页进四步          [skill-design 第四章]
-  → ④ 逐页四步 → 套版式(能套则套) → 定关系 → 表A圈结构 → 二次判断+对齐 → 表B选组件
+  → ④ 逐页四步 → 问句定关系 → 试套版式(能套则套) → 不合才 表A圈结构 → 二次判断+对齐 → 表B选组件
   → ⑤ 渲染 → slides → index.html                        [渲染合同]
   → ⑥ 浏览器 QA → PDF → 交付
 ```
@@ -85,17 +84,40 @@ description: 表驱动的网页 PPT 编排 skill。输入 PDF/链接/口语稿/�
 | Outro / 尾卡 | D3 / D2 | 收束语 / 品牌落版 |
 | 联络尾页 | D6 | 渠道 + 署名 |
 
+> 裁定(与表B 撞型时看页面职责):**当节奏停顿插进页序的**(金句/联络/收尾/隔页)走本表模板;**承载主张句、要与正文建立关系对齐的**走关系路 focus 细种。表B 的 quote/contact-card 只用于后者。
+
 ### 4 逐页四步
 
-**第 0 步 · 套版式(能套则套)**:先查 `references/catalog.html` 版式 tab 的数据层(67 张,`编号+名称+结构+关系标签`,关系标签就是①的 23 细种口径)。语义(关系标签)、槽位数量、方向三点都合 → 复制 `references/gallery-paper-ink/ai/frames/` 里对应整页帧作底稿,只替换文案/数据/图标,槽位几何不动,deck-plan ④列登记 `套版式:版式号`;槽位数差一(如指标 4→3)允许等分微调;再不合 → 走①~④组件链。套版式同样守渲染合同全部红线(无标题制、字档、几何契约、配平)。查槽位几何用 `capabilities/layouts/gallery-manifest.json`。
+**第 0 步 · 套版式(能套则套)**:先走①开头的六个判定问句,给本页定出主关系标签;拿标签查 `references/catalog.html` 版式 tab 的数据层(67 张,`编号+名称+结构+关系标签`,关系标签就是①的 23 细种口径)。语义(关系标签)、槽位数量、方向三点都合 → 复制 `references/gallery-paper-ink/ai/frames/` 里对应整页帧作底稿,按《组件落地操作单》§1 拆成 slide,只替换文案/数据/图标,槽位几何不动,deck-plan ④列登记 `套版式:版式号`;槽位数差一(如指标 4→3)允许等分微调,差二及以上不合,走①~④组件链。套版式同样守渲染合同全部红线(无标题制、字档、几何契约、配平)。查槽位几何用 `capabilities/layouts/gallery-manifest.json`。
 
-**① 定关系**:走 skill-design 第五章判断流程(六大族 23 种):**每页 1 个主关系 + 最多 2 个辅关系**——关系决定版式,数量只决定容量。数字是内容不是关系:排名归比较、指标/分布归并列、示意图归重心;趋势归时序(按时间对齐看变化),不单列。
+**① 定关系**:**每页 1 个主关系 + 最多 2 个辅关系**——关系决定版式,数量只决定容量。主关系按六个判定问句走,顺序即优先级,第一个命中即停:
 
-**② 表A 圈候选结构**(2~4 种),**③ 二次判断**选定:
+```
+只有 1 个对象?                    → 重心
+多个对象,之间:
+  没关系,只是放一起?               → 并列
+  有包含/从属?                     → 包含
+  有方向(先后/因果)?               → 有序
+  要对齐比较异同/对应?              → 比较
+  只是有关联(无方向、无包含)?        → 连接(兜底)
+```
+
+| 族 | 命中后的细种 |
+|---|---|
+| 重心 | 焦点、示意 |
+| 并列 | 陈列、并行、指标、分布 |
+| 包含 | 层级、拆解、部分整体、嵌套 |
+| 有序 | 时序、流动、循环、汇聚、漏斗、因果 |
+| 比较 | 对比、矩阵、映射、排名 |
+| 连接 | 网络、交叠、证据 |
+
+族是判断入口,细种是精确匹配。数字是内容不是关系:排名归比较、指标/分布归并列、示意图归重心;趋势归时序(按时间对齐看变化),不单列。辅关系两个用途:①两组件平票时,给带该辅关系 relation_key 的组件加票(如 swimlane-roadmap 辅时序);②给同页第二槽选组件。判断理由与边界案例见 skill-design 第五章。
+
+**② 按表A 圈候选结构**(有多少圈多少,多数行 1~3 种,如实记录),**③ 二次判断**选定:
 
 1. 对象数量:单个→单区;多个→等分/网格各放一个
 2. 有无辅助内容(规格单/收束带/说明栏)→ 单区/等分升级为主+辅不对称
-3. 方向偏好:横向阅读流(步骤/时间)→左右;纵向(层级/堆叠)→上下
+3. 方向偏好:横向阅读流(步骤/时间)→左右系;纵向(层级/堆叠)→上下系。等分还是不对称由第 2 问定:无辅助内容取等分,有则不对称
 
 ③ 选定结构后必须继续记录对齐,不新增第五步:
 
@@ -106,13 +128,14 @@ description: 表驱动的网页 PPT 编排 skill。输入 PDF/链接/口语稿/�
 
 `deck-plan.md` 按固定格式逐页记录(格式全文与范文见下文「deck-plan.md 固定格式」):关系页记`套版式:版式号`或`①关系;②候选结构;③选定结构+内容组+主次+阅读顺序+对齐依据;④每槽 component_id{参数}/重绘:理由`;非关系页记`模板+内容组+阅读入口+中心/边缘锚点`。
 
-**④ 选组件(三段式,组件优先)**:
+**④ 选组件(三段式,优先选组件,重绘只作兜底)**:
 
-**第一段 · 优先选组件**——表B 圈候选后在 `routing-manifest.json` 核对(component_id / relation_keys / frame / capacity / renderer_kinds 全部就绪才算选中;`relation_keys` 与表B 同为 23 细种口径,组件改过名就用 aliases 查),过滤:①关系匹配(relation_keys) ②形状:组件 frame 宽高比 vs 区域(横条进不了窄栏) ③容量:条目数在 min~max 内,超了换画法或拆页 ④节奏:分不出高下时优先近三页未用的组件。**选中后在 deck-plan ④列登记 `component_id{参数}`**(如 `atlas.041.timeline.horizontal{N:6,hot:2}`)。Catalog 只负责浏览；能否落位仍以 manifest 的空间、容量和 data contract 为准。
+**第一段 · 优先选组件**——表B 圈候选后在 `routing-manifest.json` 核对(component_id / relation_keys / frame / capacity / renderer_kinds 全部就绪才算选中;`relation_keys` 与表B 同为 23 细种口径,组件改过名就用 aliases 查),过滤:①关系匹配(relation_keys) ②形状:组件 frame 宽高比 vs 区域(横条进不了窄栏) ③容量:条目数在 min~max 内,超了走第三段四级阶梯(换组件→换结构/变体→删辅助→拆页) ④节奏:分不出高下时优先近三页未用的组件。**选中后在 deck-plan ④列登记 `component_id{参数}`**(如 `atlas.041.timeline.horizontal{N:6,hot:2}`)。Catalog 只负责浏览；能否落位仍以 manifest 的空间、容量和 data contract 为准。
 
-**第二段 · 组件物化**(按 renderer_kinds,构建期静态展开,槽 div 带 `data-layout-slot` + `data-component-id` 指纹属性):
-- **atlas/native snippet 类**:复制资产进 deck `assets/components/`(atlas→`catalog-data.js`+`themes/paper-ink/adapters/atlas.js`;native→`capabilities/layouts/paper-ink-components.js`,依赖 design-tokens 的 --wp-compat-pi-* 映射),注入 snippet+componentCss;**按 snippet 的 DOM 结构替换文案,不改结构**;fixed frame 按 contain-fit 缩放进槽
-- **echarts 类**:复制 `echarts.min.js`+`adapters/echarts.js`,页面 JSON 数据块 + `WisePPT.createEChart`,option 走纸墨 adapter,不改数据
+**第二段 · 组件物化**(构建期静态展开,槽 div 带 `data-layout-slot` + `data-component-id` 指纹属性;按 component_id 前缀选物化链路,可照抄的完整步骤与示例见《组件落地操作单》`references/landing-playbook.md`):
+- **atlas. 前缀(renderer_kinds=native-html)**:复制 `capabilities/vendors/ppt-component-atlas/catalog-data.js` + `themes/paper-ink/adapters/atlas.js` 进 deck `assets/components/`,注入 snippet+componentCss,**按 snippet 的 DOM 结构替换文案,不改结构**;fixed frame 按 contain-fit 缩放进槽
+- **native. 前缀(renderer_kinds=svg 或 native-html)**:复制 `capabilities/layouts/paper-ink-components.js`(依赖 design-tokens 的 --wp-compat-pi-* 映射),注入方式同上
+- **echarts. 前缀(renderer_kinds=svg/canvas)**:复制 `echarts.min.js`+`adapters/echarts.js`,页面 JSON 数据块 + `WisePPT.createEChart`,option 走纸墨 adapter,不改数据
 - 多槽页(不对称/组合结构)一槽一组件;**禁止改写 content 语义迎合组件**,不合适就换组件
 
 **第三段 · 重绘兜底**——语义/形状/容量均无合适组件才手绘:deck-plan ④列标 `重绘:理由`,新画法完成后回填表B。重绘不能绕过槽位不适配:容量或几何不合法时固定走`换组件 → 换结构/变体 → 删除非必要辅助内容并更新 deck-plan → 拆页`;禁止缩字、拉伸、裁切、越界、隐藏 must 内容或改写语义迎合组件。手绘仍守渲染合同(typeSize/token/无标题制/关系对齐实测)。
@@ -130,7 +153,7 @@ description: 表驱动的网页 PPT 编排 skill。输入 PDF/链接/口语稿/�
 
 ### p01 · 关系页 · <主张句>
 - ① 关系: <细种(辅细种)>
-- ② 候选结构: <2~4 种>
+- ② 候选结构: <表A 候选,如实记录>
 - ③ 选定: <结构>。内容组: …。主次: …。阅读顺序: …。对齐依据: …
 - ④ 每槽: component_id{参数} / 套版式:版式号 / 重绘:理由
 
@@ -142,63 +165,65 @@ description: 表驱动的网页 PPT 编排 skill。输入 PDF/链接/口语稿/�
 
 ---
 
-## 表A · 关系 → 结构候选(经 67 版式反向验证;版式号 G3 为历史退役位,不重编)
+## 表A · 关系 → 结构候选
 
-| 关系 | 候选结构 | 版式例 |
-|---|---|---|
-| 焦点 focus | 单区 | G2 |
-| 示意 illustration | 单区(插图/原型展示) | A2、A8 |
-| 陈列 display | 单区(云墙/格阵) / 左右x等分 / 网格mxn(独立槽) | A7、F4、A5、R1、Q4、R3、R7 |
-| 并行 parallel | 左右x等分 / 单区(泳道图) | I4、B3 |
-| 指标 metric | 单区(组件内 KPI 横带) / 左右x等分(独立指标槽) | C6 |
-| 分布 distribution | 左右不对称(地图+数据栏) | C4 |
-| 层级 hierarchy | 单区(树/分层栈/同心环) / 上下x等分(独立层带) / 左右不对称(树+规格) | H3、H4、R2、R6、F2 |
-| 拆解 decomposition | 单区(放射/组件内格阵) / 左右x等分 / 左右不对称 / 上下不对称(上总额下四环) | G1、F4、F3、F2、C5 |
-| 部分整体 part-whole | 单区(整体构成图) / 左右不对称(整体+分项证据) | Q2 |
-| 嵌套 nesting | 单区(同心环/嵌套框) | H1、H2 |
-| 时序 sequence | 单区(时间轴/阶梯/蜿蜒/组件内多屏) | B1、B5、B6、A9 |
-| 流动 flow | 单区(流水线/组件内双轨) / 上下x等分(两条独立流程) / 上下不对称(黑箱流+编号标注) | I1、I3、Q3、P1 |
-| 循环 cycle | 单区(圆环/蛇形);带辅助内容→左右不对称 | J1、J2 |
-| 汇聚 convergence | 单区(汇聚图) | N1 |
-| 漏斗 funnel | 单区(漏斗图) / 左右不对称(漏斗+两侧标注) | O1 |
-| 因果 causal | 单区(组件内因→策双带) / 左右x等分(痛→解→效) / 左右不对称(左痛右解) | E3、K2、K3 |
-| 对比 comparison | 单区(组件内双面板/双带/双轨/权衡天平) / 上下x等分(两条独立流程) / 上下不对称(矩阵+收束带) | E1、E2、E6、I3、R4、Q3、E4 |
-| 矩阵 matrix | 单区(整页矩阵/链阵) / 左右x等分(三栏行带) / 上下不对称(矩阵+收束带) | F1、K1、K4、E4 |
-| 映射 mapping | 单区(弧线网/四节点带边标签) / 左右x等分(双列映射) | L2、P2、E5 |
-| 交叠 overlap | 单区(韦恩集合) | Q1 |
-| 排名 ranking | 单区(排行柱图) | C7 |
-| 网络 network | 单区(节点连线/互锁驱动) | L1、R5 |
-| 证据 evidence | 单区(证据墙) / 左右不对称(策略/整体+证据) / 上下不对称(摘要+原文) / 网格mxn(独立证据槽) | A1、A6、A4、Q2、A3、Q4 |
+| 族 | 关系细种 | 候选结构 | 版式例 |
+|---|---|---|---|
+| 重心 | 焦点 focus | 单区 | G2 |
+| 重心 | 示意 illustration | 单区(插图/原型展示) | A2、A8 |
+| 并列 | 陈列 display | 单区(云墙/格阵) / 左右x等分 / 网格mxn(独立槽) | A7、F4、A5、R1、Q4、R3、R7 |
+| 并列 | 并行 parallel | 左右x等分 / 单区(泳道图) | I4、B3 |
+| 并列 | 指标 metric | 单区(组件内 KPI 横带) / 左右x等分(独立指标槽) | C6 |
+| 并列 | 分布 distribution | 左右不对称(地图+数据栏) | C4 |
+| 包含 | 层级 hierarchy | 单区(树/分层栈/同心环) / 上下x等分(独立层带) / 左右不对称(树+规格) | H3、H4、R2、R6、F2 |
+| 包含 | 拆解 decomposition | 单区(放射/组件内格阵) / 左右x等分 / 左右不对称 / 上下不对称(上总额下四环) | G1、F4、F3、F2、C5 |
+| 包含 | 部分整体 part-whole | 单区(整体构成图) / 左右不对称(整体+分项证据) | Q2 |
+| 包含 | 嵌套 nesting | 单区(同心环/嵌套框) | H1、H2 |
+| 有序 | 时序 sequence | 单区(时间轴/阶梯/蜿蜒/组件内多屏) | B1、B5、B6、A9 |
+| 有序 | 流动 flow | 单区(流水线/组件内双轨) / 上下x等分(两条独立流程) / 上下不对称(黑箱流+编号标注) | I1、I3、Q3、P1 |
+| 有序 | 循环 cycle | 单区(圆环/蛇形);带辅助内容→左右不对称 | J1、J2 |
+| 有序 | 汇聚 convergence | 单区(汇聚图) | N1 |
+| 有序 | 漏斗 funnel | 单区(漏斗图) / 左右不对称(漏斗+两侧标注) | O1 |
+| 有序 | 因果 causal | 单区(组件内因→策双带) / 左右x等分(痛→解→效) / 左右不对称(左痛右解) | E3、K2、K3 |
+| 比较 | 对比 comparison | 单区(组件内双面板/双带/双轨/权衡天平) / 上下x等分(两条独立流程) / 上下不对称(矩阵+收束带) | E1、E2、E6、I3、R4、Q3、E4 |
+| 比较 | 矩阵 matrix | 单区(整页矩阵/链阵) / 左右x等分(三栏行带) / 上下不对称(矩阵+收束带) | F1、K1、K4、E4 |
+| 比较 | 映射 mapping | 单区(弧线网/四节点带边标签) / 左右x等分(双列映射) | L2、P2、E5 |
+| 比较 | 排名 ranking | 单区(排行柱图) | C7 |
+| 连接 | 网络 network | 单区(节点连线/互锁驱动) | L1、R5 |
+| 连接 | 交叠 overlap | 单区(韦恩集合) | Q1 |
+| 连接 | 证据 evidence | 单区(证据墙) / 左右不对称(策略/整体+证据) / 上下不对称(摘要+原文) / 网格mxn(独立证据槽) | A1、A6、A4、Q2、A3、Q4 |
 
-> 结构只认 6 种矩形分块(单区/左右x等分/上下x等分/左右不对称/上下不对称/网格mxn)。矩阵表格、放射、环形、漏斗都是**组件画法**,不是结构。版心 = 页面减固定件(眉题/页码/题注),固定件一律不算切分。
+> 结构只认 6 种矩形分块(单区/左右x等分/上下x等分/左右不对称/上下不对称/网格mxn)。矩阵表格、放射、环形、漏斗都是**组件画法**,不是结构。版心 = 页面减固定件(眉题/页码/题注),固定件一律不算切分。版式号 G3 为历史退役位,不重编。
 
 ## 表B · 关系 → 组件候选(按六大族细种;frame=组件画布,容量=条目数)
 
-| 关系细种 | 组件候选(frame · 容量) | 常走结构块 |
-|---|---|---|
-| 指标 metric | 指标单元×N(横带 2-6)、metric-strip(1050×140 · 2-4)、radial-progress(950×440 · 1-4)、metric-band | 左右x等分逐格 / 单横带 |
-| 陈列 display | list-card(850×490 · 2-6)、icon-grid(810×520 · 4-12)、logo-cloud(910×460 · 4-28)、infra-strip(1050×260 · 3-6) | 等分/网格逐格 / 单横带 |
-| 并行 parallel | swimlane-roadmap(980×430 · 6-24,辅时序/流动) | 单区(泳道横贯) |
-| 排名 ranking | ranking-bars(972×547 · 3-8)、柱状/动态排序柱(ECharts) | 单区 |
-| 分布 distribution | district-map(890×470 · 1-12)、散点、日历热力 | 单区 |
-| 时序 sequence | timeline 横轴/竖轴(1044×587 / 540×600 · 3-6)、journey-curve(1049×590 · 4-6)、scenario-column(540×690 · 单场景)、step-rise(960×440 · 3-6)、timeline-gallery(960×440 · 3-5)、折线 平滑/堆叠(ECharts,趋势归此) | 单区/横带/窄栏 |
-| 流动 flow | process 横链(1500×160~260 · 3-6)、gantt-ink(970×430 · 3-8)、桑基 | 横带/单区 |
-| 循环 cycle | process-loop 四变体(650×650 · 三角3/四边4/五边5/闭环4)、cycle-ring(978×550 · 3-6)、serpentine-loop(1017×572 · 5-8) | 单区 |
-| 汇聚 convergence | merge-confluence(910×460 · 3合1) | 单区 |
-| 漏斗 funnel | funnel(840×500 · 3-6) | 单区 |
-| 因果 causal | fishbone(820×510 · 4-8)、why-how-bands(920×460 · 2-6) | 单区 |
-| 层级 hierarchy | trace-tree(830×510 · 3-12)、architecture(1010×410 · 2-5)、arch-table-band(800×520 · 2-4) | 单区 |
-| 拆解 decomposition | three-way-radial(1443×812 · 固定3)、radial-hub(760×550 · 3-8)、concentric(650×650 · 3-5)、pyramid(790×530 · 3-6)、iceberg(790×530 · 2) | 单区 |
-| 部分整体 part-whole | 饼/环形(ECharts)、pyramid(770~790×530 · 3-6)、concentric | 单区 |
-| 嵌套 nesting | concentric-ring(1249×702 · 3-5)、nested-frames(1476×830 · 3-5)、concentric、arch-platform(830×510) | 单区 |
-| 对比 comparison | vs(1350×310 · 2)、before-after 验证款 atlas.019(780×540 · 2-4)、before-after-bands(930×450 · 2-6)、watershed-axis(850×490 · 3-6)、balance-scale(1050×560 · 2 侧) | 左右等分/横带/单区 |
-| 矩阵 matrix | matrix(980×430 · 2-6)、comparison-table(1090×380 · 2-6)、swot(720×580 · 4)、quadrant-axis(700×600 · 4)、evidence-wall(910×460 · 2-12) | 单区/行带 |
-| 映射 mapping | mapping-arc-network(1100×619 · 4-12)、diamond-edge-labels(1100×619 · 固定4)、weighted-arcs(semantic · 3-8)、constellation-network(semantic · 3-12)、why-how-bands | 单区 |
-| 交叠 overlap | venn 双圆/三圆 atlas.052/.053(780×540 / 670×630 · 2/3 集合) | 单区 |
-| 网络 network | weighted-arc-web(1781×1002 · 4-8)、constellation-network、weighted-arcs、interlocking-gears(1050×560 · 2-4) | 单区 |
-| 证据 evidence | evidence-wall(2-12)、doc-excerpt(720×580 · 1-3)、official-doc(700×600 · 1-2)、chat-dialog(780×540 · 2-8)、mobile-gallery(2-4)、admin-console(界面 · 1-2) | 单区/不对称 |
-| 焦点 focus | quote(1010×420 · 1)、annotation-callout(840×600 · 1-4)、terminal-box/code、form-card(610×690 · 2-6)、contact-card(580×720 · 2-6) | 单区/窄栏 |
-| 示意 illustration | generated-image、admin-console(界面 mock)、mobile-gallery | 单区 |
+| 关系细种 | 组件候选(frame · 容量) |
+|---|---|
+| 指标 metric | 指标单元×N(横带 2-6)、metric-strip(1050×140 · 2-4)、radial-progress(950×440 · 1-4)、metric-band |
+| 陈列 display | list-card(850×490 · 2-6)、icon-grid(810×520 · 4-12)、logo-cloud(910×460 · 4-28)、infra-strip(1050×260 · 3-6) |
+| 并行 parallel | swimlane-roadmap(980×430 · 6-24,辅时序/流动) |
+| 排名 ranking | ranking-bars(972×547 · 3-8)、柱状/动态排序柱(ECharts) |
+| 分布 distribution | district-map(890×470 · 1-12)、散点、日历热力 |
+| 时序 sequence | timeline 横轴/竖轴(1044×587 / 540×600 · 3-6)、journey-curve(1049×590 · 4-6)、scenario-column(540×690 · 单场景)、step-rise(960×440 · 3-6)、timeline-gallery(960×440 · 3-5)、折线 平滑/堆叠(ECharts,趋势归此) |
+| 流动 flow | process 横链(1500×160~260 · 3-6)、gantt-ink(970×430 · 3-8)、桑基 |
+| 循环 cycle | process-loop 四变体(三角 660×630·3 / 四边 650×650·4 / 五边 660×640·5 / 闭环 650×650·4)、cycle-ring(978×550 · 3-6)、serpentine-loop(1017×572 · 5-8) |
+| 汇聚 convergence | merge-confluence(910×460 · 3合1) |
+| 漏斗 funnel | funnel(840×500 · 3-6) |
+| 因果 causal | fishbone(820×510 · 4-8)、why-how-bands(920×460 · 2-6) |
+| 层级 hierarchy | trace-tree(830×510 · 3-12)、architecture(1010×410 · 2-5)、arch-table-band(800×520 · 2-4) |
+| 拆解 decomposition | three-way-radial(1443×812 · 固定3)、radial-hub(760×550 · 3-8)、concentric(650×650 · 3-5)、pyramid(790×530 · 3-6)、iceberg(790×530 · 2) |
+| 部分整体 part-whole | 饼/环形(ECharts)、pyramid(770~790×530 · 3-6)、concentric |
+| 嵌套 nesting | concentric-ring(1249×702 · 3-5)、nested-frames(1476×830 · 3-5)、concentric、arch-platform(830×510) |
+| 对比 comparison | vs(1350×310 · 2)、before-after 验证款 atlas.019(780×540 · 2-4)、before-after-bands(930×450 · 2-6)、watershed-axis(850×490 · 3-6)、balance-scale(1050×560 · 2 侧) |
+| 矩阵 matrix | matrix(980×430 · 2-6)、comparison-table(1090×380 · 2-6)、swot(720×580 · 4)、quadrant-axis(700×600 · 4)、evidence-wall(910×460 · 2-12) |
+| 映射 mapping | mapping-arc-network(1100×619 · 4-12)、diamond-edge-labels(1100×619 · 固定4)、weighted-arcs(semantic · 3-8)、constellation-network(semantic · 3-12)、why-how-bands |
+| 交叠 overlap | venn 双圆/三圆 atlas.052/.053(780×540 / 670×630 · 2/3 集合) |
+| 网络 network | weighted-arc-web(1781×1002 · 4-8)、constellation-network、weighted-arcs、interlocking-gears(1050×560 · 2-4) |
+| 证据 evidence | evidence-wall(2-12)、doc-excerpt(720×580 · 1-3)、official-doc(700×600 · 1-2)、chat-dialog(780×540 · 2-8)、mobile-gallery(2-4)、admin-console(界面 · 1-2) |
+| 焦点 focus | quote(1010×420 · 1)、annotation-callout(840×600 · 1-4)、terminal-box/code、form-card(610×690 · 2-6)、contact-card(580×720 · 2-6) |
+| 示意 illustration | generated-image、admin-console(界面 mock)、mobile-gallery |
+
+> 结构候选只查表A,本表不给结构意见;组件进得了哪个区域,用 frame 宽高比判(横条进不了窄栏)。
 
 > ECharts 组件需随 deck 复制 `capabilities/vendors/echarts/echarts.min.js` 并走纸墨 option(线 1.2px、墨阶色、无渐变阴影)。表B 查不到的看 `routing-manifest.json` 全量(按 `relation_keys` 过滤,23 细种每个都有覆盖;改过名的组件用 aliases,如 swimlane→swimlane-roadmap);仍无解才手绘新画法,并回填本表。
 > 画法不同才是不同组件:箭头链/蛇形回环/时间轴刻度/甘特条带是 4 个组件,哪怕都表达 flow。
@@ -224,6 +249,8 @@ description: 表驱动的网页 PPT 编排 skill。输入 PDF/链接/口语稿/�
     vendors/echarts/      ← 仅当选中 echarts 组件时复制
 ```
 
+> 装配填法(app-template 占位符、fonts 来源、ensure_fonts.py)、帧→slide 拆解、几何岛可抄样例、图标内联,统一见《组件落地操作单》`references/landing-playbook.md`。
+
 ### slide 结构样板(照 themes/paper-ink/examples/wise-ppt-story-six-page)
 
 ```html
@@ -239,7 +266,7 @@ description: 表驱动的网页 PPT 编排 skill。输入 PDF/链接/口语稿/�
 </section>
 ```
 
-### 组件槽标准样板(v90,照抄结构,不现场发挥)
+### 组件槽标准样板(照抄结构,不现场发挥)
 
 ```html
 <div data-layout-slot="true" data-component-id="atlas.041.timeline.horizontal"
@@ -263,7 +290,7 @@ description: 表驱动的网页 PPT 编排 skill。输入 PDF/链接/口语稿/�
 - 颜色只用 design-tokens 变量(--paper/--ink 阶/--accent 默认关);一 deck 一主题。
 - 页面家具(眉题/页码/题注)不算切分;内容避开家具带,切分对齐空槽几何(`references/taxonomy-empty/`)。
 - **页面无标题制**(skill-design 9.4):关系页不设页面大标题,主张句由底部题注承载;顶部只有左上角眉题;禁 FIG 式图号标签及其下划线、禁右下角自创角标;大字宣言/金句/焦点宣言页与非关系页(含尾页)**零题注**,"每页正文可选择"合同由 HTML 正文节点(素材行/出处行,带 data-content-ref)满足。
-- **关系对齐与最终配平**:对齐顺序固定为`包含→不压线→不重叠→不穿越→关系锚定→阅读顺序→间距`;时间轴/流程/架构/UI/证据墙按自身主轴、边界或连接点对齐,不强行整体居中。关系锚点存在时用精确坐标,无关系目标的整体位移才走 4px 网格。只有中心型页面或没有顶/底/侧边/连接锚点的单一内容组允许最终整组配平:垂直可用区上缘=眉题底,下缘=有底句页取底句顶、无底句页取页码顶,度量文字主体并集;水平量结构框,两方向浏览器实测 |Δ|≤3px。关系页结构非必要不重复(必须重复时间隔≥3页、组件族不同,相邻页禁同结构);print 是独立布局 pass,导出后须对 PDF 再验;文案与插图不重叠,封面亦然。
+- **关系对齐与最终配平**:对齐顺序固定为`包含→不压线→不重叠→不穿越→关系锚定→阅读顺序→间距`;时间轴/流程/架构/UI/证据墙按自身主轴、边界或连接点对齐,不强行整体居中。关系锚点存在时用精确坐标,无关系目标的整体位移才走 4px 网格。只有中心型页面或没有顶/底/侧边/连接锚点的单一内容组允许最终整组配平:垂直可用区上缘=眉题底,下缘=有底句页取底句顶、无底句页取页码顶,度量文字主体并集;水平量结构框,两方向浏览器实测 |Δ|≤3px。print 是独立布局 pass,导出后须对 PDF 再验;文案与插图不重叠,封面亦然。
 - **几何契约必须闭合**:新版 deck 根节点声明 `data-geometry-contract-version="1"`;每页必须且只能有一个 `wise-ppt-geometry@1` JSON island。每个 `data-slot-id` 同时带唯一 `data-anchor-id`,页面 anchor 全部进入契约;每页至少一条边界/冲突关系和一条关系对齐,并按此前后顺序声明。`primitive` 只追踪第六章结构或非关系模板,不是新的判断层。旧 deck 自带的旧 runtime 不追溯改造;但只要用本版 Skill 修订任一页,就必须整副升级根标记与逐页契约,禁止新旧页混用。
 - **组件预览遗产打穿**(skill-design 第八章第二段):组件 CSS 按 600px 方卡预览写的,注入后必须槽级覆写——①方卡外壳(`width:600px/min-height:600px`→`width:100% !important; min-height:0 !important; height:auto !important; aspect-ratio:auto !important`,遗产须 important 碾压)②`__content` padding→0③自带字档→全局字阶 token(`var(--type-*)`);**覆写选择器特度必须压过组件原规则**(复述原类链语境再追加槽属性,否则如金句 26px 假生效);④槽用**显式几何**(absolute 定位+内容自然流),不依赖 flex 居中/overflow;⑤print 分页残差逐槽 print-only 补偿;验收量 computed font-size,视觉转述不算数。
 - **同类页同字档**:金句页全 deck 同档(7~10 字→hero)、宣言页同 display 档;跨档须在 deck-plan 记理由;跨页 computed font-size 实测相等。
@@ -284,4 +311,4 @@ bash runtime/audit-deck.sh <deck>        # ③ 几何/字号/可见性审计(scr
 
 完成标准:① deck 在仓库外且相对路径自包含;② 每页四步判定在 deck-plan.md 可追溯;③ Ghost Deck 自检通过;④ 节奏自检通过;⑤ **三件套全绿**:check 零 error、audit 的 screen 主体居中(≤3px)/同类页字档一致/PDF 无隐形内容与灾难偏移(≤35px)、PDF 页数 = slide 数;⑥ 交付说明只报 `index.html` 与 PDF 两个路径 + 验证结果 + 人工验收步骤。
 
-**验收纪律(v90)**:PDF 是最终裁判——用户看的是 PDF,一切几何验收以导出 PDF 为准,screen 全绿只算半程;**视觉模型转述只能当异常线索,不能作为通过依据**(两轮"确认大字/无裁切"均为假);audit 的度量口径已固化进工具,不要现场另造审计脚本——口径漂移的审计比不审计更危险。
+**验收纪律**:PDF 是最终裁判——用户看的是 PDF,一切几何验收以导出 PDF 为准,screen 全绿只算半程;**视觉模型转述只能当异常线索,不能作为通过依据**(两轮"确认大字/无裁切"均为假);audit 的度量口径已固化进工具,不要现场另造审计脚本——口径漂移的审计比不审计更危险。

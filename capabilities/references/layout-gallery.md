@@ -1,25 +1,16 @@
-# 画册空槽蓝图与来源证据
+# 画册版式配方与来源证据
 
-生产版式权威是 `capabilities/layouts/layout-blueprint-registry.json`，格式为 `wise-ppt-layout-blueprint-registry@1`。它由 `scripts/generate_layout_blueprints.py` 从 62 个 Gallery recipe、General/AI implementation 和 composition presets 确定性生成；生产运行时只读取生成后的 registry 与内嵌空槽片段，不解析 Gallery HTML。
+版式机器数据权威是 `capabilities/layouts/gallery-manifest.json`:75 份可查询版式配方(67 个关系版式 + D1–D6/M1/M2 模板;D7–D10 为画册封面/目录模板,不进关系配方)。每份配方含槽位几何(space_contract:1920×1080 画布上的宽高/长宽比/空间类型)、条目容量、允许渲染源与推荐组件(`recommended_component_ids` 全部指向 `capabilities/components/routing-manifest.json`)。
 
-每个 recipe 生成 `general` 与 `ai` 两个蓝图，共 124 个：57 个内容 recipe 生成 114 个可生产蓝图；D1–D5 共 5 个 scaffold recipe 生成 10 个 blocked 蓝图，由现有页面壳 scaffold 负责，不得伪装成内容组件。
+视觉来源与几何底稿:
 
-蓝图保留画册的槽位边界、比例、阅读顺序、装饰结构与视觉形态，删除组件、样例文字、业务内容和 page shell 家具。标题、页眉、页码与页面结论继续由 page shell 负责。每个蓝图记录 recipe/variant/source path/SHA256、派生来源和构建指纹；`topology_audit_id` 只用于几何审计，不决定生产版式。
+- `references/gallery-paper-ink/ai/frames/` 79 张整页版式帧(67 关系版式 + 12 模板),完整 1920×1080 可执行 HTML,套版式时的复制底稿;帧是图册标本,拆成 slide 的步骤见 `references/landing-playbook.md` §1。
+- `references/taxonomy-empty/` 6 种结构 × 17 张空槽大图;`references/taxonomy-empty/manifest.json` 保存 topology 与同槽合并映射。
 
-同一 deck 只使用一个 variant，默认 `general`；只有用户明确要求才使用 `ai`。F4 等蓝图必须保留画册真实槽位，例如 `1320×680`，禁止再由通用 leaf 拉伸。
-
-生成与新鲜度门禁：
+一致性门禁:
 
 ```bash
-python3 -B scripts/generate_layout_blueprints.py --check
+python3 -B scripts/audit_relationship_assets.py
 ```
 
-`--check` 必须验证 124/114/10 数量、来源 SHA256、registry 构建指纹和蓝图纯净度，并保证 Gallery 源文件不被改写。
-
-General、AI frame 与 components Gallery 继续保存视觉来源、内部 renderer 和设计证据。唯一人工画册入口仍为：
-
-```text
-gallery/taxonomy/index.html
-```
-
-统一 taxonomy 是 registry、composition presets 与 component routing 的派生浏览视图，不能反向影响生产选择。
+校验关系页 ↔ manifest ↔ 组件三方闭合(含 R4/R5/Q3/R6/R7 专项反漂移门禁)。catalog 浏览入口为 `references/catalog.html`,其组件关系标签由 `references/component-routing-data.js`(`routing-manifest.json` 的确定性投影)生成,防止手写标签与生产路由漂移。
