@@ -21,16 +21,19 @@
   body{min-height:100vh;font-family:var(--wp-font-sans);font-weight:300;background:var(--paper);color:var(--ink)}
   header{position:fixed;inset:0 auto 0 0;z-index:50;width:var(--catalog-sidebar-w);overflow-y:auto;background:var(--paper);border-right:1px solid var(--line);padding:24px 18px;transform:translateZ(0)}
   main{position:relative;z-index:1;margin-left:var(--catalog-sidebar-w)}
-  h1{font-size:20px;letter-spacing:.08em;font-weight:400}
+  h1{font-size:18px;letter-spacing:.06em;font-weight:400;white-space:nowrap}
   .sub{font-size:12px;line-height:1.65;color:var(--ink-3);margin-top:8px;letter-spacing:.02em}
-  .tabs{display:flex;flex-direction:column;gap:2px;margin-top:20px}
+  /* 一级分类手风琴:页签即分组头,二级目录就地下挂;▾ 右指 = 收起,下指 = 展开 */
+  .nav-list{display:flex;flex-direction:column;gap:2px;margin-top:20px}
   .tab{width:100%;display:flex;align-items:center;justify-content:space-between;gap:8px;padding:10px 8px;font-size:14px;cursor:pointer;border:0;border-left:2px solid transparent;color:var(--ink-3);background:transparent;text-align:left;letter-spacing:.03em;font-weight:300}
   .tab:hover{background:var(--paper-panel);color:var(--ink)}
   .tab.on{background:var(--paper-deep);border-left-color:var(--ink);color:var(--ink);font-weight:400}
+  .tab .t-side{display:flex;align-items:center;gap:7px;flex:none}
+  .tab .mark{font-family:var(--wp-font-mono);font-size:10px;color:var(--ink-3);transform:rotate(-90deg);transition:transform .18s ease}
+  .tab[aria-expanded="true"] .mark{transform:rotate(0)}
   .tab .n{display:inline-block;min-width:18px;text-align:right;font-family:var(--wp-font-mono);font-size:11px;color:var(--ink-3);letter-spacing:.02em;white-space:nowrap}
-  .subnav-label{margin-top:22px;padding:12px 8px 7px;border-top:1px solid var(--line);font-family:var(--wp-font-mono);font-size:10px;color:var(--ink-3);letter-spacing:.12em;text-transform:uppercase}
-  .subnav-group{display:none;flex-direction:column;gap:2px}
-  .subnav-group.on{display:flex}
+  .subnav-group{display:none;flex-direction:column;gap:2px;padding:1px 0 7px 10px}
+  .subnav-group.open{display:flex}
   .subnav-group button{width:100%;display:flex;align-items:center;justify-content:space-between;gap:8px;padding:7px 8px;border:0;border-left:2px solid transparent;background:transparent;color:var(--ink-3);font:inherit;font-size:12px;line-height:1.35;text-align:left;cursor:pointer}
   .subnav-group button:hover,.subnav-group button.on{background:var(--paper-panel);border-left-color:var(--ink-45);color:var(--ink)}
   .subnav-group button.on{border-left-color:var(--ink);font-weight:400}
@@ -116,7 +119,7 @@
   #layer.on{display:block}
   .layer-bg{position:absolute;inset:0;background:var(--scrim)}
   .layer-box{position:absolute;inset:0;margin:auto;width:min(1180px,94vw);height:min(770px,94vh);background:var(--paper);border:1px solid var(--ink-45);box-shadow:var(--shadow-specimen);display:flex;flex-direction:column}
-  .layer-close{position:absolute;top:10px;right:12px;width:34px;height:34px;border:1px solid var(--ink-45);background:var(--paper);color:var(--ink);font-size:20px;line-height:1;cursor:pointer;z-index:2}
+  .layer-close{position:absolute;top:-17px;right:-17px;width:34px;height:34px;border:1px solid var(--ink-45);background:var(--paper);color:var(--ink);font-size:20px;line-height:1;cursor:pointer;z-index:2}
   .layer-close:hover{background:var(--ink);color:var(--paper)}
   .layer-stage{position:relative;flex:1;min-height:0;overflow:hidden;background:var(--paper-deep)}
   .layer-thumb,.layer-live{position:absolute;inset:0;width:100%;height:100%}
@@ -125,35 +128,35 @@
   .layer-live.is-ready{opacity:1}
   .layer-stage[data-live-ready="1"] .layer-thumb{opacity:0}
   .layer-stage .stage-host,.layer-stage .stage-ecbox{position:absolute;left:0;top:0;transform-origin:0 0}
-  .layer-info{min-height:49px;padding:9px 16px;font-size:13px;color:var(--ink-2);border-top:1px solid var(--line);background:var(--paper);display:flex;align-items:center;gap:16px}
+  .layer-info{min-height:49px;padding:9px 16px;font-size:13px;line-height:1.4;color:var(--ink-2);border-top:1px solid var(--line);background:var(--paper);display:flex;align-items:center;gap:16px}
   #layer-title{min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
   .layer-info .layer-count{font-family:var(--wp-font-mono);font-size:13px;color:var(--ink-3);letter-spacing:.06em;white-space:nowrap;flex:none}
   /* 变体选择器:信息栏只显示当前项,菜单向上展开;不再把 2~9 个 tab 堆在右下角 */
   #layer-variants{position:relative;margin-left:auto;flex:0 0 auto}
   #layer-variants:empty{display:none}
-  /* 参考来源:卡片不展示,浮层信息条最右给 ECharts 跳链;无来源(原生/抄录)整行不占位 */
-  #layer-source{margin-left:auto;flex:0 0 auto;font-family:var(--wp-font-mono);font-size:11px;color:var(--ink-3);white-space:nowrap}
+  /* 参考来源:紧跟标题左侧排,无来源(原生/抄录)整行不占位 */
+  #layer-source{flex:0 0 auto;font-family:var(--wp-font-mono);font-size:13px;color:var(--ink-3);white-space:nowrap}
   #layer-source:empty{display:none}
   #layer-source a{color:inherit;text-decoration:underline;text-underline-offset:2px}
   #layer-source a:hover{color:var(--ink)}
   .variant-trigger{height:31px;display:flex;align-items:center;gap:8px;padding:0 9px;border:1px solid var(--ink-45);border-radius:0;background:transparent;color:var(--ink);font:inherit;cursor:pointer;white-space:nowrap}
   .variant-trigger:hover,.variant-trigger[aria-expanded="true"]{border-color:var(--ink);background:var(--paper-panel)}
   .variant-trigger:focus-visible,.variant-option:focus-visible{outline:1px solid var(--ink);outline-offset:2px}
-  .variant-kicker,.variant-index{font-family:var(--wp-font-mono);font-size:11px;color:var(--ink-3);letter-spacing:.08em}
+  .variant-kicker,.variant-index{font-family:var(--wp-font-mono);font-size:13px;color:var(--ink-3);letter-spacing:.08em}
   .variant-current{font-size:13px;font-weight:400;min-width:48px;text-align:left}
-  .variant-caret{font-size:10px;color:var(--ink-3);transition:transform .15s ease}
+  .variant-caret{font-size:13px;color:var(--ink-3);transition:transform .15s ease}
   .variant-trigger[aria-expanded="true"] .variant-caret{transform:rotate(180deg)}
   .variant-menu{position:absolute;right:0;bottom:calc(100% + 8px);z-index:5;min-width:220px;max-width:min(320px,80vw);max-height:min(360px,70vh);overflow:auto;padding:5px;background:var(--paper);border:1px solid var(--ink-45);box-shadow:var(--shadow-specimen)}
   .variant-option{width:100%;min-height:34px;display:grid;grid-template-columns:34px minmax(0,1fr);align-items:center;gap:8px;padding:5px 9px;border:0;border-left:2px solid transparent;border-radius:0;background:transparent;color:var(--ink-2);font:inherit;font-size:13px;text-align:left;cursor:pointer}
   .variant-option:hover{background:var(--paper-panel);color:var(--ink)}
   .variant-option[aria-selected="true"]{border-left-color:var(--ink);background:var(--paper-deep);color:var(--ink);font-weight:400}
   .variant-option-index{font-family:var(--wp-font-mono);font-size:11px;color:var(--ink-3);letter-spacing:.06em}
-  /* 浮层左右切换:当前 tab 卡片连续翻,到头禁用不循环 */
+  /* 浮层左右切换:按钮悬在弹窗框外左右两侧(框内只留内容),当前 tab 卡片连续翻,到头禁用不循环 */
   .layer-nav{position:absolute;top:50%;transform:translateY(-50%);width:36px;height:64px;border:1px solid var(--ink-45);background:var(--paper);color:var(--ink);font-size:22px;line-height:1;cursor:pointer;z-index:2}
   .layer-nav:hover:not(:disabled){background:var(--ink);color:var(--paper)}
   .layer-nav:disabled{opacity:.25;cursor:default}
-  .layer-nav.prev{left:12px}
-  .layer-nav.next{right:12px}
+  .layer-nav.prev{left:-48px}
+  .layer-nav.next{right:-48px}
 
   /* 单一画布:场馆(16:9)是唯一画布,组件根画板不得自带底色(与场馆同色也强制透明,防止出现"画布套画布") */
   .comp-stage .swiss-card,.comp-stage .pi-card,.layer-stage .swiss-card,.layer-stage .pi-card{background:transparent !important}
@@ -195,15 +198,12 @@
   .variant-examples-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:14px}
   .variant-empty-state{min-height:180px;display:grid;place-items:center;border:1px dashed var(--ink-45);color:var(--ink-3);font-size:13px;line-height:1.8;text-align:center;padding:24px;background:var(--paper-deep)}
   @media(max-width:900px){
-    header{position:sticky;inset:auto;top:0;width:auto;max-height:none;overflow:visible;border-right:0;border-bottom:1px solid var(--line);padding:14px 18px 0}
+    header{position:sticky;inset:auto;top:0;width:auto;max-height:62vh;overflow-y:auto;border-right:0;border-bottom:1px solid var(--line);padding:14px 18px 0}
     h1{font-size:18px}
     .sub{display:none}
-    .tabs{flex-direction:row;gap:4px;margin-top:10px;overflow-x:auto}
-    .tab{width:auto;flex:0 0 auto;padding:9px 12px;border:1px solid transparent;border-bottom:0;white-space:nowrap}
-    .tab.on{position:relative;top:1px;border-color:var(--line);border-left-color:var(--line);background:var(--paper-panel)}
-    .subnav-label{display:none}
-    .catalog-subnav{border-top:1px solid var(--line)}
-    .subnav-group.on{flex-direction:row;gap:4px;padding:9px 0;overflow-x:auto}
+    .nav-list{margin-top:10px}
+    .tab{padding:9px 8px}
+    .subnav-group.open{flex-direction:row;flex-wrap:wrap;gap:4px;padding:7px 0 5px 10px}
     .subnav-group button{width:auto;flex:0 0 auto;padding:6px 9px;border:1px solid var(--ink-45);white-space:nowrap}
     .subnav-group button:hover,.subnav-group button.on{border-color:var(--ink);background:var(--ink);color:var(--paper)}
     main{margin-left:0;padding:18px 18px 64px}
@@ -228,20 +228,27 @@
 <body>
 <header>
   <h1>资产目录 · Catalog</h1>
-  <div class="tabs" aria-label="资产目录主导航">
-    <button class="tab on" data-t="tpl" aria-current="page">非关系页模板<span class="n" id="c-tpl"></span></button>
-    <button class="tab" data-t="lyt">关系页版式<span class="n" id="c-lyt"></span></button>
-    <button class="tab" data-t="str">结构<span class="n" id="c-str"></span></button>
-    <button class="tab" data-t="cmp">组件<span class="n" id="c-cmp"></span></button>
-    <button class="tab" data-t="ico">图标<span class="n" id="c-ico"></span></button>
-  </div>
-  <div class="subnav-label">当前页目录</div>
-  <nav class="catalog-subnav" aria-label="当前页目录">
-    <div class="subnav-group on" id="tpl-nav" data-subnav="tpl"></div>
-    <div class="subnav-group" id="lyt-nav" data-subnav="lyt"></div>
-    <div class="subnav-group struct-nav" id="struct-nav" data-subnav="str" aria-label="结构类型"></div>
-    <div class="subnav-group" id="cmp-nav" data-subnav="cmp"></div>
-    <div class="subnav-group" id="ico-nav" data-subnav="ico" aria-label="图标状态"></div>
+  <nav class="nav-list" aria-label="资产目录">
+    <div class="nav-sec">
+      <button class="tab on" id="tab-tpl" data-t="tpl" aria-current="page" aria-expanded="true" aria-controls="tpl-nav"><span>非关系页模板</span><span class="t-side"><span class="n" id="c-tpl"></span><span class="mark" aria-hidden="true">▾</span></span></button>
+      <div class="subnav-group open" id="tpl-nav" data-subnav="tpl" role="region" aria-labelledby="tab-tpl"></div>
+    </div>
+    <div class="nav-sec">
+      <button class="tab" id="tab-lyt" data-t="lyt" aria-expanded="false" aria-controls="lyt-nav"><span>关系页版式</span><span class="t-side"><span class="n" id="c-lyt"></span><span class="mark" aria-hidden="true">▾</span></span></button>
+      <div class="subnav-group" id="lyt-nav" data-subnav="lyt" role="region" aria-labelledby="tab-lyt"></div>
+    </div>
+    <div class="nav-sec">
+      <button class="tab" id="tab-str" data-t="str" aria-expanded="false" aria-controls="struct-nav"><span>结构</span><span class="t-side"><span class="n" id="c-str"></span><span class="mark" aria-hidden="true">▾</span></span></button>
+      <div class="subnav-group struct-nav" id="struct-nav" data-subnav="str" role="region" aria-labelledby="tab-str"></div>
+    </div>
+    <div class="nav-sec">
+      <button class="tab" id="tab-cmp" data-t="cmp" aria-expanded="false" aria-controls="cmp-nav"><span>组件</span><span class="t-side"><span class="n" id="c-cmp"></span><span class="mark" aria-hidden="true">▾</span></span></button>
+      <div class="subnav-group" id="cmp-nav" data-subnav="cmp" role="region" aria-labelledby="tab-cmp"></div>
+    </div>
+    <div class="nav-sec">
+      <button class="tab" id="tab-ico" data-t="ico" aria-expanded="false" aria-controls="ico-nav"><span>图标</span><span class="t-side"><span class="n" id="c-ico"></span><span class="mark" aria-hidden="true">▾</span></span></button>
+      <div class="subnav-group" id="ico-nav" data-subnav="ico" role="region" aria-labelledby="tab-ico"></div>
+    </div>
   </nav>
 </header>
 
@@ -2157,7 +2164,7 @@ $('#extract-groups').innerHTML=EXTRACT_GROUPS.map(g=>`
     '<button class="layer-nav prev" aria-label="上一张">‹</button>'+
     '<button class="layer-nav next" aria-label="下一张">›</button>'+
     '<div class="layer-stage" id="layer-stage"></div>'+
-    '<div class="layer-info"><span class="layer-count" id="layer-count"></span><span id="layer-title"></span><span id="layer-variants"></span><span id="layer-source"></span></div></div>';
+    '<div class="layer-info"><span class="layer-count" id="layer-count"></span><span id="layer-title"></span><span id="layer-source"></span><span id="layer-variants"></span></div></div>';
   document.body.appendChild(modal);
   const prevBtn=modal.querySelector('.layer-nav.prev'),
         nextBtn=modal.querySelector('.layer-nav.next'),
@@ -2445,9 +2452,11 @@ $('#extract-groups').innerHTML=EXTRACT_GROUPS.map(g=>`
   function show(card){
     const d=card.dataset;
     currentCard=card;
-    document.getElementById('layer-title').innerHTML=(d.mtitle||'')+(d.mtag?' · '+d.mtag:'');
+    /* 底栏只留标题本身;atlas/catalog/变体×N 等来源标签不进底栏,来源链接由 #layer-source 单独给 */
+    document.getElementById('layer-title').innerHTML=d.mtitle||'';
     navIndex=navCards.indexOf(card);
-    document.getElementById('layer-count').textContent=navIndex<0?'':(navIndex+1)+' / '+navCards.length;
+    /* 组件卡(data-spec)不带 65 / 71 序号；版式/结构等其余弹窗保留翻页计数 */
+    document.getElementById('layer-count').textContent=(d.spec||navIndex<0)?'':(navIndex+1)+' / '+navCards.length;
     prevBtn.disabled=navIndex<=0;
     nextBtn.disabled=navIndex<0||navIndex>=navCards.length-1;
     modal.classList.add('on');
@@ -3288,7 +3297,13 @@ document.querySelectorAll('[data-section-jump]').forEach(button=>{
 function switchTab(id,{resetScroll=false}={}){
   document.querySelectorAll('.tab').forEach(x=>{x.classList.remove('on');x.removeAttribute('aria-current');});
   document.querySelectorAll('main').forEach(x=>x.classList.remove('on'));
-  document.querySelectorAll('[data-subnav]').forEach(x=>x.classList.toggle('on',x.dataset.subnav===id));
+  /* 手风琴:只展开目标页签的二级目录,其余收起 */
+  document.querySelectorAll('[data-subnav]').forEach(x=>{
+    const open=x.dataset.subnav===id;
+    x.classList.toggle('open',open);
+    const head=document.getElementById('tab-'+x.dataset.subnav);
+    if(head)head.setAttribute('aria-expanded',String(open));
+  });
   const t=document.querySelector('.tab[data-t="'+id+'"]');
   if(t){t.classList.add('on');t.setAttribute('aria-current','page');}
   const m=document.getElementById('m-'+id);
@@ -3305,7 +3320,17 @@ function switchTab(id,{resetScroll=false}={}){
   }
   requestAnimationFrame(()=>{syncStructureOffsets();activateThumbs(id);scheduleFitAll();scheduleSectionNav();});
 }
-document.querySelectorAll('.tab').forEach(t=>t.onclick=()=>switchTab(t.dataset.t,{resetScroll:true}));
+/* 一级分类手风琴:非当前页签 = 切换并展开;当前页签 = 二次点击收起/再展开本级二级目录 */
+document.querySelectorAll('.tab').forEach(t=>t.onclick=()=>{
+  if(t.classList.contains('on')){
+    const group=document.querySelector('[data-subnav="'+t.dataset.t+'"]');
+    const open=group?group.classList.toggle('open'):true;
+    t.setAttribute('aria-expanded',String(open));
+    syncStructureOffsets();
+    return;
+  }
+  switchTab(t.dataset.t,{resetScroll:true});
+});
 try{
   const params=new URLSearchParams(location.search);
   const q=params.get('tab'),sc=params.get('scroll');
