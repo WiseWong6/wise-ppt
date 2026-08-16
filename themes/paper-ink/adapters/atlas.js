@@ -564,7 +564,7 @@
     .swiss-card .process-loop .loop-item {
       background: var(--wp-compat-atlas-paper) !important;
       border: 0 !important;
-      box-shadow: inset 0 0 0 0.4px var(--wp-compat-atlas-ink-80) !important;
+      box-shadow: inset 0 0 0 0.6px var(--wp-compat-atlas-ink-80) !important;
       color: var(--wp-compat-atlas-ink) !important;
     }
     .swiss-card .process-loop::before {
@@ -945,10 +945,30 @@
     return 'var(--wp-compat-atlas-paper-panel)';
   }
 
+  /* 边框原值的"有效墨量":rgba 取 alpha,实色取 1-亮度。浅色弱线(浅灰框、低透明描边)
+     与弱分隔同档 —— 否则通用转换会把 #e5e5e5/#ddd 一类的轻框加重成 1px 全墨主框。 */
+  function isLightPaint(value) {
+    const text = String(value);
+    const rgba = text.match(/rgba?\(\s*\d+\s*,\s*\d+\s*,\s*\d+\s*,\s*([\d.]+)\s*\)/i);
+    if (rgba) return Number.parseFloat(rgba[1]) <= 0.35;
+    const hex = text.match(/#([0-9a-f]{3,8})\b/i);
+    if (!hex) return false;
+    let digits = hex[1];
+    if (digits.length === 3 || digits.length === 4) digits = [...digits].map((c) => c + c).join('');
+    if (digits.length < 6) return false;
+    const r = parseInt(digits.slice(0, 2), 16);
+    const g = parseInt(digits.slice(2, 4), 16);
+    const b = parseInt(digits.slice(4, 6), 16);
+    const alpha = digits.length >= 8 ? parseInt(digits.slice(6, 8), 16) / 255 : 1;
+    if (alpha <= 0.35) return true;
+    if (alpha < 1) return false;
+    return (r + g + b) / 3 / 255 >= 0.8;
+  }
+
   function normalizeBorder(selector, value) {
     const trimmed = String(value).trim();
     if (/^(?:none|0)(?:\s|$)/i.test(trimmed)) return value;
-    const width = WEAK_LINE_RE.test(selector) ? 0.6 : 1;
+    const width = WEAK_LINE_RE.test(selector) || isLightPaint(value) ? 0.6 : 1;
     if (/^[0-9.]+px\b/i.test(trimmed)) return trimmed.replace(/^[0-9.]+px/i, `${width}px`);
     return trimmed;
   }
@@ -1033,13 +1053,16 @@
     }
     if (prop === 'stroke-width') return normalizeStrokeWidth(selector, value);
     if (/^border(?:-(?:top|right|bottom|left))?$/.test(prop)) {
-      return replacePaint(normalizeBorder(selector, value), lineToken(selector));
+      return replacePaint(
+        normalizeBorder(selector, value),
+        isLightPaint(value) ? 'var(--wp-compat-atlas-ink-25)' : lineToken(selector)
+      );
     }
     if (/^border-(?:top-|right-|bottom-|left-)?width$/.test(prop)) {
       return WEAK_LINE_RE.test(selector) ? '0.6px' : '1px';
     }
     if (/^border-(?:top-|right-|bottom-|left-)?color$/.test(prop) || prop === 'outline-color') {
-      return lineToken(selector);
+      return isLightPaint(value) ? 'var(--wp-compat-atlas-ink-25)' : lineToken(selector);
     }
     if (prop.endsWith('-color')) return hasPaint(value) ? textToken(selector) : value;
     if (prop === 'color') return hasPaint(value) ? textToken(selector) : value;

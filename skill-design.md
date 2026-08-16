@@ -575,6 +575,24 @@ A | B      无关系,只是放一起
 
 > 衔接:组件内字号档位见第八章缩放标尺②;逐项验收见 `themes/paper-ink/references/visual-checklist.md`;数值与制式的最终解释在 `themes/paper-ink/references/design-tokens.md`。
 
+### 9.7 线条档位(组件图形的线宽与墨色合同,v107)
+
+组件图形用线只有四档,线宽与墨色**同向联动**;档位按最终放映页(1280×720)上的**有效线宽**验收。atlas 系组件产自 600px 方卡、放映时整体放大约 ×2(字号有反向补偿、线宽没有),所以它的自然值按"屏上一半"书写:
+
+| 档位 | native/new(真实画布自然值) | atlas(600 方卡自然值) | 屏上有效 | 墨色 | 例 |
+|---|---|---|---|---|---|
+| 发丝线 | 0.5–0.7px | 0.4–0.6px | ~0.6–1.1px | ink-45~55 | #32 同心圆、#34 韦恩集合圆、#009 标注说明框、#045 象限格 |
+| 结构线 | 0.8–1px | 0.8–1px | ~1px | ink-45~55 | #025 循环轨道虚线、#028/#029 架构芯片与连线、#039 不可能三角 |
+| 主框线 | 1.1–1.4px | 0.6px | ~1.1–1.4px | **ink-80 @全值** | #18 画廊卡、#37 卫星圆、#030 导图子节点、#025 循环节点环 |
+| 强调主线 | 1.8–2.2px | —(避免) | ~2px | ink @全值 | #72 时间轴主骨、#37 中心墨核;**每组件最多一条** |
+
+三条铁律:
+1. **细线必淡、主线必浓**(按屏上有效值联动):0.5–0.7px 搭 ink≤45;≥1.1px(有效)搭 ink-80 全值。不允许"细而全黑",也不允许"粗而半透明"。
+2. **形状语义分工**:集合圆(venn/同心圆)是"概念的容器"→ 发丝淡线;节点圆(卫星/循环/导图子节点)与卡片盒是"实体"→ 主框浓线;轨道/网格/基线永远最淡,虚线专表"路径";实心块(根节点、数据阶梯)不用外框线。
+3. **强调唯一**:实心反白块或 ≥1.8px 主线,每组件只允许一处,其余退为纸面线稿。同一组圆禁止按色相分工(旧 atlas 的橙/黑/灰多色圆即典型违规),集合间差异只准用墨阶与交叠表达。
+
+适配落地口径(`themes/paper-ink/adapters/atlas.js`):通用转换按"原值亮度"判档——浅色/低透明边框(有效 alpha ≤ .35,如 #e5e5e5、#ddd、rgba(ink,.1x))自动落发丝档 0.6px + ink-25,深色/饱和色维持主框档 1px + ink-80;SVG 描边宽 0.6/1/1.2 对应三档。禁用彩色描边与彩色雾面填充(#d95e00 一律入墨阶)。
+
 ---
 
 ## 修订记录
@@ -711,4 +729,7 @@ A | B      无关系,只是放一起
 
 - **2026-08-16 v108**:Catalog #019 winding-road 蜿蜒道路时间轴删除 snippet 内左上角 FIG 式标签(用户:"019删除 左上角 的 S-ROADDECADETRACE 还有下划线")。`capabilities/layouts/paper-ink-components.js` native:73 的 SVG 头部删掉 `S-ROAD · DECADE TRACE` 文字与 y=62 下划线两行——即 v76 已明令禁止的"FIG 式图号标签及其下划线",系样张 layout-b6 抄录时随图带进来的漏网项(v76 只清了成品 deck,没回扫组件库)。缩略图缓存联动重建:改的是组件渲染依赖,71 张组件缩略图指纹全失效;且 build 的依赖图正则会把 `data-thumb-src=` 当 `src=` 抓到,缩略图自身字节进了指纹,**重建后须再跑 build 到不动点(第二轮 0 pending),--check 才过**。视觉复核 component-native-73.webp 左上角已无标签无下划线。教训:**定禁令(v76)时要回扫资产库,样张出身(snippet 注释"出自样张 layout-b6.html")的组件是旧页面语言的藏身处;缩略图指纹含产物字节时,重建-校验是自引用系统,要跑到不动点再收工。**
 
-- **2026-08-16 v106**:Catalog 弹层浮层底栏与外框控件收口(用户四条:"底栏字体大小必须一致+y坐标垂直居中"、"左右按钮移到弹窗外"、"关闭按钮移到弹窗右上角,中心点就是右上角的点"、"左边就是序号+标题+来源,不需要 atlas/catalog,右下角就是切换样式")。①底栏 `.layer-info` 全量归一 13px + line-height:1.4(count/source/kicker/index/caret 由 11/10px 收口),沿用 align-items:center 中线口径;②底栏 DOM 顺序改 count→title→source→variants,`#layer-source` 去掉 margin-left:auto 改随标题排,`#layer-variants` 独占右侧推位;③标题只渲染 mtitle,不再拼 mtag(atlas/catalog/变体×N/结构:关系: 等标签整体退出底栏,data-mtag 属性保留不读);组件卡 mtitle 前缀 `catalog #009` 改 `#009`(componentCatalogCode 仍供缩略图 alt);④翻页按钮 left/right:12px→-48px,悬到 `.layer-box` 外两侧;⑤关闭按钮 top/right:-18px,34×34 中心精确压外框右上角顶点。Playwright 实测(1600×1000,ec 卡+lyt 卡):关闭按钮中心 (1390,115) 与外框右上角顶点完全重合;prev/next 全在框外、两侧间距对称 11px、中线=框中线;底栏 8 类文本计算样式全部 13px/18.2px,count/title/source/variants 中线差 0px,顺序 count<title<source<variants。教训:**绝对定位的 top/right 基准是 containing block 的 padding box 而非外框,"中心压外框角点"要补边框厚度(-17 量出差 1px 时先想基准,别归罪取整);底栏收口后再看一眼 DOM 顺序——flex 的视觉顺序就是 DOM 顺序,挪位置要连结构一起挪。**
+- **2026-08-16 v106**:Catalog 弹层浮层底栏与外框控件收口(用户四条:"底栏字体大小必须一致+y坐标垂直居中"、"左右按钮移到弹窗外"、"关闭按钮移到弹窗右上角,中心点就是右上角的点"、"左边就是序号+标题+来源,不需要 atlas/catalog,右下角就是切换样式")。①底栏 `.layer-info` 全量归一 13px + line-height:1.4(count/source/kicker/index/caret 由 11/10px 收口),沿用 align-items:center 中线口径;②底栏 DOM 顺序改 count→title→source→variants,`#layer-source` 去掉 margin-left:auto 改随标题排,`#layer-variants` 独占右侧推位;③标题只渲染 mtitle,不再拼 mtag(atlas/catalog/变体×N/结构:关系: 等标签整体退出底栏,data-mtag 属性保留不读);组件卡 mtitle 前缀 `catalog #009` 改 `#009`(componentCatalogCode 仍供缩略图 alt);④翻页按钮 left/right:12px→-48px,悬到 `.layer-box` 外两侧;⑤关闭按钮 top/right:-18px,34×34 中心精确压外框右上角顶点。Playwright 实测(1600×1000,ec 卡+lyt 卡):关闭按钮中心 (1390,115) 与外框右上角顶点完全重合;prev/next 全在框外、两侧间距对称 11px、中线=框中线;底栏 8 类文本计算样式全部 13px/18.2px,count/title/source/variants 中线差 0px,顺序 count<title<source<variants。追加全组合验收(#066 line 折线图,标题+来源+变体切换框同框):切换框盒与框内 kicker/current/index/caret 四件全部压同一中线,成员间差 0.0px,与底栏内容区中心重合;"单一中线"立为合同注释挂在 `.layer-info`(统一 13px+1.4 行高+align-items:center 三件套,新增成员不得自带字号或行高)。教训:**绝对定位的 top/right 基准是 containing block 的 padding box 而非外框,"中心压外框角点"要补边框厚度(-17 量出差 1px 时先想基准,别归罪取整);底栏收口后再看一眼 DOM 顺序——flex 的视觉顺序就是 DOM 顺序,挪位置要连结构一起挪。**
+- **2026-08-16 v107**:线条体系成文并收口三处不齐(用户:"线条要落到设计规范里,总结所有组件外框线宽配色找规律"→分析 71 组件三来源→"出方案修复")。① 9.7 新增「线条档位」:四档线宽(发丝/结构/主框/强调)× 墨色联动,双口径列(native/new 真实画布 vs atlas 600 方卡 ×2 折算),按放映页有效线宽验收;三铁律=细线必淡主线必浓、集合圆淡/节点圆浓/轨道最淡虚线、强调每组件唯一,并明文禁止彩色描边与同组多色分工。② 循环节点环(#025)inset 0.4→0.6px ink-80,升入主框档与 #030 导图子节点、#37 卫星同档。③ 通用转换加"原值亮度"判档:浅色/低透明边框(有效 alpha≤.35)自动降发丝档 0.6px+ink-25,修掉 #001 列表卡/#002 表单/#038 前后对比 fuzzy 侧等浅灰框被加重成 1px 全墨的问题(#038 实测 Fuzzy 178 vs Precise 66 灰度分层)。验证:adaptCss 输出核对 + Playwright 量计算样式 + 像素带扫描(fuzzy/precise 层次、#32 环线 116=ink-55 不变),对照件 #32/#34/#037 零变化;缩略图重建。教训:**档位合同的验收对象是"屏上有效线宽"而非自然值——600 方卡出身的 atlas 线宽天然 ×2,规范若只写一列数值,两拨组件必有一拨全错;彩色→墨阶的转换里,"浅色弱线"必须靠原值亮度识别,不能只看选择器关键词,否则轻框会被统一加重。**
+
+- **2026-08-16 v109**:外层卡片序号与标题 y 中线收口到墨迹级(用户:"你现在外层卡片的序号和标题都不在一条中线"+"就是要y坐标垂直居中")。v103 只把 `.card-head` 从基线对齐改成盒子居中并量了盒子中线=0,但眼睛看的是墨迹:Menlo 13px 数字(#066,无下延部)墨迹中心高于自家盒子中心,15px PingFang 汉字墨迹跨基线整体偏下,两误差部分相消后数字仍浮高约 0.33px,放大即见。修复两件套挂在 `.card-head`:① line-height 显式 21px(两种字体 normal 行高不同,约 15.6 vs 21,取整让盒子中线差 0.5px);② `.id` translateY(.85px) 光学补偿,按 canvas TextMetrics(actualBoundingBoxAscent/Descent)实测标定。验收:lyt/str/cmp 三页签×8 卡,纯中文标题墨迹中线差 cmp ≤0.03px、str ≤0.1px、lyt ≤0.13px;中英混排标题("Logo 云墙")残差 −0.65px,系拉丁字母高低极值改变墨迹范围,全局常量不可修,放行;4x 截图目测复核数字与汉字字面齐平。教训:**"垂直居中"验收必须写明口径——盒子中线(几何)还是墨迹中线(视觉);混排字号差 ≥2px 时两者能差 0.3~0.9px,量错口径会把没对齐判成已对齐(v103 即如此)。量文字基线要从元素框起算(元素框顶+half-leading+fontBoundingBoxAscent);Range.getClientRects 拿到的是字体框不是行框,行高≠字体高时 half-leading 会算重。弹窗底栏因全 13px 同字号,盒子口径与墨迹口径天然合一,不受此影响。**
