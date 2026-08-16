@@ -124,6 +124,8 @@ def build_payload(skill_root: Path) -> dict:
                 "name": public_name,
                 "sourceName": source_name,
                 "group": group,
+                "category": category,
+                "categoryLabel": OFFICIAL_CATEGORY_LABELS[category],
                 "officialCategory": category,
                 "officialCategoryLabel": OFFICIAL_CATEGORY_LABELS[category],
                 "tags": tags,
@@ -133,29 +135,92 @@ def build_payload(skill_root: Path) -> dict:
             }
         )
 
-    unredrawn = []
-    official_category_counts: dict[str, int] = {}
+    selection_path = DEFAULT_SKILL_ROOT / "capabilities" / "vendors" / "tabler-outline" / "redraw-v3" / "selection.json"
+    selection = _load_json(selection_path) if selection_path.is_file() else {"groups": []}
+    selection_groups: list[str] = [group.get("id") or group.get("label") for group in selection.get("groups", [])]
+    group_of_source: dict[str, str] = {}
+    for group in selection.get("groups", []):
+        gid = group.get("id") or group.get("label")
+        for name in group.get("icons", []):
+            group_of_source.setdefault(name, gid)
+    selection_set = set(group_of_source)
+
+    pending = []
+    ink = list(existing)
+    ink_category_counts: dict[str, int] = {}
+    pending_category_counts: dict[str, int] = {}
     status_counts = {status: 0 for status in VALID_REDRAW_STATUS}
+    covered: set[str] = set()
+    for entry in existing:
+        source_name = entry["sourceName"]
+        entry["group"] = group_of_source.get(source_name, entry.get("group", "文档"))
+        entry["category"] = entry["group"]
+        entry["categoryLabel"] = entry["group"]
+        ink_category_counts[entry["group"]] = ink_category_counts.get(entry["group"], 0) + 1
+        covered.add(source_name)
     for name in source_names:
         item = progress_items.get(name, {})
         status = item.get("status", "todo")
         status_counts[status] += 1
+        category, tags = source_metadata[name]
+        if name not in selection_set:
+            continue
+        if status in {"candidate", "approved"}:
+            if name in public_by_source or name in covered:
+                continue
+            entry = {
+                "name": name,
+                "sourceName": name,
+                "group": group_of_source[name],
+                "category": group_of_source[name],
+                "categoryLabel": group_of_source[name],
+                "officialCategory": category,
+                "officialCategoryLabel": OFFICIAL_CATEGORY_LABELS[category],
+                "tags": tags,
+                "redrawStatus": status,
+                "batch": item.get("batch"),
+                "updatedAt": item.get("updated_at"),
+            }
+            ink.append(entry)
+            ink_category_counts[entry["group"]] = ink_category_counts.get(entry["group"], 0) + 1
+            covered.add(name)
+            continue
         if name in public_by_source:
             continue
-        category, tags = source_metadata[name]
-        official_category_counts[category] = official_category_counts.get(category, 0) + 1
-        unredrawn.append({
+        pending.append({
             "name": name,
-            "category": category,
-            "categoryLabel": OFFICIAL_CATEGORY_LABELS[category],
+            "group": group_of_source[name],
+            "category": group_of_source[name],
+            "categoryLabel": group_of_source[name],
             "tags": tags,
             "redrawStatus": status,
             "batch": item.get("batch"),
             "updatedAt": item.get("updated_at"),
         })
+        pending_category_counts[group_of_source[name]] = pending_category_counts.get(group_of_source[name], 0) + 1
+        covered.add(name)
 
-    if len(existing) != 189 or len(unredrawn) != 4965 or sum(official_category_counts.values()) != 4965:
-        raise CatalogBuildError("现有纸墨成品与未重绘母图没有形成 189 / 4,965 的闭合分组")
+    if not selection_set <= covered or len(existing) != 189:
+        missing = sorted(selection_set - covered)
+        raise CatalogBuildError(f"精选集没有被纸墨成品与待绘清单完整覆盖：{missing[:5]}")
+    remainder: list[dict] = []
+    remainder_category_counts: dict[str, int] = {}
+    for name in source_names:
+        if name in selection_set:
+            continue
+        item = progress_items.get(name, {})
+        category, tags = source_metadata[name]
+        remainder_category_counts[category] = remainder_category_counts.get(category, 0) + 1
+        remainder.append({
+            "name": name,
+            "category": category,
+            "categoryLabel": OFFICIAL_CATEGORY_LABELS[category],
+            "tags": tags,
+            "redrawStatus": item.get("status", "todo"),
+            "batch": item.get("batch"),
+            "updatedAt": item.get("updated_at"),
+        })
+    remainder_total = len(remainder)
 
     return {
         "version": 1,
@@ -179,24 +244,52 @@ def build_payload(skill_root: Path) -> dict:
             "source": len(source_names),
             "registeredSources": len(public_by_source),
             "publicNames": len(registry.get("icons", {})),
-            "unredrawnSources": len(unredrawn),
+            "inkSources": len(ink),
+            "pendingSources": len(pending),
+            "selectionTotal": len(selection_set),
+            "remainderSources": remainder_total,
             "redrawStatus": status_counts,
         },
-        "existingGroups": [
-            {"id": group, "label": group, "count": existing_group_counts[group]}
-            for group in EXISTING_GROUPS
+        "selectionGroups": [
+            {
+                "id": group,
+                "label": group,
+                "inkCount": ink_category_counts.get(group, 0),
+                "pendingCount": pending_category_counts.get(group, 0),
+                "count": ink_category_counts.get(group, 0) + pending_category_counts.get(group, 0),
+            }
+            for group in selection_groups
         ],
-        "officialCategories": [
+        "inkCategories": [
+            {
+                "id": group,
+                "label": group,
+                "sourceLabel": group,
+                "count": ink_category_counts.get(group, 0),
+            }
+            for group in selection_groups if ink_category_counts.get(group, 0)
+        ],
+        "pendingCategories": [
+            {
+                "id": group,
+                "label": group,
+                "sourceLabel": group,
+                "count": pending_category_counts.get(group, 0),
+            }
+            for group in selection_groups if pending_category_counts.get(group, 0)
+        ],
+        "ink": ink,
+        "unredrawn": pending,
+        "remainder": remainder,
+        "remainderCategories": [
             {
                 "id": category,
                 "label": OFFICIAL_CATEGORY_LABELS[category],
                 "sourceLabel": category,
-                "count": official_category_counts[category],
+                "count": remainder_category_counts[category],
             }
-            for category in sorted(official_category_counts)
+            for category in sorted(remainder_category_counts)
         ],
-        "existing": existing,
-        "unredrawn": unredrawn,
     }
 
 
