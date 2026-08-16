@@ -4,7 +4,7 @@
   "name": "Wise PPT Layout Gallery",
   "description": "跨主题可查询的布局配方目录；paper-ink 样张提供当前已验证实现。",
   "protected_references": "capabilities/layouts/protected-references.json",
-  "recipe_count": 62,
+  "recipe_count": 64,
   "recipes": [
     {
       "recipe_id": "paper-ink.evidence.specimen-card",
@@ -10180,6 +10180,336 @@
           ]
         }
       }
+    },
+    {
+      "recipe_id": "paper-ink.flow.blackbox-annotation",
+      "display_code": "P1",
+      "name": "黑箱剖面 + 编号标注",
+      "family": "流程",
+      "description": "把已知输入、不可见过程与看似正确的输出串成黑箱流，并用编号标注带解释过程风险",
+      "roles": [
+        "explain",
+        "prove"
+      ],
+      "relations": [
+        "flow"
+      ],
+      "primitives": [
+        "blackbox-flow",
+        "annotation-rail"
+      ],
+      "reading_order": [
+        "blackbox-flow",
+        "support",
+        "takeaway"
+      ],
+      "structure_contract": {
+        "region_count": 3,
+        "required_slot_ids": [
+          "blackbox-flow"
+        ],
+        "core_primitives": [
+          "linear-sequence",
+          "evidence-annotation"
+        ]
+      },
+      "structure_fingerprint": "sha256:ae3d5d6c8791a45a1097bc18020e96c95920d4110fb1d883126c2e98a5fe0f17",
+      "slots": [
+        {
+          "slot_id": "blackbox-flow",
+          "purpose": "黑箱过程与风险标注",
+          "required": true,
+          "visual_role": "primary",
+          "min_items": 1,
+          "max_items": 6,
+          "count_unit": "binding",
+          "allowed_renderer_kinds": [
+            "svg"
+          ],
+          "allowed_component_sources": [
+            "native"
+          ],
+          "default_renderer": {
+            "renderer_kind": "svg",
+            "component_source": "native",
+            "component_id": "native.paper-ink.flow.blackbox-annotation.blackbox-flow"
+          },
+          "space_contract": {
+            "canvas_width": 1920,
+            "canvas_height": 1080,
+            "width": 1500,
+            "height": 620,
+            "aspect_ratio": 2.4194,
+            "space_type": "wide"
+          },
+          "recommended_component_ids": []
+        },
+        {
+          "slot_id": "support",
+          "purpose": "辅助证据、标签或解释",
+          "required": false,
+          "visual_role": "support",
+          "min_items": 0,
+          "max_items": 3,
+          "count_unit": "binding",
+          "allowed_renderer_kinds": [
+            "typography",
+            "table",
+            "image",
+            "native-html",
+            "svg"
+          ],
+          "allowed_component_sources": [
+            "codex-host",
+            "native"
+          ],
+          "default_renderer": {
+            "renderer_kind": "typography",
+            "component_source": "native",
+            "component_id": "native.paper-ink.flow.blackbox-annotation.support"
+          }
+        },
+        {
+          "slot_id": "takeaway",
+          "purpose": "页面一句话结论",
+          "required": false,
+          "visual_role": "support",
+          "min_items": 0,
+          "max_items": 1,
+          "count_unit": "binding",
+          "allowed_renderer_kinds": [
+            "typography"
+          ],
+          "allowed_component_sources": [
+            "native"
+          ],
+          "default_renderer": {
+            "renderer_kind": "typography",
+            "component_source": "native",
+            "component_id": "native.paper-ink.flow.blackbox-annotation.takeaway"
+          }
+        }
+      ],
+      "examples": {
+        "general": "gallery/paper-ink/general/frames/layout-p1.html",
+        "ai": "gallery/paper-ink/ai/frames/layout-p1.html"
+      },
+      "selection_notes": "已知输入与输出之间存在不可见步骤，且必须逐项解释过程风险时使用；编号标注带是整页辅助区，不拆成独立生产组件。",
+      "anti_patterns": [
+        "不要把可直接观察的普通流程包装成黑箱",
+        "不要把编号标注带拆散后只留下与 I2 重复的虚实步骤串"
+      ],
+      "shape": [
+        "上文下图"
+      ],
+      "expression_profile": {
+        "contract_version": 1,
+        "page_modes": [
+          "content"
+        ],
+        "question_affinities": [
+          "how",
+          "why",
+          "what"
+        ],
+        "topology": {
+          "weights": [
+            "dominant-support"
+          ],
+          "depths": [
+            "flat"
+          ],
+          "flows": [
+            "linear"
+          ]
+        },
+        "conclusion_modes": [
+          "bottom-statement"
+        ],
+        "primary_units": {
+          "min": 3,
+          "max": 6
+        },
+        "primary_forms": [
+          "process",
+          "diagram"
+        ],
+        "enhancements": [
+          "annotation",
+          "evidence"
+        ],
+        "logic_contract": {
+          "primary": "flow",
+          "secondary": [
+            "evidence"
+          ]
+        }
+      }
+    },
+    {
+      "recipe_id": "paper-ink.mapping.diamond-edge-labels",
+      "display_code": "P2",
+      "name": "菱形四边标注",
+      "family": "映射",
+      "description": "四个对象组成闭合菱形，每条关键连边拥有独立关系标签，用于两两配对评估",
+      "roles": [
+        "explain",
+        "prove"
+      ],
+      "relations": [
+        "mapping"
+      ],
+      "primitives": [
+        "diamond-network",
+        "edge-label"
+      ],
+      "reading_order": [
+        "diamond-map",
+        "support",
+        "takeaway"
+      ],
+      "structure_contract": {
+        "region_count": 3,
+        "required_slot_ids": [
+          "diamond-map"
+        ],
+        "core_primitives": [
+          "network-field",
+          "pairwise-links"
+        ]
+      },
+      "structure_fingerprint": "sha256:7675415c8501bf31d47172c107ab686b8cf4a566a73ba75e7bf6a072ee370058",
+      "slots": [
+        {
+          "slot_id": "diamond-map",
+          "purpose": "四节点与带标签连边",
+          "required": true,
+          "visual_role": "primary",
+          "min_items": 4,
+          "max_items": 4,
+          "count_unit": "binding",
+          "allowed_renderer_kinds": [
+            "svg"
+          ],
+          "allowed_component_sources": [
+            "native"
+          ],
+          "default_renderer": {
+            "renderer_kind": "svg",
+            "component_source": "native",
+            "component_id": "native.paper-ink.mapping.diamond-edge-labels.diamond-map"
+          },
+          "space_contract": {
+            "canvas_width": 1920,
+            "canvas_height": 1080,
+            "width": 1500,
+            "height": 620,
+            "aspect_ratio": 2.4194,
+            "space_type": "wide"
+          },
+          "recommended_component_ids": []
+        },
+        {
+          "slot_id": "support",
+          "purpose": "辅助证据、标签或解释",
+          "required": false,
+          "visual_role": "support",
+          "min_items": 0,
+          "max_items": 5,
+          "count_unit": "binding",
+          "allowed_renderer_kinds": [
+            "typography",
+            "table",
+            "image",
+            "native-html",
+            "svg"
+          ],
+          "allowed_component_sources": [
+            "codex-host",
+            "native"
+          ],
+          "default_renderer": {
+            "renderer_kind": "typography",
+            "component_source": "native",
+            "component_id": "native.paper-ink.mapping.diamond-edge-labels.support"
+          }
+        },
+        {
+          "slot_id": "takeaway",
+          "purpose": "页面一句话结论",
+          "required": false,
+          "visual_role": "support",
+          "min_items": 0,
+          "max_items": 1,
+          "count_unit": "binding",
+          "allowed_renderer_kinds": [
+            "typography"
+          ],
+          "allowed_component_sources": [
+            "native"
+          ],
+          "default_renderer": {
+            "renderer_kind": "typography",
+            "component_source": "native",
+            "component_id": "native.paper-ink.mapping.diamond-edge-labels.takeaway"
+          }
+        }
+      ],
+      "examples": {
+        "general": "gallery/paper-ink/general/frames/layout-p2.html",
+        "ai": "gallery/paper-ink/ai/frames/layout-p2.html"
+      },
+      "selection_notes": "恰好四个对象需要按多条命名关系两两评估时使用；单区图形可作为 Catalog 抄录件浏览，但未进入生产组件路由。",
+      "anti_patterns": [
+        "不要把普通四步流程误作闭合关系网",
+        "对象不是四个或边没有独立语义时不要硬套菱形"
+      ],
+      "shape": [
+        "居中聚焦"
+      ],
+      "expression_profile": {
+        "contract_version": 1,
+        "page_modes": [
+          "content"
+        ],
+        "question_affinities": [
+          "why",
+          "what",
+          "result"
+        ],
+        "topology": {
+          "weights": [
+            "single"
+          ],
+          "depths": [
+            "flat"
+          ],
+          "flows": [
+            "spatial"
+          ]
+        },
+        "conclusion_modes": [
+          "bottom-statement"
+        ],
+        "primary_units": {
+          "min": 4,
+          "max": 4
+        },
+        "primary_forms": [
+          "diagram"
+        ],
+        "enhancements": [
+          "evidence",
+          "annotation"
+        ],
+        "logic_contract": {
+          "primary": "mapping",
+          "secondary": [
+            "network",
+            "evidence"
+          ]
+        }
+      }
     }
   ],
   "shape_vocabulary": [
@@ -10197,7 +10527,7 @@
   ],
   "page_expression_contract": {
     "contract_version": 1,
-    "profile_count": 62,
+    "profile_count": 64,
     "vocabulary": {
       "question_intents": [
         "why",
