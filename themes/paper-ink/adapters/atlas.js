@@ -456,7 +456,7 @@
 
     /* --- 052–053 韦恩图：圆去底色，透明 + 0.6px 墨线描边（与 043–047 同心圆同档，描边走 border
        而非内阴影，保证弹层按图形并集量框）；三圆保持两两相交 + 中心三交集结构，外框高度锁 180px
-       与双圆一致（缩放上限同由 520/180 卡住），变体切换不跳缩放；标签只放各集合独占区，不压交集 --- */
+       与双圆一致（缩放上限同由 520/180 卡住），变体切换不跳缩放；文案三圆居圆心、双圆居独占区 --- */
     .swiss-card .venn .v-circle,
     .swiss-card .venn-three .circle {
       box-sizing: border-box !important;
@@ -495,20 +495,8 @@
       justify-content: flex-end !important;
       padding-right: 32px !important;
     }
-    .swiss-card .venn-three .circle-a {
-      align-items: flex-start !important;
-      padding-top: 18px !important;
-    }
-    .swiss-card .venn-three .circle-b {
-      align-items: flex-end !important;
-      justify-content: flex-start !important;
-      padding: 0 0 18px 18px !important;
-    }
-    .swiss-card .venn-three .circle-c {
-      align-items: flex-end !important;
-      justify-content: flex-end !important;
-      padding: 0 18px 18px 0 !important;
-    }
+    /* 三圆文案回圆心：等比缩排后三个圆心本就落在各自独占区（两两交叠仅约22px），
+       居中即不压交集；双圆圆心落在交集内，仍用左右独占区文案 */
 
     /* --- 流程-换行变体：纸面步骤块 + 墨线直角边框 --- */
     .swiss-card .process-chain[data-type="wrap"] .step {
