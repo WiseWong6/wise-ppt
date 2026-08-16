@@ -454,13 +454,38 @@
       border-color: var(--wp-compat-atlas-ink-55) !important;
     }
 
-    /* --- 052–053 韦恩图：圆去底色，透明 + 0.6px 墨线内描边（与 043–047 同心圆同档）；标签只放各集合独占区，不压交集 --- */
+    /* --- 052–053 韦恩图：圆去底色，透明 + 0.6px 墨线描边（与 043–047 同心圆同档，描边走 border
+       而非内阴影，保证弹层按图形并集量框）；三圆保持两两相交 + 中心三交集结构，外框高度锁 180px
+       与双圆一致（缩放上限同由 520/180 卡住），变体切换不跳缩放；标签只放各集合独占区，不压交集 --- */
     .swiss-card .venn .v-circle,
     .swiss-card .venn-three .circle {
       box-sizing: border-box !important;
-      border: 0 !important;
       background: transparent !important;
-      box-shadow: inset 0 0 0 .6px var(--wp-compat-atlas-ink-55) !important;
+      border: .6px solid var(--wp-compat-atlas-ink-55) !important;
+      box-shadow: none !important;
+    }
+    .swiss-card .venn-three {
+      height: 190px !important;
+      margin: 24px 0 !important;
+    }
+    .swiss-card .venn-three .circle {
+      width: 107px !important;
+      height: 107px !important;
+      /* 入场从 swiss-pop(缩放) 改 fade(透明度)，动画期间几何不变形，弹层首量即终态，不再先大后小 */
+      animation: swiss-fade 0.5s ease-out both !important;
+      animation-delay: var(--d, 0.15s) !important;
+    }
+    .swiss-card .venn-three .circle-a {
+      top: 4px !important;
+      left: calc(50% - 53.5px) !important;
+    }
+    .swiss-card .venn-three .circle-b {
+      top: 77px !important;
+      left: calc(50% - 96px) !important;
+    }
+    .swiss-card .venn-three .circle-c {
+      top: 77px !important;
+      left: calc(50% - 11px) !important;
     }
     .swiss-card .venn .v-a {
       justify-content: flex-start !important;

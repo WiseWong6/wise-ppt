@@ -65,10 +65,11 @@
   .card-info .nm{font-size:15px;font-weight:400;margin-top:2px}
   .card-info .meta{font-size:13px;color:var(--ink-3);margin-top:4px;line-height:1.6}
   .card-info .meta b{color:var(--ink-2);font-weight:500}
-  /* 卡片信息区统一两行:首行 = 序号 + 标题,次行 = 其余信息 */
-  .card-head{display:flex;align-items:baseline;gap:8px;min-width:0}
-  .card-head .id{flex:none}
-  .card-head .nm{margin-top:0;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+  /* 卡片信息区统一两行:首行 = 序号 + 标题;样式挂在 .card-head 自身,card-info(版式/结构)与 comp-info(组件)两个容器同款;
+     对齐用盒子垂直居中而非文本基线——13px mono 序号与 15px 中文标题基线对齐时,中文字面视觉中心高于基线约 3px,序号会浮高 */
+  .card-head{display:flex;align-items:center;gap:8px;min-width:0}
+  .card-head .id{flex:none;font-family:var(--wp-font-mono);font-size:13px;color:var(--ink-3);letter-spacing:.12em}
+  .card-head .nm{font-size:15px;font-weight:400;margin-top:0;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
 
   /* 组件卡片(近方形) */
   .comp-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:18px}
@@ -76,11 +77,8 @@
   .comp-wrap{position:relative;box-sizing:content-box;aspect-ratio:16 / 9;overflow:hidden;background:var(--paper-deep)}
   .comp-wrap iframe{width:1280px;height:720px;border:0;transform-origin:0 0;position:absolute;left:0;top:0}
   .comp-info{padding:10px 14px 12px}
-  .comp-info .nm{font-size:15px;font-weight:400}
-  .comp-info .en{font-family:var(--wp-font-mono);font-size:13px;color:var(--ink-3);letter-spacing:.05em}
-  .comp-info .merged{font-size:13px;color:var(--ink-3);margin-top:4px}
-  .comp-info .param{font-size:13px;color:var(--ink-3);margin-top:3px;line-height:1.6}
-  .comp-info .rel{display:inline-block;font-size:13px;color:var(--ink-3);background:transparent;border:1px solid var(--ink-45);padding:1px 6px;margin-top:6px;margin-right:4px}
+  /* 组件卡两行:首行 = 序号 + 标题(共用 .card-head),次行 = 关系标签;标签与 fam-head .tag 同一套 mono 细边样式 */
+  .comp-info .rel{display:inline-block;font-family:var(--wp-font-mono);font-size:12px;color:var(--ink-3);background:transparent;border:1px solid var(--ink-45);padding:1px 7px;margin-top:4px;margin-right:4px;letter-spacing:.04em}
 
   /* 图标资产:5,130 枚只按需渲染当前批次，避免把完整母库一次塞进 DOM。 */
   .icon-toolbar{position:sticky;top:0;z-index:20;display:grid;grid-template-columns:minmax(260px,1fr) auto;gap:14px;align-items:center;margin:0 0 18px;padding:12px;background:var(--paper);border:1px solid var(--line)}
@@ -88,7 +86,7 @@
   .icon-search:focus{outline:1px solid var(--ink);outline-offset:2px}
   .icon-summary{font:400 12px var(--wp-font-mono);color:var(--ink-3);white-space:nowrap}
   .icon-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:12px}
-  .icon-card{position:relative;min-width:0;min-height:168px;padding:14px 12px 12px;border:1px solid var(--line);background:var(--card);color:var(--ink);text-decoration:none;display:grid;grid-template-rows:92px auto auto;gap:5px;content-visibility:auto;contain-intrinsic-size:auto 168px}
+  .icon-card{position:relative;min-width:0;padding:14px 12px 12px;border:1px solid var(--line);background:var(--card);color:var(--ink);text-decoration:none;display:grid;grid-template-rows:92px auto;gap:5px;content-visibility:auto;contain-intrinsic-size:auto 140px}
   .icon-card:hover{border-color:var(--ink)}
   .icon-preview{display:flex;align-items:center;justify-content:center;gap:14px;min-width:0}
   .icon-preview img{display:block;width:64px;height:64px;object-fit:contain}
@@ -104,10 +102,6 @@
   .wise-ppt-icon__layer--emphasis{stroke-width:1.6;opacity:.9}
   .wise-ppt-icon__layer--ink-dot{fill:currentColor;stroke:none;opacity:.7}
   .icon-card-name{overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font:400 13px var(--wp-font-mono)}
-  .icon-card-meta{display:flex;align-items:center;gap:5px;min-width:0;overflow:hidden;font:400 10px var(--wp-font-mono);color:var(--ink-3)}
-  .icon-badge{display:inline-block;padding:1px 5px;border:1px solid var(--ink-45);white-space:nowrap}
-  .icon-badge.approved{color:var(--ink);border-color:var(--ink)}
-  .icon-public{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
   .icon-more{display:block;min-width:180px;height:40px;margin:22px auto 0;padding:0 18px;border:1px solid var(--ink-45);border-radius:0;background:transparent;color:var(--ink);font:400 12px var(--wp-font-mono);cursor:pointer}
   .icon-more:hover{background:var(--ink);color:var(--paper)}
   .icon-more[hidden]{display:none}
@@ -137,6 +131,11 @@
   /* 变体选择器:信息栏只显示当前项,菜单向上展开;不再把 2~9 个 tab 堆在右下角 */
   #layer-variants{position:relative;margin-left:auto;flex:0 0 auto}
   #layer-variants:empty{display:none}
+  /* 参考来源:卡片不展示,浮层信息条最右给 ECharts 跳链;无来源(原生/抄录)整行不占位 */
+  #layer-source{margin-left:auto;flex:0 0 auto;font-family:var(--wp-font-mono);font-size:11px;color:var(--ink-3);white-space:nowrap}
+  #layer-source:empty{display:none}
+  #layer-source a{color:inherit;text-decoration:underline;text-underline-offset:2px}
+  #layer-source a:hover{color:var(--ink)}
   .variant-trigger{height:31px;display:flex;align-items:center;gap:8px;padding:0 9px;border:1px solid var(--ink-45);border-radius:0;background:transparent;color:var(--ink);font:inherit;cursor:pointer;white-space:nowrap}
   .variant-trigger:hover,.variant-trigger[aria-expanded="true"]{border-color:var(--ink);background:var(--paper-panel)}
   .variant-trigger:focus-visible,.variant-option:focus-visible{outline:1px solid var(--ink);outline-offset:2px}
@@ -262,13 +261,13 @@
 </main>
 
 <main id="m-cmp">
-  <div class="note"><b>组件 = 参数化画法:内容数量是参数,画法不同才是不同组件。</b><br>atlas / native / ECharts 按与版式相同的 SmartArt 语义入口分组;每个组件只放最主要的表达类型,不在多个入口重复出现。卡片统一用 catalog #001–#071 连续编号,源组件编号只做内部路由。</div>
+  <div class="note"><b>组件 = 参数化画法:内容数量是参数,画法不同才是不同组件。</b><br>atlas / native / ECharts 按与版式相同的 SmartArt 语义入口分组;每个组件只放最主要的表达类型,不在多个入口重复出现。ECharts 类保留 <a href="https://github.com/apache/echarts/tree/6.1.0" target="_blank" rel="noreferrer">Apache ECharts 6.1.0</a> 官方来源与 Apache-2.0 许可署名。卡片统一用 catalog #001–#071 连续编号,源组件编号只做内部路由。</div>
   <div id="extract-groups"></div>
   <div id="cmp-groups"></div>
 </main>
 
 <main id="m-ico">
-  <div class="note"><b>图标分为「现有纸墨成品」与「未重绘母图」两组。</b><br>现有 189 枚成品沿用验收页的文档、人物、数据、流程、媒体、AI 六类；其余 4,965 枚按 Tabler SVG 自带的 41 个官方 category 分类。生产仍只打包 deck 实际引用的已登记名称。</div>
+  <div class="note"><b>图标分为「现有纸墨成品」与「未重绘母图」两组。</b><br>现有 189 枚成品沿用验收页的文档、人物、数据、流程、媒体、AI 六类；其余 4,965 枚按 Tabler SVG 自带的 41 个官方 category 分类。全部保留 <a href="https://github.com/tabler/tabler-icons/tree/v3.46.0" target="_blank" rel="noreferrer">Tabler Icons v3.46.0</a> by Paweł Kuna · MIT License 署名；Paper Ink 重绘不改变原始来源。生产仍只打包 deck 实际引用的已登记名称。</div>
   <div class="icon-toolbar">
     <label><span class="sr-only" style="position:absolute;clip:rect(0 0 0 0);clip-path:inset(50%);width:1px;height:1px;overflow:hidden">搜索图标</span><input class="icon-search" id="icon-search" type="search" autocomplete="off" placeholder="搜索源名称或兼容名称，例如 mail / chart / user"></label>
     <div class="icon-summary" id="icon-summary" aria-live="polite"></div>
@@ -424,7 +423,7 @@ const SMARTART_COMPONENTS=[
     {t:'native',num:78,en:'chat-dialog',nm:'对话气泡标本',rel:['证据']},
     {t:'native',num:88,en:'annotation-callout',nm:'环绕引线标注',rel:['证据']},
   ]},
-  {fam:'⑨ 数据 · Data(Wise PPT 扩展)',items:[
+  {fam:'⑨ 数据 · Data',items:[
     {t:'atlas',num:59,en:'stats',nm:'指标单元',note:'atlas 打包 4 格;概念上单元×4',pageScale:.8,rel:['陈列','指标']},
     {t:'native',num:89,en:'metric-strip',nm:'自适应指标横带',rel:['陈列','指标']},
     {t:'native',num:85,en:'radial-progress',nm:'环形进度指标',note:'源 C5 · 环列阵',rel:['拆解']},
@@ -467,7 +466,7 @@ function componentCatalogCode(item){
   return 'catalog #'+String(item.catalogNo).padStart(3,'0');
 }
 function componentSourceType(item){
-  if(item.t==='ec')return 'ECharts';
+  if(item.t==='ec')return 'Apache ECharts 6.1.0 · Apache-2.0';
   if(item.t==='new')return '版式抄录';
   return item.t;
 }
@@ -1966,27 +1965,29 @@ function thumbMarkup(thumb,alt,wrapClass='frame-wrap'){
 function layoutCard([id,nm,struct,rel]){
   const full=FRAMES+'layout-'+id.toLowerCase()+'.html';
   const thumb=pageThumb(full);
-  const relTxt=rel?(' · 关系:<b>'+rel+'</b>'):'';
-  const mtag='结构:'+struct+(rel?' · 关系:'+rel:'');
+  /* 非关系页第三段是职能描述,没有结构/关系字段 */
+  const nonRel=rel===undefined;
+  const meta=nonRel?`职能:<b>${struct}</b>`:`结构:<b>${struct}</b> · 关系:<b>${rel}</b>`;
+  const mtag=nonRel?('职能:'+struct):('结构:'+struct+' · 关系:'+rel);
   return `<div class="card" id="lyt-${id.toLowerCase()}" data-modal="1" data-frame="${full}" data-thumb="${thumb}" data-mtitle="${id} ${nm}" data-mtag="${mtag}">
     ${thumbMarkup(thumb,id+' '+nm)}
-    <div class="card-info"><span class="id">${id}</span>
-      <div class="nm">${nm}</div>
-      <div class="meta">结构:<b>${struct}</b>${relTxt}</div>
+    <div class="card-info">
+      <div class="card-head"><span class="id">${id}</span><span class="nm">${nm}</span></div>
+      <div class="meta">${meta}</div>
     </div></div>`;
 }
 /* 详情路由:atlas/native → 画册 #/layout/N;echarts → #/component/{slug}-default */
-function compCard(c,extra=''){
+function compCard(c){
   const spec=componentSpec(c);
   const thumb=componentThumb(spec);
   const code=componentCatalogCode(c);
+  const no=String(c.catalogNo).padStart(3,'0');
   const sourceType=componentSourceType(c);
-  return `<div class="comp-card" id="cmp-${String(c.catalogNo).padStart(3,'0')}" data-modal="1" data-catalog-no="${String(c.catalogNo).padStart(3,'0')}" data-spec="${spec}" data-thumb="${thumb}"${c.vr?` data-vr='${JSON.stringify(c.vr)}'`:''} data-mtitle="${code} · ${c.en} ${c.nm}" data-mtag="${sourceType}${c.note?' · '+c.note:''}${c.vr?' · 变体×'+c.vr.length:''}">
+  return `<div class="comp-card" id="cmp-${no}" data-modal="1" data-catalog-no="${no}" data-spec="${spec}" data-thumb="${thumb}"${c.vr?` data-vr='${JSON.stringify(c.vr)}'`:''} data-mtitle="${code} · ${c.en} ${c.nm}" data-mtag="${sourceType}${c.note?' · '+c.note:''}${c.vr?' · 变体×'+c.vr.length:''}">
     ${thumbMarkup(thumb,code+' '+c.en+' '+c.nm,'comp-wrap')}
     <div class="comp-info">
-      <span class="en">${c.en}</span> <span class="nm">${c.nm}</span>
-      <div class="param">${code} · ${sourceType}${c.note?' · '+c.note:''}</div>
-      <div>${(c.rel||[]).map(r=>`<span class="rel">${r}</span>`).join('')}${extra}</div>
+      <div class="card-head"><span class="id">#${no}</span><span class="nm">${c.nm}</span></div>
+      <div>${(c.rel||[]).map(r=>`<span class="rel">${r}</span>`).join('')}</div>
     </div></div>`;
 }
 
@@ -2035,7 +2036,6 @@ $('#cmp-nav').innerHTML=SMARTART_COMPONENTS.map((g,index)=>`<button type="button
 const ICON_CATALOG=window.WISE_PPT_ICON_CATALOG_DATA;
 const ICON_REGISTRY=window.WisePPTIconRegistry;
 const ICON_CATEGORY_PAGE_SIZE=24;
-const ICON_STATUS_LABEL={todo:'未重绘',in_progress:'绘制中',candidate:'候选',approved:'通过',rejected:'退回'};
 let iconScope='existing',iconCategory='all',iconQuery='',iconSearchRaf=0,iconCategoryLimits={};
 function paperInkIcon(name){
   const record=ICON_REGISTRY&&ICON_REGISTRY.icons&&ICON_REGISTRY.icons[name];
@@ -2056,11 +2056,9 @@ function iconEntriesForCategory(category){
   });
 }
 function existingIconCard(entry){
-  const pipeline=entry.redrawStatus!=='todo'?`<span class="icon-badge ${entry.redrawStatus}">${ICON_STATUS_LABEL[entry.redrawStatus]}</span>`:'';
   return `<a class="icon-card" href="${ICON_CATALOG.paths.existingAcceptance}" target="_blank" rel="noreferrer" data-icon-name="${entry.name}" data-redraw-status="${entry.redrawStatus}">
     <div class="icon-preview is-existing"><span class="icon-size s40">${paperInkIcon(entry.name)}</span><span class="icon-size s64">${paperInkIcon(entry.name)}</span></div>
-    <div class="icon-card-name">${entry.name}</div>
-    <div class="icon-card-meta"><span class="icon-badge approved">现有成品</span>${pipeline}<span class="icon-public" title="Tabler: ${entry.sourceName}">${entry.group} · ${entry.sourceName}</span></div></a>`;
+    <div class="icon-card-name">${entry.name}</div></a>`;
 }
 function unredrawnIconCard(entry){
   const source=ICON_CATALOG.paths.sourceSvg+entry.name+'.svg';
@@ -2070,8 +2068,7 @@ function unredrawnIconCard(entry){
     ?`<div class="icon-preview is-pair"><img loading="lazy" decoding="async" src="${source}" alt="${entry.name} 源图"><img loading="lazy" decoding="async" src="${redraw}" alt="${entry.name} 纸墨候选"></div>`
     :`<div class="icon-preview"><img loading="lazy" decoding="async" src="${source}" alt="${entry.name} 源图"></div>`;
   return `<a class="icon-card" href="${hasCandidate?redraw:source}" target="_blank" rel="noreferrer" data-icon-name="${entry.name}" data-redraw-status="${entry.redrawStatus}">
-    ${preview}<div class="icon-card-name">${entry.name}</div>
-    <div class="icon-card-meta"><span class="icon-badge ${entry.redrawStatus}">${ICON_STATUS_LABEL[entry.redrawStatus]}</span><span class="icon-public" title="${entry.category}">${entry.categoryLabel} · ${entry.category}</span></div></a>`;
+    ${preview}<div class="icon-card-name">${entry.name}</div></a>`;
 }
 function renderIconCatalog({reset=false}={}){
   const host=$('#icon-groups'),summary=$('#icon-summary');
@@ -2160,7 +2157,7 @@ $('#extract-groups').innerHTML=EXTRACT_GROUPS.map(g=>`
     '<button class="layer-nav prev" aria-label="上一张">‹</button>'+
     '<button class="layer-nav next" aria-label="下一张">›</button>'+
     '<div class="layer-stage" id="layer-stage"></div>'+
-    '<div class="layer-info"><span class="layer-count" id="layer-count"></span><span id="layer-title"></span><span id="layer-variants"></span></div></div>';
+    '<div class="layer-info"><span class="layer-count" id="layer-count"></span><span id="layer-title"></span><span id="layer-variants"></span><span id="layer-source"></span></div></div>';
   document.body.appendChild(modal);
   const prevBtn=modal.querySelector('.layer-nav.prev'),
         nextBtn=modal.querySelector('.layer-nav.next'),
@@ -2380,11 +2377,47 @@ $('#extract-groups').innerHTML=EXTRACT_GROUPS.map(g=>`
     };
     box.append(trigger,menu);
   }
+  /* 参考来源：卡片上不展示，浮层信息条右侧给跳链。ec 13 例用数据自带 source_url
+     （文案与图册 radar-hex 同款："ECharts Radar 参考"）；atlas 沿用 vendor 数据里
+     已写明的 source（金字塔/漏斗族），原生与抄录组件无 ECharts 来源则整行不渲染。 */
+  const EC_SOURCE_FAMILIES={line:'Line',bar:'Bar',pie:'Pie',scatter:'Scatter',radar:'Radar',tree:'Tree',sankey:'Sankey',calendar:'Calendar',geo:'Map'};
+  function resolveSpecSource(spec){
+    if(!spec)return null;
+    const kind=spec.split(':')[0],key=spec.slice(kind.length+1);
+    if(kind==='ec'){
+      const list=(window.WISE_PPT_ECHARTS_GALLERY_DATA&&window.WISE_PPT_ECHARTS_GALLERY_DATA.components)||[];
+      const entry=list.find(x=>x.component_id===key);
+      if(!entry||!entry.source_url)return null;
+      const family=String(key).replace(/^echarts\./,'').split('-')[0];
+      return {label:'ECharts '+(EC_SOURCE_FAMILIES[family]||family)+' 参考',url:entry.source_url};
+    }
+    if(kind==='atlas'){
+      const entry=window.SWISS_CATALOG_DATA&&window.SWISS_CATALOG_DATA.entries.find(x=>x.num===Number(key));
+      if(entry&&entry.source&&entry.source.url)return {label:entry.source.name||entry.source.label,url:entry.source.url};
+    }
+    return null;
+  }
+  function updateLayerSource(spec){
+    const box=document.getElementById('layer-source');
+    if(!box)return;
+    box.replaceChildren();
+    const ref=resolveSpecSource(spec);
+    if(!ref)return;
+    const prefix=document.createElement('span');
+    prefix.textContent='参考来源：';
+    const link=document.createElement('a');
+    link.href=ref.url;
+    link.target='_blank';
+    link.rel='noreferrer';
+    link.textContent=ref.label;
+    box.append(prefix,link);
+  }
   /* 打开/翻页:先展示静态图，再异步启动真实页面或组件并无闪白替换。 */
   let navIndex=-1;
   async function loadCard(card,overrideSpec=''){
     const d=card.dataset;
     const token=++openToken;
+    updateLayerSource(null);
     prepareFacade(card);
     const live=createLiveLayer();
     try{
@@ -2396,6 +2429,7 @@ $('#extract-groups').innerHTML=EXTRACT_GROUPS.map(g=>`
         if(kind==='ec')await ensureEChartsAssets();
         else await ensureComponentCore();
         assertVariantRefs();
+        updateLayerSource(spec);
         if(token!==openToken)return;
         await renderSpec(spec,live);
       }
@@ -3064,8 +3098,8 @@ function structureExampleCard(it){
   const thumb=pageThumb(full);
   return `<div class="card" data-modal="1" data-frame="${full}" data-thumb="${thumb}" data-mtitle="${it[0]} ${it[1]}" data-mtag="结构:${it[2]} · 关系:${it[3]}">
     ${thumbMarkup(thumb,it[0]+' '+it[1])}
-    <div class="card-info"><span class="id">${it[0]}</span>
-      <div class="nm">${it[1]}</div>
+    <div class="card-info">
+      <div class="card-head"><span class="id">${it[0]}</span><span class="nm">${it[1]}</span></div>
       <div class="meta">结构:<b>${it[2]}</b> · 关系:<b>${it[3]}</b></div>
     </div></div>`;
 }

@@ -77,6 +77,12 @@ def build_payload(skill_root: Path) -> dict:
     vendor = skill_root / "capabilities" / "vendors" / "tabler-outline"
     outline = vendor / "icons" / "outline"
     source = _load_json(vendor / "SOURCE.json")
+    required_source_fields = {
+        "library", "version", "project_url", "source_url", "source_sha256",
+        "outline_count", "license", "license_url", "author", "copyright", "attribution",
+    }
+    if not required_source_fields <= set(source):
+        raise CatalogBuildError("Tabler SOURCE.json 缺少作者、许可或上游链接")
     registry = _load_json(vendor / "registry-v2.json")
     source_names = sorted(path.stem for path in outline.glob("*.svg"))
     if len(source_names) != source.get("outline_count") or len(source_names) != len(set(source_names)):
@@ -158,6 +164,11 @@ def build_payload(skill_root: Path) -> dict:
             "version": source.get("version"),
             "license": source.get("license"),
             "sha256": source.get("source_sha256"),
+            "projectUrl": source.get("project_url"),
+            "licenseUrl": source.get("license_url"),
+            "author": source.get("author"),
+            "copyright": source.get("copyright"),
+            "attribution": source.get("attribution"),
         },
         "paths": {
             "sourceSvg": "../../wise-ppt/capabilities/vendors/tabler-outline/icons/outline/",

@@ -1,14 +1,12 @@
 # 纸墨主题视觉自检
 
-主题或仓库维护时可单独跑以下诊断；正式 deck 的最终交付仍以 `scripts/deliver-deck.sh` 触发的完整 delivery 为准：
+主题或仓库维护时可单独跑以下诊断；正式 deck 以本仓库现有 runtime 检查与 PDF 导出为准：
 
 ```bash
-python3 scripts/validate.py gallery .
-python3 themes/paper-ink/scripts/lint.py gallery/paper-ink/general
-python3 themes/paper-ink/scripts/lint.py gallery/paper-ink/ai
+python3 themes/paper-ink/scripts/lint.py <deck-dir> --strict
 bash runtime/check-deck.sh <deck-dir> --mode normal
 bash runtime/check-deck.sh <deck-dir> --mode accent
-NODE_PATH=$(npm root -g) node scripts/geometry-audit.mjs   # 可选渲染几何门禁：文字溢出载体/压字/穿线/伪对齐，报告写入 output/audit/
+bash runtime/test-geometry-contract.sh
 ```
 
 机器检查通过后，由用户在实际浏览器逐页目检。只有用户明确要求视觉代验或截图交付时才生成截图；构建成功不能替代人工视觉验收。
@@ -22,16 +20,16 @@ NODE_PATH=$(npm root -g) node scripts/geometry-audit.mjs   # 可选渲染几何�
 - 纸底、墨色、字体、线宽符合 `design-tokens.md`；无未声明的彩色、渐变、重阴影和大面积深色底。
 - 页面没有用 Emoji 代替图标或装饰；通用图标来自本地 `WisePPT.icons` registry 或符合主题线宽的自绘 SVG，不存在 Font Awesome / 图标字体依赖。
 - 全 deck 字号只引用共享 `--type-*` 字阶；相同语义层级字号一致，CSS/SVG/Canvas/ECharts 都没有页面级裸字号或 shorthand 绕过。
-- 页面呈现通过 [`deck-planning.md`](../../../core/references/deck-planning.md) 的主次合同门禁，主题没有反转既定层级。
+- 页面呈现通过 [`skill-design.md`](../../../skill-design.md) 第七章的主次、阅读顺序与关系锚点规则，主题没有反转既定层级。
 - 事实、数字、表格、图表和重构图通过 [`media-contract.md`](../../../capabilities/references/media-contract.md) 与 Content 引用门禁。
-- renderer 与结构区域通过 [`page-expression.md`](../../../core/references/page-expression.md) 的容量和溢出门禁。
+- renderer 与结构区域通过 [`skill-design.md`](../../../skill-design.md) 第八章的容量和溢出回退规则。
 - 居中只用于中心型原语；非对称、时间轴、UI、证据墙、架构和流程按自身结构线对齐。
 - ECharts、图片和每个必需字体 face 真实加载完成后才调用 `WisePPT.markSlideReady(slide)`；全部页面完成后根节点必须同时是 `data-font-check="pass"` 与 `data-deck-ready="true"`。
 - caption 没有被主体压住且全 deck 固定为 `--type-caption`；正文只用 `--type-body` / `--type-body-small`；图表刻度与来源可读。
 - 放映正文逐页可框选复制；input 与 contenteditable 分别获得焦点时，方向键、空格、Home/End 和触控滑动不抢占；真实 ESC KeyboardEvent 返回画册。
 - 1920×1080 `#deck-stage` 的 bounding rect 始终完整落在 visual viewport；正式 `.slide` / `.stage` 没有 inline transform，也没有第二次缩放。
 - 放映控制符合 `design-tokens.md` §6：水平居中于视口底部、控件等高 40px、静止自动隐藏、打印时隐藏。
-- 几何门禁 `data-geometry-check="pass"`：内容组不越过所选内容区，组件不越过矩形/圆形容器，路径不穿字，slot 无未声明重叠；存在对应关系的组按明确顶边、底边、侧边或中心锚点对齐。新页面与被修改页面须按 [`validation.md` §4.1](../../../core/references/validation.md) 补齐统一契约。
+- 几何门禁 `data-geometry-check="pass"`：新版 deck 根节点声明 `data-geometry-contract-version="1"`，每页恰有一个几何契约；内容组不越过所选内容区，组件不越过矩形/圆形容器，路径不穿字，slot 无未声明重叠；每页至少声明一条边界/冲突关系与一条关系对齐。契约写法与优先级见 [`skill-design.md`](../../../skill-design.md) 第七章。
 
 ## P1：主题一致
 
@@ -57,6 +55,14 @@ NODE_PATH=$(npm root -g) node scripts/geometry-audit.mjs   # 可选渲染几何�
 2. 中距：证据、层级、组件组合和留白是否服务主张。
 3. 近看：同层级字阶是否跨页一致，线宽、对齐、来源、单位、标注和溢出是否合格。
 4. 合同对照：核对页面 `data-blueprint-id`、blueprint fingerprint、逐槽 binding receipt 和 page shell conclusion 是否与 Render Plan v6、blueprint registry、routing manifest 及 Deck Plan 一致。
+
+## 对齐审查五问
+
+1. 我对齐的是哪些对象？
+2. 它们为什么应该对齐？
+3. 使用的是共同边、底线、偏移、中心、镜像还是路径锚点？
+4. 这种对齐是否强化了主次和阅读顺序？
+5. 去掉辅助线后，观众还能否看懂它们的关系？
 
 ## Legacy design evidence maintenance（非生产）
 

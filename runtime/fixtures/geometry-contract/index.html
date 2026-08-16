@@ -1,0 +1,157 @@
+<!doctype html>
+<html lang="zh-CN" data-runtime="wise-ppt-deck" data-geometry-contract-version="1" data-typography-mode="all-sans" data-deck-title="几何契约门禁夹具">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>几何契约门禁夹具</title>
+<link rel="stylesheet" href="../../../themes/paper-ink/assets/shared.css">
+<script src="../../deck-runtime.js"></script>
+<style>
+  .fixture-region { position:absolute; left:200px; top:220px; width:1400px; height:560px; }
+  .fixture-slot { position:absolute; box-sizing:border-box; border:1px solid var(--ink-25); padding:24px; }
+  .fixture-slot p { margin:0; font:300 var(--type-body)/1.45 var(--sans); color:var(--ink); }
+  .edge-left { left:100px; top:80px; width:420px; height:180px; }
+  .edge-right { left:780px; top:80px; width:420px; height:180px; }
+  .path-canvas { position:absolute; inset:0; width:100%; height:100%; }
+  .path-label { left:120px; top:120px; width:300px; height:48px; padding:8px 12px; }
+  .center-left { left:100px; top:230px; width:200px; height:100px; }
+  .center-focus { left:600px; top:220px; width:200px; height:120px; }
+  .center-right { left:1100px; top:230px; width:200px; height:100px; }
+  .overlap-base { left:300px; top:160px; width:400px; height:200px; }
+  .overlap-tag { left:620px; top:300px; width:180px; height:80px; background:var(--paper); }
+</style>
+</head>
+<body class="mode-board">
+<main id="board"><header class="board-head"><h1 id="deck-title"></h1><p id="deck-subtitle"></p></header><div id="board-sections"></div></main>
+<section id="deck" aria-label="横向放映"><div id="deck-stage"><div id="track">
+
+<section class="slide" data-page-id="fixture.edge" data-page-role="compare" data-page-title="共同边对齐" data-page-summary="共同边和边界关系同时成立" data-section-id="fixture" data-section-title="几何契约" data-emphasis-mode="none">
+  <main class="stage">
+    <div class="fixture-region" data-layout-slot="true" data-slot-id="edge-region" data-anchor-id="edge.region">
+      <div class="fixture-slot edge-left" data-layout-slot="true" data-slot-id="edge-left" data-anchor-id="edge.left"><p data-content-ref="fixture.edge.left" data-anchor-id="edge.left.text">左侧同级内容</p></div>
+      <div class="fixture-slot edge-right" data-layout-slot="true" data-slot-id="edge-right" data-anchor-id="edge.right"><p data-content-ref="fixture.edge.right">右侧同级内容</p></div>
+    </div>
+  </main>
+  <script type="application/json" data-geometry-contract>{
+    "format":"wise-ppt-geometry@1","primitive":"左右x等分","canvas":{"width":1920,"height":1080},
+    "content_region":{"anchor_id":"edge.region","zone":"core-content"},
+    "anchors":[
+      {"anchor_id":"edge.region","selector":"[data-anchor-id=\"edge.region\"]"},
+      {"anchor_id":"edge.left","selector":"[data-anchor-id=\"edge.left\"]"},
+      {"anchor_id":"edge.left.text","selector":"[data-anchor-id=\"edge.left.text\"]"},
+      {"anchor_id":"edge.right","selector":"[data-anchor-id=\"edge.right\"]"}
+    ],
+    "relations":[
+      {"relation_id":"edge.left-boundary","type":"hardBoundary","anchors":["edge.region","edge.left"],"edge":"left","tolerance":1},
+      {"relation_id":"edge.left-contained","type":"contain","anchors":["edge.region","edge.left"],"shape":"rect","inset":8,"tolerance":1},
+      {"relation_id":"edge.left-text-contained","type":"contain","anchors":["edge.left","edge.left.text"],"shape":"rect","inset":8,"tolerance":1},
+      {"relation_id":"edge.separate","type":"avoid","anchors":["edge.left","edge.right"],"min_gap":40,"tolerance":1},
+      {"relation_id":"edge.top","type":"edgeEq","anchors":["edge.left","edge.right"],"edge":"top","tolerance":1}
+    ]
+  }</script>
+</section>
+
+<section class="slide" data-page-id="fixture.path" data-page-role="sequence" data-page-title="路径锚定" data-page-summary="节点锚定路径且路径不穿字" data-section-id="fixture" data-section-title="几何契约" data-emphasis-mode="none">
+  <main class="stage">
+    <div class="fixture-region" data-layout-slot="true" data-slot-id="path-region" data-anchor-id="path.region">
+      <svg class="path-canvas" viewBox="0 0 1400 560" aria-label="路径锚定夹具">
+        <path data-anchor-id="path.track" d="M 150 280 L 1250 280" fill="none" stroke="var(--ink-45)" stroke-width="1"/>
+        <circle data-slot-id="path-node" data-anchor-id="path.node" cx="700" cy="280" r="18" fill="var(--paper)" stroke="var(--ink)" stroke-width="1.2"/>
+      </svg>
+      <div class="fixture-slot path-label" data-layout-slot="true" data-slot-id="path-label" data-anchor-id="path.label"><p data-content-ref="fixture.path.label">路径上方说明</p></div>
+    </div>
+  </main>
+  <script type="application/json" data-geometry-contract>{
+    "format":"wise-ppt-geometry@1","primitive":"单区","canvas":{"width":1920,"height":1080},
+    "content_region":{"anchor_id":"path.region","zone":"core-content"},
+    "anchors":[
+      {"anchor_id":"path.region","selector":"[data-anchor-id=\"path.region\"]"},
+      {"anchor_id":"path.track","selector":"[data-anchor-id=\"path.track\"]"},
+      {"anchor_id":"path.node","selector":"[data-anchor-id=\"path.node\"]"},
+      {"anchor_id":"path.label","selector":"[data-anchor-id=\"path.label\"]"}
+    ],
+    "relations":[
+      {"relation_id":"path.label-contained","type":"contain","anchors":["path.region","path.label"],"shape":"rect","inset":8,"tolerance":1},
+      {"relation_id":"path.node-contained","type":"contain","anchors":["path.region","path.node"],"shape":"rect","inset":0,"tolerance":1},
+      {"relation_id":"path.label-clear","type":"pathClear","anchors":["path.label","path.track"],"min_gap":4,"tolerance":1},
+      {"relation_id":"path.node-anchor","type":"pathAnchor","anchors":["path.node","path.track"],"max_distance":1,"tolerance":1}
+    ]
+  }</script>
+</section>
+
+<section class="slide" data-page-id="fixture.center" data-page-role="hook" data-page-title="中心型对齐" data-page-summary="唯一主角位于两侧锚点之间" data-section-id="fixture" data-section-title="几何契约" data-emphasis-mode="none">
+  <main class="stage">
+    <div class="fixture-region" data-layout-slot="true" data-slot-id="center-region" data-anchor-id="center.region">
+      <div class="fixture-slot center-left" data-layout-slot="true" data-slot-id="center-left" data-anchor-id="center.left"><p data-content-ref="fixture.center.left">左锚点</p></div>
+      <div class="fixture-slot center-focus" data-layout-slot="true" data-slot-id="center-focus" data-anchor-id="center.focus"><p data-content-ref="fixture.center.focus">唯一主角</p></div>
+      <div class="fixture-slot center-right" data-layout-slot="true" data-slot-id="center-right" data-anchor-id="center.right"><p data-content-ref="fixture.center.right">右锚点</p></div>
+    </div>
+  </main>
+  <script type="application/json" data-geometry-contract>{
+    "format":"wise-ppt-geometry@1","primitive":"非关系模板:M2","canvas":{"width":1920,"height":1080},
+    "content_region":{"anchor_id":"center.region","zone":"breath-page"},
+    "anchors":[
+      {"anchor_id":"center.region","selector":"[data-anchor-id=\"center.region\"]"},
+      {"anchor_id":"center.left","selector":"[data-anchor-id=\"center.left\"]"},
+      {"anchor_id":"center.focus","selector":"[data-anchor-id=\"center.focus\"]"},
+      {"anchor_id":"center.right","selector":"[data-anchor-id=\"center.right\"]"}
+    ],
+    "relations":[
+      {"relation_id":"center.focus-contained","type":"contain","anchors":["center.region","center.focus"],"shape":"rect","inset":8,"tolerance":1},
+      {"relation_id":"center.focus-between","type":"centerBetween","anchors":["center.focus","center.left","center.right"],"axis":"x","tolerance":3}
+    ]
+  }</script>
+</section>
+
+<section class="slide" data-page-id="fixture.overlap" data-page-role="explain" data-page-title="合法归属重叠" data-page-summary="有归属理由的重叠可以通过" data-section-id="fixture" data-section-title="几何契约" data-emphasis-mode="none">
+  <main class="stage">
+    <div class="fixture-region" data-layout-slot="true" data-slot-id="overlap-region" data-anchor-id="overlap.region">
+      <div class="fixture-slot overlap-base" data-layout-slot="true" data-slot-id="overlap-base" data-anchor-id="overlap.base"><p data-content-ref="fixture.overlap.base">证据主体</p></div>
+      <div class="fixture-slot overlap-tag" data-layout-slot="true" data-slot-id="overlap-tag" data-anchor-id="overlap.tag"><p data-content-ref="fixture.overlap.tag">所属编号牌</p></div>
+    </div>
+  </main>
+  <script type="application/json" data-geometry-contract>{
+    "format":"wise-ppt-geometry@1","primitive":"左右不对称","canvas":{"width":1920,"height":1080},
+    "content_region":{"anchor_id":"overlap.region","zone":"core-content"},
+    "anchors":[
+      {"anchor_id":"overlap.region","selector":"[data-anchor-id=\"overlap.region\"]"},
+      {"anchor_id":"overlap.base","selector":"[data-anchor-id=\"overlap.base\"]"},
+      {"anchor_id":"overlap.tag","selector":"[data-anchor-id=\"overlap.tag\"]"}
+    ],
+    "relations":[
+      {"relation_id":"overlap.base-contained","type":"contain","anchors":["overlap.region","overlap.base"],"shape":"rect","inset":8,"tolerance":1},
+      {"relation_id":"overlap.owned","type":"ownerOverlap","anchors":["overlap.base","overlap.tag"],"reason":"编号牌属于证据主体","tolerance":1},
+      {"relation_id":"overlap.offset","type":"offsetEq","anchors":["overlap.base","overlap.tag"],"axis":"x","offset":320,"tolerance":1}
+    ]
+  }</script>
+</section>
+
+</div></div><div id="presentation-controls" aria-label="放映控制"><button id="board-toggle" class="deck-control" type="button" data-icon="gallery" aria-label="返回画册"><span class="visually-hidden">返回画册</span></button><output id="pager" aria-live="polite"></output></div></section>
+<script>
+(function () {
+  const caseName = new URLSearchParams(location.search).get('case') || 'valid';
+  const slides = Array.from(document.querySelectorAll('.slide'));
+  const contractNode = (index) => slides[index].querySelector('script[data-geometry-contract]');
+  const readContract = (index) => JSON.parse(contractNode(index).textContent);
+  const writeContract = (index, value) => { contractNode(index).textContent = JSON.stringify(value); };
+  const boundaryTypes = new Set(['contain','hardBoundary','avoid','clear','pathClear','ownerOverlap']);
+  const alignmentTypes = new Set(['edgeEq','bottomEq','offsetEq','centerBetween','mirrorEq','pathAnchor']);
+  if (caseName === 'missing-contract') contractNode(0).remove();
+  else if (caseName === 'duplicate-contract') slides[0].appendChild(contractNode(0).cloneNode(true));
+  else if (caseName === 'invalid-json') contractNode(0).textContent = '{invalid';
+  else if (caseName === 'missing-boundary') { const value=readContract(0); value.relations=value.relations.filter((item)=>!boundaryTypes.has(item.type)); writeContract(0,value); }
+  else if (caseName === 'missing-alignment') { const value=readContract(0); value.relations=value.relations.filter((item)=>!alignmentTypes.has(item.type)); writeContract(0,value); }
+  else if (caseName === 'unanchored-slot') { const node=document.createElement('div'); node.dataset.slotId='orphan'; slides[0].querySelector('.stage').appendChild(node); }
+  else if (caseName === 'undeclared-anchor') { const node=document.createElement('div'); node.dataset.anchorId='undeclared'; slides[0].querySelector('.stage').appendChild(node); }
+  else if (caseName === 'pseudoalignment') slides[0].querySelector('.edge-right').style.top='84px';
+  else if (caseName === 'unowned-overlap') slides[0].querySelector('.edge-right').style.left='300px';
+  else if (caseName === 'owner-no-reason') { const value=readContract(3); delete value.relations.find((item)=>item.type==='ownerOverlap').reason; writeContract(3,value); }
+  else if (caseName === 'text-inset') { const value=readContract(0); value.relations.find((item)=>item.relation_id==='edge.left-text-contained').inset=4; writeContract(0,value); }
+  else if (caseName === 'contain-overflow') slides[0].querySelector('[data-anchor-id="edge.left.text"]').style.cssText='position:absolute;left:-20px;top:24px;width:300px';
+  else if (caseName === 'hard-boundary') slides[0].querySelector('.edge-left').style.left='-12px';
+  else if (caseName === 'path-clear') slides[1].querySelector('.path-label').style.top='260px';
+  else if (caseName === 'relation-order') { const value=readContract(0); value.relations=[value.relations[3],value.relations[0],value.relations[1],value.relations[2]]; writeContract(0,value); }
+}());
+</script>
+</body>
+</html>

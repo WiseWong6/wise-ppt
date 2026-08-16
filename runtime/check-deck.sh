@@ -17,6 +17,7 @@ DECK="$(cd "$DECK" && pwd)"
 HTML="$DECK/index.html"
 [ -f "$HTML" ] || { echo "缺少 $HTML" >&2; exit 1; }
 rg -q 'data-runtime="wise-ppt-deck"' "$HTML" || { echo "不是 Wise PPT deck" >&2; exit 1; }
+rg -q 'data-geometry-contract-version="1"' "$HTML" || { echo "不是新版几何契约 deck：根节点缺少 data-geometry-contract-version=1" >&2; exit 1; }
 if rg -ni '<iframe|thumb-[a-z0-9_-]+' "$HTML"; then echo "deck runtime 不得引用 frame 或缩略图" >&2; exit 1; fi
 if rg -n '\bstageFit\s*\(' "$HTML"; then echo "正式 deck 不得调用 specimen stageFit()" >&2; exit 1; fi
 CHROME="/Applications/Google Chrome.app/Contents/MacOS/Google Chrome"

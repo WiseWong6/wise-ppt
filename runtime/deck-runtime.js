@@ -762,17 +762,96 @@
       root.dataset.controlsCheck = 'pass';
     }
     function assertGeometryContract(slide, pageNo) {
-      var sources = slide.querySelectorAll(':scope>script[type="application/json"][data-geometry-contract]');
-      if (!sources.length) return;
+      var sources = slide.querySelectorAll('script[type="application/json"][data-geometry-contract]');
+      var coverageRequired = root.dataset.geometryContractVersion === '1';
+      if (!sources.length) {
+        if (coverageRequired) throw new Error('第 ' + pageNo + ' 页缺少 data-geometry-contract');
+        slide.dataset.geometryContractCheck = 'legacy-skip';
+        return;
+      }
       if (sources.length !== 1) throw new Error('第 ' + pageNo + ' 页必须且只能声明一个几何契约');
       var source = sources[0];
       var contract;
       try { contract = JSON.parse(source.textContent); }
       catch (error) { throw new Error('第 ' + pageNo + ' 页几何契约不是合法 JSON: ' + error.message); }
-      if (!contract || contract.format !== 'wise-ppt-geometry@1') throw new Error('第 ' + pageNo + ' 页几何契约版本错误');
-      if (typeof contract.primitive !== 'string') throw new Error('第 ' + pageNo + ' 页几何契约缺少 primitive');
+      if (!contract || typeof contract !== 'object' || Array.isArray(contract)) throw new Error('第 ' + pageNo + ' 页几何契约顶层必须是对象');
+      var topLevelKeys = ['format', 'primitive', 'canvas', 'content_region', 'anchors', 'relations'];
+      var unknownTopLevelKeys = Object.keys(contract).filter(function (key) { return !topLevelKeys.includes(key); });
+      if (unknownTopLevelKeys.length) throw new Error('第 ' + pageNo + ' 页几何契约包含未知字段: ' + unknownTopLevelKeys.join(','));
+      if (contract.format !== 'wise-ppt-geometry@1') throw new Error('第 ' + pageNo + ' 页几何契约版本错误');
+      if (typeof contract.primitive !== 'string' || !contract.primitive.trim()) throw new Error('第 ' + pageNo + ' 页几何契约缺少 primitive');
       if (!contract.canvas || contract.canvas.width !== 1920 || contract.canvas.height !== 1080) throw new Error('第 ' + pageNo + ' 页几何画布必须为 1920×1080');
-      if (!Array.isArray(contract.anchors) || !Array.isArray(contract.relations)) throw new Error('第 ' + pageNo + ' 页几何契约缺少 anchors/relations');
+      if (!Array.isArray(contract.anchors) || !contract.anchors.length) throw new Error('第 ' + pageNo + ' 页几何契约必须声明 anchors');
+      if (!Array.isArray(contract.relations) || !contract.relations.length) throw new Error('第 ' + pageNo + ' 页几何契约必须声明 relations');
+
+      var relationArity = {
+        contain: 2, hardBoundary: 2, avoid: 2, clear: 2, pathClear: 2, ownerOverlap: 2,
+        edgeEq: 2, bottomEq: 2, offsetEq: 2, centerBetween: 3, mirrorEq: 3, pathAnchor: 2
+      };
+      var boundaryRelationTypes = ['contain', 'hardBoundary', 'avoid', 'clear', 'pathClear', 'ownerOverlap'];
+      var alignmentRelationTypes = ['edgeEq', 'bottomEq', 'offsetEq', 'centerBetween', 'mirrorEq', 'pathAnchor'];
+      var relationPriorities = [];
+      var relationIds = [];
+      var declaredAnchorIds = [];
+
+      contract.anchors.forEach(function (anchor) {
+        if (!anchor || typeof anchor !== 'object' || Array.isArray(anchor)) throw new Error('第 ' + pageNo + ' 页 anchor 必须是对象');
+        var unknownAnchorKeys = Object.keys(anchor).filter(function (key) { return !['anchor_id', 'selector'].includes(key); });
+        if (unknownAnchorKeys.length) throw new Error('第 ' + pageNo + ' 页 anchor 包含未知字段: ' + unknownAnchorKeys.join(','));
+        if (typeof anchor.anchor_id !== 'string' || !anchor.anchor_id) throw new Error('第 ' + pageNo + ' 页 anchor 缺少 anchor_id');
+        if (anchor.selector !== '[data-anchor-id="' + anchor.anchor_id + '"]') throw new Error('第 ' + pageNo + ' 页 anchor[' + anchor.anchor_id + '] selector 必须由 anchor_id 唯一推导');
+        if (declaredAnchorIds.includes(anchor.anchor_id)) throw new Error('第 ' + pageNo + ' 页 anchor_id 重复: ' + anchor.anchor_id);
+        declaredAnchorIds.push(anchor.anchor_id);
+      });
+
+      if (!contract.content_region || typeof contract.content_region !== 'object' || Array.isArray(contract.content_region)) throw new Error('第 ' + pageNo + ' 页 content_region 非法');
+      if (Object.keys(contract.content_region).sort().join('|') !== 'anchor_id|zone') throw new Error('第 ' + pageNo + ' 页 content_region 只能声明 anchor_id 与 zone');
+      if (!declaredAnchorIds.includes(contract.content_region.anchor_id)) throw new Error('第 ' + pageNo + ' 页 content_region 引用未知 anchor[' + contract.content_region.anchor_id + ']');
+
+      contract.relations.forEach(function (relation) {
+        if (!relation || typeof relation !== 'object' || Array.isArray(relation)) throw new Error('第 ' + pageNo + ' 页 relation 必须是对象');
+        if (typeof relation.relation_id !== 'string' || !relation.relation_id) throw new Error('第 ' + pageNo + ' 页存在无 ID 的几何关系');
+        if (relationIds.includes(relation.relation_id)) throw new Error('第 ' + pageNo + ' 页 relation_id 重复: ' + relation.relation_id);
+        relationIds.push(relation.relation_id);
+        if (!Object.prototype.hasOwnProperty.call(relationArity, relation.type)) throw new Error('第 ' + pageNo + ' 页关系[' + relation.relation_id + '] 类型未知: ' + relation.type);
+        var allowedRelationKeys = ['relation_id', 'type', 'anchors', 'tolerance'];
+        if (['avoid', 'clear', 'pathClear'].includes(relation.type)) allowedRelationKeys.push('min_gap');
+        else if (relation.type === 'contain') allowedRelationKeys.push('shape', 'inset');
+        else if (relation.type === 'ownerOverlap') allowedRelationKeys.push('reason');
+        else if (['edgeEq', 'hardBoundary'].includes(relation.type)) allowedRelationKeys.push('edge');
+        else if (relation.type === 'offsetEq') allowedRelationKeys.push('axis', 'offset');
+        else if (['centerBetween', 'mirrorEq'].includes(relation.type)) allowedRelationKeys.push('axis');
+        else if (relation.type === 'pathAnchor') allowedRelationKeys.push('max_distance');
+        var unknownRelationKeys = Object.keys(relation).filter(function (key) { return !allowedRelationKeys.includes(key); });
+        if (unknownRelationKeys.length) throw new Error('第 ' + pageNo + ' 页关系[' + relation.relation_id + '] 包含未知字段: ' + unknownRelationKeys.join(','));
+        if (!Array.isArray(relation.anchors) || relation.anchors.length !== relationArity[relation.type]) throw new Error('第 ' + pageNo + ' 页关系[' + relation.relation_id + '] anchor 数量错误');
+        var unknownRelationAnchors = relation.anchors.filter(function (anchorId) { return !declaredAnchorIds.includes(anchorId); });
+        if (unknownRelationAnchors.length) throw new Error('第 ' + pageNo + ' 页关系[' + relation.relation_id + '] 引用未知 anchor[' + unknownRelationAnchors.join(',') + ']');
+        var declaredTolerance = Number(relation.tolerance || 0);
+        if (!Number.isFinite(declaredTolerance) || declaredTolerance < 0) throw new Error('第 ' + pageNo + ' 页关系[' + relation.relation_id + '] tolerance 非法');
+        var toleranceLimit = relation.type === 'centerBetween' ? 3 : 1;
+        if (declaredTolerance > toleranceLimit) throw new Error('第 ' + pageNo + ' 页关系[' + relation.relation_id + '] tolerance 超过 ' + toleranceLimit + 'px');
+        if (relation.type === 'ownerOverlap' && (typeof relation.reason !== 'string' || !relation.reason.trim())) throw new Error('第 ' + pageNo + ' 页关系[' + relation.relation_id + '] 必须说明归属重叠原因');
+        if (relation.type === 'pathClear' && Number(relation.min_gap) < 4) throw new Error('第 ' + pageNo + ' 页关系[' + relation.relation_id + '] 路径与文字间距不得小于 4px');
+        relationPriorities.push(boundaryRelationTypes.includes(relation.type) ? 0 : 1);
+      });
+      if (relationPriorities.some(function (priority, index) { return index > 0 && priority < relationPriorities[index - 1]; })) throw new Error('第 ' + pageNo + ' 页 relations 必须按边界/不重叠优先、对齐其次的顺序声明');
+      var relationTypes = contract.relations.map(function (relation) { return relation.type; });
+      if (!relationTypes.some(function (type) { return boundaryRelationTypes.includes(type); })) throw new Error('第 ' + pageNo + ' 页几何契约至少声明一条边界或不重叠关系');
+      if (!relationTypes.some(function (type) { return alignmentRelationTypes.includes(type); })) throw new Error('第 ' + pageNo + ' 页几何契约至少声明一条关系对齐');
+
+      var unanchoredSlots = Array.prototype.filter.call(slide.querySelectorAll('[data-slot-id]'), function (node) { return !node.getAttribute('data-anchor-id'); });
+      if (unanchoredSlots.length) throw new Error('第 ' + pageNo + ' 页 slot 缺少 data-anchor-id: ' + unanchoredSlots.map(function (node) { return node.getAttribute('data-slot-id'); }).join(','));
+      var pageAnchorCounts = {};
+      Array.prototype.forEach.call(slide.querySelectorAll('[data-anchor-id]'), function (node) {
+        var anchorId = node.getAttribute('data-anchor-id');
+        pageAnchorCounts[anchorId] = (pageAnchorCounts[anchorId] || 0) + 1;
+      });
+      var undeclaredPageAnchors = Object.keys(pageAnchorCounts).filter(function (anchorId) { return !declaredAnchorIds.includes(anchorId); });
+      if (undeclaredPageAnchors.length) throw new Error('第 ' + pageNo + ' 页包含未写入 geometry 的 anchor: ' + undeclaredPageAnchors.join(','));
+      var duplicatedPageAnchors = Object.keys(pageAnchorCounts).filter(function (anchorId) { return pageAnchorCounts[anchorId] !== 1; });
+      if (duplicatedPageAnchors.length) throw new Error('第 ' + pageNo + ' 页 data-anchor-id 不唯一: ' + duplicatedPageAnchors.join(','));
+
       var stage = slide.querySelector(':scope>.stage');
       var stageRect = stage.getBoundingClientRect();
       var scale = stageRect.width / contract.canvas.width;
@@ -878,6 +957,9 @@
           pair = requireAnchors(relation, 2);
           var inset = Number(relation.inset || 0);
           if (!Number.isFinite(inset) || inset < 0) throw new Error('第 ' + pageNo + ' 页关系[' + relation.relation_id + '] inset 非法');
+          var containedNode = nodes[relation.anchors[1]];
+          var textCarrier = containedNode.matches('h1,h2,h3,h4,h5,h6,p,li,blockquote,figcaption,label,[data-content-ref]');
+          if (textCarrier && inset < 8) throw new Error('第 ' + pageNo + ' 页关系[' + relation.relation_id + '] 文字载体内距不得小于 8px');
           if ((relation.shape || 'rect') === 'circle') {
             var radius = Math.min(pair[0].width, pair[0].height) / 2 - inset;
             var circleX = center(pair[0], 'x'), circleY = center(pair[0], 'y');
@@ -1023,7 +1105,13 @@
           }
         });
       }
-      assertGeometryContract(slide, pageNo);
+      try {
+        assertGeometryContract(slide, pageNo);
+      } catch (error) {
+        slide.dataset.geometryContractCheck = 'fail';
+        slide.dataset.geometryContractError = error.message;
+        throw error;
+      }
       assertSemanticColors(slide, pageNo);
     }
     function selfTest() {
@@ -1083,7 +1171,12 @@
         root.dataset.inputCheck = 'pass';
         root.dataset.contenteditableCheck = 'pass';
         root.dataset.copyCheck='pass';
-        root.dataset.geometryCheck='pass';
+        if (root.dataset.geometryContractVersion === '1') {
+          if (all.some(function (slide) { return slide.dataset.geometryContractCheck !== 'pass'; })) throw new Error('几何契约覆盖不完整');
+          root.dataset.geometryCheck = 'pass';
+        } else {
+          root.dataset.geometryCheck = 'legacy-skip';
+        }
 
         go(0);
         if (all.length > 1) {

@@ -912,6 +912,12 @@
       'echarts.sankey-basic': { group: 'relation-mapping', groupLabel: '关系与映射' },
       'echarts.geo-choropleth-map': { group: 'relation-mapping', groupLabel: '关系与映射' }
     };
+    // 来源文案与 atlas 既有口径一致（radar-hex → "ECharts Radar 参考"），按图表族生成，链接逐组件指向官方示例。
+    const ECHARTS_SOURCE_FAMILIES = { line: 'Line', bar: 'Bar', pie: 'Pie', scatter: 'Scatter', radar: 'Radar', tree: 'Tree', sankey: 'Sankey', calendar: 'Calendar', geo: 'Map' };
+    function echartsSourceName(componentId) {
+      const family = String(componentId).replace(/^echarts\./, '').split('-')[0];
+      return `ECharts ${ECHARTS_SOURCE_FAMILIES[family] || family} 参考`;
+    }
     const ECHARTS_ENTRIES = ((ECHARTS_DATA && ECHARTS_DATA.components) || []).map((item, index) => ({
       name: item.component_id,
       label: item.name,
@@ -921,7 +927,7 @@
       groupLabel: (ECHARTS_GROUP_OVERRIDES[item.component_id] || {}).groupLabel || '指标与数据',
       routeGroup: 'echarts',
       description: [item.selection_notes, ...(item.aliases || [])].filter(Boolean).join(' '),
-      source: { name: 'Apache ECharts 官方示例', label: 'ECharts 参考', url: item.source_url },
+      source: { name: echartsSourceName(item.component_id), label: 'ECharts 参考', url: item.source_url },
       echartsId: item.component_id,
       echartsSource: bindEchartsThemeSource(item),
       frame: item.preview_frame || { width: 600, height: 600, fit: 'fixed' }
