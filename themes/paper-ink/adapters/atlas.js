@@ -590,6 +590,22 @@
     .swiss-card .gantt .task-bar {
       background: var(--wp-compat-atlas-paper-deep) !important;
     }
+
+    /* --- 050 鱼骨图：骨架线锁定屏幕线宽，避免详情放大时随 SVG 一起变粗 --- */
+    .swiss-card .fb-spine {
+      stroke-width: 0.8px !important;
+      vector-effect: non-scaling-stroke;
+    }
+    .swiss-card .fb-rib {
+      stroke-width: 0.7px !important;
+      vector-effect: non-scaling-stroke;
+    }
+    .swiss-card .fb-arrow,
+    .swiss-card .fb-guide,
+    .swiss-card .fb-divider {
+      stroke-width: 0.6px !important;
+      vector-effect: non-scaling-stroke;
+    }
     .swiss-card .gantt .task-bar .fill {
       background: var(--wp-compat-atlas-ink-80) !important;
     }
