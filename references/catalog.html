@@ -3176,7 +3176,7 @@ $('#str-list').innerHTML=STRUCTS.map(d=>{
     </div>
   </section>`;
 }).join('');
-$('#c-str').textContent=STRUCTS.length+'类 · '+SMARTART_LAYOUT_COUNT+'例';
+$('#c-str').textContent=STRUCTS.length;
 
 /* 当前页签首行立即加载；其余图片交给浏览器原生懒加载。隐藏结构章节在展开前不设置 src。 */
 let fitAllRaf=0;
