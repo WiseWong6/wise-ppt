@@ -198,6 +198,23 @@ description: 表驱动的网页 PPT 编排 skill。输入 PDF/链接/口语稿/�
 </section>
 ```
 
+### 组件槽标准样板(v90,照抄结构,不现场发挥)
+
+```html
+<div data-layout-slot="true" data-component-id="atlas.041.timeline.horizontal"
+     data-content-ref="timeline.one"
+     style="position:absolute;left:210px;top:442px;width:1500px">
+  <div class="swiss-card swiss-card--body"><div class="swiss-card__content">
+    <!-- 组件本体:按 snippet DOM 结构替换文案,不改结构 -->
+  </div></div>
+</div>
+```
+
+要点:槽只给锚点(left/top/width),**高度跟内容自然流**;**不用 flex 居中、不写 overflow、不加内层 wrapper**(print 分页 pass 会重算 flex/margin,依赖它们的内容会移位或被裁)。配套 registered-components.css 尾部必有三段:
+①遗产碾压 `[data-layout-slot] .swiss-card { width:100% !important; min-height:0 !important; height:auto !important; aspect-ratio:auto !important }`;
+②字档对齐(选择器复述原类链语境,特度压过组件原规则);
+③print 稳定化 `@media print { [data-layout-slot] { overflow:visible !important } }` + 残差补偿(导出后 audit 实测回填 top,逐槽 print-only)。
+
 ### 红线(违反即返工)
 
 - 1920×1080 定画布绝对坐标;SVG 文字尺寸一律 `WisePPT.typeSize('role')`,不裸写 px 字号。
@@ -208,6 +225,7 @@ description: 表驱动的网页 PPT 编排 skill。输入 PDF/链接/口语稿/�
 - **版式多样性与居中**:关系页结构非必要不重复(必须重复时间隔≥3页、组件族不同,相邻页禁同结构);垂直居中精确口径——可用高度上缘=眉题底,下缘=有底句页取底句顶、无底句页取页码顶,**居中对象=文字主体并集(叶子文本+分隔线,排除容器 padding 盒与隐形元素)**;水平居中同 ≤3px,量结构框(槽/容器),满宽型组件槽宽=版心宽;两个方向都**浏览器实测**(|Δ|≤3px),不许估常数;**print 是独立布局 pass:screen 全绿不代表 PDF 全绿,导出后须对 PDF 再验**(pdftotext bbox 或 ≥150dpi 像素带;40dpi 会误报小字丢失);文案与插图不重叠,封面亦然。
 - **组件预览遗产打穿**(skill-design 第八章第二段):组件 CSS 按 600px 方卡预览写的,注入后必须槽级覆写——①方卡外壳(`width:600px/min-height:600px`→`width:100% !important; min-height:0 !important; height:auto !important; aspect-ratio:auto !important`,遗产须 important 碾压)②`__content` padding→0③自带字档→全局字阶 token(`var(--type-*)`);**覆写选择器特度必须压过组件原规则**(复述原类链语境再追加槽属性,否则如金句 26px 假生效);④槽用**显式几何**(absolute 定位+内容自然流),不依赖 flex 居中/overflow;⑤print 分页残差逐槽 print-only 补偿;验收量 computed font-size,视觉转述不算数。
 - **同类页同字档**:金句页全 deck 同档(7~10 字→hero)、宣言页同 display 档;跨档须在 deck-plan 记理由;跨页 computed font-size 实测相等。
+- **组件槽用标准样板**(上方代码块):显式几何、无 flex/overflow 依赖、print 残差补偿位;`data-page-id` 页的 svg inline translateY 属 screen 校准,print 漂移用 `@media print` 逐页补偿,不动 inline。
 - **无 Emoji、无 CDN**:图标用几何细线或 mono 文字码;字体本地。
 - KPI 主值 2~3 位(过长得用 K/M/万);单位字号小于数值、墨色淡一档、底边对齐;**没有真实数据不编数值、不用图表版式**。
 - 大字档按中文字数选(≤6 display / 7~10 hero / 11~16 title / 17~24 heading / >24 先改写);标题先改短再降档,多行断在语义处。
@@ -217,8 +235,11 @@ description: 表驱动的网页 PPT 编排 skill。输入 PDF/链接/口语稿/�
 ## 交付
 
 ```bash
-bash runtime/check-deck.sh <deck>        # 浏览器无截图检查(console 零 error)
-bash runtime/export-deck.sh <deck>       # Chrome 无头打印 PDF,页数核对
+bash runtime/check-deck.sh <deck>        # ① 浏览器无截图检查(console 零 error)
+bash runtime/export-deck.sh <deck>       # ② Chrome 无头打印 PDF,页数核对
+bash runtime/audit-deck.sh <deck>        # ③ 几何/字号/可见性审计(screen + PDF 双管线)
 ```
 
-完成标准:① deck 在仓库外且相对路径自包含;② 每页四步判定在 deck-plan.md 可追溯;③ Ghost Deck 自检通过;④ 节奏自检通过;⑤ 浏览器零 error、PDF 页数 = slide 数;⑥ 交付说明只报 `index.html` 与 PDF 两个路径 + 验证结果 + 人工验收步骤。
+完成标准:① deck 在仓库外且相对路径自包含;② 每页四步判定在 deck-plan.md 可追溯;③ Ghost Deck 自检通过;④ 节奏自检通过;⑤ **三件套全绿**:check 零 error、audit 的 screen 主体居中(≤3px)/同类页字档一致/PDF 无隐形内容与灾难偏移(≤35px)、PDF 页数 = slide 数;⑥ 交付说明只报 `index.html` 与 PDF 两个路径 + 验证结果 + 人工验收步骤。
+
+**验收纪律(v90)**:PDF 是最终裁判——用户看的是 PDF,一切几何验收以导出 PDF 为准,screen 全绿只算半程;**视觉模型转述只能当异常线索,不能作为通过依据**(两轮"确认大字/无裁切"均为假);audit 的度量口径已固化进工具,不要现场另造审计脚本——口径漂移的审计比不审计更危险。
