@@ -3095,9 +3095,9 @@ function activateThumbs(id){
   });
 }
 
-/* 结构章节就是一组页内 tab:始终恰好展开一类，隐藏章节不激活缩略图。 */
+/* 结构章节是一组手风琴:同时至多展开一类,二次点击已展开的标题收起全部;隐藏章节不激活缩略图。 */
 function currentStructureKey(){
-  return document.querySelector('.struct-section.is-open')?.dataset.struct||INITIAL_STRUCTURE_KEY;
+  return document.querySelector('.struct-section.is-open')?.dataset.struct||null;
 }
 function syncStructureOffsets(){
   const header=document.querySelector('header');
@@ -3105,9 +3105,10 @@ function syncStructureOffsets(){
   document.documentElement.style.setProperty('--catalog-header-h',compact&&header?Math.ceil(header.getBoundingClientRect().height)+'px':'0px');
 }
 function setStructureOpen(key,{scroll=false,syncUrl=true}={}){
-  const target=document.querySelector('.struct-section[data-struct="'+key+'"]');
-  if(!target)return;
-  const nextKey=target.dataset.struct;
+  /* key=null = 全部收起 */
+  const target=key?document.querySelector('.struct-section[data-struct="'+key+'"]'):null;
+  if(key&&!target)return;
+  const nextKey=target?target.dataset.struct:'';
   document.querySelectorAll('.struct-section').forEach(section=>{
     const open=section.dataset.struct===nextKey;
     section.classList.toggle('is-open',open);
@@ -3117,7 +3118,7 @@ function setStructureOpen(key,{scroll=false,syncUrl=true}={}){
     panel.hidden=!open;
   });
   document.querySelectorAll('[data-struct-jump]').forEach(button=>{
-    const current=button.dataset.structJump===nextKey;
+    const current=!!nextKey&&button.dataset.structJump===nextKey;
     button.classList.toggle('on',current);
     button.setAttribute('aria-current',String(current));
   });
@@ -3131,12 +3132,13 @@ function setStructureOpen(key,{scroll=false,syncUrl=true}={}){
   activateThumbs('str');scheduleFitAll();
   requestAnimationFrame(()=>{
     syncStructureOffsets();
-    if(scroll)target.scrollIntoView({block:'start'});
+    if(scroll&&target)target.scrollIntoView({block:'start'});
   });
 }
 document.querySelectorAll('.struct-toggle').forEach(button=>button.onclick=()=>{
   const section=button.closest('.struct-section');
-  if(!section.classList.contains('is-open'))setStructureOpen(section.dataset.struct,{scroll:true});
+  const isOpen=section.classList.contains('is-open');
+  setStructureOpen(isOpen?null:section.dataset.struct,{scroll:true});
 });
 const structureJumpButtons=[...document.querySelectorAll('[data-struct-jump]')];
 structureJumpButtons.forEach((button,index)=>{
@@ -3207,7 +3209,7 @@ function switchTab(id,{resetScroll=false}={}){
     try{
       const q=new URLSearchParams(location.search);
       q.set('tab',id);q.delete('scroll');
-      if(id==='str')q.set('structure',currentStructureKey());
+      if(id==='str'){const k=currentStructureKey();if(k)q.set('structure',k);else q.delete('structure');}
       else q.delete('structure');
       history.replaceState(null,'',location.pathname+'?'+q.toString());
     }catch(e){}
