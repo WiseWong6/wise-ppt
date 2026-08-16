@@ -12,21 +12,12 @@
 
   /* mono 小标 */
   .motif-label {
-    position: absolute; left: 0; right: 0; top: 621.8px;
+    position: absolute; left: 0; right: 0; top: 651.8px;
     text-align: center;
     font-family: var(--mono); font-size: var(--type-label);
     letter-spacing: .5em; text-indent: .5em;
     color: var(--ink-70);
     z-index: 3;
-  }
-
-  .caption {
-    position: absolute; left: 0; right: 0; bottom: 118px;
-    text-align: center;
-    font-family: var(--sans); font-weight: 400;
-    font-size: var(--type-caption); letter-spacing: .04em;
-    color: var(--ink);
-    z-index: 5;
   }
 </style>
 </head>
@@ -42,8 +33,6 @@
   </svg>
 
   <div class="motif-label">A THICK WALL</div>
-
-  <div class="caption">会用 AI 和做 AI 产品之间，有一堵厚厚的墙。</div>
 </div>
 
 <script src="../../../../runtime/stage-fit.js"></script>
@@ -58,8 +47,8 @@
   PART.dust(ctx, 1240, 320, 560, 420, 50, .15);
   PART.dust(ctx, 120, 730, 1680, 90, 38, .14);
 
-  /* ---------- 小主角：秩序环上一粒侧身让位 ---------- */
-  var CX = 960, CY = 473.8, R = 86, N = 22;
+  /* ---------- 小主角：秩序环上一粒侧身让位（版心垂直居中） ---------- */
+  var CX = 960, CY = 503.8, R = 86, N = 22;
   for (var i = 0; i < N; i++) {
     if (i === 5) continue;                       // 缺口：让位的那一粒不在环上
     var an = -Math.PI / 2 + i / N * 6.2832;
@@ -86,7 +75,7 @@
     for (var k in attrs) e.setAttribute(k, attrs[k]);
     G.appendChild(e); return e;
   }
-  var CX = 960, CY = 473.8, R = 86, N = 22;
+  var CX = 960, CY = 503.8, R = 86, N = 22;
   var an5 = -Math.PI / 2 + 5 / N * 6.2832;
   var ix = CX + Math.cos(an5) * R,  iy = CY + Math.sin(an5) * R;
   var ox = CX + Math.cos(an5) * (R + 40), oy = CY + Math.sin(an5) * (R + 40);

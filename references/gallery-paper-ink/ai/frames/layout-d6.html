@@ -14,14 +14,6 @@
 <style>
   svg.scene { position: absolute; inset: 0; z-index: 1; }
   .doc.tl, .folio { color: rgba(25,25,23,.45); }
-  .caption {
-    position: absolute; left: 0; right: 0; bottom: 118px;
-    text-align: center;
-    font-family: var(--sans); font-weight: 400;
-    font-size: var(--type-caption); letter-spacing: .04em;
-    color: #191917;
-    z-index: 5;
-  }
 </style>
 </head>
 <body class="slide">
@@ -32,8 +24,6 @@
   <svg class="scene" width="1920" height="1080" viewBox="0 0 1920 1080">
     <g id="draw"></g>
   </svg>
-
-  <div class="caption">关注 @歪斯Wise，及时获取更新资讯。</div>
 </div>
 
 <script src="../../../../runtime/stage-fit.js"></script>
@@ -55,7 +45,7 @@ function txt(x, y, str, attrs) {
 }
 var MONO = 'var(--mono)', SANS = 'var(--sans)';
 
-G = el('g', {transform:'translate(0 -8.7)'});
+G = el('g', {transform:'translate(25 5)'});
 
 
 /* ================= 左块：地图线稿 x150–920, y220–640（抄六页示例联络页） ================= */

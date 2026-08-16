@@ -423,10 +423,22 @@
       min-width: 0 !important;
     }
 
-    /* --- 038 旅程图：整体等比收窄，保留路径、节点和标签的相对几何 --- */
+    /* --- 038 旅程图：整体等比收窄，节点圆点再缩小约 20% --- */
     .swiss-card .journey {
       width: 72% !important;
       margin-inline: auto !important;
+    }
+    .swiss-card .journey-point:not(.journey-point--milestone) .journey-ring {
+      r: 9.5px !important;
+    }
+    .swiss-card .journey-point:not(.journey-point--milestone) .journey-core {
+      r: 6.5px !important;
+    }
+    .swiss-card .journey-point--milestone .journey-ring {
+      r: 12px !important;
+    }
+    .swiss-card .journey-point--milestone .journey-core {
+      r: 9.5px !important;
     }
 
     /* --- 040 垂直时间线：收束内容宽度后水平居中，避免视觉重量偏左 --- */
@@ -441,11 +453,34 @@
       border-color: var(--wp-compat-atlas-ink-55) !important;
     }
 
-    /* --- 052–053 韦恩图：避免小数 border 被量化回 1px，改用浅色圆形内描边 --- */
+    /* --- 052–053 韦恩图：浅色内描边；标签只放各集合独占区，不压交集 --- */
     .swiss-card .venn .v-circle,
     .swiss-card .venn-three .circle {
+      box-sizing: border-box !important;
       border: 0 !important;
       box-shadow: inset 0 0 0 .5px var(--wp-compat-atlas-ink-25) !important;
+    }
+    .swiss-card .venn .v-a {
+      justify-content: flex-start !important;
+      padding-left: 32px !important;
+    }
+    .swiss-card .venn .v-b {
+      justify-content: flex-end !important;
+      padding-right: 32px !important;
+    }
+    .swiss-card .venn-three .circle-a {
+      align-items: flex-start !important;
+      padding-top: 18px !important;
+    }
+    .swiss-card .venn-three .circle-b {
+      align-items: flex-end !important;
+      justify-content: flex-start !important;
+      padding: 0 0 18px 18px !important;
+    }
+    .swiss-card .venn-three .circle-c {
+      align-items: flex-end !important;
+      justify-content: flex-end !important;
+      padding: 0 18px 18px 0 !important;
     }
 
     /* --- 流程-换行变体：纸面步骤块 + 墨线直角边框 --- */

@@ -405,46 +405,46 @@ window.PAPER_INK_COMPONENT_DATA = {
     <circle cx="52" cy="500" r="4" fill="var(--pi-paper)" stroke="var(--pi-ink-80)" stroke-width="1"/>
     <circle cx="52" cy="500" r="1.6" fill="var(--pi-ink)"/>
     <line x1="52" y1="494" x2="52" y2="454" stroke="var(--pi-ink)" stroke-width=".7" opacity=".45"/>
-    <text x="24" y="396" font-family="var(--pi-mono)" font-size="12" letter-spacing="2" fill="var(--pi-ink)">2022</text>
+    <text x="24" y="396" font-family="var(--pi-mono)" font-size="10" letter-spacing="2" fill="var(--pi-ink)">2022</text>
     <line x1="24" y1="405" x2="68" y2="405" stroke="var(--pi-ink)" stroke-width=".6" opacity=".3"/>
-    <text x="24" y="429" font-family="var(--pi-sans)" font-weight="300" font-size="15" fill="var(--pi-ink)">单点工具</text>
-    <text x="24" y="449" font-family="var(--pi-sans)" font-weight="300" font-size="10.5" fill="var(--pi-ink-70)">单任务模型调用跑通</text>
+    <text x="24" y="429" font-family="var(--pi-sans)" font-weight="300" font-size="12" fill="var(--pi-ink)">单点工具</text>
+    <text x="24" y="449" font-family="var(--pi-sans)" font-weight="300" font-size="9" fill="var(--pi-ink-70)">单任务模型调用跑通</text>
   </g>
   <g>
     <circle cx="160" cy="459" r="4" fill="var(--pi-paper)" stroke="var(--pi-ink-80)" stroke-width="1"/>
     <circle cx="160" cy="459" r="1.6" fill="var(--pi-ink)"/>
     <line x1="160" y1="453" x2="160" y2="413" stroke="var(--pi-ink)" stroke-width=".7" opacity=".45"/>
-    <text x="132" y="355" font-family="var(--pi-mono)" font-size="12" letter-spacing="2" fill="var(--pi-ink)">2023</text>
+    <text x="132" y="355" font-family="var(--pi-mono)" font-size="10" letter-spacing="2" fill="var(--pi-ink)">2023</text>
     <line x1="132" y1="364" x2="176" y2="364" stroke="var(--pi-ink)" stroke-width=".6" opacity=".3"/>
-    <text x="132" y="388" font-family="var(--pi-sans)" font-weight="300" font-size="15" fill="var(--pi-ink)">工作流自动化</text>
-    <text x="132" y="408" font-family="var(--pi-sans)" font-weight="300" font-size="10.5" fill="var(--pi-ink-70)">12 条流水线上线</text>
+    <text x="132" y="388" font-family="var(--pi-sans)" font-weight="300" font-size="12" fill="var(--pi-ink)">工作流自动化</text>
+    <text x="132" y="408" font-family="var(--pi-sans)" font-weight="300" font-size="9" fill="var(--pi-ink-70)">12 条流水线上线</text>
   </g>
   <g>
     <circle cx="268" cy="418" r="4" fill="var(--pi-paper)" stroke="var(--pi-ink-80)" stroke-width="1"/>
     <circle cx="268" cy="418" r="1.6" fill="var(--pi-ink)"/>
     <line x1="268" y1="412" x2="268" y2="372" stroke="var(--pi-ink)" stroke-width=".7" opacity=".45"/>
-    <text x="240" y="314" font-family="var(--pi-mono)" font-size="12" letter-spacing="2" fill="var(--pi-ink)">2024</text>
+    <text x="240" y="314" font-family="var(--pi-mono)" font-size="10" letter-spacing="2" fill="var(--pi-ink)">2024</text>
     <line x1="240" y1="323" x2="284" y2="323" stroke="var(--pi-ink)" stroke-width=".6" opacity=".3"/>
-    <text x="240" y="347" font-family="var(--pi-sans)" font-weight="300" font-size="15" fill="var(--pi-ink)">Agent 协同</text>
-    <text x="240" y="367" font-family="var(--pi-sans)" font-weight="300" font-size="10.5" fill="var(--pi-ink-70)">路径规划 V2 发布</text>
+    <text x="240" y="347" font-family="var(--pi-sans)" font-weight="300" font-size="12" fill="var(--pi-ink)">Agent 协同</text>
+    <text x="240" y="367" font-family="var(--pi-sans)" font-weight="300" font-size="9" fill="var(--pi-ink-70)">路径规划 V2 发布</text>
   </g>
   <g>
     <circle cx="376" cy="377" r="4" fill="var(--pi-paper)" stroke="var(--pi-ink-80)" stroke-width="1"/>
     <circle cx="376" cy="377" r="1.6" fill="var(--pi-ink)"/>
     <line x1="376" y1="371" x2="376" y2="331" stroke="var(--pi-ink)" stroke-width=".7" opacity=".45"/>
-    <text x="348" y="273" font-family="var(--pi-mono)" font-size="12" letter-spacing="2" fill="var(--pi-ink)">2025</text>
+    <text x="348" y="273" font-family="var(--pi-mono)" font-size="10" letter-spacing="2" fill="var(--pi-ink)">2025</text>
     <line x1="348" y1="282" x2="392" y2="282" stroke="var(--pi-ink)" stroke-width=".6" opacity=".3"/>
-    <text x="348" y="306" font-family="var(--pi-sans)" font-weight="300" font-size="15" fill="var(--pi-ink)">多 Agent 编排</text>
-    <text x="348" y="326" font-family="var(--pi-sans)" font-weight="300" font-size="10.5" fill="var(--pi-ink-70)">统一编排</text>
+    <text x="348" y="306" font-family="var(--pi-sans)" font-weight="300" font-size="12" fill="var(--pi-ink)">多 Agent 编排</text>
+    <text x="348" y="326" font-family="var(--pi-sans)" font-weight="300" font-size="9" fill="var(--pi-ink-70)">统一编排</text>
   </g>
   <g>
     <circle cx="484" cy="336" r="4" fill="var(--pi-paper)" stroke="var(--pi-ink-80)" stroke-width="1"/>
     <circle cx="484" cy="336" r="1.6" fill="var(--pi-ink)"/>
     <line x1="484" y1="330" x2="484" y2="290" stroke="var(--pi-ink)" stroke-width=".7" opacity=".45"/>
-    <text x="456" y="232" font-family="var(--pi-mono)" font-size="12" letter-spacing="2" fill="var(--pi-ink)">2026</text>
+    <text x="456" y="232" font-family="var(--pi-mono)" font-size="10" letter-spacing="2" fill="var(--pi-ink)">2026</text>
     <line x1="456" y1="241" x2="500" y2="241" stroke="var(--pi-ink)" stroke-width=".6" opacity=".3"/>
-    <text x="456" y="265" font-family="var(--pi-sans)" font-weight="300" font-size="15" fill="var(--pi-ink)">自主组织</text>
-    <text x="456" y="285" font-family="var(--pi-sans)" font-weight="300" font-size="10.5" fill="var(--pi-ink-70)">百 Agent 互联</text>
+    <text x="456" y="265" font-family="var(--pi-sans)" font-weight="300" font-size="12" fill="var(--pi-ink)">自主组织</text>
+    <text x="456" y="285" font-family="var(--pi-sans)" font-weight="300" font-size="9" fill="var(--pi-ink-70)">百 Agent 互联</text>
   </g>
 
   <!-- 竖向 Δ 高度标注 -->
@@ -2385,12 +2385,6 @@ window.PAPER_INK_COMPONENT_DATA = {
     /* 出自样张 layout-c5.html;单元×N 改为水平排布(同一 renderer 内部重复 ring 单元) */
     snippet: `<div class="pi-card">
 <svg class="pi-art" viewBox="0 0 600 600" xmlns="http://www.w3.org/2000/svg">
-  <!-- 顶部 mono 引题 -->
-  <text x="300" y="48" font-family="var(--pi-mono)" font-size="9.5" letter-spacing="3" text-anchor="middle" fill="var(--pi-ink-45)">CAPACITY ALLOCATION · FY2026</text>
-  <line x1="140" y1="62" x2="460" y2="62" stroke="var(--pi-ink)" stroke-width=".6" opacity=".3"/>
-  <circle cx="132" cy="62" r="1.8" fill="var(--pi-ink)" opacity=".6"/>
-  <circle cx="468" cy="62" r="1.8" fill="var(--pi-ink)" opacity=".6"/>
-
   <!-- 环1 · 内容制作 38% -->
   <g>
     <circle cx="97.5" cy="200" r="56" fill="none" stroke="var(--pi-ink)" stroke-width=".5" stroke-dasharray="2 6" opacity=".28"/>

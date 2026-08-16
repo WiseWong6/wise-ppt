@@ -12,7 +12,7 @@
 
   /* 方块上方：对照行 */
   .compare {
-    position: absolute; left: 0; right: 0; top: 297px;
+    position: absolute; left: 0; right: 0; top: 326px;
     display: flex; align-items: center; justify-content: center;
     gap: var(--space-5); z-index: 3;
     font-family: var(--sans); font-weight: 300;
@@ -46,15 +46,6 @@
     letter-spacing: .4em; text-indent: .4em;
     color: rgba(223,224,217,.8);
   }
-
-  .caption {
-    position: absolute; left: 0; right: 0; bottom: 108px;
-    text-align: center;
-    font-family: var(--sans); font-weight: 400;
-    font-size: var(--type-caption); letter-spacing: .04em;
-    color: var(--ink);
-    z-index: 5;
-  }
 </style>
 </head>
 <body class="slide">
@@ -84,14 +75,12 @@
     <div class="divi"></div>
     <div class="t2">GIANT BLACKBOX</div>
   </div>
-
-  <div class="caption">输入一句话，输出一个答案——中间发生了什么，没人看得见。</div>
 </div>
 
 <script src="../../../../runtime/stage-fit.js"></script>
 <script src="../../../../themes/paper-ink/assets/particles.js"></script>
 <script>
-var HERO = {x:825, y:379, size:270};
+var HERO = {x:825, y:408, size:270};
 var boxText = document.querySelector('.boxtext');
 boxText.style.left = HERO.x + 'px';
 boxText.style.top = HERO.y + 'px';

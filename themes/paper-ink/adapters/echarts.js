@@ -155,7 +155,7 @@
         borderWidth: 1
       });
       series.labelLine = Object.assign({}, series.labelLine, {
-        length2: 15,
+        length2: 7.5,
         lineStyle: Object.assign({}, series.labelLine && series.labelLine.lineStyle, {
           color: tokens.divider,
           width: 1

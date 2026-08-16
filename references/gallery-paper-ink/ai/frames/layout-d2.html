@@ -9,25 +9,6 @@
 <style>
   canvas { position: absolute; inset: 0; z-index: 2; }
   svg.marks { position: absolute; inset: 0; z-index: 3; pointer-events: none; }
-
-  /* 尾卡文字（DOM，居中） */
-  .sub-en {
-    position: absolute; left: 0; right: 0; top: 691.8px;
-    text-align: center;
-    font-family: var(--mono); font-size: var(--type-body-small);
-    letter-spacing: .42em; text-indent: .42em;   /* 末字符补偿，保持视觉居中 */
-    color: var(--ink-70);
-    z-index: 5;
-  }
-  .next-cn {
-    position: absolute; left: 0; right: 0; top: 789.8px;
-    text-align: center;
-    font-family: var(--sans); font-weight: 300; font-size: var(--type-subheading);
-    letter-spacing: .08em;
-    color: var(--ink);
-    z-index: 5;
-  }
-  .next-cn .q { color: var(--ink-70); }
 </style>
 </head>
 <body class="slide">
@@ -40,9 +21,6 @@
   <svg class="marks" width="1920" height="1080" viewBox="0 0 1920 1080">
     <g id="draw"></g>
   </svg>
-
-  <div class="sub-en">@歪斯WISE · AI ENGINEERING V1.0</div>
-  <div class="next-cn">下一章 · 评测<span class="q">——没有尺子的 Agent 是盲飞。</span></div>
 </div>
 
 <script src="../../../../runtime/stage-fit.js"></script>
@@ -62,7 +40,7 @@ function el(tag, attrs) {
 var WORD = 'AGENT';
 var FS = paperInkTypeSize('particle-sample');    // 采样字号
 var FONT = '500 ' + FS + 'px "Han Serif"';
-var CY = 483.8;                                    // 单词中心（中央偏上）
+var CY = 603.8;                                    // 单词中心（底部文案已删，构图整体居版心垂直居中）
 
 function draw() {
   var w = PART.measure(WORD, FONT);
@@ -124,20 +102,6 @@ function draw() {
       fill:'rgba(25,25,23,.45)', transform:'rotate(-90 ' + (ax - 14) + ' ' + ((minY + maxY) / 2) + ')'});
     t.textContent = 'X-HEIGHT 240';
   })();
-
-  /* 分隔细线：英文行下方，两端小刻度 */
-  (function () {
-    var y = 765.8, x1 = 800, x2 = 1120;
-    el('line', {x1: x1, y1: y, x2: x2, y2: y, stroke:'#191917', 'stroke-width':.8, opacity:.55});
-    el('line', {x1: x1, y1: y-4, x2: x1, y2: y+4, stroke:'#191917', 'stroke-width':.8, opacity:.55});
-    el('line', {x1: x2, y1: y-4, x2: x2, y2: y+4, stroke:'#191917', 'stroke-width':.8, opacity:.55});
-  })();
-
-  /* 图注 */
-  var ft = el('text', {x: 960, y: 881.8, 'text-anchor':'middle',
-    'font-family':'Courier Prime', 'font-size':'var(--type-meta)', 'letter-spacing':5,
-    fill:'rgba(25,25,23,.45)'});
-  ft.textContent = 'FIG. D2 — END CARD';
 }
 
 /* 等思源宋体装完再采样，保证轮廓来自 Han Serif */

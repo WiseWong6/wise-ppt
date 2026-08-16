@@ -12,32 +12,42 @@
     --line:rgba(25,25,23,.25);--shadow-specimen:2px 2px 0 rgba(25,25,23,.04);
     --wp-font-sans:-apple-system,BlinkMacSystemFont,"PingFang SC","Microsoft YaHei",sans-serif;
     --wp-font-mono:Menlo,Monaco,Consolas,monospace;
-    --catalog-header-h:125px;--struct-nav-h:58px;
+    --catalog-sidebar-w:220px;--catalog-header-h:0px;
     --card:var(--paper-panel);
     --scrim:color-mix(in srgb, var(--ink) 55%, transparent);
     --ink-2:var(--ink-80); --ink-3:var(--ink-55);
   }
   *{box-sizing:border-box;margin:0;padding:0}
-  body{font-family:var(--wp-font-sans);font-weight:300;background:var(--paper);color:var(--ink)}
-  header{position:sticky;top:0;z-index:50;background:var(--paper);border-bottom:1px solid var(--line);padding:18px 32px 0;transform:translateZ(0)}
-  main{position:relative;z-index:1}
+  body{min-height:100vh;font-family:var(--wp-font-sans);font-weight:300;background:var(--paper);color:var(--ink)}
+  header{position:fixed;inset:0 auto 0 0;z-index:50;width:var(--catalog-sidebar-w);overflow-y:auto;background:var(--paper);border-right:1px solid var(--line);padding:24px 18px;transform:translateZ(0)}
+  main{position:relative;z-index:1;margin-left:var(--catalog-sidebar-w)}
   h1{font-size:20px;letter-spacing:.08em;font-weight:400}
-  .sub{font-size:13px;color:var(--ink-3);margin-top:4px;letter-spacing:.02em}
-  .tabs{display:flex;gap:4px;margin-top:14px}
-  .tab{padding:10px 20px;font-size:15px;cursor:pointer;border:1px solid transparent;border-bottom:none;color:var(--ink-3);background:transparent;letter-spacing:.04em;font-weight:300}
-  .tab.on{background:var(--paper-panel);border-color:var(--line);color:var(--ink);font-weight:400;position:relative;top:1px}
-  .tab .n{display:inline-block;min-width:18px;text-align:center;font-family:var(--wp-font-mono);font-size:13px;color:var(--ink-3);margin-left:8px;letter-spacing:.04em}
-  main{padding:24px 32px 80px;display:none}
+  .sub{font-size:12px;line-height:1.65;color:var(--ink-3);margin-top:8px;letter-spacing:.02em}
+  .tabs{display:flex;flex-direction:column;gap:2px;margin-top:20px}
+  .tab{width:100%;display:flex;align-items:center;justify-content:space-between;gap:8px;padding:10px 8px;font-size:14px;cursor:pointer;border:0;border-left:2px solid transparent;color:var(--ink-3);background:transparent;text-align:left;letter-spacing:.03em;font-weight:300}
+  .tab:hover{background:var(--paper-panel);color:var(--ink)}
+  .tab.on{background:var(--paper-deep);border-left-color:var(--ink);color:var(--ink);font-weight:400}
+  .tab .n{display:inline-block;min-width:18px;text-align:right;font-family:var(--wp-font-mono);font-size:11px;color:var(--ink-3);letter-spacing:.02em;white-space:nowrap}
+  .subnav-label{margin-top:22px;padding:12px 8px 7px;border-top:1px solid var(--line);font-family:var(--wp-font-mono);font-size:10px;color:var(--ink-3);letter-spacing:.12em;text-transform:uppercase}
+  .subnav-group{display:none;flex-direction:column;gap:2px}
+  .subnav-group.on{display:flex}
+  .subnav-group button{width:100%;display:flex;align-items:center;justify-content:space-between;gap:8px;padding:7px 8px;border:0;border-left:2px solid transparent;background:transparent;color:var(--ink-3);font:inherit;font-size:12px;line-height:1.35;text-align:left;cursor:pointer}
+  .subnav-group button:hover,.subnav-group button.on{background:var(--paper-panel);border-left-color:var(--ink-45);color:var(--ink)}
+  .subnav-group button.on{border-left-color:var(--ink);font-weight:400}
+  .subnav-group button:hover .subnav-count,.subnav-group button.on .subnav-count{color:inherit}
+  .subnav-group button:focus-visible,.tab:focus-visible{outline:2px solid var(--ink);outline-offset:2px}
+  .subnav-count{font-family:var(--wp-font-mono);font-size:10px;color:var(--ink-3);white-space:nowrap}
+  main{padding:24px 28px 80px;display:none}
   main.on{display:block}
 
-  .fam-section{margin-bottom:40px}
+  .fam-section{margin-bottom:40px;scroll-margin-top:24px}
   .fam-head{display:flex;align-items:baseline;gap:12px;border-bottom:1px solid var(--ink-25);padding-bottom:8px;margin-bottom:16px}
   .fam-head h2{font-size:18px;font-weight:400;letter-spacing:.06em}
   .fam-head .tag{font-family:var(--wp-font-mono);font-size:13px;color:var(--ink-3);background:transparent;border:1px solid var(--ink-45);padding:2px 8px;letter-spacing:.06em}
   .fam-head .tag.warn{border-color:var(--ink-45)}
   .fam-head .desc{font-size:13px;color:var(--ink-3)}
 
-  .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(340px,1fr));gap:18px}
+  .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(310px,1fr));gap:18px}
   .card{background:var(--card);border:1px solid var(--line);break-inside:avoid;content-visibility:auto;contain-intrinsic-size:auto 320px}
   .frame-wrap{position:relative;box-sizing:content-box;aspect-ratio:16 / 9;overflow:hidden;background:var(--paper-deep)}
   .frame-wrap{margin:10px 10px 0;border:0.5px solid var(--ink-45)}
@@ -117,11 +127,8 @@
   .note b{color:var(--ink);font-weight:500}
 
   /* 结构总览:6 类折叠章节,每个空槽变体紧跟对应真实示例 */
-  .struct-nav{position:sticky;top:var(--catalog-header-h);z-index:45;display:flex;flex-wrap:wrap;gap:8px;margin:0 0 14px;padding:12px;background:var(--paper);border:1px solid var(--line);box-shadow:0 5px 8px rgba(25,25,23,.05)}
-  .struct-nav button{font:inherit;font-size:13px;line-height:1.2;color:var(--ink-2);background:transparent;border:1px solid var(--ink-45);padding:7px 10px;cursor:pointer;letter-spacing:.02em}
-  .struct-nav button:hover,.struct-nav button.on{background:var(--ink);border-color:var(--ink);color:var(--paper)}
   .struct-nav button:focus-visible,.struct-toggle:focus-visible{outline:2px solid var(--ink);outline-offset:2px}
-  .struct-section{margin-bottom:14px;border:1px solid var(--line);background:var(--paper-panel);scroll-margin-top:calc(var(--catalog-header-h) + var(--struct-nav-h) + 12px)}
+  .struct-section{margin-bottom:14px;border:1px solid var(--line);background:var(--paper-panel);scroll-margin-top:24px}
   .struct-toggle-head{font-size:inherit}
   .struct-toggle{width:100%;display:grid;grid-template-columns:minmax(180px,auto) 1fr auto;align-items:center;gap:18px;padding:16px 18px;border:0;background:transparent;color:var(--ink);text-align:left;cursor:pointer}
   .struct-toggle:hover{background:var(--paper-deep)}
@@ -149,11 +156,24 @@
   .variant-source-title,.variant-examples-title{font-size:13px;line-height:1.6;align-self:center}
   .variant-source-title{grid-area:source-title;color:var(--ink-3)}
   .variant-examples-title{grid-area:examples-title;color:var(--ink-2)}
-  .variant-empty{grid-area:empty;position:sticky;top:calc(var(--catalog-header-h) + var(--struct-nav-h) + 12px);align-self:start}
+  .variant-empty{grid-area:empty;position:sticky;top:24px;align-self:start}
   .variant-examples{grid-area:examples}
   .variant-examples-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:14px}
   .variant-empty-state{min-height:180px;display:grid;place-items:center;border:1px dashed var(--ink-45);color:var(--ink-3);font-size:13px;line-height:1.8;text-align:center;padding:24px;background:var(--paper-deep)}
   @media(max-width:900px){
+    header{position:sticky;inset:auto;top:0;width:auto;max-height:none;overflow:visible;border-right:0;border-bottom:1px solid var(--line);padding:14px 18px 0}
+    h1{font-size:18px}
+    .sub{display:none}
+    .tabs{flex-direction:row;gap:4px;margin-top:10px;overflow-x:auto}
+    .tab{width:auto;flex:0 0 auto;padding:9px 12px;border:1px solid transparent;border-bottom:0;white-space:nowrap}
+    .tab.on{position:relative;top:1px;border-color:var(--line);border-left-color:var(--line);background:var(--paper-panel)}
+    .subnav-label{display:none}
+    .catalog-subnav{border-top:1px solid var(--line)}
+    .subnav-group.on{flex-direction:row;gap:4px;padding:9px 0;overflow-x:auto}
+    .subnav-group button{width:auto;flex:0 0 auto;padding:6px 9px;border:1px solid var(--ink-45);white-space:nowrap}
+    .subnav-group button:hover,.subnav-group button.on{border-color:var(--ink);background:var(--ink);color:var(--paper)}
+    main{margin-left:0;padding:18px 18px 64px}
+    .struct-section,.fam-section{scroll-margin-top:calc(var(--catalog-header-h) + 12px)}
     .struct-toggle{grid-template-columns:1fr auto;gap:8px}
     .struct-toggle-meta{grid-column:1 / -1}
     .variant-body{grid-template-columns:1fr;grid-template-areas:"source-title" "empty" "examples-title" "examples"}
@@ -171,12 +191,19 @@
 <header>
   <h1>资产目录 · Catalog</h1>
   <div class="sub">非关系页模板(直接套用) / 关系页版式(SmartArt 语义分类) / 结构(6 种切分 · 空槽与示例联看) / 组件(SmartArt 语义分类)</div>
-  <div class="tabs">
-    <button class="tab on" data-t="tpl">非关系页模板<span class="n" id="c-tpl"></span></button>
+  <div class="tabs" aria-label="资产目录主导航">
+    <button class="tab on" data-t="tpl" aria-current="page">非关系页模板<span class="n" id="c-tpl"></span></button>
     <button class="tab" data-t="lyt">关系页版式<span class="n" id="c-lyt"></span></button>
     <button class="tab" data-t="str">结构<span class="n" id="c-str"></span></button>
     <button class="tab" data-t="cmp">组件<span class="n" id="c-cmp"></span></button>
   </div>
+  <div class="subnav-label">当前页目录</div>
+  <nav class="catalog-subnav" aria-label="当前页目录">
+    <div class="subnav-group on" id="tpl-nav" data-subnav="tpl"></div>
+    <div class="subnav-group" id="lyt-nav" data-subnav="lyt"></div>
+    <div class="subnav-group struct-nav" id="struct-nav" data-subnav="str" aria-label="结构类型"></div>
+    <div class="subnav-group" id="cmp-nav" data-subnav="cmp"></div>
+  </nav>
 </header>
 
 <main id="m-tpl" class="on">
@@ -195,7 +222,6 @@
 <main id="m-str">
   <div class="note"><b>结构 = 页面区域怎么切(矩形分块);组件 = 区域内画什么形状。</b>结构切的是<b>版心</b>:每页固定的左上页眉 / 左下页码 / 底部题注行是外框,一律不算切分;单区 = 版心剩一整块,内容水平垂直居中。放射、环形、蛇形、漏斗、矩阵(表格)都是区域内组件的画法,不是页面结构。关系圈定候选结构(2~4 种),二次判断(对象数量 / 有无辅助内容 / 方向偏好)在范围内选定。关系页版式全部归入这 6 种切分。</div>
   <div class="note"><b>空槽与示例现在放在一起。</b>每个空槽变体下面只展示与它对应的真实关系页;10 张空槽来自 taxonomy 成熟蓝图,7 张 taxonomy 缺失的变体按同一规格补造并逐卡标注。页面仍会校验 54 个示例不漏归、不重归、不跨结构。</div>
-  <nav class="struct-nav" id="struct-nav" aria-label="结构类型"></nav>
   <div id="str-list"></div>
 </main>
 
@@ -1922,22 +1948,25 @@ function componentPageScale(spec){
 /* 非关系页 */
 $('#tpl-gallery').innerHTML=NON_REL.map(layoutCard).join('');
 $('#c-tpl').textContent=NON_REL.length;
+$('#tpl-nav').innerHTML=`<button type="button" class="on" data-section-jump="tpl-gallery" aria-current="true"><span>画册模板</span><span class="subnav-count">${NON_REL.length}</span></button>`;
 
 /* 版式:SmartArt 语义入口 + Wise PPT 数据扩展 */
 $('#lyt-fams').innerHTML=SMARTART_TYPES.map(f=>`
-  <div class="fam-section">
+  <div class="fam-section" id="lyt-fam-${f.id}" data-catalog-section>
     <div class="fam-head"><h2>${f.cn}</h2><span class="tag">${f.id}</span><span class="desc">${f.desc} · ${f.items.length} 版式</span></div>
     <div class="grid">${f.items.map(layoutCard).join('')}</div>
   </div>`).join('');
 $('#c-lyt').textContent=SMARTART_LAYOUT_COUNT;
+$('#lyt-nav').innerHTML=SMARTART_TYPES.map(f=>`<button type="button" data-section-jump="lyt-fam-${f.id}"><span>${f.cn}</span><span class="subnav-count">${f.items.length}</span></button>`).join('');
 
 /* 组件:与版式共用同一组 SmartArt 语义入口 */
-$('#cmp-groups').innerHTML=SMARTART_COMPONENTS.map(g=>`
-  <div class="fam-section">
+$('#cmp-groups').innerHTML=SMARTART_COMPONENTS.map((g,index)=>`
+  <div class="fam-section" id="cmp-fam-${index}" data-catalog-section>
     <div class="fam-head"><h2>${g.fam}</h2><span class="desc">${g.items.length} 个</span></div>
     <div class="comp-grid">${g.items.map(c=>compCard(c)).join('')}</div>
   </div>`).join('');
 $('#c-cmp').textContent=SMARTART_COMPONENT_COUNT+(EXTRACT_GROUPS.length?'+'+EXTRACT_GROUPS.reduce((s,g)=>s+g.items.length,0)+'抽':'');
+$('#cmp-nav').innerHTML=SMARTART_COMPONENTS.map((g,index)=>`<button type="button" data-section-jump="cmp-fam-${index}"><span>${g.fam}</span><span class="subnav-count">${g.items.length}</span></button>`).join('');
 
 /* 反向抽取候选渲染:整页版式预览(组件本体 = 中央图形) */
 function extractCard(it){
@@ -2916,7 +2945,7 @@ function structureVariant(d,e){
 $('#struct-nav').innerHTML=STRUCTS.map(d=>{
   const count=(byStruct[d.key]||[]).length;
   const current=d.key===INITIAL_STRUCTURE_KEY;
-  return `<button type="button" data-struct-jump="${d.key}" class="${current?'on':''}" aria-current="${current?'true':'false'}">${d.cn} · ${count}</button>`;
+  return `<button type="button" data-struct-jump="${d.key}" class="${current?'on':''}" aria-current="${current?'true':'false'}"><span>${d.cn}</span><span class="subnav-count">${count}</span></button>`;
 }).join('');
 $('#str-list').innerHTML=STRUCTS.map(d=>{
   const count=(byStruct[d.key]||[]).length;
@@ -2968,10 +2997,8 @@ function currentStructureKey(){
 }
 function syncStructureOffsets(){
   const header=document.querySelector('header');
-  const nav=document.getElementById('struct-nav');
-  if(header)document.documentElement.style.setProperty('--catalog-header-h',Math.ceil(header.getBoundingClientRect().height)+'px');
-  if(nav&&document.getElementById('m-str').classList.contains('on'))
-    document.documentElement.style.setProperty('--struct-nav-h',Math.ceil(nav.getBoundingClientRect().height)+'px');
+  const compact=window.matchMedia('(max-width:900px)').matches;
+  document.documentElement.style.setProperty('--catalog-header-h',compact&&header?Math.ceil(header.getBoundingClientRect().height)+'px':'0px');
 }
 function setStructureOpen(key,{scroll=false,syncUrl=true}={}){
   const target=document.querySelector('.struct-section[data-struct="'+key+'"]');
@@ -3023,14 +3050,53 @@ structureJumpButtons.forEach((button,index)=>{
   };
 });
 
+/* 左栏二级目录:版式/组件按当前滚动章节高亮;结构继续由展开态决定。 */
+let sectionNavRaf=0;
+function setSectionNavCurrent(id){
+  document.querySelectorAll('[data-section-jump]').forEach(button=>{
+    const current=button.dataset.sectionJump===id;
+    button.classList.toggle('on',current);
+    button.setAttribute('aria-current',String(current));
+  });
+}
+function syncSectionNav(){
+  sectionNavRaf=0;
+  const tab=document.querySelector('.tab.on')?.dataset.t;
+  if(!tab||tab==='str')return;
+  if(tab==='tpl'){setSectionNavCurrent('tpl-gallery');return;}
+  const sections=[...document.querySelectorAll('#m-'+tab+' [data-catalog-section]')];
+  if(!sections.length)return;
+  const header=document.querySelector('header');
+  const threshold=window.matchMedia('(max-width:900px)').matches&&header
+    ?header.getBoundingClientRect().bottom+16
+    :32;
+  let current=sections[0];
+  sections.forEach(section=>{if(section.getBoundingClientRect().top<=threshold)current=section;});
+  setSectionNavCurrent(current.id);
+}
+function scheduleSectionNav(){
+  if(sectionNavRaf)return;
+  sectionNavRaf=requestAnimationFrame(syncSectionNav);
+}
+document.querySelectorAll('[data-section-jump]').forEach(button=>{
+  button.onclick=()=>{
+    const target=document.getElementById(button.dataset.sectionJump);
+    if(!target)return;
+    setSectionNavCurrent(target.id);
+    target.scrollIntoView({block:'start'});
+  };
+});
+
 /* tab 切换:同步地址栏,刷新停在当前 tab,链接可直接分享(scroll 深链参数用后即弃) */
-function switchTab(id){
-  document.querySelectorAll('.tab').forEach(x=>x.classList.remove('on'));
+function switchTab(id,{resetScroll=false}={}){
+  document.querySelectorAll('.tab').forEach(x=>{x.classList.remove('on');x.removeAttribute('aria-current');});
   document.querySelectorAll('main').forEach(x=>x.classList.remove('on'));
+  document.querySelectorAll('[data-subnav]').forEach(x=>x.classList.toggle('on',x.dataset.subnav===id));
   const t=document.querySelector('.tab[data-t="'+id+'"]');
-  if(t)t.classList.add('on');
+  if(t){t.classList.add('on');t.setAttribute('aria-current','page');}
   const m=document.getElementById('m-'+id);
   if(m)m.classList.add('on');
+  if(resetScroll)window.scrollTo(0,0);
   if(t){
     try{
       const q=new URLSearchParams(location.search);
@@ -3040,9 +3106,9 @@ function switchTab(id){
       history.replaceState(null,'',location.pathname+'?'+q.toString());
     }catch(e){}
   }
-  requestAnimationFrame(()=>{syncStructureOffsets();activateThumbs(id);scheduleFitAll();});
+  requestAnimationFrame(()=>{syncStructureOffsets();activateThumbs(id);scheduleFitAll();scheduleSectionNav();});
 }
-document.querySelectorAll('.tab').forEach(t=>t.onclick=()=>switchTab(t.dataset.t));
+document.querySelectorAll('.tab').forEach(t=>t.onclick=()=>switchTab(t.dataset.t,{resetScroll:true}));
 try{
   const params=new URLSearchParams(location.search);
   const q=params.get('tab'),sc=params.get('scroll');
@@ -3058,10 +3124,12 @@ function scheduleFitAll(){
   if(fitAllRaf)return;
   fitAllRaf=requestAnimationFrame(()=>{fitAllRaf=0;fitAll();});
 }
-window.addEventListener('resize',()=>{syncStructureOffsets();scheduleFitAll();},{passive:true});
+window.addEventListener('scroll',scheduleSectionNav,{passive:true});
+window.addEventListener('resize',()=>{syncStructureOffsets();scheduleFitAll();scheduleSectionNav();},{passive:true});
 window.addEventListener('load',()=>{syncStructureOffsets();scheduleFitAll();});
 syncStructureOffsets();
 activateThumbs(document.querySelector('.tab.on')?.dataset.t||'tpl');
+scheduleSectionNav();
 setTimeout(scheduleFitAll,300);
 </script>
 </body>
