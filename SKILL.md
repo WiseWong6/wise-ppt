@@ -171,16 +171,16 @@ description: 表驱动的网页 PPT 编排 skill。输入 PDF/链接/口语稿/�
 |---|---|---|---|
 | 重心 | 焦点 focus | 单区 | G2 |
 | 重心 | 示意 illustration | 单区(插图/原型展示) | A2、A8 |
-| 并列 | 陈列 display | 单区(云墙/格阵) / 左右x等分 / 网格mxn(独立槽) | A7、F4、A5、R1、Q4、R3、R7 |
+| 并列 | 陈列 display | 单区(云墙/格阵) / 左右x等分 / 网格mxn(独立槽) | A7、F4、A5、C3、R1、Q4、R3、R7 |
 | 并列 | 并行 parallel | 左右x等分 / 单区(泳道图) | I4、B3 |
 | 并列 | 指标 metric | 单区(组件内 KPI 横带) / 左右x等分(独立指标槽) | C6 |
 | 并列 | 分布 distribution | 左右不对称(地图+数据栏) | C4 |
 | 包含 | 层级 hierarchy | 单区(树/分层栈/同心环) / 上下x等分(独立层带) / 左右不对称(树+规格) | H3、H4、R2、R6、F2 |
-| 包含 | 拆解 decomposition | 单区(放射/组件内格阵) / 左右x等分 / 左右不对称 / 上下不对称(上总额下四环) | G1、F4、F3、F2、C5 |
+| 包含 | 拆解 decomposition | 单区(放射/组件内格阵) / 左右x等分 / 左右不对称 / 上下不对称(上总额下四环) | G1、G4、F4、F3、F2、C5 |
 | 包含 | 部分整体 part-whole | 单区(整体构成图) / 左右不对称(整体+分项证据) | Q2 |
 | 包含 | 嵌套 nesting | 单区(同心环/嵌套框) | H1、H2 |
-| 有序 | 时序 sequence | 单区(时间轴/阶梯/蜿蜒/组件内多屏) | B1、B5、B6、A9 |
-| 有序 | 流动 flow | 单区(流水线/组件内双轨) / 上下x等分(两条独立流程) / 上下不对称(黑箱流+编号标注) | I1、I3、Q3、P1 |
+| 有序 | 时序 sequence | 单区(时间轴/阶梯/蜿蜒/组件内多屏) | B1、B2、B4、B5、B6、A9、J3 |
+| 有序 | 流动 flow | 单区(流水线/组件内双轨) / 上下x等分(两条独立流程) / 上下不对称(黑箱流+编号标注) | I1、I2、I3、Q3、P1 |
 | 有序 | 循环 cycle | 单区(圆环/蛇形);带辅助内容→左右不对称 | J1、J2 |
 | 有序 | 汇聚 convergence | 单区(汇聚图) | N1 |
 | 有序 | 漏斗 funnel | 单区(漏斗图) / 左右不对称(漏斗+两侧标注) | O1 |
@@ -189,9 +189,9 @@ description: 表驱动的网页 PPT 编排 skill。输入 PDF/链接/口语稿/�
 | 比较 | 矩阵 matrix | 单区(整页矩阵/链阵) / 左右x等分(三栏行带) / 上下不对称(矩阵+收束带) | F1、K1、K4、E4 |
 | 比较 | 映射 mapping | 单区(弧线网/四节点带边标签) / 左右x等分(双列映射) | L2、P2、E5 |
 | 比较 | 排名 ranking | 单区(排行柱图) | C7 |
-| 连接 | 网络 network | 单区(节点连线/互锁驱动) | L1、R5 |
+| 连接 | 网络 network | 单区(节点连线/互锁驱动) | L1、R5、G4 |
 | 连接 | 交叠 overlap | 单区(韦恩集合) | Q1 |
-| 连接 | 证据 evidence | 单区(证据墙) / 左右不对称(策略/整体+证据) / 上下不对称(摘要+原文) / 网格mxn(独立证据槽) | A1、A6、A4、Q2、A3、Q4 |
+| 连接 | 证据 evidence | 单区(证据墙) / 左右不对称(策略/整体+证据) / 上下不对称(摘要+原文) / 网格mxn(独立证据槽) | A1、A6、A4、Q2、A3、C1、C2、Q4 |
 
 > 结构只认 6 种矩形分块(单区/左右x等分/上下x等分/左右不对称/上下不对称/网格mxn)。矩阵表格、放射、环形、漏斗都是**组件画法**,不是结构。版心 = 页面减固定件(眉题/页码/题注),固定件一律不算切分。版式号 G3 为历史退役位,不重编。
 
@@ -199,7 +199,7 @@ description: 表驱动的网页 PPT 编排 skill。输入 PDF/链接/口语稿/�
 
 | 关系细种 | 组件候选(frame · 容量) |
 |---|---|
-| 指标 metric | 指标单元×N(横带 2-6)、metric-strip(1050×140 · 2-4)、radial-progress(950×440 · 1-4)、metric-band |
+| 指标 metric | stats 指标单元(1230×340 · 2-4)、metric-strip(1050×140 · 2-4)、radial-progress(950×440 · 1-4)、metric-band(semantic · 流式 2-6) |
 | 陈列 display | list-card(850×490 · 2-6)、icon-grid(810×520 · 4-12)、logo-cloud(910×460 · 4-28)、infra-strip(1050×260 · 3-6) |
 | 并行 parallel | swimlane-roadmap(980×430 · 6-24,辅时序/流动) |
 | 排名 ranking | ranking-bars(972×547 · 3-8)、柱状/动态排序柱(ECharts) |
@@ -225,7 +225,7 @@ description: 表驱动的网页 PPT 编排 skill。输入 PDF/链接/口语稿/�
 
 > 结构候选只查表A,本表不给结构意见;组件进得了哪个区域,用 frame 宽高比判(横条进不了窄栏)。
 
-> ECharts 组件需随 deck 复制 `capabilities/vendors/echarts/echarts.min.js` 并走纸墨 option(线 1.2px、墨阶色、无渐变阴影)。表B 查不到的看 `routing-manifest.json` 全量(按 `relation_keys` 过滤,23 细种每个都有覆盖;改过名的组件用 aliases,如 swimlane→swimlane-roadmap);仍无解才手绘新画法,并回填本表。
+> ECharts 组件需随 deck 复制 `capabilities/vendors/echarts/echarts.min.js` 并走纸墨 option(线 1.2px、墨阶色、无渐变阴影)。表B 查不到的看 `routing-manifest.json` 全量(按 `relation_keys` 过滤,23 细种每个都有覆盖;改过名的组件用 aliases,如 swimlane→swimlane-roadmap);`semantic.`/`media.` 前缀是流式机器件,不进 Catalog 浏览池,按 component_id 直接查 manifest;仍无解才手绘新画法,并回填本表。
 > 画法不同才是不同组件:箭头链/蛇形回环/时间轴刻度/甘特条带是 4 个组件,哪怕都表达 flow。
 
 ---
@@ -283,23 +283,33 @@ description: 表驱动的网页 PPT 编排 skill。输入 PDF/链接/口语稿/�
 ②字档对齐(选择器复述原类链语境,特度压过组件原规则);
 ③print 稳定化 `@media print { [data-layout-slot] { overflow:visible !important } }` + 残差补偿(导出后 audit 实测回填 top,逐槽 print-only)。
 
-### 红线(违反即返工)
+### 红线(生成期必背十一条)
 
-- 1920×1080 定画布绝对坐标;SVG 文字尺寸一律 `WisePPT.typeSize('role')`,不裸写 px 字号。
-- **typography mode 默认 all-sans**(与 wise-ppt 生产合同对齐):`--serif` 与 `--sans` 都解析为黑体;`mixed`/`all-serif` 须用户明确要求才用;mono 与 brush 三种 mode 下固定不变。
-- 颜色只用 design-tokens 变量(--paper/--ink 阶/--accent 默认关);一 deck 一主题。
-- 页面家具(眉题/页码/题注)不算切分;内容避开家具带,切分对齐空槽几何(`references/taxonomy-empty/`)。
-- **页面无标题制**(skill-design 9.4):关系页不设页面大标题,主张句由底部题注承载;顶部只有左上角眉题;禁 FIG 式图号标签及其下划线、禁右下角自创角标;大字宣言/金句/焦点宣言页与非关系页(含尾页)**零题注**,"每页正文可选择"合同由 HTML 正文节点(素材行/出处行,带 data-content-ref)满足。
-- **关系对齐与最终配平**:对齐顺序固定为`包含→不压线→不重叠→不穿越→关系锚定→阅读顺序→间距`;时间轴/流程/架构/UI/证据墙按自身主轴、边界或连接点对齐,不强行整体居中。关系锚点存在时用精确坐标,无关系目标的整体位移才走 4px 网格。只有中心型页面或没有顶/底/侧边/连接锚点的单一内容组允许最终整组配平:垂直可用区上缘=眉题底,下缘=有底句页取底句顶、无底句页取页码顶,度量文字主体并集;水平量结构框,两方向浏览器实测 |Δ|≤3px。print 是独立布局 pass,导出后须对 PDF 再验;文案与插图不重叠,封面亦然。
-- **几何契约必须闭合**:新版 deck 根节点声明 `data-geometry-contract-version="1"`;每页必须且只能有一个 `wise-ppt-geometry@1` JSON island。每个 `data-slot-id` 同时带唯一 `data-anchor-id`,页面 anchor 全部进入契约;每页至少一条边界/冲突关系和一条关系对齐,并按此前后顺序声明。`primitive` 只追踪第六章结构或非关系模板,不是新的判断层。旧 deck 自带的旧 runtime 不追溯改造;但只要用本版 Skill 修订任一页,就必须整副升级根标记与逐页契约,禁止新旧页混用。
-- **组件预览遗产打穿**(skill-design 第八章第二段):组件 CSS 按 600px 方卡预览写的,注入后必须槽级覆写——①方卡外壳(`width:600px/min-height:600px`→`width:100% !important; min-height:0 !important; height:auto !important; aspect-ratio:auto !important`,遗产须 important 碾压)②`__content` padding→0③自带字档→全局字阶 token(`var(--type-*)`);**覆写选择器特度必须压过组件原规则**(复述原类链语境再追加槽属性,否则如金句 26px 假生效);④槽用**显式几何**(absolute 定位+内容自然流),不依赖 flex 居中/overflow;⑤print 分页残差逐槽 print-only 补偿;验收量 computed font-size,视觉转述不算数。
-- **同类页同字档**:金句页全 deck 同档(7~10 字→hero)、宣言页同 display 档;跨档须在 deck-plan 记理由;跨页 computed font-size 实测相等。
-- **组件槽用标准样板**(上方代码块):显式几何、无 flex/overflow 依赖、print 残差补偿位;`data-page-id` 页的 svg inline translateY 属 screen 校准,print 漂移用 `@media print` 逐页补偿,不动 inline。
-- **无 Emoji、无 CDN**:图标用几何细线或 mono 文字码;字体本地。
-- KPI 主值 2~3 位(过长得用 K/M/万);单位字号小于数值、墨色淡一档、底边对齐;**没有真实数据不编数值、不用图表版式**。
-- 大字档按中文字数选(≤6 display / 7~10 hero / 11~16 title / 17~24 heading / >24 先改写);标题先改短再降档,多行断在语义处。
-- 图片是证据不是装饰;比例跟用途走(主视觉 16:9、通栏 21:9、小图 3:2);同组同比例同高。
-- 节奏:关系页结构全 deck 尽量各用一次;必须重复时间隔 ≥3 页且组件族不同,**相邻页禁同结构**;连续 3 页重密度警惕插非关系页;大字页后不接大字页。
+1. 1920×1080 定画布绝对坐标;SVG 文字尺寸一律 `WisePPT.typeSize('role')`,不裸写 px 字号。
+2. typography mode 默认 all-sans(`--serif` 与 `--sans` 都解析为黑体);`mixed`/`all-serif` 须用户明确要求才用。
+3. 颜色只用 design-tokens 变量(--paper/--ink 阶/--accent 默认关);一 deck 一主题。
+4. 页面家具(眉题/页码/题注)不算切分;内容避开家具带,切分对齐空槽几何(`references/taxonomy-empty/`)。
+5. **页面无标题制**:关系页不设页面大标题,主张句由底部题注承载;顶部只有左上角眉题;禁 FIG 式图号标签及其下划线、禁右下角自创角标;大字宣言/金句/焦点宣言页与非关系页(含尾页)**零题注**,"每页正文可选择"合同由 HTML 正文节点(素材行/出处行,带 data-content-ref)满足。
+6. **关系对齐与最终配平**:对齐顺序固定为`包含→不压线→不重叠→不穿越→关系锚定→阅读顺序→间距`;时间轴/流程/架构/UI/证据墙按自身主轴、边界或连接点对齐,不强行整体居中。关系锚点存在时用精确坐标,无关系目标的整体位移才走 4px 网格。只有中心型页面或没有顶/底/侧边/连接锚点的单一内容组允许最终整组配平(垂直上缘=眉题底、下缘=有底句页取底句顶、无底句页取页码顶,度量文字主体并集;水平量结构框)。文案与插图不重叠,封面亦然。
+7. **几何契约必须闭合**:每页必须且只能有一个 `wise-ppt-geometry@1` JSON island,格式与可抄样例见《组件落地操作单》§5;边界/冲突关系在前、对齐关系在后,各至少一条;每个 `data-slot-id` 同时带唯一 `data-anchor-id`;`primitive` 只填六结构或非关系模板,不是新的判断层。修订旧 deck 任一页即整副升级根标记与逐页契约,禁止新旧页混用。
+8. **组件预览遗产打穿**:组件 CSS 按 600px 方卡预览写的,注入后槽级覆写三段——①方卡外壳(`width:600px/min-height:600px`→`width:100% !important; min-height:0 !important; height:auto !important; aspect-ratio:auto !important`,遗产须 important 碾压)②`__content` padding→0 ③自带字档→全局字阶 token(`var(--type-*)`);**覆写选择器特度必须压过组件原规则**(复述原类链语境再追加槽属性,否则如金句 26px 假生效)。
+9. **组件槽用标准样板**(上方代码块):槽只给锚点(left/top/width),高度跟内容自然流;不用 flex 居中、不写 overflow、不加内层 wrapper(print 分页 pass 会重算 flex/margin);print 残差逐槽 print-only 补偿;`data-page-id` 页的 svg inline translateY 属 screen 校准,print 漂移用 `@media print` 逐页补偿,不动 inline。
+10. **无 Emoji、无 CDN**:字体本地;图标一律内联 SVG 本体(见操作单§6)。
+11. **内容与节奏**:没有真实数据不编数值、不用图表版式;KPI 主值 2~3 位(过长得用 K/M/万),单位字号小于数值、墨色淡一档、底边对齐;同类页同字档(金句页 7~10 字→hero、宣言页同 display 档,跨档在 deck-plan 记理由);大字档按中文字数选(≤6 display / 7~10 hero / 11~16 title / 17~24 heading / >24 先改写),标题先改短再降档,多行断在语义处;图片是证据不是装饰(主视觉 16:9、通栏 21:9、小图 3:2,同组同比例同高);关系页结构全 deck 尽量各用一次(必须重复时间隔≥3页且组件族不同,**相邻页禁同结构**);连续 3 页重密度警惕插非关系页;大字页后不接大字页。
+
+### 机器门禁(交付三件套自动查,生成期不必背)
+
+生成时按上面十一条做;下面这些阈值已沉进工具,被拦下即返工,不要现场另造审计口径:
+
+| 门禁 | 谁查 | 口径 |
+|---|---|---|
+| 几何契约 12 类型实测、slot 未声明重叠 | check-deck(浏览器) | fail-closed,缺岛即红 |
+| 组件登记、容量、节奏 | check-deck 静态段 | 每个 data-component-id 须在 manifest;④列 N 在 min~max;相邻禁同结构、结构/组件重复间隔≥3页(deck-plan 显式 `- 节奏豁免:` 行可豁免遗留 deck,豁免可见) |
+| 字体真实加载、file:// 资源、禁 stageFit/iframe、缩放权威 | check-deck(浏览器) | fail-closed |
+| 文字主体垂直居中、结构框水平居中 | audit-deck screen 管线 | \|Δ\|≤3px |
+| 绝对字号下限 | audit-deck screen 管线 | computed font-size ≥13px(--type-meta 档) |
+| 同类页字档一致 | audit-deck screen 管线 | 同 slot-role 跨页 computed 相等 |
+| 隐形内容、PDF 布局残差、页数 | audit-deck PDF 管线 | 主体残差 ≤35px;PDF 页数 = slide 数 |
 
 ## 交付
 
@@ -309,6 +319,6 @@ bash runtime/export-deck.sh <deck>       # ② Chrome 无头打印 PDF,页数核
 bash runtime/audit-deck.sh <deck>        # ③ 几何/字号/可见性审计(screen + PDF 双管线)
 ```
 
-完成标准:① deck 在仓库外且相对路径自包含;② 每页四步判定在 deck-plan.md 可追溯;③ Ghost Deck 自检通过;④ 节奏自检通过;⑤ **三件套全绿**:check 零 error、audit 的 screen 主体居中(≤3px)/同类页字档一致/PDF 无隐形内容与灾难偏移(≤35px)、PDF 页数 = slide 数;⑥ 交付说明只报 `index.html` 与 PDF 两个路径 + 验证结果 + 人工验收步骤。
+完成标准:① deck 在仓库外且相对路径自包含;② 每页四步判定在 deck-plan.md 可追溯;③ Ghost Deck 自检通过;④ 节奏自检通过;⑤ **三件套全绿**:check 零 error(含组件登记/容量/节奏)、audit 的 screen 主体居中(≤3px)/字号≥13px/同类页字档一致/PDF 无隐形内容与灾难偏移(≤35px)、PDF 页数 = slide 数;⑥ 交付说明只报 `index.html` 与 PDF 两个路径 + 验证结果 + 人工验收步骤。
 
 **验收纪律**:PDF 是最终裁判——用户看的是 PDF,一切几何验收以导出 PDF 为准,screen 全绿只算半程;**视觉模型转述只能当异常线索,不能作为通过依据**(两轮"确认大字/无裁切"均为假);audit 的度量口径已固化进工具,不要现场另造审计脚本——口径漂移的审计比不审计更危险。

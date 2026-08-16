@@ -7,7 +7,7 @@
 帧文件:`references/gallery-paper-ink/ai/frames/layout-<小写编号>.html`(E1→`layout-e1.html`,R5→`layout-r5.html`)。帧是图册标本(specimen),不是 slide——整文件复制进 deck 必挂:根标记是 `data-runtime="wise-ppt-specimen"`(check 第一步就要 `wise-ppt-deck`)、CSS 走仓库相对路径、末尾调 `stageFit()`。拆解五步:
 
 1. 按 §7 建好 deck 骨架,拿到空的 `index.html`。
-2. 打开帧,把 `<div class="stage" …>…</div>` **整块**剪出来,标签换成 `<main class="stage">…</main>`,放进一个新建的 `<section class="slide">`(section 属性照 SKILL.md「slide 结构样板」:data-render-pending / data-page-id / data-theme / data-page-title / data-section-id / data-section-title)。stage 上原有的 `data-component-id`、`data-content-ref` 等指纹属性原样保留。
+2. 打开帧,把 `<div class="stage" …>…</div>` **整块**剪出来,标签换成 `<main class="stage">…</main>`,放进一个新建的 `<section class="slide">`(section 属性照 SKILL.md「slide 结构样板」:data-render-pending / data-page-id / data-theme / data-page-title / data-section-id / data-section-title)。stage 上的 `data-content-ref` 等指纹属性原样保留;stage 级的 `data-component-id` 是图册标本指纹,**拆解时删除**(deck 合同只认槽级 `data-component-id`,门禁会查登记)。
 3. 删三样:`<link … shell.css>`(图册浏览壳样式)、`<script … stage-fit.js>` 引用、末尾的 `stageFit();` 调用。缩放归 deck-runtime 管,deck 里调 `stageFit` 直接 check 红。
 4. 帧头部内联的 `<style>` 原样带走;外链 CSS 的 `../../../../themes/paper-ink/assets/design-tokens.css`、`slide-components.css` 换成 deck 内 `assets/design-tokens.css`、`assets/slide-components.css`。
 5. 帧**不带几何契约岛**,按 §5 给这页自建一个,然后跑 `bash runtime/check-deck.sh <deck>` 验证。

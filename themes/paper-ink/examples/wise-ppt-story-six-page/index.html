@@ -1,6 +1,6 @@
 <!doctype html>
 <!-- Generated shell: edit slides only between WISE_PPT_SLIDES markers, then run scripts/build_deck.py. -->
-<html lang="zh-CN" data-runtime="wise-ppt-deck" data-typography-mode="mixed" data-deck-title="Wise PPT · 分镜示例">
+<html lang="zh-CN" data-runtime="wise-ppt-deck" data-geometry-contract-version="1" data-typography-mode="all-sans" data-deck-title="Wise PPT · 分镜示例">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
@@ -13,14 +13,34 @@
 <section id="deck" aria-label="横向放映"><div id="deck-stage"><div id="track">
 <!-- WISE_PPT_SLIDES_START -->
 <section class="slide" data-render-pending="true" data-page-id="page.story.why" data-page-role="compare" data-theme="paper-ink" data-layout-source="gallery" data-recipe-id="paper-ink.comparison.dual-panel" data-page-title="AI 做 PPT 总是千篇一律，因为缺的是设计判断" data-page-summary="AI 缺的不是生成页面的能力，而是好的设计标准。" data-section-id="section.problem" data-section-title="问题与标准" data-emphasis-mode="none"><main class="stage" data-balance="structural" data-balance-frame="0,140,1920,980">
-    <div class="doc tl" data-balance-exclude="true" data-slot-id="support" data-block-id="block.story.why-support" data-renderer-kind="typography" data-component-source="native" data-component-id="native.paper-ink.comparison.dual-panel.support" data-theme-adapter-id="paper-ink.typography" data-content-ref="item.story.why">WISE PPT SKILL — 01<br>THE GAPS OF AI-MADE PPT</div>
-    <div class="folio" data-balance-exclude="true">01 / 06 — BY @歪斯WISE</div>
-    <svg class="scene" viewBox="0 0 1920 1080" role="img" aria-label="AI做PPT总是千篇一律" aria-describedby="why-desc"
+    <div class="doc tl" data-anchor-id="p01.doc" data-balance-exclude="true" data-slot-id="support" data-block-id="block.story.why-support" data-renderer-kind="typography" data-component-source="native" data-component-id="native.paper-ink.comparison.dual-panel.support" data-theme-adapter-id="paper-ink.typography" data-content-ref="item.story.why">WISE PPT SKILL — 01<br>THE GAPS OF AI-MADE PPT</div>
+    <div class="folio" data-anchor-id="p01.folio" data-balance-exclude="true">01 / 06 — BY @歪斯WISE</div>
+    <svg class="scene" data-anchor-id="p01.scene" transform="translate(0,-18)" viewBox="0 0 1920 1080" role="img" aria-label="AI做PPT总是千篇一律" aria-describedby="why-desc"
       data-slot-id="comparison" data-block-id="block.story.why-comparison" data-renderer-kind="svg" data-component-source="native" data-component-id="native.paper-ink.comparison.dual-panel.comparison" data-theme-adapter-id="paper-ink.svg" data-content-ref="item.story.why">
       <desc id="why-desc">左侧展示 AI 做 PPT 容易千篇一律的四个表现：喜欢格子布局、颜色花里胡哨、信息密度不足，以及 ICON、EMOJI 滥用；右侧展示内容规划、版式适配、组件供给和视觉强调四项设计决策。</desc>
     </svg>
-    <div class="caption" data-slot-id="takeaway" data-block-id="block.story.why-takeaway" data-renderer-kind="typography" data-component-source="native" data-component-id="native.paper-ink.comparison.dual-panel.takeaway" data-theme-adapter-id="paper-ink.typography" data-content-ref="item.story.why-takeaway">AI缺的不是生成页面的能力，而是好的设计标准。</div>
-  </main><script>(function () {
+    <div class="caption" data-anchor-id="p01.caption" data-slot-id="takeaway" data-block-id="block.story.why-takeaway" data-renderer-kind="typography" data-component-source="native" data-component-id="native.paper-ink.comparison.dual-panel.takeaway" data-theme-adapter-id="paper-ink.typography" data-content-ref="item.story.why-takeaway">AI缺的不是生成页面的能力，而是好的设计标准。</div>
+  </main>
+  <div data-anchor-id="p01.region" aria-hidden="true" style="position:absolute;left:64px;top:120px;width:1792px;height:840px;pointer-events:none"></div>
+  <script type="application/json" data-geometry-contract>{
+    "format":"wise-ppt-geometry@1","primitive":"左右x等分","canvas":{"width":1920,"height":1080},
+    "content_region":{"anchor_id":"p01.region","zone":"functional-edge"},
+    "anchors":[
+      {"anchor_id":"p01.region","selector":"[data-anchor-id=\"p01.region\"]"},
+      {"anchor_id":"p01.doc","selector":"[data-anchor-id=\"p01.doc\"]"},
+      {"anchor_id":"p01.folio","selector":"[data-anchor-id=\"p01.folio\"]"},
+      {"anchor_id":"p01.caption","selector":"[data-anchor-id=\"p01.caption\"]"},
+      {"anchor_id":"p01.scene","selector":"[data-anchor-id=\"p01.scene\"]"}
+    ],
+    "relations":[
+      {"relation_id":"p01.doc-folio-separate","type":"avoid","anchors":["p01.doc","p01.folio"],"min_gap":40,"tolerance":1},
+      {"relation_id":"p01.doc-scene-owned","type":"ownerOverlap","anchors":["p01.scene","p01.doc"],"reason":"眉题压整页底纹,底纹为装饰层","tolerance":1},
+      {"relation_id":"p01.caption-scene-owned","type":"ownerOverlap","anchors":["p01.scene","p01.caption"],"reason":"题注带压整页底纹,底纹为装饰层","tolerance":1},
+      {"relation_id":"p01.doc-folio-left","type":"edgeEq","anchors":["p01.doc","p01.folio"],"edge":"left","tolerance":1},
+      {"relation_id":"p01.caption-scene-left","type":"edgeEq","anchors":["p01.scene","p01.caption"],"edge":"left","tolerance":1}
+    ]
+  }</script>
+<script>(function () {
       const slide=document.currentScript.closest('.slide');
       const svg = slide.querySelector('.scene'), NS = 'http://www.w3.org/2000/svg';
       const INK = '#191917', INK80 = 'rgba(25,25,23,.80)', INK70 = 'rgba(25,25,23,.70)', INK45 = 'rgba(25,25,23,.45)';
@@ -81,14 +101,34 @@
     WisePPT.markSlideReady(slide);
     })();</script></section>
 <section class="slide" data-render-pending="true" data-page-id="page.story.workflow" data-page-role="explain" data-theme="paper-ink" data-layout-source="composition" data-recipe-id="paper-ink.flow.pipeline" data-page-title="五步编排链把原始资料变成可放映网页" data-page-summary="先理解内容，再安排重点、层级与关系。" data-section-id="section.workflow" data-section-title="从内容到放映" data-emphasis-mode="none"><main class="stage" data-balance="structural" data-balance-frame="0,140,1920,980">
-    <div class="doc tl" data-balance-exclude="true" data-block-id="block.story.workflow-support" data-renderer-kind="typography" data-component-source="native" data-component-id="support" data-theme-adapter-id="paper-ink.typography" data-content-ref="item.story.workflow">WISE PPT SKILL — 02<br>CONTENT TO PLAYBACK</div>
-    <div class="folio" data-balance-exclude="true">02 / 06 — BY @歪斯WISE</div>
-    <svg class="scene" viewBox="0 0 1920 1080" role="img" aria-label="Wise PPT Skill 的内容编排流程" aria-describedby="how-desc"
-      data-block-id="block.story.workflow" data-renderer-kind="svg" data-component-source="native" data-component-id="pipeline" data-theme-adapter-id="paper-ink.svg" data-content-ref="item.story.workflow">
+    <div class="doc tl" data-anchor-id="p02.doc" data-balance-exclude="true" data-block-id="block.story.workflow-support" data-renderer-kind="typography" data-component-source="native" data-theme-adapter-id="paper-ink.typography" data-content-ref="item.story.workflow">WISE PPT SKILL — 02<br>CONTENT TO PLAYBACK</div>
+    <div class="folio" data-anchor-id="p02.folio" data-balance-exclude="true">02 / 06 — BY @歪斯WISE</div>
+    <svg class="scene" data-anchor-id="p02.scene" transform="translate(0,-62)" viewBox="0 0 1920 1080" role="img" aria-label="Wise PPT Skill 的内容编排流程" aria-describedby="how-desc"
+      data-block-id="block.story.workflow" data-renderer-kind="svg" data-component-source="native" data-theme-adapter-id="paper-ink.svg" data-content-ref="item.story.workflow">
       <desc id="how-desc">Skill 依次分析内容、梳理叙事、判断版式、组合组件，并生成可放映的网页PPT。</desc>
     </svg>
-    <div class="caption" data-block-id="block.story.workflow-takeaway" data-renderer-kind="typography" data-component-source="native" data-component-id="takeaway" data-theme-adapter-id="paper-ink.typography" data-content-ref="item.story.workflow-takeaway">先理解内容，再安排重点、层级与关系。</div>
-  </main><script>(function(){
+    <div class="caption" data-anchor-id="p02.caption" data-block-id="block.story.workflow-takeaway" data-renderer-kind="typography" data-component-source="native" data-theme-adapter-id="paper-ink.typography" data-content-ref="item.story.workflow-takeaway">先理解内容，再安排重点、层级与关系。</div>
+  </main>
+  <div data-anchor-id="p02.region" aria-hidden="true" style="position:absolute;left:64px;top:120px;width:1792px;height:840px;pointer-events:none"></div>
+  <script type="application/json" data-geometry-contract>{
+    "format":"wise-ppt-geometry@1","primitive":"单区","canvas":{"width":1920,"height":1080},
+    "content_region":{"anchor_id":"p02.region","zone":"functional-edge"},
+    "anchors":[
+      {"anchor_id":"p02.region","selector":"[data-anchor-id=\"p02.region\"]"},
+      {"anchor_id":"p02.doc","selector":"[data-anchor-id=\"p02.doc\"]"},
+      {"anchor_id":"p02.folio","selector":"[data-anchor-id=\"p02.folio\"]"},
+      {"anchor_id":"p02.caption","selector":"[data-anchor-id=\"p02.caption\"]"},
+      {"anchor_id":"p02.scene","selector":"[data-anchor-id=\"p02.scene\"]"}
+    ],
+    "relations":[
+      {"relation_id":"p02.doc-folio-separate","type":"avoid","anchors":["p02.doc","p02.folio"],"min_gap":40,"tolerance":1},
+      {"relation_id":"p02.doc-scene-owned","type":"ownerOverlap","anchors":["p02.scene","p02.doc"],"reason":"眉题压整页底纹,底纹为装饰层","tolerance":1},
+      {"relation_id":"p02.caption-scene-owned","type":"ownerOverlap","anchors":["p02.scene","p02.caption"],"reason":"题注带压整页底纹,底纹为装饰层","tolerance":1},
+      {"relation_id":"p02.doc-folio-left","type":"edgeEq","anchors":["p02.doc","p02.folio"],"edge":"left","tolerance":1},
+      {"relation_id":"p02.caption-scene-left","type":"edgeEq","anchors":["p02.scene","p02.caption"],"edge":"left","tolerance":1}
+    ]
+  }</script>
+<script>(function(){
       const slide=document.currentScript.closest('.slide');
       const svg=slide.querySelector('.scene'),NS='http://www.w3.org/2000/svg';
       const INK='#191917', INK80='rgba(25,25,23,.80)', INK70='rgba(25,25,23,.70)', INK45='rgba(25,25,23,.45)';
@@ -118,14 +158,34 @@
     WisePPT.markSlideReady(slide);
     })();</script></section>
 <section class="slide" data-render-pending="true" data-page-id="page.story.principles" data-page-role="explain" data-theme="paper-ink" data-layout-source="gallery" data-recipe-id="paper-ink.radial.three-way" data-page-title="一页一个重心，三项原则共同决定阅读顺序" data-page-summary="设计不是把信息填满，而是为观众的阅读顺序作出取舍。" data-section-id="section.design" data-section-title="设计取舍" data-emphasis-mode="none"><main class="stage" data-balance="structural" data-balance-frame="0,140,1920,980">
-    <div class="doc tl" data-balance-exclude="true" data-slot-id="support" data-block-id="block.story.principles-support" data-renderer-kind="typography" data-component-source="native" data-component-id="native.paper-ink.radial.three-way.support" data-theme-adapter-id="paper-ink.typography" data-content-ref="item.story.principles">WISE PPT SKILL — 03<br>DESIGN PRINCIPLES</div>
-    <div class="folio" data-balance-exclude="true">03 / 06 — BY @歪斯WISE</div>
-    <svg class="scene" viewBox="0 0 1920 1080" role="img" aria-label="Wise PPT Skill 的三项设计取舍" aria-describedby="principle-desc"
+    <div class="doc tl" data-anchor-id="p03.doc" data-balance-exclude="true" data-slot-id="support" data-block-id="block.story.principles-support" data-renderer-kind="typography" data-component-source="native" data-component-id="native.paper-ink.radial.three-way.support" data-theme-adapter-id="paper-ink.typography" data-content-ref="item.story.principles">WISE PPT SKILL — 03<br>DESIGN PRINCIPLES</div>
+    <div class="folio" data-anchor-id="p03.folio" data-balance-exclude="true">03 / 06 — BY @歪斯WISE</div>
+    <svg class="scene" data-anchor-id="p03.scene" transform="translate(0,-57)" viewBox="0 0 1920 1080" role="img" aria-label="Wise PPT Skill 的三项设计取舍" aria-describedby="principle-desc"
       data-slot-id="dimensions" data-block-id="block.story.design-principles" data-renderer-kind="svg" data-component-source="native" data-component-id="native.paper-ink.radial.three-way.dimensions" data-theme-adapter-id="paper-ink.svg" data-content-ref="item.story.principles">
       <desc id="principle-desc">中心是一页一个重心，向左、右、下分别展开内容优先、颜色有义和密度分层三项设计原则。</desc>
     </svg>
-    <div class="caption" data-slot-id="takeaway" data-block-id="block.story.principles-takeaway" data-renderer-kind="typography" data-component-source="native" data-component-id="native.paper-ink.radial.three-way.takeaway" data-theme-adapter-id="paper-ink.typography" data-content-ref="item.story.principles-takeaway">设计不是把信息填满，而是为观众的阅读顺序作出取舍。</div>
-  </main><script>(function(){
+    <div class="caption" data-anchor-id="p03.caption" data-slot-id="takeaway" data-block-id="block.story.principles-takeaway" data-renderer-kind="typography" data-component-source="native" data-component-id="native.paper-ink.radial.three-way.takeaway" data-theme-adapter-id="paper-ink.typography" data-content-ref="item.story.principles-takeaway">设计不是把信息填满，而是为观众的阅读顺序作出取舍。</div>
+  </main>
+  <div data-anchor-id="p03.region" aria-hidden="true" style="position:absolute;left:64px;top:120px;width:1792px;height:840px;pointer-events:none"></div>
+  <script type="application/json" data-geometry-contract>{
+    "format":"wise-ppt-geometry@1","primitive":"单区","canvas":{"width":1920,"height":1080},
+    "content_region":{"anchor_id":"p03.region","zone":"functional-edge"},
+    "anchors":[
+      {"anchor_id":"p03.region","selector":"[data-anchor-id=\"p03.region\"]"},
+      {"anchor_id":"p03.doc","selector":"[data-anchor-id=\"p03.doc\"]"},
+      {"anchor_id":"p03.folio","selector":"[data-anchor-id=\"p03.folio\"]"},
+      {"anchor_id":"p03.caption","selector":"[data-anchor-id=\"p03.caption\"]"},
+      {"anchor_id":"p03.scene","selector":"[data-anchor-id=\"p03.scene\"]"}
+    ],
+    "relations":[
+      {"relation_id":"p03.doc-folio-separate","type":"avoid","anchors":["p03.doc","p03.folio"],"min_gap":40,"tolerance":1},
+      {"relation_id":"p03.doc-scene-owned","type":"ownerOverlap","anchors":["p03.scene","p03.doc"],"reason":"眉题压整页底纹,底纹为装饰层","tolerance":1},
+      {"relation_id":"p03.caption-scene-owned","type":"ownerOverlap","anchors":["p03.scene","p03.caption"],"reason":"题注带压整页底纹,底纹为装饰层","tolerance":1},
+      {"relation_id":"p03.doc-folio-left","type":"edgeEq","anchors":["p03.doc","p03.folio"],"edge":"left","tolerance":1},
+      {"relation_id":"p03.caption-scene-left","type":"edgeEq","anchors":["p03.scene","p03.caption"],"edge":"left","tolerance":1}
+    ]
+  }</script>
+<script>(function(){
       const slide=document.currentScript.closest('.slide');
       const svg=slide.querySelector('.scene'),NS='http://www.w3.org/2000/svg';
       const INK='#191917',INK80='rgba(25,25,23,.80)',INK70='rgba(25,25,23,.70)',INK45='rgba(25,25,23,.45)';
@@ -147,14 +207,34 @@
     WisePPT.markSlideReady(slide);
     })();</script></section>
 <section class="slide" data-render-pending="true" data-page-id="page.story.layout-atlas" data-page-role="explain" data-theme="paper-ink" data-layout-source="free_build" data-page-title="版式图册提供结构候选，但内容关系拥有最终决定权" data-page-summary="从信息关系出发，让每一种内容都拥有恰当的阅读结构。" data-section-id="section.expression" data-section-title="表达资源" data-emphasis-mode="none"><main class="stage" data-balance="structural" data-balance-frame="0,140,1920,980">
-    <div class="doc tl" data-balance-exclude="true" data-block-id="block.story.layout-atlas-support" data-renderer-kind="typography" data-component-source="native" data-component-id="layout-atlas-support" data-theme-adapter-id="paper-ink.typography" data-content-ref="item.story.layout-atlas">WISE PPT SKILL — 04<br>READING STRUCTURES FOR EVERY PAGE</div>
-    <div class="folio" data-balance-exclude="true">04 / 06 — BY @歪斯WISE</div>
-    <svg class="scene" viewBox="0 0 1920 1080" role="img" aria-label="每一页都有合适的阅读结构" aria-describedby="atlas-desc"
-      data-block-id="block.story.layout-atlas" data-renderer-kind="svg" data-component-source="native" data-component-id="layout-atlas-overview" data-theme-adapter-id="paper-ink.svg" data-content-ref="item.story.layout-atlas">
+    <div class="doc tl" data-anchor-id="p04.doc" data-balance-exclude="true" data-block-id="block.story.layout-atlas-support" data-renderer-kind="typography" data-component-source="native" data-theme-adapter-id="paper-ink.typography" data-content-ref="item.story.layout-atlas">WISE PPT SKILL — 04<br>READING STRUCTURES FOR EVERY PAGE</div>
+    <div class="folio" data-anchor-id="p04.folio" data-balance-exclude="true">04 / 06 — BY @歪斯WISE</div>
+    <svg class="scene" data-anchor-id="p04.scene" transform="translate(0,-29)" viewBox="0 0 1920 1080" role="img" aria-label="每一页都有合适的阅读结构" aria-describedby="atlas-desc"
+      data-block-id="block.story.layout-atlas" data-renderer-kind="svg" data-component-source="native" data-theme-adapter-id="paper-ink.svg" data-content-ref="item.story.layout-atlas">
       <desc id="atlas-desc">左侧解释结构应从内容关系出发，右侧示意六种阅读结构：双面板比较、横向流水线、三向放射、分层架构、图表联排和四象限矩阵。</desc>
     </svg>
-    <div class="caption" data-block-id="block.story.layout-atlas-takeaway" data-renderer-kind="typography" data-component-source="native" data-component-id="takeaway" data-theme-adapter-id="paper-ink.typography" data-content-ref="item.story.layout-atlas-takeaway">从信息关系出发，让每一种内容都拥有恰当的阅读结构。</div>
-  </main><script>(function(){
+    <div class="caption" data-anchor-id="p04.caption" data-block-id="block.story.layout-atlas-takeaway" data-renderer-kind="typography" data-component-source="native" data-theme-adapter-id="paper-ink.typography" data-content-ref="item.story.layout-atlas-takeaway">从信息关系出发，让每一种内容都拥有恰当的阅读结构。</div>
+  </main>
+  <div data-anchor-id="p04.region" aria-hidden="true" style="position:absolute;left:64px;top:120px;width:1792px;height:840px;pointer-events:none"></div>
+  <script type="application/json" data-geometry-contract>{
+    "format":"wise-ppt-geometry@1","primitive":"左右不对称","canvas":{"width":1920,"height":1080},
+    "content_region":{"anchor_id":"p04.region","zone":"functional-edge"},
+    "anchors":[
+      {"anchor_id":"p04.region","selector":"[data-anchor-id=\"p04.region\"]"},
+      {"anchor_id":"p04.doc","selector":"[data-anchor-id=\"p04.doc\"]"},
+      {"anchor_id":"p04.folio","selector":"[data-anchor-id=\"p04.folio\"]"},
+      {"anchor_id":"p04.caption","selector":"[data-anchor-id=\"p04.caption\"]"},
+      {"anchor_id":"p04.scene","selector":"[data-anchor-id=\"p04.scene\"]"}
+    ],
+    "relations":[
+      {"relation_id":"p04.doc-folio-separate","type":"avoid","anchors":["p04.doc","p04.folio"],"min_gap":40,"tolerance":1},
+      {"relation_id":"p04.doc-scene-owned","type":"ownerOverlap","anchors":["p04.scene","p04.doc"],"reason":"眉题压整页底纹,底纹为装饰层","tolerance":1},
+      {"relation_id":"p04.caption-scene-owned","type":"ownerOverlap","anchors":["p04.scene","p04.caption"],"reason":"题注带压整页底纹,底纹为装饰层","tolerance":1},
+      {"relation_id":"p04.doc-folio-left","type":"edgeEq","anchors":["p04.doc","p04.folio"],"edge":"left","tolerance":1},
+      {"relation_id":"p04.caption-scene-left","type":"edgeEq","anchors":["p04.scene","p04.caption"],"edge":"left","tolerance":1}
+    ]
+  }</script>
+<script>(function(){
       const slide=document.currentScript.closest('.slide');
       const svg=slide.querySelector('.scene'),NS='http://www.w3.org/2000/svg';
       const INK='#191917',INK80='rgba(25,25,23,.80)',INK70='rgba(25,25,23,.70)',INK45='rgba(25,25,23,.45)';
@@ -190,14 +270,34 @@
     WisePPT.markSlideReady(slide);
     })();</script></section>
 <section class="slide" data-render-pending="true" data-page-id="page.story.component-atlas" data-page-role="explain" data-theme="paper-ink" data-layout-source="free_build" data-page-title="组件沉淀成熟表达，但是否调用仍由页面内容决定" data-page-summary="提供成熟的表达组件，并由页面内容决定是否调用。" data-section-id="section.expression" data-section-title="表达资源" data-emphasis-mode="none"><main class="stage" data-balance="structural" data-balance-frame="0,140,1920,980">
-    <div class="doc tl" data-balance-exclude="true" data-block-id="block.story.component-atlas-support" data-renderer-kind="typography" data-component-source="native" data-component-id="component-atlas-support" data-theme-adapter-id="paper-ink.typography" data-content-ref="item.story.component-atlas">WISE PPT SKILL — 05<br>REUSABLE EXPRESSION UNITS</div>
-    <div class="folio" data-balance-exclude="true">05 / 06 — BY @歪斯WISE</div>
-    <svg class="scene" viewBox="0 0 1920 1080" role="img" aria-label="成熟表达沉淀为可复用单元" aria-describedby="component-desc"
-      data-block-id="block.story.component-atlas" data-renderer-kind="svg" data-component-source="native" data-component-id="component-atlas-overview" data-theme-adapter-id="paper-ink.svg" data-content-ref="item.story.component-atlas">
+    <div class="doc tl" data-anchor-id="p05.doc" data-balance-exclude="true" data-block-id="block.story.component-atlas-support" data-renderer-kind="typography" data-component-source="native" data-theme-adapter-id="paper-ink.typography" data-content-ref="item.story.component-atlas">WISE PPT SKILL — 05<br>REUSABLE EXPRESSION UNITS</div>
+    <div class="folio" data-anchor-id="p05.folio" data-balance-exclude="true">05 / 06 — BY @歪斯WISE</div>
+    <svg class="scene" data-anchor-id="p05.scene" transform="translate(0,-29)" viewBox="0 0 1920 1080" role="img" aria-label="成熟表达沉淀为可复用单元" aria-describedby="component-desc"
+      data-block-id="block.story.component-atlas" data-renderer-kind="svg" data-component-source="native" data-theme-adapter-id="paper-ink.svg" data-content-ref="item.story.component-atlas">
       <desc id="component-desc">左侧说明组件是按需调用的表达积木。右侧示意流程、同心圆、架构、统计卡片、数据图表和关系矩阵六种可复用单元。</desc>
     </svg>
-    <div class="caption" data-block-id="block.story.component-atlas-takeaway" data-renderer-kind="typography" data-component-source="native" data-component-id="takeaway" data-theme-adapter-id="paper-ink.typography" data-content-ref="item.story.component-atlas-takeaway">提供成熟的表达组件，并由页面内容决定是否调用。</div>
-  </main><script>(function(){
+    <div class="caption" data-anchor-id="p05.caption" data-block-id="block.story.component-atlas-takeaway" data-renderer-kind="typography" data-component-source="native" data-theme-adapter-id="paper-ink.typography" data-content-ref="item.story.component-atlas-takeaway">提供成熟的表达组件，并由页面内容决定是否调用。</div>
+  </main>
+  <div data-anchor-id="p05.region" aria-hidden="true" style="position:absolute;left:64px;top:120px;width:1792px;height:840px;pointer-events:none"></div>
+  <script type="application/json" data-geometry-contract>{
+    "format":"wise-ppt-geometry@1","primitive":"左右不对称","canvas":{"width":1920,"height":1080},
+    "content_region":{"anchor_id":"p05.region","zone":"functional-edge"},
+    "anchors":[
+      {"anchor_id":"p05.region","selector":"[data-anchor-id=\"p05.region\"]"},
+      {"anchor_id":"p05.doc","selector":"[data-anchor-id=\"p05.doc\"]"},
+      {"anchor_id":"p05.folio","selector":"[data-anchor-id=\"p05.folio\"]"},
+      {"anchor_id":"p05.caption","selector":"[data-anchor-id=\"p05.caption\"]"},
+      {"anchor_id":"p05.scene","selector":"[data-anchor-id=\"p05.scene\"]"}
+    ],
+    "relations":[
+      {"relation_id":"p05.doc-folio-separate","type":"avoid","anchors":["p05.doc","p05.folio"],"min_gap":40,"tolerance":1},
+      {"relation_id":"p05.doc-scene-owned","type":"ownerOverlap","anchors":["p05.scene","p05.doc"],"reason":"眉题压整页底纹,底纹为装饰层","tolerance":1},
+      {"relation_id":"p05.caption-scene-owned","type":"ownerOverlap","anchors":["p05.scene","p05.caption"],"reason":"题注带压整页底纹,底纹为装饰层","tolerance":1},
+      {"relation_id":"p05.doc-folio-left","type":"edgeEq","anchors":["p05.doc","p05.folio"],"edge":"left","tolerance":1},
+      {"relation_id":"p05.caption-scene-left","type":"edgeEq","anchors":["p05.scene","p05.caption"],"edge":"left","tolerance":1}
+    ]
+  }</script>
+<script>(function(){
       const slide=document.currentScript.closest('.slide');
       const svg=slide.querySelector('.scene'),NS='http://www.w3.org/2000/svg';
       const INK='#191917',INK80='rgba(25,25,23,.80)',INK70='rgba(25,25,23,.70)',INK45='rgba(25,25,23,.45)';
@@ -254,14 +354,34 @@
     WisePPT.markSlideReady(slide);
     })();</script></section>
 <section class="slide" data-render-pending="true" data-page-id="page.story.contact" data-page-role="act" data-theme="paper-ink" data-layout-source="gallery" data-recipe-id="paper-ink.scaffold.contact" data-page-title="通过三条可执行渠道继续获取 Wise PPT 更新" data-page-summary="关注 @歪斯Wise，及时获取更新资讯。" data-section-id="section.close" data-section-title="保持联系" data-emphasis-mode="none"><main class="stage" data-balance="structural" data-balance-frame="0,140,1920,980">
-    <div class="doc tl" data-balance-exclude="true" data-slot-id="support" data-block-id="block.story.contact-support" data-renderer-kind="typography" data-component-source="native" data-component-id="native.paper-ink.scaffold.contact.support" data-theme-adapter-id="paper-ink.typography" data-content-ref="item.story.contact">WISE PPT SKILL — 06<br>STAY IN TOUCH</div>
-    <div class="folio" data-balance-exclude="true">06 / 06 — BY @歪斯WISE</div>
-    <svg class="scene" viewBox="0 0 1920 1080" role="img" aria-label="关注歪斯 Wise，及时获取更新资讯" aria-describedby="contact-desc"
+    <div class="doc tl" data-anchor-id="p06.doc" data-balance-exclude="true" data-slot-id="support" data-block-id="block.story.contact-support" data-renderer-kind="typography" data-component-source="native" data-component-id="native.paper-ink.scaffold.contact.support" data-theme-adapter-id="paper-ink.typography" data-content-ref="item.story.contact">WISE PPT SKILL — 06<br>STAY IN TOUCH</div>
+    <div class="folio" data-anchor-id="p06.folio" data-balance-exclude="true">06 / 06 — BY @歪斯WISE</div>
+    <svg class="scene" data-anchor-id="p06.scene" transform="translate(0,-25)" viewBox="0 0 1920 1080" role="img" aria-label="关注歪斯 Wise，及时获取更新资讯" aria-describedby="contact-desc"
       data-slot-id="contact" data-block-id="block.story.contact" data-renderer-kind="svg" data-component-source="native" data-component-id="native.paper-ink.scaffold.contact.contact" data-theme-adapter-id="paper-ink.svg" data-content-ref="item.story.contact">
       <desc id="contact-desc">左侧是抽象联络网格，右侧是歪斯 Wise 的联系卡片与二维码。</desc>
     </svg>
-    <div class="caption" data-slot-id="takeaway" data-block-id="block.story.contact-takeaway" data-renderer-kind="typography" data-component-source="native" data-component-id="native.paper-ink.scaffold.contact.takeaway" data-theme-adapter-id="paper-ink.typography" data-content-ref="item.story.contact-takeaway">关注 @歪斯Wise，及时获取更新资讯。</div>
-  </main><script>(function(){
+    <div class="caption" data-anchor-id="p06.caption" data-slot-id="takeaway" data-block-id="block.story.contact-takeaway" data-renderer-kind="typography" data-component-source="native" data-component-id="native.paper-ink.scaffold.contact.takeaway" data-theme-adapter-id="paper-ink.typography" data-content-ref="item.story.contact-takeaway">关注 @歪斯Wise，及时获取更新资讯。</div>
+  </main>
+  <div data-anchor-id="p06.region" aria-hidden="true" style="position:absolute;left:64px;top:120px;width:1792px;height:840px;pointer-events:none"></div>
+  <script type="application/json" data-geometry-contract>{
+    "format":"wise-ppt-geometry@1","primitive":"非关系模板:D6","canvas":{"width":1920,"height":1080},
+    "content_region":{"anchor_id":"p06.region","zone":"functional-edge"},
+    "anchors":[
+      {"anchor_id":"p06.region","selector":"[data-anchor-id=\"p06.region\"]"},
+      {"anchor_id":"p06.doc","selector":"[data-anchor-id=\"p06.doc\"]"},
+      {"anchor_id":"p06.folio","selector":"[data-anchor-id=\"p06.folio\"]"},
+      {"anchor_id":"p06.caption","selector":"[data-anchor-id=\"p06.caption\"]"},
+      {"anchor_id":"p06.scene","selector":"[data-anchor-id=\"p06.scene\"]"}
+    ],
+    "relations":[
+      {"relation_id":"p06.doc-folio-separate","type":"avoid","anchors":["p06.doc","p06.folio"],"min_gap":40,"tolerance":1},
+      {"relation_id":"p06.doc-scene-owned","type":"ownerOverlap","anchors":["p06.scene","p06.doc"],"reason":"眉题压整页底纹,底纹为装饰层","tolerance":1},
+      {"relation_id":"p06.caption-scene-owned","type":"ownerOverlap","anchors":["p06.scene","p06.caption"],"reason":"题注带压整页底纹,底纹为装饰层","tolerance":1},
+      {"relation_id":"p06.doc-folio-left","type":"edgeEq","anchors":["p06.doc","p06.folio"],"edge":"left","tolerance":1},
+      {"relation_id":"p06.caption-scene-left","type":"edgeEq","anchors":["p06.scene","p06.caption"],"edge":"left","tolerance":1}
+    ]
+  }</script>
+<script>(function(){
       const slide=document.currentScript.closest('.slide');
       const svg=slide.querySelector('.scene'),NS='http://www.w3.org/2000/svg';
       const INK='#191917',INK80='rgba(25,25,23,.8)',INK45='rgba(25,25,23,.45)';

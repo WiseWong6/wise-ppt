@@ -92,7 +92,7 @@ const send = (m, p = {}) => new Promise((res, rej) => {
       const doc = slide.querySelector('.doc.tl'), cap = slide.querySelector('.caption'), folio = slide.querySelector('.folio');
       const topEdge = doc ? rel(doc.getBoundingClientRect()).bottom : 0;
       const bottomEdge = cap ? rel(cap.getBoundingClientRect()).top : (folio ? rel(folio.getBoundingClientRect()).top : 1080);
-      let sub = null, texts = 0, maxFont = 0;
+      let sub = null, texts = 0, maxFont = 0, minFont = Infinity;
       const consider = el => {
         if (el.closest('[data-balance-exclude="true"]')) return;
         if (el.closest('.doc') || el.closest('.folio') || el.closest('.caption')) return;
@@ -105,7 +105,9 @@ const send = (m, p = {}) => new Promise((res, rej) => {
         const r = rel(el.getBoundingClientRect());
         if (r.bottom - r.top < 1 && !el.matches('.divider')) return;
         texts++;
-        if (el.tagName !== 'TEXT' && !el.matches('.divider')) maxFont = Math.max(maxFont, parseFloat(cs.fontSize) || 0);
+        const fs = parseFloat(cs.fontSize) || 0;
+        if (fs > 0) minFont = Math.min(minFont, fs);
+        if (el.tagName !== 'TEXT' && !el.matches('.divider')) maxFont = Math.max(maxFont, fs);
         if (!sub) sub = r; else {
           sub.top = Math.min(sub.top, r.top); sub.bottom = Math.max(sub.bottom, r.bottom);
           sub.left = Math.min(sub.left, r.left); sub.right = Math.max(sub.right, r.right);
@@ -139,6 +141,7 @@ const send = (m, p = {}) => new Promise((res, rej) => {
         subject: sub ? { t: +sub.top.toFixed(1), b: +sub.bottom.toFixed(1) } : null,
         frame: frame ? { l: +frame.left.toFixed(1), r: +frame.right.toFixed(1) } : null,
         texts, maxFont: maxFont ? +maxFont.toFixed(0) : 0,
+        minFont: isFinite(minFont) ? +minFont.toFixed(1) : 0,
       });
     });
     const roleFonts = {};
@@ -163,16 +166,18 @@ const data = require('node:fs').readFileSync(process.argv[2], 'utf8') ? JSON.par
 (() => {
   const pad = (s, n) => String(s).padEnd(n);
   let fails = 0;
-  console.log(pad('page',5), pad('subjT',7), pad('subjB',7), pad('dMid',7), pad('frameL',7), pad('frameR',7), pad('hMid',7), pad('maxF',5), 'verdict');
+  console.log(pad('page',5), pad('subjT',7), pad('subjB',7), pad('dMid',7), pad('frameL',7), pad('frameR',7), pad('hMid',7), pad('maxF',5), pad('minF',5), 'verdict');
   for (const p of data.pages) {
     if (!p.subject || p.texts === 0) { console.log(pad(p.page,5) + ' FAIL(无文字主体/隐形内容)'); fails++; continue; }
     const mid = (p.subject.t + p.subject.b) / 2, avail = (p.topEdge + p.bottomEdge) / 2;
     const dMid = +(mid - avail).toFixed(1);
     const hMid = p.frame ? +(((p.frame.l + p.frame.r) / 2 - 960).toFixed(1)) : 0;
     const vOk = Math.abs(dMid) <= 3;
-    if (!vOk) fails++;
+    const fOk = !p.minFont || p.minFont >= 12.5;   // 字阶下限 --type-meta=13px,0.5 容浮点
+    if (!vOk || !fOk) fails++;
+    const verdict = !vOk ? 'FAIL' : (!fOk ? 'FAIL(minF<13)' : 'OK');
     console.log(pad(p.page,5), pad(p.subject.t,7), pad(p.subject.b,7), pad(dMid,7),
-      pad(p.frame?p.frame.l:'-',7), pad(p.frame?p.frame.r:'-',7), pad(hMid,7), pad(p.maxFont,5), vOk ? 'OK' : 'FAIL');
+      pad(p.frame?p.frame.l:'-',7), pad(p.frame?p.frame.r:'-',7), pad(hMid,7), pad(p.maxFont,5), pad(p.minFont||'-',5), verdict);
   }
   for (const [role, fonts] of Object.entries(data.roleFonts || {})) {
     const uniq = [...new Set(fonts)];

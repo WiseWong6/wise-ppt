@@ -20,6 +20,8 @@ rg -q 'data-runtime="wise-ppt-deck"' "$HTML" || { echo "不是 Wise PPT deck" >&
 rg -q 'data-geometry-contract-version="1"' "$HTML" || { echo "不是新版几何契约 deck：根节点缺少 data-geometry-contract-version=1" >&2; exit 1; }
 if rg -ni '<iframe|thumb-[a-z0-9_-]+' "$HTML"; then echo "deck runtime 不得引用 frame 或缩略图" >&2; exit 1; fi
 if rg -n '\bstageFit\s*\(' "$HTML"; then echo "正式 deck 不得调用 specimen stageFit()" >&2; exit 1; fi
+REPO_ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
+python3 "$REPO_ROOT/scripts/check_deck_contract.py" "$DECK" || { echo "deck 合同检查失败(组件登记/容量/节奏)" >&2; exit 1; }
 CHROME="/Applications/Google Chrome.app/Contents/MacOS/Google Chrome"
 [ -x "$CHROME" ] || CHROME="$(command -v google-chrome || command -v chrome || command -v chromium || command -v chromium-browser || true)"
 [ -x "$CHROME" ] || { echo "找不到 Chrome" >&2; exit 1; }
