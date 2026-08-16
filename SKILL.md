@@ -186,7 +186,7 @@ description: 表驱动的网页 PPT 编排 skill。输入 PDF/链接/口语稿/�
     <div class="folio" data-balance-exclude="true">03 / 12 — 署名</div>
     <svg class="scene" viewBox="0 0 1920 1080">…</svg>
     <script>/* 用 WisePPT.typeSize(role) 取字阶画 SVG */</script>
-    <div class="caption">页结论(题注行)</div>
+    <div class="caption">页主张句——本页最重要的一句话</div>
   </main>
 </section>
 ```
@@ -196,6 +196,7 @@ description: 表驱动的网页 PPT 编排 skill。输入 PDF/链接/口语稿/�
 - 1920×1080 定画布绝对坐标;SVG 文字尺寸一律 `WisePPT.typeSize('role')`,不裸写 px 字号。
 - 颜色只用 design-tokens 变量(--paper/--ink 阶/--accent 默认关);一 deck 一主题。
 - 页面家具(眉题/页码/题注)不算切分;内容避开家具带,切分对齐空槽几何(`references/taxonomy-empty/`)。
+- **页面无标题制**(skill-design 9.4):关系页不设页面大标题,主张句由底部题注承载;顶部只有左上角眉题;禁 FIG 式图号标签及其下划线、禁右下角自创角标;封面/隔页/金句/尾卡不加题注;组件按无标题完整版心(约 y160-900)垂直居中。
 - **无 Emoji、无 CDN**:图标用几何细线或 mono 文字码;字体本地。
 - KPI 主值 2~3 位(过长得用 K/M/万);单位字号小于数值、墨色淡一档、底边对齐;**没有真实数据不编数值、不用图表版式**。
 - 大字档按中文字数选(≤6 display / 7~10 hero / 11~16 title / 17~24 heading / >24 先改写);标题先改短再降档,多行断在语义处。
