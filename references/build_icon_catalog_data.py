@@ -5,12 +5,13 @@ from __future__ import annotations
 
 import argparse
 import json
+import os
 import re
 from pathlib import Path
 
 
 HERE = Path(__file__).resolve().parent
-DEFAULT_SKILL_ROOT = HERE.parents[1] / "wise-ppt"
+DEFAULT_SKILL_ROOT = HERE.parents[0]
 OUTPUT = HERE / "icon-catalog-data.js"
 VALID_REDRAW_STATUS = {"todo", "in_progress", "candidate", "approved", "rejected"}
 OFFICIAL_CATEGORY_LABELS = {
@@ -168,6 +169,7 @@ def build_payload(skill_root: Path) -> dict:
     if len(ink) != len(selection_set):
         raise CatalogBuildError("最终纸墨成品数量与精选集不一致")
 
+    vendor_rel = Path(os.path.relpath(vendor, OUTPUT.parent)).as_posix()
     return {
         "version": 1,
         "source": {
@@ -182,9 +184,9 @@ def build_payload(skill_root: Path) -> dict:
             "attribution": source.get("attribution"),
         },
         "paths": {
-            "sourceSvg": "../../wise-ppt/capabilities/vendors/tabler-outline/icons/outline/",
-            "redrawSvg": "../../wise-ppt/capabilities/vendors/tabler-outline/redraw-v3/svg/",
-            "existingAcceptance": "../../wise-ppt/capabilities/vendors/tabler-outline/acceptance.html",
+            "sourceSvg": f"{vendor_rel}/icons/outline/",
+            "redrawSvg": f"{vendor_rel}/redraw-v3/svg/",
+            "existingAcceptance": f"{vendor_rel}/acceptance.html",
         },
         "counts": {
             "source": len(source_names),

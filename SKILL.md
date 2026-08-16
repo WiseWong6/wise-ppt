@@ -28,7 +28,7 @@ description: 表驱动的网页 PPT 编排 skill。输入 PDF/链接/口语稿/�
 
 > catalog 组件 tab 当前全部可选；原 14 张“仅浏览”卡已转正为 15 个稳定 production ID（时间轴拆为横/竖两个变体），按 `routing-manifest.json` 的 frame、容量和 data contract 使用。
 
-> 图标现状(灯牌):版式帧与组件内的图标一律是**内联手绘几何细线 SVG**,不按图标名引用;纸墨重绘成品(708 枚 approved)与 189 个注册名在兄弟仓库 `wise-ppt/capabilities/vendors/tabler-outline/`(redraw-v3 + registry-v2.json),按需打包进 deck 的 icon-registry 链路尚未落地本仓库——`WisePPT.icons` 在本仓库 runtime 仅供放映壳自用,选组件/套版式时不要按名引用图标。
+> 图标现状(灯牌):版式帧与组件内的图标一律是**内联手绘几何细线 SVG**,不按图标名引用。纸墨重绘成品(865 枚 approved,精选 536)与 Tabler 母库(5,130)已收进本仓库 `capabilities/vendors/tabler-outline/`;catalog 图标 tab 的数据由 `references/build_icon_catalog_data.py` 生成(`icon-catalog-data.js`),选图标看图去那里。deck 不走按名引用的 icon-registry 链路;`WisePPT.icons` 在本仓库 runtime 仅供放映壳自用,选组件/套版式时不要按名引用图标。
 
 ## 数据流
 
