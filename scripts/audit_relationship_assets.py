@@ -117,7 +117,7 @@ def main() -> None:
         "Q1": ("单区", ["overlap"]),
         "Q2": ("左右不对称", ["part-whole", "evidence"]),
         "Q3": ("上下2等分", ["comparison", "flow"]),
-        "Q4": ("网格2×2", ["evidence", "display"]),
+        "Q4": ("网格2×2", ["evidence", "matrix"]),
         "R1": ("左右4等分", ["display"]),
         "R2": ("上下3等分", ["hierarchy"]),
         "R3": ("网格2×3", ["display"]),
@@ -165,7 +165,7 @@ def main() -> None:
         missing = [slot for slot in required if f'data-slot-id="{slot}"' not in frame]
         assert not missing, f"{code} 帧缺必需槽位: {missing}"
 
-    for code, expected_slot_count in (("R3", 6), ("R6", 4), ("R7", 28)):
+    for code, expected_slot_count in (("Q4", 4), ("R3", 6), ("R6", 4), ("R7", 28)):
         frame = (FRAMES / f"layout-{code.lower()}.html").read_text(encoding="utf-8")
         page_slots = re.findall(r'data-slot-id="([^"]+)"', frame)
         required = recipes_by_code[code]["structure_contract"]["required_slot_ids"]
@@ -178,6 +178,11 @@ def main() -> None:
     r3_frame = (FRAMES / "layout-r3.html").read_text(encoding="utf-8")
     assert "#006" in r3_frame and "1500" in r3_frame and "620" in r3_frame, (
         "R3 必须保留组件目录 #006 母板视觉和 1500×620 的严格 2×3 版心"
+    )
+
+    q4_frame = (FRAMES / "layout-q4.html").read_text(encoding="utf-8")
+    assert "atlas.021.quadrant-axis" in q4_frame, (
+        "Q4 必须保留象限图组件母板来源，同时维持四槽独立绑定"
     )
 
     for code, number, label in (("R4", 106, "天平"), ("R5", 107, "齿轮")):
@@ -255,7 +260,7 @@ def main() -> None:
     print("检查通过: 67 张关系版式 + 12 张非关系模板 = 79 帧。")
     print("六结构计数: 单区40 / 左右等分8 / 上下等分3 / 左右不对称8 / 上下不对称5 / 网格3。")
     print("23 细种均有版式与生产组件覆盖；Q1–Q4、R1–R7 槽位、配方、指纹和路由闭合。")
-    print("R3 六槽、R6 四槽、R7 二十八槽均逐槽独立绑定；没有用组件内部重复单元冒充页面结构。")
+    print("Q4 四槽、R3 六槽、R6 四槽、R7 二十八槽均逐槽独立绑定；没有用组件内部重复单元冒充页面结构。")
     print("R4/R5 关系页直接物化组件；结构页示例直接复用关系页帧，三入口无私有副本。")
     print("Q3 下层流程框已收在 y<=890，页底结论保留独立安全区。")
     print("边界: 本仓库只登记 GLM Catalog 与 gallery recipe；内核 blueprint/composition preset 未手填。")

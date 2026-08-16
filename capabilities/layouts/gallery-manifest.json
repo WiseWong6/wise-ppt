@@ -10950,15 +10950,15 @@
     {
       "recipe_id": "paper-ink.evidence.panel-grid-2x2",
       "display_code": "Q4",
-      "name": "四组证据卡阵",
+      "name": "四象限证据地图",
       "family": "证据",
-      "description": "四个可独立换数据的证据槽组成二乘二整页网格",
+      "description": "沿用 atlas.021 象限图的十字轴视觉骨架，由四个可独立换数据的证据槽组成二乘二整页网格",
       "roles": [
         "prove"
       ],
       "relations": [
         "evidence",
-        "display"
+        "matrix"
       ],
       "primitives": [
         "matrix-field",
@@ -11135,7 +11135,7 @@
         "general": "gallery/paper-ink/general/frames/layout-q4.html",
         "ai": "gallery/paper-ink/ai/frames/layout-q4.html"
       },
-      "selection_notes": "四类证据必须各自换数据、各自验收时使用整页网格。",
+      "selection_notes": "四类证据既要各自换数据、各自验收，又能被两条语义轴交叉解释时使用。",
       "anti_patterns": [
         "四格只是同一组件内部重复单元时仍应归单区",
         "证据不足四组时不要用空卡凑数"
@@ -11180,7 +11180,7 @@
         "logic_contract": {
           "primary": "evidence",
           "secondary": [
-            "display"
+          "matrix"
           ]
         }
       }
