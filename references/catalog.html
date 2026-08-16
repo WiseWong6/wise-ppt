@@ -2,7 +2,7 @@
 <html lang="zh-CN">
 <head>
 <meta charset="UTF-8">
-<title>Wise PPT 资产目录:非关系页 · 版式 · 结构 · 组件</title>
+<title>Wise PPT 资产目录:非关系页 · 版式 · 结构 · 组件 · 图标</title>
 <!-- Catalog 外壳只用系统字体；完整纸墨 tokens/字体与组件脚本在打开组件浮层时按需加载。 -->
 <style>
   :root{
@@ -78,6 +78,26 @@
   .comp-info .param{font-size:13px;color:var(--ink-3);margin-top:3px;line-height:1.6}
   .comp-info .rel{display:inline-block;font-size:13px;color:var(--ink-3);background:transparent;border:1px solid var(--ink-45);padding:1px 6px;margin-top:6px;margin-right:4px}
 
+  /* 图标资产:5,130 枚只按需渲染当前批次，避免把完整母库一次塞进 DOM。 */
+  .icon-toolbar{position:sticky;top:0;z-index:20;display:grid;grid-template-columns:minmax(260px,1fr) auto;gap:14px;align-items:center;margin:0 0 18px;padding:12px;background:var(--paper);border:1px solid var(--line)}
+  .icon-search{width:100%;height:38px;padding:0 12px;border:1px solid var(--ink-45);border-radius:0;background:transparent;color:var(--ink);font:400 13px var(--wp-font-mono)}
+  .icon-search:focus{outline:1px solid var(--ink);outline-offset:2px}
+  .icon-summary{font:400 12px var(--wp-font-mono);color:var(--ink-3);white-space:nowrap}
+  .icon-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:12px}
+  .icon-card{position:relative;min-width:0;min-height:168px;padding:14px 12px 12px;border:1px solid var(--line);background:var(--card);color:var(--ink);text-decoration:none;display:grid;grid-template-rows:92px auto auto;gap:5px;content-visibility:auto;contain-intrinsic-size:auto 168px}
+  .icon-card:hover{border-color:var(--ink)}
+  .icon-preview{display:flex;align-items:center;justify-content:center;gap:14px;min-width:0}
+  .icon-preview img{display:block;width:64px;height:64px;object-fit:contain}
+  .icon-preview.is-pair img{width:54px;height:54px}
+  .icon-card-name{overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font:400 13px var(--wp-font-mono)}
+  .icon-card-meta{display:flex;align-items:center;gap:5px;min-width:0;overflow:hidden;font:400 10px var(--wp-font-mono);color:var(--ink-3)}
+  .icon-badge{display:inline-block;padding:1px 5px;border:1px solid var(--ink-45);white-space:nowrap}
+  .icon-badge.approved{color:var(--ink);border-color:var(--ink)}
+  .icon-public{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+  .icon-more{display:block;min-width:180px;height:40px;margin:22px auto 0;padding:0 18px;border:1px solid var(--ink-45);border-radius:0;background:transparent;color:var(--ink);font:400 12px var(--wp-font-mono);cursor:pointer}
+  .icon-more:hover{background:var(--ink);color:var(--paper)}
+  .icon-more[hidden]{display:none}
+
   /* 浮层:点击卡片,页面内放大(替代详情页) */
   #layer{position:fixed;inset:0;z-index:300;display:none}
   #layer.on{display:block}
@@ -94,7 +114,7 @@
   .layer-stage .stage-host,.layer-stage .stage-ecbox{position:absolute;left:0;top:0;transform-origin:0 0}
   .layer-info{min-height:49px;padding:9px 16px;font-size:13px;color:var(--ink-2);border-top:1px solid var(--line);background:var(--paper);display:flex;align-items:center;gap:16px}
   #layer-title{min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
-  .layer-info .layer-count{font-family:var(--wp-font-mono);font-size:13px;color:var(--ink-3);letter-spacing:.06em;white-space:nowrap}
+  .layer-info .layer-count{font-family:var(--wp-font-mono);font-size:13px;color:var(--ink-3);letter-spacing:.06em;white-space:nowrap;flex:none}
   /* 变体选择器:信息栏只显示当前项,菜单向上展开;不再把 2~9 个 tab 堆在右下角 */
   #layer-variants{position:relative;margin-left:auto;flex:0 0 auto}
   #layer-variants:empty{display:none}
@@ -139,25 +159,21 @@
   .struct-section.is-open .struct-toggle-mark{transform:rotate(180deg)}
   .struct-panel{padding:0 18px 22px;border-top:1px solid var(--line)}
   .struct-panel[hidden]{display:none}
-  .struct-info{padding:16px 0 14px;min-width:260px}
-  .s-desc{font-size:13px;line-height:1.8;color:var(--ink)}
-  .s-judge{font-size:13px;color:var(--ink-2);margin-top:8px;line-height:1.7}
-  .s-judge b{font-weight:500;margin-right:8px;color:var(--ink)}
-  .s-rels{margin-top:8px}
-  .chip{font-family:var(--wp-font-sans);font-weight:400;font-size:13px;letter-spacing:.08em;color:var(--ink-3);background:transparent;border:1px solid var(--ink-45);padding:2px 7px;cursor:pointer}
-  .chip:hover{background:var(--ink);color:var(--paper)}
+  .struct-info{padding:16px 0 14px;min-width:260px;display:flex;flex-direction:column;gap:6px}
+  .s-row{display:grid;grid-template-columns:3em 1fr;gap:14px;font-size:13px;line-height:1.7}
+  .s-row b{font-weight:500;color:var(--ink-3)}
+  .s-row span{color:var(--ink)}
   .struct-callout{margin:0 0 16px;padding:10px 12px;border-left:2px solid var(--ink);background:var(--paper-deep);font-size:13px;line-height:1.7;color:var(--ink-2)}
   .struct-variant{padding:18px 0;border-top:1px solid var(--ink-25)}
   .struct-variant:first-of-type{border-top:0}
-  .variant-head{display:flex;align-items:baseline;gap:10px;flex-wrap:wrap;margin-bottom:8px}
+  .variant-head-row{display:grid;grid-template-columns:minmax(310px,.9fr) minmax(0,1.7fr);column-gap:18px;align-items:baseline;margin-bottom:8px}
+  .variant-head{display:flex;align-items:baseline;gap:10px;flex-wrap:wrap}
   .variant-head .code{font-family:var(--wp-font-mono);font-size:12px;color:var(--ink-3);border:1px solid var(--ink-45);padding:2px 7px;letter-spacing:.06em}
   .variant-head h3{font-size:16px;font-weight:400;letter-spacing:.04em}
-  .variant-body{display:grid;grid-template-columns:minmax(310px,.9fr) minmax(0,1.7fr);grid-template-areas:"source-title examples-title" "empty examples";column-gap:18px;row-gap:8px;align-items:start}
-  .variant-source-title,.variant-examples-title{font-size:13px;line-height:1.6;align-self:center}
-  .variant-source-title{grid-area:source-title;color:var(--ink-3)}
-  .variant-examples-title{grid-area:examples-title;color:var(--ink-2)}
-  .variant-empty{grid-area:empty;position:sticky;top:24px;align-self:start}
-  .variant-examples{grid-area:examples}
+  .variant-body{display:grid;grid-template-columns:minmax(310px,.9fr) minmax(0,1.7fr);column-gap:18px;align-items:start}
+  .variant-examples-title{font-size:13px;color:var(--ink-2)}
+  .variant-empty{position:sticky;top:24px;align-self:start}
+  .variant-empty-meta{margin-top:8px;font-size:13px;line-height:1.6;color:var(--ink-3)}
   .variant-examples-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:14px}
   .variant-empty-state{min-height:180px;display:grid;place-items:center;border:1px dashed var(--ink-45);color:var(--ink-3);font-size:13px;line-height:1.8;text-align:center;padding:24px;background:var(--paper-deep)}
   @media(max-width:900px){
@@ -176,9 +192,13 @@
     .struct-section,.fam-section{scroll-margin-top:calc(var(--catalog-header-h) + 12px)}
     .struct-toggle{grid-template-columns:1fr auto;gap:8px}
     .struct-toggle-meta{grid-column:1 / -1}
-    .variant-body{grid-template-columns:1fr;grid-template-areas:"source-title" "empty" "examples-title" "examples"}
-    .variant-examples-title{margin-top:10px}
+    .variant-body{grid-template-columns:1fr}
+    .variant-head-row{grid-template-columns:1fr}
+    .variant-examples-title{margin-top:2px}
     .variant-empty{position:static}
+    .icon-toolbar{top:calc(var(--catalog-header-h) + 8px);grid-template-columns:1fr}
+    .icon-summary{white-space:normal}
+    .icon-grid{grid-template-columns:repeat(auto-fill,minmax(150px,1fr))}
   }
   .card.flash{animation:cf 1.5s ease-out}
   @keyframes cf{0%,55%{box-shadow:0 0 0 3px var(--ink)}100%{box-shadow:0 0 0 0 transparent}}
@@ -190,12 +210,12 @@
 <body>
 <header>
   <h1>资产目录 · Catalog</h1>
-  <div class="sub">非关系页模板(直接套用) / 关系页版式(SmartArt 语义分类) / 结构(6 种切分 · 空槽与示例联看) / 组件(SmartArt 语义分类)</div>
   <div class="tabs" aria-label="资产目录主导航">
     <button class="tab on" data-t="tpl" aria-current="page">非关系页模板<span class="n" id="c-tpl"></span></button>
     <button class="tab" data-t="lyt">关系页版式<span class="n" id="c-lyt"></span></button>
     <button class="tab" data-t="str">结构<span class="n" id="c-str"></span></button>
     <button class="tab" data-t="cmp">组件<span class="n" id="c-cmp"></span></button>
+    <button class="tab" data-t="ico">图标<span class="n" id="c-ico"></span></button>
   </div>
   <div class="subnav-label">当前页目录</div>
   <nav class="catalog-subnav" aria-label="当前页目录">
@@ -203,43 +223,63 @@
     <div class="subnav-group" id="lyt-nav" data-subnav="lyt"></div>
     <div class="subnav-group struct-nav" id="struct-nav" data-subnav="str" aria-label="结构类型"></div>
     <div class="subnav-group" id="cmp-nav" data-subnav="cmp"></div>
+    <div class="subnav-group" id="ico-nav" data-subnav="ico" aria-label="图标状态"></div>
   </nav>
 </header>
 
 <main id="m-tpl" class="on">
-  <div class="note"><b>非关系页不走关系→结构→组件流程</b>,直接套模板。承担节奏停顿、情绪定调、品牌落版、导航功能。</div>
-  <div class="fam-section">
-    <div class="fam-head"><h2>画册模板(paper-ink)</h2><span class="desc">整页级模板,含版式与视觉</span></div>
-    <div class="grid" id="tpl-gallery"></div>
-  </div>
+  <div class="note"><b>非关系页不走关系→结构→组件流程,</b><br>在页面规划期就排进页序,生产时直接套 paper-ink 画册模板:换文字,不换版式与固定件。</div>
+  <div id="tpl-fams"></div>
 </main>
 
 <main id="m-lyt">
-  <div class="note"><b>这里借用 SmartArt 的“先问要表达什么”来分类。</b>列表 = 无顺序并列;流程 = 步骤/时间/方向;循环 = 持续重复;层级 = 上下级;关系 = 非方向连接/对照;矩阵 = 二维分类或部分与整体;金字塔 = 比例收窄;图片 = 图片/原文主导。Wise PPT 另补“数据”,收纳图表、指标、排名和地图。分类只负责浏览,卡片下方仍保留项目的六大族关系标签。</div>
+  <div class="note"><b>这页是浏览入口,不是正式分类。</b><br>借 SmartArt「先问要表达什么」的九个语义入口逛 54 张关系页版式,每类入口的定义见各组标题;每张卡下方仍标注本项目的六大族关系标签,选版式以六大族关系为准,不以这里的入口为准。</div>
   <div id="lyt-fams"></div>
 </main>
 
 <main id="m-str">
-  <div class="note"><b>结构 = 页面区域怎么切(矩形分块);组件 = 区域内画什么形状。</b>结构切的是<b>版心</b>:每页固定的左上页眉 / 左下页码 / 底部题注行是外框,一律不算切分;单区 = 版心剩一整块,内容水平垂直居中。放射、环形、蛇形、漏斗、矩阵(表格)都是区域内组件的画法,不是页面结构。关系圈定候选结构(2~4 种),二次判断(对象数量 / 有无辅助内容 / 方向偏好)在范围内选定。关系页版式全部归入这 6 种切分。</div>
-  <div class="note"><b>空槽与示例现在放在一起。</b>每个空槽变体下面只展示与它对应的真实关系页;10 张空槽来自 taxonomy 成熟蓝图,7 张 taxonomy 缺失的变体按同一规格补造并逐卡标注。页面仍会校验 54 个示例不漏归、不重归、不跨结构。</div>
+  <div class="note"><b>结构 = 版心怎么切(矩形分块);组件 = 区域内画什么形状。</b><br>页眉、页码、题注等固定件不算切分;放射、环形、漏斗、表格这些形状是组件画法,不影响结构归属。关系先圈定候选结构(2~4 种),再按对象数量、有无辅助内容、方向偏好在范围内选定。每类结构 = 空槽蓝图 + 对应真实版式成对展示:空槽取自 taxonomy 成熟蓝图,缺失的变体按同规格补造并逐卡标注;54 个版式全部归入这 6 种切分,不漏归、不重归、不跨结构。</div>
   <div id="str-list"></div>
 </main>
 
 <main id="m-cmp">
-  <div class="note"><b>组件 = 参数化画法。</b>内容数量是参数不是组件类型;画法不同才是不同组件。atlas + native + ECharts 按与版式相同的 SmartArt 语义入口分组;每个组件只放入最主要的表达类型,避免一件多处重复。卡片按当前目录顺序统一使用 catalog #001–#071 连续编号,源组件编号只用于内部路由。“数据”是 Wise PPT 对 SmartArt 的扩展,不是新的关系族。</div>
+  <div class="note"><b>组件 = 参数化画法:内容数量是参数,画法不同才是不同组件。</b><br>atlas / native / ECharts 按与版式相同的 SmartArt 语义入口分组;每个组件只放最主要的表达类型,不在多个入口重复出现。卡片统一用 catalog #001–#071 连续编号,源组件编号只做内部路由。</div>
   <div id="extract-groups"></div>
   <div id="cmp-groups"></div>
 </main>
 
+<main id="m-ico">
+  <div class="note"><b>图标资产 = 5,130 枚 Tabler Outline 母图 + Wise PPT 纸墨重绘状态。</b><br>这里负责完整检索和进度查看；生产仍只打包 deck 实际引用的已登记名称。源图只作几何参考，候选/通过状态才代表已完成 64×64 纸墨重绘。</div>
+  <div class="icon-toolbar">
+    <label><span class="sr-only" style="position:absolute;clip:rect(0 0 0 0);clip-path:inset(50%);width:1px;height:1px;overflow:hidden">搜索图标</span><input class="icon-search" id="icon-search" type="search" autocomplete="off" placeholder="搜索源名称或兼容名称，例如 mail / chart / user"></label>
+    <div class="icon-summary" id="icon-summary" aria-live="polite"></div>
+  </div>
+  <div class="icon-grid" id="icon-grid"></div>
+  <button class="icon-more" id="icon-more" type="button">继续加载</button>
+</main>
+
+<script src="./icon-catalog-data.js"></script>
 <script>
 /* ============ 元数据 ============ */
 const FRAMES='gallery-paper-ink/ai/frames/';
 
-const NON_REL=[
-  ['D1','封面 · 落版','品牌落版'],['D2','粒子尾卡','情绪收尾'],['D3','极简 Outro','金句收尾'],
-  ['D4','目录导航','章节索引'],['D5','章节隔页','节奏停顿'],['D6','联络尾页','联系方式'],['M2','金句页','情绪定调'],
-  ['M1','粒子主角 + 对照提问','情绪定调 · 提问'],
+/* 非关系页按 deck 内职能分五组:封面开场 / 目录导航 / 章节过渡 / 收尾 / 联络尾页 */
+const NON_REL_GROUPS=[
+  {id:'cover',cn:'封面',role:'deck 开场',items:[
+    ['D1','封面 · 落版','品牌落版']]},
+  {id:'toc',cn:'目录',role:'章节导航',items:[
+    ['D4','目录导航','章节索引']]},
+  {id:'transition',cn:'过渡',role:'章节之间的停顿与定调',items:[
+    ['D5','章节隔页','节奏停顿'],
+    ['M1','粒子主角 + 对照提问','情绪定调 · 提问'],
+    ['M2','金句页','情绪定调']]},
+  {id:'closing',cn:'收尾',role:'deck 收束',items:[
+    ['D2','粒子尾卡','情绪收尾'],
+    ['D3','极简 Outro','金句收尾']]},
+  {id:'contact',cn:'联络',role:'deck 尾页',items:[
+    ['D6','联络尾页','联系方式']]},
 ];
+const NON_REL=NON_REL_GROUPS.flatMap(g=>g.items);
 
 const SMARTART_TYPES=[
   {id:'list',cn:'① 列表',desc:'无顺序、无强连接的并列信息',items:[
@@ -1945,10 +1985,14 @@ function componentPageScale(spec){
   return String(spec).startsWith('atlas:')?itemScale*.82:itemScale;
 }
 
-/* 非关系页 */
-$('#tpl-gallery').innerHTML=NON_REL.map(layoutCard).join('');
+/* 非关系页:五组职能分区,左栏二级目录与滚动高亮走通用逻辑 */
+$('#tpl-fams').innerHTML=NON_REL_GROUPS.map(g=>`
+  <div class="fam-section" id="tpl-fam-${g.id}" data-catalog-section>
+    <div class="fam-head"><h2>${g.cn}</h2><span class="desc">${g.role}</span></div>
+    <div class="grid">${g.items.map(layoutCard).join('')}</div>
+  </div>`).join('');
 $('#c-tpl').textContent=NON_REL.length;
-$('#tpl-nav').innerHTML=`<button type="button" class="on" data-section-jump="tpl-gallery" aria-current="true"><span>画册模板</span><span class="subnav-count">${NON_REL.length}</span></button>`;
+$('#tpl-nav').innerHTML=NON_REL_GROUPS.map(g=>`<button type="button" data-section-jump="tpl-fam-${g.id}"><span>${g.cn}</span><span class="subnav-count">${g.items.length}</span></button>`).join('');
 
 /* 版式:SmartArt 语义入口 + Wise PPT 数据扩展 */
 $('#lyt-fams').innerHTML=SMARTART_TYPES.map(f=>`
@@ -1967,6 +2011,71 @@ $('#cmp-groups').innerHTML=SMARTART_COMPONENTS.map((g,index)=>`
   </div>`).join('');
 $('#c-cmp').textContent=SMARTART_COMPONENT_COUNT+(EXTRACT_GROUPS.length?'+'+EXTRACT_GROUPS.reduce((s,g)=>s+g.items.length,0)+'抽':'');
 $('#cmp-nav').innerHTML=SMARTART_COMPONENTS.map((g,index)=>`<button type="button" data-section-jump="cmp-fam-${index}"><span>${g.fam}</span><span class="subnav-count">${g.items.length}</span></button>`).join('');
+
+/* 图标:完整母库只加载轻量名称清单；卡片按 120 枚增量物化，兼容 file://。 */
+const ICON_CATALOG=window.WISE_PPT_ICON_CATALOG_DATA;
+const ICON_PAGE_SIZE=120;
+const ICON_STATUS_LABEL={todo:'未重绘',in_progress:'绘制中',candidate:'候选',approved:'通过',rejected:'退回'};
+let iconFilter='all',iconQuery='',iconVisible=ICON_PAGE_SIZE,iconSearchRaf=0;
+function iconFilteredEntries(){
+  if(!ICON_CATALOG||!Array.isArray(ICON_CATALOG.entries))return [];
+  const query=iconQuery.trim().toLowerCase();
+  return ICON_CATALOG.entries.filter(entry=>{
+    const statusMatch=iconFilter==='all'||(iconFilter==='registered'&&entry.registered)||entry.redrawStatus===iconFilter;
+    const queryMatch=!query||entry.name.includes(query)||(entry.publicNames||[]).some(name=>name.includes(query));
+    return statusMatch&&queryMatch;
+  });
+}
+function iconCard(entry){
+  const source=ICON_CATALOG.paths.sourceSvg+entry.name+'.svg';
+  const hasRedraw=entry.redrawStatus==='candidate'||entry.redrawStatus==='approved';
+  const redraw=ICON_CATALOG.paths.redrawSvg+entry.name+'.svg';
+  const publicNames=(entry.publicNames||[]).join(' / ');
+  const preview=hasRedraw
+    ?`<div class="icon-preview is-pair"><img loading="lazy" decoding="async" src="${source}" alt="${entry.name} 源图"><img loading="lazy" decoding="async" src="${redraw}" alt="${entry.name} 纸墨重绘"></div>`
+    :`<div class="icon-preview"><img loading="lazy" decoding="async" src="${source}" alt="${entry.name} 源图"></div>`;
+  return `<a class="icon-card" href="${hasRedraw?redraw:source}" target="_blank" rel="noreferrer" data-icon-name="${entry.name}" data-redraw-status="${entry.redrawStatus}">
+    ${preview}<div class="icon-card-name">${entry.name}</div>
+    <div class="icon-card-meta"><span class="icon-badge ${entry.redrawStatus}">${ICON_STATUS_LABEL[entry.redrawStatus]||entry.redrawStatus}</span>${entry.registered?'<span class="icon-badge">已登记</span>':''}${publicNames?`<span class="icon-public" title="${publicNames}">${publicNames}</span>`:''}</div></a>`;
+}
+function renderIconCatalog({reset=false}={}){
+  const grid=$('#icon-grid'),more=$('#icon-more'),summary=$('#icon-summary');
+  if(!ICON_CATALOG){grid.innerHTML='<div class="variant-empty-state">icon-catalog-data.js 未生成</div>';more.hidden=true;return;}
+  if(reset)iconVisible=ICON_PAGE_SIZE;
+  const entries=iconFilteredEntries(),shown=Math.min(iconVisible,entries.length);
+  grid.innerHTML=entries.slice(0,shown).map(iconCard).join('');
+  more.hidden=shown>=entries.length;
+  summary.textContent=`显示 ${shown} / ${entries.length} · 母库 ${ICON_CATALOG.counts.source} · 已登记源图 ${ICON_CATALOG.counts.registeredSources} · 通过 ${ICON_CATALOG.counts.redrawStatus.approved}`;
+}
+function setIconFilter(filter){
+  iconFilter=filter;
+  document.querySelectorAll('[data-icon-filter]').forEach(button=>{
+    const current=button.dataset.iconFilter===filter;
+    button.classList.toggle('on',current);button.setAttribute('aria-current',String(current));
+  });
+  renderIconCatalog({reset:true});
+}
+if(ICON_CATALOG){
+  $('#c-ico').textContent=ICON_CATALOG.counts.source;
+  const statusCount=ICON_CATALOG.counts.redrawStatus;
+  const iconFilters=[
+    ['all','全部',ICON_CATALOG.counts.source],['registered','已登记',ICON_CATALOG.counts.registeredSources],
+    ['todo','未重绘',statusCount.todo],['in_progress','绘制中',statusCount.in_progress],
+    ['candidate','候选',statusCount.candidate],['approved','通过',statusCount.approved],['rejected','退回',statusCount.rejected]
+  ];
+  $('#ico-nav').innerHTML=iconFilters.map(([id,label,count])=>`<button type="button" data-icon-filter="${id}"><span>${label}</span><span class="subnav-count">${count}</span></button>`).join('');
+  document.querySelectorAll('[data-icon-filter]').forEach(button=>button.onclick=()=>setIconFilter(button.dataset.iconFilter));
+  $('#icon-search').addEventListener('input',event=>{
+    iconQuery=event.target.value;
+    cancelAnimationFrame(iconSearchRaf);
+    iconSearchRaf=requestAnimationFrame(()=>renderIconCatalog({reset:true}));
+  });
+  $('#icon-more').onclick=()=>{iconVisible+=ICON_PAGE_SIZE;renderIconCatalog();};
+  setIconFilter('all');
+}else{
+  $('#c-ico').textContent='!';
+  renderIconCatalog();
+}
 
 /* 反向抽取候选渲染:整页版式预览(组件本体 = 中央图形) */
 function extractCard(it){
@@ -1996,7 +2105,7 @@ $('#extract-groups').innerHTML=EXTRACT_GROUPS.map(g=>`
     '<button class="layer-nav prev" aria-label="上一张">‹</button>'+
     '<button class="layer-nav next" aria-label="下一张">›</button>'+
     '<div class="layer-stage" id="layer-stage"></div>'+
-    '<div class="layer-info"><span id="layer-title"></span><span id="layer-variants"></span><span class="layer-count" id="layer-count"></span></div></div>';
+    '<div class="layer-info"><span class="layer-count" id="layer-count"></span><span id="layer-title"></span><span id="layer-variants"></span></div></div>';
   document.body.appendChild(modal);
   const prevBtn=modal.querySelector('.layer-nav.prev'),
         nextBtn=modal.querySelector('.layer-nav.next'),
@@ -2796,47 +2905,52 @@ if(THUMBGEN){
 /* 空槽大图:taxonomy-empty/ 下 10 张是 taxonomy(wise-ppt-page-expression)110 张成熟蓝图
    按槽位几何去重出的空槽版式原样提取;上下等分、网格整类与左右4等分变体 taxonomy 无空槽实例,
    按同规格补造 7 张。来源与拓扑对应关系见 taxonomy-empty/manifest.json。
-   ex = 该分点对应的示例页,与「结构示例」tab 同一批('all' = 本结构全部示例;空数组 = 无示例的特例);
-   加载时逐结构校验不漏不重,关系 chips 也从示例实时推导,不手写。 */
+   ex = 该分点对应的版式页,与「结构示例」tab 同一批('all' = 本结构全部版式;空数组 = 无版式的特例);
+   加载时逐结构校验不漏不重。 */
 const EMPTY_DIR='taxonomy-empty/';
 
 const STRUCTS=[
   {key:'single',cn:'① 单区',en:'single',judge:'单个对象;或图形需要整版舒展',
-   desc:'版心一整块,不再切分;组件水平垂直居中。区域内组件形状自由:放射、环形、蛇形、漏斗、矩阵(表格)都是这里的画法,不是页面结构。',
+   cut:'版心一整块,不再切分;组件水平垂直居中',
+   note:'区域内形状自由 —— 放射、环形、蛇形、漏斗、表格(矩阵)页都画在这一块里,仍是单区',
    empties:[{f:'empty-a1.html',code:'A1',cap:'版心一块,组件居中',src:'A1/A2/A7…共 37 页同槽合并 · topology.leaf',ex:'all'}]},
   {key:'heq',cn:'② 左右 x 等分',en:'h-equal-split',judge:'多个并列对象 + 横向阅读流(步骤、时间、对比)',
-   desc:'横向均分,x≥2。左右等分 x=2 是特例。',
+   cut:'横向均分,x≥2;左右等分 x=2 是特例',
    empties:[
     {f:'empty-e5.html',code:'E5',cap:'x=2 等分',src:'E5 · split-x-2.equal',ex:['E1','E2','E5']},
     {f:'empty-a5.html',code:'A5',cap:'x=3 等分',src:'A5/C3/F3/I4/K2/K4 同槽合并 · split-x-3.equal',ex:['A5','C3','F3','I4','K2','K4']},
     {f:'synth-heq-4.html',code:'补造',cap:'x=4 等分',syn:1,ex:['A9','C6']},
    ]},
   {key:'veq',cn:'③ 上下 x 等分',en:'v-equal-split',judge:'多个并列对象 + 纵向阅读流(层级、堆叠)',
-   desc:'纵向均分,x≥2。分层栈(H3/H4)、因果双带(E3)都是它。泳道横线是组件画法,不算切分(B3 归单区)。taxonomy 无此空槽版式(它的上下切分全是不对称),下面 3 张按同规格补造。',
+   cut:'纵向均分,x≥2',
+   note:'分层栈(H3/H4)、因果双带(E3)都是它;泳道横线是组件画法,B3 归单区',
    empties:[
     {f:'synth-veq-2.html',code:'补造',cap:'x=2 等分',syn:1,ex:['E3','E6','I3']},
     {f:'synth-veq-3.html',code:'补造',cap:'x=3 等分',syn:1,ex:['H4']},
     {f:'synth-veq-4.html',code:'补造',cap:'x=4 等分',syn:1,ex:['H3']},
    ]},
   {key:'hasym',cn:'④ 左右不对称',en:'h-asymmetric',judge:'有主辅之分:主图 + 规格单 / 数据栏 / 证据墙 / 两侧标注',
-   desc:'版心横向不等分切一刀,任意一侧可再分。通常一主一辅,辅助内容放次侧;主图两侧都有辅就是 主+辅+辅(O1 漏斗)。',
+   cut:'版心横向不等分切一刀,任意一侧可再分;通常一主一辅,辅助内容放次侧',
+   note:'主图两侧都有辅 = 主+辅+辅(O1 漏斗)',
    empties:[
     {f:'empty-c4.html',code:'C4',cap:'主左 + 辅右',src:'C4/O1 同槽合并 · split-x-2.dominant-start',ex:['C4','O1']},
     {f:'empty-a4.html',code:'A4',cap:'辅左 + 主右',src:'A4/A6 同槽合并 · split-x-2.dominant-end',ex:['A4','A6']},
     {f:'empty-c1.html',code:'C1',cap:'主图 + 数据格',src:'C1/F2 同槽合并 · split-x-2',ex:['C1','F2']},
     {f:'empty-k3.html',code:'K3',cap:'左列 + 右侧再分',src:'K3 · split-x-y3@1',ex:['K3']},
    ]},
-  {key:'vasym',cn:'⑤ 上下不对称',en:'v-asymmetric',judge:'有主辅之分 + 纵向阅读流:矩阵/图表+收束带、上总额下四环、上摘要下原文',
-   desc:'版心纵向不等分切一刀,任意一侧可再分。常见走法:上矩阵/图表下收束带或注释(E4/K1/C2)、上总额下四环(C5)、上摘要下原文标本(A3)。',
+  {key:'vasym',cn:'⑤ 上下不对称',en:'v-asymmetric',judge:'有主辅之分 + 纵向阅读流',
+   cut:'版心纵向不等分切一刀,任意一侧可再分',
+   note:'常见走法:上矩阵/图表下收束带(E4/K1/C2)、上总额下四环(C5)、上摘要下原文(A3)',
    empties:[
     {f:'empty-e4.html',code:'E4',cap:'上主 + 下收束带',src:'E4 · split-y-2.dominant-start',ex:['E4','K1']},
     {f:'empty-a3.html',code:'A3',cap:'上辅 + 下主',src:'A3/C5 同槽合并 · split-y-2.dominant-end',ex:['A3','C5']},
     {f:'empty-c2.html',code:'C2',cap:'上大块 + 下二分',src:'C2 · recursive-y-equal-then-x',ex:['C2']},
    ]},
   {key:'grid',cn:'⑥ 网格 m×n',en:'grid',judge:'等价单元批量陈列(logo 墙、图标格、案例卡)',
-   desc:'均质分格,格与格等价,只是陈列。象限 2×2 是特例(整页象限暂无示例:F1 坐标轴象限是组件画法,归单区)。taxonomy 里整版网格墙(logo 墙/宫格)折叠成单槽,无此空槽版式,下面 3 张按同规格补造。',
+   cut:'均质分格,格与格等价,只是陈列',
+   note:'象限 2×2 是特例;F1 坐标轴象限是组件画法,归单区',
    empties:[
-    {f:'synth-grid-2x2.html',code:'补造',cap:'2×2(象限特例,无示例页)',syn:1,ex:[]},
+    {f:'synth-grid-2x2.html',code:'补造',cap:'2×2(象限特例,无版式页)',syn:1,ex:[]},
     {f:'synth-grid-2x3.html',code:'补造',cap:'2×3',syn:1,ex:['F4']},
     {f:'synth-grid-4x7.html',code:'补造',cap:'4×7(logo 墙)',syn:1,ex:['A7']},
    ]},
@@ -2861,16 +2975,7 @@ SMARTART_TYPES.forEach(f=>f.items.forEach(it=>{
 }));
 if(byStruct.other)console.warn('未归入结构的版式:',byStruct.other.map(m=>m[0]).join(','));
 
-/* 分点跟着示例走:关系 chips 从本结构示例的关系标签实时推导(去括号限定、拆复合标签、按出现顺序) */
-function relsOf(key){
-  const seen=[];
-  (byStruct[key]||[]).forEach(it=>String(it[3]).split(/[\/+]/).forEach(part=>{
-    const name=part.replace(/\(.*\)/,'').trim();
-    if(name&&!seen.includes(name))seen.push(name);
-  }));
-  return seen;
-}
-/* 分点 → 示例页闭合门禁:每结构的示例页必须被它的分点恰好覆盖一次(不漏、不重、不跨结构) */
+/* 分点 → 版式页闭合门禁:每结构的版式页必须被它的分点恰好覆盖一次(不漏、不重、不跨结构) */
 STRUCTS.forEach(d=>{
   const codes=(byStruct[d.key]||[]).map(it=>it[0]);
   const got=[];
@@ -2883,26 +2988,21 @@ STRUCTS.forEach(d=>{
   const dup=got.filter((c,i)=>got.indexOf(c)!==i);
   const extra=got.filter(c=>!codes.includes(c));
   if(miss.length||dup.length||extra.length)
-    throw new Error(d.cn+' 分点与示例未闭合: 漏='+miss+' 重='+dup+' 多='+extra);
+    throw new Error(d.cn+' 分点与版式未闭合: 漏='+miss+' 重='+dup+' 多='+extra);
 });
 
-/* 结构页:每个空槽变体与它的真实示例相邻展示,不再把定义和示例拆成两个 tab。 */
-function emptyCard(d,e){
+/* 结构页:每类结构 = 判断/切法/备注三行 + 空槽蓝图与对应版式成对展示。 */
+function emptyCard(d,e,src){
   const full=EMPTY_DIR+e.f;
   const thumb=pageThumb(full);
-  const src=e.syn?'补造 · taxonomy 无此空槽版式':'taxonomy 空槽版式 · '+e.src;
   const codes=(byStruct[d.key]||[]).map(it=>it[0]);
   const exTxt=e.ex==='all'
-    ?'示例:单区全部 '+codes.length+' 版式'
+    ?'对应版式:单区全部 '+codes.length+' 版式'
     :e.ex.length
-      ?'示例:'+e.ex.join(' / ')
-      :'示例:无(象限是组件画法,F1 象限归单区)';
+      ?'对应版式:'+e.ex.join(' / ')
+      :'对应版式:无(整页象限暂无实例)';
   return `<div class="card" data-modal="1" data-frame="${full}" data-thumb="${thumb}" data-mtitle="${d.cn} · ${e.cap}" data-mtag="${src} · ${exTxt}">
-    ${thumbMarkup(thumb,d.cn+' '+e.cap)}
-    <div class="card-info"><span class="id">${e.code}</span>
-      <div class="nm">${e.cap}</div>
-      <div class="meta">${src}<br>${exTxt}</div>
-    </div></div>`;
+    ${thumbMarkup(thumb,d.cn+' '+e.cap)}</div>`;
 }
 function structureExampleCard(it){
   const full=FRAMES+'layout-'+it[0].toLowerCase()+'.html';
@@ -2928,16 +3028,17 @@ function requestedStructureKey(){
 const INITIAL_STRUCTURE_KEY=requestedStructureKey();
 function structureVariant(d,e){
   const examples=examplesOf(d,e);
-  const source=e.syn?'补造 · taxonomy 无此空槽版式':'taxonomy 空槽版式';
+  const src=e.syn?'补造 · taxonomy 无此空槽版式':'taxonomy 空槽版式 · '+e.src;
   const exampleGrid=examples.length
     ?`<div class="variant-examples-grid">${examples.map(structureExampleCard).join('')}</div>`
-    :'<div class="variant-empty-state">暂无关系页示例<br>象限是组件画法,F1 仍归单区</div>';
+    :'<div class="variant-empty-state">暂无对应版式<br>整页象限暂无实例</div>';
   return `<section class="struct-variant">
-    <div class="variant-head"><span class="code">${e.code}</span><h3>${e.cap}</h3></div>
+    <div class="variant-head-row">
+      <div class="variant-head"><span class="code">${e.code}</span><h3>${e.cap}</h3></div>
+      <div class="variant-examples-title">对应版式 · ${examples.length}</div>
+    </div>
     <div class="variant-body">
-      <div class="variant-source-title">${source} · ${examples.length} 个对应示例</div>
-      <div class="variant-examples-title">对应示例 · ${examples.length}</div>
-      <div class="variant-empty">${emptyCard(d,e)}</div>
+      <div class="variant-empty">${emptyCard(d,e,src)}<div class="variant-empty-meta">${src}</div></div>
       <div class="variant-examples">${exampleGrid}</div>
     </div>
   </section>`;
@@ -2958,11 +3059,14 @@ $('#str-list').innerHTML=STRUCTS.map(d=>{
   return `<section class="struct-section${open?' is-open':''}" data-struct="${d.key}">
     <h2 class="struct-toggle-head"><button class="struct-toggle" id="${toggleId}" type="button" aria-expanded="${open}" aria-controls="${panelId}">
       <span class="struct-toggle-title">${d.cn}<span class="tag">${d.en}</span></span>
-      <span class="struct-toggle-meta">${d.empties.length} 张空槽 · ${count} 个示例</span><span class="struct-toggle-mark" aria-hidden="true">▾</span>
+      <span class="struct-toggle-meta">${d.empties.length} 张空槽 · ${count} 个版式</span><span class="struct-toggle-mark" aria-hidden="true">▾</span>
     </button></h2>
     <div class="struct-panel" id="${panelId}" role="region" aria-labelledby="${toggleId}"${open?'':' hidden'}>
-      <div class="struct-info"><div class="s-desc">${d.desc}</div><div class="s-judge"><b>判断</b>${d.judge}</div>
-        <div class="s-rels">${relsOf(d.key).map(r=>`<span class="rel">${r}</span>`).join('')}</div></div>
+      <div class="struct-info">
+        <div class="s-row"><b>判断</b><span>${d.judge}</span></div>
+        <div class="s-row"><b>切法</b><span>${d.cut}</span></div>
+        ${d.note?`<div class="s-row"><b>备注</b><span>${d.note}</span></div>`:''}
+      </div>
       ${gridNote}${d.empties.map(e=>structureVariant(d,e)).join('')}
     </div>
   </section>`;
@@ -3050,7 +3154,7 @@ structureJumpButtons.forEach((button,index)=>{
   };
 });
 
-/* 左栏二级目录:版式/组件按当前滚动章节高亮;结构继续由展开态决定。 */
+/* 左栏二级目录:模板/版式/组件按当前滚动章节高亮;结构继续由展开态决定。 */
 let sectionNavRaf=0;
 function setSectionNavCurrent(id){
   document.querySelectorAll('[data-section-jump]').forEach(button=>{
@@ -3063,7 +3167,6 @@ function syncSectionNav(){
   sectionNavRaf=0;
   const tab=document.querySelector('.tab.on')?.dataset.t;
   if(!tab||tab==='str')return;
-  if(tab==='tpl'){setSectionNavCurrent('tpl-gallery');return;}
   const sections=[...document.querySelectorAll('#m-'+tab+' [data-catalog-section]')];
   if(!sections.length)return;
   const header=document.querySelector('header');
@@ -3072,6 +3175,9 @@ function syncSectionNav(){
     :32;
   let current=sections[0];
   sections.forEach(section=>{if(section.getBoundingClientRect().top<=threshold)current=section;});
+  /* 末节常比视口矮,滚到底也到不了阈值线;贴底时直接选中末节 */
+  if(window.innerHeight+window.scrollY>=document.documentElement.scrollHeight-4)
+    current=sections[sections.length-1];
   setSectionNavCurrent(current.id);
 }
 function scheduleSectionNav(){
