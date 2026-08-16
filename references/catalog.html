@@ -32,11 +32,11 @@
   .tab .mark{font-family:var(--wp-font-mono);font-size:10px;color:var(--ink-3);transform:rotate(-90deg);transition:transform .18s ease}
   .tab[aria-expanded="true"] .mark{transform:rotate(0)}
   .tab .n{display:inline-block;min-width:18px;text-align:right;font-family:var(--wp-font-mono);font-size:11px;color:var(--ink-3);letter-spacing:.02em;white-space:nowrap}
-  .subnav-group{display:none;flex-direction:column;gap:2px;padding:1px 0 7px 10px}
+  .subnav-group{display:none;flex-direction:column;gap:6px;padding:1px 0 7px 10px}
   .subnav-group.open{display:flex}
-  .subnav-group button{width:100%;display:flex;align-items:center;justify-content:space-between;gap:8px;padding:7px 8px;border:0;border-left:2px solid transparent;background:transparent;color:var(--ink-3);font:inherit;font-size:12px;line-height:1.35;text-align:left;cursor:pointer}
-  .subnav-group button:hover,.subnav-group button.on{background:var(--paper-panel);border-left-color:var(--ink-45);color:var(--ink)}
-  .subnav-group button.on{border-left-color:var(--ink);font-weight:400}
+  .subnav-group button{width:100%;display:flex;align-items:center;justify-content:space-between;gap:8px;padding:8px 10px;border:0;background:transparent;color:var(--ink-3);font:inherit;font-size:12px;line-height:1.35;text-align:left;cursor:pointer}
+  .subnav-group button:hover,.subnav-group button.on{background:var(--paper-panel);color:var(--ink)}
+  .subnav-group button.on{font-weight:400}
   .subnav-group button:hover .subnav-count,.subnav-group button.on .subnav-count{color:inherit}
   .subnav-group button:focus-visible,.tab:focus-visible{outline:2px solid var(--ink);outline-offset:2px}
   .subnav-count{font-family:var(--wp-font-mono);font-size:10px;color:var(--ink-3);white-space:nowrap}
@@ -69,9 +69,10 @@
   .card-info .meta{font-size:13px;color:var(--ink-3);margin-top:4px;line-height:1.6}
   .card-info .meta b{color:var(--ink-2);font-weight:500}
   /* 卡片信息区统一两行:首行 = 序号 + 标题;样式挂在 .card-head 自身,card-info(版式/结构)与 comp-info(组件)两个容器同款;
-     对齐用盒子垂直居中而非文本基线——13px mono 序号与 15px 中文标题基线对齐时,中文字面视觉中心高于基线约 3px,序号会浮高 */
-  .card-head{display:flex;align-items:center;gap:8px;min-width:0}
-  .card-head .id{flex:none;font-family:var(--wp-font-mono);font-size:13px;color:var(--ink-3);letter-spacing:.12em}
+     对齐合同:序号与标题共享同一条 y 中线。两件套保证——① line-height 统一 21px(杀掉两种字体 normal 行高的取整差,盒子中线 0px);
+     ② 序号 translateY(.85px) 光学补偿——Menlo 数字(#066)无下延部而 PingFang 汉字墨迹跨基线,盒子居中时数字墨迹中心实测偏高 0.85px;下压后墨迹中线归 0(按 Menlo+PingFang SC 量测标定) */
+  .card-head{display:flex;align-items:center;gap:8px;min-width:0;line-height:21px}
+  .card-head .id{flex:none;font-family:var(--wp-font-mono);font-size:13px;color:var(--ink-3);letter-spacing:.12em;transform:translateY(.85px)}
   .card-head .nm{font-size:15px;font-weight:400;margin-top:0;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
 
   /* 组件卡片(近方形) */
@@ -129,29 +130,34 @@
   .layer-live.is-ready{opacity:1}
   .layer-stage[data-live-ready="1"] .layer-thumb{opacity:0}
   .layer-stage .stage-host,.layer-stage .stage-ecbox{position:absolute;left:0;top:0;transform-origin:0 0}
-  .layer-info{min-height:49px;padding:9px 16px;font-size:13px;line-height:1.4;color:var(--ink-2);border-top:1px solid var(--line);background:var(--paper);display:flex;align-items:center;gap:16px}
-  #layer-title{min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
-  .layer-info .layer-count{font-family:var(--wp-font-mono);font-size:13px;color:var(--ink-3);letter-spacing:.06em;white-space:nowrap;flex:none}
-  /* 变体选择器:信息栏只显示当前项,菜单向上展开;不再把 2~9 个 tab 堆在右下角 */
+  /* 弹层信息区:标题与来源同排,但去掉贯穿全宽的分隔线和后台工具栏感。 */
+  .layer-info{min-height:54px;padding:9px 14px;font-size:13px;line-height:1.4;color:var(--ink-2);background:var(--paper);box-shadow:0 -10px 24px rgba(25,25,23,.035);display:grid;grid-template-columns:minmax(0,1fr) auto;align-items:center;gap:20px}
+  .layer-meta{min-width:0;height:18px;display:flex;align-items:center;gap:14px}
+  .layer-heading{min-width:0;height:18px;display:flex;align-items:center;gap:8px;flex:0 1 auto}
+  #layer-title{min-width:0;height:18px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;color:var(--ink);font-family:var(--wp-font-sans);font-size:13px;font-weight:400;line-height:18px;letter-spacing:.02em}
+  .layer-info .layer-count{height:18px;display:flex;align-items:center;font-family:var(--wp-font-sans);font-size:13px;line-height:18px;color:var(--ink-3);letter-spacing:.06em;white-space:nowrap;flex:none}
+  /* 样式选择器:只显示当前名称与线性图标,不显示 01/03 一类管理序号。 */
   #layer-variants{position:relative;margin-left:auto;flex:0 0 auto}
   #layer-variants:empty{display:none}
-  /* 参考来源:紧跟标题左侧排,无来源(原生/抄录)整行不占位 */
-  #layer-source{flex:0 0 auto;font-family:var(--wp-font-mono);font-size:13px;color:var(--ink-3);white-space:nowrap}
+  /* 参考来源紧跟标题；无来源(原生/抄录)不占位。 */
+  #layer-source{min-width:0;height:18px;overflow:hidden;text-overflow:ellipsis;display:flex;align-items:center;flex:0 1 auto;font-family:var(--wp-font-sans);font-size:13px;line-height:18px;color:var(--ink-3);white-space:nowrap}
   #layer-source:empty{display:none}
-  #layer-source a{color:inherit;text-decoration:underline;text-underline-offset:2px}
+  #layer-source a{color:inherit;line-height:18px;text-decoration:underline;text-underline-offset:2px}
   #layer-source a:hover{color:var(--ink)}
-  .variant-trigger{height:31px;display:flex;align-items:center;gap:8px;padding:0 9px;border:1px solid var(--ink-45);border-radius:0;background:transparent;color:var(--ink);font:inherit;cursor:pointer;white-space:nowrap}
-  .variant-trigger:hover,.variant-trigger[aria-expanded="true"]{border-color:var(--ink);background:var(--paper-panel)}
+  .variant-trigger{height:34px;display:flex;align-items:center;gap:9px;padding:0 10px 0 12px;border:1px solid transparent;border-radius:2px;background:var(--paper-deep);color:var(--ink);font:inherit;line-height:1;cursor:pointer;white-space:nowrap;transition:background .15s ease,border-color .15s ease}
+  .variant-trigger:hover,.variant-trigger[aria-expanded="true"]{border-color:var(--ink-45);background:var(--paper-panel)}
   .variant-trigger:focus-visible,.variant-option:focus-visible{outline:1px solid var(--ink);outline-offset:2px}
-  .variant-kicker,.variant-index{font-family:var(--wp-font-mono);font-size:13px;color:var(--ink-3);letter-spacing:.08em}
-  .variant-current{font-size:13px;font-weight:400;min-width:48px;text-align:left}
-  .variant-caret{font-size:13px;color:var(--ink-3);transition:transform .15s ease}
-  .variant-trigger[aria-expanded="true"] .variant-caret{transform:rotate(180deg)}
-  .variant-menu{position:absolute;right:0;bottom:calc(100% + 8px);z-index:5;min-width:220px;max-width:min(320px,80vw);max-height:min(360px,70vh);overflow:auto;padding:5px;background:var(--paper);border:1px solid var(--ink-45);box-shadow:var(--shadow-specimen)}
-  .variant-option{width:100%;min-height:34px;display:grid;grid-template-columns:34px minmax(0,1fr);align-items:center;gap:8px;padding:5px 9px;border:0;border-left:2px solid transparent;border-radius:0;background:transparent;color:var(--ink-2);font:inherit;font-size:13px;text-align:left;cursor:pointer}
+  .variant-kicker,.variant-current{height:18px;display:flex;align-items:center;font-family:var(--wp-font-sans);font-size:13px;line-height:18px}
+  .variant-kicker{color:var(--ink-3);letter-spacing:.08em}
+  .variant-current{font-weight:400;min-width:48px;text-align:left}
+  .variant-chevron{display:block;flex:none;width:14px;height:14px;fill:none;stroke:currentColor;stroke-width:1.35;stroke-linecap:round;stroke-linejoin:round;color:var(--ink-3);transition:transform .15s ease}
+  .variant-trigger[aria-expanded="true"] .variant-chevron{transform:rotate(180deg)}
+  .variant-menu{position:absolute;right:0;bottom:calc(100% + 10px);z-index:5;min-width:190px;max-width:min(280px,80vw);max-height:min(360px,70vh);overflow:auto;padding:6px;background:var(--paper);border:1px solid var(--ink-45);box-shadow:0 8px 24px rgba(25,25,23,.12)}
+  .variant-option{width:100%;min-height:36px;display:grid;grid-template-columns:minmax(0,1fr) 16px;align-items:center;gap:12px;padding:6px 10px;border:0;border-radius:1px;background:transparent;color:var(--ink-2);font:inherit;font-size:13px;text-align:left;cursor:pointer}
   .variant-option:hover{background:var(--paper-panel);color:var(--ink)}
-  .variant-option[aria-selected="true"]{border-left-color:var(--ink);background:var(--paper-deep);color:var(--ink);font-weight:400}
-  .variant-option-index{font-family:var(--wp-font-mono);font-size:11px;color:var(--ink-3);letter-spacing:.06em}
+  .variant-option[aria-selected="true"]{background:var(--paper-deep);color:var(--ink);font-weight:400}
+  .variant-check{width:14px;height:14px;fill:none;stroke:currentColor;stroke-width:1.45;stroke-linecap:round;stroke-linejoin:round;opacity:0}
+  .variant-option[aria-selected="true"] .variant-check{opacity:.7}
   /* 浮层左右切换:按钮悬在弹窗框外左右两侧(框内只留内容),当前 tab 卡片连续翻,到头禁用不循环 */
   .layer-nav{position:absolute;top:50%;transform:translateY(-50%);width:36px;height:64px;border:1px solid var(--ink-45);background:var(--paper);color:var(--ink);font-size:22px;line-height:1;cursor:pointer;z-index:2}
   .layer-nav:hover:not(:disabled){background:var(--ink);color:var(--paper)}
@@ -2165,7 +2171,7 @@ $('#extract-groups').innerHTML=EXTRACT_GROUPS.map(g=>`
     '<button class="layer-nav prev" aria-label="上一张">‹</button>'+
     '<button class="layer-nav next" aria-label="下一张">›</button>'+
     '<div class="layer-stage" id="layer-stage"></div>'+
-    '<div class="layer-info"><span class="layer-count" id="layer-count"></span><span id="layer-title"></span><span id="layer-source"></span><span id="layer-variants"></span></div></div>';
+    '<div class="layer-info"><div class="layer-meta"><div class="layer-heading"><span class="layer-count" id="layer-count"></span><span id="layer-title"></span></div><span id="layer-source"></span></div><span id="layer-variants"></span></div></div>';
   document.body.appendChild(modal);
   const prevBtn=modal.querySelector('.layer-nav.prev'),
         nextBtn=modal.querySelector('.layer-nav.next'),
@@ -2321,7 +2327,7 @@ $('#extract-groups').innerHTML=EXTRACT_GROUPS.map(g=>`
     await loaded;
     await twoFrames();
   }
-  /* 变体选择器:默认只露出当前名称与序号,点击后向上展开全部变体;‹ › 的跨卡片序列不受影响 */
+  /* 样式选择器:默认只露出当前名称,点击后向上展开全部样式;‹ › 的跨卡片序列不受影响。 */
   function renderVariants(card){
     const box=document.getElementById('layer-variants');
     box.replaceChildren();
@@ -2333,12 +2339,12 @@ $('#extract-groups').innerHTML=EXTRACT_GROUPS.map(g=>`
     trigger.className='variant-trigger';
     trigger.setAttribute('aria-haspopup','listbox');
     trigger.setAttribute('aria-expanded','false');
-    trigger.innerHTML='<span class="variant-kicker">变体</span><span class="variant-current"></span><span class="variant-index"></span><span class="variant-caret">▲</span>';
+    trigger.innerHTML='<span class="variant-kicker">样式</span><span class="variant-current"></span><svg class="variant-chevron" viewBox="0 0 16 16" aria-hidden="true"><path d="M4 6.25 8 10l4-3.75"/></svg>';
     const current=trigger.querySelector('.variant-current');
-    const index=trigger.querySelector('.variant-index');
     const menu=document.createElement('div');
     menu.className='variant-menu';
     menu.setAttribute('role','listbox');
+    menu.setAttribute('aria-label','组件样式');
     menu.hidden=true;
     const closeMenu=()=>{menu.hidden=true;trigger.setAttribute('aria-expanded','false');};
     const openMenu=()=>{menu.hidden=false;trigger.setAttribute('aria-expanded','true');};
@@ -2348,15 +2354,15 @@ $('#extract-groups').innerHTML=EXTRACT_GROUPS.map(g=>`
       option.className='variant-option';
       option.setAttribute('role','option');
       option.setAttribute('aria-selected',i===0?'true':'false');
-      option.innerHTML='<span class="variant-option-index">'+String(i+1).padStart(2,'0')+'</span><span></span>';
-      option.lastElementChild.textContent=label;
+      option.innerHTML='<span class="variant-option-label"></span><svg class="variant-check" viewBox="0 0 16 16" aria-hidden="true"><path d="m3.5 8.2 2.8 2.8 6.2-6.2"/></svg>';
+      option.firstElementChild.textContent=label;
       option.onclick=e=>{
         e.stopPropagation();
         if(option.getAttribute('aria-selected')==='true'){closeMenu();trigger.focus();return;}
         options.forEach(x=>x.setAttribute('aria-selected','false'));
         option.setAttribute('aria-selected','true');
         current.textContent=label;
-        index.textContent=String(i+1).padStart(2,'0')+' / '+String(vr.length).padStart(2,'0');
+        trigger.setAttribute('aria-label','切换样式，当前：'+label);
         closeMenu();
         trigger.focus();
         loadCard(card,spec);
@@ -2372,7 +2378,7 @@ $('#extract-groups').innerHTML=EXTRACT_GROUPS.map(g=>`
       return option;
     });
     current.textContent=vr[0][1];
-    index.textContent='01 / '+String(vr.length).padStart(2,'0');
+    trigger.setAttribute('aria-label','切换样式，当前：'+vr[0][1]);
     trigger.onclick=e=>{
       e.stopPropagation();
       if(menu.hidden){openMenu();options.find(x=>x.getAttribute('aria-selected')==='true')?.focus();}
