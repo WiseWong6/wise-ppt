@@ -163,6 +163,12 @@ def main() -> None:
         missing = [slot for slot in required if f'data-slot-id="{slot}"' not in frame]
         assert not missing, f"{code} 帧缺必需槽位: {missing}"
 
+    r4_frame = (FRAMES / "layout-r4.html").read_text(encoding="utf-8")
+    assert "../../../../capabilities/layouts/paper-ink-components.js" in r4_frame, "R4 未加载组件唯一源码"
+    assert "item.num===106" in r4_frame and "host.innerHTML=entry.snippet" in r4_frame, (
+        "R4 必须直接物化 106 号组件，不得另画一套天平"
+    )
+
     routing = json.loads(ROUTING.read_text(encoding="utf-8"))
     vocabulary = routing.get("relation_key_vocabulary") or {}
     assert vocabulary == {key: zh for zh, key in ZH_TO_KEY.items()}, "23 细种词表不一致"

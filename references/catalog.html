@@ -84,10 +84,9 @@
   /* 组件卡两行:首行 = 序号 + 标题(共用 .card-head),次行 = 关系说明(共用关系页版式卡的 .meta 样式) */
 
   /* 图标资产:5,130 枚只按需渲染当前批次，避免把完整母库一次塞进 DOM。 */
-  .icon-toolbar{position:sticky;top:0;z-index:20;display:grid;grid-template-columns:minmax(260px,1fr) auto;gap:14px;align-items:center;margin:0 0 18px;padding:12px;background:var(--paper);border:1px solid var(--line)}
+  .icon-toolbar{position:sticky;top:0;z-index:20;display:grid;grid-template-columns:1fr;gap:14px;align-items:center;margin:0 0 18px;padding:12px;background:var(--paper);border:1px solid var(--line)}
   .icon-search{width:100%;height:38px;padding:0 12px;border:1px solid var(--ink-45);border-radius:0;background:transparent;color:var(--ink);font:400 13px var(--wp-font-mono)}
   .icon-search:focus{outline:1px solid var(--ink);outline-offset:2px}
-  .icon-summary{font:400 12px var(--wp-font-mono);color:var(--ink-3);white-space:nowrap}
   .icon-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:12px}
   .icon-card{position:relative;min-width:0;padding:14px 12px 12px;border:1px solid var(--line);background:var(--card);color:var(--ink);text-decoration:none;display:grid;grid-template-rows:92px auto;gap:5px;content-visibility:auto;contain-intrinsic-size:auto 140px;cursor:pointer}
   .icon-card:hover{border-color:var(--ink)}
@@ -104,9 +103,6 @@
   .icon-more[hidden]{display:none}
   .icon-category-more{display:block;min-width:160px;height:36px;margin:14px auto 0;padding:0 16px;border:1px solid var(--ink-45);border-radius:0;background:transparent;color:var(--ink);font:400 11px var(--wp-font-mono);cursor:pointer}
   .icon-category-more:hover{background:var(--ink);color:var(--paper)}
-  #ico-nav .icon-nav-scope{margin-top:7px;border-top:1px solid var(--line);padding-top:11px;color:var(--ink-2)}
-  #ico-nav .icon-nav-scope:first-child{margin-top:0}
-  #ico-nav .icon-nav-child{padding-left:18px;font-size:11px}
 
   /* 浮层:点击卡片,页面内放大(替代详情页) */
   #layer{position:fixed;inset:0;z-index:300;display:none}
@@ -205,14 +201,6 @@
   .variant-empty-meta{margin-top:8px;font-size:13px;line-height:1.6;color:var(--ink-3)}
   .variant-examples-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:14px}
   .variant-empty-state{min-height:180px;display:grid;place-items:center;border:1px dashed var(--ink-45);color:var(--ink-3);font-size:13px;line-height:1.8;text-align:center;padding:24px;background:var(--paper-deep)}
-  .code-legend{margin-top:16px;border-top:1px solid var(--line);padding-top:10px}
-  .code-legend summary{font-family:var(--wp-font-mono);font-size:12px;color:var(--ink-3);cursor:pointer;letter-spacing:.05em;list-style:none}
-  .code-legend summary::-webkit-details-marker{display:none}
-  .code-legend summary::before{content:'▸ '}
-  .code-legend[open] summary::before{content:'▾ '}
-  .code-legend[open] summary{color:var(--ink-2)}
-  .legend-body{font-size:12.5px;line-height:1.75;color:var(--ink-3);padding:8px 0 2px;display:flex;flex-direction:column;gap:6px}
-  .legend-body b{color:var(--ink-2);font-weight:500}
   @media(max-width:900px){
     header{position:sticky;inset:auto;top:0;width:auto;max-height:62vh;overflow-y:auto;border-right:0;border-bottom:1px solid var(--line);padding:14px 18px 0}
     h1{font-size:18px}
@@ -230,8 +218,7 @@
     .variant-head-row{grid-template-columns:1fr}
     .variant-examples-title{margin-top:2px}
     .variant-empty{position:static}
-    .icon-toolbar{top:calc(var(--catalog-header-h) + 8px);grid-template-columns:1fr}
-    .icon-summary{white-space:normal}
+    .icon-toolbar{top:calc(var(--catalog-header-h) + 8px)}
     .icon-grid{grid-template-columns:repeat(auto-fill,minmax(150px,1fr))}
   }
   .card.flash{animation:cf 1.5s ease-out}
@@ -266,16 +253,6 @@
       <div class="subnav-group" id="ico-nav" data-subnav="ico" role="region" aria-labelledby="tab-ico"></div>
     </div>
   </nav>
-  <details class="code-legend">
-    <summary>编号怎么读</summary>
-    <div class="legend-body">
-      <div><b>版式 A1–Q4</b>:字母+序号是源画册的历史分组痕迹,不代表六大关系族、也不代表六种结构;判定以卡片的「结构 · 关系」标签为准。G3 为退役空位,不重编。</div>
-      <div><b>非关系页 D1–D10 / M1–M2</b>:D 系为 deck 模板帧(封面/目录/隔页/收尾/联络),M 系为情绪页;不进关系→结构→组件流程。</div>
-      <div><b>组件 catalog #001–#076</b>:连续浏览编号。源编号 atlas:N / native:N / ec:id 只做内部路由;生产合同 id(如 atlas.041.timeline.horizontal)见 capabilities/components/routing-manifest.json。</div>
-      <div><b>结构页空槽</b>:徽标为代表版式号(如 A1/E5)或几何短码(x4=横向4等分、y2=纵向2等分、2×3=网格);标注「补造」= taxonomy 无此空槽,按同规格补画。</div>
-      <div><b>图标</b>:无编号,卡片名即 Tabler 源名(icon:名)。</div>
-    </div>
-  </details>
 </header>
 
 <main id="m-tpl" class="on">
@@ -284,7 +261,7 @@
 </main>
 
 <main id="m-lyt">
-  <div class="note"><b>这页是浏览入口,不是正式分类。</b><br>借 SmartArt「先问要表达什么」的九个语义入口逛 65 张关系页版式,每类入口的定义见各组标题;每张卡下方标注本项目的 23 细种关系标签(六大族的细分口径,词表见 SKILL.md 表A),选版式以关系标签为准,不以这里的入口为准。</div>
+  <div class="note"><b>这页是浏览入口,不是正式分类。</b><br>借 SmartArt「先问要表达什么」的九个语义入口逛 65 张关系页版式,每类入口的定义见各组标题;字母编号只是源画册历史分组,不代表六大族/六种结构(G3 为退役空位,不重编),判定看每张卡的 23 细种关系标签(词表见 SKILL.md 表A),不以这里的入口为准。</div>
   <div id="lyt-fams"></div>
 </main>
 
@@ -302,7 +279,6 @@
   <div class="note"><b>图标最终精选集：纸墨成品 <span id="icon-note-count"></span> 枚，按内容共 15 个分组。</b><br>数量口径：Tabler 源库 <span id="icon-note-source"></span> 枚 → 已批准重绘 <span id="icon-note-approved"></span> 枚 → 按产品、运营、品牌、设计、研发与大众六类受众精选收录本页；只展示已通过 redraw-v3 门禁的最终稿。全部保留 <a href="https://github.com/tabler/tabler-icons/tree/v3.46.0" target="_blank" rel="noreferrer">Tabler Icons v3.46.0</a> by Paweł Kuna · MIT License 署名；Paper Ink 重绘不改变原始来源。</div>
   <div class="icon-toolbar">
     <label><span class="sr-only" style="position:absolute;clip:rect(0 0 0 0);clip-path:inset(50%);width:1px;height:1px;overflow:hidden">搜索图标</span><input class="icon-search" id="icon-search" type="search" autocomplete="off" placeholder="搜索名称或标签，例如 mail / chart / user"></label>
-    <div class="icon-summary" id="icon-summary" aria-live="polite"></div>
   </div>
   <div id="icon-groups"></div>
 </main>
@@ -661,18 +637,15 @@ function iconEntriesForCategory(category){
   });
 }
 function renderIconCatalog({reset=false}={}){
-  const host=$('#icon-groups'),summary=$('#icon-summary');
+  const host=$('#icon-groups');
   if(!ICON_CATALOG){host.innerHTML='<div class="variant-empty-state">图标目录数据未加载</div>';return;}
   if(reset)iconCategoryLimits={};
   const categories=ICON_CATALOG.inkCategories;
-  let matched=0,shownTotal=0;
   host.innerHTML=categories.map(category=>{
     const entries=iconEntriesForCategory(category.id);
     if(!entries.length)return '';
-    matched+=entries.length;
     const defaultLimit=ICON_CATEGORY_PAGE_SIZE;
     const limit=Math.min(iconCategoryLimits[category.id]||defaultLimit,entries.length);
-    shownTotal+=limit;
     const more=limit<entries.length?`<button class="icon-category-more" type="button" data-icon-more-category="${category.id}">展开该类全部 ${entries.length} 枚</button>`:'';
     return `<div class="fam-section" id="ico-section-${category.id.replaceAll(' ','-')}" data-catalog-section>
       <div class="fam-head"><h2>${category.label}</h2><span class="desc">${entries.length} 枚${limit<entries.length?` · 当前 ${limit}`:''}</span></div>
@@ -683,12 +656,9 @@ function renderIconCatalog({reset=false}={}){
     renderIconCatalog();
     requestAnimationFrame(()=>document.getElementById(`ico-section-${button.dataset.iconMoreCategory.replaceAll(' ','-')}`)?.scrollIntoView({block:'start'}));
   });
-  const c=ICON_CATALOG.counts;
-  summary.textContent=`显示 ${shownTotal} / ${matched} · 最终纸墨成品 · ${(ICON_CATALOG.inkCategories||[]).length} 个精选分组 · 共 ${c.selectionTotal} 枚${iconQuery?` · 搜索「${iconQuery}」`:''}`;
 }
 function renderIconNav(){
-  $('#ico-nav').innerHTML=`<button type="button" class="icon-nav-scope" data-icon-category="all"><span>纸墨成品</span><span class="subnav-count">${ICON_CATALOG.counts.inkSources}</span></button>`+
-    (ICON_CATALOG.inkCategories||[]).map(item=>`<button type="button" class="icon-nav-child" data-icon-category="${item.id}"><span>${item.label}</span><span class="subnav-count">${item.count}</span></button>`).join('');
+  $('#ico-nav').innerHTML=(ICON_CATALOG.inkCategories||[]).map(item=>`<button type="button" data-icon-category="${item.id}"><span>${item.label}</span><span class="subnav-count">${item.count}</span></button>`).join('');
   document.querySelectorAll('[data-icon-category]').forEach(button=>button.onclick=()=>setIconView(button.dataset.iconCategory));
 }
 function setIconView(category='all'){

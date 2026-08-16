@@ -4746,11 +4746,11 @@ FAIL-SAFE · AUDITED PER CALL
   </defs>
   <text x="525" y="36" text-anchor="middle" font-family="var(--pi-mono)" font-size="10" letter-spacing="2.6" fill="var(--pi-ink-45)">TRADE-OFF · TWO-SIDED EVIDENCE</text>
   <g stroke="var(--pi-ink-80)" fill="none">
-    <line x1="232" y1="242" x2="818" y2="242" stroke-width="1.6"/>
-    <circle cx="525" cy="242" r="8" fill="var(--pi-paper)" stroke-width="1.2"/>
-    <line x1="525" y1="250" x2="525" y2="416" stroke-width="1.2"/>
-    <path d="M 466 476 L 525 416 L 584 476 Z" fill="url(#pi-balance-hatch)" stroke-width="1.2"/>
-    <line x1="445" y1="476" x2="605" y2="476" stroke-width="1.2"/>
+    <line x1="232" y1="242" x2="818" y2="242" stroke-width="1.2"/>
+    <circle cx="525" cy="242" r="8" fill="var(--pi-paper)" stroke-width="1"/>
+    <line x1="525" y1="250" x2="525" y2="416" stroke-width="1"/>
+    <path d="M 466 476 L 525 416 L 584 476 Z" fill="url(#pi-balance-hatch)" stroke-width="1"/>
+    <line x1="445" y1="476" x2="605" y2="476" stroke-width="1"/>
     <line x1="282" y1="242" x2="282" y2="320" stroke-width=".9" opacity=".7"/>
     <line x1="768" y1="242" x2="768" y2="320" stroke-width=".9" opacity=".7"/>
     <path d="M 174 320 Q 282 374 390 320" stroke-width="1.2"/>

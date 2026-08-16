@@ -15,7 +15,7 @@
 
 ## 首次准备
 
-字体约 63MB,不入库,先下载:
+字体约 63MB,不入库,先下载(系统里已有就不重复下载;下载优先走国内镜像,自动校验指纹):
 
 ```bash
 bash themes/paper-ink/assets/fonts/download-fonts.sh
