@@ -284,9 +284,9 @@
 </main>
 
 <main id="m-ico">
-  <div class="note"><b>图标精选集：纸墨成品 + 精选待绘，共 421 枚（15 个分组）。</b><br>按产品、运营、品牌、设计、研发与大众六类受众精选常用图标；母库其余 4,709 枚不预绘，需要时按 redraw-v3 纸墨绘制法按需重绘即可。全部保留 <a href="https://github.com/tabler/tabler-icons/tree/v3.46.0" target="_blank" rel="noreferrer">Tabler Icons v3.46.0</a> by Paweł Kuna · MIT License 署名；Paper Ink 重绘不改变原始来源。</div>
+  <div class="note"><b>图标最终精选集：纸墨成品 <span id="icon-note-count"></span> 枚，共 15 个分组。</b><br>本页只展示已通过 redraw-v3 门禁的最终稿；按产品、运营、品牌、设计、研发与大众六类受众筛选常用图标。全部保留 <a href="https://github.com/tabler/tabler-icons/tree/v3.46.0" target="_blank" rel="noreferrer">Tabler Icons v3.46.0</a> by Paweł Kuna · MIT License 署名；Paper Ink 重绘不改变原始来源。</div>
   <div class="icon-toolbar">
-    <label><span class="sr-only" style="position:absolute;clip:rect(0 0 0 0);clip-path:inset(50%);width:1px;height:1px;overflow:hidden">搜索图标</span><input class="icon-search" id="icon-search" type="search" autocomplete="off" placeholder="搜索源名称或兼容名称，例如 mail / chart / user"></label>
+    <label><span class="sr-only" style="position:absolute;clip:rect(0 0 0 0);clip-path:inset(50%);width:1px;height:1px;overflow:hidden">搜索图标</span><input class="icon-search" id="icon-search" type="search" autocomplete="off" placeholder="搜索名称或标签，例如 mail / chart / user"></label>
     <div class="icon-summary" id="icon-summary" aria-live="polite"></div>
   </div>
   <div id="icon-groups"></div>
@@ -2056,26 +2056,22 @@ $('#cmp-groups').innerHTML=SMARTART_COMPONENTS.map((g,index)=>`
 $('#c-cmp').textContent=SMARTART_COMPONENT_COUNT+(EXTRACT_GROUPS.length?'+'+EXTRACT_GROUPS.reduce((s,g)=>s+g.items.length,0)+'抽':'');
 $('#cmp-nav').innerHTML=SMARTART_COMPONENTS.map((g,index)=>`<button type="button" data-section-jump="cmp-fam-${index}"><span>${g.fam}</span><span class="subnav-count">${g.items.length}</span></button>`).join('');
 
-/* 图标:189 枚现有纸墨成品与 4,965 枚未重绘母图严格分组；右侧按分类成节，母图每类先物化 24 枚。
-   成品卡只展示重绘后的最终稿(40/64 两档),点击进浮层看大图;重绘前的 Tabler 母图收进浮层来源链。 */
+/* 图标:只展示 selection.json 中已通过 redraw-v3 门禁的最终成品；右侧按精选分组导航，每类先物化 24 枚。
+   成品卡展示 40/64 两档，点击进浮层看大图；Tabler 母图仅作为浮层中的来源链。 */
 const ICON_CATALOG=window.WISE_PPT_ICON_CATALOG_DATA;
+if(ICON_CATALOG)$('#icon-note-count').textContent=ICON_CATALOG.counts.inkSources.toLocaleString('en-US');
 const ICON_CATEGORY_PAGE_SIZE=24;
-let iconScope='existing',iconCategory='all',iconQuery='',iconSearchRaf=0,iconCategoryLimits={};
-function iconSpecCard(entry,kind){
+let iconCategory='all',iconQuery='',iconSearchRaf=0,iconCategoryLimits={};
+function iconSpecCard(entry){
   const file=entry.sourceName||entry.name;
-  const url=(kind==='icon'?ICON_CATALOG.paths.redrawSvg:ICON_CATALOG.paths.sourceSvg)+file+'.svg';
-  const preview=kind==='icon'
-    ?`<div class="icon-preview is-existing"><span class="icon-size s40"><img loading="lazy" decoding="async" src="${url}" alt="${entry.name} 40px"></span><span class="icon-size s64"><img loading="lazy" decoding="async" src="${url}" alt="${entry.name} 64px"></span></div>`
-    :`<div class="icon-preview"><img loading="lazy" decoding="async" src="${url}" alt="${entry.name} 源图"></div>`;
-  return `<div class="icon-card" data-modal="1" data-spec="${kind}:${file}" data-mtitle="${entry.name}" data-icon-name="${entry.name}" data-redraw-status="${entry.redrawStatus}">
+  const url=ICON_CATALOG.paths.redrawSvg+file+'.svg';
+  const preview=`<div class="icon-preview is-existing"><span class="icon-size s40"><img loading="lazy" decoding="async" src="${url}" alt="${entry.name} 40px"></span><span class="icon-size s64"><img loading="lazy" decoding="async" src="${url}" alt="${entry.name} 64px"></span></div>`;
+  return `<div class="icon-card" data-modal="1" data-spec="icon:${file}" data-mtitle="${entry.name}" data-icon-name="${entry.name}" data-redraw-status="${entry.redrawStatus}">
     ${preview}<div class="icon-card-name">${entry.name}</div></div>`;
 }
-function inkIconCard(entry){return iconSpecCard(entry,'icon');}
-function unredrawnIconCard(entry){return iconSpecCard(entry,'tabler');}
 function iconEntriesForCategory(category){
-  const source=iconScope==='ink'?ICON_CATALOG.ink:iconScope==='unredrawn'?ICON_CATALOG.unredrawn:ICON_CATALOG.remainder;
   const query=iconQuery.trim().toLowerCase();
-  return source.filter(entry=>{
+  return ICON_CATALOG.ink.filter(entry=>{
     const entryCategory=entry.category;
     const haystack=[entry.name,entry.sourceName||'',entry.group||'',entry.category||'',entry.categoryLabel||'',entry.officialCategory||'',entry.officialCategoryLabel||'',...(entry.tags||[])].join(' ').toLowerCase();
     return entryCategory===category&&(!query||haystack.includes(query));
@@ -2085,59 +2081,51 @@ function renderIconCatalog({reset=false}={}){
   const host=$('#icon-groups'),summary=$('#icon-summary');
   if(!ICON_CATALOG){host.innerHTML='<div class="variant-empty-state">图标目录数据未加载</div>';return;}
   if(reset)iconCategoryLimits={};
-  const categories=iconScope==='ink'?ICON_CATALOG.inkCategories:iconScope==='unredrawn'?ICON_CATALOG.pendingCategories:ICON_CATALOG.remainderCategories;
-  const cardRenderer=iconScope==='ink'?inkIconCard:unredrawnIconCard;
+  const categories=ICON_CATALOG.inkCategories;
   let matched=0,shownTotal=0;
   host.innerHTML=categories.map(category=>{
     const entries=iconEntriesForCategory(category.id);
     if(!entries.length)return '';
     matched+=entries.length;
-  const defaultLimit=iconScope==='ink'?ICON_CATEGORY_PAGE_SIZE:ICON_CATEGORY_PAGE_SIZE;
+    const defaultLimit=ICON_CATEGORY_PAGE_SIZE;
     const limit=Math.min(iconCategoryLimits[category.id]||defaultLimit,entries.length);
     shownTotal+=limit;
-    const sourceLabel=iconScope==='unredrawn'?`<span class="tag">${category.sourceLabel}</span>`:'';
     const more=limit<entries.length?`<button class="icon-category-more" type="button" data-icon-more-category="${category.id}">展开该类全部 ${entries.length} 枚</button>`:'';
-    return `<div class="fam-section" id="ico-section-${iconScope}-${category.id.replaceAll(' ','-')}" data-catalog-section>
-      <div class="fam-head"><h2>${category.label}</h2>${sourceLabel}<span class="desc">${entries.length} 枚${limit<entries.length?` · 当前 ${limit}`:''}</span></div>
-      <div class="icon-grid">${entries.slice(0,limit).map(cardRenderer).join('')}</div>${more}</div>`;
+    return `<div class="fam-section" id="ico-section-${category.id.replaceAll(' ','-')}" data-catalog-section>
+      <div class="fam-head"><h2>${category.label}</h2><span class="desc">${entries.length} 枚${limit<entries.length?` · 当前 ${limit}`:''}</span></div>
+      <div class="icon-grid">${entries.slice(0,limit).map(iconSpecCard).join('')}</div>${more}</div>`;
   }).join('')||'<div class="variant-empty-state">当前分组没有匹配图标</div>';
   document.querySelectorAll('[data-icon-more-category]').forEach(button=>button.onclick=()=>{
     iconCategoryLimits[button.dataset.iconMoreCategory]=Number.MAX_SAFE_INTEGER;
     renderIconCatalog();
-    requestAnimationFrame(()=>document.getElementById(`ico-section-${iconScope}-${button.dataset.iconMoreCategory.replaceAll(' ','-')}`)?.scrollIntoView({block:'start'}));
+    requestAnimationFrame(()=>document.getElementById(`ico-section-${button.dataset.iconMoreCategory.replaceAll(' ','-')}`)?.scrollIntoView({block:'start'}));
   });
   const c=ICON_CATALOG.counts;
-  summary.textContent=`显示 ${shownTotal} / ${matched} · ${iconScope==='ink'?`纸墨成品 · ${(ICON_CATALOG.inkCategories||[]).length} 个精选分组`:iconScope==='unredrawn'?`精选待绘 · ${(ICON_CATALOG.pendingCategories||[]).length} 个分组`:`未收录母图 · ${(ICON_CATALOG.remainderCategories||[]).length} 个官方分类（浏览后可指名加入精选）`} · 精选 ${c.selectionTotal}/${c.source}（待绘 ${c.pendingSources}）${iconQuery?` · 搜索「${iconQuery}」`:''}`;
+  summary.textContent=`显示 ${shownTotal} / ${matched} · 最终纸墨成品 · ${(ICON_CATALOG.inkCategories||[]).length} 个精选分组 · 共 ${c.selectionTotal} 枚${iconQuery?` · 搜索「${iconQuery}」`:''}`;
 }
 function renderIconNav(){
-  const ink=`<button type="button" class="icon-nav-scope" data-icon-scope="ink" data-icon-category="all"><span>纸墨成品</span><span class="subnav-count">${ICON_CATALOG.counts.inkSources}</span></button>`+
-    (ICON_CATALOG.inkCategories||[]).map(item=>`<button type="button" class="icon-nav-child" data-icon-scope="ink" data-icon-category="${item.id}"><span>${item.label}</span><span class="subnav-count">${item.count}</span></button>`).join('');
-  const pending=`<button type="button" class="icon-nav-scope" data-icon-scope="unredrawn" data-icon-category="all"><span>精选待绘</span><span class="subnav-count">${ICON_CATALOG.counts.pendingSources}</span></button>`+
-    (ICON_CATALOG.pendingCategories||[]).map(item=>`<button type="button" class="icon-nav-child" data-icon-scope="unredrawn" data-icon-category="${item.id}"><span>${item.label}</span><span class="subnav-count">${item.count}</span></button>`).join('');
-  const rest=`<button type="button" class="icon-nav-scope" data-icon-scope="remainder" data-icon-category="all"><span>未收录母图</span><span class="subnav-count">${ICON_CATALOG.counts.remainderSources}</span></button>`+
-    (ICON_CATALOG.remainderCategories||[]).map(item=>`<button type="button" class="icon-nav-child" data-icon-scope="remainder" data-icon-category="${item.id}" title="${item.sourceLabel}"><span>${item.label}</span><span class="subnav-count">${item.count}</span></button>`).join('');
-  $('#ico-nav').innerHTML=ink+pending+rest;
-  document.querySelectorAll('[data-icon-scope]').forEach(button=>button.onclick=()=>setIconView(button.dataset.iconScope,button.dataset.iconCategory));
+  $('#ico-nav').innerHTML=`<button type="button" class="icon-nav-scope" data-icon-category="all"><span>纸墨成品</span><span class="subnav-count">${ICON_CATALOG.counts.inkSources}</span></button>`+
+    (ICON_CATALOG.inkCategories||[]).map(item=>`<button type="button" class="icon-nav-child" data-icon-category="${item.id}"><span>${item.label}</span><span class="subnav-count">${item.count}</span></button>`).join('');
+  document.querySelectorAll('[data-icon-category]').forEach(button=>button.onclick=()=>setIconView(button.dataset.iconCategory));
 }
-function setIconView(scope,category='all'){
-  const scopeChanged=iconScope!==scope;
-  iconScope=scope;iconCategory=category;
-  document.querySelectorAll('[data-icon-scope]').forEach(button=>{
-    const current=button.dataset.iconScope===scope&&button.dataset.iconCategory===category;
+function setIconView(category='all'){
+  iconCategory=category;
+  document.querySelectorAll('[data-icon-category]').forEach(button=>{
+    const current=button.dataset.iconCategory===category;
     button.classList.toggle('on',current);button.setAttribute('aria-current',String(current));
   });
-  renderIconCatalog({reset:scopeChanged});
-  if(category!=='all')requestAnimationFrame(()=>document.getElementById(`ico-section-${scope}-${category.replaceAll(' ','-')}`)?.scrollIntoView({behavior:'smooth',block:'start'}));
+  if(category==='all')renderIconCatalog({reset:true});
+  else requestAnimationFrame(()=>document.getElementById(`ico-section-${category.replaceAll(' ','-')}`)?.scrollIntoView({behavior:'smooth',block:'start'}));
 }
 if(ICON_CATALOG){
-  $('#c-ico').textContent=`${ICON_CATALOG.counts.inkSources}/${ICON_CATALOG.counts.source}`;
+  $('#c-ico').textContent=ICON_CATALOG.counts.inkSources;
   renderIconNav();
   $('#icon-search').addEventListener('input',event=>{
     iconQuery=event.target.value;
     cancelAnimationFrame(iconSearchRaf);
     iconSearchRaf=requestAnimationFrame(()=>renderIconCatalog({reset:true}));
   });
-  setIconView('ink','all');
+  setIconView('all');
 }else{
   $('#c-ico').textContent='!';
   renderIconCatalog();
