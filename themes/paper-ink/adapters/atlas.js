@@ -447,18 +447,20 @@
       margin-inline: auto !important;
     }
 
-    /* --- 043–047 同心圆：集合轮廓统一为 0.4px 发丝线 --- */
+    /* --- 043–047 同心圆：圆环去底色，透明纸面 + 0.6px 发丝墨线（对齐 037 放射卫星的线稿圆） --- */
     .swiss-card .concentric .layer {
-      border-width: .4px !important;
+      background: transparent !important;
+      border-width: .6px !important;
       border-color: var(--wp-compat-atlas-ink-55) !important;
     }
 
-    /* --- 052–053 韦恩图：浅色内描边；标签只放各集合独占区，不压交集 --- */
+    /* --- 052–053 韦恩图：圆去底色，透明 + 0.6px 墨线内描边（与 043–047 同心圆同档）；标签只放各集合独占区，不压交集 --- */
     .swiss-card .venn .v-circle,
     .swiss-card .venn-three .circle {
       box-sizing: border-box !important;
       border: 0 !important;
-      box-shadow: inset 0 0 0 .5px var(--wp-compat-atlas-ink-25) !important;
+      background: transparent !important;
+      box-shadow: inset 0 0 0 .6px var(--wp-compat-atlas-ink-55) !important;
     }
     .swiss-card .venn .v-a {
       justify-content: flex-start !important;
@@ -536,6 +538,15 @@
       color: var(--wp-compat-atlas-ink-55) !important;
     }
 
+    /* --- 032 流程-标注箭头：说明框去掉白雾底，改纸面+墨线边框，小标题加深一档 --- */
+    .swiss-card .process-annotated-grid .caption-node {
+      background: var(--wp-compat-atlas-paper) !important;
+      border: 0.6px solid var(--wp-compat-atlas-ink-55) !important;
+    }
+    .swiss-card .process-annotated-grid .caption-label {
+      color: var(--wp-compat-atlas-ink-70) !important;
+    }
+
     /* --- 循环流程 / 闭环流程：纸面圆点 + 墨环，虚线连接环比节点框深一档 --- */
     .swiss-card .process-loop .loop-item {
       background: var(--wp-compat-atlas-paper) !important;
@@ -554,6 +565,12 @@
       stroke-width: 0.8px !important;
       opacity: 1 !important;
       vector-effect: non-scaling-stroke;
+    }
+
+    /* --- 034–036 循环(三角/四边/五边)：虚线环加粗到闭环轨道同档(约0.8px)，与 037 观感对齐 --- */
+    .swiss-card .process-loop:not(.process-loop-closed)::before {
+      -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='50' r='49.5' fill='none' stroke='white' stroke-width='.45' stroke-dasharray='4.2 4.9'/%3E%3C/svg%3E") center / 100% 100% no-repeat;
+      mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='50' r='49.5' fill='none' stroke='white' stroke-width='.45' stroke-dasharray='4.2 4.9'/%3E%3C/svg%3E") center / 100% 100% no-repeat;
     }
 
     /* --- 甘特图：纸深轨道 + 墨条进度，表头降为弱分隔 --- */
@@ -609,7 +626,7 @@
       color: var(--wp-compat-atlas-paper) !important;
     }
 
-    /* --- 思维导图：节点改线稿，根节点小面积功能反白 --- */
+    /* --- 思维导图：节点改线稿，子节点边框收细到 018 画廊卡档；根节点小面积功能反白 --- */
     .swiss-card .mind-map .root-node {
       background: var(--wp-compat-atlas-ink-80) !important;
       color: var(--wp-compat-atlas-paper) !important;
@@ -617,7 +634,7 @@
     .swiss-card .mind-map .node,
     .swiss-card .mind-map .sub-node {
       background: var(--wp-compat-atlas-paper) !important;
-      border: 1px solid var(--wp-compat-atlas-ink-80) !important;
+      border: .6px solid var(--wp-compat-atlas-ink-80) !important;
       color: var(--wp-compat-atlas-ink) !important;
     }
     .swiss-card .mind-map[data-type="vertical"] {

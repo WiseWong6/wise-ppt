@@ -5,6 +5,7 @@ from __future__ import annotations
 
 import argparse
 import json
+import re
 from pathlib import Path
 
 
@@ -12,6 +13,20 @@ HERE = Path(__file__).resolve().parent
 DEFAULT_SKILL_ROOT = HERE.parents[1] / "wise-ppt"
 OUTPUT = HERE / "icon-catalog-data.js"
 VALID_REDRAW_STATUS = {"todo", "in_progress", "candidate", "approved", "rejected"}
+EXISTING_GROUPS = ("文档", "人物", "数据", "流程", "媒体", "AI")
+OFFICIAL_CATEGORY_LABELS = {
+    "Animals": "动物", "Arrows": "箭头", "Badges": "徽章", "Brand": "品牌",
+    "Buildings": "建筑", "Charts": "图表", "Communication": "沟通", "Computers": "电脑",
+    "Currencies": "货币", "Database": "数据库", "Design": "设计", "Development": "开发",
+    "Devices": "设备", "Document": "文档", "E-commerce": "电商", "Electrical": "电气",
+    "Extensions": "扩展", "Food": "食物", "Games": "游戏", "Gender": "性别",
+    "Gestures": "手势", "Health": "健康", "Laundry": "洗护", "Letters": "字母",
+    "Logic": "逻辑", "Map": "地图", "Math": "数学", "Media": "媒体",
+    "Mood": "情绪", "Nature": "自然", "Numbers": "数字", "Photography": "摄影",
+    "Shapes": "形状", "Sport": "运动", "Symbols": "符号", "System": "系统",
+    "Text": "文本", "Vehicles": "交通", "Version control": "版本控制", "Weather": "天气",
+    "Zodiac": "星座",
+}
 
 
 class CatalogBuildError(ValueError):
@@ -26,6 +41,36 @@ def _load_json(path: Path) -> dict:
     if not isinstance(payload, dict):
         raise CatalogBuildError(f"{path} 顶层必须是对象")
     return payload
+
+
+def _existing_group(name: str) -> str:
+    tokens = set(name.split("-"))
+    if tokens & {"face", "hand", "user", "thumbs", "handshake"}:
+        return "人物"
+    if tokens & {"chart", "database", "network", "diagram", "layer", "object", "filter", "timeline", "sitemap", "bars"}:
+        return "数据"
+    if tokens & {"arrow", "caret", "check", "xmark", "plus", "minus", "location", "map", "compass", "plane", "list"}:
+        return "流程"
+    if tokens & {"camera", "image", "images", "eye", "headphones", "play", "pause", "stop", "futbol", "sun", "moon", "star", "gem", "heart"}:
+        return "媒体"
+    if tokens & {"robot", "wand", "gear", "shield", "bolt", "bullseye", "cloud", "building", "house", "lightbulb"}:
+        return "AI"
+    return "文档"
+
+
+def _source_metadata(path: Path) -> tuple[str, list[str]]:
+    text = path.read_text(encoding="utf-8")
+    category_match = re.search(r"^category:\s*(.+?)\s*$", text, re.MULTILINE)
+    tags_match = re.search(r"^tags:\s*\[(.*?)\]\s*$", text, re.MULTILINE)
+    if not category_match or not tags_match:
+        raise CatalogBuildError(f"Tabler SVG 缺少固定的 category/tags 元数据：{path.name}")
+    category = category_match.group(1).strip()
+    if category not in OFFICIAL_CATEGORY_LABELS:
+        raise CatalogBuildError(f"Tabler SVG 含未知官方分类：{category}")
+    tags = [tag.strip() for tag in tags_match.group(1).split(",") if tag.strip()]
+    if not tags:
+        raise CatalogBuildError(f"Tabler SVG tags 为空：{path.name}")
+    return category, tags
 
 
 def build_payload(skill_root: Path) -> dict:
@@ -59,23 +104,52 @@ def build_payload(skill_root: Path) -> dict:
                 raise CatalogBuildError(f"{name} 含非法重绘状态：{status}")
             progress_items[name] = item
 
-    entries = []
+    source_metadata = {name: _source_metadata(outline / f"{name}.svg") for name in source_names}
+    existing = []
+    existing_group_counts = {group: 0 for group in EXISTING_GROUPS}
+    for public_name, record in sorted(registry.get("icons", {}).items()):
+        source_name = record["source"]["icon"]
+        category, tags = source_metadata[source_name]
+        group = _existing_group(public_name)
+        existing_group_counts[group] += 1
+        item = progress_items.get(source_name, {})
+        existing.append(
+            {
+                "name": public_name,
+                "sourceName": source_name,
+                "group": group,
+                "officialCategory": category,
+                "officialCategoryLabel": OFFICIAL_CATEGORY_LABELS[category],
+                "tags": tags,
+                "redrawStatus": item.get("status", "todo"),
+                "batch": item.get("batch"),
+                "updatedAt": item.get("updated_at"),
+            }
+        )
+
+    unredrawn = []
+    official_category_counts: dict[str, int] = {}
     status_counts = {status: 0 for status in VALID_REDRAW_STATUS}
     for name in source_names:
         item = progress_items.get(name, {})
         status = item.get("status", "todo")
         status_counts[status] += 1
-        public_names = sorted(public_by_source.get(name, []))
-        entries.append(
-            {
-                "name": name,
-                "publicNames": public_names,
-                "registered": bool(public_names),
-                "redrawStatus": status,
-                "batch": item.get("batch"),
-                "updatedAt": item.get("updated_at"),
-            }
-        )
+        if name in public_by_source:
+            continue
+        category, tags = source_metadata[name]
+        official_category_counts[category] = official_category_counts.get(category, 0) + 1
+        unredrawn.append({
+            "name": name,
+            "category": category,
+            "categoryLabel": OFFICIAL_CATEGORY_LABELS[category],
+            "tags": tags,
+            "redrawStatus": status,
+            "batch": item.get("batch"),
+            "updatedAt": item.get("updated_at"),
+        })
+
+    if len(existing) != 189 or len(unredrawn) != 4965 or sum(official_category_counts.values()) != 4965:
+        raise CatalogBuildError("现有纸墨成品与未重绘母图没有形成 189 / 4,965 的闭合分组")
 
     return {
         "version": 1,
@@ -88,14 +162,30 @@ def build_payload(skill_root: Path) -> dict:
         "paths": {
             "sourceSvg": "../../wise-ppt/capabilities/vendors/tabler-outline/icons/outline/",
             "redrawSvg": "../../wise-ppt/capabilities/vendors/tabler-outline/redraw-v3/svg/",
+            "existingAcceptance": "../../wise-ppt/capabilities/vendors/tabler-outline/acceptance.html",
         },
         "counts": {
             "source": len(source_names),
             "registeredSources": len(public_by_source),
             "publicNames": len(registry.get("icons", {})),
+            "unredrawnSources": len(unredrawn),
             "redrawStatus": status_counts,
         },
-        "entries": entries,
+        "existingGroups": [
+            {"id": group, "label": group, "count": existing_group_counts[group]}
+            for group in EXISTING_GROUPS
+        ],
+        "officialCategories": [
+            {
+                "id": category,
+                "label": OFFICIAL_CATEGORY_LABELS[category],
+                "sourceLabel": category,
+                "count": official_category_counts[category],
+            }
+            for category in sorted(official_category_counts)
+        ],
+        "existing": existing,
+        "unredrawn": unredrawn,
     }
 
 

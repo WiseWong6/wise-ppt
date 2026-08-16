@@ -2376,17 +2376,17 @@ window.PAPER_INK_COMPONENT_DATA = {
     name: 'radial-progress',
     group: 'metric-data',
     groupLabel: '指标与数据',
-    description: 'Instrument-style radial progress rings with big mono percent readouts.',
+    description: 'Instrument-style row of radial progress rings derived from C5.',
     label: '环形进度指标',
     num: 85,
     variant: null,
     paperInkNative: true,
     frame: { width: 950, height: 440, fit: 'fixed' },
-    /* 出自样张 layout-c5.html;单元×N 改为水平排布(同一 renderer 内部重复 ring 单元) */
-    snippet: `<div class="pi-card">
-<svg class="pi-art" viewBox="0 0 600 600" xmlns="http://www.w3.org/2000/svg">
+    /* 出自样张 layout-c5.html；真实 950×440 画布内四环同轴等距，不再走旧 600×600 反归一化。 */
+    snippet: `<div class="pi-card" style="width:950px;height:440px;min-height:0">
+<svg class="pi-art" data-declared-frame-applied="1" viewBox="0 0 950 440" xmlns="http://www.w3.org/2000/svg">
   <!-- 环1 · 内容制作 38% -->
-  <g>
+  <g transform="translate(120 180) scale(1.2) translate(-97.5 -200)">
     <circle cx="97.5" cy="200" r="56" fill="none" stroke="var(--pi-ink)" stroke-width=".5" stroke-dasharray="2 6" opacity=".28"/>
     <g stroke="var(--pi-ink)" opacity=".4">
       <line x1="97.5" y1="150.0" x2="97.5" y2="144.0" stroke-width=".8"/>
@@ -2408,10 +2408,11 @@ window.PAPER_INK_COMPONENT_DATA = {
     <text x="97.5" y="206" font-family="var(--pi-mono)" font-size="17" text-anchor="middle" fill="var(--pi-ink)">38%</text>
     <text x="97.5" y="221" font-family="var(--pi-mono)" font-size="7.5" letter-spacing="1" text-anchor="middle" fill="var(--pi-ink-45)">38 / 100</text>
     <text x="97.5" y="278" font-family="var(--pi-sans)" font-weight="300" font-size="11.5" text-anchor="middle" fill="var(--pi-ink)">内容制作</text>
+    <text x="97.5" y="295" font-family="var(--pi-mono)" font-size="6.5" letter-spacing="1.4" text-anchor="middle" fill="var(--pi-ink-45)">CONTENT</text>
   </g>
 
   <!-- 环2 · 活动执行 27% -->
-  <g>
+  <g transform="translate(356.7 180) scale(1.2) translate(-232.5 -200)">
     <circle cx="232.5" cy="200" r="56" fill="none" stroke="var(--pi-ink)" stroke-width=".5" stroke-dasharray="2 6" opacity=".28"/>
     <g stroke="var(--pi-ink)" opacity=".4">
       <line x1="232.5" y1="150.0" x2="232.5" y2="144.0" stroke-width=".8"/>
@@ -2433,10 +2434,11 @@ window.PAPER_INK_COMPONENT_DATA = {
     <text x="232.5" y="206" font-family="var(--pi-mono)" font-size="17" text-anchor="middle" fill="var(--pi-ink)">27%</text>
     <text x="232.5" y="221" font-family="var(--pi-mono)" font-size="7.5" letter-spacing="1" text-anchor="middle" fill="var(--pi-ink-45)">27 / 100</text>
     <text x="232.5" y="278" font-family="var(--pi-sans)" font-weight="300" font-size="11.5" text-anchor="middle" fill="var(--pi-ink)">活动执行</text>
+    <text x="232.5" y="295" font-family="var(--pi-mono)" font-size="6.5" letter-spacing="1.4" text-anchor="middle" fill="var(--pi-ink-45)">EVENT OPS</text>
   </g>
 
   <!-- 环3 · 用户沟通 21% -->
-  <g>
+  <g transform="translate(593.3 180) scale(1.2) translate(-367.5 -200)">
     <circle cx="367.5" cy="200" r="56" fill="none" stroke="var(--pi-ink)" stroke-width=".5" stroke-dasharray="2 6" opacity=".28"/>
     <g stroke="var(--pi-ink)" opacity=".4">
       <line x1="367.5" y1="150.0" x2="367.5" y2="144.0" stroke-width=".8"/>
@@ -2458,10 +2460,11 @@ window.PAPER_INK_COMPONENT_DATA = {
     <text x="367.5" y="206" font-family="var(--pi-mono)" font-size="17" text-anchor="middle" fill="var(--pi-ink)">21%</text>
     <text x="367.5" y="221" font-family="var(--pi-mono)" font-size="7.5" letter-spacing="1" text-anchor="middle" fill="var(--pi-ink-45)">21 / 100</text>
     <text x="367.5" y="278" font-family="var(--pi-sans)" font-weight="300" font-size="11.5" text-anchor="middle" fill="var(--pi-ink)">用户沟通</text>
+    <text x="367.5" y="295" font-family="var(--pi-mono)" font-size="6.5" letter-spacing="1.4" text-anchor="middle" fill="var(--pi-ink-45)">USER CARE</text>
   </g>
 
   <!-- 环4 · 数据复盘 14% -->
-  <g>
+  <g transform="translate(830 180) scale(1.2) translate(-502.5 -200)">
     <circle cx="502.5" cy="200" r="56" fill="none" stroke="var(--pi-ink)" stroke-width=".5" stroke-dasharray="2 6" opacity=".28"/>
     <g stroke="var(--pi-ink)" opacity=".4">
       <line x1="502.5" y1="150.0" x2="502.5" y2="144.0" stroke-width=".8"/>
@@ -2483,7 +2486,14 @@ window.PAPER_INK_COMPONENT_DATA = {
     <text x="502.5" y="206" font-family="var(--pi-mono)" font-size="17" text-anchor="middle" fill="var(--pi-ink)">14%</text>
     <text x="502.5" y="221" font-family="var(--pi-mono)" font-size="7.5" letter-spacing="1" text-anchor="middle" fill="var(--pi-ink-45)">14 / 100</text>
     <text x="502.5" y="278" font-family="var(--pi-sans)" font-weight="300" font-size="11.5" text-anchor="middle" fill="var(--pi-ink)">数据复盘</text>
+    <text x="502.5" y="295" font-family="var(--pi-mono)" font-size="6.5" letter-spacing="1.4" text-anchor="middle" fill="var(--pi-ink-45)">DATA REVIEW</text>
   </g>
+
+  <!-- 共享基线与合计校验 -->
+  <line x1="45" y1="340" x2="905" y2="340" stroke="var(--pi-ink)" stroke-width=".8" opacity=".5"/>
+  <line x1="45" y1="334" x2="45" y2="346" stroke="var(--pi-ink-80)" stroke-width="1.2"/>
+  <line x1="905" y1="334" x2="905" y2="346" stroke="var(--pi-ink-80)" stroke-width="1.2"/>
+  <text data-field="sum_label" x="905" y="368" font-family="var(--pi-mono)" font-size="8" letter-spacing="1.8" text-anchor="end" fill="var(--pi-ink-45)">ALLOCATION SUM · 100%</text>
 </svg>
 </div>`
   },

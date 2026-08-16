@@ -65,6 +65,10 @@
   .card-info .nm{font-size:15px;font-weight:400;margin-top:2px}
   .card-info .meta{font-size:13px;color:var(--ink-3);margin-top:4px;line-height:1.6}
   .card-info .meta b{color:var(--ink-2);font-weight:500}
+  /* 卡片信息区统一两行:首行 = 序号 + 标题,次行 = 其余信息 */
+  .card-head{display:flex;align-items:baseline;gap:8px;min-width:0}
+  .card-head .id{flex:none}
+  .card-head .nm{margin-top:0;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
 
   /* 组件卡片(近方形) */
   .comp-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:18px}
@@ -89,6 +93,16 @@
   .icon-preview{display:flex;align-items:center;justify-content:center;gap:14px;min-width:0}
   .icon-preview img{display:block;width:64px;height:64px;object-fit:contain}
   .icon-preview.is-pair img{width:54px;height:54px}
+  .icon-preview.is-existing{gap:18px}
+  .icon-size{display:grid;place-items:center;min-width:64px;min-height:68px}
+  .icon-size.s40 svg{width:40px;height:40px}
+  .icon-size.s64 svg{width:64px;height:64px}
+  .wise-ppt-icon__layer{fill:none;stroke:currentColor;stroke-linecap:round;stroke-linejoin:round}
+  .wise-ppt-icon__layer--main{stroke-width:1.2;opacity:.8}
+  .wise-ppt-icon__layer--detail{stroke-width:.8;opacity:.55}
+  .wise-ppt-icon__layer--hairline{stroke-width:.55;opacity:.35}
+  .wise-ppt-icon__layer--emphasis{stroke-width:1.6;opacity:.9}
+  .wise-ppt-icon__layer--ink-dot{fill:currentColor;stroke:none;opacity:.7}
   .icon-card-name{overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font:400 13px var(--wp-font-mono)}
   .icon-card-meta{display:flex;align-items:center;gap:5px;min-width:0;overflow:hidden;font:400 10px var(--wp-font-mono);color:var(--ink-3)}
   .icon-badge{display:inline-block;padding:1px 5px;border:1px solid var(--ink-45);white-space:nowrap}
@@ -97,6 +111,11 @@
   .icon-more{display:block;min-width:180px;height:40px;margin:22px auto 0;padding:0 18px;border:1px solid var(--ink-45);border-radius:0;background:transparent;color:var(--ink);font:400 12px var(--wp-font-mono);cursor:pointer}
   .icon-more:hover{background:var(--ink);color:var(--paper)}
   .icon-more[hidden]{display:none}
+  .icon-category-more{display:block;min-width:160px;height:36px;margin:14px auto 0;padding:0 16px;border:1px solid var(--ink-45);border-radius:0;background:transparent;color:var(--ink);font:400 11px var(--wp-font-mono);cursor:pointer}
+  .icon-category-more:hover{background:var(--ink);color:var(--paper)}
+  #ico-nav .icon-nav-scope{margin-top:7px;border-top:1px solid var(--line);padding-top:11px;color:var(--ink-2)}
+  #ico-nav .icon-nav-scope:first-child{margin-top:0}
+  #ico-nav .icon-nav-child{padding-left:18px;font-size:11px}
 
   /* 浮层:点击卡片,页面内放大(替代详情页) */
   #layer{position:fixed;inset:0;z-index:300;display:none}
@@ -249,15 +268,15 @@
 </main>
 
 <main id="m-ico">
-  <div class="note"><b>图标资产 = 5,130 枚 Tabler Outline 母图 + Wise PPT 纸墨重绘状态。</b><br>这里负责完整检索和进度查看；生产仍只打包 deck 实际引用的已登记名称。源图只作几何参考，候选/通过状态才代表已完成 64×64 纸墨重绘。</div>
+  <div class="note"><b>图标分为「现有纸墨成品」与「未重绘母图」两组。</b><br>现有 189 枚成品沿用验收页的文档、人物、数据、流程、媒体、AI 六类；其余 4,965 枚按 Tabler SVG 自带的 41 个官方 category 分类。生产仍只打包 deck 实际引用的已登记名称。</div>
   <div class="icon-toolbar">
     <label><span class="sr-only" style="position:absolute;clip:rect(0 0 0 0);clip-path:inset(50%);width:1px;height:1px;overflow:hidden">搜索图标</span><input class="icon-search" id="icon-search" type="search" autocomplete="off" placeholder="搜索源名称或兼容名称，例如 mail / chart / user"></label>
     <div class="icon-summary" id="icon-summary" aria-live="polite"></div>
   </div>
-  <div class="icon-grid" id="icon-grid"></div>
-  <button class="icon-more" id="icon-more" type="button">继续加载</button>
+  <div id="icon-groups"></div>
 </main>
 
+<script src="../../wise-ppt/capabilities/vendors/tabler-outline/icon-registry.js"></script>
 <script src="./icon-catalog-data.js"></script>
 <script>
 /* ============ 元数据 ============ */
@@ -408,7 +427,7 @@ const SMARTART_COMPONENTS=[
   {fam:'⑨ 数据 · Data(Wise PPT 扩展)',items:[
     {t:'atlas',num:59,en:'stats',nm:'指标单元',note:'atlas 打包 4 格;概念上单元×4',pageScale:.8,rel:['陈列','指标']},
     {t:'native',num:89,en:'metric-strip',nm:'自适应指标横带',rel:['陈列','指标']},
-    {t:'native',num:85,en:'radial-progress',nm:'环形进度指标',note:'单元×N',rel:['陈列']},
+    {t:'native',num:85,en:'radial-progress',nm:'环形进度指标',note:'源 C5 · 环列阵',rel:['拆解']},
     {t:'ec',id:'echarts.geo-choropleth-map',en:'geo-map',nm:'分级填色地图',rel:['分布']},
     {t:'ec',id:'echarts.pie-access-source',en:'pie',nm:'饼图',rel:['部分整体']},
     {t:'ec',id:'echarts.line-basic',en:'line',nm:'折线图',note:'含 smooth / stacked 变体',rel:['时序'],vr:[['ec:echarts.line-basic','基础'],['ec:echarts.line-smooth','平滑'],['ec:echarts.line-stacked','堆叠']]},
@@ -2012,66 +2031,102 @@ $('#cmp-groups').innerHTML=SMARTART_COMPONENTS.map((g,index)=>`
 $('#c-cmp').textContent=SMARTART_COMPONENT_COUNT+(EXTRACT_GROUPS.length?'+'+EXTRACT_GROUPS.reduce((s,g)=>s+g.items.length,0)+'抽':'');
 $('#cmp-nav').innerHTML=SMARTART_COMPONENTS.map((g,index)=>`<button type="button" data-section-jump="cmp-fam-${index}"><span>${g.fam}</span><span class="subnav-count">${g.items.length}</span></button>`).join('');
 
-/* 图标:完整母库只加载轻量名称清单；卡片按 120 枚增量物化，兼容 file://。 */
+/* 图标:189 枚现有纸墨成品与 4,965 枚未重绘母图严格分组；右侧按分类成节，母图每类先物化 24 枚。 */
 const ICON_CATALOG=window.WISE_PPT_ICON_CATALOG_DATA;
-const ICON_PAGE_SIZE=120;
+const ICON_REGISTRY=window.WisePPTIconRegistry;
+const ICON_CATEGORY_PAGE_SIZE=24;
 const ICON_STATUS_LABEL={todo:'未重绘',in_progress:'绘制中',candidate:'候选',approved:'通过',rejected:'退回'};
-let iconFilter='all',iconQuery='',iconVisible=ICON_PAGE_SIZE,iconSearchRaf=0;
-function iconFilteredEntries(){
-  if(!ICON_CATALOG||!Array.isArray(ICON_CATALOG.entries))return [];
+let iconScope='existing',iconCategory='all',iconQuery='',iconSearchRaf=0,iconCategoryLimits={};
+function paperInkIcon(name){
+  const record=ICON_REGISTRY&&ICON_REGISTRY.icons&&ICON_REGISTRY.icons[name];
+  if(!record)return '';
+  const layers=record.layers.map(layer=>{
+    const attrs=Object.entries(layer.attrs).map(([key,value])=>`${key}="${String(value).replaceAll('"','&quot;')}"`).join(' ');
+    return `<${layer.tag} class="wise-ppt-icon__layer wise-ppt-icon__layer--${layer.role}" ${attrs}></${layer.tag}>`;
+  }).join('');
+  return `<svg viewBox="0 0 64 64" role="img" aria-label="${name}">${layers}</svg>`;
+}
+function iconEntriesForCategory(category){
+  const source=iconScope==='existing'?ICON_CATALOG.existing:ICON_CATALOG.unredrawn;
   const query=iconQuery.trim().toLowerCase();
-  return ICON_CATALOG.entries.filter(entry=>{
-    const statusMatch=iconFilter==='all'||(iconFilter==='registered'&&entry.registered)||entry.redrawStatus===iconFilter;
-    const queryMatch=!query||entry.name.includes(query)||(entry.publicNames||[]).some(name=>name.includes(query));
-    return statusMatch&&queryMatch;
+  return source.filter(entry=>{
+    const entryCategory=iconScope==='existing'?entry.group:entry.category;
+    const haystack=[entry.name,entry.sourceName||'',entry.group||'',entry.category||'',entry.categoryLabel||'',entry.officialCategory||'',entry.officialCategoryLabel||'',...(entry.tags||[])].join(' ').toLowerCase();
+    return entryCategory===category&&(!query||haystack.includes(query));
   });
 }
-function iconCard(entry){
+function existingIconCard(entry){
+  const pipeline=entry.redrawStatus!=='todo'?`<span class="icon-badge ${entry.redrawStatus}">${ICON_STATUS_LABEL[entry.redrawStatus]}</span>`:'';
+  return `<a class="icon-card" href="${ICON_CATALOG.paths.existingAcceptance}" target="_blank" rel="noreferrer" data-icon-name="${entry.name}" data-redraw-status="${entry.redrawStatus}">
+    <div class="icon-preview is-existing"><span class="icon-size s40">${paperInkIcon(entry.name)}</span><span class="icon-size s64">${paperInkIcon(entry.name)}</span></div>
+    <div class="icon-card-name">${entry.name}</div>
+    <div class="icon-card-meta"><span class="icon-badge approved">现有成品</span>${pipeline}<span class="icon-public" title="Tabler: ${entry.sourceName}">${entry.group} · ${entry.sourceName}</span></div></a>`;
+}
+function unredrawnIconCard(entry){
   const source=ICON_CATALOG.paths.sourceSvg+entry.name+'.svg';
-  const hasRedraw=entry.redrawStatus==='candidate'||entry.redrawStatus==='approved';
+  const hasCandidate=entry.redrawStatus==='candidate'||entry.redrawStatus==='approved';
   const redraw=ICON_CATALOG.paths.redrawSvg+entry.name+'.svg';
-  const publicNames=(entry.publicNames||[]).join(' / ');
-  const preview=hasRedraw
-    ?`<div class="icon-preview is-pair"><img loading="lazy" decoding="async" src="${source}" alt="${entry.name} 源图"><img loading="lazy" decoding="async" src="${redraw}" alt="${entry.name} 纸墨重绘"></div>`
+  const preview=hasCandidate
+    ?`<div class="icon-preview is-pair"><img loading="lazy" decoding="async" src="${source}" alt="${entry.name} 源图"><img loading="lazy" decoding="async" src="${redraw}" alt="${entry.name} 纸墨候选"></div>`
     :`<div class="icon-preview"><img loading="lazy" decoding="async" src="${source}" alt="${entry.name} 源图"></div>`;
-  return `<a class="icon-card" href="${hasRedraw?redraw:source}" target="_blank" rel="noreferrer" data-icon-name="${entry.name}" data-redraw-status="${entry.redrawStatus}">
+  return `<a class="icon-card" href="${hasCandidate?redraw:source}" target="_blank" rel="noreferrer" data-icon-name="${entry.name}" data-redraw-status="${entry.redrawStatus}">
     ${preview}<div class="icon-card-name">${entry.name}</div>
-    <div class="icon-card-meta"><span class="icon-badge ${entry.redrawStatus}">${ICON_STATUS_LABEL[entry.redrawStatus]||entry.redrawStatus}</span>${entry.registered?'<span class="icon-badge">已登记</span>':''}${publicNames?`<span class="icon-public" title="${publicNames}">${publicNames}</span>`:''}</div></a>`;
+    <div class="icon-card-meta"><span class="icon-badge ${entry.redrawStatus}">${ICON_STATUS_LABEL[entry.redrawStatus]}</span><span class="icon-public" title="${entry.category}">${entry.categoryLabel} · ${entry.category}</span></div></a>`;
 }
 function renderIconCatalog({reset=false}={}){
-  const grid=$('#icon-grid'),more=$('#icon-more'),summary=$('#icon-summary');
-  if(!ICON_CATALOG){grid.innerHTML='<div class="variant-empty-state">icon-catalog-data.js 未生成</div>';more.hidden=true;return;}
-  if(reset)iconVisible=ICON_PAGE_SIZE;
-  const entries=iconFilteredEntries(),shown=Math.min(iconVisible,entries.length);
-  grid.innerHTML=entries.slice(0,shown).map(iconCard).join('');
-  more.hidden=shown>=entries.length;
-  summary.textContent=`显示 ${shown} / ${entries.length} · 母库 ${ICON_CATALOG.counts.source} · 已登记源图 ${ICON_CATALOG.counts.registeredSources} · 通过 ${ICON_CATALOG.counts.redrawStatus.approved}`;
+  const host=$('#icon-groups'),summary=$('#icon-summary');
+  if(!ICON_CATALOG||!ICON_REGISTRY){host.innerHTML='<div class="variant-empty-state">图标目录数据或现有 registry 未加载</div>';return;}
+  if(reset)iconCategoryLimits={};
+  const categories=iconScope==='existing'?ICON_CATALOG.existingGroups:ICON_CATALOG.officialCategories;
+  const cardRenderer=iconScope==='existing'?existingIconCard:unredrawnIconCard;
+  let matched=0,shownTotal=0;
+  host.innerHTML=categories.map(category=>{
+    const entries=iconEntriesForCategory(category.id);
+    if(!entries.length)return '';
+    matched+=entries.length;
+    const defaultLimit=iconScope==='existing'?entries.length:ICON_CATEGORY_PAGE_SIZE;
+    const limit=Math.min(iconCategoryLimits[category.id]||defaultLimit,entries.length);
+    shownTotal+=limit;
+    const sourceLabel=iconScope==='unredrawn'?`<span class="tag">${category.sourceLabel}</span>`:'';
+    const more=limit<entries.length?`<button class="icon-category-more" type="button" data-icon-more-category="${category.id}">展开该类全部 ${entries.length} 枚</button>`:'';
+    return `<div class="fam-section" id="ico-section-${iconScope}-${category.id.replaceAll(' ','-')}" data-catalog-section>
+      <div class="fam-head"><h2>${category.label}</h2>${sourceLabel}<span class="desc">${entries.length} 枚${limit<entries.length?` · 当前 ${limit}`:''}</span></div>
+      <div class="icon-grid">${entries.slice(0,limit).map(cardRenderer).join('')}</div>${more}</div>`;
+  }).join('')||'<div class="variant-empty-state">当前分组没有匹配图标</div>';
+  document.querySelectorAll('[data-icon-more-category]').forEach(button=>button.onclick=()=>{
+    iconCategoryLimits[button.dataset.iconMoreCategory]=Number.MAX_SAFE_INTEGER;
+    renderIconCatalog();
+    requestAnimationFrame(()=>document.getElementById(`ico-section-${iconScope}-${button.dataset.iconMoreCategory.replaceAll(' ','-')}`)?.scrollIntoView({block:'start'}));
+  });
+  summary.textContent=`显示 ${shownTotal} / ${matched} · ${iconScope==='existing'?'现有纸墨成品 · 6 类':'未重绘母图 · 41 个官方分类'}${iconQuery?` · 搜索「${iconQuery}」`:''}`;
 }
-function setIconFilter(filter){
-  iconFilter=filter;
-  document.querySelectorAll('[data-icon-filter]').forEach(button=>{
-    const current=button.dataset.iconFilter===filter;
+function renderIconNav(){
+  const existing=`<button type="button" class="icon-nav-scope" data-icon-scope="existing" data-icon-category="all"><span>现有纸墨成品</span><span class="subnav-count">${ICON_CATALOG.counts.publicNames}</span></button>`+
+    ICON_CATALOG.existingGroups.map(item=>`<button type="button" class="icon-nav-child" data-icon-scope="existing" data-icon-category="${item.id}"><span>${item.label}</span><span class="subnav-count">${item.count}</span></button>`).join('');
+  const unredrawn=`<button type="button" class="icon-nav-scope" data-icon-scope="unredrawn" data-icon-category="all"><span>未重绘母图</span><span class="subnav-count">${ICON_CATALOG.counts.unredrawnSources}</span></button>`+
+    ICON_CATALOG.officialCategories.map(item=>`<button type="button" class="icon-nav-child" data-icon-scope="unredrawn" data-icon-category="${item.id}" title="${item.sourceLabel}"><span>${item.label}</span><span class="subnav-count">${item.count}</span></button>`).join('');
+  $('#ico-nav').innerHTML=existing+unredrawn;
+  document.querySelectorAll('[data-icon-scope]').forEach(button=>button.onclick=()=>setIconView(button.dataset.iconScope,button.dataset.iconCategory));
+}
+function setIconView(scope,category='all'){
+  const scopeChanged=iconScope!==scope;
+  iconScope=scope;iconCategory=category;
+  document.querySelectorAll('[data-icon-scope]').forEach(button=>{
+    const current=button.dataset.iconScope===scope&&button.dataset.iconCategory===category;
     button.classList.toggle('on',current);button.setAttribute('aria-current',String(current));
   });
-  renderIconCatalog({reset:true});
+  renderIconCatalog({reset:scopeChanged});
+  if(category!=='all')requestAnimationFrame(()=>document.getElementById(`ico-section-${scope}-${category.replaceAll(' ','-')}`)?.scrollIntoView({behavior:'smooth',block:'start'}));
 }
-if(ICON_CATALOG){
-  $('#c-ico').textContent=ICON_CATALOG.counts.source;
-  const statusCount=ICON_CATALOG.counts.redrawStatus;
-  const iconFilters=[
-    ['all','全部',ICON_CATALOG.counts.source],['registered','已登记',ICON_CATALOG.counts.registeredSources],
-    ['todo','未重绘',statusCount.todo],['in_progress','绘制中',statusCount.in_progress],
-    ['candidate','候选',statusCount.candidate],['approved','通过',statusCount.approved],['rejected','退回',statusCount.rejected]
-  ];
-  $('#ico-nav').innerHTML=iconFilters.map(([id,label,count])=>`<button type="button" data-icon-filter="${id}"><span>${label}</span><span class="subnav-count">${count}</span></button>`).join('');
-  document.querySelectorAll('[data-icon-filter]').forEach(button=>button.onclick=()=>setIconFilter(button.dataset.iconFilter));
+if(ICON_CATALOG&&ICON_REGISTRY){
+  $('#c-ico').textContent=`${ICON_CATALOG.counts.publicNames}/${ICON_CATALOG.counts.source}`;
+  renderIconNav();
   $('#icon-search').addEventListener('input',event=>{
     iconQuery=event.target.value;
     cancelAnimationFrame(iconSearchRaf);
     iconSearchRaf=requestAnimationFrame(()=>renderIconCatalog({reset:true}));
   });
-  $('#icon-more').onclick=()=>{iconVisible+=ICON_PAGE_SIZE;renderIconCatalog();};
-  setIconFilter('all');
+  setIconView('existing','all');
 }else{
   $('#c-ico').textContent='!';
   renderIconCatalog();
