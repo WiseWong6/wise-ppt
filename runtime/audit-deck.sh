@@ -113,7 +113,7 @@ const send = (m, p = {}) => new Promise((res, rej) => {
           sub.left = Math.min(sub.left, r.left); sub.right = Math.max(sub.right, r.right);
         }
       };
-      stage.querySelectorAll('blockquote,.author-name,.author-title,td,th,.year,.hot-num,p,h1,h2,h3,span,text,.divider').forEach(consider);
+      stage.querySelectorAll('blockquote,.author-name,.author-title,td,th,.year,.hot-num,p,h1,h2,h3,span,text,.divider,li').forEach(consider);
       stage.querySelectorAll('rect,line,circle,ellipse,path,polygon').forEach(el => {
         const cs = getComputedStyle(el);
         const hasStroke = cs.stroke !== 'none' && parseFloat(cs.strokeOpacity || '1') > 0.05;

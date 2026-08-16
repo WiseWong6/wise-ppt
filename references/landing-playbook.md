@@ -133,6 +133,7 @@ atlas 原始 snippet 是 600px 方卡预览口径,直接粘贴会带裸字号,�
 | `assets/slide-components.css` | `themes/paper-ink/assets/slide-components.css` |
 | `assets/deck-shell.css` | `runtime/deck-shell.css` |
 | `assets/deck-runtime.js` | `runtime/deck-runtime.js` |
+| `assets/stage-fit.js` | `runtime/stage-fit.js`(deck-runtime 启动时同目录加载,漏复制直接 runtime 红) |
 | `assets/fonts/` | `themes/paper-ink/assets/fonts/`(本地缺字体先在仓库跑 `python3 scripts/ensure_fonts.py` 补齐再复制) |
 
 app-template 六个占位符的填法:

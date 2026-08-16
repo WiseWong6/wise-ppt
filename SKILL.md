@@ -243,6 +243,7 @@ description: 表驱动的网页 PPT 编排 skill。输入 PDF/链接/口语稿/�
     slide-components.css  ← .slide/.stage/.scene/.doc/.folio/.caption
     deck-shell.css        ← 放映壳 chrome(源:runtime/)
     deck-runtime.js       ← 放映/键盘/打印(源:runtime/)
+    stage-fit.js          ← 舞台缩放(deck-runtime 同目录加载,源:runtime/)
     fonts/                ← 四套字体文件
     components/           ← 选中组件的资产(catalog-data/paper-ink-components/adapter)
     registered-components.css ← 全部选中组件的 scoped CSS 汇总
