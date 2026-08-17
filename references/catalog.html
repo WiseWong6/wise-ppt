@@ -525,8 +525,9 @@ function thumbSlug(value){
 }
 function pageThumb(src){return THUMB_DIR+'page-'+thumbSlug(src)+'.webp';}
 function componentThumb(spec){return THUMB_DIR+'component-'+thumbSlug(spec)+'.webp';}
+/* 缩略图直写 src + 原生 lazy:隐藏 tab(display:none)与收起章节不请求,滚到附近才加载。 */
 function thumbMarkup(thumb,alt,wrapClass='frame-wrap'){
-  return `<div class="${wrapClass}"><img class="catalog-thumb" data-thumb-src="${thumb}" width="640" height="360" decoding="async" alt="${String(alt||'').replace(/"/g,'&quot;')}"></div>`;
+  return `<div class="${wrapClass}"><img class="catalog-thumb" src="${thumb}" loading="lazy" width="640" height="360" decoding="async" alt="${String(alt||'').replace(/"/g,'&quot;')}"></div>`;
 }
 
 function layoutCard([id,nm,struct,rel]){
@@ -588,6 +589,13 @@ function componentPageScale(spec){
   return String(spec).startsWith('atlas:')?itemScale*.82:itemScale;
 }
 
+/* 非 tpl 页签的重卡片 DOM 首次切换才物化,首开只建默认落地的模板页。 */
+const TAB_RENDERERS={};
+function ensureTabRendered(id){
+  const render=TAB_RENDERERS[id];
+  if(render){delete TAB_RENDERERS[id];render();}
+}
+
 /* 非关系页:五组职能分区,左栏二级目录与滚动高亮走通用逻辑 */
 $('#tpl-fams').innerHTML=NON_REL_GROUPS.map(g=>`
   <div class="fam-section" id="tpl-fam-${g.id}" data-catalog-section>
@@ -597,21 +605,27 @@ $('#tpl-fams').innerHTML=NON_REL_GROUPS.map(g=>`
 $('#c-tpl').textContent=NON_REL.length;
 $('#tpl-nav').innerHTML=NON_REL_GROUPS.map(g=>`<button type="button" data-section-jump="tpl-fam-${g.id}"><span>${g.cn}</span><span class="subnav-count">${g.items.length}</span></button>`).join('');
 
-/* 版式:SmartArt 语义入口 + Wise PPT 数据扩展 */
-$('#lyt-fams').innerHTML=SMARTART_TYPES.map(f=>`
-  <div class="fam-section" id="lyt-fam-${f.id}" data-catalog-section>
-    <div class="fam-head"><h2>${f.cn}</h2><span class="tag">${f.id}</span><span class="desc">${f.desc} · ${f.items.length} 版式</span></div>
-    <div class="grid">${f.items.map(layoutCard).join('')}</div>
-  </div>`).join('');
+/* 版式:SmartArt 语义入口 + Wise PPT 数据扩展(卡片 DOM 首次进页签才渲染) */
+function renderLayoutTab(){
+  $('#lyt-fams').innerHTML=SMARTART_TYPES.map(f=>`
+    <div class="fam-section" id="lyt-fam-${f.id}" data-catalog-section>
+      <div class="fam-head"><h2>${f.cn}</h2><span class="tag">${f.id}</span><span class="desc">${f.desc} · ${f.items.length} 版式</span></div>
+      <div class="grid">${f.items.map(layoutCard).join('')}</div>
+    </div>`).join('');
+}
+TAB_RENDERERS.lyt=renderLayoutTab;
 $('#c-lyt').textContent=SMARTART_LAYOUT_COUNT;
 $('#lyt-nav').innerHTML=SMARTART_TYPES.map(f=>`<button type="button" data-section-jump="lyt-fam-${f.id}"><span>${f.cn}</span><span class="subnav-count">${f.items.length}</span></button>`).join('');
 
-/* 组件:与版式共用同一组 SmartArt 语义入口 */
-$('#cmp-groups').innerHTML=SMARTART_COMPONENTS.map((g,index)=>`
-  <div class="fam-section" id="cmp-fam-${index}" data-catalog-section>
-    <div class="fam-head"><h2>${g.fam}</h2><span class="desc">${g.items.length} 个</span></div>
-    <div class="comp-grid">${g.items.map(c=>compCard(c)).join('')}</div>
-  </div>`).join('');
+/* 组件:与版式共用同一组 SmartArt 语义入口(卡片 DOM 首次进页签才渲染) */
+function renderComponentTab(){
+  $('#cmp-groups').innerHTML=SMARTART_COMPONENTS.map((g,index)=>`
+    <div class="fam-section" id="cmp-fam-${index}" data-catalog-section>
+      <div class="fam-head"><h2>${g.fam}</h2><span class="desc">${g.items.length} 个</span></div>
+      <div class="comp-grid">${g.items.map(c=>compCard(c)).join('')}</div>
+    </div>`).join('');
+}
+TAB_RENDERERS.cmp=renderComponentTab;
 $('#c-cmp').textContent=SMARTART_COMPONENT_COUNT;
 $('#cmp-nav').innerHTML=SMARTART_COMPONENTS.map((g,index)=>`<button type="button" data-section-jump="cmp-fam-${index}"><span>${g.fam}</span><span class="subnav-count">${g.items.length}</span></button>`).join('');
 
@@ -625,6 +639,13 @@ if(ICON_CATALOG){
 }
 const ICON_CATEGORY_PAGE_SIZE=24;
 let iconCategory='all',iconQuery='',iconSearchRaf=0,iconCategoryLimits={};
+let iconTabRendered=false;
+function renderIconTab(){
+  if(iconTabRendered)return;
+  iconTabRendered=true;
+  renderIconCatalog({reset:true});
+}
+TAB_RENDERERS.ico=renderIconTab;
 function iconSpecCard(entry){
   const file=entry.sourceName||entry.name;
   const url=ICON_CATALOG.paths.redrawSvg+file+'.svg';
@@ -682,9 +703,10 @@ if(ICON_CATALOG){
     cancelAnimationFrame(iconSearchRaf);
     iconSearchRaf=requestAnimationFrame(()=>renderIconCatalog({reset:true}));
   });
-  setIconView('all');
+  /* 图标卡片 DOM 首次进页签才渲染(TAB_RENDERERS.ico);侧栏计数与分类导航启动即建。 */
 }else{
   $('#c-ico').textContent='!';
+  iconTabRendered=true;
   renderIconCatalog();
 }
 
@@ -1704,52 +1726,41 @@ $('#struct-nav').innerHTML=STRUCTS.map(d=>{
   const current=d.key===INITIAL_STRUCTURE_KEY;
   return `<button type="button" data-struct-jump="${d.key}" class="${current?'on':''}" aria-current="${current?'true':'false'}"><span>${d.cn}</span><span class="subnav-count">${count}</span></button>`;
 }).join('');
-$('#str-list').innerHTML=STRUCTS.map(d=>{
-  const count=(byStruct[d.key]||[]).length;
-  const open=d.key===INITIAL_STRUCTURE_KEY;
-  const panelId='struct-panel-'+d.key;
-  const toggleId='struct-toggle-'+d.key;
-  const gridNote=d.key==='grid'
-    ?'<div class="struct-callout"><b>网格 ≠ 表格。</b>页面网格只有逐格独立绑定才成立:Q4 是 2×2、R3 是 2×3、R7 是 4×7;A7/F4 的分格和 K4/E4/K1 的行列表格都属于槽内组件画法。</div>'
-    :'';
-  return `<section class="struct-section${open?' is-open':''}" data-struct="${d.key}">
-    <h2 class="struct-toggle-head"><button class="struct-toggle" id="${toggleId}" type="button" aria-expanded="${open}" aria-controls="${panelId}">
-      <span class="struct-toggle-title">${d.cn}<span class="tag">${d.en}</span></span>
-      <span class="struct-toggle-meta">${d.empties.length} 张空槽 · ${count} 个版式</span><span class="struct-toggle-mark" aria-hidden="true">▾</span>
-    </button></h2>
-    <div class="struct-panel" id="${panelId}" role="region" aria-labelledby="${toggleId}"${open?'':' hidden'}>
-      <div class="struct-info">
-        <div class="s-row"><b>判断</b><span>${d.judge}</span></div>
-        <div class="s-row"><b>切法</b><span>${d.cut}</span></div>
-        ${d.note?`<div class="s-row"><b>备注</b><span>${d.note}</span></div>`:''}
+/* 结构页签 DOM 首次进页签才渲染;折叠头 handler 随 #str-list 一起挂,不提前绑空集。 */
+function renderStructureTab(){
+  $('#str-list').innerHTML=STRUCTS.map(d=>{
+    const count=(byStruct[d.key]||[]).length;
+    const open=d.key===INITIAL_STRUCTURE_KEY;
+    const panelId='struct-panel-'+d.key;
+    const toggleId='struct-toggle-'+d.key;
+    const gridNote=d.key==='grid'
+      ?'<div class="struct-callout"><b>网格 ≠ 表格。</b>页面网格只有逐格独立绑定才成立:Q4 是 2×2、R3 是 2×3、R7 是 4×7;A7/F4 的分格和 K4/E4/K1 的行列表格都属于槽内组件画法。</div>'
+      :'';
+    return `<section class="struct-section${open?' is-open':''}" data-struct="${d.key}">
+      <h2 class="struct-toggle-head"><button class="struct-toggle" id="${toggleId}" type="button" aria-expanded="${open}" aria-controls="${panelId}">
+        <span class="struct-toggle-title">${d.cn}<span class="tag">${d.en}</span></span>
+        <span class="struct-toggle-meta">${d.empties.length} 张空槽 · ${count} 个版式</span><span class="struct-toggle-mark" aria-hidden="true">▾</span>
+      </button></h2>
+      <div class="struct-panel" id="${panelId}" role="region" aria-labelledby="${toggleId}"${open?'':' hidden'}>
+        <div class="struct-info">
+          <div class="s-row"><b>判断</b><span>${d.judge}</span></div>
+          <div class="s-row"><b>切法</b><span>${d.cut}</span></div>
+          ${d.note?`<div class="s-row"><b>备注</b><span>${d.note}</span></div>`:''}
+        </div>
+        ${gridNote}${d.empties.map(e=>structureVariant(d,e)).join('')}
       </div>
-      ${gridNote}${d.empties.map(e=>structureVariant(d,e)).join('')}
-    </div>
-  </section>`;
-}).join('');
-$('#c-str').textContent=STRUCTS.length;
-
-/* 当前页签首行立即加载；其余图片交给浏览器原生懒加载。隐藏结构章节在展开前不设置 src。 */
-let fitAllRaf=0;
-function activateThumbs(id){
-  if(THUMBGEN)return;
-  const main=document.getElementById('m-'+id);
-  if(!main)return;
-  requestAnimationFrame(()=>{
-    const imgs=[...main.querySelectorAll('img.catalog-thumb[data-thumb-src]')].filter(img=>img.getClientRects().length);
-    if(!imgs.length)return;
-    const firstTop=Math.min(...imgs.map(img=>img.getBoundingClientRect().top));
-    imgs.forEach(img=>{
-      if(img.dataset.thumbActivated==='1')return;
-      const eager=Math.abs(img.getBoundingClientRect().top-firstTop)<8;
-      img.loading=eager?'eager':'lazy';
-      img.fetchPriority=eager?'high':'auto';
-      img.addEventListener('error',()=>img.classList.add('is-missing'),{once:true});
-      img.src=img.dataset.thumbSrc;
-      img.dataset.thumbActivated='1';
-    });
+    </section>`;
+  }).join('');
+  document.querySelectorAll('.struct-toggle').forEach(button=>button.onclick=()=>{
+    const section=button.closest('.struct-section');
+    const isOpen=section.classList.contains('is-open');
+    setStructureOpen(isOpen?null:section.dataset.struct,{scroll:true});
   });
 }
+TAB_RENDERERS.str=renderStructureTab;
+$('#c-str').textContent=STRUCTS.length;
+
+let fitAllRaf=0;
 
 /* 结构章节是一组手风琴:同时至多展开一类,二次点击已展开的标题收起全部;隐藏章节不激活缩略图。 */
 function currentStructureKey(){
@@ -1785,17 +1796,12 @@ function setStructureOpen(key,{scroll=false,syncUrl=true}={}){
       history.replaceState(null,'',location.pathname+'?'+q.toString());
     }catch(e){}
   }
-  activateThumbs('str');scheduleFitAll();
+  scheduleFitAll();
   requestAnimationFrame(()=>{
     syncStructureOffsets();
     if(scroll&&target)target.scrollIntoView({block:'start'});
   });
 }
-document.querySelectorAll('.struct-toggle').forEach(button=>button.onclick=()=>{
-  const section=button.closest('.struct-section');
-  const isOpen=section.classList.contains('is-open');
-  setStructureOpen(isOpen?null:section.dataset.struct,{scroll:true});
-});
 const structureJumpButtons=[...document.querySelectorAll('[data-struct-jump]')];
 structureJumpButtons.forEach((button,index)=>{
   button.onclick=()=>setStructureOpen(button.dataset.structJump,{scroll:true});
@@ -1853,6 +1859,8 @@ document.querySelectorAll('[data-section-jump]').forEach(button=>{
 
 /* tab 切换:同步地址栏,刷新停在当前 tab,链接可直接分享(scroll 深链参数用后即弃) */
 function switchTab(id,{resetScroll=false}={}){
+  /* 重 DOM 在目标页签还隐藏时物化,建完再显示 */
+  ensureTabRendered(id);
   document.querySelectorAll('.tab').forEach(x=>{x.classList.remove('on');x.removeAttribute('aria-current');});
   document.querySelectorAll('main').forEach(x=>x.classList.remove('on'));
   /* 手风琴:只展开目标页签的二级目录,其余收起 */
@@ -1876,7 +1884,7 @@ function switchTab(id,{resetScroll=false}={}){
       history.replaceState(null,'',location.pathname+'?'+q.toString());
     }catch(e){}
   }
-  requestAnimationFrame(()=>{syncStructureOffsets();activateThumbs(id);scheduleFitAll();scheduleSectionNav();});
+  requestAnimationFrame(()=>{syncStructureOffsets();scheduleFitAll();scheduleSectionNav();});
 }
 /* 一级分类手风琴:非当前页签 = 切换并展开;当前页签 = 二次点击收起/再展开本级二级目录 */
 document.querySelectorAll('.tab').forEach(t=>t.onclick=()=>{
@@ -1897,6 +1905,8 @@ try{
   if(q==='strex')switchTab('str');
   else if(q&&document.getElementById('m-'+q))switchTab(q);
 }catch(e){}
+/* thumbgen 生成器经 inventory() 读全量卡片清单,构建模式跳过分页签惰性渲染 */
+if(THUMBGEN)['lyt','str','cmp','ico'].forEach(ensureTabRendered);
 function fitAll(){
   refitComponents();
 }
@@ -1908,7 +1918,6 @@ window.addEventListener('scroll',scheduleSectionNav,{passive:true});
 window.addEventListener('resize',()=>{syncStructureOffsets();scheduleFitAll();scheduleSectionNav();},{passive:true});
 window.addEventListener('load',()=>{syncStructureOffsets();scheduleFitAll();});
 syncStructureOffsets();
-activateThumbs(document.querySelector('.tab.on')?.dataset.t||'tpl');
 scheduleSectionNav();
 setTimeout(scheduleFitAll,300);
 </script>
