@@ -223,7 +223,7 @@ description: 表驱动的网页 PPT 编排 skill。输入 PDF/链接/口语稿/�
 | 矩阵 matrix | matrix(980×430 · 2-6)、comparison-table(1090×380 · 2-6)、swot(720×580 · 4)、quadrant-axis(700×600 · 4)、evidence-wall(910×460 · 2-12) |
 | 映射 mapping | mapping-arc-network(1100×619 · 4-12)、diamond-edge-labels(1100×619 · 固定4)、weighted-arcs(semantic · 3-8)、constellation-network(semantic · 3-12)、why-how-bands |
 | 交叠 overlap | venn 双圆/三圆 atlas.052/.053(780×540 / 670×630 · 2/3 集合) |
-| 网络 network | weighted-arc-web(1781×1002 · 4-8)、constellation-network、weighted-arcs、interlocking-gears(1050×560 · 2-4) |
+| 网络 network | weighted-arc-web(1781×1002 · 4-8)、constellation-network、weighted-arcs、interlocking-gears(790×560 · 2-4) |
 | 证据 evidence | evidence-wall(2-12)、doc-excerpt(720×580 · 1-3)、official-doc(700×600 · 1-2)、chat-dialog(780×540 · 2-8)、mobile-gallery(2-4)、admin-console(界面 · 1-2) |
 | 焦点 focus | quote(1010×420 · 1)、annotation-callout(840×600 · 1-4)、terminal-box/code、form-card(610×690 · 2-6)、contact-card(580×720 · 2-6) |
 | 示意 illustration | generated-image、admin-console(界面 mock)、mobile-gallery |

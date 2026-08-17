@@ -4820,7 +4820,7 @@ FAIL-SAFE · AUDITED PER CALL
     num: 107,
     variant: null,
     paperInkNative: true,
-    frame: { width: 1050, height: 560, fit: 'fixed' },
+    frame: { width: 790, height: 560, fit: 'fixed' },
     dataContract: { mode: 'collection', unit: 'module', pointer: '/structured_data/modules', minItems: 2, maxItems: 4 },
     /* classic relationship component → native.paper-ink.107.interlocking-gears */
     snippet: `<div class="pi-card" data-bind-root="collection" style="width:1050px!important;min-height:560px!important"><svg class="pi-art" viewBox="0 0 1050 560" xmlns="http://www.w3.org/2000/svg" aria-label="互锁齿轮关系图">
