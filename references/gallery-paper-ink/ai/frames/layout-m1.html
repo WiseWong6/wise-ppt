@@ -49,19 +49,19 @@
 </style>
 </head>
 <body class="slide">
-<div class="stage" data-block-id="gallery-primary" data-renderer-kind="svg" data-component-source="native" data-component-id="native.paper-ink.emotion.particle-hero.metaphor" data-content-ref="example.m1">
-  <div class="doc tl">AI ENGINEERING — M1<br>LLM BLACK BOX</div>
-  <div class="folio">M1 / 63 — BY @歪斯WISE</div>
+<div class="stage" data-template-id="M1" data-block-id="gallery-primary" data-renderer-kind="svg" data-component-source="native" data-component-id="native.paper-ink.emotion.particle-hero.metaphor" data-content-ref="example.m1">
+  <div class="doc tl" data-template-part="support" data-template-slot="support" data-template-slot-kind="text">AI ENGINEERING — M1<br>LLM BLACK BOX</div>
+  <div class="folio" data-template-part="folio">M1 / 63 — BY @歪斯WISE</div>
 
-  <canvas class="scene" id="cv" width="1920" height="1080"></canvas>
+  <canvas class="scene" id="cv" data-template-part="canvas" data-template-slot="canvas" data-template-slot-kind="illustration" width="1920" height="1080"></canvas>
 
-  <div class="compare">
+  <div class="compare" data-template-part="compare" data-template-slot="compare" data-template-slot-kind="text">
     <span>规则引擎</span><i class="arr">→</i><span>可解释</span>
     <span class="sep"></span>
     <span>大模型</span><i class="arr">→</i><span class="q">？</span>
   </div>
 
-  <svg class="overlay" width="1920" height="1080" viewBox="0 0 1920 1080">
+  <svg class="overlay" data-template-part="overlay" width="1920" height="1080" viewBox="0 0 1920 1080">
     <defs>
       <pattern id="hatch" width="5.6" height="5.6" patternUnits="userSpaceOnUse" patternTransform="rotate(45)">
         <line x1="0" y1="0" x2="0" y2="5.6" stroke="#191917" stroke-width="0.7" opacity="0.35"/>
@@ -70,7 +70,7 @@
     <g id="draw"></g>
   </svg>
 
-  <div class="boxtext">
+  <div class="boxtext" data-template-part="primary" data-template-slot="primary" data-template-slot-kind="text">
     <div class="t1">LLM</div>
     <div class="divi"></div>
     <div class="t2">GIANT BLACKBOX</div>

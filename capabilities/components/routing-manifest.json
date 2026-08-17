@@ -1,11 +1,11 @@
 {
   "contract_version": 3,
   "capability_id": "component-routing",
-  "component_count": 125,
+  "component_count": 126,
   "source_counts": {
     "ppt-component-atlas": 55,
     "echarts": 13,
-    "native": 56,
+    "native": 57,
     "codex-host": 1
   },
   "retired_components": [
@@ -16329,6 +16329,150 @@
       "binding_contract": {
         "mode": "collection",
         "unit": "module"
+      }
+    },
+    {
+      "component_id": "native.paper-ink.108.three-principles-radial",
+      "name": "三原则放射图",
+      "canonical_name": "three-principles-radial",
+      "variant": null,
+      "group": "hierarchy-structure",
+      "group_label": "层级与结构",
+      "description": "A central design intent decomposed into exactly three named principles with supporting explanations.",
+      "aliases": [
+        "three-principles-radial",
+        "三原则放射图",
+        "三原则",
+        "P03",
+        "108"
+      ],
+      "renderer_kinds": [
+        "svg"
+      ],
+      "component_sources": [
+        "native"
+      ],
+      "roles": [
+        "explain",
+        "prove"
+      ],
+      "relations": [
+        "decomposition"
+      ],
+      "relation_keys": [
+        "decomposition"
+      ],
+      "primitives": [
+        "radial-axis"
+      ],
+      "tasks": [
+        "decomposition",
+        "content"
+      ],
+      "selection_notes": "用于一个中心设计意图向左、右、下展开三项具名原则；普通技术节点输入/输出/参数仍使用 native.paper-ink.096.three-way-radial。",
+      "requires": [],
+      "space_requirements": {
+        "min_width": 940,
+        "min_height": 530,
+        "min_aspect_ratio": 0.81,
+        "max_aspect_ratio": 3.91
+      },
+      "capacity": {
+        "min_items": 3,
+        "max_items": 3,
+        "unit": "branch"
+      },
+      "frame": {
+        "width": 1443,
+        "height": 812,
+        "fit": "fixed"
+      },
+      "semantic_contract": {
+        "input_family": "hierarchy",
+        "role": "primary-proof",
+        "visual_action": "show-hierarchy",
+        "capacity": {
+          "mode": "fixed",
+          "unit": "branch",
+          "min": 3,
+          "max": 3
+        },
+        "derivation": "explicit-data-bound-v1"
+      },
+      "binding_archetype": "radial-principles",
+      "data_contract": {
+        "mode": "typed-structured-content",
+        "contract_id": "native.paper-ink.108.three-principles-radial@1",
+        "reference_mode": "one-item-plus-owned-atoms",
+        "content_ref_cardinality": {
+          "min": 1,
+          "max": 1
+        },
+        "schema": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "branches"
+          ],
+          "properties": {
+            "title": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 240
+            },
+            "branches": {
+              "type": "array",
+              "minItems": 3,
+              "maxItems": 3,
+              "items": {
+                "type": "object",
+                "additionalProperties": false,
+                "required": [
+                  "id",
+                  "label"
+                ],
+                "properties": {
+                  "id": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 160,
+                    "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]{0,159}$"
+                  },
+                  "label": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 240
+                  },
+                  "description": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 4000
+                  },
+                  "code": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 240
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "production_readiness": {
+        "status": "ready"
+      },
+      "dependencies": [
+        "paper-ink-components"
+      ],
+      "source": {
+        "kind": "paper-ink-snippet",
+        "module": "capabilities/layouts/paper-ink-components.js",
+        "entry_num": 108
+      },
+      "binding_contract": {
+        "mode": "collection",
+        "unit": "branch"
       }
     },
     {

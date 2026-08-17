@@ -4,7 +4,7 @@
   "name": "Wise PPT Layout Gallery",
   "description": "跨主题可查询的布局配方目录；paper-ink 样张提供当前已验证实现。",
   "protected_references": "capabilities/layouts/protected-references.json",
-  "recipe_count": 75,
+  "recipe_count": 76,
   "recipes": [
     {
       "recipe_id": "paper-ink.evidence.specimen-card",
@@ -6159,7 +6159,7 @@
           "default_renderer": {
             "renderer_kind": "svg",
             "component_source": "native",
-            "component_id": "native.paper-ink.radial.three-way.dimensions"
+            "component_id": "native.paper-ink.096.three-way-radial"
           },
           "space_contract": {
             "canvas_width": 1920,
@@ -6169,7 +6169,9 @@
             "aspect_ratio": 1.662,
             "space_type": "balanced"
           },
-          "recommended_component_ids": []
+          "recommended_component_ids": [
+            "native.paper-ink.096.three-way-radial"
+          ]
         },
         {
           "slot_id": "support",
@@ -6222,6 +6224,178 @@
         "ai": "gallery/paper-ink/ai/frames/layout-g1.html"
       },
       "selection_notes": "一个节点的输入/输出/参数三向展开（爆炸图）。当页面角色属于explain、关系形状为decomposition/spatial时可作为候选。",
+      "anti_patterns": [
+        "不要在没有中心对象时使用放射",
+        "不要让引线交叉或失去锚点"
+      ],
+      "shape": [
+        "放射",
+        "居中聚焦"
+      ],
+      "expression_profile": {
+        "contract_version": 1,
+        "page_modes": [
+          "content"
+        ],
+        "question_affinities": [
+          "what",
+          "why"
+        ],
+        "topology": {
+          "weights": [
+            "single"
+          ],
+          "depths": [
+            "flat"
+          ],
+          "flows": [
+            "radial"
+          ]
+        },
+        "conclusion_modes": [
+          "bottom-statement"
+        ],
+        "primary_units": {
+          "min": 3,
+          "max": 3
+        },
+        "primary_forms": [
+          "diagram"
+        ],
+        "enhancements": [
+          "annotation"
+        ],
+        "logic_contract": {
+          "primary": "decomposition",
+          "secondary": []
+        }
+      }
+    },
+    {
+      "recipe_id": "paper-ink.radial.three-principles",
+      "display_code": "G5",
+      "name": "三原则放射",
+      "family": "放射",
+      "description": "一个中心主张向左、右、下分解为三个并列原则",
+      "roles": [
+        "explain"
+      ],
+      "relations": [
+        "decomposition"
+      ],
+      "primitives": [
+        "radial-spokes",
+        "center-node"
+      ],
+      "reading_order": [
+        "dimensions",
+        "support",
+        "takeaway"
+      ],
+      "structure_contract": {
+        "region_count": 3,
+        "required_slot_ids": [
+          "dimensions"
+        ],
+        "core_primitives": [
+          "radial-burst"
+        ]
+      },
+      "structure_fingerprint": "sha256:e002bf3596708853a130797c1b7e5c4ce45143848d54c0d059a815ef47ed19bd",
+      "slots": [
+        {
+          "slot_id": "dimensions",
+          "purpose": "三向维度",
+          "required": true,
+          "visual_role": "primary",
+          "min_items": 1,
+          "max_items": 5,
+          "count_unit": "binding",
+          "allowed_renderer_kinds": [
+            "native-html",
+            "svg"
+          ],
+          "allowed_component_sources": [
+            "native",
+            "ppt-component-atlas"
+          ],
+          "default_renderer": {
+            "renderer_kind": "svg",
+            "component_source": "native",
+            "component_id": "native.paper-ink.108.three-principles-radial"
+          },
+          "space_contract": {
+            "canvas_width": 1920,
+            "canvas_height": 1080,
+            "width": 1180,
+            "height": 710,
+            "aspect_ratio": 1.662,
+            "space_type": "balanced"
+          },
+          "recommended_component_ids": [
+            "native.paper-ink.108.three-principles-radial"
+          ]
+        },
+        {
+          "slot_id": "support",
+          "purpose": "辅助证据、标签或解释",
+          "required": false,
+          "visual_role": "support",
+          "min_items": 0,
+          "max_items": 1,
+          "count_unit": "binding",
+          "allowed_renderer_kinds": [
+            "typography",
+            "table",
+            "image",
+            "native-html",
+            "svg"
+          ],
+          "allowed_component_sources": [
+            "codex-host",
+            "native"
+          ],
+          "default_renderer": {
+            "renderer_kind": "typography",
+            "component_source": "native",
+            "component_id": "native.paper-ink.radial.three-principles.support"
+          }
+        },
+        {
+          "slot_id": "takeaway",
+          "purpose": "页面一句话结论",
+          "required": false,
+          "visual_role": "support",
+          "min_items": 0,
+          "max_items": 1,
+          "count_unit": "binding",
+          "allowed_renderer_kinds": [
+            "typography"
+          ],
+          "allowed_component_sources": [
+            "native"
+          ],
+          "default_renderer": {
+            "renderer_kind": "typography",
+            "component_source": "native",
+            "component_id": "native.paper-ink.radial.three-principles.takeaway"
+          }
+        }
+      ],
+      "examples": {
+        "general": "gallery/paper-ink/general/frames/layout-g5.html",
+        "ai": "gallery/paper-ink/ai/frames/layout-g5.html"
+      },
+      "formal_examples": [
+        {
+          "deck_id": "wise-ppt-story-six-page",
+          "page": "P03",
+          "page_id": "page.story.principles",
+          "source": "themes/paper-ink/examples/wise-ppt-story-six-page/index.html",
+          "component_id": "native.paper-ink.108.three-principles-radial"
+        }
+      ],
+      "selection_notes": "一个中心主张向左、右、下分解为三个并列原则。当页面角色属于 explain、关系形状为 decomposition 时可作为候选。",
       "anti_patterns": [
         "不要在没有中心对象时使用放射",
         "不要让引线交叉或失去锚点"
@@ -11540,7 +11714,7 @@
   ],
   "page_expression_contract": {
     "contract_version": 1,
-    "profile_count": 75,
+    "profile_count": 76,
     "vocabulary": {
       "question_intents": [
         "why",

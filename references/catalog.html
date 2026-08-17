@@ -260,17 +260,17 @@
 </main>
 
 <main id="m-lyt">
-  <div class="note"><b>这页是浏览入口,不是正式分类。</b><br>借 SmartArt「先问要表达什么」的九个语义入口逛 67 张关系页版式,每类入口的定义见各组标题;字母编号只是源画册历史分组,不代表六大族/六种结构(G3 为退役空位,不重编),判定看每张卡的 23 细种关系标签(词表见 SKILL.md 表A),不以这里的入口为准。</div>
+  <div class="note"><b>这页是浏览入口,不是正式分类。</b><br>借 SmartArt「先问要表达什么」的九个语义入口逛 68 张关系页版式,每类入口的定义见各组标题;字母编号只是源画册历史分组,不代表六大族/六种结构(G3 为退役空位,不重编),判定看每张卡的 23 细种关系标签(词表见 SKILL.md 表A),不以这里的入口为准。</div>
   <div id="lyt-fams"></div>
 </main>
 
 <main id="m-str">
-  <div class="note"><b>结构 = 版心怎么切(矩形分块);组件 = 区域内画什么形状。</b><br>页眉、页码、题注等固定件不算切分;放射、环形、漏斗、表格这些形状是组件画法,不影响结构归属。关系先圈定候选结构(2~4 种),再按对象数量、有无辅助内容、方向偏好在范围内选定。每类结构 = 空槽蓝图 + 对应真实版式成对展示;67 个版式全部归入这 6 种切分,不漏归、不重归、不跨结构。</div>
+  <div class="note"><b>结构 = 版心怎么切(矩形分块);组件 = 区域内画什么形状。</b><br>页眉、页码、题注等固定件不算切分;放射、环形、漏斗、表格这些形状是组件画法,不影响结构归属。关系先圈定候选结构(2~4 种),再按对象数量、有无辅助内容、方向偏好在范围内选定。每类结构 = 空槽蓝图 + 对应真实版式成对展示;68 个版式全部归入这 6 种切分,不漏归、不重归、不跨结构。</div>
   <div id="str-list"></div>
 </main>
 
 <main id="m-cmp">
-  <div class="note"><b>组件 = 参数化画法:内容数量是参数,画法不同才是不同组件。</b><br>atlas / native / ECharts 按与版式相同的 SmartArt 语义入口分组;每个组件只放最主要的表达类型,不在多个入口重复出现。ECharts 类保留 <a href="https://github.com/apache/echarts/tree/6.1.0" target="_blank" rel="noreferrer">Apache ECharts 6.1.0</a> 官方来源与 Apache-2.0 许可署名。卡片统一用 catalog #001–#079 连续编号,源组件编号只做内部路由。<code>semantic.</code>/<code>media.</code> 前缀的流式机器组件不进浏览池,按 component_id 查 <code>capabilities/components/routing-manifest.json</code>。</div>
+  <div class="note"><b>组件 = 参数化画法:内容数量是参数,画法不同才是不同组件。</b><br>atlas / native / ECharts 按与版式相同的 SmartArt 语义入口分组;每个组件只放最主要的表达类型,不在多个入口重复出现。ECharts 类保留 <a href="https://github.com/apache/echarts/tree/6.1.0" target="_blank" rel="noreferrer">Apache ECharts 6.1.0</a> 官方来源与 Apache-2.0 许可署名。卡片统一用 catalog #001–#080 连续编号,源组件编号只做内部路由。<code>semantic.</code>/<code>media.</code> 前缀的流式机器组件不进浏览池,按 component_id 查 <code>capabilities/components/routing-manifest.json</code>。</div>
   <div id="cmp-groups"></div>
 </main>
 
@@ -336,7 +336,7 @@ const SMARTART_TYPES=[
     ['R2','三层策略落地页','上下3等分','层级'],['R6','四层可信交付栈','上下4等分','层级'],
   ]},
   {id:'relationship',cn:'⑤ 关系',desc:'非线性的连接、对照、映射、中心辐射或包含',items:[
-    ['G1','三向放射','单区','拆解'],['G4','中心枢纽 + 卫星','单区','拆解 / 网络'],
+    ['G1','三向放射','单区','拆解'],['G5','三原则放射','单区','拆解'],['G4','中心枢纽 + 卫星','单区','拆解 / 网络'],
     ['H1','同心防线','单区','嵌套'],['H2','嵌套变焦框','单区','嵌套'],
     ['E1','对比双面板','单区','对比'],['E2','分水岭双栏','单区','对比'],
     ['E5','双金字塔映射','左右2等分','映射'],['L1','权重弧线图','单区','网络'],['L2','星座映射网','单区','映射'],
@@ -362,6 +362,15 @@ const SMARTART_TYPES=[
     ['C6','KPI 大数字横带','单区','指标'],['C7','排行柱图','单区','排名'],
   ]},
 ];
+
+/* 正式成品样例只登记追溯关系，不复制版式或组件身份。 */
+const CATALOG_FORMAL_EXAMPLES=Object.freeze({
+  G5:Object.freeze({
+    page:'P03',
+    deck:'wise-ppt-story-six-page',
+    componentId:'native.paper-ink.108.three-principles-radial',
+  }),
+});
 
 /* 组件统一池:atlas + native + echarts + 版式抄录组件,按 SmartArt 语义入口 + Wise PPT 数据扩展分组
    t: 'atlas' | 'native' | 'ec';atlas/native 用 num,ec 用 id。
@@ -425,6 +434,7 @@ const SMARTART_COMPONENTS=[
     {t:'native',num:95,en:'weighted-arc-web',nm:'权重弧网',note:'源 L1 · 原版抄录'},
     {t:'native',num:106,en:'balance-scale',nm:'权衡天平',note:'经典双侧取舍'},
     {t:'native',num:107,en:'interlocking-gears',nm:'互锁齿轮',note:'2~4 个相互驱动模块'},
+    {t:'native',num:108,en:'three-principles-radial',nm:'三原则放射图',note:'源 G5 · 六页正式样例',sample:'P03',catalogNo:80},
   ]},
   {fam:'⑥ 矩阵 · Matrix',items:[
     {t:'atlas',num:20,en:'swot',nm:'SWOT 分析',pageScale:.8},
@@ -481,7 +491,7 @@ function assertCatalogClassification(groups,keyOf,expected,label){
   }
   return count;
 }
-const SMARTART_LAYOUT_COUNT=assertCatalogClassification(SMARTART_TYPES,item=>item[0],67,'版式');
+const SMARTART_LAYOUT_COUNT=assertCatalogClassification(SMARTART_TYPES,item=>item[0],68,'版式');
 const CATALOG_COMPONENTS=SMARTART_COMPONENTS.flatMap(group=>group.items);
 /* 新拆出的组件使用末尾新编号，但仍留在原语义分组相邻展示，避免改写既有 #001–#072。 */
 const PINNED_COMPONENT_NUMBERS=new Set(CATALOG_COMPONENTS.map(item=>item.catalogNo).filter(Number.isInteger));
@@ -494,7 +504,7 @@ CATALOG_COMPONENTS.forEach(item=>{
 const SMARTART_COMPONENT_COUNT=assertCatalogClassification(
   SMARTART_COMPONENTS,
   item=>item.t==='ec'?'ec:'+item.id:item.t+':'+item.num,
-  79,
+  80,
   '组件',
 );
 function componentCatalogCode(item){
@@ -530,15 +540,24 @@ function thumbMarkup(thumb,alt,wrapClass='frame-wrap'){
   return `<div class="${wrapClass}"><img class="catalog-thumb" src="${thumb}" loading="lazy" width="640" height="360" decoding="async" alt="${String(alt||'').replace(/"/g,'&quot;')}"></div>`;
 }
 
+function formalExampleMeta(id){
+  const example=CATALOG_FORMAL_EXAMPLES[id];
+  return example?` · 正式样例:<b>${example.page}</b> · 组件:<b>${example.componentId}</b>`:'';
+}
+function formalExampleTag(id){
+  const example=CATALOG_FORMAL_EXAMPLES[id];
+  return example?` · 正式样例:${example.page} · 组件:${example.componentId}`:'';
+}
 function layoutCard([id,nm,struct,rel]){
   const full=FRAMES+'layout-'+id.toLowerCase()+'.html';
   const thumb=pageThumb(full);
   /* 非关系页第三段是职能描述,没有结构/关系字段 */
   const nonRel=rel===undefined;
-  const meta=nonRel?`职能:<b>${struct}</b>`:`结构:<b>${struct}</b> · 关系:<b>${rel}</b>`;
-  const mtag=nonRel?('职能:'+struct):('结构:'+struct+' · 关系:'+rel);
-  return `<div class="card" id="${nonRel?'tpl':'lyt'}-${id.toLowerCase()}" data-modal="1" data-frame="${full}" data-thumb="${thumb}" data-mtitle="${id} ${nm}" data-mtag="${mtag}">
-    ${thumbMarkup(thumb,id+' '+nm)}
+  const example=CATALOG_FORMAL_EXAMPLES[id];
+  const meta=nonRel?`职能:<b>${struct}</b>`:`结构:<b>${struct}</b> · 关系:<b>${rel}</b>${formalExampleMeta(id)}`;
+  const mtag=(nonRel?('职能:'+struct):('结构:'+struct+' · 关系:'+rel))+formalExampleTag(id);
+  return `<div class="card" id="${nonRel?'tpl':'lyt'}-${id.toLowerCase()}" data-modal="1" data-frame="${full}" data-thumb="${thumb}"${example?` data-formal-example="${example.page}" data-component-id="${example.componentId}"`:''} data-mtitle="${id} ${nm}" data-mtag="${mtag}">
+    ${thumbMarkup(thumb,id+' '+nm+(example?' 正式样例 '+example.page:''))}
     <div class="card-info">
       <div class="card-head"><span class="id">${id}</span><span class="nm">${nm}</span></div>
       <div class="meta">${meta}</div>
@@ -551,8 +570,12 @@ function compCard(c){
   const code=componentCatalogCode(c);
   const no=String(c.catalogNo).padStart(3,'0');
   const sourceType=componentSourceType(c);
-  return `<div class="comp-card" id="cmp-${no}" data-modal="1" data-catalog-no="${no}" data-spec="${spec}" data-thumb="${thumb}"${c.vr?` data-vr='${JSON.stringify(c.vr)}'`:''} data-mtitle="#${no} · ${c.en} ${c.nm}" data-mtag="${sourceType}${c.note?' · '+c.note:''}${c.vr?' · 变体×'+c.vr.length:''}">
-    ${thumbMarkup(thumb,code+' '+c.en+' '+c.nm,'comp-wrap')}
+  const route=window.WISE_PPT_COMPONENT_ROUTING&&window.WISE_PPT_COMPONENT_ROUTING.specs[spec];
+  const productionId=route&&route.component_id||'';
+  /* 外层卡两行:次行只放关系,正式样例/资产 ID 只进弹窗 mtag,不撑破卡片 */
+  const sampleTag=c.sample?` · 正式样例:${c.sample} · 资产:${productionId}`:'';
+  return `<div class="comp-card" id="cmp-${no}" data-modal="1" data-catalog-no="${no}" data-spec="${spec}" data-thumb="${thumb}"${c.sample?` data-formal-example="${c.sample}" data-component-id="${productionId}"`:''}${c.vr?` data-vr='${JSON.stringify(c.vr)}'`:''} data-mtitle="#${no} · ${c.en} ${c.nm}" data-mtag="${sourceType}${c.note?' · '+c.note:''}${sampleTag}${c.vr?' · 变体×'+c.vr.length:''}">
+    ${thumbMarkup(thumb,code+' '+c.en+' '+c.nm+(c.sample?' 正式样例 '+c.sample:''),'comp-wrap')}
     <div class="comp-info">
       <div class="card-head"><span class="id">#${no}</span><span class="nm">${c.nm}</span></div>
       <div class="meta">关系:<b>${componentRelationLabels(c).join(' + ')}</b>${c.bo?' · <b>仅浏览</b>':''}</div>
@@ -1686,11 +1709,12 @@ function emptyCard(d,e){
 function structureExampleCard(it){
   const full=FRAMES+'layout-'+it[0].toLowerCase()+'.html';
   const thumb=pageThumb(full);
-  return `<div class="card" data-modal="1" data-frame="${full}" data-thumb="${thumb}" data-mtitle="${it[0]} ${it[1]}" data-mtag="结构:${it[2]} · 关系:${it[3]}">
-    ${thumbMarkup(thumb,it[0]+' '+it[1])}
+  const example=CATALOG_FORMAL_EXAMPLES[it[0]];
+  return `<div class="card" data-modal="1" data-frame="${full}" data-thumb="${thumb}"${example?` data-formal-example="${example.page}" data-component-id="${example.componentId}"`:''} data-mtitle="${it[0]} ${it[1]}" data-mtag="结构:${it[2]} · 关系:${it[3]}${formalExampleTag(it[0])}">
+    ${thumbMarkup(thumb,it[0]+' '+it[1]+(example?' 正式样例 '+example.page:''))}
     <div class="card-info">
       <div class="card-head"><span class="id">${it[0]}</span><span class="nm">${it[1]}</span></div>
-      <div class="meta">结构:<b>${it[2]}</b> · 关系:<b>${it[3]}</b></div>
+      <div class="meta">结构:<b>${it[2]}</b> · 关系:<b>${it[3]}</b>${formalExampleMeta(it[0])}</div>
     </div></div>`;
 }
 function examplesOf(d,e){

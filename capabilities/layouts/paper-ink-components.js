@@ -3576,6 +3576,49 @@ stop
 </svg></div>`
   },
 
+
+  {
+    name: "three-principles-radial",
+    group: "hierarchy-structure",
+    groupLabel: "层级与结构",
+    description: "A central design intent decomposed into exactly three named principles with supporting explanations.",
+    label: "三原则放射图",
+    num: 108,
+    variant: null,
+    paperInkNative: true,
+    frame: { width: 1443, height: 812, fit: 'fixed' },
+    dataContract: {"mode":"collection","unit":"branch","pointer":"/structured_data","minItems":3,"maxItems":3},
+    /* formal example P03 → native.paper-ink.108.three-principles-radial */
+    snippet: `<div class="pi-card" data-bind-root="record" data-formal-example="P03" style="width:auto;min-height:0;overflow:visible"><svg class="pi-art" viewBox="0 0 1920 1080" width="1443" height="812" role="img" aria-label="三项原则围绕一个中心意图展开">
+    <g transform="translate(0 -57)">
+      <line x1="478" y1="386" x2="760" y2="386" stroke="rgba(25,25,23,.45)" stroke-width="1" stroke-dasharray="3 5"/>
+      <line x1="1160" y1="386" x2="1442" y2="386" stroke="rgba(25,25,23,.45)" stroke-width="1" stroke-dasharray="3 5"/>
+      <line x1="960" y1="468" x2="960" y2="656" stroke="rgba(25,25,23,.45)" stroke-width="1" stroke-dasharray="3 5"/>
+      <circle cx="760" cy="386" r="3.2" fill="#191917"/><circle cx="1160" cy="386" r="3.2" fill="#191917"/><circle cx="960" cy="468" r="3.2" fill="#191917"/>
+      <rect x="760" y="304" width="400" height="164" fill="rgba(255,255,255,.22)" stroke="rgba(25,25,23,.8)" stroke-width="1.4"/>
+      <rect x="767" y="311" width="386" height="150" fill="none" stroke="#191917" stroke-width="0.6" opacity=".35"/>
+      <text x="960" y="354" font-family="var(--pi-mono)" font-size="var(--type-label)" letter-spacing="2.8" text-anchor="middle" fill="rgba(25,25,23,.7)">DESIGN INTENT</text>
+      <text x="960" y="406" font-family="var(--pi-sans)" font-size="var(--type-heading)" font-weight="300" text-anchor="middle" fill="#191917">一页一个重心</text>
+      <text x="960" y="440" font-family="var(--pi-sans)" font-size="var(--type-body-small)" font-weight="300" text-anchor="middle" fill="rgba(25,25,23,.7)">先决定观众应该先看见什么</text>
+      <text x="450" y="344" font-family="var(--pi-mono)" font-size="var(--type-meta)" letter-spacing="2" text-anchor="end" fill="rgba(25,25,23,.45)">01 · CONTENT BEFORE DECORATION</text>
+      <text x="450" y="386" font-family="var(--pi-sans)" font-size="var(--type-subheading)" font-weight="300" text-anchor="end" fill="#191917">内容先于装饰</text>
+      <text x="450" y="424" font-family="var(--pi-sans)" font-size="var(--type-body-small)" font-weight="300" text-anchor="end" fill="rgba(25,25,23,.7)">先回答这页要讲什么，</text>
+      <text x="450" y="452" font-family="var(--pi-sans)" font-size="var(--type-body-small)" font-weight="300" text-anchor="end" fill="rgba(25,25,23,.7)">再决定它需要什么形式。</text>
+      <text x="1470" y="344" font-family="var(--pi-mono)" font-size="var(--type-meta)" letter-spacing="2" fill="rgba(25,25,23,.45)">02 · COLOUR HAS A JOB</text>
+      <text x="1470" y="386" font-family="var(--pi-sans)" font-size="var(--type-subheading)" font-weight="300" fill="#191917">颜色必须有语义</text>
+      <text x="1470" y="424" font-family="var(--pi-sans)" font-size="var(--type-body-small)" font-weight="300" fill="rgba(25,25,23,.7)">大面积保持克制，</text>
+      <text x="1470" y="452" font-family="var(--pi-sans)" font-size="var(--type-body-small)" font-weight="300" fill="rgba(25,25,23,.7)">强调只服务关键信息。</text>
+      <text x="960" y="710" font-family="var(--pi-mono)" font-size="var(--type-meta)" letter-spacing="2" text-anchor="middle" fill="rgba(25,25,23,.45)">03 · DENSITY FOLLOWS HIERARCHY</text>
+      <text x="960" y="752" font-family="var(--pi-sans)" font-size="var(--type-subheading)" font-weight="300" text-anchor="middle" fill="#191917">密度服从层级</text>
+      <text x="960" y="790" font-family="var(--pi-sans)" font-size="var(--type-body-small)" font-weight="300" text-anchor="middle" fill="rgba(25,25,23,.7)">该留白的留白，该密集的有序；</text>
+      <text x="960" y="818" font-family="var(--pi-sans)" font-size="var(--type-body-small)" font-weight="300" text-anchor="middle" fill="rgba(25,25,23,.7)">让信息有进入和停留的位置。</text>
+      <circle cx="478" cy="386" r="18" fill="#DFE0D9" stroke="#191917" stroke-width="1.1"/><text x="478" y="391" font-family="var(--pi-mono)" font-size="var(--type-meta)" text-anchor="middle" fill="#191917">01</text>
+      <circle cx="1442" cy="386" r="18" fill="#DFE0D9" stroke="#191917" stroke-width="1.1"/><text x="1442" y="391" font-family="var(--pi-mono)" font-size="var(--type-meta)" text-anchor="middle" fill="#191917">02</text>
+      <circle cx="960" cy="656" r="18" fill="#DFE0D9" stroke="#191917" stroke-width="1.1"/><text x="960" y="661" font-family="var(--pi-mono)" font-size="var(--type-meta)" text-anchor="middle" fill="#191917">03</text>
+    </g>
+</svg></div>`
+  },
+
   {
     name: "nested-frames",
     group: "hierarchy-structure",

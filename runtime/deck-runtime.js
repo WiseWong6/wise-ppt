@@ -1044,6 +1044,74 @@
       contract.relations.filter(function (relation) { return relation.type === 'ownerOverlap'; }).forEach(function (relation) {
         owned[relation.anchors.slice().sort().join('|')] = true;
       });
+      if (slide.dataset.layoutSource === 'free_build' && slide.dataset.primaryRelation) {
+        var internalNodes = Array.prototype.slice.call(slide.querySelectorAll('[data-geometry-role]'));
+        var internalContents = internalNodes.filter(function (node) { return node.dataset.geometryRole === 'content'; });
+        if (internalContents.length < 2) throw new Error('第 ' + pageNo + ' 页自由构建关系页至少声明 2 个 data-geometry-role="content" 内部内容组');
+        var allowedInternalRoles = ['content', 'boundary', 'path'];
+        var internalIds = [];
+        internalNodes.forEach(function (node) {
+          var role = node.dataset.geometryRole, anchorId = node.dataset.anchorId;
+          if (!allowedInternalRoles.includes(role)) throw new Error('第 ' + pageNo + ' 页内部几何角色非法: ' + role);
+          if (!anchorId || !declaredAnchorIds.includes(anchorId)) throw new Error('第 ' + pageNo + ' 页内部几何节点必须以 data-anchor-id 进入 geometry: ' + (anchorId || '-'));
+          internalIds.push(anchorId);
+        });
+        var internalCoverage = {};
+        contract.relations.forEach(function (relation) {
+          if (!boundaryRelationTypes.includes(relation.type)) return;
+          var participants = relation.anchors.filter(function (anchorId) { return internalIds.includes(anchorId); });
+          if (participants.length < 2) return;
+          participants.forEach(function (anchorId) { internalCoverage[anchorId] = true; });
+        });
+        var uncoveredInternal = internalIds.filter(function (anchorId) { return !internalCoverage[anchorId]; });
+        if (uncoveredInternal.length) throw new Error('第 ' + pageNo + ' 页自由构建页内部节点未参与内部边界关系: ' + uncoveredInternal.join(','));
+      }
+      function assertSvgTextLineClearance() {
+        function visibleSvg(node) {
+          if (!node || node.closest('defs,[aria-hidden="true"]')) return false;
+          var cs = getComputedStyle(node), r = node.getBoundingClientRect();
+          return cs.display !== 'none' && cs.visibility !== 'hidden' && Number.parseFloat(cs.opacity || '1') > 0 && r.width + r.height > .1;
+        }
+        function point(node, x, y) {
+          var svg = node.ownerSVGElement, value = svg.createSVGPoint();
+          value.x = x; value.y = y;
+          return value.matrixTransform(node.getScreenCTM());
+        }
+        function segmentHitsRect(a, b, rect, pad) {
+          var vertical = Math.abs(a.x - b.x) <= Math.max(.5, scale);
+          var horizontal = Math.abs(a.y - b.y) <= Math.max(.5, scale);
+          if (vertical) return a.x > rect.left + pad && a.x < rect.right - pad && Math.max(a.y,b.y) > rect.top + pad && Math.min(a.y,b.y) < rect.bottom - pad;
+          if (horizontal) return a.y > rect.top + pad && a.y < rect.bottom - pad && Math.max(a.x,b.x) > rect.left + pad && Math.min(a.x,b.x) < rect.right - pad;
+          return false;
+        }
+        function hasSmallOwnedCarrier(text, a, b) {
+          var textRect = text.getBoundingClientRect(), centerX = (textRect.left + textRect.right) / 2, centerY = (textRect.top + textRect.bottom) / 2;
+          return Array.prototype.some.call(text.ownerSVGElement.querySelectorAll('rect,circle,ellipse'), function (shape) {
+            if (!visibleSvg(shape)) return false;
+            var r = shape.getBoundingClientRect();
+            if (r.width / scale > 180 || r.height / scale > 180) return false;
+            if (centerX < r.left || centerX > r.right || centerY < r.top || centerY > r.bottom) return false;
+            return segmentHitsRect(a, b, r, 0);
+          });
+        }
+        Array.prototype.forEach.call(slide.querySelectorAll('svg line'), function (line) {
+          if (!visibleSvg(line) || getComputedStyle(line).stroke === 'none') return;
+          var x1=Number(line.getAttribute('x1')), y1=Number(line.getAttribute('y1')), x2=Number(line.getAttribute('x2')), y2=Number(line.getAttribute('y2'));
+          if (![x1,y1,x2,y2].every(Number.isFinite)) return;
+          var a=point(line,x1,y1), b=point(line,x2,y2);
+          if (Math.hypot(a.x-b.x,a.y-b.y) / scale < 64) return;
+          Array.prototype.forEach.call(line.ownerSVGElement.querySelectorAll('text'), function (text) {
+            if (!visibleSvg(text)) return;
+            var lineId=line.dataset.anchorId, textId=text.dataset.anchorId;
+            if (lineId && textId && owned[[lineId,textId].sort().join('|')]) return;
+            var rect=text.getBoundingClientRect(), pad=Math.max(1,1.5*scale);
+            if (!segmentHitsRect(a,b,rect,pad) || hasSmallOwnedCarrier(text,a,b)) return;
+            var excerpt=(text.textContent || '').trim().replace(/\s+/g,' ').slice(0,24);
+            throw new Error('第 ' + pageNo + ' 页 SVG 文字与长分隔线发生未声明重叠: ' + (excerpt || '-'));
+          });
+        });
+      }
+      assertSvgTextLineClearance();
       var slots = Array.prototype.slice.call(slide.querySelectorAll('[data-slot-id][data-anchor-id]')).filter(function (node) {
         var rect = logicalRect(node);
         return rect.width > .01 && rect.height > .01 && getComputedStyle(node).visibility !== 'hidden';
@@ -1114,6 +1182,127 @@
       }
       assertSemanticColors(slide, pageNo);
     }
+    function assertDeckContractV2(all) {
+      if (root.dataset.deckContractVersion !== '2') throw new Error('正式成品缺少 data-deck-contract-version=2');
+      var tokenRoles = ['display','hero','title','metric','heading','emphasis','caption','subheading','body','body-small','micro-secondary','label','meta'];
+      var tokenSizes = {};
+      tokenRoles.forEach(function (role) { tokenSizes[role] = typeSize(role); });
+      var large = { display:true, hero:true, title:true };
+      var componentTypePaths = {};
+      function visible(el) {
+        if (!el || el.closest('script,style,defs,desc,title,[aria-hidden="true"],[data-contract-only="true"]')) return false;
+        var cs = getComputedStyle(el), r = el.getBoundingClientRect();
+        return cs.display !== 'none' && cs.visibility !== 'hidden' && Number.parseFloat(cs.opacity || '1') > 0 && r.width > .1 && r.height > .1;
+      }
+      function roleForSize(size) {
+        var match = tokenRoles.find(function (role) { return Math.abs(tokenSizes[role] - size) <= .25; });
+        return match || null;
+      }
+      function textElements(slide) {
+        var result = [], seen = new Set();
+        var walker = document.createTreeWalker(slide, NodeFilter.SHOW_TEXT);
+        while (walker.nextNode()) {
+          if (!walker.currentNode.nodeValue.trim()) continue;
+          var el = walker.currentNode.parentElement;
+          if (!visible(el) || seen.has(el)) continue;
+          seen.add(el); result.push(el);
+        }
+        return result;
+      }
+      function componentPath(el, owner) {
+        var parts = [], node = el;
+        while (node && node !== owner) {
+          var part = node.tagName.toLowerCase();
+          if (node.classList.length) part += '.' + Array.from(node.classList).sort().join('.');
+          if (node.parentElement) {
+            var sameTag = Array.prototype.filter.call(node.parentElement.children, function (sibling) { return sibling.tagName === node.tagName; });
+            if (sameTag.length > 1) part += ':nth-of-type(' + (sameTag.indexOf(node) + 1) + ')';
+          }
+          parts.unshift(part); node = node.parentElement;
+        }
+        return parts.join('>');
+      }
+      function assertNoCrossPlaceholder(slide, pageNo) {
+        Array.prototype.forEach.call(slide.querySelectorAll('svg rect'), function (rect) {
+          var x = Number(rect.getAttribute('x')), y = Number(rect.getAttribute('y'));
+          var w = Number(rect.getAttribute('width')), h = Number(rect.getAttribute('height'));
+          if (![x,y,w,h].every(Number.isFinite) || w < 18 || h < 18) return;
+          var diagonal = 0;
+          Array.prototype.forEach.call(rect.ownerSVGElement.querySelectorAll('line'), function (line) {
+            var x1=Number(line.getAttribute('x1')), y1=Number(line.getAttribute('y1')), x2=Number(line.getAttribute('x2')), y2=Number(line.getAttribute('y2'));
+            var a = Math.abs(x1-x)<=2 && Math.abs(y1-y)<=2 && Math.abs(x2-(x+w))<=2 && Math.abs(y2-(y+h))<=2;
+            var b = Math.abs(x2-x)<=2 && Math.abs(y2-y)<=2 && Math.abs(x1-(x+w))<=2 && Math.abs(y1-(y+h))<=2;
+            var c = Math.abs(x1-x)<=2 && Math.abs(y1-(y+h))<=2 && Math.abs(x2-(x+w))<=2 && Math.abs(y2-y)<=2;
+            var d = Math.abs(x2-x)<=2 && Math.abs(y2-(y+h))<=2 && Math.abs(x1-(x+w))<=2 && Math.abs(y1-y)<=2;
+            if (a || b || c || d) diagonal++;
+          });
+          if (diagonal >= 2) throw new Error('第 ' + pageNo + ' 页出现矩形加双对角线叉号占位符');
+        });
+      }
+      all.forEach(function (slide, index) {
+        var pageNo = index + 1;
+        var primary = slide.querySelectorAll('[data-primary-text],canvas[data-canvas-type-role]');
+        if (primary.length !== 1) throw new Error('第 ' + pageNo + ' 页主文字标记不是恰好一个');
+        var declaredPrimary = slide.dataset.primaryTypeRole;
+        var primaryRole = primary[0].tagName === 'CANVAS' ? primary[0].dataset.canvasTypeRole : roleForSize(Number.parseFloat(getComputedStyle(primary[0]).fontSize));
+        if (primaryRole !== declaredPrimary) throw new Error('第 ' + pageNo + ' 页主字档声明为 ' + declaredPrimary + '，实际为 ' + primaryRole);
+        var pageLargeCount = 0, relationOversize = null;
+        textElements(slide).forEach(function (el) {
+          var size = Number.parseFloat(getComputedStyle(el).fontSize);
+          var role = roleForSize(size);
+          if (!role) throw new Error('第 ' + pageNo + ' 页存在无法映射 design token 的字号 ' + size + 'px');
+          var furniture = !!el.closest('.doc,.folio,[data-text-kind="furniture"]');
+          var smallAllowed = furniture || !!el.closest('[data-text-kind="label"],[data-text-kind="number"],[data-text-kind="source"]');
+          if (size < tokenSizes['body-small'] && !smallAllowed) throw new Error('第 ' + pageNo + ' 页正文使用 ' + size + 'px 小字档');
+          if (large[role] && !furniture) pageLargeCount++;
+          if (slide.dataset.primaryRelation && slide.dataset.primaryRelation !== 'focus' && size > tokenSizes.heading && !furniture) {
+            relationOversize = relationOversize || role;
+          }
+          var owner = el.closest('[data-component-id]');
+          if (owner) {
+            var key = owner.dataset.componentId + '|' + componentPath(el, owner);
+            var prior = componentTypePaths[key];
+            if (prior && prior !== role) throw new Error('同一组件文本路径字档不一致: ' + key + ' (' + prior + ' vs ' + role + ')');
+            componentTypePaths[key] = role;
+          }
+        });
+        if (pageLargeCount > 1) throw new Error('第 ' + pageNo + ' 页出现多个 title/hero/display 级文字');
+        if (relationOversize) throw new Error('第 ' + pageNo + ' 页普通关系页超过 heading 字档: ' + relationOversize);
+        Array.prototype.forEach.call(slide.querySelectorAll('img'), function (img) {
+          if (!img.complete || img.naturalWidth === 0) throw new Error('第 ' + pageNo + ' 页存在失效图片: ' + (img.getAttribute('src') || '-'));
+        });
+        if (/\b(?:placeholder|todo)\b/i.test(slide.innerText || '')) throw new Error('第 ' + pageNo + ' 页出现 placeholder/TODO');
+        assertNoCrossPlaceholder(slide, pageNo);
+        Array.prototype.forEach.call(slide.querySelectorAll('[data-layout-slot]'), function (slot) {
+          var comp = slot.matches('[data-component-id]') ? slot : slot.querySelector('[data-component-id]');
+          if (!comp) return;
+          var r = slot.getBoundingClientRect(), stageRect=slide.querySelector('.stage').getBoundingClientRect(), scale=stageRect.width/1920 || 1;
+          var slotWidth=r.width/scale, slotHeight=r.height/scale, minW=Number(comp.dataset.contractMinWidth), minH=Number(comp.dataset.contractMinHeight);
+          var minA=Number(comp.dataset.contractMinAspect), maxA=Number(comp.dataset.contractMaxAspect), aspect=slotWidth/slotHeight;
+          if (minW && slotWidth + .5 < minW) throw new Error('第 ' + pageNo + ' 页组件槽宽 ' + slotWidth.toFixed(0) + 'px < ' + minW + 'px');
+          if (minH && slotHeight + .5 < minH) throw new Error('第 ' + pageNo + ' 页组件槽高 ' + slotHeight.toFixed(0) + 'px < ' + minH + 'px');
+          if (minA && aspect < minA) throw new Error('第 ' + pageNo + ' 页组件槽宽高比过小');
+          if (maxA && aspect > maxA) throw new Error('第 ' + pageNo + ' 页组件槽宽高比过大');
+        });
+        Array.prototype.forEach.call(slide.querySelectorAll('[data-layout-slot] .swiss-card,[data-layout-slot] .pi-card'), function (card) {
+          var cs=getComputedStyle(card), inner=card.querySelector('.swiss-card__content,.pi-card__content');
+          if (Number.parseFloat(cs.minHeight) > .5 || Number.parseFloat(cs.borderTopWidth) > .1 || cs.backgroundColor !== 'rgba(0, 0, 0, 0)') throw new Error('第 ' + pageNo + ' 页组件预览外壳未归零');
+          if (inner) {
+            var ci=getComputedStyle(inner);
+            if (Number.parseFloat(ci.minHeight) > .5 || Number.parseFloat(ci.paddingTop) > .1 || Number.parseFloat(ci.borderTopWidth) > .1 || ci.display === 'flex') throw new Error('第 ' + pageNo + ' 页组件内容预览样式未归零');
+          }
+        });
+        if (slide.dataset.templateId) {
+          var stage = slide.querySelector(':scope > .stage');
+          Array.prototype.forEach.call(stage ? stage.children : [], function (node) {
+            if (node.matches('script,[data-contract-only="true"]')) return;
+            if (visible(node) && !node.dataset.templatePart) throw new Error('第 ' + pageNo + ' 页非关系模板新增可见节点');
+          });
+        }
+        slide.dataset.deckContractCheck = 'pass';
+      });
+      root.dataset.deckContractCheck = 'pass';
+    }
     function selfTest() {
       if (selfTestStarted) return;
       selfTestStarted = true;
@@ -1151,6 +1340,7 @@
         assertViewportFit();
         assertControls();
 
+        assertDeckContractV2(all);
         all.forEach(function (slide, index) {
           go(index);
           assertGeometry(slide, index);
@@ -1189,6 +1379,7 @@
         if (root.dataset.fontCheck !== 'pass') throw new Error('字体加载门禁未通过');
         root.dataset.runtimeCheck = 'pass';
       } catch (error) {
+        root.dataset.deckContractCheck = 'fail';
         root.dataset.runtimeCheck = 'fail';
         root.dataset.runtimeCheckError = error.message;
         console.error(error);

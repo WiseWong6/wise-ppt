@@ -22,17 +22,17 @@
 </style>
 </head>
 <body class="slide">
-<div class="stage" data-block-id="gallery-primary" data-renderer-kind="typography" data-component-source="native" data-component-id="native.paper-ink.emotion.quote.quote" data-content-ref="example.m2">
-  <div class="doc tl">AI ENGINEERING — M2<br>ENGINEERING DIVIDE</div>
-  <div class="folio">M2 / 63 — BY @歪斯WISE</div>
+<div class="stage" data-template-id="M2" data-block-id="gallery-primary" data-renderer-kind="typography" data-component-source="native" data-component-id="native.paper-ink.emotion.quote.quote" data-content-ref="example.m2">
+  <div class="doc tl" data-template-part="support" data-template-slot="support" data-template-slot-kind="text">AI ENGINEERING — M2<br>ENGINEERING DIVIDE</div>
+  <div class="folio" data-template-part="folio">M2 / 63 — BY @歪斯WISE</div>
 
-  <canvas class="px" id="px" width="1920" height="1080"></canvas>
+  <canvas class="px" id="px" data-template-part="canvas" data-template-slot="canvas" data-template-slot-kind="illustration" width="1920" height="1080"></canvas>
 
-  <svg class="marks" width="1920" height="1080" viewBox="0 0 1920 1080">
+  <svg class="marks" data-template-part="marks" width="1920" height="1080" viewBox="0 0 1920 1080">
     <g id="draw"></g>
   </svg>
 
-  <div class="motif-label">A THICK WALL</div>
+  <div class="motif-label" data-template-part="motif-label" data-template-slot="motif-label" data-template-slot-kind="text">A THICK WALL</div>
 </div>
 
 <script src="../../../../runtime/stage-fit.js"></script>

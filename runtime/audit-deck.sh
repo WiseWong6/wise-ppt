@@ -2,11 +2,11 @@
 # wise-ppt-glm · deck 几何/字号/可见性审计(screen + PDF 双管线)
 # 用法: audit-deck.sh <deck目录>
 # 验收口径(v89):垂直居中量「文字主体并集」(叶子文本+分隔线,排除容器 padding 盒/隐形元素),
-#   水平居中量「结构框」;print 是独立布局 pass,screen 全绿≠PDF 全绿,须对 PDF 本体验收(v90)。
-# screen: 逐页主体垂直偏差(|Δ|≤3px)、结构框水平、同 slot-role 主字 computed 一致;
+#   水平居中只验显式 `data-balance="centered"` 页的可见结构并集;锚定型 `structural` 页不强推居中。
+# screen: 逐页主体垂直偏差(|Δ|≤3px)、中心型页结构水平偏差(|Δ|≤3px)、同 slot-role 主字 computed 一致;
 #   文字主体缺失(隐形内容)即 FAIL。
 # PDF: CDP printToPDF(等字体) → pdftotext -bbox 词坐标(排除页眉<75pt/题注页脚>645pt 家具带)
-#   → 与 screen 主体中点比残差(≤15px);主体区词数=0 即 FAIL;页数≠slide 数即 FAIL。
+#   → 与 screen 主体中点比残差(≤35px);主体区词数=0 即 FAIL;页数≠slide 数即 FAIL。
 # 依赖: Chrome、node≥21(内置 WebSocket)、pdftotext、pdfinfo
 set -euo pipefail
 
@@ -85,6 +85,9 @@ const send = (m, p = {}) => new Promise((res, rej) => {
   await sleep(600);
   const expr = `(() => {
     const pages = [];
+    const tokenRoles = ['display','hero','title','metric','heading','emphasis','caption','subheading','body','body-small','micro-secondary','label','meta'];
+    const tokenSizes = Object.fromEntries(tokenRoles.map(role => [role, parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--type-'+role))]));
+    const tokenRole = size => tokenRoles.find(role => Math.abs(tokenSizes[role] - size) <= .25) || ('unmapped:'+size.toFixed(1));
     document.querySelectorAll('#track > .slide').forEach(slide => {
       const stage = slide.querySelector('.stage'); if (!stage) return;
       const st = stage.getBoundingClientRect(); const scale = st.width / 1920 || 1;
@@ -92,7 +95,7 @@ const send = (m, p = {}) => new Promise((res, rej) => {
       const doc = slide.querySelector('.doc.tl'), cap = slide.querySelector('.caption'), folio = slide.querySelector('.folio');
       const topEdge = doc ? rel(doc.getBoundingClientRect()).bottom : 0;
       const bottomEdge = cap ? rel(cap.getBoundingClientRect()).top : (folio ? rel(folio.getBoundingClientRect()).top : 1080);
-      let sub = null, texts = 0, maxFont = 0, minFont = Infinity;
+      let sub = null, texts = 0, maxFont = 0, minFont = Infinity; const typeDistribution = {};
       const consider = el => {
         if (el.closest('[data-balance-exclude="true"]')) return;
         if (el.closest('.doc') || el.closest('.folio') || el.closest('.caption')) return;
@@ -107,6 +110,7 @@ const send = (m, p = {}) => new Promise((res, rej) => {
         texts++;
         const fs = parseFloat(cs.fontSize) || 0;
         if (fs > 0) minFont = Math.min(minFont, fs);
+        if (fs > 0) { const role = tokenRole(fs); typeDistribution[role] = (typeDistribution[role] || 0) + 1; }
         if (el.tagName !== 'TEXT' && !el.matches('.divider')) maxFont = Math.max(maxFont, fs);
         if (!sub) sub = r; else {
           sub.top = Math.min(sub.top, r.top); sub.bottom = Math.max(sub.bottom, r.bottom);
@@ -127,21 +131,16 @@ const send = (m, p = {}) => new Promise((res, rej) => {
           sub.left = Math.min(sub.left, r.left); sub.right = Math.max(sub.right, r.right);
         }
       });
-      let frame = null;
-      stage.querySelectorAll('[data-layout-slot], svg.scene, [data-content-ref]').forEach(el => {
-        const r = rel(el.getBoundingClientRect());
-        if (r.right - r.left >= 1919) return;
-        if (!frame) frame = r; else {
-          frame.left = Math.min(frame.left, r.left); frame.right = Math.max(frame.right, r.right);
-        }
-      });
       pages.push({
         page: slide.getAttribute('data-page-id'),
         topEdge: +topEdge.toFixed(1), bottomEdge: +bottomEdge.toFixed(1),
-        subject: sub ? { t: +sub.top.toFixed(1), b: +sub.bottom.toFixed(1) } : null,
-        frame: frame ? { l: +frame.left.toFixed(1), r: +frame.right.toFixed(1) } : null,
+        subject: sub ? { t: +sub.top.toFixed(1), b: +sub.bottom.toFixed(1), l: +sub.left.toFixed(1), r: +sub.right.toFixed(1) } : null,
+        balance: stage.getAttribute('data-balance') || 'structural',
         texts, maxFont: maxFont ? +maxFont.toFixed(0) : 0,
         minFont: isFinite(minFont) ? +minFont.toFixed(1) : 0,
+        templateId: slide.getAttribute('data-template-id') || '',
+        primaryRole: slide.getAttribute('data-primary-type-role') || '-',
+        typeDistribution,
       });
     });
     const roleFonts = {};
@@ -166,18 +165,22 @@ const data = require('node:fs').readFileSync(process.argv[2], 'utf8') ? JSON.par
 (() => {
   const pad = (s, n) => String(s).padEnd(n);
   let fails = 0;
-  console.log(pad('page',5), pad('subjT',7), pad('subjB',7), pad('dMid',7), pad('frameL',7), pad('frameR',7), pad('hMid',7), pad('maxF',5), pad('minF',5), 'verdict');
+  console.log(pad('page',5), pad('subjT',7), pad('subjB',7), pad('dMid',7), pad('structL',8), pad('structR',8), pad('hMid',7), pad('balance',11), pad('maxF',5), pad('minF',5), pad('primary',12), 'type distribution · verdict');
   for (const p of data.pages) {
     if (!p.subject || p.texts === 0) { console.log(pad(p.page,5) + ' FAIL(无文字主体/隐形内容)'); fails++; continue; }
     const mid = (p.subject.t + p.subject.b) / 2, avail = (p.topEdge + p.bottomEdge) / 2;
     const dMid = +(mid - avail).toFixed(1);
-    const hMid = p.frame ? +(((p.frame.l + p.frame.r) / 2 - 960).toFixed(1)) : 0;
-    const vOk = Math.abs(dMid) <= 3;
+    const hMid = +(((p.subject.l + p.subject.r) / 2 - 960).toFixed(1));
+    // 非关系页的几何真值是参考模板合同；不再用关系页的主体居中算法二次改判。
+    const vOk = Boolean(p.templateId) || Math.abs(dMid) <= 3;
+    // 只有主动声明 centered 的中心型关系页才做水平配平；structural 页保留关系锚点和阅读方向。
+    const hOk = Boolean(p.templateId) || p.balance !== 'centered' || Math.abs(hMid) <= 3;
     const fOk = !p.minFont || p.minFont >= 12.5;   // 字阶下限 --type-meta=13px,0.5 容浮点
-    if (!vOk || !fOk) fails++;
-    const verdict = !vOk ? 'FAIL' : (!fOk ? 'FAIL(minF<13)' : 'OK');
+    if (!vOk || !hOk || !fOk) fails++;
+    const verdict = !vOk ? 'FAIL(vertical)' : (!hOk ? 'FAIL(horizontal)' : (!fOk ? 'FAIL(minF<13)' : (p.templateId ? 'OK(template-locked)' : 'OK')));
+    const dist = Object.entries(p.typeDistribution || {}).map(([k,v]) => k+'×'+v).join(',');
     console.log(pad(p.page,5), pad(p.subject.t,7), pad(p.subject.b,7), pad(dMid,7),
-      pad(p.frame?p.frame.l:'-',7), pad(p.frame?p.frame.r:'-',7), pad(hMid,7), pad(p.maxFont,5), pad(p.minFont||'-',5), verdict);
+      pad(p.subject.l,8), pad(p.subject.r,8), pad(hMid,7), pad(p.balance,11), pad(p.maxFont,5), pad(p.minFont||'-',5), pad(p.primaryRole,12), dist, verdict);
   }
   for (const [role, fonts] of Object.entries(data.roleFonts || {})) {
     const uniq = [...new Set(fonts)];
@@ -187,6 +190,11 @@ const data = require('node:fs').readFileSync(process.argv[2], 'utf8') ? JSON.par
   if (fails > 0) process.exitCode = 1;
 })();
 NODE
+
+if [ "$SCREEN_FAILS" -ne 0 ]; then
+  echo "FAIL audit-deck:见上方 screen 报告" >&2
+  exit 1
+fi
 
 # ─── 2. PDF 样本:与 export-deck.sh 完全同款 CLI 管线(验的就是交付的那份) ───
 NAME="$(basename "$DECK")"

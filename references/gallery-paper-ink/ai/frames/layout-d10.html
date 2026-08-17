@@ -51,12 +51,12 @@
 </style>
 </head>
 <body class="slide">
-<div class="stage" data-block-id="gallery-primary" data-renderer-kind="canvas" data-component-source="native" data-component-id="native.paper-ink.scaffold.cover-texture.center-lockup" data-content-ref="example.d10">
-  <div class="doc tl">AI ENGINEERING — D10<br>ENGRAVED FIELD</div>
-  <div class="folio">D10 / 63 — BY @歪斯WISE</div>
+<div class="stage" data-template-id="D10" data-block-id="gallery-primary" data-renderer-kind="canvas" data-component-source="native" data-component-id="native.paper-ink.scaffold.cover-texture.center-lockup" data-content-ref="example.d10">
+  <div class="doc tl" data-template-part="support" data-template-slot="support" data-template-slot-kind="text">AI ENGINEERING — D10<br>ENGRAVED FIELD</div>
+  <div class="folio" data-template-part="folio">D10 / 63 — BY @歪斯WISE</div>
 
-  <canvas class="texture" id="texture" width="1920" height="1080"></canvas>
-  <svg class="overlay" width="1920" height="1080" viewBox="0 0 1920 1080" aria-hidden="true">
+  <canvas class="texture" id="texture" data-template-part="canvas" data-template-slot="canvas" data-template-slot-kind="illustration" width="1920" height="1080"></canvas>
+  <svg class="overlay" data-template-part="overlay" width="1920" height="1080" viewBox="0 0 1920 1080" aria-hidden="true">
     <g fill="none" stroke="#191917">
       <path d="M 120 182 L 120 112 L 190 112 M 1730 112 L 1800 112 L 1800 182 M 120 898 L 120 968 L 190 968 M 1730 968 L 1800 968 L 1800 898" stroke-width="0.8" opacity="0.26"/>
       <path d="M 120 540 L 184 540 M 1736 540 L 1800 540" stroke-width="0.7" opacity="0.22" stroke-dasharray="3 6"/>
@@ -64,12 +64,12 @@
       <circle cx="1710" cy="540" r="4.5" fill="#DFE0D9" stroke-width="0.7" opacity="0.42"/>
     </g>
   </svg>
-  <div class="title-wash"></div>
+  <div class="title-wash" data-template-part="title-wash"></div>
 
-  <div class="kicker">AGENT ENGINEERING — 2026 SUMMER</div>
-  <div class="title">AI 工程化</div>
-  <div class="title-bar"></div>
-  <div class="subtitle">从模型到产品的工程鸿沟 · Agent 实战第一课</div>
+  <div class="kicker" data-template-part="kicker" data-template-slot="kicker" data-template-slot-kind="text">AGENT ENGINEERING — 2026 SUMMER</div>
+  <div class="title" data-template-part="primary" data-template-slot="primary" data-template-slot-kind="text">AI 工程化</div>
+  <div class="title-bar" data-template-part="title-bar"></div>
+  <div class="subtitle" data-template-part="subtitle" data-template-slot="subtitle" data-template-slot-kind="text">从模型到产品的工程鸿沟 · Agent 实战第一课</div>
 </div>
 
 <script src="../../../../runtime/stage-fit.js"></script>

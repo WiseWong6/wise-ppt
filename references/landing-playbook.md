@@ -7,14 +7,18 @@
 帧文件:`references/gallery-paper-ink/ai/frames/layout-<小写编号>.html`(E1→`layout-e1.html`,R5→`layout-r5.html`)。帧是图册标本(specimen),不是 slide——整文件复制进 deck 必挂:根标记是 `data-runtime="wise-ppt-specimen"`(check 第一步就要 `wise-ppt-deck`)、CSS 走仓库相对路径、末尾调 `stageFit()`。拆解五步:
 
 1. 按 §7 建好 deck 骨架,拿到空的 `index.html`。
-2. 打开帧,把 `<div class="stage" …>…</div>` **整块**剪出来,标签换成 `<main class="stage">…</main>`,放进一个新建的 `<section class="slide">`(section 属性照 SKILL.md「slide 结构样板」:data-render-pending / data-page-id / data-theme / data-page-title / data-section-id / data-section-title)。stage 上的 `data-content-ref` 等指纹属性原样保留;stage 级的 `data-component-id` 是图册标本指纹,**拆解时删除**(deck 合同只认槽级 `data-component-id`,门禁会查登记)。
+2. 打开帧,把 `<div class="stage" …>…</div>` **整块**剪出来,放进新建的 `<section class="slide">`。关系页可把 stage 标签换成 `<main>`，并补 `data-primary-relation/data-visual-family/data-primary-type-role`；非关系页不得改 stage 标签，补 `data-template-id/data-primary-type-role`。关系帧的 stage 级组件指纹删除；D1–D10/M1/M2 非关系帧必须保留 stage `data-component-id` 与全部 `data-template-part/data-template-slot` 标记。
 3. 删三样:`<link … shell.css>`(图册浏览壳样式)、`<script … stage-fit.js>` 引用、末尾的 `stageFit();` 调用。缩放归 deck-runtime 管,deck 里调 `stageFit` 直接 check 红。
 4. 帧头部内联的 `<style>` 原样带走;外链 CSS 的 `../../../../themes/paper-ink/assets/design-tokens.css`、`slide-components.css` 换成 deck 内 `assets/design-tokens.css`、`assets/slide-components.css`。
 5. 帧**不带几何契约岛**,按 §5 给这页自建一个,然后跑 `bash runtime/check-deck.sh <deck>` 验证。
 
+小字语义同样是合同:13–16px 只允许家具、标签、编号、出处；后三类节点必须显式写 `data-text-kind="label|number|source"`，mono 字体或短文案本身不构成豁免。
+
 ## §2 component_id 前缀 → 物化链路
 
 物化链路看 **component_id 前缀**;`routing-manifest.json` 里的 renderer_kinds 只用来核对前缀判断没错(如 `echarts.` 必是 svg/canvas)。
+
+先查所选版式槽的 `default_renderer.component_id`：若它指向 routing manifest 中的正式组件，槽上必须写这个精确 canonical id 并真实注入组件；不得改写成 `native.<recipe>.<slot>` 冒充已物化。虚拟 id 只给没有正式组件的辅助/排版槽。
 
 | component_id 前缀 | renderer_kinds(核对用) | 复制进 deck 的文件 | 去向 |
 |---|---|---|---|
@@ -59,7 +63,7 @@ atlas 原始 snippet 是 600px 方卡预览口径,直接粘贴会带裸字号,�
 </script>
 ```
 
-注入后同样按 `data-field` 改文案、在 registered-components.css 尾部补三段覆写。
+注入后同样按 `data-field` 改文案；最后加载公共 `assets/deck-component-contract.css`，deck 不得重画预览外壳。
 
 ### C · echarts. 组件
 
@@ -94,6 +98,18 @@ atlas 原始 snippet 是 600px 方卡预览口径,直接粘贴会带裸字号,�
 
 笨 AI 默认套路:一个 region 槽包住全部内容(即 content_region),各内容块各自 anchor;relations = 若干 contain(边界组)+ 一条 edgeEq 或 bottomEq(对齐组),再按页面实际关系补。
 
+**`free_build` 关系页不能只声明整张 scene。** 至少把两个真实内部内容组标出来；可见分隔线或连接路径也要进入合同：
+
+```html
+<g data-anchor-id="copy" data-geometry-role="content">…</g>
+<line data-anchor-id="divider" data-geometry-role="boundary" … />
+<g data-anchor-id="proof" data-geometry-role="content">…</g>
+```
+
+这些节点都要出现在 `anchors`，并分别参与与另一内部节点的 `contain/hardBoundary/avoid/clear/pathClear/ownerOverlap` 关系；否则整页外框没越界也算失败。浏览器还会自动拦截可见文字穿过长度 ≥64px 的横/竖 SVG 分隔线；节点内的小圆/小框文字属于合法载体，其他确需重叠必须用 `ownerOverlap` 明示。
+
+最终配平不是所有页都强制水平居中：只有中心型或无方向锚点的单一内容组把 stage 写成 `data-balance="centered"`，audit 才检查其排除家具后的可见结构水平偏差 ≤3px；流程、时间轴、架构等锚定型页写 `structural`，保留自己的主轴。
+
 **关系类型速查(12 种;公共字段 relation_id / type / anchors / tolerance)**
 
 | 类型 | anchor 数 | 额外必填 | 表达 |
@@ -121,8 +137,8 @@ atlas 原始 snippet 是 600px 方卡预览口径,直接粘贴会带裸字号,�
 
 1. 查名:`references/icon-catalog-data.js` 的 `window.WISE_PPT_ICON_CATALOG_DATA.ink[]`(每条有 name / tags / redrawStatus),按名或 tags grep。
 2. 取本体:`capabilities/vendors/tabler-outline/redraw-v3/svg/<name>.svg`(approved 成品,viewBox 0 0 64 64,细线 1.2px,stroke 用 currentColor)。
-3. 内联:把 `<svg>…</svg>` 整段粘进页面,尺寸用 width/height 控制,颜色跟 currentColor(父级设 `color: var(--ink-*)` 或直接改 color 属性)。
-4. 红线禁的是**运行时按名查找**链路(icon-registry / `WisePPT.icons`),复制 SVG 本体内联是正确做法。没有贴合的图标才手绘几何细线。
+3. 内联:把 `<svg>…</svg>` 整段粘进页面,并在根 `<svg>` 加 `data-icon-source="redraw-v3:<name>"`；尺寸用 width/height 控制，几何节点不改。
+4. 没有贴合图标才手绘；根节点写 `data-icon-source="handdraw:<reason-id>"`，同页 deck-plan 必须记录 reason-id 与理由。
 
 ## §7 deck 装配
 
@@ -131,12 +147,13 @@ atlas 原始 snippet 是 600px 方卡预览口径,直接粘贴会带裸字号,�
 | `index.html` | `runtime/app-template.html` 填占位符(见下) |
 | `assets/design-tokens.css` | `themes/paper-ink/assets/design-tokens.css` |
 | `assets/slide-components.css` | `themes/paper-ink/assets/slide-components.css` |
+| `assets/deck-component-contract.css` | `themes/paper-ink/assets/deck-component-contract.css`（所有组件 CSS 之后加载） |
 | `assets/deck-shell.css` | `runtime/deck-shell.css` |
 | `assets/deck-runtime.js` | `runtime/deck-runtime.js` |
 | `assets/stage-fit.js` | `runtime/stage-fit.js`(deck-runtime 启动时同目录加载,漏复制直接 runtime 红) |
 | `assets/fonts/` | `themes/paper-ink/assets/fonts/`(本地缺字体先在仓库跑 `python3 scripts/ensure_fonts.py` 补齐再复制) |
 
-app-template 六个占位符的填法:
+app-template 七个占位符的填法:
 
 | 占位符 | 填 |
 |---|---|
@@ -144,6 +161,7 @@ app-template 六个占位符的填法:
 | `{{DECK_TITLE}}` | deck 名(也进 `<title>`) |
 | `{{PAGE_TITLE}}` | 首页标题文案 |
 | `{{STYLESHEET_HREF}}` | `assets/slide-components.css`,并在 head 里按 **design-tokens → slide-components → deck-shell → registered-components** 顺序补齐四个 `<link>` |
+| `{{COMPONENT_CONTRACT_HREF}}` | `assets/deck-component-contract.css`，必须在 registered-components 之后 |
 | `{{RUNTIME_SCRIPT_SRC}}` | `assets/deck-runtime.js` |
 | `{{SLIDES}}` | 全部 `<section class="slide">` 依次粘进 `WISE_PPT_SLIDES_START/END` 注释之间 |
 

@@ -1,0 +1,103 @@
+{
+  "contract_version": 2,
+  "capability_id": "nonrelation-template-contracts",
+  "templates": {
+    "D1": {
+      "source": "references/gallery-paper-ink/ai/frames/layout-d1.html",
+      "role": "cover",
+      "stage_component_id": "native.paper-ink.scaffold.cover.cover-lockup",
+      "parts": ["support", "folio", "illustration", "kicker", "primary", "title-bar", "subtitle"],
+      "slots": {"support": "text", "illustration": "illustration", "kicker": "text", "primary": "text", "subtitle": "text"},
+      "geometry": {"illustration": ["left", "top", "width", "height"], "primary": ["left", "top", "width"]}
+    },
+    "D2": {
+      "source": "references/gallery-paper-ink/ai/frames/layout-d2.html",
+      "role": "closing",
+      "stage_component_id": "native.paper-ink.scaffold.particle-outro.outro-lockup",
+      "parts": ["support", "folio", "canvas", "marks"],
+      "slots": {"support": "text", "canvas": "illustration"},
+      "geometry": {"canvas": ["left", "top", "width", "height"]}
+    },
+    "D3": {
+      "source": "references/gallery-paper-ink/ai/frames/layout-d3.html",
+      "role": "closing",
+      "stage_component_id": "native.paper-ink.scaffold.minimal-outro.outro-lockup",
+      "parts": ["support", "folio", "illustration", "primary", "signature"],
+      "slots": {"support": "text", "illustration": "illustration", "primary": "text", "signature": "text"},
+      "geometry": {"illustration": ["left", "top", "width", "height"], "primary": ["left", "top", "width"], "signature": ["left", "top", "width"]}
+    },
+    "D4": {
+      "source": "references/gallery-paper-ink/ai/frames/layout-d4.html",
+      "role": "agenda",
+      "stage_component_id": "native.paper-ink.scaffold.agenda.agenda",
+      "parts": ["support", "folio", "illustration", "takeaway"],
+      "slots": {"support": "text", "illustration": "illustration", "takeaway": "text"},
+      "geometry": {"illustration": ["left", "top", "width", "height"], "takeaway": ["left", "top", "width"]}
+    },
+    "D5": {
+      "source": "references/gallery-paper-ink/ai/frames/layout-d5.html",
+      "role": "transition",
+      "stage_component_id": "native.paper-ink.scaffold.section-divider.section-lockup",
+      "parts": ["support", "folio", "illustration", "primary", "lead"],
+      "slots": {"support": "text", "illustration": "illustration", "primary": "text", "lead": "text"},
+      "geometry": {"illustration": ["left", "top", "width", "height"], "primary": ["left", "top", "width"], "lead": ["left", "top", "width"]}
+    },
+    "D6": {
+      "source": "references/gallery-paper-ink/ai/frames/layout-d6.html",
+      "role": "contact",
+      "stage_component_id": "native.paper-ink.scaffold.contact.contact",
+      "parts": ["support", "folio", "illustration"],
+      "slots": {"support": "text", "illustration": "illustration"},
+      "geometry": {"illustration": ["left", "top", "width", "height"]}
+    },
+    "D7": {
+      "source": "references/gallery-paper-ink/ai/frames/layout-d7.html",
+      "role": "cover",
+      "stage_component_id": "native.paper-ink.scaffold.cover-center.center-lockup",
+      "parts": ["support", "folio", "illustration", "kicker", "primary", "title-bar", "subtitle"],
+      "slots": {"support": "text", "illustration": "illustration", "kicker": "text", "primary": "text", "subtitle": "text"},
+      "geometry": {"illustration": ["left", "top", "width", "height"], "primary": ["left", "top", "width"]}
+    },
+    "D8": {
+      "source": "references/gallery-paper-ink/ai/frames/layout-d8.html",
+      "role": "cover",
+      "stage_component_id": "native.paper-ink.scaffold.cover-wide.long-lockup",
+      "parts": ["support", "folio", "illustration", "kicker", "primary", "subtitle"],
+      "slots": {"support": "text", "illustration": "illustration", "kicker": "text", "primary": "text", "subtitle": "text"},
+      "geometry": {"illustration": ["left", "top", "width", "height"], "primary": ["left", "top", "width"]}
+    },
+    "D9": {
+      "source": "references/gallery-paper-ink/ai/frames/layout-d9.html",
+      "role": "agenda",
+      "stage_component_id": "native.paper-ink.scaffold.agenda-split.agenda-split",
+      "parts": ["support", "folio", "illustration"],
+      "slots": {"support": "text", "illustration": "illustration"},
+      "geometry": {"illustration": ["left", "top", "width", "height"]}
+    },
+    "D10": {
+      "source": "references/gallery-paper-ink/ai/frames/layout-d10.html",
+      "role": "cover",
+      "stage_component_id": "native.paper-ink.scaffold.cover-texture.center-lockup",
+      "parts": ["support", "folio", "canvas", "overlay", "title-wash", "kicker", "primary", "title-bar", "subtitle"],
+      "slots": {"support": "text", "canvas": "illustration", "kicker": "text", "primary": "text", "subtitle": "text"},
+      "geometry": {"canvas": ["left", "top", "width", "height"], "primary": ["left", "top", "width"]}
+    },
+    "M1": {
+      "source": "references/gallery-paper-ink/ai/frames/layout-m1.html",
+      "role": "transition",
+      "stage_component_id": "native.paper-ink.emotion.particle-hero.metaphor",
+      "parts": ["support", "folio", "canvas", "compare", "overlay", "primary"],
+      "slots": {"support": "text", "canvas": "illustration", "compare": "text", "primary": "text"},
+      "geometry": {"canvas": ["left", "top", "width", "height"], "primary": ["left", "top", "width"]}
+    },
+    "M2": {
+      "source": "references/gallery-paper-ink/ai/frames/layout-m2.html",
+      "role": "transition",
+      "stage_component_id": "native.paper-ink.emotion.quote.quote",
+      "parts": ["support", "folio", "canvas", "marks", "motif-label"],
+      "slots": {"support": "text", "canvas": "illustration", "motif-label": "text"},
+      "geometry": {"canvas": ["left", "top", "width", "height"], "motif-label": ["left", "top", "width"]}
+    }
+  },
+  "contract_only_rule": "Only invisible helpers with data-contract-only=\"true\" are ignored; they must not contain visible text or paint."
+}

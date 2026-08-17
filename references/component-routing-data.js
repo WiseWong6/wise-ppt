@@ -400,6 +400,12 @@ window.WISE_PPT_COMPONENT_ROUTING = Object.freeze({
         "network"
       ]
     },
+    "native:108": {
+      "component_id": "native.paper-ink.108.three-principles-radial",
+      "relation_keys": [
+        "decomposition"
+      ]
+    },
     "native:63": {
       "component_id": "native.paper-ink.063.step-rise",
       "relation_keys": [

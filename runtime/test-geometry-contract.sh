@@ -70,6 +70,9 @@ run_failure_case text-inset '第 1 页关系[edge.left-text-contained] 文字载
 run_failure_case contain-overflow '第 1 页关系[edge.left-text-contained] 子元素越界'
 run_failure_case hard-boundary '第 1 页关系[edge.left-boundary] 越过硬边界'
 run_failure_case path-clear '第 2 页关系[path.label-clear] 路径穿过内容'
+run_failure_case missing-internal-geometry '第 1 页自由构建关系页至少声明 2 个 data-geometry-role'
+run_failure_case internal-uncovered '第 1 页自由构建页内部节点未参与内部边界关系'
+run_failure_case svg-text-line-crossing '第 1 页 SVG 文字与长分隔线发生未声明重叠'
 run_failure_case relation-order '第 1 页 relations 必须按边界/不重叠优先、对齐其次的顺序声明'
 
-echo "PASS geometry-contract normal=ok accent=ok failure-cases=15 temp=cleaned"
+echo "PASS geometry-contract normal=ok accent=ok failure-cases=18 temp=cleaned"

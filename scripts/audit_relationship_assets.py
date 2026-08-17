@@ -17,6 +17,7 @@ FRAMES = ROOT / "references" / "gallery-paper-ink" / "ai" / "frames"
 LAYOUTS = ROOT / "capabilities" / "layouts" / "gallery-manifest.json"
 ROUTING = ROOT / "capabilities" / "components" / "routing-manifest.json"
 ROUTING_DATA = ROOT / "references" / "component-routing-data.js"
+NATIVE_COMPONENTS = ROOT / "capabilities" / "layouts" / "paper-ink-components.js"
 
 ZH_TO_KEY = collections.OrderedDict(
     [
@@ -107,9 +108,9 @@ def main() -> None:
         r"\[\s*'([A-Z]\d+)'\s*,\s*'([^']*)'\s*,\s*'([^']*)'\s*,\s*'([^']*)'\s*\]",
         relation_block,
     )
-    assert len(rows) == 67, f"关系版式应为 67，当前 {len(rows)}"
+    assert len(rows) == 68, f"关系版式应为 68，当前 {len(rows)}"
     by_code = {code: (name, structure, relation) for code, name, structure, relation in rows}
-    assert len(by_code) == 67, "关系版式编号有重复"
+    assert len(by_code) == 68, "关系版式编号有重复"
 
     corrected = {"A7", "F4", "A9", "E3", "E6", "I3", "H3", "H4", "E1", "E2", "K1", "C6"}
     wrong = sorted(code for code in corrected if by_code[code][1] != "单区")
@@ -133,7 +134,7 @@ def main() -> None:
 
     counts = collections.Counter(structure_key(row[2]) for row in rows)
     expected_counts = {
-        "single": 40,
+        "single": 41,
         "heq": 8,
         "veq": 3,
         "hasym": 8,
@@ -152,7 +153,7 @@ def main() -> None:
         if len(cells) >= 4:
             example_codes.update(re.findall(r"[A-Z]\d{1,2}", cells[-1]))
     assert example_codes == set(by_code), (
-        f"表A 版式例未覆盖 67 版式: 漏 {sorted(set(by_code) - example_codes)}"
+        f"表A 版式例未覆盖 68 版式: 漏 {sorted(set(by_code) - example_codes)}"
         f" / 多 {sorted(example_codes - set(by_code))}"
     )
 
@@ -160,20 +161,66 @@ def main() -> None:
         path.stem.removeprefix("layout-").upper()
         for path in FRAMES.glob("layout-*.html")
     }
-    assert len(frame_codes) == 79, f"画册帧应为 79，当前 {len(frame_codes)}"
+    assert len(frame_codes) == 80, f"画册帧应为 80，当前 {len(frame_codes)}"
     assert set(by_code).issubset(frame_codes), "有关系版式缺 HTML 帧"
 
     layouts = json.loads(LAYOUTS.read_text(encoding="utf-8"))
     recipes = layouts["recipes"]
-    assert layouts["recipe_count"] == len(recipes) == 75, "recipe_count 不闭合"
-    assert layouts["page_expression_contract"]["profile_count"] == 75, "profile_count 不闭合"
+    assert layouts["recipe_count"] == len(recipes) == 76, "recipe_count 不闭合"
+    assert layouts["page_expression_contract"]["profile_count"] == 76, "profile_count 不闭合"
     recipes_by_code = {recipe["display_code"]: recipe for recipe in recipes}
-    assert len(recipes_by_code) == 75, "gallery-manifest display_code 有重复"
+    assert len(recipes_by_code) == 76, "gallery-manifest display_code 有重复"
     assert set(by_code).issubset(recipes_by_code), "有关系版式缺 gallery recipe"
     for code, (_, _, label) in by_code.items():
         recipe = recipes_by_code[code]
         assert recipe.get("relations") == relation_keys(label), f"{code} relations 与 Catalog 不一致"
         assert recipe.get("structure_fingerprint") == fingerprint(recipe), f"{code} 结构指纹失效"
+
+    g1_component = "native.paper-ink.096.three-way-radial"
+    g5_component = "native.paper-ink.108.three-principles-radial"
+    assert not recipes_by_code["G1"].get("formal_examples"), "G1 不得被 P03 正式样例覆盖"
+    g5_examples = recipes_by_code["G5"].get("formal_examples") or []
+    assert g5_examples == [
+        {
+            "deck_id": "wise-ppt-story-six-page",
+            "page": "P03",
+            "page_id": "page.story.principles",
+            "source": "themes/paper-ink/examples/wise-ppt-story-six-page/index.html",
+            "component_id": g5_component,
+        }
+    ], "G5 必须唯一登记六页正式样例 P03"
+    g1_slot = next(
+        slot for slot in recipes_by_code["G1"]["slots"] if slot["slot_id"] == "dimensions"
+    )
+    assert g1_slot["default_renderer"]["component_id"] == g1_component, "G1 主槽未绑定正式组件 096"
+    assert g1_slot.get("recommended_component_ids") == [g1_component], "G1 推荐组件未唯一指向 096"
+    g5_slot = next(
+        slot for slot in recipes_by_code["G5"]["slots"] if slot["slot_id"] == "dimensions"
+    )
+    assert g5_slot["default_renderer"]["component_id"] == g5_component, "G5 主槽未绑定正式组件 108"
+    assert g5_slot.get("recommended_component_ids") == [g5_component], "G5 推荐组件未唯一指向 108"
+    g1_frame = (FRAMES / "layout-g1.html").read_text(encoding="utf-8")
+    g5_frame = (FRAMES / "layout-g5.html").read_text(encoding="utf-8")
+    assert "LLM 调用节点" in g1_frame, "G1 原 LLM 节点内容被覆盖"
+    assert 'data-formal-example=' not in g1_frame, "G1 不得冒充 P03 正式样例"
+    assert f'data-component-id="{g1_component}"' in g1_frame, "G1 帧缺原组件 096"
+    assert 'data-formal-example="wise-ppt-story-six-page:P03"' in g5_frame, "G5 帧缺 P03 正式样例标记"
+    assert f'data-component-id="{g5_component}"' in g5_frame, "G5 帧缺正式组件 108"
+    native_components = NATIVE_COMPONENTS.read_text(encoding="utf-8")
+    assert 'name: "three-way-radial"' in native_components and 'num: 96' in native_components, (
+        "原组件 096 未恢复"
+    )
+    assert 'name: "three-principles-radial"' in native_components and 'num: 108' in native_components, (
+        "P03 新组件 108 未登记"
+    )
+    routing = json.loads(ROUTING.read_text(encoding="utf-8"))
+    routes_by_id = {item["component_id"]: item for item in routing["components"]}
+    assert routing["component_count"] == len(routes_by_id) == 126, "生产组件路由计数不闭合"
+    assert g1_component in routes_by_id, "原组件 096 缺生产路由"
+    assert g5_component in routes_by_id, "P03 新组件 108 缺生产路由"
+    assert routes_by_id[g5_component]["relation_keys"] == ["decomposition"], "组件 108 关系路由错误"
+    assert "CATALOG_FORMAL_EXAMPLES" in catalog and "G5:Object.freeze" in catalog, "Catalog 缺 G5/P03 正式入口"
+    assert "sample:'P03'" in catalog and g5_component in catalog, "Catalog 组件卡缺 P03/108 追溯"
     for code in expected_new:
         frame = (FRAMES / f"layout-{code.lower()}.html").read_text(encoding="utf-8")
         required = recipes_by_code[code]["structure_contract"]["required_slot_ids"]
@@ -284,9 +331,9 @@ def main() -> None:
     for required_grid_example in ("Q4 是 2×2", "R3 是 2×3", "R7 是 4×7"):
         assert required_grid_example in catalog, f"真实页面网格说明缺失: {required_grid_example}"
 
-    print("检查通过: 67 张关系版式 + 12 张非关系模板 = 79 帧。")
-    print("六结构计数: 单区40 / 左右等分8 / 上下等分3 / 左右不对称8 / 上下不对称5 / 网格3。")
-    print("表A 版式例列覆盖全部 67 版式;semantic_override 词表与 23 细种同键同序。")
+    print("检查通过: 68 张关系版式 + 12 张非关系模板 = 80 帧。")
+    print("六结构计数: 单区41 / 左右等分8 / 上下等分3 / 左右不对称8 / 上下不对称5 / 网格3。")
+    print("表A 版式例列覆盖全部 68 版式;semantic_override 词表与 23 细种同键同序。")
     print("23 细种均有版式与生产组件覆盖；Q1–Q4、R1–R7 槽位、配方、指纹和路由闭合。")
     print("Q4 四槽、R3 六槽、R6 四槽、R7 二十八槽均逐槽独立绑定；没有用组件内部重复单元冒充页面结构。")
     print("R4/R5 关系页直接物化组件；结构页示例直接复用关系页帧，三入口无私有副本。")
