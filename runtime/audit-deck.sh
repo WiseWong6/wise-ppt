@@ -153,6 +153,7 @@ const send = (m, p = {}) => new Promise((res, rej) => {
         texts, maxFont: maxFont ? +maxFont.toFixed(0) : 0,
         minFont: isFinite(minFont) ? +minFont.toFixed(1) : 0,
         templateId: slide.getAttribute('data-template-id') || '',
+        src: slide.getAttribute('data-layout-source') || '',
         primaryRole: slide.getAttribute('data-primary-type-role') || '-',
         typeDistribution,
       });
@@ -179,22 +180,25 @@ const data = require('node:fs').readFileSync(process.argv[2], 'utf8') ? JSON.par
 (() => {
   const pad = (s, n) => String(s).padEnd(n);
   let fails = 0;
-  console.log(pad('page',5), pad('subjT',7), pad('subjB',7), pad('dMid',7), pad('structL',8), pad('structR',8), pad('hMid',7), pad('balance',11), pad('maxF',5), pad('minF',5), pad('primary',12), 'type distribution · verdict');
+  console.log(pad('page',5), pad('subjT',7), pad('subjB',7), pad('dMid',7), pad('structL',8), pad('structR',8), pad('hMid',7), pad('rVoid',6), pad('balance',11), pad('maxF',5), pad('minF',5), pad('primary',12), 'type distribution · verdict');
   for (const p of data.pages) {
     if (!p.subject || p.texts === 0) { console.log(pad(p.page,5) + ' FAIL(无文字主体/隐形内容)'); fails++; continue; }
     const mid = (p.subject.t + p.subject.b) / 2, avail = (p.topEdge + p.bottomEdge) / 2;
     const dMid = +(mid - avail).toFixed(1);
     const hMid = +(((p.subject.l + p.subject.r) / 2 - 960).toFixed(1));
+    const rVoid = +(1856 - p.subject.r).toFixed(1);   // functional-edge 右缘到主体右缘的空带
     // 非关系页的几何真值是参考模板合同；不再用关系页的主体居中算法二次改判。
     const vOk = Boolean(p.templateId) || Math.abs(dMid) <= 3;
     // 只有主动声明 centered 的中心型关系页才做水平配平；structural 页保留关系锚点和阅读方向。
     const hOk = Boolean(p.templateId) || p.balance !== 'centered' || Math.abs(hMid) <= 3;
+    // free_build 关系页右侧不得空转:分区要被内容充满(v140,抓"缩在中缝一侧"型布局)。
+    const wOk = Boolean(p.templateId) || p.src !== 'free_build' || rVoid <= 350;
     const fOk = !p.minFont || p.minFont >= 12.5;   // 字阶下限 --type-meta=13px,0.5 容浮点
-    if (!vOk || !hOk || !fOk) fails++;
-    const verdict = !vOk ? 'FAIL(vertical)' : (!hOk ? 'FAIL(horizontal)' : (!fOk ? 'FAIL(minF<13)' : (p.templateId ? 'OK(template-locked)' : 'OK')));
+    if (!vOk || !hOk || !wOk || !fOk) fails++;
+    const verdict = !vOk ? 'FAIL(vertical)' : (!hOk ? 'FAIL(horizontal)' : (!wOk ? `FAIL(right-void ${rVoid}px>350)` : (!fOk ? 'FAIL(minF<13)' : (p.templateId ? 'OK(template-locked)' : 'OK'))));
     const dist = Object.entries(p.typeDistribution || {}).map(([k,v]) => k+'×'+v).join(',');
     console.log(pad(p.page,5), pad(p.subject.t,7), pad(p.subject.b,7), pad(dMid,7),
-      pad(p.subject.l,8), pad(p.subject.r,8), pad(hMid,7), pad(p.balance,11), pad(p.maxFont,5), pad(p.minFont||'-',5), pad(p.primaryRole,12), dist, verdict);
+      pad(p.subject.l,8), pad(p.subject.r,8), pad(hMid,7), pad(rVoid,6), pad(p.balance,11), pad(p.maxFont,5), pad(p.minFont||'-',5), pad(p.primaryRole,12), dist, verdict);
   }
   for (const [role, fonts] of Object.entries(data.roleFonts || {})) {
     const uniq = [...new Set(fonts)];

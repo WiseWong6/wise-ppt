@@ -60,15 +60,37 @@ write_variant('forged-icon', lambda s:insert_p01(s,forged), lambda s:s.replace('
 cross='<svg viewBox="0 0 100 100"><rect x="10" y="10" width="64" height="64"/><line x1="10" y1="10" x2="74" y2="74"/><line x1="10" y1="74" x2="74" y2="10"/></svg>'
 write_variant('cross-placeholder', lambda s:insert_p01(s,cross))
 
+def seg_of(s, page):
+    start = s.index(f'data-page-id="{page}"')
+    nxt = s.find('<section', start + 10)
+    return start, (nxt if nxt != -1 else len(s))
+
+def v140_upgrade(s):
+    # 存量六页样例做任意修订即解除保护:先把 balance/primitive 升级到 v140 合同,再注入回归
+    for page, value in [('page.story.workflow','centered'), ('page.story.layout-atlas','centered'), ('page.story.component-atlas','centered')]:
+        a, b = seg_of(s, page); seg = s[a:b]
+        seg = seg.replace('data-balance="structural"', f'data-balance="{value}"', 1)
+        seg = seg.replace('data-balance="centered"', f'data-balance="{value}"', 1)
+        s = s[:a] + seg + s[b:]
+    a, b = seg_of(s, 'page.story.layout-atlas')
+    s = s[:a] + s[a:b].replace('"primitive":"左右不对称"', '"primitive":"单区"', 1) + s[b:]
+    a, b = seg_of(s, 'page.story.component-atlas')
+    s = s[:a] + s[a:b].replace('"primitive":"上下不对称"', '"primitive":"单区"', 1) + s[b:]
+    return s
+
+plan_v140 = lambda s: s.replace('③ 选定: **左右不对称**','③ 选定: **单区**',1).replace('③ 选定: **上下不对称**','③ 选定: **单区**',1)
+
 wrapper=slot.replace('width:460px','width:1000px').replace(
     'atlas.002.list-card" data-contract-min-width="620" data-contract-min-height="370" data-contract-min-aspect="0.75" data-contract-max-aspect="3.82"',
     'native.paper-ink.107.interlocking-gears" data-contract-min-width="680" data-contract-min-height="360" data-contract-min-aspect="0.85" data-contract-max-aspect="4.13"')
 write_variant('wrapper-600',
-    lambda s:insert_p01(s,wrapper).replace('</head>','<style>[data-layout-slot] .swiss-card{min-height:600px!important;border:2px solid #000!important;background:#fff!important}</style></head>',1))
-write_variant('two-titles', lambda s:insert_p01(s,'<div style="font-size:var(--type-title)">大字一</div><div style="font-size:var(--type-title)">大字二</div>'))
-write_variant('body-15', lambda s:insert_p01(s,'<div style="font-family:var(--mono);font-size:var(--type-label)">这是一段正文而不是标签</div>'))
+    lambda s:v140_upgrade(insert_p01(s,wrapper)).replace('</head>','<style>[data-layout-slot] .swiss-card{min-height:600px!important;border:2px solid #000!important;background:#fff!important}</style></head>',1),
+    plan_v140)
+write_variant('two-titles', lambda s:v140_upgrade(insert_p01(s,'<div style="font-size:var(--type-title)">大字一</div><div style="font-size:var(--type-title)">大字二</div>')), plan_v140)
+write_variant('body-15', lambda s:v140_upgrade(insert_p01(s,'<div style="font-family:var(--mono);font-size:var(--type-label)">这是一段正文而不是标签</div>')), plan_v140)
 write_variant('template-geometry-drift',
-    lambda s:s.replace('</head>', '<style>.slide[data-template-id="D6"] .scene{left:12px!important;right:12px!important}</style></head>', 1))
+    lambda s:v140_upgrade(s).replace('</head>', '<style>.slide[data-template-id="D6"] .scene{left:12px!important;right:12px!important}</style></head>', 1),
+    plan_v140)
 write_variant('virtual-primary-component',
     lambda s:s.replace('native.paper-ink.108.three-principles-radial', 'native.paper-ink.radial.three-principles.dimensions', 1))
 write_variant('gallery-plan-mismatch',
@@ -89,6 +111,12 @@ def shallow_free_build(s):
     contract_node.string=json.dumps(contract, ensure_ascii=False)
     return str(soup)
 write_variant('free-build-shallow', shallow_free_build)
+
+def mention_g5(s):
+    i = s.index('### p02'); j = s.index('\n', i) + 1
+    return s[:j] + '- 附注: 视觉参照 G5 泳道语法。\n' + s[j:]
+write_variant('fit-waiver-missing', plan_mutator=mention_g5)
+write_variant('straddle-structure', plan_mutator=lambda s: s.replace('③ 选定: **单区**', '③ 选定: **左右不对称**', 1))
 
 def mini(waiver=True, template2='D3', extra=''):
     waiver_line='- **节奏页对豁免**: p01→p02 | p01 定调工程边界，p02 收束行动，两个职责均不可合并。\n' if waiver else ''
@@ -146,6 +174,10 @@ expect_fail gallery-plan-mismatch '套版式登记错配'
 expect_fail gallery-missing-required-slot '版式缺必需槽位: comparison'
 expect_fail free-build-pretends-gallery '自由构建页不得在 deck-plan 冒充套版式'
 expect_fail free-build-shallow '自由构建关系页至少声明 2 个内部几何锚点'
+expect_fail fit-waiver-missing '未登记拒套豁免'
+expect_fail straddle-structure '③选定结构'
+expect_fail same-relation '单区 必须 data-balance=centered'
+expect_fail same-relation '缺少内容组之间的对齐关系'
 expect_fail cross-placeholder '矩形加双对角线叉号'
 expect_fail missing-icon '图标不在 Catalog 精选资产中'
 expect_fail forged-icon '图标几何与 redraw-v3 不一致'
@@ -173,4 +205,4 @@ for attr in ['data-catalog-source-sha256','data-catalog-snippet-sha256','data-ca
     assert attr in html
 PY
 echo "PASS atlas.051 deterministic materializer"
-echo "PASS deck contract v2 fixtures=20"
+echo "PASS deck contract v2 fixtures=22"

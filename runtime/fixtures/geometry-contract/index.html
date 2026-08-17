@@ -27,7 +27,7 @@
 <section id="deck" aria-label="横向放映"><div id="deck-stage"><div id="track">
 
 <section class="slide" data-page-id="fixture.edge" data-page-role="compare" data-layout-source="free_build" data-primary-relation="comparison" data-visual-family="paired-edge-boxes" data-primary-type-role="body" data-page-title="共同边对齐" data-page-summary="共同边和边界关系同时成立" data-section-id="fixture" data-section-title="几何契约" data-emphasis-mode="none">
-  <main class="stage">
+  <main class="stage" data-balance="structural">
     <div class="doc tl"><span>GEOMETRY — 01</span><strong>共同边对齐</strong></div>
     <div class="folio">01 / 04 — BY TEST</div>
     <div class="caption">共同边让同级关系可见。</div>
@@ -59,17 +59,17 @@
   }</script>
 </section>
 
-<section class="slide" data-page-id="fixture.path" data-page-role="sequence" data-primary-relation="sequence" data-visual-family="anchored-path" data-primary-type-role="body" data-page-title="路径锚定" data-page-summary="节点锚定路径且路径不穿字" data-section-id="fixture" data-section-title="几何契约" data-emphasis-mode="none">
-  <main class="stage">
+<section class="slide" data-page-id="fixture.path" data-page-role="sequence" data-layout-source="free_build" data-primary-relation="sequence" data-visual-family="anchored-path" data-primary-type-role="body" data-page-title="路径锚定" data-page-summary="节点锚定路径且路径不穿字" data-section-id="fixture" data-section-title="几何契约" data-emphasis-mode="none">
+  <main class="stage" data-balance="centered">
     <div class="doc tl"><span>GEOMETRY — 02</span><strong>路径锚定</strong></div>
     <div class="folio">02 / 04 — BY TEST</div>
     <div class="caption">路径和节点共同声明推进秩序。</div>
     <div class="fixture-region" data-layout-slot="true" data-slot-id="path-region" data-anchor-id="path.region">
       <svg class="path-canvas" viewBox="0 0 1400 560" aria-label="路径锚定夹具">
         <path data-anchor-id="path.track" d="M 150 280 L 1250 280" fill="none" stroke="var(--ink-45)" stroke-width="1"/>
-        <circle data-slot-id="path-node" data-anchor-id="path.node" cx="700" cy="280" r="18" fill="var(--paper)" stroke="var(--ink)" stroke-width="1.2"/>
+        <circle data-slot-id="path-node" data-anchor-id="path.node" data-geometry-role="content" cx="700" cy="280" r="18" fill="var(--paper)" stroke="var(--ink)" stroke-width="1.2"/>
       </svg>
-      <div class="fixture-slot path-label" data-layout-slot="true" data-slot-id="path-label" data-anchor-id="path.label"><p data-primary-text data-content-ref="fixture.path.label">路径上方说明</p></div>
+      <div class="fixture-slot path-label" data-layout-slot="true" data-slot-id="path-label" data-anchor-id="path.label" data-geometry-role="content"><p data-primary-text data-content-ref="fixture.path.label">路径上方说明</p></div>
     </div>
   </main>
   <script type="application/json" data-geometry-contract>{
@@ -85,24 +85,25 @@
       {"relation_id":"path.label-contained","type":"contain","anchors":["path.region","path.label"],"shape":"rect","inset":8,"tolerance":1},
       {"relation_id":"path.node-contained","type":"contain","anchors":["path.region","path.node"],"shape":"rect","inset":0,"tolerance":1},
       {"relation_id":"path.label-clear","type":"pathClear","anchors":["path.label","path.track"],"min_gap":4,"tolerance":1},
+      {"relation_id":"path.label-node-separate","type":"avoid","anchors":["path.label","path.node"],"min_gap":4,"tolerance":1},
       {"relation_id":"path.node-anchor","type":"pathAnchor","anchors":["path.node","path.track"],"max_distance":1,"tolerance":1}
     ]
   }</script>
 </section>
 
-<section class="slide" data-page-id="fixture.center" data-page-role="hook" data-primary-relation="focus" data-visual-family="center-between" data-primary-type-role="body" data-page-title="中心型对齐" data-page-summary="唯一主角位于两侧锚点之间" data-section-id="fixture" data-section-title="几何契约" data-emphasis-mode="none">
-  <main class="stage">
+<section class="slide" data-page-id="fixture.center" data-page-role="hook" data-layout-source="free_build" data-primary-relation="focus" data-visual-family="center-between" data-primary-type-role="body" data-page-title="中心型对齐" data-page-summary="唯一主角位于两侧锚点之间" data-section-id="fixture" data-section-title="几何契约" data-emphasis-mode="none">
+  <main class="stage" data-balance="centered">
     <div class="doc tl"><span>GEOMETRY — 03</span><strong>中心型对齐</strong></div>
     <div class="folio">03 / 04 — BY TEST</div>
     <div class="caption">只有中心型结构使用最终中心配平。</div>
     <div class="fixture-region" data-layout-slot="true" data-slot-id="center-region" data-anchor-id="center.region">
-      <div class="fixture-slot center-left" data-layout-slot="true" data-slot-id="center-left" data-anchor-id="center.left"><p data-content-ref="fixture.center.left">左锚点</p></div>
-      <div class="fixture-slot center-focus" data-layout-slot="true" data-slot-id="center-focus" data-anchor-id="center.focus"><p data-primary-text data-content-ref="fixture.center.focus">唯一主角</p></div>
-      <div class="fixture-slot center-right" data-layout-slot="true" data-slot-id="center-right" data-anchor-id="center.right"><p data-content-ref="fixture.center.right">右锚点</p></div>
+      <div class="fixture-slot center-left" data-layout-slot="true" data-slot-id="center-left" data-anchor-id="center.left" data-geometry-role="content"><p data-content-ref="fixture.center.left">左锚点</p></div>
+      <div class="fixture-slot center-focus" data-layout-slot="true" data-slot-id="center-focus" data-anchor-id="center.focus" data-geometry-role="content"><p data-primary-text data-content-ref="fixture.center.focus">唯一主角</p></div>
+      <div class="fixture-slot center-right" data-layout-slot="true" data-slot-id="center-right" data-anchor-id="center.right" data-geometry-role="content"><p data-content-ref="fixture.center.right">右锚点</p></div>
     </div>
   </main>
   <script type="application/json" data-geometry-contract>{
-    "format":"wise-ppt-geometry@1","primitive":"非关系模板:M2","canvas":{"width":1920,"height":1080},
+    "format":"wise-ppt-geometry@1","primitive":"单区","canvas":{"width":1920,"height":1080},
     "content_region":{"anchor_id":"center.region","zone":"breath-page"},
     "anchors":[
       {"anchor_id":"center.region","selector":"[data-anchor-id=\"center.region\"]"},
@@ -111,20 +112,22 @@
       {"anchor_id":"center.right","selector":"[data-anchor-id=\"center.right\"]"}
     ],
     "relations":[
+      {"relation_id":"center.left-right-separate","type":"avoid","anchors":["center.left","center.right"],"min_gap":4,"tolerance":1},
+      {"relation_id":"center.focus-left-separate","type":"avoid","anchors":["center.focus","center.left"],"min_gap":4,"tolerance":1},
       {"relation_id":"center.focus-contained","type":"contain","anchors":["center.region","center.focus"],"shape":"rect","inset":8,"tolerance":1},
       {"relation_id":"center.focus-between","type":"centerBetween","anchors":["center.focus","center.left","center.right"],"axis":"x","tolerance":3}
     ]
   }</script>
 </section>
 
-<section class="slide" data-page-id="fixture.overlap" data-page-role="explain" data-primary-relation="decomposition" data-visual-family="owned-overlap" data-primary-type-role="body" data-page-title="合法归属重叠" data-page-summary="有归属理由的重叠可以通过" data-section-id="fixture" data-section-title="几何契约" data-emphasis-mode="none">
-  <main class="stage">
+<section class="slide" data-page-id="fixture.overlap" data-page-role="explain" data-layout-source="free_build" data-primary-relation="decomposition" data-visual-family="owned-overlap" data-primary-type-role="body" data-page-title="合法归属重叠" data-page-summary="有归属理由的重叠可以通过" data-section-id="fixture" data-section-title="几何契约" data-emphasis-mode="none">
+  <main class="stage" data-balance="structural">
     <div class="doc tl"><span>GEOMETRY — 04</span><strong>合法归属重叠</strong></div>
     <div class="folio">04 / 04 — BY TEST</div>
     <div class="caption">重叠必须声明归属和理由。</div>
     <div class="fixture-region" data-layout-slot="true" data-slot-id="overlap-region" data-anchor-id="overlap.region">
-      <div class="fixture-slot overlap-base" data-layout-slot="true" data-slot-id="overlap-base" data-anchor-id="overlap.base"><p data-primary-text data-content-ref="fixture.overlap.base">证据主体</p></div>
-      <div class="fixture-slot overlap-tag" data-layout-slot="true" data-slot-id="overlap-tag" data-anchor-id="overlap.tag"><p data-content-ref="fixture.overlap.tag">所属编号牌</p></div>
+      <div class="fixture-slot overlap-base" data-layout-slot="true" data-slot-id="overlap-base" data-anchor-id="overlap.base" data-geometry-role="content"><p data-primary-text data-content-ref="fixture.overlap.base">证据主体</p></div>
+      <div class="fixture-slot overlap-tag" data-layout-slot="true" data-slot-id="overlap-tag" data-anchor-id="overlap.tag" data-geometry-role="content"><p data-content-ref="fixture.overlap.tag">所属编号牌</p></div>
     </div>
   </main>
   <script type="application/json" data-geometry-contract>{

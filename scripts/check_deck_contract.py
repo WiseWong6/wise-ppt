@@ -33,6 +33,10 @@ PLAN_PAGE_RE = re.compile(r"^###\s+p(\d+)\b", re.M | re.I)
 PLAN_CONTRACT_RE = re.compile(r"成品合同\*{0,2}\s*[:：]\s*(.+)")
 PLAN_LAYOUT_RE = re.compile(r"套版式\s*[:：]\s*([A-Z]\d{1,2})", re.I)
 PAIR_WAIVER_RE = re.compile(r"^\s*-\s*\**节奏页对豁免\**\s*[:：]\s*p(\d+)\s*→\s*p(\d+)\s*\|\s*(\S.+)$", re.M | re.I)
+LAYOUT_CODE_RE = re.compile(r"\b([A-Z]\d{1,2})\b")
+FIT_WAIVER_RE = re.compile(r"拒套\s*[:：]\s*([A-Z]\d{1,2})\s*\|\s*\S+")
+PLAN_SELECT_RE = re.compile(r"③\s*选定\s*[:：]\s*\*\*(.+?)\*\*")
+PRIMITIVE_RE = re.compile(r"^(?:单区|(?:左右|上下)x等分|左右不对称|上下不对称|网格\d{1,2}x\d{1,2}|非关系模板:\S+)$")
 TITLE_FW_BUDGET = 28.0
 
 
@@ -297,6 +301,14 @@ def main() -> int:
         fails.append("缺少 deck-plan.md")
 
     by_id, aliases, gallery_slots, gallery_recipes, templates, authority, selected_icons, relations = load_manifests()
+    protected_digests = set()
+    protected_path = REPO_ROOT / "capabilities/layouts/protected-references.json"
+    if protected_path.is_file():
+        for item in json.loads(protected_path.read_text(encoding="utf-8"))["files"]:
+            digest = str(item.get("sha256", "")).split(":")[-1]
+            if digest:
+                protected_digests.add(digest)
+    deck_protected = hashlib.sha256(html_path.read_bytes()).hexdigest() in protected_digests
     atlas_receipts = [
         receipt for component_id, receipt in authority["components"]["receipts"].items()
         if component_id.startswith("atlas.")
@@ -433,6 +445,11 @@ def main() -> int:
             elif layout_source == "free_build":
                 if planned_layouts:
                     fails.append(f"p{number:02d} 自由构建页不得在 deck-plan 冒充套版式: {','.join(planned_layouts)}")
+                mentioned = set(LAYOUT_CODE_RE.findall(plan["block"]))
+                waived = {code for code in FIT_WAIVER_RE.findall(plan["block"])}
+                unwaived = sorted(mentioned - waived)
+                if unwaived:
+                    fails.append(f"p{number:02d} 自由构建页提及版式 {','.join(unwaived)} 未登记拒套豁免(④列 `拒套: 版式号 | 理由`,或回到该版式走锁版复制)")
             else:
                 fails.append(f"p{number:02d} 关系页 data-layout-source 缺失或非法: {layout_source or '-'}")
             if relation not in relations:
@@ -443,6 +460,18 @@ def main() -> int:
                 fails.append(f"p{number:02d} 主关系不一致: deck-plan={fields.get('主关系') or '-'} HTML={relation or '-'}")
             if fields.get("视觉族") != family:
                 fails.append(f"p{number:02d} 视觉族不一致: deck-plan={fields.get('视觉族') or '-'} HTML={family or '-'}")
+            if slide.get("data-layout-source") == "free_build" and not deck_protected and primitive in {"左右x等分", "上下x等分", "左右不对称", "上下不对称"}:
+                furniture_suffixes = (".doc", ".folio", ".caption", ".scene", ".region")
+                content_aligned = False
+                for item in (geometry or {}).get("relations", []):
+                    if not isinstance(item, dict) or item.get("type") not in {"edgeEq", "bottomEq", "offsetEq", "centerBetween", "mirrorEq", "pathAnchor"}:
+                        continue
+                    anchor_list = [a for a in (item.get("anchors") or []) if not str(a).endswith(furniture_suffixes)]
+                    if len(anchor_list) >= 2:
+                        content_aligned = True
+                        break
+                if not content_aligned:
+                    fails.append(f"p{number:02d} 自由构建 {primitive} 页契约缺少内容组之间的对齐关系(edgeEq/bottomEq/offsetEq/centerBetween/mirrorEq 且两侧均非家具锚点)")
             if slide.get("data-layout-source") == "free_build":
                 anchors = geometry.get("anchors", []) if geometry else []
                 anchor_ids = {item.get("anchor_id") for item in anchors if isinstance(item, dict) and item.get("anchor_id")}
@@ -461,6 +490,21 @@ def main() -> int:
                 uncovered = sorted(internal_ids - internal_covered)
                 if uncovered:
                     fails.append(f"p{number:02d} 自由构建页内部锚点未参与内部边界关系: {','.join(uncovered)}")
+            if primitive is not None:
+                if not PRIMITIVE_RE.match(primitive):
+                    fails.append(f"p{number:02d} 几何契约 primitive 非法(只填六结构或非关系模板): {primitive}")
+                elif slide.get("data-layout-source") == "free_build" and not deck_protected:
+                    stage_el = slide.select_one(".stage")
+                    balance = stage_el.get("data-balance") if stage_el else None
+                    if primitive == "单区" and balance != "centered":
+                        fails.append(f"p{number:02d} primitive=单区 必须 data-balance=centered(水平垂直居中同 ≤3px 实测),实际 {balance or '-'}")
+                    if primitive != "单区" and balance != "structural":
+                        fails.append(f"p{number:02d} primitive={primitive} 必须 data-balance=structural,实际 {balance or '-'}")
+                selected = PLAN_SELECT_RE.search(plan["block"])
+                if selected:
+                    selected_norm = re.sub(r"^(左右|上下)\d{1,2}等分$", r"\1x等分", selected.group(1).strip())
+                    if selected_norm != primitive:
+                        fails.append(f"p{number:02d} ③选定结构({selected.group(1).strip()})与 primitive({primitive})不一致,禁止骑墙")
             relation_pages.append((number, relation, primitive, family))
 
         icon_sources = sorted({n.get("data-icon-source") for n in slide.select("[data-icon-source]")})
