@@ -4830,18 +4830,18 @@ FAIL-SAFE · AUDITED PER CALL
   </defs>
   <text x="525" y="36" text-anchor="middle" font-family="var(--pi-mono)" font-size="10" letter-spacing="2.6" fill="var(--pi-ink-45)">COUPLED SYSTEM · MUTUAL DRIVE</text>
   <g data-repeat-unit="module">
-    <g transform="translate(330 285) scale(1.28)">
+    <g transform="translate(327 286) scale(1.28)">
       <use href="#pi-gear-outline" fill="url(#pi-gear-dots)" stroke="var(--pi-ink-80)" stroke-width="1.15" stroke-linejoin="round" vector-effect="non-scaling-stroke"/>
       <circle r="57" fill="var(--pi-paper)" stroke="var(--pi-ink-80)" stroke-width=".85" vector-effect="non-scaling-stroke"/>
       <text data-field="module_1" x="0" y="-4" text-anchor="middle" font-family="var(--pi-sans)" font-size="18" font-weight="300" fill="var(--pi-ink)">内容</text>
       <text data-field="module_1_desc" x="0" y="22" text-anchor="middle" font-family="var(--pi-sans)" font-size="10" font-weight="300" fill="var(--pi-ink-60)">知识与任务</text>
     </g>
-    <g transform="translate(543 205) rotate(15) scale(.98)">
+    <g transform="translate(543 202) rotate(15) scale(.98)">
       <use href="#pi-gear-outline" fill="rgba(255,255,255,.24)" stroke="var(--pi-ink-80)" stroke-width="1.15" stroke-linejoin="round" vector-effect="non-scaling-stroke"/>
       <circle r="57" fill="var(--pi-paper)" stroke="var(--pi-ink-80)" stroke-width=".85" vector-effect="non-scaling-stroke"/>
       <g transform="rotate(-15)"><text data-field="module_2" x="0" y="-4" text-anchor="middle" font-family="var(--pi-sans)" font-size="18" font-weight="300" fill="var(--pi-ink)">模型</text><text data-field="module_2_desc" x="0" y="22" text-anchor="middle" font-family="var(--pi-sans)" font-size="10" font-weight="300" fill="var(--pi-ink-60)">推理与执行</text></g>
     </g>
-    <g transform="translate(529 402) rotate(15) scale(1.02)">
+    <g transform="translate(530 403) rotate(15) scale(1.02)">
       <use href="#pi-gear-outline" fill="rgba(255,255,255,.14)" stroke="var(--pi-ink-80)" stroke-width="1.15" stroke-linejoin="round" vector-effect="non-scaling-stroke"/>
       <circle r="57" fill="var(--pi-paper)" stroke="var(--pi-ink-80)" stroke-width=".85" vector-effect="non-scaling-stroke"/>
       <g transform="rotate(-15)"><text data-field="module_3" x="0" y="-4" text-anchor="middle" font-family="var(--pi-sans)" font-size="18" font-weight="300" fill="var(--pi-ink)">评测</text><text data-field="module_3_desc" x="0" y="22" text-anchor="middle" font-family="var(--pi-sans)" font-size="10" font-weight="300" fill="var(--pi-ink-60)">反馈与校准</text></g>
