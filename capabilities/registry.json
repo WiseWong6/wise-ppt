@@ -65,10 +65,10 @@
     }
   ],
   "human_gallery": {
-    "entrypoint": "gallery/taxonomy/index.html",
+    "entrypoint": "references/catalog.html",
     "status": "production",
     "unique": true,
-    "description": "唯一人工浏览入口；统一查看画册蓝图、几何审计、62 个组合证据和生产组件。General、AI 与 components Gallery 仅作为内部渲染器和设计证据。"
+    "description": "唯一人工浏览入口；统一查看非关系模板、关系版式、结构空槽、组件与精选图标。General、AI 与 components Gallery 仅作为内部渲染器和设计证据。"
   },
   "capabilities": [
     {
@@ -88,7 +88,6 @@
       "license": "Apache-2.0",
       "dataset_docs": "https://echarts.apache.org/handbook/en/concepts/dataset/",
       "catalog": "capabilities/vendors/echarts/catalog.json",
-      "internal_gallery": "gallery/components/index.html",
       "visibility": "internal-renderer-evidence",
       "component_count": 13,
       "examples": "capabilities/vendors/echarts/examples/",
@@ -115,7 +114,7 @@
       "visibility": "internal-renderer-evidence",
       "license": "MIT",
       "component_count": 57,
-      "description": "从 gallery/paper-ink/ai/frames/ 样张烘焙的纸墨原生组件(静态 snippet,num 62–108,含历史间隔),与上游 atlas catalog 相互独立",
+      "description": "从 references/gallery-paper-ink/ai/frames/ 样张烘焙的纸墨原生组件(静态 snippet,num 62–108,含历史间隔),与上游 atlas catalog 相互独立",
       "reference": "capabilities/references/component-routing.md"
     },
     {

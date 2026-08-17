@@ -316,6 +316,25 @@ def main() -> None:
     assert classics["native.paper-ink.106.balance-scale"].get("relation_keys") == ["comparison"]
     assert classics["native.paper-ink.107.interlocking-gears"].get("relation_keys") == ["network"]
 
+    echarts_vendor = json.loads(
+        (ROOT / "capabilities/vendors/echarts/catalog.json").read_text(encoding="utf-8")
+    )
+    echarts_gallery_text = (ROOT / "references/gallery-components/echarts-catalog-data.js").read_text(
+        encoding="utf-8"
+    )
+    echarts_gallery = json.JSONDecoder().raw_decode(
+        echarts_gallery_text[echarts_gallery_text.index("{"):]
+    )[0]
+    echarts_vendor_ids = {item["component_id"] for item in echarts_vendor["components"]}
+    echarts_gallery_ids = {item["component_id"] for item in echarts_gallery["components"]}
+    assert echarts_gallery_ids == echarts_vendor_ids, (
+        "echarts 画册镜像与 vendors catalog 不闭合:"
+        f" 漏 {sorted(echarts_vendor_ids - echarts_gallery_ids)}"
+        f" / 多 {sorted(echarts_gallery_ids - echarts_vendor_ids)}"
+    )
+    assert len(echarts_gallery_ids) == echarts_vendor["component_count"] == 13, "echarts 计数不闭合"
+    assert '"generated_from"' not in echarts_gallery_text, "echarts 镜像是手工维护,不得声称生成物"
+
     assert "./component-routing-data.js" in catalog, "Catalog 未加载组件路由投影"
     assert ROUTING_DATA.exists(), "缺 component-routing-data.js"
     assert "componentRelationLabels(c)" in catalog, "组件卡仍未使用生产关系标签"
@@ -338,6 +357,7 @@ def main() -> None:
     print("Q4 四槽、R3 六槽、R6 四槽、R7 二十八槽均逐槽独立绑定；没有用组件内部重复单元冒充页面结构。")
     print("R4/R5 关系页直接物化组件；结构页示例直接复用关系页帧，三入口无私有副本。")
     print("Q3 下层流程框已收在 y<=890，页底结论保留独立安全区。")
+    print("echarts 画册镜像 13 条与 vendors catalog 逐 id 闭合(手工镜像,不得声称生成物)。")
     print("边界: 本仓库只登记 GLM Catalog 与 gallery recipe；内核 blueprint/composition preset 未手填。")
 
 

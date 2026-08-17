@@ -18,9 +18,11 @@ description: 表驱动的网页 PPT 编排 skill。输入 PDF/链接/口语稿/�
 | `skill-design.md` | 方法论出处(九个阶段各章的判定理由与设计原则)+修订记录 | 要"为什么这么判"时查 |
 | `references/catalog.html` | **唯一可直接选择的生产资产目录**(模板/版式/结构/组件/图标五 tab);当前可见内容就是执行者能选的全集 | 套版式、选组件、选图标、看模板实拍 |
 | `capabilities/catalog-authority-manifest.json` | Catalog 的确定性机器投影；锁定每个关系/非关系帧、组件源码与渲染栈、精选图标的 SHA-256 | 生成前核对，交付时跑 `node scripts/build_catalog_authority_manifest.cjs --check` |
+| `references/ppt-component-atlas/catalog-data.js` | atlas. 组件的唯一源码(SWISS_CATALOG_DATA) | 物化 atlas. 前缀组件(唯一物化器吃的就是它) |
+| `capabilities/layouts/paper-ink-components.js` | native. 组件的唯一源码(PAPER_INK_COMPONENT_DATA,依赖 --wp-compat-pi-* 映射) | 复制 native. 组件 snippet 时 |
 | `references/gallery-paper-ink/ai/frames/` | 80 张整页版式帧(68 关系版式+12 模板),完整 1920×1080 可执行 HTML | 套版式时的复制底稿 |
 | `capabilities/layouts/gallery-manifest.json` | 76 份可查询版式配方(槽位/结构合同/推荐组件;D7-D10 为画册模板,不进关系配方) | 套版式时查槽位几何 |
-| `capabilities/components/routing-manifest.json` | 126 条组件机器数据(relation_keys/frame/容量),`relation_keys` 用 23 细种口径,与表B 同一套词 | 表B 不够用时查全量、核对物化 |
+| `capabilities/components/routing-manifest.json` | 126 条组件机器数据(全量含内部实现;Catalog 可见卡 80、可选 spec 96),`relation_keys` 用 23 细种口径,与表B 同一套词 | 表B 不够用时查全量、核对物化 |
 | `capabilities/layouts/nonrelation-template-contracts.json` | D1–D10/M1/M2 的固定结构、允许替换槽和模板职责 | 非关系页复制与锁版检查 |
 | `references/component-routing-data.js` | `routing-manifest.json` 的 file:// 安全投影；Catalog 组件关系标签由它生成 | 浏览时防止手写标签与生产路由漂移 |
 | `references/taxonomy-empty/` | 6 种结构 × 17 张空槽大图 | 切区域前对几何 |
@@ -210,7 +212,7 @@ description: 表驱动的网页 PPT 编排 skill。输入 PDF/链接/口语稿/�
 | 并行 parallel | swimlane-roadmap(980×430 · 6-24,辅时序/流动) |
 | 排名 ranking | ranking-bars(972×547 · 3-8)、柱状/动态排序柱(ECharts) |
 | 分布 distribution | district-map(890×470 · 1-12)、散点、日历热力 |
-| 时序 sequence | timeline 横轴/竖轴(1044×587 / 540×600 · 3-6)、journey-curve(1049×590 · 4-6)、scenario-column(540×690 · 单场景)、step-rise(960×440 · 3-6)、timeline-gallery(960×440 · 3-5)、折线 平滑/堆叠(ECharts,趋势归此) |
+| 时序 sequence | timeline-axis 横轴/竖轴(1044×587 / 540×600 · 3-6)、journey-curve(1049×590 · 4-6)、scenario-column(540×690 · 单场景)、step-rise(960×440 · 3-6)、timeline-gallery(960×440 · 3-5)、折线 平滑/堆叠(ECharts,趋势归此) |
 | 流动 flow | process 横链(1500×160~260 · 3-6)、gantt-ink(970×430 · 3-8)、桑基 |
 | 循环 cycle | process-loop 四变体(三角 660×630·3 / 四边 650×650·4 / 五边 660×640·5 / 闭环 650×650·4)、cycle-ring(978×550 · 3-6)、serpentine-loop(1017×572 · 5-8) |
 | 汇聚 convergence | merge-confluence(910×460 · 3合1) |
@@ -218,7 +220,7 @@ description: 表驱动的网页 PPT 编排 skill。输入 PDF/链接/口语稿/�
 | 因果 causal | fishbone(820×510 · 4-8)、why-how-bands(920×460 · 2-6) |
 | 层级 hierarchy | trace-tree(830×510 · 3-12)、architecture(1010×410 · 2-5)、arch-table-band(800×520 · 2-4) |
 | 拆解 decomposition | three-way-radial(1443×812 · 固定3,技术节点三向字段)、three-principles-radial(1443×493 · 固定3,中心主张+三原则,横带)、radial-hub(760×550 · 3-8)、concentric(650×650 · 3-5)、pyramid(790×530 · 3-6)、iceberg(790×593 · 固定3) |
-| 部分整体 part-whole | 饼/环形(ECharts)、pyramid(770~790×530 · 3-6)、concentric |
+| 部分整体 part-whole | 饼/环形(ECharts)、pyramid 正置/倒置(790×530 / 770×540 · 3-6)、concentric |
 | 嵌套 nesting | concentric-ring(1249×702 · 3-5)、nested-frames(1476×830 · 3-5)、concentric、arch-platform(830×510) |
 | 对比 comparison | vs(1350×310 · 2)、before-after 验证款 atlas.019(780×540 · 2-4)、before-after-bands(930×450 · 2-6)、watershed-axis(850×490 · 3-6)、balance-scale(1050×560 · 2 侧) |
 | 矩阵 matrix | matrix(980×430 · 2-6)、comparison-table(1090×380 · 2-6)、swot(720×580 · 4)、quadrant-axis(700×600 · 4)、evidence-wall(910×460 · 2-12) |
@@ -252,7 +254,9 @@ description: 表驱动的网页 PPT 编排 skill。输入 PDF/链接/口语稿/�
     stage-fit.js          ← 舞台缩放(deck-runtime 同目录加载,源:runtime/)
     fonts/                ← 四套字体文件
     components/           ← 选中组件的资产(catalog-data/paper-ink-components/adapter)
+    materialized/         ← atlas. 组件经唯一物化器产出的 component.html/css(操作单 §4.B)
     registered-components.css ← 全部选中组件的 scoped CSS 汇总
+    deck-component-contract.css ← 组件预览外壳打穿(源:themes/paper-ink/assets/,必须最后加载)
     vendors/echarts/      ← 仅当选中 echarts 组件时复制
 ```
 
@@ -264,7 +268,7 @@ description: 表驱动的网页 PPT 编排 skill。输入 PDF/链接/口语稿/�
 <section class="slide" data-render-pending="true" data-page-id="p03" data-theme="paper-ink"
          data-primary-relation="mapping" data-visual-family="two-zone-map" data-primary-type-role="caption"
          data-page-title="主张句" data-section-id="s1" data-section-title="幕名">
-  <main class="stage">
+  <main class="stage" data-balance="structural">
     <div class="doc tl" data-balance-exclude="true">眉题 — 03<br>EN CODE</div>
     <div class="folio" data-balance-exclude="true">03 / 12 — 署名</div>
     <svg class="scene" viewBox="0 0 1920 1080">…</svg>
@@ -300,7 +304,7 @@ description: 表驱动的网页 PPT 编排 skill。输入 PDF/链接/口语稿/�
 8. **组件预览遗产打穿**:固定复制并最后加载 `deck-component-contract.css`；统一选择器只能写 `[data-layout-slot] .swiss-card …` / `.pi-card …`。外壳与 `__content` 的 min-height、padding、border、background、预览 flex 必须归零；禁止 deck 自己重新添加预览框。实际槽宽/高/宽高比必须满足 routing manifest 的 `space_requirements`;版式主槽的 `default_renderer.component_id` 若是正式组件,必须物化该精确 canonical `data-component-id`,`native.<recipe>.<slot>` 虚拟 id 只允许非组件辅助槽。
 9. **组件槽用标准样板**(上方代码块):槽只给锚点(left/top/width),高度跟内容自然流;不用 flex 居中、不写 overflow、不加内层 wrapper(print 分页 pass 会重算 flex/margin);print 残差逐槽 print-only 补偿;`data-page-id` 页的 svg inline translateY 属 screen 校准,print 漂移用 `@media print` 逐页补偿,不动 inline。
 10. **无 Emoji、无 CDN**:字体本地；图标内联并写 `data-icon-source`，不得用文字/叉号/空框充当 icon。
-11. **内容、字阶与节奏**:没有真实数据不编数值、不用图表版式；正文默认不低于 body-small=18px，13–16px 只给家具、标签、编号、出处，后三类必须显式标 `data-text-kind="label|number|source"`，不得靠 mono 字体或“字少”自动豁免；关系页最高 heading，只有主关系 focus 且 deck-plan 登记才可用 title/hero；每页 title/hero/display 主文字最多一个。相邻关系页主关系相同直接失败；同一“结构+视觉族”或同一组件三页内复读失败；大字页不连续；D5/M1/M2 紧接 D2/D3/D6 默认失败，只能按 `p10→p11 | 两页职责及必要性` 做页对级豁免。
+11. **内容、字阶与节奏**:没有真实数据不编数值、不用图表版式；正文默认不低于 body-small=18px，13–16px 只给家具、标签、编号、出处，后三类必须显式标 `data-text-kind="label|number|source"`(runtime 家具档另有第四值 `furniture`；自动豁免只有眉题 `.doc` 与页码 `.folio`，题注小字同样必须显式标注)，不得靠 mono 字体或“字少”自动豁免；关系页最高 heading，只有主关系 focus 且 deck-plan 登记才可用 title/hero；每页 title/hero/display 主文字最多一个。相邻(页号物理相邻且均为关系页)关系页主关系相同直接失败；同一“结构+视觉族”或同一组件三页内复读失败；大字页不连续；D5/M1/M2 紧接 D2/D3/D6 默认失败，只能按 `p10→p11 | 两页职责及必要性` 做页对级豁免。
 
 ### 机器门禁(交付三件套自动查,生成期不必背)
 
@@ -313,9 +317,9 @@ description: 表驱动的网页 PPT 编排 skill。输入 PDF/链接/口语稿/�
 | 直接套用外壳 | check-deck 静态+浏览器 | 关系版式与非关系模板都对照源帧：只放开登记槽 payload；外壳结构/字号/位置锁定；M2 在 `marks` 新增文字或改固定图形直接失败 |
 | 组件外壳/icon/占位符 | check-deck 静态+浏览器 | 槽满足 manifest；外壳 computed 归零；坏图、TODO、叉号、伪造 redraw-v3 失败 |
 | 字体真实加载、file:// 资源、禁 stageFit/iframe、缩放权威 | check-deck(浏览器) | fail-closed |
-| 文字主体垂直居中、中心型页水平配平 | audit-deck screen 管线 | 垂直 \|Δ\|≤3px；仅 `data-balance="centered"` 页的可见结构水平 \|Δ\|≤3px，`structural` 页不强推居中 |
+| 文字主体垂直居中、中心型页水平配平 | audit-deck screen 管线 | 垂直 \|Δ\|≤3px；仅 `data-balance="centered"` 页的可见结构水平 \|Δ\|≤3px，`structural` 页不强推居中；带 `data-template-id` 的锁版页免检(输出 template-locked) |
 | 全套字阶 | check-deck + audit-deck screen | 可见文字映射 design token；正文≥18px；大字唯一；主字档/同组件路径一致；逐页输出字档分布 |
-| 隐形内容、PDF 布局残差、页数 | audit-deck PDF 管线 | 主体残差 ≤35px;PDF 页数 = slide 数 |
+| 隐形内容、PDF 布局残差、页数 | audit-deck PDF 管线 | 主体残差 ≤35px(锁版页免检);PDF 页数 = slide 数 |
 
 ## 交付
 

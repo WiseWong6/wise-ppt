@@ -1,7 +1,7 @@
 window.WISE_PPT_ECHARTS_GALLERY_DATA = {
   "contract_version": 1,
   "gallery_id": "wise-ppt-echarts-gallery",
-  "generated_from": "capabilities/vendors/echarts/catalog.json",
+  "mirrors": "capabilities/vendors/echarts/catalog.json (hand-maintained mirror; ids/count closed by scripts/audit_relationship_assets.py)",
   "component_count": 13,
   "components": [
     {

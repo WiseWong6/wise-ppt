@@ -24,7 +24,6 @@ GALLERY_MANIFEST = REPO_ROOT / "capabilities/layouts/gallery-manifest.json"
 TEMPLATE_MANIFEST = REPO_ROOT / "capabilities/layouts/nonrelation-template-contracts.json"
 CATALOG_AUTHORITY = REPO_ROOT / "capabilities/catalog-authority-manifest.json"
 ICON_ROOT = REPO_ROOT / "capabilities/vendors/tabler-outline/redraw-v3/svg"
-RELATIONS = {"comparison", "sequence", "decomposition", "mapping", "causal", "focus", "display", "distribution", "hierarchy", "flow"}
 TYPE_ROLES = {"display", "hero", "title", "metric", "heading", "emphasis", "caption", "subheading", "body", "body-small", "micro-secondary", "label", "meta"}
 LARGE_ROLES = {"display", "hero", "title"}
 TRANSITIONS, CLOSINGS = {"D5", "M1", "M2"}, {"D2", "D3", "D6"}
@@ -52,7 +51,8 @@ def load_manifests():
     templates = json.loads(TEMPLATE_MANIFEST.read_text(encoding="utf-8"))["templates"]
     authority = json.loads(CATALOG_AUTHORITY.read_text(encoding="utf-8"))
     selected_icons = {item["name"]: item for item in authority["icons"]["entries"]}
-    return by_id, aliases, gallery_slots, gallery_recipes, templates, authority, selected_icons
+    relations = set(data["relation_key_vocabulary"])
+    return by_id, aliases, gallery_slots, gallery_recipes, templates, authority, selected_icons, relations
 
 
 def resolve_component(component_id, by_id, aliases, gallery_slots):
@@ -290,7 +290,7 @@ def main() -> int:
     if not plan_path.is_file():
         fails.append("缺少 deck-plan.md")
 
-    by_id, aliases, gallery_slots, gallery_recipes, templates, authority, selected_icons = load_manifests()
+    by_id, aliases, gallery_slots, gallery_recipes, templates, authority, selected_icons, relations = load_manifests()
     atlas_receipts = [
         receipt for component_id, receipt in authority["components"]["receipts"].items()
         if component_id.startswith("atlas.")
@@ -419,7 +419,7 @@ def main() -> int:
                     fails.append(f"p{number:02d} 自由构建页不得在 deck-plan 冒充套版式: {','.join(planned_layouts)}")
             else:
                 fails.append(f"p{number:02d} 关系页 data-layout-source 缺失或非法: {layout_source or '-'}")
-            if relation not in RELATIONS:
+            if relation not in relations:
                 fails.append(f"p{number:02d} 关系页 data-primary-relation 缺失或非法: {relation or '-'}")
             if not family:
                 fails.append(f"p{number:02d} 关系页缺少 data-visual-family")

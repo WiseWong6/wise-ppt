@@ -12,7 +12,7 @@
 4. 帧头部内联的 `<style>` 原样带走;外链 CSS 的 `../../../../themes/paper-ink/assets/design-tokens.css`、`slide-components.css` 换成 deck 内 `assets/design-tokens.css`、`assets/slide-components.css`。
 5. 帧**不带几何契约岛**,按 §5 给这页自建一个,然后跑 `bash runtime/check-deck.sh <deck>` 验证。
 
-小字语义同样是合同:13–16px 只允许家具、标签、编号、出处；后三类节点必须显式写 `data-text-kind="label|number|source"`，mono 字体或短文案本身不构成豁免。
+小字语义同样是合同:13–16px 只允许家具、标签、编号、出处；标签/编号/出处(以及不在自动豁免内的家具节点,如题注)必须显式写 `data-text-kind="label|number|source|furniture"`(自动豁免只有 `.doc` 眉题与 `.folio` 页码两处)，mono 字体或短文案本身不构成豁免。
 
 ## §2 component_id 前缀 → 物化链路
 
@@ -51,7 +51,7 @@ node scripts/materialize_atlas_component.cjs atlas.051.iceberg --out-dir /absolu
 
 命令产出 `component.html`、`component.css` 和 `manifest.json`；HTML 根节点自带 component id、Catalog spec、源码/snippet/adapter 指纹，CSS 固定为 `adaptCss(componentCss) + COMPONENT_OVERRIDES`。把 HTML 放进对应 `data-layout-slot`，把 CSS 合并进 `assets/registered-components.css`。按 `data-field` 改文案，不能删除收据属性或改 DOM 结构；最后加载公共 `assets/deck-component-contract.css`。
 
-Atlas 默认只允许构建期静态物化。确需运行时物化时，也必须写出同样的收据属性、注入出非空真实 DOM，并在全部动作结束后才调用 `WisePPT.markSlideReady(slide)`；空 host 先 ready 会被 runtime 直接拒绝。051 使用 Catalog 当前 `.iceberg-diagram` 三层模型与六个 `data-field`，不得恢复旧 `.iceberg` 结构或旧 CSS 自定义属性。
+Atlas 只允许构建期静态物化：静态门禁按源码里写死的收据属性核对，运行时注入的收据不被静态门禁认可，不要走这条路。空 host 先调用 `WisePPT.markSlideReady(slide)` 会被 runtime 直接拒绝。051 使用 Catalog 当前 `.iceberg-diagram` 三层模型与六个 `data-field`，不得恢复旧 `.iceberg` 结构或旧 CSS 自定义属性。
 
 ### C · echarts. 组件
 
