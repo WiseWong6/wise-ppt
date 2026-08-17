@@ -51,7 +51,7 @@ function txt(x, y, str, attrs) {
 }
 var MONO = 'var(--mono)', SANS = 'var(--sans)';
 
-G = el('g', {transform:'translate(0 -57)'});
+G = el('g', {transform:'translate(0 -36)'});
 var CX=960,CY=386;
 function line(x1,y1,x2,y2,attrs){return el('line',Object.assign({x1:x1,y1:y1,x2:x2,y2:y2,stroke:INK,'stroke-width':1.1},attrs||{}));}
 line(478,CY,760,CY,{stroke:INK45,'stroke-width':1,'stroke-dasharray':'3 5'});
@@ -63,15 +63,15 @@ el('rect',{x:767,y:311,width:386,height:150,fill:'none',stroke:INK,'stroke-width
 txt(CX,354,'DESIGN INTENT',{'font-family':MONO,'font-size':'var(--type-label)','letter-spacing':2.8,'text-anchor':'middle',fill:INK70});
 txt(CX,406,'一页一个重心',{'font-family':SANS,'font-size':'var(--type-heading)','font-weight':300,'text-anchor':'middle',fill:INK});
 txt(CX,440,'先决定观众应该先看见什么',{'font-family':SANS,'font-size':'var(--type-body-small)','font-weight':300,'text-anchor':'middle',fill:INK70});
-function block(x,y,side,code,title,lines){
+/* 序号小字行(01 · CONTENT …)已删;左右标题墨迹中心对齐序号圆点(基线 396),底部标题收进原小字槽(710)保 54px 节奏 */
+function block(x,y,side,title,lines){
   var anchor=side==='left'?'end':side==='right'?'start':'middle';
-  txt(x,y-62,code,{'font-family':MONO,'font-size':'var(--type-meta)','letter-spacing':2,'text-anchor':anchor,fill:INK45});
-  txt(x,y-20,title,{'font-family':SANS,'font-size':'var(--type-subheading)','font-weight':300,'text-anchor':anchor,fill:INK});
-  lines.forEach(function(text,index){txt(x,y+18+index*28,text,{'font-family':SANS,'font-size':'var(--type-body-small)','font-weight':300,'text-anchor':anchor,fill:INK70});});
+  txt(x,y,title,{'font-family':SANS,'font-size':'var(--type-subheading)','font-weight':300,'text-anchor':anchor,fill:INK});
+  lines.forEach(function(text,index){txt(x,y+38+index*28,text,{'font-family':SANS,'font-size':'var(--type-body-small)','font-weight':300,'text-anchor':anchor,fill:INK70});});
 }
-block(450,406,'left','01 · CONTENT BEFORE DECORATION','内容先于装饰',['先回答这页要讲什么，','再决定它需要什么形式。']);
-block(1470,406,'right','02 · COLOUR HAS A JOB','颜色必须有语义',['大面积保持克制，','强调只服务关键信息。']);
-block(CX,772,'bottom','03 · DENSITY FOLLOWS HIERARCHY','密度服从层级',['该留白的留白，该密集的有序；','让信息有进入和停留的位置。']);
+block(450,396,'left','内容先于装饰',['先回答这页要讲什么，','再决定它需要什么形式。']);
+block(1470,396,'right','颜色必须有语义',['大面积保持克制，','强调只服务关键信息。']);
+block(CX,710,'bottom','密度服从层级',['该留白的留白，该密集的有序；','让信息有进入和停留的位置。']);
 el('circle',{cx:478,cy:CY,r:18,fill:'#DFE0D9',stroke:INK,'stroke-width':1.1});
 txt(478,CY+5,'01',{'font-family':MONO,'font-size':'var(--type-meta)','text-anchor':'middle',fill:INK});
 el('circle',{cx:1442,cy:CY,r:18,fill:'#DFE0D9',stroke:INK,'stroke-width':1.1});
