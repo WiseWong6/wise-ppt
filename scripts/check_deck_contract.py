@@ -33,6 +33,12 @@ PLAN_PAGE_RE = re.compile(r"^###\s+p(\d+)\b", re.M | re.I)
 PLAN_CONTRACT_RE = re.compile(r"成品合同\*{0,2}\s*[:：]\s*(.+)")
 PLAN_LAYOUT_RE = re.compile(r"套版式\s*[:：]\s*([A-Z]\d{1,2})", re.I)
 PAIR_WAIVER_RE = re.compile(r"^\s*-\s*\**节奏页对豁免\**\s*[:：]\s*p(\d+)\s*→\s*p(\d+)\s*\|\s*(\S.+)$", re.M | re.I)
+TITLE_FW_BUDGET = 28.0
+
+
+def fullwidth_units(text: str) -> float:
+    """画册卡标题宽度当量:汉字类=1、半角=0.7(画册卡 mono 13px,半角 advance 实测 ≈0.69em)。"""
+    return sum(1.0 if ord(ch) > 0xFF else 0.7 for ch in text)
 
 
 def load_manifests():
@@ -345,6 +351,16 @@ def main() -> int:
         fields = plan["fields"]
         if not fields:
             fails.append(f"p{number:02d} deck-plan 缺少成品合同登记")
+        title_text = (slide.get("data-page-title") or "").strip()
+        if not title_text:
+            fails.append(f"p{number:02d} 缺少 data-page-title(画册卡标题=主张句)")
+        else:
+            title_units = fullwidth_units(title_text)
+            if title_units > TITLE_FW_BUDGET:
+                fails.append(
+                    f"p{number:02d} 主张句超画册一行预算: {title_units:.1f} > {TITLE_FW_BUDGET:g} 全角当量"
+                    "(汉字类=1、半角=0.7;超出画册卡标题换行,卡片行高被撑破),先砍修饰词再拆主张"
+                )
         primary_role = slide.get("data-primary-type-role")
         if primary_role not in TYPE_ROLES:
             fails.append(f"p{number:02d} data-primary-type-role 缺失或非法: {primary_role or '-'}")

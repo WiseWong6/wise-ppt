@@ -69,7 +69,7 @@ description: 表驱动的网页 PPT 编排 skill。输入 PDF/链接/口语稿/�
 1. **thesis**:整份 deck 一句可争辩的话。是判断不是主题,能被反对。
 2. **叙事型六选一**:问题→方案 / SCR / 时间线 / 论点→证据 / 对比选型 / 漏斗收窄。页序跟骨架走,不跟素材目录走。
 3. **页数**:唯一目标页数。用户给了 > 内容结构(数"不可合并的结论",一页一主张) > 场景推荐(1 页 ≈ 0.5~2 分钟讲述量,记录假设)。
-4. **主张句**:完整句子、可被质疑。Ghost Deck 自检:只读全部主张句要能读通完整故事;读不通改页,不加页。
+4. **主张句**:完整句子、可被质疑,且 ≤28 全角当量(汉字类=1、半角=0.7)——这是画册卡标题 `SNN · 主张句` 一行的预算,超出画册卡被撑高、章行高参差;超了先砍修饰词、再拆主张,不加页。Ghost Deck 自检:只读全部主张句要能读通完整故事;读不通改页,不加页。
 5. **证据最小化 + must 着落**:够主张成立就砍;must 内容要么进页、要么记删除理由。
 6. **封面/隔页/金句/尾卡此时排进页序**(节奏判断见 skill-design 9.5)。
 7. 只有用户选择会真正改变 thesis/页序/重点/行动才停下来问,最多三问,大白话。
@@ -304,7 +304,7 @@ description: 表驱动的网页 PPT 编排 skill。输入 PDF/链接/口语稿/�
 8. **组件预览遗产打穿**:固定复制并最后加载 `deck-component-contract.css`；统一选择器只能写 `[data-layout-slot] .swiss-card …` / `.pi-card …`。外壳与 `__content` 的 min-height、padding、border、background、预览 flex 必须归零；禁止 deck 自己重新添加预览框。实际槽宽/高/宽高比必须满足 routing manifest 的 `space_requirements`;版式主槽的 `default_renderer.component_id` 若是正式组件,必须物化该精确 canonical `data-component-id`,`native.<recipe>.<slot>` 虚拟 id 只允许非组件辅助槽。
 9. **组件槽用标准样板**(上方代码块):槽只给锚点(left/top/width),高度跟内容自然流;不用 flex 居中、不写 overflow、不加内层 wrapper(print 分页 pass 会重算 flex/margin);print 残差逐槽 print-only 补偿;`data-page-id` 页的 svg inline translateY 属 screen 校准,print 漂移用 `@media print` 逐页补偿,不动 inline。
 10. **无 Emoji、无 CDN**:字体本地；图标内联并写 `data-icon-source`，不得用文字/叉号/空框充当 icon。
-11. **内容、字阶与节奏**:没有真实数据不编数值、不用图表版式；正文默认不低于 body-small=18px，13–16px 只给家具、标签、编号、出处，后三类必须显式标 `data-text-kind="label|number|source"`(runtime 家具档另有第四值 `furniture`；自动豁免只有眉题 `.doc` 与页码 `.folio`，题注小字同样必须显式标注)，不得靠 mono 字体或“字少”自动豁免；关系页最高 heading，只有主关系 focus 且 deck-plan 登记才可用 title/hero；每页 title/hero/display 主文字最多一个。相邻(页号物理相邻且均为关系页)关系页主关系相同直接失败；同一“结构+视觉族”或同一组件三页内复读失败；大字页不连续；D5/M1/M2 紧接 D2/D3/D6 默认失败，只能按 `p10→p11 | 两页职责及必要性` 做页对级豁免。
+11. **内容、字阶与节奏**:没有真实数据不编数值、不用图表版式；正文默认不低于 body-small=18px，13–16px 只给家具、标签、编号、出处，后三类必须显式标 `data-text-kind="label|number|source"`(runtime 家具档另有第四值 `furniture`；自动豁免只有眉题 `.doc` 与页码 `.folio`，题注小字同样必须显式标注)，不得靠 mono 字体或“字少”自动豁免；关系页最高 heading，只有主关系 focus 且 deck-plan 登记才可用 title/hero；每页 title/hero/display 主文字最多一个。相邻(页号物理相邻且均为关系页)关系页主关系相同直接失败；同一“结构+视觉族”或同一组件三页内复读失败；大字页不连续；D5/M1/M2 紧接 D2/D3/D6 默认失败，只能按 `p10→p11 | 两页职责及必要性` 做页对级豁免；主张句(`data-page-title`)≤28 全角当量(汉字类=1、半角=0.7)——画册卡标题必须一行，超出失败。
 
 ### 机器门禁(交付三件套自动查,生成期不必背)
 
@@ -313,7 +313,7 @@ description: 表驱动的网页 PPT 编排 skill。输入 PDF/链接/口语稿/�
 | 门禁 | 谁查 | 口径 |
 |---|---|---|
 | 几何契约 12 类型实测、内部覆盖、SVG 长线穿字 | check-deck 静态+浏览器 | fail-closed；`free_build` 浅声明、未声明重叠或长分隔线穿字即红 |
-| 成品合同/组件/节奏 | check-deck 静态段 | v2 属性与 deck-plan 交叉核对；版式主槽正式组件精确物化；相邻同主关系、视觉签名/组件三页内复读、非法过渡+收尾失败 |
+| 成品合同/组件/节奏 | check-deck 静态段 | v2 属性与 deck-plan 交叉核对；版式主槽正式组件精确物化；相邻同主关系、视觉签名/组件三页内复读、非法过渡+收尾失败；主张句 ≤28 全角当量(画册卡标题一行) |
 | 直接套用外壳 | check-deck 静态+浏览器 | 关系版式与非关系模板都对照源帧：只放开登记槽 payload；外壳结构/字号/位置锁定；M2 在 `marks` 新增文字或改固定图形直接失败 |
 | 组件外壳/icon/占位符 | check-deck 静态+浏览器 | 槽满足 manifest；外壳 computed 归零；坏图、TODO、叉号、伪造 redraw-v3 失败 |
 | 字体真实加载、file:// 资源、禁 stageFit/iframe、缩放权威 | check-deck(浏览器) | fail-closed |

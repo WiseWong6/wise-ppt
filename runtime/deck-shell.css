@@ -39,8 +39,9 @@
 .board-card { appearance: none; border: 0; background: none; color: inherit; text-align: left; cursor: pointer; padding: 0; }
 .board-preview { position: relative; overflow: hidden; aspect-ratio: 16/9; border: 1px solid var(--ink-45); background: var(--paper); }
 .board-clone { position: absolute !important; inset: 0 !important; transform: scale(var(--board-scale)); transform-origin: top left; pointer-events: none; -webkit-user-select: none !important; user-select: none !important; }
-.board-title { margin-top: 10px; font-size: var(--type-meta); }
-.board-summary { margin-top: 5px; color: var(--ink-70); line-height: 1.5; }
+/* 画册卡标题/摘要锁单行:多行会把卡片撑高、章行高参差(v139);超预算文本省略号截断,全文在卡 title 悬停与页面题注 */
+.board-title { margin-top: 10px; font-size: var(--type-meta); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.board-summary { margin-top: 5px; color: var(--ink-70); line-height: 1.5; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 .board-card:hover .board-preview,
 .board-card.active .board-preview { border-color: var(--ink); outline: 1px solid var(--ink); }
 

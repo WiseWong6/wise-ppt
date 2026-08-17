@@ -647,9 +647,11 @@
       var title = document.createElement('div');
       title.className = 'board-title';
       title.textContent = 'S' + String(index + 1).padStart(2, '0') + ' · ' + slide.dataset.pageTitle;
+      title.title = title.textContent;
       var summary = document.createElement('div');
       summary.className = 'board-summary';
       summary.textContent = slide.dataset.pageSummary;
+      summary.title = summary.textContent || '';
       card.append(preview, title, summary);
       card.addEventListener('click', function () { enterDeck(index); });
       return card;
