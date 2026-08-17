@@ -12,6 +12,7 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 CATALOG = ROOT / "references" / "catalog.html"
+SKILL = ROOT / "SKILL.md"
 FRAMES = ROOT / "references" / "gallery-paper-ink" / "ai" / "frames"
 LAYOUTS = ROOT / "capabilities" / "layouts" / "gallery-manifest.json"
 ROUTING = ROOT / "capabilities" / "components" / "routing-manifest.json"
@@ -141,6 +142,20 @@ def main() -> None:
     }
     assert dict(counts) == expected_counts, f"六结构计数不符: {dict(counts)}"
 
+    skill_text = SKILL.read_text(encoding="utf-8")
+    table_a = skill_text.split("## 表A")[1].split("## 表B")[0]
+    example_codes = set()
+    for line in table_a.splitlines():
+        if not line.startswith("|"):
+            continue
+        cells = [cell.strip() for cell in line.strip("|").split("|")]
+        if len(cells) >= 4:
+            example_codes.update(re.findall(r"[A-Z]\d{1,2}", cells[-1]))
+    assert example_codes == set(by_code), (
+        f"表A 版式例未覆盖 67 版式: 漏 {sorted(set(by_code) - example_codes)}"
+        f" / 多 {sorted(example_codes - set(by_code))}"
+    )
+
     frame_codes = {
         path.stem.removeprefix("layout-").upper()
         for path in FRAMES.glob("layout-*.html")
@@ -211,6 +226,18 @@ def main() -> None:
     routing = json.loads(ROUTING.read_text(encoding="utf-8"))
     vocabulary = routing.get("relation_key_vocabulary") or {}
     assert vocabulary == {key: zh for zh, key in ZH_TO_KEY.items()}, "23 细种词表不一致"
+    override_vocab = layouts["page_expression_contract"]["vocabulary"][
+        "semantic_override_relations"
+    ]
+    assert override_vocab == list(vocabulary.keys()), (
+        "semantic_override_relations 必须与 23 细种词表同键同序，不得混入词表外键(如 spatial)"
+    )
+    for recipe in recipes:
+        declared = (
+            (recipe.get("expression_profile") or {}).get("semantic_override") or {}
+        ).get("relations") or []
+        beyond = [key for key in declared if key not in override_vocab]
+        assert not beyond, f"{recipe['recipe_id']} semantic_override 用了词表外关系键: {beyond}"
     layout_coverage = collections.Counter(
         key for _, _, label in by_code.values() for key in relation_keys(label)
     )
@@ -259,6 +286,7 @@ def main() -> None:
 
     print("检查通过: 67 张关系版式 + 12 张非关系模板 = 79 帧。")
     print("六结构计数: 单区40 / 左右等分8 / 上下等分3 / 左右不对称8 / 上下不对称5 / 网格3。")
+    print("表A 版式例列覆盖全部 67 版式;semantic_override 词表与 23 细种同键同序。")
     print("23 细种均有版式与生产组件覆盖；Q1–Q4、R1–R7 槽位、配方、指纹和路由闭合。")
     print("Q4 四槽、R3 六槽、R6 四槽、R7 二十八槽均逐槽独立绑定；没有用组件内部重复单元冒充页面结构。")
     print("R4/R5 关系页直接物化组件；结构页示例直接复用关系页帧，三入口无私有副本。")

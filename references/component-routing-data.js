@@ -28,6 +28,12 @@ window.WISE_PPT_COMPONENT_ROUTING = Object.freeze({
     "evidence": "证据"
   },
   "specs": {
+    "atlas:11": {
+      "component_id": "atlas.011.quote",
+      "relation_keys": [
+        "focus"
+      ]
+    },
     "atlas:12": {
       "component_id": "atlas.012.alert-box",
       "relation_keys": [
@@ -44,6 +50,12 @@ window.WISE_PPT_COMPONENT_ROUTING = Object.freeze({
       "component_id": "atlas.014.code",
       "relation_keys": [
         "focus"
+      ]
+    },
+    "atlas:15": {
+      "component_id": "atlas.015.vs",
+      "relation_keys": [
+        "comparison"
       ]
     },
     "atlas:19": {
@@ -503,6 +515,12 @@ window.WISE_PPT_COMPONENT_ROUTING = Object.freeze({
       "component_id": "native.paper-ink.081.watershed-axis",
       "relation_keys": [
         "comparison"
+      ]
+    },
+    "native:82": {
+      "component_id": "native.paper-ink.082.arch-table-band",
+      "relation_keys": [
+        "hierarchy"
       ]
     },
     "native:83": {
