@@ -216,7 +216,7 @@ description: 表驱动的网页 PPT 编排 skill。输入 PDF/链接/口语稿/�
 | 漏斗 funnel | funnel(840×500 · 3-6) |
 | 因果 causal | fishbone(820×510 · 4-8)、why-how-bands(920×460 · 2-6) |
 | 层级 hierarchy | trace-tree(830×510 · 3-12)、architecture(1010×410 · 2-5)、arch-table-band(800×520 · 2-4) |
-| 拆解 decomposition | three-way-radial(1443×812 · 固定3,技术节点三向字段)、three-principles-radial(1443×812 · 固定3,中心主张+三原则)、radial-hub(760×550 · 3-8)、concentric(650×650 · 3-5)、pyramid(790×530 · 3-6)、iceberg(790×530 · 2) |
+| 拆解 decomposition | three-way-radial(1443×812 · 固定3,技术节点三向字段)、three-principles-radial(1443×493 · 固定3,中心主张+三原则,横带)、radial-hub(760×550 · 3-8)、concentric(650×650 · 3-5)、pyramid(790×530 · 3-6)、iceberg(790×530 · 2) |
 | 部分整体 part-whole | 饼/环形(ECharts)、pyramid(770~790×530 · 3-6)、concentric |
 | 嵌套 nesting | concentric-ring(1249×702 · 3-5)、nested-frames(1476×830 · 3-5)、concentric、arch-platform(830×510) |
 | 对比 comparison | vs(1350×310 · 2)、before-after 验证款 atlas.019(780×540 · 2-4)、before-after-bands(930×450 · 2-6)、watershed-axis(850×490 · 3-6)、balance-scale(1050×560 · 2 侧) |

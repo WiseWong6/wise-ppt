@@ -3586,11 +3586,11 @@ stop
     num: 108,
     variant: null,
     paperInkNative: true,
-    frame: { width: 1443, height: 812, fit: 'fixed' },
+    frame: { width: 1443, height: 493, fit: 'fixed' },
     dataContract: {"mode":"collection","unit":"branch","pointer":"/structured_data","minItems":3,"maxItems":3},
-    /* formal example P03 → native.paper-ink.108.three-principles-radial */
-    snippet: `<div class="pi-card" data-bind-root="record" data-formal-example="P03" style="width:auto;min-height:0;overflow:visible"><svg class="pi-art" viewBox="0 0 1920 1080" width="1443" height="812" role="img" aria-label="三项原则围绕一个中心意图展开">
-    <g transform="translate(0 -57)">
+    /* formal example P03 → native.paper-ink.108.three-principles-radial;坐标与 G5 整页帧同系,viewBox 即主体内容带(框顶 304 → 末行基线 818+下行) */
+    snippet: `<div class="pi-card" data-bind-root="record" data-formal-example="P03" style="width:auto;min-height:0;overflow:visible"><svg class="pi-art" viewBox="155 304 1521 520" width="1443" height="493" role="img" aria-label="三项原则围绕一个中心意图展开">
+    <g>
       <line x1="478" y1="386" x2="760" y2="386" stroke="rgba(25,25,23,.45)" stroke-width="1" stroke-dasharray="3 5"/>
       <line x1="1160" y1="386" x2="1442" y2="386" stroke="rgba(25,25,23,.45)" stroke-width="1" stroke-dasharray="3 5"/>
       <line x1="960" y1="468" x2="960" y2="656" stroke="rgba(25,25,23,.45)" stroke-width="1" stroke-dasharray="3 5"/>
