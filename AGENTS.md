@@ -21,5 +21,4 @@
 - 执行权威:`SKILL.md`(表A/表B/红线/样板/交付);方法论与"为什么":`skill-design.md` + 修订记录
 - 核心链路:内容 → 页面规划(thesis/叙事/页数/主张句) → 关系(六大族) → 套版式(能套则套) / 结构(6种切分) → 组件
 - 资产只有一套:`references/catalog.html` 当前可见的关系页、非关系页、组件和图标才允许直接选择；精确源码/适配器指纹由 `capabilities/catalog-authority-manifest.json` 锁定。`themes/paper-ink/examples/wise-ppt-story-six-page/` 只是范文，机器数据在 `capabilities/`。
-- 旧 `wise-ppt` 与 `wise-ppt-page-expression` 已退役，必须删除，禁止作为 fallback、参考规则或资产来源重新引入。
 - 非关系页(封面/目录/尾卡/隔页/金句/联络)直接套模板,不进关系流程

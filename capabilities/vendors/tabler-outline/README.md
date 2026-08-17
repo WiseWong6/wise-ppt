@@ -1,6 +1,6 @@
 # Tabler Outline for Wise PPT
 
-> **本仓库收录范围(wise-ppt-glm)**:只收录 catalog 所需子集——母库 `icons/outline/`、
+> **本仓库收录范围(wise-ppt)**:只收录 catalog 所需子集——母库 `icons/outline/`、
 > 重绘成品 `redraw-v3/svg/`、`selection.json` / `progress.json` / `records/`、
 > `registry-v2.json` / `SOURCE.json` / `LICENSE` / `acceptance.html`。下文提到的
 > `icon-map.json`、`build_registry.py`、`icon-registry.js` 等按名引用链路**不在本仓库**:

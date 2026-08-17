@@ -146,7 +146,7 @@ function main() {
 
   const manifest = {
     contract_version: 1,
-    authority_id: 'wise-ppt-glm.catalog',
+    authority_id: 'wise-ppt.catalog',
     policy: 'references/catalog.html current visible assets are the only directly selectable production assets',
     retired_skill_names: ['wise-ppt', 'wise-ppt-page-expression'],
     entrypoint: { path: catalogRelative, sha256: shaFile(catalogRelative) },

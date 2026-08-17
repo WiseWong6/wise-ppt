@@ -1,5 +1,5 @@
 #!/bin/bash
-# wise-ppt-glm · deck 几何/字号/可见性审计(screen + PDF 双管线)
+# wise-ppt · deck 几何/字号/可见性审计(screen + PDF 双管线)
 # 用法: audit-deck.sh <deck目录>
 # 验收口径(v89):垂直居中量「文字主体并集」(叶子文本+分隔线,排除容器 padding 盒/隐形元素),
 #   水平居中只验显式 `data-balance="centered"` 页的可见结构并集;锚定型 `structural` 页不强推居中。

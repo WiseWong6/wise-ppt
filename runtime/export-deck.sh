@@ -1,5 +1,5 @@
 #!/bin/bash
-# wise-ppt-glm · 轻量 PDF 导出:Chrome 无头打印,等待 data-deck-ready,核对页数。
+# wise-ppt · 轻量 PDF 导出:Chrome 无头打印,等待 data-deck-ready,核对页数。
 # 用法: export-deck.sh <deck目录> [输出PDF路径]
 set -euo pipefail
 

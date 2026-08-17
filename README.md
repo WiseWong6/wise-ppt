@@ -1,4 +1,4 @@
-# wise-ppt-glm
+# wise-ppt
 
 表驱动的网页 PPT 编排 skill:输入素材(PDF / 链接 / 口语稿 / 成型 PPT),产出 16:9 自包含 HTML deck 与 PDF。
 

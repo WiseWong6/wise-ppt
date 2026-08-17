@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""wise-ppt-glm 成品合同 v2 静态门禁。
+"""wise-ppt 成品合同 v2 静态门禁。
 
 正式检查: python3 scripts/check_deck_contract.py <deck目录>
 旧成品诊断: python3 scripts/check_deck_contract.py --diagnose-legacy <deck目录>

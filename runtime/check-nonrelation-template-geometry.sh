@@ -1,5 +1,5 @@
 #!/bin/bash
-# wise-ppt-glm · 直接套用模板/版式外壳对照（无截图）
+# wise-ppt · 直接套用模板/版式外壳对照（无截图）
 set -euo pipefail
 
 DECK="${1:?用法: check-nonrelation-template-geometry.sh <deck目录>}"

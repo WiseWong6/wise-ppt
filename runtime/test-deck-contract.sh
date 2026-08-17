@@ -1,5 +1,5 @@
 #!/bin/bash
-# wise-ppt-glm · 成品合同 v2 正反例回归
+# wise-ppt · 成品合同 v2 正反例回归
 set -euo pipefail
 
 ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"

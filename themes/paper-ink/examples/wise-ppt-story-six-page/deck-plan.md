@@ -1,6 +1,6 @@
 # wise-ppt-story-six-page · deck-plan
 
-> 本文件是 **deck-plan.md 固定格式的格式范文**（按 wise-ppt-glm 逐页四步口径回填）。
+> 本文件是 **deck-plan.md 固定格式的格式范文**（按 wise-ppt 逐页四步口径回填）。
 > 样例按项目根目录 Skill 的轻量成品合同 v2 生成；目录内历史 JSON 只作兼容留存，不参与生成或门禁。
 
 - **thesis**: 稳定的网页演示来自内容、叙事、关系、版式和组件的连续判断，而不是随机套模板。

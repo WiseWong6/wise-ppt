@@ -1,5 +1,5 @@
 #!/bin/bash
-# wise-ppt-glm · 几何契约浏览器回归（无截图、临时产物自动清理）
+# wise-ppt · 几何契约浏览器回归（无截图、临时产物自动清理）
 set -euo pipefail
 
 RUNTIME_DIR="$(cd "$(dirname "$0")" && pwd)"
