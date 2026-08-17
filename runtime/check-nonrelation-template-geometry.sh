@@ -1,5 +1,5 @@
 #!/bin/bash
-# wise-ppt-glm · 非关系模板参考帧几何对照（无截图）
+# wise-ppt-glm · 直接套用模板/版式外壳对照（无截图）
 set -euo pipefail
 
 DECK="${1:?用法: check-nonrelation-template-geometry.sh <deck目录>}"
@@ -8,15 +8,17 @@ HTML="$DECK/index.html"
 [ -f "$HTML" ] || { echo "缺少 $HTML" >&2; exit 1; }
 
 ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
-MANIFEST="$ROOT/capabilities/layouts/nonrelation-template-contracts.json"
-[ -f "$MANIFEST" ] || { echo "缺少非关系模板合同: $MANIFEST" >&2; exit 1; }
+TEMPLATE_MANIFEST="$ROOT/capabilities/layouts/nonrelation-template-contracts.json"
+GALLERY_MANIFEST="$ROOT/capabilities/layouts/gallery-manifest.json"
+[ -f "$TEMPLATE_MANIFEST" ] || { echo "缺少非关系模板合同: $TEMPLATE_MANIFEST" >&2; exit 1; }
+[ -f "$GALLERY_MANIFEST" ] || { echo "缺少关系版式合同: $GALLERY_MANIFEST" >&2; exit 1; }
 
 CHROME="/Applications/Google Chrome.app/Contents/MacOS/Google Chrome"
 [ -x "$CHROME" ] || CHROME="$(command -v google-chrome || command -v chrome || command -v chromium || command -v chromium-browser || true)"
 [ -x "$CHROME" ] || { echo "找不到 Chrome" >&2; exit 1; }
 command -v node >/dev/null || { echo "缺少 node(>=21)" >&2; exit 1; }
 
-TMP_ROOT="$(mktemp -d /tmp/wise-ppt-template-geometry.XXXXXX)"
+TMP_ROOT="$(mktemp -d /tmp/wise-ppt-layout-fidelity.XXXXXX)"
 PORT=$(( 20000 + RANDOM % 20000 ))
 "$CHROME" --headless=new --disable-gpu --hide-scrollbars --allow-file-access-from-files \
   --disable-background-networking --disable-component-update --disable-default-apps --disable-sync \
@@ -32,13 +34,15 @@ cleanup() {
 }
 trap cleanup EXIT INT TERM
 
-node - "$HTML" "$ROOT" "$MANIFEST" "$PORT" <<'NODE'
-const [deckHtml, repoRoot, manifestPath, port] = process.argv.slice(2);
+node - "$HTML" "$ROOT" "$TEMPLATE_MANIFEST" "$GALLERY_MANIFEST" "$PORT" <<'NODE'
+const [deckHtml, repoRoot, templateManifestPath, galleryManifestPath, port] = process.argv.slice(2);
 const { readFileSync } = require('node:fs');
 const { pathToFileURL } = require('node:url');
 const { resolve } = require('node:path');
 const { setTimeout: sleep } = require('node:timers/promises');
-const contracts = JSON.parse(readFileSync(manifestPath, 'utf8')).templates;
+const templates = JSON.parse(readFileSync(templateManifestPath, 'utf8')).templates;
+const recipes = JSON.parse(readFileSync(galleryManifestPath, 'utf8')).recipes;
+const recipesById = Object.fromEntries(recipes.map(recipe => [recipe.recipe_id, recipe]));
 let ws, msgId = 0;
 const pending = new Map();
 const send = (method, params = {}) => new Promise((res, rej) => {
@@ -66,6 +70,104 @@ async function evaluate(expression) {
   return result.result.value;
 }
 
+const captureExpression = (selector, contract, kind) => `(() => {
+  const scope = ${selector};
+  if (!scope) return { error: '找不到测量范围' };
+  const stage = scope.matches('.stage') ? scope : scope.querySelector('.stage');
+  if (!stage) return { error: '找不到 .stage' };
+  const contract = ${JSON.stringify(contract)};
+  const kind = ${JSON.stringify(kind)};
+  const skip = new Set(['SCRIPT','STYLE','DESC','TITLE','TEMPLATE']);
+  const clean = value => String(value == null ? '' : value).replace(/\\s+/g, ' ').trim();
+  const visible = el => {
+    const cs = getComputedStyle(el);
+    const rect = el.getBoundingClientRect();
+    return cs.display !== 'none' && cs.visibility !== 'hidden' && Number(cs.opacity || 1) > 0 && rect.width >= 0 && rect.height >= 0;
+  };
+  const hasOwnText = el => !skip.has(el.tagName) && Array.from(el.childNodes).some(node => node.nodeType === Node.TEXT_NODE && clean(node.nodeValue));
+  const typography = el => {
+    const cs = getComputedStyle(el);
+    return {
+      fontSize: clean(cs.fontSize), fontWeight: clean(cs.fontWeight),
+      lineHeight: clean(cs.lineHeight), letterSpacing: clean(cs.letterSpacing), textAlign: clean(cs.textAlign),
+      textTransform: clean(cs.textTransform)
+    };
+  };
+  const declaredBoxProperties = el => {
+    const names = ['position','left','right','top','bottom','z-index','width','height'];
+    const declared = new Set();
+    const inspectRules = rules => {
+      for (const rule of Array.from(rules || [])) {
+        if (rule.cssRules) { inspectRules(rule.cssRules); continue; }
+        if (!rule.selectorText || !rule.style) continue;
+        try {
+          if (!el.matches(rule.selectorText)) continue;
+        } catch { continue; }
+        for (const name of names) if (rule.style.getPropertyValue(name)) declared.add(name);
+      }
+    };
+    for (const sheet of Array.from(document.styleSheets)) {
+      try { inspectRules(sheet.cssRules); } catch {}
+    }
+    for (const name of names) if (el.style.getPropertyValue(name)) declared.add(name);
+    return declared;
+  };
+  const shellNode = el => {
+    const cs = getComputedStyle(el);
+    const tag = el.tagName.toLowerCase();
+    const vector = tag === 'svg' || tag === 'canvas';
+    const declared = declaredBoxProperties(el);
+    const style = {};
+    for (const name of ['position','left','right','top','bottom','z-index','width','height']) {
+      if (!declared.has(name)) continue;
+      style[name] = clean(cs.getPropertyValue(name));
+    }
+    return {
+      tag,
+      classes: Array.from(el.classList).sort(),
+      attrs: vector ? Object.fromEntries(['width','height','viewBox'].filter(name => el.hasAttribute(name)).map(name => [name, clean(el.getAttribute(name))])) : {},
+      style,
+      typography: vector ? null : typography(el)
+    };
+  };
+  const deepNode = el => {
+    const keep = ['x','y','x1','y1','x2','y2','cx','cy','r','rx','ry','width','height','viewBox','d','points','transform','fill','stroke','stroke-width','stroke-dasharray','opacity','text-anchor'];
+    return {
+      tag: el.tagName.toLowerCase(),
+      classes: Array.from(el.classList).sort(),
+      attrs: Object.fromEntries(keep.filter(name => el.hasAttribute(name)).map(name => [name, clean(el.getAttribute(name))])),
+      typography: hasOwnText(el) ? typography(el) : null
+    };
+  };
+  const children = Array.from(stage.children).filter(el => !skip.has(el.tagName)).map(shellNode);
+  if (kind === 'relationship') return { children };
+
+  const editable = new Set(contract.editable_text_parts || []);
+  const textViolations = [];
+  for (const el of stage.querySelectorAll('*')) {
+    if (!visible(el) || !hasOwnText(el)) continue;
+    const owner = el.closest('[data-template-part]');
+    const part = owner && owner.getAttribute('data-template-part');
+    if (!part || !editable.has(part)) textViolations.push({ tag: el.tagName.toLowerCase(), part: part || '-', text: clean(el.textContent).slice(0, 48) });
+  }
+  const typeParts = {};
+  const textSlotParts = new Set(Object.entries(contract.slots || {}).filter(([, slotKind]) => slotKind === 'text').map(([part]) => part));
+  textSlotParts.add('folio');
+  for (const part of textSlotParts) {
+    const root = stage.querySelector('[data-template-part="' + CSS.escape(part) + '"]');
+    if (root) typeParts[part] = typography(root);
+  }
+  const fixedParts = {};
+  const slotParts = new Set(Object.keys(contract.slots || {}));
+  for (const part of contract.parts || []) {
+    if (slotParts.has(part)) continue;
+    const root = stage.querySelector('[data-template-part="' + CSS.escape(part) + '"]');
+    if (!root) continue;
+    fixedParts[part] = [deepNode(root), ...Array.from(root.querySelectorAll('*')).filter(el => !skip.has(el.tagName)).map(deepNode)];
+  }
+  return { children, textViolations, typeParts, fixedParts };
+})()`;
+
 const measureExpression = (selector, geometry) => `(() => {
   const scope = ${selector};
   if (!scope) return { error: '找不到测量范围' };
@@ -79,16 +181,13 @@ const measureExpression = (selector, geometry) => `(() => {
     const el = stage.querySelector('[data-template-part="' + CSS.escape(part) + '"]');
     if (!el) { values[part] = { error: 'missing' }; continue; }
     const r = el.getBoundingClientRect();
-    const all = {
-      left: (r.left - sr.left) / sx,
-      top: (r.top - sr.top) / sy,
-      width: r.width / sx,
-      height: r.height / sy,
-    };
+    const all = { left:(r.left-sr.left)/sx, top:(r.top-sr.top)/sy, width:r.width/sx, height:r.height/sy };
     values[part] = Object.fromEntries(fields.map(field => [field, +all[field].toFixed(2)]));
   }
   return { values };
 })()`;
+
+const same = (a, b) => JSON.stringify(a) === JSON.stringify(b);
 
 (async () => {
   let wsUrl;
@@ -112,51 +211,85 @@ const measureExpression = (selector, geometry) => `(() => {
   };
   await send('Page.enable');
   await send('Runtime.enable');
-  await send('Emulation.setDeviceMetricsOverride', { width: 1920, height: 1080, deviceScaleFactor: 1, mobile: false });
+  await send('Emulation.setDeviceMetricsOverride', { width:1920, height:1080, deviceScaleFactor:1, mobile:false });
 
   const deckUrl = pathToFileURL(deckHtml).href + '?selftest=1';
   await navigate(deckUrl, `document.readyState==='complete' && document.fonts.status==='loaded' && document.documentElement.getAttribute('data-deck-ready')==='true'`);
   await evaluate(`document.body.className='mode-deck'; true`);
   await sleep(250);
-  const pages = await evaluate(`(() => { const all=Array.from(document.querySelectorAll('#track > .slide')); return all.filter(slide=>slide.hasAttribute('data-template-id')).map(slide=>{const index=all.indexOf(slide);return {index,template:slide.getAttribute('data-template-id'),page:slide.getAttribute('data-page-id')||('p'+String(index+1).padStart(2,'0'))};}); })()`);
+  const pages = await evaluate(`(() => { const all=Array.from(document.querySelectorAll('#track > .slide')); return all.map((slide,index)=>({index,page:slide.getAttribute('data-page-id')||('p'+String(index+1).padStart(2,'0')),template:slide.getAttribute('data-template-id'),recipe:slide.getAttribute('data-layout-source')==='gallery'?slide.getAttribute('data-recipe-id'):null})).filter(item=>item.template||item.recipe); })()`);
   const actual = {};
   for (const page of pages) {
-    const contract = contracts[page.template];
-    if (!contract) throw new Error(`${page.page} 未登记模板 ${page.template}`);
-    const measured = await evaluate(measureExpression(`document.querySelectorAll('#track > .slide')[${page.index}]`, contract.geometry));
-    if (measured.error) throw new Error(`${page.page} ${measured.error}`);
-    actual[page.page] = { template: page.template, values: measured.values };
+    if (page.template) {
+      const contract = templates[page.template];
+      if (!contract) throw new Error(`${page.page} 未登记模板 ${page.template}`);
+      actual[page.page] = {
+        kind:'template', key:page.template,
+        capture:await evaluate(captureExpression(`document.querySelectorAll('#track > .slide')[${page.index}]`, contract, 'template')),
+        geometry:(await evaluate(measureExpression(`document.querySelectorAll('#track > .slide')[${page.index}]`, contract.geometry))).values
+      };
+    } else {
+      const recipe = recipesById[page.recipe];
+      if (!recipe) throw new Error(`${page.page} 未登记关系版式 ${page.recipe}`);
+      actual[page.page] = { kind:'relationship', key:page.recipe, capture:await evaluate(captureExpression(`document.querySelectorAll('#track > .slide')[${page.index}]`, recipe, 'relationship')) };
+    }
   }
 
   const reference = {};
-  for (const template of [...new Set(pages.map(page => page.template))]) {
-    const contract = contracts[template];
-    const referenceUrl = pathToFileURL(resolve(repoRoot, contract.source)).href;
-    await navigate(referenceUrl, `document.readyState==='complete' && document.fonts.status==='loaded'`);
-    const measured = await evaluate(measureExpression(`document.querySelector('.stage')`, contract.geometry));
-    if (measured.error) throw new Error(`${template} 参考帧 ${measured.error}`);
-    reference[template] = measured.values;
+  for (const item of Object.values(actual)) {
+    if (reference[item.key]) continue;
+    const contract = item.kind === 'template' ? templates[item.key] : recipesById[item.key];
+    const source = item.kind === 'template' ? contract.source : `references/gallery-paper-ink/ai/frames/layout-${contract.display_code.toLowerCase()}.html`;
+    await navigate(pathToFileURL(resolve(repoRoot, source)).href, `document.readyState==='complete' && document.fonts.status==='loaded'`);
+    reference[item.key] = {
+      capture:await evaluate(captureExpression(`document.querySelector('.stage')`, contract, item.kind)),
+      geometry:item.kind === 'template' ? (await evaluate(measureExpression(`document.querySelector('.stage')`, contract.geometry))).values : null
+    };
   }
 
   const failures = [];
   const tolerance = 1.5;
-  for (const [page, item] of Object.entries(actual)) {
-    const expected = reference[item.template];
-    for (const [part, fields] of Object.entries(item.values)) {
-      if (fields.error || expected[part]?.error) {
-        failures.push(`${page}/${item.template}/${part} 缺少几何节点(actual=${fields.error || 'ok'}, reference=${expected[part]?.error || 'ok'})`);
-        continue;
+  const firstArrayDiff = (actualItems, expectedItems) => {
+    const count = Math.max(actualItems.length, expectedItems.length);
+    for (let index = 0; index < count; index++) {
+      if (!same(actualItems[index], expectedItems[index])) {
+        return `child[${index}] actual=${JSON.stringify(actualItems[index])} expected=${JSON.stringify(expectedItems[index])}`;
       }
+    }
+    return 'unknown';
+  };
+  const firstObjectDiff = (actualObject, expectedObject) => {
+    const keys = Array.from(new Set([...Object.keys(actualObject || {}), ...Object.keys(expectedObject || {})]));
+    for (const key of keys) {
+      if (!same(actualObject?.[key], expectedObject?.[key])) {
+        return `${key} actual=${JSON.stringify(actualObject?.[key])} expected=${JSON.stringify(expectedObject?.[key])}`;
+      }
+    }
+    return 'unknown';
+  };
+  for (const [page, item] of Object.entries(actual)) {
+    const expected = reference[item.key];
+    if (item.capture.error) { failures.push(`${page} ${item.capture.error}`); continue; }
+    if (!same(item.capture.children, expected.capture.children)) failures.push(`${page}/${item.key} 直接套用外壳、外壳字号或槽位位置发生变化: ${firstArrayDiff(item.capture.children, expected.capture.children)}`);
+    if (item.kind === 'relationship') continue;
+    if (item.capture.textViolations.length) {
+      for (const problem of item.capture.textViolations) failures.push(`${page}/${item.key} 在未登记部件 ${problem.part} 新增文字: ${problem.text}`);
+    }
+    if (!same(item.capture.typeParts, expected.capture.typeParts)) failures.push(`${page}/${item.key} 模板文字槽字号或字体发生变化: ${firstObjectDiff(item.capture.typeParts, expected.capture.typeParts)}`);
+    for (const [part, signature] of Object.entries(item.capture.fixedParts)) {
+      if (!same(signature, expected.capture.fixedParts[part])) failures.push(`${page}/${item.key}/${part} 固定装饰或脚本绘制结果发生变化`);
+    }
+    for (const [part, fields] of Object.entries(item.geometry || {})) {
       for (const [field, value] of Object.entries(fields)) {
-        const want = expected[part][field];
-        if (!Number.isFinite(want) || Math.abs(value - want) > tolerance) {
-          failures.push(`${page}/${item.template}/${part}.${field}: ${value}px != 参考 ${want}px`);
-        }
+        const want = expected.geometry?.[part]?.[field];
+        if (!Number.isFinite(want) || Math.abs(value-want)>tolerance) failures.push(`${page}/${item.key}/${part}.${field}: ${value}px != 参考 ${want}px`);
       }
     }
   }
-  if (failures.length) throw new Error(`非关系模板几何漂移\n${failures.join('\n')}`);
-  console.log(`PASS nonrelation template geometry pages=${pages.length} tolerance=${tolerance}px`);
+  if (failures.length) throw new Error(`直接套用外壳漂移\n${failures.join('\n')}`);
+  const templateCount = pages.filter(page => page.template).length;
+  const layoutCount = pages.filter(page => page.recipe).length;
+  console.log(`PASS direct-use fidelity templates=${templateCount} relationship-layouts=${layoutCount} tolerance=${tolerance}px`);
   process.exit(0);
 })().catch(error => {
   console.error(`FAIL ${error.message}`);

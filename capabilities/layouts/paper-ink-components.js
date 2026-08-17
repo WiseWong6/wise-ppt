@@ -1,8 +1,8 @@
 /* Paper Ink 原生组件目录
  *
  * 从 gallery/paper-ink/ai/frames/ 样张烘焙的可复用组件（snippet 为确定性静态
- * SVG/HTML，无 JS 依赖、无随机量）。与 capabilities/vendors/ppt-component-atlas/
- * catalog-data.js（上游 Swiss 组件，逐字节对齐）相互独立：本文件是 Wise PPT
+ * SVG/HTML，无 JS 依赖、无随机量）。与 references/ppt-component-atlas/
+ * catalog-data.js（Catalog 可见 Atlas 唯一源）相互独立：本文件是 Wise PPT
  * 自有的 native 组件源，gallery/components/index.html 会把两个 catalog 合并展示。
  *
  * 约定：

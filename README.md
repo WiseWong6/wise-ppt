@@ -2,7 +2,9 @@
 
 表驱动的网页 PPT 编排 skill:输入素材(PDF / 链接 / 口语稿 / 成型 PPT),产出 16:9 自包含 HTML deck 与 PDF。
 
-本仓库是 wise-ppt 系列的现行版本,取代旧的 wise-ppt 与 wise-ppt-page-expression。
+本仓库是 wise-ppt 系列的现行版本。旧 `wise-ppt` 与 `wise-ppt-page-expression` 已退役并应删除，任何代理不得把它们当作备用规则或资产来源。
+
+`references/catalog.html` 当前可见的关系页、非关系页、组件与图标，是唯一允许直接选择的生产资产；对应源码和渲染通路由 `capabilities/catalog-authority-manifest.json` 锁定。
 
 ## 上手
 

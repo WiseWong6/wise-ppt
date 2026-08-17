@@ -12,6 +12,9 @@ mkdir -p "$(dirname "$OUT")"
 
 HTML="$DECK/index.html"
 [ -f "$HTML" ] || { echo "缺少 deck HTML 输出:$HTML" >&2; exit 1; }
+REPO_ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
+node "$REPO_ROOT/scripts/build_catalog_authority_manifest.cjs" --check >/dev/null || { echo "Catalog 唯一资产合同失败" >&2; exit 1; }
+python3 "$REPO_ROOT/scripts/check_deck_contract.py" "$DECK" >/dev/null || { echo "deck 成品合同 v2 静态检查失败" >&2; exit 1; }
 
 COUNT="$(python3 - "$HTML" <<'PY'
 from html.parser import HTMLParser

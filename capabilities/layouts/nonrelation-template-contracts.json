@@ -7,6 +7,7 @@
       "role": "cover",
       "stage_component_id": "native.paper-ink.scaffold.cover.cover-lockup",
       "parts": ["support", "folio", "illustration", "kicker", "primary", "title-bar", "subtitle"],
+      "editable_text_parts": ["support", "folio", "illustration", "kicker", "primary", "subtitle"],
       "slots": {"support": "text", "illustration": "illustration", "kicker": "text", "primary": "text", "subtitle": "text"},
       "geometry": {"illustration": ["left", "top", "width", "height"], "primary": ["left", "top", "width"]}
     },
@@ -15,6 +16,7 @@
       "role": "closing",
       "stage_component_id": "native.paper-ink.scaffold.particle-outro.outro-lockup",
       "parts": ["support", "folio", "canvas", "marks"],
+      "editable_text_parts": ["support", "folio"],
       "slots": {"support": "text", "canvas": "illustration"},
       "geometry": {"canvas": ["left", "top", "width", "height"]}
     },
@@ -23,6 +25,7 @@
       "role": "closing",
       "stage_component_id": "native.paper-ink.scaffold.minimal-outro.outro-lockup",
       "parts": ["support", "folio", "illustration", "primary", "signature"],
+      "editable_text_parts": ["support", "folio", "illustration", "primary", "signature"],
       "slots": {"support": "text", "illustration": "illustration", "primary": "text", "signature": "text"},
       "geometry": {"illustration": ["left", "top", "width", "height"], "primary": ["left", "top", "width"], "signature": ["left", "top", "width"]}
     },
@@ -31,6 +34,7 @@
       "role": "agenda",
       "stage_component_id": "native.paper-ink.scaffold.agenda.agenda",
       "parts": ["support", "folio", "illustration", "takeaway"],
+      "editable_text_parts": ["support", "folio", "illustration", "takeaway"],
       "slots": {"support": "text", "illustration": "illustration", "takeaway": "text"},
       "geometry": {"illustration": ["left", "top", "width", "height"], "takeaway": ["left", "top", "width"]}
     },
@@ -39,6 +43,7 @@
       "role": "transition",
       "stage_component_id": "native.paper-ink.scaffold.section-divider.section-lockup",
       "parts": ["support", "folio", "illustration", "primary", "lead"],
+      "editable_text_parts": ["support", "folio", "illustration", "primary", "lead"],
       "slots": {"support": "text", "illustration": "illustration", "primary": "text", "lead": "text"},
       "geometry": {"illustration": ["left", "top", "width", "height"], "primary": ["left", "top", "width"], "lead": ["left", "top", "width"]}
     },
@@ -47,6 +52,7 @@
       "role": "contact",
       "stage_component_id": "native.paper-ink.scaffold.contact.contact",
       "parts": ["support", "folio", "illustration"],
+      "editable_text_parts": ["support", "folio", "illustration"],
       "slots": {"support": "text", "illustration": "illustration"},
       "geometry": {"illustration": ["left", "top", "width", "height"]}
     },
@@ -55,6 +61,7 @@
       "role": "cover",
       "stage_component_id": "native.paper-ink.scaffold.cover-center.center-lockup",
       "parts": ["support", "folio", "illustration", "kicker", "primary", "title-bar", "subtitle"],
+      "editable_text_parts": ["support", "folio", "illustration", "kicker", "primary", "subtitle"],
       "slots": {"support": "text", "illustration": "illustration", "kicker": "text", "primary": "text", "subtitle": "text"},
       "geometry": {"illustration": ["left", "top", "width", "height"], "primary": ["left", "top", "width"]}
     },
@@ -63,6 +70,7 @@
       "role": "cover",
       "stage_component_id": "native.paper-ink.scaffold.cover-wide.long-lockup",
       "parts": ["support", "folio", "illustration", "kicker", "primary", "subtitle"],
+      "editable_text_parts": ["support", "folio", "illustration", "kicker", "primary", "subtitle"],
       "slots": {"support": "text", "illustration": "illustration", "kicker": "text", "primary": "text", "subtitle": "text"},
       "geometry": {"illustration": ["left", "top", "width", "height"], "primary": ["left", "top", "width"]}
     },
@@ -71,6 +79,7 @@
       "role": "agenda",
       "stage_component_id": "native.paper-ink.scaffold.agenda-split.agenda-split",
       "parts": ["support", "folio", "illustration"],
+      "editable_text_parts": ["support", "folio", "illustration"],
       "slots": {"support": "text", "illustration": "illustration"},
       "geometry": {"illustration": ["left", "top", "width", "height"]}
     },
@@ -79,6 +88,7 @@
       "role": "cover",
       "stage_component_id": "native.paper-ink.scaffold.cover-texture.center-lockup",
       "parts": ["support", "folio", "canvas", "overlay", "title-wash", "kicker", "primary", "title-bar", "subtitle"],
+      "editable_text_parts": ["support", "folio", "kicker", "primary", "subtitle"],
       "slots": {"support": "text", "canvas": "illustration", "kicker": "text", "primary": "text", "subtitle": "text"},
       "geometry": {"canvas": ["left", "top", "width", "height"], "primary": ["left", "top", "width"]}
     },
@@ -87,17 +97,20 @@
       "role": "transition",
       "stage_component_id": "native.paper-ink.emotion.particle-hero.metaphor",
       "parts": ["support", "folio", "canvas", "compare", "overlay", "primary"],
+      "editable_text_parts": ["support", "folio", "compare", "primary"],
       "slots": {"support": "text", "canvas": "illustration", "compare": "text", "primary": "text"},
       "geometry": {"canvas": ["left", "top", "width", "height"], "primary": ["left", "top", "width"]}
     },
     "M2": {
       "source": "references/gallery-paper-ink/ai/frames/layout-m2.html",
       "role": "transition",
-      "stage_component_id": "native.paper-ink.emotion.quote.quote",
+      "stage_component_id": "native.paper-ink.emotion.quote.motif-label",
       "parts": ["support", "folio", "canvas", "marks", "motif-label"],
+      "editable_text_parts": ["support", "folio", "motif-label"],
       "slots": {"support": "text", "canvas": "illustration", "motif-label": "text"},
       "geometry": {"canvas": ["left", "top", "width", "height"], "motif-label": ["left", "top", "width"]}
     }
   },
-  "contract_only_rule": "Only invisible helpers with data-contract-only=\"true\" are ignored; they must not contain visible text or paint."
+  "contract_only_rule": "Only invisible helpers with data-contract-only=\"true\" are ignored; they must not contain visible text or paint.",
+  "direct_use_rule": "A direct template use may change payload only inside editable_text_parts or declared illustration slots. Fixed parts, typography, geometry, decoration and scripts remain identical to the source frame. M2 visible text is limited to support, folio and motif-label."
 }

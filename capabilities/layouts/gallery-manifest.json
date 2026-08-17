@@ -9788,45 +9788,42 @@
     {
       "recipe_id": "paper-ink.emotion.quote",
       "display_code": "M2",
-      "name": "金句页",
+      "name": "秩序环过渡页",
       "family": "情绪",
-      "description": "全 deck ≤3 处的情绪高点，一句话收场或转场",
+      "description": "以秩序环和短英文 motif 作章节停顿，不承载金句正文",
       "roles": [
-        "hook",
-        "close"
+        "transition"
       ],
       "relations": [],
       "primitives": [
-        "centered-type",
-        "quote-mark"
+        "particle-field",
+        "motif-ring"
       ],
       "reading_order": [
-        "quote",
         "support",
-        "takeaway"
+        "motif-label"
       ],
       "structure_contract": {
-        "region_count": 3,
+        "region_count": 2,
         "required_slot_ids": [
-          "quote"
+          "motif-label"
         ],
         "core_primitives": [
-          "focus-field"
+          "motif-ring"
         ]
       },
-      "structure_fingerprint": "sha256:1aaedaef65938975115932e035304256f1187e1ce11ff86797c8fa633a709995",
+      "structure_fingerprint": "sha256:e8735f30456343e6c3e9fc1c564a3bc70f5cea08c33bf819c4c4a6f2db150334",
       "slots": [
         {
-          "slot_id": "quote",
-          "purpose": "金句",
+          "slot_id": "motif-label",
+          "purpose": "秩序环下方的短英文 motif 标签",
           "required": true,
           "visual_role": "primary",
           "min_items": 1,
-          "max_items": 2,
+          "max_items": 1,
           "count_unit": "binding",
           "allowed_renderer_kinds": [
-            "typography",
-            "svg"
+            "typography"
           ],
           "allowed_component_sources": [
             "native"
@@ -9834,15 +9831,15 @@
           "default_renderer": {
             "renderer_kind": "typography",
             "component_source": "native",
-            "component_id": "native.paper-ink.emotion.quote.quote"
+            "component_id": "native.paper-ink.emotion.quote.motif-label"
           },
           "space_contract": {
             "canvas_width": 1920,
             "canvas_height": 1080,
-            "width": 1500,
-            "height": 620,
-            "aspect_ratio": 2.4194,
-            "space_type": "wide"
+            "width": 900,
+            "height": 40,
+            "aspect_ratio": 22.5,
+            "space_type": "label-band"
           },
           "recommended_component_ids": []
         },
@@ -9870,35 +9867,16 @@
             "component_source": "native",
             "component_id": "native.paper-ink.emotion.quote.support"
           }
-        },
-        {
-          "slot_id": "takeaway",
-          "purpose": "页面一句话结论",
-          "required": false,
-          "visual_role": "support",
-          "min_items": 0,
-          "max_items": 1,
-          "count_unit": "binding",
-          "allowed_renderer_kinds": [
-            "typography"
-          ],
-          "allowed_component_sources": [
-            "native"
-          ],
-          "default_renderer": {
-            "renderer_kind": "typography",
-            "component_source": "native",
-            "component_id": "native.paper-ink.emotion.quote.takeaway"
-          }
         }
       ],
       "examples": {
         "general": "gallery/paper-ink/general/frames/layout-m2.html",
         "ai": "gallery/paper-ink/ai/frames/layout-m2.html"
       },
-      "selection_notes": "全 deck ≤3 处的情绪高点，一句话收场或转场。当页面角色属于hook/close、关系形状为focus时可作为候选。",
+      "selection_notes": "只用于章节之间的无正文停顿。真实引语、出处或主张必须改走 focus/quote 内容页，不能塞进 M2 的 canvas/marks。",
       "anti_patterns": [
-        "不要同时出现第二主角",
+        "不要在 canvas/marks 中新增文字",
+        "不要把 motif-label 放大成金句",
         "不要用情绪页逃避信息表达"
       ],
       "shape": [
@@ -9924,15 +9902,14 @@
           ]
         },
         "conclusion_modes": [
-          "hero-statement"
+          "motif-label"
         ],
         "primary_units": {
           "min": 1,
           "max": 1
         },
         "primary_forms": [
-          "quote",
-          "headline"
+          "label"
         ],
         "enhancements": [],
         "logic_contract": {

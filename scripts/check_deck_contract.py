@@ -7,6 +7,7 @@
 from __future__ import annotations
 
 import json
+import hashlib
 import re
 import sys
 import xml.etree.ElementTree as ET
@@ -21,6 +22,7 @@ REPO_ROOT = Path(__file__).resolve().parents[1]
 COMPONENT_MANIFEST = REPO_ROOT / "capabilities/components/routing-manifest.json"
 GALLERY_MANIFEST = REPO_ROOT / "capabilities/layouts/gallery-manifest.json"
 TEMPLATE_MANIFEST = REPO_ROOT / "capabilities/layouts/nonrelation-template-contracts.json"
+CATALOG_AUTHORITY = REPO_ROOT / "capabilities/catalog-authority-manifest.json"
 ICON_ROOT = REPO_ROOT / "capabilities/vendors/tabler-outline/redraw-v3/svg"
 RELATIONS = {"comparison", "sequence", "decomposition", "mapping", "causal", "focus", "display", "distribution", "hierarchy", "flow"}
 TYPE_ROLES = {"display", "hero", "title", "metric", "heading", "emphasis", "caption", "subheading", "body", "body-small", "micro-secondary", "label", "meta"}
@@ -30,6 +32,7 @@ ID_PARAM_RE = re.compile(r"\b([a-z0-9-]+(?:\.[a-z0-9-]+)+)\{([^}]*)\}")
 RECIPE_BLOCK_RE = re.compile(r"^native\.(paper-ink\.[a-z0-9.-]+)\.([a-z0-9-]+)$")
 PLAN_PAGE_RE = re.compile(r"^###\s+p(\d+)\b", re.M | re.I)
 PLAN_CONTRACT_RE = re.compile(r"成品合同\*{0,2}\s*[:：]\s*(.+)")
+PLAN_LAYOUT_RE = re.compile(r"套版式\s*[:：]\s*([A-Z]\d{1,2})", re.I)
 PAIR_WAIVER_RE = re.compile(r"^\s*-\s*\**节奏页对豁免\**\s*[:：]\s*p(\d+)\s*→\s*p(\d+)\s*\|\s*(\S.+)$", re.M | re.I)
 
 
@@ -40,13 +43,16 @@ def load_manifests():
         by_id[comp["component_id"]] = comp
         for alias in comp.get("aliases", []):
             aliases[alias] = comp["component_id"]
-    gallery_slots = {}
+    gallery_slots, gallery_recipes = {}, {}
     if GALLERY_MANIFEST.is_file():
         gallery = json.loads(GALLERY_MANIFEST.read_text(encoding="utf-8"))
         for recipe in gallery.get("recipes", []):
             gallery_slots[recipe["recipe_id"]] = {s["slot_id"]: s for s in recipe.get("slots", [])}
+            gallery_recipes[recipe["recipe_id"]] = recipe
     templates = json.loads(TEMPLATE_MANIFEST.read_text(encoding="utf-8"))["templates"]
-    return by_id, aliases, gallery_slots, templates
+    authority = json.loads(CATALOG_AUTHORITY.read_text(encoding="utf-8"))
+    selected_icons = {item["name"]: item for item in authority["icons"]["entries"]}
+    return by_id, aliases, gallery_slots, gallery_recipes, templates, authority, selected_icons
 
 
 def resolve_component(component_id, by_id, aliases, gallery_slots):
@@ -284,7 +290,26 @@ def main() -> int:
     if not plan_path.is_file():
         fails.append("缺少 deck-plan.md")
 
-    by_id, aliases, gallery_slots, templates = load_manifests()
+    by_id, aliases, gallery_slots, gallery_recipes, templates, authority, selected_icons = load_manifests()
+    atlas_receipts = [
+        receipt for component_id, receipt in authority["components"]["receipts"].items()
+        if component_id.startswith("atlas.")
+    ]
+    atlas_source_sha = atlas_receipts[0]["source_sha256"] if atlas_receipts else None
+    atlas_adapter_sha = atlas_receipts[0]["render_stack"][0]["sha256"] if atlas_receipts else None
+    for script in soup.select("script[src]"):
+        value = (script.get("src") or "").split("?", 1)[0].split("#", 1)[0]
+        if not value or re.match(r"^(?:[a-z]+:|//)", value, re.I):
+            continue
+        asset = (deck / value).resolve()
+        if not asset.is_file():
+            continue
+        raw = asset.read_bytes()
+        digest = hashlib.sha256(raw).hexdigest()
+        if b"SWISS_CATALOG_DATA" in raw and digest != atlas_source_sha:
+            fails.append(f"Atlas 运行时源码副本不是 Catalog 当前版本: {value}")
+        if b"paper-ink.atlas" in raw and b"COMPONENT_OVERRIDES" in raw and digest != atlas_adapter_sha:
+            fails.append(f"Atlas adapter 副本不是 Catalog 当前渲染栈: {value}")
     plan_pages, pair_waivers = parse_plan(plan_text)
     page_ids, relation_pages, template_pages, big_pages = [], [], [], []
 
@@ -298,6 +323,14 @@ def main() -> int:
                 fails.append(f"p{number:02d} 组件未登记: {component_id}")
         recipe_id = slide.get("data-recipe-id")
         if recipe_id in gallery_slots:
+            required_slots = {
+                slot_id for slot_id, slot in gallery_slots[recipe_id].items()
+                if slot.get("required")
+            }
+            actual_slots = {node.get("data-slot-id") for node in slide.select("[data-slot-id]")}
+            missing_slots = sorted(required_slots - actual_slots)
+            if missing_slots:
+                fails.append(f"p{number:02d} 版式缺必需槽位: {','.join(missing_slots)}")
             for node in slide.select("[data-slot-id][data-component-id]"):
                 slot_id, actual_id = node.get("data-slot-id"), node.get("data-component-id")
                 slot = gallery_slots[recipe_id].get(slot_id)
@@ -371,6 +404,21 @@ def main() -> int:
                             fails.append(f"p{number:02d} 非关系模板新增未登记节点: <{child.name} class=\"{' '.join(child.get('class', []))}\">")
         else:
             relation, family = slide.get("data-primary-relation"), slide.get("data-visual-family")
+            layout_source = slide.get("data-layout-source")
+            planned_layouts = [code.upper() for code in PLAN_LAYOUT_RE.findall(plan["block"])]
+            if layout_source == "gallery":
+                recipe = gallery_recipes.get(recipe_id)
+                if not recipe:
+                    fails.append(f"p{number:02d} 直接套版式但 recipe 未登记: {recipe_id or '-'}")
+                else:
+                    expected_code = recipe.get("display_code", "").upper()
+                    if planned_layouts != [expected_code]:
+                        fails.append(f"p{number:02d} 套版式登记错配: deck-plan={planned_layouts or ['-']} HTML={expected_code}")
+            elif layout_source == "free_build":
+                if planned_layouts:
+                    fails.append(f"p{number:02d} 自由构建页不得在 deck-plan 冒充套版式: {','.join(planned_layouts)}")
+            else:
+                fails.append(f"p{number:02d} 关系页 data-layout-source 缺失或非法: {layout_source or '-'}")
             if relation not in RELATIONS:
                 fails.append(f"p{number:02d} 关系页 data-primary-relation 缺失或非法: {relation or '-'}")
             if not family:
@@ -409,7 +457,9 @@ def main() -> int:
             if source.startswith("redraw-v3:"):
                 name = source.split(":", 1)[1]
                 source_path = ICON_ROOT / f"{name}.svg"
-                if not source_path.is_file():
+                if name not in selected_icons:
+                    fails.append(f"p{number:02d} 图标不在 Catalog 精选资产中: {source}")
+                elif not source_path.is_file():
                     fails.append(f"p{number:02d} 图标不存在: {source}")
                 elif icon.name != "svg" or normalize_svg_geometry(str(icon)) != normalize_svg_geometry(source_path.read_text(encoding="utf-8")):
                     fails.append(f"p{number:02d} 图标几何与 redraw-v3 不一致: {source}")
@@ -458,6 +508,41 @@ def main() -> int:
             kind, comp = resolve_component(component_id, by_id, aliases, gallery_slots)
             if kind != "component" or not comp:
                 continue
+            receipt = comp.get("catalog_receipt")
+            if not receipt:
+                fails.append(f"p{number:02d} 组件不在 Catalog 可选资产中: {component_id}")
+                continue
+            if component_id.startswith("atlas."):
+                materialized = component_node if component_node.get("data-materialized-component-id") else component_node.find(attrs={"data-materialized-component-id": True})
+                if not materialized:
+                    fails.append(f"p{number:02d} Atlas 组件未静态物化: {component_id}")
+                else:
+                    expected_attrs = {
+                        "data-materialized-component-id": component_id,
+                        "data-catalog-spec": receipt.get("catalog_spec"),
+                        "data-catalog-source-sha256": receipt.get("source_sha256"),
+                        "data-catalog-snippet-sha256": receipt.get("snippet_sha256"),
+                        "data-catalog-adapter-sha256": (receipt.get("render_stack") or [{}])[0].get("sha256"),
+                    }
+                    for attr_name, expected in expected_attrs.items():
+                        if not expected or materialized.get(attr_name) != expected:
+                            fails.append(f"p{number:02d} Atlas 物化收据错配: {component_id} {attr_name}")
+                    if materialized.find(recursive=False) is None:
+                        fails.append(f"p{number:02d} Atlas 物化 DOM 为空: {component_id}")
+                    if component_id == "atlas.051.iceberg":
+                        iceberg = materialized.select_one(".iceberg-diagram")
+                        if not iceberg:
+                            fails.append(f"p{number:02d} 冰山未使用 Catalog 当前 .iceberg-diagram")
+                        else:
+                            fields = {node.get("data-field") for node in iceberg.select("[data-field]")}
+                            expected_fields = {"visible_label", "visible_description", "behavior_label", "behavior_description", "root_label", "root_description"}
+                            if fields != expected_fields:
+                                fails.append(f"p{number:02d} 冰山字段合同错配: {sorted(fields)}")
+                            iceberg_text = iceberg.get_text(" ", strip=True)
+                            has_retired_text = any(label in iceberg_text for label in ("ICEBERG MODEL", "VISIBLE / HIDDEN", "10 / 90"))
+                            has_retired_divider = iceberg.select_one('line[x1="0"][y1="26"][x2="480"][y2="26"]') is not None
+                            if has_retired_text or has_retired_divider:
+                                fails.append(f"p{number:02d} 冰山含已删除的顶部元数据带")
             req = comp.get("space_requirements", {})
             declared_space = {
                 "data-contract-min-width": req.get("min_width"),

@@ -66,7 +66,7 @@ ECharts 的版本、runtime、数据合同和字段映射由公共 Capabilities 
 
 ## PPT Component Atlas
 
-Atlas 的组件目录已内置（`capabilities/vendors/ppt-component-atlas/catalog-data.js`），查询、精确组件 ID 和片段导出由公共 Capabilities 管理（`scripts/catalog.py components` 查询、`scripts/export_atlas_component.py` 取片段）。atlas 组件统一绑定纸墨 adapter `paper-ink.atlas`（覆盖 `native-html` 与 `svg` 两种 renderer_kind）。适配规则：
+Atlas 的唯一组件目录是 `references/ppt-component-atlas/catalog-data.js`，Catalog 预览与生产物化共用同一 entry。使用 `scripts/materialize_atlas_component.cjs` 按精确 component_id 生成静态 HTML/CSS 与指纹收据。atlas 组件统一绑定纸墨 adapter `paper-ink.atlas`。适配规则：
 
 - 保留组件结构与语义连线，只替换字体、颜色、线宽、面板和静态状态；
 - swiss-card 系的橙色（`#d95e00`）用于文字或描边时默认重映射到对应墨色阶梯，不得因为原组件带色就自动启用强调色；只有 Render Plan 已声明的单一语义焦点，才由统一强调机制映射到 `--accent-red`；背景 `#f2efe9`/`#ffffff` 重映射到 `--paper`/`--paper-deep`；墨色 `#1a1a1a`/`#444`/`#666` 重映射到 `--ink` 与 `--ink-70`；
@@ -80,7 +80,7 @@ Atlas 的组件目录已内置（`capabilities/vendors/ppt-component-atlas/catal
 
 1. **深底白字组件**（流程换行/箭头变体、思维导图、架构图 tone 芯片等）：实底必须回到纸面 + 墨线轮廓，白字改 `--ink`；只有根节点、徽章等小面积功能图形允许 `--ink-80` 反白。
 2. **有序分级组件**（金字塔、流程箭头步骤）：按序从 `data-2` 到 `data-6` 连续取色，不跳阶；ramp ≥4 的深色档文字用 `--paper` 反白，浅档用 `--ink`。
-3. **SVG 自定义属性组件**（冰山图 `--iceberg-*` 等）：自定义属性逐一再声明为纸墨 token，禁止落入纯色兜底形成大面积墨块。
+3. **SVG 组件**：保持 Catalog entry 的 token 化 fill/stroke；051 必须使用 `.iceberg-diagram` 三层结构，禁止恢复旧 `.iceberg` 或把面全部压成同一种墨色。
 
 ## SVG 与 Canvas
 

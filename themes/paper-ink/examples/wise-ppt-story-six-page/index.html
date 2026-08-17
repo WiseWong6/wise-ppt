@@ -16,7 +16,7 @@
 <section class="slide" data-render-pending="true" data-page-id="page.story.why" data-page-role="compare" data-theme="paper-ink" data-layout-source="gallery" data-recipe-id="paper-ink.comparison.dual-panel" data-primary-relation="comparison" data-visual-family="dual-panel" data-primary-type-role="caption" data-page-title="AI 做 PPT 总是千篇一律，因为缺的是设计判断" data-page-summary="AI 缺的不是生成页面的能力，而是好的设计标准。" data-section-id="section.problem" data-section-title="问题与标准" data-emphasis-mode="none"><main class="stage" data-balance="structural" data-balance-frame="0,140,1920,980">
     <div class="doc tl" data-anchor-id="p01.doc" data-balance-exclude="true" data-slot-id="support" data-block-id="block.story.why-support" data-renderer-kind="typography" data-component-source="native" data-component-id="native.paper-ink.comparison.dual-panel.support" data-theme-adapter-id="paper-ink.typography" data-content-ref="item.story.why">WISE PPT SKILL — 01<br>THE GAPS OF AI-MADE PPT</div>
     <div class="folio" data-anchor-id="p01.folio" data-balance-exclude="true">01 / 06 — BY @歪斯WISE</div>
-    <svg class="scene" data-anchor-id="p01.scene" transform="translate(0,-18)" viewBox="0 0 1920 1080" role="img" aria-label="AI做PPT总是千篇一律" aria-describedby="why-desc"
+    <svg class="scene" data-anchor-id="p01.scene" transform="translate(0,-18)" width="1920" height="1080" viewBox="0 0 1920 1080" role="img" aria-label="AI做PPT总是千篇一律" aria-describedby="why-desc"
       data-slot-id="comparison" data-block-id="block.story.why-comparison" data-renderer-kind="svg" data-component-source="native" data-component-id="native.paper-ink.comparison.dual-panel.comparison" data-theme-adapter-id="paper-ink.svg" data-content-ref="item.story.why">
       <desc id="why-desc">左侧展示 AI 做 PPT 容易千篇一律的四个表现：喜欢格子布局、颜色花里胡哨、信息密度不足，以及 ICON、EMOJI 滥用；右侧展示内容规划、版式适配、组件供给和视觉强调四项设计决策。</desc>
     </svg>
@@ -101,7 +101,7 @@
       });
     WisePPT.markSlideReady(slide);
     })();</script></section>
-<section class="slide" data-render-pending="true" data-page-id="page.story.workflow" data-page-role="explain" data-theme="paper-ink" data-layout-source="composition" data-recipe-id="paper-ink.flow.pipeline" data-primary-relation="sequence" data-visual-family="horizontal-timeline" data-primary-type-role="caption" data-page-title="五步编排链把原始资料变成可放映网页" data-page-summary="先理解内容，再安排重点、层级与关系。" data-section-id="section.workflow" data-section-title="从内容到放映" data-emphasis-mode="none"><main class="stage" data-balance="structural" data-balance-frame="0,140,1920,980">
+<section class="slide" data-render-pending="true" data-page-id="page.story.workflow" data-page-role="explain" data-theme="paper-ink" data-layout-source="free_build" data-primary-relation="sequence" data-visual-family="horizontal-timeline" data-primary-type-role="caption" data-page-title="五步编排链把原始资料变成可放映网页" data-page-summary="先理解内容，再安排重点、层级与关系。" data-section-id="section.workflow" data-section-title="从内容到放映" data-emphasis-mode="none"><main class="stage" data-balance="structural" data-balance-frame="0,140,1920,980">
     <div class="doc tl" data-anchor-id="p02.doc" data-balance-exclude="true" data-block-id="block.story.workflow-support" data-renderer-kind="typography" data-component-source="native" data-theme-adapter-id="paper-ink.typography" data-content-ref="item.story.workflow">WISE PPT SKILL — 02<br>CONTENT TO PLAYBACK</div>
     <div class="folio" data-anchor-id="p02.folio" data-balance-exclude="true">02 / 06 — BY @歪斯WISE</div>
     <svg class="scene" data-anchor-id="p02.scene" transform="translate(0,-62)" viewBox="0 0 1920 1080" role="img" aria-label="Wise PPT Skill 的内容编排流程" aria-describedby="how-desc"
@@ -119,10 +119,13 @@
       {"anchor_id":"p02.doc","selector":"[data-anchor-id=\"p02.doc\"]"},
       {"anchor_id":"p02.folio","selector":"[data-anchor-id=\"p02.folio\"]"},
       {"anchor_id":"p02.caption","selector":"[data-anchor-id=\"p02.caption\"]"},
-      {"anchor_id":"p02.scene","selector":"[data-anchor-id=\"p02.scene\"]"}
+      {"anchor_id":"p02.scene","selector":"[data-anchor-id=\"p02.scene\"]"},
+      {"anchor_id":"p02.axis","selector":"[data-anchor-id=\"p02.axis\"]"},
+      {"anchor_id":"p02.artifacts","selector":"[data-anchor-id=\"p02.artifacts\"]"}
     ],
     "relations":[
       {"relation_id":"p02.doc-folio-separate","type":"avoid","anchors":["p02.doc","p02.folio"],"min_gap":40,"tolerance":1},
+      {"relation_id":"p02.artifacts-axis-clear","type":"avoid","anchors":["p02.artifacts","p02.axis"],"min_gap":40,"tolerance":1},
       {"relation_id":"p02.doc-scene-owned","type":"ownerOverlap","anchors":["p02.scene","p02.doc"],"reason":"眉题压整页底纹,底纹为装饰层","tolerance":1},
       {"relation_id":"p02.caption-scene-owned","type":"ownerOverlap","anchors":["p02.scene","p02.caption"],"reason":"题注带压整页底纹,底纹为装饰层","tolerance":1},
       {"relation_id":"p02.doc-folio-left","type":"edgeEq","anchors":["p02.doc","p02.folio"],"edge":"left","tolerance":1},
@@ -138,15 +141,17 @@
       const txt=(text,x,y,attrs={},parent=svg)=>{const merged={x,y,fill:INK,'font-family':SANS,...attrs};if(Number(merged['font-size'])<WisePPT.typeSize('body-small'))merged['data-text-kind']='label';const n=el('text',merged,parent);n.textContent=text;return n;};
       const line=(x1,y1,x2,y2,attrs={},parent=svg)=>el('line',{x1,y1,x2,y2,stroke:INK,'stroke-width':1.1,...attrs},parent);
       const C=[250,580,910,1240,1570], BY=580;
-      line(190,BY,1730,BY,{stroke:INK45,'stroke-width':1});
-      C.forEach(x=>{el('line',{x1:x,y1:BY-9,x2:x,y2:BY+9,stroke:INK,'stroke-width':1});el('circle',{cx:x,cy:BY,r:3.6,fill:INK});});
-      for(let i=0;i<C.length-1;i++){const a=C[i]+88,b=C[i+1]-88;line(a,BY,b,BY,{stroke:INK80,'stroke-width':1.25});el('path',{d:`M ${b-11} ${BY-6} L ${b} ${BY} L ${b-11} ${BY+6}`,fill:'none',stroke:INK80,'stroke-width':1.25,'stroke-linecap':'round','stroke-linejoin':'round'});}
+      const axis=el('g',{'data-anchor-id':'p02.axis','data-geometry-role':'content'});
+      line(190,BY,1730,BY,{stroke:INK45,'stroke-width':1},axis);
+      C.forEach(x=>{el('line',{x1:x,y1:BY-9,x2:x,y2:BY+9,stroke:INK,'stroke-width':1},axis);el('circle',{cx:x,cy:BY,r:3.6,fill:INK},axis);});
+      for(let i=0;i<C.length-1;i++){const a=C[i]+88,b=C[i+1]-88;line(a,BY,b,BY,{stroke:INK80,'stroke-width':1.25},axis);el('path',{d:`M ${b-11} ${BY-6} L ${b} ${BY} L ${b-11} ${BY+6}`,fill:'none',stroke:INK80,'stroke-width':1.25,'stroke-linecap':'round','stroke-linejoin':'round'},axis);}
 
-      const doc=el('g');el('path',{d:'M 188 330 L 276 330 L 312 366 L 312 496 L 188 496 Z',fill:'rgba(255,255,255,.22)',stroke:INK80,'stroke-width':1.3},doc);el('path',{d:'M 276 330 L 276 366 L 312 366',fill:'none',stroke:INK,'stroke-width':.8,opacity:.6},doc);[390,418,446].forEach((y,i)=>line(212,y, i===1?282:268,y,{stroke:INK45,'stroke-width':1},doc));
-      const structure=el('g');[0,1,2].forEach(i=>{el('rect',{x:518+i*18,y:354-i*14,width:100,height:112,fill:'none',stroke:i===2?INK:INK45,'stroke-width':1.1},structure);line(536+i*18,382-i*14,590+i*18,382-i*14,{stroke:INK45,'stroke-width':.8},structure);line(536+i*18,410-i*14,580+i*18,410-i*14,{stroke:INK45,'stroke-width':.8},structure);});
-      const judge=el('g');el('circle',{cx:910,cy:410,r:82,fill:'rgba(255,255,255,.22)',stroke:INK80,'stroke-width':1.3},judge);for(let a=0;a<360;a+=30){const r=a*Math.PI/180;line(910+Math.cos(r)*60,410+Math.sin(r)*60,910+Math.cos(r)*73,410+Math.sin(r)*73,{stroke:INK45,'stroke-width':.8},judge);}line(910,410,954,378,{stroke:INK,'stroke-width':1.4},judge);el('circle',{cx:910,cy:410,r:4,fill:INK},judge);
-      const compose=el('g');[[1168,344,74,54],[1252,344,58,54],[1168,408,58,58],[1236,408,74,58]].forEach((r,i)=>{el('rect',{x:r[0],y:r[1],width:r[2],height:r[3],fill:i===3?'rgba(255,255,255,.22)':'none',stroke:i===3?INK:INK45,'stroke-width':i===3?1.2:1},compose);});
-      const deck=el('g');
+      const artifacts=el('g',{'data-anchor-id':'p02.artifacts','data-geometry-role':'content'});
+      const doc=el('g',{},artifacts);el('path',{d:'M 188 330 L 276 330 L 312 366 L 312 496 L 188 496 Z',fill:'rgba(255,255,255,.22)',stroke:INK80,'stroke-width':1.3},doc);el('path',{d:'M 276 330 L 276 366 L 312 366',fill:'none',stroke:INK,'stroke-width':.8,opacity:.6},doc);[390,418,446].forEach((y,i)=>line(212,y, i===1?282:268,y,{stroke:INK45,'stroke-width':1},doc));
+      const structure=el('g',{},artifacts);[0,1,2].forEach(i=>{el('rect',{x:518+i*18,y:354-i*14,width:100,height:112,fill:'none',stroke:i===2?INK:INK45,'stroke-width':1.1},structure);line(536+i*18,382-i*14,590+i*18,382-i*14,{stroke:INK45,'stroke-width':.8},structure);line(536+i*18,410-i*14,580+i*18,410-i*14,{stroke:INK45,'stroke-width':.8},structure);});
+      const judge=el('g',{},artifacts);el('circle',{cx:910,cy:410,r:82,fill:'rgba(255,255,255,.22)',stroke:INK80,'stroke-width':1.3},judge);for(let a=0;a<360;a+=30){const r=a*Math.PI/180;line(910+Math.cos(r)*60,410+Math.sin(r)*60,910+Math.cos(r)*73,410+Math.sin(r)*73,{stroke:INK45,'stroke-width':.8},judge);}line(910,410,954,378,{stroke:INK,'stroke-width':1.4},judge);el('circle',{cx:910,cy:410,r:4,fill:INK},judge);
+      const compose=el('g',{},artifacts);[[1168,344,74,54],[1252,344,58,54],[1168,408,58,58],[1236,408,74,58]].forEach((r,i)=>{el('rect',{x:r[0],y:r[1],width:r[2],height:r[3],fill:i===3?'rgba(255,255,255,.22)':'none',stroke:i===3?INK:INK45,'stroke-width':i===3?1.2:1},compose);});
+      const deck=el('g',{},artifacts);
       el('rect',{x:1492,y:338,width:156,height:126,fill:'rgba(255,255,255,.22)',stroke:INK,'stroke-width':1.3},deck);
       el('rect',{x:1500,y:346,width:140,height:110,fill:'none',stroke:INK,'stroke-width':.6,opacity:.35},deck);
       line(1520,378,1617,378,{stroke:INK45,'stroke-width':1},deck);
@@ -161,7 +166,7 @@
 <section class="slide" data-render-pending="true" data-page-id="page.story.principles" data-page-role="explain" data-theme="paper-ink" data-layout-source="gallery" data-recipe-id="paper-ink.radial.three-principles" data-primary-relation="decomposition" data-visual-family="radial-three-principles" data-primary-type-role="caption" data-page-title="一页一个重心，三项原则共同决定阅读顺序" data-page-summary="设计不是把信息填满，而是为观众的阅读顺序作出取舍。" data-section-id="section.design" data-section-title="设计取舍" data-emphasis-mode="none"><main class="stage" data-balance="structural" data-balance-frame="0,140,1920,980">
     <div class="doc tl" data-anchor-id="p03.doc" data-balance-exclude="true" data-slot-id="support" data-block-id="block.story.principles-support" data-renderer-kind="typography" data-component-source="native" data-component-id="native.paper-ink.radial.three-principles.support" data-theme-adapter-id="paper-ink.typography" data-content-ref="item.story.principles">WISE PPT SKILL — 03<br>DESIGN PRINCIPLES</div>
     <div class="folio" data-anchor-id="p03.folio" data-balance-exclude="true">03 / 06 — BY @歪斯WISE</div>
-    <svg class="scene" data-anchor-id="p03.scene" transform="translate(0,-57)" viewBox="0 0 1920 1080" role="img" aria-label="Wise PPT Skill 的三项设计取舍" aria-describedby="principle-desc"
+    <svg class="scene" data-anchor-id="p03.scene" transform="translate(0,-57)" width="1920" height="1080" viewBox="0 0 1920 1080" role="img" aria-label="Wise PPT Skill 的三项设计取舍" aria-describedby="principle-desc"
       data-slot-id="dimensions" data-block-id="block.story.design-principles" data-renderer-kind="svg" data-component-source="native" data-component-id="native.paper-ink.108.three-principles-radial" data-theme-adapter-id="paper-ink.svg" data-content-ref="item.story.principles">
       <desc id="principle-desc">中心是一页一个重心，向左、右、下分别展开内容优先、颜色有义和密度分层三项设计原则。</desc>
     </svg>

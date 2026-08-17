@@ -15,6 +15,8 @@ DECK="$(cd "$DECK" && pwd)"
 HTML="$DECK/index.html"
 [ -f "$HTML" ] || { echo "缺少 $HTML" >&2; exit 1; }
 rg -q 'data-runtime="wise-ppt-deck"' "$HTML" || { echo "不是 Wise PPT deck" >&2; exit 1; }
+REPO_ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
+node "$REPO_ROOT/scripts/build_catalog_authority_manifest.cjs" --check >/dev/null || { echo "Catalog 唯一资产合同失败" >&2; exit 1; }
 
 CHROME="/Applications/Google Chrome.app/Contents/MacOS/Google Chrome"
 [ -x "$CHROME" ] || CHROME="$(command -v google-chrome || command -v chrome || command -v chromium || true)"
@@ -31,10 +33,20 @@ PORT=$(( 20000 + RANDOM % 20000 ))
   --no-first-run --user-data-dir="$TMP_ROOT/profile" --remote-debugging-port="$PORT" \
   --window-size=1920,1080 about:blank >/dev/null 2>&1 &
 CHROME_PID=$!
+PRINT_PID=""
+stop_pid() {
+  local pid="${1:-}"
+  [ -n "$pid" ] || return 0
+  if kill -0 "$pid" 2>/dev/null; then
+    kill "$pid" 2>/dev/null || true
+    for _ in $(seq 1 20); do kill -0 "$pid" 2>/dev/null || break; sleep 0.1; done
+    kill -9 "$pid" 2>/dev/null || true
+  fi
+  wait "$pid" 2>/dev/null || true
+}
 cleanup() {
-  kill "$CHROME_PID" 2>/dev/null || true
-  for _ in $(seq 1 20); do kill -0 "$CHROME_PID" 2>/dev/null || break; sleep 0.1; done
-  kill -9 "$CHROME_PID" 2>/dev/null || true
+  stop_pid "$PRINT_PID"
+  stop_pid "$CHROME_PID"
   rm -rf "$TMP_ROOT" 2>/dev/null || true
 }
 trap cleanup EXIT INT TERM
@@ -97,9 +109,10 @@ const send = (m, p = {}) => new Promise((res, rej) => {
       const bottomEdge = cap ? rel(cap.getBoundingClientRect()).top : (folio ? rel(folio.getBoundingClientRect()).top : 1080);
       let sub = null, texts = 0, maxFont = 0, minFont = Infinity; const typeDistribution = {};
       const consider = el => {
+        if (el.closest('defs')) return;
         if (el.closest('[data-balance-exclude="true"]')) return;
         if (el.closest('.doc') || el.closest('.folio') || el.closest('.caption')) return;
-        const inSlot = el.closest('[data-layout-slot]') !== null;
+        const inSlot = el.closest('[data-layout-slot],[data-template-slot]') !== null;
         if (!inSlot && !el.matches('text,p')) return;
         const cs = getComputedStyle(el);
         if (cs.display === 'none' || cs.visibility === 'hidden' || parseFloat(cs.opacity) === 0) return;
@@ -117,8 +130,9 @@ const send = (m, p = {}) => new Promise((res, rej) => {
           sub.left = Math.min(sub.left, r.left); sub.right = Math.max(sub.right, r.right);
         }
       };
-      stage.querySelectorAll('blockquote,.author-name,.author-title,td,th,.year,.hot-num,p,h1,h2,h3,span,text,.divider,li').forEach(consider);
+      stage.querySelectorAll('blockquote,.author-name,.author-title,td,th,.year,.hot-num,p,h1,h2,h3,span,text,.divider,li,[data-template-slot-kind="text"]').forEach(consider);
       stage.querySelectorAll('rect,line,circle,ellipse,path,polygon').forEach(el => {
+        if (el.closest('defs')) return;
         const cs = getComputedStyle(el);
         const hasStroke = cs.stroke !== 'none' && parseFloat(cs.strokeOpacity || '1') > 0.05;
         const hasFill = cs.fill !== 'none' && cs.fill !== 'transparent' && parseFloat(cs.fillOpacity || '1') > 0.05;
@@ -206,7 +220,15 @@ else
   "$CHROME" --headless --disable-gpu --allow-file-access-from-files --disable-background-networking \
     --disable-component-update --disable-default-apps --disable-sync --no-first-run --no-default-browser-check \
     --metrics-recording-only --user-data-dir="$TMP_ROOT/print-profile" --no-pdf-header-footer \
-    --virtual-time-budget=12000 --print-to-pdf="$TMP_ROOT/print.pdf" "$URL?print=1" >/dev/null 2>&1
+    --virtual-time-budget=12000 --print-to-pdf="$TMP_ROOT/print.pdf" "$URL?print=1" >/dev/null 2>&1 &
+  PRINT_PID=$!
+  for _ in $(seq 1 300); do
+    if [ -s "$TMP_ROOT/print.pdf" ] && [ "$(head -c 5 "$TMP_ROOT/print.pdf" 2>/dev/null || true)" = "%PDF-" ]; then break; fi
+    kill -0 "$PRINT_PID" 2>/dev/null || break
+    sleep 0.1
+  done
+  stop_pid "$PRINT_PID"
+  PRINT_PID=""
 fi
 [ -s "$TMP_ROOT/print.pdf" ] && [ "$(head -c 5 "$TMP_ROOT/print.pdf")" = "%PDF-" ] || { echo "PDF 生成失败" >&2; exit 1; }
 
@@ -272,9 +294,10 @@ for i, sp in enumerate(pages, 1):
     avail_mid = (top_e + bot_e) / 2
     pdf_mid = ((t + b) / 2) / sc
     drift = round(pdf_mid - avail_mid, 1)
-    ok = abs(drift) <= 35
+    ok = bool(sp.get('templateId')) or abs(drift) <= 35
     if not ok: fails += 1
-    print(f"{sp['page']:<5}{avail_mid:<9}{round(pdf_mid,1):<8}{drift:<7}{len(bands):<7}{'OK' if ok else 'FAIL'}")
+    verdict = 'OK(template-locked)' if sp.get('templateId') else ('OK' if ok else 'FAIL')
+    print(f"{sp['page']:<5}{avail_mid:<9}{round(pdf_mid,1):<8}{drift:<7}{len(bands):<7}{verdict}")
 print('pdf: ' + ('PASS' if fails == 0 else f'{fails} FAIL'))
 sys.exit(1 if fails else 0)
 PY

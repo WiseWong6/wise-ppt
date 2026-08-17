@@ -22,6 +22,7 @@ rg -q 'data-deck-contract-version="2"' "$HTML" || { echo "不是正式成品合�
 if rg -ni '<iframe|thumb-[a-z0-9_-]+' "$HTML"; then echo "deck runtime 不得引用 frame 或缩略图" >&2; exit 1; fi
 if rg -n '\bstageFit\s*\(' "$HTML"; then echo "正式 deck 不得调用 specimen stageFit()" >&2; exit 1; fi
 REPO_ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
+node "$REPO_ROOT/scripts/build_catalog_authority_manifest.cjs" --check || { echo "Catalog 唯一资产合同失败" >&2; exit 1; }
 python3 "$REPO_ROOT/scripts/check_deck_contract.py" "$DECK" || { echo "deck 成品合同 v2 静态检查失败" >&2; exit 1; }
 CHROME="/Applications/Google Chrome.app/Contents/MacOS/Google Chrome"
 [ -x "$CHROME" ] || CHROME="$(command -v google-chrome || command -v chrome || command -v chromium || command -v chromium-browser || true)"

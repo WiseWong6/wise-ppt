@@ -8,7 +8,7 @@ description: 表驱动的网页 PPT 编排 skill。输入 PDF/链接/口语稿/�
 ## 定位
 
 - **表驱动 prompt skill**:判定逻辑沉在两张映射表(表A 关系→结构、表B 结构块→组件)，执行者查表走路，不临场发挥。
-- 与 wise-ppt(三份 JSON 合同 + Python 确定性管线)不同:不引入其管线；本 Skill 使用**轻量成品合同 v2**，规划仍落人可读 `deck-plan.md`，确定性约束由静态/浏览器门禁交叉核对。
+- 旧 `wise-ppt` 与 `wise-ppt-page-expression` 已退役且必须删除；禁止把旧 Skill 当 fallback、规则参考或资产来源。本 Skill 使用**轻量成品合同 v2**，规划仍落人可读 `deck-plan.md`，确定性约束由静态/浏览器门禁交叉核对。
 - **分工(唯一裁定)**:本文件是**执行唯一权威**——表A/表B、渲染合同红线、样板、交付清单以此为准;`skill-design.md` 是方法论出处("为什么这么判")+修订记录,判定理由和设计原则去那里查。两边如有出入,以本文件为准。
 
 ## 资产地图
@@ -16,7 +16,8 @@ description: 表驱动的网页 PPT 编排 skill。输入 PDF/链接/口语稿/�
 | 路径 | 是什么 | 什么时候用 |
 |---|---|---|
 | `skill-design.md` | 方法论出处(九个阶段各章的判定理由与设计原则)+修订记录 | 要"为什么这么判"时查 |
-| `references/catalog.html` | 资产总目录(模板/版式/结构/组件/图标五 tab);68 版式的数据层(`SMARTART_TYPES`,编号+名称+结构+关系四元组)就是套版式的查表源 | 套版式、选组件、看模板实拍 |
+| `references/catalog.html` | **唯一可直接选择的生产资产目录**(模板/版式/结构/组件/图标五 tab);当前可见内容就是执行者能选的全集 | 套版式、选组件、选图标、看模板实拍 |
+| `capabilities/catalog-authority-manifest.json` | Catalog 的确定性机器投影；锁定每个关系/非关系帧、组件源码与渲染栈、精选图标的 SHA-256 | 生成前核对，交付时跑 `node scripts/build_catalog_authority_manifest.cjs --check` |
 | `references/gallery-paper-ink/ai/frames/` | 80 张整页版式帧(68 关系版式+12 模板),完整 1920×1080 可执行 HTML | 套版式时的复制底稿 |
 | `capabilities/layouts/gallery-manifest.json` | 76 份可查询版式配方(槽位/结构合同/推荐组件;D7-D10 为画册模板,不进关系配方) | 套版式时查槽位几何 |
 | `capabilities/components/routing-manifest.json` | 126 条组件机器数据(relation_keys/frame/容量),`relation_keys` 用 23 细种口径,与表B 同一套词 | 表B 不够用时查全量、核对物化 |
@@ -28,7 +29,7 @@ description: 表驱动的网页 PPT 编排 skill。输入 PDF/链接/口语稿/�
 | `runtime/` | 放映壳 + 浏览器检查 + PDF 导出 | 渲染与交付 |
 | `themes/paper-ink/` | 主题合同;数值唯一出处是本仓库 `themes/paper-ink/assets/design-tokens.css` | 所有颜色/字阶/字体 |
 
-> 图标(灯牌):deck 里一律**内联 SVG 本体**,并在 `<svg>` 写 `data-icon-source="redraw-v3:<name>"`。优先取纸墨重绘成品；没有贴合的才手绘，并写 `handdraw:<reason-id>`，同一 reason-id 必须出现在该页 deck-plan。门禁会同时核对文件存在与归一化 SVG 几何。
+> 图标(灯牌):deck 里一律**内联 SVG 本体**,并在 `<svg>` 写 `data-icon-source="redraw-v3:<name>"`。只能选择 Catalog 图标 tab 当前精选的名称；没有贴合的才手绘，并写 `handdraw:<reason-id>`，同一 reason-id 必须出现在该页 deck-plan。门禁会同时核对精选名单、文件存在与归一化 SVG 几何。
 
 ## 数据流
 
@@ -80,18 +81,18 @@ description: 表驱动的网页 PPT 编排 skill。输入 PDF/链接/口语稿/�
 | 封面 | D1 / D7 / D8 / D10 | 大字宣言(thesis 改写),字数≤6 用 display 档;D1 左题右 UI 图,D7 上方工程栈+下方居中标题,D8 左工作台+右侧长标题,D10 居中标题+整页纹理;封面不展示讲者/日期/版本/关键词信息区 |
 | 目录 | D4 / D9 | 幕标题 + 页码,不塞内容;D4 纵列带预告句+当前章高亮,D9 左大字题区+右紧凑列(章节少时用) |
 | 章节隔页 | D5 | 幕序号 + 幕标题大字 |
-| 金句 | M2 | 素材原话引语 + 出处;一 deck 至多 2~3 张 |
+| 秩序环过渡 | M2 | 只允许改左上眉题、左下页码和中央 `motif-label`（原位 `A THICK WALL`）；环、粒子与 marks 不承载新增文案 |
 | 粒子主角页 | M1 | 提问式情绪定调,慎用 |
 | Outro / 尾卡 | D3 / D2 | 收束语 / 品牌落版 |
 | 联络尾页 | D6 | 渠道 + 署名 |
 
-> 裁定(与表B 撞型时看页面职责):**当节奏停顿插进页序的**(金句/联络/收尾/隔页)走本表模板;**承载主张句、要与正文建立关系对齐的**走关系路 focus 细种。表B 的 quote/contact-card 只用于后者。
+> 裁定(与表B 撞型时看页面职责):**当节奏停顿插进页序的**(联络/收尾/隔页/秩序环过渡)走本表模板;**承载金句、主张句并要与正文建立关系对齐的**走关系路 focus 细种。表B 的 quote/contact-card 用于承载真实引语或主张，M2 不再承担金句正文。
 
-**非关系模板锁版**:D1–D10、M1、M2 只能替换合同登记的文案/插图/icon 槽；`data-template-part` 标出的标签结构、类名、定位字段和槽数量不得变化。不得新增署名、边框、卡片或装饰。几何契约辅助节点只能用 `data-contract-only="true" aria-hidden="true"`，且必须真正不可见、不得含文案。
+**直接套用锁版（关系版式与非关系模板同一口径）**:只改合同登记槽里的 payload——文字槽改文案，插画/component/icon 槽可换组件、换图标或自行重画插画；外壳结构、槽位、类名、坐标、字号/字体、装饰与固定脚本不得变化，槽外不得新增可见内容。组件内部可按自己的合同变化，但必须适配整页既有字阶，不得反过来放大外壳字号。M2 只有 `support`、`folio`、`motif-label` 三处可出现可编辑文字，`canvas/marks` 只画图。几何契约辅助节点只能用 `data-contract-only="true" aria-hidden="true"`，且必须真正不可见、不得含文案。
 
 ### 4 逐页四步
 
-**第 0 步 · 套版式(能套则套)**:先走①开头的六个判定问句,给本页定出主关系标签;拿标签查 `references/catalog.html` 版式 tab 的数据层(68 张,`编号+名称+结构+关系标签`,关系标签就是①的 23 细种口径)。语义(关系标签)、槽位数量、方向三点都合 → 复制 `references/gallery-paper-ink/ai/frames/` 里对应整页帧作底稿,按《组件落地操作单》§1 拆成 slide,只替换文案/数据/图标,槽位几何不动,deck-plan ④列登记 `套版式:版式号`;槽位数差一(如指标 4→3)允许等分微调,差二及以上不合,走①~④组件链。套版式同样守渲染合同全部红线(无标题制、字档、几何契约、配平)。查槽位几何用 `capabilities/layouts/gallery-manifest.json`。
+**第 0 步 · 套版式(能套则套)**:先走①开头的六个判定问句,给本页定出主关系标签;拿标签查 `references/catalog.html` 版式 tab 的数据层(68 张,`编号+名称+结构+关系标签`,关系标签就是①的 23 细种口径)。语义、页面切分、槽位和方向都合 → 复制 `references/gallery-paper-ink/ai/frames/` 里对应整页帧作底稿,按《组件落地操作单》§1 拆成 slide；只替换登记槽里的文案/数据/图标/组件/自绘插画，外壳与槽位几何、字号、装饰、固定脚本原样保留，deck-plan ④列登记 `套版式:版式号`。内容只要需要新增槽、移动槽或改外壳，就不算套版式，改走①~④自由构建链。查槽位合同用 `capabilities/layouts/gallery-manifest.json`。
 
 **① 定关系**:**每页 1 个主关系 + 最多 2 个辅关系**——关系决定版式,数量只决定容量。主关系按六个判定问句走,顺序即优先级,第一个命中即停:
 
@@ -133,10 +134,10 @@ description: 表驱动的网页 PPT 编排 skill。输入 PDF/链接/口语稿/�
 
 **④ 选组件(三段式,优先选组件,重绘只作兜底)**:
 
-**第一段 · 优先选组件**——表B 圈候选后在 `routing-manifest.json` 核对(component_id / relation_keys / frame / capacity / renderer_kinds 全部就绪才算选中;`relation_keys` 与表B 同为 23 细种口径,组件改过名就用 aliases 查),过滤:①关系匹配(relation_keys) ②形状:组件 frame 宽高比 vs 区域(横条进不了窄栏) ③容量:条目数在 min~max 内,超了走第三段四级阶梯(换组件→换结构/变体→删辅助→拆页) ④节奏:分不出高下时优先近三页未用的组件。**选中后在 deck-plan ④列登记 `component_id{参数}`**(如 `atlas.041.timeline.horizontal{N:6,hot:2}`)。Catalog 只负责浏览；能否落位仍以 manifest 的空间、容量和 data contract 为准。
+**第一段 · 优先选组件**——先在 Catalog 组件 tab 选当前可见卡，再用 `routing-manifest.json` 核对(component_id / relation_keys / frame / capacity / renderer_kinds / catalog_receipt 全部就绪才算选中;组件改过名就用 aliases 查),过滤:①关系匹配 ②形状适配 ③容量合法 ④节奏不重复。**选中后在 deck-plan ④列登记 `component_id{参数}`**。Catalog 决定“允许选什么”，manifest 只负责验证“能否落位”和“实际用了哪份源码”；不在 Catalog 的内部 renderer 不得被执行者直接选用。
 
 **第二段 · 组件物化**(构建期静态展开,槽 div 带 `data-layout-slot` + `data-component-id` 指纹属性;按 component_id 前缀选物化链路,可照抄的完整步骤与示例见《组件落地操作单》`references/landing-playbook.md`):
-- **atlas. 前缀(renderer_kinds=native-html)**:复制 `capabilities/vendors/ppt-component-atlas/catalog-data.js` + `themes/paper-ink/adapters/atlas.js` 进 deck `assets/components/`,注入 snippet+componentCss,**按 snippet 的 DOM 结构替换文案,不改结构**;fixed frame 按 contain-fit 缩放进槽
+- **atlas. 前缀(renderer_kinds=native-html)**:唯一源码是 `references/ppt-component-atlas/catalog-data.js`。先运行 `node scripts/materialize_atlas_component.cjs <component_id> --out-dir <目录>`，由唯一物化器产出带源码/snippet/adapter 指纹的静态 `component.html` 与完整 `component.css`；在 `WisePPT.markSlideReady(slide)` 前放进槽并按 `data-field` 换文案，不改结构。禁止复制第二份 catalog、禁止空 host 先 ready、禁止 AI 自己漏拼覆写。
 - **native. 前缀(renderer_kinds=svg 或 native-html)**:复制 `capabilities/layouts/paper-ink-components.js`(依赖 design-tokens 的 --wp-compat-pi-* 映射),注入方式同上
 - **echarts. 前缀(renderer_kinds=svg/canvas)**:复制 `echarts.min.js`+`adapters/echarts.js`,页面 JSON 数据块 + `WisePPT.createEChart`,option 走纸墨 adapter,不改数据
 - 多槽页(不对称/组合结构)一槽一组件;**禁止改写 content 语义迎合组件**,不合适就换组件
@@ -216,7 +217,7 @@ description: 表驱动的网页 PPT 编排 skill。输入 PDF/链接/口语稿/�
 | 漏斗 funnel | funnel(840×500 · 3-6) |
 | 因果 causal | fishbone(820×510 · 4-8)、why-how-bands(920×460 · 2-6) |
 | 层级 hierarchy | trace-tree(830×510 · 3-12)、architecture(1010×410 · 2-5)、arch-table-band(800×520 · 2-4) |
-| 拆解 decomposition | three-way-radial(1443×812 · 固定3,技术节点三向字段)、three-principles-radial(1443×493 · 固定3,中心主张+三原则,横带)、radial-hub(760×550 · 3-8)、concentric(650×650 · 3-5)、pyramid(790×530 · 3-6)、iceberg(790×530 · 2) |
+| 拆解 decomposition | three-way-radial(1443×812 · 固定3,技术节点三向字段)、three-principles-radial(1443×493 · 固定3,中心主张+三原则,横带)、radial-hub(760×550 · 3-8)、concentric(650×650 · 3-5)、pyramid(790×530 · 3-6)、iceberg(790×593 · 固定3) |
 | 部分整体 part-whole | 饼/环形(ECharts)、pyramid(770~790×530 · 3-6)、concentric |
 | 嵌套 nesting | concentric-ring(1249×702 · 3-5)、nested-frames(1476×830 · 3-5)、concentric、arch-platform(830×510) |
 | 对比 comparison | vs(1350×310 · 2)、before-after 验证款 atlas.019(780×540 · 2-4)、before-after-bands(930×450 · 2-6)、watershed-axis(850×490 · 3-6)、balance-scale(1050×560 · 2 侧) |
@@ -230,7 +231,7 @@ description: 表驱动的网页 PPT 编排 skill。输入 PDF/链接/口语稿/�
 
 > 结构候选只查表A,本表不给结构意见;组件进得了哪个区域,用 frame 宽高比判(横条进不了窄栏)。
 
-> ECharts 组件需随 deck 复制 `capabilities/vendors/echarts/echarts.min.js` 并走纸墨 option(线 1.2px、墨阶色、无渐变阴影)。表B 查不到的看 `routing-manifest.json` 全量(按 `relation_keys` 过滤,23 细种每个都有覆盖;改过名的组件用 aliases,如 swimlane→swimlane-roadmap);`semantic.`/`media.` 前缀是流式机器件,不进 Catalog 浏览池,按 component_id 直接查 manifest;仍无解才手绘新画法,并回填本表。
+> ECharts 组件需随 deck 复制 `capabilities/vendors/echarts/echarts.min.js` 并走纸墨 option。`semantic.`/`media.` 等不在 Catalog 可见卡中的条目只是内部渲染实现，不是可独立选择的资产；需要新画法时手绘并回填 Catalog/manifest 后才能复用。
 > 画法不同才是不同组件:箭头链/蛇形回环/时间轴刻度/甘特条带是 4 个组件,哪怕都表达 flow。
 
 ---
@@ -309,7 +310,7 @@ description: 表驱动的网页 PPT 编排 skill。输入 PDF/链接/口语稿/�
 |---|---|---|
 | 几何契约 12 类型实测、内部覆盖、SVG 长线穿字 | check-deck 静态+浏览器 | fail-closed；`free_build` 浅声明、未声明重叠或长分隔线穿字即红 |
 | 成品合同/组件/节奏 | check-deck 静态段 | v2 属性与 deck-plan 交叉核对；版式主槽正式组件精确物化；相邻同主关系、视觉签名/组件三页内复读、非法过渡+收尾失败 |
-| 非关系模板 | check-deck 静态+浏览器 | 模板 id、固定部件/槽数量、可见直属节点与几何字段锁定；contract-only 必须不可见 |
+| 直接套用外壳 | check-deck 静态+浏览器 | 关系版式与非关系模板都对照源帧：只放开登记槽 payload；外壳结构/字号/位置锁定；M2 在 `marks` 新增文字或改固定图形直接失败 |
 | 组件外壳/icon/占位符 | check-deck 静态+浏览器 | 槽满足 manifest；外壳 computed 归零；坏图、TODO、叉号、伪造 redraw-v3 失败 |
 | 字体真实加载、file:// 资源、禁 stageFit/iframe、缩放权威 | check-deck(浏览器) | fail-closed |
 | 文字主体垂直居中、中心型页水平配平 | audit-deck screen 管线 | 垂直 \|Δ\|≤3px；仅 `data-balance="centered"` 页的可见结构水平 \|Δ\|≤3px，`structural` 页不强推居中 |

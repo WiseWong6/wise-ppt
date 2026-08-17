@@ -7,7 +7,7 @@
 帧文件:`references/gallery-paper-ink/ai/frames/layout-<小写编号>.html`(E1→`layout-e1.html`,R5→`layout-r5.html`)。帧是图册标本(specimen),不是 slide——整文件复制进 deck 必挂:根标记是 `data-runtime="wise-ppt-specimen"`(check 第一步就要 `wise-ppt-deck`)、CSS 走仓库相对路径、末尾调 `stageFit()`。拆解五步:
 
 1. 按 §7 建好 deck 骨架,拿到空的 `index.html`。
-2. 打开帧,把 `<div class="stage" …>…</div>` **整块**剪出来,放进新建的 `<section class="slide">`。关系页可把 stage 标签换成 `<main>`，并补 `data-primary-relation/data-visual-family/data-primary-type-role`；非关系页不得改 stage 标签，补 `data-template-id/data-primary-type-role`。关系帧的 stage 级组件指纹删除；D1–D10/M1/M2 非关系帧必须保留 stage `data-component-id` 与全部 `data-template-part/data-template-slot` 标记。
+2. 打开帧,把 `<div class="stage" …>…</div>` **整块**剪出来,放进新建的 `<section class="slide">`。关系页可把 stage 标签换成 `<main>`，并补 `data-primary-relation/data-visual-family/data-primary-type-role`；非关系页不得改 stage 标签，补 `data-template-id/data-primary-type-role`。关系帧的 stage 级组件指纹删除；D1–D10/M1/M2 非关系帧必须保留 stage `data-component-id` 与全部 `data-template-part/data-template-slot` 标记。**直接套用只开放登记槽 payload**：文字槽改文案，插画/component/icon 槽可换组件、图标或自绘插画；外壳标签/类名/字号/坐标/装饰/固定脚本一字不改。需要改外壳就回到自由构建，不得继续写 `data-layout-source="gallery"`。
 3. 删三样:`<link … shell.css>`(图册浏览壳样式)、`<script … stage-fit.js>` 引用、末尾的 `stageFit();` 调用。缩放归 deck-runtime 管,deck 里调 `stageFit` 直接 check 红。
 4. 帧头部内联的 `<style>` 原样带走;外链 CSS 的 `../../../../themes/paper-ink/assets/design-tokens.css`、`slide-components.css` 换成 deck 内 `assets/design-tokens.css`、`assets/slide-components.css`。
 5. 帧**不带几何契约岛**,按 §5 给这页自建一个,然后跑 `bash runtime/check-deck.sh <deck>` 验证。
@@ -22,14 +22,14 @@
 
 | component_id 前缀 | renderer_kinds(核对用) | 复制进 deck 的文件 | 去向 |
 |---|---|---|---|
-| `atlas.` | native-html | `capabilities/vendors/ppt-component-atlas/catalog-data.js`、`themes/paper-ink/adapters/atlas.js` | `assets/components/` |
+| `atlas.` | native-html | `references/ppt-component-atlas/catalog-data.js`、`themes/paper-ink/adapters/atlas.js` | 由静态物化器写入 slide/CSS |
 | `native.` | svg 或 native-html | `capabilities/layouts/paper-ink-components.js` | `assets/components/` |
 | `echarts.` | svg、canvas | `capabilities/vendors/echarts/echarts.min.js`、`themes/paper-ink/adapters/echarts.js` | `assets/vendors/echarts/`、`assets/components/` |
 | `codex-host.` | image | 图片本体文件 | `assets/components/` |
 
-## §3 两份 catalog-data.js,用哪份
+## §3 Atlas 只有一份源码
 
-仓库有两份:`capabilities/vendors/ppt-component-atlas/catalog-data.js` 是**生产源**(`capabilities/registry.json` 登记,分组口径与 routing-manifest 一致);`references/ppt-component-atlas/catalog-data.js` 是图册浏览预览版(带实验性纸墨改良),**不复制进 deck**。
+`references/ppt-component-atlas/catalog-data.js` 同时服务 Catalog 预览与生产物化，是唯一源码。仓库若再次出现 `capabilities/vendors/ppt-component-atlas/catalog-data.js`，`build_catalog_authority_manifest.cjs` 必须直接失败；禁止“预览一份、生产一份”的双源通路。
 
 ## §4 snippet 注入
 
@@ -43,27 +43,15 @@
 
 ### B · atlas. 组件(要过纸墨适配)
 
-atlas 原始 snippet 是 600px 方卡预览口径,直接粘贴会带裸字号,必须经 `paper-ink.atlas` 适配器。deck 末尾保留一段一次性注入脚本(app-template 的 `{{SLIDES}}` 之后):
+atlas 原始 snippet 是 600px 方卡预览口径,直接粘贴会带裸字号,必须经 `paper-ink.atlas` 适配器。**首选唯一物化器**，它会同时拼上不能漏的组件级覆写：
 
-```html
-<script src="assets/components/catalog-data.js"></script>
-<script src="assets/components/atlas.js"></script>
-<script>
-(function () {
-  var A = window.WisePPTThemeAdapters['paper-ink.atlas'];
-  var css = A.adaptCss(window.SWISS_CATALOG_DATA.componentCss);
-  // ↑ 这段 css 构建期写进 assets/registered-components.css,不留运行时拼接
-  document.querySelectorAll('[data-layout-slot]').forEach(function (host) {
-    var num = Number(host.dataset.componentId.split('.')[1]);   // atlas.<num>.<slug>
-    var entry = window.SWISS_CATALOG_DATA.entries.find(function (e) { return e.num === num; });
-    if (!entry) throw new Error('缺少组件 ' + host.dataset.componentId);
-    host.innerHTML = A.adaptMarkup(entry.snippet);
-  });
-})();
-</script>
+```bash
+node scripts/materialize_atlas_component.cjs atlas.051.iceberg --out-dir /absolute/path/to/deck/assets/materialized/atlas.051.iceberg
 ```
 
-注入后同样按 `data-field` 改文案；最后加载公共 `assets/deck-component-contract.css`，deck 不得重画预览外壳。
+命令产出 `component.html`、`component.css` 和 `manifest.json`；HTML 根节点自带 component id、Catalog spec、源码/snippet/adapter 指纹，CSS 固定为 `adaptCss(componentCss) + COMPONENT_OVERRIDES`。把 HTML 放进对应 `data-layout-slot`，把 CSS 合并进 `assets/registered-components.css`。按 `data-field` 改文案，不能删除收据属性或改 DOM 结构；最后加载公共 `assets/deck-component-contract.css`。
+
+Atlas 默认只允许构建期静态物化。确需运行时物化时，也必须写出同样的收据属性、注入出非空真实 DOM，并在全部动作结束后才调用 `WisePPT.markSlideReady(slide)`；空 host 先 ready 会被 runtime 直接拒绝。051 使用 Catalog 当前 `.iceberg-diagram` 三层模型与六个 `data-field`，不得恢复旧 `.iceberg` 结构或旧 CSS 自定义属性。
 
 ### C · echarts. 组件
 

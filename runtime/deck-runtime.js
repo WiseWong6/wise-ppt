@@ -183,8 +183,42 @@
   var fontReady = loadRequiredFonts();
   fontReady.catch(function (error) { console.error(error); });
 
+  function assertMaterializedComponents(slide) {
+    Array.prototype.forEach.call(slide.querySelectorAll('[data-layout-slot]'), function (slot) {
+      var component = slot.matches('[data-component-id]') ? slot : slot.querySelector('[data-component-id]');
+      if (!component) return;
+      var componentId = String(component.dataset.componentId || '').trim();
+      if (!componentId) throw new Error('组件槽缺少 data-component-id');
+      var materialized = component.matches('[data-materialized-component-id]')
+        ? component
+        : component.querySelector('[data-materialized-component-id]');
+      if (componentId.indexOf('atlas.') === 0 && !materialized) {
+        throw new Error(componentId + ' 在 markSlideReady 前未完成 Catalog 物化');
+      }
+      if (!materialized) {
+        if (!component.children.length && !String(component.textContent || '').trim()) {
+          throw new Error(componentId + ' 在 markSlideReady 前仍是空组件槽');
+        }
+        return;
+      }
+      if (materialized.dataset.materializedComponentId !== componentId) {
+        throw new Error(componentId + ' 的物化收据 component_id 错配');
+      }
+      if (!materialized.children.length) throw new Error(componentId + ' 的物化 DOM 为空');
+      if (componentId.indexOf('atlas.') === 0) {
+        ['catalogSpec','catalogSourceSha256','catalogSnippetSha256','catalogAdapterSha256'].forEach(function (key) {
+          var value = String(materialized.dataset[key] || '').trim();
+          if (!value || (key !== 'catalogSpec' && !/^[a-f0-9]{64}$/.test(value))) {
+            throw new Error(componentId + ' 的 Catalog 物化收据不完整: ' + key);
+          }
+        });
+      }
+    });
+  }
+
   function markSlideReady(slide) {
     if (!slide || !slide.classList.contains('slide')) throw new Error('markSlideReady 需要 .slide 节点');
+    assertMaterializedComponents(slide);
     if (tasks.has(slide)) return tasks.get(slide);
     var task = Promise.resolve().then(function () {
       var images = Array.prototype.map.call(slide.querySelectorAll('img'), function (img) {
@@ -1276,6 +1310,21 @@
         Array.prototype.forEach.call(slide.querySelectorAll('[data-layout-slot]'), function (slot) {
           var comp = slot.matches('[data-component-id]') ? slot : slot.querySelector('[data-component-id]');
           if (!comp) return;
+          if (comp.dataset.componentId === 'atlas.051.iceberg') {
+            var iceberg = comp.querySelector('.iceberg-diagram');
+            if (!iceberg) throw new Error('第 ' + pageNo + ' 页未使用 Catalog 当前冰山结构');
+            var fields = ['visible_label','visible_description','behavior_label','behavior_description','root_label','root_description'];
+            fields.forEach(function (field) {
+              if (!iceberg.querySelector('[data-field="' + field + '"]')) throw new Error('第 ' + pageNo + ' 页冰山缺少字段 ' + field);
+            });
+            if (/ICEBERG MODEL|VISIBLE\s*\/\s*HIDDEN|10\s*\/\s*90/.test(iceberg.textContent || '') || iceberg.querySelector('line[x1="0"][y1="26"][x2="480"][y2="26"]')) {
+              throw new Error('第 ' + pageNo + ' 页冰山含已删除的顶部元数据带');
+            }
+            var fills = Array.prototype.map.call(iceberg.querySelectorAll('path'), function (path) {
+              return getComputedStyle(path).fill;
+            }).filter(function (fill) { return fill && fill !== 'none'; });
+            if (new Set(fills).size < 3) throw new Error('第 ' + pageNo + ' 页冰山层级颜色塌缩，疑似整块变黑');
+          }
           var r = slot.getBoundingClientRect(), stageRect=slide.querySelector('.stage').getBoundingClientRect(), scale=stageRect.width/1920 || 1;
           var slotWidth=r.width/scale, slotHeight=r.height/scale, minW=Number(comp.dataset.contractMinWidth), minH=Number(comp.dataset.contractMinHeight);
           var minA=Number(comp.dataset.contractMinAspect), maxA=Number(comp.dataset.contractMaxAspect), aspect=slotWidth/slotHeight;

@@ -52,7 +52,7 @@ Paper Ink catalog 中的 `native.paper-ink.062.agenda-ink` 同样是页面导航
 
 - Native：`native.paper-ink.*`。语义组件与原有稳定 ID 继续按各自 typed renderer 物化；本轮转正的 15 个固定几何组件以 `capabilities/layouts/paper-ink-components.js` 为正式 snippet 源，并在 routing manifest 中声明独立 data contract、frame 与容量。
 - ECharts：catalog 位于 `capabilities/vendors/echarts/catalog.json`，业务数据与 option 分离。
-- Atlas：catalog 位于 `capabilities/vendors/ppt-component-atlas/catalog-data.js`，保留精确稳定 ID 和设计证据；production 使用对应 typed renderer。
+- Atlas：唯一 catalog 位于 `references/ppt-component-atlas/catalog-data.js`；Catalog 预览与 production 静态物化读取同一 entry，精确源码/entry/adapter 指纹写入 `catalog_receipt`。
 - 图片：仅允许 `native.paper-ink.media.reconstructed-image` 和 `codex-host.paper-ink.media.generated-image`，生成完成后必须冻结为 deck 内本地文件。
 
 `scripts/export_component.py` 只接受精确 `component_id` 与已启用 theme。零候选、空间不兼容、容量越界、依赖缺失、adapter 不支持或 ID 未登记时均失败关闭。

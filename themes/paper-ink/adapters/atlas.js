@@ -886,11 +886,16 @@
       align-items: flex-end !important;
     }
 
-    /* --- 051 冰山图：Atlas 字阶吸附后错开百分比与英文标签基线 --- */
-    .swiss-card .iceberg-diagram > text:nth-of-type(4) {
+    /* --- 051 冰山图：Catalog 新 SVG 按槽宽等比缩放；字阶吸附后错开百分比与英文标签基线 --- */
+    .swiss-card .iceberg-diagram {
+      display: block !important;
+      width: 100% !important;
+      height: auto !important;
+    }
+    .swiss-card .iceberg-diagram > text:nth-of-type(2) {
       transform: translateY(11px);
     }
-    .swiss-card .iceberg-diagram > text:nth-of-type(6) {
+    .swiss-card .iceberg-diagram > text:nth-of-type(4) {
       transform: translateY(13px);
     }`;
 

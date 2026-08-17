@@ -695,3 +695,40 @@ window.SWISS_CATALOG_DATA = {
     ['MATERIAL', 'MEASUREMENT', 'ENVIRONMENT'].forEach(label => setTextAttrs(label, { y: 343 }));
   }
 }
+
+/* #051 iceberg: text payload is editable only through named fields.  The SVG
+   geometry, percentages, waterline and labels remain the Catalog asset.  The
+   decorative top metadata band is intentionally absent. */
+{
+  const iceberg = window.SWISS_CATALOG_DATA.entries.find(entry => entry.num === 51);
+  if (iceberg) {
+    const removeOnce = (fragment, label) => {
+      if (!iceberg.snippet.includes(fragment)) throw new Error(`iceberg decoration missing: ${label}`);
+      iceberg.snippet = iceberg.snippet.replace(fragment, '');
+    };
+    removeOnce('<text x="0" y="14" font-family="var(--wp-font-mono)" font-size="8.5" letter-spacing="2" style="fill:var(--wp-compat-atlas-ink-45)">ICEBERG MODEL · VISIBLE / HIDDEN</text>\n', 'top title');
+    removeOnce('<text x="480" y="14" text-anchor="end" font-family="var(--wp-font-mono)" font-size="7.5" letter-spacing="1.5" style="fill:var(--wp-compat-atlas-ink-45)">10 / 90</text>\n', 'top ratio');
+    removeOnce('<line x1="0" y1="26" x2="480" y2="26" style="stroke:var(--wp-compat-atlas-ink);stroke-width:.6;opacity:.22"/>\n', 'top divider');
+    const fields = [
+      ['可见现象', 'visible_label'],
+      ['界面混乱 · 样式不一', 'visible_description'],
+      ['行为模式', 'behavior_label'],
+      ['重复返工 · 体验漂移', 'behavior_description'],
+      ['系统根因', 'root_label'],
+      ['缺少统一规范与治理', 'root_description']
+    ];
+    fields.forEach(([label, field]) => {
+      const escaped = label.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+      const matcher = new RegExp(`<text\\s+([^>]*)>${escaped}</text>`);
+      if (!matcher.test(iceberg.snippet)) throw new Error(`iceberg label missing: ${label}`);
+      iceberg.snippet = iceberg.snippet.replace(
+        matcher,
+        (_, attrs) => `<text ${attrs} data-field="${field}">${label}</text>`
+      );
+    });
+    iceberg.snippet = iceberg.snippet.replace(
+      /<text\s+([^>]*font-size="(?:7\.5|8\.5|11\.5)"[^>]*)>/g,
+      '<text $1 data-text-kind="label">'
+    );
+  }
+}
