@@ -4763,7 +4763,7 @@ FAIL-SAFE · AUDITED PER CALL
     <text data-field="right_title" x="920" y="392" text-anchor="middle" font-size="31" font-weight="300">风险控制</text>
     <text x="920" y="436" text-anchor="middle" font-size="17" font-weight="300" fill="var(--pi-ink-60)"><tspan data-field="right_point_1">降低返工概率</tspan><tspan> · </tspan><tspan data-field="right_point_2">保留审计证据</tspan></text>
 
-    <text data-field="decision" x="525" y="548" text-anchor="middle" font-size="22" font-weight="300">用可逆试点换取速度，不牺牲关键控制点</text>
+    <text data-field="decision" x="525" y="548" text-anchor="middle" font-size="22" font-weight="300"></text>
   </g>
 </svg></div>`
   },
