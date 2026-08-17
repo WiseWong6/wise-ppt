@@ -4798,7 +4798,7 @@ FAIL-SAFE · AUDITED PER CALL
       <circle r="57" fill="var(--pi-paper)" stroke="var(--pi-ink-80)" stroke-width=".85" vector-effect="non-scaling-stroke"/>
       <g transform="rotate(-15)"><text data-field="module_2" x="0" y="-4" text-anchor="middle" font-family="var(--pi-sans)" font-size="18" font-weight="300" fill="var(--pi-ink)">模型</text><text data-field="module_2_desc" x="0" y="22" text-anchor="middle" font-family="var(--pi-sans)" font-size="10" font-weight="300" fill="var(--pi-ink-60)">推理与执行</text></g>
     </g>
-    <g transform="translate(522 400) rotate(15) scale(1.02)">
+    <g transform="translate(529 402) rotate(15) scale(1.02)">
       <use href="#pi-gear-outline" fill="rgba(255,255,255,.14)" stroke="var(--pi-ink-80)" stroke-width="1.15" stroke-linejoin="round" vector-effect="non-scaling-stroke"/>
       <circle r="57" fill="var(--pi-paper)" stroke="var(--pi-ink-80)" stroke-width=".85" vector-effect="non-scaling-stroke"/>
       <g transform="rotate(-15)"><text data-field="module_3" x="0" y="-4" text-anchor="middle" font-family="var(--pi-sans)" font-size="18" font-weight="300" fill="var(--pi-ink)">评测</text><text data-field="module_3_desc" x="0" y="22" text-anchor="middle" font-family="var(--pi-sans)" font-size="10" font-weight="300" fill="var(--pi-ink-60)">反馈与校准</text></g>
