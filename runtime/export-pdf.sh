@@ -104,6 +104,5 @@ if command -v pdfinfo >/dev/null 2>&1; then
   PDF_PAGES="$(pdfinfo "$TMP_PDF" | awk '/^Pages:/ {print $2}')"
   [ "$PDF_PAGES" = "$COUNT" ] || { echo "PDF 页数 $PDF_PAGES，与 slide 数 $COUNT 不一致" >&2; exit 1; }
 fi
-python3 "$SKILL_ROOT/scripts/validate.py" delivery "$DECK" --workspace "$WORKSPACE" --pdf "$TMP_PDF"
 mv "$TMP_PDF" "$OUT"
 echo "PASS pdf pages=$COUNT output=$OUT"

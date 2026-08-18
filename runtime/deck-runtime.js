@@ -1220,7 +1220,7 @@
     }
     function assertDeckContractV2(all) {
       if (root.dataset.deckContractVersion !== '2') throw new Error('正式成品缺少 data-deck-contract-version=2');
-      var tokenRoles = ['display','hero','title','metric','heading','emphasis','caption','subheading','body','body-small','micro-secondary','label','meta'];
+      var tokenRoles = ['display-mark','display','hero','title','metric','heading','emphasis','caption','subheading','body','body-small','micro-secondary','label','meta'];
       var tokenSizes = {};
       tokenRoles.forEach(function (role) { tokenSizes[role] = typeSize(role); });
       var large = { display:true, hero:true, title:true };

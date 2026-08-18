@@ -143,6 +143,7 @@ description: 表驱动的网页 PPT 编排 skill。输入 PDF/链接/口语稿/�
 - **native. 前缀(renderer_kinds=svg 或 native-html)**:复制 `capabilities/layouts/paper-ink-components.js`(依赖 design-tokens 的 --wp-compat-pi-* 映射),注入方式同上
 - **echarts. 前缀(renderer_kinds=svg/canvas)**:复制 `echarts.min.js`+`adapters/echarts.js`,页面 JSON 数据块 + `WisePPT.createEChart`,option 走纸墨 adapter,不改数据
 - 多槽页(不对称/组合结构)一槽一组件;**禁止改写 content 语义迎合组件**,不合适就换组件
+- **`data-field` 只换样张/版式帧演示绑定过的字段**:组件源码里样张未演示的空槽一律不填——想加的话(如判定句)走页面题注,不塞组件槽;组件源码暴露了样张未演示的槽属于资产缺陷,发现即删槽(不是加规则限填,v141 起 balance-scale 已删 decision 槽)
 
 **第三段 · 重绘兜底**——语义/形状/容量均无合适组件才手绘:deck-plan ④列标 `重绘:理由`,并先确认第0步无可套版式——凡 deck-plan 或判定过程提及某版式号,必须同时登记 `拒套:<版式号> | 理由`(如容量/槽位/语义真不匹配),未登记即拒套按违约计;重绘沿用某版式的画法语法时,必须回到该版式走锁版复制,不得 free_build 复刻。新画法完成后回填表B。重绘不能绕过槽位不适配:容量或几何不合法时固定走`换组件 → 换结构/变体 → 删除非必要辅助内容并更新 deck-plan → 拆页`;禁止缩字、拉伸、裁切、越界、隐藏 must 内容或改写语义迎合组件。手绘仍守渲染合同(typeSize/token/无标题制/关系对齐实测)。
 
@@ -318,7 +319,7 @@ description: 表驱动的网页 PPT 编排 skill。输入 PDF/链接/口语稿/�
 | 组件外壳/icon/占位符 | check-deck 静态+浏览器 | 槽满足 manifest；外壳 computed 归零；坏图、TODO、叉号、伪造 redraw-v3 失败 |
 | 字体真实加载、file:// 资源、禁 stageFit/iframe、缩放权威 | check-deck(浏览器) | fail-closed |
 | 文字主体垂直居中、中心型页水平配平 | audit-deck screen 管线 | 垂直 \|Δ\|≤3px；仅 `data-balance="centered"` 页的可见结构水平 \|Δ\|≤3px，`structural` 页不强推居中；free_build 关系页右空带 ≤350px(1856−主体右缘)；带 `data-template-id` 的锁版页免检(输出 template-locked) |
-| 全套字阶 | check-deck + audit-deck screen | 可见文字映射 design token；正文≥18px；大字唯一；主字档/同组件路径一致；逐页输出字档分布 |
+| 全套字阶 | check-deck + audit-deck screen | 可见文字映射 design token；正文≥18px；大字唯一；主字档/同组件路径一致；逐页输出字档分布。display-mark(300px)仅限装饰性大标记(如隔页编号),不参与大字唯一计数 |
 | 隐形内容、PDF 布局残差、页数 | audit-deck PDF 管线 | 主体残差 ≤35px(锁版页免检);PDF 页数 = slide 数 |
 
 ## 交付

@@ -4802,8 +4802,6 @@ FAIL-SAFE · AUDITED PER CALL
     <text x="920" y="347" text-anchor="middle" font-family="var(--pi-mono)" font-size="14" letter-spacing="3" fill="var(--pi-ink-45)">GOVERNANCE</text>
     <text data-field="right_title" x="920" y="392" text-anchor="middle" font-size="31" font-weight="300">风险控制</text>
     <text x="920" y="436" text-anchor="middle" font-size="17" font-weight="300" fill="var(--pi-ink-60)"><tspan data-field="right_point_1">降低返工概率</tspan><tspan> · </tspan><tspan data-field="right_point_2">保留审计证据</tspan></text>
-
-    <text data-field="decision" x="525" y="548" text-anchor="middle" font-size="22" font-weight="300"></text>
   </g>
 </svg></div>`
   },

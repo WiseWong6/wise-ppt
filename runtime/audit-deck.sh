@@ -97,7 +97,7 @@ const send = (m, p = {}) => new Promise((res, rej) => {
   await sleep(600);
   const expr = `(() => {
     const pages = [];
-    const tokenRoles = ['display','hero','title','metric','heading','emphasis','caption','subheading','body','body-small','micro-secondary','label','meta'];
+    const tokenRoles = ['display-mark','display','hero','title','metric','heading','emphasis','caption','subheading','body','body-small','micro-secondary','label','meta'];
     const tokenSizes = Object.fromEntries(tokenRoles.map(role => [role, parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--type-'+role))]));
     const tokenRole = size => tokenRoles.find(role => Math.abs(tokenSizes[role] - size) <= .25) || ('unmapped:'+size.toFixed(1));
     document.querySelectorAll('#track > .slide').forEach(slide => {
