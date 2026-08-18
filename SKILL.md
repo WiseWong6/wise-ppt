@@ -9,13 +9,14 @@ description: 表驱动的网页 PPT 编排 skill。输入 PDF/链接/口语稿/�
 
 - **表驱动 prompt skill**:判定逻辑沉在两张映射表(表A 关系→结构、表B 结构块→组件)，执行者查表走路，不临场发挥。
 - 本 Skill 使用**轻量成品合同 v2**，规划仍落人可读 `deck-plan.md`，确定性约束由静态/浏览器门禁交叉核对。
-- **分工(唯一裁定)**:本文件是**执行唯一权威**——表A/表B、渲染合同红线、样板、交付清单以此为准;`skill-design.md` 是方法论出处("为什么这么判")+修订记录,判定理由和设计原则去那里查。两边如有出入,以本文件为准。
+- **分工(唯一裁定)**:本文件是**执行唯一权威**——表A/表B、渲染合同红线、样板、交付清单以此为准;`skill-design.md` 是方法论出处("为什么这么判",文末附关键教训浓缩),完整修订史在 `skill-design-changelog.md`,判定理由和设计原则去那里查。两边如有出入,以本文件为准。
 
 ## 资产地图
 
 | 路径 | 是什么 | 什么时候用 |
 |---|---|---|
-| `skill-design.md` | 方法论出处(九个阶段各章的判定理由与设计原则)+修订记录 | 要"为什么这么判"时查 |
+| `skill-design.md` | 方法论出处(各章判定理由与设计原则 + 文末「关键教训」附录) | 要"为什么这么判"时查 |
+| `skill-design-changelog.md` | 修订记录(append-only:v 系主版本 + c 系列 Catalog 序列) | 要查"某一版改了什么"时用 |
 | `references/catalog.html` | **唯一可直接选择的生产资产目录**(模板/版式/结构/组件/图标五 tab);当前可见内容就是执行者能选的全集 | 套版式、选组件、选图标、看模板实拍 |
 | `capabilities/catalog-authority-manifest.json` | Catalog 的确定性机器投影；锁定每个关系/非关系帧、组件源码与渲染栈、精选图标的 SHA-256 | 生成前核对，交付时跑 `node scripts/build_catalog_authority_manifest.cjs --check` |
 | `references/ppt-component-atlas/catalog-data.js` | atlas. 组件的唯一源码(SWISS_CATALOG_DATA) | 物化 atlas. 前缀组件(唯一物化器吃的就是它) |

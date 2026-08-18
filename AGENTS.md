@@ -14,11 +14,11 @@
 2. **结论先行**,细节跟上。先说"结论:不需要",再说为什么。
 3. 分析前先确认自己理解了概念。本项目最大的坑:把"组件形状"(放射/环形/漏斗)误当成"页面结构"。**结构 = 页面区域怎么切分;组件 = 区域内画什么形状。**
 4. 引用图册版式时,直接给卡片编号(A1-O1)和一句话描述,用户自己去 gallery 看。
-5. **catalog 浏览页改动不占主版本号**。references/catalog.html 的展示层调整(按钮/间距/排版)记入修订记录的"Catalog 序列";只有影响判定链、表A/表B、渲染合同、manifest 数据的改动才算 skill 规则版本。
+5. **catalog 浏览页改动不占主版本号**。references/catalog.html 的展示层调整(按钮/间距/排版)记入 `skill-design-changelog.md` 修订记录的"Catalog 序列";只有影响判定链、表A/表B、渲染合同、manifest 数据的改动才算 skill 规则版本。
 
 ## 本项目上下文
 
-- 执行权威:`SKILL.md`(表A/表B/红线/样板/交付);方法论与"为什么":`skill-design.md` + 修订记录
+- 执行权威:`SKILL.md`(表A/表B/红线/样板/交付);方法论与"为什么":`skill-design.md` + 修订记录 `skill-design-changelog.md`
 - 核心链路:内容 → 页面规划(thesis/叙事/页数/主张句) → 关系(六大族) → 套版式(能套则套) / 结构(6种切分) → 组件
 - 资产只有一套:`references/catalog.html` 当前可见的关系页、非关系页、组件和图标才允许直接选择；精确源码/适配器指纹由 `capabilities/catalog-authority-manifest.json` 锁定。`themes/paper-ink/examples/wise-ppt-story-six-page/` 只是范文，机器数据在 `capabilities/`。
 - 非关系页(封面/目录/尾卡/隔页/金句/联络)直接套模板,不进关系流程
