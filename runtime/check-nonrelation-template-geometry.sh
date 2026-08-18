@@ -226,7 +226,10 @@ const same = (a, b) => JSON.stringify(a) === JSON.stringify(b);
       actual[page.page] = {
         kind:'template', key:page.template,
         capture:await evaluate(captureExpression(`document.querySelectorAll('#track > .slide')[${page.index}]`, contract, 'template')),
-        geometry:(await evaluate(measureExpression(`document.querySelectorAll('#track > .slide')[${page.index}]`, contract.geometry))).values
+        geometry:(await evaluate(measureExpression(`document.querySelectorAll('#track > .slide')[${page.index}]`, contract.geometry))).values,
+        widths:contract.width_max
+          ? (await evaluate(measureExpression(`document.querySelectorAll('#track > .slide')[${page.index}]`, Object.fromEntries(Object.keys(contract.width_max).map(part => [part, ['width']]))))).values
+          : null
       };
     } else {
       const recipe = recipesById[page.recipe];
@@ -284,6 +287,11 @@ const same = (a, b) => JSON.stringify(a) === JSON.stringify(b);
         const want = expected.geometry?.[part]?.[field];
         if (!Number.isFinite(want) || Math.abs(value-want)>tolerance) failures.push(`${page}/${item.key}/${part}.${field}: ${value}px != 参考 ${want}px`);
       }
+    }
+    for (const [part, max] of Object.entries((item.kind === 'template' ? templates[item.key] : {}).width_max || {})) {
+      const value = item.widths?.[part]?.width;
+      if (!Number.isFinite(value)) failures.push(`${page}/${item.key}/${part}.width: 未测得渲染宽`);
+      else if (value > max + tolerance) failures.push(`${page}/${item.key}/${part}.width: ${value}px 超出可用宽上限 ${max}px(文字槽只锁 left/top,宽度不得越过邻区/外缘)`);
     }
   }
   if (failures.length) throw new Error(`直接套用外壳漂移\n${failures.join('\n')}`);

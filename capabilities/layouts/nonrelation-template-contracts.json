@@ -9,7 +9,8 @@
       "parts": ["support", "folio", "illustration", "kicker", "primary", "title-bar", "subtitle"],
       "editable_text_parts": ["support", "folio", "illustration", "kicker", "primary", "subtitle"],
       "slots": {"support": "text", "illustration": "illustration", "kicker": "text", "primary": "text", "subtitle": "text"},
-      "geometry": {"illustration": ["left", "top", "width", "height"], "primary": ["left", "top", "width"]}
+      "geometry": {"illustration": ["left", "top", "width", "height"], "primary": ["left", "top"]},
+      "width_max": {"primary": 844}
     },
     "D2": {
       "source": "references/gallery-paper-ink/ai/frames/layout-d2.html",
@@ -45,7 +46,8 @@
       "parts": ["support", "folio", "illustration", "primary", "lead"],
       "editable_text_parts": ["support", "folio", "illustration", "primary", "lead"],
       "slots": {"support": "text", "illustration": "illustration", "primary": "text", "lead": "text"},
-      "geometry": {"illustration": ["left", "top", "width", "height"], "primary": ["left", "top", "width"], "lead": ["left", "top", "width"]}
+      "geometry": {"illustration": ["left", "top", "width", "height"], "primary": ["left", "top"], "lead": ["left", "top"]},
+      "width_max": {"primary": 1078, "lead": 1074}
     },
     "D6": {
       "source": "references/gallery-paper-ink/ai/frames/layout-d6.html",
@@ -72,7 +74,8 @@
       "parts": ["support", "folio", "illustration", "kicker", "primary", "subtitle"],
       "editable_text_parts": ["support", "folio", "illustration", "kicker", "primary", "subtitle"],
       "slots": {"support": "text", "illustration": "illustration", "kicker": "text", "primary": "text", "subtitle": "text"},
-      "geometry": {"illustration": ["left", "top", "width", "height"], "primary": ["left", "top", "width"]}
+      "geometry": {"illustration": ["left", "top", "width", "height"], "primary": ["left", "top"]},
+      "width_max": {"primary": 830}
     },
     "D9": {
       "source": "references/gallery-paper-ink/ai/frames/layout-d9.html",

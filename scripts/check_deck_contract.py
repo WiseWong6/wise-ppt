@@ -38,6 +38,8 @@ FIT_WAIVER_RE = re.compile(r"拒套\s*[:：]\s*([A-Z]\d{1,2})\s*\|\s*\S+")
 PLAN_SELECT_RE = re.compile(r"③\s*选定\s*[:：]\s*\*\*(.+?)\*\*")
 PRIMITIVE_RE = re.compile(r"^(?:单区|(?:左右|上下)x等分|左右不对称|上下不对称|网格\d{1,2}x\d{1,2}|非关系模板:\S+)$")
 TITLE_FW_BUDGET = 28.0
+TEMPLATE_TITLE_FW_BUDGET = {"D1": 6.0, "D5": 8.0, "D7": 8.0, "D8": 8.0, "D10": 8.0}
+INVISIBLE_SPACE_RE = re.compile(r"[\u2009\u200a\u200b\u200c\u200d\u202f\u2060\ufeff]")
 
 
 def fullwidth_units(text: str) -> float:
@@ -299,6 +301,11 @@ def main() -> int:
         fails.append("缺少公共 deck-component-contract.css")
     if not plan_path.is_file():
         fails.append("缺少 deck-plan.md")
+    invisible = sorted({f"U+{ord(ch):04X}" for ch in INVISIBLE_SPACE_RE.findall(html)})
+    if invisible:
+        fails.append(
+            f"index.html 含不可见空格({'、'.join(invisible)}):禁止用零宽/发丝/窄空格凑文字槽宽度,先砍字数或换模板"
+        )
 
     by_id, aliases, gallery_slots, gallery_recipes, templates, authority, selected_icons, relations = load_manifests()
     protected_digests = set()
@@ -390,6 +397,14 @@ def main() -> int:
             contract = templates.get(template_id)
             if not contract:
                 fails.append(f"p{number:02d} 未登记非关系模板: {template_id}")
+            title_budget = TEMPLATE_TITLE_FW_BUDGET.get(template_id)
+            if title_budget is not None and markers and not markers[0].has_attr("data-canvas-type-role"):
+                primary_units = fullwidth_units(markers[0].get_text().strip())
+                if primary_units > title_budget:
+                    fails.append(
+                        f"p{number:02d} {template_id} 标题超一行预算: {primary_units:.1f} > {title_budget:g} 全角当量"
+                        "(标题一行放完,D1 勿撞右侧 UI 图;先砍修饰词,不得用不可见空格凑宽度)"
+                    )
             if fields.get("模板", "").upper() != template_id:
                 fails.append(f"p{number:02d} 模板错配: deck-plan={fields.get('模板') or '-'} HTML={template_id}")
             if slide.get("data-primary-relation") or slide.get("data-visual-family"):
