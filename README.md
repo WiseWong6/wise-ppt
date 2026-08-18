@@ -1,4 +1,4 @@
-# Wise PPT · 表驱动网页 PPT 编排
+# Wise PPT Skill
 
 <p align="center">
   <a href="LICENSE"><img src="https://img.shields.io/github/license/WiseWong6/wise-ppt?style=for-the-badge" alt="AGPL-3.0 License"></a>
@@ -48,18 +48,19 @@ Wise PPT 是一个规则驱动的网页 PPT 编排 Skill。它可以把 PDF、�
   只是有关联(无方向、无包含)?        → 连接(兜底)
 ```
 
-| 族 | 细种 |
-|---|---|
-| 重心 | 焦点、示意 |
-| 并列 | 陈列、并行、指标、分布 |
-| 包含 | 层级、拆解、部分整体、嵌套 |
-| 有序 | 时序、流动、循环、汇聚、漏斗、因果 |
-| 比较 | 对比、矩阵、映射、排名 |
-| 连接 | 网络、交叠、证据 |
+<table width="100%">
+  <tr><th>族</th><th>细种</th></tr>
+  <tr><td>重心</td><td>焦点、示意</td></tr>
+  <tr><td>并列</td><td>陈列、并行、指标、分布</td></tr>
+  <tr><td>包含</td><td>层级、拆解、部分整体、嵌套</td></tr>
+  <tr><td>有序</td><td>时序、流动、循环、汇聚、漏斗、因果</td></tr>
+  <tr><td>比较</td><td>对比、矩阵、映射、排名</td></tr>
+  <tr><td>连接</td><td>网络、交叠、证据</td></tr>
+</table>
 
 ## 效果预览
 
-六页成品样例（[themes/paper-ink/examples/wise-ppt-story-six-page/](themes/paper-ink/examples/wise-ppt-story-six-page/)，含 `deck-plan.md` 规划范文），一份"用 Wise PPT 讲 Wise PPT"的完整 deck：
+六页成品样例（[themes/paper-ink/examples/wise-ppt-story-six-page/](themes/paper-ink/examples/wise-ppt-story-six-page/)）：
 
 <table>
   <tr>
@@ -75,8 +76,6 @@ Wise PPT 是一个规则驱动的网页 PPT 编排 Skill。它可以把 PDF、�
     <td width="50%" valign="top"><img src="assets/web/story-06.webp" alt="样例第 6 页：尾卡" width="100%"><sub><b>06</b> · 通过三条可执行渠道继续获取 Wise PPT 更新</sub></td>
   </tr>
 </table>
-
-每页标题就是该页的**主张句**：完整、可被质疑、≤28 全角当量。deck 产出在 skill 仓库之外，自包含、可移植。
 
 ## 资产目录
 
@@ -123,13 +122,6 @@ bash themes/paper-ink/assets/fonts/download-fonts.sh
 
 ```text
 帮我安装这个 skill：https://github.com/WiseWong6/wise-ppt
-```
-
-想手动装也只要两行（Codex 用户第一行即可，ZCode 用户补第二行软链）：
-
-```bash
-git clone https://github.com/WiseWong6/wise-ppt.git ~/.codex/skills/wise-ppt
-ln -s ~/.codex/skills/wise-ppt ~/.zcode/skills/wise-ppt
 ```
 
 更新：`git -C ~/.codex/skills/wise-ppt pull --ff-only`
