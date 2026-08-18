@@ -36,8 +36,6 @@
 
 ## 关系怎么判定
 
-问句依次过，第一个命中即停：
-
 ```text
 只有 1 个对象?                    → 重心
 多个对象,之间:
@@ -79,8 +77,6 @@
 
 ## 资产目录
 
-**结构 = 页面区域怎么切分；组件 = 区域内画什么。** 两层资产都长在图册里：
-
 | 资产 | 数量 | 说明 |
 |---|---|---|
 | 整页版式 | 80 | 68 关系版式 + 12 模板页 |
@@ -88,7 +84,7 @@
 | 组件 | 126 | 机器数据全量（Catalog 可见卡 80），含 ECharts 图表组件 |
 | 图标 | 865 | 源自 Tabler Icons 的纸墨重绘成品，deck 内联 SVG |
 
-版式卡按 A–O 编号。挑几张感受一下（点击图片看 640×360 原图，全部 80 张开 [references/catalog.html](references/catalog.html)）：
+这是几张示例，点击图片可以查看原图，完整画册需下载并打开 [references/catalog.html](references/catalog.html)：
 
 <table>
   <tr>
@@ -106,6 +102,7 @@
 ## 运行要求
 
 - 建议环境：Codex、ZCode、Kimi CLI、Claude Code；
+- 适配模型：GPT 5.6 Sol High 及以上、GLM 5.3、Kimi K3、Qwen 3.8max
 - Python 3（Playwright + Pillow，用于缩略图与合同脚本）与 Node.js（门禁脚本）；
 - Chrome/Chromium（浏览器检查与无头 PDF 导出）；
 - 字体约 63MB，不入库，首次使用先下载（国内镜像优先，自动校验指纹）：
@@ -113,8 +110,6 @@
 ```bash
 bash themes/paper-ink/assets/fonts/download-fonts.sh
 ```
-
-- 适配模型：GPT 5.6 Sol High 及以上、GLM 5.3、Kimi K3、Qwen 3.8max
 
 ## 安装
 
