@@ -113,7 +113,7 @@ Wise PPT 是一个表驱动的网页 PPT 编排 Skill。它把 PDF、链接、�
 
 ## 运行要求
 
-- 支持 Skill 的 agent 宿主（ZCode / Codex 均可，本仓库的开发链路即软链双宿主）；
+- 支持 Skill 的 agent 宿主（ZCode / Codex 均可）；
 - Python 3（Playwright + Pillow，用于缩略图与合同脚本）与 Node.js（门禁脚本）；
 - Chrome/Chromium（浏览器检查与无头 PDF 导出）；
 - 字体约 63MB，不入库，首次使用先下载（国内镜像优先，自动校验指纹）：
@@ -121,6 +121,8 @@ Wise PPT 是一个表驱动的网页 PPT 编排 Skill。它把 PDF、链接、�
 ```bash
 bash themes/paper-ink/assets/fonts/download-fonts.sh
 ```
+
+- 适配模型：GPT 5.6 Sol High、GLM 5.3、Kimi K3、Qwen 3.8max
 
 ## 安装
 
