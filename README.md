@@ -15,13 +15,13 @@
   <a href="references/catalog.html">本地资产图册</a>
 </p>
 
-Wise PPT 是一个规则驱动的网页 PPT 编排 Skill。它可以把 PDF、链接、口语稿，变成一份 16:9 纸墨风格的 PPT；当然也可以把旧配色的 PPT，用来做视觉优化。
+这个Skill它可以把 PDF、链接、口语稿，变成一份 16:9 纸墨风格的 PPT；当然也可以把旧配色的 PPT，用来做视觉优化。
 
 在过去，AI 做 PPT 非常喜欢排布格子，格子里面几乎都是 icon 和文案，信息密度极低，配色也很一般。
 
 但 AI 其实缺少的不是生成页面的能力，只是不知道要用什么配色，要怎么规划内容。
 
-于是我设计了一套完整的 PPT 设计流程。
+于是我设计了一套完整的 PPT 设计流程，用规则、版式、结构、组件来驱动PPT的制作。
 
 ## 核心逻辑
 
@@ -105,7 +105,7 @@ Wise PPT 是一个规则驱动的网页 PPT 编排 Skill。它可以把 PDF、�
 
 ## 运行要求
 
-- 支持 Skill 的 agent 宿主（ZCode / Codex 均可）；
+- 建议环境：Codex、ZCode、Kimi CLI、Claude Code；
 - Python 3（Playwright + Pillow，用于缩略图与合同脚本）与 Node.js（门禁脚本）；
 - Chrome/Chromium（浏览器检查与无头 PDF 导出）；
 - 字体约 63MB，不入库，首次使用先下载（国内镜像优先，自动校验指纹）：
@@ -114,7 +114,7 @@ Wise PPT 是一个规则驱动的网页 PPT 编排 Skill。它可以把 PDF、�
 bash themes/paper-ink/assets/fonts/download-fonts.sh
 ```
 
-- 适配模型：GPT 5.6 Sol High、GLM 5.3、Kimi K3、Qwen 3.8max
+- 适配模型：GPT 5.6 Sol High 及以上、GLM 5.3、Kimi K3、Qwen 3.8max
 
 ## 安装
 
