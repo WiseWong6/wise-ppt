@@ -8,8 +8,8 @@
 
 <p align="center">
   <a href="#核心逻辑">核心逻辑</a> ·
-  <a href="#效果预览">效果预览</a> ·
   <a href="#关系怎么判定">关系判定</a> ·
+  <a href="#效果预览">效果预览</a> ·
   <a href="#资产目录">资产目录</a> ·
   <a href="#快速开始">快速开始</a> ·
   <a href="references/catalog.html">本地资产图册</a>
@@ -34,27 +34,6 @@ Wise PPT 是一个规则驱动的网页 PPT 编排 Skill。它可以把 PDF、�
    - 都不适用 → 用定制的六种结构切分页面，再逐区选组件。
 5. **风格统一硬约束**：只用三套字体——思源宋体 Medium（标题）、思源黑体 Light（正文）、霞鹜文楷（引语点缀），865 个图标全部按纸墨风格重绘。
 
-## 效果预览
-
-六页成品样例（[themes/paper-ink/examples/wise-ppt-story-six-page/](themes/paper-ink/examples/wise-ppt-story-six-page/)，含 `deck-plan.md` 规划范文），一份"用 Wise PPT 讲 Wise PPT"的完整 deck：
-
-<table>
-  <tr>
-    <td width="50%" valign="top"><img src="assets/web/story-01.webp" alt="样例第 1 页：AI 做 PPT 总是千篇一律" width="100%"><sub><b>01</b> · AI 做 PPT 总是千篇一律，因为缺的是设计判断</sub></td>
-    <td width="50%" valign="top"><img src="assets/web/story-02.webp" alt="样例第 2 页：五步编排链" width="100%"><sub><b>02</b> · 五步编排链把原始资料变成可放映网页</sub></td>
-  </tr>
-  <tr>
-    <td width="50%" valign="top"><img src="assets/web/story-03.webp" alt="样例第 3 页：一页一个重心" width="100%"><sub><b>03</b> · 一页一个重心，三项原则共同决定阅读顺序</sub></td>
-    <td width="50%" valign="top"><img src="assets/web/story-04.webp" alt="样例第 4 页：内容关系决定版式" width="100%"><sub><b>04</b> · 版式图册提供结构候选，但内容关系拥有最终决定权</sub></td>
-  </tr>
-  <tr>
-    <td width="50%" valign="top"><img src="assets/web/story-05.webp" alt="样例第 5 页：组件由页面内容决定" width="100%"><sub><b>05</b> · 组件沉淀成熟表达，但是否调用仍由页面内容决定</sub></td>
-    <td width="50%" valign="top"><img src="assets/web/story-06.webp" alt="样例第 6 页：尾卡" width="100%"><sub><b>06</b> · 通过三条可执行渠道继续获取 Wise PPT 更新</sub></td>
-  </tr>
-</table>
-
-每页标题就是该页的**主张句**：完整、可被质疑、≤28 全角当量。deck 产出在 skill 仓库之外，自包含、可移植。
-
 ## 关系怎么判定
 
 问句依次过，第一个命中即停：
@@ -78,14 +57,35 @@ Wise PPT 是一个规则驱动的网页 PPT 编排 Skill。它可以把 PDF、�
 | 比较 | 对比、矩阵、映射、排名 |
 | 连接 | 网络、交叠、证据 |
 
+## 效果预览
+
+六页成品样例（[themes/paper-ink/examples/wise-ppt-story-six-page/](themes/paper-ink/examples/wise-ppt-story-six-page/)，含 `deck-plan.md` 规划范文），一份"用 Wise PPT 讲 Wise PPT"的完整 deck：
+
+<table>
+  <tr>
+    <td width="50%" valign="top"><img src="assets/web/story-01.webp" alt="样例第 1 页：AI 做 PPT 总是千篇一律" width="100%"><sub><b>01</b> · AI 做 PPT 总是千篇一律，因为缺的是设计判断</sub></td>
+    <td width="50%" valign="top"><img src="assets/web/story-02.webp" alt="样例第 2 页：五步编排链" width="100%"><sub><b>02</b> · 五步编排链把原始资料变成可放映网页</sub></td>
+  </tr>
+  <tr>
+    <td width="50%" valign="top"><img src="assets/web/story-03.webp" alt="样例第 3 页：一页一个重心" width="100%"><sub><b>03</b> · 一页一个重心，三项原则共同决定阅读顺序</sub></td>
+    <td width="50%" valign="top"><img src="assets/web/story-04.webp" alt="样例第 4 页：内容关系决定版式" width="100%"><sub><b>04</b> · 版式图册提供结构候选，但内容关系拥有最终决定权</sub></td>
+  </tr>
+  <tr>
+    <td width="50%" valign="top"><img src="assets/web/story-05.webp" alt="样例第 5 页：组件由页面内容决定" width="100%"><sub><b>05</b> · 组件沉淀成熟表达，但是否调用仍由页面内容决定</sub></td>
+    <td width="50%" valign="top"><img src="assets/web/story-06.webp" alt="样例第 6 页：尾卡" width="100%"><sub><b>06</b> · 通过三条可执行渠道继续获取 Wise PPT 更新</sub></td>
+  </tr>
+</table>
+
+每页标题就是该页的**主张句**：完整、可被质疑、≤28 全角当量。deck 产出在 skill 仓库之外，自包含、可移植。
+
 ## 资产目录
 
 **结构 = 页面区域怎么切分；组件 = 区域内画什么。** 两层资产都长在图册里：
 
 | 资产 | 数量 | 说明 |
 |---|---|---|
-| 整页版式帧 | 80 | 68 关系版式 + 12 模板页，完整 1920×1080 可执行 HTML，`references/gallery-paper-ink/ai/frames/` |
-| 结构空槽大图 | 17 | 6 种区域切分 × 空槽几何对照，`references/taxonomy-empty/` |
+| 整页版式 | 80 | 68 关系版式 + 12 模板页 |
+| 结构切分 | 17 | 6 种区域切分 × 空槽几何对照，`references/taxonomy-empty/` |
 | 组件 | 126 | 机器数据全量（Catalog 可见卡 80），含 ECharts 图表组件 |
 | 图标 | 865 | 源自 Tabler Icons 的纸墨重绘成品，deck 内联 SVG |
 
