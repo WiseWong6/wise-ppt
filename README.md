@@ -12,7 +12,6 @@
   <a href="#判定链">判定链</a> ·
   <a href="#资产目录">资产目录</a> ·
   <a href="#快速开始">快速开始</a> ·
-  <a href="#输出与验收">输出与验收</a> ·
   <a href="references/catalog.html">本地资产图册</a>
 </p>
 
@@ -125,110 +124,30 @@ bash themes/paper-ink/assets/fonts/download-fonts.sh
 
 ## 安装
 
-### 方式一：直接安装到 Codex Skills
+把这句话发给你的 Agent 即可：
 
-```bash
-git clone https://github.com/WiseWong6/wise-ppt.git \
-  ~/.codex/skills/wise-ppt
+```text
+帮我安装这个 skill：https://github.com/WiseWong6/wise-ppt
 ```
 
-ZCode 用户再补一条软链即可：
+想手动装也只要两行（Codex 用户第一行即可，ZCode 用户补第二行软链）：
 
 ```bash
-ln -s ~/.codex/skills/wise-ppt \
-  ~/.zcode/skills/wise-ppt
+git clone https://github.com/WiseWong6/wise-ppt.git ~/.codex/skills/wise-ppt
+ln -s ~/.codex/skills/wise-ppt ~/.zcode/skills/wise-ppt
 ```
 
-更新：
-
-```bash
-git -C ~/.codex/skills/wise-ppt pull --ff-only
-```
-
-### 方式二：保留开发目录并使用软链
-
-```bash
-git clone https://github.com/WiseWong6/wise-ppt.git \
-  /path/to/wise-ppt
-ln -s /path/to/wise-ppt \
-  ~/.zcode/skills/wise-ppt
-```
-
-当前 Skill 也收录在 [Wise Skills](https://github.com/WiseWong6/wise-skills) 合集，适合统一浏览我的其他 Skills。
+更新：`git -C ~/.codex/skills/wise-ppt pull --ff-only`
 
 ## 快速开始
 
-装好 Skill、跑完字体下载后，直接给素材说需求：
-
-### 从 PDF 生成
+一句话 + 你的资料（PDF / 链接 / 口语稿 / 成型 PPT），一站式生成 deck：
 
 ```text
-/wise-ppt
-把这份 PDF 做成 10 页路演 deck，输出到 /absolute/path/decks/。
+/wise-ppt 把这份 PDF 做成 10 页路演 deck，输出到 /absolute/path/decks/
 ```
 
-### 从口语稿生成
-
-```text
-/wise-ppt
-这是我的演讲逐字稿（贴稿），做一份 8 页的 deck，听众是投资人。
-```
-
-### 修改既有 deck
-
-```text
-/wise-ppt
-第 3 页的主张改成"成本降一半"，保持其他页不动。
-```
-
-### 浏览资产挑版式
-
-```text
-/wise-ppt
-打开资产图册，我要为"市场份额三年变化"挑一个版式。
-```
-
-## 请求模式
-
-### create（默认）
-
-- 新 deck，或另存为独立 deck；
-- 完整走 材料解析 → 页面规划 → 页面分流 → 逐页四步 → 渲染；
-- 页数唯一目标：用户给定 > 一页一主张 > 场景推荐（1 页 ≈ 0.5~2 分钟讲述量）。
-
-### revise
-
-- 改既有 deck 且保持身份，先读它的 `deck-plan.md`；
-- 三档：素材/thesis 变 → 全部重做；单页主张变 → 该页重走四步；只改文案 → 只改 slide；
-- 改完同步 `deck-plan.md`，门禁三件套照跑。
-
-## 输出与验收
-
-产出目录在 skill 仓库之外（deck 自包含、可移植），如 `<工作区>/decks/<deck-name>/`：
-
-```text
-decks/<deck-name>/
-├── index.html      # 自包含放映壳(横向放映 + 概览板)
-├── deck-plan.md    # 人可读规划(thesis/页清单/主张句/逐页登记)
-└── <deck-name>.pdf # 无头打印导出
-```
-
-deck 生成后跑三件套：
-
-```bash
-bash runtime/check-deck.sh <deck>   # 浏览器检查,console 零 error
-bash runtime/export-deck.sh <deck>  # 无头打印 PDF,页数核对
-bash runtime/audit-deck.sh <deck>   # 几何/字号/可见性审计
-```
-
-验收标准（全文见 SKILL.md「交付」）：三件套全绿；主张句超预算先砍字再拆页；封面标题一行放完；组件适配整页字阶而不是反过来。
-
-## 已知边界
-
-- 默认且目前唯一的主题是 paper-ink（纸墨线稿）；所有颜色/字阶/字体的数值唯一出处是 `themes/paper-ink/assets/design-tokens.css`。
-- 本仓库是 wise-ppt 系列的现行版本；旧 `wise-ppt` 与 `wise-ppt-page-expression` 已退役，不作为备用规则或资产来源。
-- `references/catalog-thumbnails/` 是可重建缓存（`references/build_catalog_thumbnails.py`），源码与 manifest 才是权威。
-- 门禁依赖本机 Chrome/Chromium 与 Python/Node 工具链，容器环境需自备。
+建议先让 Agent 进入 plan 模式，确认页面规划（thesis / 页数 / 每页主张句）后再执行。
 
 ## 关于作者
 
