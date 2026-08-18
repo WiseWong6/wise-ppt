@@ -105,7 +105,7 @@
 - 适配模型：GPT 5.6 Sol High 及以上、GLM 5.3、Kimi K3、Qwen 3.8max
 - Python 3（Playwright + Pillow，用于缩略图与合同脚本）与 Node.js（门禁脚本）；
 - Chrome/Chromium（浏览器检查与无头 PDF 导出）；
-- 字体约 63MB，不入库，首次使用先下载（国内镜像优先，自动校验指纹）：
+- 字体约 63MB，首次使用需要下载，如果你有这些字体则不用下载。
 
 ```bash
 bash themes/paper-ink/assets/fonts/download-fonts.sh
