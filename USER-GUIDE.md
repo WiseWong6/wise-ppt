@@ -1,6 +1,6 @@
 # Wise PPT 用户指南
 
-本指南对应 GitHub Release 里的精简 `wise-ppt/` Skill 包。用户不需要克隆开发仓，也不需要执行 `npm install`。
+本指南对应公开发行仓 [WiseWong6/wise-ppt](https://github.com/WiseWong6/wise-ppt) 里的 `wise-ppt/` Skill。用户不需要克隆开发仓，也不需要执行 `npm install`。
 
 ## 安装条件
 
@@ -12,12 +12,29 @@
 
 ## 安装和更新
 
-1. 下载 `wise-ppt-skill.zip` 与 `wise-ppt-skill.sha256`。
-2. 校验 SHA-256：macOS 使用 `shasum -a 256 wise-ppt-skill.zip`；Windows PowerShell 使用 `Get-FileHash .\wise-ppt-skill.zip -Algorithm SHA256`。
-3. 解压后得到固定根目录 `wise-ppt/`，把整个目录复制到 Agent 的个人 Skill 目录，不要创建软链。
-4. 运行 `node <skill>/bin/wise-ppt.mjs doctor`。输出 `"status": "pass"` 才算安装完成。
+推荐把下面这句话发给 Agent，让它从公开发行仓安装：
 
-更新时先把新包解压到临时目录并运行 `doctor`；通过后再整目录替换旧包。验证或复制失败时保留旧目录，不要零散覆盖。
+```text
+帮我安装这个 skill：https://github.com/WiseWong6/wise-ppt
+```
+
+手动安装时，先进入 Agent 的个人 Skill 目录，再执行：
+
+```text
+git clone --depth 1 https://github.com/WiseWong6/wise-ppt.git wise-ppt
+node wise-ppt/bin/wise-ppt.mjs doctor
+```
+
+输出 `"status": "pass"` 才算安装完成。`doctor` 会读取 `bundle-manifest.json`，核对发行文件的字节数与 SHA-256，并检查 Node、Chrome 和字体环境。
+
+Git 安装可在同一目录更新：
+
+```text
+git -C wise-ppt pull --ff-only
+node wise-ppt/bin/wise-ppt.mjs doctor
+```
+
+如果现有安装不是 Git checkout，先把新版克隆到临时目录并运行 `doctor`；通过后再整目录替换旧版。验证或复制失败时保留旧目录，不要零散覆盖。普通用户建议保留独立 Git checkout；开发环境如使用符号链接，必须确认目标是正式发行仓而不是开发仓或临时 `dist/`，并理解源目录变更会立即生效。
 
 常见 Skill 目录：
 

@@ -161,7 +161,7 @@
 帮我安装这个 skill：https://github.com/WiseWong6/wise-ppt
 ```
 
-更新：`git -C ~/.codex/skills/wise-ppt pull --ff-only`
+Codex 默认目录更新：`git -C ~/.codex/skills/wise-ppt pull --ff-only`。其他 Agent 的目录、手动安装和故障处理见 [用户指南](USER-GUIDE.md)。
 
 ## 快速开始
 
