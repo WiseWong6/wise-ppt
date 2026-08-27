@@ -7,8 +7,12 @@
   var runtimeBase = new URL('.', runtimeScript.src);
   var tasks = new WeakMap();
   var registeredTasks = new WeakMap();
+  var accentParam = query.get('accent');
+  var accentRequested = accentParam === null
+    ? root.dataset.finalEmphasis === 'semantic-focus'
+    : accentParam === '' || accentParam === '1' || accentParam === 'true';
 
-  if (query.has('accent')) root.classList.add('accent');
+  if (accentRequested) root.classList.add('accent');
   if (query.get('print') === '1') root.classList.add('print-mode');
 
   function loadStylesheet(name) {
@@ -106,7 +110,53 @@
     return tiers[memberRole];
   }
 
+  function restoreRuntimeEmphasis(slide) {
+    slide.querySelectorAll('[data-emphasis-runtime-applied="true"]').forEach(function (node) {
+      ['content-ref', 'emphasis-role', 'emphasis-paint'].forEach(function (name) {
+        var originalName = 'data-emphasis-runtime-original-' + name;
+        var original = node.getAttribute(originalName);
+        if (original === '__missing__') node.removeAttribute('data-' + name);
+        else if (original !== null) node.setAttribute('data-' + name, original);
+        node.removeAttribute(originalName);
+      });
+      node.removeAttribute('data-emphasis-runtime-applied');
+      delete node.dataset.emphasisActive;
+      delete node.dataset.emphasisTextSize;
+      delete node.dataset.typographyEmphasisSize;
+    });
+  }
+
+  function materializeRuntimeEmphasis(slide, contentRef) {
+    var raw = (slide.dataset.emphasisMembers || '').trim();
+    if (!raw) throw new Error('semantic-focus 页面缺少 data-emphasis-members');
+    var members;
+    try { members = JSON.parse(raw); } catch (_error) { throw new Error('data-emphasis-members 不是合法 JSON'); }
+    if (!Array.isArray(members) || !members.length) throw new Error('data-emphasis-members 必须是非空数组');
+    members.forEach(function (member) {
+      if (!member || typeof member.selector !== 'string' || !member.selector || typeof member.role !== 'string' || !member.role) {
+        throw new Error('data-emphasis-members 条目缺少 selector/role');
+      }
+      emphasisThemeRole(member.role);
+      var targets;
+      try { targets = slide.querySelectorAll(member.selector); } catch (_error) { throw new Error('强调目标选择器非法: ' + member.selector); }
+      if (!targets.length) throw new Error('强调目标未落到页面实例: ' + member.selector);
+      targets.forEach(function (node) {
+        ['content-ref', 'emphasis-role', 'emphasis-paint'].forEach(function (name) {
+          var originalName = 'data-emphasis-runtime-original-' + name;
+          var current = node.getAttribute('data-' + name);
+          node.setAttribute(originalName, current === null ? '__missing__' : current);
+        });
+        node.dataset.contentRef = contentRef;
+        node.dataset.emphasisRole = member.role;
+        if (member.paint) node.dataset.emphasisPaint = member.paint;
+        else node.removeAttribute('data-emphasis-paint');
+        node.dataset.emphasisRuntimeApplied = 'true';
+      });
+    });
+  }
+
   function bindSemanticEmphasis(slide) {
+    restoreRuntimeEmphasis(slide);
     var carriers = Array.prototype.slice.call(slide.querySelectorAll('[data-emphasis-role]'));
     carriers.forEach(function (node) {
       delete node.dataset.emphasisActive;
@@ -123,6 +173,8 @@
     if (!reason) throw new Error('semantic-focus 页面缺少 data-emphasis-reason');
     if (!memberRoles.length || new Set(memberRoles).size !== memberRoles.length) throw new Error('semantic-focus 页面成员角色缺失或重复');
     memberRoles.forEach(emphasisThemeRole);
+    materializeRuntimeEmphasis(slide, contentRef);
+    carriers = Array.prototype.slice.call(slide.querySelectorAll('[data-emphasis-role]'));
     var active = carriers.filter(function (node) {
       return node.dataset.contentRef === contentRef && memberRoles.includes(node.dataset.emphasisRole);
     });
@@ -2142,8 +2194,8 @@
       root.dataset.deckContractCheck = 'pass';
     }
     function assertDeckContract(all, context) {
-      if (root.dataset.deckContractVersion !== '5') {
-        throw new Error('正式成品必须声明 data-deck-contract-version=5');
+      if (root.dataset.deckContractVersion !== '6') {
+        throw new Error('正式成品必须声明 data-deck-contract-version=6');
       }
       assertDeckContractV3(all, context);
     }
@@ -2172,7 +2224,7 @@
         var all = allSlides();
         var cards = board.querySelectorAll('.board-card');
         if (cards.length !== all.length) throw new Error('画册卡片数量不一致');
-        if (!query.has('accent') && track.querySelector('[data-emphasis-active="true"]')) {
+        if (!accentRequested && track.querySelector('[data-emphasis-active="true"]')) {
           throw new Error('关闭主题焦点时不得保留 data-emphasis-active');
         }
         if (serifTitlesActive()) {
@@ -2191,7 +2243,7 @@
         var canvasCount = track.querySelectorAll('canvas').length;
         var copied = board.querySelectorAll('canvas[data-canvas-copied="true"]').length;
         if (copied !== canvasCount) throw new Error('Canvas 克隆像素未完整复制');
-        if (query.has('accent') !== root.classList.contains('accent')) throw new Error('强调模式未按 URL 激活');
+        if (accentRequested !== root.classList.contains('accent')) throw new Error('强调模式未按最终成品或显式 QA 状态激活');
         all.filter(function (slide) { return slide.dataset.emphasisMode === 'semantic-focus'; }).forEach(function (slide) {
           var active = bindSemanticEmphasis(slide);
           var refs = new Set(active.map(function (node) { return node.dataset.contentRef; }));
@@ -2201,11 +2253,11 @@
             var style = getComputedStyle(target);
             var actual = [style.color, style.fill, style.borderColor, style.outlineColor, style.stroke];
             var hasThemeFocus = actual.includes(expected);
-            if (query.has('accent') && !hasThemeFocus) throw new Error('强调载体没有应用当前主题焦点色');
-            if (!query.has('accent') && hasThemeFocus) throw new Error('默认模式残留当前主题焦点色');
+            if (accentRequested && !hasThemeFocus) throw new Error('强调载体没有应用当前主题焦点色');
+            if (!accentRequested && hasThemeFocus) throw new Error('普通 QA 状态残留当前主题焦点色');
           });
         });
-        if (query.has('accent')) {
+        if (accentRequested) {
           var typographyProperties = [
             'fontFamily', 'fontSize', 'fontStyle', 'fontWeight', 'fontStretch',
             'fontFeatureSettings', 'fontVariationSettings', 'letterSpacing', 'wordSpacing',

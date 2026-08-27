@@ -50,8 +50,10 @@ const ALLOWED_SLIDE_FIELDS = /* @__PURE__ */ new Set([
   "source_evidence",
   "must_refs",
   "section_id",
-  "section_title"
+  "section_title",
+  "emphasis"
 ]);
+const ALLOWED_EMPHASIS_FIELDS = /* @__PURE__ */ new Set(["target", "reason"]);
 const ALLOWED_MUST_FIELDS = /* @__PURE__ */ new Set(["must_id", "content", "status", "page_id", "reason", "visible_evidence", "source_refs"]);
 const PAYLOAD_CATEGORIES = Object.freeze({ text: "text", data: "data", icons: "icon" });
 const PAYLOAD_SURFACES = Object.freeze({ text: "text", data: "text", icons: "icon" });
@@ -213,13 +215,144 @@ function validatePayloadExclusivity(payload, pageId) {
     }
   }
 }
+async function attachCapabilityContracts(root, registry) {
+  const [emphasisContract, iconContract] = await Promise.all([
+    readJson(path.join(root, "capabilities/layouts/page-emphasis-contracts.json"), "\u9875\u9762\u5F3A\u8C03\u5408\u540C"),
+    readJson(path.join(root, "capabilities/layouts/icon-slot-contracts.json"), "\u56FE\u6807\u69FD\u4F4D\u5408\u540C")
+  ]);
+  if (emphasisContract.contract_version !== 3 || emphasisContract.capability_id !== "wise-ppt.page-emphasis") throw new WisePPTError("\u9875\u9762\u5F3A\u8C03\u5408\u540C\u7248\u672C\u9519\u8BEF");
+  if (iconContract.contract !== "wise-ppt-icon-slots@1" || iconContract.capability_id !== "wise-ppt.icon-slots") throw new WisePPTError("\u56FE\u6807\u69FD\u4F4D\u5408\u540C\u7248\u672C\u9519\u8BEF");
+  const generatedSources = {
+    layout_registry: "capabilities/layouts/layout-registry.json",
+    component_routing: "capabilities/components/routing-manifest.json",
+    runtime_authority: "capabilities/runtime-authority-manifest.json"
+  };
+  for (const [key, relative] of Object.entries(generatedSources)) {
+    const record = iconContract.generated_from?.[key];
+    const current = await shaFile(path.join(root, ...relative.split("/")));
+    if (record?.path !== relative || record.sha256 !== current.sha256) throw new WisePPTError(`\u56FE\u6807\u69FD\u4F4D\u5408\u540C\u7684 ${key} \u6765\u6E90\u5DF2\u8FC7\u671F`);
+  }
+  const targetContract = emphasisContract.production_target_contract || {};
+  if (targetContract.reason_required !== true || targetContract.selector_visibility !== "compiler-private") {
+    throw new WisePPTError("\u9875\u9762\u5F3A\u8C03\u751F\u4EA7\u5408\u540C\u5FC5\u987B\u8981\u6C42\u539F\u56E0\u5E76\u9690\u85CF\u79C1\u6709\u9009\u62E9\u5668");
+  }
+  const allowedMemberRoles = new Set(emphasisContract.allowed_member_roles || []);
+  if (!allowedMemberRoles.size) throw new WisePPTError("\u9875\u9762\u5F3A\u8C03\u5408\u540C\u672A\u767B\u8BB0\u5141\u8BB8\u7684\u6210\u5458\u89D2\u8272");
+  const componentRouting = await readJson(path.join(root, generatedSources.component_routing), "\u7EC4\u4EF6\u8DEF\u7531");
+  const routingComponents = componentRouting.components || [];
+  const componentIds = new Set(routingComponents.map((item) => item.component_id));
+  if (!Array.isArray(componentRouting.components) || componentIds.size !== routingComponents.length) throw new WisePPTError("\u7EC4\u4EF6\u8DEF\u7531\u96C6\u5408\u975E\u6CD5\u6216\u91CD\u590D");
+  const iconScope = iconContract.allowed_icon_scope || {};
+  const iconPaint = new Set(iconScope.paint || []);
+  if (iconScope.source_family !== "tabler-outline-redraw-v3" || iconScope.viewBox !== "0 0 64 64" || iconScope.source_hash_required !== true || iconPaint.size !== 2 || !iconPaint.has("currentColor") || !iconPaint.has("none") || !(iconScope.stroke_widths || []).length || iconScope.stroke_widths.some((value) => !Number.isFinite(Number(value)) || Number(value) < 0)) {
+    throw new WisePPTError("\u56FE\u6807\u6765\u6E90\u3001\u5C3A\u5BF8\u3001\u7EBF\u5BBD\u6216\u989C\u8272\u5408\u540C\u975E\u6CD5");
+  }
+  const emphasisPages = emphasisContract.pages || {};
+  const iconLayouts = iconContract.layouts || {};
+  const expectedIds = new Set((registry.layouts || []).map((layout) => layout.layout_id));
+  if (Object.keys(emphasisPages).length !== expectedIds.size || Object.keys(iconLayouts).length !== expectedIds.size) throw new WisePPTError("\u5F3A\u8C03\u6216\u56FE\u6807\u69FD\u4F4D\u5408\u540C\u9875\u9762\u96C6\u5408\u4E0D\u95ED\u5408");
+  const counts = iconContract.counts || {};
+  const relationshipLayouts = (registry.layouts || []).filter((layout) => layout.page_kind === "relationship").length;
+  const nonrelationshipLayouts = (registry.layouts || []).filter((layout) => layout.page_kind === "nonrelationship").length;
+  if (counts.layouts !== expectedIds.size || counts.relationship_layouts !== relationshipLayouts || counts.nonrelationship_layouts !== nonrelationshipLayouts || counts.components !== componentIds.size) {
+    throw new WisePPTError("\u56FE\u6807\u69FD\u4F4D\u5408\u540C\u7684\u9875\u9762\u6216\u7EC4\u4EF6\u8BA1\u6570\u5DF2\u8FC7\u671F");
+  }
+  const placementsByComponent = new Map([...componentIds].map((componentId) => [componentId, []]));
+  let registeredIconSlots = 0;
+  for (const layout of registry.layouts || []) {
+    const page = emphasisPages[layout.display_code];
+    const iconPage = iconLayouts[layout.layout_id];
+    if (!page || page.page_kind !== layout.page_kind) throw new WisePPTError(`${layout.display_code} \u9875\u9762\u5F3A\u8C03\u5408\u540C\u7F3A\u5931\u6216\u7C7B\u578B\u9519\u8BEF`);
+    if (!iconPage || iconPage.display_code !== layout.display_code || iconPage.page_kind !== layout.page_kind) throw new WisePPTError(`${layout.display_code} \u56FE\u6807\u69FD\u4F4D\u5408\u540C\u7F3A\u5931\u6216\u7C7B\u578B\u9519\u8BEF`);
+    if (!["none", "contrast-only", "semantic-focus", "conditional-semantic-focus"].includes(page.access)) throw new WisePPTError(`${layout.display_code} \u9875\u9762\u5F3A\u8C03\u6743\u9650\u975E\u6CD5`);
+    const members = structuredClone(page.production_focus_members ?? page.sample_focus_members ?? []);
+    if (!Array.isArray(members)) throw new WisePPTError(`${layout.display_code} \u751F\u4EA7\u7126\u70B9\u6210\u5458\u5FC5\u987B\u662F\u6570\u7EC4`);
+    const targetId = page.production_target_id || targetContract.relationship_target_id;
+    const enabled = ["semantic-focus", "conditional-semantic-focus"].includes(page.access);
+    if (enabled && (!/^[a-z][a-z0-9]*(?:[._-][a-z0-9]+)*$/.test(String(targetId || "")) || !members.length)) throw new WisePPTError(`${layout.display_code} \u5F00\u653E\u5F3A\u8C03\u4F46\u6CA1\u6709\u5408\u6CD5\u7684\u751F\u4EA7\u7126\u70B9\u76EE\u6807\u6216\u6210\u5458`);
+    if (!enabled && members.length) throw new WisePPTError(`${layout.display_code} \u672A\u5F00\u653E\u5F3A\u8C03\u5374\u767B\u8BB0\u4E86\u751F\u4EA7\u7126\u70B9\u6210\u5458`);
+    if (enabled && (!Array.isArray(page.focus_candidates) || !page.focus_candidates.length || page.focus_candidates.some((item) => typeof item !== "string" || !item.trim()))) {
+      throw new WisePPTError(`${layout.display_code} \u5F00\u653E\u5F3A\u8C03\u4F46\u6CA1\u6709\u53EF\u89C1\u7126\u70B9\u8BF4\u660E`);
+    }
+    const roles = [...new Set(members.map((member) => member.role))];
+    const memberKeys = new Set(members.map((member) => `${member.selector}\0${member.role}`));
+    if (memberKeys.size !== members.length || members.some((member) => typeof member.selector !== "string" || !member.selector.trim() || !allowedMemberRoles.has(member.role) || !(page.theme_focus_carriers || []).includes(member.role))) {
+      throw new WisePPTError(`${layout.display_code} \u751F\u4EA7\u7126\u70B9\u6210\u5458\u91CD\u590D\u6216\u4E0D\u53D7\u9010\u9875\u5408\u540C\u5141\u8BB8`);
+    }
+    layout.emphasis = {
+      access: page.access,
+      targets: enabled ? [{
+        target_id: targetId,
+        label: (page.focus_candidates || []).join(" / "),
+        focus_candidates: structuredClone(page.focus_candidates || []),
+        member_roles: roles,
+        reason_required: targetContract.reason_required
+      }] : []
+    };
+    layout._emphasis_members = members;
+    layout.icon_slots = structuredClone(iconPage.icon_slots || []);
+    if (!Array.isArray(layout.icon_slots) || layout.icon_slots.length !== iconPage.icon_slot_count) throw new WisePPTError(`${layout.display_code} \u56FE\u6807\u69FD\u4F4D\u8BA1\u6570\u9519\u8BEF`);
+    const registeredBindings2 = /* @__PURE__ */ new Set();
+    for (const slot of layout.slots || []) {
+      for (const binding of slot.payload_schema?.icon?.binding_keys || []) {
+        const bindingId = `${slot.slot_id}\0${binding.key}`;
+        if (registeredBindings2.has(bindingId)) throw new WisePPTError(`${layout.display_code}/${binding.key} \u56FE\u6807 binding \u91CD\u590D`);
+        registeredBindings2.add(bindingId);
+      }
+    }
+    const contractBindings = /* @__PURE__ */ new Set();
+    for (const iconSlot of layout.icon_slots) {
+      const slot = (layout.slots || []).find((item) => item.slot_id === iconSlot.slot_id);
+      const keys = new Set(slot?.payload_schema?.icon?.binding_keys?.map((item) => item.key) || []);
+      const bindingId = `${iconSlot.slot_id}\0${iconSlot.binding_key}`;
+      const geometry = iconSlot.position?.geometry || {};
+      const componentId = iconSlot.component_id;
+      if (contractBindings.has(bindingId)) throw new WisePPTError(`${layout.display_code}/${iconSlot.binding_key} \u56FE\u6807\u69FD\u4F4D\u91CD\u590D`);
+      contractBindings.add(bindingId);
+      if (!slot || !keys.has(iconSlot.binding_key) || iconSlot.layout_id !== layout.layout_id || iconSlot.display_code !== layout.display_code || typeof iconSlot.semantic_purpose !== "string" || iconSlot.semantic_purpose !== slot.purpose || !componentIds.has(componentId) || !(layout.locks?.core_component_ids || []).includes(componentId)) {
+        throw new WisePPTError(`${layout.display_code}/${iconSlot.binding_key} \u56FE\u6807\u69FD\u4F4D\u672A\u843D\u5165\u5F53\u524D layout binding \u6216\u7EC4\u4EF6\u8DEF\u7531`);
+      }
+      if (!Array.isArray(iconSlot.position?.fit_box) || iconSlot.position?.target_tag !== "svg" || !["x", "y", "width", "height"].every((key) => typeof geometry[key] === "string" && Number.isFinite(Number(geometry[key]))) || Number(geometry.width) <= 0 || Number(geometry.width) !== Number(geometry.height) || geometry.viewBox !== iconScope.viewBox || iconSlot.visual_lock?.size_and_position !== "seed-locked" || iconSlot.visual_lock?.color !== "var(--wp-color-functional)" || iconSlot.visual_lock?.stroke_and_shape !== "selected-authority-svg-locked") {
+        throw new WisePPTError(`${layout.display_code}/${iconSlot.binding_key} \u56FE\u6807\u7684\u4F4D\u7F6E\u3001\u5C3A\u5BF8\u3001\u989C\u8272\u6216\u7EBF\u6761\u9501\u5B9A\u975E\u6CD5`);
+      }
+      placementsByComponent.get(componentId).push({
+        layout_id: layout.layout_id,
+        display_code: layout.display_code,
+        slot_id: iconSlot.slot_id,
+        binding_key: iconSlot.binding_key
+      });
+    }
+    const missingBindings = setDifference(registeredBindings2, contractBindings);
+    const extraBindings = setDifference(contractBindings, registeredBindings2);
+    if (missingBindings.length || extraBindings.length) throw new WisePPTError(`${layout.display_code} \u56FE\u6807 binding \u4E0E\u69FD\u4F4D\u5408\u540C\u4E0D\u4E00\u81F4`);
+    registeredIconSlots += layout.icon_slots.length;
+  }
+  if (counts.registered_icon_slots !== registeredIconSlots) throw new WisePPTError("\u56FE\u6807\u69FD\u4F4D\u5408\u540C\u7684\u603B\u69FD\u4F4D\u8BA1\u6570\u9519\u8BEF");
+  const componentContracts = iconContract.components || {};
+  if (Object.keys(componentContracts).length !== componentIds.size || setDifference(componentIds, new Set(Object.keys(componentContracts))).length) {
+    throw new WisePPTError("\u56FE\u6807\u69FD\u4F4D\u5408\u540C\u7684\u7EC4\u4EF6\u96C6\u5408\u4E0D\u95ED\u5408");
+  }
+  for (const component of routingComponents) {
+    const contract = componentContracts[component.component_id];
+    const expectedPlacements = placementsByComponent.get(component.component_id);
+    const actualPlacements = Array.isArray(contract?.registered_placements) ? contract.registered_placements : [];
+    const expectedSet = new Set(expectedPlacements.map((item) => canonicalJson(item)));
+    const actualSet = new Set(actualPlacements.map((item) => canonicalJson(item)));
+    if (!contract || contract.component_name !== component.name || contract.icon_slot_count !== expectedPlacements.length || expectedSet.size !== expectedPlacements.length || actualSet.size !== actualPlacements.length || setDifference(expectedSet, actualSet).length || setDifference(actualSet, expectedSet).length) {
+      throw new WisePPTError(`${component.component_id} \u7EC4\u4EF6\u56FE\u6807\u69FD\u4F4D\u6295\u5F71\u5DF2\u8FC7\u671F`);
+    }
+  }
+  return { emphasisContract, iconContract };
+}
 async function registryState(root) {
   const file = path.join(root, "capabilities/layouts/layout-registry.json");
   const registry = await readJson(file, "Wise PPT \u9AA8\u67B6\u6CE8\u518C\u8868");
+  if (registry.contract_version !== 3 || registry.registry_id !== "wise-ppt.layouts") throw new WisePPTError("Wise PPT \u9AA8\u67B6\u6CE8\u518C\u8868\u7248\u672C\u9519\u8BEF");
   if (!registry.counts || registry.counts.total !== 83 || registry.counts.relationship !== 71 || registry.counts.nonrelationship !== 12) {
     throw new WisePPTError(`Wise PPT \u9AA8\u67B6\u6CE8\u518C\u8868\u6570\u91CF\u9519\u8BEF: ${JSON.stringify(registry.counts)}`);
   }
   if (!Array.isArray(registry.layouts) || registry.layouts.length !== registry.counts.total) throw new WisePPTError("Wise PPT \u9AA8\u67B6\u6CE8\u518C\u8868 layouts \u6570\u91CF\u9519\u8BEF");
+  await attachCapabilityContracts(root, registry);
   const index = /* @__PURE__ */ new Map();
   for (const layout of registry.layouts) {
     if (!layout.layout_id || index.has(layout.layout_id)) throw new WisePPTError(`Wise PPT \u6CE8\u518C\u8868 layout_id \u7F3A\u5931\u6216\u91CD\u590D: ${layout.layout_id || ""}`);
@@ -317,6 +450,14 @@ async function validateSpec(root, spec, layoutIndex = null) {
       if (![void 0, null, ""].includes(slide.relation_key)) throw new WisePPTError(`${pageId} \u662F\u975E\u5173\u7CFB\u9875\uFF0C\u4E0D\u5F97\u58F0\u660E relation_key`);
       if (pageRole !== layout.page_role) throw new WisePPTError(`${pageId} page_role \u5FC5\u987B\u662F ${layout.page_role}`);
     }
+    if (slide.emphasis !== void 0) {
+      if (!slide.emphasis || typeof slide.emphasis !== "object" || Array.isArray(slide.emphasis)) throw new WisePPTError(`${pageId}.emphasis \u5FC5\u987B\u662F\u5BF9\u8C61`);
+      assertKnownKeys(slide.emphasis, ALLOWED_EMPHASIS_FIELDS, `${pageId}.emphasis`);
+      const target = plainString(slide.emphasis.target, `${pageId}.emphasis.target`);
+      plainString(slide.emphasis.reason, `${pageId}.emphasis.reason`);
+      const allowedTargets = new Set((layout.emphasis?.targets || []).map((item) => item.target_id));
+      if (!allowedTargets.has(target)) throw new WisePPTError(`${pageId}.emphasis.target=${target} \u4E0D\u5728 ${layoutId} \u5DF2\u5BA1\u6838\u7126\u70B9\u5BF9\u8C61\u4E2D`);
+    }
     const refs = referenceList(slide.source_refs, `${pageId}.source_refs`, sourceIds, SOURCE_BACKED_INPUT_TYPES.has(inputType));
     refs.forEach((id) => usedSourceIds.add(id));
     sourceEvidenceMap(slide.source_evidence, refs, `${pageId}.source_evidence`);
@@ -394,6 +535,8 @@ function queryLayouts(registry, filters) {
     allowed_payload_types: layout.allowed_payload_types || [],
     claim_binding: layout.claim_binding,
     derivation: layout.derivation,
+    emphasis: structuredClone(layout.emphasis || { access: "none", targets: [] }),
+    icon_slots: structuredClone(layout.icon_slots || []),
     slots: (layout.slots || []).map((slot) => Object.fromEntries(["slot_id", "purpose", "required", "visual_role", "capacity", "allowed_payload_types", "payload_schema"].filter((key) => key in slot).map((key) => [key, slot[key]])))
   }));
 }
@@ -421,6 +564,13 @@ function elementAttributes(node, idMap) {
   }
   return result;
 }
+function rewriteMemberSelector(selector, idMap) {
+  let result = String(selector);
+  for (const [old, replacement] of [...idMap.entries()].sort((a, b) => b[0].length - a[0].length)) {
+    result = result.replace(new RegExp(`#${old.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")}(?![A-Za-z0-9_-])`, "g"), `#${replacement}`);
+  }
+  return result;
+}
 function structureDigest(stageHtml) {
   const $ = load(stageHtml, null, false);
   const stage = $(".stage").first();
@@ -431,7 +581,8 @@ function structureDigest(stageHtml) {
   });
   function walk(node, insideText = false) {
     const attrs = node.attribs || {};
-    const textSurface = insideText || "data-vnext-text-key" in attrs || "data-vnext-claim-key" in attrs;
+    const signatureSurface = attrs["data-template-part"] === "signature";
+    const textSurface = insideText || "data-vnext-text-key" in attrs || "data-vnext-claim-key" in attrs || signatureSurface;
     const opaqueIcon = "data-vnext-icon-key" in attrs;
     const children = [];
     if (!opaqueIcon) {
@@ -439,6 +590,7 @@ function structureDigest(stageHtml) {
         if (child.type === "tag" || child.type === "script" || child.type === "style") children.push(walk(child, textSurface));
         else if (["text", "comment"].includes(child.type) && child.data.trim() && !textSurface) children.push(["#text"]);
       }
+      if (signatureSurface) children.push(["#text"]);
     }
     return [String(node.name).toLowerCase(), elementAttributes(node, idMap), children];
   }
@@ -475,6 +627,32 @@ function rewriteScopedCss(css, layoutId, pageId, idMap) {
     result = result.replace(new RegExp(`#${old.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")}(?![A-Za-z0-9_-])`, "g"), `#${replacement}`);
   }
   return result;
+}
+function materializedEmphasis(slide, layout, stage, idMap) {
+  if (!slide.emphasis) return null;
+  const target = (layout.emphasis?.targets || []).find((item) => item.target_id === slide.emphasis.target);
+  if (!target) throw new WisePPTError(`${slide.page_id}.emphasis.target \u672A\u843D\u5230\u5DF2\u5BA1\u6838\u7126\u70B9\u5BF9\u8C61`);
+  const members = (layout._emphasis_members || []).map((member) => ({
+    selector: rewriteMemberSelector(member.selector, idMap),
+    role: member.role,
+    ...member.paint ? { paint: member.paint } : {}
+  }));
+  for (const member of members) {
+    let matched;
+    try {
+      matched = stage.find(member.selector);
+    } catch (error) {
+      throw new WisePPTError(`${slide.page_id} \u5F3A\u8C03\u76EE\u6807\u9009\u62E9\u5668\u975E\u6CD5: ${member.selector}: ${error.message}`);
+    }
+    if (!matched.length) throw new WisePPTError(`${slide.page_id} \u5F3A\u8C03\u76EE\u6807\u672A\u843D\u5230\u9501\u5B9A DOM: ${member.selector}`);
+  }
+  return {
+    target: slide.emphasis.target,
+    ref: `emphasis.${slide.page_id}.${slide.emphasis.target}`,
+    reason: slide.emphasis.reason,
+    roles: target.member_roles,
+    members
+  };
 }
 function payloadFields(raw, bindings, label) {
   const keys = bindings.map((item) => item.key);
@@ -517,10 +695,18 @@ function replaceText($, selection, value) {
   });
 }
 async function iconAuthority(root) {
-  const authority = await readJson(path.join(root, "capabilities/runtime-authority-manifest.json"), "Runtime authority");
+  const [authority, slots] = await Promise.all([
+    readJson(path.join(root, "capabilities/runtime-authority-manifest.json"), "Runtime authority"),
+    readJson(path.join(root, "capabilities/layouts/icon-slot-contracts.json"), "\u56FE\u6807\u69FD\u4F4D\u5408\u540C")
+  ]);
   if (authority.format !== "wise-ppt-runtime-authority@1") throw new WisePPTError("Runtime authority \u5408\u540C\u9519\u8BEF");
+  if (slots.contract !== "wise-ppt-icon-slots@1") throw new WisePPTError("\u56FE\u6807\u69FD\u4F4D\u5408\u540C\u9519\u8BEF");
   const entries = authority.icons?.entries;
   if (!Array.isArray(entries) || entries.length !== authority.icons?.selectable_count) throw new WisePPTError("Catalog authority \u56FE\u6807\u767B\u8BB0\u6570\u91CF\u4E0D\u95ED\u5408");
+  const allowed = slots.allowed_icon_scope || {};
+  if (allowed.selectable_count !== entries.length || allowed.names_sha256 !== sha256Text(entries.map((entry) => entry.name).join("\n"))) throw new WisePPTError("\u56FE\u6807\u69FD\u4F4D\u5408\u540C\u7684\u5141\u8BB8\u56FE\u6807\u8303\u56F4\u5DF2\u8FC7\u671F");
+  const allowedPaint = new Set(allowed.paint || []);
+  const allowedWidths = new Set((allowed.stroke_widths || []).map(Number));
   const result = /* @__PURE__ */ new Map();
   for (const entry of entries) {
     if (!entry || typeof entry !== "object" || !/^[a-z0-9][a-z0-9-]*$/.test(String(entry.name || "")) || result.has(entry.name)) throw new WisePPTError(`Catalog authority \u56FE\u6807\u6761\u76EE\u975E\u6CD5\u6216\u91CD\u590D: ${entry?.name || "-"}`);
@@ -528,6 +714,19 @@ async function iconAuthority(root) {
     if (!source.startsWith(`${path.resolve(root)}${path.sep}`)) throw new WisePPTError(`Catalog authority \u56FE\u6807\u8D8A\u51FA\u4ED3\u5E93: ${entry.source}`);
     const digest = await shaFile(source).catch(() => null);
     if (digest?.sha256 !== entry.sha256) throw new WisePPTError(`Catalog authority \u56FE\u6807\u7F3A\u5931\u6216\u54C8\u5E0C\u9519\u8BEF: ${entry.name}`);
+    const sourceText = await readText(source, `\u672C\u5730\u56FE\u6807 ${entry.name}`);
+    const source$ = load(sourceText, { xmlMode: true }, false);
+    const sourceSvg = source$("svg").first();
+    if ((sourceSvg.attr("viewBox") || sourceSvg.attr("viewbox")) !== allowed.viewBox) throw new WisePPTError(`Catalog \u672C\u5730\u56FE\u6807 viewBox \u8D8A\u51FA\u69FD\u4F4D\u5408\u540C: ${entry.name}`);
+    for (const attribute of ["fill", "stroke"]) {
+      sourceSvg.find(`[${attribute}]`).each((_index, node) => {
+        const value = String(node.attribs?.[attribute] || "");
+        if (!allowedPaint.has(value)) throw new WisePPTError(`Catalog \u672C\u5730\u56FE\u6807 ${attribute} \u8D8A\u51FA\u69FD\u4F4D\u5408\u540C: ${entry.name}`);
+      });
+    }
+    sourceSvg.find("[stroke-width]").each((_index, node) => {
+      if (!allowedWidths.has(Number(node.attribs?.["stroke-width"]))) throw new WisePPTError(`Catalog \u672C\u5730\u56FE\u6807\u7EBF\u5BBD\u8D8A\u51FA\u69FD\u4F4D\u5408\u540C: ${entry.name}`);
+    });
     result.set(entry.name, source);
   }
   return result;
@@ -707,6 +906,7 @@ async function materializeSlide(root, slide, layout, seed, deckTitle, folioText,
   if (structureDigest(stage.toString()) !== seed.locked.stage_structure_sha256) throw new WisePPTError(`${slide.page_id} payload \u6539\u53D8\u4E86\u9501\u5B9A DOM/\u7ED3\u6784/\u7EC4\u4EF6/\u51E0\u4F55`);
   const idMap = prefixDomIds($, stage, safePagePrefix(slide.page_id));
   if (structureDigest(stage.toString()) !== seed.locked.stage_structure_sha256) throw new WisePPTError(`${slide.page_id} ID \u9694\u79BB\u6539\u53D8\u4E86\u9AA8\u67B6\u7ED3\u6784`);
+  const emphasis = materializedEmphasis(slide, layout, stage, idMap);
   if (canonicalJson(receipt) !== canonicalJson(expectedPayloadReceipt(slide))) throw new WisePPTError(`${slide.page_id} payload receipt \u4E0E\u5B9E\u9645 materialization \u8BA1\u6570\u4E0D\u4E00\u81F4`);
   const attributes = {
     class: "slide",
@@ -724,9 +924,17 @@ async function materializeSlide(root, slide, layout, seed, deckTitle, folioText,
     "data-section-title": String(slide.section_title || ""),
     "data-source-refs": canonicalJson(slide.source_refs),
     "data-source-evidence": canonicalJson(slide.source_evidence),
-    "data-must-refs": canonicalJson(slide.must_refs)
+    "data-must-refs": canonicalJson(slide.must_refs),
+    "data-emphasis-mode": emphasis ? "semantic-focus" : "none"
   };
   if (slide.relation_key) attributes["data-relation-key"] = slide.relation_key;
+  if (emphasis) {
+    attributes["data-emphasis-target"] = emphasis.target;
+    attributes["data-emphasis-ref"] = emphasis.ref;
+    attributes["data-emphasis-reason"] = emphasis.reason;
+    attributes["data-emphasis-roles"] = emphasis.roles.join(" ");
+    attributes["data-emphasis-members"] = canonicalJson(emphasis.members);
+  }
   const attrText = Object.entries(attributes).map(([name, value]) => `${name}="${escapeHtml(value)}"`).join(" ");
   return {
     section: `<section ${attrText}>
@@ -789,6 +997,15 @@ async function currentAuthorityHashes(root, resolvedFonts = null) {
   }
   return Object.fromEntries(Object.entries(result).sort(([a], [b]) => a.localeCompare(b, "en")));
 }
+async function currentCapabilityHashes(root) {
+  const paths = [
+    "capabilities/layouts/page-emphasis-contracts.json",
+    "capabilities/layouts/icon-slot-contracts.json"
+  ];
+  const result = {};
+  for (const relative of paths) result[relative] = (await shaFile(path.join(root, ...relative.split("/")))).sha256;
+  return result;
+}
 async function buildTo(root, specPath, outputRoot, options = {}) {
   const { registry, index, sha256: registrySha } = await registryState(root);
   const spec = await readJson(specPath, "deck-spec");
@@ -804,10 +1021,11 @@ async function buildTo(root, specPath, outputRoot, options = {}) {
   const usedSeeds = {};
   const mustById = new Map(spec.must.map((item) => [item.must_id, item]));
   const total = resolved.length;
-  const signature = String(spec.deck.signature || DEFAULT_SIGNATURE).trim();
+  const signature = String(spec.deck.signature ?? DEFAULT_SIGNATURE).trim();
   for (const [offset, { slide, layout }] of resolved.entries()) {
     const seed = await loadSeed(root, layout.display_code);
-    const built = await materializeSlide(root, slide, layout, seed, String(spec.deck.title), `${offset + 1} / ${total} \u2014 BY ${signature}`, signature, icons);
+    const folioText = `${offset + 1} / ${total}${signature ? ` \u2014 BY ${signature}` : ""}`;
+    const built = await materializeSlide(root, slide, layout, seed, String(spec.deck.title), folioText, signature, icons);
     const section$ = load(built.section, null, false);
     validatePageEvidence(section$, section$("section.slide").first(), slide, mustById);
     sections.push(built.section);
@@ -824,7 +1042,7 @@ ${built.css}`);
   canonicalSpec.mode = "standard";
   await writeFile(path.join(outputRoot, "deck-spec.json"), renderJson(canonicalSpec));
   const deckPlan = {
-    contract: "wise-ppt-deck-plan@3",
+    contract: "wise-ppt-deck-plan@4",
     title: spec.deck.title,
     thesis: spec.deck.thesis,
     input_type: spec.deck.input_type,
@@ -838,7 +1056,8 @@ ${built.css}`);
       claim: slide.claim,
       source_refs: slide.source_refs,
       source_evidence: structuredClone(slide.source_evidence),
-      must_refs: slide.must_refs
+      must_refs: slide.must_refs,
+      emphasis: slide.emphasis ? structuredClone(slide.emphasis) : null
     }))
   };
   const sourceLedger = {
@@ -858,12 +1077,14 @@ ${built.css}`);
   ]);
   const inputDigest = sha256Text(canonicalJson(canonicalSpec));
   const authoritativeHashes = await currentAuthorityHashes(root, resolvedFonts);
+  const capabilityHashes = await currentCapabilityHashes(root);
   const compilerHashes = await currentCompilerHashes(root);
   const buildId = sha256Text(canonicalJson({
     spec: inputDigest,
     registry: registrySha,
     seeds: usedSeeds,
     authoritative_files: authoritativeHashes,
+    capability_contracts: capabilityHashes,
     compiler_sources: compilerHashes,
     runtime_version: RUNTIME_VERSION
   }));
@@ -878,6 +1099,7 @@ ${built.css}`);
     "{{BUILD_ID}}": buildId,
     "{{LAYOUT_REGISTRY_VERSION}}": registrySha,
     "{{RUNTIME_VERSION}}": RUNTIME_VERSION,
+    "{{FINAL_EMPHASIS}}": resolved.some(({ slide }) => slide.emphasis) ? "semantic-focus" : "none",
     "{{SLIDES}}": sections.join("\n")
   };
   for (const [marker, value] of Object.entries(replacements)) html = html.replaceAll(marker, value);
@@ -903,6 +1125,7 @@ ${built.css}`);
     layout_seeds: Object.fromEntries(Object.entries(usedSeeds).sort(([a], [b]) => a.localeCompare(b, "en"))),
     compiler_sources: compilerHashes,
     authoritative_files: authoritativeHashes,
+    capability_contracts: capabilityHashes,
     runtime_version: RUNTIME_VERSION,
     page_count: sections.length,
     determinism: {
@@ -1063,6 +1286,7 @@ async function validateDeck(root, rawDeck) {
   await validateManagedClosure(root, deckRoot, build);
   if (canonicalJson(build.compiler_sources) !== canonicalJson(await currentCompilerHashes(root))) throw new WisePPTError("build \u4F7F\u7528\u7684 Wise PPT \u7F16\u8BD1\u5668/\u6A21\u677F\u5DF2\u8FC7\u671F\uFF1B\u8BF7\u91CD\u65B0 build");
   if (canonicalJson(build.authoritative_files) !== canonicalJson(await currentAuthorityHashes(root))) throw new WisePPTError("build \u4F7F\u7528\u7684\u4E3B\u9898/\u5B57\u4F53/runtime \u5DF2\u8FC7\u671F\uFF1B\u8BF7\u91CD\u65B0 build");
+  if (canonicalJson(build.capability_contracts) !== canonicalJson(await currentCapabilityHashes(root))) throw new WisePPTError("build \u4F7F\u7528\u7684\u5F3A\u8C03\u6216\u56FE\u6807\u69FD\u4F4D\u5408\u540C\u5DF2\u8FC7\u671F\uFF1B\u8BF7\u91CD\u65B0 build");
   const deckPlan = await readJson(path.join(deckRoot, "deck-plan.json"), "deck-plan");
   const expectedPlanPages = resolved.map(({ slide, layout }) => ({
     page_id: slide.page_id,
@@ -1073,9 +1297,10 @@ async function validateDeck(root, rawDeck) {
     claim: slide.claim,
     source_refs: slide.source_refs,
     source_evidence: slide.source_evidence,
-    must_refs: slide.must_refs
+    must_refs: slide.must_refs,
+    emphasis: slide.emphasis ?? null
   }));
-  if (deckPlan.contract !== "wise-ppt-deck-plan@3" || deckPlan.input_type !== spec.deck.input_type || canonicalJson(deckPlan.must) !== canonicalJson(spec.must) || canonicalJson(deckPlan.pages) !== canonicalJson(expectedPlanPages)) throw new WisePPTError("deck-plan \u4E0E deck-spec \u4E0D\u4E00\u81F4");
+  if (deckPlan.contract !== "wise-ppt-deck-plan@4" || deckPlan.input_type !== spec.deck.input_type || canonicalJson(deckPlan.must) !== canonicalJson(spec.must) || canonicalJson(deckPlan.pages) !== canonicalJson(expectedPlanPages)) throw new WisePPTError("deck-plan \u4E0E deck-spec \u4E0D\u4E00\u81F4");
   const sourceLedger = await readJson(path.join(deckRoot, "source-ledger.json"), "source-ledger");
   const expectedMustSources = spec.must.map((item) => ({ must_id: item.must_id, status: item.status, page_id: item.page_id ?? null, source_refs: item.source_refs }));
   const expectedPageSources = resolved.map(({ slide }) => ({ page_id: slide.page_id, source_refs: slide.source_refs, source_evidence: slide.source_evidence, must_refs: slide.must_refs }));
@@ -1083,7 +1308,9 @@ async function validateDeck(root, rawDeck) {
   const html = await readText(path.join(deckRoot, "index.html"), "index.html");
   const $ = load(html);
   const htmlRoot = $("html").first();
-  if (htmlRoot.attr("data-deck-contract-version") !== "5" || htmlRoot.attr("data-runtime-version") !== RUNTIME_VERSION) throw new WisePPTError("index.html deck/runtime \u5408\u540C\u9519\u8BEF");
+  if (htmlRoot.attr("data-deck-contract-version") !== "6" || htmlRoot.attr("data-runtime-version") !== RUNTIME_VERSION) throw new WisePPTError("index.html deck/runtime \u5408\u540C\u9519\u8BEF");
+  const expectedFinalEmphasis = resolved.some(({ slide }) => slide.emphasis) ? "semantic-focus" : "none";
+  if (htmlRoot.attr("data-final-emphasis") !== expectedFinalEmphasis) throw new WisePPTError("index.html \u6700\u7EC8\u5F3A\u8C03\u72B6\u6001\u4E0E deck-spec \u4E0D\u4E00\u81F4");
   if (htmlRoot.attr("data-build-id") !== build.build_id || htmlRoot.attr("data-layout-registry-version") !== registrySha) throw new WisePPTError("index.html build/registry \u5143\u6570\u636E\u4E0D\u4E00\u81F4");
   if (!$('link[rel="stylesheet"][href="runtime/deck-shell.css"]').length) throw new WisePPTError("index.html \u672A\u52A0\u8F7D HTML/PDF \u5171\u7528 deck-shell.css");
   const slideNodes = $("#track > .slide").toArray();
@@ -1103,6 +1330,16 @@ async function validateDeck(root, rawDeck) {
     const node = $(slideNodes[offset]);
     if (node.attr("data-page-id") !== slide.page_id || node.attr("data-layout-id") !== layout.layout_id || node.attr("data-layout-source") !== "registered") throw new WisePPTError(`${slide.page_id} HTML \u5143\u6570\u636E\u4E0E spec \u4E0D\u4E00\u81F4`);
     if (node.attr("data-source-refs") !== canonicalJson(slide.source_refs) || node.attr("data-source-evidence") !== canonicalJson(slide.source_evidence) || node.attr("data-must-refs") !== canonicalJson(slide.must_refs)) throw new WisePPTError(`${slide.page_id} HTML \u6765\u6E90\u5143\u6570\u636E\u4E0E spec \u4E0D\u4E00\u81F4`);
+    if (slide.emphasis) {
+      const seedForEmphasis = await loadSeed(root, layout.display_code);
+      const seedForEmphasis$ = load(seedForEmphasis.locked.stage_html, null, false);
+      const seedForEmphasisStage = seedForEmphasis$(".stage").first();
+      const emphasisIdMap = prefixDomIds(seedForEmphasis$, seedForEmphasisStage, safePagePrefix(slide.page_id));
+      const expectedEmphasis = materializedEmphasis(slide, layout, seedForEmphasisStage, emphasisIdMap);
+      if (node.attr("data-emphasis-mode") !== "semantic-focus" || node.attr("data-emphasis-target") !== expectedEmphasis.target || node.attr("data-emphasis-ref") !== expectedEmphasis.ref || node.attr("data-emphasis-reason") !== expectedEmphasis.reason || node.attr("data-emphasis-roles") !== expectedEmphasis.roles.join(" ") || node.attr("data-emphasis-members") !== canonicalJson(expectedEmphasis.members)) throw new WisePPTError(`${slide.page_id} HTML \u5F3A\u8C03\u5143\u6570\u636E\u4E0E spec/\u9010\u9875\u5408\u540C\u4E0D\u4E00\u81F4`);
+    } else if (node.attr("data-emphasis-mode") !== "none" || node.attr("data-emphasis-target") || node.attr("data-emphasis-members")) {
+      throw new WisePPTError(`${slide.page_id} \u672A\u58F0\u660E\u5F3A\u8C03\u5374\u6B8B\u7559\u5F3A\u8C03\u5143\u6570\u636E`);
+    }
     validatePageEvidence($, node, slide, mustById);
     if (node.find("style").length) throw new WisePPTError(`${slide.page_id} \u542B\u9875\u9762\u7EA7 CSS`);
     const seed = await loadSeed(root, layout.display_code);

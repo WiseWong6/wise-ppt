@@ -79,6 +79,8 @@ function compactLayout(item) {
     leaf_count: Number.isInteger(item.leaf_count) ? item.leaf_count : requiredSlots.length,
     reading_order: item.reading_order || [],
     primary_units: item.capacity?.primary_units,
+    emphasis: item.emphasis || { access: "none", targets: [] },
+    icon_slots: item.icon_slots || [],
     required_slots: requiredSlots
   };
 }

@@ -1,4 +1,4 @@
-# deck-spec@5 唯一输入合同
+# deck-spec@6 唯一输入合同
 
 ## 权威
 
@@ -12,7 +12,7 @@ standard 只编辑 `deck-spec.json`。`index.html`、deck plan、来源账本、
 
 | 字段 | 要求 |
 |---|---|
-| `contract` | 必须等于 `wise-ppt-deck@5` |
+| `contract` | 必须等于 `wise-ppt-deck@6` |
 | `mode` | 可省略；出现时只能是 `standard` |
 | `deck` | 必填对象 |
 | `sources` | 必填数组；没有外部来源时写 `[]` |
@@ -30,7 +30,7 @@ standard 顶层不接受其他字段。
 - `input_type`：`pdf`、`url`、`multi-doc`、`existing-deck`、`oral`、`short-text` 之一；
 - `theme_preset`：Catalog 当前登记的整副主题。
 
-可选：`typography_mode`、`lang`、`signature`。`lang` 省略时为 `zh-CN`；出现时只能是安全的 ASCII language tag，不能含引号、空格或 HTML 属性。`signature` 是页脚与收尾署名槽共用的署名，先问用户，未答默认 `@歪斯Wise`。`deck.subtitle` 不是登记字段；封面副标题属于所选封面骨架的 `payload.text`。
+可选：`typography_mode`、`lang`、`signature`。`lang` 省略时为 `zh-CN`；出现时只能是安全的 ASCII language tag，不能含引号、空格或 HTML 属性。`signature` 是页脚与收尾署名槽共用的署名；只原样使用用户明确提供的非空值，省略表示不署名，不得代填作者、品牌或 Agent 名称。`deck.subtitle` 不是登记字段；封面副标题属于所选封面骨架的 `payload.text`。
 
 `pdf/url/multi-doc/existing-deck` 属于 source-backed 输入，必须有来源并逐页登记来源证据。`oral/short-text` 可以没有外部来源；一旦主动登记来源，引用和证据仍必须闭合。
 
@@ -93,9 +93,22 @@ must 的 `source_refs` 还必须包含在目标页的 `source_refs` 中，不能
 - `source_evidence`：`source_id → 非空可见词条数组` 的对象；
 - `must_refs`：本页承载的 must ID 数组。
 
-关系页额外必填 `relation_key`；非关系页不得填写。`section_id/section_title` 可选，用于章节导航。
+关系页额外必填 `relation_key`；非关系页不得填写。`section_id/section_title` 可选，用于章节导航。`emphasis` 也可选；只有页面确实需要突出一个已审核对象时才填写。
 
 source-backed 页面必须有非空 `source_refs`，且 `source_evidence` 的 key 与引用集合完全一致。关系页词条可以在可见 claim 或真实 payload 中出现；非关系页的 claim 只用于计划和导航元数据，词条必须由真实 payload 可见承载。无来源页面使用 `source_refs: []` 与 `source_evidence: {}`。
+
+## 逐页强调
+
+先查询单个 `layout_id`。只有结果中的 `emphasis.targets` 非空时，该页才可声明：
+
+```json
+"emphasis": {
+  "target": "focus.primary",
+  "reason": "这一步是整页结论，观众需要先看到它"
+}
+```
+
+`target` 必须原样取查询结果；`reason` 必须说明内容原因，不能写“更好看”。每页最多一个目标。编译器只强调该骨架已审核的对象，不接受选择器、颜色或样式。声明后，最终 `index.html` 和 `deck.pdf` 都呈现强调；normal/accent 只保留给机器做双态核对。
 
 ## payload
 
@@ -105,9 +118,9 @@ payload 只允许 `text`、`data`、`icons` 三个分组；不存在的分组省
 - 多字段槽必须同时传 `fields` 和 `items`，key 只能来自公开 `binding_keys`；用每条 `binding_keys[].example` 判断它对应的标签、数值或说明职责，再填写同职责的真实内容，不能把 example 原样当作成品；
 - `fields` 必须精确覆盖全部 slot-scope 字段，以及 `item_index < items` 的完整 item 字段；少一项、多一项、跳号或填写范围外字段都会失败；
 - 项目分组、可增减边界与 `fixed-slot/dom-explicit` 的唯一解释见 `references/layouts.md`；本文件只规定 JSON 写法；
-- icon 只在真实 icon binding 存在时填写 Catalog 已登记的本地图标名。
+- icon 只在查询返回的 `icon_slots` 和真实 icon binding 中填写 Catalog 已登记的本地图标名；语义必须符合该槽的 `semantic_purpose`。
 
-图片不是 payload。`payload.media`、本地或绝对图片路径、远程图片地址和 data URI 都不接受；材料图片只作理解内容的参考。页面中的插画、画布和装饰图形来自所选 Catalog 骨架并保持固定，不是可替换槽。
+任意图片不是 payload。`payload.media`、本地或绝对图片路径、远程图片地址和 data URI 都不接受；材料图片只作理解内容的参考。标准规则允许替换已审核插画，但只能使用查询明确公开的插画槽和资产范围；没有公开槽时，骨架中的插画、画布和装饰图形保持固定。
 
 `payload: {"text": {}}`、只有空字符串/空数组/空对象、未登记槽或未公开 binding key都会失败。required 槽必须有真实值；不能靠 Catalog 样例文案或隐藏文字交付空页面。
 公开 `max_chars` 是锁定字体和内部空间下的字符上限；它不允许作者缩小字号、压间距、改 CSS/DOM 或绕过浏览器 fit 门禁。
@@ -120,13 +133,13 @@ payload 只允许 `text`、`data`、`icons` 三个分组；不存在的分组省
 ## 页面四角
 
 - 左上（support 槽）两行：第一行 `deck.title`，第二行该页 `claim`；关系页 `support.text.001/002` 各一行，非关系页单键换行分两行，违反即编译失败。
-- 左下（folio）由编译器自动填 `页码 / 总页数 — BY 署名`（取 `deck.signature`），不是 payload；D3 收尾页署名大槽也由编译器自动填写，不得在 payload 另填一套署名。
+- 左下（folio）由编译器自动填写 `页码 / 总页数`；仅当 `deck.signature` 存在时追加 `— BY 署名`。D3 收尾页署名大槽取同一值；不署名时留空，不得在 payload 另填一套署名。
 
 ## standard 禁区
 
-standard spec 不接受图片、页面 CSS/HTML/SVG、手写 geometry/structure、临时组件、页面级主题、未登记 layout、隐藏内容或任何未登记的整页生成方式。代理不得新写 SVG/HTML/CSS 后伪装成图片；需要确定性重绘时必须申请 experimental。不得修改编译产物，也不得读取 seed 私有字段绕过公开接口。
+standard spec 不接受任意图片、页面 CSS/HTML/SVG、手写 geometry/structure、临时组件、页面级主题、未登记 layout、隐藏内容或任何未登记的整页生成方式。代理不得新写 SVG/HTML/CSS 后伪装成图片；不得修改编译产物，也不得读取 seed 私有字段绕过公开接口。
 
-内容不适配时只走 `references/layouts.md` 的固定顺序。需要改变分区、列数、槽位、阅读顺序或锁定核心组件时停止 standard。
+内容不适配时只走 `references/layouts.md` 的固定顺序。文案、已登记插画和图标可按槽替换；组件不自动替换。用户明确授权且 registry 已公开同结构受控容量时仍属 standard；改变结构骨架、组件组合、分栏、阅读顺序或使用未审核能力才停止 standard 并申请 experimental。
 
 ## 输出目录收编与重建
 

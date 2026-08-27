@@ -66,6 +66,6 @@ node <skill>/bin/wise-ppt.mjs experimental prepare|build|validate|preview|delive
 
 ## 交付边界
 
-输入使用 `wise-ppt-deck@5`，构建使用 `wise-ppt-build@3`，运行时使用 `wise-ppt-runtime@3`；正式交付为 `wise-ppt-delivery@2`，实验交付为 `wise-ppt-experimental-delivery@5`。实验 PDF 不叠加可见水印，通过文件名与 manifest 表明实验身份。
+输入使用 `wise-ppt-deck@6`，构建使用 `wise-ppt-build@4`，运行时使用 `wise-ppt-runtime@4`；正式交付为 `wise-ppt-delivery@3`，实验交付为 `wise-ppt-experimental-delivery@5`。逐页声明的强调会进入最终 HTML 和 PDF；普通/强调四态只用于验证。实验 PDF 不叠加可见水印，通过文件名与 manifest 表明实验身份。
 
 `deck.pdf` 和 `delivery-manifest.json` 成对提交。任何导出或提交失败都不会破坏上一份正式交付物。

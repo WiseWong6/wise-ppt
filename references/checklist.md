@@ -15,6 +15,8 @@
 - 已登记 must 的 placed/omitted 去向、页级引用和可见证据；
 - payload 非空，槽、binding key、字符和项目数量都在公开合同内；
 - 多字段 `fields` 与 item groups 精确一致，成品没有整槽照抄公开 example；
+- 逐页强调目标与原因来自 spec，目标只落到该骨架已审核对象；
+- 图标只出现在登记槽位，来源、尺寸、线宽、颜色和位置符合槽位合同；
 - Catalog 可见项、authority、registry 和 seed 的数量与哈希一一对应；
 - DOM、CSS、结构、核心组件、几何和冻结资产没有被成品手改；
 - deck plan、来源账本、组件收据、几何合同和 build manifest 与 spec/HTML 一致。
@@ -29,6 +31,7 @@ deliver 在同一个 Chrome/CDP 会话中执行 ready、normal/accent、screen/p
 - 文字碰撞只覆盖可见 `text/claim` 的大面积独立块；正常行内相邻文字和小面积墨迹相交不会触发该门禁；
 - source/must 属性与 spec、来源账本一致，登记证据仍可见；
 - normal screen、accent screen、normal print、accent print 四态证据齐全；
+- 最终 HTML 按 spec 呈现强调，PDF 从最终 accent print 状态导出；
 - screen/print 锚点误差不超过 1px，计算字体属性一致；
 - 逐页模糊栅格 RMSE 不超过 2.5%；
 - HTML、PDF 和 spec 页数相等；

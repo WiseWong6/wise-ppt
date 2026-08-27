@@ -1,0 +1,1715 @@
+{
+  "contract": "wise-ppt-icon-slots@1",
+  "capability_id": "wise-ppt.icon-slots",
+  "generated_from": {
+    "layout_registry": {
+      "path": "capabilities/layouts/layout-registry.json",
+      "sha256": "623fe20f52d01df2edd48506b2b172b07b60a94f0ce5c07f9f84b1b5f9f6fc49"
+    },
+    "component_routing": {
+      "path": "capabilities/components/routing-manifest.json",
+      "sha256": "83a35cbd0582840517490332bc1b031d7d032572b444d8f9af67737793b24e51"
+    },
+    "runtime_authority": {
+      "path": "capabilities/runtime-authority-manifest.json",
+      "sha256": "4631a0d6b9b903da615c7c59dcebe9c6197a783119f77308c898d141f1030a63"
+    }
+  },
+  "policy": {
+    "replacement": "only registered icon_slots may be replaced by content semantics or an explicit user choice",
+    "addition": "unregistered positions must not receive decorative icons",
+    "component_change": "icon replacement never changes the registered component, structure, size, position, line system or theme color"
+  },
+  "allowed_icon_scope": {
+    "authority": "capabilities/runtime-authority-manifest.json#icons.entries",
+    "source_family": "tabler-outline-redraw-v3",
+    "selectable_count": 865,
+    "names_sha256": "54ddafbd202f9dbbc896c4e54916d22e30a3b4aa62bee595c1a7f542e0d3e7ce",
+    "viewBox": "0 0 64 64",
+    "paint": [
+      "currentColor",
+      "none"
+    ],
+    "stroke_widths": [
+      0,
+      0.55,
+      0.8,
+      1.2,
+      1.6
+    ],
+    "source_hash_required": true
+  },
+  "counts": {
+    "layouts": 83,
+    "relationship_layouts": 71,
+    "nonrelationship_layouts": 12,
+    "components": 123,
+    "registered_icon_slots": 18
+  },
+  "layouts": {
+    "paper-ink.relationship.A1": {
+      "display_code": "A1",
+      "page_kind": "relationship",
+      "icon_slot_count": 0,
+      "icon_slots": []
+    },
+    "paper-ink.relationship.A2": {
+      "display_code": "A2",
+      "page_kind": "relationship",
+      "icon_slot_count": 0,
+      "icon_slots": []
+    },
+    "paper-ink.relationship.A3": {
+      "display_code": "A3",
+      "page_kind": "relationship",
+      "icon_slot_count": 0,
+      "icon_slots": []
+    },
+    "paper-ink.relationship.A4": {
+      "display_code": "A4",
+      "page_kind": "relationship",
+      "icon_slot_count": 0,
+      "icon_slots": []
+    },
+    "paper-ink.relationship.A5": {
+      "display_code": "A5",
+      "page_kind": "relationship",
+      "icon_slot_count": 0,
+      "icon_slots": []
+    },
+    "paper-ink.relationship.A6": {
+      "display_code": "A6",
+      "page_kind": "relationship",
+      "icon_slot_count": 0,
+      "icon_slots": []
+    },
+    "paper-ink.relationship.A8": {
+      "display_code": "A8",
+      "page_kind": "relationship",
+      "icon_slot_count": 0,
+      "icon_slots": []
+    },
+    "paper-ink.relationship.A9": {
+      "display_code": "A9",
+      "page_kind": "relationship",
+      "icon_slot_count": 0,
+      "icon_slots": []
+    },
+    "paper-ink.relationship.B1": {
+      "display_code": "B1",
+      "page_kind": "relationship",
+      "icon_slot_count": 0,
+      "icon_slots": []
+    },
+    "paper-ink.relationship.B2": {
+      "display_code": "B2",
+      "page_kind": "relationship",
+      "icon_slot_count": 0,
+      "icon_slots": []
+    },
+    "paper-ink.relationship.B3": {
+      "display_code": "B3",
+      "page_kind": "relationship",
+      "icon_slot_count": 0,
+      "icon_slots": []
+    },
+    "paper-ink.relationship.B4": {
+      "display_code": "B4",
+      "page_kind": "relationship",
+      "icon_slot_count": 0,
+      "icon_slots": []
+    },
+    "paper-ink.relationship.B5": {
+      "display_code": "B5",
+      "page_kind": "relationship",
+      "icon_slot_count": 0,
+      "icon_slots": []
+    },
+    "paper-ink.relationship.B6": {
+      "display_code": "B6",
+      "page_kind": "relationship",
+      "icon_slot_count": 0,
+      "icon_slots": []
+    },
+    "paper-ink.relationship.C1": {
+      "display_code": "C1",
+      "page_kind": "relationship",
+      "icon_slot_count": 0,
+      "icon_slots": []
+    },
+    "paper-ink.relationship.C2": {
+      "display_code": "C2",
+      "page_kind": "relationship",
+      "icon_slot_count": 0,
+      "icon_slots": []
+    },
+    "paper-ink.relationship.C3": {
+      "display_code": "C3",
+      "page_kind": "relationship",
+      "icon_slot_count": 0,
+      "icon_slots": []
+    },
+    "paper-ink.relationship.C4": {
+      "display_code": "C4",
+      "page_kind": "relationship",
+      "icon_slot_count": 0,
+      "icon_slots": []
+    },
+    "paper-ink.relationship.C5": {
+      "display_code": "C5",
+      "page_kind": "relationship",
+      "icon_slot_count": 0,
+      "icon_slots": []
+    },
+    "paper-ink.relationship.C6": {
+      "display_code": "C6",
+      "page_kind": "relationship",
+      "icon_slot_count": 0,
+      "icon_slots": []
+    },
+    "paper-ink.relationship.C7": {
+      "display_code": "C7",
+      "page_kind": "relationship",
+      "icon_slot_count": 0,
+      "icon_slots": []
+    },
+    "paper-ink.relationship.E1": {
+      "display_code": "E1",
+      "page_kind": "relationship",
+      "icon_slot_count": 0,
+      "icon_slots": []
+    },
+    "paper-ink.relationship.E2": {
+      "display_code": "E2",
+      "page_kind": "relationship",
+      "icon_slot_count": 0,
+      "icon_slots": []
+    },
+    "paper-ink.relationship.E3": {
+      "display_code": "E3",
+      "page_kind": "relationship",
+      "icon_slot_count": 0,
+      "icon_slots": []
+    },
+    "paper-ink.relationship.E4": {
+      "display_code": "E4",
+      "page_kind": "relationship",
+      "icon_slot_count": 0,
+      "icon_slots": []
+    },
+    "paper-ink.relationship.E5": {
+      "display_code": "E5",
+      "page_kind": "relationship",
+      "icon_slot_count": 0,
+      "icon_slots": []
+    },
+    "paper-ink.relationship.E6": {
+      "display_code": "E6",
+      "page_kind": "relationship",
+      "icon_slot_count": 0,
+      "icon_slots": []
+    },
+    "paper-ink.relationship.F2": {
+      "display_code": "F2",
+      "page_kind": "relationship",
+      "icon_slot_count": 0,
+      "icon_slots": []
+    },
+    "paper-ink.relationship.F3": {
+      "display_code": "F3",
+      "page_kind": "relationship",
+      "icon_slot_count": 0,
+      "icon_slots": []
+    },
+    "paper-ink.relationship.G1": {
+      "display_code": "G1",
+      "page_kind": "relationship",
+      "icon_slot_count": 0,
+      "icon_slots": []
+    },
+    "paper-ink.relationship.G2": {
+      "display_code": "G2",
+      "page_kind": "relationship",
+      "icon_slot_count": 0,
+      "icon_slots": []
+    },
+    "paper-ink.relationship.G4": {
+      "display_code": "G4",
+      "page_kind": "relationship",
+      "icon_slot_count": 0,
+      "icon_slots": []
+    },
+    "paper-ink.relationship.G5": {
+      "display_code": "G5",
+      "page_kind": "relationship",
+      "icon_slot_count": 0,
+      "icon_slots": []
+    },
+    "paper-ink.relationship.H1": {
+      "display_code": "H1",
+      "page_kind": "relationship",
+      "icon_slot_count": 0,
+      "icon_slots": []
+    },
+    "paper-ink.relationship.H2": {
+      "display_code": "H2",
+      "page_kind": "relationship",
+      "icon_slot_count": 0,
+      "icon_slots": []
+    },
+    "paper-ink.relationship.H3": {
+      "display_code": "H3",
+      "page_kind": "relationship",
+      "icon_slot_count": 0,
+      "icon_slots": []
+    },
+    "paper-ink.relationship.H4": {
+      "display_code": "H4",
+      "page_kind": "relationship",
+      "icon_slot_count": 0,
+      "icon_slots": []
+    },
+    "paper-ink.relationship.I1": {
+      "display_code": "I1",
+      "page_kind": "relationship",
+      "icon_slot_count": 0,
+      "icon_slots": []
+    },
+    "paper-ink.relationship.I2": {
+      "display_code": "I2",
+      "page_kind": "relationship",
+      "icon_slot_count": 0,
+      "icon_slots": []
+    },
+    "paper-ink.relationship.I3": {
+      "display_code": "I3",
+      "page_kind": "relationship",
+      "icon_slot_count": 0,
+      "icon_slots": []
+    },
+    "paper-ink.relationship.I4": {
+      "display_code": "I4",
+      "page_kind": "relationship",
+      "icon_slot_count": 0,
+      "icon_slots": []
+    },
+    "paper-ink.relationship.J1": {
+      "display_code": "J1",
+      "page_kind": "relationship",
+      "icon_slot_count": 0,
+      "icon_slots": []
+    },
+    "paper-ink.relationship.J2": {
+      "display_code": "J2",
+      "page_kind": "relationship",
+      "icon_slot_count": 0,
+      "icon_slots": []
+    },
+    "paper-ink.relationship.J3": {
+      "display_code": "J3",
+      "page_kind": "relationship",
+      "icon_slot_count": 0,
+      "icon_slots": []
+    },
+    "paper-ink.relationship.K1": {
+      "display_code": "K1",
+      "page_kind": "relationship",
+      "icon_slot_count": 0,
+      "icon_slots": []
+    },
+    "paper-ink.relationship.K2": {
+      "display_code": "K2",
+      "page_kind": "relationship",
+      "icon_slot_count": 0,
+      "icon_slots": []
+    },
+    "paper-ink.relationship.K3": {
+      "display_code": "K3",
+      "page_kind": "relationship",
+      "icon_slot_count": 0,
+      "icon_slots": []
+    },
+    "paper-ink.relationship.K4": {
+      "display_code": "K4",
+      "page_kind": "relationship",
+      "icon_slot_count": 0,
+      "icon_slots": []
+    },
+    "paper-ink.relationship.L1": {
+      "display_code": "L1",
+      "page_kind": "relationship",
+      "icon_slot_count": 0,
+      "icon_slots": []
+    },
+    "paper-ink.relationship.L2": {
+      "display_code": "L2",
+      "page_kind": "relationship",
+      "icon_slot_count": 0,
+      "icon_slots": []
+    },
+    "paper-ink.relationship.N1": {
+      "display_code": "N1",
+      "page_kind": "relationship",
+      "icon_slot_count": 0,
+      "icon_slots": []
+    },
+    "paper-ink.relationship.O1": {
+      "display_code": "O1",
+      "page_kind": "relationship",
+      "icon_slot_count": 0,
+      "icon_slots": []
+    },
+    "paper-ink.relationship.P1": {
+      "display_code": "P1",
+      "page_kind": "relationship",
+      "icon_slot_count": 0,
+      "icon_slots": []
+    },
+    "paper-ink.relationship.P2": {
+      "display_code": "P2",
+      "page_kind": "relationship",
+      "icon_slot_count": 0,
+      "icon_slots": []
+    },
+    "paper-ink.relationship.Q1": {
+      "display_code": "Q1",
+      "page_kind": "relationship",
+      "icon_slot_count": 0,
+      "icon_slots": []
+    },
+    "paper-ink.relationship.Q2": {
+      "display_code": "Q2",
+      "page_kind": "relationship",
+      "icon_slot_count": 0,
+      "icon_slots": []
+    },
+    "paper-ink.relationship.Q3": {
+      "display_code": "Q3",
+      "page_kind": "relationship",
+      "icon_slot_count": 7,
+      "icon_slots": [
+        {
+          "layout_id": "paper-ink.relationship.Q3",
+          "display_code": "Q3",
+          "slot_id": "baseline",
+          "binding_key": "baseline.icon.001",
+          "component_id": "native.paper-ink.semantic.process-strip",
+          "semantic_purpose": "第一条流程",
+          "position": {
+            "fit_box": [],
+            "target_tag": "svg",
+            "geometry": {
+              "x": "372",
+              "y": "289.7",
+              "width": "36",
+              "height": "36",
+              "viewBox": "0 0 64 64"
+            }
+          },
+          "visual_lock": {
+            "size_and_position": "seed-locked",
+            "color": "var(--wp-color-functional)",
+            "stroke_and_shape": "selected-authority-svg-locked"
+          }
+        },
+        {
+          "layout_id": "paper-ink.relationship.Q3",
+          "display_code": "Q3",
+          "slot_id": "baseline",
+          "binding_key": "baseline.icon.002",
+          "component_id": "native.paper-ink.semantic.process-strip",
+          "semantic_purpose": "第一条流程",
+          "position": {
+            "fit_box": [],
+            "target_tag": "svg",
+            "geometry": {
+              "x": "907",
+              "y": "289.4",
+              "width": "36",
+              "height": "36",
+              "viewBox": "0 0 64 64"
+            }
+          },
+          "visual_lock": {
+            "size_and_position": "seed-locked",
+            "color": "var(--wp-color-functional)",
+            "stroke_and_shape": "selected-authority-svg-locked"
+          }
+        },
+        {
+          "layout_id": "paper-ink.relationship.Q3",
+          "display_code": "Q3",
+          "slot_id": "baseline",
+          "binding_key": "baseline.icon.003",
+          "component_id": "native.paper-ink.semantic.process-strip",
+          "semantic_purpose": "第一条流程",
+          "position": {
+            "fit_box": [],
+            "target_tag": "svg",
+            "geometry": {
+              "x": "1442",
+              "y": "290.6",
+              "width": "36",
+              "height": "36",
+              "viewBox": "0 0 64 64"
+            }
+          },
+          "visual_lock": {
+            "size_and_position": "seed-locked",
+            "color": "var(--wp-color-functional)",
+            "stroke_and_shape": "selected-authority-svg-locked"
+          }
+        },
+        {
+          "layout_id": "paper-ink.relationship.Q3",
+          "display_code": "Q3",
+          "slot_id": "traced",
+          "binding_key": "traced.icon.001",
+          "component_id": "native.paper-ink.semantic.process-strip",
+          "semantic_purpose": "第二条流程",
+          "position": {
+            "fit_box": [],
+            "target_tag": "svg",
+            "geometry": {
+              "x": "311",
+              "y": "675.5",
+              "width": "36",
+              "height": "36",
+              "viewBox": "0 0 64 64"
+            }
+          },
+          "visual_lock": {
+            "size_and_position": "seed-locked",
+            "color": "var(--wp-color-functional)",
+            "stroke_and_shape": "selected-authority-svg-locked"
+          }
+        },
+        {
+          "layout_id": "paper-ink.relationship.Q3",
+          "display_code": "Q3",
+          "slot_id": "traced",
+          "binding_key": "traced.icon.002",
+          "component_id": "native.paper-ink.semantic.process-strip",
+          "semantic_purpose": "第二条流程",
+          "position": {
+            "fit_box": [],
+            "target_tag": "svg",
+            "geometry": {
+              "x": "681",
+              "y": "675.5",
+              "width": "36",
+              "height": "36",
+              "viewBox": "0 0 64 64"
+            }
+          },
+          "visual_lock": {
+            "size_and_position": "seed-locked",
+            "color": "var(--wp-color-functional)",
+            "stroke_and_shape": "selected-authority-svg-locked"
+          }
+        },
+        {
+          "layout_id": "paper-ink.relationship.Q3",
+          "display_code": "Q3",
+          "slot_id": "traced",
+          "binding_key": "traced.icon.003",
+          "component_id": "native.paper-ink.semantic.process-strip",
+          "semantic_purpose": "第二条流程",
+          "position": {
+            "fit_box": [],
+            "target_tag": "svg",
+            "geometry": {
+              "x": "1051",
+              "y": "675.5",
+              "width": "36",
+              "height": "36",
+              "viewBox": "0 0 64 64"
+            }
+          },
+          "visual_lock": {
+            "size_and_position": "seed-locked",
+            "color": "var(--wp-color-functional)",
+            "stroke_and_shape": "selected-authority-svg-locked"
+          }
+        },
+        {
+          "layout_id": "paper-ink.relationship.Q3",
+          "display_code": "Q3",
+          "slot_id": "traced",
+          "binding_key": "traced.icon.004",
+          "component_id": "native.paper-ink.semantic.process-strip",
+          "semantic_purpose": "第二条流程",
+          "position": {
+            "fit_box": [],
+            "target_tag": "svg",
+            "geometry": {
+              "x": "1521",
+              "y": "675.5",
+              "width": "36",
+              "height": "36",
+              "viewBox": "0 0 64 64"
+            }
+          },
+          "visual_lock": {
+            "size_and_position": "seed-locked",
+            "color": "var(--wp-color-functional)",
+            "stroke_and_shape": "selected-authority-svg-locked"
+          }
+        }
+      ]
+    },
+    "paper-ink.relationship.Q4": {
+      "display_code": "Q4",
+      "page_kind": "relationship",
+      "icon_slot_count": 0,
+      "icon_slots": []
+    },
+    "paper-ink.relationship.R1": {
+      "display_code": "R1",
+      "page_kind": "relationship",
+      "icon_slot_count": 4,
+      "icon_slots": [
+        {
+          "layout_id": "paper-ink.relationship.R1",
+          "display_code": "R1",
+          "slot_id": "pillar-a",
+          "binding_key": "pillar-a.icon.001",
+          "component_id": "native.paper-ink.semantic.scenario-column",
+          "semantic_purpose": "第一能力柱",
+          "position": {
+            "fit_box": [],
+            "target_tag": "svg",
+            "geometry": {
+              "x": "413",
+              "y": "277",
+              "width": "40",
+              "height": "40",
+              "viewBox": "0 0 64 64"
+            }
+          },
+          "visual_lock": {
+            "size_and_position": "seed-locked",
+            "color": "var(--wp-color-functional)",
+            "stroke_and_shape": "selected-authority-svg-locked"
+          }
+        },
+        {
+          "layout_id": "paper-ink.relationship.R1",
+          "display_code": "R1",
+          "slot_id": "pillar-b",
+          "binding_key": "pillar-b.icon.001",
+          "component_id": "native.paper-ink.semantic.scenario-column",
+          "semantic_purpose": "第二能力柱",
+          "position": {
+            "fit_box": [],
+            "target_tag": "svg",
+            "geometry": {
+              "x": "843",
+              "y": "277",
+              "width": "40",
+              "height": "40",
+              "viewBox": "0 0 64 64"
+            }
+          },
+          "visual_lock": {
+            "size_and_position": "seed-locked",
+            "color": "var(--wp-color-functional)",
+            "stroke_and_shape": "selected-authority-svg-locked"
+          }
+        },
+        {
+          "layout_id": "paper-ink.relationship.R1",
+          "display_code": "R1",
+          "slot_id": "pillar-c",
+          "binding_key": "pillar-c.icon.001",
+          "component_id": "native.paper-ink.semantic.scenario-column",
+          "semantic_purpose": "第三能力柱",
+          "position": {
+            "fit_box": [],
+            "target_tag": "svg",
+            "geometry": {
+              "x": "1272",
+              "y": "277",
+              "width": "40",
+              "height": "40",
+              "viewBox": "0 0 64 64"
+            }
+          },
+          "visual_lock": {
+            "size_and_position": "seed-locked",
+            "color": "var(--wp-color-functional)",
+            "stroke_and_shape": "selected-authority-svg-locked"
+          }
+        },
+        {
+          "layout_id": "paper-ink.relationship.R1",
+          "display_code": "R1",
+          "slot_id": "pillar-d",
+          "binding_key": "pillar-d.icon.001",
+          "component_id": "native.paper-ink.semantic.scenario-column",
+          "semantic_purpose": "第四能力柱",
+          "position": {
+            "fit_box": [],
+            "target_tag": "svg",
+            "geometry": {
+              "x": "1702",
+              "y": "277",
+              "width": "40",
+              "height": "40",
+              "viewBox": "0 0 64 64"
+            }
+          },
+          "visual_lock": {
+            "size_and_position": "seed-locked",
+            "color": "var(--wp-color-functional)",
+            "stroke_and_shape": "selected-authority-svg-locked"
+          }
+        }
+      ]
+    },
+    "paper-ink.relationship.R2": {
+      "display_code": "R2",
+      "page_kind": "relationship",
+      "icon_slot_count": 3,
+      "icon_slots": [
+        {
+          "layout_id": "paper-ink.relationship.R2",
+          "display_code": "R2",
+          "slot_id": "strategy",
+          "binding_key": "strategy.icon.001",
+          "component_id": "native.paper-ink.semantic.statement-band",
+          "semantic_purpose": "战略层",
+          "position": {
+            "fit_box": [],
+            "target_tag": "svg",
+            "geometry": {
+              "x": "1594",
+              "y": "186",
+              "width": "40",
+              "height": "40",
+              "viewBox": "0 0 64 64"
+            }
+          },
+          "visual_lock": {
+            "size_and_position": "seed-locked",
+            "color": "var(--wp-color-functional)",
+            "stroke_and_shape": "selected-authority-svg-locked"
+          }
+        },
+        {
+          "layout_id": "paper-ink.relationship.R2",
+          "display_code": "R2",
+          "slot_id": "capability",
+          "binding_key": "capability.icon.001",
+          "component_id": "native.paper-ink.semantic.process-strip",
+          "semantic_purpose": "能力层",
+          "position": {
+            "fit_box": [],
+            "target_tag": "svg",
+            "geometry": {
+              "x": "1594",
+              "y": "442.5",
+              "width": "40",
+              "height": "40",
+              "viewBox": "0 0 64 64"
+            }
+          },
+          "visual_lock": {
+            "size_and_position": "seed-locked",
+            "color": "var(--wp-color-functional)",
+            "stroke_and_shape": "selected-authority-svg-locked"
+          }
+        },
+        {
+          "layout_id": "paper-ink.relationship.R2",
+          "display_code": "R2",
+          "slot_id": "execution",
+          "binding_key": "execution.icon.001",
+          "component_id": "native.paper-ink.semantic.metric-band",
+          "semantic_purpose": "执行层",
+          "position": {
+            "fit_box": [],
+            "target_tag": "svg",
+            "geometry": {
+              "x": "1594",
+              "y": "699",
+              "width": "40",
+              "height": "40",
+              "viewBox": "0 0 64 64"
+            }
+          },
+          "visual_lock": {
+            "size_and_position": "seed-locked",
+            "color": "var(--wp-color-functional)",
+            "stroke_and_shape": "selected-authority-svg-locked"
+          }
+        }
+      ]
+    },
+    "paper-ink.relationship.R3": {
+      "display_code": "R3",
+      "page_kind": "relationship",
+      "icon_slot_count": 0,
+      "icon_slots": []
+    },
+    "paper-ink.relationship.R4": {
+      "display_code": "R4",
+      "page_kind": "relationship",
+      "icon_slot_count": 0,
+      "icon_slots": []
+    },
+    "paper-ink.relationship.R5": {
+      "display_code": "R5",
+      "page_kind": "relationship",
+      "icon_slot_count": 0,
+      "icon_slots": []
+    },
+    "paper-ink.relationship.R6": {
+      "display_code": "R6",
+      "page_kind": "relationship",
+      "icon_slot_count": 4,
+      "icon_slots": [
+        {
+          "layout_id": "paper-ink.relationship.R6",
+          "display_code": "R6",
+          "slot_id": "input",
+          "binding_key": "input.icon.001",
+          "component_id": "native.paper-ink.semantic.statement-band",
+          "semantic_purpose": "输入边界层",
+          "position": {
+            "fit_box": [],
+            "target_tag": "svg",
+            "geometry": {
+              "x": "1630",
+              "y": "156.75",
+              "width": "36",
+              "height": "36",
+              "viewBox": "0 0 64 64"
+            }
+          },
+          "visual_lock": {
+            "size_and_position": "seed-locked",
+            "color": "var(--wp-color-functional)",
+            "stroke_and_shape": "selected-authority-svg-locked"
+          }
+        },
+        {
+          "layout_id": "paper-ink.relationship.R6",
+          "display_code": "R6",
+          "slot_id": "reasoning",
+          "binding_key": "reasoning.icon.001",
+          "component_id": "native.paper-ink.semantic.process-strip",
+          "semantic_purpose": "推理约束层",
+          "position": {
+            "fit_box": [],
+            "target_tag": "svg",
+            "geometry": {
+              "x": "1630",
+              "y": "349.25",
+              "width": "36",
+              "height": "36",
+              "viewBox": "0 0 64 64"
+            }
+          },
+          "visual_lock": {
+            "size_and_position": "seed-locked",
+            "color": "var(--wp-color-functional)",
+            "stroke_and_shape": "selected-authority-svg-locked"
+          }
+        },
+        {
+          "layout_id": "paper-ink.relationship.R6",
+          "display_code": "R6",
+          "slot_id": "evaluation",
+          "binding_key": "evaluation.icon.001",
+          "component_id": "native.paper-ink.semantic.metric-band",
+          "semantic_purpose": "结果评测层",
+          "position": {
+            "fit_box": [],
+            "target_tag": "svg",
+            "geometry": {
+              "x": "1630",
+              "y": "541.75",
+              "width": "36",
+              "height": "36",
+              "viewBox": "0 0 64 64"
+            }
+          },
+          "visual_lock": {
+            "size_and_position": "seed-locked",
+            "color": "var(--wp-color-functional)",
+            "stroke_and_shape": "selected-authority-svg-locked"
+          }
+        },
+        {
+          "layout_id": "paper-ink.relationship.R6",
+          "display_code": "R6",
+          "slot_id": "governance",
+          "binding_key": "governance.icon.001",
+          "component_id": "native.paper-ink.semantic.evidence-panel",
+          "semantic_purpose": "上线治理层",
+          "position": {
+            "fit_box": [],
+            "target_tag": "svg",
+            "geometry": {
+              "x": "1630",
+              "y": "734.25",
+              "width": "36",
+              "height": "36",
+              "viewBox": "0 0 64 64"
+            }
+          },
+          "visual_lock": {
+            "size_and_position": "seed-locked",
+            "color": "var(--wp-color-functional)",
+            "stroke_and_shape": "selected-authority-svg-locked"
+          }
+        }
+      ]
+    },
+    "paper-ink.relationship.R7": {
+      "display_code": "R7",
+      "page_kind": "relationship",
+      "icon_slot_count": 0,
+      "icon_slots": []
+    },
+    "paper-ink.relationship.S1": {
+      "display_code": "S1",
+      "page_kind": "relationship",
+      "icon_slot_count": 0,
+      "icon_slots": []
+    },
+    "paper-ink.relationship.S2": {
+      "display_code": "S2",
+      "page_kind": "relationship",
+      "icon_slot_count": 0,
+      "icon_slots": []
+    },
+    "paper-ink.relationship.S3": {
+      "display_code": "S3",
+      "page_kind": "relationship",
+      "icon_slot_count": 0,
+      "icon_slots": []
+    },
+    "paper-ink.relationship.T1": {
+      "display_code": "T1",
+      "page_kind": "relationship",
+      "icon_slot_count": 0,
+      "icon_slots": []
+    },
+    "paper-ink.relationship.T2": {
+      "display_code": "T2",
+      "page_kind": "relationship",
+      "icon_slot_count": 0,
+      "icon_slots": []
+    },
+    "paper-ink.relationship.T3": {
+      "display_code": "T3",
+      "page_kind": "relationship",
+      "icon_slot_count": 0,
+      "icon_slots": []
+    },
+    "paper-ink.nonrelationship.D1": {
+      "display_code": "D1",
+      "page_kind": "nonrelationship",
+      "icon_slot_count": 0,
+      "icon_slots": []
+    },
+    "paper-ink.nonrelationship.D10": {
+      "display_code": "D10",
+      "page_kind": "nonrelationship",
+      "icon_slot_count": 0,
+      "icon_slots": []
+    },
+    "paper-ink.nonrelationship.D2": {
+      "display_code": "D2",
+      "page_kind": "nonrelationship",
+      "icon_slot_count": 0,
+      "icon_slots": []
+    },
+    "paper-ink.nonrelationship.D3": {
+      "display_code": "D3",
+      "page_kind": "nonrelationship",
+      "icon_slot_count": 0,
+      "icon_slots": []
+    },
+    "paper-ink.nonrelationship.D4": {
+      "display_code": "D4",
+      "page_kind": "nonrelationship",
+      "icon_slot_count": 0,
+      "icon_slots": []
+    },
+    "paper-ink.nonrelationship.D5": {
+      "display_code": "D5",
+      "page_kind": "nonrelationship",
+      "icon_slot_count": 0,
+      "icon_slots": []
+    },
+    "paper-ink.nonrelationship.D6": {
+      "display_code": "D6",
+      "page_kind": "nonrelationship",
+      "icon_slot_count": 0,
+      "icon_slots": []
+    },
+    "paper-ink.nonrelationship.D7": {
+      "display_code": "D7",
+      "page_kind": "nonrelationship",
+      "icon_slot_count": 0,
+      "icon_slots": []
+    },
+    "paper-ink.nonrelationship.D8": {
+      "display_code": "D8",
+      "page_kind": "nonrelationship",
+      "icon_slot_count": 0,
+      "icon_slots": []
+    },
+    "paper-ink.nonrelationship.D9": {
+      "display_code": "D9",
+      "page_kind": "nonrelationship",
+      "icon_slot_count": 0,
+      "icon_slots": []
+    },
+    "paper-ink.nonrelationship.M1": {
+      "display_code": "M1",
+      "page_kind": "nonrelationship",
+      "icon_slot_count": 0,
+      "icon_slots": []
+    },
+    "paper-ink.nonrelationship.M2": {
+      "display_code": "M2",
+      "page_kind": "nonrelationship",
+      "icon_slot_count": 0,
+      "icon_slots": []
+    }
+  },
+  "components": {
+    "atlas.002.list-card": {
+      "component_name": "列表卡片",
+      "icon_slot_count": 0,
+      "registered_placements": []
+    },
+    "atlas.003.list-card.default": {
+      "component_name": "列表卡片-默认变体",
+      "icon_slot_count": 0,
+      "registered_placements": []
+    },
+    "atlas.004.list-card.workflow": {
+      "component_name": "列表卡片-工作流变体",
+      "icon_slot_count": 0,
+      "registered_placements": []
+    },
+    "atlas.006.form-card": {
+      "component_name": "表单卡片",
+      "icon_slot_count": 0,
+      "registered_placements": []
+    },
+    "atlas.012.alert-box": {
+      "component_name": "提示框",
+      "icon_slot_count": 0,
+      "registered_placements": []
+    },
+    "atlas.013.terminal-box": {
+      "component_name": "终端框",
+      "icon_slot_count": 0,
+      "registered_placements": []
+    },
+    "atlas.014.code": {
+      "component_name": "代码块",
+      "icon_slot_count": 0,
+      "registered_placements": []
+    },
+    "atlas.016.before-after.default": {
+      "component_name": "前后对比-默认变体",
+      "icon_slot_count": 0,
+      "registered_placements": []
+    },
+    "atlas.017.before-after.with-arrow": {
+      "component_name": "前后对比-箭头变体",
+      "icon_slot_count": 0,
+      "registered_placements": []
+    },
+    "atlas.018.before-after.no-bg": {
+      "component_name": "前后对比-无背景变体",
+      "icon_slot_count": 0,
+      "registered_placements": []
+    },
+    "atlas.019.before-after.verification": {
+      "component_name": "前后对比-验证变体",
+      "icon_slot_count": 0,
+      "registered_placements": []
+    },
+    "atlas.020.swot": {
+      "component_name": "SWOT 分析",
+      "icon_slot_count": 0,
+      "registered_placements": []
+    },
+    "atlas.021.quadrant-axis": {
+      "component_name": "象限图",
+      "icon_slot_count": 0,
+      "registered_placements": []
+    },
+    "atlas.022.comparison-table": {
+      "component_name": "对比表格",
+      "icon_slot_count": 0,
+      "registered_placements": []
+    },
+    "atlas.024.impossible-triangle.impossible-triangle": {
+      "component_name": "不可能三角",
+      "icon_slot_count": 0,
+      "registered_placements": []
+    },
+    "atlas.025.process.default": {
+      "component_name": "流程-默认变体(3步)",
+      "icon_slot_count": 0,
+      "registered_placements": []
+    },
+    "atlas.026.process.default": {
+      "component_name": "流程-默认变体(4步)",
+      "icon_slot_count": 0,
+      "registered_placements": []
+    },
+    "atlas.027.process.annotated": {
+      "component_name": "流程-标注变体",
+      "icon_slot_count": 0,
+      "registered_placements": []
+    },
+    "atlas.030.process.arrow": {
+      "component_name": "流程-箭头变体(3步)",
+      "icon_slot_count": 0,
+      "registered_placements": []
+    },
+    "atlas.031.process.arrow": {
+      "component_name": "流程-箭头变体(4步)",
+      "icon_slot_count": 0,
+      "registered_placements": []
+    },
+    "atlas.032.process.annotated-arrow": {
+      "component_name": "流程-标注箭头变体",
+      "icon_slot_count": 0,
+      "registered_placements": []
+    },
+    "atlas.034.process-loop.triangle": {
+      "component_name": "循环流程-三角变体",
+      "icon_slot_count": 0,
+      "registered_placements": []
+    },
+    "atlas.035.process-loop.quad": {
+      "component_name": "循环流程-四边变体",
+      "icon_slot_count": 0,
+      "registered_placements": []
+    },
+    "atlas.036.process-loop.pentagon": {
+      "component_name": "循环流程-五边变体",
+      "icon_slot_count": 0,
+      "registered_placements": []
+    },
+    "atlas.037.process-loop.closed-loop": {
+      "component_name": "闭环流程",
+      "icon_slot_count": 0,
+      "registered_placements": []
+    },
+    "atlas.038.journey": {
+      "component_name": "旅程图",
+      "icon_slot_count": 0,
+      "registered_placements": []
+    },
+    "atlas.039.timeline": {
+      "component_name": "时间线",
+      "icon_slot_count": 0,
+      "registered_placements": []
+    },
+    "atlas.040.timeline.vertical": {
+      "component_name": "时间线-垂直变体",
+      "icon_slot_count": 0,
+      "registered_placements": []
+    },
+    "atlas.041.timeline.horizontal": {
+      "component_name": "时间线-水平变体",
+      "icon_slot_count": 0,
+      "registered_placements": []
+    },
+    "atlas.042.gantt": {
+      "component_name": "甘特图",
+      "icon_slot_count": 0,
+      "registered_placements": []
+    },
+    "atlas.043.concentric": {
+      "component_name": "同心圆",
+      "icon_slot_count": 0,
+      "registered_placements": []
+    },
+    "atlas.044.concentric.align-center": {
+      "component_name": "同心圆-居中变体",
+      "icon_slot_count": 0,
+      "registered_placements": []
+    },
+    "atlas.045.concentric.center-text-bottom": {
+      "component_name": "同心圆-底部文字变体",
+      "icon_slot_count": 0,
+      "registered_placements": []
+    },
+    "atlas.046.concentric.align-top": {
+      "component_name": "同心圆-顶部对齐变体",
+      "icon_slot_count": 0,
+      "registered_placements": []
+    },
+    "atlas.047.concentric.align-bottom": {
+      "component_name": "同心圆-底部对齐变体",
+      "icon_slot_count": 0,
+      "registered_placements": []
+    },
+    "atlas.048.pyramid": {
+      "component_name": "金字塔",
+      "icon_slot_count": 0,
+      "registered_placements": []
+    },
+    "atlas.049.pyramid.inverted": {
+      "component_name": "金字塔-倒置变体",
+      "icon_slot_count": 0,
+      "registered_placements": []
+    },
+    "atlas.050.fishbone": {
+      "component_name": "鱼骨图",
+      "icon_slot_count": 0,
+      "registered_placements": []
+    },
+    "atlas.051.iceberg": {
+      "component_name": "冰山图",
+      "icon_slot_count": 0,
+      "registered_placements": []
+    },
+    "atlas.052.venn.double": {
+      "component_name": "韦恩图-双圆变体",
+      "icon_slot_count": 0,
+      "registered_placements": []
+    },
+    "atlas.053.venn.three": {
+      "component_name": "韦恩图-三圆变体",
+      "icon_slot_count": 0,
+      "registered_placements": []
+    },
+    "atlas.054.architecture": {
+      "component_name": "架构图",
+      "icon_slot_count": 0,
+      "registered_placements": []
+    },
+    "atlas.055.arch-platform": {
+      "component_name": "平台架构图",
+      "icon_slot_count": 0,
+      "registered_placements": []
+    },
+    "atlas.056.arch-platform-complex-v": {
+      "component_name": "平台架构图-复杂垂直变体",
+      "icon_slot_count": 0,
+      "registered_placements": []
+    },
+    "atlas.057.mind-map.horizontal": {
+      "component_name": "思维导图-水平变体",
+      "icon_slot_count": 0,
+      "registered_placements": []
+    },
+    "atlas.058.mind-map.vertical": {
+      "component_name": "思维导图-垂直变体",
+      "icon_slot_count": 0,
+      "registered_placements": []
+    },
+    "atlas.059.stats": {
+      "component_name": "统计卡片",
+      "icon_slot_count": 0,
+      "registered_placements": []
+    },
+    "atlas.060.radar": {
+      "component_name": "雷达图",
+      "icon_slot_count": 0,
+      "registered_placements": []
+    },
+    "atlas.061.radar-hex": {
+      "component_name": "六边形雷达图",
+      "icon_slot_count": 0,
+      "registered_placements": []
+    },
+    "echarts.bar-basic": {
+      "component_name": "基础柱状图",
+      "icon_slot_count": 0,
+      "registered_placements": []
+    },
+    "echarts.bar-dynamic-sort": {
+      "component_name": "动态排序柱状图",
+      "icon_slot_count": 0,
+      "registered_placements": []
+    },
+    "echarts.calendar-basic": {
+      "component_name": "日历热力图",
+      "icon_slot_count": 0,
+      "registered_placements": []
+    },
+    "echarts.geo-choropleth-map": {
+      "component_name": "分级填色地图",
+      "icon_slot_count": 0,
+      "registered_placements": []
+    },
+    "echarts.line-basic": {
+      "component_name": "基础折线图",
+      "icon_slot_count": 0,
+      "registered_placements": []
+    },
+    "echarts.line-smooth": {
+      "component_name": "平滑折线图",
+      "icon_slot_count": 0,
+      "registered_placements": []
+    },
+    "echarts.line-stacked": {
+      "component_name": "堆叠折线图",
+      "icon_slot_count": 0,
+      "registered_placements": []
+    },
+    "echarts.pie-access-source": {
+      "component_name": "访问来源饼图",
+      "icon_slot_count": 0,
+      "registered_placements": []
+    },
+    "echarts.radar-basic": {
+      "component_name": "基础雷达图",
+      "icon_slot_count": 0,
+      "registered_placements": []
+    },
+    "echarts.sankey-basic": {
+      "component_name": "基础桑基图",
+      "icon_slot_count": 0,
+      "registered_placements": []
+    },
+    "echarts.scatter-basic": {
+      "component_name": "基础散点图",
+      "icon_slot_count": 0,
+      "registered_placements": []
+    },
+    "echarts.scatter-to-bar-anim": {
+      "component_name": "散点聚合柱状动画",
+      "icon_slot_count": 0,
+      "registered_placements": []
+    },
+    "echarts.tree-lr": {
+      "component_name": "从左到右树状图",
+      "icon_slot_count": 0,
+      "registered_placements": []
+    },
+    "native.paper-ink.063.step-rise": {
+      "component_name": "阶梯爬升图",
+      "icon_slot_count": 0,
+      "registered_placements": []
+    },
+    "native.paper-ink.064.doc-excerpt": {
+      "component_name": "文献摘引块",
+      "icon_slot_count": 0,
+      "registered_placements": []
+    },
+    "native.paper-ink.065.official-doc": {
+      "component_name": "公文标本框",
+      "icon_slot_count": 0,
+      "registered_placements": []
+    },
+    "native.paper-ink.066.evidence-wall": {
+      "component_name": "证据墙标本格",
+      "icon_slot_count": 0,
+      "registered_placements": []
+    },
+    "native.paper-ink.067.logo-cloud": {
+      "component_name": "品牌云墙",
+      "icon_slot_count": 0,
+      "registered_placements": []
+    },
+    "native.paper-ink.068.mobile-gallery": {
+      "component_name": "手机屏步骤画廊",
+      "icon_slot_count": 0,
+      "registered_placements": []
+    },
+    "native.paper-ink.069.admin-console": {
+      "component_name": "后台管理台线稿",
+      "icon_slot_count": 0,
+      "registered_placements": []
+    },
+    "native.paper-ink.071.gantt-ink": {
+      "component_name": "墨线甘特图",
+      "icon_slot_count": 0,
+      "registered_placements": []
+    },
+    "native.paper-ink.072.timeline-gallery": {
+      "component_name": "时间轴垂挂画廊",
+      "icon_slot_count": 0,
+      "registered_placements": []
+    },
+    "native.paper-ink.073.winding-road": {
+      "component_name": "蜿蜒道路时间轴",
+      "icon_slot_count": 0,
+      "registered_placements": []
+    },
+    "native.paper-ink.074.contact-card": {
+      "component_name": "完整联络方式卡",
+      "icon_slot_count": 0,
+      "registered_placements": []
+    },
+    "native.paper-ink.075.district-map": {
+      "component_name": "街区示意地图",
+      "icon_slot_count": 0,
+      "registered_placements": []
+    },
+    "native.paper-ink.076.why-how-bands": {
+      "component_name": "因果对位双带",
+      "icon_slot_count": 0,
+      "registered_placements": []
+    },
+    "native.paper-ink.077.before-after-bands": {
+      "component_name": "前后双带演进面板",
+      "icon_slot_count": 0,
+      "registered_placements": []
+    },
+    "native.paper-ink.078.chat-dialog": {
+      "component_name": "对话气泡",
+      "icon_slot_count": 0,
+      "registered_placements": []
+    },
+    "native.paper-ink.079.radial-hub": {
+      "component_name": "放射中心卫星图",
+      "icon_slot_count": 0,
+      "registered_placements": []
+    },
+    "native.paper-ink.080.merge-confluence": {
+      "component_name": "双路汇流图",
+      "icon_slot_count": 0,
+      "registered_placements": []
+    },
+    "native.paper-ink.081.watershed-axis": {
+      "component_name": "分水岭中轴对照",
+      "icon_slot_count": 0,
+      "registered_placements": []
+    },
+    "native.paper-ink.082.arch-table-band": {
+      "component_name": "架构带表",
+      "icon_slot_count": 0,
+      "registered_placements": []
+    },
+    "native.paper-ink.083.swimlane-roadmap": {
+      "component_name": "泳道路线图",
+      "icon_slot_count": 0,
+      "registered_placements": []
+    },
+    "native.paper-ink.084.profile-card": {
+      "component_name": "人物画像卡·阅读系统",
+      "icon_slot_count": 0,
+      "registered_placements": []
+    },
+    "native.paper-ink.085.radial-progress": {
+      "component_name": "进度指标组",
+      "icon_slot_count": 0,
+      "registered_placements": []
+    },
+    "native.paper-ink.087.funnel": {
+      "component_name": "转化漏斗",
+      "icon_slot_count": 0,
+      "registered_placements": []
+    },
+    "native.paper-ink.088.annotation-callout": {
+      "component_name": "立绘环绕引线标注",
+      "icon_slot_count": 0,
+      "registered_placements": []
+    },
+    "native.paper-ink.106.balance-scale": {
+      "component_name": "权衡天平",
+      "icon_slot_count": 0,
+      "registered_placements": []
+    },
+    "native.paper-ink.107.interlocking-gears": {
+      "component_name": "互锁齿轮",
+      "icon_slot_count": 0,
+      "registered_placements": []
+    },
+    "native.paper-ink.108.three-principles-radial": {
+      "component_name": "三原则放射图",
+      "icon_slot_count": 0,
+      "registered_placements": []
+    },
+    "native.paper-ink.089.metric-strip": {
+      "component_name": "自适应指标横带",
+      "icon_slot_count": 0,
+      "registered_placements": []
+    },
+    "native.paper-ink.090.scenario-column": {
+      "component_name": "场景单列·智能客服",
+      "icon_slot_count": 0,
+      "registered_placements": []
+    },
+    "native.paper-ink.093.infra-strip": {
+      "component_name": "完整四层架构栈",
+      "icon_slot_count": 0,
+      "registered_placements": []
+    },
+    "native.paper-ink.094.mapping-arc-network": {
+      "component_name": "映射弧线网",
+      "icon_slot_count": 0,
+      "registered_placements": []
+    },
+    "native.paper-ink.095.weighted-arc-web": {
+      "component_name": "权重弧网",
+      "icon_slot_count": 0,
+      "registered_placements": []
+    },
+    "native.paper-ink.096.three-way-radial": {
+      "component_name": "三向放射图",
+      "icon_slot_count": 0,
+      "registered_placements": []
+    },
+    "native.paper-ink.097.nested-frames": {
+      "component_name": "嵌套框",
+      "icon_slot_count": 0,
+      "registered_placements": []
+    },
+    "native.paper-ink.098.ranking-bars": {
+      "component_name": "排行柱图",
+      "icon_slot_count": 0,
+      "registered_placements": []
+    },
+    "native.paper-ink.099.serpentine-loop": {
+      "component_name": "蛇形回环",
+      "icon_slot_count": 0,
+      "registered_placements": []
+    },
+    "native.paper-ink.100.cycle-ring": {
+      "component_name": "环形循环",
+      "icon_slot_count": 0,
+      "registered_placements": []
+    },
+    "native.paper-ink.101.journey-curve": {
+      "component_name": "旅程曲线",
+      "icon_slot_count": 0,
+      "registered_placements": []
+    },
+    "native.paper-ink.102.timeline-axis-horizontal": {
+      "component_name": "时间轴（横排）",
+      "icon_slot_count": 0,
+      "registered_placements": []
+    },
+    "native.paper-ink.103.concentric-ring": {
+      "component_name": "同心环",
+      "icon_slot_count": 0,
+      "registered_placements": []
+    },
+    "native.paper-ink.104.timeline-axis-vertical": {
+      "component_name": "时间轴（竖排）",
+      "icon_slot_count": 0,
+      "registered_placements": []
+    },
+    "native.paper-ink.105.diamond-edge-labels": {
+      "component_name": "菱形四边标注",
+      "icon_slot_count": 0,
+      "registered_placements": []
+    },
+    "native.paper-ink.media.reconstructed-image": {
+      "component_name": "已重构本地图片",
+      "icon_slot_count": 0,
+      "registered_placements": []
+    },
+    "native.paper-ink.semantic.comparison-matrix-wide": {
+      "component_name": "wide comparison matrix",
+      "icon_slot_count": 0,
+      "registered_placements": []
+    },
+    "native.paper-ink.semantic.constellation-network": {
+      "component_name": "constellation relationship network",
+      "icon_slot_count": 0,
+      "registered_placements": []
+    },
+    "native.paper-ink.semantic.credential-badge": {
+      "component_name": "compact credential badge",
+      "icon_slot_count": 0,
+      "registered_placements": []
+    },
+    "native.paper-ink.semantic.evidence-panel": {
+      "component_name": "evidence status panel",
+      "icon_slot_count": 1,
+      "registered_placements": [
+        {
+          "layout_id": "paper-ink.relationship.R6",
+          "display_code": "R6",
+          "slot_id": "governance",
+          "binding_key": "governance.icon.001"
+        }
+      ]
+    },
+    "native.paper-ink.semantic.hierarchy-levels": {
+      "component_name": "hierarchy levels",
+      "icon_slot_count": 0,
+      "registered_placements": []
+    },
+    "native.paper-ink.semantic.icon-grid": {
+      "component_name": "semantic icon grid",
+      "icon_slot_count": 0,
+      "registered_placements": []
+    },
+    "native.paper-ink.semantic.metric-band": {
+      "component_name": "wide metric band",
+      "icon_slot_count": 2,
+      "registered_placements": [
+        {
+          "layout_id": "paper-ink.relationship.R2",
+          "display_code": "R2",
+          "slot_id": "execution",
+          "binding_key": "execution.icon.001"
+        },
+        {
+          "layout_id": "paper-ink.relationship.R6",
+          "display_code": "R6",
+          "slot_id": "evaluation",
+          "binding_key": "evaluation.icon.001"
+        }
+      ]
+    },
+    "native.paper-ink.semantic.particle-hero": {
+      "component_name": "particle metaphor comparison",
+      "icon_slot_count": 0,
+      "registered_placements": []
+    },
+    "native.paper-ink.semantic.process-strip": {
+      "component_name": "ordered process strip",
+      "icon_slot_count": 9,
+      "registered_placements": [
+        {
+          "layout_id": "paper-ink.relationship.Q3",
+          "display_code": "Q3",
+          "slot_id": "baseline",
+          "binding_key": "baseline.icon.001"
+        },
+        {
+          "layout_id": "paper-ink.relationship.Q3",
+          "display_code": "Q3",
+          "slot_id": "baseline",
+          "binding_key": "baseline.icon.002"
+        },
+        {
+          "layout_id": "paper-ink.relationship.Q3",
+          "display_code": "Q3",
+          "slot_id": "baseline",
+          "binding_key": "baseline.icon.003"
+        },
+        {
+          "layout_id": "paper-ink.relationship.Q3",
+          "display_code": "Q3",
+          "slot_id": "traced",
+          "binding_key": "traced.icon.001"
+        },
+        {
+          "layout_id": "paper-ink.relationship.Q3",
+          "display_code": "Q3",
+          "slot_id": "traced",
+          "binding_key": "traced.icon.002"
+        },
+        {
+          "layout_id": "paper-ink.relationship.Q3",
+          "display_code": "Q3",
+          "slot_id": "traced",
+          "binding_key": "traced.icon.003"
+        },
+        {
+          "layout_id": "paper-ink.relationship.Q3",
+          "display_code": "Q3",
+          "slot_id": "traced",
+          "binding_key": "traced.icon.004"
+        },
+        {
+          "layout_id": "paper-ink.relationship.R2",
+          "display_code": "R2",
+          "slot_id": "capability",
+          "binding_key": "capability.icon.001"
+        },
+        {
+          "layout_id": "paper-ink.relationship.R6",
+          "display_code": "R6",
+          "slot_id": "reasoning",
+          "binding_key": "reasoning.icon.001"
+        }
+      ]
+    },
+    "native.paper-ink.semantic.scenario-column": {
+      "component_name": "compact scenario column",
+      "icon_slot_count": 4,
+      "registered_placements": [
+        {
+          "layout_id": "paper-ink.relationship.R1",
+          "display_code": "R1",
+          "slot_id": "pillar-a",
+          "binding_key": "pillar-a.icon.001"
+        },
+        {
+          "layout_id": "paper-ink.relationship.R1",
+          "display_code": "R1",
+          "slot_id": "pillar-b",
+          "binding_key": "pillar-b.icon.001"
+        },
+        {
+          "layout_id": "paper-ink.relationship.R1",
+          "display_code": "R1",
+          "slot_id": "pillar-c",
+          "binding_key": "pillar-c.icon.001"
+        },
+        {
+          "layout_id": "paper-ink.relationship.R1",
+          "display_code": "R1",
+          "slot_id": "pillar-d",
+          "binding_key": "pillar-d.icon.001"
+        }
+      ]
+    },
+    "native.paper-ink.semantic.statement-band": {
+      "component_name": "compact statement band",
+      "icon_slot_count": 2,
+      "registered_placements": [
+        {
+          "layout_id": "paper-ink.relationship.R2",
+          "display_code": "R2",
+          "slot_id": "strategy",
+          "binding_key": "strategy.icon.001"
+        },
+        {
+          "layout_id": "paper-ink.relationship.R6",
+          "display_code": "R6",
+          "slot_id": "input",
+          "binding_key": "input.icon.001"
+        }
+      ]
+    },
+    "native.paper-ink.semantic.weighted-arcs": {
+      "component_name": "weighted relationship arcs",
+      "icon_slot_count": 0,
+      "registered_placements": []
+    },
+    "atlas.062.form-card.horizontal": {
+      "component_name": "横版表单卡",
+      "icon_slot_count": 0,
+      "registered_placements": []
+    },
+    "native.paper-ink.112.credential-cell": {
+      "component_name": "十二证书墙",
+      "icon_slot_count": 0,
+      "registered_placements": []
+    },
+    "native.paper-ink.113.capability-pillar": {
+      "component_name": "能力柱·空心",
+      "icon_slot_count": 0,
+      "registered_placements": []
+    },
+    "native.paper-ink.120.scenario-column-knowledge": {
+      "component_name": "场景单列·企业知识库",
+      "icon_slot_count": 0,
+      "registered_placements": []
+    },
+    "native.paper-ink.121.scenario-column-code": {
+      "component_name": "场景单列·代码助手",
+      "icon_slot_count": 0,
+      "registered_placements": []
+    },
+    "native.paper-ink.127.capability-pillar-model": {
+      "component_name": "能力柱·填充",
+      "icon_slot_count": 0,
+      "registered_placements": []
+    }
+  }
+}

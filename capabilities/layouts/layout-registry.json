@@ -1,5 +1,5 @@
 {
-  "contract_version": 2,
+  "contract_version": 3,
   "registry_id": "wise-ppt.layouts",
   "generated_from": {
     "catalog_authority": {
@@ -8,11 +8,15 @@
     },
     "gallery_manifest": {
       "path": "capabilities/layouts/gallery-manifest.json",
-      "sha256": "fdccfe0057dc2b2fc9dd6538b783f6d2579f1ce86d962d2f3ce261c3de1c47f5"
+      "sha256": "4c413a617a85874a67b087097ece1e85e30a3220df09b3fdcc633a06db992ce7"
     },
     "nonrelation_contracts": {
       "path": "capabilities/layouts/nonrelation-template-contracts.json",
       "sha256": "263a7110551e39d0535725afbdc463d5895f524d6441e91eb3ab839cf974c1d8"
+    },
+    "component_routing": {
+      "path": "capabilities/components/routing-manifest.json",
+      "sha256": "83a35cbd0582840517490332bc1b031d7d032572b444d8f9af67737793b24e51"
     },
     "seeds": {
       "path": "capabilities/layouts/seeds",
@@ -3314,8 +3318,7 @@
             "component_id": "native.paper-ink.evidence.admin-ui.product-ui"
           },
           "recommended_component_ids": [
-            "native.paper-ink.069.admin-console",
-            "native.paper-ink.070.trace-tree"
+            "native.paper-ink.069.admin-console"
           ],
           "space_contract": {
             "canvas_width": 1920,
@@ -3971,7 +3974,6 @@
             "component_id": "native.paper-ink.evidence.mobile-screen-gallery.screens"
           },
           "recommended_component_ids": [
-            "native.paper-ink.114.mobile-screen",
             "native.paper-ink.068.mobile-gallery"
           ],
           "space_contract": {
@@ -19722,9 +19724,7 @@
             "component_source": "native",
             "component_id": "native.paper-ink.matrix.stage-dimension.framework"
           },
-          "recommended_component_ids": [
-            "atlas.023.matrix"
-          ],
+          "recommended_component_ids": [],
           "space_contract": {
             "canvas_width": 1920,
             "canvas_height": 1080,

@@ -11,8 +11,8 @@ import {
 import path from "node:path";
 import { setTimeout as sleep } from "node:timers/promises";
 import { fileURLToPath } from "node:url";
-const DELIVERY_FORMAT = "wise-ppt-delivery@2";
-const DECK_CONTRACT_VERSION = "5";
+const DELIVERY_FORMAT = "wise-ppt-delivery@3";
+const DECK_CONTRACT_VERSION = "6";
 const GEOMETRY_TOLERANCE_PX = 1;
 const RASTER_RMSE_THRESHOLD_PCT = 2.5;
 const RASTER_CAPTURE_SCALE = 0.25;
@@ -31,12 +31,12 @@ const REQUIRED_ROOT_FILES = [
 const REQUIRED_TREES = ["assets", "runtime"];
 const JSON_ROOT_FILES = REQUIRED_ROOT_FILES.filter((name) => name.endsWith(".json"));
 const ROOT_CONTRACTS = Object.freeze({
-  "deck-spec.json": "wise-ppt-deck@5",
-  "deck-plan.json": "wise-ppt-deck-plan@3",
+  "deck-spec.json": "wise-ppt-deck@6",
+  "deck-plan.json": "wise-ppt-deck-plan@4",
   "source-ledger.json": "wise-ppt-source-ledger@4",
   "component-receipts.json": "wise-ppt-component-receipts@3",
   "geometry-contracts.json": "wise-ppt-geometry-contracts@3",
-  "build-manifest.json": "wise-ppt-build@3"
+  "build-manifest.json": "wise-ppt-build@4"
 });
 function fail(message) {
   throw new Error(message);
@@ -604,7 +604,7 @@ function variantUrl(baseUrl, { accent, print }) {
   url.searchParams.delete("selftest");
   if (print) url.searchParams.set("print", "1");
   else url.searchParams.set("board", "0");
-  if (accent) url.searchParams.set("accent", "1");
+  url.searchParams.set("accent", accent ? "1" : "0");
   url.hash = "";
   return url.href;
 }
@@ -779,6 +779,13 @@ async function exportDeck({ deckDir, url, port, pdfPath, manifestPath }) {
     const normalParity = compareRenderStates(normalScreen.state, normalPrint.state);
     const normalRasterParity = await compareRasterStates(cdp, normalScreenRasters, normalPrint.state, "normal");
     normalScreenRasters.length = 0;
+    const accentScreen = await openScreenVariant(cdp, url, true, diskMetadata, selfTestContext);
+    const accentScreenRasters = await captureScreenRasters(cdp, accentScreen.state);
+    const accentPrint = await switchToPrintVariant(cdp, url, true, diskMetadata);
+    const accentParity = compareRenderStates(accentScreen.state, accentPrint.state);
+    const accentRasterParity = await compareRasterStates(cdp, accentScreenRasters, accentPrint.state, "accent");
+    accentScreenRasters.length = 0;
+    const rasterParity = rasterParityEvidence(normalRasterParity, accentRasterParity);
     const printed = await cdp.send("Page.printToPDF", {
       displayHeaderFooter: false,
       printBackground: true,
@@ -790,13 +797,6 @@ async function exportDeck({ deckDir, url, port, pdfPath, manifestPath }) {
     if (pdfBytes.subarray(0, 5).toString() !== "%PDF-") fail("Page.printToPDF \u8FD4\u56DE\u65E0\u6548 PDF");
     await mkdir(path.dirname(pdfPath), { recursive: true });
     await writeFile(pdfPath, pdfBytes);
-    const accentScreen = await openScreenVariant(cdp, url, true, diskMetadata, selfTestContext);
-    const accentScreenRasters = await captureScreenRasters(cdp, accentScreen.state);
-    const accentPrint = await switchToPrintVariant(cdp, url, true, diskMetadata);
-    const accentParity = compareRenderStates(accentScreen.state, accentPrint.state);
-    const accentRasterParity = await compareRasterStates(cdp, accentScreenRasters, accentPrint.state, "accent");
-    accentScreenRasters.length = 0;
-    const rasterParity = rasterParityEvidence(normalRasterParity, accentRasterParity);
     const pageCount = await pdfPageCount(pdfPath);
     if (pageCount !== normalScreen.state.slide_count) {
       fail(`PDF \u9875\u6570 ${pageCount} \u4E0E slide \u6570 ${normalScreen.state.slide_count} \u4E0D\u4E00\u81F4`);
@@ -842,6 +842,7 @@ async function exportDeck({ deckDir, url, port, pdfPath, manifestPath }) {
       },
       render_contract: {
         browser_session: "single-cdp-page",
+        pdf_variant: "accent_print",
         runtime_selftest: {
           normal_screen: normalScreen.selftest,
           accent_screen: accentScreen.selftest
