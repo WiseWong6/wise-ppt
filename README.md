@@ -165,13 +165,13 @@
 
 ## 快速开始
 
-一句话 + 你的资料（PDF / 链接 / 口语稿 / 成型 PPT），一站式生成 deck：
+一句话 + 你的资料（PDF / 链接 / 口语稿 / 成型 PPT），一站式生成 PPT：
 
 ```text
 /wise-ppt 把这份 PDF 做成 10 页路演 deck，输出到 /absolute/path/decks/
 ```
 
-建议先让 Agent 进入 plan 模式，确认页面规划（thesis / 页数 / 每页主张句）后再执行。生产流程只认 [SKILL.md](SKILL.md)。
+建议先让 Agent 进入 plan 模式。
 
 ## 关于作者
 
