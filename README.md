@@ -161,8 +161,6 @@
 帮我安装这个 skill：https://github.com/WiseWong6/wise-ppt
 ```
 
-Codex 默认目录更新：`git -C ~/.codex/skills/wise-ppt pull --ff-only`。其他 Agent 的目录、手动安装和故障处理见 [用户指南](USER-GUIDE.md)。
-
 ## 快速开始
 
 一句话 + 你的资料（PDF / 链接 / 口语稿 / 成型 PPT），一站式生成 PPT：
