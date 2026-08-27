@@ -215,7 +215,7 @@
   }
 
   function presetDefaultTypography() {
-    return getComputedStyle(root).getPropertyValue('--wp-theme-default-typography-mode').trim() || 'all-sans';
+    return getComputedStyle(root).getPropertyValue('--wp-theme-default-typography-mode').trim() || 'mixed';
   }
 
   function typographyLargeEmphasisMinimum() {
@@ -229,7 +229,7 @@
   }
 
   function serifTitlesActive() {
-    var mode = (root.dataset.typographyMode || 'all-sans').trim();
+    var mode = (root.dataset.typographyMode || 'mixed').trim();
     return mode === 'mixed' || mode === 'all-serif';
   }
 

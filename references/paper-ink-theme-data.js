@@ -14,11 +14,11 @@
       {
         "preset_id": "paper-ink-original",
         "name": "纸墨",
-        "description": "原始纸墨色彩、克制线稿表现与思源黑体缺省档。",
+        "description": "原始纸墨色彩、克制线稿表现与混合字体缺省档。",
         "color_scheme_id": "paper-ink-original",
         "surface_profile_id": "paper-ink-native",
         "treatment_id": "ink-neutral",
-        "default_typography_mode": "all-sans"
+        "default_typography_mode": "mixed"
       },
       {
         "preset_id": "scheme-k-hermes",
@@ -338,7 +338,7 @@
     {
       "preset_id": "paper-ink-original",
       "name": "纸墨",
-      "description": "原始纸墨色彩、克制线稿表现与思源黑体缺省档。",
+      "description": "原始纸墨色彩、克制线稿表现与混合字体缺省档。",
       "color_scheme_id": "paper-ink-original",
       "surface_profile_id": "paper-ink-native",
       "treatment_id": "ink-neutral",
@@ -372,7 +372,7 @@
         "ink-60": "rgba(25, 25, 23, .6)",
         "ink-30": "rgba(25, 25, 23, .3)"
       },
-      "default_typography_mode": "all-sans",
+      "default_typography_mode": "mixed",
       "surface_profile": {
         "surface_profile_id": "paper-ink-native",
         "name": "原始纸墨纸面",
@@ -691,7 +691,7 @@
     "contract_version": 2,
     "deck_attribute": "data-typography-mode",
     "preview_query": "typography",
-    "default_mode_id": "all-sans",
+    "default_mode_id": "mixed",
     "fixed_families": {
       "mono": "Courier Prime",
       "brush": "LXGW WenKai"
@@ -700,7 +700,7 @@
       {
         "mode_id": "all-sans",
         "name": "思源黑体",
-        "description": "全部中文使用思源黑体 Light；原始纸墨的代表字体，也是字体轴的缺省档。标题与正文不靠字重区分，只靠字号建立层级；mono 与 brush 不随模式变化。",
+        "description": "全部中文使用思源黑体 Light；标题与正文不靠字重区分，只靠字号建立层级；mono 与 brush 不随模式变化。",
         "title_weight": 300,
         "weight_steps": {
           "regular": 300,
@@ -726,7 +726,7 @@
       {
         "mode_id": "mixed",
         "name": "混合",
-        "description": "标题档与不小于 24px 的强调文字使用思源宋体 Bold；正文、小字、图表标签与数字指标中的思源黑体统一使用原始纸墨同款 Light 300，代码保持等宽。",
+        "description": "标题档与不小于 24px 的强调文字使用思源宋体 Bold；正文、小字、图表标签与数字指标中的思源黑体统一使用原始纸墨同款 Light 300，代码保持等宽；这是当前缺省字体档。",
         "title_weight": 700,
         "weight_steps": {
           "regular": 300,
