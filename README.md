@@ -2,18 +2,17 @@
 
 <p align="center">
   <a href="LICENSE"><img src="https://img.shields.io/github/license/WiseWong6/wise-ppt?style=for-the-badge" alt="AGPL-3.0 License"></a>
-  <a href="themes/paper-ink/assets/design-tokens.css"><img src="https://img.shields.io/badge/Theme-paper--ink-191917?style=for-the-badge" alt="Theme paper-ink"></a>
+  <a href="references/themes.md"><img src="https://img.shields.io/badge/Themes-纸墨%20·%20爱马仕橙%20·%20克莱因蓝-191917?style=for-the-badge" alt="Themes：纸墨 · 爱马仕橙 · 克莱因蓝"></a>
   <a href="https://github.com/WiseWong6/wise-skills"><img src="https://img.shields.io/badge/More-Wise%20Skills-173F5F?style=for-the-badge" alt="Wise Skills"></a>
 </p>
 
 <p align="center">
   <a href="#效果预览">效果预览</a> ·
   <a href="#资产目录">资产目录</a> ·
-  <a href="#快速开始">快速开始</a> ·
-  <a href="references/catalog.html">本地资产图册</a>
+  <a href="#快速开始">快速开始</a>
 </p>
 
-这个 Skill 可以把 PDF、链接、口语稿或现有 PPT，整理成一份 16:9 纸墨风格演示稿，也可以用于视觉优化和内容重组。
+这个 Skill 可以把 PDF、链接、口语稿或现有 PPT，整理成一份 16:9 的 HTML PPT，也可以用于视觉优化和内容重组。
 
 在过去，AI 做 PPT 非常喜欢排布格子，格子里面几乎都是 icon 和文案，信息密度极低，配色也很一般。
 
@@ -136,23 +135,23 @@
   </tr>
 </table>
 
-## 运行要求
+### 三套主题配色
+
+同一版式（K2 · 痛点→解法→成效）在三套登记主题下的效果；换主题只换配色与字体气质，不动版式：
+
+<table>
+  <tr>
+    <td width="33.33%" valign="top"><a href="references/catalog-thumbnails/page-gallery-paper-ink-ai-frames-layout-k2.webp"><img src="references/catalog-thumbnails/page-gallery-paper-ink-ai-frames-layout-k2.webp" alt="纸墨主题下的 K2 痛点→解法→成效页" width="100%"></a><sub><b>纸墨</b> · 默认；冷灰纸底、克制红色焦点，适合研究、分析、内部分享</sub></td>
+    <td width="33.33%" valign="top"><a href="references/catalog-thumbnails/palettes/scheme-k-hermes/page-gallery-paper-ink-ai-frames-layout-k2.webp"><img src="references/catalog-thumbnails/palettes/scheme-k-hermes/page-gallery-paper-ink-ai-frames-layout-k2.webp" alt="爱马仕橙主题下的 K2 痛点→解法→成效页" width="100%"></a><sub><b>爱马仕橙</b> · 正白纸、暖橙焦点，适合品牌、商业、编辑感内容</sub></td>
+    <td width="33.33%" valign="top"><a href="references/catalog-thumbnails/palettes/scheme-l-klein/page-gallery-paper-ink-ai-frames-layout-k2.webp"><img src="references/catalog-thumbnails/palettes/scheme-l-klein/page-gallery-paper-ink-ai-frames-layout-k2.webp" alt="克莱因蓝主题下的 K2 痛点→解法→成效页" width="100%"></a><sub><b>克莱因蓝</b> · 正白纸、克莱因蓝焦点，适合科技、产品、发布表达</sub></td>
+  </tr>
+</table>
+
+## 推荐模型
 
 - 建议环境：Codex、ZCode、Kimi CLI、Claude Code；
-- 适配模型：GPT 5.6 Sol High 及以上、GLM 5.3、Kimi K3、Qwen 3.8max
-- Python 3.12；生产入口要求 `beautifulsoup4==4.14.3` 与 `lxml==5.4.0`，详见 `requirements.txt`；
-- 维护和测试另需 `requirements-dev.txt` 中固定的 PyYAML、Pillow 与 Playwright；
-- Node.js（浏览器门禁与 PDF 导出）；
-- Chrome/Chromium（浏览器检查与无头 PDF 导出）；
-- 所需字体未安装时，按下面脚本下载到主题资产目录。
-
-```bash
-python3.12 -m pip install -r requirements.txt
-python3.12 -m pip install -r requirements-dev.txt  # 仅维护和测试
-python3.12 scripts/ensure_fonts.py
-```
-
-生产命令统一使用 `scripts/wise-ppt`；入口会从 `WISE_PPT_PYTHON` 或 PATH 选择满足上述合同的解释器，不会自动安装依赖。
+- 适配模型：GLM-5.3 Flash、Qwen3.8-Flash或同级别及以上模型；
+- 创造力推荐：GPT 5.6 Sol High 及以上、GLM 5.3、Kimi K3、Qwen 3.8max。
 
 ## 安装
 
