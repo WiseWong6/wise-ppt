@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-runtime="wise-ppt-specimen" data-typography-mode="all-sans" data-page-id="gallery-ai-p2" data-page-role="explain" data-theme="paper-ink" data-layout="paper-ink.mapping.diamond-edge-labels" data-layout-source="gallery" data-sample-focus-profile="none" data-sample-focus-members='[]'>
+<head>
+<meta charset="UTF-8">
+<title>layout-p2 · 菱形四边标注 · RAG 四组证据对</title>
+<script src="../../../../runtime/stage-fit.js"></script>
+<link rel="stylesheet" href="../../../../themes/paper-ink/assets/design-tokens.css">
+<link rel="stylesheet" href="../../../../themes/paper-ink/assets/catalog-fonts.css" data-wise-catalog-fonts="true">
+<link rel="stylesheet" href="../../../../themes/paper-ink/assets/slide-components.css">
+<link rel="stylesheet" href="../../../shell.css">
+<style>
+  svg.scene { position: absolute; inset: 0; z-index: 1; }
+  .caption {
+    position: absolute; left: 0; right: 0; bottom: 118px;
+    text-align: center;
+    font-family: var(--sans); font-weight: 400;
+    font-size: var(--type-caption); letter-spacing: .04em;
+    color: var(--ink);
+    z-index: 5;
+  }
+</style>
+</head>
+<body class="slide">
+<div class="stage" data-block-id="gallery-primary" data-renderer-kind="svg" data-component-source="native" data-component-id="native.paper-ink.mapping.diamond-edge-labels.diamond-map" data-content-ref="example.p2">
+  <div class="doc tl">PPT 标题<br>页面标题</div>
+  <div class="folio">页码 / 总页数 — BY @歪斯Wise</div>
+
+  <svg class="scene" width="1920" height="1080" viewBox="0 0 1920 1080">
+    <g id="draw"></g>
+  </svg>
+
+  <div class="caption">检索结果不仅要相似，还要把真正相关的内容排在前面。</div>
+</div>
+
+<script>
+var NS = 'http://www.w3.org/2000/svg';
+var INK = 'var(--ink)';
+var G = document.getElementById('draw');
+function el(tag, attrs) {
+  var e = document.createElementNS(NS, tag);
+  for (var k in attrs) e.setAttribute(k, attrs[k]);
+  G.appendChild(e); return e;
+}
+function txt(x, y, str, attrs) {
+  var t = el('text', Object.assign({x:x, y:y}, attrs||{}));
+  t.textContent = str; return t;
+}
+var MONO = 'var(--mono)', SANS = 'var(--sans)';
+
+G = el('g', {transform:'translate(0 -22)'});
+
+/* ===== 四节点菱形布局 ===== */
+var NW = 300, NH = 92;
+var nodes = {
+  input:    {cx:480,  cy:520, en:'USER INPUT',          cn:'用户问题'},
+  contexts: {cx:960,  cy:300, en:'RETRIEVED CONTEXTS',  cn:'检索上下文'},
+  response: {cx:1440, cy:520, en:'RESPONSE',            cn:'模型回答'},
+  reference:{cx:960,  cy:740, en:'REFERENCE',           cn:'参考答案'}
+};
+function nodeRect(n){
+  return {x:n.cx - NW/2, y:n.cy - NH/2};
+}
+function edge(n, side){
+  if (side === 'l') return {x:n.cx - NW/2, y:n.cy};
+  if (side === 'r') return {x:n.cx + NW/2, y:n.cy};
+  if (side === 't') return {x:n.cx, y:n.cy - NH/2};
+  return {x:n.cx, y:n.cy + NH/2};
+}
+function line(a, b){
+  el('line', {x1:a.x, y1:a.y, x2:b.x, y2:b.y, stroke:INK, 'stroke-width':.9, opacity:.5});
+}
+function dot(p){ el('circle', {cx:p.x, cy:p.y, r:2.4, fill:INK, opacity:.7}); }
+
+/* --- 边：先画线，节点框后画压在线头上 --- */
+/* INPUT·REFERENCE ↔ CONTEXTS：Context Recall / Precision */
+line(edge(nodes.input, 't'), edge(nodes.contexts, 'l'));
+line(edge(nodes.input, 'b'), edge(nodes.reference, 'l'));   /* 补齐菱形左下边 */
+line(edge(nodes.reference, 't'), {x:960, y:394});           /* 竖边让位 mono 小注 */
+/* CONTEXTS ↔ RESPONSE：Faithfulness */
+line(edge(nodes.contexts, 'r'), edge(nodes.response, 't'));
+/* REFERENCE ↔ RESPONSE：Factual Correctness */
+line(edge(nodes.reference, 'r'), edge(nodes.response, 'b'));
+/* INPUT ↔ RESPONSE：Response Relevancy（中点让位竖边） */
+line(edge(nodes.input, 'r'), {x:948, y:520});
+line({x:972, y:520}, edge(nodes.response, 'l'));
+
+/* --- 指标标签（引线小字：mono EN + 中文注） --- */
+function label(x, y, en, cn, anchor){
+  txt(x, y, en, {'font-family':MONO, 'font-size':'var(--type-meta)', 'letter-spacing':1.5, 'text-anchor':anchor, fill:INK});
+  txt(x, y + 24, cn, {'font-family':SANS, 'font-weight':400, 'font-size':'var(--type-label)', 'text-anchor':anchor, fill:'var(--wp-adapter-pi-ink-60)'});
+}
+function mid(a, b){ return {x:(a.x+b.x)/2, y:(a.y+b.y)/2}; }
+
+/* Context Recall / Precision：挂在 INPUT↔CONTEXTS 边外侧，虚线引到竖边 */
+var m1 = mid(edge(nodes.input, 't'), edge(nodes.contexts, 'l'));
+label(m1.x - 40, m1.y - 32, 'CONTEXT RECALL / PRECISION', '检索覆盖', 'end');
+el('path', {d:'M ' + (m1.x - 8) + ' ' + (m1.y - 24) + ' L 946 402', stroke:INK, 'stroke-width':.6, opacity:.4, 'stroke-dasharray':'2 4', fill:'none'});
+el('circle', {cx:950, cy:404, r:2, fill:INK, opacity:.5});
+dot(m1);
+/* Faithfulness */
+var m2 = mid(edge(nodes.contexts, 'r'), edge(nodes.response, 't'));
+label(m2.x + 40, m2.y - 32, 'FAITHFULNESS', '忠实度', 'start');
+dot(m2);
+/* Response Relevancy：横边左半下方 */
+label(720, 552, 'RESPONSE RELEVANCY', '回答相关', 'middle');
+dot({x:720, y:520});
+/* Factual Correctness */
+var m4 = mid(edge(nodes.reference, 'r'), edge(nodes.response, 'b'));
+label(m4.x + 40, m4.y + 34, 'FACTUAL CORRECTNESS', '事实正确', 'start');
+dot(m4);
+
+/* --- 节点双线框 --- */
+Object.keys(nodes).forEach(function(k){
+  var n = nodes[k], r = nodeRect(n);
+  el('rect', {x:r.x, y:r.y, width:NW, height:NH, fill:'var(--paper)', stroke:'none'});
+  el('rect', {x:r.x, y:r.y, width:NW, height:NH, fill:'none', stroke:'var(--ink-80)', 'stroke-width':1.3});
+  el('rect', {x:r.x+5, y:r.y+5, width:NW-10, height:NH-10, fill:'none', stroke:INK, 'stroke-width':.6, opacity:.35});
+  txt(n.cx, n.cy - 4, n.en, {'font-family':MONO, 'font-size':'var(--type-label)', 'letter-spacing':2, 'text-anchor':'middle', fill:INK});
+  txt(n.cx, n.cy + 28, n.cn, {'font-family':SANS, 'font-weight':400, 'font-size':'var(--type-subheading)', 'text-anchor':'middle', fill:'var(--ink)'});
+});
+
+/* RETRIEVED CONTEXTS 节点下方 mono 小注 */
+txt(960, 376, 'RECALL@K · PRECISION@K · MRR · NDCG@K', {id:'sample-focus', 'font-family':MONO, 'font-size':'var(--type-meta)', 'letter-spacing':2, 'text-anchor':'middle', fill:'var(--ink-45)'});
+
+stageFit();
+</script>
+</body>
+</html>

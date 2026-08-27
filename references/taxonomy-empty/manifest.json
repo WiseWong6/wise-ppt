@@ -1,0 +1,1178 @@
+[
+  {
+    "file": "empty-a1.html",
+    "code": "A1",
+    "topology": "topology.leaf",
+    "sources": [
+      "A1",
+      "A2",
+      "A8",
+      "B1",
+      "B2",
+      "B3",
+      "B4",
+      "B5",
+      "B6",
+      "C6",
+      "C7",
+      "G1",
+      "G2",
+      "G4",
+      "H1",
+      "H2",
+      "H3",
+      "H4",
+      "I1",
+      "I2",
+      "J1",
+      "J2",
+      "J3",
+      "K1",
+      "L1",
+      "L2",
+      "N1"
+    ],
+    "structure": {
+      "type": "slot",
+      "slot_id": "a1.slot-1",
+      "content_group": "独立内容组"
+    },
+    "summary": "单区",
+    "leaf_count": 1
+  },
+  {
+    "file": "empty-a3.html",
+    "code": "A3",
+    "topology": "topology.split-y-2.dominant-end",
+    "sources": [
+      "A3",
+      "C5"
+    ],
+    "structure": {
+      "type": "split",
+      "axis": "y",
+      "weights": [
+        1,
+        2
+      ],
+      "gap": 20,
+      "children": [
+        {
+          "type": "slot",
+          "slot_id": "a3.slot-1",
+          "content_group": "主辅内容组 1"
+        },
+        {
+          "type": "slot",
+          "slot_id": "a3.slot-2",
+          "content_group": "主辅内容组 2"
+        }
+      ]
+    },
+    "summary": "上下1:2",
+    "leaf_count": 2
+  },
+  {
+    "file": "empty-a4.html",
+    "code": "A4",
+    "topology": "topology.split-x-2.dominant-end",
+    "sources": [
+      "A4",
+      "A6"
+    ],
+    "structure": {
+      "type": "split",
+      "axis": "x",
+      "weights": [
+        1,
+        2
+      ],
+      "gap": 38,
+      "children": [
+        {
+          "type": "slot",
+          "slot_id": "a4.slot-1",
+          "content_group": "主辅内容组 1"
+        },
+        {
+          "type": "slot",
+          "slot_id": "a4.slot-2",
+          "content_group": "主辅内容组 2"
+        }
+      ]
+    },
+    "summary": "左右1:2",
+    "leaf_count": 2
+  },
+  {
+    "file": "empty-a5.html",
+    "code": "A5",
+    "topology": "topology.split-x-3.equal",
+    "sources": [
+      "A5",
+      "C3",
+      "F3",
+      "K2",
+      "K4"
+    ],
+    "structure": {
+      "type": "split",
+      "axis": "x",
+      "weights": [
+        1,
+        1,
+        1
+      ],
+      "gap": 38,
+      "children": [
+        {
+          "type": "slot",
+          "slot_id": "a5.slot-1",
+          "content_group": "并列内容组 1"
+        },
+        {
+          "type": "slot",
+          "slot_id": "a5.slot-2",
+          "content_group": "并列内容组 2"
+        },
+        {
+          "type": "slot",
+          "slot_id": "a5.slot-3",
+          "content_group": "并列内容组 3"
+        }
+      ]
+    },
+    "summary": "左右3等分",
+    "leaf_count": 3
+  },
+  {
+    "file": "empty-c1.html",
+    "code": "C1",
+    "topology": "topology.split-x-2.equal",
+    "sources": [
+      "C1",
+      "F2"
+    ],
+    "structure": {
+      "type": "split",
+      "axis": "x",
+      "weights": [
+        29,
+        21
+      ],
+      "gap": 38,
+      "children": [
+        {
+          "type": "slot",
+          "slot_id": "c1.slot-1",
+          "content_group": "主辅内容组 1"
+        },
+        {
+          "type": "slot",
+          "slot_id": "c1.slot-2",
+          "content_group": "主辅内容组 2"
+        }
+      ]
+    },
+    "summary": "左右29:21",
+    "leaf_count": 2
+  },
+  {
+    "file": "empty-c2.html",
+    "code": "C2",
+    "topology": "topology.recursive-y-equal-then-x",
+    "sources": [
+      "C2"
+    ],
+    "structure": {
+      "type": "split",
+      "axis": "y",
+      "weights": [
+        1,
+        1
+      ],
+      "gap": 20,
+      "children": [
+        {
+          "type": "slot",
+          "slot_id": "c2.slot-1",
+          "content_group": "上部总览"
+        },
+        {
+          "type": "split",
+          "axis": "x",
+          "weights": [
+            1,
+            1
+          ],
+          "gap": 38,
+          "children": [
+            {
+              "type": "slot",
+              "slot_id": "c2.slot-2",
+              "content_group": "下部左图"
+            },
+            {
+              "type": "slot",
+              "slot_id": "c2.slot-3",
+              "content_group": "下部右图"
+            }
+          ]
+        }
+      ]
+    },
+    "summary": "上下2等分 / 下·左右2等分",
+    "leaf_count": 3
+  },
+  {
+    "file": "empty-c4.html",
+    "code": "C4",
+    "topology": "topology.split-x-2.dominant-start",
+    "sources": [
+      "C4",
+      "O1"
+    ],
+    "structure": {
+      "type": "split",
+      "axis": "x",
+      "weights": [
+        2,
+        1
+      ],
+      "gap": 38,
+      "children": [
+        {
+          "type": "slot",
+          "slot_id": "c4.slot-1",
+          "content_group": "主辅内容组 1"
+        },
+        {
+          "type": "slot",
+          "slot_id": "c4.slot-2",
+          "content_group": "主辅内容组 2"
+        }
+      ]
+    },
+    "summary": "左右2:1",
+    "leaf_count": 2
+  },
+  {
+    "file": "empty-e4.html",
+    "code": "E4",
+    "topology": "topology.split-y-2.dominant-start",
+    "sources": [
+      "E4",
+      "P1"
+    ],
+    "structure": {
+      "type": "split",
+      "axis": "y",
+      "weights": [
+        2,
+        1
+      ],
+      "gap": 20,
+      "children": [
+        {
+          "type": "slot",
+          "slot_id": "e4.slot-1",
+          "content_group": "主辅内容组 1"
+        },
+        {
+          "type": "slot",
+          "slot_id": "e4.slot-2",
+          "content_group": "主辅内容组 2"
+        }
+      ]
+    },
+    "summary": "上下2:1",
+    "leaf_count": 2
+  },
+  {
+    "file": "empty-e5.html",
+    "code": "E5",
+    "topology": "topology.split-x-2.equal",
+    "sources": [
+      "E1",
+      "E2",
+      "E5",
+      "Q2"
+    ],
+    "structure": {
+      "type": "split",
+      "axis": "x",
+      "weights": [
+        1,
+        1
+      ],
+      "gap": 38,
+      "children": [
+        {
+          "type": "slot",
+          "slot_id": "e5.slot-1",
+          "content_group": "并列内容组 1"
+        },
+        {
+          "type": "slot",
+          "slot_id": "e5.slot-2",
+          "content_group": "并列内容组 2"
+        }
+      ]
+    },
+    "summary": "左右2等分",
+    "leaf_count": 2
+  },
+  {
+    "file": "empty-k3.html",
+    "code": "K3",
+    "topology": "topology.split-x-y3@1",
+    "sources": [
+      "K3"
+    ],
+    "structure": {
+      "type": "split",
+      "axis": "x",
+      "weights": [
+        1,
+        2
+      ],
+      "gap": 38,
+      "children": [
+        {
+          "type": "slot",
+          "slot_id": "k3.slot-1",
+          "content_group": "问题侧"
+        },
+        {
+          "type": "split",
+          "axis": "y",
+          "weights": [
+            2,
+            1,
+            1
+          ],
+          "gap": 20,
+          "children": [
+            {
+              "type": "slot",
+              "slot_id": "k3.slot-2",
+              "content_group": "解法流程"
+            },
+            {
+              "type": "slot",
+              "slot_id": "k3.slot-3",
+              "content_group": "证据带"
+            },
+            {
+              "type": "slot",
+              "slot_id": "k3.slot-4",
+              "content_group": "结果带"
+            }
+          ]
+        }
+      ]
+    },
+    "summary": "左右1:2 / 右·上下2:1:1",
+    "leaf_count": 4
+  },
+  {
+    "file": "synth-heq2-right-veq2.html",
+    "code": "右2",
+    "topology": "topology.recursive-x-equal-then-y-right",
+    "sources": [
+      "S2"
+    ],
+    "structure": {
+      "type": "split",
+      "axis": "x",
+      "weights": [
+        1,
+        1
+      ],
+      "gap": 38,
+      "children": [
+        {
+          "type": "slot",
+          "slot_id": "s2.slot-1",
+          "content_group": "整体"
+        },
+        {
+          "type": "split",
+          "axis": "y",
+          "weights": [
+            1,
+            1
+          ],
+          "gap": 20,
+          "children": [
+            {
+              "type": "slot",
+              "slot_id": "s2.slot-2",
+              "content_group": "上证据"
+            },
+            {
+              "type": "slot",
+              "slot_id": "s2.slot-3",
+              "content_group": "下证据"
+            }
+          ]
+        }
+      ]
+    },
+    "summary": "左右2等分 / 右·上下2等分",
+    "leaf_count": 3
+  },
+  {
+    "file": "synth-grid-2x2.html",
+    "code": "2×2",
+    "topology": "topology.grid-2x2",
+    "sources": [
+      "Q4"
+    ],
+    "structure": {
+      "type": "split",
+      "axis": "x",
+      "weights": [
+        1,
+        1
+      ],
+      "gap": 0,
+      "children": [
+        {
+          "type": "split",
+          "axis": "y",
+          "weights": [
+            1,
+            1
+          ],
+          "gap": 0,
+          "children": [
+            {
+              "type": "slot",
+              "slot_id": "2×2.slot-1",
+              "content_group": "等价格子 1"
+            },
+            {
+              "type": "slot",
+              "slot_id": "2×2.slot-3",
+              "content_group": "等价格子 3"
+            }
+          ]
+        },
+        {
+          "type": "split",
+          "axis": "y",
+          "weights": [
+            1,
+            1
+          ],
+          "gap": 0,
+          "children": [
+            {
+              "type": "slot",
+              "slot_id": "2×2.slot-2",
+              "content_group": "等价格子 2"
+            },
+            {
+              "type": "slot",
+              "slot_id": "2×2.slot-4",
+              "content_group": "等价格子 4"
+            }
+          ]
+        }
+      ]
+    },
+    "summary": "网格2×2",
+    "leaf_count": 4
+  },
+  {
+    "file": "synth-grid-2x3.html",
+    "code": "2×3",
+    "topology": "topology.grid-2x3",
+    "sources": [
+      "R3"
+    ],
+    "structure": {
+      "type": "split",
+      "axis": "x",
+      "weights": [
+        1,
+        1,
+        1
+      ],
+      "gap": 0,
+      "children": [
+        {
+          "type": "split",
+          "axis": "y",
+          "weights": [
+            1,
+            1
+          ],
+          "gap": 0,
+          "children": [
+            {
+              "type": "slot",
+              "slot_id": "2×3.slot-1",
+              "content_group": "等价格子 1"
+            },
+            {
+              "type": "slot",
+              "slot_id": "2×3.slot-4",
+              "content_group": "等价格子 4"
+            }
+          ]
+        },
+        {
+          "type": "split",
+          "axis": "y",
+          "weights": [
+            1,
+            1
+          ],
+          "gap": 0,
+          "children": [
+            {
+              "type": "slot",
+              "slot_id": "2×3.slot-2",
+              "content_group": "等价格子 2"
+            },
+            {
+              "type": "slot",
+              "slot_id": "2×3.slot-5",
+              "content_group": "等价格子 5"
+            }
+          ]
+        },
+        {
+          "type": "split",
+          "axis": "y",
+          "weights": [
+            1,
+            1
+          ],
+          "gap": 0,
+          "children": [
+            {
+              "type": "slot",
+              "slot_id": "2×3.slot-3",
+              "content_group": "等价格子 3"
+            },
+            {
+              "type": "slot",
+              "slot_id": "2×3.slot-6",
+              "content_group": "等价格子 6"
+            }
+          ]
+        }
+      ]
+    },
+    "summary": "网格2×3",
+    "leaf_count": 6
+  },
+  {
+    "file": "synth-grid-4x7.html",
+    "code": "4×7",
+    "topology": "topology.grid-4x7",
+    "sources": [
+      "R7"
+    ],
+    "structure": {
+      "type": "split",
+      "axis": "x",
+      "weights": [
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "gap": 0,
+      "children": [
+        {
+          "type": "split",
+          "axis": "y",
+          "weights": [
+            1,
+            1,
+            1,
+            1
+          ],
+          "gap": 0,
+          "children": [
+            {
+              "type": "slot",
+              "slot_id": "4×7.slot-1",
+              "content_group": "等价格子 1"
+            },
+            {
+              "type": "slot",
+              "slot_id": "4×7.slot-8",
+              "content_group": "等价格子 8"
+            },
+            {
+              "type": "slot",
+              "slot_id": "4×7.slot-15",
+              "content_group": "等价格子 15"
+            },
+            {
+              "type": "slot",
+              "slot_id": "4×7.slot-22",
+              "content_group": "等价格子 22"
+            }
+          ]
+        },
+        {
+          "type": "split",
+          "axis": "y",
+          "weights": [
+            1,
+            1,
+            1,
+            1
+          ],
+          "gap": 0,
+          "children": [
+            {
+              "type": "slot",
+              "slot_id": "4×7.slot-2",
+              "content_group": "等价格子 2"
+            },
+            {
+              "type": "slot",
+              "slot_id": "4×7.slot-9",
+              "content_group": "等价格子 9"
+            },
+            {
+              "type": "slot",
+              "slot_id": "4×7.slot-16",
+              "content_group": "等价格子 16"
+            },
+            {
+              "type": "slot",
+              "slot_id": "4×7.slot-23",
+              "content_group": "等价格子 23"
+            }
+          ]
+        },
+        {
+          "type": "split",
+          "axis": "y",
+          "weights": [
+            1,
+            1,
+            1,
+            1
+          ],
+          "gap": 0,
+          "children": [
+            {
+              "type": "slot",
+              "slot_id": "4×7.slot-3",
+              "content_group": "等价格子 3"
+            },
+            {
+              "type": "slot",
+              "slot_id": "4×7.slot-10",
+              "content_group": "等价格子 10"
+            },
+            {
+              "type": "slot",
+              "slot_id": "4×7.slot-17",
+              "content_group": "等价格子 17"
+            },
+            {
+              "type": "slot",
+              "slot_id": "4×7.slot-24",
+              "content_group": "等价格子 24"
+            }
+          ]
+        },
+        {
+          "type": "split",
+          "axis": "y",
+          "weights": [
+            1,
+            1,
+            1,
+            1
+          ],
+          "gap": 0,
+          "children": [
+            {
+              "type": "slot",
+              "slot_id": "4×7.slot-4",
+              "content_group": "等价格子 4"
+            },
+            {
+              "type": "slot",
+              "slot_id": "4×7.slot-11",
+              "content_group": "等价格子 11"
+            },
+            {
+              "type": "slot",
+              "slot_id": "4×7.slot-18",
+              "content_group": "等价格子 18"
+            },
+            {
+              "type": "slot",
+              "slot_id": "4×7.slot-25",
+              "content_group": "等价格子 25"
+            }
+          ]
+        },
+        {
+          "type": "split",
+          "axis": "y",
+          "weights": [
+            1,
+            1,
+            1,
+            1
+          ],
+          "gap": 0,
+          "children": [
+            {
+              "type": "slot",
+              "slot_id": "4×7.slot-5",
+              "content_group": "等价格子 5"
+            },
+            {
+              "type": "slot",
+              "slot_id": "4×7.slot-12",
+              "content_group": "等价格子 12"
+            },
+            {
+              "type": "slot",
+              "slot_id": "4×7.slot-19",
+              "content_group": "等价格子 19"
+            },
+            {
+              "type": "slot",
+              "slot_id": "4×7.slot-26",
+              "content_group": "等价格子 26"
+            }
+          ]
+        },
+        {
+          "type": "split",
+          "axis": "y",
+          "weights": [
+            1,
+            1,
+            1,
+            1
+          ],
+          "gap": 0,
+          "children": [
+            {
+              "type": "slot",
+              "slot_id": "4×7.slot-6",
+              "content_group": "等价格子 6"
+            },
+            {
+              "type": "slot",
+              "slot_id": "4×7.slot-13",
+              "content_group": "等价格子 13"
+            },
+            {
+              "type": "slot",
+              "slot_id": "4×7.slot-20",
+              "content_group": "等价格子 20"
+            },
+            {
+              "type": "slot",
+              "slot_id": "4×7.slot-27",
+              "content_group": "等价格子 27"
+            }
+          ]
+        },
+        {
+          "type": "split",
+          "axis": "y",
+          "weights": [
+            1,
+            1,
+            1,
+            1
+          ],
+          "gap": 0,
+          "children": [
+            {
+              "type": "slot",
+              "slot_id": "4×7.slot-7",
+              "content_group": "等价格子 7"
+            },
+            {
+              "type": "slot",
+              "slot_id": "4×7.slot-14",
+              "content_group": "等价格子 14"
+            },
+            {
+              "type": "slot",
+              "slot_id": "4×7.slot-21",
+              "content_group": "等价格子 21"
+            },
+            {
+              "type": "slot",
+              "slot_id": "4×7.slot-28",
+              "content_group": "等价格子 28"
+            }
+          ]
+        }
+      ]
+    },
+    "summary": "网格4×7",
+    "leaf_count": 28
+  },
+  {
+    "file": "synth-heq-4.html",
+    "code": "x4",
+    "topology": "topology.split-x-4.equal",
+    "sources": [
+      "A9",
+      "R1"
+    ],
+    "structure": {
+      "type": "split",
+      "axis": "x",
+      "weights": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "gap": 38,
+      "children": [
+        {
+          "type": "slot",
+          "slot_id": "x4.slot-1",
+          "content_group": "并列内容组 1"
+        },
+        {
+          "type": "slot",
+          "slot_id": "x4.slot-2",
+          "content_group": "并列内容组 2"
+        },
+        {
+          "type": "slot",
+          "slot_id": "x4.slot-3",
+          "content_group": "并列内容组 3"
+        },
+        {
+          "type": "slot",
+          "slot_id": "x4.slot-4",
+          "content_group": "并列内容组 4"
+        }
+      ]
+    },
+    "summary": "左右4等分",
+    "leaf_count": 4
+  },
+  {
+    "file": "synth-veq-2.html",
+    "code": "y2",
+    "topology": "topology.split-y-2.equal",
+    "sources": [
+      "E3",
+      "I3",
+      "Q3"
+    ],
+    "structure": {
+      "type": "split",
+      "axis": "y",
+      "weights": [
+        1,
+        1
+      ],
+      "gap": 20,
+      "children": [
+        {
+          "type": "slot",
+          "slot_id": "y2.slot-1",
+          "content_group": "并列内容组 1"
+        },
+        {
+          "type": "slot",
+          "slot_id": "y2.slot-2",
+          "content_group": "并列内容组 2"
+        }
+      ]
+    },
+    "summary": "上下2等分",
+    "leaf_count": 2
+  },
+  {
+    "file": "synth-veq-3.html",
+    "code": "y3",
+    "topology": "topology.split-y-3.equal",
+    "sources": [
+      "R2"
+    ],
+    "structure": {
+      "type": "split",
+      "axis": "y",
+      "weights": [
+        1,
+        1,
+        1
+      ],
+      "gap": 20,
+      "children": [
+        {
+          "type": "slot",
+          "slot_id": "y3.slot-1",
+          "content_group": "并列内容组 1"
+        },
+        {
+          "type": "slot",
+          "slot_id": "y3.slot-2",
+          "content_group": "并列内容组 2"
+        },
+        {
+          "type": "slot",
+          "slot_id": "y3.slot-3",
+          "content_group": "并列内容组 3"
+        }
+      ]
+    },
+    "summary": "上下3等分",
+    "leaf_count": 3
+  },
+  {
+    "file": "synth-veq-4.html",
+    "code": "y4",
+    "topology": "topology.split-y-4.equal",
+    "sources": [
+      "R6"
+    ],
+    "structure": {
+      "type": "split",
+      "axis": "y",
+      "weights": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "gap": 20,
+      "children": [
+        {
+          "type": "slot",
+          "slot_id": "y4.slot-1",
+          "content_group": "并列内容组 1"
+        },
+        {
+          "type": "slot",
+          "slot_id": "y4.slot-2",
+          "content_group": "并列内容组 2"
+        },
+        {
+          "type": "slot",
+          "slot_id": "y4.slot-3",
+          "content_group": "并列内容组 3"
+        },
+        {
+          "type": "slot",
+          "slot_id": "y4.slot-4",
+          "content_group": "并列内容组 4"
+        }
+      ]
+    },
+    "summary": "上下4等分",
+    "leaf_count": 4
+  },
+  {
+    "file": "empty-e6.html",
+    "code": "E6",
+    "topology": "topology.recursive-y-equal-then-x-both",
+    "sources": [],
+    "structure": {
+      "type": "split",
+      "axis": "y",
+      "weights": [
+        1,
+        1
+      ],
+      "gap": 20,
+      "children": [
+        {
+          "type": "split",
+          "axis": "x",
+          "weights": [
+            2,
+            1
+          ],
+          "gap": 38,
+          "children": [
+            {
+              "type": "slot",
+              "slot_id": "e6.slot-1",
+              "content_group": "Before 主流程"
+            },
+            {
+              "type": "slot",
+              "slot_id": "e6.slot-2",
+              "content_group": "Before 注记"
+            }
+          ]
+        },
+        {
+          "type": "split",
+          "axis": "x",
+          "weights": [
+            2,
+            1
+          ],
+          "gap": 38,
+          "children": [
+            {
+              "type": "slot",
+              "slot_id": "e6.slot-3",
+              "content_group": "After 主流程"
+            },
+            {
+              "type": "slot",
+              "slot_id": "e6.slot-4",
+              "content_group": "After 注记"
+            }
+          ]
+        }
+      ]
+    },
+    "summary": "上下2等分 / 上·左右2:1 / 下·左右2:1",
+    "leaf_count": 4
+  },
+  {
+    "file": "empty-i4.html",
+    "code": "I4",
+    "topology": "topology.recursive-x-equal-then-y-both",
+    "sources": [],
+    "structure": {
+      "type": "split",
+      "axis": "x",
+      "weights": [
+        1,
+        1
+      ],
+      "gap": 38,
+      "children": [
+        {
+          "type": "split",
+          "axis": "y",
+          "weights": [
+            1,
+            1
+          ],
+          "gap": 20,
+          "children": [
+            {
+              "type": "slot",
+              "slot_id": "i4.slot-1",
+              "content_group": "意图路由主体"
+            },
+            {
+              "type": "slot",
+              "slot_id": "i4.slot-2",
+              "content_group": "意图路由结果"
+            }
+          ]
+        },
+        {
+          "type": "split",
+          "axis": "y",
+          "weights": [
+            1,
+            1
+          ],
+          "gap": 20,
+          "children": [
+            {
+              "type": "slot",
+              "slot_id": "i4.slot-3",
+              "content_group": "异常识别主体"
+            },
+            {
+              "type": "slot",
+              "slot_id": "i4.slot-4",
+              "content_group": "异常兜底结果"
+            }
+          ]
+        }
+      ]
+    },
+    "summary": "左右2等分 / 左·上下2等分 / 右·上下2等分",
+    "leaf_count": 4
+  },
+  {
+    "file": "empty-s3.html",
+    "code": "S3",
+    "topology": "topology.recursive-x-asymmetric-then-y-both",
+    "sources": [
+      "S3"
+    ],
+    "structure": {
+      "type": "split",
+      "axis": "x",
+      "weights": [
+        1,
+        2
+      ],
+      "gap": 38,
+      "children": [
+        {
+          "type": "split",
+          "axis": "y",
+          "weights": [
+            1,
+            1
+          ],
+          "gap": 20,
+          "children": [
+            {
+              "type": "slot",
+              "slot_id": "s3.slot-1",
+              "content_group": "痛点现象"
+            },
+            {
+              "type": "slot",
+              "slot_id": "s3.slot-2",
+              "content_group": "代价清单"
+            }
+          ]
+        },
+        {
+          "type": "split",
+          "axis": "y",
+          "weights": [
+            2,
+            1,
+            1
+          ],
+          "gap": 20,
+          "children": [
+            {
+              "type": "slot",
+              "slot_id": "s3.slot-3",
+              "content_group": "解法流程"
+            },
+            {
+              "type": "slot",
+              "slot_id": "s3.slot-4",
+              "content_group": "证据带"
+            },
+            {
+              "type": "slot",
+              "slot_id": "s3.slot-5",
+              "content_group": "结果带"
+            }
+          ]
+        }
+      ]
+    },
+    "summary": "左右1:2 / 左·上下2等分 / 右·上下2:1:1",
+    "leaf_count": 5
+  }
+]

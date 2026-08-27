@@ -1,0 +1,82 @@
+{
+  "contract": "wise-ppt-layout-seed@4",
+  "layout_id": "paper-ink.nonrelationship.D5",
+  "display_code": "D5",
+  "page_kind": "nonrelationship",
+  "source": {
+    "path": "references/gallery-paper-ink/ai/frames/layout-d5.html",
+    "sha256": "78ae0d26279b6bf37c403e69f22605d030f391d4c4198ef905387fce4117542e"
+  },
+  "locked": {
+    "scoped_css": "@scope (.slide[data-layout-id=\"paper-ink.nonrelationship.D5\"]) {\nsvg.scene { position: absolute; inset: 0; z-index: 1; }\n  .doc.tl, .folio { color: var(--ink-45); }\n  .chapter {\n    position: absolute; left: 794px; top: 449.8px;\n    font-family: var(--serif); font-weight: var(--wp-weight-regular);\n    font-size: var(--type-hero); letter-spacing: .1em;\n    color: var(--ink);\n    z-index: 5;\n  }\n  .lead {\n    position: absolute; left: 798px; top: 573.8px;\n    font-family: var(--mono); font-weight: 400;\n    font-size: var(--type-meta); letter-spacing: .3em;\n    color: color-mix(in srgb, var(--ink) 50%, transparent);\n    text-transform: uppercase;\n    z-index: 5;\n  }\n}\n",
+    "css_sha256": "d537d85bce002eb0958361e847c64aa67b7ff8c3671b6e8ee19c7c8358ce4366",
+    "stage_html": "<div class=\"stage\" data-block-id=\"gallery-primary\" data-component-id=\"native.paper-ink.scaffold.section-divider.section-lockup\" data-component-source=\"native\" data-content-ref=\"example.d5\" data-renderer-kind=\"typography\" data-template-id=\"D5\">\n<div class=\"doc tl\" data-template-part=\"support\" data-template-slot=\"support\" data-template-slot-kind=\"text\" data-vnext-fit-box=\"0,0,1920,1080\" data-vnext-text-key=\"support.text.001\">PPT 标题<br/>页面标题</div>\n<div class=\"folio\" data-template-part=\"folio\">页码 / 总页数 — BY @歪斯Wise</div>\n<svg class=\"scene\" data-template-part=\"illustration\" data-template-slot=\"illustration\" data-template-slot-kind=\"illustration\" height=\"1080\" viewbox=\"0 0 1920 1080\" width=\"1920\">\n<g id=\"draw\"><g transform=\"translate(0 -88.2)\"><text fill=\"none\" font-family=\"var(--mono)\" font-size=\"var(--type-display-mark)\" opacity=\"0.5\" stroke=\"var(--ink)\" stroke-width=\"1.2\" x=\"354\" y=\"714\">02</text></g></g>\n</svg>\n<div class=\"chapter\" data-template-part=\"primary\" data-template-slot=\"primary\" data-template-slot-kind=\"text\" data-vnext-fit-box=\"0,0,1920,1080\" data-vnext-text-key=\"primary.text.001\">工程化思维</div>\n<div class=\"lead\" data-template-part=\"lead\" data-template-slot=\"lead\" data-template-slot-kind=\"text\" data-vnext-fit-box=\"0,0,1920,1080\" data-vnext-text-key=\"lead.text.001\">Chapter 02 — From Model to Product</div>\n</div>",
+    "stage_structure_sha256": "bb7bb6704ac7abe6ea0a8b59c1a5bc862fc7c14ada857efe6008e8703dd522f7"
+  },
+  "bindings": {
+    "primary_slot": null,
+    "slots": {
+      "support": {
+        "text": [
+          {
+            "key": "support.text.001",
+            "default": "PPT 标题\n页面标题",
+            "max_chars": 96,
+            "item_scope": "item",
+            "item_group_source": "fixed-slot",
+            "item_index": 0,
+            "fit_box": [
+              0.0,
+              0.0,
+              1920.0,
+              1080.0
+            ],
+            "fit_owner_kind": "slide"
+          }
+        ],
+        "icon": []
+      },
+      "primary": {
+        "text": [
+          {
+            "key": "primary.text.001",
+            "default": "工程化思维",
+            "max_chars": 7,
+            "item_scope": "item",
+            "item_group_source": "fixed-slot",
+            "item_index": 0,
+            "fit_box": [
+              0.0,
+              0.0,
+              1920.0,
+              1080.0
+            ],
+            "fit_owner_kind": "slide"
+          }
+        ],
+        "icon": []
+      },
+      "lead": {
+        "text": [
+          {
+            "key": "lead.text.001",
+            "default": "Chapter 02 — From Model to Product",
+            "max_chars": 37,
+            "item_scope": "item",
+            "item_group_source": "fixed-slot",
+            "item_index": 0,
+            "fit_box": [
+              0.0,
+              0.0,
+              1920.0,
+              1080.0
+            ],
+            "fit_owner_kind": "slide"
+          }
+        ],
+        "icon": []
+      }
+    }
+  },
+  "seed_sha256": "7c012ed0aedcbe4f4f3a7b487a5f46a5adb4e2e3ea387e78386502ff7fc99ddf"
+}

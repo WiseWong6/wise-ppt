@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-runtime="wise-ppt-specimen" data-typography-mode="all-sans" data-page-id="gallery-ai-t2" data-page-role="explain" data-theme="paper-ink" data-layout="paper-ink.mapping.layout-atlas" data-layout-source="gallery" data-sample-focus-profile="copy-only" data-sample-focus-members='[{"selector":"#t2-focus","role":"label"}]' data-sample-focus-ref="sample.t2.t2-focus">
+<head>
+<meta charset="UTF-8">
+<title>layout-t2 · 版式图册说明 · 关系到阅读结构</title>
+<script src="../../../../runtime/stage-fit.js"></script>
+<link rel="stylesheet" href="../../../../themes/paper-ink/assets/design-tokens.css">
+<link rel="stylesheet" href="../../../../themes/paper-ink/assets/catalog-fonts.css" data-wise-catalog-fonts="true">
+<link rel="stylesheet" href="../../../../themes/paper-ink/assets/slide-components.css">
+<link rel="stylesheet" href="../../../shell.css">
+<style>
+  svg.scene{position:absolute;inset:0;z-index:1;transform:translateY(-29px)}
+  .caption{position:absolute;left:0;right:0;bottom:118px;text-align:center;font:400 var(--type-caption) var(--sans);letter-spacing:.04em;color:var(--ink);z-index:5}
+</style>
+</head>
+<body class="slide">
+<div class="stage" data-block-id="gallery-primary" data-renderer-kind="svg" data-component-source="native" data-component-id="native.paper-ink.mapping.layout-atlas.principles" data-content-ref="example.t2">
+  <div class="doc tl" data-slot-id="support">PPT 标题<br>页面标题</div>
+  <div class="folio">页码 / 总页数 — BY @歪斯Wise</div>
+  <svg class="scene" width="1920" height="1080" viewBox="0 0 1920 1080" role="img" aria-label="从信息关系选择阅读结构">
+    <g id="t2-principles" data-slot-id="principles"></g>
+    <g id="t2-samples" data-slot-id="samples"></g>
+  </svg>
+  <div class="caption">从信息关系出发，让每一种内容都拥有恰当的阅读结构。</div>
+</div>
+<script>
+var NS='http://www.w3.org/2000/svg';
+var INK='var(--ink)',INK80='var(--ink-80)',INK70='var(--ink-70)',INK45='var(--ink-45)';
+var SANS='var(--sans)',MONO='var(--mono)',left=document.getElementById('t2-principles'),right=document.getElementById('t2-samples');
+function el(tag,attrs,parent){var n=document.createElementNS(NS,tag);Object.keys(attrs||{}).forEach(function(k){n.setAttribute(k,attrs[k]);});(parent||right).appendChild(n);return n;}
+function txt(text,x,y,attrs,parent){var n=el('text',Object.assign({x:x,y:y,fill:INK,'font-family':SANS},attrs||{}),parent);n.textContent=text;return n;}
+function line(x1,y1,x2,y2,attrs,parent){return el('line',Object.assign({x1:x1,y1:y1,x2:x2,y2:y2,stroke:INK,'stroke-width':1.1},attrs||{}),parent);}
+var cardTop=360,cardGap=28,cardHeight=140,cardBottom=cardTop+2*(cardHeight+cardGap)+cardHeight;
+txt('版式不是模板',225,277,{'font-size':'var(--type-emphasis)','font-weight':300},left);txt('它先决定一页的阅读关系',225,319,{'font-size':'var(--type-body)','font-weight':300,fill:INK70},left);txt('同一段内容，因关系不同，',225,373,{'font-size':'var(--type-body-small)','font-weight':300,fill:INK70},left);txt('应当拥有不同的组织方式。',225,401,{'font-size':'var(--type-body-small)','font-weight':300,fill:INK70},left);
+function principle(y,no,title,lines,index){var item=el('g',{'data-repeat-unit':'selection-principle','data-bind-index':index},left);el('circle',{cx:246,cy:y-5,r:18,fill:'var(--paper-deep)',stroke:INK,'stroke-width':1},item);txt(no,246,y,{'font-family':MONO,'font-size':'var(--type-meta)','text-anchor':'middle'},item);txt(title,282,y,{'font-size':'var(--type-body)','font-weight':300},item);lines.forEach(function(t,i){txt(t,282,y+29+i*23,{'font-size':'var(--type-body-small)','font-weight':300,fill:INK70},item);});}
+var principleStart=477,principleLast=cardBottom-60,principleStep=(principleLast-principleStart)/2;
+[['01','先判断信息关系',['对比、流程、层级、数据，','不是同一种表达任务。']],['02','再确定阅读重心',['一页只保留一种主要的','阅读动作与视觉结构。']],['03','结构服务关系',['需要时提供明确构图；','不需要时，仍从内容出发。']]].forEach(function(item,i){principle(principleStart+i*principleStep,item[0],item[1],item[2],i);});
+line(690,270,690,cardBottom,{stroke:INK45,'stroke-width':.9},right);txt('每页都有合适的阅读结构',748,277,{'font-size':'var(--type-emphasis)','font-weight':300},right);txt('从信息关系出发',748,319,{id:'t2-focus','font-size':'var(--type-body)','font-weight':300,fill:INK70},right);
+function preview(kind,x,y,parent){var px=x+224,py=y+28;if(kind==='compare'){el('rect',{x:px,y:py,width:80,height:82,fill:'none',stroke:INK45,'stroke-width':.8},parent);el('rect',{x:px+94,y:py,width:80,height:82,fill:'var(--paper-panel)',stroke:INK,'stroke-width':.9},parent);line(px+17,py+25,px+63,py+25,{stroke:INK45,'stroke-width':.8},parent);line(px+111,py+25,px+157,py+25,{stroke:INK45,'stroke-width':.8},parent);}if(kind==='flow'){line(px+4,py+42,px+182,py+42,{stroke:INK45,'stroke-width':1},parent);[0,1,2,3].forEach(function(i){var cx=px+16+i*54;el('circle',{cx:cx,cy:py+42,r:13,fill:'var(--paper-deep)',stroke:INK,'stroke-width':.9},parent);txt(String(i+1),cx,py+46,{'font-family':MONO,'font-size':'var(--type-micro-secondary)','text-anchor':'middle'},parent);});}if(kind==='radial'){el('circle',{cx:px+93,cy:py+43,r:26,fill:'none',stroke:INK,'stroke-width':1},parent);[[px+38,py+22],[px+148,py+22],[px+93,py+82]].forEach(function(p){line(px+93,py+43,p[0],p[1],{stroke:INK45,'stroke-width':.8},parent);el('circle',{cx:p[0],cy:p[1],r:9,fill:'var(--paper-deep)',stroke:INK,'stroke-width':.8},parent);});}if(kind==='stack'){[0,1,2].forEach(function(i){var ly=py+9+i*26;el('rect',{x:px+18,y:ly,width:150,height:20,fill:i===1?'var(--paper-panel)':'none',stroke:INK,'stroke-width':.8},parent);[0,1,2].forEach(function(n){el('rect',{x:px+24+n*48,y:ly+4,width:42,height:12,fill:'none',stroke:INK45,'stroke-width':.6},parent);});});}if(kind==='chart'){[0,1,2].forEach(function(i){var bx=px+8+i*57;el('rect',{x:bx,y:py+10,width:46,height:74,fill:'none',stroke:INK45,'stroke-width':.8},parent);[0,1,2].forEach(function(n){line(bx+10+n*10,py+68,bx+10+n*10,py+50-(i*6+n*7),{stroke:INK,'stroke-width':1.4},parent);});});}if(kind==='matrix'){line(px+92,py+4,px+92,py+86,{stroke:INK,'stroke-width':.9},parent);line(px+40,py+45,px+144,py+45,{stroke:INK,'stroke-width':.9},parent);[[67,27],[116,26],[68,65],[118,64]].forEach(function(p){el('circle',{cx:px+p[0],cy:py+p[1],r:4,fill:INK},parent);});}}
+function card(x,y,code,title,kind,index){var item=el('g',{'data-repeat-unit':'layout-sample','data-bind-index':index},right);el('rect',{x:x,y:y,width:440,height:cardHeight,fill:'var(--paper-panel)',stroke:INK80,'stroke-width':1.1},item);el('rect',{x:x+5,y:y+5,width:430,height:cardHeight-10,fill:'none',stroke:INK,'stroke-width':.55,opacity:.3},item);txt(code,x+22,y+31,{'font-family':MONO,'font-size':'var(--type-meta)','letter-spacing':1.8,fill:INK45},item);txt(title,x+22,y+71,{'data-text-kind':'label','font-size':'var(--type-body)','font-weight':300},item);line(x+198,y+21,x+198,y+119,{stroke:INK45,'stroke-width':.7},item);preview(kind,x,y,item);}
+[['01','双面板比较','compare'],['02','横向流水线','flow'],['03','三向放射','radial'],['04','分层架构堆栈','stack'],['05','图表联排墙','chart'],['06','四象限矩阵','matrix']].forEach(function(item,i){card(i%2?1240:748,cardTop+Math.floor(i/2)*(cardHeight+cardGap),item[0],item[1],item[2],i);});
+stageFit();
+</script>
+</body>
+</html>

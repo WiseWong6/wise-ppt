@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-runtime="wise-ppt-specimen" data-typography-mode="all-sans" data-page-id="gallery-ai-d8" data-page-role="hook" data-theme="paper-ink" data-layout="paper-ink.scaffold.cover-wide" data-layout-source="gallery">
+<head>
+<meta charset="UTF-8">
+<title>layout-d8 · 封面 · 左图右题 · AI 工程化实战</title>
+<script src="../../../../runtime/stage-fit.js"></script>
+<!--
+  纸墨线稿样张 · D8 封面 · 左图右题·长标题
+  左侧:有主体、层次和连接关系的 Agent 工程工作台线稿;右侧:kicker → 通栏大标题(长标题也放得下) → 副题
+  版式纪律:不放讲者、日期、版本或关键词区块,也不留信息带横线;无 FIG、无 caption
+-->
+<link rel="stylesheet" href="../../../../themes/paper-ink/assets/design-tokens.css">
+<link rel="stylesheet" href="../../../../themes/paper-ink/assets/catalog-fonts.css" data-wise-catalog-fonts="true">
+<link rel="stylesheet" href="../../../../themes/paper-ink/assets/slide-components.css">
+<link rel="stylesheet" href="../../../shell.css">
+<style>
+  svg.scene { position: absolute; inset: 0; z-index: 1; pointer-events: none; }
+
+  /* 右侧落版文字块:与左侧工程工作台同轴居中 */
+  .kicker {
+    position: absolute; left: 1048px; top: 406px;
+    font-family: var(--mono); font-size: var(--type-meta);
+    letter-spacing: .3em; color: var(--ink-45);
+    z-index: 2;
+  }
+  .title {
+    position: absolute; left: 1042px; top: 466px;
+    font-family: var(--serif); font-weight: var(--wp-weight-regular);
+    font-size: var(--type-display); letter-spacing: .06em;
+    color: var(--ink); z-index: 2; white-space: nowrap;
+  }
+  .subtitle {
+    position: absolute; left: 1048px; top: 642px;
+    font-family: var(--sans); font-weight: var(--wp-weight-regular);
+    font-size: var(--type-subheading); letter-spacing: .1em;
+    color: var(--ink-70); z-index: 2;
+  }
+</style>
+</head>
+<body class="slide">
+<div class="stage" data-template-id="D8" data-block-id="gallery-primary" data-renderer-kind="typography" data-component-source="native" data-component-id="native.paper-ink.scaffold.cover-wide.long-lockup" data-content-ref="example.d8">
+  <div class="doc tl" data-template-part="support" data-template-slot="support" data-template-slot-kind="text">PPT 标题<br>页面标题</div>
+  <div class="folio" data-template-part="folio">页码 / 总页数 — BY @歪斯Wise</div>
+
+  <svg class="scene" data-template-part="illustration" data-template-slot="illustration" data-template-slot-kind="illustration" width="1920" height="1080" viewBox="0 0 1920 1080">
+    <g id="draw"></g>
+  </svg>
+
+  <div class="kicker" data-template-part="kicker" data-template-slot="kicker" data-template-slot-kind="text">AGENT ENGINEERING — 2026 SUMMER</div>
+  <div class="title" data-template-part="primary" data-template-slot="primary" data-template-slot-kind="text">AI 工程化实战</div>
+  <div class="subtitle" data-template-part="subtitle" data-template-slot="subtitle" data-template-slot-kind="text">从模型到产品的工程鸿沟 · Agent 实战第一课</div>
+</div>
+
+<script src="../../../../themes/paper-ink/assets/particles.js"></script>
+<script>
+var NS = 'http://www.w3.org/2000/svg';
+var INK80 = 'var(--ink-80)';
+var INK = 'var(--ink)';
+var PAPER = 'var(--paper)';
+var G = document.getElementById('draw');
+function el(tag, attrs) {
+  var e = document.createElementNS(NS, tag);
+  for (var k in attrs) e.setAttribute(k, attrs[k]);
+  G.appendChild(e); return e;
+}
+
+/* ===== 左侧 Agent 工程工作台:主机、双屏、工具舱与评测回路组成一个完整主体 ===== */
+(function(){
+  var X = 170, Y = 250;
+
+  /* 背景评测回路:用大弧线把整台设备串成一个系统 */
+  el('ellipse', {cx:X+342, cy:Y+285, rx:344, ry:286, fill:'none', stroke:INK,
+    'stroke-width':.65, opacity:.16, 'stroke-dasharray':'3 9'});
+  el('path', {d:'M '+(X+34)+' '+(Y+240)+' A 320 266 0 0 1 '+(X+520)+' '+(Y+48), fill:'none', stroke:INK,
+    'stroke-width':1.05, opacity:.4, 'stroke-linecap':'round'});
+  el('path', {d:'M '+(X+644)+' '+(Y+286)+' A 320 266 0 0 1 '+(X+178)+' '+(Y+532), fill:'none', stroke:INK,
+    'stroke-width':1.05, opacity:.4, 'stroke-linecap':'round'});
+
+  /* 主屏:双线框+顶栏+左导航+三个内部工程区 */
+  el('rect', {x:X+98, y:Y+70, width:472, height:300, rx:14, fill:'rgba(255,255,255,.12)',
+    stroke:INK80, 'stroke-width':1.3});
+  el('rect', {x:X+106, y:Y+78, width:456, height:284, rx:10, fill:'none',
+    stroke:INK, 'stroke-width':.55, opacity:.28});
+  el('line', {x1:X+98, y1:Y+118, x2:X+570, y2:Y+118, stroke:INK, 'stroke-width':.9, opacity:.58});
+  [0,1,2].forEach(function(i){
+    el('circle', {cx:X+122+i*18, cy:Y+94, r:3, fill:i===2?INK:'none', stroke:INK, 'stroke-width':.65, opacity:.58});
+  });
+  el('circle', {cx:X+542, cy:Y+94, r:7, fill:'none', stroke:INK, 'stroke-width':.8, opacity:.55});
+  el('circle', {cx:X+542, cy:Y+94, r:2.2, fill:INK, opacity:.7});
+  el('line', {x1:X+174, y1:Y+118, x2:X+174, y2:Y+370, stroke:INK, 'stroke-width':.8, opacity:.46});
+  [0,1,2,3,4].forEach(function(i){
+    el('rect', {x:X+122, y:Y+144+i*42, width:28, height:20, rx:3, fill:'none', stroke:INK,
+      'stroke-width':.7, opacity:i===1?.68:.34});
+    if(i===1) el('circle', {cx:X+136, cy:Y+154+i*42, r:2.5, fill:INK, opacity:.7});
+  });
+
+  /* 左上任务链 */
+  el('rect', {x:X+202, y:Y+146, width:204, height:78, rx:8, fill:'none', stroke:INK,
+    'stroke-width':1, opacity:.65});
+  [0,1,2].forEach(function(i){
+    el('circle', {cx:X+228+i*62, cy:Y+185, r:9, fill:PAPER, stroke:INK, 'stroke-width':.85, opacity:.7});
+    if(i<2) el('line', {x1:X+238+i*62, y1:Y+185, x2:X+280+i*62, y2:Y+185, stroke:INK,
+      'stroke-width':.75, opacity:.45, 'stroke-dasharray':'4 4'});
+  });
+  /* 右上工具舱 */
+  el('rect', {x:X+428, y:Y+146, width:108, height:78, rx:8, fill:'none', stroke:INK,
+    'stroke-width':1, opacity:.65});
+  el('circle', {cx:X+466, cy:Y+185, r:15, fill:'none', stroke:INK, 'stroke-width':.8, opacity:.55});
+  el('circle', {cx:X+466, cy:Y+185, r:4, fill:INK, opacity:.68});
+  el('line', {x1:X+490, y1:Y+173, x2:X+520, y2:Y+173, stroke:INK, 'stroke-width':.7, opacity:.4});
+  el('line', {x1:X+490, y1:Y+188, x2:X+512, y2:Y+188, stroke:INK, 'stroke-width':.7, opacity:.32});
+  /* 下方评测走势 */
+  el('rect', {x:X+202, y:Y+246, width:334, height:86, rx:8, fill:'none', stroke:INK,
+    'stroke-width':1, opacity:.65});
+  el('polyline', {points:(X+222)+','+(Y+306)+' '+(X+268)+','+(Y+292)+' '+(X+316)+','+(Y+300)+' '+(X+368)+','+(Y+270)+' '+(X+420)+','+(Y+284)+' '+(X+470)+','+(Y+260)+' '+(X+516)+','+(Y+272),
+    fill:'none', stroke:INK, 'stroke-width':1.1, opacity:.68});
+  [0,1,2,3,4,5,6].forEach(function(i){
+    var pts=[[222,306],[268,292],[316,300],[368,270],[420,284],[470,260],[516,272]][i];
+    el('circle', {cx:X+pts[0], cy:Y+pts[1], r:2.6, fill:PAPER, stroke:INK, 'stroke-width':.7, opacity:.72});
+  });
+
+  /* 两端悬浮的输入/输出卡,让工作台有明确的进出路径 */
+  [
+    {x:X+2,y:Y+186,w:116,h:70,side:1}, {x:X+588,y:Y+186,w:116,h:70,side:-1}
+  ].forEach(function(c, i){
+    el('rect', {x:c.x, y:c.y, width:c.w, height:c.h, rx:12, fill:PAPER, stroke:INK,
+      'stroke-width':1, opacity:.72});
+    el('rect', {x:c.x+7, y:c.y+7, width:c.w-14, height:c.h-14, rx:8, fill:'none', stroke:INK,
+      'stroke-width':.5, opacity:.25});
+    el('circle', {cx:c.x+30, cy:c.y+35, r:8, fill:'none', stroke:INK, 'stroke-width':.8, opacity:.58});
+    el('circle', {cx:c.x+30, cy:c.y+35, r:2.3, fill:INK, opacity:.72});
+    el('line', {x1:c.x+50, y1:c.y+27, x2:c.x+92, y2:c.y+27, stroke:INK, 'stroke-width':.7, opacity:.42});
+    el('line', {x1:c.x+50, y1:c.y+43, x2:c.x+80, y2:c.y+43, stroke:INK, 'stroke-width':.7, opacity:.3});
+    el('path', {d:i===0 ? 'M '+(c.x+c.w)+' '+(c.y+35)+' C '+(c.x+150)+' '+(c.y+35)+' '+(X+70)+' '+(Y+220)+' '+(X+98)+' '+(Y+220)
+                         : 'M '+(X+570)+' '+(Y+220)+' C '+(X+600)+' '+(Y+220)+' '+(c.x-28)+' '+(c.y+35)+' '+c.x+' '+(c.y+35),
+      fill:'none', stroke:INK, 'stroke-width':.8, opacity:.4, 'stroke-dasharray':'4 5'});
+  });
+
+  /* 分层机座:形成透视深度,不让主屏像悬空框 */
+  el('path', {d:'M '+(X+84)+' '+(Y+396)+' L '+(X+584)+' '+(Y+396)+' L '+(X+646)+' '+(Y+450)+' L '+(X+20)+' '+(Y+450)+' Z',
+    fill:'rgba(255,255,255,.08)', stroke:INK, 'stroke-width':1.15, opacity:.68});
+  el('path', {d:'M '+(X+20)+' '+(Y+450)+' L '+(X+646)+' '+(Y+450)+' L '+(X+624)+' '+(Y+492)+' L '+(X+42)+' '+(Y+492)+' Z',
+    fill:'none', stroke:INK, 'stroke-width':.85, opacity:.46});
+  [0,1,2,3,4].forEach(function(i){
+    el('circle', {cx:X+222+i*54, cy:Y+443, r:4.5, fill:i===2?INK:'none', stroke:INK,
+      'stroke-width':.7, opacity:.58});
+  });
+
+  /* 机座下的记忆/工具模块:三张错层纸片把工程感补齐 */
+  [
+    {x:X+116,y:Y+520,w:150,h:74,sk:-16},
+    {x:X+286,y:Y+530,w:150,h:74,sk:0},
+    {x:X+456,y:Y+520,w:150,h:74,sk:16}
+  ].forEach(function(c, i){
+    el('rect', {x:c.x, y:c.y, width:c.w, height:c.h, rx:9, fill:'rgba(255,255,255,.06)', stroke:INK,
+      'stroke-width':.85, opacity:.5, transform:'rotate('+(c.sk/8)+' '+(c.x+c.w/2)+' '+(c.y+c.h/2)+')'});
+    el('line', {x1:c.x+18, y1:c.y+24, x2:c.x+c.w-18, y2:c.y+24, stroke:INK, 'stroke-width':.7, opacity:.34});
+    el('line', {x1:c.x+18, y1:c.y+44, x2:c.x+c.w-44, y2:c.y+44, stroke:INK, 'stroke-width':.7, opacity:.26});
+  });
+
+  /* 回路上的节点和套准线 */
+  [
+    {x:X+34,y:Y+240},{x:X+180,y:Y+56},{x:X+520,y:Y+48},
+    {x:X+644,y:Y+286},{x:X+496,y:Y+510},{x:X+178,y:Y+532}
+  ].forEach(function(n, i){
+    el('circle', {cx:n.x, cy:n.y, r:i%2?5:7, fill:PAPER, stroke:INK, 'stroke-width':.85, opacity:.65});
+    el('circle', {cx:n.x, cy:n.y, r:1.8, fill:INK, opacity:.7});
+  });
+})();
+
+stageFit();
+</script>
+</body>
+</html>

@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-runtime="wise-ppt-specimen" data-typography-mode="all-sans" data-page-id="gallery-ai-i2" data-page-role="explain" data-theme="paper-ink" data-layout="paper-ink.flow.known-unknown-chain" data-layout-source="gallery" data-sample-focus-profile="none" data-sample-focus-members='[]'>
+<head>
+<meta charset="UTF-8">
+<title>layout-i2 · 虚实步骤串 · 大模型推理黑盒</title>
+<script src="../../../../runtime/stage-fit.js"></script>
+<link rel="stylesheet" href="../../../../themes/paper-ink/assets/design-tokens.css">
+<link rel="stylesheet" href="../../../../themes/paper-ink/assets/catalog-fonts.css" data-wise-catalog-fonts="true">
+<link rel="stylesheet" href="../../../../themes/paper-ink/assets/slide-components.css">
+<link rel="stylesheet" href="../../../shell.css">
+<style>
+  svg.scene { position: absolute; inset: 0; z-index: 1; }
+  .caption {
+    position: absolute; left: 0; right: 0; bottom: 118px;
+    text-align: center;
+    font-family: var(--sans); font-weight: 400;
+    font-size: var(--type-caption); letter-spacing: .04em;
+    color: var(--ink);
+    z-index: 5;
+  }
+</style>
+</head>
+<body class="slide">
+<div class="stage" data-block-id="gallery-primary" data-renderer-kind="svg" data-component-source="native" data-component-id="native.paper-ink.flow.known-unknown-chain.visible-steps" data-content-ref="example.i2">
+  <div class="doc tl">PPT 标题<br>页面标题</div>
+  <div class="folio">页码 / 总页数 — BY @歪斯Wise</div>
+
+  <svg class="scene" width="1920" height="1080" viewBox="0 0 1920 1080">
+    <defs>
+      <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+        <path d="M 0 0 L 10 5 L 0 10" fill="none" stroke="var(--ink)" stroke-width="1.4"/>
+      </marker>
+    </defs>
+    <g id="draw"></g>
+  </svg>
+
+  <div class="caption">提示输入与答案可以观察，模型内部推理只能通过外部轨迹间接解释。</div>
+</div>
+
+<script src="../../../../themes/paper-ink/assets/particles.js"></script>
+<script>
+var NS = 'http://www.w3.org/2000/svg';
+var INK = 'var(--ink)';
+var INK45 = 'var(--ink-45)';
+var G = document.getElementById('draw');
+function el(tag, attrs) {
+  var e = document.createElementNS(NS, tag);
+  for (var k in attrs) e.setAttribute(k, attrs[k]);
+  G.appendChild(e); return e;
+}
+function txt(x, y, str, attrs) {
+  var t = el('text', Object.assign({x:x, y:y}, attrs||{}));
+  t.textContent = str; return t;
+}
+var MONO = 'var(--mono)', SANS = 'var(--sans)';
+
+G = el('g', {transform:'translate(0 -7.7)'});
+var CY = 520;
+
+
+/* ---------- 顶部 mono 小注 + 短细线 ---------- */
+txt(960, 300, 'INVISIBLE · WHAT THE LLM DOES INSIDE', {'font-family':MONO, 'font-size':'var(--type-label)', 'letter-spacing':5, 'text-anchor':'middle', fill:'color-mix(in srgb, var(--ink) 40%, transparent)'});
+el('line', {x1:740, y1:316, x2:1180, y2:316, stroke:INK, 'stroke-width':.6, opacity:.3});
+
+/* ---------- 左：已知端点（实线气泡） ---------- */
+el('rect', {x:150, y:CY-64, width:330, height:128, rx:16, fill:'var(--paper-panel)', stroke:'var(--ink-55)', 'stroke-width':1.2});
+txt(180, CY-16, 'prompt 已提交', {'font-family':SANS, 'font-weight':300, 'font-size':'var(--type-subheading)', fill:INK});
+txt(180, CY+26, '100 tokens 已输入', {'font-family':SANS, 'font-weight':300, 'font-size':'var(--type-subheading)', fill:INK});
+txt(150, CY-90, '已知 · 输入', {'font-family':SANS, 'font-weight':300, 'font-size':'var(--type-body)', fill:INK45});
+
+/* ---------- 右：已知端点（实线气泡） ---------- */
+el('rect', {x:1440, y:CY-64, width:330, height:128, rx:16, fill:'var(--paper-panel)', stroke:'var(--ink-55)', 'stroke-width':1.2});
+txt(1470, CY-16, 'completion 已返回', {'font-family':SANS, 'font-weight':300, 'font-size':'var(--type-subheading)', fill:INK});
+txt(1470, CY+26, '答案已生成', {id:'sample-focus', 'font-family':SANS, 'font-weight':300, 'font-size':'var(--type-subheading)', fill:INK});
+txt(1440, CY-90, '已知 · 输出', {'font-family':SANS, 'font-weight':300, 'font-size':'var(--type-body)', fill:INK45});
+
+/* ---------- 中间：不可见的步骤（虚线圆角框 + 虚线箭头） ---------- */
+var steps = ['意图如何解析？','知识如何检索？','逻辑如何推演？','幻觉与置信如何把控？'];
+var sx0 = 560, gapX = 220;
+el('line', {x1:480, y1:CY, x2:sx0-16, y2:CY, stroke:INK, 'stroke-width':1.2, 'stroke-dasharray':'6 7', 'marker-end':'url(#arrow)', opacity:.6});
+steps.forEach(function(s, i){
+  var x = sx0 + i * gapX;
+  el('rect', {x:x, y:CY-56, width:170, height:112, rx:12, fill:'none',
+    stroke:INK, 'stroke-width':1.1, 'stroke-dasharray':'7 6', opacity:.75});
+  txt(x+85, CY-8, '?', {'font-family':MONO, 'font-size':'var(--type-heading)', 'text-anchor':'middle', fill:'var(--ink-55)'});
+  txt(x+85, CY+34, s, {'font-family':SANS, 'font-weight':300, 'font-size':'var(--type-body-small)', 'text-anchor':'middle', fill:'var(--ink-70)'});
+  if (i < steps.length-1) {
+    el('line', {x1:x+170, y1:CY, x2:x+gapX-6, y2:CY, stroke:INK, 'stroke-width':1.2, 'stroke-dasharray':'6 7', 'marker-end':'url(#arrow)', opacity:.6});
+  }
+});
+el('line', {x1:sx0+3*gapX+170, y1:CY, x2:1424, y2:CY, stroke:INK, 'stroke-width':1.2, 'stroke-dasharray':'6 7', 'marker-end':'url(#arrow)', opacity:.6});
+
+/* ---------- 底部：下方 mono 注记（不可见过程的耗时标尺） ---------- */
+el('line', {x1:560, y1:668, x2:1390, y2:668, stroke:INK, 'stroke-width':.6, 'stroke-dasharray':'2 6', opacity:.3});
+for (var i = 0; i <= 4; i++) {
+  var tx = 560 + i * 207.5;
+  el('line', {x1:tx, y1:662, x2:tx, y2:674, stroke:INK, 'stroke-width':.8, opacity:.5});
+  txt(tx, 700, 'STEP 0' + (i+1), {'font-family':MONO, 'font-size':'var(--type-micro-secondary)', 'letter-spacing':2, 'text-anchor':'middle', fill:INK45});
+}
+txt(975, 736, 'TOTAL 1.8 S · OBSERVED FROM OUTSIDE: NOTHING', {'font-family':MONO, 'font-size':'var(--type-meta)', 'letter-spacing':2, 'text-anchor':'middle', fill:INK45});
+
+stageFit();
+</script>
+</body>
+</html>

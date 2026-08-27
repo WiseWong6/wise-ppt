@@ -1,0 +1,508 @@
+{
+  "contract": "wise-ppt-layout-seed@4",
+  "layout_id": "paper-ink.relationship.Q4",
+  "display_code": "Q4",
+  "page_kind": "relationship",
+  "source": {
+    "path": "references/gallery-paper-ink/ai/frames/layout-q4.html",
+    "sha256": "77fdb6f0901f7ab1f479314f72e57f3819f42f9da41d65f5a7e7521625d6f22a"
+  },
+  "locked": {
+    "scoped_css": "@scope (.slide[data-layout-id=\"paper-ink.relationship.Q4\"]) {\nsvg.scene{position:absolute;inset:0;z-index:1}\n  .caption{position:absolute;left:0;right:0;bottom:118px;text-align:center;font-family:var(--sans);font-weight:400;font-size:var(--type-caption);letter-spacing:.04em;color:var(--ink);z-index:5}\n  .quad-no{font-family:var(--mono);font-size:54px;letter-spacing:3px;fill:var(--ink);opacity:.1}\n  .quad-code{font-family:var(--mono);font-size:14px;letter-spacing:2.5px;fill:var(--ink-45)}\n  .quad-title{font-family:var(--sans);font-weight:300}\n  .quad-note{font-family:var(--sans);font-weight:300;font-size:17px;fill:var(--ink-70)}\n  .quad-note.secondary{fill:var(--ink-55)}\n  .axis-label{font-family:var(--sans);font-weight:300;font-size:15px;fill:color-mix(in srgb, var(--ink) 48%, transparent)}\n  .axis-code{font-family:var(--mono);font-size:13px;letter-spacing:2.4px;fill:color-mix(in srgb, var(--ink) 42%, transparent)}\n}\n",
+    "css_sha256": "54cc3de565843890244e5ea36b979ec9aec2c738ced2d4214b3b977d38e2ffb9",
+    "stage_html": "<div class=\"stage\" data-block-id=\"gallery-primary\" data-component-id=\"native.paper-ink.semantic.evidence-panel\" data-component-source=\"native\" data-content-ref=\"example.q4\" data-renderer-kind=\"native-html\" data-visual-reference=\"atlas.021.quadrant-axis\">\n<div class=\"doc tl\"><span class=\"vnext-text-node\" data-vnext-fit-box=\"0,0,1920,1080\" data-vnext-text-key=\"evidence-a.text.001\">PPT 标题</span><br/><span class=\"vnext-text-node\" data-vnext-fit-box=\"0,0,1920,1080\" data-vnext-text-key=\"evidence-a.text.002\">页面标题</span></div>\n<div class=\"folio\">页码 / 总页数 — BY @歪斯Wise</div>\n<svg aria-label=\"沿用象限图组件视觉骨架的四个独立证据槽位\" class=\"scene\" height=\"1080\" viewbox=\"0 0 1920 1080\" width=\"1920\">\n<!-- atlas.021.quadrant-axis 只提供视觉母板；四象限仍逐槽独立绑定。 -->\n<g fill=\"none\" opacity=\".72\" stroke=\"var(--ink)\">\n<line stroke-width=\"1.1\" x1=\"960\" x2=\"960\" y1=\"214\" y2=\"842\"></line>\n<path d=\"M960 214 L953 228 M960 214 L967 228\" stroke-width=\"1.1\"></path>\n<line stroke-width=\"1.1\" x1=\"120\" x2=\"1800\" y1=\"506\" y2=\"506\"></line>\n<path d=\"M1800 506 L1786 499 M1800 506 L1786 513\" stroke-width=\"1.1\"></path>\n</g>\n<circle cx=\"960\" cy=\"506\" fill=\"var(--ink)\" r=\"3\"></circle>\n<text class=\"axis-code\" data-vnext-fit-box=\"0,0,1920,1080\" data-vnext-text-key=\"evidence-a.text.003\" text-anchor=\"middle\" x=\"960\" y=\"183\">OUTPUT</text>\n<text class=\"axis-label\" data-vnext-fit-box=\"0,0,1920,1080\" data-vnext-text-key=\"evidence-a.text.004\" text-anchor=\"middle\" x=\"960\" y=\"204\">最终产物 ↑</text>\n<text class=\"axis-label\" data-vnext-fit-box=\"0,0,1920,1080\" data-vnext-text-key=\"evidence-a.text.005\" text-anchor=\"middle\" x=\"960\" y=\"846\">过程证据 ↓</text>\n<text class=\"axis-code\" data-vnext-fit-box=\"0,0,1920,1080\" data-vnext-text-key=\"evidence-a.text.006\" text-anchor=\"middle\" x=\"960\" y=\"872\">TRACE</text>\n<text class=\"axis-code\" data-vnext-fit-box=\"0,0,1920,1080\" data-vnext-text-key=\"evidence-a.text.007\" text-anchor=\"end\" x=\"212\" y=\"519\">CONTENT</text>\n<text class=\"axis-label\" data-vnext-fit-box=\"0,0,1920,1080\" data-vnext-text-key=\"evidence-a.text.008\" text-anchor=\"end\" x=\"212\" y=\"542\">内容侧 ←</text>\n<text class=\"axis-code\" data-vnext-fit-box=\"0,0,1920,1080\" data-vnext-text-key=\"evidence-a.text.009\" x=\"1708\" y=\"519\">SYSTEM</text>\n<text class=\"axis-label\" data-vnext-fit-box=\"0,0,1920,1080\" data-vnext-text-key=\"evidence-a.text.010\" x=\"1708\" y=\"542\">系统侧 →</text>\n<g data-component-id=\"native.paper-ink.semantic.evidence-panel\" data-slot-id=\"evidence-a\" transform=\"translate(290 212)\">\n<text class=\"quad-no\" data-vnext-fit-box=\"0,0,1920,1080\" data-vnext-text-key=\"evidence-a.text.011\" x=\"0\" y=\"40\">Q1</text>\n<text class=\"quad-code\" data-vnext-fit-box=\"290,210,790,428\" data-vnext-text-key=\"evidence-a.text.012\" x=\"0\" y=\"76\">ANSWER · CONTENT OUTPUT</text>\n<line opacity=\".5\" stroke=\"var(--ink)\" stroke-width=\".8\" x1=\"0\" x2=\"64\" y1=\"91\" y2=\"91\"></line>\n<text class=\"quad-title\" data-vnext-fit-box=\"290,210,790,428\" data-vnext-text-key=\"evidence-a.text.013\" fill=\"var(--ink)\" font-size=\"var(--type-subheading)\" x=\"0\" y=\"137\">最终回答</text>\n<text class=\"quad-note\" data-vnext-fit-box=\"290,210,790,428\" data-vnext-text-key=\"evidence-a.text.014\" x=\"0\" y=\"180\">主张句完整，引用位置可定位</text>\n<text class=\"quad-note secondary\" data-vnext-fit-box=\"0,0,1920,1080\" data-vnext-text-key=\"evidence-a.text.015\" x=\"0\" y=\"211\">结论没有超出证据边界</text>\n<path d=\"M430 110 h70 v54 h-70 z M445 128 h40 M445 143 h30\" fill=\"none\" opacity=\".34\" stroke=\"var(--ink)\" stroke-width=\"1\"></path>\n</g>\n<g data-component-id=\"native.paper-ink.semantic.evidence-panel\" data-slot-id=\"evidence-b\" transform=\"translate(1129 212)\">\n<text class=\"quad-no\" data-vnext-fit-box=\"0,0,1920,1080\" data-vnext-text-key=\"evidence-b.text.001\" x=\"0\" y=\"40\">Q2</text>\n<text class=\"quad-code\" data-vnext-fit-box=\"1129,210,1631,428\" data-vnext-text-key=\"evidence-b.text.002\" x=\"0\" y=\"76\">RECEIPT · SYSTEM OUTPUT</text>\n<line opacity=\".5\" stroke=\"var(--ink)\" stroke-width=\".8\" x1=\"0\" x2=\"64\" y1=\"91\" y2=\"91\"></line>\n<text class=\"quad-title\" data-vnext-fit-box=\"1129,210,1631,428\" data-vnext-text-key=\"evidence-b.text.003\" fill=\"var(--ink)\" font-size=\"var(--type-subheading)\" x=\"0\" y=\"137\">校验收据</text>\n<text class=\"quad-note\" data-vnext-fit-box=\"1129,210,1631,428\" data-vnext-text-key=\"evidence-b.text.004\" x=\"0\" y=\"180\">内容、结构、引用三项门禁通过</text>\n<text class=\"quad-note secondary\" data-vnext-fit-box=\"0,0,1920,1080\" data-vnext-text-key=\"evidence-b.text.005\" x=\"0\" y=\"211\">失败项为 0，生成时间已留档</text>\n<circle cx=\"466\" cy=\"138\" fill=\"none\" opacity=\".34\" r=\"36\" stroke=\"var(--ink)\" stroke-width=\"1\"></circle>\n<path d=\"M448 139 L461 151 L486 119\" fill=\"none\" opacity=\".56\" stroke=\"var(--ink)\" stroke-width=\"1.6\"></path>\n</g>\n<g data-component-id=\"native.paper-ink.semantic.evidence-panel\" data-slot-id=\"evidence-c\" transform=\"translate(289 587)\">\n<text class=\"quad-no\" data-vnext-fit-box=\"0,0,1920,1080\" data-vnext-text-key=\"evidence-c.text.001\" x=\"0\" y=\"40\">Q3</text>\n<text class=\"quad-code\" data-vnext-fit-box=\"289,585,791,803\" data-vnext-text-key=\"evidence-c.text.002\" x=\"0\" y=\"76\">RETRIEVAL · CONTENT TRACE</text>\n<line opacity=\".5\" stroke=\"var(--ink)\" stroke-width=\".8\" x1=\"0\" x2=\"64\" y1=\"91\" y2=\"91\"></line>\n<text class=\"quad-title\" data-vnext-fit-box=\"289,585,791,803\" data-vnext-text-key=\"evidence-c.text.003\" fill=\"var(--ink)\" font-size=\"var(--type-subheading)\" x=\"0\" y=\"137\">检索证据</text>\n<text class=\"quad-note\" data-vnext-fit-box=\"289,585,791,803\" data-vnext-text-key=\"evidence-c.text.004\" x=\"0\" y=\"180\">命中文档 6 / 8，关键段落均覆盖</text>\n<text class=\"quad-note secondary\" data-vnext-fit-box=\"0,0,1920,1080\" data-vnext-text-key=\"evidence-c.text.005\" x=\"0\" y=\"211\">版本、权限与有效期均已核对</text>\n<g fill=\"none\" opacity=\".34\" stroke=\"var(--ink)\" stroke-width=\".9\" transform=\"translate(434 111)\">\n<rect height=\"52\" width=\"68\" x=\"0\" y=\"0\"></rect><line x1=\"12\" x2=\"55\" y1=\"15\" y2=\"15\"></line><line x1=\"12\" x2=\"47\" y1=\"27\" y2=\"27\"></line><line x1=\"12\" x2=\"52\" y1=\"39\" y2=\"39\"></line>\n</g>\n</g>\n<g data-component-id=\"native.paper-ink.semantic.evidence-panel\" data-slot-id=\"evidence-d\" transform=\"translate(1126 587)\">\n<text class=\"quad-no\" data-vnext-fit-box=\"0,0,1920,1080\" data-vnext-text-key=\"evidence-d.text.001\" x=\"0\" y=\"40\">Q4</text>\n<text class=\"quad-code\" data-vnext-fit-box=\"1126,585,1634,803\" data-vnext-text-key=\"evidence-d.text.002\" x=\"0\" y=\"76\">TOOL TRACE · SYSTEM TRACE</text>\n<line opacity=\".5\" stroke=\"var(--ink)\" stroke-width=\".8\" x1=\"0\" x2=\"64\" y1=\"91\" y2=\"91\"></line>\n<text class=\"quad-title\" data-vnext-fit-box=\"1126,585,1634,803\" data-vnext-text-key=\"evidence-d.text.003\" fill=\"var(--ink)\" font-size=\"var(--type-subheading)\" x=\"0\" y=\"137\">工具轨迹</text>\n<text class=\"quad-note\" data-vnext-fit-box=\"1126,585,1634,803\" data-vnext-text-key=\"evidence-d.text.004\" x=\"0\" y=\"180\">路由、参数、返回值均可重放</text>\n<text class=\"quad-note secondary\" data-vnext-fit-box=\"0,0,1920,1080\" data-vnext-text-key=\"evidence-d.text.005\" x=\"0\" y=\"211\">无隐藏重试，也没有越权调用</text>\n<g fill=\"none\" opacity=\".36\" stroke=\"var(--ink)\" stroke-width=\"1\" transform=\"translate(432 119)\">\n<circle cx=\"7\" cy=\"22\" r=\"6\"></circle><circle cx=\"42\" cy=\"0\" r=\"6\"></circle><circle cx=\"70\" cy=\"34\" r=\"6\"></circle><line x1=\"12\" x2=\"36\" y1=\"18\" y2=\"4\"></line><line x1=\"47\" x2=\"66\" y1=\"5\" y2=\"29\"></line>\n</g>\n</g>\n</svg>\n<div class=\"caption\" data-vnext-claim-key=\"claim.text.001\" data-vnext-fit-box=\"0,0,1920,1080\">可靠回答不只交付结果，还要同时留下<span data-content-ref=\"sample.q4.q4-focus\" data-emphasis-role=\"label\" id=\"focus-caption\">内容侧与系统侧的过程证据</span>。</div>\n</div>",
+    "stage_structure_sha256": "2df9260121ab6642e7ce5dd6904387e409fff769dbd41f10fc2ac55898081f2b"
+  },
+  "bindings": {
+    "claim": {
+      "key": "claim.text.001",
+      "default": "可靠回答不只交付结果，还要同时留下 内容侧与系统侧的过程证据 。",
+      "max_chars": 36,
+      "fit_box": [
+        0.0,
+        0.0,
+        1920.0,
+        1080.0
+      ],
+      "fit_owner_kind": "slide"
+    },
+    "primary_slot": "evidence-a",
+    "slots": {
+      "evidence-a": {
+        "text": [
+          {
+            "key": "evidence-a.text.001",
+            "default": "PPT 标题",
+            "max_chars": 40,
+            "item_scope": "item",
+            "item_group_source": "fixed-slot",
+            "item_index": 0,
+            "fit_box": [
+              0.0,
+              0.0,
+              1920.0,
+              1080.0
+            ],
+            "fit_owner_kind": "slide"
+          },
+          {
+            "key": "evidence-a.text.002",
+            "default": "页面标题",
+            "max_chars": 72,
+            "item_scope": "item",
+            "item_group_source": "fixed-slot",
+            "item_index": 0,
+            "fit_box": [
+              0.0,
+              0.0,
+              1920.0,
+              1080.0
+            ],
+            "fit_owner_kind": "slide"
+          },
+          {
+            "key": "evidence-a.text.003",
+            "default": "OUTPUT",
+            "max_chars": 9,
+            "item_scope": "item",
+            "item_group_source": "fixed-slot",
+            "item_index": 0,
+            "fit_box": [
+              0.0,
+              0.0,
+              1920.0,
+              1080.0
+            ],
+            "fit_owner_kind": "slide"
+          },
+          {
+            "key": "evidence-a.text.004",
+            "default": "最终产物 ↑",
+            "max_chars": 7,
+            "item_scope": "item",
+            "item_group_source": "fixed-slot",
+            "item_index": 0,
+            "fit_box": [
+              0.0,
+              0.0,
+              1920.0,
+              1080.0
+            ],
+            "fit_owner_kind": "slide"
+          },
+          {
+            "key": "evidence-a.text.005",
+            "default": "过程证据 ↓",
+            "max_chars": 7,
+            "item_scope": "item",
+            "item_group_source": "fixed-slot",
+            "item_index": 0,
+            "fit_box": [
+              0.0,
+              0.0,
+              1920.0,
+              1080.0
+            ],
+            "fit_owner_kind": "slide"
+          },
+          {
+            "key": "evidence-a.text.006",
+            "default": "TRACE",
+            "max_chars": 7,
+            "item_scope": "item",
+            "item_group_source": "fixed-slot",
+            "item_index": 0,
+            "fit_box": [
+              0.0,
+              0.0,
+              1920.0,
+              1080.0
+            ],
+            "fit_owner_kind": "slide"
+          },
+          {
+            "key": "evidence-a.text.007",
+            "default": "CONTENT",
+            "max_chars": 10,
+            "item_scope": "item",
+            "item_group_source": "fixed-slot",
+            "item_index": 0,
+            "fit_box": [
+              0.0,
+              0.0,
+              1920.0,
+              1080.0
+            ],
+            "fit_owner_kind": "slide"
+          },
+          {
+            "key": "evidence-a.text.008",
+            "default": "内容侧 ←",
+            "max_chars": 6,
+            "item_scope": "item",
+            "item_group_source": "fixed-slot",
+            "item_index": 0,
+            "fit_box": [
+              0.0,
+              0.0,
+              1920.0,
+              1080.0
+            ],
+            "fit_owner_kind": "slide"
+          },
+          {
+            "key": "evidence-a.text.009",
+            "default": "SYSTEM",
+            "max_chars": 9,
+            "item_scope": "item",
+            "item_group_source": "fixed-slot",
+            "item_index": 0,
+            "fit_box": [
+              0.0,
+              0.0,
+              1920.0,
+              1080.0
+            ],
+            "fit_owner_kind": "slide"
+          },
+          {
+            "key": "evidence-a.text.010",
+            "default": "系统侧 →",
+            "max_chars": 6,
+            "item_scope": "item",
+            "item_group_source": "fixed-slot",
+            "item_index": 0,
+            "fit_box": [
+              0.0,
+              0.0,
+              1920.0,
+              1080.0
+            ],
+            "fit_owner_kind": "slide"
+          },
+          {
+            "key": "evidence-a.text.011",
+            "default": "Q1",
+            "max_chars": 3,
+            "item_scope": "item",
+            "item_group_source": "fixed-slot",
+            "item_index": 0,
+            "fit_box": [
+              0.0,
+              0.0,
+              1920.0,
+              1080.0
+            ],
+            "fit_owner_kind": "slide"
+          },
+          {
+            "key": "evidence-a.text.012",
+            "default": "ANSWER · CONTENT OUTPUT",
+            "max_chars": 27,
+            "item_scope": "item",
+            "item_group_source": "fixed-slot",
+            "item_index": 0,
+            "fit_box": [
+              290.0,
+              210.0,
+              790.0,
+              428.0
+            ],
+            "fit_owner_kind": "svg-group"
+          },
+          {
+            "key": "evidence-a.text.013",
+            "default": "最终回答",
+            "max_chars": 6,
+            "item_scope": "item",
+            "item_group_source": "fixed-slot",
+            "item_index": 0,
+            "fit_box": [
+              290.0,
+              210.0,
+              790.0,
+              428.0
+            ],
+            "fit_owner_kind": "svg-group"
+          },
+          {
+            "key": "evidence-a.text.014",
+            "default": "主张句完整，引用位置可定位",
+            "max_chars": 18,
+            "item_scope": "item",
+            "item_group_source": "fixed-slot",
+            "item_index": 0,
+            "fit_box": [
+              290.0,
+              210.0,
+              790.0,
+              428.0
+            ],
+            "fit_owner_kind": "svg-group"
+          },
+          {
+            "key": "evidence-a.text.015",
+            "default": "结论没有超出证据边界",
+            "max_chars": 14,
+            "item_scope": "item",
+            "item_group_source": "fixed-slot",
+            "item_index": 0,
+            "fit_box": [
+              0.0,
+              0.0,
+              1920.0,
+              1080.0
+            ],
+            "fit_owner_kind": "slide"
+          }
+        ],
+        "icon": []
+      },
+      "evidence-b": {
+        "text": [
+          {
+            "key": "evidence-b.text.001",
+            "default": "Q2",
+            "max_chars": 3,
+            "item_scope": "item",
+            "item_group_source": "fixed-slot",
+            "item_index": 0,
+            "fit_box": [
+              0.0,
+              0.0,
+              1920.0,
+              1080.0
+            ],
+            "fit_owner_kind": "slide"
+          },
+          {
+            "key": "evidence-b.text.002",
+            "default": "RECEIPT · SYSTEM OUTPUT",
+            "max_chars": 27,
+            "item_scope": "item",
+            "item_group_source": "fixed-slot",
+            "item_index": 0,
+            "fit_box": [
+              1129.0,
+              210.0,
+              1631.0,
+              428.0
+            ],
+            "fit_owner_kind": "svg-group"
+          },
+          {
+            "key": "evidence-b.text.003",
+            "default": "校验收据",
+            "max_chars": 6,
+            "item_scope": "item",
+            "item_group_source": "fixed-slot",
+            "item_index": 0,
+            "fit_box": [
+              1129.0,
+              210.0,
+              1631.0,
+              428.0
+            ],
+            "fit_owner_kind": "svg-group"
+          },
+          {
+            "key": "evidence-b.text.004",
+            "default": "内容、结构、引用三项门禁通过",
+            "max_chars": 19,
+            "item_scope": "item",
+            "item_group_source": "fixed-slot",
+            "item_index": 0,
+            "fit_box": [
+              1129.0,
+              210.0,
+              1631.0,
+              428.0
+            ],
+            "fit_owner_kind": "svg-group"
+          },
+          {
+            "key": "evidence-b.text.005",
+            "default": "失败项为 0，生成时间已留档",
+            "max_chars": 18,
+            "item_scope": "item",
+            "item_group_source": "fixed-slot",
+            "item_index": 0,
+            "fit_box": [
+              0.0,
+              0.0,
+              1920.0,
+              1080.0
+            ],
+            "fit_owner_kind": "slide"
+          }
+        ],
+        "icon": []
+      },
+      "evidence-c": {
+        "text": [
+          {
+            "key": "evidence-c.text.001",
+            "default": "Q3",
+            "max_chars": 3,
+            "item_scope": "item",
+            "item_group_source": "fixed-slot",
+            "item_index": 0,
+            "fit_box": [
+              0.0,
+              0.0,
+              1920.0,
+              1080.0
+            ],
+            "fit_owner_kind": "slide"
+          },
+          {
+            "key": "evidence-c.text.002",
+            "default": "RETRIEVAL · CONTENT TRACE",
+            "max_chars": 29,
+            "item_scope": "item",
+            "item_group_source": "fixed-slot",
+            "item_index": 0,
+            "fit_box": [
+              289.0,
+              585.0,
+              791.0,
+              803.0
+            ],
+            "fit_owner_kind": "svg-group"
+          },
+          {
+            "key": "evidence-c.text.003",
+            "default": "检索证据",
+            "max_chars": 6,
+            "item_scope": "item",
+            "item_group_source": "fixed-slot",
+            "item_index": 0,
+            "fit_box": [
+              289.0,
+              585.0,
+              791.0,
+              803.0
+            ],
+            "fit_owner_kind": "svg-group"
+          },
+          {
+            "key": "evidence-c.text.004",
+            "default": "命中文档 6 / 8，关键段落均覆盖",
+            "max_chars": 21,
+            "item_scope": "item",
+            "item_group_source": "fixed-slot",
+            "item_index": 0,
+            "fit_box": [
+              289.0,
+              585.0,
+              791.0,
+              803.0
+            ],
+            "fit_owner_kind": "svg-group"
+          },
+          {
+            "key": "evidence-c.text.005",
+            "default": "版本、权限与有效期均已核对",
+            "max_chars": 18,
+            "item_scope": "item",
+            "item_group_source": "fixed-slot",
+            "item_index": 0,
+            "fit_box": [
+              0.0,
+              0.0,
+              1920.0,
+              1080.0
+            ],
+            "fit_owner_kind": "slide"
+          }
+        ],
+        "icon": []
+      },
+      "evidence-d": {
+        "text": [
+          {
+            "key": "evidence-d.text.001",
+            "default": "Q4",
+            "max_chars": 3,
+            "item_scope": "item",
+            "item_group_source": "fixed-slot",
+            "item_index": 0,
+            "fit_box": [
+              0.0,
+              0.0,
+              1920.0,
+              1080.0
+            ],
+            "fit_owner_kind": "slide"
+          },
+          {
+            "key": "evidence-d.text.002",
+            "default": "TOOL TRACE · SYSTEM TRACE",
+            "max_chars": 29,
+            "item_scope": "item",
+            "item_group_source": "fixed-slot",
+            "item_index": 0,
+            "fit_box": [
+              1126.0,
+              585.0,
+              1634.0,
+              803.0
+            ],
+            "fit_owner_kind": "svg-group"
+          },
+          {
+            "key": "evidence-d.text.003",
+            "default": "工具轨迹",
+            "max_chars": 6,
+            "item_scope": "item",
+            "item_group_source": "fixed-slot",
+            "item_index": 0,
+            "fit_box": [
+              1126.0,
+              585.0,
+              1634.0,
+              803.0
+            ],
+            "fit_owner_kind": "svg-group"
+          },
+          {
+            "key": "evidence-d.text.004",
+            "default": "路由、参数、返回值均可重放",
+            "max_chars": 18,
+            "item_scope": "item",
+            "item_group_source": "fixed-slot",
+            "item_index": 0,
+            "fit_box": [
+              1126.0,
+              585.0,
+              1634.0,
+              803.0
+            ],
+            "fit_owner_kind": "svg-group"
+          },
+          {
+            "key": "evidence-d.text.005",
+            "default": "无隐藏重试，也没有越权调用",
+            "max_chars": 18,
+            "item_scope": "item",
+            "item_group_source": "fixed-slot",
+            "item_index": 0,
+            "fit_box": [
+              0.0,
+              0.0,
+              1920.0,
+              1080.0
+            ],
+            "fit_owner_kind": "slide"
+          }
+        ],
+        "icon": []
+      },
+      "takeaway": {
+        "text": [],
+        "icon": []
+      }
+    }
+  },
+  "seed_sha256": "848e0ddff4e1c6b874a4387977971fe99a299ed632776f82ed9620779a870f34"
+}

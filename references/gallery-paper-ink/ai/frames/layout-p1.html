@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-runtime="wise-ppt-specimen" data-typography-mode="all-sans" data-page-id="gallery-ai-p1" data-page-role="explain" data-theme="paper-ink" data-layout="paper-ink.flow.blackbox-annotation" data-layout-source="gallery" data-sample-focus-profile="content-only" data-sample-focus-members='[{"selector":"#sample-focus","role":"value"}]' data-sample-focus-ref="sample.p1.p1-focus">
+<head>
+<meta charset="UTF-8">
+<title>layout-p1 · 黑箱剖面 + 编号标注 · AI 评测三陷阱</title>
+<script src="../../../../runtime/stage-fit.js"></script>
+<link rel="stylesheet" href="../../../../themes/paper-ink/assets/design-tokens.css">
+<link rel="stylesheet" href="../../../../themes/paper-ink/assets/catalog-fonts.css" data-wise-catalog-fonts="true">
+<link rel="stylesheet" href="../../../../themes/paper-ink/assets/slide-components.css">
+<link rel="stylesheet" href="../../../shell.css">
+<style>
+  svg.scene { position: absolute; inset: 0; z-index: 1; }
+  .caption {
+    position: absolute; left: 0; right: 0; bottom: 118px;
+    text-align: center;
+    font-family: var(--sans); font-weight: 400;
+    font-size: var(--type-caption); letter-spacing: .04em;
+    color: var(--ink);
+    z-index: 5;
+  }
+</style>
+</head>
+<body class="slide">
+<div class="stage" data-block-id="gallery-primary" data-renderer-kind="svg" data-component-source="native" data-component-id="native.paper-ink.flow.blackbox-annotation.blackbox-flow" data-content-ref="example.p1">
+  <div class="doc tl">PPT 标题<br>页面标题</div>
+  <div class="folio">页码 / 总页数 — BY @歪斯Wise</div>
+
+  <svg class="scene" width="1920" height="1080" viewBox="0 0 1920 1080">
+    <defs>
+      <pattern id="p1-hatch" width="8" height="8" patternTransform="rotate(45)" patternUnits="userSpaceOnUse">
+        <line x1="0" y1="0" x2="0" y2="8" stroke="var(--ink)" stroke-width=".7" opacity=".3"/>
+      </pattern>
+      <marker id="p1-darrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+        <path d="M 0 0 L 10 5 L 0 10" fill="none" stroke="var(--ink)" stroke-width="1.4"/>
+      </marker>
+    </defs>
+    <g id="draw"></g>
+  </svg>
+
+  <div class="caption">最危险的不是低分，而是答案过关、过程风险没有被看见。</div>
+</div>
+
+<script>
+var NS = 'http://www.w3.org/2000/svg';
+var INK = 'var(--ink)';
+var INK70 = 'var(--ink-70)';
+var INK45 = 'var(--ink-45)';
+var G = document.getElementById('draw');
+function el(tag, attrs) {
+  var e = document.createElementNS(NS, tag);
+  for (var k in attrs) e.setAttribute(k, attrs[k]);
+  G.appendChild(e); return e;
+}
+function txt(x, y, str, attrs) {
+  var t = el('text', Object.assign({x:x, y:y}, attrs||{}));
+  t.textContent = str; return t;
+}
+var MONO = 'var(--mono)', SANS = 'var(--sans)', BRUSH = 'var(--brush)';
+
+G = el('g', {transform:'translate(0 -23)'});
+var CY = 442;
+
+/* ---------- 顶部 mono 小注 + 短细线 ---------- */
+txt(960, 224, 'THE PROCESS IN BETWEEN IS INVISIBLE', {'font-family':MONO, 'font-size':'var(--type-label)', 'letter-spacing':5, 'text-anchor':'middle', fill:'color-mix(in srgb, var(--ink) 40%, transparent)'});
+el('line', {x1:790, y1:240, x2:1130, y2:240, stroke:INK, 'stroke-width':.6, opacity:.3});
+
+/* ---------- 左端：INPUT 实线气泡（已知端点） ---------- */
+el('rect', {x:180, y:CY-64, width:280, height:128, rx:16, fill:'var(--paper-panel)', stroke:'var(--ink-80)', 'stroke-width':1.3});
+txt(320, CY-8, 'INPUT', {'font-family':MONO, 'font-size':'var(--type-label)', 'letter-spacing':3, 'text-anchor':'middle', fill:INK45});
+txt(320, CY+34, '同一输入', {'font-family':SANS, 'font-weight':400, 'font-size':'var(--type-subheading)', 'text-anchor':'middle', fill:INK});
+
+/* 同一输入发散出两条虚线出线路径（非确定性） */
+el('path', {d:'M 460 '+(CY-14)+' C 520 '+(CY-58)+' 552 '+(CY-64)+' 600 '+(CY-52), fill:'none',
+  stroke:INK, 'stroke-width':1.1, opacity:.6, 'stroke-dasharray':'6 6'});
+el('path', {d:'M 460 '+(CY+14)+' C 520 '+(CY+58)+' 552 '+(CY+64)+' 600 '+(CY+52), fill:'none',
+  stroke:INK, 'stroke-width':1.1, opacity:.6, 'stroke-dasharray':'6 6'});
+
+/* ---------- 中段：hatch 剖面黑箱，罩住不可见步骤 ---------- */
+var BX0 = 600, BX1 = 1260, BY0 = 312, BY1 = 582;
+el('rect', {x:BX0, y:BY0, width:BX1-BX0, height:BY1-BY0, fill:'url(#p1-hatch)', stroke:'var(--ink-80)', 'stroke-width':1.4});
+el('rect', {x:BX0+8, y:BY0+8, width:BX1-BX0-16, height:BY1-BY0-16, fill:'none', stroke:INK, 'stroke-width':.6, opacity:.3});
+
+/* 黑箱内：3 个虚线圆角步骤框，虚线箭头相连 */
+var steps = ['选了哪个 Skill？', '调了什么工具？', '校验跑了吗？'];
+var SW = 150, SH = 96, SY = CY - 48;
+var sx = [668, 855, 1042];
+steps.forEach(function(s, i){
+  var x = sx[i];
+  el('rect', {x:x, y:SY, width:SW, height:SH, rx:12, fill:'none',
+    stroke:INK, 'stroke-width':1.1, opacity:.75, 'stroke-dasharray':'7 6'});
+  txt(x+SW/2, CY-6, '?', {'font-family':MONO, 'font-size':'var(--type-heading)', 'text-anchor':'middle', fill:'var(--ink-55)'});
+  txt(x+SW/2, CY+30, s, {'font-family':SANS, 'font-weight':300, 'font-size':'var(--type-body-small)', 'text-anchor':'middle', fill:INK70});
+  if (i < 2) {
+    el('line', {x1:x+SW+6, y1:CY, x2:sx[i+1]-8, y2:CY, stroke:INK, 'stroke-width':1.1, opacity:.6,
+      'stroke-dasharray':'5 6', 'marker-end':'url(#p1-darrow)'});
+  }
+});
+/* 黑箱出口虚线箭头 → OUTPUT */
+el('line', {x1:BX1+10, y1:CY, x2:1354, y2:CY, stroke:INK, 'stroke-width':1.1, opacity:.6,
+  'stroke-dasharray':'5 6', 'marker-end':'url(#p1-darrow)'});
+
+/* 箱内一条小折线偏差逐步放大（错误级联） */
+el('polyline', {points:'660,538 700,532 740,544 800,524 860,552 940,512 1030,564 1140,496', fill:'none',
+  stroke:INK70, 'stroke-width':.9});
+
+/* ---------- 右端：OUTPUT 实线气泡（✓ 带纸色擦除断口 + ✕） ---------- */
+el('rect', {x:1370, y:CY-64, width:330, height:128, rx:16, fill:'var(--paper-panel)', stroke:'var(--ink-80)', 'stroke-width':1.3});
+txt(1535, CY-8, 'OUTPUT', {'font-family':MONO, 'font-size':'var(--type-label)', 'letter-spacing':3, 'text-anchor':'middle', fill:INK45});
+txt(1535, CY+34, '看似正确的回答', {'font-family':SANS, 'font-weight':400, 'font-size':'var(--type-subheading)', 'text-anchor':'middle', fill:INK});
+/* 细线 ✓（符号笔触） */
+el('path', {d:'M 1648 458 L 1659 469 L 1681 443', fill:'none', stroke:INK, 'stroke-width':2.5, 'stroke-linecap':'round', 'stroke-linejoin':'round'});
+/* 纸色擦除断口 + ✕：答对也可能不可靠 */
+el('rect', {x:1652, y:454, width:15, height:13, fill:'var(--paper)'});
+el('line', {x1:1655, y1:456, x2:1664, y2:465, stroke:INK, 'stroke-width':1.2});
+el('line', {x1:1664, y1:456, x2:1655, y2:465, stroke:INK, 'stroke-width':1.2});
+
+/* ---------- 编号标注带：0.7px 虚线引线 + 中点小圆点，三列等宽 ---------- */
+function trap(anchorX, anchorY, bx, no, en, title, lines){
+  var ty = 719;
+  el('line', {x1:anchorX, y1:anchorY, x2:bx+10, y2:ty-8, stroke:INK, 'stroke-width':.7, opacity:.45, 'stroke-dasharray':'3 5'});
+  el('circle', {cx:(anchorX+bx+10)/2, cy:(anchorY+ty-8)/2, r:2.4, fill:INK, opacity:.55});
+  txt(bx, ty+24, no + ' · ' + en, {'font-family':MONO, 'font-size':'var(--type-label)', 'letter-spacing':2, fill:INK45});
+  txt(bx, ty+62, title, {'font-family':SANS, 'font-weight':400, 'font-size':'var(--type-body)', fill:INK});
+  lines.forEach(function(line, j){
+    txt(bx, ty+96 + j*30, line, {'font-family':SANS, 'font-weight':300, 'font-size':'var(--type-body-small)', fill:INK70});
+  });
+}
+trap(520, CY+46, 190, '01', 'NON-DETERMINISM', '非确定性',
+  ['同样输入，不保证同样输出；', '一次跑通，只证明“这次可以”。']);
+trap(800, BY1+2, 700, '02', 'PROCESS BLACK-BOX', '过程黑盒',
+  ['最终回复看似正确，仍可能选错 Skill、', '跳过校验，或依赖偶然路径。']);
+trap(1030, 590, 1080, '03', 'ERROR CASCADE', '错误级联',
+  ['路由、召回、工具参数的小偏差，', '在多步执行中被持续放大。']);
+
+/* ---------- 手写批注（全页 1 处）：指向 ✓ ---------- */
+el('line', {x1:1592, y1:594, x2:1654, y2:488, stroke:INK, 'stroke-width':.7, opacity:.45, 'stroke-dasharray':'3 5'});
+el('circle', {cx:1623, cy:541, r:2.4, fill:INK, opacity:.55});
+txt(1560, 636, '答对了，也可能只是运气', {id:'sample-focus',
+  'font-family':BRUSH, 'font-size':'var(--type-subheading)', 'text-anchor':'middle', fill:INK,
+  transform:'rotate(-2 1560 636)'
+});
+
+stageFit();
+</script>
+</body>
+</html>

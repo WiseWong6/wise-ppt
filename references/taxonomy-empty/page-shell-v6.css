@@ -1,0 +1,85 @@
+/* Render Plan v6 blueprint page shell.
+   Page furniture remains separate from content slots; the extra selectors
+   materialize blueprint-owned decorative anchors without mutating v5 goldens. */
+.slide .wise-page-title {
+  position: absolute;
+  z-index: 7;
+  margin: 0;
+  overflow: hidden;
+  font-family: var(--serif);
+  font-size: var(--type-title);
+  font-weight: 500;
+  line-height: 1.3;
+  letter-spacing: .03em;
+  color: var(--ink);
+}
+
+.slide .wise-content-stage {
+  position: absolute;
+  z-index: 2;
+  overflow: hidden;
+}
+
+.slide .wise-blueprint-anchor {
+  box-sizing: border-box;
+  color: var(--ink-25);
+  opacity: .42;
+}
+
+.slide .wise-blueprint-anchor--header-rule,
+.slide .wise-blueprint-anchor--reading-rail {
+  border-top: 1px solid currentColor;
+}
+
+.slide .wise-blueprint-anchor--split-rule {
+  border-top: 1px solid currentColor;
+  border-right: 1px solid currentColor;
+}
+
+.slide .wise-blueprint-anchor--band-rail {
+  border-top: 1px solid currentColor;
+  border-bottom: 1px solid currentColor;
+}
+
+.slide .wise-blueprint-anchor--matrix-grid {
+  border: 1px solid currentColor;
+  background-image:
+    linear-gradient(to right, transparent 49.9%, currentColor 50%, transparent 50.1%),
+    linear-gradient(to bottom, transparent 49.9%, currentColor 50%, transparent 50.1%);
+}
+
+.slide .wise-blueprint-anchor--radial-focus {
+  border: 1px solid currentColor;
+  border-radius: 50%;
+}
+
+.slide .wise-blueprint-anchor--focus-corner {
+  border-top: 1px solid currentColor;
+  border-left: 1px solid currentColor;
+}
+
+/* 单区墨迹上限圈(与名义槽同心,两圈即上下限合同)
+   不继承构造锚的 ink-25 × .42,否则缩略图尺度虚线会淡没 */
+.slide .wise-blueprint-anchor--ink-bound {
+  border: 2px dashed var(--ink);
+  opacity: 1;
+  color: var(--ink);
+}
+
+.slide .wise-page-conclusion {
+  position: absolute;
+  z-index: 7;
+  overflow: hidden;
+  text-align: center;
+  font-family: var(--sans);
+  font-size: var(--type-caption);
+  font-weight: 300;
+  line-height: 1.4;
+  letter-spacing: .04em;
+  color: var(--ink);
+}
+
+.slide .wise-page-shell > .folio[data-page-furniture="folio"] {
+  display: block;
+  overflow: hidden;
+}

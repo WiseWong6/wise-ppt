@@ -1,0 +1,633 @@
+{
+  "contract": "wise-ppt-layout-seed@4",
+  "layout_id": "paper-ink.relationship.F2",
+  "display_code": "F2",
+  "page_kind": "relationship",
+  "source": {
+    "path": "references/gallery-paper-ink/ai/frames/layout-f2.html",
+    "sha256": "3b4f653fcb5f8288b2b014cb5f1f6f8af2d822be67d5d97d09b9fd1502cc4fea"
+  },
+  "locked": {
+    "scoped_css": "@scope (.slide[data-layout-id=\"paper-ink.relationship.F2\"]) {\nsvg.scene { position: absolute; inset: 0; z-index: 1; }\n  .caption {\n    position: absolute; left: 0; right: 0; bottom: 118px;\n    text-align: center;\n    font-family: var(--sans); font-weight: 400;\n    font-size: var(--type-caption); letter-spacing: .04em;\n    color: var(--ink);\n    z-index: 5;\n  }\n}\n",
+    "css_sha256": "699bfc2fdb658d53afd6a437338415ba5038bd6197e34681c6bf04f2f614be2d",
+    "stage_html": "<div class=\"stage\" data-block-id=\"gallery-primary\" data-component-id=\"native.paper-ink.decomposition.structure-spec-split.structure\" data-component-source=\"native\" data-content-ref=\"example.f2\" data-renderer-kind=\"svg\">\n<div class=\"doc tl\"><span class=\"vnext-text-node\" data-vnext-fit-box=\"0,0,1920,1080\" data-vnext-text-key=\"support.text.001\">PPT 标题</span><br/><span class=\"vnext-text-node\" data-vnext-fit-box=\"0,0,1920,1080\" data-vnext-text-key=\"support.text.002\">页面标题</span></div>\n<div class=\"folio\">页码 / 总页数 — BY @歪斯Wise</div>\n<svg class=\"scene\" height=\"1080\" viewbox=\"0 0 1920 1080\" width=\"1920\">\n<defs>\n<pattern height=\"6\" id=\"hatch\" patterntransform=\"rotate(45)\" patternunits=\"userSpaceOnUse\" width=\"6\">\n<line opacity=\"0.35\" stroke=\"var(--ink)\" stroke-width=\"0.7\" x1=\"0\" x2=\"0\" y1=\"0\" y2=\"6\"></line>\n</pattern>\n</defs>\n<g id=\"draw\"><g transform=\"translate(0 -53.7)\"><rect fill=\"url(#hatch)\" height=\"64\" stroke=\"var(--ink-80)\" stroke-width=\"1.4\" width=\"640\" x=\"180\" y=\"250\"></rect><text data-vnext-fit-box=\"180,196,820,261\" data-vnext-text-key=\"structure.text.001\" fill=\"var(--ink)\" font-family=\"var(--mono)\" font-size=\"var(--type-body)\" text-anchor=\"middle\" x=\"404\" y=\"290\">TASK RUN</text><text data-vnext-fit-box=\"180,196,820,261\" data-vnext-text-key=\"structure.text.002\" fill=\"var(--ink)\" font-family=\"var(--sans)\" font-size=\"var(--type-body)\" font-weight=\"300\" x=\"470\" y=\"290\">一次 Agent 执行</text><line opacity=\"0.55\" stroke=\"var(--ink)\" stroke-width=\"0.8\" x1=\"220\" x2=\"220\" y1=\"314\" y2=\"370\"></line><line opacity=\"0.55\" stroke=\"var(--ink)\" stroke-width=\"0.8\" x1=\"220\" x2=\"260\" y1=\"370\" y2=\"370\"></line><circle cx=\"220\" cy=\"370\" fill=\"var(--ink)\" opacity=\"0.7\" r=\"2.4\"></circle><rect fill=\"none\" height=\"48\" stroke=\"var(--ink-80)\" stroke-width=\"1.2\" width=\"560\" x=\"260\" y=\"346\"></rect><rect fill=\"none\" height=\"40\" opacity=\"0.4\" stroke=\"var(--ink)\" stroke-width=\"0.6\" width=\"552\" x=\"264\" y=\"350\"></rect><text data-vnext-fit-box=\"264,296,816,337\" data-vnext-text-key=\"structure.text.003\" fill=\"var(--ink)\" font-family=\"var(--sans)\" font-size=\"var(--type-body)\" font-weight=\"300\" x=\"282\" y=\"378\">意图接入</text><text data-vnext-fit-box=\"264,296,816,337\" data-vnext-text-key=\"structure.text.004\" fill=\"color-mix(in srgb, var(--ink) 50%, transparent)\" font-family=\"var(--mono)\" font-size=\"var(--type-meta)\" text-anchor=\"end\" x=\"802\" y=\"376\">INTENT · PARSE</text><text data-vnext-fit-box=\"180,196,1750,817\" data-vnext-text-key=\"structure.text.005\" fill=\"color-mix(in srgb, var(--ink) 50%, transparent)\" font-family=\"var(--mono)\" font-size=\"var(--type-meta)\" x=\"846\" y=\"376\">4MS</text><line opacity=\"0.55\" stroke=\"var(--ink)\" stroke-width=\"0.8\" x1=\"220\" x2=\"220\" y1=\"314\" y2=\"434\"></line><line opacity=\"0.55\" stroke=\"var(--ink)\" stroke-width=\"0.8\" x1=\"220\" x2=\"260\" y1=\"434\" y2=\"434\"></line><circle cx=\"220\" cy=\"434\" fill=\"var(--ink)\" opacity=\"0.7\" r=\"2.4\"></circle><rect fill=\"none\" height=\"48\" stroke=\"var(--ink-80)\" stroke-width=\"1.2\" width=\"560\" x=\"260\" y=\"410\"></rect><rect fill=\"none\" height=\"40\" opacity=\"0.4\" stroke=\"var(--ink)\" stroke-width=\"0.6\" width=\"552\" x=\"264\" y=\"414\"></rect><text data-vnext-fit-box=\"264,360,816,401\" data-vnext-text-key=\"structure.text.006\" fill=\"var(--ink)\" font-family=\"var(--sans)\" font-size=\"var(--type-body)\" font-weight=\"300\" x=\"282\" y=\"442\">任务拆解</text><text data-vnext-fit-box=\"264,360,816,401\" data-vnext-text-key=\"structure.text.007\" fill=\"color-mix(in srgb, var(--ink) 50%, transparent)\" font-family=\"var(--mono)\" font-size=\"var(--type-meta)\" text-anchor=\"end\" x=\"802\" y=\"440\">PLAN ×6</text><text data-vnext-fit-box=\"180,196,1750,817\" data-vnext-text-key=\"structure.text.008\" fill=\"color-mix(in srgb, var(--ink) 50%, transparent)\" font-family=\"var(--mono)\" font-size=\"var(--type-meta)\" x=\"846\" y=\"440\">18MS</text><line opacity=\"0.55\" stroke=\"var(--ink)\" stroke-width=\"0.8\" x1=\"220\" x2=\"220\" y1=\"314\" y2=\"498\"></line><line opacity=\"0.55\" stroke=\"var(--ink)\" stroke-width=\"0.8\" x1=\"220\" x2=\"260\" y1=\"498\" y2=\"498\"></line><circle cx=\"220\" cy=\"498\" fill=\"var(--ink)\" opacity=\"0.7\" r=\"2.4\"></circle><rect fill=\"none\" height=\"48\" stroke=\"var(--ink-80)\" stroke-width=\"1.2\" width=\"560\" x=\"260\" y=\"474\"></rect><rect fill=\"none\" height=\"40\" opacity=\"0.4\" stroke=\"var(--ink)\" stroke-width=\"0.6\" width=\"552\" x=\"264\" y=\"478\"></rect><text data-vnext-fit-box=\"264,424,816,465\" data-vnext-text-key=\"structure.text.009\" fill=\"var(--ink)\" font-family=\"var(--sans)\" font-size=\"var(--type-body)\" font-weight=\"300\" x=\"282\" y=\"506\">工具选择</text><text data-vnext-fit-box=\"264,424,816,465\" data-vnext-text-key=\"structure.text.010\" fill=\"color-mix(in srgb, var(--ink) 50%, transparent)\" font-family=\"var(--mono)\" font-size=\"var(--type-meta)\" text-anchor=\"end\" x=\"802\" y=\"504\">TOOL · MATCH</text><text data-vnext-fit-box=\"180,196,1750,817\" data-vnext-text-key=\"structure.text.011\" fill=\"color-mix(in srgb, var(--ink) 50%, transparent)\" font-family=\"var(--mono)\" font-size=\"var(--type-meta)\" x=\"846\" y=\"504\">42MS</text><line opacity=\"0.55\" stroke=\"var(--ink)\" stroke-width=\"0.8\" x1=\"220\" x2=\"220\" y1=\"314\" y2=\"562\"></line><line opacity=\"0.55\" stroke=\"var(--ink)\" stroke-width=\"0.8\" x1=\"220\" x2=\"260\" y1=\"562\" y2=\"562\"></line><circle cx=\"220\" cy=\"562\" fill=\"var(--ink)\" opacity=\"0.7\" r=\"2.4\"></circle><rect fill=\"none\" height=\"48\" stroke=\"var(--ink-80)\" stroke-width=\"1.2\" width=\"560\" x=\"260\" y=\"538\"></rect><rect fill=\"none\" height=\"40\" opacity=\"0.4\" stroke=\"var(--ink)\" stroke-width=\"0.6\" width=\"552\" x=\"264\" y=\"542\"></rect><text data-vnext-fit-box=\"264,488,816,529\" data-vnext-text-key=\"structure.text.012\" fill=\"var(--ink)\" font-family=\"var(--sans)\" font-size=\"var(--type-body)\" font-weight=\"300\" x=\"282\" y=\"570\">执行调用</text><text data-vnext-fit-box=\"264,488,816,529\" data-vnext-text-key=\"structure.text.013\" fill=\"color-mix(in srgb, var(--ink) 50%, transparent)\" font-family=\"var(--mono)\" font-size=\"var(--type-meta)\" text-anchor=\"end\" x=\"802\" y=\"568\">CALL · TRACE</text><text data-vnext-fit-box=\"180,196,1750,817\" data-vnext-text-key=\"structure.text.014\" fill=\"color-mix(in srgb, var(--ink) 50%, transparent)\" font-family=\"var(--mono)\" font-size=\"var(--type-meta)\" x=\"846\" y=\"568\">9MS</text><line opacity=\"0.55\" stroke=\"var(--ink)\" stroke-width=\"0.8\" x1=\"220\" x2=\"220\" y1=\"314\" y2=\"626\"></line><line opacity=\"0.55\" stroke=\"var(--ink)\" stroke-width=\"0.8\" x1=\"220\" x2=\"260\" y1=\"626\" y2=\"626\"></line><circle cx=\"220\" cy=\"626\" fill=\"var(--ink)\" opacity=\"0.7\" r=\"2.4\"></circle><rect fill=\"none\" height=\"48\" stroke=\"var(--ink-80)\" stroke-width=\"1.2\" width=\"560\" x=\"260\" y=\"602\"></rect><rect fill=\"none\" height=\"40\" opacity=\"0.4\" stroke=\"var(--ink)\" stroke-width=\"0.6\" width=\"552\" x=\"264\" y=\"606\"></rect><text data-vnext-fit-box=\"264,552,816,593\" data-vnext-text-key=\"structure.text.015\" fill=\"var(--ink)\" font-family=\"var(--sans)\" font-size=\"var(--type-body)\" font-weight=\"300\" x=\"282\" y=\"634\">结果校验</text><text data-vnext-fit-box=\"264,552,816,593\" data-vnext-text-key=\"structure.text.016\" fill=\"color-mix(in srgb, var(--ink) 50%, transparent)\" font-family=\"var(--mono)\" font-size=\"var(--type-meta)\" text-anchor=\"end\" x=\"802\" y=\"632\">CHECK · GUARD</text><text data-vnext-fit-box=\"180,196,1750,817\" data-vnext-text-key=\"structure.text.017\" fill=\"color-mix(in srgb, var(--ink) 50%, transparent)\" font-family=\"var(--mono)\" font-size=\"var(--type-meta)\" x=\"846\" y=\"632\">310MS</text><line opacity=\"0.55\" stroke=\"var(--ink)\" stroke-width=\"0.8\" x1=\"220\" x2=\"220\" y1=\"314\" y2=\"690\"></line><line opacity=\"0.55\" stroke=\"var(--ink)\" stroke-width=\"0.8\" x1=\"220\" x2=\"260\" y1=\"690\" y2=\"690\"></line><circle cx=\"220\" cy=\"690\" fill=\"var(--ink)\" opacity=\"0.7\" r=\"2.4\"></circle><rect fill=\"none\" height=\"48\" stroke=\"var(--ink-80)\" stroke-width=\"1.2\" width=\"560\" x=\"260\" y=\"666\"></rect><rect fill=\"none\" height=\"40\" opacity=\"0.4\" stroke=\"var(--ink)\" stroke-width=\"0.6\" width=\"552\" x=\"264\" y=\"670\"></rect><text data-vnext-fit-box=\"264,616,816,657\" data-vnext-text-key=\"structure.text.018\" fill=\"var(--ink)\" font-family=\"var(--sans)\" font-size=\"var(--type-body)\" font-weight=\"300\" x=\"282\" y=\"698\">记忆更新</text><text data-vnext-fit-box=\"264,616,816,657\" data-vnext-text-key=\"structure.text.019\" fill=\"color-mix(in srgb, var(--ink) 50%, transparent)\" font-family=\"var(--mono)\" font-size=\"var(--type-meta)\" text-anchor=\"end\" x=\"802\" y=\"696\">MEM · WRITE</text><text data-vnext-fit-box=\"180,196,1750,817\" data-vnext-text-key=\"structure.text.020\" fill=\"color-mix(in srgb, var(--ink) 50%, transparent)\" font-family=\"var(--mono)\" font-size=\"var(--type-meta)\" x=\"846\" y=\"696\">26MS</text><line opacity=\"0.55\" stroke=\"var(--ink)\" stroke-width=\"0.8\" x1=\"220\" x2=\"220\" y1=\"730\" y2=\"758\"></line><line opacity=\"0.55\" stroke=\"var(--ink)\" stroke-width=\"0.8\" x1=\"220\" x2=\"260\" y1=\"758\" y2=\"758\"></line><rect data-content-ref=\"sample.f2.f2-focus\" data-emphasis-role=\"outline\" fill=\"none\" height=\"60\" id=\"f2-focus-frame\" stroke=\"var(--ink-80)\" stroke-dasharray=\"7 5\" stroke-width=\"1.2\" width=\"560\" x=\"260\" y=\"728\"></rect><text data-content-ref=\"sample.f2.f2-focus\" data-emphasis-role=\"status\" data-vnext-fit-box=\"260,674,820,735\" data-vnext-text-key=\"structure.text.021\" fill=\"var(--ink)\" font-family=\"var(--sans)\" font-size=\"var(--type-body)\" font-weight=\"300\" id=\"sample-focus\" x=\"282\" y=\"766\">任务完成</text><text data-vnext-fit-box=\"260,674,820,735\" data-vnext-text-key=\"structure.text.022\" fill=\"color-mix(in srgb, var(--ink) 50%, transparent)\" font-family=\"var(--mono)\" font-size=\"var(--type-meta)\" text-anchor=\"end\" x=\"802\" y=\"762\">OUTPUT</text><rect fill=\"none\" height=\"620\" stroke=\"var(--ink-80)\" stroke-width=\"1.2\" width=\"620\" x=\"1130\" y=\"250\"></rect><rect fill=\"none\" height=\"610\" opacity=\"0.4\" stroke=\"var(--ink)\" stroke-width=\"0.6\" width=\"610\" x=\"1135\" y=\"255\"></rect><text data-vnext-fit-box=\"1135,201,1745,812\" data-vnext-text-key=\"structure.text.023\" fill=\"var(--ink)\" font-family=\"var(--sans)\" font-size=\"var(--type-body)\" font-weight=\"300\" x=\"1160\" y=\"298\">每个环节的核心要素</text><line opacity=\"0.5\" stroke=\"var(--ink)\" stroke-width=\"0.8\" x1=\"1160\" x2=\"1720\" y1=\"316\" y2=\"316\"></line><text data-vnext-fit-box=\"1135,201,1745,812\" data-vnext-text-key=\"structure.text.024\" fill=\"var(--ink)\" font-family=\"var(--mono)\" font-size=\"var(--type-body-small)\" x=\"1160\" y=\"354\">TASK_ID</text><text data-vnext-fit-box=\"1135,201,1745,812\" data-vnext-text-key=\"structure.text.025\" fill=\"var(--ink-70)\" font-family=\"var(--sans)\" font-size=\"var(--type-body)\" font-weight=\"300\" x=\"1330\" y=\"354\">任务编号与来源</text><line opacity=\"0.25\" stroke=\"var(--ink)\" stroke-width=\"0.6\" x1=\"1160\" x2=\"1720\" y1=\"378\" y2=\"378\"></line><text data-vnext-fit-box=\"1135,201,1745,812\" data-vnext-text-key=\"structure.text.026\" fill=\"var(--ink)\" font-family=\"var(--mono)\" font-size=\"var(--type-body-small)\" x=\"1160\" y=\"424\">TOOL</text><text data-vnext-fit-box=\"1135,201,1745,812\" data-vnext-text-key=\"structure.text.027\" fill=\"var(--ink-70)\" font-family=\"var(--sans)\" font-size=\"var(--type-body)\" font-weight=\"300\" x=\"1330\" y=\"424\">调用的工具与模型</text><line opacity=\"0.25\" stroke=\"var(--ink)\" stroke-width=\"0.6\" x1=\"1160\" x2=\"1720\" y1=\"448\" y2=\"448\"></line><text data-vnext-fit-box=\"1135,201,1745,812\" data-vnext-text-key=\"structure.text.028\" fill=\"var(--ink)\" font-family=\"var(--mono)\" font-size=\"var(--type-body-small)\" x=\"1160\" y=\"494\">TRACE</text><text data-vnext-fit-box=\"1135,201,1745,812\" data-vnext-text-key=\"structure.text.029\" fill=\"var(--ink-70)\" font-family=\"var(--sans)\" font-size=\"var(--type-body)\" font-weight=\"300\" x=\"1330\" y=\"494\">推理路径与步骤</text><line opacity=\"0.25\" stroke=\"var(--ink)\" stroke-width=\"0.6\" x1=\"1160\" x2=\"1720\" y1=\"518\" y2=\"518\"></line><text data-vnext-fit-box=\"1135,201,1745,812\" data-vnext-text-key=\"structure.text.030\" fill=\"var(--ink)\" font-family=\"var(--mono)\" font-size=\"var(--type-body-small)\" x=\"1160\" y=\"564\">TOKEN</text><text data-vnext-fit-box=\"1135,201,1745,812\" data-vnext-text-key=\"structure.text.031\" fill=\"var(--ink-70)\" font-family=\"var(--sans)\" font-size=\"var(--type-body)\" font-weight=\"300\" x=\"1330\" y=\"564\">Token 预算与耗时</text><line opacity=\"0.25\" stroke=\"var(--ink)\" stroke-width=\"0.6\" x1=\"1160\" x2=\"1720\" y1=\"588\" y2=\"588\"></line><text data-vnext-fit-box=\"1135,201,1745,812\" data-vnext-text-key=\"structure.text.032\" fill=\"var(--ink)\" font-family=\"var(--mono)\" font-size=\"var(--type-body-small)\" x=\"1160\" y=\"634\">ETA</text><text data-vnext-fit-box=\"1135,201,1745,812\" data-vnext-text-key=\"structure.text.033\" fill=\"var(--ink-70)\" font-family=\"var(--sans)\" font-size=\"var(--type-body)\" font-weight=\"300\" x=\"1330\" y=\"634\">预计完成与重试策略</text><line opacity=\"0.25\" stroke=\"var(--ink)\" stroke-width=\"0.6\" x1=\"1160\" x2=\"1720\" y1=\"658\" y2=\"658\"></line><text data-vnext-fit-box=\"1135,201,1745,812\" data-vnext-text-key=\"structure.text.034\" fill=\"var(--ink)\" font-family=\"var(--mono)\" font-size=\"var(--type-body-small)\" x=\"1160\" y=\"704\">HANDOVER</text><text data-vnext-fit-box=\"1135,201,1745,812\" data-vnext-text-key=\"structure.text.035\" fill=\"var(--ink-70)\" font-family=\"var(--sans)\" font-size=\"var(--type-body)\" font-weight=\"300\" x=\"1330\" y=\"704\">异常阻塞人工确认点</text><rect fill=\"none\" height=\"46\" stroke=\"var(--ink)\" stroke-dasharray=\"5 4\" stroke-width=\"1\" width=\"580\" x=\"1150\" y=\"744\"></rect><text data-vnext-fit-box=\"1150,690,1730,737\" data-vnext-text-key=\"structure.text.036\" fill=\"var(--ink)\" font-family=\"var(--mono)\" font-size=\"var(--type-body-small)\" x=\"1160\" y=\"774\">ALARM</text><text data-vnext-fit-box=\"1150,690,1730,737\" data-vnext-text-key=\"structure.text.037\" fill=\"var(--ink)\" font-family=\"var(--sans)\" font-size=\"var(--type-body)\" font-weight=\"300\" x=\"1330\" y=\"774\">阻塞与异常（自动上报）</text></g></g>\n</svg>\n<div class=\"caption\" data-vnext-claim-key=\"claim.text.001\" data-vnext-fit-box=\"0,0,1920,1080\">Agent 从意图接入到记忆更新，每一步都应记录工具、模型、Token、耗时与重试策略。</div>\n</div>",
+    "stage_structure_sha256": "8eab7f699aec01674a4aee4dec75eeed31a6cfbe6e87bf95964e02cd5cb187cd"
+  },
+  "bindings": {
+    "claim": {
+      "key": "claim.text.001",
+      "default": "Agent 从意图接入到记忆更新，每一步都应记录工具、模型、Token、耗时与重试策略。",
+      "max_chars": 51,
+      "fit_box": [
+        0.0,
+        0.0,
+        1920.0,
+        1080.0
+      ],
+      "fit_owner_kind": "slide"
+    },
+    "primary_slot": "structure",
+    "slots": {
+      "structure": {
+        "text": [
+          {
+            "key": "structure.text.001",
+            "default": "TASK RUN",
+            "max_chars": 10,
+            "item_scope": "item",
+            "item_group_source": "fixed-slot",
+            "item_index": 0,
+            "fit_box": [
+              180.0,
+              196.0,
+              820.0,
+              261.0
+            ],
+            "fit_owner_kind": "svg-shape"
+          },
+          {
+            "key": "structure.text.002",
+            "default": "一次 Agent 执行",
+            "max_chars": 13,
+            "item_scope": "item",
+            "item_group_source": "fixed-slot",
+            "item_index": 0,
+            "fit_box": [
+              180.0,
+              196.0,
+              820.0,
+              261.0
+            ],
+            "fit_owner_kind": "svg-shape"
+          },
+          {
+            "key": "structure.text.003",
+            "default": "意图接入",
+            "max_chars": 6,
+            "item_scope": "item",
+            "item_group_source": "fixed-slot",
+            "item_index": 0,
+            "fit_box": [
+              264.0,
+              296.0,
+              816.0,
+              337.0
+            ],
+            "fit_owner_kind": "svg-shape"
+          },
+          {
+            "key": "structure.text.004",
+            "default": "INTENT · PARSE",
+            "max_chars": 17,
+            "item_scope": "item",
+            "item_group_source": "fixed-slot",
+            "item_index": 0,
+            "fit_box": [
+              264.0,
+              296.0,
+              816.0,
+              337.0
+            ],
+            "fit_owner_kind": "svg-shape"
+          },
+          {
+            "key": "structure.text.005",
+            "default": "4MS",
+            "max_chars": 5,
+            "item_scope": "item",
+            "item_group_source": "fixed-slot",
+            "item_index": 0,
+            "fit_box": [
+              180.0,
+              196.0,
+              1750.0,
+              817.0
+            ],
+            "fit_owner_kind": "svg-group"
+          },
+          {
+            "key": "structure.text.006",
+            "default": "任务拆解",
+            "max_chars": 6,
+            "item_scope": "item",
+            "item_group_source": "fixed-slot",
+            "item_index": 0,
+            "fit_box": [
+              264.0,
+              360.0,
+              816.0,
+              401.0
+            ],
+            "fit_owner_kind": "svg-shape"
+          },
+          {
+            "key": "structure.text.007",
+            "default": "PLAN ×6",
+            "max_chars": 9,
+            "item_scope": "item",
+            "item_group_source": "fixed-slot",
+            "item_index": 0,
+            "fit_box": [
+              264.0,
+              360.0,
+              816.0,
+              401.0
+            ],
+            "fit_owner_kind": "svg-shape"
+          },
+          {
+            "key": "structure.text.008",
+            "default": "18MS",
+            "max_chars": 6,
+            "item_scope": "item",
+            "item_group_source": "fixed-slot",
+            "item_index": 0,
+            "fit_box": [
+              180.0,
+              196.0,
+              1750.0,
+              817.0
+            ],
+            "fit_owner_kind": "svg-group"
+          },
+          {
+            "key": "structure.text.009",
+            "default": "工具选择",
+            "max_chars": 6,
+            "item_scope": "item",
+            "item_group_source": "fixed-slot",
+            "item_index": 0,
+            "fit_box": [
+              264.0,
+              424.0,
+              816.0,
+              465.0
+            ],
+            "fit_owner_kind": "svg-shape"
+          },
+          {
+            "key": "structure.text.010",
+            "default": "TOOL · MATCH",
+            "max_chars": 14,
+            "item_scope": "item",
+            "item_group_source": "fixed-slot",
+            "item_index": 0,
+            "fit_box": [
+              264.0,
+              424.0,
+              816.0,
+              465.0
+            ],
+            "fit_owner_kind": "svg-shape"
+          },
+          {
+            "key": "structure.text.011",
+            "default": "42MS",
+            "max_chars": 6,
+            "item_scope": "item",
+            "item_group_source": "fixed-slot",
+            "item_index": 0,
+            "fit_box": [
+              180.0,
+              196.0,
+              1750.0,
+              817.0
+            ],
+            "fit_owner_kind": "svg-group"
+          },
+          {
+            "key": "structure.text.012",
+            "default": "执行调用",
+            "max_chars": 6,
+            "item_scope": "item",
+            "item_group_source": "fixed-slot",
+            "item_index": 0,
+            "fit_box": [
+              264.0,
+              488.0,
+              816.0,
+              529.0
+            ],
+            "fit_owner_kind": "svg-shape"
+          },
+          {
+            "key": "structure.text.013",
+            "default": "CALL · TRACE",
+            "max_chars": 14,
+            "item_scope": "item",
+            "item_group_source": "fixed-slot",
+            "item_index": 0,
+            "fit_box": [
+              264.0,
+              488.0,
+              816.0,
+              529.0
+            ],
+            "fit_owner_kind": "svg-shape"
+          },
+          {
+            "key": "structure.text.014",
+            "default": "9MS",
+            "max_chars": 5,
+            "item_scope": "item",
+            "item_group_source": "fixed-slot",
+            "item_index": 0,
+            "fit_box": [
+              180.0,
+              196.0,
+              1750.0,
+              817.0
+            ],
+            "fit_owner_kind": "svg-group"
+          },
+          {
+            "key": "structure.text.015",
+            "default": "结果校验",
+            "max_chars": 6,
+            "item_scope": "item",
+            "item_group_source": "fixed-slot",
+            "item_index": 0,
+            "fit_box": [
+              264.0,
+              552.0,
+              816.0,
+              593.0
+            ],
+            "fit_owner_kind": "svg-shape"
+          },
+          {
+            "key": "structure.text.016",
+            "default": "CHECK · GUARD",
+            "max_chars": 15,
+            "item_scope": "item",
+            "item_group_source": "fixed-slot",
+            "item_index": 0,
+            "fit_box": [
+              264.0,
+              552.0,
+              816.0,
+              593.0
+            ],
+            "fit_owner_kind": "svg-shape"
+          },
+          {
+            "key": "structure.text.017",
+            "default": "310MS",
+            "max_chars": 7,
+            "item_scope": "item",
+            "item_group_source": "fixed-slot",
+            "item_index": 0,
+            "fit_box": [
+              180.0,
+              196.0,
+              1750.0,
+              817.0
+            ],
+            "fit_owner_kind": "svg-group"
+          },
+          {
+            "key": "structure.text.018",
+            "default": "记忆更新",
+            "max_chars": 6,
+            "item_scope": "item",
+            "item_group_source": "fixed-slot",
+            "item_index": 0,
+            "fit_box": [
+              264.0,
+              616.0,
+              816.0,
+              657.0
+            ],
+            "fit_owner_kind": "svg-shape"
+          },
+          {
+            "key": "structure.text.019",
+            "default": "MEM · WRITE",
+            "max_chars": 13,
+            "item_scope": "item",
+            "item_group_source": "fixed-slot",
+            "item_index": 0,
+            "fit_box": [
+              264.0,
+              616.0,
+              816.0,
+              657.0
+            ],
+            "fit_owner_kind": "svg-shape"
+          },
+          {
+            "key": "structure.text.020",
+            "default": "26MS",
+            "max_chars": 6,
+            "item_scope": "item",
+            "item_group_source": "fixed-slot",
+            "item_index": 0,
+            "fit_box": [
+              180.0,
+              196.0,
+              1750.0,
+              817.0
+            ],
+            "fit_owner_kind": "svg-group"
+          },
+          {
+            "key": "structure.text.021",
+            "default": "任务完成",
+            "max_chars": 6,
+            "item_scope": "item",
+            "item_group_source": "fixed-slot",
+            "item_index": 0,
+            "fit_box": [
+              260.0,
+              674.0,
+              820.0,
+              735.0
+            ],
+            "fit_owner_kind": "svg-shape"
+          },
+          {
+            "key": "structure.text.022",
+            "default": "OUTPUT",
+            "max_chars": 9,
+            "item_scope": "item",
+            "item_group_source": "fixed-slot",
+            "item_index": 0,
+            "fit_box": [
+              260.0,
+              674.0,
+              820.0,
+              735.0
+            ],
+            "fit_owner_kind": "svg-shape"
+          },
+          {
+            "key": "structure.text.023",
+            "default": "每个环节的核心要素",
+            "max_chars": 13,
+            "item_scope": "item",
+            "item_group_source": "fixed-slot",
+            "item_index": 0,
+            "fit_box": [
+              1135.0,
+              201.0,
+              1745.0,
+              812.0
+            ],
+            "fit_owner_kind": "svg-shape"
+          },
+          {
+            "key": "structure.text.024",
+            "default": "TASK_ID",
+            "max_chars": 10,
+            "item_scope": "item",
+            "item_group_source": "fixed-slot",
+            "item_index": 0,
+            "fit_box": [
+              1135.0,
+              201.0,
+              1745.0,
+              812.0
+            ],
+            "fit_owner_kind": "svg-shape"
+          },
+          {
+            "key": "structure.text.025",
+            "default": "任务编号与来源",
+            "max_chars": 10,
+            "item_scope": "item",
+            "item_group_source": "fixed-slot",
+            "item_index": 0,
+            "fit_box": [
+              1135.0,
+              201.0,
+              1745.0,
+              812.0
+            ],
+            "fit_owner_kind": "svg-shape"
+          },
+          {
+            "key": "structure.text.026",
+            "default": "TOOL",
+            "max_chars": 6,
+            "item_scope": "item",
+            "item_group_source": "fixed-slot",
+            "item_index": 0,
+            "fit_box": [
+              1135.0,
+              201.0,
+              1745.0,
+              812.0
+            ],
+            "fit_owner_kind": "svg-shape"
+          },
+          {
+            "key": "structure.text.027",
+            "default": "调用的工具与模型",
+            "max_chars": 11,
+            "item_scope": "item",
+            "item_group_source": "fixed-slot",
+            "item_index": 0,
+            "fit_box": [
+              1135.0,
+              201.0,
+              1745.0,
+              812.0
+            ],
+            "fit_owner_kind": "svg-shape"
+          },
+          {
+            "key": "structure.text.028",
+            "default": "TRACE",
+            "max_chars": 7,
+            "item_scope": "item",
+            "item_group_source": "fixed-slot",
+            "item_index": 0,
+            "fit_box": [
+              1135.0,
+              201.0,
+              1745.0,
+              812.0
+            ],
+            "fit_owner_kind": "svg-shape"
+          },
+          {
+            "key": "structure.text.029",
+            "default": "推理路径与步骤",
+            "max_chars": 10,
+            "item_scope": "item",
+            "item_group_source": "fixed-slot",
+            "item_index": 0,
+            "fit_box": [
+              1135.0,
+              201.0,
+              1745.0,
+              812.0
+            ],
+            "fit_owner_kind": "svg-shape"
+          },
+          {
+            "key": "structure.text.030",
+            "default": "TOKEN",
+            "max_chars": 7,
+            "item_scope": "item",
+            "item_group_source": "fixed-slot",
+            "item_index": 0,
+            "fit_box": [
+              1135.0,
+              201.0,
+              1745.0,
+              812.0
+            ],
+            "fit_owner_kind": "svg-shape"
+          },
+          {
+            "key": "structure.text.031",
+            "default": "Token 预算与耗时",
+            "max_chars": 14,
+            "item_scope": "item",
+            "item_group_source": "fixed-slot",
+            "item_index": 0,
+            "fit_box": [
+              1135.0,
+              201.0,
+              1745.0,
+              812.0
+            ],
+            "fit_owner_kind": "svg-shape"
+          },
+          {
+            "key": "structure.text.032",
+            "default": "ETA",
+            "max_chars": 5,
+            "item_scope": "item",
+            "item_group_source": "fixed-slot",
+            "item_index": 0,
+            "fit_box": [
+              1135.0,
+              201.0,
+              1745.0,
+              812.0
+            ],
+            "fit_owner_kind": "svg-shape"
+          },
+          {
+            "key": "structure.text.033",
+            "default": "预计完成与重试策略",
+            "max_chars": 13,
+            "item_scope": "item",
+            "item_group_source": "fixed-slot",
+            "item_index": 0,
+            "fit_box": [
+              1135.0,
+              201.0,
+              1745.0,
+              812.0
+            ],
+            "fit_owner_kind": "svg-shape"
+          },
+          {
+            "key": "structure.text.034",
+            "default": "HANDOVER",
+            "max_chars": 11,
+            "item_scope": "item",
+            "item_group_source": "fixed-slot",
+            "item_index": 0,
+            "fit_box": [
+              1135.0,
+              201.0,
+              1745.0,
+              812.0
+            ],
+            "fit_owner_kind": "svg-shape"
+          },
+          {
+            "key": "structure.text.035",
+            "default": "异常阻塞人工确认点",
+            "max_chars": 13,
+            "item_scope": "item",
+            "item_group_source": "fixed-slot",
+            "item_index": 0,
+            "fit_box": [
+              1135.0,
+              201.0,
+              1745.0,
+              812.0
+            ],
+            "fit_owner_kind": "svg-shape"
+          },
+          {
+            "key": "structure.text.036",
+            "default": "ALARM",
+            "max_chars": 7,
+            "item_scope": "item",
+            "item_group_source": "fixed-slot",
+            "item_index": 0,
+            "fit_box": [
+              1150.0,
+              690.0,
+              1730.0,
+              737.0
+            ],
+            "fit_owner_kind": "svg-shape"
+          },
+          {
+            "key": "structure.text.037",
+            "default": "阻塞与异常（自动上报）",
+            "max_chars": 15,
+            "item_scope": "item",
+            "item_group_source": "fixed-slot",
+            "item_index": 0,
+            "fit_box": [
+              1150.0,
+              690.0,
+              1730.0,
+              737.0
+            ],
+            "fit_owner_kind": "svg-shape"
+          }
+        ],
+        "icon": []
+      },
+      "support": {
+        "text": [
+          {
+            "key": "support.text.001",
+            "default": "PPT 标题",
+            "max_chars": 40,
+            "item_scope": "item",
+            "item_group_source": "fixed-slot",
+            "item_index": 0,
+            "fit_box": [
+              0.0,
+              0.0,
+              1920.0,
+              1080.0
+            ],
+            "fit_owner_kind": "slide"
+          },
+          {
+            "key": "support.text.002",
+            "default": "页面标题",
+            "max_chars": 72,
+            "item_scope": "item",
+            "item_group_source": "fixed-slot",
+            "item_index": 0,
+            "fit_box": [
+              0.0,
+              0.0,
+              1920.0,
+              1080.0
+            ],
+            "fit_owner_kind": "slide"
+          }
+        ],
+        "icon": []
+      },
+      "takeaway": {
+        "text": [],
+        "icon": []
+      }
+    }
+  },
+  "seed_sha256": "14fc6f85aa4eed32494abc07f0a0982c9ab91fae184d49d5f973451bc0de204e"
+}

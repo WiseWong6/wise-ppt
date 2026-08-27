@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-runtime="wise-ppt-specimen" data-typography-mode="all-sans" data-page-id="gallery-ai-c3" data-page-role="orient" data-theme="paper-ink" data-layout="paper-ink.data.profile-card-array" data-layout-source="gallery" data-sample-focus-profile="copy-only" data-sample-focus-members='[{"selector":"#focus-caption","role":"label"}]' data-sample-focus-ref="sample.c3.c3-focus">
+<head>
+<meta charset="UTF-8">
+<title>layout-c3 · 顶图卡列阵 · AI 案例</title>
+<script src="../../../../runtime/stage-fit.js"></script>
+<link rel="stylesheet" href="../../../../themes/paper-ink/assets/design-tokens.css">
+<link rel="stylesheet" href="../../../../themes/paper-ink/assets/catalog-fonts.css" data-wise-catalog-fonts="true">
+<link rel="stylesheet" href="../../../../themes/paper-ink/assets/slide-components.css">
+<link rel="stylesheet" href="../../../shell.css">
+<style>
+  svg.scene { position: absolute; inset: 0; z-index: 1; }
+  .caption {
+    position: absolute; left: 0; right: 0; bottom: 118px;
+    text-align: center;
+    font-family: var(--sans); font-weight: 400;
+    font-size: var(--type-caption); letter-spacing: .04em;
+    color: var(--ink);
+    z-index: 5;
+  }
+</style>
+</head>
+<body class="slide">
+<div class="stage" data-block-id="gallery-primary" data-renderer-kind="svg" data-component-source="native" data-component-id="native.paper-ink.data.profile-card-array.profiles" data-content-ref="example.c3">
+  <div class="doc tl">PPT 标题<br>页面标题</div>
+  <div class="folio">页码 / 总页数 — BY @歪斯Wise</div>
+
+  <svg class="scene" width="1920" height="1080" viewBox="0 0 1920 1080">
+    <defs>
+      <pattern id="hatch34" width="8" height="8" patternTransform="rotate(45)" patternUnits="userSpaceOnUse">
+        <line x1="0" y1="0" x2="0" y2="8" stroke="var(--ink)" stroke-width=".7" opacity=".35"/>
+      </pattern>
+    </defs>
+    <g id="draw"></g>
+  </svg>
+
+  <div class="caption"><span id="focus-caption">阅读、Skills 与知识库</span>三个案例，在规模、延迟和召回精度上验证不同 AI 能力。</div>
+</div>
+
+<script src="../../../../themes/paper-ink/assets/particles.js"></script>
+<script>
+var NS = 'http://www.w3.org/2000/svg';
+var INK = 'var(--ink)';
+var INK80 = 'var(--ink-80)';
+var INK70 = 'var(--ink-70)';
+var INK45 = 'var(--ink-45)';
+var G = document.getElementById('draw');
+function el(tag, attrs) {
+  var e = document.createElementNS(NS, tag);
+  for (var k in attrs) e.setAttribute(k, attrs[k]);
+  G.appendChild(e); return e;
+}
+function txt(x, y, str, attrs) {
+  var t = el('text', Object.assign({x:x, y:y}, attrs||{}));
+  t.textContent = str; return t;
+}
+var MONO = 'var(--mono)', SANS = 'var(--sans)';
+
+G = el('g', {transform:'translate(0 -33.7)'});
+
+
+/* ---------- 三张竖卡（双线框；宽高走变量，非字面阵列） ---------- */
+var CY = 210, CH = 660, CW = 500;
+var cardX = [140, 710, 1280];
+cardX.forEach(function(px){
+  el('rect', {x:px, y:CY, width:CW, height:CH, fill:'var(--paper-panel)', stroke:INK80, 'stroke-width':1.3});
+  el('rect', {x:px+5, y:CY+5, width:CW-10, height:CH-10, fill:'none', stroke:INK, 'stroke-width':.6, opacity:.3});
+  /* 图区分隔线 */
+  el('line', {x1:px+24, y1:CY+272, x2:px+CW-24, y2:CY+272, stroke:INK, 'stroke-width':.8, opacity:.5});
+  el('line', {x1:px+24, y1:CY+276, x2:px+120, y2:CY+276, stroke:INK, 'stroke-width':.6, opacity:.25});
+});
+
+/* ---------- 卡内文字：mono 角标 → 卡题 → 分隔 → 履历 → 底脚 ---------- */
+function cardText(px, tag, side, name, rows, foot) {
+  txt(px+36, CY+308, tag, {'font-family':MONO, 'font-size':'var(--type-meta)', 'letter-spacing':2, fill:INK45});
+  txt(px+CW-36, CY+308, side, {'font-family':MONO, 'font-size':'var(--type-meta)', 'letter-spacing':2, 'text-anchor':'end', fill:INK45});
+  txt(px+36, CY+348, name, {'font-family':SANS, 'font-weight':300, 'font-size':'var(--type-subheading)', fill:INK});
+  el('line', {x1:px+36, y1:CY+368, x2:px+CW-36, y2:CY+368, stroke:INK, 'stroke-width':.8, opacity:.5});
+  rows.forEach(function(r, i){
+    var y = CY + 404 + i * 42;
+    el('circle', {cx:px+44, cy:y-6, r:3.2, fill:'none', stroke:INK, 'stroke-width':.9, opacity:.8});
+    el('circle', {cx:px+44, cy:y-6, r:1, fill:INK});
+    txt(px+64, y, r[0], {'font-family':SANS, 'font-weight':300, 'font-size':'var(--type-body-small)', fill:INK});
+    txt(px+CW-36, y-1, r[1], {'font-family':MONO, 'font-size':'var(--type-meta)', 'letter-spacing':1, 'text-anchor':'end', fill:'color-mix(in srgb, var(--ink) 50%, transparent)'});
+    if (i < rows.length-1)
+      el('line', {x1:px+36, y1:y+21, x2:px+CW-36, y2:y+21, stroke:INK, 'stroke-width':.6, opacity:.22});
+  });
+  el('line', {x1:px+36, y1:CY+592, x2:px+CW-36, y2:CY+592, stroke:INK, 'stroke-width':.6, opacity:.25});
+  txt(px+36, CY+624, foot, {'font-family':MONO, 'font-size':'var(--type-meta)', 'letter-spacing':2, fill:INK45});
+}
+
+/* ---------- 卡一图区：AI 阅读系统 立绘 ---------- */
+(function(){
+  var cx = 390, gy = 432;                    /* 卡心 x、地面 y */
+  el('line', {x1:cx-92, y1:gy, x2:cx+92, y2:gy, stroke:INK, 'stroke-width':.6, opacity:.35, 'stroke-dasharray':'3 5'});
+  el('rect', {x:cx-70, y:gy-6, width:140, height:8, fill:'url(#hatch34)', stroke:'none'});
+  /* 轮 */
+  [cx-42, cx+42].forEach(function(wx){
+    el('circle', {cx:wx, cy:gy-22, r:20, fill:'none', stroke:INK80, 'stroke-width':1.2});
+    el('circle', {cx:wx, cy:gy-22, r:7, fill:'none', stroke:INK, 'stroke-width':.7, opacity:.5});
+  });
+  /* 机身 */
+  el('rect', {x:cx-64, y:gy-116, width:128, height:76, rx:14, fill:'none', stroke:INK80, 'stroke-width':1.3});
+  el('rect', {x:cx-54, y:gy-106, width:108, height:56, rx:9, fill:'none', stroke:INK, 'stroke-width':.6, opacity:.3});
+  /* 激光雷达桅杆 */
+  el('line', {x1:cx, y1:gy-116, x2:cx, y2:gy-144, stroke:INK80, 'stroke-width':1.1});
+  el('circle', {cx:cx, cy:gy-156, r:12, fill:'none', stroke:INK80, 'stroke-width':1.2});
+  el('circle', {cx:cx, cy:gy-156, r:4, fill:'none', stroke:INK, 'stroke-width':.6, opacity:.5});
+  el('circle', {cx:cx, cy:gy-156, r:1.6, fill:INK});
+  /* 传感弧（虚线扫描） */
+  el('path', {d:'M '+(cx-34)+' '+(gy-186)+' A 38 38 0 0 1 '+(cx+34)+' '+(gy-186), fill:'none', stroke:INK, 'stroke-width':.6, opacity:.4, 'stroke-dasharray':'2 5'});
+  /* 前视传感器 */
+  el('circle', {cx:cx+54, cy:gy-78, r:4, fill:'none', stroke:INK, 'stroke-width':.8, opacity:.7});
+  el('circle', {cx:cx+54, cy:gy-78, r:1.2, fill:INK});
+  /* 尺寸标注 */
+  el('line', {x1:cx-64, y1:gy+14, x2:cx+64, y2:gy+14, stroke:INK, 'stroke-width':.5, opacity:.4, 'stroke-dasharray':'2 5'});
+  el('line', {x1:cx-64, y1:gy+9, x2:cx-64, y2:gy+19, stroke:INK, 'stroke-width':.7, opacity:.5});
+  el('line', {x1:cx+64, y1:gy+9, x2:cx+64, y2:gy+19, stroke:INK, 'stroke-width':.7, opacity:.5});
+  txt(cx, gy+32, 'READER-R1 · 1.28 B', {'font-family':MONO, 'font-size':'var(--type-micro-secondary)', 'letter-spacing':2, 'text-anchor':'middle', fill:INK45});
+})();
+
+/* ---------- 卡二图区：技能图谱俯视（节点 + 虚线路径） ---------- */
+(function(){
+  var cx = 960;
+  /* 左右货架 */
+  [cx-160, cx+90].forEach(function(rx){
+    el('rect', {x:rx, y:250, width:70, height:190, fill:'none', stroke:INK80, 'stroke-width':1.2});
+    for (var i = 1; i < 7; i++)
+      el('line', {x1:rx, y1:250+i*27, x2:rx+70, y2:250+i*27, stroke:INK, 'stroke-width':.6, opacity:.3});
+  });
+  /* 图谱中线 + S 形调用路径（虚线） */
+  el('line', {x1:cx, y1:240, x2:cx, y2:450, stroke:INK, 'stroke-width':.5, opacity:.22, 'stroke-dasharray':'2 6'});
+  el('path', {d:'M '+(cx-8)+' 436 C '+(cx-46)+' 398 '+(cx+38)+' 366 '+(cx+4)+' 330 C '+(cx-30)+' 296 '+(cx+34)+' 268 '+(cx+6)+' 244',
+    fill:'none', stroke:INK, 'stroke-width':1.1, opacity:.75, 'stroke-dasharray':'5 5'});
+  /* 节点落点 */
+  [[cx-14, 402],[cx+12, 276]].forEach(function(p){
+    el('circle', {cx:p[0], cy:p[1], r:8, fill:'none', stroke:INK80, 'stroke-width':1.1});
+    el('circle', {cx:p[0], cy:p[1], r:2.4, fill:INK});
+  });
+  txt(cx, 470, 'SKILL GRAPH · TOP VIEW', {id:'sample-focus', 'font-family':MONO, 'font-size':'var(--type-micro-secondary)', 'letter-spacing':2, 'text-anchor':'middle', fill:INK45});
+})();
+
+/* ---------- 卡三图区：检索温度刻度表盘 ---------- */
+(function(){
+  var cx = 1530, cy = 384, R = 118;
+  el('path', {d:'M '+(cx-R)+' '+cy+' A '+R+' '+R+' 0 0 1 '+(cx+R)+' '+cy, fill:'none', stroke:INK80, 'stroke-width':1.2});
+  el('path', {d:'M '+(cx-94)+' '+cy+' A 94 94 0 0 1 '+(cx+94)+' '+cy, fill:'none', stroke:INK, 'stroke-width':.6, opacity:.3});
+  /* 刻度齿 13 枚（-30 ~ 10，15° 一枚） */
+  for (var i = 0; i <= 12; i++) {
+    var a = Math.PI - i * Math.PI / 12;
+    var r1 = (i % 3 === 0) ? 104 : 110, r2 = 118;
+    el('line', {x1:cx+Math.cos(a)*r1, y1:cy-Math.sin(a)*r1, x2:cx+Math.cos(a)*r2, y2:cy-Math.sin(a)*r2,
+      stroke:INK, 'stroke-width':(i % 3 === 0) ? 1 : .5, opacity:.55});
+  }
+  /* 表盘数字 */
+  txt(cx-R-6, cy+22, '0', {'font-family':MONO, 'font-size':'var(--type-micro-secondary)', 'letter-spacing':1, 'text-anchor':'middle', fill:INK45});
+  txt(cx, cy-R-14, '150', {'font-family':MONO, 'font-size':'var(--type-micro-secondary)', 'letter-spacing':1, 'text-anchor':'middle', fill:INK45});
+  txt(cx+R+6, cy+22, '300', {'font-family':MONO, 'font-size':'var(--type-micro-secondary)', 'letter-spacing':1, 'text-anchor':'middle', fill:INK45});
+  /* 指针：280ms（量程 0~300 → 126°） */
+  var na = Math.PI * 126 / 180;
+  el('line', {x1:cx, y1:cy, x2:cx+Math.cos(na)*100, y2:cy-Math.sin(na)*100, stroke:INK, 'stroke-width':1.4, opacity:.9});
+  el('circle', {cx:cx, cy:cy, r:6, fill:'var(--paper)', stroke:INK80, 'stroke-width':1.1});
+  el('circle', {cx:cx, cy:cy, r:1.8, fill:INK});
+  txt(cx, cy+40, '280ms', {'font-family':MONO, 'font-size':'var(--type-body)', 'letter-spacing':2, 'text-anchor':'middle', fill:INK});
+  txt(cx, 470, 'RETRIEVAL · VECTOR DB', {'font-family':MONO, 'font-size':'var(--type-micro-secondary)', 'letter-spacing':2, 'text-anchor':'middle', fill:INK45});
+})();
+
+/* ---------- 三卡履历 ---------- */
+cardText(140, 'CASE 01', 'AI READER', 'AI 阅读系统', [
+  ['语料规模',     '82,000 DOCS'],
+  ['活跃用户',     '68 K'],
+  ['日处理量',     '410 K'],
+  ['错误率',       '0.02 %']
+], 'PRODUCT RD-01 · SINCE 2022');
+
+cardText(710, 'CASE 02', 'SKILLS', 'Skills 平台', [
+  ['语料规模',     '45,000 SKILLS'],
+  ['活跃用户',     '34 K'],
+  ['支持语言',     '22 LANGS'],
+  ['平均延迟',     '180 MS']
+], 'PRODUCT SP-04 · SINCE 2023');
+
+cardText(1280, 'CASE 03', 'KNOWLEDGE', 'AI 名人知识库', [
+  ['向量维度',     '1,536 DIM'],
+  ['活跃用户',     '26 K'],
+  ['召回精度',     '0.96 @10'],
+  ['存储同比',     '-19 %']
+], 'PRODUCT KB-02 · SINCE 2024');
+
+stageFit();
+</script>
+</body>
+</html>

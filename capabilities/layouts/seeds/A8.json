@@ -1,0 +1,1226 @@
+{
+  "contract": "wise-ppt-layout-seed@4",
+  "layout_id": "paper-ink.relationship.A8",
+  "display_code": "A8",
+  "page_kind": "relationship",
+  "source": {
+    "path": "references/gallery-paper-ink/ai/frames/layout-a8.html",
+    "sha256": "bcd1616efb4d4db70caefa25de964a7ac8e10e010ba0c7dee86d2f249b1ac1b5"
+  },
+  "locked": {
+    "scoped_css": "@scope (.slide[data-layout-id=\"paper-ink.relationship.A8\"]) {\n.ui { position: absolute; top: 118px; left: 100px; right: 100px; display: flex; flex-direction: column; z-index: 2;\n        border: 1px solid color-mix(in srgb, var(--ink) 50%, transparent); }\n\n  .filters {\n    display: flex; gap: var(--space-4); align-items: center;\n    padding: var(--space-4) var(--space-6);\n    border-bottom: 1px solid color-mix(in srgb, var(--ink) 35%, transparent);\n  }\n  .f {\n    font-family: var(--mono); font-size: var(--type-meta); color: var(--ink-70);\n    border: 1px solid color-mix(in srgb, var(--ink) 40%, transparent); padding: var(--space-2) var(--space-3);\n    display: flex; gap: var(--space-2); align-items: center;\n  }\n  .f .dim { color: var(--ink-45); }\n  .btn { margin-left: auto; font-family: var(--sans); font-weight: 400; font-size: var(--type-meta);\n    border: 1px solid var(--ink); padding: var(--space-2) var(--space-6); }\n\n  .content { flex: 1; display: flex; min-height: 0; }\n\n  /* 左：任务列表 */\n  .table { flex: 1.25; padding: var(--space-4) var(--space-6); }\n  .tr {\n    display: grid;\n    grid-template-columns: 150px 150px 130px 1fr 86px;\n    gap: var(--space-4); align-items: center;\n    padding: var(--space-2) var(--space-3);\n    font-family: var(--mono); font-size: var(--type-meta); color: var(--ink-70);\n    border-bottom: 1px solid color-mix(in srgb, var(--ink) 18%, transparent);\n    position: relative;\n  }\n  .tr.hd { color: var(--ink-45); font-size: var(--type-micro-secondary); letter-spacing: .12em; }\n  .tr .cn { font-family: var(--sans); font-weight: 300; font-size: var(--type-meta); }\n  .tr.sel { outline: 1px solid var(--ink); outline-offset: -1px; }\n  .tr.sel::after {\n    content: 'SELECTED'; position: absolute; right: 10px; top: -9px;\n    font-family: var(--mono); font-size: var(--type-micro-secondary); letter-spacing: .2em;\n    background: var(--paper); padding: 0 var(--space-2); color: var(--ink-45);\n  }\n  .run-id { display: inline-flex; align-items: center; gap: 12px; }\n  .dot { width: 9px; height: 9px; border-radius: 50%; flex: 0 0 auto;\n    border: 1px solid var(--ink); }\n  .dot.err { background: var(--ink); }\n  .dot.part { background: linear-gradient(90deg, var(--ink) 50%, transparent 50%); }\n  .ops { display: flex; flex-direction: column; gap: var(--space-1); align-items: flex-end; }\n  .ops span {\n    border: 1px solid var(--ink-45); padding: var(--space-1) var(--space-2);\n    font-size: var(--type-micro-secondary); font-family: var(--sans); font-weight: 300; white-space: nowrap;\n  }\n\n  /* 右：树形过程日志 */\n  .detail { flex: 1; border-left: 1px solid color-mix(in srgb, var(--ink) 35%, transparent); padding: var(--space-4) var(--space-6); }\n  .dhead { font-family: var(--mono); font-size: var(--type-meta); letter-spacing: .2em; color: var(--ink);\n    border-bottom: 1px solid color-mix(in srgb, var(--ink) 40%, transparent); padding-bottom: var(--space-3); margin-bottom: var(--space-2);\n    display: flex; justify-content: space-between; }\n  .dhead .id { color: var(--ink-45); letter-spacing: .05em; }\n\n  .tree { font-family: var(--sans); font-weight: 300; font-size: var(--type-label); color: var(--ink-70); }\n  .tnode { display: flex; align-items: baseline; gap: var(--space-3); padding: var(--space-2) 0; position: relative; }\n  .tnode .mono { font-family: var(--mono); font-size: var(--type-micro-secondary); color: var(--ink-45); margin-left: auto; }\n  .tnode .tag { font-family: var(--mono); font-size: var(--type-micro-secondary); color: var(--ink-45); }\n  .tnode .st-ok { color: var(--ink-45); }\n  .tnode .st-err { color: var(--ink); font-weight: 400; }\n  .tnode.sel { outline: 1px solid var(--ink); outline-offset: -1px; }\n  .tnode.off { opacity: .35; }\n\n  .io {\n    margin: var(--space-2) 0 var(--space-1) var(--space-8); padding: var(--space-3) var(--space-4);\n    border: 1px dashed var(--ink-55);\n    font-family: var(--mono); font-size: var(--type-micro-secondary); line-height: 1.85; color: var(--ink-70);\n  }\n  .io b { color: var(--ink); font-weight: 400; }\n  .io .lbl { color: var(--ink-45); letter-spacing: .15em; font-size: var(--type-micro-secondary); }\n\n  .elbow { position: absolute; inset: 0; z-index: 3; pointer-events: none; }\n\n  .caption {\n    position: absolute; left: 0; right: 0; bottom: 118px;\n    text-align: center;\n    font-family: var(--sans); font-weight: 400;\n    font-size: var(--type-caption); letter-spacing: .04em;\n    color: var(--ink); z-index: 5;\n  }\n\n  /* accent：异常节点按“动作 + 角色 + 状态 + 外框”成组上色；运行 ID 圆点属于元数据，保持墨色 */\n}\n",
+    "css_sha256": "09b28603973a75b4b6398caa06545bf2b749412ca440e41f57f397d7ccf85647",
+    "stage_html": "<div class=\"stage\" data-block-id=\"gallery-primary\" data-component-id=\"native.paper-ink.evidence.admin-ui.product-ui\" data-component-source=\"native\" data-content-ref=\"example.a8\" data-renderer-kind=\"svg\">\n<div class=\"doc tl\"><span class=\"vnext-text-node\" data-vnext-fit-box=\"0,0,1920,1080\" data-vnext-text-key=\"support.text.001\">PPT 标题</span><br/><span class=\"vnext-text-node\" data-vnext-fit-box=\"0,0,1920,1080\" data-vnext-text-key=\"support.text.002\">页面标题</span></div>\n<div class=\"folio\">页码 / 总页数 — BY @歪斯Wise</div>\n<div class=\"ui\">\n<div class=\"filters\">\n<div class=\"f\"><span class=\"dim\" data-vnext-fit-box=\"101,119,1819,189\" data-vnext-text-key=\"product-ui.text.001\">工作区</span><span class=\"vnext-text-node\" data-vnext-fit-box=\"101,119,1819,189\" data-vnext-text-key=\"product-ui.text.002\">wise-ppt ▾</span></div>\n<div class=\"f\"><span class=\"dim\" data-vnext-fit-box=\"101,119,1819,189\" data-vnext-text-key=\"product-ui.text.003\">任务类型</span><span class=\"vnext-text-node\" data-vnext-fit-box=\"101,119,1819,189\" data-vnext-text-key=\"product-ui.text.004\">全部 ▾</span></div>\n<div class=\"f\"><span class=\"dim\" data-vnext-fit-box=\"101,119,1819,189\" data-vnext-text-key=\"product-ui.text.005\">状态</span><span class=\"vnext-text-node\" data-vnext-fit-box=\"101,119,1819,189\" data-vnext-text-key=\"product-ui.text.006\">全部 ▾</span></div>\n<div class=\"f\"><span class=\"dim\" data-vnext-fit-box=\"101,119,1819,189\" data-vnext-text-key=\"product-ui.text.007\">时段</span><span class=\"vnext-text-node\" data-vnext-fit-box=\"101,119,1819,189\" data-vnext-text-key=\"product-ui.text.008\">近 12H ▾</span></div>\n<div class=\"btn\" data-vnext-fit-box=\"101,119,1819,189\" data-vnext-text-key=\"product-ui.text.009\">查询</div>\n</div>\n<div class=\"content\">\n<div class=\"table\">\n<div class=\"tr hd\"><span data-vnext-fit-box=\"125,205,1026,244\" data-vnext-text-key=\"product-ui.text.010\">创建时间</span><span data-vnext-fit-box=\"125,205,1026,244\" data-vnext-text-key=\"product-ui.text.011\">RUN ID</span><span data-vnext-fit-box=\"125,205,1026,244\" data-vnext-text-key=\"product-ui.text.012\">模型</span><span data-vnext-fit-box=\"125,205,1026,244\" data-vnext-text-key=\"product-ui.text.013\">指令 / 结果</span><span data-vnext-fit-box=\"125,205,1026,244\" data-vnext-text-key=\"product-ui.text.014\" style=\"text-align:right\">操作</span></div>\n<div class=\"tr\">\n<span data-vnext-fit-box=\"125,244,1026,371\" data-vnext-text-key=\"product-ui.text.015\">08-06 14:22:10</span><span class=\"run-id\"><i class=\"dot\"></i><span data-vnext-fit-box=\"125,244,1026,371\" data-vnext-text-key=\"product-ui.text.016\">t7f3a2****</span></span><span class=\"cn\" data-vnext-fit-box=\"125,244,1026,371\" data-vnext-text-key=\"product-ui.text.017\">glm-5.2</span>\n<span class=\"cn\" data-vnext-fit-box=\"125,244,1026,371\" data-vnext-text-key=\"product-ui.text.018\">生成 A1 标本卡 · 估分梗 → 已完成</span>\n<span class=\"ops\"><span data-vnext-fit-box=\"0,0,1920,1080\" data-vnext-text-key=\"product-ui.text.019\">任务详情</span><span data-vnext-fit-box=\"0,0,1920,1080\" data-vnext-text-key=\"product-ui.text.020\">过程日志</span><span data-vnext-fit-box=\"0,0,1920,1080\" data-vnext-text-key=\"product-ui.text.021\">轨迹回放</span></span>\n</div>\n<div class=\"tr\">\n<span data-vnext-fit-box=\"125,371,1026,498\" data-vnext-text-key=\"product-ui.text.022\">08-06 13:58:44</span><span class=\"run-id\"><i class=\"dot part\"></i><span data-vnext-fit-box=\"125,371,1026,498\" data-vnext-text-key=\"product-ui.text.023\">k2d8e1****</span></span><span class=\"cn\" data-vnext-fit-box=\"125,371,1026,498\" data-vnext-text-key=\"product-ui.text.024\">claude-4.5</span>\n<span class=\"cn\" data-vnext-fit-box=\"125,371,1026,498\" data-vnext-text-key=\"product-ui.text.025\">重构 B1 流水线 · 4 段 · 已挂起</span>\n<span class=\"ops\"><span data-vnext-fit-box=\"0,0,1920,1080\" data-vnext-text-key=\"product-ui.text.026\">任务详情</span><span data-vnext-fit-box=\"0,0,1920,1080\" data-vnext-text-key=\"product-ui.text.027\">过程日志</span><span data-vnext-fit-box=\"0,0,1920,1080\" data-vnext-text-key=\"product-ui.text.028\">轨迹回放</span></span>\n</div>\n<div class=\"tr sel\" id=\"selrow\">\n<span data-vnext-fit-box=\"125,498,1026,625\" data-vnext-text-key=\"product-ui.text.029\">08-06 13:41:07</span><span class=\"run-id\"><i class=\"dot err\"></i><span data-vnext-fit-box=\"125,498,1026,625\" data-vnext-text-key=\"product-ui.text.030\">a91c5e****</span></span><span class=\"cn\" data-vnext-fit-box=\"125,498,1026,625\" data-vnext-text-key=\"product-ui.text.031\">glm-5.2</span>\n<span class=\"cn\" data-vnext-fit-box=\"125,498,1026,625\" data-vnext-text-key=\"product-ui.text.032\">工具调用 · 读 layout-c4 → 超时 · 未执行</span>\n<span class=\"ops\"><span data-vnext-fit-box=\"0,0,1920,1080\" data-vnext-text-key=\"product-ui.text.033\">任务详情</span><span data-vnext-fit-box=\"0,0,1920,1080\" data-vnext-text-key=\"product-ui.text.034\">过程日志</span><span data-vnext-fit-box=\"0,0,1920,1080\" data-vnext-text-key=\"product-ui.text.035\">轨迹回放</span></span>\n</div>\n<div class=\"tr\">\n<span data-vnext-fit-box=\"125,625,1026,752\" data-vnext-text-key=\"product-ui.text.036\">08-06 12:30:19</span><span class=\"run-id\"><i class=\"dot\"></i><span data-vnext-fit-box=\"125,625,1026,752\" data-vnext-text-key=\"product-ui.text.037\">f55b92****</span></span><span class=\"cn\" data-vnext-fit-box=\"125,625,1026,752\" data-vnext-text-key=\"product-ui.text.038\">deepseek-v3</span>\n<span class=\"cn\" data-vnext-fit-box=\"125,625,1026,752\" data-vnext-text-key=\"product-ui.text.039\">批量改 D 族 6 页 → 已完成</span>\n<span class=\"ops\"><span data-vnext-fit-box=\"0,0,1920,1080\" data-vnext-text-key=\"product-ui.text.040\">任务详情</span><span data-vnext-fit-box=\"0,0,1920,1080\" data-vnext-text-key=\"product-ui.text.041\">过程日志</span><span data-vnext-fit-box=\"0,0,1920,1080\" data-vnext-text-key=\"product-ui.text.042\">轨迹回放</span></span>\n</div>\n<div class=\"tr\">\n<span data-vnext-fit-box=\"125,752,1026,879\" data-vnext-text-key=\"product-ui.text.043\">08-06 11:15:52</span><span class=\"run-id\"><i class=\"dot\"></i><span data-vnext-fit-box=\"125,752,1026,879\" data-vnext-text-key=\"product-ui.text.044\">b73e08****</span></span><span class=\"cn\" data-vnext-fit-box=\"125,752,1026,879\" data-vnext-text-key=\"product-ui.text.045\">glm-5.2</span>\n<span class=\"cn\" data-vnext-fit-box=\"125,752,1026,879\" data-vnext-text-key=\"product-ui.text.046\">机检 shot-lint.py · 59 页 → 已完成</span>\n<span class=\"ops\"><span data-vnext-fit-box=\"0,0,1920,1080\" data-vnext-text-key=\"product-ui.text.047\">任务详情</span><span data-vnext-fit-box=\"0,0,1920,1080\" data-vnext-text-key=\"product-ui.text.048\">过程日志</span><span data-vnext-fit-box=\"0,0,1920,1080\" data-vnext-text-key=\"product-ui.text.049\">轨迹回放</span></span>\n</div>\n</div>\n<div class=\"detail\">\n<div class=\"dhead\"><span data-vnext-fit-box=\"1049,189,1819,895\" data-vnext-text-key=\"product-ui.text.050\">推理过程 · 节点树</span><span class=\"id\" data-vnext-fit-box=\"1074,205,1795,236\" data-vnext-text-key=\"product-ui.text.051\">a91c5e****</span></div>\n<div class=\"tree\">\n<div class=\"tnode\"><span data-vnext-fit-box=\"1074,244,1795,282\" data-vnext-text-key=\"product-ui.text.052\">▸ 读文件 layout-c4 · 任务树</span><span class=\"tag\" data-vnext-fit-box=\"1074,244,1795,282\" data-vnext-text-key=\"product-ui.text.053\">ROOT</span><span class=\"mono st-ok\" data-vnext-fit-box=\"1074,244,1795,282\" data-vnext-text-key=\"product-ui.text.054\">✓ 受理</span></div>\n<div class=\"tnode\" style=\"padding-left:var(--space-6)\"><span data-vnext-fit-box=\"1049,189,1819,895\" data-vnext-text-key=\"product-ui.text.055\">意图解析</span><span class=\"tag\" data-vnext-fit-box=\"1074,282,1795,320\" data-vnext-text-key=\"product-ui.text.056\">PARSER</span><span class=\"mono st-ok\" data-vnext-fit-box=\"1074,282,1795,320\" data-vnext-text-key=\"product-ui.text.057\">✓ 8ms</span></div>\n<div class=\"tnode\" style=\"padding-left:var(--space-6)\"><span data-vnext-fit-box=\"1049,189,1819,895\" data-vnext-text-key=\"product-ui.text.058\">路径解析</span><span class=\"tag\" data-vnext-fit-box=\"1074,320,1795,358\" data-vnext-text-key=\"product-ui.text.059\">PLANNER</span><span class=\"mono st-ok\" data-vnext-fit-box=\"1074,320,1795,358\" data-vnext-text-key=\"product-ui.text.060\">✓ 214ms</span></div>\n<div class=\"tnode sel\" data-content-ref=\"sample.a8.a8-focus\" data-emphasis-role=\"outline\" id=\"badstep\" style=\"margin-left:var(--space-2); padding-left:var(--space-3); padding-right:var(--space-3)\"><span class=\"accent-action\" data-content-ref=\"sample.a8.a8-focus\" data-emphasis-role=\"value\" data-vnext-fit-box=\"1082,358,1795,396\" data-vnext-text-key=\"product-ui.text.061\">read_file · layout-c4</span><span class=\"tag accent-role\" data-content-ref=\"sample.a8.a8-focus\" data-emphasis-role=\"label\" data-vnext-fit-box=\"1082,358,1795,396\" data-vnext-text-key=\"product-ui.text.062\">TOOL</span><span class=\"mono st-err\" data-content-ref=\"sample.a8.a8-focus\" data-emphasis-role=\"status\" data-vnext-fit-box=\"1082,358,1795,396\" data-vnext-text-key=\"product-ui.text.063\">✕ 60s 超时</span></div>\n<div class=\"io\">\n<span class=\"lbl\" data-vnext-fit-box=\"1106,404,1795,519\" data-vnext-text-key=\"product-ui.text.064\">ERROR</span>　<b data-vnext-fit-box=\"1106,404,1795,519\" data-vnext-text-key=\"product-ui.text.065\">ToolTimeoutError</b><span class=\"vnext-text-node\" data-vnext-fit-box=\"1106,404,1795,519\" data-vnext-text-key=\"product-ui.text.066\">：工具调用超时（超过 60s）</span><br/>\n<span class=\"lbl\" data-vnext-fit-box=\"1106,404,1795,519\" data-vnext-text-key=\"product-ui.text.067\">INPUT</span><span class=\"vnext-text-node\" data-vnext-fit-box=\"1106,404,1795,519\" data-vnext-text-key=\"product-ui.text.068\">{ path: \"gallery/paper-ink/ai/frames/layout-c4.html\" }</span><br/>\n<span class=\"lbl\" data-vnext-fit-box=\"1106,404,1795,519\" data-vnext-text-key=\"product-ui.text.069\">OUTPUT</span><span class=\"vnext-text-node\" data-vnext-fit-box=\"1106,404,1795,519\" data-vnext-text-key=\"product-ui.text.070\">无（调用未返回）</span></div>\n<div class=\"tnode off\" style=\"padding-left:var(--space-6)\"><span data-vnext-fit-box=\"1074,522,1795,561\" data-vnext-text-key=\"product-ui.text.071\">任务挂起</span><span class=\"tag\" data-vnext-fit-box=\"1074,522,1795,561\" data-vnext-text-key=\"product-ui.text.072\">SUSPEND</span><span class=\"mono\" data-vnext-fit-box=\"1074,522,1795,561\" data-vnext-text-key=\"product-ui.text.073\">未执行</span></div>\n<div class=\"tnode off\" style=\"padding-left:var(--space-6)\"><span data-vnext-fit-box=\"1074,560,1795,599\" data-vnext-text-key=\"product-ui.text.074\">人工接管告警</span><span class=\"tag\" data-vnext-fit-box=\"1074,560,1795,599\" data-vnext-text-key=\"product-ui.text.075\">ALERT</span><span class=\"mono\" data-vnext-fit-box=\"1074,560,1795,599\" data-vnext-text-key=\"product-ui.text.076\">未执行</span></div>\n</div>\n</div>\n</div>\n</div>\n<svg class=\"elbow\" height=\"1080\" viewbox=\"0 0 1920 1080\" width=\"1920\">\n<path d=\"M 1027.5625 561.5 L 1053.0625 561.5 L 1053.0625 377 L 1078.5625 377\" fill=\"none\" id=\"elb\" stroke=\"var(--ink)\" stroke-width=\"1.4\"></path>\n<path d=\"M 1066.5625 370 L 1078.5625 377 L 1066.5625 384\" fill=\"none\" id=\"elbA\" stroke=\"var(--ink)\" stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"1.4\"></path>\n</svg>\n<div class=\"caption\" data-vnext-claim-key=\"claim.text.001\" data-vnext-fit-box=\"0,0,1920,1080\">每次推理的节点、耗时与输入输出都能回溯到同一会话。</div>\n</div>",
+    "stage_structure_sha256": "0eaeb1be08af0446fc489ab8317dbc0974a26e564300789a1c744c869c1f6fc1"
+  },
+  "bindings": {
+    "claim": {
+      "key": "claim.text.001",
+      "default": "每次推理的节点、耗时与输入输出都能回溯到同一会话。",
+      "max_chars": 30,
+      "fit_box": [
+        0.0,
+        0.0,
+        1920.0,
+        1080.0
+      ],
+      "fit_owner_kind": "slide"
+    },
+    "primary_slot": "product-ui",
+    "slots": {
+      "product-ui": {
+        "text": [
+          {
+            "key": "product-ui.text.001",
+            "default": "工作区",
+            "max_chars": 5,
+            "item_scope": "item",
+            "item_group_source": "fixed-slot",
+            "item_index": 0,
+            "fit_box": [
+              101.0,
+              119.0,
+              1819.0,
+              189.0
+            ],
+            "fit_owner_kind": "html-ancestor"
+          },
+          {
+            "key": "product-ui.text.002",
+            "default": "wise-ppt ▾",
+            "max_chars": 13,
+            "item_scope": "item",
+            "item_group_source": "fixed-slot",
+            "item_index": 0,
+            "fit_box": [
+              101.0,
+              119.0,
+              1819.0,
+              189.0
+            ],
+            "fit_owner_kind": "html-ancestor"
+          },
+          {
+            "key": "product-ui.text.003",
+            "default": "任务类型",
+            "max_chars": 6,
+            "item_scope": "item",
+            "item_group_source": "fixed-slot",
+            "item_index": 0,
+            "fit_box": [
+              101.0,
+              119.0,
+              1819.0,
+              189.0
+            ],
+            "fit_owner_kind": "html-ancestor"
+          },
+          {
+            "key": "product-ui.text.004",
+            "default": "全部 ▾",
+            "max_chars": 5,
+            "item_scope": "item",
+            "item_group_source": "fixed-slot",
+            "item_index": 0,
+            "fit_box": [
+              101.0,
+              119.0,
+              1819.0,
+              189.0
+            ],
+            "fit_owner_kind": "html-ancestor"
+          },
+          {
+            "key": "product-ui.text.005",
+            "default": "状态",
+            "max_chars": 3,
+            "item_scope": "item",
+            "item_group_source": "fixed-slot",
+            "item_index": 0,
+            "fit_box": [
+              101.0,
+              119.0,
+              1819.0,
+              189.0
+            ],
+            "fit_owner_kind": "html-ancestor"
+          },
+          {
+            "key": "product-ui.text.006",
+            "default": "全部 ▾",
+            "max_chars": 5,
+            "item_scope": "item",
+            "item_group_source": "fixed-slot",
+            "item_index": 0,
+            "fit_box": [
+              101.0,
+              119.0,
+              1819.0,
+              189.0
+            ],
+            "fit_owner_kind": "html-ancestor"
+          },
+          {
+            "key": "product-ui.text.007",
+            "default": "时段",
+            "max_chars": 3,
+            "item_scope": "item",
+            "item_group_source": "fixed-slot",
+            "item_index": 0,
+            "fit_box": [
+              101.0,
+              119.0,
+              1819.0,
+              189.0
+            ],
+            "fit_owner_kind": "html-ancestor"
+          },
+          {
+            "key": "product-ui.text.008",
+            "default": "近 12H ▾",
+            "max_chars": 7,
+            "item_scope": "item",
+            "item_group_source": "fixed-slot",
+            "item_index": 0,
+            "fit_box": [
+              101.0,
+              119.0,
+              1819.0,
+              189.0
+            ],
+            "fit_owner_kind": "html-ancestor"
+          },
+          {
+            "key": "product-ui.text.009",
+            "default": "查询",
+            "max_chars": 3,
+            "item_scope": "item",
+            "item_group_source": "fixed-slot",
+            "item_index": 0,
+            "fit_box": [
+              101.0,
+              119.0,
+              1819.0,
+              189.0
+            ],
+            "fit_owner_kind": "html-ancestor"
+          },
+          {
+            "key": "product-ui.text.010",
+            "default": "创建时间",
+            "max_chars": 6,
+            "item_scope": "item",
+            "item_group_source": "fixed-slot",
+            "item_index": 0,
+            "fit_box": [
+              125.0,
+              205.0,
+              1026.0,
+              244.0
+            ],
+            "fit_owner_kind": "html-ancestor"
+          },
+          {
+            "key": "product-ui.text.011",
+            "default": "RUN ID",
+            "max_chars": 7,
+            "item_scope": "item",
+            "item_group_source": "fixed-slot",
+            "item_index": 0,
+            "fit_box": [
+              125.0,
+              205.0,
+              1026.0,
+              244.0
+            ],
+            "fit_owner_kind": "html-ancestor"
+          },
+          {
+            "key": "product-ui.text.012",
+            "default": "模型",
+            "max_chars": 3,
+            "item_scope": "item",
+            "item_group_source": "fixed-slot",
+            "item_index": 0,
+            "fit_box": [
+              125.0,
+              205.0,
+              1026.0,
+              244.0
+            ],
+            "fit_owner_kind": "html-ancestor"
+          },
+          {
+            "key": "product-ui.text.013",
+            "default": "指令 / 结果",
+            "max_chars": 7,
+            "item_scope": "item",
+            "item_group_source": "fixed-slot",
+            "item_index": 0,
+            "fit_box": [
+              125.0,
+              205.0,
+              1026.0,
+              244.0
+            ],
+            "fit_owner_kind": "html-ancestor"
+          },
+          {
+            "key": "product-ui.text.014",
+            "default": "操作",
+            "max_chars": 3,
+            "item_scope": "item",
+            "item_group_source": "fixed-slot",
+            "item_index": 0,
+            "fit_box": [
+              125.0,
+              205.0,
+              1026.0,
+              244.0
+            ],
+            "fit_owner_kind": "html-ancestor"
+          },
+          {
+            "key": "product-ui.text.015",
+            "default": "08-06 14:22:10",
+            "max_chars": 18,
+            "item_scope": "item",
+            "item_group_source": "fixed-slot",
+            "item_index": 0,
+            "fit_box": [
+              125.0,
+              244.0,
+              1026.0,
+              371.0
+            ],
+            "fit_owner_kind": "html-ancestor"
+          },
+          {
+            "key": "product-ui.text.016",
+            "default": "t7f3a2****",
+            "max_chars": 14,
+            "item_scope": "item",
+            "item_group_source": "fixed-slot",
+            "item_index": 0,
+            "fit_box": [
+              125.0,
+              244.0,
+              1026.0,
+              371.0
+            ],
+            "fit_owner_kind": "html-ancestor"
+          },
+          {
+            "key": "product-ui.text.017",
+            "default": "glm-5.2",
+            "max_chars": 10,
+            "item_scope": "item",
+            "item_group_source": "fixed-slot",
+            "item_index": 0,
+            "fit_box": [
+              125.0,
+              244.0,
+              1026.0,
+              371.0
+            ],
+            "fit_owner_kind": "html-ancestor"
+          },
+          {
+            "key": "product-ui.text.018",
+            "default": "生成 A1 标本卡 · 估分梗 → 已完成",
+            "max_chars": 21,
+            "item_scope": "item",
+            "item_group_source": "fixed-slot",
+            "item_index": 0,
+            "fit_box": [
+              125.0,
+              244.0,
+              1026.0,
+              371.0
+            ],
+            "fit_owner_kind": "html-ancestor"
+          },
+          {
+            "key": "product-ui.text.019",
+            "default": "任务详情",
+            "max_chars": 6,
+            "item_scope": "item",
+            "item_group_source": "fixed-slot",
+            "item_index": 0,
+            "fit_box": [
+              0.0,
+              0.0,
+              1920.0,
+              1080.0
+            ],
+            "fit_owner_kind": "slide"
+          },
+          {
+            "key": "product-ui.text.020",
+            "default": "过程日志",
+            "max_chars": 6,
+            "item_scope": "item",
+            "item_group_source": "fixed-slot",
+            "item_index": 0,
+            "fit_box": [
+              0.0,
+              0.0,
+              1920.0,
+              1080.0
+            ],
+            "fit_owner_kind": "slide"
+          },
+          {
+            "key": "product-ui.text.021",
+            "default": "轨迹回放",
+            "max_chars": 6,
+            "item_scope": "item",
+            "item_group_source": "fixed-slot",
+            "item_index": 0,
+            "fit_box": [
+              0.0,
+              0.0,
+              1920.0,
+              1080.0
+            ],
+            "fit_owner_kind": "slide"
+          },
+          {
+            "key": "product-ui.text.022",
+            "default": "08-06 13:58:44",
+            "max_chars": 18,
+            "item_scope": "item",
+            "item_group_source": "fixed-slot",
+            "item_index": 0,
+            "fit_box": [
+              125.0,
+              371.0,
+              1026.0,
+              498.0
+            ],
+            "fit_owner_kind": "html-ancestor"
+          },
+          {
+            "key": "product-ui.text.023",
+            "default": "k2d8e1****",
+            "max_chars": 14,
+            "item_scope": "item",
+            "item_group_source": "fixed-slot",
+            "item_index": 0,
+            "fit_box": [
+              125.0,
+              371.0,
+              1026.0,
+              498.0
+            ],
+            "fit_owner_kind": "html-ancestor"
+          },
+          {
+            "key": "product-ui.text.024",
+            "default": "claude-4.5",
+            "max_chars": 13,
+            "item_scope": "item",
+            "item_group_source": "fixed-slot",
+            "item_index": 0,
+            "fit_box": [
+              125.0,
+              371.0,
+              1026.0,
+              498.0
+            ],
+            "fit_owner_kind": "html-ancestor"
+          },
+          {
+            "key": "product-ui.text.025",
+            "default": "重构 B1 流水线 · 4 段 · 已挂起",
+            "max_chars": 19,
+            "item_scope": "item",
+            "item_group_source": "fixed-slot",
+            "item_index": 0,
+            "fit_box": [
+              125.0,
+              371.0,
+              1026.0,
+              498.0
+            ],
+            "fit_owner_kind": "html-ancestor"
+          },
+          {
+            "key": "product-ui.text.026",
+            "default": "任务详情",
+            "max_chars": 6,
+            "item_scope": "item",
+            "item_group_source": "fixed-slot",
+            "item_index": 0,
+            "fit_box": [
+              0.0,
+              0.0,
+              1920.0,
+              1080.0
+            ],
+            "fit_owner_kind": "slide"
+          },
+          {
+            "key": "product-ui.text.027",
+            "default": "过程日志",
+            "max_chars": 6,
+            "item_scope": "item",
+            "item_group_source": "fixed-slot",
+            "item_index": 0,
+            "fit_box": [
+              0.0,
+              0.0,
+              1920.0,
+              1080.0
+            ],
+            "fit_owner_kind": "slide"
+          },
+          {
+            "key": "product-ui.text.028",
+            "default": "轨迹回放",
+            "max_chars": 6,
+            "item_scope": "item",
+            "item_group_source": "fixed-slot",
+            "item_index": 0,
+            "fit_box": [
+              0.0,
+              0.0,
+              1920.0,
+              1080.0
+            ],
+            "fit_owner_kind": "slide"
+          },
+          {
+            "key": "product-ui.text.029",
+            "default": "08-06 13:41:07",
+            "max_chars": 18,
+            "item_scope": "item",
+            "item_group_source": "fixed-slot",
+            "item_index": 0,
+            "fit_box": [
+              125.0,
+              498.0,
+              1026.0,
+              625.0
+            ],
+            "fit_owner_kind": "html-ancestor"
+          },
+          {
+            "key": "product-ui.text.030",
+            "default": "a91c5e****",
+            "max_chars": 14,
+            "item_scope": "item",
+            "item_group_source": "fixed-slot",
+            "item_index": 0,
+            "fit_box": [
+              125.0,
+              498.0,
+              1026.0,
+              625.0
+            ],
+            "fit_owner_kind": "html-ancestor"
+          },
+          {
+            "key": "product-ui.text.031",
+            "default": "glm-5.2",
+            "max_chars": 10,
+            "item_scope": "item",
+            "item_group_source": "fixed-slot",
+            "item_index": 0,
+            "fit_box": [
+              125.0,
+              498.0,
+              1026.0,
+              625.0
+            ],
+            "fit_owner_kind": "html-ancestor"
+          },
+          {
+            "key": "product-ui.text.032",
+            "default": "工具调用 · 读 layout-c4 → 超时 · 未执行",
+            "max_chars": 27,
+            "item_scope": "item",
+            "item_group_source": "fixed-slot",
+            "item_index": 0,
+            "fit_box": [
+              125.0,
+              498.0,
+              1026.0,
+              625.0
+            ],
+            "fit_owner_kind": "html-ancestor"
+          },
+          {
+            "key": "product-ui.text.033",
+            "default": "任务详情",
+            "max_chars": 6,
+            "item_scope": "item",
+            "item_group_source": "fixed-slot",
+            "item_index": 0,
+            "fit_box": [
+              0.0,
+              0.0,
+              1920.0,
+              1080.0
+            ],
+            "fit_owner_kind": "slide"
+          },
+          {
+            "key": "product-ui.text.034",
+            "default": "过程日志",
+            "max_chars": 6,
+            "item_scope": "item",
+            "item_group_source": "fixed-slot",
+            "item_index": 0,
+            "fit_box": [
+              0.0,
+              0.0,
+              1920.0,
+              1080.0
+            ],
+            "fit_owner_kind": "slide"
+          },
+          {
+            "key": "product-ui.text.035",
+            "default": "轨迹回放",
+            "max_chars": 6,
+            "item_scope": "item",
+            "item_group_source": "fixed-slot",
+            "item_index": 0,
+            "fit_box": [
+              0.0,
+              0.0,
+              1920.0,
+              1080.0
+            ],
+            "fit_owner_kind": "slide"
+          },
+          {
+            "key": "product-ui.text.036",
+            "default": "08-06 12:30:19",
+            "max_chars": 18,
+            "item_scope": "item",
+            "item_group_source": "fixed-slot",
+            "item_index": 0,
+            "fit_box": [
+              125.0,
+              625.0,
+              1026.0,
+              752.0
+            ],
+            "fit_owner_kind": "html-ancestor"
+          },
+          {
+            "key": "product-ui.text.037",
+            "default": "f55b92****",
+            "max_chars": 14,
+            "item_scope": "item",
+            "item_group_source": "fixed-slot",
+            "item_index": 0,
+            "fit_box": [
+              125.0,
+              625.0,
+              1026.0,
+              752.0
+            ],
+            "fit_owner_kind": "html-ancestor"
+          },
+          {
+            "key": "product-ui.text.038",
+            "default": "deepseek-v3",
+            "max_chars": 13,
+            "item_scope": "item",
+            "item_group_source": "fixed-slot",
+            "item_index": 0,
+            "fit_box": [
+              125.0,
+              625.0,
+              1026.0,
+              752.0
+            ],
+            "fit_owner_kind": "html-ancestor"
+          },
+          {
+            "key": "product-ui.text.039",
+            "default": "批量改 D 族 6 页 → 已完成",
+            "max_chars": 15,
+            "item_scope": "item",
+            "item_group_source": "fixed-slot",
+            "item_index": 0,
+            "fit_box": [
+              125.0,
+              625.0,
+              1026.0,
+              752.0
+            ],
+            "fit_owner_kind": "html-ancestor"
+          },
+          {
+            "key": "product-ui.text.040",
+            "default": "任务详情",
+            "max_chars": 6,
+            "item_scope": "item",
+            "item_group_source": "fixed-slot",
+            "item_index": 0,
+            "fit_box": [
+              0.0,
+              0.0,
+              1920.0,
+              1080.0
+            ],
+            "fit_owner_kind": "slide"
+          },
+          {
+            "key": "product-ui.text.041",
+            "default": "过程日志",
+            "max_chars": 6,
+            "item_scope": "item",
+            "item_group_source": "fixed-slot",
+            "item_index": 0,
+            "fit_box": [
+              0.0,
+              0.0,
+              1920.0,
+              1080.0
+            ],
+            "fit_owner_kind": "slide"
+          },
+          {
+            "key": "product-ui.text.042",
+            "default": "轨迹回放",
+            "max_chars": 6,
+            "item_scope": "item",
+            "item_group_source": "fixed-slot",
+            "item_index": 0,
+            "fit_box": [
+              0.0,
+              0.0,
+              1920.0,
+              1080.0
+            ],
+            "fit_owner_kind": "slide"
+          },
+          {
+            "key": "product-ui.text.043",
+            "default": "08-06 11:15:52",
+            "max_chars": 18,
+            "item_scope": "item",
+            "item_group_source": "fixed-slot",
+            "item_index": 0,
+            "fit_box": [
+              125.0,
+              752.0,
+              1026.0,
+              879.0
+            ],
+            "fit_owner_kind": "html-ancestor"
+          },
+          {
+            "key": "product-ui.text.044",
+            "default": "b73e08****",
+            "max_chars": 14,
+            "item_scope": "item",
+            "item_group_source": "fixed-slot",
+            "item_index": 0,
+            "fit_box": [
+              125.0,
+              752.0,
+              1026.0,
+              879.0
+            ],
+            "fit_owner_kind": "html-ancestor"
+          },
+          {
+            "key": "product-ui.text.045",
+            "default": "glm-5.2",
+            "max_chars": 10,
+            "item_scope": "item",
+            "item_group_source": "fixed-slot",
+            "item_index": 0,
+            "fit_box": [
+              125.0,
+              752.0,
+              1026.0,
+              879.0
+            ],
+            "fit_owner_kind": "html-ancestor"
+          },
+          {
+            "key": "product-ui.text.046",
+            "default": "机检 shot-lint.py · 59 页 → 已完成",
+            "max_chars": 27,
+            "item_scope": "item",
+            "item_group_source": "fixed-slot",
+            "item_index": 0,
+            "fit_box": [
+              125.0,
+              752.0,
+              1026.0,
+              879.0
+            ],
+            "fit_owner_kind": "html-ancestor"
+          },
+          {
+            "key": "product-ui.text.047",
+            "default": "任务详情",
+            "max_chars": 6,
+            "item_scope": "item",
+            "item_group_source": "fixed-slot",
+            "item_index": 0,
+            "fit_box": [
+              0.0,
+              0.0,
+              1920.0,
+              1080.0
+            ],
+            "fit_owner_kind": "slide"
+          },
+          {
+            "key": "product-ui.text.048",
+            "default": "过程日志",
+            "max_chars": 6,
+            "item_scope": "item",
+            "item_group_source": "fixed-slot",
+            "item_index": 0,
+            "fit_box": [
+              0.0,
+              0.0,
+              1920.0,
+              1080.0
+            ],
+            "fit_owner_kind": "slide"
+          },
+          {
+            "key": "product-ui.text.049",
+            "default": "轨迹回放",
+            "max_chars": 6,
+            "item_scope": "item",
+            "item_group_source": "fixed-slot",
+            "item_index": 0,
+            "fit_box": [
+              0.0,
+              0.0,
+              1920.0,
+              1080.0
+            ],
+            "fit_owner_kind": "slide"
+          },
+          {
+            "key": "product-ui.text.050",
+            "default": "推理过程 · 节点树",
+            "max_chars": 11,
+            "item_scope": "item",
+            "item_group_source": "fixed-slot",
+            "item_index": 0,
+            "fit_box": [
+              1049.0,
+              189.0,
+              1819.0,
+              895.0
+            ],
+            "fit_owner_kind": "html-ancestor"
+          },
+          {
+            "key": "product-ui.text.051",
+            "default": "a91c5e****",
+            "max_chars": 14,
+            "item_scope": "item",
+            "item_group_source": "fixed-slot",
+            "item_index": 0,
+            "fit_box": [
+              1074.0,
+              205.0,
+              1795.0,
+              236.0
+            ],
+            "fit_owner_kind": "html-ancestor"
+          },
+          {
+            "key": "product-ui.text.052",
+            "default": "▸ 读文件 layout-c4 · 任务树",
+            "max_chars": 23,
+            "item_scope": "item",
+            "item_group_source": "fixed-slot",
+            "item_index": 0,
+            "fit_box": [
+              1074.0,
+              244.0,
+              1795.0,
+              282.0
+            ],
+            "fit_owner_kind": "html-ancestor"
+          },
+          {
+            "key": "product-ui.text.053",
+            "default": "ROOT",
+            "max_chars": 6,
+            "item_scope": "item",
+            "item_group_source": "fixed-slot",
+            "item_index": 0,
+            "fit_box": [
+              1074.0,
+              244.0,
+              1795.0,
+              282.0
+            ],
+            "fit_owner_kind": "html-ancestor"
+          },
+          {
+            "key": "product-ui.text.054",
+            "default": "✓ 受理",
+            "max_chars": 5,
+            "item_scope": "item",
+            "item_group_source": "fixed-slot",
+            "item_index": 0,
+            "fit_box": [
+              1074.0,
+              244.0,
+              1795.0,
+              282.0
+            ],
+            "fit_owner_kind": "html-ancestor"
+          },
+          {
+            "key": "product-ui.text.055",
+            "default": "意图解析",
+            "max_chars": 6,
+            "item_scope": "item",
+            "item_group_source": "fixed-slot",
+            "item_index": 0,
+            "fit_box": [
+              1049.0,
+              189.0,
+              1819.0,
+              895.0
+            ],
+            "fit_owner_kind": "html-ancestor"
+          },
+          {
+            "key": "product-ui.text.056",
+            "default": "PARSER",
+            "max_chars": 9,
+            "item_scope": "item",
+            "item_group_source": "fixed-slot",
+            "item_index": 0,
+            "fit_box": [
+              1074.0,
+              282.0,
+              1795.0,
+              320.0
+            ],
+            "fit_owner_kind": "html-ancestor"
+          },
+          {
+            "key": "product-ui.text.057",
+            "default": "✓ 8ms",
+            "max_chars": 6,
+            "item_scope": "item",
+            "item_group_source": "fixed-slot",
+            "item_index": 0,
+            "fit_box": [
+              1074.0,
+              282.0,
+              1795.0,
+              320.0
+            ],
+            "fit_owner_kind": "html-ancestor"
+          },
+          {
+            "key": "product-ui.text.058",
+            "default": "路径解析",
+            "max_chars": 6,
+            "item_scope": "item",
+            "item_group_source": "fixed-slot",
+            "item_index": 0,
+            "fit_box": [
+              1049.0,
+              189.0,
+              1819.0,
+              895.0
+            ],
+            "fit_owner_kind": "html-ancestor"
+          },
+          {
+            "key": "product-ui.text.059",
+            "default": "PLANNER",
+            "max_chars": 10,
+            "item_scope": "item",
+            "item_group_source": "fixed-slot",
+            "item_index": 0,
+            "fit_box": [
+              1074.0,
+              320.0,
+              1795.0,
+              358.0
+            ],
+            "fit_owner_kind": "html-ancestor"
+          },
+          {
+            "key": "product-ui.text.060",
+            "default": "✓ 214ms",
+            "max_chars": 9,
+            "item_scope": "item",
+            "item_group_source": "fixed-slot",
+            "item_index": 0,
+            "fit_box": [
+              1074.0,
+              320.0,
+              1795.0,
+              358.0
+            ],
+            "fit_owner_kind": "html-ancestor"
+          },
+          {
+            "key": "product-ui.text.061",
+            "default": "read_file · layout-c4",
+            "max_chars": 26,
+            "item_scope": "item",
+            "item_group_source": "fixed-slot",
+            "item_index": 0,
+            "fit_box": [
+              1082.0,
+              358.0,
+              1795.0,
+              396.0
+            ],
+            "fit_owner_kind": "html-ancestor"
+          },
+          {
+            "key": "product-ui.text.062",
+            "default": "TOOL",
+            "max_chars": 6,
+            "item_scope": "item",
+            "item_group_source": "fixed-slot",
+            "item_index": 0,
+            "fit_box": [
+              1082.0,
+              358.0,
+              1795.0,
+              396.0
+            ],
+            "fit_owner_kind": "html-ancestor"
+          },
+          {
+            "key": "product-ui.text.063",
+            "default": "✕ 60s 超时",
+            "max_chars": 9,
+            "item_scope": "item",
+            "item_group_source": "fixed-slot",
+            "item_index": 0,
+            "fit_box": [
+              1082.0,
+              358.0,
+              1795.0,
+              396.0
+            ],
+            "fit_owner_kind": "html-ancestor"
+          },
+          {
+            "key": "product-ui.text.064",
+            "default": "ERROR",
+            "max_chars": 7,
+            "item_scope": "item",
+            "item_group_source": "fixed-slot",
+            "item_index": 0,
+            "fit_box": [
+              1106.0,
+              404.0,
+              1795.0,
+              519.0
+            ],
+            "fit_owner_kind": "html-ancestor"
+          },
+          {
+            "key": "product-ui.text.065",
+            "default": "ToolTimeoutError",
+            "max_chars": 22,
+            "item_scope": "item",
+            "item_group_source": "fixed-slot",
+            "item_index": 0,
+            "fit_box": [
+              1106.0,
+              404.0,
+              1795.0,
+              519.0
+            ],
+            "fit_owner_kind": "html-ancestor"
+          },
+          {
+            "key": "product-ui.text.066",
+            "default": "：工具调用超时（超过 60s）",
+            "max_chars": 9,
+            "item_scope": "item",
+            "item_group_source": "fixed-slot",
+            "item_index": 0,
+            "fit_box": [
+              1106.0,
+              404.0,
+              1795.0,
+              519.0
+            ],
+            "fit_owner_kind": "html-ancestor"
+          },
+          {
+            "key": "product-ui.text.067",
+            "default": "INPUT",
+            "max_chars": 7,
+            "item_scope": "item",
+            "item_group_source": "fixed-slot",
+            "item_index": 0,
+            "fit_box": [
+              1106.0,
+              404.0,
+              1795.0,
+              519.0
+            ],
+            "fit_owner_kind": "html-ancestor"
+          },
+          {
+            "key": "product-ui.text.068",
+            "default": "{ path: \"gallery/paper-ink/ai/frames/layout-c4.html\" }",
+            "max_chars": 32,
+            "item_scope": "item",
+            "item_group_source": "fixed-slot",
+            "item_index": 0,
+            "fit_box": [
+              1106.0,
+              404.0,
+              1795.0,
+              519.0
+            ],
+            "fit_owner_kind": "html-ancestor"
+          },
+          {
+            "key": "product-ui.text.069",
+            "default": "OUTPUT",
+            "max_chars": 9,
+            "item_scope": "item",
+            "item_group_source": "fixed-slot",
+            "item_index": 0,
+            "fit_box": [
+              1106.0,
+              404.0,
+              1795.0,
+              519.0
+            ],
+            "fit_owner_kind": "html-ancestor"
+          },
+          {
+            "key": "product-ui.text.070",
+            "default": "无（调用未返回）",
+            "max_chars": 11,
+            "item_scope": "item",
+            "item_group_source": "fixed-slot",
+            "item_index": 0,
+            "fit_box": [
+              1106.0,
+              404.0,
+              1795.0,
+              519.0
+            ],
+            "fit_owner_kind": "html-ancestor"
+          },
+          {
+            "key": "product-ui.text.071",
+            "default": "任务挂起",
+            "max_chars": 6,
+            "item_scope": "item",
+            "item_group_source": "fixed-slot",
+            "item_index": 0,
+            "fit_box": [
+              1074.0,
+              522.0,
+              1795.0,
+              561.0
+            ],
+            "fit_owner_kind": "html-ancestor"
+          },
+          {
+            "key": "product-ui.text.072",
+            "default": "SUSPEND",
+            "max_chars": 10,
+            "item_scope": "item",
+            "item_group_source": "fixed-slot",
+            "item_index": 0,
+            "fit_box": [
+              1074.0,
+              522.0,
+              1795.0,
+              561.0
+            ],
+            "fit_owner_kind": "html-ancestor"
+          },
+          {
+            "key": "product-ui.text.073",
+            "default": "未执行",
+            "max_chars": 5,
+            "item_scope": "item",
+            "item_group_source": "fixed-slot",
+            "item_index": 0,
+            "fit_box": [
+              1074.0,
+              522.0,
+              1795.0,
+              561.0
+            ],
+            "fit_owner_kind": "html-ancestor"
+          },
+          {
+            "key": "product-ui.text.074",
+            "default": "人工接管告警",
+            "max_chars": 9,
+            "item_scope": "item",
+            "item_group_source": "fixed-slot",
+            "item_index": 0,
+            "fit_box": [
+              1074.0,
+              560.0,
+              1795.0,
+              599.0
+            ],
+            "fit_owner_kind": "html-ancestor"
+          },
+          {
+            "key": "product-ui.text.075",
+            "default": "ALERT",
+            "max_chars": 7,
+            "item_scope": "item",
+            "item_group_source": "fixed-slot",
+            "item_index": 0,
+            "fit_box": [
+              1074.0,
+              560.0,
+              1795.0,
+              599.0
+            ],
+            "fit_owner_kind": "html-ancestor"
+          },
+          {
+            "key": "product-ui.text.076",
+            "default": "未执行",
+            "max_chars": 5,
+            "item_scope": "item",
+            "item_group_source": "fixed-slot",
+            "item_index": 0,
+            "fit_box": [
+              1074.0,
+              560.0,
+              1795.0,
+              599.0
+            ],
+            "fit_owner_kind": "html-ancestor"
+          }
+        ],
+        "icon": []
+      },
+      "chart": {
+        "text": [],
+        "icon": []
+      },
+      "annotation": {
+        "text": [],
+        "icon": []
+      },
+      "support": {
+        "text": [
+          {
+            "key": "support.text.001",
+            "default": "PPT 标题",
+            "max_chars": 40,
+            "item_scope": "item",
+            "item_group_source": "fixed-slot",
+            "item_index": 0,
+            "fit_box": [
+              0.0,
+              0.0,
+              1920.0,
+              1080.0
+            ],
+            "fit_owner_kind": "slide"
+          },
+          {
+            "key": "support.text.002",
+            "default": "页面标题",
+            "max_chars": 72,
+            "item_scope": "item",
+            "item_group_source": "fixed-slot",
+            "item_index": 0,
+            "fit_box": [
+              0.0,
+              0.0,
+              1920.0,
+              1080.0
+            ],
+            "fit_owner_kind": "slide"
+          }
+        ],
+        "icon": []
+      },
+      "takeaway": {
+        "text": [],
+        "icon": []
+      }
+    }
+  },
+  "seed_sha256": "3093ec1cb40ff0c71d6337b60b53468d0f55f3cd4f144f9428f9fb9d69a628ea"
+}

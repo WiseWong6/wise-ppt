@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-runtime="wise-ppt-specimen" data-typography-mode="all-sans" data-page-id="gallery-ai-e3" data-page-role="compare" data-theme="paper-ink" data-layout="paper-ink.comparison.paired-bands" data-layout-source="gallery" data-sample-focus-profile="copy-only" data-sample-focus-members='[{"selector":"#focus-caption","role":"label"}]' data-sample-focus-ref="sample.e3.e3-focus">
+<head>
+<meta charset="UTF-8">
+<title>layout-e3 · 双带列阵 · Agent 4 坑 4 解</title>
+<script src="../../../../runtime/stage-fit.js"></script>
+<link rel="stylesheet" href="../../../../themes/paper-ink/assets/design-tokens.css">
+<link rel="stylesheet" href="../../../../themes/paper-ink/assets/catalog-fonts.css" data-wise-catalog-fonts="true">
+<link rel="stylesheet" href="../../../../themes/paper-ink/assets/slide-components.css">
+<link rel="stylesheet" href="../../../shell.css">
+<style>
+  /* B23 双带列阵 · 纸底 */
+  .doc.tl, .folio { color: var(--ink-45); }
+  svg.scene { position: absolute; inset: 0; z-index: 1; }
+  .caption {
+    position: absolute; left: 0; right: 0; bottom: 118px;
+    text-align: center;
+    font-family: var(--sans); font-weight: 400;
+    font-size: var(--type-caption); letter-spacing: .04em;
+    color: var(--ink);
+    z-index: 5;
+  }
+</style>
+</head>
+<body class="slide">
+<div class="stage" data-block-id="gallery-primary" data-renderer-kind="svg" data-component-source="native" data-component-id="native.paper-ink.comparison.paired-bands.paired-items" data-content-ref="example.e3">
+  <div class="doc tl">PPT 标题<br>页面标题</div>
+  <div class="folio">页码 / 总页数 — BY @歪斯Wise</div>
+
+  <svg class="scene" width="1920" height="1080" viewBox="0 0 1920 1080">
+    <defs>
+      <pattern id="hatch23" width="8" height="8" patternTransform="rotate(45)" patternUnits="userSpaceOnUse">
+        <line x1="0" y1="0" x2="0" y2="8" stroke="var(--ink)" stroke-width=".7" opacity=".35"/>
+      </pattern>
+    </defs>
+    <g id="draw"></g>
+  </svg>
+
+  <div class="caption">幻觉、越权、失控与不可追溯分别由<span id="focus-caption">证据、权限、边界和日志机制</span>治理。</div>
+</div>
+
+<script src="../../../../themes/paper-ink/assets/particles.js"></script>
+<script>
+var NS = 'http://www.w3.org/2000/svg';
+var INK = 'var(--ink)';
+var INK80 = 'var(--ink-80)';
+var INK70 = 'var(--ink-70)';
+var INK45 = 'var(--ink-45)';
+var G = document.getElementById('draw');
+function el(tag, attrs) {
+  var e = document.createElementNS(NS, tag);
+  for (var k in attrs) e.setAttribute(k, attrs[k]);
+  G.appendChild(e); return e;
+}
+function txt(x, y, str, attrs) {
+  var t = el('text', Object.assign({x:x, y:y}, attrs||{}));
+  t.textContent = str; return t;
+}
+var MONO = 'var(--mono)', SANS = 'var(--sans)';
+
+G = el('g', {transform:'translate(0 +1.3)'});
+
+
+/* ---------- 四列对位构造虚线（先画，沉底） ---------- */
+var COLS = [420, 800, 1180, 1560];
+COLS.forEach(function(cx){
+  el('line', {x1:cx, y1:250, x2:cx, y2:760, stroke:INK, 'stroke-width':.5, opacity:.16, 'stroke-dasharray':'2 6'});
+});
+
+/* ---------- 带题（左端 mono） ---------- */
+txt(150, 372, 'WHY', {'font-family':MONO, 'font-size':'var(--type-body-small)', 'letter-spacing':4, fill:INK});
+txt(150, 400, '动因 · 为什么做', {'font-family':SANS, 'font-weight':300, 'font-size':'var(--type-body-small)', fill:INK45});
+txt(150, 652, 'HOW', {'font-family':MONO, 'font-size':'var(--type-body-small)', 'letter-spacing':4, fill:INK});
+txt(150, 680, '对策 · 怎么做', {'font-family':SANS, 'font-weight':300, 'font-size':'var(--type-body-small)', fill:INK45});
+
+/* ---------- 上带：四个"因"标本（形态随语义） ---------- */
+var UY = 350;
+/* 因 1 · 峰值拥堵：窄门 + 排队小车 */
+(function(){
+  var cx = COLS[0];
+  txt(cx, 270, '01 · RATE-LIMIT', {'font-family':MONO, 'font-size':'var(--type-micro-secondary)', 'letter-spacing':2, 'text-anchor':'middle', fill:INK45});
+  el('rect', {x:cx-32, y:UY-34, width:11, height:68, fill:'url(#hatch23)', stroke:INK80, 'stroke-width':1});
+  el('rect', {x:cx+21, y:UY-34, width:11, height:68, fill:'url(#hatch23)', stroke:INK80, 'stroke-width':1});
+  el('rect', {x:cx-84, y:UY-26, width:20, height:20, fill:'none', stroke:INK80, 'stroke-width':1.1});
+  el('rect', {x:cx-66, y:UY+2, width:16, height:16, fill:'none', stroke:INK80, 'stroke-width':1.1});
+  el('rect', {x:cx-10, y:UY-9, width:18, height:18, fill:'var(--paper-panel)', stroke:INK, 'stroke-width':1.3});
+  el('path', {d:'M '+(cx-96)+' '+(UY+30)+' L '+(cx-40)+' '+(UY+30), fill:'none', stroke:INK, 'stroke-width':.6, opacity:.4, 'stroke-dasharray':'2 4'});
+  txt(cx, 432, '限流中断', {id:'sample-focus', 'font-family':SANS, 'font-weight':300, 'font-size':'var(--type-body)', 'text-anchor':'middle', fill:INK});
+})();
+
+/* 因 2 · 空驶返程：实线去、虚线回 */
+(function(){
+  var cx = COLS[1];
+  txt(cx, 270, '02 · LOOP STUCK', {'font-family':MONO, 'font-size':'var(--type-micro-secondary)', 'letter-spacing':2, 'text-anchor':'middle', fill:INK45});
+  el('circle', {cx:cx-72, cy:UY+18, r:6, fill:'none', stroke:INK80, 'stroke-width':1.1});
+  el('circle', {cx:cx-72, cy:UY+18, r:2.2, fill:INK});
+  el('path', {d:'M '+(cx-66)+' '+(UY+14)+' L '+(cx+60)+' '+(UY-22), fill:'none', stroke:INK80, 'stroke-width':1.2});
+  el('path', {d:'M '+(cx+60)+' '+(UY-22)+' L '+(cx+42)+' '+(UY-34), fill:'none', stroke:INK80, 'stroke-width':1.2});
+  el('path', {d:'M '+(cx+60)+' '+(UY-22)+' L '+(cx+44)+' '+(UY-14), fill:'none', stroke:INK80, 'stroke-width':1.2});
+  el('path', {d:'M '+(cx+58)+' '+(UY-10)+' L '+(cx-58)+' '+(UY+34), fill:'none', stroke:INK, 'stroke-width':.8, opacity:.5, 'stroke-dasharray':'4 5'});
+  el('path', {d:'M '+(cx-58)+' '+(UY+34)+' L '+(cx-40)+' '+(UY+28), fill:'none', stroke:INK, 'stroke-width':.8, opacity:.5});
+  el('path', {d:'M '+(cx-58)+' '+(UY+34)+' L '+(cx-46)+' '+(UY+18), fill:'none', stroke:INK, 'stroke-width':.8, opacity:.5});
+  txt(cx+4, UY+44, '原地打转', {'font-family':SANS, 'font-weight':300, 'font-size':'var(--type-meta)', fill:INK45});
+  txt(cx, 432, '思考死循环', {'font-family':SANS, 'font-weight':300, 'font-size':'var(--type-body)', 'text-anchor':'middle', fill:INK});
+})();
+
+/* 因 3 · 错拣漏拣：吊牌 + ✕ */
+(function(){
+  var cx = COLS[2];
+  txt(cx, 270, '03 · CTX OVERFLOW', {'font-family':MONO, 'font-size':'var(--type-micro-secondary)', 'letter-spacing':2, 'text-anchor':'middle', fill:INK45});
+  el('path', {d:'M '+(cx-52)+' '+(UY-30)+' L '+(cx+22)+' '+(UY-30)+' L '+(cx+52)+' '+(UY)+' L '+(cx+22)+' '+(UY+30)+' L '+(cx-52)+' '+(UY+30)+' Z',
+    fill:'none', stroke:INK80, 'stroke-width':1.2});
+  el('circle', {cx:cx+28, cy:UY, r:4.5, fill:'none', stroke:INK, 'stroke-width':.9, opacity:.7});
+  el('path', {d:'M '+(cx-28)+' '+(UY-13)+' L '+(cx-2)+' '+(UY+13), fill:'none', stroke:INK, 'stroke-width':1.6});
+  el('path', {d:'M '+(cx-2)+' '+(UY-13)+' L '+(cx-28)+' '+(UY+13), fill:'none', stroke:INK, 'stroke-width':1.6});
+  el('line', {x1:cx-40, y1:UY-40, x2:cx+16, y2:UY-40, stroke:INK, 'stroke-width':.6, opacity:.35, 'stroke-dasharray':'2 4'});
+  txt(cx, 432, '上下文窗口乱', {'font-family':SANS, 'font-weight':300, 'font-size':'var(--type-body)', 'text-anchor':'middle', fill:INK});
+})();
+
+/* 因 4 · 跨仓割裂：两仓 + 断口 */
+(function(){
+  var cx = COLS[3];
+  txt(cx, 270, '04 · UNTRACEABLE', {'font-family':MONO, 'font-size':'var(--type-micro-secondary)', 'letter-spacing':2, 'text-anchor':'middle', fill:INK45});
+  [[cx-64],[cx+64]].forEach(function(p){
+    var bx = p[0];
+    el('rect', {x:bx-24, y:UY-14, width:48, height:32, fill:'none', stroke:INK80, 'stroke-width':1.2});
+    el('path', {d:'M '+(bx-28)+' '+(UY-14)+' L '+bx+' '+(UY-34)+' L '+(bx+28)+' '+(UY-14), fill:'none', stroke:INK80, 'stroke-width':1.2});
+    el('line', {x1:bx-10, y1:UY+18, x2:bx-10, y2:UY+2, stroke:INK, 'stroke-width':.8, opacity:.6});
+    el('line', {x1:bx+10, y1:UY+18, x2:bx+10, y2:UY+2, stroke:INK, 'stroke-width':.8, opacity:.6});
+  });
+  el('line', {x1:cx-36, y1:UY+2, x2:cx+36, y2:UY+2, stroke:INK, 'stroke-width':.7, opacity:.5, 'stroke-dasharray':'3 5'});
+  el('rect', {x:cx-11, y:UY-7, width:22, height:18, fill:'var(--paper)', stroke:'none'});
+  el('path', {d:'M '+(cx-7)+' '+(UY-5)+' L '+(cx+7)+' '+(UY+9), fill:'none', stroke:INK, 'stroke-width':1.4});
+  el('path', {d:'M '+(cx+7)+' '+(UY-5)+' L '+(cx-7)+' '+(UY+9), fill:'none', stroke:INK, 'stroke-width':1.4});
+  txt(cx, 432, '不可追踪', {'font-family':SANS, 'font-weight':300, 'font-size':'var(--type-body)', 'text-anchor':'middle', fill:INK});
+})();
+
+/* ---------- 对位竖向开放箭头（因 → 策） ---------- */
+COLS.forEach(function(cx){
+  el('line', {x1:cx, y1:466, x2:cx, y2:540, stroke:INK80, 'stroke-width':1.3});
+  el('line', {x1:cx, y1:540, x2:cx-9, y2:522, stroke:INK80, 'stroke-width':1.3});
+  el('line', {x1:cx, y1:540, x2:cx+9, y2:522, stroke:INK80, 'stroke-width':1.3});
+  el('circle', {cx:cx, cy:466, r:2.4, fill:INK, opacity:.6});
+});
+
+/* ---------- 下带：四个"策"标本（形态随语义） ---------- */
+var LY = 630;
+/* 策 1 · 全局调度引擎：齿轮双圈 */
+(function(){
+  var cx = COLS[0];
+  txt(cx, 562, 'RETRY', {'font-family':MONO, 'font-size':'var(--type-micro-secondary)', 'letter-spacing':2, 'text-anchor':'middle', fill:INK45});
+  for (var i = 0; i < 8; i++) {
+    var a = i * Math.PI / 4;
+    el('line', {x1:cx+Math.cos(a)*36, y1:LY+Math.sin(a)*36, x2:cx+Math.cos(a)*44, y2:LY+Math.sin(a)*44,
+      stroke:INK80, 'stroke-width':1.2});
+  }
+  el('circle', {cx:cx, cy:LY, r:32, fill:'none', stroke:INK80, 'stroke-width':1.3});
+  el('circle', {cx:cx, cy:LY, r:19, fill:'none', stroke:INK, 'stroke-width':.6, opacity:.4});
+  el('circle', {cx:cx, cy:LY, r:2.6, fill:INK});
+  txt(cx, 712, '重试退避 + 熔断', {'font-family':SANS, 'font-weight':300, 'font-size':'var(--type-body)', 'text-anchor':'middle', fill:INK});
+})();
+
+/* 策 2 · 弹性波次编排：错峰甘特条 */
+(function(){
+  var cx = COLS[1];
+  txt(cx, 562, 'STEP CAP', {'font-family':MONO, 'font-size':'var(--type-micro-secondary)', 'letter-spacing':2, 'text-anchor':'middle', fill:INK45});
+  var gx = cx-66;
+  el('line', {x1:gx, y1:LY+38, x2:gx+132, y2:LY+38, stroke:INK, 'stroke-width':.8, opacity:.6});
+  for (var i = 0; i <= 4; i++)
+    el('line', {x1:gx+i*33, y1:LY+38, x2:gx+i*33, y2:LY+43, stroke:INK, 'stroke-width':.6, opacity:.5});
+  el('rect', {x:gx, y:LY-34, width:56, height:14, fill:'none', stroke:INK80, 'stroke-width':1.1});
+  el('rect', {x:gx+34, y:LY-8, width:70, height:14, fill:'url(#hatch23)', stroke:INK80, 'stroke-width':1.1});
+  el('rect', {x:gx+84, y:LY+18, width:48, height:14, fill:'none', stroke:INK80, 'stroke-width':1.1});
+  txt(cx, 712, '步骤上限 + 早停', {'font-family':SANS, 'font-weight':300, 'font-size':'var(--type-body)', 'text-anchor':'middle', fill:INK});
+})();
+
+/* 策 3 · 拣选复核闭环：回环弧 + 单据（共用中心，避免单据挤在回环右下角） */
+(function(){
+  var cx = COLS[2];
+  var cy = LY-8;
+  txt(cx, 562, 'CTX COMPRESS', {'font-family':MONO, 'font-size':'var(--type-micro-secondary)', 'letter-spacing':2, 'text-anchor':'middle', fill:INK45});
+  el('rect', {x:cx-13, y:cy-17, width:26, height:34, fill:'var(--paper-panel)', stroke:INK80, 'stroke-width':1.1});
+  el('line', {x1:cx-7, y1:cy-7, x2:cx+7, y2:cy-7, stroke:INK, 'stroke-width':.6, opacity:.5});
+  el('line', {x1:cx-7, y1:cy+1, x2:cx+7, y2:cy+1, stroke:INK, 'stroke-width':.6, opacity:.5});
+  el('path', {d:'M '+(cx-7)+' '+(cy+11)+' L '+(cx-1)+' '+(cy+16)+' L '+(cx+9)+' '+(cy+6), fill:'none', stroke:INK, 'stroke-width':1.6});
+  el('path', {d:'M '+(cx+34)+' '+cy+' A 34 34 0 1 1 '+(cx-34)+' '+cy+' A 34 34 0 0 1 '+(cx+24)+' '+(cy-24), fill:'none', stroke:INK80, 'stroke-width':1.2});
+  el('path', {d:'M '+(cx+24)+' '+(cy-24)+' L '+(cx+20)+' '+(cy-36), fill:'none', stroke:INK80, 'stroke-width':1.2});
+  el('path', {d:'M '+(cx+24)+' '+(cy-24)+' L '+(cx+12)+' '+(cy-28), fill:'none', stroke:INK80, 'stroke-width':1.2});
+  txt(cx, LY+48, '压缩交接', {'font-family':SANS, 'font-weight':300, 'font-size':'var(--type-meta)', 'text-anchor':'middle', fill:INK45});
+  txt(cx, 712, '上下文压缩 + 交接文档', {'font-family':SANS, 'font-weight':300, 'font-size':'var(--type-body)', 'text-anchor':'middle', fill:INK});
+})();
+
+/* 策 4 · 跨仓协同调拨：双落点连线 */
+(function(){
+  var cx = COLS[3];
+  txt(cx, 562, 'TRACE', {'font-family':MONO, 'font-size':'var(--type-micro-secondary)', 'letter-spacing':2, 'text-anchor':'middle', fill:INK45});
+  [[cx-56],[cx+56]].forEach(function(p){
+    el('circle', {cx:p[0], cy:LY, r:12, fill:'none', stroke:INK80, 'stroke-width':1.2});
+    el('circle', {cx:p[0], cy:LY, r:6, fill:'none', stroke:INK, 'stroke-width':.6, opacity:.4});
+    el('circle', {cx:p[0], cy:LY, r:2.4, fill:INK});
+  });
+  el('line', {x1:cx-42, y1:LY, x2:cx+42, y2:LY, stroke:INK80, 'stroke-width':1.3});
+  el('circle', {cx:cx, cy:LY, r:2.4, fill:INK, opacity:.7});
+  el('path', {d:'M '+(cx-50)+' '+(LY-16)+' A 52 26 0 0 1 '+(cx+50)+' '+(LY-16), fill:'none',
+    stroke:INK, 'stroke-width':.7, opacity:.45, 'stroke-dasharray':'3 5'});
+  txt(cx, LY-32, '全链路', {'font-family':SANS, 'font-weight':300, 'font-size':'var(--type-meta)', 'text-anchor':'middle', fill:INK45});
+  txt(cx, 712, '全链 Trace + 日志', {'font-family':SANS, 'font-weight':300, 'font-size':'var(--type-body)', 'text-anchor':'middle', fill:INK});
+})();
+
+stageFit();
+</script>
+</body>
+</html>

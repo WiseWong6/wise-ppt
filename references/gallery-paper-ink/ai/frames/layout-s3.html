@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-runtime="wise-ppt-specimen" data-typography-mode="all-sans" data-page-id="gallery-ai-s3" data-page-role="synthesize" data-theme="paper-ink" data-layout="paper-ink.causal.problem-solution-five-slot" data-layout-source="gallery" data-sample-focus-profile="content-only" data-sample-focus-members='[{"selector":"#s3-num-0","role":"value"},{"selector":"#s3-num-1","role":"value"},{"selector":"#s3-num-2","role":"value"},{"selector":"#s3-num-3","role":"value"},{"selector":"#s3-label-0","role":"label"},{"selector":"#s3-label-1","role":"label"},{"selector":"#s3-label-2","role":"label"},{"selector":"#s3-label-3","role":"label"}]' data-sample-focus-ref="sample.s3.s3-focus">
+<head>
+<meta charset="UTF-8">
+<title>layout-s3 · 左痛双卡右解复合 · 客服 Agent 升级</title>
+<script src="../../../../runtime/stage-fit.js"></script>
+<link rel="stylesheet" href="../../../../themes/paper-ink/assets/design-tokens.css">
+<link rel="stylesheet" href="../../../../themes/paper-ink/assets/catalog-fonts.css" data-wise-catalog-fonts="true">
+<link rel="stylesheet" href="../../../../themes/paper-ink/assets/slide-components.css">
+<link rel="stylesheet" href="../../../shell.css">
+<style>
+  svg.scene { position: absolute; inset: 0; z-index: 1; }
+  .caption {
+    position: absolute; left: 0; right: 0; bottom: 118px;
+    text-align: center;
+    font-family: var(--sans); font-weight: 400;
+    font-size: var(--type-caption); letter-spacing: .04em;
+    color: var(--ink);
+    z-index: 5;
+  }
+</style>
+</head>
+<body class="slide">
+<div class="stage" data-block-id="gallery-primary" data-renderer-kind="svg" data-component-source="native" data-content-ref="example.s3">
+  <div class="doc tl">PPT 标题<br>页面标题</div>
+  <div class="folio">页码 / 总页数 — BY @歪斯Wise</div>
+
+  <svg class="scene" width="1920" height="1080" viewBox="0 0 1920 1080" aria-label="左侧上下两张问题卡，右侧解法流程、证据带与结果指标带同属一块">
+    <defs>
+      <pattern id="s3-hatch" width="7" height="7" patternUnits="userSpaceOnUse" patternTransform="rotate(45)">
+        <line x1="0" y1="0" x2="0" y2="7" stroke="var(--ink)" stroke-width=".7" opacity=".32"/>
+      </pattern>
+    </defs>
+    <g id="s3-chrome"></g>
+    <g id="s3-problem-list" data-slot-id="problem-list" data-anchor-id="s3.problem-list" data-component-id="native.paper-ink.semantic.evidence-panel"></g>
+    <g id="s3-problem-cost" data-slot-id="problem-cost" data-anchor-id="s3.problem-cost" data-component-id="native.paper-ink.semantic.evidence-panel"></g>
+    <g id="s3-solution-flow" data-slot-id="solution-flow" data-anchor-id="s3.solution-flow" data-component-id="native.paper-ink.semantic.process-strip"></g>
+    <g id="s3-evidence-band" data-slot-id="evidence-band" data-anchor-id="s3.evidence-band" data-component-id="native.paper-ink.semantic.evidence-panel"></g>
+    <g id="s3-result-band" data-slot-id="result-band" data-anchor-id="s3.result-band" data-component-id="native.paper-ink.semantic.metric-band" data-content-ref="sample.s3.result-band" data-emphasis-role="value"></g>
+  </svg>
+
+  <div class="caption">客服 Agent 升级后，召回命中率达到 91%，首字延迟下降 58%，质检达标率达到 96%。</div>
+</div>
+
+<script>
+var NS = 'http://www.w3.org/2000/svg';
+var INK = 'var(--ink)';
+var INK80 = 'var(--ink-80)';
+var INK70 = 'var(--ink-70)';
+var INK45 = 'var(--ink-45)';
+var PAPER = 'var(--paper)';
+if (location.search.indexOf('accent') >= 0) document.documentElement.classList.add('accent');
+var ACCENT = document.documentElement.classList.contains('accent');
+var FOCUS = getComputedStyle(document.documentElement).getPropertyValue('--wp-color-focus').trim();
+var G = document.getElementById('s3-chrome');
+function el(tag, attrs) {
+  var e = document.createElementNS(NS, tag);
+  for (var k in attrs) e.setAttribute(k, attrs[k]);
+  G.appendChild(e); return e;
+}
+function txt(x, y, str, attrs) {
+  var t = el('text', Object.assign({x:x, y:y}, attrs || {}));
+  t.textContent = str; return t;
+}
+function svgGroup(id, draw) {
+  var parent = G;
+  G = document.getElementById(id);
+  draw();
+  G = parent;
+}
+var MONO = 'var(--mono)', SANS = 'var(--sans)', SERIF = 'var(--serif)';
+
+function sectionHead(x, y, en, cn) {
+  txt(x, y, en, {'font-family':MONO, 'font-size':'var(--type-label)', 'letter-spacing':3, fill:INK45});
+  el('line', {x1:x, y1:y+16, x2:x+100, y2:y+16, stroke:INK, 'stroke-width':.8, opacity:.5});
+  txt(x, y+54, cn, {'font-family':SANS, 'font-weight':300, 'font-size':'var(--type-subheading)', fill:INK});
+}
+function drawMark(kind, y) {
+  if (kind === 'doc') {
+    el('rect', {x:158, y:y-28, width:44, height:52, fill:'none', stroke:INK, 'stroke-width':.6, opacity:.35});
+    el('rect', {x:150, y:y-20, width:44, height:52, fill:PAPER, stroke:INK80, 'stroke-width':1.2});
+    [y-8, y+4, y+16, y+28].forEach(function(yy){
+      el('line', {x1:158, y1:yy, x2:186, y2:yy, stroke:INK, 'stroke-width':.8, opacity:.5});
+    });
+    el('line', {x1:154, y1:y+26, x2:190, y2:y-16, stroke:INK, 'stroke-width':1, opacity:.6});
+    el('line', {x1:154, y1:y-16, x2:190, y2:y+26, stroke:INK, 'stroke-width':1, opacity:.6});
+  } else if (kind === 'ruler') {
+    el('line', {x1:150, y1:y-8, x2:214, y2:y-8, stroke:INK80, 'stroke-width':1.2});
+    for (var t = 0; t < 6; t++) el('line', {x1:152+t*12, y1:y-8, x2:152+t*12, y2:y-16, stroke:INK, 'stroke-width':.8, opacity:.6});
+    el('line', {x1:158, y1:y+16, x2:214, y2:y+16, stroke:INK80, 'stroke-width':1.2});
+    for (var u = 0; u < 5; u++) el('line', {x1:162+u*12, y1:y+16, x2:162+u*12, y2:y+24, stroke:INK, 'stroke-width':.8, opacity:.6});
+    el('line', {x1:182, y1:y-20, x2:182, y2:y+28, stroke:INK, 'stroke-width':.6, opacity:.4, 'stroke-dasharray':'2 4'});
+  } else if (kind === 'trace') {
+    el('path', {d:'M 150 '+(y+16)+' L 166 '+(y-2)+' L 180 '+(y+10)+' L 194 '+(y-10), fill:'none', stroke:INK, 'stroke-width':1, 'stroke-dasharray':'4 4', opacity:.6});
+    el('circle', {cx:208, cy:y, r:13, fill:PAPER, stroke:INK80, 'stroke-width':1.2});
+    el('line', {x1:217, y1:y+9, x2:226, y2:y+18, stroke:INK80, 'stroke-width':1.3});
+  } else if (kind === 'ledger') {
+    el('rect', {x:156, y:y-22, width:48, height:58, fill:'none', stroke:INK, 'stroke-width':.6, opacity:.35});
+    el('rect', {x:150, y:y-16, width:48, height:58, fill:PAPER, stroke:INK80, 'stroke-width':1.2});
+    [y-2, y+10, y+22, y+34].forEach(function(yy, i){
+      el('line', {x1:158, y1:yy, x2:i === 0 ? 176 : 190, y2:yy, stroke:INK, 'stroke-width':.8, opacity:.5});
+    });
+  } else if (kind === 'loop') {
+    el('path', {d:'M 168 '+(y-18)+' A 18 18 0 1 1 154 '+(y+8), fill:'none', stroke:INK80, 'stroke-width':1.3});
+    el('line', {x1:168, y1:y-18, x2:160, y2:y-28, stroke:INK80, 'stroke-width':1.2});
+    el('line', {x1:168, y1:y-18, x2:178, y2:y-24, stroke:INK80, 'stroke-width':1.2});
+    el('circle', {cx:186, cy:y+16, r:3, fill:INK});
+  } else {
+    el('circle', {cx:174, cy:y, r:22, fill:'none', stroke:INK80, 'stroke-width':1.3});
+    el('line', {x1:174, y1:y, x2:174, y2:y-12, stroke:INK, 'stroke-width':1.2});
+    el('line', {x1:174, y1:y, x2:186, y2:y+4, stroke:INK, 'stroke-width':1.1});
+    el('circle', {cx:174, cy:y, r:2.4, fill:INK});
+  }
+}
+function cardItems(rows) {
+  rows.forEach(function(item){
+    drawMark(item.mark, item.y);
+    txt(246, item.y-8, item.title, {'font-family':SANS, 'font-weight':300, 'font-size':'var(--type-body)', fill:INK});
+    txt(246, item.y+22, item.desc[0], {'font-family':SANS, 'font-weight':300, 'font-size':'var(--type-label)', fill:INK70});
+    txt(246, item.y+48, item.desc[1], {'font-family':SANS, 'font-weight':300, 'font-size':'var(--type-label)', fill:INK70});
+  });
+}
+
+/* ========== 槽1 · 左上 · 两个失效信号 ========== */
+svgGroup('s3-problem-list', function(){
+  sectionHead(150, 176, 'WHY IT HURTS', '两个失效信号');
+  cardItems([
+    {y:310, title:'答非所问', desc:['长尾问题命中错误知识，', '用户反复追问同一件事。'], mark:'doc'},
+    {y:430, title:'知识过期', desc:['文档月更、产品周更，', '检索常命中旧口径。'], mark:'ruler'}
+  ]);
+});
+
+/* ========== 槽2 · 左下 · 两笔代价，画法同上卡 ========== */
+svgGroup('s3-problem-cost', function(){
+  sectionHead(150, 556, 'THE COST', '落到季度账上的两笔');
+  cardItems([
+    {y:690, title:'幻觉入账', desc:['生成幻觉率一度到 12%，', '长尾抽检 480 条。'], mark:'ledger'},
+    {y:810, title:'定位耗时', desc:['坏例平均 2.6 天才能定位，', '跨三个团队传日志复盘。'], mark:'clock'}
+  ]);
+});
+
+function unionBox(ids) {
+  var minX = Infinity, minY = Infinity, maxX = -Infinity, maxY = -Infinity;
+  ids.forEach(function(id){
+    var b = document.getElementById(id).getBBox();
+    minX = Math.min(minX, b.x);
+    minY = Math.min(minY, b.y);
+    maxX = Math.max(maxX, b.x + b.width);
+    maxY = Math.max(maxY, b.y + b.height);
+  });
+  return {x:minX, y:minY, right:maxX, bottom:maxY};
+}
+
+/* 箭头夹在左栏墨迹右缘和右栏墨迹左缘之间，水平居中；垂直仍对整列中线 */
+var ARROW_W = 28;
+var gutterArrow = el('g', {'data-layout-role':'flow-arrow'});
+(function(){
+  var parent = G;
+  G = gutterArrow;
+  el('line', {x1:0, y1:506, x2:ARROW_W, y2:506, stroke:INK, 'stroke-width':1.3, opacity:.65});
+  el('line', {x1:ARROW_W-10, y1:498, x2:ARROW_W, y2:506, stroke:INK, 'stroke-width':1.3, opacity:.65});
+  el('line', {x1:ARROW_W-10, y1:514, x2:ARROW_W, y2:506, stroke:INK, 'stroke-width':1.3, opacity:.65});
+  G = parent;
+})();
+function placeGutterArrow() {
+  var left = unionBox(['s3-problem-list', 's3-problem-cost']);
+  var right = unionBox(['s3-solution-flow', 's3-evidence-band', 's3-result-band']);
+  var x = (left.right + right.x - ARROW_W) / 2;
+  gutterArrow.setAttribute('transform', 'translate('+x+' 0)');
+}
+
+/* ========== 右边一整块解法：流程 / 证据 / 结果三层同列 ========== */
+svgGroup('s3-solution-flow', function(){
+  txt(720, 176, 'THE FIX · AGENT PIPELINE', {'font-family':MONO, 'font-size':'var(--type-label)', 'letter-spacing':3, fill:INK45});
+  el('line', {x1:720, y1:192, x2:820, y2:192, stroke:INK, 'stroke-width':.8, opacity:.5});
+  txt(720, 230, 'Agent 基座五步', {'font-family':SANS, 'font-weight':300, 'font-size':'var(--type-subheading)', fill:INK});
+
+  var PX = [820, 1045, 1270, 1495, 1720];
+  for (var i = 0; i < 4; i++) {
+    var mx = (PX[i] + PX[i+1]) / 2;
+    [0, 8].forEach(function(dx){
+      el('path', {d:'M '+(mx-8+dx)+' 318 L '+(mx+dx)+' 330 L '+(mx-8+dx)+' 342', fill:'none', stroke:INK, 'stroke-width':.9, opacity:.5, 'stroke-dasharray':'3 3'});
+    });
+  }
+
+  (function(){
+    var x = PX[0], y = 318;
+    [[-28,-26],[0,-32],[28,-26]].forEach(function(p){
+      el('line', {x1:x+p[0], y1:y+p[1], x2:x, y2:y-10, stroke:INK, 'stroke-width':1.1, opacity:.6});
+    });
+    el('path', {d:'M '+(x-20)+' '+(y-10)+' L '+(x+20)+' '+(y-10)+' L '+(x+8)+' '+(y+14)+' L '+(x-8)+' '+(y+14)+' Z', fill:'none', stroke:INK80, 'stroke-width':1.4});
+    el('line', {x1:x, y1:y+14, x2:x, y2:y+28, stroke:INK80, 'stroke-width':1.4});
+  })();
+  (function(){
+    var x = PX[1], y = 330;
+    el('line', {x1:x-32, y1:y, x2:x+32, y2:y, stroke:INK80, 'stroke-width':1.5});
+    for (var i = -2; i <= 2; i++) el('line', {x1:x+i*14, y1:y, x2:x+i*14, y2:y-12, stroke:INK, 'stroke-width':1, opacity:.65});
+    el('line', {x1:x-32, y1:y+14, x2:x+32, y2:y+14, stroke:INK, 'stroke-width':.7, opacity:.35, 'stroke-dasharray':'3 3'});
+  })();
+  (function(){
+    var x = PX[2], y = 330;
+    el('rect', {x:x-30, y:y-22, width:40, height:32, fill:'none', stroke:INK80, 'stroke-width':1.4});
+    el('rect', {x:x-10, y:y-8, width:40, height:32, fill:'none', stroke:INK80, 'stroke-width':1.4});
+    el('circle', {cx:x, cy:y+4, r:3.2, fill:INK});
+  })();
+  (function(){
+    var x = PX[3], y = 330;
+    el('rect', {x:x-22, y:y-20, width:40, height:48, fill:'none', stroke:INK80, 'stroke-width':1.4});
+    [y-6, y+4, y+14].forEach(function(yy){
+      el('line', {x1:x-14, y1:yy, x2:x+10, y2:yy, stroke:INK, 'stroke-width':.8, opacity:.5});
+    });
+    el('line', {x1:x+8, y1:y-20, x2:x+8, y2:y-38, stroke:INK80, 'stroke-width':1.2});
+    el('path', {d:'M '+(x+8)+' '+(y-38)+' L '+(x+24)+' '+(y-32)+' L '+(x+8)+' '+(y-26)+' Z', fill:'url(#s3-hatch)', stroke:INK80, 'stroke-width':.9});
+  })();
+  (function(){
+    var x = PX[4], y = 338;
+    el('path', {d:'M '+(x-22)+' '+y+' A 22 22 0 0 1 '+(x+22)+' '+y, fill:'none', stroke:INK80, 'stroke-width':1.4});
+    el('line', {x1:x-22, y1:y, x2:x-10, y2:y-16, stroke:INK, 'stroke-width':1.2});
+    el('circle', {cx:x, cy:y, r:3.2, fill:INK});
+    el('line', {x1:x, y1:y, x2:x, y2:y+8, stroke:INK, 'stroke-width':1});
+  })();
+
+  var labels = ['意图解析', '知识召回', '工具编排', '生成校验', '灰度放量'];
+  var codes = ['PARSE', 'RETRIEVE', 'ORCHESTRATE', 'VERIFY', 'CANARY'];
+  var notes = ['三路信号汇入槽位', '当周口径一次对齐', '工具与回写交叠执行', '生成前拦下越界答案', '小流量观察再放量'];
+  PX.forEach(function(x, i){
+    txt(x, 268, '0'+(i+1), {'font-family':MONO, 'font-size':'var(--type-meta)', 'letter-spacing':2, 'text-anchor':'middle', fill:INK45});
+    txt(x, 400, labels[i], {'font-family':SANS, 'font-weight':300, 'font-size':'var(--type-body)', 'text-anchor':'middle', fill:INK});
+    txt(x, 424, codes[i], {'font-family':MONO, 'font-size':'var(--type-meta)', 'letter-spacing':2, 'text-anchor':'middle', fill:INK45});
+    txt(x, 452, notes[i], {'font-family':SANS, 'font-weight':300, 'font-size':'var(--type-label)', 'text-anchor':'middle', fill:INK70});
+  });
+});
+
+svgGroup('s3-evidence-band', function(){
+  el('line', {x1:720, y1:526, x2:1770, y2:526, stroke:INK, 'stroke-width':.7, opacity:.28});
+  var cols = [
+    {x:720, title:'评测与复核', desc:'评测集 320 例 · 双人一致率 0.91'},
+    {x:1070, title:'灰度与采样', desc:'灰度 2 周 · Trace 采样 640 条'},
+    {x:1420, title:'回归保障', desc:'旧例通过率 100% · 零退化'}
+  ];
+  cols.forEach(function(c){
+    el('path', {d:'M '+c.x+' 578 L '+(c.x+8)+' 586 L '+(c.x+20)+' 568', fill:'none', stroke:INK80, 'stroke-width':1.2});
+    txt(c.x+32, 584, c.title, {'font-family':SANS, 'font-weight':300, 'font-size':'var(--type-body)', fill:INK});
+    txt(c.x+32, 616, c.desc, {'font-family':SANS, 'font-weight':300, 'font-size':'var(--type-label)', fill:INK70});
+  });
+});
+
+svgGroup('s3-result-band', function(){
+  el('line', {x1:720, y1:724, x2:1770, y2:724, stroke:INK80, 'stroke-width':1.3});
+  el('line', {x1:720, y1:864, x2:1770, y2:864, stroke:INK, 'stroke-width':.6, opacity:.28});
+  el('line', {x1:712, y1:724, x2:728, y2:724, stroke:INK80, 'stroke-width':1.3});
+  el('line', {x1:1762, y1:724, x2:1770, y2:724, stroke:INK80, 'stroke-width':1.3});
+  [982, 1245, 1508].forEach(function(x){
+    el('line', {x1:x, y1:736, x2:x, y2:852, stroke:INK, 'stroke-width':.6, opacity:.22});
+  });
+  function kpi(index, cx, num, label) {
+    txt(cx, 788, num, {id:'s3-num-'+index, 'font-family':SERIF, 'font-size':'var(--type-metric)', 'text-anchor':'middle', fill:INK});
+    txt(cx, 822, label, {id:'s3-label-'+index, 'font-family':SANS, 'font-weight':300, 'font-size':'var(--type-label)', 'text-anchor':'middle', fill:'var(--ink-55)'});
+  }
+  kpi(0, 851, '91%', '召回命中率');
+  kpi(1, 1113, '-58%', 'TTFT P95');
+  kpi(2, 1376, '96%', '质检达标率');
+  kpi(3, 1638, '420万', '日调用量');
+});
+
+placeGutterArrow();
+if (document.fonts && document.fonts.ready) document.fonts.ready.then(placeGutterArrow);
+
+stageFit();
+</script>
+</body>
+</html>

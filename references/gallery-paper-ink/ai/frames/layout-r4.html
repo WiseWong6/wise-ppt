@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-runtime="wise-ppt-specimen" data-typography-mode="all-sans" data-page-id="gallery-ai-r4" data-page-role="compare" data-theme="paper-ink" data-layout="paper-ink.comparison.balance-tradeoff" data-layout-source="gallery" data-sample-focus-profile="copy-only" data-sample-focus-members='[{"selector":"#focus-caption","role":"label"}]' data-sample-focus-ref="sample.r4.r4-focus">
+<head>
+<meta charset="UTF-8">
+<title>layout-r4 · 权衡天平 · 速度与治理</title>
+<script src="../../../../runtime/stage-fit.js"></script>
+<link rel="stylesheet" href="../../../../themes/paper-ink/assets/design-tokens.css">
+<link rel="stylesheet" href="../../../../themes/paper-ink/assets/catalog-fonts.css" data-wise-catalog-fonts="true">
+<link rel="stylesheet" href="../../../../themes/paper-ink/assets/slide-components.css">
+<link rel="stylesheet" href="../../../shell.css">
+<style>
+  /* 内容带以左上眉题下缘和底部 caption 上缘为上下边界，中线约 y=506。
+     移动页面槽本身，不把组件推出槽外；天平真实墨迹中心落在该内容带中线。 */
+  .balance-host{position:absolute;left:435px;top:252px;width:1050px;height:560px;z-index:1}
+  .balance-host>.pi-card{background:transparent}
+  .caption{position:absolute;left:0;right:0;bottom:82px;text-align:center;font-family:var(--sans);font-size:var(--type-caption);letter-spacing:.04em;color:var(--ink);z-index:5}
+</style>
+</head>
+<body class="slide">
+<div class="stage" data-block-id="gallery-primary" data-renderer-kind="native-html" data-component-source="native" data-component-id="native.paper-ink.106.balance-scale" data-content-ref="example.r4">
+  <div class="doc tl">PPT 标题<br>页面标题</div>
+  <div class="folio">页码 / 总页数 — BY @歪斯Wise</div>
+  <div id="balance-host" class="balance-host" data-slot-id="balance" data-component-id="native.paper-ink.106.balance-scale" aria-label="速度与治理的权衡天平"></div>
+  <div class="caption">上线速度与治理强度不是二选一，关键是找到<span id="focus-caption">可接受的平衡点</span>。</div>
+</div>
+<script src="../../../../capabilities/layouts/paper-ink-components.js"></script>
+<script>
+  const catalog=window.PAPER_INK_COMPONENT_DATA;
+  const entry=catalog&&catalog.entries.find(item=>item.num===106);
+  if(!entry)throw new Error('缺少 native.paper-ink.106.balance-scale');
+  const style=document.createElement('style');
+  /* 样张是静帧:只注入组件静态样式,不拼 componentMotionCss(入场动效),
+     静止态即标称几何,AI 参考与门禁量测不再依赖截图时机。 */
+  style.textContent=catalog.componentCss||'';
+  document.head.appendChild(style);
+  const host=document.getElementById('balance-host');
+  host.innerHTML=entry.snippet;
+  const content={
+    left_title:'上线速度',
+    right_title:'治理强度',
+    left_point_1:'试点快 · 反馈早',
+    left_point_2:'成本低',
+    right_point_1:'权限清 · 证据全',
+    right_point_2:'风险稳'
+  };
+  Object.entries(content).forEach(([field,value])=>{
+    const node=host.querySelector(`[data-field="${field}"]`);
+    if(node)node.textContent=value;
+  });
+  stageFit();
+</script>
+</body>
+</html>

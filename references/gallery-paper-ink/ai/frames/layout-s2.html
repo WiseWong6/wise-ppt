@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-runtime="wise-ppt-specimen" data-typography-mode="all-sans" data-page-id="gallery-ai-s2" data-page-role="prove" data-theme="paper-ink" data-layout="paper-ink.containment.whole-two-evidence" data-layout-source="gallery" data-sample-focus-profile="content-only" data-sample-focus-members='[{"selector":"#s2-focus-period","role":"label"},{"selector":"#s2-focus-value","role":"value"},{"selector":"#s2-focus-label","role":"label"}]' data-sample-focus-ref="sample.s2.s2-focus">
+<head>
+<meta charset="UTF-8">
+<title>layout-s2 · 左整体右双证 · 评测成本构成</title>
+<script src="../../../../runtime/stage-fit.js"></script>
+<link rel="stylesheet" href="../../../../themes/paper-ink/assets/design-tokens.css">
+<link rel="stylesheet" href="../../../../themes/paper-ink/assets/catalog-fonts.css" data-wise-catalog-fonts="true">
+<link rel="stylesheet" href="../../../../themes/paper-ink/assets/slide-components.css">
+<link rel="stylesheet" href="../../../shell.css">
+<style>
+  svg.scene{position:absolute;inset:0;z-index:1}
+  .caption{position:absolute;left:0;right:0;bottom:118px;text-align:center;font-family:var(--sans);font-weight:400;font-size:var(--type-caption);letter-spacing:.04em;color:var(--ink);z-index:5}
+</style>
+</head>
+<body class="slide">
+<div class="stage" data-block-id="gallery-primary" data-renderer-kind="svg" data-component-source="native" data-content-ref="example.s2">
+  <div class="doc tl">PPT 标题<br>页面标题</div>
+  <div class="folio">页码 / 总页数 — BY @歪斯Wise</div>
+  <svg class="scene" width="1920" height="1080" viewBox="0 0 1920 1080" aria-label="左侧整体构成环图，右侧上下两块独立证据">
+    <defs>
+      <pattern id="s2-hatch" width="8" height="8" patternUnits="userSpaceOnUse" patternTransform="rotate(45)"><line x1="0" y1="0" x2="0" y2="8" stroke="var(--ink)" stroke-width=".65" opacity=".28"/></pattern>
+    </defs>
+
+    <g data-slot-id="whole" data-anchor-id="s2.whole" data-component-id="echarts.pie-access-source">
+      <text x="530.5" y="176" text-anchor="middle" font-family="var(--mono)" font-size="15" letter-spacing="3" fill="var(--ink-45)">WHOLE / 100%</text>
+      <circle cx="530.5" cy="506" r="220" fill="none" stroke="var(--ink-12)" stroke-width="84"/>
+      <circle cx="530.5" cy="506" r="220" fill="none" stroke="var(--ink)" stroke-width="84" stroke-dasharray="857 525" transform="rotate(-90 530.5 506)"/>
+      <circle cx="530.5" cy="506" r="220" fill="none" stroke="url(#s2-hatch)" stroke-width="84" stroke-dasharray="525 857" stroke-dashoffset="-857" transform="rotate(-90 530.5 506)"/>
+      <text id="s2-focus-period" x="530.5" y="461" text-anchor="middle" font-family="var(--mono)" font-size="15" letter-spacing="2" fill="var(--ink-45)">MONTHLY</text>
+      <text id="s2-focus-value" x="530.5" y="521" text-anchor="middle" font-family="var(--sans)" font-size="50" fill="var(--ink)">¥ 84.6K</text>
+      <text id="s2-focus-label" x="530.5" y="559" text-anchor="middle" font-family="var(--sans)" font-size="18" fill="color-mix(in srgb, var(--ink) 62%, transparent)">评测总投入</text>
+      <text x="530.5" y="824" text-anchor="middle" font-family="var(--sans)" font-size="16" fill="var(--ink-55)">可变 62% · 固定 38%</text>
+    </g>
+
+    <g data-slot-id="upper" data-anchor-id="s2.upper" data-component-id="native.paper-ink.semantic.evidence-panel">
+      <text x="1014" y="176" font-family="var(--mono)" font-size="15" letter-spacing="3" fill="var(--ink-45)">VARIABLE / 62%</text>
+      <line x1="1014" y1="196" x2="1766" y2="196" stroke="var(--ink)" stroke-width="1" opacity=".45"/>
+      <text x="1014" y="248" font-family="var(--sans)" font-weight="300" font-size="var(--type-subheading)" fill="var(--ink)">可变成本</text>
+      <g font-family="var(--sans)" fill="var(--ink)">
+        <text x="1014" y="310" font-family="var(--mono)" font-size="15" letter-spacing="2" fill="var(--ink-55)">01</text>
+        <text x="1070" y="310" font-size="22">人工标注</text>
+        <text x="1766" y="310" text-anchor="end" font-family="var(--mono)" font-size="20">26%</text>
+        <text x="1070" y="342" font-size="16" fill="color-mix(in srgb, var(--ink) 62%, transparent)">双人复核 1,260 条 · 一致率 0.91</text>
+        <line x1="1014" y1="368" x2="1766" y2="368" stroke="var(--ink)" stroke-width=".7" opacity=".25"/>
+        <text x="1014" y="412" font-family="var(--mono)" font-size="15" letter-spacing="2" fill="var(--ink-55)">02</text>
+        <text x="1070" y="412" font-size="22">模型调用与回放</text>
+        <text x="1766" y="412" text-anchor="end" font-family="var(--mono)" font-size="20">36%</text>
+        <text x="1070" y="444" font-size="16" fill="color-mix(in srgb, var(--ink) 62%, transparent)">交叉判分 + Trace 采样 640 条</text>
+      </g>
+    </g>
+
+    <g data-slot-id="lower" data-anchor-id="s2.lower" data-component-id="native.paper-ink.semantic.evidence-panel">
+      <text x="1014" y="560" font-family="var(--mono)" font-size="15" letter-spacing="3" fill="var(--ink-45)">FIXED / 38%</text>
+      <line x1="1014" y1="580" x2="1766" y2="580" stroke="var(--ink)" stroke-width="1" opacity=".45"/>
+      <text x="1014" y="632" font-family="var(--sans)" font-weight="300" font-size="var(--type-subheading)" fill="var(--ink)">固定投入</text>
+      <g font-family="var(--sans)" fill="var(--ink)">
+        <text x="1014" y="694" font-family="var(--mono)" font-size="15" letter-spacing="2" fill="var(--ink-55)">03</text>
+        <text x="1070" y="694" font-size="22">平台与治理</text>
+        <text x="1766" y="694" text-anchor="end" font-family="var(--mono)" font-size="20">24%</text>
+        <text x="1070" y="726" font-size="16" fill="color-mix(in srgb, var(--ink) 62%, transparent)">环境、审计与版本留档 · 按月摊销</text>
+        <line x1="1014" y1="752" x2="1766" y2="752" stroke="var(--ink)" stroke-width=".7" opacity=".25"/>
+        <text x="1014" y="796" font-family="var(--mono)" font-size="15" letter-spacing="2" fill="var(--ink-55)">04</text>
+        <text x="1070" y="796" font-size="22">工具回放底座</text>
+        <text x="1766" y="796" text-anchor="end" font-family="var(--mono)" font-size="20">14%</text>
+        <text x="1070" y="828" font-size="16" fill="color-mix(in srgb, var(--ink) 62%, transparent)">Trace 采样 640 条 · 缺失轨迹 18 条</text>
+      </g>
+    </g>
+  </svg>
+  <div class="caption">每月 8.46 万元评测投入中，可变成本占 62%，人工标注与模型调用是主要去向。</div>
+</div>
+<script>stageFit();</script>
+</body>
+</html>

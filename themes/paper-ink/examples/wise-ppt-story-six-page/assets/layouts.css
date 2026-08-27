@@ -1,0 +1,50 @@
+/* why-design-judgment · paper-ink.relationship.E1 · locked */
+@scope (.slide[data-page-id="why-design-judgment"]) {
+svg.scene { position: absolute; inset: 0; z-index: 1; }
+  .caption {
+    position: absolute; left: 0; right: 0; bottom: 118px;
+    text-align: center;
+    font-family: var(--sans); font-weight: 400;
+    font-size: var(--type-caption); letter-spacing: .04em;
+    color: var(--ink);
+    z-index: 5;
+  }
+}
+
+/* five-step-production · paper-ink.relationship.T1 · locked */
+@scope (.slide[data-page-id="five-step-production"]) {
+svg.scene{position:absolute;inset:0;z-index:1;transform:translateY(-62px)}
+  .caption{position:absolute;left:0;right:0;bottom:118px;text-align:center;font:400 var(--type-caption) var(--sans);letter-spacing:.04em;color:var(--ink);z-index:5}
+}
+
+/* design-principles · paper-ink.relationship.G5 · locked */
+@scope (.slide[data-page-id="design-principles"]) {
+svg.scene { position: absolute; inset: 0; z-index: 1; }
+  .doc.tl, .folio { color: var(--ink-45); }
+  .caption {
+    position: absolute; left: 0; right: 0; bottom: 118px;
+    text-align: center;
+    font-family: var(--sans); font-weight: 400;
+    font-size: var(--type-caption); letter-spacing: .04em;
+    color: var(--ink);
+    z-index: 5;
+  }
+}
+
+/* layout-atlas · paper-ink.relationship.T2 · locked */
+@scope (.slide[data-page-id="layout-atlas"]) {
+svg.scene{position:absolute;inset:0;z-index:1;transform:translateY(-29px)}
+  .caption{position:absolute;left:0;right:0;bottom:118px;text-align:center;font:400 var(--type-caption) var(--sans);letter-spacing:.04em;color:var(--ink);z-index:5}
+}
+
+/* component-atlas · paper-ink.relationship.T3 · locked */
+@scope (.slide[data-page-id="component-atlas"]) {
+svg.scene{position:absolute;inset:0;z-index:1;transform:translateY(-78px)}
+  .caption{position:absolute;left:0;right:0;bottom:118px;text-align:center;font:400 var(--type-caption) var(--sans);letter-spacing:.04em;color:var(--ink);z-index:5}
+}
+
+/* stay-in-touch · paper-ink.nonrelationship.D6 · locked */
+@scope (.slide[data-page-id="stay-in-touch"]) {
+svg.scene { position: absolute; inset: 0; z-index: 1; }
+  .doc.tl, .folio { color: var(--ink-45); }
+}

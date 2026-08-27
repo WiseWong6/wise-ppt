@@ -1,0 +1,82 @@
+/* wise-ppt 组件行为合同 v4：只处理外层放置、整体 contain 与语义字阶。 */
+[data-component-behavior-host] {
+  box-sizing: border-box !important;
+  overflow: visible !important;
+}
+
+[data-component-behavior-host] [data-component-type-role][data-component-type-role] {
+  font-size: var(--wp-component-type-token) !important;
+  font-family: var(--wp-component-font-token) !important;
+}
+
+/* 固定视觉的宿主是原生画布。运行器只缩放这一整块，不改内部节点、
+   padding、列数、间距或文字排布。 */
+[data-component-behavior-host][data-fit-mode="contain"] {
+  width: var(--wp-component-frame-width) !important;
+  height: var(--wp-component-frame-height) !important;
+  min-width: 0 !important;
+  min-height: 0 !important;
+  max-width: none !important;
+  max-height: none !important;
+}
+
+[data-component-behavior-host][data-fit-mode="contain"] > .swiss-card,
+[data-component-behavior-host][data-fit-mode="contain"] > .pi-card {
+  width: 100% !important;
+  height: 100% !important;
+  min-width: 0 !important;
+  min-height: 0 !important;
+  max-width: none !important;
+  max-height: none !important;
+  margin: 0 !important;
+  box-sizing: border-box !important;
+  overflow: visible !important;
+}
+
+/* 物化器会把 .pi-card/.swiss-card 本身作为行为宿主。此时宿主必须保留
+   intrinsic_frame；只有“宿主里面另有卡片”时，内部卡片才铺满宿主。 */
+[data-component-behavior-host][data-fit-mode="contain"].swiss-card,
+[data-component-behavior-host][data-fit-mode="contain"].pi-card {
+  width: var(--wp-component-frame-width) !important;
+  height: var(--wp-component-frame-height) !important;
+  min-width: 0 !important;
+  min-height: 0 !important;
+  max-width: none !important;
+  max-height: none !important;
+  margin: 0 !important;
+  box-sizing: border-box !important;
+  overflow: visible !important;
+}
+
+/* 固定视觉里的直属 SVG 必须占用申报外框的两个轴；浏览器默认的 xMidYMid meet
+   会保留原稿比例并把留白放在两边。不能只写 width:100% + height:auto，否则
+   近方形 viewBox 会长出横槽（#019），外框居中但真实墨迹越界。 */
+[data-component-behavior-host][data-fit-mode="contain"].swiss-card > svg,
+[data-component-behavior-host][data-fit-mode="contain"].pi-card > svg.pi-art,
+[data-component-behavior-host][data-fit-mode="contain"] > .swiss-card > svg,
+[data-component-behavior-host][data-fit-mode="contain"] > .pi-card > svg.pi-art {
+  width: 100% !important;
+  height: 100% !important;
+  max-width: none !important;
+  max-height: none !important;
+  display: block !important;
+  overflow: visible !important;
+}
+
+/* foreignObject 是 HTML 固定组件的坐标桥，不是裁切蒙版。浏览器默认 hidden
+   会把已收紧到真实组件边界的内容静默截掉，违背“整体 contain、不得裁切”。 */
+[data-component-behavior-host][data-fit-mode="contain"] foreignObject {
+  overflow: visible !important;
+}
+
+/* 数据渲染器可以使用完整有效槽位；响应式只属于它们。 */
+[data-component-behavior-host][data-fit-mode="renderer-responsive"],
+[data-component-behavior-host][data-fit-mode="renderer-responsive"] > canvas,
+[data-component-behavior-host][data-fit-mode="renderer-responsive"] > svg,
+[data-component-behavior-host][data-fit-mode="renderer-responsive"] > .echarts-root {
+  width: 100% !important;
+  height: 100% !important;
+  min-width: 0 !important;
+  min-height: 0 !important;
+  box-sizing: border-box !important;
+}

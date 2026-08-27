@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-runtime="wise-ppt-specimen" data-typography-mode="all-sans" data-page-id="gallery-ai-i4" data-page-role="compare" data-theme="paper-ink" data-layout="paper-ink.flow.branching-solutions" data-layout-source="gallery" data-sample-focus-profile="content-only" data-sample-focus-members='[{"selector":"#i4-focus-frame","role":"outline"},{"selector":"#i4-focus-title","role":"value"},{"selector":"#i4-focus-note","role":"label"}]' data-sample-focus-ref="sample.i4.i4-focus">
+<head>
+<meta charset="UTF-8">
+<title>layout-i4 · 双面板分支解法流（AI 主题）</title>
+<script src="../../../../runtime/stage-fit.js"></script>
+<link rel="stylesheet" href="../../../../themes/paper-ink/assets/design-tokens.css">
+<link rel="stylesheet" href="../../../../themes/paper-ink/assets/catalog-fonts.css" data-wise-catalog-fonts="true">
+<link rel="stylesheet" href="../../../../themes/paper-ink/assets/slide-components.css">
+<link rel="stylesheet" href="../../../shell.css">
+<style>
+  svg.scene { position: absolute; inset: 0; z-index: 1; }
+  .caption {
+    position: absolute; left: 0; right: 0; bottom: 118px;
+    text-align: center;
+    font-family: var(--sans); font-weight: 400;
+    font-size: var(--type-caption); letter-spacing: .04em;
+    color: var(--ink);
+    z-index: 5;
+  }
+</style>
+</head>
+<body class="slide">
+<div class="stage" data-block-id="gallery-primary" data-renderer-kind="svg" data-component-source="native" data-component-id="native.paper-ink.flow.branching-solutions.solutions" data-content-ref="example.i4">
+  <div class="doc tl">PPT 标题<br>页面标题</div>
+  <div class="folio">页码 / 总页数 — BY @歪斯Wise</div>
+
+  <svg class="scene" width="1920" height="1080" viewBox="0 0 1920 1080">
+    <g id="draw"></g>
+  </svg>
+
+  <div class="caption">不止重试报错，更识别失败类型给出降级路径——减重试、守底线。</div>
+</div>
+
+<script src="../../../../themes/paper-ink/assets/particles.js"></script>
+<script>
+var NS = 'http://www.w3.org/2000/svg';
+var INK = 'var(--ink)';
+var INK80 = 'var(--ink-80)';
+var INK70 = 'var(--ink-70)';
+var INK45 = 'var(--ink-45)';
+var PAPER = 'var(--paper)';
+if (location.search.indexOf('accent') >= 0) document.documentElement.classList.add('accent');
+var ACCENT = document.documentElement.classList.contains('accent');
+var FOCUS = getComputedStyle(document.documentElement).getPropertyValue('--wp-color-focus').trim();
+var G = document.getElementById('draw');
+function el(tag, attrs) {
+  var e = document.createElementNS(NS, tag);
+  for (var k in attrs) e.setAttribute(k, attrs[k]);
+  G.appendChild(e); return e;
+}
+function txt(x, y, str, attrs) {
+  var t = el('text', Object.assign({x:x, y:y}, attrs||{}));
+  t.textContent = str; return t;
+}
+var MONO = 'var(--mono)', SANS = 'var(--sans)';
+
+G = el('g', {transform:'translate(0 +6.3)'});
+
+
+/* ---------- 双面板骨架 ---------- */
+[[150, '意图路由', '把问题分发给对的专家 Agent'],
+ [980, '异常兜底', '识别失败类型，给出降级路径']].forEach(function(p){
+  var focus = p[0] === 980;
+  el('rect', {id:focus?'i4-focus-frame':'', x:p[0], y:220, width:790, height:560, rx:4, fill:'var(--paper-panel)', stroke:INK80, 'stroke-width':1});
+  el('rect', {x:p[0]+5, y:225, width:780, height:550, rx:3, fill:'none', stroke:INK, 'stroke-width':.6, opacity:.3});
+  txt(p[0]+40, 272, p[1], {id:focus?'i4-focus-title':'', 'font-family':SANS, 'font-weight':300, 'font-size':'var(--type-subheading)', fill:INK});
+  txt(p[0]+40, 302, p[2], {id:focus?'i4-focus-note':'', 'font-family':SANS, 'font-weight':300, 'font-size':'var(--type-label)', fill:INK70});
+});
+
+/* ---------- 面板 A · 图标链 + 竖向分支 ---------- */
+var AX = [240, 395, 550, 705, 860], CY = 482;
+/* 步间虚线 chevron */
+for (var i = 0; i < 4; i++) {
+  var mx = (AX[i] + AX[i+1]) / 2;
+  [0, 8].forEach(function(dx){
+    el('path', {d:'M '+(mx-7+dx)+' '+(CY-10)+' L '+(mx+dx)+' '+CY+' L '+(mx-7+dx)+' '+(CY+10), fill:'none', stroke:INK, 'stroke-width':.9, opacity:.5, 'stroke-dasharray':'3 3'});
+  });
+}
+/* 1 用户输入 — 对话泡 */
+(function(){
+  var x = AX[0], y = CY;
+  el('path', {d:'M '+(x-24)+' '+(y-18)+' h 48 v 27 h -30 l -10 10 v -10 h -8 z', fill:'none', stroke:INK80, 'stroke-width':1.4});
+  el('line', {x1:x-13, y1:y-7, x2:x+13, y2:y-7, stroke:INK, 'stroke-width':.9, opacity:.55});
+  el('line', {x1:x-13, y1:y+2, x2:x+6, y2:y+2, stroke:INK, 'stroke-width':.9, opacity:.55});
+})();
+/* 2 槽位提取 — 文档 + 放大镜 */
+(function(){
+  var x = AX[1], y = CY;
+  el('rect', {x:x-21, y:y-27, width:42, height:54, fill:'none', stroke:INK80, 'stroke-width':1.4});
+  [y-13, y-1, y+11].forEach(function(yy){ el('line', {x1:x-12, y1:yy, x2:x+12, y2:yy, stroke:INK, 'stroke-width':.9, opacity:.55}); });
+  el('circle', {cx:x+17, cy:y+2, r:9, fill:PAPER, stroke:INK80, 'stroke-width':1.3});
+  el('line', {x1:x+23, y1:y+8, x2:x+32, y2:y+17, stroke:INK80, 'stroke-width':1.3});
+})();
+/* 3 候选路由 — 漏斗 */
+(function(){
+  var x = AX[2], y = CY;
+  el('path', {d:'M '+(x-24)+' '+(y-21)+' L '+(x+24)+' '+(y-21)+' L '+(x+9)+' '+(y+3)+' L '+(x-9)+' '+(y+3)+' Z', fill:'none', stroke:INK80, 'stroke-width':1.4});
+  el('line', {x1:x-9, y1:y+3, x2:x-9, y2:y+21, stroke:INK80, 'stroke-width':1.4});
+  el('line', {x1:x+9, y1:y+3, x2:x+9, y2:y+21, stroke:INK80, 'stroke-width':1.4});
+  el('circle', {cx:x, cy:y+28, r:2.5, fill:INK});
+})();
+/* 4 权限配额（分支锚点） */
+(function(){
+  var x = AX[3], y = CY;
+  el('rect', {x:x-24, y:y-21, width:48, height:42, fill:'none', stroke:INK80, 'stroke-width':1.4});
+  el('circle', {cx:x-10, cy:y-7, r:6, fill:'none', stroke:INK, 'stroke-width':1});
+  el('line', {x1:x+3, y1:y-9, x2:x+15, y2:y-9, stroke:INK, 'stroke-width':.9, opacity:.55});
+  el('line', {x1:x+3, y1:y+2, x2:x+15, y2:y+2, stroke:INK, 'stroke-width':.9, opacity:.55});
+  el('path', {d:'M '+(x-15)+' '+(y+12)+' L '+(x-9)+' '+(y+18)+' L '+(x+2)+' '+(y+5), fill:'none', stroke:INK, 'stroke-width':1.1});
+})();
+/* 分支：上 权限校验 / 下 配额校验 */
+el('line', {x1:AX[3], y1:CY-21, x2:AX[3], y2:398, stroke:INK, 'stroke-width':.8, opacity:.5, 'stroke-dasharray':'3 4'});
+el('line', {x1:AX[3], y1:CY+21, x2:AX[3], y2:604, stroke:INK, 'stroke-width':.8, opacity:.5, 'stroke-dasharray':'3 4'});
+(function(){
+  var x = AX[3], y = 380;
+  el('rect', {x:x-21, y:y-18, width:42, height:36, fill:'none', stroke:INK80, 'stroke-width':1.3});
+  el('line', {x1:x-21, y1:y-18, x2:x+21, y2:y+18, stroke:INK, 'stroke-width':.8, opacity:.5});
+  el('line', {x1:x+21, y1:y-18, x2:x-21, y2:y+18, stroke:INK, 'stroke-width':.8, opacity:.5});
+  txt(x+32, y+5, '权限校验', {'font-family':SANS, 'font-weight':300, 'font-size':'var(--type-label)', fill:INK70});
+})();
+(function(){
+  var x = AX[3], y = 622;
+  el('path', {d:'M '+(x-18)+' '+(y-18)+' h 19 l 16 18 l -16 18 h -19 z', fill:'none', stroke:INK80, 'stroke-width':1.3});
+  el('circle', {cx:x-9, cy:y, r:2.5, fill:'none', stroke:INK, 'stroke-width':1});
+  txt(x+32, y+5, '配额校验', {'font-family':SANS, 'font-weight':300, 'font-size':'var(--type-label)', fill:INK70});
+})();
+/* 5 专家 Agent — 勾选单 */
+(function(){
+  var x = AX[4], y = CY;
+  el('rect', {x:x-21, y:y-27, width:42, height:54, fill:'none', stroke:INK80, 'stroke-width':1.4});
+  [y-13, y, y+13].forEach(function(yy){
+    el('path', {d:'M '+(x-13)+' '+(yy)+' l 4 4 l 7 -9', fill:'none', stroke:INK, 'stroke-width':1});
+    el('line', {x1:x+2, y1:yy, x2:x+13, y2:yy, stroke:INK, 'stroke-width':.8, opacity:.5});
+  });
+})();
+['用户输入', '槽位提取', '候选路由', '权限配额', '专家 Agent'].forEach(function(s, i){
+  txt(AX[i], CY+62, s, {'font-family':SANS, 'font-weight':300, 'font-size':'var(--type-body-small)', 'text-anchor':'middle', fill:INK});
+});
+/* A · CTA 墨底 chip */
+(function(){
+  var labels = ['更快响应', '减少升级', '满意兜底'];
+  var w = 164, gap = 24, x = 150 + (790 - (labels.length*w + (labels.length-1)*gap)) / 2;
+  labels.forEach(function(s, i){
+    el('rect', {x:x, y:696, width:w, height:48, rx:4, fill:'none', stroke:INK80, 'stroke-width':1});
+    txt(x+w/2, 727, s, {'font-family':SANS, 'font-weight':300, 'font-size':'var(--type-body-small)', 'letter-spacing':2, 'text-anchor':'middle', fill:INK});
+    x += w + gap;
+  });
+})();
+
+/* ---------- 面板 B · 虚线阻断容器 + 判定分叉 ---------- */
+el('rect', {x:1020, y:330, width:710, height:132, fill:'none', stroke:INK, 'stroke-width':1, opacity:.55, 'stroke-dasharray':'5 5'});
+txt(1044, 362, '运行失败因素', {'font-family':SANS, 'font-weight':300, 'font-size':'var(--type-label)', fill:INK});
+(function(){
+  var labels = ['超时', '幻觉', '工具失败', '越权', '限流'];
+  var w = 118, gap = 18, bx = 1044;
+  labels.forEach(function(s){
+    el('rect', {x:bx, y:380, width:w, height:52, fill:'var(--paper-panel)', stroke:INK, 'stroke-width':.9, opacity:.8, 'stroke-dasharray':'4 4'});
+    txt(bx+w/2, 412, s, {'font-family':SANS, 'font-weight':300, 'font-size':'var(--type-label)', 'text-anchor':'middle', fill:INK70});
+    bx += w + gap;
+  });
+})();
+/* 断点识别 — 断线 + 放大镜 */
+(function(){
+  var x = 1105, y = 590;
+  el('path', {d:'M '+(x-36)+' '+(y+15)+' L '+(x-18)+' '+(y-3)+' L '+(x-6)+' '+(y+9), fill:'none', stroke:INK, 'stroke-width':1.1, 'stroke-dasharray':'4 4', opacity:.6});
+  el('circle', {cx:x+6, cy:y-3, r:16, fill:PAPER, stroke:INK80, 'stroke-width':1.4});
+  el('line', {x1:x+17, y1:y+8, x2:x+29, y2:y+20, stroke:INK80, 'stroke-width':1.6});
+  txt(x, 664, '断点识别', {'font-family':SANS, 'font-weight':300, 'font-size':'var(--type-label)', 'text-anchor':'middle', fill:INK});
+})();
+[0, 8].forEach(function(dx){
+  el('path', {d:'M '+(1170+dx)+' 580 L '+(1177+dx)+' 590 L '+(1170+dx)+' 600', fill:'none', stroke:INK, 'stroke-width':.9, opacity:.5, 'stroke-dasharray':'3 3'});
+});
+/* 判定菱形 */
+el('path', {d:'M 1224 590 L 1290 552 L 1356 590 L 1290 628 Z', fill:'none', stroke:INK80, 'stroke-width':1.4});
+txt(1290, 664, '是否可重试', {id:'sample-focus', 'font-family':SANS, 'font-weight':300, 'font-size':'var(--type-label)', 'text-anchor':'middle', fill:INK});
+/* 分叉 */
+var FORK = INK;
+el('line', {x1:1356, y1:590, x2:1420, y2:590, stroke:FORK, 'stroke-width':1.1, opacity:.65});
+el('line', {x1:1420, y1:590, x2:1420, y2:540, stroke:FORK, 'stroke-width':1.1, opacity:.65});
+el('line', {x1:1420, y1:590, x2:1420, y2:640, stroke:FORK, 'stroke-width':1.1, opacity:.65});
+el('line', {x1:1420, y1:540, x2:1492, y2:540, stroke:FORK, 'stroke-width':1.1, opacity:.65});
+el('line', {x1:1484, y1:535, x2:1492, y2:540, stroke:FORK, 'stroke-width':1.1, opacity:.65});
+el('line', {x1:1484, y1:545, x2:1492, y2:540, stroke:FORK, 'stroke-width':1.1, opacity:.65});
+el('line', {x1:1420, y1:640, x2:1492, y2:640, stroke:FORK, 'stroke-width':1.1, opacity:.65});
+el('line', {x1:1484, y1:635, x2:1492, y2:640, stroke:FORK, 'stroke-width':1.1, opacity:.65});
+el('line', {x1:1484, y1:645, x2:1492, y2:640, stroke:FORK, 'stroke-width':1.1, opacity:.65});
+/* 上分支：退避重试 */
+(function(){
+  var x = 1526, y = 540;
+  el('rect', {x:x-16, y:y-16, width:32, height:32, fill:'none', stroke:INK80, 'stroke-width':1.3});
+  el('line', {x1:x-16, y1:y+16, x2:x+10, y2:y-10, stroke:INK, 'stroke-width':1.2});
+  el('line', {x1:x+5, y1:y-5, x2:x+13, y2:y+3, stroke:INK, 'stroke-width':1.2});
+  txt(x+28, y+5, '退避重试 / 换参再试', {'font-family':SANS, 'font-weight':300, 'font-size':'var(--type-label)', fill:INK70});
+})();
+/* 下分支：降级兜底 */
+(function(){
+  var x = 1526, y = 640;
+  el('path', {d:'M '+(x-14)+' '+(y-8)+' h 22 m -6 -6 l 6 6 l -6 6', fill:'none', stroke:INK80, 'stroke-width':1.3});
+  el('path', {d:'M '+(x+14)+' '+(y+8)+' h -22 m 6 -6 l -6 6 l 6 6', fill:'none', stroke:INK80, 'stroke-width':1.3});
+  txt(x+28, y+5, '降级兜底话术', {'font-family':SANS, 'font-weight':300, 'font-size':'var(--type-label)', fill:INK70});
+})();
+/* B · CTA chip */
+(function(){
+  var labels = ['减少重试', '守住底线'];
+  var w = 164, gap = 24, x = 980 + (790 - (labels.length*w + (labels.length-1)*gap)) / 2;
+  labels.forEach(function(s, i){
+    el('rect', {x:x, y:696, width:w, height:48, rx:4, fill:'none', stroke:INK80, 'stroke-width':1});
+    txt(x+w/2, 727, s, {'font-family':SANS, 'font-weight':300, 'font-size':'var(--type-body-small)', 'letter-spacing':2, 'text-anchor':'middle', fill:INK});
+    x += w + gap;
+  });
+})();
+
+stageFit();
+</script>
+</body>
+</html>

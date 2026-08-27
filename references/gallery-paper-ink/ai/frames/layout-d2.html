@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-runtime="wise-ppt-specimen" data-typography-mode="all-sans" data-page-id="gallery-ai-d2" data-page-role="close" data-theme="paper-ink" data-layout="paper-ink.scaffold.particle-outro" data-layout-source="gallery">
+<head>
+<meta charset="UTF-8">
+<title>layout-d2 · 粒子大字尾卡 · AGENT</title>
+<script src="../../../../runtime/stage-fit.js"></script>
+<link rel="stylesheet" href="../../../../themes/paper-ink/assets/design-tokens.css">
+<link rel="stylesheet" href="../../../../themes/paper-ink/assets/catalog-fonts.css" data-wise-catalog-fonts="true">
+<link rel="stylesheet" href="../../../../themes/paper-ink/assets/slide-components.css">
+<link rel="stylesheet" href="../../../shell.css">
+<style>
+  canvas { position: absolute; inset: 0; z-index: 2; }
+  svg.marks { position: absolute; inset: 0; z-index: 3; pointer-events: none; }
+</style>
+</head>
+<body class="slide">
+<div class="stage" data-template-id="D2" data-block-id="gallery-primary" data-renderer-kind="typography" data-component-source="native" data-component-id="native.paper-ink.scaffold.particle-outro.outro-lockup" data-content-ref="example.d2">
+  <div class="doc tl" data-template-part="support" data-template-slot="support" data-template-slot-kind="text">PPT 标题<br>页面标题</div>
+  <div class="folio" data-template-part="folio">页码 / 总页数 — BY @歪斯Wise</div>
+
+  <canvas id="cv" data-template-part="canvas" data-template-slot="canvas" data-template-slot-kind="illustration" width="1920" height="1080"></canvas>
+
+  <svg class="marks" data-template-part="marks" width="1920" height="1080" viewBox="0 0 1920 1080">
+    <g id="draw"></g>
+  </svg>
+</div>
+
+<script src="../../../../themes/paper-ink/assets/particles.js"></script>
+<script>
+var NS = 'http://www.w3.org/2000/svg';
+var cv = document.getElementById('cv');
+var ctx = cv.getContext('2d');
+var G = document.getElementById('draw');
+function el(tag, attrs) {
+  var e = document.createElementNS(NS, tag);
+  for (var k in attrs) e.setAttribute(k, attrs[k]);
+  G.appendChild(e); return e;
+}
+
+/* ---- 构图参数 ---- */
+var WORD = 'AGENT';
+var FS = paperInkTypeSize('particle-sample');    // 采样字号
+var CATALOG_FONTS = document.documentElement.dataset.wiseCatalogFonts === 'true';
+var SERIF_FACE = CATALOG_FONTS ? 'Han Serif Catalog' : 'Han Serif';
+var MONO_FACE = CATALOG_FONTS ? 'Courier Prime Catalog' : 'Courier Prime';
+var FONT = '500 ' + FS + 'px "' + SERIF_FACE + '"';
+/* 主视觉先对版心：深色 AGENT 字面中心固定在 (994, 540)。
+   X-HEIGHT 标注只挂左侧，所以水平整体右移 34px 做光学补偿；
+   上下套准框改为按真实字面边界等距展开，不再靠把主字压低来配平淡线。 */
+var CX = 994, CY = 540;
+
+function draw() {
+  PART.reset();
+  var w = PART.measure(WORD, FONT);
+  var x0 = CX - w / 2;
+  var pts = PART.textPoints(WORD, x0, CY, FONT, 7);
+
+  var minY = 1e9, maxY = -1e9;
+  pts.forEach(function (p) { if (p.y < minY) minY = p.y; if (p.y > maxY) maxY = p.y; });
+
+  /* ① ASCII 乱序字面：0 / 1 / * / - / . 随机落位，打字机小字 */
+  var CH = '01*-.';
+  ctx.font = paperInkTypeSize('micro-secondary') + 'px "' + MONO_FACE + '"';
+  ctx.fillStyle = 'var(--ink)';
+  ctx.textAlign = 'center';
+  ctx.textBaseline = 'middle';
+  pts.forEach(function (p) {
+    var a = .45 + PART.rand() * .35;
+    var ch = CH[(PART.rand() * CH.length) | 0];
+    ctx.globalAlpha = a;
+    ctx.fillText(ch, p.x + (PART.rand() - .5) * 1.5, p.y + (PART.rand() - .5) * 1.5);
+  });
+  ctx.globalAlpha = 1;
+
+  /* ② 字冠上沿零星未落位的浮字符 */
+  for (var k = 0; k < 40; k++) {
+    ctx.globalAlpha = .2 + PART.rand() * .3;
+    ctx.fillText(CH[(PART.rand() * CH.length) | 0],
+      x0 + PART.rand() * w, minY - 2 + PART.gauss() * 7);
+  }
+  ctx.globalAlpha = 1;
+
+  /* ③ 版面大氛围尘（避开文字区，保持尾卡的静） */
+  PART.dust(ctx, 140, 150, 1640, 700, 70, .08);
+
+  /* ============ 细线制图标记（SVG） ============ */
+  var LX = x0 - 34, RX = x0 + w + 34;            // 单词外扩框
+  /* 主字上下各留同样的制图呼吸区：深色主体与淡色套准框共用同一中轴。 */
+  var TY = minY - 94, BY = maxY + 94;
+
+  /* 套准十字：单词四角 */
+  [[LX, TY], [RX, TY], [LX, BY], [RX, BY]].forEach(function (c) {
+    el('line', {x1: c[0]-9, y1: c[1], x2: c[0]+9, y2: c[1], stroke:'var(--ink)', 'stroke-width':.6, opacity:.3});
+    el('line', {x1: c[0], y1: c[1]-9, x2: c[0], y2: c[1]+9, stroke:'var(--ink)', 'stroke-width':.6, opacity:.3});
+  });
+
+  /* 基线构造虚线：单词下沿 */
+  el('line', {x1: LX, y1: maxY + 12, x2: RX, y2: maxY + 12,
+    stroke:'var(--ink)', 'stroke-width':.6, 'stroke-dasharray':'2 5', opacity:.3});
+
+  /* 字高尺寸标注：左侧引线 + 刻度 */
+  (function () {
+    var ax = LX - 46;
+    el('line', {x1: ax, y1: minY, x2: ax, y2: maxY, stroke:'var(--ink)', 'stroke-width':.8, opacity:.55});
+    el('line', {x1: ax-6, y1: minY, x2: ax+6, y2: minY, stroke:'var(--ink)', 'stroke-width':.8, opacity:.55});
+    el('line', {x1: ax-6, y1: maxY, x2: ax+6, y2: maxY, stroke:'var(--ink)', 'stroke-width':.8, opacity:.55});
+    el('line', {x1: ax, y1: minY, x2: LX, y2: minY, stroke:'var(--ink)', 'stroke-width':.6, 'stroke-dasharray':'2 4', opacity:.3});
+    el('line', {x1: ax, y1: maxY, x2: LX, y2: maxY, stroke:'var(--ink)', 'stroke-width':.6, 'stroke-dasharray':'2 4', opacity:.3});
+    var t = el('text', {x: ax - 14, y: (minY + maxY) / 2, 'text-anchor':'middle',
+      'font-family':MONO_FACE, 'font-size':'var(--type-meta)', 'letter-spacing':2,
+      fill:'var(--ink-45)', transform:'rotate(-90 ' + (ax - 14) + ' ' + ((minY + maxY) / 2) + ')'});
+    t.textContent = 'X-HEIGHT 240';
+  })();
+}
+
+/* 等思源宋体装完再采样，保证轮廓来自 Han Serif */
+function start() {
+  if (document.fonts && document.fonts.load) {
+    document.fonts.load(FONT, WORD).then(function () {
+      document.fonts.ready.then(draw);
+    });
+  } else {
+    draw();
+  }
+}
+start();
+stageFit();
+</script>
+</body>
+</html>

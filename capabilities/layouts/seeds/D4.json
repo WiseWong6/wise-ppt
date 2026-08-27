@@ -1,0 +1,62 @@
+{
+  "contract": "wise-ppt-layout-seed@4",
+  "layout_id": "paper-ink.nonrelationship.D4",
+  "display_code": "D4",
+  "page_kind": "nonrelationship",
+  "source": {
+    "path": "references/gallery-paper-ink/ai/frames/layout-d4.html",
+    "sha256": "a1d08c044fd8f6cf3fa8434e0a8bd8a916336f7754c629de6a06aff754368756"
+  },
+  "locked": {
+    "scoped_css": "@scope (.slide[data-layout-id=\"paper-ink.nonrelationship.D4\"]) {\nsvg.scene { position: absolute; inset: 0; z-index: 1; }\n  .doc.tl, .folio { color: var(--ink-45); }\n  .caption {\n    position: absolute; left: 0; right: 0; bottom: 118px;\n    text-align: center;\n    font-family: var(--sans); font-weight: 400;\n    font-size: var(--type-caption); letter-spacing: .04em;\n    color: var(--ink);\n    z-index: 5;\n  }\n}\n",
+    "css_sha256": "f1338ba38bc43242feea6d171b81e44affb15409bc139af603e1997ce9a99d7c",
+    "stage_html": "<div class=\"stage\" data-block-id=\"gallery-primary\" data-component-id=\"native.paper-ink.scaffold.agenda.agenda\" data-component-source=\"native\" data-content-ref=\"example.d4\" data-renderer-kind=\"svg\" data-template-id=\"D4\">\n<div class=\"doc tl\" data-template-part=\"support\" data-template-slot=\"support\" data-template-slot-kind=\"text\" data-vnext-fit-box=\"0,0,1920,1080\" data-vnext-text-key=\"support.text.001\">PPT 标题<br/>页面标题</div>\n<div class=\"folio\" data-template-part=\"folio\">页码 / 总页数 — BY @歪斯Wise</div>\n<svg class=\"scene\" data-template-part=\"illustration\" data-template-slot=\"illustration\" data-template-slot-kind=\"illustration\" height=\"1080\" viewbox=\"0 0 1920 1080\" width=\"1920\">\n<g id=\"draw\"><g transform=\"translate(0 -16.2)\"><text fill=\"var(--ink-45)\" font-family=\"var(--mono)\" font-size=\"var(--type-label)\" letter-spacing=\"4\" x=\"300\" y=\"218\">CONTENTS</text><line opacity=\"0.3\" stroke=\"var(--ink)\" stroke-width=\"0.6\" x1=\"438\" x2=\"560\" y1=\"212\" y2=\"212\"></line><circle cx=\"334\" cy=\"292\" fill=\"none\" opacity=\"0.45\" r=\"26\" stroke=\"var(--ink)\" stroke-width=\"1\"></circle><text fill=\"var(--ink)\" font-family=\"var(--mono)\" font-size=\"var(--type-subheading)\" opacity=\"0.45\" text-anchor=\"middle\" x=\"334\" y=\"300\">01</text><text fill=\"var(--ink)\" font-family=\"var(--sans)\" font-size=\"var(--type-subheading)\" font-weight=\"300\" opacity=\"0.45\" x=\"416\" y=\"294\">认知奠基</text><text fill=\"var(--wp-adapter-pi-ink-60)\" font-family=\"var(--mono)\" font-size=\"var(--type-meta)\" letter-spacing=\"3\" opacity=\"0.45\" x=\"570\" y=\"291\">FOUNDATIONS</text><text fill=\"var(--ink-70)\" font-family=\"var(--sans)\" font-size=\"var(--type-body-small)\" font-weight=\"300\" opacity=\"0.45\" x=\"416\" y=\"330\">AI 产品的四类角色与能力边界</text><text fill=\"color-mix(in srgb, var(--ink) 50%, transparent)\" font-family=\"var(--mono)\" font-size=\"var(--type-meta)\" letter-spacing=\"2\" opacity=\"0.45\" text-anchor=\"end\" x=\"1620\" y=\"294\">P.3</text><line opacity=\"0.22\" stroke=\"var(--ink)\" stroke-width=\"0.6\" x1=\"300\" x2=\"1620\" y1=\"350\" y2=\"350\"></line><circle cx=\"334\" cy=\"418\" fill=\"var(--ink)\" opacity=\"1\" r=\"26\"></circle><circle cx=\"334\" cy=\"418\" fill=\"none\" opacity=\"0.35\" r=\"31\" stroke=\"var(--ink)\" stroke-width=\"0.6\"></circle><text fill=\"var(--paper)\" font-family=\"var(--mono)\" font-size=\"var(--type-subheading)\" text-anchor=\"middle\" x=\"334\" y=\"427\">02</text><line stroke=\"var(--ink)\" stroke-width=\"1.8\" x1=\"378\" x2=\"406\" y1=\"418\" y2=\"418\"></line><text fill=\"var(--ink)\" font-family=\"var(--sans)\" font-size=\"var(--type-subheading)\" font-weight=\"300\" opacity=\"1\" x=\"416\" y=\"420\">工程化思维</text><text fill=\"var(--wp-adapter-pi-ink-60)\" font-family=\"var(--mono)\" font-size=\"var(--type-meta)\" letter-spacing=\"3\" opacity=\"1\" x=\"602\" y=\"417\">HARNESS ENG</text><text fill=\"var(--ink-70)\" font-family=\"var(--sans)\" font-size=\"var(--type-body-small)\" font-weight=\"300\" opacity=\"1\" x=\"416\" y=\"456\">从模型到产品的工程鸿沟</text><text fill=\"color-mix(in srgb, var(--ink) 50%, transparent)\" font-family=\"var(--mono)\" font-size=\"var(--type-meta)\" letter-spacing=\"2\" opacity=\"1\" text-anchor=\"end\" x=\"1620\" y=\"420\">P.7</text><line opacity=\"0.22\" stroke=\"var(--ink)\" stroke-width=\"0.6\" x1=\"300\" x2=\"1620\" y1=\"476\" y2=\"476\"></line><circle cx=\"334\" cy=\"544\" fill=\"none\" opacity=\"0.45\" r=\"26\" stroke=\"var(--ink)\" stroke-width=\"1\"></circle><text fill=\"var(--ink)\" font-family=\"var(--mono)\" font-size=\"var(--type-subheading)\" opacity=\"0.45\" text-anchor=\"middle\" x=\"334\" y=\"552\">03</text><text fill=\"var(--ink)\" font-family=\"var(--sans)\" font-size=\"var(--type-subheading)\" font-weight=\"300\" opacity=\"0.45\" x=\"416\" y=\"546\">Agent 实战</text><text fill=\"var(--wp-adapter-pi-ink-60)\" font-family=\"var(--mono)\" font-size=\"var(--type-meta)\" letter-spacing=\"3\" opacity=\"0.45\" x=\"698\" y=\"543\">AGENT IN ACTION</text><text fill=\"var(--ink-70)\" font-family=\"var(--sans)\" font-size=\"var(--type-body-small)\" font-weight=\"300\" opacity=\"0.45\" x=\"416\" y=\"582\">工具调用、状态机与失败恢复</text><text fill=\"color-mix(in srgb, var(--ink) 50%, transparent)\" font-family=\"var(--mono)\" font-size=\"var(--type-meta)\" letter-spacing=\"2\" opacity=\"0.45\" text-anchor=\"end\" x=\"1620\" y=\"546\">P.11</text><line opacity=\"0.22\" stroke=\"var(--ink)\" stroke-width=\"0.6\" x1=\"300\" x2=\"1620\" y1=\"602\" y2=\"602\"></line><circle cx=\"334\" cy=\"670\" fill=\"none\" opacity=\"0.45\" r=\"26\" stroke=\"var(--ink)\" stroke-width=\"1\"></circle><text fill=\"var(--ink)\" font-family=\"var(--mono)\" font-size=\"var(--type-subheading)\" opacity=\"0.45\" text-anchor=\"middle\" x=\"334\" y=\"678\">04</text><text fill=\"var(--ink)\" font-family=\"var(--sans)\" font-size=\"var(--type-subheading)\" font-weight=\"300\" opacity=\"0.45\" x=\"416\" y=\"672\">评测体系</text><text fill=\"var(--wp-adapter-pi-ink-60)\" font-family=\"var(--mono)\" font-size=\"var(--type-meta)\" letter-spacing=\"3\" opacity=\"0.45\" x=\"570\" y=\"669\">EVAL FRAMEWORK</text><text fill=\"var(--ink-70)\" font-family=\"var(--sans)\" font-size=\"var(--type-body-small)\" font-weight=\"300\" opacity=\"0.45\" x=\"416\" y=\"708\">离线指标与在线尺子的双层护栏</text><text fill=\"color-mix(in srgb, var(--ink) 50%, transparent)\" font-family=\"var(--mono)\" font-size=\"var(--type-meta)\" letter-spacing=\"2\" opacity=\"0.45\" text-anchor=\"end\" x=\"1620\" y=\"672\">P.15</text><line opacity=\"0.22\" stroke=\"var(--ink)\" stroke-width=\"0.6\" x1=\"300\" x2=\"1620\" y1=\"728\" y2=\"728\"></line><circle cx=\"334\" cy=\"796\" fill=\"none\" opacity=\"0.45\" r=\"26\" stroke=\"var(--ink)\" stroke-width=\"1\"></circle><text fill=\"var(--ink)\" font-family=\"var(--mono)\" font-size=\"var(--type-subheading)\" opacity=\"0.45\" text-anchor=\"middle\" x=\"334\" y=\"804\">05</text><text fill=\"var(--ink)\" font-family=\"var(--sans)\" font-size=\"var(--type-subheading)\" font-weight=\"300\" opacity=\"0.45\" x=\"416\" y=\"798\">落地路径</text><text fill=\"var(--wp-adapter-pi-ink-60)\" font-family=\"var(--mono)\" font-size=\"var(--type-meta)\" letter-spacing=\"3\" opacity=\"0.45\" x=\"570\" y=\"795\">ROLLOUT ROADMAP</text><text fill=\"var(--ink-70)\" font-family=\"var(--sans)\" font-size=\"var(--type-body-small)\" font-weight=\"300\" opacity=\"0.45\" x=\"416\" y=\"834\">从 Demo 到生产的渐进上线计划</text><text fill=\"color-mix(in srgb, var(--ink) 50%, transparent)\" font-family=\"var(--mono)\" font-size=\"var(--type-meta)\" letter-spacing=\"2\" opacity=\"0.45\" text-anchor=\"end\" x=\"1620\" y=\"798\">P.19</text><line opacity=\"0.22\" stroke=\"var(--ink)\" stroke-width=\"0.6\" x1=\"300\" x2=\"1620\" y1=\"224\" y2=\"224\"></line></g></g>\n</svg>\n<div class=\"caption\" data-template-part=\"takeaway\" data-template-slot=\"takeaway\" data-template-slot-kind=\"text\" data-vnext-fit-box=\"0,0,1920,1080\" data-vnext-text-key=\"takeaway.text.001\">全篇按认知奠基、工程化思维、Agent 实战、评测体系与落地路径依次展开。</div>\n</div>",
+    "stage_structure_sha256": "17a63beef9b0cbc088150bf517813ab3e12191ff2450d834a45c472f61e0a6b8"
+  },
+  "bindings": {
+    "primary_slot": null,
+    "slots": {
+      "support": {
+        "text": [
+          {
+            "key": "support.text.001",
+            "default": "PPT 标题\n页面标题",
+            "max_chars": 96,
+            "item_scope": "item",
+            "item_group_source": "fixed-slot",
+            "item_index": 0,
+            "fit_box": [
+              0.0,
+              0.0,
+              1920.0,
+              1080.0
+            ],
+            "fit_owner_kind": "slide"
+          }
+        ],
+        "icon": []
+      },
+      "takeaway": {
+        "text": [
+          {
+            "key": "takeaway.text.001",
+            "default": "全篇按认知奠基、工程化思维、Agent 实战、评测体系与落地路径依次展开。",
+            "max_chars": 43,
+            "item_scope": "item",
+            "item_group_source": "fixed-slot",
+            "item_index": 0,
+            "fit_box": [
+              0.0,
+              0.0,
+              1920.0,
+              1080.0
+            ],
+            "fit_owner_kind": "slide"
+          }
+        ],
+        "icon": []
+      }
+    }
+  },
+  "seed_sha256": "4240e6020651532e16f4f6a072c7ba9d47dc6a00a7231a4f2a7f75a9273a05e6"
+}
