@@ -32,9 +32,9 @@ node <skill>/bin/wise-ppt.mjs layouts --page-kind relationship --page-role prove
 node <skill>/bin/wise-ppt.mjs layouts --layout-id <完整 layout_id>
 ```
 
-轻量候选直接给出名称、说明、结构摘要、叶区数量、阅读顺序、主单元数量和必填槽用途/容量，因此无需打开 seed 就能区分 A1、C1 等骨架。详细结果中的 `payload_schema`、容量和 binding 才是作者填写接口。没有 icon binding 就不能填写图标；图片、插画和画布不是公开 payload。`max_chars` 是锁定字体与空间下的中文保守上限，不授权缩字、改 CSS 或改内部几何。不要打开 seed 猜私有字段。
+轻量候选直接给出名称、说明、结构摘要、叶区数量、阅读顺序、主单元数量、必填槽用途/容量、允许强调对象和图标槽，因此无需打开 seed 就能区分 A1、C1 等骨架。详细结果中的 `payload_schema`、`emphasis.targets`、`icon_slots` 和容量才是作者接口。没有登记槽就不能加图标或换插画。`max_chars` 是锁定字体与空间下的中文保守上限，不授权缩字、改 CSS 或改内部几何。不要打开 seed 猜私有字段。
 
-`layout_id` 同时锁定页面结构、`core_component_ids` 和默认 renderer。standard 没有 `component_id` 作者字段，不能替换默认 renderer；查询里的 `recommended_component_ids` 只是内部确定性投影，不是可编辑入口。需要重组组件时走完下方不适配顺序，再申请隔离重绘。
+`layout_id` 锁定页面结构、组件组合和默认 renderer。文案、已审核插画与图标可按公开槽替换；组件不得自动替换。查询里的 `recommended_component_ids` 只是内部投影，不是作者入口。用户明确授权后，只有公开容量已登记的同结构调整仍属 standard，例如同一流程槽允许五项时可把四步填成五步；需要换组件组合或 renderer 时申请隔离重绘。
 
 ## 选择完整骨架
 
@@ -62,9 +62,9 @@ node <skill>/bin/wise-ppt.mjs layouts --layout-id <完整 layout_id>
 1. **减字**：删除重复解释和非 must 修饰，保留 claim、来源事实和 must；
 2. **换登记骨架**：保持既定 page role、claim 和 relation key，换另一个硬候选；
 3. **拆页**：拆成两个完整 claim，两页重新走页型、关系和骨架判断；
-4. **停止 standard**：记录尝试过的 Catalog 卡片、失败槽、容量或阅读顺序证据；若仍需重组组件，交回 `SKILL.md` 的模式路由申请隔离重绘。
+4. **停止 standard**：记录尝试过的 Catalog 卡片、失败槽、容量或阅读顺序证据；若仍需突破结构或组件组合，交回 `SKILL.md` 的模式路由申请隔离重绘。
 
-不得跳级。缩小字号、压间距、隐藏内容、改关系、临时 CSS 或未登记整页生成都不能代替这四步。改变分区、列数、槽位、阅读顺序、几何或锁定核心组件就是结构变更，不能混进 standard。
+不得跳级。缩小字号、压间距、隐藏内容、改关系、临时 CSS 或未登记整页生成都不能代替这四步。替换已登记内容槽不改结构；改变结构骨架、组件组合、分栏、阅读顺序或引入未审核能力才进入 experimental。
 
 ## 节奏复核
 

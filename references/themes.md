@@ -17,6 +17,12 @@
 }
 ```
 
+## 开工问询与逐页强调
+
+进入成品制作前，把用户尚未给出的整副配色和字体类型一次问清；用户已经说明的项目不再重复问。选项用下文的人话名称表达，不要求用户填写枚举值。
+
+未回答时使用 `paper-ink-original` 和该 preset 的默认字体。强调不是全局装饰开关：每页根据内容决定是否填写 `emphasis.target` 与 `reason`，目标只能来自 layout 查询。声明强调的最终 `index.html` 和 PDF 都呈现 Catalog 已审核的强调状态；`?accent=0` 与 `?accent=1` 只用于机器核对普通/强调两态，不能代替 spec。
+
 ## 当前三套外观预设
 
 | theme_preset | 人话说明 | 默认字体 | 适用倾向 |
@@ -67,6 +73,7 @@ standard 模式禁止：
 - HTML 根只声明一个 preset 和一个 typography mode；
 - 全部页面继承同一 deck 级设置；
 - normal/accent/print 都没有页面级颜色或字体覆盖；
-- HTML 与 PDF 记录相同 preset、mode 和 build-id。
+- 逐页强调只落到 layout 登记对象；
+- HTML 与 PDF 记录相同 preset、mode、build-id 和最终强调状态。
 
 人工只需确认整副视觉气质是否适合内容，以及正文、小字、图表标签在投屏与 PDF 中是否可读；不要逐页重新设计主题。

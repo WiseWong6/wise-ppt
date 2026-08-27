@@ -21,7 +21,7 @@ import {
 } from "./common.mjs";
 import { deckFileUrl, discoverChrome, runChromeTask } from "./chrome.mjs";
 import { validateDeck } from "./standard.mjs";
-const STANDARD_BUILD_CONTRACT = "wise-ppt-build@3";
+const STANDARD_BUILD_CONTRACT = "wise-ppt-build@4";
 const EXPERIMENTAL_WORKSPACE_CONTRACT = "wise-ppt-experimental-workspace@2";
 const EXPERIMENTAL_BUILD_CONTRACT = "wise-ppt-experimental-build@4";
 const EXPERIMENTAL_DELIVERY_CONTRACT = "wise-ppt-experimental-delivery@5";
