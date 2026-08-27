@@ -1,0 +1,423 @@
+{
+  "contract": "wise-ppt-layout-seed@4",
+  "layout_id": "paper-ink.relationship.E3",
+  "display_code": "E3",
+  "page_kind": "relationship",
+  "source": {
+    "path": "references/gallery-paper-ink/ai/frames/layout-e3.html",
+    "sha256": "61dc19dec0b4fdf68cfa12aa55a382ce15d043057472cf7babb9da55943ccadf"
+  },
+  "locked": {
+    "scoped_css": "@scope (.slide[data-layout-id=\"paper-ink.relationship.E3\"]) {\n/* B23 双带列阵 · 纸底 */\n  .doc.tl, .folio { color: var(--ink-45); }\n  svg.scene { position: absolute; inset: 0; z-index: 1; }\n  .caption {\n    position: absolute; left: 0; right: 0; bottom: 118px;\n    text-align: center;\n    font-family: var(--sans); font-weight: 400;\n    font-size: var(--type-caption); letter-spacing: .04em;\n    color: var(--ink);\n    z-index: 5;\n  }\n}\n",
+    "css_sha256": "c830b593545da8afe3660c802f0af36a8519c37f870e008a0b8c3f414ae5f1bd",
+    "stage_html": "<div class=\"stage\" data-block-id=\"gallery-primary\" data-component-id=\"native.paper-ink.comparison.paired-bands.paired-items\" data-component-source=\"native\" data-content-ref=\"example.e3\" data-renderer-kind=\"svg\">\n<div class=\"doc tl\"><span class=\"vnext-text-node\" data-vnext-fit-box=\"0,0,1920,1080\" data-vnext-text-key=\"support.text.001\">PPT 标题</span><br/><span class=\"vnext-text-node\" data-vnext-fit-box=\"0,0,1920,1080\" data-vnext-text-key=\"support.text.002\">页面标题</span></div>\n<div class=\"folio\">页码 / 总页数 — BY @歪斯Wise</div>\n<svg class=\"scene\" height=\"1080\" viewbox=\"0 0 1920 1080\" width=\"1920\">\n<defs>\n<pattern height=\"8\" id=\"hatch23\" patterntransform=\"rotate(45)\" patternunits=\"userSpaceOnUse\" width=\"8\">\n<line opacity=\".35\" stroke=\"var(--ink)\" stroke-width=\".7\" x1=\"0\" x2=\"0\" y1=\"0\" y2=\"8\"></line>\n</pattern>\n</defs>\n<g id=\"draw\"><g transform=\"translate(0 +1.3)\"><line opacity=\"0.16\" stroke=\"var(--ink)\" stroke-dasharray=\"2 6\" stroke-width=\"0.5\" x1=\"420\" x2=\"420\" y1=\"250\" y2=\"760\"></line><line opacity=\"0.16\" stroke=\"var(--ink)\" stroke-dasharray=\"2 6\" stroke-width=\"0.5\" x1=\"800\" x2=\"800\" y1=\"250\" y2=\"760\"></line><line opacity=\"0.16\" stroke=\"var(--ink)\" stroke-dasharray=\"2 6\" stroke-width=\"0.5\" x1=\"1180\" x2=\"1180\" y1=\"250\" y2=\"760\"></line><line opacity=\"0.16\" stroke=\"var(--ink)\" stroke-dasharray=\"2 6\" stroke-width=\"0.5\" x1=\"1560\" x2=\"1560\" y1=\"250\" y2=\"760\"></line><text data-vnext-fit-box=\"150,251,1653,762\" data-vnext-text-key=\"paired-items.text.001\" fill=\"var(--ink)\" font-family=\"var(--mono)\" font-size=\"var(--type-body-small)\" letter-spacing=\"4\" x=\"150\" y=\"372\">WHY</text><text data-vnext-fit-box=\"149,251,1653,762\" data-vnext-text-key=\"paired-items.text.002\" fill=\"var(--ink-45)\" font-family=\"var(--sans)\" font-size=\"var(--type-body-small)\" font-weight=\"300\" x=\"150\" y=\"400\">动因 · 为什么做</text><text data-vnext-fit-box=\"149,251,1653,762\" data-vnext-text-key=\"paired-items.text.003\" fill=\"var(--ink)\" font-family=\"var(--mono)\" font-size=\"var(--type-body-small)\" letter-spacing=\"4\" x=\"150\" y=\"652\">HOW</text><text data-vnext-fit-box=\"149,251,1653,762\" data-vnext-text-key=\"paired-items.text.004\" fill=\"var(--ink-45)\" font-family=\"var(--sans)\" font-size=\"var(--type-body-small)\" font-weight=\"300\" x=\"150\" y=\"680\">对策 · 怎么做</text><text data-vnext-fit-box=\"149,251,1653,762\" data-vnext-text-key=\"paired-items.text.005\" fill=\"var(--ink-45)\" font-family=\"var(--mono)\" font-size=\"var(--type-micro-secondary)\" letter-spacing=\"2\" text-anchor=\"middle\" x=\"420\" y=\"270\">01 · RATE-LIMIT</text><rect fill=\"url(#hatch23)\" height=\"68\" stroke=\"var(--ink-80)\" stroke-width=\"1\" width=\"11\" x=\"388\" y=\"316\"></rect><rect fill=\"url(#hatch23)\" height=\"68\" stroke=\"var(--ink-80)\" stroke-width=\"1\" width=\"11\" x=\"441\" y=\"316\"></rect><rect fill=\"none\" height=\"20\" stroke=\"var(--ink-80)\" stroke-width=\"1.1\" width=\"20\" x=\"336\" y=\"324\"></rect><rect fill=\"none\" height=\"16\" stroke=\"var(--ink-80)\" stroke-width=\"1.1\" width=\"16\" x=\"354\" y=\"352\"></rect><rect fill=\"var(--paper-panel)\" height=\"18\" stroke=\"var(--ink)\" stroke-width=\"1.3\" width=\"18\" x=\"410\" y=\"341\"></rect><path d=\"M 324 380 L 380 380\" fill=\"none\" opacity=\"0.4\" stroke=\"var(--ink)\" stroke-dasharray=\"2 4\" stroke-width=\"0.6\"></path><text data-vnext-fit-box=\"149,251,1653,762\" data-vnext-text-key=\"paired-items.text.006\" fill=\"var(--ink)\" font-family=\"var(--sans)\" font-size=\"var(--type-body)\" font-weight=\"300\" id=\"sample-focus\" text-anchor=\"middle\" x=\"420\" y=\"432\">限流中断</text><text data-vnext-fit-box=\"149,251,1653,762\" data-vnext-text-key=\"paired-items.text.007\" fill=\"var(--ink-45)\" font-family=\"var(--mono)\" font-size=\"var(--type-micro-secondary)\" letter-spacing=\"2\" text-anchor=\"middle\" x=\"800\" y=\"270\">02 · LOOP STUCK</text><circle cx=\"728\" cy=\"368\" fill=\"none\" r=\"6\" stroke=\"var(--ink-80)\" stroke-width=\"1.1\"></circle><circle cx=\"728\" cy=\"368\" fill=\"var(--ink)\" r=\"2.2\"></circle><path d=\"M 734 364 L 860 328\" fill=\"none\" stroke=\"var(--ink-80)\" stroke-width=\"1.2\"></path><path d=\"M 860 328 L 842 316\" fill=\"none\" stroke=\"var(--ink-80)\" stroke-width=\"1.2\"></path><path d=\"M 860 328 L 844 336\" fill=\"none\" stroke=\"var(--ink-80)\" stroke-width=\"1.2\"></path><path d=\"M 858 340 L 742 384\" fill=\"none\" opacity=\"0.5\" stroke=\"var(--ink)\" stroke-dasharray=\"4 5\" stroke-width=\"0.8\"></path><path d=\"M 742 384 L 760 378\" fill=\"none\" opacity=\"0.5\" stroke=\"var(--ink)\" stroke-width=\"0.8\"></path><path d=\"M 742 384 L 754 368\" fill=\"none\" opacity=\"0.5\" stroke=\"var(--ink)\" stroke-width=\"0.8\"></path><text data-vnext-fit-box=\"149,251,1653,762\" data-vnext-text-key=\"paired-items.text.008\" fill=\"var(--ink-45)\" font-family=\"var(--sans)\" font-size=\"var(--type-meta)\" font-weight=\"300\" x=\"804\" y=\"394\">原地打转</text><text data-vnext-fit-box=\"149,251,1653,762\" data-vnext-text-key=\"paired-items.text.009\" fill=\"var(--ink)\" font-family=\"var(--sans)\" font-size=\"var(--type-body)\" font-weight=\"300\" text-anchor=\"middle\" x=\"800\" y=\"432\">思考死循环</text><text data-vnext-fit-box=\"149,251,1653,762\" data-vnext-text-key=\"paired-items.text.010\" fill=\"var(--ink-45)\" font-family=\"var(--mono)\" font-size=\"var(--type-micro-secondary)\" letter-spacing=\"2\" text-anchor=\"middle\" x=\"1180\" y=\"270\">03 · CTX OVERFLOW</text><path d=\"M 1128 320 L 1202 320 L 1232 350 L 1202 380 L 1128 380 Z\" fill=\"none\" stroke=\"var(--ink-80)\" stroke-width=\"1.2\"></path><circle cx=\"1208\" cy=\"350\" fill=\"none\" opacity=\"0.7\" r=\"4.5\" stroke=\"var(--ink)\" stroke-width=\"0.9\"></circle><path d=\"M 1152 337 L 1178 363\" fill=\"none\" stroke=\"var(--ink)\" stroke-width=\"1.6\"></path><path d=\"M 1178 337 L 1152 363\" fill=\"none\" stroke=\"var(--ink)\" stroke-width=\"1.6\"></path><line opacity=\"0.35\" stroke=\"var(--ink)\" stroke-dasharray=\"2 4\" stroke-width=\"0.6\" x1=\"1140\" x2=\"1196\" y1=\"310\" y2=\"310\"></line><text data-vnext-fit-box=\"149,251,1653,762\" data-vnext-text-key=\"paired-items.text.011\" fill=\"var(--ink)\" font-family=\"var(--sans)\" font-size=\"var(--type-body)\" font-weight=\"300\" text-anchor=\"middle\" x=\"1180\" y=\"432\">上下文窗口乱</text><text data-vnext-fit-box=\"149,251,1652,762\" data-vnext-text-key=\"paired-items.text.012\" fill=\"var(--ink-45)\" font-family=\"var(--mono)\" font-size=\"var(--type-micro-secondary)\" letter-spacing=\"2\" text-anchor=\"middle\" x=\"1560\" y=\"270\">04 · UNTRACEABLE</text><rect fill=\"none\" height=\"32\" stroke=\"var(--ink-80)\" stroke-width=\"1.2\" width=\"48\" x=\"1472\" y=\"336\"></rect><path d=\"M 1468 336 L 1496 316 L 1524 336\" fill=\"none\" stroke=\"var(--ink-80)\" stroke-width=\"1.2\"></path><line opacity=\"0.6\" stroke=\"var(--ink)\" stroke-width=\"0.8\" x1=\"1486\" x2=\"1486\" y1=\"368\" y2=\"352\"></line><line opacity=\"0.6\" stroke=\"var(--ink)\" stroke-width=\"0.8\" x1=\"1506\" x2=\"1506\" y1=\"368\" y2=\"352\"></line><rect fill=\"none\" height=\"32\" stroke=\"var(--ink-80)\" stroke-width=\"1.2\" width=\"48\" x=\"1600\" y=\"336\"></rect><path d=\"M 1596 336 L 1624 316 L 1652 336\" fill=\"none\" stroke=\"var(--ink-80)\" stroke-width=\"1.2\"></path><line opacity=\"0.6\" stroke=\"var(--ink)\" stroke-width=\"0.8\" x1=\"1614\" x2=\"1614\" y1=\"368\" y2=\"352\"></line><line opacity=\"0.6\" stroke=\"var(--ink)\" stroke-width=\"0.8\" x1=\"1634\" x2=\"1634\" y1=\"368\" y2=\"352\"></line><line opacity=\"0.5\" stroke=\"var(--ink)\" stroke-dasharray=\"3 5\" stroke-width=\"0.7\" x1=\"1524\" x2=\"1596\" y1=\"352\" y2=\"352\"></line><rect fill=\"var(--paper)\" height=\"18\" stroke=\"none\" width=\"22\" x=\"1549\" y=\"343\"></rect><path d=\"M 1553 345 L 1567 359\" fill=\"none\" stroke=\"var(--ink)\" stroke-width=\"1.4\"></path><path d=\"M 1567 345 L 1553 359\" fill=\"none\" stroke=\"var(--ink)\" stroke-width=\"1.4\"></path><text data-vnext-fit-box=\"149,251,1653,762\" data-vnext-text-key=\"paired-items.text.013\" fill=\"var(--ink)\" font-family=\"var(--sans)\" font-size=\"var(--type-body)\" font-weight=\"300\" text-anchor=\"middle\" x=\"1560\" y=\"432\">不可追踪</text><line stroke=\"var(--ink-80)\" stroke-width=\"1.3\" x1=\"420\" x2=\"420\" y1=\"466\" y2=\"540\"></line><line stroke=\"var(--ink-80)\" stroke-width=\"1.3\" x1=\"420\" x2=\"411\" y1=\"540\" y2=\"522\"></line><line stroke=\"var(--ink-80)\" stroke-width=\"1.3\" x1=\"420\" x2=\"429\" y1=\"540\" y2=\"522\"></line><circle cx=\"420\" cy=\"466\" fill=\"var(--ink)\" opacity=\"0.6\" r=\"2.4\"></circle><line stroke=\"var(--ink-80)\" stroke-width=\"1.3\" x1=\"800\" x2=\"800\" y1=\"466\" y2=\"540\"></line><line stroke=\"var(--ink-80)\" stroke-width=\"1.3\" x1=\"800\" x2=\"791\" y1=\"540\" y2=\"522\"></line><line stroke=\"var(--ink-80)\" stroke-width=\"1.3\" x1=\"800\" x2=\"809\" y1=\"540\" y2=\"522\"></line><circle cx=\"800\" cy=\"466\" fill=\"var(--ink)\" opacity=\"0.6\" r=\"2.4\"></circle><line stroke=\"var(--ink-80)\" stroke-width=\"1.3\" x1=\"1180\" x2=\"1180\" y1=\"466\" y2=\"540\"></line><line stroke=\"var(--ink-80)\" stroke-width=\"1.3\" x1=\"1180\" x2=\"1171\" y1=\"540\" y2=\"522\"></line><line stroke=\"var(--ink-80)\" stroke-width=\"1.3\" x1=\"1180\" x2=\"1189\" y1=\"540\" y2=\"522\"></line><circle cx=\"1180\" cy=\"466\" fill=\"var(--ink)\" opacity=\"0.6\" r=\"2.4\"></circle><line stroke=\"var(--ink-80)\" stroke-width=\"1.3\" x1=\"1560\" x2=\"1560\" y1=\"466\" y2=\"540\"></line><line stroke=\"var(--ink-80)\" stroke-width=\"1.3\" x1=\"1560\" x2=\"1551\" y1=\"540\" y2=\"522\"></line><line stroke=\"var(--ink-80)\" stroke-width=\"1.3\" x1=\"1560\" x2=\"1569\" y1=\"540\" y2=\"522\"></line><circle cx=\"1560\" cy=\"466\" fill=\"var(--ink)\" opacity=\"0.6\" r=\"2.4\"></circle><text data-vnext-fit-box=\"149,251,1653,762\" data-vnext-text-key=\"paired-items.text.014\" fill=\"var(--ink-45)\" font-family=\"var(--mono)\" font-size=\"var(--type-micro-secondary)\" letter-spacing=\"2\" text-anchor=\"middle\" x=\"420\" y=\"562\">RETRY</text><line stroke=\"var(--ink-80)\" stroke-width=\"1.2\" x1=\"456\" x2=\"464\" y1=\"630\" y2=\"630\"></line><line stroke=\"var(--ink-80)\" stroke-width=\"1.2\" x1=\"445.4558441227157\" x2=\"451.1126983722081\" y1=\"655.4558441227157\" y2=\"661.1126983722081\"></line><line stroke=\"var(--ink-80)\" stroke-width=\"1.2\" x1=\"420\" x2=\"420\" y1=\"666\" y2=\"674\"></line><line stroke=\"var(--ink-80)\" stroke-width=\"1.2\" x1=\"394.5441558772843\" x2=\"388.8873016277919\" y1=\"655.4558441227157\" y2=\"661.1126983722081\"></line><line stroke=\"var(--ink-80)\" stroke-width=\"1.2\" x1=\"384\" x2=\"376\" y1=\"630\" y2=\"630\"></line><line stroke=\"var(--ink-80)\" stroke-width=\"1.2\" x1=\"394.5441558772843\" x2=\"388.8873016277919\" y1=\"604.5441558772843\" y2=\"598.8873016277919\"></line><line stroke=\"var(--ink-80)\" stroke-width=\"1.2\" x1=\"420\" x2=\"420\" y1=\"594\" y2=\"586\"></line><line stroke=\"var(--ink-80)\" stroke-width=\"1.2\" x1=\"445.4558441227157\" x2=\"451.11269837220806\" y1=\"604.5441558772843\" y2=\"598.8873016277919\"></line><circle cx=\"420\" cy=\"630\" fill=\"none\" r=\"32\" stroke=\"var(--ink-80)\" stroke-width=\"1.3\"></circle><circle cx=\"420\" cy=\"630\" fill=\"none\" opacity=\"0.4\" r=\"19\" stroke=\"var(--ink)\" stroke-width=\"0.6\"></circle><circle cx=\"420\" cy=\"630\" fill=\"var(--ink)\" r=\"2.6\"></circle><text data-vnext-fit-box=\"149,251,1653,762\" data-vnext-text-key=\"paired-items.text.015\" fill=\"var(--ink)\" font-family=\"var(--sans)\" font-size=\"var(--type-body)\" font-weight=\"300\" text-anchor=\"middle\" x=\"420\" y=\"712\">重试退避 + 熔断</text><text data-vnext-fit-box=\"149,251,1653,762\" data-vnext-text-key=\"paired-items.text.016\" fill=\"var(--ink-45)\" font-family=\"var(--mono)\" font-size=\"var(--type-micro-secondary)\" letter-spacing=\"2\" text-anchor=\"middle\" x=\"800\" y=\"562\">STEP CAP</text><line opacity=\"0.6\" stroke=\"var(--ink)\" stroke-width=\"0.8\" x1=\"734\" x2=\"866\" y1=\"668\" y2=\"668\"></line><line opacity=\"0.5\" stroke=\"var(--ink)\" stroke-width=\"0.6\" x1=\"734\" x2=\"734\" y1=\"668\" y2=\"673\"></line><line opacity=\"0.5\" stroke=\"var(--ink)\" stroke-width=\"0.6\" x1=\"767\" x2=\"767\" y1=\"668\" y2=\"673\"></line><line opacity=\"0.5\" stroke=\"var(--ink)\" stroke-width=\"0.6\" x1=\"800\" x2=\"800\" y1=\"668\" y2=\"673\"></line><line opacity=\"0.5\" stroke=\"var(--ink)\" stroke-width=\"0.6\" x1=\"833\" x2=\"833\" y1=\"668\" y2=\"673\"></line><line opacity=\"0.5\" stroke=\"var(--ink)\" stroke-width=\"0.6\" x1=\"866\" x2=\"866\" y1=\"668\" y2=\"673\"></line><rect fill=\"none\" height=\"14\" stroke=\"var(--ink-80)\" stroke-width=\"1.1\" width=\"56\" x=\"734\" y=\"596\"></rect><rect fill=\"url(#hatch23)\" height=\"14\" stroke=\"var(--ink-80)\" stroke-width=\"1.1\" width=\"70\" x=\"768\" y=\"622\"></rect><rect fill=\"none\" height=\"14\" stroke=\"var(--ink-80)\" stroke-width=\"1.1\" width=\"48\" x=\"818\" y=\"648\"></rect><text data-vnext-fit-box=\"149,251,1653,762\" data-vnext-text-key=\"paired-items.text.017\" fill=\"var(--ink)\" font-family=\"var(--sans)\" font-size=\"var(--type-body)\" font-weight=\"300\" text-anchor=\"middle\" x=\"800\" y=\"712\">步骤上限 + 早停</text><text data-vnext-fit-box=\"149,251,1653,762\" data-vnext-text-key=\"paired-items.text.018\" fill=\"var(--ink-45)\" font-family=\"var(--mono)\" font-size=\"var(--type-micro-secondary)\" letter-spacing=\"2\" text-anchor=\"middle\" x=\"1180\" y=\"562\">CTX COMPRESS</text><rect fill=\"var(--paper-panel)\" height=\"34\" stroke=\"var(--ink-80)\" stroke-width=\"1.1\" width=\"26\" x=\"1167\" y=\"605\"></rect><line opacity=\"0.5\" stroke=\"var(--ink)\" stroke-width=\"0.6\" x1=\"1173\" x2=\"1187\" y1=\"615\" y2=\"615\"></line><line opacity=\"0.5\" stroke=\"var(--ink)\" stroke-width=\"0.6\" x1=\"1173\" x2=\"1187\" y1=\"623\" y2=\"623\"></line><path d=\"M 1173 633 L 1179 638 L 1189 628\" fill=\"none\" stroke=\"var(--ink)\" stroke-width=\"1.6\"></path><path d=\"M 1214 622 A 34 34 0 1 1 1146 622 A 34 34 0 0 1 1204 598\" fill=\"none\" stroke=\"var(--ink-80)\" stroke-width=\"1.2\"></path><path d=\"M 1204 598 L 1200 586\" fill=\"none\" stroke=\"var(--ink-80)\" stroke-width=\"1.2\"></path><path d=\"M 1204 598 L 1192 594\" fill=\"none\" stroke=\"var(--ink-80)\" stroke-width=\"1.2\"></path><text data-vnext-fit-box=\"149,251,1653,762\" data-vnext-text-key=\"paired-items.text.019\" fill=\"var(--ink-45)\" font-family=\"var(--sans)\" font-size=\"var(--type-meta)\" font-weight=\"300\" text-anchor=\"middle\" x=\"1180\" y=\"678\">压缩交接</text><text data-vnext-fit-box=\"149,251,1653,762\" data-vnext-text-key=\"paired-items.text.020\" fill=\"var(--ink)\" font-family=\"var(--sans)\" font-size=\"var(--type-body)\" font-weight=\"300\" text-anchor=\"middle\" x=\"1180\" y=\"712\">上下文压缩 + 交接文档</text><text data-vnext-fit-box=\"149,251,1653,762\" data-vnext-text-key=\"paired-items.text.021\" fill=\"var(--ink-45)\" font-family=\"var(--mono)\" font-size=\"var(--type-micro-secondary)\" letter-spacing=\"2\" text-anchor=\"middle\" x=\"1560\" y=\"562\">TRACE</text><circle cx=\"1504\" cy=\"630\" fill=\"none\" r=\"12\" stroke=\"var(--ink-80)\" stroke-width=\"1.2\"></circle><circle cx=\"1504\" cy=\"630\" fill=\"none\" opacity=\"0.4\" r=\"6\" stroke=\"var(--ink)\" stroke-width=\"0.6\"></circle><circle cx=\"1504\" cy=\"630\" fill=\"var(--ink)\" r=\"2.4\"></circle><circle cx=\"1616\" cy=\"630\" fill=\"none\" r=\"12\" stroke=\"var(--ink-80)\" stroke-width=\"1.2\"></circle><circle cx=\"1616\" cy=\"630\" fill=\"none\" opacity=\"0.4\" r=\"6\" stroke=\"var(--ink)\" stroke-width=\"0.6\"></circle><circle cx=\"1616\" cy=\"630\" fill=\"var(--ink)\" r=\"2.4\"></circle><line stroke=\"var(--ink-80)\" stroke-width=\"1.3\" x1=\"1518\" x2=\"1602\" y1=\"630\" y2=\"630\"></line><circle cx=\"1560\" cy=\"630\" fill=\"var(--ink)\" opacity=\"0.7\" r=\"2.4\"></circle><path d=\"M 1510 614 A 52 26 0 0 1 1610 614\" fill=\"none\" opacity=\"0.45\" stroke=\"var(--ink)\" stroke-dasharray=\"3 5\" stroke-width=\"0.7\"></path><text data-vnext-fit-box=\"149,251,1653,762\" data-vnext-text-key=\"paired-items.text.022\" fill=\"var(--ink-45)\" font-family=\"var(--sans)\" font-size=\"var(--type-meta)\" font-weight=\"300\" text-anchor=\"middle\" x=\"1560\" y=\"598\">全链路</text><text data-vnext-fit-box=\"149,251,1653,762\" data-vnext-text-key=\"paired-items.text.023\" fill=\"var(--ink)\" font-family=\"var(--sans)\" font-size=\"var(--type-body)\" font-weight=\"300\" text-anchor=\"middle\" x=\"1560\" y=\"712\">全链 Trace + 日志</text></g></g>\n</svg>\n<div class=\"caption\" data-vnext-claim-key=\"claim.text.001\" data-vnext-fit-box=\"0,0,1920,1080\">幻觉、越权、失控与不可追溯分别由<span data-content-ref=\"sample.e3.e3-focus\" data-emphasis-role=\"label\" id=\"focus-caption\">证据、权限、边界和日志机制</span>治理。</div>\n</div>",
+    "stage_structure_sha256": "93815774abc85e060090ac9f8f045d2dd4923fa9f7502b33af7603ee74e00fb9"
+  },
+  "bindings": {
+    "claim": {
+      "key": "claim.text.001",
+      "default": "幻觉、越权、失控与不可追溯分别由 证据、权限、边界和日志机制 治理。",
+      "max_chars": 38,
+      "fit_box": [
+        0.0,
+        0.0,
+        1920.0,
+        1080.0
+      ],
+      "fit_owner_kind": "slide"
+    },
+    "primary_slot": "paired-items",
+    "slots": {
+      "paired-items": {
+        "text": [
+          {
+            "key": "paired-items.text.001",
+            "default": "WHY",
+            "max_chars": 5,
+            "item_scope": "item",
+            "item_group_source": "fixed-slot",
+            "item_index": 0,
+            "fit_box": [
+              150.0,
+              251.0,
+              1653.0,
+              762.0
+            ],
+            "fit_owner_kind": "svg-group"
+          },
+          {
+            "key": "paired-items.text.002",
+            "default": "动因 · 为什么做",
+            "max_chars": 10,
+            "item_scope": "item",
+            "item_group_source": "fixed-slot",
+            "item_index": 0,
+            "fit_box": [
+              149.0,
+              251.0,
+              1653.0,
+              762.0
+            ],
+            "fit_owner_kind": "svg-group"
+          },
+          {
+            "key": "paired-items.text.003",
+            "default": "HOW",
+            "max_chars": 5,
+            "item_scope": "item",
+            "item_group_source": "fixed-slot",
+            "item_index": 0,
+            "fit_box": [
+              149.0,
+              251.0,
+              1653.0,
+              762.0
+            ],
+            "fit_owner_kind": "svg-group"
+          },
+          {
+            "key": "paired-items.text.004",
+            "default": "对策 · 怎么做",
+            "max_chars": 9,
+            "item_scope": "item",
+            "item_group_source": "fixed-slot",
+            "item_index": 0,
+            "fit_box": [
+              149.0,
+              251.0,
+              1653.0,
+              762.0
+            ],
+            "fit_owner_kind": "svg-group"
+          },
+          {
+            "key": "paired-items.text.005",
+            "default": "01 · RATE-LIMIT",
+            "max_chars": 18,
+            "item_scope": "item",
+            "item_group_source": "fixed-slot",
+            "item_index": 0,
+            "fit_box": [
+              149.0,
+              251.0,
+              1653.0,
+              762.0
+            ],
+            "fit_owner_kind": "svg-group"
+          },
+          {
+            "key": "paired-items.text.006",
+            "default": "限流中断",
+            "max_chars": 6,
+            "item_scope": "item",
+            "item_group_source": "fixed-slot",
+            "item_index": 0,
+            "fit_box": [
+              149.0,
+              251.0,
+              1653.0,
+              762.0
+            ],
+            "fit_owner_kind": "svg-group"
+          },
+          {
+            "key": "paired-items.text.007",
+            "default": "02 · LOOP STUCK",
+            "max_chars": 17,
+            "item_scope": "item",
+            "item_group_source": "fixed-slot",
+            "item_index": 0,
+            "fit_box": [
+              149.0,
+              251.0,
+              1653.0,
+              762.0
+            ],
+            "fit_owner_kind": "svg-group"
+          },
+          {
+            "key": "paired-items.text.008",
+            "default": "原地打转",
+            "max_chars": 6,
+            "item_scope": "item",
+            "item_group_source": "fixed-slot",
+            "item_index": 0,
+            "fit_box": [
+              149.0,
+              251.0,
+              1653.0,
+              762.0
+            ],
+            "fit_owner_kind": "svg-group"
+          },
+          {
+            "key": "paired-items.text.009",
+            "default": "思考死循环",
+            "max_chars": 7,
+            "item_scope": "item",
+            "item_group_source": "fixed-slot",
+            "item_index": 0,
+            "fit_box": [
+              149.0,
+              251.0,
+              1653.0,
+              762.0
+            ],
+            "fit_owner_kind": "svg-group"
+          },
+          {
+            "key": "paired-items.text.010",
+            "default": "03 · CTX OVERFLOW",
+            "max_chars": 19,
+            "item_scope": "item",
+            "item_group_source": "fixed-slot",
+            "item_index": 0,
+            "fit_box": [
+              149.0,
+              251.0,
+              1653.0,
+              762.0
+            ],
+            "fit_owner_kind": "svg-group"
+          },
+          {
+            "key": "paired-items.text.011",
+            "default": "上下文窗口乱",
+            "max_chars": 9,
+            "item_scope": "item",
+            "item_group_source": "fixed-slot",
+            "item_index": 0,
+            "fit_box": [
+              149.0,
+              251.0,
+              1653.0,
+              762.0
+            ],
+            "fit_owner_kind": "svg-group"
+          },
+          {
+            "key": "paired-items.text.012",
+            "default": "04 · UNTRACEABLE",
+            "max_chars": 10,
+            "item_scope": "item",
+            "item_group_source": "fixed-slot",
+            "item_index": 0,
+            "fit_box": [
+              149.0,
+              251.0,
+              1652.0,
+              762.0
+            ],
+            "fit_owner_kind": "svg-group"
+          },
+          {
+            "key": "paired-items.text.013",
+            "default": "不可追踪",
+            "max_chars": 6,
+            "item_scope": "item",
+            "item_group_source": "fixed-slot",
+            "item_index": 0,
+            "fit_box": [
+              149.0,
+              251.0,
+              1653.0,
+              762.0
+            ],
+            "fit_owner_kind": "svg-group"
+          },
+          {
+            "key": "paired-items.text.014",
+            "default": "RETRY",
+            "max_chars": 7,
+            "item_scope": "item",
+            "item_group_source": "fixed-slot",
+            "item_index": 0,
+            "fit_box": [
+              149.0,
+              251.0,
+              1653.0,
+              762.0
+            ],
+            "fit_owner_kind": "svg-group"
+          },
+          {
+            "key": "paired-items.text.015",
+            "default": "重试退避 + 熔断",
+            "max_chars": 10,
+            "item_scope": "item",
+            "item_group_source": "fixed-slot",
+            "item_index": 0,
+            "fit_box": [
+              149.0,
+              251.0,
+              1653.0,
+              762.0
+            ],
+            "fit_owner_kind": "svg-group"
+          },
+          {
+            "key": "paired-items.text.016",
+            "default": "STEP CAP",
+            "max_chars": 10,
+            "item_scope": "item",
+            "item_group_source": "fixed-slot",
+            "item_index": 0,
+            "fit_box": [
+              149.0,
+              251.0,
+              1653.0,
+              762.0
+            ],
+            "fit_owner_kind": "svg-group"
+          },
+          {
+            "key": "paired-items.text.017",
+            "default": "步骤上限 + 早停",
+            "max_chars": 10,
+            "item_scope": "item",
+            "item_group_source": "fixed-slot",
+            "item_index": 0,
+            "fit_box": [
+              149.0,
+              251.0,
+              1653.0,
+              762.0
+            ],
+            "fit_owner_kind": "svg-group"
+          },
+          {
+            "key": "paired-items.text.018",
+            "default": "CTX COMPRESS",
+            "max_chars": 15,
+            "item_scope": "item",
+            "item_group_source": "fixed-slot",
+            "item_index": 0,
+            "fit_box": [
+              149.0,
+              251.0,
+              1653.0,
+              762.0
+            ],
+            "fit_owner_kind": "svg-group"
+          },
+          {
+            "key": "paired-items.text.019",
+            "default": "压缩交接",
+            "max_chars": 6,
+            "item_scope": "item",
+            "item_group_source": "fixed-slot",
+            "item_index": 0,
+            "fit_box": [
+              149.0,
+              251.0,
+              1653.0,
+              762.0
+            ],
+            "fit_owner_kind": "svg-group"
+          },
+          {
+            "key": "paired-items.text.020",
+            "default": "上下文压缩 + 交接文档",
+            "max_chars": 14,
+            "item_scope": "item",
+            "item_group_source": "fixed-slot",
+            "item_index": 0,
+            "fit_box": [
+              149.0,
+              251.0,
+              1653.0,
+              762.0
+            ],
+            "fit_owner_kind": "svg-group"
+          },
+          {
+            "key": "paired-items.text.021",
+            "default": "TRACE",
+            "max_chars": 7,
+            "item_scope": "item",
+            "item_group_source": "fixed-slot",
+            "item_index": 0,
+            "fit_box": [
+              149.0,
+              251.0,
+              1653.0,
+              762.0
+            ],
+            "fit_owner_kind": "svg-group"
+          },
+          {
+            "key": "paired-items.text.022",
+            "default": "全链路",
+            "max_chars": 5,
+            "item_scope": "item",
+            "item_group_source": "fixed-slot",
+            "item_index": 0,
+            "fit_box": [
+              149.0,
+              251.0,
+              1653.0,
+              762.0
+            ],
+            "fit_owner_kind": "svg-group"
+          },
+          {
+            "key": "paired-items.text.023",
+            "default": "全链 Trace + 日志",
+            "max_chars": 8,
+            "item_scope": "item",
+            "item_group_source": "fixed-slot",
+            "item_index": 0,
+            "fit_box": [
+              149.0,
+              251.0,
+              1653.0,
+              762.0
+            ],
+            "fit_owner_kind": "svg-group"
+          }
+        ],
+        "icon": []
+      },
+      "support": {
+        "text": [
+          {
+            "key": "support.text.001",
+            "default": "PPT 标题",
+            "max_chars": 40,
+            "item_scope": "item",
+            "item_group_source": "fixed-slot",
+            "item_index": 0,
+            "fit_box": [
+              0.0,
+              0.0,
+              1920.0,
+              1080.0
+            ],
+            "fit_owner_kind": "slide"
+          },
+          {
+            "key": "support.text.002",
+            "default": "页面标题",
+            "max_chars": 72,
+            "item_scope": "item",
+            "item_group_source": "fixed-slot",
+            "item_index": 0,
+            "fit_box": [
+              0.0,
+              0.0,
+              1920.0,
+              1080.0
+            ],
+            "fit_owner_kind": "slide"
+          }
+        ],
+        "icon": []
+      },
+      "takeaway": {
+        "text": [],
+        "icon": []
+      }
+    }
+  },
+  "seed_sha256": "46e420399a4510c7d2cc446f32d78217bc63468ff70ac833f654013b6d45d361"
+}

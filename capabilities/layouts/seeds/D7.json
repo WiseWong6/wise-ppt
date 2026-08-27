@@ -1,0 +1,102 @@
+{
+  "contract": "wise-ppt-layout-seed@4",
+  "layout_id": "paper-ink.nonrelationship.D7",
+  "display_code": "D7",
+  "page_kind": "nonrelationship",
+  "source": {
+    "path": "references/gallery-paper-ink/ai/frames/layout-d7.html",
+    "sha256": "7c6c3419f883101dbc059819190035d93221a807cf7960208d3c18b7ee456222"
+  },
+  "locked": {
+    "scoped_css": "@scope (.slide[data-layout-id=\"paper-ink.nonrelationship.D7\"]) {\nsvg.scene { position: absolute; inset: 0; z-index: 1; pointer-events: none; }\n\n  /* 下方中轴落版文字块(全部居中) */\n  .kicker {\n    position: absolute; left: 0; right: 0; top: 700px;\n    text-align: center;\n    font-family: var(--mono); font-size: var(--type-meta);\n    letter-spacing: .3em; text-indent: .3em; color: var(--ink-45);\n    z-index: 2;\n  }\n  .title {\n    position: absolute; left: 0; right: 0; top: 742px;\n    text-align: center;\n    font-family: var(--serif); font-weight: var(--wp-weight-regular);\n    font-size: var(--type-display); letter-spacing: .06em; text-indent: .06em;\n    color: var(--ink); z-index: 2;\n  }\n  .title-bar {\n    position: absolute; left: 50%; top: 892px;\n    width: 72px; height: 0; margin-left: -36px;\n    border-top: 2px solid var(--ink);\n    z-index: 2;\n  }\n  .subtitle {\n    position: absolute; left: 0; right: 0; top: 926px;\n    text-align: center;\n    font-family: var(--sans); font-weight: var(--wp-weight-regular);\n    font-size: var(--type-subheading); letter-spacing: .1em; text-indent: .1em;\n    color: var(--ink-70); z-index: 2;\n  }\n}\n",
+    "css_sha256": "b8fac1e7d9cb85388a69c903d581eefa29f31956f8f87ba04ce79a25cedfe662",
+    "stage_html": "<div class=\"stage\" data-block-id=\"gallery-primary\" data-component-id=\"native.paper-ink.scaffold.cover-center.center-lockup\" data-component-source=\"native\" data-content-ref=\"example.d7\" data-renderer-kind=\"typography\" data-template-id=\"D7\">\n<div class=\"doc tl\" data-template-part=\"support\" data-template-slot=\"support\" data-template-slot-kind=\"text\" data-vnext-fit-box=\"0,0,1920,1080\" data-vnext-text-key=\"support.text.001\">PPT 标题<br/>页面标题</div>\n<div class=\"folio\" data-template-part=\"folio\">页码 / 总页数 — BY @歪斯Wise</div>\n<svg class=\"scene\" data-template-part=\"illustration\" data-template-slot=\"illustration\" data-template-slot-kind=\"illustration\" height=\"1080\" viewbox=\"0 0 1920 1080\" width=\"1920\">\n<g id=\"draw\"><line opacity=\"0.22\" stroke=\"var(--ink)\" stroke-dasharray=\"4 8\" stroke-width=\"0.65\" x1=\"960\" x2=\"960\" y1=\"112\" y2=\"660\"></line><circle cx=\"960\" cy=\"286\" fill=\"var(--paper)\" opacity=\"0.68\" r=\"7\" stroke=\"var(--ink)\" stroke-width=\"0.9\"></circle><circle cx=\"960\" cy=\"286\" fill=\"var(--ink)\" opacity=\"0.72\" r=\"2.2\"></circle><circle cx=\"960\" cy=\"424\" fill=\"var(--paper)\" opacity=\"0.68\" r=\"7\" stroke=\"var(--ink)\" stroke-width=\"0.9\"></circle><circle cx=\"960\" cy=\"424\" fill=\"var(--ink)\" opacity=\"0.72\" r=\"2.2\"></circle><circle cx=\"960\" cy=\"558\" fill=\"var(--paper)\" opacity=\"0.68\" r=\"7\" stroke=\"var(--ink)\" stroke-width=\"0.9\"></circle><circle cx=\"960\" cy=\"558\" fill=\"var(--ink)\" opacity=\"0.72\" r=\"2.2\"></circle><path d=\"M 700 210 L 960 140 L 1220 210 L 960 280 Z\" fill=\"rgba(255,255,255,.08)\" opacity=\"0.68\" stroke=\"var(--ink)\" stroke-width=\"1.15\"></path><path d=\"M 736 210 L 960 150 L 1184 210 L 960 270 Z\" fill=\"none\" opacity=\"0.28\" stroke=\"var(--ink)\" stroke-dasharray=\"4 6\" stroke-width=\"0.55\"></path><line opacity=\"0.46\" stroke=\"var(--ink)\" stroke-width=\"0.8\" x1=\"1010\" x2=\"1078\" y1=\"210\" y2=\"210\"></line><circle cx=\"1078\" cy=\"210\" fill=\"var(--paper)\" opacity=\"0.66\" r=\"6\" stroke=\"var(--ink)\" stroke-width=\"0.8\"></circle><line opacity=\"0.46\" stroke=\"var(--ink)\" stroke-width=\"0.8\" x1=\"995.3553390593274\" x2=\"1043.4386001800126\" y1=\"234.0416305603426\" y2=\"252.42640687119285\"></line><circle cx=\"1043.4386001800126\" cy=\"252.42640687119285\" fill=\"var(--paper)\" opacity=\"0.66\" r=\"4.5\" stroke=\"var(--ink)\" stroke-width=\"0.8\"></circle><line opacity=\"0.46\" stroke=\"var(--ink)\" stroke-width=\"0.8\" x1=\"960\" x2=\"960\" y1=\"244\" y2=\"270\"></line><circle cx=\"960\" cy=\"270\" fill=\"var(--paper)\" opacity=\"0.66\" r=\"6\" stroke=\"var(--ink)\" stroke-width=\"0.8\"></circle><line opacity=\"0.46\" stroke=\"var(--ink)\" stroke-width=\"0.8\" x1=\"924.6446609406727\" x2=\"876.5613998199874\" y1=\"234.0416305603426\" y2=\"252.42640687119285\"></line><circle cx=\"876.5613998199874\" cy=\"252.42640687119285\" fill=\"var(--paper)\" opacity=\"0.66\" r=\"4.5\" stroke=\"var(--ink)\" stroke-width=\"0.8\"></circle><line opacity=\"0.46\" stroke=\"var(--ink)\" stroke-width=\"0.8\" x1=\"910\" x2=\"842\" y1=\"210\" y2=\"210\"></line><circle cx=\"842\" cy=\"210\" fill=\"var(--paper)\" opacity=\"0.66\" r=\"6\" stroke=\"var(--ink)\" stroke-width=\"0.8\"></circle><line opacity=\"0.46\" stroke=\"var(--ink)\" stroke-width=\"0.8\" x1=\"924.6446609406726\" x2=\"876.5613998199874\" y1=\"185.9583694396574\" y2=\"167.57359312880715\"></line><circle cx=\"876.5613998199874\" cy=\"167.57359312880715\" fill=\"var(--paper)\" opacity=\"0.66\" r=\"4.5\" stroke=\"var(--ink)\" stroke-width=\"0.8\"></circle><line opacity=\"0.46\" stroke=\"var(--ink)\" stroke-width=\"0.8\" x1=\"960\" x2=\"960\" y1=\"176\" y2=\"150\"></line><circle cx=\"960\" cy=\"150\" fill=\"var(--paper)\" opacity=\"0.66\" r=\"6\" stroke=\"var(--ink)\" stroke-width=\"0.8\"></circle><line opacity=\"0.46\" stroke=\"var(--ink)\" stroke-width=\"0.8\" x1=\"995.3553390593273\" x2=\"1043.4386001800126\" y1=\"185.9583694396574\" y2=\"167.57359312880715\"></line><circle cx=\"1043.4386001800126\" cy=\"167.57359312880715\" fill=\"var(--paper)\" opacity=\"0.66\" r=\"4.5\" stroke=\"var(--ink)\" stroke-width=\"0.8\"></circle><ellipse cx=\"960\" cy=\"210\" fill=\"var(--paper)\" opacity=\"0.78\" rx=\"58\" ry=\"42\" stroke=\"var(--ink)\" stroke-width=\"1.2\"></ellipse><ellipse cx=\"960\" cy=\"210\" fill=\"none\" opacity=\"0.52\" rx=\"34\" ry=\"24\" stroke=\"var(--ink)\" stroke-width=\"0.8\"></ellipse><circle cx=\"960\" cy=\"210\" fill=\"var(--ink)\" opacity=\"0.76\" r=\"7\"></circle><rect fill=\"none\" height=\"15\" opacity=\"0.5\" rx=\"3\" stroke=\"var(--ink)\" stroke-width=\"0.65\" width=\"66\" x=\"772\" y=\"192\"></rect><line opacity=\"0.32\" stroke=\"var(--ink)\" stroke-width=\"0.55\" x1=\"780\" x2=\"822\" y1=\"199.5\" y2=\"199.5\"></line><rect fill=\"none\" height=\"15\" opacity=\"0.36\" rx=\"3\" stroke=\"var(--ink)\" stroke-width=\"0.65\" width=\"66\" x=\"1082\" y=\"192\"></rect><line opacity=\"0.32\" stroke=\"var(--ink)\" stroke-width=\"0.55\" x1=\"1090\" x2=\"1132\" y1=\"199.5\" y2=\"199.5\"></line><rect fill=\"none\" height=\"15\" opacity=\"0.5\" rx=\"3\" stroke=\"var(--ink)\" stroke-width=\"0.65\" width=\"66\" x=\"772\" y=\"222\"></rect><line opacity=\"0.32\" stroke=\"var(--ink)\" stroke-width=\"0.55\" x1=\"780\" x2=\"822\" y1=\"229.5\" y2=\"229.5\"></line><rect fill=\"none\" height=\"15\" opacity=\"0.36\" rx=\"3\" stroke=\"var(--ink)\" stroke-width=\"0.65\" width=\"66\" x=\"1082\" y=\"222\"></rect><line opacity=\"0.32\" stroke=\"var(--ink)\" stroke-width=\"0.55\" x1=\"1090\" x2=\"1132\" y1=\"229.5\" y2=\"229.5\"></line><line opacity=\"0.32\" stroke=\"var(--ink)\" stroke-width=\"0.7\" x1=\"1222\" x2=\"1360\" y1=\"210\" y2=\"210\"></line><circle cx=\"1380\" cy=\"210\" fill=\"var(--paper)\" opacity=\"0.5\" r=\"4.5\" stroke=\"var(--ink)\" stroke-width=\"0.7\"></circle><text fill=\"var(--ink)\" font-family=\"var(--mono)\" font-size=\"12\" letter-spacing=\"3.2\" opacity=\"0.48\" x=\"1400\" y=\"214\">MODEL CORE / 01</text><path d=\"M 650 346 L 960 292 L 1270 346 L 960 400 Z\" fill=\"rgba(255,255,255,.1)\" opacity=\"0.72\" stroke=\"var(--ink)\" stroke-width=\"1.2\"></path><path d=\"M 650 346 L 960 400 L 960 426 L 650 372 Z\" fill=\"none\" opacity=\"0.42\" stroke=\"var(--ink)\" stroke-width=\"0.8\"></path><path d=\"M 960 400 L 1270 346 L 1270 372 L 960 426 Z\" fill=\"none\" opacity=\"0.42\" stroke=\"var(--ink)\" stroke-width=\"0.8\"></path><line opacity=\"0.56\" stroke=\"var(--ink)\" stroke-width=\"1\" x1=\"748\" x2=\"1172\" y1=\"346\" y2=\"346\"></line><circle cx=\"748\" cy=\"346\" fill=\"var(--paper)\" opacity=\"0.74\" r=\"11\" stroke=\"var(--ink)\" stroke-width=\"0.9\"></circle><circle cx=\"748\" cy=\"346\" fill=\"var(--ink)\" opacity=\"0.7\" r=\"3\"></circle><path d=\"M 766 346 L 830 346 M 822 340 L 830 346 L 822 352\" fill=\"none\" opacity=\"0.44\" stroke=\"var(--ink)\" stroke-width=\"0.75\"></path><circle cx=\"854\" cy=\"346\" fill=\"var(--paper)\" opacity=\"0.74\" r=\"11\" stroke=\"var(--ink)\" stroke-width=\"0.9\"></circle><circle cx=\"854\" cy=\"346\" fill=\"var(--ink)\" opacity=\"0.7\" r=\"3\"></circle><path d=\"M 872 346 L 936 346 M 928 340 L 936 346 L 928 352\" fill=\"none\" opacity=\"0.44\" stroke=\"var(--ink)\" stroke-width=\"0.75\"></path><circle cx=\"960\" cy=\"346\" fill=\"var(--paper)\" opacity=\"0.74\" r=\"16\" stroke=\"var(--ink)\" stroke-width=\"0.9\"></circle><circle cx=\"960\" cy=\"346\" fill=\"var(--ink)\" opacity=\"0.7\" r=\"5\"></circle><path d=\"M 978 346 L 1042 346 M 1034 340 L 1042 346 L 1034 352\" fill=\"none\" opacity=\"0.44\" stroke=\"var(--ink)\" stroke-width=\"0.75\"></path><circle cx=\"1066\" cy=\"346\" fill=\"var(--paper)\" opacity=\"0.74\" r=\"11\" stroke=\"var(--ink)\" stroke-width=\"0.9\"></circle><circle cx=\"1066\" cy=\"346\" fill=\"var(--ink)\" opacity=\"0.7\" r=\"3\"></circle><path d=\"M 1084 346 L 1148 346 M 1140 340 L 1148 346 L 1140 352\" fill=\"none\" opacity=\"0.44\" stroke=\"var(--ink)\" stroke-width=\"0.75\"></path><circle cx=\"1172\" cy=\"346\" fill=\"var(--paper)\" opacity=\"0.74\" r=\"11\" stroke=\"var(--ink)\" stroke-width=\"0.9\"></circle><circle cx=\"1172\" cy=\"346\" fill=\"var(--ink)\" opacity=\"0.7\" r=\"3\"></circle><line opacity=\"0.32\" stroke=\"var(--ink)\" stroke-width=\"0.7\" x1=\"648\" x2=\"508\" y1=\"346\" y2=\"346\"></line><circle cx=\"488\" cy=\"346\" fill=\"var(--paper)\" opacity=\"0.5\" r=\"4.5\" stroke=\"var(--ink)\" stroke-width=\"0.7\"></circle><text fill=\"var(--ink)\" font-family=\"var(--mono)\" font-size=\"12\" letter-spacing=\"3.2\" opacity=\"0.48\" x=\"300\" y=\"350\">ORCHESTRATION / 02</text><path d=\"M 620 474 L 960 416 L 1300 474 L 960 532 Z\" fill=\"rgba(255,255,255,.08)\" opacity=\"0.7\" stroke=\"var(--ink)\" stroke-width=\"1.2\"></path><path d=\"M 620 474 L 960 532 L 960 558 L 620 500 Z\" fill=\"none\" opacity=\"0.4\" stroke=\"var(--ink)\" stroke-width=\"0.8\"></path><path d=\"M 960 532 L 1300 474 L 1300 500 L 960 558 Z\" fill=\"none\" opacity=\"0.4\" stroke=\"var(--ink)\" stroke-width=\"0.8\"></path><path d=\"M 710 474 L 780 456 L 850 474 L 780 492 Z\" fill=\"var(--paper)\" opacity=\"0.68\" stroke=\"var(--ink)\" stroke-width=\"0.85\"></path><path d=\"M 752 466 Q 780 458 808 466\" fill=\"none\" opacity=\"0.45\" stroke=\"var(--ink)\" stroke-width=\"0.65\"></path><path d=\"M 752 473 Q 780 465 808 473\" fill=\"none\" opacity=\"0.45\" stroke=\"var(--ink)\" stroke-width=\"0.65\"></path><path d=\"M 752 480 Q 780 472 808 480\" fill=\"none\" opacity=\"0.45\" stroke=\"var(--ink)\" stroke-width=\"0.65\"></path><path d=\"M 890 474 L 960 456 L 1030 474 L 960 492 Z\" fill=\"var(--paper)\" opacity=\"0.68\" stroke=\"var(--ink)\" stroke-width=\"0.85\"></path><circle cx=\"960\" cy=\"474\" fill=\"none\" opacity=\"0.55\" r=\"12\" stroke=\"var(--ink)\" stroke-width=\"0.75\"></circle><circle cx=\"960\" cy=\"474\" fill=\"var(--ink)\" opacity=\"0.68\" r=\"3.5\"></circle><line opacity=\"0.42\" stroke=\"var(--ink)\" stroke-width=\"0.7\" x1=\"972\" x2=\"984\" y1=\"474\" y2=\"474\"></line><line opacity=\"0.42\" stroke=\"var(--ink)\" stroke-width=\"0.7\" x1=\"960\" x2=\"960\" y1=\"482\" y2=\"489\"></line><line opacity=\"0.42\" stroke=\"var(--ink)\" stroke-width=\"0.7\" x1=\"948\" x2=\"936\" y1=\"474\" y2=\"474\"></line><line opacity=\"0.42\" stroke=\"var(--ink)\" stroke-width=\"0.7\" x1=\"960\" x2=\"960\" y1=\"466\" y2=\"459\"></line><path d=\"M 1070 474 L 1140 456 L 1210 474 L 1140 492 Z\" fill=\"var(--paper)\" opacity=\"0.68\" stroke=\"var(--ink)\" stroke-width=\"0.85\"></path><line opacity=\"0.36\" stroke=\"var(--ink)\" stroke-width=\"3\" x1=\"1112\" x2=\"1112\" y1=\"484\" y2=\"480\"></line><line opacity=\"0.44\" stroke=\"var(--ink)\" stroke-width=\"3\" x1=\"1130\" x2=\"1130\" y1=\"484\" y2=\"472\"></line><line opacity=\"0.52\" stroke=\"var(--ink)\" stroke-width=\"3\" x1=\"1148\" x2=\"1148\" y1=\"484\" y2=\"464\"></line><line opacity=\"0.6\" stroke=\"var(--ink)\" stroke-width=\"3\" x1=\"1166\" x2=\"1166\" y1=\"484\" y2=\"456\"></line><line opacity=\"0.32\" stroke=\"var(--ink)\" stroke-width=\"0.7\" x1=\"1302\" x2=\"1402\" y1=\"474\" y2=\"474\"></line><circle cx=\"1422\" cy=\"474\" fill=\"var(--paper)\" opacity=\"0.5\" r=\"4.5\" stroke=\"var(--ink)\" stroke-width=\"0.7\"></circle><text fill=\"var(--ink)\" font-family=\"var(--mono)\" font-size=\"12\" letter-spacing=\"3.2\" opacity=\"0.48\" x=\"1442\" y=\"478\">MEMORY + TOOLS / 03</text><path d=\"M 560 584 L 960 520 L 1360 584 L 960 650 Z\" fill=\"rgba(255,255,255,.12)\" opacity=\"0.74\" stroke=\"var(--ink)\" stroke-width=\"1.25\"></path><path d=\"M 560 584 L 960 650 L 960 680 L 560 614 Z\" fill=\"none\" opacity=\"0.46\" stroke=\"var(--ink)\" stroke-width=\"0.9\"></path><path d=\"M 960 650 L 1360 584 L 1360 614 L 960 680 Z\" fill=\"none\" opacity=\"0.46\" stroke=\"var(--ink)\" stroke-width=\"0.9\"></path><polyline fill=\"none\" opacity=\"0.58\" points=\"700,590 778,574 850,588 930,558 1004,570 1080,548 1160,566 1238,546\" stroke=\"var(--ink)\" stroke-width=\"1.05\"></polyline><circle cx=\"700\" cy=\"590\" fill=\"var(--paper)\" opacity=\"0.68\" r=\"3.2\" stroke=\"var(--ink)\" stroke-width=\"0.7\"></circle><circle cx=\"778\" cy=\"574\" fill=\"var(--paper)\" opacity=\"0.68\" r=\"3.2\" stroke=\"var(--ink)\" stroke-width=\"0.7\"></circle><circle cx=\"850\" cy=\"588\" fill=\"var(--paper)\" opacity=\"0.68\" r=\"3.2\" stroke=\"var(--ink)\" stroke-width=\"0.7\"></circle><circle cx=\"930\" cy=\"558\" fill=\"var(--paper)\" opacity=\"0.68\" r=\"3.2\" stroke=\"var(--ink)\" stroke-width=\"0.7\"></circle><circle cx=\"1004\" cy=\"570\" fill=\"var(--paper)\" opacity=\"0.68\" r=\"3.2\" stroke=\"var(--ink)\" stroke-width=\"0.7\"></circle><circle cx=\"1080\" cy=\"548\" fill=\"var(--paper)\" opacity=\"0.68\" r=\"3.2\" stroke=\"var(--ink)\" stroke-width=\"0.7\"></circle><circle cx=\"1160\" cy=\"566\" fill=\"var(--paper)\" opacity=\"0.68\" r=\"3.2\" stroke=\"var(--ink)\" stroke-width=\"0.7\"></circle><circle cx=\"1238\" cy=\"546\" fill=\"var(--paper)\" opacity=\"0.68\" r=\"3.2\" stroke=\"var(--ink)\" stroke-width=\"0.7\"></circle><line opacity=\"0.32\" stroke=\"var(--ink)\" stroke-width=\"0.7\" x1=\"558\" x2=\"458\" y1=\"584\" y2=\"584\"></line><circle cx=\"438\" cy=\"584\" fill=\"var(--paper)\" opacity=\"0.5\" r=\"4.5\" stroke=\"var(--ink)\" stroke-width=\"0.7\"></circle><text fill=\"var(--ink)\" font-family=\"var(--mono)\" font-size=\"12\" letter-spacing=\"3.2\" opacity=\"0.48\" x=\"276\" y=\"588\">EVALUATION / 04</text><rect fill=\"var(--paper)\" height=\"68\" opacity=\"0.58\" rx=\"10\" stroke=\"var(--ink)\" stroke-width=\"0.85\" width=\"146\" x=\"390\" y=\"174\"></rect><circle cx=\"416\" cy=\"208\" fill=\"none\" opacity=\"0.5\" r=\"8\" stroke=\"var(--ink)\" stroke-width=\"0.75\"></circle><circle cx=\"416\" cy=\"208\" fill=\"var(--ink)\" opacity=\"0.68\" r=\"2.2\"></circle><line opacity=\"0.36\" stroke=\"var(--ink)\" stroke-width=\"0.65\" x1=\"438\" x2=\"510\" y1=\"200\" y2=\"200\"></line><line opacity=\"0.28\" stroke=\"var(--ink)\" stroke-width=\"0.65\" x1=\"438\" x2=\"492\" y1=\"216\" y2=\"216\"></line><path d=\"M 536 208 C 610 208 650 210 700 210\" fill=\"none\" opacity=\"0.34\" stroke=\"var(--ink)\" stroke-dasharray=\"4 5\" stroke-width=\"0.75\"></path><rect fill=\"var(--paper)\" height=\"68\" opacity=\"0.58\" rx=\"10\" stroke=\"var(--ink)\" stroke-width=\"0.85\" width=\"146\" x=\"1390\" y=\"266\"></rect><circle cx=\"1416\" cy=\"300\" fill=\"none\" opacity=\"0.5\" r=\"8\" stroke=\"var(--ink)\" stroke-width=\"0.75\"></circle><circle cx=\"1416\" cy=\"300\" fill=\"var(--ink)\" opacity=\"0.68\" r=\"2.2\"></circle><line opacity=\"0.36\" stroke=\"var(--ink)\" stroke-width=\"0.65\" x1=\"1438\" x2=\"1510\" y1=\"292\" y2=\"292\"></line><line opacity=\"0.28\" stroke=\"var(--ink)\" stroke-width=\"0.65\" x1=\"1438\" x2=\"1492\" y1=\"308\" y2=\"308\"></line><path d=\"M 1220 210 C 1322 210 1336 300 1390 300\" fill=\"none\" opacity=\"0.34\" stroke=\"var(--ink)\" stroke-dasharray=\"4 5\" stroke-width=\"0.75\"></path></g>\n</svg>\n<div class=\"kicker\" data-template-part=\"kicker\" data-template-slot=\"kicker\" data-template-slot-kind=\"text\" data-vnext-fit-box=\"0,0,1920,1080\" data-vnext-text-key=\"kicker.text.001\">AGENT ENGINEERING — 2026 SUMMER</div>\n<div class=\"title\" data-template-part=\"primary\" data-template-slot=\"primary\" data-template-slot-kind=\"text\" data-vnext-fit-box=\"0,0,1920,1080\" data-vnext-text-key=\"primary.text.001\">AI 工程化</div>\n<div class=\"title-bar\" data-template-part=\"title-bar\"></div>\n<div class=\"subtitle\" data-template-part=\"subtitle\" data-template-slot=\"subtitle\" data-template-slot-kind=\"text\" data-vnext-fit-box=\"0,0,1920,1080\" data-vnext-text-key=\"subtitle.text.001\">从模型到产品的工程鸿沟 · Agent 实战第一课</div>\n</div>",
+    "stage_structure_sha256": "9892e02cac3dc2597cf644d9722688751953f79dc7c0d1340d5cdf8b60bf608e"
+  },
+  "bindings": {
+    "primary_slot": null,
+    "slots": {
+      "support": {
+        "text": [
+          {
+            "key": "support.text.001",
+            "default": "PPT 标题\n页面标题",
+            "max_chars": 96,
+            "item_scope": "item",
+            "item_group_source": "fixed-slot",
+            "item_index": 0,
+            "fit_box": [
+              0.0,
+              0.0,
+              1920.0,
+              1080.0
+            ],
+            "fit_owner_kind": "slide"
+          }
+        ],
+        "icon": []
+      },
+      "kicker": {
+        "text": [
+          {
+            "key": "kicker.text.001",
+            "default": "AGENT ENGINEERING — 2026 SUMMER",
+            "max_chars": 37,
+            "item_scope": "item",
+            "item_group_source": "fixed-slot",
+            "item_index": 0,
+            "fit_box": [
+              0.0,
+              0.0,
+              1920.0,
+              1080.0
+            ],
+            "fit_owner_kind": "slide"
+          }
+        ],
+        "icon": []
+      },
+      "primary": {
+        "text": [
+          {
+            "key": "primary.text.001",
+            "default": "AI 工程化",
+            "max_chars": 7,
+            "item_scope": "item",
+            "item_group_source": "fixed-slot",
+            "item_index": 0,
+            "fit_box": [
+              0.0,
+              0.0,
+              1920.0,
+              1080.0
+            ],
+            "fit_owner_kind": "slide"
+          }
+        ],
+        "icon": []
+      },
+      "subtitle": {
+        "text": [
+          {
+            "key": "subtitle.text.001",
+            "default": "从模型到产品的工程鸿沟 · Agent 实战第一课",
+            "max_chars": 30,
+            "item_scope": "item",
+            "item_group_source": "fixed-slot",
+            "item_index": 0,
+            "fit_box": [
+              0.0,
+              0.0,
+              1920.0,
+              1080.0
+            ],
+            "fit_owner_kind": "slide"
+          }
+        ],
+        "icon": []
+      }
+    }
+  },
+  "seed_sha256": "5ce507fb6b4111f3d4f87fe36c328aa265d94eed5d628e402b91debc54367356"
+}

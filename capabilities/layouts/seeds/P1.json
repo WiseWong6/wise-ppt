@@ -1,0 +1,438 @@
+{
+  "contract": "wise-ppt-layout-seed@4",
+  "layout_id": "paper-ink.relationship.P1",
+  "display_code": "P1",
+  "page_kind": "relationship",
+  "source": {
+    "path": "references/gallery-paper-ink/ai/frames/layout-p1.html",
+    "sha256": "548a74fcd262e7e9431b9ccd58e63ef287c4cd57a36c21e627fac31a33e49dcc"
+  },
+  "locked": {
+    "scoped_css": "@scope (.slide[data-layout-id=\"paper-ink.relationship.P1\"]) {\nsvg.scene { position: absolute; inset: 0; z-index: 1; }\n  .caption {\n    position: absolute; left: 0; right: 0; bottom: 118px;\n    text-align: center;\n    font-family: var(--sans); font-weight: 400;\n    font-size: var(--type-caption); letter-spacing: .04em;\n    color: var(--ink);\n    z-index: 5;\n  }\n}\n",
+    "css_sha256": "1978266f471510d0afb7d186d30f025a054e81d2a6fd26d23257eaa57acd5938",
+    "stage_html": "<div class=\"stage\" data-block-id=\"gallery-primary\" data-component-id=\"native.paper-ink.flow.blackbox-annotation.blackbox-flow\" data-component-source=\"native\" data-content-ref=\"example.p1\" data-renderer-kind=\"svg\">\n<div class=\"doc tl\"><span class=\"vnext-text-node\" data-vnext-fit-box=\"0,0,1920,1080\" data-vnext-text-key=\"support.text.001\">PPT 标题</span><br/><span class=\"vnext-text-node\" data-vnext-fit-box=\"0,0,1920,1080\" data-vnext-text-key=\"support.text.002\">页面标题</span></div>\n<div class=\"folio\">页码 / 总页数 — BY @歪斯Wise</div>\n<svg class=\"scene\" height=\"1080\" viewbox=\"0 0 1920 1080\" width=\"1920\">\n<defs>\n<pattern height=\"8\" id=\"p1-hatch\" patterntransform=\"rotate(45)\" patternunits=\"userSpaceOnUse\" width=\"8\">\n<line opacity=\".3\" stroke=\"var(--ink)\" stroke-width=\".7\" x1=\"0\" x2=\"0\" y1=\"0\" y2=\"8\"></line>\n</pattern>\n<marker id=\"p1-darrow\" markerheight=\"8\" markerwidth=\"8\" orient=\"auto-start-reverse\" refx=\"9\" refy=\"5\" viewbox=\"0 0 10 10\">\n<path d=\"M 0 0 L 10 5 L 0 10\" fill=\"none\" stroke=\"var(--ink)\" stroke-width=\"1.4\"></path>\n</marker>\n</defs>\n<g id=\"draw\"><g transform=\"translate(0 -23)\"><text data-vnext-fit-box=\"0,0,1920,1080\" data-vnext-text-key=\"blackbox-flow.text.001\" fill=\"color-mix(in srgb, var(--ink) 40%, transparent)\" font-family=\"var(--mono)\" font-size=\"var(--type-label)\" letter-spacing=\"5\" text-anchor=\"middle\" x=\"960\" y=\"224\">THE PROCESS IN BETWEEN IS INVISIBLE</text><line opacity=\"0.3\" stroke=\"var(--ink)\" stroke-width=\"0.6\" x1=\"790\" x2=\"1130\" y1=\"240\" y2=\"240\"></line><rect fill=\"var(--paper-panel)\" height=\"128\" rx=\"16\" stroke=\"var(--ink-80)\" stroke-width=\"1.3\" width=\"280\" x=\"180\" y=\"378\"></rect><text data-vnext-fit-box=\"180,355,460,483\" data-vnext-text-key=\"blackbox-flow.text.002\" fill=\"var(--ink-45)\" font-family=\"var(--mono)\" font-size=\"var(--type-label)\" letter-spacing=\"3\" text-anchor=\"middle\" x=\"320\" y=\"434\">INPUT</text><text data-vnext-fit-box=\"180,355,460,483\" data-vnext-text-key=\"blackbox-flow.text.003\" fill=\"var(--ink)\" font-family=\"var(--sans)\" font-size=\"var(--type-subheading)\" font-weight=\"400\" text-anchor=\"middle\" x=\"320\" y=\"476\">同一输入</text><path d=\"M 460 428 C 520 384 552 378 600 390\" fill=\"none\" opacity=\"0.6\" stroke=\"var(--ink)\" stroke-dasharray=\"6 6\" stroke-width=\"1.1\"></path><path d=\"M 460 456 C 520 500 552 506 600 494\" fill=\"none\" opacity=\"0.6\" stroke=\"var(--ink)\" stroke-dasharray=\"6 6\" stroke-width=\"1.1\"></path><rect fill=\"url(#p1-hatch)\" height=\"270\" stroke=\"var(--ink-80)\" stroke-width=\"1.4\" width=\"660\" x=\"600\" y=\"312\"></rect><rect fill=\"none\" height=\"254\" opacity=\"0.3\" stroke=\"var(--ink)\" stroke-width=\"0.6\" width=\"644\" x=\"608\" y=\"320\"></rect><rect fill=\"none\" height=\"96\" opacity=\"0.75\" rx=\"12\" stroke=\"var(--ink)\" stroke-dasharray=\"7 6\" stroke-width=\"1.1\" width=\"150\" x=\"668\" y=\"394\"></rect><text data-vnext-fit-box=\"668,371,818,467\" data-vnext-text-key=\"blackbox-flow.text.004\" fill=\"var(--ink-55)\" font-family=\"var(--mono)\" font-size=\"var(--type-heading)\" text-anchor=\"middle\" x=\"743\" y=\"436\">?</text><text data-vnext-fit-box=\"668,371,818,467\" data-vnext-text-key=\"blackbox-flow.text.005\" fill=\"var(--ink-70)\" font-family=\"var(--sans)\" font-size=\"var(--type-body-small)\" font-weight=\"300\" text-anchor=\"middle\" x=\"743\" y=\"472\">选了哪个 Skill？</text><line marker-end=\"url(#p1-darrow)\" opacity=\"0.6\" stroke=\"var(--ink)\" stroke-dasharray=\"5 6\" stroke-width=\"1.1\" x1=\"824\" x2=\"847\" y1=\"442\" y2=\"442\"></line><rect fill=\"none\" height=\"96\" opacity=\"0.75\" rx=\"12\" stroke=\"var(--ink)\" stroke-dasharray=\"7 6\" stroke-width=\"1.1\" width=\"150\" x=\"855\" y=\"394\"></rect><text data-vnext-fit-box=\"855,371,1005,467\" data-vnext-text-key=\"blackbox-flow.text.006\" fill=\"var(--ink-55)\" font-family=\"var(--mono)\" font-size=\"var(--type-heading)\" text-anchor=\"middle\" x=\"930\" y=\"436\">?</text><text data-vnext-fit-box=\"855,371,1005,467\" data-vnext-text-key=\"blackbox-flow.text.007\" fill=\"var(--ink-70)\" font-family=\"var(--sans)\" font-size=\"var(--type-body-small)\" font-weight=\"300\" text-anchor=\"middle\" x=\"930\" y=\"472\">调了什么工具？</text><line marker-end=\"url(#p1-darrow)\" opacity=\"0.6\" stroke=\"var(--ink)\" stroke-dasharray=\"5 6\" stroke-width=\"1.1\" x1=\"1011\" x2=\"1034\" y1=\"442\" y2=\"442\"></line><rect fill=\"none\" height=\"96\" opacity=\"0.75\" rx=\"12\" stroke=\"var(--ink)\" stroke-dasharray=\"7 6\" stroke-width=\"1.1\" width=\"150\" x=\"1042\" y=\"394\"></rect><text data-vnext-fit-box=\"1042,371,1192,467\" data-vnext-text-key=\"blackbox-flow.text.008\" fill=\"var(--ink-55)\" font-family=\"var(--mono)\" font-size=\"var(--type-heading)\" text-anchor=\"middle\" x=\"1117\" y=\"436\">?</text><text data-vnext-fit-box=\"1042,371,1192,467\" data-vnext-text-key=\"blackbox-flow.text.009\" fill=\"var(--ink-70)\" font-family=\"var(--sans)\" font-size=\"var(--type-body-small)\" font-weight=\"300\" text-anchor=\"middle\" x=\"1117\" y=\"472\">校验跑了吗？</text><line marker-end=\"url(#p1-darrow)\" opacity=\"0.6\" stroke=\"var(--ink)\" stroke-dasharray=\"5 6\" stroke-width=\"1.1\" x1=\"1270\" x2=\"1354\" y1=\"442\" y2=\"442\"></line><polyline fill=\"none\" points=\"660,538 700,532 740,544 800,524 860,552 940,512 1030,564 1140,496\" stroke=\"var(--ink-70)\" stroke-width=\"0.9\"></polyline><rect fill=\"var(--paper-panel)\" height=\"128\" rx=\"16\" stroke=\"var(--ink-80)\" stroke-width=\"1.3\" width=\"330\" x=\"1370\" y=\"378\"></rect><text data-vnext-fit-box=\"1370,355,1700,483\" data-vnext-text-key=\"blackbox-flow.text.010\" fill=\"var(--ink-45)\" font-family=\"var(--mono)\" font-size=\"var(--type-label)\" letter-spacing=\"3\" text-anchor=\"middle\" x=\"1535\" y=\"434\">OUTPUT</text><text data-vnext-fit-box=\"1370,355,1700,483\" data-vnext-text-key=\"blackbox-flow.text.011\" fill=\"var(--ink)\" font-family=\"var(--sans)\" font-size=\"var(--type-subheading)\" font-weight=\"400\" text-anchor=\"middle\" x=\"1535\" y=\"476\">看似正确的回答</text><path d=\"M 1648 458 L 1659 469 L 1681 443\" fill=\"none\" stroke=\"var(--ink)\" stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"2.5\"></path><rect fill=\"var(--paper)\" height=\"13\" width=\"15\" x=\"1652\" y=\"454\"></rect><line stroke=\"var(--ink)\" stroke-width=\"1.2\" x1=\"1655\" x2=\"1664\" y1=\"456\" y2=\"465\"></line><line stroke=\"var(--ink)\" stroke-width=\"1.2\" x1=\"1664\" x2=\"1655\" y1=\"456\" y2=\"465\"></line><line opacity=\"0.45\" stroke=\"var(--ink)\" stroke-dasharray=\"3 5\" stroke-width=\"0.7\" x1=\"520\" x2=\"200\" y1=\"488\" y2=\"711\"></line><circle cx=\"360\" cy=\"599.5\" fill=\"var(--ink)\" opacity=\"0.55\" r=\"2.4\"></circle><text data-vnext-fit-box=\"180,189,1704,827\" data-vnext-text-key=\"blackbox-flow.text.012\" fill=\"var(--ink-45)\" font-family=\"var(--mono)\" font-size=\"var(--type-label)\" letter-spacing=\"2\" x=\"190\" y=\"743\">01 · NON-DETERMINISM</text><text data-vnext-fit-box=\"180,189,1704,827\" data-vnext-text-key=\"blackbox-flow.text.013\" fill=\"var(--ink)\" font-family=\"var(--sans)\" font-size=\"var(--type-body)\" font-weight=\"400\" x=\"190\" y=\"781\">非确定性</text><text data-vnext-fit-box=\"180,189,1704,827\" data-vnext-text-key=\"blackbox-flow.text.014\" fill=\"var(--ink-70)\" font-family=\"var(--sans)\" font-size=\"var(--type-body-small)\" font-weight=\"300\" x=\"190\" y=\"815\">同样输入，不保证同样输出；</text><text data-vnext-fit-box=\"180,189,1704,827\" data-vnext-text-key=\"blackbox-flow.text.015\" fill=\"var(--ink-70)\" font-family=\"var(--sans)\" font-size=\"var(--type-body-small)\" font-weight=\"300\" x=\"190\" y=\"845\">一次跑通，只证明“这次可以”。</text><line opacity=\"0.45\" stroke=\"var(--ink)\" stroke-dasharray=\"3 5\" stroke-width=\"0.7\" x1=\"800\" x2=\"710\" y1=\"584\" y2=\"711\"></line><circle cx=\"755\" cy=\"647.5\" fill=\"var(--ink)\" opacity=\"0.55\" r=\"2.4\"></circle><text data-vnext-fit-box=\"180,189,1704,827\" data-vnext-text-key=\"blackbox-flow.text.016\" fill=\"var(--ink-45)\" font-family=\"var(--mono)\" font-size=\"var(--type-label)\" letter-spacing=\"2\" x=\"700\" y=\"743\">02 · PROCESS BLACK-BOX</text><text data-vnext-fit-box=\"180,189,1704,827\" data-vnext-text-key=\"blackbox-flow.text.017\" fill=\"var(--ink)\" font-family=\"var(--sans)\" font-size=\"var(--type-body)\" font-weight=\"400\" x=\"700\" y=\"781\">过程黑盒</text><text data-vnext-fit-box=\"180,189,1704,827\" data-vnext-text-key=\"blackbox-flow.text.018\" fill=\"var(--ink-70)\" font-family=\"var(--sans)\" font-size=\"var(--type-body-small)\" font-weight=\"300\" x=\"700\" y=\"815\">最终回复看似正确，仍可能选错 Skill、</text><text data-vnext-fit-box=\"180,189,1704,827\" data-vnext-text-key=\"blackbox-flow.text.019\" fill=\"var(--ink-70)\" font-family=\"var(--sans)\" font-size=\"var(--type-body-small)\" font-weight=\"300\" x=\"700\" y=\"845\">跳过校验，或依赖偶然路径。</text><line opacity=\"0.45\" stroke=\"var(--ink)\" stroke-dasharray=\"3 5\" stroke-width=\"0.7\" x1=\"1030\" x2=\"1090\" y1=\"590\" y2=\"711\"></line><circle cx=\"1060\" cy=\"650.5\" fill=\"var(--ink)\" opacity=\"0.55\" r=\"2.4\"></circle><text data-vnext-fit-box=\"180,189,1704,827\" data-vnext-text-key=\"blackbox-flow.text.020\" fill=\"var(--ink-45)\" font-family=\"var(--mono)\" font-size=\"var(--type-label)\" letter-spacing=\"2\" x=\"1080\" y=\"743\">03 · ERROR CASCADE</text><text data-vnext-fit-box=\"180,189,1704,827\" data-vnext-text-key=\"blackbox-flow.text.021\" fill=\"var(--ink)\" font-family=\"var(--sans)\" font-size=\"var(--type-body)\" font-weight=\"400\" x=\"1080\" y=\"781\">错误级联</text><text data-vnext-fit-box=\"180,189,1704,827\" data-vnext-text-key=\"blackbox-flow.text.022\" fill=\"var(--ink-70)\" font-family=\"var(--sans)\" font-size=\"var(--type-body-small)\" font-weight=\"300\" x=\"1080\" y=\"815\">路由、召回、工具参数的小偏差，</text><text data-vnext-fit-box=\"180,189,1704,827\" data-vnext-text-key=\"blackbox-flow.text.023\" fill=\"var(--ink-70)\" font-family=\"var(--sans)\" font-size=\"var(--type-body-small)\" font-weight=\"300\" x=\"1080\" y=\"845\">在多步执行中被持续放大。</text><line opacity=\"0.45\" stroke=\"var(--ink)\" stroke-dasharray=\"3 5\" stroke-width=\"0.7\" x1=\"1592\" x2=\"1654\" y1=\"594\" y2=\"488\"></line><circle cx=\"1623\" cy=\"541\" fill=\"var(--ink)\" opacity=\"0.55\" r=\"2.4\"></circle><text data-content-ref=\"sample.p1.p1-focus\" data-emphasis-role=\"value\" data-vnext-fit-box=\"0,0,1920,1080\" data-vnext-text-key=\"blackbox-flow.text.024\" fill=\"var(--ink)\" font-family=\"var(--brush)\" font-size=\"var(--type-subheading)\" id=\"sample-focus\" text-anchor=\"middle\" transform=\"rotate(-2 1560 636)\" x=\"1560\" y=\"636\">答对了，也可能只是运气</text></g></g>\n</svg>\n<div class=\"caption\" data-vnext-claim-key=\"claim.text.001\" data-vnext-fit-box=\"0,0,1920,1080\">最危险的不是低分，而是答案过关、过程风险没有被看见。</div>\n</div>",
+    "stage_structure_sha256": "e355902a222d67763f12e05d07f4bdc8b3a344c3b629fc51e11588a437a99bd1"
+  },
+  "bindings": {
+    "claim": {
+      "key": "claim.text.001",
+      "default": "最危险的不是低分，而是答案过关、过程风险没有被看见。",
+      "max_chars": 31,
+      "fit_box": [
+        0.0,
+        0.0,
+        1920.0,
+        1080.0
+      ],
+      "fit_owner_kind": "slide"
+    },
+    "primary_slot": "blackbox-flow",
+    "slots": {
+      "blackbox-flow": {
+        "text": [
+          {
+            "key": "blackbox-flow.text.001",
+            "default": "THE PROCESS IN BETWEEN IS INVISIBLE",
+            "max_chars": 41,
+            "item_scope": "item",
+            "item_group_source": "fixed-slot",
+            "item_index": 0,
+            "fit_box": [
+              0.0,
+              0.0,
+              1920.0,
+              1080.0
+            ],
+            "fit_owner_kind": "slide"
+          },
+          {
+            "key": "blackbox-flow.text.002",
+            "default": "INPUT",
+            "max_chars": 7,
+            "item_scope": "item",
+            "item_group_source": "fixed-slot",
+            "item_index": 0,
+            "fit_box": [
+              180.0,
+              355.0,
+              460.0,
+              483.0
+            ],
+            "fit_owner_kind": "svg-shape"
+          },
+          {
+            "key": "blackbox-flow.text.003",
+            "default": "同一输入",
+            "max_chars": 6,
+            "item_scope": "item",
+            "item_group_source": "fixed-slot",
+            "item_index": 0,
+            "fit_box": [
+              180.0,
+              355.0,
+              460.0,
+              483.0
+            ],
+            "fit_owner_kind": "svg-shape"
+          },
+          {
+            "key": "blackbox-flow.text.004",
+            "default": "?",
+            "max_chars": 2,
+            "item_scope": "item",
+            "item_group_source": "fixed-slot",
+            "item_index": 0,
+            "fit_box": [
+              668.0,
+              371.0,
+              818.0,
+              467.0
+            ],
+            "fit_owner_kind": "svg-shape"
+          },
+          {
+            "key": "blackbox-flow.text.005",
+            "default": "选了哪个 Skill？",
+            "max_chars": 8,
+            "item_scope": "item",
+            "item_group_source": "fixed-slot",
+            "item_index": 0,
+            "fit_box": [
+              668.0,
+              371.0,
+              818.0,
+              467.0
+            ],
+            "fit_owner_kind": "svg-shape"
+          },
+          {
+            "key": "blackbox-flow.text.006",
+            "default": "?",
+            "max_chars": 2,
+            "item_scope": "item",
+            "item_group_source": "fixed-slot",
+            "item_index": 0,
+            "fit_box": [
+              855.0,
+              371.0,
+              1005.0,
+              467.0
+            ],
+            "fit_owner_kind": "svg-shape"
+          },
+          {
+            "key": "blackbox-flow.text.007",
+            "default": "调了什么工具？",
+            "max_chars": 8,
+            "item_scope": "item",
+            "item_group_source": "fixed-slot",
+            "item_index": 0,
+            "fit_box": [
+              855.0,
+              371.0,
+              1005.0,
+              467.0
+            ],
+            "fit_owner_kind": "svg-shape"
+          },
+          {
+            "key": "blackbox-flow.text.008",
+            "default": "?",
+            "max_chars": 2,
+            "item_scope": "item",
+            "item_group_source": "fixed-slot",
+            "item_index": 0,
+            "fit_box": [
+              1042.0,
+              371.0,
+              1192.0,
+              467.0
+            ],
+            "fit_owner_kind": "svg-shape"
+          },
+          {
+            "key": "blackbox-flow.text.009",
+            "default": "校验跑了吗？",
+            "max_chars": 8,
+            "item_scope": "item",
+            "item_group_source": "fixed-slot",
+            "item_index": 0,
+            "fit_box": [
+              1042.0,
+              371.0,
+              1192.0,
+              467.0
+            ],
+            "fit_owner_kind": "svg-shape"
+          },
+          {
+            "key": "blackbox-flow.text.010",
+            "default": "OUTPUT",
+            "max_chars": 9,
+            "item_scope": "item",
+            "item_group_source": "fixed-slot",
+            "item_index": 0,
+            "fit_box": [
+              1370.0,
+              355.0,
+              1700.0,
+              483.0
+            ],
+            "fit_owner_kind": "svg-shape"
+          },
+          {
+            "key": "blackbox-flow.text.011",
+            "default": "看似正确的回答",
+            "max_chars": 10,
+            "item_scope": "item",
+            "item_group_source": "fixed-slot",
+            "item_index": 0,
+            "fit_box": [
+              1370.0,
+              355.0,
+              1700.0,
+              483.0
+            ],
+            "fit_owner_kind": "svg-shape"
+          },
+          {
+            "key": "blackbox-flow.text.012",
+            "default": "01 · NON-DETERMINISM",
+            "max_chars": 25,
+            "item_scope": "item",
+            "item_group_source": "fixed-slot",
+            "item_index": 0,
+            "fit_box": [
+              180.0,
+              189.0,
+              1704.0,
+              827.0
+            ],
+            "fit_owner_kind": "svg-group"
+          },
+          {
+            "key": "blackbox-flow.text.013",
+            "default": "非确定性",
+            "max_chars": 6,
+            "item_scope": "item",
+            "item_group_source": "fixed-slot",
+            "item_index": 0,
+            "fit_box": [
+              180.0,
+              189.0,
+              1704.0,
+              827.0
+            ],
+            "fit_owner_kind": "svg-group"
+          },
+          {
+            "key": "blackbox-flow.text.014",
+            "default": "同样输入，不保证同样输出；",
+            "max_chars": 18,
+            "item_scope": "item",
+            "item_group_source": "fixed-slot",
+            "item_index": 0,
+            "fit_box": [
+              180.0,
+              189.0,
+              1704.0,
+              827.0
+            ],
+            "fit_owner_kind": "svg-group"
+          },
+          {
+            "key": "blackbox-flow.text.015",
+            "default": "一次跑通，只证明“这次可以”。",
+            "max_chars": 21,
+            "item_scope": "item",
+            "item_group_source": "fixed-slot",
+            "item_index": 0,
+            "fit_box": [
+              180.0,
+              189.0,
+              1704.0,
+              827.0
+            ],
+            "fit_owner_kind": "svg-group"
+          },
+          {
+            "key": "blackbox-flow.text.016",
+            "default": "02 · PROCESS BLACK-BOX",
+            "max_chars": 26,
+            "item_scope": "item",
+            "item_group_source": "fixed-slot",
+            "item_index": 0,
+            "fit_box": [
+              180.0,
+              189.0,
+              1704.0,
+              827.0
+            ],
+            "fit_owner_kind": "svg-group"
+          },
+          {
+            "key": "blackbox-flow.text.017",
+            "default": "过程黑盒",
+            "max_chars": 6,
+            "item_scope": "item",
+            "item_group_source": "fixed-slot",
+            "item_index": 0,
+            "fit_box": [
+              180.0,
+              189.0,
+              1704.0,
+              827.0
+            ],
+            "fit_owner_kind": "svg-group"
+          },
+          {
+            "key": "blackbox-flow.text.018",
+            "default": "最终回复看似正确，仍可能选错 Skill、",
+            "max_chars": 27,
+            "item_scope": "item",
+            "item_group_source": "fixed-slot",
+            "item_index": 0,
+            "fit_box": [
+              180.0,
+              189.0,
+              1704.0,
+              827.0
+            ],
+            "fit_owner_kind": "svg-group"
+          },
+          {
+            "key": "blackbox-flow.text.019",
+            "default": "跳过校验，或依赖偶然路径。",
+            "max_chars": 18,
+            "item_scope": "item",
+            "item_group_source": "fixed-slot",
+            "item_index": 0,
+            "fit_box": [
+              180.0,
+              189.0,
+              1704.0,
+              827.0
+            ],
+            "fit_owner_kind": "svg-group"
+          },
+          {
+            "key": "blackbox-flow.text.020",
+            "default": "03 · ERROR CASCADE",
+            "max_chars": 21,
+            "item_scope": "item",
+            "item_group_source": "fixed-slot",
+            "item_index": 0,
+            "fit_box": [
+              180.0,
+              189.0,
+              1704.0,
+              827.0
+            ],
+            "fit_owner_kind": "svg-group"
+          },
+          {
+            "key": "blackbox-flow.text.021",
+            "default": "错误级联",
+            "max_chars": 6,
+            "item_scope": "item",
+            "item_group_source": "fixed-slot",
+            "item_index": 0,
+            "fit_box": [
+              180.0,
+              189.0,
+              1704.0,
+              827.0
+            ],
+            "fit_owner_kind": "svg-group"
+          },
+          {
+            "key": "blackbox-flow.text.022",
+            "default": "路由、召回、工具参数的小偏差，",
+            "max_chars": 21,
+            "item_scope": "item",
+            "item_group_source": "fixed-slot",
+            "item_index": 0,
+            "fit_box": [
+              180.0,
+              189.0,
+              1704.0,
+              827.0
+            ],
+            "fit_owner_kind": "svg-group"
+          },
+          {
+            "key": "blackbox-flow.text.023",
+            "default": "在多步执行中被持续放大。",
+            "max_chars": 17,
+            "item_scope": "item",
+            "item_group_source": "fixed-slot",
+            "item_index": 0,
+            "fit_box": [
+              180.0,
+              189.0,
+              1704.0,
+              827.0
+            ],
+            "fit_owner_kind": "svg-group"
+          },
+          {
+            "key": "blackbox-flow.text.024",
+            "default": "答对了，也可能只是运气",
+            "max_chars": 15,
+            "item_scope": "item",
+            "item_group_source": "fixed-slot",
+            "item_index": 0,
+            "fit_box": [
+              0.0,
+              0.0,
+              1920.0,
+              1080.0
+            ],
+            "fit_owner_kind": "slide"
+          }
+        ],
+        "icon": []
+      },
+      "support": {
+        "text": [
+          {
+            "key": "support.text.001",
+            "default": "PPT 标题",
+            "max_chars": 40,
+            "item_scope": "item",
+            "item_group_source": "fixed-slot",
+            "item_index": 0,
+            "fit_box": [
+              0.0,
+              0.0,
+              1920.0,
+              1080.0
+            ],
+            "fit_owner_kind": "slide"
+          },
+          {
+            "key": "support.text.002",
+            "default": "页面标题",
+            "max_chars": 72,
+            "item_scope": "item",
+            "item_group_source": "fixed-slot",
+            "item_index": 0,
+            "fit_box": [
+              0.0,
+              0.0,
+              1920.0,
+              1080.0
+            ],
+            "fit_owner_kind": "slide"
+          }
+        ],
+        "icon": []
+      },
+      "takeaway": {
+        "text": [],
+        "icon": []
+      }
+    }
+  },
+  "seed_sha256": "41b7fedc0fbc6ea23218181893a03321f6928582317cb6c4ed34cb540a6d07a2"
+}

@@ -1,0 +1,678 @@
+{
+  "contract": "wise-ppt-layout-seed@4",
+  "layout_id": "paper-ink.relationship.G1",
+  "display_code": "G1",
+  "page_kind": "relationship",
+  "source": {
+    "path": "references/gallery-paper-ink/ai/frames/layout-g1.html",
+    "sha256": "00b9886208e899eb29c396c5f12d7506cea4a32d8fff80b5f0db89a14f7bf6b1"
+  },
+  "locked": {
+    "scoped_css": "@scope (.slide[data-layout-id=\"paper-ink.relationship.G1\"]) {\nsvg.scene { position: absolute; inset: 0; z-index: 1; }\n  .doc.tl, .folio { color: var(--ink-45); }\n  .caption {\n    position: absolute; left: 0; right: 0; bottom: 118px;\n    text-align: center;\n    font-family: var(--sans); font-weight: 400;\n    font-size: var(--type-caption); letter-spacing: .04em;\n    color: var(--ink);\n    z-index: 5;\n  }\n}\n",
+    "css_sha256": "909b6001c9864e243d04b952225e368c7c1e1d121a8b3c5e0e776ee57d880031",
+    "stage_html": "<div class=\"stage\" data-block-id=\"gallery-primary\" data-component-id=\"native.paper-ink.096.three-way-radial\" data-component-source=\"native\" data-content-ref=\"example.g1\" data-renderer-kind=\"svg\">\n<div class=\"doc tl\"><span class=\"vnext-text-node\" data-vnext-fit-box=\"0,0,1920,1080\" data-vnext-text-key=\"support.text.001\">PPT 标题</span><br/><span class=\"vnext-text-node\" data-vnext-fit-box=\"0,0,1920,1080\" data-vnext-text-key=\"support.text.002\">页面标题</span></div>\n<div class=\"folio\">页码 / 总页数 — BY @歪斯Wise</div>\n<svg class=\"scene\" height=\"1080\" viewbox=\"0 0 1920 1080\" width=\"1920\">\n<g id=\"draw\"><g transform=\"translate(0 -55.2)\"><rect data-content-ref=\"sample.g1.g1-focus\" data-emphasis-role=\"outline\" fill=\"var(--paper-panel)\" height=\"116\" id=\"g1-focus-frame\" stroke=\"var(--ink-80)\" stroke-width=\"1.4\" width=\"380\" x=\"770\" y=\"462\"></rect><rect fill=\"none\" height=\"106\" opacity=\"0.4\" stroke=\"var(--ink)\" stroke-width=\"0.6\" width=\"370\" x=\"775\" y=\"467\"></rect><text data-content-ref=\"sample.g1.g1-focus\" data-emphasis-role=\"value\" data-vnext-fit-box=\"775,411,1145,518\" data-vnext-text-key=\"dimensions.text.001\" fill=\"var(--ink)\" font-family=\"var(--mono)\" font-size=\"var(--type-subheading)\" id=\"sample-focus\" letter-spacing=\"3\" text-anchor=\"middle\" x=\"960\" y=\"508\">MODEL NODE</text><text data-content-ref=\"sample.g1.g1-focus\" data-emphasis-role=\"label\" data-vnext-fit-box=\"775,411,1145,518\" data-vnext-text-key=\"dimensions.text.002\" fill=\"var(--ink)\" font-family=\"var(--sans)\" font-size=\"var(--type-body)\" font-weight=\"300\" id=\"g1-focus-cn\" letter-spacing=\"4\" text-anchor=\"middle\" x=\"960\" y=\"546\">LLM 调用节点</text><line opacity=\"0.5\" stroke=\"var(--ink)\" stroke-width=\"0.8\" x1=\"770\" x2=\"560\" y1=\"520\" y2=\"520\"></line><line opacity=\"0.5\" stroke=\"var(--ink)\" stroke-width=\"0.8\" x1=\"1150\" x2=\"1360\" y1=\"520\" y2=\"520\"></line><line opacity=\"0.5\" stroke=\"var(--ink)\" stroke-width=\"0.8\" x1=\"960\" x2=\"960\" y1=\"578\" y2=\"700\"></line><circle cx=\"560\" cy=\"520\" fill=\"var(--ink)\" opacity=\"0.7\" r=\"2.4\"></circle><circle cx=\"1360\" cy=\"520\" fill=\"var(--ink)\" opacity=\"0.7\" r=\"2.4\"></circle><circle cx=\"960\" cy=\"700\" fill=\"var(--ink)\" opacity=\"0.7\" r=\"2.4\"></circle><text data-vnext-fit-box=\"386,182,1531,830\" data-vnext-text-key=\"dimensions.text.003\" fill=\"var(--ink-45)\" font-family=\"var(--mono)\" font-size=\"var(--type-meta)\" letter-spacing=\"2\" text-anchor=\"middle\" x=\"665\" y=\"506\">IN</text><text data-vnext-fit-box=\"386,182,1531,830\" data-vnext-text-key=\"dimensions.text.004\" fill=\"var(--ink-45)\" font-family=\"var(--mono)\" font-size=\"var(--type-meta)\" letter-spacing=\"2\" text-anchor=\"middle\" x=\"1255\" y=\"506\">OUT</text><text data-vnext-fit-box=\"386,182,1531,830\" data-vnext-text-key=\"dimensions.text.005\" fill=\"var(--ink)\" font-family=\"var(--sans)\" font-size=\"var(--type-subheading)\" font-weight=\"300\" text-anchor=\"end\" x=\"560\" y=\"268\">输 入</text><text data-vnext-fit-box=\"386,182,1531,830\" data-vnext-text-key=\"dimensions.text.006\" fill=\"var(--ink-45)\" font-family=\"var(--mono)\" font-size=\"var(--type-meta)\" letter-spacing=\"2\" text-anchor=\"end\" x=\"560\" y=\"296\">INPUT</text><line opacity=\"0.5\" stroke=\"var(--ink)\" stroke-width=\"0.8\" x1=\"560\" x2=\"560\" y1=\"320\" y2=\"800\"></line><line opacity=\"0.5\" stroke=\"var(--ink)\" stroke-width=\"0.8\" x1=\"560\" x2=\"542\" y1=\"348\" y2=\"348\"></line><text data-vnext-fit-box=\"386,182,1531,830\" data-vnext-text-key=\"dimensions.text.007\" fill=\"var(--ink)\" font-family=\"var(--mono)\" font-size=\"var(--type-body-small)\" text-anchor=\"end\" x=\"530\" y=\"354\">system_prompt</text><text data-vnext-fit-box=\"386,182,1531,830\" data-vnext-text-key=\"dimensions.text.008\" fill=\"var(--wp-adapter-pi-ink-60)\" font-family=\"var(--sans)\" font-size=\"var(--type-body-small)\" font-weight=\"300\" text-anchor=\"end\" x=\"530\" y=\"380\">系统提示词与人设</text><line opacity=\"0.5\" stroke=\"var(--ink)\" stroke-width=\"0.8\" x1=\"560\" x2=\"542\" y1=\"464\" y2=\"464\"></line><text data-vnext-fit-box=\"386,182,1531,830\" data-vnext-text-key=\"dimensions.text.009\" fill=\"var(--ink)\" font-family=\"var(--mono)\" font-size=\"var(--type-body-small)\" text-anchor=\"end\" x=\"530\" y=\"470\">user_message</text><text data-vnext-fit-box=\"386,182,1531,830\" data-vnext-text-key=\"dimensions.text.010\" fill=\"var(--wp-adapter-pi-ink-60)\" font-family=\"var(--sans)\" font-size=\"var(--type-body-small)\" font-weight=\"300\" text-anchor=\"end\" x=\"530\" y=\"496\">用户消息与意图</text><line opacity=\"0.5\" stroke=\"var(--ink)\" stroke-width=\"0.8\" x1=\"560\" x2=\"542\" y1=\"580\" y2=\"580\"></line><text data-vnext-fit-box=\"386,182,1531,830\" data-vnext-text-key=\"dimensions.text.011\" fill=\"var(--ink)\" font-family=\"var(--mono)\" font-size=\"var(--type-body-small)\" text-anchor=\"end\" x=\"530\" y=\"586\">context</text><text data-vnext-fit-box=\"386,182,1531,830\" data-vnext-text-key=\"dimensions.text.012\" fill=\"var(--wp-adapter-pi-ink-60)\" font-family=\"var(--sans)\" font-size=\"var(--type-body-small)\" font-weight=\"300\" text-anchor=\"end\" x=\"530\" y=\"612\">上下文与检索片段</text><line opacity=\"0.5\" stroke=\"var(--ink)\" stroke-width=\"0.8\" x1=\"560\" x2=\"542\" y1=\"696\" y2=\"696\"></line><text data-vnext-fit-box=\"386,182,1531,830\" data-vnext-text-key=\"dimensions.text.013\" fill=\"var(--ink)\" font-family=\"var(--mono)\" font-size=\"var(--type-body-small)\" text-anchor=\"end\" x=\"530\" y=\"702\">tools</text><text data-vnext-fit-box=\"386,182,1531,830\" data-vnext-text-key=\"dimensions.text.014\" fill=\"var(--wp-adapter-pi-ink-60)\" font-family=\"var(--sans)\" font-size=\"var(--type-body-small)\" font-weight=\"300\" text-anchor=\"end\" x=\"530\" y=\"728\">可调用工具声明</text><text data-vnext-fit-box=\"386,182,1531,830\" data-vnext-text-key=\"dimensions.text.015\" fill=\"var(--ink)\" font-family=\"var(--sans)\" font-size=\"var(--type-subheading)\" font-weight=\"300\" x=\"1360\" y=\"268\">输 出</text><text data-vnext-fit-box=\"386,182,1531,830\" data-vnext-text-key=\"dimensions.text.016\" fill=\"var(--ink-45)\" font-family=\"var(--mono)\" font-size=\"var(--type-meta)\" letter-spacing=\"2\" x=\"1360\" y=\"296\">OUTPUT</text><line opacity=\"0.5\" stroke=\"var(--ink)\" stroke-width=\"0.8\" x1=\"1360\" x2=\"1360\" y1=\"320\" y2=\"860\"></line><line opacity=\"0.5\" stroke=\"var(--ink)\" stroke-width=\"0.8\" x1=\"1360\" x2=\"1378\" y1=\"348\" y2=\"348\"></line><text data-vnext-fit-box=\"386,182,1531,830\" data-vnext-text-key=\"dimensions.text.017\" fill=\"var(--ink)\" font-family=\"var(--mono)\" font-size=\"var(--type-body-small)\" text-anchor=\"start\" x=\"1390\" y=\"354\">completion</text><text data-vnext-fit-box=\"386,182,1531,830\" data-vnext-text-key=\"dimensions.text.018\" fill=\"var(--wp-adapter-pi-ink-60)\" font-family=\"var(--sans)\" font-size=\"var(--type-body-small)\" font-weight=\"300\" text-anchor=\"start\" x=\"1390\" y=\"380\">生成文本与回复</text><line opacity=\"0.5\" stroke=\"var(--ink)\" stroke-width=\"0.8\" x1=\"1360\" x2=\"1378\" y1=\"448\" y2=\"448\"></line><text data-vnext-fit-box=\"386,182,1531,830\" data-vnext-text-key=\"dimensions.text.019\" fill=\"var(--ink)\" font-family=\"var(--mono)\" font-size=\"var(--type-body-small)\" text-anchor=\"start\" x=\"1390\" y=\"454\">tool_calls</text><text data-vnext-fit-box=\"386,182,1531,830\" data-vnext-text-key=\"dimensions.text.020\" fill=\"var(--wp-adapter-pi-ink-60)\" font-family=\"var(--sans)\" font-size=\"var(--type-body-small)\" font-weight=\"300\" text-anchor=\"start\" x=\"1390\" y=\"480\">工具调用请求</text><line opacity=\"0.5\" stroke=\"var(--ink)\" stroke-width=\"0.8\" x1=\"1360\" x2=\"1378\" y1=\"548\" y2=\"548\"></line><text data-vnext-fit-box=\"386,182,1531,830\" data-vnext-text-key=\"dimensions.text.021\" fill=\"var(--ink)\" font-family=\"var(--mono)\" font-size=\"var(--type-body-small)\" text-anchor=\"start\" x=\"1390\" y=\"554\">token_usage</text><text data-vnext-fit-box=\"386,182,1531,830\" data-vnext-text-key=\"dimensions.text.022\" fill=\"var(--wp-adapter-pi-ink-60)\" font-family=\"var(--sans)\" font-size=\"var(--type-body-small)\" font-weight=\"300\" text-anchor=\"start\" x=\"1390\" y=\"580\">Token 用量统计</text><line opacity=\"0.5\" stroke=\"var(--ink)\" stroke-width=\"0.8\" x1=\"1360\" x2=\"1378\" y1=\"648\" y2=\"648\"></line><text data-vnext-fit-box=\"0,0,1920,1080\" data-vnext-text-key=\"dimensions.text.023\" fill=\"var(--ink)\" font-family=\"var(--mono)\" font-size=\"var(--type-body-small)\" text-anchor=\"start\" x=\"1390\" y=\"654\">finish_reason</text><text data-vnext-fit-box=\"386,182,1531,830\" data-vnext-text-key=\"dimensions.text.024\" fill=\"var(--wp-adapter-pi-ink-60)\" font-family=\"var(--sans)\" font-size=\"var(--type-body-small)\" font-weight=\"300\" text-anchor=\"start\" x=\"1390\" y=\"680\">结束原因与状态</text><line opacity=\"0.5\" stroke=\"var(--ink)\" stroke-width=\"0.8\" x1=\"1360\" x2=\"1378\" y1=\"748\" y2=\"748\"></line><text data-vnext-fit-box=\"386,182,1531,830\" data-vnext-text-key=\"dimensions.text.025\" fill=\"var(--ink)\" font-family=\"var(--mono)\" font-size=\"var(--type-body-small)\" text-anchor=\"start\" x=\"1390\" y=\"754\">logprobs</text><text data-vnext-fit-box=\"386,182,1531,830\" data-vnext-text-key=\"dimensions.text.026\" fill=\"var(--wp-adapter-pi-ink-60)\" font-family=\"var(--sans)\" font-size=\"var(--type-body-small)\" font-weight=\"300\" text-anchor=\"start\" x=\"1390\" y=\"780\">对数概率回传</text><line opacity=\"0.5\" stroke=\"var(--ink)\" stroke-width=\"0.8\" x1=\"1360\" x2=\"1378\" y1=\"848\" y2=\"848\"></line><text data-vnext-fit-box=\"386,182,1531,830\" data-vnext-text-key=\"dimensions.text.027\" fill=\"var(--ink)\" font-family=\"var(--mono)\" font-size=\"var(--type-body-small)\" text-anchor=\"start\" x=\"1390\" y=\"854\">latency</text><text data-vnext-fit-box=\"0,0,1920,1080\" data-vnext-text-key=\"dimensions.text.028\" fill=\"var(--wp-adapter-pi-ink-60)\" font-family=\"var(--sans)\" font-size=\"var(--type-body-small)\" font-weight=\"300\" text-anchor=\"start\" x=\"1390\" y=\"880\">首字与总耗时</text><text data-vnext-fit-box=\"386,182,1531,830\" data-vnext-text-key=\"dimensions.text.029\" fill=\"var(--ink)\" font-family=\"var(--sans)\" font-size=\"var(--type-subheading)\" font-weight=\"300\" x=\"984\" y=\"668\">参 数</text><text data-vnext-fit-box=\"386,182,1531,830\" data-vnext-text-key=\"dimensions.text.030\" fill=\"var(--ink-45)\" font-family=\"var(--mono)\" font-size=\"var(--type-meta)\" letter-spacing=\"2\" x=\"984\" y=\"696\">PARAMS</text><line opacity=\"0.5\" stroke=\"var(--ink)\" stroke-width=\"0.8\" x1=\"620\" x2=\"1300\" y1=\"700\" y2=\"700\"></line><line opacity=\"0.5\" stroke=\"var(--ink)\" stroke-width=\"0.8\" x1=\"660\" x2=\"660\" y1=\"700\" y2=\"716\"></line><text data-vnext-fit-box=\"386,182,1531,830\" data-vnext-text-key=\"dimensions.text.031\" fill=\"var(--ink)\" font-family=\"var(--mono)\" font-size=\"var(--type-body-small)\" text-anchor=\"middle\" x=\"660\" y=\"744\">temperature</text><text data-vnext-fit-box=\"386,182,1531,830\" data-vnext-text-key=\"dimensions.text.032\" fill=\"var(--wp-adapter-pi-ink-60)\" font-family=\"var(--sans)\" font-size=\"var(--type-body-small)\" font-weight=\"300\" text-anchor=\"middle\" x=\"660\" y=\"772\">采样温度</text><line opacity=\"0.5\" stroke=\"var(--ink)\" stroke-width=\"0.8\" x1=\"810\" x2=\"810\" y1=\"700\" y2=\"716\"></line><text data-vnext-fit-box=\"386,182,1531,830\" data-vnext-text-key=\"dimensions.text.033\" fill=\"var(--ink)\" font-family=\"var(--mono)\" font-size=\"var(--type-body-small)\" text-anchor=\"middle\" x=\"810\" y=\"744\">top_p</text><text data-vnext-fit-box=\"386,182,1531,830\" data-vnext-text-key=\"dimensions.text.034\" fill=\"var(--wp-adapter-pi-ink-60)\" font-family=\"var(--sans)\" font-size=\"var(--type-body-small)\" font-weight=\"300\" text-anchor=\"middle\" x=\"810\" y=\"772\">核采样阈值</text><line opacity=\"0.5\" stroke=\"var(--ink)\" stroke-width=\"0.8\" x1=\"960\" x2=\"960\" y1=\"700\" y2=\"716\"></line><text data-vnext-fit-box=\"386,182,1531,830\" data-vnext-text-key=\"dimensions.text.035\" fill=\"var(--ink)\" font-family=\"var(--mono)\" font-size=\"var(--type-body-small)\" text-anchor=\"middle\" x=\"960\" y=\"744\">max_tokens</text><text data-vnext-fit-box=\"386,182,1531,830\" data-vnext-text-key=\"dimensions.text.036\" fill=\"var(--wp-adapter-pi-ink-60)\" font-family=\"var(--sans)\" font-size=\"var(--type-body-small)\" font-weight=\"300\" text-anchor=\"middle\" x=\"960\" y=\"772\">最大生成长度</text><line opacity=\"0.5\" stroke=\"var(--ink)\" stroke-width=\"0.8\" x1=\"1110\" x2=\"1110\" y1=\"700\" y2=\"716\"></line><text data-vnext-fit-box=\"386,182,1531,830\" data-vnext-text-key=\"dimensions.text.037\" fill=\"var(--ink)\" font-family=\"var(--mono)\" font-size=\"var(--type-body-small)\" text-anchor=\"middle\" x=\"1110\" y=\"744\">frequency_penalty</text><text data-vnext-fit-box=\"386,182,1531,830\" data-vnext-text-key=\"dimensions.text.038\" fill=\"var(--wp-adapter-pi-ink-60)\" font-family=\"var(--sans)\" font-size=\"var(--type-body-small)\" font-weight=\"300\" text-anchor=\"middle\" x=\"1110\" y=\"772\">频率惩罚</text><line opacity=\"0.5\" stroke=\"var(--ink)\" stroke-width=\"0.8\" x1=\"1260\" x2=\"1260\" y1=\"700\" y2=\"716\"></line><text data-vnext-fit-box=\"386,182,1531,830\" data-vnext-text-key=\"dimensions.text.039\" fill=\"var(--ink)\" font-family=\"var(--mono)\" font-size=\"var(--type-body-small)\" text-anchor=\"middle\" x=\"1260\" y=\"744\">stop</text><text data-vnext-fit-box=\"386,182,1531,830\" data-vnext-text-key=\"dimensions.text.040\" fill=\"var(--wp-adapter-pi-ink-60)\" font-family=\"var(--sans)\" font-size=\"var(--type-body-small)\" font-weight=\"300\" text-anchor=\"middle\" x=\"1260\" y=\"772\">停止序列</text></g></g>\n</svg>\n<div class=\"caption\" data-vnext-claim-key=\"claim.text.001\" data-vnext-fit-box=\"0,0,1920,1080\">LLM 调用把提示词、意图、检索片段与工具声明转成回复、调用请求和可观测指标。</div>\n</div>",
+    "stage_structure_sha256": "71488ed5ace52f7a147aec21142a9bd4f02227d949ee8fdf9a209155376ebbd6"
+  },
+  "bindings": {
+    "claim": {
+      "key": "claim.text.001",
+      "default": "LLM 调用把提示词、意图、检索片段与工具声明转成回复、调用请求和可观测指标。",
+      "max_chars": 45,
+      "fit_box": [
+        0.0,
+        0.0,
+        1920.0,
+        1080.0
+      ],
+      "fit_owner_kind": "slide"
+    },
+    "primary_slot": "dimensions",
+    "slots": {
+      "dimensions": {
+        "text": [
+          {
+            "key": "dimensions.text.001",
+            "default": "MODEL NODE",
+            "max_chars": 12,
+            "item_scope": "item",
+            "item_group_source": "fixed-slot",
+            "item_index": 0,
+            "fit_box": [
+              775.0,
+              411.0,
+              1145.0,
+              518.0
+            ],
+            "fit_owner_kind": "svg-shape"
+          },
+          {
+            "key": "dimensions.text.002",
+            "default": "LLM 调用节点",
+            "max_chars": 10,
+            "item_scope": "item",
+            "item_group_source": "fixed-slot",
+            "item_index": 0,
+            "fit_box": [
+              775.0,
+              411.0,
+              1145.0,
+              518.0
+            ],
+            "fit_owner_kind": "svg-shape"
+          },
+          {
+            "key": "dimensions.text.003",
+            "default": "IN",
+            "max_chars": 3,
+            "item_scope": "item",
+            "item_group_source": "fixed-slot",
+            "item_index": 0,
+            "fit_box": [
+              386.0,
+              182.0,
+              1531.0,
+              830.0
+            ],
+            "fit_owner_kind": "svg-group"
+          },
+          {
+            "key": "dimensions.text.004",
+            "default": "OUT",
+            "max_chars": 5,
+            "item_scope": "item",
+            "item_group_source": "fixed-slot",
+            "item_index": 0,
+            "fit_box": [
+              386.0,
+              182.0,
+              1531.0,
+              830.0
+            ],
+            "fit_owner_kind": "svg-group"
+          },
+          {
+            "key": "dimensions.text.005",
+            "default": "输 入",
+            "max_chars": 3,
+            "item_scope": "item",
+            "item_group_source": "fixed-slot",
+            "item_index": 0,
+            "fit_box": [
+              386.0,
+              182.0,
+              1531.0,
+              830.0
+            ],
+            "fit_owner_kind": "svg-group"
+          },
+          {
+            "key": "dimensions.text.006",
+            "default": "INPUT",
+            "max_chars": 7,
+            "item_scope": "item",
+            "item_group_source": "fixed-slot",
+            "item_index": 0,
+            "fit_box": [
+              386.0,
+              182.0,
+              1531.0,
+              830.0
+            ],
+            "fit_owner_kind": "svg-group"
+          },
+          {
+            "key": "dimensions.text.007",
+            "default": "system_prompt",
+            "max_chars": 7,
+            "item_scope": "item",
+            "item_group_source": "fixed-slot",
+            "item_index": 0,
+            "fit_box": [
+              386.0,
+              182.0,
+              1531.0,
+              830.0
+            ],
+            "fit_owner_kind": "svg-group"
+          },
+          {
+            "key": "dimensions.text.008",
+            "default": "系统提示词与人设",
+            "max_chars": 8,
+            "item_scope": "item",
+            "item_group_source": "fixed-slot",
+            "item_index": 0,
+            "fit_box": [
+              386.0,
+              182.0,
+              1531.0,
+              830.0
+            ],
+            "fit_owner_kind": "svg-group"
+          },
+          {
+            "key": "dimensions.text.009",
+            "default": "user_message",
+            "max_chars": 7,
+            "item_scope": "item",
+            "item_group_source": "fixed-slot",
+            "item_index": 0,
+            "fit_box": [
+              386.0,
+              182.0,
+              1531.0,
+              830.0
+            ],
+            "fit_owner_kind": "svg-group"
+          },
+          {
+            "key": "dimensions.text.010",
+            "default": "用户消息与意图",
+            "max_chars": 8,
+            "item_scope": "item",
+            "item_group_source": "fixed-slot",
+            "item_index": 0,
+            "fit_box": [
+              386.0,
+              182.0,
+              1531.0,
+              830.0
+            ],
+            "fit_owner_kind": "svg-group"
+          },
+          {
+            "key": "dimensions.text.011",
+            "default": "context",
+            "max_chars": 7,
+            "item_scope": "item",
+            "item_group_source": "fixed-slot",
+            "item_index": 0,
+            "fit_box": [
+              386.0,
+              182.0,
+              1531.0,
+              830.0
+            ],
+            "fit_owner_kind": "svg-group"
+          },
+          {
+            "key": "dimensions.text.012",
+            "default": "上下文与检索片段",
+            "max_chars": 8,
+            "item_scope": "item",
+            "item_group_source": "fixed-slot",
+            "item_index": 0,
+            "fit_box": [
+              386.0,
+              182.0,
+              1531.0,
+              830.0
+            ],
+            "fit_owner_kind": "svg-group"
+          },
+          {
+            "key": "dimensions.text.013",
+            "default": "tools",
+            "max_chars": 7,
+            "item_scope": "item",
+            "item_group_source": "fixed-slot",
+            "item_index": 0,
+            "fit_box": [
+              386.0,
+              182.0,
+              1531.0,
+              830.0
+            ],
+            "fit_owner_kind": "svg-group"
+          },
+          {
+            "key": "dimensions.text.014",
+            "default": "可调用工具声明",
+            "max_chars": 8,
+            "item_scope": "item",
+            "item_group_source": "fixed-slot",
+            "item_index": 0,
+            "fit_box": [
+              386.0,
+              182.0,
+              1531.0,
+              830.0
+            ],
+            "fit_owner_kind": "svg-group"
+          },
+          {
+            "key": "dimensions.text.015",
+            "default": "输 出",
+            "max_chars": 3,
+            "item_scope": "item",
+            "item_group_source": "fixed-slot",
+            "item_index": 0,
+            "fit_box": [
+              386.0,
+              182.0,
+              1531.0,
+              830.0
+            ],
+            "fit_owner_kind": "svg-group"
+          },
+          {
+            "key": "dimensions.text.016",
+            "default": "OUTPUT",
+            "max_chars": 9,
+            "item_scope": "item",
+            "item_group_source": "fixed-slot",
+            "item_index": 0,
+            "fit_box": [
+              386.0,
+              182.0,
+              1531.0,
+              830.0
+            ],
+            "fit_owner_kind": "svg-group"
+          },
+          {
+            "key": "dimensions.text.017",
+            "default": "completion",
+            "max_chars": 7,
+            "item_scope": "item",
+            "item_group_source": "fixed-slot",
+            "item_index": 0,
+            "fit_box": [
+              386.0,
+              182.0,
+              1531.0,
+              830.0
+            ],
+            "fit_owner_kind": "svg-group"
+          },
+          {
+            "key": "dimensions.text.018",
+            "default": "生成文本与回复",
+            "max_chars": 7,
+            "item_scope": "item",
+            "item_group_source": "fixed-slot",
+            "item_index": 0,
+            "fit_box": [
+              386.0,
+              182.0,
+              1531.0,
+              830.0
+            ],
+            "fit_owner_kind": "svg-group"
+          },
+          {
+            "key": "dimensions.text.019",
+            "default": "tool_calls",
+            "max_chars": 7,
+            "item_scope": "item",
+            "item_group_source": "fixed-slot",
+            "item_index": 0,
+            "fit_box": [
+              386.0,
+              182.0,
+              1531.0,
+              830.0
+            ],
+            "fit_owner_kind": "svg-group"
+          },
+          {
+            "key": "dimensions.text.020",
+            "default": "工具调用请求",
+            "max_chars": 7,
+            "item_scope": "item",
+            "item_group_source": "fixed-slot",
+            "item_index": 0,
+            "fit_box": [
+              386.0,
+              182.0,
+              1531.0,
+              830.0
+            ],
+            "fit_owner_kind": "svg-group"
+          },
+          {
+            "key": "dimensions.text.021",
+            "default": "token_usage",
+            "max_chars": 7,
+            "item_scope": "item",
+            "item_group_source": "fixed-slot",
+            "item_index": 0,
+            "fit_box": [
+              386.0,
+              182.0,
+              1531.0,
+              830.0
+            ],
+            "fit_owner_kind": "svg-group"
+          },
+          {
+            "key": "dimensions.text.022",
+            "default": "Token 用量统计",
+            "max_chars": 7,
+            "item_scope": "item",
+            "item_group_source": "fixed-slot",
+            "item_index": 0,
+            "fit_box": [
+              386.0,
+              182.0,
+              1531.0,
+              830.0
+            ],
+            "fit_owner_kind": "svg-group"
+          },
+          {
+            "key": "dimensions.text.023",
+            "default": "finish_reason",
+            "max_chars": 18,
+            "item_scope": "item",
+            "item_group_source": "fixed-slot",
+            "item_index": 0,
+            "fit_box": [
+              0.0,
+              0.0,
+              1920.0,
+              1080.0
+            ],
+            "fit_owner_kind": "slide"
+          },
+          {
+            "key": "dimensions.text.024",
+            "default": "结束原因与状态",
+            "max_chars": 7,
+            "item_scope": "item",
+            "item_group_source": "fixed-slot",
+            "item_index": 0,
+            "fit_box": [
+              386.0,
+              182.0,
+              1531.0,
+              830.0
+            ],
+            "fit_owner_kind": "svg-group"
+          },
+          {
+            "key": "dimensions.text.025",
+            "default": "logprobs",
+            "max_chars": 7,
+            "item_scope": "item",
+            "item_group_source": "fixed-slot",
+            "item_index": 0,
+            "fit_box": [
+              386.0,
+              182.0,
+              1531.0,
+              830.0
+            ],
+            "fit_owner_kind": "svg-group"
+          },
+          {
+            "key": "dimensions.text.026",
+            "default": "对数概率回传",
+            "max_chars": 7,
+            "item_scope": "item",
+            "item_group_source": "fixed-slot",
+            "item_index": 0,
+            "fit_box": [
+              386.0,
+              182.0,
+              1531.0,
+              830.0
+            ],
+            "fit_owner_kind": "svg-group"
+          },
+          {
+            "key": "dimensions.text.027",
+            "default": "latency",
+            "max_chars": 7,
+            "item_scope": "item",
+            "item_group_source": "fixed-slot",
+            "item_index": 0,
+            "fit_box": [
+              386.0,
+              182.0,
+              1531.0,
+              830.0
+            ],
+            "fit_owner_kind": "svg-group"
+          },
+          {
+            "key": "dimensions.text.028",
+            "default": "首字与总耗时",
+            "max_chars": 9,
+            "item_scope": "item",
+            "item_group_source": "fixed-slot",
+            "item_index": 0,
+            "fit_box": [
+              0.0,
+              0.0,
+              1920.0,
+              1080.0
+            ],
+            "fit_owner_kind": "slide"
+          },
+          {
+            "key": "dimensions.text.029",
+            "default": "参 数",
+            "max_chars": 3,
+            "item_scope": "item",
+            "item_group_source": "fixed-slot",
+            "item_index": 0,
+            "fit_box": [
+              386.0,
+              182.0,
+              1531.0,
+              830.0
+            ],
+            "fit_owner_kind": "svg-group"
+          },
+          {
+            "key": "dimensions.text.030",
+            "default": "PARAMS",
+            "max_chars": 9,
+            "item_scope": "item",
+            "item_group_source": "fixed-slot",
+            "item_index": 0,
+            "fit_box": [
+              386.0,
+              182.0,
+              1531.0,
+              830.0
+            ],
+            "fit_owner_kind": "svg-group"
+          },
+          {
+            "key": "dimensions.text.031",
+            "default": "temperature",
+            "max_chars": 15,
+            "item_scope": "item",
+            "item_group_source": "fixed-slot",
+            "item_index": 0,
+            "fit_box": [
+              386.0,
+              182.0,
+              1531.0,
+              830.0
+            ],
+            "fit_owner_kind": "svg-group"
+          },
+          {
+            "key": "dimensions.text.032",
+            "default": "采样温度",
+            "max_chars": 6,
+            "item_scope": "item",
+            "item_group_source": "fixed-slot",
+            "item_index": 0,
+            "fit_box": [
+              386.0,
+              182.0,
+              1531.0,
+              830.0
+            ],
+            "fit_owner_kind": "svg-group"
+          },
+          {
+            "key": "dimensions.text.033",
+            "default": "top_p",
+            "max_chars": 7,
+            "item_scope": "item",
+            "item_group_source": "fixed-slot",
+            "item_index": 0,
+            "fit_box": [
+              386.0,
+              182.0,
+              1531.0,
+              830.0
+            ],
+            "fit_owner_kind": "svg-group"
+          },
+          {
+            "key": "dimensions.text.034",
+            "default": "核采样阈值",
+            "max_chars": 7,
+            "item_scope": "item",
+            "item_group_source": "fixed-slot",
+            "item_index": 0,
+            "fit_box": [
+              386.0,
+              182.0,
+              1531.0,
+              830.0
+            ],
+            "fit_owner_kind": "svg-group"
+          },
+          {
+            "key": "dimensions.text.035",
+            "default": "max_tokens",
+            "max_chars": 14,
+            "item_scope": "item",
+            "item_group_source": "fixed-slot",
+            "item_index": 0,
+            "fit_box": [
+              386.0,
+              182.0,
+              1531.0,
+              830.0
+            ],
+            "fit_owner_kind": "svg-group"
+          },
+          {
+            "key": "dimensions.text.036",
+            "default": "最大生成长度",
+            "max_chars": 9,
+            "item_scope": "item",
+            "item_group_source": "fixed-slot",
+            "item_index": 0,
+            "fit_box": [
+              386.0,
+              182.0,
+              1531.0,
+              830.0
+            ],
+            "fit_owner_kind": "svg-group"
+          },
+          {
+            "key": "dimensions.text.037",
+            "default": "frequency_penalty",
+            "max_chars": 16,
+            "item_scope": "item",
+            "item_group_source": "fixed-slot",
+            "item_index": 0,
+            "fit_box": [
+              386.0,
+              182.0,
+              1531.0,
+              830.0
+            ],
+            "fit_owner_kind": "svg-group"
+          },
+          {
+            "key": "dimensions.text.038",
+            "default": "频率惩罚",
+            "max_chars": 6,
+            "item_scope": "item",
+            "item_group_source": "fixed-slot",
+            "item_index": 0,
+            "fit_box": [
+              386.0,
+              182.0,
+              1531.0,
+              830.0
+            ],
+            "fit_owner_kind": "svg-group"
+          },
+          {
+            "key": "dimensions.text.039",
+            "default": "stop",
+            "max_chars": 6,
+            "item_scope": "item",
+            "item_group_source": "fixed-slot",
+            "item_index": 0,
+            "fit_box": [
+              386.0,
+              182.0,
+              1531.0,
+              830.0
+            ],
+            "fit_owner_kind": "svg-group"
+          },
+          {
+            "key": "dimensions.text.040",
+            "default": "停止序列",
+            "max_chars": 6,
+            "item_scope": "item",
+            "item_group_source": "fixed-slot",
+            "item_index": 0,
+            "fit_box": [
+              386.0,
+              182.0,
+              1531.0,
+              830.0
+            ],
+            "fit_owner_kind": "svg-group"
+          }
+        ],
+        "icon": []
+      },
+      "support": {
+        "text": [
+          {
+            "key": "support.text.001",
+            "default": "PPT 标题",
+            "max_chars": 40,
+            "item_scope": "item",
+            "item_group_source": "fixed-slot",
+            "item_index": 0,
+            "fit_box": [
+              0.0,
+              0.0,
+              1920.0,
+              1080.0
+            ],
+            "fit_owner_kind": "slide"
+          },
+          {
+            "key": "support.text.002",
+            "default": "页面标题",
+            "max_chars": 72,
+            "item_scope": "item",
+            "item_group_source": "fixed-slot",
+            "item_index": 0,
+            "fit_box": [
+              0.0,
+              0.0,
+              1920.0,
+              1080.0
+            ],
+            "fit_owner_kind": "slide"
+          }
+        ],
+        "icon": []
+      },
+      "takeaway": {
+        "text": [],
+        "icon": []
+      }
+    }
+  },
+  "seed_sha256": "72777ed3652b58244a389c66387aaf34bd19af1036118ddd4b0a87952c26fadb"
+}

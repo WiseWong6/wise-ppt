@@ -1,0 +1,360 @@
+{
+  "contract": "wise-ppt-layout-seed@4",
+  "layout_id": "paper-ink.relationship.R6",
+  "display_code": "R6",
+  "page_kind": "relationship",
+  "source": {
+    "path": "references/gallery-paper-ink/ai/frames/layout-r6.html",
+    "sha256": "1f29061dbda4db1d4695dd78c0ee9e5d03c1b8b441cd2f712d2ecbbb01a7eeba"
+  },
+  "locked": {
+    "scoped_css": "@scope (.slide[data-layout-id=\"paper-ink.relationship.R6\"]) {\nsvg.scene{position:absolute;inset:0;z-index:1}.caption{position:absolute;left:0;right:0;bottom:82px;text-align:center;font-family:var(--sans);font-size:var(--type-caption);letter-spacing:.04em;color:var(--ink);z-index:5}\n}\n",
+    "css_sha256": "8e1aafe32720e864c08b69353436b8f3541dd8e723a0f32d8d224939ae71fd4c",
+    "stage_html": "<div class=\"stage\" data-block-id=\"gallery-primary\" data-component-id=\"native.paper-ink.semantic.statement-band\" data-component-source=\"native\" data-content-ref=\"example.r6\" data-renderer-kind=\"native-html\"><div class=\"doc tl\"><span class=\"vnext-text-node\" data-vnext-fit-box=\"0,0,1920,1080\" data-vnext-text-key=\"input.text.001\">PPT 标题</span><br/><span class=\"vnext-text-node\" data-vnext-fit-box=\"0,0,1920,1080\" data-vnext-text-key=\"input.text.002\">页面标题</span></div><div class=\"folio\">页码 / 总页数 — BY @歪斯Wise</div>\n<svg aria-label=\"输入、推理、评测与治理四个独立横向槽位\" class=\"scene\" height=\"1080\" viewbox=\"0 0 1920 1080\" width=\"1920\">\n<g fill=\"var(--ink)\" font-family=\"var(--sans)\">\n<g data-component-id=\"native.paper-ink.semantic.statement-band\" data-slot-id=\"input\"><rect fill=\"var(--paper-panel)\" height=\"145\" stroke=\"var(--wp-color-functional)\" width=\"1500\" x=\"210\" y=\"144.75\"></rect><svg color=\"var(--wp-color-functional)\" data-icon-source=\"redraw-v3:filter\" data-vnext-icon-key=\"input.icon.001\" height=\"36\" viewbox=\"0 0 64 64\" width=\"36\" x=\"1630\" y=\"156.75\"><path d=\"M 12 14 L 52 14 L 39 29 L 39 43 L 25 49 L 25 29 Z\" fill=\"none\" opacity=\".80\" stroke=\"currentColor\" stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"1.2\"></path></svg><text data-vnext-fit-box=\"210,144,1710,290\" data-vnext-text-key=\"input.text.003\" font-family=\"var(--mono)\" font-size=\"13\" letter-spacing=\"3\" opacity=\".5\" x=\"248\" y=\"179.75\">01 / INPUT</text><text data-vnext-fit-box=\"210,144,1710,290\" data-vnext-text-key=\"input.text.004\" font-size=\"var(--type-subheading)\" x=\"248\" y=\"233.75\">输入边界</text><text data-vnext-fit-box=\"210,144,1710,290\" data-vnext-text-key=\"input.text.005\" font-size=\"19\" opacity=\".68\" x=\"498\" y=\"233.75\">数据来源 · 使用权限 · 质量门槛</text><text data-vnext-fit-box=\"210,144,1710,290\" data-vnext-text-key=\"input.text.006\" font-family=\"var(--mono)\" font-size=\"15\" opacity=\".52\" text-anchor=\"end\" x=\"1668\" y=\"233.75\">SOURCE · ACCESS · QUALITY</text></g>\n<g data-component-id=\"native.paper-ink.semantic.process-strip\" data-slot-id=\"reasoning\"><rect fill=\"var(--paper)\" height=\"145\" stroke=\"var(--wp-color-functional)\" width=\"1500\" x=\"210\" y=\"337.25\"></rect><svg color=\"var(--wp-color-functional)\" data-icon-source=\"redraw-v3:brain\" data-vnext-icon-key=\"reasoning.icon.001\" height=\"36\" viewbox=\"0 0 64 64\" width=\"36\" x=\"1630\" y=\"349.25\"><path d=\"M 32 14 Q 24 10 22 17 Q 15 17 15 25 Q 11 29 15 34 Q 13 42 21 42 Q 23 49 30 45 L 32 48 Z M 32 14 Q 40 10 42 17 Q 49 17 49 25 Q 53 29 49 34 Q 51 42 43 42 Q 41 49 34 45 L 32 48\" fill=\"none\" opacity=\".80\" stroke=\"currentColor\" stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"1.2\"></path></svg><text data-vnext-fit-box=\"210,337,1710,483\" data-vnext-text-key=\"reasoning.text.001\" font-family=\"var(--mono)\" font-size=\"13\" letter-spacing=\"3\" opacity=\".5\" x=\"248\" y=\"372.25\">02 / REASONING</text><text data-vnext-fit-box=\"210,337,1710,483\" data-vnext-text-key=\"reasoning.text.002\" font-size=\"var(--type-subheading)\" x=\"248\" y=\"426.25\">推理约束</text><text data-vnext-fit-box=\"210,337,1710,483\" data-vnext-text-key=\"reasoning.text.003\" font-size=\"19\" opacity=\".68\" x=\"498\" y=\"426.25\">任务指令 · 工具权限 · 异常回退</text><text data-vnext-fit-box=\"210,337,1710,483\" data-vnext-text-key=\"reasoning.text.004\" font-family=\"var(--mono)\" font-size=\"15\" opacity=\".52\" text-anchor=\"end\" x=\"1668\" y=\"426.25\">PROMPT · TOOL · FALLBACK</text></g>\n<g data-component-id=\"native.paper-ink.semantic.metric-band\" data-slot-id=\"evaluation\"><rect fill=\"var(--paper-panel)\" height=\"145\" stroke=\"var(--wp-color-functional)\" width=\"1500\" x=\"210\" y=\"529.75\"></rect><svg color=\"var(--wp-color-functional)\" data-icon-source=\"redraw-v3:chart-bar\" data-vnext-icon-key=\"evaluation.icon.001\" height=\"36\" viewbox=\"0 0 64 64\" width=\"36\" x=\"1630\" y=\"541.75\"><path d=\"M 17 26 L 17 46 L 23 46 L 23 26\" fill=\"none\" opacity=\".80\" stroke=\"currentColor\" stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"1.2\"></path> <path d=\"M 29 18 L 29 46 L 35 46 L 35 18\" fill=\"none\" opacity=\".90\" stroke=\"currentColor\" stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"1.6\"></path> <path d=\"M 41 33 L 41 46 L 47 46 L 47 33\" fill=\"none\" opacity=\".55\" stroke=\"currentColor\" stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\".8\"></path> <path d=\"M 13 46 L 51 46\" fill=\"none\" opacity=\".35\" stroke=\"currentColor\" stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\".55\"></path></svg><text data-vnext-fit-box=\"210,529,1710,675\" data-vnext-text-key=\"evaluation.text.001\" font-family=\"var(--mono)\" font-size=\"13\" letter-spacing=\"3\" opacity=\".5\" x=\"248\" y=\"564.75\">03 / EVALUATION</text><text data-vnext-fit-box=\"210,529,1710,675\" data-vnext-text-key=\"evaluation.text.002\" font-size=\"var(--type-subheading)\" x=\"248\" y=\"618.75\">结果评测</text><text data-vnext-fit-box=\"210,529,1710,675\" data-vnext-text-key=\"evaluation.text.003\" font-size=\"19\" opacity=\".68\" x=\"498\" y=\"618.75\">基准问题 · 通过阈值 · 失败样本</text><text data-vnext-fit-box=\"210,529,1710,675\" data-vnext-text-key=\"evaluation.text.004\" font-family=\"var(--mono)\" font-size=\"15\" opacity=\".52\" text-anchor=\"end\" x=\"1668\" y=\"618.75\">BENCHMARK · GATE · FAILURE</text></g>\n<g data-component-id=\"native.paper-ink.semantic.evidence-panel\" data-slot-id=\"governance\"><rect fill=\"var(--paper)\" height=\"145\" stroke=\"var(--wp-color-functional)\" width=\"1500\" x=\"210\" y=\"722.25\"></rect><svg color=\"var(--wp-color-functional)\" data-icon-source=\"redraw-v3:shield-check\" data-vnext-icon-key=\"governance.icon.001\" height=\"36\" viewbox=\"0 0 64 64\" width=\"36\" x=\"1630\" y=\"734.25\"><path d=\"M 32 8 Q 42 16 54 16 L 54 32 Q 54 48 32 56 Q 10 48 10 32 L 10 16 Q 22 16 32 8 Z\" fill=\"none\" opacity=\".80\" stroke=\"currentColor\" stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"1.2\"></path> <path d=\"M 20 32 L 29 41 L 45 24\" fill=\"none\" opacity=\".90\" stroke=\"currentColor\" stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"1.6\"></path></svg><text data-vnext-fit-box=\"210,722,1710,868\" data-vnext-text-key=\"governance.text.001\" font-family=\"var(--mono)\" font-size=\"13\" letter-spacing=\"3\" opacity=\".5\" x=\"248\" y=\"757.25\">04 / GOVERNANCE</text><text data-vnext-fit-box=\"210,722,1710,868\" data-vnext-text-key=\"governance.text.002\" font-size=\"var(--type-subheading)\" x=\"248\" y=\"811.25\">上线治理</text><text data-vnext-fit-box=\"210,722,1710,868\" data-vnext-text-key=\"governance.text.003\" font-size=\"19\" opacity=\".68\" x=\"498\" y=\"811.25\">审批责任 · 运行监控 · 全程审计</text><text data-vnext-fit-box=\"210,722,1710,868\" data-vnext-text-key=\"governance.text.004\" font-family=\"var(--mono)\" font-size=\"15\" opacity=\".52\" text-anchor=\"end\" x=\"1668\" y=\"811.25\">OWNER · MONITOR · AUDIT</text></g>\n</g>\n</svg><div class=\"caption\" data-vnext-claim-key=\"claim.text.001\" data-vnext-fit-box=\"0,0,1920,1080\">输入边界、推理约束、结果评测与上线治理，共同构成<span data-content-ref=\"sample.r6.r6-focus\" data-emphasis-role=\"label\" id=\"focus-caption\">可信交付</span>。</div></div>",
+    "stage_structure_sha256": "69bc2defb225489b05f4c49ca005184b210bcb57e475967e1f861598411a928e"
+  },
+  "bindings": {
+    "claim": {
+      "key": "claim.text.001",
+      "default": "输入边界、推理约束、结果评测与上线治理，共同构成 可信交付 。",
+      "max_chars": 35,
+      "fit_box": [
+        0.0,
+        0.0,
+        1920.0,
+        1080.0
+      ],
+      "fit_owner_kind": "slide"
+    },
+    "primary_slot": "input",
+    "slots": {
+      "input": {
+        "text": [
+          {
+            "key": "input.text.001",
+            "default": "PPT 标题",
+            "max_chars": 40,
+            "item_scope": "item",
+            "item_group_source": "fixed-slot",
+            "item_index": 0,
+            "fit_box": [
+              0.0,
+              0.0,
+              1920.0,
+              1080.0
+            ],
+            "fit_owner_kind": "slide"
+          },
+          {
+            "key": "input.text.002",
+            "default": "页面标题",
+            "max_chars": 72,
+            "item_scope": "item",
+            "item_group_source": "fixed-slot",
+            "item_index": 0,
+            "fit_box": [
+              0.0,
+              0.0,
+              1920.0,
+              1080.0
+            ],
+            "fit_owner_kind": "slide"
+          },
+          {
+            "key": "input.text.003",
+            "default": "01 / INPUT",
+            "max_chars": 11,
+            "item_scope": "item",
+            "item_group_source": "fixed-slot",
+            "item_index": 0,
+            "fit_box": [
+              210.0,
+              144.0,
+              1710.0,
+              290.0
+            ],
+            "fit_owner_kind": "svg-shape"
+          },
+          {
+            "key": "input.text.004",
+            "default": "输入边界",
+            "max_chars": 6,
+            "item_scope": "item",
+            "item_group_source": "fixed-slot",
+            "item_index": 0,
+            "fit_box": [
+              210.0,
+              144.0,
+              1710.0,
+              290.0
+            ],
+            "fit_owner_kind": "svg-shape"
+          },
+          {
+            "key": "input.text.005",
+            "default": "数据来源 · 使用权限 · 质量门槛",
+            "max_chars": 19,
+            "item_scope": "item",
+            "item_group_source": "fixed-slot",
+            "item_index": 0,
+            "fit_box": [
+              210.0,
+              144.0,
+              1710.0,
+              290.0
+            ],
+            "fit_owner_kind": "svg-shape"
+          },
+          {
+            "key": "input.text.006",
+            "default": "SOURCE · ACCESS · QUALITY",
+            "max_chars": 29,
+            "item_scope": "item",
+            "item_group_source": "fixed-slot",
+            "item_index": 0,
+            "fit_box": [
+              210.0,
+              144.0,
+              1710.0,
+              290.0
+            ],
+            "fit_owner_kind": "svg-shape"
+          }
+        ],
+        "icon": [
+          {
+            "key": "input.icon.001",
+            "default": "filter",
+            "item_scope": "item",
+            "item_group_source": "fixed-slot",
+            "item_index": 0
+          }
+        ]
+      },
+      "reasoning": {
+        "text": [
+          {
+            "key": "reasoning.text.001",
+            "default": "02 / REASONING",
+            "max_chars": 17,
+            "item_scope": "item",
+            "item_group_source": "fixed-slot",
+            "item_index": 0,
+            "fit_box": [
+              210.0,
+              337.0,
+              1710.0,
+              483.0
+            ],
+            "fit_owner_kind": "svg-shape"
+          },
+          {
+            "key": "reasoning.text.002",
+            "default": "推理约束",
+            "max_chars": 6,
+            "item_scope": "item",
+            "item_group_source": "fixed-slot",
+            "item_index": 0,
+            "fit_box": [
+              210.0,
+              337.0,
+              1710.0,
+              483.0
+            ],
+            "fit_owner_kind": "svg-shape"
+          },
+          {
+            "key": "reasoning.text.003",
+            "default": "任务指令 · 工具权限 · 异常回退",
+            "max_chars": 19,
+            "item_scope": "item",
+            "item_group_source": "fixed-slot",
+            "item_index": 0,
+            "fit_box": [
+              210.0,
+              337.0,
+              1710.0,
+              483.0
+            ],
+            "fit_owner_kind": "svg-shape"
+          },
+          {
+            "key": "reasoning.text.004",
+            "default": "PROMPT · TOOL · FALLBACK",
+            "max_chars": 27,
+            "item_scope": "item",
+            "item_group_source": "fixed-slot",
+            "item_index": 0,
+            "fit_box": [
+              210.0,
+              337.0,
+              1710.0,
+              483.0
+            ],
+            "fit_owner_kind": "svg-shape"
+          }
+        ],
+        "icon": [
+          {
+            "key": "reasoning.icon.001",
+            "default": "brain",
+            "item_scope": "item",
+            "item_group_source": "fixed-slot",
+            "item_index": 0
+          }
+        ]
+      },
+      "evaluation": {
+        "text": [
+          {
+            "key": "evaluation.text.001",
+            "default": "03 / EVALUATION",
+            "max_chars": 18,
+            "item_scope": "item",
+            "item_group_source": "fixed-slot",
+            "item_index": 0,
+            "fit_box": [
+              210.0,
+              529.0,
+              1710.0,
+              675.0
+            ],
+            "fit_owner_kind": "svg-shape"
+          },
+          {
+            "key": "evaluation.text.002",
+            "default": "结果评测",
+            "max_chars": 6,
+            "item_scope": "item",
+            "item_group_source": "fixed-slot",
+            "item_index": 0,
+            "fit_box": [
+              210.0,
+              529.0,
+              1710.0,
+              675.0
+            ],
+            "fit_owner_kind": "svg-shape"
+          },
+          {
+            "key": "evaluation.text.003",
+            "default": "基准问题 · 通过阈值 · 失败样本",
+            "max_chars": 19,
+            "item_scope": "item",
+            "item_group_source": "fixed-slot",
+            "item_index": 0,
+            "fit_box": [
+              210.0,
+              529.0,
+              1710.0,
+              675.0
+            ],
+            "fit_owner_kind": "svg-shape"
+          },
+          {
+            "key": "evaluation.text.004",
+            "default": "BENCHMARK · GATE · FAILURE",
+            "max_chars": 30,
+            "item_scope": "item",
+            "item_group_source": "fixed-slot",
+            "item_index": 0,
+            "fit_box": [
+              210.0,
+              529.0,
+              1710.0,
+              675.0
+            ],
+            "fit_owner_kind": "svg-shape"
+          }
+        ],
+        "icon": [
+          {
+            "key": "evaluation.icon.001",
+            "default": "chart-bar",
+            "item_scope": "item",
+            "item_group_source": "fixed-slot",
+            "item_index": 0
+          }
+        ]
+      },
+      "governance": {
+        "text": [
+          {
+            "key": "governance.text.001",
+            "default": "04 / GOVERNANCE",
+            "max_chars": 18,
+            "item_scope": "item",
+            "item_group_source": "fixed-slot",
+            "item_index": 0,
+            "fit_box": [
+              210.0,
+              722.0,
+              1710.0,
+              868.0
+            ],
+            "fit_owner_kind": "svg-shape"
+          },
+          {
+            "key": "governance.text.002",
+            "default": "上线治理",
+            "max_chars": 6,
+            "item_scope": "item",
+            "item_group_source": "fixed-slot",
+            "item_index": 0,
+            "fit_box": [
+              210.0,
+              722.0,
+              1710.0,
+              868.0
+            ],
+            "fit_owner_kind": "svg-shape"
+          },
+          {
+            "key": "governance.text.003",
+            "default": "审批责任 · 运行监控 · 全程审计",
+            "max_chars": 19,
+            "item_scope": "item",
+            "item_group_source": "fixed-slot",
+            "item_index": 0,
+            "fit_box": [
+              210.0,
+              722.0,
+              1710.0,
+              868.0
+            ],
+            "fit_owner_kind": "svg-shape"
+          },
+          {
+            "key": "governance.text.004",
+            "default": "OWNER · MONITOR · AUDIT",
+            "max_chars": 26,
+            "item_scope": "item",
+            "item_group_source": "fixed-slot",
+            "item_index": 0,
+            "fit_box": [
+              210.0,
+              722.0,
+              1710.0,
+              868.0
+            ],
+            "fit_owner_kind": "svg-shape"
+          }
+        ],
+        "icon": [
+          {
+            "key": "governance.icon.001",
+            "default": "shield-check",
+            "item_scope": "item",
+            "item_group_source": "fixed-slot",
+            "item_index": 0
+          }
+        ]
+      },
+      "takeaway": {
+        "text": [],
+        "icon": []
+      }
+    }
+  },
+  "seed_sha256": "f8c396521727fa5ac26e7b8285ab70e47b00bc0fda1a5de733dca5c0bc9593d1"
+}

@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-runtime="wise-ppt-specimen" data-typography-mode="all-sans" data-page-id="gallery-ai-d3" data-page-role="close" data-theme="paper-ink" data-layout="paper-ink.scaffold.minimal-outro" data-layout-source="gallery">
+<head>
+<meta charset="UTF-8">
+<title>layout-d3 · 极简 Outro · AI Engineering</title>
+<script src="../../../../runtime/stage-fit.js"></script>
+<!--
+  纸墨线稿样张 · C4 极简 Outro
+  @歪斯Wise「AI 工程化实战」分享
+  版式纪律（layouts C4）：一句大字 + mono 署名行 + 一处极细装饰；留白 >60%；无 FIG、无 caption
+-->
+<link rel="stylesheet" href="../../../../themes/paper-ink/assets/design-tokens.css">
+<link rel="stylesheet" href="../../../../themes/paper-ink/assets/catalog-fonts.css" data-wise-catalog-fonts="true">
+<link rel="stylesheet" href="../../../../themes/paper-ink/assets/slide-components.css">
+<link rel="stylesheet" href="../../../shell.css">
+<style>
+  svg.scene { position: absolute; inset: 0; z-index: 1; }
+  .doc.tl, .folio { color: var(--ink-45); }
+  .big {
+    position: absolute; left: 0; right: 0; top: 476px;
+    text-align: center;
+    font-family: var(--serif); font-weight: var(--wp-weight-regular);
+    /* 句末全角"。"右侧大半是空字面,墨迹重心左偏约 25px;
+       text-indent 半量作用于居中行,把字面墨迹光学拉回版心(同 .sig 的字距补偿纪律)。 */
+    font-size: var(--type-hero); letter-spacing: .06em; text-indent: .66em;
+    color: var(--ink);
+    z-index: 5;
+  }
+  .sig {
+    position: absolute; left: 0; right: 0; top: 626px;
+    text-align: center;
+    font-family: var(--mono); font-weight: 400;
+    font-size: var(--type-meta); letter-spacing: .3em; text-indent: .3em;
+    color: var(--ink-45);
+    text-transform: uppercase;
+    z-index: 5;
+  }
+</style>
+</head>
+<body class="slide">
+<div class="stage" data-template-id="D3" data-block-id="gallery-primary" data-renderer-kind="typography" data-component-source="native" data-component-id="native.paper-ink.scaffold.minimal-outro.outro-lockup" data-content-ref="example.d3">
+  <div class="doc tl" data-template-part="support" data-template-slot="support" data-template-slot-kind="text">PPT 标题<br>页面标题</div>
+  <div class="folio" data-template-part="folio">页码 / 总页数 — BY @歪斯Wise</div>
+
+  <svg class="scene" data-template-part="illustration" data-template-slot="illustration" data-template-slot-kind="illustration" width="1920" height="1080" viewBox="0 0 1920 1080">
+    <g id="draw"></g>
+  </svg>
+
+  <div class="big" data-template-part="primary" data-template-slot="primary" data-template-slot-kind="text">进一寸有进一寸的欢喜。</div>
+  <div class="sig" data-template-part="signature">@歪斯Wise</div>
+</div>
+
+<script src="../../../../themes/paper-ink/assets/particles.js"></script>
+<script>
+var NS = 'http://www.w3.org/2000/svg';
+var INK = 'var(--ink)';
+var G = document.getElementById('draw');
+function el(tag, attrs) {
+  var e = document.createElementNS(NS, tag);
+  for (var k in attrs) e.setAttribute(k, attrs[k]);
+  G.appendChild(e); return e;
+}
+G = el('g', {transform:'translate(0 -22)'});
+
+/* ===== 唯一一处极细装饰：大字上方的短横 + 小圆 + 十字准星 ===== */
+/* 短横（大字之上，居中） */
+el('line', {x1:920, y1: 440, x2:1000, y2: 440, stroke:INK, 'stroke-width':.8, opacity:.55});
+/* 短横右端小圆（双圈+实心核的极简化） */
+el('circle', {cx:1018, cy: 440, r:4.5, fill:'none', stroke:INK, 'stroke-width':.9, opacity:.7});
+el('circle', {cx:1018, cy: 440, r:1.6, fill:INK, opacity:.8});
+/* 署名行下方的十字准星（套准标记感） */
+el('line', {x1:951, y1: 716, x2:969, y2: 716, stroke:INK, 'stroke-width':.7, opacity:.4});
+el('line', {x1:960, y1: 707, x2:960, y2: 725, stroke:INK, 'stroke-width':.7, opacity:.4});
+
+stageFit();
+</script>
+</body>
+</html>

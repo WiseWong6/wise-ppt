@@ -1,0 +1,30 @@
+/* wise-ppt 成品组件外壳合同 v3。此文件必须在 vendor 组件 CSS 之后加载。 */
+@import url('./component-behavior.css');
+[data-layout-slot] .swiss-card,
+[data-layout-slot] .pi-card {
+  width: 100% !important;
+  height: auto !important;
+  min-width: 0 !important;
+  min-height: 0 !important;
+  aspect-ratio: auto !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  background: transparent !important;
+  border: 0 !important;
+  border-radius: 0 !important;
+  box-shadow: none !important;
+}
+
+[data-layout-slot] .swiss-card__content,
+[data-layout-slot] .pi-card__content {
+  width: 100% !important;
+  height: auto !important;
+  min-width: 0 !important;
+  min-height: 0 !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  display: block !important;
+  background: transparent !important;
+  border: 0 !important;
+  box-shadow: none !important;
+}

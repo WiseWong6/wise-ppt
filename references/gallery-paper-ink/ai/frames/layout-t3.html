@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-runtime="wise-ppt-specimen" data-typography-mode="all-sans" data-page-id="gallery-ai-t3" data-page-role="explain" data-theme="paper-ink" data-layout="paper-ink.causal.component-decision-atlas" data-layout-source="gallery" data-sample-focus-profile="copy-only" data-sample-focus-members='[{"selector":"#t3-focus","role":"label"}]' data-sample-focus-ref="sample.t3.t3-focus">
+<head>
+<meta charset="UTF-8">
+<title>layout-t3 · 组件调用决策与样本图册</title>
+<script src="../../../../runtime/stage-fit.js"></script>
+<link rel="stylesheet" href="../../../../themes/paper-ink/assets/design-tokens.css">
+<link rel="stylesheet" href="../../../../themes/paper-ink/assets/catalog-fonts.css" data-wise-catalog-fonts="true">
+<link rel="stylesheet" href="../../../../themes/paper-ink/assets/slide-components.css">
+<link rel="stylesheet" href="../../../shell.css">
+<style>
+  svg.scene{position:absolute;inset:0;z-index:1;transform:translateY(-78px)}
+  .caption{position:absolute;left:0;right:0;bottom:118px;text-align:center;font:400 var(--type-caption) var(--sans);letter-spacing:.04em;color:var(--ink);z-index:5}
+</style>
+</head>
+<body class="slide">
+<div class="stage" data-block-id="gallery-primary" data-renderer-kind="svg" data-component-source="native" data-component-id="native.paper-ink.causal.component-decision-atlas.decision" data-content-ref="example.t3">
+  <div class="doc tl" data-slot-id="support">PPT 标题<br>页面标题</div>
+  <div class="folio">页码 / 总页数 — BY @歪斯Wise</div>
+  <svg class="scene" width="1920" height="1080" viewBox="0 0 1920 1080" role="img" aria-label="组件调用判断和六种成熟表达单元">
+    <g id="t3-decision" data-slot-id="decision"></g>
+    <g id="t3-samples" data-slot-id="samples"></g>
+  </svg>
+  <div class="caption">提供成熟的表达组件，并由页面内容决定是否调用。</div>
+</div>
+<script>
+var NS='http://www.w3.org/2000/svg';
+var INK='var(--ink)',INK80='var(--ink-80)',INK70='var(--ink-70)',INK45='var(--ink-45)';
+var SANS='var(--sans)',MONO='var(--mono)',decision=document.getElementById('t3-decision'),samples=document.getElementById('t3-samples');
+function el(tag,attrs,parent){var n=document.createElementNS(NS,tag);Object.keys(attrs||{}).forEach(function(k){n.setAttribute(k,attrs[k]);});(parent||samples).appendChild(n);return n;}
+function txt(text,x,y,attrs,parent){var n=el('text',Object.assign({x:x,y:y,fill:INK,'font-family':SANS},attrs||{}),parent);n.textContent=text;return n;}
+function line(x1,y1,x2,y2,attrs,parent){return el('line',Object.assign({x1:x1,y1:y1,x2:x2,y2:y2,stroke:INK,'stroke-width':1.1},attrs||{}),parent);}
+var cardTop=610,cardGap=28,cardHeight=140;
+el('rect',{x:225,y:250,width:1470,height:224,fill:'var(--paper-panel)',stroke:INK80,'stroke-width':1.1},decision);el('rect',{x:231,y:256,width:1458,height:212,fill:'none',stroke:INK,'stroke-width':.55,opacity:.28},decision);
+txt('内容决定是否调用',260,336,{'font-size':'var(--type-emphasis)','font-weight':300},decision);txt('组件不是设计替身，',260,377,{'font-size':'var(--type-body)','font-weight':300,fill:INK70},decision);txt('版式决定阅读结构。',260,411,{'font-size':'var(--type-body)','font-weight':300,fill:INK70},decision);line(650,278,650,442,{stroke:INK45,'stroke-width':.9},decision);
+function principle(x,no,title,lines,index){var item=el('g',{'data-repeat-unit':'component-principle','data-bind-index':index},decision);el('circle',{cx:x,cy:335,r:18,fill:'var(--paper-deep)',stroke:INK,'stroke-width':1},item);txt(no,x,340,{'font-family':MONO,'font-size':'var(--type-meta)','text-anchor':'middle'},item);txt(title,x+34,339,{'font-size':'var(--type-body)','font-weight':300},item);lines.forEach(function(t,i){txt(t,x+34,378+i*25,{'font-size':'var(--type-body-small)','font-weight':300,fill:INK70},item);});}
+[['01','沉淀成熟表达',['把数据、流程、结构等','反复出现的形式规范下来。']],['02','按内容按需调用',['组件可装进不同版式，','也可以完全不使用。']],['03','让生成更加稳定',['减少随机的视觉偏差，','保留内容与构图的自由。']]].forEach(function(item,i){principle(710+i*320,item[0],item[1],item[2],i);});
+txt('成熟表达沉淀为单元',225,548,{id:'t3-focus','font-size':'var(--type-emphasis)','font-weight':300},samples);txt('按内容按需调用',225,582,{'font-size':'var(--type-body)','font-weight':300,fill:INK70},samples);
+function componentPreview(kind,x,y,parent){var previewCenter=x+310,offset={process:108,concentric:96,architecture:85,stats:87,chart:102,matrix:104},px=previewCenter-offset[kind],py=y+18;if(kind==='process'){['需求','设计','开发','测试'].forEach(function(label,i){var bx=px+i*56;el('rect',{x:bx,y:py+31,width:48,height:36,fill:i===1?'var(--paper-panel)':'none',stroke:INK,'stroke-width':.8},parent);txt(label,bx+24,py+56,{'font-size':'var(--type-micro-secondary)','text-anchor':'middle'},parent);if(i<3){line(bx+49,py+49,bx+54,py+49,{stroke:INK,'stroke-width':.8},parent);el('path',{d:'M '+(bx+50)+' '+(py+45)+' L '+(bx+54)+' '+(py+49)+' L '+(bx+50)+' '+(py+53),fill:'none',stroke:INK,'stroke-width':.8},parent);}});}if(kind==='concentric'){[[58,'生态层'],[40,'服务层'],[23,'内核']].forEach(function(p,i){el('circle',{cx:px+96,cy:py+51,r:p[0],fill:i===0?'var(--paper-panel)':'none',stroke:INK,'stroke-width':i===0?1:.8},parent);});txt('内核',px+96,py+55,{'font-size':'var(--type-micro-secondary)','text-anchor':'middle'},parent);}if(kind==='architecture'){['应用','资源','评测','追踪'].forEach(function(label,i){var yy=py+2+i*26;el('rect',{x:px,y:yy,width:48,height:22,fill:'var(--paper-panel)',stroke:INK,'stroke-width':.7},parent);txt(label,px+24,yy+16.5,{'font-size':'var(--type-micro-secondary)','text-anchor':'middle'},parent);[0,1,2].forEach(function(n){el('rect',{x:px+56+n*40,y:yy,width:34,height:22,fill:'none',stroke:INK45,'stroke-width':.6},parent);});});}if(kind==='stats'){[[-114,'42','METRIC A'],[6,'7%','METRIC B']].forEach(function(p){var bx=previewCenter+p[0];el('rect',{x:bx,y:py+16,width:108,height:72,fill:'none',stroke:INK,'stroke-width':.8},parent);txt(p[2],bx+8,py+35,{'font-family':MONO,'font-size':'var(--type-micro-secondary)','letter-spacing':.6,fill:INK70},parent);txt(p[1],bx+8,py+74,{'font-size':'var(--type-subheading)','font-weight':300},parent);});}if(kind==='chart'){[0,1,2].forEach(function(i){var bx=px+16+i*62;el('rect',{x:bx,y:py+20,width:48,height:70,fill:'none',stroke:INK45,'stroke-width':.8},parent);[0,1,2].forEach(function(n){line(bx+12+n*10,py+82,bx+12+n*10,py+82-(18+i*7+n*6),{stroke:INK,'stroke-width':1.3},parent);});});}if(kind==='matrix'){var mx=px+104,my=py+58;line(mx,my-40,mx,my+40,{stroke:INK,'stroke-width':.9},parent);line(mx-64,my,mx+64,my,{stroke:INK,'stroke-width':.9},parent);[[-35,-24],[35,-24],[-35,24],[35,24]].forEach(function(p){el('circle',{cx:mx+p[0],cy:my+p[1],r:4,fill:INK},parent);});}}
+function componentCard(x,y,num,title,kind,index){var item=el('g',{'data-repeat-unit':'component-sample','data-bind-index':index},samples);el('rect',{x:x,y:y,width:440,height:cardHeight,fill:'var(--paper-panel)',stroke:INK80,'stroke-width':1.1},item);el('rect',{x:x+5,y:y+5,width:430,height:cardHeight-10,fill:'none',stroke:INK,'stroke-width':.55,opacity:.3},item);txt(num,x+21,y+29,{'font-family':MONO,'font-size':'var(--type-meta)','letter-spacing':1.5,fill:INK45},item);txt(title,x+21,y+86,{'data-text-kind':'label','font-size':'var(--type-body)','font-weight':300},item);line(x+184,y+20,x+184,y+120,{stroke:INK45,'stroke-width':.7},item);componentPreview(kind,x,y,item);}
+[['01','流程','process'],['02','同心圆','concentric'],['03','架构','architecture'],['04','统计卡片','stats'],['05','数据图表','chart'],['06','关系矩阵','matrix']].forEach(function(item,i){componentCard([225,740,1255][i%3],cardTop+Math.floor(i/3)*(cardHeight+cardGap),item[0],item[1],item[2],i);});
+stageFit();
+</script>
+</body>
+</html>

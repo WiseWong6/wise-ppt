@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-runtime="wise-ppt-specimen" data-typography-mode="all-sans" data-page-id="gallery-ai-a2" data-page-role="hook" data-theme="paper-ink" data-layout="paper-ink.evidence.scenario-illustration" data-layout-source="gallery" data-sample-focus-profile="content-only" data-sample-focus-members='[{"selector":"#accent-dialogue","role":"value"},{"selector":"#accent-outline","role":"outline"}]' data-sample-focus-ref="sample.a2.a2-focus">
+<head>
+<meta charset="UTF-8">
+<title>layout-a2 · 场景画 · 洗车梗</title>
+<script src="../../../../runtime/stage-fit.js"></script>
+<link rel="stylesheet" href="../../../../themes/paper-ink/assets/design-tokens.css">
+<link rel="stylesheet" href="../../../../themes/paper-ink/assets/catalog-fonts.css" data-wise-catalog-fonts="true">
+<link rel="stylesheet" href="../../../../themes/paper-ink/assets/slide-components.css">
+<link rel="stylesheet" href="../../../shell.css">
+<style>
+  svg.scene { position: absolute; inset: 0; z-index: 1; }
+
+  .say { position: absolute; z-index: 3; }
+  .say .who {
+    font-family: var(--mono); font-size: var(--type-meta); letter-spacing: .25em;
+    color: var(--ink-45); margin-bottom: var(--space-3);
+  }
+  .say .bubble {
+    border: 1px solid color-mix(in srgb, var(--ink) 38%, transparent);
+    background: var(--paper-panel);
+    padding: var(--space-5) 28px;
+    box-shadow: var(--shadow-soft);
+    font-family: var(--sans); font-weight: 300;
+    font-size: var(--type-subheading); line-height: 1.6;
+  }
+  .say .bubble b { font-weight: 400; }
+
+  .caption {
+    position: absolute; left: 0; right: 0; bottom: 108px;
+    text-align: center;
+    font-family: var(--sans); font-weight: 400;
+    font-size: var(--type-caption); letter-spacing: .04em;
+    color: var(--ink);
+    z-index: 5;
+  }
+</style>
+</head>
+<body class="slide">
+<div class="stage" data-block-id="gallery-primary" data-renderer-kind="svg" data-component-source="native" data-component-id="native.paper-ink.evidence.scenario-illustration.scene" data-content-ref="example.a2">
+  <div class="doc tl">PPT 标题<br>页面标题</div>
+  <div class="folio">页码 / 总页数 — BY @歪斯Wise</div>
+
+  <div class="say" style="left:170px; top: 160.8px; width:520px;">
+    <div class="who">我 · 提问</div>
+    <div class="bubble">洗车店离我家 <b>50 米</b>，<br>我应该开车去还是走路去？</div>
+  </div>
+
+  <div class="say" style="right:142px; top: 160.8px; width:470px;">
+    <div class="who">AI · 回答</div>
+    <div class="bubble">建议您<b>走路</b>前往，绿色出行。</div>
+  </div>
+
+  <svg class="scene" width="1920" height="1080" viewBox="0 0 1920 1080">
+    <defs>
+      <pattern id="hatch" width="8" height="8" patternUnits="userSpaceOnUse" patternTransform="rotate(45)">
+        <line x1="0" y1="0" x2="0" y2="8" stroke="var(--ink)" stroke-width="0.8" opacity="0.5"/>
+      </pattern>
+    </defs>
+    <g id="draw"></g>
+  </svg>
+
+  <div class="caption">用户从提出需求到获得服务连续受阻，关键断点发生在意图转成行动之前。</div>
+</div>
+
+<script src="../../../../themes/paper-ink/assets/particles.js"></script>
+<script>
+var NS = 'http://www.w3.org/2000/svg';
+var INK = 'color-mix(in srgb, var(--ink) 82%, transparent)';
+if (location.search.indexOf('accent') >= 0) document.documentElement.classList.add('accent');
+var ACCENT = document.documentElement.classList.contains('accent');
+var FOCUS = getComputedStyle(document.documentElement).getPropertyValue('--wp-color-focus').trim();
+var G = document.getElementById('draw');
+function el(tag, attrs) {
+  var e = document.createElementNS(NS, tag);
+  for (var k in attrs) e.setAttribute(k, attrs[k]);
+  G.appendChild(e); return e;
+}
+function txt(x, y, str, attrs) {
+  var t = el('text', Object.assign({x:x, y:y}, attrs||{}));
+  t.textContent = str; return t;
+}
+var MONO = 'var(--mono)', SANS = 'var(--sans)';
+
+G = el('g', {transform:'translate(0 -7.2)'});
+var GY = 740, LW = 1.3;
+
+/* ============ 地面 ============ */
+el('line', {x1:150, y1:GY, x2:1770, y2:GY, stroke:INK, 'stroke-width':1.5});
+for (var gx = 180; gx < 1760; gx += 42) {
+  el('line', {x1:gx, y1:GY, x2:gx-13, y2:GY+11, stroke:INK, 'stroke-width':1, opacity:.3});
+}
+
+/* ============ 轿车（精细侧视） ============ */
+(function(){
+  var x = 210, y = GY;
+  el('path', {d:
+    'M '+(x+2)+' '+(y-16)+
+    ' L '+(x+2)+' '+(y-46)+
+    ' Q '+(x+2)+' '+(y-58)+' '+(x+16)+' '+(y-60)+
+    ' L '+(x+34)+' '+(y-62)+
+    ' Q '+(x+52)+' '+(y-96)+' '+(x+78)+' '+(y-98)+
+    ' L '+(x+112)+' '+(y-98)+
+    ' Q '+(x+142)+' '+(y-94)+' '+(x+160)+' '+(y-64)+
+    ' L '+(x+186)+' '+(y-56)+
+    ' Q '+(x+204)+' '+(y-50)+' '+(x+206)+' '+(y-36)+
+    ' L '+(x+206)+' '+(y-16)+
+    ' L '+(x+188)+' '+(y-16)+
+    ' A 24 24 0 0 0 '+(x+140)+' '+(y-16)+
+    ' L '+(x+72)+' '+(y-16)+
+    ' A 24 24 0 0 0 '+(x+24)+' '+(y-16)+' Z',
+    fill:'var(--paper-panel)', stroke:INK, 'stroke-width':LW, 'stroke-linejoin':'round'});
+  el('path', {d:'M '+(x+52)+' '+(y-66)+' Q '+(x+62)+' '+(y-88)+' '+(x+80)+' '+(y-90)+' L '+(x+92)+' '+(y-90)+' L '+(x+92)+' '+(y-66)+' Z',
+    fill:'none', stroke:INK, 'stroke-width':1.6});
+  el('path', {d:'M '+(x+100)+' '+(y-90)+' L '+(x+112)+' '+(y-90)+' Q '+(x+134)+' '+(y-86)+' '+(x+148)+' '+(y-66)+' L '+(x+100)+' '+(y-66)+' Z',
+    fill:'none', stroke:INK, 'stroke-width':1.6});
+  el('line', {x1:x+96, y1:y-64, x2:x+96, y2:y-18, stroke:INK, 'stroke-width':1.2, opacity:.7});
+  el('line', {x1:x+104, y1:y-52, x2:x+118, y2:y-52, stroke:INK, 'stroke-width':1.2});
+  [x+48, x+164].forEach(function(wx){
+    el('circle', {cx:wx, cy:y-16, r:23, fill:'var(--paper)', stroke:INK, 'stroke-width':1.4});
+    el('circle', {cx:wx, cy:y-16, r:9, fill:'none', stroke:INK, 'stroke-width':1.5});
+    el('circle', {cx:wx, cy:y-16, r:2.4, fill:INK});
+  });
+  el('line', {x1:x+150, y1:y-74, x2:x+158, y2:y-84, stroke:INK, 'stroke-width':1.2});
+  el('circle', {cx:x+202, cy:y-44, r:3.5, fill:'none', stroke:INK, 'stroke-width':1.5});
+  el('path', {d:'M '+(x+10)+' '+(y+8)+' L '+(x+196)+' '+(y+8)+' L '+(x+182)+' '+(y+18)+' L '+(x-4)+' '+(y+18)+' Z', fill:'url(#hatch)'});
+})();
+
+/* ============ 家 ============ */
+(function(){
+  var x = 430, y = GY, w = 230, h = 180;
+  el('rect', {x:x, y:y-h, width:w, height:h, fill:'var(--paper-panel)', stroke:INK, 'stroke-width':LW});
+  el('path', {d:'M '+(x-26)+' '+(y-h)+' L '+(x+w/2)+' '+(y-h-92)+' L '+(x+w+26)+' '+(y-h)+' Z',
+    fill:'url(#hatch)', stroke:INK, 'stroke-width':LW, 'stroke-linejoin':'round'});
+  el('path', {d:'M '+(x-26)+' '+(y-h)+' L '+(x+w+26)+' '+(y-h), stroke:INK, 'stroke-width':1.6});
+  el('rect', {x:x+w-58, y:y-h-72, width:26, height:52, fill:'var(--paper-panel)', stroke:INK, 'stroke-width':1.2});
+  el('rect', {x:x+34, y:y-96, width:52, height:96, fill:'none', stroke:INK, 'stroke-width':1.2});
+  el('circle', {cx:x+76, cy:y-48, r:3, fill:INK});
+  el('rect', {x:x+126, y:y-130, width:72, height:60, fill:'none', stroke:INK, 'stroke-width':1.2});
+  el('line', {x1:x+162, y1:y-130, x2:x+162, y2:y-70, stroke:INK, 'stroke-width':1.4});
+  el('line', {x1:x+126, y1:y-100, x2:x+198, y2:y-100, stroke:INK, 'stroke-width':1.4});
+  txt(x+w/2, y-h-116, 'HOME', {'font-family':MONO, 'font-size':'var(--type-label)', 'letter-spacing':4, 'text-anchor':'middle', fill:'var(--wp-adapter-pi-ink-60)'});
+  el('path', {d:'M '+x+' '+(y+8)+' L '+(x+w)+' '+(y+8)+' L '+(x+w-14)+' '+(y+18)+' L '+(x-14)+' '+(y+18)+' Z', fill:'url(#hatch)'});
+})();
+
+/* ============ 小人（行走动态） ============ */
+(function(){
+  var x = 760, y = GY;
+  el('circle', {cx:x, cy:y-118, r:15, fill:'var(--paper-panel)', stroke:INK, 'stroke-width':1.4});
+  el('path', {d:'M '+x+' '+(y-102)+' Q '+(x+6)+' '+(y-70)+' '+(x+4)+' '+(y-44), fill:'none', stroke:INK, 'stroke-width':1.6, 'stroke-linecap':'round'});
+  el('path', {d:'M '+(x+2)+' '+(y-88)+' Q '+(x+24)+' '+(y-72)+' '+(x+26)+' '+(y-56), fill:'none', stroke:INK, 'stroke-width':2.2, 'stroke-linecap':'round'});
+  el('path', {d:'M '+(x+2)+' '+(y-88)+' Q '+(x-18)+' '+(y-76)+' '+(x-20)+' '+(y-62), fill:'none', stroke:INK, 'stroke-width':2.2, 'stroke-linecap':'round'});
+  el('path', {d:'M '+(x+4)+' '+(y-44)+' Q '+(x+26)+' '+(y-24)+' '+(x+34)+' '+y, fill:'none', stroke:INK, 'stroke-width':1.6, 'stroke-linecap':'round'});
+  el('path', {d:'M '+(x+4)+' '+(y-44)+' Q '+(x-16)+' '+(y-20)+' '+(x-22)+' '+y, fill:'none', stroke:INK, 'stroke-width':1.6, 'stroke-linecap':'round'});
+})();
+
+/* ============ 洗车店 ============ */
+(function(){
+  var x = 1000, y = GY, w = 300, h = 200;
+  el('rect', {x:x, y:y-h, width:w, height:h, fill:'var(--paper-panel)', stroke:INK, 'stroke-width':LW});
+  el('line', {x1:x-8, y1:y-h, x2:x+w+8, y2:y-h, stroke:INK, 'stroke-width':1.5});
+  el('line', {x1:x-8, y1:y-h-14, x2:x+w+8, y2:y-h-14, stroke:INK, 'stroke-width':1.6});
+  el('line', {x1:x+60, y1:y-h-14, x2:x+60, y2:y-h-86, stroke:INK, 'stroke-width':1.4});
+  el('line', {x1:x+w-60, y1:y-h-14, x2:x+w-60, y2:y-h-86, stroke:INK, 'stroke-width':1.4});
+  el('rect', {x:x+30, y:y-h-136, width:w-60, height:72, fill:'var(--paper-panel)', stroke:INK, 'stroke-width':1.4});
+  txt(x+w/2, y-h-84, '洗 车', {'font-family':SANS, 'font-weight':400, 'font-size':'var(--type-emphasis)', 'letter-spacing':6, 'text-anchor':'middle', fill:INK});
+  txt(x+w/2, y-h-144, 'CAR WASH', {'font-family':MONO, 'font-size':'var(--type-meta)', 'letter-spacing':4, 'text-anchor':'middle', fill:'var(--wp-adapter-pi-ink-60)'});
+  el('rect', {x:x+34, y:y-136, width:120, height:136, fill:'none', stroke:INK, 'stroke-width':1.2});
+  for (var i = 1; i <= 5; i++) {
+    el('line', {x1:x+34, y1:y-136+i*22, x2:x+154, y2:y-136+i*22, stroke:INK, 'stroke-width':1.1, opacity:.6});
+  }
+  el('rect', {x:x+184, y:y-124, width:88, height:76, fill:'none', stroke:INK, 'stroke-width':1.2});
+  el('line', {x1:x+228, y1:y-124, x2:x+228, y2:y-48, stroke:INK, 'stroke-width':1.3});
+  /* 确定性伪随机（固定种子 LCG），保证每次渲染分布一致 */
+  var bubbleSeed = 20260809;
+  function rnd() { bubbleSeed = (bubbleSeed * 1664525 + 1013904223) >>> 0; return bubbleSeed / 4294967296; }
+  for (var d = 0; d < 12; d++) {
+    el('circle', {cx:x+w+18+rnd()*52, cy:y-30-rnd()*110, r:1.4+rnd()*2.2, fill:'none', stroke:INK, 'stroke-width':1.1, opacity:.55});
+  }
+  el('path', {d:'M '+(x-46)+' '+(y-30)+' L '+(x-14)+' '+(y-30)+' L '+(x-18)+' '+y+' L '+(x-42)+' '+y+' Z', fill:'none', stroke:INK, 'stroke-width':1.2});
+  el('path', {d:'M '+(x-46)+' '+(y-30)+' Q '+(x-30)+' '+(y-52)+' '+(x-14)+' '+(y-30), fill:'none', stroke:INK, 'stroke-width':1.6});
+  el('path', {d:'M '+x+' '+(y+8)+' L '+(x+w)+' '+(y+8)+' L '+(x+w-14)+' '+(y+18)+' L '+(x-14)+' '+(y+18)+' Z', fill:'url(#hatch)'});
+})();
+
+/* ============ 50 m 尺寸标注 ============ */
+(function(){
+  var y = GY + 72, x1 = 660, x2 = 1000;
+  el('line', {x1:x1, y1:y, x2:x2, y2:y, stroke:INK, 'stroke-width':1.6});
+  el('line', {x1:x1, y1:y-10, x2:x1, y2:y+10, stroke:INK, 'stroke-width':1.6});
+  el('line', {x1:x2, y1:y-10, x2:x2, y2:y+10, stroke:INK, 'stroke-width':1.6});
+  el('line', {x1:x1, y1:y, x2:x1, y2:GY+4, stroke:INK, 'stroke-width':.8, 'stroke-dasharray':'2 4', opacity:.5});
+  el('line', {x1:x2, y1:y, x2:x2, y2:GY+4, stroke:INK, 'stroke-width':.8, 'stroke-dasharray':'2 4', opacity:.5});
+  txt((x1+x2)/2, y+38, '50 m', {'font-family':MONO, 'font-size':'var(--type-subheading)', 'text-anchor':'middle', fill:INK});
+})();
+
+/* ============ 步行小径 + 被落下的车 ============ */
+(function(){
+  el('path', {d:'M 790 706 Q 900 690 992 690', fill:'none', stroke:INK, 'stroke-width':1.8, 'stroke-dasharray':'4 9', opacity:.7});
+  el('path', {d:'M 984 682 L 1000 690 L 986 700', fill:'none', stroke:INK, 'stroke-width':2, 'stroke-linecap':'round', 'stroke-linejoin':'round'});
+  el('ellipse', {id:'accent-outline', cx:314, cy:672, rx:150, ry:96, fill:'none', stroke:INK, 'stroke-width':1.4, transform:'rotate(-3 314 672)', opacity:.85});
+  txt(250, 556, '车：那我呢？', {id:'accent-dialogue', 'font-family':'var(--brush)', 'font-size':'var(--type-heading)', fill:INK, transform:'rotate(-3 250 556)'});
+})();
+
+stageFit();
+</script>
+</body>
+</html>

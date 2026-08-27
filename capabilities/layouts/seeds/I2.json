@@ -1,0 +1,393 @@
+{
+  "contract": "wise-ppt-layout-seed@4",
+  "layout_id": "paper-ink.relationship.I2",
+  "display_code": "I2",
+  "page_kind": "relationship",
+  "source": {
+    "path": "references/gallery-paper-ink/ai/frames/layout-i2.html",
+    "sha256": "23cfd708bd7cce5da23e4a68226da3edc1e20a1a1858fa1406fe34a8f54963e4"
+  },
+  "locked": {
+    "scoped_css": "@scope (.slide[data-layout-id=\"paper-ink.relationship.I2\"]) {\nsvg.scene { position: absolute; inset: 0; z-index: 1; }\n  .caption {\n    position: absolute; left: 0; right: 0; bottom: 118px;\n    text-align: center;\n    font-family: var(--sans); font-weight: 400;\n    font-size: var(--type-caption); letter-spacing: .04em;\n    color: var(--ink);\n    z-index: 5;\n  }\n}\n",
+    "css_sha256": "ae734255213e016f38e446917d1f1bf30f15b6c7f226fc9eb2dfb98d169df0c2",
+    "stage_html": "<div class=\"stage\" data-block-id=\"gallery-primary\" data-component-id=\"native.paper-ink.flow.known-unknown-chain.visible-steps\" data-component-source=\"native\" data-content-ref=\"example.i2\" data-renderer-kind=\"svg\">\n<div class=\"doc tl\"><span class=\"vnext-text-node\" data-vnext-fit-box=\"0,0,1920,1080\" data-vnext-text-key=\"support.text.001\">PPT 标题</span><br/><span class=\"vnext-text-node\" data-vnext-fit-box=\"0,0,1920,1080\" data-vnext-text-key=\"support.text.002\">页面标题</span></div>\n<div class=\"folio\">页码 / 总页数 — BY @歪斯Wise</div>\n<svg class=\"scene\" height=\"1080\" viewbox=\"0 0 1920 1080\" width=\"1920\">\n<defs>\n<marker id=\"arrow\" markerheight=\"8\" markerwidth=\"8\" orient=\"auto-start-reverse\" refx=\"9\" refy=\"5\" viewbox=\"0 0 10 10\">\n<path d=\"M 0 0 L 10 5 L 0 10\" fill=\"none\" stroke=\"var(--ink)\" stroke-width=\"1.4\"></path>\n</marker>\n</defs>\n<g id=\"draw\"><g transform=\"translate(0 -7.7)\"><text data-vnext-fit-box=\"0,0,1920,1080\" data-vnext-text-key=\"visible-steps.text.001\" fill=\"color-mix(in srgb, var(--ink) 40%, transparent)\" font-family=\"var(--mono)\" font-size=\"var(--type-label)\" letter-spacing=\"5\" text-anchor=\"middle\" x=\"960\" y=\"300\">INVISIBLE · WHAT THE LLM DOES INSIDE</text><line opacity=\"0.3\" stroke=\"var(--ink)\" stroke-width=\"0.6\" x1=\"740\" x2=\"1180\" y1=\"316\" y2=\"316\"></line><rect fill=\"var(--paper-panel)\" height=\"128\" rx=\"16\" stroke=\"var(--ink-55)\" stroke-width=\"1.2\" width=\"330\" x=\"150\" y=\"456\"></rect><text data-vnext-fit-box=\"150,448,480,577\" data-vnext-text-key=\"visible-steps.text.002\" fill=\"var(--ink)\" font-family=\"var(--sans)\" font-size=\"var(--type-subheading)\" font-weight=\"300\" x=\"180\" y=\"504\">prompt 已提交</text><text data-vnext-fit-box=\"150,448,480,577\" data-vnext-text-key=\"visible-steps.text.003\" fill=\"var(--ink)\" font-family=\"var(--sans)\" font-size=\"var(--type-subheading)\" font-weight=\"300\" x=\"180\" y=\"546\">100 tokens 已输入</text><text data-vnext-fit-box=\"150,280,1770,733\" data-vnext-text-key=\"visible-steps.text.004\" fill=\"var(--ink-45)\" font-family=\"var(--sans)\" font-size=\"var(--type-body)\" font-weight=\"300\" x=\"150\" y=\"430\">已知 · 输入</text><rect fill=\"var(--paper-panel)\" height=\"128\" rx=\"16\" stroke=\"var(--ink-55)\" stroke-width=\"1.2\" width=\"330\" x=\"1440\" y=\"456\"></rect><text data-vnext-fit-box=\"1440,448,1770,577\" data-vnext-text-key=\"visible-steps.text.005\" fill=\"var(--ink)\" font-family=\"var(--sans)\" font-size=\"var(--type-subheading)\" font-weight=\"300\" x=\"1470\" y=\"504\">completion 已返回</text><text data-vnext-fit-box=\"1440,448,1770,577\" data-vnext-text-key=\"visible-steps.text.006\" fill=\"var(--ink)\" font-family=\"var(--sans)\" font-size=\"var(--type-subheading)\" font-weight=\"300\" id=\"sample-focus\" x=\"1470\" y=\"546\">答案已生成</text><text data-vnext-fit-box=\"150,280,1770,733\" data-vnext-text-key=\"visible-steps.text.007\" fill=\"var(--ink-45)\" font-family=\"var(--sans)\" font-size=\"var(--type-body)\" font-weight=\"300\" x=\"1440\" y=\"430\">已知 · 输出</text><line marker-end=\"url(#arrow)\" opacity=\"0.6\" stroke=\"var(--ink)\" stroke-dasharray=\"6 7\" stroke-width=\"1.2\" x1=\"480\" x2=\"544\" y1=\"520\" y2=\"520\"></line><rect fill=\"none\" height=\"112\" opacity=\"0.75\" rx=\"12\" stroke=\"var(--ink)\" stroke-dasharray=\"7 6\" stroke-width=\"1.1\" width=\"170\" x=\"560\" y=\"464\"></rect><text data-vnext-fit-box=\"560,456,730,569\" data-vnext-text-key=\"visible-steps.text.008\" fill=\"var(--ink-55)\" font-family=\"var(--mono)\" font-size=\"var(--type-heading)\" text-anchor=\"middle\" x=\"645\" y=\"512\">?</text><text data-vnext-fit-box=\"560,456,730,569\" data-vnext-text-key=\"visible-steps.text.009\" fill=\"var(--ink-70)\" font-family=\"var(--sans)\" font-size=\"var(--type-body-small)\" font-weight=\"300\" text-anchor=\"middle\" x=\"645\" y=\"554\">意图如何解析？</text><line marker-end=\"url(#arrow)\" opacity=\"0.6\" stroke=\"var(--ink)\" stroke-dasharray=\"6 7\" stroke-width=\"1.2\" x1=\"730\" x2=\"774\" y1=\"520\" y2=\"520\"></line><rect fill=\"none\" height=\"112\" opacity=\"0.75\" rx=\"12\" stroke=\"var(--ink)\" stroke-dasharray=\"7 6\" stroke-width=\"1.1\" width=\"170\" x=\"780\" y=\"464\"></rect><text data-vnext-fit-box=\"780,456,950,569\" data-vnext-text-key=\"visible-steps.text.010\" fill=\"var(--ink-55)\" font-family=\"var(--mono)\" font-size=\"var(--type-heading)\" text-anchor=\"middle\" x=\"865\" y=\"512\">?</text><text data-vnext-fit-box=\"780,456,950,569\" data-vnext-text-key=\"visible-steps.text.011\" fill=\"var(--ink-70)\" font-family=\"var(--sans)\" font-size=\"var(--type-body-small)\" font-weight=\"300\" text-anchor=\"middle\" x=\"865\" y=\"554\">知识如何检索？</text><line marker-end=\"url(#arrow)\" opacity=\"0.6\" stroke=\"var(--ink)\" stroke-dasharray=\"6 7\" stroke-width=\"1.2\" x1=\"950\" x2=\"994\" y1=\"520\" y2=\"520\"></line><rect fill=\"none\" height=\"112\" opacity=\"0.75\" rx=\"12\" stroke=\"var(--ink)\" stroke-dasharray=\"7 6\" stroke-width=\"1.1\" width=\"170\" x=\"1000\" y=\"464\"></rect><text data-vnext-fit-box=\"1000,456,1170,569\" data-vnext-text-key=\"visible-steps.text.012\" fill=\"var(--ink-55)\" font-family=\"var(--mono)\" font-size=\"var(--type-heading)\" text-anchor=\"middle\" x=\"1085\" y=\"512\">?</text><text data-vnext-fit-box=\"1000,456,1170,569\" data-vnext-text-key=\"visible-steps.text.013\" fill=\"var(--ink-70)\" font-family=\"var(--sans)\" font-size=\"var(--type-body-small)\" font-weight=\"300\" text-anchor=\"middle\" x=\"1085\" y=\"554\">逻辑如何推演？</text><line marker-end=\"url(#arrow)\" opacity=\"0.6\" stroke=\"var(--ink)\" stroke-dasharray=\"6 7\" stroke-width=\"1.2\" x1=\"1170\" x2=\"1214\" y1=\"520\" y2=\"520\"></line><rect fill=\"none\" height=\"112\" opacity=\"0.75\" rx=\"12\" stroke=\"var(--ink)\" stroke-dasharray=\"7 6\" stroke-width=\"1.1\" width=\"170\" x=\"1220\" y=\"464\"></rect><text data-vnext-fit-box=\"1220,456,1390,569\" data-vnext-text-key=\"visible-steps.text.014\" fill=\"var(--ink-55)\" font-family=\"var(--mono)\" font-size=\"var(--type-heading)\" text-anchor=\"middle\" x=\"1305\" y=\"512\">?</text><text data-vnext-fit-box=\"150,280,1770,733\" data-vnext-text-key=\"visible-steps.text.015\" fill=\"var(--ink-70)\" font-family=\"var(--sans)\" font-size=\"var(--type-body-small)\" font-weight=\"300\" text-anchor=\"middle\" x=\"1305\" y=\"554\">幻觉与置信如何把控？</text><line marker-end=\"url(#arrow)\" opacity=\"0.6\" stroke=\"var(--ink)\" stroke-dasharray=\"6 7\" stroke-width=\"1.2\" x1=\"1390\" x2=\"1424\" y1=\"520\" y2=\"520\"></line><line opacity=\"0.3\" stroke=\"var(--ink)\" stroke-dasharray=\"2 6\" stroke-width=\"0.6\" x1=\"560\" x2=\"1390\" y1=\"668\" y2=\"668\"></line><line opacity=\"0.5\" stroke=\"var(--ink)\" stroke-width=\"0.8\" x1=\"560\" x2=\"560\" y1=\"662\" y2=\"674\"></line><text data-vnext-fit-box=\"150,280,1770,733\" data-vnext-text-key=\"visible-steps.text.016\" fill=\"var(--ink-45)\" font-family=\"var(--mono)\" font-size=\"var(--type-micro-secondary)\" letter-spacing=\"2\" text-anchor=\"middle\" x=\"560\" y=\"700\">STEP 01</text><line opacity=\"0.5\" stroke=\"var(--ink)\" stroke-width=\"0.8\" x1=\"767.5\" x2=\"767.5\" y1=\"662\" y2=\"674\"></line><text data-vnext-fit-box=\"150,280,1770,733\" data-vnext-text-key=\"visible-steps.text.017\" fill=\"var(--ink-45)\" font-family=\"var(--mono)\" font-size=\"var(--type-micro-secondary)\" letter-spacing=\"2\" text-anchor=\"middle\" x=\"767.5\" y=\"700\">STEP 02</text><line opacity=\"0.5\" stroke=\"var(--ink)\" stroke-width=\"0.8\" x1=\"975\" x2=\"975\" y1=\"662\" y2=\"674\"></line><text data-vnext-fit-box=\"150,280,1770,733\" data-vnext-text-key=\"visible-steps.text.018\" fill=\"var(--ink-45)\" font-family=\"var(--mono)\" font-size=\"var(--type-micro-secondary)\" letter-spacing=\"2\" text-anchor=\"middle\" x=\"975\" y=\"700\">STEP 03</text><line opacity=\"0.5\" stroke=\"var(--ink)\" stroke-width=\"0.8\" x1=\"1182.5\" x2=\"1182.5\" y1=\"662\" y2=\"674\"></line><text data-vnext-fit-box=\"150,280,1770,733\" data-vnext-text-key=\"visible-steps.text.019\" fill=\"var(--ink-45)\" font-family=\"var(--mono)\" font-size=\"var(--type-micro-secondary)\" letter-spacing=\"2\" text-anchor=\"middle\" x=\"1182.5\" y=\"700\">STEP 04</text><line opacity=\"0.5\" stroke=\"var(--ink)\" stroke-width=\"0.8\" x1=\"1390\" x2=\"1390\" y1=\"662\" y2=\"674\"></line><text data-vnext-fit-box=\"150,280,1770,733\" data-vnext-text-key=\"visible-steps.text.020\" fill=\"var(--ink-45)\" font-family=\"var(--mono)\" font-size=\"var(--type-micro-secondary)\" letter-spacing=\"2\" text-anchor=\"middle\" x=\"1390\" y=\"700\">STEP 05</text><text data-vnext-fit-box=\"0,0,1920,1080\" data-vnext-text-key=\"visible-steps.text.021\" fill=\"var(--ink-45)\" font-family=\"var(--mono)\" font-size=\"var(--type-meta)\" letter-spacing=\"2\" text-anchor=\"middle\" x=\"975\" y=\"736\">TOTAL 1.8 S · OBSERVED FROM OUTSIDE: NOTHING</text></g></g>\n</svg>\n<div class=\"caption\" data-vnext-claim-key=\"claim.text.001\" data-vnext-fit-box=\"0,0,1920,1080\">提示输入与答案可以观察，模型内部推理只能通过外部轨迹间接解释。</div>\n</div>",
+    "stage_structure_sha256": "6ce2349aae49fd4d1d01f71b84ba3769b2327a07e7955f5d9b6c7f3d2c5aea9e"
+  },
+  "bindings": {
+    "claim": {
+      "key": "claim.text.001",
+      "default": "提示输入与答案可以观察，模型内部推理只能通过外部轨迹间接解释。",
+      "max_chars": 37,
+      "fit_box": [
+        0.0,
+        0.0,
+        1920.0,
+        1080.0
+      ],
+      "fit_owner_kind": "slide"
+    },
+    "primary_slot": "visible-steps",
+    "slots": {
+      "visible-steps": {
+        "text": [
+          {
+            "key": "visible-steps.text.001",
+            "default": "INVISIBLE · WHAT THE LLM DOES INSIDE",
+            "max_chars": 41,
+            "item_scope": "item",
+            "item_group_source": "fixed-slot",
+            "item_index": 0,
+            "fit_box": [
+              0.0,
+              0.0,
+              1920.0,
+              1080.0
+            ],
+            "fit_owner_kind": "slide"
+          },
+          {
+            "key": "visible-steps.text.002",
+            "default": "prompt 已提交",
+            "max_chars": 11,
+            "item_scope": "item",
+            "item_group_source": "fixed-slot",
+            "item_index": 0,
+            "fit_box": [
+              150.0,
+              448.0,
+              480.0,
+              577.0
+            ],
+            "fit_owner_kind": "svg-shape"
+          },
+          {
+            "key": "visible-steps.text.003",
+            "default": "100 tokens 已输入",
+            "max_chars": 11,
+            "item_scope": "item",
+            "item_group_source": "fixed-slot",
+            "item_index": 0,
+            "fit_box": [
+              150.0,
+              448.0,
+              480.0,
+              577.0
+            ],
+            "fit_owner_kind": "svg-shape"
+          },
+          {
+            "key": "visible-steps.text.004",
+            "default": "已知 · 输入",
+            "max_chars": 7,
+            "item_scope": "item",
+            "item_group_source": "fixed-slot",
+            "item_index": 0,
+            "fit_box": [
+              150.0,
+              280.0,
+              1770.0,
+              733.0
+            ],
+            "fit_owner_kind": "svg-group"
+          },
+          {
+            "key": "visible-steps.text.005",
+            "default": "completion 已返回",
+            "max_chars": 11,
+            "item_scope": "item",
+            "item_group_source": "fixed-slot",
+            "item_index": 0,
+            "fit_box": [
+              1440.0,
+              448.0,
+              1770.0,
+              577.0
+            ],
+            "fit_owner_kind": "svg-shape"
+          },
+          {
+            "key": "visible-steps.text.006",
+            "default": "答案已生成",
+            "max_chars": 7,
+            "item_scope": "item",
+            "item_group_source": "fixed-slot",
+            "item_index": 0,
+            "fit_box": [
+              1440.0,
+              448.0,
+              1770.0,
+              577.0
+            ],
+            "fit_owner_kind": "svg-shape"
+          },
+          {
+            "key": "visible-steps.text.007",
+            "default": "已知 · 输出",
+            "max_chars": 7,
+            "item_scope": "item",
+            "item_group_source": "fixed-slot",
+            "item_index": 0,
+            "fit_box": [
+              150.0,
+              280.0,
+              1770.0,
+              733.0
+            ],
+            "fit_owner_kind": "svg-group"
+          },
+          {
+            "key": "visible-steps.text.008",
+            "default": "?",
+            "max_chars": 2,
+            "item_scope": "item",
+            "item_group_source": "fixed-slot",
+            "item_index": 0,
+            "fit_box": [
+              560.0,
+              456.0,
+              730.0,
+              569.0
+            ],
+            "fit_owner_kind": "svg-shape"
+          },
+          {
+            "key": "visible-steps.text.009",
+            "default": "意图如何解析？",
+            "max_chars": 9,
+            "item_scope": "item",
+            "item_group_source": "fixed-slot",
+            "item_index": 0,
+            "fit_box": [
+              560.0,
+              456.0,
+              730.0,
+              569.0
+            ],
+            "fit_owner_kind": "svg-shape"
+          },
+          {
+            "key": "visible-steps.text.010",
+            "default": "?",
+            "max_chars": 2,
+            "item_scope": "item",
+            "item_group_source": "fixed-slot",
+            "item_index": 0,
+            "fit_box": [
+              780.0,
+              456.0,
+              950.0,
+              569.0
+            ],
+            "fit_owner_kind": "svg-shape"
+          },
+          {
+            "key": "visible-steps.text.011",
+            "default": "知识如何检索？",
+            "max_chars": 9,
+            "item_scope": "item",
+            "item_group_source": "fixed-slot",
+            "item_index": 0,
+            "fit_box": [
+              780.0,
+              456.0,
+              950.0,
+              569.0
+            ],
+            "fit_owner_kind": "svg-shape"
+          },
+          {
+            "key": "visible-steps.text.012",
+            "default": "?",
+            "max_chars": 2,
+            "item_scope": "item",
+            "item_group_source": "fixed-slot",
+            "item_index": 0,
+            "fit_box": [
+              1000.0,
+              456.0,
+              1170.0,
+              569.0
+            ],
+            "fit_owner_kind": "svg-shape"
+          },
+          {
+            "key": "visible-steps.text.013",
+            "default": "逻辑如何推演？",
+            "max_chars": 9,
+            "item_scope": "item",
+            "item_group_source": "fixed-slot",
+            "item_index": 0,
+            "fit_box": [
+              1000.0,
+              456.0,
+              1170.0,
+              569.0
+            ],
+            "fit_owner_kind": "svg-shape"
+          },
+          {
+            "key": "visible-steps.text.014",
+            "default": "?",
+            "max_chars": 2,
+            "item_scope": "item",
+            "item_group_source": "fixed-slot",
+            "item_index": 0,
+            "fit_box": [
+              1220.0,
+              456.0,
+              1390.0,
+              569.0
+            ],
+            "fit_owner_kind": "svg-shape"
+          },
+          {
+            "key": "visible-steps.text.015",
+            "default": "幻觉与置信如何把控？",
+            "max_chars": 14,
+            "item_scope": "item",
+            "item_group_source": "fixed-slot",
+            "item_index": 0,
+            "fit_box": [
+              150.0,
+              280.0,
+              1770.0,
+              733.0
+            ],
+            "fit_owner_kind": "svg-group"
+          },
+          {
+            "key": "visible-steps.text.016",
+            "default": "STEP 01",
+            "max_chars": 9,
+            "item_scope": "item",
+            "item_group_source": "fixed-slot",
+            "item_index": 0,
+            "fit_box": [
+              150.0,
+              280.0,
+              1770.0,
+              733.0
+            ],
+            "fit_owner_kind": "svg-group"
+          },
+          {
+            "key": "visible-steps.text.017",
+            "default": "STEP 02",
+            "max_chars": 9,
+            "item_scope": "item",
+            "item_group_source": "fixed-slot",
+            "item_index": 0,
+            "fit_box": [
+              150.0,
+              280.0,
+              1770.0,
+              733.0
+            ],
+            "fit_owner_kind": "svg-group"
+          },
+          {
+            "key": "visible-steps.text.018",
+            "default": "STEP 03",
+            "max_chars": 9,
+            "item_scope": "item",
+            "item_group_source": "fixed-slot",
+            "item_index": 0,
+            "fit_box": [
+              150.0,
+              280.0,
+              1770.0,
+              733.0
+            ],
+            "fit_owner_kind": "svg-group"
+          },
+          {
+            "key": "visible-steps.text.019",
+            "default": "STEP 04",
+            "max_chars": 9,
+            "item_scope": "item",
+            "item_group_source": "fixed-slot",
+            "item_index": 0,
+            "fit_box": [
+              150.0,
+              280.0,
+              1770.0,
+              733.0
+            ],
+            "fit_owner_kind": "svg-group"
+          },
+          {
+            "key": "visible-steps.text.020",
+            "default": "STEP 05",
+            "max_chars": 9,
+            "item_scope": "item",
+            "item_group_source": "fixed-slot",
+            "item_index": 0,
+            "fit_box": [
+              150.0,
+              280.0,
+              1770.0,
+              733.0
+            ],
+            "fit_owner_kind": "svg-group"
+          },
+          {
+            "key": "visible-steps.text.021",
+            "default": "TOTAL 1.8 S · OBSERVED FROM OUTSIDE: NOTHING",
+            "max_chars": 50,
+            "item_scope": "item",
+            "item_group_source": "fixed-slot",
+            "item_index": 0,
+            "fit_box": [
+              0.0,
+              0.0,
+              1920.0,
+              1080.0
+            ],
+            "fit_owner_kind": "slide"
+          }
+        ],
+        "icon": []
+      },
+      "support": {
+        "text": [
+          {
+            "key": "support.text.001",
+            "default": "PPT 标题",
+            "max_chars": 40,
+            "item_scope": "item",
+            "item_group_source": "fixed-slot",
+            "item_index": 0,
+            "fit_box": [
+              0.0,
+              0.0,
+              1920.0,
+              1080.0
+            ],
+            "fit_owner_kind": "slide"
+          },
+          {
+            "key": "support.text.002",
+            "default": "页面标题",
+            "max_chars": 72,
+            "item_scope": "item",
+            "item_group_source": "fixed-slot",
+            "item_index": 0,
+            "fit_box": [
+              0.0,
+              0.0,
+              1920.0,
+              1080.0
+            ],
+            "fit_owner_kind": "slide"
+          }
+        ],
+        "icon": []
+      },
+      "takeaway": {
+        "text": [],
+        "icon": []
+      }
+    }
+  },
+  "seed_sha256": "c4af7effdbadcf64ac47e1826f821a88a04bb84ba89e42c28552cf1a78173783"
+}

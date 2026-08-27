@@ -1,0 +1,768 @@
+{
+  "contract": "wise-ppt-layout-seed@4",
+  "layout_id": "paper-ink.relationship.F3",
+  "display_code": "F3",
+  "page_kind": "relationship",
+  "source": {
+    "path": "references/gallery-paper-ink/ai/frames/layout-f3.html",
+    "sha256": "0fd3f7b6d4a86eefbebcfcf1336c9c342e88ea673c1135418d590305052e267a"
+  },
+  "locked": {
+    "scoped_css": "@scope (.slide[data-layout-id=\"paper-ink.relationship.F3\"]) {\nsvg.scene { position: absolute; inset: 0; z-index: 1; }\n  .caption {\n    position: absolute; left: 0; right: 0; bottom: 118px;\n    text-align: center;\n    font-family: var(--sans); font-weight: 400;\n    font-size: var(--type-caption); letter-spacing: .04em;\n    color: var(--ink);\n    z-index: 5;\n  }\n}\n",
+    "css_sha256": "55eb0e4cce808b491fd0eb4e4692ee7e11e8649836e30c1f130e2676b4368193",
+    "stage_html": "<div class=\"stage\" data-block-id=\"gallery-primary\" data-component-id=\"native.paper-ink.decomposition.column-list.columns\" data-component-source=\"native\" data-content-ref=\"example.f3\" data-renderer-kind=\"svg\">\n<div class=\"doc tl\"><span class=\"vnext-text-node\" data-vnext-fit-box=\"0,0,1920,1080\" data-vnext-text-key=\"support.text.001\">PPT 标题</span><br/><span class=\"vnext-text-node\" data-vnext-fit-box=\"0,0,1920,1080\" data-vnext-text-key=\"support.text.002\">页面标题</span></div>\n<div class=\"folio\">页码 / 总页数 — BY @歪斯Wise</div>\n<svg class=\"scene\" height=\"1080\" viewbox=\"0 0 1920 1080\" width=\"1920\">\n<g id=\"draw\"><g transform=\"translate(0 -13.7)\"><line opacity=\"0.25\" stroke=\"var(--ink)\" stroke-dasharray=\"2 6\" stroke-width=\"0.6\" x1=\"640\" x2=\"640\" y1=\"220\" y2=\"830\"></line><line opacity=\"0.25\" stroke=\"var(--ink)\" stroke-dasharray=\"2 6\" stroke-width=\"0.6\" x1=\"1220\" x2=\"1220\" y1=\"220\" y2=\"830\"></line><text data-vnext-fit-box=\"120,196,1780,817\" data-vnext-text-key=\"columns.text.001\" fill=\"var(--ink)\" font-family=\"var(--sans)\" font-size=\"var(--type-subheading)\" font-weight=\"300\" x=\"120\" y=\"240\">认知奠基</text><text data-vnext-fit-box=\"120,196,1780,817\" data-vnext-text-key=\"columns.text.002\" fill=\"var(--ink-45)\" font-family=\"var(--mono)\" font-size=\"var(--type-meta)\" letter-spacing=\"3\" x=\"120\" y=\"268\">FOUNDATIONS</text><line opacity=\"0.5\" stroke=\"var(--ink)\" stroke-width=\"0.8\" x1=\"120\" x2=\"216\" y1=\"286\" y2=\"286\"></line><line opacity=\"0.22\" stroke=\"var(--ink)\" stroke-width=\"0.6\" x1=\"120\" x2=\"620\" y1=\"292\" y2=\"292\"></line><circle cx=\"128\" cy=\"343\" fill=\"none\" r=\"4.2\" stroke=\"var(--ink-80)\" stroke-width=\"1\"></circle><circle cx=\"128\" cy=\"343\" fill=\"var(--ink)\" id=\"\" r=\"1.4\"></circle><text data-vnext-fit-box=\"120,196,1780,817\" data-vnext-text-key=\"columns.text.003\" fill=\"var(--ink)\" font-family=\"var(--sans)\" font-size=\"var(--type-body)\" font-weight=\"300\" id=\"\" x=\"148\" y=\"350\">模型原理</text><text data-vnext-fit-box=\"120,196,1780,817\" data-vnext-text-key=\"columns.text.004\" fill=\"color-mix(in srgb, var(--ink) 50%, transparent)\" font-family=\"var(--mono)\" font-size=\"var(--type-meta)\" letter-spacing=\"1\" text-anchor=\"end\" x=\"620\" y=\"350\">ARCH</text><text data-vnext-fit-box=\"120,196,1780,817\" data-vnext-text-key=\"columns.text.005\" fill=\"var(--ink-55)\" font-family=\"var(--sans)\" font-size=\"var(--type-body-small)\" font-weight=\"300\" id=\"\" x=\"148\" y=\"380\">理解 Transformer 与注意力机制的基本结构</text><circle cx=\"128\" cy=\"471\" fill=\"none\" r=\"4.2\" stroke=\"var(--ink-80)\" stroke-width=\"1\"></circle><circle cx=\"128\" cy=\"471\" data-content-ref=\"sample.f3.f3-focus\" data-emphasis-paint=\"fill\" data-emphasis-role=\"symbol\" fill=\"var(--ink)\" id=\"f3-boundary-dot\" r=\"1.4\"></circle><text data-content-ref=\"sample.f3.f3-focus\" data-emphasis-role=\"value\" data-vnext-fit-box=\"120,196,1780,817\" data-vnext-text-key=\"columns.text.006\" fill=\"var(--ink)\" font-family=\"var(--sans)\" font-size=\"var(--type-body)\" font-weight=\"300\" id=\"f3-boundary-title\" x=\"148\" y=\"478\">能力边界</text><text data-vnext-fit-box=\"120,196,1780,817\" data-vnext-text-key=\"columns.text.007\" fill=\"color-mix(in srgb, var(--ink) 50%, transparent)\" font-family=\"var(--mono)\" font-size=\"var(--type-meta)\" letter-spacing=\"1\" text-anchor=\"end\" x=\"620\" y=\"478\">BOUNDARY</text><text data-content-ref=\"sample.f3.f3-focus\" data-emphasis-role=\"label\" data-vnext-fit-box=\"120,196,1780,817\" data-vnext-text-key=\"columns.text.008\" fill=\"var(--ink-55)\" font-family=\"var(--sans)\" font-size=\"var(--type-body-small)\" font-weight=\"300\" id=\"f3-boundary-note\" x=\"148\" y=\"508\">清楚模型能做什么、做不到什么</text><circle cx=\"128\" cy=\"599\" fill=\"none\" r=\"4.2\" stroke=\"var(--ink-80)\" stroke-width=\"1\"></circle><circle cx=\"128\" cy=\"599\" fill=\"var(--ink)\" id=\"\" r=\"1.4\"></circle><text data-vnext-fit-box=\"120,196,1780,817\" data-vnext-text-key=\"columns.text.009\" fill=\"var(--ink)\" font-family=\"var(--sans)\" font-size=\"var(--type-body)\" font-weight=\"300\" id=\"\" x=\"148\" y=\"606\">幻觉机理</text><text data-vnext-fit-box=\"120,196,1780,817\" data-vnext-text-key=\"columns.text.010\" fill=\"color-mix(in srgb, var(--ink) 50%, transparent)\" font-family=\"var(--mono)\" font-size=\"var(--type-meta)\" letter-spacing=\"1\" text-anchor=\"end\" x=\"620\" y=\"606\">HALLU</text><text data-vnext-fit-box=\"120,196,1780,817\" data-vnext-text-key=\"columns.text.011\" fill=\"var(--ink-55)\" font-family=\"var(--sans)\" font-size=\"var(--type-body-small)\" font-weight=\"300\" id=\"\" x=\"148\" y=\"636\">识别幻觉来源与触发条件</text><circle cx=\"128\" cy=\"727\" fill=\"none\" r=\"4.2\" stroke=\"var(--ink-80)\" stroke-width=\"1\"></circle><circle cx=\"128\" cy=\"727\" fill=\"var(--ink)\" id=\"\" r=\"1.4\"></circle><text data-vnext-fit-box=\"120,196,1780,817\" data-vnext-text-key=\"columns.text.012\" fill=\"var(--ink)\" font-family=\"var(--sans)\" font-size=\"var(--type-body)\" font-weight=\"300\" id=\"\" x=\"148\" y=\"734\">成本与延迟</text><text data-vnext-fit-box=\"120,196,1780,817\" data-vnext-text-key=\"columns.text.013\" fill=\"color-mix(in srgb, var(--ink) 50%, transparent)\" font-family=\"var(--mono)\" font-size=\"var(--type-meta)\" letter-spacing=\"1\" text-anchor=\"end\" x=\"620\" y=\"734\">TRADE-OFF</text><text data-vnext-fit-box=\"120,196,1780,817\" data-vnext-text-key=\"columns.text.014\" fill=\"var(--ink-55)\" font-family=\"var(--sans)\" font-size=\"var(--type-body-small)\" font-weight=\"300\" id=\"\" x=\"148\" y=\"764\">在效果、Token 与时延之间做权衡</text><text data-vnext-fit-box=\"120,196,1780,817\" data-vnext-text-key=\"columns.text.015\" fill=\"var(--ink)\" font-family=\"var(--sans)\" font-size=\"var(--type-subheading)\" font-weight=\"300\" x=\"700\" y=\"240\">工程思维</text><text data-vnext-fit-box=\"120,196,1780,817\" data-vnext-text-key=\"columns.text.016\" fill=\"var(--ink-45)\" font-family=\"var(--mono)\" font-size=\"var(--type-meta)\" letter-spacing=\"3\" x=\"700\" y=\"268\">ENGINEERING</text><line opacity=\"0.5\" stroke=\"var(--ink)\" stroke-width=\"0.8\" x1=\"700\" x2=\"796\" y1=\"286\" y2=\"286\"></line><line opacity=\"0.22\" stroke=\"var(--ink)\" stroke-width=\"0.6\" x1=\"700\" x2=\"1200\" y1=\"292\" y2=\"292\"></line><rect data-content-ref=\"sample.f3.f3-focus\" data-emphasis-role=\"outline\" data-f3-icon=\"harness\" fill=\"none\" height=\"30\" stroke=\"var(--ink-80)\" stroke-width=\"1\" width=\"30\" x=\"700\" y=\"326\"></rect><line data-content-ref=\"sample.f3.f3-focus\" data-emphasis-role=\"outline\" data-f3-icon=\"harness\" opacity=\"0.7\" stroke=\"var(--ink)\" stroke-width=\"0.8\" x1=\"715\" x2=\"715\" y1=\"332\" y2=\"350\"></line><line data-content-ref=\"sample.f3.f3-focus\" data-emphasis-role=\"outline\" data-f3-icon=\"harness\" opacity=\"0.7\" stroke=\"var(--ink)\" stroke-width=\"0.8\" x1=\"706\" x2=\"724\" y1=\"341\" y2=\"341\"></line><text data-content-ref=\"sample.f3.f3-focus\" data-emphasis-role=\"value\" data-vnext-fit-box=\"120,196,1780,817\" data-vnext-text-key=\"columns.text.017\" fill=\"var(--ink)\" font-family=\"var(--sans)\" font-size=\"var(--type-body)\" font-weight=\"300\" id=\"f3-harness-title\" x=\"748\" y=\"350\">Harness 设计</text><text data-vnext-fit-box=\"120,196,1780,817\" data-vnext-text-key=\"columns.text.018\" fill=\"color-mix(in srgb, var(--ink) 50%, transparent)\" font-family=\"var(--mono)\" font-size=\"var(--type-meta)\" letter-spacing=\"1\" text-anchor=\"end\" x=\"1200\" y=\"350\">PROMPT</text><text data-content-ref=\"sample.f3.f3-focus\" data-emphasis-role=\"label\" data-vnext-fit-box=\"120,196,1780,817\" data-vnext-text-key=\"columns.text.019\" fill=\"var(--ink-55)\" font-family=\"var(--sans)\" font-size=\"var(--type-body-small)\" font-weight=\"300\" id=\"f3-harness-note\" x=\"748\" y=\"380\">提示词、上下文与流程编排一体化</text><rect data-f3-icon=\"\" fill=\"none\" height=\"30\" stroke=\"var(--ink-80)\" stroke-width=\"1\" width=\"30\" x=\"700\" y=\"454\"></rect><circle cx=\"715\" cy=\"469\" fill=\"none\" opacity=\"0.7\" r=\"6\" stroke=\"var(--ink)\" stroke-width=\"0.8\"></circle><circle cx=\"715\" cy=\"469\" fill=\"var(--ink)\" r=\"1.4\"></circle><text data-vnext-fit-box=\"120,196,1780,817\" data-vnext-text-key=\"columns.text.020\" fill=\"var(--ink)\" font-family=\"var(--sans)\" font-size=\"var(--type-body)\" font-weight=\"300\" id=\"f3-item-CONTEXT\" x=\"748\" y=\"478\">上下文管控</text><text data-vnext-fit-box=\"120,196,1780,817\" data-vnext-text-key=\"columns.text.021\" fill=\"color-mix(in srgb, var(--ink) 50%, transparent)\" font-family=\"var(--mono)\" font-size=\"var(--type-meta)\" letter-spacing=\"1\" text-anchor=\"end\" x=\"1200\" y=\"478\">CONTEXT</text><text data-vnext-fit-box=\"120,196,1780,817\" data-vnext-text-key=\"columns.text.022\" fill=\"var(--ink-55)\" font-family=\"var(--sans)\" font-size=\"var(--type-body-small)\" font-weight=\"300\" id=\"\" x=\"748\" y=\"508\">长会话压缩、记忆与窗口策略</text><rect data-f3-icon=\"\" fill=\"none\" height=\"30\" stroke=\"var(--ink-80)\" stroke-width=\"1\" width=\"30\" x=\"700\" y=\"582\"></rect><path d=\"M 706 602 L 712 592 L 718 598 L 724 590\" fill=\"none\" opacity=\"0.7\" stroke=\"var(--ink)\" stroke-width=\"0.8\"></path><text data-vnext-fit-box=\"120,196,1780,817\" data-vnext-text-key=\"columns.text.023\" fill=\"var(--ink)\" font-family=\"var(--sans)\" font-size=\"var(--type-body)\" font-weight=\"300\" id=\"f3-item-EVAL\" x=\"748\" y=\"606\">评测体系</text><text data-vnext-fit-box=\"120,196,1780,817\" data-vnext-text-key=\"columns.text.024\" fill=\"color-mix(in srgb, var(--ink) 50%, transparent)\" font-family=\"var(--mono)\" font-size=\"var(--type-meta)\" letter-spacing=\"1\" text-anchor=\"end\" x=\"1200\" y=\"606\">EVAL</text><text data-vnext-fit-box=\"120,196,1780,817\" data-vnext-text-key=\"columns.text.025\" fill=\"var(--ink-55)\" font-family=\"var(--sans)\" font-size=\"var(--type-body-small)\" font-weight=\"300\" id=\"\" x=\"748\" y=\"636\">建立离线与线上双轨评测基准</text><rect data-f3-icon=\"\" fill=\"none\" height=\"30\" stroke=\"var(--ink-80)\" stroke-width=\"1\" width=\"30\" x=\"700\" y=\"710\"></rect><path d=\"M 715 717 l 7 8 l -7 8 l -7 -8 Z\" fill=\"none\" opacity=\"0.7\" stroke=\"var(--ink)\" stroke-width=\"0.8\"></path><text data-vnext-fit-box=\"120,196,1780,817\" data-vnext-text-key=\"columns.text.026\" fill=\"var(--ink)\" font-family=\"var(--sans)\" font-size=\"var(--type-body)\" font-weight=\"300\" id=\"f3-item-DATA\" x=\"748\" y=\"734\">语料与反馈</text><text data-vnext-fit-box=\"120,196,1780,817\" data-vnext-text-key=\"columns.text.027\" fill=\"color-mix(in srgb, var(--ink) 50%, transparent)\" font-family=\"var(--mono)\" font-size=\"var(--type-meta)\" letter-spacing=\"1\" text-anchor=\"end\" x=\"1200\" y=\"734\">DATA</text><text data-vnext-fit-box=\"120,196,1780,817\" data-vnext-text-key=\"columns.text.028\" fill=\"var(--ink-55)\" font-family=\"var(--sans)\" font-size=\"var(--type-body-small)\" font-weight=\"300\" id=\"\" x=\"748\" y=\"764\">语料管线、标注治理与反馈闭环</text><text data-vnext-fit-box=\"120,196,1780,817\" data-vnext-text-key=\"columns.text.029\" fill=\"var(--ink)\" font-family=\"var(--sans)\" font-size=\"var(--type-subheading)\" font-weight=\"300\" x=\"1280\" y=\"240\">落地推进</text><text data-vnext-fit-box=\"120,196,1780,817\" data-vnext-text-key=\"columns.text.030\" fill=\"var(--ink-45)\" font-family=\"var(--mono)\" font-size=\"var(--type-meta)\" letter-spacing=\"3\" x=\"1280\" y=\"268\">DELIVERY</text><line opacity=\"0.5\" stroke=\"var(--ink)\" stroke-width=\"0.8\" x1=\"1280\" x2=\"1376\" y1=\"286\" y2=\"286\"></line><line opacity=\"0.22\" stroke=\"var(--ink)\" stroke-width=\"0.6\" x1=\"1280\" x2=\"1780\" y1=\"292\" y2=\"292\"></line><text data-vnext-fit-box=\"120,196,1780,817\" data-vnext-text-key=\"columns.text.031\" fill=\"var(--ink-45)\" font-family=\"var(--mono)\" font-size=\"var(--type-label)\" letter-spacing=\"1\" x=\"1280\" y=\"350\">C1</text><line opacity=\"0.5\" stroke=\"var(--ink-80)\" stroke-width=\"0.8\" x1=\"1280\" x2=\"1314\" y1=\"358\" y2=\"358\"></line><text data-vnext-fit-box=\"120,196,1780,817\" data-vnext-text-key=\"columns.text.032\" fill=\"var(--ink)\" font-family=\"var(--sans)\" font-size=\"var(--type-body)\" font-weight=\"300\" x=\"1344\" y=\"350\">场景定义</text><text data-vnext-fit-box=\"120,196,1780,817\" data-vnext-text-key=\"columns.text.033\" fill=\"color-mix(in srgb, var(--ink) 50%, transparent)\" font-family=\"var(--mono)\" font-size=\"var(--type-meta)\" letter-spacing=\"1\" text-anchor=\"end\" x=\"1780\" y=\"350\">SCOPE</text><text data-vnext-fit-box=\"120,196,1780,817\" data-vnext-text-key=\"columns.text.034\" fill=\"var(--ink-55)\" font-family=\"var(--sans)\" font-size=\"var(--type-body-small)\" font-weight=\"300\" x=\"1344\" y=\"380\">从业务痛点切出可交付的真实场景</text><text data-vnext-fit-box=\"120,196,1780,817\" data-vnext-text-key=\"columns.text.035\" fill=\"var(--ink-45)\" font-family=\"var(--mono)\" font-size=\"var(--type-label)\" letter-spacing=\"1\" x=\"1280\" y=\"478\">C2</text><line opacity=\"0.5\" stroke=\"var(--ink-80)\" stroke-width=\"0.8\" x1=\"1280\" x2=\"1314\" y1=\"486\" y2=\"486\"></line><text data-vnext-fit-box=\"120,196,1780,817\" data-vnext-text-key=\"columns.text.036\" fill=\"var(--ink)\" font-family=\"var(--sans)\" font-size=\"var(--type-body)\" font-weight=\"300\" x=\"1344\" y=\"478\">指标对齐</text><text data-vnext-fit-box=\"120,196,1780,817\" data-vnext-text-key=\"columns.text.037\" fill=\"color-mix(in srgb, var(--ink) 50%, transparent)\" font-family=\"var(--mono)\" font-size=\"var(--type-meta)\" letter-spacing=\"1\" text-anchor=\"end\" x=\"1780\" y=\"478\">KPI</text><text data-vnext-fit-box=\"120,196,1780,817\" data-vnext-text-key=\"columns.text.038\" fill=\"var(--ink-55)\" font-family=\"var(--sans)\" font-size=\"var(--type-body-small)\" font-weight=\"300\" x=\"1344\" y=\"508\">把模型指标翻译成业务北极星</text><text data-vnext-fit-box=\"120,196,1780,817\" data-vnext-text-key=\"columns.text.039\" fill=\"var(--ink-45)\" font-family=\"var(--mono)\" font-size=\"var(--type-label)\" letter-spacing=\"1\" x=\"1280\" y=\"606\">C3</text><line opacity=\"0.5\" stroke=\"var(--ink-80)\" stroke-width=\"0.8\" x1=\"1280\" x2=\"1314\" y1=\"614\" y2=\"614\"></line><text data-vnext-fit-box=\"120,196,1780,817\" data-vnext-text-key=\"columns.text.040\" fill=\"var(--ink)\" font-family=\"var(--sans)\" font-size=\"var(--type-body)\" font-weight=\"300\" x=\"1344\" y=\"606\">迭代节奏</text><text data-vnext-fit-box=\"120,196,1780,817\" data-vnext-text-key=\"columns.text.041\" fill=\"color-mix(in srgb, var(--ink) 50%, transparent)\" font-family=\"var(--mono)\" font-size=\"var(--type-meta)\" letter-spacing=\"1\" text-anchor=\"end\" x=\"1780\" y=\"606\">CADENCE</text><text data-vnext-fit-box=\"120,196,1780,817\" data-vnext-text-key=\"columns.text.042\" fill=\"var(--ink-55)\" font-family=\"var(--sans)\" font-size=\"var(--type-body-small)\" font-weight=\"300\" x=\"1344\" y=\"636\">小步快跑、灰度发布与回滚预案</text><text data-vnext-fit-box=\"120,196,1780,817\" data-vnext-text-key=\"columns.text.043\" fill=\"var(--ink-45)\" font-family=\"var(--mono)\" font-size=\"var(--type-label)\" letter-spacing=\"1\" x=\"1280\" y=\"734\">C4</text><line opacity=\"0.5\" stroke=\"var(--ink-80)\" stroke-width=\"0.8\" x1=\"1280\" x2=\"1314\" y1=\"742\" y2=\"742\"></line><text data-vnext-fit-box=\"120,196,1780,817\" data-vnext-text-key=\"columns.text.044\" fill=\"var(--ink)\" font-family=\"var(--sans)\" font-size=\"var(--type-body)\" font-weight=\"300\" x=\"1344\" y=\"734\">合规治理</text><text data-vnext-fit-box=\"120,196,1780,817\" data-vnext-text-key=\"columns.text.045\" fill=\"color-mix(in srgb, var(--ink) 50%, transparent)\" font-family=\"var(--mono)\" font-size=\"var(--type-meta)\" letter-spacing=\"1\" text-anchor=\"end\" x=\"1780\" y=\"734\">COMPLY</text><text data-vnext-fit-box=\"120,196,1780,817\" data-vnext-text-key=\"columns.text.046\" fill=\"var(--ink-55)\" font-family=\"var(--sans)\" font-size=\"var(--type-body-small)\" font-weight=\"300\" x=\"1344\" y=\"764\">隐私脱敏与内容安全边界把控</text></g></g>\n</svg>\n<div class=\"caption\" data-vnext-claim-key=\"claim.text.001\" data-vnext-fit-box=\"0,0,1920,1080\">AI 产品负责人需要同时具备<span data-content-ref=\"sample.f3.f3-focus\" data-emphasis-role=\"label\" id=\"focus-caption\">认知、工程与落地</span>能力，任何一柱缺失都会卡住交付。</div>\n</div>",
+    "stage_structure_sha256": "cb433b4c3df2923f86f83ffbfcb7da1e74dedade2f78ee6537cc486222532987"
+  },
+  "bindings": {
+    "claim": {
+      "key": "claim.text.001",
+      "default": "AI 产品负责人需要同时具备 认知、工程与落地 能力，任何一柱缺失都会卡住交付。",
+      "max_chars": 44,
+      "fit_box": [
+        0.0,
+        0.0,
+        1920.0,
+        1080.0
+      ],
+      "fit_owner_kind": "slide"
+    },
+    "primary_slot": "columns",
+    "slots": {
+      "columns": {
+        "text": [
+          {
+            "key": "columns.text.001",
+            "default": "认知奠基",
+            "max_chars": 6,
+            "item_scope": "item",
+            "item_group_source": "fixed-slot",
+            "item_index": 0,
+            "fit_box": [
+              120.0,
+              196.0,
+              1780.0,
+              817.0
+            ],
+            "fit_owner_kind": "svg-group"
+          },
+          {
+            "key": "columns.text.002",
+            "default": "FOUNDATIONS",
+            "max_chars": 15,
+            "item_scope": "item",
+            "item_group_source": "fixed-slot",
+            "item_index": 0,
+            "fit_box": [
+              120.0,
+              196.0,
+              1780.0,
+              817.0
+            ],
+            "fit_owner_kind": "svg-group"
+          },
+          {
+            "key": "columns.text.003",
+            "default": "模型原理",
+            "max_chars": 6,
+            "item_scope": "item",
+            "item_group_source": "fixed-slot",
+            "item_index": 0,
+            "fit_box": [
+              120.0,
+              196.0,
+              1780.0,
+              817.0
+            ],
+            "fit_owner_kind": "svg-group"
+          },
+          {
+            "key": "columns.text.004",
+            "default": "ARCH",
+            "max_chars": 6,
+            "item_scope": "item",
+            "item_group_source": "fixed-slot",
+            "item_index": 0,
+            "fit_box": [
+              120.0,
+              196.0,
+              1780.0,
+              817.0
+            ],
+            "fit_owner_kind": "svg-group"
+          },
+          {
+            "key": "columns.text.005",
+            "default": "理解 Transformer 与注意力机制的基本结构",
+            "max_chars": 33,
+            "item_scope": "item",
+            "item_group_source": "fixed-slot",
+            "item_index": 0,
+            "fit_box": [
+              120.0,
+              196.0,
+              1780.0,
+              817.0
+            ],
+            "fit_owner_kind": "svg-group"
+          },
+          {
+            "key": "columns.text.006",
+            "default": "能力边界",
+            "max_chars": 6,
+            "item_scope": "item",
+            "item_group_source": "fixed-slot",
+            "item_index": 0,
+            "fit_box": [
+              120.0,
+              196.0,
+              1780.0,
+              817.0
+            ],
+            "fit_owner_kind": "svg-group"
+          },
+          {
+            "key": "columns.text.007",
+            "default": "BOUNDARY",
+            "max_chars": 11,
+            "item_scope": "item",
+            "item_group_source": "fixed-slot",
+            "item_index": 0,
+            "fit_box": [
+              120.0,
+              196.0,
+              1780.0,
+              817.0
+            ],
+            "fit_owner_kind": "svg-group"
+          },
+          {
+            "key": "columns.text.008",
+            "default": "清楚模型能做什么、做不到什么",
+            "max_chars": 19,
+            "item_scope": "item",
+            "item_group_source": "fixed-slot",
+            "item_index": 0,
+            "fit_box": [
+              120.0,
+              196.0,
+              1780.0,
+              817.0
+            ],
+            "fit_owner_kind": "svg-group"
+          },
+          {
+            "key": "columns.text.009",
+            "default": "幻觉机理",
+            "max_chars": 6,
+            "item_scope": "item",
+            "item_group_source": "fixed-slot",
+            "item_index": 0,
+            "fit_box": [
+              120.0,
+              196.0,
+              1780.0,
+              817.0
+            ],
+            "fit_owner_kind": "svg-group"
+          },
+          {
+            "key": "columns.text.010",
+            "default": "HALLU",
+            "max_chars": 7,
+            "item_scope": "item",
+            "item_group_source": "fixed-slot",
+            "item_index": 0,
+            "fit_box": [
+              120.0,
+              196.0,
+              1780.0,
+              817.0
+            ],
+            "fit_owner_kind": "svg-group"
+          },
+          {
+            "key": "columns.text.011",
+            "default": "识别幻觉来源与触发条件",
+            "max_chars": 15,
+            "item_scope": "item",
+            "item_group_source": "fixed-slot",
+            "item_index": 0,
+            "fit_box": [
+              120.0,
+              196.0,
+              1780.0,
+              817.0
+            ],
+            "fit_owner_kind": "svg-group"
+          },
+          {
+            "key": "columns.text.012",
+            "default": "成本与延迟",
+            "max_chars": 7,
+            "item_scope": "item",
+            "item_group_source": "fixed-slot",
+            "item_index": 0,
+            "fit_box": [
+              120.0,
+              196.0,
+              1780.0,
+              817.0
+            ],
+            "fit_owner_kind": "svg-group"
+          },
+          {
+            "key": "columns.text.013",
+            "default": "TRADE-OFF",
+            "max_chars": 13,
+            "item_scope": "item",
+            "item_group_source": "fixed-slot",
+            "item_index": 0,
+            "fit_box": [
+              120.0,
+              196.0,
+              1780.0,
+              817.0
+            ],
+            "fit_owner_kind": "svg-group"
+          },
+          {
+            "key": "columns.text.014",
+            "default": "在效果、Token 与时延之间做权衡",
+            "max_chars": 23,
+            "item_scope": "item",
+            "item_group_source": "fixed-slot",
+            "item_index": 0,
+            "fit_box": [
+              120.0,
+              196.0,
+              1780.0,
+              817.0
+            ],
+            "fit_owner_kind": "svg-group"
+          },
+          {
+            "key": "columns.text.015",
+            "default": "工程思维",
+            "max_chars": 6,
+            "item_scope": "item",
+            "item_group_source": "fixed-slot",
+            "item_index": 0,
+            "fit_box": [
+              120.0,
+              196.0,
+              1780.0,
+              817.0
+            ],
+            "fit_owner_kind": "svg-group"
+          },
+          {
+            "key": "columns.text.016",
+            "default": "ENGINEERING",
+            "max_chars": 15,
+            "item_scope": "item",
+            "item_group_source": "fixed-slot",
+            "item_index": 0,
+            "fit_box": [
+              120.0,
+              196.0,
+              1780.0,
+              817.0
+            ],
+            "fit_owner_kind": "svg-group"
+          },
+          {
+            "key": "columns.text.017",
+            "default": "Harness 设计",
+            "max_chars": 13,
+            "item_scope": "item",
+            "item_group_source": "fixed-slot",
+            "item_index": 0,
+            "fit_box": [
+              120.0,
+              196.0,
+              1780.0,
+              817.0
+            ],
+            "fit_owner_kind": "svg-group"
+          },
+          {
+            "key": "columns.text.018",
+            "default": "PROMPT",
+            "max_chars": 9,
+            "item_scope": "item",
+            "item_group_source": "fixed-slot",
+            "item_index": 0,
+            "fit_box": [
+              120.0,
+              196.0,
+              1780.0,
+              817.0
+            ],
+            "fit_owner_kind": "svg-group"
+          },
+          {
+            "key": "columns.text.019",
+            "default": "提示词、上下文与流程编排一体化",
+            "max_chars": 21,
+            "item_scope": "item",
+            "item_group_source": "fixed-slot",
+            "item_index": 0,
+            "fit_box": [
+              120.0,
+              196.0,
+              1780.0,
+              817.0
+            ],
+            "fit_owner_kind": "svg-group"
+          },
+          {
+            "key": "columns.text.020",
+            "default": "上下文管控",
+            "max_chars": 7,
+            "item_scope": "item",
+            "item_group_source": "fixed-slot",
+            "item_index": 0,
+            "fit_box": [
+              120.0,
+              196.0,
+              1780.0,
+              817.0
+            ],
+            "fit_owner_kind": "svg-group"
+          },
+          {
+            "key": "columns.text.021",
+            "default": "CONTEXT",
+            "max_chars": 10,
+            "item_scope": "item",
+            "item_group_source": "fixed-slot",
+            "item_index": 0,
+            "fit_box": [
+              120.0,
+              196.0,
+              1780.0,
+              817.0
+            ],
+            "fit_owner_kind": "svg-group"
+          },
+          {
+            "key": "columns.text.022",
+            "default": "长会话压缩、记忆与窗口策略",
+            "max_chars": 18,
+            "item_scope": "item",
+            "item_group_source": "fixed-slot",
+            "item_index": 0,
+            "fit_box": [
+              120.0,
+              196.0,
+              1780.0,
+              817.0
+            ],
+            "fit_owner_kind": "svg-group"
+          },
+          {
+            "key": "columns.text.023",
+            "default": "评测体系",
+            "max_chars": 6,
+            "item_scope": "item",
+            "item_group_source": "fixed-slot",
+            "item_index": 0,
+            "fit_box": [
+              120.0,
+              196.0,
+              1780.0,
+              817.0
+            ],
+            "fit_owner_kind": "svg-group"
+          },
+          {
+            "key": "columns.text.024",
+            "default": "EVAL",
+            "max_chars": 6,
+            "item_scope": "item",
+            "item_group_source": "fixed-slot",
+            "item_index": 0,
+            "fit_box": [
+              120.0,
+              196.0,
+              1780.0,
+              817.0
+            ],
+            "fit_owner_kind": "svg-group"
+          },
+          {
+            "key": "columns.text.025",
+            "default": "建立离线与线上双轨评测基准",
+            "max_chars": 18,
+            "item_scope": "item",
+            "item_group_source": "fixed-slot",
+            "item_index": 0,
+            "fit_box": [
+              120.0,
+              196.0,
+              1780.0,
+              817.0
+            ],
+            "fit_owner_kind": "svg-group"
+          },
+          {
+            "key": "columns.text.026",
+            "default": "语料与反馈",
+            "max_chars": 7,
+            "item_scope": "item",
+            "item_group_source": "fixed-slot",
+            "item_index": 0,
+            "fit_box": [
+              120.0,
+              196.0,
+              1780.0,
+              817.0
+            ],
+            "fit_owner_kind": "svg-group"
+          },
+          {
+            "key": "columns.text.027",
+            "default": "DATA",
+            "max_chars": 6,
+            "item_scope": "item",
+            "item_group_source": "fixed-slot",
+            "item_index": 0,
+            "fit_box": [
+              120.0,
+              196.0,
+              1780.0,
+              817.0
+            ],
+            "fit_owner_kind": "svg-group"
+          },
+          {
+            "key": "columns.text.028",
+            "default": "语料管线、标注治理与反馈闭环",
+            "max_chars": 19,
+            "item_scope": "item",
+            "item_group_source": "fixed-slot",
+            "item_index": 0,
+            "fit_box": [
+              120.0,
+              196.0,
+              1780.0,
+              817.0
+            ],
+            "fit_owner_kind": "svg-group"
+          },
+          {
+            "key": "columns.text.029",
+            "default": "落地推进",
+            "max_chars": 6,
+            "item_scope": "item",
+            "item_group_source": "fixed-slot",
+            "item_index": 0,
+            "fit_box": [
+              120.0,
+              196.0,
+              1780.0,
+              817.0
+            ],
+            "fit_owner_kind": "svg-group"
+          },
+          {
+            "key": "columns.text.030",
+            "default": "DELIVERY",
+            "max_chars": 11,
+            "item_scope": "item",
+            "item_group_source": "fixed-slot",
+            "item_index": 0,
+            "fit_box": [
+              120.0,
+              196.0,
+              1780.0,
+              817.0
+            ],
+            "fit_owner_kind": "svg-group"
+          },
+          {
+            "key": "columns.text.031",
+            "default": "C1",
+            "max_chars": 3,
+            "item_scope": "item",
+            "item_group_source": "fixed-slot",
+            "item_index": 0,
+            "fit_box": [
+              120.0,
+              196.0,
+              1780.0,
+              817.0
+            ],
+            "fit_owner_kind": "svg-group"
+          },
+          {
+            "key": "columns.text.032",
+            "default": "场景定义",
+            "max_chars": 6,
+            "item_scope": "item",
+            "item_group_source": "fixed-slot",
+            "item_index": 0,
+            "fit_box": [
+              120.0,
+              196.0,
+              1780.0,
+              817.0
+            ],
+            "fit_owner_kind": "svg-group"
+          },
+          {
+            "key": "columns.text.033",
+            "default": "SCOPE",
+            "max_chars": 7,
+            "item_scope": "item",
+            "item_group_source": "fixed-slot",
+            "item_index": 0,
+            "fit_box": [
+              120.0,
+              196.0,
+              1780.0,
+              817.0
+            ],
+            "fit_owner_kind": "svg-group"
+          },
+          {
+            "key": "columns.text.034",
+            "default": "从业务痛点切出可交付的真实场景",
+            "max_chars": 21,
+            "item_scope": "item",
+            "item_group_source": "fixed-slot",
+            "item_index": 0,
+            "fit_box": [
+              120.0,
+              196.0,
+              1780.0,
+              817.0
+            ],
+            "fit_owner_kind": "svg-group"
+          },
+          {
+            "key": "columns.text.035",
+            "default": "C2",
+            "max_chars": 3,
+            "item_scope": "item",
+            "item_group_source": "fixed-slot",
+            "item_index": 0,
+            "fit_box": [
+              120.0,
+              196.0,
+              1780.0,
+              817.0
+            ],
+            "fit_owner_kind": "svg-group"
+          },
+          {
+            "key": "columns.text.036",
+            "default": "指标对齐",
+            "max_chars": 6,
+            "item_scope": "item",
+            "item_group_source": "fixed-slot",
+            "item_index": 0,
+            "fit_box": [
+              120.0,
+              196.0,
+              1780.0,
+              817.0
+            ],
+            "fit_owner_kind": "svg-group"
+          },
+          {
+            "key": "columns.text.037",
+            "default": "KPI",
+            "max_chars": 5,
+            "item_scope": "item",
+            "item_group_source": "fixed-slot",
+            "item_index": 0,
+            "fit_box": [
+              120.0,
+              196.0,
+              1780.0,
+              817.0
+            ],
+            "fit_owner_kind": "svg-group"
+          },
+          {
+            "key": "columns.text.038",
+            "default": "把模型指标翻译成业务北极星",
+            "max_chars": 18,
+            "item_scope": "item",
+            "item_group_source": "fixed-slot",
+            "item_index": 0,
+            "fit_box": [
+              120.0,
+              196.0,
+              1780.0,
+              817.0
+            ],
+            "fit_owner_kind": "svg-group"
+          },
+          {
+            "key": "columns.text.039",
+            "default": "C3",
+            "max_chars": 3,
+            "item_scope": "item",
+            "item_group_source": "fixed-slot",
+            "item_index": 0,
+            "fit_box": [
+              120.0,
+              196.0,
+              1780.0,
+              817.0
+            ],
+            "fit_owner_kind": "svg-group"
+          },
+          {
+            "key": "columns.text.040",
+            "default": "迭代节奏",
+            "max_chars": 6,
+            "item_scope": "item",
+            "item_group_source": "fixed-slot",
+            "item_index": 0,
+            "fit_box": [
+              120.0,
+              196.0,
+              1780.0,
+              817.0
+            ],
+            "fit_owner_kind": "svg-group"
+          },
+          {
+            "key": "columns.text.041",
+            "default": "CADENCE",
+            "max_chars": 10,
+            "item_scope": "item",
+            "item_group_source": "fixed-slot",
+            "item_index": 0,
+            "fit_box": [
+              120.0,
+              196.0,
+              1780.0,
+              817.0
+            ],
+            "fit_owner_kind": "svg-group"
+          },
+          {
+            "key": "columns.text.042",
+            "default": "小步快跑、灰度发布与回滚预案",
+            "max_chars": 19,
+            "item_scope": "item",
+            "item_group_source": "fixed-slot",
+            "item_index": 0,
+            "fit_box": [
+              120.0,
+              196.0,
+              1780.0,
+              817.0
+            ],
+            "fit_owner_kind": "svg-group"
+          },
+          {
+            "key": "columns.text.043",
+            "default": "C4",
+            "max_chars": 3,
+            "item_scope": "item",
+            "item_group_source": "fixed-slot",
+            "item_index": 0,
+            "fit_box": [
+              120.0,
+              196.0,
+              1780.0,
+              817.0
+            ],
+            "fit_owner_kind": "svg-group"
+          },
+          {
+            "key": "columns.text.044",
+            "default": "合规治理",
+            "max_chars": 6,
+            "item_scope": "item",
+            "item_group_source": "fixed-slot",
+            "item_index": 0,
+            "fit_box": [
+              120.0,
+              196.0,
+              1780.0,
+              817.0
+            ],
+            "fit_owner_kind": "svg-group"
+          },
+          {
+            "key": "columns.text.045",
+            "default": "COMPLY",
+            "max_chars": 9,
+            "item_scope": "item",
+            "item_group_source": "fixed-slot",
+            "item_index": 0,
+            "fit_box": [
+              120.0,
+              196.0,
+              1780.0,
+              817.0
+            ],
+            "fit_owner_kind": "svg-group"
+          },
+          {
+            "key": "columns.text.046",
+            "default": "隐私脱敏与内容安全边界把控",
+            "max_chars": 18,
+            "item_scope": "item",
+            "item_group_source": "fixed-slot",
+            "item_index": 0,
+            "fit_box": [
+              120.0,
+              196.0,
+              1780.0,
+              817.0
+            ],
+            "fit_owner_kind": "svg-group"
+          }
+        ],
+        "icon": []
+      },
+      "support": {
+        "text": [
+          {
+            "key": "support.text.001",
+            "default": "PPT 标题",
+            "max_chars": 40,
+            "item_scope": "item",
+            "item_group_source": "fixed-slot",
+            "item_index": 0,
+            "fit_box": [
+              0.0,
+              0.0,
+              1920.0,
+              1080.0
+            ],
+            "fit_owner_kind": "slide"
+          },
+          {
+            "key": "support.text.002",
+            "default": "页面标题",
+            "max_chars": 72,
+            "item_scope": "item",
+            "item_group_source": "fixed-slot",
+            "item_index": 0,
+            "fit_box": [
+              0.0,
+              0.0,
+              1920.0,
+              1080.0
+            ],
+            "fit_owner_kind": "slide"
+          }
+        ],
+        "icon": []
+      },
+      "takeaway": {
+        "text": [],
+        "icon": []
+      }
+    }
+  },
+  "seed_sha256": "314ec4319b7625156fb225254c0a1daab955f08218feeba7ade4baf0e6ee7823"
+}

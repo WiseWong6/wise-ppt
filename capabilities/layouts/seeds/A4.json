@@ -1,0 +1,483 @@
+{
+  "contract": "wise-ppt-layout-seed@4",
+  "layout_id": "paper-ink.relationship.A4",
+  "display_code": "A4",
+  "page_kind": "relationship",
+  "source": {
+    "path": "references/gallery-paper-ink/ai/frames/layout-a4.html",
+    "sha256": "8698c148cec4dc3098135e014f62132f4a84531f55ed059cd8ec71a54c41476a"
+  },
+  "locked": {
+    "scoped_css": "@scope (.slide[data-layout-id=\"paper-ink.relationship.A4\"]) {\n/* B22 左策略右证据墙 · 纸底 */\n  .doc.tl, .folio { color: var(--ink-45); }\n  svg.scene { position: absolute; inset: 0; z-index: 1; }\n  .caption {\n    position: absolute; left: 0; right: 0; bottom: 118px;\n    text-align: center;\n    font-family: var(--sans); font-weight: 400;\n    font-size: var(--type-caption); letter-spacing: .04em;\n    color: var(--ink);\n    z-index: 5;\n  }\n}\n",
+    "css_sha256": "7604d166c6f6db617dcb7c8d15944e58a3bf6320e98c656aa0ca4c4525d54044",
+    "stage_html": "<div class=\"stage\" data-block-id=\"gallery-primary\" data-component-id=\"native.paper-ink.evidence.strategy-evidence-wall.evidence-wall\" data-component-source=\"native\" data-content-ref=\"example.a4\" data-renderer-kind=\"svg\">\n<div class=\"doc tl\"><span class=\"vnext-text-node\" data-vnext-fit-box=\"0,0,1920,1080\" data-vnext-text-key=\"support.text.001\">PPT 标题</span><br/><span class=\"vnext-text-node\" data-vnext-fit-box=\"0,0,1920,1080\" data-vnext-text-key=\"support.text.002\">页面标题</span></div>\n<div class=\"folio\">页码 / 总页数 — BY @歪斯Wise</div>\n<svg class=\"scene\" height=\"1080\" viewbox=\"0 0 1920 1080\" width=\"1920\">\n<defs>\n<pattern height=\"8\" id=\"hatch22\" patterntransform=\"rotate(45)\" patternunits=\"userSpaceOnUse\" width=\"8\">\n<line opacity=\".35\" stroke=\"var(--ink)\" stroke-width=\".7\" x1=\"0\" x2=\"0\" y1=\"0\" y2=\"8\"></line>\n</pattern>\n</defs>\n<g id=\"draw\"><g transform=\"translate(0 -54.7)\"><text data-vnext-fit-box=\"150,196,1750,800\" data-vnext-text-key=\"evidence-wall.text.001\" fill=\"var(--ink-45)\" font-family=\"var(--mono)\" font-size=\"var(--type-meta)\" letter-spacing=\"3\" x=\"150\" y=\"262\">STRATEGY · HARNESS ENG</text><text data-vnext-fit-box=\"150,196,1750,800\" data-vnext-text-key=\"evidence-wall.text.002\" fill=\"var(--ink)\" font-family=\"var(--sans)\" font-size=\"var(--type-subheading)\" font-weight=\"300\" x=\"150\" y=\"300\">四条工程化打法，各有实据</text><line opacity=\"0.5\" stroke=\"var(--ink)\" stroke-width=\"0.8\" x1=\"150\" x2=\"670\" y1=\"320\" y2=\"320\"></line><text data-vnext-fit-box=\"150,196,1750,800\" data-vnext-text-key=\"evidence-wall.text.003\" fill=\"var(--ink)\" font-family=\"var(--mono)\" font-size=\"var(--type-body-small)\" letter-spacing=\"2\" x=\"150\" y=\"372\">01</text><line opacity=\"0.3\" stroke=\"var(--ink)\" stroke-width=\"0.6\" x1=\"150\" x2=\"186\" y1=\"384\" y2=\"384\"></line><text data-vnext-fit-box=\"150,196,1750,800\" data-vnext-text-key=\"evidence-wall.text.004\" fill=\"var(--ink)\" font-family=\"var(--sans)\" font-size=\"var(--type-subheading)\" font-weight=\"300\" x=\"206\" y=\"372\">上下文管控</text><text data-vnext-fit-box=\"150,196,1750,800\" data-vnext-text-key=\"evidence-wall.text.005\" fill=\"var(--ink-70)\" font-family=\"var(--sans)\" font-size=\"var(--type-body-small)\" font-weight=\"300\" x=\"206\" y=\"406\">摘要做成交接文档，窗口只留当下任务</text><text data-vnext-fit-box=\"150,196,1750,800\" data-vnext-text-key=\"evidence-wall.text.006\" fill=\"var(--ink-45)\" font-family=\"var(--sans)\" font-size=\"var(--type-body-small)\" font-weight=\"300\" x=\"206\" y=\"432\">幻觉率比裸调下降一半</text><line opacity=\"0.22\" stroke=\"var(--ink)\" stroke-width=\"0.6\" x1=\"150\" x2=\"670\" y1=\"460\" y2=\"460\"></line><text data-vnext-fit-box=\"150,196,1750,800\" data-vnext-text-key=\"evidence-wall.text.007\" fill=\"var(--ink)\" font-family=\"var(--mono)\" font-size=\"var(--type-body-small)\" letter-spacing=\"2\" x=\"150\" y=\"511\">02</text><line opacity=\"0.3\" stroke=\"var(--ink)\" stroke-width=\"0.6\" x1=\"150\" x2=\"186\" y1=\"523\" y2=\"523\"></line><text data-vnext-fit-box=\"150,196,1750,800\" data-vnext-text-key=\"evidence-wall.text.008\" fill=\"var(--ink)\" font-family=\"var(--sans)\" font-size=\"var(--type-subheading)\" font-weight=\"300\" x=\"206\" y=\"511\">评测前置</text><text data-vnext-fit-box=\"150,196,1750,800\" data-vnext-text-key=\"evidence-wall.text.009\" fill=\"var(--ink-70)\" font-family=\"var(--sans)\" font-size=\"var(--type-body-small)\" font-weight=\"300\" x=\"206\" y=\"545\">每个版本先过基准集再灰度，不靠手感</text><text data-vnext-fit-box=\"150,196,1750,800\" data-vnext-text-key=\"evidence-wall.text.010\" fill=\"var(--ink-45)\" font-family=\"var(--sans)\" font-size=\"var(--type-body-small)\" font-weight=\"300\" x=\"206\" y=\"571\">回归用例从 40 条涨到 600 条</text><line opacity=\"0.22\" stroke=\"var(--ink)\" stroke-width=\"0.6\" x1=\"150\" x2=\"670\" y1=\"599\" y2=\"599\"></line><text data-vnext-fit-box=\"150,196,1750,800\" data-vnext-text-key=\"evidence-wall.text.011\" fill=\"var(--ink)\" font-family=\"var(--mono)\" font-size=\"var(--type-body-small)\" letter-spacing=\"2\" x=\"150\" y=\"650\">03</text><line opacity=\"0.3\" stroke=\"var(--ink)\" stroke-width=\"0.6\" x1=\"150\" x2=\"186\" y1=\"662\" y2=\"662\"></line><text data-vnext-fit-box=\"150,196,1750,800\" data-vnext-text-key=\"evidence-wall.text.012\" fill=\"var(--ink)\" font-family=\"var(--sans)\" font-size=\"var(--type-subheading)\" font-weight=\"300\" x=\"206\" y=\"650\">工具护栏</text><text data-vnext-fit-box=\"150,196,1750,800\" data-vnext-text-key=\"evidence-wall.text.013\" fill=\"var(--ink-70)\" font-family=\"var(--sans)\" font-size=\"var(--type-body-small)\" font-weight=\"300\" x=\"206\" y=\"684\">高风险动作加确认门，Agent 不能擅自执行</text><text data-vnext-fit-box=\"150,196,1750,800\" data-vnext-text-key=\"evidence-wall.text.014\" fill=\"var(--ink-45)\" font-family=\"var(--sans)\" font-size=\"var(--type-body-small)\" font-weight=\"300\" x=\"206\" y=\"710\">越权调用被拦在执行前</text><line opacity=\"0.22\" stroke=\"var(--ink)\" stroke-width=\"0.6\" x1=\"150\" x2=\"670\" y1=\"738\" y2=\"738\"></line><text data-vnext-fit-box=\"150,196,1750,800\" data-vnext-text-key=\"evidence-wall.text.015\" fill=\"var(--ink)\" font-family=\"var(--mono)\" font-size=\"var(--type-body-small)\" letter-spacing=\"2\" x=\"150\" y=\"789\">04</text><line opacity=\"0.3\" stroke=\"var(--ink)\" stroke-width=\"0.6\" x1=\"150\" x2=\"186\" y1=\"801\" y2=\"801\"></line><text data-vnext-fit-box=\"150,196,1750,800\" data-vnext-text-key=\"evidence-wall.text.016\" fill=\"var(--ink)\" font-family=\"var(--sans)\" font-size=\"var(--type-subheading)\" font-weight=\"300\" x=\"206\" y=\"789\">全链可溯</text><text data-vnext-fit-box=\"150,196,1750,800\" data-vnext-text-key=\"evidence-wall.text.017\" fill=\"var(--ink-70)\" font-family=\"var(--sans)\" font-size=\"var(--type-body-small)\" font-weight=\"300\" x=\"206\" y=\"823\">每一步推理留 Trace，错了能定位到哪一跳</text><text data-vnext-fit-box=\"150,196,1750,799\" data-vnext-text-key=\"evidence-wall.text.018\" fill=\"var(--ink-45)\" font-family=\"var(--sans)\" font-size=\"var(--type-body-small)\" font-weight=\"300\" x=\"206\" y=\"849\">故障定位从小时级到分钟级</text><text data-vnext-fit-box=\"150,196,1750,800\" data-vnext-text-key=\"evidence-wall.text.019\" fill=\"var(--ink-45)\" font-family=\"var(--mono)\" font-size=\"var(--type-meta)\" id=\"sample-focus\" letter-spacing=\"3\" text-anchor=\"middle\" x=\"784\" y=\"500\">PROOF</text><line stroke=\"var(--ink)\" stroke-width=\"2\" x1=\"720\" x2=\"848\" y1=\"540\" y2=\"540\"></line><line stroke=\"var(--ink-80)\" stroke-width=\"1.3\" x1=\"848\" x2=\"822\" y1=\"540\" y2=\"520\"></line><line stroke=\"var(--ink-80)\" stroke-width=\"1.3\" x1=\"848\" x2=\"822\" y1=\"540\" y2=\"560\"></line><line opacity=\"0.3\" stroke=\"var(--ink)\" stroke-dasharray=\"2 4\" stroke-width=\"0.6\" x1=\"706\" x2=\"720\" y1=\"540\" y2=\"540\"></line><line opacity=\"0.3\" stroke=\"var(--ink)\" stroke-dasharray=\"2 4\" stroke-width=\"0.6\" x1=\"848\" x2=\"882\" y1=\"540\" y2=\"540\"></line><rect fill=\"var(--paper-panel)\" height=\"276\" stroke=\"var(--ink-80)\" stroke-width=\"1.3\" width=\"400\" x=\"910\" y=\"251.5\"></rect><rect fill=\"none\" height=\"266\" opacity=\"0.3\" stroke=\"var(--ink)\" stroke-width=\"0.6\" width=\"390\" x=\"915\" y=\"256.5\"></rect><text data-vnext-fit-box=\"915,201,1305,468\" data-vnext-text-key=\"evidence-wall.text.020\" fill=\"var(--ink-45)\" font-family=\"var(--mono)\" font-size=\"var(--type-micro-secondary)\" letter-spacing=\"2.5\" x=\"934\" y=\"283.5\">EXHIBIT 01 — CONTEXT MGR</text><rect fill=\"none\" height=\"116\" opacity=\"0.8\" stroke=\"var(--ink)\" stroke-width=\"1.1\" width=\"320\" x=\"950\" y=\"317.5\"></rect><line opacity=\"0.3\" stroke=\"var(--ink)\" stroke-width=\"0.5\" x1=\"1030\" x2=\"1030\" y1=\"317.5\" y2=\"433.5\"></line><line opacity=\"0.3\" stroke=\"var(--ink)\" stroke-width=\"0.5\" x1=\"950\" x2=\"1270\" y1=\"356.1666666666667\" y2=\"356.1666666666667\"></line><line opacity=\"0.3\" stroke=\"var(--ink)\" stroke-width=\"0.5\" x1=\"1110\" x2=\"1110\" y1=\"317.5\" y2=\"433.5\"></line><line opacity=\"0.3\" stroke=\"var(--ink)\" stroke-width=\"0.5\" x1=\"950\" x2=\"1270\" y1=\"394.8333333333333\" y2=\"394.8333333333333\"></line><line opacity=\"0.3\" stroke=\"var(--ink)\" stroke-width=\"0.5\" x1=\"1190\" x2=\"1190\" y1=\"317.5\" y2=\"433.5\"></line><circle cx=\"994.8\" cy=\"401.02\" fill=\"none\" r=\"4.6\" stroke=\"var(--ink-80)\" stroke-width=\"1\"></circle><circle cx=\"994.8\" cy=\"401.02\" fill=\"var(--ink)\" r=\"1.7\"></circle><circle cx=\"1052.4\" cy=\"352.3\" fill=\"none\" r=\"4.6\" stroke=\"var(--ink-80)\" stroke-width=\"1\"></circle><circle cx=\"1052.4\" cy=\"352.3\" fill=\"var(--ink)\" r=\"1.7\"></circle><circle cx=\"1126\" cy=\"389.42\" fill=\"none\" r=\"4.6\" stroke=\"var(--ink-80)\" stroke-width=\"1\"></circle><circle cx=\"1126\" cy=\"389.42\" fill=\"var(--ink)\" r=\"1.7\"></circle><circle cx=\"1174\" cy=\"343.02\" fill=\"none\" r=\"4.6\" stroke=\"var(--ink-80)\" stroke-width=\"1\"></circle><circle cx=\"1174\" cy=\"343.02\" fill=\"var(--ink)\" r=\"1.7\"></circle><circle cx=\"1225.2\" cy=\"381.3\" fill=\"none\" r=\"4.6\" stroke=\"var(--ink-80)\" stroke-width=\"1\"></circle><circle cx=\"1225.2\" cy=\"381.3\" fill=\"var(--ink)\" r=\"1.7\"></circle><path d=\"M 994.8 401.02 L 1052.4 352.3 L 1174 343.02\" fill=\"none\" opacity=\"0.55\" stroke=\"var(--ink)\" stroke-dasharray=\"4 4\" stroke-width=\"0.8\"></path><line opacity=\"0.35\" stroke=\"var(--ink)\" stroke-width=\"0.6\" x1=\"934\" x2=\"1286\" y1=\"475.5\" y2=\"475.5\"></line><text data-vnext-fit-box=\"915,201,1305,468\" data-vnext-text-key=\"evidence-wall.text.021\" fill=\"var(--ink)\" font-family=\"var(--mono)\" font-size=\"var(--type-meta)\" letter-spacing=\"2\" x=\"934\" y=\"505.5\">HALLUCINATION −48%</text><rect fill=\"var(--paper-panel)\" height=\"276\" stroke=\"var(--ink-80)\" stroke-width=\"1.3\" width=\"400\" x=\"1350\" y=\"251.5\"></rect><rect fill=\"none\" height=\"266\" opacity=\"0.3\" stroke=\"var(--ink)\" stroke-width=\"0.6\" width=\"390\" x=\"1355\" y=\"256.5\"></rect><text data-vnext-fit-box=\"1355,201,1745,468\" data-vnext-text-key=\"evidence-wall.text.022\" fill=\"var(--ink-45)\" font-family=\"var(--mono)\" font-size=\"var(--type-micro-secondary)\" letter-spacing=\"2.5\" x=\"1374\" y=\"283.5\">EXHIBIT 02 — EVAL SUITE</text><line opacity=\"0.7\" stroke=\"var(--ink)\" stroke-width=\"0.9\" x1=\"1398\" x2=\"1702\" y1=\"433.5\" y2=\"433.5\"></line><line opacity=\"0.7\" stroke=\"var(--ink)\" stroke-width=\"0.9\" x1=\"1398\" x2=\"1398\" y1=\"317.5\" y2=\"433.5\"></line><line opacity=\"0.5\" stroke=\"var(--ink)\" stroke-width=\"0.7\" x1=\"1458.8\" x2=\"1458.8\" y1=\"433.5\" y2=\"439.5\"></line><line opacity=\"0.5\" stroke=\"var(--ink)\" stroke-width=\"0.7\" x1=\"1519.6\" x2=\"1519.6\" y1=\"433.5\" y2=\"439.5\"></line><line opacity=\"0.5\" stroke=\"var(--ink)\" stroke-width=\"0.7\" x1=\"1580.4\" x2=\"1580.4\" y1=\"433.5\" y2=\"439.5\"></line><line opacity=\"0.5\" stroke=\"var(--ink)\" stroke-width=\"0.7\" x1=\"1641.2\" x2=\"1641.2\" y1=\"433.5\" y2=\"439.5\"></line><path d=\"M 1398 419.5 L 1458.8 403.5 L 1525.68 381.5 L 1574.32 333.5 L 1629.04 389.5 L 1702 409.5\" fill=\"none\" stroke=\"var(--ink-80)\" stroke-width=\"1.3\"></path><circle cx=\"1574.32\" cy=\"333.5\" fill=\"none\" r=\"5\" stroke=\"var(--ink-80)\" stroke-width=\"1.1\"></circle><circle cx=\"1574.32\" cy=\"333.5\" fill=\"var(--ink)\" r=\"2\"></circle><line opacity=\"0.35\" stroke=\"var(--ink)\" stroke-dasharray=\"2 5\" stroke-width=\"0.5\" x1=\"1398\" x2=\"1574.32\" y1=\"333.5\" y2=\"333.5\"></line><line opacity=\"0.35\" stroke=\"var(--ink)\" stroke-width=\"0.6\" x1=\"1374\" x2=\"1726\" y1=\"475.5\" y2=\"475.5\"></line><text data-vnext-fit-box=\"1355,201,1745,468\" data-vnext-text-key=\"evidence-wall.text.023\" fill=\"var(--ink)\" font-family=\"var(--mono)\" font-size=\"var(--type-meta)\" letter-spacing=\"2\" x=\"1374\" y=\"505.5\">CASES · 40 → 600</text><rect fill=\"var(--paper-panel)\" height=\"276\" stroke=\"var(--ink-80)\" stroke-width=\"1.3\" width=\"400\" x=\"910\" y=\"577.5\"></rect><rect fill=\"none\" height=\"266\" opacity=\"0.3\" stroke=\"var(--ink)\" stroke-width=\"0.6\" width=\"390\" x=\"915\" y=\"582.5\"></rect><text data-vnext-fit-box=\"915,527,1305,794\" data-vnext-text-key=\"evidence-wall.text.024\" fill=\"var(--ink-45)\" font-family=\"var(--mono)\" font-size=\"var(--type-micro-secondary)\" letter-spacing=\"2.5\" x=\"934\" y=\"609.5\">EXHIBIT 03 — GUARDRAIL</text><rect fill=\"url(#hatch22)\" height=\"12\" stroke=\"none\" width=\"320\" x=\"950\" y=\"771.5\"></rect><line opacity=\"0.6\" stroke=\"var(--ink)\" stroke-width=\"0.9\" x1=\"950\" x2=\"1270\" y1=\"771.5\" y2=\"771.5\"></line><rect fill=\"none\" height=\"52\" rx=\"8\" stroke=\"var(--ink-80)\" stroke-width=\"1.3\" width=\"144\" x=\"1038\" y=\"711.5\"></rect><rect fill=\"none\" height=\"42\" opacity=\"0.3\" rx=\"5\" stroke=\"var(--ink)\" stroke-width=\"0.6\" width=\"134\" x=\"1043\" y=\"716.5\"></rect><circle cx=\"1068\" cy=\"765.5\" fill=\"none\" r=\"11\" stroke=\"var(--ink-80)\" stroke-width=\"1.2\"></circle><circle cx=\"1152\" cy=\"765.5\" fill=\"none\" r=\"11\" stroke=\"var(--ink-80)\" stroke-width=\"1.2\"></circle><circle cx=\"1068\" cy=\"765.5\" fill=\"var(--ink)\" r=\"2\"></circle><circle cx=\"1152\" cy=\"765.5\" fill=\"var(--ink)\" r=\"2\"></circle><line stroke=\"var(--ink-80)\" stroke-width=\"1.2\" x1=\"1110\" x2=\"1110\" y1=\"711.5\" y2=\"651.5\"></line><rect fill=\"none\" height=\"20\" stroke=\"var(--ink-80)\" stroke-width=\"1.1\" width=\"60\" x=\"1080\" y=\"635.5\"></rect><line opacity=\"0.4\" stroke=\"var(--ink)\" stroke-width=\"0.6\" x1=\"1092\" x2=\"1128\" y1=\"645.5\" y2=\"645.5\"></line><circle cx=\"1110\" cy=\"627.5\" fill=\"none\" opacity=\"0.7\" r=\"3\" stroke=\"var(--ink)\" stroke-width=\"0.9\"></circle><line opacity=\"0.35\" stroke=\"var(--ink)\" stroke-width=\"0.6\" x1=\"934\" x2=\"1286\" y1=\"801.5\" y2=\"801.5\"></line><text data-vnext-fit-box=\"915,527,1305,794\" data-vnext-text-key=\"evidence-wall.text.025\" fill=\"var(--ink)\" font-family=\"var(--mono)\" font-size=\"var(--type-meta)\" letter-spacing=\"2\" x=\"934\" y=\"831.5\">BLOCKED · 312 CALLS</text><rect fill=\"var(--paper-panel)\" height=\"276\" stroke=\"var(--ink-80)\" stroke-width=\"1.3\" width=\"400\" x=\"1350\" y=\"577.5\"></rect><rect fill=\"none\" height=\"266\" opacity=\"0.3\" stroke=\"var(--ink)\" stroke-width=\"0.6\" width=\"390\" x=\"1355\" y=\"582.5\"></rect><text data-vnext-fit-box=\"1355,527,1745,794\" data-vnext-text-key=\"evidence-wall.text.026\" fill=\"var(--ink-45)\" font-family=\"var(--mono)\" font-size=\"var(--type-micro-secondary)\" letter-spacing=\"2.5\" x=\"1374\" y=\"609.5\">EXHIBIT 04 — TRACE</text><line opacity=\"0.7\" stroke=\"var(--ink)\" stroke-width=\"0.9\" x1=\"1398\" x2=\"1702\" y1=\"745.5\" y2=\"745.5\"></line><line opacity=\"0.5\" stroke=\"var(--ink)\" stroke-width=\"0.7\" x1=\"1398\" x2=\"1398\" y1=\"745.5\" y2=\"751.5\"></line><line opacity=\"0.5\" stroke=\"var(--ink)\" stroke-width=\"0.7\" x1=\"1448.6666666666667\" x2=\"1448.6666666666667\" y1=\"745.5\" y2=\"751.5\"></line><line opacity=\"0.5\" stroke=\"var(--ink)\" stroke-width=\"0.7\" x1=\"1499.3333333333333\" x2=\"1499.3333333333333\" y1=\"745.5\" y2=\"751.5\"></line><line opacity=\"0.5\" stroke=\"var(--ink)\" stroke-width=\"0.7\" x1=\"1550\" x2=\"1550\" y1=\"745.5\" y2=\"751.5\"></line><line opacity=\"0.5\" stroke=\"var(--ink)\" stroke-width=\"0.7\" x1=\"1600.6666666666667\" x2=\"1600.6666666666667\" y1=\"745.5\" y2=\"751.5\"></line><line opacity=\"0.5\" stroke=\"var(--ink)\" stroke-width=\"0.7\" x1=\"1651.3333333333333\" x2=\"1651.3333333333333\" y1=\"745.5\" y2=\"751.5\"></line><line opacity=\"0.5\" stroke=\"var(--ink)\" stroke-width=\"0.7\" x1=\"1702\" x2=\"1702\" y1=\"745.5\" y2=\"751.5\"></line><rect fill=\"url(#hatch22)\" height=\"22\" stroke=\"var(--ink-80)\" stroke-width=\"1.1\" width=\"158.08\" x=\"1398\" y=\"661.5\"></rect><line opacity=\"0.6\" stroke=\"var(--ink)\" stroke-width=\"0.9\" x1=\"1398\" x2=\"1398\" y1=\"655.5\" y2=\"689.5\"></line><line opacity=\"0.6\" stroke=\"var(--ink)\" stroke-width=\"0.9\" x1=\"1556.08\" x2=\"1556.08\" y1=\"655.5\" y2=\"689.5\"></line><rect fill=\"none\" height=\"22\" stroke=\"var(--ink-80)\" stroke-width=\"1.1\" width=\"152\" x=\"1483.12\" y=\"695.5\"></rect><line opacity=\"0.6\" stroke=\"var(--ink)\" stroke-width=\"0.9\" x1=\"1483.12\" x2=\"1483.12\" y1=\"689.5\" y2=\"723.5\"></line><line opacity=\"0.6\" stroke=\"var(--ink)\" stroke-width=\"0.9\" x1=\"1635.12\" x2=\"1635.12\" y1=\"689.5\" y2=\"723.5\"></line><rect fill=\"url(#hatch22)\" height=\"22\" stroke=\"var(--ink-80)\" stroke-width=\"1.1\" width=\"115.52\" x=\"1586.48\" y=\"729.5\"></rect><line opacity=\"0.6\" stroke=\"var(--ink)\" stroke-width=\"0.9\" x1=\"1586.48\" x2=\"1586.48\" y1=\"723.5\" y2=\"757.5\"></line><line opacity=\"0.6\" stroke=\"var(--ink)\" stroke-width=\"0.9\" x1=\"1702\" x2=\"1702\" y1=\"723.5\" y2=\"757.5\"></line><line opacity=\"0.35\" stroke=\"var(--ink)\" stroke-width=\"0.6\" x1=\"1374\" x2=\"1726\" y1=\"801.5\" y2=\"801.5\"></line><text data-vnext-fit-box=\"1355,527,1745,794\" data-vnext-text-key=\"evidence-wall.text.027\" fill=\"var(--ink)\" font-family=\"var(--mono)\" font-size=\"var(--type-meta)\" letter-spacing=\"2\" x=\"1374\" y=\"831.5\">MTTR · 8 MIN</text></g></g>\n</svg>\n<div class=\"caption\" data-vnext-claim-key=\"claim.text.001\" data-vnext-fit-box=\"0,0,1920,1080\"><span data-content-ref=\"sample.a4.a4-focus\" data-emphasis-role=\"label\" id=\"focus-caption\">上下文、评测、工具护栏与全链 Trace</span>，共同把 Agent 从演示推向可控工程。</div>\n</div>",
+    "stage_structure_sha256": "596499b772a28b903e28536b63a5a77d676ad7abbabb099778f9b5f1e5439db1"
+  },
+  "bindings": {
+    "claim": {
+      "key": "claim.text.001",
+      "default": "上下文、评测、工具护栏与全链 Trace ，共同把 Agent 从演示推向可控工程。",
+      "max_chars": 45,
+      "fit_box": [
+        0.0,
+        0.0,
+        1920.0,
+        1080.0
+      ],
+      "fit_owner_kind": "slide"
+    },
+    "primary_slot": "evidence-wall",
+    "slots": {
+      "evidence-wall": {
+        "text": [
+          {
+            "key": "evidence-wall.text.001",
+            "default": "STRATEGY · HARNESS ENG",
+            "max_chars": 26,
+            "item_scope": "item",
+            "item_group_source": "fixed-slot",
+            "item_index": 0,
+            "fit_box": [
+              150.0,
+              196.0,
+              1750.0,
+              800.0
+            ],
+            "fit_owner_kind": "svg-group"
+          },
+          {
+            "key": "evidence-wall.text.002",
+            "default": "四条工程化打法，各有实据",
+            "max_chars": 17,
+            "item_scope": "item",
+            "item_group_source": "fixed-slot",
+            "item_index": 0,
+            "fit_box": [
+              150.0,
+              196.0,
+              1750.0,
+              800.0
+            ],
+            "fit_owner_kind": "svg-group"
+          },
+          {
+            "key": "evidence-wall.text.003",
+            "default": "01",
+            "max_chars": 3,
+            "item_scope": "item",
+            "item_group_source": "fixed-slot",
+            "item_index": 0,
+            "fit_box": [
+              150.0,
+              196.0,
+              1750.0,
+              800.0
+            ],
+            "fit_owner_kind": "svg-group"
+          },
+          {
+            "key": "evidence-wall.text.004",
+            "default": "上下文管控",
+            "max_chars": 7,
+            "item_scope": "item",
+            "item_group_source": "fixed-slot",
+            "item_index": 0,
+            "fit_box": [
+              150.0,
+              196.0,
+              1750.0,
+              800.0
+            ],
+            "fit_owner_kind": "svg-group"
+          },
+          {
+            "key": "evidence-wall.text.005",
+            "default": "摘要做成交接文档，窗口只留当下任务",
+            "max_chars": 23,
+            "item_scope": "item",
+            "item_group_source": "fixed-slot",
+            "item_index": 0,
+            "fit_box": [
+              150.0,
+              196.0,
+              1750.0,
+              800.0
+            ],
+            "fit_owner_kind": "svg-group"
+          },
+          {
+            "key": "evidence-wall.text.006",
+            "default": "幻觉率比裸调下降一半",
+            "max_chars": 14,
+            "item_scope": "item",
+            "item_group_source": "fixed-slot",
+            "item_index": 0,
+            "fit_box": [
+              150.0,
+              196.0,
+              1750.0,
+              800.0
+            ],
+            "fit_owner_kind": "svg-group"
+          },
+          {
+            "key": "evidence-wall.text.007",
+            "default": "02",
+            "max_chars": 3,
+            "item_scope": "item",
+            "item_group_source": "fixed-slot",
+            "item_index": 0,
+            "fit_box": [
+              150.0,
+              196.0,
+              1750.0,
+              800.0
+            ],
+            "fit_owner_kind": "svg-group"
+          },
+          {
+            "key": "evidence-wall.text.008",
+            "default": "评测前置",
+            "max_chars": 6,
+            "item_scope": "item",
+            "item_group_source": "fixed-slot",
+            "item_index": 0,
+            "fit_box": [
+              150.0,
+              196.0,
+              1750.0,
+              800.0
+            ],
+            "fit_owner_kind": "svg-group"
+          },
+          {
+            "key": "evidence-wall.text.009",
+            "default": "每个版本先过基准集再灰度，不靠手感",
+            "max_chars": 23,
+            "item_scope": "item",
+            "item_group_source": "fixed-slot",
+            "item_index": 0,
+            "fit_box": [
+              150.0,
+              196.0,
+              1750.0,
+              800.0
+            ],
+            "fit_owner_kind": "svg-group"
+          },
+          {
+            "key": "evidence-wall.text.010",
+            "default": "回归用例从 40 条涨到 600 条",
+            "max_chars": 19,
+            "item_scope": "item",
+            "item_group_source": "fixed-slot",
+            "item_index": 0,
+            "fit_box": [
+              150.0,
+              196.0,
+              1750.0,
+              800.0
+            ],
+            "fit_owner_kind": "svg-group"
+          },
+          {
+            "key": "evidence-wall.text.011",
+            "default": "03",
+            "max_chars": 3,
+            "item_scope": "item",
+            "item_group_source": "fixed-slot",
+            "item_index": 0,
+            "fit_box": [
+              150.0,
+              196.0,
+              1750.0,
+              800.0
+            ],
+            "fit_owner_kind": "svg-group"
+          },
+          {
+            "key": "evidence-wall.text.012",
+            "default": "工具护栏",
+            "max_chars": 6,
+            "item_scope": "item",
+            "item_group_source": "fixed-slot",
+            "item_index": 0,
+            "fit_box": [
+              150.0,
+              196.0,
+              1750.0,
+              800.0
+            ],
+            "fit_owner_kind": "svg-group"
+          },
+          {
+            "key": "evidence-wall.text.013",
+            "default": "高风险动作加确认门，Agent 不能擅自执行",
+            "max_chars": 29,
+            "item_scope": "item",
+            "item_group_source": "fixed-slot",
+            "item_index": 0,
+            "fit_box": [
+              150.0,
+              196.0,
+              1750.0,
+              800.0
+            ],
+            "fit_owner_kind": "svg-group"
+          },
+          {
+            "key": "evidence-wall.text.014",
+            "default": "越权调用被拦在执行前",
+            "max_chars": 14,
+            "item_scope": "item",
+            "item_group_source": "fixed-slot",
+            "item_index": 0,
+            "fit_box": [
+              150.0,
+              196.0,
+              1750.0,
+              800.0
+            ],
+            "fit_owner_kind": "svg-group"
+          },
+          {
+            "key": "evidence-wall.text.015",
+            "default": "04",
+            "max_chars": 3,
+            "item_scope": "item",
+            "item_group_source": "fixed-slot",
+            "item_index": 0,
+            "fit_box": [
+              150.0,
+              196.0,
+              1750.0,
+              800.0
+            ],
+            "fit_owner_kind": "svg-group"
+          },
+          {
+            "key": "evidence-wall.text.016",
+            "default": "全链可溯",
+            "max_chars": 6,
+            "item_scope": "item",
+            "item_group_source": "fixed-slot",
+            "item_index": 0,
+            "fit_box": [
+              150.0,
+              196.0,
+              1750.0,
+              800.0
+            ],
+            "fit_owner_kind": "svg-group"
+          },
+          {
+            "key": "evidence-wall.text.017",
+            "default": "每一步推理留 Trace，错了能定位到哪一跳",
+            "max_chars": 29,
+            "item_scope": "item",
+            "item_group_source": "fixed-slot",
+            "item_index": 0,
+            "fit_box": [
+              150.0,
+              196.0,
+              1750.0,
+              800.0
+            ],
+            "fit_owner_kind": "svg-group"
+          },
+          {
+            "key": "evidence-wall.text.018",
+            "default": "故障定位从小时级到分钟级",
+            "max_chars": 17,
+            "item_scope": "item",
+            "item_group_source": "fixed-slot",
+            "item_index": 0,
+            "fit_box": [
+              150.0,
+              196.0,
+              1750.0,
+              799.0
+            ],
+            "fit_owner_kind": "svg-group"
+          },
+          {
+            "key": "evidence-wall.text.019",
+            "default": "PROOF",
+            "max_chars": 7,
+            "item_scope": "item",
+            "item_group_source": "fixed-slot",
+            "item_index": 0,
+            "fit_box": [
+              150.0,
+              196.0,
+              1750.0,
+              800.0
+            ],
+            "fit_owner_kind": "svg-group"
+          },
+          {
+            "key": "evidence-wall.text.020",
+            "default": "EXHIBIT 01 — CONTEXT MGR",
+            "max_chars": 19,
+            "item_scope": "item",
+            "item_group_source": "fixed-slot",
+            "item_index": 0,
+            "fit_box": [
+              915.0,
+              201.0,
+              1305.0,
+              468.0
+            ],
+            "fit_owner_kind": "svg-shape"
+          },
+          {
+            "key": "evidence-wall.text.021",
+            "default": "HALLUCINATION −48%",
+            "max_chars": 23,
+            "item_scope": "item",
+            "item_group_source": "fixed-slot",
+            "item_index": 0,
+            "fit_box": [
+              915.0,
+              201.0,
+              1305.0,
+              468.0
+            ],
+            "fit_owner_kind": "svg-shape"
+          },
+          {
+            "key": "evidence-wall.text.022",
+            "default": "EXHIBIT 02 — EVAL SUITE",
+            "max_chars": 19,
+            "item_scope": "item",
+            "item_group_source": "fixed-slot",
+            "item_index": 0,
+            "fit_box": [
+              1355.0,
+              201.0,
+              1745.0,
+              468.0
+            ],
+            "fit_owner_kind": "svg-shape"
+          },
+          {
+            "key": "evidence-wall.text.023",
+            "default": "CASES · 40 → 600",
+            "max_chars": 17,
+            "item_scope": "item",
+            "item_group_source": "fixed-slot",
+            "item_index": 0,
+            "fit_box": [
+              1355.0,
+              201.0,
+              1745.0,
+              468.0
+            ],
+            "fit_owner_kind": "svg-shape"
+          },
+          {
+            "key": "evidence-wall.text.024",
+            "default": "EXHIBIT 03 — GUARDRAIL",
+            "max_chars": 19,
+            "item_scope": "item",
+            "item_group_source": "fixed-slot",
+            "item_index": 0,
+            "fit_box": [
+              915.0,
+              527.0,
+              1305.0,
+              794.0
+            ],
+            "fit_owner_kind": "svg-shape"
+          },
+          {
+            "key": "evidence-wall.text.025",
+            "default": "BLOCKED · 312 CALLS",
+            "max_chars": 22,
+            "item_scope": "item",
+            "item_group_source": "fixed-slot",
+            "item_index": 0,
+            "fit_box": [
+              915.0,
+              527.0,
+              1305.0,
+              794.0
+            ],
+            "fit_owner_kind": "svg-shape"
+          },
+          {
+            "key": "evidence-wall.text.026",
+            "default": "EXHIBIT 04 — TRACE",
+            "max_chars": 19,
+            "item_scope": "item",
+            "item_group_source": "fixed-slot",
+            "item_index": 0,
+            "fit_box": [
+              1355.0,
+              527.0,
+              1745.0,
+              794.0
+            ],
+            "fit_owner_kind": "svg-shape"
+          },
+          {
+            "key": "evidence-wall.text.027",
+            "default": "MTTR · 8 MIN",
+            "max_chars": 13,
+            "item_scope": "item",
+            "item_group_source": "fixed-slot",
+            "item_index": 0,
+            "fit_box": [
+              1355.0,
+              527.0,
+              1745.0,
+              794.0
+            ],
+            "fit_owner_kind": "svg-shape"
+          }
+        ],
+        "icon": []
+      },
+      "support": {
+        "text": [
+          {
+            "key": "support.text.001",
+            "default": "PPT 标题",
+            "max_chars": 40,
+            "item_scope": "item",
+            "item_group_source": "fixed-slot",
+            "item_index": 0,
+            "fit_box": [
+              0.0,
+              0.0,
+              1920.0,
+              1080.0
+            ],
+            "fit_owner_kind": "slide"
+          },
+          {
+            "key": "support.text.002",
+            "default": "页面标题",
+            "max_chars": 72,
+            "item_scope": "item",
+            "item_group_source": "fixed-slot",
+            "item_index": 0,
+            "fit_box": [
+              0.0,
+              0.0,
+              1920.0,
+              1080.0
+            ],
+            "fit_owner_kind": "slide"
+          }
+        ],
+        "icon": []
+      },
+      "takeaway": {
+        "text": [],
+        "icon": []
+      }
+    }
+  },
+  "seed_sha256": "b865e3d92a62e1ae5cdf48a38015f10f5edbaad895b76dccef276bb4a205fd4a"
+}

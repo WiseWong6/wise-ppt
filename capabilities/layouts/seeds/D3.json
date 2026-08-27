@@ -1,0 +1,62 @@
+{
+  "contract": "wise-ppt-layout-seed@4",
+  "layout_id": "paper-ink.nonrelationship.D3",
+  "display_code": "D3",
+  "page_kind": "nonrelationship",
+  "source": {
+    "path": "references/gallery-paper-ink/ai/frames/layout-d3.html",
+    "sha256": "ece29992e8b23f56a26acab2be587d67864e7f97f846ddaf91d26a4ee64f57ea"
+  },
+  "locked": {
+    "scoped_css": "@scope (.slide[data-layout-id=\"paper-ink.nonrelationship.D3\"]) {\nsvg.scene { position: absolute; inset: 0; z-index: 1; }\n  .doc.tl, .folio { color: var(--ink-45); }\n  .big {\n    position: absolute; left: 0; right: 0; top: 476px;\n    text-align: center;\n    font-family: var(--serif); font-weight: var(--wp-weight-regular);\n    /* 句末全角\"。\"右侧大半是空字面,墨迹重心左偏约 25px;\n       text-indent 半量作用于居中行,把字面墨迹光学拉回版心(同 .sig 的字距补偿纪律)。 */\n    font-size: var(--type-hero); letter-spacing: .06em; text-indent: .66em;\n    color: var(--ink);\n    z-index: 5;\n  }\n  .sig {\n    position: absolute; left: 0; right: 0; top: 626px;\n    text-align: center;\n    font-family: var(--mono); font-weight: 400;\n    font-size: var(--type-meta); letter-spacing: .3em; text-indent: .3em;\n    color: var(--ink-45);\n    text-transform: uppercase;\n    z-index: 5;\n  }\n}\n",
+    "css_sha256": "2f7055751a2ad9053f4df15bfc47b9d5705eca40ca64d416ea51f9bca8cafdcc",
+    "stage_html": "<div class=\"stage\" data-block-id=\"gallery-primary\" data-component-id=\"native.paper-ink.scaffold.minimal-outro.outro-lockup\" data-component-source=\"native\" data-content-ref=\"example.d3\" data-renderer-kind=\"typography\" data-template-id=\"D3\">\n<div class=\"doc tl\" data-template-part=\"support\" data-template-slot=\"support\" data-template-slot-kind=\"text\" data-vnext-fit-box=\"0,0,1920,1080\" data-vnext-text-key=\"support.text.001\">PPT 标题<br/>页面标题</div>\n<div class=\"folio\" data-template-part=\"folio\">页码 / 总页数 — BY @歪斯Wise</div>\n<svg class=\"scene\" data-template-part=\"illustration\" data-template-slot=\"illustration\" data-template-slot-kind=\"illustration\" height=\"1080\" viewbox=\"0 0 1920 1080\" width=\"1920\">\n<g id=\"draw\"><g transform=\"translate(0 -22)\"><line opacity=\"0.55\" stroke=\"var(--ink)\" stroke-width=\"0.8\" x1=\"920\" x2=\"1000\" y1=\"440\" y2=\"440\"></line><circle cx=\"1018\" cy=\"440\" fill=\"none\" opacity=\"0.7\" r=\"4.5\" stroke=\"var(--ink)\" stroke-width=\"0.9\"></circle><circle cx=\"1018\" cy=\"440\" fill=\"var(--ink)\" opacity=\"0.8\" r=\"1.6\"></circle><line opacity=\"0.4\" stroke=\"var(--ink)\" stroke-width=\"0.7\" x1=\"951\" x2=\"969\" y1=\"716\" y2=\"716\"></line><line opacity=\"0.4\" stroke=\"var(--ink)\" stroke-width=\"0.7\" x1=\"960\" x2=\"960\" y1=\"707\" y2=\"725\"></line></g></g>\n</svg>\n<div class=\"big\" data-template-part=\"primary\" data-template-slot=\"primary\" data-template-slot-kind=\"text\" data-vnext-fit-box=\"0,0,1920,1080\" data-vnext-text-key=\"primary.text.001\">进一寸有进一寸的欢喜。</div>\n<div class=\"sig\" data-template-part=\"signature\">@歪斯Wise</div>\n</div>",
+    "stage_structure_sha256": "ed7992cbcdda6721da6388f38bc50cbed6ba33ca1ed69f8bee0c8c88a3e6faa1"
+  },
+  "bindings": {
+    "primary_slot": null,
+    "slots": {
+      "support": {
+        "text": [
+          {
+            "key": "support.text.001",
+            "default": "PPT 标题\n页面标题",
+            "max_chars": 96,
+            "item_scope": "item",
+            "item_group_source": "fixed-slot",
+            "item_index": 0,
+            "fit_box": [
+              0.0,
+              0.0,
+              1920.0,
+              1080.0
+            ],
+            "fit_owner_kind": "slide"
+          }
+        ],
+        "icon": []
+      },
+      "primary": {
+        "text": [
+          {
+            "key": "primary.text.001",
+            "default": "进一寸有进一寸的欢喜。",
+            "max_chars": 15,
+            "item_scope": "item",
+            "item_group_source": "fixed-slot",
+            "item_index": 0,
+            "fit_box": [
+              0.0,
+              0.0,
+              1920.0,
+              1080.0
+            ],
+            "fit_owner_kind": "slide"
+          }
+        ],
+        "icon": []
+      }
+    }
+  },
+  "seed_sha256": "f00f82b77e90119970c0eb27088d61d589161c6ebd640e4a4428a56a251431d4"
+}

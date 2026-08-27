@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-runtime="wise-ppt-specimen" data-typography-mode="all-sans" data-page-id="gallery-ai-r5" data-page-role="synthesize" data-theme="paper-ink" data-layout="paper-ink.network.interlocking-system" data-layout-source="gallery" data-sample-focus-profile="content-only" data-sample-focus-members='[{"selector":"#r5-focus-en","role":"annotation"},{"selector":"#r5-focus-cn","role":"value"},{"selector":"#r5-focus-line","role":"outline"},{"selector":"#r5-focus-arrow","role":"outline"}]' data-sample-focus-ref="sample.r5.r5-focus">
+<head>
+<meta charset="UTF-8">
+<title>layout-r5 · 互锁齿轮 · AI 系统协同</title>
+<script src="../../../../runtime/stage-fit.js"></script>
+<link rel="stylesheet" href="../../../../themes/paper-ink/assets/design-tokens.css">
+<link rel="stylesheet" href="../../../../themes/paper-ink/assets/catalog-fonts.css" data-wise-catalog-fonts="true">
+<link rel="stylesheet" href="../../../../themes/paper-ink/assets/slide-components.css">
+<link rel="stylesheet" href="../../../shell.css">
+<style>
+  /* 卡片本体 724×488 fixed,比槽盒 1050×708 窄:由帧负责槽内摆位。
+     以"齿轮+箭头"墨迹中心对齐页面正中 (960,540),并整体 1.2× 放大;
+     组件母板与 viewBox 不动,眉题与页底 .caption 只作上下越界校验。 */
+  .gears-host{position:absolute;left:435px;top:152px;width:1050px;height:708px;z-index:1}
+  .gears-host>.pi-card{position:absolute;left:91px;top:65px;transform:scale(1.2);transform-origin:0 0;background:transparent}
+  .gears-host .pi-art>text:first-of-type,
+  .gears-host [data-field$="_desc"],
+  .gears-host #r5-focus-en{font-size:13px}
+  .caption{position:absolute;left:0;right:0;bottom:82px;text-align:center;font-family:var(--sans);font-size:var(--type-caption);letter-spacing:.04em;color:var(--ink);z-index:5}
+</style>
+</head>
+<body class="slide">
+<div class="stage" data-block-id="gallery-primary" data-renderer-kind="native-html" data-component-source="native" data-component-id="native.paper-ink.107.interlocking-gears" data-content-ref="example.r5">
+  <div class="doc tl">PPT 标题<br>页面标题</div>
+  <div class="folio">页码 / 总页数 — BY @歪斯Wise</div>
+  <div id="gears-host" class="gears-host" data-slot-id="system" data-component-id="native.paper-ink.107.interlocking-gears" aria-label="内容模型评测三个互锁模块"></div>
+  <div class="caption">内容、模型与评测相互驱动，闭环越完整，交付越稳定。</div>
+</div>
+<script src="../../../../capabilities/layouts/paper-ink-components.js"></script>
+<script>
+  const catalog=window.PAPER_INK_COMPONENT_DATA;
+  const entry=catalog&&catalog.entries.find(item=>item.num===107);
+  if(!entry)throw new Error('缺少 native.paper-ink.107.interlocking-gears');
+  const style=document.createElement('style');
+  /* 样张是静帧:只注入组件静态样式,不拼 componentMotionCss(入场动效),
+     静止态即标称几何,AI 参考与门禁量测不再依赖截图时机。 */
+  style.textContent=catalog.componentCss||'';
+  document.head.appendChild(style);
+  const host=document.getElementById('gears-host');
+  host.innerHTML=entry.snippet;
+  const content={
+    module_1:'内容',
+    module_1_desc:'知识与任务',
+    module_2:'模型',
+    module_2_desc:'推理与执行',
+    module_3:'评测',
+    module_3_desc:'反馈与校准',
+    system_result:'稳定交付'
+  };
+  Object.entries(content).forEach(([field,value])=>{
+    const node=host.querySelector(`[data-field="${field}"]`);
+    if(node)node.textContent=value;
+  });
+  const result=host.querySelector('[data-field="system_result"]');
+  if(result){
+    result.id='r5-focus-cn';
+    const group=result.parentElement;
+    const en=group&&group.querySelector('text:not([data-field])');
+    const line=group&&group.querySelector('line');
+    const arrow=group&&group.querySelector('path');
+    if(en)en.id='r5-focus-en';
+    if(line)line.id='r5-focus-line';
+    if(arrow)arrow.id='r5-focus-arrow';
+  }
+  stageFit();
+</script>
+</body>
+</html>

@@ -1,0 +1,86 @@
+/* Catalog-only font projection.
+   Generated WOFF2 files live under fonts/catalog/ and are intentionally ignored by git.
+   Missing glyphs or missing local subsets fall through to the production families below.
+   'Han Sans Catalog' mirrors the production 'Han Sans' ladder (300/400/700) so
+   preset-scoped font-weight ladders resolve identically in and out of the catalog. */
+@font-face {
+  font-family: 'Han Sans Catalog Light';
+  src: url('./fonts/catalog/SourceHanSansCN-Light.catalog.woff2') format('woff2');
+  font-style: normal;
+  font-weight: 300;
+  font-display: block;
+}
+@font-face {
+  font-family: 'Han Sans Catalog';
+  src: url('./fonts/catalog/SourceHanSansCN-Light.catalog.woff2') format('woff2');
+  font-style: normal;
+  font-weight: 300;
+  font-display: block;
+}
+@font-face {
+  font-family: 'Han Sans Catalog';
+  src: url('./fonts/catalog/SourceHanSansCN-Regular.catalog.woff2') format('woff2');
+  font-style: normal;
+  font-weight: 400;
+  font-display: block;
+}
+@font-face {
+  font-family: 'Han Sans Catalog';
+  src: url('./fonts/catalog/SourceHanSansCN-Medium.catalog.woff2') format('woff2');
+  font-style: normal;
+  font-weight: 500;
+  font-display: block;
+}
+@font-face {
+  font-family: 'Han Sans Catalog';
+  src: url('./fonts/catalog/SourceHanSansCN-Bold.catalog.woff2') format('woff2');
+  font-style: normal;
+  font-weight: 700;
+  font-display: block;
+}
+@font-face {
+  font-family: 'Han Serif Catalog';
+  src: url('./fonts/catalog/SourceHanSerifCN-Medium.catalog.woff2') format('woff2');
+  font-style: normal;
+  font-weight: 500;
+  font-display: block;
+}
+@font-face {
+  font-family: 'Han Serif Catalog';
+  src: url('./fonts/catalog/SourceHanSerifCN-Bold.catalog.woff2') format('woff2');
+  font-style: normal;
+  font-weight: 700;
+  font-display: block;
+}
+@font-face {
+  font-family: 'Courier Prime Catalog';
+  src: url('./fonts/catalog/CourierPrime-Regular.catalog.woff2') format('woff2');
+  font-style: normal;
+  font-weight: 400;
+  font-display: block;
+}
+@font-face {
+  font-family: 'Courier Prime Catalog';
+  src: url('./fonts/catalog/CourierPrime-Bold.catalog.woff2') format('woff2');
+  font-style: normal;
+  font-weight: 700;
+  font-display: block;
+}
+@font-face {
+  font-family: 'LXGW WenKai Catalog';
+  src: url('./fonts/catalog/LXGWWenKai-Regular.catalog.woff2') format('woff2');
+  font-style: normal;
+  font-weight: 400;
+  font-display: block;
+}
+
+/* Specificity is intentionally higher than the production :root aliases loaded later. */
+:root[data-wise-catalog-fonts='true'] {
+  --font-serif-family: 'Han Serif Catalog', 'Han Serif', 'Songti SC', serif;
+  --font-sans-family: 'Han Sans Catalog', 'Han Sans', 'PingFang SC', sans-serif;
+  --font-sans-light-family: 'Han Sans Catalog Light', 'Han Sans Light', 'PingFang SC', sans-serif;
+  /* Courier Prime 本身没有中文字形；Catalog 子集缺字时直接交给系统等宽字体，
+     避免为一个中文页脚再探测并下载完整 Courier 字库。 */
+  --font-mono-family: 'Courier Prime Catalog', Menlo, monospace;
+  --font-brush-family: 'LXGW WenKai Catalog', 'LXGW WenKai', 'Xingkai SC', cursive;
+}

@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-runtime="wise-ppt-specimen" data-typography-mode="all-sans" data-page-id="gallery-ai-f3" data-page-role="explain" data-theme="paper-ink" data-layout="paper-ink.decomposition.column-list" data-layout-source="gallery" data-sample-focus-profile="copy+content" data-sample-focus-members='[{"selector":"#f3-boundary-dot","role":"symbol","paint":"fill"},{"selector":"#f3-boundary-title","role":"value"},{"selector":"#f3-boundary-note","role":"label"},{"selector":"[data-f3-icon=\"harness\"]","role":"outline"},{"selector":"#f3-harness-title","role":"value"},{"selector":"#f3-harness-note","role":"label"},{"selector":"#focus-caption","role":"label"}]' data-sample-focus-ref="sample.f3.f3-focus">
+<head>
+<meta charset="UTF-8">
+<title>layout-f3 · 分栏清单柱 · AI 产品经理核心能力</title>
+<script src="../../../../runtime/stage-fit.js"></script>
+<link rel="stylesheet" href="../../../../themes/paper-ink/assets/design-tokens.css">
+<link rel="stylesheet" href="../../../../themes/paper-ink/assets/catalog-fonts.css" data-wise-catalog-fonts="true">
+<link rel="stylesheet" href="../../../../themes/paper-ink/assets/slide-components.css">
+<link rel="stylesheet" href="../../../shell.css">
+<style>
+  svg.scene { position: absolute; inset: 0; z-index: 1; }
+  .caption {
+    position: absolute; left: 0; right: 0; bottom: 118px;
+    text-align: center;
+    font-family: var(--sans); font-weight: 400;
+    font-size: var(--type-caption); letter-spacing: .04em;
+    color: var(--ink);
+    z-index: 5;
+  }
+</style>
+</head>
+<body class="slide">
+<div class="stage" data-block-id="gallery-primary" data-renderer-kind="svg" data-component-source="native" data-component-id="native.paper-ink.decomposition.column-list.columns" data-content-ref="example.f3">
+  <div class="doc tl">PPT 标题<br>页面标题</div>
+  <div class="folio">页码 / 总页数 — BY @歪斯Wise</div>
+
+  <svg class="scene" width="1920" height="1080" viewBox="0 0 1920 1080">
+    <g id="draw"></g>
+  </svg>
+
+  <div class="caption">AI 产品负责人需要同时具备<span id="focus-caption">认知、工程与落地</span>能力，任何一柱缺失都会卡住交付。</div>
+</div>
+
+<script src="../../../../themes/paper-ink/assets/particles.js"></script>
+<script>
+var NS = 'http://www.w3.org/2000/svg';
+var INK = 'var(--ink)';
+var INK80 = 'var(--ink-80)';
+var INK45 = 'var(--ink-45)';
+var G = document.getElementById('draw');
+function el(tag, attrs) {
+  var e = document.createElementNS(NS, tag);
+  for (var k in attrs) e.setAttribute(k, attrs[k]);
+  G.appendChild(e); return e;
+}
+function txt(x, y, str, attrs) {
+  var t = el('text', Object.assign({x:x, y:y}, attrs||{}));
+  t.textContent = str; return t;
+}
+var MONO = 'var(--mono)', SANS = 'var(--sans)';
+
+
+/* 三栏清单与分隔 guide 作为一个主体整体垂直配平。 */
+G = el('g', {transform:'translate(0 -13.7)'});
+
+/* ---------- 栏间分隔虚线 ---------- */
+[640, 1220].forEach(function(x){
+  el('line', {x1:x, y1:220, x2:x, y2:830, stroke:INK, 'stroke-width':.6, 'stroke-dasharray':'2 6', opacity:.25});
+});
+
+/* ---------- 栏题（无线框：中文 + mono EN + 短横） ---------- */
+function colHead(x, zh, en) {
+  txt(x, 240, zh, {'font-family':SANS, 'font-weight':300, 'font-size':'var(--type-subheading)', fill:INK});
+  txt(x, 268, en, {'font-family':MONO, 'font-size':'var(--type-meta)', 'letter-spacing':3, fill:INK45});
+  el('line', {x1:x, y1:286, x2:x + 96, y2:286, stroke:INK, 'stroke-width':.8, opacity:.5});
+  el('line', {x1:x, y1:292, x2:x + 500, y2:292, stroke:INK, 'stroke-width':.6, opacity:.22});
+}
+
+/* ---------- 条目三形态（柱间图元随语义微调） ---------- */
+/* 柱 1：双圈圆点引导 */
+function itemDot(x, y, title, note, field, focus) {
+  el('circle', {cx:x + 8, cy:y - 7, r:4.2, fill:'none', stroke:INK80, 'stroke-width':1});
+  el('circle', {id:focus?'f3-boundary-dot':'', cx:x + 8, cy:y - 7, r:1.4, fill:INK});
+  txt(x + 28, y, title, {id:focus?'f3-boundary-title':'', 'font-family':SANS, 'font-weight':300, 'font-size':'var(--type-body)', fill:INK});
+  txt(x + 500, y, field, {'font-family':MONO, 'font-size':'var(--type-meta)', 'letter-spacing':1, 'text-anchor':'end', fill:'color-mix(in srgb, var(--ink) 50%, transparent)'});
+  txt(x + 28, y + 30, note, {id:focus?'f3-boundary-note':'', 'font-family':SANS, 'font-weight':300, 'font-size':'var(--type-body-small)', fill:'var(--ink-55)'});
+}
+/* 柱 2：细线小框 + 框内微图形 */
+function itemBox(x, y, title, note, field, glyph, focus) {
+  el('rect', {'data-f3-icon':focus?'harness':'', x:x, y:y - 24, width:30, height:30, fill:'none', stroke:INK80, 'stroke-width':1});
+  if (glyph === 0) {        /* 十字 */
+    el('line', {'data-f3-icon':focus?'harness':'', x1:x + 15, y1:y - 18, x2:x + 15, y2:y, stroke:INK, 'stroke-width':.8, opacity:.7});
+    el('line', {'data-f3-icon':focus?'harness':'', x1:x + 6, y1:y - 9, x2:x + 24, y2:y - 9, stroke:INK, 'stroke-width':.8, opacity:.7});
+  } else if (glyph === 1) { /* 小圆 */
+    el('circle', {cx:x + 15, cy:y - 9, r:6, fill:'none', stroke:INK, 'stroke-width':.8, opacity:.7});
+    el('circle', {cx:x + 15, cy:y - 9, r:1.4, fill:INK});
+  } else if (glyph === 2) { /* 折线 */
+    el('path', {d:'M ' + (x + 6) + ' ' + (y - 4) + ' L ' + (x + 12) + ' ' + (y - 14) + ' L ' + (x + 18) + ' ' + (y - 8) + ' L ' + (x + 24) + ' ' + (y - 16),
+      fill:'none', stroke:INK, 'stroke-width':.8, opacity:.7});
+  } else {                  /* 菱点 */
+    el('path', {d:'M ' + (x + 15) + ' ' + (y - 17) + ' l 7 8 l -7 8 l -7 -8 Z', fill:'none', stroke:INK, 'stroke-width':.8, opacity:.7});
+  }
+  txt(x + 48, y, title, {id:focus?'f3-harness-title':'f3-item-'+field, 'font-family':SANS, 'font-weight':300, 'font-size':'var(--type-body)', fill:INK});
+  txt(x + 500, y, field, {'font-family':MONO, 'font-size':'var(--type-meta)', 'letter-spacing':1, 'text-anchor':'end', fill:'color-mix(in srgb, var(--ink) 50%, transparent)'});
+  txt(x + 48, y + 30, note, {id:focus?'f3-harness-note':'', 'font-family':SANS, 'font-weight':300, 'font-size':'var(--type-body-small)', fill:'var(--ink-55)'});
+}
+/* 柱 3：mono 编号 + 短刻度 */
+function itemIdx(x, y, idx, title, note, field) {
+  txt(x, y, idx, {'font-family':MONO, 'font-size':'var(--type-label)', 'letter-spacing':1, fill:'var(--ink-45)'});
+  el('line', {x1:x, y1:y + 8, x2:x + 34, y2:y + 8, stroke:INK80, 'stroke-width':.8, opacity:.5});
+  txt(x + 64, y, title, {'font-family':SANS, 'font-weight':300, 'font-size':'var(--type-body)', fill:INK});
+  txt(x + 500, y, field, {'font-family':MONO, 'font-size':'var(--type-meta)', 'letter-spacing':1, 'text-anchor':'end', fill:'color-mix(in srgb, var(--ink) 50%, transparent)'});
+  txt(x + 64, y + 30, note, {'font-family':SANS, 'font-weight':300, 'font-size':'var(--type-body-small)', fill:'var(--ink-55)'});
+}
+
+/* ============ 三柱（AI 产品经理核心能力清单） ============ */
+var Y0 = 350, GAP = 128;
+
+/* 柱 1 · 认知奠基 */
+colHead(120, '认知奠基', 'FOUNDATIONS');
+itemDot(120, Y0 + 0 * GAP, '模型原理', '理解 Transformer 与注意力机制的基本结构', 'ARCH');
+itemDot(120, Y0 + 1 * GAP, '能力边界', '清楚模型能做什么、做不到什么', 'BOUNDARY', true);
+itemDot(120, Y0 + 2 * GAP, '幻觉机理', '识别幻觉来源与触发条件', 'HALLU');
+itemDot(120, Y0 + 3 * GAP, '成本与延迟', '在效果、Token 与时延之间做权衡', 'TRADE-OFF');
+
+/* 柱 2 · 工程思维 */
+colHead(700, '工程思维', 'ENGINEERING');
+itemBox(700, Y0 + 0 * GAP, 'Harness 设计', '提示词、上下文与流程编排一体化', 'PROMPT', 0, true);
+itemBox(700, Y0 + 1 * GAP, '上下文管控', '长会话压缩、记忆与窗口策略', 'CONTEXT', 1);
+itemBox(700, Y0 + 2 * GAP, '评测体系', '建立离线与线上双轨评测基准', 'EVAL', 2);
+itemBox(700, Y0 + 3 * GAP, '语料与反馈', '语料管线、标注治理与反馈闭环', 'DATA', 3);
+
+/* 柱 3 · 落地推进 */
+colHead(1280, '落地推进', 'DELIVERY');
+itemIdx(1280, Y0 + 0 * GAP, 'C1', '场景定义', '从业务痛点切出可交付的真实场景', 'SCOPE');
+itemIdx(1280, Y0 + 1 * GAP, 'C2', '指标对齐', '把模型指标翻译成业务北极星', 'KPI');
+itemIdx(1280, Y0 + 2 * GAP, 'C3', '迭代节奏', '小步快跑、灰度发布与回滚预案', 'CADENCE');
+itemIdx(1280, Y0 + 3 * GAP, 'C4', '合规治理', '隐私脱敏与内容安全边界把控', 'COMPLY');
+
+stageFit();
+</script>
+</body>
+</html>

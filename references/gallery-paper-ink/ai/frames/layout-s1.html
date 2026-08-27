@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-runtime="wise-ppt-specimen" data-typography-mode="all-sans" data-page-id="gallery-ai-s1" data-page-role="explain" data-theme="paper-ink" data-layout="paper-ink.hierarchy.product-platform-architecture" data-layout-source="gallery" data-sample-focus-profile="none" data-sample-focus-members='[]'>
+<head>
+<meta charset="UTF-8">
+<title>layout-s1 · 产品平台架构图 · AI 产品五层架构</title>
+<script src="../../../../runtime/stage-fit.js"></script>
+<link rel="stylesheet" href="../../../../themes/paper-ink/assets/design-tokens.css">
+<link rel="stylesheet" href="../../../../themes/paper-ink/assets/catalog-fonts.css" data-wise-catalog-fonts="true">
+<link rel="stylesheet" href="../../../../themes/paper-ink/assets/slide-components.css">
+<link rel="stylesheet" href="../../../shell.css">
+<style>
+  .architecture-slot {
+    position: absolute;
+    left: 150px;
+    width: 1620px;
+    /* 眉题底边(44+2×27.3≈99) 到 caption 顶边(1080−118−行高) 之间垂直居中 */
+    top: 99px;
+    bottom: 166px;
+    display: flex;
+    align-items: center;
+    z-index: 3;
+  }
+  .caption {
+    position: absolute; left: 0; right: 0; bottom: 118px;
+    text-align: center;
+    font-family: var(--sans); font-weight: 400;
+    font-size: var(--type-caption); letter-spacing: .04em;
+    color: var(--ink);
+    z-index: 5;
+  }
+</style>
+</head>
+<body class="slide">
+<div class="stage" data-block-id="gallery-primary" data-renderer-kind="native-html" data-component-source="ppt-component-atlas" data-component-id="atlas.055.arch-platform" data-content-ref="example.s1">
+  <div class="doc tl">PPT 标题<br>页面标题</div>
+  <div class="folio">页码 / 总页数 — BY @歪斯Wise</div>
+
+  <div id="architecture-slot" class="architecture-slot" data-slot-id="architecture"
+       data-component-id="atlas.055.arch-platform" data-content-ref="example.s1.architecture"></div>
+
+  <div class="caption"><span id="focus-caption">应用、资源与基础设施逐层承接，最终把平台能力交付给业务。</span></div>
+</div>
+
+<script src="../../../ppt-component-atlas/catalog-data.js"></script>
+<script src="../../../../themes/paper-ink/adapters/atlas.js"></script>
+<script>
+var atlas = window.SWISS_CATALOG_DATA;
+var adapter = (window.WisePPTThemeAdapters || {})['paper-ink.atlas'];
+var entry = atlas && atlas.entries.find(function(item){ return item.num === 55; });
+if (!atlas || !adapter || !entry) throw new Error('S1 缺 atlas.055.arch-platform 生产资产');
+
+var componentStyle = document.createElement('style');
+/* 样张是静帧:不拼 atlas.componentMotionCss(入场/循环动效),
+   静止态即标称几何,不依赖 design-tokens 静帧规则兜底。 */
+componentStyle.textContent = adapter.adaptCss(atlas.componentCss || '') +
+  adapter.COMPONENT_OVERRIDES;
+document.head.appendChild(componentStyle);
+
+var host = document.getElementById('architecture-slot');
+host.innerHTML = adapter.adaptMarkup(entry.snippet || '');
+
+var landingStyle = document.createElement('style');
+landingStyle.textContent = `
+#architecture-slot .swiss-card {
+  width: 100% !important;
+  min-height: 0 !important;
+  overflow: visible !important;
+  background: transparent !important;
+  border: 0 !important;
+}
+#architecture-slot .swiss-card__content {
+  min-height: 0 !important;
+  padding: 0 !important;
+  display: block !important;
+  background: transparent !important;
+}
+#architecture-slot .arch-platform {
+  width: 100% !important;
+  margin: 0 !important;
+}
+`;
+document.head.appendChild(landingStyle);
+
+stageFit();
+</script>
+</body>
+</html>

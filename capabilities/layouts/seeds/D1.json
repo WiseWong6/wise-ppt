@@ -1,0 +1,102 @@
+{
+  "contract": "wise-ppt-layout-seed@4",
+  "layout_id": "paper-ink.nonrelationship.D1",
+  "display_code": "D1",
+  "page_kind": "nonrelationship",
+  "source": {
+    "path": "references/gallery-paper-ink/ai/frames/layout-d1.html",
+    "sha256": "d9929b0ab2f39c7b7741e77f3b559c3950072213d558492ed9f53209b3c038ca"
+  },
+  "locked": {
+    "scoped_css": "@scope (.slide[data-layout-id=\"paper-ink.nonrelationship.D1\"]) {\nsvg.scene { position: absolute; inset: 0; z-index: 1; pointer-events: none; }\n\n  /* 左侧落版文字块:与右侧线稿小图同轴垂直居中(块中心 = 版心中心 540) */\n  .kicker {\n    position: absolute; left: 288px; top: 407.5px;\n    font-family: var(--mono); font-size: var(--type-meta);\n    letter-spacing: .3em; color: var(--ink-45);\n    z-index: 2;\n  }\n  .title {\n    position: absolute; left: 282px; top: 449.5px;\n    font-family: var(--serif); font-weight: var(--wp-weight-regular);\n    font-size: var(--type-display); letter-spacing: .06em;\n    color: var(--ink); z-index: 2;\n  }\n  .title-bar {\n    position: absolute; left: 290px; top: 605.5px;\n    width: 72px; height: 0;\n    border-top: 2px solid var(--ink);\n    z-index: 2;\n  }\n  .subtitle {\n    position: absolute; left: 288px; top: 641.5px;\n    font-family: var(--sans); font-weight: var(--wp-weight-regular);\n    font-size: var(--type-subheading); letter-spacing: .1em;\n    color: var(--ink-70); z-index: 2;\n  }\n}\n",
+    "css_sha256": "1a3776d7323987866f3c20a76e230fe40a3192f4f7fa18c13e9fb65e8b8e3e99",
+    "stage_html": "<div class=\"stage\" data-block-id=\"gallery-primary\" data-component-id=\"native.paper-ink.scaffold.cover.cover-lockup\" data-component-source=\"native\" data-content-ref=\"example.d1\" data-renderer-kind=\"typography\" data-template-id=\"D1\">\n<div class=\"doc tl\" data-template-part=\"support\" data-template-slot=\"support\" data-template-slot-kind=\"text\" data-vnext-fit-box=\"0,0,1920,1080\" data-vnext-text-key=\"support.text.001\">PPT 标题<br/>页面标题</div>\n<div class=\"folio\" data-template-part=\"folio\">页码 / 总页数 — BY @歪斯Wise</div>\n<svg class=\"scene\" data-template-part=\"illustration\" data-template-slot=\"illustration\" data-template-slot-kind=\"illustration\" height=\"1080\" viewbox=\"0 0 1920 1080\" width=\"1920\">\n<g id=\"draw\"><g transform=\"translate(1126,330) scale(1.5) translate(-1126,-330)\"><rect fill=\"none\" height=\"216\" opacity=\"0.45\" stroke=\"var(--ink-80)\" stroke-dasharray=\"3 5\" stroke-width=\"0.7\" width=\"330\" x=\"1126\" y=\"330\"></rect><line opacity=\"0.4\" stroke=\"var(--ink-80)\" stroke-width=\"0.6\" x1=\"1120\" x2=\"1132\" y1=\"330\" y2=\"330\"></line><line opacity=\"0.4\" stroke=\"var(--ink-80)\" stroke-width=\"0.6\" x1=\"1126\" x2=\"1126\" y1=\"324\" y2=\"336\"></line><line opacity=\"0.4\" stroke=\"var(--ink-80)\" stroke-width=\"0.6\" x1=\"1450\" x2=\"1462\" y1=\"330\" y2=\"330\"></line><line opacity=\"0.4\" stroke=\"var(--ink-80)\" stroke-width=\"0.6\" x1=\"1456\" x2=\"1456\" y1=\"324\" y2=\"336\"></line><line opacity=\"0.4\" stroke=\"var(--ink-80)\" stroke-width=\"0.6\" x1=\"1120\" x2=\"1132\" y1=\"546\" y2=\"546\"></line><line opacity=\"0.4\" stroke=\"var(--ink-80)\" stroke-width=\"0.6\" x1=\"1126\" x2=\"1126\" y1=\"540\" y2=\"552\"></line><line opacity=\"0.4\" stroke=\"var(--ink-80)\" stroke-width=\"0.6\" x1=\"1450\" x2=\"1462\" y1=\"546\" y2=\"546\"></line><line opacity=\"0.4\" stroke=\"var(--ink-80)\" stroke-width=\"0.6\" x1=\"1456\" x2=\"1456\" y1=\"540\" y2=\"552\"></line><rect fill=\"none\" height=\"28\" opacity=\"0.6\" stroke=\"var(--ink-80)\" stroke-width=\"0.9\" width=\"330\" x=\"1126\" y=\"330\"></rect><line opacity=\"0.5\" stroke=\"var(--ink-80)\" stroke-width=\"0.8\" x1=\"1156\" x2=\"1176\" y1=\"340\" y2=\"340\"></line><line opacity=\"0.5\" stroke=\"var(--ink-80)\" stroke-width=\"0.8\" x1=\"1196\" x2=\"1216\" y1=\"340\" y2=\"340\"></line><line opacity=\"0.5\" stroke=\"var(--ink-80)\" stroke-width=\"0.8\" x1=\"1236\" x2=\"1256\" y1=\"340\" y2=\"340\"></line><line opacity=\"0.5\" stroke=\"var(--ink-80)\" stroke-width=\"0.8\" x1=\"1276\" x2=\"1296\" y1=\"340\" y2=\"340\"></line><circle cx=\"1438\" cy=\"344\" fill=\"none\" opacity=\"0.6\" r=\"5\" stroke=\"var(--ink-80)\" stroke-width=\"0.8\"></circle><line opacity=\"0.5\" stroke=\"var(--ink-80)\" stroke-width=\"0.9\" x1=\"1126\" x2=\"1126\" y1=\"358\" y2=\"546\"></line><rect fill=\"none\" height=\"188\" opacity=\"0.35\" stroke=\"var(--ink-80)\" stroke-width=\"0.7\" width=\"48\" x=\"1126\" y=\"358\"></rect><rect fill=\"none\" height=\"16\" opacity=\"0.5\" stroke=\"var(--ink-80)\" stroke-width=\"0.7\" width=\"24\" x=\"1138\" y=\"374\"></rect><rect fill=\"none\" height=\"16\" opacity=\"0.5\" stroke=\"var(--ink-80)\" stroke-width=\"0.7\" width=\"24\" x=\"1138\" y=\"408\"></rect><rect fill=\"none\" height=\"16\" opacity=\"0.5\" stroke=\"var(--ink-80)\" stroke-width=\"0.7\" width=\"24\" x=\"1138\" y=\"442\"></rect><rect fill=\"none\" height=\"16\" opacity=\"0.5\" stroke=\"var(--ink-80)\" stroke-width=\"0.7\" width=\"24\" x=\"1138\" y=\"476\"></rect><rect fill=\"none\" height=\"16\" opacity=\"0.5\" stroke=\"var(--ink-80)\" stroke-width=\"0.7\" width=\"24\" x=\"1138\" y=\"510\"></rect><rect fill=\"none\" height=\"72\" opacity=\"0.7\" stroke=\"var(--ink-80)\" stroke-width=\"1\" width=\"118\" x=\"1190\" y=\"374\"></rect><line opacity=\"0.5\" stroke=\"var(--ink-80)\" stroke-width=\"0.8\" x1=\"1198\" x2=\"1250\" y1=\"388\" y2=\"388\"></line><line opacity=\"0.35\" stroke=\"var(--ink-80)\" stroke-width=\"0.5\" x1=\"1198\" x2=\"1270\" y1=\"400\" y2=\"400\"></line><line opacity=\"0.35\" stroke=\"var(--ink-80)\" stroke-width=\"0.5\" x1=\"1198\" x2=\"1260\" y1=\"410\" y2=\"410\"></line><rect fill=\"none\" height=\"72\" opacity=\"0.7\" stroke=\"var(--ink-80)\" stroke-width=\"1\" width=\"136\" x=\"1320\" y=\"374\"></rect><line opacity=\"0.5\" stroke=\"var(--ink-80)\" stroke-width=\"0.8\" x1=\"1328\" x2=\"1378\" y1=\"388\" y2=\"388\"></line><circle cx=\"1342\" cy=\"416\" fill=\"none\" opacity=\"0.5\" r=\"10\" stroke=\"var(--ink-80)\" stroke-width=\"0.8\"></circle><rect fill=\"none\" height=\"60\" opacity=\"0.7\" stroke=\"var(--ink-80)\" stroke-width=\"1\" width=\"266\" x=\"1190\" y=\"458\"></rect><line opacity=\"0.5\" stroke=\"var(--ink-80)\" stroke-width=\"0.8\" x1=\"1198\" x2=\"1290\" y1=\"472\" y2=\"472\"></line><line opacity=\"0.35\" stroke=\"var(--ink-80)\" stroke-width=\"0.5\" x1=\"1198\" x2=\"1330\" y1=\"484\" y2=\"484\"></line><circle cx=\"1412\" cy=\"520\" fill=\"none\" r=\"10\" stroke=\"var(--ink-80)\" stroke-width=\"1.2\"></circle><circle cx=\"1412\" cy=\"520\" fill=\"none\" opacity=\"0.5\" r=\"6.4\" stroke=\"var(--ink-80)\" stroke-width=\"0.6\"></circle><circle cx=\"1412\" cy=\"520\" fill=\"var(--ink)\" r=\"2.4\"></circle><line opacity=\"0.5\" stroke=\"var(--ink-80)\" stroke-width=\"0.7\" x1=\"1390\" x2=\"1400\" y1=\"520\" y2=\"520\"></line><text fill=\"var(--ink-45)\" font-family=\"var(--mono)\" font-size=\"var(--type-micro-secondary)\" letter-spacing=\"3\" text-anchor=\"middle\" x=\"1291\" y=\"610\">UI PREVIEW — NAV · CARD · AI</text></g></g>\n</svg>\n<div class=\"kicker\" data-template-part=\"kicker\" data-template-slot=\"kicker\" data-template-slot-kind=\"text\" data-vnext-fit-box=\"0,0,1920,1080\" data-vnext-text-key=\"kicker.text.001\">AGENT ENGINEERING — 2026 SUMMER</div>\n<div class=\"title\" data-template-part=\"primary\" data-template-slot=\"primary\" data-template-slot-kind=\"text\" data-vnext-fit-box=\"0,0,1920,1080\" data-vnext-text-key=\"primary.text.001\">AI 工程化</div>\n<div class=\"title-bar\" data-template-part=\"title-bar\"></div>\n<div class=\"subtitle\" data-template-part=\"subtitle\" data-template-slot=\"subtitle\" data-template-slot-kind=\"text\" data-vnext-fit-box=\"0,0,1920,1080\" data-vnext-text-key=\"subtitle.text.001\">从模型到产品的工程鸿沟 · Agent 实战第一课</div>\n</div>",
+    "stage_structure_sha256": "ce122868674e7766dca1efa48d71f78d90449e393431857a1c40b84eb1c86107"
+  },
+  "bindings": {
+    "primary_slot": null,
+    "slots": {
+      "support": {
+        "text": [
+          {
+            "key": "support.text.001",
+            "default": "PPT 标题\n页面标题",
+            "max_chars": 96,
+            "item_scope": "item",
+            "item_group_source": "fixed-slot",
+            "item_index": 0,
+            "fit_box": [
+              0.0,
+              0.0,
+              1920.0,
+              1080.0
+            ],
+            "fit_owner_kind": "slide"
+          }
+        ],
+        "icon": []
+      },
+      "kicker": {
+        "text": [
+          {
+            "key": "kicker.text.001",
+            "default": "AGENT ENGINEERING — 2026 SUMMER",
+            "max_chars": 37,
+            "item_scope": "item",
+            "item_group_source": "fixed-slot",
+            "item_index": 0,
+            "fit_box": [
+              0.0,
+              0.0,
+              1920.0,
+              1080.0
+            ],
+            "fit_owner_kind": "slide"
+          }
+        ],
+        "icon": []
+      },
+      "primary": {
+        "text": [
+          {
+            "key": "primary.text.001",
+            "default": "AI 工程化",
+            "max_chars": 7,
+            "item_scope": "item",
+            "item_group_source": "fixed-slot",
+            "item_index": 0,
+            "fit_box": [
+              0.0,
+              0.0,
+              1920.0,
+              1080.0
+            ],
+            "fit_owner_kind": "slide"
+          }
+        ],
+        "icon": []
+      },
+      "subtitle": {
+        "text": [
+          {
+            "key": "subtitle.text.001",
+            "default": "从模型到产品的工程鸿沟 · Agent 实战第一课",
+            "max_chars": 30,
+            "item_scope": "item",
+            "item_group_source": "fixed-slot",
+            "item_index": 0,
+            "fit_box": [
+              0.0,
+              0.0,
+              1920.0,
+              1080.0
+            ],
+            "fit_owner_kind": "slide"
+          }
+        ],
+        "icon": []
+      }
+    }
+  },
+  "seed_sha256": "062b37740a9bb5bb9960f4abd90b8cdfe667dc34d755a2d405ba5d304ebb71f5"
+}

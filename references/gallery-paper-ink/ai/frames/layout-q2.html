@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-runtime="wise-ppt-specimen" data-typography-mode="all-sans" data-page-id="gallery-ai-q2" data-page-role="prove" data-theme="paper-ink" data-layout="paper-ink.containment.part-whole-evidence" data-layout-source="gallery" data-sample-focus-profile="content-only" data-sample-focus-members='[{"selector":"#q2-focus-period","role":"label"},{"selector":"#q2-focus-total","role":"value"},{"selector":"#q2-focus-label","role":"label"}]' data-sample-focus-ref="sample.q2.q2-focus">
+<head>
+<meta charset="UTF-8">
+<title>layout-q2 · 整体构成 + 分项证据 · 评测成本分解</title>
+<script src="../../../../runtime/stage-fit.js"></script>
+<link rel="stylesheet" href="../../../../themes/paper-ink/assets/design-tokens.css">
+<link rel="stylesheet" href="../../../../themes/paper-ink/assets/catalog-fonts.css" data-wise-catalog-fonts="true">
+<link rel="stylesheet" href="../../../../themes/paper-ink/assets/slide-components.css">
+<link rel="stylesheet" href="../../../shell.css">
+<style>
+  svg.scene{position:absolute;inset:0;z-index:1}
+  .caption{position:absolute;left:0;right:0;bottom:118px;text-align:center;font-family:var(--sans);font-weight:400;font-size:var(--type-caption);letter-spacing:.04em;color:var(--ink);z-index:5}
+</style>
+</head>
+<body class="slide">
+<div class="stage" data-block-id="gallery-primary" data-renderer-kind="svg" data-component-source="native" data-content-ref="example.q2">
+  <div class="doc tl">PPT 标题<br>页面标题</div>
+  <div class="folio">页码 / 总页数 — BY @歪斯Wise</div>
+  <svg class="scene" width="1920" height="1080" viewBox="0 0 1920 1080" aria-label="左侧成本构成环图，右侧分项证据">
+    <defs>
+      <pattern id="q2-hatch" width="8" height="8" patternUnits="userSpaceOnUse" patternTransform="rotate(45)"><line x1="0" y1="0" x2="0" y2="8" stroke="var(--ink)" stroke-width=".65" opacity=".28"/></pattern>
+    </defs>
+    <g data-slot-id="whole" data-component-id="echarts.pie-access-source">
+      <text x="530.5" y="223" text-anchor="middle" font-family="var(--mono)" font-size="15" letter-spacing="3" fill="var(--ink-45)">WHOLE / 100%</text>
+      <circle cx="530.5" cy="517" r="238" fill="none" stroke="var(--ink-12)" stroke-width="92"/>
+      <circle cx="530.5" cy="517" r="238" fill="none" stroke="var(--ink)" stroke-width="92" stroke-dasharray="388 1108" transform="rotate(-90 530.5 517)"/>
+      <circle cx="530.5" cy="517" r="238" fill="none" stroke="color-mix(in srgb, var(--ink) 65%, transparent)" stroke-width="92" stroke-dasharray="299 1197" stroke-dashoffset="-388" transform="rotate(-90 530.5 517)"/>
+      <circle cx="530.5" cy="517" r="238" fill="none" stroke="url(#q2-hatch)" stroke-width="92" stroke-dasharray="239 1257" stroke-dashoffset="-687" transform="rotate(-90 530.5 517)"/>
+      <circle cx="530.5" cy="517" r="238" fill="none" stroke="color-mix(in srgb, var(--ink) 32%, transparent)" stroke-width="92" stroke-dasharray="568 928" stroke-dashoffset="-926" transform="rotate(-90 530.5 517)"/>
+      <text id="q2-focus-period" x="530.5" y="472" text-anchor="middle" font-family="var(--mono)" font-size="15" letter-spacing="2" fill="var(--ink-45)">MONTHLY</text>
+      <text id="q2-focus-total" x="530.5" y="532" text-anchor="middle" font-family="var(--sans)" font-size="50" fill="var(--ink)">¥ 84.6K</text>
+      <text id="q2-focus-label" x="530.5" y="570" text-anchor="middle" font-family="var(--sans)" font-size="18" fill="color-mix(in srgb, var(--ink) 62%, transparent)">评测总投入</text>
+    </g>
+    <g data-slot-id="parts" data-component-id="native.paper-ink.semantic.evidence-panel">
+      <text x="1146" y="210" font-family="var(--mono)" font-size="15" letter-spacing="3" fill="var(--ink-45)">PARTS / EVIDENCE</text>
+      <line x1="1146" y1="252" x2="1633" y2="252" stroke="var(--ink)" stroke-width="1" opacity=".45"/>
+      <g font-family="var(--sans)" fill="var(--ink)">
+        <text x="1146" y="330" font-family="var(--mono)" font-size="15" letter-spacing="2" fill="var(--ink-55)">01</text><text x="1203" y="330" font-size="var(--type-subheading)">人工标注</text><text x="1633" y="330" text-anchor="end" font-family="var(--mono)" font-size="22">26%</text><text x="1203" y="366" font-size="16" fill="color-mix(in srgb, var(--ink) 62%, transparent)">双人复核 1,260 条 · 一致率 0.91</text>
+        <line x1="1146" y1="404" x2="1633" y2="404" stroke="var(--ink)" stroke-width=".7" opacity=".25"/>
+        <text x="1146" y="478" font-family="var(--mono)" font-size="15" letter-spacing="2" fill="var(--ink-55)">02</text><text x="1203" y="478" font-size="var(--type-subheading)">模型调用</text><text x="1633" y="478" text-anchor="end" font-family="var(--mono)" font-size="22">20%</text><text x="1203" y="514" font-size="16" fill="color-mix(in srgb, var(--ink) 62%, transparent)">3 个模型交叉判分 · 失败重试 2.7%</text>
+        <line x1="1146" y1="552" x2="1633" y2="552" stroke="var(--ink)" stroke-width=".7" opacity=".25"/>
+        <text x="1146" y="626" font-family="var(--mono)" font-size="15" letter-spacing="2" fill="var(--ink-55)">03</text><text x="1203" y="626" font-size="var(--type-subheading)">工具回放</text><text x="1633" y="626" text-anchor="end" font-family="var(--mono)" font-size="22">16%</text><text x="1203" y="662" font-size="16" fill="color-mix(in srgb, var(--ink) 62%, transparent)">Trace 采样 640 条 · 缺失轨迹 18 条</text>
+        <line x1="1146" y1="700" x2="1633" y2="700" stroke="var(--ink)" stroke-width=".7" opacity=".25"/>
+        <text x="1146" y="774" font-family="var(--mono)" font-size="15" letter-spacing="2" fill="var(--ink-55)">04</text><text x="1203" y="774" font-size="var(--type-subheading)">平台与治理</text><text x="1633" y="774" text-anchor="end" font-family="var(--mono)" font-size="22">38%</text><text x="1203" y="810" font-size="16" fill="color-mix(in srgb, var(--ink) 62%, transparent)">环境、审计与版本留档 · 固定投入占主导</text>
+      </g>
+    </g>
+  </svg>
+  <div class="caption">占比说明钱花在哪，分项证据说明这些比例是否可信。</div>
+</div>
+<script>stageFit();</script>
+</body>
+</html>

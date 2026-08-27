@@ -1,0 +1,458 @@
+{
+  "contract": "wise-ppt-layout-seed@4",
+  "layout_id": "paper-ink.relationship.R3",
+  "display_code": "R3",
+  "page_kind": "relationship",
+  "source": {
+    "path": "references/gallery-paper-ink/ai/frames/layout-r3.html",
+    "sha256": "d5ad1ebd97739a48c684c8c7098c32e97b853bf4d3192b8ec8603e4ffd51f594"
+  },
+  "locked": {
+    "scoped_css": "@scope (.slide[data-layout-id=\"paper-ink.relationship.R3\"]) {\nsvg.scene{position:absolute;inset:0;z-index:1}\n  .caption{position:absolute;left:0;right:0;bottom:118px;text-align:center;font-family:var(--sans);font-weight:400;font-size:var(--type-caption);letter-spacing:.04em;color:var(--ink);z-index:5}\n  .slot-title{font-family:var(--sans);font-weight:300;font-size:24px;text-anchor:middle;fill:var(--ink)}\n  .slot-code{font-family:var(--mono);font-size:13px;letter-spacing:2.5px;text-anchor:middle;fill:var(--ink-45)}\n  .slot-note{font-family:var(--sans);font-weight:300;font-size:15px;text-anchor:middle;fill:var(--ink-70)}\n  .slot-note.secondary{fill:var(--ink-55)}\n}\n",
+    "css_sha256": "cc414fadf8687533271235bcfeff993c4c8dafe7f388cbd65b61e001fd471b15",
+    "stage_html": "<div class=\"stage\" data-block-id=\"gallery-primary\" data-component-id=\"native.paper-ink.semantic.icon-grid\" data-component-source=\"native\" data-content-ref=\"example.r3\" data-renderer-kind=\"native-html\">\n<div class=\"doc tl\"><span class=\"vnext-text-node\" data-vnext-fit-box=\"0,0,1920,1080\" data-vnext-text-key=\"cell-a.text.001\">PPT 标题</span><br/><span class=\"vnext-text-node\" data-vnext-fit-box=\"0,0,1920,1080\" data-vnext-text-key=\"cell-a.text.002\">页面标题</span></div>\n<div class=\"folio\">页码 / 总页数 — BY @歪斯Wise</div>\n<svg aria-label=\"采用组件目录第006号图标格阵视觉语言的二乘三独立页面网格\" class=\"scene\" height=\"1080\" viewbox=\"0 0 1920 1080\" width=\"1920\">\n<defs>\n<pattern height=\"7\" id=\"r3-hatch\" patterntransform=\"rotate(45)\" patternunits=\"userSpaceOnUse\" width=\"7\">\n<line opacity=\".3\" stroke=\"var(--ink)\" stroke-width=\".6\" x1=\"0\" x2=\"0\" y1=\"0\" y2=\"7\"></line>\n</pattern>\n</defs>\n<!-- R3 细线图标母板视觉；每一格仍是可独立换数据的页面槽位。 -->\n<g data-component-id=\"native.paper-ink.semantic.icon-grid\" data-slot-id=\"cell-a\" transform=\"translate(460 196)\">\n<circle cx=\"-38\" cy=\"70\" fill=\"none\" opacity=\".8\" r=\"6\" stroke=\"var(--ink)\" stroke-width=\"1.2\"></circle>\n<circle cx=\"-38\" cy=\"70\" fill=\"var(--ink)\" r=\"2\"></circle>\n<circle cx=\"38\" cy=\"44\" fill=\"none\" opacity=\".8\" r=\"5\" stroke=\"var(--ink)\" stroke-width=\"1.1\"></circle>\n<circle cx=\"38\" cy=\"96\" fill=\"none\" opacity=\".8\" r=\"5\" stroke=\"var(--ink)\" stroke-width=\"1.1\"></circle>\n<path d=\"M-32 70 Q-2 70 2 70 Q14 70 20 54 L34 46 M-32 70 Q14 70 20 86 L34 94\" fill=\"none\" opacity=\".8\" stroke=\"var(--ink)\" stroke-width=\"1.3\"></path>\n<circle cx=\"2\" cy=\"70\" fill=\"var(--ink)\" opacity=\".7\" r=\"3\"></circle>\n<text class=\"slot-title\" data-vnext-fit-box=\"210,196,1710,816\" data-vnext-text-key=\"cell-a.text.003\" y=\"188\">推理</text><text class=\"slot-code\" data-vnext-fit-box=\"210,196,1710,816\" data-vnext-text-key=\"cell-a.text.004\" y=\"212\">REASONING</text>\n<line opacity=\".4\" stroke=\"var(--ink)\" stroke-width=\".6\" x1=\"-24\" x2=\"24\" y1=\"224\" y2=\"224\"></line>\n<text class=\"slot-note\" data-vnext-fit-box=\"210,196,1710,816\" data-vnext-text-key=\"cell-a.text.005\" y=\"250\">思维链 · 多步规划</text><text class=\"slot-note secondary\" data-vnext-fit-box=\"210,196,1710,816\" data-vnext-text-key=\"cell-a.text.006\" y=\"272\">复杂问题分步求解</text>\n</g>\n<g data-component-id=\"native.paper-ink.semantic.icon-grid\" data-slot-id=\"cell-b\" transform=\"translate(960 196)\">\n<rect fill=\"none\" height=\"40\" opacity=\".8\" stroke=\"var(--ink)\" stroke-width=\"1.3\" width=\"60\" x=\"-34\" y=\"50\"></rect>\n<rect fill=\"none\" height=\"20\" opacity=\".8\" stroke=\"var(--ink)\" stroke-width=\"1.2\" width=\"6\" x=\"26\" y=\"60\"></rect>\n<rect fill=\"url(#r3-hatch)\" height=\"28\" width=\"16\" x=\"-28\" y=\"56\"></rect><rect fill=\"none\" height=\"28\" opacity=\".3\" stroke=\"var(--ink)\" stroke-width=\".5\" width=\"16\" x=\"-10\" y=\"56\"></rect><rect fill=\"none\" height=\"28\" opacity=\".3\" stroke=\"var(--ink)\" stroke-width=\".5\" width=\"16\" x=\"8\" y=\"56\"></rect>\n<line opacity=\".4\" stroke=\"var(--ink)\" stroke-width=\".6\" x1=\"-34\" x2=\"-34\" y1=\"96\" y2=\"102\"></line><line opacity=\".4\" stroke=\"var(--ink)\" stroke-width=\".6\" x1=\"-19\" x2=\"-19\" y1=\"96\" y2=\"102\"></line><line opacity=\".4\" stroke=\"var(--ink)\" stroke-width=\".6\" x1=\"-4\" x2=\"-4\" y1=\"96\" y2=\"102\"></line><line opacity=\".4\" stroke=\"var(--ink)\" stroke-width=\".6\" x1=\"11\" x2=\"11\" y1=\"96\" y2=\"102\"></line>\n<text class=\"slot-title\" data-vnext-fit-box=\"210,196,1710,816\" data-vnext-text-key=\"cell-b.text.001\" y=\"188\">记忆</text><text class=\"slot-code\" data-vnext-fit-box=\"210,196,1710,816\" data-vnext-text-key=\"cell-b.text.002\" y=\"212\">MEMORY</text>\n<line opacity=\".4\" stroke=\"var(--ink)\" stroke-width=\".6\" x1=\"-24\" x2=\"24\" y1=\"224\" y2=\"224\"></line>\n<text class=\"slot-note\" data-vnext-fit-box=\"210,196,1710,816\" data-vnext-text-key=\"cell-b.text.003\" y=\"250\">上下文窗口与容量</text><text class=\"slot-note secondary\" data-vnext-fit-box=\"210,196,1710,816\" data-vnext-text-key=\"cell-b.text.004\" y=\"272\">向量检索召回相关片段</text>\n</g>\n<g data-component-id=\"native.paper-ink.semantic.icon-grid\" data-slot-id=\"cell-c\" transform=\"translate(1460 196)\">\n<g fill=\"none\" opacity=\".55\" stroke=\"var(--ink)\" stroke-width=\".9\" transform=\"translate(-33 37)\">\n<rect height=\"19\" width=\"19\" x=\"0\" y=\"0\"></rect><rect height=\"19\" width=\"19\" x=\"22\" y=\"0\"></rect><rect height=\"19\" width=\"19\" x=\"44\" y=\"0\"></rect><rect height=\"19\" width=\"19\" x=\"0\" y=\"22\"></rect><rect height=\"19\" width=\"19\" x=\"44\" y=\"22\"></rect><rect height=\"19\" width=\"19\" x=\"0\" y=\"44\"></rect><rect height=\"19\" width=\"19\" x=\"22\" y=\"44\"></rect><rect height=\"19\" width=\"19\" x=\"44\" y=\"44\"></rect>\n<rect fill=\"url(#r3-hatch)\" height=\"19\" opacity=\"1\" stroke-width=\"1\" width=\"19\" x=\"22\" y=\"22\"></rect>\n</g>\n<circle cx=\"-1.5\" cy=\"68.5\" fill=\"var(--ink)\" r=\"2\"></circle>\n<text class=\"slot-title\" data-vnext-fit-box=\"210,196,1710,816\" data-vnext-text-key=\"cell-c.text.001\" y=\"188\">工具</text><text class=\"slot-code\" data-vnext-fit-box=\"210,196,1710,816\" data-vnext-text-key=\"cell-c.text.002\" y=\"212\">TOOLS</text>\n<line opacity=\".4\" stroke=\"var(--ink)\" stroke-width=\".6\" x1=\"-24\" x2=\"24\" y1=\"224\" y2=\"224\"></line>\n<text class=\"slot-note\" data-vnext-fit-box=\"210,196,1710,816\" data-vnext-text-key=\"cell-c.text.003\" y=\"250\">函数调用 · API 编排</text><text class=\"slot-note secondary\" data-vnext-fit-box=\"210,196,1710,816\" data-vnext-text-key=\"cell-c.text.004\" y=\"272\">多工具串行自动调度</text>\n</g>\n<g data-component-id=\"native.paper-ink.semantic.icon-grid\" data-slot-id=\"cell-d\" transform=\"translate(460 506)\">\n<circle cx=\"0\" cy=\"82\" fill=\"none\" opacity=\".8\" r=\"5\" stroke=\"var(--ink)\" stroke-width=\"1.3\"></circle><circle cx=\"0\" cy=\"82\" fill=\"var(--ink)\" r=\"2\"></circle>\n<path d=\"M-16 72 A18 18 0 0 1 16 72 M-26 66 A30 30 0 0 1 26 66 M-36 60 A42 42 0 0 1 36 60\" fill=\"none\" opacity=\".55\" stroke=\"var(--ink)\" stroke-width=\"1.1\"></path>\n<text class=\"slot-title\" data-vnext-fit-box=\"210,196,1710,816\" data-vnext-text-key=\"cell-d.text.001\" y=\"188\">多模态</text><text class=\"slot-code\" data-vnext-fit-box=\"210,196,1710,816\" data-vnext-text-key=\"cell-d.text.002\" y=\"212\">MULTIMODAL</text>\n<line opacity=\".4\" stroke=\"var(--ink)\" stroke-width=\".6\" x1=\"-24\" x2=\"24\" y1=\"224\" y2=\"224\"></line>\n<text class=\"slot-note\" data-vnext-fit-box=\"210,196,1710,816\" data-vnext-text-key=\"cell-d.text.003\" y=\"250\">图文音视融合理解</text><text class=\"slot-note secondary\" data-vnext-fit-box=\"210,196,1710,816\" data-vnext-text-key=\"cell-d.text.004\" y=\"272\">跨模态对齐与检索</text>\n</g>\n<g data-component-id=\"native.paper-ink.semantic.icon-grid\" data-slot-id=\"cell-e\" transform=\"translate(960 506)\">\n<path d=\"M-34 82 A34 34 0 0 1 34 82\" fill=\"none\" opacity=\".8\" stroke=\"var(--ink)\" stroke-width=\"1.3\"></path>\n<line opacity=\".5\" stroke=\"var(--ink)\" stroke-width=\".7\" x1=\"-20\" x2=\"-24\" y1=\"57\" y2=\"52\"></line><line opacity=\".5\" stroke=\"var(--ink)\" stroke-width=\".7\" x1=\"-10\" x2=\"-12\" y1=\"51\" y2=\"45\"></line><line opacity=\".5\" stroke=\"var(--ink)\" stroke-width=\".7\" x1=\"0\" x2=\"0\" y1=\"48\" y2=\"42\"></line><line opacity=\".5\" stroke=\"var(--ink)\" stroke-width=\".7\" x1=\"10\" x2=\"12\" y1=\"51\" y2=\"45\"></line><line opacity=\".5\" stroke=\"var(--ink)\" stroke-width=\".7\" x1=\"20\" x2=\"24\" y1=\"57\" y2=\"52\"></line>\n<line stroke=\"var(--ink)\" stroke-width=\"1.6\" x1=\"0\" x2=\"18\" y1=\"82\" y2=\"56\"></line><circle cx=\"0\" cy=\"82\" fill=\"var(--ink)\" r=\"3\"></circle>\n<text class=\"slot-title\" data-vnext-fit-box=\"210,196,1710,816\" data-vnext-text-key=\"cell-e.text.001\" y=\"188\">理解</text><text class=\"slot-code\" data-vnext-fit-box=\"210,196,1710,816\" data-vnext-text-key=\"cell-e.text.002\" y=\"212\">COMPREHEND</text>\n<line opacity=\".4\" stroke=\"var(--ink)\" stroke-width=\".6\" x1=\"-24\" x2=\"24\" y1=\"224\" y2=\"224\"></line>\n<text class=\"slot-note\" data-vnext-fit-box=\"210,196,1710,816\" data-vnext-text-key=\"cell-e.text.003\" y=\"250\">自然语言意图解析</text><text class=\"slot-note secondary\" data-vnext-fit-box=\"210,196,1710,816\" data-vnext-text-key=\"cell-e.text.004\" y=\"272\">模糊提问精准定位</text>\n</g>\n<g data-component-id=\"native.paper-ink.semantic.icon-grid\" data-slot-id=\"cell-f\" transform=\"translate(1460 506)\">\n<path d=\"M-26 42 H26 V76 Q26 100 0 106 Q-26 100 -26 76 Z\" fill=\"none\" opacity=\".8\" stroke=\"var(--ink)\" stroke-width=\"1.3\"></path>\n<path d=\"M-26 50 H26 M-12 70 L-3 80 L14 58\" fill=\"none\" stroke=\"var(--ink)\" stroke-width=\"1.6\"></path>\n<text class=\"slot-title\" data-vnext-fit-box=\"210,196,1710,816\" data-vnext-text-key=\"cell-f.text.001\" y=\"188\">生成</text><text class=\"slot-code\" data-vnext-fit-box=\"210,196,1710,816\" data-vnext-text-key=\"cell-f.text.002\" y=\"212\">GENERATE</text>\n<line opacity=\".4\" stroke=\"var(--ink)\" stroke-width=\".6\" x1=\"-24\" x2=\"24\" y1=\"224\" y2=\"224\"></line>\n<text class=\"slot-note\" data-vnext-fit-box=\"210,196,1710,816\" data-vnext-text-key=\"cell-f.text.003\" y=\"250\">文本 · 代码 · 图像产出</text><text class=\"slot-note secondary\" data-vnext-fit-box=\"210,196,1710,816\" data-vnext-text-key=\"cell-f.text.004\" y=\"272\">一次成稿可读可运行</text>\n</g>\n<rect fill=\"none\" height=\"620\" opacity=\".22\" stroke=\"var(--ink)\" stroke-dasharray=\"2 6\" stroke-width=\".6\" width=\"1500\" x=\"210\" y=\"196\"></rect>\n<line opacity=\".22\" stroke=\"var(--ink)\" stroke-dasharray=\"2 6\" stroke-width=\".6\" x1=\"710\" x2=\"710\" y1=\"196\" y2=\"816\"></line>\n<line opacity=\".22\" stroke=\"var(--ink)\" stroke-dasharray=\"2 6\" stroke-width=\".6\" x1=\"1210\" x2=\"1210\" y1=\"196\" y2=\"816\"></line>\n<line opacity=\".22\" stroke=\"var(--ink)\" stroke-dasharray=\"2 6\" stroke-width=\".6\" x1=\"210\" x2=\"1710\" y1=\"506\" y2=\"506\"></line>\n</svg>\n<div class=\"caption\" data-vnext-claim-key=\"claim.text.001\" data-vnext-fit-box=\"0,0,1920,1080\"><span data-content-ref=\"sample.r3.r3-focus\" data-emphasis-role=\"label\" id=\"focus-caption\">推理、记忆、工具、多模态、理解与生成</span>，共同构成 AI 产品的六项基础能力。</div>\n</div>",
+    "stage_structure_sha256": "a87d59e453ba888456b9034dabf374a8b0ce62a5e7ebd0a910239622211f0eea"
+  },
+  "bindings": {
+    "claim": {
+      "key": "claim.text.001",
+      "default": "推理、记忆、工具、多模态、理解与生成 ，共同构成 AI 产品的六项基础能力。",
+      "max_chars": 42,
+      "fit_box": [
+        0.0,
+        0.0,
+        1920.0,
+        1080.0
+      ],
+      "fit_owner_kind": "slide"
+    },
+    "primary_slot": "cell-a",
+    "slots": {
+      "cell-a": {
+        "text": [
+          {
+            "key": "cell-a.text.001",
+            "default": "PPT 标题",
+            "max_chars": 40,
+            "item_scope": "item",
+            "item_group_source": "fixed-slot",
+            "item_index": 0,
+            "fit_box": [
+              0.0,
+              0.0,
+              1920.0,
+              1080.0
+            ],
+            "fit_owner_kind": "slide"
+          },
+          {
+            "key": "cell-a.text.002",
+            "default": "页面标题",
+            "max_chars": 72,
+            "item_scope": "item",
+            "item_group_source": "fixed-slot",
+            "item_index": 0,
+            "fit_box": [
+              0.0,
+              0.0,
+              1920.0,
+              1080.0
+            ],
+            "fit_owner_kind": "slide"
+          },
+          {
+            "key": "cell-a.text.003",
+            "default": "推理",
+            "max_chars": 3,
+            "item_scope": "item",
+            "item_group_source": "fixed-slot",
+            "item_index": 0,
+            "fit_box": [
+              210.0,
+              196.0,
+              1710.0,
+              816.0
+            ],
+            "fit_owner_kind": "svg-shape"
+          },
+          {
+            "key": "cell-a.text.004",
+            "default": "REASONING",
+            "max_chars": 13,
+            "item_scope": "item",
+            "item_group_source": "fixed-slot",
+            "item_index": 0,
+            "fit_box": [
+              210.0,
+              196.0,
+              1710.0,
+              816.0
+            ],
+            "fit_owner_kind": "svg-shape"
+          },
+          {
+            "key": "cell-a.text.005",
+            "default": "思维链 · 多步规划",
+            "max_chars": 11,
+            "item_scope": "item",
+            "item_group_source": "fixed-slot",
+            "item_index": 0,
+            "fit_box": [
+              210.0,
+              196.0,
+              1710.0,
+              816.0
+            ],
+            "fit_owner_kind": "svg-shape"
+          },
+          {
+            "key": "cell-a.text.006",
+            "default": "复杂问题分步求解",
+            "max_chars": 11,
+            "item_scope": "item",
+            "item_group_source": "fixed-slot",
+            "item_index": 0,
+            "fit_box": [
+              210.0,
+              196.0,
+              1710.0,
+              816.0
+            ],
+            "fit_owner_kind": "svg-shape"
+          }
+        ],
+        "icon": []
+      },
+      "cell-b": {
+        "text": [
+          {
+            "key": "cell-b.text.001",
+            "default": "记忆",
+            "max_chars": 3,
+            "item_scope": "item",
+            "item_group_source": "fixed-slot",
+            "item_index": 0,
+            "fit_box": [
+              210.0,
+              196.0,
+              1710.0,
+              816.0
+            ],
+            "fit_owner_kind": "svg-shape"
+          },
+          {
+            "key": "cell-b.text.002",
+            "default": "MEMORY",
+            "max_chars": 9,
+            "item_scope": "item",
+            "item_group_source": "fixed-slot",
+            "item_index": 0,
+            "fit_box": [
+              210.0,
+              196.0,
+              1710.0,
+              816.0
+            ],
+            "fit_owner_kind": "svg-shape"
+          },
+          {
+            "key": "cell-b.text.003",
+            "default": "上下文窗口与容量",
+            "max_chars": 11,
+            "item_scope": "item",
+            "item_group_source": "fixed-slot",
+            "item_index": 0,
+            "fit_box": [
+              210.0,
+              196.0,
+              1710.0,
+              816.0
+            ],
+            "fit_owner_kind": "svg-shape"
+          },
+          {
+            "key": "cell-b.text.004",
+            "default": "向量检索召回相关片段",
+            "max_chars": 14,
+            "item_scope": "item",
+            "item_group_source": "fixed-slot",
+            "item_index": 0,
+            "fit_box": [
+              210.0,
+              196.0,
+              1710.0,
+              816.0
+            ],
+            "fit_owner_kind": "svg-shape"
+          }
+        ],
+        "icon": []
+      },
+      "cell-c": {
+        "text": [
+          {
+            "key": "cell-c.text.001",
+            "default": "工具",
+            "max_chars": 3,
+            "item_scope": "item",
+            "item_group_source": "fixed-slot",
+            "item_index": 0,
+            "fit_box": [
+              210.0,
+              196.0,
+              1710.0,
+              816.0
+            ],
+            "fit_owner_kind": "svg-shape"
+          },
+          {
+            "key": "cell-c.text.002",
+            "default": "TOOLS",
+            "max_chars": 7,
+            "item_scope": "item",
+            "item_group_source": "fixed-slot",
+            "item_index": 0,
+            "fit_box": [
+              210.0,
+              196.0,
+              1710.0,
+              816.0
+            ],
+            "fit_owner_kind": "svg-shape"
+          },
+          {
+            "key": "cell-c.text.003",
+            "default": "函数调用 · API 编排",
+            "max_chars": 14,
+            "item_scope": "item",
+            "item_group_source": "fixed-slot",
+            "item_index": 0,
+            "fit_box": [
+              210.0,
+              196.0,
+              1710.0,
+              816.0
+            ],
+            "fit_owner_kind": "svg-shape"
+          },
+          {
+            "key": "cell-c.text.004",
+            "default": "多工具串行自动调度",
+            "max_chars": 13,
+            "item_scope": "item",
+            "item_group_source": "fixed-slot",
+            "item_index": 0,
+            "fit_box": [
+              210.0,
+              196.0,
+              1710.0,
+              816.0
+            ],
+            "fit_owner_kind": "svg-shape"
+          }
+        ],
+        "icon": []
+      },
+      "cell-d": {
+        "text": [
+          {
+            "key": "cell-d.text.001",
+            "default": "多模态",
+            "max_chars": 5,
+            "item_scope": "item",
+            "item_group_source": "fixed-slot",
+            "item_index": 0,
+            "fit_box": [
+              210.0,
+              196.0,
+              1710.0,
+              816.0
+            ],
+            "fit_owner_kind": "svg-shape"
+          },
+          {
+            "key": "cell-d.text.002",
+            "default": "MULTIMODAL",
+            "max_chars": 14,
+            "item_scope": "item",
+            "item_group_source": "fixed-slot",
+            "item_index": 0,
+            "fit_box": [
+              210.0,
+              196.0,
+              1710.0,
+              816.0
+            ],
+            "fit_owner_kind": "svg-shape"
+          },
+          {
+            "key": "cell-d.text.003",
+            "default": "图文音视融合理解",
+            "max_chars": 11,
+            "item_scope": "item",
+            "item_group_source": "fixed-slot",
+            "item_index": 0,
+            "fit_box": [
+              210.0,
+              196.0,
+              1710.0,
+              816.0
+            ],
+            "fit_owner_kind": "svg-shape"
+          },
+          {
+            "key": "cell-d.text.004",
+            "default": "跨模态对齐与检索",
+            "max_chars": 11,
+            "item_scope": "item",
+            "item_group_source": "fixed-slot",
+            "item_index": 0,
+            "fit_box": [
+              210.0,
+              196.0,
+              1710.0,
+              816.0
+            ],
+            "fit_owner_kind": "svg-shape"
+          }
+        ],
+        "icon": []
+      },
+      "cell-e": {
+        "text": [
+          {
+            "key": "cell-e.text.001",
+            "default": "理解",
+            "max_chars": 3,
+            "item_scope": "item",
+            "item_group_source": "fixed-slot",
+            "item_index": 0,
+            "fit_box": [
+              210.0,
+              196.0,
+              1710.0,
+              816.0
+            ],
+            "fit_owner_kind": "svg-shape"
+          },
+          {
+            "key": "cell-e.text.002",
+            "default": "COMPREHEND",
+            "max_chars": 14,
+            "item_scope": "item",
+            "item_group_source": "fixed-slot",
+            "item_index": 0,
+            "fit_box": [
+              210.0,
+              196.0,
+              1710.0,
+              816.0
+            ],
+            "fit_owner_kind": "svg-shape"
+          },
+          {
+            "key": "cell-e.text.003",
+            "default": "自然语言意图解析",
+            "max_chars": 11,
+            "item_scope": "item",
+            "item_group_source": "fixed-slot",
+            "item_index": 0,
+            "fit_box": [
+              210.0,
+              196.0,
+              1710.0,
+              816.0
+            ],
+            "fit_owner_kind": "svg-shape"
+          },
+          {
+            "key": "cell-e.text.004",
+            "default": "模糊提问精准定位",
+            "max_chars": 11,
+            "item_scope": "item",
+            "item_group_source": "fixed-slot",
+            "item_index": 0,
+            "fit_box": [
+              210.0,
+              196.0,
+              1710.0,
+              816.0
+            ],
+            "fit_owner_kind": "svg-shape"
+          }
+        ],
+        "icon": []
+      },
+      "cell-f": {
+        "text": [
+          {
+            "key": "cell-f.text.001",
+            "default": "生成",
+            "max_chars": 3,
+            "item_scope": "item",
+            "item_group_source": "fixed-slot",
+            "item_index": 0,
+            "fit_box": [
+              210.0,
+              196.0,
+              1710.0,
+              816.0
+            ],
+            "fit_owner_kind": "svg-shape"
+          },
+          {
+            "key": "cell-f.text.002",
+            "default": "GENERATE",
+            "max_chars": 11,
+            "item_scope": "item",
+            "item_group_source": "fixed-slot",
+            "item_index": 0,
+            "fit_box": [
+              210.0,
+              196.0,
+              1710.0,
+              816.0
+            ],
+            "fit_owner_kind": "svg-shape"
+          },
+          {
+            "key": "cell-f.text.003",
+            "default": "文本 · 代码 · 图像产出",
+            "max_chars": 14,
+            "item_scope": "item",
+            "item_group_source": "fixed-slot",
+            "item_index": 0,
+            "fit_box": [
+              210.0,
+              196.0,
+              1710.0,
+              816.0
+            ],
+            "fit_owner_kind": "svg-shape"
+          },
+          {
+            "key": "cell-f.text.004",
+            "default": "一次成稿可读可运行",
+            "max_chars": 13,
+            "item_scope": "item",
+            "item_group_source": "fixed-slot",
+            "item_index": 0,
+            "fit_box": [
+              210.0,
+              196.0,
+              1710.0,
+              816.0
+            ],
+            "fit_owner_kind": "svg-shape"
+          }
+        ],
+        "icon": []
+      },
+      "takeaway": {
+        "text": [],
+        "icon": []
+      }
+    }
+  },
+  "seed_sha256": "c30e79f38e4488b90f89b14d7c1c599b5519688e33d89abb71803979e086f96a"
+}

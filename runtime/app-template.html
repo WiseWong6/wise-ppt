@@ -1,0 +1,24 @@
+<!doctype html>
+<html lang="{{LANG}}" data-runtime="wise-ppt-deck" data-deck-contract-version="5" data-structure-contract-version="2" data-geometry-contract-version="2" data-theme-preset="{{THEME_PRESET}}" data-typography-mode="{{TYPOGRAPHY_MODE}}" data-deck-title="{{DECK_TITLE_ATTR}}" data-build-id="{{BUILD_ID}}" data-layout-registry-version="{{LAYOUT_REGISTRY_VERSION}}" data-runtime-version="{{RUNTIME_VERSION}}">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<link rel="icon" href="data:,">
+<title>{{PAGE_TITLE}}</title>
+<link rel="stylesheet" href="assets/design-tokens.css">
+<link rel="stylesheet" href="assets/slide-components.css">
+<link rel="stylesheet" href="assets/layouts.css">
+<link rel="stylesheet" href="runtime/deck-shell.css">
+<link rel="stylesheet" href="runtime/component-behavior.css">
+<link rel="stylesheet" href="runtime/deck-component-contract.css">
+<script src="runtime/deck-runtime.js"></script>
+</head>
+<body class="mode-deck">
+<main id="board"><header class="board-head"><h1 id="deck-title"></h1><p id="deck-subtitle"></p></header><div id="board-sections"></div></main>
+<section id="deck" aria-label="横向放映"><div id="deck-stage"><div id="track">
+<!-- WISE_PPT_SLIDES_START -->
+{{SLIDES}}
+<!-- WISE_PPT_SLIDES_END -->
+</div></div><div id="presentation-controls" aria-label="放映控制"><button id="board-toggle" class="deck-control" type="button" data-icon="gallery" aria-label="打开画册"><span class="visually-hidden">打开画册</span></button><output id="pager" aria-live="polite"></output></div></section>
+</body>
+</html>

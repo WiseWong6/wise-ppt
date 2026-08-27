@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-runtime="wise-ppt-specimen" data-typography-mode="all-sans" data-page-id="gallery-ai-g5" data-page-role="explain" data-theme="paper-ink" data-layout="paper-ink.radial.three-principles" data-layout-source="gallery" data-sample-focus-profile="content-only" data-sample-focus-members='[{"selector":"#g5-focus-title","role":"value"}]' data-sample-focus-ref="sample.g5.g5-focus">
+<head>
+<meta charset="UTF-8">
+<title>layout-g5 · 三原则放射</title>
+<script src="../../../../runtime/stage-fit.js"></script>
+<link rel="stylesheet" href="../../../../themes/paper-ink/assets/design-tokens.css">
+<link rel="stylesheet" href="../../../../themes/paper-ink/assets/catalog-fonts.css" data-wise-catalog-fonts="true">
+<link rel="stylesheet" href="../../../../themes/paper-ink/assets/slide-components.css">
+<link rel="stylesheet" href="../../../shell.css">
+<style>
+  svg.scene { position: absolute; inset: 0; z-index: 1; }
+  .doc.tl, .folio { color: var(--ink-45); }
+  .caption {
+    position: absolute; left: 0; right: 0; bottom: 118px;
+    text-align: center;
+    font-family: var(--sans); font-weight: 400;
+    font-size: var(--type-caption); letter-spacing: .04em;
+    color: var(--ink);
+    z-index: 5;
+  }
+</style>
+</head>
+<body class="slide">
+<div class="stage" data-block-id="gallery-primary" data-renderer-kind="svg" data-component-source="native" data-component-id="native.paper-ink.108.three-principles-radial" data-content-ref="example.g5">
+  <div class="doc tl">PPT 标题<br>页面标题</div>
+  <div class="folio">页码 / 总页数 — BY @歪斯Wise</div>
+
+  <svg class="scene" width="1920" height="1080" viewBox="0 0 1920 1080">
+    <g id="draw"></g>
+  </svg>
+
+  <div class="caption">设计不是把信息填满，而是为观众的阅读顺序作出取舍。</div>
+</div>
+
+<script src="../../../../themes/paper-ink/assets/particles.js"></script>
+<script>
+var NS = 'http://www.w3.org/2000/svg';
+var INK = 'var(--ink)';
+var INK80 = 'var(--ink-80)';
+var INK70 = 'var(--ink-70)';
+var INK45 = 'var(--ink-45)';
+var G = document.getElementById('draw');
+function el(tag, attrs) {
+  var e = document.createElementNS(NS, tag);
+  for (var k in attrs) e.setAttribute(k, attrs[k]);
+  G.appendChild(e); return e;
+}
+function txt(x, y, str, attrs) {
+  var t = el('text', Object.assign({x:x, y:y}, attrs||{}));
+  t.textContent = str; return t;
+}
+var MONO = 'var(--mono)', SANS = 'var(--sans)';
+
+G = el('g', {transform:'translate(0 -36)'});
+var CX=960,CY=386;
+function line(x1,y1,x2,y2,attrs){return el('line',Object.assign({x1:x1,y1:y1,x2:x2,y2:y2,stroke:INK,'stroke-width':1.1},attrs||{}));}
+line(478,CY,760,CY,{stroke:INK45,'stroke-width':1,'stroke-dasharray':'3 5'});
+line(1160,CY,1442,CY,{stroke:INK45,'stroke-width':1,'stroke-dasharray':'3 5'});
+line(CX,468,CX,656,{stroke:INK45,'stroke-width':1,'stroke-dasharray':'3 5'});
+[[760,CY],[1160,CY],[CX,468]].forEach(function(p){el('circle',{cx:p[0],cy:p[1],r:3.2,fill:INK});});
+el('rect',{x:760,y:304,width:400,height:164,fill:'var(--paper-panel)',stroke:INK80,'stroke-width':1.4});
+el('rect',{x:767,y:311,width:386,height:150,fill:'none',stroke:INK,'stroke-width':.6,opacity:.35});
+txt(CX,354,'DESIGN INTENT',{'font-family':MONO,'font-size':'var(--type-label)','letter-spacing':2.8,'text-anchor':'middle',fill:INK70});
+txt(CX,406,'一页一个重心',{id:'g5-focus-title','font-family':SANS,'font-size':'var(--type-heading)','font-weight':300,'text-anchor':'middle',fill:INK});
+txt(CX,440,'先决定观众应该先看见什么',{'font-family':SANS,'font-size':'var(--type-body-small)','font-weight':300,'text-anchor':'middle',fill:INK70});
+/* 序号小字行(01 · CONTENT …)已删;左右标题墨迹中心对齐序号圆点(基线 396),底部标题收进原小字槽(710)保 54px 节奏 */
+function block(x,y,side,title,lines){
+  var anchor=side==='left'?'end':side==='right'?'start':'middle';
+  txt(x,y,title,{'font-family':SANS,'font-size':'var(--type-subheading)','font-weight':300,'text-anchor':anchor,fill:INK});
+  lines.forEach(function(text,index){txt(x,y+38+index*28,text,{'font-family':SANS,'font-size':'var(--type-body-small)','font-weight':300,'text-anchor':anchor,fill:INK70});});
+}
+block(450,396,'left','内容先于装饰',['先回答这页要讲什么，','再决定它需要什么形式。']);
+block(1470,396,'right','颜色必须有语义',['大面积保持克制，','强调只服务关键信息。']);
+block(CX,710,'bottom','密度服从层级',['该留白的留白，该密集的有序；','让信息有进入和停留的位置。']);
+el('circle',{cx:478,cy:CY,r:18,fill:'var(--paper)',stroke:INK,'stroke-width':1.1});
+txt(478,CY+5,'01',{'font-family':MONO,'font-size':'var(--type-meta)','text-anchor':'middle',fill:INK});
+el('circle',{cx:1442,cy:CY,r:18,fill:'var(--paper)',stroke:INK,'stroke-width':1.1});
+txt(1442,CY+5,'02',{'font-family':MONO,'font-size':'var(--type-meta)','text-anchor':'middle',fill:INK});
+el('circle',{cx:CX,cy:656,r:18,fill:'var(--paper)',stroke:INK,'stroke-width':1.1});
+txt(CX,661,'03',{'font-family':MONO,'font-size':'var(--type-meta)','text-anchor':'middle',fill:INK});
+
+stageFit();
+</script>
+</body>
+</html>

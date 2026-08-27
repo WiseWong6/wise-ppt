@@ -1,0 +1,203 @@
+{
+  "contract": "wise-ppt-layout-seed@4",
+  "layout_id": "paper-ink.relationship.R5",
+  "display_code": "R5",
+  "page_kind": "relationship",
+  "source": {
+    "path": "references/gallery-paper-ink/ai/frames/layout-r5.html",
+    "sha256": "7b9c40579cdcdaecde42f9151b3d302db294defdecf859ddc7b09654e9282ce8"
+  },
+  "locked": {
+    "scoped_css": ":root {\n  --pi-paper: var(--wp-adapter-pi-paper);\n  --pi-paper-deep: var(--wp-adapter-pi-paper-deep);\n  --pi-paper-panel: var(--wp-adapter-pi-paper-panel);\n  --pi-ink: var(--wp-adapter-pi-ink);\n  --pi-ink-80: var(--wp-adapter-pi-ink-80);\n  --pi-ink-70: var(--wp-adapter-pi-ink-70);\n  --pi-ink-60: var(--wp-adapter-pi-ink-60);\n  --pi-ink-55: var(--wp-adapter-pi-ink-55);\n  --pi-ink-45: var(--wp-adapter-pi-ink-45);\n  --pi-ink-30: var(--wp-adapter-pi-ink-30);\n  --pi-data-1: var(--wp-adapter-pi-data-1);\n  --pi-data-2: var(--wp-adapter-pi-data-2);\n  --pi-data-3: var(--wp-adapter-pi-data-3);\n  --pi-data-4: var(--wp-adapter-pi-data-4);\n  --pi-data-5: var(--wp-adapter-pi-data-5);\n  --pi-data-6: var(--wp-adapter-pi-data-6);\n  --pi-sans: var(--wp-adapter-pi-font-sans);\n  --pi-serif: var(--wp-adapter-pi-font-serif);\n  --pi-mono: var(--wp-adapter-pi-font-mono);\n  --pi-brush: var(--wp-adapter-pi-font-brush);\n}\n\n@scope (.slide[data-layout-id=\"paper-ink.relationship.R5\"]) {\n/* 卡片本体 724×488 fixed,比槽盒 1050×708 窄:由帧负责槽内摆位。\n     以\"齿轮+箭头\"墨迹中心对齐页面正中 (960,540),并整体 1.2× 放大;\n     组件母板与 viewBox 不动,眉题与页底 .caption 只作上下越界校验。 */\n  .gears-host{position:absolute;left:435px;top:152px;width:1050px;height:708px;z-index:1}\n  .gears-host>.pi-card{position:absolute;left:91px;top:65px;transform:scale(1.2);transform-origin:0 0;background:transparent}\n  .gears-host .pi-art>text:first-of-type,\n  .gears-host [data-field$=\"_desc\"],\n  .gears-host #r5-focus-en{font-size:13px}\n  .caption{position:absolute;left:0;right:0;bottom:82px;text-align:center;font-family:var(--sans);font-size:var(--type-caption);letter-spacing:.04em;color:var(--ink);z-index:5}\n.pi-card {\n  width: 600px;\n  min-height: 600px;\n  background: var(--pi-paper);\n  color: var(--pi-ink);\n  font-family: var(--pi-sans);\n  overflow: hidden;\n  position: relative;\n}\n.pi-card > svg.pi-art {\n  display: block;\n  width: 100%;\n  height: auto;\n}\n.pi-card text { user-select: none; }\n.pi-metric-strip {\n  box-sizing: border-box;\n  display: grid;\n  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));\n  align-items: stretch;\n  width: min(1050px, 100%);\n  min-height: 140px;\n  border-top: 1.3px solid var(--pi-ink-80);\n  border-bottom: .6px solid color-mix(in srgb, var(--pi-ink) 30%, transparent);\n}\n.pi-metric-strip [data-repeat-unit=\"metric\"] {\n  box-sizing: border-box;\n  display: grid;\n  align-content: center;\n  justify-items: center;\n  min-width: 0;\n  padding: 14px 22px 12px;\n  text-align: center;\n}\n.pi-metric-strip [data-repeat-unit=\"metric\"] + [data-repeat-unit=\"metric\"] {\n  border-left: .6px solid color-mix(in srgb, var(--pi-ink) 30%, transparent);\n}\n.pi-metric-strip .pi-metric-value {\n  font-family: var(--pi-serif);\n  font-size: 42px;\n  font-weight: var(--pi-weight-strong);\n  line-height: 1;\n}\n.pi-metric-strip .pi-metric-label {\n  margin-top: 10px;\n  font-family: var(--pi-sans);\n  font-size: 13px;\n  font-weight: var(--pi-weight-regular);\n  line-height: 1.2;\n}\n.pi-infra-kicker {\n  color: var(--pi-ink-45);\n  font-family: var(--pi-mono);\n  font-size: 9px;\n  letter-spacing: 2.6px;\n}\n.pi-infra-strip {\n  box-sizing: border-box;\n  display: grid;\n  grid-template-rows: 34px 1fr;\n  width: 1050px;\n  min-height: 260px;\n  padding: 12px 18px 14px;\n  border: 1px dashed var(--pi-ink-45);\n}\n.pi-infra-head {\n  display: flex;\n  align-items: start;\n  justify-content: space-between;\n  gap: 20px;\n}\n.pi-infra-count {\n  color: var(--pi-ink-45);\n  font-family: var(--pi-mono);\n  font-size: 8px;\n  letter-spacing: 1.6px;\n}\n.pi-infra-items {\n  display: grid;\n  grid-template-columns: repeat(auto-fit, minmax(135px, 1fr));\n  gap: 12px;\n  align-items: stretch;\n}\n.pi-infra-strip [data-repeat-unit=\"item\"] {\n  box-sizing: border-box;\n  display: grid;\n  grid-template-columns: 24px minmax(0, 1fr);\n  align-items: center;\n  min-width: 0;\n  padding: 8px 12px;\n  border: .8px dashed color-mix(in srgb, var(--pi-ink) 52%, transparent);\n  background: color-mix(in srgb, var(--pi-paper-panel) 52%, transparent);\n}\n.pi-infra-code {\n  color: var(--pi-ink-45);\n  font-family: var(--pi-mono);\n  font-size: 8px;\n  letter-spacing: .8px;\n}\n.pi-infra-label {\n  min-width: 0;\n  overflow: hidden;\n  color: var(--pi-ink-70);\n  font-family: var(--pi-sans);\n  font-size: 11px;\n  font-weight: 300;\n  text-overflow: ellipsis;\n  white-space: nowrap;\n}\n/* #061 对话标本：照 A1 源版 HTML/CSS，不用 SVG 描边冒充圆角。\n   流式填充行为宿主（.pi-card 100%×100%），不自带固定宽高 */\n.pi-chat-specimen {\n  box-sizing: border-box;\n  width: 100%;\n  min-height: 0;\n  background: var(--pi-paper-panel);\n  border: 1px solid color-mix(in srgb, var(--pi-ink) 32%, transparent);\n  border-radius: 18px;\n  overflow: hidden;\n}\n.pi-chat-bar {\n  display: flex;\n  align-items: center;\n  gap: 12px;\n  padding: 16px 24px;\n  border-bottom: 1px solid color-mix(in srgb, var(--pi-ink) 25%, transparent);\n}\n.pi-chat-dot {\n  width: 10px;\n  height: 10px;\n  border-radius: 50%;\n  border: 1px solid color-mix(in srgb, var(--pi-ink) 30%, transparent);\n}\n.pi-chat-bar-title {\n  margin-left: 12px;\n  color: var(--pi-ink-45);\n  font-family: var(--pi-mono);\n  font-size: 13px;\n  letter-spacing: .25em;\n}\n.pi-chat-body { padding: 28px 32px 24px; }\n.pi-chat-msg {\n  display: flex;\n  align-items: flex-start;\n  gap: 16px;\n  margin-bottom: 24px;\n}\n.pi-chat-msg:last-child { margin-bottom: 0; }\n.pi-chat-msg.is-user { flex-direction: row-reverse; }\n.pi-chat-avatar {\n  flex: none;\n  display: grid;\n  place-items: center;\n  width: 52px;\n  height: 52px;\n  border: 1px solid color-mix(in srgb, var(--pi-ink) 38%, transparent);\n  border-radius: 50%;\n  background: var(--pi-paper-panel);\n  font-family: var(--pi-sans);\n  font-size: 15px;\n  font-weight: 400;\n}\n.pi-chat-bub {\n  max-width: 740px;\n  padding: 16px 24px;\n  border: 1px solid color-mix(in srgb, var(--pi-ink) 38%, transparent);\n  border-radius: 16px;\n  font-family: var(--pi-sans);\n  font-size: 22px;\n  font-weight: 300;\n  line-height: 1.8;\n}\n.pi-chat-msg.is-user .pi-chat-bub {\n  border-bottom-right-radius: 4px;\n  background: var(--pi-paper-panel);\n  font-weight: 400;\n}\n.pi-chat-msg.is-ai .pi-chat-bub { border-bottom-left-radius: 4px; }\n.pi-chat-item {\n  display: flex;\n  gap: 12px;\n  margin-top: 8px;\n}\n.pi-chat-pt {\n  flex: none;\n  padding-top: 12px;\n  color: var(--pi-ink-45);\n  font-size: 16px;\n}\n.pi-chat-score {\n  font-family: var(--pi-mono);\n  font-size: 26px;\n  color: var(--pi-ink);\n}\n.pi-chat-note {\n  color: var(--pi-ink-45);\n  font-size: 18px;\n}\n.pi-chat-wrong {\n  position: relative;\n  display: inline-block;\n  font-weight: 400;\n}\n.pi-chat-wrong::before,\n.pi-chat-wrong::after {\n  content: '';\n  position: absolute;\n  pointer-events: none;\n  border: 1.1px solid var(--pi-ink);\n  border-radius: 50%;\n}\n.pi-chat-wrong::before {\n  inset: -4px -11px;\n  transform: rotate(-4deg);\n}\n.pi-chat-wrong::after {\n  inset: -6px -14px;\n  border-width: .7px;\n  opacity: .45;\n  transform: rotate(6deg);\n}\n.pi-chat-specimen[data-message-count=\"5\"] .pi-chat-body,\n.pi-chat-specimen[data-message-count=\"6\"] .pi-chat-body,\n.pi-chat-specimen[data-message-count=\"7\"] .pi-chat-body,\n.pi-chat-specimen[data-message-count=\"8\"] .pi-chat-body {\n  padding: 18px 24px;\n}\n.pi-chat-specimen[data-message-count=\"5\"] .pi-chat-msg,\n.pi-chat-specimen[data-message-count=\"6\"] .pi-chat-msg,\n.pi-chat-specimen[data-message-count=\"7\"] .pi-chat-msg,\n.pi-chat-specimen[data-message-count=\"8\"] .pi-chat-msg {\n  gap: 12px;\n  margin-bottom: 10px;\n}\n.pi-chat-specimen[data-message-count=\"5\"] .pi-chat-avatar,\n.pi-chat-specimen[data-message-count=\"6\"] .pi-chat-avatar,\n.pi-chat-specimen[data-message-count=\"7\"] .pi-chat-avatar,\n.pi-chat-specimen[data-message-count=\"8\"] .pi-chat-avatar {\n  width: 40px;\n  height: 40px;\n  font-size: 13px;\n}\n.pi-chat-specimen[data-message-count=\"5\"] .pi-chat-bub,\n.pi-chat-specimen[data-message-count=\"6\"] .pi-chat-bub,\n.pi-chat-specimen[data-message-count=\"7\"] .pi-chat-bub,\n.pi-chat-specimen[data-message-count=\"8\"] .pi-chat-bub {\n  padding: 9px 16px;\n  font-size: 18px;\n  line-height: 1.45;\n}\n}\n",
+    "css_sha256": "bf2cae8f48cf90b874c8fd8cfdcb1c24dc465a90aff776bc435fd0f2bb904a92",
+    "stage_html": "<div class=\"stage\" data-block-id=\"gallery-primary\" data-component-id=\"native.paper-ink.107.interlocking-gears\" data-component-source=\"native\" data-content-ref=\"example.r5\" data-renderer-kind=\"native-html\">\n<div class=\"doc tl\"><span class=\"vnext-text-node\" data-vnext-fit-box=\"0,0,1920,1080\" data-vnext-text-key=\"system.text.001\">PPT 标题</span><br/><span class=\"vnext-text-node\" data-vnext-fit-box=\"0,0,1920,1080\" data-vnext-text-key=\"system.text.002\">页面标题</span></div>\n<div class=\"folio\">页码 / 总页数 — BY @歪斯Wise</div>\n<div aria-label=\"内容模型评测三个互锁模块\" class=\"gears-host\" data-component-id=\"native.paper-ink.107.interlocking-gears\" data-slot-id=\"system\" id=\"gears-host\"><div class=\"pi-card\" data-bind-root=\"collection\" style=\"width:724px!important;min-height:488px!important\"><svg aria-label=\"互锁齿轮关系图\" class=\"pi-art\" viewbox=\"192 20 736 504\" width=\"100%\" xmlns=\"http://www.w3.org/2000/svg\">\n<defs>\n<pattern height=\"10\" id=\"pi-gear-dots\" patternunits=\"userSpaceOnUse\" width=\"10\"><circle cx=\"2\" cy=\"2\" fill=\"var(--pi-ink)\" opacity=\".2\" r=\".8\"></circle></pattern>\n<path d=\"M -21.7 -81.1 L -13.1 -83.0 L -10.5 -99.5 L 10.5 -99.5 L 13.1 -83.0 L 21.7 -81.1 L 30.1 -78.4 L 40.7 -91.4 L 58.8 -80.9 L 52.9 -65.3 L 59.4 -59.4 L 65.3 -52.9 L 80.9 -58.8 L 91.4 -40.7 L 78.4 -30.1 L 81.1 -21.7 L 83.0 -13.1 L 99.5 -10.5 L 99.5 10.5 L 83.0 13.1 L 81.1 21.7 L 78.4 30.1 L 91.4 40.7 L 80.9 58.8 L 65.3 52.9 L 59.4 59.4 L 52.9 65.3 L 58.8 80.9 L 40.7 91.4 L 30.1 78.4 L 21.7 81.1 L 13.1 83.0 L 10.5 99.5 L -10.5 99.5 L -13.1 83.0 L -21.7 81.1 L -30.1 78.4 L -40.7 91.4 L -58.8 80.9 L -52.9 65.3 L -59.4 59.4 L -65.3 52.9 L -80.9 58.8 L -91.4 40.7 L -78.4 30.1 L -81.1 21.7 L -83.0 13.1 L -99.5 10.5 L -99.5 -10.5 L -83.0 -13.1 L -81.1 -21.7 L -78.4 -30.1 L -91.4 -40.7 L -80.9 -58.8 L -65.3 -52.9 L -59.4 -59.4 L -52.9 -65.3 L -58.8 -80.9 L -40.7 -91.4 L -30.1 -78.4 Z\" id=\"pi-gear-outline\"></path>\n</defs>\n<text data-vnext-fit-box=\"0,0,1920,1080\" data-vnext-text-key=\"system.text.003\" fill=\"var(--pi-ink-45)\" font-family=\"var(--pi-mono)\" font-size=\"10\" letter-spacing=\"2.6\" text-anchor=\"middle\" x=\"525\" y=\"36\">COUPLED SYSTEM · MUTUAL DRIVE</text>\n<g transform=\"translate(0 -11)\">\n<g>\n<g data-repeat-unit=\"module\" transform=\"translate(327 286) scale(1.28)\">\n<use fill=\"url(#pi-gear-dots)\" href=\"#pi-gear-outline\" stroke=\"var(--pi-ink-80)\" stroke-linejoin=\"round\" stroke-width=\"1.15\" vector-effect=\"non-scaling-stroke\"></use>\n<circle fill=\"var(--pi-paper)\" r=\"57\" stroke=\"var(--pi-ink-80)\" stroke-width=\".85\" vector-effect=\"non-scaling-stroke\"></circle>\n<text data-field=\"module_1\" data-vnext-fit-box=\"599,431,772,605\" data-vnext-text-key=\"system.text.004\" fill=\"var(--pi-ink)\" font-family=\"var(--pi-sans)\" font-size=\"18\" font-weight=\"300\" text-anchor=\"middle\" x=\"0\" y=\"-4\">内容</text>\n<text data-field=\"module_1_desc\" data-vnext-fit-box=\"599,431,772,605\" data-vnext-text-key=\"system.text.005\" fill=\"var(--pi-ink-60)\" font-family=\"var(--pi-sans)\" font-size=\"10\" font-weight=\"300\" text-anchor=\"middle\" x=\"0\" y=\"22\">知识与任务</text>\n</g>\n<g data-repeat-unit=\"module\" transform=\"translate(543 202) rotate(15) scale(.98)\">\n<use fill=\"rgba(255,255,255,.24)\" href=\"#pi-gear-outline\" stroke=\"var(--pi-ink-80)\" stroke-linejoin=\"round\" stroke-width=\"1.15\" vector-effect=\"non-scaling-stroke\"></use>\n<circle fill=\"var(--pi-paper)\" r=\"57\" stroke=\"var(--pi-ink-80)\" stroke-width=\".85\" vector-effect=\"non-scaling-stroke\"></circle>\n<g transform=\"rotate(-15)\"><text data-field=\"module_2\" data-vnext-fit-box=\"859,338,1022,500\" data-vnext-text-key=\"system.text.006\" fill=\"var(--pi-ink)\" font-family=\"var(--pi-sans)\" font-size=\"21\" font-weight=\"300\" text-anchor=\"middle\" x=\"0\" y=\"-4\">模型</text><text data-field=\"module_2_desc\" data-vnext-fit-box=\"859,338,1022,500\" data-vnext-text-key=\"system.text.007\" fill=\"var(--pi-ink-60)\" font-family=\"var(--pi-sans)\" font-size=\"10\" font-weight=\"300\" text-anchor=\"middle\" x=\"0\" y=\"22\">推理与执行</text></g>\n</g>\n<g data-repeat-unit=\"module\" transform=\"translate(530 403) rotate(15) scale(1.02)\">\n<use fill=\"rgba(255,255,255,.14)\" href=\"#pi-gear-outline\" stroke=\"var(--pi-ink-80)\" stroke-linejoin=\"round\" stroke-width=\"1.15\" vector-effect=\"non-scaling-stroke\"></use>\n<circle fill=\"var(--pi-paper)\" r=\"57\" stroke=\"var(--pi-ink-80)\" stroke-width=\".85\" vector-effect=\"non-scaling-stroke\"></circle>\n<g transform=\"rotate(-15)\"><text data-field=\"module_3\" data-vnext-fit-box=\"840,572,1010,741\" data-vnext-text-key=\"system.text.008\" fill=\"var(--pi-ink)\" font-family=\"var(--pi-sans)\" font-size=\"20\" font-weight=\"300\" text-anchor=\"middle\" x=\"0\" y=\"-4\">评测</text><text data-field=\"module_3_desc\" data-vnext-fit-box=\"840,572,1010,741\" data-vnext-text-key=\"system.text.009\" fill=\"var(--pi-ink-60)\" font-family=\"var(--pi-sans)\" font-size=\"10\" font-weight=\"300\" text-anchor=\"middle\" x=\"0\" y=\"22\">反馈与校准</text></g>\n</g>\n</g>\n<g transform=\"translate(690 280)\">\n<text data-content-ref=\"sample.r5.r5-focus\" data-emphasis-role=\"annotation\" data-vnext-fit-box=\"535,277,1386,803\" data-vnext-text-key=\"system.text.010\" fill=\"var(--pi-ink-45)\" font-family=\"var(--pi-mono)\" font-size=\"9\" id=\"r5-focus-en\" letter-spacing=\"2\" text-anchor=\"middle\" x=\"115\" y=\"-30\">SYSTEM OUTPUT</text>\n<line data-content-ref=\"sample.r5.r5-focus\" data-emphasis-role=\"outline\" id=\"r5-focus-line\" stroke=\"var(--pi-ink-80)\" stroke-width=\"1\" x1=\"0\" x2=\"230\" y1=\"0\" y2=\"0\"></line>\n<path d=\"M 218 -8 L 230 0 L 218 8\" data-content-ref=\"sample.r5.r5-focus\" data-emphasis-role=\"outline\" fill=\"none\" id=\"r5-focus-arrow\" stroke=\"var(--pi-ink-80)\" stroke-width=\"1\"></path>\n<text data-content-ref=\"sample.r5.r5-focus\" data-emphasis-role=\"value\" data-field=\"system_result\" data-vnext-fit-box=\"535,277,1386,803\" data-vnext-text-key=\"system.text.011\" fill=\"var(--pi-ink)\" font-family=\"var(--pi-sans)\" font-size=\"23\" font-weight=\"300\" id=\"r5-focus-cn\" text-anchor=\"middle\" x=\"115\" y=\"49\">稳定交付</text>\n</g>\n</g>\n</svg></div></div>\n<div class=\"caption\" data-vnext-claim-key=\"claim.text.001\" data-vnext-fit-box=\"0,0,1920,1080\">内容、模型与评测相互驱动，闭环越完整，交付越稳定。</div>\n</div>",
+    "stage_structure_sha256": "fe6a925fe114833fbc89bcf235df2c13a44e4d92f4d9eb8c95a1c869c01f3e90"
+  },
+  "bindings": {
+    "claim": {
+      "key": "claim.text.001",
+      "default": "内容、模型与评测相互驱动，闭环越完整，交付越稳定。",
+      "max_chars": 30,
+      "fit_box": [
+        0.0,
+        0.0,
+        1920.0,
+        1080.0
+      ],
+      "fit_owner_kind": "slide"
+    },
+    "primary_slot": "system",
+    "slots": {
+      "system": {
+        "text": [
+          {
+            "key": "system.text.001",
+            "default": "PPT 标题",
+            "max_chars": 40,
+            "item_scope": "slot",
+            "item_group_source": "dom-explicit",
+            "fit_box": [
+              0.0,
+              0.0,
+              1920.0,
+              1080.0
+            ],
+            "fit_owner_kind": "slide"
+          },
+          {
+            "key": "system.text.002",
+            "default": "页面标题",
+            "max_chars": 72,
+            "item_scope": "slot",
+            "item_group_source": "dom-explicit",
+            "fit_box": [
+              0.0,
+              0.0,
+              1920.0,
+              1080.0
+            ],
+            "fit_owner_kind": "slide"
+          },
+          {
+            "key": "system.text.003",
+            "default": "COUPLED SYSTEM · MUTUAL DRIVE",
+            "max_chars": 34,
+            "item_scope": "slot",
+            "item_group_source": "dom-explicit",
+            "fit_box": [
+              0.0,
+              0.0,
+              1920.0,
+              1080.0
+            ],
+            "fit_owner_kind": "slide"
+          },
+          {
+            "key": "system.text.004",
+            "default": "内容",
+            "max_chars": 3,
+            "item_scope": "item",
+            "item_group_source": "dom-explicit",
+            "item_index": 0,
+            "fit_box": [
+              599.0,
+              431.0,
+              772.0,
+              605.0
+            ],
+            "fit_owner_kind": "svg-shape"
+          },
+          {
+            "key": "system.text.005",
+            "default": "知识与任务",
+            "max_chars": 7,
+            "item_scope": "item",
+            "item_group_source": "dom-explicit",
+            "item_index": 0,
+            "fit_box": [
+              599.0,
+              431.0,
+              772.0,
+              605.0
+            ],
+            "fit_owner_kind": "svg-shape"
+          },
+          {
+            "key": "system.text.006",
+            "default": "模型",
+            "max_chars": 3,
+            "item_scope": "item",
+            "item_group_source": "dom-explicit",
+            "item_index": 1,
+            "fit_box": [
+              859.0,
+              338.0,
+              1022.0,
+              500.0
+            ],
+            "fit_owner_kind": "svg-shape"
+          },
+          {
+            "key": "system.text.007",
+            "default": "推理与执行",
+            "max_chars": 7,
+            "item_scope": "item",
+            "item_group_source": "dom-explicit",
+            "item_index": 1,
+            "fit_box": [
+              859.0,
+              338.0,
+              1022.0,
+              500.0
+            ],
+            "fit_owner_kind": "svg-shape"
+          },
+          {
+            "key": "system.text.008",
+            "default": "评测",
+            "max_chars": 3,
+            "item_scope": "item",
+            "item_group_source": "dom-explicit",
+            "item_index": 2,
+            "fit_box": [
+              840.0,
+              572.0,
+              1010.0,
+              741.0
+            ],
+            "fit_owner_kind": "svg-shape"
+          },
+          {
+            "key": "system.text.009",
+            "default": "反馈与校准",
+            "max_chars": 7,
+            "item_scope": "item",
+            "item_group_source": "dom-explicit",
+            "item_index": 2,
+            "fit_box": [
+              840.0,
+              572.0,
+              1010.0,
+              741.0
+            ],
+            "fit_owner_kind": "svg-shape"
+          },
+          {
+            "key": "system.text.010",
+            "default": "SYSTEM OUTPUT",
+            "max_chars": 15,
+            "item_scope": "slot",
+            "item_group_source": "dom-explicit",
+            "fit_box": [
+              535.0,
+              277.0,
+              1386.0,
+              803.0
+            ],
+            "fit_owner_kind": "svg-group"
+          },
+          {
+            "key": "system.text.011",
+            "default": "稳定交付",
+            "max_chars": 6,
+            "item_scope": "slot",
+            "item_group_source": "dom-explicit",
+            "fit_box": [
+              535.0,
+              277.0,
+              1386.0,
+              803.0
+            ],
+            "fit_owner_kind": "svg-group"
+          }
+        ],
+        "icon": []
+      },
+      "takeaway": {
+        "text": [],
+        "icon": []
+      }
+    }
+  },
+  "seed_sha256": "7b0c2a768d5f3b2bff12ef2805fbb9c9e50ddd66cac73ba0f000f72f7c7caf4d"
+}

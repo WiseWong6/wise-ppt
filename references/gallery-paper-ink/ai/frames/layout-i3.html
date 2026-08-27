@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-runtime="wise-ppt-specimen" data-typography-mode="all-sans" data-page-id="gallery-ai-i3" data-page-role="compare" data-theme="paper-ink" data-layout="paper-ink.flow.dual-track" data-layout-source="gallery" data-sample-focus-profile="content-only" data-sample-focus-members='[{"selector":"#i3-focus-ring","role":"outline"},{"selector":"#i3-focus-no","role":"value"},{"selector":"#i3-focus-cn","role":"value"},{"selector":"#i3-focus-en","role":"annotation"}]' data-sample-focus-ref="sample.i3.i3-focus">
+<head>
+<meta charset="UTF-8">
+<title>layout-i3 · 双轨转化路径对比 · 传统工作流 vs AI 工作流</title>
+<script src="../../../../runtime/stage-fit.js"></script>
+<link rel="stylesheet" href="../../../../themes/paper-ink/assets/design-tokens.css">
+<link rel="stylesheet" href="../../../../themes/paper-ink/assets/catalog-fonts.css" data-wise-catalog-fonts="true">
+<link rel="stylesheet" href="../../../../themes/paper-ink/assets/slide-components.css">
+<link rel="stylesheet" href="../../../shell.css">
+<style>
+  svg.scene { position: absolute; inset: 0; z-index: 1; }
+  .caption {
+    position: absolute; left: 0; right: 0; bottom: 118px;
+    text-align: center;
+    font-family: var(--sans); font-weight: 400;
+    font-size: var(--type-caption); letter-spacing: .04em;
+    color: var(--ink);
+    z-index: 5;
+  }
+</style>
+</head>
+<body class="slide">
+<div class="stage" data-block-id="gallery-primary" data-renderer-kind="svg" data-component-source="native" data-component-id="native.paper-ink.flow.dual-track.tracks" data-content-ref="example.i3">
+  <div class="doc tl">PPT 标题<br>页面标题</div>
+  <div class="folio">页码 / 总页数 — BY @歪斯Wise</div>
+
+  <svg class="scene" width="1920" height="1080" viewBox="0 0 1920 1080">
+    <g id="draw"></g>
+  </svg>
+
+  <div class="caption">AI 检索、生成、校验与一键发布把端到端流程缩短 58%，但每一站仍需质量门。</div>
+</div>
+
+<script src="../../../../themes/paper-ink/assets/particles.js"></script>
+<script>
+var NS = 'http://www.w3.org/2000/svg';
+var INK = 'var(--ink)';
+var INK80 = 'var(--ink-80)';
+var INK70 = 'var(--ink-70)';
+var INK45 = 'var(--ink-45)';
+var G = document.getElementById('draw');
+function el(tag, attrs) {
+  var e = document.createElementNS(NS, tag);
+  for (var k in attrs) e.setAttribute(k, attrs[k]);
+  G.appendChild(e); return e;
+}
+function txt(x, y, str, attrs) {
+  var t = el('text', Object.assign({x:x, y:y}, attrs||{}));
+  t.textContent = str; return t;
+}
+var MONO = 'var(--mono)', SANS = 'var(--sans)';
+
+G = el('g', {transform:'translate(0 -34.7)'});
+
+
+var XS = [320, 640, 960, 1280, 1600];
+
+/* ---------- 轨题 ---------- */
+txt(200, 306, 'OLD LINK — MANUAL OPS', {'font-family':MONO, 'font-size':'var(--type-label)', 'letter-spacing':3, fill:INK45});
+el('line', {x1:200, y1:318, x2:440, y2:318, stroke:INK, 'stroke-width':.6, opacity:.3});
+txt(200, 636, 'NEW LINK — AI WORKFLOW', {'font-family':MONO, 'font-size':'var(--type-label)', 'letter-spacing':3, fill:INK});
+el('line', {x1:200, y1:648, x2:440, y2:648, stroke:INK, 'stroke-width':.6, opacity:.35});
+
+/* ---------- 轨道基线（站间细线 + 刻度齿） ---------- */
+function rail(y, op) {
+  el('line', {x1:240, y1:y, x2:1680, y2:y, stroke:INK, 'stroke-width':.8, opacity:op});
+  for (var x = 280; x <= 1640; x += 40) {
+    el('line', {x1:x, y1:y-4, x2:x, y2:y+4, stroke:INK, 'stroke-width':.5, opacity:op*.5});
+  }
+}
+rail(380, .35);
+rail(700, .5);
+
+/* ---------- 站点：圆环序号 + 站名 + 字段行 ---------- */
+function station(x, y, no, cn, field, strong, focus) {
+  el('circle', {id:focus?'i3-focus-ring':'', cx:x, cy:y, r:24, fill:'var(--paper)', stroke:INK, 'stroke-width':strong?1.3:1, opacity:1});
+  txt(x, y+5, no, {id:focus?'i3-focus-no':'', 'font-family':MONO, 'font-size':'var(--type-label)', 'letter-spacing':1, 'text-anchor':'middle', fill:INK});
+  txt(x, y+56, cn, {id:focus?'i3-focus-cn':'', 'font-family':SANS, 'font-weight':300, 'font-size':'var(--type-subheading)', 'text-anchor':'middle', fill:INK});
+  txt(x, y+84, field, {id:focus?'i3-focus-en':'', 'font-family':MONO, 'font-size':'var(--type-meta)', 'letter-spacing':1.5, 'text-anchor':'middle', fill:INK45});
+}
+var OLD = [
+  ['01','需求接入','UNIFIED IN'],
+  ['02','人工调研','HUMAN RESEARCH'],
+  ['03','手写文档','HAND DRAFT'],
+  ['04','人工审阅','MANUAL REVIEW'],
+  ['05','手动发布','MANUAL SHIP']
+];
+var NEW = [
+  ['01','需求接入','UNIFIED IN'],
+  ['02','AI 检索','AI RETRIEVE'],
+  ['03','AI 生成','AI GENERATE'],
+  ['04','AI 校验','AI VERIFY'],
+  ['05','一键发布','ONE-CLICK SHIP']
+];
+XS.forEach(function(x, i){
+  station(x, 380, OLD[i][0], OLD[i][1], OLD[i][2], false);
+  station(x, 700, NEW[i][0], NEW[i][1], NEW[i][2], true, i === 4);
+});
+
+/* ---------- 站间竖向构造线 + 对位差异徽章 ---------- */
+var BADGE = {
+  1: 'HUMAN RESEARCH → AI RETRIEVE',
+  2: 'HAND DRAFT → AI GENERATE',
+  4: 'MANUAL REVIEW → AI VERIFY'
+};
+XS.forEach(function(x, i){
+  var diff = BADGE[i] !== undefined;
+  /* 对位虚线：上轨字段行下沿 → 下轨轨题上沿；差异站在徽章注记上方收笔（避让文字） */
+  el('line', {x1:x, y1:472, x2:x, y2:diff ? 576 : 616, stroke:INK, 'stroke-width':.6,
+    opacity: diff ? .4 : .2, 'stroke-dasharray': diff ? '3 5' : '2 6'});
+  if (!diff) {
+    el('circle', {cx:x, cy:544, r:2.2, fill:INK, opacity:.4});
+    return;
+  }
+  /* 差异徽章：双圈 + Δ 符号 */
+  el('circle', {cx:x, cy:544, r:20, fill:'var(--paper)', stroke:INK80, 'stroke-width':1.2});
+  el('circle', {cx:x, cy:544, r:25, fill:'none', stroke:INK, 'stroke-width':.6, opacity:.3});
+  el('path', {d:'M '+x+' 534 L '+(x-8)+' 551 L '+(x+8)+' 551 Z', fill:'none', stroke:INK, 'stroke-width':1.1});
+  /* 徽章注记 */
+  txt(x, 596, BADGE[i], {'font-family':MONO, 'font-size':'var(--type-micro-secondary)', 'letter-spacing':1.5, 'text-anchor':'middle', fill:INK70});
+});
+
+/* ---------- 新轨收束：开放箭头指向右侧结论 ---------- */
+el('line', {x1:1680, y1:700, x2:1760, y2:700, stroke:INK, 'stroke-width':1.2, opacity:.7});
+el('line', {x1:1760, y1:700, x2:1746, y2:693, stroke:INK, 'stroke-width':1.2, opacity:.7});
+el('line', {x1:1760, y1:700, x2:1746, y2:707, stroke:INK, 'stroke-width':1.2, opacity:.7});
+txt(1736, 734, 'E2E -58%', {id:'sample-focus', 'font-family':MONO, 'font-size':'var(--type-meta)', 'letter-spacing':2, 'text-anchor':'end', fill:INK});
+
+stageFit();
+</script>
+</body>
+</html>

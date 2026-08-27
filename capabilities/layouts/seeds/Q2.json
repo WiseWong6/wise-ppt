@@ -1,0 +1,393 @@
+{
+  "contract": "wise-ppt-layout-seed@4",
+  "layout_id": "paper-ink.relationship.Q2",
+  "display_code": "Q2",
+  "page_kind": "relationship",
+  "source": {
+    "path": "references/gallery-paper-ink/ai/frames/layout-q2.html",
+    "sha256": "c49348a2462cf659c3cbbb3ee8163b7cb3f2b9aa8f0fca8cc2aa0aad58266f6e"
+  },
+  "locked": {
+    "scoped_css": "@scope (.slide[data-layout-id=\"paper-ink.relationship.Q2\"]) {\nsvg.scene{position:absolute;inset:0;z-index:1}\n  .caption{position:absolute;left:0;right:0;bottom:118px;text-align:center;font-family:var(--sans);font-weight:400;font-size:var(--type-caption);letter-spacing:.04em;color:var(--ink);z-index:5}\n}\n",
+    "css_sha256": "7f540ff1f60b83857a9f82eb8ab1c2850862b246d3cbd4f449898bc27f6b9594",
+    "stage_html": "<div class=\"stage\" data-block-id=\"gallery-primary\" data-component-source=\"native\" data-content-ref=\"example.q2\" data-renderer-kind=\"svg\">\n<div class=\"doc tl\"><span class=\"vnext-text-node\" data-vnext-fit-box=\"0,0,1920,1080\" data-vnext-text-key=\"whole.text.001\">PPT 标题</span><br/><span class=\"vnext-text-node\" data-vnext-fit-box=\"0,0,1920,1080\" data-vnext-text-key=\"whole.text.002\">页面标题</span></div>\n<div class=\"folio\">页码 / 总页数 — BY @歪斯Wise</div>\n<svg aria-label=\"左侧成本构成环图，右侧分项证据\" class=\"scene\" height=\"1080\" viewbox=\"0 0 1920 1080\" width=\"1920\">\n<defs>\n<pattern height=\"8\" id=\"q2-hatch\" patterntransform=\"rotate(45)\" patternunits=\"userSpaceOnUse\" width=\"8\"><line opacity=\".28\" stroke=\"var(--ink)\" stroke-width=\".65\" x1=\"0\" x2=\"0\" y1=\"0\" y2=\"8\"></line></pattern>\n</defs>\n<g data-component-id=\"echarts.pie-access-source\" data-slot-id=\"whole\">\n<text data-vnext-fit-box=\"0,0,1920,1080\" data-vnext-text-key=\"whole.text.003\" fill=\"var(--ink-45)\" font-family=\"var(--mono)\" font-size=\"15\" letter-spacing=\"3\" text-anchor=\"middle\" x=\"530.5\" y=\"223\">WHOLE / 100%</text>\n<circle cx=\"530.5\" cy=\"517\" fill=\"none\" r=\"238\" stroke=\"var(--ink-12)\" stroke-width=\"92\"></circle>\n<circle cx=\"530.5\" cy=\"517\" fill=\"none\" r=\"238\" stroke=\"var(--ink)\" stroke-dasharray=\"388 1108\" stroke-width=\"92\" transform=\"rotate(-90 530.5 517)\"></circle>\n<circle cx=\"530.5\" cy=\"517\" fill=\"none\" r=\"238\" stroke=\"color-mix(in srgb, var(--ink) 65%, transparent)\" stroke-dasharray=\"299 1197\" stroke-dashoffset=\"-388\" stroke-width=\"92\" transform=\"rotate(-90 530.5 517)\"></circle>\n<circle cx=\"530.5\" cy=\"517\" fill=\"none\" r=\"238\" stroke=\"url(#q2-hatch)\" stroke-dasharray=\"239 1257\" stroke-dashoffset=\"-687\" stroke-width=\"92\" transform=\"rotate(-90 530.5 517)\"></circle>\n<circle cx=\"530.5\" cy=\"517\" fill=\"none\" r=\"238\" stroke=\"color-mix(in srgb, var(--ink) 32%, transparent)\" stroke-dasharray=\"568 928\" stroke-dashoffset=\"-926\" stroke-width=\"92\" transform=\"rotate(-90 530.5 517)\"></circle>\n<text data-content-ref=\"sample.q2.q2-focus\" data-emphasis-role=\"label\" data-vnext-fit-box=\"292,279,769,755\" data-vnext-text-key=\"whole.text.004\" fill=\"var(--ink-45)\" font-family=\"var(--mono)\" font-size=\"15\" id=\"q2-focus-period\" letter-spacing=\"2\" text-anchor=\"middle\" x=\"530.5\" y=\"472\">MONTHLY</text>\n<text data-content-ref=\"sample.q2.q2-focus\" data-emphasis-role=\"value\" data-vnext-fit-box=\"292,279,769,755\" data-vnext-text-key=\"whole.text.005\" fill=\"var(--ink)\" font-family=\"var(--sans)\" font-size=\"50\" id=\"q2-focus-total\" text-anchor=\"middle\" x=\"530.5\" y=\"532\">¥ 84.6K</text>\n<text data-content-ref=\"sample.q2.q2-focus\" data-emphasis-role=\"label\" data-vnext-fit-box=\"292,279,769,755\" data-vnext-text-key=\"whole.text.006\" fill=\"color-mix(in srgb, var(--ink) 62%, transparent)\" font-family=\"var(--sans)\" font-size=\"18\" id=\"q2-focus-label\" text-anchor=\"middle\" x=\"530.5\" y=\"570\">评测总投入</text>\n</g>\n<g data-component-id=\"native.paper-ink.semantic.evidence-panel\" data-slot-id=\"parts\">\n<text data-vnext-fit-box=\"0,0,1920,1080\" data-vnext-text-key=\"parts.text.001\" fill=\"var(--ink-45)\" font-family=\"var(--mono)\" font-size=\"15\" letter-spacing=\"3\" x=\"1146\" y=\"210\">PARTS / EVIDENCE</text>\n<line opacity=\".45\" stroke=\"var(--ink)\" stroke-width=\"1\" x1=\"1146\" x2=\"1633\" y1=\"252\" y2=\"252\"></line>\n<g fill=\"var(--ink)\" font-family=\"var(--sans)\">\n<text data-vnext-fit-box=\"1146,300,1633,815\" data-vnext-text-key=\"parts.text.002\" fill=\"var(--ink-55)\" font-family=\"var(--mono)\" font-size=\"15\" letter-spacing=\"2\" x=\"1146\" y=\"330\">01</text><text data-vnext-fit-box=\"1146,198,1633,815\" data-vnext-text-key=\"parts.text.003\" font-size=\"var(--type-subheading)\" x=\"1203\" y=\"330\">人工标注</text><text data-vnext-fit-box=\"1146,300,1633,815\" data-vnext-text-key=\"parts.text.004\" font-family=\"var(--mono)\" font-size=\"22\" text-anchor=\"end\" x=\"1633\" y=\"330\">26%</text><text data-vnext-fit-box=\"1146,300,1633,815\" data-vnext-text-key=\"parts.text.005\" fill=\"color-mix(in srgb, var(--ink) 62%, transparent)\" font-size=\"16\" x=\"1203\" y=\"366\">双人复核 1,260 条 · 一致率 0.91</text>\n<line opacity=\".25\" stroke=\"var(--ink)\" stroke-width=\".7\" x1=\"1146\" x2=\"1633\" y1=\"404\" y2=\"404\"></line>\n<text data-vnext-fit-box=\"1146,300,1633,815\" data-vnext-text-key=\"parts.text.006\" fill=\"var(--ink-55)\" font-family=\"var(--mono)\" font-size=\"15\" letter-spacing=\"2\" x=\"1146\" y=\"478\">02</text><text data-vnext-fit-box=\"1146,300,1633,815\" data-vnext-text-key=\"parts.text.007\" font-size=\"var(--type-subheading)\" x=\"1203\" y=\"478\">模型调用</text><text data-vnext-fit-box=\"1146,300,1633,815\" data-vnext-text-key=\"parts.text.008\" font-family=\"var(--mono)\" font-size=\"22\" text-anchor=\"end\" x=\"1633\" y=\"478\">20%</text><text data-vnext-fit-box=\"1146,300,1633,815\" data-vnext-text-key=\"parts.text.009\" fill=\"color-mix(in srgb, var(--ink) 62%, transparent)\" font-size=\"16\" x=\"1203\" y=\"514\">3 个模型交叉判分 · 失败重试 2.7%</text>\n<line opacity=\".25\" stroke=\"var(--ink)\" stroke-width=\".7\" x1=\"1146\" x2=\"1633\" y1=\"552\" y2=\"552\"></line>\n<text data-vnext-fit-box=\"1146,300,1633,815\" data-vnext-text-key=\"parts.text.010\" fill=\"var(--ink-55)\" font-family=\"var(--mono)\" font-size=\"15\" letter-spacing=\"2\" x=\"1146\" y=\"626\">03</text><text data-vnext-fit-box=\"1146,300,1633,815\" data-vnext-text-key=\"parts.text.011\" font-size=\"var(--type-subheading)\" x=\"1203\" y=\"626\">工具回放</text><text data-vnext-fit-box=\"1146,300,1633,815\" data-vnext-text-key=\"parts.text.012\" font-family=\"var(--mono)\" font-size=\"22\" text-anchor=\"end\" x=\"1633\" y=\"626\">16%</text><text data-vnext-fit-box=\"1146,300,1633,815\" data-vnext-text-key=\"parts.text.013\" fill=\"color-mix(in srgb, var(--ink) 62%, transparent)\" font-size=\"16\" x=\"1203\" y=\"662\">Trace 采样 640 条 · 缺失轨迹 18 条</text>\n<line opacity=\".25\" stroke=\"var(--ink)\" stroke-width=\".7\" x1=\"1146\" x2=\"1633\" y1=\"700\" y2=\"700\"></line>\n<text data-vnext-fit-box=\"1146,300,1633,815\" data-vnext-text-key=\"parts.text.014\" fill=\"var(--ink-55)\" font-family=\"var(--mono)\" font-size=\"15\" letter-spacing=\"2\" x=\"1146\" y=\"774\">04</text><text data-vnext-fit-box=\"1146,300,1633,815\" data-vnext-text-key=\"parts.text.015\" font-size=\"var(--type-subheading)\" x=\"1203\" y=\"774\">平台与治理</text><text data-vnext-fit-box=\"1146,300,1633,815\" data-vnext-text-key=\"parts.text.016\" font-family=\"var(--mono)\" font-size=\"22\" text-anchor=\"end\" x=\"1633\" y=\"774\">38%</text><text data-vnext-fit-box=\"0,0,1920,1080\" data-vnext-text-key=\"parts.text.017\" fill=\"color-mix(in srgb, var(--ink) 62%, transparent)\" font-size=\"16\" x=\"1203\" y=\"810\">环境、审计与版本留档 · 固定投入占主导</text>\n</g>\n</g>\n</svg>\n<div class=\"caption\" data-vnext-claim-key=\"claim.text.001\" data-vnext-fit-box=\"0,0,1920,1080\">占比说明钱花在哪，分项证据说明这些比例是否可信。</div>\n</div>",
+    "stage_structure_sha256": "5e463da56507366e63cb9ce3538d0d2beb4362d51705eee48542b8fd8cbb37c6"
+  },
+  "bindings": {
+    "claim": {
+      "key": "claim.text.001",
+      "default": "占比说明钱花在哪，分项证据说明这些比例是否可信。",
+      "max_chars": 29,
+      "fit_box": [
+        0.0,
+        0.0,
+        1920.0,
+        1080.0
+      ],
+      "fit_owner_kind": "slide"
+    },
+    "primary_slot": "whole",
+    "slots": {
+      "whole": {
+        "text": [
+          {
+            "key": "whole.text.001",
+            "default": "PPT 标题",
+            "max_chars": 40,
+            "item_scope": "item",
+            "item_group_source": "fixed-slot",
+            "item_index": 0,
+            "fit_box": [
+              0.0,
+              0.0,
+              1920.0,
+              1080.0
+            ],
+            "fit_owner_kind": "slide"
+          },
+          {
+            "key": "whole.text.002",
+            "default": "页面标题",
+            "max_chars": 72,
+            "item_scope": "item",
+            "item_group_source": "fixed-slot",
+            "item_index": 0,
+            "fit_box": [
+              0.0,
+              0.0,
+              1920.0,
+              1080.0
+            ],
+            "fit_owner_kind": "slide"
+          },
+          {
+            "key": "whole.text.003",
+            "default": "WHOLE / 100%",
+            "max_chars": 14,
+            "item_scope": "item",
+            "item_group_source": "fixed-slot",
+            "item_index": 0,
+            "fit_box": [
+              0.0,
+              0.0,
+              1920.0,
+              1080.0
+            ],
+            "fit_owner_kind": "slide"
+          },
+          {
+            "key": "whole.text.004",
+            "default": "MONTHLY",
+            "max_chars": 10,
+            "item_scope": "item",
+            "item_group_source": "fixed-slot",
+            "item_index": 0,
+            "fit_box": [
+              292.0,
+              279.0,
+              769.0,
+              755.0
+            ],
+            "fit_owner_kind": "svg-shape"
+          },
+          {
+            "key": "whole.text.005",
+            "default": "¥ 84.6K",
+            "max_chars": 9,
+            "item_scope": "item",
+            "item_group_source": "fixed-slot",
+            "item_index": 0,
+            "fit_box": [
+              292.0,
+              279.0,
+              769.0,
+              755.0
+            ],
+            "fit_owner_kind": "svg-shape"
+          },
+          {
+            "key": "whole.text.006",
+            "default": "评测总投入",
+            "max_chars": 7,
+            "item_scope": "item",
+            "item_group_source": "fixed-slot",
+            "item_index": 0,
+            "fit_box": [
+              292.0,
+              279.0,
+              769.0,
+              755.0
+            ],
+            "fit_owner_kind": "svg-shape"
+          }
+        ],
+        "icon": []
+      },
+      "parts": {
+        "text": [
+          {
+            "key": "parts.text.001",
+            "default": "PARTS / EVIDENCE",
+            "max_chars": 19,
+            "item_scope": "item",
+            "item_group_source": "fixed-slot",
+            "item_index": 0,
+            "fit_box": [
+              0.0,
+              0.0,
+              1920.0,
+              1080.0
+            ],
+            "fit_owner_kind": "slide"
+          },
+          {
+            "key": "parts.text.002",
+            "default": "01",
+            "max_chars": 3,
+            "item_scope": "item",
+            "item_group_source": "fixed-slot",
+            "item_index": 0,
+            "fit_box": [
+              1146.0,
+              300.0,
+              1633.0,
+              815.0
+            ],
+            "fit_owner_kind": "svg-group"
+          },
+          {
+            "key": "parts.text.003",
+            "default": "人工标注",
+            "max_chars": 6,
+            "item_scope": "item",
+            "item_group_source": "fixed-slot",
+            "item_index": 0,
+            "fit_box": [
+              1146.0,
+              198.0,
+              1633.0,
+              815.0
+            ],
+            "fit_owner_kind": "svg-group"
+          },
+          {
+            "key": "parts.text.004",
+            "default": "26%",
+            "max_chars": 5,
+            "item_scope": "item",
+            "item_group_source": "fixed-slot",
+            "item_index": 0,
+            "fit_box": [
+              1146.0,
+              300.0,
+              1633.0,
+              815.0
+            ],
+            "fit_owner_kind": "svg-group"
+          },
+          {
+            "key": "parts.text.005",
+            "default": "双人复核 1,260 条 · 一致率 0.91",
+            "max_chars": 25,
+            "item_scope": "item",
+            "item_group_source": "fixed-slot",
+            "item_index": 0,
+            "fit_box": [
+              1146.0,
+              300.0,
+              1633.0,
+              815.0
+            ],
+            "fit_owner_kind": "svg-group"
+          },
+          {
+            "key": "parts.text.006",
+            "default": "02",
+            "max_chars": 3,
+            "item_scope": "item",
+            "item_group_source": "fixed-slot",
+            "item_index": 0,
+            "fit_box": [
+              1146.0,
+              300.0,
+              1633.0,
+              815.0
+            ],
+            "fit_owner_kind": "svg-group"
+          },
+          {
+            "key": "parts.text.007",
+            "default": "模型调用",
+            "max_chars": 6,
+            "item_scope": "item",
+            "item_group_source": "fixed-slot",
+            "item_index": 0,
+            "fit_box": [
+              1146.0,
+              300.0,
+              1633.0,
+              815.0
+            ],
+            "fit_owner_kind": "svg-group"
+          },
+          {
+            "key": "parts.text.008",
+            "default": "20%",
+            "max_chars": 5,
+            "item_scope": "item",
+            "item_group_source": "fixed-slot",
+            "item_index": 0,
+            "fit_box": [
+              1146.0,
+              300.0,
+              1633.0,
+              815.0
+            ],
+            "fit_owner_kind": "svg-group"
+          },
+          {
+            "key": "parts.text.009",
+            "default": "3 个模型交叉判分 · 失败重试 2.7%",
+            "max_chars": 23,
+            "item_scope": "item",
+            "item_group_source": "fixed-slot",
+            "item_index": 0,
+            "fit_box": [
+              1146.0,
+              300.0,
+              1633.0,
+              815.0
+            ],
+            "fit_owner_kind": "svg-group"
+          },
+          {
+            "key": "parts.text.010",
+            "default": "03",
+            "max_chars": 3,
+            "item_scope": "item",
+            "item_group_source": "fixed-slot",
+            "item_index": 0,
+            "fit_box": [
+              1146.0,
+              300.0,
+              1633.0,
+              815.0
+            ],
+            "fit_owner_kind": "svg-group"
+          },
+          {
+            "key": "parts.text.011",
+            "default": "工具回放",
+            "max_chars": 6,
+            "item_scope": "item",
+            "item_group_source": "fixed-slot",
+            "item_index": 0,
+            "fit_box": [
+              1146.0,
+              300.0,
+              1633.0,
+              815.0
+            ],
+            "fit_owner_kind": "svg-group"
+          },
+          {
+            "key": "parts.text.012",
+            "default": "16%",
+            "max_chars": 5,
+            "item_scope": "item",
+            "item_group_source": "fixed-slot",
+            "item_index": 0,
+            "fit_box": [
+              1146.0,
+              300.0,
+              1633.0,
+              815.0
+            ],
+            "fit_owner_kind": "svg-group"
+          },
+          {
+            "key": "parts.text.013",
+            "default": "Trace 采样 640 条 · 缺失轨迹 18 条",
+            "max_chars": 26,
+            "item_scope": "item",
+            "item_group_source": "fixed-slot",
+            "item_index": 0,
+            "fit_box": [
+              1146.0,
+              300.0,
+              1633.0,
+              815.0
+            ],
+            "fit_owner_kind": "svg-group"
+          },
+          {
+            "key": "parts.text.014",
+            "default": "04",
+            "max_chars": 3,
+            "item_scope": "item",
+            "item_group_source": "fixed-slot",
+            "item_index": 0,
+            "fit_box": [
+              1146.0,
+              300.0,
+              1633.0,
+              815.0
+            ],
+            "fit_owner_kind": "svg-group"
+          },
+          {
+            "key": "parts.text.015",
+            "default": "平台与治理",
+            "max_chars": 7,
+            "item_scope": "item",
+            "item_group_source": "fixed-slot",
+            "item_index": 0,
+            "fit_box": [
+              1146.0,
+              300.0,
+              1633.0,
+              815.0
+            ],
+            "fit_owner_kind": "svg-group"
+          },
+          {
+            "key": "parts.text.016",
+            "default": "38%",
+            "max_chars": 5,
+            "item_scope": "item",
+            "item_group_source": "fixed-slot",
+            "item_index": 0,
+            "fit_box": [
+              1146.0,
+              300.0,
+              1633.0,
+              815.0
+            ],
+            "fit_owner_kind": "svg-group"
+          },
+          {
+            "key": "parts.text.017",
+            "default": "环境、审计与版本留档 · 固定投入占主导",
+            "max_chars": 25,
+            "item_scope": "item",
+            "item_group_source": "fixed-slot",
+            "item_index": 0,
+            "fit_box": [
+              0.0,
+              0.0,
+              1920.0,
+              1080.0
+            ],
+            "fit_owner_kind": "slide"
+          }
+        ],
+        "icon": []
+      },
+      "takeaway": {
+        "text": [],
+        "icon": []
+      }
+    }
+  },
+  "seed_sha256": "ef555530c396c8ae0a65b9008b140c5947f9c0a05e407c28b1d2c6117d6fc635"
+}

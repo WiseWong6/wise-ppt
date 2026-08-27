@@ -1,0 +1,348 @@
+{
+  "contract": "wise-ppt-layout-seed@4",
+  "layout_id": "paper-ink.relationship.A1",
+  "display_code": "A1",
+  "page_kind": "relationship",
+  "source": {
+    "path": "references/gallery-paper-ink/ai/frames/layout-a1.html",
+    "sha256": "1c253add1d818f255a8b16b267f6cdf891c74ae7455897dd3b8ae5cebe63b16c"
+  },
+  "locked": {
+    "scoped_css": "@scope (.slide[data-layout-id=\"paper-ink.relationship.A1\"]) {\nsvg.scene { position: absolute; inset: 0; z-index: 3; pointer-events: none; }\n\n  /* 标本面板：AI 估分对话原件 */\n  .specimen {\n    position: absolute;\n    left: 500px; top: 161.5px;\n    width: 920px;\n    background: var(--paper-panel);\n    border: 1px solid var(--wp-color-divider);\n    border-radius: 18px;\n    box-shadow: var(--shadow-specimen);\n    overflow: hidden;\n    z-index: 2;\n  }\n  .specbar {\n    display: flex; align-items: center; gap: var(--space-3);\n    padding: var(--space-4) var(--space-6);\n    border-bottom: 1px solid var(--ink-25);\n  }\n  .specbar .dot { width: 10px; height: 10px; border-radius: 50%; border: 1px solid var(--wp-color-divider); }\n  .specbar .t {\n    font-family: var(--mono); font-size: var(--type-meta); letter-spacing: .25em;\n    color: var(--ink-45); margin-left: var(--space-3);\n  }\n  .specbody { padding: 28px var(--space-8) var(--space-6); }\n\n  .msg { display: flex; gap: var(--space-4); margin-bottom: var(--space-6); align-items: flex-start; }\n  .avatar {\n    flex: none; width: 52px; height: 52px; border-radius: 50%;\n    border: 1px solid var(--wp-color-divider);\n    display: grid; place-items: center;\n    font-family: var(--sans); font-weight: 400; font-size: var(--type-label);\n    background: var(--paper-panel);\n  }\n  .bub {\n    max-width: 740px;\n    padding: var(--space-4) var(--space-6);\n    border: 1px solid var(--wp-color-divider);\n    border-radius: 16px;\n    box-shadow: var(--shadow-soft);\n    font-family: var(--sans); font-weight: 300;\n    font-size: var(--type-body); line-height: 1.8;\n  }\n  .msg.user { flex-direction: row-reverse; }\n  .msg.user .bub { border-bottom-right-radius: 4px; font-weight: 400; background: var(--paper-panel); }\n  .msg.ai .bub { border-bottom-left-radius: 4px; }\n  .bub .sc { font-family: var(--mono); font-size: var(--type-subheading); color: var(--ink); }\n  .bub .rs { color: var(--ink-45); font-size: var(--type-body-small); }\n  .bub .item { display: flex; gap: var(--space-3); margin-top: var(--space-2); }\n  .bub .item .pt { flex: none; padding-top: var(--space-3); font-size: var(--type-micro-secondary); color: var(--ink-45); }\n  .bub .wrong { font-weight: 400; }\n\n  /* 居中手写批注 */\n  .note {\n    position: absolute; left: 50%; top: 697.5px;\n    transform: translateX(-50%) rotate(-1.5deg);\n    text-align: center;\n    z-index: 4;\n    font-family: var(--brush);\n    color: var(--ink);\n  }\n  .note .big { font-size: var(--type-hero); line-height: 1.2; }\n  .note .sub { font-size: var(--type-heading); margin-top: var(--space-2); color: var(--ink-70); }\n\n  .caption {\n    position: absolute; left: 0; right: 0; bottom: 108px;\n    text-align: center;\n    font-family: var(--sans); font-weight: 400;\n    font-size: var(--type-caption); letter-spacing: .04em;\n    color: var(--ink);\n    z-index: 5;\n  }\n}\n",
+    "css_sha256": "07c947d5ccfab6e46b3328f568ea3259fad557913ae8d2cadb4125246471d500",
+    "stage_html": "<div class=\"stage\" data-block-id=\"gallery-primary\" data-component-id=\"native.paper-ink.evidence.specimen-card.evidence\" data-component-source=\"native\" data-content-ref=\"example.a1\" data-renderer-kind=\"svg\">\n<div class=\"doc tl\"><span class=\"vnext-text-node\" data-vnext-fit-box=\"0,0,1920,1080\" data-vnext-text-key=\"support.text.001\">PPT 标题</span><br/><span class=\"vnext-text-node\" data-vnext-fit-box=\"0,0,1920,1080\" data-vnext-text-key=\"support.text.002\">页面标题</span></div>\n<div class=\"folio\">页码 / 总页数 — BY @歪斯Wise</div>\n<div class=\"specimen\">\n<div class=\"specbar\">\n<span class=\"dot\"></span><span class=\"dot\"></span><span class=\"dot\"></span>\n<span class=\"t\" data-vnext-fit-box=\"0,0,1920,1080\" data-vnext-text-key=\"evidence.text.001\">AI ASSISTANT · CONVERSATION NO.017</span>\n</div>\n<div class=\"specbody\">\n<div class=\"msg user\">\n<div class=\"avatar\" data-vnext-fit-box=\"533,237,1387,312\" data-vnext-text-key=\"evidence.text.002\">我</div>\n<div class=\"bub\" data-vnext-fit-box=\"0,0,1920,1080\" data-vnext-text-key=\"evidence.text.003\">你要是参加高考，能考多少分呢？</div>\n</div>\n<div class=\"msg ai\">\n<div class=\"avatar\" data-vnext-fit-box=\"533,335,1387,521\" data-vnext-text-key=\"evidence.text.004\">AI</div>\n<div class=\"bub\"><span class=\"vnext-text-node\" data-vnext-fit-box=\"0,0,1920,1080\" data-vnext-text-key=\"evidence.text.005\">按新高考 750 分制，最贴近真实阅卷的估分：</span><div class=\"item\"><span class=\"pt\" data-vnext-fit-box=\"533,335,1387,521\" data-vnext-text-key=\"evidence.text.006\">●</span><div><b data-vnext-fit-box=\"533,335,1387,521\" data-vnext-text-key=\"evidence.text.007\">语文</b> <span class=\"sc\" data-content-ref=\"sample.a1.a1-focus\" data-emphasis-role=\"value\" data-vnext-fit-box=\"533,335,1387,521\" data-vnext-text-key=\"evidence.text.008\" id=\"wrong\">143</span><span class=\"vnext-text-node\" data-vnext-fit-box=\"533,335,1387,521\" data-vnext-text-key=\"evidence.text.009\">分</span><span class=\"rs\" data-vnext-fit-box=\"533,335,1387,521\" data-vnext-text-key=\"evidence.text.010\">—— 基础题近满分，作文缺个人情感与生活体验，扣 17 分</span></div></div>\n<div class=\"item\"><span class=\"pt\" data-vnext-fit-box=\"626,455,1235,504\" data-vnext-text-key=\"evidence.text.011\">●</span><div><b data-vnext-fit-box=\"626,455,1235,504\" data-vnext-text-key=\"evidence.text.012\">数学</b> <span class=\"sc\" data-vnext-fit-box=\"626,455,1235,504\" data-vnext-text-key=\"evidence.text.013\">150</span><span class=\"vnext-text-node\" data-vnext-fit-box=\"626,455,1235,504\" data-vnext-text-key=\"evidence.text.014\">分</span><span class=\"rs\" data-vnext-fit-box=\"626,455,1235,504\" data-vnext-text-key=\"evidence.text.015\">—— 计算、推理、步骤都能做到满分</span></div></div>\n</div>\n</div>\n</div>\n</div>\n<div class=\"note\">\n<div class=\"big\"><span data-vnext-fit-box=\"0,0,1920,1080\" data-vnext-text-key=\"evidence.text.016\" id=\"a1-answer-start\">150</span><span class=\"vnext-text-node\" data-vnext-fit-box=\"0,0,1920,1080\" data-vnext-text-key=\"evidence.text.017\">− 17 = 133</span></div>\n<div class=\"sub\" data-vnext-fit-box=\"0,0,1920,1080\" data-vnext-text-key=\"evidence.text.018\">不是 143。</div>\n</div>\n<svg class=\"scene\" height=\"1080\" viewbox=\"0 0 1920 1080\" width=\"1920\">\n<defs>\n<marker id=\"a1-note-arrow\" markerheight=\"16\" markerunits=\"userSpaceOnUse\" markerwidth=\"16\" orient=\"auto\" refx=\"10.5\" refy=\"6\" viewbox=\"0 0 12 12\">\n<path d=\"M 1 1 L 10.5 6 L 1 11\" fill=\"none\" stroke=\"var(--wp-color-functional)\" stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"1.25\"></path>\n</marker>\n</defs>\n<g id=\"anno\"><ellipse cx=\"726.265625\" cy=\"423.1875\" fill=\"none\" id=\"a1-ring\" rx=\"38.360625\" ry=\"28.419999999999998\" stroke=\"var(--wp-color-functional)\" stroke-width=\"2\" transform=\"rotate(-4 726.265625 423.1875)\"></ellipse><ellipse cx=\"729.265625\" cy=\"425.1875\" fill=\"none\" opacity=\"0.45\" rx=\"41.1675\" ry=\"30.450000000000003\" stroke=\"var(--wp-color-functional)\" stroke-width=\"1\" transform=\"rotate(6 726.265625 423.1875)\"></ellipse><path d=\"M 732.265625 459.1875 C 736.265625 573.1875 716.5328369140625 635.304931640625 746.5328369140625 699.304931640625\" fill=\"none\" marker-end=\"url(#a1-note-arrow)\" stroke=\"var(--wp-color-functional)\" stroke-linecap=\"round\" stroke-width=\"1.4\"></path></g>\n</svg>\n<div class=\"caption\" data-vnext-claim-key=\"claim.text.001\" data-vnext-fit-box=\"0,0,1920,1080\">语文满分 150，扣 17 分应得 133 分。143 暴露了模型“解释正确、计算错误”的幻觉。</div>\n</div>",
+    "stage_structure_sha256": "6a00595598ff85cf25a91755604be25d9fc25d664cb06ab4d7279cfa32ca189e"
+  },
+  "bindings": {
+    "claim": {
+      "key": "claim.text.001",
+      "default": "语文满分 150，扣 17 分应得 133 分。143 暴露了模型“解释正确、计算错误”的幻觉。",
+      "max_chars": 50,
+      "fit_box": [
+        0.0,
+        0.0,
+        1920.0,
+        1080.0
+      ],
+      "fit_owner_kind": "slide"
+    },
+    "primary_slot": "evidence",
+    "slots": {
+      "evidence": {
+        "text": [
+          {
+            "key": "evidence.text.001",
+            "default": "AI ASSISTANT · CONVERSATION NO.017",
+            "max_chars": 41,
+            "item_scope": "item",
+            "item_group_source": "fixed-slot",
+            "item_index": 0,
+            "fit_box": [
+              0.0,
+              0.0,
+              1920.0,
+              1080.0
+            ],
+            "fit_owner_kind": "slide"
+          },
+          {
+            "key": "evidence.text.002",
+            "default": "我",
+            "max_chars": 2,
+            "item_scope": "item",
+            "item_group_source": "fixed-slot",
+            "item_index": 0,
+            "fit_box": [
+              533.0,
+              237.0,
+              1387.0,
+              312.0
+            ],
+            "fit_owner_kind": "html-ancestor"
+          },
+          {
+            "key": "evidence.text.003",
+            "default": "你要是参加高考，能考多少分呢？",
+            "max_chars": 21,
+            "item_scope": "item",
+            "item_group_source": "fixed-slot",
+            "item_index": 0,
+            "fit_box": [
+              0.0,
+              0.0,
+              1920.0,
+              1080.0
+            ],
+            "fit_owner_kind": "slide"
+          },
+          {
+            "key": "evidence.text.004",
+            "default": "AI",
+            "max_chars": 3,
+            "item_scope": "item",
+            "item_group_source": "fixed-slot",
+            "item_index": 0,
+            "fit_box": [
+              533.0,
+              335.0,
+              1387.0,
+              521.0
+            ],
+            "fit_owner_kind": "html-ancestor"
+          },
+          {
+            "key": "evidence.text.005",
+            "default": "按新高考 750 分制，最贴近真实阅卷的估分：",
+            "max_chars": 29,
+            "item_scope": "item",
+            "item_group_source": "fixed-slot",
+            "item_index": 0,
+            "fit_box": [
+              0.0,
+              0.0,
+              1920.0,
+              1080.0
+            ],
+            "fit_owner_kind": "slide"
+          },
+          {
+            "key": "evidence.text.006",
+            "default": "●",
+            "max_chars": 2,
+            "item_scope": "item",
+            "item_group_source": "fixed-slot",
+            "item_index": 0,
+            "fit_box": [
+              533.0,
+              335.0,
+              1387.0,
+              521.0
+            ],
+            "fit_owner_kind": "html-ancestor"
+          },
+          {
+            "key": "evidence.text.007",
+            "default": "语文",
+            "max_chars": 3,
+            "item_scope": "item",
+            "item_group_source": "fixed-slot",
+            "item_index": 0,
+            "fit_box": [
+              533.0,
+              335.0,
+              1387.0,
+              521.0
+            ],
+            "fit_owner_kind": "html-ancestor"
+          },
+          {
+            "key": "evidence.text.008",
+            "default": "143",
+            "max_chars": 5,
+            "item_scope": "item",
+            "item_group_source": "fixed-slot",
+            "item_index": 0,
+            "fit_box": [
+              533.0,
+              335.0,
+              1387.0,
+              521.0
+            ],
+            "fit_owner_kind": "html-ancestor"
+          },
+          {
+            "key": "evidence.text.009",
+            "default": "分",
+            "max_chars": 2,
+            "item_scope": "item",
+            "item_group_source": "fixed-slot",
+            "item_index": 0,
+            "fit_box": [
+              533.0,
+              335.0,
+              1387.0,
+              521.0
+            ],
+            "fit_owner_kind": "html-ancestor"
+          },
+          {
+            "key": "evidence.text.010",
+            "default": "—— 基础题近满分，作文缺个人情感与生活体验，扣 17 分",
+            "max_chars": 22,
+            "item_scope": "item",
+            "item_group_source": "fixed-slot",
+            "item_index": 0,
+            "fit_box": [
+              533.0,
+              335.0,
+              1387.0,
+              521.0
+            ],
+            "fit_owner_kind": "html-ancestor"
+          },
+          {
+            "key": "evidence.text.011",
+            "default": "●",
+            "max_chars": 1,
+            "item_scope": "item",
+            "item_group_source": "fixed-slot",
+            "item_index": 0,
+            "fit_box": [
+              626.0,
+              455.0,
+              1235.0,
+              504.0
+            ],
+            "fit_owner_kind": "html-ancestor"
+          },
+          {
+            "key": "evidence.text.012",
+            "default": "数学",
+            "max_chars": 2,
+            "item_scope": "item",
+            "item_group_source": "fixed-slot",
+            "item_index": 0,
+            "fit_box": [
+              626.0,
+              455.0,
+              1235.0,
+              504.0
+            ],
+            "fit_owner_kind": "html-ancestor"
+          },
+          {
+            "key": "evidence.text.013",
+            "default": "150",
+            "max_chars": 3,
+            "item_scope": "item",
+            "item_group_source": "fixed-slot",
+            "item_index": 0,
+            "fit_box": [
+              626.0,
+              455.0,
+              1235.0,
+              504.0
+            ],
+            "fit_owner_kind": "html-ancestor"
+          },
+          {
+            "key": "evidence.text.014",
+            "default": "分",
+            "max_chars": 2,
+            "item_scope": "item",
+            "item_group_source": "fixed-slot",
+            "item_index": 0,
+            "fit_box": [
+              626.0,
+              455.0,
+              1235.0,
+              504.0
+            ],
+            "fit_owner_kind": "html-ancestor"
+          },
+          {
+            "key": "evidence.text.015",
+            "default": "—— 计算、推理、步骤都能做到满分",
+            "max_chars": 22,
+            "item_scope": "item",
+            "item_group_source": "fixed-slot",
+            "item_index": 0,
+            "fit_box": [
+              626.0,
+              455.0,
+              1235.0,
+              504.0
+            ],
+            "fit_owner_kind": "html-ancestor"
+          },
+          {
+            "key": "evidence.text.016",
+            "default": "150",
+            "max_chars": 5,
+            "item_scope": "item",
+            "item_group_source": "fixed-slot",
+            "item_index": 0,
+            "fit_box": [
+              0.0,
+              0.0,
+              1920.0,
+              1080.0
+            ],
+            "fit_owner_kind": "slide"
+          },
+          {
+            "key": "evidence.text.017",
+            "default": "− 17 = 133",
+            "max_chars": 10,
+            "item_scope": "item",
+            "item_group_source": "fixed-slot",
+            "item_index": 0,
+            "fit_box": [
+              0.0,
+              0.0,
+              1920.0,
+              1080.0
+            ],
+            "fit_owner_kind": "slide"
+          },
+          {
+            "key": "evidence.text.018",
+            "default": "不是 143。",
+            "max_chars": 6,
+            "item_scope": "item",
+            "item_group_source": "fixed-slot",
+            "item_index": 0,
+            "fit_box": [
+              0.0,
+              0.0,
+              1920.0,
+              1080.0
+            ],
+            "fit_owner_kind": "slide"
+          }
+        ],
+        "icon": []
+      },
+      "support": {
+        "text": [
+          {
+            "key": "support.text.001",
+            "default": "PPT 标题",
+            "max_chars": 40,
+            "item_scope": "item",
+            "item_group_source": "fixed-slot",
+            "item_index": 0,
+            "fit_box": [
+              0.0,
+              0.0,
+              1920.0,
+              1080.0
+            ],
+            "fit_owner_kind": "slide"
+          },
+          {
+            "key": "support.text.002",
+            "default": "页面标题",
+            "max_chars": 72,
+            "item_scope": "item",
+            "item_group_source": "fixed-slot",
+            "item_index": 0,
+            "fit_box": [
+              0.0,
+              0.0,
+              1920.0,
+              1080.0
+            ],
+            "fit_owner_kind": "slide"
+          }
+        ],
+        "icon": []
+      },
+      "takeaway": {
+        "text": [],
+        "icon": []
+      }
+    }
+  },
+  "seed_sha256": "b751000fe184339df5dde8ba5686213c3dcb4c5c595d936c293050a5e5de2d3f"
+}

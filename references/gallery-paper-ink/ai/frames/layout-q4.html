@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-runtime="wise-ppt-specimen" data-typography-mode="all-sans" data-page-id="gallery-ai-q4" data-page-role="prove" data-theme="paper-ink" data-layout="paper-ink.evidence.panel-grid-2x2" data-layout-source="gallery" data-sample-focus-profile="copy-only" data-sample-focus-members='[{"selector":"#focus-caption","role":"label"}]' data-sample-focus-ref="sample.q4.q4-focus">
+<head>
+<meta charset="UTF-8">
+<title>layout-q4 · 四象限证据地图 · 一次回答的四类验收物</title>
+<script src="../../../../runtime/stage-fit.js"></script>
+<link rel="stylesheet" href="../../../../themes/paper-ink/assets/design-tokens.css">
+<link rel="stylesheet" href="../../../../themes/paper-ink/assets/catalog-fonts.css" data-wise-catalog-fonts="true">
+<link rel="stylesheet" href="../../../../themes/paper-ink/assets/slide-components.css">
+<link rel="stylesheet" href="../../../shell.css">
+<style>
+  svg.scene{position:absolute;inset:0;z-index:1}
+  .caption{position:absolute;left:0;right:0;bottom:118px;text-align:center;font-family:var(--sans);font-weight:400;font-size:var(--type-caption);letter-spacing:.04em;color:var(--ink);z-index:5}
+  .quad-no{font-family:var(--mono);font-size:54px;letter-spacing:3px;fill:var(--ink);opacity:.1}
+  .quad-code{font-family:var(--mono);font-size:14px;letter-spacing:2.5px;fill:var(--ink-45)}
+  .quad-title{font-family:var(--sans);font-weight:300}
+  .quad-note{font-family:var(--sans);font-weight:300;font-size:17px;fill:var(--ink-70)}
+  .quad-note.secondary{fill:var(--ink-55)}
+  .axis-label{font-family:var(--sans);font-weight:300;font-size:15px;fill:color-mix(in srgb, var(--ink) 48%, transparent)}
+  .axis-code{font-family:var(--mono);font-size:13px;letter-spacing:2.4px;fill:color-mix(in srgb, var(--ink) 42%, transparent)}
+</style>
+</head>
+<body class="slide">
+<div class="stage" data-block-id="gallery-primary" data-renderer-kind="native-html" data-component-source="native" data-component-id="native.paper-ink.semantic.evidence-panel" data-visual-reference="atlas.021.quadrant-axis" data-content-ref="example.q4">
+  <div class="doc tl">PPT 标题<br>页面标题</div>
+  <div class="folio">页码 / 总页数 — BY @歪斯Wise</div>
+
+  <svg class="scene" width="1920" height="1080" viewBox="0 0 1920 1080" aria-label="沿用象限图组件视觉骨架的四个独立证据槽位">
+    <!-- atlas.021.quadrant-axis 只提供视觉母板；四象限仍逐槽独立绑定。 -->
+    <g fill="none" stroke="var(--ink)" opacity=".72">
+      <line x1="960" y1="214" x2="960" y2="842" stroke-width="1.1"/>
+      <path d="M960 214 L953 228 M960 214 L967 228" stroke-width="1.1"/>
+      <line x1="120" y1="506" x2="1800" y2="506" stroke-width="1.1"/>
+      <path d="M1800 506 L1786 499 M1800 506 L1786 513" stroke-width="1.1"/>
+    </g>
+    <circle cx="960" cy="506" r="3" fill="var(--ink)"/>
+
+    <text x="960" y="183" text-anchor="middle" class="axis-code">OUTPUT</text>
+    <text x="960" y="204" text-anchor="middle" class="axis-label">最终产物 ↑</text>
+    <text x="960" y="846" text-anchor="middle" class="axis-label">过程证据 ↓</text>
+    <text x="960" y="872" text-anchor="middle" class="axis-code">TRACE</text>
+    <text x="212" y="519" text-anchor="end" class="axis-code">CONTENT</text>
+    <text x="212" y="542" text-anchor="end" class="axis-label">内容侧 ←</text>
+    <text x="1708" y="519" class="axis-code">SYSTEM</text>
+    <text x="1708" y="542" class="axis-label">系统侧 →</text>
+
+    <g data-slot-id="evidence-a" data-component-id="native.paper-ink.semantic.evidence-panel" transform="translate(290 212)">
+      <text x="0" y="40" class="quad-no">Q1</text>
+      <text x="0" y="76" class="quad-code">ANSWER · CONTENT OUTPUT</text>
+      <line x1="0" y1="91" x2="64" y2="91" stroke="var(--ink)" stroke-width=".8" opacity=".5"/>
+      <text x="0" y="137" class="quad-title" font-size="var(--type-subheading)" fill="var(--ink)">最终回答</text>
+      <text x="0" y="180" class="quad-note">主张句完整，引用位置可定位</text>
+      <text x="0" y="211" class="quad-note secondary">结论没有超出证据边界</text>
+      <path d="M430 110 h70 v54 h-70 z M445 128 h40 M445 143 h30" fill="none" stroke="var(--ink)" stroke-width="1" opacity=".34"/>
+    </g>
+
+    <g data-slot-id="evidence-b" data-component-id="native.paper-ink.semantic.evidence-panel" transform="translate(1129 212)">
+      <text x="0" y="40" class="quad-no">Q2</text>
+      <text x="0" y="76" class="quad-code">RECEIPT · SYSTEM OUTPUT</text>
+      <line x1="0" y1="91" x2="64" y2="91" stroke="var(--ink)" stroke-width=".8" opacity=".5"/>
+      <text x="0" y="137" class="quad-title" font-size="var(--type-subheading)" fill="var(--ink)">校验收据</text>
+      <text x="0" y="180" class="quad-note">内容、结构、引用三项门禁通过</text>
+      <text x="0" y="211" class="quad-note secondary">失败项为 0，生成时间已留档</text>
+      <circle cx="466" cy="138" r="36" fill="none" stroke="var(--ink)" stroke-width="1" opacity=".34"/>
+      <path d="M448 139 L461 151 L486 119" fill="none" stroke="var(--ink)" stroke-width="1.6" opacity=".56"/>
+    </g>
+
+    <g data-slot-id="evidence-c" data-component-id="native.paper-ink.semantic.evidence-panel" transform="translate(289 587)">
+      <text x="0" y="40" class="quad-no">Q3</text>
+      <text x="0" y="76" class="quad-code">RETRIEVAL · CONTENT TRACE</text>
+      <line x1="0" y1="91" x2="64" y2="91" stroke="var(--ink)" stroke-width=".8" opacity=".5"/>
+      <text x="0" y="137" class="quad-title" font-size="var(--type-subheading)" fill="var(--ink)">检索证据</text>
+      <text x="0" y="180" class="quad-note">命中文档 6 / 8，关键段落均覆盖</text>
+      <text x="0" y="211" class="quad-note secondary">版本、权限与有效期均已核对</text>
+      <g transform="translate(434 111)" fill="none" stroke="var(--ink)" stroke-width=".9" opacity=".34">
+        <rect x="0" y="0" width="68" height="52"/><line x1="12" y1="15" x2="55" y2="15"/><line x1="12" y1="27" x2="47" y2="27"/><line x1="12" y1="39" x2="52" y2="39"/>
+      </g>
+    </g>
+
+    <g data-slot-id="evidence-d" data-component-id="native.paper-ink.semantic.evidence-panel" transform="translate(1126 587)">
+      <text x="0" y="40" class="quad-no">Q4</text>
+      <text x="0" y="76" class="quad-code">TOOL TRACE · SYSTEM TRACE</text>
+      <line x1="0" y1="91" x2="64" y2="91" stroke="var(--ink)" stroke-width=".8" opacity=".5"/>
+      <text x="0" y="137" class="quad-title" font-size="var(--type-subheading)" fill="var(--ink)">工具轨迹</text>
+      <text x="0" y="180" class="quad-note">路由、参数、返回值均可重放</text>
+      <text x="0" y="211" class="quad-note secondary">无隐藏重试，也没有越权调用</text>
+      <g transform="translate(432 119)" fill="none" stroke="var(--ink)" stroke-width="1" opacity=".36">
+        <circle cx="7" cy="22" r="6"/><circle cx="42" cy="0" r="6"/><circle cx="70" cy="34" r="6"/><line x1="12" y1="18" x2="36" y2="4"/><line x1="47" y1="5" x2="66" y2="29"/>
+      </g>
+    </g>
+  </svg>
+
+  <div class="caption">可靠回答不只交付结果，还要同时留下<span id="focus-caption">内容侧与系统侧的过程证据</span>。</div>
+</div>
+<script>stageFit();</script>
+</body>
+</html>
