@@ -9,10 +9,10 @@ HTML 是唯一渲染源，PDF 同源导出。Catalog 是资产选择唯一权威
 
 ## 运行前检查
 
-本 Skill 只支持 macOS 和 Windows，要求 Node 20 及以上（推荐 22/24 LTS）与 Google Chrome 132+。首次使用或更新后先运行：
+本 Skill 只支持 macOS 和 Windows，要求 Node 22 或 24 LTS 与 Google Chrome 132+。首次使用或更新后先运行：
 
 ```text
-node <skill>/bin/wise-ppt.js doctor
+node <skill>/bin/wise-ppt.mjs doctor
 ```
 
 `doctor` 只检查、不下载。任一检查失败都先停止制作；不得要求用户安装 Python、lxml、Poppler、`pdfinfo`、Homebrew、`curl` 或 npm 依赖。系统已有同家族同字重字体时直接复用；缺失字体由首次 `build` 自动下载，下载文件和缓存仍做 SHA-256 校验。
@@ -33,7 +33,7 @@ node <skill>/bin/wise-ppt.js doctor
 
 `standard`：只输入 `deck-spec.json`，只用登记骨架和公开 payload；生成物无手改，三道命令与 manifest 全通过。
 
-`experimental`：只从未漂移的已交付 standard 创建；获批页、内容与主题锁、水印通过，但不声称 standard 门禁通过。
+`experimental`：只从未漂移的已交付 standard 创建；获批页、内容与主题锁、非视觉实验标记通过，但不声称 standard 门禁通过。成品不叠加可见水印，实验身份写入文件名和 manifest。
 
 ## 按阶段读取
 
@@ -75,9 +75,9 @@ Wise PPT 不接收本地、远程或 data URI 图片，也不调用图片生成�
 以下是 standard 唯一生产命令。`<skill>` 是本文件所在技能根目录；使用绝对路径后可从任意当前目录执行：
 
 ```text
-node <skill>/bin/wise-ppt.js build <deck-spec.json 绝对路径> --out <deck 绝对目录>
-node <skill>/bin/wise-ppt.js validate <deck 绝对目录>
-node <skill>/bin/wise-ppt.js deliver <deck 绝对目录>
+node <skill>/bin/wise-ppt.mjs build <deck-spec.json 绝对路径> --out <deck 绝对目录>
+node <skill>/bin/wise-ppt.mjs validate <deck 绝对目录>
+node <skill>/bin/wise-ppt.mjs deliver <deck 绝对目录>
 ```
 
 任一步非零都未完成。改 spec 或资产后从 build 重来；禁止手修 HTML/PDF 或绕过 validate 打印。

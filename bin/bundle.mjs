@@ -1,6 +1,8 @@
-import { readFile, stat } from "node:fs/promises";
 import path from "node:path";
-import { collectFiles, exists, readJson, shaFile, WisePPTError } from "./common.js";
+import { collectFiles, exists, readJson, shaFile, WisePPTError } from "./common.mjs";
+function isGitMetadata(relative) {
+  return relative === ".git" || relative.startsWith(".git/");
+}
 async function verifyBundle(root) {
   const manifestPath = path.join(root, "bundle-manifest.json");
   if (!await exists(manifestPath)) {
@@ -8,7 +10,7 @@ async function verifyBundle(root) {
     throw new WisePPTError("\u7F3A\u5C11 bundle-manifest.json\uFF1A\u5F53\u524D\u76EE\u5F55\u4E0D\u662F\u5B8C\u6574 Wise PPT \u53D1\u5E03\u5305");
   }
   const manifest = await readJson(manifestPath, "bundle-manifest");
-  if (manifest.format !== "wise-ppt-skill-bundle@1" || !Array.isArray(manifest.files) || !manifest.files.length) throw new WisePPTError("bundle-manifest \u5408\u540C\u9519\u8BEF");
+  if (manifest.format !== "wise-ppt-skill-bundle@2" || JSON.stringify(manifest.node?.supported_majors) !== JSON.stringify([22, 24]) || !Array.isArray(manifest.files) || !manifest.files.length) throw new WisePPTError("bundle-manifest \u5408\u540C\u9519\u8BEF");
   const seen = /* @__PURE__ */ new Set();
   for (const [offset, record] of manifest.files.entries()) {
     const label = `bundle-manifest.files[${offset + 1}]`;
@@ -22,7 +24,7 @@ async function verifyBundle(root) {
   }
   const actual = (await collectFiles(root, {
     includeHidden: true,
-    exclude: (relative) => relative === "bundle-manifest.json"
+    exclude: (relative) => relative === "bundle-manifest.json" || isGitMetadata(relative)
   })).sort();
   const expected = [...seen].sort();
   if (actual.length !== expected.length || actual.some((item, index) => item !== expected[index])) {

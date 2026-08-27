@@ -1,9 +1,9 @@
 import { spawn } from "node:child_process";
 import { copyFile, mkdir, mkdtemp, readFile, rename, rm, stat } from "node:fs/promises";
 import path from "node:path";
-import { load } from "./vendor-cheerio.js";
-import { PDFDocument } from "./vendor-pdf-lib.js";
-import { checkDelivery, exportExperimentalDeck } from "./export-deck.js";
+import { checkDelivery, exportExperimentalDeck } from "#wise-export-deck";
+import { load } from "#wise-html";
+import { getPdfPageCount } from "#wise-pdf-reader";
 import {
   assertAbsolute,
   assertNoSymlinkComponents,
@@ -18,23 +18,21 @@ import {
   sha256Text,
   shaFile,
   WisePPTError
-} from "./common.js";
-import { deckFileUrl, discoverChrome, runChromeTask } from "./chrome.js";
-import { validateDeck } from "./standard.js";
+} from "./common.mjs";
+import { deckFileUrl, discoverChrome, runChromeTask } from "./chrome.mjs";
+import { validateDeck } from "./standard.mjs";
 const STANDARD_BUILD_CONTRACT = "wise-ppt-build@3";
 const EXPERIMENTAL_WORKSPACE_CONTRACT = "wise-ppt-experimental-workspace@2";
-const EXPERIMENTAL_BUILD_CONTRACT = "wise-ppt-experimental-build@3";
-const EXPERIMENTAL_DELIVERY_CONTRACT = "wise-ppt-experimental-delivery@4";
+const EXPERIMENTAL_BUILD_CONTRACT = "wise-ppt-experimental-build@4";
+const EXPERIMENTAL_DELIVERY_CONTRACT = "wise-ppt-experimental-delivery@5";
 const OUTPUT_MARKER = ".wise-ppt-output";
 const EXPERIMENT_MARKER = ".wise-ppt-experiment";
 const BUILD_MANIFEST = "build-manifest.json";
 const STANDARD_DELIVERY_MANIFEST = "delivery-manifest.json";
 const EXPERIMENTAL_BUILD_MANIFEST = "experimental-build-manifest.json";
 const EXPERIMENTAL_DELIVERY_MANIFEST = "experimental-delivery-manifest.json";
-const PDF_NAME = "deck.pdf";
-const WATERMARK_ATTRIBUTE = "data-wise-ppt-experimental-watermark";
-const WATERMARK_STYLE_ID = "wise-ppt-experimental-watermark-style";
-const WATERMARK_TEXT = "EXPERIMENTAL / NOT STANDARD DELIVERY";
+const PDF_NAME = "experimental.pdf";
+const EXPERIMENTAL_MARKER_ATTRIBUTE = "data-wise-ppt-experimental-delivery";
 const EXPERIMENT_STYLE_ATTRIBUTE = "data-experimental-page-style";
 const EXPERIMENT_CLAIM_ATTRIBUTE = "data-experimental-claim";
 const LOCKED_PAGE_ATTRIBUTES = {
@@ -59,24 +57,6 @@ const COLOR_PROPERTIES = /* @__PURE__ */ new Set([
   "outline",
   "outline-color"
 ]);
-const WATERMARK_STYLE = `<style id="${WATERMARK_STYLE_ID}">
-[${WATERMARK_ATTRIBUTE}="true"] {
-  position: absolute !important;
-  z-index: 2147483647 !important;
-  top: 18px !important;
-  right: 22px !important;
-  padding: 8px 12px !important;
-  border: 2px solid #8f2419 !important;
-  background: rgba(255, 248, 235, 0.94) !important;
-  color: #8f2419 !important;
-  font: 800 18px/1.1 Arial, sans-serif !important;
-  letter-spacing: 0.06em !important;
-  pointer-events: none !important;
-  opacity: 1 !important;
-  visibility: visible !important;
-}
-</style>`;
-const WATERMARK_NODE = `<div ${WATERMARK_ATTRIBUTE}="true" aria-label="Experimental delivery">${WATERMARK_TEXT}</div>`;
 function utcNow() {
   return (/* @__PURE__ */ new Date()).toISOString();
 }
@@ -314,8 +294,7 @@ async function loadWorkspace(root, deck) {
   };
 }
 function stripFramework($) {
-  $(`[${WATERMARK_ATTRIBUTE}="true"]`).remove();
-  $(`style#${WATERMARK_STYLE_ID}`).remove();
+  $(`section.slide[${EXPERIMENTAL_MARKER_ATTRIBUTE}]`).removeAttr(EXPERIMENTAL_MARKER_ATTRIBUTE);
 }
 function slides($) {
   const list = $("section.slide[data-page-id]").toArray();
@@ -347,7 +326,7 @@ function domSignature(node) {
   return ["root", (node.children || []).map(domSignature).filter(Boolean)];
 }
 function styleNodes($) {
-  return $("style").toArray().filter((node) => $(node).attr("id") !== WATERMARK_STYLE_ID);
+  return $("style").toArray();
 }
 function signatures($, selector) {
   return $(selector).toArray().map((node) => outerHtml($, node));
@@ -439,7 +418,7 @@ function validateRedrawMarkup($, slide, pageId, allowedVariables) {
 function canonicalSlide($, slide, baseline$, baselineSlide) {
   const clone$ = load(outerHtml($, slide));
   const clone = clone$("section.slide[data-page-id]").first();
-  clone$(`[${WATERMARK_ATTRIBUTE}="true"]`).remove();
+  clone.removeAttr(EXPERIMENTAL_MARKER_ATTRIBUTE);
   for (const attribute of [
     "data-layout-source",
     "data-baseline-layout-id",
@@ -580,11 +559,9 @@ function stampPage($, slide, baseline$, baselineSlide, changed) {
   $(slide).attr("data-layout-source", "experimental-redraw");
   $(slide).attr("data-baseline-layout-id", baselineLayout);
 }
-function injectWatermarks($) {
+function injectExperimentalMarkers($) {
   stripFramework($);
-  if (!$("head").length) throw new WisePPTError("index.html \u7F3A\u5C11 head");
-  $("head").append(WATERMARK_STYLE);
-  for (const slide of slides($).list) $(slide).prepend(WATERMARK_NODE);
+  for (const slide of slides($).list) $(slide).attr(EXPERIMENTAL_MARKER_ATTRIBUTE, "true");
 }
 async function validateHtmlContract(deck, workspace, { stamp }) {
   const baseline$ = load(await readText(path.join(workspace.source.path, "index.html"), "standard index.html"));
@@ -645,7 +622,7 @@ async function validateHtmlContract(deck, workspace, { stamp }) {
     throw new WisePPTError("\u5B9E\u9A8C\u4FEE\u6539\u8D85\u51FA\u6279\u51C6\u9875\u9762\u6216\u9650\u5B9A\u6837\u5F0F");
   }
   const resources = await validateLocalResources(deck, current$, baseline$);
-  if (stamp) injectWatermarks(current$);
+  if (stamp) injectExperimentalMarkers(current$);
   return {
     rendered: current$.html(),
     checks: {
@@ -720,27 +697,22 @@ async function buildExperiment(root, rawDeck) {
       offline_resources: "pass",
       unique_visible_claim: "pass",
       source_and_must_visibility: "pass",
-      watermark_each_page: "pass"
+      nonvisual_experimental_marker_each_page: "pass"
     }
   };
   await atomicWrite(path.join(deck, EXPERIMENTAL_BUILD_MANIFEST), renderJson(manifest));
   return { deck, manifest };
 }
-function validateWatermarks(source) {
+function validateExperimentalMarkers(source) {
   const $ = load(source);
   const state = slides($);
   const pageIds = [];
   for (const slide of state.list) {
     const pageId = $(slide).attr("data-page-id");
     pageIds.push(pageId);
-    const marks = $(slide).children(`[${WATERMARK_ATTRIBUTE}="true"]`).toArray();
-    if (marks.length !== 1 || !visibleText($, marks[0]).includes(WATERMARK_TEXT)) {
-      throw new WisePPTError(`\u5B9E\u9A8C\u9875\u7F3A\u5C11\u552F\u4E00\u53EF\u89C1\u6807\u8BB0: ${pageId}`);
+    if ($(slide).attr(EXPERIMENTAL_MARKER_ATTRIBUTE) !== "true") {
+      throw new WisePPTError(`\u5B9E\u9A8C\u9875\u7F3A\u5C11\u975E\u89C6\u89C9\u5B9E\u9A8C\u6807\u8BB0: ${pageId}`);
     }
-  }
-  const styles = $(`style#${WATERMARK_STYLE_ID}`).toArray();
-  if (styles.length !== 1 || !$(styles[0]).text().includes("visibility: visible")) {
-    throw new WisePPTError("\u5B9E\u9A8C HTML \u7F3A\u5C11\u552F\u4E00\u53EF\u89C1\u6C34\u5370\u6837\u5F0F");
   }
   return { pageCount: state.list.length, pageIds };
 }
@@ -758,8 +730,8 @@ async function validateExperimentalBuild(root, rawDeck) {
   const validation = await validateHtmlContract(deck, state.workspace, { stamp: true });
   const currentHtml = await readText(path.join(deck, "index.html"), "index.html");
   if (validation.rendered !== currentHtml) throw new WisePPTError("\u5B9E\u9A8C HTML \u6807\u8BB0\u4E0D\u7A33\u5B9A\uFF1B\u8BF7\u91CD\u65B0\u8FD0\u884C experimental build");
-  const watermark = validateWatermarks(validation.rendered);
-  if (watermark.pageCount !== manifest.page_count || canonicalJson(watermark.pageIds) !== canonicalJson(manifest.page_ids)) {
+  const markers = validateExperimentalMarkers(validation.rendered);
+  if (markers.pageCount !== manifest.page_count || canonicalJson(markers.pageIds) !== canonicalJson(manifest.page_ids)) {
     throw new WisePPTError("\u5B9E\u9A8C HTML \u9875\u6570\u6216\u9875\u5E8F\u4E0E manifest \u4E0D\u4E00\u81F4");
   }
   if (canonicalJson(manifest.approved_page_ids) !== canonicalJson(validation.checks.approved_page_ids) || canonicalJson(manifest.actual_changed_page_ids) !== canonicalJson(validation.checks.actual_changed_page_ids)) {
@@ -792,8 +764,7 @@ async function openPreview(indexPath) {
   });
 }
 async function pdfPageCount(filePath) {
-  const pdf = await PDFDocument.load(await readFile(filePath), { updateMetadata: false });
-  return pdf.getPageCount();
+  return getPdfPageCount(await readFile(filePath));
 }
 async function checkExperimentalDelivery(deck) {
   const manifest = await readJson(

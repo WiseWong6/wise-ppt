@@ -1,9 +1,9 @@
 import { mkdir, mkdtemp, rename, rm } from "node:fs/promises";
 import path from "node:path";
-import { checkDelivery, exportDeck } from "./export-deck.js";
-import { assertAbsolute, exists, WisePPTError } from "./common.js";
-import { deckFileUrl, discoverChrome, runChromeTask } from "./chrome.js";
-import { validateDeck } from "./standard.js";
+import { checkDelivery, exportDeck } from "#wise-export-deck";
+import { assertAbsolute, exists, WisePPTError } from "./common.mjs";
+import { deckFileUrl, discoverChrome, runChromeTask } from "./chrome.mjs";
+import { validateDeck } from "./standard.mjs";
 async function installDeliveryPair(deck, temporaryPdf, temporaryManifest) {
   const pdf = path.join(deck, "deck.pdf");
   const manifest = path.join(deck, "delivery-manifest.json");

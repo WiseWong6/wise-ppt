@@ -1,14 +1,16 @@
 import os from "node:os";
 import path from "node:path";
 import { mkdir } from "node:fs/promises";
-import { MIN_NODE_MAJOR } from "./constants.js";
-import { writableDirectory, WisePPTError } from "./common.js";
-import { verifyBundle } from "./bundle.js";
-import { discoverChrome } from "./chrome.js";
-import { inspectFonts } from "./fonts.js";
+import { SUPPORTED_NODE_MAJORS } from "./constants.mjs";
+import { writableDirectory, WisePPTError } from "./common.mjs";
+import { verifyBundle } from "./bundle.mjs";
+import { discoverChrome } from "./chrome.mjs";
+import { inspectFonts } from "./fonts.mjs";
 async function doctor(root) {
   const major = Number.parseInt(process.versions.node.split(".")[0], 10);
-  if (major < MIN_NODE_MAJOR) throw new WisePPTError(`\u9700\u8981 Node >= ${MIN_NODE_MAJOR}\uFF0C\u5F53\u524D ${process.version}`);
+  if (!SUPPORTED_NODE_MAJORS.includes(major)) {
+    throw new WisePPTError(`\u4EC5\u652F\u6301 Node 22/24 LTS\uFF0C\u5F53\u524D ${process.version}`);
+  }
   const bundle = await verifyBundle(root);
   const chrome = await discoverChrome();
   const fonts = await inspectFonts(root);
@@ -17,10 +19,10 @@ async function doctor(root) {
   await writableDirectory(os.tmpdir());
   const missing = fonts.records.filter((item) => item.status === "missing").map((item) => item.filename);
   return {
-    format: "wise-ppt-doctor@1",
+    format: "wise-ppt-doctor@2",
     status: "pass",
     platform: { os: process.platform, arch: process.arch },
-    node: { version: process.version, required_major: MIN_NODE_MAJOR },
+    node: { version: process.version, supported_majors: [...SUPPORTED_NODE_MAJORS] },
     chrome,
     bundle,
     fonts: {

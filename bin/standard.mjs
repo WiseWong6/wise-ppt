@@ -1,4 +1,4 @@
-import { load } from "./vendor-cheerio.js";
+import { load } from "#wise-html";
 import {
   cp,
   mkdir,
@@ -19,7 +19,7 @@ import {
   REQUIRED_RUNTIME_FILES,
   REQUIRED_THEME_FILES,
   RUNTIME_VERSION
-} from "./constants.js";
+} from "./constants.mjs";
 import {
   assertAbsolute,
   assertNoSymlinkComponents,
@@ -34,8 +34,8 @@ import {
   sha256Text,
   shaFile,
   WisePPTError
-} from "./common.js";
-import { copyResolvedFonts, resolveFonts } from "./fonts.js";
+} from "./common.mjs";
+import { copyResolvedFonts, resolveFonts } from "./fonts.mjs";
 const ALLOWED_TOP_LEVEL = /* @__PURE__ */ new Set(["contract", "mode", "deck", "sources", "must", "slides"]);
 const ALLOWED_DECK_FIELDS = /* @__PURE__ */ new Set(["title", "thesis", "input_type", "theme_preset", "typography_mode", "lang", "signature"]);
 const ALLOWED_SOURCE_FIELDS = /* @__PURE__ */ new Set(["source_id", "title"]);
@@ -763,7 +763,8 @@ async function copyAuthoritativeFiles(root, outputRoot, resolvedFonts) {
   return written.sort();
 }
 async function currentCompilerHashes(root) {
-  const paths = ["bin/wise-ppt.js", "runtime/app-template.html"];
+  const compilerModules = (await readdir(path.join(root, "bin"), { withFileTypes: true })).filter((entry) => entry.isFile() && (entry.name.endsWith(".mjs") || entry.name === "package.json")).map((entry) => `bin/${entry.name}`).sort((left, right) => left.localeCompare(right, "en"));
+  const paths = [...compilerModules, "runtime/app-template.html"];
   const result = {};
   for (const relative of paths) {
     const file = path.join(root, ...relative.split("/"));

@@ -1,13 +1,16 @@
 {
-  "format": "wise-ppt-skill-bundle@1",
-  "source_commit": "d892ae5e3ebd0e2e474ea9f27766424dd9e419ea",
+  "format": "wise-ppt-skill-bundle@2",
+  "source_commit": "14447958a7e4ad0ebb7422ea365b88f2c3d61429",
   "source_dirty": false,
   "supported_platforms": [
     "darwin",
     "win32"
   ],
   "node": {
-    "major": 20
+    "supported_majors": [
+      22,
+      24
+    ]
   },
   "chrome": {
     "minimum_major": 132,
@@ -24,8 +27,8 @@
     },
     {
       "path": "NOTICE",
-      "sha256": "8b22fb1ca0d13c02dc9010edc180b89ac354b6852d953a69fdc2f9d085075c3a",
-      "bytes": 30902
+      "sha256": "b3e6b0335b81ec384bb0ed6e837e8db64f71e979f20eabb8d1955200d156e36e",
+      "bytes": 21332
     },
     {
       "path": "README.md",
@@ -34,13 +37,13 @@
     },
     {
       "path": "SKILL.md",
-      "sha256": "be398a84c7265921e3ac4acadfd410ac97485e07c994f6bc109bd973da18989d",
-      "bytes": 5744
+      "sha256": "f68d935647023654ca4b1165bf2bb85388300b141b2d98b50f566c39f617de97",
+      "bytes": 5815
     },
     {
       "path": "USER-GUIDE.md",
-      "sha256": "807b574018db7f05ad674b0a73a69af6ee4bdceaee4e2f77e19e2171c2c55abe",
-      "bytes": 3440
+      "sha256": "c8f6a4545ebdbe9a138686abda84eeb48ea248c6204c378ed002baa201f16701",
+      "bytes": 3511
     },
     {
       "path": "agents/openai.yaml",
@@ -403,74 +406,74 @@
       "bytes": 19256
     },
     {
-      "path": "bin/bundle.js",
-      "sha256": "8c3278a485ffa8fa704e170aa75c862cee28996dabcfa2a3a053312a9fc55f46",
-      "bytes": 2334
+      "path": "bin/bundle.mjs",
+      "sha256": "4283b8ec26265ec94a1df92e19424aef8445b4fd8cf42cdec307089d6d7439f5",
+      "bytes": 2490
     },
     {
-      "path": "bin/chrome.js",
-      "sha256": "245c9db1099ade65edfcdb7738855a715d4f23c7a23c824c856057df650f83e4",
-      "bytes": 9510
+      "path": "bin/chrome.mjs",
+      "sha256": "91e276ad91bcab82e1386b7b00310c873a3f942bb7344bce368eae32dc1216b6",
+      "bytes": 9512
     },
     {
-      "path": "bin/common.js",
+      "path": "bin/common.mjs",
       "sha256": "a1317bd278e1a4ab61f5a675ad1c2fbad216b398b814d0e9b7701bec6edd254f",
       "bytes": 6245
     },
     {
-      "path": "bin/constants.js",
-      "sha256": "fa342e7074a07f64ce376492d35a13c1ae935010419327561365a89bde1c472b",
-      "bytes": 1073
+      "path": "bin/constants.mjs",
+      "sha256": "6c440ff9b3d27e098893a4c5025b539e9ce844a21f7a8704b3f1602892aa4826",
+      "bytes": 1108
     },
     {
-      "path": "bin/deliver.js",
-      "sha256": "f192339e68ce843b2bcd364d1bbe872b15829090befb21ac87103dab9b3f6bc4",
-      "bytes": 3707
+      "path": "bin/deliver.mjs",
+      "sha256": "65678cf0b92dbc2a2d8c83406b48361d4cf8446e72185ba3b9ae9dc6f5449374",
+      "bytes": 3711
     },
     {
-      "path": "bin/doctor.js",
-      "sha256": "9953b9ae737e072fb4ea50078b39f52498237ed239bfe9c6137ab9c84ebce5f9",
-      "bytes": 1499
+      "path": "bin/doctor.mjs",
+      "sha256": "cf3ae425e6691d64ca6e07afbe4f9db857d6ba198327cd77f73e8cc5ad3b05cf",
+      "bytes": 1546
     },
     {
-      "path": "bin/experimental.js",
-      "sha256": "198b7b7e8987cdf54710be88913a2c59525dcb487923d86ee82ef24f9500b140",
-      "bytes": 52057
+      "path": "bin/experimental.mjs",
+      "sha256": "55eaacde3ea064ebb9552fa71b7f25a90f89254c16e602a963a5aba0230e328a",
+      "bytes": 50732
     },
     {
-      "path": "bin/export-deck.js",
-      "sha256": "3fc510e7812a9a2d1a61708b0d2a1f80100afb7b8ba436330f68dd0e53933b57",
-      "bytes": 55667
+      "path": "bin/export-deck.mjs",
+      "sha256": "4451e49169c2a3b3d5cf47838a180b2d9aff2d8dc5d0213801ec9bf2d86871c7",
+      "bytes": 54853
     },
     {
-      "path": "bin/fonts.js",
-      "sha256": "a2b3a9a737cbccd2974d998fb762b8add6bcf02882793102173b6d9dc9b4a2ae",
-      "bytes": 16123
+      "path": "bin/fonts.mjs",
+      "sha256": "eec37e2b183083e93ad182e79e47e7b4fe4150226e12e310700ca238603cd25d",
+      "bytes": 16124
     },
     {
       "path": "bin/package.json",
-      "sha256": "3ca9d4afd21425087cf31893b8f9f63c81b0b8408db5e343ca76e5f8aa26ab9a",
-      "bytes": 23
+      "sha256": "0d4b60ece110b12e64db9807597bf094c8630ecc806ae1bb039afdb31406c894",
+      "bytes": 180
     },
     {
-      "path": "bin/standard.js",
-      "sha256": "16c18427005e7c2fe48b2e54b7fdc53317a0e0774def8ef2579d857d83c6a082",
-      "bytes": 73840
+      "path": "bin/standard.mjs",
+      "sha256": "dd8bfd8cbe3fe8627f62093c67fc7b2f27b6f477cea0569b42235c1a2ad50414",
+      "bytes": 74118
     },
     {
-      "path": "bin/vendor-cheerio.js",
-      "sha256": "5488d1be1f50ca86b741271732072ad2024d099ea7420f70811bef12b0b34f6c",
-      "bytes": 659351
+      "path": "bin/vendor-cheerio.mjs",
+      "sha256": "41c073a5652873a15810bde6d0ebbeb66967dacc207fb9f2f79624e1fe82b406",
+      "bytes": 326116
     },
     {
-      "path": "bin/vendor-pdf-lib.js",
-      "sha256": "38577a894f5f6aed3f8b490cbe984c13a40bd8d47ff59bea74c170683feaec13",
-      "bytes": 874958
+      "path": "bin/vendor-pdf-reader.mjs",
+      "sha256": "500c0af3512ec15fcb1840d8577dc888c62c1178fba0becaadbe15d6906e67f8",
+      "bytes": 231732
     },
     {
-      "path": "bin/wise-ppt.js",
-      "sha256": "3f4e721c39b209a9586ec1701e63b78308db9b89901edfc803f5311d6e1a4c9f",
-      "bytes": 8147
+      "path": "bin/wise-ppt.mjs",
+      "sha256": "251b0ddd589933a451090b30d88996bcd00204103518088ff658dfae389f2bd0",
+      "bytes": 8197
     },
     {
       "path": "capabilities/catalog-authority-manifest.json",
@@ -7994,8 +7997,8 @@
     },
     {
       "path": "references/experimental.md",
-      "sha256": "cf9b1b1de3b5f30415d5e0f880fa9e907ec4a1642335cbfd9cf573de196cde4f",
-      "bytes": 4621
+      "sha256": "aa05927f0b4bda33896cd993c61f8125d49a6a92abc9b32612772f2939a4a491",
+      "bytes": 4724
     },
     {
       "path": "references/gallery-components/echarts-catalog-data.js",
@@ -8734,8 +8737,8 @@
     },
     {
       "path": "themes/paper-ink/examples/wise-ppt-story-six-page/index.html",
-      "sha256": "16d8b8777039369bb742be908cb7e67ebc483300af5b0c8e281a16ff2c537d31",
-      "bytes": 155905
+      "sha256": "2e4020750d7b8f4e390ba97f2ee0eb0901a559e7f20d468cc0928f5b52c71de2",
+      "bytes": 156089
     }
   ]
 }
