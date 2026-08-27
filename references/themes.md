@@ -13,7 +13,7 @@
 ```json
 {
   "theme_preset": "paper-ink-original",
-  "typography_mode": "all-sans"
+  "typography_mode": "mixed"
 }
 ```
 
@@ -27,7 +27,7 @@
 
 | theme_preset | 人话说明 | 默认字体 | 适用倾向 |
 |---|---|---|---|
-| `paper-ink-original` | 冷灰纸底、深墨、克制红色焦点 | `all-sans` | 默认；研究、分析、内部分享 |
+| `paper-ink-original` | 冷灰纸底、深墨、克制红色焦点 | `mixed` | 默认；研究、分析、内部分享 |
 | `scheme-k-hermes` | 爱马仕橙；正白纸、墨字、整页 multiply 纸纹 | `mixed` | 品牌、商业、编辑感 |
 | `scheme-l-klein` | 克莱因蓝；正白纸、墨字、整页 multiply 纸纹 | `mixed` | 科技、产品、发布表达 |
 
@@ -37,9 +37,9 @@
 
 | typography_mode | 人话说明 | 使用边界 |
 |---|---|---|
-| `all-sans` | 全部中文以黑体建立清晰层级 | 默认和高信息密度内容 |
+| `all-sans` | 全部中文以黑体建立清晰层级 | 高信息密度内容 |
 | `all-serif` | 全部中文使用宋体体系 | 需要持续的人文、出版语气 |
-| `mixed` | 大标题/强调用宋体，正文用黑体 | 品牌编辑和发布表达 |
+| `mixed` | 大标题/强调用宋体，正文用黑体 | 默认；研究、品牌编辑和发布表达 |
 
 `typography_mode` 可省略，compiler 采用 preset 的默认模式。显式覆盖只能选 Catalog 当前登记值，不能写字体名、font-family 或字重补丁。
 
