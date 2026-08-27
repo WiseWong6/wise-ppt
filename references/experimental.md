@@ -43,8 +43,8 @@ node <skill>/bin/wise-ppt.mjs experimental deliver <experiment 绝对目录>
 ## 机器合同
 
 - `.wise-ppt-experiment` 使用 `wise-ppt-experimental-workspace@2`：固定 `mode: redraw`、批准页、standard 快照、内容锁和主题锁；
-- `experimental-build-manifest.json` 使用 `wise-ppt-experimental-build@3`：记录批准页、实际变化页、锁与构建检查；
-- `experimental-delivery-manifest.json` 使用 `wise-ppt-experimental-delivery@4`：记录同一 HTML/PDF、页数、Google Chrome 渲染器证据、浏览器门禁和未声明的 standard 检查。
+- `experimental-build-manifest.json` 使用 `wise-ppt-experimental-build@4`：记录批准页、实际变化页、锁与构建检查；
+- `experimental-delivery-manifest.json` 使用 `wise-ppt-experimental-delivery@5`：记录同一 HTML/PDF、页数、Google Chrome 渲染器证据、浏览器门禁和未声明的 standard 检查。
 
 workspace 只记录待构建状态；实际变化页以 build/delivery manifest 为准。批准页中至少一页必须真实变化。
 
@@ -66,6 +66,6 @@ workspace 只记录待构建状态；实际变化页以 build/delivery manifest 
 
 ## 交付门禁
 
-机器检查 16:9、页面边界、最小 18px 字号、离线资源、HTML/PDF 页数一致、逐页实验水印。实验不生成标准 `delivery-manifest.json`，也不声明 standard 四态、registry fit、runtime selftest、screen/print 几何或栅格一致性。
+机器检查 16:9、页面边界、最小 18px 字号、离线资源、HTML/PDF 页数一致、逐页非视觉实验标记。成品不叠加可见实验水印，实验身份只通过交付文件名与 manifest 表明。实验不生成标准 `delivery-manifest.json`，也不声明 standard 四态、registry fit、runtime selftest、screen/print 几何或栅格一致性。
 
 交付时报告 standard 与实验绝对路径、批准页、实际变化页、三个实验标记/manifest、HTML/PDF、锁和门禁结果，以及原 standard 前后不变的证据。视觉层级、节奏和完整度由用户打开成品人工验收。

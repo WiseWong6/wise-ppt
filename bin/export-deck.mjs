@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 import { createHash } from "node:crypto";
-import { PDFDocument } from "./vendor-pdf-lib.js";
+import { getPdfPageCount } from "#wise-pdf-reader";
 import {
   lstat,
   mkdir,
@@ -176,19 +176,13 @@ function countSourceSlides(html) {
   return count;
 }
 async function pdfPageCount(pdfPath) {
-  let document;
   try {
-    document = await PDFDocument.load(await readFile(pdfPath), {
-      ignoreEncryption: false,
-      updateMetadata: false,
-      throwOnInvalidObject: true
-    });
+    const count = await getPdfPageCount(await readFile(pdfPath));
+    if (!Number.isInteger(count) || count < 1) fail("PDF \u672A\u8FD4\u56DE\u6709\u6548\u9875\u6570");
+    return count;
   } catch (error) {
     fail(`PDF \u7ED3\u6784\u89E3\u6790\u5931\u8D25: ${error.message}`);
   }
-  const count = document.getPageCount();
-  if (!Number.isInteger(count) || count < 1) fail("PDF \u672A\u8FD4\u56DE\u6709\u6548\u9875\u6570");
-  return count;
 }
 class CdpClient {
   constructor(socket) {
@@ -903,13 +897,7 @@ async function exportExperimentalDeck({ deckDir, url, port, pdfPath }) {
     const state = await cdp.evaluate(String.raw`(() => {
       const slides = Array.from(document.querySelectorAll('#track > .slide'));
       const pages = slides.map((slide, index) => {
-        const marks = Array.from(slide.querySelectorAll(':scope > [data-wise-ppt-experimental-watermark="true"]'));
-        const visible = marks.filter((mark) => {
-          const style = getComputedStyle(mark);
-          const rect = mark.getBoundingClientRect();
-          return style.display !== 'none' && style.visibility !== 'hidden'
-            && Number.parseFloat(style.opacity || '1') > 0 && rect.width > 0 && rect.height > 0;
-        });
+        const experimentalMarker = slide.getAttribute('data-wise-ppt-experimental-delivery') === 'true';
         const redraw = slide.getAttribute('data-layout-source') === 'experimental-redraw';
         const slideRect = slide.getBoundingClientRect();
         const visibleElement = (node) => {
@@ -926,13 +914,11 @@ async function exportExperimentalDeck({ deckDir, url, port, pdfPath }) {
         } catch (_error) {
           requiredVisible = ['(invalid data-experimental-required-visible)'];
         }
-        const visibleTextElements = Array.from(slide.querySelectorAll('*'))
-          .filter((node) => !node.closest('[data-wise-ppt-experimental-watermark="true"]') && visibleElement(node));
+        const visibleTextElements = Array.from(slide.querySelectorAll('*')).filter(visibleElement);
         const missingRequiredVisible = requiredVisible.filter((required) => !visibleTextElements.some((node) => (
           typeof required === 'string' && (node.innerText || '').includes(required)
         )));
         const textNodes = Array.from(slide.querySelectorAll('*')).filter((node) => {
-          if (node.closest('[data-wise-ppt-experimental-watermark="true"]')) return false;
           const ownText = Array.from(node.childNodes).some((child) => (
             child.nodeType === Node.TEXT_NODE && child.textContent.trim()
           ));
@@ -947,7 +933,7 @@ async function exportExperimentalDeck({ deckDir, url, port, pdfPath }) {
         const inkNodes = Array.from(new Set([
           ...textNodes,
           ...slide.querySelectorAll('img,svg,canvas,video,object,iframe,[data-experimental-claim="true"]'),
-        ])).filter((node) => !node.closest('[data-wise-ppt-experimental-watermark="true"]') && visibleElement(node));
+        ])).filter(visibleElement);
         const outOfBounds = inkNodes
           .map((node) => {
             const rect = node.getBoundingClientRect();
@@ -965,8 +951,7 @@ async function exportExperimentalDeck({ deckDir, url, port, pdfPath }) {
           ));
         return {
           page_id: slide.getAttribute('data-page-id') || ('slide-' + (index + 1)),
-          watermark_count: marks.length,
-          visible_watermark_count: visible.length,
+          experimental_marker: experimentalMarker,
           redraw,
           width: slideRect.width,
           height: slideRect.height,
@@ -995,8 +980,8 @@ async function exportExperimentalDeck({ deckDir, url, port, pdfPath }) {
     if (state.slide_count !== sourceSlideCount) {
       fail(`\u5B9E\u9A8C\u6E90 HTML slide \u6570 ${sourceSlideCount} \u4E0E\u6D4F\u89C8\u5668 DOM ${state.slide_count} \u4E0D\u4E00\u81F4`);
     }
-    const invalidMarks = state.pages.filter((page) => page.watermark_count !== 1 || page.visible_watermark_count !== 1);
-    if (invalidMarks.length) fail(`\u5B9E\u9A8C\u9875\u7F3A\u5C11\u552F\u4E00\u53EF\u89C1\u6C34\u5370: ${JSON.stringify(invalidMarks)}`);
+    const invalidMarkers = state.pages.filter((page) => !page.experimental_marker);
+    if (invalidMarkers.length) fail(`\u5B9E\u9A8C\u9875\u7F3A\u5C11\u975E\u89C6\u89C9\u5B9E\u9A8C\u6807\u8BB0: ${JSON.stringify(invalidMarkers)}`);
     const invalidRedraw = state.pages.filter((page) => page.redraw && (Math.abs(page.width - 1920) > 1 || Math.abs(page.height - 1080) > 1 || page.claim_count !== 1 || page.visible_claim_count !== 1 || page.missing_required_visible.length > 0 || page.small_text.length > 0 || page.out_of_bounds.length > 0));
     if (invalidRedraw.length) {
       fail(`\u5B9E\u9A8C\u91CD\u7ED8\u9875\u672A\u901A\u8FC7 16:9/claim/\u8BC1\u636E/\u6700\u5C0F\u5B57\u53F7/\u8FB9\u754C\u68C0\u67E5: ${JSON.stringify(invalidRedraw)}`);
@@ -1017,7 +1002,7 @@ async function exportExperimentalDeck({ deckDir, url, port, pdfPath }) {
     await writeFile(pdfPath, pdfBytes);
     return {
       page_count: state.slide_count,
-      watermark_count: state.pages.length,
+      experimental_marker_count: state.pages.length,
       renderer: {
         product: browserVersion.product,
         revision: browserVersion.revision,
@@ -1170,7 +1155,7 @@ ${usage()}`);
       port: Number(values.port),
       pdfPath: path.resolve(values.pdf)
     });
-    process.stdout.write(`PASS Wise PPT experimental render pages=${result.page_count} watermarks=${result.watermark_count}
+    process.stdout.write(`PASS Wise PPT experimental render pages=${result.page_count} markers=${result.experimental_marker_count}
 `);
   } else {
     const allowed = /* @__PURE__ */ new Set(["deck"]);

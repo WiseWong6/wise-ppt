@@ -2,7 +2,7 @@ import { copyFile, mkdir, open, readdir, rename, rm, stat, writeFile } from "nod
 import { spawnSync } from "node:child_process";
 import os from "node:os";
 import path from "node:path";
-import { shaFile, readJson, WisePPTError } from "./common.js";
+import { shaFile, readJson, WisePPTError } from "./common.mjs";
 async function loadFontManifest(root) {
   const manifestPath = path.join(root, "themes/paper-ink/assets/fonts/font-manifest.json");
   const manifest = await readJson(manifestPath, "font-manifest");

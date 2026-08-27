@@ -3,8 +3,8 @@ import { mkdir, mkdtemp, open, readFile, rm, stat } from "node:fs/promises";
 import os from "node:os";
 import path from "node:path";
 import { pathToFileURL } from "node:url";
-import { MIN_CHROME_MAJOR } from "./constants.js";
-import { sleep, WisePPTError } from "./common.js";
+import { MIN_CHROME_MAJOR } from "./constants.mjs";
+import { sleep, WisePPTError } from "./common.mjs";
 function windowsCandidates(env) {
   return [
     env.LOCALAPPDATA && path.join(env.LOCALAPPDATA, "Google", "Chrome", "Application", "chrome.exe"),

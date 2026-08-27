@@ -1,35 +1,35 @@
 #!/usr/bin/env node
 import path from "node:path";
-import { MIN_NODE_MAJOR } from "./constants.js";
-import { renderJson, runtimeRoot, WisePPTError } from "./common.js";
-import { verifyBundle } from "./bundle.js";
-import { doctor } from "./doctor.js";
-import { deliverStandard } from "./deliver.js";
-import { buildAndPublish, queryLayouts, registryState, validateDeck } from "./standard.js";
+import { SUPPORTED_NODE_MAJORS } from "./constants.mjs";
+import { renderJson, runtimeRoot, WisePPTError } from "./common.mjs";
+import { verifyBundle } from "./bundle.mjs";
+import { doctor } from "./doctor.mjs";
+import { deliverStandard } from "./deliver.mjs";
+import { buildAndPublish, queryLayouts, registryState, validateDeck } from "./standard.mjs";
 function usage() {
   return [
     "\u7528\u6CD5:",
-    "  node <skill>/bin/wise-ppt.js doctor",
-    "  node <skill>/bin/wise-ppt.js layouts [filters]",
-    "  node <skill>/bin/wise-ppt.js build <deck-spec.json> --out <\u7EDD\u5BF9\u76EE\u5F55>",
-    "  node <skill>/bin/wise-ppt.js validate <\u7EDD\u5BF9 deck \u76EE\u5F55>",
-    "  node <skill>/bin/wise-ppt.js deliver <\u7EDD\u5BF9 deck \u76EE\u5F55>",
-    "  node <skill>/bin/wise-ppt.js experimental <prepare|build|validate|preview|deliver> ..."
+    "  node <skill>/bin/wise-ppt.mjs doctor",
+    "  node <skill>/bin/wise-ppt.mjs layouts [filters]",
+    "  node <skill>/bin/wise-ppt.mjs build <deck-spec.json> --out <\u7EDD\u5BF9\u76EE\u5F55>",
+    "  node <skill>/bin/wise-ppt.mjs validate <\u7EDD\u5BF9 deck \u76EE\u5F55>",
+    "  node <skill>/bin/wise-ppt.mjs deliver <\u7EDD\u5BF9 deck \u76EE\u5F55>",
+    "  node <skill>/bin/wise-ppt.mjs experimental <prepare|build|validate|preview|deliver> ..."
   ].join("\n");
 }
 function commandUsage(command) {
   const lines = {
-    doctor: ["node <skill>/bin/wise-ppt.js doctor"],
-    layouts: ["node <skill>/bin/wise-ppt.js layouts [--layout-id ID] [--page-kind KIND] [--page-role ROLE] [--relation-key KEY] [--requires TYPE] [--content-items N] [--compact]"],
-    build: ["node <skill>/bin/wise-ppt.js build <deck-spec.json \u7EDD\u5BF9\u8DEF\u5F84> --out <\u7EDD\u5BF9\u76EE\u5F55>"],
-    validate: ["node <skill>/bin/wise-ppt.js validate <\u7EDD\u5BF9 deck \u76EE\u5F55>"],
-    deliver: ["node <skill>/bin/wise-ppt.js deliver <\u7EDD\u5BF9 deck \u76EE\u5F55>"],
+    doctor: ["node <skill>/bin/wise-ppt.mjs doctor"],
+    layouts: ["node <skill>/bin/wise-ppt.mjs layouts [--layout-id ID] [--page-kind KIND] [--page-role ROLE] [--relation-key KEY] [--requires TYPE] [--content-items N] [--compact]"],
+    build: ["node <skill>/bin/wise-ppt.mjs build <deck-spec.json \u7EDD\u5BF9\u8DEF\u5F84> --out <\u7EDD\u5BF9\u76EE\u5F55>"],
+    validate: ["node <skill>/bin/wise-ppt.mjs validate <\u7EDD\u5BF9 deck \u76EE\u5F55>"],
+    deliver: ["node <skill>/bin/wise-ppt.mjs deliver <\u7EDD\u5BF9 deck \u76EE\u5F55>"],
     experimental: [
-      "node <skill>/bin/wise-ppt.js experimental prepare <standard \u7EDD\u5BF9\u76EE\u5F55> --out <experiment \u7EDD\u5BF9\u76EE\u5F55> (--page ID ... | --all-pages)",
-      "node <skill>/bin/wise-ppt.js experimental build <experiment \u7EDD\u5BF9\u76EE\u5F55>",
-      "node <skill>/bin/wise-ppt.js experimental validate <experiment \u7EDD\u5BF9\u76EE\u5F55>",
-      "node <skill>/bin/wise-ppt.js experimental preview <experiment \u7EDD\u5BF9\u76EE\u5F55> [--open]",
-      "node <skill>/bin/wise-ppt.js experimental deliver <experiment \u7EDD\u5BF9\u76EE\u5F55>"
+      "node <skill>/bin/wise-ppt.mjs experimental prepare <standard \u7EDD\u5BF9\u76EE\u5F55> --out <experiment \u7EDD\u5BF9\u76EE\u5F55> (--page ID ... | --all-pages)",
+      "node <skill>/bin/wise-ppt.mjs experimental build <experiment \u7EDD\u5BF9\u76EE\u5F55>",
+      "node <skill>/bin/wise-ppt.mjs experimental validate <experiment \u7EDD\u5BF9\u76EE\u5F55>",
+      "node <skill>/bin/wise-ppt.mjs experimental preview <experiment \u7EDD\u5BF9\u76EE\u5F55> [--open]",
+      "node <skill>/bin/wise-ppt.mjs experimental deliver <experiment \u7EDD\u5BF9\u76EE\u5F55>"
     ]
   };
   return `\u7528\u6CD5:
@@ -84,7 +84,9 @@ function compactLayout(item) {
 }
 async function main(argv = process.argv.slice(2)) {
   const nodeMajor = Number.parseInt(process.versions.node.split(".")[0], 10);
-  if (nodeMajor < MIN_NODE_MAJOR) throw new WisePPTError(`\u9700\u8981 Node >= ${MIN_NODE_MAJOR}\uFF0C\u5F53\u524D ${process.version}`);
+  if (!SUPPORTED_NODE_MAJORS.includes(nodeMajor)) {
+    throw new WisePPTError(`\u4EC5\u652F\u6301 Node 22/24 LTS\uFF0C\u5F53\u524D ${process.version}`);
+  }
   const root = runtimeRoot(import.meta.url);
   const [command, ...rest] = argv;
   if (!command) throw new WisePPTError(usage());

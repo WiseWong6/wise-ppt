@@ -5,7 +5,7 @@
 ## 安装条件
 
 - macOS 或 Windows
-- Node.js 20 及以上（推荐 22/24 LTS）
+- Node.js 22 或 24 LTS
 - Google Chrome 132 或更高版本，也支持官方 Chrome for Testing
 
 不需要安装 Python、pip、Beautiful Soup、lxml、Poppler、`pdfinfo`、Homebrew 或 `curl`。不支持 Edge、Chromium 或其他浏览器。
@@ -15,7 +15,7 @@
 1. 下载 `wise-ppt-skill.zip` 与 `wise-ppt-skill.sha256`。
 2. 校验 SHA-256：macOS 使用 `shasum -a 256 wise-ppt-skill.zip`；Windows PowerShell 使用 `Get-FileHash .\wise-ppt-skill.zip -Algorithm SHA256`。
 3. 解压后得到固定根目录 `wise-ppt/`，把整个目录复制到 Agent 的个人 Skill 目录，不要创建软链。
-4. 运行 `node <skill>/bin/wise-ppt.js doctor`。输出 `"status": "pass"` 才算安装完成。
+4. 运行 `node <skill>/bin/wise-ppt.mjs doctor`。输出 `"status": "pass"` 才算安装完成。
 
 更新时先把新包解压到临时目录并运行 `doctor`；通过后再整目录替换旧包。验证或复制失败时保留旧目录，不要零散覆盖。
 
@@ -37,20 +37,20 @@
 
 ## 命令
 
-统一入口：`node <skill>/bin/wise-ppt.js <command>`。
+统一入口：`node <skill>/bin/wise-ppt.mjs <command>`。
 
 ```text
-node <skill>/bin/wise-ppt.js doctor
-node <skill>/bin/wise-ppt.js layouts [filters]
-node <skill>/bin/wise-ppt.js build <deck-spec.json 绝对路径> --out <绝对目录>
-node <skill>/bin/wise-ppt.js validate <绝对 deck 目录>
-node <skill>/bin/wise-ppt.js deliver <绝对 deck 目录>
+node <skill>/bin/wise-ppt.mjs doctor
+node <skill>/bin/wise-ppt.mjs layouts [filters]
+node <skill>/bin/wise-ppt.mjs build <deck-spec.json 绝对路径> --out <绝对目录>
+node <skill>/bin/wise-ppt.mjs validate <绝对 deck 目录>
+node <skill>/bin/wise-ppt.mjs deliver <绝对 deck 目录>
 ```
 
 只有用户明确批准结构重绘时才使用：
 
 ```text
-node <skill>/bin/wise-ppt.js experimental prepare|build|validate|preview|deliver ...
+node <skill>/bin/wise-ppt.mjs experimental prepare|build|validate|preview|deliver ...
 ```
 
 ## 字体规则
@@ -66,6 +66,6 @@ node <skill>/bin/wise-ppt.js experimental prepare|build|validate|preview|deliver
 
 ## 交付边界
 
-输入使用 `wise-ppt-deck@5`，构建使用 `wise-ppt-build@3`，运行时使用 `wise-ppt-runtime@3`；正式交付为 `wise-ppt-delivery@2`，实验交付为 `wise-ppt-experimental-delivery@4`。
+输入使用 `wise-ppt-deck@5`，构建使用 `wise-ppt-build@3`，运行时使用 `wise-ppt-runtime@3`；正式交付为 `wise-ppt-delivery@2`，实验交付为 `wise-ppt-experimental-delivery@5`。实验 PDF 不叠加可见水印，通过文件名与 manifest 表明实验身份。
 
 `deck.pdf` 和 `delivery-manifest.json` 成对提交。任何导出或提交失败都不会破坏上一份正式交付物。
