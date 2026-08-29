@@ -28,7 +28,10 @@ function usage() {
 function commandUsage(command) {
   const lines = {
     doctor: ["node <skill>/bin/wise-ppt.mjs doctor"],
-    layouts: ["node <skill>/bin/wise-ppt.mjs layouts ([--new-session] | [--selection-seed SEED]) [--layout-id ID] [--page-kind KIND] [--page-role ROLE] [--relation-key KEY] [--requires TYPE] [--content-items N] [--layout-usage ID:COUNT:LAST_SEQUENCE] [--compact]"],
+    layouts: [
+      "\u5019\u9009\u67E5\u8BE2: node <skill>/bin/wise-ppt.mjs layouts (--new-session | --selection-seed SEED) [--page-kind KIND] [--page-role ROLE] [--relation-key KEY] [--requires TYPE] [--content-items N] [--layout-usage ID:COUNT:LAST_SEQUENCE] [--compact]",
+      "\u8BE6\u60C5\u67E5\u8BE2: node <skill>/bin/wise-ppt.mjs layouts --layout-id ID"
+    ],
     build: ["node <skill>/bin/wise-ppt.mjs build <deck-spec.json \u7EDD\u5BF9\u8DEF\u5F84> --out <\u7EDD\u5BF9\u76EE\u5F55>"],
     validate: ["node <skill>/bin/wise-ppt.mjs validate <\u7EDD\u5BF9 deck \u76EE\u5F55>"],
     deliver: ["node <skill>/bin/wise-ppt.mjs deliver <\u7EDD\u5BF9 deck \u76EE\u5F55>"],
@@ -176,7 +179,7 @@ ${usage()}`);
       layout_context: detailOnly ? null : { scope: "session", selection_seed: selectionSeed, prior_total: normalizedUsage.prior_total, usage: normalizedUsage.usage },
       selection: {
         mode: detailOnly ? "layout-detail" : "candidate-ranking",
-        state: detailOnly ? null : layoutSelectionState(matches),
+        state: detailOnly ? null : matches.length ? layoutSelectionState(rankingPool) : "no-candidate",
         order_basis: detailOnly ? [] : ["usage-count-asc", "last-sequence-asc", "session-seed-hash", "registry-order"],
         seed_source: detailOnly ? null : newSession ? "generated" : "provided",
         preferred_layout_id: detailOnly ? null : rankingPool[0]?.layout_id ?? null,
