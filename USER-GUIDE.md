@@ -48,7 +48,7 @@ node wise-ppt/bin/wise-ppt.mjs doctor
 ## 先看画册和示例
 
 - 离线 Catalog：用 Google Chrome 打开 `<skill>/references/catalog.html`。它包含非关系页、版式、结构、组件和 865 枚成品图标；所需 WOFF2 压缩字体已经随包提供，不会联网。
-- 六页示例：打开 `<skill>/themes/paper-ink/examples/wise-ppt-story-six-page/index.html`；同目录的 `deck.pdf` 可直接翻阅，`deck-spec.json` 是对应输入示例。
+- 完整视觉与合同示例：打开 `<skill>/themes/paper-ink/examples/wise-ppt-story-six-page/index.html`；它恰好 6 页，但不是新任务的页数模板。同目录的 `deck.pdf` 可直接翻阅，`deck-spec.json` 是对应输入示例。
 
 这两项是用户级资产，并受 `bundle-manifest.json` 的逐文件 SHA-256 保护。
 
