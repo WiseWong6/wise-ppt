@@ -4,7 +4,7 @@
   "generated_from": {
     "catalog_authority": {
       "path": "capabilities/catalog-authority-manifest.json",
-      "sha256": "3b2f7643421876ab9a3a92a3280d3f8416a46f864c04b19fd01a7a39e77ce3d5"
+      "sha256": "608ed7933a48a8293e04b85270cb16926f016f79c46ec514cfda393c8aecdbe8"
     },
     "gallery_manifest": {
       "path": "capabilities/layouts/gallery-manifest.json",
@@ -12,11 +12,11 @@
     },
     "nonrelation_contracts": {
       "path": "capabilities/layouts/nonrelation-template-contracts.json",
-      "sha256": "263a7110551e39d0535725afbdc463d5895f524d6441e91eb3ab839cf974c1d8"
+      "sha256": "56065e0e6c2cbaca5d5bb453532eaa343ba01861890d3aa9ac7f7ac176ce7768"
     },
     "component_routing": {
       "path": "capabilities/components/routing-manifest.json",
-      "sha256": "83a35cbd0582840517490332bc1b031d7d032572b444d8f9af67737793b24e51"
+      "sha256": "f0d7d903d89c86d1c220b3a8f53b4a2ef11b1da32d0193b49d7452b3f9697fc9"
     },
     "seeds": {
       "path": "capabilities/layouts/seeds",
@@ -34809,7 +34809,7 @@
       "display_code": "D1",
       "page_kind": "nonrelationship",
       "name": "封面 · 左题右图",
-      "description": "封面开场页：标题区在左、内建插画在右，页码条、标题条与插画固定，可填眉题、主标题、副标题与辅助文字。封面候选中要左题右图经典分栏选 D1；图在左用 D8、图在上用 D7、居中纹理用 D10。",
+      "description": "封面开场页：标题区在左、内建插画在右，页码条、标题条与插画固定，可填眉题、主标题、副标题与辅助文字。适配先读左侧标题、再看右侧插画的顺序；D8 为镜像分栏，D7 为上下排布，D10 为居中纹理。",
       "page_role": "cover",
       "reading_order": [
         "support",
@@ -35061,7 +35061,7 @@
       "display_code": "D10",
       "page_kind": "nonrelationship",
       "name": "封面 · 居中纹理",
-      "description": "封面开场页：居中构图叠固定内建背景纹理，folio、canvas、overlay、title-wash、title-bar 固定，可填眉题、主标题、副标题与辅助文字。封面候选中文字少、要居中仪式感选 D10；图文分栏用 D1/D7/D8。",
+      "description": "封面开场页：居中构图叠固定内建背景纹理，folio、canvas、overlay、title-wash、title-bar 固定，可填眉题、主标题、副标题与辅助文字。适配文字较少、需要居中仪式感的封面；D1/D7/D8 提供图文分栏。",
       "page_role": "cover",
       "reading_order": [
         "support",
@@ -35318,7 +35318,7 @@
       "display_code": "D2",
       "page_kind": "nonrelationship",
       "name": "粒子尾卡",
-      "description": "收尾页：粒子尾卡的内建画布、folio 与 marks 固定，只可填辅助文字。收尾候选中要以图形收场、不放收束语选 D2；要一句话收束加署名用 D3。",
+      "description": "收尾页：粒子尾卡的内建画布、folio 与 marks 固定，只可填辅助文字。适配以图形收场且不放收束语的内容；D3 另提供一句话收束与署名。",
       "page_role": "closing",
       "reading_order": [
         "support"
@@ -35426,7 +35426,7 @@
       "display_code": "D3",
       "page_kind": "nonrelationship",
       "name": "极简 Outro",
-      "description": "收尾页：极简排版配固定内建插画、收束语与署名，页码条固定，可填辅助文字与收束主文案；署名由 deck.signature 自动填写。收尾候选中需要一句话收束与署名选 D3；纯图形收场用 D2。",
+      "description": "收尾页：极简排版配固定内建插画、收束语与署名，页码条固定，可填辅助文字与收束主文案；署名由 deck.signature 自动填写。适配一句话收束与署名；D2 适配纯图形收场。",
       "page_role": "closing",
       "reading_order": [
         "support",
@@ -35608,7 +35608,7 @@
       "display_code": "D4",
       "page_kind": "nonrelationship",
       "name": "目录导航",
-      "description": "目录页：固定内建目录插画配一句话导读，页码条固定，可填辅助文字与导读要点；章节条目图形冻结在插画内，不可逐条填写。目录候选中需要一句导读收束全篇选 D4；只要极简大字构图用 D9。",
+      "description": "目录页：固定内建目录插画配一句话导读，页码条固定，可填辅助文字与导读要点；章节条目图形冻结在插画内，不可逐条填写。适配用一句导读串联章节的目录；D9 为无导读文字位的大字构图。",
       "page_role": "agenda",
       "reading_order": [
         "support",
@@ -35764,7 +35764,7 @@
       "display_code": "D5",
       "page_kind": "nonrelationship",
       "name": "章节隔页",
-      "description": "章节过渡页：固定内建插画配章节标题与引导语，页码条固定，可填辅助文字、章节主标题与引导语。过渡候选中的常规隔页；要粒子主角加对照提问用 M1、要秩序环母题用 M2。",
+      "description": "章节过渡页：固定内建插画配章节标题与引导语，页码条固定，可填辅助文字、章节主标题与引导语。适配用标题和引导语完成章节切换；M1 提供对照提问，M2 使用秩序环母题。",
       "page_role": "transition",
       "reading_order": [
         "support",
@@ -35972,7 +35972,7 @@
       "display_code": "D6",
       "page_kind": "nonrelationship",
       "name": "联络尾页",
-      "description": "deck 尾页的联络卡：固定内建插画配册眉文字，页码条固定，只可填辅助文字。联络角色唯一登记候选，需要留联络信息收尾时直接选它。",
+      "description": "deck 尾页的联络卡：固定内建插画配册眉文字，页码条固定，只可填辅助文字。适配使用固定 Catalog 联络卡收尾的 contact 页；不开放联络信息编辑。",
       "page_role": "contact",
       "reading_order": [
         "support"
@@ -36077,7 +36077,7 @@
       "display_code": "D7",
       "page_kind": "nonrelationship",
       "name": "封面 · 上图下题",
-      "description": "封面开场页：固定内建插画在上、标题区在下，页码条与标题条固定，可填眉题、主标题、副标题与辅助文字。封面候选中要图文上下排布、先看图再看题选 D7；左右分栏用 D1/D8、居中纹理用 D10。",
+      "description": "封面开场页：固定内建插画在上、标题区在下，页码条与标题条固定，可填眉题、主标题、副标题与辅助文字。适配图文上下排布、先图后题的阅读顺序；D1/D8 为左右分栏，D10 为居中纹理。",
       "page_role": "cover",
       "reading_order": [
         "support",
@@ -36328,7 +36328,7 @@
       "display_code": "D8",
       "page_kind": "nonrelationship",
       "name": "封面 · 左图右题",
-      "description": "封面开场页：固定内建插画在左、标题区在右，页码条固定，可填眉题、主标题、副标题与辅助文字。与 D1 互为镜像（图题左右对调），从文字侧开始阅读的封面选 D8；居中纹理用 D10。",
+      "description": "封面开场页：固定内建插画在左、标题区在右，页码条固定，可填眉题、主标题、副标题与辅助文字。与 D1 互为镜像（图题左右对调），适配先看左侧插画、再读右侧标题的顺序；D10 为居中纹理。",
       "page_role": "cover",
       "reading_order": [
         "support",
@@ -36577,7 +36577,7 @@
       "display_code": "D9",
       "page_kind": "nonrelationship",
       "name": "目录 · 分栏大字",
-      "description": "目录页：分栏大字构图和内建插画固定，页码条固定，只可填辅助文字；章节条目图形冻结在插画内，不可逐条填写。目录候选中最极简、没有导读文字位；需要导读要点时改用 D4。",
+      "description": "目录页：分栏大字构图和内建插画固定，页码条固定，只可填辅助文字；章节条目图形冻结在插画内，不可逐条填写。适配无需可编辑导读要点的目录；D4 另有导读文字位。",
       "page_role": "agenda",
       "reading_order": [
         "support"
@@ -36682,7 +36682,7 @@
       "display_code": "M1",
       "page_kind": "nonrelationship",
       "name": "粒子主角 + 对照提问",
-      "description": "章节过渡页：固定内建粒子画布配对照提问文字，folio 与 overlay 固定，可填辅助文字、对照文字与主标题。过渡候选中要在章节切换时抛对照问题、制造张力选 M1；常规隔页用 D5、秩序环用 M2。",
+      "description": "章节过渡页：固定内建粒子画布配对照提问文字，folio 与 overlay 固定，可填辅助文字、对照文字与主标题。适配章节切换时抛出对照问题并制造张力；D5 提供标题与引导语，M2 使用秩序环母题。",
       "page_role": "transition",
       "reading_order": [
         "support",
@@ -36887,7 +36887,7 @@
       "display_code": "M2",
       "page_kind": "nonrelationship",
       "name": "秩序环过渡页",
-      "description": "章节过渡页：固定内建秩序环画布配母题短标签，folio 与 marks 固定，可填辅助文字与母题标签。过渡候选中要用同一图形母题串起章节节奏选 M2；常规隔页用 D5、对照提问用 M1。",
+      "description": "章节过渡页：固定内建秩序环画布配母题短标签，folio 与 marks 固定，可填辅助文字与母题标签。适配用同一图形母题串联章节节奏；D5 提供标题与引导语，M1 提供对照提问。",
       "page_role": "transition",
       "reading_order": [
         "support",

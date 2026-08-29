@@ -2194,8 +2194,8 @@
       root.dataset.deckContractCheck = 'pass';
     }
     function assertDeckContract(all, context) {
-      if (root.dataset.deckContractVersion !== '6') {
-        throw new Error('正式成品必须声明 data-deck-contract-version=6');
+      if (root.dataset.deckContractVersion !== '7') {
+        throw new Error('正式成品必须声明 data-deck-contract-version=7');
       }
       assertDeckContractV3(all, context);
     }
