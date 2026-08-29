@@ -64,6 +64,8 @@ node <skill>/bin/wise-ppt.mjs validate <绝对 deck 目录>
 node <skill>/bin/wise-ppt.mjs deliver <绝对 deck 目录>
 ```
 
+新聊天第一次候选查询使用 `layouts --new-session ...`，保存返回的 `selection_seed`；同一聊天后续页和 deck 都改传 `--selection-seed <seed>`。Agent 会逐页更新账本，并把上一份 `deck-plan.json.layout_session.post_usage` 转为重复的 `--layout-usage <layout_id>:<count>:<last_sequence>`。候选按少用、久未用、seed 稳定哈希轮换，registry 顺序只在哈希碰撞时兜底；不同聊天通常有不同起点，同一 seed 和账本可复现。新聊天从空历史开始，不扫描旧目录恢复历史。
+
 只有用户明确批准结构重绘时才使用：
 
 ```text
@@ -83,6 +85,6 @@ node <skill>/bin/wise-ppt.mjs experimental prepare|build|validate|preview|delive
 
 ## 交付边界
 
-输入使用 `wise-ppt-deck@6`，构建使用 `wise-ppt-build@4`，运行时使用 `wise-ppt-runtime@4`；正式交付为 `wise-ppt-delivery@3`，实验交付为 `wise-ppt-experimental-delivery@5`。逐页声明的强调会进入最终 HTML 和 PDF；普通/强调四态只用于验证。实验 PDF 不叠加可见水印，通过文件名与 manifest 表明实验身份。
+输入使用 `wise-ppt-deck@7`，构建计划使用 `wise-ppt-deck-plan@5`，构建使用 `wise-ppt-build@4`，运行时使用 `wise-ppt-runtime@4`；正式交付为 `wise-ppt-delivery@3`，实验交付为 `wise-ppt-experimental-delivery@5`。逐页声明的强调会进入最终 HTML 和 PDF；普通/强调四态只用于验证。实验 PDF 不叠加可见水印，通过文件名与 manifest 表明实验身份。
 
 `deck.pdf` 和 `delivery-manifest.json` 成对提交。任何导出或提交失败都不会破坏上一份正式交付物。

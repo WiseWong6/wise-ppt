@@ -1,4 +1,6 @@
-const DECK_CONTRACT = "wise-ppt-deck@6";
+const DECK_CONTRACT = "wise-ppt-deck@7";
+const DECK_PLAN_CONTRACT = "wise-ppt-deck-plan@5";
+const LAYOUT_QUERY_FORMAT = "wise-ppt-layout-query@2";
 const BUILD_CONTRACT = "wise-ppt-build@4";
 const RUNTIME_VERSION = "wise-ppt-runtime@4";
 const DELIVERY_FORMAT = "wise-ppt-delivery@3";
@@ -23,10 +25,12 @@ const REQUIRED_THEME_FILES = [
 export {
   BUILD_CONTRACT,
   DECK_CONTRACT,
+  DECK_PLAN_CONTRACT,
   DEFAULT_SIGNATURE,
   DELIVERY_FORMAT,
   EXPERIMENTAL_DELIVERY_CONTRACT,
   EXPERIMENT_MARKER,
+  LAYOUT_QUERY_FORMAT,
   MIN_CHROME_MAJOR,
   OUTPUT_MARKER,
   REQUIRED_RUNTIME_FILES,

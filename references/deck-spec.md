@@ -1,4 +1,4 @@
-# deck-spec@6 唯一输入合同
+# deck-spec@7 唯一输入合同
 
 ## 权威
 
@@ -12,14 +12,44 @@ standard 只编辑 `deck-spec.json`。`index.html`、deck plan、来源账本、
 
 | 字段 | 要求 |
 |---|---|
-| `contract` | 必须等于 `wise-ppt-deck@6` |
+| `contract` | 必须等于 `wise-ppt-deck@7` |
 | `mode` | 可省略；出现时只能是 `standard` |
 | `deck` | 必填对象 |
+| `layout_context` | 必填对象；选择本 deck 前的当前聊天版式历史 |
 | `sources` | 必填数组；没有外部来源时写 `[]` |
 | `must` | 必填数组；用户没有点名必保内容时写 `[]` |
 | `slides` | 必填非空数组，顺序就是最终页序 |
 
 standard 顶层不接受其他字段。
+
+## layout_context
+
+每份 spec 必须显式写选择本 deck 前的会话状态：
+
+```json
+"layout_context": {
+  "scope": "session",
+  "selection_seed": "6c4a68e91e4d7c2f106a29c502ca74cd",
+  "prior_total": 12,
+  "usage": [
+    {
+      "layout_id": "paper-ink.relationship.A1",
+      "count": 2,
+      "last_sequence": 9
+    }
+  ]
+}
+```
+
+- `scope` 只能是 `session`；
+- `selection_seed` 是新聊天第一次候选查询用 `--new-session` 生成的 32 位小写十六进制字符串，同一聊天始终复用；
+- `prior_total` 是当前聊天此前已分配的总页数，必须是非负整数；
+- `usage` 只保留已使用骨架，按完整 `layout_id` 升序排列，ID 不得重复；
+- `count`、`last_sequence` 都是正安全整数；所有 `count` 总和必须等于 `prior_total`，最后一次序号不得重复、必须可由账本实现，最大值必须等于 `prior_total`；
+- 当前聊天首份 deck 使用新 seed、`prior_total: 0` 与 `usage: []`；后续 deck 原样承接上一份 `deck-plan.json.layout_session` 的 `selection_seed/post_total/post_usage`；
+- 只有新聊天才生成新 seed 并清零。不得自动扫描目录、旧文件或其他聊天的收据。
+
+这不是隐藏缓存，编译器也无法从目录或平台猜出聊天边界。会话连续性由主 Agent 显式携带；spec 固定 seed 与历史后，相同输入仍生成相同产物。
 
 ## deck
 
@@ -93,9 +123,24 @@ must 的 `source_refs` 还必须包含在目标页的 `source_refs` 中，不能
 - `source_evidence`：`source_id → 非空可见词条数组` 的对象；
 - `must_refs`：本页承载的 must ID 数组。
 
-关系页额外必填 `relation_key`；非关系页不得填写。`section_id/section_title` 可选，用于章节导航。`emphasis` 也可选；只有页面确实需要突出一个已审核对象时才填写。
+关系页额外必填 `relation_key`；非关系页不得填写。`section_id/section_title` 可选，用于章节导航。`emphasis` 也可选；只有页面确实需要突出一个已审核对象时才填写。`layout_override` 只在最终骨架的权威 `selection_rank > 1` 时填写。
 
 source-backed 页面必须有非空 `source_refs`，且 `source_evidence` 的 key 与引用集合完全一致。关系页词条可以在可见 claim 或真实 payload 中出现；非关系页的 claim 只用于计划和导航元数据，词条必须由真实 payload 可见承载。无来源页面使用 `source_refs: []` 与 `source_evidence: {}`。
+
+## 版式越级说明
+
+构建器先按 `page_kind/page_role/relation_key` 和页面实际 payload 类型形成粗粒度硬候选池，再按“使用次数最少 → 最久未用 → 会话 seed 哈希 → registry 碰撞兜底”排列。容量、binding、主次与阅读顺序仍由作者判断；若选中骨架的权威 `selection_rank > 1`，页面必须声明：
+
+```json
+"layout_override": {
+  "basis": "reading-order",
+  "reason": "较少使用的候选阅读方向与本页讲述顺序相反"
+}
+```
+
+`basis` 只允许 `capacity`、`binding`、`primary-support`、`reading-order`、`user-continuity`；`reason` 必须非空。`user-continuity` 只用于用户明确要求继续沿用某版式。rank=1 禁止填写；单候选和正常复用由编译器记录，不要求作者补无意义理由。
+
+`deck-plan@5.layout_session` 会记录 `selection_seed`、排序依据、选择前后的 usage，以及每页候选数、首选 ID、选中前计数、权威 rank、决策类型和 override。它按 spec 中的 deck 起始账本逐页推进，可用来为当前聊天的下一份 deck 续账。
 
 ## 逐页强调
 

@@ -12,7 +12,7 @@ import path from "node:path";
 import { setTimeout as sleep } from "node:timers/promises";
 import { fileURLToPath } from "node:url";
 const DELIVERY_FORMAT = "wise-ppt-delivery@3";
-const DECK_CONTRACT_VERSION = "6";
+const DECK_CONTRACT_VERSION = "7";
 const GEOMETRY_TOLERANCE_PX = 1;
 const RASTER_RMSE_THRESHOLD_PCT = 2.5;
 const RASTER_CAPTURE_SCALE = 0.25;
@@ -31,8 +31,8 @@ const REQUIRED_ROOT_FILES = [
 const REQUIRED_TREES = ["assets", "runtime"];
 const JSON_ROOT_FILES = REQUIRED_ROOT_FILES.filter((name) => name.endsWith(".json"));
 const ROOT_CONTRACTS = Object.freeze({
-  "deck-spec.json": "wise-ppt-deck@6",
-  "deck-plan.json": "wise-ppt-deck-plan@4",
+  "deck-spec.json": "wise-ppt-deck@7",
+  "deck-plan.json": "wise-ppt-deck-plan@5",
   "source-ledger.json": "wise-ppt-source-ledger@4",
   "component-receipts.json": "wise-ppt-component-receipts@3",
   "geometry-contracts.json": "wise-ppt-geometry-contracts@3",

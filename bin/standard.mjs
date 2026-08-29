@@ -14,6 +14,7 @@ import path from "node:path";
 import {
   BUILD_CONTRACT,
   DECK_CONTRACT,
+  DECK_PLAN_CONTRACT,
   DEFAULT_SIGNATURE,
   OUTPUT_MARKER,
   REQUIRED_RUNTIME_FILES,
@@ -36,8 +37,10 @@ import {
   WisePPTError
 } from "./common.mjs";
 import { copyResolvedFonts, resolveFonts } from "./fonts.mjs";
-const ALLOWED_TOP_LEVEL = /* @__PURE__ */ new Set(["contract", "mode", "deck", "sources", "must", "slides"]);
+const ALLOWED_TOP_LEVEL = /* @__PURE__ */ new Set(["contract", "mode", "deck", "layout_context", "sources", "must", "slides"]);
 const ALLOWED_DECK_FIELDS = /* @__PURE__ */ new Set(["title", "thesis", "input_type", "theme_preset", "typography_mode", "lang", "signature"]);
+const ALLOWED_LAYOUT_CONTEXT_FIELDS = /* @__PURE__ */ new Set(["scope", "selection_seed", "prior_total", "usage"]);
+const ALLOWED_LAYOUT_USAGE_FIELDS = /* @__PURE__ */ new Set(["layout_id", "count", "last_sequence"]);
 const ALLOWED_SOURCE_FIELDS = /* @__PURE__ */ new Set(["source_id", "title"]);
 const ALLOWED_SLIDE_FIELDS = /* @__PURE__ */ new Set([
   "page_id",
@@ -51,14 +54,18 @@ const ALLOWED_SLIDE_FIELDS = /* @__PURE__ */ new Set([
   "must_refs",
   "section_id",
   "section_title",
-  "emphasis"
+  "emphasis",
+  "layout_override"
 ]);
 const ALLOWED_EMPHASIS_FIELDS = /* @__PURE__ */ new Set(["target", "reason"]);
+const ALLOWED_LAYOUT_OVERRIDE_FIELDS = /* @__PURE__ */ new Set(["basis", "reason"]);
 const ALLOWED_MUST_FIELDS = /* @__PURE__ */ new Set(["must_id", "content", "status", "page_id", "reason", "visible_evidence", "source_refs"]);
 const PAYLOAD_CATEGORIES = Object.freeze({ text: "text", data: "data", icons: "icon" });
 const PAYLOAD_SURFACES = Object.freeze({ text: "text", data: "text", icons: "icon" });
 const INPUT_TYPES = /* @__PURE__ */ new Set(["pdf", "url", "multi-doc", "existing-deck", "oral", "short-text"]);
 const SOURCE_BACKED_INPUT_TYPES = /* @__PURE__ */ new Set(["pdf", "url", "multi-doc", "existing-deck"]);
+const LAYOUT_OVERRIDE_BASES = /* @__PURE__ */ new Set(["capacity", "binding", "primary-support", "reading-order", "user-continuity"]);
+const SELECTION_SEED_PATTERN = /^[0-9a-f]{32}$/;
 const FORBIDDEN_KEYS = /* @__PURE__ */ new Set(["css", "style", "page_css", "geometry", "structure", "components", "component", "component_id", "renderer", "renderer_id", "svg"]);
 const FIXED_GENERATED_FILES = /* @__PURE__ */ new Set([
   "index.html",
@@ -83,6 +90,116 @@ function plainString(value, label, allowEmpty = false) {
     throw new WisePPTError(`${label}\u5FC5\u987B\u662F${allowEmpty ? "\u53EF\u7A7A" : "\u975E\u7A7A"}\u5B57\u7B26\u4E32`);
   }
   return value;
+}
+function positiveInteger(value, label) {
+  if (!Number.isSafeInteger(value) || value < 1) throw new WisePPTError(`${label} \u5FC5\u987B\u662F\u6B63\u6574\u6570`);
+  return value;
+}
+function nonnegativeInteger(value, label) {
+  if (!Number.isSafeInteger(value) || value < 0) throw new WisePPTError(`${label} \u5FC5\u987B\u662F\u975E\u8D1F\u6574\u6570`);
+  return value;
+}
+function compareAscii(left, right) {
+  return left < right ? -1 : left > right ? 1 : 0;
+}
+function normalizeSelectionSeed(value, label = "selection_seed") {
+  if (typeof value !== "string" || !SELECTION_SEED_PATTERN.test(value)) {
+    throw new WisePPTError(`${label} \u5FC5\u987B\u662F 32 \u4F4D\u5C0F\u5199\u5341\u516D\u8FDB\u5236\u5B57\u7B26\u4E32`);
+  }
+  return value;
+}
+function registryIndex(registry) {
+  return new Map((registry.layouts || []).map((layout, index) => [layout.layout_id, index]));
+}
+function normalizeUsageEntries(entries, layoutIds, label, options = {}) {
+  if (!Array.isArray(entries)) throw new WisePPTError(`${label} \u5FC5\u987B\u662F\u6570\u7EC4`);
+  const seen = /* @__PURE__ */ new Set();
+  const usage = entries.map((entry, offset) => {
+    const entryLabel = `${label}[${offset + 1}]`;
+    if (!entry || typeof entry !== "object" || Array.isArray(entry)) throw new WisePPTError(`${entryLabel} \u5FC5\u987B\u662F\u5BF9\u8C61`);
+    assertKnownKeys(entry, ALLOWED_LAYOUT_USAGE_FIELDS, entryLabel);
+    const layoutId = plainString(entry.layout_id, `${entryLabel}.layout_id`);
+    if (!layoutIds.has(layoutId)) throw new WisePPTError(`${entryLabel}.layout_id \u672A\u767B\u8BB0: ${layoutId}`);
+    if (seen.has(layoutId)) throw new WisePPTError(`${label} \u542B\u91CD\u590D layout_id: ${layoutId}`);
+    seen.add(layoutId);
+    return {
+      layout_id: layoutId,
+      count: positiveInteger(entry.count, `${entryLabel}.count`),
+      last_sequence: positiveInteger(entry.last_sequence, `${entryLabel}.last_sequence`)
+    };
+  });
+  const derivedTotal = usage.reduce((sum, entry) => {
+    const next = sum + entry.count;
+    if (!Number.isSafeInteger(next)) throw new WisePPTError(`${label} \u7684 count \u603B\u548C\u8D85\u8FC7\u5B89\u5168\u6574\u6570\u8303\u56F4`);
+    return next;
+  }, 0);
+  const total = options.priorTotal === void 0 ? derivedTotal : nonnegativeInteger(options.priorTotal, `${options.contextLabel || label}.prior_total`);
+  if (derivedTotal !== total) throw new WisePPTError(`${label} \u7684 count \u603B\u548C\u5FC5\u987B\u7B49\u4E8E prior_total=${total}`);
+  const lastSequences = /* @__PURE__ */ new Set();
+  for (const entry of usage) {
+    if (entry.last_sequence > total) throw new WisePPTError(`${label} \u7684 last_sequence \u4E0D\u5F97\u5927\u4E8E prior_total=${total}`);
+    if (entry.last_sequence < entry.count) throw new WisePPTError(`${label} \u7684 last_sequence \u4E0D\u5F97\u5C0F\u4E8E count`);
+    if (lastSequences.has(entry.last_sequence)) throw new WisePPTError(`${label} \u7684 last_sequence \u4E0D\u5F97\u91CD\u590D`);
+    lastSequences.add(entry.last_sequence);
+  }
+  if (total === 0 && usage.length || total > 0 && Math.max(...lastSequences) !== total) {
+    throw new WisePPTError(`${label} \u7684\u6700\u5927 last_sequence \u5FC5\u987B\u7B49\u4E8E prior_total=${total}`);
+  }
+  let cumulativeCount = 0;
+  for (const entry of [...usage].sort((left, right) => left.last_sequence - right.last_sequence)) {
+    cumulativeCount += entry.count;
+    if (cumulativeCount > entry.last_sequence) {
+      throw new WisePPTError(`${label} \u5728 last_sequence=${entry.last_sequence} \u524D\u65E0\u6CD5\u5BB9\u7EB3\u7D2F\u8BA1 count=${cumulativeCount}`);
+    }
+  }
+  const sorted = [...usage].sort((left, right) => compareAscii(left.layout_id, right.layout_id));
+  if (options.requireSorted && canonicalJson(usage) !== canonicalJson(sorted)) {
+    throw new WisePPTError(`${label} \u5FC5\u987B\u6309\u5B8C\u6574 layout_id \u5347\u5E8F\u6392\u5217`);
+  }
+  return { prior_total: total, usage: sorted };
+}
+function normalizeLayoutUsage(registry, entries = []) {
+  return normalizeUsageEntries(entries, new Set((registry.layouts || []).map((layout) => layout.layout_id)), "layout usage");
+}
+function validateLayoutContext(value, layoutIds) {
+  if (!value || typeof value !== "object" || Array.isArray(value)) throw new WisePPTError("deck-spec.layout_context \u5FC5\u987B\u662F\u5BF9\u8C61");
+  assertKnownKeys(value, ALLOWED_LAYOUT_CONTEXT_FIELDS, "deck-spec.layout_context");
+  if (value.scope !== "session") throw new WisePPTError("deck-spec.layout_context.scope \u5FC5\u987B\u662F session");
+  const selectionSeed = normalizeSelectionSeed(value.selection_seed, "deck-spec.layout_context.selection_seed");
+  const normalized = normalizeUsageEntries(value.usage, layoutIds, "deck-spec.layout_context.usage", {
+    priorTotal: value.prior_total,
+    contextLabel: "deck-spec.layout_context",
+    requireSorted: true
+  });
+  return { scope: "session", selection_seed: selectionSeed, ...normalized };
+}
+function usageMap(normalized) {
+  return new Map(normalized.usage.map((entry) => [entry.layout_id, structuredClone(entry)]));
+}
+function usageFor(map, layoutId) {
+  return map.get(layoutId) || { layout_id: layoutId, count: 0, last_sequence: null };
+}
+function selectionHash(seed, layoutId) {
+  return sha256Text(`${seed}\0${layoutId}`);
+}
+function compareByUsage(left, right, usage, seed, order) {
+  const leftUsage = usageFor(usage, left.layout_id);
+  const rightUsage = usageFor(usage, right.layout_id);
+  if (leftUsage.count !== rightUsage.count) return leftUsage.count - rightUsage.count;
+  const leftLast = leftUsage.last_sequence ?? -1;
+  const rightLast = rightUsage.last_sequence ?? -1;
+  if (leftLast !== rightLast) return leftLast - rightLast;
+  const hashOrder = compareAscii(selectionHash(seed, left.layout_id), selectionHash(seed, right.layout_id));
+  if (hashOrder) return hashOrder;
+  return order.get(left.layout_id) - order.get(right.layout_id);
+}
+function layoutSelectionState(layouts) {
+  if (!layouts.length) return "no-candidate";
+  if (layouts.length === 1) return "forced-single";
+  const counts = layouts.map((layout) => layout.usage_count);
+  if (counts.some((count) => count === 0)) return "fresh-available";
+  if (Math.min(...counts) < Math.max(...counts)) return "least-used-available";
+  return "balanced-reuse";
 }
 function semanticValue(value) {
   if (typeof value === "string") return Boolean(value.trim());
@@ -373,6 +490,77 @@ async function resolvedAppearance(root, deck) {
   if (!modes.has(typography)) throw new WisePPTError(`\u672A\u767B\u8BB0 typography_mode: ${typography}`);
   return { theme, typography };
 }
+function hardLayoutCandidates(index, slide, chosenLayout) {
+  const requiredPayloadTypes = new Set(Object.keys(slide.payload || {}).map((category) => PAYLOAD_CATEGORIES[category]).filter(Boolean));
+  return [...index.values()].filter((layout) => {
+    if (layout.page_kind !== chosenLayout.page_kind) return false;
+    const roles = layout.page_kind === "relationship" ? layout.page_roles : [layout.page_role];
+    if (!(roles || []).includes(slide.page_role)) return false;
+    if (layout.page_kind === "relationship" && !(layout.relations || []).includes(slide.relation_key)) return false;
+    if ([...requiredPayloadTypes].some((type) => !(layout.allowed_payload_types || []).includes(type))) return false;
+    return true;
+  });
+}
+function buildLayoutSessionReceipt(resolved, index, layoutContext) {
+  const currentUsage = usageMap(layoutContext);
+  const order = new Map([...index.keys()].map((layoutId, offset) => [layoutId, offset]));
+  const postTotal = layoutContext.prior_total + resolved.length;
+  if (!Number.isSafeInteger(postTotal)) throw new WisePPTError("layout session post_total \u8D85\u8FC7\u5B89\u5168\u6574\u6570\u8303\u56F4");
+  const pages = [];
+  for (const [offset, { slide, layout }] of resolved.entries()) {
+    const candidates = hardLayoutCandidates(index, slide, layout);
+    const ranked = [...candidates].sort((left, right) => compareByUsage(left, right, currentUsage, layoutContext.selection_seed, order));
+    const selectedBefore = usageFor(currentUsage, layout.layout_id);
+    const minimumUsage = Math.min(...candidates.map((candidate) => usageFor(currentUsage, candidate.layout_id).count));
+    const selectionRank = ranked.findIndex((candidate) => candidate.layout_id === layout.layout_id) + 1;
+    const requiresOverride = selectionRank > 1;
+    if (slide.layout_override !== void 0) {
+      if (!slide.layout_override || typeof slide.layout_override !== "object" || Array.isArray(slide.layout_override)) throw new WisePPTError(`${slide.page_id}.layout_override \u5FC5\u987B\u662F\u5BF9\u8C61`);
+      assertKnownKeys(slide.layout_override, ALLOWED_LAYOUT_OVERRIDE_FIELDS, `${slide.page_id}.layout_override`);
+      const basis = plainString(slide.layout_override.basis, `${slide.page_id}.layout_override.basis`);
+      if (!LAYOUT_OVERRIDE_BASES.has(basis)) throw new WisePPTError(`${slide.page_id}.layout_override.basis \u672A\u767B\u8BB0: ${basis}`);
+      plainString(slide.layout_override.reason, `${slide.page_id}.layout_override.reason`);
+    }
+    if (requiresOverride && slide.layout_override === void 0) {
+      throw new WisePPTError(`${slide.page_id} \u9009\u62E9\u7684 ${layout.layout_id} \u5728\u786C\u5019\u9009\u6392\u5E8F\u4E2D\u4E3A\u7B2C ${selectionRank}\uFF0C\u9996\u9009\u4E3A ${ranked[0].layout_id}\uFF1B\u5FC5\u987B\u586B\u5199 layout_override`);
+    }
+    if (!requiresOverride && slide.layout_override !== void 0) {
+      throw new WisePPTError(`${slide.page_id}.layout_override \u6CA1\u6709\u8D8A\u8FC7\u6392\u5E8F\u66F4\u9760\u524D\u7684\u786C\u5019\u9009\uFF0C\u4E0D\u5F97\u586B\u5199`);
+    }
+    const enrichedCandidates = candidates.map((candidate) => ({
+      usage_count: usageFor(currentUsage, candidate.layout_id).count
+    }));
+    pages.push({
+      page_id: slide.page_id,
+      layout_id: layout.layout_id,
+      candidate_count: candidates.length,
+      chosen_usage_before: selectedBefore.count,
+      chosen_last_sequence_before: selectedBefore.last_sequence,
+      minimum_usage_before: minimumUsage,
+      selection_rank: selectionRank,
+      preferred_layout_id: ranked[0].layout_id,
+      decision_type: layoutSelectionState(enrichedCandidates),
+      layout_override: slide.layout_override ? structuredClone(slide.layout_override) : null
+    });
+    const sequence = layoutContext.prior_total + offset + 1;
+    currentUsage.set(layout.layout_id, {
+      layout_id: layout.layout_id,
+      count: selectedBefore.count + 1,
+      last_sequence: sequence
+    });
+  }
+  const postUsage = [...currentUsage.values()].sort((left, right) => compareAscii(left.layout_id, right.layout_id));
+  return {
+    scope: "session",
+    selection_seed: layoutContext.selection_seed,
+    order_basis: ["usage-count-asc", "last-sequence-asc", "session-seed-hash", "registry-order"],
+    prior_total: layoutContext.prior_total,
+    prior_usage: structuredClone(layoutContext.usage),
+    post_total: postTotal,
+    post_usage: postUsage,
+    pages
+  };
+}
 async function validateSpec(root, spec, layoutIndex = null) {
   assertKnownKeys(spec, ALLOWED_TOP_LEVEL, "deck-spec \u9876\u5C42");
   if (spec.contract !== DECK_CONTRACT) throw new WisePPTError(`deck-spec.contract \u5FC5\u987B\u662F ${DECK_CONTRACT}`);
@@ -390,6 +578,7 @@ async function validateSpec(root, spec, layoutIndex = null) {
   if (deck.signature !== void 0 && !plainString(deck.signature, "deck.signature").trim()) throw new WisePPTError("deck.signature \u5FC5\u987B\u662F\u975E\u7A7A\u767D\u7F72\u540D");
   await resolvedAppearance(root, deck);
   const { index } = layoutIndex ? { index: layoutIndex } : await registryState(root);
+  const layoutContext = validateLayoutContext(spec.layout_context, new Set(index.keys()));
   if (!Array.isArray(spec.sources)) throw new WisePPTError("deck-spec.sources \u5FC5\u987B\u662F\u6570\u7EC4");
   if (SOURCE_BACKED_INPUT_TYPES.has(inputType) && !spec.sources.length) throw new WisePPTError(`deck.input_type=${inputType} \u5FC5\u987B\u767B\u8BB0\u81F3\u5C11\u4E00\u4E2A source`);
   const sourceIds = /* @__PURE__ */ new Set();
@@ -504,20 +693,34 @@ async function validateSpec(root, spec, layoutIndex = null) {
   }
   const unused = setDifference(sourceIds, usedSourceIds);
   if (unused.length) throw new WisePPTError(`sources \u542B\u672A\u88AB\u4F7F\u7528\u7684\u6765\u6E90: ${unused.sort().join(", ")}`);
+  Object.defineProperty(resolved, "layoutSession", {
+    value: buildLayoutSessionReceipt(resolved, index, layoutContext),
+    enumerable: false
+  });
   return resolved;
 }
 function queryLayouts(registry, filters) {
   const required = new Set(filters.requires || []);
   if ([...required].some((item) => !["text", "data", "icon"].includes(item))) throw new WisePPTError("\u67E5\u8BE2\u542B\u672A\u767B\u8BB0 payload \u7C7B\u578B");
   if (filters.pageKind === "nonrelationship" && filters.relationKey) throw new WisePPTError("\u975E\u5173\u7CFB\u9875\u67E5\u8BE2\u4E0D\u5F97\u4F20 --relation-key");
-  return (registry.layouts || []).filter((layout) => {
+  if (filters.contentItems !== void 0 && (!Number.isSafeInteger(filters.contentItems) || filters.contentItems < 0)) {
+    throw new WisePPTError("contentItems \u5FC5\u987B\u662F\u975E\u8D1F\u5B89\u5168\u6574\u6570");
+  }
+  const detailOnly = Boolean(filters.layoutId);
+  if (detailOnly && (filters.selectionSeed !== void 0 || (filters.layoutUsage || []).length)) {
+    throw new WisePPTError("\u5355\u9AA8\u67B6\u8BE6\u60C5\u67E5\u8BE2\u4E0D\u5F97\u4F20 selection seed \u6216 layout usage");
+  }
+  const selectionSeed = detailOnly ? null : normalizeSelectionSeed(filters.selectionSeed, "layout query selection_seed");
+  const normalizedUsage = normalizeLayoutUsage(registry, filters.layoutUsage || []);
+  const currentUsage = usageMap(normalizedUsage);
+  const order = registryIndex(registry);
+  const ranked = (registry.layouts || []).filter((layout) => {
     if (filters.layoutId && layout.layout_id !== filters.layoutId) return false;
     if (filters.pageKind && layout.page_kind !== filters.pageKind) return false;
     const roles = layout.page_kind === "relationship" ? layout.page_roles : [layout.page_role];
     if (filters.pageRole && !(roles || []).includes(filters.pageRole)) return false;
     if (filters.relationKey && !(layout.relations || []).includes(filters.relationKey)) return false;
     if ([...required].some((type) => !(layout.allowed_payload_types || []).includes(type))) return false;
-    if (filters.contentItems !== void 0 && !(layout.slots || []).some((slot) => Number.isInteger(slot.capacity?.min_items) && Number.isInteger(slot.capacity?.max_items) && slot.capacity.min_items <= filters.contentItems && filters.contentItems <= slot.capacity.max_items && (slot.allowed_payload_types || []).length)) return false;
     return true;
   }).map((layout) => ({
     layout_id: layout.layout_id,
@@ -537,8 +740,16 @@ function queryLayouts(registry, filters) {
     derivation: layout.derivation,
     emphasis: structuredClone(layout.emphasis || { access: "none", targets: [] }),
     icon_slots: structuredClone(layout.icon_slots || []),
-    slots: (layout.slots || []).map((slot) => Object.fromEntries(["slot_id", "purpose", "required", "visual_role", "capacity", "allowed_payload_types", "payload_schema"].filter((key) => key in slot).map((key) => [key, slot[key]])))
+    slots: (layout.slots || []).map((slot) => Object.fromEntries(["slot_id", "purpose", "required", "visual_role", "capacity", "allowed_payload_types", "payload_schema"].filter((key) => key in slot).map((key) => [key, slot[key]]))),
+    usage_count: usageFor(currentUsage, layout.layout_id).count,
+    last_sequence: usageFor(currentUsage, layout.layout_id).last_sequence
+  })).sort((left, right) => detailOnly ? order.get(left.layout_id) - order.get(right.layout_id) : compareByUsage(left, right, currentUsage, selectionSeed, order)).map((layout, offset) => ({
+    ...layout,
+    selection_rank: detailOnly ? null : offset + 1,
+    requires_override_if_selected: detailOnly ? null : offset > 0
   }));
+  if (filters.contentItems === void 0) return ranked;
+  return ranked.filter((layout) => (layout.slots || []).some((slot) => Number.isInteger(slot.capacity?.min_items) && Number.isInteger(slot.capacity?.max_items) && slot.capacity.min_items <= filters.contentItems && filters.contentItems <= slot.capacity.max_items && (slot.allowed_payload_types || []).length));
 }
 async function loadSeed(root, displayCode) {
   const seed = await readJson(path.join(root, "capabilities/layouts/seeds", `${displayCode.toUpperCase()}.json`), `\u9AA8\u67B6 ${displayCode} seed`);
@@ -1042,11 +1253,12 @@ ${built.css}`);
   canonicalSpec.mode = "standard";
   await writeFile(path.join(outputRoot, "deck-spec.json"), renderJson(canonicalSpec));
   const deckPlan = {
-    contract: "wise-ppt-deck-plan@4",
+    contract: DECK_PLAN_CONTRACT,
     title: spec.deck.title,
     thesis: spec.deck.thesis,
     input_type: spec.deck.input_type,
     must: structuredClone(spec.must),
+    layout_session: structuredClone(resolved.layoutSession),
     pages: resolved.map(({ slide, layout }) => ({
       page_id: slide.page_id,
       page_role: slide.page_role,
@@ -1057,7 +1269,8 @@ ${built.css}`);
       source_refs: slide.source_refs,
       source_evidence: structuredClone(slide.source_evidence),
       must_refs: slide.must_refs,
-      emphasis: slide.emphasis ? structuredClone(slide.emphasis) : null
+      emphasis: slide.emphasis ? structuredClone(slide.emphasis) : null,
+      layout_override: slide.layout_override ? structuredClone(slide.layout_override) : null
     }))
   };
   const sourceLedger = {
@@ -1298,9 +1511,10 @@ async function validateDeck(root, rawDeck) {
     source_refs: slide.source_refs,
     source_evidence: slide.source_evidence,
     must_refs: slide.must_refs,
-    emphasis: slide.emphasis ?? null
+    emphasis: slide.emphasis ?? null,
+    layout_override: slide.layout_override ?? null
   }));
-  if (deckPlan.contract !== "wise-ppt-deck-plan@4" || deckPlan.input_type !== spec.deck.input_type || canonicalJson(deckPlan.must) !== canonicalJson(spec.must) || canonicalJson(deckPlan.pages) !== canonicalJson(expectedPlanPages)) throw new WisePPTError("deck-plan \u4E0E deck-spec \u4E0D\u4E00\u81F4");
+  if (deckPlan.contract !== DECK_PLAN_CONTRACT || deckPlan.input_type !== spec.deck.input_type || canonicalJson(deckPlan.must) !== canonicalJson(spec.must) || canonicalJson(deckPlan.layout_session) !== canonicalJson(resolved.layoutSession) || canonicalJson(deckPlan.pages) !== canonicalJson(expectedPlanPages)) throw new WisePPTError("deck-plan \u4E0E deck-spec \u4E0D\u4E00\u81F4");
   const sourceLedger = await readJson(path.join(deckRoot, "source-ledger.json"), "source-ledger");
   const expectedMustSources = spec.must.map((item) => ({ must_id: item.must_id, status: item.status, page_id: item.page_id ?? null, source_refs: item.source_refs }));
   const expectedPageSources = resolved.map(({ slide }) => ({ page_id: slide.page_id, source_refs: slide.source_refs, source_evidence: slide.source_evidence, must_refs: slide.must_refs }));
@@ -1308,7 +1522,7 @@ async function validateDeck(root, rawDeck) {
   const html = await readText(path.join(deckRoot, "index.html"), "index.html");
   const $ = load(html);
   const htmlRoot = $("html").first();
-  if (htmlRoot.attr("data-deck-contract-version") !== "6" || htmlRoot.attr("data-runtime-version") !== RUNTIME_VERSION) throw new WisePPTError("index.html deck/runtime \u5408\u540C\u9519\u8BEF");
+  if (htmlRoot.attr("data-deck-contract-version") !== "7" || htmlRoot.attr("data-runtime-version") !== RUNTIME_VERSION) throw new WisePPTError("index.html deck/runtime \u5408\u540C\u9519\u8BEF");
   const expectedFinalEmphasis = resolved.some(({ slide }) => slide.emphasis) ? "semantic-focus" : "none";
   if (htmlRoot.attr("data-final-emphasis") !== expectedFinalEmphasis) throw new WisePPTError("index.html \u6700\u7EC8\u5F3A\u8C03\u72B6\u6001\u4E0E deck-spec \u4E0D\u4E00\u81F4");
   if (htmlRoot.attr("data-build-id") !== build.build_id || htmlRoot.attr("data-layout-registry-version") !== registrySha) throw new WisePPTError("index.html build/registry \u5143\u6570\u636E\u4E0D\u4E00\u81F4");
@@ -1387,7 +1601,10 @@ async function buildAndPublish(root, rawSpec, rawOutput, options = {}) {
 export {
   buildAndPublish,
   buildTo,
+  layoutSelectionState,
   loadSeed,
+  normalizeLayoutUsage,
+  normalizeSelectionSeed,
   publishBuilt,
   queryLayouts,
   registryState,
