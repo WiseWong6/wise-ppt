@@ -55,7 +55,7 @@ node <skill>/bin/wise-ppt.mjs layouts --layout-id <完整 layout_id>
 
 候选顺序是会话轮换顺序，不是质量评分。新聊天只在 `--new-session` 时随机生成一次 seed；排序本身不再取随机数。相同 registry、条件、seed 和账本必得相同结果，不同新聊天通常有不同起点。查询不删除已用候选，也不改变关系。
 
-`--content-items N` 只隐藏容量明显不匹配的显示项，不重排构建器采用的粗粒度权威 rank；因此过滤后即使只显示一个候选，它仍可能保留大于 1 的 `selection_rank` 并要求 override。单骨架详情查询只传 `--layout-id`，不传 seed 或 usage；其 `selection.mode` 为 `layout-detail`，状态和 rank 均不适用。
+`--content-items N` 只隐藏容量明显不匹配的显示项，不重排构建器采用的粗粒度权威 rank；因此过滤后即使只显示一个候选，它仍可能保留大于 1 的 `selection_rank` 并要求 override。只要仍有显示项，`selection.state` 和 `preferred_layout_id` 也按该权威池计算；一个都未显示时才是 `no-candidate`。单骨架详情查询只传 `--layout-id`，不传 seed 或 usage；其 `selection.mode` 为 `layout-detail`，状态和 rank 均不适用。
 
 轻量候选还会给出名称、说明、结构摘要、叶区数量、阅读顺序、主单元数量、必填槽用途/容量、允许强调对象和图标槽，因此无需打开 seed。详细结果中的 `payload_schema`、`emphasis.targets`、`icon_slots` 和容量才是作者接口。没有登记槽就不能加图标或换插画。`max_chars` 是锁定字体与空间下的中文保守上限，不授权缩字、改 CSS 或改内部几何。不要打开 seed 猜私有字段。
 
