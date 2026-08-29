@@ -4,48 +4,59 @@
 
 `references/catalog.html` 是人查看资产的唯一入口；`capabilities/layouts/layout-registry.json` 是当前可见骨架的确定性生产投影。Catalog、registry 和锁定 seed 不能一一对应时，standard 停止。
 
-## 轻量查询
+## 整副批量规划（生产默认）
 
-关系页示例：
+分页和路由完成后，把整副页面一次写入绝对路径的计划文件。输入合同为 `wise-ppt-layout-plan-request@1`：
 
-```text
-node <skill>/bin/wise-ppt.mjs layouts --new-session --page-kind relationship --page-role prove --relation-key evidence --compact
+```json
+{
+  "format": "wise-ppt-layout-plan-request@1",
+  "pages": [
+    {
+      "page_id": "cover",
+      "page_kind": "nonrelationship",
+      "page_role": "cover",
+      "requires": ["text"]
+    },
+    {
+      "page_id": "proof",
+      "page_kind": "relationship",
+      "page_role": "prove",
+      "relation_key": "evidence",
+      "requires": ["text"],
+      "content_items": 3
+    }
+  ]
+}
 ```
 
-非关系页示例：
+新聊天只在第一次整副规划时运行：
 
 ```text
-node <skill>/bin/wise-ppt.mjs layouts --new-session --page-kind nonrelationship --page-role cover --compact
+node <skill>/bin/wise-ppt.mjs layouts plan <page-plan.json 绝对路径> --agent-brief --new-session
 ```
 
-需要公开能力时可重复传 `--requires`：
+命令生成一次 32 位小写十六进制 `selection_seed`，并返回 `wise-ppt-layout-agent-brief@1`。同一聊天的后续 deck 把上一份 `deck-plan.json.layout_session` 的 `selection_seed/post_total/post_usage` 转成请求顶层 `layout_context`，不再传 `--new-session`。不得扫描当前目录或其他交付目录恢复旧账。
+
+第一次输出是 `mode=proposal`：命令在内部按页序推进 usage，为每页给出候选和建议 `selected_layout_id`；页面只引用 ID，完整 `payload_schema`、容量、阅读顺序、强调和图标定义集中在 `layout_definitions`，同一骨架只返回一次。接受全部建议时一副 deck 只调用一次；若建议页仍标记 `requires_override_if_selected=true`，须按返回的容量原因在 spec 填写 `layout_override`。
+
+若主 Agent 判断某页内容与建议骨架不适配，则给**整副所有页面**补齐 `selected_layout_id`，必要页补 `layout_override`，并把第一次输出的起始 `layout_context` 写回请求；不传 `--new-session`，整副再运行一次。第二次为 `mode=resolved`，会按真实选中结果从第 1 页重新推进账本；`layout_definition_policy=reuse-proposal-brief` 表示不重复第一次已给出的骨架定义。不得只重算改动页，也不得把第一次的 `projection.post_usage` 当成本 deck 的起点。整副最多两次模型/工具往返。
+
+`projection.post_total/post_usage` 仅表示本次整副结果；正式续账仍以 build 生成的 `deck-plan.json.layout_session` 为准。多 Agent 可以并行判断 claim、`page_role` 和 `relation_key`，最终计划只能由主 Agent 整副定版，避免同时使用旧账。
+
+`content_items` 只保留“至少一个公开槽接受 N 项”的骨架，不代表整页总条数一定合适。`fixed-slot` 是不可拆的完整内容块，容量固定为 1；`dom-explicit` 只证明 DOM 中有明确重复项，能否增减仍只看公开容量。
+
+## 单页查询（诊断兼容）
+
+旧的单页命令保留给排障和指定骨架详情，不再作为生产逐页循环：
 
 ```text
-node <skill>/bin/wise-ppt.mjs layouts --new-session --page-kind relationship --page-role prove --relation-key evidence --requires text --requires icon --compact
-```
-
-`--new-session` 只用于新聊天的第一次候选查询：命令生成一个 32 位小写十六进制 `selection_seed` 并返回空账本。主 Agent 保存这个 seed；同一聊天之后每次候选查询都传 `--selection-seed <selection_seed>`，不能再次传 `--new-session`。
-
-同一聊天从上一份 `deck-plan.json.layout_session.post_usage` 继续时，每项重复传：
-
-```text
---selection-seed <selection_seed>
---layout-usage <完整 layout_id>:<count>:<last_sequence>
-```
-
-第一份 deck 的第 1 页从空 usage 查询。选中第 N 页后，立刻把该 `layout_id` 的 `count` 加 1、`last_sequence` 设为“deck 开始前的 `prior_total + N`”，再用更新后的 usage 查询第 N+1 页。spec 的 `layout_context` 只记录本 deck 第 1 页选择前的 seed 和账本；deck 内临时账本由逐页查询推进，构建器按页序复算。
-
-不得扫描当前目录或其他交付目录恢复旧账；只有当前聊天中上一份收据可以续用。多 Agent 可以并行判断 claim、`page_role` 和 `relation_key`，最终骨架必须由主 Agent 按页序查询和分配，避免并行任务同时用同一份旧账。
-
-已知某组内容项目数时可加 `--content-items N`。它只保留“至少一个公开槽接受 N 项”的骨架，不代表整页总条数一定合适。`fixed-slot` 是一个不可拆的完整内容块，容量固定为 1；`dom-explicit` 只证明 DOM 中有明确重复项，能否增减仍只看公开容量。
-
-候选缩小后，用下面的查询读取一个骨架的完整公开接口：
-
-```text
+node <skill>/bin/wise-ppt.mjs layouts --new-session --page-kind relationship --page-role prove --relation-key evidence --requires text --compact
+node <skill>/bin/wise-ppt.mjs layouts --selection-seed <selection_seed> --layout-usage <layout_id>:<count>:<last_sequence> --page-kind relationship --page-role prove --relation-key evidence --compact
 node <skill>/bin/wise-ppt.mjs layouts --layout-id <完整 layout_id>
 ```
 
-候选查询输出为 `wise-ppt-layout-query@2`。每个候选带 `usage_count`、`last_sequence`、`selection_rank` 和 `requires_override_if_selected`；顶层 `selection.state` 只会是：
+候选查询输出为 `wise-ppt-layout-query@2`。每个候选带 `usage_count`、`last_sequence`、`selection_rank` 和 `requires_override_if_selected`；单骨架详情的 `selection.mode` 为 `layout-detail`。候选状态只会是：
 
 - `fresh-available`：有从未使用候选；
 - `least-used-available`：没有新候选，但使用次数不齐；
@@ -53,11 +64,11 @@ node <skill>/bin/wise-ppt.mjs layouts --layout-id <完整 layout_id>
 - `forced-single`：硬条件下只有一个候选；
 - `no-candidate`：没有合法候选。
 
-候选顺序是会话轮换顺序，不是质量评分。新聊天只在 `--new-session` 时随机生成一次 seed；排序本身不再取随机数。相同 registry、条件、seed 和账本必得相同结果，不同新聊天通常有不同起点。查询不删除已用候选，也不改变关系。
+候选顺序是会话轮换顺序，不是质量评分。新聊天只在 `--new-session` 时随机生成一次 seed；排序本身不再取随机数。相同 registry、条件、seed 和账本必得相同结果，不同新聊天通常有不同起点。批量规划与旧单页命令使用同一排序器，内部按页序推进 usage；查询不删除已用候选，也不改变关系。
 
-`--content-items N` 只隐藏容量明显不匹配的显示项，不重排构建器采用的粗粒度权威 rank；因此过滤后即使只显示一个候选，它仍可能保留大于 1 的 `selection_rank` 并要求 override。只要仍有显示项，`selection.state` 和 `preferred_layout_id` 也按该权威池计算；一个都未显示时才是 `no-candidate`。单骨架详情查询只传 `--layout-id`，不传 seed 或 usage；其 `selection.mode` 为 `layout-detail`，状态和 rank 均不适用。
+`content_items`（单页命令为 `--content-items N`）只隐藏容量明显不匹配的显示项，不重排构建器采用的粗粒度权威 rank；因此过滤后即使只显示一个候选，它仍可能保留大于 1 的 `selection_rank` 并要求 override。只要仍有显示项，`selection.state` 和 `preferred_layout_id` 也按该权威池计算；一个都未显示时才是 `no-candidate`。单骨架详情只传 `--layout-id`，不传 seed 或 usage；状态和 rank 均不适用。
 
-轻量候选还会给出名称、说明、结构摘要、叶区数量、阅读顺序、主单元数量、必填槽用途/容量、允许强调对象和图标槽，因此无需打开 seed。详细结果中的 `payload_schema`、`emphasis.targets`、`icon_slots` 和容量才是作者接口。没有登记槽就不能加图标或换插画。`max_chars` 是锁定字体与空间下的中文保守上限，不授权缩字、改 CSS 或改内部几何。不要打开 seed 猜私有字段。
+Agent brief 和单页详情会给出名称、说明、结构摘要、阅读顺序、槽用途/容量、`payload_schema`、`emphasis.targets` 与 `icon_slots`，因此无需打开 seed。没有登记槽就不能加图标或换插画。`max_chars` 是锁定字体与空间下的中文保守上限，不授权缩字、改 CSS 或改内部几何。不要打开 seed 猜私有字段。
 
 `layout_id` 锁定页面结构、组件组合和默认 renderer。文案、已审核插画与图标可按公开槽替换；组件不得自动替换。查询里的 `recommended_component_ids` 只是内部投影，不是作者入口。用户明确授权后，只有公开容量已登记的同结构调整仍属 standard，例如同一流程槽允许五项时可把四步填成五步；需要换组件组合或 renderer 时申请隔离重绘。
 

@@ -1,6 +1,9 @@
 const DECK_CONTRACT = "wise-ppt-deck@7";
 const DECK_PLAN_CONTRACT = "wise-ppt-deck-plan@5";
 const LAYOUT_QUERY_FORMAT = "wise-ppt-layout-query@2";
+const LAYOUT_PLAN_REQUEST_FORMAT = "wise-ppt-layout-plan-request@1";
+const LAYOUT_AGENT_BRIEF_FORMAT = "wise-ppt-layout-agent-brief@1";
+const PREFLIGHT_REPORT_FORMAT = "wise-ppt-preflight@1";
 const BUILD_CONTRACT = "wise-ppt-build@4";
 const RUNTIME_VERSION = "wise-ppt-runtime@4";
 const DELIVERY_FORMAT = "wise-ppt-delivery@3";
@@ -30,9 +33,12 @@ export {
   DELIVERY_FORMAT,
   EXPERIMENTAL_DELIVERY_CONTRACT,
   EXPERIMENT_MARKER,
+  LAYOUT_AGENT_BRIEF_FORMAT,
+  LAYOUT_PLAN_REQUEST_FORMAT,
   LAYOUT_QUERY_FORMAT,
   MIN_CHROME_MAJOR,
   OUTPUT_MARKER,
+  PREFLIGHT_REPORT_FORMAT,
   REQUIRED_RUNTIME_FILES,
   REQUIRED_THEME_FILES,
   RUNTIME_VERSION,

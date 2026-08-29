@@ -1,8 +1,20 @@
 #!/usr/bin/env node
 import { randomBytes } from "node:crypto";
 import path from "node:path";
-import { LAYOUT_QUERY_FORMAT, SUPPORTED_NODE_MAJORS } from "./constants.mjs";
-import { renderJson, runtimeRoot, WisePPTError } from "./common.mjs";
+import {
+  LAYOUT_AGENT_BRIEF_FORMAT,
+  LAYOUT_QUERY_FORMAT,
+  PREFLIGHT_REPORT_FORMAT,
+  SUPPORTED_NODE_MAJORS
+} from "./constants.mjs";
+import {
+  assertAbsolute,
+  assertNoSymlinkComponents,
+  readJson,
+  renderJson,
+  runtimeRoot,
+  WisePPTError
+} from "./common.mjs";
 import { verifyBundle } from "./bundle.mjs";
 import { doctor } from "./doctor.mjs";
 import { deliverStandard } from "./deliver.mjs";
@@ -10,6 +22,8 @@ import {
   buildAndPublish,
   layoutSelectionState,
   normalizeLayoutUsage,
+  planLayouts,
+  preflightSpec,
   queryLayouts,
   registryState,
   validateDeck
@@ -19,6 +33,8 @@ function usage() {
     "\u7528\u6CD5:",
     "  node <skill>/bin/wise-ppt.mjs doctor",
     "  node <skill>/bin/wise-ppt.mjs layouts [filters]",
+    "  node <skill>/bin/wise-ppt.mjs layouts plan <page-plan.json> --agent-brief [--new-session]",
+    "  node <skill>/bin/wise-ppt.mjs preflight <deck-spec.json> --all-errors",
     "  node <skill>/bin/wise-ppt.mjs build <deck-spec.json> --out <\u7EDD\u5BF9\u76EE\u5F55>",
     "  node <skill>/bin/wise-ppt.mjs validate <\u7EDD\u5BF9 deck \u76EE\u5F55>",
     "  node <skill>/bin/wise-ppt.mjs deliver <\u7EDD\u5BF9 deck \u76EE\u5F55>",
@@ -29,9 +45,11 @@ function commandUsage(command) {
   const lines = {
     doctor: ["node <skill>/bin/wise-ppt.mjs doctor"],
     layouts: [
+      "\u6574\u526F\u89C4\u5212: node <skill>/bin/wise-ppt.mjs layouts plan <page-plan.json \u7EDD\u5BF9\u8DEF\u5F84> --agent-brief [--new-session]",
       "\u5019\u9009\u67E5\u8BE2: node <skill>/bin/wise-ppt.mjs layouts (--new-session | --selection-seed SEED) [--page-kind KIND] [--page-role ROLE] [--relation-key KEY] [--requires TYPE] [--content-items N] [--layout-usage ID:COUNT:LAST_SEQUENCE] [--compact]",
       "\u8BE6\u60C5\u67E5\u8BE2: node <skill>/bin/wise-ppt.mjs layouts --layout-id ID"
     ],
+    preflight: ["node <skill>/bin/wise-ppt.mjs preflight <deck-spec.json \u7EDD\u5BF9\u8DEF\u5F84> --all-errors"],
     build: ["node <skill>/bin/wise-ppt.mjs build <deck-spec.json \u7EDD\u5BF9\u8DEF\u5F84> --out <\u7EDD\u5BF9\u76EE\u5F55>"],
     validate: ["node <skill>/bin/wise-ppt.mjs validate <\u7EDD\u5BF9 deck \u76EE\u5F55>"],
     deliver: ["node <skill>/bin/wise-ppt.mjs deliver <\u7EDD\u5BF9 deck \u76EE\u5F55>"],
@@ -56,7 +74,7 @@ function parseOptions(values, multiple = /* @__PURE__ */ new Set()) {
       positionals.push(item);
       continue;
     }
-    if (item === "--compact" || item === "--all-pages" || item === "--open" || item === "--new-session") {
+    if (item === "--compact" || item === "--all-pages" || item === "--open" || item === "--new-session" || item === "--agent-brief" || item === "--all-errors") {
       options[item.slice(2)] = true;
       continue;
     }
@@ -130,7 +148,7 @@ async function main(argv = process.argv.slice(2)) {
 `);
     return;
   }
-  if (rest.length === 1 && (rest[0] === "--help" || rest[0] === "-h") && ["doctor", "layouts", "build", "validate", "deliver", "experimental"].includes(command)) {
+  if (rest.length === 1 && (rest[0] === "--help" || rest[0] === "-h") && ["doctor", "layouts", "preflight", "build", "validate", "deliver", "experimental"].includes(command)) {
     process.stdout.write(commandUsage(command));
     return;
   }
@@ -142,6 +160,35 @@ ${usage()}`);
   }
   await verifyBundle(root);
   if (command === "layouts") {
+    if (rest[0] === "plan") {
+      if (rest.length === 2 && (rest[1] === "--help" || rest[1] === "-h")) {
+        process.stdout.write(`\u7528\u6CD5:
+  ${commandUsage("layouts").split("\n").find((line) => line.includes("\u6574\u526F\u89C4\u5212:")).trim().replace("\u6574\u526F\u89C4\u5212: ", "")}
+`);
+        return;
+      }
+      const { positionals: positionals2, options: options2 } = parseOptions(rest.slice(1));
+      const allowed2 = /* @__PURE__ */ new Set(["agent-brief", "new-session"]);
+      const unknown2 = Object.keys(options2).filter((key) => !allowed2.has(key));
+      if (positionals2.length !== 1 || unknown2.length || options2["agent-brief"] !== true) {
+        throw new WisePPTError(`layouts plan \u53C2\u6570\u9519\u8BEF
+${commandUsage("layouts")}`);
+      }
+      const requestPath = assertAbsolute(positionals2[0], "layout plan \u8F93\u5165");
+      await assertNoSymlinkComponents(requestPath, "layout plan \u8F93\u5165");
+      const request = await readJson(requestPath, "layout plan");
+      const state2 = await registryState(root);
+      const result = planLayouts(state2.registry, request, {
+        newSelectionSeed: options2["new-session"] ? randomBytes(16).toString("hex") : void 0
+      });
+      process.stdout.write(renderJson({
+        format: LAYOUT_AGENT_BRIEF_FORMAT,
+        registry_sha256: state2.sha256,
+        ...result
+      }));
+      if (result.status !== "pass") process.exitCode = 1;
+      return;
+    }
     const { positionals, options } = parseOptions(rest, /* @__PURE__ */ new Set(["requires", "layout-usage"]));
     if (positionals.length) throw new WisePPTError(`layouts \u4E0D\u63A5\u53D7\u4F4D\u7F6E\u53C2\u6570: ${positionals.join(" ")}`);
     const allowed = /* @__PURE__ */ new Set(["layout-id", "page-kind", "page-role", "relation-key", "requires", "content-items", "layout-usage", "selection-seed", "new-session", "compact"]);
@@ -188,6 +235,26 @@ ${usage()}`);
       count: matches.length,
       layouts: options.compact ? matches.map(compactLayout) : matches
     }));
+    return;
+  }
+  if (command === "preflight") {
+    const { positionals, options } = parseOptions(rest);
+    if (positionals.length !== 1 || options["all-errors"] !== true || Object.keys(options).some((key) => key !== "all-errors")) {
+      throw new WisePPTError(`preflight \u53C2\u6570\u9519\u8BEF
+${commandUsage("preflight")}`);
+    }
+    const specPath = assertAbsolute(positionals[0], "preflight \u8F93\u5165");
+    await assertNoSymlinkComponents(specPath, "preflight \u8F93\u5165");
+    const spec = await readJson(specPath, "deck-spec");
+    const state = await registryState(root);
+    const result = await preflightSpec(root, spec, state.index);
+    process.stdout.write(renderJson({
+      format: PREFLIGHT_REPORT_FORMAT,
+      registry_sha256: state.sha256,
+      checks: { browser_started: false, files_written: 0, fonts_copied: 0 },
+      ...result
+    }));
+    if (result.status !== "pass") process.exitCode = 1;
     return;
   }
   if (command === "build") {

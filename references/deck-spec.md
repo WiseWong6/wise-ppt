@@ -42,14 +42,14 @@ standard 顶层不接受其他字段。
 ```
 
 - `scope` 只能是 `session`；
-- `selection_seed` 是新聊天第一次候选查询用 `--new-session` 生成的 32 位小写十六进制字符串，同一聊天始终复用；
+- `selection_seed` 是新聊天第一次整副规划用 `layouts plan ... --new-session` 生成的 32 位小写十六进制字符串，同一聊天始终复用；
 - `prior_total` 是当前聊天此前已分配的总页数，必须是非负整数；
 - `usage` 只保留已使用骨架，按完整 `layout_id` 升序排列，ID 不得重复；
 - `count`、`last_sequence` 都是正安全整数；所有 `count` 总和必须等于 `prior_total`，最后一次序号不得重复、必须可由账本实现，最大值必须等于 `prior_total`；
 - 当前聊天首份 deck 使用新 seed、`prior_total: 0` 与 `usage: []`；后续 deck 原样承接上一份 `deck-plan.json.layout_session` 的 `selection_seed/post_total/post_usage`；
 - 只有新聊天才生成新 seed 并清零。不得自动扫描目录、旧文件或其他聊天的收据。
 
-这不是隐藏缓存，编译器也无法从目录或平台猜出聊天边界。会话连续性由主 Agent 显式携带；spec 固定 seed 与历史后，相同输入仍生成相同产物。
+这不是隐藏缓存，编译器也无法从目录或平台猜出聊天边界。会话连续性由主 Agent 显式携带；批量规划在进程内按页序推进 usage，spec 只固定整副开始前的 seed 与历史，相同输入仍生成相同产物。
 
 ## deck
 
@@ -140,7 +140,7 @@ source-backed 页面必须有非空 `source_refs`，且 `source_evidence` 的 ke
 
 `basis` 只允许 `capacity`、`binding`、`primary-support`、`reading-order`、`user-continuity`；`reason` 必须非空。`user-continuity` 只用于用户明确要求继续沿用某版式。rank=1 禁止填写；单候选和正常复用由编译器记录，不要求作者补无意义理由。
 
-`deck-plan@5.layout_session` 会记录 `selection_seed`、排序依据、选择前后的 usage，以及每页候选数、首选 ID、选中前计数、权威 rank、决策类型和 override。它按 spec 中的 deck 起始账本逐页推进，可用来为当前聊天的下一份 deck 续账。
+`deck-plan@5.layout_session` 会记录 `selection_seed`、排序依据、选择前后的 usage，以及每页候选数、首选 ID、选中前计数、权威 rank、决策类型和 override。它按 spec 中的 deck 起始账本逐页推进，可用来为当前聊天的下一份 deck 续账；必须与最终一次 `layouts plan` 的 resolved 结果一致。
 
 ## 逐页强调
 
@@ -157,7 +157,7 @@ source-backed 页面必须有非空 `source_refs`，且 `source_evidence` 的 ke
 
 ## payload
 
-payload 只允许 `text`、`data`、`icons` 三个分组；不存在的分组省略。每组都是 `slot_id → value` 对象，槽名、允许类型、binding key、字符和数量上限只取 `node <skill>/bin/wise-ppt.mjs layouts` 输出的 `payload_schema`。
+payload 只允许 `text`、`data`、`icons` 三个分组；不存在的分组省略。每组都是 `slot_id → value` 对象，槽名、允许类型、binding key、字符和数量上限只取 `layouts plan ... --agent-brief` 的 `layout_definitions[].slots[].payload_schema`；单骨架排障可用 `layouts --layout-id`。
 
 - 单字段固定槽可以直接传字符串或数字，此时项目数固定为 1；
 - 多字段槽必须同时传 `fields` 和 `items`，key 只能来自公开 `binding_keys`；用每条 `binding_keys[].example` 判断它对应的标签、数值或说明职责，再填写同职责的真实内容，不能把 example 原样当作成品；
@@ -185,6 +185,16 @@ payload 只允许 `text`、`data`、`icons` 三个分组；不存在的分组省
 standard spec 不接受任意图片、页面 CSS/HTML/SVG、手写 geometry/structure、临时组件、页面级主题、未登记 layout、隐藏内容或任何未登记的整页生成方式。代理不得新写 SVG/HTML/CSS 后伪装成图片；不得修改编译产物，也不得读取 seed 私有字段绕过公开接口。
 
 内容不适配时只走 `references/layouts.md` 的固定顺序。文案、已登记插画和图标可按槽替换；组件不自动替换。用户明确授权且 registry 已公开同结构受控容量时仍属 standard；改变结构骨架、组件组合、分栏、阅读顺序或使用未审核能力才停止 standard 并申请 experimental。
+
+## 写完先全量预检
+
+spec 一次写完后先运行：
+
+```text
+node <skill>/bin/wise-ppt.mjs preflight <deck-spec.json 绝对路径> --all-errors
+```
+
+输出合同是 `wise-ppt-preflight@1`。它使用 build 的同一组 spec 规则，一次返回当前输入中可独立发现的全部问题，不启动 Chrome、不复制字体、不写成品。损坏 JSON 或损坏的 registry/authority 无法安全继续，仍立即失败。`status=pass` 只表示输入门禁通过，不替代 build、validate 和 deliver；任何修改都要重新 preflight。
 
 ## 输出目录收编与重建
 

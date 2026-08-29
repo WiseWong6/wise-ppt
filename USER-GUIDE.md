@@ -59,18 +59,24 @@ node wise-ppt/bin/wise-ppt.mjs doctor
 ```text
 node <skill>/bin/wise-ppt.mjs doctor
 node <skill>/bin/wise-ppt.mjs layouts [filters]
+node <skill>/bin/wise-ppt.mjs layouts plan <page-plan.json 绝对路径> --agent-brief [--new-session]
+node <skill>/bin/wise-ppt.mjs preflight <deck-spec.json 绝对路径> --all-errors
 node <skill>/bin/wise-ppt.mjs build <deck-spec.json 绝对路径> --out <绝对目录>
 node <skill>/bin/wise-ppt.mjs validate <绝对 deck 目录>
 node <skill>/bin/wise-ppt.mjs deliver <绝对 deck 目录>
 ```
 
-新聊天第一次候选查询使用 `layouts --new-session ...`，保存返回的 `selection_seed`；同一聊天后续页和 deck 都改传 `--selection-seed <seed>`。Agent 会逐页更新账本，并把上一份 `deck-plan.json.layout_session.post_usage` 转为重复的 `--layout-usage <layout_id>:<count>:<last_sequence>`。候选按少用、久未用、seed 稳定哈希轮换，registry 顺序只在哈希碰撞时兜底；不同聊天通常有不同起点，同一 seed 和账本可复现。新聊天从空历史开始，不扫描旧目录恢复历史。
+生产默认使用 `layouts plan ... --agent-brief` 整副查询。新聊天第一次加 `--new-session` 并保存返回的 `selection_seed`；同一聊天后续 deck 从上一份 `deck-plan.json.layout_session.post_usage` 续账。命令内部按页序更新 usage：全部接受建议只调用一次；Agent 改选时整副补齐 `selected_layout_id` 后再确认一次，不做逐页模型往返。候选按少用、久未用、seed 稳定哈希轮换；同一 seed 和账本可复现。旧的 `layouts --selection-seed <seed> ...` 只保留给单页排障和 `--layout-id` 详情。新聊天从空历史开始，不扫描目录恢复历史。
+
+`preflight --all-errors` 会在 build 前一次列出当前 spec 中可独立发现的全部问题；它不写成品。损坏 JSON 或注册表仍立即失败。预检通过后仍要完整执行 build、validate、deliver。
 
 只有用户明确批准结构重绘时才使用：
 
 ```text
 node <skill>/bin/wise-ppt.mjs experimental prepare|build|validate|preview|deliver ...
 ```
+
+standard 成品输出后，Agent 会复核 claim、阅读顺序、主次和固定组件语义。若发现语义与版式/组件不匹配，会点名页面和证据并询问是否进入 experimental；未经明确批准不会切换模式或修改成品。
 
 ## 字体规则
 
@@ -85,6 +91,6 @@ node <skill>/bin/wise-ppt.mjs experimental prepare|build|validate|preview|delive
 
 ## 交付边界
 
-输入使用 `wise-ppt-deck@7`，构建计划使用 `wise-ppt-deck-plan@5`，构建使用 `wise-ppt-build@4`，运行时使用 `wise-ppt-runtime@4`；正式交付为 `wise-ppt-delivery@3`，实验交付为 `wise-ppt-experimental-delivery@5`。逐页声明的强调会进入最终 HTML 和 PDF；普通/强调四态只用于验证。实验 PDF 不叠加可见水印，通过文件名与 manifest 表明实验身份。
+整副规划输入/输出为 `wise-ppt-layout-plan-request@1` / `wise-ppt-layout-agent-brief@1`，全量预检为 `wise-ppt-preflight@1`。成品输入使用 `wise-ppt-deck@7`，构建计划使用 `wise-ppt-deck-plan@5`，构建使用 `wise-ppt-build@4`，运行时使用 `wise-ppt-runtime@4`；正式交付为 `wise-ppt-delivery@3`，实验交付为 `wise-ppt-experimental-delivery@5`。逐页声明的强调会进入最终 HTML 和 PDF；普通/强调四态只用于验证。实验 PDF 不叠加可见水印，通过文件名与 manifest 表明实验身份。
 
 `deck.pdf` 和 `delivery-manifest.json` 成对提交。任何导出或提交失败都不会破坏上一份正式交付物。
