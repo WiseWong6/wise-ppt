@@ -16,6 +16,7 @@ import {
   DECK_CONTRACT,
   DECK_PLAN_CONTRACT,
   DEFAULT_SIGNATURE,
+  LAYOUT_PLAN_REQUEST_FORMAT,
   OUTPUT_MARKER,
   REQUIRED_RUNTIME_FILES,
   REQUIRED_THEME_FILES,
@@ -60,6 +61,17 @@ const ALLOWED_SLIDE_FIELDS = /* @__PURE__ */ new Set([
 const ALLOWED_EMPHASIS_FIELDS = /* @__PURE__ */ new Set(["target", "reason"]);
 const ALLOWED_LAYOUT_OVERRIDE_FIELDS = /* @__PURE__ */ new Set(["basis", "reason"]);
 const ALLOWED_MUST_FIELDS = /* @__PURE__ */ new Set(["must_id", "content", "status", "page_id", "reason", "visible_evidence", "source_refs"]);
+const ALLOWED_LAYOUT_PLAN_FIELDS = /* @__PURE__ */ new Set(["format", "layout_context", "pages"]);
+const ALLOWED_LAYOUT_PLAN_PAGE_FIELDS = /* @__PURE__ */ new Set([
+  "page_id",
+  "page_kind",
+  "page_role",
+  "relation_key",
+  "requires",
+  "content_items",
+  "selected_layout_id",
+  "layout_override"
+]);
 const PAYLOAD_CATEGORIES = Object.freeze({ text: "text", data: "data", icons: "icon" });
 const PAYLOAD_SURFACES = Object.freeze({ text: "text", data: "text", icons: "icon" });
 const INPUT_TYPES = /* @__PURE__ */ new Set(["pdf", "url", "multi-doc", "existing-deck", "oral", "short-text"]);
@@ -161,7 +173,7 @@ function normalizeUsageEntries(entries, layoutIds, label, options = {}) {
 function normalizeLayoutUsage(registry, entries = []) {
   return normalizeUsageEntries(entries, new Set((registry.layouts || []).map((layout) => layout.layout_id)), "layout usage");
 }
-function validateLayoutContext(value, layoutIds) {
+function normalizeLayoutContext(value, layoutIds) {
   if (!value || typeof value !== "object" || Array.isArray(value)) throw new WisePPTError("deck-spec.layout_context \u5FC5\u987B\u662F\u5BF9\u8C61");
   assertKnownKeys(value, ALLOWED_LAYOUT_CONTEXT_FIELDS, "deck-spec.layout_context");
   if (value.scope !== "session") throw new WisePPTError("deck-spec.layout_context.scope \u5FC5\u987B\u662F session");
@@ -501,6 +513,22 @@ function hardLayoutCandidates(index, slide, chosenLayout) {
     return true;
   });
 }
+function normalizedLayoutOverride(slide, requiresOverride, selectionRank, preferredLayoutId) {
+  if (slide.layout_override !== void 0) {
+    if (!slide.layout_override || typeof slide.layout_override !== "object" || Array.isArray(slide.layout_override)) throw new WisePPTError(`${slide.page_id}.layout_override \u5FC5\u987B\u662F\u5BF9\u8C61`);
+    assertKnownKeys(slide.layout_override, ALLOWED_LAYOUT_OVERRIDE_FIELDS, `${slide.page_id}.layout_override`);
+    const basis = plainString(slide.layout_override.basis, `${slide.page_id}.layout_override.basis`);
+    if (!LAYOUT_OVERRIDE_BASES.has(basis)) throw new WisePPTError(`${slide.page_id}.layout_override.basis \u672A\u767B\u8BB0: ${basis}`);
+    plainString(slide.layout_override.reason, `${slide.page_id}.layout_override.reason`);
+  }
+  if (requiresOverride && slide.layout_override === void 0) {
+    throw new WisePPTError(`${slide.page_id} \u9009\u62E9\u7684 ${slide.layout_id} \u5728\u786C\u5019\u9009\u6392\u5E8F\u4E2D\u4E3A\u7B2C ${selectionRank}\uFF0C\u9996\u9009\u4E3A ${preferredLayoutId}\uFF1B\u5FC5\u987B\u586B\u5199 layout_override`);
+  }
+  if (!requiresOverride && slide.layout_override !== void 0) {
+    throw new WisePPTError(`${slide.page_id}.layout_override \u6CA1\u6709\u8D8A\u8FC7\u6392\u5E8F\u66F4\u9760\u524D\u7684\u786C\u5019\u9009\uFF0C\u4E0D\u5F97\u586B\u5199`);
+  }
+  return slide.layout_override ? structuredClone(slide.layout_override) : null;
+}
 function buildLayoutSessionReceipt(resolved, index, layoutContext) {
   const currentUsage = usageMap(layoutContext);
   const order = new Map([...index.keys()].map((layoutId, offset) => [layoutId, offset]));
@@ -514,19 +542,7 @@ function buildLayoutSessionReceipt(resolved, index, layoutContext) {
     const minimumUsage = Math.min(...candidates.map((candidate) => usageFor(currentUsage, candidate.layout_id).count));
     const selectionRank = ranked.findIndex((candidate) => candidate.layout_id === layout.layout_id) + 1;
     const requiresOverride = selectionRank > 1;
-    if (slide.layout_override !== void 0) {
-      if (!slide.layout_override || typeof slide.layout_override !== "object" || Array.isArray(slide.layout_override)) throw new WisePPTError(`${slide.page_id}.layout_override \u5FC5\u987B\u662F\u5BF9\u8C61`);
-      assertKnownKeys(slide.layout_override, ALLOWED_LAYOUT_OVERRIDE_FIELDS, `${slide.page_id}.layout_override`);
-      const basis = plainString(slide.layout_override.basis, `${slide.page_id}.layout_override.basis`);
-      if (!LAYOUT_OVERRIDE_BASES.has(basis)) throw new WisePPTError(`${slide.page_id}.layout_override.basis \u672A\u767B\u8BB0: ${basis}`);
-      plainString(slide.layout_override.reason, `${slide.page_id}.layout_override.reason`);
-    }
-    if (requiresOverride && slide.layout_override === void 0) {
-      throw new WisePPTError(`${slide.page_id} \u9009\u62E9\u7684 ${layout.layout_id} \u5728\u786C\u5019\u9009\u6392\u5E8F\u4E2D\u4E3A\u7B2C ${selectionRank}\uFF0C\u9996\u9009\u4E3A ${ranked[0].layout_id}\uFF1B\u5FC5\u987B\u586B\u5199 layout_override`);
-    }
-    if (!requiresOverride && slide.layout_override !== void 0) {
-      throw new WisePPTError(`${slide.page_id}.layout_override \u6CA1\u6709\u8D8A\u8FC7\u6392\u5E8F\u66F4\u9760\u524D\u7684\u786C\u5019\u9009\uFF0C\u4E0D\u5F97\u586B\u5199`);
-    }
+    const layoutOverride = normalizedLayoutOverride(slide, requiresOverride, selectionRank, ranked[0].layout_id);
     const enrichedCandidates = candidates.map((candidate) => ({
       usage_count: usageFor(currentUsage, candidate.layout_id).count
     }));
@@ -540,7 +556,7 @@ function buildLayoutSessionReceipt(resolved, index, layoutContext) {
       selection_rank: selectionRank,
       preferred_layout_id: ranked[0].layout_id,
       decision_type: layoutSelectionState(enrichedCandidates),
-      layout_override: slide.layout_override ? structuredClone(slide.layout_override) : null
+      layout_override: layoutOverride
     });
     const sequence = layoutContext.prior_total + offset + 1;
     currentUsage.set(layout.layout_id, {
@@ -561,6 +577,324 @@ function buildLayoutSessionReceipt(resolved, index, layoutContext) {
     pages
   };
 }
+function preflightCollector() {
+  const errors = [];
+  const seen = /* @__PURE__ */ new Set();
+  const add = (code, pathName, pageId, error) => {
+    if (!(error instanceof WisePPTError)) throw error;
+    const issue = { code, page_id: pageId || null, path: pathName, message: error.message };
+    const key = canonicalJson(issue);
+    if (!seen.has(key)) {
+      seen.add(key);
+      errors.push(issue);
+    }
+  };
+  const check = (code, pathName, pageId, operation, fallback = null) => {
+    try {
+      return operation();
+    } catch (error) {
+      add(code, pathName, pageId, error);
+      return fallback;
+    }
+  };
+  const checkAsync = async (code, pathName, pageId, operation, fallback = null) => {
+    try {
+      return await operation();
+    } catch (error) {
+      add(code, pathName, pageId, error);
+      return fallback;
+    }
+  };
+  return { errors, add, check, checkAsync };
+}
+function forbiddenSpecPaths(value, current = "", found = []) {
+  if (Array.isArray(value)) {
+    value.forEach((child, index) => forbiddenSpecPaths(child, `${current}[${index}]`, found));
+    return found;
+  }
+  if (!value || typeof value !== "object") return found;
+  for (const [key, child] of Object.entries(value)) {
+    const normalized = key.toLowerCase().replaceAll("-", "_");
+    const keyPath = current ? `${current}.${key}` : key;
+    if (FORBIDDEN_KEYS.has(normalized)) found.push(keyPath);
+    else if (!(normalized === "payload" && current.startsWith("slides["))) forbiddenSpecPaths(child, keyPath, found);
+  }
+  return found;
+}
+function assertKnownPreflightKeys(value, allowed, label) {
+  const unknown = Object.keys(value).filter((key) => {
+    const normalized = key.toLowerCase().replaceAll("-", "_");
+    return !allowed.has(key) && !FORBIDDEN_KEYS.has(normalized);
+  });
+  if (unknown.length) throw new WisePPTError(`${label} \u672A\u767B\u8BB0\u5B57\u6BB5: ${unknown.sort().join(", ")}`);
+}
+function collectLayoutSessionIssues(resolved, index, layoutContext, collector) {
+  const currentUsage = usageMap(layoutContext);
+  const order = new Map([...index.keys()].map((layoutId, offset) => [layoutId, offset]));
+  const postTotal = layoutContext.prior_total + resolved.length;
+  if (!Number.isSafeInteger(postTotal)) {
+    collector.add("layout-session.total", "layout_context.prior_total", null, new WisePPTError("layout session post_total \u8D85\u8FC7\u5B89\u5168\u6574\u6570\u8303\u56F4"));
+    return;
+  }
+  for (const [offset, { slide, layout, slideOffset }] of resolved.entries()) {
+    const candidates = hardLayoutCandidates(index, slide, layout);
+    const ranked = [...candidates].sort((left, right) => compareByUsage(left, right, currentUsage, layoutContext.selection_seed, order));
+    const selectionRank = ranked.findIndex((candidate) => candidate.layout_id === layout.layout_id) + 1;
+    if (selectionRank > 0) {
+      collector.check(
+        "layout.override-invalid",
+        `slides[${slideOffset + 1}].layout_override`,
+        slide.page_id,
+        () => normalizedLayoutOverride(slide, selectionRank > 1, selectionRank, ranked[0].layout_id)
+      );
+      const before = usageFor(currentUsage, layout.layout_id);
+      currentUsage.set(layout.layout_id, {
+        layout_id: layout.layout_id,
+        count: before.count + 1,
+        last_sequence: layoutContext.prior_total + offset + 1
+      });
+    }
+  }
+}
+async function preflightSpec(root, spec, layoutIndex = null) {
+  const collector = preflightCollector();
+  const { add, check, checkAsync } = collector;
+  const record = spec && typeof spec === "object" && !Array.isArray(spec);
+  if (!record) {
+    add("spec.object-required", "$", null, new WisePPTError("deck-spec \u9876\u5C42\u5FC5\u987B\u662F\u5BF9\u8C61"));
+    return { status: "fail", error_count: collector.errors.length, errors: collector.errors };
+  }
+  check("spec.unknown-field", "$", null, () => assertKnownPreflightKeys(spec, ALLOWED_TOP_LEVEL, "deck-spec \u9876\u5C42"));
+  if (spec.contract !== DECK_CONTRACT) add("spec.contract", "contract", null, new WisePPTError(`deck-spec.contract \u5FC5\u987B\u662F ${DECK_CONTRACT}`));
+  if ((spec.mode || "standard") !== "standard") add("spec.mode", "mode", null, new WisePPTError("\u516C\u5F00 build \u53EA\u63A5\u53D7 mode=standard\uFF1B\u5B9E\u9A8C\u9AA8\u67B6\u4E0D\u80FD\u6DF7\u5165\u6807\u51C6\u6210\u54C1"));
+  for (const forbiddenPath of forbiddenSpecPaths(spec)) {
+    add("spec.forbidden-field", forbiddenPath, null, new WisePPTError(`\u6807\u51C6\u6A21\u5F0F\u7981\u6B62\u5B57\u6BB5: ${forbiddenPath}`));
+  }
+  const { index } = layoutIndex ? { index: layoutIndex } : await registryState(root);
+  const layoutContext = check(
+    "layout-context.invalid",
+    "layout_context",
+    null,
+    () => normalizeLayoutContext(spec.layout_context, new Set(index.keys()))
+  );
+  const deck = spec.deck && typeof spec.deck === "object" && !Array.isArray(spec.deck) ? spec.deck : null;
+  let inputType = null;
+  if (!deck) add("deck.object-required", "deck", null, new WisePPTError("deck-spec.deck \u5FC5\u987B\u662F\u5BF9\u8C61"));
+  else {
+    check("deck.unknown-field", "deck", null, () => assertKnownPreflightKeys(deck, ALLOWED_DECK_FIELDS, "deck-spec.deck"));
+    check("deck.title", "deck.title", null, () => plainString(deck.title, "deck.title"));
+    check("deck.thesis", "deck.thesis", null, () => plainString(deck.thesis, "deck.thesis"));
+    inputType = check("deck.input-type", "deck.input_type", null, () => plainString(deck.input_type, "deck.input_type"));
+    if (inputType && !INPUT_TYPES.has(inputType)) add("deck.input-type", "deck.input_type", null, new WisePPTError(`deck.input_type \u672A\u767B\u8BB0: ${inputType}`));
+    check("deck.theme", "deck.theme_preset", null, () => plainString(deck.theme_preset, "deck.theme_preset"));
+    if (deck.lang !== void 0) check("deck.lang", "deck.lang", null, () => {
+      if (!/^[A-Za-z]{2,8}(?:-[A-Za-z0-9]{1,8})*$/.test(plainString(deck.lang, "deck.lang"))) throw new WisePPTError("deck.lang \u5FC5\u987B\u662F\u53D7\u9650 ASCII language tag");
+    });
+    if (deck.signature !== void 0) check("deck.signature", "deck.signature", null, () => {
+      if (!plainString(deck.signature, "deck.signature").trim()) throw new WisePPTError("deck.signature \u5FC5\u987B\u662F\u975E\u7A7A\u767D\u7F72\u540D");
+    });
+    await checkAsync("deck.appearance", "deck.theme_preset", null, () => resolvedAppearance(root, deck));
+  }
+  const sourceBacked = SOURCE_BACKED_INPUT_TYPES.has(inputType);
+  const sourceIds = /* @__PURE__ */ new Set();
+  let referencesReliable = true;
+  if (!Array.isArray(spec.sources)) add("sources.array-required", "sources", null, new WisePPTError("deck-spec.sources \u5FC5\u987B\u662F\u6570\u7EC4"));
+  else {
+    if (sourceBacked && !spec.sources.length) add("sources.required", "sources", null, new WisePPTError(`deck.input_type=${inputType} \u5FC5\u987B\u767B\u8BB0\u81F3\u5C11\u4E00\u4E2A source`));
+    spec.sources.forEach((source, offset) => {
+      const label = `sources[${offset + 1}]`;
+      if (!source || typeof source !== "object" || Array.isArray(source)) {
+        add("source.object-required", label, null, new WisePPTError(`${label} \u5FC5\u987B\u662F\u5BF9\u8C61`));
+        referencesReliable = false;
+        return;
+      }
+      check("source.unknown-field", label, null, () => assertKnownPreflightKeys(source, ALLOWED_SOURCE_FIELDS, label));
+      const sourceId = check("source.id", `${label}.source_id`, null, () => plainString(source.source_id, `${label}.source_id`));
+      check("source.title", `${label}.title`, null, () => plainString(source.title, `${label}.title`));
+      if (!sourceId) referencesReliable = false;
+      else if (sourceIds.has(sourceId)) {
+        add("source.duplicate-id", `${label}.source_id`, null, new WisePPTError(`source_id \u91CD\u590D: ${sourceId}`));
+        referencesReliable = false;
+      } else sourceIds.add(sourceId);
+    });
+  }
+  const usedSourceIds = /* @__PURE__ */ new Set();
+  const mustById = /* @__PURE__ */ new Map();
+  if (!Array.isArray(spec.must)) add("must.array-required", "must", null, new WisePPTError("deck-spec.must \u5FC5\u987B\u662F\u6570\u7EC4"));
+  else for (const [offset, item] of spec.must.entries()) {
+    const label = `must[${offset + 1}]`;
+    if (!item || typeof item !== "object" || Array.isArray(item)) {
+      add("must.object-required", label, null, new WisePPTError(`${label} \u5FC5\u987B\u662F\u5BF9\u8C61`));
+      continue;
+    }
+    check("must.unknown-field", label, null, () => assertKnownPreflightKeys(item, ALLOWED_MUST_FIELDS, label));
+    const mustId = check("must.id", `${label}.must_id`, null, () => plainString(item.must_id, `${label}.must_id`));
+    if (mustId && mustById.has(mustId)) add("must.duplicate-id", `${label}.must_id`, null, new WisePPTError(`must_id \u91CD\u590D: ${mustId}`));
+    check("must.content", `${label}.content`, null, () => plainString(item.content, `${label}.content`));
+    const status = check("must.status", `${label}.status`, null, () => plainString(item.status, `${label}.status`));
+    if (status && !["placed", "omitted"].includes(status)) add("must.status", `${label}.status`, null, new WisePPTError(`${label}.status \u53EA\u80FD\u662F placed \u6216 omitted`));
+    const refs = check("must.source-refs", `${label}.source_refs`, null, () => referenceList(item.source_refs, `${label}.source_refs`, sourceIds, sourceBacked));
+    if (refs) refs.forEach((id) => usedSourceIds.add(id));
+    else referencesReliable = false;
+    if (status === "placed") {
+      check("must.page-id", `${label}.page_id`, null, () => plainString(item.page_id, `${label}.page_id`));
+      check("must.visible-evidence", `${label}.visible_evidence`, null, () => plainString(item.visible_evidence, `${label}.visible_evidence`));
+      if (![void 0, null, ""].includes(item.reason)) add("must.placed-reason", `${label}.reason`, null, new WisePPTError(`${label} \u5DF2\u843D\u9875\uFF0C\u4E0D\u5F97\u58F0\u660E omitted reason`));
+    } else if (status === "omitted") {
+      check("must.reason", `${label}.reason`, null, () => plainString(item.reason, `${label}.reason`));
+      if (![void 0, null, ""].includes(item.page_id) || ![void 0, null, ""].includes(item.visible_evidence)) {
+        add("must.omitted-placement", label, null, new WisePPTError(`${label} \u5DF2\u7701\u7565\uFF0C\u4E0D\u5F97\u58F0\u660E page_id/visible_evidence`));
+      }
+    }
+    if (mustId && !mustById.has(mustId)) mustById.set(mustId, { ...item, source_refs: refs || [] });
+  }
+  const pageIds = /* @__PURE__ */ new Set();
+  const pageSources = /* @__PURE__ */ new Map();
+  const mustPages = new Map([...mustById.keys()].map((id) => [id, []]));
+  const resolved = [];
+  let slidesReliableForSession = true;
+  if (!Array.isArray(spec.slides) || !spec.slides.length) add("slides.nonempty-array-required", "slides", null, new WisePPTError("deck-spec.slides \u5FC5\u987B\u662F\u975E\u7A7A\u6570\u7EC4"));
+  else for (const [offset, slide] of spec.slides.entries()) {
+    const label = `slides[${offset + 1}]`;
+    if (!slide || typeof slide !== "object" || Array.isArray(slide)) {
+      add("slide.object-required", label, null, new WisePPTError(`${label} \u5FC5\u987B\u662F\u5BF9\u8C61`));
+      slidesReliableForSession = false;
+      continue;
+    }
+    check("slide.unknown-field", label, slide.page_id, () => assertKnownPreflightKeys(slide, ALLOWED_SLIDE_FIELDS, label));
+    const pageId = check("slide.page-id", `${label}.page_id`, null, () => plainString(slide.page_id, `${label}.page_id`));
+    const validPageId = pageId && /^[a-z][a-z0-9-]*$/.test(pageId);
+    if (pageId && !validPageId) add("slide.page-id", `${label}.page_id`, null, new WisePPTError(`${label}.page_id \u5FC5\u987B\u5339\u914D ^[a-z][a-z0-9-]*$: ${pageId}`));
+    if (validPageId && pageIds.has(pageId)) add("slide.duplicate-page-id", `${label}.page_id`, pageId, new WisePPTError(`page_id \u91CD\u590D: ${pageId}`));
+    else if (validPageId) pageIds.add(pageId);
+    const issuePageId = validPageId ? pageId : null;
+    const pageRole = check("slide.page-role", `${label}.page_role`, issuePageId, () => plainString(slide.page_role, `${label}.page_role`));
+    const layoutId = check("slide.layout-id", `${label}.layout_id`, issuePageId, () => plainString(slide.layout_id, `${label}.layout_id`));
+    check("slide.claim", `${label}.claim`, issuePageId, () => plainString(slide.claim, `${label}.claim`));
+    const layout = layoutId ? index.get(layoutId) : null;
+    let routeValid = Boolean(validPageId && pageRole && layout);
+    if (layoutId && !layout) add("slide.layout-unregistered", `${label}.layout_id`, issuePageId, new WisePPTError(`${label} \u4F7F\u7528\u672A\u767B\u8BB0 layout_id: ${layoutId}`));
+    if (layout && pageRole) {
+      if (layout.page_kind === "relationship") {
+        const relation = check("slide.relation", `${label}.relation_key`, issuePageId, () => plainString(slide.relation_key, `${label}.relation_key`));
+        if (!relation || !(layout.relations || []).includes(relation)) {
+          if (relation) add("slide.relation", `${label}.relation_key`, issuePageId, new WisePPTError(`${pageId} relation_key=${relation} \u4E0D\u53D7 ${layoutId} \u652F\u6301`));
+          routeValid = false;
+        }
+        if (!(layout.page_roles || []).includes(pageRole)) {
+          add("slide.page-role", `${label}.page_role`, issuePageId, new WisePPTError(`${pageId} page_role=${pageRole} \u4E0D\u53D7 ${layoutId} \u652F\u6301`));
+          routeValid = false;
+        }
+      } else {
+        if (![void 0, null, ""].includes(slide.relation_key)) {
+          add("slide.relation", `${label}.relation_key`, issuePageId, new WisePPTError(`${pageId} \u662F\u975E\u5173\u7CFB\u9875\uFF0C\u4E0D\u5F97\u58F0\u660E relation_key`));
+          routeValid = false;
+        }
+        if (pageRole !== layout.page_role) {
+          add("slide.page-role", `${label}.page_role`, issuePageId, new WisePPTError(`${pageId} page_role \u5FC5\u987B\u662F ${layout.page_role}`));
+          routeValid = false;
+        }
+      }
+    }
+    if (slide.emphasis !== void 0 && layout) check("slide.emphasis", `${label}.emphasis`, issuePageId, () => {
+      if (!slide.emphasis || typeof slide.emphasis !== "object" || Array.isArray(slide.emphasis)) throw new WisePPTError(`${pageId}.emphasis \u5FC5\u987B\u662F\u5BF9\u8C61`);
+      assertKnownPreflightKeys(slide.emphasis, ALLOWED_EMPHASIS_FIELDS, `${pageId}.emphasis`);
+      const target = plainString(slide.emphasis.target, `${pageId}.emphasis.target`);
+      plainString(slide.emphasis.reason, `${pageId}.emphasis.reason`);
+      const allowedTargets = new Set((layout.emphasis?.targets || []).map((item) => item.target_id));
+      if (!allowedTargets.has(target)) throw new WisePPTError(`${pageId}.emphasis.target=${target} \u4E0D\u5728 ${layoutId} \u5DF2\u5BA1\u6838\u7126\u70B9\u5BF9\u8C61\u4E2D`);
+    });
+    const refs = check("slide.source-refs", `${label}.source_refs`, issuePageId, () => referenceList(slide.source_refs, `${pageId}.source_refs`, sourceIds, sourceBacked));
+    if (refs) {
+      refs.forEach((id) => usedSourceIds.add(id));
+      check("slide.source-evidence", `${label}.source_evidence`, issuePageId, () => sourceEvidenceMap(slide.source_evidence, refs, `${pageId}.source_evidence`));
+      if (validPageId) pageSources.set(pageId, refs);
+    } else referencesReliable = false;
+    const mustRefs = check("slide.must-refs", `${label}.must_refs`, issuePageId, () => referenceList(slide.must_refs, `${pageId}.must_refs`, new Set(mustById.keys())));
+    if (mustRefs) mustRefs.forEach((id) => mustPages.get(id).push(pageId));
+    const payload = slide.payload;
+    let payloadValidForSession = true;
+    if (!payload || typeof payload !== "object" || Array.isArray(payload) || !Object.keys(payload).length) {
+      add("slide.payload", `${label}.payload`, issuePageId, new WisePPTError(`${pageId}.payload \u5FC5\u987B\u662F\u975E\u7A7A\u5BF9\u8C61`));
+      payloadValidForSession = false;
+    } else if (layout) {
+      const unknownTypes = Object.keys(payload).filter((key) => !(key in PAYLOAD_CATEGORIES));
+      if (unknownTypes.length) {
+        add("slide.payload-type", `${label}.payload`, issuePageId, new WisePPTError(`${pageId}.payload \u672A\u767B\u8BB0\u7C7B\u578B: ${unknownTypes.sort().join(", ")}`));
+        payloadValidForSession = false;
+      }
+      check("slide.payload-exclusive", `${label}.payload`, issuePageId, () => validatePayloadExclusivity(payload, pageId));
+      const slotMap = new Map((layout.slots || []).map((slot) => [slot.slot_id, slot]));
+      const populated = /* @__PURE__ */ new Set();
+      let hasPayload = false;
+      for (const [category, payloadType] of Object.entries(PAYLOAD_CATEGORIES)) {
+        const values = payload[category] || {};
+        if (!values || typeof values !== "object" || Array.isArray(values)) {
+          add("slide.payload-category", `${label}.payload.${category}`, issuePageId, new WisePPTError(`${pageId}.payload.${category} \u5FC5\u987B\u662F slot_id \u2192 payload \u7684\u5BF9\u8C61`));
+          payloadValidForSession = false;
+          continue;
+        }
+        if (category in payload && !Object.keys(values).length) add("slide.payload-empty-category", `${label}.payload.${category}`, issuePageId, new WisePPTError(`${pageId}.payload.${category} \u4E0D\u5F97\u662F\u7A7A\u5BF9\u8C61`));
+        for (const [slotId, slotValue] of Object.entries(values)) {
+          const slot = slotMap.get(slotId);
+          const itemPath = `${label}.payload.${category}.${slotId}`;
+          if (!slot) {
+            add("slide.payload-slot", itemPath, issuePageId, new WisePPTError(`${pageId} payload \u4F7F\u7528\u672A\u767B\u8BB0 slot_id: ${slotId}`));
+            payloadValidForSession = false;
+            continue;
+          }
+          const shape = check("slide.payload-shape", itemPath, issuePageId, () => {
+            validatePayloadShape(category, slotValue, `${pageId}.payload.${category}.${slotId}`, slot);
+            return true;
+          }, false);
+          if (!payloadSemanticValue(slotValue)) add("slide.payload-semantic", itemPath, issuePageId, new WisePPTError(`${pageId}.payload.${category}.${slotId} \u5FC5\u987B\u6709\u771F\u5B9E\u975E\u7A7A\u8BED\u4E49`));
+          if (!(slot.allowed_payload_types || []).includes(payloadType)) {
+            add("slide.payload-type", itemPath, issuePageId, new WisePPTError(`${pageId}/${slotId} \u4E0D\u5141\u8BB8 payload \u7C7B\u578B ${payloadType}`));
+            payloadValidForSession = false;
+          }
+          if (shape) {
+            populated.add(slotId);
+            hasPayload = true;
+          } else payloadValidForSession = false;
+        }
+      }
+      if (!hasPayload) add("slide.payload-empty", `${label}.payload`, issuePageId, new WisePPTError(`${pageId}.payload \u81F3\u5C11\u8981\u6709\u4E00\u4E2A\u767B\u8BB0\u503C\u5177\u5907\u771F\u5B9E\u975E\u7A7A\u8BED\u4E49`));
+      const required = new Set((layout.slots || []).filter((slot) => slot.required).map((slot) => slot.slot_id));
+      const missing = setDifference(required, populated);
+      if (missing.length) add("slide.payload-required", `${label}.payload`, issuePageId, new WisePPTError(`${pageId} \u7F3A\u5C11\u5FC5\u586B payload slot: ${missing.sort().join(", ")}`));
+    }
+    if (routeValid && payloadValidForSession && layout) resolved.push({ slide, layout, slideOffset: offset });
+    else slidesReliableForSession = false;
+  }
+  if (Array.isArray(spec.slides)) for (const [mustId, item] of mustById.entries()) {
+    const pages = mustPages.get(mustId) || [];
+    if (item.status === "placed") {
+      if (!pageIds.has(item.page_id)) add("must.page-missing", "must", null, new WisePPTError(`must ${mustId} \u843D\u5230\u4E0D\u5B58\u5728\u9875\u9762: ${item.page_id}`));
+      else if (pages.length !== 1 || pages[0] !== item.page_id) add("must.reference-mismatch", "must", null, new WisePPTError(`must ${mustId} \u5FC5\u987B\u53EA\u7531 page_id=${item.page_id} \u7684 slide.must_refs \u7CBE\u786E\u5F15\u7528`));
+      const pageRefs = pageSources.get(item.page_id);
+      if (pageRefs) {
+        const missing = (item.source_refs || []).filter((source) => !pageRefs.includes(source));
+        if (missing.length) add("must.source-mismatch", "must", null, new WisePPTError(`must ${mustId} \u7684\u6765\u6E90\u672A\u767B\u8BB0\u5230\u843D\u70B9\u9875 ${item.page_id}: ${missing.sort().join(", ")}`));
+      }
+    } else if (item.status === "omitted" && pages.length) add("must.omitted-referenced", "must", null, new WisePPTError(`omitted must ${mustId} \u4E0D\u5F97\u88AB slide.must_refs \u5F15\u7528`));
+  }
+  if (referencesReliable) {
+    const unused = setDifference(sourceIds, usedSourceIds);
+    if (unused.length) add("sources.unused", "sources", null, new WisePPTError(`sources \u542B\u672A\u88AB\u4F7F\u7528\u7684\u6765\u6E90: ${unused.sort().join(", ")}`));
+  }
+  if (layoutContext && slidesReliableForSession && resolved.length === spec.slides.length) collectLayoutSessionIssues(resolved, index, layoutContext, collector);
+  try {
+    await validateSpec(root, spec, index);
+  } catch (error) {
+    if (!(error instanceof WisePPTError)) throw error;
+    if (!collector.errors.some((issue) => issue.message === error.message)) add("spec.validation", "$", null, error);
+  }
+  return {
+    status: collector.errors.length ? "fail" : "pass",
+    error_count: collector.errors.length,
+    errors: collector.errors
+  };
+}
 async function validateSpec(root, spec, layoutIndex = null) {
   assertKnownKeys(spec, ALLOWED_TOP_LEVEL, "deck-spec \u9876\u5C42");
   if (spec.contract !== DECK_CONTRACT) throw new WisePPTError(`deck-spec.contract \u5FC5\u987B\u662F ${DECK_CONTRACT}`);
@@ -578,7 +912,7 @@ async function validateSpec(root, spec, layoutIndex = null) {
   if (deck.signature !== void 0 && !plainString(deck.signature, "deck.signature").trim()) throw new WisePPTError("deck.signature \u5FC5\u987B\u662F\u975E\u7A7A\u767D\u7F72\u540D");
   await resolvedAppearance(root, deck);
   const { index } = layoutIndex ? { index: layoutIndex } : await registryState(root);
-  const layoutContext = validateLayoutContext(spec.layout_context, new Set(index.keys()));
+  const layoutContext = normalizeLayoutContext(spec.layout_context, new Set(index.keys()));
   if (!Array.isArray(spec.sources)) throw new WisePPTError("deck-spec.sources \u5FC5\u987B\u662F\u6570\u7EC4");
   if (SOURCE_BACKED_INPUT_TYPES.has(inputType) && !spec.sources.length) throw new WisePPTError(`deck.input_type=${inputType} \u5FC5\u987B\u767B\u8BB0\u81F3\u5C11\u4E00\u4E2A source`);
   const sourceIds = /* @__PURE__ */ new Set();
@@ -750,6 +1084,166 @@ function queryLayouts(registry, filters) {
   }));
   if (filters.contentItems === void 0) return ranked;
   return ranked.filter((layout) => (layout.slots || []).some((slot) => Number.isInteger(slot.capacity?.min_items) && Number.isInteger(slot.capacity?.max_items) && slot.capacity.min_items <= filters.contentItems && filters.contentItems <= slot.capacity.max_items && (slot.allowed_payload_types || []).length));
+}
+function layoutAgentDefinition(layout) {
+  return {
+    layout_id: layout.layout_id,
+    display_code: layout.display_code,
+    page_kind: layout.page_kind,
+    page_role: layout.page_role,
+    page_roles: structuredClone(layout.page_roles || []),
+    relations: structuredClone(layout.relations || []),
+    allowed_payload_types: structuredClone(layout.allowed_payload_types || []),
+    name: layout.name || layout.display_code,
+    description: layout.description || "",
+    structure_summary: layout.structure_summary || "",
+    leaf_count: layout.leaf_count,
+    reading_order: structuredClone(layout.reading_order || []),
+    capacity: structuredClone(layout.capacity || {}),
+    claim_binding: structuredClone(layout.claim_binding ?? null),
+    emphasis: structuredClone(layout.emphasis || { access: "none", targets: [] }),
+    icon_slots: structuredClone(layout.icon_slots || []),
+    slots: structuredClone(layout.slots || [])
+  };
+}
+function layoutPlanIssue(code, pageId, pathName, message) {
+  return { code, page_id: pageId, path: pathName, message };
+}
+function planLayouts(registry, request, options = {}) {
+  assertKnownKeys(request, ALLOWED_LAYOUT_PLAN_FIELDS, "layout plan \u9876\u5C42");
+  if (request.format !== LAYOUT_PLAN_REQUEST_FORMAT) throw new WisePPTError(`layout plan format \u5FC5\u987B\u662F ${LAYOUT_PLAN_REQUEST_FORMAT}`);
+  if (!Array.isArray(request.pages) || !request.pages.length) throw new WisePPTError("layout plan pages \u5FC5\u987B\u662F\u975E\u7A7A\u6570\u7EC4");
+  const index = new Map((registry.layouts || []).map((layout) => [layout.layout_id, layout]));
+  const layoutIds = new Set(index.keys());
+  const hasContext = request.layout_context !== void 0;
+  const hasNewSeed = options.newSelectionSeed !== void 0;
+  if (hasContext === hasNewSeed) throw new WisePPTError("layout plan \u5FC5\u987B\u4E14\u53EA\u80FD\u5728 request.layout_context \u4E0E --new-session \u4E2D\u9009\u62E9\u4E00\u4E2A");
+  const layoutContext = hasContext ? normalizeLayoutContext(request.layout_context, layoutIds) : { scope: "session", selection_seed: normalizeSelectionSeed(options.newSelectionSeed, "layout plan new selection_seed"), prior_total: 0, usage: [] };
+  if (!Number.isSafeInteger(layoutContext.prior_total + request.pages.length)) throw new WisePPTError("layout plan post_total \u8D85\u8FC7\u5B89\u5168\u6574\u6570\u8303\u56F4");
+  const selectedCount = request.pages.filter((page) => page && typeof page === "object" && !Array.isArray(page) && Object.hasOwn(page, "selected_layout_id")).length;
+  if (selectedCount !== 0 && selectedCount !== request.pages.length) throw new WisePPTError("layout plan selected_layout_id \u5FC5\u987B\u6574\u526F\u5168\u90E8\u586B\u5199\u6216\u5168\u90E8\u7701\u7565");
+  const mode = selectedCount ? "resolved" : "proposal";
+  const currentUsage = usageMap(layoutContext);
+  const definitions = /* @__PURE__ */ new Map();
+  const pageIds = /* @__PURE__ */ new Set();
+  const pages = [];
+  const errors = [];
+  for (const [offset, page] of request.pages.entries()) {
+    const label = `pages[${offset + 1}]`;
+    if (!page || typeof page !== "object" || Array.isArray(page)) throw new WisePPTError(`${label} \u5FC5\u987B\u662F\u5BF9\u8C61`);
+    assertKnownKeys(page, ALLOWED_LAYOUT_PLAN_PAGE_FIELDS, label);
+    const pageId = plainString(page.page_id, `${label}.page_id`);
+    if (!/^[a-z][a-z0-9-]*$/.test(pageId)) throw new WisePPTError(`${label}.page_id \u5FC5\u987B\u5339\u914D ^[a-z][a-z0-9-]*$: ${pageId}`);
+    if (pageIds.has(pageId)) throw new WisePPTError(`layout plan page_id \u91CD\u590D: ${pageId}`);
+    pageIds.add(pageId);
+    const pageKind = plainString(page.page_kind, `${label}.page_kind`);
+    if (!["relationship", "nonrelationship"].includes(pageKind)) throw new WisePPTError(`${label}.page_kind \u53EA\u80FD\u662F relationship \u6216 nonrelationship`);
+    const pageRole = plainString(page.page_role, `${label}.page_role`);
+    const relationKey = page.relation_key === void 0 || page.relation_key === null ? null : plainString(page.relation_key, `${label}.relation_key`);
+    if (pageKind === "relationship" && !relationKey) throw new WisePPTError(`${label}.relation_key \u5BF9\u5173\u7CFB\u9875\u5FC5\u987B\u975E\u7A7A`);
+    if (pageKind === "nonrelationship" && relationKey) throw new WisePPTError(`${label} \u662F\u975E\u5173\u7CFB\u9875\uFF0C\u4E0D\u5F97\u58F0\u660E relation_key`);
+    const requires = page.requires === void 0 ? [] : page.requires;
+    if (!Array.isArray(requires) || requires.some((item) => !["text", "data", "icon"].includes(item)) || new Set(requires).size !== requires.length) {
+      throw new WisePPTError(`${label}.requires \u5FC5\u987B\u662F text/data/icon \u7EC4\u6210\u7684\u65E0\u91CD\u590D\u6570\u7EC4`);
+    }
+    const contentItems = page.content_items === void 0 ? void 0 : nonnegativeInteger(page.content_items, `${label}.content_items`);
+    if (mode === "proposal" && page.layout_override !== void 0) throw new WisePPTError(`${label}.layout_override \u53EA\u80FD\u5728\u6574\u526F\u586B\u5199 selected_layout_id \u540E\u4F7F\u7528`);
+    const currentUsageEntries = [...currentUsage.values()].sort((left, right) => compareAscii(left.layout_id, right.layout_id));
+    const filters = {
+      pageKind,
+      pageRole,
+      relationKey: relationKey ?? void 0,
+      requires,
+      contentItems,
+      layoutUsage: currentUsageEntries,
+      selectionSeed: layoutContext.selection_seed
+    };
+    const matches = queryLayouts(registry, filters);
+    const rankingPool = contentItems === void 0 ? matches : queryLayouts(registry, { ...filters, contentItems: void 0 });
+    const selectedLayoutId = mode === "resolved" ? plainString(page.selected_layout_id, `${label}.selected_layout_id`) : matches[0]?.layout_id ?? null;
+    const selected = matches.find((layout) => layout.layout_id === selectedLayoutId);
+    if (mode === "proposal") {
+      for (const layout of matches) if (!definitions.has(layout.layout_id)) definitions.set(layout.layout_id, layoutAgentDefinition(layout));
+    }
+    if (!matches.length) {
+      errors.push(layoutPlanIssue("layout.no-candidate", pageId, label, `${pageId} \u6CA1\u6709\u7B26\u5408\u9875\u578B\u3001\u5173\u7CFB\u3001payload \u4E0E\u5BB9\u91CF\u6761\u4EF6\u7684\u767B\u8BB0\u9AA8\u67B6`));
+    } else if (!selected) {
+      const hardCandidate = rankingPool.some((layout) => layout.layout_id === selectedLayoutId);
+      errors.push(layoutPlanIssue(
+        hardCandidate ? "layout.selected-capacity-mismatch" : "layout.selected-not-candidate",
+        pageId,
+        `${label}.selected_layout_id`,
+        hardCandidate ? `${pageId} \u9009\u62E9\u7684 ${selectedLayoutId} \u4E0D\u63A5\u53D7 content_items=${contentItems}` : `${pageId} \u9009\u62E9\u7684 ${selectedLayoutId} \u4E0D\u7B26\u5408\u9875\u578B\u3001\u5173\u7CFB\u6216 payload \u786C\u6761\u4EF6`
+      ));
+    }
+    const selectionRank = selected?.selection_rank ?? null;
+    const requiresOverride = Number.isInteger(selectionRank) && selectionRank > 1;
+    let layoutOverride = null;
+    if (selected && mode === "resolved") {
+      try {
+        layoutOverride = normalizedLayoutOverride({
+          page_id: pageId,
+          layout_id: selected.layout_id,
+          layout_override: page.layout_override
+        }, requiresOverride, selectionRank, rankingPool[0]?.layout_id ?? null);
+      } catch (error) {
+        if (!(error instanceof WisePPTError)) throw error;
+        errors.push(layoutPlanIssue("layout.override-invalid", pageId, `${label}.layout_override`, error.message));
+      }
+    }
+    pages.push({
+      page_id: pageId,
+      page_kind: pageKind,
+      page_role: pageRole,
+      relation_key: relationKey,
+      requires: structuredClone(requires),
+      content_items: contentItems ?? null,
+      selection_state: matches.length ? layoutSelectionState(rankingPool) : "no-candidate",
+      preferred_layout_id: rankingPool[0]?.layout_id ?? null,
+      suggested_layout_id: matches[0]?.layout_id ?? null,
+      selected_layout_id: selected?.layout_id ?? selectedLayoutId,
+      selection_rank: selectionRank,
+      requires_override_if_selected: requiresOverride,
+      suggested_override_basis: mode === "proposal" && requiresOverride && contentItems !== void 0 ? "capacity" : null,
+      layout_override: layoutOverride,
+      candidates: matches.map((layout) => ({
+        layout_id: layout.layout_id,
+        usage_count: layout.usage_count,
+        last_sequence: layout.last_sequence,
+        selection_rank: layout.selection_rank,
+        requires_override_if_selected: layout.requires_override_if_selected
+      }))
+    });
+    if (selected) {
+      const selectedBefore = usageFor(currentUsage, selected.layout_id);
+      currentUsage.set(selected.layout_id, {
+        layout_id: selected.layout_id,
+        count: selectedBefore.count + 1,
+        last_sequence: layoutContext.prior_total + offset + 1
+      });
+    }
+  }
+  const order = registryIndex(registry);
+  const layoutDefinitions = [...definitions.values()].sort((left, right) => order.get(left.layout_id) - order.get(right.layout_id));
+  const projectedPostUsage = [...currentUsage.values()].sort((left, right) => compareAscii(left.layout_id, right.layout_id));
+  return {
+    status: errors.length ? "fail" : "pass",
+    mode,
+    registry_count: registry.layouts.length,
+    layout_context: structuredClone(layoutContext),
+    projection: {
+      valid: errors.length === 0,
+      basis: mode === "proposal" ? "first-compatible-candidate" : "explicit-selected-layouts",
+      post_total: errors.length ? null : layoutContext.prior_total + request.pages.length,
+      post_usage: errors.length ? [] : projectedPostUsage
+    },
+    page_count: pages.length,
+    pages,
+    layout_definition_policy: mode === "proposal" ? "all-candidates-once" : "reuse-proposal-brief",
+    layout_definitions: layoutDefinitions,
+    error_count: errors.length,
+    errors
+  };
 }
 async function loadSeed(root, displayCode) {
   const seed = await readJson(path.join(root, "capabilities/layouts/seeds", `${displayCode.toUpperCase()}.json`), `\u9AA8\u67B6 ${displayCode} seed`);
@@ -1603,8 +2097,11 @@ export {
   buildTo,
   layoutSelectionState,
   loadSeed,
+  normalizeLayoutContext,
   normalizeLayoutUsage,
   normalizeSelectionSeed,
+  planLayouts,
+  preflightSpec,
   publishBuilt,
   queryLayouts,
   registryState,

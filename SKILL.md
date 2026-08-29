@@ -15,7 +15,7 @@ macOS/Windows 仅支持 Node 22/24 LTS 与 Google Chrome 132+。首次使用或�
 node <skill>/bin/wise-ppt.mjs doctor
 ```
 
-`doctor` 只检查、不下载；失败即停止。不得要求安装 Python、lxml、Poppler、`pdfinfo`、Homebrew、`curl` 或 npm 依赖。同家族同字重字体优先复用；缺失字体由首次 `build` 下载并做 SHA-256 校验。
+`doctor` 只检查、不下载；失败即停止。不得要求额外安装 Python、Poppler、Homebrew 或 npm 依赖；缺失字体由首次 `build` 下载并校验。
 
 用 Chrome 打开 `references/catalog.html`。示例不决定页数。
 
@@ -23,17 +23,17 @@ node <skill>/bin/wise-ppt.mjs doctor
 
 1. 诊断、审查或规划：只分析，不生成或修改成品。
 2. 不突破已审核结构：走 `standard`，只编辑 `deck-spec.json`；可按公开槽替换文案、插画和图标。
-3. 组件不得自动替换。用户明确授权且 registry 登记同结构受控容量时才留在 `standard`，例如四步改五步。
-4. 改结构骨架、组件组合、分栏、阅读顺序或用未审核能力：停止 standard，说明影响；用户批准后才在新副本执行 `experimental`。
+3. 组件不自动替换；用户批准且 registry 登记同结构容量时才留在 `standard`，例如四步改五步。
+4. 改结构、组件、分栏、阅读顺序或用未审核能力：停止 standard；用户批准后才在新副本执行 `experimental`。
 5. Catalog、registry、runtime、主题或资产有缺陷：停止制作，登记仓库修复任务。
 
 沉默、模糊同意或历史授权不算批准，不得自动换模式。
 
 ## 完成标准
 
-`standard`：只输入 `deck-spec.json`，只用登记结构和公开槽；生成物无手改，逐页强调、三道命令与 manifest 全通过。
+`standard`：只输入 `deck-spec.json`，只用登记结构和公开槽；生成物无手改，逐页强调、四道命令与 manifest 全通过。
 
-`experimental`：只从未漂移的已交付 standard 创建；获批页、内容与主题锁、实验标记通过，不声称 standard 门禁通过。实验身份写入文件名和 manifest。
+`experimental`：从未漂移的 standard 隔离创建，只改获批页，不声称 standard 全绿。
 
 ## 按阶段读取
 
@@ -51,11 +51,11 @@ node <skill>/bin/wise-ppt.mjs doctor
 
 ## 1. 整理材料并分页
 
-完整读取分页合同。提取事实、数字、来源和 must；未知留空。材料不足时说明缺口并询问是否允许联网补充；已授权不再问。获准后仅用 Agent 宿主自带的网页搜索工具，补充事实按外部来源登记并与原材料区分；否则不得编造或改用插件、MCP、API/脚本。
+读取分页合同。提取事实、数字、来源和 must，未知留空。材料不足时说明缺口并询问是否允许联网补充；已授权不再问。获准后仅用 Agent 宿主自带的网页搜索工具；补充事实按外部来源登记并与原材料区分，否则不编造或改用插件、MCP、API/脚本。
 
-制作前一次问清尚未提供的署名、整副配色和字体类型。未回答时不署名，其余用默认；署名只原样使用用户提供的值。写 thesis；页数只由用户约束或不可合并的 claim 推导，不用固定值、随机数或示例页数。同等必要的角色或关系拆页。此时不写完整 spec，不猜骨架。
+制作前一次问清尚未提供的署名、整副配色和字体类型。未回答时不署名，其余用默认；署名只原样使用用户提供的值。写 thesis；页数只由用户约束或不可合并的 claim 推导，不用固定值、随机数或示例页数。同等必要的角色或关系拆页。不写完整 spec，不猜骨架。
 
-不接收本地、远程或 data URI 图片，也不调用生图。插画只能在查询返回的已审核槽中替换；无槽就保持 Catalog 原样。
+不接收图片或调用生图。插画只可替换已审核槽；无槽保持 Catalog 原样。
 
 ## 2. 判断页型和关系
 
@@ -63,7 +63,7 @@ node <skill>/bin/wise-ppt.mjs doctor
 
 ## 3. 查询并选择完整骨架
 
-读取骨架文件。新聊天首查用一次 `--new-session` 并保存 `selection_seed`；同一聊天复用 seed，从上一份 `deck-plan.json.layout_session.post_usage` 续账。主 Agent 逐页更新 usage、查询并定最终 `layout_id`，多 Agent 不并行定版；不得扫描目录。排序：少用→久未用→seed 哈希→registry，rank>1 仅因内容不适配才填 `layout_override`。查公开槽，不打开骨架 seed；不适配依次减字、换骨架、拆页，需改结构才申请实验。
+整副路由写入计划，运行 `layouts plan <绝对路径> --agent-brief`。新聊天加 `--new-session` 并保存 `selection_seed`；后续承接 `deck-plan.json.layout_session.post_usage`。命令按页序更新 usage；改建议时整副填 `selected_layout_id` 后再运行。多 Agent 不并行定版，不扫描目录。少用→久未用→seed 哈希→registry 排序；rank>1 才写 `layout_override`。只查槽；不适配依次减字、换骨架、拆页，改结构才申请实验。
 
 ## 4. 选择整副主题
 
@@ -78,18 +78,21 @@ node <skill>/bin/wise-ppt.mjs doctor
 以下是 standard 唯一生产命令。`<skill>` 是本技能根目录；使用绝对路径可从任意目录执行：
 
 ```text
+node <skill>/bin/wise-ppt.mjs preflight <deck-spec.json 绝对路径> --all-errors
 node <skill>/bin/wise-ppt.mjs build <deck-spec.json 绝对路径> --out <deck 绝对目录>
 node <skill>/bin/wise-ppt.mjs validate <deck 绝对目录>
 node <skill>/bin/wise-ppt.mjs deliver <deck 绝对目录>
 ```
 
-任一步非零都未完成。改 spec 或资产后从 build 重来；禁止手修 HTML/PDF 或绕过 validate 打印。
+`preflight` 问题须全部修完；任一步非零都未完成。改 spec 或资产后从 preflight 重来；禁改 HTML/PDF 或绕过 validate。
+
+成品输出后复核 claim、阅读顺序、主次与固定组件语义。若不匹配，列出 `page_id`、证据和建议实验页，询问用户是否进入 `experimental`；未批准不改成品，也不替代人工视觉验收。
 
 输出目录的收编、重建和拒绝覆盖规则只认 deck-spec 合同。
 
 ## 7. 授权后的隔离实验
 
-只有用户批准准确页面范围后，才完整读取实验合同并执行。批准页可突破原结构、组件组合和分栏；页序、角色、claim、relation、source、must、主题、字体与主题资产仍锁定。恢复 standard 直接回原目录。
+用户批准页面范围后才读取实验合同并执行。获批页可突破结构、组件组合和分栏；页序、角色、claim、relation、source、must、主题和字体仍锁定。恢复 standard 回原目录。
 
 ## 交付回报
 

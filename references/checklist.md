@@ -8,6 +8,8 @@
 
 ### 输入与编译产物
 
+`preflight <deck-spec.json> --all-errors` 先一次列出当前 spec 中可独立发现的全部输入问题；它不启动浏览器、不复制字体、不写成品，也不代替后面的 build/validate/deliver。
+
 机器检查：
 
 - spec 字段、枚举、引用和 standard 禁区；
@@ -52,6 +54,12 @@ runtime selftest 缺失、合同不匹配、任一子检查失败或 manifest �
 - [ ] 页面节奏、留白、主次、风格和演讲可读性是否达到成品标准。
 
 机器核对的是“已登记证据真的出现在页面里”，不是“事实已经独立核验”。
+
+## 成品后的 Agent 语义适配复核
+
+standard 成品输出后，Agent 读取最终 `index.html`、`deck-plan.json` 和对应骨架公开定义，逐页比较：claim 与页面职责是否一致、阅读顺序是否符合讲述顺序、primary/support 是否放反、固定组件的语义是否适合真实内容。
+
+发现疑似不匹配时，不修改 standard，也不直接进入 experimental。先列出 `page_id`、当前 `layout_id`、不匹配证据、已经尝试过的减字/换骨架/拆页，以及建议申请实验的准确页面范围，然后询问用户是否进入 experimental。未经明确批准不继续；没有发现时回报“未发现语义—版式/组件不匹配”。这一步默认不截图，也不替代下面的人工视觉验收。
 
 ## 人工验收
 
