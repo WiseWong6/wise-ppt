@@ -477,7 +477,7 @@ async function registryState(root) {
   const file = path.join(root, "capabilities/layouts/layout-registry.json");
   const registry = await readJson(file, "Wise PPT \u9AA8\u67B6\u6CE8\u518C\u8868");
   if (registry.contract_version !== 3 || registry.registry_id !== "wise-ppt.layouts") throw new WisePPTError("Wise PPT \u9AA8\u67B6\u6CE8\u518C\u8868\u7248\u672C\u9519\u8BEF");
-  if (!registry.counts || registry.counts.total !== 83 || registry.counts.relationship !== 71 || registry.counts.nonrelationship !== 12) {
+  if (!registry.counts || registry.counts.total !== 86 || registry.counts.relationship !== 73 || registry.counts.nonrelationship !== 13) {
     throw new WisePPTError(`Wise PPT \u9AA8\u67B6\u6CE8\u518C\u8868\u6570\u91CF\u9519\u8BEF: ${JSON.stringify(registry.counts)}`);
   }
   if (!Array.isArray(registry.layouts) || registry.layouts.length !== registry.counts.total) throw new WisePPTError("Wise PPT \u9AA8\u67B6\u6CE8\u518C\u8868 layouts \u6570\u91CF\u9519\u8BEF");

@@ -1174,5 +1174,121 @@
     },
     "summary": "左右1:2 / 左·上下2等分 / 右·上下2:1:1",
     "leaf_count": 5
+  },
+  {
+    "file": "empty-u1.html",
+    "code": "U1",
+    "topology": "topology.recursive-y-equal-then-x-asymmetric-both",
+    "sources": [
+      "U1"
+    ],
+    "structure": {
+      "type": "split",
+      "axis": "y",
+      "weights": [
+        1,
+        1
+      ],
+      "gap": 20,
+      "children": [
+        {
+          "type": "split",
+          "axis": "x",
+          "weights": [
+            2,
+            1
+          ],
+          "gap": 38,
+          "children": [
+            {
+              "type": "slot",
+              "slot_id": "u1.slot-1",
+              "content_group": "方案 A 带"
+            },
+            {
+              "type": "slot",
+              "slot_id": "u1.slot-2",
+              "content_group": "渠道构成图"
+            }
+          ]
+        },
+        {
+          "type": "split",
+          "axis": "x",
+          "weights": [
+            1,
+            2
+          ],
+          "gap": 38,
+          "children": [
+            {
+              "type": "slot",
+              "slot_id": "u1.slot-3",
+              "content_group": "结构小表"
+            },
+            {
+              "type": "slot",
+              "slot_id": "u1.slot-4",
+              "content_group": "方案 B 带"
+            }
+          ]
+        }
+      ]
+    },
+    "summary": "上下2等分 / 上·左右2:1 / 下·左右1:2",
+    "leaf_count": 4
+  },
+  {
+    "file": "empty-u2.html",
+    "code": "U2",
+    "topology": "topology.recursive-y-asymmetric-then-x-equal",
+    "sources": [
+      "U2"
+    ],
+    "structure": {
+      "type": "split",
+      "axis": "y",
+      "weights": [
+        2,
+        1
+      ],
+      "gap": 20,
+      "children": [
+        {
+          "type": "split",
+          "axis": "x",
+          "weights": [
+            1,
+            1,
+            1
+          ],
+          "gap": 38,
+          "children": [
+            {
+              "type": "slot",
+              "slot_id": "u2.slot-1",
+              "content_group": "图表带一"
+            },
+            {
+              "type": "slot",
+              "slot_id": "u2.slot-2",
+              "content_group": "图表带二"
+            },
+            {
+              "type": "slot",
+              "slot_id": "u2.slot-3",
+              "content_group": "图表带三"
+            }
+          ]
+        },
+        {
+          "type": "slot",
+          "slot_id": "u2.slot-4",
+          "content_group": "汇总对比表"
+        }
+      ]
+    },
+    "summary": "上下2:1 / 上·左右3等分",
+    "leaf_count": 4
   }
 ]

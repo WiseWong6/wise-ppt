@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-runtime="wise-ppt-specimen" data-typography-mode="all-sans" data-page-id="gallery-ai-u1" data-page-role="compare" data-theme="paper-ink" data-layout="paper-ink.comparison.diagonal-bands" data-layout-source="gallery" data-sample-focus-profile="content-only" data-sample-focus-members='[{"selector":"#u1-kpi-a","role":"value"},{"selector":"#u1-band-b","role":"outline"}]' data-sample-focus-ref="sample.u1.u1-focus">
+<head>
+<meta charset="UTF-8">
+<title>layout-u1 · 斜切双带对照 · 双方案门户对比</title>
+<script src="../../../../runtime/stage-fit.js"></script>
+<!--
+  纸墨线稿样张 · U1 斜切双带对照
+  左上带与右下带以同一斜角互相咬合,中间留白色斜向通道 + VS 标记;
+  每条带自持一个方案的题签与大数字,其余数据簇(构成图、结构小表)挂在自己一侧
+  版式纪律:斜带只许两条;数据簇不跨斜线;对比口径必须同期对齐并写进底注
+-->
+<link rel="stylesheet" href="../../../../themes/paper-ink/assets/design-tokens.css">
+<link rel="stylesheet" href="../../../../themes/paper-ink/assets/catalog-fonts.css" data-wise-catalog-fonts="true">
+<link rel="stylesheet" href="../../../../themes/paper-ink/assets/slide-components.css">
+<link rel="stylesheet" href="../../../shell.css">
+<style>
+  svg.scene { position: absolute; inset: 0; z-index: 1; }
+  .caption {
+    position: absolute; left: 0; right: 0; bottom: 92px;
+    text-align: center;
+    font-family: var(--sans); font-weight: 400;
+    font-size: var(--type-caption); letter-spacing: .04em;
+    color: var(--ink);
+    z-index: 5;
+  }
+</style>
+</head>
+<body class="slide">
+<div class="stage" data-block-id="gallery-primary" data-renderer-kind="svg" data-component-source="native" data-component-id="native.paper-ink.comparison.diagonal-bands.bands" data-content-ref="example.u1">
+  <div class="doc tl">PPT 标题<br>页面标题</div>
+  <div class="folio">页码 / 总页数 — BY @歪斯Wise</div>
+
+  <svg class="scene" width="1920" height="1080" viewBox="0 0 1920 1080">
+    <g id="draw"></g>
+  </svg>
+
+  <div class="caption">两版门户同期对齐：曝光规模相当、用户结构同质，胜负要看下一层转化。</div>
+</div>
+
+<script src="../../../../themes/paper-ink/assets/particles.js"></script>
+<script>
+var NS = 'http://www.w3.org/2000/svg';
+var INK80 = 'var(--ink-80)';
+var INK70 = 'var(--ink-70)';
+var INK45 = 'var(--ink-45)';
+var INK = 'var(--ink)';
+var PAPER = 'var(--paper)';
+var G = document.getElementById('draw');
+function el(tag, attrs) {
+  var e = document.createElementNS(NS, tag);
+  for (var k in attrs) e.setAttribute(k, attrs[k]);
+  G.appendChild(e); return e;
+}
+function txt(x, y, str, attrs) {
+  var t = el('text', Object.assign({x:x, y:y}, attrs||{}));
+  t.textContent = str; return t;
+}
+var MONO = 'var(--mono)', SANS = 'var(--sans)';
+
+/* ---------- 斜切双带:同一斜角(横向 160 / 纵向 320)互相咬合 ---------- */
+el('polygon', {id:'u1-band-a', points:'0,110 1250,110 1090,430 0,430',
+  fill:'rgba(255,255,255,.09)', stroke:INK80, 'stroke-width':1.3});
+el('polygon', {id:'u1-band-b', points:'670,645 1920,645 1920,935 510,935',
+  fill:'rgba(255,255,255,.09)', stroke:INK80, 'stroke-width':1.3});
+/* 斜向通道细线:呼应两条带的斜边 */
+el('line', {x1:1250, y1:110, x2:1090, y2:430, stroke:INK, 'stroke-width':.6, opacity:.18});
+el('line', {x1:670, y1:650, x2:510, y2:970, stroke:INK, 'stroke-width':.6, opacity:.18});
+
+/* ---------- 带内题签 + 大数字（按槽归属分组） ---------- */
+el('g', {'data-slot-id':'band-a'});
+G = document.getElementById('draw').lastChild;
+txt(96, 186, 'PLAN A — PORTAL 2.0', {'font-family':MONO, 'font-size':'var(--type-meta)', 'letter-spacing':3, fill:INK45});
+txt(96, 240, '方案 A · 新版门户', {'font-family':SANS, 'font-weight':300, 'font-size':'var(--type-subheading)', fill:INK});
+el('line', {x1:96, y1:258, x2:246, y2:258, stroke:INK, 'stroke-width':.9, opacity:.5});
+el('text', {id:'u1-kpi-a', x:96, y:366, 'font-family':SANS, 'font-weight':400, 'font-size':86, fill:INK});
+document.getElementById('u1-kpi-a').textContent = '651w';
+txt(320, 366, '页面曝光 UV · 同期 6/16–6/21', {'font-family':MONO, 'font-size':'var(--type-meta)', 'letter-spacing':2, fill:INK45});
+
+G = document.getElementById('draw');
+el('g', {'data-slot-id':'band-b'});
+G = document.getElementById('draw').lastChild;
+txt(760, 716, 'PLAN B — PORTAL 1.5', {'font-family':MONO, 'font-size':'var(--type-meta)', 'letter-spacing':3, fill:INK45});
+txt(760, 768, '方案 B · 旧版门户', {'font-family':SANS, 'font-weight':300, 'font-size':'var(--type-subheading)', fill:INK});
+el('line', {x1:760, y1:786, x2:910, y2:786, stroke:INK, 'stroke-width':.9, opacity:.5});
+el('text', {id:'u1-kpi-b', x:760, y:894, 'font-family':SANS, 'font-weight':400, 'font-size':86, fill:INK});
+document.getElementById('u1-kpi-b').textContent = '596w';
+txt(984, 894, '页面曝光 UV · 同期 6/16–6/21', {'font-family':MONO, 'font-size':'var(--type-meta)', 'letter-spacing':2, fill:INK45});
+
+G = document.getElementById('draw');
+
+/* ---------- 中央 VS:坐在白色斜向通道里 ---------- */
+el('circle', {cx:930, cy:540, r:34, fill:PAPER, stroke:INK, 'stroke-width':1.3});
+el('circle', {cx:930, cy:540, r:27, fill:'none', stroke:INK, 'stroke-width':.6, opacity:.3});
+txt(930, 549, 'VS', {'font-family':MONO, 'font-size':24, 'text-anchor':'middle', 'letter-spacing':2, fill:INK});
+txt(930, 608, '同期 6/16–6/21 对齐', {'font-family':MONO, 'font-size':'var(--type-meta)', 'text-anchor':'middle', 'letter-spacing':2, fill:INK45});
+
+/* ---------- 右上数据簇:渠道构成成对柱图(挂方案 A 一侧) ---------- */
+el('g', {'data-slot-id':'cluster'});
+G = document.getElementById('draw').lastChild;
+txt(1330, 116, 'CHANNEL MIX', {'font-family':MONO, 'font-size':'var(--type-meta)', 'letter-spacing':3, fill:INK45});
+txt(1420, 116, '渠道构成', {'font-family':SANS, 'font-weight':300, 'font-size':22, fill:INK});
+el('rect', {x:1656, y:96, width:14, height:14, fill:INK, opacity:.85});
+txt(1678, 108, 'A', {'font-family':MONO, 'font-size':16, fill:INK});
+el('rect', {x:1716, y:96, width:14, height:14, fill:'none', stroke:INK, 'stroke-width':1});
+txt(1738, 108, 'B', {'font-family':MONO, 'font-size':16, fill:INK});
+el('line', {x1:1330, y1:420, x2:1850, y2:420, stroke:INK, 'stroke-width':.9, opacity:.5});
+var channels = ['社群', '信息流', '搜索', '外链'];
+var barsA = [196, 158, 120, 88], barsB = [178, 166, 104, 96];
+channels.forEach(function(name, i){
+  var cx = 1396 + i * 116;
+  el('rect', {x:cx, y:420 - barsA[i], width:26, height:barsA[i], fill:INK, opacity:.82});
+  el('rect', {x:cx + 32, y:420 - barsB[i], width:26, height:barsB[i], fill:'none', stroke:INK, 'stroke-width':1.1});
+  txt(cx + 29, 450, name, {'font-family':SANS, 'font-weight':300, 'font-size':17, 'text-anchor':'middle', fill:INK70});
+});
+
+/* ---------- 左下数据簇:两张结构小表(挂方案 B 一侧的对照位) ---------- */
+G = document.getElementById('draw');
+el('g', {'data-slot-id':'cluster'});
+G = document.getElementById('draw').lastChild;
+function miniTable(x, y, title, cols, rowA, rowB) {
+  txt(x, y, title[0], {'font-family':MONO, 'font-size':'var(--type-meta)', 'letter-spacing':3, fill:INK45});
+  txt(x + 118, y, title[1], {'font-family':SANS, 'font-weight':300, 'font-size':22, fill:INK});
+  var colX = [x + 22, x + 170, x + 300, x + 430];
+  cols.forEach(function(c, i){ txt(colX[i + 1], y + 52, c, {'font-family':MONO, 'font-size':16, fill:INK45}); });
+  el('line', {x1:x, y1:y + 68, x2:x + 490, y2:y + 68, stroke:INK, 'stroke-width':.7, opacity:.4});
+  [['方案 A', rowA], ['方案 B', rowB]].forEach(function(row, r){
+    var ry = y + 106 + r * 46;
+    txt(colX[0], ry, row[0], {'font-family':SANS, 'font-weight':300, 'font-size':18, fill:INK70});
+    row[1].forEach(function(v, i){ txt(colX[i + 1], ry, v, {'font-family':SANS, 'font-weight':300, 'font-size':18, fill:INK}); });
+    el('line', {x1:x, y1:ry + 18, x2:x + 490, y2:ry + 18, stroke:INK, 'stroke-width':.55, opacity:.18});
+  });
+}
+miniTable(96, 508, ['USER MIX', '新老用户'], ['新客', '老客'], ['54%', '46%'], ['52%', '48%']);
+miniTable(96, 722, ['AGE BANDS', '年龄段'], ['18-', '19-30', '30+'], ['22%', '49%', '29%'], ['21%', '47%', '32%']);
+
+stageFit();
+</script>
+</body>
+</html>

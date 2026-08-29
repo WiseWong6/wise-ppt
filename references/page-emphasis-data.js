@@ -155,6 +155,11 @@ window.WISE_PPT_PAGE_EMPHASIS = Object.freeze({
     "access": "none",
     "strategy": "无主题焦点色"
   },
+  "D11": {
+    "kind": "nonrelationship",
+    "access": "none",
+    "strategy": "无主题焦点色"
+  },
   "E1": {
     "kind": "relationship",
     "access": "semantic-focus",
@@ -414,5 +419,15 @@ window.WISE_PPT_PAGE_EMPHASIS = Object.freeze({
     "kind": "relationship",
     "access": "semantic-focus",
     "strategy": "默认无额外焦点；可强调当前步骤、瓶颈、转折、出口、关键路径"
+  },
+  "U1": {
+    "kind": "relationship",
+    "access": "semantic-focus",
+    "strategy": "默认无额外焦点；可强调胜出项、异常项、差异点"
+  },
+  "U2": {
+    "kind": "relationship",
+    "access": "semantic-focus",
+    "strategy": "默认无额外焦点；可强调关键证据、涨幅徽记、异常项"
   }
 });

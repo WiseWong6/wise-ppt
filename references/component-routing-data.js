@@ -3409,6 +3409,113 @@ window.WISE_PPT_COMPONENT_ROUTING = Object.freeze({
         "default": "safe"
       }
     },
+    "native:130": {
+      "component_id": "native.paper-ink.130.compare-metrics-table",
+      "relation_keys": [
+        "comparison"
+      ],
+      "capacity": {
+        "min_items": 4,
+        "max_items": 4,
+        "unit": "metric-row"
+      },
+      "fixed_content_quantity": 4,
+      "binding_contract": {
+        "mode": "collection",
+        "unit": "metric-row"
+      },
+      "data_contract_id": "native.paper-ink.130.compare-metrics-table@1",
+      "space_requirements": {
+        "min_width": 700,
+        "min_height": 200,
+        "min_aspect_ratio": 2.6,
+        "max_aspect_ratio": 4.4
+      },
+      "frame": {
+        "width": 1200,
+        "height": 360,
+        "fit": "fixed"
+      },
+      "behavior_contract": {
+        "render_mode": "fixed-visual",
+        "fit_mode": "contain",
+        "allowed_slot_shapes": [
+          "landscape"
+        ],
+        "outer_alignment": "center",
+        "inner_alignment": "start",
+        "visual_subject_selector": ":scope > *",
+        "type_roles": {
+          ".pi-cmt-head": "label",
+          ".pi-cmt-row-title": "body",
+          ".pi-cmt-plan-a": "body-small",
+          ".pi-cmt-plan-b": "body",
+          ".pi-cmt-delta": "number"
+        },
+        "intrinsic_frame": {
+          "width": 1200,
+          "height": 360
+        },
+        "recommended_aspect_ratio": 3.3333
+      },
+      "behavior_contract_id": "native.paper-ink.130.compare-metrics-table@behavior-v4",
+      "placement_contract": {
+        "default": "fill"
+      }
+    },
+    "native:131": {
+      "component_id": "native.paper-ink.131.lever-balance",
+      "relation_keys": [
+        "causal"
+      ],
+      "capacity": {
+        "min_items": 2,
+        "max_items": 2,
+        "unit": "end"
+      },
+      "fixed_content_quantity": 2,
+      "binding_contract": {
+        "mode": "record",
+        "unit": "end"
+      },
+      "data_contract_id": "native.paper-ink.131.lever-balance@1",
+      "space_requirements": {
+        "min_width": 680,
+        "min_height": 340,
+        "min_aspect_ratio": 0.9,
+        "max_aspect_ratio": 4.2
+      },
+      "frame": {
+        "width": 1054,
+        "height": 514,
+        "fit": "fixed"
+      },
+      "behavior_contract": {
+        "render_mode": "fixed-visual",
+        "fit_mode": "contain",
+        "allowed_slot_shapes": [
+          "landscape"
+        ],
+        "outer_alignment": "center",
+        "inner_alignment": "center",
+        "visual_subject_selector": ":scope > *",
+        "type_roles": {
+          "text[font-size=\"var(--type-subheading)\"]": "subheading",
+          "text[font-size=\"var(--type-body)\"]": "body",
+          "text[font-size=\"var(--type-label)\"]": "label",
+          "text[font-family=\"var(--mono)\"]": "label"
+        },
+        "intrinsic_frame": {
+          "width": 1054,
+          "height": 514
+        },
+        "recommended_aspect_ratio": 2.0506
+      },
+      "behavior_contract_id": "native.paper-ink.131.lever-balance@behavior-v4",
+      "placement_contract": {
+        "default": "safe"
+      }
+    },
     "native:63": {
       "component_id": "native.paper-ink.063.step-rise",
       "relation_keys": [

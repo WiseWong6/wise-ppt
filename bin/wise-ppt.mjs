@@ -270,7 +270,7 @@ ${usage()}`);
     if (rest.length !== 1) throw new WisePPTError(`validate \u53C2\u6570\u9519\u8BEF
 ${usage()}`);
     const result = await validateDeck(root, rest[0]);
-    process.stdout.write(`PASS Wise PPT validate pages=${result.page_count} build_id=${result.build_id} forbidden=0 registry=71+12=83
+    process.stdout.write(`PASS Wise PPT validate pages=${result.page_count} build_id=${result.build_id} forbidden=0 registry=73+13=86
 `);
     return;
   }
