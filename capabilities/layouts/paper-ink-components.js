@@ -1023,6 +1023,54 @@ window.PAPER_INK_COMPONENT_DATA = {
   },
 
   {
+    name: "compare-metrics-table",
+    group: "metric-data",
+    groupLabel: "指标与数据",
+    description: "Fixed four-row metrics table with plan columns and a delta column.",
+    label: "指标对比表",
+    num: 130,
+    variant: null,
+    paperInkNative: true,
+    frame: {"width":1200,"height":360,"fit":"fixed"},
+    dataContract: {"mode":"collection","unit":"metric-row","pointer":"/structured_data","minItems":4,"maxItems":4},
+    sourceLayout: "U2",
+    sourceRegion: { sourceRef: 'U2', regionIds: ['scorecard'], extraction: 'include-only', framePolicy: 'tight-ink' },
+    boundary: { topology: 'connected-group', unit: 'metric-row', fixedQuantity: 4 },
+    /* 出自样张 layout-u2.html 汇总对比表：表头 + 4 个指标行 + 涨幅列，固定 4 行；涨幅只出现在涨幅列。 */
+    snippet: "<div class=\"pi-card\" data-bind-root=\"collection\" style=\"width:auto;min-height:0;overflow:visible\">\n<svg class=\"pi-art\" data-repeat-unit=\"metric-row\" data-fixed-quantity=\"4\" width=\"100%\" viewBox=\"0 0 1200 360\" xmlns=\"http://www.w3.org/2000/svg\" aria-label=\"U2 指标对比表完整母板\">\n<g>\n<text class=\"pi-cmt-head\" x=\"32\" y=\"52\" font-family=\"var(--pi-sans)\" font-weight=\"300\" font-size=\"15\" fill=\"var(--pi-ink-55)\">指标</text>\n<text class=\"pi-cmt-head\" x=\"700\" y=\"52\" text-anchor=\"end\" font-family=\"var(--pi-sans)\" font-weight=\"300\" font-size=\"15\" fill=\"var(--pi-ink-55)\">方案 A</text>\n<text class=\"pi-cmt-head\" x=\"920\" y=\"52\" text-anchor=\"end\" font-family=\"var(--pi-sans)\" font-weight=\"300\" font-size=\"15\" fill=\"var(--pi-ink-55)\">方案 B</text>\n<text class=\"pi-cmt-head\" x=\"1168\" y=\"52\" text-anchor=\"end\" font-family=\"var(--pi-sans)\" font-weight=\"300\" font-size=\"15\" fill=\"var(--pi-ink-55)\">涨幅</text>\n<line x1=\"24\" y1=\"70\" x2=\"1176\" y2=\"70\" stroke=\"var(--pi-ink)\" stroke-width=\"1\" opacity=\"0.5\"></line>\n<line x1=\"24\" y1=\"128\" x2=\"1176\" y2=\"128\" stroke=\"var(--pi-ink)\" stroke-width=\"0.55\" opacity=\"0.18\"></line>\n<line x1=\"24\" y1=\"184\" x2=\"1176\" y2=\"184\" stroke=\"var(--pi-ink)\" stroke-width=\"0.55\" opacity=\"0.18\"></line>\n<line x1=\"24\" y1=\"240\" x2=\"1176\" y2=\"240\" stroke=\"var(--pi-ink)\" stroke-width=\"0.55\" opacity=\"0.18\"></line>\n<line x1=\"24\" y1=\"296\" x2=\"1176\" y2=\"296\" stroke=\"var(--pi-ink)\" stroke-width=\"0.8\" opacity=\"0.45\"></line>\n<rect x=\"1068\" y=\"86\" width=\"104\" height=\"32\" rx=\"16\" fill=\"none\" stroke=\"var(--pi-ink)\" stroke-width=\"1.2\"></rect>\n<text class=\"pi-cmt-row-title\" x=\"32\" y=\"108\" font-family=\"var(--pi-sans)\" font-weight=\"300\" font-size=\"18\" fill=\"var(--pi-ink)\">分发转化率</text>\n<text class=\"pi-cmt-plan-a\" x=\"700\" y=\"108\" text-anchor=\"end\" font-family=\"var(--pi-sans)\" font-weight=\"300\" font-size=\"17\" fill=\"var(--pi-ink-70)\">0.28%</text>\n<text class=\"pi-cmt-plan-b\" x=\"920\" y=\"108\" text-anchor=\"end\" font-family=\"var(--pi-sans)\" font-weight=\"300\" font-size=\"17\" fill=\"var(--pi-ink)\">0.64%</text>\n<text class=\"pi-cmt-delta\" x=\"1160\" y=\"104\" text-anchor=\"end\" font-family=\"var(--pi-mono)\" font-size=\"15\" fill=\"var(--pi-ink)\">+128%↑</text>\n<text class=\"pi-cmt-row-title\" x=\"32\" y=\"164\" font-family=\"var(--pi-sans)\" font-weight=\"300\" font-size=\"18\" fill=\"var(--pi-ink)\">活跃消耗率</text>\n<text class=\"pi-cmt-plan-a\" x=\"700\" y=\"164\" text-anchor=\"end\" font-family=\"var(--pi-sans)\" font-weight=\"300\" font-size=\"17\" fill=\"var(--pi-ink-70)\">0.08%</text>\n<text class=\"pi-cmt-plan-b\" x=\"920\" y=\"164\" text-anchor=\"end\" font-family=\"var(--pi-sans)\" font-weight=\"300\" font-size=\"17\" fill=\"var(--pi-ink)\">0.12%</text>\n<text class=\"pi-cmt-delta\" x=\"1160\" y=\"160\" text-anchor=\"end\" font-family=\"var(--pi-mono)\" font-size=\"15\" fill=\"var(--pi-ink)\">+52%↑</text>\n<text class=\"pi-cmt-row-title\" x=\"32\" y=\"220\" font-family=\"var(--pi-sans)\" font-weight=\"300\" font-size=\"18\" fill=\"var(--pi-ink)\">消耗客单</text>\n<text class=\"pi-cmt-plan-a\" x=\"700\" y=\"220\" text-anchor=\"end\" font-family=\"var(--pi-sans)\" font-weight=\"300\" font-size=\"17\" fill=\"var(--pi-ink-70)\">0.015</text>\n<text class=\"pi-cmt-plan-b\" x=\"920\" y=\"220\" text-anchor=\"end\" font-family=\"var(--pi-sans)\" font-weight=\"300\" font-size=\"17\" fill=\"var(--pi-ink)\">0.018</text>\n<text class=\"pi-cmt-delta\" x=\"1160\" y=\"216\" text-anchor=\"end\" font-family=\"var(--pi-mono)\" font-size=\"15\" fill=\"var(--pi-ink)\">+18%↑</text>\n<text class=\"pi-cmt-row-title\" x=\"32\" y=\"276\" font-family=\"var(--pi-sans)\" font-weight=\"300\" font-size=\"18\" fill=\"var(--pi-ink)\">次日留存</text>\n<text class=\"pi-cmt-plan-a\" x=\"700\" y=\"276\" text-anchor=\"end\" font-family=\"var(--pi-sans)\" font-weight=\"300\" font-size=\"17\" fill=\"var(--pi-ink-70)\">3.6%</text>\n<text class=\"pi-cmt-plan-b\" x=\"920\" y=\"276\" text-anchor=\"end\" font-family=\"var(--pi-sans)\" font-weight=\"300\" font-size=\"17\" fill=\"var(--pi-ink)\">4.5%</text>\n<text class=\"pi-cmt-delta\" x=\"1160\" y=\"272\" text-anchor=\"end\" font-family=\"var(--pi-mono)\" font-size=\"15\" fill=\"var(--pi-ink)\">+25%↑</text>\n</g>\n</svg>\n</div>"
+  },
+  {
+    name: "lever-balance",
+    group: "comparison",
+    groupLabel: "对比与对照",
+    description: "A tilted lever plank on a labelled fulcrum: the stock end is pressed down and one named action lifts the gains end.",
+    label: "杠杆天平",
+    num: 131,
+    variant: null,
+    paperInkNative: true,
+    frame: { width: 1054, height: 514, fit: 'fixed' },
+    dataContract: { mode: 'record', unit: 'end', pointer: '/structured_data', minItems: 2, maxItems: 2 },
+    sourceLayout: null,
+    /* 出处样张：外部述职样张"创收"页斜板杠杆（原样张不入库，中性化重绘）。
+       斜板左低右高 + 三角支点 + 两端配重球 + 单个转化动作箭头；母板固定 2 端 1 支点，
+       frame 与 viewBox 一致。与 native:106 权衡天平分工：106 讲双侧静态取舍，本条讲支点撬动转化。 */
+    snippet: `<div class="pi-card" data-bind-root="record" style="width:1050px!important;min-height:560px!important;background:transparent"><svg class="pi-art" width="100%" viewBox="0 0 1054 514" xmlns="http://www.w3.org/2000/svg" aria-label="支点杠杆转化图">
+  <g fill="var(--pi-ink)" font-family="var(--pi-sans)">
+    <text x="527" y="32" text-anchor="middle" font-family="var(--pi-mono)" font-size="11" letter-spacing="3" fill="var(--pi-ink-45)">LEVERAGE · PIVOT · TRANSFORM</text>
+    <circle cx="300" cy="318" r="88" fill="rgba(255,255,255,.25)" stroke="var(--pi-ink)" stroke-width="1.2"/>
+    <text data-field="left_title" x="300" y="326" text-anchor="middle" font-size="var(--type-subheading)" font-weight="300">存量业务</text>
+    <circle cx="868" cy="199" r="112" fill="var(--pi-paper)" stroke="var(--pi-ink)" stroke-width="1.2"/>
+    <text data-field="right_title" x="868" y="207" text-anchor="middle" font-size="var(--type-subheading)" font-weight="300">增量营收</text>
+    <rect x="63.5" y="368" width="927" height="12" transform="rotate(-9.44 527 374)" fill="var(--pi-paper)" stroke="var(--pi-ink)" stroke-width="1.2"/>
+    <path d="M 690 354 L 782 472 L 598 472 Z" fill="var(--pi-paper)" stroke="var(--pi-ink)" stroke-width="1.2" stroke-linejoin="round"/>
+    <text data-field="pivot_title" x="690" y="428" text-anchor="middle" font-size="var(--type-body)" font-weight="300">盈利拐点</text>
+    <path d="M 468 200 H 532 V 304 H 560 L 500 344 L 440 304 H 468 Z" fill="var(--pi-paper)" stroke="var(--pi-ink)" stroke-width="1.2" stroke-linejoin="round"/>
+    <text data-field="transform_label" x="552" y="266" text-anchor="start" font-size="var(--type-body)" font-weight="300" fill="var(--pi-ink-80)">产品化</text>
+    <text data-field="annotation" x="300" y="186" text-anchor="middle" font-size="var(--type-label)" fill="var(--pi-ink-60)">能力与资源聚焦</text>
+  </g>
+</svg></div>`
+  },
+  {
     name: "timeline-axis-horizontal",
     group: "flow-temporal",
     groupLabel: "流程与时序",

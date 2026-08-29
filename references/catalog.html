@@ -416,7 +416,8 @@ const NON_REL_GROUPS=[
     ['D1','封面 · 左题右图'],
     ['D7','封面 · 上图下题'],
     ['D8','封面 · 左图右题'],
-    ['D10','封面 · 居中纹理']]},
+    ['D10','封面 · 居中纹理'],
+    ['D11','封面 · 全幅画墙左题']]},
   {id:'toc',cn:'目录',role:'章节导航',items:[
     ['D4','目录导航'],
     ['D9','目录 · 分栏大字']]},
@@ -464,6 +465,7 @@ const SMARTART_TYPES=[
     ['G1','三向放射','单区','拆解'],['G5','三原则放射','单区','拆解'],['G4','中心枢纽 + 卫星','单区','拆解 / 网络'],
     ['H1','同心防线','单区','嵌套'],['H2','嵌套变焦框','单区','嵌套'],
     ['E1','对比双面板','左右2等分','对比'],['E2','分水岭双栏','左右2等分','对比'],
+    ['U1','斜切双带对照','上下2等分 / 上·左右2:1 / 下·左右1:2','对比'],
     ['E5','双金字塔映射','左右2等分','映射'],['L1','权重弧线图','单区','网络'],['L2','星座映射网','单区','映射'],
     ['P2','菱形四边标注','单区','映射'],['Q1','交叠集合','单区','交叠'],
     ['T2','版式关系图册','左右1:2','映射'],
@@ -487,6 +489,7 @@ const SMARTART_TYPES=[
   {id:'data',cn:'⑨ 数据',desc:'Wise PPT 扩展:图表、指标、排名或地理分布',items:[
     ['C2','图表联排墙','上下2等分 / 下·左右2等分','证据'],['C4','分布地图','左右2:1','分布'],
     ['C6','KPI 大数字横带','单区','指标'],['C7','排行柱图','单区','排名'],
+    ['U2','图表带与对比表','上下2:1 / 上·左右3等分','证据 + 对比'],
   ]},
 ];
 
@@ -550,6 +553,7 @@ const SMARTART_COMPONENTS=[
     {t:'native',num:77,en:'before-after-bands',nm:'前后双带演进面板'},
     {t:'native',num:95,en:'weighted-arc-web',nm:'权重弧网',note:'源 L1 · 原版抄录'},
     {t:'native',num:106,en:'balance-scale',nm:'权衡天平',note:'经典双侧取舍'},
+    {t:'native',num:131,en:'lever-balance',nm:'杠杆天平',note:'支点撬动·存量转增量'},
     {t:'native',num:107,en:'interlocking-gears',nm:'互锁齿轮',note:'固定 3 个相互驱动模块'},
     {t:'native',num:108,en:'three-principles-radial',nm:'三原则放射图',note:'源 G5 · 固定三分支',catalogNo:77},
   ]},
@@ -582,6 +586,7 @@ const SMARTART_COMPONENTS=[
     {t:'atlas',num:59,en:'stats',nm:'双指标卡',note:'固定 2 个 · 一行两卡',pageScale:.8},
     {t:'native',num:89,en:'metric-strip',nm:'自适应指标横带',note:'源 K3 · 2–4 项随内容自动增减；横槽保持单行'},
     {t:'native',num:85,en:'radial-progress',nm:'进度指标组',note:'源 C5 · 1–4 项随内容；方槽 1–2 项单行居中、3–4 项换行，横槽始终单行'},
+    {t:'native',num:130,en:'compare-metrics-table',nm:'指标对比表',note:'源 U2 · 固定 4 行 + 涨幅列'},
     {t:'ec',id:'echarts.geo-choropleth-map',en:'geo-map',nm:'分级填色地图'},
     {t:'ec',id:'echarts.pie-access-source',en:'pie',nm:'饼图'},
     {t:'ec',id:'echarts.line-basic',en:'line',nm:'折线图',note:'含 smooth / stacked 变体',vr:[['ec:echarts.line-basic','基础'],['ec:echarts.line-smooth','平滑'],['ec:echarts.line-stacked','堆叠']]},
@@ -609,7 +614,7 @@ function assertCatalogClassification(groups,keyOf,expected,label){
   }
   return count;
 }
-const SMARTART_LAYOUT_COUNT=assertCatalogClassification(SMARTART_TYPES,item=>item[0],71,'版式');
+const SMARTART_LAYOUT_COUNT=assertCatalogClassification(SMARTART_TYPES,item=>item[0],73,'版式');
 const CATALOG_COMPONENTS=SMARTART_COMPONENTS.flatMap(group=>group.items);
 /* catalogNo 是当前公开身份；源数组按语义邻接维护，展示序按编号升序统一。 */
 const RESERVED_COMPONENT_NUMBERS=new Set([6,16,80]);
@@ -627,7 +632,7 @@ SMARTART_COMPONENTS.forEach(group=>group.items.sort((a,b)=>a.catalogNo-b.catalog
 const SMARTART_COMPONENT_COUNT=assertCatalogClassification(
   SMARTART_COMPONENTS,
   item=>item.t==='ec'?'ec:'+item.id:item.t+':'+item.num,
-  77,
+  79,
   '组件',
 );
 function componentCatalogCode(item){
@@ -639,7 +644,7 @@ function componentSourceType(item){
 }
 function assertContinuousComponentCatalogNumbers(){
   const numbers=CATALOG_COMPONENTS.map(item=>item.catalogNo).sort((a,b)=>a-b);
-  const expected=Array.from({length:80},(_,index)=>index+1)
+  const expected=Array.from({length:82},(_,index)=>index+1)
     .filter(number=>!RESERVED_COMPONENT_NUMBERS.has(number));
   if(numbers.some((number,index)=>number!==expected[index])||new Set(numbers).size!==numbers.length){
     throw new Error('组件 catalog 编号与保留空位不一致:'+numbers.join(','));
@@ -2677,6 +2682,8 @@ const STRUCTS=[
     {f:'empty-e6.html',code:'E6',cap:'上下2等分 / 上·左右2:1 / 下·左右2:1',ex:['E6']},
     {f:'empty-i4.html',code:'I4',cap:'左右2等分 / 左·上下2等分 / 右·上下2等分',ex:['I4']},
     {f:'empty-s3.html',code:'S3',cap:'左右1:2 / 左·上下2等分 / 右·上下2:1:1',ex:['S3']},
+    {f:'empty-u1.html',code:'U1',cap:'上下2等分 / 上·左右2:1 / 下·左右1:2',ex:['U1']},
+    {f:'empty-u2.html',code:'U2',cap:'上下2:1 / 上·左右3等分',ex:['U2']},
    ]},
 ];
 

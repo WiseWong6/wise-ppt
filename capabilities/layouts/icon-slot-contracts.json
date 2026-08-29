@@ -4,15 +4,15 @@
   "generated_from": {
     "layout_registry": {
       "path": "capabilities/layouts/layout-registry.json",
-      "sha256": "96f75bbfe410a3a3d24228f714a66055ffe486b6d95981700256527c7bedda1a"
+      "sha256": "8fd634ceb84c8431ca6bf19e9db17198da207ad4ee9bd8ae110f2b0a311a0364"
     },
     "component_routing": {
       "path": "capabilities/components/routing-manifest.json",
-      "sha256": "f0d7d903d89c86d1c220b3a8f53b4a2ef11b1da32d0193b49d7452b3f9697fc9"
+      "sha256": "92dc1598493c72a111e0ad5fb9c0c6abe2ecbd2992af2cb7d1d70f1e73025738"
     },
     "runtime_authority": {
       "path": "capabilities/runtime-authority-manifest.json",
-      "sha256": "b14b12cef4d8d78be47a934ec77b1de8e6fc83b3ceb3763be538e864e15e0569"
+      "sha256": "08f627824e9856508f5c2b1a54504ed037a55c25b8ddb4b2895e8409748be928"
     }
   },
   "policy": {
@@ -40,10 +40,10 @@
     "source_hash_required": true
   },
   "counts": {
-    "layouts": 83,
-    "relationship_layouts": 71,
-    "nonrelationship_layouts": 12,
-    "components": 123,
+    "layouts": 86,
+    "relationship_layouts": 73,
+    "nonrelationship_layouts": 13,
+    "components": 125,
     "registered_icon_slots": 18
   },
   "layouts": {
@@ -909,6 +909,18 @@
       "icon_slot_count": 0,
       "icon_slots": []
     },
+    "paper-ink.relationship.U1": {
+      "display_code": "U1",
+      "page_kind": "relationship",
+      "icon_slot_count": 0,
+      "icon_slots": []
+    },
+    "paper-ink.relationship.U2": {
+      "display_code": "U2",
+      "page_kind": "relationship",
+      "icon_slot_count": 0,
+      "icon_slots": []
+    },
     "paper-ink.nonrelationship.D1": {
       "display_code": "D1",
       "page_kind": "nonrelationship",
@@ -917,6 +929,12 @@
     },
     "paper-ink.nonrelationship.D10": {
       "display_code": "D10",
+      "page_kind": "nonrelationship",
+      "icon_slot_count": 0,
+      "icon_slots": []
+    },
+    "paper-ink.nonrelationship.D11": {
+      "display_code": "D11",
       "page_kind": "nonrelationship",
       "icon_slot_count": 0,
       "icon_slots": []
@@ -1708,6 +1726,16 @@
     },
     "native.paper-ink.127.capability-pillar-model": {
       "component_name": "能力柱·填充",
+      "icon_slot_count": 0,
+      "registered_placements": []
+    },
+    "native.paper-ink.130.compare-metrics-table": {
+      "component_name": "指标对比表",
+      "icon_slot_count": 0,
+      "registered_placements": []
+    },
+    "native.paper-ink.131.lever-balance": {
+      "component_name": "杠杆天平",
       "icon_slot_count": 0,
       "registered_placements": []
     }

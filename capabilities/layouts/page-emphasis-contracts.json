@@ -2,9 +2,9 @@
   "contract_version": 3,
   "capability_id": "wise-ppt.page-emphasis",
   "description": "页面只声明语义焦点；主题决定焦点角色的具体颜色。组件源码与组件 Catalog 保持中性。",
-  "page_count": 83,
-  "relationship_page_count": 71,
-  "nonrelationship_page_count": 12,
+  "page_count": 86,
+  "relationship_page_count": 73,
+  "nonrelationship_page_count": 13,
   "max_focus_groups_per_page": 1,
   "production_target_contract": {
     "relationship_target_id": "focus.primary",
@@ -1155,6 +1155,20 @@
       "sample_focus_ref": null,
       "sample_focus_reason": null,
       "reason": "亮暗分区已建立重心，保持无主题焦点色。"
+    },
+    "D11": {
+      "page_kind": "nonrelationship",
+      "page_name": "画墙封面",
+      "access": "none",
+      "default_mode": "none",
+      "primary_relation": null,
+      "relationship_family": null,
+      "focus_candidates": [],
+      "normal_contrast": "页面构图、字阶、留白与墨阶。",
+      "theme_focus_carriers": [],
+      "sample_focus_ref": null,
+      "sample_focus_reason": null,
+      "reason": "全幅画墙与雾面已把标题压成唯一主角，保持无主题焦点色。"
     },
     "E1": {
       "page_kind": "relationship",
@@ -3070,6 +3084,70 @@
         {
           "selector": "#t3-focus",
           "role": "label"
+        }
+      ]
+    },
+    "U1": {
+      "page_kind": "relationship",
+      "page_name": "斜切双带对照",
+      "access": "semantic-focus",
+      "default_mode": "none",
+      "primary_relation": "comparison",
+      "relationship_family": "compare",
+      "focus_candidates": [
+        "胜出项",
+        "异常项",
+        "差异点"
+      ],
+      "normal_contrast": "墨阶差、实心反白、线宽或局部纹理",
+      "theme_focus_carriers": [
+        "value",
+        "outline"
+      ],
+      "sample_focus_ref": "sample.u1.u1-focus",
+      "sample_focus_reason": "Catalog 样张只激活逐项登记的精确焦点成员；正式 deck 必须按内容重新声明。",
+      "reason": "关系页具备内容驱动的焦点能力，但默认不上主题焦点色。",
+      "sample_focus_profile": "content-only",
+      "sample_focus_members": [
+        {
+          "selector": "#u1-kpi-a",
+          "role": "value"
+        },
+        {
+          "selector": "#u1-band-b",
+          "role": "outline"
+        }
+      ]
+    },
+    "U2": {
+      "page_kind": "relationship",
+      "page_name": "图表带与对比表",
+      "access": "semantic-focus",
+      "default_mode": "none",
+      "primary_relation": "evidence",
+      "relationship_family": "compare",
+      "focus_candidates": [
+        "关键证据",
+        "涨幅徽记",
+        "异常项"
+      ],
+      "normal_contrast": "墨阶差、实心反白、线宽或局部纹理",
+      "theme_focus_carriers": [
+        "value",
+        "status"
+      ],
+      "sample_focus_ref": "sample.u2.u2-focus",
+      "sample_focus_reason": "Catalog 样张只激活逐项登记的精确焦点成员；正式 deck 必须按内容重新声明。",
+      "reason": "关系页具备内容驱动的焦点能力，但默认不上主题焦点色。",
+      "sample_focus_profile": "content-only",
+      "sample_focus_members": [
+        {
+          "selector": "#u2-focus-bar",
+          "role": "value"
+        },
+        {
+          "selector": "#u2-delta-chip",
+          "role": "status"
         }
       ]
     }

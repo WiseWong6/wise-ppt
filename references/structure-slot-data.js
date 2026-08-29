@@ -1007,6 +1007,96 @@ window.WISE_PPT_STRUCTURE_SLOTS = Object.freeze({
           "height": 177.5
         }
       ]
+    },
+    {
+      "id": "empty-u1",
+      "code": "U1",
+      "label": "U1 · 上下2等分 / 上·左右2:1 / 下·左右1:2",
+      "summary": "上下2等分 / 上·左右2:1 / 下·左右1:2",
+      "source_file": "empty-u1.html",
+      "slots": [
+        {
+          "id": "u1.slot-1",
+          "content_group": "方案 A 带",
+          "inset_group": "empty-u1.split-0",
+          "left": 120,
+          "top": 131,
+          "width": 1094.6667,
+          "height": 365
+        },
+        {
+          "id": "u1.slot-2",
+          "content_group": "渠道构成图",
+          "inset_group": "empty-u1.split-0",
+          "left": 1252.6667,
+          "top": 131,
+          "width": 547.3333,
+          "height": 365
+        },
+        {
+          "id": "u1.slot-3",
+          "content_group": "结构小表",
+          "inset_group": "empty-u1.split-1",
+          "left": 120,
+          "top": 516,
+          "width": 547.3333,
+          "height": 365
+        },
+        {
+          "id": "u1.slot-4",
+          "content_group": "方案 B 带",
+          "inset_group": "empty-u1.split-1",
+          "left": 705.3333,
+          "top": 516,
+          "width": 1094.6667,
+          "height": 365
+        }
+      ]
+    },
+    {
+      "id": "empty-u2",
+      "code": "U2",
+      "label": "U2 · 上下2:1 / 上·左右3等分",
+      "summary": "上下2:1 / 上·左右3等分",
+      "source_file": "empty-u2.html",
+      "slots": [
+        {
+          "id": "u2.slot-1",
+          "content_group": "图表带一",
+          "inset_group": "empty-u2.split-0",
+          "left": 120,
+          "top": 131,
+          "width": 534.6667,
+          "height": 486.6667
+        },
+        {
+          "id": "u2.slot-2",
+          "content_group": "图表带二",
+          "inset_group": "empty-u2.split-0",
+          "left": 692.6667,
+          "top": 131,
+          "width": 534.6667,
+          "height": 486.6667
+        },
+        {
+          "id": "u2.slot-3",
+          "content_group": "图表带三",
+          "inset_group": "empty-u2.split-0",
+          "left": 1265.3333,
+          "top": 131,
+          "width": 534.6667,
+          "height": 486.6667
+        },
+        {
+          "id": "u2.slot-4",
+          "content_group": "汇总对比表",
+          "inset_group": "empty-u2.split-root",
+          "left": 120,
+          "top": 637.6667,
+          "width": 1680,
+          "height": 243.3333
+        }
+      ]
     }
   ]
 });

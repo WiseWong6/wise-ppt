@@ -1,19 +1,19 @@
 {
   "contract_version": 1,
-  "corpus_sha256": "f7a528e701eafb9b5b167f5281d0c51d2090bb59a34718fa0118c68d464804db",
-  "corpus_codepoints": 1497,
+  "corpus_sha256": "a64d1bcd9d60d7498117e2eeebd596abf0bde9c8a4e8a098f66d8c33ef4bf750",
+  "corpus_codepoints": 1504,
   "sources": [
     {
       "path": "capabilities/layouts/paper-ink-components.js",
-      "sha256": "8b52f54584526a6b988af8d784f2cd8e6be9c9be3292bbe953d7b0373e5ac646"
+      "sha256": "15d864c41bda86e4bb747f8c729f5aeec790e5135b673b12db051bcf0526617a"
     },
     {
       "path": "references/catalog.html",
-      "sha256": "8a73f33e50acfacdc3883fa42c750f140e4dda745414990cede05791e59b7996"
+      "sha256": "c1f4c56e49c0806cda71b20d0c49a7dc5648d90edb82b900eaccb99210a52a6f"
     },
     {
       "path": "references/component-routing-data.js",
-      "sha256": "fbedba3ee33289f1bc0867695fb3c9e83a764b0dd721a60e143b6366257f03c0"
+      "sha256": "0978b07d92799c287dea383eb926ccf119e4dbaeadf829b37c120c202afa5f92"
     },
     {
       "path": "references/gallery-components/echarts-catalog-data.js",
@@ -114,6 +114,10 @@
     {
       "path": "references/gallery-paper-ink/ai/frames/layout-d10.html",
       "sha256": "746d62393186c3a2ace36d63d8f85080272651f0ef375e9743ecdf699c095747"
+    },
+    {
+      "path": "references/gallery-paper-ink/ai/frames/layout-d11.html",
+      "sha256": "a5a54e3c05142565c4f814bdd3935d199b75a0f866f06ec61d927319125cb6b7"
     },
     {
       "path": "references/gallery-paper-ink/ai/frames/layout-d2.html",
@@ -356,16 +360,24 @@
       "sha256": "b06f8cf25cfea60d0df66c9262b9ead9a408678d54bec6e3e2dd266566ddd5ed"
     },
     {
+      "path": "references/gallery-paper-ink/ai/frames/layout-u1.html",
+      "sha256": "bae5b258aa76db9c1b3a7b33f0b7506583faecd0a8d59be17d21085a7ad3ef4a"
+    },
+    {
+      "path": "references/gallery-paper-ink/ai/frames/layout-u2.html",
+      "sha256": "0f997f95c72b3e65204e879fd2d296fd2cf97f806d6f81c383724d5ea19c3c8f"
+    },
+    {
       "path": "references/icon-catalog-data.js",
       "sha256": "419dd2901d6a3e4a1778a76ee5300d2432fb9f628cd8008060eebabc23dac084"
     },
     {
       "path": "references/page-emphasis-data.js",
-      "sha256": "0c2b687bbfb201890de239aae236eeae585dca248dc2cff47fb7a9a6685ac09b"
+      "sha256": "560baf47305524782834303c273edfc4568ab337525719b2e6ffec954ff714a8"
     },
     {
       "path": "references/paper-ink-theme-data.js",
-      "sha256": "b00bde1ca6484fb1af60e32bcc01bdcf1d03ba12801f2743a5a930d6f2415393"
+      "sha256": "c82018bec3fc6bfa12eb63767ca7a296cd23f711c5feda0d335064657ff2e4d0"
     },
     {
       "path": "references/ppt-component-atlas/catalog-data.js",
@@ -373,7 +385,7 @@
     },
     {
       "path": "references/structure-slot-data.js",
-      "sha256": "1cdab4780dfaa3909fb3e2b8379d646c4705cd35fe020118bfad5b0df559bfd1"
+      "sha256": "649282e3af712b189d95a3066aee271657693b3739320126ca1f4d82c55e9128"
     },
     {
       "path": "runtime/stage-fit.js",
@@ -381,7 +393,7 @@
     },
     {
       "path": "themes/paper-ink/examples/wise-ppt-story-six-page/deck-spec.json",
-      "sha256": "5e0c540467ae42a43962d9d46fd783e7b4a1285e7cc30496e7bbfb824c5ba720"
+      "sha256": "c7bee23566c0e87ff0993003a1f918a4c1f5ea9371250ea7ddcae66aeaba3e63"
     }
   ],
   "fonts": [
@@ -389,43 +401,43 @@
       "source": "themes/paper-ink/assets/fonts/SourceHanSansCN-Light.otf",
       "source_sha256": "b6dfc945aae0daf9b15019f59c2f7b18d17da3b92f00c3ec32fb5f0333696d9c",
       "output": "themes/paper-ink/assets/fonts/catalog/SourceHanSansCN-Light.catalog.woff2",
-      "sha256": "8603684c98bc88fadf07b665ca4d4d5009f57b5752b5df0a84c2d60c616907a1",
-      "bytes": 481260
+      "sha256": "6e3071591f418feec7bb7684bfeaac042b2e1f208c84b4baae44b535ce8374c9",
+      "bytes": 483636
     },
     {
       "source": "themes/paper-ink/assets/fonts/SourceHanSansCN-Regular.otf",
       "source_sha256": "f1d8611151880c6c336aabeac4640ef434fa13cbfbf1ffe82d0a71b2a5637256",
       "output": "themes/paper-ink/assets/fonts/catalog/SourceHanSansCN-Regular.catalog.woff2",
-      "sha256": "c70fb5220124732c3f875082eb0a9094fde940860e0fd9c957d92d3bf2513167",
-      "bytes": 486400
+      "sha256": "e6ba4e50ef1e4733381e0427f2a5667976aaf40130b9c4f4e365d2bed09a2d94",
+      "bytes": 488652
     },
     {
       "source": "themes/paper-ink/assets/fonts/SourceHanSansCN-Medium.otf",
       "source_sha256": "1df61d31687d04fd2f928a3bb6ca6cd61f0e988cc267cf317f32406edbb49f70",
       "output": "themes/paper-ink/assets/fonts/catalog/SourceHanSansCN-Medium.catalog.woff2",
-      "sha256": "dd2e2b7cd0be28c6d66e78988772132558fe69b75eba41048f7ad23b08c1288f",
-      "bytes": 488040
+      "sha256": "223c33361a8d2501ccc029895da946d1265d4f1cb1a32bc3d5cb039069b5e850",
+      "bytes": 490936
     },
     {
       "source": "themes/paper-ink/assets/fonts/SourceHanSansCN-Bold.otf",
       "source_sha256": "df2b90f5bcc6d01dfc964cec5f6d535d6b6aebd26ed7fd79a9c1b3f2112fcb6b",
       "output": "themes/paper-ink/assets/fonts/catalog/SourceHanSansCN-Bold.catalog.woff2",
-      "sha256": "05aa13d465a277ca1eae13665458fe87606cecb3086331bc054db5d834c86736",
-      "bytes": 496064
+      "sha256": "2b67ac97c980d85ecdf24ba555ba5323789ced78cf39fd71eab0e60eb7580dd3",
+      "bytes": 499124
     },
     {
       "source": "themes/paper-ink/assets/fonts/SourceHanSerifCN-Medium.otf",
       "source_sha256": "8e224937647ae71ba1b1f310bcb3fbc32f21ec7c2c490ba04670455c901f3378",
       "output": "themes/paper-ink/assets/fonts/catalog/SourceHanSerifCN-Medium.catalog.woff2",
-      "sha256": "50df35be6b88fa3753b6baf90440df18407aeb951b6d10a13637a7de0038bb99",
-      "bytes": 640612
+      "sha256": "3ac7e6e2bddf400e2171bc1ff6522fa9069fc7ca1a226e21728a9ff90238ba38",
+      "bytes": 644788
     },
     {
       "source": "themes/paper-ink/assets/fonts/SourceHanSerifCN-Bold.otf",
       "source_sha256": "26e2c9bd766fee0df6d1ff1f1a0896607d0178649ee382faa725f445d5dbeaae",
       "output": "themes/paper-ink/assets/fonts/catalog/SourceHanSerifCN-Bold.catalog.woff2",
-      "sha256": "993a3c257a32410414aab8d62e664b58bd536ea601695f18f0cfd9299887ae8c",
-      "bytes": 660004
+      "sha256": "8515476e26abd3c851b58fbf6c87fdd282f0e0d8f498a878eede42da2bce5ca7",
+      "bytes": 664504
     },
     {
       "source": "themes/paper-ink/assets/fonts/CourierPrime-Regular.ttf",
@@ -445,8 +457,8 @@
       "source": "themes/paper-ink/assets/fonts/LXGWWenKai-Regular.ttf",
       "source_sha256": "39ad71264b588165b469e35e6afb162a378dacd1f95348160240ba9038ac3009",
       "output": "themes/paper-ink/assets/fonts/catalog/LXGWWenKai-Regular.catalog.woff2",
-      "sha256": "c480d34938cc8795c2983bcc33412f1d9c9c7fd3dd129ea2dad6d64ae8dfffd3",
-      "bytes": 329564
+      "sha256": "e70559e26e2f76e62c4730fbcacf09980176f45e1a16867f608766624fb242a1",
+      "bytes": 331712
     }
   ]
 }

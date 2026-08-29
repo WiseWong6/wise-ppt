@@ -4,25 +4,25 @@
   "generated_from": {
     "catalog_authority": {
       "path": "capabilities/catalog-authority-manifest.json",
-      "sha256": "608ed7933a48a8293e04b85270cb16926f016f79c46ec514cfda393c8aecdbe8"
+      "sha256": "5b6f062bd4072e23ffbd4f1c25cc3902c163b652177a85ac9ce8701527f27cab"
     },
     "gallery_manifest": {
       "path": "capabilities/layouts/gallery-manifest.json",
-      "sha256": "4c413a617a85874a67b087097ece1e85e30a3220df09b3fdcc633a06db992ce7"
+      "sha256": "14303193429514249214a1a9b04e7959488eb1422ac1b27a9065598f29415b9f"
     },
     "nonrelation_contracts": {
       "path": "capabilities/layouts/nonrelation-template-contracts.json",
-      "sha256": "56065e0e6c2cbaca5d5bb453532eaa343ba01861890d3aa9ac7f7ac176ce7768"
+      "sha256": "6f4be7ddc06c8c363001d247320ee0817ee6c52412746c514467f07f5b293353"
     },
     "component_routing": {
       "path": "capabilities/components/routing-manifest.json",
-      "sha256": "f0d7d903d89c86d1c220b3a8f53b4a2ef11b1da32d0193b49d7452b3f9697fc9"
+      "sha256": "3e8332f963ced52a6b12fd93be829862d49925dd14694111f85946e930d4a535"
     },
     "seeds": {
       "path": "capabilities/layouts/seeds",
       "contract": "wise-ppt-layout-seed@4",
-      "count": 83,
-      "sha256": "4ed9cbdc8d2f8d16e5decc8a83a82fb0f037cd81408cef2f57e39efa9bbc41d8"
+      "count": 86,
+      "sha256": "547f0f801fa5bea05ec8b73ba61c769a7670c1ed4a9865c644af9cd813e3baf3"
     }
   },
   "policy": {
@@ -31,9 +31,9 @@
     "layout_change": "structure or core-component changes require a new registered layout_id"
   },
   "counts": {
-    "relationship": 71,
-    "nonrelationship": 12,
-    "total": 83
+    "relationship": 73,
+    "nonrelationship": 13,
+    "total": 86
   },
   "layout_ids": [
     "paper-ink.relationship.A1",
@@ -107,8 +107,11 @@
     "paper-ink.relationship.T1",
     "paper-ink.relationship.T2",
     "paper-ink.relationship.T3",
+    "paper-ink.relationship.U1",
+    "paper-ink.relationship.U2",
     "paper-ink.nonrelationship.D1",
     "paper-ink.nonrelationship.D10",
+    "paper-ink.nonrelationship.D11",
     "paper-ink.nonrelationship.D2",
     "paper-ink.nonrelationship.D3",
     "paper-ink.nonrelationship.D4",
@@ -34805,6 +34808,1307 @@
       }
     },
     {
+      "layout_id": "paper-ink.relationship.U1",
+      "display_code": "U1",
+      "page_kind": "relationship",
+      "name": "斜切双带对照页",
+      "family": "对比",
+      "description": "两条同斜角的方案横带互相咬合，各带自持题签与大数字，结构小表与构成图挂在自己一侧，适合同期双方案的整体对照",
+      "relations": [
+        "comparison"
+      ],
+      "page_roles": [
+        "compare"
+      ],
+      "reading_order": [
+        "band-a",
+        "band-b",
+        "cluster",
+        "takeaway"
+      ],
+      "source": {
+        "path": "references/gallery-paper-ink/ai/frames/layout-u1.html",
+        "sha256": "bae5b258aa76db9c1b3a7b33f0b7506583faecd0a8d59be17d21085a7ad3ef4a"
+      },
+      "structure": {
+        "region_count": 4,
+        "required_slot_ids": [
+          "band-a"
+        ],
+        "core_primitives": [
+          "diagonal-bands"
+        ],
+        "tree": {
+          "type": "split",
+          "axis": "y",
+          "weights": [
+            1,
+            1
+          ],
+          "gap": 20,
+          "children": [
+            {
+              "type": "split",
+              "axis": "x",
+              "weights": [
+                2,
+                1
+              ],
+              "gap": 38,
+              "children": [
+                {
+                  "type": "slot",
+                  "slot_id": "u1.slot-1",
+                  "content_group": "方案 A 带"
+                },
+                {
+                  "type": "slot",
+                  "slot_id": "u1.slot-2",
+                  "content_group": "渠道构成图"
+                }
+              ]
+            },
+            {
+              "type": "split",
+              "axis": "x",
+              "weights": [
+                1,
+                2
+              ],
+              "gap": 38,
+              "children": [
+                {
+                  "type": "slot",
+                  "slot_id": "u1.slot-3",
+                  "content_group": "结构小表"
+                },
+                {
+                  "type": "slot",
+                  "slot_id": "u1.slot-4",
+                  "content_group": "方案 B 带"
+                }
+              ]
+            }
+          ]
+        },
+        "summary": "上下2等分 / 上·左右2:1 / 下·左右1:2",
+        "leaf_count": 4
+      },
+      "slots": [
+        {
+          "slot_id": "band-a",
+          "purpose": "主方案横带（题签 + 大数字）",
+          "required": true,
+          "visual_role": "primary",
+          "capacity": {
+            "min_items": 1,
+            "max_items": 1,
+            "count_unit": "fixed-slot"
+          },
+          "allowed_payload_types": [
+            "text",
+            "data"
+          ],
+          "payload_schema": {
+            "text": {
+              "binding_kind": "text",
+              "payload_categories": [
+                "text",
+                "data"
+              ],
+              "accepted_payload_types": [
+                "text",
+                "data"
+              ],
+              "binding_keys": [
+                {
+                  "key": "band-a.text.001",
+                  "item_scope": "item",
+                  "example": "PPT 标题",
+                  "item_index": 0,
+                  "max_chars": 40
+                },
+                {
+                  "key": "band-a.text.002",
+                  "item_scope": "item",
+                  "example": "页面标题",
+                  "item_index": 0,
+                  "max_chars": 72
+                },
+                {
+                  "key": "band-a.text.003",
+                  "item_scope": "item",
+                  "example": "PLAN A — PORTAL 2.0",
+                  "item_index": 0,
+                  "max_chars": 21
+                },
+                {
+                  "key": "band-a.text.004",
+                  "item_scope": "item",
+                  "example": "方案 A · 新版门户",
+                  "item_index": 0,
+                  "max_chars": 11
+                },
+                {
+                  "key": "band-a.text.005",
+                  "item_scope": "item",
+                  "example": "651w",
+                  "item_index": 0,
+                  "max_chars": 4
+                },
+                {
+                  "key": "band-a.text.006",
+                  "item_scope": "item",
+                  "example": "页面曝光 UV · 同期 6/16–6/21",
+                  "item_index": 0,
+                  "max_chars": 25
+                },
+                {
+                  "key": "band-a.text.007",
+                  "item_scope": "item",
+                  "example": "VS",
+                  "item_index": 0,
+                  "max_chars": 2
+                },
+                {
+                  "key": "band-a.text.008",
+                  "item_scope": "item",
+                  "example": "同期 6/16–6/21 对齐",
+                  "item_index": 0,
+                  "max_chars": 18
+                }
+              ],
+              "field_count": 8,
+              "item_count": 1,
+              "item_grouping": "fixed-slot",
+              "requires_fields_object": true
+            }
+          },
+          "allowed_renderer_kinds": [
+            "svg"
+          ],
+          "allowed_component_sources": [
+            "native"
+          ],
+          "default_renderer": {
+            "renderer_kind": "svg",
+            "component_source": "native",
+            "component_id": "native.paper-ink.comparison.diagonal-bands.band-a"
+          },
+          "recommended_component_ids": [],
+          "space_contract": {
+            "canvas_width": 1920,
+            "canvas_height": 1080,
+            "width": 1250,
+            "height": 320,
+            "aspect_ratio": 3.9063,
+            "space_type": "wide"
+          }
+        },
+        {
+          "slot_id": "band-b",
+          "purpose": "对照方案横带（题签 + 大数字）",
+          "required": false,
+          "visual_role": "primary",
+          "capacity": {
+            "min_items": 0,
+            "max_items": 1,
+            "count_unit": "fixed-slot"
+          },
+          "allowed_payload_types": [
+            "text",
+            "data"
+          ],
+          "payload_schema": {
+            "text": {
+              "binding_kind": "text",
+              "payload_categories": [
+                "text",
+                "data"
+              ],
+              "accepted_payload_types": [
+                "text",
+                "data"
+              ],
+              "binding_keys": [
+                {
+                  "key": "band-b.text.001",
+                  "item_scope": "item",
+                  "example": "PLAN B — PORTAL 1.5",
+                  "item_index": 0,
+                  "max_chars": 21
+                },
+                {
+                  "key": "band-b.text.002",
+                  "item_scope": "item",
+                  "example": "方案 B · 旧版门户",
+                  "item_index": 0,
+                  "max_chars": 11
+                },
+                {
+                  "key": "band-b.text.003",
+                  "item_scope": "item",
+                  "example": "596w",
+                  "item_index": 0,
+                  "max_chars": 4
+                },
+                {
+                  "key": "band-b.text.004",
+                  "item_scope": "item",
+                  "example": "页面曝光 UV · 同期 6/16–6/21",
+                  "item_index": 0,
+                  "max_chars": 25
+                }
+              ],
+              "field_count": 4,
+              "item_count": 1,
+              "item_grouping": "fixed-slot",
+              "requires_fields_object": true
+            }
+          },
+          "allowed_renderer_kinds": [
+            "svg"
+          ],
+          "allowed_component_sources": [
+            "native"
+          ],
+          "default_renderer": {
+            "renderer_kind": "svg",
+            "component_source": "native",
+            "component_id": "native.paper-ink.comparison.diagonal-bands.band-b"
+          },
+          "recommended_component_ids": [],
+          "space_contract": {
+            "canvas_width": 1920,
+            "canvas_height": 1080,
+            "width": 1250,
+            "height": 320,
+            "aspect_ratio": 3.9063,
+            "space_type": "wide"
+          }
+        },
+        {
+          "slot_id": "cluster",
+          "purpose": "同侧数据簇（结构小表或构成图）",
+          "required": false,
+          "visual_role": "support",
+          "capacity": {
+            "min_items": 0,
+            "max_items": 1,
+            "count_unit": "fixed-slot"
+          },
+          "allowed_payload_types": [
+            "text",
+            "data"
+          ],
+          "payload_schema": {
+            "text": {
+              "binding_kind": "text",
+              "payload_categories": [
+                "text",
+                "data"
+              ],
+              "accepted_payload_types": [
+                "text",
+                "data"
+              ],
+              "binding_keys": [
+                {
+                  "key": "cluster.text.001",
+                  "item_scope": "item",
+                  "example": "CHANNEL MIX",
+                  "item_index": 0,
+                  "max_chars": 9
+                },
+                {
+                  "key": "cluster.text.002",
+                  "item_scope": "item",
+                  "example": "渠道构成",
+                  "item_index": 0,
+                  "max_chars": 6
+                },
+                {
+                  "key": "cluster.text.003",
+                  "item_scope": "item",
+                  "example": "A",
+                  "item_index": 0,
+                  "max_chars": 2
+                },
+                {
+                  "key": "cluster.text.004",
+                  "item_scope": "item",
+                  "example": "B",
+                  "item_index": 0,
+                  "max_chars": 2
+                },
+                {
+                  "key": "cluster.text.005",
+                  "item_scope": "item",
+                  "example": "社群",
+                  "item_index": 0,
+                  "max_chars": 3
+                },
+                {
+                  "key": "cluster.text.006",
+                  "item_scope": "item",
+                  "example": "信息流",
+                  "item_index": 0,
+                  "max_chars": 5
+                },
+                {
+                  "key": "cluster.text.007",
+                  "item_scope": "item",
+                  "example": "搜索",
+                  "item_index": 0,
+                  "max_chars": 3
+                },
+                {
+                  "key": "cluster.text.008",
+                  "item_scope": "item",
+                  "example": "外链",
+                  "item_index": 0,
+                  "max_chars": 3
+                },
+                {
+                  "key": "cluster.text.009",
+                  "item_scope": "item",
+                  "example": "USER MIX",
+                  "item_index": 0,
+                  "max_chars": 10
+                },
+                {
+                  "key": "cluster.text.010",
+                  "item_scope": "item",
+                  "example": "新老用户",
+                  "item_index": 0,
+                  "max_chars": 6
+                },
+                {
+                  "key": "cluster.text.011",
+                  "item_scope": "item",
+                  "example": "新客",
+                  "item_index": 0,
+                  "max_chars": 3
+                },
+                {
+                  "key": "cluster.text.012",
+                  "item_scope": "item",
+                  "example": "老客",
+                  "item_index": 0,
+                  "max_chars": 3
+                },
+                {
+                  "key": "cluster.text.013",
+                  "item_scope": "item",
+                  "example": "方案 A",
+                  "item_index": 0,
+                  "max_chars": 5
+                },
+                {
+                  "key": "cluster.text.014",
+                  "item_scope": "item",
+                  "example": "54%",
+                  "item_index": 0,
+                  "max_chars": 5
+                },
+                {
+                  "key": "cluster.text.015",
+                  "item_scope": "item",
+                  "example": "46%",
+                  "item_index": 0,
+                  "max_chars": 5
+                },
+                {
+                  "key": "cluster.text.016",
+                  "item_scope": "item",
+                  "example": "方案 B",
+                  "item_index": 0,
+                  "max_chars": 5
+                },
+                {
+                  "key": "cluster.text.017",
+                  "item_scope": "item",
+                  "example": "52%",
+                  "item_index": 0,
+                  "max_chars": 5
+                },
+                {
+                  "key": "cluster.text.018",
+                  "item_scope": "item",
+                  "example": "48%",
+                  "item_index": 0,
+                  "max_chars": 5
+                },
+                {
+                  "key": "cluster.text.019",
+                  "item_scope": "item",
+                  "example": "AGE BANDS",
+                  "item_index": 0,
+                  "max_chars": 10
+                },
+                {
+                  "key": "cluster.text.020",
+                  "item_scope": "item",
+                  "example": "年龄段",
+                  "item_index": 0,
+                  "max_chars": 5
+                },
+                {
+                  "key": "cluster.text.021",
+                  "item_scope": "item",
+                  "example": "18-",
+                  "item_index": 0,
+                  "max_chars": 5
+                },
+                {
+                  "key": "cluster.text.022",
+                  "item_scope": "item",
+                  "example": "19-30",
+                  "item_index": 0,
+                  "max_chars": 7
+                },
+                {
+                  "key": "cluster.text.023",
+                  "item_scope": "item",
+                  "example": "30+",
+                  "item_index": 0,
+                  "max_chars": 5
+                },
+                {
+                  "key": "cluster.text.024",
+                  "item_scope": "item",
+                  "example": "方案 A",
+                  "item_index": 0,
+                  "max_chars": 5
+                },
+                {
+                  "key": "cluster.text.025",
+                  "item_scope": "item",
+                  "example": "22%",
+                  "item_index": 0,
+                  "max_chars": 5
+                },
+                {
+                  "key": "cluster.text.026",
+                  "item_scope": "item",
+                  "example": "49%",
+                  "item_index": 0,
+                  "max_chars": 5
+                },
+                {
+                  "key": "cluster.text.027",
+                  "item_scope": "item",
+                  "example": "29%",
+                  "item_index": 0,
+                  "max_chars": 5
+                },
+                {
+                  "key": "cluster.text.028",
+                  "item_scope": "item",
+                  "example": "方案 B",
+                  "item_index": 0,
+                  "max_chars": 5
+                },
+                {
+                  "key": "cluster.text.029",
+                  "item_scope": "item",
+                  "example": "21%",
+                  "item_index": 0,
+                  "max_chars": 5
+                },
+                {
+                  "key": "cluster.text.030",
+                  "item_scope": "item",
+                  "example": "47%",
+                  "item_index": 0,
+                  "max_chars": 5
+                },
+                {
+                  "key": "cluster.text.031",
+                  "item_scope": "item",
+                  "example": "32%",
+                  "item_index": 0,
+                  "max_chars": 5
+                }
+              ],
+              "field_count": 31,
+              "item_count": 1,
+              "item_grouping": "fixed-slot",
+              "requires_fields_object": true
+            }
+          },
+          "allowed_renderer_kinds": [
+            "typography",
+            "table",
+            "svg",
+            "native-html"
+          ],
+          "allowed_component_sources": [
+            "native"
+          ],
+          "default_renderer": {
+            "renderer_kind": "svg",
+            "component_source": "native",
+            "component_id": "native.paper-ink.comparison.diagonal-bands.cluster"
+          },
+          "recommended_component_ids": [],
+          "space_contract": {
+            "canvas_width": 1920,
+            "canvas_height": 1080,
+            "width": 560,
+            "height": 460,
+            "aspect_ratio": 1.2174,
+            "space_type": "balanced"
+          }
+        },
+        {
+          "slot_id": "takeaway",
+          "purpose": "页面一句话结论",
+          "required": false,
+          "visual_role": "support",
+          "capacity": {
+            "min_items": 0,
+            "max_items": 1,
+            "count_unit": "binding"
+          },
+          "allowed_payload_types": [],
+          "payload_schema": {},
+          "allowed_renderer_kinds": [
+            "typography"
+          ],
+          "allowed_component_sources": [
+            "native"
+          ],
+          "default_renderer": {
+            "renderer_kind": "typography",
+            "component_source": "native",
+            "component_id": "native.paper-ink.comparison.diagonal-bands.takeaway"
+          },
+          "recommended_component_ids": [],
+          "space_contract": null
+        }
+      ],
+      "capacity": {
+        "slot_count": 4,
+        "required_slot_count": 1,
+        "required_slot_ids": [
+          "band-a"
+        ],
+        "primary_units": {
+          "min": 2,
+          "max": 8
+        }
+      },
+      "allowed_payload_types": [
+        "text",
+        "data"
+      ],
+      "locks": {
+        "dom_source_sha256": "bae5b258aa76db9c1b3a7b33f0b7506583faecd0a8d59be17d21085a7ad3ef4a",
+        "structure_fingerprint": "sha256:79f099e244f6b1c08a7bd51aa8b95f33bd0eb320ec3c7a4d79b2a01e9a820155",
+        "core_primitives": [
+          "diagonal-bands"
+        ],
+        "core_component_ids": [
+          "native.paper-ink.comparison.diagonal-bands.band-a",
+          "native.paper-ink.comparison.diagonal-bands.band-b",
+          "native.paper-ink.comparison.diagonal-bands.cluster",
+          "native.paper-ink.comparison.diagonal-bands.takeaway"
+        ],
+        "slot_spaces": {
+          "band-a": {
+            "canvas_width": 1920,
+            "canvas_height": 1080,
+            "width": 1250,
+            "height": 320,
+            "aspect_ratio": 3.9063,
+            "space_type": "wide"
+          },
+          "band-b": {
+            "canvas_width": 1920,
+            "canvas_height": 1080,
+            "width": 1250,
+            "height": 320,
+            "aspect_ratio": 3.9063,
+            "space_type": "wide"
+          },
+          "cluster": {
+            "canvas_width": 1920,
+            "canvas_height": 1080,
+            "width": 560,
+            "height": 460,
+            "aspect_ratio": 1.2174,
+            "space_type": "balanced"
+          }
+        },
+        "policy": "payload-only; structure, core components and geometry are immutable"
+      },
+      "claim_binding": {
+        "key": "claim.text.001",
+        "max_chars": 39
+      }
+    },
+    {
+      "layout_id": "paper-ink.relationship.U2",
+      "display_code": "U2",
+      "page_kind": "relationship",
+      "name": "图表带与对比表",
+      "family": "数据",
+      "description": "上层三块带题签的图表带并排各证一面，下层汇总对比表把涨幅收敛成一列，适合版本或方案的量化效果验证",
+      "relations": [
+        "evidence",
+        "comparison"
+      ],
+      "page_roles": [
+        "prove",
+        "compare"
+      ],
+      "reading_order": [
+        "chart-band",
+        "scorecard",
+        "takeaway"
+      ],
+      "source": {
+        "path": "references/gallery-paper-ink/ai/frames/layout-u2.html",
+        "sha256": "0f997f95c72b3e65204e879fd2d296fd2cf97f806d6f81c383724d5ea19c3c8f"
+      },
+      "structure": {
+        "region_count": 4,
+        "required_slot_ids": [
+          "chart-band",
+          "scorecard"
+        ],
+        "core_primitives": [
+          "chart-band",
+          "delta-table"
+        ],
+        "tree": {
+          "type": "split",
+          "axis": "y",
+          "weights": [
+            2,
+            1
+          ],
+          "gap": 20,
+          "children": [
+            {
+              "type": "split",
+              "axis": "x",
+              "weights": [
+                1,
+                1,
+                1
+              ],
+              "gap": 38,
+              "children": [
+                {
+                  "type": "slot",
+                  "slot_id": "u2.slot-1",
+                  "content_group": "图表带一"
+                },
+                {
+                  "type": "slot",
+                  "slot_id": "u2.slot-2",
+                  "content_group": "图表带二"
+                },
+                {
+                  "type": "slot",
+                  "slot_id": "u2.slot-3",
+                  "content_group": "图表带三"
+                }
+              ]
+            },
+            {
+              "type": "slot",
+              "slot_id": "u2.slot-4",
+              "content_group": "汇总对比表"
+            }
+          ]
+        },
+        "summary": "上下2:1 / 上·左右3等分",
+        "leaf_count": 4
+      },
+      "slots": [
+        {
+          "slot_id": "chart-band",
+          "purpose": "带题签的图表带（一块一证）",
+          "required": true,
+          "visual_role": "primary",
+          "capacity": {
+            "min_items": 1,
+            "max_items": 1,
+            "count_unit": "fixed-slot"
+          },
+          "allowed_payload_types": [
+            "text",
+            "data"
+          ],
+          "payload_schema": {
+            "text": {
+              "binding_kind": "text",
+              "payload_categories": [
+                "text",
+                "data"
+              ],
+              "accepted_payload_types": [
+                "text",
+                "data"
+              ],
+              "binding_keys": [
+                {
+                  "key": "chart-band.text.001",
+                  "item_scope": "item",
+                  "example": "PPT 标题",
+                  "item_index": 0,
+                  "max_chars": 40
+                },
+                {
+                  "key": "chart-band.text.002",
+                  "item_scope": "item",
+                  "example": "页面标题",
+                  "item_index": 0,
+                  "max_chars": 72
+                },
+                {
+                  "key": "chart-band.text.003",
+                  "item_scope": "item",
+                  "example": "CONVERSION",
+                  "item_index": 0,
+                  "max_chars": 14
+                },
+                {
+                  "key": "chart-band.text.004",
+                  "item_scope": "item",
+                  "example": "分发转化率",
+                  "item_index": 0,
+                  "max_chars": 7
+                },
+                {
+                  "key": "chart-band.text.005",
+                  "item_scope": "item",
+                  "example": "0.28%",
+                  "item_index": 0,
+                  "max_chars": 7
+                },
+                {
+                  "key": "chart-band.text.006",
+                  "item_scope": "item",
+                  "example": "0.64%",
+                  "item_index": 0,
+                  "max_chars": 7
+                },
+                {
+                  "key": "chart-band.text.007",
+                  "item_scope": "item",
+                  "example": "+128%",
+                  "item_index": 0,
+                  "max_chars": 6
+                },
+                {
+                  "key": "chart-band.text.008",
+                  "item_scope": "item",
+                  "example": "方案 A",
+                  "item_index": 0,
+                  "max_chars": 5
+                },
+                {
+                  "key": "chart-band.text.009",
+                  "item_scope": "item",
+                  "example": "方案 B",
+                  "item_index": 0,
+                  "max_chars": 5
+                },
+                {
+                  "key": "chart-band.text.010",
+                  "item_scope": "item",
+                  "example": "ACTIVITY",
+                  "item_index": 0,
+                  "max_chars": 11
+                },
+                {
+                  "key": "chart-band.text.011",
+                  "item_scope": "item",
+                  "example": "活跃消耗与客单",
+                  "item_index": 0,
+                  "max_chars": 10
+                },
+                {
+                  "key": "chart-band.text.012",
+                  "item_scope": "item",
+                  "example": "0.08%",
+                  "item_index": 0,
+                  "max_chars": 7
+                },
+                {
+                  "key": "chart-band.text.013",
+                  "item_scope": "item",
+                  "example": "0.12%",
+                  "item_index": 0,
+                  "max_chars": 7
+                },
+                {
+                  "key": "chart-band.text.014",
+                  "item_scope": "item",
+                  "example": "0.015",
+                  "item_index": 0,
+                  "max_chars": 7
+                },
+                {
+                  "key": "chart-band.text.015",
+                  "item_scope": "item",
+                  "example": "0.018",
+                  "item_index": 0,
+                  "max_chars": 7
+                },
+                {
+                  "key": "chart-band.text.016",
+                  "item_scope": "item",
+                  "example": "+52%",
+                  "item_index": 0,
+                  "max_chars": 5
+                },
+                {
+                  "key": "chart-band.text.017",
+                  "item_scope": "item",
+                  "example": "+18%",
+                  "item_index": 0,
+                  "max_chars": 5
+                },
+                {
+                  "key": "chart-band.text.018",
+                  "item_scope": "item",
+                  "example": "消耗率",
+                  "item_index": 0,
+                  "max_chars": 5
+                },
+                {
+                  "key": "chart-band.text.019",
+                  "item_scope": "item",
+                  "example": "消耗客单",
+                  "item_index": 0,
+                  "max_chars": 6
+                },
+                {
+                  "key": "chart-band.text.020",
+                  "item_scope": "item",
+                  "example": "RETENTION",
+                  "item_index": 0,
+                  "max_chars": 13
+                },
+                {
+                  "key": "chart-band.text.021",
+                  "item_scope": "item",
+                  "example": "留存走势",
+                  "item_index": 0,
+                  "max_chars": 6
+                },
+                {
+                  "key": "chart-band.text.022",
+                  "item_scope": "item",
+                  "example": "4.5%",
+                  "item_index": 0,
+                  "max_chars": 6
+                },
+                {
+                  "key": "chart-band.text.023",
+                  "item_scope": "item",
+                  "example": "3.6%",
+                  "item_index": 0,
+                  "max_chars": 6
+                },
+                {
+                  "key": "chart-band.text.024",
+                  "item_scope": "item",
+                  "example": "1.8%",
+                  "item_index": 0,
+                  "max_chars": 4
+                },
+                {
+                  "key": "chart-band.text.025",
+                  "item_scope": "item",
+                  "example": "1.4%",
+                  "item_index": 0,
+                  "max_chars": 4
+                },
+                {
+                  "key": "chart-band.text.026",
+                  "item_scope": "item",
+                  "example": "次留",
+                  "item_index": 0,
+                  "max_chars": 3
+                },
+                {
+                  "key": "chart-band.text.027",
+                  "item_scope": "item",
+                  "example": "3留存",
+                  "item_index": 0,
+                  "max_chars": 5
+                }
+              ],
+              "field_count": 27,
+              "item_count": 1,
+              "item_grouping": "fixed-slot",
+              "requires_fields_object": true
+            }
+          },
+          "allowed_renderer_kinds": [
+            "svg",
+            "echarts"
+          ],
+          "allowed_component_sources": [
+            "native",
+            "echarts"
+          ],
+          "default_renderer": {
+            "renderer_kind": "svg",
+            "component_source": "native",
+            "component_id": "native.paper-ink.data.chart-bands-table.chart-band"
+          },
+          "recommended_component_ids": [],
+          "space_contract": {
+            "canvas_width": 1920,
+            "canvas_height": 1080,
+            "width": 550,
+            "height": 410,
+            "aspect_ratio": 1.3415,
+            "space_type": "balanced"
+          }
+        },
+        {
+          "slot_id": "scorecard",
+          "purpose": "汇总对比表（指标行 + 涨幅列）",
+          "required": true,
+          "visual_role": "primary",
+          "capacity": {
+            "min_items": 1,
+            "max_items": 1,
+            "count_unit": "fixed-slot"
+          },
+          "allowed_payload_types": [
+            "text",
+            "data"
+          ],
+          "payload_schema": {
+            "text": {
+              "binding_kind": "text",
+              "payload_categories": [
+                "text",
+                "data"
+              ],
+              "accepted_payload_types": [
+                "text",
+                "data"
+              ],
+              "binding_keys": [
+                {
+                  "key": "scorecard.text.001",
+                  "item_scope": "item",
+                  "example": "SCORECARD",
+                  "item_index": 0,
+                  "max_chars": 13
+                },
+                {
+                  "key": "scorecard.text.002",
+                  "item_scope": "item",
+                  "example": "版本效果汇总",
+                  "item_index": 0,
+                  "max_chars": 9
+                },
+                {
+                  "key": "scorecard.text.003",
+                  "item_scope": "item",
+                  "example": "指标",
+                  "item_index": 0,
+                  "max_chars": 3
+                },
+                {
+                  "key": "scorecard.text.004",
+                  "item_scope": "item",
+                  "example": "方案 A",
+                  "item_index": 0,
+                  "max_chars": 5
+                },
+                {
+                  "key": "scorecard.text.005",
+                  "item_scope": "item",
+                  "example": "方案 B",
+                  "item_index": 0,
+                  "max_chars": 5
+                },
+                {
+                  "key": "scorecard.text.006",
+                  "item_scope": "item",
+                  "example": "涨幅",
+                  "item_index": 0,
+                  "max_chars": 3
+                },
+                {
+                  "key": "scorecard.text.007",
+                  "item_scope": "item",
+                  "example": "说明",
+                  "item_index": 0,
+                  "max_chars": 3
+                },
+                {
+                  "key": "scorecard.text.008",
+                  "item_scope": "item",
+                  "example": "分发转化率",
+                  "item_index": 0,
+                  "max_chars": 7
+                },
+                {
+                  "key": "scorecard.text.009",
+                  "item_scope": "item",
+                  "example": "0.28%",
+                  "item_index": 0,
+                  "max_chars": 7
+                },
+                {
+                  "key": "scorecard.text.010",
+                  "item_scope": "item",
+                  "example": "0.64%",
+                  "item_index": 0,
+                  "max_chars": 7
+                },
+                {
+                  "key": "scorecard.text.011",
+                  "item_scope": "item",
+                  "example": "新增 / 曝光",
+                  "item_index": 0,
+                  "max_chars": 7
+                },
+                {
+                  "key": "scorecard.text.012",
+                  "item_scope": "item",
+                  "example": "活跃消耗率",
+                  "item_index": 0,
+                  "max_chars": 7
+                },
+                {
+                  "key": "scorecard.text.013",
+                  "item_scope": "item",
+                  "example": "0.08%",
+                  "item_index": 0,
+                  "max_chars": 7
+                },
+                {
+                  "key": "scorecard.text.014",
+                  "item_scope": "item",
+                  "example": "0.12%",
+                  "item_index": 0,
+                  "max_chars": 7
+                },
+                {
+                  "key": "scorecard.text.015",
+                  "item_scope": "item",
+                  "example": "+52%",
+                  "item_index": 0,
+                  "max_chars": 6
+                },
+                {
+                  "key": "scorecard.text.016",
+                  "item_scope": "item",
+                  "example": "活跃消耗 / 曝光",
+                  "item_index": 0,
+                  "max_chars": 10
+                },
+                {
+                  "key": "scorecard.text.017",
+                  "item_scope": "item",
+                  "example": "消耗客单",
+                  "item_index": 0,
+                  "max_chars": 6
+                },
+                {
+                  "key": "scorecard.text.018",
+                  "item_scope": "item",
+                  "example": "0.015",
+                  "item_index": 0,
+                  "max_chars": 7
+                },
+                {
+                  "key": "scorecard.text.019",
+                  "item_scope": "item",
+                  "example": "0.018",
+                  "item_index": 0,
+                  "max_chars": 7
+                },
+                {
+                  "key": "scorecard.text.020",
+                  "item_scope": "item",
+                  "example": "+18%",
+                  "item_index": 0,
+                  "max_chars": 6
+                },
+                {
+                  "key": "scorecard.text.021",
+                  "item_scope": "item",
+                  "example": "消耗金额 / 曝光",
+                  "item_index": 0,
+                  "max_chars": 10
+                },
+                {
+                  "key": "scorecard.text.022",
+                  "item_scope": "item",
+                  "example": "次留",
+                  "item_index": 0,
+                  "max_chars": 3
+                },
+                {
+                  "key": "scorecard.text.023",
+                  "item_scope": "item",
+                  "example": "3.6%",
+                  "item_index": 0,
+                  "max_chars": 6
+                },
+                {
+                  "key": "scorecard.text.024",
+                  "item_scope": "item",
+                  "example": "4.5%",
+                  "item_index": 0,
+                  "max_chars": 6
+                },
+                {
+                  "key": "scorecard.text.025",
+                  "item_scope": "item",
+                  "example": "+25%",
+                  "item_index": 0,
+                  "max_chars": 6
+                },
+                {
+                  "key": "scorecard.text.026",
+                  "item_scope": "item",
+                  "example": "次日回访",
+                  "item_index": 0,
+                  "max_chars": 6
+                },
+                {
+                  "key": "scorecard.text.027",
+                  "item_scope": "item",
+                  "example": "+128%↑",
+                  "item_index": 0,
+                  "max_chars": 6
+                },
+                {
+                  "key": "scorecard.text.028",
+                  "item_scope": "item",
+                  "example": "READING — 三块图表带各证一面，涨幅以对比表涨幅列为准",
+                  "item_index": 0,
+                  "max_chars": 40
+                }
+              ],
+              "field_count": 28,
+              "item_count": 1,
+              "item_grouping": "fixed-slot",
+              "requires_fields_object": true
+            }
+          },
+          "allowed_renderer_kinds": [
+            "table",
+            "svg",
+            "native-html"
+          ],
+          "allowed_component_sources": [
+            "native"
+          ],
+          "default_renderer": {
+            "renderer_kind": "table",
+            "component_source": "native",
+            "component_id": "native.paper-ink.data.chart-bands-table.scorecard"
+          },
+          "recommended_component_ids": [
+            "native.paper-ink.130.compare-metrics-table"
+          ],
+          "space_contract": {
+            "canvas_width": 1920,
+            "canvas_height": 1080,
+            "width": 1734,
+            "height": 320,
+            "aspect_ratio": 5.4188,
+            "space_type": "wide"
+          }
+        },
+        {
+          "slot_id": "takeaway",
+          "purpose": "口径与阅读方式注记",
+          "required": false,
+          "visual_role": "support",
+          "capacity": {
+            "min_items": 0,
+            "max_items": 1,
+            "count_unit": "binding"
+          },
+          "allowed_payload_types": [],
+          "payload_schema": {},
+          "allowed_renderer_kinds": [
+            "typography"
+          ],
+          "allowed_component_sources": [
+            "native"
+          ],
+          "default_renderer": {
+            "renderer_kind": "typography",
+            "component_source": "native",
+            "component_id": "native.paper-ink.data.chart-bands-table.takeaway"
+          },
+          "recommended_component_ids": [],
+          "space_contract": null
+        }
+      ],
+      "capacity": {
+        "slot_count": 3,
+        "required_slot_count": 2,
+        "required_slot_ids": [
+          "chart-band",
+          "scorecard"
+        ],
+        "primary_units": {
+          "min": 3,
+          "max": 12
+        }
+      },
+      "allowed_payload_types": [
+        "text",
+        "data"
+      ],
+      "locks": {
+        "dom_source_sha256": "0f997f95c72b3e65204e879fd2d296fd2cf97f806d6f81c383724d5ea19c3c8f",
+        "structure_fingerprint": "sha256:03f1d95a49a406d6844c62ad7260ea2e6becb6562d89d4a22e038858c4af8dd7",
+        "core_primitives": [
+          "chart-band",
+          "delta-table"
+        ],
+        "core_component_ids": [
+          "native.paper-ink.data.chart-bands-table.chart-band",
+          "native.paper-ink.data.chart-bands-table.scorecard",
+          "native.paper-ink.data.chart-bands-table.takeaway"
+        ],
+        "slot_spaces": {
+          "chart-band": {
+            "canvas_width": 1920,
+            "canvas_height": 1080,
+            "width": 550,
+            "height": 410,
+            "aspect_ratio": 1.3415,
+            "space_type": "balanced"
+          },
+          "scorecard": {
+            "canvas_width": 1920,
+            "canvas_height": 1080,
+            "width": 1734,
+            "height": 320,
+            "aspect_ratio": 5.4188,
+            "space_type": "wide"
+          }
+        },
+        "policy": "payload-only; structure, core components and geometry are immutable"
+      },
+      "claim_binding": {
+        "key": "claim.text.001",
+        "max_chars": 50
+      }
+    },
+    {
       "layout_id": "paper-ink.nonrelationship.D1",
       "display_code": "D1",
       "page_kind": "nonrelationship",
@@ -35307,6 +36611,258 @@
             "left",
             "top",
             "width"
+          ]
+        },
+        "non_overlap": [],
+        "policy": "payload-only; shell, fixed parts, typography, geometry, decoration and scripts are immutable"
+      }
+    },
+    {
+      "layout_id": "paper-ink.nonrelationship.D11",
+      "display_code": "D11",
+      "page_kind": "nonrelationship",
+      "name": "封面 · 全幅画墙左题",
+      "description": "封面开场页：全幅微倾画墙压纸色雾做底纹，左侧标题区（眉题、通栏主标题、硬横线、归属与日期）压在雾上；与 D8 的左图右题同序，但画面铺满全幅，适合以视觉资产开场的版本复盘。",
+      "page_role": "cover",
+      "reading_order": [
+        "support",
+        "kicker",
+        "primary",
+        "subtitle"
+      ],
+      "source": {
+        "path": "references/gallery-paper-ink/ai/frames/layout-d11.html",
+        "sha256": "a5a54e3c05142565c4f814bdd3935d199b75a0f866f06ec61d927319125cb6b7"
+      },
+      "structure": {
+        "parts": [
+          "support",
+          "folio",
+          "illustration",
+          "kicker",
+          "primary",
+          "rule",
+          "subtitle"
+        ],
+        "editable_slot_ids": [
+          "support",
+          "kicker",
+          "primary",
+          "subtitle"
+        ],
+        "fixed_parts": [
+          "folio",
+          "illustration",
+          "rule"
+        ],
+        "summary": "4 个可填区 + 3 个固定部件",
+        "leaf_count": 4
+      },
+      "slots": [
+        {
+          "slot_id": "support",
+          "purpose": "text",
+          "required": false,
+          "editable": true,
+          "capacity": {
+            "min_items": 0,
+            "max_items": 1,
+            "count_unit": "fixed-slot",
+            "text": null,
+            "width_max": null
+          },
+          "allowed_payload_types": [
+            "text",
+            "data"
+          ],
+          "payload_schema": {
+            "text": {
+              "binding_kind": "text",
+              "payload_categories": [
+                "text",
+                "data"
+              ],
+              "accepted_payload_types": [
+                "text",
+                "data"
+              ],
+              "binding_keys": [
+                {
+                  "key": "support.text.001",
+                  "item_scope": "item",
+                  "example": "PPT 标题\n页面标题",
+                  "item_index": 0,
+                  "max_chars": 96
+                }
+              ],
+              "field_count": 1,
+              "item_count": 1,
+              "item_grouping": "fixed-slot",
+              "requires_fields_object": false
+            }
+          }
+        },
+        {
+          "slot_id": "kicker",
+          "purpose": "text",
+          "required": false,
+          "editable": true,
+          "capacity": {
+            "min_items": 0,
+            "max_items": 1,
+            "count_unit": "fixed-slot",
+            "text": null,
+            "width_max": null
+          },
+          "allowed_payload_types": [
+            "text",
+            "data"
+          ],
+          "payload_schema": {
+            "text": {
+              "binding_kind": "text",
+              "payload_categories": [
+                "text",
+                "data"
+              ],
+              "accepted_payload_types": [
+                "text",
+                "data"
+              ],
+              "binding_keys": [
+                {
+                  "key": "kicker.text.001",
+                  "item_scope": "item",
+                  "example": "PRODUCT REVIEW — 2026 SUMMER",
+                  "item_index": 0,
+                  "max_chars": 33
+                }
+              ],
+              "field_count": 1,
+              "item_count": 1,
+              "item_grouping": "fixed-slot",
+              "requires_fields_object": false
+            }
+          }
+        },
+        {
+          "slot_id": "primary",
+          "purpose": "text",
+          "required": false,
+          "editable": true,
+          "capacity": {
+            "min_items": 0,
+            "max_items": 1,
+            "count_unit": "fixed-slot",
+            "text": null,
+            "width_max": 1100
+          },
+          "allowed_payload_types": [
+            "text",
+            "data"
+          ],
+          "payload_schema": {
+            "text": {
+              "binding_kind": "text",
+              "payload_categories": [
+                "text",
+                "data"
+              ],
+              "accepted_payload_types": [
+                "text",
+                "data"
+              ],
+              "binding_keys": [
+                {
+                  "key": "primary.text.001",
+                  "item_scope": "item",
+                  "example": "版本复盘与增长验证",
+                  "item_index": 0,
+                  "max_chars": 13
+                }
+              ],
+              "field_count": 1,
+              "item_count": 1,
+              "item_grouping": "fixed-slot",
+              "requires_fields_object": false
+            }
+          }
+        },
+        {
+          "slot_id": "subtitle",
+          "purpose": "text",
+          "required": false,
+          "editable": true,
+          "capacity": {
+            "min_items": 0,
+            "max_items": 1,
+            "count_unit": "fixed-slot",
+            "text": null,
+            "width_max": null
+          },
+          "allowed_payload_types": [
+            "text",
+            "data"
+          ],
+          "payload_schema": {
+            "text": {
+              "binding_kind": "text",
+              "payload_categories": [
+                "text",
+                "data"
+              ],
+              "accepted_payload_types": [
+                "text",
+                "data"
+              ],
+              "binding_keys": [
+                {
+                  "key": "subtitle.text.001",
+                  "item_scope": "item",
+                  "example": "产品体验 · 平台运营\n2026 · 06 · 24",
+                  "item_index": 0,
+                  "max_chars": 26
+                }
+              ],
+              "field_count": 1,
+              "item_count": 1,
+              "item_grouping": "fixed-slot",
+              "requires_fields_object": false
+            }
+          }
+        }
+      ],
+      "capacity": {
+        "editable_slot_count": 4,
+        "text": {},
+        "width_max": {
+          "primary": 1100
+        }
+      },
+      "allowed_payload_types": [
+        "text",
+        "data"
+      ],
+      "locks": {
+        "dom_source_sha256": "a5a54e3c05142565c4f814bdd3935d199b75a0f866f06ec61d927319125cb6b7",
+        "core_component_ids": [
+          "native.paper-ink.scaffold.poster-wall.cover"
+        ],
+        "fixed_parts": [
+          "folio",
+          "illustration",
+          "rule"
+        ],
+        "geometry": {
+          "illustration": [
+            "left",
+            "top",
+            "width",
+            "height"
+          ],
+          "primary": [
+            "left",
+            "top"
           ]
         },
         "non_overlap": [],
