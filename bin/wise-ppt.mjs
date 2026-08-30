@@ -1,5 +1,6 @@
 #!/usr/bin/env node
 import { randomBytes } from "node:crypto";
+import { realpath } from "node:fs/promises";
 import path from "node:path";
 import {
   LAYOUT_AGENT_BRIEF_FORMAT,
@@ -30,6 +31,24 @@ import {
   registryState,
   validateDeck
 } from "./standard.mjs";
+async function resolveThemeInputPath(root, raw) {
+  const input = assertAbsolute(raw, "theme 输入");
+  try {
+    await assertNoSymlinkComponents(input, "theme 输入");
+    return input;
+  } catch (error) {
+    if (!(error instanceof WisePPTError) || !error.message.includes("路径禁止符号链接")) throw error;
+    const [resolvedInput, resolvedThemesRoot] = await Promise.all([
+      realpath(input).catch(() => null),
+      realpath(path.join(root, "themes"))
+    ]);
+    if (resolvedInput) {
+      const relative = path.relative(resolvedThemesRoot, resolvedInput);
+      if (relative && !relative.startsWith("..") && !path.isAbsolute(relative)) return resolvedInput;
+    }
+    throw error;
+  }
+}
 function usage() {
   return [
     "用法:",
@@ -287,8 +306,7 @@ ${usage()}`);
     if (action === "resolve") {
       if (themeArgs.length !== 1) throw new WisePPTError(`themes resolve 参数错误
 ${commandUsage("themes")}`);
-      const themePath = assertAbsolute(themeArgs[0], "theme 输入");
-      await assertNoSymlinkComponents(themePath, "theme 输入");
+      const themePath = await resolveThemeInputPath(root, themeArgs[0]);
       process.stdout.write(renderJson(resolveTheme(await readJson(themePath, "theme"))));
       return;
     }
@@ -297,8 +315,7 @@ ${commandUsage("themes")}`);
       const unknown = Object.keys(options).filter((key) => !["theme", "out"].includes(key));
       if (positionals.length !== 1 || !options.theme || !options.out || unknown.length) throw new WisePPTError(`themes preview 参数错误
 ${commandUsage("themes")}`);
-      const themePath = assertAbsolute(options.theme, "theme 输入");
-      await assertNoSymlinkComponents(themePath, "theme 输入");
+      const themePath = await resolveThemeInputPath(root, options.theme);
       const result = await createThemePreview(root, positionals[0], await readJson(themePath, "theme"), options.out);
       process.stdout.write(`BUILT Wise PPT theme preview theme=${result.resolved.theme_id} compatibility=${result.manifest.source.compatibility} out=${result.output}
 `);
