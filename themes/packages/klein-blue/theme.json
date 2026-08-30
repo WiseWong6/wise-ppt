@@ -1,0 +1,46 @@
+{
+  "contract": "wise-ppt-theme@3",
+  "theme_id": "klein-blue",
+  "name": "克莱因蓝",
+  "source": { "kind": "registered", "label": "当前已验证的克莱因蓝生产值与用户确认字体规律" },
+  "recognition_anchor": "米白纸面、纯白前景层、强黑正文与高识别克莱因蓝线稿",
+  "keywords": ["Architectural", "Decisive", "Electric"],
+  "evidence": {
+    "representative_visuals": ["现有 Wise PPT 克莱因蓝固定主题", "用户确认的前景纯白与凹层材料证据"],
+    "repeated_motifs": ["蓝色线稿", "米白纸面上的纯白前景", "Oswald 英文题签"],
+    "mood": "冷静、建筑化、品牌感",
+    "season": "冷季",
+    "light": "高明度米白纸面与纯白前景分层",
+    "space": "大留白、纯白前景、与爱马仕橙一致的中性凹层",
+    "typography_contrast": "中文标题黑体 Bold、英文标题 Oswald、底部宋体",
+    "line_evidence": "沿用当前已登记的品牌四档线宽",
+    "icon_evidence": "只对注册 Icon 统一品牌色与线宽，不改变组织",
+    "component_evidence": "只在逐版式语义绑定验证过的区域使用纯白前景；未验证组件特例不升级为全局规则"
+  },
+  "source_colors": ["#F2EFE9", "#FFFFFF", "#E8E5DF", "#1A1A1A", "#002FA7", "#1B44B8", "#D0D4E0", "#5C78C0"],
+  "color_strategy": {
+    "strategy": "fixed",
+    "semantic_roles": {
+      "surface-canvas": "#F2EFE9", "surface-recessed": "#E8E5DF", "surface-panel": "#FFFFFF",
+      "primary": "#1A1A1A", "functional": "#002FA7", "body": "#1A1A1A", "chart-label": "#1A1A1A",
+      "metadata": "#1A1A1A", "divider": "rgba(26, 26, 26, .20)", "construction": "rgba(0, 47, 167, .12)",
+      "focus": "#002FA7", "focus-secondary": "#1B44B8", "focus-peripheral": "#3B63CC",
+      "data-1": "#D0D4E0", "data-2": "#BDC5DA", "data-3": "#A5B2D4", "data-4": "#8C9ECD", "data-5": "#748BC7", "data-6": "#5C78C0"
+    },
+    "private_roles": { "ink-60": "rgba(26, 26, 26, .6)", "ink-30": "rgba(26, 26, 26, .3)", "focus-text-small": "#002FA7", "identity-accent": "#002FA7" }
+  },
+  "surface": { "mode": "light", "materials": { "paper": "surface-canvas", "recessed": "surface-recessed", "foreground": "surface-panel", "ink": "primary", "reverse": "surface-canvas", "accent": "focus" }, "layers": { "texture": "fine-grain", "texture_opacity": 0.06, "texture_blend": "multiply", "panel_depth": "flat", "shadow": "none", "corner_radius_px": 0 } },
+  "page_treatments": { "cover": { "canvas": "surface-canvas" }, "relationship": { "accent": "functional" } },
+  "typography": {
+    "default_mode": "mixed",
+    "modes": {
+      "all-sans": { "roles": { "top-left-kicker": ["mono", 400, 1], "bottom-left-folio": ["mono", 400, 1], "bottom-takeaway": ["han-sans", 300, 1], "zh-content-title": ["han-sans", 300, 1], "cover-title": ["han-sans", 300, 1], "chapter-title": ["han-sans", 300, 1], "closing-statement": ["han-sans", 300, 1], "en-content-title": ["han-sans", 300, 1], "en-bold": ["han-sans", 300, 1], "body": ["han-sans", 300, 1], "label": ["han-sans", 300, 1], "number": ["han-sans", 300, 1], "chart-text": ["han-sans", 300, 1] } },
+      "all-serif": { "roles": { "top-left-kicker": ["mono", 400, 1], "bottom-left-folio": ["mono", 400, 1], "bottom-takeaway": ["han-serif", 500, 1], "zh-content-title": ["han-serif", 700, 1], "cover-title": ["han-serif", 700, 1], "chapter-title": ["han-serif", 700, 1], "closing-statement": ["han-serif", 700, 1], "en-content-title": ["han-serif", 700, 1], "en-bold": ["han-serif", 700, 1], "body": ["han-serif", 500, 1], "label": ["han-serif", 500, 1], "number": ["han-serif", 500, 1], "chart-text": ["han-serif", 500, 1] } },
+      "mixed": { "roles": { "top-left-kicker": ["oswald", 700, 1], "bottom-left-folio": ["oswald", 700, 1], "bottom-takeaway": ["han-serif", 500, 1], "zh-content-title": ["han-sans", 700, 1], "cover-title": ["han-serif", 700, 1], "chapter-title": ["han-serif", 700, 1], "closing-statement": ["han-serif", 700, 1], "en-content-title": ["oswald", 700, 1], "en-bold": ["oswald", 700, 1], "body": ["han-sans", 400, 1], "label": ["han-sans", 400, 1], "number": ["han-sans", 400, 1], "chart-text": ["han-sans", 400, 1] } }
+    }
+  },
+  "lines": { "tiers": { "hairline": 0.65, "detail": 0.9, "main": 1.3, "emphasis": 1.7 }, "colors": { "structural": "functional", "focus": "focus", "divider": "divider" }, "cap": "round", "join": "round", "minimum_contrast": 3 },
+  "icons": { "drawing": "outline", "stroke_tiers": ["hairline", "detail", "main", "emphasis"], "color_role": "functional", "carrier": "none", "grouping": "native", "rhythm": "measured", "capabilities": ["recolor", "stroke-tiers"], "unregistered": "preserve-and-report" },
+  "components": { "table": { "header": "transparent", "body": "transparent", "selected": "focus-outline" }, "card": { "surface": "foreground", "border": "structural" }, "panel": { "surface": "recessed", "border": "structural" }, "application": "explicit-semantic-regions-only" },
+  "exceptions": { "hollow_number": { "fill": "none", "stroke": "primary", "text": "primary" }, "reverse": { "surface": "ink", "text": "reverse" }, "unregistered_icon": "preserve", "undeclared_component_state": "preserve-and-report" }
+}

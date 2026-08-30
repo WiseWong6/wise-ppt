@@ -539,7 +539,7 @@
 
   function assertRegisteredComponentCss(host) {
     var componentId = host.dataset.materializedComponentId || host.dataset.componentId || '';
-    if (componentId.indexOf('native.paper-ink.') !== 0) return;
+    if (componentId.indexOf('native.wise-ppt.') !== 0) return;
     var style = global.getComputedStyle(host);
     ['--pi-paper', '--pi-ink'].forEach(function (token) {
       if (!style.getPropertyValue(token).trim()) {

@@ -1,0 +1,324 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "wise-ppt-theme@3",
+  "title": "Wise PPT complete theme",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "contract", "theme_id", "name", "source", "recognition_anchor", "keywords",
+    "evidence", "source_colors", "color_strategy", "surface", "page_treatments",
+    "typography", "lines", "icons", "components", "exceptions"
+  ],
+  "properties": {
+    "contract": { "const": "wise-ppt-theme@3" },
+    "theme_id": { "type": "string", "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$" },
+    "name": { "type": "string", "minLength": 1 },
+    "source": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["kind", "label"],
+      "properties": {
+        "kind": { "enum": ["registered", "pdf", "ppt", "image", "logo", "mixed", "manual"] },
+        "label": { "type": "string", "minLength": 1 }
+      }
+    },
+    "recognition_anchor": { "type": "string", "minLength": 1 },
+    "keywords": {
+      "type": "array", "minItems": 3, "maxItems": 3, "uniqueItems": true,
+      "items": { "type": "string", "pattern": "^[A-Za-z][A-Za-z0-9 -]*$" }
+    },
+    "evidence": { "$ref": "#/$defs/evidence" },
+    "source_colors": {
+      "type": "array", "minItems": 5, "maxItems": 8, "uniqueItems": true,
+      "items": { "$ref": "#/$defs/hex" }
+    },
+    "color_strategy": {
+      "oneOf": [
+        {
+          "type": "object", "additionalProperties": false,
+          "required": ["strategy", "semantic_roles", "private_roles"],
+          "properties": {
+            "strategy": { "const": "fixed" },
+            "semantic_roles": { "$ref": "#/$defs/semanticRoles" },
+            "private_roles": { "$ref": "#/$defs/privateRoles" }
+          }
+        },
+        {
+          "type": "object", "additionalProperties": false,
+          "required": ["strategy", "identity_index", "surface_mode"],
+          "properties": {
+            "strategy": { "const": "derive-oklch" },
+            "identity_index": { "type": "integer", "minimum": 0, "maximum": 7 },
+            "surface_mode": { "enum": ["light", "dark"] }
+          }
+        }
+      ]
+    },
+    "surface": { "$ref": "#/$defs/surface" },
+    "page_treatments": { "$ref": "#/$defs/pageTreatments" },
+    "typography": { "$ref": "#/$defs/typography" },
+    "lines": { "$ref": "#/$defs/lines" },
+    "icons": { "$ref": "#/$defs/icons" },
+    "components": { "$ref": "#/$defs/components" },
+    "exceptions": { "$ref": "#/$defs/exceptions" }
+  },
+  "$defs": {
+    "hex": { "type": "string", "pattern": "^#[0-9A-Fa-f]{6}$" },
+    "cssColor": { "type": "string", "pattern": "^(#[0-9A-Fa-f]{6}|rgba?\\([^)]*\\))$" },
+    "evidence": {
+      "type": "object", "additionalProperties": false,
+      "required": [
+        "representative_visuals", "repeated_motifs", "mood", "season", "light", "space",
+        "typography_contrast", "line_evidence", "icon_evidence", "component_evidence"
+      ],
+      "properties": {
+        "representative_visuals": { "type": "array", "minItems": 1, "maxItems": 8, "uniqueItems": true, "items": { "type": "string", "minLength": 1 } },
+        "repeated_motifs": { "type": "array", "minItems": 1, "maxItems": 12, "uniqueItems": true, "items": { "type": "string", "minLength": 1 } },
+        "mood": { "type": "string", "minLength": 1 },
+        "season": { "type": "string", "minLength": 1 },
+        "light": { "type": "string", "minLength": 1 },
+        "space": { "type": "string", "minLength": 1 },
+        "typography_contrast": { "type": "string", "minLength": 1 },
+        "line_evidence": { "type": "string", "minLength": 1 },
+        "icon_evidence": { "type": "string", "minLength": 1 },
+        "component_evidence": { "type": "string", "minLength": 1 }
+      }
+    },
+    "semanticRoleName": {
+      "enum": [
+        "surface-canvas", "surface-recessed", "surface-panel", "primary", "functional",
+        "body", "chart-label", "metadata", "divider", "construction", "focus",
+        "focus-secondary", "focus-peripheral", "data-1", "data-2", "data-3",
+        "data-4", "data-5", "data-6"
+      ]
+    },
+    "semanticRoles": {
+      "type": "object", "additionalProperties": false,
+      "required": [
+        "surface-canvas", "surface-recessed", "surface-panel", "primary", "functional",
+        "body", "chart-label", "metadata", "divider", "construction", "focus",
+        "focus-secondary", "focus-peripheral", "data-1", "data-2", "data-3",
+        "data-4", "data-5", "data-6"
+      ],
+      "properties": {
+        "surface-canvas": { "$ref": "#/$defs/cssColor" },
+        "surface-recessed": { "$ref": "#/$defs/cssColor" },
+        "surface-panel": { "$ref": "#/$defs/cssColor" },
+        "primary": { "$ref": "#/$defs/cssColor" },
+        "functional": { "$ref": "#/$defs/cssColor" },
+        "body": { "$ref": "#/$defs/cssColor" },
+        "chart-label": { "$ref": "#/$defs/cssColor" },
+        "metadata": { "$ref": "#/$defs/cssColor" },
+        "divider": { "$ref": "#/$defs/cssColor" },
+        "construction": { "$ref": "#/$defs/cssColor" },
+        "focus": { "$ref": "#/$defs/cssColor" },
+        "focus-secondary": { "$ref": "#/$defs/cssColor" },
+        "focus-peripheral": { "$ref": "#/$defs/cssColor" },
+        "data-1": { "$ref": "#/$defs/cssColor" },
+        "data-2": { "$ref": "#/$defs/cssColor" },
+        "data-3": { "$ref": "#/$defs/cssColor" },
+        "data-4": { "$ref": "#/$defs/cssColor" },
+        "data-5": { "$ref": "#/$defs/cssColor" },
+        "data-6": { "$ref": "#/$defs/cssColor" }
+      }
+    },
+    "privateRoles": {
+      "type": "object", "additionalProperties": false,
+      "required": ["ink-60", "ink-30", "focus-text-small", "identity-accent"],
+      "properties": {
+        "ink-60": { "$ref": "#/$defs/cssColor" },
+        "ink-30": { "$ref": "#/$defs/cssColor" },
+        "focus-text-small": { "$ref": "#/$defs/cssColor" },
+        "identity-accent": { "$ref": "#/$defs/cssColor" }
+      }
+    },
+    "surface": {
+      "type": "object", "additionalProperties": false,
+      "required": ["mode", "materials", "layers"],
+      "properties": {
+        "mode": { "enum": ["light", "dark"] },
+        "materials": {
+          "type": "object", "additionalProperties": false,
+          "required": ["paper", "recessed", "foreground", "ink", "reverse", "accent"],
+          "properties": {
+            "paper": { "$ref": "#/$defs/semanticRoleName" },
+            "recessed": { "$ref": "#/$defs/semanticRoleName" },
+            "foreground": { "$ref": "#/$defs/semanticRoleName" },
+            "ink": { "$ref": "#/$defs/semanticRoleName" },
+            "reverse": { "$ref": "#/$defs/semanticRoleName" },
+            "accent": { "$ref": "#/$defs/semanticRoleName" }
+          }
+        },
+        "layers": {
+          "type": "object", "additionalProperties": false,
+          "required": ["texture", "texture_opacity", "texture_blend", "panel_depth", "shadow", "corner_radius_px"],
+          "properties": {
+            "texture": { "enum": ["none", "paper-dots", "fine-grain"] },
+            "texture_opacity": { "type": "number", "minimum": 0, "maximum": 1 },
+            "texture_blend": { "enum": ["normal", "multiply", "screen", "overlay"] },
+            "panel_depth": { "enum": ["flat", "layered"] },
+            "shadow": { "enum": ["none", "soft"] },
+            "corner_radius_px": { "type": "number", "minimum": 0, "maximum": 64 }
+          }
+        }
+      }
+    },
+    "pageTreatments": {
+      "type": "object", "additionalProperties": false,
+      "required": ["cover", "relationship"],
+      "properties": {
+        "cover": {
+          "type": "object", "additionalProperties": false, "required": ["canvas"],
+          "properties": { "canvas": { "enum": ["surface-canvas", "surface-recessed", "surface-panel"] } }
+        },
+        "relationship": {
+          "type": "object", "additionalProperties": false, "required": ["accent"],
+          "properties": {
+            "accent": { "enum": ["functional", "focus", "focus-secondary", "focus-peripheral", "data-1", "data-2", "data-3", "data-4", "data-5", "data-6"] }
+          }
+        }
+      }
+    },
+    "fontRecipe": {
+      "type": "array", "minItems": 3, "maxItems": 3,
+      "prefixItems": [
+        { "enum": ["han-sans", "han-serif", "oswald", "mono", "brush"] },
+        { "type": "integer", "minimum": 100, "maximum": 900, "multipleOf": 100 },
+        { "type": "number", "minimum": 0.85, "maximum": 1.15 }
+      ],
+      "items": false
+    },
+    "roleRecipes": {
+      "type": "object", "additionalProperties": false,
+      "required": [
+        "top-left-kicker", "bottom-left-folio", "bottom-takeaway", "zh-content-title", "cover-title",
+        "chapter-title", "closing-statement", "en-content-title", "en-bold", "body", "label", "number", "chart-text"
+      ],
+      "properties": {
+        "top-left-kicker": { "$ref": "#/$defs/fontRecipe" },
+        "bottom-left-folio": { "$ref": "#/$defs/fontRecipe" },
+        "bottom-takeaway": { "$ref": "#/$defs/fontRecipe" },
+        "zh-content-title": { "$ref": "#/$defs/fontRecipe" },
+        "cover-title": { "$ref": "#/$defs/fontRecipe" },
+        "chapter-title": { "$ref": "#/$defs/fontRecipe" },
+        "closing-statement": { "$ref": "#/$defs/fontRecipe" },
+        "en-content-title": { "$ref": "#/$defs/fontRecipe" },
+        "en-bold": { "$ref": "#/$defs/fontRecipe" },
+        "body": { "$ref": "#/$defs/fontRecipe" },
+        "label": { "$ref": "#/$defs/fontRecipe" },
+        "number": { "$ref": "#/$defs/fontRecipe" },
+        "chart-text": { "$ref": "#/$defs/fontRecipe" }
+      }
+    },
+    "modeRecipe": {
+      "type": "object", "additionalProperties": false, "required": ["roles"],
+      "properties": { "roles": { "$ref": "#/$defs/roleRecipes" } }
+    },
+    "typography": {
+      "type": "object", "additionalProperties": false, "required": ["default_mode", "modes"],
+      "properties": {
+        "default_mode": { "enum": ["all-sans", "all-serif", "mixed"] },
+        "modes": {
+          "type": "object", "additionalProperties": false,
+          "required": ["all-sans", "all-serif", "mixed"],
+          "properties": {
+            "all-sans": { "$ref": "#/$defs/modeRecipe" },
+            "all-serif": { "$ref": "#/$defs/modeRecipe" },
+            "mixed": { "$ref": "#/$defs/modeRecipe" }
+          }
+        }
+      }
+    },
+    "lines": {
+      "type": "object", "additionalProperties": false,
+      "required": ["tiers", "colors", "cap", "join", "minimum_contrast"],
+      "properties": {
+        "tiers": {
+          "type": "object", "additionalProperties": false,
+          "required": ["hairline", "detail", "main", "emphasis"],
+          "properties": {
+            "hairline": { "type": "number", "exclusiveMinimum": 0 },
+            "detail": { "type": "number", "exclusiveMinimum": 0 },
+            "main": { "type": "number", "exclusiveMinimum": 0 },
+            "emphasis": { "type": "number", "exclusiveMinimum": 0 }
+          }
+        },
+        "colors": {
+          "type": "object", "additionalProperties": false,
+          "required": ["structural", "focus", "divider"],
+          "properties": {
+            "structural": { "$ref": "#/$defs/semanticRoleName" },
+            "focus": { "$ref": "#/$defs/semanticRoleName" },
+            "divider": { "$ref": "#/$defs/semanticRoleName" }
+          }
+        },
+        "cap": { "enum": ["round", "butt", "square"] },
+        "join": { "enum": ["round", "miter", "bevel"] },
+        "minimum_contrast": { "type": "number", "minimum": 3 }
+      }
+    },
+    "icons": {
+      "type": "object", "additionalProperties": false,
+      "required": ["drawing", "stroke_tiers", "color_role", "carrier", "grouping", "rhythm", "capabilities", "unregistered"],
+      "properties": {
+        "drawing": { "enum": ["outline", "solid", "duotone"] },
+        "stroke_tiers": { "const": ["hairline", "detail", "main", "emphasis"] },
+        "color_role": { "$ref": "#/$defs/semanticRoleName" },
+        "carrier": { "enum": ["none", "circle", "square", "card"] },
+        "grouping": { "enum": ["native", "functional-neighbor", "grouped"] },
+        "rhythm": { "enum": ["measured", "compact", "spacious"] },
+        "capabilities": { "type": "array", "minItems": 1, "maxItems": 8, "uniqueItems": true, "items": { "type": "string", "minLength": 1 } },
+        "unregistered": { "const": "preserve-and-report" }
+      }
+    },
+    "componentSurface": { "enum": ["transparent", "paper", "recessed", "foreground"] },
+    "componentBorder": { "enum": ["none", "structural", "focus", "focus-outline"] },
+    "componentBox": {
+      "type": "object", "additionalProperties": false, "required": ["surface", "border"],
+      "properties": {
+        "surface": { "$ref": "#/$defs/componentSurface" },
+        "border": { "$ref": "#/$defs/componentBorder" }
+      }
+    },
+    "components": {
+      "type": "object", "additionalProperties": false,
+      "required": ["table", "card", "panel", "application"],
+      "properties": {
+        "table": {
+          "type": "object", "additionalProperties": false, "required": ["header", "body", "selected"],
+          "properties": {
+            "header": { "$ref": "#/$defs/componentSurface" },
+            "body": { "$ref": "#/$defs/componentSurface" },
+            "selected": { "$ref": "#/$defs/componentBorder" }
+          }
+        },
+        "card": { "$ref": "#/$defs/componentBox" },
+        "panel": { "$ref": "#/$defs/componentBox" },
+        "application": { "const": "explicit-semantic-regions-only" }
+      }
+    },
+    "exceptions": {
+      "type": "object", "additionalProperties": false,
+      "required": ["hollow_number", "reverse", "unregistered_icon", "undeclared_component_state"],
+      "properties": {
+        "hollow_number": {
+          "type": "object", "additionalProperties": false, "required": ["fill", "stroke", "text"],
+          "properties": {
+            "fill": { "const": "none" },
+            "stroke": { "$ref": "#/$defs/semanticRoleName" },
+            "text": { "$ref": "#/$defs/semanticRoleName" }
+          }
+        },
+        "reverse": {
+          "type": "object", "additionalProperties": false, "required": ["surface", "text"],
+          "properties": {
+            "surface": { "enum": ["paper", "recessed", "foreground", "ink", "reverse", "accent"] },
+            "text": { "enum": ["paper", "recessed", "foreground", "ink", "reverse", "accent"] }
+          }
+        },
+        "unregistered_icon": { "const": "preserve" },
+        "undeclared_component_state": { "const": "preserve-and-report" }
+      }
+    }
+  }
+}

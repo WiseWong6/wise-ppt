@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-runtime="wise-ppt-specimen" data-typography-mode="all-sans" data-wise-catalog-fonts="true" data-page-id="gallery-ai-d3" data-catalog-source-marker="orange" data-page-role="close" data-theme="paper-ink" data-layout="paper-ink.scaffold.minimal-outro" data-layout-source="gallery" data-theme-id="hermes-orange" data-surface-source="catalog-theme-recipes-v1" data-xp-recipe-id="hermes-orange:d3" data-xp-surface-profile="impact-editorial" data-xp-recipe-status="recipe-ready" data-xp-frame-kind="custom-redraw">
+<head>
+<meta charset="UTF-8">
+<title>layout-d3 · 极简 Outro · AI Engineering</title>
+<script src="../../../../../runtime/stage-fit.js"></script>
+<!--
+  纸墨线稿样张 · C4 极简 Outro
+  @歪斯Wise「AI 工程化实战」分享
+  版式纪律（layouts C4）：一句大字 + mono 署名行 + 一处极细装饰；留白 >60%；无 FIG、无 caption
+-->
+<link rel="stylesheet" href="../../../../../themes/engine/assets/design-tokens.css">
+<link rel="stylesheet" href="../../../../../themes/packages/paper-ink/theme.css">
+<link rel="stylesheet" href="../../../../../themes/packages/hermes-orange/theme.css">
+<link rel="stylesheet" href="../../../../../themes/packages/klein-blue/theme.css">
+<link rel="stylesheet" href="../../../../../themes/engine/assets/catalog-fonts.css" data-wise-catalog-fonts="true">
+<link rel="stylesheet" href="../../../../../themes/engine/assets/slide-components.css">
+<link rel="stylesheet" href="../../../../../references/shell.css">
+<style>
+  svg.scene { position: absolute; inset: 0; z-index: 1; }
+  .big {
+    position: absolute; left: 0; right: 0; top: 476px;
+    text-align: center;
+    font-family: var(--serif); font-weight: var(--wp-weight-regular);
+    /* 句末全角"。"右侧大半是空字面,墨迹重心左偏约 25px;
+       text-indent 半量作用于居中行,把字面墨迹光学拉回版心(同 .sig 的字距补偿纪律)。 */
+    font-size: var(--type-hero); letter-spacing: .06em; text-indent: .66em;
+    color: var(--ink);
+    z-index: 5;
+  }
+  .sig {
+    position: absolute; left: 0; right: 0; top: 626px;
+    text-align: center;
+    font-family: var(--mono); font-weight: 400;
+    font-size: var(--type-meta); letter-spacing: .3em; text-indent: .3em;
+    color: var(--ink-45);
+    text-transform: uppercase;
+    z-index: 5;
+  }
+</style>
+
+<style data-catalog-source-style="v3-d3-orange">
+  @font-face {
+    font-family: 'Oswald Replica';
+    src: url('../../../../../themes/engine/fonts/catalog/Oswald-Bold-Latin.catalog.woff2') format('woff2');
+    font-style: normal;
+    font-weight: 700;
+    font-display: block;
+  }
+  :root,
+  :root[data-theme-id="hermes-orange"] {
+    --xp-paper: #f2efe9;
+    --xp-outside: #e5e2dc;
+    --xp-ink: #1a1a1a;
+    --xp-accent: #d95e00;
+    --xp-serif: 'Han Serif Catalog', 'Han Serif', serif;
+    --wp-color-surface-canvas: var(--xp-paper);
+    --wp-color-surface-recessed: #e4dfd5;
+    --wp-color-surface-panel: rgba(255,255,255,.4);
+    --wp-color-primary: var(--xp-ink);
+    --wp-color-functional: var(--xp-ink);
+    --wp-color-body: rgba(26,26,26,.72);
+    --wp-color-metadata: rgba(26,26,26,.45);
+    --wp-color-divider: rgba(26,26,26,.2);
+    --wp-color-construction: rgba(26,26,26,.12);
+    --wp-color-focus: var(--xp-accent);
+    --wp-private-identity-accent: var(--xp-ink);
+  }
+  body { background: var(--xp-outside); }
+  #v3-d3-orange.stage { background: var(--xp-paper); }
+  #v3-d3-orange .doc.tl {
+    display: flex; flex-direction: column; gap: 8px;
+    width: max-content; white-space: normal;
+    line-height: 1; letter-spacing: 0; text-transform: none;
+  }
+  #v3-d3-orange .doc-kicker,
+  #v3-d3-orange .doc-title,
+  #v3-d3-orange .folio {
+    font-family: 'Oswald Replica', 'Han Sans Catalog', 'Han Sans', 'PingFang SC', sans-serif;
+    font-size: var(--type-body-small);
+    font-weight: 700;
+    line-height: 1.25;
+    letter-spacing: .15em;
+    text-transform: uppercase;
+    color: var(--xp-accent);
+  }
+
+  .big { font-weight: 700; }
+  .sig { font-family: 'Oswald Replica', 'Han Sans Catalog', 'Han Sans', 'PingFang SC', sans-serif; font-weight: 700; color: var(--xp-accent); }
+
+</style>
+<link rel="stylesheet" href="../../catalog-surface.css" data-catalog-theme-surface="catalog-theme-recipes-v1">
+<link rel="stylesheet" href="../../title-furniture.css" data-catalog-title-furniture="black-first-theme-second-v1">
+</head>
+<body class="slide">
+<div id="v3-d3-orange" class="stage" data-template-id="D3" data-block-id="gallery-primary" data-renderer-kind="typography" data-component-source="native" data-component-id="native.paper-ink.scaffold.minimal-outro.outro-lockup" data-content-ref="example.d3" data-catalog-source-marker="page-recipe">
+  <div class="doc tl" data-template-part="support" data-template-slot="support" data-template-slot-kind="text"><span class="doc-kicker">PPT 标题</span><span class="doc-title">页面标题</span></div>
+  <div class="folio" data-template-part="folio">页码 / 总页数 — BY @歪斯Wise</div>
+
+  <svg class="scene" data-template-part="illustration" data-template-slot="illustration" data-template-slot-kind="illustration" width="1920" height="1080" viewBox="0 0 1920 1080">
+    <g id="draw"></g>
+  </svg>
+
+  <div class="big" data-template-part="primary" data-template-slot="primary" data-template-slot-kind="text">怕什么真理无穷。</div>
+  <div class="sig" data-template-part="signature">@歪斯Wise</div>
+</div>
+
+<script src="../../../../../themes/packages/paper-ink/assets/particles.js"></script>
+<script>
+var NS = 'http://www.w3.org/2000/svg';
+var INK = 'var(--ink)';
+var G = document.getElementById('draw');
+function el(tag, attrs) {
+  var e = document.createElementNS(NS, tag);
+  for (var k in attrs) e.setAttribute(k, attrs[k]);
+  G.appendChild(e); return e;
+}
+G = el('g', {transform:'translate(0 -22)'});
+
+/* ===== 唯一一处极细装饰：大字上方的短横 + 小圆 + 十字准星 ===== */
+/* 短横（大字之上，居中） */
+el('line', {x1:920, y1: 440, x2:1000, y2: 440, stroke:INK, 'stroke-width':.8, opacity:.55});
+/* 短横右端小圆（双圈+实心核的极简化） */
+el('circle', {cx:1018, cy: 440, r:4.5, fill:'none', stroke:INK, 'stroke-width':.9, opacity:.7});
+el('circle', {cx:1018, cy: 440, r:1.6, fill:'var(--xp-accent)', opacity:.9});
+/* 署名行下方的十字准星（套准标记感） */
+el('line', {x1:951, y1: 716, x2:969, y2: 716, stroke:INK, 'stroke-width':.7, opacity:.4});
+el('line', {x1:960, y1: 707, x2:960, y2: 725, stroke:INK, 'stroke-width':.7, opacity:.4});
+
+stageFit();
+</script>
+<script type="application/json" id="xp-surface-recipe">{"theme":"hermes-orange","color_name":"orange","layout_code":"d3","title":"layout-d3 · 极简 Outro · AI Engineering","layout":"paper-ink.scaffold.minimal-outro","page_role":"close","canvas":{"token":"paper","value":"#f2efe9","reason":"custom-redraw 的已定设计意图；视觉由该页面源码独立实现，ledger 只如实登记。"},"surface_profile":"impact-editorial","surfaces":[{"role":"diagram-plane","material":"paper-plane","fill":"#f2efe9","stack":1},{"role":"structure","material":"ink-line","fill":"#1a1a1a","stack":2},{"role":"focus-marker","material":"accent","fill":"#d95e00","stack":3}],"accent":{"value":"#d95e00","semantic_channel":"收尾标点、署名或最终词","furniture":"左上第一行 doc-kicker 固定墨黑，第二行 doc-title 使用当前主题色；folio 继续按该页画布与原配方处理。","neutral_exceptions":["普通英文标签","轴名","层名","结构编号","MODEL","非当前数据"],"furniture_mode":"black-first-theme-second","folio_mode":"accent"},"border_policy":"主体 1px 墨线；唯一焦点可用 2px 橙线，所有容器方角。","shadow_policy":"无内部投影；整页场由大色面和排版建立冲击。","noise_policy":"由主题统一提供唯一一层约 6% 黑色 fractal-noise；页面不得自带 noise 节点；浅色页 multiply，墨面可 overlay。","reference_evidence":{"file":"ai_studio_code (3).html","cards":["slide-1","slide-5","slide-8","slide-12","slide-14"],"rule":"橙、蓝逐页同构：蓝色版式完全跟随橙色版式，仅将主题橙替换为 Klein 蓝。"},"acceptance":["强调色只落一个语义通道；同一序列可重复，但不得扩散到结构元数据。","纯白只用于 top-white，不能替代默认纸面。","缩略图必须从该主题独立 frame 的实际渲染重建。"],"status":"recipe-ready","surface_bindings":[],"surface_binding_reason":"custom-redraw 不加载共享 surface runtime；材料已在独立源码内显式实现。"}</script>
+<script src="../../catalog-typography.js" data-catalog-typography="accent-english-title-match-v1"></script>
+<script data-xp-custom-page-ready="true">(function(){var r=document.documentElement,s=document.querySelector(".stage");r.dataset.xpRecipeReady="custom";r.dataset.catalogSurfaceReady="true";r.dataset.xpRecipeStatus="recipe-ready";r.dataset.xpSurfaceProfile="impact-editorial";r.dataset.xpCanvas="paper";r.dataset.xpTitleFurniture="black-first-theme-second";if(s){s.dataset.surfaceRebuild="custom-page-v3";s.dataset.surfaceFocusCount="0";}})();</script>
+</body>
+</html>

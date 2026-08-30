@@ -1,0 +1,826 @@
+{
+  "adjustments": [],
+  "components": {
+    "application": "explicit-semantic-regions-only",
+    "card": {
+      "border": "structural",
+      "surface": "foreground"
+    },
+    "panel": {
+      "border": "structural",
+      "surface": "recessed"
+    },
+    "table": {
+      "body": "transparent",
+      "header": "transparent",
+      "selected": "focus-outline"
+    }
+  },
+  "contract": "wise-ppt-theme-resolved@3",
+  "contrast_checks": [
+    {
+      "background": "#DFE0D9",
+      "foreground": "#191917",
+      "minimum": 4.5,
+      "pass": true,
+      "ratio": 13.248,
+      "role": "primary",
+      "usage": "正文与小字"
+    },
+    {
+      "background": "#DFE0D9",
+      "foreground": "rgba(25, 25, 23, .7)",
+      "minimum": 4.5,
+      "pass": true,
+      "ratio": 5.653,
+      "role": "body",
+      "usage": "正文"
+    },
+    {
+      "background": "#DFE0D9",
+      "foreground": "rgba(25, 25, 23, .7)",
+      "minimum": 4.5,
+      "pass": true,
+      "ratio": 5.653,
+      "role": "chart-label",
+      "usage": "图表文字"
+    },
+    {
+      "background": "#DFE0D9",
+      "foreground": "#C0392B",
+      "minimum": 3,
+      "pass": true,
+      "ratio": 4.092,
+      "role": "focus",
+      "usage": "关键图形"
+    },
+    {
+      "background": "#DFE0D9",
+      "foreground": "#9B2F24",
+      "minimum": 4.5,
+      "pass": true,
+      "ratio": 5.592,
+      "role": "focus-text-small",
+      "usage": "小号强调文字"
+    },
+    {
+      "background": "#DFE0D9",
+      "foreground": "#191917",
+      "minimum": 3,
+      "pass": true,
+      "ratio": 13.248,
+      "role": "structural-line",
+      "usage": "承担信息的结构线"
+    },
+    {
+      "background": "#DFE0D9",
+      "foreground": "rgba(25, 25, 23, .7)",
+      "minimum": 4.5,
+      "pass": true,
+      "ratio": 5.653,
+      "role": "cover-body",
+      "usage": "封面正文"
+    },
+    {
+      "background": "#DFE0D9",
+      "foreground": "rgba(25, 25, 23, .8)",
+      "minimum": 3,
+      "pass": true,
+      "ratio": 7.707,
+      "role": "relationship-accent",
+      "usage": "关系页主题强调"
+    }
+  ],
+  "definition": {
+    "color_strategy": {
+      "private_roles": {
+        "focus-text-small": "#9B2F24",
+        "identity-accent": "#C0392B",
+        "ink-30": "rgba(25, 25, 23, .3)",
+        "ink-60": "rgba(25, 25, 23, .6)"
+      },
+      "semantic_roles": {
+        "body": "rgba(25, 25, 23, .7)",
+        "chart-label": "rgba(25, 25, 23, .7)",
+        "construction": "rgba(25, 25, 23, .12)",
+        "data-1": "rgba(25, 25, 23, .12)",
+        "data-2": "rgba(25, 25, 23, .20)",
+        "data-3": "rgba(25, 25, 23, .28)",
+        "data-4": "rgba(25, 25, 23, .36)",
+        "data-5": "rgba(25, 25, 23, .45)",
+        "data-6": "rgba(25, 25, 23, .55)",
+        "divider": "rgba(25, 25, 23, .25)",
+        "focus": "#C0392B",
+        "focus-peripheral": "rgba(192, 57, 43, .65)",
+        "focus-secondary": "rgba(192, 57, 43, .85)",
+        "functional": "rgba(25, 25, 23, .8)",
+        "metadata": "rgba(25, 25, 23, .7)",
+        "primary": "#191917",
+        "surface-canvas": "#DFE0D9",
+        "surface-panel": "#E6E7E1",
+        "surface-recessed": "#D4D5CD"
+      },
+      "strategy": "fixed"
+    },
+    "components": {
+      "application": "explicit-semantic-regions-only",
+      "card": {
+        "border": "structural",
+        "surface": "foreground"
+      },
+      "panel": {
+        "border": "structural",
+        "surface": "recessed"
+      },
+      "table": {
+        "body": "transparent",
+        "header": "transparent",
+        "selected": "focus-outline"
+      }
+    },
+    "contract": "wise-ppt-theme@3",
+    "evidence": {
+      "component_evidence": "只对已登记语义区域应用材料",
+      "icon_evidence": "墨色线性 Icon，透明度与线宽共同分层",
+      "light": "柔和漫射光",
+      "line_evidence": "保留原始四档线宽",
+      "mood": "克制、理性、纸本编辑感",
+      "repeated_motifs": [
+        "细线结构",
+        "空心编号",
+        "两侧工程辅助线"
+      ],
+      "representative_visuals": [
+        "Paper Ink Catalog 的 88 套固定骨架"
+      ],
+      "season": "中性",
+      "space": "留白清楚、层级低对比",
+      "typography_contrast": "标题宋体、底部黑体"
+    },
+    "exceptions": {
+      "hollow_number": {
+        "fill": "none",
+        "stroke": "primary",
+        "text": "primary"
+      },
+      "reverse": {
+        "surface": "ink",
+        "text": "reverse"
+      },
+      "undeclared_component_state": "preserve-and-report",
+      "unregistered_icon": "preserve"
+    },
+    "icons": {
+      "capabilities": [
+        "recolor",
+        "stroke-tiers"
+      ],
+      "carrier": "none",
+      "color_role": "functional",
+      "drawing": "outline",
+      "grouping": "native",
+      "rhythm": "measured",
+      "stroke_tiers": [
+        "hairline",
+        "detail",
+        "main",
+        "emphasis"
+      ],
+      "unregistered": "preserve-and-report"
+    },
+    "keywords": [
+      "Editorial",
+      "Measured",
+      "Tactile"
+    ],
+    "lines": {
+      "cap": "round",
+      "colors": {
+        "divider": "divider",
+        "focus": "focus",
+        "structural": "primary"
+      },
+      "join": "round",
+      "minimum_contrast": 3,
+      "tiers": {
+        "detail": 0.8,
+        "emphasis": 1.6,
+        "hairline": 0.55,
+        "main": 1.2
+      }
+    },
+    "name": "纸墨",
+    "page_treatments": {
+      "cover": {
+        "canvas": "surface-canvas"
+      },
+      "relationship": {
+        "accent": "functional"
+      }
+    },
+    "recognition_anchor": "冷灰纸底、深墨线稿与克制番茄红焦点",
+    "source": {
+      "kind": "registered",
+      "label": "Paper Ink 已验证生产主题"
+    },
+    "source_colors": [
+      "#DFE0D9",
+      "#D4D5CD",
+      "#E6E7E1",
+      "#191917",
+      "#C0392B"
+    ],
+    "surface": {
+      "layers": {
+        "corner_radius_px": 0,
+        "panel_depth": "flat",
+        "shadow": "none",
+        "texture": "paper-dots",
+        "texture_blend": "multiply",
+        "texture_opacity": 0.035
+      },
+      "materials": {
+        "accent": "focus",
+        "foreground": "surface-panel",
+        "ink": "primary",
+        "paper": "surface-canvas",
+        "recessed": "surface-recessed",
+        "reverse": "surface-canvas"
+      },
+      "mode": "light"
+    },
+    "theme_id": "paper-ink",
+    "typography": {
+      "default_mode": "mixed",
+      "modes": {
+        "all-sans": {
+          "roles": {
+            "body": [
+              "han-sans",
+              300,
+              1
+            ],
+            "bottom-left-folio": [
+              "mono",
+              400,
+              1
+            ],
+            "bottom-takeaway": [
+              "han-sans",
+              300,
+              1
+            ],
+            "chapter-title": [
+              "han-sans",
+              300,
+              1
+            ],
+            "chart-text": [
+              "han-sans",
+              300,
+              1
+            ],
+            "closing-statement": [
+              "han-sans",
+              300,
+              1
+            ],
+            "cover-title": [
+              "han-sans",
+              300,
+              1
+            ],
+            "en-bold": [
+              "han-sans",
+              300,
+              1
+            ],
+            "en-content-title": [
+              "han-sans",
+              300,
+              1
+            ],
+            "label": [
+              "han-sans",
+              300,
+              1
+            ],
+            "number": [
+              "han-sans",
+              300,
+              1
+            ],
+            "top-left-kicker": [
+              "mono",
+              400,
+              1
+            ],
+            "zh-content-title": [
+              "han-sans",
+              300,
+              1
+            ]
+          }
+        },
+        "all-serif": {
+          "roles": {
+            "body": [
+              "han-serif",
+              500,
+              1
+            ],
+            "bottom-left-folio": [
+              "mono",
+              400,
+              1
+            ],
+            "bottom-takeaway": [
+              "han-serif",
+              500,
+              1
+            ],
+            "chapter-title": [
+              "han-serif",
+              700,
+              1
+            ],
+            "chart-text": [
+              "han-serif",
+              500,
+              1
+            ],
+            "closing-statement": [
+              "han-serif",
+              700,
+              1
+            ],
+            "cover-title": [
+              "han-serif",
+              700,
+              1
+            ],
+            "en-bold": [
+              "han-serif",
+              700,
+              1
+            ],
+            "en-content-title": [
+              "han-serif",
+              700,
+              1
+            ],
+            "label": [
+              "han-serif",
+              500,
+              1
+            ],
+            "number": [
+              "han-serif",
+              500,
+              1
+            ],
+            "top-left-kicker": [
+              "mono",
+              400,
+              1
+            ],
+            "zh-content-title": [
+              "han-serif",
+              700,
+              1
+            ]
+          }
+        },
+        "mixed": {
+          "roles": {
+            "body": [
+              "han-sans",
+              300,
+              1
+            ],
+            "bottom-left-folio": [
+              "mono",
+              400,
+              1
+            ],
+            "bottom-takeaway": [
+              "han-sans",
+              300,
+              1
+            ],
+            "chapter-title": [
+              "han-serif",
+              700,
+              1
+            ],
+            "chart-text": [
+              "han-sans",
+              300,
+              1
+            ],
+            "closing-statement": [
+              "han-serif",
+              700,
+              1
+            ],
+            "cover-title": [
+              "han-serif",
+              700,
+              1
+            ],
+            "en-bold": [
+              "han-serif",
+              700,
+              1
+            ],
+            "en-content-title": [
+              "han-serif",
+              700,
+              1
+            ],
+            "label": [
+              "han-sans",
+              300,
+              1
+            ],
+            "number": [
+              "han-sans",
+              300,
+              1
+            ],
+            "top-left-kicker": [
+              "mono",
+              400,
+              1
+            ],
+            "zh-content-title": [
+              "han-serif",
+              700,
+              1
+            ]
+          }
+        }
+      }
+    }
+  },
+  "exceptions": {
+    "hollow_number": {
+      "fill": "none",
+      "stroke": "primary",
+      "text": "primary"
+    },
+    "reverse": {
+      "surface": "ink",
+      "text": "reverse"
+    },
+    "undeclared_component_state": "preserve-and-report",
+    "unregistered_icon": "preserve"
+  },
+  "icons": {
+    "capabilities": [
+      "recolor",
+      "stroke-tiers"
+    ],
+    "carrier": "none",
+    "color_role": "functional",
+    "drawing": "outline",
+    "grouping": "native",
+    "rhythm": "measured",
+    "stroke_tiers": [
+      "hairline",
+      "detail",
+      "main",
+      "emphasis"
+    ],
+    "unregistered": "preserve-and-report"
+  },
+  "lines": {
+    "cap": "round",
+    "colors": {
+      "divider": "divider",
+      "focus": "focus",
+      "structural": "primary"
+    },
+    "join": "round",
+    "minimum_contrast": 3,
+    "tiers": {
+      "detail": 0.8,
+      "emphasis": 1.6,
+      "hairline": 0.55,
+      "main": 1.2
+    }
+  },
+  "method": {
+    "color_space": "fixed-verified",
+    "gamut": "sRGB",
+    "key_graphic_contrast_minimum": 3,
+    "text_contrast_minimum": 4.5
+  },
+  "name": "纸墨",
+  "page_treatments": {
+    "cover": {
+      "canvas": "surface-canvas"
+    },
+    "relationship": {
+      "accent": "functional"
+    }
+  },
+  "private_tokens": {
+    "focus-text-small": "#9B2F24",
+    "identity-accent": "#C0392B",
+    "ink-30": "rgba(25, 25, 23, .3)",
+    "ink-60": "rgba(25, 25, 23, .6)"
+  },
+  "renderers": {
+    "canvas": {
+      "colors": "tokens",
+      "fonts": "typography.roles",
+      "line_widths": {
+        "detail": 0.8,
+        "emphasis": 1.6,
+        "hairline": 0.55,
+        "main": 1.2
+      }
+    },
+    "echarts": {
+      "colors": [
+        "data-1",
+        "data-2",
+        "data-3",
+        "data-4",
+        "data-5",
+        "data-6"
+      ],
+      "fonts": "typography.roles",
+      "line_widths": {
+        "detail": 0.8,
+        "emphasis": 1.6,
+        "hairline": 0.55,
+        "main": 1.2
+      }
+    },
+    "svg": {
+      "colors": "tokens",
+      "fonts": "typography.roles",
+      "line_widths": {
+        "detail": 0.8,
+        "emphasis": 1.6,
+        "hairline": 0.55,
+        "main": 1.2
+      }
+    }
+  },
+  "surface": {
+    "layers": {
+      "corner_radius_px": 0,
+      "panel_depth": "flat",
+      "shadow": "none",
+      "texture": "paper-dots",
+      "texture_blend": "multiply",
+      "texture_opacity": 0.035
+    },
+    "materials": {
+      "accent": "focus",
+      "foreground": "surface-panel",
+      "ink": "primary",
+      "paper": "surface-canvas",
+      "recessed": "surface-recessed",
+      "reverse": "surface-canvas"
+    },
+    "mode": "light"
+  },
+  "theme_id": "paper-ink",
+  "tokens": {
+    "body": "rgba(25, 25, 23, .7)",
+    "chart-label": "rgba(25, 25, 23, .7)",
+    "construction": "rgba(25, 25, 23, .12)",
+    "data-1": "rgba(25, 25, 23, .12)",
+    "data-2": "rgba(25, 25, 23, .20)",
+    "data-3": "rgba(25, 25, 23, .28)",
+    "data-4": "rgba(25, 25, 23, .36)",
+    "data-5": "rgba(25, 25, 23, .45)",
+    "data-6": "rgba(25, 25, 23, .55)",
+    "divider": "rgba(25, 25, 23, .25)",
+    "focus": "#C0392B",
+    "focus-peripheral": "rgba(192, 57, 43, .65)",
+    "focus-secondary": "rgba(192, 57, 43, .85)",
+    "functional": "rgba(25, 25, 23, .8)",
+    "metadata": "rgba(25, 25, 23, .7)",
+    "primary": "#191917",
+    "surface-canvas": "#DFE0D9",
+    "surface-panel": "#E6E7E1",
+    "surface-recessed": "#D4D5CD"
+  },
+  "typography": {
+    "default_mode": "mixed",
+    "modes": {
+      "all-sans": {
+        "roles": {
+          "body": [
+            "han-sans",
+            300,
+            1
+          ],
+          "bottom-left-folio": [
+            "mono",
+            400,
+            1
+          ],
+          "bottom-takeaway": [
+            "han-sans",
+            300,
+            1
+          ],
+          "chapter-title": [
+            "han-sans",
+            300,
+            1
+          ],
+          "chart-text": [
+            "han-sans",
+            300,
+            1
+          ],
+          "closing-statement": [
+            "han-sans",
+            300,
+            1
+          ],
+          "cover-title": [
+            "han-sans",
+            300,
+            1
+          ],
+          "en-bold": [
+            "han-sans",
+            300,
+            1
+          ],
+          "en-content-title": [
+            "han-sans",
+            300,
+            1
+          ],
+          "label": [
+            "han-sans",
+            300,
+            1
+          ],
+          "number": [
+            "han-sans",
+            300,
+            1
+          ],
+          "top-left-kicker": [
+            "mono",
+            400,
+            1
+          ],
+          "zh-content-title": [
+            "han-sans",
+            300,
+            1
+          ]
+        }
+      },
+      "all-serif": {
+        "roles": {
+          "body": [
+            "han-serif",
+            500,
+            1
+          ],
+          "bottom-left-folio": [
+            "mono",
+            400,
+            1
+          ],
+          "bottom-takeaway": [
+            "han-serif",
+            500,
+            1
+          ],
+          "chapter-title": [
+            "han-serif",
+            700,
+            1
+          ],
+          "chart-text": [
+            "han-serif",
+            500,
+            1
+          ],
+          "closing-statement": [
+            "han-serif",
+            700,
+            1
+          ],
+          "cover-title": [
+            "han-serif",
+            700,
+            1
+          ],
+          "en-bold": [
+            "han-serif",
+            700,
+            1
+          ],
+          "en-content-title": [
+            "han-serif",
+            700,
+            1
+          ],
+          "label": [
+            "han-serif",
+            500,
+            1
+          ],
+          "number": [
+            "han-serif",
+            500,
+            1
+          ],
+          "top-left-kicker": [
+            "mono",
+            400,
+            1
+          ],
+          "zh-content-title": [
+            "han-serif",
+            700,
+            1
+          ]
+        }
+      },
+      "mixed": {
+        "roles": {
+          "body": [
+            "han-sans",
+            300,
+            1
+          ],
+          "bottom-left-folio": [
+            "mono",
+            400,
+            1
+          ],
+          "bottom-takeaway": [
+            "han-sans",
+            300,
+            1
+          ],
+          "chapter-title": [
+            "han-serif",
+            700,
+            1
+          ],
+          "chart-text": [
+            "han-sans",
+            300,
+            1
+          ],
+          "closing-statement": [
+            "han-serif",
+            700,
+            1
+          ],
+          "cover-title": [
+            "han-serif",
+            700,
+            1
+          ],
+          "en-bold": [
+            "han-serif",
+            700,
+            1
+          ],
+          "en-content-title": [
+            "han-serif",
+            700,
+            1
+          ],
+          "label": [
+            "han-sans",
+            300,
+            1
+          ],
+          "number": [
+            "han-sans",
+            300,
+            1
+          ],
+          "top-left-kicker": [
+            "mono",
+            400,
+            1
+          ],
+          "zh-content-title": [
+            "han-serif",
+            700,
+            1
+          ]
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html data-theme-id="hermes-orange" lang="zh-CN" data-runtime="wise-ppt-specimen" data-typography-mode="all-sans" data-page-id="gallery-ai-b3" data-page-role="sequence" data-theme="paper-ink" data-layout="paper-ink.temporal.swimlane-roadmap" data-layout-source="gallery" data-sample-focus-profile="copy-only" data-sample-focus-members='[{"selector":"#focus-caption","role":"label"}]' data-sample-focus-ref="sample.b3.b3-focus" data-surface-source="catalog-theme-recipes-v1" data-xp-recipe-id="hermes-orange:b3" data-xp-surface-profile="process-axis" data-xp-recipe-status="recipe-ready" data-xp-frame-kind="recipe-generated">
+<head>
+<meta charset="UTF-8">
+<title>layout-b3 · 多泳道路线图 · AI 产品</title>
+<script src="../../../../../runtime/stage-fit.js"></script>
+<link rel="stylesheet" href="../../../../../themes/engine/assets/design-tokens.css">
+<link rel="stylesheet" href="../../../../../themes/packages/paper-ink/theme.css">
+<link rel="stylesheet" href="../../../../../themes/packages/hermes-orange/theme.css">
+<link rel="stylesheet" href="../../../../../themes/packages/klein-blue/theme.css">
+<link rel="stylesheet" href="../../../../../themes/engine/assets/catalog-fonts.css" data-wise-catalog-fonts="true">
+<link rel="stylesheet" href="../../../../../themes/engine/assets/slide-components.css">
+<link rel="stylesheet" href="../../../../../references/shell.css">
+<style>
+  /* B24 多泳道路线图 · 纸底 */
+  .doc.tl, .folio { color: var(--ink-45); }
+  svg.scene { position: absolute; inset: 0; z-index: 1; }
+  .caption {
+    position: absolute; left: 0; right: 0; bottom: 118px;
+    text-align: center;
+    font-family: var(--sans); font-weight: 400;
+    font-size: var(--type-caption); letter-spacing: .04em;
+    color: var(--ink);
+    z-index: 5;
+  }
+</style>
+<link rel="stylesheet" href="../../catalog-surface.css" data-catalog-theme-surface="catalog-theme-recipes-v1">
+<link rel="stylesheet" href="../../title-furniture.css" data-catalog-title-furniture="black-first-theme-second-v1">
+</head>
+<body class="slide">
+<div class="stage" data-block-id="gallery-primary" data-renderer-kind="svg" data-component-source="native" data-component-id="native.wise-ppt.temporal.swimlane-roadmap.roadmap" data-content-ref="example.b3" data-catalog-source-marker="page-recipe">
+  <div class="doc tl"><span class="doc-kicker">PPT 标题</span><span class="doc-title">页面标题</span></div>
+  <div class="folio">页码 / 总页数 — BY @歪斯Wise</div>
+
+  <svg class="scene" width="1920" height="1080" viewBox="0 0 1920 1080">
+    <defs>
+      <pattern id="hatch24" width="9" height="9" patternTransform="rotate(45)" patternUnits="userSpaceOnUse">
+        <line x1="0" y1="0" x2="0" y2="9" stroke="var(--ink)" stroke-width=".7" opacity=".35"/>
+      </pattern>
+    </defs>
+    <g id="draw"></g>
+  </svg>
+
+  <div class="caption"><span id="focus-caption">模型、数据与应用</span>三条路线必须同步推进，否则产品会在交付前被上游卡住。</div>
+</div>
+
+<script src="../../../../../themes/packages/paper-ink/assets/particles.js"></script>
+<script>
+var NS = 'http://www.w3.org/2000/svg';
+var INK = 'var(--ink)';
+var INK80 = 'var(--ink-80)';
+var INK70 = 'var(--ink-70)';
+var INK45 = 'var(--ink-45)';
+var G = document.getElementById('draw');
+function el(tag, attrs) {
+  var e = document.createElementNS(NS, tag);
+  for (var k in attrs) e.setAttribute(k, attrs[k]);
+  G.appendChild(e); return e;
+}
+function txt(x, y, str, attrs) {
+  var t = el('text', Object.assign({x:x, y:y}, attrs||{}));
+  t.textContent = str; return t;
+}
+var MONO = 'var(--mono)', SANS = 'var(--sans)';
+
+G = el('g', {transform:'translate(0 -37.2)'});
+
+
+/* ---------- 时间刻度尺（x340–1760，六个季度） ---------- */
+var X0 = 340, X1 = 1760, QW = (X1 - X0) / 6;
+var QLABELS = ['25Q3', '25Q4', '26Q1', '26Q2', '26Q3', '26Q4'];
+
+/* 竖向虚线栅格（贯穿全图，先画沉底） */
+for (var i = 0; i <= 6; i++) {
+  var gx = X0 + i * QW;
+  el('line', {x1:gx, y1:268, x2:gx, y2:820, stroke:INK, 'stroke-width':.6, opacity:.22, 'stroke-dasharray':'2 6'});
+}
+
+/* 尺脊：本页唯一强调线 */
+el('line', {id:'sample-focus', x1:X0, y1:250, x2:X1, y2:250, stroke:INK, 'stroke-width':2});
+for (var i = 0; i <= 6; i++) {
+  var tx = X0 + i * QW;
+  el('line', {x1:tx, y1:250, x2:tx, y2:264, stroke:INK80, 'stroke-width':1});
+  if (i < 6) {
+    var mx = tx + QW / 2;
+    el('line', {x1:mx, y1:250, x2:mx, y2:257, stroke:INK, 'stroke-width':.5, opacity:.5});
+    txt(tx + QW / 2, 236, QLABELS[i], {'font-family':MONO, 'font-size':'var(--type-meta)', 'letter-spacing':2, 'text-anchor':'middle', fill:INK45});
+  }
+}
+
+/* ---------- 泳道分隔线 ---------- */
+[455, 625].forEach(function(y){
+  el('line', {x1:X0, y1:y, x2:X1, y2:y, stroke:INK, 'stroke-width':.6, opacity:.2});
+});
+
+/* ---------- 泳道标签列（x150–300） ---------- */
+var LANES = [
+  {no:'L1', en:'MODEL',  cn:'模型层', cy:360},
+  {no:'L2', en:'DATA',   cn:'数据层', cy:540},
+  {no:'L3', en:'APPS',   cn:'应用层', cy:720}
+];
+LANES.forEach(function(L){
+  txt(150, L.cy-8, L.no + ' · ' + L.en, {'font-family':MONO, 'font-size':'var(--type-meta)', 'letter-spacing':2, fill:INK});
+  txt(150, L.cy+22, L.cn, {'font-family':SANS, 'font-weight':300, 'font-size':'var(--type-body-small)', fill:INK70});
+  el('line', {x1:296, y1:L.cy, x2:328, y2:L.cy, stroke:INK, 'stroke-width':.8, opacity:.4});
+});
+
+/* ---------- span 条与里程碑 ---------- */
+function span(x1, x2, cy, en, cn, filled, cnDx) {
+  el('rect', {x:x1, y:cy-18, width:x2-x1, height:36,
+    fill: filled ? 'url(#hatch24)' : 'var(--paper-panel)', stroke:INK80, 'stroke-width':1.2});
+  el('line', {x1:x1, y1:cy-28, x2:x1, y2:cy+28, stroke:INK, 'stroke-width':1, opacity:.7});
+  el('line', {x1:x2, y1:cy-28, x2:x2, y2:cy+28, stroke:INK, 'stroke-width':1, opacity:.7});
+  txt((x1+x2)/2, cy+5, en, {'font-family':MONO, 'font-size':'var(--type-meta)', 'letter-spacing':2, 'text-anchor':'middle', fill:INK});
+  txt(x1+2+(cnDx||0), cy-34, cn, {'font-family':SANS, 'font-weight':300, 'font-size':'var(--type-body-small)', fill:INK70});
+}
+function milestone(x, cy, en, cn) {
+  el('circle', {cx:x, cy:cy, r:8, fill:'var(--paper)', stroke:INK80, 'stroke-width':1.2});
+  el('circle', {cx:x, cy:cy, r:3, fill:INK});
+  el('circle', {cx:x, cy:cy, r:13, fill:'none', stroke:INK, 'stroke-width':.6, opacity:.35});
+  txt(x, cy-30, en, {'font-family':MONO, 'font-size':'var(--type-micro-secondary)', 'letter-spacing':2, 'text-anchor':'middle', fill:INK});
+  txt(x, cy+46, cn, {'font-family':SANS, 'font-weight':300, 'font-size':'var(--type-label)', 'text-anchor':'middle', fill:INK70});
+}
+function q(n) { return X0 + n * QW; }   /* 季度边界 x（0–6） */
+
+/* L1 模型层 */
+span(q(0),   q(2),   360, 'V1 · BASE MODEL',  '基座模型 v1 上线', true);
+span(q(2),   q(4),   360, 'V2 · FINE-TUNE',   '微调 v2 灰度', false);
+milestone(q(4.5), 360, 'STRESS 10K', '万级语料压测');
+
+/* L2 数据层 */
+span(q(1),   q(3),   540, 'PIPELINE-2',       '第二条管线接入', false);
+span(q(3),   q(6),   540, 'CLEANROOM CERT',   '清洗间认证', true, 90);
+milestone(q(3), 540, 'FIRST PIPE', '首个数据管线交付');
+
+/* L3 应用层 */
+span(q(0),   q(3),   720, 'CORPUS BASE',      '语料底座', true);
+span(q(4),   q(6),   720, 'MULTIMODAL',       '多模态融合', false);
+milestone(q(3.5), 720, 'AUTO EVAL', '评测自动化');
+
+/* ---------- 底部刻度注 ---------- */
+txt(960, 856, 'AI PRODUCT · MODEL / DATA / APPS SWIMLANE ROADMAP — ALL DATA FICTIONAL',
+  {'font-family':MONO, 'font-size':'var(--type-micro-secondary)', 'letter-spacing':3, 'text-anchor':'middle', fill:INK45});
+
+stageFit();
+</script>
+<script type="application/json" id="xp-surface-recipe">{"theme":"hermes-orange","color_name":"orange","layout_code":"b3","title":"layout-b3 · 多泳道路线图 · AI 产品","layout":"paper-ink.temporal.swimlane-roadmap","page_role":"sequence","canvas":{"token":"paper","value":"#f2efe9","reason":"常规内容页在纸面上建立层级。"},"surface_profile":"process-axis","surfaces":[{"role":"base-layout","material":"paper-plane","fill":"#f2efe9","stack":0},{"role":"roadmap-span","material":"top-white","fill":"#ffffff","stack":2,"shadow":"none"},{"role":"focus-marker","material":"accent","fill":"#d95e00","stack":3}],"accent":{"value":"#d95e00","semantic_channel":"当前步骤、终点或同一序列编号","furniture":"左上第一行 doc-kicker 固定墨黑，第二行 doc-title 使用当前主题色；folio 继续按该页画布与原配方处理。","neutral_exceptions":["普通英文标签","轴名","层名","结构编号","MODEL","非当前数据"],"furniture_mode":"black-first-theme-second","folio_mode":"accent"},"border_policy":"主体 1px 墨线；唯一焦点可用 2px 橙线，所有容器方角。","shadow_policy":"无投影；轴线、轨道、节点属于同一纸面。","noise_policy":"由主题统一提供唯一一层约 6% 黑色 fractal-noise；页面不得自带 noise 节点；浅色页 multiply，墨面可 overlay。","reference_evidence":{"file":"ai_studio_code (12).html","cards":["card-2","card-5","card-6"],"rule":"流程只保留一条墨色主轴；同一序列的编号可以重复使用同一强调色通道。"},"acceptance":["强调色只落一个语义通道；同一序列可重复，但不得扩散到结构元数据。","纯白只用于 top-white，不能替代默认纸面。","缩略图必须从该主题独立 frame 的实际渲染重建。"],"status":"recipe-ready","surface_bindings":[{"selector":"#draw > g > rect[fill=\"var(--paper-panel)\"]","expected_count":3,"role":"roadmap-span","material":"top-white","fill":"#ffffff","stack":2,"shadow":"none"}],"surface_binding_reason":"真实浏览器 DOM 审计后锁定的稳定 selector；expected_count 是逐页门禁。"}</script>
+<script src="../../catalog-surface.js" data-catalog-theme-surface="catalog-theme-recipes-v1"></script>
+<script src="../../catalog-typography.js" data-catalog-typography="accent-english-title-match-v1"></script>
+</body>
+</html>

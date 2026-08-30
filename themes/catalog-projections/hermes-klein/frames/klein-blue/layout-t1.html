@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-runtime="wise-ppt-specimen" data-typography-mode="all-sans" data-theme="paper-ink" data-wise-catalog-fonts="true" data-page-id="gallery-ai-t1" data-page-role="sequence" data-theme-id="klein-blue" data-surface-source="catalog-theme-recipes-v1" data-xp-recipe-id="klein-blue:t1" data-xp-surface-profile="approved-process-axis" data-xp-recipe-status="approved" data-xp-frame-kind="custom-redraw">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>v3 白橙 · T1 五步生产编排链（规律版）</title>
+<link rel="icon" href="data:,">
+<script src="../../../../../runtime/stage-fit.js"></script>
+<link rel="stylesheet" href="../../../../../themes/engine/assets/design-tokens.css">
+<link rel="stylesheet" href="../../../../../themes/packages/paper-ink/theme.css">
+<link rel="stylesheet" href="../../../../../themes/packages/hermes-orange/theme.css">
+<link rel="stylesheet" href="../../../../../themes/packages/klein-blue/theme.css">
+<link rel="stylesheet" href="../../../../../themes/engine/assets/catalog-fonts.css" data-wise-catalog-fonts="true">
+<link rel="stylesheet" href="../../../../../themes/engine/assets/slide-components.css">
+<link rel="stylesheet" href="../../../../../references/shell.css">
+<style data-catalog-source-marker="hermes-t1">
+  @font-face {
+    font-family: 'Oswald Replica';
+    src: url('../../../../../themes/engine/fonts/catalog/Oswald-Bold-Latin.catalog.woff2') format('woff2');
+    font-style: normal;
+    font-weight: 700;
+    font-display: block;
+  }
+
+  /* 白橙规律见 RULES.md：家具=橙色 Oswald 粗体小标；步骤数字=Oswald 橙；
+     终点=整页唯一墨块（终端块语言）；轴与构造线保持墨色。 */
+  :root {
+    --xp-paper: #f2efe9;
+    --xp-outside: #e5e2dc;
+    --xp-recessed: #e4dfd5;
+    --xp-top: #ffffff;
+    --xp-ink: #1a1a1a;
+    --xp-accent: #002fa7;
+    --xp-serif: 'Han Serif Catalog', 'Han Serif', serif;
+    --wp-color-surface-canvas: var(--xp-paper);
+    --wp-color-surface-recessed: var(--xp-recessed);
+    --wp-color-primary: var(--xp-ink);
+    --wp-color-functional: var(--xp-ink);
+    --wp-color-body: rgba(26, 26, 26, 0.72);
+    --wp-color-metadata: rgba(26, 26, 26, 0.45);
+    --wp-color-divider: rgba(26, 26, 26, 0.2);
+    --wp-color-construction: rgba(26, 26, 26, 0.12);
+    --wp-color-focus: var(--xp-accent);
+    --wp-private-identity-accent: var(--xp-ink);
+  }
+  body { background: var(--xp-outside); }
+
+  /* 左上两行标题与左下角页码署名：橙色 Oswald 粗体小标。 */
+  #v3-t1 .doc.tl {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    width: max-content;
+    white-space: normal;
+    line-height: 1;
+    letter-spacing: 0;
+    text-transform: none;
+  }
+  #v3-t1 .doc-kicker,
+  #v3-t1 .doc-title,
+  #v3-t1 .folio {
+    font-family: 'Oswald Replica', 'Han Sans Catalog', 'Han Sans', 'PingFang SC', sans-serif;
+    font-size: var(--type-body-small);
+    font-weight: 700;
+    line-height: 1.25;
+    letter-spacing: .15em;
+    text-transform: uppercase;
+    color: var(--xp-accent);
+  }
+
+  /* 底部论点：宋体粗，字号沿用生产规格 */
+  #v3-t1 .caption { font-family: var(--xp-serif); font-weight: 700; }
+  #t1-focus { color: var(--xp-accent); }
+
+
+  #v3-t1 .scene { position: absolute; inset: 0; z-index: 1; transform: translateY(-62px); }
+</style>
+<link rel="stylesheet" href="../../catalog-surface.css" data-catalog-theme-surface="catalog-theme-recipes-v1">
+<link rel="stylesheet" href="../../title-furniture.css" data-catalog-title-furniture="black-first-theme-second-v1">
+</head>
+<body class="slide">
+<div id="v3-t1" class="stage" data-layout-source="experimental-redraw" data-baseline-layout-id="paper-ink.flow.five-step-production" data-catalog-source-marker="page-recipe">
+  <div class="doc tl"><span class="doc-kicker">PPT 标题</span><span class="doc-title">页面标题</span></div>
+  <div class="folio">页码 / 总页数 — BY @歪斯Wise</div>
+
+  <svg class="scene" width="1920" height="1080" viewBox="0 0 1920 1080" role="img" aria-label="从原始资料到网页放映的五步生产编排链">
+    <defs>
+      <filter id="xp-hard" x="-30%" y="-30%" width="160%" height="160%">
+        <feDropShadow dx="10" dy="10" stdDeviation="0" flood-color="#002fa7" flood-opacity="1"/>
+      </filter>
+    </defs>
+    <g id="t1-workflow"></g>
+  </svg>
+
+  <div class="caption">先理解内容，再安排<span id="t1-focus">重点、层级与关系</span>。</div>
+</div>
+
+<script src="../../../../../themes/packages/paper-ink/assets/particles.js"></script>
+<script>
+var NS = 'http://www.w3.org/2000/svg';
+var INK = 'var(--xp-ink)', INK70 = 'rgba(26,26,26,.7)', INK45 = 'rgba(26,26,26,.45)';
+var PAPER = 'var(--xp-paper)', RECESSED = 'var(--xp-recessed)', TOP = 'var(--xp-top)', ACCENT = 'var(--xp-accent)';
+var SANS = 'var(--sans)', MONO = 'var(--mono)', OSWALD = "'Oswald Replica', 'Arial Narrow', sans-serif", SERIF = 'var(--xp-serif)';
+var G = document.getElementById('t1-workflow');
+function el(tag, attrs, parent) { var n = document.createElementNS(NS, tag); Object.keys(attrs || {}).forEach(function (k) { n.setAttribute(k, attrs[k]); }); (parent || G).appendChild(n); return n; }
+function txt(text, x, y, attrs, parent) { var n = el('text', Object.assign({ x: x, y: y, fill: INK, 'font-family': SANS, 'font-weight': 300 }, attrs || {}), parent); n.textContent = text; return n; }
+function line(x1, y1, x2, y2, attrs, parent) { return el('line', Object.assign({ x1: x1, y1: y1, x2: x2, y2: y2, stroke: INK, 'stroke-width': 1.1 }, attrs || {}), parent); }
+
+/* 基线坐标：layout-t1.html（paper-ink.flow.five-step-production），全部保留。 */
+G.setAttribute('transform', 'translate(42 0)');
+var C = [250, 580, 910, 1240, 1570], BY = 580;
+
+/* —— 轴线与箭头：结构线保持墨色 —— */
+var axis = el('g', { 'data-layout-role': 'axis' });
+line(190, BY, 1730, BY, { stroke: INK45, 'stroke-width': 1 }, axis);
+C.forEach(function (x) {
+  line(x, BY - 9, x, BY + 9, { stroke: INK, 'stroke-width': 1.2 }, axis);
+  el('circle', { cx: x, cy: BY, r: 3.6, fill: INK }, axis);
+});
+for (var i = 0; i < C.length - 1; i++) {
+  var a = C[i] + 88, b = C[i + 1] - 88;
+  line(a, BY, b, BY, { stroke: 'rgba(26,26,26,.8)', 'stroke-width': 1.25 }, axis);
+  el('path', { d: 'M ' + (b - 11) + ' ' + (BY - 6) + ' L ' + b + ' ' + BY + ' L ' + (b - 11) + ' ' + (BY + 6), fill: 'none', stroke: 'rgba(26,26,26,.8)', 'stroke-width': 1.25 }, axis);
+}
+
+/* —— 工件：白前景线稿 + 承托灰；唯一墨块=终点生成物（终端块语言）—— */
+var artifacts = el('g', { 'data-layout-role': 'artifacts' });
+
+var doc = el('g', { transform: 'translate(0 -3)' }, artifacts);
+el('path', { d: 'M 188 330 L 276 330 L 312 366 L 312 496 L 188 496 Z', fill: TOP, stroke: INK, 'stroke-width': 1.3, filter: 'url(#xp-hard)' }, doc);
+el('path', { d: 'M 276 330 L 276 366 L 312 366', fill: 'none', stroke: INK, 'stroke-width': 1 }, doc);
+[390, 418, 446].forEach(function (y, j) { line(212, y, j === 1 ? 282 : 268, y, { stroke: INK45, 'stroke-width': 1.1 }, doc); });
+el('rect', { x: 292, y: 346, width: 14, height: 14, fill: ACCENT }, doc);
+
+var structure = el('g', { transform: 'translate(0 14)' }, artifacts);
+[0, 1, 2].forEach(function (j) {
+  var x = 518 + j * 18, y = 354 - j * 14;
+  el('rect', { x: x, y: y, width: 100, height: 112, fill: j === 0 ? RECESSED : (j === 1 ? PAPER : TOP), stroke: j === 2 ? INK : INK45, 'stroke-width': j === 2 ? 1.3 : 1 }, structure);
+  line(x + 18, y + 28, x + 72, y + 28, { stroke: j === 2 ? INK70 : INK45, 'stroke-width': 1 }, structure);
+  line(x + 18, y + 56, x + 62, y + 56, { stroke: j === 2 ? INK70 : INK45, 'stroke-width': 1 }, structure);
+});
+
+var judge = el('g', {}, artifacts); /* 中心已在 410 */
+el('circle', { cx: 910, cy: 410, r: 82, fill: TOP, stroke: INK, 'stroke-width': 1.3 }, judge);
+for (var deg = 0; deg < 360; deg += 30) {
+  var rad = deg * Math.PI / 180;
+  line(910 + Math.cos(rad) * 60, 410 + Math.sin(rad) * 60, 910 + Math.cos(rad) * 73, 410 + Math.sin(rad) * 73, { stroke: INK45, 'stroke-width': 1 }, judge);
+}
+line(910, 410, 954, 378, { stroke: ACCENT, 'stroke-width': 3 }, judge);
+el('circle', { cx: 910, cy: 410, r: 5, fill: ACCENT }, judge);
+
+var compose = el('g', { transform: 'translate(0 5)' }, artifacts);
+[[1168, 344, 74, 54], [1252, 344, 58, 54], [1168, 408, 58, 58], [1236, 408, 74, 58]].forEach(function (r, j) {
+  el('rect', { x: r[0], y: r[1], width: r[2], height: r[3], fill: j === 1 || j === 3 ? TOP : RECESSED, stroke: j === 1 || j === 3 ? INK : INK45, 'stroke-width': j === 1 || j === 3 ? 1.2 : 1 }, compose);
+});
+
+var deck = el('g', { transform: 'translate(0 9)' }, artifacts);
+el('rect', { x: 1492, y: 338, width: 156, height: 126, fill: INK, stroke: INK, 'stroke-width': 1.3, style: 'filter: drop-shadow(8px 10px 10px rgba(26,26,26,.16))' }, deck);
+el('rect', { x: 1492, y: 338, width: 6, height: 126, fill: ACCENT }, deck);
+el('rect', { x: 1506, y: 348, width: 132, height: 106, fill: TOP, stroke: TOP, 'stroke-width': 1 }, deck);
+line(1524, 376, 1620, 376, { stroke: INK45, 'stroke-width': 1.2 }, deck);
+line(1524, 404, 1594, 404, { stroke: INK45, 'stroke-width': 1.2 }, deck);
+el('circle', { cx: 1530, cy: 430, r: 4, fill: ACCENT }, deck);
+
+/* —— 步骤：Oswald 橙色大数字（参考工作流卡）+ Oswald 英文名；中文保持细体 —— */
+var steps = [['01', 'ANALYSE', '先理解内容', 'RAW MATERIAL'], ['02', 'STRUCTURE', '梳理叙事', 'NARRATIVE'], ['03', 'JUDGE', '判断版式', 'LAYOUT'], ['04', 'COMPOSE', '组合组件', 'COMPONENTS'], ['05', 'DELIVER', '生成网页 PPT', 'PLAYBACK']];
+steps.forEach(function (s, j) {
+  var x = C[j], item = el('g', { 'data-repeat-unit': 'workflow-step', 'data-bind-index': j });
+  txt(s[0], x, BY + 84, { 'font-family': OSWALD, 'font-weight': 700, 'font-size': '48px', 'text-anchor': 'middle', fill: ACCENT }, item);
+  txt(s[1], x, BY + 122, { 'font-family': OSWALD, 'font-weight': 700, 'font-size': 'var(--type-label)', 'letter-spacing': 2, 'text-anchor': 'middle', fill: INK70 }, item);
+  txt(s[2], x, BY + 152, { 'font-size': 'var(--type-body-small)', 'text-anchor': 'middle', fill: INK70 }, item);
+  txt(s[3], x, 806, { 'font-family': MONO, 'font-weight': 700, 'font-size': 'var(--type-meta)', 'letter-spacing': 1.8, 'text-anchor': 'middle', fill: INK45 }, item);
+});
+stageFit();
+</script>
+<script type="application/json" id="xp-surface-recipe">{"theme":"klein-blue","color_name":"blue","layout_code":"t1","title":"layout-t1 · 五步生产编排链 · I1 登记变体","layout":"paper-ink.flow.five-step-production","page_role":"sequence","canvas":{"token":"white","value":"#ffffff","reason":"custom-redraw 的已定设计意图；视觉由该页面源码独立实现，ledger 只如实登记。"},"surface_profile":"approved-process-axis","surfaces":[{"role":"workflow-field","material":"top-white","fill":"#ffffff","stack":1},{"role":"workflow-axis-and-final-block","material":"ink-line","fill":"#1a1a1a","stack":2},{"role":"focus-marker","material":"accent","fill":"#002fa7","stack":3}],"accent":{"value":"#002fa7","semantic_channel":"五步编号作为同一流程语义通道；终点保持墨色","furniture":"左上第一行 doc-kicker 固定墨黑，第二行 doc-title 使用当前主题色；folio 继续按该页画布与原配方处理。","neutral_exceptions":["普通英文标签","轴名","层名","结构编号","MODEL","非当前数据"],"furniture_mode":"black-first-theme-second","folio_mode":"accent"},"border_policy":"主体 1px 墨线；唯一焦点可用 2px 橙线，所有容器方角。","shadow_policy":"默认无影；仅唯一被举起的主证据允许一次 10px 零模糊橙色硬影。","noise_policy":"由主题统一提供唯一一层约 6% 黑色 fractal-noise；页面不得自带 noise 节点；浅色页 multiply，墨面可 overlay。","reference_evidence":{"file":"orange-t1.html","cards":["approved-current-render"],"rule":"白色画布、墨色主轴、纯白顶层对象和单一墨色终点；重复橙编号属于同一流程语义。","user_feedback":"橙色 T1 已通过。"},"acceptance":["画布和被举起对象保持纯白；主轴与箭头为墨色。","五个橙色步骤编号属于同一语义通道，不按 DOM 数量误判为五个焦点。","保留已通过结构与表面，不改成通用流程模板。"],"status":"approved","surface_bindings":[],"surface_binding_reason":"custom-redraw 不加载共享 surface runtime；材料已在独立源码内显式实现。"}</script>
+<script src="../../catalog-typography.js" data-catalog-typography="accent-english-title-match-v1"></script>
+<script data-xp-custom-page-ready="true">(function(){var r=document.documentElement,s=document.querySelector(".stage");r.dataset.xpRecipeReady="custom";r.dataset.catalogSurfaceReady="true";r.dataset.xpRecipeStatus="approved";r.dataset.xpSurfaceProfile="approved-process-axis";r.dataset.xpCanvas="white";r.dataset.xpTitleFurniture="black-first-theme-second";if(s){s.dataset.surfaceRebuild="custom-page-v3";s.dataset.surfaceFocusCount="0";}})();</script>
+</body>
+</html>

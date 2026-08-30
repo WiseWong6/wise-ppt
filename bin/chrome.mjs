@@ -15,7 +15,7 @@ function windowsCandidates(env) {
 function platformCandidates(env = process.env, platform = process.platform) {
   if (platform === "darwin") return ["/Applications/Google Chrome.app/Contents/MacOS/Google Chrome"];
   if (platform === "win32") return windowsCandidates(env);
-  throw new WisePPTError(`Wise PPT \u4EC5\u652F\u6301 macOS \u548C Windows\uFF0C\u5F53\u524D\u5E73\u53F0\uFF1A${platform}`);
+  throw new WisePPTError(`Wise PPT 仅支持 macOS 和 Windows，当前平台：${platform}`);
 }
 function pathEntries(env = process.env, platform = process.platform) {
   return String(env.PATH || "").split(path.delimiter).filter(Boolean).map((entry) => path.resolve(entry));
@@ -39,12 +39,12 @@ async function resolveCandidate(candidate, env, platform) {
 function parseChromeVersion(product, binary) {
   const text = String(product || "").trim();
   if (!/(Google Chrome|Chrome for Testing|Chrome\/)/i.test(text)) {
-    throw new WisePPTError(`\u53EA\u652F\u6301 Google Chrome\uFF0C\u68C0\u6D4B\u5230\uFF1A${text || binary}`);
+    throw new WisePPTError(`只支持 Google Chrome，检测到：${text || binary}`);
   }
   const version = text.match(/(\d+)\.(\d+)\.(\d+)\.(\d+)/)?.[0];
   const major = Number.parseInt(version?.split(".")[0] || "", 10);
-  if (!Number.isInteger(major)) throw new WisePPTError(`\u65E0\u6CD5\u8BC6\u522B Chrome \u7248\u672C\uFF1A${text}`);
-  if (major < MIN_CHROME_MAJOR) throw new WisePPTError(`\u9700\u8981 Google Chrome >= ${MIN_CHROME_MAJOR}\uFF0C\u5F53\u524D ${version}`);
+  if (!Number.isInteger(major)) throw new WisePPTError(`无法识别 Chrome 版本：${text}`);
+  if (major < MIN_CHROME_MAJOR) throw new WisePPTError(`需要 Google Chrome >= ${MIN_CHROME_MAJOR}，当前 ${version}`);
   return { product: text, version, major };
 }
 async function probeChromeVersion(binary) {
@@ -63,7 +63,7 @@ async function probeChromeVersion(binary) {
           }
           await sleep(100);
         }
-        throw new WisePPTError(`CDP \u4E0D\u53EF\u8FBE: 127.0.0.1:${port}`);
+        throw new WisePPTError(`CDP 不可达: 127.0.0.1:${port}`);
       }
     });
   } finally {
@@ -74,24 +74,24 @@ async function probeChromeVersion(binary) {
 async function readChromeVersion(binary, platform) {
   if (platform === "win32") return probeChromeVersion(binary);
   const result = spawnSync(binary, ["--version"], { encoding: "utf8", windowsHide: true, timeout: 15e3 });
-  if (result.error) throw new WisePPTError(`\u65E0\u6CD5\u8FD0\u884C Google Chrome: ${binary}: ${result.error.message}`);
+  if (result.error) throw new WisePPTError(`无法运行 Google Chrome: ${binary}: ${result.error.message}`);
   const text = `${result.stdout || ""}
 ${result.stderr || ""}`.trim();
-  if (result.status !== 0) throw new WisePPTError(`Google Chrome --version \u5931\u8D25: ${text || `exit=${result.status}`}`);
+  if (result.status !== 0) throw new WisePPTError(`Google Chrome --version 失败: ${text || `exit=${result.status}`}`);
   return parseChromeVersion(text, binary);
 }
 async function discoverChrome(options = {}) {
   const env = options.env || process.env;
   const platform = options.platform || process.platform;
   const override = env.WISE_PPT_CHROME;
-  if (override && !path.isAbsolute(override)) throw new WisePPTError("WISE_PPT_CHROME \u5FC5\u987B\u662F Chrome \u53EF\u6267\u884C\u6587\u4EF6\u7EDD\u5BF9\u8DEF\u5F84");
+  if (override && !path.isAbsolute(override)) throw new WisePPTError("WISE_PPT_CHROME 必须是 Chrome 可执行文件绝对路径");
   const candidates = override ? [override] : platformCandidates(env, platform);
   for (const candidate of candidates) {
     const binary = await resolveCandidate(candidate, env, platform);
     if (!binary) continue;
     return { binary, ...await readChromeVersion(binary, platform), source: override ? "WISE_PPT_CHROME" : "platform" };
   }
-  throw new WisePPTError("\u627E\u4E0D\u5230 Google Chrome\u3002\u8BF7\u5B89\u88C5 Chrome\uFF0C\u6216\u8BBE\u7F6E WISE_PPT_CHROME \u4E3A\u53EF\u6267\u884C\u6587\u4EF6\u7EDD\u5BF9\u8DEF\u5F84\u3002");
+  throw new WisePPTError("找不到 Google Chrome。请安装 Chrome，或设置 WISE_PPT_CHROME 为可执行文件绝对路径。");
 }
 async function processAlive(child) {
   if (child.exitCode !== null || child.signalCode !== null) return false;
@@ -176,7 +176,7 @@ async function startChrome({ binary, profileDir, logPath }) {
       await sleep(100);
     }
     const detail = (await readFile(logPath, "utf8").catch(() => "")).trim().split(/\r?\n/).slice(-30).join("\n");
-    throw new WisePPTError(`Chrome CDP \u672A\u542F\u52A8${detail ? `\uFF1A
+    throw new WisePPTError(`Chrome CDP 未启动${detail ? `：
 ${detail}` : ""}`);
   } catch (error) {
     await stopProcess(child);
@@ -193,7 +193,7 @@ async function transientChromeError(error, logPath, attempt, attempts) {
   const detail = (await readFile(logPath, "utf8").catch(() => "")).trim().split(/\r?\n/).slice(-30).join("\n");
   if (!detail) return error;
   return new WisePPTError(`${error.message}
-Chrome \u5C1D\u8BD5 ${attempt}/${attempts} \u65E5\u5FD7\uFF1A
+Chrome 尝试 ${attempt}/${attempts} 日志：
 ${detail}`);
 }
 async function runChromeTask({
@@ -203,7 +203,7 @@ async function runChromeTask({
   attempts = 2,
   start = startChrome
 }) {
-  if (!Number.isInteger(attempts) || attempts < 1) throw new WisePPTError("Chrome \u5C1D\u8BD5\u6B21\u6570\u5FC5\u987B\u662F\u6B63\u6574\u6570");
+  if (!Number.isInteger(attempts) || attempts < 1) throw new WisePPTError("Chrome 尝试次数必须是正整数");
   let lastError;
   for (let attempt = 1; attempt <= attempts; attempt += 1) {
     const profileDir = path.join(temporaryDir, `profile-${attempt}`);

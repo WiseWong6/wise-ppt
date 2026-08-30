@@ -9,7 +9,7 @@ import { inspectFonts } from "./fonts.mjs";
 async function doctor(root) {
   const major = Number.parseInt(process.versions.node.split(".")[0], 10);
   if (!SUPPORTED_NODE_MAJORS.includes(major)) {
-    throw new WisePPTError(`\u4EC5\u652F\u6301 Node 22/24 LTS\uFF0C\u5F53\u524D ${process.version}`);
+    throw new WisePPTError(`仅支持 Node 22/24 LTS，当前 ${process.version}`);
   }
   const bundle = await verifyBundle(root);
   const chrome = await discoverChrome();
@@ -29,7 +29,7 @@ async function doctor(root) {
       cache: fonts.cacheRoot,
       ready: fonts.records.length - missing.length,
       missing,
-      note: missing.length ? "build \u9996\u6B21\u8FD0\u884C\u65F6\u5C06\u4E0B\u8F7D\u7F3A\u5931\u5B57\u4F53" : "\u5B57\u4F53\u5DF2\u53EF\u79BB\u7EBF\u4F7F\u7528"
+      note: missing.length ? "build 首次运行时将下载缺失字体" : "字体已可离线使用"
     },
     temp: os.tmpdir()
   };

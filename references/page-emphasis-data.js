@@ -429,5 +429,15 @@ window.WISE_PPT_PAGE_EMPHASIS = Object.freeze({
     "kind": "relationship",
     "access": "semantic-focus",
     "strategy": "默认无额外焦点；可强调关键证据、涨幅徽记、异常项"
+  },
+  "U3": {
+    "kind": "relationship",
+    "access": "semantic-focus",
+    "strategy": "默认无额外焦点；可强调当前动作、转化支点、增量结果"
+  },
+  "W1": {
+    "kind": "relationship",
+    "access": "semantic-focus",
+    "strategy": "默认无额外焦点；可强调中枢、支线、局部"
   }
 });

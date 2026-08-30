@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-runtime="wise-ppt-specimen" data-typography-mode="all-sans" data-wise-catalog-fonts="true" data-page-id="gallery-ai-d5" data-catalog-source-marker="orange" data-page-role="orient" data-theme="paper-ink" data-layout="paper-ink.scaffold.section-divider" data-layout-source="gallery" data-theme-id="hermes-orange" data-surface-source="catalog-theme-recipes-v1" data-xp-recipe-id="hermes-orange:d5" data-xp-surface-profile="impact-editorial" data-xp-recipe-status="recipe-ready" data-xp-frame-kind="custom-redraw">
+<head>
+<meta charset="UTF-8">
+<title>layout-d5 · 章节隔页 · 工程化思维</title>
+<script src="../../../../../runtime/stage-fit.js"></script>
+<!--
+  纸墨线稿样张 · C6 章节隔页
+  @歪斯Wise「AI 工程化实战」分享 · 第二章
+  版式纪律（layouts C6）：超大空心编号 + 章节名 + mono 导语；元素 ≤3；留白 >60%；无 FIG、无 caption
+-->
+<link rel="stylesheet" href="../../../../../themes/engine/assets/design-tokens.css">
+<link rel="stylesheet" href="../../../../../themes/packages/paper-ink/theme.css">
+<link rel="stylesheet" href="../../../../../themes/packages/hermes-orange/theme.css">
+<link rel="stylesheet" href="../../../../../themes/packages/klein-blue/theme.css">
+<link rel="stylesheet" href="../../../../../themes/engine/assets/catalog-fonts.css" data-wise-catalog-fonts="true">
+<link rel="stylesheet" href="../../../../../themes/engine/assets/slide-components.css">
+<link rel="stylesheet" href="../../../../../references/shell.css">
+<style>
+  svg.scene { position: absolute; inset: 0; z-index: 1; }
+  .chapter {
+    position: absolute; left: 794px; top: 449.8px;
+    font-family: var(--serif); font-weight: var(--wp-weight-regular);
+    font-size: var(--type-hero); letter-spacing: .1em;
+    color: var(--ink);
+    z-index: 5;
+  }
+  .lead {
+    position: absolute; left: 798px; top: 573.8px;
+    font-family: var(--mono); font-weight: 400;
+    font-size: var(--type-meta); letter-spacing: .3em;
+    color: color-mix(in srgb, var(--ink) 50%, transparent);
+    text-transform: uppercase;
+    z-index: 5;
+  }
+</style>
+
+<style data-catalog-source-style="v3-d5-orange">
+  @font-face {
+    font-family: 'Oswald Replica';
+    src: url('../../../../../themes/engine/fonts/catalog/Oswald-Bold-Latin.catalog.woff2') format('woff2');
+    font-style: normal;
+    font-weight: 700;
+    font-display: block;
+  }
+  :root,
+  :root[data-theme-id="hermes-orange"] {
+    --xp-paper: #f2efe9;
+    --xp-outside: #e5e2dc;
+    --xp-ink: #1a1a1a;
+    --xp-accent: #d95e00;
+    --xp-serif: 'Han Serif Catalog', 'Han Serif', serif;
+    --wp-color-surface-canvas: var(--xp-paper);
+    --wp-color-surface-recessed: #e4dfd5;
+    --wp-color-surface-panel: rgba(255,255,255,.4);
+    --wp-color-primary: var(--xp-ink);
+    --wp-color-functional: var(--xp-ink);
+    --wp-color-body: rgba(26,26,26,.72);
+    --wp-color-metadata: rgba(26,26,26,.45);
+    --wp-color-divider: rgba(26,26,26,.2);
+    --wp-color-construction: rgba(26,26,26,.12);
+    --wp-color-focus: var(--xp-accent);
+    --wp-private-identity-accent: var(--xp-ink);
+  }
+  body { background: var(--xp-outside); }
+  #v3-d5-orange.stage { background: var(--xp-paper); }
+  #v3-d5-orange .doc.tl {
+    display: flex; flex-direction: column; gap: 8px;
+    width: max-content; white-space: normal;
+    line-height: 1; letter-spacing: 0; text-transform: none;
+  }
+  #v3-d5-orange .doc-kicker,
+  #v3-d5-orange .doc-title,
+  #v3-d5-orange .folio {
+    font-family: 'Oswald Replica', 'Han Sans Catalog', 'Han Sans', 'PingFang SC', sans-serif;
+    font-size: var(--type-body-small);
+    font-weight: 700;
+    line-height: 1.25;
+    letter-spacing: .15em;
+    text-transform: uppercase;
+    color: var(--xp-ink);
+  }
+
+</style>
+<link rel="stylesheet" href="../../catalog-surface.css" data-catalog-theme-surface="catalog-theme-recipes-v1">
+<link rel="stylesheet" href="../../title-furniture.css" data-catalog-title-furniture="black-first-theme-second-v1">
+</head>
+<body class="slide">
+<div id="v3-d5-orange" class="stage" data-template-id="D5" data-block-id="gallery-primary" data-renderer-kind="typography" data-component-source="native" data-component-id="native.paper-ink.scaffold.section-divider.section-lockup" data-content-ref="example.d5" data-catalog-source-marker="page-recipe">
+  <div class="doc tl" data-template-part="support" data-template-slot="support" data-template-slot-kind="text"><span class="doc-kicker">PPT 标题</span><span class="doc-title">页面标题</span></div>
+  <div class="folio" data-template-part="folio">页码 / 总页数 — BY @歪斯Wise</div>
+
+  <svg class="scene" data-template-part="illustration" data-template-slot="illustration" data-template-slot-kind="illustration" width="1920" height="1080" viewBox="0 0 1920 1080">
+    <g id="draw"></g>
+  </svg>
+
+  <div class="chapter" data-template-part="primary" data-template-slot="primary" data-template-slot-kind="text">工程化思维</div>
+  <div class="lead" data-template-part="lead" data-template-slot="lead" data-template-slot-kind="text">Chapter 02 — From Model to Product</div>
+</div>
+
+<script src="../../../../../themes/packages/paper-ink/assets/particles.js"></script>
+<script>
+var NS = 'http://www.w3.org/2000/svg';
+var INK = 'var(--ink)';
+var G = document.getElementById('draw');
+function el(tag, attrs) {
+  var e = document.createElementNS(NS, tag);
+  for (var k in attrs) e.setAttribute(k, attrs[k]);
+  G.appendChild(e); return e;
+}
+function txt(x, y, str, attrs) {
+  var t = el('text', Object.assign({x:x, y:y}, attrs||{}));
+  t.textContent = str; return t;
+}
+var MONO = 'var(--mono)';
+G = el('g', {transform:'translate(0 -88.2)'});
+
+/* ===== ① 超大空心章节编号（左侧，文字组在其右，测绘感） ===== */
+var t = txt(354, 714, '02', {'font-family':MONO, 'font-size':'var(--type-display-mark)', fill:'none', stroke:'var(--xp-ink)', 'stroke-width':1.2, opacity:.5});
+
+stageFit();
+</script>
+<script type="application/json" id="xp-surface-recipe">{"theme":"hermes-orange","color_name":"orange","layout_code":"d5","title":"layout-d5 · 章节隔页 · 工程化思维","layout":"paper-ink.scaffold.section-divider","page_role":"orient","canvas":{"token":"paper","value":"#f2efe9","reason":"Hermes D5 跟随 Klein D5：统一使用米色纸面，仅主题落点换成橙色。"},"surface_profile":"impact-editorial","surfaces":[{"role":"diagram-plane","material":"paper-plane","fill":"#f2efe9","stack":1},{"role":"structure","material":"ink-line","fill":"#1a1a1a","stack":2},{"role":"focus-marker","material":"accent","fill":"#d95e00","stack":3}],"accent":{"value":"#d95e00","semantic_channel":"当前章节或当前目录项","furniture":"左上第一行 doc-kicker 固定墨黑，第二行 doc-title 使用当前主题色；folio 继续按该页画布与原配方处理。","neutral_exceptions":["普通英文标签","轴名","层名","结构编号","MODEL","非当前数据"],"furniture_mode":"black-first-theme-second","folio_mode":"ink"},"border_policy":"主体 1px 墨线；唯一焦点可用 2px 橙线，所有容器方角。","shadow_policy":"无内部投影；整页场由大色面和排版建立冲击。","noise_policy":"由主题统一提供唯一一层约 6% 黑色 fractal-noise；页面不得自带 noise 节点；浅色页 multiply，墨面可 overlay。","reference_evidence":{"file":"ai_studio_code (3).html","cards":["slide-1","slide-5","slide-8","slide-12","slide-14"],"rule":"橙、蓝逐页同构：蓝色版式完全跟随橙色版式，仅将主题橙替换为 Klein 蓝。"},"acceptance":["强调色只落一个语义通道；同一序列可重复，但不得扩散到结构元数据。","纯白只用于 top-white，不能替代默认纸面。","缩略图必须从该主题独立 frame 的实际渲染重建。"],"status":"recipe-ready","surface_bindings":[],"surface_binding_reason":"custom-redraw 不加载共享 surface runtime；纸面、字体与线稿层级已在独立源码内显式实现。"}</script>
+<script src="../../catalog-typography.js" data-catalog-typography="accent-english-title-match-v1"></script>
+<script data-xp-custom-page-ready="true">(function(){var r=document.documentElement,s=document.querySelector(".stage");r.dataset.xpRecipeReady="custom";r.dataset.catalogSurfaceReady="true";r.dataset.xpRecipeStatus="recipe-ready";r.dataset.xpSurfaceProfile="impact-editorial";r.dataset.xpCanvas="paper";r.dataset.xpTitleFurniture="black-first-theme-second";if(s){s.dataset.surfaceRebuild="custom-page-v3";s.dataset.surfaceFocusCount="0";}})();</script>
+</body>
+</html>

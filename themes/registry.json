@@ -1,0 +1,34 @@
+{
+  "contract": "wise-ppt-theme-registry@1",
+  "default_theme_id": "paper-ink",
+  "themes": [
+    {
+      "theme_id": "paper-ink",
+      "name": "纸墨",
+      "definition": "themes/packages/paper-ink/theme.json"
+    },
+    {
+      "theme_id": "hermes-orange",
+      "name": "爱马仕橙",
+      "definition": "themes/packages/hermes-orange/theme.json",
+      "catalog_aliases": ["scheme-k-hermes"]
+    },
+    {
+      "theme_id": "klein-blue",
+      "name": "克莱因蓝",
+      "definition": "themes/packages/klein-blue/theme.json",
+      "catalog_aliases": ["scheme-l-klein"]
+    }
+  ],
+  "provider": {
+    "provider_id": "source-derived",
+    "contract": "wise-ppt-theme@3",
+    "path": "themes/providers/source-derived"
+  },
+  "catalog_projection": {
+    "contract": "wise-ppt-catalog-theme-projection@1",
+    "path": "themes/catalog-projections/hermes-klein",
+    "master_theme_id": "hermes-orange",
+    "derived_theme_ids": ["klein-blue"]
+  }
+}

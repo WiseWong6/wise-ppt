@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html data-theme-id="klein-blue" lang="zh-CN" data-runtime="wise-ppt-specimen" data-typography-mode="all-sans" data-page-id="gallery-ai-s1" data-page-role="explain" data-theme="paper-ink" data-layout="paper-ink.hierarchy.product-platform-architecture" data-layout-source="gallery" data-sample-focus-profile="none" data-sample-focus-members='[]' data-surface-source="catalog-theme-recipes-v1" data-xp-recipe-id="klein-blue:s1" data-xp-surface-profile="hierarchical-material-stack" data-xp-recipe-status="recipe-ready" data-xp-frame-kind="recipe-generated">
+<head>
+<meta charset="UTF-8">
+<title>layout-s1 · 产品平台架构图 · AI 产品五层架构</title>
+<script src="../../../../../runtime/stage-fit.js"></script>
+<link rel="stylesheet" href="../../../../../themes/engine/assets/design-tokens.css">
+<link rel="stylesheet" href="../../../../../themes/packages/paper-ink/theme.css">
+<link rel="stylesheet" href="../../../../../themes/packages/hermes-orange/theme.css">
+<link rel="stylesheet" href="../../../../../themes/packages/klein-blue/theme.css">
+<link rel="stylesheet" href="../../../../../themes/engine/assets/catalog-fonts.css" data-wise-catalog-fonts="true">
+<link rel="stylesheet" href="../../../../../themes/engine/assets/slide-components.css">
+<link rel="stylesheet" href="../../../../../references/shell.css">
+<style>
+  .architecture-slot {
+    position: absolute;
+    left: 150px;
+    width: 1620px;
+    /* 眉题底边(44+2×27.3≈99) 到 caption 顶边(1080−118−行高) 之间垂直居中 */
+    top: 99px;
+    bottom: 166px;
+    display: flex;
+    align-items: center;
+    z-index: 3;
+  }
+  .caption {
+    position: absolute; left: 0; right: 0; bottom: 118px;
+    text-align: center;
+    font-family: var(--sans); font-weight: 400;
+    font-size: var(--type-caption); letter-spacing: .04em;
+    color: var(--ink);
+    z-index: 5;
+  }
+</style>
+<link rel="stylesheet" href="../../catalog-surface.css" data-catalog-theme-surface="catalog-theme-recipes-v1">
+<link rel="stylesheet" href="../../title-furniture.css" data-catalog-title-furniture="black-first-theme-second-v1">
+</head>
+<body class="slide">
+<div class="stage" data-block-id="gallery-primary" data-renderer-kind="native-html" data-component-source="ppt-component-atlas" data-component-id="atlas.055.arch-platform" data-content-ref="example.s1" data-catalog-source-marker="page-recipe">
+  <div class="doc tl"><span class="doc-kicker">PPT 标题</span><span class="doc-title">页面标题</span></div>
+  <div class="folio">页码 / 总页数 — BY @歪斯Wise</div>
+
+  <div id="architecture-slot" class="architecture-slot" data-slot-id="architecture"
+       data-component-id="atlas.055.arch-platform" data-content-ref="example.s1.architecture"></div>
+
+  <div class="caption"><span id="focus-caption">应用、资源与基础设施逐层承接，最终把平台能力交付给业务。</span></div>
+</div>
+
+<script src="../../../../../references/ppt-component-atlas/catalog-data.js"></script>
+<script src="../../../../../themes/engine/adapters/atlas.js"></script>
+<script>
+var atlas = window.SWISS_CATALOG_DATA;
+var adapter = (window.WisePPTThemeAdapters || {})['wise-ppt.atlas'];
+var entry = atlas && atlas.entries.find(function(item){ return item.num === 55; });
+if (!atlas || !adapter || !entry) throw new Error('S1 缺 atlas.055.arch-platform 生产资产');
+
+var componentStyle = document.createElement('style');
+/* 样张是静帧:不拼 atlas.componentMotionCss(入场/循环动效),
+   静止态即标称几何,不依赖 design-tokens 静帧规则兜底。 */
+componentStyle.textContent = adapter.adaptCss(atlas.componentCss || '') +
+  adapter.COMPONENT_OVERRIDES;
+document.head.appendChild(componentStyle);
+
+var host = document.getElementById('architecture-slot');
+host.innerHTML = adapter.adaptMarkup(entry.snippet || '');
+
+var landingStyle = document.createElement('style');
+landingStyle.textContent = `
+#architecture-slot .swiss-card {
+  width: 100% !important;
+  min-height: 0 !important;
+  overflow: visible !important;
+  background: transparent !important;
+  border: 0 !important;
+}
+#architecture-slot .swiss-card__content {
+  min-height: 0 !important;
+  padding: 0 !important;
+  display: block !important;
+  background: transparent !important;
+}
+#architecture-slot .arch-platform {
+  width: 100% !important;
+  margin: 0 !important;
+}
+`;
+document.head.appendChild(landingStyle);
+
+stageFit();
+</script>
+<script type="application/json" id="xp-surface-recipe">{"theme":"klein-blue","color_name":"blue","layout_code":"s1","title":"layout-s1 · 产品平台架构图 · AI 产品五层架构","layout":"paper-ink.hierarchy.product-platform-architecture","page_role":"explain","canvas":{"token":"paper","value":"#f2efe9","reason":"常规内容页在纸面上建立层级。"},"surface_profile":"hierarchical-material-stack","surfaces":[{"role":"base-layout","material":"paper-plane","fill":"#f2efe9","stack":0},{"role":"layer-label","material":"recessed","fill":"#e8e5df","stack":1,"shadow":"none"},{"role":"architecture-face","material":"top-white","fill":"#ffffff","stack":2,"shadow":"none"},{"role":"internal-structure","material":"transparent-plane","fill":"transparent","stack":3,"shadow":"preserve"},{"role":"leaf-capability","material":"transparent-plane","fill":"transparent","stack":4,"shadow":"preserve"},{"role":"focus-marker","material":"accent","fill":"#002fa7","stack":5}],"accent":{"value":"#002fa7","semantic_channel":"中心概念、当前节点或最终输出","furniture":"左上第一行 doc-kicker 固定墨黑，第二行 doc-title 使用当前主题色；folio 继续按该页画布与原配方处理。","neutral_exceptions":["普通英文标签","轴名","层名","结构编号","MODEL","非当前数据"],"furniture_mode":"black-first-theme-second","folio_mode":"accent"},"border_policy":"主体 1px 墨线；唯一焦点可用 2px 橙线，所有容器方角。","shadow_policy":"无投影；轴线、轨道、节点属于同一纸面。","noise_policy":"由主题统一提供唯一一层约 6% 黑色 fractal-noise；页面不得自带 noise 节点；浅色页 multiply，墨面可 overlay。","reference_evidence":{"file":"ai_studio_code (12).html","cards":["card-2","card-3","card-5","card-6"],"rule":"关系线与节点直接属于纸面；强调色只落当前节点、终点或短标记。"},"acceptance":["强调色只落一个语义通道；同一序列可重复，但不得扩散到结构元数据。","纯白只用于 top-white，不能替代默认纸面。","缩略图必须从该主题独立 frame 的实际渲染重建。"],"status":"recipe-ready","surface_bindings":[{"selector":"#architecture-slot .arch-platform","expected_count":1,"role":"architecture-face","material":"top-white","fill":"#ffffff","stack":2,"shadow":"none"},{"selector":"#architecture-slot .arch-tone-label","expected_count":5,"role":"layer-label","material":"recessed","fill":"#e8e5df","stack":1,"shadow":"none"},{"selector":"#architecture-slot .arch-tone-wrap","expected_count":5,"role":"internal-structure","material":"transparent-plane","fill":"transparent","stack":3,"shadow":"preserve"},{"selector":"#architecture-slot .arch-tone-card","expected_count":7,"role":"internal-structure","material":"transparent-plane","fill":"transparent","stack":3,"shadow":"preserve"},{"selector":"#architecture-slot .arch-tone-fill","expected_count":39,"role":"leaf-capability","material":"transparent-plane","fill":"transparent","stack":4,"shadow":"preserve"}],"surface_binding_reason":"真实浏览器 DOM 审计后锁定的稳定 selector；expected_count 是逐页门禁。"}</script>
+<script src="../../catalog-surface.js" data-catalog-theme-surface="catalog-theme-recipes-v1"></script>
+<script src="../../catalog-typography.js" data-catalog-typography="accent-english-title-match-v1"></script>
+</body>
+</html>

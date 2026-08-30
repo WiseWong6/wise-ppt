@@ -1,12 +1,15 @@
 <!DOCTYPE html>
-<html lang="zh-CN" data-runtime="wise-ppt-specimen" data-typography-mode="all-sans" data-page-id="gallery-ai-r5" data-page-role="synthesize" data-theme="paper-ink" data-layout="paper-ink.network.interlocking-system" data-layout-source="gallery" data-sample-focus-profile="content-only" data-sample-focus-members='[{"selector":"#r5-focus-en","role":"annotation"},{"selector":"#r5-focus-cn","role":"value"},{"selector":"#r5-focus-line","role":"outline"},{"selector":"#r5-focus-arrow","role":"outline"}]' data-sample-focus-ref="sample.r5.r5-focus">
+<html data-theme-id="paper-ink" lang="zh-CN" data-runtime="wise-ppt-specimen" data-typography-mode="all-sans" data-page-id="gallery-ai-r5" data-page-role="synthesize" data-theme="paper-ink" data-layout="paper-ink.network.interlocking-system" data-layout-source="gallery" data-sample-focus-profile="content-only" data-sample-focus-members='[{"selector":"#r5-focus-en","role":"annotation"},{"selector":"#r5-focus-cn","role":"value"},{"selector":"#r5-focus-line","role":"outline"},{"selector":"#r5-focus-arrow","role":"outline"}]' data-sample-focus-ref="sample.r5.r5-focus">
 <head>
 <meta charset="UTF-8">
 <title>layout-r5 · 互锁齿轮 · AI 系统协同</title>
 <script src="../../../../runtime/stage-fit.js"></script>
-<link rel="stylesheet" href="../../../../themes/paper-ink/assets/design-tokens.css">
-<link rel="stylesheet" href="../../../../themes/paper-ink/assets/catalog-fonts.css" data-wise-catalog-fonts="true">
-<link rel="stylesheet" href="../../../../themes/paper-ink/assets/slide-components.css">
+<link rel="stylesheet" href="../../../../themes/engine/assets/design-tokens.css">
+<link rel="stylesheet" href="../../../../themes/packages/paper-ink/theme.css">
+<link rel="stylesheet" href="../../../../themes/packages/hermes-orange/theme.css">
+<link rel="stylesheet" href="../../../../themes/packages/klein-blue/theme.css">
+<link rel="stylesheet" href="../../../../themes/engine/assets/catalog-fonts.css" data-wise-catalog-fonts="true">
+<link rel="stylesheet" href="../../../../themes/engine/assets/slide-components.css">
 <link rel="stylesheet" href="../../../shell.css">
 <style>
   /* 卡片本体 724×488 fixed,比槽盒 1050×708 窄:由帧负责槽内摆位。
@@ -21,17 +24,17 @@
 </style>
 </head>
 <body class="slide">
-<div class="stage" data-block-id="gallery-primary" data-renderer-kind="native-html" data-component-source="native" data-component-id="native.paper-ink.107.interlocking-gears" data-content-ref="example.r5">
+<div class="stage" data-block-id="gallery-primary" data-renderer-kind="native-html" data-component-source="native" data-component-id="native.wise-ppt.107.interlocking-gears" data-content-ref="example.r5">
   <div class="doc tl">PPT 标题<br>页面标题</div>
   <div class="folio">页码 / 总页数 — BY @歪斯Wise</div>
-  <div id="gears-host" class="gears-host" data-slot-id="system" data-component-id="native.paper-ink.107.interlocking-gears" aria-label="内容模型评测三个互锁模块"></div>
+  <div id="gears-host" class="gears-host" data-slot-id="system" data-component-id="native.wise-ppt.107.interlocking-gears" aria-label="内容模型评测三个互锁模块"></div>
   <div class="caption">内容、模型与评测相互驱动，闭环越完整，交付越稳定。</div>
 </div>
-<script src="../../../../capabilities/layouts/paper-ink-components.js"></script>
+<script src="../../../../capabilities/layouts/native-components.js"></script>
 <script>
-  const catalog=window.PAPER_INK_COMPONENT_DATA;
+  const catalog=window.WISE_PPT_NATIVE_COMPONENT_DATA;
   const entry=catalog&&catalog.entries.find(item=>item.num===107);
-  if(!entry)throw new Error('缺少 native.paper-ink.107.interlocking-gears');
+  if(!entry)throw new Error('缺少 native.wise-ppt.107.interlocking-gears');
   const style=document.createElement('style');
   /* 样张是静帧:只注入组件静态样式,不拼 componentMotionCss(入场动效),
      静止态即标称几何,AI 参考与门禁量测不再依赖截图时机。 */

@@ -12,7 +12,7 @@ import path from "node:path";
 import { setTimeout as sleep } from "node:timers/promises";
 import { fileURLToPath } from "node:url";
 const DELIVERY_FORMAT = "wise-ppt-delivery@3";
-const DECK_CONTRACT_VERSION = "7";
+const DECK_CONTRACT_VERSION = "9";
 const GEOMETRY_TOLERANCE_PX = 1;
 const RASTER_RMSE_THRESHOLD_PCT = 2.5;
 const RASTER_CAPTURE_SCALE = 0.25;
@@ -31,22 +31,22 @@ const REQUIRED_ROOT_FILES = [
 const REQUIRED_TREES = ["assets", "runtime"];
 const JSON_ROOT_FILES = REQUIRED_ROOT_FILES.filter((name) => name.endsWith(".json"));
 const ROOT_CONTRACTS = Object.freeze({
-  "deck-spec.json": "wise-ppt-deck@7",
+  "deck-spec.json": "wise-ppt-deck@9",
   "deck-plan.json": "wise-ppt-deck-plan@5",
   "source-ledger.json": "wise-ppt-source-ledger@4",
   "component-receipts.json": "wise-ppt-component-receipts@3",
   "geometry-contracts.json": "wise-ppt-geometry-contracts@3",
-  "build-manifest.json": "wise-ppt-build@4"
+  "build-manifest.json": "wise-ppt-build@6"
 });
 function fail(message) {
   throw new Error(message);
 }
 function usage() {
   return [
-    "\u7528\u6CD5:",
-    "  node export-deck.mjs export --deck <\u76EE\u5F55> --url <file-url> --port <CDP\u7AEF\u53E3> --pdf <\u4E34\u65F6PDF> --manifest <\u4E34\u65F6manifest>",
-    "  node export-deck.mjs experimental --deck <\u76EE\u5F55> --url <file-url> --port <CDP\u7AEF\u53E3> --pdf <\u4E34\u65F6PDF>",
-    "  node export-deck.mjs check --deck <\u76EE\u5F55>"
+    "用法:",
+    "  node export-deck.mjs export --deck <目录> --url <file-url> --port <CDP端口> --pdf <临时PDF> --manifest <临时manifest>",
+    "  node export-deck.mjs experimental --deck <目录> --url <file-url> --port <CDP端口> --pdf <临时PDF>",
+    "  node export-deck.mjs check --deck <目录>"
   ].join("\n");
 }
 function parseArgs(argv) {
@@ -55,7 +55,7 @@ function parseArgs(argv) {
   const values = {};
   for (let i = 0; i < rest.length; i += 1) {
     const key = rest[i];
-    if (!key.startsWith("--") || i + 1 >= rest.length) fail(`\u975E\u6CD5\u53C2\u6570: ${key}
+    if (!key.startsWith("--") || i + 1 >= rest.length) fail(`非法参数: ${key}
 ${usage()}`);
     values[key.slice(2)] = rest[++i];
   }
@@ -78,7 +78,7 @@ function isExcludedDeliveryFile(relativePath) {
 async function collectTree(deckDir, relativeDir) {
   const root = path.join(deckDir, relativeDir);
   const rootInfo = await lstat(root).catch(() => null);
-  if (!rootInfo?.isDirectory()) fail(`Wise PPT \u7F3A\u5C11\u76EE\u5F55: ${relativeDir}/`);
+  if (!rootInfo?.isDirectory()) fail(`Wise PPT 缺少目录: ${relativeDir}/`);
   const files = [];
   async function visit(current, currentRelative) {
     const entries = await readdir(current, { withFileTypes: true });
@@ -87,14 +87,14 @@ async function collectTree(deckDir, relativeDir) {
       const relativePath = path.join(currentRelative, entry.name);
       if (isHiddenRelative(relativePath) || isExcludedDeliveryFile(relativePath)) continue;
       const absolutePath = path.join(current, entry.name);
-      if (entry.isSymbolicLink()) fail(`\u51BB\u7ED3\u4EA7\u7269\u7981\u6B62\u7B26\u53F7\u94FE\u63A5: ${relativePath}`);
+      if (entry.isSymbolicLink()) fail(`冻结产物禁止符号链接: ${relativePath}`);
       if (entry.isDirectory()) await visit(absolutePath, relativePath);
       else if (entry.isFile()) files.push(relativePath);
-      else fail(`\u51BB\u7ED3\u4EA7\u7269\u5305\u542B\u4E0D\u652F\u6301\u7684\u6587\u4EF6\u7C7B\u578B: ${relativePath}`);
+      else fail(`冻结产物包含不支持的文件类型: ${relativePath}`);
     }
   }
   await visit(root, relativeDir);
-  if (!files.length) fail(`Wise PPT \u76EE\u5F55\u4E0D\u80FD\u4E3A\u7A7A: ${relativeDir}/`);
+  if (!files.length) fail(`Wise PPT 目录不能为空: ${relativeDir}/`);
   return files;
 }
 async function validateJsonFiles(deckDir) {
@@ -104,11 +104,11 @@ async function validateJsonFiles(deckDir) {
     try {
       parsed[file] = JSON.parse(await readFile(filePath, "utf8"));
     } catch (error) {
-      fail(`${file} \u4E0D\u662F\u6709\u6548 JSON: ${error.message}`);
+      fail(`${file} 不是有效 JSON: ${error.message}`);
     }
     const expectedContract = ROOT_CONTRACTS[file];
     if (!parsed[file] || Array.isArray(parsed[file]) || parsed[file].contract !== expectedContract) {
-      fail(`${file} \u5FC5\u987B\u58F0\u660E\u5F53\u524D\u5408\u540C ${expectedContract}`);
+      fail(`${file} 必须声明当前合同 ${expectedContract}`);
     }
   }
   return parsed;
@@ -118,7 +118,7 @@ async function captureFrozenSnapshot(deckDir) {
   for (const relativePath of REQUIRED_ROOT_FILES) {
     const absolutePath = path.join(deckDir, relativePath);
     const info = await lstat(absolutePath).catch(() => null);
-    if (!info?.isFile()) fail(`Wise PPT \u7F3A\u5C11\u6839\u4EA7\u7269: ${relativePath}`);
+    if (!info?.isFile()) fail(`Wise PPT 缺少根产物: ${relativePath}`);
     rootFiles.push(relativePath);
   }
   await validateJsonFiles(deckDir);
@@ -157,10 +157,10 @@ async function readDeckMetadata(deckDir) {
     runtime_version: readHtmlAttribute(html, "data-runtime-version")
   };
   if (metadata.deck_contract_version !== DECK_CONTRACT_VERSION) {
-    fail(`index.html \u5FC5\u987B\u58F0\u660E data-deck-contract-version="${DECK_CONTRACT_VERSION}"`);
+    fail(`index.html 必须声明 data-deck-contract-version="${DECK_CONTRACT_VERSION}"`);
   }
   for (const key of ["build_id", "layout_registry_version", "runtime_version"]) {
-    if (!metadata[key]) fail(`index.html \u7F3A\u5C11 ${key.replaceAll("_", "-")}`);
+    if (!metadata[key]) fail(`index.html 缺少 ${key.replaceAll("_", "-")}`);
   }
   return metadata;
 }
@@ -178,10 +178,10 @@ function countSourceSlides(html) {
 async function pdfPageCount(pdfPath) {
   try {
     const count = await getPdfPageCount(await readFile(pdfPath));
-    if (!Number.isInteger(count) || count < 1) fail("PDF \u672A\u8FD4\u56DE\u6709\u6548\u9875\u6570");
+    if (!Number.isInteger(count) || count < 1) fail("PDF 未返回有效页数");
     return count;
   } catch (error) {
-    fail(`PDF \u7ED3\u6784\u89E3\u6790\u5931\u8D25: ${error.message}`);
+    fail(`PDF 结构解析失败: ${error.message}`);
   }
 }
 class CdpClient {
@@ -203,11 +203,11 @@ class CdpClient {
       const closeDetails = [
         Number.isInteger(event?.code) ? `code=${event.code}` : "",
         event?.reason ? `reason=${event.reason}` : "",
-        waiting ? `\u7B49\u5F85 ${waiting}` : ""
-      ].filter(Boolean).join("\uFF1B");
+        waiting ? `等待 ${waiting}` : ""
+      ].filter(Boolean).join("；");
       for (const pending of this.pending.values()) {
         clearTimeout(pending.timer);
-        pending.reject(new Error(`CDP WebSocket \u5DF2\u5173\u95ED${closeDetails ? `\uFF08${closeDetails}\uFF09` : ""}`));
+        pending.reject(new Error(`CDP WebSocket 已关闭${closeDetails ? `（${closeDetails}）` : ""}`));
       }
       this.pending.clear();
     };
@@ -217,7 +217,7 @@ class CdpClient {
       const id = ++this.nextId;
       const timer = setTimeout(() => {
         this.pending.delete(id);
-        reject(new Error(`CDP \u8D85\u65F6: ${method}`));
+        reject(new Error(`CDP 超时: ${method}`));
       }, timeoutMs);
       this.pending.set(id, {
         method,
@@ -235,7 +235,7 @@ class CdpClient {
       returnByValue: true
     });
     if (result.exceptionDetails) {
-      const detail = result.exceptionDetails.exception?.description || result.exceptionDetails.text || "\u9875\u9762\u811A\u672C\u5F02\u5E38";
+      const detail = result.exceptionDetails.exception?.description || result.exceptionDetails.text || "页面脚本异常";
       fail(detail);
     }
     return result.result?.value;
@@ -258,17 +258,17 @@ async function connectCdp(port) {
     }
     await sleep(100);
   }
-  if (!websocketUrl) fail(`CDP \u4E0D\u53EF\u8FBE: 127.0.0.1:${port}`);
+  if (!websocketUrl) fail(`CDP 不可达: 127.0.0.1:${port}`);
   const socket = new WebSocket(websocketUrl);
   await new Promise((resolve, reject) => {
-    const timer = setTimeout(() => reject(new Error("\u8FDE\u63A5 CDP WebSocket \u8D85\u65F6")), 1e4);
+    const timer = setTimeout(() => reject(new Error("连接 CDP WebSocket 超时")), 1e4);
     socket.onopen = () => {
       clearTimeout(timer);
       resolve();
     };
     socket.onerror = () => {
       clearTimeout(timer);
-      reject(new Error("\u8FDE\u63A5 CDP WebSocket \u5931\u8D25"));
+      reject(new Error("连接 CDP WebSocket 失败"));
     };
   });
   return new CdpClient(socket);
@@ -358,7 +358,7 @@ async function captureSlidePng(cdp, clip) {
       scale: RASTER_CAPTURE_SCALE
     }
   }, 6e4);
-  if (!result.data) fail("Page.captureScreenshot \u672A\u8FD4\u56DE PNG \u6570\u636E");
+  if (!result.data) fail("Page.captureScreenshot 未返回 PNG 数据");
   return result.data;
 }
 async function captureStableScreenSlidePng(cdp, clip, pageId) {
@@ -373,7 +373,7 @@ async function captureStableScreenSlidePng(cdp, clip, pageId) {
     previousSha256 = currentSha256;
     await settleFrames(cdp);
   }
-  fail(`screen \u6805\u683C\u622A\u56FE\u672A\u5728 ${maxAttempts} \u6B21\u5185\u7A33\u5B9A: ${pageId}`);
+  fail(`screen 栅格截图未在 ${maxAttempts} 次内稳定: ${pageId}`);
 }
 async function captureScreenRasters(cdp, state) {
   const rasters = [];
@@ -410,12 +410,12 @@ async function captureScreenRasters(cdp, state) {
     const clip = await cdp.evaluate(`(() => {
       const slides = Array.from(document.querySelectorAll('#track > .slide'));
       const slide = slides[${pageIndex}];
-      if (!slide) throw new Error('screen \u6805\u683C\u622A\u56FE\u7F3A\u5C11\u76EE\u6807 slide');
+      if (!slide) throw new Error('screen 栅格截图缺少目标 slide');
       const rect = slide.getBoundingClientRect();
       return { x: rect.left + scrollX, y: rect.top + scrollY, width: rect.width, height: rect.height };
     })()`);
     if (Math.abs(clip.width - RASTER_CAPTURE_WIDTH) > GEOMETRY_TOLERANCE_PX || Math.abs(clip.height - RASTER_CAPTURE_HEIGHT) > GEOMETRY_TOLERANCE_PX) {
-      fail(`screen \u6805\u683C\u622A\u56FE\u5C3A\u5BF8\u5F02\u5E38: ${state.page_ids[pageIndex]} ${clip.width}x${clip.height}`);
+      fail(`screen 栅格截图尺寸异常: ${state.page_ids[pageIndex]} ${clip.width}x${clip.height}`);
     }
     const pngBase64 = await captureStableScreenSlidePng(cdp, clip, state.page_ids[pageIndex]);
     rasters.push({
@@ -444,7 +444,7 @@ async function blurredRgbRmsePct(cdp, screenPngBase64, printPngBase64) {
     const load = source => new Promise((resolve, reject) => {
       const image = new Image();
       image.onload = () => resolve(image);
-      image.onerror = () => reject(new Error('\u6805\u683C\u8BC1\u636E PNG \u89E3\u7801\u5931\u8D25'));
+      image.onerror = () => reject(new Error('栅格证据 PNG 解码失败'));
       image.src = source;
     });
     const [screenImage, printImage] = await Promise.all([
@@ -452,7 +452,7 @@ async function blurredRgbRmsePct(cdp, screenPngBase64, printPngBase64) {
       load(${JSON.stringify(`data:image/png;base64,${printPngBase64}`)}),
     ]);
     if (screenImage.width !== printImage.width || screenImage.height !== printImage.height) {
-      throw new Error('screen/print \u6805\u683C\u5C3A\u5BF8\u53D8\u5316: ' + screenImage.width + 'x' + screenImage.height + ' != ' + printImage.width + 'x' + printImage.height);
+      throw new Error('screen/print 栅格尺寸变化: ' + screenImage.width + 'x' + screenImage.height + ' != ' + printImage.width + 'x' + printImage.height);
     }
     const readBlurred = image => {
       const canvas = document.createElement('canvas');
@@ -484,7 +484,7 @@ async function blurredRgbRmsePct(cdp, screenPngBase64, printPngBase64) {
 }
 async function compareRasterStates(cdp, screenRasters, printState, variant) {
   if (screenRasters.length !== printState.slide_count) {
-    fail(`${variant} screen/print \u6805\u683C\u9875\u6570\u53D8\u5316: ${screenRasters.length} != ${printState.slide_count}`);
+    fail(`${variant} screen/print 栅格页数变化: ${screenRasters.length} != ${printState.slide_count}`);
   }
   const pages = [];
   let worst = null;
@@ -492,16 +492,16 @@ async function compareRasterStates(cdp, screenRasters, printState, variant) {
     const pageId = printState.page_ids[pageIndex];
     const screenRaster = screenRasters[pageIndex];
     if (screenRaster.page_id !== pageId) {
-      fail(`${variant} screen/print \u6805\u683C\u9875\u5E8F\u53D8\u5316: ${screenRaster.page_id} != ${pageId}`);
+      fail(`${variant} screen/print 栅格页序变化: ${screenRaster.page_id} != ${pageId}`);
     }
     const clip = await cdp.evaluate(`(() => {
       const slide = document.querySelectorAll('#track > .slide')[${pageIndex}];
-      if (!slide) throw new Error('print \u6805\u683C\u622A\u56FE\u7F3A\u5C11\u76EE\u6807 slide');
+      if (!slide) throw new Error('print 栅格截图缺少目标 slide');
       const rect = slide.getBoundingClientRect();
       return { x: rect.left + scrollX, y: rect.top + scrollY, width: rect.width, height: rect.height };
     })()`);
     if (Math.abs(clip.width - RASTER_CAPTURE_WIDTH) > GEOMETRY_TOLERANCE_PX || Math.abs(clip.height - RASTER_CAPTURE_HEIGHT) > GEOMETRY_TOLERANCE_PX) {
-      fail(`print \u6805\u683C\u622A\u56FE\u5C3A\u5BF8\u5F02\u5E38: ${pageId} ${clip.width}x${clip.height}`);
+      fail(`print 栅格截图尺寸异常: ${pageId} ${clip.width}x${clip.height}`);
     }
     const printPngBase64 = await captureSlidePng(cdp, clip);
     const comparison = await blurredRgbRmsePct(cdp, screenRaster.png_base64, printPngBase64);
@@ -518,7 +518,7 @@ async function compareRasterStates(cdp, screenRasters, printState, variant) {
     pages.push(evidence);
     if (!worst || rmsePct > worst.blurred_rgb_rmse_pct) worst = evidence;
     if (rmsePct > RASTER_RMSE_THRESHOLD_PCT) {
-      fail(`${variant} \u6A21\u7CCA\u6805\u683C RMSE ${rmsePct.toFixed(6)}% > ${RASTER_RMSE_THRESHOLD_PCT}%: ${pageId}`);
+      fail(`${variant} 模糊栅格 RMSE ${rmsePct.toFixed(6)}% > ${RASTER_RMSE_THRESHOLD_PCT}%: ${pageId}`);
     }
   }
   return {
@@ -556,20 +556,20 @@ function rasterParityEvidence(normal, accent) {
 }
 function compareRenderStates(screen, print) {
   if (screen.slide_count !== print.slide_count) {
-    fail(`screen/print slide \u6570\u53D8\u5316: ${screen.slide_count} != ${print.slide_count}`);
+    fail(`screen/print slide 数变化: ${screen.slide_count} != ${print.slide_count}`);
   }
   if (screen.nodes.length !== print.nodes.length) {
-    fail(`screen/print DOM \u5B50\u7EA7\u6570\u53D8\u5316: ${screen.nodes.length} != ${print.nodes.length}`);
+    fail(`screen/print DOM 子级数变化: ${screen.nodes.length} != ${print.nodes.length}`);
   }
   const printNodes = new Map(print.nodes.map((node) => [node.key, node]));
   let maxDelta = 0;
   let maxDetail = null;
   for (const screenNode of screen.nodes) {
     const printNode = printNodes.get(screenNode.key);
-    if (!printNode) fail(`print \u7F3A\u5C11 screen \u8282\u70B9: ${screenNode.key}`);
-    if (screenNode.tag !== printNode.tag) fail(`screen/print \u8282\u70B9\u987A\u5E8F\u53D8\u5316: ${screenNode.key}`);
+    if (!printNode) fail(`print 缺少 screen 节点: ${screenNode.key}`);
+    if (screenNode.tag !== printNode.tag) fail(`screen/print 节点顺序变化: ${screenNode.key}`);
     if (screenNode.visible !== printNode.visible) {
-      fail(`screen/print \u53EF\u89C1\u6027\u53D8\u5316: ${screenNode.key} <${screenNode.tag}>`);
+      fail(`screen/print 可见性变化: ${screenNode.key} <${screenNode.tag}>`);
     }
     if (!screenNode.visible) continue;
     for (const field of ["left", "top", "width", "height"]) {
@@ -581,18 +581,18 @@ function compareRenderStates(screen, print) {
     }
   }
   if (maxDelta > GEOMETRY_TOLERANCE_PX) {
-    fail(`screen/print \u5B50\u7EA7\u51E0\u4F55\u504F\u5DEE ${maxDelta.toFixed(3)}px > ${GEOMETRY_TOLERANCE_PX}px: ${JSON.stringify(maxDetail)}`);
+    fail(`screen/print 子级几何偏差 ${maxDelta.toFixed(3)}px > ${GEOMETRY_TOLERANCE_PX}px: ${JSON.stringify(maxDetail)}`);
   }
   const printFonts = new Map(print.fonts.map((font) => [font.key, font]));
   for (const screenFont of screen.fonts) {
     const printFont = printFonts.get(screenFont.key);
-    if (!printFont) fail(`print \u7F3A\u5C11 screen \u6587\u5B57\u8282\u70B9: ${screenFont.key}`);
+    if (!printFont) fail(`print 缺少 screen 文字节点: ${screenFont.key}`);
     if (fontSignature(screenFont) !== fontSignature(printFont)) {
-      fail(`screen/print computed font \u53D8\u5316: ${screenFont.key}`);
+      fail(`screen/print computed font 变化: ${screenFont.key}`);
     }
   }
   if (screen.fonts.length !== print.fonts.length) {
-    fail(`screen/print \u6587\u5B57\u8282\u70B9\u6570\u53D8\u5316: ${screen.fonts.length} != ${print.fonts.length}`);
+    fail(`screen/print 文字节点数变化: ${screen.fonts.length} != ${print.fonts.length}`);
   }
   return { max_geometry_delta_px: Number(maxDelta.toFixed(3)), max_detail: maxDetail };
 }
@@ -637,12 +637,12 @@ async function waitUntilReady(cdp) {
     })()`);
     if (state.deck_error) {
       const detail = state.runtime_error || (state.render_errors?.length ? JSON.stringify(state.render_errors) : "") || `deck_error=${state.deck_error}; font_check=${state.font_check || "unknown"}`;
-      fail(`deck runtime \u62A5\u9519: ${detail}`);
+      fail(`deck runtime 报错: ${detail}`);
     }
     if (state.ready) return;
     await sleep(100);
   }
-  fail("deck \u672A\u5728 20 \u79D2\u5185\u8FBE\u5230 data-deck-ready=true \u4E14\u5B57\u4F53 loaded");
+  fail("deck 未在 20 秒内达到 data-deck-ready=true 且字体 loaded");
 }
 async function readRuntimeSelfTestContext(deckDir) {
   let spec;
@@ -651,7 +651,7 @@ async function readRuntimeSelfTestContext(deckDir) {
     spec = JSON.parse(await readFile(path.join(deckDir, "deck-spec.json"), "utf8"));
     sourceLedger = JSON.parse(await readFile(path.join(deckDir, "source-ledger.json"), "utf8"));
   } catch (error) {
-    fail(`runtime selftest \u65E0\u6CD5\u8BFB\u53D6 deck-spec/source-ledger: ${error.message}`);
+    fail(`runtime selftest 无法读取 deck-spec/source-ledger: ${error.message}`);
   }
   return {
     must: Array.isArray(spec.must) ? spec.must : [],
@@ -663,10 +663,10 @@ async function runRuntimeSelfTest(cdp, context, variant) {
   const result = await cdp.evaluate(`(() => {
     const runtime = window.WisePPTRuntime;
     if (!runtime || typeof runtime.selfTest !== 'function') {
-      return { status: 'missing', error: 'window.WisePPTRuntime.selfTest \u7F3A\u5931' };
+      return { status: 'missing', error: 'window.WisePPTRuntime.selfTest 缺失' };
     }
     if (runtime.selfTestContract !== 'wise-ppt-runtime-selftest@2') {
-      return { status: 'missing', error: 'runtime selftest contract \u7F3A\u5931\u6216\u7248\u672C\u4E0D\u5339\u914D' };
+      return { status: 'missing', error: 'runtime selftest contract 缺失或版本不匹配' };
     }
     try {
       const returned = runtime.selfTest(${contextLiteral});
@@ -689,7 +689,7 @@ async function runRuntimeSelfTest(cdp, context, variant) {
     }
   })()`);
   if (!result || result.status === "missing") {
-    fail(`${variant} runtime selftest \u7F3A\u5931: ${result?.error || "\u672A\u8FD4\u56DE\u7ED3\u679C"}`);
+    fail(`${variant} runtime selftest 缺失: ${result?.error || "未返回结果"}`);
   }
   const requiredChecks = [
     "deck_contract_check",
@@ -704,8 +704,8 @@ async function runRuntimeSelfTest(cdp, context, variant) {
   ];
   const failedChecks = requiredChecks.filter((key) => result[key] !== "pass");
   if (result.status !== "pass" || failedChecks.length) {
-    const detail = result.error || `\u672A\u901A\u8FC7: ${failedChecks.join(", ")}`;
-    fail(`${variant} runtime selftest \u5931\u8D25: ${detail}`);
+    const detail = result.error || `未通过: ${failedChecks.join(", ")}`;
+    fail(`${variant} runtime selftest 失败: ${detail}`);
   }
   return {
     contract: "wise-ppt-runtime-selftest@2",
@@ -736,12 +736,12 @@ async function openScreenVariant(cdp, baseUrl, accent, diskMetadata, selfTestCon
   })()`);
   await settle(cdp);
   const state = await cdp.evaluate(CAPTURE_EXPRESSION);
-  if (state.slide_count < 1) fail("index.html \u4E2D\u6CA1\u6709 #track > .slide");
+  if (state.slide_count < 1) fail("index.html 中没有 #track > .slide");
   if (JSON.stringify(state.metadata) !== JSON.stringify(diskMetadata)) {
-    fail("\u6D4F\u89C8\u5668\u4E2D\u7684 Wise PPT \u5143\u6570\u636E\u4E0E\u51BB\u7ED3 index.html \u4E0D\u4E00\u81F4");
+    fail("浏览器中的 Wise PPT 元数据与冻结 index.html 不一致");
   }
   const accentActive = await cdp.evaluate(`document.documentElement.classList.contains('accent')`);
-  if (accentActive !== accent) fail(`${accent ? "accent" : "normal"} URL \u672A\u5F97\u5230\u5BF9\u5E94\u6839 class`);
+  if (accentActive !== accent) fail(`${accent ? "accent" : "normal"} URL 未得到对应根 class`);
   return { state, url: screenUrl, selftest };
 }
 async function switchToPrintVariant(cdp, baseUrl, accent, diskMetadata) {
@@ -756,7 +756,7 @@ async function switchToPrintVariant(cdp, baseUrl, accent, diskMetadata) {
   await settle(cdp);
   const state = await cdp.evaluate(CAPTURE_EXPRESSION);
   if (JSON.stringify(state.metadata) !== JSON.stringify(diskMetadata)) {
-    fail("print-mode \u4E2D\u7684 Wise PPT \u5143\u6570\u636E\u4E0E\u51BB\u7ED3 index.html \u4E0D\u4E00\u81F4");
+    fail("print-mode 中的 Wise PPT 元数据与冻结 index.html 不一致");
   }
   return { state, url: printUrl };
 }
@@ -792,22 +792,22 @@ async function exportDeck({ deckDir, url, port, pdfPath, manifestPath }) {
       preferCSSPageSize: true,
       generateTaggedPDF: true
     }, 12e4);
-    if (!printed.data) fail("Page.printToPDF \u672A\u8FD4\u56DE PDF \u6570\u636E");
+    if (!printed.data) fail("Page.printToPDF 未返回 PDF 数据");
     const pdfBytes = Buffer.from(printed.data, "base64");
-    if (pdfBytes.subarray(0, 5).toString() !== "%PDF-") fail("Page.printToPDF \u8FD4\u56DE\u65E0\u6548 PDF");
+    if (pdfBytes.subarray(0, 5).toString() !== "%PDF-") fail("Page.printToPDF 返回无效 PDF");
     await mkdir(path.dirname(pdfPath), { recursive: true });
     await writeFile(pdfPath, pdfBytes);
     const pageCount = await pdfPageCount(pdfPath);
     if (pageCount !== normalScreen.state.slide_count) {
-      fail(`PDF \u9875\u6570 ${pageCount} \u4E0E slide \u6570 ${normalScreen.state.slide_count} \u4E0D\u4E00\u81F4`);
+      fail(`PDF 页数 ${pageCount} 与 slide 数 ${normalScreen.state.slide_count} 不一致`);
     }
     const sourceHtml = await readFile(path.join(deckDir, "index.html"), "utf8");
     const sourceSlideCount = countSourceSlides(sourceHtml);
     if (sourceSlideCount !== normalScreen.state.slide_count) {
-      fail(`\u6E90 HTML slide \u6570 ${sourceSlideCount} \u4E0E\u6D4F\u89C8\u5668 DOM ${normalScreen.state.slide_count} \u4E0D\u4E00\u81F4`);
+      fail(`源 HTML slide 数 ${sourceSlideCount} 与浏览器 DOM ${normalScreen.state.slide_count} 不一致`);
     }
     const after = await captureFrozenSnapshot(deckDir);
-    if (before.sha256 !== after.sha256) fail("\u5BFC\u51FA\u671F\u95F4 index/spec/assets/runtime \u53D1\u751F\u53D8\u5316\uFF0C\u62D2\u7EDD\u5199\u5165\u4EA4\u4ED8\u7269");
+    if (before.sha256 !== after.sha256) fail("导出期间 index/spec/assets/runtime 发生变化，拒绝写入交付物");
     const pdfDigest = await shaFile(pdfPath);
     const manifest = {
       format: DELIVERY_FORMAT,
@@ -876,7 +876,7 @@ async function exportDeck({ deckDir, url, port, pdfPath, manifestPath }) {
 async function exportExperimentalDeck({ deckDir, url, port, pdfPath }) {
   const sourceHtml = await readFile(path.join(deckDir, "index.html"), "utf8");
   const sourceSlideCount = countSourceSlides(sourceHtml);
-  if (sourceSlideCount < 1) fail("\u5B9E\u9A8C index.html \u4E2D\u6CA1\u6709 section.slide[data-page-id]");
+  if (sourceSlideCount < 1) fail("实验 index.html 中没有 section.slide[data-page-id]");
   const cdp = await connectCdp(port);
   try {
     const browserVersion = await cdp.send("Browser.getVersion");
@@ -976,19 +976,19 @@ async function exportExperimentalDeck({ deckDir, url, port, pdfPath }) {
       };
     })()`);
     if (state.ready_state !== "complete" || state.fonts_status !== "loaded" || state.deck_ready !== "true") {
-      fail(`\u5B9E\u9A8C HTML \u672A\u5B8C\u6210\u6D4F\u89C8\u5668\u52A0\u8F7D: ${JSON.stringify(state)}`);
+      fail(`实验 HTML 未完成浏览器加载: ${JSON.stringify(state)}`);
     }
     if (state.slide_count !== sourceSlideCount) {
-      fail(`\u5B9E\u9A8C\u6E90 HTML slide \u6570 ${sourceSlideCount} \u4E0E\u6D4F\u89C8\u5668 DOM ${state.slide_count} \u4E0D\u4E00\u81F4`);
+      fail(`实验源 HTML slide 数 ${sourceSlideCount} 与浏览器 DOM ${state.slide_count} 不一致`);
     }
     const invalidMarkers = state.pages.filter((page) => !page.experimental_marker);
-    if (invalidMarkers.length) fail(`\u5B9E\u9A8C\u9875\u7F3A\u5C11\u975E\u89C6\u89C9\u5B9E\u9A8C\u6807\u8BB0: ${JSON.stringify(invalidMarkers)}`);
+    if (invalidMarkers.length) fail(`实验页缺少非视觉实验标记: ${JSON.stringify(invalidMarkers)}`);
     const invalidRedraw = state.pages.filter((page) => page.redraw && (Math.abs(page.width - 1920) > 1 || Math.abs(page.height - 1080) > 1 || page.claim_count !== 1 || page.visible_claim_count !== 1 || page.missing_required_visible.length > 0 || page.small_text.length > 0 || page.out_of_bounds.length > 0));
     if (invalidRedraw.length) {
-      fail(`\u5B9E\u9A8C\u91CD\u7ED8\u9875\u672A\u901A\u8FC7 16:9/claim/\u8BC1\u636E/\u6700\u5C0F\u5B57\u53F7/\u8FB9\u754C\u68C0\u67E5: ${JSON.stringify(invalidRedraw)}`);
+      fail(`实验重绘页未通过 16:9/claim/证据/最小字号/边界检查: ${JSON.stringify(invalidRedraw)}`);
     }
     if (state.incomplete_images.length) {
-      fail(`\u5B9E\u9A8C HTML \u6709\u672A\u52A0\u8F7D\u56FE\u7247: ${JSON.stringify(state.incomplete_images)}`);
+      fail(`实验 HTML 有未加载图片: ${JSON.stringify(state.incomplete_images)}`);
     }
     const printed = await cdp.send("Page.printToPDF", {
       displayHeaderFooter: false,
@@ -996,9 +996,9 @@ async function exportExperimentalDeck({ deckDir, url, port, pdfPath }) {
       preferCSSPageSize: true,
       generateTaggedPDF: true
     }, 12e4);
-    if (!printed.data) fail("\u5B9E\u9A8C Page.printToPDF \u672A\u8FD4\u56DE PDF \u6570\u636E");
+    if (!printed.data) fail("实验 Page.printToPDF 未返回 PDF 数据");
     const pdfBytes = Buffer.from(printed.data, "base64");
-    if (pdfBytes.subarray(0, 5).toString() !== "%PDF-") fail("\u5B9E\u9A8C Page.printToPDF \u8FD4\u56DE\u65E0\u6548 PDF");
+    if (pdfBytes.subarray(0, 5).toString() !== "%PDF-") fail("实验 Page.printToPDF 返回无效 PDF");
     await mkdir(path.dirname(pdfPath), { recursive: true });
     await writeFile(pdfPath, pdfBytes);
     return {
@@ -1018,37 +1018,37 @@ async function exportExperimentalDeck({ deckDir, url, port, pdfPath }) {
 }
 function validateRasterParityEvidence(manifest) {
   const raster = manifest.render_contract?.raster_parity;
-  if (raster?.format !== "blurred-rgb-rmse@1") fail("delivery manifest \u7F3A\u5C11\u6A21\u7CCA\u6805\u683C RMSE \u8BC1\u636E");
+  if (raster?.format !== "blurred-rgb-rmse@1") fail("delivery manifest 缺少模糊栅格 RMSE 证据");
   if (raster.threshold_pct !== RASTER_RMSE_THRESHOLD_PCT) {
-    fail(`delivery manifest \u6805\u683C RMSE \u9608\u503C\u5FC5\u987B\u4E3A ${RASTER_RMSE_THRESHOLD_PCT}%`);
+    fail(`delivery manifest 栅格 RMSE 阈值必须为 ${RASTER_RMSE_THRESHOLD_PCT}%`);
   }
   if (raster.capture?.scale !== RASTER_CAPTURE_SCALE || raster.capture?.width_px !== RASTER_CAPTURE_WIDTH * RASTER_CAPTURE_SCALE || raster.capture?.height_px !== RASTER_CAPTURE_HEIGHT * RASTER_CAPTURE_SCALE || raster.capture?.blur_radius_px !== RASTER_BLUR_RADIUS_PX) {
-    fail("delivery manifest \u6805\u683C\u622A\u56FE/\u6A21\u7CCA\u53C2\u6570\u4E0D\u4E00\u81F4");
+    fail("delivery manifest 栅格截图/模糊参数不一致");
   }
   const candidates = [];
   for (const variant of ["normal", "accent"]) {
     const evidence = raster.variants?.[variant];
     if (!evidence || !Array.isArray(evidence.pages) || evidence.pages.length !== manifest.page_count) {
-      fail(`delivery manifest ${variant} \u6805\u683C\u9010\u9875\u8BC1\u636E\u4E0D\u5B8C\u6574`);
+      fail(`delivery manifest ${variant} 栅格逐页证据不完整`);
     }
     for (let pageIndex = 0; pageIndex < evidence.pages.length; pageIndex += 1) {
       const page = evidence.pages[pageIndex];
-      if (page.page_index !== pageIndex || !page.page_id) fail(`delivery manifest ${variant} \u6805\u683C\u9875\u5E8F\u65E0\u6548`);
+      if (page.page_index !== pageIndex || !page.page_id) fail(`delivery manifest ${variant} 栅格页序无效`);
       if (!/^[a-f0-9]{64}$/.test(page.screen_png_sha256 || "") || !/^[a-f0-9]{64}$/.test(page.print_png_sha256 || "")) {
-        fail(`delivery manifest ${variant} \u6805\u683C\u54C8\u5E0C\u65E0\u6548: ${page.page_id}`);
+        fail(`delivery manifest ${variant} 栅格哈希无效: ${page.page_id}`);
       }
       if (!Number.isFinite(page.blurred_rgb_rmse_pct) || page.blurred_rgb_rmse_pct > RASTER_RMSE_THRESHOLD_PCT) {
-        fail(`delivery manifest ${variant} \u6805\u683C RMSE \u8D85\u9650: ${page.page_id}`);
+        fail(`delivery manifest ${variant} 栅格 RMSE 超限: ${page.page_id}`);
       }
       candidates.push({ variant, ...page });
     }
   }
   const worst = candidates.sort((a, b) => b.blurred_rgb_rmse_pct - a.blurred_rgb_rmse_pct)[0];
   if (!worst || Math.abs(worst.blurred_rgb_rmse_pct - raster.max_blurred_rgb_rmse_pct) > 1e-6) {
-    fail("delivery manifest \u6700\u5927\u6805\u683C RMSE \u4E0E\u9010\u9875\u8BC1\u636E\u4E0D\u4E00\u81F4");
+    fail("delivery manifest 最大栅格 RMSE 与逐页证据不一致");
   }
   if (raster.worst_page?.variant !== worst.variant || raster.worst_page?.page_id !== worst.page_id || raster.worst_page?.page_index !== worst.page_index) {
-    fail("delivery manifest \u6700\u5DEE\u6805\u683C\u9875\u4E0E\u9010\u9875\u8BC1\u636E\u4E0D\u4E00\u81F4");
+    fail("delivery manifest 最差栅格页与逐页证据不一致");
   }
 }
 function validateRuntimeSelfTestEvidence(manifest) {
@@ -1067,10 +1067,10 @@ function validateRuntimeSelfTestEvidence(manifest) {
   for (const variant of ["normal_screen", "accent_screen"]) {
     const item = evidence?.[variant];
     if (item?.contract !== "wise-ppt-runtime-selftest@2" || item.status !== "pass") {
-      fail(`delivery manifest \u7F3A\u5C11 ${variant} runtime selftest \u901A\u8FC7\u8BC1\u636E`);
+      fail(`delivery manifest 缺少 ${variant} runtime selftest 通过证据`);
     }
     const failed = requiredChecks.filter((key) => item.checks?.[key] !== "pass");
-    if (failed.length) fail(`delivery manifest ${variant} runtime selftest \u8BC1\u636E\u4E0D\u5B8C\u6574: ${failed.join(", ")}`);
+    if (failed.length) fail(`delivery manifest ${variant} runtime selftest 证据不完整: ${failed.join(", ")}`);
   }
 }
 async function checkDelivery({ deckDir }) {
@@ -1079,57 +1079,57 @@ async function checkDelivery({ deckDir }) {
   try {
     manifest = JSON.parse(await readFile(manifestFile, "utf8"));
   } catch (error) {
-    fail(`\u65E0\u6CD5\u8BFB\u53D6 delivery-manifest.json: ${error.message}`);
+    fail(`无法读取 delivery-manifest.json: ${error.message}`);
   }
-  if (manifest.format !== DELIVERY_FORMAT) fail(`\u672A\u77E5 delivery manifest: ${manifest.format || "(empty)"}`);
+  if (manifest.format !== DELIVERY_FORMAT) fail(`未知 delivery manifest: ${manifest.format || "(empty)"}`);
   if (!/^Chrome\//.test(String(manifest.renderer?.product || "").replace(/^Google /, ""))) {
-    fail("delivery manifest \u7F3A\u5C11 Google Chrome \u6E32\u67D3\u5668\u8BC1\u636E");
+    fail("delivery manifest 缺少 Google Chrome 渲染器证据");
   }
   if (!manifest.renderer?.protocol_version || !manifest.renderer?.user_agent) {
-    fail("delivery manifest Chrome \u6E32\u67D3\u5668\u8BC1\u636E\u4E0D\u5B8C\u6574");
+    fail("delivery manifest Chrome 渲染器证据不完整");
   }
   if (manifest.checks?.renderer_evidence !== "pass") {
-    fail("delivery manifest \u672A\u58F0\u660E\u6E32\u67D3\u5668\u8BC1\u636E\u901A\u8FC7");
+    fail("delivery manifest 未声明渲染器证据通过");
   }
   validateRuntimeSelfTestEvidence(manifest);
   validateRasterParityEvidence(manifest);
   const snapshot = await captureFrozenSnapshot(deckDir);
   const metadata = await readDeckMetadata(deckDir);
   const expected = manifest.artifacts || {};
-  if (snapshot.spec.sha256 !== expected.spec?.sha256) fail("STALE deck-spec.json \u5DF2\u6539\u53D8\uFF0CPDF \u8FC7\u671F");
-  if (snapshot.html.sha256 !== expected.html?.sha256) fail("STALE index.html \u5DF2\u6539\u53D8\uFF0CPDF \u8FC7\u671F");
-  if (snapshot.sha256 !== expected.assets?.sha256) fail("STALE assets/runtime/\u7F16\u8BD1\u4EA7\u7269\u5DF2\u6539\u53D8\uFF0CPDF \u8FC7\u671F");
-  if (metadata.build_id !== manifest.build_id) fail("STALE data-build-id \u4E0E delivery manifest \u4E0D\u4E00\u81F4");
-  if (metadata.deck_contract_version !== String(manifest.versions?.deck_contract || "")) fail("STALE deck contract version \u5DF2\u6539\u53D8");
-  if (metadata.layout_registry_version !== manifest.versions?.layout_registry) fail("STALE layout registry version \u5DF2\u6539\u53D8");
-  if (metadata.runtime_version !== manifest.versions?.runtime) fail("STALE runtime version \u5DF2\u6539\u53D8");
+  if (snapshot.spec.sha256 !== expected.spec?.sha256) fail("STALE deck-spec.json 已改变，PDF 过期");
+  if (snapshot.html.sha256 !== expected.html?.sha256) fail("STALE index.html 已改变，PDF 过期");
+  if (snapshot.sha256 !== expected.assets?.sha256) fail("STALE assets/runtime/编译产物已改变，PDF 过期");
+  if (metadata.build_id !== manifest.build_id) fail("STALE data-build-id 与 delivery manifest 不一致");
+  if (metadata.deck_contract_version !== String(manifest.versions?.deck_contract || "")) fail("STALE deck contract version 已改变");
+  if (metadata.layout_registry_version !== manifest.versions?.layout_registry) fail("STALE layout registry version 已改变");
+  if (metadata.runtime_version !== manifest.versions?.runtime) fail("STALE runtime version 已改变");
   const pdfStoredPath = expected.pdf?.path;
-  if (pdfStoredPath !== "deck.pdf") fail("delivery manifest PDF \u8DEF\u5F84\u5FC5\u987B\u56FA\u5B9A\u4E3A deck.pdf");
+  if (pdfStoredPath !== "deck.pdf") fail("delivery manifest PDF 路径必须固定为 deck.pdf");
   const pdfPath = path.join(deckDir, "deck.pdf");
   const pdfDigest = await shaFile(pdfPath).catch(() => null);
-  if (!pdfDigest) fail(`delivery manifest \u6307\u5411\u7684 PDF \u4E0D\u5B58\u5728: ${pdfStoredPath}`);
+  if (!pdfDigest) fail(`delivery manifest 指向的 PDF 不存在: ${pdfStoredPath}`);
   if (pdfDigest.sha256 !== expected.pdf.sha256 || pdfDigest.bytes !== expected.pdf.bytes) {
-    fail("STALE PDF \u6587\u4EF6\u4E0E delivery manifest \u4E0D\u4E00\u81F4");
+    fail("STALE PDF 文件与 delivery manifest 不一致");
   }
   const pageCount = await pdfPageCount(pdfPath);
-  if (pageCount !== manifest.page_count) fail(`STALE PDF \u9875\u6570 ${pageCount} != ${manifest.page_count}`);
+  if (pageCount !== manifest.page_count) fail(`STALE PDF 页数 ${pageCount} != ${manifest.page_count}`);
   const html = await readFile(path.join(deckDir, "index.html"), "utf8");
   const slideCount = countSourceSlides(html);
-  if (slideCount !== manifest.page_count) fail(`STALE HTML slide \u6570 ${slideCount} != ${manifest.page_count}`);
+  if (slideCount !== manifest.page_count) fail(`STALE HTML slide 数 ${slideCount} != ${manifest.page_count}`);
   return { page_count: pageCount, pdf_path: pdfPath, build_id: manifest.build_id };
 }
 async function main() {
   const { mode, values } = parseArgs(process.argv.slice(2));
-  if (!values.deck) fail(`\u7F3A\u5C11 --deck
+  if (!values.deck) fail(`缺少 --deck
 ${usage()}`);
   const deckDir = path.resolve(values.deck);
   if (mode === "export") {
     const allowed = /* @__PURE__ */ new Set(["deck", "url", "port", "pdf", "manifest"]);
     const unknown = Object.keys(values).filter((key) => !allowed.has(key));
-    if (unknown.length) fail(`export \u542B\u672A\u767B\u8BB0\u53C2\u6570: ${unknown.map((key) => `--${key}`).join(", ")}
+    if (unknown.length) fail(`export 含未登记参数: ${unknown.map((key) => `--${key}`).join(", ")}
 ${usage()}`);
     for (const key of ["url", "port", "pdf", "manifest"]) {
-      if (!values[key]) fail(`export \u7F3A\u5C11 --${key}
+      if (!values[key]) fail(`export 缺少 --${key}
 ${usage()}`);
     }
     const result = await exportDeck({
@@ -1144,10 +1144,10 @@ ${usage()}`);
   } else if (mode === "experimental") {
     const allowed = /* @__PURE__ */ new Set(["deck", "url", "port", "pdf"]);
     const unknown = Object.keys(values).filter((key) => !allowed.has(key));
-    if (unknown.length) fail(`experimental \u542B\u672A\u767B\u8BB0\u53C2\u6570: ${unknown.map((key) => `--${key}`).join(", ")}
+    if (unknown.length) fail(`experimental 含未登记参数: ${unknown.map((key) => `--${key}`).join(", ")}
 ${usage()}`);
     for (const key of ["url", "port", "pdf"]) {
-      if (!values[key]) fail(`experimental \u7F3A\u5C11 --${key}
+      if (!values[key]) fail(`experimental 缺少 --${key}
 ${usage()}`);
     }
     const result = await exportExperimentalDeck({
@@ -1161,7 +1161,7 @@ ${usage()}`);
   } else {
     const allowed = /* @__PURE__ */ new Set(["deck"]);
     const unknown = Object.keys(values).filter((key) => !allowed.has(key));
-    if (unknown.length) fail(`check \u542B\u672A\u767B\u8BB0\u53C2\u6570: ${unknown.map((key) => `--${key}`).join(", ")}
+    if (unknown.length) fail(`check 含未登记参数: ${unknown.map((key) => `--${key}`).join(", ")}
 ${usage()}`);
     const result = await checkDelivery({
       deckDir

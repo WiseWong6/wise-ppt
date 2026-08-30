@@ -8,7 +8,7 @@ async function installDeliveryPair(deck, temporaryPdf, temporaryManifest) {
   const pdf = path.join(deck, "deck.pdf");
   const manifest = path.join(deck, "delivery-manifest.json");
   const pairExists = await Promise.all([exists(pdf), exists(manifest)]);
-  if (pairExists[0] !== pairExists[1]) throw new WisePPTError("deck.pdf \u4E0E delivery-manifest.json \u5FC5\u987B\u6210\u5BF9\u5B58\u5728");
+  if (pairExists[0] !== pairExists[1]) throw new WisePPTError("deck.pdf 与 delivery-manifest.json 必须成对存在");
   const token = `${process.pid}-${Date.now()}`;
   const pdfBackup = path.join(deck, `.deck.pdf.backup-${token}`);
   const manifestBackup = path.join(deck, `.delivery-manifest.json.backup-${token}`);
@@ -35,16 +35,16 @@ async function installDeliveryPair(deck, temporaryPdf, temporaryManifest) {
     }
   } catch (error) {
     const rollbackErrors = [];
-    if (pdfInstalled) await rm(pdf, { force: true }).catch((item) => rollbackErrors.push(`\u5220\u9664\u65B0 PDF: ${item.message}`));
-    if (manifestInstalled) await rm(manifest, { force: true }).catch((item) => rollbackErrors.push(`\u5220\u9664\u65B0 manifest: ${item.message}`));
-    if (pdfBackedUp) await rename(pdfBackup, pdf).catch((item) => rollbackErrors.push(`\u6062\u590D\u65E7 PDF: ${item.message}`));
-    if (manifestBackedUp) await rename(manifestBackup, manifest).catch((item) => rollbackErrors.push(`\u6062\u590D\u65E7 manifest: ${item.message}`));
-    const rollback = rollbackErrors.length ? `\u56DE\u6EDA\u4E0D\u5B8C\u6574\uFF08\u5907\u4EFD\u4FDD\u7559\u5728\u8F93\u51FA\u76EE\u5F55\uFF09\uFF1A${rollbackErrors.join("\uFF1B")}` : "\u65E7\u4EA4\u4ED8\u5DF2\u56DE\u6EDA";
-    throw new WisePPTError(`PDF/manifest \u6210\u5BF9\u63D0\u4EA4\u5931\u8D25\uFF0C${rollback}: ${error.message}`);
+    if (pdfInstalled) await rm(pdf, { force: true }).catch((item) => rollbackErrors.push(`删除新 PDF: ${item.message}`));
+    if (manifestInstalled) await rm(manifest, { force: true }).catch((item) => rollbackErrors.push(`删除新 manifest: ${item.message}`));
+    if (pdfBackedUp) await rename(pdfBackup, pdf).catch((item) => rollbackErrors.push(`恢复旧 PDF: ${item.message}`));
+    if (manifestBackedUp) await rename(manifestBackup, manifest).catch((item) => rollbackErrors.push(`恢复旧 manifest: ${item.message}`));
+    const rollback = rollbackErrors.length ? `回滚不完整（备份保留在输出目录）：${rollbackErrors.join("；")}` : "旧交付已回滚";
+    throw new WisePPTError(`PDF/manifest 成对提交失败，${rollback}: ${error.message}`);
   }
 }
 async function deliverStandard(root, rawDeck) {
-  const deck = assertAbsolute(rawDeck, "deck \u8DEF\u5F84");
+  const deck = assertAbsolute(rawDeck, "deck 路径");
   await validateDeck(root, deck);
   const chrome = await discoverChrome();
   const parent = path.dirname(deck);

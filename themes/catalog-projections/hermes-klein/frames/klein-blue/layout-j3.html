@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html data-theme-id="klein-blue" lang="zh-CN" data-runtime="wise-ppt-specimen" data-typography-mode="all-sans" data-page-id="gallery-ai-j3" data-page-role="sequence" data-theme="paper-ink" data-layout="paper-ink.cycle.journey-curve" data-layout-source="gallery" data-sample-focus-profile="content-only" data-sample-focus-members='[{"selector":"#j3-focus-node","role":"outline"},{"selector":"#j3-focus-node-core","role":"symbol","paint":"fill"},{"selector":"#j3-focus-leader","role":"outline"},{"selector":"#j3-focus-cn","role":"value"},{"selector":"#j3-focus-score","role":"annotation"}]' data-sample-focus-ref="sample.j3.j3-focus" data-surface-source="catalog-theme-recipes-v1" data-xp-recipe-id="klein-blue:j3" data-xp-surface-profile="process-axis" data-xp-recipe-status="recipe-ready" data-xp-frame-kind="recipe-generated">
+<head>
+<meta charset="UTF-8">
+<title>layout-j3 · 旅程曲线 · AI 产品用户体验旅程</title>
+<script src="../../../../../runtime/stage-fit.js"></script>
+<link rel="stylesheet" href="../../../../../themes/engine/assets/design-tokens.css">
+<link rel="stylesheet" href="../../../../../themes/packages/paper-ink/theme.css">
+<link rel="stylesheet" href="../../../../../themes/packages/hermes-orange/theme.css">
+<link rel="stylesheet" href="../../../../../themes/packages/klein-blue/theme.css">
+<link rel="stylesheet" href="../../../../../themes/engine/assets/catalog-fonts.css" data-wise-catalog-fonts="true">
+<link rel="stylesheet" href="../../../../../themes/engine/assets/slide-components.css">
+<link rel="stylesheet" href="../../../../../references/shell.css">
+<style>
+  svg.scene { position: absolute; inset: 0; z-index: 1; }
+  .caption {
+    position: absolute; left: 0; right: 0; bottom: 118px;
+    text-align: center;
+    font-family: var(--sans); font-weight: 400;
+    font-size: var(--type-caption); letter-spacing: .04em;
+    color: var(--ink);
+    z-index: 5;
+  }
+</style>
+<link rel="stylesheet" href="../../catalog-surface.css" data-catalog-theme-surface="catalog-theme-recipes-v1">
+<link rel="stylesheet" href="../../title-furniture.css" data-catalog-title-furniture="black-first-theme-second-v1">
+</head>
+<body class="slide">
+<div class="stage" data-block-id="gallery-primary" data-renderer-kind="svg" data-component-source="native" data-component-id="native.wise-ppt.cycle.journey-curve.journey" data-content-ref="example.j3" data-catalog-source-marker="page-recipe">
+  <div class="doc tl"><span class="doc-kicker">PPT 标题</span><span class="doc-title">页面标题</span></div>
+  <div class="folio">页码 / 总页数 — BY @歪斯Wise</div>
+
+  <svg class="scene" width="1920" height="1080" viewBox="0 0 1920 1080">
+    <g id="draw"></g>
+  </svg>
+
+  <div class="caption">用户从好奇到惊艳后会在深度使用时撞墙，跨过幻觉低谷才形成持续依赖。</div>
+</div>
+
+<script src="../../../../../themes/packages/paper-ink/assets/particles.js"></script>
+<script>
+var NS = 'http://www.w3.org/2000/svg';
+var INK = 'var(--ink)';
+var INK80 = 'var(--ink-80)';
+var INK70 = 'var(--ink-70)';
+var INK45 = 'var(--ink-45)';
+/* accent 触发：读 URL 加类 + 染色常量（详见 design-tokens.md §2） */
+if (location.search.indexOf('accent') >= 0) document.documentElement.classList.add('accent');
+var ACCENT = document.documentElement.classList.contains('accent');
+var FOCUS = getComputedStyle(document.documentElement).getPropertyValue('--wp-color-focus').trim();
+var G = document.getElementById('draw');
+function el(tag, attrs) {
+  var e = document.createElementNS(NS, tag);
+  for (var k in attrs) e.setAttribute(k, attrs[k]);
+  G.appendChild(e); return e;
+}
+function txt(x, y, str, attrs) {
+  var t = el('text', Object.assign({x:x, y:y}, attrs||{}));
+  t.textContent = str; return t;
+}
+var MONO = 'var(--mono)', SANS = 'var(--sans)';
+
+G = el('g', {transform:'translate(0 -54.2)'});
+
+
+/* ---------- 顶部 chevron 阶段带（AI 用户体验旅程） ---------- */
+var stages = [
+  ['01','ONBOARD','初次接触'],
+  ['02','WOW','上手使用'],
+  ['03','DEPTH','深度使用'],
+  ['04','STALL','遇到瓶颈'],
+  ['05','BREAK','突破理解']
+];
+stages.forEach(function(s, i){
+  var x = 180 + i*312, w = 290, y = 240, h = 52, tip = 22;
+  var d = 'M '+x+' '+y+' L '+(x+w-tip)+' '+y+' L '+(x+w)+' '+(y+h/2)+
+          ' L '+(x+w-tip)+' '+(y+h)+' L '+x+' '+(y+h)+' L '+(x+tip)+' '+(y+h/2)+' Z';
+  el('path', {d:d, fill:'var(--paper-panel)', stroke:INK80, 'stroke-width':1.1});
+  txt(x+w/2+6, y+16, s[0]+' '+s[1], {'font-family':MONO, 'font-size':'var(--type-meta)', 'letter-spacing':2, 'text-anchor':'middle', fill:INK});
+  txt(x+w/2+6, y+45, s[2], {'font-family':SANS, 'font-weight':300, 'font-size':'var(--type-label)', 'text-anchor':'middle', fill:INK70});
+});
+
+/* ---------- 主体：连续贝塞尔起伏曲线 ---------- */
+/* 节点：x / y / 类型(0中 1峰 -1谷) / 中文注 / mono 分值 */
+var nodes = [
+  {x:300,  y:560, t:0,  cn:'初次接触·好奇',   sc:'SCORE 74'},
+  {x:590,  y:430, t:1,  cn:'上手使用·惊艳',   sc:'SCORE 92 · PEAK'},
+  {x:830,  y:700, t:-1, cn:'深度使用·撞墙',   sc:'SCORE 41 · PAIN', focus:true},
+  {x:1090, y:450, t:1,  cn:'突破理解·掌控',   sc:'SCORE 88 · PEAK'},
+  {x:1330, y:660, t:-1, cn:'遇到幻觉·挫败',   sc:'SCORE 55 · PAIN'},
+  {x:1640, y:500, t:0,  cn:'持续依赖·离不开', sc:'SCORE 90'}
+];
+
+/* 中位基准虚线 + 轴注 */
+el('line', {x1:180, y1:560, x2:1740, y2:560, stroke:INK, 'stroke-width':.5, opacity:.3, 'stroke-dasharray':'2 6'});
+txt(1740, 548, 'EXPERIENCE INDEX 0–100', {'font-family':MONO, 'font-size':'var(--type-micro-secondary)', 'letter-spacing':2, 'text-anchor':'end', fill:INK45});
+
+/* 节点 → 阶段带的竖向构造虚线（峰/中节点在上方标注之上收笔，避让文字） */
+nodes.forEach(function(n){
+  el('line', {x1:n.x, y1:298, x2:n.x, y2:(n.t >= 0 ? n.y-99 : n.y-14), stroke:INK, 'stroke-width':.5, opacity:.22, 'stroke-dasharray':'2 6'});
+});
+
+/* 曲线本体（连续单线，1.4px） */
+el('path', {d:'M 300 560 C 420 560, 470 430, 590 430 C 710 430, 710 700, 830 700 '+
+              'C 950 700, 960 450, 1090 450 C 1220 450, 1210 660, 1330 660 '+
+              'C 1450 660, 1510 500, 1640 500',
+  fill:'none', stroke:INK80, 'stroke-width':1.4});
+
+/* ---------- 节点双圈 + 引线标注 ---------- */
+nodes.forEach(function(n){
+  el('circle', {id:n.focus?'j3-focus-node':'', cx:n.x, cy:n.y, r:9, fill:'var(--paper)', stroke:INK80, 'stroke-width':1.2});
+  el('circle', {id:n.focus?'j3-focus-node-core':'', cx:n.x, cy:n.y, r:2.4, fill:INK});
+  var up = (n.t >= 0);   /* 峰/中：标注在上方；谷：下方 */
+  var ly = up ? n.y - 46 : n.y + 58;
+  el('line', {id:n.focus?'j3-focus-leader':'', x1:n.x, y1:up ? n.y-13 : n.y+13, x2:n.x, y2:up ? n.y-32 : n.y+34,
+    stroke:INK, 'stroke-width':.7, opacity:.45, 'stroke-dasharray':'3 4'});
+  txt(n.x, ly, n.cn, {id:n.focus?'j3-focus-cn':'', 'font-family':SANS, 'font-weight':300, 'font-size':'var(--type-body)', 'text-anchor':'middle', fill:INK});
+  txt(n.x, up ? ly-37 : ly+26, n.sc, {id:n.focus?'j3-focus-score':'', 'font-family':MONO, 'font-size':'var(--type-meta)', 'letter-spacing':2, 'text-anchor':'middle', fill:INK45});
+});
+
+/* ---------- 虚线回环弧：尾段痛点引回上手阶段（带标签） ---------- */
+el('path', {d:'M 1330 672 C 1340 850, 600 852, 592 452',
+  fill:'none', stroke:INK, 'stroke-width':.9, opacity:.55, 'stroke-dasharray':'6 5'});
+/* 开放箭头（指向上方节点） */
+el('line', {x1:592, y1:452, x2:583, y2:466, stroke:INK, 'stroke-width':1.1, opacity:.7});
+el('line', {x1:592, y1:452, x2:601, y2:466, stroke:INK, 'stroke-width':1.1, opacity:.7});
+txt(960, 876, 'FEEDBACK: PAIN POINTS → ONBOARDING', {'font-family':MONO, 'font-size':'var(--type-micro-secondary)', 'letter-spacing':2, 'text-anchor':'middle', fill:INK45});
+
+stageFit();
+</script>
+<script type="application/json" id="xp-surface-recipe">{"theme":"klein-blue","color_name":"blue","layout_code":"j3","title":"layout-j3 · 旅程曲线 · AI 产品用户体验旅程","layout":"paper-ink.cycle.journey-curve","page_role":"sequence","canvas":{"token":"paper","value":"#f2efe9","reason":"常规内容页在纸面上建立层级。"},"surface_profile":"process-axis","surfaces":[{"role":"base-layout","material":"paper-plane","fill":"#f2efe9","stack":0},{"role":"journey-tab","material":"top-white","fill":"#ffffff","stack":2,"shadow":"none"},{"role":"focus-marker","material":"accent","fill":"#002fa7","stack":3}],"accent":{"value":"#002fa7","semantic_channel":"当前步骤、终点或同一序列编号","furniture":"左上第一行 doc-kicker 固定墨黑，第二行 doc-title 使用当前主题色；folio 继续按该页画布与原配方处理。","neutral_exceptions":["普通英文标签","轴名","层名","结构编号","MODEL","非当前数据"],"furniture_mode":"black-first-theme-second","folio_mode":"accent"},"border_policy":"主体 1px 墨线；唯一焦点可用 2px 橙线，所有容器方角。","shadow_policy":"无投影；轴线、轨道、节点属于同一纸面。","noise_policy":"由主题统一提供唯一一层约 6% 黑色 fractal-noise；页面不得自带 noise 节点；浅色页 multiply，墨面可 overlay。","reference_evidence":{"file":"ai_studio_code (12).html","cards":["card-2","card-5","card-6"],"rule":"流程只保留一条墨色主轴；同一序列的编号可以重复使用同一强调色通道。"},"acceptance":["强调色只落一个语义通道；同一序列可重复，但不得扩散到结构元数据。","纯白只用于 top-white，不能替代默认纸面。","缩略图必须从该主题独立 frame 的实际渲染重建。"],"status":"recipe-ready","surface_bindings":[{"selector":"#draw > g > path[fill=\"var(--paper-panel)\"]","expected_count":5,"role":"journey-tab","material":"top-white","fill":"#ffffff","stack":2,"shadow":"none"}],"surface_binding_reason":"真实浏览器 DOM 审计后锁定的稳定 selector；expected_count 是逐页门禁。"}</script>
+<script src="../../catalog-surface.js" data-catalog-theme-surface="catalog-theme-recipes-v1"></script>
+<script src="../../catalog-typography.js" data-catalog-typography="accent-english-title-match-v1"></script>
+</body>
+</html>

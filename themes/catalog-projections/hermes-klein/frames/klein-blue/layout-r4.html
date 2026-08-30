@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html data-theme-id="klein-blue" lang="zh-CN" data-runtime="wise-ppt-specimen" data-typography-mode="all-sans" data-page-id="gallery-ai-r4" data-page-role="compare" data-theme="paper-ink" data-layout="paper-ink.comparison.balance-tradeoff" data-layout-source="gallery" data-sample-focus-profile="copy-only" data-sample-focus-members='[{"selector":"#focus-caption","role":"label"}]' data-sample-focus-ref="sample.r4.r4-focus" data-surface-source="catalog-theme-recipes-v1" data-xp-recipe-id="klein-blue:r4" data-xp-surface-profile="balanced-tradeoff" data-xp-recipe-status="recipe-ready" data-xp-frame-kind="recipe-generated">
+<head>
+<meta charset="UTF-8">
+<title>layout-r4 · 权衡天平 · 速度与治理</title>
+<script src="../../../../../runtime/stage-fit.js"></script>
+<link rel="stylesheet" href="../../../../../themes/engine/assets/design-tokens.css">
+<link rel="stylesheet" href="../../../../../themes/packages/paper-ink/theme.css">
+<link rel="stylesheet" href="../../../../../themes/packages/hermes-orange/theme.css">
+<link rel="stylesheet" href="../../../../../themes/packages/klein-blue/theme.css">
+<link rel="stylesheet" href="../../../../../themes/engine/assets/catalog-fonts.css" data-wise-catalog-fonts="true">
+<link rel="stylesheet" href="../../../../../themes/engine/assets/slide-components.css">
+<link rel="stylesheet" href="../../../../../references/shell.css">
+<style>
+  /* 内容带以左上眉题下缘和底部 caption 上缘为上下边界，中线约 y=506。
+     移动页面槽本身，不把组件推出槽外；天平真实墨迹中心落在该内容带中线。 */
+  .balance-host{position:absolute;left:435px;top:252px;width:1050px;height:560px;z-index:1}
+  .balance-host>.pi-card{background:transparent}
+  .caption{position:absolute;left:0;right:0;bottom:82px;text-align:center;font-family:var(--sans);font-size:var(--type-caption);letter-spacing:.04em;color:var(--ink);z-index:5}
+</style>
+<link rel="stylesheet" href="../../catalog-surface.css" data-catalog-theme-surface="catalog-theme-recipes-v1">
+<link rel="stylesheet" href="../../title-furniture.css" data-catalog-title-furniture="black-first-theme-second-v1">
+</head>
+<body class="slide">
+<div class="stage" data-block-id="gallery-primary" data-renderer-kind="native-html" data-component-source="native" data-component-id="native.wise-ppt.106.balance-scale" data-content-ref="example.r4" data-catalog-source-marker="page-recipe">
+  <div class="doc tl"><span class="doc-kicker">PPT 标题</span><span class="doc-title">页面标题</span></div>
+  <div class="folio">页码 / 总页数 — BY @歪斯Wise</div>
+  <div id="balance-host" class="balance-host" data-slot-id="balance" data-component-id="native.wise-ppt.106.balance-scale" aria-label="速度与治理的权衡天平"></div>
+  <div class="caption">上线速度与治理强度不是二选一，关键是找到<span id="focus-caption">可接受的平衡点</span>。</div>
+</div>
+<script src="../../../../../capabilities/layouts/native-components.js"></script>
+<script>
+  const catalog=window.WISE_PPT_NATIVE_COMPONENT_DATA;
+  const entry=catalog&&catalog.entries.find(item=>item.num===106);
+  if(!entry)throw new Error('缺少 native.wise-ppt.106.balance-scale');
+  const style=document.createElement('style');
+  /* 样张是静帧:只注入组件静态样式,不拼 componentMotionCss(入场动效),
+     静止态即标称几何,AI 参考与门禁量测不再依赖截图时机。 */
+  style.textContent=catalog.componentCss||'';
+  document.head.appendChild(style);
+  const host=document.getElementById('balance-host');
+  host.innerHTML=entry.snippet;
+  const content={
+    left_title:'上线速度',
+    right_title:'治理强度',
+    left_point_1:'试点快 · 反馈早',
+    left_point_2:'成本低',
+    right_point_1:'权限清 · 证据全',
+    right_point_2:'风险稳'
+  };
+  Object.entries(content).forEach(([field,value])=>{
+    const node=host.querySelector(`[data-field="${field}"]`);
+    if(node)node.textContent=value;
+  });
+  stageFit();
+</script>
+<script type="application/json" id="xp-surface-recipe">{"theme":"klein-blue","color_name":"blue","layout_code":"r4","title":"layout-r4 · 权衡天平 · 速度与治理","layout":"paper-ink.comparison.balance-tradeoff","page_role":"compare","canvas":{"token":"paper","value":"#f2efe9","reason":"常规内容页在纸面上建立层级。"},"surface_profile":"balanced-tradeoff","surfaces":[{"role":"base-layout","material":"paper-plane","fill":"#f2efe9","stack":0},{"role":"balanced-pan","material":"translucent-white","fill":"rgba(255,255,255,.38)","stack":2,"shadow":"none"},{"role":"focus-marker","material":"accent","fill":"#002fa7","stack":3}],"accent":{"value":"#002fa7","semantic_channel":"新方案、胜出侧或决定性差异","furniture":"左上第一行 doc-kicker 固定墨黑，第二行 doc-title 使用当前主题色；folio 继续按该页画布与原配方处理。","neutral_exceptions":["普通英文标签","轴名","层名","结构编号","MODEL","非当前数据"],"furniture_mode":"black-first-theme-second","folio_mode":"accent"},"border_policy":"主体 1px 墨线；唯一焦点可用 2px 橙线，所有容器方角。","shadow_policy":"默认无影；仅唯一被举起的主证据允许一次 10px 零模糊橙色硬影。","noise_policy":"由主题统一提供唯一一层约 6% 黑色 fractal-noise；页面不得自带 noise 节点；浅色页 multiply，墨面可 overlay。","reference_evidence":{"file":"ai_studio_code (8).html","cards":["card-5","card-6"],"rule":"旧侧后退为承托面，新侧只在真正的前景对象上使用不透明白面。"},"acceptance":["强调色只落一个语义通道；同一序列可重复，但不得扩散到结构元数据。","纯白只用于 top-white，不能替代默认纸面。","缩略图必须从该主题独立 frame 的实际渲染重建。"],"status":"recipe-ready","surface_bindings":[{"selector":"#balance-host svg g > path:nth-of-type(2), #balance-host svg g > path:nth-of-type(3)","expected_count":2,"role":"balanced-pan","material":"translucent-white","fill":"rgba(255,255,255,.38)","stack":2,"shadow":"none"}],"surface_binding_reason":"真实浏览器 DOM 审计后锁定的稳定 selector；expected_count 是逐页门禁。"}</script>
+<script src="../../catalog-surface.js" data-catalog-theme-surface="catalog-theme-recipes-v1"></script>
+<script src="../../catalog-typography.js" data-catalog-typography="accent-english-title-match-v1"></script>
+</body>
+</html>

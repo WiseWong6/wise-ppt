@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html data-theme-id="paper-ink" lang="zh-CN" data-runtime="wise-ppt-specimen" data-typography-mode="all-sans" data-page-id="gallery-ai-u3" data-page-role="explain" data-theme="paper-ink" data-layout="paper-ink.causal.leverage-transform" data-layout-source="gallery" data-sample-focus-profile="content-only" data-sample-focus-members='[{"selector":"#lever-transform-label","role":"label"},{"selector":"#lever-outcome-title","role":"label"}]' data-sample-focus-ref="sample.u3.u3-focus">
+<head>
+<meta charset="UTF-8">
+<title>layout-u3 · 杠杆转化 · 存量能力到增量收入</title>
+<script src="../../../../runtime/stage-fit.js"></script>
+<link rel="stylesheet" href="../../../../themes/engine/assets/design-tokens.css">
+<link rel="stylesheet" href="../../../../themes/packages/paper-ink/theme.css">
+<link rel="stylesheet" href="../../../../themes/packages/hermes-orange/theme.css">
+<link rel="stylesheet" href="../../../../themes/packages/klein-blue/theme.css">
+<link rel="stylesheet" href="../../../../themes/engine/assets/catalog-fonts.css" data-wise-catalog-fonts="true">
+<link rel="stylesheet" href="../../../../themes/engine/assets/slide-components.css">
+<link rel="stylesheet" href="../../../shell.css">
+<style>
+  .lever-host{position:absolute;left:250px;top:158px;width:1420px;height:700px;z-index:1}
+  .lever-host>.pi-card{background:transparent}
+  .caption{position:absolute;left:150px;right:150px;bottom:82px;text-align:center;font-family:var(--sans);font-size:var(--type-caption);letter-spacing:.035em;color:var(--ink);z-index:5}
+</style>
+</head>
+<body class="slide">
+<div class="stage" data-block-id="gallery-primary" data-renderer-kind="native-html" data-component-source="native" data-component-id="native.wise-ppt.131.lever-balance" data-content-ref="example.u3">
+  <div class="doc tl">PPT 标题<br>页面标题</div>
+  <div class="folio">页码 / 总页数 — BY @歪斯Wise</div>
+  <div id="lever-host" class="lever-host" data-slot-id="lever" data-component-id="native.wise-ppt.131.lever-balance" aria-label="存量能力经产品化支点转成增量收入"></div>
+  <div class="caption">把已有能力变成增长，需要的不是继续堆资源，而是一个可复用的产品化支点。</div>
+</div>
+<script src="../../../../capabilities/layouts/native-components.js"></script>
+<script>
+  const catalog=window.WISE_PPT_NATIVE_COMPONENT_DATA;
+  const entry=catalog&&catalog.entries.find(item=>item.num===131);
+  if(!entry)throw new Error('缺少 native.wise-ppt.131.lever-balance');
+  const style=document.createElement('style');
+  style.textContent=catalog.componentCss||'';
+  document.head.appendChild(style);
+  const host=document.getElementById('lever-host');
+  host.innerHTML=entry.snippet;
+  const content={
+    left_title:'内容生产能力',
+    right_title:'新增订阅收入',
+    pivot_title:'产品化支点',
+    transform_label:'场景化封装',
+    annotation:'模型、流程与交付复用'
+  };
+  Object.entries(content).forEach(([field,value])=>{
+    const node=host.querySelector(`[data-field="${field}"]`);
+    if(node)node.textContent=value;
+  });
+  stageFit();
+</script>
+</body>
+</html>

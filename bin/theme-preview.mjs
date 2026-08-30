@@ -1,0 +1,314 @@
+import { load } from "#wise-html";
+import {
+  constants as fsConstants,
+  copyFile,
+  lstat,
+  mkdir,
+  mkdtemp,
+  readFile,
+  readdir,
+  rename,
+  rm,
+  stat,
+  writeFile
+} from "node:fs/promises";
+import path from "node:path";
+import {
+  assertAbsolute,
+  assertNoSymlinkComponents,
+  canonicalJson,
+  exists,
+  readJson,
+  readText,
+  renderJson,
+  sha256Text,
+  shaFile,
+  WisePPTError
+} from "./common.mjs";
+import {
+  loadRegisteredTheme,
+  projectThemeAssetForPublishedAssets,
+  REGISTERED_THEME_IDS,
+  renderThemeCss,
+  resolveTheme,
+  THEME_ENGINE_DESIGN_TOKENS,
+  THEME_TYPE_ROLES
+} from "./theme.mjs";
+const THEME_PREVIEW_FORMAT = "wise-ppt-theme-preview@2";
+const THEME_PREVIEW_MARKER = ".wise-ppt-theme-preview";
+const FIXED = Object.freeze([
+  { id: "paper-ink", label: "纸墨" },
+  { id: "hermes-orange", label: "爱马仕橙" },
+  { id: "klein-blue", label: "克莱因蓝" }
+]);
+const ROLES = Object.freeze([
+  "surface-canvas",
+  "surface-recessed",
+  "surface-panel",
+  "primary",
+  "functional",
+  "body",
+  "chart-label",
+  "metadata",
+  "divider",
+  "construction",
+  "focus",
+  "focus-secondary",
+  "focus-peripheral",
+  "data-1",
+  "data-2",
+  "data-3",
+  "data-4",
+  "data-5",
+  "data-6"
+]);
+function escapeHtml(value) {
+  return String(value).replace(/[&<>"']/g, (character) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" })[character]);
+}
+function jsonForScript(value) {
+  return JSON.stringify(value).replaceAll("<", "\\u003c").replaceAll(">", "\\u003e").replaceAll("&", "\\u0026");
+}
+function pathContains(parent, child) {
+  const relative = path.relative(parent, child);
+  return relative === "" || !relative.startsWith("..") && !path.isAbsolute(relative);
+}
+async function cloneFile(source, destination) {
+  await mkdir(path.dirname(destination), { recursive: true });
+  try {
+    await copyFile(source, destination, fsConstants.COPYFILE_FICLONE);
+  } catch (error) {
+    if (!["ENOTSUP", "EINVAL", "ENOSYS"].includes(error.code)) throw error;
+    await copyFile(source, destination);
+  }
+}
+async function cloneTree(source, destination) {
+  const metadata = await lstat(source);
+  if (metadata.isSymbolicLink()) throw new WisePPTError(`预览源含符号链接，拒绝复制: ${source}`);
+  if (metadata.isFile()) {
+    await cloneFile(source, destination);
+    return;
+  }
+  if (!metadata.isDirectory()) throw new WisePPTError(`预览源含不支持的文件类型: ${source}`);
+  await mkdir(destination, { recursive: true });
+  for (const entry of (await readdir(source, { withFileTypes: true })).sort((a, b) => a.name.localeCompare(b.name, "en"))) {
+    if (entry.isSymbolicLink()) throw new WisePPTError(`预览源含符号链接: ${path.join(source, entry.name)}`);
+    await cloneTree(path.join(source, entry.name), path.join(destination, entry.name));
+  }
+}
+async function collectCss(directory, base = directory, results = []) {
+  for (const entry of (await readdir(directory, { withFileTypes: true })).sort((a, b) => a.name.localeCompare(b.name, "en"))) {
+    const full = path.join(directory, entry.name);
+    if (entry.isSymbolicLink()) throw new WisePPTError(`预览源含符号链接: ${full}`);
+    if (entry.isDirectory()) await collectCss(full, base, results);
+    else if (entry.isFile() && entry.name.endsWith(".css")) results.push({ file: path.relative(base, full).split(path.sep).join("/"), css: await readText(full, `预览 CSS ${entry.name}`) });
+  }
+  return results;
+}
+function cssFacade(css, selector) {
+  const start = css.indexOf(selector);
+  const open = start < 0 ? -1 : css.indexOf("{", start + selector.length);
+  const close = open < 0 ? -1 : css.indexOf("}", open + 1);
+  if (start < 0 || open < 0 || close < 0) return null;
+  const body = css.slice(open + 1, close);
+  const token = (name) => body.match(new RegExp(`--wp-color-${name}\\s*:\\s*(#[0-9A-Fa-f]{6})\\s*;`))?.[1]?.toUpperCase();
+  return token("surface-canvas") && token("primary") ? { background: token("surface-canvas"), text: token("primary") } : null;
+}
+async function inspectThemePreviewDeck(rawDeck) {
+  const deckRoot = assertAbsolute(rawDeck, "themes preview deck 目录");
+  await assertNoSymlinkComponents(deckRoot, "themes preview deck 目录");
+  if (!(await stat(deckRoot).catch(() => null))?.isDirectory()) throw new WisePPTError(`themes preview deck 目录不存在: ${deckRoot}`);
+  const indexPath = path.join(deckRoot, "index.html");
+  const tokenPath = path.join(deckRoot, "assets/design-tokens.css");
+  if (!await exists(indexPath) || !await exists(tokenPath)) throw new WisePPTError("该成品不具备语义主题接口：缺少 index.html 或 assets/design-tokens.css");
+  const html = await readText(indexPath, "预览源 index.html");
+  const $ = load(html);
+  const root = $("html").first();
+  const deckContract = Number.parseInt(root.attr("data-deck-contract-version") || "", 10);
+  const runtime = root.attr("data-runtime-version") || "";
+  if (root.attr("data-runtime") !== "wise-ppt-deck" || !Number.isInteger(deckContract) || deckContract < 6 || !/^wise-ppt-runtime@[456]$/.test(runtime)) {
+    throw new WisePPTError("该成品不具备语义主题接口：只接受 deck@6+ 且 runtime@4/5/6；deck@2 旧稿不能使用独立主题");
+  }
+  const tokens = await readText(tokenPath, "预览源 design-tokens.css");
+  const missingRoles = ROLES.filter((role) => !tokens.includes(`--wp-color-${role}:`) && !tokens.includes(`--wp-color-${role}`));
+  if (missingRoles.length) throw new WisePPTError(`该成品不具备语义主题接口：缺少语义色 ${missingRoles.join(", ")}`);
+  for (const relative of ["assets", "runtime"]) if (!(await stat(path.join(deckRoot, relative)).catch(() => null))?.isDirectory()) throw new WisePPTError(`该成品不具备语义主题接口：缺少 ${relative}/`);
+  const originalThemeId = root.attr("data-theme-id") || null;
+  const originalPreset = root.attr("data-theme-preset") || null;
+  if (deckContract >= 9 && !originalThemeId) throw new WisePPTError("deck@9 成品缺少 data-theme-id");
+  if (deckContract < 9 && !originalPreset) throw new WisePPTError("兼容成品缺少旧主题声明");
+  let originalFacade = null;
+  const resolvedPath = path.join(deckRoot, "theme-resolved.json");
+  if (await exists(resolvedPath)) {
+    const resolved = await readJson(resolvedPath, "预览源 theme-resolved");
+    originalFacade = { background: resolved.tokens?.["surface-canvas"], text: resolved.tokens?.primary };
+  }
+  if (!originalFacade) {
+    const selector = `:root[data-theme-preset="${originalPreset}"]`;
+    originalFacade = cssFacade(tokens, selector) || { background: "#DFE0D9", text: "#191917" };
+  }
+  return {
+    deckRoot,
+    html,
+    deckContract,
+    runtime,
+    originalThemeId,
+    originalPreset,
+    originalFacade,
+    compatibility: runtime === "wise-ppt-runtime@4" ? "runtime4-visual-only" : runtime === "wise-ppt-runtime@6" ? "native-theme-system" : "legacy-semantic",
+    indexSha256: (await shaFile(indexPath)).sha256,
+    css: await collectCss(path.join(deckRoot, "assets"))
+  };
+}
+function auditThemeCompatibility(html, cssSources) {
+  const $ = load(html);
+  const css = cssSources.map((item) => item.css).join("\n");
+  const hardcoded = (html.match(/#[0-9A-Fa-f]{3,8}\b|rgba?\([^)]*\)/g) || []).length + (css.match(/#[0-9A-Fa-f]{3,8}\b|rgba?\([^)]*\)/g) || []).length;
+  const thinSvg = $("[stroke-width]").toArray().filter((node) => {
+    const value = Number.parseFloat($(node).attr("stroke-width"));
+    return value > 0 && value < 2;
+  }).length;
+  const semanticLines = $("[data-theme-line]").length;
+  const registeredIcons = $("svg[data-icon-source]").length;
+  const verifiedIcons = $("svg[data-icon-source][data-theme-icon-verified]").length;
+  const typeCounts = Object.fromEntries(THEME_TYPE_ROLES.map((role) => [role, $(`[data-theme-type-role="${role}"]`).length]));
+  const typeSamples = Object.fromEntries(THEME_TYPE_ROLES.map((role) => [role, $(`[data-theme-type-role="${role}"]`).toArray().map((node) => $(node).text().replace(/\s+/g, " ").trim()).filter(Boolean).slice(0, 3)]));
+  const declaredFontSizes = [...new Set([...css.matchAll(/font-size\s*:\s*([^;}]+)/gi)].map((match) => match[1].trim()))].sort((left, right) => left.localeCompare(right, "en"));
+  const tableRoots = $('table, [role="table"], [data-component-id*="table"], [data-component-id*="grid"]').length;
+  const tableRegions = $("[data-theme-table-region]").length;
+  const panelRoots = $('.card, .panel, [data-component-id*="card"], [data-component-id*="panel"]').length;
+  const explicitPanels = $("[data-theme-surface][data-theme-layer], [data-theme-surface].card, [data-theme-surface].panel").length;
+  const canvases = $("canvas").length;
+  const svgs = $("svg").length;
+  const echarts = /\becharts\b/.test(html + css) ? 1 : 0;
+  const warnings = [];
+  if (registeredIcons > verifiedIcons) warnings.push({ code: "unregistered-icon", message: `${registeredIcons - verifiedIcons} 个 Icon 未登记，保持原状。` });
+  if (thinSvg > semanticLines) warnings.push({ code: "unmapped-line", message: `${thinSvg - semanticLines} 条细线没有登记线宽阶梯。` });
+  if (tableRoots && !tableRegions) warnings.push({ code: "undeclared-table-regions", message: "检测到表格，但没有显式表头/数据行/选中行语义。" });
+  if (panelRoots && !explicitPanels) warnings.push({ code: "undeclared-panel-material", message: "检测到卡片或面板，但没有显式材料区域。" });
+  if (!typeCounts["top-left-kicker"] || !typeCounts["bottom-left-folio"] || !typeCounts["bottom-takeaway"]) warnings.push({ code: "missing-furniture-type-role", message: "兼容样本没有完整字体位置登记，切换时按实际支持轴降级。" });
+  if (hardcoded) warnings.push({ code: "hardcoded-paint", message: `HTML/CSS 中检测到 ${hardcoded} 个固定颜色字面，未声明区域不会自动接管。` });
+  return {
+    contract: "wise-ppt-theme-preview-audit@1",
+    status: warnings.length ? "review-required" : "compatible",
+    warnings,
+    color: { semantic_roles: ROLES.length, hardcoded_color_literals: hardcoded },
+    typography: { role_counts: typeCounts, role_samples: typeSamples, declared_font_sizes: declaredFontSizes, font_size_gate: "fit-and-overflow-required" },
+    lines: { thin_svg_strokes: thinSvg, semantic_line_carriers: semanticLines },
+    icons: { registered: registeredIcons, verified: verifiedIcons, unregistered: registeredIcons - verifiedIcons },
+    exceptions: { hollow_numbers: $('[data-theme-role="hollow-number"]').length, reverse: $('[data-theme-role="reverse"]').length },
+    components: { table_roots: tableRoots, table_regions: tableRegions, panel_roots: panelRoots, explicit_panels: explicitPanels },
+    renderers: { svg: svgs, canvas: canvases, echarts_references: echarts, refresh: "destroy-recreate-iframe-fonts-double-frame" },
+    geometry: { slides: $(".slide").length, locked: $("[data-layout-id], [data-structure-contract]").length, overflow_markers: $("[data-layout-fit], [data-fit-status]").length }
+  };
+}
+function scopedThemeCss(resolved, previewId) {
+  const selector = `:root[data-theme-id="${resolved.theme_id}"]`;
+  return renderThemeCss(resolved).replaceAll(selector, `${selector}[data-theme-preview="${previewId}"]`);
+}
+function deckHtml(source, targetMap) {
+  const $ = load(source.html);
+  const root = $("html").first();
+  const original = { themeId: source.originalThemeId, preset: source.originalPreset, typography: root.attr("data-typography-mode") || "mixed" };
+  const bootstrap = `<script id="wise-ppt-theme-preview-bootstrap">(function(){var r=document.documentElement,p=new URLSearchParams(location.search),v=p.get('preview-theme')||'current',m=${jsonForScript(targetMap)},o=${jsonForScript(original)};if(!Object.prototype.hasOwnProperty.call(m,v)){v='current';r.dataset.themePreviewError='invalid-theme';}r.dataset.themePreview=v;if(v==='current'){if(o.themeId)r.dataset.themeId=o.themeId;else delete r.dataset.themeId;if(o.preset)r.dataset.themePreset=o.preset;else delete r.dataset.themePreset;}else{r.dataset.themeId=m[v];delete r.dataset.themePreset;}r.dataset.typographyMode=o.typography;}());</script>`;
+  $("head").prepend(`${bootstrap}<link rel="stylesheet" href="assets/theme-engine.css"><link rel="stylesheet" href="assets/preview-themes.css">`);
+  $("body").append(`<script id="wise-ppt-theme-preview-ready">(function(){var q=new URLSearchParams(location.search),token=q.get('reload')||'',sent=false;function post(type,message){if(sent)return;sent=true;parent.postMessage({type:type,token:token,message:message||''},'*');}function ready(){Promise.resolve(document.fonts&&document.fonts.ready).then(function(){requestAnimationFrame(function(){requestAnimationFrame(function(){document.documentElement.getBoundingClientRect();post('wise-ppt-theme-preview-ready');});});});}addEventListener('load',function(){setTimeout(ready,0);},{once:true});addEventListener('error',function(e){post('wise-ppt-theme-preview-error',e.message||'deck-error');},{once:true});}());</script>`);
+  return `<!doctype html>
+${$.html("html")}
+`;
+}
+function shellHtml(source, resolvedThemes, sourceResolved, audit) {
+  const buttons = [{ id: "current", label: "当前主题" }, ...FIXED, { id: "source-theme", label: "素材主题" }];
+  const labels = Object.fromEntries(buttons.map((item) => [item.id, item.label]));
+  const facades = { current: source.originalFacade };
+  for (const item of FIXED) {
+    const resolved = resolvedThemes[item.id];
+    facades[item.id] = { background: resolved.tokens["surface-canvas"], text: resolved.tokens.primary };
+  }
+  facades["source-theme"] = { background: sourceResolved.tokens["surface-canvas"], text: sourceResolved.tokens.primary };
+  const buttonHtml = buttons.map((item) => `<button type="button" data-theme="${item.id}">${item.label}</button>`).join("");
+  const warnings = audit.warnings.length ? `<ul>${audit.warnings.map((item) => `<li><code>${escapeHtml(item.code)}</code> ${escapeHtml(item.message)}</li>`).join("")}</ul>` : "<p>所有登记轴均可比较。</p>";
+  const roleSamples = Object.entries(audit.typography.role_samples).filter(([, values]) => values.length).map(([role, values]) => `<li><code>${escapeHtml(role)}</code> ${values.map(escapeHtml).join(" / ")}</li>`).join("") || "<li>没有登记字体角色字面。</li>";
+  const axisReport = `<dl class="axes"><dt>色彩</dt><dd>${audit.color.semantic_roles} 个角色；${audit.color.hardcoded_color_literals} 个固定颜色字面</dd><dt>字体</dt><dd>${Object.values(audit.typography.role_counts).reduce((sum, count) => sum + count, 0)} 个角色载体；字号声明 ${audit.typography.declared_font_sizes.map(escapeHtml).join("、") || "无"}</dd><dt>线宽</dt><dd>${audit.lines.semantic_line_carriers} 个登记载体；${audit.lines.thin_svg_strokes} 条细 SVG 线</dd><dt>Icon</dt><dd>${audit.icons.verified}/${audit.icons.registered} 已验证；${audit.icons.unregistered} 个保持原状</dd><dt>空心/反白</dt><dd>${audit.exceptions.hollow_numbers}/${audit.exceptions.reverse}</dd><dt>表格/卡片/面板</dt><dd>${audit.components.table_regions} 个表格区域；${audit.components.explicit_panels}/${audit.components.panel_roots} 个显式面板</dd><dt>渲染器</dt><dd>SVG ${audit.renderers.svg}；Canvas ${audit.renderers.canvas}；ECharts ${audit.renderers.echarts_references}</dd><dt>几何</dt><dd>${audit.geometry.locked} 个锁定载体；${audit.geometry.overflow_markers} 个 fit/overflow 标记</dd></dl>`;
+  return `<!doctype html>
+<html lang="zh-CN"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Wise PPT · 独立主题系统预览</title>
+<style>:root{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;background:#e9e8e3;color:#1c1c1a}*{box-sizing:border-box}body{margin:0;min-width:960px}.app{display:grid;grid-template-rows:auto 1fr;min-height:100vh}.bar{display:flex;align-items:center;gap:16px;padding:12px 20px;background:#faf9f5;border-bottom:1px solid #d8d6cf}.meta{min-width:280px}.meta strong{display:block;font-size:14px}.meta small{font-size:12px;color:#66635c}.controls{display:flex;gap:8px}.controls button{border:1px solid #c9c6bd;background:#fff;border-radius:999px;padding:8px 14px;cursor:pointer}.controls button[aria-pressed="true"]{background:#1e1e1b;color:#fff;border-color:#1e1e1b}.audit{margin-left:auto;position:relative}.audit summary{font-size:12px;cursor:pointer}.audit-body{position:absolute;right:0;top:28px;z-index:8;width:560px;max-height:70vh;overflow:auto;background:#fff;border:1px solid #d0cdc4;padding:14px;box-shadow:0 14px 34px #1f1e2b29;font-size:12px;line-height:1.55}.axes{display:grid;grid-template-columns:110px 1fr;gap:4px 10px;margin:10px 0}.axes dt{font-weight:700}.axes dd{margin:0}.viewport{display:grid;place-items:center;padding:22px;background:#d7d5cf}.frame{position:relative;width:min(calc((100vh - 112px)*16/9),calc(100vw - 44px));aspect-ratio:16/9;overflow:hidden;box-shadow:0 18px 50px #1f1e2b2e}.frame iframe{position:absolute;inset:0;width:100%;height:100%;border:0}.facade{position:absolute;z-index:3;inset:0;display:grid;place-items:center;font-size:13px;letter-spacing:.08em}.facade[hidden]{display:none}</style></head>
+<body><main class="app"><header class="bar"><div class="meta"><strong id="status">当前主题</strong><small>${escapeHtml(sourceResolved.name)} · 完整主题比较</small></div><nav class="controls">${buttonHtml}</nav><details class="audit"><summary>预览审计 · ${audit.warnings.length} 项需人工看</summary><div class="audit-body"><p>以下各轴按源成品实际支持情况报告，未登记区域保持原状。</p>${axisReport}<h3>字体角色真实字面</h3><ul>${roleSamples}</ul><h3>风险</h3>${warnings}</div></details></header><section class="viewport"><div class="frame" id="host"><div class="facade" id="facade">载入当前主题</div></div></section></main>
+<script>(function(){var labels=${jsonForScript(labels)},facades=${jsonForScript(facades)},host=document.getElementById('host'),facade=document.getElementById('facade'),status=document.getElementById('status'),serial=0,active=null,pending=new Map();function clear(){pending.forEach(function(t,f){clearTimeout(t);f.remove();});pending.clear();}function finish(frame,token,ok,msg){var timer=pending.get(frame);if(timer)clearTimeout(timer);pending.delete(frame);if(token!==serial){frame.remove();return;}if(!ok){frame.remove();status.textContent=labels[frame.dataset.theme]+' · 失败';facade.textContent=msg||'载入失败';return;}if(active)active.remove();active=frame;facade.hidden=true;}function select(id){if(!labels[id])return;var token=++serial,frame=document.createElement('iframe');clear();if(active){active.remove();active=null;}document.querySelectorAll('[data-theme]').forEach(function(b){b.setAttribute('aria-pressed',String(b.dataset.theme===id));});status.textContent=labels[id];facade.hidden=false;facade.style.background=facades[id].background;facade.style.color=facades[id].text;facade.textContent=labels[id]+' · 字体与图表重建中';frame.dataset.reloadToken=String(token);frame.dataset.theme=id;frame.src='deck.html?preview-theme='+encodeURIComponent(id)+'&reload='+token;pending.set(frame,setTimeout(function(){finish(frame,token,false,'载入超时');},15000));host.appendChild(frame);}addEventListener('message',function(e){var frame=[...pending.keys()].find(function(f){return f.contentWindow===e.source;});if(!frame||!e.data||String(e.data.token)!==frame.dataset.reloadToken)return;finish(frame,serial,e.data.type==='wise-ppt-theme-preview-ready',e.data.message);});document.querySelectorAll('[data-theme]').forEach(function(b){b.addEventListener('click',function(){select(b.dataset.theme);});});select('current');}());</script></body></html>`;
+}
+async function validatePrevious(output) {
+  const metadata = await stat(output).catch(() => null);
+  if (!metadata) return false;
+  if (!metadata.isDirectory()) throw new WisePPTError(`themes preview --out 必须是目录: ${output}`);
+  const marker = path.join(output, THEME_PREVIEW_MARKER);
+  const markerValue = await readFile(marker, "utf8").catch(() => "");
+  if (!await exists(marker) || !(/* @__PURE__ */ new Set([`${THEME_PREVIEW_FORMAT}
+`, "wise-ppt-theme-preview@1\n"])).has(markerValue)) throw new WisePPTError(`拒绝覆盖非 Wise PPT 主题预览目录: ${output}`);
+  return true;
+}
+async function createThemePreview(root, rawDeck, themeInput, rawOutput) {
+  const source = await inspectThemePreviewDeck(rawDeck);
+  const output = assertAbsolute(rawOutput, "themes preview --out");
+  await assertNoSymlinkComponents(output, "themes preview --out");
+  if (pathContains(source.deckRoot, output) || pathContains(output, source.deckRoot)) throw new WisePPTError("themes preview --out 与源 deck 不得互相包含");
+  const resolved = resolveTheme(themeInput);
+  const registered = {};
+  for (const themeId of REGISTERED_THEME_IDS) registered[themeId] = resolveTheme(await loadRegisteredTheme(root, themeId));
+  const audit = auditThemeCompatibility(source.html, source.css);
+  const hadOutput = await validatePrevious(output);
+  await mkdir(path.dirname(output), { recursive: true });
+  const temp = await mkdtemp(path.join(path.dirname(output), ".wise-ppt-theme-preview-"));
+  const backup = `${output}.backup-${process.pid}`;
+  let published = false;
+  const targetMap = { current: source.originalThemeId || "paper-ink", ...Object.fromEntries(FIXED.map((item) => [item.id, item.id])), "source-theme": resolved.theme_id };
+  const previewCss = [
+    ...FIXED.map((item) => scopedThemeCss(registered[item.id], item.id)),
+    scopedThemeCss(resolved, "source-theme")
+  ].join("\n");
+  try {
+    await Promise.all([cloneTree(path.join(source.deckRoot, "assets"), path.join(temp, "assets")), cloneTree(path.join(source.deckRoot, "runtime"), path.join(temp, "runtime"))]);
+    await mkdir(path.join(temp, "assets/fonts"), { recursive: true });
+    const oswald = path.join(root, "themes/engine/fonts/catalog/Oswald-Bold-Latin.catalog.woff2");
+    const themeEngineCss = projectThemeAssetForPublishedAssets(
+      THEME_ENGINE_DESIGN_TOKENS,
+      await readText(path.join(root, ...THEME_ENGINE_DESIGN_TOKENS.split("/")), "theme engine CSS")
+    );
+    await Promise.all([
+      cloneFile(oswald, path.join(temp, "assets/fonts/Oswald-Bold-Latin.catalog.woff2")),
+      writeFile(path.join(temp, "assets/theme-engine.css"), themeEngineCss),
+      writeFile(path.join(temp, "assets/preview-themes.css"), previewCss),
+      writeFile(path.join(temp, "deck.html"), deckHtml(source, targetMap)),
+      writeFile(path.join(temp, "index.html"), shellHtml(source, registered, resolved, audit)),
+      writeFile(path.join(temp, THEME_PREVIEW_MARKER), `${THEME_PREVIEW_FORMAT}
+`)
+    ]);
+    const manifest = {
+      format: THEME_PREVIEW_FORMAT,
+      source: { deck_contract_version: source.deckContract, runtime_version: source.runtime, original_theme_id: source.originalThemeId, original_preset: source.originalPreset, compatibility: source.compatibility, index_sha256: source.indexSha256 },
+      theme: resolved.definition,
+      resolved_sha256: sha256Text(canonicalJson(resolved)),
+      audit,
+      themes: ["current", ...FIXED.map((item) => item.id), "source-theme"],
+      reload_strategy: "destroy-recreate-iframe-fonts-double-frame"
+    };
+    await writeFile(path.join(temp, "theme-preview-manifest.json"), renderJson(manifest));
+    if (hadOutput) await rename(output, backup);
+    await rename(temp, output);
+    published = true;
+    if (hadOutput) await rm(backup, { recursive: true, force: true });
+    return { output, index: path.join(output, "index.html"), manifest, resolved };
+  } catch (error) {
+    if (hadOutput && await exists(backup) && !await exists(output)) await rename(backup, output).catch(() => {
+    });
+    throw error;
+  } finally {
+    if (!published) await rm(temp, { recursive: true, force: true }).catch(() => {
+    });
+  }
+}
+export {
+  THEME_PREVIEW_FORMAT,
+  THEME_PREVIEW_MARKER,
+  auditThemeCompatibility,
+  createThemePreview,
+  inspectThemePreviewDeck
+};

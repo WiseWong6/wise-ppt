@@ -4,14 +4,14 @@ import os from "node:os";
 import path from "node:path";
 import { shaFile, readJson, WisePPTError } from "./common.mjs";
 async function loadFontManifest(root) {
-  const manifestPath = path.join(root, "themes/paper-ink/assets/fonts/font-manifest.json");
+  const manifestPath = path.join(root, "themes/engine/fonts/font-manifest.json");
   const manifest = await readJson(manifestPath, "font-manifest");
   if (manifest.contract_version !== 4 || !Array.isArray(manifest.fonts) || !manifest.fonts.length) {
-    throw new WisePPTError("font-manifest \u5408\u540C\u9519\u8BEF");
+    throw new WisePPTError("font-manifest 合同错误");
   }
   for (const font of manifest.fonts) {
     if (!font.filename || !Array.isArray(font.system_filenames) || !font.system_filenames.length || !Array.isArray(font.system_family_names) || !font.system_family_names.length || !Number.isInteger(font.weight) || font.weight < 100 || font.weight > 900) {
-      throw new WisePPTError(`font-manifest \u5B57\u4F53\u5BB6\u65CF\u6216\u5B57\u91CD\u9519\u8BEF: ${font.filename || "unknown"}`);
+      throw new WisePPTError(`font-manifest 字体家族或字重错误: ${font.filename || "unknown"}`);
     }
   }
   const digest = (await shaFile(manifestPath)).sha256;
@@ -22,9 +22,9 @@ function fontCacheRoot(manifestDigest, env = process.env, platform = process.pla
   if (platform === "darwin") base = path.join(os.homedir(), "Library", "Caches", "wise-ppt", "fonts");
   else if (platform === "win32") {
     const local = env.LOCALAPPDATA;
-    if (!local) throw new WisePPTError("Windows \u7F3A\u5C11 LOCALAPPDATA\uFF0C\u65E0\u6CD5\u786E\u5B9A Wise PPT \u5B57\u4F53\u7F13\u5B58");
+    if (!local) throw new WisePPTError("Windows 缺少 LOCALAPPDATA，无法确定 Wise PPT 字体缓存");
     base = path.join(local, "WisePPT", "Cache", "fonts");
-  } else throw new WisePPTError(`Wise PPT \u4EC5\u652F\u6301 macOS \u548C Windows\uFF0C\u5F53\u524D\u5E73\u53F0\uFF1A${platform}`);
+  } else throw new WisePPTError(`Wise PPT 仅支持 macOS 和 Windows，当前平台：${platform}`);
   return path.join(base, manifestDigest);
 }
 function systemFontDirectories(env = process.env, platform = process.platform) {
@@ -37,7 +37,7 @@ function systemFontDirectories(env = process.env, platform = process.platform) {
       env.LOCALAPPDATA ? path.join(env.LOCALAPPDATA, "Microsoft", "Windows", "Fonts") : null
     ].filter(Boolean);
   }
-  throw new WisePPTError(`Wise PPT \u4EC5\u652F\u6301 macOS \u548C Windows\uFF0C\u5F53\u524D\u5E73\u53F0\uFF1A${platform}`);
+  throw new WisePPTError(`Wise PPT 仅支持 macOS 和 Windows，当前平台：${platform}`);
 }
 async function collectFontFiles(root, output, depth = 0) {
   if (depth > 8) return;
@@ -80,14 +80,14 @@ function decodeFontName(bytes, platformId) {
 async function readAt(handle, length, position) {
   const bytes = Buffer.alloc(length);
   const { bytesRead } = await handle.read(bytes, 0, length, position);
-  if (bytesRead !== length) throw new Error("\u5B57\u4F53\u8868\u5DF2\u622A\u65AD");
+  if (bytesRead !== length) throw new Error("字体表已截断");
   return bytes;
 }
 async function sfntFaceOffsets(handle) {
   const header = await readAt(handle, 12, 0);
   if (header.toString("ascii", 0, 4) !== "ttcf") return [0];
   const count = header.readUInt32BE(8);
-  if (!count || count > 256) throw new Error("TTC face \u6570\u91CF\u975E\u6CD5");
+  if (!count || count > 256) throw new Error("TTC face 数量非法");
   const offsets = await readAt(handle, count * 4, 12);
   return Array.from({ length: count }, (_unused, index) => offsets.readUInt32BE(index * 4));
 }
@@ -244,7 +244,7 @@ async function downloadFont(font, target, { retries = 2, timeoutMs = 6e5, fetchI
       }
     }
   }
-  throw new WisePPTError(`${font.filename} \u6240\u6709\u4E0B\u8F7D\u6E90\u5747\u5931\u8D25\uFF1A${errors.join("\uFF1B")}`);
+  throw new WisePPTError(`${font.filename} 所有下载源均失败：${errors.join("；")}`);
 }
 async function inspectFonts(root, options = {}) {
   const { manifest, digest } = await loadFontManifest(root);
@@ -316,7 +316,7 @@ async function resolveFonts(root, options = {}) {
     try {
       await downloadFont(font, target, options);
     } catch (error) {
-      throw new WisePPTError(`${error.message}\u3002\u7F13\u5B58\u76EE\u5F55\uFF1A${cacheRoot}\u3002\u8054\u7F51\u540E\u91CD\u65B0\u6267\u884C build\u3002`);
+      throw new WisePPTError(`${error.message}。缓存目录：${cacheRoot}。联网后重新执行 build。`);
     }
     records.push({ font, source: target, origin: "download" });
   }

@@ -18,6 +18,8 @@ import {
 import { verifyBundle } from "./bundle.mjs";
 import { doctor } from "./doctor.mjs";
 import { deliverStandard } from "./deliver.mjs";
+import { resolveTheme } from "./theme.mjs";
+import { createThemePreview } from "./theme-preview.mjs";
 import {
   buildAndPublish,
   layoutSelectionState,
@@ -30,14 +32,16 @@ import {
 } from "./standard.mjs";
 function usage() {
   return [
-    "\u7528\u6CD5:",
+    "用法:",
     "  node <skill>/bin/wise-ppt.mjs doctor",
     "  node <skill>/bin/wise-ppt.mjs layouts [filters]",
     "  node <skill>/bin/wise-ppt.mjs layouts plan <page-plan.json> --agent-brief [--new-session]",
     "  node <skill>/bin/wise-ppt.mjs preflight <deck-spec.json> --all-errors",
-    "  node <skill>/bin/wise-ppt.mjs build <deck-spec.json> --out <\u7EDD\u5BF9\u76EE\u5F55>",
-    "  node <skill>/bin/wise-ppt.mjs validate <\u7EDD\u5BF9 deck \u76EE\u5F55>",
-    "  node <skill>/bin/wise-ppt.mjs deliver <\u7EDD\u5BF9 deck \u76EE\u5F55>",
+    "  node <skill>/bin/wise-ppt.mjs build <deck-spec.json> --out <绝对目录>",
+    "  node <skill>/bin/wise-ppt.mjs validate <绝对 deck 目录>",
+    "  node <skill>/bin/wise-ppt.mjs themes resolve <theme.json 绝对路径>",
+    "  node <skill>/bin/wise-ppt.mjs themes preview <deck 绝对目录> --theme <theme.json 绝对路径> --out <绝对目录>",
+    "  node <skill>/bin/wise-ppt.mjs deliver <绝对 deck 目录>",
     "  node <skill>/bin/wise-ppt.mjs experimental <prepare|build|validate|preview|deliver> ..."
   ].join("\n");
 }
@@ -45,23 +49,27 @@ function commandUsage(command) {
   const lines = {
     doctor: ["node <skill>/bin/wise-ppt.mjs doctor"],
     layouts: [
-      "\u6574\u526F\u89C4\u5212: node <skill>/bin/wise-ppt.mjs layouts plan <page-plan.json \u7EDD\u5BF9\u8DEF\u5F84> --agent-brief [--new-session]",
-      "\u5019\u9009\u67E5\u8BE2: node <skill>/bin/wise-ppt.mjs layouts (--new-session | --selection-seed SEED) [--page-kind KIND] [--page-role ROLE] [--relation-key KEY] [--requires TYPE] [--content-items N] [--layout-usage ID:COUNT:LAST_SEQUENCE] [--compact]",
-      "\u8BE6\u60C5\u67E5\u8BE2: node <skill>/bin/wise-ppt.mjs layouts --layout-id ID"
+      "整副规划: node <skill>/bin/wise-ppt.mjs layouts plan <page-plan.json 绝对路径> --agent-brief [--new-session]",
+      "候选查询: node <skill>/bin/wise-ppt.mjs layouts (--new-session | --selection-seed SEED) [--page-kind KIND] [--page-role ROLE] [--relation-key KEY] [--requires TYPE] [--content-items N] [--layout-usage ID:COUNT:LAST_SEQUENCE] [--compact]",
+      "详情查询: node <skill>/bin/wise-ppt.mjs layouts --layout-id ID"
     ],
-    preflight: ["node <skill>/bin/wise-ppt.mjs preflight <deck-spec.json \u7EDD\u5BF9\u8DEF\u5F84> --all-errors"],
-    build: ["node <skill>/bin/wise-ppt.mjs build <deck-spec.json \u7EDD\u5BF9\u8DEF\u5F84> --out <\u7EDD\u5BF9\u76EE\u5F55>"],
-    validate: ["node <skill>/bin/wise-ppt.mjs validate <\u7EDD\u5BF9 deck \u76EE\u5F55>"],
-    deliver: ["node <skill>/bin/wise-ppt.mjs deliver <\u7EDD\u5BF9 deck \u76EE\u5F55>"],
+    preflight: ["node <skill>/bin/wise-ppt.mjs preflight <deck-spec.json 绝对路径> --all-errors"],
+    build: ["node <skill>/bin/wise-ppt.mjs build <deck-spec.json 绝对路径> --out <绝对目录>"],
+    validate: ["node <skill>/bin/wise-ppt.mjs validate <绝对 deck 目录>"],
+    themes: [
+      "node <skill>/bin/wise-ppt.mjs themes resolve <theme.json 绝对路径>",
+      "node <skill>/bin/wise-ppt.mjs themes preview <deck 绝对目录> --theme <theme.json 绝对路径> --out <绝对目录>"
+    ],
+    deliver: ["node <skill>/bin/wise-ppt.mjs deliver <绝对 deck 目录>"],
     experimental: [
-      "node <skill>/bin/wise-ppt.mjs experimental prepare <standard \u7EDD\u5BF9\u76EE\u5F55> --out <experiment \u7EDD\u5BF9\u76EE\u5F55> (--page ID ... | --all-pages)",
-      "node <skill>/bin/wise-ppt.mjs experimental build <experiment \u7EDD\u5BF9\u76EE\u5F55>",
-      "node <skill>/bin/wise-ppt.mjs experimental validate <experiment \u7EDD\u5BF9\u76EE\u5F55>",
-      "node <skill>/bin/wise-ppt.mjs experimental preview <experiment \u7EDD\u5BF9\u76EE\u5F55> [--open]",
-      "node <skill>/bin/wise-ppt.mjs experimental deliver <experiment \u7EDD\u5BF9\u76EE\u5F55>"
+      "node <skill>/bin/wise-ppt.mjs experimental prepare <standard 绝对目录> --out <experiment 绝对目录> (--page ID ... | --all-pages)",
+      "node <skill>/bin/wise-ppt.mjs experimental build <experiment 绝对目录>",
+      "node <skill>/bin/wise-ppt.mjs experimental validate <experiment 绝对目录>",
+      "node <skill>/bin/wise-ppt.mjs experimental preview <experiment 绝对目录> [--open]",
+      "node <skill>/bin/wise-ppt.mjs experimental deliver <experiment 绝对目录>"
     ]
   };
-  return `\u7528\u6CD5:
+  return `用法:
   ${(lines[command] || []).join("\n  ")}
 `;
 }
@@ -78,11 +86,11 @@ function parseOptions(values, multiple = /* @__PURE__ */ new Set()) {
       options[item.slice(2)] = true;
       continue;
     }
-    if (index + 1 >= values.length) throw new WisePPTError(`\u53C2\u6570\u7F3A\u5C11\u503C: ${item}`);
+    if (index + 1 >= values.length) throw new WisePPTError(`参数缺少值: ${item}`);
     const key = item.slice(2);
     const value = values[++index];
     if (multiple.has(key)) (options[key] ||= []).push(value);
-    else if (key in options) throw new WisePPTError(`\u53C2\u6570\u91CD\u590D: ${item}`);
+    else if (key in options) throw new WisePPTError(`参数重复: ${item}`);
     else options[key] = value;
   }
   return { positionals, options };
@@ -104,7 +112,7 @@ function compactLayout(item) {
     allowed_payload_types: item.allowed_payload_types || [],
     name: item.name || item.display_code,
     description: item.description || "",
-    structure_summary: item.structure_summary || `${requiredSlots.length} \u4E2A\u53EF\u586B\u533A`,
+    structure_summary: item.structure_summary || `${requiredSlots.length} 个可填区`,
     leaf_count: Number.isInteger(item.leaf_count) ? item.leaf_count : requiredSlots.length,
     reading_order: item.reading_order || [],
     primary_units: item.capacity?.primary_units,
@@ -120,7 +128,7 @@ function compactLayout(item) {
 function parseLayoutUsageArgument(value, offset) {
   const parts = String(value).split(":");
   if (parts.length !== 3 || !parts[0] || !/^[1-9]\d*$/.test(parts[1]) || !/^[1-9]\d*$/.test(parts[2])) {
-    throw new WisePPTError(`--layout-usage \u7B2C ${offset + 1} \u9879\u5FC5\u987B\u662F <layout_id>:<\u6B63\u6574\u6570 count>:<\u6B63\u6574\u6570 last_sequence>`);
+    throw new WisePPTError(`--layout-usage 第 ${offset + 1} 项必须是 <layout_id>:<正整数 count>:<正整数 last_sequence>`);
   }
   return {
     layout_id: parts[0],
@@ -130,15 +138,15 @@ function parseLayoutUsageArgument(value, offset) {
 }
 function parseNonnegativeIntegerArgument(value, label) {
   const raw = String(value);
-  if (!/^(0|[1-9]\d*)$/.test(raw)) throw new WisePPTError(`${label} \u5FC5\u987B\u662F\u975E\u8D1F\u6574\u6570`);
+  if (!/^(0|[1-9]\d*)$/.test(raw)) throw new WisePPTError(`${label} 必须是非负整数`);
   const parsed = Number(raw);
-  if (!Number.isSafeInteger(parsed)) throw new WisePPTError(`${label} \u5FC5\u987B\u662F\u975E\u8D1F\u5B89\u5168\u6574\u6570`);
+  if (!Number.isSafeInteger(parsed)) throw new WisePPTError(`${label} 必须是非负安全整数`);
   return parsed;
 }
 async function main(argv = process.argv.slice(2)) {
   const nodeMajor = Number.parseInt(process.versions.node.split(".")[0], 10);
   if (!SUPPORTED_NODE_MAJORS.includes(nodeMajor)) {
-    throw new WisePPTError(`\u4EC5\u652F\u6301 Node 22/24 LTS\uFF0C\u5F53\u524D ${process.version}`);
+    throw new WisePPTError(`仅支持 Node 22/24 LTS，当前 ${process.version}`);
   }
   const root = runtimeRoot(import.meta.url);
   const [command, ...rest] = argv;
@@ -148,12 +156,12 @@ async function main(argv = process.argv.slice(2)) {
 `);
     return;
   }
-  if (rest.length === 1 && (rest[0] === "--help" || rest[0] === "-h") && ["doctor", "layouts", "preflight", "build", "validate", "deliver", "experimental"].includes(command)) {
+  if (rest.length === 1 && (rest[0] === "--help" || rest[0] === "-h") && ["doctor", "layouts", "preflight", "build", "validate", "themes", "deliver", "experimental"].includes(command)) {
     process.stdout.write(commandUsage(command));
     return;
   }
   if (command === "doctor") {
-    if (rest.length) throw new WisePPTError(`doctor \u4E0D\u63A5\u53D7\u989D\u5916\u53C2\u6570
+    if (rest.length) throw new WisePPTError(`doctor 不接受额外参数
 ${usage()}`);
     process.stdout.write(renderJson(await doctor(root)));
     return;
@@ -162,8 +170,8 @@ ${usage()}`);
   if (command === "layouts") {
     if (rest[0] === "plan") {
       if (rest.length === 2 && (rest[1] === "--help" || rest[1] === "-h")) {
-        process.stdout.write(`\u7528\u6CD5:
-  ${commandUsage("layouts").split("\n").find((line) => line.includes("\u6574\u526F\u89C4\u5212:")).trim().replace("\u6574\u526F\u89C4\u5212: ", "")}
+        process.stdout.write(`用法:
+  ${commandUsage("layouts").split("\n").find((line) => line.includes("整副规划:")).trim().replace("整副规划: ", "")}
 `);
         return;
       }
@@ -171,11 +179,11 @@ ${usage()}`);
       const allowed2 = /* @__PURE__ */ new Set(["agent-brief", "new-session"]);
       const unknown2 = Object.keys(options2).filter((key) => !allowed2.has(key));
       if (positionals2.length !== 1 || unknown2.length || options2["agent-brief"] !== true) {
-        throw new WisePPTError(`layouts plan \u53C2\u6570\u9519\u8BEF
+        throw new WisePPTError(`layouts plan 参数错误
 ${commandUsage("layouts")}`);
       }
-      const requestPath = assertAbsolute(positionals2[0], "layout plan \u8F93\u5165");
-      await assertNoSymlinkComponents(requestPath, "layout plan \u8F93\u5165");
+      const requestPath = assertAbsolute(positionals2[0], "layout plan 输入");
+      await assertNoSymlinkComponents(requestPath, "layout plan 输入");
       const request = await readJson(requestPath, "layout plan");
       const state2 = await registryState(root);
       const result = planLayouts(state2.registry, request, {
@@ -190,21 +198,21 @@ ${commandUsage("layouts")}`);
       return;
     }
     const { positionals, options } = parseOptions(rest, /* @__PURE__ */ new Set(["requires", "layout-usage"]));
-    if (positionals.length) throw new WisePPTError(`layouts \u4E0D\u63A5\u53D7\u4F4D\u7F6E\u53C2\u6570: ${positionals.join(" ")}`);
+    if (positionals.length) throw new WisePPTError(`layouts 不接受位置参数: ${positionals.join(" ")}`);
     const allowed = /* @__PURE__ */ new Set(["layout-id", "page-kind", "page-role", "relation-key", "requires", "content-items", "layout-usage", "selection-seed", "new-session", "compact"]);
     const unknown = Object.keys(options).filter((key) => !allowed.has(key));
-    if (unknown.length) throw new WisePPTError(`layouts \u542B\u672A\u767B\u8BB0\u53C2\u6570: ${unknown.join(", ")}`);
+    if (unknown.length) throw new WisePPTError(`layouts 含未登记参数: ${unknown.join(", ")}`);
     const contentItems = options["content-items"] === void 0 ? void 0 : parseNonnegativeIntegerArgument(options["content-items"], "--content-items");
     const state = await registryState(root);
     const layoutUsage = (options["layout-usage"] || []).map(parseLayoutUsageArgument);
     const detailOnly = Boolean(options["layout-id"]);
     const newSession = options["new-session"] === true;
     if (detailOnly && (newSession || options["selection-seed"] !== void 0 || layoutUsage.length)) {
-      throw new WisePPTError("\u5355\u9AA8\u67B6\u8BE6\u60C5\u67E5\u8BE2\u4E0D\u5F97\u4F20 --new-session\u3001--selection-seed \u6216 --layout-usage");
+      throw new WisePPTError("单骨架详情查询不得传 --new-session、--selection-seed 或 --layout-usage");
     }
-    if (!detailOnly && newSession && options["selection-seed"] !== void 0) throw new WisePPTError("--new-session \u4E0E --selection-seed \u4E0D\u80FD\u540C\u65F6\u4F7F\u7528");
-    if (!detailOnly && newSession && layoutUsage.length) throw new WisePPTError("--new-session \u5FC5\u987B\u4ECE\u7A7A usage \u5F00\u59CB");
-    if (!detailOnly && !newSession && options["selection-seed"] === void 0) throw new WisePPTError("\u5019\u9009\u67E5\u8BE2\u5FC5\u987B\u4F20 --new-session \u6216 --selection-seed");
+    if (!detailOnly && newSession && options["selection-seed"] !== void 0) throw new WisePPTError("--new-session 与 --selection-seed 不能同时使用");
+    if (!detailOnly && newSession && layoutUsage.length) throw new WisePPTError("--new-session 必须从空 usage 开始");
+    if (!detailOnly && !newSession && options["selection-seed"] === void 0) throw new WisePPTError("候选查询必须传 --new-session 或 --selection-seed");
     const selectionSeed = detailOnly ? null : newSession ? randomBytes(16).toString("hex") : options["selection-seed"];
     const normalizedUsage = normalizeLayoutUsage(state.registry, layoutUsage);
     const filters = {
@@ -230,7 +238,7 @@ ${commandUsage("layouts")}`);
         order_basis: detailOnly ? [] : ["usage-count-asc", "last-sequence-asc", "session-seed-hash", "registry-order"],
         seed_source: detailOnly ? null : newSession ? "generated" : "provided",
         preferred_layout_id: detailOnly ? null : rankingPool[0]?.layout_id ?? null,
-        note: detailOnly ? "\u5355\u9AA8\u67B6\u8BE6\u60C5\u4E0D\u4EE3\u8868\u5019\u9009\u51B3\u7B56\uFF0Cselection_rank \u4E0D\u9002\u7528\u3002" : "\u65B0\u804A\u5929\u53EA\u968F\u673A\u751F\u6210\u4E00\u6B21 seed\uFF1B\u540C\u4E00 seed \u4E0E usage \u4E0B\u987A\u5E8F\u53EF\u590D\u73B0\u3002content-items \u53EA\u9690\u85CF\u4E0D\u9002\u914D\u9879\uFF0C\u4E0D\u91CD\u6392\u6743\u5A01 rank\uFF1Brank>1 \u9700 override\u3002"
+        note: detailOnly ? "单骨架详情不代表候选决策，selection_rank 不适用。" : "新聊天只随机生成一次 seed；同一 seed 与 usage 下顺序可复现。content-items 只隐藏不适配项，不重排权威 rank；rank>1 需 override。"
       },
       count: matches.length,
       layouts: options.compact ? matches.map(compactLayout) : matches
@@ -240,11 +248,11 @@ ${commandUsage("layouts")}`);
   if (command === "preflight") {
     const { positionals, options } = parseOptions(rest);
     if (positionals.length !== 1 || options["all-errors"] !== true || Object.keys(options).some((key) => key !== "all-errors")) {
-      throw new WisePPTError(`preflight \u53C2\u6570\u9519\u8BEF
+      throw new WisePPTError(`preflight 参数错误
 ${commandUsage("preflight")}`);
     }
-    const specPath = assertAbsolute(positionals[0], "preflight \u8F93\u5165");
-    await assertNoSymlinkComponents(specPath, "preflight \u8F93\u5165");
+    const specPath = assertAbsolute(positionals[0], "preflight 输入");
+    await assertNoSymlinkComponents(specPath, "preflight 输入");
     const spec = await readJson(specPath, "deck-spec");
     const state = await registryState(root);
     const result = await preflightSpec(root, spec, state.index);
@@ -259,7 +267,7 @@ ${commandUsage("preflight")}`);
   }
   if (command === "build") {
     const { positionals, options } = parseOptions(rest);
-    if (positionals.length !== 1 || !options.out || Object.keys(options).some((key) => key !== "out")) throw new WisePPTError(`build \u53C2\u6570\u9519\u8BEF
+    if (positionals.length !== 1 || !options.out || Object.keys(options).some((key) => key !== "out")) throw new WisePPTError(`build 参数错误
 ${usage()}`);
     const result = await buildAndPublish(root, positionals[0], options.out);
     process.stdout.write(`BUILT Wise PPT pages=${result.manifest.page_count} build_id=${result.manifest.build_id} out=${result.output}
@@ -267,15 +275,40 @@ ${usage()}`);
     return;
   }
   if (command === "validate") {
-    if (rest.length !== 1) throw new WisePPTError(`validate \u53C2\u6570\u9519\u8BEF
+    if (rest.length !== 1) throw new WisePPTError(`validate 参数错误
 ${usage()}`);
     const result = await validateDeck(root, rest[0]);
-    process.stdout.write(`PASS Wise PPT validate pages=${result.page_count} build_id=${result.build_id} forbidden=0 registry=73+13=86
+    process.stdout.write(`PASS Wise PPT validate pages=${result.page_count} build_id=${result.build_id} forbidden=0 registry=75+13=88
 `);
     return;
   }
+  if (command === "themes") {
+    const [action, ...themeArgs] = rest;
+    if (action === "resolve") {
+      if (themeArgs.length !== 1) throw new WisePPTError(`themes resolve 参数错误
+${commandUsage("themes")}`);
+      const themePath = assertAbsolute(themeArgs[0], "theme 输入");
+      await assertNoSymlinkComponents(themePath, "theme 输入");
+      process.stdout.write(renderJson(resolveTheme(await readJson(themePath, "theme"))));
+      return;
+    }
+    if (action === "preview") {
+      const { positionals, options } = parseOptions(themeArgs);
+      const unknown = Object.keys(options).filter((key) => !["theme", "out"].includes(key));
+      if (positionals.length !== 1 || !options.theme || !options.out || unknown.length) throw new WisePPTError(`themes preview 参数错误
+${commandUsage("themes")}`);
+      const themePath = assertAbsolute(options.theme, "theme 输入");
+      await assertNoSymlinkComponents(themePath, "theme 输入");
+      const result = await createThemePreview(root, positionals[0], await readJson(themePath, "theme"), options.out);
+      process.stdout.write(`BUILT Wise PPT theme preview theme=${result.resolved.theme_id} compatibility=${result.manifest.source.compatibility} out=${result.output}
+`);
+      return;
+    }
+    throw new WisePPTError(`themes 子命令错误
+${commandUsage("themes")}`);
+  }
   if (command === "deliver") {
-    if (rest.length !== 1) throw new WisePPTError(`deliver \u53C2\u6570\u9519\u8BEF
+    if (rest.length !== 1) throw new WisePPTError(`deliver 参数错误
 ${usage()}`);
     const result = await deliverStandard(root, rest[0]);
     process.stdout.write(`PASS Wise PPT pdf=${result.pdf} manifest=${result.manifest}
@@ -287,7 +320,7 @@ ${usage()}`);
     await module.runExperimental(root, rest);
     return;
   }
-  throw new WisePPTError(`\u672A\u77E5\u547D\u4EE4: ${command}
+  throw new WisePPTError(`未知命令: ${command}
 ${usage()}`);
 }
 main().catch((error) => {

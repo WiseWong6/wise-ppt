@@ -1,0 +1,472 @@
+{
+  "contract_version": 1,
+  "corpus_sha256": "8898e90cbefa3effe25d5cd28a6d91c1f8c293813469df8dfb2f5e8fae0f196b",
+  "corpus_codepoints": 1506,
+  "sources": [
+    {
+      "path": "capabilities/layouts/native-components.js",
+      "sha256": "a1b7c9c555c69ca6cb764f126661de01231391d1cdff304acc97470220c44add"
+    },
+    {
+      "path": "references/catalog.html",
+      "sha256": "927afd0477d7f8669860c74f22351be084ae8c1069ab3a10b9eb01a970abe6e1"
+    },
+    {
+      "path": "references/component-routing-data.js",
+      "sha256": "8271978501371e31ec5e79a8891c90129a124cc945fbebddd83acdc485352c65"
+    },
+    {
+      "path": "references/gallery-components/echarts-catalog-data.js",
+      "sha256": "d42298b1521fbb745dcf338fdf403749bfdb6b9ee018d678091c3c394666e940"
+    },
+    {
+      "path": "references/gallery-components/echarts-gallery-runtime.js",
+      "sha256": "6d6e0a6c4add0322afdbe80c877fe58f4e1dbb86394491ca687db84e9b8ac092"
+    },
+    {
+      "path": "references/gallery-paper-ink/ai/frames/layout-a1.html",
+      "sha256": "01d5aa292a803ce2322fb94d9a4187dd95f003120887bb4a0921b5000c5a9cd5"
+    },
+    {
+      "path": "references/gallery-paper-ink/ai/frames/layout-a2.html",
+      "sha256": "c8b0e4549e9730c2d8e344c34d0df8230618ce44f7c15e458337f66646160add"
+    },
+    {
+      "path": "references/gallery-paper-ink/ai/frames/layout-a3.html",
+      "sha256": "7e824ea5c01e401e6f62aa10fe771fe213a17eb045ea48225ac9e6abf75fd47e"
+    },
+    {
+      "path": "references/gallery-paper-ink/ai/frames/layout-a4.html",
+      "sha256": "3780a81290e0de060538c4e9a8a2e50e4e56395121eae2284ac0c99bd1756c13"
+    },
+    {
+      "path": "references/gallery-paper-ink/ai/frames/layout-a5.html",
+      "sha256": "6d7021c2bfe708c4bcc3f779184562ae628908fd59a59e79f60b9619796e72bf"
+    },
+    {
+      "path": "references/gallery-paper-ink/ai/frames/layout-a6.html",
+      "sha256": "cc0ebbe94a0a88cb4031b418f20c802c85a4a1d0bb13b50520c36f105f728166"
+    },
+    {
+      "path": "references/gallery-paper-ink/ai/frames/layout-a8.html",
+      "sha256": "74122166013bc6fca4c26810e3fdbff562c732a9f8e0f8aa3c4a8fa71198d19e"
+    },
+    {
+      "path": "references/gallery-paper-ink/ai/frames/layout-a9.html",
+      "sha256": "53a8eb85093c9978fb89e1c3665ec41dee90182eda4393fc987b5bdc9013642a"
+    },
+    {
+      "path": "references/gallery-paper-ink/ai/frames/layout-b1.html",
+      "sha256": "eb83817d4b98a41cb3b48858a87b3f0d2900352a8d2ab1bc46a60a06b6addcca"
+    },
+    {
+      "path": "references/gallery-paper-ink/ai/frames/layout-b2.html",
+      "sha256": "a05bcb3941cd5ded03f5e674833b9a08be3cdf7708f3a76140aba80e66dbe5d0"
+    },
+    {
+      "path": "references/gallery-paper-ink/ai/frames/layout-b3.html",
+      "sha256": "e66981c98f3724e39cd307a4fd3b51762fbba440c1b2c9f93508a4d0256c0141"
+    },
+    {
+      "path": "references/gallery-paper-ink/ai/frames/layout-b4.html",
+      "sha256": "55380a6bcfbeaefadadea7cf22d1fbf780673a29fa536cb64bf246134108a7c8"
+    },
+    {
+      "path": "references/gallery-paper-ink/ai/frames/layout-b5.html",
+      "sha256": "64aed5da9a86b018f57c5447e47196bcdcdcc90def31ba6cb0170ceaefad7f90"
+    },
+    {
+      "path": "references/gallery-paper-ink/ai/frames/layout-b6.html",
+      "sha256": "68631a4de56fdd7919ea4ad91f0fb27848931e73064402053dc59e492686a3ff"
+    },
+    {
+      "path": "references/gallery-paper-ink/ai/frames/layout-c1.html",
+      "sha256": "9efcfdec822575c37979620b76282450d36f3b31fad34bf65ae7828d45bfd507"
+    },
+    {
+      "path": "references/gallery-paper-ink/ai/frames/layout-c2.html",
+      "sha256": "12e9203a2f02abcc1c28e8e71670a5293c15ecd62faffe0ad6cb5ba36a6dca5a"
+    },
+    {
+      "path": "references/gallery-paper-ink/ai/frames/layout-c3.html",
+      "sha256": "c8ec467e3ffc78a46b6187b3d46213a4376320e9dab76cd3efce4efbe8772abd"
+    },
+    {
+      "path": "references/gallery-paper-ink/ai/frames/layout-c4.html",
+      "sha256": "1fc21025802f51ce90ce150893f44402f81898d3266c77617f4b9c85e81cf5e4"
+    },
+    {
+      "path": "references/gallery-paper-ink/ai/frames/layout-c5.html",
+      "sha256": "08dfcfbcede467a9a3724102fe27e90bac6bb27d1d5d25292a09fa3e8e9e1ef5"
+    },
+    {
+      "path": "references/gallery-paper-ink/ai/frames/layout-c6.html",
+      "sha256": "9d82838fc168a644eb4c18c919a664f875d458c4ca9dc6f2363fc0caf32a7b43"
+    },
+    {
+      "path": "references/gallery-paper-ink/ai/frames/layout-c7.html",
+      "sha256": "e580898eb9d4f8532eed11d607952e014c5fcd79f67330e55454531ed0dad8fe"
+    },
+    {
+      "path": "references/gallery-paper-ink/ai/frames/layout-d1.html",
+      "sha256": "2ec75b663383b96b66d6ff3cf0c84ed0d52b152e0e8017f22adcaa5a3b1a5ff7"
+    },
+    {
+      "path": "references/gallery-paper-ink/ai/frames/layout-d10.html",
+      "sha256": "228c7dd2c73aea7a2ca7fd2432cce5bf736ca74431adfd7e76bd5f10d8146c20"
+    },
+    {
+      "path": "references/gallery-paper-ink/ai/frames/layout-d11.html",
+      "sha256": "3d225ead91d101f1b8dd63ce6d6983fdfabea33d1aa237d017ca1b5ae5e7add6"
+    },
+    {
+      "path": "references/gallery-paper-ink/ai/frames/layout-d2.html",
+      "sha256": "524532c8e74c6484ac061f49889269ee62a6e7a276678c63c1b4b5b65fe9e793"
+    },
+    {
+      "path": "references/gallery-paper-ink/ai/frames/layout-d3.html",
+      "sha256": "83cc311071aef9c83a66ee5b6712ead629b474fd5da0229aa4365de11902d911"
+    },
+    {
+      "path": "references/gallery-paper-ink/ai/frames/layout-d4.html",
+      "sha256": "970c75e7e2788c038660c45fee1b1f36dc57431ad0a4fc864dada5d7e98a881d"
+    },
+    {
+      "path": "references/gallery-paper-ink/ai/frames/layout-d5.html",
+      "sha256": "1fd172b68c39568aaf6ceca34a9be78aeddfe2b8d454321ff8640e1996e22462"
+    },
+    {
+      "path": "references/gallery-paper-ink/ai/frames/layout-d6.html",
+      "sha256": "faec460ddc5f1456fab15869934562ec35914c20d4f5da4bbe41b8ab0b740b22"
+    },
+    {
+      "path": "references/gallery-paper-ink/ai/frames/layout-d7.html",
+      "sha256": "474d1a48c17d239c93dbf9839e60b9b4dd0a040fa337af26a13bc49b01f414a2"
+    },
+    {
+      "path": "references/gallery-paper-ink/ai/frames/layout-d8.html",
+      "sha256": "ff85ca9af057ba4ff5230135b8b26c2b9d2e44a409006ba4fd6e48419f0cff55"
+    },
+    {
+      "path": "references/gallery-paper-ink/ai/frames/layout-d9.html",
+      "sha256": "9494db239718c914a58aac5069470b20c4b3bee12f2515872adeec52cd2cfdc9"
+    },
+    {
+      "path": "references/gallery-paper-ink/ai/frames/layout-e1.html",
+      "sha256": "84f0c0eb2ab47fd64731dc8647348f830c79322cb2892bf641a4c10ef34bc7af"
+    },
+    {
+      "path": "references/gallery-paper-ink/ai/frames/layout-e2.html",
+      "sha256": "f08c1e6977047938c2a0d13b14f2d879dc3acf09db92a5bbdf40ebf7273dba7d"
+    },
+    {
+      "path": "references/gallery-paper-ink/ai/frames/layout-e3.html",
+      "sha256": "0f97993f53b4c4599f779f63fc71d7949ed0ef0f3ce17b2a464b041891e1ea30"
+    },
+    {
+      "path": "references/gallery-paper-ink/ai/frames/layout-e4.html",
+      "sha256": "4baf0305df3e19614601615ca0650d51b951070e5d466ab2d83eeb6b830093b6"
+    },
+    {
+      "path": "references/gallery-paper-ink/ai/frames/layout-e5.html",
+      "sha256": "5c1a28f5e073601181aa3833d5f2f91bcab7d191e6309a34f73292a0e8cb9c9d"
+    },
+    {
+      "path": "references/gallery-paper-ink/ai/frames/layout-e6.html",
+      "sha256": "4a706e4d5b1d5918ba86b93781c274ad7acc47ace7ca7303dce2f7d5e6bd468a"
+    },
+    {
+      "path": "references/gallery-paper-ink/ai/frames/layout-f2.html",
+      "sha256": "cc4e5792b9d30de1391fa207a9823b1a40fbff04a5a410203b6a6a341e276e4b"
+    },
+    {
+      "path": "references/gallery-paper-ink/ai/frames/layout-f3.html",
+      "sha256": "a2bdba737e3592dbd8ccd16d11cb9b8d53702ac9226ebf906877460c4707f0ef"
+    },
+    {
+      "path": "references/gallery-paper-ink/ai/frames/layout-g1.html",
+      "sha256": "a91cf104ea5dcd2e1f37e177f4465f0f727fcb61f720d0f43febbd7d0ff7022c"
+    },
+    {
+      "path": "references/gallery-paper-ink/ai/frames/layout-g2.html",
+      "sha256": "3cd9de06576fdd039dda55b159ee1911109701655fd56cc863259b5ecae4c045"
+    },
+    {
+      "path": "references/gallery-paper-ink/ai/frames/layout-g4.html",
+      "sha256": "528b5797c81680ea840e295fd5d6dbf55bdd2a23f3f9b560f024058cc1241276"
+    },
+    {
+      "path": "references/gallery-paper-ink/ai/frames/layout-g5.html",
+      "sha256": "0c7e152c08f0a09678df8a41508339e509e422002ac9b7028a01a725eb95e3c2"
+    },
+    {
+      "path": "references/gallery-paper-ink/ai/frames/layout-h1.html",
+      "sha256": "aa612937ca35fccf3e5b1d4c42dcf80044318b703698fe71076b4b07beb9256b"
+    },
+    {
+      "path": "references/gallery-paper-ink/ai/frames/layout-h2.html",
+      "sha256": "8f742cca96af5f1dbc51f193a33c22d543109b916d215411a8fd8eb45b224a45"
+    },
+    {
+      "path": "references/gallery-paper-ink/ai/frames/layout-h3.html",
+      "sha256": "a386fa2f64cd712cc3172fc93383c68dd6bc909b101bf4b320e4c74c09be9117"
+    },
+    {
+      "path": "references/gallery-paper-ink/ai/frames/layout-h4.html",
+      "sha256": "8560fd6c7922329e97604e40158738f80e4387fb661b183113f1453c974f8875"
+    },
+    {
+      "path": "references/gallery-paper-ink/ai/frames/layout-i1.html",
+      "sha256": "beb0a4acb0b3fb69af8094425b39fb5fa0dcad295f1e81fb527af980c192421e"
+    },
+    {
+      "path": "references/gallery-paper-ink/ai/frames/layout-i2.html",
+      "sha256": "e912e27d1b2e03c56d818d122d52a3beb938117615d2b692f55b0a18ba54a4e3"
+    },
+    {
+      "path": "references/gallery-paper-ink/ai/frames/layout-i3.html",
+      "sha256": "37d2e2d095d76e478bf76cd7d4f9e160ea10819e916e6eafbea011a805bede72"
+    },
+    {
+      "path": "references/gallery-paper-ink/ai/frames/layout-i4.html",
+      "sha256": "97d5af3708a4bbf1fbc288b6add477569da77076313267882cf951245d64ee04"
+    },
+    {
+      "path": "references/gallery-paper-ink/ai/frames/layout-j1.html",
+      "sha256": "e3485ced1cc13510a059462de498a92dfbc172b86b37ca920be1a563548d6191"
+    },
+    {
+      "path": "references/gallery-paper-ink/ai/frames/layout-j2.html",
+      "sha256": "24741076cde37d63525ab9c6dbd8ab49690a88836185c44ad9649429ed8634e1"
+    },
+    {
+      "path": "references/gallery-paper-ink/ai/frames/layout-j3.html",
+      "sha256": "cfcfca68d1dff5a2dc6c9c8e69491f1b2310725a0fa94cf3a8e3566f41a62016"
+    },
+    {
+      "path": "references/gallery-paper-ink/ai/frames/layout-k1.html",
+      "sha256": "b9a724da68eba3069e383f3f6c7c17d3a6c8ca99fd62e2692dc5a8de8f78e12a"
+    },
+    {
+      "path": "references/gallery-paper-ink/ai/frames/layout-k2.html",
+      "sha256": "8faa1d2c37e6860e40c85029c31488ac60fe29fed8d3b20cc99c5ddfecda5ae3"
+    },
+    {
+      "path": "references/gallery-paper-ink/ai/frames/layout-k3.html",
+      "sha256": "adb765dc8c232ff040c1da1f509f503504010b08ba18b775c9f64976d705dc56"
+    },
+    {
+      "path": "references/gallery-paper-ink/ai/frames/layout-k4.html",
+      "sha256": "b0c00297a3fe6bbb745e27611c02179c9dfa570d61a429bd3bb1e17b59ab985d"
+    },
+    {
+      "path": "references/gallery-paper-ink/ai/frames/layout-l1.html",
+      "sha256": "098cf6f7f6ef4d4cacec74fa74d3ace712f5a4ec06c03810d656c40539419609"
+    },
+    {
+      "path": "references/gallery-paper-ink/ai/frames/layout-l2.html",
+      "sha256": "5d941ec5bbce4e83dd0f4626a452c76262abc81a5e5695e3e380b751c6286d90"
+    },
+    {
+      "path": "references/gallery-paper-ink/ai/frames/layout-m1.html",
+      "sha256": "0f17ce7cb1f9bcc5e2e1304bf445724224a4a039b408c3033d434895ccc46672"
+    },
+    {
+      "path": "references/gallery-paper-ink/ai/frames/layout-m2.html",
+      "sha256": "69c48744cdab016fdbe0d4ce45e06191c9bda4d9b610709176b8c0ecd93fed1a"
+    },
+    {
+      "path": "references/gallery-paper-ink/ai/frames/layout-n1.html",
+      "sha256": "7b147b502a6904dce57df84467f43b751b72a388e94fe66c80930780d454ae56"
+    },
+    {
+      "path": "references/gallery-paper-ink/ai/frames/layout-o1.html",
+      "sha256": "26f17f9ee87120b9e72ed3369606d61c100f222de750c64ff67be2b7ca8382be"
+    },
+    {
+      "path": "references/gallery-paper-ink/ai/frames/layout-p1.html",
+      "sha256": "62ef96dd24c59dee239f238489b840ba23fc7a9ec5662f61765653aac366e576"
+    },
+    {
+      "path": "references/gallery-paper-ink/ai/frames/layout-p2.html",
+      "sha256": "fc756683519640dc1004842e923970dff13e018855577e0b9b49aac9e19dc606"
+    },
+    {
+      "path": "references/gallery-paper-ink/ai/frames/layout-q1.html",
+      "sha256": "1ceacaa2a8156e5adace89c11ebdf17607171cb6eed5d6de88aa1c59596cf049"
+    },
+    {
+      "path": "references/gallery-paper-ink/ai/frames/layout-q2.html",
+      "sha256": "1efc1e93d8e21377028ed5a37c306c3170d8cab2e89661ea7798bbe1e5c79638"
+    },
+    {
+      "path": "references/gallery-paper-ink/ai/frames/layout-q3.html",
+      "sha256": "8fb84d946c2522e0e6e3dfe8e9e51a67203bc94092722814f859a80629046061"
+    },
+    {
+      "path": "references/gallery-paper-ink/ai/frames/layout-q4.html",
+      "sha256": "7d8090073ed00fc95147c995741a1a8cbf5580179f0bbf0e2cd0a98de242bff4"
+    },
+    {
+      "path": "references/gallery-paper-ink/ai/frames/layout-r1.html",
+      "sha256": "7dcea0e5d76767277851a9b4fab89b35d510f25bde839ee99e0bb56b2ea50e1e"
+    },
+    {
+      "path": "references/gallery-paper-ink/ai/frames/layout-r2.html",
+      "sha256": "40c5b8cad26656dfb36b806f8b21f9d2c2dfb26b2567927ef240a564779106f5"
+    },
+    {
+      "path": "references/gallery-paper-ink/ai/frames/layout-r3.html",
+      "sha256": "efcacac2df0519a5e13d2089e583fa5e9d15634a9b8baa9ad6130c7c6c591f4d"
+    },
+    {
+      "path": "references/gallery-paper-ink/ai/frames/layout-r4.html",
+      "sha256": "0cfdee6ea9eaadcbb0dda3a1600f2f78adf8b5df66f0eb82f3b06e3ba7060441"
+    },
+    {
+      "path": "references/gallery-paper-ink/ai/frames/layout-r5.html",
+      "sha256": "dd2f2df7b865b33907a30425cba8a8136e57974f212eb93a331e2d322bdcb2ad"
+    },
+    {
+      "path": "references/gallery-paper-ink/ai/frames/layout-r6.html",
+      "sha256": "942b954b77839effe79a4f652853fde2e5ad90a738744813ddf67b1a1f192abb"
+    },
+    {
+      "path": "references/gallery-paper-ink/ai/frames/layout-r7.html",
+      "sha256": "f96c2864054b737b1b49f846d774817a0351c8e343d7b86d4fba4019b1709379"
+    },
+    {
+      "path": "references/gallery-paper-ink/ai/frames/layout-s1.html",
+      "sha256": "08ad37131e2cd1e7fda9cebb365fde77fd98a2f17a80e211d5bfa9f5583dba9c"
+    },
+    {
+      "path": "references/gallery-paper-ink/ai/frames/layout-s2.html",
+      "sha256": "6f994e7a82074a7613092a5e19ca0b244349ec636d7be28408fd181d6bddb69a"
+    },
+    {
+      "path": "references/gallery-paper-ink/ai/frames/layout-s3.html",
+      "sha256": "2619debb9df1174ab94a50177833ab596ccb9584b5d6ea7eed148b0baf7a61db"
+    },
+    {
+      "path": "references/gallery-paper-ink/ai/frames/layout-t1.html",
+      "sha256": "b2eae1a780ed754bc80a53a592c66fb2308f318bd48ef76b8c81ce622f8cde28"
+    },
+    {
+      "path": "references/gallery-paper-ink/ai/frames/layout-t2.html",
+      "sha256": "54e6aaa77ddba17d6c2deeeb08cfe2723ef323025919ede6cce4cb31e7215a78"
+    },
+    {
+      "path": "references/gallery-paper-ink/ai/frames/layout-t3.html",
+      "sha256": "f76a3935d371747d14b2568c8fcb57136a0f7ad71cf56704d8c3a9528842c65f"
+    },
+    {
+      "path": "references/gallery-paper-ink/ai/frames/layout-u1.html",
+      "sha256": "d6480e2627c442d5000d329ae76e039dfafacc2d8fd63b3e2806084f84d19955"
+    },
+    {
+      "path": "references/gallery-paper-ink/ai/frames/layout-u2.html",
+      "sha256": "f093e4cdd0b26cc6518325ed7e2f704c710c81d7c9db3f89ed8236b56d2001ad"
+    },
+    {
+      "path": "references/gallery-paper-ink/ai/frames/layout-u3.html",
+      "sha256": "eba3054bddc3822df2a21404f70bfeed83ffeaf240424d42a1728af8ae958b98"
+    },
+    {
+      "path": "references/gallery-paper-ink/ai/frames/layout-w1.html",
+      "sha256": "a52e31b1d24ab5f45ff6e9823663445d07428e7c5c7db2ca36935330549e2e0c"
+    },
+    {
+      "path": "references/icon-catalog-data.js",
+      "sha256": "419dd2901d6a3e4a1778a76ee5300d2432fb9f628cd8008060eebabc23dac084"
+    },
+    {
+      "path": "references/page-emphasis-data.js",
+      "sha256": "80576a0533c858d6dfac14b267c887decf530f0b892702f76749c19edcc4447e"
+    },
+    {
+      "path": "references/ppt-component-atlas/catalog-data.js",
+      "sha256": "6e4d5dab679b2a02c54d9dcee2364d62522593fff20f17b5afa1ce4e45cc2b20"
+    },
+    {
+      "path": "references/structure-slot-data.js",
+      "sha256": "4a56520a4aec18aa631cdcec714fd398348ce9cb09749ac4a197788db962d272"
+    },
+    {
+      "path": "references/theme-registry-data.js",
+      "sha256": "80e4f04022a2ec4f43f068080c4e5b29ffb8e3962f2cf4ade43c9c494b3d6b65"
+    },
+    {
+      "path": "runtime/stage-fit.js",
+      "sha256": "0ea238865ebdd6e4d76eeaf1e9e675a60ea4f5fa17ffaf25246857f37a969511"
+    },
+    {
+      "path": "themes/examples/wise-ppt-story-six-page/deck-spec.json",
+      "sha256": "a4f4b56122aa024e305f0e47d962ca3a8b92c8a05d4e7c6f6210087952f61316"
+    }
+  ],
+  "fonts": [
+    {
+      "source": "themes/engine/fonts/SourceHanSansCN-Light.otf",
+      "source_sha256": "b6dfc945aae0daf9b15019f59c2f7b18d17da3b92f00c3ec32fb5f0333696d9c",
+      "output": "themes/engine/fonts/catalog/SourceHanSansCN-Light.catalog.woff2",
+      "sha256": "3219de9188e98c3e3fe7edbaf473d3050b248c09976d9eb7139684d6d2ff0d4a",
+      "bytes": 483512
+    },
+    {
+      "source": "themes/engine/fonts/SourceHanSansCN-Regular.otf",
+      "source_sha256": "f1d8611151880c6c336aabeac4640ef434fa13cbfbf1ffe82d0a71b2a5637256",
+      "output": "themes/engine/fonts/catalog/SourceHanSansCN-Regular.catalog.woff2",
+      "sha256": "b24d593ca911b23052651f0fb225af7961128240555cea63749760062038ab7e",
+      "bytes": 488256
+    },
+    {
+      "source": "themes/engine/fonts/SourceHanSansCN-Medium.otf",
+      "source_sha256": "1df61d31687d04fd2f928a3bb6ca6cd61f0e988cc267cf317f32406edbb49f70",
+      "output": "themes/engine/fonts/catalog/SourceHanSansCN-Medium.catalog.woff2",
+      "sha256": "6c14bacf9e9eb2ee348301d155b3ebeea74f35c227a76ee66d306dad0cb81df8",
+      "bytes": 489732
+    },
+    {
+      "source": "themes/engine/fonts/SourceHanSansCN-Bold.otf",
+      "source_sha256": "df2b90f5bcc6d01dfc964cec5f6d535d6b6aebd26ed7fd79a9c1b3f2112fcb6b",
+      "output": "themes/engine/fonts/catalog/SourceHanSansCN-Bold.catalog.woff2",
+      "sha256": "e6cc33346f13a28ebf7732f9aa048d08f02b7f9b6a0afa7c68ca7c7ba8ecfddc",
+      "bytes": 497792
+    },
+    {
+      "source": "themes/engine/fonts/SourceHanSerifCN-Medium.otf",
+      "source_sha256": "8e224937647ae71ba1b1f310bcb3fbc32f21ec7c2c490ba04670455c901f3378",
+      "output": "themes/engine/fonts/catalog/SourceHanSerifCN-Medium.catalog.woff2",
+      "sha256": "aa6c3f0be4f8fc8dd6b11f9585e80b717143683c1de7a30c22d66eece9286b40",
+      "bytes": 643712
+    },
+    {
+      "source": "themes/engine/fonts/SourceHanSerifCN-Bold.otf",
+      "source_sha256": "26e2c9bd766fee0df6d1ff1f1a0896607d0178649ee382faa725f445d5dbeaae",
+      "output": "themes/engine/fonts/catalog/SourceHanSerifCN-Bold.catalog.woff2",
+      "sha256": "dfe33220c7bb0bb514b06821cea402e6fbdd3bad9ba8d8b40faf12e937950c81",
+      "bytes": 663040
+    },
+    {
+      "source": "themes/engine/fonts/CourierPrime-Regular.ttf",
+      "source_sha256": "72f793376f8e2841656bf21d77a5de010f2929bd6956a22ee848ad0c7eb978af",
+      "output": "themes/engine/fonts/catalog/CourierPrime-Regular.catalog.woff2",
+      "sha256": "5069f8e5557a5d8515d6cb3ad164332c7dbdb276d4e94fde3ee973400590999e",
+      "bytes": 14904
+    },
+    {
+      "source": "themes/engine/fonts/CourierPrime-Bold.ttf",
+      "source_sha256": "ff1f38786c849d1c41fa8e447960abdb2bd75fdfb0cfcdeb524fad65a5af3638",
+      "output": "themes/engine/fonts/catalog/CourierPrime-Bold.catalog.woff2",
+      "sha256": "ecaf639fcbde7fce708216779fe7e3b8a13abba60c565b70d74f6e92a6f031d3",
+      "bytes": 15308
+    },
+    {
+      "source": "themes/engine/fonts/LXGWWenKai-Regular.ttf",
+      "source_sha256": "39ad71264b588165b469e35e6afb162a378dacd1f95348160240ba9038ac3009",
+      "output": "themes/engine/fonts/catalog/LXGWWenKai-Regular.catalog.woff2",
+      "sha256": "4b5867ce3f5867b5d0eb139ab7b79a28336728de4d8b80a2014db1e778ec6f5d",
+      "bytes": 332120
+    }
+  ]
+}

@@ -1,12 +1,15 @@
 <!DOCTYPE html>
-<html lang="zh-CN" data-runtime="wise-ppt-specimen" data-typography-mode="all-sans" data-render-pending="true" data-page-id="gallery-ai-a8" data-page-role="prove" data-theme="paper-ink" data-layout="paper-ink.evidence.admin-ui" data-layout-source="gallery" data-sample-focus-profile="content-only" data-sample-focus-members='[{"selector":"#badstep","role":"outline"},{"selector":"#badstep .accent-action","role":"value"},{"selector":"#badstep .accent-role","role":"label"},{"selector":"#badstep .st-err","role":"status"}]' data-sample-focus-ref="sample.a8.a8-focus">
+<html data-theme-id="paper-ink" lang="zh-CN" data-runtime="wise-ppt-specimen" data-typography-mode="all-sans" data-render-pending="true" data-page-id="gallery-ai-a8" data-page-role="prove" data-theme="paper-ink" data-layout="paper-ink.evidence.admin-ui" data-layout-source="gallery" data-sample-focus-profile="content-only" data-sample-focus-members='[{"selector":"#badstep","role":"outline"},{"selector":"#badstep .accent-action","role":"value"},{"selector":"#badstep .accent-role","role":"label"},{"selector":"#badstep .st-err","role":"status"}]' data-sample-focus-ref="sample.a8.a8-focus">
 <head>
 <meta charset="UTF-8">
 <title>layout-a8 · 后台界面 mock · Agent Trace</title>
 <script src="../../../../runtime/stage-fit.js"></script>
-<link rel="stylesheet" href="../../../../themes/paper-ink/assets/design-tokens.css">
-<link rel="stylesheet" href="../../../../themes/paper-ink/assets/catalog-fonts.css" data-wise-catalog-fonts="true">
-<link rel="stylesheet" href="../../../../themes/paper-ink/assets/slide-components.css">
+<link rel="stylesheet" href="../../../../themes/engine/assets/design-tokens.css">
+<link rel="stylesheet" href="../../../../themes/packages/paper-ink/theme.css">
+<link rel="stylesheet" href="../../../../themes/packages/hermes-orange/theme.css">
+<link rel="stylesheet" href="../../../../themes/packages/klein-blue/theme.css">
+<link rel="stylesheet" href="../../../../themes/engine/assets/catalog-fonts.css" data-wise-catalog-fonts="true">
+<link rel="stylesheet" href="../../../../themes/engine/assets/slide-components.css">
 <link rel="stylesheet" href="../../../shell.css">
 <style>
   .ui { position: absolute; top: 118px; left: 100px; right: 100px; display: flex; flex-direction: column; z-index: 2;
@@ -96,42 +99,42 @@
 </style>
 </head>
 <body class="slide">
-<div class="stage" data-block-id="gallery-primary" data-renderer-kind="svg" data-component-source="native" data-component-id="native.paper-ink.evidence.admin-ui.product-ui" data-content-ref="example.a8">
+<div class="stage" data-block-id="gallery-primary" data-renderer-kind="svg" data-component-source="native" data-component-id="native.wise-ppt.evidence.admin-ui.product-ui" data-content-ref="example.a8">
   <div class="doc tl">PPT 标题<br>页面标题</div>
   <div class="folio">页码 / 总页数 — BY @歪斯Wise</div>
 
-  <div class="ui">
+  <div class="ui" data-theme-surface="foreground" data-theme-layer="foreground" data-theme-corner="family" data-theme-line="main" data-theme-role="structural-outline">
     <div class="filters">
       <div class="f"><span class="dim">工作区</span>wise-ppt ▾</div>
       <div class="f"><span class="dim">任务类型</span>全部 ▾</div>
       <div class="f"><span class="dim">状态</span>全部 ▾</div>
       <div class="f"><span class="dim">时段</span>近 12H ▾</div>
-      <div class="btn">查询</div>
+      <div class="btn" data-theme-surface="ink" data-theme-line="main" data-theme-role="reverse">查询</div>
     </div>
     <div class="content">
       <div class="table">
-        <div class="tr hd"><span>创建时间</span><span>RUN ID</span><span>模型</span><span>指令 / 结果</span><span style="text-align:right">操作</span></div>
-        <div class="tr">
+        <div class="tr hd" data-theme-table-region="header" data-theme-surface="recessed" data-theme-line="detail"><span>创建时间</span><span>RUN ID</span><span>模型</span><span>指令 / 结果</span><span style="text-align:right">操作</span></div>
+        <div class="tr" data-theme-table-region="body" data-theme-surface="paper" data-theme-line="hairline">
           <span>08-06 14:22:10</span><span class="run-id"><i class="dot"></i><span>t7f3a2****</span></span><span class="cn">glm-5.2</span>
           <span class="cn">生成 A1 标本卡 · 估分梗 → 已完成</span>
           <span class="ops"><span>任务详情</span><span>过程日志</span><span>轨迹回放</span></span>
         </div>
-        <div class="tr">
+        <div class="tr" data-theme-table-region="body" data-theme-surface="paper" data-theme-line="hairline">
           <span>08-06 13:58:44</span><span class="run-id"><i class="dot part"></i><span>k2d8e1****</span></span><span class="cn">claude-4.5</span>
           <span class="cn">重构 B1 流水线 · 4 段 · 已挂起</span>
           <span class="ops"><span>任务详情</span><span>过程日志</span><span>轨迹回放</span></span>
         </div>
-        <div class="tr sel" id="selrow">
+        <div class="tr sel" id="selrow" data-theme-table-region="selected" data-theme-surface="foreground" data-theme-line="emphasis">
           <span>08-06 13:41:07</span><span class="run-id"><i class="dot err"></i><span>a91c5e****</span></span><span class="cn">glm-5.2</span>
           <span class="cn">工具调用 · 读 layout-c4 → 超时 · 未执行</span>
           <span class="ops"><span>任务详情</span><span>过程日志</span><span>轨迹回放</span></span>
         </div>
-        <div class="tr">
+        <div class="tr" data-theme-table-region="body" data-theme-surface="paper" data-theme-line="hairline">
           <span>08-06 12:30:19</span><span class="run-id"><i class="dot"></i><span>f55b92****</span></span><span class="cn">deepseek-v3</span>
           <span class="cn">批量改 D 族 6 页 → 已完成</span>
           <span class="ops"><span>任务详情</span><span>过程日志</span><span>轨迹回放</span></span>
         </div>
-        <div class="tr">
+        <div class="tr" data-theme-table-region="body" data-theme-surface="paper" data-theme-line="hairline">
           <span>08-06 11:15:52</span><span class="run-id"><i class="dot"></i><span>b73e08****</span></span><span class="cn">glm-5.2</span>
           <span class="cn">机检 shot-lint.py · 59 页 → 已完成</span>
           <span class="ops"><span>任务详情</span><span>过程日志</span><span>轨迹回放</span></span>
@@ -165,7 +168,7 @@
   <div class="caption">每次推理的节点、耗时与输入输出都能回溯到同一会话。</div>
 </div>
 
-<script src="../../../../themes/paper-ink/assets/particles.js"></script>
+<script src="../../../../themes/packages/paper-ink/assets/particles.js"></script>
 <script>
 function drawConnectors(){
   var stage = document.querySelector('.stage').getBoundingClientRect();

@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html data-theme-id="paper-ink" lang="zh-CN" data-runtime="wise-ppt-specimen" data-typography-mode="all-sans" data-page-id="gallery-ai-w1" data-page-role="explain" data-theme="paper-ink" data-layout="paper-ink.radial.hub-arc-detail" data-layout-source="gallery" data-sample-focus-profile="content-only" data-sample-focus-members='[{"selector":"#w1-focus-hub","role":"outline"},{"selector":"#w1-focus-hub-title","role":"value"}]' data-sample-focus-ref="sample.w1.w1-focus">
+<head>
+<meta charset="UTF-8">
+<title>layout-w1 · 枢纽弧线 + 右列详情 · 制造中台</title>
+<!--
+  纸墨线稿样张 · W1 枢纽弧线 + 右列详情
+  左栏:中枢双圈墨核,一条向右凸的弧线轨道,四条支线点名挂在弧线上;
+  右栏:四段详情,与左侧支线逐行对齐,行首 mono 序号 + 竖线锚点
+  版式纪律:支线四条锁死;左右行距同轴;详情只补充左栏点名,不得另起话题
+-->
+<script src="../../../../runtime/stage-fit.js"></script>
+<link rel="stylesheet" href="../../../../themes/engine/assets/design-tokens.css">
+<link rel="stylesheet" href="../../../../themes/packages/paper-ink/theme.css">
+<link rel="stylesheet" href="../../../../themes/packages/hermes-orange/theme.css">
+<link rel="stylesheet" href="../../../../themes/packages/klein-blue/theme.css">
+<link rel="stylesheet" href="../../../../themes/engine/assets/catalog-fonts.css" data-wise-catalog-fonts="true">
+<link rel="stylesheet" href="../../../../themes/engine/assets/slide-components.css">
+<link rel="stylesheet" href="../../../shell.css">
+<style>
+  svg.scene { position: absolute; inset: 0; z-index: 1; }
+  .caption {
+    position: absolute; left: 0; right: 0; bottom: 118px;
+    text-align: center;
+    font-family: var(--sans); font-weight: 400;
+    font-size: var(--type-caption); letter-spacing: .04em;
+    color: var(--ink);
+    z-index: 5;
+  }
+</style>
+</head>
+<body class="slide">
+<div class="stage" data-block-id="gallery-primary" data-renderer-kind="svg" data-component-source="native" data-component-id="native.wise-ppt.radial.hub-arc-detail.orbit" data-content-ref="example.w1">
+  <div class="doc tl">PPT 标题<br>页面标题</div>
+  <div class="folio">页码 / 总页数 — BY @歪斯Wise</div>
+
+  <svg class="scene" width="1920" height="1080" viewBox="0 0 1920 1080">
+    <g id="w1-orbit" data-slot-id="orbit"></g>
+    <g id="w1-details" data-slot-id="details"></g>
+  </svg>
+
+  <div class="caption">中枢只讲一次，四条支线各证一面，左点名、右举证逐行对齐。</div>
+</div>
+
+<script>
+var NS = 'http://www.w3.org/2000/svg';
+var INK = 'var(--ink)';
+var INK80 = 'var(--ink-80)';
+var INK70 = 'var(--ink-70)';
+var INK45 = 'var(--ink-45)';
+var MONO = 'var(--mono)', SANS = 'var(--sans)';
+
+var ORBIT = document.getElementById('w1-orbit');
+var DETAILS = document.getElementById('w1-details');
+function el(parent, tag, attrs) {
+  var e = document.createElementNS(NS, tag);
+  for (var k in attrs) e.setAttribute(k, attrs[k]);
+  parent.appendChild(e); return e;
+}
+function txt(parent, x, y, str, attrs) {
+  var t = el(parent, 'text', Object.assign({x:x, y:y}, attrs||{}));
+  t.textContent = str; return t;
+}
+
+/* ---------- 左栏:中枢 + 弧线轨道 + 四条支线 ---------- */
+/* CX=536 为整体水平居中校准值:构图包围盒 [536-112, 1226+270] 的中心 = 960 */
+var CX = 536, CY = 540, R = 420, HUB_R = 112;
+
+/* 中枢双圈墨核(墨字非反白) */
+el(ORBIT, 'circle', {id:'w1-focus-hub', cx:CX, cy:CY, r:HUB_R, fill:'none', stroke:INK, 'stroke-width':.6, opacity:.45});
+el(ORBIT, 'circle', {cx:CX, cy:CY, r:100, fill:'none', stroke:INK, 'stroke-width':1.6});
+txt(ORBIT, CX, CY-6, '制造中台', {id:'w1-focus-hub-title', 'font-family':SANS, 'font-weight':400, 'font-size':'var(--type-emphasis)', 'letter-spacing':4, 'text-anchor':'middle', fill:INK});
+txt(ORBIT, CX, CY+34, 'OPS CORE', {'font-family':MONO, 'font-size':'var(--type-meta)', 'letter-spacing':4, 'text-anchor':'middle', fill:INK45});
+
+/* 四条支线行位与点名(先定义行位,弧线只画到末条支线为止) */
+var ROWS = [280, 450, 620, 790];
+var SATELLITES = [
+  {title:'资质背书', sub:'更可信'},
+  {title:'自有平台', sub:'更普惠'},
+  {title:'数据闭环', sub:'更精准'},
+  {title:'生态协同', sub:'更开放'}
+];
+
+/* 向右凸的双弧线轨道:内弧是标题轨,外弧挂支线圆点;
+   沿用已确认的弧间宽度,外弧比节点带上下各长 20% */
+var R2 = R + 173;
+var BAND_EXT = Math.round((ROWS[3] - ROWS[0]) * 0.20);
+function arcX(radius, y) { return CX + Math.sqrt(radius*radius - (CY-y)*(CY-y)); }
+el(ORBIT, 'path', {d:'M ' + arcX(R, ROWS[0]) + ' ' + ROWS[0] + ' A ' + R + ' ' + R + ' 0 0 1 ' + arcX(R, ROWS[3]) + ' ' + ROWS[3], fill:'none', stroke:INK, 'stroke-width':.7, opacity:.4, 'stroke-dasharray':'4 7'});
+el(ORBIT, 'path', {d:'M ' + arcX(R2, ROWS[0]-BAND_EXT) + ' ' + (ROWS[0]-BAND_EXT) + ' A ' + R2 + ' ' + R2 + ' 0 0 1 ' + arcX(R2, ROWS[3]+BAND_EXT) + ' ' + (ROWS[3]+BAND_EXT), fill:'none', stroke:INK, 'stroke-width':.7, opacity:.4, 'stroke-dasharray':'4 7'});
+
+/* 四条支线:圆点挂外弧;标题贴内弧内侧;
+   副题与标题视觉中线同高,并水平居中在两道圆弧之间 */
+ROWS.forEach(function(y, i) {
+  var innerX = arcX(R, y);
+  var dotX = arcX(R2, y);
+  var bandCenterX = (innerX + dotX) / 2;
+  var item = el(ORBIT, 'g', {'data-layout-role':'satellite'});
+  txt(item, innerX-16, y+8, SATELLITES[i].title, {'font-family':SANS, 'font-weight':400, 'font-size':'var(--type-subheading)', 'letter-spacing':2, 'text-anchor':'end', fill:INK});
+  txt(item, bandCenterX, y+4.5, SATELLITES[i].sub, {'font-family':SANS, 'font-weight':300, 'font-size':'var(--type-body-small)', 'letter-spacing':1, 'text-anchor':'middle', fill:INK70});
+  el(item, 'circle', {cx:dotX, cy:y, r:4.5, fill:INK});
+  el(item, 'circle', {cx:dotX, cy:y, r:10, fill:'none', stroke:INK, 'stroke-width':.6, opacity:.35});
+});
+
+/* ---------- 右栏:四段详情,与支线逐行对齐 ---------- */
+/* 详情分隔线沿第三道同节奏弧线定位:外弧→分隔线的水平距离,
+   逐行等于内弧→外弧的水平距离;正文仍共用一条左对齐线 */
+var DETAIL_TEXT_X = 1320;
+var DETAILS_ROWS = [
+  {tag:'01', lines:['国家级认证与行业白名单资质齐备', '牵头两项行业标准起草']},
+  {tag:'02', lines:['自营平台服务用户超过一亿', '四大线上系统支撑日常运营']},
+  {tag:'03', lines:['全链路数据回流沉淀业务资产', '关键指标次日即可回看']},
+  {tag:'04', lines:['上下游伙伴共享同一入口', '覆盖生产到消费的完整闭环']}
+];
+ROWS.forEach(function(y, i) {
+  var innerX = arcX(R, y);
+  var dotX = arcX(R2, y);
+  var dividerX = dotX + (dotX - innerX);
+  var anchorX = dividerX - 8;
+  var startX = dotX + 14;  /* 引导线从外弧外侧出发,不压弧线 */
+  el(DETAILS, 'line', {x1:startX, y1:y, x2:anchorX, y2:y, stroke:INK, 'stroke-width':.7, opacity:.35, 'stroke-dasharray':'3 5'});
+  el(DETAILS, 'circle', {cx:anchorX, cy:y, r:2.2, fill:INK, opacity:.6});
+  el(DETAILS, 'line', {x1:dividerX, y1:y-58, x2:dividerX, y2:y+42, stroke:INK, 'stroke-width':.8, opacity:.5});
+  var block = el(DETAILS, 'g', {'data-layout-role':'detail-row'});
+  txt(block, DETAIL_TEXT_X, y-32, DETAILS_ROWS[i].tag, {'font-family':MONO, 'font-size':'var(--type-meta)', 'letter-spacing':2, fill:INK45});
+  txt(block, DETAIL_TEXT_X, y+2, DETAILS_ROWS[i].lines[0], {'font-family':SANS, 'font-weight':300, 'font-size':'var(--type-body-small)', fill:INK});
+  txt(block, DETAIL_TEXT_X, y+30, DETAILS_ROWS[i].lines[1], {'font-family':SANS, 'font-weight':300, 'font-size':'var(--type-body-small)', fill:INK70});
+});
+
+stageFit();
+</script>
+</body>
+</html>

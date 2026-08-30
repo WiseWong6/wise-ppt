@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="zh-CN" data-runtime="wise-ppt-specimen" data-typography-mode="all-sans" data-page-id="gallery-ai-d3" data-page-role="close" data-theme="paper-ink" data-layout="paper-ink.scaffold.minimal-outro" data-layout-source="gallery">
+<html data-theme-id="paper-ink" lang="zh-CN" data-runtime="wise-ppt-specimen" data-typography-mode="all-sans" data-page-id="gallery-ai-d3" data-page-role="close" data-theme="paper-ink" data-layout="paper-ink.scaffold.minimal-outro" data-layout-source="gallery">
 <head>
 <meta charset="UTF-8">
 <title>layout-d3 · 极简 Outro · AI Engineering</title>
@@ -9,9 +9,12 @@
   @歪斯Wise「AI 工程化实战」分享
   版式纪律（layouts C4）：一句大字 + mono 署名行 + 一处极细装饰；留白 >60%；无 FIG、无 caption
 -->
-<link rel="stylesheet" href="../../../../themes/paper-ink/assets/design-tokens.css">
-<link rel="stylesheet" href="../../../../themes/paper-ink/assets/catalog-fonts.css" data-wise-catalog-fonts="true">
-<link rel="stylesheet" href="../../../../themes/paper-ink/assets/slide-components.css">
+<link rel="stylesheet" href="../../../../themes/engine/assets/design-tokens.css">
+<link rel="stylesheet" href="../../../../themes/packages/paper-ink/theme.css">
+<link rel="stylesheet" href="../../../../themes/packages/hermes-orange/theme.css">
+<link rel="stylesheet" href="../../../../themes/packages/klein-blue/theme.css">
+<link rel="stylesheet" href="../../../../themes/engine/assets/catalog-fonts.css" data-wise-catalog-fonts="true">
+<link rel="stylesheet" href="../../../../themes/engine/assets/slide-components.css">
 <link rel="stylesheet" href="../../../shell.css">
 <style>
   svg.scene { position: absolute; inset: 0; z-index: 1; }
@@ -38,7 +41,7 @@
 </style>
 </head>
 <body class="slide">
-<div class="stage" data-template-id="D3" data-block-id="gallery-primary" data-renderer-kind="typography" data-component-source="native" data-component-id="native.paper-ink.scaffold.minimal-outro.outro-lockup" data-content-ref="example.d3">
+<div class="stage" data-template-id="D3" data-block-id="gallery-primary" data-renderer-kind="typography" data-component-source="native" data-component-id="native.wise-ppt.scaffold.minimal-outro.outro-lockup" data-content-ref="example.d3">
   <div class="doc tl" data-template-part="support" data-template-slot="support" data-template-slot-kind="text">PPT 标题<br>页面标题</div>
   <div class="folio" data-template-part="folio">页码 / 总页数 — BY @歪斯Wise</div>
 
@@ -46,11 +49,11 @@
     <g id="draw"></g>
   </svg>
 
-  <div class="big" data-template-part="primary" data-template-slot="primary" data-template-slot-kind="text">进一寸有进一寸的欢喜。</div>
+  <div class="big" data-template-part="primary" data-template-slot="primary" data-template-slot-kind="text">怕什么真理无穷。</div>
   <div class="sig" data-template-part="signature">@歪斯Wise</div>
 </div>
 
-<script src="../../../../themes/paper-ink/assets/particles.js"></script>
+<script src="../../../../themes/packages/paper-ink/assets/particles.js"></script>
 <script>
 var NS = 'http://www.w3.org/2000/svg';
 var INK = 'var(--ink)';

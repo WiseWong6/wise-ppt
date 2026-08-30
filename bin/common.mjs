@@ -60,7 +60,7 @@ async function readText(filePath, label = path.basename(filePath)) {
   try {
     return await readFile(filePath, "utf8");
   } catch (error) {
-    throw new WisePPTError(`\u65E0\u6CD5\u8BFB\u53D6${label}: ${filePath}: ${error.message}`);
+    throw new WisePPTError(`无法读取${label}: ${filePath}: ${error.message}`);
   }
 }
 async function readJson(filePath, label = path.basename(filePath)) {
@@ -68,17 +68,17 @@ async function readJson(filePath, label = path.basename(filePath)) {
   try {
     value = JSON.parse(await readFile(filePath, "utf8"));
   } catch (error) {
-    throw new WisePPTError(`${label} \u4E0D\u662F\u5408\u6CD5 JSON: ${filePath}: ${error.message}`);
+    throw new WisePPTError(`${label} 不是合法 JSON: ${filePath}: ${error.message}`);
   }
   if (!value || typeof value !== "object" || Array.isArray(value)) {
-    throw new WisePPTError(`${label} \u9876\u5C42\u5FC5\u987B\u662F JSON object`);
+    throw new WisePPTError(`${label} 顶层必须是 JSON object`);
   }
   assertFiniteNumbers(value, label);
   return value;
 }
 function assertFiniteNumbers(value, label) {
   if (typeof value === "number" && !Number.isFinite(value)) {
-    throw new WisePPTError(`${label} \u542B NaN/Infinity \u975E\u6709\u9650\u6570\u5B57`);
+    throw new WisePPTError(`${label} 含 NaN/Infinity 非有限数字`);
   }
   if (Array.isArray(value)) value.forEach((item, index) => assertFiniteNumbers(item, `${label}[${index}]`));
   else if (value && typeof value === "object") {
@@ -87,7 +87,7 @@ function assertFiniteNumbers(value, label) {
 }
 function assertAbsolute(raw, label) {
   const expanded = raw.startsWith("~/") ? path.join(os.homedir(), raw.slice(2)) : raw;
-  if (!path.isAbsolute(expanded)) throw new WisePPTError(`${label}\u5FC5\u987B\u662F\u7EDD\u5BF9\u8DEF\u5F84`);
+  if (!path.isAbsolute(expanded)) throw new WisePPTError(`${label}必须是绝对路径`);
   return path.resolve(expanded);
 }
 async function assertNoSymlinkComponents(target, label) {
@@ -97,7 +97,7 @@ async function assertNoSymlinkComponents(target, label) {
   for (const part of absolute.slice(parsed.root.length).split(path.sep).filter(Boolean)) {
     current = path.join(current, part);
     const info = await lstat(current).catch(() => null);
-    if (info?.isSymbolicLink()) throw new WisePPTError(`${label} \u8DEF\u5F84\u7981\u6B62\u7B26\u53F7\u94FE\u63A5: ${current}`);
+    if (info?.isSymbolicLink()) throw new WisePPTError(`${label} 路径禁止符号链接: ${current}`);
     if (!info) break;
   }
 }
@@ -132,10 +132,10 @@ async function collectFiles(root, options = {}) {
       const absolute = path.join(current, entry.name);
       const relative = path.relative(root, absolute).split(path.sep).join("/");
       if (!includeHidden && entry.name.startsWith(".") || exclude(relative, entry)) continue;
-      if (entry.isSymbolicLink()) throw new WisePPTError(`\u7981\u6B62\u7B26\u53F7\u94FE\u63A5: ${relative}`);
+      if (entry.isSymbolicLink()) throw new WisePPTError(`禁止符号链接: ${relative}`);
       if (entry.isDirectory()) await visit(absolute);
       else if (entry.isFile()) files.push(relative);
-      else throw new WisePPTError(`\u4E0D\u652F\u6301\u7684\u6587\u4EF6\u7C7B\u578B: ${relative}`);
+      else throw new WisePPTError(`不支持的文件类型: ${relative}`);
     }
   }
   await visit(root);
