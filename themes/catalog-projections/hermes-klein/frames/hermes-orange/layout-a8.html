@@ -173,21 +173,31 @@
 <script src="../../../../../themes/packages/paper-ink/assets/particles.js"></script>
 <script>
 function drawConnectors(){
-  var stage = document.querySelector('.stage').getBoundingClientRect();
+  var stageNode = document.querySelector('.stage');
+  var rowNode = document.getElementById('selrow');
+  var badNode = document.getElementById('badstep');
+  var elbow = document.getElementById('elb');
+  var arrow = document.getElementById('elbA');
+  if (!stageNode || !rowNode || !badNode || !elbow || !arrow) return false;
+  var stage = stageNode.getBoundingClientRect();
   var k = stage.width / 1920;
+  /* Catalog 关闭/停泊 iframe 时舞台会短暂变成 0 宽；此时不再把 NaN 写进 SVG。 */
+  if (!Number.isFinite(k) || k <= 0) return false;
   function P(e) {
     var r = e.getBoundingClientRect();
     return { l:(r.left-stage.left)/k, r:(r.right-stage.left)/k, h:((r.top+r.bottom)/2 - stage.top)/k };
   }
-  var row = P(document.getElementById('selrow'));
-  var bad = P(document.getElementById('badstep'));
+  var row = P(rowNode);
+  var bad = P(badNode);
   var x1 = row.r + 2, y1 = row.h;
   var x2 = bad.l - 4, y2 = bad.h;
   var mx = (x1 + x2) / 2;
-  document.getElementById('elb').setAttribute('d',
+  if (![x1, y1, x2, y2, mx].every(Number.isFinite)) return false;
+  elbow.setAttribute('d',
     'M '+x1+' '+y1+' L '+mx+' '+y1+' L '+mx+' '+y2+' L '+x2+' '+y2);
-  document.getElementById('elbA').setAttribute('d',
+  arrow.setAttribute('d',
     'M '+(x2-12)+' '+(y2-7)+' L '+x2+' '+y2+' L '+(x2-12)+' '+(y2+7));
+  return true;
 }
 
 stageFit();
