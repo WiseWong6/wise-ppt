@@ -2,8 +2,8 @@
   "contract_version": 3,
   "capability_id": "wise-ppt.page-emphasis",
   "description": "页面只声明语义焦点；主题决定焦点角色的具体颜色。组件源码与组件 Catalog 保持中性。",
-  "page_count": 86,
-  "relationship_page_count": 73,
+  "page_count": 88,
+  "relationship_page_count": 75,
   "nonrelationship_page_count": 13,
   "max_focus_groups_per_page": 1,
   "production_target_contract": {
@@ -3101,8 +3101,7 @@
       ],
       "normal_contrast": "墨阶差、实心反白、线宽或局部纹理",
       "theme_focus_carriers": [
-        "value",
-        "outline"
+        "value"
       ],
       "sample_focus_ref": "sample.u1.u1-focus",
       "sample_focus_reason": "Catalog 样张只激活逐项登记的精确焦点成员；正式 deck 必须按内容重新声明。",
@@ -3114,8 +3113,8 @@
           "role": "value"
         },
         {
-          "selector": "#u1-band-b",
-          "role": "outline"
+          "selector": "#u1-kpi-b",
+          "role": "value"
         }
       ]
     },
@@ -3146,8 +3145,76 @@
           "role": "value"
         },
         {
-          "selector": "#u2-delta-chip",
+          "selector": "#u2-delta-row",
           "role": "status"
+        }
+      ]
+    },
+    "U3": {
+      "page_kind": "relationship",
+      "page_name": "杠杆转化",
+      "access": "semantic-focus",
+      "default_mode": "none",
+      "primary_relation": "causal",
+      "relationship_family": "order",
+      "focus_candidates": [
+        "当前动作",
+        "转化支点",
+        "增量结果"
+      ],
+      "normal_contrast": "杠杆线宽、支点纹理与两端卡片的墨阶差",
+      "theme_focus_carriers": [
+        "label",
+        "outline",
+        "status",
+        "annotation"
+      ],
+      "sample_focus_ref": "sample.u3.u3-focus",
+      "sample_focus_reason": "Catalog 样张只激活转化动作与增量结果；正式 deck 必须按内容重新声明。",
+      "reason": "关系页具备内容驱动的焦点能力，但默认不上主题焦点色。",
+      "sample_focus_profile": "content-only",
+      "sample_focus_members": [
+        {
+          "selector": "#lever-transform-label",
+          "role": "label"
+        },
+        {
+          "selector": "#lever-outcome-title",
+          "role": "label"
+        }
+      ]
+    },
+    "W1": {
+      "page_kind": "relationship",
+      "page_name": "枢纽弧线 + 右列详情",
+      "access": "semantic-focus",
+      "default_mode": "none",
+      "primary_relation": "decomposition",
+      "relationship_family": "include",
+      "focus_candidates": [
+        "中枢",
+        "支线",
+        "局部"
+      ],
+      "normal_contrast": "层级墨阶、边界线宽或局部纹理",
+      "theme_focus_carriers": [
+        "value",
+        "label",
+        "outline",
+        "annotation"
+      ],
+      "sample_focus_ref": "sample.w1.w1-focus",
+      "sample_focus_reason": "Catalog 样张只激活逐项登记的精确焦点成员；正式 deck 必须按内容重新声明。",
+      "reason": "关系页具备内容驱动的焦点能力，但默认不上主题焦点色。",
+      "sample_focus_profile": "content-only",
+      "sample_focus_members": [
+        {
+          "selector": "#w1-focus-hub",
+          "role": "outline"
+        },
+        {
+          "selector": "#w1-focus-hub-title",
+          "role": "value"
         }
       ]
     }

@@ -1,11 +1,14 @@
 <!DOCTYPE html>
-<html lang="zh-CN" data-wise-catalog-fonts="true">
+<html lang="zh-CN" data-wise-catalog-fonts="true" data-theme-id="paper-ink" data-typography-mode="mixed">
 <head>
 <meta charset="UTF-8">
 <title>Wise PPT 资产目录:非关系页 · 版式 · 结构 · 组件 · 图标</title>
-<!-- Catalog 保留完整主题 token，但页面与组件文字优先使用约 3MiB 的本地 WOFF2 子集。 -->
-<link rel="stylesheet" href="../themes/paper-ink/assets/design-tokens.css" data-wise-theme-style="paper-ink">
-<link rel="stylesheet" href="../themes/paper-ink/assets/catalog-fonts.css" data-wise-catalog-fonts="true">
+<!-- Catalog 读取中性语义接口与三个平级固定主题包；页面和组件字体使用本地子集。 -->
+<link rel="stylesheet" href="../themes/engine/assets/design-tokens.css" data-wise-theme-style="engine">
+<link rel="stylesheet" href="../themes/packages/paper-ink/theme.css">
+<link rel="stylesheet" href="../themes/packages/hermes-orange/theme.css">
+<link rel="stylesheet" href="../themes/packages/klein-blue/theme.css">
+<link rel="stylesheet" href="../themes/engine/assets/catalog-fonts.css" data-wise-catalog-fonts="true">
 <style>
   :root{
     /* Catalog 外壳保持中性产品 UI；外观身份只进入预览内容与切换器样本。 */
@@ -44,20 +47,20 @@
   /* 侧栏顶置预览控件:外观=平铺色卡,字体=三段选择器,焦点=开关。选项少,摊开比下拉省一次点击。 */
   .ctl{margin-top:14px}
   .ctl-label{display:flex;align-items:center;justify-content:space-between;gap:8px;margin-bottom:6px;font:400 11px var(--wp-font-mono);color:var(--ink-3);letter-spacing:.08em}
-  .preset-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:6px}
-  .preset-card{display:grid;gap:5px;padding:5px 4px;border:1px solid var(--ink-45);background:transparent;cursor:pointer;text-align:center}
-  .preset-card:hover{border-color:var(--ink)}
-  .preset-card[aria-checked="true"]{box-shadow:inset 0 0 0 1px var(--ink-80);background:var(--paper-panel)}
-  .preset-swatch-strip{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;height:16px}
-  .preset-swatch{display:block;border:1px solid color-mix(in srgb,var(--ink) 22%,transparent)}
-  .preset-card-name{font:400 11px var(--wp-font-sans);color:var(--ink-2);white-space:nowrap}
-  .preset-card[aria-checked="true"] .preset-card-name{color:var(--ink)}
+  .theme-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:6px}
+  .theme-card{display:grid;gap:5px;padding:5px 4px;border:1px solid var(--ink-45);background:transparent;cursor:pointer;text-align:center}
+  .theme-card:hover{border-color:var(--ink)}
+  .theme-card[aria-checked="true"]{box-shadow:inset 0 0 0 1px var(--ink-80);background:var(--paper-panel)}
+  .theme-swatch-strip{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;height:16px}
+  .theme-swatch{display:block;border:1px solid color-mix(in srgb,var(--ink) 22%,transparent)}
+  .theme-card-name{font:400 11px var(--wp-font-sans);color:var(--ink-2);white-space:nowrap}
+  .theme-card[aria-checked="true"] .theme-card-name{color:var(--ink)}
   .type-segments{display:grid;grid-template-columns:repeat(3,1fr);border:1px solid var(--ink-45)}
   .type-segment{padding:7px 0;border:0;background:transparent;color:var(--ink-3);font:400 12px var(--wp-font-sans);text-align:center;cursor:pointer}
   .type-segment+.type-segment{border-left:1px solid var(--ink-45)}
   .type-segment:hover{color:var(--ink);background:var(--paper-panel)}
   .type-segment[aria-checked="true"]{background:var(--ink);color:var(--paper)}
-  .preset-card:focus-visible,.type-segment:focus-visible{outline:2px solid var(--ink);outline-offset:1px}
+  .theme-card:focus-visible,.type-segment:focus-visible{outline:2px solid var(--ink);outline-offset:1px}
   .focus-toggle{width:100%;margin-top:14px;padding:8px 10px;border:1px solid var(--ink-45);background:transparent;color:var(--ink-3);font:400 12px var(--wp-font-mono);cursor:pointer;display:flex;align-items:center;justify-content:space-between;gap:8px}
   .focus-toggle:hover{color:var(--ink);border-color:var(--ink)}
   .focus-toggle.on{color:var(--ink);border-color:var(--ink);background:var(--paper-panel)}
@@ -318,9 +321,9 @@
 <body>
 <header>
   <h1>Wise-PPT · 资产目录</h1>
-  <div class="ctl" id="preset-picker">
-    <div class="ctl-label" id="preset-picker-label">外观</div>
-    <div class="preset-cards" role="radiogroup" aria-labelledby="preset-picker-label"></div>
+  <div class="ctl" id="theme-picker">
+    <div class="ctl-label" id="theme-picker-label">主题</div>
+    <div class="theme-cards" role="radiogroup" aria-labelledby="theme-picker-label"></div>
   </div>
   <div class="ctl" id="typography-picker">
     <div class="ctl-label"><span id="typography-picker-label">字体</span></div>
@@ -405,10 +408,11 @@ document.querySelectorAll('.side-foot .repo-link[data-href]').forEach(function(a
 <script src="./component-routing-data.js"></script>
 <script src="../runtime/component-behavior.js"></script>
 <script src="./page-emphasis-data.js"></script>
-<script src="./paper-ink-theme-data.js"></script>
+<script src="./theme-registry-data.js"></script>
 <script>
 /* ============ 元数据 ============ */
-const FRAMES='gallery-paper-ink/ai/frames/';
+const PAPER_INK_FRAMES='gallery-paper-ink/ai/frames/';
+const CATALOG_THEME_FRAMES='../themes/catalog-projections/hermes-klein/frames/';
 
 /* 非关系页按页面类型分五组:封面 / 目录 / 过渡 / 收尾 / 联络 */
 const NON_REL_GROUPS=[
@@ -451,6 +455,7 @@ const SMARTART_TYPES=[
     ['J3','旅程曲线','单区','时序'],['K2','痛点→解法→成效','左右3等分','因果'],['K3','左痛右解复合','左右1:2 / 右·上下2:1:1','因果'],
     ['S3','左痛双卡右解复合','左右1:2 / 左·上下2等分 / 右·上下2:1:1','因果'],
     ['T3','组件调用决策图册','上下1:2','因果'],
+    ['U3','杠杆转化','单区','因果'],
     ['N1','汇聚流','单区','汇聚'],['P1','黑箱剖面 + 编号标注','上下2:1','流动'],
     ['Q3','上下双槽流程对照','上下2等分','对比 + 流动'],
   ]},
@@ -463,6 +468,7 @@ const SMARTART_TYPES=[
   ]},
   {id:'relationship',cn:'⑤ 关系',desc:'非线性的连接、对照、映射、中心辐射或包含',items:[
     ['G1','三向放射','单区','拆解'],['G5','三原则放射','单区','拆解'],['G4','中心枢纽 + 卫星','单区','拆解 / 网络'],
+    ['W1','枢纽弧线 + 右列详情','左右45:55','拆解'],
     ['H1','同心防线','单区','嵌套'],['H2','嵌套变焦框','单区','嵌套'],
     ['E1','对比双面板','左右2等分','对比'],['E2','分水岭双栏','左右2等分','对比'],
     ['U1','斜切双带对照','上下2等分 / 上·左右2:1 / 下·左右1:2','对比'],
@@ -553,7 +559,7 @@ const SMARTART_COMPONENTS=[
     {t:'native',num:77,en:'before-after-bands',nm:'前后双带演进面板'},
     {t:'native',num:95,en:'weighted-arc-web',nm:'权重弧网',note:'源 L1 · 原版抄录'},
     {t:'native',num:106,en:'balance-scale',nm:'权衡天平',note:'经典双侧取舍'},
-    {t:'native',num:131,en:'lever-balance',nm:'杠杆天平',note:'支点撬动·存量转增量'},
+    {t:'native',num:131,en:'lever-balance',nm:'杠杆天平',note:'源 U3 · 支点撬动存量转增量'},
     {t:'native',num:107,en:'interlocking-gears',nm:'互锁齿轮',note:'固定 3 个相互驱动模块'},
     {t:'native',num:108,en:'three-principles-radial',nm:'三原则放射图',note:'源 G5 · 固定三分支',catalogNo:77},
   ]},
@@ -614,7 +620,7 @@ function assertCatalogClassification(groups,keyOf,expected,label){
   }
   return count;
 }
-const SMARTART_LAYOUT_COUNT=assertCatalogClassification(SMARTART_TYPES,item=>item[0],73,'版式');
+const SMARTART_LAYOUT_COUNT=assertCatalogClassification(SMARTART_TYPES,item=>item[0],75,'版式');
 const CATALOG_COMPONENTS=SMARTART_COMPONENTS.flatMap(group=>group.items);
 /* catalogNo 是当前公开身份；源数组按语义邻接维护，展示序按编号升序统一。 */
 const RESERVED_COMPONENT_NUMBERS=new Set([6,16,80]);
@@ -713,7 +719,7 @@ function realSlotCandidatesForSpec(spec,shape){
   candidates.sort((a,b)=>compareRepresentativeSlots(shape,a,b));
   return candidates;
 }
-function slotPresetForSpec(spec,shape){
+function slotThemeForSpec(spec,shape){
   const candidates=realSlotCandidatesForSpec(spec,shape);
   if(!candidates||!candidates.length)return null;
   const chosen=candidates[0],source=chosen.slot;
@@ -733,10 +739,10 @@ function slotPresetForSpec(spec,shape){
   };
 }
 function slotFitsFor(spec){
-  const allowed=SLOT_SHAPE_ORDER.map(shape=>slotPresetForSpec(spec,shape)).filter(Boolean);
+  const allowed=SLOT_SHAPE_ORDER.map(shape=>slotThemeForSpec(spec,shape)).filter(Boolean);
   return allowed.length?allowed:null;
 }
-function slotFitById(spec,id){return slotPresetForSpec(spec,id);}
+function slotFitById(spec,id){return slotThemeForSpec(spec,id);}
 function slotShapesForCard(card){
   const allowed=new Map();
   specsForCard(card).forEach(([spec])=>{
@@ -774,44 +780,71 @@ function componentContract(spec){
   };
 }
 
-/* 版式组件的唯一源码在 capabilities/layouts/paper-ink-components.js。 */
+/* 版式组件的唯一源码在 capabilities/layouts/native-components.js。 */
 
 /* ============ 渲染 ============ */
 const $=s=>document.querySelector(s);
 const THUMB_DIR='catalog-thumbnails/';
 const THUMBGEN=new URLSearchParams(location.search).get('thumbgen')==='1';
-const THEME_CONTRACT=window.WISE_PPT_PAPER_INK_THEME;
-if(!THEME_CONTRACT)throw new Error('缺少 Paper Ink 主题投影');
-const APPEARANCE_CONTRACT=THEME_CONTRACT.appearance_presets;
-const PRESETS=THEME_CONTRACT.resolved_presets;
-const PRESET_BY_ID=new Map(PRESETS.map(item=>[item.preset_id,item]));
-const DEFAULT_PRESET_ID=APPEARANCE_CONTRACT.default_preset_id;
-const TYPOGRAPHY=THEME_CONTRACT.typography;
+const THEME_DATA=window.WISE_PPT_THEME_REGISTRY_DATA;
+if(!THEME_DATA||THEME_DATA.contract!=='wise-ppt-theme-catalog-projection@1')throw new Error('缺少独立主题 registry 投影');
+const THEMES=THEME_DATA.themes;
+const THEME_BY_ID=new Map(THEMES.map(item=>[item.theme_id,item]));
+const DEFAULT_THEME_ID=THEME_DATA.default_theme_id;
+const CATALOG_PROJECTION=THEME_DATA.catalog_projection;
+if(!CATALOG_PROJECTION||CATALOG_PROJECTION.contract!=='wise-ppt-catalog-theme-projection@1')throw new Error('缺少 Catalog 主题投影合同');
+const CATALOG_PROJECTED_THEME_IDS=new Set([
+  CATALOG_PROJECTION.master_theme_id,
+  ...CATALOG_PROJECTION.derived_theme_ids,
+]);
+const THEME_ALIAS_TO_ID=new Map();
+const THEME_ID_TO_ALIAS=new Map();
+THEMES.forEach(theme=>{
+  (theme.catalog_aliases||[]).forEach(alias=>{
+    if(THEME_ALIAS_TO_ID.has(alias))throw new Error('重复 Catalog 主题别名: '+alias);
+    THEME_ALIAS_TO_ID.set(alias,theme.theme_id);
+    if(!THEME_ID_TO_ALIAS.has(theme.theme_id))THEME_ID_TO_ALIAS.set(theme.theme_id,alias);
+  });
+});
+const TYPOGRAPHY=THEME_DATA.typography;
 const TYPOGRAPHY_MODES=TYPOGRAPHY.modes;
 const MODE_BY_ID=new Map(TYPOGRAPHY_MODES.map(item=>[item.mode_id,item]));
-const DEFAULT_TYPOGRAPHY_ID=TYPOGRAPHY.default_mode_id;
+const DEFAULT_TYPOGRAPHY_ID='mixed';
 function replaceCatalogQuery(params){
   history.replaceState(null,'',location.pathname+(params.toString()?'?'+params.toString():'')+location.hash);
 }
-function initialPresetId(){
+function initialThemeId(){
   const params=new URLSearchParams(location.search);
-  const requested=params.get('preset');
-  if(requested!==null){
-    if(PRESET_BY_ID.has(requested)){
-      return requested;
+  let changed=false;
+  const preset=params.get('preset');
+  if(preset!==null){
+    const mapped=THEME_ALIAS_TO_ID.get(preset);
+    if(mapped){
+      if(params.has('theme')){params.delete('theme');changed=true;}
+      if(changed)replaceCatalogQuery(params);
+      return mapped;
     }
     params.delete('preset');
-    replaceCatalogQuery(params);
-    return DEFAULT_PRESET_ID;
+    changed=true;
   }
-  return DEFAULT_PRESET_ID;
+  const requested=params.get('theme');
+  if(requested!==null){
+    if(THEME_BY_ID.has(requested)){
+      if(changed)replaceCatalogQuery(params);
+      return requested;
+    }
+    params.delete('theme');
+    changed=true;
+  }
+  if(changed)replaceCatalogQuery(params);
+  return DEFAULT_THEME_ID;
 }
-let activePresetId=initialPresetId();
-document.documentElement.dataset.themePreset=activePresetId;
+let activeThemeId=initialThemeId();
+document.documentElement.dataset.themeId=activeThemeId;
 /* 字体轴与外观轴独立；只有未显式选字体时才跟随外观缺省。 */
-function presetDefaultTypography(presetId=activePresetId){
-  const preset=PRESET_BY_ID.get(presetId);
-  return preset?preset.default_typography_mode:DEFAULT_TYPOGRAPHY_ID;
+function themeDefaultTypography(themeId=activeThemeId){
+  const theme=THEME_BY_ID.get(themeId);
+  return theme?theme.default_typography_mode:DEFAULT_TYPOGRAPHY_ID;
 }
 function initialTypographyState(){
   const params=new URLSearchParams(location.search),requested=params.get('typography');
@@ -820,7 +853,7 @@ function initialTypographyState(){
     params.delete('typography');
     replaceCatalogQuery(params);
   }
-  return {id:presetDefaultTypography(),explicit:false};
+  return {id:themeDefaultTypography(),explicit:false};
 }
 const initialTypography=initialTypographyState();
 let activeTypographyId=initialTypography.id;
@@ -833,14 +866,16 @@ const TYPOGRAPHY_FONT_WARMUPS=Object.freeze({
   'mixed':[['300','Han Sans Catalog Light','纸墨正文'],['500','Han Serif Catalog','纸墨正文'],['700','Han Serif Catalog','纸墨标题']],
 });
 const typographyWarmups=new Map();
-function warmCatalogTypography(modeId=activeTypographyId){
+function warmCatalogTypography(modeId=activeTypographyId,themeId=activeThemeId){
   if(THUMBGEN||!document.fonts||typeof document.fonts.load!=='function')return Promise.resolve([]);
-  if(typographyWarmups.has(modeId))return typographyWarmups.get(modeId);
+  const key=themeId+':'+modeId;
+  if(typographyWarmups.has(key))return typographyWarmups.get(key);
   const faces=(TYPOGRAPHY_FONT_WARMUPS[modeId]||[]).concat([['400','Courier Prime Catalog','AI ENGINEERING'],['700','Courier Prime Catalog','FIG. 02']]);
+  if(modeId==='mixed'&&(themeId==='hermes-orange'||themeId==='klein-blue'))faces.push(['700','Oswald','WISE PPT']);
   const pending=Promise.allSettled(faces.map(([weight,family,text])=>
     document.fonts.load(`${weight} 96px "${family}"`,text)
   ));
-  typographyWarmups.set(modeId,pending);
+  typographyWarmups.set(key,pending);
   return pending;
 }
 /* 全屏内容存在时，字体轴只允许“先准备、后提交”。最后一次操作拥有提交权；
@@ -848,9 +883,10 @@ function warmCatalogTypography(modeId=activeTypographyId){
 let catalogAppearanceCommitSerial=0;
 function commitCatalogAppearance(eventName,detail,notify){
   const serial=++catalogAppearanceCommitSerial;
-  const targetPresetId=activePresetId;
+  const targetThemeId=activeThemeId;
   const targetTypographyId=activeTypographyId;
   const root=document.documentElement;
+  const themeChanged=root.dataset.themeId!==targetThemeId;
   const typographyChanged=root.dataset.typographyMode!==targetTypographyId;
   const hasOpenPreview=Boolean(document.getElementById('layer')?.classList.contains('on'));
   if(typographyChanged&&hasOpenPreview&&!THUMBGEN){
@@ -859,7 +895,8 @@ function commitCatalogAppearance(eventName,detail,notify){
     delete root.dataset.catalogTypographyPending;
   }
   const finalize=()=>{
-    if(serial!==catalogAppearanceCommitSerial||activePresetId!==targetPresetId||activeTypographyId!==targetTypographyId)return false;
+    if(serial!==catalogAppearanceCommitSerial||activeThemeId!==targetThemeId||activeTypographyId!==targetTypographyId)return false;
+    root.dataset.themeId=targetThemeId;
     root.dataset.typographyMode=targetTypographyId;
     delete root.dataset.catalogTypographyPending;
     if(notify)document.dispatchEvent(new CustomEvent(eventName,{detail}));
@@ -868,18 +905,18 @@ function commitCatalogAppearance(eventName,detail,notify){
   /* 未打开详情时不主动下载字体：卡片是静态终稿，打开时仍由门面图遮住冷加载。 */
   if(!hasOpenPreview||THUMBGEN)return Promise.resolve(finalize());
   /* 已是目标字体也延后一个微任务：同一轮连续点击时，后一次选择可取消这次通知。 */
-  if(!typographyChanged)return Promise.resolve().then(finalize);
-  return warmCatalogTypography(targetTypographyId).then(finalize);
+  if(!themeChanged&&!typographyChanged)return Promise.resolve().then(finalize);
+  return warmCatalogTypography(targetTypographyId,targetThemeId).then(finalize);
 }
 let themeFocusEnabled=new URLSearchParams(location.search).has('accent');
-function thumbPath(key,presetId=activePresetId){
-  return presetId===DEFAULT_PRESET_ID
+function thumbPath(key,themeId=activeThemeId){
+  return themeId===DEFAULT_THEME_ID
     ?THUMB_DIR+key+'.webp'
     /* 缩略图资产目录由构建器固定为 palettes。 */
-    :THUMB_DIR+'palettes/'+presetId+'/'+key+'.webp';
+    :THUMB_DIR+'palettes/'+themeId+'/'+key+'.webp';
 }
 let thumbnailRefreshSerial=0;
-function refreshPresetThumbnails(){
+function refreshThemeThumbnails(){
   const serial=++thumbnailRefreshSerial;
   document.querySelectorAll('[data-thumb-key]').forEach(card=>{
     const thumb=thumbPath(card.dataset.thumbKey);
@@ -899,32 +936,39 @@ function refreshPresetThumbnails(){
     image.src=thumb;
   });
 }
-function syncPresetPicker(){
-  document.querySelectorAll('[data-preset-id]').forEach(option=>{
-    const on=option.dataset.presetId===activePresetId;
+function syncThemePicker(){
+  document.querySelectorAll('#theme-picker [data-theme-id]').forEach(option=>{
+    const on=option.dataset.themeId===activeThemeId;
     option.setAttribute('aria-checked',String(on));
     option.tabIndex=on?0:-1;
   });
 }
-function setCatalogPreset(presetId,{syncUrl=true,notify=true}={}){
-  if(!PRESET_BY_ID.has(presetId))throw new Error('非法 Paper Ink 外观预设: '+presetId);
-  activePresetId=presetId;
-  document.documentElement.dataset.themePreset=presetId;
+function setCatalogTheme(themeId,{syncUrl=true,notify=true}={}){
+  if(!THEME_BY_ID.has(themeId))throw new Error('未登记 Wise PPT 主题: '+themeId);
+  activeThemeId=themeId;
   if(syncUrl){
     const params=new URLSearchParams(location.search);
-    if(presetId===DEFAULT_PRESET_ID)params.delete('preset');else params.set('preset',presetId);
+    const alias=THEME_ID_TO_ALIAS.get(themeId);
+    if(alias){
+      params.set('preset',alias);
+      params.delete('theme');
+    }else{
+      params.delete('preset');
+      if(themeId===DEFAULT_THEME_ID)params.delete('theme');else params.set('theme',themeId);
+    }
     replaceCatalogQuery(params);
   }
   if(!typographyExplicit){
-    activeTypographyId=presetDefaultTypography(presetId);
+    activeTypographyId=themeDefaultTypography(themeId);
   }
-  syncPresetPicker();
+  syncThemePicker();
   syncTypographyPicker();
-  refreshPresetThumbnails();
-  return commitCatalogAppearance('wise-ppt:preset-change',{presetId},notify);
+  syncCatalogLayoutCards(themeId);
+  refreshThemeThumbnails();
+  return commitCatalogAppearance('wise-ppt:theme-change',{themeId},notify);
 }
 function setCatalogTypography(modeId,{syncUrl=true,notify=true,explicit=true}={}){
-  if(!MODE_BY_ID.has(modeId))throw new Error('非法 Paper Ink 字体档: '+modeId);
+  if(!MODE_BY_ID.has(modeId))throw new Error('未登记 Wise PPT 字体模式: '+modeId);
   activeTypographyId=modeId;
   if(explicit)typographyExplicit=true;
   if(syncUrl){
@@ -948,25 +992,25 @@ function wireSegmentKeyboard(group,options){
     next.click();
   });
 }
-function renderPresetPicker(){
-  const group=document.querySelector('#preset-picker .preset-cards');
+function renderThemePicker(){
+  const group=document.querySelector('#theme-picker .theme-cards');
   const options=[];
-  PRESETS.forEach(preset=>{
+  THEMES.forEach(theme=>{
     const card=document.createElement('button');
-    card.type='button';card.className='preset-card';card.dataset.presetId=preset.preset_id;
+    card.type='button';card.className='theme-card';card.dataset.themeId=theme.theme_id;
     card.setAttribute('role','radio');
-    card.setAttribute('aria-label',preset.name+'：'+preset.description);
-    const strip=document.createElement('span');strip.className='preset-swatch-strip';strip.setAttribute('aria-hidden','true');
+    card.setAttribute('aria-label',theme.name+'：'+theme.description);
+    const strip=document.createElement('span');strip.className='theme-swatch-strip';strip.setAttribute('aria-hidden','true');
     ['background','text','accent'].forEach(role=>{
-      const swatch=document.createElement('span');swatch.className='preset-swatch';swatch.style.background=preset.swatches[role];strip.appendChild(swatch);
+      const swatch=document.createElement('span');swatch.className='theme-swatch';swatch.style.background=theme.swatches[role];strip.appendChild(swatch);
     });
-    const name=document.createElement('span');name.className='preset-card-name';name.textContent=preset.name;
+    const name=document.createElement('span');name.className='theme-card-name';name.textContent=theme.name;
     card.append(strip,name);
-    card.addEventListener('click',()=>setCatalogPreset(preset.preset_id));
+    card.addEventListener('click',()=>setCatalogTheme(theme.theme_id));
     group.appendChild(card);options.push(card);
   });
   wireSegmentKeyboard(group,options);
-  syncPresetPicker();
+  syncThemePicker();
 }
 function syncTypographyPicker(){
   document.querySelectorAll('[data-typography-id]').forEach(option=>{
@@ -1009,6 +1053,27 @@ function pageThumbKey(src){return 'page-'+thumbSlug(src);}
 function componentThumbKey(spec){return 'component-'+thumbSlug(spec);}
 function pageThumb(src){return thumbPath(pageThumbKey(src));}
 function componentThumb(spec){return thumbPath(componentThumbKey(spec));}
+function catalogLayoutCode(code){return String(code).trim().toLowerCase();}
+function catalogLayoutThumbKey(code){
+  return pageThumbKey(PAPER_INK_FRAMES+'layout-'+catalogLayoutCode(code)+'.html');
+}
+function catalogLayoutFrame(code,themeId=activeThemeId){
+  const layoutCode=catalogLayoutCode(code);
+  return CATALOG_PROJECTED_THEME_IDS.has(themeId)
+    ?CATALOG_THEME_FRAMES+themeId+'/layout-'+layoutCode+'.html'
+    :PAPER_INK_FRAMES+'layout-'+layoutCode+'.html';
+}
+function catalogLayoutFamily(themeId=activeThemeId){
+  return CATALOG_PROJECTED_THEME_IDS.has(themeId)?'catalog-theme-projection':'paper-ink-baseline';
+}
+function syncCatalogLayoutCards(themeId=activeThemeId){
+  document.querySelectorAll('[data-layout-code]').forEach(card=>{
+    const code=card.dataset.layoutCode;
+    card.dataset.frame=catalogLayoutFrame(code,themeId);
+    card.dataset.frameFamily=catalogLayoutFamily(themeId);
+    card.dataset.thumbKey=catalogLayoutThumbKey(code);
+  });
+}
 /* 缩略图直写 src + 原生 lazy:隐藏 tab(display:none)与收起章节不请求,滚到附近才加载。 */
 function thumbMarkup(thumb,alt,wrapClass='frame-wrap'){
   return `<div class="${wrapClass}"><img class="catalog-thumb" src="${thumb}" loading="lazy" width="640" height="360" decoding="async" alt="${String(alt||'').replace(/"/g,'&quot;')}"></div>`;
@@ -1021,8 +1086,10 @@ function metaRowsMarkup(rows){
 /* 展示层裁剪:关系页焦点策略省去「默认无额外焦点；」「Catalog 样张无额外语义焦点；」前缀及「可强调」引导词,直接显示焦点候选(page-emphasis 合同数据原样,只裁关系页卡片显示) */
 function focusStrategyText(policy){return policy.strategy.replace(/^(?:默认无额外焦点|Catalog 样张无额外语义焦点)；/,'').replace(/^可强调/,'');}
 function layoutCard([id,nm,struct,rel]){
-  const full=FRAMES+'layout-'+id.toLowerCase()+'.html';
-  const thumb=pageThumb(full);
+  const code=catalogLayoutCode(id);
+  const full=catalogLayoutFrame(code);
+  const thumbKey=catalogLayoutThumbKey(code);
+  const thumb=thumbPath(thumbKey);
   /* 非关系页只有编号、名称与缩略图,没有结构/关系副信息 */
   const nonRel=rel===undefined;
   const policy=window.WISE_PPT_PAGE_EMPHASIS&&window.WISE_PPT_PAGE_EMPHASIS[id];
@@ -1032,7 +1099,7 @@ function layoutCard([id,nm,struct,rel]){
   const metaRows=nonRel?[]:[['结构',struct],['关系',rel],['焦点',focus]];
   const metaMarkup=metaRows.length?`<div class="meta">${metaRowsMarkup(metaRows)}</div>`:'';
   const modalTag=nonRel?'':` data-mtag="结构:${struct} · 关系:${rel} · 焦点:${focus}"`;
-  return `<div class="card" id="${nonRel?'tpl':'lyt'}-${id.toLowerCase()}" data-modal="1"${focusCapable?' data-focus-capable="1"':''} data-frame="${full}" data-thumb-key="${pageThumbKey(full)}" data-thumb="${thumb}" data-mtitle="${id} ${nm}"${modalTag}>
+  return `<div class="card" id="${nonRel?'tpl':'lyt'}-${id.toLowerCase()}" data-modal="1"${focusCapable?' data-focus-capable="1"':''} data-layout-code="${code}" data-frame-family="${catalogLayoutFamily()}" data-frame="${full}" data-thumb-key="${thumbKey}" data-thumb="${thumb}" data-mtitle="${id} ${nm}"${modalTag}>
     ${thumbMarkup(thumb,id+' '+nm)}
     <div class="card-info">
       <div class="card-head"><span class="id">${id}</span><span class="nm">${nm}</span></div>
@@ -1303,7 +1370,7 @@ $('#c-ico').textContent='…';
   }
   function frameCacheKey(url){
     const keyUrl=new URL(url,location.href);
-    ['wise-ppt-embed','wise-ppt-frame-nonce','preset','typography','static','accent'].forEach(key=>keyUrl.searchParams.delete(key));
+    ['wise-ppt-embed','wise-ppt-frame-nonce','theme','typography','static','accent'].forEach(key=>keyUrl.searchParams.delete(key));
     return keyUrl.href;
   }
   function evictFrameWrap(wrap){
@@ -1319,7 +1386,7 @@ $('#c-ico').textContent='…';
     if(!frame||!frame.contentWindow)return Promise.reject(new Error('参考帧尚未就绪'));
     if(typeof frame._wiseCancelState==='function')frame._wiseCancelState();
     const requestId='catalog-state-'+(++frameStateSerial);
-    const requested={presetId:activePresetId,typographyMode:activeTypographyId,accent:themeFocusEnabled};
+    const requested={themeId:activeThemeId,typographyMode:activeTypographyId,accent:themeFocusEnabled};
     return new Promise((resolve,reject)=>{
       let settled=false;
       const cleanup=()=>{
@@ -1343,12 +1410,12 @@ $('#c-ico').textContent='…';
         if(data.status==='reload-required')return finish(null,{reloadRequired:true});
         if(data.status==='fail')return finish(new Error('参考帧状态切换失败: '+(data.reason||frame.src)));
         if(data.status!=='ready')return;
-        if(data.presetId!==requested.presetId||data.typographyMode!==requested.typographyMode||Boolean(data.accent)!==requested.accent){
+        if(data.themeId!==requested.themeId||data.typographyMode!==requested.typographyMode||Boolean(data.accent)!==requested.accent){
           return finish(new Error('参考帧状态回报与请求不一致'));
         }
         /* file:// 下父子文档是不同不透明源，测试与诊断不能读取 contentDocument；
            把已验证过的子页回报留在 iframe 元素自身，避免用猜测代替握手结果。 */
-        frame.dataset.wiseStatePreset=data.presetId;
+        frame.dataset.wiseStateTheme=data.themeId;
         frame.dataset.wiseStateTypography=data.typographyMode;
         frame.dataset.wiseStateAccent=String(Boolean(data.accent));
         finish(null,{reloadRequired:false});
@@ -1360,7 +1427,7 @@ $('#c-ico').textContent='…';
       const send=()=>{
         if(frame.contentWindow)frame.contentWindow.postMessage({
           type:'wise-ppt-frame-state',protocol:'wise-ppt-frame/v1',requestId,
-          presetId:requested.presetId,typographyMode:requested.typographyMode,accent:requested.accent,
+          themeId:requested.themeId,typographyMode:requested.typographyMode,accent:requested.accent,
         },'*');
       };
       const resend=setInterval(send,400);
@@ -1381,6 +1448,7 @@ $('#c-ico').textContent='…';
     if(!card.dataset.frame){loadCard(card,currentLiveSpec||card.dataset.spec||'');return;}
     const frame=liveFrame;
     if(!frame)return reloadOpenFrame();
+    if(frameCacheKey(frame.src)!==frameCacheKey(card.dataset.frame))return reloadOpenFrame();
     try{
       const result=await requestFrameState(frame);
       if(result.reloadRequired&&frame===liveFrame&&card===currentCard)reloadOpenFrame();
@@ -1393,7 +1461,7 @@ $('#c-ico').textContent='…';
   window.WisePPTCatalogFrameState=()=>({
     cacheSize:frameCache.size,cacheLimit:FRAME_CACHE_LIMIT,cacheKeys:[...frameCache.keys()],
     currentKey:liveFrame?.closest('[data-wise-frame-cache]')?.dataset.wiseFrameCache||'',
-    currentSrc:liveFrame?.src||'',presetId:activePresetId,typographyMode:activeTypographyId,
+    currentSrc:liveFrame?.src||'',themeId:activeThemeId,typographyMode:activeTypographyId,
   });
   window.WisePPTCatalogComponentState=()=>({
     slot:currentSlotId,
@@ -1411,7 +1479,7 @@ $('#c-ico').textContent='…';
       if(currentCard.dataset.frame)reloadOpenFrame();else loadCard(currentCard,currentLiveSpec||currentCard.dataset.spec||'');
     }
   });
-  document.addEventListener('wise-ppt:preset-change',()=>{
+  document.addEventListener('wise-ppt:theme-change',()=>{
     refreshOpenPreview();
   });
   document.addEventListener('wise-ppt:typography-change',()=>{
@@ -1610,12 +1678,12 @@ $('#c-ico').textContent='…';
       if(!entry)throw new Error('ECharts 组件缺失:'+key);
       markup='<div class="stage-ecbox" style="position:absolute;inset:0;width:100%;height:100%"></div>';
     }else{
-      const d=(kind==='atlas')?window.SWISS_CATALOG_DATA:window.PAPER_INK_COMPONENT_DATA;
+      const d=(kind==='atlas')?window.SWISS_CATALOG_DATA:window.WISE_PPT_NATIVE_COMPONENT_DATA;
       const num=Number(key);
       entry=d&&d.entries.find(x=>x.num===num);
       if(!entry)throw new Error('组件 #'+num+' 缺失');
       const adapters=window.WisePPTThemeAdapters||{};
-      const ad=(kind==='atlas')?adapters['paper-ink.atlas']:(kind==='native'?adapters['paper-ink.native-components']:null);
+      const ad=(kind==='atlas')?adapters['wise-ppt.atlas']:(kind==='native'?adapters['wise-ppt.native']:null);
       const sourceSnippet=expandPreviewRepeatUnits(entry.snippet||'',entry);
       markup=ad?ad.adaptMarkup(sourceSnippet):sourceSnippet;
     }
@@ -1683,7 +1751,7 @@ $('#c-ico').textContent='…';
         page.style.setProperty('--wp-slot-inset-y',result.insetY+'px');
         if(kind==='ec'){
           const box=host.querySelector('.stage-ecbox'),adapter=window.WiseEchartsThemeAdapter;
-          const themeAdapter=(window.WisePPTThemeAdapters||{})['paper-ink.echarts'];
+          const themeAdapter=(window.WisePPTThemeAdapters||{})['wise-ppt.echarts'];
           if(!box||!window.echarts||!adapter||!themeAdapter)throw new Error('ECharts 渲染资源不完整:'+key);
           if(entry.register_maps)Object.keys(entry.register_maps).forEach(name=>echarts.registerMap(name,entry.register_maps[name]));
           const chart=echarts.init(box,null,{renderer:'svg',width:box.clientWidth,height:box.clientHeight});
@@ -1739,7 +1807,7 @@ $('#c-ico').textContent='…';
       const data=window.WISE_PPT_ECHARTS_GALLERY_DATA;
       const entry=data&&data.components.find(x=>x.component_id===key);
       const adapter=window.WiseEchartsThemeAdapter;
-      const themeAdapter=(window.WisePPTThemeAdapters||{})['paper-ink.echarts'];
+      const themeAdapter=(window.WisePPTThemeAdapters||{})['wise-ppt.echarts'];
       if(entry&&window.echarts&&adapter&&themeAdapter){
         if(entry.register_maps){Object.keys(entry.register_maps).forEach(n=>echarts.registerMap(n,entry.register_maps[n]));}
         const chart=echarts.init(box,null,{renderer:'svg',width:1600,height:900});
@@ -1761,11 +1829,11 @@ $('#c-ico').textContent='…';
     host.className='stage-host';
     let markup='',entry=null;
     {
-      const d=(kind==='atlas')?window.SWISS_CATALOG_DATA:window.PAPER_INK_COMPONENT_DATA;
+      const d=(kind==='atlas')?window.SWISS_CATALOG_DATA:window.WISE_PPT_NATIVE_COMPONENT_DATA;
       const num=Number(key);
       entry=d&&d.entries.find(x=>x.num===num);
       if(entry){
-        const ad=(kind==='atlas')?((window.WisePPTThemeAdapters||{})['paper-ink.atlas']):null;
+        const ad=(kind==='atlas')?((window.WisePPTThemeAdapters||{})['wise-ppt.atlas']):null;
         const sourceSnippet=expandPreviewRepeatUnits(entry.snippet||'',entry);
         markup=ad?ad.adaptMarkup(sourceSnippet):sourceSnippet;
       }
@@ -1793,7 +1861,7 @@ $('#c-ico').textContent='…';
   function frameRequestUrl(url,focusCapable){
     const frameUrl=new URL(url,location.href);
     frameUrl.searchParams.set('wise-ppt-embed','gallery');
-    frameUrl.searchParams.set('preset',activePresetId);
+    frameUrl.searchParams.set('theme',activeThemeId);
     /* 样张自身缺省是 all-sans，实时预览必须显式传解析后的字体档，白纸缺省的混合档才不会丢。 */
     frameUrl.searchParams.set('typography',activeTypographyId);
     /* 静态冻结:浮层预览永远停在终态,入场动效不播,AI/人任何时刻截图看到的都是标称几何。 */
@@ -1873,7 +1941,7 @@ $('#c-ico').textContent='…';
     await twoFrames();
     /* 握手通过即写回与 requestFrameState 同源的状态指纹:开机 URL 带的就是已生效状态,
        翻回新鲜帧保持免门面快路径;停泊期间换过字体/换色的帧由 loadCard 退回门面路径。 */
-    f.dataset.wiseStatePreset=frameUrl.searchParams.get('preset')||'';
+    f.dataset.wiseStateTheme=frameUrl.searchParams.get('theme')||'';
     f.dataset.wiseStateTypography=frameUrl.searchParams.get('typography')||'';
     f.dataset.wiseStateAccent=String(frameUrl.searchParams.has('accent'));
     /* ready 校验通过的帧登记进缓存；之后的关闭/翻页只会把它停泊进隐藏宿主。超限按 LRU 淘汰：
@@ -1963,7 +2031,7 @@ $('#c-ico').textContent='…';
          过期帧翻回时子文档要现载字库、解冻期握手还可能丢消息,一律退回静态门面遮住过渡。 */
       const cachedWrap=d.frame?frameCache.get(frameCacheKey(d.frame)):null;
       const cachedFrame=cachedWrap?cachedWrap.querySelector('iframe'):null;
-      const fresh=cachedFrame&&cachedFrame.dataset.wiseStatePreset===activePresetId
+      const fresh=cachedFrame&&cachedFrame.dataset.wiseStateTheme===activeThemeId
         &&cachedFrame.dataset.wiseStateTypography===activeTypographyId
         &&cachedFrame.dataset.wiseStateAccent===String(themeFocusEnabled);
       if(fresh)disposeLive();
@@ -2054,23 +2122,23 @@ $('#c-ico').textContent='…';
 
 /* ============ 组件原生渲染引擎(只用于浮层和缩略图生成) ============ */
 /* 1) 资源分层:浏览组件列表不加载；首次打开相应组件浮层时才加载 tokens、数据与脚本。 */
-const THEME_STYLE='../themes/paper-ink/assets/design-tokens.css';
+const THEME_STYLE='../themes/engine/assets/design-tokens.css';
 const COMPONENT_CORE_SCRIPTS=[
-  '../themes/paper-ink/adapters/atlas.js',
+  '../themes/engine/adapters/atlas.js',
   'ppt-component-atlas/catalog-data.js',
-  '../capabilities/layouts/paper-ink-components.js',
-  '../themes/paper-ink/adapters/native.js',
+  '../capabilities/layouts/native-components.js',
+  '../themes/engine/adapters/native.js',
 ];
 const ECHARTS_SCRIPTS=[
   '../capabilities/vendors/echarts/echarts.min.js',
-  '../themes/paper-ink/adapters/echarts.js',
+  '../themes/engine/adapters/echarts.js',
   'gallery-components/echarts-catalog-data.js',
   'gallery-components/echarts-gallery-runtime.js',
 ];
 let themeAssetsPromise=null,componentCorePromise=null,echartsAssetsPromise=null,componentCssInjected=false;
 function ensureThemeAssets(){
   if(!themeAssetsPromise){
-    const existing=document.querySelector('link[data-wise-theme-style="paper-ink"]');
+    const existing=document.querySelector('link[data-wise-theme-style="engine"]');
     if(existing&&existing.sheet)themeAssetsPromise=Promise.resolve();
     else themeAssetsPromise=new Promise((resolve,reject)=>{
       if(existing){
@@ -2079,7 +2147,7 @@ function ensureThemeAssets(){
         return;
       }
       const link=document.createElement('link');
-      link.rel='stylesheet';link.href=THEME_STYLE;link.dataset.wiseThemeStyle='paper-ink';
+      link.rel='stylesheet';link.href=THEME_STYLE;link.dataset.wiseThemeStyle='engine';
       link.onload=resolve;
       link.onerror=()=>reject(new Error('主题资源加载失败:'+THEME_STYLE));
       document.head.appendChild(link);
@@ -2125,7 +2193,7 @@ const COMPONENT_MOTION_ENABLED=false;
 /* atlas(swiss→纸墨适配)与 native(pi)的 componentCss 各注入一次 */
 function injectComponentCss(){
   if(componentCssInjected)return;
-  const ADAPTER=(window.WisePPTThemeAdapters||{})['paper-ink.atlas'];
+  const ADAPTER=(window.WisePPTThemeAdapters||{})['wise-ppt.atlas'];
   const atlasData=window.SWISS_CATALOG_DATA;
   if(atlasData){
     const css=ADAPTER?ADAPTER.adaptCss(atlasData.componentCss||''):atlasData.componentCss;
@@ -2134,9 +2202,9 @@ function injectComponentCss(){
     st.textContent=css+(COMPONENT_MOTION_ENABLED?(atlasData.componentMotionCss||''):'')+ov;
     document.head.appendChild(st);
   }
-  const pi=window.PAPER_INK_COMPONENT_DATA;
+  const pi=window.WISE_PPT_NATIVE_COMPONENT_DATA;
   if(pi){
-    const nativeAdapter=(window.WisePPTThemeAdapters||{})['paper-ink.native-components'];
+    const nativeAdapter=(window.WisePPTThemeAdapters||{})['wise-ppt.native'];
     const st2=document.createElement('style');
     st2.textContent=(nativeAdapter?nativeAdapter.adaptCss(pi.componentCss||''):(pi.componentCss||''))+
       (COMPONENT_MOTION_ENABLED?(pi.componentMotionCss||''):'');
@@ -2250,7 +2318,7 @@ function preferredDetailFitFor(spec){
   const frame=behavior&&behavior.render_mode==='fixed-visual'&&behavior.intrinsic_frame;
   if(frame){
     /* 固定组件的形状分类只说明“偏横/偏方/偏竖”，不能决定详情默认槽。
-       例如 600×280 的 #063 一旦按 landscape 分类落进 1680×750 整页槽，
+       例如 600×280 的 atlas:59 一旦按 landscape 分类落进 1680×750 整页槽，
        字号封顶会把整块压小。改为比较真实槽与原画布的双轴尺寸距离：
        仍然只用合同允许的真实槽，但默认打开时优先展示最接近原稿尺度的一档。 */
     const matched=(slotFitsFor(spec)||[]).slice().sort((left,right)=>{
@@ -2271,11 +2339,11 @@ function mountStage(stage){
   if(kind==='atlas'){
     const d=window.SWISS_CATALOG_DATA;
     entry=d&&d.entries.find(x=>x.num===num);
-    adapter=(window.WisePPTThemeAdapters||{})['paper-ink.atlas'];
+    adapter=(window.WisePPTThemeAdapters||{})['wise-ppt.atlas'];
   }else{
-    const d=window.PAPER_INK_COMPONENT_DATA;
+    const d=window.WISE_PPT_NATIVE_COMPONENT_DATA;
     entry=d&&d.entries.find(x=>x.num===num);
-    adapter=(window.WisePPTThemeAdapters||{})['paper-ink.native-components'];
+    adapter=(window.WisePPTThemeAdapters||{})['wise-ppt.native'];
   }
   if(!entry){throw new Error('组件 #'+num+' 缺失');}
   const route=routingForSpec(spec);
@@ -2530,7 +2598,7 @@ function initEChartsStage(stage,entryOverride,fit){
   box.className='stage-ecbox';
   stage.appendChild(box);
   const adapter=window.WiseEchartsThemeAdapter;
-  const themeAdapter=(window.WisePPTThemeAdapters||{})['paper-ink.echarts'];
+  const themeAdapter=(window.WisePPTThemeAdapters||{})['wise-ppt.echarts'];
   if(!adapter||!themeAdapter)throw new Error('ECharts 主题适配缺失');
   let width=1280,height=720;
   const slot=fit&&fit.slots&&fit.slots.find(item=>item.id===fit.targetSlotId);
@@ -2557,7 +2625,7 @@ function initEChartsStage(stage,entryOverride,fit){
 /* 变体表门禁:data-vr 至少两项、首项须等于卡片的代表 spec、引用的画册/ECharts/抄录条目须真实存在(未加载的源跳过,由各自加载点复检) */
 function assertVariantRefs(){
   const atlasNums=window.SWISS_CATALOG_DATA?new Set(window.SWISS_CATALOG_DATA.entries.map(e=>e.num)):null;
-  const nativeNums=window.PAPER_INK_COMPONENT_DATA?new Set(window.PAPER_INK_COMPONENT_DATA.entries.map(e=>e.num)):null;
+  const nativeNums=window.WISE_PPT_NATIVE_COMPONENT_DATA?new Set(window.WISE_PPT_NATIVE_COMPONENT_DATA.entries.map(e=>e.num)):null;
   const ecIds=window.WISE_PPT_ECHARTS_GALLERY_DATA?new Set(window.WISE_PPT_ECHARTS_GALLERY_DATA.components.map(c=>c.component_id)):null;
   document.querySelectorAll('#cmp-groups [data-vr]').forEach(card=>{
     let vr;
@@ -2653,7 +2721,7 @@ const STRUCTS=[
    cut:'竖分不等分;比例必须明确写出,例如 2:1。再分见⑦二次拆解',
    note:'当前权威比例:主左辅右 2:1、辅左主右 1:2、主图+数据格 29:21',
    empties:[
-    {f:'empty-c4.html',code:'C4',cap:'主左 + 辅右',ex:['C4','O1']},
+    {f:'empty-c4.html',code:'C4',cap:'主左 + 辅右',ex:['C4','O1','W1']},
     {f:'empty-a4.html',code:'A4',cap:'辅左 + 主右',ex:['A4','A6','T2']},
     {f:'empty-c1.html',code:'C1',cap:'主图 + 数据格',ex:['C1','F2']},
    ]},
@@ -2737,11 +2805,13 @@ function emptyCard(d,e){
     ${thumbMarkup(thumb,d.cn+' '+e.cap)}</div>`;
 }
 function structureExampleCard(it){
-  const full=FRAMES+'layout-'+it[0].toLowerCase()+'.html';
-  const thumb=pageThumb(full);
+  const code=catalogLayoutCode(it[0]);
+  const full=catalogLayoutFrame(code);
+  const thumbKey=catalogLayoutThumbKey(code);
+  const thumb=thumbPath(thumbKey);
   const policy=window.WISE_PPT_PAGE_EMPHASIS&&window.WISE_PPT_PAGE_EMPHASIS[it[0]];
   if(!policy)throw new Error('页面缺主题焦点策略:'+it[0]);
-  return `<div class="card" data-modal="1" data-frame="${full}" data-thumb-key="${pageThumbKey(full)}" data-thumb="${thumb}" data-mtitle="${it[0]} ${it[1]}" data-mtag="结构:${it[2]} · 关系:${it[3]} · 焦点:${focusStrategyText(policy)}">
+  return `<div class="card" data-modal="1" data-layout-code="${code}" data-frame-family="${catalogLayoutFamily()}" data-frame="${full}" data-thumb-key="${thumbKey}" data-thumb="${thumb}" data-mtitle="${it[0]} ${it[1]}" data-mtag="结构:${it[2]} · 关系:${it[3]} · 焦点:${focusStrategyText(policy)}">
     ${thumbMarkup(thumb,it[0]+' '+it[1])}
     <div class="card-info">
       <div class="card-head"><span class="id">${it[0]}</span><span class="nm">${it[1]}</span></div>
@@ -2964,7 +3034,7 @@ try{
   else if(q&&document.getElementById('m-'+q))switchTab(q);
 }catch(e){}
 syncThemeFocusToggle();
-renderPresetPicker();
+renderThemePicker();
 renderTypographyPicker();
 /* 首屏不主动预热中文字体；打开详情时再按用户意图加载。 */
 /* thumbgen 生成器经 inventory() 读全量卡片清单,构建模式跳过分页签惰性渲染 */

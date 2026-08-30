@@ -1,12 +1,15 @@
 <!DOCTYPE html>
-<html lang="zh-CN" data-runtime="wise-ppt-specimen" data-typography-mode="all-sans" data-page-id="gallery-ai-s1" data-page-role="explain" data-theme="paper-ink" data-layout="paper-ink.hierarchy.product-platform-architecture" data-layout-source="gallery" data-sample-focus-profile="none" data-sample-focus-members='[]'>
+<html data-theme-id="paper-ink" lang="zh-CN" data-runtime="wise-ppt-specimen" data-typography-mode="all-sans" data-page-id="gallery-ai-s1" data-page-role="explain" data-theme="paper-ink" data-layout="paper-ink.hierarchy.product-platform-architecture" data-layout-source="gallery" data-sample-focus-profile="none" data-sample-focus-members='[]'>
 <head>
 <meta charset="UTF-8">
 <title>layout-s1 · 产品平台架构图 · AI 产品五层架构</title>
 <script src="../../../../runtime/stage-fit.js"></script>
-<link rel="stylesheet" href="../../../../themes/paper-ink/assets/design-tokens.css">
-<link rel="stylesheet" href="../../../../themes/paper-ink/assets/catalog-fonts.css" data-wise-catalog-fonts="true">
-<link rel="stylesheet" href="../../../../themes/paper-ink/assets/slide-components.css">
+<link rel="stylesheet" href="../../../../themes/engine/assets/design-tokens.css">
+<link rel="stylesheet" href="../../../../themes/packages/paper-ink/theme.css">
+<link rel="stylesheet" href="../../../../themes/packages/hermes-orange/theme.css">
+<link rel="stylesheet" href="../../../../themes/packages/klein-blue/theme.css">
+<link rel="stylesheet" href="../../../../themes/engine/assets/catalog-fonts.css" data-wise-catalog-fonts="true">
+<link rel="stylesheet" href="../../../../themes/engine/assets/slide-components.css">
 <link rel="stylesheet" href="../../../shell.css">
 <style>
   .architecture-slot {
@@ -42,10 +45,10 @@
 </div>
 
 <script src="../../../ppt-component-atlas/catalog-data.js"></script>
-<script src="../../../../themes/paper-ink/adapters/atlas.js"></script>
+<script src="../../../../themes/engine/adapters/atlas.js"></script>
 <script>
 var atlas = window.SWISS_CATALOG_DATA;
-var adapter = (window.WisePPTThemeAdapters || {})['paper-ink.atlas'];
+var adapter = (window.WisePPTThemeAdapters || {})['wise-ppt.atlas'];
 var entry = atlas && atlas.entries.find(function(item){ return item.num === 55; });
 if (!atlas || !adapter || !entry) throw new Error('S1 缺 atlas.055.arch-platform 生产资产');
 

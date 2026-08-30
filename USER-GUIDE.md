@@ -48,7 +48,8 @@ node wise-ppt/bin/wise-ppt.mjs doctor
 ## 先看画册和示例
 
 - 离线 Catalog：用 Google Chrome 打开 `<skill>/references/catalog.html`。它包含非关系页、版式、结构、组件和 865 枚成品图标；所需 WOFF2 压缩字体已经随包提供，不会联网。
-- 完整视觉与合同示例：打开 `<skill>/themes/paper-ink/examples/wise-ppt-story-six-page/index.html`；它恰好 6 页，但不是新任务的页数模板。同目录的 `deck.pdf` 可直接翻阅，`deck-spec.json` 是对应输入示例。
+- 完整视觉与合同示例：打开 `<skill>/themes/examples/wise-ppt-story-six-page/index.html`；它恰好 6 页，但不是新任务的页数模板。同目录的 `deck.pdf` 可直接翻阅，`deck-spec.json` 是对应输入示例。
+- 独立主题系统：纸墨、爱马仕橙和克莱因蓝是平级主题包，不是 Paper Ink 的换色预设。旧 PDF/PPT/PPTX、图片或 Logo 先从代表视觉、品牌锚点、重复母题、页面角色、字体对比、线条、Icon 和组件层级提炼完整 `wise-ppt-theme@3`。运行 `themes resolve` 校验，再用 `themes preview <已有 deck> --theme <json> --out <目录>` 比较五种完整主题。预览会提示未登记 Icon、未声明组件状态、反白、图表和硬编码颜色等兼容风险；它只产 HTML。选定后把同一对象作为 inline definition 写入 `deck.theme`。封面纸面和关系页强调色按语义页面角色投影；逐版式材料或字体特例必须经过精确数量绑定和几何不变门禁，不能写成 layout ID 专属的主题页面 CSS。
 
 这两项是用户级资产，并受 `bundle-manifest.json` 的逐文件 SHA-256 保护。
 
@@ -91,6 +92,6 @@ standard 成品输出后，Agent 会复核 claim、阅读顺序、主次和固�
 
 ## 交付边界
 
-整副规划输入/输出为 `wise-ppt-layout-plan-request@1` / `wise-ppt-layout-agent-brief@1`，全量预检为 `wise-ppt-preflight@1`。成品输入使用 `wise-ppt-deck@7`，构建计划使用 `wise-ppt-deck-plan@5`，构建使用 `wise-ppt-build@4`，运行时使用 `wise-ppt-runtime@4`；正式交付为 `wise-ppt-delivery@3`，实验交付为 `wise-ppt-experimental-delivery@5`。逐页声明的强调会进入最终 HTML 和 PDF；普通/强调四态只用于验证。实验 PDF 不叠加可见水印，通过文件名与 manifest 表明实验身份。
+整副规划输入/输出为 `wise-ppt-layout-plan-request@1` / `wise-ppt-layout-agent-brief@1`，全量预检为 `wise-ppt-preflight@1`。成品输入使用 `wise-ppt-deck@9`，构建计划使用 `wise-ppt-deck-plan@5`，构建使用 `wise-ppt-build@6`，运行时使用 `wise-ppt-runtime@6`；正式交付为 `wise-ppt-delivery@3`，实验交付为 `wise-ppt-experimental-delivery@5`。逐页声明的强调会进入最终 HTML 和 PDF；普通/强调四态只用于验证。实验 PDF 不叠加可见水印，通过文件名与 manifest 表明实验身份。
 
 `deck.pdf` 和 `delivery-manifest.json` 成对提交。任何导出或提交失败都不会破坏上一份正式交付物。

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="zh-CN" data-runtime="wise-ppt-specimen" data-typography-mode="all-sans" data-page-id="gallery-ai-d11" data-page-role="hook" data-theme="paper-ink" data-layout="paper-ink.scaffold.poster-wall" data-layout-source="gallery">
+<html data-theme-id="paper-ink" lang="zh-CN" data-runtime="wise-ppt-specimen" data-typography-mode="all-sans" data-page-id="gallery-ai-d11" data-page-role="hook" data-theme="paper-ink" data-layout="paper-ink.scaffold.poster-wall" data-layout-source="gallery">
 <head>
 <meta charset="UTF-8">
 <title>layout-d11 · 封面 · 全幅画墙左题 · 版本复盘</title>
@@ -10,9 +10,12 @@
   左侧:kicker → 通栏大标题 → 硬横线 → 副题两行(归属 · 日期)
   版式纪律:画墙只做底纹不抢主角,标题块必须压在雾上;不放讲者、版本号区块
 -->
-<link rel="stylesheet" href="../../../../themes/paper-ink/assets/design-tokens.css">
-<link rel="stylesheet" href="../../../../themes/paper-ink/assets/catalog-fonts.css" data-wise-catalog-fonts="true">
-<link rel="stylesheet" href="../../../../themes/paper-ink/assets/slide-components.css">
+<link rel="stylesheet" href="../../../../themes/engine/assets/design-tokens.css">
+<link rel="stylesheet" href="../../../../themes/packages/paper-ink/theme.css">
+<link rel="stylesheet" href="../../../../themes/packages/hermes-orange/theme.css">
+<link rel="stylesheet" href="../../../../themes/packages/klein-blue/theme.css">
+<link rel="stylesheet" href="../../../../themes/engine/assets/catalog-fonts.css" data-wise-catalog-fonts="true">
+<link rel="stylesheet" href="../../../../themes/engine/assets/slide-components.css">
 <link rel="stylesheet" href="../../../shell.css">
 <style>
   svg.scene { position: absolute; inset: 0; z-index: 1; pointer-events: none; }
@@ -44,7 +47,7 @@
 </style>
 </head>
 <body class="slide">
-<div class="stage" data-template-id="D11" data-block-id="gallery-primary" data-renderer-kind="typography" data-component-source="native" data-component-id="native.paper-ink.scaffold.poster-wall.cover" data-content-ref="example.d11">
+<div class="stage" data-template-id="D11" data-block-id="gallery-primary" data-renderer-kind="typography" data-component-source="native" data-component-id="native.wise-ppt.scaffold.poster-wall.cover" data-content-ref="example.d11">
   <div class="doc tl" data-template-part="support" data-template-slot="support" data-template-slot-kind="text">PPT 标题<br>页面标题</div>
   <div class="folio" data-template-part="folio">页码 / 总页数 — BY @歪斯Wise</div>
 
@@ -58,7 +61,7 @@
   <div class="subtitle" data-template-part="subtitle" data-template-slot="subtitle" data-template-slot-kind="text">产品体验 · 平台运营<br>2026 · 06 · 24</div>
 </div>
 
-<script src="../../../../themes/paper-ink/assets/particles.js"></script>
+<script src="../../../../themes/packages/paper-ink/assets/particles.js"></script>
 <script>
 var NS = 'http://www.w3.org/2000/svg';
 var INK80 = 'var(--ink-80)';

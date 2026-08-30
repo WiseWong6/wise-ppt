@@ -31,7 +31,7 @@
 
 ## 4. 六页示例边界
 
-`themes/paper-ink/examples/wise-ppt-story-six-page/` 恰好六页，只用于展示视觉质量、公开 payload 和构建合同。它的页数、页序与论证节奏都不是新任务模板；查看示例不授权复制其六页结构。
+`themes/examples/wise-ppt-story-six-page/` 恰好六页，只用于展示视觉质量、公开 payload 和构建合同。它的页数、页序与论证节奏都不是新任务模板；查看示例不授权复制其六页结构。
 
 ## 5. 交付自检
 

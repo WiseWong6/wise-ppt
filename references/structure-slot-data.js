@@ -1017,7 +1017,7 @@ window.WISE_PPT_STRUCTURE_SLOTS = Object.freeze({
       "slots": [
         {
           "id": "u1.slot-1",
-          "content_group": "方案 A 带",
+          "content_group": "主版本顶部横带",
           "inset_group": "empty-u1.split-0",
           "left": 120,
           "top": 131,
@@ -1026,7 +1026,7 @@ window.WISE_PPT_STRUCTURE_SLOTS = Object.freeze({
         },
         {
           "id": "u1.slot-2",
-          "content_group": "渠道构成图",
+          "content_group": "右侧画像柱图",
           "inset_group": "empty-u1.split-0",
           "left": 1252.6667,
           "top": 131,
@@ -1035,7 +1035,7 @@ window.WISE_PPT_STRUCTURE_SLOTS = Object.freeze({
         },
         {
           "id": "u1.slot-3",
-          "content_group": "结构小表",
+          "content_group": "左侧画像矩阵",
           "inset_group": "empty-u1.split-1",
           "left": 120,
           "top": 516,
@@ -1044,7 +1044,7 @@ window.WISE_PPT_STRUCTURE_SLOTS = Object.freeze({
         },
         {
           "id": "u1.slot-4",
-          "content_group": "方案 B 带",
+          "content_group": "对照版本底部横带",
           "inset_group": "empty-u1.split-1",
           "left": 705.3333,
           "top": 516,

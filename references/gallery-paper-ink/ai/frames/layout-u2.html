@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="zh-CN" data-runtime="wise-ppt-specimen" data-typography-mode="all-sans" data-page-id="gallery-ai-u2" data-page-role="prove" data-theme="paper-ink" data-layout="paper-ink.data.chart-bands-table" data-layout-source="gallery" data-sample-focus-profile="content-only" data-sample-focus-members='[{"selector":"#u2-focus-bar","role":"value"},{"selector":"#u2-delta-chip","role":"status"}]' data-sample-focus-ref="sample.u2.u2-focus">
+<html data-theme-id="paper-ink" lang="zh-CN" data-runtime="wise-ppt-specimen" data-typography-mode="all-sans" data-page-id="gallery-ai-u2" data-page-role="prove" data-theme="paper-ink" data-layout="paper-ink.data.chart-bands-table" data-layout-source="gallery" data-sample-focus-profile="content-only" data-sample-focus-members='[{"selector":"#u2-focus-bar","role":"value"},{"selector":"#u2-delta-row","role":"status"}]' data-sample-focus-ref="sample.u2.u2-focus">
 <head>
 <meta charset="UTF-8">
 <title>layout-u2 · 图表带与对比表 · 版本效果验证</title>
@@ -8,11 +8,14 @@
   纸墨线稿样张 · U2 图表带与对比表
   上层:三块带题签的图表带并排(趋势 / 阶梯 / 双线),各自讲一个证据面;
   下层:汇总对比表,指标行 + 涨幅列,把三块图表收敛成一张可扫读的账
-  版式纪律:图表带只讲证据不下结论,结论统一进对比表与底注;涨幅只允许出现在涨幅列
+  版式纪律:图表带只讲证据不下结论,结论统一进对比表与底注;图表带涨幅只在柱组外辅助标注
 -->
-<link rel="stylesheet" href="../../../../themes/paper-ink/assets/design-tokens.css">
-<link rel="stylesheet" href="../../../../themes/paper-ink/assets/catalog-fonts.css" data-wise-catalog-fonts="true">
-<link rel="stylesheet" href="../../../../themes/paper-ink/assets/slide-components.css">
+<link rel="stylesheet" href="../../../../themes/engine/assets/design-tokens.css">
+<link rel="stylesheet" href="../../../../themes/packages/paper-ink/theme.css">
+<link rel="stylesheet" href="../../../../themes/packages/hermes-orange/theme.css">
+<link rel="stylesheet" href="../../../../themes/packages/klein-blue/theme.css">
+<link rel="stylesheet" href="../../../../themes/engine/assets/catalog-fonts.css" data-wise-catalog-fonts="true">
+<link rel="stylesheet" href="../../../../themes/engine/assets/slide-components.css">
 <link rel="stylesheet" href="../../../shell.css">
 <style>
   svg.scene { position: absolute; inset: 0; z-index: 1; }
@@ -27,7 +30,7 @@
 </style>
 </head>
 <body class="slide">
-<div class="stage" data-block-id="gallery-primary" data-renderer-kind="svg" data-component-source="native" data-component-id="native.paper-ink.data.chart-bands-table.evidence" data-content-ref="example.u2">
+<div class="stage" data-block-id="gallery-primary" data-renderer-kind="svg" data-component-source="native" data-component-id="native.wise-ppt.data.chart-bands-table.evidence" data-content-ref="example.u2">
   <div class="doc tl">PPT 标题<br>页面标题</div>
   <div class="folio">页码 / 总页数 — BY @歪斯Wise</div>
 
@@ -35,10 +38,10 @@
     <g id="draw"></g>
   </svg>
 
-  <div class="caption">口径：转化率 = 新增 / 曝光；消耗率 = 活跃消耗 / 曝光；两方案同期 6/16–6/21 对齐。</div>
+  <div class="caption">方案 B 四项核心指标均领先方案 A，其中分发转化率提升 128%，改善最显著。</div>
 </div>
 
-<script src="../../../../themes/paper-ink/assets/particles.js"></script>
+<script src="../../../../themes/packages/paper-ink/assets/particles.js"></script>
 <script>
 var NS = 'http://www.w3.org/2000/svg';
 var INK80 = 'var(--ink-80)';
@@ -66,17 +69,15 @@ function bandHeader(x, y, en, cn) {
 }
 var bandY = 150;
 
-/* 带 1 · 分发转化:双柱 + 涨幅虚线箭头 */
+/* 带 1 · 分发转化:压低双柱 + 柱组外涨幅箭头 */
 bandHeader(96, bandY, 'CONVERSION', '分发转化率');
 el('line', {x1:96, y1:470, x2:646, y2:470, stroke:INK, 'stroke-width':.9, opacity:.5});
-el('rect', {x:190, y:352, width:64, height:118, fill:'none', stroke:INK, 'stroke-width':1.1});
-txt(222, 332, '0.28%', {'font-family':MONO, 'font-size':17, 'text-anchor':'middle', fill:INK70});
-el('rect', {id:'u2-focus-bar', x:330, y:200, width:64, height:270, fill:INK, opacity:.82});
-txt(362, 180, '0.64%', {'font-family':MONO, 'font-size':17, 'text-anchor':'middle', fill:INK});
-el('path', {d:'M 258 336 C 300 300 318 246 352 214', fill:'none', stroke:INK, 'stroke-width':1.1, 'stroke-dasharray':'5 5', opacity:.7});
-el('path', {d:'M 344 222 L 353 212 L 357 226', fill:'none', stroke:INK, 'stroke-width':1.1, opacity:.7});
-el('rect', {x:452, y:236, width:118, height:34, rx:17, fill:'none', stroke:INK, 'stroke-width':1.1});
-txt(511, 259, '+128%', {'font-family':MONO, 'font-size':19, 'text-anchor':'middle', 'letter-spacing':1, fill:INK});
+el('rect', {x:190, y:390, width:64, height:80, fill:'none', stroke:INK, 'stroke-width':1.1});
+txt(222, 370, '0.28%', {'font-family':MONO, 'font-size':17, 'text-anchor':'middle', fill:INK70});
+el('rect', {id:'u2-focus-bar', x:330, y:286, width:64, height:184, fill:INK, opacity:.82});
+txt(362, 266, '0.64%（↑128%）', {'font-family':MONO, 'font-size':16, 'text-anchor':'middle', fill:INK});
+el('path', {d:'M 478 388 L 478 290', fill:'none', stroke:INK, 'stroke-width':1.1, 'stroke-dasharray':'5 5', opacity:.7});
+el('path', {d:'M 470 301 L 478 288 L 486 301', fill:'none', stroke:INK, 'stroke-width':1.1, opacity:.7});
 txt(222, 502, '方案 A', {'font-family':SANS, 'font-weight':300, 'font-size':16, 'text-anchor':'middle', fill:INK70});
 txt(362, 502, '方案 B', {'font-family':SANS, 'font-weight':300, 'font-size':16, 'text-anchor':'middle', fill:INK70});
 
@@ -87,14 +88,11 @@ el('rect', {x:790, y:418, width:44, height:52, fill:'none', stroke:INK, 'stroke-
 el('rect', {x:844, y:406, width:44, height:64, fill:INK, opacity:.82});
 txt(816, 392, '0.08%', {'font-family':MONO, 'font-size':15, 'text-anchor':'middle', fill:INK70});
 txt(866, 382, '0.12%', {'font-family':MONO, 'font-size':15, 'text-anchor':'middle', fill:INK});
-el('rect', {x:1052, y:232, width:44, height:238, fill:'none', stroke:INK, 'stroke-width':1});
-el('rect', {x:1106, y:186, width:44, height:284, fill:INK, opacity:.82});
-txt(1074, 210, '0.015', {'font-family':MONO, 'font-size':15, 'text-anchor':'middle', fill:INK70});
-txt(1128, 164, '0.018', {'font-family':MONO, 'font-size':15, 'text-anchor':'middle', fill:INK});
-[['+52%', 906, 344], ['+18%', 1176, 128]].forEach(function(chip){
-  el('rect', {x:chip[1], y:chip[2], width:86, height:30, rx:15, fill:'none', stroke:INK, 'stroke-width':1});
-  txt(chip[1] + 43, chip[2] + 21, chip[0], {'font-family':MONO, 'font-size':16, 'text-anchor':'middle', fill:INK});
-});
+txt(894, 382, '（↑52%）', {'font-family':MONO, 'font-size':13, fill:INK70});
+el('rect', {x:1052, y:303, width:44, height:167, fill:'none', stroke:INK, 'stroke-width':1});
+el('rect', {x:1106, y:270, width:44, height:200, fill:INK, opacity:.82});
+txt(1074, 281, '0.015', {'font-family':MONO, 'font-size':15, 'text-anchor':'middle', fill:INK70});
+txt(1128, 248, '0.018（↑18%）', {'font-family':MONO, 'font-size':14, 'text-anchor':'middle', fill:INK});
 txt(839, 502, '消耗率', {'font-family':SANS, 'font-weight':300, 'font-size':16, 'text-anchor':'middle', fill:INK70});
 txt(1176, 502, '消耗客单', {'font-family':SANS, 'font-weight':300, 'font-size':16, 'text-anchor':'middle', fill:INK70});
 
@@ -121,37 +119,38 @@ txt(1688, 502, '3留存', {'font-family':SANS, 'font-weight':300, 'font-size':16
 /* ---------- 汇总对比表:指标行 + 涨幅列 ---------- */
 el('g', {id:'scorecard', 'data-slot-id':'scorecard'});
 G = document.getElementById('scorecard');
-txt(96, 612, 'SCORECARD', {'font-family':MONO, 'font-size':'var(--type-meta)', 'letter-spacing':3, fill:INK45});
-txt(214, 612, '版本效果汇总', {'font-family':SANS, 'font-weight':300, 'font-size':22, fill:INK});
+txt(96, 576, 'SCORECARD', {'font-family':MONO, 'font-size':'var(--type-meta)', 'letter-spacing':3, fill:INK45});
+txt(214, 576, '版本效果汇总', {'font-family':SANS, 'font-weight':300, 'font-size':22, fill:INK});
 
-var colX = [160, 780, 1130, 1480, 1830];
-var headY = 668;
+/* 五列网格:96 | 470 | 800 | 1130 | 1470 | 1830,单元格水平垂直居中 */
+var colC = [283, 635, 965, 1300, 1650];
 ['指标', '方案 A', '方案 B', '涨幅', '说明'].forEach(function(h, i){
-  txt(colX[i] - (i ? 0 : 0), headY, h, {'font-family':MONO, 'font-size':17, 'letter-spacing':2,
-    'text-anchor': i ? 'end' : 'start', fill:INK45});
+  txt(colC[i], 638, h, {'font-family':MONO, 'font-size':17, 'letter-spacing':2, 'text-anchor':'middle', fill:INK45});
 });
-el('line', {x1:96, y1:688, x2:1830, y2:688, stroke:INK, 'stroke-width':.9, opacity:.5});
+el('line', {x1:96, y1:652, x2:1830, y2:652, stroke:INK, 'stroke-width':.9, opacity:.5});
+[708, 764, 820, 876].forEach(function(y){
+  el('line', {x1:96, y1:y, x2:1830, y2:y, stroke:INK, 'stroke-width':.55, opacity:.16});
+});
 
 var rows = [
-  ['分发转化率', '0.28%', '0.64%', '+128%', '新增 / 曝光'],
-  ['活跃消耗率', '0.08%', '0.12%', '+52%', '活跃消耗 / 曝光'],
-  ['消耗客单', '0.015', '0.018', '+18%', '消耗金额 / 曝光'],
-  ['次留', '3.6%', '4.5%', '+25%', '次日回访']
+  ['分发转化率', '0.28%', '0.64%', '↑128%', '新增 / 曝光'],
+  ['活跃消耗率', '0.08%', '0.12%', '↑52%', '活跃消耗 / 曝光'],
+  ['消耗客单', '0.015', '0.018', '↑18%', '消耗金额 / 曝光'],
+  ['次留', '3.6%', '4.5%', '↑25%', '次日回访']
 ];
 rows.forEach(function(row, r){
-  var ry = 732 + r * 52;
-  txt(160, ry, row[0], {'font-family':SANS, 'font-weight':300, 'font-size':20, fill:INK});
-  txt(780, ry, row[1], {'font-family':SANS, 'font-weight':300, 'font-size':20, 'text-anchor':'end', fill:INK70});
-  txt(1130, ry, row[2], {'font-family':SANS, 'font-weight':300, 'font-size':20, 'text-anchor':'end', fill:INK});
-  if (r) txt(1480, ry, row[3], {'font-family':SANS, 'font-weight':300, 'font-size':20, 'text-anchor':'end', fill:INK});
-  txt(1830, ry, row[4], {'font-family':SANS, 'font-weight':300, 'font-size':16, 'text-anchor':'end', fill:INK45});
-  el('line', {x1:96, y1:ry + 20, x2:1830, y2:ry + 20, stroke:INK, 'stroke-width':.55, opacity:.16});
+  var ry = [687, 743, 799, 855][r];
+  txt(colC[0], ry, row[0], {'font-family':SANS, 'font-weight':300, 'font-size':20, 'text-anchor':'middle', fill:INK});
+  txt(colC[1], ry, row[1], {'font-family':MONO, 'font-size':18, 'text-anchor':'middle', fill:INK70});
+  txt(colC[2], ry, row[2], {'font-family':MONO, 'font-size':18, 'text-anchor':'middle', fill:INK});
+  if (r) {
+    txt(colC[3], ry, row[3], {'font-family':MONO, 'font-size':18, 'text-anchor':'middle', fill:INK});
+  } else {
+    el('text', {id:'u2-delta-row', x:colC[3], y:ry, 'font-family':MONO, 'font-size':18, 'text-anchor':'middle', fill:INK});
+    document.getElementById('u2-delta-row').textContent = row[3];
+  }
+  txt(colC[4], ry, row[4], {'font-family':SANS, 'font-weight':300, 'font-size':16, 'text-anchor':'middle', fill:INK45});
 });
-
-/* 涨幅徽记:第一行是主证据,挂焦点状态 */
-el('rect', {id:'u2-delta-chip', x:1496, y:706, width:104, height:38, rx:19, fill:'none', stroke:INK, 'stroke-width':1.2});
-txt(1548, 731, '+128%↑', {'font-family':MONO, 'font-size':17, 'text-anchor':'middle', fill:INK});
-txt(96, 986, 'READING — 三块图表带各证一面，涨幅以对比表涨幅列为准', {'font-family':MONO, 'font-size':'var(--type-meta)', 'letter-spacing':3, fill:INK, opacity:.42});
 
 stageFit();
 </script>

@@ -1,11 +1,11 @@
-const DECK_CONTRACT = "wise-ppt-deck@7";
+const DECK_CONTRACT = "wise-ppt-deck@9";
 const DECK_PLAN_CONTRACT = "wise-ppt-deck-plan@5";
 const LAYOUT_QUERY_FORMAT = "wise-ppt-layout-query@2";
 const LAYOUT_PLAN_REQUEST_FORMAT = "wise-ppt-layout-plan-request@1";
 const LAYOUT_AGENT_BRIEF_FORMAT = "wise-ppt-layout-agent-brief@1";
 const PREFLIGHT_REPORT_FORMAT = "wise-ppt-preflight@1";
-const BUILD_CONTRACT = "wise-ppt-build@4";
-const RUNTIME_VERSION = "wise-ppt-runtime@4";
+const BUILD_CONTRACT = "wise-ppt-build@6";
+const RUNTIME_VERSION = "wise-ppt-runtime@6";
 const DELIVERY_FORMAT = "wise-ppt-delivery@3";
 const EXPERIMENTAL_DELIVERY_CONTRACT = "wise-ppt-experimental-delivery@5";
 const DEFAULT_SIGNATURE = "";
@@ -22,8 +22,8 @@ const REQUIRED_RUNTIME_FILES = [
   "runtime/deck-component-contract.css"
 ];
 const REQUIRED_THEME_FILES = [
-  "themes/paper-ink/assets/design-tokens.css",
-  "themes/paper-ink/assets/slide-components.css"
+  "themes/engine/assets/design-tokens.css",
+  "themes/engine/assets/slide-components.css"
 ];
 export {
   BUILD_CONTRACT,

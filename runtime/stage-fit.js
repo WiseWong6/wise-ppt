@@ -11,7 +11,7 @@
   var FRAME_PROTOCOL = 'wise-ppt-frame/v1';
   var PAPER_NOISE_DEFS_ID = 'wise-ppt-paper-noise-defs';
   var PAPER_NOISE_FILTER_ID = 'wise-ppt-paper-noise';
-  var GALLERY_PRESETS = ['paper-ink-original', 'scheme-k-hermes', 'scheme-l-klein'];
+  var GALLERY_THEMES = ['paper-ink', 'hermes-orange', 'klein-blue'];
   var GALLERY_TYPOGRAPHY_MODES = ['all-sans', 'all-serif', 'mixed'];
   var galleryStateSerial = 0;
   var galleryStateRenderers = [];
@@ -22,9 +22,9 @@
     var root = document.documentElement;
     if (!root || root.dataset.runtime !== 'wise-ppt-specimen') return;
     var params = new URLSearchParams(global.location.search);
-    var preset = params.get('preset');
+    var themeId = params.get('theme');
     var typography = params.get('typography');
-    if (GALLERY_PRESETS.indexOf(preset) >= 0) root.dataset.themePreset = preset;
+    if (GALLERY_THEMES.indexOf(themeId) >= 0) root.dataset.themeId = themeId;
     if (GALLERY_TYPOGRAPHY_MODES.indexOf(typography) >= 0) root.dataset.typographyMode = typography;
     root.classList.toggle('accent', params.has('accent'));
     if (params.get('wise-ppt-embed') !== 'gallery') return;
@@ -254,11 +254,11 @@
     return true;
   }
 
-  function applySpecimenPreset(root) {
+  function applySpecimenTheme(root) {
     if (root.dataset.runtime !== 'wise-ppt-specimen') return;
     var params = new URLSearchParams(global.location.search);
-    var requested = params.get('preset');
-    if (requested) root.dataset.themePreset = requested;
+    var requested = params.get('theme');
+    if (GALLERY_THEMES.indexOf(requested) >= 0) root.dataset.themeId = requested;
   }
 
   function applySpecimenTypography(root) {
@@ -267,7 +267,7 @@
     if (requested) root.dataset.typographyMode = requested;
   }
 
-  function galleryFontFaces(mode) {
+  function galleryFontFaces(mode, themeId) {
     var mono = [
       ['400', 'Courier Prime Catalog', 'AI ENGINEERING'],
       ['700', 'Courier Prime Catalog', 'FIG. 02']
@@ -279,20 +279,22 @@
       ].concat(mono);
     }
     if (mode === 'mixed') {
-      return [
+      var mixed = [
         ['300', 'Han Sans Catalog Light', '纸墨正文'],
         ['500', 'Han Serif Catalog', '纸墨正文'],
         ['700', 'Han Serif Catalog', '纸墨标题']
       ].concat(mono);
+      if (themeId === 'hermes-orange' || themeId === 'klein-blue') mixed.push(['700', 'Oswald', 'WISE PPT']);
+      return mixed;
     }
     return [
       ['300', 'Han Sans Catalog Light', '纸墨正文']
     ].concat(mono);
   }
 
-  function preloadGalleryFonts(mode) {
+  function preloadGalleryFonts(mode, themeId) {
     if (!document.fonts || typeof document.fonts.load !== 'function') return Promise.resolve();
-    var requests = galleryFontFaces(mode).map(function (face) {
+    var requests = galleryFontFaces(mode, themeId).map(function (face) {
       return document.fonts.load(face[0] + ' 96px "' + face[1] + '"', face[2]);
     });
     return Promise.allSettled(requests).then(function () {});
@@ -305,7 +307,7 @@
       protocol: FRAME_PROTOCOL,
       requestId: requestId,
       status: status,
-      presetId: root.dataset.themePreset || '',
+      themeId: root.dataset.themeId || '',
       typographyMode: root.dataset.typographyMode || '',
       accent: root.classList.contains('accent'),
       reason: reason || ''
@@ -329,15 +331,15 @@
       if (event.source !== global.parent) return;
       var data = event.data;
       if (!data || data.type !== FRAME_STATE_MESSAGE || data.protocol !== FRAME_PROTOCOL || !data.requestId) return;
-      var preset = GALLERY_PRESETS.indexOf(data.presetId) >= 0 ? data.presetId : root.dataset.themePreset;
+      var themeId = GALLERY_THEMES.indexOf(data.themeId) >= 0 ? data.themeId : root.dataset.themeId;
       var typography = GALLERY_TYPOGRAPHY_MODES.indexOf(data.typographyMode) >= 0 ? data.typographyMode : root.dataset.typographyMode;
       var accent = Boolean(data.accent);
-      var presetChanged = preset !== root.dataset.themePreset;
+      var themeChanged = themeId !== root.dataset.themeId;
       var typographyChanged = typography !== root.dataset.typographyMode;
       var accentChanged = accent !== root.classList.contains('accent');
       /* Canvas/ECharts 把 token 颜色固化进像素，焦点页也可能在构建 SVG 时分支。
          没有显式注册重绘器时由父层只重载这一页，普通 CSS/SVG 页继续原地切换。 */
-      if ((document.querySelector('canvas') && (presetChanged || typographyChanged)) ||
+      if ((document.querySelector('canvas') && (themeChanged || typographyChanged)) ||
           (accentChanged && !galleryStateRenderers.length)) {
         postGalleryState(root, data.requestId, 'reload-required');
         return;
@@ -346,14 +348,14 @@
       root.dataset.galleryStatePending = data.requestId;
       /* 缓存页若已经是目标字体档，不再触发隐藏 Document 的 FontFaceSet；
          这条路径应当是纯搬运 + 两帧确认。 */
-      var fontsReady = typographyChanged ? preloadGalleryFonts(typography) : Promise.resolve();
+      var fontsReady = (themeChanged || typographyChanged) ? preloadGalleryFonts(typography, themeId) : Promise.resolve();
       fontsReady.then(function () {
         if (serial !== galleryStateSerial) return;
-        root.dataset.themePreset = preset;
+        root.dataset.themeId = themeId;
         root.dataset.typographyMode = typography;
         root.classList.toggle('accent', accent);
         bindSpecimenEmphasis(root);
-        var detail = {presetId:preset, typographyMode:typography, accent:accent};
+        var detail = {themeId:themeId, typographyMode:typography, accent:accent};
         document.dispatchEvent(new CustomEvent('wise-ppt:gallery-state-change', {detail:detail}));
         return Promise.allSettled(galleryStateRenderers.map(function (renderer) { return renderer(detail); }));
       }).then(function () {
@@ -471,7 +473,7 @@
   function stageFit() {
     var root = document.documentElement;
     ensurePaperNoiseFilter();
-    applySpecimenPreset(root);
+    applySpecimenTheme(root);
     applySpecimenTypography(root);
     applySpecimenStaticFreeze(root);
     bindSpecimenReadiness(root);
@@ -521,8 +523,7 @@
     fitDeck: fitDeck,
     fitGallery: fitGallery,
     fitSpecimen: fitSpecimen,
-    applySpecimenPreset: applySpecimenPreset,
-    applySpecimenPalette: applySpecimenPreset,
+    applySpecimenTheme: applySpecimenTheme,
     applySpecimenTypography: applySpecimenTypography,
     applySpecimenStaticFreeze: applySpecimenStaticFreeze,
     registerGalleryStateRenderer: registerGalleryStateRenderer,

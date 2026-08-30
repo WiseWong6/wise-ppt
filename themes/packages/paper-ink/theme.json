@@ -1,0 +1,52 @@
+{
+  "contract": "wise-ppt-theme@3",
+  "theme_id": "paper-ink",
+  "name": "纸墨",
+  "source": { "kind": "registered", "label": "Paper Ink 已验证生产主题" },
+  "recognition_anchor": "冷灰纸底、深墨线稿与克制番茄红焦点",
+  "keywords": ["Editorial", "Measured", "Tactile"],
+  "evidence": {
+    "representative_visuals": ["Paper Ink Catalog 的 88 套固定骨架"],
+    "repeated_motifs": ["细线结构", "空心编号", "两侧工程辅助线"],
+    "mood": "克制、理性、纸本编辑感",
+    "season": "中性",
+    "light": "柔和漫射光",
+    "space": "留白清楚、层级低对比",
+    "typography_contrast": "标题宋体、底部黑体",
+    "line_evidence": "保留原始四档线宽",
+    "icon_evidence": "墨色线性 Icon，透明度与线宽共同分层",
+    "component_evidence": "只对已登记语义区域应用材料"
+  },
+  "source_colors": ["#DFE0D9", "#D4D5CD", "#E6E7E1", "#191917", "#C0392B"],
+  "color_strategy": {
+    "strategy": "fixed",
+    "semantic_roles": {
+      "surface-canvas": "#DFE0D9", "surface-recessed": "#D4D5CD", "surface-panel": "#E6E7E1",
+      "primary": "#191917", "functional": "rgba(25, 25, 23, .8)", "body": "rgba(25, 25, 23, .7)",
+      "chart-label": "rgba(25, 25, 23, .7)", "metadata": "rgba(25, 25, 23, .7)",
+      "divider": "rgba(25, 25, 23, .25)", "construction": "rgba(25, 25, 23, .12)",
+      "focus": "#C0392B", "focus-secondary": "rgba(192, 57, 43, .85)", "focus-peripheral": "rgba(192, 57, 43, .65)",
+      "data-1": "rgba(25, 25, 23, .12)", "data-2": "rgba(25, 25, 23, .20)", "data-3": "rgba(25, 25, 23, .28)",
+      "data-4": "rgba(25, 25, 23, .36)", "data-5": "rgba(25, 25, 23, .45)", "data-6": "rgba(25, 25, 23, .55)"
+    },
+    "private_roles": { "ink-60": "rgba(25, 25, 23, .6)", "ink-30": "rgba(25, 25, 23, .3)", "focus-text-small": "#9B2F24", "identity-accent": "#C0392B" }
+  },
+  "surface": {
+    "mode": "light",
+    "materials": { "paper": "surface-canvas", "recessed": "surface-recessed", "foreground": "surface-panel", "ink": "primary", "reverse": "surface-canvas", "accent": "focus" },
+    "layers": { "texture": "paper-dots", "texture_opacity": 0.035, "texture_blend": "multiply", "panel_depth": "flat", "shadow": "none", "corner_radius_px": 0 }
+  },
+  "page_treatments": { "cover": { "canvas": "surface-canvas" }, "relationship": { "accent": "functional" } },
+  "typography": {
+    "default_mode": "mixed",
+    "modes": {
+      "all-sans": { "roles": { "top-left-kicker": ["mono", 400, 1], "bottom-left-folio": ["mono", 400, 1], "bottom-takeaway": ["han-sans", 300, 1], "zh-content-title": ["han-sans", 300, 1], "cover-title": ["han-sans", 300, 1], "chapter-title": ["han-sans", 300, 1], "closing-statement": ["han-sans", 300, 1], "en-content-title": ["han-sans", 300, 1], "en-bold": ["han-sans", 300, 1], "body": ["han-sans", 300, 1], "label": ["han-sans", 300, 1], "number": ["han-sans", 300, 1], "chart-text": ["han-sans", 300, 1] } },
+      "all-serif": { "roles": { "top-left-kicker": ["mono", 400, 1], "bottom-left-folio": ["mono", 400, 1], "bottom-takeaway": ["han-serif", 500, 1], "zh-content-title": ["han-serif", 700, 1], "cover-title": ["han-serif", 700, 1], "chapter-title": ["han-serif", 700, 1], "closing-statement": ["han-serif", 700, 1], "en-content-title": ["han-serif", 700, 1], "en-bold": ["han-serif", 700, 1], "body": ["han-serif", 500, 1], "label": ["han-serif", 500, 1], "number": ["han-serif", 500, 1], "chart-text": ["han-serif", 500, 1] } },
+      "mixed": { "roles": { "top-left-kicker": ["mono", 400, 1], "bottom-left-folio": ["mono", 400, 1], "bottom-takeaway": ["han-sans", 300, 1], "zh-content-title": ["han-serif", 700, 1], "cover-title": ["han-serif", 700, 1], "chapter-title": ["han-serif", 700, 1], "closing-statement": ["han-serif", 700, 1], "en-content-title": ["han-serif", 700, 1], "en-bold": ["han-serif", 700, 1], "body": ["han-sans", 300, 1], "label": ["han-sans", 300, 1], "number": ["han-sans", 300, 1], "chart-text": ["han-sans", 300, 1] } }
+    }
+  },
+  "lines": { "tiers": { "hairline": 0.55, "detail": 0.8, "main": 1.2, "emphasis": 1.6 }, "colors": { "structural": "primary", "focus": "focus", "divider": "divider" }, "cap": "round", "join": "round", "minimum_contrast": 3 },
+  "icons": { "drawing": "outline", "stroke_tiers": ["hairline", "detail", "main", "emphasis"], "color_role": "functional", "carrier": "none", "grouping": "native", "rhythm": "measured", "capabilities": ["recolor", "stroke-tiers"], "unregistered": "preserve-and-report" },
+  "components": { "table": { "header": "transparent", "body": "transparent", "selected": "focus-outline" }, "card": { "surface": "foreground", "border": "structural" }, "panel": { "surface": "recessed", "border": "structural" }, "application": "explicit-semantic-regions-only" },
+  "exceptions": { "hollow_number": { "fill": "none", "stroke": "primary", "text": "primary" }, "reverse": { "surface": "ink", "text": "reverse" }, "unregistered_icon": "preserve", "undeclared_component_state": "preserve-and-report" }
+}

@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html data-theme-id="hermes-orange" lang="zh-CN" data-runtime="wise-ppt-specimen" data-typography-mode="all-sans" data-page-id="gallery-ai-u1" data-page-role="compare" data-theme="paper-ink" data-layout="paper-ink.comparison.diagonal-bands" data-layout-source="gallery" data-sample-focus-profile="content-only" data-sample-focus-members='[{"selector":"#u1-kpi-a","role":"value"},{"selector":"#u1-kpi-b","role":"value"}]' data-sample-focus-ref="sample.u1.u1-focus" data-surface-source="catalog-theme-recipes-v1" data-xp-recipe-id="hermes-orange:u1" data-xp-surface-profile="open-paper-comparison" data-xp-recipe-status="recipe-ready" data-xp-frame-kind="recipe-generated">
+<head>
+<meta charset="UTF-8">
+<title>layout-u1 · 等高双区对照 · 双版本用户画像</title>
+<script src="../../../../../runtime/stage-fit.js"></script>
+<!--
+  纸墨线稿样张 · U1 等高双区对照
+  以大面积留白和独立 VS 标记分开双版本:左侧整体包含版本 A 与比例表,
+  右侧整体包含成对柱图与版本 B;两个无框区域按可见内容保持等高。
+  版式纪律:版本信息区保持无框且紧凑;四组数据必须同口径成对出现。
+-->
+<link rel="stylesheet" href="../../../../../themes/engine/assets/design-tokens.css">
+<link rel="stylesheet" href="../../../../../themes/packages/paper-ink/theme.css">
+<link rel="stylesheet" href="../../../../../themes/packages/hermes-orange/theme.css">
+<link rel="stylesheet" href="../../../../../themes/packages/klein-blue/theme.css">
+<link rel="stylesheet" href="../../../../../themes/engine/assets/catalog-fonts.css" data-wise-catalog-fonts="true">
+<link rel="stylesheet" href="../../../../../themes/engine/assets/slide-components.css">
+<link rel="stylesheet" href="../../../../../references/shell.css">
+<style>
+  svg.scene { position: absolute; inset: 0; z-index: 1; }
+  .caption {
+    position: absolute; left: 0; right: 0; bottom: 78px;
+    text-align: center;
+    font-family: var(--sans); font-weight: 400;
+    font-size: 24px; letter-spacing: .04em;
+    color: var(--ink);
+    z-index: 5;
+  }
+</style>
+<link rel="stylesheet" href="../../catalog-surface.css" data-catalog-theme-surface="catalog-theme-recipes-v1">
+<link rel="stylesheet" href="../../title-furniture.css" data-catalog-title-furniture="black-first-theme-second-v1">
+</head>
+<body class="slide">
+<div class="stage" data-block-id="gallery-primary" data-renderer-kind="svg" data-component-source="native" data-component-id="native.wise-ppt.comparison.diagonal-bands.bands" data-content-ref="example.u1" data-catalog-source-marker="page-recipe">
+  <div class="doc tl"><span class="doc-kicker">PPT 标题</span><span class="doc-title">页面标题</span></div>
+  <div class="folio">页码 / 总页数 — BY @歪斯Wise</div>
+
+  <svg class="scene" width="1920" height="1080" viewBox="0 0 1920 1080">
+    <g id="draw"></g>
+  </svg>
+
+  <div class="caption">两个版本用户量级相当，性别、年龄、学历与城市分布整体接近。</div>
+</div>
+
+<script src="../../../../../themes/packages/paper-ink/assets/particles.js"></script>
+<script>
+var NS = 'http://www.w3.org/2000/svg';
+var INK80 = 'var(--ink-80)';
+var INK70 = 'var(--ink-70)';
+var INK45 = 'var(--ink-45)';
+var INK = 'var(--ink)';
+var PAPER = 'var(--paper)';
+var ROOT = document.getElementById('draw');
+var G = ROOT;
+var MONO = 'var(--mono)', SANS = 'var(--sans)';
+
+function el(tag, attrs) {
+  var node = document.createElementNS(NS, tag);
+  for (var key in attrs) node.setAttribute(key, attrs[key]);
+  G.appendChild(node);
+  return node;
+}
+
+function txt(x, y, value, attrs) {
+  var node = el('text', Object.assign({x:x, y:y}, attrs || {}));
+  node.textContent = value;
+  return node;
+}
+
+function group(id, slotId, draw) {
+  var parent = G;
+  var attrs = {};
+  if (id) attrs.id = id;
+  if (slotId) attrs['data-slot-id'] = slotId;
+  G = el('g', attrs);
+  draw();
+  G = parent;
+}
+
+function wrapRegion(id, memberIds, x, y, width, height) {
+  var region = document.createElementNS(NS, 'g');
+  region.setAttribute('id', id);
+  region.setAttribute('data-layout-region', 'comparison-side');
+  ROOT.insertBefore(region, document.getElementById(memberIds[0]));
+  var parent = G;
+  G = region;
+  el('rect', {x:x, y:y, width:width, height:height, fill:'none', stroke:'none',
+    'pointer-events':'none', 'aria-hidden':'true'});
+  G = parent;
+  memberIds.forEach(function(memberId){
+    region.appendChild(document.getElementById(memberId));
+  });
+}
+
+function rule(x1, y1, x2, y2, opacity, width) {
+  el('line', {x1:x1, y1:y1, x2:x2, y2:y2, stroke:INK,
+    'stroke-width':width || .7, opacity:opacity == null ? .25 : opacity});
+}
+
+/* ---------- 顶部无框信息带:再次压缩纵向占位 ---------- */
+group('u1-band-a-group', 'band-a', function(){
+  el('rect', {x:96, y:165, width:734, height:78, fill:'none', stroke:'none',
+    'pointer-events':'none', 'aria-hidden':'true'});
+  txt(104, 191, 'VERSION 1.6 / PORTAL', {'font-family':MONO, 'font-size':10,
+    'letter-spacing':3, fill:INK45});
+  txt(104, 219, '1.6 版本', {'font-family':SANS, 'font-weight':300,
+    'font-size':20, fill:INK});
+  rule(104, 231, 224, 231, .46, .8);
+  el('text', {id:'u1-kpi-a', x:390, y:228, 'font-family':SANS, 'font-weight':400,
+    'font-size':54, fill:INK, 'data-content-ref':'sample.u1.u1-focus',
+    'data-emphasis-role':'value'}).textContent = '651w';
+  txt(650, 207, 'PORTAL 页面曝光 UV', {'font-family':MONO, 'font-size':13,
+    'letter-spacing':2, fill:INK70});
+  txt(650, 229, '同期 6/16-6/21', {'font-family':SANS, 'font-weight':300,
+    'font-size':13, fill:INK45});
+});
+
+/* ---------- 左侧画像簇:比例矩阵 ---------- */
+function profileMatrix(x, y, width, titleEn, titleCn, headers, rows) {
+  txt(x, y, titleEn, {'font-family':MONO, 'font-size':11,
+    'letter-spacing':3, fill:INK45});
+  txt(x + 128, y, titleCn, {'font-family':SANS, 'font-weight':300,
+    'font-size':18, fill:INK});
+  rule(x, y + 24, x + width, y + 24, .42, .8);
+  var labelWidth = 138;
+  var colWidth = (width - labelWidth) / headers.length;
+  headers.forEach(function(label, index){
+    txt(x + labelWidth + colWidth * (index + .5), y + 62, label,
+      {'font-family':SANS, 'font-weight':300, 'font-size':14,
+       'text-anchor':'middle', fill:INK45});
+  });
+  rows.forEach(function(row, rowIndex){
+    var rowY = y + 112 + rowIndex * 54;
+    el('rect', {x:x + 2, y:rowY - 14, width:13, height:13,
+      fill:row[0] === '1.6 版本' ? INK : 'none', stroke:INK, 'stroke-width':1});
+    txt(x + 28, rowY, row[0], {'font-family':SANS, 'font-weight':300,
+      'font-size':15, fill:row[0] === '1.6 版本' ? INK : INK70});
+    row[1].forEach(function(value, index){
+      txt(x + labelWidth + colWidth * (index + .5), rowY, value,
+        {'font-family':MONO, 'font-size':20, 'text-anchor':'middle', fill:INK});
+    });
+    rule(x, rowY + 18, x + width, rowY + 18, .14, .55);
+  });
+}
+
+group('u1-left-profile', 'cluster', function(){
+  el('rect', {x:96, y:303, width:734, height:470, fill:'none', stroke:'none',
+    'pointer-events':'none', 'aria-hidden':'true'});
+  group('u1-left-middle', null, function(){
+    profileMatrix(96, 324, 734, 'GENDER', '性别构成', ['男性', '女性'], [
+      ['1.5 版本', ['54%', '46%']],
+      ['1.6 版本', ['52%', '48%']]
+    ]);
+  });
+  group('u1-left-bottom', null, function(){
+    profileMatrix(96, 589, 734, 'AGE BANDS', '年龄比例', ['18岁以下', '19-30岁', '30岁+'], [
+      ['1.5 版本', ['23%', '49%', '28%']],
+      ['1.6 版本', ['22%', '48%', '30%']]
+    ]);
+  });
+});
+
+/* ---------- 右侧画像簇:同口径成对柱图 ---------- */
+function pairedBars(x, y, width, height, titleEn, titleCn, categories, current, previous, maxValue) {
+  txt(x, y, titleEn, {'font-family':MONO, 'font-size':11,
+    'letter-spacing':3, fill:INK45});
+  txt(x + 132, y, titleCn, {'font-family':SANS, 'font-weight':300,
+    'font-size':18, fill:INK});
+  var legendX = x + width - 168;
+  el('rect', {x:legendX, y:y - 13, width:12, height:12, fill:INK});
+  txt(legendX + 20, y - 2, '1.6', {'font-family':MONO, 'font-size':12, fill:INK70});
+  el('rect', {x:legendX + 78, y:y - 13, width:12, height:12, fill:'none',
+    stroke:INK, 'stroke-width':1});
+  txt(legendX + 98, y - 2, '1.5', {'font-family':MONO, 'font-size':12, fill:INK70});
+
+  var baseline = y + height;
+  var chartTop = y + 50;
+  var chartHeight = baseline - chartTop;
+  var step = width / categories.length;
+  rule(x, baseline, x + width, baseline, .46, .8);
+  categories.forEach(function(label, index){
+    var center = x + step * (index + .5);
+    var barWidth = Math.min(22, step * .25);
+    var currentHeight = Math.max(1, chartHeight * current[index] / maxValue);
+    var previousHeight = Math.max(1, chartHeight * previous[index] / maxValue);
+    el('rect', {x:center - barWidth - 2, y:baseline - currentHeight,
+      width:barWidth, height:currentHeight, fill:INK, opacity:.82});
+    el('rect', {x:center + 2, y:baseline - previousHeight,
+      width:barWidth, height:previousHeight, fill:'none', stroke:INK, 'stroke-width':1});
+    txt(center - barWidth / 2 - 2, baseline - currentHeight - 8, String(current[index]),
+      {'font-family':MONO, 'font-size':11, 'text-anchor':'middle', fill:INK70});
+    txt(center + barWidth / 2 + 2, baseline - previousHeight - 8, String(previous[index]),
+      {'font-family':MONO, 'font-size':11, 'text-anchor':'middle', fill:INK45});
+    txt(center, baseline + 28, label, {'font-family':SANS, 'font-weight':300,
+      'font-size':13, 'text-anchor':'middle', fill:INK70});
+  });
+}
+
+group('u1-right-profile', 'cluster', function(){
+  el('rect', {x:1010, y:165, width:820, height:473, fill:'none', stroke:'none',
+    'pointer-events':'none', 'aria-hidden':'true'});
+  group('u1-right-top', null, function(){
+    pairedBars(1180, 186, 650, 165, 'EDUCATION', '学历分布',
+      ['博士', '硕士', '本科', '高中', '初中', '小学', '大专'],
+      [0, 1, 31, 18, 25, 17, 7], [0, 1, 30, 19, 26, 17, 7], 34);
+  });
+  group('u1-right-middle', null, function(){
+    pairedBars(1010, 463, 820, 144, 'CITY TIER', '城市分布',
+      ['一线', '二线', '三线', '四线', '五线', '新一线'],
+      [6, 20, 21, 18, 12, 23], [6, 20, 21, 18, 13, 23], 25);
+  });
+});
+
+/* ---------- 底部无框信息带:右对齐并再次压缩纵向占位 ---------- */
+group('u1-band-b-group', 'band-b', function(){
+  el('rect', {x:1010, y:698, width:820, height:75, fill:'none', stroke:'none',
+    'pointer-events':'none', 'aria-hidden':'true'});
+  txt(1162, 721, 'VERSION 1.5 / PORTAL', {'font-family':MONO,
+    'font-size':10, 'letter-spacing':3, fill:INK45});
+  txt(1162, 749, '1.5 版本', {'font-family':SANS, 'font-weight':300,
+    'font-size':20, fill:INK});
+  rule(1162, 761, 1282, 761, .46, .8);
+  el('text', {id:'u1-kpi-b', x:1600, y:758, 'font-family':SANS, 'font-weight':400,
+    'font-size':52, fill:INK, 'text-anchor':'end', 'data-content-ref':'sample.u1.u1-focus',
+    'data-emphasis-role':'value'}).textContent = '596w';
+  txt(1830, 737, 'PORTAL 页面曝光 UV', {'font-family':MONO, 'font-size':13,
+    'letter-spacing':2, 'text-anchor':'end', fill:INK70});
+  txt(1830, 759, '同期 6/16-6/21', {'font-family':SANS, 'font-weight':300,
+    'font-size':13, 'text-anchor':'end', fill:INK45});
+});
+
+/* ---------- 左右外层:包含信息带与数据区的等高整体 ---------- */
+wrapRegion('u1-left-region', ['u1-band-a-group', 'u1-left-profile'], 96, 165, 734, 608);
+wrapRegion('u1-right-region', ['u1-right-profile', 'u1-band-b-group'], 1010, 165, 820, 608);
+
+/* ---------- VS 锚点:对齐左右整体区域的几何中心 ---------- */
+G = ROOT;
+el('circle', {cx:920, cy:469, r:31, fill:PAPER, stroke:INK, 'stroke-width':1.1});
+el('circle', {cx:920, cy:469, r:24, fill:'none', stroke:INK, 'stroke-width':.6, opacity:.28});
+txt(920, 476, 'VS', {'font-family':MONO, 'font-size':18, 'text-anchor':'middle',
+  'letter-spacing':2, fill:INK});
+
+stageFit();
+</script>
+<script type="application/json" id="xp-surface-recipe">{"theme":"hermes-orange","color_name":"orange","layout_code":"u1","title":"layout-u1 · 等高双区对照 · 双版本用户画像","layout":"paper-ink.comparison.diagonal-bands","page_role":"compare","canvas":{"token":"paper","value":"#f2efe9","reason":"常规内容页在纸面上建立层级。"},"surface_profile":"open-paper-comparison","surfaces":[{"role":"base-layout","material":"paper-plane","fill":"#f2efe9","stack":0},{"role":"structure","material":"ink-line","fill":"#1a1a1a","stack":1},{"role":"focus-marker","material":"accent","fill":"#d95e00","stack":2}],"accent":{"value":"#d95e00","semantic_channel":"新方案、胜出侧或决定性差异","furniture":"左上第一行 doc-kicker 固定墨黑，第二行 doc-title 使用当前主题色；folio 继续按该页画布与原配方处理。","neutral_exceptions":["普通英文标签","轴名","层名","结构编号","MODEL","非当前数据"],"furniture_mode":"black-first-theme-second","folio_mode":"accent"},"border_policy":"主体 1px 墨线；唯一焦点可用 2px 橙线，所有容器方角。","shadow_policy":"默认无影；仅唯一被举起的主证据允许一次 10px 零模糊橙色硬影。","noise_policy":"由主题统一提供唯一一层约 6% 黑色 fractal-noise；页面不得自带 noise 节点；浅色页 multiply，墨面可 overlay。","reference_evidence":{"file":"ai_studio_code (8).html","cards":["card-5","card-6"],"rule":"旧侧后退为承托面，新侧只在真正的前景对象上使用不透明白面。"},"acceptance":["强调色只落一个语义通道；同一序列可重复，但不得扩散到结构元数据。","纯白只用于 top-white，不能替代默认纸面。","缩略图必须从该主题独立 frame 的实际渲染重建。"],"status":"recipe-ready","surface_bindings":[],"surface_binding_reason":"main 样式为无框等高双区；不对内容区追加 raised surface 或斜切带。"}</script>
+<script src="../../catalog-surface.js" data-catalog-theme-surface="catalog-theme-recipes-v1"></script>
+<script src="../../catalog-typography.js" data-catalog-typography="accent-english-title-match-v1"></script>
+</body>
+</html>

@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html data-theme-id="hermes-orange" lang="zh-CN" data-runtime="wise-ppt-specimen" data-typography-mode="all-sans" data-page-id="gallery-ai-d11" data-page-role="hook" data-theme="paper-ink" data-layout="paper-ink.scaffold.poster-wall" data-layout-source="gallery" data-surface-source="catalog-theme-recipes-v1" data-xp-recipe-id="hermes-orange:d11" data-xp-surface-profile="open-paper-diagram" data-xp-recipe-status="recipe-ready" data-xp-frame-kind="recipe-generated" data-xp-page-kind="cover">
+<head>
+<meta charset="UTF-8">
+<title>layout-d11 · 封面 · 全幅画墙左题 · 版本复盘</title>
+<script src="../../../../../runtime/stage-fit.js"></script>
+<!--
+  纸墨线稿样张 · D11 封面 · 全幅画墙左题
+  全幅:微微倾斜的画墙铺满画布(海报卡、界面卡、场景卡),蒙一层纸色雾把画墙压成底纹;
+  左侧:kicker → 通栏大标题 → 硬横线 → 副题两行(归属 · 日期)
+  版式纪律:画墙只做底纹不抢主角,标题块必须压在雾上;不放讲者、版本号区块
+-->
+<link rel="stylesheet" href="../../../../../themes/engine/assets/design-tokens.css">
+<link rel="stylesheet" href="../../../../../themes/packages/paper-ink/theme.css">
+<link rel="stylesheet" href="../../../../../themes/packages/hermes-orange/theme.css">
+<link rel="stylesheet" href="../../../../../themes/packages/klein-blue/theme.css">
+<link rel="stylesheet" href="../../../../../themes/engine/assets/catalog-fonts.css" data-wise-catalog-fonts="true">
+<link rel="stylesheet" href="../../../../../themes/engine/assets/slide-components.css">
+<link rel="stylesheet" href="../../../../../references/shell.css">
+<style>
+  svg.scene { position: absolute; inset: 0; z-index: 1; pointer-events: none; }
+
+  /* 左侧落版文字块:压在画墙雾面之上 */
+  .kicker {
+    position: absolute; left: 176px; top: 402px;
+    font-family: var(--mono); font-size: var(--type-meta);
+    letter-spacing: .3em; color: var(--ink-45);
+    z-index: 2;
+  }
+  .title {
+    position: absolute; left: 168px; top: 452px;
+    font-family: var(--serif); font-weight: var(--wp-weight-regular);
+    font-size: var(--type-display); letter-spacing: .06em;
+    color: var(--ink); z-index: 2; white-space: nowrap;
+  }
+  .rule {
+    position: absolute; left: 176px; top: 604px; width: 560px; height: 0;
+    border-top: 2.5px solid var(--ink);
+    z-index: 2;
+  }
+  .subtitle {
+    position: absolute; left: 176px; top: 642px;
+    font-family: var(--sans); font-weight: var(--wp-weight-regular);
+    font-size: var(--type-subheading); letter-spacing: .1em;
+    color: var(--ink-70); z-index: 2; line-height: 1.9;
+  }
+</style>
+<link rel="stylesheet" href="../../catalog-surface.css" data-catalog-theme-surface="catalog-theme-recipes-v1">
+<link rel="stylesheet" href="../../title-furniture.css" data-catalog-title-furniture="black-first-theme-second-v1">
+</head>
+<body class="slide">
+<div class="stage" data-template-id="D11" data-block-id="gallery-primary" data-renderer-kind="typography" data-component-source="native" data-component-id="native.wise-ppt.scaffold.poster-wall.cover" data-content-ref="example.d11" data-catalog-source-marker="page-recipe">
+  <div class="doc tl" data-template-part="support" data-template-slot="support" data-template-slot-kind="text"><span class="doc-kicker">PPT 标题</span><span class="doc-title">页面标题</span></div>
+  <div class="folio" data-template-part="folio">页码 / 总页数 — BY @歪斯Wise</div>
+
+  <svg class="scene" data-template-part="illustration" data-template-slot="illustration" data-template-slot-kind="illustration" width="1920" height="1080" viewBox="0 0 1920 1080">
+    <g id="draw"></g>
+  </svg>
+
+  <div class="kicker" data-template-part="kicker" data-template-slot="kicker" data-template-slot-kind="text">PRODUCT REVIEW — 2026 SUMMER</div>
+  <div class="title" data-template-part="primary" data-template-slot="primary" data-template-slot-kind="text">版本复盘与增长验证</div>
+  <div class="rule" data-template-part="rule"></div>
+  <div class="subtitle" data-template-part="subtitle" data-template-slot="subtitle" data-template-slot-kind="text">产品体验 · 平台运营<br>2026 · 06 · 24</div>
+</div>
+
+<script src="../../../../../themes/packages/paper-ink/assets/particles.js"></script>
+<script>
+var NS = 'http://www.w3.org/2000/svg';
+var INK80 = 'var(--ink-80)';
+var INK = 'var(--ink)';
+var PAPER = 'var(--paper)';
+var G = document.getElementById('draw');
+function el(tag, attrs) {
+  var e = document.createElementNS(NS, tag);
+  for (var k in attrs) e.setAttribute(k, attrs[k]);
+  G.appendChild(e); return e;
+}
+function txt(x, y, str, attrs) {
+  var t = el('text', Object.assign({x:x, y:y}, attrs||{}));
+  t.textContent = str; return t;
+}
+var MONO = 'var(--mono)', SANS = 'var(--sans)';
+
+/* ===== 全幅画墙:三排微倾卡片铺满画布,再蒙纸色雾压成底纹 ===== */
+var cards = [
+  /* 后排:大画幅,探出画布上下缘 */
+  {x:-70,  y:-90,  w:430, h:560, r:-5,  art:'portrait'},
+  {x:420,  y:-130, w:400, h:540, r:4,   art:'scene-room'},
+  {x:880,  y:-80,  w:430, h:570, r:-3,  art:'billboard'},
+  {x:1370, y:-120, w:410, h:550, r:6,   art:'portrait-b'},
+  {x:1740, y:-70,  w:280, h:520, r:-4,  art:'scene-path'},
+  {x:-90,  y:560,  w:380, h:560, r:5,   art:'scene-path'},
+  {x:340,  y:610,  w:430, h:540, r:-6,  art:'billboard'},
+  {x:830,  y:650,  w:400, h:530, r:3,   art:'portrait'},
+  {x:1290, y:600,  w:430, h:560, r:-5,  art:'scene-room'},
+  {x:1760, y:640,  w:260, h:540, r:4,   art:'portrait-b'}
+];
+
+/* 三种小画稿:人像 / 场景 / 立牌,全部线稿 */
+function drawPortrait(cx, cy, s) {
+  el('circle', {cx:cx, cy:cy-28*s, r:34*s, fill:'none', stroke:INK, 'stroke-width':1.1, opacity:.6});
+  el('circle', {cx:cx-12*s, cy:cy-32*s, r:3.2*s, fill:INK, opacity:.62});
+  el('circle', {cx:cx+12*s, cy:cy-32*s, r:3.2*s, fill:INK, opacity:.62});
+  el('path', {d:'M '+(cx-18*s)+' '+(cy-16*s)+' Q '+cx+' '+(cy-6*s)+' '+(cx+18*s)+' '+(cy-16*s),
+    fill:'none', stroke:INK, 'stroke-width':.9, opacity:.5});
+  el('path', {d:'M '+(cx-46*s)+' '+(cy+62*s)+' Q '+cx+' '+(cy+8*s)+' '+(cx+46*s)+' '+(cy+62*s),
+    fill:'none', stroke:INK, 'stroke-width':1.1, opacity:.6});
+}
+function drawScene(cx, cy, s) {
+  el('rect', {x:cx-52*s, y:cy-14*s, width:70*s, height:52*s, rx:4*s, fill:'none', stroke:INK, 'stroke-width':1, opacity:.58});
+  el('rect', {x:cx+26*s, y:cy+6*s, width:34*s, height:32*s, rx:3*s, fill:'none', stroke:INK, 'stroke-width':.9, opacity:.5});
+  el('line', {x1:cx-44*s, y1:cy+38*s, x2:cx+10*s, y2:cy+38*s, stroke:INK, 'stroke-width':.8, opacity:.4});
+  el('circle', {cx:cx+58*s, cy:cy-34*s, r:14*s, fill:'none', stroke:INK, 'stroke-width':.9, opacity:.5});
+  el('path', {d:'M '+(cx-30*s)+' '+(cy+58*s)+' L '+(cx+6*s)+' '+(cy+58*s)+' L '+(cx+44*s)+' '+(cy+80*s),
+    fill:'none', stroke:INK, 'stroke-width':1, opacity:.5});
+}
+function drawBillboard(cx, cy, s) {
+  el('rect', {x:cx-58*s, y:cy-52*s, width:116*s, height:74*s, rx:6*s, fill:'rgba(255,255,255,.1)', stroke:INK, 'stroke-width':1.1, opacity:.62});
+  el('line', {x1:cx-40*s, y1:cy-30*s, x2:cx+40*s, y2:cy-30*s, stroke:INK, 'stroke-width':.9, opacity:.46});
+  el('line', {x1:cx-40*s, y1:cy-12*s, x2:cx+22*s, y2:cy-12*s, stroke:INK, 'stroke-width':.8, opacity:.34});
+  el('line', {x1:cx, y1:cy+22*s, x2:cx, y2:cy+58*s, stroke:INK, 'stroke-width':1.3, opacity:.55});
+  el('line', {x1:cx-34*s, y1:cy+58*s, x2:cx+34*s, y2:cy+58*s, stroke:INK, 'stroke-width':1.1, opacity:.5});
+}
+
+cards.forEach(function(c, i){
+  var g = el('g', {transform:'rotate('+c.r+' '+(c.x+c.w/2)+' '+(c.y+c.h/2)+')'});
+  /* 卡纸 */
+  g.appendChild((function(){
+    var rect = document.createElementNS(NS, 'rect');
+    rect.setAttribute('x', c.x); rect.setAttribute('y', c.y);
+    rect.setAttribute('width', c.w); rect.setAttribute('height', c.h);
+    rect.setAttribute('rx', 12);
+    rect.setAttribute('fill', i % 3 === 0 ? 'rgba(255,255,255,.12)' : 'rgba(255,255,255,.06)');
+    rect.setAttribute('stroke', INK80); rect.setAttribute('stroke-width', 1.25);
+    rect.setAttribute('opacity', .8);
+    return rect;
+  })());
+  var inner = document.createElementNS(NS, 'rect');
+  inner.setAttribute('x', c.x+10); inner.setAttribute('y', c.y+10);
+  inner.setAttribute('width', c.w-20); inner.setAttribute('height', c.h-20);
+  inner.setAttribute('rx', 8);
+  inner.setAttribute('fill', 'none'); inner.setAttribute('stroke', INK);
+  inner.setAttribute('stroke-width', .5); inner.setAttribute('opacity', .22);
+  g.appendChild(inner);
+
+  var cx = c.x + c.w/2, cy = c.y + c.h/2 - 14, s = Math.min(c.w, c.h) / 190;
+  if (c.art === 'portrait') drawPortrait(cx, cy, s);
+  else if (c.art === 'portrait-b') { drawPortrait(cx, cy-16*s, s*.86); drawScene(cx+6*s, cy+58*s, s*.6); }
+  else if (c.art === 'scene-room') drawScene(cx, cy, s);
+  else drawBillboard(cx, cy, s);
+
+  /* 卡片底注 mono */
+  var label = document.createElementNS(NS, 'text');
+  label.setAttribute('x', c.x + 22); label.setAttribute('y', c.y + c.h - 24);
+  label.setAttribute('font-family', MONO); label.setAttribute('font-size', 15);
+  label.setAttribute('letter-spacing', 2.5); label.setAttribute('fill', INK);
+  label.setAttribute('opacity', .4);
+  label.textContent = 'PLATE ' + (i + 1 < 10 ? '0' : '') + (i + 1);
+  g.appendChild(label);
+  G.appendChild(g);
+});
+
+/* 纸色雾:把画墙压成底纹,标题区更亮 */
+el('rect', {x:0, y:0, width:1920, height:1080, fill:PAPER, opacity:.66});
+el('rect', {x:0, y:0, width:860, height:1080, fill:PAPER, opacity:.42});
+
+/* 雾上细字号页脚注记,保持画墙的"档案感" */
+txt(176, 986, 'GALLERY WALL — TEN PLATES, ONE RELEASE', {'font-family':MONO, 'font-size':'var(--type-meta)', 'letter-spacing':3, fill:INK, opacity:.42});
+
+stageFit();
+</script>
+<script type="application/json" id="xp-surface-recipe">{"theme":"hermes-orange","color_name":"orange","layout_code":"d11","title":"layout-d11 · 封面 · 全幅画墙左题 · 版本复盘","layout":"paper-ink.scaffold.poster-wall","page_role":"hook","canvas":{"token":"paper","value":"#f2efe9","reason":"常规内容页在纸面上建立层级。"},"surface_profile":"open-paper-diagram","surfaces":[{"role":"diagram-plane","material":"paper-plane","fill":"#f2efe9","stack":1},{"role":"structure","material":"ink-line","fill":"#1a1a1a","stack":2},{"role":"focus-marker","material":"accent","fill":"#d95e00","stack":3}],"accent":{"value":"#d95e00","semantic_channel":"标题命题或唯一视觉主角","furniture":"左上第一行 doc-kicker 固定墨黑，第二行 doc-title 使用当前主题色；folio 继续按该页画布与原配方处理。","neutral_exceptions":["普通英文标签","轴名","层名","结构编号","MODEL","非当前数据"],"furniture_mode":"black-first-theme-second","folio_mode":"accent"},"border_policy":"主体 1px 墨线；唯一焦点可用 2px 橙线，所有容器方角。","shadow_policy":"默认无影；仅唯一被举起的主证据允许一次 10px 零模糊橙色硬影。","noise_policy":"由主题统一提供唯一一层约 6% 黑色 fractal-noise；页面不得自带 noise 节点；浅色页 multiply，墨面可 overlay。","reference_evidence":{"file":"所有文档都该重写一遍.html","cards":["card-2","card-5","card-7"],"rule":"纸面承载版式，只有被举起的文献、标本或终端使用不透明白面。"},"acceptance":["强调色只落一个语义通道；同一序列可重复，但不得扩散到结构元数据。","纯白只用于 top-white，不能替代默认纸面。","缩略图必须从该主题独立 frame 的实际渲染重建。"],"status":"recipe-ready","surface_bindings":[],"surface_binding_reason":"开放纸面或组件自有纹理；没有需要主题 runtime 举起、压低或换层的前景容器。"}</script>
+<script src="../../catalog-surface.js" data-catalog-theme-surface="catalog-theme-recipes-v1"></script>
+<script src="../../catalog-typography.js" data-catalog-typography="accent-english-title-match-v1"></script>
+</body>
+</html>

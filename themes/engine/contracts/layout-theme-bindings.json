@@ -1,0 +1,257 @@
+{
+  "contract": "wise-ppt-layout-theme-bindings@1",
+  "projection": "compile-time-exact-count",
+  "geometry_policy": "preserve-all-layouts",
+  "invariants": {
+    "geometry_baseline": [
+      "wise-ppt.layout.relationship.Q1"
+    ],
+    "no_surface_reclassification": [
+      "wise-ppt.layout.nonrelationship.D7",
+      "wise-ppt.layout.relationship.G2",
+      "wise-ppt.layout.relationship.R3"
+    ]
+  },
+  "layouts": {
+    "wise-ppt.layout.nonrelationship.D3": {
+      "surface_bindings": [],
+      "type_bindings": [
+        {
+          "binding_id": "closing-primary",
+          "selector": "[data-template-part=\"primary\"][data-template-slot-kind=\"text\"]",
+          "expected_count": 1,
+          "role": "closing-statement"
+        }
+      ]
+    },
+    "wise-ppt.layout.nonrelationship.D5": {
+      "surface_bindings": [],
+      "type_bindings": [
+        {
+          "binding_id": "chapter-primary",
+          "selector": "[data-template-part=\"primary\"][data-template-slot-kind=\"text\"]",
+          "expected_count": 1,
+          "role": "chapter-title"
+        }
+      ]
+    },
+    "wise-ppt.layout.nonrelationship.D6": {
+      "surface_bindings": [
+        {
+          "binding_id": "contact-panel",
+          "selector": "#draw rect[x=\"1100\"][y=\"220\"][width=\"620\"][height=\"630\"]",
+          "expected_count": 1,
+          "surface": "foreground",
+          "layer": null
+        }
+      ],
+      "type_bindings": []
+    },
+    "wise-ppt.layout.relationship.A1": {
+      "surface_bindings": [
+        { "binding_id": "primary-evidence", "selector": ".specimen", "expected_count": 1, "surface": "foreground", "layer": null }
+      ],
+      "type_bindings": []
+    },
+    "wise-ppt.layout.relationship.A3": {
+      "surface_bindings": [
+        { "binding_id": "document-specimen", "selector": "#draw > g > rect[fill=\"var(--paper-panel)\"]", "expected_count": 1, "surface": "foreground", "layer": null }
+      ],
+      "type_bindings": []
+    },
+    "wise-ppt.layout.relationship.A4": {
+      "surface_bindings": [
+        { "binding_id": "equal-evidence-cards", "selector": "#draw > g > rect[fill=\"var(--paper-panel)\"]", "expected_count": 4, "surface": "foreground", "layer": null }
+      ],
+      "type_bindings": []
+    },
+    "wise-ppt.layout.relationship.A6": {
+      "surface_bindings": [
+        { "binding_id": "credential-cards", "selector": "#draw > g > rect[fill=\"var(--paper-panel)\"]", "expected_count": 12, "surface": "foreground", "layer": null }
+      ],
+      "type_bindings": []
+    },
+    "wise-ppt.layout.relationship.A8": {
+      "surface_bindings": [
+        { "binding_id": "application-artifact", "selector": ".ui", "expected_count": 1, "surface": "foreground", "layer": "foreground" }
+      ],
+      "type_bindings": []
+    },
+    "wise-ppt.layout.relationship.A9": {
+      "surface_bindings": [
+        { "binding_id": "device-surfaces", "selector": "#draw > g > rect[fill=\"var(--paper-panel)\"]", "expected_count": 4, "surface": "foreground", "layer": null }
+      ],
+      "type_bindings": []
+    },
+    "wise-ppt.layout.relationship.B4": {
+      "surface_bindings": [
+        { "binding_id": "timeline-evidence-cards", "selector": "#draw > g > rect[fill=\"var(--paper-panel)\"]", "expected_count": 5, "surface": "foreground", "layer": null }
+      ],
+      "type_bindings": []
+    },
+    "wise-ppt.layout.relationship.C1": {
+      "surface_bindings": [
+        { "binding_id": "visual-specimen", "selector": "#draw > g > rect[fill=\"var(--paper-panel)\"]", "expected_count": 1, "surface": "foreground", "layer": null }
+      ],
+      "type_bindings": []
+    },
+    "wise-ppt.layout.relationship.C3": {
+      "surface_bindings": [
+        { "binding_id": "profile-cards", "selector": "#draw > g > rect[fill=\"var(--paper-panel)\"]", "expected_count": 3, "surface": "foreground", "layer": null }
+      ],
+      "type_bindings": []
+    },
+    "wise-ppt.layout.relationship.E6": {
+      "surface_bindings": [
+        { "binding_id": "after-band", "selector": "#draw rect[x=\"150\"][y=\"500\"][width=\"1620\"][height=\"280\"]", "expected_count": 1, "surface": "foreground", "layer": null }
+      ],
+      "type_bindings": []
+    },
+    "wise-ppt.layout.relationship.G1": {
+      "surface_bindings": [
+        { "binding_id": "focus-frame", "selector": "#g1-focus-frame", "expected_count": 1, "surface": "foreground", "layer": null }
+      ],
+      "type_bindings": []
+    },
+    "wise-ppt.layout.relationship.G4": {
+      "surface_bindings": [
+        { "binding_id": "satellites", "selector": "#draw circle[r=\"62\"]", "expected_count": 6, "surface": "foreground", "layer": null }
+      ],
+      "type_bindings": []
+    },
+    "wise-ppt.layout.relationship.G5": {
+      "surface_bindings": [
+        { "binding_id": "principle-focus", "selector": "#draw > g > rect[fill=\"var(--paper-panel)\"]", "expected_count": 1, "surface": "foreground", "layer": null }
+      ],
+      "type_bindings": []
+    },
+    "wise-ppt.layout.relationship.H1": {
+      "surface_bindings": [
+        { "binding_id": "focus-frame", "selector": "#h1-focus-frame", "expected_count": 1, "surface": "foreground", "layer": null }
+      ],
+      "type_bindings": []
+    },
+    "wise-ppt.layout.relationship.H2": {
+      "surface_bindings": [
+        { "binding_id": "focus-frame", "selector": "#h2-focus-frame", "expected_count": 1, "surface": "foreground", "layer": null }
+      ],
+      "type_bindings": []
+    },
+    "wise-ppt.layout.relationship.H4": {
+      "surface_bindings": [
+        { "binding_id": "foundation-cards", "selector": "#draw > g > rect[fill=\"var(--paper-panel)\"]", "expected_count": 6, "surface": "foreground", "layer": null }
+      ],
+      "type_bindings": []
+    },
+    "wise-ppt.layout.relationship.I2": {
+      "surface_bindings": [
+        { "binding_id": "known-endpoints", "selector": "#draw > g > rect[fill=\"var(--paper-panel)\"]", "expected_count": 2, "surface": "foreground", "layer": null }
+      ],
+      "type_bindings": []
+    },
+    "wise-ppt.layout.relationship.I4": {
+      "surface_bindings": [
+        { "binding_id": "complete-solution", "selector": "#i4-focus-frame", "expected_count": 1, "surface": "foreground", "layer": null }
+      ],
+      "type_bindings": []
+    },
+    "wise-ppt.layout.relationship.J1": {
+      "surface_bindings": [
+        { "binding_id": "cycle-cards", "selector": "#draw > g > rect[fill=\"var(--paper-panel)\"]", "expected_count": 4, "surface": "foreground", "layer": null }
+      ],
+      "type_bindings": []
+    },
+    "wise-ppt.layout.relationship.J2": {
+      "surface_bindings": [
+        { "binding_id": "current-loop-step", "selector": "#draw > g > rect[fill=\"var(--paper-panel)\"]:first-of-type", "expected_count": 1, "surface": "foreground", "layer": null }
+      ],
+      "type_bindings": []
+    },
+    "wise-ppt.layout.relationship.J3": {
+      "surface_bindings": [
+        { "binding_id": "journey-tabs", "selector": "#draw > g > path[fill=\"var(--paper-panel)\"]", "expected_count": 5, "surface": "foreground", "layer": null }
+      ],
+      "type_bindings": []
+    },
+    "wise-ppt.layout.relationship.K1": {
+      "surface_bindings": [
+        { "binding_id": "native-stage", "selector": "#draw > g > path:nth-of-type(4)[fill=\"var(--paper-panel)\"]", "expected_count": 1, "surface": "foreground", "layer": null }
+      ],
+      "type_bindings": []
+    },
+    "wise-ppt.layout.relationship.K3": {
+      "surface_bindings": [
+        { "binding_id": "agent-infra-cards", "selector": "[data-arrow-region=\"solution\"] rect[fill=\"var(--paper-panel)\"]", "expected_count": 5, "surface": "foreground", "layer": null }
+      ],
+      "type_bindings": []
+    },
+    "wise-ppt.layout.relationship.L1": {
+      "surface_bindings": [
+        { "binding_id": "token-labels", "selector": "#draw > g > rect[fill=\"var(--paper-panel)\"]", "expected_count": 6, "surface": "foreground", "layer": null }
+      ],
+      "type_bindings": []
+    },
+    "wise-ppt.layout.relationship.O1": {
+      "surface_bindings": [
+        { "binding_id": "retrieval-specimen", "selector": "#draw > g > rect[fill=\"var(--paper-panel)\"]", "expected_count": 1, "surface": "foreground", "layer": null }
+      ],
+      "type_bindings": []
+    },
+    "wise-ppt.layout.relationship.P1": {
+      "surface_bindings": [
+        { "binding_id": "blackbox-endpoints", "selector": "#draw > g > rect[fill=\"var(--paper-panel)\"]", "expected_count": 2, "surface": "foreground", "layer": null }
+      ],
+      "type_bindings": []
+    },
+    "wise-ppt.layout.relationship.Q3": {
+      "surface_bindings": [
+        { "binding_id": "process-visible", "selector": "[data-slot-id=\"traced\"] > rect", "expected_count": 1, "surface": "foreground", "layer": null }
+      ],
+      "type_bindings": []
+    },
+    "wise-ppt.layout.relationship.R1": {
+      "surface_bindings": [
+        { "binding_id": "pillars-02-04", "selector": "[data-slot-id=\"pillar-a\"] > rect, [data-slot-id=\"pillar-c\"] > rect", "expected_count": 2, "surface": "foreground", "layer": null }
+      ],
+      "type_bindings": []
+    },
+    "wise-ppt.layout.relationship.R2": {
+      "surface_bindings": [
+        { "binding_id": "strategy-panel", "selector": "[data-slot-id=\"strategy\"] > rect", "expected_count": 1, "surface": "foreground", "layer": null }
+      ],
+      "type_bindings": []
+    },
+    "wise-ppt.layout.relationship.R4": {
+      "surface_bindings": [
+        { "binding_id": "balanced-pans", "selector": "#balance-host svg g > path:nth-of-type(2), #balance-host svg g > path:nth-of-type(3)", "expected_count": 2, "surface": "foreground", "layer": null }
+      ],
+      "type_bindings": []
+    },
+    "wise-ppt.layout.relationship.R6": {
+      "surface_bindings": [
+        { "binding_id": "input-evaluation-bands", "selector": "[data-slot-id=\"input\"] > rect, [data-slot-id=\"evaluation\"] > rect", "expected_count": 2, "surface": "foreground", "layer": null }
+      ],
+      "type_bindings": []
+    },
+    "wise-ppt.layout.relationship.S1": {
+      "surface_bindings": [
+        { "binding_id": "layer-bands", "selector": "#architecture-slot .arch-tone-wrap", "expected_count": 5, "surface": "foreground", "layer": null },
+        { "binding_id": "leaf-capabilities", "selector": "#architecture-slot .arch-tone-fill", "expected_count": 39, "surface": "foreground", "layer": null }
+      ],
+      "type_bindings": []
+    },
+    "wise-ppt.layout.relationship.T2": {
+      "surface_bindings": [
+        { "binding_id": "layout-sample-cards", "selector": "[data-repeat-unit=\"layout-sample\"] > rect:first-of-type", "expected_count": 6, "surface": "foreground", "layer": null }
+      ],
+      "type_bindings": []
+    },
+    "wise-ppt.layout.relationship.T3": {
+      "surface_bindings": [
+        { "binding_id": "selection-decision", "selector": "#t3-decision > rect:first-of-type", "expected_count": 1, "surface": "foreground", "layer": null },
+        { "binding_id": "component-sample-cards", "selector": "[data-repeat-unit=\"component-sample\"] > rect:first-of-type", "expected_count": 6, "surface": "foreground", "layer": null }
+      ],
+      "type_bindings": []
+    }
+  }
+}

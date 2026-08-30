@@ -1,8 +1,8 @@
 (function () {
   var params = new URLSearchParams(window.location.search);
-  var requested = params.get('preset');
+  var requested = params.get('theme');
   var root = document.documentElement;
-  if (requested) root.dataset.themePreset = requested;
+  if (['paper-ink', 'hermes-orange', 'klein-blue'].includes(requested)) root.dataset.themeId = requested;
 
   /* 空槽蓝图是结构 Catalog 的正式预览页，也必须走与 Deck 样张相同的 ready / 键盘桥。
      只在 Catalog iframe 中按需加载，保持直接打开蓝图时原有的固定 1920×1080 行为。 */

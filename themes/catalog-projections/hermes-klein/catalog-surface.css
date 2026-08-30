@@ -1,0 +1,231 @@
+/*
+ * Hermes / Klein Catalog page-surface primitives
+ *
+ * 这里只定义材料与可验证的层级，不替页面猜设计。每张 frame 都内嵌一份
+ * catalog-page-recipes.json 的完整配方，由 catalog-surface.js 落地。
+ */
+
+@font-face {
+  font-family: 'Oswald Replica';
+  src: url('../../engine/fonts/catalog/Oswald-Bold-Latin.catalog.woff2') format('woff2');
+  font-style: normal;
+  font-weight: 700;
+  font-display: block;
+}
+
+:root[data-xp-recipe-ready='true'] {
+  --xp-serif: 'Han Serif Catalog', 'Han Serif', 'Songti SC', serif;
+  --xp-oswald: 'Oswald Replica', 'Arial Narrow', 'Han Sans Catalog', sans-serif;
+  --xp-paper: #f2efe9;
+  --xp-white: #fff;
+  --xp-ink: #1a1a1a;
+  --xp-outside: #e5e2dc;
+  --xp-accent: #d95e00;
+  --xp-canvas: var(--xp-paper);
+  --xp-panel: var(--xp-white);
+  --xp-recessed: #e8e5df;
+  --xp-structural: var(--xp-ink);
+  --xp-structural-80: rgba(26, 26, 26, .8);
+  --xp-structural-70: rgba(26, 26, 26, .7);
+  --xp-structural-55: rgba(26, 26, 26, .55);
+  --xp-structural-45: rgba(26, 26, 26, .45);
+  --xp-structural-20: rgba(26, 26, 26, .2);
+  --xp-structural-12: rgba(26, 26, 26, .12);
+}
+
+:root[data-xp-recipe-ready='true'] body {
+  background: var(--xp-outside) !important;
+}
+
+:root[data-xp-recipe-ready='true'] .stage {
+  background: var(--xp-canvas) !important;
+  isolation: isolate;
+}
+
+/* paper 只在 paper canvas 上等于底；white/ink/accent 画布里仍是纸色前景。 */
+:root[data-xp-recipe-ready='true'][data-xp-canvas='paper']
+  .slide [fill='var(--paper)'] {
+  fill: var(--xp-canvas) !important;
+}
+
+:root[data-xp-recipe-ready='true']:not([data-xp-canvas='paper'])
+  .slide [fill='var(--paper)'] {
+  fill: var(--xp-paper) !important;
+}
+
+/* paper-panel 不设全局兜底；只有 recipe.surface_bindings 可以改材料。 */
+
+/* 参考的共同纸纹：位于内容之上，但不改变任何对象的语义层级。 */
+:root[data-xp-recipe-ready='true'][data-paper-noise-ready='true'] .slide .stage::before {
+  content: none !important;
+  display: none !important;
+}
+
+:root[data-xp-recipe-ready='true'][data-paper-noise-ready='true'] .slide .stage::after {
+  content: '' !important;
+  display: block !important;
+  position: absolute;
+  inset: 0;
+  background: #000;
+  filter: url(#wise-ppt-paper-noise);
+  opacity: .06;
+  mix-blend-mode: multiply;
+  pointer-events: none;
+  z-index: 50;
+}
+
+:root[data-xp-recipe-ready='true'][data-paper-noise-ready='true'][data-xp-canvas='ink']
+  .slide .stage::after {
+  mix-blend-mode: overlay;
+}
+
+/* custom-redraw 也复用主题自带的 stage 纸纹；墨底页只补充正确的混合模式。 */
+:root[data-xp-recipe-ready='custom'][data-paper-noise-ready='true'][data-xp-canvas='ink']
+  .slide .stage::after {
+  mix-blend-mode: overlay !important;
+}
+
+/* 左上两行标题由 title-furniture.css 唯一控制；这里仅保留排版与页码模式。 */
+:root[data-xp-recipe-ready='true'] .stage .doc.tl {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  width: max-content;
+  white-space: normal;
+  line-height: 1;
+  letter-spacing: 0;
+  text-transform: none;
+}
+
+:root[data-xp-recipe-ready='true'] .stage :is(.doc-kicker, .doc-title, .folio) {
+  font-family: var(--xp-oswald) !important;
+  font-size: var(--type-body-small);
+  font-weight: 700 !important;
+  line-height: 1.25;
+  letter-spacing: .15em;
+  text-transform: uppercase;
+}
+
+:root[data-xp-recipe-ready='true'][data-xp-furniture='all-accent']
+  .stage .folio {
+  color: var(--xp-accent) !important;
+}
+
+:root[data-xp-recipe-ready='true'][data-xp-furniture='kicker-accent']
+  .stage .folio {
+  color: var(--xp-ink) !important;
+}
+
+:root[data-xp-recipe-ready='true'][data-xp-furniture='dark-kicker-accent']
+  .stage .folio {
+  color: var(--xp-paper) !important;
+}
+
+:root[data-xp-recipe-ready='true'][data-xp-furniture='inverse-neutral']
+  .stage .folio {
+  color: var(--xp-paper) !important;
+}
+
+:root[data-xp-recipe-ready='true'] .stage .caption {
+  font-family: var(--xp-serif) !important;
+  font-weight: 700 !important;
+  color: var(--xp-structural) !important;
+}
+
+:root[data-xp-recipe-ready='true'] .stage [data-text-kind='number'] {
+  font-family: var(--xp-oswald) !important;
+  font-weight: 700 !important;
+}
+
+/* 强调由配方中的语义成员产生；同一序列可重复，不按 DOM 个数限额。 */
+:root[data-xp-recipe-ready='true'] [data-xp-focus-role='value'] {
+  font-weight: 700 !important;
+}
+
+:root[data-xp-recipe-ready='true'] [data-xp-focus-role='outline'] {
+  border-color: var(--xp-accent) !important;
+  outline-color: var(--xp-accent) !important;
+}
+
+:root[data-xp-recipe-ready='true']
+  [data-xp-primary-surface='true'][data-xp-shadow='accent-hard']:not(svg):not(svg *) {
+  box-shadow: 10px 10px 0 var(--xp-accent) !important;
+}
+
+:root[data-xp-recipe-ready='true'] svg [data-xp-primary-surface='true'][data-xp-shadow='accent-hard'] {
+  filter: drop-shadow(10px 10px 0 var(--xp-accent)) !important;
+}
+
+:root[data-xp-recipe-ready='true'] [data-xp-primary-surface='true'][data-xp-border='accent-2'] {
+  border-color: var(--xp-accent) !important;
+  border-width: 2px !important;
+}
+
+:root[data-xp-recipe-ready='true'] svg [data-xp-primary-surface='true'][data-xp-border='accent-2'] {
+  stroke: var(--xp-accent) !important;
+  stroke-width: 2px !important;
+}
+
+:root[data-xp-recipe-ready='true'] [data-xp-primary-surface='true'][data-xp-border='ink-2'] {
+  border-color: var(--xp-structural) !important;
+  border-width: 2px !important;
+}
+
+:root[data-xp-recipe-ready='true'] svg [data-xp-primary-surface='true'][data-xp-border='ink-2'] {
+  stroke: var(--xp-structural) !important;
+  stroke-width: 2px !important;
+}
+
+/* 结构容器方角；圆只保留节点、环、数据点等被识别出的语义图元。 */
+:root[data-xp-recipe-ready='true'] [data-xp-square-surface='true'] {
+  border-radius: 0 !important;
+}
+
+/* Q1：关系轮廓是主体，不得和构造线一起淡出。 */
+:root:is(
+    [data-xp-recipe-id='hermes-orange:q1'],
+    [data-xp-recipe-id='klein-blue:q1']
+  ) .stage .q1-component .venn-three .circle {
+  color: rgba(26, 26, 26, .68) !important;
+  border-color: rgba(26, 26, 26, .68) !important;
+  border-width: 2px !important;
+  opacity: 1 !important;
+}
+
+:root:is(
+    [data-xp-recipe-id='hermes-orange:q1'],
+    [data-xp-recipe-id='klein-blue:q1']
+  ) .stage .q1-component .venn-three__texture {
+  background: #1a1a1a !important;
+  opacity: .31 !important;
+}
+
+:root:is(
+    [data-xp-recipe-id='hermes-orange:q1'],
+    [data-xp-recipe-id='klein-blue:q1']
+  ) .stage #q1-focus-label {
+  font-size: 30px !important;
+  line-height: 1.08 !important;
+}
+
+/* K1：核心矩阵必须先于辅助刻度被读到。 */
+:root:is(
+    [data-xp-recipe-id='hermes-orange:k1'],
+    [data-xp-recipe-id='klein-blue:k1']
+  ) .stage #draw text[fill='var(--ink-55)'] {
+  fill: rgba(26, 26, 26, .74) !important;
+}
+
+:root:is(
+    [data-xp-recipe-id='hermes-orange:k1'],
+    [data-xp-recipe-id='klein-blue:k1']
+  ) .stage #draw line[opacity='.22'] {
+  opacity: .38 !important;
+}
+
+:root:is(
+    [data-xp-recipe-id='hermes-orange:k1'],
+    [data-xp-recipe-id='klein-blue:k1']
+  ) .stage #draw line[opacity='.3'] {
+  opacity: .44 !important;
+}

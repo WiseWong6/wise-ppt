@@ -210,8 +210,8 @@
     return value;
   }
 
-  function resolvedPreset() {
-    return getComputedStyle(root).getPropertyValue('--wp-theme-preset-id').trim();
+  function resolvedThemeId() {
+    return getComputedStyle(root).getPropertyValue('--wp-theme-id').trim();
   }
 
   function presetDefaultTypography() {
@@ -228,34 +228,31 @@
     return !(slide.dataset.primaryTypeRole === 'metric' && (node.matches('[data-primary-text]') || node.closest('[data-primary-text]')));
   }
 
-  function serifTitlesActive() {
-    var mode = (root.dataset.typographyMode || 'mixed').trim();
-    return mode === 'mixed' || mode === 'all-serif';
-  }
-
   function paletteFont(role) {
-    var titleRoles = ['display', 'hero', 'title', 'heading'];
-    var monoRoles = ['mono', 'code', 'number', 'metric'];
-    var token = monoRoles.includes(role) ? '--wp-font-mono' : '--wp-font-sans';
-    if ((titleRoles.includes(role) || role === 'large-emphasis') && serifTitlesActive()) token = '--wp-font-serif';
+    var roles = {
+      display: 'zh-content-title', hero: 'zh-content-title', title: 'zh-content-title', heading: 'zh-content-title',
+      'large-emphasis': 'zh-content-title', 'english-title': 'en-content-title', 'english-bold': 'en-bold',
+      body: 'body', label: 'label', number: 'number', metric: 'number', 'chart-label': 'chart-text'
+    };
+    var token = role === 'mono' || role === 'code' ? '--wp-font-mono' : '--wp-theme-font-' + (roles[role] || 'body');
     var value = getComputedStyle(root).getPropertyValue(token).trim();
     if (!value) throw new Error('主题缺少 ' + token + ' 字体 token');
     return value;
   }
 
-  function assertThemePreset() {
-    var computed = resolvedPreset();
-    var declared = (root.dataset.themePreset || '').trim();
+  function assertTheme() {
+    var computed = resolvedThemeId();
+    var declared = (root.dataset.themeId || '').trim();
     if (!computed) {
-      if (declared) throw new Error('当前主题未声明 appearance preset contract，不能使用外观预设属性');
+      if (declared) throw new Error('当前主题未声明 theme contract，不能使用主题属性');
       return;
     }
-    if (declared && declared !== computed) throw new Error('非法 data-theme-preset: ' + declared);
+    if (declared && declared !== computed) throw new Error('非法 data-theme-id: ' + declared);
     var deckTrack = document.getElementById('track');
-    if (deckTrack && deckTrack.querySelector('[data-theme-preset]')) {
-      throw new Error('外观预设只能声明在 deck 根节点，禁止逐页混搭');
+    if (deckTrack && deckTrack.querySelector('[data-theme-id]')) {
+      throw new Error('主题只能声明在 deck 根节点，禁止逐页混搭');
     }
-    root.dataset.themePresetResolved = computed;
+    root.dataset.themeIdResolved = computed;
     if (!root.dataset.typographyModeSource) {
       if (!(root.dataset.typographyMode || '').trim()) {
         root.dataset.typographyMode = presetDefaultTypography();
@@ -267,7 +264,7 @@
   }
 
   /* runtime 在 head 中加载；先解析根合同和缺省字体，逐页混搭检查在 DOM 就绪后复核。 */
-  assertThemePreset();
+  assertTheme();
 
   function resolvedEmphasisColor(target) {
     if (target.dataset.emphasisTextSize === 'small') {
@@ -2194,8 +2191,8 @@
       root.dataset.deckContractCheck = 'pass';
     }
     function assertDeckContract(all, context) {
-      if (root.dataset.deckContractVersion !== '7') {
-        throw new Error('正式成品必须声明 data-deck-contract-version=7');
+      if (root.dataset.deckContractVersion !== '9') {
+        throw new Error('正式成品必须声明 data-deck-contract-version=9');
       }
       assertDeckContractV3(all, context);
     }
@@ -2227,7 +2224,7 @@
         if (!accentRequested && track.querySelector('[data-emphasis-active="true"]')) {
           throw new Error('关闭主题焦点时不得保留 data-emphasis-active');
         }
-        if (serifTitlesActive()) {
+        if ((root.dataset.typographyMode || '').trim()) {
           all.filter(function (slide) {
             return ['display', 'hero', 'title', 'heading'].includes(slide.dataset.primaryTypeRole);
           }).forEach(function (slide) {

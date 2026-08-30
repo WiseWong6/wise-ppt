@@ -135,15 +135,15 @@
   </tr>
 </table>
 
-### 三套主题配色
+### 三套独立主题
 
-同一版式（K2 · 痛点→解法→成效）在三套登记主题下的效果；换主题只换配色与字体气质，不动版式：
+同一版式（K2 · 痛点→解法→成效）在三套登记主题下的效果。主题会一起改变纸面、字体角色、线条、登记 Icon 和显式组件状态，但不改变内容与版式骨架：
 
 <table>
   <tr>
     <td width="33.33%" valign="top"><a href="references/catalog-thumbnails/page-gallery-paper-ink-ai-frames-layout-k2.webp"><img src="references/catalog-thumbnails/page-gallery-paper-ink-ai-frames-layout-k2.webp" alt="纸墨主题下的 K2 痛点→解法→成效页" width="100%"></a><sub><b>纸墨</b> · 默认；冷灰纸底、克制红色焦点，适合研究、分析、内部分享</sub></td>
-    <td width="33.33%" valign="top"><a href="references/catalog-thumbnails/palettes/scheme-k-hermes/page-gallery-paper-ink-ai-frames-layout-k2.webp"><img src="references/catalog-thumbnails/palettes/scheme-k-hermes/page-gallery-paper-ink-ai-frames-layout-k2.webp" alt="爱马仕橙主题下的 K2 痛点→解法→成效页" width="100%"></a><sub><b>爱马仕橙</b> · 正白纸、暖橙焦点，适合品牌、商业、编辑感内容</sub></td>
-    <td width="33.33%" valign="top"><a href="references/catalog-thumbnails/palettes/scheme-l-klein/page-gallery-paper-ink-ai-frames-layout-k2.webp"><img src="references/catalog-thumbnails/palettes/scheme-l-klein/page-gallery-paper-ink-ai-frames-layout-k2.webp" alt="克莱因蓝主题下的 K2 痛点→解法→成效页" width="100%"></a><sub><b>克莱因蓝</b> · 正白纸、克莱因蓝焦点，适合科技、产品、发布表达</sub></td>
+    <td width="33.33%" valign="top"><a href="references/catalog-thumbnails/palettes/hermes-orange/page-gallery-paper-ink-ai-frames-layout-k2.webp"><img src="references/catalog-thumbnails/palettes/hermes-orange/page-gallery-paper-ink-ai-frames-layout-k2.webp" alt="爱马仕橙主题下的 K2 痛点→解法→成效页" width="100%"></a><sub><b>爱马仕橙</b> · 正白纸、暖橙焦点，适合品牌、商业、编辑感内容</sub></td>
+    <td width="33.33%" valign="top"><a href="references/catalog-thumbnails/palettes/klein-blue/page-gallery-paper-ink-ai-frames-layout-k2.webp"><img src="references/catalog-thumbnails/palettes/klein-blue/page-gallery-paper-ink-ai-frames-layout-k2.webp" alt="克莱因蓝主题下的 K2 痛点→解法→成效页" width="100%"></a><sub><b>克莱因蓝</b> · 正白纸、克莱因蓝焦点，适合科技、产品、发布表达</sub></td>
   </tr>
 </table>
 

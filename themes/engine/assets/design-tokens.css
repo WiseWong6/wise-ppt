@@ -1,0 +1,246 @@
+/* Wise PPT shared semantic tokens. This file contains no application-shell rules. */
+@font-face {
+  font-family: 'Han Serif';
+  src: url('fonts/SourceHanSerifCN-Medium.otf') format('opentype');
+  font-style: normal;
+  font-weight: 500;
+  font-display: block;
+}
+@font-face {
+  font-family: 'Han Serif';
+  src: url('fonts/SourceHanSerifCN-Bold.otf') format('opentype');
+  font-style: normal;
+  font-weight: 700;
+  font-display: block;
+}
+@font-face {
+  font-family: 'Han Sans';
+  src: url('fonts/SourceHanSansCN-Light.otf') format('opentype');
+  font-style: normal;
+  font-weight: 300;
+  font-display: block;
+}
+/* Light 是独立的轻字重角色；具体主题决定哪些语义位置使用它。 */
+@font-face {
+  font-family: 'Han Sans Light';
+  src: url('fonts/SourceHanSansCN-Light.otf') format('opentype');
+  font-style: normal;
+  font-weight: 300;
+  font-display: block;
+}
+@font-face {
+  font-family: 'Han Sans';
+  src: url('fonts/SourceHanSansCN-Regular.otf') format('opentype');
+  font-style: normal;
+  font-weight: 400;
+  font-display: block;
+}
+@font-face {
+  font-family: 'Han Sans';
+  src: url('fonts/SourceHanSansCN-Medium.otf') format('opentype');
+  font-style: normal;
+  font-weight: 500;
+  font-display: block;
+}
+@font-face {
+  font-family: 'Han Sans';
+  src: url('fonts/SourceHanSansCN-Bold.otf') format('opentype');
+  font-style: normal;
+  font-weight: 700;
+  font-display: block;
+}
+@font-face {
+  font-family: 'Courier Prime';
+  src: url('fonts/CourierPrime-Regular.ttf') format('truetype');
+  font-style: normal;
+  font-weight: 400;
+  font-display: block;
+}
+@font-face {
+  font-family: 'Courier Prime';
+  src: url('fonts/CourierPrime-Bold.ttf') format('truetype');
+  font-style: normal;
+  font-weight: 700;
+  font-display: block;
+}
+@font-face {
+  font-family: 'LXGW WenKai';
+  src: url('fonts/LXGWWenKai-Regular.ttf') format('truetype');
+  font-style: normal;
+  font-weight: 400;
+  font-display: block;
+}
+@font-face {
+  font-family: 'Oswald';
+  src: url('../fonts/catalog/Oswald-Bold-Latin.catalog.woff2') format('woff2');
+  font-style: normal;
+  font-weight: 700;
+  font-display: block;
+}
+
+/* Theme values are emitted per deck in assets/theme.css. */
+
+/* 页面帧不播放 swiss 组件的入场动画：动画属于组件画册的展示行为，
+   成页（帧/deck 页）是静帧。仅作用于 .slide 内的 swiss 卡（Q1/S1）。 */
+.slide .swiss-card,
+.slide .swiss-card * {
+  animation: none !important;
+}
+
+:root {
+  /* Wise PPT component roles point inward to the public semantic contract. */
+  --paper: var(--wp-color-surface-canvas);
+  --paper-deep: var(--wp-color-surface-recessed);
+  --paper-panel: var(--wp-color-surface-panel);
+  --ink: var(--wp-color-primary);
+  --ink-80: var(--wp-color-functional);
+  --ink-70: var(--wp-color-body);
+  --ink-55: var(--wp-color-chart-label);
+  --ink-45: var(--wp-color-metadata);
+  --ink-25: var(--wp-color-divider);
+  --ink-12: var(--wp-color-construction);
+  /* 主题内部角色统一映射到公开语义 token。 */
+  --accent-red: var(--wp-color-focus);
+  --accent-red-85: var(--wp-color-focus-secondary);
+  --accent-red-65: var(--wp-color-focus-peripheral);
+  --data-ramp-1: var(--wp-color-data-1);
+  --data-ramp-2: var(--wp-color-data-2);
+  --data-ramp-3: var(--wp-color-data-3);
+  --data-ramp-4: var(--wp-color-data-4);
+  --data-ramp-5: var(--wp-color-data-5);
+  --data-ramp-6: var(--wp-color-data-6);
+
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 20px;
+  --space-6: 24px;
+  --space-8: 32px;
+  --space-10: 40px;
+  --space-12: 48px;
+  --space-14: 56px;
+  --space-16: 64px;
+  --space-20: 80px;
+  --space-24: 96px;
+  --space-30: 120px;
+  --space-40: 160px;
+  --shadow-soft: 0 0 4px color-mix(in srgb, var(--ink) 2%, transparent);
+  --shadow-specimen: 2px 2px 0 color-mix(in srgb, var(--ink) 4%, transparent);
+
+  --type-display-mark: 300px;
+  --type-particle-sample: 240px;
+  --type-display: 96px;
+  --type-hero: 76px;
+  --type-title: 60px;
+  --type-metric: 52px;
+  --type-heading: 40px;
+  --type-emphasis: 36px;
+  --type-caption: 33px;
+  --type-subheading: 26px;
+  --type-body: 22px;
+  --type-body-small: 18px;
+  --type-micro-secondary: 16px;
+  --type-label: 15px;
+  --type-meta: 13px;
+
+  --font-serif-family: 'Han Serif', 'Songti SC', serif;
+  --font-sans-family: 'Han Sans', 'PingFang SC', sans-serif;
+  --font-sans-light-family: 'Han Sans Light', 'PingFang SC', sans-serif;
+  --font-mono-family: 'Courier Prime', Menlo, monospace;
+  --font-brush-family: 'LXGW WenKai', 'Xingkai SC', cursive;
+  --font-oswald-family: 'Oswald', 'Han Sans', 'PingFang SC', sans-serif;
+  --serif: var(--font-serif-family);
+  --sans: var(--font-sans-family);
+  --mono: var(--font-mono-family);
+  --brush: var(--font-brush-family);
+
+  /* --wp-font-* 走可翻转的 --serif/--sans 角色，data-typography-mode 三档
+     （all-sans / all-serif / mixed）才真正到达组件、图表与样张。 */
+  --wp-font-serif: var(--serif);
+  --wp-font-sans: var(--sans);
+  --wp-font-mono: var(--font-mono-family);
+  --wp-font-brush: var(--font-brush-family);
+  --wp-font-han-sans: var(--font-sans-family);
+  --wp-font-han-serif: var(--font-serif-family);
+  --wp-font-oswald: var(--font-oswald-family);
+
+  /* 原始纸墨只有 Light 一个字重，标题层级只靠字号；其他字体档可覆盖两档。 */
+  --wp-weight-regular: 300;
+  --wp-weight-strong: 300;
+
+  /* Icon registry: F4/A7/E6-style line and ink hierarchy on 64 units. */
+  --wp-icon-main-width: 1.2;
+  --wp-icon-main-opacity: .80;
+  --wp-icon-detail-width: .8;
+  --wp-icon-detail-opacity: .55;
+  --wp-icon-hairline-width: .55;
+  --wp-icon-hairline-opacity: .35;
+  --wp-icon-emphasis-width: 1.6;
+  --wp-icon-emphasis-opacity: .90;
+  --wp-icon-ink-dot-opacity: .70;
+
+  /* Private adapter roles keep Native and Atlas component sources free of
+     literal colors. */
+  --wp-adapter-pi-paper: var(--wp-color-surface-canvas);
+  --wp-adapter-pi-paper-deep: var(--wp-color-surface-recessed);
+  --wp-adapter-pi-paper-panel: var(--wp-color-surface-panel);
+  --wp-adapter-pi-ink: var(--wp-color-primary);
+  --wp-adapter-pi-ink-80: var(--wp-color-functional);
+  --wp-adapter-pi-ink-70: var(--wp-color-body);
+  --wp-adapter-pi-ink-60: var(--wp-private-ink-60);
+  --wp-adapter-pi-ink-55: var(--wp-color-chart-label);
+  --wp-adapter-pi-ink-45: var(--wp-color-metadata);
+  --wp-adapter-pi-ink-30: var(--wp-private-ink-30);
+  --wp-adapter-pi-weight-regular: var(--wp-weight-regular);
+  --wp-adapter-pi-weight-strong: var(--wp-weight-strong);
+  --wp-adapter-pi-data-1: var(--wp-color-data-1);
+  --wp-adapter-pi-data-2: var(--wp-color-data-2);
+  --wp-adapter-pi-data-3: var(--wp-color-data-3);
+  --wp-adapter-pi-data-4: var(--wp-color-data-4);
+  --wp-adapter-pi-data-5: var(--wp-color-data-5);
+  --wp-adapter-pi-data-6: var(--wp-color-data-6);
+  --wp-adapter-pi-font-sans: var(--wp-font-sans);
+  --wp-adapter-pi-font-serif: var(--wp-font-serif);
+  --wp-adapter-pi-font-mono: var(--wp-font-mono);
+  --wp-adapter-pi-font-brush: var(--wp-font-brush);
+
+  --wp-adapter-atlas-paper: var(--wp-color-surface-canvas);
+  --wp-adapter-atlas-paper-deep: var(--wp-color-surface-recessed);
+  --wp-adapter-atlas-paper-panel: var(--wp-color-surface-panel);
+  --wp-adapter-atlas-ink: var(--wp-color-primary);
+  --wp-adapter-atlas-ink-80: var(--wp-color-functional);
+  --wp-adapter-atlas-ink-70: var(--wp-color-body);
+  --wp-adapter-atlas-ink-55: var(--wp-color-chart-label);
+  --wp-adapter-atlas-ink-45: var(--wp-color-metadata);
+  --wp-adapter-atlas-ink-25: var(--wp-color-divider);
+  --wp-adapter-atlas-ink-12: var(--wp-color-construction);
+  /* Atlas 与 Native 共用同一条数据墨阶。 */
+  --wp-adapter-atlas-data-1: var(--data-ramp-1);
+  --wp-adapter-atlas-data-2: var(--data-ramp-2);
+  --wp-adapter-atlas-data-3: var(--data-ramp-3);
+  --wp-adapter-atlas-data-4: var(--data-ramp-4);
+  --wp-adapter-atlas-data-5: var(--data-ramp-5);
+  --wp-adapter-atlas-data-6: var(--data-ramp-6);
+  --wp-adapter-atlas-font-sans: "Wise Han Sans SC";
+  --wp-adapter-atlas-font-serif: "Wise Han Sans SC";
+  --wp-adapter-atlas-font-mono: "Courier Prime";
+  --wp-adapter-atlas-font-brush: "LXGW WenKai";
+}
+
+[data-typography-mode="mixed"] {
+  --serif: var(--font-serif-family);
+  --sans: var(--font-sans-light-family);
+}
+
+[data-typography-mode="all-sans"] {
+  --serif: var(--font-sans-light-family);
+  --sans: var(--font-sans-light-family);
+}
+
+[data-typography-mode="all-serif"] {
+  --serif: var(--font-serif-family);
+  --sans: var(--font-serif-family);
+}
+
+/* mono and brush deliberately remain fixed in all three typography modes. */

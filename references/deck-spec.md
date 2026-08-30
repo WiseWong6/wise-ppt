@@ -1,10 +1,10 @@
-# deck-spec@7 唯一输入合同
+# deck-spec@9 唯一输入合同
 
 ## 权威
 
 standard 只编辑 `deck-spec.json`。`index.html`、deck plan、来源账本、组件收据、几何合同、build/delivery manifest 和 PDF 都是编译产物，不能反过来成为第二份输入。
 
-先完成材料分页、页型/关系、完整骨架和整副主题选择，再一次性写本合同。不要在 `layout_id`、`relation_key` 或 `theme_preset` 尚未确定时先造一份“完整 spec”供后续返工。
+先完成材料分页、页型/关系、完整骨架和整副主题选择，再一次性写本合同。不要在 `layout_id`、`relation_key` 或 `deck.theme` 尚未确定时先造一份“完整 spec”供后续返工。
 
 字段允许表和校验实现以打包后的 `bin/wise-ppt.mjs` 为机器权威；本文只解释作者必须知道的输入语义。文档与编译器不一致时停止构建并修合同，不能以“编译器能猜”为准。
 
@@ -12,7 +12,7 @@ standard 只编辑 `deck-spec.json`。`index.html`、deck plan、来源账本、
 
 | 字段 | 要求 |
 |---|---|
-| `contract` | 必须等于 `wise-ppt-deck@7` |
+| `contract` | 必须等于 `wise-ppt-deck@9` |
 | `mode` | 可省略；出现时只能是 `standard` |
 | `deck` | 必填对象 |
 | `layout_context` | 必填对象；选择本 deck 前的当前聊天版式历史 |
@@ -33,7 +33,7 @@ standard 顶层不接受其他字段。
   "prior_total": 12,
   "usage": [
     {
-      "layout_id": "paper-ink.relationship.A1",
+      "layout_id": "wise-ppt.layout.relationship.A1",
       "count": 2,
       "last_sequence": 9
     }
@@ -58,9 +58,11 @@ standard 顶层不接受其他字段。
 - `title`：整副标题；
 - `thesis`：一句可被反对的中心判断；
 - `input_type`：`pdf`、`url`、`multi-doc`、`existing-deck`、`oral`、`short-text` 之一；
-- `theme_preset`：Catalog 当前登记的整副主题。
+- `theme`：整副唯一主题权威。固定主题使用 `{ "kind": "registered", "theme_id": "paper-ink|hermes-orange|klein-blue" }`；素材主题使用 `{ "kind": "inline", "definition": { ...完整 wise-ppt-theme@3... } }`。两种形态互斥，不能同时登记 ID 和内联定义。具体字段、取证方法与预览命令见 [themes.md](themes.md)。
 
-可选：`typography_mode`、`lang`、`signature`。`lang` 省略时为 `zh-CN`；出现时只能是安全的 ASCII language tag，不能含引号、空格或 HTML 属性。`signature` 是页脚与收尾署名槽共用的署名；只原样使用用户明确提供的非空值，省略表示不署名，不得代填作者、品牌或 Agent 名称。`deck.subtitle` 不是登记字段；封面副标题属于所选封面骨架的 `payload.text`。
+旧 `theme_preset`、`theme_family` 和旧主题 ID 不接受，也不建立生产 alias。
+
+其余可选：`typography_mode`、`lang`、`signature`。`lang` 省略时为 `zh-CN`；出现时只能是安全的 ASCII language tag，不能含引号、空格或 HTML 属性。`signature` 是页脚与收尾署名槽共用的署名；只原样使用用户明确提供的非空值，省略表示不署名，不得代填作者、品牌或 Agent 名称。`deck.subtitle` 不是登记字段；封面副标题属于所选封面骨架的 `payload.text`。
 
 `pdf/url/multi-doc/existing-deck` 属于 source-backed 输入，必须有来源并逐页登记来源证据。`oral/short-text` 可以没有外部来源；一旦主动登记来源，引用和证据仍必须闭合。
 
@@ -143,6 +145,8 @@ source-backed 页面必须有非空 `source_refs`，且 `source_evidence` 的 ke
 `deck-plan@5.layout_session` 会记录 `selection_seed`、排序依据、选择前后的 usage，以及每页候选数、首选 ID、选中前计数、权威 rank、决策类型和 override。它按 spec 中的 deck 起始账本逐页推进，可用来为当前聊天的下一份 deck 续账；必须与最终一次 `layouts plan` 的 resolved 结果一致。
 
 ## 逐页强调
+
+强调不是全局装饰开关。每页根据内容决定是否填写 `emphasis.target` 与 `reason`，主题不能替页面自动开启强调。
 
 先查询单个 `layout_id`。只有结果中的 `emphasis.targets` 非空时，该页才可声明：
 

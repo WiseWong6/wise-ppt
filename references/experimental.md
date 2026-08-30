@@ -55,7 +55,7 @@ workspace 只记录待构建状态；实际变化页以 build/delivery manifest 
 每次 build、validate、preview、deliver 都重新核对原 standard：
 
 - 页数、页序、`page_role`、`page_kind`、claim、relation、source、source evidence 和 must 完全不变；
-- 原 `theme_preset`、`typography_mode`、字体、主题资产和根级主题属性不变；
+- 原 `deck.theme`、`typography_mode`、字体、主题资产和根级主题属性不变；
 - 未授权页面与 standard 等价；只有批准页和其限定样式可以变化；
 - 重绘页保留唯一可见的原 claim，source evidence 和已落页 must 仍须可见；
 - 重绘页标为 `data-layout-source="experimental-redraw"`，记录 `data-baseline-layout-id`，并移除登记骨架身份。
