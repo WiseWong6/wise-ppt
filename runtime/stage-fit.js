@@ -300,8 +300,29 @@
     return Promise.allSettled(requests).then(function () {});
   }
 
+  /* recipe renderer 与手调母版保留各自的原始标记，但统一投影成一个布尔完成态。
+     recipe-generated: true + recipe-ready
+     custom-redraw: custom + recipe-ready/approved
+     Catalog 只消费 complete；raw marker/status 继续用于诊断与审计。 */
+  function recipeCompletionState(root) {
+    var recipeId = root.dataset.xpRecipeId || '';
+    var marker = root.dataset.xpRecipeReady || '';
+    var status = root.dataset.xpRecipeStatus || '';
+    var surfaceReady = root.dataset.catalogSurfaceReady === 'true';
+    var generatedReady = marker === 'true' && status === 'recipe-ready';
+    var customReady = marker === 'custom' && (status === 'recipe-ready' || status === 'approved');
+    return {
+      required: Boolean(recipeId),
+      complete: Boolean(recipeId) && surfaceReady && (generatedReady || customReady),
+      marker: marker,
+      status: status,
+      surfaceReady: surfaceReady
+    };
+  }
+
   function postGalleryState(root, requestId, status, reason) {
     if (global.parent === global || embeddingRuntime() !== 'wise-ppt-gallery') return;
+    var recipe = recipeCompletionState(root);
     global.parent.postMessage({
       type: FRAME_STATE_READY_MESSAGE,
       protocol: FRAME_PROTOCOL,
@@ -310,6 +331,11 @@
       themeId: root.dataset.themeId || '',
       typographyMode: root.dataset.typographyMode || '',
       accent: root.classList.contains('accent'),
+      recipeId: root.dataset.xpRecipeId || '',
+      recipeStatus: root.dataset.xpRecipeStatus || '',
+      recipeReady: root.dataset.xpRecipeReady || '',
+      recipeComplete: recipe.complete,
+      surfaceReady: root.dataset.catalogSurfaceReady || '',
       reason: reason || ''
     }, '*');
   }
@@ -432,6 +458,12 @@
     if (root.dataset.runtime !== 'wise-ppt-specimen' || embeddingRuntime() !== 'wise-ppt-gallery') return false;
     var nonce = new URLSearchParams(global.location.search).get('wise-ppt-frame-nonce');
     if (!nonce || root.dataset.frameStatusPosted === status) return false;
+    /* 主题投影页在 HTML 上预先声明 recipe id。它们必须等 recipe renderer
+       真正完成后再回报 ready，避免“页面 ready、recipe 没运行”的拆分假绿灯。 */
+    var recipe = recipeCompletionState(root);
+    if (status === 'ready' && recipe.required && !recipe.complete) {
+      return false;
+    }
     global.parent.postMessage({
       type: FRAME_READY_MESSAGE,
       protocol: FRAME_PROTOCOL,
@@ -443,6 +475,11 @@
       specimenFit: root.dataset.specimenFit || '',
       scaleOwner: root.dataset.stageFitOwner || '',
       specimenStatic: root.dataset.specimenStatic || '',
+      recipeId: root.dataset.xpRecipeId || '',
+      recipeStatus: root.dataset.xpRecipeStatus || '',
+      recipeReady: root.dataset.xpRecipeReady || '',
+      recipeComplete: recipe.complete,
+      surfaceReady: root.dataset.catalogSurfaceReady || '',
       reason: reason || ''
     }, '*');
     root.dataset.frameStatusPosted = status;
@@ -459,7 +496,10 @@
     var observer = new MutationObserver(function () {
       if (root.dataset.renderReady === 'true') postSpecimenStatus(root, 'ready');
     });
-    observer.observe(root, {attributes:true, attributeFilter:['data-render-ready']});
+    observer.observe(root, {
+      attributes:true,
+      attributeFilter:['data-render-ready', 'data-catalog-surface-ready']
+    });
     global.addEventListener('error', function (event) {
       postSpecimenStatus(root, 'fail', event.message || 'frame error');
     });
@@ -526,6 +566,7 @@
     applySpecimenTheme: applySpecimenTheme,
     applySpecimenTypography: applySpecimenTypography,
     applySpecimenStaticFreeze: applySpecimenStaticFreeze,
+    recipeCompletionState: recipeCompletionState,
     registerGalleryStateRenderer: registerGalleryStateRenderer,
     bindGalleryStateBridge: bindGalleryStateBridge,
     bindSpecimenReadiness: bindSpecimenReadiness,

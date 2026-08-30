@@ -193,7 +193,11 @@ function loadMap(){
   return Promise.resolve(window.WISE_GUANGDONG_GEO);
 }
 
-loadMap().then(function(geo){
+Promise.all([
+  loadMap(),
+  document.fonts && document.fonts.ready ? document.fonts.ready : Promise.resolve()
+]).then(function(values){
+  var geo = values[0];
   echarts.registerMap('guangdong', geo);
 
   var chart = echarts.init(document.getElementById('chart'));
@@ -272,10 +276,15 @@ loadMap().then(function(geo){
     WisePPTStageFit.bindSpecimenEmphasis(document.documentElement);
   }
 
-  /* setOption 同步完成 layout（无动画），finished 兜底确保 convertToPixel 可用 */
-  chart.on('finished', drawCallouts);
-  drawCallouts();
-  markRenderReady();
+  /* 字体已稳定且 animation=false；再等两帧并主动 flush，之后才允许 seed/Catalog 固化画布。 */
+  requestAnimationFrame(function(){
+    requestAnimationFrame(function(){
+      if (chart.getZr && chart.getZr().flush) chart.getZr().flush();
+      drawCallouts();
+      delete document.documentElement.dataset.renderPending;
+      markRenderReady();
+    });
+  });
 });
 
 stageFit();

@@ -1413,11 +1413,21 @@ $('#c-ico').textContent='…';
         if(data.themeId!==requested.themeId||data.typographyMode!==requested.typographyMode||Boolean(data.accent)!==requested.accent){
           return finish(new Error('参考帧状态回报与请求不一致'));
         }
+        const recipeMatch=new URL(frame.src,location.href).pathname.match(/\/frames\/(hermes-orange|klein-blue)\/layout-([^/]+)\.html$/);
+        const expectedRecipe=recipeMatch?recipeMatch[1]+':'+recipeMatch[2]:'';
+        if(expectedRecipe&&(data.recipeId!==expectedRecipe||data.recipeComplete!==true||data.surfaceReady!=='true')){
+          return finish(new Error('参考帧 recipe 状态回报不完整: '+expectedRecipe));
+        }
         /* file:// 下父子文档是不同不透明源，测试与诊断不能读取 contentDocument；
            把已验证过的子页回报留在 iframe 元素自身，避免用猜测代替握手结果。 */
         frame.dataset.wiseStateTheme=data.themeId;
         frame.dataset.wiseStateTypography=data.typographyMode;
         frame.dataset.wiseStateAccent=String(Boolean(data.accent));
+        frame.dataset.wiseStateRecipe=data.recipeId||'';
+        frame.dataset.wiseStateRecipeStatus=data.recipeStatus||'';
+        frame.dataset.wiseStateRecipeReady=data.recipeReady||'';
+        frame.dataset.wiseStateRecipeComplete=String(data.recipeComplete===true);
+        frame.dataset.wiseStateSurfaceReady=data.surfaceReady||'';
         finish(null,{reloadRequired:false});
       };
       window.addEventListener('message',onMessage);
@@ -1902,6 +1912,8 @@ $('#c-ico').textContent='…';
     const fit=()=>fitDeckPage(f,st);
     const frameCode=(frameUrl.pathname.match(/\/layout-([^/]+)\.html$/)||[])[1]||'';
     const expectedPageId=frameCode?'gallery-ai-'+frameCode:'';
+    const recipeMatch=frameUrl.pathname.match(/\/frames\/(hermes-orange|klein-blue)\/layout-([^/]+)\.html$/);
+    const expectedRecipeId=recipeMatch?recipeMatch[1]+':'+recipeMatch[2]:'';
     const frameNonce='catalog-'+openToken+'-'+(++frameReadySerial);
     frameUrl.searchParams.set('wise-ppt-frame-nonce',frameNonce);
     const loaded=new Promise((resolve,reject)=>{
@@ -1927,6 +1939,14 @@ $('#c-ico').textContent='…';
         if(data.frameWidth!==1920||data.frameHeight!==1080)return finish(new Error('参考帧逻辑尺寸不是 1920×1080'));
         if(data.specimenFit!=='noop-in-gallery'||data.scaleOwner!=='gallery-runtime')return finish(new Error('参考帧发生二次缩放'));
         if(data.specimenStatic!=='true')return finish(new Error('参考帧未进入静态标称态'));
+        if(expectedRecipeId&&(data.recipeId!==expectedRecipeId||data.recipeComplete!==true||data.surfaceReady!=='true')){
+          return finish(new Error('参考帧 recipe 未完成: '+expectedRecipeId));
+        }
+        f.dataset.wiseStateRecipe=data.recipeId||'';
+        f.dataset.wiseStateRecipeStatus=data.recipeStatus||'';
+        f.dataset.wiseStateRecipeReady=data.recipeReady||'';
+        f.dataset.wiseStateRecipeComplete=String(data.recipeComplete===true);
+        f.dataset.wiseStateSurfaceReady=data.surfaceReady||'';
         finish();
       };
       window.addEventListener('message',onMessage);

@@ -217,7 +217,7 @@
     },
     "wise-ppt.layout.relationship.R2": {
       "surface_bindings": [
-        { "binding_id": "strategy-panel", "selector": "[data-slot-id=\"strategy\"] > rect", "expected_count": 1, "surface": "foreground", "layer": null }
+        { "binding_id": "strategy-panel", "selector": "[data-slot-id=\"strategy\"] > rect[data-band-panel=\"true\"]", "expected_count": 1, "surface": "foreground", "layer": null }
       ],
       "type_bindings": []
     },
@@ -229,7 +229,7 @@
     },
     "wise-ppt.layout.relationship.R6": {
       "surface_bindings": [
-        { "binding_id": "input-evaluation-bands", "selector": "[data-slot-id=\"input\"] > rect, [data-slot-id=\"evaluation\"] > rect", "expected_count": 2, "surface": "foreground", "layer": null }
+        { "binding_id": "input-evaluation-bands", "selector": "[data-slot-id=\"input\"] > rect[data-band-panel=\"true\"], [data-slot-id=\"evaluation\"] > rect[data-band-panel=\"true\"]", "expected_count": 2, "surface": "foreground", "layer": null }
       ],
       "type_bindings": []
     },
