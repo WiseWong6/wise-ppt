@@ -5,7 +5,7 @@
   "page_kind": "nonrelationship",
   "source": {
     "path": "references/gallery-paper-ink/ai/frames/layout-m1.html",
-    "sha256": "0f17ce7cb1f9bcc5e2e1304bf445724224a4a039b408c3033d434895ccc46672"
+    "sha256": "041c997baabdb9fa6b50ef2b0d3c0498ec3fb586daeba895c2662f178b4ab93b"
   },
   "locked": {
     "scoped_css": "@scope (.slide[data-layout-id=\"wise-ppt.layout.nonrelationship.M1\"]) {\ncanvas.scene { position: absolute; inset: 0; z-index: 1; }\n  svg.overlay { position: absolute; inset: 0; z-index: 2; pointer-events: none; }\n\n  /* 方块上方：对照行 */\n  .compare {\n    position: absolute; left: 0; right: 0; top: 326px;\n    display: flex; align-items: center; justify-content: center;\n    gap: var(--space-5); z-index: 3;\n    font-family: var(--sans); font-weight: 300;\n    font-size: var(--type-subheading); color: var(--ink-70);\n    letter-spacing: .06em;\n  }\n  .compare .arr { font-style: normal; color: var(--ink-45); }\n  .compare .sep { width: 1px; height: 26px; background: var(--ink-25); margin: 0 var(--space-6); }\n  .compare .q {\n    font-family: var(--serif); font-size: var(--type-heading);\n    color: var(--ink); transform: translateY(2px);\n  }\n  /* 方块刻字（纸色反色） */\n  .boxtext {\n    position: absolute; z-index: 3;\n    display: flex; flex-direction: column;\n    align-items: center; justify-content: center;\n    color: var(--paper); pointer-events: none;\n  }\n  .boxtext .t1 {\n    font-family: var(--mono); font-size: var(--type-emphasis);\n    letter-spacing: .16em; text-indent: .16em;\n  }\n  .boxtext .divi {\n    width: 140px; height: 1px;\n    background: color-mix(in srgb, var(--paper) 55%, transparent);\n    margin: var(--space-6) 0 var(--space-5);\n  }\n  .boxtext .t2 {\n    font-family: var(--mono); font-size: var(--type-meta);\n    letter-spacing: .4em; text-indent: .4em;\n    color: color-mix(in srgb, var(--paper) 80%, transparent);\n  }\n}\n",
@@ -78,5 +78,5 @@
       }
     }
   },
-  "seed_sha256": "66d70be5367edc50c4e9f2e6bcaaaebca6bab7abcb5d752d0065f5637bb12860"
+  "seed_sha256": "49154799ebc174651952917fbb489a30ce0fcda0ad40f5265adbbf346ff12b57"
 }

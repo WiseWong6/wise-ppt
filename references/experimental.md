@@ -44,9 +44,10 @@ node <skill>/bin/wise-ppt.mjs experimental deliver <experiment 绝对目录>
 
 ## 机器合同
 
-- `.wise-ppt-experiment` 使用 `wise-ppt-experimental-workspace@2`：固定 `mode: redraw`、批准页、standard 快照、内容锁和主题锁；
-- `experimental-build-manifest.json` 使用 `wise-ppt-experimental-build@4`：记录批准页、实际变化页、锁与构建检查；
-- `experimental-delivery-manifest.json` 使用 `wise-ppt-experimental-delivery@5`：记录同一 HTML/PDF、页数、Google Chrome 渲染器证据、浏览器门禁和未声明的 standard 检查。
+- `.wise-ppt-experiment` 使用 `wise-ppt-experimental-workspace@4`：固定 `mode: redraw`、批准页、standard 快照、内容锁、主题锁、主题语义锁和简报摘要；
+- `experimental-theme-brief.json` 使用 `wise-ppt-experimental-theme-brief@1`：给 AI 公开当前主题的身份解析、可选 target、允许动作和拒绝条件，不公开 standard 私有 selector；
+- `experimental-build-manifest.json` 使用 `wise-ppt-experimental-build@6`：记录批准页、实际变化页、锁、默认主题身份、强调对象与 treatment 审计；
+- `experimental-delivery-manifest.json` 使用 `wise-ppt-experimental-delivery@7`：记录同一 HTML/PDF、页数、Google Chrome 渲染器证据、浏览器门禁和未声明的 standard 检查。
 
 workspace 只记录待构建状态；实际变化页以 build/delivery manifest 为准。批准页中至少一页必须真实变化。
 
@@ -59,6 +60,8 @@ workspace 只记录待构建状态；实际变化页以 build/delivery manifest 
 - 未授权页面与 standard 等价；只有批准页和其限定样式可以变化；
 - 重绘页保留唯一可见的原 claim，source evidence 和已落页 must 仍须可见；
 - 重绘页标为 `data-layout-source="experimental-redraw"`，记录 `data-baseline-layout-id`，并移除登记骨架身份。
+
+每个真实变化页还必须显式保留主题语义：先读取同目录的 `experimental-theme-brief.json`，登记 1–2 个 `data-experimental-theme-identity="identity.*"` 默认身份组，所有 `functional` token 都只能用在这些组内；`.doc`、`.folio`、`.caption` 不得成为身份组或强调组。页面用 `data-experimental-emphasis-target="none|已登记 target_id"` 和不少于 8 字的 `data-experimental-emphasis-rationale` 说明取舍。选中目标时必须且只能有一个同 ID 的 `data-experimental-emphasis-group`，并在该组登记 `data-experimental-emphasis-treatment="focus.*"`；除 `focus.ink-weight` 只使用主墨色与字重外，其余动作必须使用 focus token。选择 `none` 时不得出现强调组、treatment 或 focus token。构建结果按相对 standard 的 `added`、`removed`、`changed`、`retained` 记录对象变化，并单独记录 treatment。
 
 ## 允许与禁止
 

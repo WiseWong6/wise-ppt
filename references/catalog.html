@@ -1,10 +1,11 @@
 <!DOCTYPE html>
-<html lang="zh-CN" data-wise-catalog-fonts="true" data-theme-id="paper-ink" data-typography-mode="mixed">
+<html lang="zh-CN" data-theme-id="paper-ink" data-typography-mode="all-sans">
 <head>
 <meta charset="UTF-8">
 <title>Wise PPT 资产目录:非关系页 · 版式 · 结构 · 组件 · 图标</title>
-<!-- Catalog 读取中性语义接口与三个平级固定主题包；页面和组件字体使用本地子集。 -->
+<!-- Catalog 外壳使用系统 UI 字体；页面 iframe 与组件预览层按需使用本地子集。 -->
 <link rel="stylesheet" href="../themes/engine/assets/design-tokens.css" data-wise-theme-style="engine">
+<link rel="stylesheet" href="../themes/engine/assets/component-theme.css" data-wise-component-theme-style="true">
 <link rel="stylesheet" href="../themes/packages/paper-ink/theme.css">
 <link rel="stylesheet" href="../themes/packages/hermes-orange/theme.css">
 <link rel="stylesheet" href="../themes/packages/klein-blue/theme.css">
@@ -19,6 +20,12 @@
     --ink-25:color-mix(in srgb,var(--wp-color-primary) 25%,transparent);
     --ink-12:color-mix(in srgb,var(--wp-color-primary) 12%,transparent);
     --line:var(--ink-25);
+    --font-serif-family:"Songti SC",serif;
+    --font-sans-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Microsoft YaHei",sans-serif;
+    --font-sans-light-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Microsoft YaHei",sans-serif;
+    --font-mono-family:Menlo,Monaco,Consolas,monospace;
+    --font-brush-family:"Xingkai SC",cursive;
+    --font-oswald-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Microsoft YaHei",sans-serif;
     --wp-font-sans:-apple-system,BlinkMacSystemFont,"PingFang SC","Microsoft YaHei",sans-serif;
     --wp-font-mono:Menlo,Monaco,Consolas,monospace;
     --catalog-sidebar-w:220px;--catalog-header-h:0px;
@@ -62,12 +69,11 @@
   .type-segment[aria-checked="true"]{background:var(--ink);color:var(--paper)}
   .theme-card:focus-visible,.type-segment:focus-visible{outline:2px solid var(--ink);outline-offset:1px}
   .focus-toggle{width:100%;margin-top:14px;padding:8px 10px;border:1px solid var(--ink-45);background:transparent;color:var(--ink-3);font:400 12px var(--wp-font-mono);cursor:pointer;display:flex;align-items:center;justify-content:space-between;gap:8px}
+  .focus-toggle[hidden]{display:none}
   .focus-toggle:hover{color:var(--ink);border-color:var(--ink)}
   .focus-toggle.on{color:var(--ink);border-color:var(--ink);background:var(--paper-panel)}
   .focus-toggle:disabled{cursor:not-allowed;opacity:.55}
   .focus-toggle:disabled:hover{color:var(--ink-3);border-color:var(--ink-45)}
-  .switch-track{flex:none;width:26px;height:14px;border:1px solid var(--ink-45);border-radius:7px;position:relative;transition:border-color .15s ease,background .15s ease}
-  .switch-knob{position:absolute;top:1px;left:1px;width:10px;height:10px;border-radius:50%;background:var(--ink-45);transition:transform .15s ease,background .15s ease}
   .focus-toggle.on .switch-track{border-color:var(--ink);background:var(--ink)}
   .focus-toggle.on .switch-knob{transform:translateX(12px);background:var(--paper)}
   /* 一级分类手风琴:页签即分组头,二级目录就地下挂;▾ 右指 = 收起,下指 = 展开 */
@@ -190,6 +196,16 @@
   .layer-info{min-height:54px;padding:9px 14px;font-size:13px;line-height:1.4;color:var(--ink-2);background:var(--paper);box-shadow:0 -10px 24px color-mix(in srgb, var(--ink) 3.5%, transparent);display:grid;grid-template-columns:minmax(0,1fr) auto;align-items:center;gap:20px}
   .layer-tools{display:flex;align-items:center;gap:8px;justify-self:end}
   .layer-tools:empty{display:none}
+  #layer-emphasis{position:relative;flex:0 0 auto}
+  #layer-emphasis:empty{display:none}
+  .layer-emphasis-toggle{height:34px;display:flex;align-items:center;gap:9px;padding:0 10px;border:1px solid transparent;border-radius:2px;background:var(--paper-deep);color:var(--ink-3);font:400 13px/18px var(--wp-font-sans);white-space:nowrap;cursor:pointer}
+  .layer-emphasis-toggle:hover{color:var(--ink);border-color:var(--ink-45);background:var(--paper-panel)}
+  .layer-emphasis-toggle:focus-visible{outline:1px solid var(--ink);outline-offset:1px}
+  .layer-emphasis-toggle.on{color:var(--ink);border-color:var(--ink-45);background:var(--paper-panel)}
+  .switch-track{flex:none;width:26px;height:14px;border:1px solid var(--ink-45);border-radius:7px;position:relative;transition:border-color .15s ease,background .15s ease}
+  .switch-knob{position:absolute;top:1px;left:1px;width:10px;height:10px;border-radius:50%;background:var(--ink-45);transition:transform .15s ease,background .15s ease}
+  .layer-emphasis-toggle.on .switch-track{border-color:var(--ink);background:var(--ink)}
+  .layer-emphasis-toggle.on .switch-knob{transform:translateX(12px);background:var(--paper)}
   #layer-slots{position:relative;flex:0 0 auto}
   #layer-slots:empty{display:none}
   .layer-meta{min-width:0;height:18px;display:flex;align-items:center;gap:14px}
@@ -329,8 +345,8 @@
     <div class="ctl-label"><span id="typography-picker-label">字体</span></div>
     <div class="type-segments" role="radiogroup" aria-labelledby="typography-picker-label"></div>
   </div>
-  <button class="focus-toggle" id="theme-focus-toggle" type="button" aria-pressed="false">
-    <span>主题焦点预览</span>
+  <button class="focus-toggle" id="catalog-emphasis-toggle" type="button" aria-pressed="false" hidden>
+    <span>强调色</span>
     <span class="switch-track" aria-hidden="true"><span class="switch-knob"></span></span>
   </button>
   <nav class="nav-list" aria-label="资产目录">
@@ -388,7 +404,7 @@
 </main>
 
 <main id="m-ico">
-  <div class="note"><b>图标全集：865 枚，15 个分组。</b><br>来源：<a href="https://github.com/tabler/tabler-icons/tree/v3.46.0" target="_blank" rel="noreferrer">Tabler Icons v3.46.0</a> by Paweł Kuna · MIT License 署名。</div>
+  <div class="note"><b>图标全集：865 枚，15 个分组。</b><br><span id="icon-source-note">纸墨主题显示审核重绘版。</span> 来源：<a href="https://github.com/tabler/tabler-icons/tree/v3.46.0" target="_blank" rel="noreferrer">Tabler Icons v3.46.0</a> by Paweł Kuna · MIT License 署名。</div>
   <div class="icon-toolbar">
     <label><span class="sr-only" style="position:absolute;clip:rect(0 0 0 0);clip-path:inset(50%);width:1px;height:1px;overflow:hidden">搜索图标</span><input class="icon-search" id="icon-search" type="search" autocomplete="off" placeholder="搜索名称或标签，例如 mail / chart / user"></label>
   </div>
@@ -406,6 +422,7 @@ document.querySelectorAll('.side-foot .repo-link[data-href]').forEach(function(a
 </script>
 <script src="./structure-slot-data.js"></script>
 <script src="./component-routing-data.js"></script>
+<script src="../themes/engine/runtime/component-typography-resolver.js"></script>
 <script src="../runtime/component-behavior.js"></script>
 <script src="./page-emphasis-data.js"></script>
 <script src="./theme-registry-data.js"></script>
@@ -509,6 +526,7 @@ const SMARTART_COMPONENTS=[
     {t:'atlas',num:12,en:'alert-box',nm:'提示框',note:'默认 2×2 · 固定 4 条'},
     {t:'atlas',num:13,en:'terminal-box',nm:'终端框',pageScale:.7},
     {t:'atlas',num:14,en:'code',nm:'代码块',pageScale:.8},
+    {t:'native',num:62,en:'agenda-ink',nm:'档案目录',note:'源 D4 · 完整 5 项目录',catalogNo:83},
     {t:'native',num:113,en:'capability-pillar',nm:'能力柱',note:'源 R1 · 单柱固定款',catalogNo:79,vr:[['native:113','空心'],['native:127','填充']]},
     {t:'native',num:74,en:'contact-card',nm:'联络名片卡'},
     {t:'native',num:93,en:'infra-strip',nm:'完整四层架构栈',note:'源 H3 · 完整四层架构主体'},
@@ -638,7 +656,7 @@ SMARTART_COMPONENTS.forEach(group=>group.items.sort((a,b)=>a.catalogNo-b.catalog
 const SMARTART_COMPONENT_COUNT=assertCatalogClassification(
   SMARTART_COMPONENTS,
   item=>item.t==='ec'?'ec:'+item.id:item.t+':'+item.num,
-  79,
+  80,
   '组件',
 );
 function componentCatalogCode(item){
@@ -650,7 +668,7 @@ function componentSourceType(item){
 }
 function assertContinuousComponentCatalogNumbers(){
   const numbers=CATALOG_COMPONENTS.map(item=>item.catalogNo).sort((a,b)=>a-b);
-  const expected=Array.from({length:82},(_,index)=>index+1)
+  const expected=Array.from({length:83},(_,index)=>index+1)
     .filter(number=>!RESERVED_COMPONENT_NUMBERS.has(number));
   if(numbers.some((number,index)=>number!==expected[index])||new Set(numbers).size!==numbers.length){
     throw new Error('组件 catalog 编号与保留空位不一致:'+numbers.join(','));
@@ -660,7 +678,9 @@ assertContinuousComponentCatalogNumbers();
 
 /* 组件弹窗仍只暴露竖/方/横三种场景，但每种场景的代表尺寸必须来自
    structure-slot-data 的真实叶槽，不能再用 3:4 / 1:1 / 16:9 合成假槽。 */
-const SLOT_SHAPE_ORDER=Object.freeze(['portrait','square','landscape']);
+/* 组件默认展示统一横版优先；没有横槽时才退回方槽、竖槽。
+   顺序同时驱动详情控件与默认选择，三个主题不得各自决定布局。 */
+const SLOT_SHAPE_ORDER=Object.freeze(['landscape','square','portrait']);
 const SLOT_SHAPE_LABELS=Object.freeze({portrait:'竖',square:'方',landscape:'横'});
 function routingForSpec(spec){
   return window.WISE_PPT_COMPONENT_ROUTING&&window.WISE_PPT_COMPONENT_ROUTING.specs[spec]||null;
@@ -809,7 +829,7 @@ THEMES.forEach(theme=>{
 const TYPOGRAPHY=THEME_DATA.typography;
 const TYPOGRAPHY_MODES=TYPOGRAPHY.modes;
 const MODE_BY_ID=new Map(TYPOGRAPHY_MODES.map(item=>[item.mode_id,item]));
-const DEFAULT_TYPOGRAPHY_ID='mixed';
+const DEFAULT_TYPOGRAPHY_ID=THEME_BY_ID.get(DEFAULT_THEME_ID)?.default_typography_mode||'all-sans';
 function replaceCatalogQuery(params){
   history.replaceState(null,'',location.pathname+(params.toString()?'?'+params.toString():'')+location.hash);
 }
@@ -846,6 +866,11 @@ function themeDefaultTypography(themeId=activeThemeId){
   const theme=THEME_BY_ID.get(themeId);
   return theme?theme.default_typography_mode:DEFAULT_TYPOGRAPHY_ID;
 }
+function themeIconSourceFamily(themeId=activeThemeId){
+  const family=THEME_BY_ID.get(themeId)?.icon_source_family;
+  if(family!=='redraw-v3'&&family!=='tabler-original-v3.46.0')throw new Error('主题缺少已登记图标源: '+themeId);
+  return family;
+}
 function initialTypographyState(){
   const params=new URLSearchParams(location.search),requested=params.get('typography');
   if(requested&&MODE_BY_ID.has(requested))return {id:requested,explicit:true};
@@ -870,7 +895,12 @@ function warmCatalogTypography(modeId=activeTypographyId,themeId=activeThemeId){
   if(THUMBGEN||!document.fonts||typeof document.fonts.load!=='function')return Promise.resolve([]);
   const key=themeId+':'+modeId;
   if(typographyWarmups.has(key))return typographyWarmups.get(key);
-  const faces=(TYPOGRAPHY_FONT_WARMUPS[modeId]||[]).concat([['400','Courier Prime Catalog','AI ENGINEERING'],['700','Courier Prime Catalog','FIG. 02']]);
+  const brandRegular=themeId==='hermes-orange'||themeId==='klein-blue';
+  const faces=(TYPOGRAPHY_FONT_WARMUPS[modeId]||[]).map((face)=>
+    brandRegular&&face[1]==='Han Sans Catalog Light'
+      ? ['400','Han Sans Catalog',face[2]]
+      : face
+  ).concat([['400','Courier Prime Catalog','AI ENGINEERING'],['700','Courier Prime Catalog','FIG. 02']]);
   if(modeId==='mixed'&&(themeId==='hermes-orange'||themeId==='klein-blue'))faces.push(['700','Oswald','WISE PPT']);
   const pending=Promise.allSettled(faces.map(([weight,family,text])=>
     document.fonts.load(`${weight} 96px "${family}"`,text)
@@ -908,7 +938,12 @@ function commitCatalogAppearance(eventName,detail,notify){
   if(!themeChanged&&!typographyChanged)return Promise.resolve().then(finalize);
   return warmCatalogTypography(targetTypographyId,targetThemeId).then(finalize);
 }
-let themeFocusEnabled=new URLSearchParams(location.search).has('accent');
+/* 正式 Catalog 是唯一入口：中央逐页定稿决定每张版式使用 standard 或 legacy
+   默认色/强调档；legacy 只是一种已确认视觉基线，不再对应第二份 Catalog。 */
+const catalogParams=new URLSearchParams(location.search);
+let catalogEmphasisEnabled=catalogParams.has('accent');
+const pageEmphasisOverrides=new Map();
+let activeFocusCard=null;
 function thumbPath(key,themeId=activeThemeId){
   return themeId===DEFAULT_THEME_ID
     ?THUMB_DIR+key+'.webp'
@@ -964,6 +999,7 @@ function setCatalogTheme(themeId,{syncUrl=true,notify=true}={}){
   syncThemePicker();
   syncTypographyPicker();
   syncCatalogLayoutCards(themeId);
+  syncCatalogIconTheme();
   refreshThemeThumbnails();
   return commitCatalogAppearance('wise-ppt:theme-change',{themeId},notify);
 }
@@ -1036,15 +1072,48 @@ function renderTypographyPicker(){
   wireSegmentKeyboard(group,options);
   syncTypographyPicker();
 }
-function syncThemeFocusToggle(tabId=document.querySelector('.tab.on')?.dataset.t||'tpl'){
-  const button=document.getElementById('theme-focus-toggle');
+function syncCatalogEmphasisToggle(tabId=document.querySelector('.tab.on')?.dataset.t){
+  const button=document.getElementById('catalog-emphasis-toggle');
   if(!button)return;
-  /* 仅模板/版式页有效;其余页签置灰占位,避免侧栏高度跳动。 */
-  const applicable=tabId==='tpl'||tabId==='lyt';
+  const layerOpen=document.getElementById('layer')?.classList.contains('on');
+  const card=layerOpen?activeFocusCard:null;
+  /* 侧栏只在强调合同适用的关系页与结构页出现；详情全屏覆盖侧栏时仍按当前卡片判定状态。 */
+  const applicable=(!layerOpen&&(tabId==='lyt'||tabId==='str'))||card?.dataset.focusState==='available';
+  button.hidden=!applicable;
   button.disabled=!applicable;
-  button.title=applicable?'':'仅对模板 / 版式页有效';
-  button.classList.toggle('on',themeFocusEnabled);
-  button.setAttribute('aria-pressed',String(themeFocusEnabled));
+  button.classList.toggle('on',catalogEmphasisEnabled);
+  button.setAttribute('aria-pressed',String(catalogEmphasisEnabled));
+  button.title=catalogEmphasisEnabled?'关闭全部版式的强调色基准':'开启全部版式的强调色基准';
+}
+function pageEmphasisOverrideKey(card){
+  const code=card?.dataset.layoutCode;
+  return code?'layout:'+catalogLayoutCode(code):'';
+}
+function pageEmphasisOverrideState(card=activeFocusCard){
+  const key=pageEmphasisOverrideKey(card);
+  return key&&pageEmphasisOverrides.has(key)?pageEmphasisOverrides.get(key):null;
+}
+function activeEmphasisEnabled(card=activeFocusCard){
+  if(!card?.dataset.frame||card.dataset.focusState!=='available')return false;
+  const override=pageEmphasisOverrideState(card);
+  return override===null?catalogEmphasisEnabled:Boolean(override);
+}
+function activeEmphasisTarget(card=activeFocusCard){
+  if(!activeEmphasisEnabled(card))return '';
+  if(activeEmphasisProfile(card)==='legacy')return 'legacy.sample';
+  const policy=pageEmphasisPolicy(card.dataset.layoutCode);
+  return policy.sample_target_id||'';
+}
+function pageCatalogResolvedProfile(card=activeFocusCard){
+  if(!card?.dataset.layoutCode)return {default_color:'standard',emphasis:'standard'};
+  const policy=pageEmphasisPolicy(card.dataset.layoutCode);
+  return policy.catalog_comparison_profile||{default_color:'standard',emphasis:'standard'};
+}
+function activeDefaultColorProfile(card=activeFocusCard){
+  return pageCatalogResolvedProfile(card).default_color;
+}
+function activeEmphasisProfile(card=activeFocusCard){
+  return pageCatalogResolvedProfile(card).emphasis;
 }
 function thumbSlug(value){
   return String(value).toLowerCase().replace(/\.html$/,'').replace(/[^a-z0-9]+/g,'-').replace(/^-|-$/g,'');
@@ -1072,6 +1141,18 @@ function syncCatalogLayoutCards(themeId=activeThemeId){
     card.dataset.frame=catalogLayoutFrame(code,themeId);
     card.dataset.frameFamily=catalogLayoutFamily(themeId);
     card.dataset.thumbKey=catalogLayoutThumbKey(code);
+    const policy=pageEmphasisPolicy(code,themeId);
+    const nonRel=policy.kind==='nonrelationship';
+    const focusCapable=policy.targets.length>0&&['semantic-focus','conditional-semantic-focus'].includes(policy.access);
+    card.dataset.focusState=nonRel?'nonrelationship':focusCapable?'available':'no-sample';
+    if(focusCapable)card.dataset.focusCapable='1';else delete card.dataset.focusCapable;
+    if(!nonRel){
+      const focus=focusStrategyText(policy);
+      card.querySelectorAll('.meta-row').forEach(row=>{
+        if(row.querySelector('.k')?.textContent==='焦点')row.querySelector('.v').textContent=focus;
+      });
+      if(card.dataset.mtag)card.dataset.mtag=card.dataset.mtag.replace(/焦点:.+$/,'焦点:'+focus);
+    }
   });
 }
 /* 缩略图直写 src + 原生 lazy:隐藏 tab(display:none)与收起章节不请求,滚到附近才加载。 */
@@ -1083,8 +1164,16 @@ function thumbMarkup(thumb,alt,wrapClass='frame-wrap'){
 function metaRowsMarkup(rows){
   return rows.map(([k,v])=>`<div class="meta-row"><span class="k">${k}</span><span class="v">${v}</span></div>`).join('');
 }
-/* 展示层裁剪:关系页焦点策略省去「默认无额外焦点；」「Catalog 样张无额外语义焦点；」前缀及「可强调」引导词,直接显示焦点候选(page-emphasis 合同数据原样,只裁关系页卡片显示) */
-function focusStrategyText(policy){return policy.strategy.replace(/^(?:默认无额外焦点|Catalog 样张无额外语义焦点)；/,'').replace(/^可强调/,'');}
+/* 展示层裁剪:关系页焦点策略省去默认态前缀和「可选：」引导词,直接显示焦点候选(page-emphasis 合同数据原样,只裁关系页卡片显示) */
+function pageEmphasisPolicy(code){
+  const key=String(code).toUpperCase();
+  const base=window.WISE_PPT_PAGE_EMPHASIS&&window.WISE_PPT_PAGE_EMPHASIS[key];
+  if(!base)throw new Error('页面缺主题焦点策略:'+key);
+  return base;
+}
+function focusStrategyText(policy){
+  return policy.strategy.replace(/^默认不强调；/,'').replace(/^可选[:：]\s*/,'');
+}
 function layoutCard([id,nm,struct,rel]){
   const code=catalogLayoutCode(id);
   const full=catalogLayoutFrame(code);
@@ -1092,14 +1181,14 @@ function layoutCard([id,nm,struct,rel]){
   const thumb=thumbPath(thumbKey);
   /* 非关系页只有编号、名称与缩略图,没有结构/关系副信息 */
   const nonRel=rel===undefined;
-  const policy=window.WISE_PPT_PAGE_EMPHASIS&&window.WISE_PPT_PAGE_EMPHASIS[id];
-  if(!policy)throw new Error('页面缺主题焦点策略:'+id);
-  const focusCapable=!nonRel&&policy.access==='semantic-focus';
+  const policy=pageEmphasisPolicy(id);
+  const focusCapable=policy.targets.length>0&&['semantic-focus','conditional-semantic-focus'].includes(policy.access);
+  const focusState=nonRel?'nonrelationship':focusCapable?'available':'no-sample';
   const focus=nonRel?'':focusStrategyText(policy);
   const metaRows=nonRel?[]:[['结构',struct],['关系',rel],['焦点',focus]];
   const metaMarkup=metaRows.length?`<div class="meta">${metaRowsMarkup(metaRows)}</div>`:'';
   const modalTag=nonRel?'':` data-mtag="结构:${struct} · 关系:${rel} · 焦点:${focus}"`;
-  return `<div class="card" id="${nonRel?'tpl':'lyt'}-${id.toLowerCase()}" data-modal="1"${focusCapable?' data-focus-capable="1"':''} data-layout-code="${code}" data-frame-family="${catalogLayoutFamily()}" data-frame="${full}" data-thumb-key="${thumbKey}" data-thumb="${thumb}" data-mtitle="${id} ${nm}"${modalTag}>
+  return `<div class="card" id="${nonRel?'tpl':'lyt'}-${id.toLowerCase()}" data-modal="1" data-focus-state="${focusState}"${focusCapable?' data-focus-capable="1"':''} data-layout-code="${code}" data-frame-family="${catalogLayoutFamily()}" data-frame="${full}" data-thumb-key="${thumbKey}" data-thumb="${thumb}" data-mtitle="${id} ${nm}"${modalTag}>
     ${thumbMarkup(thumb,id+' '+nm)}
     <div class="card-info">
       <div class="card-head"><span class="id">${id}</span><span class="nm">${nm}</span></div>
@@ -1195,19 +1284,20 @@ TAB_RENDERERS.cmp=renderComponentTab;
 $('#c-cmp').textContent=SMARTART_COMPONENT_COUNT;
 $('#cmp-nav').innerHTML=SMARTART_COMPONENTS.map((g,index)=>`<button type="button" data-section-jump="cmp-fam-${index}"><span>${g.fam}</span><span class="subnav-count">${g.items.length}</span></button>`).join('');
 
-/* 图标:只展示 selection.json 中已通过 redraw-v3 门禁的最终成品；右侧按精选分组导航，每类先物化 24 枚。
-   成品卡展示 40/64 两档，点击进浮层看大图；Tabler 母图仅作为浮层中的来源链。 */
+/* 图标名称只来自 selection.json 已通过门禁的 865 枚；纸墨显示重绘版，品牌主题显示同名 Tabler 原版。
+   右侧按精选分组导航，每类先物化 24 枚；卡片展示 40/64 两档，点击进浮层看大图。 */
 let ICON_CATALOG=null;
 const ICON_BY_SOURCE=new Map();
 const ICON_CATEGORY_PAGE_SIZE=24;
 let iconCategory='all',iconQuery='',iconSearchRaf=0,iconCategoryLimits={};
 let iconTabRendered=false,iconCatalogPromise=null,iconSearchBound=false;
 function installIconCatalog(data){
-  if(!data||!Array.isArray(data.ink))throw new Error('图标目录数据无效');
+  if(!data||data.version!==2||!Array.isArray(data.ink))throw new Error('图标目录数据无效');
   ICON_CATALOG=data;
   ICON_BY_SOURCE.clear();
   data.ink.forEach(entry=>ICON_BY_SOURCE.set(entry.sourceName||entry.name,entry));
   $('#c-ico').textContent=data.counts.inkSources;
+  syncCatalogIconSourceNote();
   renderIconNav();
   if(!iconSearchBound){
     iconSearchBound=true;
@@ -1245,13 +1335,27 @@ async function renderIconTab(){
 TAB_RENDERERS.ico=()=>{renderIconTab();};
 function iconSpecCard(entry){
   const file=entry.sourceName||entry.name;
+  const family=themeIconSourceFamily();
   const preview=`<div class="icon-preview is-existing"><span class="icon-size s40">${catalogIconSvg(entry)}</span><span class="icon-size s64">${catalogIconSvg(entry)}</span></div>`;
-  return `<div class="icon-card" data-modal="1" data-spec="icon:${file}" data-mtitle="${entry.name}" data-icon-name="${entry.name}" data-redraw-status="${entry.redrawStatus}" data-wp-palette-scope="component">
+  return `<div class="icon-card" data-modal="1" data-spec="icon:${file}" data-mtitle="${entry.name}" data-icon-name="${entry.name}" data-icon-family="${family}" data-redraw-status="${entry.redrawStatus}" data-wp-palette-scope="component">
     ${preview}<div class="icon-card-name">${entry.name}</div></div>`;
 }
 function catalogIconSvg(entry,className=''){
-  if(!entry||typeof entry.svg!=='string'||!entry.svg.startsWith('<svg '))throw new Error('图标缺少内联 SVG 投影');
-  return className?entry.svg.replace('<svg ',`<svg class="${className}" `):entry.svg;
+  const family=themeIconSourceFamily();
+  const svg=entry?.variants?.[family];
+  if(typeof svg!=='string'||!svg.startsWith('<svg '))throw new Error('图标缺少当前主题的内联 SVG 投影: '+family);
+  return className?svg.replace('<svg ',`<svg class="${className}" `):svg;
+}
+function syncCatalogIconSourceNote(){
+  const note=document.getElementById('icon-source-note');
+  if(!note)return;
+  note.textContent=themeIconSourceFamily()==='redraw-v3'
+    ?'纸墨主题显示审核重绘版。'
+    :'爱马仕橙 / 克莱因蓝显示 Tabler v3.46.0 官方原版。';
+}
+function syncCatalogIconTheme(){
+  syncCatalogIconSourceNote();
+  if(iconTabRendered&&ICON_CATALOG)renderIconCatalog();
 }
 function iconEntriesForCategory(category){
   const query=iconQuery.trim().toLowerCase();
@@ -1295,7 +1399,12 @@ function setIconView(category='all'){
   if(category==='all')renderIconCatalog({reset:true});
   else requestAnimationFrame(()=>document.getElementById(`ico-section-${category.replaceAll(' ','-')}`)?.scrollIntoView({behavior:'smooth',block:'start'}));
 }
-/* 904KB 图标投影仅在首次进入图标页签时加载。 */
+window.WisePPTCatalogIconState=()=>({
+  themeId:activeThemeId,
+  sourceFamily:themeIconSourceFamily(),
+  renderedSources:[...document.querySelectorAll('#icon-groups svg[data-icon-source]')].map(node=>node.dataset.iconSource),
+});
+/* 图标双源投影仅在首次进入图标页签时加载。 */
 $('#c-ico').textContent='…';
 
 /* ============ 全屏查看器:点击卡片直接进入 Deck 式全屏;当前 tab 内可左右切换 ============ */
@@ -1312,7 +1421,7 @@ $('#c-ico').textContent='…';
     '<button class="layer-nav prev" aria-label="上一张">‹</button>'+
     '<button class="layer-nav next" aria-label="下一张">›</button>'+
     '<div class="layer-stage" id="layer-stage"></div>'+
-    '<div class="layer-info"><div class="layer-meta"><div class="layer-heading"><span class="layer-count" id="layer-count"></span><span id="layer-title"></span></div><span id="layer-source"></span></div><div class="layer-tools"><span id="layer-slots"></span><span id="layer-variants"></span></div></div></div>';
+    '<div class="layer-info"><div class="layer-meta"><div class="layer-heading"><span class="layer-count" id="layer-count"></span><span id="layer-title"></span></div><span id="layer-source"></span></div><div class="layer-tools"><span id="layer-emphasis"></span><span id="layer-slots"></span><span id="layer-variants"></span></div></div></div>';
   document.body.appendChild(modal);
   const closeBtn=modal.querySelector('.layer-close'),
         prevBtn=modal.querySelector('.layer-nav.prev'),
@@ -1370,7 +1479,7 @@ $('#c-ico').textContent='…';
   }
   function frameCacheKey(url){
     const keyUrl=new URL(url,location.href);
-    ['wise-ppt-embed','wise-ppt-frame-nonce','theme','typography','static','accent'].forEach(key=>keyUrl.searchParams.delete(key));
+    ['wise-ppt-embed','wise-ppt-frame-nonce','theme','typography','static','accent','emphasis','emphasis-profile','default-color-profile'].forEach(key=>keyUrl.searchParams.delete(key));
     return keyUrl.href;
   }
   function evictFrameWrap(wrap){
@@ -1386,7 +1495,13 @@ $('#c-ico').textContent='…';
     if(!frame||!frame.contentWindow)return Promise.reject(new Error('参考帧尚未就绪'));
     if(typeof frame._wiseCancelState==='function')frame._wiseCancelState();
     const requestId='catalog-state-'+(++frameStateSerial);
-    const requested={themeId:activeThemeId,typographyMode:activeTypographyId,accent:themeFocusEnabled};
+    const requested={
+      themeId:activeThemeId,
+      typographyMode:activeTypographyId,
+      defaultColorProfile:activeDefaultColorProfile(),
+      emphasisTarget:activeEmphasisTarget(),
+      emphasisProfile:activeEmphasisProfile(),
+    };
     return new Promise((resolve,reject)=>{
       let settled=false;
       const cleanup=()=>{
@@ -1410,7 +1525,7 @@ $('#c-ico').textContent='…';
         if(data.status==='reload-required')return finish(null,{reloadRequired:true});
         if(data.status==='fail')return finish(new Error('参考帧状态切换失败: '+(data.reason||frame.src)));
         if(data.status!=='ready')return;
-        if(data.themeId!==requested.themeId||data.typographyMode!==requested.typographyMode||Boolean(data.accent)!==requested.accent){
+        if(data.themeId!==requested.themeId||data.typographyMode!==requested.typographyMode||String(data.defaultColorProfile||'standard')!==requested.defaultColorProfile||String(data.emphasisTarget||'')!==requested.emphasisTarget||String(data.emphasisProfile||'standard')!==requested.emphasisProfile){
           return finish(new Error('参考帧状态回报与请求不一致'));
         }
         const recipeMatch=new URL(frame.src,location.href).pathname.match(/\/frames\/(hermes-orange|klein-blue)\/layout-([^/]+)\.html$/);
@@ -1422,7 +1537,9 @@ $('#c-ico').textContent='…';
            把已验证过的子页回报留在 iframe 元素自身，避免用猜测代替握手结果。 */
         frame.dataset.wiseStateTheme=data.themeId;
         frame.dataset.wiseStateTypography=data.typographyMode;
-        frame.dataset.wiseStateAccent=String(Boolean(data.accent));
+        frame.dataset.wiseStateDefaultColorProfile=data.defaultColorProfile||'standard';
+        frame.dataset.wiseStateEmphasis=data.emphasisTarget||'';
+        frame.dataset.wiseStateEmphasisProfile=data.emphasisProfile||'standard';
         frame.dataset.wiseStateRecipe=data.recipeId||'';
         frame.dataset.wiseStateRecipeStatus=data.recipeStatus||'';
         frame.dataset.wiseStateRecipeReady=data.recipeReady||'';
@@ -1437,7 +1554,9 @@ $('#c-ico').textContent='…';
       const send=()=>{
         if(frame.contentWindow)frame.contentWindow.postMessage({
           type:'wise-ppt-frame-state',protocol:'wise-ppt-frame/v1',requestId,
-          themeId:requested.themeId,typographyMode:requested.typographyMode,accent:requested.accent,
+          themeId:requested.themeId,typographyMode:requested.typographyMode,
+          defaultColorProfile:requested.defaultColorProfile,
+          emphasisTarget:requested.emphasisTarget,emphasisProfile:requested.emphasisProfile,
         },'*');
       };
       const resend=setInterval(send,400);
@@ -1472,6 +1591,10 @@ $('#c-ico').textContent='…';
     cacheSize:frameCache.size,cacheLimit:FRAME_CACHE_LIMIT,cacheKeys:[...frameCache.keys()],
     currentKey:liveFrame?.closest('[data-wise-frame-cache]')?.dataset.wiseFrameCache||'',
     currentSrc:liveFrame?.src||'',themeId:activeThemeId,typographyMode:activeTypographyId,
+    globalEmphasisEnabled:catalogEmphasisEnabled,effectiveEmphasisEnabled:activeEmphasisEnabled(),
+    pageEmphasisOverride:pageEmphasisOverrideState(),
+    defaultColorProfile:activeDefaultColorProfile(),
+    emphasisTarget:activeEmphasisTarget(),emphasisProfile:activeEmphasisProfile(),
   });
   window.WisePPTCatalogComponentState=()=>({
     slot:currentSlotId,
@@ -1479,15 +1602,32 @@ $('#c-ico').textContent='…';
     spec:currentLiveSpec,
     styles:currentCard&&currentSlotId?stylesForSlotShape(currentCard,currentSlotId).map(item=>item[0]):[],
   });
-  document.getElementById('theme-focus-toggle').addEventListener('click',()=>{
-    themeFocusEnabled=!themeFocusEnabled;
-    const q=new URLSearchParams(location.search);
-    if(themeFocusEnabled)q.set('accent','1');else q.delete('accent');
-    history.replaceState(null,'',location.pathname+(q.toString()?'?'+q.toString():''));
-    syncThemeFocusToggle();
-    if(currentCard&&currentCard.dataset.focusCapable==='1'&&modal.classList.contains('on')){
-      if(currentCard.dataset.frame)reloadOpenFrame();else loadCard(currentCard,currentLiveSpec||currentCard.dataset.spec||'');
-    }
+  window.WisePPTCatalogComponentDefaults=()=>{
+    ensureTabRendered('cmp');
+    return [...document.querySelectorAll('#m-cmp [data-catalog-no]')].map(card=>{
+      const selection=openingSelectionForCard(card);
+      return {
+        catalogNo:card.dataset.catalogNo,
+        cardSpec:card.dataset.spec,
+        cardAllowsLandscape:Boolean(
+          routingForSpec(card.dataset.spec)?.behavior_contract?.allowed_slot_shapes?.includes('landscape')
+        ),
+        slot:selection.slot,
+        spec:selection.spec,
+        slots:(slotShapesForCard(card)||[]).map(item=>item.id),
+        thumbnailSlot:representativeFitFor(card.dataset.spec)?.id||null,
+      };
+    });
+  };
+  document.getElementById('catalog-emphasis-toggle').addEventListener('click',()=>{
+    const previous=activeEmphasisEnabled();
+    catalogEmphasisEnabled=!catalogEmphasisEnabled;
+    const params=new URLSearchParams(location.search);
+    if(catalogEmphasisEnabled)params.set('accent','1');else params.delete('accent');
+    replaceCatalogQuery(params);
+    syncCatalogEmphasisToggle();
+    renderLayerEmphasisControl(currentCard);
+    if(currentCard&&modal.classList.contains('on')&&previous!==activeEmphasisEnabled())refreshOpenPreview();
   });
   document.addEventListener('wise-ppt:theme-change',()=>{
     refreshOpenPreview();
@@ -1523,10 +1663,13 @@ $('#c-ico').textContent='…';
     modal.classList.remove('is-controls-hidden');
     const cardToRestore=currentCard;
     currentCard=null;
+    activeFocusCard=null;
+    renderLayerEmphasisControl(null);
     disposeLive();
     modal.classList.remove('on');
     modal.setAttribute('aria-hidden','true');
     document.body.classList.remove('layer-open');
+    syncCatalogEmphasisToggle();
     if(cardToRestore){
       cardToRestore.setAttribute('tabindex','-1');
       cardToRestore.focus({preventScroll:true});
@@ -1577,6 +1720,8 @@ $('#c-ico').textContent='…';
   function createLiveLayer(){
     const live=document.createElement('div');
     live.className='layer-live';
+    live.dataset.wiseCatalogFonts='true';
+    live.dataset.typographyMode=activeTypographyId;
     live.dataset.wpPaletteScope='component';
     layerStage.appendChild(live);
     return live;
@@ -1738,6 +1883,7 @@ $('#c-ico').textContent='…';
         host.innerHTML=markup;
         const card=host.querySelector('.swiss-card');
         if(card)card.setAttribute('data-catalog-spec',spec);
+        if(kind!=='ec')projectComponentTheme(host,spec);
         host.dataset.contractId=route.data_contract_id;
         host.dataset.behaviorContractId=contract.contractId;
         host.dataset.innerAlignment=contract.innerAlignment;
@@ -1763,10 +1909,12 @@ $('#c-ico').textContent='…';
           const box=host.querySelector('.stage-ecbox'),adapter=window.WiseEchartsThemeAdapter;
           const themeAdapter=(window.WisePPTThemeAdapters||{})['wise-ppt.echarts'];
           if(!box||!window.echarts||!adapter||!themeAdapter)throw new Error('ECharts 渲染资源不完整:'+key);
+          box.dataset.catalogSpec=spec;
+          projectComponentTheme(box,spec);
           if(entry.register_maps)Object.keys(entry.register_maps).forEach(name=>echarts.registerMap(name,entry.register_maps[name]));
           const chart=echarts.init(box,null,{renderer:'svg',width:box.clientWidth,height:box.clientHeight});
           st._wiseEchart=chart;
-          chart.setOption(adapter.previewOption(entry,{isDetail:true,themeAdapter,themeContext:{root:document.documentElement},typeSize,animated:false}),true);
+          chart.setOption(adapter.previewOption(entry,{isDetail:true,themeAdapter,themeContext:{root:document.documentElement,element:box,catalogSpec:spec},typeSize,animated:false}),true);
           themeAdapter.annotateRenderedText(chart);
         }
       }
@@ -1813,7 +1961,9 @@ $('#c-ico').textContent='…';
     if(kind==='ec'){
       const box=document.createElement('div');
       box.className='stage-ecbox';
+      box.dataset.catalogSpec=spec;
       st.appendChild(box);
+      projectComponentTheme(box,spec);
       const data=window.WISE_PPT_ECHARTS_GALLERY_DATA;
       const entry=data&&data.components.find(x=>x.component_id===key);
       const adapter=window.WiseEchartsThemeAdapter;
@@ -1822,7 +1972,7 @@ $('#c-ico').textContent='…';
         if(entry.register_maps){Object.keys(entry.register_maps).forEach(n=>echarts.registerMap(n,entry.register_maps[n]));}
         const chart=echarts.init(box,null,{renderer:'svg',width:1600,height:900});
         st._wiseEchart=chart;
-        chart.setOption(adapter.previewOption(entry,{isDetail:true,themeAdapter:themeAdapter,themeContext:{root:document.documentElement},typeSize:typeSize,animated:false}),true);
+        chart.setOption(adapter.previewOption(entry,{isDetail:true,themeAdapter:themeAdapter,themeContext:{root:document.documentElement,element:box,catalogSpec:spec},typeSize:typeSize,animated:false}),true);
         themeAdapter.annotateRenderedText(chart);
         /* 舞台不是 16:9(约 1178×729),只按宽缩放会把图钉在顶部;等比 contain 后平移居中 */
         const fitEc=()=>{
@@ -1843,13 +1993,18 @@ $('#c-ico').textContent='…';
       const num=Number(key);
       entry=d&&d.entries.find(x=>x.num===num);
       if(entry){
-        const ad=(kind==='atlas')?((window.WisePPTThemeAdapters||{})['wise-ppt.atlas']):null;
+        const adapters=window.WisePPTThemeAdapters||{};
+        const ad=(kind==='atlas')?adapters['wise-ppt.atlas']:(kind==='native'?adapters['wise-ppt.native']:null);
         const sourceSnippet=expandPreviewRepeatUnits(entry.snippet||'',entry);
         markup=ad?ad.adaptMarkup(sourceSnippet):sourceSnippet;
       }
     }
     host.innerHTML=markup;
+    projectComponentTheme(host,spec);
     st.appendChild(host);
+    const route=routingForSpec(spec);
+    if(!route||!route.behavior_contract)throw new Error('组件缺少字体合同:'+spec);
+    window.WisePPTComponentBehavior.applyTypography(host,route.behavior_contract);
     host.dataset.pageScale=String(componentPageScale(spec));
     /* atlas 画板内容天然偏小,详情与预览同样放开放大 */
     if(kind==='atlas')host.dataset.scaleUp='1';
@@ -1868,7 +2023,7 @@ $('#c-ico').textContent='…';
   }
   let frameReadySerial=0;
   /* 新鲜加载的 URL 带当前状态；缓存键只由页面资源决定，nonce 只作握手凭证。 */
-  function frameRequestUrl(url,focusCapable){
+  function frameRequestUrl(url,emphasisTarget){
     const frameUrl=new URL(url,location.href);
     frameUrl.searchParams.set('wise-ppt-embed','gallery');
     frameUrl.searchParams.set('theme',activeThemeId);
@@ -1876,12 +2031,15 @@ $('#c-ico').textContent='…';
     frameUrl.searchParams.set('typography',activeTypographyId);
     /* 静态冻结:浮层预览永远停在终态,入场动效不播,AI/人任何时刻截图看到的都是标称几何。 */
     frameUrl.searchParams.set('static','1');
-    if(focusCapable&&themeFocusEnabled)frameUrl.searchParams.set('accent','1');
-    else frameUrl.searchParams.delete('accent');
+    frameUrl.searchParams.delete('accent');
+    frameUrl.searchParams.set('default-color-profile',activeDefaultColorProfile());
+    frameUrl.searchParams.set('emphasis-profile',activeEmphasisProfile());
+    if(emphasisTarget)frameUrl.searchParams.set('emphasis',emphasisTarget);
+    else frameUrl.searchParams.delete('emphasis');
     return frameUrl;
   }
-  async function renderFrame(url,st,focusCapable){
-    const frameUrl=frameRequestUrl(url,focusCapable);
+  async function renderFrame(url,st,emphasisTarget){
+    const frameUrl=frameRequestUrl(url,emphasisTarget);
     const cacheKey=frameCacheKey(frameUrl.href);
     const cached=frameCache.get(cacheKey);
     if(cached){
@@ -1897,7 +2055,7 @@ $('#c-ico').textContent='…';
       const state=await requestFrameState(liveFrame);
       if(state.reloadRequired){
         evictFrameWrap(cached);
-        return renderFrame(url,st,focusCapable);
+        return renderFrame(url,st,emphasisTarget);
       }
       await twoFrames();
       return;
@@ -1963,7 +2121,9 @@ $('#c-ico').textContent='…';
        翻回新鲜帧保持免门面快路径;停泊期间换过字体/换色的帧由 loadCard 退回门面路径。 */
     f.dataset.wiseStateTheme=frameUrl.searchParams.get('theme')||'';
     f.dataset.wiseStateTypography=frameUrl.searchParams.get('typography')||'';
-    f.dataset.wiseStateAccent=String(frameUrl.searchParams.has('accent'));
+    f.dataset.wiseStateDefaultColorProfile=frameUrl.searchParams.get('default-color-profile')||'standard';
+    f.dataset.wiseStateEmphasis=frameUrl.searchParams.get('emphasis')||'';
+    f.dataset.wiseStateEmphasisProfile=frameUrl.searchParams.get('emphasis-profile')||'standard';
     /* ready 校验通过的帧登记进缓存；之后的关闭/翻页只会把它停泊进隐藏宿主。超限按 LRU 淘汰：
        wrap 从宿主移出 DOM，文档随 browsing context 销毁，内存真正归还。 */
     wrap.dataset.wiseFrameCache=cacheKey;
@@ -2002,6 +2162,32 @@ $('#c-ico').textContent='…';
         restoreFocus(fp);
       },
     });
+  }
+  function renderLayerEmphasisControl(card){
+    const box=document.getElementById('layer-emphasis');
+    if(!box)return;
+    box.replaceChildren();
+    const key=pageEmphasisOverrideKey(card);
+    if(!card?.dataset.frame||!key||card.dataset.focusState!=='available')return;
+    const policy=pageEmphasisPolicy(card.dataset.layoutCode);
+    if(!policy.sample_target_id)return;
+    const button=document.createElement('button');
+    button.type='button';
+    button.className='layer-emphasis-toggle';
+    button.innerHTML='<span>强调色</span><span class="switch-track" aria-hidden="true"><span class="switch-knob"></span></span>';
+    const sync=()=>{
+      const on=activeEmphasisEnabled(card);
+      button.classList.toggle('on',on);
+      button.setAttribute('aria-pressed',String(on));
+      button.title=on?'关闭当前版式的示例强调':'开启当前版式登记的示例强调';
+    };
+    button.addEventListener('click',()=>{
+      pageEmphasisOverrides.set(key,!activeEmphasisEnabled(card));
+      sync();
+      if(card===currentCard&&modal.classList.contains('on'))refreshOpenPreview();
+    });
+    sync();
+    box.appendChild(button);
   }
   /* 参考来源：卡片上不展示，浮层信息条右侧给跳链。ec 13 例用数据自带 source_url
      （文案与图册 radar-hex 同款："ECharts Radar 参考"）；atlas 沿用 vendor 数据里
@@ -2053,13 +2239,15 @@ $('#c-ico').textContent='…';
       const cachedFrame=cachedWrap?cachedWrap.querySelector('iframe'):null;
       const fresh=cachedFrame&&cachedFrame.dataset.wiseStateTheme===activeThemeId
         &&cachedFrame.dataset.wiseStateTypography===activeTypographyId
-        &&cachedFrame.dataset.wiseStateAccent===String(themeFocusEnabled);
+        &&cachedFrame.dataset.wiseStateDefaultColorProfile===activeDefaultColorProfile()
+        &&cachedFrame.dataset.wiseStateEmphasis===activeEmphasisTarget(card)
+        &&cachedFrame.dataset.wiseStateEmphasisProfile===activeEmphasisProfile();
       if(fresh)disposeLive();
       else prepareFacade(card);
     }
     const live=createLiveLayer();
     try{
-      if(d.frame)await renderFrame(d.frame,live,d.focusCapable==='1');
+      if(d.frame)await renderFrame(d.frame,live,activeEmphasisTarget(card));
       else{
         const spec=overrideSpec||d.spec;
         if(!spec)return;
@@ -2087,6 +2275,7 @@ $('#c-ico').textContent='…';
   function show(card,{focusLayer=false}={}){
     const d=card.dataset;
     currentCard=card;
+    activeFocusCard=card;
     const main=card.closest('main');
     const fullscreen=Boolean(main&&['m-tpl','m-lyt','m-str','m-cmp'].includes(main.id));
     modal.classList.toggle('is-fullscreen',fullscreen);
@@ -2102,21 +2291,13 @@ $('#c-ico').textContent='…';
     modal.classList.add('on');
     modal.setAttribute('aria-hidden','false');
     document.body.classList.toggle('layer-open',fullscreen);
+    syncCatalogEmphasisToggle();
+    renderLayerEmphasisControl(card);
     revealFullscreenControls();
     if(focusLayer)(fullscreen?modal:closeBtn).focus({preventScroll:true});
-    const shapes=slotShapesForCard(card);
-    if(shapes){
-      /* 固定组件先展示最接近原稿比例的真实槽，避免方形原稿打开时先落进横槽，
-         被整页预览额外缩小；没有同形槽时才退回最大真实代表槽。 */
-      const primary=slotFitsFor(d.spec)||[];
-      const preferred=preferredDetailFitFor(d.spec);
-      currentSlotId=(preferred||primary[0]||shapes[0]).id;
-      const styles=stylesForSlotShape(card,currentSlotId);
-      currentLiveSpec=styles[0]?styles[0][0]:(d.spec||'');
-    }else{
-      currentSlotId=null;
-      currentLiveSpec=d.spec||'';
-    }
+    const selection=openingSelectionForCard(card);
+    currentSlotId=selection.slot;
+    currentLiveSpec=selection.spec;
     renderSlotFits(card);
     renderVariants(card);
     loadCard(card,currentLiveSpec);
@@ -2143,6 +2324,10 @@ $('#c-ico').textContent='…';
 /* ============ 组件原生渲染引擎(只用于浮层和缩略图生成) ============ */
 /* 1) 资源分层:浏览组件列表不加载；首次打开相应组件浮层时才加载 tokens、数据与脚本。 */
 const THEME_STYLE='../themes/engine/assets/design-tokens.css';
+const COMPONENT_THEME_SCRIPTS=[
+  'component-theme-bindings-data.js',
+  '../themes/engine/runtime/component-theme-projector.js',
+];
 const COMPONENT_CORE_SCRIPTS=[
   '../themes/engine/adapters/atlas.js',
   'ppt-component-atlas/catalog-data.js',
@@ -2155,7 +2340,7 @@ const ECHARTS_SCRIPTS=[
   'gallery-components/echarts-catalog-data.js',
   'gallery-components/echarts-gallery-runtime.js',
 ];
-let themeAssetsPromise=null,componentCorePromise=null,echartsAssetsPromise=null,componentCssInjected=false;
+let themeAssetsPromise=null,componentThemePromise=null,componentCorePromise=null,echartsAssetsPromise=null,componentCssInjected=false;
 function ensureThemeAssets(){
   if(!themeAssetsPromise){
     const existing=document.querySelector('link[data-wise-theme-style="engine"]');
@@ -2187,9 +2372,16 @@ function loadScript(src){
 async function loadScriptsInOrder(sources){
   for(const src of sources)await loadScript(src);
 }
+function ensureComponentTheme(){
+  if(!componentThemePromise){
+    componentThemePromise=loadScriptsInOrder(COMPONENT_THEME_SCRIPTS)
+      .catch(err=>{componentThemePromise=null;throw err;});
+  }
+  return componentThemePromise;
+}
 function ensureComponentCore(){
   if(!componentCorePromise){
-    componentCorePromise=ensureThemeAssets()
+    componentCorePromise=Promise.all([ensureThemeAssets(),ensureComponentTheme()])
       .then(()=>Promise.all(COMPONENT_CORE_SCRIPTS.map(loadScript)))
       .then(()=>injectComponentCss())
       .catch(err=>{componentCorePromise=null;throw err;});
@@ -2198,7 +2390,7 @@ function ensureComponentCore(){
 }
 function ensureEChartsAssets(){
   if(!echartsAssetsPromise){
-    echartsAssetsPromise=ensureThemeAssets()
+    echartsAssetsPromise=Promise.all([ensureThemeAssets(),ensureComponentTheme()])
       .then(()=>loadScriptsInOrder(ECHARTS_SCRIPTS))
       .catch(err=>{echartsAssetsPromise=null;throw err;});
   }
@@ -2322,12 +2514,24 @@ function expandPreviewRepeatUnits(snippet,entry){
   return snippet.replace(units[0],expanded.join('\n'));
 }
 
+function projectComponentTheme(host,spec){
+  const projector=window.WisePPTComponentThemeProjector;
+  if(!projector)throw new Error('组件配色投影器未加载:'+spec);
+  const root=host.matches&&host.matches('.swiss-card,.pi-card,.stage-ecbox')
+    ?host:host.querySelector('.swiss-card,.pi-card,.stage-ecbox');
+  if(!root)throw new Error('组件配色投影缺组件根:'+spec);
+  return projector.applyToElement(root,spec);
+}
+
 /* 固定视觉组件的详情与缩略图都直接读取同一份 entry.snippet。 */
 
-/* 2) 缩略图挂载：与详情同一条行为渲染链。按合同挑真实结构中的最大代表槽，
-   固定视觉组件保持原画布并整体 contain；数据图表只让渲染器响应槽位。 */
+/* 2) 缩略图挂载：与详情同一条行为渲染链。有横槽先取横槽，
+   没有横槽才取最大的真实代表槽；固定视觉组件保持原画布并整体 contain，
+   数据图表只让渲染器响应槽位。 */
 function representativeFitFor(spec){
   const fits=slotFitsFor(spec)||[];
+  const landscape=fits.find(item=>item.id==='landscape');
+  if(landscape)return landscape;
   return fits.slice().sort((left,right)=>{
     const a=left.slots.find(slot=>slot.id===left.targetSlotId),b=right.slots.find(slot=>slot.id===right.targetSlotId);
     return (b.width*b.height-a.width*a.height)||(b.width-a.width)||(b.height-a.height);
@@ -2350,6 +2554,16 @@ function preferredDetailFitFor(spec){
     if(matched)return matched;
   }
   return representativeFitFor(spec);
+}
+function openingSelectionForCard(card){
+  const fallbackSpec=card?.dataset?.spec||'';
+  const shapes=slotShapesForCard(card);
+  if(!shapes)return {slot:null,spec:fallbackSpec};
+  const landscape=shapes.find(item=>item.id==='landscape');
+  const primary=slotFitsFor(fallbackSpec)||[];
+  const fit=landscape||preferredDetailFitFor(fallbackSpec)||primary[0]||shapes[0];
+  const styles=stylesForSlotShape(card,fit.id);
+  return {slot:fit.id,spec:styles[0]?styles[0][0]:fallbackSpec};
 }
 function mountStage(stage){
   const spec=stage.dataset.src||'';
@@ -2405,6 +2619,7 @@ function mountStage(stage){
   host.dataset.fitMode=behavior.fit_mode;
   const card=host.querySelector('.swiss-card,.pi-card');
   if(card)card.setAttribute('data-catalog-spec',spec);
+  projectComponentTheme(host,spec);
   box.appendChild(host);canvas.appendChild(box);stage.appendChild(canvas);
   stage.classList.add('is-mounted');
   const result=window.WisePPTComponentBehavior.mount(host,{
@@ -2529,26 +2744,9 @@ function refitComponents(remeasure=false){
   });
 }
 
-const ATLAS_TYPE_ROLE_NAMES=[
-  'meta','label','micro-secondary','body-small','body','subheading','emphasis',
-  'heading','metric','title','hero','display','particle-sample','display-mark'
-];
-function resetAtlasTypeCompensation(el){
-  ATLAS_TYPE_ROLE_NAMES.forEach(role=>el.style.removeProperty('--type-'+role));
-}
-function compensateAtlasTypeScale(el,scale){
-  const factor=Number.isFinite(scale)&&scale>0?scale:1;
-  const themeStyle=getComputedStyle(document.documentElement);
-  ATLAS_TYPE_ROLE_NAMES.forEach(role=>{
-    const base=Number.parseFloat(themeStyle.getPropertyValue('--type-'+role));
-    if(Number.isFinite(base)&&base>0)el.style.setProperty('--type-'+role,(base/factor)+'px');
-  });
-}
-
 /* 组件先在 1280×720 PPT 内层画布中保持原尺寸居中,再像 iframe 一样整体等比缩小;缩略图生成与浮层详情同几何。
-   PPT 内层几何只在首次挂载或字体就绪后测量;resize 仅更新外层缩放。
-   Atlas 几何仍可 contain 进标准盒，但主题字阶按放大倍数反向补偿，避免 13–26px 文本随几何膨胀到 30–80px；
-   native/抄录已重定标到标准盒，维持 1.0 封顶不被吹大。 */
+   PPT 内层几何只在首次挂载或字体就绪后测量;resize 仅更新外层缩放。字号先由
+   behavior-v4 的语义 token 落定，再随完整组件等比适配。 */
 function fitStage(stage,host,usePptCanvas=false,remeasure=false){
   const el=host.firstElementChild;
   if(!el)return;
@@ -2568,28 +2766,17 @@ function fitStage(stage,host,usePptCanvas=false,remeasure=false){
     el.style.position='absolute';
     el.style.left='0';
     el.style.top='0';
-    if(scaleUp)resetAtlasTypeCompensation(el);
     let s=1,left=0,top=0;
     const frameW=Number(host.dataset.frameWidth),frameH=Number(host.dataset.frameHeight);
     let b=host.dataset.frameApplied==='1'&&frameW>0&&frameH>0?[0,0,frameW,frameH]:contentBounds(el);
     if(b){
       let bw=b[2]-b[0],bh=b[3]-b[1];
       s=(bw>0&&bh>0?Math.min(W/bw,H/bh,maxScale(bw,bh)):1)*pageScale;
-      if(scaleUp){
-        compensateAtlasTypeScale(el,s);
-        const adjusted=contentBounds(el);
-        if(adjusted){
-          b=adjusted;
-          bw=b[2]-b[0];
-          bh=b[3]-b[1];
-        }
-      }
       left=W/2-s*(b[0]+bw/2);
       top=H/2-s*(b[1]+bh/2);
     }else{
       const w=el.offsetWidth||600,h=el.offsetHeight||600;
       s=Math.min(W/w,H/h,maxScale(w,h))*pageScale;
-      if(scaleUp)compensateAtlasTypeScale(el,s);
       left=(W-w*s)/2;
       top=(H-h*s)/2;
     }
@@ -2616,7 +2803,10 @@ function initEChartsStage(stage,entryOverride,fit){
   if(entry.register_maps){Object.keys(entry.register_maps).forEach(n=>echarts.registerMap(n,entry.register_maps[n]));}
   const box=document.createElement('div');
   box.className='stage-ecbox';
+  const spec='ec:'+entry.component_id;
+  box.dataset.catalogSpec=spec;
   stage.appendChild(box);
+  projectComponentTheme(box,spec);
   const adapter=window.WiseEchartsThemeAdapter;
   const themeAdapter=(window.WisePPTThemeAdapters||{})['wise-ppt.echarts'];
   if(!adapter||!themeAdapter)throw new Error('ECharts 主题适配缺失');
@@ -2631,7 +2821,7 @@ function initEChartsStage(stage,entryOverride,fit){
   }
   box.style.width=width+'px';box.style.height=height+'px';
   const chart=echarts.init(box,null,{renderer:'svg',width,height});
-  const option=adapter.previewOption(entry,{isDetail:false,themeAdapter:themeAdapter,themeContext:{root:document.documentElement},typeSize:typeSize,animated:false});
+  const option=adapter.previewOption(entry,{isDetail:false,themeAdapter:themeAdapter,themeContext:{root:document.documentElement,element:box,catalogSpec:spec},typeSize:typeSize,animated:false});
   chart.setOption(option,true);
   themeAdapter.annotateRenderedText(chart);
   stage.classList.add('is-mounted');
@@ -2668,6 +2858,8 @@ function assertVariantRefs(){
 if(THUMBGEN){
   const stage=document.createElement('div');
   stage.id='thumbgen-stage';stage.className='comp-stage';
+  stage.dataset.wiseCatalogFonts='true';
+  stage.dataset.typographyMode=activeTypographyId;
   stage.dataset.wpPaletteScope='component';
   document.body.appendChild(stage);
   document.body.classList.add('thumbgen');
@@ -2829,9 +3021,10 @@ function structureExampleCard(it){
   const full=catalogLayoutFrame(code);
   const thumbKey=catalogLayoutThumbKey(code);
   const thumb=thumbPath(thumbKey);
-  const policy=window.WISE_PPT_PAGE_EMPHASIS&&window.WISE_PPT_PAGE_EMPHASIS[it[0]];
-  if(!policy)throw new Error('页面缺主题焦点策略:'+it[0]);
-  return `<div class="card" data-modal="1" data-layout-code="${code}" data-frame-family="${catalogLayoutFamily()}" data-frame="${full}" data-thumb-key="${thumbKey}" data-thumb="${thumb}" data-mtitle="${it[0]} ${it[1]}" data-mtag="结构:${it[2]} · 关系:${it[3]} · 焦点:${focusStrategyText(policy)}">
+  const policy=pageEmphasisPolicy(it[0]);
+  const focusCapable=policy.targets.length>0&&['semantic-focus','conditional-semantic-focus'].includes(policy.access);
+  const focusState=focusCapable?'available':'no-sample';
+  return `<div class="card" data-modal="1" data-focus-state="${focusState}"${focusCapable?' data-focus-capable="1"':''} data-layout-code="${code}" data-frame-family="${catalogLayoutFamily()}" data-frame="${full}" data-thumb-key="${thumbKey}" data-thumb="${thumb}" data-mtitle="${it[0]} ${it[1]}" data-mtag="结构:${it[2]} · 关系:${it[3]} · 焦点:${focusStrategyText(policy)}">
     ${thumbMarkup(thumb,it[0]+' '+it[1])}
     <div class="card-info">
       <div class="card-head"><span class="id">${it[0]}</span><span class="nm">${it[1]}</span></div>
@@ -3021,7 +3214,7 @@ function switchTab(id,{resetScroll=false}={}){
   if(t){t.classList.add('on');t.setAttribute('aria-current','page');}
   const m=document.getElementById('m-'+id);
   if(m)m.classList.add('on');
-  syncThemeFocusToggle(id);
+  syncCatalogEmphasisToggle(id);
   if(resetScroll)window.scrollTo(0,0);
   if(t){
     try{
@@ -3053,7 +3246,7 @@ try{
   if(q==='strex')switchTab('str');
   else if(q&&document.getElementById('m-'+q))switchTab(q);
 }catch(e){}
-syncThemeFocusToggle();
+syncCatalogEmphasisToggle();
 renderThemePicker();
 renderTypographyPicker();
 /* 首屏不主动预热中文字体；打开详情时再按用户意图加载。 */

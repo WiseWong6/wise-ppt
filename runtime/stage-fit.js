@@ -24,9 +24,15 @@
     var params = new URLSearchParams(global.location.search);
     var themeId = params.get('theme');
     var typography = params.get('typography');
+    var defaultColorProfile = params.get('default-color-profile') === 'legacy' ? 'legacy' : 'standard';
+    var emphasisTarget = params.get('emphasis') || '';
+    var emphasisProfile = params.get('emphasis-profile') === 'legacy' ? 'legacy' : 'standard';
     if (GALLERY_THEMES.indexOf(themeId) >= 0) root.dataset.themeId = themeId;
     if (GALLERY_TYPOGRAPHY_MODES.indexOf(typography) >= 0) root.dataset.typographyMode = typography;
-    root.classList.toggle('accent', params.has('accent'));
+    root.dataset.defaultColorProfile = defaultColorProfile;
+    root.dataset.emphasisTarget = emphasisTarget;
+    root.dataset.emphasisProfile = emphasisProfile;
+    root.classList.toggle('accent', Boolean(emphasisTarget));
     if (params.get('wise-ppt-embed') !== 'gallery') return;
     root.dataset.wiseCatalogFonts = 'true';
   }
@@ -170,23 +176,198 @@
     return { bounds: bounds, scale: scale, rect: target.getBoundingClientRect() };
   }
 
+  /* Catalog 原始 frame 与生产 seed 共用语义合同，但 data-vnext-text-key 只存在于
+     seed。构建脚本把合同实际使用的键投影成 tag + 文案 + 同名序位指纹；这里在
+     页面业务脚本完成绘制后把键重新绑定到真实节点。它不是选择器特例，也不按
+     主题分叉：三套主题与 standard 始终消费同一 target/member 合同。 */
+  function bindSpecimenSemanticKeys(root) {
+    if (root.dataset.runtime !== 'wise-ppt-specimen') return true;
+    var raw = root.dataset.vnextSemanticKeyMap;
+    if (!raw) return true;
+    var descriptors;
+    try { descriptors = JSON.parse(raw); }
+    catch (error) {
+      root.dataset.vnextSemanticKeysReady = 'false';
+      root.dataset.vnextSemanticKeyError = 'invalid-map';
+      return false;
+    }
+    if (!Array.isArray(descriptors)) {
+      root.dataset.vnextSemanticKeysReady = 'false';
+      root.dataset.vnextSemanticKeyError = 'invalid-map';
+      return false;
+    }
+    var stage = document.querySelector('.stage');
+    if (!stage) return false;
+    var normalize = function (value) { return String(value || '').replace(/\s+/g, ' ').trim(); };
+    var missing = [];
+    descriptors.forEach(function (descriptor, index) {
+      if (!descriptor || typeof descriptor.key !== 'string'
+        || !/^[a-z][a-z0-9-]*$/i.test(descriptor.tag)
+        || typeof descriptor.text !== 'string'
+        || !Number.isInteger(descriptor.occurrence) || descriptor.occurrence < 0) {
+        missing.push('invalid:' + index);
+        return;
+      }
+      var existing = Array.prototype.filter.call(
+        stage.querySelectorAll('[data-vnext-text-key]'),
+        function (node) { return node.dataset.vnextTextKey === descriptor.key; }
+      );
+      if (existing.length === 1) return;
+      if (existing.length > 1) {
+        missing.push('duplicate:' + descriptor.key);
+        return;
+      }
+      var candidates = Array.prototype.filter.call(
+        stage.querySelectorAll(descriptor.tag),
+        function (node) { return normalize(node.textContent) === descriptor.text; }
+      );
+      var target = candidates[descriptor.occurrence];
+      if (!target || (target.dataset.vnextTextKey && target.dataset.vnextTextKey !== descriptor.key)) {
+        missing.push(descriptor.key);
+        return;
+      }
+      target.dataset.vnextTextKey = descriptor.key;
+      target.dataset.vnextSemanticKeySource = 'seed-fingerprint-v1';
+    });
+    root.dataset.vnextSemanticKeyBound = String(descriptors.length - missing.length);
+    root.dataset.vnextSemanticKeyExpected = String(descriptors.length);
+    if (missing.length) {
+      root.dataset.vnextSemanticKeysReady = 'false';
+      root.dataset.vnextSemanticKeyError = missing.join(',');
+      return false;
+    }
+    var becameReady = root.dataset.vnextSemanticKeysReady !== 'true';
+    root.dataset.vnextSemanticKeysReady = 'true';
+    delete root.dataset.vnextSemanticKeyError;
+    if (becameReady) document.dispatchEvent(new CustomEvent('wise-ppt:semantic-keys-ready'));
+    return true;
+  }
+
+  function prepareSpecimenSemanticKeys(root) {
+    if (bindSpecimenSemanticKeys(root) || root.dataset.vnextSemanticKeyObserver === 'true') return;
+    var stage = document.querySelector('.stage');
+    if (!stage || !global.MutationObserver) return;
+    root.dataset.vnextSemanticKeyObserver = 'true';
+    var observer = new MutationObserver(function () {
+      if (!bindSpecimenSemanticKeys(root)) return;
+      observer.disconnect();
+      delete root.dataset.vnextSemanticKeyObserver;
+      if (root.dataset.emphasisTarget) bindSpecimenEmphasis(root);
+    });
+    observer.observe(stage, { childList: true, subtree: true });
+  }
+
   function bindSpecimenEmphasis(root) {
-    var ref = root.dataset.sampleFocusRef;
-    var profile = root.dataset.sampleFocusProfile;
+    var requestedTarget = root.dataset.emphasisTarget || '';
+    var emphasisProfile = root.dataset.emphasisProfile === 'legacy' ? 'legacy' : 'standard';
+    var legacy = emphasisProfile === 'legacy';
+    var ref = legacy ? root.dataset.catalogLegacyEmphasisRef : root.dataset.sampleFocusRef;
+    var profile = legacy ? root.dataset.catalogLegacyEmphasisProfile : root.dataset.sampleFocusProfile;
+    var declaredTargets = [];
     if (root.dataset.runtime !== 'wise-ppt-specimen') return;
-    if (profile === 'none') {
-      document.body.removeAttribute('data-emphasis-mode');
-      root.dataset.sampleFocusBound = '0';
+    if (!legacy && !bindSpecimenSemanticKeys(root)) {
+      root.dataset.sampleFocusBound = 'semantic-keys-pending';
+      if (requestedTarget) throw new Error('强调目标的运行时语义键尚未完整绑定');
       return;
     }
-    if (!ref) return;
+    document.querySelectorAll('[data-sample-focus-applied="true"]').forEach(function (target) {
+      ['data-content-ref', 'data-emphasis-role', 'data-emphasis-treatment', 'data-emphasis-paint', 'data-emphasis-active', 'data-typography-emphasis-size', 'data-sample-focus-applied'].forEach(function (name) {
+        target.removeAttribute(name);
+      });
+    });
+    document.querySelectorAll('[data-xp-focus-foreground="true"]').forEach(function (target) {
+      ['data-xp-focus-foreground', 'data-xp-focus-foreground-neutral', 'data-xp-focus-foreground-active'].forEach(function (name) {
+        target.removeAttribute(name);
+      });
+    });
+    if (legacy) {
+      try {
+        var foregroundMembers = JSON.parse(root.dataset.catalogLegacyEmphasisForegroundMembers || '[]');
+        if (!Array.isArray(foregroundMembers)) throw new Error('invalid legacy foreground members');
+        foregroundMembers.forEach(function (member) {
+          if (!member || typeof member.selector !== 'string' || !member.selector) throw new Error('invalid legacy foreground member');
+          var targets = document.querySelectorAll(member.selector);
+          if (!targets.length || (Number.isInteger(member.expected_count) && targets.length !== member.expected_count)) {
+            throw new Error('legacy foreground selector mismatch');
+          }
+          targets.forEach(function (target) {
+            target.dataset.xpFocusForeground = 'true';
+            if (member.neutral_tone) target.dataset.xpFocusForegroundNeutral = member.neutral_tone;
+            if (member.active_tone) target.dataset.xpFocusForegroundActive = member.active_tone;
+          });
+        });
+      } catch (error) {
+        root.dataset.sampleFocusBound = 'invalid-foreground-members';
+        return;
+      }
+    }
+    if (legacy) {
+      if (!requestedTarget || profile === 'none') {
+        document.body.removeAttribute('data-emphasis-mode');
+        root.dataset.sampleFocusBound = '0';
+        return;
+      }
+      if (!ref) {
+        root.dataset.sampleFocusBound = 'missing';
+        return;
+      }
+    } else {
+      try {
+        declaredTargets = JSON.parse(root.dataset.emphasisTargets || '[]');
+      } catch (error) {
+        root.dataset.sampleFocusBound = 'invalid-targets';
+        return;
+      }
+      if (declaredTargets.length) {
+        var selected = declaredTargets.find(function (item) { return item.target_id === requestedTarget; });
+        if (!selected) {
+          document.body.removeAttribute('data-emphasis-mode');
+          root.dataset.sampleFocusBound = requestedTarget ? 'invalid-target' : '0';
+          if (requestedTarget) throw new Error('未登记强调目标: ' + requestedTarget);
+          return;
+        }
+        profile = 'registered-target';
+        ref = 'sample.' + (root.dataset.pageId || 'page') + '.' + selected.target_id;
+        root.dataset.sampleFocusMembers = JSON.stringify(selected.members || []);
+        root.dataset.sampleFocusRef = ref;
+      }
+      if (!requestedTarget || profile === 'none') {
+        document.body.removeAttribute('data-emphasis-mode');
+        root.dataset.sampleFocusBound = '0';
+        return;
+      }
+      if (!ref) return;
+    }
     var slide = document.body;
     var members = [];
     try {
-      var declared = JSON.parse(root.dataset.sampleFocusMembers || '[]');
+      var declared = JSON.parse(legacy
+        ? (root.dataset.catalogLegacyEmphasisMembers || '[]')
+        : (root.dataset.sampleFocusMembers || '[]'));
       declared.forEach(function (member) {
-        document.querySelectorAll(member.selector).forEach(function (target) {
-          members.push({ target: target, role: member.role, paint: member.paint || '' });
+        if (legacy) {
+          if (!member || typeof member.selector !== 'string' || !member.selector || typeof member.role !== 'string' || !member.role) {
+            throw new Error('invalid legacy emphasis member');
+          }
+          var legacyTargets = document.querySelectorAll(member.selector);
+          if (!legacyTargets.length || (Number.isInteger(member.expected_count) && legacyTargets.length !== member.expected_count)) {
+            throw new Error('legacy emphasis selector mismatch');
+          }
+          legacyTargets.forEach(function (target) {
+            members.push({ target: target, role: member.role, treatment: '', paint: member.paint || '' });
+          });
+          return;
+        }
+        var treatments = [
+          'focus.color', 'focus.reverse-text', 'focus.text', 'focus.outline-depth', 'focus.solid-reverse',
+          'focus.ink-weight', 'focus.hard-shadow', 'focus.texture', 'focus.path-depth',
+          'focus.contrast-isolation'
+        ];
+        if (!member || treatments.indexOf(member.treatment) < 0 || !Number.isInteger(member.expected_count) || member.expected_count < 1) throw new Error('invalid emphasis member');
+        var targets = document.querySelectorAll(member.selector);
+        if (targets.length !== member.expected_count) throw new Error('emphasis exact-count mismatch');
+        targets.forEach(function (target) {
+          members.push({ target: target, role: member.role, treatment: member.treatment, paint: member.paint || '' });
         });
       });
     } catch (error) {
@@ -203,6 +384,9 @@
       target.removeAttribute('data-typography-emphasis-size');
       target.dataset.contentRef = ref;
       target.dataset.emphasisRole = member.role;
+      if (member.treatment) target.dataset.emphasisTreatment = member.treatment;
+      else target.removeAttribute('data-emphasis-treatment');
+      target.dataset.sampleFocusApplied = 'true';
       if (member.paint) target.dataset.emphasisPaint = member.paint;
       else target.removeAttribute('data-emphasis-paint');
       if (root.classList.contains('accent')) target.dataset.emphasisActive = 'true';
@@ -267,7 +451,29 @@
     if (requested) root.dataset.typographyMode = requested;
   }
 
+  /* 生产编译器会给底部总结写入 bottom-takeaway；历史 Catalog frame 只有
+     .caption / takeaway 结构标记。Catalog 明确请求字体档时补齐同一语义合同，
+     字体与字重完全交给主题包决定；静态 seed 生成仍保留原始生产骨架。 */
+  function bindSpecimenThemeTypeRoles(root) {
+    if (root.dataset.runtime !== 'wise-ppt-specimen') return;
+    if (!new URLSearchParams(global.location.search).get('typography')) return;
+    var stage = document.querySelector('.stage');
+    if (!stage) return;
+    stage.querySelectorAll('.caption, [data-template-part="takeaway"]').forEach(function (container) {
+      [container].concat(Array.prototype.slice.call(container.querySelectorAll('*')))
+        .forEach(function (node) {
+          if (!node.hasAttribute('data-theme-type-role')) {
+            node.dataset.themeTypeRole = 'bottom-takeaway';
+          }
+        });
+    });
+  }
+
   function galleryFontFaces(mode, themeId) {
+    var brandRegular = themeId === 'hermes-orange' || themeId === 'klein-blue';
+    var brandSans = brandRegular
+      ? ['400', 'Han Sans Catalog', '纸墨正文']
+      : ['300', 'Han Sans Catalog Light', '纸墨正文'];
     var mono = [
       ['400', 'Courier Prime Catalog', 'AI ENGINEERING'],
       ['700', 'Courier Prime Catalog', 'FIG. 02']
@@ -280,7 +486,7 @@
     }
     if (mode === 'mixed') {
       var mixed = [
-        ['300', 'Han Sans Catalog Light', '纸墨正文'],
+        brandSans,
         ['500', 'Han Serif Catalog', '纸墨正文'],
         ['700', 'Han Serif Catalog', '纸墨标题']
       ].concat(mono);
@@ -288,7 +494,7 @@
       return mixed;
     }
     return [
-      ['300', 'Han Sans Catalog Light', '纸墨正文']
+      brandSans
     ].concat(mono);
   }
 
@@ -301,15 +507,18 @@
   }
 
   /* recipe renderer 与手调母版保留各自的原始标记，但统一投影成一个布尔完成态。
-     recipe-generated: true + recipe-ready
+     recipe-generated: true + recipe-ready/user-correction-specified
      custom-redraw: custom + recipe-ready/approved
-     Catalog 只消费 complete；raw marker/status 继续用于诊断与审计。 */
+     user-correction-specified 代表页面已按反馈生成、仍待用户验收，不应阻断
+     Catalog 的清晰实时预览。Catalog 只消费 complete；raw marker/status 继续用于诊断与审计。 */
   function recipeCompletionState(root) {
     var recipeId = root.dataset.xpRecipeId || '';
     var marker = root.dataset.xpRecipeReady || '';
     var status = root.dataset.xpRecipeStatus || '';
+    var customFrame = root.dataset.xpFrameKind === 'custom-redraw';
     var surfaceReady = root.dataset.catalogSurfaceReady === 'true';
-    var generatedReady = marker === 'true' && status === 'recipe-ready';
+    var generatedReady = !customFrame && marker === 'true' &&
+      (status === 'recipe-ready' || status === 'user-correction-specified');
     var customReady = marker === 'custom' && (status === 'recipe-ready' || status === 'approved');
     return {
       required: Boolean(recipeId),
@@ -330,7 +539,9 @@
       status: status,
       themeId: root.dataset.themeId || '',
       typographyMode: root.dataset.typographyMode || '',
-      accent: root.classList.contains('accent'),
+      defaultColorProfile: root.dataset.defaultColorProfile || 'standard',
+      emphasisTarget: root.dataset.emphasisTarget || '',
+      emphasisProfile: root.dataset.emphasisProfile || 'standard',
       recipeId: root.dataset.xpRecipeId || '',
       recipeStatus: root.dataset.xpRecipeStatus || '',
       recipeReady: root.dataset.xpRecipeReady || '',
@@ -359,14 +570,18 @@
       if (!data || data.type !== FRAME_STATE_MESSAGE || data.protocol !== FRAME_PROTOCOL || !data.requestId) return;
       var themeId = GALLERY_THEMES.indexOf(data.themeId) >= 0 ? data.themeId : root.dataset.themeId;
       var typography = GALLERY_TYPOGRAPHY_MODES.indexOf(data.typographyMode) >= 0 ? data.typographyMode : root.dataset.typographyMode;
-      var accent = Boolean(data.accent);
+      var defaultColorProfile = data.defaultColorProfile === 'legacy' ? 'legacy' : 'standard';
+      var emphasisTarget = typeof data.emphasisTarget === 'string' ? data.emphasisTarget : '';
+      var emphasisProfile = data.emphasisProfile === 'legacy' ? 'legacy' : 'standard';
       var themeChanged = themeId !== root.dataset.themeId;
       var typographyChanged = typography !== root.dataset.typographyMode;
-      var accentChanged = accent !== root.classList.contains('accent');
+      var defaultColorChanged = defaultColorProfile !== (root.dataset.defaultColorProfile || 'standard');
+      var emphasisChanged = emphasisTarget !== (root.dataset.emphasisTarget || '') ||
+        emphasisProfile !== (root.dataset.emphasisProfile || 'standard');
       /* Canvas/ECharts 把 token 颜色固化进像素，焦点页也可能在构建 SVG 时分支。
          没有显式注册重绘器时由父层只重载这一页，普通 CSS/SVG 页继续原地切换。 */
       if ((document.querySelector('canvas') && (themeChanged || typographyChanged)) ||
-          (accentChanged && !galleryStateRenderers.length)) {
+          ((defaultColorChanged || emphasisChanged) && !galleryStateRenderers.length)) {
         postGalleryState(root, data.requestId, 'reload-required');
         return;
       }
@@ -379,9 +594,12 @@
         if (serial !== galleryStateSerial) return;
         root.dataset.themeId = themeId;
         root.dataset.typographyMode = typography;
-        root.classList.toggle('accent', accent);
+        root.dataset.defaultColorProfile = defaultColorProfile;
+        root.dataset.emphasisTarget = emphasisTarget;
+        root.dataset.emphasisProfile = emphasisProfile;
+        root.classList.toggle('accent', Boolean(emphasisTarget));
         bindSpecimenEmphasis(root);
-        var detail = {themeId:themeId, typographyMode:typography, accent:accent};
+        var detail = {themeId:themeId, typographyMode:typography, defaultColorProfile:defaultColorProfile, emphasisTarget:emphasisTarget, emphasisProfile:emphasisProfile};
         document.dispatchEvent(new CustomEvent('wise-ppt:gallery-state-change', {detail:detail}));
         return Promise.allSettled(galleryStateRenderers.map(function (renderer) { return renderer(detail); }));
       }).then(function () {
@@ -498,7 +716,15 @@
     });
     observer.observe(root, {
       attributes:true,
-      attributeFilter:['data-render-ready', 'data-catalog-surface-ready']
+      /* custom-redraw 会在共享 surface renderer 之后把 recipe marker 从
+         true 切换为 custom。approved 母版只有这一步完成后才算 ready，
+         因此 recipe marker/status 也必须触发握手，不能只观察 surface。 */
+      attributeFilter:[
+        'data-render-ready',
+        'data-catalog-surface-ready',
+        'data-xp-recipe-ready',
+        'data-xp-recipe-status'
+      ]
     });
     global.addEventListener('error', function (event) {
       postSpecimenStatus(root, 'fail', event.message || 'frame error');
@@ -515,10 +741,19 @@
     ensurePaperNoiseFilter();
     applySpecimenTheme(root);
     applySpecimenTypography(root);
+    bindSpecimenThemeTypeRoles(root);
     applySpecimenStaticFreeze(root);
     bindSpecimenReadiness(root);
     bindGalleryStateBridge(root);
-    if (new URLSearchParams(global.location.search).has('accent')) root.classList.add('accent');
+    prepareSpecimenSemanticKeys(root);
+    var emphasisParams = new URLSearchParams(global.location.search);
+    var initialDefaultColorProfile = emphasisParams.get('default-color-profile') === 'legacy' ? 'legacy' : 'standard';
+    var initialEmphasisTarget = emphasisParams.get('emphasis') || '';
+    var initialEmphasisProfile = emphasisParams.get('emphasis-profile') === 'legacy' ? 'legacy' : 'standard';
+    root.dataset.defaultColorProfile = initialDefaultColorProfile;
+    root.dataset.emphasisTarget = initialEmphasisTarget;
+    root.dataset.emphasisProfile = initialEmphasisProfile;
+    root.classList.toggle('accent', Boolean(initialEmphasisTarget));
     bindSpecimenEmphasis(root);
     bindGalleryKeyBridge(root);
     bindGalleryActivityBridge(root);
@@ -565,6 +800,8 @@
     fitSpecimen: fitSpecimen,
     applySpecimenTheme: applySpecimenTheme,
     applySpecimenTypography: applySpecimenTypography,
+    bindSpecimenThemeTypeRoles: bindSpecimenThemeTypeRoles,
+    bindSpecimenSemanticKeys: bindSpecimenSemanticKeys,
     applySpecimenStaticFreeze: applySpecimenStaticFreeze,
     recipeCompletionState: recipeCompletionState,
     registerGalleryStateRenderer: registerGalleryStateRenderer,

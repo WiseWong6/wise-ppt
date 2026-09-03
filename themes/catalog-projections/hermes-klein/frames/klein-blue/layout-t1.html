@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="zh-CN" data-runtime="wise-ppt-specimen" data-typography-mode="all-sans" data-theme="paper-ink" data-wise-catalog-fonts="true" data-page-id="gallery-ai-t1" data-page-role="sequence" data-theme-id="klein-blue" data-surface-source="catalog-theme-recipes-v1" data-xp-recipe-id="klein-blue:t1" data-xp-surface-profile="approved-process-axis" data-xp-recipe-status="approved" data-xp-frame-kind="custom-redraw">
+<html lang="zh-CN" data-runtime="wise-ppt-specimen" data-typography-mode="all-sans" data-theme="paper-ink" data-wise-catalog-fonts="true" data-page-id="gallery-ai-t1" data-page-role="sequence" data-emphasis-targets="[{&quot;target_id&quot;:&quot;focus.key-step&quot;,&quot;label&quot;:&quot;旧强调 + ANALYSE&quot;,&quot;content_role&quot;:&quot;旧版总结强调与首步英文名&quot;,&quot;reason_hint&quot;:&quot;保留旧版重点、层级与关系的强调，同时给 ANALYSE 增加强调色。&quot;,&quot;members&quot;:[{&quot;selector&quot;:&quot;#t1-focus&quot;,&quot;role&quot;:&quot;label&quot;,&quot;treatment&quot;:&quot;focus.color&quot;,&quot;expected_count&quot;:1},{&quot;selector&quot;:&quot;#t1-focus-analyse&quot;,&quot;role&quot;:&quot;value&quot;,&quot;treatment&quot;:&quot;focus.color&quot;,&quot;expected_count&quot;:1}]}]" data-vnext-semantic-key-map="[{&quot;key&quot;:&quot;workflow.text.001&quot;,&quot;tag&quot;:&quot;text&quot;,&quot;text&quot;:&quot;01&quot;,&quot;occurrence&quot;:0}]" data-catalog-legacy-emphasis-profile="copy-only" data-catalog-legacy-emphasis-members="[{&quot;selector&quot;:&quot;#t1-focus&quot;,&quot;role&quot;:&quot;label&quot;}]" data-catalog-legacy-emphasis-foreground-members="[]" data-catalog-legacy-emphasis-ref="sample.t1.t1-focus" data-theme-id="klein-blue" data-surface-source="catalog-theme-recipes-v2" data-xp-recipe-id="klein-blue:t1" data-xp-surface-profile="approved-process-axis" data-xp-recipe-status="approved" data-xp-frame-kind="custom-redraw">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -31,6 +31,8 @@
     --xp-top: #ffffff;
     --xp-ink: #1a1a1a;
     --xp-accent: #002fa7;
+    --xp-shadow-hard: transparent;
+    --xp-shadow-soft: transparent;
     --xp-serif: 'Han Serif Catalog', 'Han Serif', serif;
     --wp-color-surface-canvas: var(--xp-paper);
     --wp-color-surface-recessed: var(--xp-recessed);
@@ -42,6 +44,10 @@
     --wp-color-construction: rgba(26, 26, 26, 0.12);
     --wp-color-focus: var(--xp-accent);
     --wp-private-identity-accent: var(--xp-ink);
+  }
+  :root.accent {
+    --xp-shadow-hard: var(--xp-accent);
+    --xp-shadow-soft: color-mix(in srgb, var(--xp-accent) 16%, transparent);
   }
   body { background: var(--xp-outside); }
 
@@ -60,22 +66,20 @@
   #v3-t1 .doc-title,
   #v3-t1 .folio {
     font-family: 'Oswald Replica', 'Han Sans Catalog', 'Han Sans', 'PingFang SC', sans-serif;
-    font-size: var(--type-body-small);
     font-weight: 700;
     line-height: 1.25;
     letter-spacing: .15em;
     text-transform: uppercase;
-    color: var(--xp-accent);
   }
+  #v3-t1 .folio { color: rgba(26, 26, 26, .45); }
 
   /* 底部论点：宋体粗，字号沿用生产规格 */
   #v3-t1 .caption { font-family: var(--xp-serif); font-weight: 700; }
-  #t1-focus { color: var(--xp-accent); }
 
 
   #v3-t1 .scene { position: absolute; inset: 0; z-index: 1; transform: translateY(-62px); }
 </style>
-<link rel="stylesheet" href="../../catalog-surface.css" data-catalog-theme-surface="catalog-theme-recipes-v1">
+<link rel="stylesheet" href="../../catalog-surface.css" data-catalog-theme-surface="catalog-theme-recipes-v2">
 <link rel="stylesheet" href="../../title-furniture.css" data-catalog-title-furniture="black-first-theme-second-v1">
 </head>
 <body class="slide">
@@ -86,13 +90,13 @@
   <svg class="scene" width="1920" height="1080" viewBox="0 0 1920 1080" role="img" aria-label="从原始资料到网页放映的五步生产编排链">
     <defs>
       <filter id="xp-hard" x="-30%" y="-30%" width="160%" height="160%">
-        <feDropShadow dx="10" dy="10" stdDeviation="0" flood-color="#002fa7" flood-opacity="1"/>
+        <feDropShadow dx="10" dy="10" stdDeviation="0" flood-color="var(--xp-shadow-hard)" flood-opacity="1"/>
       </filter>
     </defs>
     <g id="t1-workflow"></g>
   </svg>
 
-  <div class="caption">先理解内容，再安排<span id="t1-focus">重点、层级与关系</span>。</div>
+  <div class="caption">先理解内容，再安排<span id="t1-focus" data-emphasis-candidate="true">重点、层级与关系</span>。</div>
 </div>
 
 <script src="../../../../../themes/packages/paper-ink/assets/particles.js"></script>
@@ -155,7 +159,7 @@ var compose = el('g', { transform: 'translate(0 5)' }, artifacts);
 });
 
 var deck = el('g', { transform: 'translate(0 9)' }, artifacts);
-el('rect', { x: 1492, y: 338, width: 156, height: 126, fill: INK, stroke: INK, 'stroke-width': 1.3, style: 'filter: drop-shadow(8px 10px 10px rgba(26,26,26,.16))' }, deck);
+el('rect', { x: 1492, y: 338, width: 156, height: 126, fill: INK, stroke: INK, 'stroke-width': 1.3, style: 'filter: drop-shadow(8px 10px 10px var(--xp-shadow-soft))' }, deck);
 el('rect', { x: 1492, y: 338, width: 6, height: 126, fill: ACCENT }, deck);
 el('rect', { x: 1506, y: 348, width: 132, height: 106, fill: TOP, stroke: TOP, 'stroke-width': 1 }, deck);
 line(1524, 376, 1620, 376, { stroke: INK45, 'stroke-width': 1.2 }, deck);
@@ -166,15 +170,18 @@ el('circle', { cx: 1530, cy: 430, r: 4, fill: ACCENT }, deck);
 var steps = [['01', 'ANALYSE', '先理解内容', 'RAW MATERIAL'], ['02', 'STRUCTURE', '梳理叙事', 'NARRATIVE'], ['03', 'JUDGE', '判断版式', 'LAYOUT'], ['04', 'COMPOSE', '组合组件', 'COMPONENTS'], ['05', 'DELIVER', '生成网页 PPT', 'PLAYBACK']];
 steps.forEach(function (s, j) {
   var x = C[j], item = el('g', { 'data-repeat-unit': 'workflow-step', 'data-bind-index': j });
-  txt(s[0], x, BY + 84, { 'font-family': OSWALD, 'font-weight': 700, 'font-size': '48px', 'text-anchor': 'middle', fill: ACCENT }, item);
-  txt(s[1], x, BY + 122, { 'font-family': OSWALD, 'font-weight': 700, 'font-size': 'var(--type-label)', 'letter-spacing': 2, 'text-anchor': 'middle', fill: INK70 }, item);
+  txt(s[0], x, BY + 84, { 'data-number-kind':'plain', 'data-number-role':'sequence', 'data-number-part':'label', 'data-text-kind':'number', 'font-family': OSWALD, 'font-weight': 700, 'font-size': '48px', 'text-anchor': 'middle', fill: 'var(--wp-color-focus)' }, item);
+  var enAttrs = { 'font-family': OSWALD, 'font-weight': 700, 'font-size': 'var(--type-label)', 'letter-spacing': 2, 'text-anchor': 'middle', fill: INK70 };
+  if (j === 0) enAttrs.id = 't1-focus-analyse';
+  txt(s[1], x, BY + 122, enAttrs, item);
   txt(s[2], x, BY + 152, { 'font-size': 'var(--type-body-small)', 'text-anchor': 'middle', fill: INK70 }, item);
   txt(s[3], x, 806, { 'font-family': MONO, 'font-weight': 700, 'font-size': 'var(--type-meta)', 'letter-spacing': 1.8, 'text-anchor': 'middle', fill: INK45 }, item);
 });
 stageFit();
 </script>
-<script type="application/json" id="xp-surface-recipe">{"theme":"klein-blue","color_name":"blue","layout_code":"t1","title":"layout-t1 · 五步生产编排链 · I1 登记变体","layout":"paper-ink.flow.five-step-production","page_role":"sequence","canvas":{"token":"white","value":"#ffffff","reason":"custom-redraw 的已定设计意图；视觉由该页面源码独立实现，ledger 只如实登记。"},"surface_profile":"approved-process-axis","surfaces":[{"role":"workflow-field","material":"top-white","fill":"#ffffff","stack":1},{"role":"workflow-axis-and-final-block","material":"ink-line","fill":"#1a1a1a","stack":2},{"role":"focus-marker","material":"accent","fill":"#002fa7","stack":3}],"accent":{"value":"#002fa7","semantic_channel":"五步编号作为同一流程语义通道；终点保持墨色","furniture":"左上第一行 doc-kicker 固定墨黑，第二行 doc-title 使用当前主题色；folio 继续按该页画布与原配方处理。","neutral_exceptions":["普通英文标签","轴名","层名","结构编号","MODEL","非当前数据"],"furniture_mode":"black-first-theme-second","folio_mode":"accent"},"border_policy":"主体 1px 墨线；唯一焦点可用 2px 橙线，所有容器方角。","shadow_policy":"默认无影；仅唯一被举起的主证据允许一次 10px 零模糊橙色硬影。","noise_policy":"由主题统一提供唯一一层约 6% 黑色 fractal-noise；页面不得自带 noise 节点；浅色页 multiply，墨面可 overlay。","reference_evidence":{"file":"orange-t1.html","cards":["approved-current-render"],"rule":"白色画布、墨色主轴、纯白顶层对象和单一墨色终点；重复橙编号属于同一流程语义。","user_feedback":"橙色 T1 已通过。"},"acceptance":["画布和被举起对象保持纯白；主轴与箭头为墨色。","五个橙色步骤编号属于同一语义通道，不按 DOM 数量误判为五个焦点。","保留已通过结构与表面，不改成通用流程模板。"],"status":"approved","surface_bindings":[],"surface_binding_reason":"custom-redraw 不加载共享 surface runtime；材料已在独立源码内显式实现。"}</script>
-<script src="../../catalog-typography.js" data-catalog-typography="accent-english-title-match-v1"></script>
-<script data-xp-custom-page-ready="true">(function(){var r=document.documentElement,s=document.querySelector(".stage");r.dataset.xpRecipeReady="custom";r.dataset.catalogSurfaceReady="true";r.dataset.xpRecipeStatus="approved";r.dataset.xpSurfaceProfile="approved-process-axis";r.dataset.xpCanvas="white";r.dataset.xpTitleFurniture="black-first-theme-second";if(s){s.dataset.surfaceRebuild="custom-page-v3";s.dataset.surfaceFocusCount="0";}})();</script>
+<script type="application/json" id="xp-surface-recipe">{"theme":"klein-blue","color_name":"blue","layout_code":"t1","title":"layout-t1 · 五步生产编排链 · I1 登记变体","layout":"paper-ink.flow.five-step-production","page_role":"sequence","canvas":{"token":"paper","value":"#f2efe9","reason":"恢复旧版实际画布底色；纯白只保留给顶层工件。"},"surface_profile":"approved-process-axis","surfaces":[{"role":"workflow-field","material":"top-white","fill":"#ffffff","stack":1},{"role":"workflow-axis-and-final-block","material":"ink-line","fill":"#1a1a1a","stack":2},{"role":"focus-marker","material":"accent","fill":"#002fa7","stack":3}],"accent":{"value":"#002fa7","semantic_channel":"五步编号作为同一流程语义通道；终点保持墨色","furniture":"左上第一行 doc-kicker 固定墨黑，第二行 doc-title 使用当前主题色；folio 跟随元信息通道：墨色 45%（同英文章节标签），不使用主题色。","neutral_exceptions":["普通英文标签","轴名","层名","结构编号","MODEL","非当前数据"],"furniture_mode":"black-first-theme-second","folio_mode":"metadata-neutral"},"border_policy":"主体 1px 墨线；唯一焦点可用 2px 橙线，所有容器方角。","shadow_policy":"非强调态不绘制阴影；页面最终强调状态开启时，唯一被举起的主证据才按既有几何绘制主题色硬影与柔影。","noise_policy":"由主题统一提供唯一一层约 6% 黑色 fractal-noise；页面不得自带 noise 节点；浅色页 multiply，墨面可 overlay。","reference_evidence":{"file":"orange-t1.html","cards":["approved-current-render"],"rule":"纸面画布、墨色主轴、纯白顶层对象和单一墨色终点；重复橙编号属于同一流程语义。","user_feedback":"橙色 T1 已通过。"},"acceptance":["画布保持纸色；被举起对象保持纯白；主轴与箭头为墨色。","五个橙色步骤编号属于同一语义通道，不按 DOM 数量误判为五个焦点。","保留已通过结构与表面，不改成通用流程模板。"],"status":"approved","surface_bindings":[],"surface_binding_reason":"custom-redraw 只接入主题身份与强调 runtime；材料仍在独立源码内显式实现。","theme_identity":[{"group_id":"identity.primary-label","label":"主体短标签","members":[{"selector":"[data-vnext-text-key=\"workflow.text.001\"]","treatment":"identity.text","expected_count":1}]}],"emphasis_targets":[{"target_id":"focus.key-step","label":"旧强调 + ANALYSE","content_role":"旧版总结强调与首步英文名","reason_hint":"保留旧版重点、层级与关系的强调，同时给 ANALYSE 增加强调色。","members":[{"selector":"#t1-focus","role":"label","treatment":"focus.color","expected_count":1},{"selector":"#t1-focus-analyse","role":"value","treatment":"focus.color","expected_count":1}]}],"sample_target_id":"focus.key-step"}</script>
+<script src="../../catalog-surface.js" data-catalog-theme-surface="catalog-theme-recipes-v2"></script>
+<script src="../../catalog-typography.js" data-catalog-typography="brand-latin-numeric-oswald-v1"></script>
+<script data-xp-custom-page-ready="true">(function(){var r=document.documentElement,s=document.querySelector(".stage");function ready(){if(r.dataset.catalogSurfaceReady!=="true")return;r.dataset.xpRecipeReady="custom";r.dataset.xpRecipeStatus="approved";r.dataset.xpSurfaceProfile="approved-process-axis";r.dataset.xpCanvas="paper";r.dataset.xpTitleFurniture="black-first-theme-second";if(s){s.dataset.surfaceRebuild="custom-page-v4";s.dataset.surfaceFocusCount=String(document.querySelectorAll("[data-content-ref][data-emphasis-role]").length);}}var o=new MutationObserver(ready);o.observe(r,{attributes:true,attributeFilter:["data-catalog-surface-ready"]});ready();document.addEventListener("wise-ppt:semantic-keys-ready",function(){requestAnimationFrame(ready);});})();</script>
 </body>
 </html>

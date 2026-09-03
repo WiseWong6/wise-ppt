@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html data-theme-id="paper-ink" lang="zh-CN" data-runtime="wise-ppt-specimen" data-typography-mode="all-sans" data-page-id="gallery-ai-e6" data-page-role="compare" data-theme="paper-ink" data-layout="paper-ink.comparison.before-after-process-bands" data-layout-source="gallery" data-sample-focus-profile="content-only" data-sample-focus-members='[{"selector":"#e6-focus-badge","role":"outline"},{"selector":"#e6-focus-check","role":"outline"},{"selector":"#e6-focus-title","role":"value"}]' data-sample-focus-ref="sample.e6.e6-focus">
+<html data-theme-id="paper-ink" lang="zh-CN" data-runtime="wise-ppt-specimen" data-typography-mode="all-sans" data-wise-catalog-fonts="true" data-page-id="gallery-ai-e6" data-page-role="compare" data-theme="paper-ink" data-layout="paper-ink.comparison.before-after-process-bands" data-layout-source="gallery" data-emphasis-targets='[{"target_id":"focus.decisive-difference","members":[{"selector":"#e6-focus-actions","role":"annotation","treatment":"focus.color","expected_count":1}]}]' data-catalog-legacy-emphasis-profile="content-only" data-catalog-legacy-emphasis-members='[{"selector":"#e6-focus-badge","expected_count":1,"role":"symbol","paint":"fill"},{"selector":"#e6-focus-title","expected_count":1,"role":"value"}]' data-catalog-legacy-emphasis-foreground-members='[]' data-catalog-legacy-emphasis-ref="sample.e6.e6-focus" data-vnext-semantic-key-map='[]'>
 <head>
 <meta charset="UTF-8">
 <title>layout-e6 · 前后双带演进页（AI 主题）</title>
@@ -12,6 +12,12 @@
 <link rel="stylesheet" href="../../../../themes/engine/assets/slide-components.css">
 <link rel="stylesheet" href="../../../shell.css">
 <style>
+  :root:is([data-theme-id="hermes-orange"], [data-theme-id="klein-blue"])
+    .slide[data-emphasis-mode="semantic-focus"]
+    :is(text, tspan)[data-emphasis-off-color="inverse"][data-emphasis-role]:not([data-emphasis-active="true"]) {
+    --wp-emphasis-color: var(--xp-white, #fff);
+    fill: var(--wp-emphasis-color) !important;
+  }
   svg.scene { position: absolute; inset: 0; z-index: 1; }
   .caption {
     position: absolute; left: 0; right: 0; bottom: 118px;
@@ -32,7 +38,7 @@
     <g id="draw"></g>
   </svg>
 
-  <div class="caption">召回、重排与组装把文档散件变成可追溯上下文，答案稳定性随之提升。</div>
+  <div class="caption"><span id="e6-focus-actions" data-emphasis-candidate="true">召回、重排与组装</span>把文档散件变成可追溯上下文，答案稳定性随之提升。</div>
 </div>
 
 <script src="../../../../themes/packages/paper-ink/assets/particles.js"></script>
@@ -124,7 +130,7 @@ el('rect', {x:155, y:505, width:1610, height:270, rx:3, fill:'none', stroke:INK,
 /* ✓ 徽章与 After 标题组成同一结果语义组 */
 el('circle', {id:'e6-focus-badge', cx:200, cy:542, r:15, fill:'var(--paper)', stroke:INK80, 'stroke-width':1.2});
 el('path', {id:'e6-focus-check', d:'M 193 542 L 198 548 L 208 535', fill:'none', stroke:INK, 'stroke-width':3, 'stroke-linecap':'round', 'stroke-linejoin':'round'});
-txt(232, 550, 'After：文档进入召回链路', {id:'e6-focus-title', 'font-family':SANS, 'font-weight':300, 'font-size':'var(--type-subheading)', fill:INK});
+txt(232, 550, 'After：文档进入召回链路', {id:'e6-focus-title', 'data-emphasis-off-color':'inverse', 'font-family':SANS, 'font-weight':300, 'font-size':'var(--type-subheading)', fill:INK});
 txt(1730, 548, 'PIPELINED', {'font-family':MONO, 'font-size':'var(--type-micro-secondary)', 'letter-spacing':3, 'text-anchor':'end', fill:INK45});
 
 /* 六步流水线 */

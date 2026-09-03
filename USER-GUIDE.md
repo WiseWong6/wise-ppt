@@ -25,7 +25,7 @@ git clone --depth 1 https://github.com/WiseWong6/wise-ppt.git wise-ppt
 node wise-ppt/bin/wise-ppt.mjs doctor
 ```
 
-输出 `"status": "pass"` 才算安装完成。`doctor` 会读取 `bundle-manifest.json`，核对发行文件的字节数与 SHA-256，并检查 Node、Chrome 和字体环境。
+输出 `"status": "pass"` 才算安装完成。`doctor` 会读取 `bundle-manifest.json`，核对发行文件的字节数与 SHA-256，并检查 Node、Chrome 和字体环境。若输出里 `bundle_mode` 是 `development` 并附带 warnings，说明当前目录是开发仓而非发行包：这只验证了运行环境，不代表安装完成。
 
 Git 安装可在同一目录更新：
 
@@ -40,6 +40,7 @@ node wise-ppt/bin/wise-ppt.mjs doctor
 
 | Agent | 目标目录 |
 |---|---|
+| 通用（官方推荐） | `~/.agents/skills/wise-ppt`；OpenAI Skills 官方推荐的个人 Skill 位置，多数新 Agent 会从这里发现 |
 | Codex | `$CODEX_HOME/skills/wise-ppt`；未自定义时通常是 `~/.codex/skills/wise-ppt` |
 | Claude Code | `~/.claude/skills/wise-ppt` |
 | Kimi Code | `$KIMI_CODE_HOME/skills/wise-ppt`；未自定义时是 `~/.kimi-code/skills/wise-ppt` |
@@ -49,7 +50,7 @@ node wise-ppt/bin/wise-ppt.mjs doctor
 
 - 离线 Catalog：用 Google Chrome 打开 `<skill>/references/catalog.html`。它包含非关系页、版式、结构、组件和 865 枚成品图标；所需 WOFF2 压缩字体已经随包提供，不会联网。
 - 完整视觉与合同示例：打开 `<skill>/themes/examples/wise-ppt-story-six-page/index.html`；它恰好 6 页，但不是新任务的页数模板。同目录的 `deck.pdf` 可直接翻阅，`deck-spec.json` 是对应输入示例。
-- 独立主题系统：纸墨、爱马仕橙和克莱因蓝是平级主题包，不是 Paper Ink 的换色预设。旧 PDF/PPT/PPTX、图片或 Logo 先从代表视觉、品牌锚点、重复母题、页面角色、字体对比、线条、Icon 和组件层级提炼完整 `wise-ppt-theme@3`。运行 `themes resolve` 校验，再用 `themes preview <已有 deck> --theme <json> --out <目录>` 比较五种完整主题。预览会提示未登记 Icon、未声明组件状态、反白、图表和硬编码颜色等兼容风险；它只产 HTML。选定后把同一对象作为 inline definition 写入 `deck.theme`。封面纸面和关系页强调色按语义页面角色投影；逐版式材料或字体特例必须经过精确数量绑定和几何不变门禁，不能写成 layout ID 专属的主题页面 CSS。
+- 独立主题系统：纸墨、爱马仕橙和克莱因蓝是平级主题包，不是 Paper Ink 的换色预设。Catalog 仍只展示这三套。广义核心色可用 `themes recolor --core <id>`，明确 HEX 可用 `themes recolor --hex <HEX>`；橙蓝返回原注册主题，其他核心色和自定义色返回沿用橙蓝视觉语言的白底 inline 主题。用户给出的色值保持不变，小字和关键图形使用同色安全阶；表外颜色名称没有色值时不猜测。旧 PDF/PPT/PPTX、图片或 Logo 则从代表视觉、品牌锚点、重复母题、页面角色、字体对比、线条、Icon 和组件层级提炼完整 `wise-ppt-theme@5`。运行 `themes resolve` 校验，再用 `themes preview <已有 deck> --theme <json> --out <目录>` 比较完整主题。预览只产 HTML。纸墨使用重绘图标；橙蓝视觉语言使用同名 Tabler 3.46.0 原版图标，位置和尺寸不变。选定后把同一对象写入 `deck.theme`。
 
 这两项是用户级资产，并受 `bundle-manifest.json` 的逐文件 SHA-256 保护。
 
@@ -61,6 +62,8 @@ node wise-ppt/bin/wise-ppt.mjs doctor
 node <skill>/bin/wise-ppt.mjs doctor
 node <skill>/bin/wise-ppt.mjs layouts [filters]
 node <skill>/bin/wise-ppt.mjs layouts plan <page-plan.json 绝对路径> --agent-brief [--new-session]
+node <skill>/bin/wise-ppt.mjs themes recolor --core <core-color-id>
+node <skill>/bin/wise-ppt.mjs themes recolor --hex <HEX> [--name <名称>]
 node <skill>/bin/wise-ppt.mjs preflight <deck-spec.json 绝对路径> --all-errors
 node <skill>/bin/wise-ppt.mjs build <deck-spec.json 绝对路径> --out <绝对目录>
 node <skill>/bin/wise-ppt.mjs validate <绝对 deck 目录>
@@ -92,6 +95,6 @@ standard 成品输出后，Agent 会复核 claim、阅读顺序、主次和固�
 
 ## 交付边界
 
-整副规划输入/输出为 `wise-ppt-layout-plan-request@1` / `wise-ppt-layout-agent-brief@1`，全量预检为 `wise-ppt-preflight@1`。成品输入使用 `wise-ppt-deck@9`，构建计划使用 `wise-ppt-deck-plan@5`，构建使用 `wise-ppt-build@6`，运行时使用 `wise-ppt-runtime@6`；正式交付为 `wise-ppt-delivery@3`，实验交付为 `wise-ppt-experimental-delivery@5`。逐页声明的强调会进入最终 HTML 和 PDF；普通/强调四态只用于验证。实验 PDF 不叠加可见水印，通过文件名与 manifest 表明实验身份。
+整副规划输入/输出为 `wise-ppt-layout-plan-request@1` / `wise-ppt-layout-agent-brief@1`，全量预检为 `wise-ppt-preflight@1`。成品输入使用 `wise-ppt-deck@9`，构建计划使用 `wise-ppt-deck-plan@5`，构建使用 `wise-ppt-build@6`，运行时使用 `wise-ppt-runtime@7`；正式交付为 `wise-ppt-delivery@3`，实验交付为 `wise-ppt-experimental-delivery@7`。逐页声明的强调会进入最终 HTML 和 PDF；普通/强调四态只用于验证。实验 PDF 不叠加可见水印，通过文件名与 manifest 表明实验身份。
 
 `deck.pdf` 和 `delivery-manifest.json` 成对提交。任何导出或提交失败都不会破坏上一份正式交付物。

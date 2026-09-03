@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html data-theme-id="paper-ink" lang="zh-CN" data-runtime="wise-ppt-specimen" data-typography-mode="all-sans" data-page-id="gallery-ai-h3" data-page-role="explain" data-theme="paper-ink" data-layout="paper-ink.nested.architecture-stack" data-layout-source="gallery" data-sample-focus-profile="copy-only" data-sample-focus-members='[{"selector":"#focus-caption","role":"label"}]' data-sample-focus-ref="sample.h3.h3-focus">
+<html data-theme-id="paper-ink" lang="zh-CN" data-runtime="wise-ppt-specimen" data-typography-mode="all-sans" data-page-id="gallery-ai-h3" data-page-role="explain" data-theme="paper-ink" data-layout="paper-ink.nested.architecture-stack" data-layout-source="gallery" data-emphasis-targets='[{"target_id":"focus.key-layer","members":[{"selector":"[data-vnext-text-key=\"architecture.text.001\"]","role":"value","treatment":"focus.text","expected_count":1}]}]' data-catalog-legacy-emphasis-profile="copy-only" data-catalog-legacy-emphasis-members='[{"selector":"#focus-caption","role":"label"}]' data-catalog-legacy-emphasis-foreground-members='[]' data-catalog-legacy-emphasis-ref="sample.h3.h3-focus" data-vnext-semantic-key-map='[{"key":"architecture.text.001","tag":"text","text":"L1","occurrence":0}]'>
 <head>
 <meta charset="UTF-8">
 <title>layout-h3 · 分层架构堆栈 · AI 产品四层栈</title>
@@ -208,7 +208,7 @@ var IXS = [620, 1065, 1510];                 /* 带内能力件均布 */
 layers.forEach(function(L, r){
   var midY = BT + r*BH + BH/2;
   /* 左列层标（与横带严格左对齐） */
-  txt(160, midY-16, L.no, {'font-family':MONO, 'font-size':'var(--type-body)', 'letter-spacing':2, fill:INK});
+  txt(160, midY-16, L.no, {class:'h3-layer-code', 'font-family':MONO, 'font-size':'var(--type-body)', 'letter-spacing':2, fill:INK});
   txt(160, midY+12, L.cn, {id:L.focus?'sample-focus':'h3-layer-'+L.no, 'font-family':SANS, 'font-weight':300, 'font-size':'var(--type-body)', fill:INK});
   txt(160, midY+34, L.en, {'font-family':MONO, 'font-size':'var(--type-micro-secondary)', 'letter-spacing':2, fill:INK45});
   el('line', {x1:160, y1:midY+48, x2:230, y2:midY+48, stroke:INK, 'stroke-width':.6, opacity:.3});

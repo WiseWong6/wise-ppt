@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html data-theme-id="hermes-orange" lang="zh-CN" data-runtime="wise-ppt-specimen" data-typography-mode="all-sans" data-page-id="gallery-ai-p2" data-page-role="explain" data-theme="paper-ink" data-layout="paper-ink.mapping.diamond-edge-labels" data-layout-source="gallery" data-sample-focus-profile="none" data-sample-focus-members='[]' data-surface-source="catalog-theme-recipes-v1" data-xp-recipe-id="hermes-orange:p2" data-xp-surface-profile="open-paper-diagram" data-xp-recipe-status="recipe-ready" data-xp-frame-kind="recipe-generated">
+<html data-theme-id="hermes-orange" lang="zh-CN" data-runtime="wise-ppt-specimen" data-typography-mode="all-sans" data-page-id="gallery-ai-p2" data-page-role="explain" data-theme="paper-ink" data-layout="paper-ink.mapping.diamond-edge-labels" data-layout-source="gallery" data-emphasis-targets="[{&quot;target_id&quot;:&quot;focus.key-node&quot;,&quot;label&quot;:&quot;RETRIEVED CONTEXTS · 检索上下文&quot;,&quot;content_role&quot;:&quot;菱形上方检索上下文节点&quot;,&quot;reason_hint&quot;:&quot;沿用旧版反白强调，并让检索上下文卡片的内外两道边框同时跟随强调色。&quot;,&quot;members&quot;:[{&quot;selector&quot;:&quot;#p2-context-card&quot;,&quot;role&quot;:&quot;symbol&quot;,&quot;treatment&quot;:&quot;focus.solid-reverse&quot;,&quot;paint&quot;:&quot;fill&quot;,&quot;expected_count&quot;:1},{&quot;selector&quot;:&quot;#p2-context-frame, #p2-context-frame-inner&quot;,&quot;role&quot;:&quot;outline&quot;,&quot;treatment&quot;:&quot;focus.path-depth&quot;,&quot;expected_count&quot;:2},{&quot;selector&quot;:&quot;#p2-context-en, #p2-context-cn&quot;,&quot;role&quot;:&quot;value&quot;,&quot;treatment&quot;:&quot;focus.reverse-text&quot;,&quot;expected_count&quot;:2}]}]" data-vnext-semantic-key-map="[{&quot;key&quot;:&quot;diamond-map.text.009&quot;,&quot;tag&quot;:&quot;text&quot;,&quot;text&quot;:&quot;USER INPUT&quot;,&quot;occurrence&quot;:0},{&quot;key&quot;:&quot;diamond-map.text.011&quot;,&quot;tag&quot;:&quot;text&quot;,&quot;text&quot;:&quot;RETRIEVED CONTEXTS&quot;,&quot;occurrence&quot;:0},{&quot;key&quot;:&quot;diamond-map.text.013&quot;,&quot;tag&quot;:&quot;text&quot;,&quot;text&quot;:&quot;RESPONSE&quot;,&quot;occurrence&quot;:0},{&quot;key&quot;:&quot;diamond-map.text.015&quot;,&quot;tag&quot;:&quot;text&quot;,&quot;text&quot;:&quot;REFERENCE&quot;,&quot;occurrence&quot;:0}]" data-catalog-legacy-emphasis-profile="content-only" data-catalog-legacy-emphasis-members="[{&quot;selector&quot;:&quot;#p2-context-card&quot;,&quot;expected_count&quot;:1,&quot;role&quot;:&quot;symbol&quot;,&quot;paint&quot;:&quot;fill&quot;}]" data-catalog-legacy-emphasis-foreground-members="[{&quot;selector&quot;:&quot;#p2-context-en&quot;,&quot;expected_count&quot;:1,&quot;neutral_tone&quot;:&quot;preserve&quot;,&quot;active_tone&quot;:&quot;white&quot;},{&quot;selector&quot;:&quot;#p2-context-cn&quot;,&quot;expected_count&quot;:1,&quot;neutral_tone&quot;:&quot;preserve&quot;,&quot;active_tone&quot;:&quot;white&quot;}]" data-catalog-legacy-emphasis-ref="sample.p2.colored-context-card" data-wise-catalog-fonts="true" data-surface-source="catalog-theme-recipes-v2" data-xp-recipe-id="hermes-orange:p2" data-xp-surface-profile="open-paper-diagram" data-xp-recipe-status="recipe-ready" data-xp-frame-kind="recipe-generated">
 <head>
 <meta charset="UTF-8">
 <title>layout-p2 · 菱形四边标注 · RAG 四组证据对</title>
@@ -22,7 +22,7 @@
     z-index: 5;
   }
 </style>
-<link rel="stylesheet" href="../../catalog-surface.css" data-catalog-theme-surface="catalog-theme-recipes-v1">
+<link rel="stylesheet" href="../../catalog-surface.css" data-catalog-theme-surface="catalog-theme-recipes-v2">
 <link rel="stylesheet" href="../../title-furniture.css" data-catalog-title-furniture="black-first-theme-second-v1">
 </head>
 <body class="slide">
@@ -117,11 +117,23 @@ dot(m4);
 /* --- 节点双线框 --- */
 Object.keys(nodes).forEach(function(k){
   var n = nodes[k], r = nodeRect(n);
-  el('rect', {x:r.x, y:r.y, width:NW, height:NH, fill:'var(--paper)', stroke:'none'});
-  el('rect', {x:r.x, y:r.y, width:NW, height:NH, fill:'none', stroke:'var(--ink-80)', 'stroke-width':1.3});
-  el('rect', {x:r.x+5, y:r.y+5, width:NW-10, height:NH-10, fill:'none', stroke:INK, 'stroke-width':.6, opacity:.35});
-  txt(n.cx, n.cy - 4, n.en, {'font-family':MONO, 'font-size':'var(--type-label)', 'letter-spacing':2, 'text-anchor':'middle', fill:INK});
-  txt(n.cx, n.cy + 28, n.cn, {'font-family':SANS, 'font-weight':400, 'font-size':'var(--type-subheading)', 'text-anchor':'middle', fill:'var(--ink)'});
+  var cardAttrs = {class:'p2-node-card', x:r.x, y:r.y, width:NW, height:NH, fill:'var(--paper)', stroke:'none'};
+  var frameAttrs = {x:r.x, y:r.y, width:NW, height:NH, fill:'none', stroke:'var(--ink-80)', 'stroke-width':1.3};
+  var innerFrameAttrs = {x:r.x+5, y:r.y+5, width:NW-10, height:NH-10, fill:'none', stroke:INK, 'stroke-width':.6, opacity:.35};
+  var enAttrs = {'font-family':MONO, 'font-size':'var(--type-label)', 'letter-spacing':2, 'text-anchor':'middle', fill:INK};
+  var cnAttrs = {'font-family':SANS, 'font-weight':400, 'font-size':'var(--type-subheading)', 'text-anchor':'middle', fill:'var(--ink)'};
+  if (k === 'contexts') {
+    cardAttrs.id = 'p2-context-card';
+    frameAttrs.id = 'p2-context-frame';
+    innerFrameAttrs.id = 'p2-context-frame-inner';
+    enAttrs.id = 'p2-context-en';
+    cnAttrs.id = 'p2-context-cn';
+  }
+  el('rect', cardAttrs);
+  el('rect', frameAttrs);
+  el('rect', innerFrameAttrs);
+  txt(n.cx, n.cy - 4, n.en, enAttrs);
+  txt(n.cx, n.cy + 28, n.cn, cnAttrs);
 });
 
 /* RETRIEVED CONTEXTS 节点下方 mono 小注 */
@@ -129,8 +141,8 @@ txt(960, 376, 'RECALL@K · PRECISION@K · MRR · NDCG@K', {id:'sample-focus', 'f
 
 stageFit();
 </script>
-<script type="application/json" id="xp-surface-recipe">{"theme":"hermes-orange","color_name":"orange","layout_code":"p2","title":"layout-p2 · 菱形四边标注 · RAG 四组证据对","layout":"paper-ink.mapping.diamond-edge-labels","page_role":"explain","canvas":{"token":"paper","value":"#f2efe9","reason":"常规内容页在纸面上建立层级。"},"surface_profile":"open-paper-diagram","surfaces":[{"role":"diagram-plane","material":"paper-plane","fill":"#f2efe9","stack":1},{"role":"structure","material":"ink-line","fill":"#1a1a1a","stack":2},{"role":"focus-marker","material":"accent","fill":"#d95e00","stack":3}],"accent":{"value":"#d95e00","semantic_channel":"中心概念、当前节点或最终输出","furniture":"左上第一行 doc-kicker 固定墨黑，第二行 doc-title 使用当前主题色；folio 继续按该页画布与原配方处理。","neutral_exceptions":["普通英文标签","轴名","层名","结构编号","MODEL","非当前数据"],"furniture_mode":"black-first-theme-second","folio_mode":"accent"},"border_policy":"主体 1px 墨线；唯一焦点可用 2px 橙线，所有容器方角。","shadow_policy":"无投影；轴线、轨道、节点属于同一纸面。","noise_policy":"由主题统一提供唯一一层约 6% 黑色 fractal-noise；页面不得自带 noise 节点；浅色页 multiply，墨面可 overlay。","reference_evidence":{"file":"ai_studio_code (12).html","cards":["card-2","card-3","card-5","card-6"],"rule":"关系线与节点直接属于纸面；强调色只落当前节点、终点或短标记。"},"acceptance":["强调色只落一个语义通道；同一序列可重复，但不得扩散到结构元数据。","纯白只用于 top-white，不能替代默认纸面。","缩略图必须从该主题独立 frame 的实际渲染重建。"],"status":"recipe-ready","surface_bindings":[],"surface_binding_reason":"开放纸面或组件自有纹理；没有需要主题 runtime 举起、压低或换层的前景容器。"}</script>
-<script src="../../catalog-surface.js" data-catalog-theme-surface="catalog-theme-recipes-v1"></script>
-<script src="../../catalog-typography.js" data-catalog-typography="accent-english-title-match-v1"></script>
+<script type="application/json" id="xp-surface-recipe">{"theme":"hermes-orange","color_name":"orange","layout_code":"p2","title":"layout-p2 · 菱形四边标注 · RAG 四组证据对","layout":"paper-ink.mapping.diamond-edge-labels","page_role":"explain","canvas":{"token":"paper","value":"#f2efe9","reason":"常规内容页在纸面上建立层级。"},"surface_profile":"open-paper-diagram","surfaces":[{"role":"diagram-plane","material":"paper-plane","fill":"#f2efe9","stack":1},{"role":"structure","material":"ink-line","fill":"#1a1a1a","stack":2},{"role":"evidence-nodes","material":"top-white","fill":"#ffffff","stack":2,"shadow":"none"},{"role":"focus-marker","material":"accent","fill":"#d95e00","stack":3}],"accent":{"value":"#d95e00","semantic_channel":"中心概念、当前节点或最终输出","furniture":"左上第一行 doc-kicker 固定墨黑，第二行 doc-title 使用当前主题色；folio 跟随元信息通道：墨色 45%（同英文章节标签），不使用主题色。","neutral_exceptions":["普通英文标签","轴名","层名","结构编号","MODEL","非当前数据"],"furniture_mode":"black-first-theme-second","folio_mode":"metadata-neutral"},"border_policy":"主体 1px 墨线；唯一焦点可用 2px 橙线，所有容器方角。","shadow_policy":"无投影；轴线、轨道、节点属于同一纸面。","noise_policy":"由主题统一提供唯一一层约 6% 黑色 fractal-noise；页面不得自带 noise 节点；浅色页 multiply，墨面可 overlay。","reference_evidence":{"file":"ai_studio_code (12).html","cards":["card-2","card-3","card-5","card-6"],"rule":"关系线与节点直接属于纸面；强调色只落当前节点、终点或短标记。"},"acceptance":["强调色只落一个语义通道；同一序列可重复，但不得扩散到结构元数据。","纯白只用于 top-white，不能替代默认纸面。","缩略图必须从该主题独立 frame 的实际渲染重建。"],"status":"recipe-ready","surface_bindings":[{"selector":".p2-node-card","expected_count":4,"role":"evidence-nodes","material":"top-white","fill":"#ffffff","stack":2,"shadow":"none"}],"surface_binding_reason":"四张证据节点卡统一使用纯白主体面且不加投影；焦点开启时只让 RETRIEVED CONTEXTS 整卡变色。","theme_identity":[{"group_id":"identity.node-headings","label":"菱形四节点英文标题","members":[{"selector":"[data-vnext-text-key=\"diamond-map.text.009\"], [data-vnext-text-key=\"diamond-map.text.011\"], [data-vnext-text-key=\"diamond-map.text.013\"], [data-vnext-text-key=\"diamond-map.text.015\"]","treatment":"identity.text","expected_count":4}]}],"emphasis_targets":[{"target_id":"focus.key-node","label":"RETRIEVED CONTEXTS · 检索上下文","content_role":"菱形上方检索上下文节点","reason_hint":"沿用旧版反白强调，并让检索上下文卡片的内外两道边框同时跟随强调色。","members":[{"selector":"#p2-context-card","role":"symbol","treatment":"focus.solid-reverse","paint":"fill","expected_count":1},{"selector":"#p2-context-frame, #p2-context-frame-inner","role":"outline","treatment":"focus.path-depth","expected_count":2},{"selector":"#p2-context-en, #p2-context-cn","role":"value","treatment":"focus.reverse-text","expected_count":2}]}],"sample_target_id":"focus.key-node"}</script>
+<script src="../../catalog-surface.js" data-catalog-theme-surface="catalog-theme-recipes-v2"></script>
+<script src="../../catalog-typography.js" data-catalog-typography="brand-latin-numeric-oswald-v1"></script>
 </body>
 </html>

@@ -1,7 +1,7 @@
-/* Generated from wise-ppt-theme@3. One deck, one complete theme. Do not edit. */
+/* Generated from wise-ppt-theme@5. One deck, one complete theme. Do not edit. */
 :root[data-theme-id="paper-ink"] {
   --wp-theme-id: paper-ink;
-  --wp-theme-default-typography-mode: mixed;
+  --wp-theme-default-typography-mode: all-sans;
   --wp-color-surface-canvas: #DFE0D9;
   --wp-color-surface-recessed: #D4D5CD;
   --wp-color-surface-panel: #E6E7E1;
@@ -24,7 +24,9 @@
   --wp-private-ink-60: rgba(25, 25, 23, .6);
   --wp-private-ink-30: rgba(25, 25, 23, .3);
   --wp-private-focus-text-small: #9B2F24;
+  --wp-private-focus-graphic: #C0392B;
   --wp-private-identity-accent: #C0392B;
+  --wp-private-identity-on-accent: #FFFFFF;
   --wp-theme-line-hairline: 0.55;
   --wp-theme-line-detail: 0.8;
   --wp-theme-line-main: 1.2;
@@ -36,6 +38,10 @@
   --wp-theme-panel-depth: flat;
   --wp-theme-shadow: none;
   --wp-theme-corner-radius: 0px;
+  /* Paper Ink functional 本来就是 80% 中性墨色；保留旧别名以维持基线像素。 */
+  --ink-80: var(--wp-color-functional);
+  --wp-adapter-pi-ink-80: var(--wp-color-functional);
+  --wp-adapter-atlas-ink-80: var(--wp-color-functional);
   --wp-page-accent: var(--wp-color-functional);
 }
 
@@ -44,7 +50,6 @@
   --paper: #DFE0D9;
 }
 :root[data-theme-id="paper-ink"] .slide[data-page-kind="relationship"] {
-  --wp-color-functional: rgba(25, 25, 23, .8);
   --wp-page-accent: rgba(25, 25, 23, .8);
 }
 
@@ -110,7 +115,7 @@
   --wp-theme-weight-bottom-left-folio: 400;
   --wp-theme-size-scale-bottom-left-folio: 1;
   --wp-theme-font-bottom-takeaway: var(--wp-font-han-serif);
-  --wp-theme-weight-bottom-takeaway: 500;
+  --wp-theme-weight-bottom-takeaway: 700;
   --wp-theme-size-scale-bottom-takeaway: 1;
   --wp-theme-font-zh-content-title: var(--wp-font-han-serif);
   --wp-theme-weight-zh-content-title: 700;
@@ -145,7 +150,7 @@
 }
 :root[data-theme-id="paper-ink"][data-typography-mode="all-serif"] [data-theme-type-role="top-left-kicker"] { font-family: var(--wp-font-mono) !important; font-weight: 400 !important; }
 :root[data-theme-id="paper-ink"][data-typography-mode="all-serif"] [data-theme-type-role="bottom-left-folio"] { font-family: var(--wp-font-mono) !important; font-weight: 400 !important; }
-:root[data-theme-id="paper-ink"][data-typography-mode="all-serif"] [data-theme-type-role="bottom-takeaway"] { font-family: var(--wp-font-han-serif) !important; font-weight: 500 !important; }
+:root[data-theme-id="paper-ink"][data-typography-mode="all-serif"] [data-theme-type-role="bottom-takeaway"] { font-family: var(--wp-font-han-serif) !important; font-weight: 700 !important; }
 :root[data-theme-id="paper-ink"][data-typography-mode="all-serif"] [data-theme-type-role="zh-content-title"] { font-family: var(--wp-font-han-serif) !important; font-weight: 700 !important; }
 :root[data-theme-id="paper-ink"][data-typography-mode="all-serif"] [data-theme-type-role="cover-title"] { font-family: var(--wp-font-han-serif) !important; font-weight: 700 !important; }
 :root[data-theme-id="paper-ink"][data-typography-mode="all-serif"] [data-theme-type-role="chapter-title"] { font-family: var(--wp-font-han-serif) !important; font-weight: 700 !important; }
@@ -226,7 +231,7 @@
 :root[data-theme-id="paper-ink"] svg[data-icon-source][data-theme-icon-verified="redraw-v3"] [data-theme-line="main"] { stroke-width: var(--wp-theme-line-main); }
 :root[data-theme-id="paper-ink"] [data-theme-line="emphasis"] { border-width: calc(var(--wp-theme-line-emphasis) * 1px); outline-width: calc(var(--wp-theme-line-emphasis) * 1px); stroke-width: var(--wp-theme-line-emphasis); }
 :root[data-theme-id="paper-ink"] svg[data-icon-source][data-theme-icon-verified="redraw-v3"] [data-theme-line="emphasis"] { stroke-width: var(--wp-theme-line-emphasis); }
-:root[data-theme-id="paper-ink"] svg[data-icon-source][data-theme-icon-verified="redraw-v3"] { color: var(--wp-page-accent, var(--wp-color-functional)); stroke-linecap: var(--wp-theme-line-cap); stroke-linejoin: var(--wp-theme-line-join); }
+:root[data-theme-id="paper-ink"] svg[data-icon-source][data-theme-icon-verified] { color: var(--wp-page-accent, var(--wp-color-functional)); stroke-linecap: var(--wp-theme-line-cap); stroke-linejoin: var(--wp-theme-line-join); }
 :root[data-theme-id="paper-ink"] svg[data-icon-source][data-theme-icon-verified="redraw-v3"] [stroke]:not([stroke="none"]) { stroke-width: var(--wp-theme-line-main); }
 :root[data-theme-id="paper-ink"] [data-theme-table-region="header"][data-theme-surface] { background-color: transparent; }
 :root[data-theme-id="paper-ink"] [data-theme-table-region="body"][data-theme-surface] { background-color: transparent; }

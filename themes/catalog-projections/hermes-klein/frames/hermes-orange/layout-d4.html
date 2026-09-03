@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="zh-CN" data-runtime="wise-ppt-specimen" data-typography-mode="all-sans" data-wise-catalog-fonts="true" data-page-id="gallery-ai-d4" data-catalog-source-marker="orange" data-page-role="orient" data-theme="paper-ink" data-layout="paper-ink.scaffold.agenda" data-layout-source="gallery" data-theme-id="hermes-orange" data-surface-source="catalog-theme-recipes-v1" data-xp-recipe-id="hermes-orange:d4" data-xp-surface-profile="editorial-specimen" data-xp-recipe-status="recipe-ready" data-xp-frame-kind="custom-redraw">
+<html lang="zh-CN" data-runtime="wise-ppt-specimen" data-typography-mode="all-sans" data-wise-catalog-fonts="true" data-page-id="gallery-ai-d4" data-catalog-source-marker="orange" data-page-role="orient" data-theme="paper-ink" data-layout="paper-ink.scaffold.agenda" data-layout-source="gallery" data-emphasis-targets="[]" data-vnext-semantic-key-map="[]" data-theme-id="hermes-orange" data-surface-source="catalog-theme-recipes-v2" data-xp-recipe-id="hermes-orange:d4" data-xp-surface-profile="editorial-specimen" data-xp-recipe-status="recipe-ready" data-xp-frame-kind="custom-redraw">
 <head>
 <meta charset="UTF-8">
 <title>layout-d4 · 目录导航页 · AI Engineering</title>
@@ -58,15 +58,14 @@
   #v3-d4-orange .doc-title,
   #v3-d4-orange .folio {
     font-family: 'Oswald Replica', 'Han Sans Catalog', 'Han Sans', 'PingFang SC', sans-serif;
-    font-size: var(--type-body-small);
     font-weight: 700;
     line-height: 1.25;
     letter-spacing: .15em;
     text-transform: uppercase;
-    color: var(--xp-accent);
   }
+  #v3-d4-orange .folio { color: rgba(26, 26, 26, .45); }
 </style>
-<link rel="stylesheet" href="../../catalog-surface.css" data-catalog-theme-surface="catalog-theme-recipes-v1">
+<link rel="stylesheet" href="../../catalog-surface.css" data-catalog-theme-surface="catalog-theme-recipes-v2">
 <link rel="stylesheet" href="../../title-furniture.css" data-catalog-title-furniture="black-first-theme-second-v1">
 </head>
 <body class="slide">
@@ -85,13 +84,13 @@
 var NS = 'http://www.w3.org/2000/svg';
 var INK = 'var(--ink)';
 var G = document.getElementById('draw');
-function el(tag, attrs) {
+function el(tag, attrs, parent) {
   var e = document.createElementNS(NS, tag);
   for (var k in attrs) e.setAttribute(k, attrs[k]);
-  G.appendChild(e); return e;
+  (parent || G).appendChild(e); return e;
 }
-function txt(x, y, str, attrs) {
-  var t = el('text', Object.assign({x:x, y:y}, attrs||{}));
+function txt(x, y, str, attrs, parent) {
+  var t = el('text', Object.assign({x:x, y:y}, attrs||{}), parent);
   t.textContent = str; return t;
 }
 var MONO = 'var(--mono)', SANS = 'var(--sans)';
@@ -106,11 +105,11 @@ el('line', {x1:438, y1:212, x2:560, y2:212, stroke:INK, 'stroke-width':.6, opaci
 
 /* ===== 条目纵列：x300–1500，y250 起，行高 126 ===== */
 var rows = [
-  {no:'01', cn:'认知奠基', en:'FOUNDATIONS',       note:'AI 产品的四类角色与能力边界',       cur:false},
-  {no:'02', cn:'工程化思维', en:'HARNESS ENG',     note:'从模型到产品的工程鸿沟',            cur:true},
-  {no:'03', cn:'Agent 实战', en:'AGENT IN ACTION', note:'工具调用、状态机与失败恢复',        cur:false},
-  {no:'04', cn:'评测体系', en:'EVAL FRAMEWORK',    note:'离线指标与在线尺子的双层护栏',      cur:false},
-  {no:'05', cn:'落地路径', en:'ROLLOUT ROADMAP',   note:'从 Demo 到生产的渐进上线计划',      cur:false}
+  {no:'1', cn:'认知奠基', en:'FOUNDATIONS',       note:'AI 产品的四类角色与能力边界',       cur:false},
+  {no:'2', cn:'工程化思维', en:'HARNESS ENG',     note:'从模型到产品的工程鸿沟',            cur:true},
+  {no:'3', cn:'Agent 实战', en:'AGENT IN ACTION', note:'工具调用、状态机与失败恢复',        cur:false},
+  {no:'4', cn:'评测体系', en:'EVAL FRAMEWORK',    note:'离线指标与在线尺子的双层护栏',      cur:false},
+  {no:'5', cn:'落地路径', en:'ROLLOUT ROADMAP',   note:'从 Demo 到生产的渐进上线计划',      cur:false}
 ];
 var X0 = 300, X1 = 1620, Y0 = 250, GAP = 126;
 
@@ -120,15 +119,16 @@ rows.forEach(function(r, i){
 
   /* 序号：当前章实心墨圆反白，其余空心单圈 */
   var cx = X0 + 34, cy = y + 42;
+  var marker = el('g', {'data-number-kind':'circled', 'data-number-role':'sequence', 'data-number-state':r.cur?'filled':'outline', 'data-number-rings':r.cur?'2':'1'});
   if (r.cur) {
-    el('circle', {cx:cx, cy:cy, r:26, fill:ACCENT, opacity:op});
-    el('circle', {cx:cx, cy:cy, r:31, fill:'none', stroke:INK, 'stroke-width':.6, opacity:.35});
-    txt(cx, cy+9, r.no, {'font-family':MONO, 'font-size':'var(--type-subheading)', 'text-anchor':'middle', fill:'var(--paper)'});
+    el('circle', {cx:cx, cy:cy, r:26, fill:'var(--wp-color-focus)', opacity:op, 'data-number-part':'disc'}, marker);
+    el('circle', {cx:cx, cy:cy, r:31, fill:'none', stroke:'var(--wp-color-focus)', 'stroke-width':.6, opacity:.35, 'data-number-part':'outer-ring'}, marker);
+    txt(cx, cy+9, r.no, {'data-number-part':'label', 'data-text-kind':'number', 'font-family':MONO, 'font-size':'var(--type-subheading)', 'text-anchor':'middle', fill:'#ffffff'}, marker);
     /* 高亮短横引出（全页唯一强调线） */
     el('line', {x1:cx+44, y1:cy, x2:cx+72, y2:cy, stroke:ACCENT, 'stroke-width':1.8});
   } else {
-    el('circle', {cx:cx, cy:cy, r:26, fill:'none', stroke:INK, 'stroke-width':1, opacity:op});
-    txt(cx, cy+8, r.no, {'font-family':MONO, 'font-size':'var(--type-subheading)', 'text-anchor':'middle', fill:INK, opacity:op});
+    el('circle', {cx:cx, cy:cy, r:26, fill:'none', stroke:'var(--wp-color-primary)', 'stroke-width':1, opacity:op, 'data-number-part':'disc'}, marker);
+    txt(cx, cy+8, r.no, {'data-number-part':'label', 'data-text-kind':'number', 'font-family':MONO, 'font-size':'var(--type-subheading)', 'text-anchor':'middle', fill:'var(--wp-color-primary)', opacity:op}, marker);
   }
 
   /* 中文章题 + EN 副题 + 内容预告 */
@@ -150,8 +150,9 @@ el('line', {x1:X0, y1:Y0-26, x2:X1, y2:Y0-26, stroke:INK, 'stroke-width':.6, opa
 
 stageFit();
 </script>
-<script type="application/json" id="xp-surface-recipe">{"theme":"hermes-orange","color_name":"orange","layout_code":"d4","title":"layout-d4 · 目录导航页 · AI Engineering","layout":"paper-ink.scaffold.agenda","page_role":"orient","canvas":{"token":"paper","value":"#f2efe9","reason":"custom-redraw 的已定设计意图；视觉由该页面源码独立实现，ledger 只如实登记。"},"surface_profile":"editorial-specimen","surfaces":[{"role":"diagram-plane","material":"paper-plane","fill":"#f2efe9","stack":1},{"role":"structure","material":"ink-line","fill":"#1a1a1a","stack":2},{"role":"focus-marker","material":"accent","fill":"#d95e00","stack":3}],"accent":{"value":"#d95e00","semantic_channel":"当前章节或当前目录项","furniture":"左上第一行 doc-kicker 固定墨黑，第二行 doc-title 使用当前主题色；folio 继续按该页画布与原配方处理。","neutral_exceptions":["普通英文标签","轴名","层名","结构编号","MODEL","非当前数据"],"furniture_mode":"black-first-theme-second","folio_mode":"accent"},"border_policy":"主体 1px 墨线；唯一焦点可用 2px 橙线，所有容器方角。","shadow_policy":"默认无影；仅唯一被举起的主证据允许一次 10px 零模糊橙色硬影。","noise_policy":"由主题统一提供唯一一层约 6% 黑色 fractal-noise；页面不得自带 noise 节点；浅色页 multiply，墨面可 overlay。","reference_evidence":{"file":"所有文档都该重写一遍.html","cards":["card-2","card-5","card-7"],"rule":"纸面承载版式，只有被举起的文献、标本或终端使用不透明白面。"},"acceptance":["强调色只落一个语义通道；同一序列可重复，但不得扩散到结构元数据。","纯白只用于 top-white，不能替代默认纸面。","缩略图必须从该主题独立 frame 的实际渲染重建。"],"status":"recipe-ready","surface_bindings":[],"surface_binding_reason":"custom-redraw 不加载共享 surface runtime；材料已在独立源码内显式实现。"}</script>
-<script src="../../catalog-typography.js" data-catalog-typography="accent-english-title-match-v1"></script>
-<script data-xp-custom-page-ready="true">(function(){var r=document.documentElement,s=document.querySelector(".stage");r.dataset.xpRecipeReady="custom";r.dataset.catalogSurfaceReady="true";r.dataset.xpRecipeStatus="recipe-ready";r.dataset.xpSurfaceProfile="editorial-specimen";r.dataset.xpCanvas="paper";r.dataset.xpTitleFurniture="black-first-theme-second";if(s){s.dataset.surfaceRebuild="custom-page-v3";s.dataset.surfaceFocusCount="0";}})();</script>
+<script type="application/json" id="xp-surface-recipe">{"theme":"hermes-orange","color_name":"orange","layout_code":"d4","title":"layout-d4 · 目录导航页 · AI Engineering","layout":"paper-ink.scaffold.agenda","page_role":"orient","canvas":{"token":"paper","value":"#f2efe9","reason":"custom-redraw 的已定设计意图；视觉由该页面源码独立实现，ledger 只如实登记。"},"surface_profile":"editorial-specimen","surfaces":[{"role":"diagram-plane","material":"paper-plane","fill":"#f2efe9","stack":1},{"role":"structure","material":"ink-line","fill":"#1a1a1a","stack":2},{"role":"focus-marker","material":"accent","fill":"#d95e00","stack":3}],"accent":{"value":"#d95e00","semantic_channel":"当前章节或当前目录项","furniture":"左上第一行 doc-kicker 固定墨黑，第二行 doc-title 使用当前主题色；folio 跟随元信息通道：墨色 45%（同英文章节标签），不使用主题色。","neutral_exceptions":["普通英文标签","轴名","层名","结构编号","MODEL","非当前数据"],"furniture_mode":"black-first-theme-second","folio_mode":"metadata-neutral"},"border_policy":"主体 1px 墨线；唯一焦点可用 2px 橙线，所有容器方角。","shadow_policy":"仅唯一被举起的主证据允许一次 10px 零模糊硬影；非强调态固定墨黑，页面语义焦点开启时使用当前主题色。","noise_policy":"由主题统一提供唯一一层约 6% 黑色 fractal-noise；页面不得自带 noise 节点；浅色页 multiply，墨面可 overlay。","reference_evidence":{"file":"所有文档都该重写一遍.html","cards":["card-2","card-5","card-7"],"rule":"纸面承载版式，只有被举起的文献、标本或终端使用不透明白面。"},"acceptance":["强调色只落一个语义通道；同一序列可重复，但不得扩散到结构元数据。","纯白只用于 top-white，不能替代默认纸面。","缩略图必须从该主题独立 frame 的实际渲染重建。"],"status":"recipe-ready","surface_bindings":[],"surface_binding_reason":"custom-redraw 不加载共享 surface runtime；材料已在独立源码内显式实现。","theme_identity":[{"group_id":"identity.toc-markers","label":"目录序号圆环","members":[{"selector":"[data-number-part=\"disc\"], [data-number-part=\"outer-ring\"]","treatment":"identity.stroke","expected_count":6}]}],"emphasis_targets":[],"sample_target_id":null}</script>
+<script src="../../catalog-surface.js" data-catalog-theme-surface="catalog-theme-recipes-v2"></script>
+<script src="../../catalog-typography.js" data-catalog-typography="brand-latin-numeric-oswald-v1"></script>
+<script data-xp-custom-page-ready="true">(function(){var r=document.documentElement,s=document.querySelector(".stage");function ready(){if(r.dataset.catalogSurfaceReady!=="true")return;r.dataset.xpRecipeReady="custom";r.dataset.xpRecipeStatus="recipe-ready";r.dataset.xpSurfaceProfile="editorial-specimen";r.dataset.xpCanvas="paper";r.dataset.xpTitleFurniture="black-first-theme-second";if(s){s.dataset.surfaceRebuild="custom-page-v4";s.dataset.surfaceFocusCount=String(document.querySelectorAll("[data-content-ref][data-emphasis-role]").length);}}var o=new MutationObserver(ready);o.observe(r,{attributes:true,attributeFilter:["data-catalog-surface-ready"]});ready();document.addEventListener("wise-ppt:semantic-keys-ready",function(){requestAnimationFrame(ready);});})();</script>
 </body>
 </html>

@@ -29,7 +29,7 @@
     return Number.isFinite(value) ? value : fallback;
   }
 
-  function adaptGalleryGeometry(option, entry, isDetail, typeSize) {
+  function adaptGalleryGeometry(option, entry, isDetail, typeSize, themeContext) {
     /* 口径：几何数值参数两态合一（缩略图与详情同构图）；isDetail 只保留
        "显隐级"差异（缩略图藏 edge 标签/标题/图例说明）与纯尺寸降噪（symbolSize）。 */
     if (entry.component_id === 'echarts.pie-access-source') {
@@ -86,12 +86,18 @@
          不拉伸格子去填满宽度;详情逐项保留官方 calendar-heatmap 构图,缩略图只做可读性降噪。
          格宽两态合一；缩略图隐藏标题/分段图例后垂直定位相应上移，属显隐的连带布局。
          格子从 11px 提到 20px:此前一整年日历只占画布约四分之一,明显小于其他 ECharts 组件。 */
+      const hostWidth = Number(themeContext?.element?.clientWidth);
+      const hostHeight = Number(themeContext?.element?.clientHeight);
+      const chartWidth = Number.isFinite(hostWidth) && hostWidth > 0 ? hostWidth : 1280;
+      const chartHeight = Number.isFinite(hostHeight) && hostHeight > 0 ? hostHeight : 720;
+      const calendarWidth = 53 * 20;
+      const calendarLeft = Math.round((chartWidth - calendarWidth) / 2 + 11);
       if (isDetail) {
         /* 说明、分段图例与日历作为一个组合在画布内垂直居中 */
-        mapOption(option.title, (title) => { title.top = '26%'; });
+        mapOption(option.title, (title) => { title.top = Math.round(chartHeight / 2 - 142.5); });
         mapOption(option.visualMap, (visualMap) => {
           visualMap.show = true;
-          visualMap.top = '32%';
+          visualMap.top = Math.round(chartHeight / 2 - 97.5);
           visualMap.itemWidth = 10;
           visualMap.itemHeight = 10;
           visualMap.itemGap = 4;
@@ -100,18 +106,22 @@
           });
         });
         mapOption(option.calendar, (calendar) => {
-          calendar.top = '43%';
-          calendar.left = 'center';
+          calendar.top = Math.round(chartHeight / 2 - 15);
+          calendar.left = calendarLeft;
           delete calendar.right;
+          delete calendar.bottom;
+          calendar.height = 154;
           calendar.cellSize = [20, 22];
         });
       } else {
         mapOption(option.title, (title) => { title.show = false; });
         mapOption(option.visualMap, (visualMap) => { visualMap.show = false; });
         mapOption(option.calendar, (calendar) => {
-          calendar.top = '34%';
-          calendar.left = 'center';
+          calendar.top = Math.round(chartHeight / 2 - 66);
+          calendar.left = calendarLeft;
           delete calendar.right;
+          delete calendar.bottom;
+          calendar.height = 154;
           calendar.cellSize = [20, 22];
           calendar.monthLabel = Object.assign({}, calendar.monthLabel, { show: true });
           calendar.yearLabel = Object.assign({}, calendar.yearLabel, { show: false });
@@ -145,7 +155,7 @@
       option.animation = false;
     }
     mapOption(option.series, (series) => adaptSeriesGeometry(series, isDetail));
-    adaptGalleryGeometry(option, entry, isDetail, settings.typeSize);
+    adaptGalleryGeometry(option, entry, isDetail, settings.typeSize, settings.themeContext);
     return option;
   }
 

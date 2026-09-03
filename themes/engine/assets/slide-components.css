@@ -93,47 +93,273 @@
   z-index: 5;
 }
 
-/* 主题身份始终开启：页面内容中的本地图标不依赖主题焦点。放映壳图标
-   不在 .slide 内，继续继承中性的产品 UI 颜色。 */
-.slide [data-icon-source] {
-  color: var(--wp-color-functional);
+/* identity 是每个版式固定的主题气质点缀。纸墨的 functional token 解析为中性墨色；
+   爱马仕橙与克莱因蓝解析为主题色。左上标题、页码和 caption 永不进入这条通道。 */
+.slide [data-theme-identity-treatment="identity.text"] {
+  color: var(--wp-color-functional) !important;
 }
+.slide :is(text, tspan)[data-theme-identity-treatment="identity.text"],
+.slide [data-theme-identity-treatment="identity.text"] :is(text, tspan) {
+  fill: var(--wp-color-functional) !important;
+}
+.slide :is(text, tspan)[data-theme-identity-treatment="identity.text-bold"],
+.slide [data-theme-identity-treatment="identity.text-bold"] :is(text, tspan) {
+  fill: var(--wp-color-functional) !important;
+  font-weight: 650 !important;
+}
+.slide [data-theme-identity-treatment="identity.stroke"] {
+  color: var(--wp-color-functional) !important;
+  border-color: var(--wp-color-functional) !important;
+  outline-color: var(--wp-color-functional) !important;
+}
+.slide :is(path, line, polyline, polygon, circle, ellipse, rect, use)[data-theme-identity-treatment="identity.stroke"],
+.slide [data-theme-identity-treatment="identity.stroke"] :is(path, line, polyline, polygon, circle, ellipse, rect, use) {
+  stroke: var(--wp-color-functional) !important;
+}
+.slide :is(path, line, polyline, polygon, circle, ellipse, rect, use)[data-theme-identity-treatment="identity.stroke-medium"],
+.slide [data-theme-identity-treatment="identity.stroke-medium"] :is(path, line, polyline, polygon, circle, ellipse, rect, use) {
+  stroke: var(--wp-color-functional) !important;
+  stroke-width: 1.6px !important;
+}
+.slide :is(path, line, polyline, polygon, circle, ellipse, rect, use)[data-theme-identity-treatment="identity.stroke-heavy"],
+.slide [data-theme-identity-treatment="identity.stroke-heavy"] :is(path, line, polyline, polygon, circle, ellipse, rect, use) {
+  stroke: var(--wp-color-functional) !important;
+  stroke-width: 2.4px !important;
+}
+.slide [data-theme-identity-treatment="identity.fill"] {
+  color: var(--wp-color-functional) !important;
+  background-color: var(--wp-color-functional) !important;
+}
+.slide :is(path, circle, ellipse, rect, polygon, use)[data-theme-identity-treatment="identity.fill"],
+.slide [data-theme-identity-treatment="identity.fill"] :is(path, circle, ellipse, rect, polygon, use) {
+  fill: var(--wp-color-functional) !important;
+}
+.slide :is(path, circle, ellipse, rect, polygon, use)[data-theme-identity-treatment="identity.white-fill"],
+.slide [data-theme-identity-treatment="identity.white-fill"] :is(path, circle, ellipse, rect, polygon, use) {
+  fill: #fff !important;
+}
+.slide [data-theme-identity-treatment="identity.border"] {
+  color: var(--wp-color-functional) !important;
+  border-color: var(--wp-color-functional) !important;
+  outline-color: var(--wp-color-functional) !important;
+}
+.slide :is(path, line, polyline, polygon, circle, ellipse, rect, use)[data-theme-identity-treatment="identity.border"],
+.slide [data-theme-identity-treatment="identity.border"] :is(path, line, polyline, polygon, circle, ellipse, rect, use) {
+  stroke: var(--wp-color-functional) !important;
+}
+.slide [data-theme-identity-treatment="identity.icon"] {
+  color: var(--wp-color-functional) !important;
+}
+.slide [data-theme-identity-treatment="identity.icon"] :is(path, line, polyline, polygon, circle, ellipse, rect, use)[stroke]:not([stroke="none"]) {
+  stroke: currentColor !important;
+}
+.slide :is(path, line, polyline, polygon, circle, ellipse, rect, use)[data-theme-identity-treatment="identity.data-series"],
+.slide [data-theme-identity-treatment="identity.data-series"] :is(path, line, polyline, polygon, circle, ellipse, rect, use) {
+  stroke: var(--wp-color-functional) !important;
+  fill: var(--wp-color-functional) !important;
+}
+.slide [data-theme-identity-treatment="identity.reverse-marker"] {
+  color: var(--wp-color-surface-canvas) !important;
+  background-color: var(--wp-color-functional) !important;
+  border-color: var(--wp-color-functional) !important;
+}
+.slide :is(path, circle, ellipse, rect, polygon, use)[data-theme-identity-treatment="identity.reverse-marker"],
+.slide [data-theme-identity-treatment="identity.reverse-marker"] :is(path, circle, ellipse, rect, polygon, use) {
+  fill: var(--wp-color-functional) !important;
+  stroke: var(--wp-color-functional) !important;
+}
+.slide [data-theme-identity-treatment="identity.reverse-marker"] :is(text, tspan) {
+  fill: var(--wp-color-surface-canvas) !important;
+}
+
+/* 阴影颜色是强调语法的内部实现细节，不扩展主题公共色彩角色。
+   默认保留外围通道；Hermes/Klein 的强调阴影统一回到各自主色。 */
+:root {
+  --wp-emphasis-shadow-color: var(--wp-color-focus-peripheral);
+}
+:root:is([data-theme-id="hermes-orange"], [data-theme-id="klein-blue"]) {
+  --wp-emphasis-shadow-color: var(--wp-color-focus);
+}
+
+/* focus 只在页面选择了一个已登记 target 后激活。它不引入第四种颜色；
+   与 identity 的层级差由反白、线宽、硬阴影、纹理和路径深度建立。 */
 .accent .slide[data-emphasis-mode="semantic-focus"] [data-emphasis-active="true"][data-emphasis-role="value"],
 .accent .slide[data-emphasis-mode="semantic-focus"] [data-emphasis-active="true"][data-emphasis-role="outline"],
 .accent .slide[data-emphasis-mode="semantic-focus"] [data-emphasis-active="true"][data-emphasis-role="status"],
 .accent .slide[data-emphasis-mode="semantic-focus"] [data-emphasis-active="true"][data-emphasis-role="symbol"] {
   --wp-emphasis-color: var(--wp-color-focus);
-  color: var(--wp-emphasis-color);
-  border-color: var(--wp-emphasis-color);
-  outline-color: var(--wp-emphasis-color);
+  color: var(--wp-emphasis-color) !important;
+  border-color: var(--wp-emphasis-color) !important;
+  outline-color: var(--wp-emphasis-color) !important;
 }
 .accent .slide[data-emphasis-mode="semantic-focus"] [data-emphasis-active="true"][data-emphasis-role="label"],
 .accent .slide[data-emphasis-mode="semantic-focus"] [data-emphasis-active="true"][data-emphasis-role="annotation"] {
   --wp-emphasis-color: var(--wp-color-focus-secondary);
-  color: var(--wp-emphasis-color);
-  border-color: var(--wp-emphasis-color);
-  outline-color: var(--wp-emphasis-color);
+  color: var(--wp-emphasis-color) !important;
+  border-color: var(--wp-emphasis-color) !important;
+  outline-color: var(--wp-emphasis-color) !important;
 }
 .accent .slide[data-emphasis-mode="semantic-focus"] [data-emphasis-active="true"][data-emphasis-role="texture"] {
   --wp-emphasis-color: var(--wp-color-focus-peripheral);
-  color: var(--wp-emphasis-color);
-  border-color: var(--wp-emphasis-color);
-  outline-color: var(--wp-emphasis-color);
+  color: var(--wp-emphasis-color) !important;
+  border-color: var(--wp-emphasis-color) !important;
+  outline-color: var(--wp-emphasis-color) !important;
 }
-.accent .slide[data-emphasis-mode="semantic-focus"] :is(text, tspan)[data-emphasis-active="true"][data-emphasis-role] {
-  fill: var(--wp-emphasis-color);
+/* 底部结论的语义角色仍保留 label/annotation 等原始分类；
+   只在 Hermes/Klein 中将其激活颜色统一为主色，不影响其他区域的次强调层级。 */
+:root:is([data-theme-id="hermes-orange"], [data-theme-id="klein-blue"]).accent
+  .slide[data-emphasis-mode="semantic-focus"]
+  :is(.caption, [data-theme-type-role="bottom-takeaway"])[data-emphasis-active="true"],
+:root:is([data-theme-id="hermes-orange"], [data-theme-id="klein-blue"]).accent
+  .slide[data-emphasis-mode="semantic-focus"]
+  :is(.caption, [data-theme-type-role="bottom-takeaway"]) [data-emphasis-active="true"] {
+  --wp-emphasis-color: var(--wp-color-focus);
 }
-.accent .slide[data-emphasis-mode="semantic-focus"] [data-emphasis-active="true"][data-emphasis-text-size="small"] {
-  color: var(--wp-private-focus-text-small, var(--wp-emphasis-color));
+/* 正式 Catalog 的旧强调对比档：沿用标准化前“成员 + role + 可选 fill”着色，
+   不读取新合同的 treatment。只在显式 legacy profile 下生效，生产与新 Catalog 不受影响。 */
+:root[data-emphasis-profile="legacy"].accent .slide[data-emphasis-mode="semantic-focus"]
+  :is(text, tspan)[data-emphasis-active="true"][data-emphasis-role]:not([data-emphasis-treatment]),
+:root[data-emphasis-profile="legacy"].accent .slide[data-emphasis-mode="semantic-focus"]
+  [data-emphasis-active="true"][data-emphasis-role]:not([data-emphasis-treatment]) :is(text, tspan) {
+  fill: var(--wp-emphasis-color) !important;
 }
-.accent .slide[data-emphasis-mode="semantic-focus"] :is(text, tspan)[data-emphasis-active="true"][data-emphasis-role][data-emphasis-text-size="small"] {
-  fill: var(--wp-private-focus-text-small, var(--wp-emphasis-color));
+:root[data-emphasis-profile="legacy"].accent .slide[data-emphasis-mode="semantic-focus"]
+  :is(path, line, polyline, polygon, circle, ellipse, rect, use)[data-emphasis-active="true"][data-emphasis-role]:not([data-emphasis-treatment])[stroke]:not([stroke="none"]),
+:root[data-emphasis-profile="legacy"].accent .slide[data-emphasis-mode="semantic-focus"]
+  [data-emphasis-active="true"][data-emphasis-role]:not([data-emphasis-treatment]) :is(path, line, polyline, polygon, circle, ellipse, rect, use)[stroke]:not([stroke="none"]) {
+  stroke: var(--wp-emphasis-color) !important;
 }
-.accent .slide[data-emphasis-mode="semantic-focus"] :is(path, line, polyline, polygon, circle, ellipse, rect, use)[data-emphasis-active="true"][data-emphasis-role][stroke]:not([stroke="none"]) {
-  stroke: var(--wp-emphasis-color);
+:root[data-emphasis-profile="legacy"].accent .slide[data-emphasis-mode="semantic-focus"]
+  :is(path, circle, ellipse, rect, polygon, use)[data-emphasis-active="true"][data-emphasis-role]:not([data-emphasis-treatment])[data-emphasis-paint="fill"],
+:root[data-emphasis-profile="legacy"].accent .slide[data-emphasis-mode="semantic-focus"]
+  [data-emphasis-active="true"][data-emphasis-role]:not([data-emphasis-treatment])[data-emphasis-paint="fill"] :is(path, circle, ellipse, rect, polygon, use) {
+  fill: var(--wp-emphasis-color) !important;
 }
-.accent .slide[data-emphasis-mode="semantic-focus"] :is(path, circle, ellipse, rect, polygon, use)[data-emphasis-active="true"][data-emphasis-role][data-emphasis-paint="fill"] {
-  fill: var(--wp-emphasis-color);
+:root[data-emphasis-profile="legacy"].accent .slide[data-emphasis-mode="semantic-focus"]
+  :is(path, circle, ellipse, rect, polygon, use):is([data-emphasis-active="true"][data-emphasis-role="value"], [data-emphasis-active="true"][data-emphasis-role="status"], [data-emphasis-active="true"][data-emphasis-role="symbol"]):not([data-emphasis-treatment])[fill]:not([fill="none"]):is(:not([stroke]), [stroke="none"]),
+:root[data-emphasis-profile="legacy"].accent .slide[data-emphasis-mode="semantic-focus"]
+  :is([data-emphasis-active="true"][data-emphasis-role="value"], [data-emphasis-active="true"][data-emphasis-role="status"], [data-emphasis-active="true"][data-emphasis-role="symbol"]):not([data-emphasis-treatment])
+  :is(path, circle, ellipse, rect, polygon, use)[fill]:not([fill="none"]):is(:not([stroke]), [stroke="none"]) {
+  fill: var(--wp-emphasis-color) !important;
+}
+.accent .slide[data-emphasis-mode="semantic-focus"] [data-emphasis-active="true"][data-emphasis-treatment="focus.ink-weight"] {
+  --wp-emphasis-color: var(--wp-color-primary);
+  color: var(--wp-emphasis-color) !important;
+  font-weight: 700 !important;
+}
+.accent .slide[data-emphasis-mode="semantic-focus"] [data-emphasis-active="true"][data-emphasis-treatment="focus.ink-weight"] :is(h1, h2, h3, h4, p, span, strong, em, li),
+[data-experimental-emphasis-group][data-experimental-emphasis-treatment="focus.ink-weight"],
+[data-experimental-emphasis-group][data-experimental-emphasis-treatment="focus.ink-weight"] :is(h1, h2, h3, h4, p, span, strong, em, li) {
+  color: var(--wp-color-primary) !important;
+  font-weight: 700 !important;
+}
+.accent .slide[data-emphasis-mode="semantic-focus"] :is(text, tspan)[data-emphasis-active="true"][data-emphasis-treatment="focus.ink-weight"],
+.accent .slide[data-emphasis-mode="semantic-focus"] [data-emphasis-active="true"][data-emphasis-treatment="focus.ink-weight"] :is(text, tspan),
+[data-experimental-emphasis-group][data-experimental-emphasis-treatment="focus.ink-weight"] :is(text, tspan) {
+  fill: var(--wp-color-primary) !important;
+  font-weight: 700 !important;
+}
+.accent .slide[data-emphasis-mode="semantic-focus"] :is(text, tspan)[data-emphasis-active="true"][data-emphasis-treatment="focus.color"],
+.accent .slide[data-emphasis-mode="semantic-focus"] [data-emphasis-active="true"][data-emphasis-treatment="focus.color"] :is(text, tspan) {
+  fill: var(--wp-emphasis-color) !important;
+}
+.accent .slide[data-emphasis-mode="semantic-focus"] :is(text, tspan)[data-emphasis-active="true"][data-emphasis-treatment="focus.reverse-text"],
+.accent .slide[data-emphasis-mode="semantic-focus"] [data-emphasis-active="true"][data-emphasis-treatment="focus.reverse-text"] :is(text, tspan) {
+  fill: #fff !important;
+}
+.accent .slide[data-emphasis-mode="semantic-focus"] [data-emphasis-active="true"][data-emphasis-treatment="focus.color"] {
+  color: var(--wp-emphasis-color) !important;
+  border-color: var(--wp-emphasis-color) !important;
+  outline-color: var(--wp-emphasis-color) !important;
+}
+.accent .slide[data-emphasis-mode="semantic-focus"] :is(path, line, polyline, polygon, circle, ellipse, rect, use)[data-emphasis-active="true"][data-emphasis-treatment="focus.color"][stroke]:not([stroke="none"]),
+.accent .slide[data-emphasis-mode="semantic-focus"] [data-emphasis-active="true"][data-emphasis-treatment="focus.color"] :is(path, line, polyline, polygon, circle, ellipse, rect, use)[stroke]:not([stroke="none"]) {
+  stroke: var(--wp-emphasis-color) !important;
+}
+.accent .slide[data-emphasis-mode="semantic-focus"] :is(path, circle, ellipse, rect, polygon, use)[data-emphasis-active="true"][data-emphasis-treatment="focus.color"][data-emphasis-paint="fill"],
+.accent .slide[data-emphasis-mode="semantic-focus"] [data-emphasis-active="true"][data-emphasis-treatment="focus.color"][data-emphasis-paint="fill"] :is(path, circle, ellipse, rect, polygon, use) {
+  fill: var(--wp-emphasis-color) !important;
+}
+.accent .slide[data-emphasis-mode="semantic-focus"] :is(text, tspan)[data-emphasis-active="true"][data-emphasis-treatment="focus.text"],
+.accent .slide[data-emphasis-mode="semantic-focus"] [data-emphasis-active="true"][data-emphasis-treatment="focus.text"] :is(text, tspan) {
+  fill: var(--wp-emphasis-color) !important;
+  font-weight: 650 !important;
+}
+.accent .slide[data-emphasis-mode="semantic-focus"] [data-emphasis-active="true"][data-emphasis-treatment="focus.text"] {
+  color: var(--wp-emphasis-color) !important;
+  font-weight: 650 !important;
+}
+.accent .slide[data-emphasis-mode="semantic-focus"] :is(path, line, polyline, polygon, circle, ellipse, rect, use)[data-emphasis-active="true"][data-emphasis-treatment="focus.outline-depth"],
+.accent .slide[data-emphasis-mode="semantic-focus"] [data-emphasis-active="true"][data-emphasis-treatment="focus.outline-depth"] :is(path, line, polyline, polygon, circle, ellipse, rect, use) {
+  stroke: var(--wp-emphasis-color) !important;
+  filter: drop-shadow(3px 3px 0 var(--wp-emphasis-shadow-color));
+}
+.accent .slide[data-emphasis-mode="semantic-focus"] [data-emphasis-active="true"][data-emphasis-treatment="focus.outline-depth"] {
+  border-color: var(--wp-emphasis-color) !important;
+  outline: 3px solid var(--wp-emphasis-color);
+  outline-offset: 4px;
+}
+.accent .slide[data-emphasis-mode="semantic-focus"] [data-emphasis-active="true"][data-emphasis-treatment="focus.solid-reverse"] {
+  color: var(--wp-color-surface-canvas) !important;
+  background-color: var(--wp-emphasis-color) !important;
+  border-color: var(--wp-emphasis-color) !important;
+}
+.accent .slide[data-emphasis-mode="semantic-focus"] :is(path, circle, ellipse, rect, polygon, use)[data-emphasis-active="true"][data-emphasis-treatment="focus.solid-reverse"],
+.accent .slide[data-emphasis-mode="semantic-focus"] [data-emphasis-active="true"][data-emphasis-treatment="focus.solid-reverse"] :is(path, circle, ellipse, rect, polygon, use) {
+  fill: var(--wp-emphasis-color) !important;
+  stroke: var(--wp-emphasis-color) !important;
+}
+.accent .slide[data-emphasis-mode="semantic-focus"] [data-emphasis-active="true"][data-emphasis-treatment="focus.solid-reverse"] :is(text, tspan) {
+  fill: var(--wp-color-surface-canvas) !important;
+}
+.accent .slide[data-emphasis-mode="semantic-focus"] [data-emphasis-active="true"][data-emphasis-treatment="focus.hard-shadow"] {
+  border-color: var(--wp-emphasis-color) !important;
+  outline-color: var(--wp-emphasis-color) !important;
+  box-shadow: 9px 9px 0 var(--wp-emphasis-shadow-color) !important;
+  /* 已登记的强调动作必须胜过默认材料层的 filter:none；否则 SVG 主框只有
+     active 元数据而没有可见阴影（I4 即为回归基准）。 */
+  filter: drop-shadow(5px 5px 0 var(--wp-emphasis-shadow-color)) !important;
+}
+.accent .slide[data-emphasis-mode="semantic-focus"] [data-emphasis-active="true"][data-emphasis-treatment="focus.texture"] {
+  color: var(--wp-emphasis-color) !important;
+  background-image: repeating-linear-gradient(135deg, transparent 0 7px, var(--wp-color-focus-peripheral) 7px 9px) !important;
+  filter: contrast(1.2);
+}
+.accent .slide[data-emphasis-mode="semantic-focus"] :is(path, line, polyline, polygon, circle, ellipse, rect, use)[data-emphasis-active="true"][data-emphasis-treatment="focus.path-depth"],
+.accent .slide[data-emphasis-mode="semantic-focus"] [data-emphasis-active="true"][data-emphasis-treatment="focus.path-depth"] :is(path, line, polyline, polygon, circle, ellipse, rect, use) {
+  stroke: var(--wp-emphasis-color) !important;
+  stroke-width: 5px !important;
+  filter: drop-shadow(2px 2px 0 var(--wp-emphasis-shadow-color));
+}
+.accent .slide[data-emphasis-mode="semantic-focus"] [data-emphasis-active="true"][data-emphasis-treatment="focus.contrast-isolation"] {
+  color: var(--wp-emphasis-color) !important;
+  background-color: var(--wp-color-surface-panel) !important;
+  outline: 4px solid var(--wp-emphasis-color) !important;
+  outline-offset: 5px;
+  box-shadow: 8px 8px 0 var(--wp-emphasis-shadow-color) !important;
+}
+
+/* B4 的标准目标在三套主题中共享同一组可见动作。这里仅补足该节点组合所需的
+   精确线宽、10px 证据卡硬影与实心节点中心反白；旧强调档不进入本规则。 */
+:root[data-page-id="gallery-ai-b4"][data-emphasis-profile="standard"].accent
+  .slide #b4-focus-connector[data-emphasis-active="true"] {
+  stroke-width: 2px !important;
+  filter: drop-shadow(3px 3px 0 var(--wp-emphasis-shadow-color)) !important;
+  opacity: 1 !important;
+}
+
+:root[data-page-id="gallery-ai-b4"][data-emphasis-profile="standard"].accent
+  .slide #b4-focus-card[data-emphasis-active="true"] {
+  stroke: var(--wp-emphasis-color) !important;
+  stroke-width: 2px !important;
+  filter: drop-shadow(10px 10px 0 var(--wp-emphasis-color)) !important;
+}
+
+:root[data-page-id="gallery-ai-b4"][data-emphasis-profile="standard"].accent
+  .slide #b4-focus-node[data-emphasis-active="true"] + #b4-focus-node-core {
+  fill: #ffffff !important;
+  stroke: none !important;
+  opacity: 1 !important;
 }
 
 .slide .mono { font-family: var(--mono); font-weight: 400; }

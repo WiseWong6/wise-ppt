@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html data-theme-id="paper-ink" lang="zh-CN" data-runtime="wise-ppt-specimen" data-typography-mode="all-sans" data-page-id="gallery-ai-p1" data-page-role="explain" data-theme="paper-ink" data-layout="paper-ink.flow.blackbox-annotation" data-layout-source="gallery" data-sample-focus-profile="content-only" data-sample-focus-members='[{"selector":"#sample-focus","role":"value"}]' data-sample-focus-ref="sample.p1.p1-focus">
+<html data-theme-id="paper-ink" lang="zh-CN" data-runtime="wise-ppt-specimen" data-typography-mode="all-sans" data-page-id="gallery-ai-p1" data-page-role="explain" data-theme="paper-ink" data-layout="paper-ink.flow.blackbox-annotation" data-layout-source="gallery" data-emphasis-targets='[{"target_id":"focus.key-step","members":[{"selector":"#sample-focus","role":"value","treatment":"focus.text","expected_count":1}]}]' data-catalog-legacy-emphasis-profile="content-only" data-catalog-legacy-emphasis-members='[{"selector":"#p1-focus-blackbox","expected_count":1,"role":"outline"},{"selector":".p1-focus-path","expected_count":3,"role":"outline"}]' data-catalog-legacy-emphasis-foreground-members='[]' data-catalog-legacy-emphasis-ref="sample.p1.colored-blackbox" data-vnext-semantic-key-map='[{"key":"blackbox-flow.text.001","tag":"text","text":"THE PROCESS IN BETWEEN IS INVISIBLE","occurrence":0}]'>
 <head>
 <meta charset="UTF-8">
 <title>layout-p1 · 黑箱剖面 + 编号标注 · AI 评测三陷阱</title>
@@ -80,7 +80,7 @@ el('path', {d:'M 460 '+(CY+14)+' C 520 '+(CY+58)+' 552 '+(CY+64)+' 600 '+(CY+52)
 
 /* ---------- 中段：hatch 剖面黑箱，罩住不可见步骤 ---------- */
 var BX0 = 600, BX1 = 1260, BY0 = 312, BY1 = 582;
-el('rect', {x:BX0, y:BY0, width:BX1-BX0, height:BY1-BY0, fill:'url(#p1-hatch)', stroke:'var(--ink-80)', 'stroke-width':1.4});
+el('rect', {id:'p1-focus-blackbox', x:BX0, y:BY0, width:BX1-BX0, height:BY1-BY0, fill:'url(#p1-hatch)', stroke:'var(--ink-80)', 'stroke-width':1.4});
 el('rect', {x:BX0+8, y:BY0+8, width:BX1-BX0-16, height:BY1-BY0-16, fill:'none', stroke:INK, 'stroke-width':.6, opacity:.3});
 
 /* 黑箱内：3 个虚线圆角步骤框，虚线箭头相连 */
@@ -94,35 +94,30 @@ steps.forEach(function(s, i){
   txt(x+SW/2, CY-6, '?', {'font-family':MONO, 'font-size':'var(--type-heading)', 'text-anchor':'middle', fill:'var(--ink-55)'});
   txt(x+SW/2, CY+30, s, {'font-family':SANS, 'font-weight':300, 'font-size':'var(--type-body-small)', 'text-anchor':'middle', fill:INK70});
   if (i < 2) {
-    el('line', {x1:x+SW+6, y1:CY, x2:sx[i+1]-8, y2:CY, stroke:INK, 'stroke-width':1.1, opacity:.6,
+    el('line', {class:'p1-focus-path', x1:x+SW+6, y1:CY, x2:sx[i+1]-8, y2:CY, stroke:INK, 'stroke-width':1.1, opacity:.6,
       'stroke-dasharray':'5 6', 'marker-end':'url(#p1-darrow)'});
   }
 });
 /* 黑箱出口虚线箭头 → OUTPUT */
-el('line', {x1:BX1+10, y1:CY, x2:1354, y2:CY, stroke:INK, 'stroke-width':1.1, opacity:.6,
+el('line', {class:'p1-focus-path', x1:BX1+10, y1:CY, x2:1354, y2:CY, stroke:INK, 'stroke-width':1.1, opacity:.6,
   'stroke-dasharray':'5 6', 'marker-end':'url(#p1-darrow)'});
 
 /* 箱内一条小折线偏差逐步放大（错误级联） */
 el('polyline', {points:'660,538 700,532 740,544 800,524 860,552 940,512 1030,564 1140,496', fill:'none',
   stroke:INK70, 'stroke-width':.9});
 
-/* ---------- 右端：OUTPUT 实线气泡（✓ 带纸色擦除断口 + ✕） ---------- */
+/* ---------- 右端：OUTPUT 实线气泡（单个问号表示结果仍待验证） ---------- */
 el('rect', {x:1370, y:CY-64, width:330, height:128, rx:16, fill:'var(--paper-panel)', stroke:'var(--ink-80)', 'stroke-width':1.3});
 txt(1535, CY-8, 'OUTPUT', {'font-family':MONO, 'font-size':'var(--type-label)', 'letter-spacing':3, 'text-anchor':'middle', fill:INK45});
 txt(1535, CY+34, '看似正确的回答', {'font-family':SANS, 'font-weight':400, 'font-size':'var(--type-subheading)', 'text-anchor':'middle', fill:INK});
-/* 细线 ✓（符号笔触） */
-el('path', {d:'M 1648 458 L 1659 469 L 1681 443', fill:'none', stroke:INK, 'stroke-width':2.5, 'stroke-linecap':'round', 'stroke-linejoin':'round'});
-/* 纸色擦除断口 + ✕：答对也可能不可靠 */
-el('rect', {x:1652, y:454, width:15, height:13, fill:'var(--paper)'});
-el('line', {x1:1655, y1:456, x2:1664, y2:465, stroke:INK, 'stroke-width':1.2});
-el('line', {x1:1664, y1:456, x2:1655, y2:465, stroke:INK, 'stroke-width':1.2});
+txt(1664, CY+17, '?', {'font-family':MONO, 'font-size':'var(--type-heading)', 'text-anchor':'middle', fill:INK70});
 
 /* ---------- 编号标注带：0.7px 虚线引线 + 中点小圆点，三列等宽 ---------- */
 function trap(anchorX, anchorY, bx, no, en, title, lines){
   var ty = 719;
   el('line', {x1:anchorX, y1:anchorY, x2:bx+10, y2:ty-8, stroke:INK, 'stroke-width':.7, opacity:.45, 'stroke-dasharray':'3 5'});
   el('circle', {cx:(anchorX+bx+10)/2, cy:(anchorY+ty-8)/2, r:2.4, fill:INK, opacity:.55});
-  txt(bx, ty+24, no + ' · ' + en, {'font-family':MONO, 'font-size':'var(--type-label)', 'letter-spacing':2, fill:INK45});
+  txt(bx, ty+24, no + ' · ' + en, {'data-number-kind':'plain', 'data-number-role':'structural', 'data-number-part':'label', 'data-text-kind':'number', 'font-family':MONO, 'font-size':'var(--type-label)', 'letter-spacing':2, fill:'var(--wp-color-primary)'});
   txt(bx, ty+62, title, {'font-family':SANS, 'font-weight':400, 'font-size':'var(--type-body)', fill:INK});
   lines.forEach(function(line, j){
     txt(bx, ty+96 + j*30, line, {'font-family':SANS, 'font-weight':300, 'font-size':'var(--type-body-small)', fill:INK70});
@@ -135,7 +130,7 @@ trap(800, BY1+2, 700, '02', 'PROCESS BLACK-BOX', '过程黑盒',
 trap(1030, 590, 1080, '03', 'ERROR CASCADE', '错误级联',
   ['路由、召回、工具参数的小偏差，', '在多步执行中被持续放大。']);
 
-/* ---------- 手写批注（全页 1 处）：指向 ✓ ---------- */
+/* ---------- 手写批注（全页 1 处）：指向问号 ---------- */
 el('line', {x1:1592, y1:594, x2:1654, y2:488, stroke:INK, 'stroke-width':.7, opacity:.45, 'stroke-dasharray':'3 5'});
 el('circle', {cx:1623, cy:541, r:2.4, fill:INK, opacity:.55});
 txt(1560, 636, '答对了，也可能只是运气', {id:'sample-focus',

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html data-theme-id="paper-ink" lang="zh-CN" data-runtime="wise-ppt-specimen" data-typography-mode="all-sans" data-page-id="gallery-ai-g5" data-page-role="explain" data-theme="paper-ink" data-layout="paper-ink.radial.three-principles" data-layout-source="gallery" data-sample-focus-profile="content-only" data-sample-focus-members='[{"selector":"#g5-focus-title","role":"value"}]' data-sample-focus-ref="sample.g5.g5-focus">
+<html data-theme-id="paper-ink" lang="zh-CN" data-runtime="wise-ppt-specimen" data-typography-mode="all-sans" data-page-id="gallery-ai-g5" data-page-role="explain" data-theme="paper-ink" data-layout="paper-ink.radial.three-principles" data-layout-source="gallery" data-emphasis-targets='[{"target_id":"focus.key-layer","members":[{"selector":"#g5-focus-title","role":"value","treatment":"focus.text","expected_count":1}]}]' data-catalog-legacy-emphasis-profile="content-only" data-catalog-legacy-emphasis-members='[{"selector":"#g5-focus-title","role":"value"}]' data-catalog-legacy-emphasis-foreground-members='[]' data-catalog-legacy-emphasis-ref="sample.g5.g5-focus" data-vnext-semantic-key-map='[]'>
 <head>
 <meta charset="UTF-8">
 <title>layout-g5 · 三原则放射</title>
@@ -44,44 +44,43 @@ var INK80 = 'var(--ink-80)';
 var INK70 = 'var(--ink-70)';
 var INK45 = 'var(--ink-45)';
 var G = document.getElementById('draw');
-function el(tag, attrs) {
+function el(tag, attrs, parent) {
   var e = document.createElementNS(NS, tag);
   for (var k in attrs) e.setAttribute(k, attrs[k]);
-  G.appendChild(e); return e;
+  (parent || G).appendChild(e); return e;
 }
-function txt(x, y, str, attrs) {
-  var t = el('text', Object.assign({x:x, y:y}, attrs||{}));
+function txt(x, y, str, attrs, parent) {
+  var t = el('text', Object.assign({x:x, y:y}, attrs||{}), parent);
   t.textContent = str; return t;
 }
 var MONO = 'var(--mono)', SANS = 'var(--sans)';
 
-G = el('g', {transform:'translate(0 -36)'});
+G = el('g', {transform:'translate(8 -13)'});
 var CX=960,CY=386;
 function line(x1,y1,x2,y2,attrs){return el('line',Object.assign({x1:x1,y1:y1,x2:x2,y2:y2,stroke:INK,'stroke-width':1.1},attrs||{}));}
-line(478,CY,760,CY,{stroke:INK45,'stroke-width':1,'stroke-dasharray':'3 5'});
-line(1160,CY,1442,CY,{stroke:INK45,'stroke-width':1,'stroke-dasharray':'3 5'});
-line(CX,468,CX,656,{stroke:INK45,'stroke-width':1,'stroke-dasharray':'3 5'});
+line(478,CY,760,CY,{id:'g5-ray-left',stroke:INK45,'stroke-width':1,'stroke-dasharray':'3 5'});
+line(1160,CY,1442,CY,{id:'g5-ray-right',stroke:INK45,'stroke-width':1,'stroke-dasharray':'3 5'});
+line(CX,468,CX,656,{id:'g5-ray-bottom',stroke:INK45,'stroke-width':1,'stroke-dasharray':'3 5'});
 [[760,CY],[1160,CY],[CX,468]].forEach(function(p){el('circle',{cx:p[0],cy:p[1],r:3.2,fill:INK});});
 el('rect',{x:760,y:304,width:400,height:164,fill:'var(--paper-panel)',stroke:INK80,'stroke-width':1.4});
 el('rect',{x:767,y:311,width:386,height:150,fill:'none',stroke:INK,'stroke-width':.6,opacity:.35});
 txt(CX,354,'DESIGN INTENT',{'font-family':MONO,'font-size':'var(--type-label)','letter-spacing':2.8,'text-anchor':'middle',fill:INK70});
 txt(CX,406,'一页一个重心',{id:'g5-focus-title','font-family':SANS,'font-size':'var(--type-heading)','font-weight':300,'text-anchor':'middle',fill:INK});
 txt(CX,440,'先决定观众应该先看见什么',{'font-family':SANS,'font-size':'var(--type-body-small)','font-weight':300,'text-anchor':'middle',fill:INK70});
-/* 序号小字行(01 · CONTENT …)已删;左右标题墨迹中心对齐序号圆点(基线 396),底部标题收进原小字槽(710)保 54px 节奏 */
+/* 三个序号分别向左、向右、向下推出，使延长线只接到圆边；文字同步外移保留安全间距。 */
 function block(x,y,side,title,lines){
   var anchor=side==='left'?'end':side==='right'?'start':'middle';
   txt(x,y,title,{'font-family':SANS,'font-size':'var(--type-subheading)','font-weight':300,'text-anchor':anchor,fill:INK});
   lines.forEach(function(text,index){txt(x,y+38+index*28,text,{'font-family':SANS,'font-size':'var(--type-body-small)','font-weight':300,'text-anchor':anchor,fill:INK70});});
 }
-block(450,396,'left','内容先于装饰',['先回答这页要讲什么，','再决定它需要什么形式。']);
-block(1470,396,'right','颜色必须有语义',['大面积保持克制，','强调只服务关键信息。']);
-block(CX,710,'bottom','密度服从层级',['该留白的留白，该密集的有序；','让信息有进入和停留的位置。']);
-el('circle',{cx:478,cy:CY,r:18,fill:'var(--paper)',stroke:INK,'stroke-width':1.1});
-txt(478,CY+5,'01',{'font-family':MONO,'font-size':'var(--type-meta)','text-anchor':'middle',fill:INK});
-el('circle',{cx:1442,cy:CY,r:18,fill:'var(--paper)',stroke:INK,'stroke-width':1.1});
-txt(1442,CY+5,'02',{'font-family':MONO,'font-size':'var(--type-meta)','text-anchor':'middle',fill:INK});
-el('circle',{cx:CX,cy:656,r:18,fill:'var(--paper)',stroke:INK,'stroke-width':1.1});
-txt(CX,661,'03',{'font-family':MONO,'font-size':'var(--type-meta)','text-anchor':'middle',fill:INK});
+block(420,396,'left','内容先于装饰',['先回答这页要讲什么，','再决定它需要什么形式。']);
+block(1500,396,'right','颜色必须有语义',['大面积保持克制，','强调只服务关键信息。']);
+block(CX,730,'bottom','密度服从层级',['该留白的留白，该密集的有序；','让信息有进入和停留的位置。']);
+[[460,CY,'1'],[1460,CY,'2'],[CX,674,'3']].forEach(function(mark){
+  var marker=el('g',{id:'g5-number-'+mark[2],'data-number-kind':'circled','data-number-role':'structural','data-number-state':'outline','data-number-rings':'1'});
+  el('circle',{cx:mark[0],cy:mark[1],r:18,fill:'none',stroke:INK,'stroke-width':1.1,'data-number-part':'disc'},marker);
+  txt(mark[0],mark[1]+5,mark[2],{'data-number-part':'label','data-text-kind':'number','font-family':MONO,'font-size':'var(--type-meta)','text-anchor':'middle',fill:INK},marker);
+});
 
 stageFit();
 </script>

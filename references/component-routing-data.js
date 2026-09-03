@@ -1831,7 +1831,7 @@ window.WISE_PPT_COMPONENT_ROUTING = Object.freeze({
       },
       "frame": {
         "width": 1620,
-        "height": 528,
+        "height": 714,
         "fit": "fixed"
       },
       "behavior_contract": {
@@ -1849,9 +1849,9 @@ window.WISE_PPT_COMPONENT_ROUTING = Object.freeze({
         },
         "intrinsic_frame": {
           "width": 1620,
-          "height": 528
+          "height": 714
         },
-        "recommended_aspect_ratio": 3.0682
+        "recommended_aspect_ratio": 2.2689
       },
       "behavior_contract_id": "atlas.055.arch-platform@behavior-v4",
       "placement_contract": {
@@ -2788,8 +2788,8 @@ window.WISE_PPT_COMPONENT_ROUTING = Object.freeze({
         "max_aspect_ratio": 3.91
       },
       "frame": {
-        "width": 1044,
-        "height": 587,
+        "width": 1566,
+        "height": 250,
         "fit": "fixed"
       },
       "behavior_contract": {
@@ -2808,10 +2808,10 @@ window.WISE_PPT_COMPONENT_ROUTING = Object.freeze({
           ":scope > svg:nth-of-type(1) > g:nth-of-type(1) > text:nth-of-type(10), :scope > svg:nth-of-type(1) > g:nth-of-type(1) > text:nth-of-type(13), :scope > svg:nth-of-type(1) > g:nth-of-type(1) > text:nth-of-type(16), :scope > svg:nth-of-type(1) > g:nth-of-type(1) > text:nth-of-type(20), :scope > svg:nth-of-type(1) > g:nth-of-type(1) > text:nth-of-type(3), :scope > svg:nth-of-type(1) > g:nth-of-type(1) > text:nth-of-type(7)": "meta"
         },
         "intrinsic_frame": {
-          "width": 1044,
-          "height": 587
+          "width": 1566,
+          "height": 250
         },
-        "recommended_aspect_ratio": 1.7785
+        "recommended_aspect_ratio": 6.264
       },
       "behavior_contract_id": "native.wise-ppt.102.timeline-axis-horizontal@behavior-v4",
       "placement_contract": {
@@ -2949,8 +2949,8 @@ window.WISE_PPT_COMPONENT_ROUTING = Object.freeze({
         "max_aspect_ratio": 3.91
       },
       "frame": {
-        "width": 1100,
-        "height": 619,
+        "width": 1264,
+        "height": 536,
         "fit": "fixed"
       },
       "behavior_contract": {
@@ -2970,10 +2970,10 @@ window.WISE_PPT_COMPONENT_ROUTING = Object.freeze({
           ":scope > svg:nth-of-type(1) > g:nth-of-type(1) > text:nth-of-type(1), :scope > svg:nth-of-type(1) > g:nth-of-type(1) > text:nth-of-type(17), :scope > svg:nth-of-type(1) > g:nth-of-type(1) > text:nth-of-type(3), :scope > svg:nth-of-type(1) > g:nth-of-type(1) > text:nth-of-type(5), :scope > svg:nth-of-type(1) > g:nth-of-type(1) > text:nth-of-type(7)": "meta"
         },
         "intrinsic_frame": {
-          "width": 1100,
-          "height": 619
+          "width": 1264,
+          "height": 536
         },
-        "recommended_aspect_ratio": 1.7771
+        "recommended_aspect_ratio": 2.3582
       },
       "behavior_contract_id": "native.wise-ppt.105.diamond-edge-labels@behavior-v4",
       "placement_contract": {
@@ -3003,8 +3003,8 @@ window.WISE_PPT_COMPONENT_ROUTING = Object.freeze({
         "max_aspect_ratio": 4.13
       },
       "frame": {
-        "width": 954,
-        "height": 470,
+        "width": 1054,
+        "height": 514,
         "fit": "fixed"
       },
       "behavior_contract": {
@@ -3024,10 +3024,10 @@ window.WISE_PPT_COMPONENT_ROUTING = Object.freeze({
           ":scope > svg:nth-of-type(1) > g:nth-of-type(1) > text:nth-of-type(1), :scope > svg:nth-of-type(1) > g:nth-of-type(1) > text:nth-of-type(4)": "label"
         },
         "intrinsic_frame": {
-          "width": 954,
-          "height": 470
+          "width": 1054,
+          "height": 514
         },
-        "recommended_aspect_ratio": 2.0298
+        "recommended_aspect_ratio": 2.0506
       },
       "behavior_contract_id": "native.wise-ppt.106.balance-scale@behavior-v4",
       "placement_contract": {
@@ -3486,8 +3486,8 @@ window.WISE_PPT_COMPONENT_ROUTING = Object.freeze({
         "max_aspect_ratio": 4.2
       },
       "frame": {
-        "width": 1054,
-        "height": 514,
+        "width": 970,
+        "height": 470,
         "fit": "fixed"
       },
       "behavior_contract": {
@@ -3506,12 +3506,66 @@ window.WISE_PPT_COMPONENT_ROUTING = Object.freeze({
           "text[font-size=\"var(--type-meta)\"]": "meta"
         },
         "intrinsic_frame": {
-          "width": 1054,
-          "height": 514
+          "width": 970,
+          "height": 470
         },
-        "recommended_aspect_ratio": 2.0506
+        "recommended_aspect_ratio": 2.0638
       },
       "behavior_contract_id": "native.wise-ppt.131.lever-balance@behavior-v4",
+      "placement_contract": {
+        "default": "safe"
+      }
+    },
+    "native:62": {
+      "component_id": "native.wise-ppt.062.agenda-ink",
+      "relation_keys": [
+        "sequence"
+      ],
+      "capacity": {
+        "min_items": 5,
+        "max_items": 5,
+        "unit": "agenda-item"
+      },
+      "fixed_content_quantity": 5,
+      "binding_contract": {
+        "mode": "collection",
+        "unit": "agenda-item"
+      },
+      "data_contract_id": "native.wise-ppt.062.agenda-ink@1",
+      "space_requirements": {
+        "min_width": 620,
+        "min_height": 300,
+        "min_aspect_ratio": 1.6,
+        "max_aspect_ratio": 3
+      },
+      "frame": {
+        "width": 1380,
+        "height": 680,
+        "fit": "fixed"
+      },
+      "behavior_contract": {
+        "render_mode": "fixed-visual",
+        "fit_mode": "contain",
+        "allowed_slot_shapes": [
+          "landscape"
+        ],
+        "outer_alignment": "center",
+        "inner_alignment": "center",
+        "visual_subject_selector": ":scope > *",
+        "type_roles": {
+          "[data-source-d4-role=\"contents\"]": "label",
+          "text[font-size=\"var(--type-subheading)\"]:not([data-number-part=\"label\"])": "subheading",
+          "text[font-size=\"var(--type-body-small)\"]": "body-small",
+          "[data-number-part=\"label\"]": "number",
+          "text[font-size=\"var(--type-meta)\"]": "meta"
+        },
+        "intrinsic_frame": {
+          "width": 1380,
+          "height": 680
+        },
+        "recommended_aspect_ratio": 2.0294
+      },
+      "behavior_contract_id": "native.wise-ppt.062.agenda-ink@behavior-v4",
       "placement_contract": {
         "default": "safe"
       }
@@ -3639,38 +3693,35 @@ window.WISE_PPT_COMPONENT_ROUTING = Object.freeze({
       "data_contract_id": "native.wise-ppt.065.official-doc@1",
       "space_requirements": {
         "min_width": 620,
-        "min_height": 560,
-        "min_aspect_ratio": 0.85,
-        "max_aspect_ratio": 2.57
+        "min_height": 200,
+        "min_aspect_ratio": 1.6,
+        "max_aspect_ratio": 3.8
       },
       "frame": {
-        "width": 800,
-        "height": 680,
+        "width": 1324,
+        "height": 423,
         "fit": "fixed"
       },
       "behavior_contract": {
         "render_mode": "fixed-visual",
         "fit_mode": "contain",
         "allowed_slot_shapes": [
-          "portrait",
-          "square",
           "landscape"
         ],
         "outer_alignment": "center",
         "inner_alignment": "center",
         "visual_subject_selector": ":scope > *",
         "type_roles": {
-          "text[font-size=\"var(--type-subheading)\"], g[font-size=\"var(--type-subheading)\"] text": "subheading",
-          "text[font-size=\"var(--type-body)\"], g[font-size=\"var(--type-body)\"] text": "body",
-          "text[font-size=\"var(--type-body-small)\"], g[font-size=\"var(--type-body-small)\"] text": "body",
-          ":scope > svg:nth-of-type(1) > g:nth-of-type(2) > text:nth-of-type(1)": "label",
-          ":scope > svg:nth-of-type(1) > g:nth-of-type(2) > text:nth-of-type(10)": "meta"
+          "text[font-size=\"var(--type-subheading)\"]": "subheading",
+          "text[font-size=\"var(--type-body-small)\"]": "body-small",
+          "text[font-size=\"var(--type-label)\"]": "label",
+          "text[font-size=\"var(--type-meta)\"]": "meta"
         },
         "intrinsic_frame": {
-          "width": 800,
-          "height": 680
+          "width": 1324,
+          "height": 423
         },
-        "recommended_aspect_ratio": 1.1765
+        "recommended_aspect_ratio": 3.13
       },
       "behavior_contract_id": "native.wise-ppt.065.official-doc@behavior-v4",
       "placement_contract": {
@@ -4979,8 +5030,8 @@ window.WISE_PPT_COMPONENT_ROUTING = Object.freeze({
         "max_aspect_ratio": 3.91
       },
       "frame": {
-        "width": 1100,
-        "height": 619,
+        "width": 1496,
+        "height": 615,
         "fit": "fixed"
       },
       "behavior_contract": {
@@ -5000,10 +5051,10 @@ window.WISE_PPT_COMPONENT_ROUTING = Object.freeze({
           ":scope > svg:nth-of-type(1) > g:nth-of-type(1) > text:nth-of-type(1), :scope > svg:nth-of-type(1) > g:nth-of-type(1) > text:nth-of-type(10), :scope > svg:nth-of-type(1) > g:nth-of-type(1) > text:nth-of-type(12), :scope > svg:nth-of-type(1) > g:nth-of-type(1) > text:nth-of-type(14), :scope > svg:nth-of-type(1) > g:nth-of-type(1) > text:nth-of-type(16), :scope > svg:nth-of-type(1) > g:nth-of-type(1) > text:nth-of-type(18), :scope > svg:nth-of-type(1) > g:nth-of-type(1) > text:nth-of-type(2), :scope > svg:nth-of-type(1) > g:nth-of-type(1) > text:nth-of-type(20), :scope > svg:nth-of-type(1) > g:nth-of-type(1) > text:nth-of-type(22), :scope > svg:nth-of-type(1) > g:nth-of-type(1) > text:nth-of-type(24), :scope > svg:nth-of-type(1) > g:nth-of-type(1) > text:nth-of-type(26), :scope > svg:nth-of-type(1) > g:nth-of-type(1) > text:nth-of-type(4), :scope > svg:nth-of-type(1) > g:nth-of-type(1) > text:nth-of-type(6), :scope > svg:nth-of-type(1) > g:nth-of-type(1) > text:nth-of-type(8)": "meta"
         },
         "intrinsic_frame": {
-          "width": 1100,
-          "height": 619
+          "width": 1496,
+          "height": 615
         },
-        "recommended_aspect_ratio": 1.7771
+        "recommended_aspect_ratio": 2.4325
       },
       "behavior_contract_id": "native.wise-ppt.094.mapping-arc-network@behavior-v4",
       "placement_contract": {
@@ -5139,8 +5190,8 @@ window.WISE_PPT_COMPONENT_ROUTING = Object.freeze({
         "max_aspect_ratio": 3.91
       },
       "frame": {
-        "width": 1476,
-        "height": 830,
+        "width": 916,
+        "height": 644,
         "fit": "fixed"
       },
       "behavior_contract": {
@@ -5159,10 +5210,10 @@ window.WISE_PPT_COMPONENT_ROUTING = Object.freeze({
           ":scope > svg:nth-of-type(1) > g:nth-of-type(1) > text:nth-of-type(1), :scope > svg:nth-of-type(1) > g:nth-of-type(1) > text:nth-of-type(10), :scope > svg:nth-of-type(1) > g:nth-of-type(1) > text:nth-of-type(12), :scope > svg:nth-of-type(1) > g:nth-of-type(1) > text:nth-of-type(3), :scope > svg:nth-of-type(1) > g:nth-of-type(1) > text:nth-of-type(4), :scope > svg:nth-of-type(1) > g:nth-of-type(1) > text:nth-of-type(6), :scope > svg:nth-of-type(1) > g:nth-of-type(1) > text:nth-of-type(7), :scope > svg:nth-of-type(1) > g:nth-of-type(1) > text:nth-of-type(9)": "label"
         },
         "intrinsic_frame": {
-          "width": 1476,
-          "height": 830
+          "width": 916,
+          "height": 644
         },
-        "recommended_aspect_ratio": 1.7783
+        "recommended_aspect_ratio": 1.4224
       },
       "behavior_contract_id": "native.wise-ppt.097.nested-frames@behavior-v4",
       "placement_contract": {
@@ -5192,8 +5243,8 @@ window.WISE_PPT_COMPONENT_ROUTING = Object.freeze({
         "max_aspect_ratio": 3.91
       },
       "frame": {
-        "width": 972,
-        "height": 547,
+        "width": 1710,
+        "height": 704,
         "fit": "fixed"
       },
       "behavior_contract": {
@@ -5210,10 +5261,10 @@ window.WISE_PPT_COMPONENT_ROUTING = Object.freeze({
           ":scope > svg:nth-of-type(1) > g:nth-of-type(1) > text:nth-of-type(1), :scope > svg:nth-of-type(1) > g:nth-of-type(1) > text:nth-of-type(12), :scope > svg:nth-of-type(1) > g:nth-of-type(1) > text:nth-of-type(15), :scope > svg:nth-of-type(1) > g:nth-of-type(1) > text:nth-of-type(18), :scope > svg:nth-of-type(1) > g:nth-of-type(1) > text:nth-of-type(2), :scope > svg:nth-of-type(1) > g:nth-of-type(1) > text:nth-of-type(21), :scope > svg:nth-of-type(1) > g:nth-of-type(1) > text:nth-of-type(24), :scope > svg:nth-of-type(1) > g:nth-of-type(1) > text:nth-of-type(27), :scope > svg:nth-of-type(1) > g:nth-of-type(1) > text:nth-of-type(3), :scope > svg:nth-of-type(1) > g:nth-of-type(1) > text:nth-of-type(30), :scope > svg:nth-of-type(1) > g:nth-of-type(1) > text:nth-of-type(31), :scope > svg:nth-of-type(1) > g:nth-of-type(1) > text:nth-of-type(32), :scope > svg:nth-of-type(1) > g:nth-of-type(1) > text:nth-of-type(33), :scope > svg:nth-of-type(1) > g:nth-of-type(1) > text:nth-of-type(34), :scope > svg:nth-of-type(1) > g:nth-of-type(1) > text:nth-of-type(35), :scope > svg:nth-of-type(1) > g:nth-of-type(1) > text:nth-of-type(36), :scope > svg:nth-of-type(1) > g:nth-of-type(1) > text:nth-of-type(37), :scope > svg:nth-of-type(1) > g:nth-of-type(1) > text:nth-of-type(38), :scope > svg:nth-of-type(1) > g:nth-of-type(1) > text:nth-of-type(39), :scope > svg:nth-of-type(1) > g:nth-of-type(1) > text:nth-of-type(4), :scope > svg:nth-of-type(1) > g:nth-of-type(1) > text:nth-of-type(5), :scope > svg:nth-of-type(1) > g:nth-of-type(1) > text:nth-of-type(6), :scope > svg:nth-of-type(1) > g:nth-of-type(1) > text:nth-of-type(9)": "label"
         },
         "intrinsic_frame": {
-          "width": 972,
-          "height": 547
+          "width": 1710,
+          "height": 704
         },
-        "recommended_aspect_ratio": 1.777
+        "recommended_aspect_ratio": 2.429
       },
       "behavior_contract_id": "native.wise-ppt.098.ranking-bars@behavior-v4",
       "placement_contract": {

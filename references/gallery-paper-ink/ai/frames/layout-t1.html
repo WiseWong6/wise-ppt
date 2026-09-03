@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html data-theme-id="paper-ink" lang="zh-CN" data-runtime="wise-ppt-specimen" data-typography-mode="all-sans" data-page-id="gallery-ai-t1" data-page-role="sequence" data-theme="paper-ink" data-layout="paper-ink.flow.five-step-production" data-layout-source="gallery" data-layout-variant-of="wise-ppt.layout.relationship.I1" data-sample-focus-profile="copy-only" data-sample-focus-members='[{"selector":"#t1-focus","role":"label"}]' data-sample-focus-ref="sample.t1.t1-focus">
+<html data-theme-id="paper-ink" lang="zh-CN" data-runtime="wise-ppt-specimen" data-typography-mode="all-sans" data-page-id="gallery-ai-t1" data-page-role="sequence" data-theme="paper-ink" data-layout="paper-ink.flow.five-step-production" data-layout-source="gallery" data-layout-variant-of="wise-ppt.layout.relationship.I1" data-emphasis-targets='[{"target_id":"focus.key-step","members":[{"selector":"#t1-focus","role":"label","treatment":"focus.color","expected_count":1},{"selector":"#t1-focus-analyse","role":"value","treatment":"focus.color","expected_count":1}]}]' data-catalog-legacy-emphasis-profile="copy-only" data-catalog-legacy-emphasis-members='[{"selector":"#t1-focus","role":"label"}]' data-catalog-legacy-emphasis-foreground-members='[]' data-catalog-legacy-emphasis-ref="sample.t1.t1-focus" data-vnext-semantic-key-map='[{"key":"workflow.text.001","tag":"text","text":"01","occurrence":0}]'>
 <head>
 <meta charset="UTF-8">
 <title>layout-t1 · 五步生产编排链 · I1 登记变体</title>
@@ -23,7 +23,7 @@
   <svg class="scene" width="1920" height="1080" viewBox="0 0 1920 1080" role="img" aria-label="从原始资料到网页放映的五步生产编排链">
     <g id="t1-workflow" data-slot-id="workflow"></g>
   </svg>
-  <div class="caption">先理解内容，再安排<span id="t1-focus">重点、层级与关系</span>。</div>
+  <div class="caption">先理解内容，再安排<span id="t1-focus" data-emphasis-candidate="true">重点、层级与关系</span>。</div>
 </div>
 <script>
 var NS='http://www.w3.org/2000/svg';
@@ -44,7 +44,7 @@ var judge=el('g',{},artifacts);el('circle',{cx:910,cy:410,r:82,fill:'var(--paper
 var compose=el('g',{},artifacts);[[1168,344,74,54],[1252,344,58,54],[1168,408,58,58],[1236,408,74,58]].forEach(function(r,j){el('rect',{x:r[0],y:r[1],width:r[2],height:r[3],fill:j===3?'var(--paper-panel)':'none',stroke:j===3?INK:INK45,'stroke-width':j===3?1.2:1},compose);});
 var deck=el('g',{},artifacts);el('rect',{x:1492,y:338,width:156,height:126,fill:'var(--paper-panel)',stroke:INK,'stroke-width':1.3},deck);el('rect',{x:1500,y:346,width:140,height:110,fill:'none',stroke:INK,'stroke-width':.6,opacity:.35},deck);line(1520,378,1617,378,{stroke:INK45,'stroke-width':1},deck);line(1520,407,1590,407,{stroke:INK45,'stroke-width':1},deck);el('circle',{cx:1530,cy:432,r:3,fill:INK},deck);line(1541,432,1607,432,{stroke:INK45,'stroke-width':1},deck);
 var steps=[['01','ANALYSE','先理解内容','RAW MATERIAL'],['02','STRUCTURE','梳理叙事','NARRATIVE'],['03','JUDGE','判断版式','LAYOUT'],['04','COMPOSE','组合组件','COMPONENTS'],['05','DELIVER','生成网页 PPT','PLAYBACK']];
-steps.forEach(function(s,j){var x=C[j],item=el('g',{'data-repeat-unit':'workflow-step','data-bind-index':j});el('circle',{cx:x,cy:BY+59,r:19,fill:'var(--paper-deep)',stroke:INK,'stroke-width':1.2},item);txt(s[0],x,BY+64,{'font-family':MONO,'font-size':'var(--type-meta)','text-anchor':'middle'},item);txt(s[1],x,BY+112,{'font-family':MONO,'font-size':'var(--type-label)','letter-spacing':1.8,'text-anchor':'middle',fill:INK70},item);txt(s[2],x,BY+146,{'font-size':'var(--type-body-small)','font-weight':300,'text-anchor':'middle',fill:INK70},item);txt(s[3],x,806,{'font-family':MONO,'font-size':'var(--type-meta)','letter-spacing':1.8,'text-anchor':'middle',fill:INK45},item);});
+steps.forEach(function(s,j){var x=C[j],item=el('g',{'data-repeat-unit':'workflow-step','data-bind-index':j});txt(s[0],x,BY+84,{'data-number-kind':'plain','data-number-role':'sequence','data-number-part':'label','data-text-kind':'number','font-family':MONO,'font-size':'48px','text-anchor':'middle',fill:'var(--wp-color-functional)'},item);var enAttrs={'font-family':MONO,'font-size':'var(--type-label)','letter-spacing':1.8,'text-anchor':'middle',fill:INK70};if(j===0)enAttrs.id='t1-focus-analyse';txt(s[1],x,BY+122,enAttrs,item);txt(s[2],x,BY+152,{'font-size':'var(--type-body-small)','font-weight':300,'text-anchor':'middle',fill:INK70},item);txt(s[3],x,806,{'font-family':MONO,'font-size':'var(--type-meta)','letter-spacing':1.8,'text-anchor':'middle',fill:INK45},item);});
 stageFit();
 </script>
 </body>

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html data-theme-id="paper-ink" lang="zh-CN" data-runtime="wise-ppt-specimen" data-typography-mode="all-sans" data-page-id="gallery-ai-d9" data-page-role="orient" data-theme="paper-ink" data-layout="paper-ink.scaffold.agenda-split" data-layout-source="gallery">
+<html data-theme-id="paper-ink" lang="zh-CN" data-runtime="wise-ppt-specimen" data-typography-mode="all-sans" data-page-id="gallery-ai-d9" data-page-role="orient" data-theme="paper-ink" data-layout="paper-ink.scaffold.agenda-split" data-layout-source="gallery" data-emphasis-targets='[]' data-vnext-semantic-key-map='[]'>
 <head>
 <meta charset="UTF-8">
 <title>layout-d9 · 目录 · 分栏大字 · AI Engineering</title>
@@ -74,7 +74,7 @@ var X0 = 860, X1 = 1770, Y0 = 258, GAP = 112;
 
 rows.forEach(function(r, i){
   var cy = Y0 + i * GAP + 40;           /* 行文字基线 */
-  txt(X0, cy, r.no, {'font-family':MONO, 'font-size':'var(--type-subheading)', 'letter-spacing':2, fill:'color-mix(in srgb, var(--ink) 50%, transparent)'});
+  txt(X0, cy, r.no, {'data-number-kind':'plain', 'data-number-role':'sequence', 'data-number-part':'label', 'data-text-kind':'number', 'font-family':MONO, 'font-size':'var(--type-subheading)', 'letter-spacing':2, fill:'color-mix(in srgb, var(--ink) 50%, transparent)'});
   txt(X0 + 96, cy, r.cn, {'font-family':SANS, 'font-weight':300, 'font-size':'var(--type-caption)', 'letter-spacing':2, fill:INK});
   txt(X1, cy, 'P.' + (i*4+3), {'font-family':MONO, 'font-size':'var(--type-meta)', 'letter-spacing':2, 'text-anchor':'end', fill:'color-mix(in srgb, var(--ink) 50%, transparent)'});
   /* 行间 0.6px 分隔线 */

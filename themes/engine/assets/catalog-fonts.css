@@ -82,8 +82,9 @@
   font-display: block;
 }
 
-/* Specificity is intentionally higher than the production :root aliases loaded later. */
-:root[data-wise-catalog-fonts='true'] {
+/* 页面根节点与 Catalog 的实时预览层都可独立 opt in；Catalog 外壳不继承这些字面，
+   因而只有打开详情或生成缩略图时才会请求 WOFF2。 */
+[data-wise-catalog-fonts='true'] {
   --font-serif-family: 'Han Serif Catalog', 'Songti SC', serif;
   --font-sans-family: 'Han Sans Catalog', 'PingFang SC', sans-serif;
   --font-sans-light-family: 'Han Sans Catalog Light', 'PingFang SC', sans-serif;
@@ -92,4 +93,30 @@
   --font-mono-family: 'Courier Prime Catalog', Menlo, monospace;
   --font-brush-family: 'LXGW WenKai Catalog', 'Xingkai SC', cursive;
   --font-oswald-family: 'Oswald Catalog', 'Han Sans Catalog', 'PingFang SC', sans-serif;
+  --serif: var(--font-serif-family);
+  --sans: var(--font-sans-family);
+  --mono: var(--font-mono-family);
+  --brush: var(--font-brush-family);
+  --wp-font-serif: var(--serif);
+  --wp-font-sans: var(--sans);
+  --wp-font-mono: var(--font-mono-family);
+  --wp-font-brush: var(--font-brush-family);
+  --wp-font-han-sans: var(--font-sans-family);
+  --wp-font-han-serif: var(--font-serif-family);
+  --wp-font-oswald: var(--font-oswald-family);
+}
+
+[data-wise-catalog-fonts='true'][data-typography-mode='mixed'] {
+  --serif: var(--font-serif-family);
+  --sans: var(--font-sans-light-family);
+}
+
+[data-wise-catalog-fonts='true'][data-typography-mode='all-sans'] {
+  --serif: var(--font-sans-light-family);
+  --sans: var(--font-sans-light-family);
+}
+
+[data-wise-catalog-fonts='true'][data-typography-mode='all-serif'] {
+  --serif: var(--font-serif-family);
+  --sans: var(--font-serif-family);
 }

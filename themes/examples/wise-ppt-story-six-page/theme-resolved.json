@@ -16,7 +16,7 @@
       "selected": "focus-outline"
     }
   },
-  "contract": "wise-ppt-theme-resolved@3",
+  "contract": "wise-ppt-theme-resolved@5",
   "contrast_checks": [
     {
       "background": "#DFE0D9",
@@ -94,8 +94,10 @@
   "definition": {
     "color_strategy": {
       "private_roles": {
+        "focus-graphic": "#C0392B",
         "focus-text-small": "#9B2F24",
         "identity-accent": "#C0392B",
+        "identity-on-accent": "#FFFFFF",
         "ink-30": "rgba(25, 25, 23, .3)",
         "ink-60": "rgba(25, 25, 23, .6)"
       },
@@ -138,7 +140,7 @@
         "selected": "focus-outline"
       }
     },
-    "contract": "wise-ppt-theme@3",
+    "contract": "wise-ppt-theme@5",
     "evidence": {
       "component_evidence": "只对已登记语义区域应用材料",
       "icon_evidence": "墨色线性 Icon，透明度与线宽共同分层",
@@ -180,6 +182,7 @@
       "drawing": "outline",
       "grouping": "native",
       "rhythm": "measured",
+      "source_family": "redraw-v3",
       "stroke_tiers": [
         "hairline",
         "detail",
@@ -251,7 +254,7 @@
     },
     "theme_id": "paper-ink",
     "typography": {
-      "default_mode": "mixed",
+      "default_mode": "all-sans",
       "modes": {
         "all-sans": {
           "roles": {
@@ -336,7 +339,7 @@
             ],
             "bottom-takeaway": [
               "han-serif",
-              500,
+              700,
               1
             ],
             "chapter-title": [
@@ -486,6 +489,7 @@
     "drawing": "outline",
     "grouping": "native",
     "rhythm": "measured",
+    "source_family": "redraw-v3",
     "stroke_tiers": [
       "hairline",
       "detail",
@@ -526,8 +530,10 @@
     }
   },
   "private_tokens": {
+    "focus-graphic": "#C0392B",
     "focus-text-small": "#9B2F24",
     "identity-accent": "#C0392B",
+    "identity-on-accent": "#FFFFFF",
     "ink-30": "rgba(25, 25, 23, .3)",
     "ink-60": "rgba(25, 25, 23, .6)"
   },
@@ -612,7 +618,7 @@
     "surface-recessed": "#D4D5CD"
   },
   "typography": {
-    "default_mode": "mixed",
+    "default_mode": "all-sans",
     "modes": {
       "all-sans": {
         "roles": {
@@ -697,7 +703,7 @@
           ],
           "bottom-takeaway": [
             "han-serif",
-            500,
+            700,
             1
           ],
           "chapter-title": [

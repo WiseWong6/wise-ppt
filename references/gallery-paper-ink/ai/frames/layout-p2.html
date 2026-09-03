@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html data-theme-id="paper-ink" lang="zh-CN" data-runtime="wise-ppt-specimen" data-typography-mode="all-sans" data-page-id="gallery-ai-p2" data-page-role="explain" data-theme="paper-ink" data-layout="paper-ink.mapping.diamond-edge-labels" data-layout-source="gallery" data-sample-focus-profile="none" data-sample-focus-members='[]'>
+<html data-theme-id="paper-ink" lang="zh-CN" data-runtime="wise-ppt-specimen" data-typography-mode="all-sans" data-page-id="gallery-ai-p2" data-page-role="explain" data-theme="paper-ink" data-layout="paper-ink.mapping.diamond-edge-labels" data-layout-source="gallery" data-emphasis-targets='[{"target_id":"focus.key-node","members":[{"selector":"#p2-context-card","role":"symbol","treatment":"focus.solid-reverse","paint":"fill","expected_count":1},{"selector":"#p2-context-frame, #p2-context-frame-inner","role":"outline","treatment":"focus.path-depth","expected_count":2},{"selector":"#p2-context-en, #p2-context-cn","role":"value","treatment":"focus.reverse-text","expected_count":2}]}]' data-catalog-legacy-emphasis-profile="content-only" data-catalog-legacy-emphasis-members='[{"selector":"#p2-context-card","expected_count":1,"role":"symbol","paint":"fill"}]' data-catalog-legacy-emphasis-foreground-members='[{"selector":"#p2-context-en","expected_count":1,"neutral_tone":"preserve","active_tone":"white"},{"selector":"#p2-context-cn","expected_count":1,"neutral_tone":"preserve","active_tone":"white"}]' data-catalog-legacy-emphasis-ref="sample.p2.colored-context-card" data-vnext-semantic-key-map='[{"key":"diamond-map.text.009","tag":"text","text":"USER INPUT","occurrence":0},{"key":"diamond-map.text.011","tag":"text","text":"RETRIEVED CONTEXTS","occurrence":0},{"key":"diamond-map.text.013","tag":"text","text":"RESPONSE","occurrence":0},{"key":"diamond-map.text.015","tag":"text","text":"REFERENCE","occurrence":0}]'>
 <head>
 <meta charset="UTF-8">
 <title>layout-p2 · 菱形四边标注 · RAG 四组证据对</title>
@@ -115,11 +115,23 @@ dot(m4);
 /* --- 节点双线框 --- */
 Object.keys(nodes).forEach(function(k){
   var n = nodes[k], r = nodeRect(n);
-  el('rect', {x:r.x, y:r.y, width:NW, height:NH, fill:'var(--paper)', stroke:'none'});
-  el('rect', {x:r.x, y:r.y, width:NW, height:NH, fill:'none', stroke:'var(--ink-80)', 'stroke-width':1.3});
-  el('rect', {x:r.x+5, y:r.y+5, width:NW-10, height:NH-10, fill:'none', stroke:INK, 'stroke-width':.6, opacity:.35});
-  txt(n.cx, n.cy - 4, n.en, {'font-family':MONO, 'font-size':'var(--type-label)', 'letter-spacing':2, 'text-anchor':'middle', fill:INK});
-  txt(n.cx, n.cy + 28, n.cn, {'font-family':SANS, 'font-weight':400, 'font-size':'var(--type-subheading)', 'text-anchor':'middle', fill:'var(--ink)'});
+  var cardAttrs = {class:'p2-node-card', x:r.x, y:r.y, width:NW, height:NH, fill:'var(--paper)', stroke:'none'};
+  var frameAttrs = {x:r.x, y:r.y, width:NW, height:NH, fill:'none', stroke:'var(--ink-80)', 'stroke-width':1.3};
+  var innerFrameAttrs = {x:r.x+5, y:r.y+5, width:NW-10, height:NH-10, fill:'none', stroke:INK, 'stroke-width':.6, opacity:.35};
+  var enAttrs = {'font-family':MONO, 'font-size':'var(--type-label)', 'letter-spacing':2, 'text-anchor':'middle', fill:INK};
+  var cnAttrs = {'font-family':SANS, 'font-weight':400, 'font-size':'var(--type-subheading)', 'text-anchor':'middle', fill:'var(--ink)'};
+  if (k === 'contexts') {
+    cardAttrs.id = 'p2-context-card';
+    frameAttrs.id = 'p2-context-frame';
+    innerFrameAttrs.id = 'p2-context-frame-inner';
+    enAttrs.id = 'p2-context-en';
+    cnAttrs.id = 'p2-context-cn';
+  }
+  el('rect', cardAttrs);
+  el('rect', frameAttrs);
+  el('rect', innerFrameAttrs);
+  txt(n.cx, n.cy - 4, n.en, enAttrs);
+  txt(n.cx, n.cy + 28, n.cn, cnAttrs);
 });
 
 /* RETRIEVED CONTEXTS 节点下方 mono 小注 */

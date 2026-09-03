@@ -1,6 +1,6 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "wise-ppt-theme@3",
+  "$id": "wise-ppt-theme@5",
   "title": "Wise PPT complete theme",
   "type": "object",
   "additionalProperties": false,
@@ -10,7 +10,7 @@
     "typography", "lines", "icons", "components", "exceptions"
   ],
   "properties": {
-    "contract": { "const": "wise-ppt-theme@3" },
+    "contract": { "const": "wise-ppt-theme@5" },
     "theme_id": { "type": "string", "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$" },
     "name": { "type": "string", "minLength": 1 },
     "source": {
@@ -50,6 +50,14 @@
             "strategy": { "const": "derive-oklch" },
             "identity_index": { "type": "integer", "minimum": 0, "maximum": 7 },
             "surface_mode": { "enum": ["light", "dark"] }
+          }
+        },
+        {
+          "type": "object", "additionalProperties": false,
+          "required": ["strategy", "anchor"],
+          "properties": {
+            "strategy": { "const": "recolor-oklch" },
+            "anchor": { "$ref": "#/$defs/hex" }
           }
         }
       ]
@@ -124,12 +132,14 @@
     },
     "privateRoles": {
       "type": "object", "additionalProperties": false,
-      "required": ["ink-60", "ink-30", "focus-text-small", "identity-accent"],
+      "required": ["ink-60", "ink-30", "focus-text-small", "focus-graphic", "identity-accent", "identity-on-accent"],
       "properties": {
         "ink-60": { "$ref": "#/$defs/cssColor" },
         "ink-30": { "$ref": "#/$defs/cssColor" },
         "focus-text-small": { "$ref": "#/$defs/cssColor" },
-        "identity-accent": { "$ref": "#/$defs/cssColor" }
+        "focus-graphic": { "$ref": "#/$defs/cssColor" },
+        "identity-accent": { "$ref": "#/$defs/cssColor" },
+        "identity-on-accent": { "$ref": "#/$defs/cssColor" }
       }
     },
     "surface": {
@@ -259,8 +269,9 @@
     },
     "icons": {
       "type": "object", "additionalProperties": false,
-      "required": ["drawing", "stroke_tiers", "color_role", "carrier", "grouping", "rhythm", "capabilities", "unregistered"],
+      "required": ["source_family", "drawing", "stroke_tiers", "color_role", "carrier", "grouping", "rhythm", "capabilities", "unregistered"],
       "properties": {
+        "source_family": { "enum": ["redraw-v3", "tabler-original-v3.46.0"] },
         "drawing": { "enum": ["outline", "solid", "duotone"] },
         "stroke_tiers": { "const": ["hairline", "detail", "main", "emphasis"] },
         "color_role": { "$ref": "#/$defs/semanticRoleName" },

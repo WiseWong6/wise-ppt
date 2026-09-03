@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html data-theme-id="klein-blue" lang="zh-CN" data-runtime="wise-ppt-specimen" data-typography-mode="all-sans" data-page-id="gallery-ai-h4" data-page-role="explain" data-theme="paper-ink" data-layout="paper-ink.nested.foundation-stack" data-layout-source="gallery" data-sample-focus-profile="content-only" data-sample-focus-members='[{"selector":"#h4-focus-frame","role":"outline"},{"selector":"#h4-focus-hatch","role":"texture"},{"selector":"#h4-focus-label","role":"label"}]' data-sample-focus-ref="sample.h4.h4-focus" data-surface-source="catalog-theme-recipes-v1" data-xp-recipe-id="klein-blue:h4" data-xp-surface-profile="six-card-foundation" data-xp-recipe-status="recipe-ready" data-xp-frame-kind="recipe-generated">
+<html data-theme-id="klein-blue" lang="zh-CN" data-runtime="wise-ppt-specimen" data-typography-mode="all-sans" data-page-id="gallery-ai-h4" data-page-role="explain" data-theme="paper-ink" data-layout="paper-ink.nested.foundation-stack" data-layout-source="gallery" data-emphasis-targets="[{&quot;target_id&quot;:&quot;focus.foundation-framework&quot;,&quot;label&quot;:&quot;AI CORE — COMPUTE + TRAINING FRAMEWORK&quot;,&quot;content_role&quot;:&quot;底部基础框架&quot;,&quot;reason_hint&quot;:&quot;默认完整复用旧版；强调态只给 AI CORE — COMPUTE + TRAINING FRAMEWORK、内外双框和斜线上色，斜线跟随外框色。&quot;,&quot;members&quot;:[{&quot;selector&quot;:&quot;#h4-focus-framework-title&quot;,&quot;role&quot;:&quot;value&quot;,&quot;treatment&quot;:&quot;focus.color&quot;,&quot;expected_count&quot;:1},{&quot;selector&quot;:&quot;#h4-focus-frame, #h4-focus-frame-inner&quot;,&quot;role&quot;:&quot;outline&quot;,&quot;treatment&quot;:&quot;focus.color&quot;,&quot;expected_count&quot;:2},{&quot;selector&quot;:&quot;#h4-focus-hatch&quot;,&quot;role&quot;:&quot;outline&quot;,&quot;treatment&quot;:&quot;focus.color&quot;,&quot;expected_count&quot;:1}]}]" data-vnext-semantic-key-map="[{&quot;key&quot;:&quot;support-layers.text.001&quot;,&quot;tag&quot;:&quot;text&quot;,&quot;text&quot;:&quot;LIFT&quot;,&quot;occurrence&quot;:0}]" data-catalog-legacy-emphasis-profile="content-only" data-catalog-legacy-emphasis-members="[{&quot;selector&quot;:&quot;.h4-card-illustration&quot;,&quot;expected_count&quot;:6,&quot;role&quot;:&quot;outline&quot;}]" data-catalog-legacy-emphasis-foreground-members="[]" data-catalog-legacy-emphasis-ref="sample.h4.illustration-accent" data-wise-catalog-fonts="true" data-surface-source="catalog-theme-recipes-v2" data-xp-recipe-id="klein-blue:h4" data-xp-surface-profile="six-card-foundation" data-xp-recipe-status="recipe-ready" data-xp-frame-kind="recipe-generated">
 <head>
 <meta charset="UTF-8">
 <title>layout-h4 · 底座托举三层 · AI Infra</title>
@@ -23,7 +23,7 @@
     z-index: 5;
   }
 </style>
-<link rel="stylesheet" href="../../catalog-surface.css" data-catalog-theme-surface="catalog-theme-recipes-v1">
+<link rel="stylesheet" href="../../catalog-surface.css" data-catalog-theme-surface="catalog-theme-recipes-v2">
 <link rel="stylesheet" href="../../title-furniture.css" data-catalog-title-furniture="black-first-theme-second-v1">
 </head>
 <body class="slide">
@@ -73,9 +73,9 @@ function nodeDot(cx, cy){
 
 /* ---------- 细线开放箭头（托举语义，自下而上） ---------- */
 function liftArrow(x, y1, y2, label){          /* y1 下 → y2 上 */
-  el('line', {x1:x, y1:y1, x2:x, y2:y2, stroke:INK, 'stroke-width':1.2, opacity:.7});
-  el('line', {x1:x-8, y1:y2+11, x2:x, y2:y2, stroke:INK, 'stroke-width':1.2, opacity:.7});
-  el('line', {x1:x+8, y1:y2+11, x2:x, y2:y2, stroke:INK, 'stroke-width':1.2, opacity:.7});
+  el('line', {'data-h4-lift-arrow':1, x1:x, y1:y1, x2:x, y2:y2, stroke:INK, 'stroke-width':1.2, opacity:.7});
+  el('line', {'data-h4-lift-arrow':1, x1:x-8, y1:y2+11, x2:x, y2:y2, stroke:INK, 'stroke-width':1.2, opacity:.7});
+  el('line', {'data-h4-lift-arrow':1, x1:x+8, y1:y2+11, x2:x, y2:y2, stroke:INK, 'stroke-width':1.2, opacity:.7});
   if (label) txt(x+16, (y1+y2)/2+4, label, {'font-family':MONO, 'font-size':'var(--type-micro-secondary)', 'letter-spacing':2, fill:INK45});
 }
 /* 3 组箭头，每组对齐对应模块的水平中心（产品卡/能力卡中心 x=460/960/1460），自下而上逐级托举 */
@@ -136,7 +136,10 @@ function gDrone(cx, cy){
 function card(x, y, w, h, item){
   el('rect', {x:x, y:y, width:w, height:h, fill:'var(--paper-panel)', stroke:INK80, 'stroke-width':1.2});
   el('rect', {x:x+5, y:y+5, width:w-10, height:h-10, fill:'none', stroke:INK, 'stroke-width':.6, opacity:.3});
+  var cardRoot = G;
+  G = el('g', {'class':'h4-card-illustration'});
   item.g(x+62, y+h/2);
+  G = cardRoot;
   txt(x+112, y+40, item.en, {'font-family':MONO, 'font-size':'var(--type-micro-secondary)', 'letter-spacing':2, fill:INK45});
   txt(x+112, y+72, item.cn, {'font-family':SANS, 'font-weight':300, 'font-size':'var(--type-subheading)', fill:INK});
   el('line', {x1:x+112, y1:y+88, x2:x+w-28, y2:y+88, stroke:INK, 'stroke-width':.6, opacity:.25});
@@ -161,16 +164,16 @@ var midItems = [
 
 /* ---------- 底层：通栏底座带 y780–860 ---------- */
 el('rect', {id:'h4-focus-frame', x:150, y:780, width:1620, height:80, fill:'url(#hatch20)', stroke:INK80, 'stroke-width':1.3});
-el('rect', {x:156, y:786, width:1608, height:68, fill:'none', stroke:INK, 'stroke-width':.6, opacity:.3});
-txt(960, 819, 'AI CORE — COMPUTE + TRAINING FRAMEWORK', {'font-family':MONO, 'font-size':'var(--type-body-small)', 'letter-spacing':3, 'text-anchor':'middle', fill:INK});
+el('rect', {id:'h4-focus-frame-inner', x:156, y:786, width:1608, height:68, fill:'none', stroke:INK, 'stroke-width':.6, opacity:.3});
+txt(960, 819, 'AI CORE — COMPUTE + TRAINING FRAMEWORK', {id:'h4-focus-framework-title', 'font-family':MONO, 'font-size':'var(--type-body-small)', 'letter-spacing':3, 'text-anchor':'middle', fill:INK});
 txt(960, 845, 'AI 算力底座 · 训练与推理一体化框架', {id:'h4-focus-label', 'font-family':SANS, 'font-weight':300, 'font-size':'var(--type-body-small)', 'text-anchor':'middle', fill:INK});
 txt(186, 845, 'REV 4.2', {'font-family':MONO, 'font-size':'var(--type-micro-secondary)', 'letter-spacing':2, fill:INK45});
 txt(1734, 845, '2,400 GPU', {id:'sample-focus', 'font-family':MONO, 'font-size':'var(--type-micro-secondary)', 'letter-spacing':2, 'text-anchor':'end', fill:INK45});
 
 stageFit();
 </script>
-<script type="application/json" id="xp-surface-recipe">{"theme":"klein-blue","color_name":"blue","layout_code":"h4","title":"layout-h4 · 底座托举三层 · AI Infra","layout":"paper-ink.nested.foundation-stack","page_role":"explain","canvas":{"token":"paper","value":"#f2efe9","reason":"常规内容页在纸面上建立层级。"},"surface_profile":"six-card-foundation","surfaces":[{"role":"base-layout","material":"paper-plane","fill":"#f2efe9","stack":0},{"role":"foundation-card","material":"top-white","fill":"#ffffff","stack":2,"shadow":"none"},{"role":"focus-marker","material":"accent","fill":"#002fa7","stack":3}],"accent":{"value":"#002fa7","semantic_channel":"中心概念、当前节点或最终输出","furniture":"左上第一行 doc-kicker 固定墨黑，第二行 doc-title 使用当前主题色；folio 继续按该页画布与原配方处理。","neutral_exceptions":["普通英文标签","轴名","层名","结构编号","MODEL","非当前数据"],"furniture_mode":"black-first-theme-second","folio_mode":"accent"},"border_policy":"主体 1px 墨线；唯一焦点可用 2px 橙线，所有容器方角。","shadow_policy":"无投影；轴线、轨道、节点属于同一纸面。","noise_policy":"由主题统一提供唯一一层约 6% 黑色 fractal-noise；页面不得自带 noise 节点；浅色页 multiply，墨面可 overlay。","reference_evidence":{"file":"ai_studio_code (12).html","cards":["card-2","card-3","card-5","card-6"],"rule":"关系线与节点直接属于纸面；强调色只落当前节点、终点或短标记。"},"acceptance":["强调色只落一个语义通道；同一序列可重复，但不得扩散到结构元数据。","纯白只用于 top-white，不能替代默认纸面。","缩略图必须从该主题独立 frame 的实际渲染重建。"],"status":"recipe-ready","surface_bindings":[{"selector":"#draw > g > rect[fill=\"var(--paper-panel)\"]","expected_count":6,"role":"foundation-card","material":"top-white","fill":"#ffffff","stack":2,"shadow":"none"}],"surface_binding_reason":"真实浏览器 DOM 审计后锁定的稳定 selector；expected_count 是逐页门禁。"}</script>
-<script src="../../catalog-surface.js" data-catalog-theme-surface="catalog-theme-recipes-v1"></script>
-<script src="../../catalog-typography.js" data-catalog-typography="accent-english-title-match-v1"></script>
+<script type="application/json" id="xp-surface-recipe">{"theme":"klein-blue","color_name":"blue","layout_code":"h4","title":"layout-h4 · 底座托举三层 · AI Infra","layout":"paper-ink.nested.foundation-stack","page_role":"explain","canvas":{"token":"paper","value":"#f2efe9","reason":"常规内容页在纸面上建立层级。"},"surface_profile":"six-card-foundation","surfaces":[{"role":"base-layout","material":"paper-plane","fill":"#f2efe9","stack":0},{"role":"foundation-card","material":"top-white","fill":"#ffffff","stack":2,"shadow":"none"},{"role":"focus-marker","material":"accent","fill":"#002fa7","stack":3}],"accent":{"value":"#002fa7","semantic_channel":"六张卡片左侧的六枚线稿插画；托举箭头、底座与文案保持中性","furniture":"左上第一行 doc-kicker 固定墨黑，第二行 doc-title 使用当前主题色；folio 跟随元信息通道：墨色 45%（同英文章节标签），不使用主题色。","neutral_exceptions":["普通英文标签","轴名","层名","结构编号","MODEL","非当前数据"],"furniture_mode":"black-first-theme-second","folio_mode":"metadata-neutral"},"border_policy":"主体 1px 墨线；唯一焦点可用 2px 橙线，所有容器方角。","shadow_policy":"无投影；轴线、轨道、节点属于同一纸面。","noise_policy":"由主题统一提供唯一一层约 6% 黑色 fractal-noise；页面不得自带 noise 节点；浅色页 multiply，墨面可 overlay。","reference_evidence":{"file":"ai_studio_code (12).html","cards":["card-2","card-3","card-5","card-6"],"rule":"关系线与节点直接属于纸面；强调色只落当前节点、终点或短标记。"},"acceptance":["六枚卡片插画作为同一语义通道使用主题色线稿；托举箭头必须保持墨色。","纯白只用于 top-white，不能替代默认纸面。","缩略图必须从该主题独立 frame 的实际渲染重建。"],"status":"recipe-ready","surface_bindings":[{"selector":"#draw > g > rect[fill=\"var(--paper-panel)\"]","expected_count":6,"role":"foundation-card","material":"top-white","fill":"#ffffff","stack":2,"shadow":"none"}],"surface_binding_reason":"真实浏览器 DOM 审计后锁定的稳定 selector；expected_count 是逐页门禁。","theme_identity":[{"group_id":"identity.primary-label","label":"主体短标签","members":[{"selector":"[data-vnext-text-key=\"support-layers.text.001\"]","treatment":"identity.text","expected_count":1}]}],"emphasis_targets":[{"target_id":"focus.foundation-framework","label":"AI CORE — COMPUTE + TRAINING FRAMEWORK","content_role":"底部基础框架","reason_hint":"默认完整复用旧版；强调态只给 AI CORE — COMPUTE + TRAINING FRAMEWORK、内外双框和斜线上色，斜线跟随外框色。","members":[{"selector":"#h4-focus-framework-title","role":"value","treatment":"focus.color","expected_count":1},{"selector":"#h4-focus-frame, #h4-focus-frame-inner","role":"outline","treatment":"focus.color","expected_count":2},{"selector":"#h4-focus-hatch","role":"outline","treatment":"focus.color","expected_count":1}]}],"sample_target_id":"focus.foundation-framework"}</script>
+<script src="../../catalog-surface.js" data-catalog-theme-surface="catalog-theme-recipes-v2"></script>
+<script src="../../catalog-typography.js" data-catalog-typography="brand-latin-numeric-oswald-v1"></script>
 </body>
 </html>

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html data-theme-id="paper-ink" lang="zh-CN" data-runtime="wise-ppt-specimen" data-typography-mode="all-sans" data-page-id="gallery-ai-c2" data-page-role="prove" data-theme="paper-ink" data-layout="paper-ink.data.chart-wall" data-layout-source="gallery" data-sample-focus-profile="content-only" data-sample-focus-members='[{"selector":"#c2-focus-value","role":"value"},{"selector":"#c2-focus-bar","role":"outline"},{"selector":"#hatch92-line","role":"texture"}]' data-sample-focus-ref="sample.c2.c2-focus">
+<html data-theme-id="paper-ink" lang="zh-CN" data-runtime="wise-ppt-specimen" data-typography-mode="all-sans" data-page-id="gallery-ai-c2" data-page-role="prove" data-theme="paper-ink" data-layout="paper-ink.data.chart-wall" data-layout-source="gallery" data-emphasis-targets='[{"target_id":"focus.decisive-difference","members":[{"selector":"#c2-focus-value","role":"value","treatment":"focus.color","expected_count":1},{"selector":"#c2-focus-bar","role":"outline","treatment":"focus.color","expected_count":1},{"selector":"#hatch92-line","role":"texture","treatment":"focus.color","expected_count":1},{"selector":"[data-c2-chart3-graphic]","role":"symbol","treatment":"focus.color","expected_count":5}]}]' data-catalog-legacy-emphasis-profile="content-only" data-catalog-legacy-emphasis-members='[{"selector":"#c2-focus-value","role":"value"},{"selector":"#c2-focus-bar","role":"outline"},{"selector":"#hatch92-line","role":"texture"}]' data-catalog-legacy-emphasis-foreground-members='[]' data-catalog-legacy-emphasis-ref="sample.c2.c2-focus" data-vnext-semantic-key-map='[]'>
 <head>
 <meta charset="UTF-8">
 <title>layout-c2 · 图表联排墙 · 模型基准</title>
@@ -71,8 +71,8 @@ G = el('g', {transform:'translate(0 -39.7)'});
 
 /* ---------- 图表小图题（mono + 短横） ---------- */
 function chartTitle(x, y, label){
-  txt(x, y, label, {'font-family':MONO, 'font-size':'var(--type-meta)', 'letter-spacing':2, fill:INK});
-  el('line', {x1:x, y1:y+10, x2:x+210, y2:y+10, stroke:INK, 'stroke-width':.6, opacity:.3});
+  txt(x, y, label, {'data-chart-title':1, 'font-family':MONO, 'font-size':'var(--type-meta)', 'letter-spacing':2, fill:INK});
+  el('line', {'data-chart-title-rule':1, x1:x, y1:y+10, x2:x+210, y2:y+10, stroke:INK, 'stroke-width':.6, opacity:.3});
 }
 
 /* ========== 顶图：周准确率趋势折线 ========== */
@@ -137,7 +137,7 @@ function seg(ang1, ang2, fill, stroke){
   var ex = CCX + RO * Math.cos(a2), ey = CCY - RO * Math.sin(a2);
   var ix2 = CCX + RI * Math.cos(a2), iy2 = CCY - RI * Math.sin(a2);
   var large = (a2 - a1) > Math.PI ? 1 : 0;
-  el('path', {d:'M '+ix+' '+iy+' L '+ox+' '+oy+' A '+RO+' '+RO+' 0 '+large+' 1 '+ex+' '+ey+
+  el('path', {'data-c2-chart3-graphic':1, d:'M '+ix+' '+iy+' L '+ox+' '+oy+' A '+RO+' '+RO+' 0 '+large+' 1 '+ex+' '+ey+
              ' L '+ix2+' '+iy2+' A '+RI+' '+RI+' 0 '+large+' 0 '+ix+' '+iy+' Z',
     fill:fill, stroke:stroke || INK80, 'stroke-width':stroke ? 1.4 : .9});
 }
@@ -148,26 +148,25 @@ seg(194.4, 270, 'none', null);              /* 嵌入 21% */
 /* 分隔线 */
 [75.6, 194.4].forEach(function(a){
   var rd = a * Math.PI / 180;
-  el('line', {x1:CCX + RI * Math.cos(rd), y1:CCY - RI * Math.sin(rd),
+  el('line', {'data-c2-chart3-graphic':1, x1:CCX + RI * Math.cos(rd), y1:CCY - RI * Math.sin(rd),
               x2:CCX + RO * Math.cos(rd), y2:CCY - RO * Math.sin(rd),
     stroke:INK, 'stroke-width':.8, opacity:.6});
 });
 /* 中心 */
-txt(CCX, CCY - 2, '100%', {'font-family':MONO, 'font-size':'var(--type-body-small)', 'letter-spacing':1, 'text-anchor':'middle', fill:INK});
-txt(CCX, CCY + 24, 'N=3 MIX', {'font-family':MONO, 'font-size':'var(--type-micro-secondary)', 'letter-spacing':2, 'text-anchor':'middle', fill:INK45});
+txt(CCX, CCY - 2, '100%', {'data-c2-chart3-copy':1, 'font-family':MONO, 'font-size':'var(--type-body-small)', 'letter-spacing':1, 'text-anchor':'middle', fill:INK});
+txt(CCX, CCY + 24, 'N=3 MIX', {'data-c2-chart3-copy':1, 'font-family':MONO, 'font-size':'var(--type-micro-secondary)', 'letter-spacing':2, 'text-anchor':'middle', fill:INK45});
 /* 扇区标签（引线 + 数值/名称） */
 function segLabel(ang, en, cn, anchor){
   var mid = ang * Math.PI / 180;
   var lx = CCX + 132 * Math.cos(mid), ly = CCY - 132 * Math.sin(mid);
   var rx = CCX + RO * Math.cos(mid), ry = CCY - RO * Math.sin(mid);
-  el('line', {x1:rx, y1:ry, x2:lx, y2:ly, stroke:INK, 'stroke-width':.6, opacity:.4, 'stroke-dasharray':'3 4'});
-  txt(lx, ly - 6, en, {'font-family':MONO, 'font-size':'var(--type-meta)', 'letter-spacing':1, 'text-anchor':anchor, fill:INK});
-  txt(lx, ly + 16, cn, {'font-family':SANS, 'font-weight':300, 'font-size':'var(--type-meta)', 'text-anchor':anchor, fill:INK70});
+  el('line', {'data-c2-chart3-guide':1, x1:rx, y1:ry, x2:lx, y2:ly, stroke:INK, 'stroke-width':.6, opacity:.4, 'stroke-dasharray':'3 4'});
+  txt(lx, ly - 6, en, {'data-c2-chart3-copy':1, 'font-family':MONO, 'font-size':'var(--type-meta)', 'letter-spacing':1, 'text-anchor':anchor, fill:INK});
+  txt(lx, ly + 16, cn, {'data-c2-chart3-copy':1, 'font-family':SANS, 'font-weight':300, 'font-size':'var(--type-meta)', 'text-anchor':anchor, fill:INK70});
 }
 segLabel(-7.2, '46%', '推理', 'middle');
 segLabel(135, '33%', '训练', 'middle');
 segLabel(232.2, '21%', '嵌入', 'middle');
-
 stageFit();
 </script>
 </body>

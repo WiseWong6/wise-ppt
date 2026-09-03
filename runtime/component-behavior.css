@@ -1,12 +1,12 @@
-/* wise-ppt 组件行为合同 v4：只处理外层放置、整体 contain 与语义字阶。 */
+/* wise-ppt 组件行为合同 v4：只处理外层放置、整体 contain 与语义字体。
+   default-rule 使用统一字阶；layout-default 不设置字号，保留来源版式字阶。 */
 [data-component-behavior-host] {
   box-sizing: border-box !important;
   overflow: visible !important;
 }
 
-[data-component-behavior-host] [data-component-type-role][data-component-type-role] {
+[data-component-behavior-host] [data-component-type-role][data-component-type-size-policy="semantic-token"] {
   font-size: var(--wp-component-type-token) !important;
-  font-family: var(--wp-component-font-token) !important;
 }
 
 /* 固定视觉的宿主是原生画布。运行器只缩放这一整块，不改内部节点、

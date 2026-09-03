@@ -1,7 +1,21 @@
 {
-  "contract": "wise-ppt-layout-theme-bindings@1",
+  "contract": "wise-ppt-layout-theme-bindings@2",
+  "treatment_contract": "wise-ppt-visual-treatment-grammar@3",
   "projection": "compile-time-exact-count",
   "geometry_policy": "preserve-all-layouts",
+  "catalog_comparison_policy": {
+    "scope": "references/catalog.html",
+    "default_color_profile": "standard",
+    "emphasis_profile": "standard",
+    "override_field": "catalog_comparison_profile"
+  },
+  "identity_policy": {
+    "channel": "functional",
+    "always_on": true,
+    "paper_ink_resolution": "neutral",
+    "chromatic_theme_resolution": "theme-color",
+    "furniture_excluded": true
+  },
   "invariants": {
     "geometry_baseline": [
       "wise-ppt.layout.relationship.Q1"
@@ -13,6 +27,2036 @@
     ]
   },
   "layouts": {
+    "wise-ppt.layout.relationship.A1": {
+      "surface_bindings": [
+        {
+          "binding_id": "primary-evidence",
+          "selector": ".specimen",
+          "expected_count": 1,
+          "surface": "foreground",
+          "layer": null
+        }
+      ],
+      "type_bindings": [],
+      "catalog_comparison_profile": {
+        "default_color": "legacy",
+        "emphasis": "standard"
+      },
+      "identity_groups": [
+        {
+          "group_id": "identity.primary-label",
+          "label": "主体短标签",
+          "members": [
+            {
+              "selector": "[data-vnext-text-key=\"evidence.text.001\"]",
+              "treatment": "identity.text",
+              "expected_count": 1
+            }
+          ]
+        }
+      ]
+    },
+    "wise-ppt.layout.relationship.A2": {
+      "surface_bindings": [],
+      "type_bindings": [],
+      "catalog_comparison_profile": {
+        "default_color": "legacy",
+        "emphasis": "legacy"
+      },
+      "identity_groups": [
+        {
+          "group_id": "identity.primary-label",
+          "label": "主体短标签",
+          "members": [
+            {
+              "selector": "[data-vnext-text-key=\"scene.text.001\"]",
+              "treatment": "identity.text",
+              "expected_count": 1
+            }
+          ]
+        }
+      ]
+    },
+    "wise-ppt.layout.relationship.A3": {
+      "surface_bindings": [
+        {
+          "binding_id": "document-specimen",
+          "selector": "#draw > g > rect[fill=\"var(--paper-panel)\"]",
+          "expected_count": 1,
+          "surface": "foreground",
+          "layer": null
+        }
+      ],
+      "type_bindings": [],
+      "catalog_comparison_profile": {
+        "default_color": "legacy",
+        "emphasis": "legacy"
+      },
+      "identity_groups": [
+        {
+          "group_id": "identity.primary-label",
+          "label": "主体短标签",
+          "members": [
+            {
+              "selector": "[data-vnext-text-key=\"excerpt.text.001\"]",
+              "treatment": "identity.text",
+              "expected_count": 1
+            }
+          ]
+        }
+      ]
+    },
+    "wise-ppt.layout.relationship.A4": {
+      "surface_bindings": [
+        {
+          "binding_id": "equal-evidence-cards",
+          "selector": "#draw > g > rect[fill=\"var(--paper-panel)\"]",
+          "expected_count": 4,
+          "surface": "foreground",
+          "layer": null
+        }
+      ],
+      "type_bindings": [],
+      "catalog_comparison_profile": {
+        "default_color": "standard",
+        "emphasis": "standard"
+      },
+      "identity_groups": [
+        {
+          "group_id": "identity.heading-rule",
+          "label": "工程化打法标题横线",
+          "members": [
+            {
+              "selector": "#draw > g > line[x1=\"150\"][y1=\"320\"][x2=\"670\"][y2=\"320\"]",
+              "treatment": "identity.stroke",
+              "expected_count": 1
+            }
+          ]
+        }
+      ]
+    },
+    "wise-ppt.layout.relationship.A5": {
+      "surface_bindings": [],
+      "type_bindings": [],
+      "catalog_comparison_profile": {
+        "default_color": "legacy",
+        "emphasis": "standard"
+      },
+      "identity_groups": [
+        {
+          "group_id": "identity.primary-number",
+          "label": "主体结构编号",
+          "members": [
+            {
+              "selector": "[data-number-part=\"disc\"]",
+              "treatment": "identity.stroke",
+              "expected_count": 15
+            }
+          ]
+        }
+      ]
+    },
+    "wise-ppt.layout.relationship.A6": {
+      "surface_bindings": [
+        {
+          "binding_id": "credential-cards",
+          "selector": "#draw > g > rect[fill=\"var(--paper-panel)\"]",
+          "expected_count": 12,
+          "surface": "foreground",
+          "layer": null
+        }
+      ],
+      "type_bindings": [],
+      "catalog_comparison_profile": {
+        "default_color": "standard",
+        "emphasis": "legacy"
+      },
+      "identity_groups": [
+        {
+          "group_id": "identity.heading-rule",
+          "label": "评测与合规标题横线",
+          "members": [
+            {
+              "selector": "#draw > g > line[x1=\"150\"][y1=\"306\"][x2=\"330\"][y2=\"306\"]",
+              "treatment": "identity.stroke",
+              "expected_count": 1
+            }
+          ]
+        }
+      ]
+    },
+    "wise-ppt.layout.relationship.A8": {
+      "surface_bindings": [
+        {
+          "binding_id": "application-artifact",
+          "selector": ".ui",
+          "expected_count": 1,
+          "surface": "foreground",
+          "layer": "foreground"
+        }
+      ],
+      "type_bindings": [],
+      "catalog_comparison_profile": {
+        "default_color": "legacy",
+        "emphasis": "legacy"
+      },
+      "identity_groups": [
+        {
+          "group_id": "identity.primary-label",
+          "label": "主体短标签",
+          "members": [
+            {
+              "selector": "[data-vnext-text-key=\"product-ui.text.001\"]",
+              "treatment": "identity.text",
+              "expected_count": 1
+            }
+          ]
+        }
+      ]
+    },
+    "wise-ppt.layout.relationship.A9": {
+      "surface_bindings": [
+        {
+          "binding_id": "device-surfaces",
+          "selector": "#draw > g > rect[fill=\"var(--paper-panel)\"]",
+          "expected_count": 4,
+          "surface": "foreground",
+          "layer": null
+        }
+      ],
+      "type_bindings": [],
+      "catalog_comparison_profile": {
+        "default_color": "legacy",
+        "emphasis": "legacy"
+      },
+      "identity_groups": [
+        {
+          "group_id": "identity.primary-label",
+          "label": "主体短标签",
+          "members": [
+            {
+              "selector": "[data-vnext-text-key=\"screens.text.001\"]",
+              "treatment": "identity.text",
+              "expected_count": 1
+            }
+          ]
+        }
+      ]
+    },
+    "wise-ppt.layout.relationship.B1": {
+      "surface_bindings": [],
+      "type_bindings": [],
+      "catalog_comparison_profile": {
+        "default_color": "legacy",
+        "emphasis": "legacy"
+      },
+      "identity_groups": [
+        {
+          "group_id": "identity.primary-label",
+          "label": "主体短标签",
+          "members": [
+            {
+              "selector": "[data-vnext-text-key=\"milestones.text.003\"]",
+              "treatment": "identity.text",
+              "expected_count": 1
+            }
+          ]
+        }
+      ]
+    },
+    "wise-ppt.layout.relationship.B2": {
+      "surface_bindings": [],
+      "type_bindings": [],
+      "catalog_comparison_profile": {
+        "default_color": "legacy",
+        "emphasis": "legacy"
+      },
+      "identity_groups": [
+        {
+          "group_id": "identity.primary-label",
+          "label": "主体短标签",
+          "members": [
+            {
+              "selector": "[data-vnext-text-key=\"durations.text.003\"]",
+              "treatment": "identity.text",
+              "expected_count": 1
+            }
+          ]
+        }
+      ]
+    },
+    "wise-ppt.layout.relationship.B3": {
+      "surface_bindings": [],
+      "type_bindings": [],
+      "catalog_comparison_profile": {
+        "default_color": "legacy",
+        "emphasis": "legacy"
+      },
+      "identity_groups": [
+        {
+          "group_id": "identity.primary-label",
+          "label": "主体短标签",
+          "members": [
+            {
+              "selector": "[data-vnext-text-key=\"roadmap.text.003\"]",
+              "treatment": "identity.text",
+              "expected_count": 1
+            }
+          ]
+        }
+      ]
+    },
+    "wise-ppt.layout.relationship.B4": {
+      "surface_bindings": [
+        {
+          "binding_id": "timeline-evidence-cards",
+          "selector": "#draw > g > rect[fill=\"var(--paper-panel)\"]",
+          "expected_count": 5,
+          "surface": "foreground",
+          "layer": null
+        }
+      ],
+      "type_bindings": [],
+      "catalog_comparison_profile": {
+        "default_color": "standard",
+        "emphasis": "legacy"
+      },
+      "identity_groups": [
+        {
+          "group_id": "identity.timeline-track",
+          "label": "时间轴主轨与节点",
+          "members": [
+            {
+              "selector": "#sample-focus",
+              "treatment": "identity.stroke",
+              "expected_count": 1
+            },
+            {
+              "selector": "#draw circle[cy=\"290\"][r=\"7\"]",
+              "treatment": "identity.stroke",
+              "expected_count": 5
+            }
+          ]
+        }
+      ]
+    },
+    "wise-ppt.layout.relationship.B5": {
+      "surface_bindings": [],
+      "type_bindings": [],
+      "catalog_comparison_profile": {
+        "default_color": "legacy",
+        "emphasis": "legacy"
+      },
+      "identity_groups": [
+        {
+          "group_id": "identity.primary-label",
+          "label": "主体短标签",
+          "members": [
+            {
+              "selector": "[data-vnext-text-key=\"stages.text.003\"]",
+              "treatment": "identity.text",
+              "expected_count": 1
+            }
+          ]
+        }
+      ]
+    },
+    "wise-ppt.layout.relationship.B6": {
+      "surface_bindings": [],
+      "type_bindings": [],
+      "catalog_comparison_profile": {
+        "default_color": "legacy",
+        "emphasis": "legacy"
+      },
+      "identity_groups": [
+        {
+          "group_id": "identity.primary-label",
+          "label": "主体短标签",
+          "members": [
+            {
+              "selector": "[data-vnext-text-key=\"road-stages.text.003\"]",
+              "treatment": "identity.text",
+              "expected_count": 1
+            }
+          ]
+        }
+      ]
+    },
+    "wise-ppt.layout.relationship.C1": {
+      "surface_bindings": [
+        {
+          "binding_id": "visual-specimen",
+          "selector": "#draw > g > rect[fill=\"var(--paper-panel)\"]",
+          "expected_count": 1,
+          "surface": "foreground",
+          "layer": null
+        }
+      ],
+      "type_bindings": [],
+      "catalog_comparison_profile": {
+        "default_color": "legacy",
+        "emphasis": "legacy"
+      },
+      "identity_groups": [
+        {
+          "group_id": "identity.primary-label",
+          "label": "主体短标签",
+          "members": [
+            {
+              "selector": "[data-vnext-text-key=\"visual.text.001\"]",
+              "treatment": "identity.text",
+              "expected_count": 1
+            }
+          ]
+        }
+      ]
+    },
+    "wise-ppt.layout.relationship.C2": {
+      "surface_bindings": [],
+      "type_bindings": [],
+      "catalog_comparison_profile": {
+        "default_color": "standard",
+        "emphasis": "standard"
+      },
+      "identity_groups": [
+        {
+          "group_id": "identity.chart-titles",
+          "label": "三张图表标题",
+          "members": [
+            {
+              "selector": "text[data-chart-title]",
+              "treatment": "identity.text",
+              "expected_count": 3
+            }
+          ]
+        }
+      ]
+    },
+    "wise-ppt.layout.relationship.C3": {
+      "surface_bindings": [
+        {
+          "binding_id": "profile-cards",
+          "selector": "#draw > g > rect[fill=\"var(--paper-panel)\"]",
+          "expected_count": 3,
+          "surface": "foreground",
+          "layer": null
+        }
+      ],
+      "type_bindings": [],
+      "catalog_comparison_profile": {
+        "default_color": "legacy",
+        "emphasis": "standard"
+      },
+      "identity_groups": [
+        {
+          "group_id": "identity.primary-label",
+          "label": "主体短标签",
+          "members": [
+            {
+              "selector": "[data-vnext-text-key=\"profiles.text.001\"]",
+              "treatment": "identity.text",
+              "expected_count": 1
+            }
+          ]
+        }
+      ]
+    },
+    "wise-ppt.layout.relationship.C4": {
+      "surface_bindings": [],
+      "type_bindings": [],
+      "identity_groups": [
+        {
+          "group_id": "identity.primary-label",
+          "label": "主体短标签",
+          "members": [
+            {
+              "selector": "[data-vnext-text-key=\"map.text.001\"]",
+              "treatment": "identity.text",
+              "expected_count": 1
+            }
+          ]
+        }
+      ]
+    },
+    "wise-ppt.layout.relationship.C5": {
+      "surface_bindings": [],
+      "type_bindings": [],
+      "catalog_comparison_profile": {
+        "default_color": "legacy",
+        "emphasis": "legacy"
+      },
+      "identity_groups": [
+        {
+          "group_id": "identity.primary-label",
+          "label": "主体短标签",
+          "members": [
+            {
+              "selector": "[data-vnext-text-key=\"progress-rings.text.001\"]",
+              "treatment": "identity.text",
+              "expected_count": 1
+            }
+          ]
+        }
+      ]
+    },
+    "wise-ppt.layout.relationship.C6": {
+      "surface_bindings": [],
+      "type_bindings": [],
+      "catalog_comparison_profile": {
+        "default_color": "standard",
+        "emphasis": "legacy"
+      },
+      "identity_groups": [
+        {
+          "group_id": "identity.kpi-indexes",
+          "label": "四项 KPI 编号",
+          "members": [
+            {
+              "selector": "[data-vnext-text-key=\"kpis.text.003\"], [data-vnext-text-key=\"kpis.text.008\"], [data-vnext-text-key=\"kpis.text.013\"], [data-vnext-text-key=\"kpis.text.018\"]",
+              "treatment": "identity.text",
+              "expected_count": 4
+            }
+          ]
+        }
+      ]
+    },
+    "wise-ppt.layout.relationship.C7": {
+      "surface_bindings": [],
+      "type_bindings": [],
+      "catalog_comparison_profile": {
+        "default_color": "standard",
+        "emphasis": "legacy"
+      },
+      "identity_groups": [
+        {
+          "group_id": "identity.selector-headers",
+          "label": "下方样本选择器标题",
+          "members": [
+            {
+              "selector": "[data-vnext-text-key=\"ranking.text.032\"], [data-vnext-text-key=\"ranking.text.035\"], [data-vnext-text-key=\"ranking.text.038\"]",
+              "treatment": "identity.text",
+              "expected_count": 3
+            }
+          ]
+        }
+      ]
+    },
+    "wise-ppt.layout.relationship.E1": {
+      "surface_bindings": [],
+      "type_bindings": [],
+      "catalog_comparison_profile": {
+        "default_color": "legacy",
+        "emphasis": "legacy"
+      },
+      "identity_groups": [
+        {
+          "group_id": "identity.primary-label",
+          "label": "主体短标签",
+          "members": [
+            {
+              "selector": "[data-vnext-text-key=\"comparison.text.001\"]",
+              "treatment": "identity.text",
+              "expected_count": 1
+            }
+          ]
+        }
+      ]
+    },
+    "wise-ppt.layout.relationship.E2": {
+      "surface_bindings": [],
+      "type_bindings": [],
+      "catalog_comparison_profile": {
+        "default_color": "standard",
+        "emphasis": "legacy"
+      },
+      "identity_groups": [
+        {
+          "group_id": "identity.vs-label",
+          "label": "对比中心 VS",
+          "members": [
+            {
+              "selector": "[data-vnext-text-key=\"comparison-fields.text.001\"]",
+              "treatment": "identity.text",
+              "expected_count": 1
+            }
+          ]
+        }
+      ]
+    },
+    "wise-ppt.layout.relationship.E3": {
+      "surface_bindings": [],
+      "type_bindings": [],
+      "catalog_comparison_profile": {
+        "default_color": "legacy",
+        "emphasis": "legacy"
+      },
+      "identity_groups": [
+        {
+          "group_id": "identity.primary-label",
+          "label": "主体短标签",
+          "members": [
+            {
+              "selector": "[data-vnext-text-key=\"paired-items.text.001\"]",
+              "treatment": "identity.text",
+              "expected_count": 1
+            }
+          ]
+        }
+      ]
+    },
+    "wise-ppt.layout.relationship.E4": {
+      "surface_bindings": [],
+      "type_bindings": [],
+      "catalog_comparison_profile": {
+        "default_color": "standard",
+        "emphasis": "standard"
+      },
+      "identity_groups": [
+        {
+          "group_id": "identity.primary-label",
+          "label": "主体短标签",
+          "members": [
+            {
+              "selector": "[data-vnext-text-key=\"before-after.text.001\"]",
+              "treatment": "identity.text",
+              "expected_count": 1
+            }
+          ]
+        }
+      ]
+    },
+    "wise-ppt.layout.relationship.E5": {
+      "surface_bindings": [],
+      "type_bindings": [],
+      "catalog_comparison_profile": {
+        "default_color": "standard",
+        "emphasis": "standard"
+      },
+      "identity_groups": [
+        {
+          "group_id": "identity.primary-mapping-arrow",
+          "label": "主映射箭头",
+          "members": [
+            {
+              "selector": "#e5-focus-edge, #e5-focus-edge + line, #e5-focus-edge + line + line",
+              "treatment": "identity.stroke",
+              "expected_count": 3
+            }
+          ]
+        },
+        {
+          "group_id": "identity.legacy-focus-copy",
+          "label": "旧版强调层级与双塔英文标题",
+          "members": [
+            {
+              "selector": "#sample-focus, [data-vnext-text-key=\"hierarchy-map.text.010\"], [data-vnext-text-key=\"hierarchy-map.text.020\"]",
+              "treatment": "identity.text",
+              "expected_count": 3
+            }
+          ]
+        }
+      ]
+    },
+    "wise-ppt.layout.relationship.E6": {
+      "surface_bindings": [
+        {
+          "binding_id": "after-band",
+          "selector": "#draw rect[x=\"150\"][y=\"500\"][width=\"1620\"][height=\"280\"]",
+          "expected_count": 1,
+          "surface": "foreground",
+          "layer": null
+        }
+      ],
+      "type_bindings": [],
+      "identity_groups": [
+        {
+          "group_id": "identity.legacy-after",
+          "label": "After 文案与前置完成图标",
+          "members": [
+            {
+              "selector": "#e6-focus-badge",
+              "treatment": "identity.data-series",
+              "expected_count": 1
+            },
+            {
+              "selector": "#e6-focus-title",
+              "treatment": "identity.text",
+              "expected_count": 1
+            }
+          ]
+        }
+      ]
+    },
+    "wise-ppt.layout.relationship.F2": {
+      "surface_bindings": [],
+      "type_bindings": [],
+      "catalog_comparison_profile": {
+        "default_color": "legacy",
+        "emphasis": "legacy"
+      },
+      "identity_groups": [
+        {
+          "group_id": "identity.primary-label",
+          "label": "主体短标签",
+          "members": [
+            {
+              "selector": "[data-vnext-text-key=\"structure.text.001\"]",
+              "treatment": "identity.text",
+              "expected_count": 1
+            }
+          ]
+        }
+      ]
+    },
+    "wise-ppt.layout.relationship.F3": {
+      "surface_bindings": [],
+      "type_bindings": [],
+      "catalog_comparison_profile": {
+        "default_color": "legacy",
+        "emphasis": "standard"
+      },
+      "identity_groups": [
+        {
+          "group_id": "identity.primary-label",
+          "label": "主体短标签",
+          "members": [
+            {
+              "selector": "[data-vnext-text-key=\"columns.text.001\"]",
+              "treatment": "identity.text",
+              "expected_count": 1
+            }
+          ]
+        }
+      ]
+    },
+    "wise-ppt.layout.relationship.G1": {
+      "surface_bindings": [
+        {
+          "binding_id": "focus-frame",
+          "selector": "#g1-focus-frame",
+          "expected_count": 1,
+          "surface": "foreground",
+          "layer": null
+        }
+      ],
+      "type_bindings": [],
+      "catalog_comparison_profile": {
+        "default_color": "standard",
+        "emphasis": "legacy"
+      },
+      "identity_groups": [
+        {
+          "group_id": "identity.hub-label",
+          "label": "MODEL NODE",
+          "members": [
+            {
+              "selector": "#sample-focus",
+              "treatment": "identity.text",
+              "expected_count": 1
+            }
+          ]
+        }
+      ]
+    },
+    "wise-ppt.layout.relationship.G2": {
+      "surface_bindings": [],
+      "type_bindings": [],
+      "catalog_comparison_profile": {
+        "default_color": "standard",
+        "emphasis": "legacy"
+      },
+      "identity_groups": [
+        {
+          "group_id": "identity.part-labels",
+          "label": "六项硬件能力英文眉题",
+          "members": [
+            {
+              "selector": "[data-vnext-text-key=\"hero.text.001\"], [data-vnext-text-key=\"hero.text.004\"], [data-vnext-text-key=\"hero.text.007\"], [data-vnext-text-key=\"hero.text.010\"], [data-vnext-text-key=\"hero.text.013\"], [data-vnext-text-key=\"hero.text.016\"]",
+              "treatment": "identity.text",
+              "expected_count": 6
+            }
+          ]
+        },
+        {
+          "group_id": "identity.annotation-dots",
+          "label": "锚点与引线端点",
+          "members": [
+            {
+              "selector": "circle[data-anchor-dot]",
+              "treatment": "identity.fill",
+              "expected_count": 6
+            },
+            {
+              "selector": "circle[data-elbow-dot]",
+              "treatment": "identity.fill",
+              "expected_count": 6
+            }
+          ]
+        }
+      ]
+    },
+    "wise-ppt.layout.relationship.G4": {
+      "surface_bindings": [
+        {
+          "binding_id": "satellites",
+          "selector": "#draw circle[r=\"62\"]",
+          "expected_count": 6,
+          "surface": "foreground",
+          "layer": null
+        }
+      ],
+      "type_bindings": [],
+      "identity_groups": [
+        {
+          "group_id": "identity.primary-label",
+          "label": "AI 平台中枢",
+          "members": [
+            {
+              "selector": "[data-vnext-text-key=\"capabilities.text.001\"]",
+              "treatment": "identity.text",
+              "expected_count": 1
+            }
+          ]
+        }
+      ]
+    },
+    "wise-ppt.layout.relationship.G5": {
+      "surface_bindings": [
+        {
+          "binding_id": "principle-focus",
+          "selector": "#draw > g > rect[fill=\"var(--paper-panel)\"]",
+          "expected_count": 1,
+          "surface": "foreground",
+          "layer": null
+        }
+      ],
+      "type_bindings": [],
+      "catalog_comparison_profile": {
+        "default_color": "standard",
+        "emphasis": "legacy"
+      },
+      "identity_groups": [
+        {
+          "group_id": "identity.focus-statement",
+          "label": "一页一个重心",
+          "members": [
+            {
+              "selector": "#g5-focus-title",
+              "treatment": "identity.text",
+              "expected_count": 1
+            }
+          ]
+        }
+      ]
+    },
+    "wise-ppt.layout.relationship.H1": {
+      "surface_bindings": [
+        {
+          "binding_id": "focus-frame",
+          "selector": "#h1-focus-frame",
+          "expected_count": 1,
+          "surface": "foreground",
+          "layer": null
+        }
+      ],
+      "type_bindings": [],
+      "identity_groups": [
+        {
+          "group_id": "identity.core-outline",
+          "label": "模型内核轮廓",
+          "members": [
+            {
+              "selector": "#h1-focus-core",
+              "treatment": "identity.stroke",
+              "expected_count": 1
+            }
+          ]
+        }
+      ]
+    },
+    "wise-ppt.layout.relationship.H2": {
+      "surface_bindings": [
+        {
+          "binding_id": "focus-frame",
+          "selector": "#h2-focus-frame",
+          "expected_count": 1,
+          "surface": "foreground",
+          "layer": null
+        }
+      ],
+      "type_bindings": [],
+      "catalog_comparison_profile": {
+        "default_color": "legacy",
+        "emphasis": "standard"
+      },
+      "identity_groups": [
+        {
+          "group_id": "identity.primary-label",
+          "label": "主体短标签",
+          "members": [
+            {
+              "selector": "[data-vnext-text-key=\"zoom-levels.text.001\"]",
+              "treatment": "identity.text",
+              "expected_count": 1
+            }
+          ]
+        }
+      ]
+    },
+    "wise-ppt.layout.relationship.H3": {
+      "surface_bindings": [],
+      "type_bindings": [],
+      "catalog_comparison_profile": {
+        "default_color": "standard",
+        "emphasis": "legacy"
+      },
+      "identity_groups": [
+        {
+          "group_id": "identity.layer-codes",
+          "label": "L1–L4 层级编号",
+          "members": [
+            {
+              "selector": ".h3-layer-code",
+              "treatment": "identity.text",
+              "expected_count": 4
+            }
+          ]
+        }
+      ]
+    },
+    "wise-ppt.layout.relationship.H4": {
+      "surface_bindings": [
+        {
+          "binding_id": "foundation-cards",
+          "selector": "#draw > g > rect[fill=\"var(--paper-panel)\"]",
+          "expected_count": 6,
+          "surface": "foreground",
+          "layer": null
+        }
+      ],
+      "type_bindings": [],
+      "catalog_comparison_profile": {
+        "default_color": "legacy",
+        "emphasis": "standard"
+      },
+      "identity_groups": [
+        {
+          "group_id": "identity.primary-label",
+          "label": "主体短标签",
+          "members": [
+            {
+              "selector": "[data-vnext-text-key=\"support-layers.text.001\"]",
+              "treatment": "identity.text",
+              "expected_count": 1
+            }
+          ]
+        }
+      ]
+    },
+    "wise-ppt.layout.relationship.I1": {
+      "surface_bindings": [],
+      "type_bindings": [],
+      "identity_groups": [
+        {
+          "group_id": "identity.legacy-focus",
+          "label": "旧版重排表盘",
+          "members": [
+            {
+              "selector": "#i1-focus-ring, #i1-focus-needle",
+              "treatment": "identity.stroke",
+              "expected_count": 2
+            },
+            {
+              "selector": "#i1-focus-readout",
+              "treatment": "identity.text",
+              "expected_count": 1
+            },
+            {
+              "selector": "circle[data-scene-dot]:is([r=\"3\"], [r=\"2.4\"])",
+              "treatment": "identity.fill",
+              "expected_count": 2
+            },
+            {
+              "selector": "circle[data-scene-dot][r=\"2\"]",
+              "treatment": "identity.fill",
+              "expected_count": 4
+            }
+          ]
+        },
+        {
+          "group_id": "identity.sequence-numbers",
+          "label": "序号数字反白",
+          "members": [
+            {
+              "selector": "[data-number-kind=\"circled\"]",
+              "treatment": "identity.reverse-marker",
+              "expected_count": 4
+            }
+          ]
+        }
+      ]
+    },
+    "wise-ppt.layout.relationship.I2": {
+      "surface_bindings": [
+        {
+          "binding_id": "known-endpoints",
+          "selector": "#draw > g > rect[fill=\"var(--paper-panel)\"]",
+          "expected_count": 2,
+          "surface": "foreground",
+          "layer": null
+        }
+      ],
+      "type_bindings": [],
+      "identity_groups": [
+        {
+          "group_id": "identity.step-track",
+          "label": "虚实步骤轨道",
+          "members": [
+            {
+              "selector": ".i2-unknown-track",
+              "treatment": "identity.stroke",
+              "expected_count": 5
+            }
+          ]
+        },
+        {
+          "group_id": "identity.step-frames",
+          "label": "未知步骤轮廓",
+          "members": [
+            {
+              "selector": ".i2-unknown-frame",
+              "treatment": "identity.stroke",
+              "expected_count": 4
+            }
+          ]
+        }
+      ]
+    },
+    "wise-ppt.layout.relationship.I3": {
+      "surface_bindings": [],
+      "type_bindings": [],
+      "catalog_comparison_profile": {
+        "default_color": "legacy",
+        "emphasis": "legacy"
+      },
+      "identity_groups": [
+        {
+          "group_id": "identity.primary-number",
+          "label": "主体结构编号",
+          "members": [
+            {
+              "selector": "[data-number-part=\"disc\"]",
+              "treatment": "identity.stroke",
+              "expected_count": 10
+            }
+          ]
+        }
+      ]
+    },
+    "wise-ppt.layout.relationship.I4": {
+      "surface_bindings": [
+        {
+          "binding_id": "complete-solution",
+          "selector": "#i4-focus-frame",
+          "expected_count": 1,
+          "surface": "foreground",
+          "layer": null
+        }
+      ],
+      "type_bindings": [],
+      "catalog_comparison_profile": {
+        "default_color": "standard",
+        "emphasis": "standard"
+      },
+      "identity_groups": [
+        {
+          "group_id": "identity.fallback-title",
+          "label": "异常兜底标题",
+          "members": [
+            {
+              "selector": "#i4-focus-title",
+              "treatment": "identity.text",
+              "expected_count": 1
+            }
+          ]
+        }
+      ]
+    },
+    "wise-ppt.layout.relationship.J1": {
+      "surface_bindings": [
+        {
+          "binding_id": "cycle-cards",
+          "selector": "#draw > g > rect[fill=\"var(--paper-panel)\"]",
+          "expected_count": 4,
+          "surface": "foreground",
+          "layer": null
+        }
+      ],
+      "type_bindings": [],
+      "identity_groups": [
+        {
+          "group_id": "identity.legacy-loop-core",
+          "label": "旧版循环核心",
+          "members": [
+            {
+              "selector": "#j1-focus-loop, #j1-focus-cn",
+              "treatment": "identity.text",
+              "expected_count": 2
+            }
+          ]
+        }
+      ]
+    },
+    "wise-ppt.layout.relationship.J2": {
+      "surface_bindings": [
+        {
+          "binding_id": "loop-step-cards",
+          "selector": "#draw > g > rect[fill=\"var(--paper-panel)\"]",
+          "expected_count": 8,
+          "surface": "foreground",
+          "layer": null
+        }
+      ],
+      "type_bindings": [],
+      "catalog_comparison_profile": {
+        "default_color": "legacy",
+        "emphasis": "standard"
+      },
+      "identity_groups": [
+        {
+          "group_id": "identity.primary-label",
+          "label": "主体短标签",
+          "members": [
+            {
+              "selector": "[data-vnext-text-key=\"loop-steps.text.001\"]",
+              "treatment": "identity.text",
+              "expected_count": 1
+            }
+          ]
+        }
+      ]
+    },
+    "wise-ppt.layout.relationship.J3": {
+      "surface_bindings": [
+        {
+          "binding_id": "journey-tabs",
+          "selector": "#draw > g > path[fill=\"var(--paper-panel)\"]",
+          "expected_count": 5,
+          "surface": "foreground",
+          "layer": null
+        }
+      ],
+      "type_bindings": [],
+      "catalog_comparison_profile": {
+        "default_color": "standard",
+        "emphasis": "legacy"
+      },
+      "identity_groups": [
+        {
+          "group_id": "identity.journey-curve",
+          "label": "用户旅程主曲线",
+          "members": [
+            {
+              "selector": "#draw > g > path:nth-of-type(6)",
+              "treatment": "identity.stroke",
+              "expected_count": 1
+            }
+          ]
+        }
+      ]
+    },
+    "wise-ppt.layout.relationship.K1": {
+      "surface_bindings": [
+        {
+          "binding_id": "native-stage",
+          "selector": "#draw > g > path:nth-of-type(4)[fill=\"var(--paper-panel)\"]",
+          "expected_count": 1,
+          "surface": "foreground",
+          "layer": null
+        }
+      ],
+      "type_bindings": [],
+      "catalog_comparison_profile": {
+        "default_color": "legacy",
+        "emphasis": "legacy"
+      },
+      "identity_groups": [
+        {
+          "group_id": "identity.primary-number",
+          "label": "主体结构编号",
+          "members": [
+            {
+              "selector": "[data-number-part=\"disc\"]",
+              "treatment": "identity.stroke",
+              "expected_count": 4
+            }
+          ]
+        }
+      ]
+    },
+    "wise-ppt.layout.relationship.K2": {
+      "surface_bindings": [],
+      "type_bindings": [],
+      "catalog_comparison_profile": {
+        "default_color": "legacy",
+        "emphasis": "legacy"
+      },
+      "identity_groups": [
+        {
+          "group_id": "identity.primary-number",
+          "label": "主体结构编号",
+          "members": [
+            {
+              "selector": "[data-number-part=\"disc\"]",
+              "treatment": "identity.stroke",
+              "expected_count": 6
+            }
+          ]
+        }
+      ]
+    },
+    "wise-ppt.layout.relationship.K3": {
+      "surface_bindings": [
+        {
+          "binding_id": "agent-infra-cards",
+          "selector": "[data-arrow-region=\"solution\"] rect[fill=\"var(--paper-panel)\"]",
+          "expected_count": 5,
+          "surface": "foreground",
+          "layer": null
+        }
+      ],
+      "type_bindings": [],
+      "catalog_comparison_profile": {
+        "default_color": "legacy",
+        "emphasis": "standard"
+      },
+      "identity_groups": [
+        {
+          "group_id": "identity.primary-label",
+          "label": "主体短标签",
+          "members": [
+            {
+              "selector": "[data-vnext-text-key=\"problem-solution.text.001\"]",
+              "treatment": "identity.text",
+              "expected_count": 1
+            }
+          ]
+        }
+      ]
+    },
+    "wise-ppt.layout.relationship.K4": {
+      "surface_bindings": [],
+      "type_bindings": [],
+      "catalog_comparison_profile": {
+        "default_color": "standard",
+        "emphasis": "standard"
+      },
+      "identity_groups": [
+        {
+          "group_id": "identity.scene-labels",
+          "label": "三列场景编号",
+          "members": [
+            {
+              "selector": "[data-vnext-text-key=\"scenario-matrix.text.002\"], [data-vnext-text-key=\"scenario-matrix.text.004\"], [data-vnext-text-key=\"scenario-matrix.text.006\"]",
+              "treatment": "identity.text",
+              "expected_count": 3
+            }
+          ]
+        },
+        {
+          "group_id": "identity.section-rules",
+          "label": "三段横向分隔",
+          "members": [
+            {
+              "selector": "#draw > g > line[x1=\"120\"][x2=\"1800\"]",
+              "treatment": "identity.stroke",
+              "expected_count": 4
+            }
+          ]
+        }
+      ]
+    },
+    "wise-ppt.layout.relationship.L1": {
+      "surface_bindings": [
+        {
+          "binding_id": "token-labels",
+          "selector": "#draw > g > rect[fill=\"var(--paper-panel)\"]",
+          "expected_count": 6,
+          "surface": "foreground",
+          "layer": null
+        }
+      ],
+      "type_bindings": [],
+      "catalog_comparison_profile": {
+        "default_color": "standard",
+        "emphasis": "legacy"
+      },
+      "identity_groups": [
+        {
+          "group_id": "identity.token-boxes",
+          "label": "六个权重令牌框",
+          "members": [
+            {
+              "selector": "#draw > g > rect[fill=\"var(--paper-panel)\"]",
+              "treatment": "identity.border",
+              "expected_count": 6
+            }
+          ]
+        }
+      ]
+    },
+    "wise-ppt.layout.relationship.L2": {
+      "surface_bindings": [],
+      "type_bindings": [],
+      "catalog_comparison_profile": {
+        "default_color": "legacy",
+        "emphasis": "legacy"
+      },
+      "identity_groups": [
+        {
+          "group_id": "identity.primary-label",
+          "label": "主体短标签",
+          "members": [
+            {
+              "selector": "[data-vnext-text-key=\"mapping-network.text.001\"]",
+              "treatment": "identity.text",
+              "expected_count": 1
+            }
+          ]
+        }
+      ]
+    },
+    "wise-ppt.layout.relationship.N1": {
+      "surface_bindings": [],
+      "type_bindings": [],
+      "catalog_comparison_profile": {
+        "default_color": "legacy",
+        "emphasis": "legacy"
+      },
+      "identity_groups": [
+        {
+          "group_id": "identity.primary-label",
+          "label": "主体短标签",
+          "members": [
+            {
+              "selector": "[data-vnext-text-key=\"sources.text.001\"]",
+              "treatment": "identity.text",
+              "expected_count": 1
+            }
+          ]
+        }
+      ]
+    },
+    "wise-ppt.layout.relationship.O1": {
+      "surface_bindings": [
+        {
+          "binding_id": "retrieval-specimen",
+          "selector": "#draw > g > rect[fill=\"var(--paper-panel)\"]",
+          "expected_count": 1,
+          "surface": "foreground",
+          "layer": null
+        }
+      ],
+      "type_bindings": [],
+      "catalog_comparison_profile": {
+        "default_color": "standard",
+        "emphasis": "legacy"
+      },
+      "identity_groups": [
+        {
+          "group_id": "identity.to-llm",
+          "label": "漏斗底部 TO LLM",
+          "members": [
+            {
+              "selector": "[data-vnext-text-key=\"funnel-stages.text.025\"]",
+              "treatment": "identity.text",
+              "expected_count": 1
+            }
+          ]
+        }
+      ]
+    },
+    "wise-ppt.layout.relationship.P1": {
+      "surface_bindings": [
+        {
+          "binding_id": "blackbox-endpoints",
+          "selector": "#draw > g > rect[fill=\"var(--paper-panel)\"]",
+          "expected_count": 2,
+          "surface": "foreground",
+          "layer": null
+        }
+      ],
+      "type_bindings": [],
+      "identity_groups": [
+        {
+          "group_id": "identity.primary-label",
+          "label": "主体短标签",
+          "members": [
+            {
+              "selector": "[data-vnext-text-key=\"blackbox-flow.text.001\"]",
+              "treatment": "identity.text",
+              "expected_count": 1
+            }
+          ]
+        }
+      ]
+    },
+    "wise-ppt.layout.relationship.P2": {
+      "surface_bindings": [],
+      "type_bindings": [],
+      "catalog_comparison_profile": {
+        "default_color": "standard",
+        "emphasis": "standard"
+      },
+      "identity_groups": [
+        {
+          "group_id": "identity.node-headings",
+          "label": "菱形四节点英文标题",
+          "members": [
+            {
+              "selector": "[data-vnext-text-key=\"diamond-map.text.009\"], [data-vnext-text-key=\"diamond-map.text.011\"], [data-vnext-text-key=\"diamond-map.text.013\"], [data-vnext-text-key=\"diamond-map.text.015\"]",
+              "treatment": "identity.text",
+              "expected_count": 4
+            }
+          ]
+        }
+      ]
+    },
+    "wise-ppt.layout.relationship.Q1": {
+      "surface_bindings": [],
+      "type_bindings": [],
+      "catalog_comparison_profile": {
+        "default_color": "standard",
+        "emphasis": "legacy"
+      },
+      "identity_groups": [
+        {
+          "group_id": "identity.venn-outlines",
+          "label": "三集合轮廓",
+          "members": [
+            {
+              "selector": "#q1-component .circle.circle-a, #q1-component .circle.circle-b, #q1-component .circle.circle-c",
+              "treatment": "identity.border",
+              "expected_count": 3
+            }
+          ]
+        }
+      ]
+    },
+    "wise-ppt.layout.relationship.Q2": {
+      "surface_bindings": [],
+      "type_bindings": [],
+      "catalog_comparison_profile": {
+        "default_color": "legacy",
+        "emphasis": "legacy"
+      },
+      "identity_groups": [
+        {
+          "group_id": "identity.primary-label",
+          "label": "主体短标签",
+          "members": [
+            {
+              "selector": "[data-vnext-text-key=\"whole.text.003\"]",
+              "treatment": "identity.text",
+              "expected_count": 1
+            }
+          ]
+        }
+      ]
+    },
+    "wise-ppt.layout.relationship.Q3": {
+      "surface_bindings": [
+        {
+          "binding_id": "process-visible",
+          "selector": "[data-slot-id=\"traced\"] > rect",
+          "expected_count": 1,
+          "surface": "foreground",
+          "layer": null
+        }
+      ],
+      "type_bindings": [],
+      "identity_groups": [
+        {
+          "group_id": "identity.primary-icon",
+          "label": "主体功能图标",
+          "members": [
+            {
+              "selector": "[data-icon-source]",
+              "treatment": "identity.icon",
+              "expected_count": 7
+            }
+          ]
+        }
+      ]
+    },
+    "wise-ppt.layout.relationship.Q4": {
+      "surface_bindings": [],
+      "type_bindings": [],
+      "catalog_comparison_profile": {
+        "default_color": "standard",
+        "emphasis": "legacy"
+      },
+      "identity_groups": [
+        {
+          "group_id": "identity.quadrant-rules-answer-retrieval",
+          "label": "答案与检索标题横线",
+          "members": [
+            {
+              "selector": "[data-slot-id=\"evidence-a\"] > line[y1=\"91\"], [data-slot-id=\"evidence-c\"] > line[y1=\"91\"]",
+              "treatment": "identity.stroke",
+              "expected_count": 2
+            }
+          ]
+        },
+        {
+          "group_id": "identity.quadrant-rules-receipt-tool",
+          "label": "收据与工具标题横线",
+          "members": [
+            {
+              "selector": "[data-slot-id=\"evidence-b\"] > line[y1=\"91\"], [data-slot-id=\"evidence-d\"] > line[y1=\"91\"]",
+              "treatment": "identity.stroke",
+              "expected_count": 2
+            }
+          ]
+        }
+      ]
+    },
+    "wise-ppt.layout.relationship.R1": {
+      "surface_bindings": [
+        {
+          "binding_id": "pillars-02-04",
+          "selector": "[data-slot-id=\"pillar-a\"] > rect, [data-slot-id=\"pillar-c\"] > rect",
+          "expected_count": 2,
+          "surface": "foreground",
+          "layer": null
+        }
+      ],
+      "type_bindings": [],
+      "catalog_comparison_profile": {
+        "default_color": "legacy",
+        "emphasis": "standard"
+      },
+      "identity_groups": [
+        {
+          "group_id": "identity.primary-icon",
+          "label": "主体功能图标",
+          "members": [
+            {
+              "selector": "[data-icon-source]",
+              "treatment": "identity.icon",
+              "expected_count": 4
+            }
+          ]
+        }
+      ]
+    },
+    "wise-ppt.layout.relationship.R2": {
+      "surface_bindings": [
+        {
+          "binding_id": "strategy-panel",
+          "selector": "[data-slot-id=\"strategy\"] > rect[data-band-panel=\"true\"]",
+          "expected_count": 1,
+          "surface": "foreground",
+          "layer": null
+        }
+      ],
+      "type_bindings": [],
+      "catalog_comparison_profile": {
+        "default_color": "legacy",
+        "emphasis": "legacy"
+      },
+      "identity_groups": [
+        {
+          "group_id": "identity.primary-icon",
+          "label": "战略层主图标",
+          "members": [
+            {
+              "selector": "[data-slot-id=\"strategy\"] [data-icon-source]",
+              "treatment": "identity.icon",
+              "expected_count": 1
+            }
+          ]
+        }
+      ]
+    },
+    "wise-ppt.layout.relationship.R3": {
+      "surface_bindings": [],
+      "type_bindings": [],
+      "catalog_comparison_profile": {
+        "default_color": "legacy",
+        "emphasis": "standard"
+      },
+      "identity_groups": [
+        {
+          "group_id": "identity.title-rules",
+          "label": "六项能力标题横线",
+          "members": [
+            {
+              "selector": "[data-slot-id^=\"cell-\"] > line[x1=\"-24\"][y1=\"224\"][x2=\"24\"][y2=\"224\"]",
+              "treatment": "identity.stroke",
+              "expected_count": 6
+            }
+          ]
+        }
+      ]
+    },
+    "wise-ppt.layout.relationship.R4": {
+      "surface_bindings": [
+        {
+          "binding_id": "balanced-pans",
+          "selector": "#balance-host svg g > path:nth-of-type(2), #balance-host svg g > path:nth-of-type(3)",
+          "expected_count": 2,
+          "surface": "foreground",
+          "layer": null
+        }
+      ],
+      "type_bindings": [],
+      "catalog_comparison_profile": {
+        "default_color": "standard",
+        "emphasis": "legacy"
+      },
+      "identity_groups": [
+        {
+          "group_id": "identity.balance-labels",
+          "label": "天平两端关键指标",
+          "members": [
+            {
+              "selector": "[data-vnext-text-key=\"balance.text.004\"], [data-vnext-text-key=\"balance.text.009\"]",
+              "treatment": "identity.text",
+              "expected_count": 2
+            }
+          ]
+        }
+      ]
+    },
+    "wise-ppt.layout.relationship.R5": {
+      "surface_bindings": [],
+      "type_bindings": [],
+      "catalog_comparison_profile": {
+        "default_color": "standard",
+        "emphasis": "legacy"
+      },
+      "identity_groups": [
+        {
+          "group_id": "identity.gear-white-fill",
+          "label": "三枚齿轮外形与内圈白色填充",
+          "members": [
+            {
+              "selector": "#gears-host [data-repeat-unit=\"module\"] use[href=\"#pi-gear-outline\"], #gears-host [data-repeat-unit=\"module\"] > circle[r=\"57\"]",
+              "treatment": "identity.white-fill",
+              "expected_count": 6
+            }
+          ]
+        },
+        {
+          "group_id": "identity.gear-labels",
+          "label": "内容、模型与评测",
+          "members": [
+            {
+              "selector": "[data-vnext-text-key=\"system.text.004\"], [data-vnext-text-key=\"system.text.006\"], [data-vnext-text-key=\"system.text.008\"]",
+              "treatment": "identity.text-bold",
+              "expected_count": 3
+            }
+          ]
+        }
+      ]
+    },
+    "wise-ppt.layout.relationship.R6": {
+      "surface_bindings": [
+        {
+          "binding_id": "input-evaluation-bands",
+          "selector": "[data-slot-id=\"input\"] > rect[data-band-panel=\"true\"], [data-slot-id=\"evaluation\"] > rect[data-band-panel=\"true\"]",
+          "expected_count": 2,
+          "surface": "foreground",
+          "layer": null
+        }
+      ],
+      "type_bindings": [],
+      "catalog_comparison_profile": {
+        "default_color": "legacy",
+        "emphasis": "legacy"
+      },
+      "identity_groups": [
+        {
+          "group_id": "identity.primary-icon",
+          "label": "输入层主图标",
+          "members": [
+            {
+              "selector": "[data-slot-id=\"input\"] [data-icon-source]",
+              "treatment": "identity.icon",
+              "expected_count": 1
+            }
+          ]
+        }
+      ]
+    },
+    "wise-ppt.layout.relationship.R7": {
+      "surface_bindings": [],
+      "type_bindings": [],
+      "identity_groups": [
+        {
+          "group_id": "identity.logo-accent-lines",
+          "label": "品牌 Logo 内部点缀线",
+          "members": [
+            {
+              "selector": "[data-r7-accent-mark]",
+              "treatment": "identity.stroke",
+              "expected_count": 8
+            }
+          ]
+        }
+      ]
+    },
+    "wise-ppt.layout.relationship.S1": {
+      "surface_bindings": [
+        {
+          "binding_id": "layer-bands",
+          "selector": "#architecture-slot .arch-tone-wrap",
+          "expected_count": 5,
+          "surface": "foreground",
+          "layer": null
+        },
+        {
+          "binding_id": "leaf-capabilities",
+          "selector": "#architecture-slot .arch-tone-fill",
+          "expected_count": 39,
+          "surface": "foreground",
+          "layer": null
+        }
+      ],
+      "type_bindings": [],
+      "identity_groups": [
+      {
+        "group_id": "identity.architecture-navigation",
+        "label": "关系节点与能力组标题",
+        "members": [
+          {
+            "selector": "#architecture-slot .arch-tone-node",
+            "treatment": "identity.fill",
+            "expected_count": 5
+          },
+            {
+              "selector": "#architecture-slot .arch-tone-title",
+              "treatment": "identity.text",
+              "expected_count": 7
+            }
+          ]
+        }
+      ]
+    },
+    "wise-ppt.layout.relationship.S2": {
+      "surface_bindings": [],
+      "type_bindings": [],
+      "catalog_comparison_profile": {
+        "default_color": "legacy",
+        "emphasis": "legacy"
+      },
+      "identity_groups": [
+        {
+          "group_id": "identity.primary-label",
+          "label": "主体短标签",
+          "members": [
+            {
+              "selector": "[data-vnext-text-key=\"whole.text.003\"]",
+              "treatment": "identity.text",
+              "expected_count": 1
+            }
+          ]
+        }
+      ]
+    },
+    "wise-ppt.layout.relationship.S3": {
+      "surface_bindings": [],
+      "type_bindings": [],
+      "catalog_comparison_profile": {
+        "default_color": "legacy",
+        "emphasis": "standard"
+      },
+      "identity_groups": [
+        {
+          "group_id": "identity.primary-label",
+          "label": "主体短标签",
+          "members": [
+            {
+              "selector": "[data-vnext-text-key=\"problem-list.text.001\"]",
+              "treatment": "identity.text",
+              "expected_count": 1
+            }
+          ]
+        },
+        {
+          "group_id": "identity.section-rules",
+          "label": "问题与解法标题横线",
+          "members": [
+            {
+              "selector": "line[data-title-rule]",
+              "treatment": "identity.stroke",
+              "expected_count": 2
+            }
+          ]
+        }
+      ]
+    },
+    "wise-ppt.layout.relationship.T1": {
+      "surface_bindings": [],
+      "type_bindings": [],
+      "catalog_comparison_profile": {
+        "default_color": "legacy",
+        "emphasis": "standard"
+      },
+      "identity_groups": [
+        {
+          "group_id": "identity.primary-label",
+          "label": "主体短标签",
+          "members": [
+            {
+              "selector": "[data-vnext-text-key=\"workflow.text.001\"]",
+              "treatment": "identity.text",
+              "expected_count": 1
+            }
+          ]
+        }
+      ]
+    },
+    "wise-ppt.layout.relationship.T2": {
+      "surface_bindings": [
+        {
+          "binding_id": "layout-sample-cards",
+          "selector": "[data-repeat-unit=\"layout-sample\"] > rect:first-of-type",
+          "expected_count": 6,
+          "surface": "foreground",
+          "layer": null
+        }
+      ],
+      "type_bindings": [],
+      "catalog_comparison_profile": {
+        "default_color": "standard",
+        "emphasis": "standard"
+      },
+      "identity_groups": [
+        {
+          "group_id": "identity.layout-previews",
+          "label": "右侧六张版式小图",
+          "members": [
+            {
+              "selector": "[data-t2-preview=\"true\"]",
+              "treatment": "identity.icon",
+              "expected_count": 6
+            }
+          ]
+        }
+      ]
+    },
+    "wise-ppt.layout.relationship.T3": {
+      "surface_bindings": [
+        {
+          "binding_id": "selection-decision",
+          "selector": "#t3-decision > rect:first-of-type",
+          "expected_count": 1,
+          "surface": "foreground",
+          "layer": null
+        },
+        {
+          "binding_id": "component-sample-cards",
+          "selector": "[data-repeat-unit=\"component-sample\"] > rect:first-of-type",
+          "expected_count": 6,
+          "surface": "foreground",
+          "layer": null
+        }
+      ],
+      "type_bindings": [],
+      "catalog_comparison_profile": {
+        "default_color": "legacy",
+        "emphasis": "standard"
+      },
+      "identity_groups": [
+        {
+          "group_id": "identity.principle-numbers",
+          "label": "三条调用原则编号",
+          "members": [
+            {
+              "selector": "#t3-decision [data-repeat-unit=\"component-principle\"] [data-number-part=\"disc\"]",
+              "treatment": "identity.stroke",
+              "expected_count": 3
+            }
+          ]
+        }
+      ]
+    },
+    "wise-ppt.layout.relationship.U1": {
+      "surface_bindings": [],
+      "type_bindings": [],
+      "catalog_comparison_profile": {
+        "default_color": "legacy",
+        "emphasis": "legacy"
+      },
+      "identity_groups": [
+        {
+          "group_id": "identity.primary-label",
+          "label": "主体短标签",
+          "members": [
+            {
+              "selector": "[data-vnext-text-key=\"band-a.text.003\"]",
+              "treatment": "identity.text",
+              "expected_count": 1
+            }
+          ]
+        }
+      ]
+    },
+    "wise-ppt.layout.relationship.U2": {
+      "surface_bindings": [],
+      "type_bindings": [],
+      "catalog_comparison_profile": {
+        "default_color": "standard",
+        "emphasis": "legacy"
+      },
+      "identity_groups": [
+        {
+          "group_id": "identity.section-headings",
+          "label": "三块图表与汇总标题",
+          "members": [
+            {
+              "selector": "[data-vnext-text-key=\"chart-band.text.004\"], [data-vnext-text-key=\"chart-band.text.010\"], [data-vnext-text-key=\"chart-band.text.019\"], [data-vnext-text-key=\"scorecard.text.002\"]",
+              "treatment": "identity.text-bold",
+              "expected_count": 4
+            }
+          ]
+        }
+      ]
+    },
+    "wise-ppt.layout.relationship.U3": {
+      "surface_bindings": [],
+      "type_bindings": [],
+      "catalog_comparison_profile": {
+        "default_color": "legacy",
+        "emphasis": "standard"
+      },
+      "identity_groups": [
+        {
+          "group_id": "identity.lever-nodes",
+          "label": "杠杆两端节点",
+          "members": [
+            {
+              "selector": "#lever-stock-node, #lever-outcome-node",
+              "treatment": "identity.fill",
+              "expected_count": 2
+            }
+          ]
+        },
+        {
+          "group_id": "identity.lever-structure",
+          "label": "杠杆横梁与支点",
+          "members": [
+            {
+              "selector": "#lever-beam, #lever-pivot",
+              "treatment": "identity.stroke",
+              "expected_count": 2
+            }
+          ]
+        }
+      ]
+    },
+    "wise-ppt.layout.relationship.W1": {
+      "surface_bindings": [],
+      "type_bindings": [],
+      "catalog_comparison_profile": {
+        "default_color": "standard",
+        "emphasis": "standard"
+      },
+      "identity_groups": [
+        {
+          "group_id": "identity.hub-label",
+          "label": "制造中台",
+          "members": [
+            {
+              "selector": "[data-vnext-text-key=\"orbit.text.001\"]",
+              "treatment": "identity.text",
+              "expected_count": 1
+            }
+          ]
+        },
+        {
+          "group_id": "identity.hub-core-surface",
+          "label": "中枢内层白面",
+          "members": [
+            {
+              "selector": "#w1-focus-core",
+              "treatment": "identity.white-fill",
+              "expected_count": 1
+            }
+          ]
+        }
+      ]
+    },
+    "wise-ppt.layout.nonrelationship.D1": {
+      "surface_bindings": [],
+      "type_bindings": [],
+      "identity_groups": [
+        {
+          "group_id": "identity.title-bar",
+          "label": "封面标题短线",
+          "members": [
+            {
+              "selector": "[data-template-part=\"title-bar\"]",
+              "treatment": "identity.border",
+              "expected_count": 1
+            }
+          ]
+        }
+      ]
+    },
+    "wise-ppt.layout.nonrelationship.D10": {
+      "surface_bindings": [],
+      "type_bindings": [],
+      "identity_groups": [
+        {
+          "group_id": "identity.title-bar",
+          "label": "双区封面标题短线",
+          "members": [
+            {
+              "selector": "[data-template-part=\"title-bar\"]",
+              "treatment": "identity.border",
+              "expected_count": 1
+            }
+          ]
+        }
+      ]
+    },
+    "wise-ppt.layout.nonrelationship.D11": {
+      "surface_bindings": [],
+      "type_bindings": [],
+      "identity_groups": [
+        {
+          "group_id": "identity.cover-rule",
+          "label": "画墙封面标题线",
+          "members": [
+            {
+              "selector": "[data-template-part=\"rule\"]",
+              "treatment": "identity.border",
+              "expected_count": 1
+            }
+          ]
+        }
+      ]
+    },
+    "wise-ppt.layout.nonrelationship.D2": {
+      "surface_bindings": [],
+      "type_bindings": [],
+      "identity_groups": [
+        {
+          "group_id": "identity.particle-marks",
+          "label": "粒子尾卡标记",
+          "members": [
+            {
+              "selector": "svg.marks #draw",
+              "treatment": "identity.stroke",
+              "expected_count": 1
+            }
+          ]
+        }
+      ]
+    },
     "wise-ppt.layout.nonrelationship.D3": {
       "surface_bindings": [],
       "type_bindings": [
@@ -21,6 +2065,36 @@
           "selector": "[data-template-part=\"primary\"][data-template-slot-kind=\"text\"]",
           "expected_count": 1,
           "role": "closing-statement"
+        }
+      ],
+      "identity_groups": [
+        {
+          "group_id": "identity.signature",
+          "label": "署名主题点缀",
+          "members": [
+            {
+              "selector": "[data-template-part=\"signature\"]",
+              "treatment": "identity.text",
+              "expected_count": 1
+            }
+          ]
+        }
+      ]
+    },
+    "wise-ppt.layout.nonrelationship.D4": {
+      "surface_bindings": [],
+      "type_bindings": [],
+      "identity_groups": [
+        {
+          "group_id": "identity.toc-markers",
+          "label": "目录序号圆环",
+          "members": [
+            {
+              "selector": "[data-number-part=\"disc\"], [data-number-part=\"outer-ring\"]",
+              "treatment": "identity.stroke",
+              "expected_count": 6
+            }
+          ]
         }
       ]
     },
@@ -32,6 +2106,19 @@
           "selector": "[data-template-part=\"primary\"][data-template-slot-kind=\"text\"]",
           "expected_count": 1,
           "role": "chapter-title"
+        }
+      ],
+      "identity_groups": [
+        {
+          "group_id": "identity.chapter-lead",
+          "label": "章节导语",
+          "members": [
+            {
+              "selector": "[data-template-part=\"lead\"]",
+              "treatment": "identity.text",
+              "expected_count": 1
+            }
+          ]
         }
       ]
     },
@@ -45,213 +2132,105 @@
           "layer": null
         }
       ],
-      "type_bindings": []
+      "type_bindings": [],
+      "identity_groups": [
+        {
+          "group_id": "identity.contact-panel",
+          "label": "联络面板边界",
+          "members": [
+            {
+              "selector": "#draw rect[x=\"1100\"][y=\"220\"][width=\"620\"][height=\"630\"]",
+              "treatment": "identity.border",
+              "expected_count": 1
+            }
+          ]
+        }
+      ]
     },
-    "wise-ppt.layout.relationship.A1": {
-      "surface_bindings": [
-        { "binding_id": "primary-evidence", "selector": ".specimen", "expected_count": 1, "surface": "foreground", "layer": null }
-      ],
-      "type_bindings": []
+    "wise-ppt.layout.nonrelationship.D7": {
+      "surface_bindings": [],
+      "type_bindings": [],
+      "identity_groups": [
+        {
+          "group_id": "identity.title-bar",
+          "label": "图文封面标题短线",
+          "members": [
+            {
+              "selector": "[data-template-part=\"title-bar\"]",
+              "treatment": "identity.border",
+              "expected_count": 1
+            }
+          ]
+        }
+      ]
     },
-    "wise-ppt.layout.relationship.A3": {
-      "surface_bindings": [
-        { "binding_id": "document-specimen", "selector": "#draw > g > rect[fill=\"var(--paper-panel)\"]", "expected_count": 1, "surface": "foreground", "layer": null }
-      ],
-      "type_bindings": []
+    "wise-ppt.layout.nonrelationship.D8": {
+      "surface_bindings": [],
+      "type_bindings": [],
+      "identity_groups": [
+        {
+          "group_id": "identity.cover-kicker",
+          "label": "大字封面引题",
+          "members": [
+            {
+              "selector": "[data-template-part=\"kicker\"]",
+              "treatment": "identity.text",
+              "expected_count": 1
+            }
+          ]
+        }
+      ]
     },
-    "wise-ppt.layout.relationship.A4": {
-      "surface_bindings": [
-        { "binding_id": "equal-evidence-cards", "selector": "#draw > g > rect[fill=\"var(--paper-panel)\"]", "expected_count": 4, "surface": "foreground", "layer": null }
-      ],
-      "type_bindings": []
+    "wise-ppt.layout.nonrelationship.D9": {
+      "surface_bindings": [],
+      "type_bindings": [],
+      "identity_groups": [
+        {
+          "group_id": "identity.cover-number",
+          "label": "线框封面序号",
+          "members": [
+            {
+              "selector": "[data-number-part=\"label\"]",
+              "treatment": "identity.text",
+              "expected_count": 5
+            }
+          ]
+        }
+      ]
     },
-    "wise-ppt.layout.relationship.A6": {
-      "surface_bindings": [
-        { "binding_id": "credential-cards", "selector": "#draw > g > rect[fill=\"var(--paper-panel)\"]", "expected_count": 12, "surface": "foreground", "layer": null }
-      ],
-      "type_bindings": []
+    "wise-ppt.layout.nonrelationship.M1": {
+      "surface_bindings": [],
+      "type_bindings": [],
+      "identity_groups": [
+        {
+          "group_id": "identity.compare-divider",
+          "label": "主角对比中线",
+          "members": [
+            {
+              "selector": ".boxtext .divi",
+              "treatment": "identity.border",
+              "expected_count": 1
+            }
+          ]
+        }
+      ]
     },
-    "wise-ppt.layout.relationship.A8": {
-      "surface_bindings": [
-        { "binding_id": "application-artifact", "selector": ".ui", "expected_count": 1, "surface": "foreground", "layer": "foreground" }
-      ],
-      "type_bindings": []
-    },
-    "wise-ppt.layout.relationship.A9": {
-      "surface_bindings": [
-        { "binding_id": "device-surfaces", "selector": "#draw > g > rect[fill=\"var(--paper-panel)\"]", "expected_count": 4, "surface": "foreground", "layer": null }
-      ],
-      "type_bindings": []
-    },
-    "wise-ppt.layout.relationship.B4": {
-      "surface_bindings": [
-        { "binding_id": "timeline-evidence-cards", "selector": "#draw > g > rect[fill=\"var(--paper-panel)\"]", "expected_count": 5, "surface": "foreground", "layer": null }
-      ],
-      "type_bindings": []
-    },
-    "wise-ppt.layout.relationship.C1": {
-      "surface_bindings": [
-        { "binding_id": "visual-specimen", "selector": "#draw > g > rect[fill=\"var(--paper-panel)\"]", "expected_count": 1, "surface": "foreground", "layer": null }
-      ],
-      "type_bindings": []
-    },
-    "wise-ppt.layout.relationship.C3": {
-      "surface_bindings": [
-        { "binding_id": "profile-cards", "selector": "#draw > g > rect[fill=\"var(--paper-panel)\"]", "expected_count": 3, "surface": "foreground", "layer": null }
-      ],
-      "type_bindings": []
-    },
-    "wise-ppt.layout.relationship.E6": {
-      "surface_bindings": [
-        { "binding_id": "after-band", "selector": "#draw rect[x=\"150\"][y=\"500\"][width=\"1620\"][height=\"280\"]", "expected_count": 1, "surface": "foreground", "layer": null }
-      ],
-      "type_bindings": []
-    },
-    "wise-ppt.layout.relationship.G1": {
-      "surface_bindings": [
-        { "binding_id": "focus-frame", "selector": "#g1-focus-frame", "expected_count": 1, "surface": "foreground", "layer": null }
-      ],
-      "type_bindings": []
-    },
-    "wise-ppt.layout.relationship.G4": {
-      "surface_bindings": [
-        { "binding_id": "satellites", "selector": "#draw circle[r=\"62\"]", "expected_count": 6, "surface": "foreground", "layer": null }
-      ],
-      "type_bindings": []
-    },
-    "wise-ppt.layout.relationship.G5": {
-      "surface_bindings": [
-        { "binding_id": "principle-focus", "selector": "#draw > g > rect[fill=\"var(--paper-panel)\"]", "expected_count": 1, "surface": "foreground", "layer": null }
-      ],
-      "type_bindings": []
-    },
-    "wise-ppt.layout.relationship.H1": {
-      "surface_bindings": [
-        { "binding_id": "focus-frame", "selector": "#h1-focus-frame", "expected_count": 1, "surface": "foreground", "layer": null }
-      ],
-      "type_bindings": []
-    },
-    "wise-ppt.layout.relationship.H2": {
-      "surface_bindings": [
-        { "binding_id": "focus-frame", "selector": "#h2-focus-frame", "expected_count": 1, "surface": "foreground", "layer": null }
-      ],
-      "type_bindings": []
-    },
-    "wise-ppt.layout.relationship.H4": {
-      "surface_bindings": [
-        { "binding_id": "foundation-cards", "selector": "#draw > g > rect[fill=\"var(--paper-panel)\"]", "expected_count": 6, "surface": "foreground", "layer": null }
-      ],
-      "type_bindings": []
-    },
-    "wise-ppt.layout.relationship.I2": {
-      "surface_bindings": [
-        { "binding_id": "known-endpoints", "selector": "#draw > g > rect[fill=\"var(--paper-panel)\"]", "expected_count": 2, "surface": "foreground", "layer": null }
-      ],
-      "type_bindings": []
-    },
-    "wise-ppt.layout.relationship.I4": {
-      "surface_bindings": [
-        { "binding_id": "complete-solution", "selector": "#i4-focus-frame", "expected_count": 1, "surface": "foreground", "layer": null }
-      ],
-      "type_bindings": []
-    },
-    "wise-ppt.layout.relationship.J1": {
-      "surface_bindings": [
-        { "binding_id": "cycle-cards", "selector": "#draw > g > rect[fill=\"var(--paper-panel)\"]", "expected_count": 4, "surface": "foreground", "layer": null }
-      ],
-      "type_bindings": []
-    },
-    "wise-ppt.layout.relationship.J2": {
-      "surface_bindings": [
-        { "binding_id": "current-loop-step", "selector": "#draw > g > rect[fill=\"var(--paper-panel)\"]:first-of-type", "expected_count": 1, "surface": "foreground", "layer": null }
-      ],
-      "type_bindings": []
-    },
-    "wise-ppt.layout.relationship.J3": {
-      "surface_bindings": [
-        { "binding_id": "journey-tabs", "selector": "#draw > g > path[fill=\"var(--paper-panel)\"]", "expected_count": 5, "surface": "foreground", "layer": null }
-      ],
-      "type_bindings": []
-    },
-    "wise-ppt.layout.relationship.K1": {
-      "surface_bindings": [
-        { "binding_id": "native-stage", "selector": "#draw > g > path:nth-of-type(4)[fill=\"var(--paper-panel)\"]", "expected_count": 1, "surface": "foreground", "layer": null }
-      ],
-      "type_bindings": []
-    },
-    "wise-ppt.layout.relationship.K3": {
-      "surface_bindings": [
-        { "binding_id": "agent-infra-cards", "selector": "[data-arrow-region=\"solution\"] rect[fill=\"var(--paper-panel)\"]", "expected_count": 5, "surface": "foreground", "layer": null }
-      ],
-      "type_bindings": []
-    },
-    "wise-ppt.layout.relationship.L1": {
-      "surface_bindings": [
-        { "binding_id": "token-labels", "selector": "#draw > g > rect[fill=\"var(--paper-panel)\"]", "expected_count": 6, "surface": "foreground", "layer": null }
-      ],
-      "type_bindings": []
-    },
-    "wise-ppt.layout.relationship.O1": {
-      "surface_bindings": [
-        { "binding_id": "retrieval-specimen", "selector": "#draw > g > rect[fill=\"var(--paper-panel)\"]", "expected_count": 1, "surface": "foreground", "layer": null }
-      ],
-      "type_bindings": []
-    },
-    "wise-ppt.layout.relationship.P1": {
-      "surface_bindings": [
-        { "binding_id": "blackbox-endpoints", "selector": "#draw > g > rect[fill=\"var(--paper-panel)\"]", "expected_count": 2, "surface": "foreground", "layer": null }
-      ],
-      "type_bindings": []
-    },
-    "wise-ppt.layout.relationship.Q3": {
-      "surface_bindings": [
-        { "binding_id": "process-visible", "selector": "[data-slot-id=\"traced\"] > rect", "expected_count": 1, "surface": "foreground", "layer": null }
-      ],
-      "type_bindings": []
-    },
-    "wise-ppt.layout.relationship.R1": {
-      "surface_bindings": [
-        { "binding_id": "pillars-02-04", "selector": "[data-slot-id=\"pillar-a\"] > rect, [data-slot-id=\"pillar-c\"] > rect", "expected_count": 2, "surface": "foreground", "layer": null }
-      ],
-      "type_bindings": []
-    },
-    "wise-ppt.layout.relationship.R2": {
-      "surface_bindings": [
-        { "binding_id": "strategy-panel", "selector": "[data-slot-id=\"strategy\"] > rect[data-band-panel=\"true\"]", "expected_count": 1, "surface": "foreground", "layer": null }
-      ],
-      "type_bindings": []
-    },
-    "wise-ppt.layout.relationship.R4": {
-      "surface_bindings": [
-        { "binding_id": "balanced-pans", "selector": "#balance-host svg g > path:nth-of-type(2), #balance-host svg g > path:nth-of-type(3)", "expected_count": 2, "surface": "foreground", "layer": null }
-      ],
-      "type_bindings": []
-    },
-    "wise-ppt.layout.relationship.R6": {
-      "surface_bindings": [
-        { "binding_id": "input-evaluation-bands", "selector": "[data-slot-id=\"input\"] > rect[data-band-panel=\"true\"], [data-slot-id=\"evaluation\"] > rect[data-band-panel=\"true\"]", "expected_count": 2, "surface": "foreground", "layer": null }
-      ],
-      "type_bindings": []
-    },
-    "wise-ppt.layout.relationship.S1": {
-      "surface_bindings": [
-        { "binding_id": "layer-bands", "selector": "#architecture-slot .arch-tone-wrap", "expected_count": 5, "surface": "foreground", "layer": null },
-        { "binding_id": "leaf-capabilities", "selector": "#architecture-slot .arch-tone-fill", "expected_count": 39, "surface": "foreground", "layer": null }
-      ],
-      "type_bindings": []
-    },
-    "wise-ppt.layout.relationship.T2": {
-      "surface_bindings": [
-        { "binding_id": "layout-sample-cards", "selector": "[data-repeat-unit=\"layout-sample\"] > rect:first-of-type", "expected_count": 6, "surface": "foreground", "layer": null }
-      ],
-      "type_bindings": []
-    },
-    "wise-ppt.layout.relationship.T3": {
-      "surface_bindings": [
-        { "binding_id": "selection-decision", "selector": "#t3-decision > rect:first-of-type", "expected_count": 1, "surface": "foreground", "layer": null },
-        { "binding_id": "component-sample-cards", "selector": "[data-repeat-unit=\"component-sample\"] > rect:first-of-type", "expected_count": 6, "surface": "foreground", "layer": null }
-      ],
-      "type_bindings": []
+    "wise-ppt.layout.nonrelationship.M2": {
+      "surface_bindings": [],
+      "type_bindings": [],
+      "identity_groups": [
+        {
+          "group_id": "identity.motif-label",
+          "label": "秩序环标签",
+          "members": [
+            {
+              "selector": "[data-template-part=\"motif-label\"]",
+              "treatment": "identity.text",
+              "expected_count": 1
+            }
+          ]
+        }
+      ]
     }
   }
 }

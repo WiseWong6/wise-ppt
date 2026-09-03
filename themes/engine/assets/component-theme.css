@@ -1,0 +1,743 @@
+/* Component-local theme treatments. No slide shell, furniture or focus rules live here.
+   Registered Atlas source rules legitimately use !important. The impossible-id guard raises
+   only this contract's specificity so semantic projection wins without inline brand colors. */
+:root:is([data-theme-id="hermes-orange"], [data-theme-id="klein-blue"])
+  [data-component-theme-scope="true"][data-component-theme-mode="layout-default"] {
+  /* Catalog 来源页会在当前纸面上把正文、图表标签和元信息重新解析为
+     70% / 55% / 45% 墨阶。来源组件必须复用这层局部 token，不能被
+     组件默认规则压成同一个实黑。 */
+  --wp-color-body: color-mix(in srgb, var(--wp-color-primary) 70%, transparent);
+  --wp-color-chart-label: color-mix(in srgb, var(--wp-color-primary) 55%, transparent);
+  --wp-color-metadata: color-mix(in srgb, var(--wp-color-primary) 45%, transparent);
+
+  /* Native / Atlas 适配别名原先只在 :root 声明。自定义属性在声明元素上
+     完成 var() 解析后再继承，因此只改上面的公开 token 仍会继承到已经解析
+     成实黑的二级别名。来源组件必须在自己的作用域内重建整条别名链，才与
+     Catalog 来源 frame 的 70% / 55% / 45% 默认墨阶一致。 */
+  --ink-80: color-mix(in srgb, var(--wp-color-primary) 80%, transparent);
+  --ink-70: var(--wp-color-body);
+  --ink-55: var(--wp-color-chart-label);
+  --ink-45: var(--wp-color-metadata);
+  --wp-adapter-pi-ink-80: var(--ink-80);
+  --wp-adapter-pi-ink-70: var(--wp-color-body);
+  --wp-adapter-pi-ink-60: color-mix(in srgb, var(--wp-color-primary) 60%, transparent);
+  --wp-adapter-pi-ink-55: var(--wp-color-chart-label);
+  --wp-adapter-pi-ink-45: var(--wp-color-metadata);
+  --wp-adapter-pi-ink-30: color-mix(in srgb, var(--wp-color-primary) 30%, transparent);
+  --wp-adapter-atlas-ink-80: var(--ink-80);
+  --wp-adapter-atlas-ink-70: var(--wp-color-body);
+  --wp-adapter-atlas-ink-55: var(--wp-color-chart-label);
+  --wp-adapter-atlas-ink-45: var(--wp-color-metadata);
+  --pi-ink-80: var(--wp-adapter-pi-ink-80);
+  --pi-ink-70: var(--wp-adapter-pi-ink-70);
+  --pi-ink-60: var(--wp-adapter-pi-ink-60);
+  --pi-ink-55: var(--wp-adapter-pi-ink-55);
+  --pi-ink-45: var(--wp-adapter-pi-ink-45);
+  --pi-ink-30: var(--wp-adapter-pi-ink-30);
+}
+
+:root:not(#wise-ppt-component-theme-specificity-guard):is([data-theme-id="hermes-orange"], [data-theme-id="klein-blue"])
+  [data-component-theme-scope="true"][data-component-theme-material="canvas"] {
+  background-color: var(--wp-color-surface-canvas) !important;
+  color: var(--wp-color-body);
+}
+:root:not(#wise-ppt-component-theme-specificity-guard):is([data-theme-id="hermes-orange"], [data-theme-id="klein-blue"])
+  [data-component-theme-scope="true"] [data-component-theme-material="canvas"] {
+  background-color: var(--wp-color-surface-canvas) !important;
+}
+:root:not(#wise-ppt-component-theme-specificity-guard):is([data-theme-id="hermes-orange"], [data-theme-id="klein-blue"])
+  [data-component-theme-scope="true"] :is(path, polygon, circle, ellipse, rect)[data-component-theme-material="canvas"] {
+  fill: var(--wp-color-surface-canvas) !important;
+}
+
+:root:not(#wise-ppt-component-theme-specificity-guard):is([data-theme-id="hermes-orange"], [data-theme-id="klein-blue"])
+  [data-component-theme-scope="true"] [data-component-theme-material="recessed"] {
+  background-color: var(--wp-color-surface-recessed) !important;
+}
+:root:not(#wise-ppt-component-theme-specificity-guard):is([data-theme-id="hermes-orange"], [data-theme-id="klein-blue"])
+  [data-component-theme-scope="true"] :is(path, polygon, circle, ellipse, rect)[data-component-theme-material="recessed"] {
+  fill: var(--wp-color-surface-recessed) !important;
+}
+
+:root:not(#wise-ppt-component-theme-specificity-guard):is([data-theme-id="hermes-orange"], [data-theme-id="klein-blue"])
+  [data-component-theme-scope="true"] [data-component-theme-material="panel"] {
+  background-color: var(--wp-color-surface-panel) !important;
+}
+:root:not(#wise-ppt-component-theme-specificity-guard):is([data-theme-id="hermes-orange"], [data-theme-id="klein-blue"])
+  [data-component-theme-scope="true"] :is(path, polygon, circle, ellipse, rect)[data-component-theme-material="panel"] {
+  fill: var(--wp-color-surface-panel) !important;
+}
+
+:root:not(#wise-ppt-component-theme-specificity-guard):is([data-theme-id="hermes-orange"], [data-theme-id="klein-blue"])
+  [data-component-theme-scope="true"] [data-component-theme-material="ink"] {
+  background-color: var(--wp-color-primary) !important;
+}
+:root:not(#wise-ppt-component-theme-specificity-guard):is([data-theme-id="hermes-orange"], [data-theme-id="klein-blue"])
+  [data-component-theme-scope="true"] :is(path, polygon, circle, ellipse, rect)[data-component-theme-material="ink"] {
+  fill: var(--wp-color-primary) !important;
+}
+
+:root:not(#wise-ppt-component-theme-specificity-guard):is([data-theme-id="hermes-orange"], [data-theme-id="klein-blue"])
+  [data-component-theme-scope="true"] [data-component-theme-material="translucent-panel"] {
+  background-color: color-mix(in srgb, var(--wp-color-surface-panel) 50%, transparent) !important;
+}
+:root:not(#wise-ppt-component-theme-specificity-guard):is([data-theme-id="hermes-orange"], [data-theme-id="klein-blue"])
+  [data-component-theme-scope="true"] :is(path, polygon, circle, ellipse, rect)[data-component-theme-material="translucent-panel"] {
+  fill: color-mix(in srgb, var(--wp-color-surface-panel) 50%, transparent) !important;
+}
+
+:root:not(#wise-ppt-component-theme-specificity-guard):is([data-theme-id="hermes-orange"], [data-theme-id="klein-blue"])
+  [data-component-theme-scope="true"] [data-component-theme-material="transparent"] {
+  background-color: transparent !important;
+}
+:root:not(#wise-ppt-component-theme-specificity-guard):is([data-theme-id="hermes-orange"], [data-theme-id="klein-blue"])
+  [data-component-theme-scope="true"] :is(path, polygon, circle, ellipse, rect)[data-component-theme-material="transparent"] {
+  fill: transparent !important;
+}
+
+/* Layout-derived components also inherit Paper Ink's current source materials.
+   This is intentionally limited to layout-default receipts: default-rule cards
+   keep their independent open-canvas policy. */
+:root:not(#wise-ppt-component-theme-specificity-guard)[data-theme-id="paper-ink"]
+  [data-component-theme-scope="true"][data-component-theme-mode="layout-default"][data-component-theme-material="canvas"] {
+  background-color: var(--wp-color-surface-canvas) !important;
+}
+:root:not(#wise-ppt-component-theme-specificity-guard)[data-theme-id="paper-ink"]
+  [data-component-theme-scope="true"][data-component-theme-mode="layout-default"] :is(path, polygon, circle, ellipse, rect)[data-component-theme-material="canvas"] {
+  fill: var(--wp-color-surface-canvas) !important;
+}
+:root:not(#wise-ppt-component-theme-specificity-guard)[data-theme-id="paper-ink"]
+  [data-component-theme-scope="true"][data-component-theme-mode="layout-default"] :is(path, polygon, circle, ellipse, rect)[data-component-theme-material="recessed"] {
+  fill: var(--wp-color-surface-recessed) !important;
+}
+:root:not(#wise-ppt-component-theme-specificity-guard)[data-theme-id="paper-ink"]
+  [data-component-theme-scope="true"][data-component-theme-mode="layout-default"] :is(path, polygon, circle, ellipse, rect)[data-component-theme-material="panel"] {
+  fill: var(--wp-color-surface-panel) !important;
+}
+/* 这些来源版式的 Paper Ink 默认态保持开放纸面；同一语义面只在品牌
+   frame 中抬升为白色前景。选择器限定到来源 layout，避免把其他 panel
+   一并压平。 */
+:root:not(#wise-ppt-component-theme-specificity-guard)[data-theme-id="paper-ink"]
+  [data-component-theme-scope="true"][data-component-theme-mode="layout-default"]:is([data-component-theme-layout="O1"], [data-component-theme-layout="G2"], [data-component-theme-layout="J1"], [data-component-theme-layout="H1"])
+  :is(path, polygon, circle, ellipse, rect)[data-component-theme-material="panel"] {
+  fill: none !important;
+}
+:root:not(#wise-ppt-component-theme-specificity-guard)[data-theme-id="paper-ink"]
+  [data-component-theme-scope="true"][data-component-theme-mode="layout-default"][data-component-theme-layout="G2"]
+  :is(path, polygon, circle, ellipse, rect)[data-component-theme-material="recessed"] {
+  fill: none !important;
+}
+/* P2 的四个节点和 R4 的治理盘在 Paper Ink 与页面纸面同层。 */
+:root:not(#wise-ppt-component-theme-specificity-guard)[data-theme-id="paper-ink"]
+  [data-component-theme-scope="true"][data-component-theme-mode="layout-default"]:is([data-component-theme-layout="P2"], [data-component-theme-layout="R4"])
+  :is(path, polygon, circle, ellipse, rect)[data-component-theme-material="panel"] {
+  fill: var(--wp-color-surface-canvas) !important;
+}
+/* G2 彩色 frame 的电池舱使用插画层专属中性面，不等同于通用 recessed。 */
+:root:not(#wise-ppt-component-theme-specificity-guard):is([data-theme-id="hermes-orange"], [data-theme-id="klein-blue"])
+  [data-component-theme-scope="true"][data-component-theme-mode="layout-default"][data-component-theme-layout="G2"]
+  :is(path, polygon, circle, ellipse, rect)[data-component-theme-material="recessed"] {
+  fill: #e4dfd5 !important;
+}
+/* H2 的 Paper Ink 默认态是开放纸面；同一个 system surface 只在两套
+   彩色主题中提升为白色前景面。 */
+:root:not(#wise-ppt-component-theme-specificity-guard)[data-theme-id="paper-ink"]
+  [data-component-theme-scope="true"][data-component-theme-mode="layout-default"][data-component-theme-layout="H2"] :is(path, polygon, circle, ellipse, rect)[data-component-theme-material="panel"] {
+  fill: none !important;
+}
+/* E6/G4/N1 的 Paper Ink 默认态使用开放纸面；同一语义对象只在品牌
+   主题中抬升为墨面或白色前景面。 */
+:root:not(#wise-ppt-component-theme-specificity-guard)[data-theme-id="paper-ink"]
+  [data-component-theme-scope="true"][data-component-theme-mode="layout-default"][data-component-theme-layout="E6"] :is(path, polygon, circle, ellipse, rect)[data-component-theme-material="ink"] {
+  fill: var(--wp-color-surface-panel) !important;
+}
+:root:not(#wise-ppt-component-theme-specificity-guard)[data-theme-id="paper-ink"]
+  [data-component-theme-scope="true"][data-component-theme-mode="layout-default"]:is([data-component-theme-layout="G4"], [data-component-theme-layout="N1"]) :is(path, polygon, circle, ellipse, rect)[data-component-theme-material="panel"] {
+  fill: none !important;
+}
+:root:not(#wise-ppt-component-theme-specificity-guard)[data-theme-id="paper-ink"]
+  [data-component-theme-scope="true"][data-component-theme-mode="layout-default"] :is(path, polygon, circle, ellipse, rect)[data-component-theme-material="ink"] {
+  fill: var(--wp-color-primary) !important;
+}
+:root:not(#wise-ppt-component-theme-specificity-guard)[data-theme-id="paper-ink"]
+  [data-component-theme-scope="true"][data-component-theme-mode="layout-default"] :is(path, polygon, circle, ellipse, rect)[data-component-theme-material="transparent"] {
+  fill: transparent !important;
+}
+:root:not(#wise-ppt-component-theme-specificity-guard)[data-theme-id="paper-ink"]
+  [data-component-theme-scope="true"][data-component-theme-mode="layout-default"][data-component-theme-layout="G4"] :is(path, polygon, circle, ellipse, rect)[data-component-theme-material="translucent-panel"] {
+  fill: var(--wp-color-surface-canvas) !important;
+}
+
+/* A source layout may intentionally keep the same semantic identity in all
+   three themes. J2's 01–08 sequence is the canonical example. */
+[data-component-theme-scope="true"] [data-component-theme-treatment="identity.text-all-themes"] {
+  color: var(--wp-color-functional) !important;
+}
+[data-component-theme-scope="true"] :is(text, tspan)[data-component-theme-treatment="identity.text-all-themes"],
+[data-component-theme-scope="true"] [data-component-theme-treatment="identity.text-all-themes"] :is(text, tspan) {
+  fill: var(--wp-color-functional) !important;
+}
+
+[data-component-theme-scope="true"] [data-component-theme-treatment="identity.text-source-70"] {
+  color: var(--wp-color-body) !important;
+}
+[data-component-theme-scope="true"] :is(text, tspan)[data-component-theme-treatment="identity.text-source-70"] {
+  fill: var(--wp-color-body) !important;
+}
+[data-component-theme-scope="true"] [data-component-theme-treatment="identity.text-source-80"] {
+  color: color-mix(in srgb, var(--wp-color-primary) 80%, transparent) !important;
+}
+[data-component-theme-scope="true"] :is(text, tspan)[data-component-theme-treatment="identity.text-source-80"] {
+  fill: color-mix(in srgb, var(--wp-color-primary) 80%, transparent) !important;
+}
+[data-component-theme-scope="true"] :is(path, line, polyline, polygon, circle, ellipse, rect, use)[data-component-theme-treatment="identity.border-source-80"],
+[data-component-theme-scope="true"] :is(path, line, polyline, polygon, circle, ellipse, rect, use)[data-component-theme-treatment="identity.stroke-source-80"] {
+  stroke: color-mix(in srgb, var(--wp-color-primary) 80%, transparent) !important;
+}
+:root:not(#wise-ppt-component-theme-specificity-guard):is([data-theme-id="hermes-orange"], [data-theme-id="klein-blue"])
+  [data-component-theme-scope="true"] :is(text, tspan)[data-component-theme-treatment="identity.text-source-70"],
+:root:not(#wise-ppt-component-theme-specificity-guard):is([data-theme-id="hermes-orange"], [data-theme-id="klein-blue"])
+  [data-component-theme-scope="true"] :is(text, tspan)[data-component-theme-treatment="identity.text-source-80"] {
+  fill: var(--wp-color-functional) !important;
+}
+:root:not(#wise-ppt-component-theme-specificity-guard):is([data-theme-id="hermes-orange"], [data-theme-id="klein-blue"])
+  [data-component-theme-scope="true"] :is(path, line, polyline, polygon, circle, ellipse, rect, use)[data-component-theme-treatment="identity.border-source-80"],
+:root:not(#wise-ppt-component-theme-specificity-guard):is([data-theme-id="hermes-orange"], [data-theme-id="klein-blue"])
+  [data-component-theme-scope="true"] :is(path, line, polyline, polygon, circle, ellipse, rect, use)[data-component-theme-treatment="identity.stroke-source-80"] {
+  stroke: var(--wp-color-functional) !important;
+}
+
+:root:not(#wise-ppt-component-theme-specificity-guard):is([data-theme-id="hermes-orange"], [data-theme-id="klein-blue"])
+  [data-component-theme-scope="true"] [data-component-theme-treatment="identity.text"] {
+  color: var(--wp-color-functional) !important;
+}
+:root:not(#wise-ppt-component-theme-specificity-guard):is([data-theme-id="hermes-orange"], [data-theme-id="klein-blue"])
+  [data-component-theme-scope="true"] :is(text, tspan)[data-component-theme-treatment="identity.text"],
+:root:not(#wise-ppt-component-theme-specificity-guard):is([data-theme-id="hermes-orange"], [data-theme-id="klein-blue"])
+  [data-component-theme-scope="true"] [data-component-theme-treatment="identity.text"] :is(text, tspan) {
+  fill: var(--wp-color-functional) !important;
+}
+
+:root:not(#wise-ppt-component-theme-specificity-guard):is([data-theme-id="hermes-orange"], [data-theme-id="klein-blue"])
+  [data-component-theme-scope="true"] [data-component-theme-treatment="identity.text-bold"] {
+  color: var(--wp-color-functional) !important;
+}
+:root:not(#wise-ppt-component-theme-specificity-guard):is([data-theme-id="hermes-orange"], [data-theme-id="klein-blue"])
+  [data-component-theme-scope="true"] :is(text, tspan)[data-component-theme-treatment="identity.text-bold"],
+:root:not(#wise-ppt-component-theme-specificity-guard):is([data-theme-id="hermes-orange"], [data-theme-id="klein-blue"])
+  [data-component-theme-scope="true"] [data-component-theme-treatment="identity.text-bold"] :is(text, tspan) {
+  fill: var(--wp-color-functional) !important;
+}
+
+:root:not(#wise-ppt-component-theme-specificity-guard):is([data-theme-id="hermes-orange"], [data-theme-id="klein-blue"])
+  [data-component-theme-scope="true"] [data-component-theme-treatment="identity.border"] {
+  color: var(--wp-color-functional) !important;
+  border-color: var(--wp-color-functional) !important;
+  outline-color: var(--wp-color-functional) !important;
+}
+:root:not(#wise-ppt-component-theme-specificity-guard):is([data-theme-id="hermes-orange"], [data-theme-id="klein-blue"])
+  [data-component-theme-scope="true"] :is(path, line, polyline, polygon, circle, ellipse, rect, use)[data-component-theme-treatment="identity.border"],
+:root:not(#wise-ppt-component-theme-specificity-guard):is([data-theme-id="hermes-orange"], [data-theme-id="klein-blue"])
+  [data-component-theme-scope="true"] [data-component-theme-treatment="identity.border"] :is(path, line, polyline, polygon, circle, ellipse, rect, use) {
+  stroke: var(--wp-color-functional) !important;
+}
+
+:root:not(#wise-ppt-component-theme-specificity-guard):is([data-theme-id="hermes-orange"], [data-theme-id="klein-blue"])
+  [data-component-theme-scope="true"] [data-component-theme-treatment="identity.fill"] {
+  color: var(--wp-color-functional) !important;
+  background-color: var(--wp-color-functional) !important;
+}
+:root:not(#wise-ppt-component-theme-specificity-guard):is([data-theme-id="hermes-orange"], [data-theme-id="klein-blue"])
+  [data-component-theme-scope="true"] :is(path, circle, ellipse, rect, polygon, use)[data-component-theme-treatment="identity.fill"],
+:root:not(#wise-ppt-component-theme-specificity-guard):is([data-theme-id="hermes-orange"], [data-theme-id="klein-blue"])
+  [data-component-theme-scope="true"] [data-component-theme-treatment="identity.fill"] :is(path, circle, ellipse, rect, polygon, use) {
+  fill: var(--wp-color-functional) !important;
+}
+
+/* Default-rule targets may be real filled badges or root nodes. The chromatic
+   themes use their functional color with a panel-colored label; Paper Ink is
+   intentionally left at its native neutral treatment. */
+:root:not(#wise-ppt-component-theme-specificity-guard):is([data-theme-id="hermes-orange"], [data-theme-id="klein-blue"])
+  [data-component-theme-scope="true"] [data-component-theme-treatment="identity.functional-surface"] {
+  background-color: var(--wp-color-functional) !important;
+  border-color: var(--wp-color-functional) !important;
+  color: var(--wp-color-surface-panel) !important;
+}
+
+:root:not(#wise-ppt-component-theme-specificity-guard):is([data-theme-id="hermes-orange"], [data-theme-id="klein-blue"])
+  [data-component-theme-scope="true"] :is(path, circle, ellipse, rect, polygon, use)[data-component-theme-treatment="identity.white-fill"],
+:root:not(#wise-ppt-component-theme-specificity-guard):is([data-theme-id="hermes-orange"], [data-theme-id="klein-blue"])
+  [data-component-theme-scope="true"] [data-component-theme-treatment="identity.white-fill"] :is(path, circle, ellipse, rect, polygon, use) {
+  fill: #fff !important;
+}
+
+:root:not(#wise-ppt-component-theme-specificity-guard):is([data-theme-id="hermes-orange"], [data-theme-id="klein-blue"])
+  [data-component-theme-scope="true"] :is(path, line, polyline, polygon, circle, ellipse, rect, use)[data-component-theme-treatment="identity.data-series"],
+:root:not(#wise-ppt-component-theme-specificity-guard):is([data-theme-id="hermes-orange"], [data-theme-id="klein-blue"])
+  [data-component-theme-scope="true"] [data-component-theme-treatment="identity.data-series"] :is(path, line, polyline, polygon, circle, ellipse, rect, use) {
+  stroke: var(--wp-color-functional) !important;
+  fill: var(--wp-color-functional) !important;
+}
+
+:root:not(#wise-ppt-component-theme-specificity-guard):is([data-theme-id="hermes-orange"], [data-theme-id="klein-blue"])
+  [data-component-theme-scope="true"] [data-component-theme-treatment="identity.stroke"] {
+  color: var(--wp-color-functional) !important;
+  border-color: var(--wp-color-functional) !important;
+}
+:root:not(#wise-ppt-component-theme-specificity-guard):is([data-theme-id="hermes-orange"], [data-theme-id="klein-blue"])
+  [data-component-theme-scope="true"] :is(path, line, polyline, polygon, circle, ellipse, rect, use)[data-component-theme-treatment="identity.stroke"] {
+  stroke: var(--wp-color-functional) !important;
+}
+
+:root:not(#wise-ppt-component-theme-specificity-guard):is([data-theme-id="hermes-orange"], [data-theme-id="klein-blue"])
+  [data-component-theme-scope="true"] :is(path, line, polyline, polygon, circle, ellipse, rect, use)[data-component-theme-treatment="identity.stroke-strong"] {
+  stroke: var(--wp-color-functional) !important;
+  stroke-width: 2px !important;
+  opacity: 1 !important;
+}
+:root:not(#wise-ppt-component-theme-specificity-guard):is([data-theme-id="hermes-orange"], [data-theme-id="klein-blue"])
+  [data-component-theme-scope="true"] :is(path, line, polyline, polygon, circle, ellipse, rect, use)[data-component-theme-treatment="identity.stroke-detail"] {
+  stroke: var(--wp-color-functional) !important;
+  stroke-width: 1px !important;
+  opacity: 1 !important;
+}
+
+:root:not(#wise-ppt-component-theme-specificity-guard):is([data-theme-id="hermes-orange"], [data-theme-id="klein-blue"])
+  [data-component-theme-scope="true"] [data-component-theme-treatment="identity.icon"] {
+  color: var(--wp-color-functional) !important;
+}
+:root:not(#wise-ppt-component-theme-specificity-guard):is([data-theme-id="hermes-orange"], [data-theme-id="klein-blue"])
+  [data-component-theme-scope="true"] [data-component-theme-treatment="identity.icon"] :is(path, line, polyline, polygon, circle, ellipse, rect, use)[stroke]:not([stroke="none"]) {
+  stroke: currentColor !important;
+}
+:root:not(#wise-ppt-component-theme-specificity-guard):is([data-theme-id="hermes-orange"], [data-theme-id="klein-blue"])
+  [data-component-theme-scope="true"] [data-component-theme-treatment="identity.icon"] :is(path, circle, ellipse, rect, polygon, use)[fill]:not([fill="none"]) {
+  fill: currentColor !important;
+}
+
+/* Source-layout appearance bindings. These rules project only paint and the
+   exact line strengths already present in the approved Catalog frame. */
+
+/* Explicit default-rule appearances. These treatments are paint-only and are
+   resolved only for Hermès/Klein; Paper Ink retains its own source grammar. */
+:root:not(#wise-ppt-component-theme-specificity-guard):is([data-theme-id="hermes-orange"], [data-theme-id="klein-blue"])
+  [data-component-theme-scope="true"] [data-component-theme-appearance="default.open-surface"] {
+  background-color: transparent !important;
+}
+:root:not(#wise-ppt-component-theme-specificity-guard):is([data-theme-id="hermes-orange"], [data-theme-id="klein-blue"])
+  [data-component-theme-scope="true"] :is(path, polygon, circle, ellipse, rect)[data-component-theme-appearance="default.open-surface"] {
+  fill: transparent !important;
+}
+:root:not(#wise-ppt-component-theme-specificity-guard):is([data-theme-id="hermes-orange"], [data-theme-id="klein-blue"])
+  [data-component-theme-scope="true"] [data-component-theme-appearance="default.open-ink-outline"] {
+  background-color: transparent !important;
+  border-color: var(--wp-color-primary) !important;
+  color: var(--wp-color-body) !important;
+  outline: 1px solid var(--wp-color-primary) !important;
+  outline-offset: -1px !important;
+}
+:root:not(#wise-ppt-component-theme-specificity-guard):is([data-theme-id="hermes-orange"], [data-theme-id="klein-blue"])
+  [data-component-theme-scope="true"] :is(path, polygon, circle, ellipse, rect)[data-component-theme-appearance="default.open-ink-outline"] {
+  fill: transparent !important;
+  stroke: var(--wp-color-primary) !important;
+}
+:root:not(#wise-ppt-component-theme-specificity-guard):is([data-theme-id="hermes-orange"], [data-theme-id="klein-blue"])
+  [data-component-theme-scope="true"] [data-component-theme-appearance="default.ink-current-color"] {
+  border-color: var(--wp-color-primary) !important;
+  color: var(--wp-color-primary) !important;
+}
+:root:not(#wise-ppt-component-theme-specificity-guard):is([data-theme-id="hermes-orange"], [data-theme-id="klein-blue"])
+  [data-component-theme-scope="true"] [data-component-theme-appearance="default.ink-border"] {
+  border-color: var(--wp-color-primary) !important;
+}
+:root:not(#wise-ppt-component-theme-specificity-guard):is([data-theme-id="hermes-orange"], [data-theme-id="klein-blue"])
+  [data-component-theme-scope="true"] :is(path, line, polyline, polygon, circle, ellipse, rect)[data-component-theme-appearance="default.ink-stroke"] {
+  stroke: var(--wp-color-primary) !important;
+}
+:root:not(#wise-ppt-component-theme-specificity-guard):is([data-theme-id="hermes-orange"], [data-theme-id="klein-blue"])
+  [data-component-theme-scope="true"] :is(path, polygon, circle, ellipse, rect)[data-component-theme-appearance="default.ink-fill"] {
+  fill: var(--wp-color-primary) !important;
+}
+:root:not(#wise-ppt-component-theme-specificity-guard):is([data-theme-id="hermes-orange"], [data-theme-id="klein-blue"])
+  [data-component-theme-scope="true"] [data-component-theme-appearance="default.ink-fill-55"] {
+  background-color: color-mix(in srgb, var(--wp-color-primary) 55%, transparent) !important;
+}
+:root:not(#wise-ppt-component-theme-specificity-guard):is([data-theme-id="hermes-orange"], [data-theme-id="klein-blue"])
+  [data-component-theme-scope="true"] :is(path, polygon, circle, ellipse, rect)[data-component-theme-appearance="default.ink-fill-55"] {
+  fill: color-mix(in srgb, var(--wp-color-primary) 55%, transparent) !important;
+}
+
+:root:not(#wise-ppt-component-theme-specificity-guard):is([data-theme-id="hermes-orange"], [data-theme-id="klein-blue"])
+  [data-component-theme-scope="true"] [data-component-theme-appearance="source.functional-text"] {
+  color: var(--wp-color-functional) !important;
+  fill: var(--wp-color-functional) !important;
+}
+:root:not(#wise-ppt-component-theme-specificity-guard):is([data-theme-id="hermes-orange"], [data-theme-id="klein-blue"])
+  [data-component-theme-scope="true"] [data-component-theme-appearance="source.functional-stroke-strong"] {
+  stroke: var(--wp-color-functional) !important;
+  stroke-width: 2px !important;
+  opacity: 1 !important;
+}
+:root:not(#wise-ppt-component-theme-specificity-guard):is([data-theme-id="hermes-orange"], [data-theme-id="klein-blue"])
+  [data-component-theme-scope="true"] [data-component-theme-appearance="source.ink-border-2"] {
+  border-color: var(--wp-color-primary) !important;
+  border-width: 2px !important;
+}
+:root:not(#wise-ppt-component-theme-specificity-guard):is([data-theme-id="hermes-orange"], [data-theme-id="klein-blue"])
+  [data-component-theme-scope="true"] [data-component-theme-appearance="source.ink-stroke-2"] {
+  stroke: var(--wp-color-primary) !important;
+  stroke-width: 2px !important;
+}
+:root:not(#wise-ppt-component-theme-specificity-guard):is([data-theme-id="hermes-orange"], [data-theme-id="klein-blue"])
+  [data-component-theme-scope="true"] [data-component-theme-appearance="source.ink-stroke"] {
+  stroke: var(--wp-color-primary) !important;
+}
+
+[data-component-theme-scope="true"] [data-component-theme-appearance="source.ink-text"],
+[data-component-theme-scope="true"] [data-component-theme-appearance="source.metric-value"] {
+  color: var(--wp-color-primary) !important;
+  fill: var(--wp-color-primary) !important;
+}
+[data-component-theme-scope="true"] :is(text, tspan)[data-component-theme-appearance="source.surface-panel-text"] {
+  fill: var(--wp-color-surface-panel) !important;
+}
+/* K3 的指标带在 Native 模板中先登记一条，再由物化器克隆为 2–4 条。
+   用来源版式标识约束动态副本，避免把运行时数量写成虚假的固定命中数。 */
+[data-component-theme-scope="true"][data-component-theme-layout="K3"] .pi-metric-value {
+  color: var(--wp-color-primary) !important;
+}
+[data-component-theme-scope="true"][data-component-theme-layout="K3"] .pi-metric-label {
+  color: var(--wp-color-chart-label) !important;
+}
+[data-component-theme-scope="true"] [data-component-theme-appearance="source.ink-text-45"] {
+  color: color-mix(in srgb, var(--wp-color-primary) 45%, transparent) !important;
+  fill: color-mix(in srgb, var(--wp-color-primary) 45%, transparent) !important;
+}
+[data-component-theme-scope="true"] [data-component-theme-appearance="source.ink-text-50"] {
+  color: color-mix(in srgb, var(--wp-color-primary) 50%, transparent) !important;
+  fill: color-mix(in srgb, var(--wp-color-primary) 50%, transparent) !important;
+}
+[data-component-theme-scope="true"] [data-component-theme-appearance="source.ink-text-60"] {
+  color: color-mix(in srgb, var(--wp-color-primary) 60%, transparent) !important;
+  fill: color-mix(in srgb, var(--wp-color-primary) 60%, transparent) !important;
+}
+[data-component-theme-scope="true"] [data-component-theme-appearance="source.ink-text-70"] {
+  color: color-mix(in srgb, var(--wp-color-primary) 70%, transparent) !important;
+  fill: color-mix(in srgb, var(--wp-color-primary) 70%, transparent) !important;
+}
+[data-component-theme-scope="true"] [data-component-theme-appearance="source.ink-text-75"] {
+  color: color-mix(in srgb, var(--wp-color-primary) 75%, transparent) !important;
+  fill: color-mix(in srgb, var(--wp-color-primary) 75%, transparent) !important;
+}
+[data-component-theme-scope="true"] [data-component-theme-appearance="source.ink-text-85"] {
+  color: color-mix(in srgb, var(--wp-color-primary) 85%, transparent) !important;
+  fill: color-mix(in srgb, var(--wp-color-primary) 85%, transparent) !important;
+}
+[data-component-theme-scope="true"] [data-component-theme-appearance="source.ink-text-70-brand"] {
+  color: var(--wp-color-primary) !important;
+  fill: var(--wp-color-primary) !important;
+}
+:root:not(#wise-ppt-component-theme-specificity-guard):is([data-theme-id="hermes-orange"], [data-theme-id="klein-blue"])
+  [data-component-theme-scope="true"] [data-component-theme-appearance="source.ink-text-70-brand"] {
+  color: var(--wp-color-body) !important;
+  fill: var(--wp-color-body) !important;
+}
+
+[data-component-theme-scope="true"] [data-component-theme-appearance="source.sequence-text"] {
+  color: color-mix(in srgb, var(--wp-color-primary) 80%, transparent) !important;
+  fill: color-mix(in srgb, var(--wp-color-primary) 80%, transparent) !important;
+}
+:root:not(#wise-ppt-component-theme-specificity-guard):is([data-theme-id="hermes-orange"], [data-theme-id="klein-blue"])
+  [data-component-theme-scope="true"] [data-component-theme-appearance="source.sequence-text"] {
+  color: var(--wp-color-functional) !important;
+  fill: var(--wp-color-functional) !important;
+}
+
+[data-component-theme-scope="true"] [data-component-theme-appearance="source.metric-label"] {
+  color: var(--wp-color-body) !important;
+  fill: var(--wp-color-body) !important;
+}
+:root:not(#wise-ppt-component-theme-specificity-guard):is([data-theme-id="hermes-orange"], [data-theme-id="klein-blue"])
+  [data-component-theme-scope="true"] [data-component-theme-appearance="source.metric-label"] {
+  color: var(--wp-color-chart-label) !important;
+  fill: var(--wp-color-chart-label) !important;
+}
+
+/* U2 的表头在 Paper Ink 是 70% 墨阶，品牌默认态收至 45%；三主题
+   均保留来源的等宽字距。 */
+[data-component-theme-scope="true"] [data-component-theme-appearance="source.u2-metric-header-text"] {
+  color: color-mix(in srgb, var(--wp-color-primary) 70%, transparent) !important;
+  fill: color-mix(in srgb, var(--wp-color-primary) 70%, transparent) !important;
+  letter-spacing: 2px !important;
+}
+:root:not(#wise-ppt-component-theme-specificity-guard):is([data-theme-id="hermes-orange"], [data-theme-id="klein-blue"])
+  [data-component-theme-scope="true"] [data-component-theme-appearance="source.u2-metric-header-text"] {
+  color: var(--wp-color-metadata) !important;
+  fill: var(--wp-color-metadata) !important;
+}
+
+[data-component-theme-scope="true"] [data-component-theme-appearance="source.ink-stroke-2-all"] {
+  stroke: var(--wp-color-primary) !important;
+  stroke-width: 2px !important;
+  opacity: 1 !important;
+}
+:root:not(#wise-ppt-component-theme-specificity-guard):is([data-theme-id="hermes-orange"], [data-theme-id="klein-blue"])
+  [data-component-theme-scope="true"] [data-component-theme-appearance="source.a3-document-outline"] {
+  stroke: var(--wp-color-primary) !important;
+  stroke-width: 2px !important;
+  opacity: 1 !important;
+}
+:root:not(#wise-ppt-component-theme-specificity-guard):is([data-theme-id="hermes-orange"], [data-theme-id="klein-blue"])
+  [data-component-theme-scope="true"] :is(text, tspan)[data-component-theme-appearance="source.a3-source-label"] {
+  color: color-mix(in srgb, var(--wp-color-primary) 70%, transparent) !important;
+  fill: color-mix(in srgb, var(--wp-color-primary) 70%, transparent) !important;
+}
+[data-component-theme-scope="true"] [data-component-theme-appearance="source.ink-stroke-80-exact"] {
+  stroke: color-mix(in srgb, var(--wp-color-primary) 80%, transparent) !important;
+  stroke-width: 1.4px !important;
+  opacity: 1 !important;
+}
+[data-component-theme-scope="true"] [data-component-theme-appearance="source.ink-stroke-45"] {
+  stroke: color-mix(in srgb, var(--wp-color-primary) 45%, transparent) !important;
+}
+[data-component-theme-scope="true"] [data-component-theme-appearance="source.g1-focus-outline"],
+[data-component-theme-scope="true"] [data-component-theme-appearance="source.g5-focus-outline"] {
+  stroke: color-mix(in srgb, var(--wp-color-primary) 80%, transparent) !important;
+  stroke-width: 1.4px !important;
+  opacity: 1 !important;
+}
+[data-component-theme-scope="true"] [data-component-theme-appearance="source.g5-principle-spokes"] {
+  stroke: color-mix(in srgb, var(--wp-color-primary) 70%, transparent) !important;
+}
+:root:not(#wise-ppt-component-theme-specificity-guard):is([data-theme-id="hermes-orange"], [data-theme-id="klein-blue"])
+  [data-component-theme-scope="true"] :is([data-component-theme-appearance="source.g1-focus-outline"], [data-component-theme-appearance="source.g5-focus-outline"]) {
+  stroke: var(--wp-color-primary) !important;
+  stroke-width: 2px !important;
+}
+:root:not(#wise-ppt-component-theme-specificity-guard):is([data-theme-id="hermes-orange"], [data-theme-id="klein-blue"])
+  [data-component-theme-scope="true"] [data-component-theme-appearance="source.g5-principle-spokes"] {
+  stroke: color-mix(in srgb, var(--wp-color-primary) 45%, transparent) !important;
+}
+:root:not(#wise-ppt-component-theme-specificity-guard)[data-theme-id="paper-ink"]
+  [data-component-theme-scope="true"][data-component-theme-mode="layout-default"][data-component-theme-layout="R4"]
+  :is(path, polygon, circle, ellipse, rect)[data-component-theme-appearance="source.r4-speed-fill"] {
+  fill: rgba(255, 255, 255, .25) !important;
+}
+:root:not(#wise-ppt-component-theme-specificity-guard):is([data-theme-id="hermes-orange"], [data-theme-id="klein-blue"])
+  [data-component-theme-scope="true"][data-component-theme-mode="layout-default"][data-component-theme-layout="R4"]
+  :is(path, polygon, circle, ellipse, rect)[data-component-theme-appearance="source.r4-speed-fill"] {
+  fill: #e4dfd5 !important;
+}
+:root:not(#wise-ppt-component-theme-specificity-guard)[data-theme-id="paper-ink"]
+  [data-component-theme-scope="true"][data-component-theme-mode="layout-default"][data-component-theme-layout="J1"]
+  :is(path, polygon, circle, ellipse, rect)[data-component-theme-appearance="source.j1-context-fill"] {
+  fill: var(--wp-color-surface-panel) !important;
+}
+:root:not(#wise-ppt-component-theme-specificity-guard):is([data-theme-id="hermes-orange"], [data-theme-id="klein-blue"])
+  [data-component-theme-scope="true"][data-component-theme-mode="layout-default"][data-component-theme-layout="J1"]
+  :is(path, polygon, circle, ellipse, rect)[data-component-theme-appearance="source.j1-context-fill"] {
+  fill: var(--wp-color-surface-canvas) !important;
+}
+:root:not(#wise-ppt-component-theme-specificity-guard):is([data-theme-id="hermes-orange"], [data-theme-id="klein-blue"])
+  [data-component-theme-scope="true"] [data-component-theme-appearance="source.c7-axis-tick-text"] {
+  color: var(--wp-color-primary) !important;
+  fill: var(--wp-color-primary) !important;
+}
+[data-component-theme-scope="true"] [data-component-theme-appearance="source.c7-focus-hatch"] {
+  stroke: var(--wp-color-primary) !important;
+  stroke-width: .7px !important;
+  opacity: .35 !important;
+}
+:root:not(#wise-ppt-component-theme-specificity-guard):is([data-theme-id="hermes-orange"], [data-theme-id="klein-blue"])
+  [data-component-theme-scope="true"] [data-component-theme-appearance="source.c7-focus-hatch"] {
+  stroke-width: 1.2px !important;
+}
+[data-component-theme-scope="true"] [data-component-theme-appearance="source.line-width-1_2"] {
+  stroke-width: 1.2px !important;
+}
+[data-component-theme-scope="true"] [data-component-theme-appearance="source.r7-brand-label"] {
+  color: color-mix(in srgb, var(--wp-color-primary) 58%, transparent) !important;
+  fill: color-mix(in srgb, var(--wp-color-primary) 58%, transparent) !important;
+}
+:root:not(#wise-ppt-component-theme-specificity-guard):is([data-theme-id="hermes-orange"], [data-theme-id="klein-blue"])
+  [data-component-theme-scope="true"] [data-component-theme-appearance="source.r7-brand-label"] {
+  color: var(--wp-color-primary) !important;
+  fill: var(--wp-color-primary) !important;
+}
+:root:not(#wise-ppt-component-theme-specificity-guard):is([data-theme-id="hermes-orange"], [data-theme-id="klein-blue"])
+  [data-component-theme-scope="true"] [data-component-theme-appearance="source.r7-accent-mark"] {
+  stroke-width: 1.2px !important;
+  opacity: 1 !important;
+}
+:root:not(#wise-ppt-component-theme-specificity-guard):is([data-theme-id="hermes-orange"], [data-theme-id="klein-blue"])
+  [data-component-theme-scope="true"] [data-component-theme-appearance="source.solution-stroke"] {
+  stroke: var(--wp-color-functional) !important;
+  stroke-width: 1.55px !important;
+}
+:root:not(#wise-ppt-component-theme-specificity-guard)[data-theme-id="paper-ink"]
+  [data-component-theme-scope="true"][data-component-theme-mode="layout-default"][data-component-theme-layout="E6"] [data-component-theme-appearance="source.ink-stroke-2-all"] {
+  stroke: color-mix(in srgb, var(--wp-color-primary) 80%, transparent) !important;
+  stroke-width: 1px !important;
+}
+:root:not(#wise-ppt-component-theme-specificity-guard)[data-theme-id="paper-ink"]
+  [data-component-theme-scope="true"][data-component-theme-mode="layout-default"][data-component-theme-layout="G4"] [data-component-theme-appearance="source.ink-stroke-45"] {
+  stroke: var(--wp-color-primary) !important;
+}
+[data-component-theme-scope="true"] [data-component-theme-appearance="source.a1-message-border"] {
+  color: var(--wp-color-primary) !important;
+  border-color: color-mix(in srgb, var(--wp-color-primary) 25%, transparent) !important;
+  border-width: 1px !important;
+}
+:root:not(#wise-ppt-component-theme-specificity-guard):is([data-theme-id="hermes-orange"], [data-theme-id="klein-blue"])
+  [data-component-theme-scope="true"] [data-component-theme-appearance="source.a1-message-border"] {
+  border-color: color-mix(in srgb, var(--wp-color-primary) 20%, transparent) !important;
+}
+:root:not(#wise-ppt-component-theme-specificity-guard):is([data-theme-id="hermes-orange"], [data-theme-id="klein-blue"])
+  [data-component-theme-scope="true"] [data-component-theme-appearance="source.ink-border-20"] {
+  border-color: color-mix(in srgb, var(--wp-color-primary) 20%, transparent) !important;
+  border-width: 1px !important;
+}
+[data-component-theme-scope="true"] [data-component-theme-appearance="source.ink-stroke-20"] {
+  stroke: var(--wp-color-divider) !important;
+  stroke-width: 1px !important;
+  opacity: .25 !important;
+}
+[data-component-theme-scope="true"] [data-component-theme-appearance="source.hatch-line"] {
+  stroke: color-mix(in srgb, var(--wp-color-primary) 80%, transparent) !important;
+  stroke-width: .65px !important;
+  opacity: .16 !important;
+}
+[data-component-theme-scope="true"] [data-component-theme-appearance="source.pillar-a-icon"] {
+  stroke: color-mix(in srgb, var(--wp-color-primary) 80%, transparent) !important;
+}
+[data-component-theme-scope="true"] [data-component-theme-appearance="source.pillar-b-icon"] {
+  stroke: color-mix(in srgb, var(--wp-color-primary) 80%, transparent) !important;
+}
+[data-component-theme-scope="true"] [data-component-theme-appearance="source.pillar-b-outline"] {
+  stroke: color-mix(in srgb, var(--wp-color-primary) 80%, transparent) !important;
+  stroke-width: 1px !important;
+  opacity: 1 !important;
+}
+:root:not(#wise-ppt-component-theme-specificity-guard):is([data-theme-id="hermes-orange"], [data-theme-id="klein-blue"])
+  [data-component-theme-scope="true"] [data-component-theme-appearance="source.pillar-a-icon"] {
+  stroke: var(--wp-color-functional) !important;
+  stroke-width: 2px !important;
+  opacity: 1 !important;
+}
+:root:not(#wise-ppt-component-theme-specificity-guard):is([data-theme-id="hermes-orange"], [data-theme-id="klein-blue"])
+  [data-component-theme-scope="true"] :is([data-component-theme-appearance="source.pillar-b-icon"], [data-component-theme-appearance="source.pillar-b-outline"]) {
+  stroke: var(--wp-color-primary) !important;
+}
+:root:not(#wise-ppt-component-theme-specificity-guard):is([data-theme-id="hermes-orange"], [data-theme-id="klein-blue"])
+  [data-component-theme-scope="true"] [data-component-theme-appearance="source.pillar-b-icon"] {
+  stroke-width: 2px !important;
+  opacity: 1 !important;
+}
+:root:not(#wise-ppt-component-theme-specificity-guard):is([data-theme-id="hermes-orange"], [data-theme-id="klein-blue"])
+  [data-component-theme-scope="true"] [data-component-theme-appearance="source.hatch-line"] {
+  stroke: var(--wp-color-primary) !important;
+  stroke-width: 1px !important;
+}
+:root:not(#wise-ppt-component-theme-specificity-guard):is([data-theme-id="hermes-orange"], [data-theme-id="klein-blue"])
+  [data-component-theme-scope="true"] [data-component-theme-appearance="source.identity-border-2"] {
+  border-width: 2px !important;
+  opacity: 1 !important;
+}
+
+:root:not(#wise-ppt-component-theme-specificity-guard):is([data-theme-id="hermes-orange"], [data-theme-id="klein-blue"])
+  [data-component-theme-scope="true"] [data-component-theme-appearance="source.inverse-tokens"][fill*="pi-ink"] {
+  fill: var(--wp-color-surface-panel) !important;
+}
+:root:not(#wise-ppt-component-theme-specificity-guard):is([data-theme-id="hermes-orange"], [data-theme-id="klein-blue"])
+  [data-component-theme-scope="true"] [data-component-theme-appearance="source.inverse-tokens"][stroke*="pi-ink"] {
+  stroke: var(--wp-color-surface-panel) !important;
+}
+:root:not(#wise-ppt-component-theme-specificity-guard):is([data-theme-id="hermes-orange"], [data-theme-id="klein-blue"])
+  [data-component-theme-scope="true"] [data-component-theme-appearance="source.inverse-tokens"][fill*="pi-ink-80"] {
+  fill: var(--wp-color-surface-panel) !important;
+}
+:root:not(#wise-ppt-component-theme-specificity-guard):is([data-theme-id="hermes-orange"], [data-theme-id="klein-blue"])
+  [data-component-theme-scope="true"] [data-component-theme-appearance="source.inverse-tokens"][fill*="pi-ink-70"] {
+  fill: color-mix(in srgb, var(--wp-color-surface-canvas) 70%, transparent) !important;
+}
+:root:not(#wise-ppt-component-theme-specificity-guard):is([data-theme-id="hermes-orange"], [data-theme-id="klein-blue"])
+  [data-component-theme-scope="true"] [data-component-theme-appearance="source.inverse-tokens"][fill*="pi-ink-45"] {
+  fill: color-mix(in srgb, var(--wp-color-surface-canvas) 45%, transparent) !important;
+}
+:root:not(#wise-ppt-component-theme-specificity-guard):is([data-theme-id="hermes-orange"], [data-theme-id="klein-blue"])
+  [data-component-theme-scope="true"] [data-component-theme-appearance="source.inverse-tokens"][stroke*="pi-ink-80"] {
+  stroke: var(--wp-color-surface-panel) !important;
+}
+:root:not(#wise-ppt-component-theme-specificity-guard):is([data-theme-id="hermes-orange"], [data-theme-id="klein-blue"])
+  [data-component-theme-scope="true"] [data-component-theme-appearance="source.inverse-tokens"][stroke*="pi-ink-45"] {
+  stroke: color-mix(in srgb, var(--wp-color-surface-canvas) 45%, transparent) !important;
+}
+
+/* The E6 source keeps its semantic After markers functional on top of the
+   inverse band. These selectors deliberately outrank the token inversion. */
+:root:not(#wise-ppt-component-theme-specificity-guard):is([data-theme-id="hermes-orange"], [data-theme-id="klein-blue"])
+  [data-component-theme-scope="true"] [data-component-theme-appearance="source.inverse-tokens"][data-component-theme-treatment="identity.text"],
+:root:not(#wise-ppt-component-theme-specificity-guard):is([data-theme-id="hermes-orange"], [data-theme-id="klein-blue"])
+  [data-component-theme-scope="true"] [data-component-theme-appearance="source.inverse-tokens"][data-component-theme-treatment="identity.data-series"] {
+  color: var(--wp-color-functional) !important;
+  fill: var(--wp-color-functional) !important;
+  stroke: var(--wp-color-functional) !important;
+}
+:root:not(#wise-ppt-component-theme-specificity-guard):is([data-theme-id="hermes-orange"], [data-theme-id="klein-blue"])
+  [data-component-theme-scope="true"] :is(text, tspan)[data-component-theme-appearance="source.inverse-tokens"][data-component-theme-treatment="identity.text"] {
+  stroke: none !important;
+}
+
+/* Approved neutral families: preserve source geometry, but reduce decorative
+   rainbow fills to white surfaces and ink-only construction. */
+:root:not(#wise-ppt-component-theme-specificity-guard):is([data-theme-id="hermes-orange"], [data-theme-id="klein-blue"])
+  [data-component-theme-scope="true"][data-catalog-spec="atlas:22"] .comparison-table :is(th, td) {
+  background-color: var(--wp-color-surface-panel) !important;
+  color: var(--wp-color-body) !important;
+}
+:root:not(#wise-ppt-component-theme-specificity-guard):is([data-theme-id="hermes-orange"], [data-theme-id="klein-blue"])
+  [data-component-theme-scope="true"][data-catalog-spec="atlas:22"] .comparison-table th[data-component-theme-treatment="identity.text"] {
+  color: var(--wp-color-functional) !important;
+}
+
+:root:not(#wise-ppt-component-theme-specificity-guard):is([data-theme-id="hermes-orange"], [data-theme-id="klein-blue"])
+  [data-component-theme-scope="true"][data-component-theme-archetype="arrow-process"][data-component-theme-neutral-only="true"] .process-chain[data-type="arrow"] .step,
+:root:not(#wise-ppt-component-theme-specificity-guard):is([data-theme-id="hermes-orange"], [data-theme-id="klein-blue"])
+  [data-component-theme-scope="true"][data-component-theme-archetype="annotated-arrow-process"][data-component-theme-neutral-only="true"] .process-annotated-grid--arrow .step-node,
+:root:not(#wise-ppt-component-theme-specificity-guard):is([data-theme-id="hermes-orange"], [data-theme-id="klein-blue"])
+  [data-component-theme-scope="true"][data-component-theme-archetype="pyramid"][data-component-theme-neutral-only="true"] .pyramid .level {
+  background-color: var(--wp-color-surface-panel) !important;
+  color: var(--wp-color-body) !important;
+  filter: drop-shadow(1px 0 0 var(--wp-color-body)) drop-shadow(-1px 0 0 var(--wp-color-body)) drop-shadow(0 1px 0 var(--wp-color-body)) drop-shadow(0 -1px 0 var(--wp-color-body)) !important;
+  text-shadow: none !important;
+}
+:root:not(#wise-ppt-component-theme-specificity-guard):is([data-theme-id="hermes-orange"], [data-theme-id="klein-blue"])
+  [data-component-theme-scope="true"][data-component-theme-archetype="pyramid"][data-component-theme-neutral-only="true"] .pyramid {
+  filter: none !important;
+}
+:root:not(#wise-ppt-component-theme-specificity-guard):is([data-theme-id="hermes-orange"], [data-theme-id="klein-blue"])
+  [data-component-theme-scope="true"][data-component-theme-archetype="pyramid"][data-component-theme-neutral-only="true"] .pyramid .level {
+  filter: none !important;
+  isolation: isolate;
+}
+:root:not(#wise-ppt-component-theme-specificity-guard):is([data-theme-id="hermes-orange"], [data-theme-id="klein-blue"])
+  [data-component-theme-scope="true"][data-component-theme-archetype="pyramid"][data-component-theme-neutral-only="true"] .pyramid .level::before,
+:root:not(#wise-ppt-component-theme-specificity-guard):is([data-theme-id="hermes-orange"], [data-theme-id="klein-blue"])
+  [data-component-theme-scope="true"][data-component-theme-archetype="pyramid"][data-component-theme-neutral-only="true"] .pyramid .level::after {
+  content: '';
+  position: absolute;
+  clip-path: inherit;
+  pointer-events: none;
+}
+:root:not(#wise-ppt-component-theme-specificity-guard):is([data-theme-id="hermes-orange"], [data-theme-id="klein-blue"])
+  [data-component-theme-scope="true"][data-component-theme-archetype="pyramid"][data-component-theme-neutral-only="true"] .pyramid .level::before {
+  inset: 0;
+  z-index: -2;
+  background-color: var(--wp-color-body);
+}
+:root:not(#wise-ppt-component-theme-specificity-guard):is([data-theme-id="hermes-orange"], [data-theme-id="klein-blue"])
+  [data-component-theme-scope="true"][data-component-theme-archetype="pyramid"][data-component-theme-neutral-only="true"] .pyramid .level::after {
+  inset: 2px;
+  z-index: -1;
+  background-color: var(--wp-color-surface-panel);
+}

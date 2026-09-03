@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html data-theme-id="paper-ink" lang="zh-CN" data-runtime="wise-ppt-specimen" data-typography-mode="all-sans" data-page-id="gallery-ai-a5" data-page-role="prove" data-theme="paper-ink" data-layout="paper-ink.evidence.policy-columns" data-layout-source="gallery" data-sample-focus-profile="content-only" data-sample-focus-members='[{"selector":"#a5-regulation-1","role":"value"},{"selector":"#a5-regulation-2","role":"value"}]' data-sample-focus-ref="sample.a5.a5-focus">
+<html data-theme-id="paper-ink" lang="zh-CN" data-runtime="wise-ppt-specimen" data-typography-mode="all-sans" data-page-id="gallery-ai-a5" data-page-role="prove" data-theme="paper-ink" data-layout="paper-ink.evidence.policy-columns" data-layout-source="gallery" data-emphasis-targets='[{"target_id":"focus.decisive-difference","members":[{"selector":"#a5-regulation-1","role":"value","treatment":"focus.text","expected_count":1},{"selector":"#a5-regulation-2","role":"value","treatment":"focus.text","expected_count":1}]}]' data-catalog-legacy-emphasis-profile="content-only" data-catalog-legacy-emphasis-members='[{"selector":"#a5-regulation-1","role":"value"},{"selector":"#a5-regulation-2","role":"value"}]' data-catalog-legacy-emphasis-foreground-members='[]' data-catalog-legacy-emphasis-ref="sample.a5.a5-focus" data-vnext-semantic-key-map='[]'>
 <head>
 <meta charset="UTF-8">
 <title>layout-a5 · 条文陈列页 · AI 使用合规规范</title>
@@ -42,13 +42,13 @@ var INK = 'var(--ink)';
 var INK70 = 'var(--ink-70)';
 var INK45 = 'var(--ink-45)';
 var G = document.getElementById('draw');
-function el(tag, attrs) {
+function el(tag, attrs, parent) {
   var e = document.createElementNS(NS, tag);
   for (var k in attrs) e.setAttribute(k, attrs[k]);
-  G.appendChild(e); return e;
+  (parent || G).appendChild(e); return e;
 }
-function txt(x, y, str, attrs) {
-  var t = el('text', Object.assign({x:x, y:y}, attrs||{}));
+function txt(x, y, str, attrs, parent) {
+  var t = el('text', Object.assign({x:x, y:y}, attrs||{}), parent);
   t.textContent = str; return t;
 }
 function txtSegments(x, y, segments, attrs) {
@@ -86,9 +86,11 @@ cols.forEach(function(c){
   el('line', {x1:x, y1:338, x2:x, y2:820, stroke:INK, 'stroke-width':.8, opacity:.22});
 });
 
-/* ---------- 编号条款（①②③ 多级缩进，17px / 行距 40，条款间距 30） ---------- */
+/* ---------- 编号条款（真实圆圈 + 独立数字，17px / 行距 40，条款间距 30） ---------- */
 function clause(x, y, mark, lines) {
-  txt(x, y, mark, {'font-family':SANS, 'font-weight':300, 'font-size':'var(--type-body-small)', fill:INK});
+  var marker = el('g', {'data-number-kind':'circled', 'data-number-role':'structural', 'data-number-state':'outline', 'data-number-rings':'1'});
+  el('circle', {cx:x+9, cy:y-6, r:11, fill:'none', stroke:INK, 'stroke-width':1, 'data-number-part':'disc'}, marker);
+  txt(x+9, y-1, mark, {'data-number-part':'label', 'data-text-kind':'number', 'font-family':MONO, 'font-size':'var(--type-meta)', 'text-anchor':'middle', fill:INK}, marker);
   lines.forEach(function(ln, i){
     var attrs = {'font-family':SANS, 'font-weight':300, 'font-size':'var(--type-body-small)', fill:INK};
     if (ln === '提供服务前应按照《互联网信息服务') {
@@ -115,27 +117,27 @@ function sub(x, y, mark, line) {
 
 /* 栏一 · 数据与训练 */
 var y = 372;
-y = clause(209, y, '①', ['训练数据处理活动应使用具有合法来源的', '基础语料与标注数据，不得侵害他人民事权益。']);
-y = clause(209, y, '②', ['涉及个人信息的，须取得同意或符合法定', '情形，并采取去标识化等脱敏措施。']);
-y = clause(209, y, '③', ['发现训练数据存在违法内容的，应及时', '停止使用并采取处置措施。']);
-y = clause(209, y, '④', ['提供者应当提高训练数据质量，增强', '训练数据的真实性、准确性、可靠性。']);
-y = clause(209, y, '⑤', ['基础模型发生重大变更的，应重新履行', '备案与安全评估程序。']);
+y = clause(209, y, '1', ['训练数据处理活动应使用具有合法来源的', '基础语料与标注数据，不得侵害他人民事权益。']);
+y = clause(209, y, '2', ['涉及个人信息的，须取得同意或符合法定', '情形，并采取去标识化等脱敏措施。']);
+y = clause(209, y, '3', ['发现训练数据存在违法内容的，应及时', '停止使用并采取处置措施。']);
+y = clause(209, y, '4', ['提供者应当提高训练数据质量，增强', '训练数据的真实性、准确性、可靠性。']);
+y = clause(209, y, '5', ['基础模型发生重大变更的，应重新履行', '备案与安全评估程序。']);
 
 /* 栏二 · 服务提供 */
 y = 372;
-y = clause(781, y, '①', ['提供服务前应按照《互联网信息服务', '深度合成管理规定》完成算法备案。']);
-y = clause(781, y, '②', ['应与注册使用者签订服务协议，明确', '双方权利义务与禁止内容。']);
-y = clause(781, y, '③', ['不得为未满十四周岁未成年人提供', '单独的生成式服务，须获监护人同意。']);
-y = clause(781, y, '④', ['应承担个人信息处理者责任，依法', '履行个人信息保护义务。']);
-y = clause(781, y, '⑤', ['应建立公众投诉举报受理机制，及时', '处置并反馈处理情况。']);
+y = clause(781, y, '1', ['提供服务前应按照《互联网信息服务', '深度合成管理规定》完成算法备案。']);
+y = clause(781, y, '2', ['应与注册使用者签订服务协议，明确', '双方权利义务与禁止内容。']);
+y = clause(781, y, '3', ['不得为未满十四周岁未成年人提供', '单独的生成式服务，须获监护人同意。']);
+y = clause(781, y, '4', ['应承担个人信息处理者责任，依法', '履行个人信息保护义务。']);
+y = clause(781, y, '5', ['应建立公众投诉举报受理机制，及时', '处置并反馈处理情况。']);
 
 /* 栏三 · 内容与安全 */
 y = 372;
-y = clause(1353, y, '①', ['生成内容应体现社会主义核心价值观，', '不得生成煽动颠覆国家政权的内容。']);
-y = clause(1353, y, '②', ['应采取有效措施防范未成年人过度依赖，', '并在显著位置标识 AI 生成。']);
-y = clause(1353, y, '③', ['提供图片、视频等生成服务的，应在', '生成内容中添加水印等可溯源标识。']);
-y = clause(1353, y, '④', ['发现违法内容的，应立即采取处置措施，', '保存记录并向有关主管部门报告。']);
-y = clause(1353, y, '⑤', ['违反规定的，由主管部门依法予以警告、', '罚款、暂停或关闭服务等处罚。']);
+y = clause(1353, y, '1', ['生成内容应体现社会主义核心价值观，', '不得生成煽动颠覆国家政权的内容。']);
+y = clause(1353, y, '2', ['应采取有效措施防范未成年人过度依赖，', '并在显著位置标识 AI 生成。']);
+y = clause(1353, y, '3', ['提供图片、视频等生成服务的，应在', '生成内容中添加水印等可溯源标识。']);
+y = clause(1353, y, '4', ['发现违法内容的，应立即采取处置措施，', '保存记录并向有关主管部门报告。']);
+y = clause(1353, y, '5', ['违反规定的，由主管部门依法予以警告、', '罚款、暂停或关闭服务等处罚。']);
 
 stageFit();
 </script>

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html data-theme-id="paper-ink" lang="zh-CN" data-runtime="wise-ppt-specimen" data-typography-mode="all-sans" data-page-id="gallery-ai-d11" data-page-role="hook" data-theme="paper-ink" data-layout="paper-ink.scaffold.poster-wall" data-layout-source="gallery">
+<html data-theme-id="paper-ink" lang="zh-CN" data-runtime="wise-ppt-specimen" data-typography-mode="all-sans" data-page-id="gallery-ai-d11" data-page-role="hook" data-theme="paper-ink" data-layout="paper-ink.scaffold.poster-wall" data-layout-source="gallery" data-emphasis-targets='[]' data-vnext-semantic-key-map='[]'>
 <head>
 <meta charset="UTF-8">
 <title>layout-d11 · 封面 · 全幅画墙左题 · 版本复盘</title>
@@ -7,7 +7,7 @@
 <!--
   纸墨线稿样张 · D11 封面 · 全幅画墙左题
   全幅:微微倾斜的画墙铺满画布(海报卡、界面卡、场景卡),蒙一层纸色雾把画墙压成底纹;
-  左侧:kicker → 通栏大标题 → 硬横线 → 副题两行(归属 · 日期)
+  左侧:kicker → 通栏大标题 → 硬横线 → 日期
   版式纪律:画墙只做底纹不抢主角,标题块必须压在雾上;不放讲者、版本号区块
 -->
 <link rel="stylesheet" href="../../../../themes/engine/assets/design-tokens.css">
@@ -40,8 +40,8 @@
   }
   .subtitle {
     position: absolute; left: 176px; top: 642px;
-    font-family: var(--sans); font-weight: var(--wp-weight-regular);
-    font-size: var(--type-subheading); letter-spacing: .1em;
+    font-family: var(--mono); font-weight: var(--wp-weight-regular);
+    font-size: var(--type-meta); letter-spacing: .1em;
     color: var(--ink-70); z-index: 2; line-height: 1.9;
   }
 </style>
@@ -58,7 +58,7 @@
   <div class="kicker" data-template-part="kicker" data-template-slot="kicker" data-template-slot-kind="text">PRODUCT REVIEW — 2026 SUMMER</div>
   <div class="title" data-template-part="primary" data-template-slot="primary" data-template-slot-kind="text">版本复盘与增长验证</div>
   <div class="rule" data-template-part="rule"></div>
-  <div class="subtitle" data-template-part="subtitle" data-template-slot="subtitle" data-template-slot-kind="text">产品体验 · 平台运营<br>2026 · 06 · 24</div>
+  <div class="subtitle" data-template-part="subtitle" data-template-slot="subtitle" data-template-slot-kind="text">20260624</div>
 </div>
 
 <script src="../../../../themes/packages/paper-ink/assets/particles.js"></script>
@@ -161,9 +161,6 @@ cards.forEach(function(c, i){
 /* 纸色雾:把画墙压成底纹,标题区更亮 */
 el('rect', {x:0, y:0, width:1920, height:1080, fill:PAPER, opacity:.66});
 el('rect', {x:0, y:0, width:860, height:1080, fill:PAPER, opacity:.42});
-
-/* 雾上细字号页脚注记,保持画墙的"档案感" */
-txt(176, 986, 'GALLERY WALL — TEN PLATES, ONE RELEASE', {'font-family':MONO, 'font-size':'var(--type-meta)', 'letter-spacing':3, fill:INK, opacity:.42});
 
 stageFit();
 </script>

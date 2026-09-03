@@ -1,0 +1,170 @@
+{
+  "contract": "wise-ppt-visual-treatment-grammar@3",
+  "description": "默认主题身份与内容强调共用一套视觉动作字典；颜色由主题 token 决定，语义差异不得依赖新增第四种颜色。",
+  "color_channels": {
+    "identity": "--wp-color-functional",
+    "ink_primary": "--wp-color-primary",
+    "focus_primary": "--wp-color-focus",
+    "focus_secondary": "--wp-color-focus-secondary",
+    "focus_peripheral": "--wp-color-focus-peripheral"
+  },
+  "constraints": {
+    "identity_groups_per_page": {
+      "min": 1,
+      "max": 2
+    },
+    "active_focus_groups_per_page": {
+      "min": 0,
+      "max": 1
+    },
+    "focus_target_members_fixed": true,
+    "fourth_color_forbidden": true,
+    "furniture_excluded": [
+      ".doc",
+      ".folio",
+      ".caption"
+    ],
+    "overlap_rule": "focus 可命中 identity 的语义子集，但 treatment 必须不同；同 selector+treatment 重复为错误。"
+  },
+  "identity_treatments": {
+    "identity.text": {
+      "channel": "identity",
+      "effect": [
+        "text-color"
+      ]
+    },
+    "identity.text-bold": {
+      "channel": "identity",
+      "effect": [
+        "text-color",
+        "weight-lift"
+      ]
+    },
+    "identity.stroke": {
+      "channel": "identity",
+      "effect": [
+        "svg-stroke"
+      ]
+    },
+    "identity.stroke-medium": {
+      "channel": "identity",
+      "effect": [
+        "svg-stroke",
+        "medium-weight"
+      ]
+    },
+    "identity.stroke-heavy": {
+      "channel": "identity",
+      "effect": [
+        "svg-stroke",
+        "heavy-weight"
+      ]
+    },
+    "identity.fill": {
+      "channel": "identity",
+      "effect": [
+        "surface-fill"
+      ]
+    },
+    "identity.white-fill": {
+      "channel": "identity",
+      "effect": [
+        "surface-white-fill"
+      ]
+    },
+    "identity.border": {
+      "channel": "identity",
+      "effect": [
+        "border-or-outline"
+      ]
+    },
+    "identity.icon": {
+      "channel": "identity",
+      "effect": [
+        "icon-current-color"
+      ]
+    },
+    "identity.data-series": {
+      "channel": "identity",
+      "effect": [
+        "data-fill-or-stroke"
+      ]
+    },
+    "identity.reverse-marker": {
+      "channel": "identity",
+      "effect": [
+        "solid-marker",
+        "reverse-foreground"
+      ]
+    }
+  },
+  "focus_treatments": {
+    "focus.ink-weight": {
+      "channel": "ink_primary",
+      "effect": [
+        "ink-color",
+        "weight-lift"
+      ]
+    },
+    "focus.color": {
+      "channel": "focus_primary",
+      "effect": [
+        "text-or-outline-color"
+      ]
+    },
+    "focus.reverse-text": {
+      "channel": "focus_primary",
+      "effect": [
+        "reverse-foreground"
+      ]
+    },
+    "focus.text": {
+      "channel": "focus_primary",
+      "effect": [
+        "text-color",
+        "weight-lift"
+      ]
+    },
+    "focus.outline-depth": {
+      "channel": "focus_primary",
+      "effect": [
+        "outline-color",
+        "outline-depth"
+      ]
+    },
+    "focus.solid-reverse": {
+      "channel": "focus_primary",
+      "effect": [
+        "solid-fill",
+        "reverse-foreground"
+      ]
+    },
+    "focus.hard-shadow": {
+      "channel": "focus_primary",
+      "effect": [
+        "outline-color",
+        "hard-shadow"
+      ]
+    },
+    "focus.texture": {
+      "channel": "focus_peripheral",
+      "effect": [
+        "texture-contrast"
+      ]
+    },
+    "focus.path-depth": {
+      "channel": "focus_primary",
+      "effect": [
+        "path-color",
+        "path-width"
+      ]
+    },
+    "focus.contrast-isolation": {
+      "channel": "focus_primary",
+      "effect": [
+        "foreground-isolation",
+        "outline-color"
+      ]
+    }
+  }
+}

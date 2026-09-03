@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html data-theme-id="paper-ink" lang="zh-CN" data-runtime="wise-ppt-specimen" data-typography-mode="all-sans" data-page-id="gallery-ai-d4" data-page-role="orient" data-theme="paper-ink" data-layout="paper-ink.scaffold.agenda" data-layout-source="gallery">
+<html data-theme-id="paper-ink" lang="zh-CN" data-runtime="wise-ppt-specimen" data-typography-mode="all-sans" data-page-id="gallery-ai-d4" data-page-role="orient" data-theme="paper-ink" data-layout="paper-ink.scaffold.agenda" data-layout-source="gallery" data-emphasis-targets='[]' data-vnext-semantic-key-map='[]'>
 <head>
 <meta charset="UTF-8">
 <title>layout-d4 · 目录导航页 · AI Engineering</title>
@@ -37,13 +37,13 @@
 var NS = 'http://www.w3.org/2000/svg';
 var INK = 'var(--ink)';
 var G = document.getElementById('draw');
-function el(tag, attrs) {
+function el(tag, attrs, parent) {
   var e = document.createElementNS(NS, tag);
   for (var k in attrs) e.setAttribute(k, attrs[k]);
-  G.appendChild(e); return e;
+  (parent || G).appendChild(e); return e;
 }
-function txt(x, y, str, attrs) {
-  var t = el('text', Object.assign({x:x, y:y}, attrs||{}));
+function txt(x, y, str, attrs, parent) {
+  var t = el('text', Object.assign({x:x, y:y}, attrs||{}), parent);
   t.textContent = str; return t;
 }
 var MONO = 'var(--mono)', SANS = 'var(--sans)';
@@ -56,11 +56,11 @@ el('line', {x1:438, y1:212, x2:560, y2:212, stroke:INK, 'stroke-width':.6, opaci
 
 /* ===== 条目纵列：x300–1500，y250 起，行高 126 ===== */
 var rows = [
-  {no:'01', cn:'认知奠基', en:'FOUNDATIONS',       note:'AI 产品的四类角色与能力边界',       cur:false},
-  {no:'02', cn:'工程化思维', en:'HARNESS ENG',     note:'从模型到产品的工程鸿沟',            cur:true},
-  {no:'03', cn:'Agent 实战', en:'AGENT IN ACTION', note:'工具调用、状态机与失败恢复',        cur:false},
-  {no:'04', cn:'评测体系', en:'EVAL FRAMEWORK',    note:'离线指标与在线尺子的双层护栏',      cur:false},
-  {no:'05', cn:'落地路径', en:'ROLLOUT ROADMAP',   note:'从 Demo 到生产的渐进上线计划',      cur:false}
+  {no:'1', cn:'认知奠基', en:'FOUNDATIONS',       note:'AI 产品的四类角色与能力边界',       cur:false},
+  {no:'2', cn:'工程化思维', en:'HARNESS ENG',     note:'从模型到产品的工程鸿沟',            cur:true},
+  {no:'3', cn:'Agent 实战', en:'AGENT IN ACTION', note:'工具调用、状态机与失败恢复',        cur:false},
+  {no:'4', cn:'评测体系', en:'EVAL FRAMEWORK',    note:'离线指标与在线尺子的双层护栏',      cur:false},
+  {no:'5', cn:'落地路径', en:'ROLLOUT ROADMAP',   note:'从 Demo 到生产的渐进上线计划',      cur:false}
 ];
 var X0 = 300, X1 = 1620, Y0 = 250, GAP = 126;
 
@@ -70,15 +70,16 @@ rows.forEach(function(r, i){
 
   /* 序号：当前章实心墨圆反白，其余空心单圈 */
   var cx = X0 + 34, cy = y + 42;
+  var marker = el('g', {'data-number-kind':'circled', 'data-number-role':'sequence', 'data-number-state':r.cur?'filled':'outline', 'data-number-rings':r.cur?'2':'1'});
   if (r.cur) {
-    el('circle', {cx:cx, cy:cy, r:26, fill:INK, opacity:op});
-    el('circle', {cx:cx, cy:cy, r:31, fill:'none', stroke:INK, 'stroke-width':.6, opacity:.35});
-    txt(cx, cy+9, r.no, {'font-family':MONO, 'font-size':'var(--type-subheading)', 'text-anchor':'middle', fill:'var(--paper)'});
+    el('circle', {cx:cx, cy:cy, r:26, fill:'var(--wp-color-primary)', opacity:op, 'data-number-part':'disc'}, marker);
+    el('circle', {cx:cx, cy:cy, r:31, fill:'none', stroke:'var(--wp-color-primary)', 'stroke-width':.6, opacity:.35, 'data-number-part':'outer-ring'}, marker);
+    txt(cx, cy+9, r.no, {'data-number-part':'label', 'data-text-kind':'number', 'font-family':MONO, 'font-size':'var(--type-subheading)', 'text-anchor':'middle', fill:'var(--wp-color-surface-panel)'}, marker);
     /* 高亮短横引出（全页唯一强调线） */
     el('line', {x1:cx+44, y1:cy, x2:cx+72, y2:cy, stroke:INK, 'stroke-width':1.8});
   } else {
-    el('circle', {cx:cx, cy:cy, r:26, fill:'none', stroke:INK, 'stroke-width':1, opacity:op});
-    txt(cx, cy+8, r.no, {'font-family':MONO, 'font-size':'var(--type-subheading)', 'text-anchor':'middle', fill:INK, opacity:op});
+    el('circle', {cx:cx, cy:cy, r:26, fill:'none', stroke:'var(--wp-color-primary)', 'stroke-width':1, opacity:op, 'data-number-part':'disc'}, marker);
+    txt(cx, cy+8, r.no, {'data-number-part':'label', 'data-text-kind':'number', 'font-family':MONO, 'font-size':'var(--type-subheading)', 'text-anchor':'middle', fill:'var(--wp-color-primary)', opacity:op}, marker);
   }
 
   /* 中文章题 + EN 副题 + 内容预告 */

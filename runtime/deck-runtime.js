@@ -110,9 +110,19 @@
     return tiers[memberRole];
   }
 
+  function assertEmphasisTreatment(treatment) {
+    var allowed = [
+      'focus.color', 'focus.reverse-text', 'focus.text', 'focus.outline-depth', 'focus.solid-reverse',
+      'focus.ink-weight', 'focus.hard-shadow', 'focus.texture', 'focus.path-depth',
+      'focus.contrast-isolation'
+    ];
+    if (allowed.indexOf(treatment) < 0) throw new Error('未知强调视觉处理: ' + treatment);
+    return treatment;
+  }
+
   function restoreRuntimeEmphasis(slide) {
     slide.querySelectorAll('[data-emphasis-runtime-applied="true"]').forEach(function (node) {
-      ['content-ref', 'emphasis-role', 'emphasis-paint'].forEach(function (name) {
+      ['content-ref', 'emphasis-role', 'emphasis-treatment', 'emphasis-paint'].forEach(function (name) {
         var originalName = 'data-emphasis-runtime-original-' + name;
         var original = node.getAttribute(originalName);
         if (original === '__missing__') node.removeAttribute('data-' + name);
@@ -133,21 +143,24 @@
     try { members = JSON.parse(raw); } catch (_error) { throw new Error('data-emphasis-members 不是合法 JSON'); }
     if (!Array.isArray(members) || !members.length) throw new Error('data-emphasis-members 必须是非空数组');
     members.forEach(function (member) {
-      if (!member || typeof member.selector !== 'string' || !member.selector || typeof member.role !== 'string' || !member.role) {
-        throw new Error('data-emphasis-members 条目缺少 selector/role');
+      if (!member || typeof member.selector !== 'string' || !member.selector || typeof member.role !== 'string' || !member.role || typeof member.treatment !== 'string') {
+        throw new Error('data-emphasis-members 条目缺少 selector/role/treatment');
       }
       emphasisThemeRole(member.role);
+      assertEmphasisTreatment(member.treatment);
+      if (!Number.isInteger(member.expected_count) || member.expected_count < 1) throw new Error('强调目标缺少正整数 expected_count');
       var targets;
       try { targets = slide.querySelectorAll(member.selector); } catch (_error) { throw new Error('强调目标选择器非法: ' + member.selector); }
-      if (!targets.length) throw new Error('强调目标未落到页面实例: ' + member.selector);
+      if (targets.length !== member.expected_count) throw new Error('强调目标精确命中数量错误: ' + member.selector);
       targets.forEach(function (node) {
-        ['content-ref', 'emphasis-role', 'emphasis-paint'].forEach(function (name) {
+        ['content-ref', 'emphasis-role', 'emphasis-treatment', 'emphasis-paint'].forEach(function (name) {
           var originalName = 'data-emphasis-runtime-original-' + name;
           var current = node.getAttribute('data-' + name);
           node.setAttribute(originalName, current === null ? '__missing__' : current);
         });
         node.dataset.contentRef = contentRef;
         node.dataset.emphasisRole = member.role;
+        node.dataset.emphasisTreatment = member.treatment;
         if (member.paint) node.dataset.emphasisPaint = member.paint;
         else node.removeAttribute('data-emphasis-paint');
         node.dataset.emphasisRuntimeApplied = 'true';
@@ -2288,7 +2301,10 @@
           typographyTargets.forEach(function (item) { item.normal = typographySnapshot(item.node); });
           root.classList.add('accent');
           typographyTargets.forEach(function (item) {
+            var treatmentCarrier = item.node.closest('[data-emphasis-treatment]');
+            var treatment = treatmentCarrier ? treatmentCarrier.dataset.emphasisTreatment : '';
             typographyProperties.forEach(function (property) {
+              if (property === 'fontWeight' && treatment === 'focus.text') return;
               if (item.accent[property] !== item.normal[property]) {
                 throw new Error('主题焦点不得改变文字排印属性: ' + property);
               }

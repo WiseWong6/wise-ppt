@@ -8,11 +8,15 @@
 })(typeof window !== 'undefined' ? window : globalThis, function createEChartsAdapter(adapterId) {
   'use strict';
 
+  const projectionRoot = typeof window !== 'undefined' ? window : globalThis;
+  const nodeTypographyResolver = typeof module === 'object' && module.exports
+    ? require('../runtime/component-typography-resolver.js')
+    : null;
+
   const COLOR_TOKENS = Object.freeze({
     surfaceCanvas: '--wp-color-surface-canvas',
     surfaceRecessed: '--wp-color-surface-recessed',
     primary: '--wp-color-primary',
-    functional: '--wp-color-functional',
     body: '--wp-color-body',
     chartLabel: '--wp-color-chart-label',
     divider: '--wp-color-divider',
@@ -80,11 +84,62 @@
     else if (value) callback(value);
   }
 
+  function themeId(context) {
+    return context?.themeId || context?.root?.dataset?.themeId || '';
+  }
+
+  function parseColor(value) {
+    const text = String(value || '').trim();
+    let match = /^#([0-9a-f]{3}|[0-9a-f]{6})$/i.exec(text);
+    if (match) {
+      const hex = match[1].length === 3
+        ? match[1].split('').map(part => part + part).join('')
+        : match[1];
+      return [0, 2, 4].map(index => Number.parseInt(hex.slice(index, index + 2), 16));
+    }
+    match = /^rgba?\(\s*([\d.]+)[,\s]+([\d.]+)[,\s]+([\d.]+)/i.exec(text);
+    return match ? match.slice(1, 4).map(Number) : null;
+  }
+
+  function neutralRamp(tokens, context) {
+    if (themeId(context) === 'paper-ink') return tokens.dataRamp.slice();
+    const ink = parseColor(tokens.body);
+    const paper = parseColor(tokens.surfaceCanvas);
+    if (!ink || !paper) {
+      return [
+        tokens.construction, tokens.divider, tokens.chartLabel,
+        tokens.primary, tokens.body, tokens.body,
+      ];
+    }
+    return [.12, .22, .34, .48, .66, .84].map(amount => {
+      const channels = ink.map((channel, index) => Math.round(
+        paper[index] + (channel - paper[index]) * amount,
+      ));
+      return `rgb(${channels.join(', ')})`;
+    });
+  }
+
+  function typographyResolver() {
+    const resolver = nodeTypographyResolver || projectionRoot?.WisePPTComponentTypographyResolver;
+    if (!resolver || typeof resolver.optionTextStyle !== 'function') {
+      throw new Error('ECharts 缺组件字体解析器');
+    }
+    return resolver;
+  }
+
+  function resolvedTextStyle(componentRole, text, context, options) {
+    const result = typographyResolver().optionTextStyle(componentRole, text, context, options);
+    return {fontFamily: result.fontFamily, fontWeight: result.fontWeight};
+  }
+
   function resolveTokens(context) {
     const tokens = {};
     Object.keys(COLOR_TOKENS).forEach((key) => { tokens[key] = getToken(context, COLOR_TOKENS[key]); });
     tokens.dataRamp = [1, 2, 3, 4, 5, 6]
       .map((step) => getToken(context, `--wp-color-data-${step}`));
+    tokens.neutralDataRamp = neutralRamp(tokens, context);
+    tokens.bodyText = resolvedTextStyle('body', '', context);
+    tokens.labelText = resolvedTextStyle('label', '', context);
     tokens.labelSize = getSize(context, '--type-label');
     tokens.metaSize = getSize(context, '--type-meta');
     tokens.titleSize = getSize(context, '--type-subheading');
@@ -122,18 +177,19 @@
     });
     axis.axisLabel = Object.assign({}, axis.axisLabel, withDefined({
       color: tokens.chartLabel,
-      fontFamily: tokens.mono,
+      ...tokens.labelText,
       fontSize: tokens.metaSize
     }));
     axis.nameTextStyle = Object.assign({}, axis.nameTextStyle, withDefined({
       color: tokens.chartLabel,
-      fontFamily: tokens.sans,
+      ...tokens.labelText,
       fontSize: tokens.metaSize
     }));
   }
 
-  function adaptSeries(series, index, tokens) {
-    const tone = tokens.dataRamp[tokens.dataRamp.length - 1 - (index % tokens.dataRamp.length)];
+  function adaptSeries(series, index, tokens, context) {
+    const ramp = tokens.neutralDataRamp;
+    const tone = ramp[ramp.length - 1 - (index % ramp.length)];
     series.itemStyle = Object.assign({}, series.itemStyle, {
       borderRadius: 0,
       shadowBlur: 0,
@@ -143,15 +199,20 @@
     else delete series.itemStyle.color;
     series.label = Object.assign({}, series.label, withDefined({
       color: tokens.chartLabel,
-      fontFamily: tokens.sans,
+      ...tokens.labelText,
       fontSize: tokens.metaSize
     }));
+    series.emphasis = Object.assign({}, series.emphasis, {disabled: true, focus: 'none'});
+    series.select = Object.assign({}, series.select, {disabled: true});
+    series.selectedMode = false;
 
     if (series.type === 'line') {
       series.lineStyle = Object.assign({}, series.lineStyle, {
         color: tone,
-        width: lineWidth(tokens, 'main', 1)
+        width: lineWidth(tokens, 'main', 1),
+        type: ['solid', 'dashed', 'dotted'][index % 3]
       });
+      series.symbol = ['circle', 'diamond', 'rect'][index % 3];
       series.itemStyle = Object.assign({}, series.itemStyle, {
         color: tokens.surfaceCanvas,
         borderColor: tone,
@@ -159,7 +220,7 @@
       });
       if (series.areaStyle) {
         series.areaStyle = Object.assign({}, series.areaStyle, {
-          color: tokens.dataRamp[Math.min(index + 1, tokens.dataRamp.length - 1)]
+          color: ramp[Math.min(index + 1, ramp.length - 1)]
         });
       }
     }
@@ -189,11 +250,10 @@
     }
     if (series.type === 'radar') {
       series.lineStyle = Object.assign({}, series.lineStyle, {
-        color: tone,
         width: lineWidth(tokens, 'main', 1.2)
       });
       series.areaStyle = Object.assign({}, series.areaStyle, {
-        color: tokens.dataRamp[Math.min(index + 1, tokens.dataRamp.length - 1)]
+        opacity: .1
       });
     }
     if (series.type === 'tree') {
@@ -203,9 +263,17 @@
       });
       series.itemStyle = Object.assign({}, series.itemStyle, {
         color: tokens.surfaceCanvas,
-        borderColor: tokens.functional,
+        borderColor: ramp[ramp.length - 2],
         borderWidth: lineWidth(tokens, 'main', 1.2)
       });
+      const rootNode = Array.isArray(series.data) && series.data[0];
+      if (rootNode && typeof rootNode === 'object') {
+        rootNode.label = Object.assign(
+          {},
+          rootNode.label,
+          resolvedTextStyle('subheading', rootNode.name || '', context || {}),
+        );
+      }
     }
     if (series.type === 'sankey') {
       if (series.left === undefined) series.left = '5%';
@@ -220,23 +288,12 @@
       const semanticLinkColor = ['gradient', 'source', 'target'].includes(sourceLinkColor)
         ? sourceLinkColor
         : tokens.chartLabel;
-      /* 节点是实心图形标记，主题合同里属于 always_on_identity 组：只能取
-         functional 与 data 阶梯，不能借用 primary/body/chart-label 这些
-         neutral_text 墨色——白橙/白蓝下文字墨色会渲染成黑块。主节点用
-         functional 建立骨架，其余按 data 阶梯递减；保留母板显式节点颜色。 */
-      const nodeTones = [
-        tokens.functional,
-        tokens.dataRamp[5],
-        tokens.dataRamp[4],
-        tokens.dataRamp[3],
-        tokens.dataRamp[2],
-        tokens.dataRamp[1]
-      ];
+      const nodeTones = ramp.slice().reverse();
       if (Array.isArray(series.data)) {
         series.data = series.data.map((node, nodeIndex) => {
           if (!node || typeof node !== 'object') return node;
           const itemStyle = Object.assign({}, node.itemStyle);
-          if (!itemStyle.color) itemStyle.color = nodeTones[nodeIndex % nodeTones.length];
+          itemStyle.color = nodeTones[nodeIndex % nodeTones.length];
           return Object.assign({}, node, { itemStyle });
         });
       }
@@ -248,10 +305,11 @@
       series.label = Object.assign({}, series.label, {
         color: tokens.primary,
         backgroundColor: tokens.surfaceCanvas,
+        ...tokens.labelText,
         padding: [2, 4]
       });
       series.itemStyle = Object.assign({}, series.itemStyle, {
-        borderColor: tokens.functional,
+        borderColor: tokens.divider,
         borderWidth: lineWidth(tokens, 'main', 1.2)
       });
     }
@@ -274,10 +332,10 @@
     const option = deepClone(source || {});
     const tokens = resolveTokens(context || {});
     option.backgroundColor = 'transparent';
-    option.color = tokens.dataRamp.slice().reverse();
+    option.color = tokens.neutralDataRamp.slice().reverse();
     option.textStyle = Object.assign({}, option.textStyle, withDefined({
       color: tokens.body,
-      fontFamily: tokens.sans,
+      ...tokens.bodyText,
       fontSize: tokens.labelSize
     }));
     option.tooltip = Object.assign({}, option.tooltip, {
@@ -291,23 +349,24 @@
       ),
       textStyle: Object.assign({}, option.tooltip && option.tooltip.textStyle, withDefined({
         color: tokens.body,
-        fontFamily: tokens.sans,
+        ...tokens.labelText,
         fontSize: tokens.metaSize
       }))
     });
     mapOption(option.legend, (legend) => {
       legend.textStyle = Object.assign({}, legend.textStyle, withDefined({
         color: tokens.chartLabel,
-        fontFamily: tokens.sans,
+        ...tokens.labelText,
         fontSize: tokens.metaSize
       }));
+      legend.selectedMode = false;
     });
     mapOption(option.title, (title) => {
+      const titleText = resolvedTextStyle('subheading', title.text || '', context || {});
       title.textStyle = Object.assign({}, title.textStyle, withDefined({
         color: tokens.body,
-        fontFamily: tokens.sans,
+        ...titleText,
         fontSize: tokens.titleSize,
-        fontWeight: 500
       }));
     });
     mapOption(option.xAxis, (axis) => adaptAxis(axis, tokens));
@@ -315,7 +374,7 @@
     mapOption(option.radar, (radar) => {
       radar.axisName = Object.assign({}, radar.axisName, withDefined({
         color: tokens.chartLabel,
-        fontFamily: tokens.sans,
+        ...tokens.labelText,
         fontSize: tokens.metaSize
       }));
       radar.axisLine = Object.assign({}, radar.axisLine, {
@@ -359,15 +418,15 @@
       ['dayLabel', 'monthLabel', 'yearLabel'].forEach((labelName) => {
         calendar[labelName] = Object.assign({}, calendar[labelName], withDefined({
           color: tokens.chartLabel,
-          fontFamily: tokens.mono,
+          ...tokens.labelText,
           fontSize: tokens.metaSize
         }));
       });
     });
     mapOption(option.visualMap, (visualMap) => {
-      visualMap.inRange = Object.assign({}, visualMap.inRange, { color: tokens.dataRamp.slice() });
+      visualMap.inRange = Object.assign({}, visualMap.inRange, { color: tokens.neutralDataRamp.slice() });
       if (Array.isArray(visualMap.pieces)) {
-        const ramp = tokens.dataRamp.slice().reverse();
+        const ramp = tokens.neutralDataRamp.slice().reverse();
         visualMap.pieces = visualMap.pieces.map((piece, index) => Object.assign({}, piece, {
           color: ramp[Math.min(index, ramp.length - 1)]
         }));
@@ -377,12 +436,19 @@
       }
       visualMap.textStyle = Object.assign({}, visualMap.textStyle, withDefined({
         color: tokens.chartLabel,
-        fontFamily: tokens.mono,
+        ...tokens.labelText,
         fontSize: tokens.metaSize
       }));
     });
-    (option.series || []).forEach((series, index) => adaptSeries(series, index, tokens));
-    return option;
+    (option.series || []).forEach((series, index) => adaptSeries(series, index, tokens, context || {}));
+    const componentKey = context && (context.catalogSpec
+      || context.componentId
+      || context.element && (context.element.dataset.catalogSpec || context.element.dataset.componentId));
+    const spec = componentKey && String(componentKey).startsWith('ec:') ? String(componentKey) : componentKey ? `ec:${componentKey}` : '';
+    const projector = projectionRoot && projectionRoot.WisePPTComponentThemeProjector;
+    return spec && projector && typeof projector.projectEchartsOption === 'function'
+      ? projector.projectEchartsOption(option, spec, context || {})
+      : option;
   }
 
   const META_TEXT_COMPONENTS = new Set([

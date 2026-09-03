@@ -330,67 +330,26 @@ window.WISE_PPT_NATIVE_COMPONENT_DATA = {
       num: 62,
       variant: null,
       paperInkNative: true,
-      frame: { width: 600, height: 600, fit: 'fixed' },
-      /* 出自样张 layout-d4.html */
-      snippet: `<div class="pi-card">
-<svg class="pi-art" viewBox="0 0 600 600" xmlns="http://www.w3.org/2000/svg">
-  <text x="32" y="54" font-family="var(--pi-mono)" font-size="11" letter-spacing="3" fill="var(--pi-ink-45)">CONTENTS</text>
-  <line x1="118" y1="50" x2="190" y2="50" stroke="var(--pi-ink)" stroke-width=".6" opacity=".3"/>
-  <line x1="32" y1="70" x2="568" y2="70" stroke="var(--pi-ink)" stroke-width=".6" opacity=".22"/>
-
-  <g opacity=".45">
-    <circle cx="54" cy="116" r="18" fill="none" stroke="var(--pi-ink)" stroke-width="1"/>
-    <text x="54" y="121" font-family="var(--pi-mono)" font-size="14" text-anchor="middle" fill="var(--pi-ink)">01</text>
-    <text x="112" y="121" font-family="var(--pi-sans)" font-weight="300" font-size="16" fill="var(--pi-ink)">认知奠基</text>
-    <text x="192" y="119" font-family="var(--pi-mono)" font-size="9.5" letter-spacing="2" fill="var(--pi-ink-60)">FOUNDATIONS</text>
-    <text x="112" y="146" font-family="var(--pi-sans)" font-weight="300" font-size="11" fill="var(--pi-ink-70)">AI 产品的四类角色与能力边界</text>
-    <text x="568" y="120" font-family="var(--pi-mono)" font-size="9.5" letter-spacing="2" text-anchor="end" fill="var(--pi-ink-45)">P.03</text>
-  </g>
-  <line x1="32" y1="158" x2="568" y2="158" stroke="var(--pi-ink)" stroke-width=".6" opacity=".22"/>
-
-  <g>
-    <circle cx="54" cy="204" r="18" fill="var(--pi-ink)"/>
-    <circle cx="54" cy="204" r="21" fill="none" stroke="var(--pi-ink)" stroke-width=".6" opacity=".35"/>
-    <text x="54" y="209" font-family="var(--pi-mono)" font-size="14" text-anchor="middle" fill="var(--pi-paper)">02</text>
-    <line x1="80" y1="204" x2="104" y2="204" stroke="var(--pi-ink)" stroke-width="1.8"/>
-    <text x="112" y="209" font-family="var(--pi-sans)" font-weight="300" font-size="16" fill="var(--pi-ink)">工程化思维</text>
-    <text x="208" y="207" font-family="var(--pi-mono)" font-size="9.5" letter-spacing="2" fill="var(--pi-ink-60)">HARNESS ENG</text>
-    <text x="112" y="234" font-family="var(--pi-sans)" font-weight="300" font-size="11" fill="var(--pi-ink-70)">从模型到产品的工程鸿沟</text>
-    <text x="568" y="208" font-family="var(--pi-mono)" font-size="9.5" letter-spacing="2" text-anchor="end" fill="var(--pi-ink-45)">P.07</text>
-  </g>
-  <line x1="32" y1="246" x2="568" y2="246" stroke="var(--pi-ink)" stroke-width=".6" opacity=".22"/>
-
-  <g opacity=".45">
-    <circle cx="54" cy="292" r="18" fill="none" stroke="var(--pi-ink)" stroke-width="1"/>
-    <text x="54" y="297" font-family="var(--pi-mono)" font-size="14" text-anchor="middle" fill="var(--pi-ink)">03</text>
-    <text x="112" y="297" font-family="var(--pi-sans)" font-weight="300" font-size="16" fill="var(--pi-ink)">Agent 实战</text>
-    <text x="207" y="295" font-family="var(--pi-mono)" font-size="9.5" letter-spacing="2" fill="var(--pi-ink-60)">AGENT IN ACTION</text>
-    <text x="112" y="322" font-family="var(--pi-sans)" font-weight="300" font-size="11" fill="var(--pi-ink-70)">工具调用、状态机与失败恢复</text>
-    <text x="568" y="296" font-family="var(--pi-mono)" font-size="9.5" letter-spacing="2" text-anchor="end" fill="var(--pi-ink-45)">P.11</text>
-  </g>
-  <line x1="32" y1="334" x2="568" y2="334" stroke="var(--pi-ink)" stroke-width=".6" opacity=".22"/>
-
-  <g opacity=".45">
-    <circle cx="54" cy="380" r="18" fill="none" stroke="var(--pi-ink)" stroke-width="1"/>
-    <text x="54" y="385" font-family="var(--pi-mono)" font-size="14" text-anchor="middle" fill="var(--pi-ink)">04</text>
-    <text x="112" y="385" font-family="var(--pi-sans)" font-weight="300" font-size="16" fill="var(--pi-ink)">评测体系</text>
-    <text x="192" y="383" font-family="var(--pi-mono)" font-size="9.5" letter-spacing="2" fill="var(--pi-ink-60)">EVAL FRAMEWORK</text>
-    <text x="112" y="410" font-family="var(--pi-sans)" font-weight="300" font-size="11" fill="var(--pi-ink-70)">离线指标与在线尺子的双层护栏</text>
-    <text x="568" y="384" font-family="var(--pi-mono)" font-size="9.5" letter-spacing="2" text-anchor="end" fill="var(--pi-ink-45)">P.15</text>
-  </g>
-  <line x1="32" y1="422" x2="568" y2="422" stroke="var(--pi-ink)" stroke-width=".6" opacity=".22"/>
-
-  <g opacity=".45">
-    <circle cx="54" cy="468" r="18" fill="none" stroke="var(--pi-ink)" stroke-width="1"/>
-    <text x="54" y="473" font-family="var(--pi-mono)" font-size="14" text-anchor="middle" fill="var(--pi-ink)">05</text>
-    <text x="112" y="473" font-family="var(--pi-sans)" font-weight="300" font-size="16" fill="var(--pi-ink)">落地路径</text>
-    <text x="192" y="471" font-family="var(--pi-mono)" font-size="9.5" letter-spacing="2" fill="var(--pi-ink-60)">ROLLOUT ROADMAP</text>
-    <text x="112" y="498" font-family="var(--pi-sans)" font-weight="300" font-size="11" fill="var(--pi-ink-70)">从 Demo 到生产的渐进上线计划</text>
-    <text x="568" y="472" font-family="var(--pi-mono)" font-size="9.5" letter-spacing="2" text-anchor="end" fill="var(--pi-ink-45)">P.19</text>
-  </g>
-  <line x1="32" y1="510" x2="568" y2="510" stroke="var(--pi-ink)" stroke-width=".6" opacity=".22"/>
-</svg>
-</div>`
+      frame: { width: 1380, height: 680, fit: 'fixed' },
+      dataContract: { mode: 'collection', unit: 'agenda-item', pointer: '/structured_data/items', minItems: 5, maxItems: 5 },
+      sourceLayout: 'D4',
+      sourceRegion: { sourceRef: 'D4', regionIds: ['draw'], extraction: 'include-only', framePolicy: 'tight-ink' },
+      boundary: { topology: 'sequence', unit: 'agenda-item', fixedQuantity: 5 },
+      /* 完整恢复 layout-d4.html 的 5 项目录主体；仅以 viewBox 紧框，不缩写内容或字阶。 */
+      snippet: `<div class="pi-card" data-bind-root="collection" style="width:auto;min-height:0;overflow:visible"><svg class="pi-art" width="100%" viewBox="270 180 1380 680" xmlns="http://www.w3.org/2000/svg" data-fixed-quantity="5"><g data-repeat-unit="agenda-item" data-fixed-quantity="5" transform="translate(0 -16.2)">
+  <text data-source-d4-role="contents" x="300" y="218" font-family="var(--pi-mono)" font-size="var(--type-label)" letter-spacing="4" fill="var(--pi-ink-45)">CONTENTS</text>
+  <line x1="438" y1="212" x2="560" y2="212" stroke="var(--pi-ink)" stroke-width=".6" opacity=".3"/>
+  <g data-number-kind="circled" data-number-role="sequence" data-number-state="outline" data-number-rings="1"><circle cx="334" cy="292" r="26" fill="none" stroke="var(--pi-ink)" stroke-width="1" opacity=".45" data-number-part="disc"/><text x="334" y="300" data-number-part="label" data-text-kind="number" font-family="var(--pi-mono)" font-size="var(--type-subheading)" text-anchor="middle" fill="var(--pi-ink)" opacity=".45">1</text></g><text x="416" y="294" font-family="var(--pi-sans)" font-weight="300" font-size="var(--type-subheading)" fill="var(--pi-ink)" opacity=".45">认知奠基</text><text x="570" y="291" font-family="var(--pi-mono)" font-size="var(--type-meta)" letter-spacing="3" fill="var(--pi-ink-60)" opacity=".45">FOUNDATIONS</text><text x="416" y="330" font-family="var(--pi-sans)" font-weight="300" font-size="var(--type-body-small)" fill="var(--pi-ink-70)" opacity=".45">AI 产品的四类角色与能力边界</text><text x="1620" y="294" font-family="var(--pi-mono)" font-size="var(--type-meta)" letter-spacing="2" text-anchor="end" fill="color-mix(in srgb, var(--pi-ink) 50%, transparent)" opacity=".45">P.3</text>
+  <line x1="300" y1="350" x2="1620" y2="350" stroke="var(--pi-ink)" stroke-width=".6" opacity=".22"/>
+  <g data-number-kind="circled" data-number-role="sequence" data-number-state="filled" data-number-rings="2"><circle data-source-d4-role="current-disc" cx="334" cy="418" r="26" fill="var(--pi-ink)" opacity="1" data-number-part="disc"/><circle data-source-d4-role="current-ring" cx="334" cy="418" r="31" fill="none" stroke="var(--pi-ink)" stroke-width=".6" opacity=".35" data-number-part="outer-ring"/><text data-source-d4-role="current-number" x="334" y="427" data-number-part="label" data-text-kind="number" font-family="var(--pi-mono)" font-size="var(--type-subheading)" text-anchor="middle" fill="var(--pi-paper-panel)">2</text></g><line data-source-d4-role="current-rule" x1="378" y1="418" x2="406" y2="418" stroke="var(--pi-ink)" stroke-width="1.8"/><text x="416" y="420" font-family="var(--pi-sans)" font-weight="300" font-size="var(--type-subheading)" fill="var(--pi-ink)" opacity="1">工程化思维</text><text x="602" y="417" font-family="var(--pi-mono)" font-size="var(--type-meta)" letter-spacing="3" fill="var(--pi-ink-60)" opacity="1">HARNESS ENG</text><text x="416" y="456" font-family="var(--pi-sans)" font-weight="300" font-size="var(--type-body-small)" fill="var(--pi-ink-70)" opacity="1">从模型到产品的工程鸿沟</text><text x="1620" y="420" font-family="var(--pi-mono)" font-size="var(--type-meta)" letter-spacing="2" text-anchor="end" fill="color-mix(in srgb, var(--pi-ink) 50%, transparent)" opacity="1">P.7</text>
+  <line x1="300" y1="476" x2="1620" y2="476" stroke="var(--pi-ink)" stroke-width=".6" opacity=".22"/>
+  <g data-number-kind="circled" data-number-role="sequence" data-number-state="outline" data-number-rings="1"><circle cx="334" cy="544" r="26" fill="none" stroke="var(--pi-ink)" stroke-width="1" opacity=".45" data-number-part="disc"/><text x="334" y="552" data-number-part="label" data-text-kind="number" font-family="var(--pi-mono)" font-size="var(--type-subheading)" text-anchor="middle" fill="var(--pi-ink)" opacity=".45">3</text></g><text x="416" y="546" font-family="var(--pi-sans)" font-weight="300" font-size="var(--type-subheading)" fill="var(--pi-ink)" opacity=".45">Agent 实战</text><text x="698" y="543" font-family="var(--pi-mono)" font-size="var(--type-meta)" letter-spacing="3" fill="var(--pi-ink-60)" opacity=".45">AGENT IN ACTION</text><text x="416" y="582" font-family="var(--pi-sans)" font-weight="300" font-size="var(--type-body-small)" fill="var(--pi-ink-70)" opacity=".45">工具调用、状态机与失败恢复</text><text x="1620" y="546" font-family="var(--pi-mono)" font-size="var(--type-meta)" letter-spacing="2" text-anchor="end" fill="color-mix(in srgb, var(--pi-ink) 50%, transparent)" opacity=".45">P.11</text>
+  <line x1="300" y1="602" x2="1620" y2="602" stroke="var(--pi-ink)" stroke-width=".6" opacity=".22"/>
+  <g data-number-kind="circled" data-number-role="sequence" data-number-state="outline" data-number-rings="1"><circle cx="334" cy="670" r="26" fill="none" stroke="var(--pi-ink)" stroke-width="1" opacity=".45" data-number-part="disc"/><text x="334" y="678" data-number-part="label" data-text-kind="number" font-family="var(--pi-mono)" font-size="var(--type-subheading)" text-anchor="middle" fill="var(--pi-ink)" opacity=".45">4</text></g><text x="416" y="672" font-family="var(--pi-sans)" font-weight="300" font-size="var(--type-subheading)" fill="var(--pi-ink)" opacity=".45">评测体系</text><text x="570" y="669" font-family="var(--pi-mono)" font-size="var(--type-meta)" letter-spacing="3" fill="var(--pi-ink-60)" opacity=".45">EVAL FRAMEWORK</text><text x="416" y="708" font-family="var(--pi-sans)" font-weight="300" font-size="var(--type-body-small)" fill="var(--pi-ink-70)" opacity=".45">离线指标与在线尺子的双层护栏</text><text x="1620" y="672" font-family="var(--pi-mono)" font-size="var(--type-meta)" letter-spacing="2" text-anchor="end" fill="color-mix(in srgb, var(--pi-ink) 50%, transparent)" opacity=".45">P.15</text>
+  <line x1="300" y1="728" x2="1620" y2="728" stroke="var(--pi-ink)" stroke-width=".6" opacity=".22"/>
+  <g data-number-kind="circled" data-number-role="sequence" data-number-state="outline" data-number-rings="1"><circle cx="334" cy="796" r="26" fill="none" stroke="var(--pi-ink)" stroke-width="1" opacity=".45" data-number-part="disc"/><text x="334" y="804" data-number-part="label" data-text-kind="number" font-family="var(--pi-mono)" font-size="var(--type-subheading)" text-anchor="middle" fill="var(--pi-ink)" opacity=".45">5</text></g><text x="416" y="798" font-family="var(--pi-sans)" font-weight="300" font-size="var(--type-subheading)" fill="var(--pi-ink)" opacity=".45">落地路径</text><text x="570" y="795" font-family="var(--pi-mono)" font-size="var(--type-meta)" letter-spacing="3" fill="var(--pi-ink-60)" opacity=".45">ROLLOUT ROADMAP</text><text x="416" y="834" font-family="var(--pi-sans)" font-weight="300" font-size="var(--type-body-small)" fill="var(--pi-ink-70)" opacity=".45">从 Demo 到生产的渐进上线计划</text><text x="1620" y="798" font-family="var(--pi-mono)" font-size="var(--type-meta)" letter-spacing="2" text-anchor="end" fill="color-mix(in srgb, var(--pi-ink) 50%, transparent)" opacity=".45">P.19</text>
+  <line x1="300" y1="224" x2="1620" y2="224" stroke="var(--pi-ink)" stroke-width=".6" opacity=".22"/>
+</g></svg></div>`
     },
     {
       name: 'step-rise',
@@ -1074,9 +1033,9 @@ window.WISE_PPT_NATIVE_COMPONENT_DATA = {
       <text id="lever-outcome-title" data-field="right_title" x="897" y="137" text-anchor="middle" font-size="var(--type-subheading)" font-weight="300">增量营收</text>
     </g>
 
-    <path d="M 144 337 L 895 166 L 899 184 L 148 355 Z" fill="var(--pi-paper-panel)" stroke="var(--pi-ink-80)" stroke-width="1.2" stroke-linejoin="round"/>
-    <circle cx="148" cy="346" r="9" fill="var(--pi-paper)" stroke="var(--pi-ink)" stroke-width="1.2"/>
-    <circle cx="897" cy="175" r="9" fill="var(--pi-paper)" stroke="var(--pi-ink)" stroke-width="1.2"/>
+    <path id="lever-beam" d="M 144 337 L 895 166 L 899 184 L 148 355 Z" fill="var(--pi-paper-panel)" stroke="var(--pi-ink-80)" stroke-width="1.2" stroke-linejoin="round"/>
+    <circle id="lever-stock-node" cx="148" cy="346" r="9" fill="var(--pi-paper)" stroke="var(--pi-ink)" stroke-width="1.2"/>
+    <circle id="lever-outcome-node" cx="897" cy="175" r="9" fill="var(--pi-paper)" stroke="var(--pi-ink)" stroke-width="1.2"/>
 
     <g aria-label="转化动作">
       <rect x="326" y="82" width="226" height="64" fill="var(--pi-paper)"/>
@@ -1087,7 +1046,7 @@ window.WISE_PPT_NATIVE_COMPONENT_DATA = {
     </g>
 
     <g aria-label="杠杆支点">
-      <path d="M 640 232 L 760 448 L 520 448 Z" fill="url(#lever-pivot-hatch)" stroke="var(--pi-ink)" stroke-width="1.1" stroke-linejoin="round"/>
+      <path id="lever-pivot" d="M 640 232 L 760 448 L 520 448 Z" fill="url(#lever-pivot-hatch)" stroke="var(--pi-ink)" stroke-width="1.1" stroke-linejoin="round"/>
       <circle cx="640" cy="232" r="13" fill="var(--pi-paper)" stroke="var(--pi-ink)" stroke-width="1.2"/>
       <circle cx="640" cy="232" r="4" fill="var(--pi-ink)"/>
       <text x="640" y="382" text-anchor="middle" font-family="var(--pi-mono)" font-size="var(--type-meta)" letter-spacing="2" fill="var(--pi-ink-45)">PIVOT</text>
@@ -1903,50 +1862,6 @@ FAIL-SAFE · AUDITED PER CALL
   data.entries = entries.filter(entry => ![70,86,109,110,111,114,115,116,117,118,119,128,129].includes(entry.num));
 })(window.WISE_PPT_NATIVE_COMPONENT_DATA);
 
-/* 18-card square-slot repair: these fixed components are now authored as
-   compact component-first visual units.  The 800x680 canvas is derived from
-   the real E5 safe square (about 757x686): body=22 remains above 18px after
-   contain, while the same fixed source continues to mount in landscape slots. */
-(function applySquareReadyComponentFirstSources(data){
-  const byNumber=new Map(data.entries.map(entry=>[Number(entry.num),entry]));
-  const frame={width:800,height:680,fit:'fixed'};
-  const frameMarks=`<g fill="none" stroke="var(--pi-ink)" stroke-width="1" opacity=".28" aria-hidden="true"><path d="M32 8H8V32M768 8H792V32M32 672H8V648M768 672H792V648"/></g>`;
-  const shell=(label,content)=>`<div class="pi-card pi-square-ready" data-bind-root="record" style="width:auto;min-height:0;overflow:visible"><svg class="pi-art" width="100%" viewBox="0 0 800 680" xmlns="http://www.w3.org/2000/svg" aria-label="${label}">${frameMarks}${content}</svg></div>`;
-  const text=(x,y,value,anchor='middle',token='body',extra='')=>`<text x="${x}" y="${y}" text-anchor="${anchor}" font-family="var(--pi-sans)" font-weight="300" font-size="var(--type-${token})" fill="var(--pi-ink)" ${extra}>${value}</text>`;
-  const mono=(x,y,value,anchor='middle',token='label',extra='')=>`<text x="${x}" y="${y}" text-anchor="${anchor}" font-family="var(--pi-mono)" font-size="var(--type-${token})" letter-spacing="1.5" fill="var(--pi-ink-60)" ${extra}>${value}</text>`;
-  const setEntry=(number,description,snippet,regionId,boundary)=>{
-    const entry=byNumber.get(number);
-    if(!entry)throw new Error(`square-ready native:${number} missing`);
-    entry.description=description;
-    entry.frame={...frame};
-    entry.snippet=snippet;
-    entry.sourceRegion={
-      sourceRef:`capabilities/layouts/native-components.js#${number}`,
-      regionIds:[regionId],extraction:'component-first',framePolicy:'tight-ink',
-    };
-    entry.boundary={...(entry.boundary||{}),...boundary};
-  };
-
-  setEntry(65,'A compact component-first official document with wrapped body copy.',shell('紧凑公文标本',`
-    <g data-repeat-unit="document" data-fixed-quantity="1">
-      <rect x="92" y="44" width="616" height="592" fill="var(--pi-paper-panel)" stroke="var(--pi-ink-80)" stroke-width="1.4"/>
-      <rect x="100" y="52" width="600" height="576" fill="none" stroke="var(--pi-ink)" stroke-width=".6" opacity=".35"/>
-      <rect x="270" y="28" width="260" height="52" fill="var(--pi-paper-deep)" stroke="var(--pi-ink)" stroke-width="1"/>
-      ${mono(400,61,'OFFICIAL DOCUMENT')}
-      ${text(400,142,'关于推进智能知识服务建设的通知','middle','subheading','data-field="title"')}
-      <line x1="154" y1="172" x2="646" y2="172" stroke="var(--pi-ink)" stroke-width="1" opacity=".35"/>
-      ${text(156,224,'各相关单位：','start','body','data-field="salutation"')}
-      ${text(156,278,'为统一知识接入、检索与审计标准，现启动','start','body','data-field="body_1"')}
-      ${text(156,316,'智能知识服务建设。请按同一资料口径完成接入，','start','body','data-field="body_2"')}
-      ${text(156,354,'并保留来源、版本和责任人信息。','start','body','data-field="body_3"')}
-      ${text(156,420,'一、完成资料清点与权限确认。','start','body','data-field="item_1"')}
-      ${text(156,458,'二、完成检索链路与引用校验。','start','body','data-field="item_2"')}
-      ${text(156,496,'三、按周提交问题与整改记录。','start','body','data-field="item_3"')}
-      ${mono(644,558,'2026 · 08 · 24','end','meta','data-field="date"')}
-      ${text(644,590,'项目办公室','end','body-small','data-field="issuer"')}
-    </g>`),'official-doc',{topology:'single',unit:'document',fixedQuantity:1});
-})(window.WISE_PPT_NATIVE_COMPONENT_DATA);
-
 /* 组件来源边界：记录“从哪个版式区域剥离”，不再把整页等同于组件。 */
 (function applyNativeSourceBoundaries(data){
   /* #008 按用户拍板恢复为 H3 完整四层架构主体。复用已核准的 #076
@@ -1965,6 +1880,139 @@ FAIL-SAFE · AUDITED PER CALL
     h3Replica.boundary={topology:'connected-group',unit:'layer'};
     h3Replica.snippet=h3Master.snippet.replaceAll('pi-82-', 'pi-93-');
   }
+  /* A7 was the historical extraction point for #067, but the live Catalog
+     successor is R7: the same ordered 4x7 logo wall with eight stable accent
+     marks. Tag the original detail strokes instead of adding overlay nodes so
+     Paper Ink keeps its source line work and chromatic themes can promote the
+     exact same semantic marks. */
+  const r7LogoWall=data.entries.find(item=>Number(item.num)===67);
+  if(r7LogoWall){
+    r7LogoWall.sourceLayout='R7';
+    const accentMarks=[
+      {sourceStart:'<line x1="467.5" y1="340.55" x2="467.5" y2="361.45"',strokeWidth:'.8',opacity:'.55'},
+      {sourceStart:'<line x1="1681.3" y1="363" x2="1703.7" y2="363"',strokeWidth:'.8',opacity:'.5'},
+      {sourceStart:'<line x1="712.5" y1="492.2" x2="712.5" y2="509.8"',strokeWidth:'.8',opacity:'.55'},
+      {sourceStart:'<line x1="1679.2" y1="514.3" x2="1705.8" y2="487.7"',strokeWidth:'1',opacity:'.65'},
+      {sourceStart:'<line x1="957.5" y1="638.9" x2="957.5" y2="663.1"',strokeWidth:'.8',opacity:'.55'},
+      {sourceStart:'<line x1="1683.7" y1="651" x2="1701.3" y2="651"',strokeWidth:'.8',opacity:'.55'},
+      {sourceStart:'<line x1="454.2" y1="815.25" x2="480.8" y2="815.25"',strokeWidth:'.8',opacity:'.5'},
+      {sourceStart:'<path d="M 1682.9 805.8 A 9.6 9.6 0 0 1 1689.3 792.2"',strokeWidth:'.8',opacity:'.55'},
+    ];
+    for(const {sourceStart,strokeWidth,opacity} of accentMarks){
+      const occurrences=r7LogoWall.snippet.split(sourceStart).length-1;
+      if(occurrences!==1)throw new Error(`native:67 R7 accent source mismatch: ${sourceStart}`);
+      const taggedStart=sourceStart.replace(/^<(line|path)/,'<$1 data-r7-accent-mark');
+      r7LogoWall.snippet=r7LogoWall.snippet.replace(sourceStart,taggedStart);
+      const tagStart=r7LogoWall.snippet.indexOf(taggedStart);
+      const tagEnd=r7LogoWall.snippet.indexOf('>',tagStart);
+      if(tagStart<0||tagEnd<0)throw new Error(`native:67 R7 accent tag mismatch: ${sourceStart}`);
+      const sourceTag=r7LogoWall.snippet.slice(tagStart,tagEnd+1);
+      const normalizedTag=sourceTag
+        .replace(/stroke-width="[^"]+"/,`stroke-width="${strokeWidth}"`)
+        .replace(/opacity="[^"]+"/,`opacity="${opacity}"`);
+      r7LogoWall.snippet=
+        r7LogoWall.snippet.slice(0,tagStart)
+        +normalizedTag
+        +r7LogoWall.snippet.slice(tagEnd+1);
+    }
+    r7LogoWall.snippet=r7LogoWall.snippet.replace(
+      /<text (x="[^"]+" y="(?:407|557|707|857)")/g,
+      '<text data-r7-brand-name $1',
+    );
+    const brandCount=(r7LogoWall.snippet.match(/data-r7-brand-name/g)||[]).length;
+    if(brandCount!==28)throw new Error(`native:67 R7 brand label count mismatch: ${brandCount}`);
+  }
+  /* Reverse-audited layout sources which pre-date the sourceLayout field.
+     Keep these in one registry so incomplete metadata cannot silently turn a
+     source-bound component into a generic default-rule component. */
+  const recoveredSourceLayouts = new Map([
+    [94,'L2'], [95,'L1'], [97,'H2'], [98,'C7'], [100,'J1'],
+    [102,'B1'], [103,'H1'], [105,'P2'],
+  ]);
+  for(const [number,sourceLayout] of recoveredSourceLayouts){
+    const entry=data.entries.find(item=>Number(item.num)===number);
+    if(!entry)throw new Error(`recovered source native:${number} missing`);
+    entry.sourceLayout=sourceLayout;
+  }
+  /* H1/H2 source pages contain a dedicated, visually dormant Paper Ink
+     backing shape before their construction lines. The original extraction
+     dropped those nodes, which made an exact white system surface impossible
+     without covering the line work. Restore the source-local backing only;
+     it remains fill:none until a chromatic theme projects top-white. */
+  const h2Entry=data.entries.find(item=>Number(item.num)===97);
+  if(h2Entry&&!h2Entry.snippet.includes('data-source-surface="h2-system"')){
+    h2Entry.snippet=h2Entry.snippet.replace(
+      '<g transform="translate(0 -13.7)">',
+      '<g transform="translate(0 -13.7)"><rect data-source-surface="h2-system" x="514" y="254" width="532" height="532" fill="none" stroke="none"/>',
+    );
+  }
+  const h1Entry=data.entries.find(item=>Number(item.num)===103);
+  if(h1Entry&&!h1Entry.snippet.includes('data-source-surface="h1-system"')){
+    h1Entry.snippet=h1Entry.snippet.replace(
+      '<g transform="translate(0 -23.7)">',
+      '<g transform="translate(0 -23.7)"><circle data-source-surface="h1-system" cx="1050" cy="530" r="300" fill="none" stroke="none"/>',
+    );
+  }
+  if(h1Entry&&!h1Entry.snippet.includes('data-source-identity="h1-core"')){
+    h1Entry.snippet=h1Entry.snippet.replace(
+      '<circle cx="1050" cy="530" r="73" fill="none" stroke="var(--pi-ink)" stroke-width="0.6" opacity="0.35"/>',
+      '<circle cx="1050" cy="530" r="73" fill="none" stroke="var(--pi-ink)" stroke-width="0.6" opacity="0.35"/><circle data-source-identity="h1-core" cx="1050" cy="530" r="73" fill="none" stroke="none"/>',
+    );
+  }
+  const j1Entry=data.entries.find(item=>Number(item.num)===100);
+  if(j1Entry&&!j1Entry.snippet.includes('data-source-surface="j1-system"')){
+    j1Entry.snippet=j1Entry.snippet.replace(
+      '<circle cx="960" cy="515" r="240" fill="none" stroke="var(--pi-ink-80)" stroke-width="1.4"/>',
+      '<circle data-source-surface="j1-system" cx="960" cy="515" r="240" fill="none" stroke="var(--pi-ink-80)" stroke-width="1.4"/>',
+    );
+  }
+  const o1Entry=data.entries.find(item=>Number(item.num)===87);
+  if(o1Entry&&!o1Entry.snippet.includes('data-source-surface="o1-funnel"')){
+    o1Entry.snippet=o1Entry.snippet.replace(
+      '<g transform="translate(0 -37.7)">',
+      '<g transform="translate(0 -37.7)"><path data-source-surface="o1-funnel" d="M 300 240 L 1020 240 L 660 770 Z" fill="none" stroke="none"/>',
+    );
+  }
+  /* Two historical extracts also drifted from their Paper Ink source before
+     theme projection existed. Correct the neutral source tokens here so Paper
+     Ink remains the authoritative third style, rather than a chromatic-only
+     CSS approximation. */
+  const b1Entry=data.entries.find(item=>Number(item.num)===102);
+  if(b1Entry){
+    b1Entry.snippet=b1Entry.snippet.replace(
+      /(<text[^>]*fill=")var\(--pi-ink-80\)("[^>]*>\s*(?:GPT-[1-4]|ChatGPT|o1 \/ o3)\s*<\/text>)/g,
+      '$1var(--pi-ink-70)$2',
+    );
+  }
+  const a3Entry=data.entries.find(item=>Number(item.num)===65);
+  if(a3Entry){
+    a3Entry.snippet=a3Entry.snippet.replace(
+      '<rect x="790" y="456" width="340" height="44" fill="var(--pi-paper-deep)"',
+      '<rect x="790" y="456" width="340" height="44" fill="var(--pi-paper)"',
+    );
+  }
+  const e6Entry=data.entries.find(item=>Number(item.num)===77);
+  if(e6Entry){
+    const beforeCardPattern=/(<rect x="(?:190|350|510|670|830|990)" y="285" width="140" height="150" fill=")var\(--pi-paper-deep\)(")/g;
+    const beforeCardCount=(e6Entry.snippet.match(beforeCardPattern)||[]).length;
+    if(beforeCardCount!==6)throw new Error(`native:77 E6 before-card count mismatch: ${beforeCardCount}`);
+    e6Entry.snippet=e6Entry.snippet
+      .replace(
+        '<circle cx="200" cy="232" r="15" fill="var(--pi-paper-deep)"',
+        '<circle cx="200" cy="232" r="15" fill="var(--pi-paper)"',
+      )
+      .replace(
+        beforeCardPattern,
+        '$1var(--pi-paper)$2',
+      );
+  }
+  const r1Entry=data.entries.find(item=>Number(item.num)===113);
+  if(r1Entry){
+    r1Entry.snippet=r1Entry.snippet.replace(
+      '<rect x="143" y="245" width="345" height="580" fill="rgba(255,255,255,.18)"',
+      '<rect x="143" y="245" width="345" height="580" fill="var(--pi-paper-panel)"',
+    );
+  }
   const regionIds = new Map([
     [63,['stages']], [64,['excerpt']], [65,['official-doc']], [66,['evidence-wall']],
     [67,['logo-wall']], [68,['screens']], [69,['product-ui']], [71,['durations']],
@@ -1972,7 +2020,10 @@ FAIL-SAFE · AUDITED PER CALL
     [76,['paired-items']], [77,['before-after-flow']], [78,['evidence-bubbles']],
     [79,['capabilities']], [80,['sources']], [81,['comparison-fields']], [82,['architecture']],
     [83,['roadmap']], [87,['funnel-stages']], [88,['hero-callouts']], [93,['architecture']],
-    [96,['branches']], [99,['serpentine-eight-step']], [101,['journey']],
+    [94,['mapping-network']], [95,['weighted-links']], [96,['branches']],
+    [97,['zoom-levels']], [98,['ranking']], [99,['serpentine-eight-step']],
+    [100,['cycle-steps']], [101,['journey']], [102,['milestones']], [103,['layers']],
+    [104,['milestones-vertical']], [105,['diamond-map']],
     [106,['balance-component']], [107,['system-component']], [108,['dimensions']],
     [112,['credential-wall']],
   ]);
@@ -1982,22 +2033,27 @@ FAIL-SAFE · AUDITED PER CALL
     [74,'connected-group'], [75,'single'], [76,'sequence'], [77,'connected-group'],
     [78,'sequence'], [79,'connected-group'], [80,'connected-group'], [81,'connected-group'],
     [82,'connected-group'], [83,'connected-group'], [87,'sequence'], [88,'connected-group'],
-    [93,'connected-group'], [96,'connected-group'], [99,'sequence'], [101,'sequence'],
+    [93,'connected-group'], [94,'connected-group'], [95,'connected-group'],
+    [96,'connected-group'], [97,'nested'], [98,'sequence'], [99,'sequence'],
+    [100,'cycle'], [101,'sequence'], [102,'sequence'], [103,'nested'],
+    [104,'sequence'], [105,'connected-group'],
     [106,'connected-group'], [107,'connected-group'], [108,'connected-group'], [112,'wall'],
   ]);
-  const componentFirstNumbers=new Set([65,106,107]);
+  const componentFirstNumbers=new Set([106,107]);
   for(const entry of data.entries.filter(item=>item.sourceLayout)){
     const number=Number(entry.num);
     const componentFirst=componentFirstNumbers.has(number);
-    const sourceRef=number===67
-      ? 'git 373d1ef4^:references/gallery-paper-ink/ai/frames/layout-a7.html'
-      : componentFirst
-        ? `capabilities/layouts/native-components.js#${number}`
-        : `references/gallery-paper-ink/ai/frames/layout-${String(entry.sourceLayout).toLowerCase()}.html`;
+    const sourceRef=componentFirst
+      ? `capabilities/layouts/native-components.js#${number}`
+      : `references/gallery-paper-ink/ai/frames/layout-${String(entry.sourceLayout).toLowerCase()}.html`;
     entry.sourceRegion={
       sourceRef,
       regionIds:entry.sourceRegion&&entry.sourceRegion.regionIds||regionIds.get(number)||[entry.name],
-      extraction:componentFirst?'component-first':'include-only',
+      extraction:number===67
+        ?'current-layout-successor'
+        :componentFirst
+          ?'component-first'
+          :(entry.sourceRegion&&entry.sourceRegion.extraction)||'include-only',
       framePolicy:'tight-ink',
     };
     if(number===85){
@@ -2027,5 +2083,26 @@ FAIL-SAFE · AUDITED PER CALL
       entry.boundary.aliasOf='native:82';
       entry.boundary.aliasRole='full-h3-replica';
     }
+  }
+  /* A recovered source component owns the exact tight-ink viewport cut from
+     its current layout. Several promoted entries still carried an old generic
+     16:9 preview frame, so contain-fit scaled the right drawing against the
+     wrong outer box. Derive the frame from the root pi-art viewBox and remove
+     the obsolete second width/height pair in one rule for every recovered
+     source, rather than maintaining per-component geometry patches. */
+  for(const [number] of recoveredSourceLayouts){
+    const entry=data.entries.find(item=>Number(item.num)===number);
+    const openTag=entry&&entry.snippet.match(/<svg\b[^>]*\bclass=(['"])[^'"]*\bpi-art\b[^'"]*\1[^>]*>/i);
+    const viewBox=openTag&&openTag[0].match(/\bviewBox=(['"])\s*[-\d.]+\s+[-\d.]+\s+([\d.]+)\s+([\d.]+)\1/i);
+    if(!openTag||!viewBox)throw new Error(`recovered source native:${number} missing root pi-art viewBox`);
+    const width=Number(viewBox[2]);
+    const height=Number(viewBox[3]);
+    if(!(width>0&&height>0))throw new Error(`recovered source native:${number} invalid tight-ink frame`);
+    entry.frame={width,height,fit:'fixed'};
+    const normalizedTag=openTag[0]
+      .replace(/\s+width=(['"])[^'"]*\1/gi,'')
+      .replace(/\s+height=(['"])[^'"]*\1/gi,'')
+      .replace(/>$/,` width="100%" height="${height}">`);
+    entry.snippet=entry.snippet.replace(openTag[0],normalizedTag);
   }
 })(window.WISE_PPT_NATIVE_COMPONENT_DATA);

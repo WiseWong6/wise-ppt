@@ -18,17 +18,6 @@
     number: 'meta',
     source: 'meta'
   });
-  var TYPE_ROLE_FONTS = Object.freeze({
-    heading: 'sans',
-    subheading: 'sans',
-    body: 'sans',
-    'body-small': 'sans',
-    metric: 'mono',
-    label: 'sans',
-    meta: 'mono',
-    number: 'mono',
-    source: 'mono'
-  });
   var MAIN_TYPE_ROLES = Object.freeze(['heading', 'subheading', 'body', 'body-small']);
   var SMALL_EXEMPT_TYPE_ROLES = Object.freeze(['label', 'meta', 'number', 'source']);
 
@@ -180,8 +169,23 @@
     return subjects[0];
   }
 
+  function componentThemeMode(host) {
+    var source = host.matches && host.matches('[data-component-theme-mode]')
+      ? host
+      : host.querySelector('[data-component-theme-mode]');
+    return source ? source.dataset.componentThemeMode || '' : '';
+  }
+
+  // 有明确来源版式的组件，其字号本身就是版式合同的一部分。type_roles 仍负责
+  // 字体、字重和语义溯源，但不得再用通用 13/15/18/22/26px 字阶覆盖源版式。
+  function followsLayoutTypography(host) {
+    return componentThemeMode(host) === 'layout-default';
+  }
+
   function applyTypeRoles(host, contract) {
     var roles = contract.type_roles || {};
+    var preserveLayoutSize = followsLayoutTypography(host);
+    host.dataset.componentTypeSizePolicy = preserveLayoutSize ? 'layout-default' : 'semantic-token';
     var stale = Array.prototype.slice.call(host.querySelectorAll('[data-component-type-role],[data-component-type-authority]'));
     if (host.hasAttribute('data-component-type-role') || host.hasAttribute('data-component-type-authority')) stale.unshift(host);
     stale.forEach(function (node) {
@@ -207,10 +211,13 @@
         node.style.setProperty('transition', 'none', 'important');
         node.dataset.componentTypeRole = role;
         node.dataset.componentTypeAuthority = 'behavior-v4';
-        node.style.setProperty('--wp-component-type-token', 'var(--type-' + TYPE_ROLE_TOKENS[role] + ')');
-        node.style.setProperty('--wp-component-font-token', 'var(--' + TYPE_ROLE_FONTS[role] + ')');
-        node.style.setProperty('font-size', 'var(--wp-component-type-token)', 'important');
-        node.style.setProperty('font-family', 'var(--wp-component-font-token)', 'important');
+        node.dataset.componentTypeSizePolicy = preserveLayoutSize ? 'layout-default' : 'semantic-token';
+        if (preserveLayoutSize) {
+          node.style.removeProperty('--wp-component-type-token');
+        } else {
+          node.style.setProperty('--wp-component-type-token', 'var(--type-' + TYPE_ROLE_TOKENS[role] + ')');
+          node.style.setProperty('font-size', 'var(--wp-component-type-token)', 'important');
+        }
         // Atlas 有些组件声明 transition:all。同步 mount 若在字号过渡中量值，
         // 会把旧 13px 当成最终正文并误报；先在无过渡状态强制落一帧。
         global.getComputedStyle(node).fontSize;
@@ -222,6 +229,24 @@
         if (role === 'source') node.dataset.textKind = 'source';
       });
     });
+    var resolver = global.WisePPTComponentTypographyResolver;
+    if (!resolver || typeof resolver.applyToElement !== 'function') {
+      throw new Error('组件字体解析器未加载');
+    }
+    return resolver.applyToElement(host);
+  }
+
+  function typeScopeForHost(host, contract) {
+    var hasTypeRoles = Object.keys(contract.type_roles || {}).length > 0;
+    return contract.render_mode === 'fixed-visual' && hasTypeRoles
+      ? (host.hasAttribute('data-materialized-component-id') ? host : uniqueSubject(host, ':scope > *'))
+      : host;
+  }
+
+  function applyTypography(host, contractValue) {
+    var contract = parseContract(contractValue || host.dataset.behaviorContract);
+    var typeScope = typeScopeForHost(host, contract);
+    return applyTypeRoles(typeScope, contract);
   }
 
   function authorizedSmallText(node) {
@@ -451,6 +476,15 @@
   }
 
   function capVisualType(host, appliedScale) {
+    if (followsLayoutTypography(host)) {
+      host.dataset.componentVisualTypePolicy = 'layout-default';
+      host.dataset.componentCappedTypeCount = '0';
+      host.dataset.componentTypeCapChangedCount = '0';
+      delete host.dataset.componentVisualTypeCeiling;
+      delete host.dataset.componentVisualScaleLimit;
+      return { total: 0, changed: 0, scaleLimit: Infinity };
+    }
+    host.dataset.componentVisualTypePolicy = 'semantic-token';
     var visualScale = positiveNumber(appliedScale == null ? 1 : appliedScale, '组件可见缩放');
     var capped = [];
     var changed = 0;
@@ -552,6 +586,11 @@
   // 小字只认本轮 mount 从 authority behavior type_roles 写出的叶级授权；
   // data-text-kind / data-catalog-text-kind 都只是说明，不能提供豁免。
   function assertReadableType(host, appliedScale) {
+    if (followsLayoutTypography(host)) {
+      host.dataset.componentReadableTypePolicy = 'layout-default';
+      return;
+    }
+    host.dataset.componentReadableTypePolicy = 'semantic-token';
     var visualScale = positiveNumber(appliedScale == null ? 1 : appliedScale, '组件可见缩放');
     var tooSmall = [];
     var seen = [];
@@ -601,10 +640,6 @@
     // 不一定等于用于 contain 的视觉主体（例如后台台只缩放内部 .ui）。
     // 成品页把物化收据盖在组件根上，host 即根；catalog 预览把组件根包在
     // .slot-fill host 内，必须下钻唯一子元素再套权威叶选择器。
-    var hasTypeRoles = Object.keys(contract.type_roles || {}).length > 0;
-    var typeScope = contract.render_mode === 'fixed-visual' && hasTypeRoles
-      ? (host.hasAttribute('data-materialized-component-id') ? host : uniqueSubject(host, ':scope > *'))
-      : host;
     subject.dataset.visualSubject = 'true';
     if (contract.fit_mode === 'contain') {
       subject.style.setProperty('--wp-intrinsic-width', contract.intrinsic_frame.width + 'px');
@@ -617,7 +652,7 @@
     var maxVisualScale = Infinity;
     try {
       resetVisualTypeCaps(host);
-      applyTypeRoles(typeScope, contract);
+      applyTypography(host, contract);
       frame = setFrame(host, contract.fit_mode, slot, contract, inset, placement);
       var fitted = fitVisibleInk(host, subject, contract, frame, maxVisualScale);
       scale = fitted.scale;
@@ -759,6 +794,7 @@
     // deck-runtime 的固定组件几何门禁必须与 behavior-v4 的实际拟合口径一致：
     // HTML 文字用 Range 字形框，SVG/有漆盒用可见框，并累计祖先 opacity。
     measureVisibleInk: visibleInkRects,
+    applyTypography: applyTypography,
     mount: mount,
     mountAll: mountAll
   });

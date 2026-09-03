@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html data-theme-id="paper-ink" lang="zh-CN" data-runtime="wise-ppt-specimen" data-typography-mode="all-sans" data-page-id="gallery-ai-e5" data-page-role="compare" data-theme="paper-ink" data-layout="paper-ink.comparison.dual-pyramid-map" data-layout-source="gallery" data-sample-focus-profile="content-only" data-sample-focus-members='[{"selector":"#sample-focus","role":"annotation"},{"selector":"#e5-focus-edge","role":"outline"}]' data-sample-focus-ref="sample.e5.e5-focus">
+<html data-theme-id="paper-ink" lang="zh-CN" data-runtime="wise-ppt-specimen" data-typography-mode="all-sans" data-page-id="gallery-ai-e5" data-page-role="compare" data-theme="paper-ink" data-layout="paper-ink.comparison.dual-pyramid-map" data-layout-source="gallery" data-emphasis-targets='[{"target_id":"focus.key-item","members":[{"selector":"#e5-focus-capabilities","role":"label","treatment":"focus.color","expected_count":1}]}]' data-catalog-legacy-emphasis-profile="content-only" data-catalog-legacy-emphasis-members='[{"selector":"#e5-focus-edge","expected_count":1,"role":"outline"},{"selector":"#sample-focus","expected_count":1,"role":"annotation"}]' data-catalog-legacy-emphasis-foreground-members='[]' data-catalog-legacy-emphasis-ref="sample.e5.colored-mapping" data-vnext-semantic-key-map='[{"key":"hierarchy-map.text.010","tag":"text","text":"LEGACY CAREER LADDER","occurrence":0},{"key":"hierarchy-map.text.020","tag":"text","text":"AI CAPABILITY TIERS","occurrence":0}]'>
 <head>
 <meta charset="UTF-8">
 <title>layout-e5 · 双金字塔对照映射 · 职级 vs AI 能力</title>
@@ -33,7 +33,7 @@
     <g id="draw"></g>
   </svg>
 
-  <div class="caption">模型、工具、编排与应用逐层对齐，跨层依赖决定系统的最终稳定性。</div>
+  <div class="caption"><span id="e5-focus-capabilities" data-emphasis-candidate="true">模型、工具、编排与应用</span>逐层对齐，跨层依赖决定系统的最终稳定性。</div>
 
 </div>
 
@@ -73,6 +73,8 @@ mids.forEach(function(y){
 el('line', {x1:960, y1:286, x2:960, y2:726, stroke:INK, 'stroke-width':.5, opacity:.2, 'stroke-dasharray':'2 6'});
 
 function tower(cx, layers){
+  el('path', {class:'e5-pyramid-surface', d:'M '+cx+' '+TOP+' L '+(cx+HALF)+' '+BASE+' L '+(cx-HALF)+' '+BASE+' Z',
+    fill:'none', stroke:'none'});
   el('path', {d:'M '+cx+' '+TOP+' L '+(cx+HALF)+' '+BASE+' L '+(cx-HALF)+' '+BASE+' Z',
     fill:'none', stroke:INK80, 'stroke-width':1.3});
   [390, 500, 615].forEach(function(y){

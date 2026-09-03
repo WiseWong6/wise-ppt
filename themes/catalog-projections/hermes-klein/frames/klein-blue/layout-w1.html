@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html data-theme-id="klein-blue" lang="zh-CN" data-runtime="wise-ppt-specimen" data-typography-mode="all-sans" data-page-id="gallery-ai-w1" data-page-role="explain" data-theme="paper-ink" data-layout="paper-ink.radial.hub-arc-detail" data-layout-source="gallery" data-sample-focus-profile="content-only" data-sample-focus-members='[{"selector":"#w1-focus-hub","role":"outline"},{"selector":"#w1-focus-hub-title","role":"value"}]' data-sample-focus-ref="sample.w1.w1-focus" data-surface-source="catalog-theme-recipes-v1" data-xp-recipe-id="klein-blue:w1" data-xp-surface-profile="open-paper-diagram" data-xp-recipe-status="recipe-ready" data-xp-frame-kind="recipe-generated">
+<html data-theme-id="klein-blue" lang="zh-CN" data-runtime="wise-ppt-specimen" data-typography-mode="all-sans" data-page-id="gallery-ai-w1" data-page-role="explain" data-theme="paper-ink" data-layout="paper-ink.radial.hub-arc-detail" data-layout-source="gallery" data-emphasis-targets="[{&quot;target_id&quot;:&quot;focus.key-layer&quot;,&quot;label&quot;:&quot;数据闭环与生态协同&quot;,&quot;content_role&quot;:&quot;底部结论中的两项制造中台能力&quot;,&quot;reason_hint&quot;:&quot;制造中台保持默认主题身份；开启强调后只给底部文案中的数据闭环与生态协同上色。&quot;,&quot;members&quot;:[{&quot;selector&quot;:&quot;#w1-focus-data-loop, #w1-focus-ecosystem&quot;,&quot;role&quot;:&quot;label&quot;,&quot;treatment&quot;:&quot;focus.color&quot;,&quot;expected_count&quot;:2}]}]" data-vnext-semantic-key-map="[{&quot;key&quot;:&quot;orbit.text.001&quot;,&quot;tag&quot;:&quot;text&quot;,&quot;text&quot;:&quot;制造中台&quot;,&quot;occurrence&quot;:0}]" data-catalog-legacy-emphasis-profile="content-only" data-catalog-legacy-emphasis-members="[{&quot;selector&quot;:&quot;#w1-focus-core&quot;,&quot;expected_count&quot;:1,&quot;role&quot;:&quot;symbol&quot;,&quot;paint&quot;:&quot;fill&quot;}]" data-catalog-legacy-emphasis-foreground-members="[{&quot;selector&quot;:&quot;#w1-focus-hub-title&quot;,&quot;expected_count&quot;:1,&quot;neutral_tone&quot;:&quot;preserve&quot;,&quot;active_tone&quot;:&quot;white&quot;},{&quot;selector&quot;:&quot;#w1-focus-hub-code&quot;,&quot;expected_count&quot;:1,&quot;neutral_tone&quot;:&quot;preserve&quot;,&quot;active_tone&quot;:&quot;white&quot;}]" data-catalog-legacy-emphasis-ref="sample.w1.colored-inner-hub" data-wise-catalog-fonts="true" data-surface-source="catalog-theme-recipes-v2" data-xp-recipe-id="klein-blue:w1" data-xp-surface-profile="open-paper-diagram" data-xp-recipe-status="recipe-ready" data-xp-frame-kind="recipe-generated">
 <head>
 <meta charset="UTF-8">
 <title>layout-w1 · 枢纽弧线 + 右列详情 · 制造中台</title>
@@ -28,7 +28,7 @@
     z-index: 5;
   }
 </style>
-<link rel="stylesheet" href="../../catalog-surface.css" data-catalog-theme-surface="catalog-theme-recipes-v1">
+<link rel="stylesheet" href="../../catalog-surface.css" data-catalog-theme-surface="catalog-theme-recipes-v2">
 <link rel="stylesheet" href="../../title-furniture.css" data-catalog-title-furniture="black-first-theme-second-v1">
 </head>
 <body class="slide">
@@ -41,7 +41,7 @@
     <g id="w1-details" data-slot-id="details"></g>
   </svg>
 
-  <div class="caption">中枢只讲一次，四条支线各证一面，左点名、右举证逐行对齐。</div>
+  <div class="caption">制造中台通过资质背书建立信任，以自有平台承接服务，再用<span id="w1-focus-data-loop" data-emphasis-candidate="true">数据闭环</span>与<span id="w1-focus-ecosystem" data-emphasis-candidate="true">生态协同</span>持续放大运营能力。</div>
 </div>
 
 <script>
@@ -50,7 +50,7 @@ var INK = 'var(--ink)';
 var INK80 = 'var(--ink-80)';
 var INK70 = 'var(--ink-70)';
 var INK45 = 'var(--ink-45)';
-var MONO = 'var(--mono)', SANS = 'var(--sans)';
+var MONO = 'var(--mono)', SANS = 'var(--sans)', FOCUS = getComputedStyle(document.documentElement).getPropertyValue('--wp-color-focus').trim();
 
 var ORBIT = document.getElementById('w1-orbit');
 var DETAILS = document.getElementById('w1-details');
@@ -68,11 +68,11 @@ function txt(parent, x, y, str, attrs) {
 /* CX=536 为整体水平居中校准值:构图包围盒 [536-112, 1226+270] 的中心 = 960 */
 var CX = 536, CY = 540, R = 420, HUB_R = 112;
 
-/* 中枢双圈墨核(墨字非反白) */
+/* 中枢双圈墨核；纸墨态保持墨字，彩色主题可按强调前景色切换。 */
 el(ORBIT, 'circle', {id:'w1-focus-hub', cx:CX, cy:CY, r:HUB_R, fill:'none', stroke:INK, 'stroke-width':.6, opacity:.45});
-el(ORBIT, 'circle', {cx:CX, cy:CY, r:100, fill:'none', stroke:INK, 'stroke-width':1.6});
+el(ORBIT, 'circle', {id:'w1-focus-core', cx:CX, cy:CY, r:100, fill:'none', stroke:INK, 'stroke-width':1.6});
 txt(ORBIT, CX, CY-6, '制造中台', {id:'w1-focus-hub-title', 'font-family':SANS, 'font-weight':400, 'font-size':'var(--type-emphasis)', 'letter-spacing':4, 'text-anchor':'middle', fill:INK});
-txt(ORBIT, CX, CY+34, 'OPS CORE', {'font-family':MONO, 'font-size':'var(--type-meta)', 'letter-spacing':4, 'text-anchor':'middle', fill:INK45});
+txt(ORBIT, CX, CY+34, 'OPS CORE', {id:'w1-focus-hub-code', 'font-family':MONO, 'font-size':'var(--type-meta)', 'letter-spacing':4, 'text-anchor':'middle', fill:INK45});
 
 /* 四条支线行位与点名(先定义行位,弧线只画到末条支线为止) */
 var ROWS = [280, 450, 620, 790];
@@ -88,8 +88,8 @@ var SATELLITES = [
 var R2 = R + 173;
 var BAND_EXT = Math.round((ROWS[3] - ROWS[0]) * 0.20);
 function arcX(radius, y) { return CX + Math.sqrt(radius*radius - (CY-y)*(CY-y)); }
-el(ORBIT, 'path', {d:'M ' + arcX(R, ROWS[0]) + ' ' + ROWS[0] + ' A ' + R + ' ' + R + ' 0 0 1 ' + arcX(R, ROWS[3]) + ' ' + ROWS[3], fill:'none', stroke:INK, 'stroke-width':.7, opacity:.4, 'stroke-dasharray':'4 7'});
-el(ORBIT, 'path', {d:'M ' + arcX(R2, ROWS[0]-BAND_EXT) + ' ' + (ROWS[0]-BAND_EXT) + ' A ' + R2 + ' ' + R2 + ' 0 0 1 ' + arcX(R2, ROWS[3]+BAND_EXT) + ' ' + (ROWS[3]+BAND_EXT), fill:'none', stroke:INK, 'stroke-width':.7, opacity:.4, 'stroke-dasharray':'4 7'});
+el(ORBIT, 'path', {id:'w1-inner-arc', 'data-theme-line':'main', d:'M ' + arcX(R, ROWS[0]) + ' ' + ROWS[0] + ' A ' + R + ' ' + R + ' 0 0 1 ' + arcX(R, ROWS[3]) + ' ' + ROWS[3], fill:'none', stroke:INK, 'stroke-width':1.2, opacity:.65, 'stroke-dasharray':'5 7'});
+el(ORBIT, 'path', {id:'w1-outer-arc', 'data-theme-line':'main', d:'M ' + arcX(R2, ROWS[0]-BAND_EXT) + ' ' + (ROWS[0]-BAND_EXT) + ' A ' + R2 + ' ' + R2 + ' 0 0 1 ' + arcX(R2, ROWS[3]+BAND_EXT) + ' ' + (ROWS[3]+BAND_EXT), fill:'none', stroke:INK, 'stroke-width':1.2, opacity:.65, 'stroke-dasharray':'5 7'});
 
 /* 四条支线:圆点挂外弧;标题贴内弧内侧;
    副题与标题视觉中线同高,并水平居中在两道圆弧之间 */
@@ -100,7 +100,7 @@ ROWS.forEach(function(y, i) {
   var item = el(ORBIT, 'g', {'data-layout-role':'satellite'});
   txt(item, innerX-16, y+8, SATELLITES[i].title, {'font-family':SANS, 'font-weight':400, 'font-size':'var(--type-subheading)', 'letter-spacing':2, 'text-anchor':'end', fill:INK});
   txt(item, bandCenterX, y+4.5, SATELLITES[i].sub, {'font-family':SANS, 'font-weight':300, 'font-size':'var(--type-body-small)', 'letter-spacing':1, 'text-anchor':'middle', fill:INK70});
-  el(item, 'circle', {cx:dotX, cy:y, r:4.5, fill:INK});
+  el(item, 'circle', {'data-arc-dot':1, cx:dotX, cy:y, r:4.5, fill:FOCUS});
   el(item, 'circle', {cx:dotX, cy:y, r:10, fill:'none', stroke:INK, 'stroke-width':.6, opacity:.35});
 });
 
@@ -124,15 +124,15 @@ ROWS.forEach(function(y, i) {
   el(DETAILS, 'circle', {cx:anchorX, cy:y, r:2.2, fill:INK, opacity:.6});
   el(DETAILS, 'line', {x1:dividerX, y1:y-58, x2:dividerX, y2:y+42, stroke:INK, 'stroke-width':.8, opacity:.5});
   var block = el(DETAILS, 'g', {'data-layout-role':'detail-row'});
-  txt(block, DETAIL_TEXT_X, y-32, DETAILS_ROWS[i].tag, {'font-family':MONO, 'font-size':'var(--type-meta)', 'letter-spacing':2, fill:INK45});
+  txt(block, DETAIL_TEXT_X, y-32, DETAILS_ROWS[i].tag, {'data-number-kind':'plain', 'data-number-role':'structural', 'data-number-part':'label', 'data-text-kind':'number', 'font-family':MONO, 'font-size':'var(--type-meta)', 'letter-spacing':2, fill:'var(--wp-color-primary)'});
   txt(block, DETAIL_TEXT_X, y+2, DETAILS_ROWS[i].lines[0], {'font-family':SANS, 'font-weight':300, 'font-size':'var(--type-body-small)', fill:INK});
   txt(block, DETAIL_TEXT_X, y+30, DETAILS_ROWS[i].lines[1], {'font-family':SANS, 'font-weight':300, 'font-size':'var(--type-body-small)', fill:INK70});
 });
 
 stageFit();
 </script>
-<script type="application/json" id="xp-surface-recipe">{"theme":"klein-blue","color_name":"blue","layout_code":"w1","title":"layout-w1 · 枢纽弧线 + 右列详情 · 制造中台","layout":"paper-ink.radial.hub-arc-detail","page_role":"explain","canvas":{"token":"paper","value":"#f2efe9","reason":"中枢、弧线与右列详情共用一张开放纸面。"},"surface_profile":"open-paper-diagram","surfaces":[{"role":"diagram-plane","material":"paper-plane","fill":"#f2efe9","stack":0},{"role":"structure","material":"ink-line","fill":"#1a1a1a","stack":1},{"role":"focus-marker","material":"accent","fill":"#002fa7","stack":2}],"accent":{"value":"#002fa7","semantic_channel":"中心枢纽及其当前主题焦点","furniture":"左上第一行 doc-kicker 固定墨黑，第二行 doc-title 使用当前主题色；folio 继续按该页画布与原配方处理。","neutral_exceptions":["弧线轨道","四条支线","右列详情","普通序号"],"furniture_mode":"black-first-theme-second","folio_mode":"accent"},"border_policy":"沿用枢纽与弧线组件登记线宽，不追加卡片边框或圆角。","shadow_policy":"无影；中心层级由双圈、墨核和弧线连接表达。","noise_policy":"由主题统一提供唯一一层约 6% 黑色 fractal-noise；页面不得自带 noise 节点；浅色页 multiply。","reference_evidence":{"file":"references/catalog.html","cards":["W1"],"rule":"正式 Catalog 的中枢弧线、四行对齐和右列详情是视觉权威。"},"acceptance":["橙蓝 DOM 与几何完全一致，仅主题色映射。","中心双圈、弧线、支线与右列四行必须保持同轴。","缩略图必须从该主题独立 frame 的实际渲染重建。"],"status":"recipe-ready","surface_bindings":[],"surface_binding_reason":"枢纽弧线是组件自有开放纸面图形；不把其内部层级改写为页面面板。"}</script>
-<script src="../../catalog-surface.js" data-catalog-theme-surface="catalog-theme-recipes-v1"></script>
-<script src="../../catalog-typography.js" data-catalog-typography="accent-english-title-match-v1"></script>
+<script type="application/json" id="xp-surface-recipe">{"theme":"klein-blue","color_name":"blue","layout_code":"w1","title":"layout-w1 · 枢纽弧线 + 右列详情 · 制造中台","layout":"paper-ink.radial.hub-arc-detail","page_role":"explain","canvas":{"token":"paper","value":"#f2efe9","reason":"中枢、弧线与右列详情共用一张开放纸面。"},"surface_profile":"open-paper-diagram","surfaces":[{"role":"diagram-plane","material":"paper-plane","fill":"#f2efe9","stack":0},{"role":"structure","material":"ink-line","fill":"#1a1a1a","stack":1},{"role":"focus-marker","material":"accent","fill":"#002fa7","stack":2}],"accent":{"value":"#002fa7","semantic_channel":"中心枢纽及其当前主题焦点","furniture":"左上第一行 doc-kicker 固定墨黑，第二行 doc-title 使用当前主题色；folio 跟随元信息通道：墨色 45%（同英文章节标签），不使用主题色。","neutral_exceptions":["弧线轨道","四条支线","右列详情","普通序号"],"furniture_mode":"black-first-theme-second","folio_mode":"metadata-neutral"},"border_policy":"沿用枢纽与弧线组件登记线宽，不追加卡片边框或圆角。","shadow_policy":"无影；中心层级由双圈、墨核和弧线连接表达。","noise_policy":"由主题统一提供唯一一层约 6% 黑色 fractal-noise；页面不得自带 noise 节点；浅色页 multiply。","reference_evidence":{"file":"references/catalog.html","cards":["W1"],"rule":"正式 Catalog 的中枢弧线、四行对齐和右列详情是视觉权威。"},"acceptance":["橙蓝 DOM 与几何完全一致，仅主题色映射。","中心双圈、弧线、支线与右列四行必须保持同轴。","缩略图必须从该主题独立 frame 的实际渲染重建。"],"status":"recipe-ready","surface_bindings":[],"surface_binding_reason":"枢纽弧线保持开放纸面；彩色主题只填充内层 hub，不染外环与右列详情。","theme_identity":[{"group_id":"identity.hub-label","label":"制造中台","members":[{"selector":"[data-vnext-text-key=\"orbit.text.001\"]","treatment":"identity.text","expected_count":1}]},{"group_id":"identity.hub-core-surface","label":"中枢内层白面","members":[{"selector":"#w1-focus-core","treatment":"identity.white-fill","expected_count":1}]}],"emphasis_targets":[{"target_id":"focus.key-layer","label":"数据闭环与生态协同","content_role":"底部结论中的两项制造中台能力","reason_hint":"制造中台保持默认主题身份；开启强调后只给底部文案中的数据闭环与生态协同上色。","members":[{"selector":"#w1-focus-data-loop, #w1-focus-ecosystem","role":"label","treatment":"focus.color","expected_count":2}]}],"sample_target_id":"focus.key-layer"}</script>
+<script src="../../catalog-surface.js" data-catalog-theme-surface="catalog-theme-recipes-v2"></script>
+<script src="../../catalog-typography.js" data-catalog-typography="brand-latin-numeric-oswald-v1"></script>
 </body>
 </html>

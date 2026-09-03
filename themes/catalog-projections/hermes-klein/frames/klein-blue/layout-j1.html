@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html data-theme-id="klein-blue" lang="zh-CN" data-runtime="wise-ppt-specimen" data-typography-mode="all-sans" data-page-id="gallery-ai-j1" data-page-role="explain" data-theme="paper-ink" data-layout="paper-ink.cycle.ring" data-layout-source="gallery" data-sample-focus-profile="copy-only" data-sample-focus-members='[{"selector":"#focus-caption","role":"label"}]' data-sample-focus-ref="sample.j1.j1-focus" data-surface-source="catalog-theme-recipes-v1" data-xp-recipe-id="klein-blue:j1" data-xp-surface-profile="open-paper-diagram" data-xp-recipe-status="recipe-ready" data-xp-frame-kind="recipe-generated">
+<html data-theme-id="klein-blue" lang="zh-CN" data-runtime="wise-ppt-specimen" data-typography-mode="all-sans" data-page-id="gallery-ai-j1" data-page-role="explain" data-theme="paper-ink" data-layout="paper-ink.cycle.ring" data-layout-source="gallery" data-emphasis-targets="[{&quot;target_id&quot;:&quot;focus.definition-score&quot;,&quot;label&quot;:&quot;定义、调优和评分&quot;,&quot;content_role&quot;:&quot;底部总结中的关键闭环动作&quot;,&quot;reason_hint&quot;:&quot;默认保留旧版循环核心主题色；强调态在此基础上，只给底部总结中的“定义、调优和评分”增加强调色。&quot;,&quot;members&quot;:[{&quot;selector&quot;:&quot;#j1-focus-definition-score&quot;,&quot;role&quot;:&quot;annotation&quot;,&quot;treatment&quot;:&quot;focus.color&quot;,&quot;expected_count&quot;:1}]}]" data-vnext-semantic-key-map="[]" data-catalog-legacy-emphasis-profile="content-only" data-catalog-legacy-emphasis-members="[{&quot;selector&quot;:&quot;#j1-focus-loop&quot;,&quot;expected_count&quot;:1,&quot;role&quot;:&quot;label&quot;},{&quot;selector&quot;:&quot;#j1-focus-cn&quot;,&quot;expected_count&quot;:1,&quot;role&quot;:&quot;label&quot;}]" data-catalog-legacy-emphasis-foreground-members="[]" data-catalog-legacy-emphasis-ref="sample.j1.colored-loop-core" data-wise-catalog-fonts="true" data-surface-source="catalog-theme-recipes-v2" data-xp-recipe-id="klein-blue:j1" data-xp-surface-profile="open-paper-diagram" data-xp-recipe-status="recipe-ready" data-xp-frame-kind="recipe-generated">
 <head>
 <meta charset="UTF-8">
 <title>layout-j1 · 循环圆环 · AI 评测治理闭环</title>
@@ -23,7 +23,7 @@
     z-index: 5;
   }
 </style>
-<link rel="stylesheet" href="../../catalog-surface.css" data-catalog-theme-surface="catalog-theme-recipes-v1">
+<link rel="stylesheet" href="../../catalog-surface.css" data-catalog-theme-surface="catalog-theme-recipes-v2">
 <link rel="stylesheet" href="../../title-furniture.css" data-catalog-title-furniture="black-first-theme-second-v1">
 </head>
 <body class="slide">
@@ -40,7 +40,7 @@
     <g id="draw"></g>
   </svg>
 
-  <div class="caption">评测治理从目标定义、调优和评分回到上线监控，<span id="focus-caption">失败样本持续进入下一轮</span>。</div>
+  <div class="caption">评测治理从目标<span id="j1-focus-definition-score" data-emphasis-candidate="true">定义、调优和评分</span>回到上线监控，<span id="focus-caption">失败样本持续进入下一轮</span>。</div>
 </div>
 
 <script src="../../../../../themes/packages/paper-ink/assets/particles.js"></script>
@@ -59,12 +59,14 @@ function txt(x, y, str, attrs) {
   var t = el('text', Object.assign({x:x, y:y}, attrs||{}));
   t.textContent = str; return t;
 }
-var MONO = 'var(--mono)', SANS = 'var(--sans)';
+var MONO = 'var(--mono)', SANS = 'var(--sans)', FOCUS = getComputedStyle(document.documentElement).getPropertyValue('--wp-color-focus').trim();
 
 G = el('g', {transform:'translate(0 -8.7)'});
 
 /* ---------- 圆心主环 ---------- */
 var CX = 960, CY = 515, R = 240;
+/* 彩色主题把整套循环系统提升为白色前景圆；纸墨保持开放纸面。 */
+el('circle', {id:'j1-system-surface', cx:CX, cy:CY, r:R, fill:'none', stroke:'none'});
 el('circle', {cx:CX, cy:CY, r:R, fill:'none', stroke:INK80, 'stroke-width':1.4});
 el('circle', {cx:CX, cy:CY, r:R-14, fill:'none', stroke:INK, 'stroke-width':.6, 'stroke-dasharray':'2 6', opacity:.3});
 
@@ -93,11 +95,13 @@ function polar(deg, r) {
   });
 });
 
+/* 圆心定位圈保持不可见；彩色主题只强调中心中英文，不强调边框。 */
+el('circle', {id:'j1-focus-core', cx:CX, cy:CY, r:72, fill:'none', stroke:'none'});
 /* 圆心十字 + mono 主题字 */
 el('line', {x1:CX-16, y1:CY, x2:CX+16, y2:CY, stroke:INK, 'stroke-width':.5, opacity:.3});
 el('line', {x1:CX, y1:CY-16, x2:CX, y2:CY+16, stroke:INK, 'stroke-width':.5, opacity:.3});
-txt(CX, CY-10, 'LOOP', {'font-family':MONO, 'font-size':'var(--type-body-small)', 'letter-spacing':6, 'text-anchor':'middle', fill:INK});
-txt(CX, CY+22, '评测治理闭环', {'font-family':SANS, 'font-weight':300, 'font-size':'var(--type-body-small)', 'text-anchor':'middle', fill:'var(--ink-55)'});
+txt(CX, CY-10, 'LOOP', {id:'j1-focus-loop', 'data-loop-label':1, 'font-family':MONO, 'font-size':'var(--type-body-small)', 'letter-spacing':6, 'text-anchor':'middle', fill:FOCUS});
+txt(CX, CY+22, '评测治理闭环', {id:'j1-focus-cn', 'font-family':SANS, 'font-weight':300, 'font-size':'var(--type-body-small)', 'text-anchor':'middle', fill:'var(--ink-55)'});
 
 /* ---------- 四角双线卡（虚线引线挂到环上 45° 双圈节点） ---------- */
 var steps = [
@@ -125,8 +129,8 @@ steps.forEach(function(s){
   el('rect', {x:x, y:y, width:W, height:H, fill:'var(--paper-panel)', stroke:INK80, 'stroke-width':1.2});
   el('rect', {x:x+5, y:y+5, width:W-10, height:H-10, fill:'none', stroke:INK, 'stroke-width':.6, opacity:.35});
   /* 编号角标 + 短横 */
-  txt(x+30, y+46, s.no, {'font-family':MONO, 'font-size':'var(--type-body)', fill:INK});
-  el('line', {x1:x+30, y1:y+58, x2:x+62, y2:y+58, stroke:INK, 'stroke-width':1});
+  txt(x+30, y+46, s.no, {'data-number-kind':'plain', 'data-number-role':'sequence', 'data-number-part':'label', 'data-text-kind':'number', 'font-family':MONO, 'font-size':'var(--type-body)', fill:'var(--wp-color-functional)'});
+  el('line', {'data-title-rule':1, x1:x+30, y1:y+58, x2:x+62, y2:y+58, stroke:FOCUS, 'stroke-width':2, opacity:1});
   /* EN 角标 */
   txt(x+W-30, y+44, s.en, {'font-family':MONO, 'font-size':'var(--type-meta)', 'letter-spacing':2, 'text-anchor':'end', fill:INK45});
   /* 卡题 + 一行说明 */
@@ -136,8 +140,8 @@ steps.forEach(function(s){
 
 stageFit();
 </script>
-<script type="application/json" id="xp-surface-recipe">{"theme":"klein-blue","color_name":"blue","layout_code":"j1","title":"layout-j1 · 循环圆环 · AI 评测治理闭环","layout":"paper-ink.cycle.ring","page_role":"explain","canvas":{"token":"paper","value":"#f2efe9","reason":"常规内容页在纸面上建立层级。"},"surface_profile":"open-paper-diagram","surfaces":[{"role":"base-layout","material":"paper-plane","fill":"#f2efe9","stack":0},{"role":"cycle-card","material":"top-white","fill":"#ffffff","stack":2,"shadow":"none"},{"role":"focus-marker","material":"accent","fill":"#002fa7","stack":3}],"accent":{"value":"#002fa7","semantic_channel":"中心概念、当前节点或最终输出","furniture":"左上第一行 doc-kicker 固定墨黑，第二行 doc-title 使用当前主题色；folio 继续按该页画布与原配方处理。","neutral_exceptions":["普通英文标签","轴名","层名","结构编号","MODEL","非当前数据"],"furniture_mode":"black-first-theme-second","folio_mode":"accent"},"border_policy":"主体 1px 墨线；唯一焦点可用 2px 橙线，所有容器方角。","shadow_policy":"无投影；轴线、轨道、节点属于同一纸面。","noise_policy":"由主题统一提供唯一一层约 6% 黑色 fractal-noise；页面不得自带 noise 节点；浅色页 multiply，墨面可 overlay。","reference_evidence":{"file":"ai_studio_code (12).html","cards":["card-2","card-3","card-5","card-6"],"rule":"关系线与节点直接属于纸面；强调色只落当前节点、终点或短标记。"},"acceptance":["强调色只落一个语义通道；同一序列可重复，但不得扩散到结构元数据。","纯白只用于 top-white，不能替代默认纸面。","缩略图必须从该主题独立 frame 的实际渲染重建。"],"status":"recipe-ready","surface_bindings":[{"selector":"#draw > g > rect[fill=\"var(--paper-panel)\"]","expected_count":4,"role":"cycle-card","material":"top-white","fill":"#ffffff","stack":2,"shadow":"none"}],"surface_binding_reason":"真实浏览器 DOM 审计后锁定的稳定 selector；expected_count 是逐页门禁。"}</script>
-<script src="../../catalog-surface.js" data-catalog-theme-surface="catalog-theme-recipes-v1"></script>
-<script src="../../catalog-typography.js" data-catalog-typography="accent-english-title-match-v1"></script>
+<script type="application/json" id="xp-surface-recipe">{"theme":"klein-blue","color_name":"blue","layout_code":"j1","title":"layout-j1 · 循环圆环 · AI 评测治理闭环","layout":"paper-ink.cycle.ring","page_role":"explain","canvas":{"token":"paper","value":"#f2efe9","reason":"常规内容页在纸面上建立层级。"},"surface_profile":"open-paper-diagram","surfaces":[{"role":"base-layout","material":"paper-plane","fill":"#f2efe9","stack":0},{"role":"cycle-context","material":"paper-plane","fill":"#f2efe9","stack":1,"shadow":"none"},{"role":"cycle-system","material":"top-white","fill":"#ffffff","stack":2,"shadow":"none"},{"role":"focus-marker","material":"accent","fill":"#002fa7","stack":3}],"accent":{"value":"#002fa7","semantic_channel":"中心概念、当前节点或最终输出","furniture":"左上第一行 doc-kicker 固定墨黑，第二行 doc-title 使用当前主题色；folio 跟随元信息通道：墨色 45%（同英文章节标签），不使用主题色。","neutral_exceptions":["普通英文标签","轴名","层名","结构编号","MODEL","非当前数据"],"furniture_mode":"black-first-theme-second","folio_mode":"metadata-neutral"},"border_policy":"主体 1px 墨线；唯一焦点可用 2px 橙线，所有容器方角。","shadow_policy":"无投影；轴线、轨道、节点属于同一纸面。","noise_policy":"由主题统一提供唯一一层约 6% 黑色 fractal-noise；页面不得自带 noise 节点；浅色页 multiply，墨面可 overlay。","reference_evidence":{"file":"ai_studio_code (12).html","cards":["card-2","card-3","card-5","card-6"],"rule":"关系线与节点直接属于纸面；强调色只落当前节点、终点或短标记。"},"acceptance":["强调色只落一个语义通道；同一序列可重复，但不得扩散到结构元数据。","纯白只用于 top-white，不能替代默认纸面。","缩略图必须从该主题独立 frame 的实际渲染重建。"],"status":"recipe-ready","surface_bindings":[{"selector":"#draw > g > rect[fill=\"var(--paper-panel)\"]","expected_count":4,"role":"cycle-context","material":"paper-plane","fill":"#f2efe9","stack":1,"shadow":"none"},{"selector":"#j1-system-surface","expected_count":1,"role":"cycle-system","material":"top-white","fill":"#ffffff","stack":2,"shadow":"none"}],"surface_binding_reason":"四张循环步骤卡退回纸面；整套外环提升为纯白前景圆，主题色只作用于圆心中英文。","theme_identity":[{"group_id":"identity.legacy-loop-core","label":"旧版循环核心","members":[{"selector":"#j1-focus-loop, #j1-focus-cn","treatment":"identity.text","expected_count":2}]}],"emphasis_targets":[{"target_id":"focus.definition-score","label":"定义、调优和评分","content_role":"底部总结中的关键闭环动作","reason_hint":"默认保留旧版循环核心主题色；强调态在此基础上，只给底部总结中的“定义、调优和评分”增加强调色。","members":[{"selector":"#j1-focus-definition-score","role":"annotation","treatment":"focus.color","expected_count":1}]}],"sample_target_id":"focus.definition-score"}</script>
+<script src="../../catalog-surface.js" data-catalog-theme-surface="catalog-theme-recipes-v2"></script>
+<script src="../../catalog-typography.js" data-catalog-typography="brand-latin-numeric-oswald-v1"></script>
 </body>
 </html>

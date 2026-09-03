@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html data-theme-id="paper-ink" lang="zh-CN" data-runtime="wise-ppt-specimen" data-typography-mode="all-sans" data-page-id="gallery-ai-k1" data-page-role="synthesize" data-theme="paper-ink" data-layout="paper-ink.matrix.stage-dimension" data-layout-source="gallery" data-sample-focus-profile="content-only" data-sample-focus-members='[{"selector":"#k1-focus-frame","role":"outline"},{"selector":"#k1-focus-frame-inner","role":"outline"},{"selector":"#k1-focus-no","role":"value"},{"selector":"#k1-focus-en","role":"annotation"},{"selector":"#k1-focus-divider","role":"outline"},{"selector":"#k1-focus-cn","role":"label"}]' data-sample-focus-ref="sample.k1.k1-focus">
+<html data-theme-id="paper-ink" lang="zh-CN" data-runtime="wise-ppt-specimen" data-typography-mode="all-sans" data-page-id="gallery-ai-k1" data-page-role="synthesize" data-theme="paper-ink" data-layout="paper-ink.matrix.stage-dimension" data-layout-source="gallery" data-emphasis-targets='[{"target_id":"focus.key-node","members":[{"selector":"#k1-focus-frame","role":"outline","treatment":"focus.outline-depth","expected_count":1},{"selector":"#k1-focus-frame-inner","role":"outline","treatment":"focus.outline-depth","expected_count":1},{"selector":"#k1-focus-no","role":"value","treatment":"focus.text","expected_count":1},{"selector":"#k1-focus-en","role":"annotation","treatment":"focus.text","expected_count":1},{"selector":"#k1-focus-divider","role":"outline","treatment":"focus.outline-depth","expected_count":1},{"selector":"#k1-focus-cn","role":"label","treatment":"focus.text","expected_count":1}]}]' data-catalog-legacy-emphasis-profile="content-only" data-catalog-legacy-emphasis-members='[{"selector":"#k1-focus-en","expected_count":1,"role":"value"},{"selector":"#k1-focus-frame","expected_count":1,"role":"symbol","paint":"fill"},{"selector":"#k1-focus-divider","expected_count":1,"role":"outline"},{"selector":"#k1-focus-cn","expected_count":1,"role":"label"},{"selector":".k1-focus-column-value","expected_count":6,"role":"annotation"},{"selector":".k1-focus-column-label","expected_count":6,"role":"label"},{"selector":"#k1-focus-chevron","expected_count":1,"role":"outline"},{"selector":"#k1-focus-chevron-text","expected_count":1,"role":"value"}]' data-catalog-legacy-emphasis-foreground-members='[{"selector":"#k1-focus-no","expected_count":1,"neutral_tone":"preserve","active_tone":"white"}]' data-catalog-legacy-emphasis-ref="sample.k1.colored-native-column" data-vnext-semantic-key-map='[]'>
 <head>
 <meta charset="UTF-8">
 <title>layout-k1 · 链阵复合 · AI 落地阶段 × 维度框架</title>
@@ -45,13 +45,13 @@ var INK80 = 'var(--ink-80)';
 var INK70 = 'var(--ink-70)';
 var INK45 = 'var(--ink-45)';
 var G = document.getElementById('draw');
-function el(tag, attrs) {
+function el(tag, attrs, parent) {
   var e = document.createElementNS(NS, tag);
   for (var k in attrs) e.setAttribute(k, attrs[k]);
-  G.appendChild(e); return e;
+  (parent || G).appendChild(e); return e;
 }
-function txt(x, y, str, attrs) {
-  var t = el('text', Object.assign({x:x, y:y}, attrs||{}));
+function txt(x, y, str, attrs, parent) {
+  var t = el('text', Object.assign({x:x, y:y}, attrs||{}), parent);
   t.textContent = str; return t;
 }
 var MONO = 'var(--mono)', SANS = 'var(--sans)';
@@ -62,17 +62,18 @@ G = el('g', {transform:'translate(0 -31.2)'});
 /* ---------- 顶部：四站阶段链 ---------- */
 var CXS = [477, 832, 1187, 1542];           /* 列心 = 站心，列区 x300–1720 */
 var stages = [
-  {no:'01', en:'AWARE',   cn:'认知'},
-  {no:'02', en:'PILOT',   cn:'试点'},
-  {no:'03', en:'SCALE',   cn:'推广'},
-  {no:'04', en:'NATIVE',  cn:'原生', focus:true}
+  {no:'1', en:'AWARE',   cn:'认知'},
+  {no:'2', en:'PILOT',   cn:'试点'},
+  {no:'3', en:'SCALE',   cn:'推广'},
+  {no:'4', en:'NATIVE',  cn:'原生', focus:true}
 ];
 stages.forEach(function(s, i){
   var cx = CXS[i];
   txt(cx, 240, s.en, {id:s.focus?'k1-focus-en':'', 'font-family':MONO, 'font-size':'var(--type-micro-secondary)', 'letter-spacing':2, 'text-anchor':'middle', fill:INK45});
-  el('circle', {id:s.focus?'k1-focus-frame':'', cx:cx, cy:275, r:16, fill:'var(--paper)', stroke:INK80, 'stroke-width':1.2});
-  el('circle', {id:s.focus?'k1-focus-frame-inner':'', cx:cx, cy:275, r:12.5, fill:'none', stroke:INK, 'stroke-width':.6, opacity:.3});
-  txt(cx, 278, s.no, {id:s.focus?'k1-focus-no':'', 'font-family':MONO, 'font-size':'var(--type-meta)', 'text-anchor':'middle', fill:INK});
+  var marker = el('g', {'data-number-kind':'circled', 'data-number-role':'sequence', 'data-number-state':'outline', 'data-number-rings':'2'});
+  el('circle', {id:s.focus?'k1-focus-frame':'', cx:cx, cy:275, r:16, fill:'none', stroke:'var(--wp-color-primary)', 'stroke-width':1.2, 'data-number-part':'outer-ring'}, marker);
+  el('circle', {id:s.focus?'k1-focus-frame-inner':'', cx:cx, cy:275, r:12.5, fill:'none', stroke:INK, 'stroke-width':.6, opacity:.3, 'data-number-part':'disc'}, marker);
+  txt(cx, 278, s.no, {id:s.focus?'k1-focus-no':'', 'data-number-part':'label', 'data-text-kind':'number', 'font-family':MONO, 'font-size':'var(--type-meta)', 'text-anchor':'middle', fill:INK}, marker);
   el('line', {id:s.focus?'k1-focus-divider':'', x1:cx-24, y1:302, x2:cx+24, y2:302, stroke:INK, 'stroke-width':.8, opacity:.5});
   txt(cx, 332, s.cn, {id:s.focus?'k1-focus-cn':'k1-stage-'+s.no, 'font-family':SANS, 'font-weight':300, 'font-size':'var(--type-subheading)', 'text-anchor':'middle', fill:INK});
   /* 站心 → 矩阵列的锚定虚线（构造线不擦除） */
@@ -134,8 +135,8 @@ dims.forEach(function(d, r){
     var cx = (colL + colR) / 2;
     fields.slice(0, 2).forEach(function(f, k){
       var fy = rt + 42 + k*58;
-      txt(cx, fy, f[0], {'font-family':MONO, 'font-size':'var(--type-meta)', 'letter-spacing':1, 'text-anchor':'middle', fill:'var(--ink-55)'});
-      txt(cx, fy+24, f[1], {'font-family':SANS, 'font-weight':300, 'font-size':'var(--type-label)', 'text-anchor':'middle', fill:'var(--ink-55)'});
+      txt(cx, fy, f[0], {class:c===3?'k1-focus-column-value':'', 'font-family':MONO, 'font-size':'var(--type-meta)', 'letter-spacing':1, 'text-anchor':'middle', fill:'var(--ink-55)'});
+      txt(cx, fy+24, f[1], {class:c===3?'k1-focus-column-label':'', 'font-family':SANS, 'font-weight':300, 'font-size':'var(--type-label)', 'text-anchor':'middle', fill:'var(--ink-55)'});
     });
   });
 });
@@ -148,8 +149,14 @@ for (var i = 0; i < 4; i++) {
   var d = (i === 0)
     ? 'M '+x+' '+CY+' L '+(x+CW-16)+' '+CY+' L '+(x+CW)+' '+(CY+CH/2)+' L '+(x+CW-16)+' '+(CY+CH)+' L '+x+' '+(CY+CH)+' Z'
     : 'M '+x+' '+CY+' L '+(x+CW-16)+' '+CY+' L '+(x+CW)+' '+(CY+CH/2)+' L '+(x+CW-16)+' '+(CY+CH)+' L '+x+' '+(CY+CH)+' L '+(x+16)+' '+(CY+CH/2)+' Z';
-  el('path', {d:d, fill:'var(--paper-panel)', stroke:INK80, 'stroke-width':1.2});
-  txt(x+CW/2+(i===0?8:16), CY+27, concl[i], {'font-family':MONO, 'font-size':'var(--type-micro-secondary)', 'letter-spacing':2, 'text-anchor':'middle', fill:INK});
+  var chevronAttrs = {d:d, fill:'var(--paper-panel)', stroke:INK80, 'stroke-width':1.2};
+  var chevronTextAttrs = {'font-family':MONO, 'font-size':'var(--type-micro-secondary)', 'letter-spacing':2, 'text-anchor':'middle', fill:INK};
+  if (i === 3) {
+    chevronAttrs.id = 'k1-focus-chevron';
+    chevronTextAttrs.id = 'k1-focus-chevron-text';
+  }
+  el('path', chevronAttrs);
+  txt(x+CW/2+(i===0?8:16), CY+27, concl[i], chevronTextAttrs);
 }
 
 stageFit();

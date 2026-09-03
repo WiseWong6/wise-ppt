@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="zh-CN" data-runtime="wise-ppt-specimen" data-typography-mode="all-sans" data-wise-catalog-fonts="true" data-page-id="gallery-ai-d8" data-catalog-source-marker="orange" data-page-role="hook" data-theme="paper-ink" data-layout="paper-ink.scaffold.cover-wide" data-layout-source="gallery" data-theme-id="hermes-orange" data-surface-source="catalog-theme-recipes-v1" data-xp-recipe-id="hermes-orange:d8" data-xp-surface-profile="editorial-specimen" data-xp-recipe-status="recipe-ready" data-xp-frame-kind="custom-redraw" data-xp-page-kind="cover">
+<html lang="zh-CN" data-runtime="wise-ppt-specimen" data-typography-mode="all-sans" data-wise-catalog-fonts="true" data-page-id="gallery-ai-d8" data-catalog-source-marker="orange" data-page-role="hook" data-theme="paper-ink" data-layout="paper-ink.scaffold.cover-wide" data-layout-source="gallery" data-emphasis-targets="[]" data-vnext-semantic-key-map="[]" data-theme-id="hermes-orange" data-surface-source="catalog-theme-recipes-v2" data-xp-recipe-id="hermes-orange:d8" data-xp-surface-profile="editorial-specimen" data-xp-recipe-status="recipe-ready" data-xp-frame-kind="custom-redraw" data-xp-page-kind="cover">
 <head>
 <meta charset="UTF-8">
 <title>layout-d8 · 封面 · 左图右题 · AI 工程化实战</title>
@@ -79,20 +79,19 @@
   #v3-d8-orange .doc-title,
   #v3-d8-orange .folio {
     font-family: 'Oswald Replica', 'Han Sans Catalog', 'Han Sans', 'PingFang SC', sans-serif;
-    font-size: var(--type-body-small);
     font-weight: 700;
     line-height: 1.25;
     letter-spacing: .15em;
     text-transform: uppercase;
-    color: var(--xp-ink);
   }
+  #v3-d8-orange .folio { color: rgba(26, 26, 26, .45); }
 
   .kicker { font-family: 'Oswald Replica', 'Han Sans Catalog', 'Han Sans', 'PingFang SC', sans-serif; font-weight: 700; color: var(--xp-ink); }
   .title { font-weight: 700; color: var(--xp-ink); }
-  .subtitle { color: rgba(26,26,26,.72); border-left: 4px solid var(--xp-ink); padding-left: 20px; }
+  .subtitle { color: rgba(26,26,26,.72); }
 
 </style>
-<link rel="stylesheet" href="../../catalog-surface.css" data-catalog-theme-surface="catalog-theme-recipes-v1">
+<link rel="stylesheet" href="../../catalog-surface.css" data-catalog-theme-surface="catalog-theme-recipes-v2">
 <link rel="stylesheet" href="../../title-furniture.css" data-catalog-title-furniture="black-first-theme-second-v1">
 </head>
 <body class="slide">
@@ -230,8 +229,9 @@ function el(tag, attrs) {
 
 stageFit();
 </script>
-<script type="application/json" id="xp-surface-recipe">{"theme":"hermes-orange","color_name":"orange","layout_code":"d8","title":"layout-d8 · 封面 · 左图右题 · AI 工程化实战","layout":"paper-ink.scaffold.cover-wide","page_role":"hook","canvas":{"token":"paper","value":"#f2efe9","reason":"封面在 Hermes / Klein 两套预设中统一使用米色纸面。"},"surface_profile":"editorial-specimen","surfaces":[{"role":"cover-field","material":"paper-plane","fill":"#f2efe9","stack":1},{"role":"editorial-wash","material":"translucent-white","fill":"rgba(255,255,255,.12)","stack":2},{"role":"primary-statement","material":"ink-contrast","fill":"#1a1a1a","stack":3}],"accent":{"value":"#d95e00","semantic_channel":"标题命题或唯一视觉主角","furniture":"左上第一行 doc-kicker 固定墨黑，第二行 doc-title 使用当前主题色；folio 继续按该页画布与原配方处理。","neutral_exceptions":["普通英文标签","轴名","层名","结构编号","MODEL","非当前数据"],"furniture_mode":"black-first-theme-second","folio_mode":"custom-neutral"},"border_policy":"主体 1px 墨线；唯一焦点可用 2px 橙线，所有容器方角。","shadow_policy":"默认无影；仅唯一被举起的主证据允许一次 10px 零模糊橙色硬影。","noise_policy":"由主题统一提供唯一一层约 6% 黑色 fractal-noise；页面不得自带 noise 节点；浅色页 multiply，墨面可 overlay。","reference_evidence":{"file":"所有文档都该重写一遍.html","cards":["card-2","card-5","card-7"],"rule":"纸面承载版式，只有被举起的文献、标本或终端使用不透明白面。"},"acceptance":["强调色只落一个语义通道；同一序列可重复，但不得扩散到结构元数据。","纯白只用于 top-white，不能替代默认纸面。","缩略图必须从该主题独立 frame 的实际渲染重建。"],"status":"recipe-ready","surface_bindings":[],"surface_binding_reason":"custom-redraw 不加载共享 surface runtime；材料已在独立源码内显式实现。"}</script>
-<script src="../../catalog-typography.js" data-catalog-typography="accent-english-title-match-v1"></script>
-<script data-xp-custom-page-ready="true">(function(){var r=document.documentElement,s=document.querySelector(".stage");r.dataset.xpRecipeReady="custom";r.dataset.catalogSurfaceReady="true";r.dataset.xpRecipeStatus="recipe-ready";r.dataset.xpSurfaceProfile="editorial-specimen";r.dataset.xpCanvas="paper";r.dataset.xpTitleFurniture="black-first-theme-second";if(s){s.dataset.surfaceRebuild="custom-page-v3";s.dataset.surfaceFocusCount="0";}})();</script>
+<script type="application/json" id="xp-surface-recipe">{"theme":"hermes-orange","color_name":"orange","layout_code":"d8","title":"layout-d8 · 封面 · 左图右题 · AI 工程化实战","layout":"paper-ink.scaffold.cover-wide","page_role":"hook","canvas":{"token":"paper","value":"#f2efe9","reason":"封面在 Hermes / Klein 两套预设中统一使用米色纸面。"},"surface_profile":"editorial-specimen","surfaces":[{"role":"cover-field","material":"paper-plane","fill":"#f2efe9","stack":1},{"role":"editorial-wash","material":"translucent-white","fill":"rgba(255,255,255,.12)","stack":2},{"role":"primary-statement","material":"ink-contrast","fill":"#1a1a1a","stack":3}],"accent":{"value":"#d95e00","semantic_channel":"标题命题或唯一视觉主角","furniture":"左上第一行 doc-kicker 固定墨黑，第二行 doc-title 使用当前主题色；folio 跟随元信息通道：墨色 45%（同英文章节标签），不使用主题色。","neutral_exceptions":["普通英文标签","轴名","层名","结构编号","MODEL","非当前数据"],"furniture_mode":"black-first-theme-second","folio_mode":"metadata-neutral"},"border_policy":"主体 1px 墨线；唯一焦点可用 2px 橙线，所有容器方角。","shadow_policy":"仅唯一被举起的主证据允许一次 10px 零模糊硬影；非强调态固定墨黑，页面语义焦点开启时使用当前主题色。","noise_policy":"由主题统一提供唯一一层约 6% 黑色 fractal-noise；页面不得自带 noise 节点；浅色页 multiply，墨面可 overlay。","reference_evidence":{"file":"所有文档都该重写一遍.html","cards":["card-2","card-5","card-7"],"rule":"纸面承载版式，只有被举起的文献、标本或终端使用不透明白面。"},"acceptance":["强调色只落一个语义通道；同一序列可重复，但不得扩散到结构元数据。","纯白只用于 top-white，不能替代默认纸面。","缩略图必须从该主题独立 frame 的实际渲染重建。"],"status":"recipe-ready","surface_bindings":[],"surface_binding_reason":"custom-redraw 不加载共享 surface runtime；材料已在独立源码内显式实现。","theme_identity":[{"group_id":"identity.cover-kicker","label":"大字封面引题","members":[{"selector":"[data-template-part=\"kicker\"]","treatment":"identity.text","expected_count":1}]}],"emphasis_targets":[],"sample_target_id":null}</script>
+<script src="../../catalog-surface.js" data-catalog-theme-surface="catalog-theme-recipes-v2"></script>
+<script src="../../catalog-typography.js" data-catalog-typography="brand-latin-numeric-oswald-v1"></script>
+<script data-xp-custom-page-ready="true">(function(){var r=document.documentElement,s=document.querySelector(".stage");function ready(){if(r.dataset.catalogSurfaceReady!=="true")return;r.dataset.xpRecipeReady="custom";r.dataset.xpRecipeStatus="recipe-ready";r.dataset.xpSurfaceProfile="editorial-specimen";r.dataset.xpCanvas="paper";r.dataset.xpTitleFurniture="black-first-theme-second";if(s){s.dataset.surfaceRebuild="custom-page-v4";s.dataset.surfaceFocusCount=String(document.querySelectorAll("[data-content-ref][data-emphasis-role]").length);}}var o=new MutationObserver(ready);o.observe(r,{attributes:true,attributeFilter:["data-catalog-surface-ready"]});ready();document.addEventListener("wise-ppt:semantic-keys-ready",function(){requestAnimationFrame(ready);});})();</script>
 </body>
 </html>

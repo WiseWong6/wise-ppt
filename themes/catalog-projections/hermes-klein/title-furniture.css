@@ -2,11 +2,11 @@
  * Hermes / Klein 共用页面家具与 mixed 字体规则。
  *
  * 浅底：第一行（doc-kicker）固定为墨黑；第二行（doc-title）读取当前主题色。
- * 墨底：左上两行统一使用纯白，避免共享浅底规则把标题压回低对比色。
+ * 墨底：第一行改用纯白保证可读，第二行仍读取当前主题色，不能简单整组反白。
  * 页码继续由各页原有配方决定。
  * mixed 档与纸墨相反：底部文案、封面主标题、D3 收尾主句、D5 章节标题与 D9 目录大字用思源宋体；
  * 关系页等其他内容区标题类中文继续使用思源黑体 Bold。
- * 纯英文标题只登记候选，不在本规则中改动，等待用户逐项拍板。
+ * 品牌主题中不含中文、且含英文或数字的文字统一使用 Oswald Bold；中英夹杂保持中文字体。
  */
 
 :root[data-theme-id='hermes-orange'] {
@@ -15,6 +15,31 @@
 
 :root[data-theme-id='klein-blue'] {
   --xp-title-accent: #002fa7;
+}
+
+/* 品牌主题的基础黑体统一使用真正的 Regular 字面与 400 字重。
+   Paper Ink 继续保留自己的 Light 角色；宋体、Oswald、mono 与 Bold 不参与。 */
+:root:is(
+    [data-theme-id='hermes-orange'],
+    [data-theme-id='klein-blue']
+  ) {
+  --font-sans-light-family: var(--font-sans-family);
+  --wp-weight-regular: 400;
+  --wp-weight-strong: 400;
+}
+
+:root:is(
+    [data-theme-id='hermes-orange'],
+    [data-theme-id='klein-blue']
+  ) .stage [data-xp-brand-sans-family='regular'] {
+  font-family: var(--font-sans-family) !important;
+}
+
+:root:is(
+    [data-theme-id='hermes-orange'],
+    [data-theme-id='klein-blue']
+  ) .stage [data-xp-brand-sans-weight='regular'] {
+  font-weight: 400 !important;
 }
 
 :root:is(
@@ -34,8 +59,15 @@
 :root[data-xp-title-furniture='white-on-dark']:is(
     [data-theme-id='hermes-orange'],
     [data-theme-id='klein-blue']
-  ) .stage .doc.tl :is(.doc-kicker, .doc-title) {
+  ) .stage .doc.tl .doc-kicker {
   color: #ffffff !important;
+}
+
+:root[data-xp-title-furniture='white-on-dark']:is(
+    [data-theme-id='hermes-orange'],
+    [data-theme-id='klein-blue']
+  ) .stage .doc.tl .doc-title {
+  color: var(--xp-title-accent) !important;
 }
 
 /* 第二项全局规则只属于 mixed；all-sans / all-serif 保持原样。 */

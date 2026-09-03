@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html data-theme-id="paper-ink" lang="zh-CN" data-runtime="wise-ppt-specimen" data-typography-mode="all-sans" data-page-id="gallery-ai-a3" data-page-role="prove" data-theme="paper-ink" data-layout="paper-ink.evidence.document-excerpt" data-layout-source="gallery" data-sample-focus-profile="content-only" data-sample-focus-members='[{"selector":"#a3-compliance","role":"value"},{"selector":"#a3-compliance-line-1","role":"outline"},{"selector":"#a3-compliance-line-2","role":"outline"}]' data-sample-focus-ref="sample.a3.a3-focus">
+<html data-theme-id="paper-ink" lang="zh-CN" data-runtime="wise-ppt-specimen" data-typography-mode="all-sans" data-page-id="gallery-ai-a3" data-page-role="prove" data-theme="paper-ink" data-layout="paper-ink.evidence.document-excerpt" data-layout-source="gallery" data-emphasis-targets='[{"target_id":"focus.main-evidence","members":[{"selector":"#a3-compliance","role":"value","treatment":"focus.text","expected_count":1},{"selector":"#a3-compliance-line-1","role":"outline","treatment":"focus.outline-depth","expected_count":1},{"selector":"#a3-compliance-line-2","role":"outline","treatment":"focus.outline-depth","expected_count":1}]}]' data-catalog-legacy-emphasis-profile="content-only" data-catalog-legacy-emphasis-members='[{"selector":"#a3-compliance","role":"value"},{"selector":"#a3-compliance-line-1","role":"outline"},{"selector":"#a3-compliance-line-2","role":"outline"}]' data-catalog-legacy-emphasis-foreground-members='[]' data-catalog-legacy-emphasis-ref="sample.a3.a3-focus" data-vnext-semantic-key-map='[{"key":"excerpt.text.001","tag":"tspan","text":"《xx 服务管理暂行办法》","occurrence":0}]'>
 <head>
 <meta charset="UTF-8">
 <title>layout-a3 · 文献摘引页</title>
@@ -90,7 +90,7 @@ el('rect', {x:FX+5, y:FY+5, width:FW-10, height:FH-10, fill:'none', stroke:INK, 
 
 /* 顶部页签 */
 el('rect', {x:960-170, y:FY-22, width:340, height:44, fill:'var(--paper)', stroke:INK, 'stroke-width':1.2});
-txt(918, FY+7, 'SOURCE', {'font-family':MONO, 'font-size':'var(--type-label)', 'letter-spacing':2, 'text-anchor':'end', fill:INK});
+txt(918, FY+7, 'SOURCE', {'data-xp-text-tone':'supporting', 'font-family':MONO, 'font-size':'var(--type-label)', 'letter-spacing':2, 'text-anchor':'end', fill:INK});
 txt(938, FY+7, '原文标本', {'font-family':SANS, 'font-weight':300, 'font-size':'var(--type-body-small)', fill:INK});
 
 /* 报头：机构名 + 文号 + 横线 */

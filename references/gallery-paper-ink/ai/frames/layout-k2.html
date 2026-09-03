@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html data-theme-id="paper-ink" lang="zh-CN" data-runtime="wise-ppt-specimen" data-typography-mode="all-sans" data-page-id="gallery-ai-k2" data-page-role="synthesize" data-theme="paper-ink" data-layout="paper-ink.matrix.problem-solution-outcome" data-layout-source="gallery" data-sample-focus-profile="content-only" data-sample-focus-members='[{"selector":"#k2-focus-kpi-code","role":"annotation"},{"selector":"#sample-focus","role":"value"},{"selector":"#k2-focus-kpi-label","role":"label"}]' data-sample-focus-ref="sample.k2.k2-focus">
+<html data-theme-id="paper-ink" lang="zh-CN" data-runtime="wise-ppt-specimen" data-typography-mode="all-sans" data-page-id="gallery-ai-k2" data-page-role="synthesize" data-theme="paper-ink" data-layout="paper-ink.matrix.problem-solution-outcome" data-layout-source="gallery" data-emphasis-targets='[{"target_id":"focus.key-step","members":[{"selector":"#k2-focus-kpi-code","role":"annotation","treatment":"focus.text","expected_count":1},{"selector":"#sample-focus","role":"value","treatment":"focus.text","expected_count":1},{"selector":"#k2-focus-kpi-label","role":"label","treatment":"focus.text","expected_count":1}]}]' data-catalog-legacy-emphasis-profile="content-only" data-catalog-legacy-emphasis-members='[{"selector":"#k2-focus-kpi-code","role":"annotation"},{"selector":"#sample-focus","role":"value"},{"selector":"#k2-focus-kpi-label","role":"label"}]' data-catalog-legacy-emphasis-foreground-members='[]' data-catalog-legacy-emphasis-ref="sample.k2.k2-focus" data-vnext-semantic-key-map='[]'>
 <head>
 <meta charset="UTF-8">
 <title>layout-k2 · 痛点→解法→成效三栏 · AI 阅读系统</title>
@@ -50,13 +50,13 @@ var ACCENT = document.documentElement.classList.contains('accent');
 var FOCUS = getComputedStyle(document.documentElement).getPropertyValue('--wp-color-focus').trim();
 var SERIF = 'var(--serif)';
 var G = document.getElementById('draw');
-function el(tag, attrs) {
+function el(tag, attrs, parent) {
   var e = document.createElementNS(NS, tag);
   for (var k in attrs) e.setAttribute(k, attrs[k]);
-  G.appendChild(e); return e;
+  (parent || G).appendChild(e); return e;
 }
-function txt(x, y, str, attrs) {
-  var t = el('text', Object.assign({x:x, y:y}, attrs||{}));
+function txt(x, y, str, attrs, parent) {
+  var t = el('text', Object.assign({x:x, y:y}, attrs||{}), parent);
   t.textContent = str; return t;
 }
 var MONO = 'var(--mono)', SANS = 'var(--sans)';
@@ -111,9 +111,10 @@ function centeredColArrow(leftRegion, rightRegion, y){
 
 /* ---------- 编号条目（左右栏同构对位；x = 栏头 x，圆圈左缘与栏头共线，同右栏 1330） ---------- */
 function item(x, y, no, title, note1, note2, tag){
-  el('circle', {cx:x+13, cy:y, r:13, fill:'var(--paper)', stroke:INK80, 'stroke-width':1.2});
-  el('circle', {cx:x+13, cy:y, r:10, fill:'none', stroke:INK, 'stroke-width':.6, opacity:.3});
-  txt(x+13, y+4.5, no, {'font-family':MONO, 'font-size':'var(--type-meta)', 'text-anchor':'middle', fill:INK});
+  var marker = el('g', {'data-number-kind':'circled', 'data-number-role':'structural', 'data-number-state':'outline', 'data-number-rings':'2'});
+  el('circle', {cx:x+13, cy:y, r:13, fill:'none', stroke:'var(--wp-color-primary)', 'stroke-width':1.2, 'data-number-part':'outer-ring'}, marker);
+  el('circle', {cx:x+13, cy:y, r:10, fill:'none', stroke:INK, 'stroke-width':.6, opacity:.3, 'data-number-part':'disc'}, marker);
+  txt(x+13, y+4.5, no, {'data-number-part':'label', 'data-text-kind':'number', 'font-family':MONO, 'font-size':'var(--type-meta)', 'text-anchor':'middle', fill:INK}, marker);
   txt(x+43, y+7, title, {'font-family':SANS, 'font-weight':300, 'font-size':'var(--type-body)', fill:INK});
   txt(x+43, y+40, note1, {'font-family':SANS, 'font-weight':300, 'font-size':'var(--type-body-small)', fill:INK70});
   if (note2) txt(x+43, y+66, note2, {'font-family':SANS, 'font-weight':300, 'font-size':'var(--type-body-small)', fill:INK70});

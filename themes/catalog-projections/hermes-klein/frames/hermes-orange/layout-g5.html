@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html data-theme-id="hermes-orange" lang="zh-CN" data-runtime="wise-ppt-specimen" data-typography-mode="all-sans" data-page-id="gallery-ai-g5" data-page-role="explain" data-theme="paper-ink" data-layout="paper-ink.radial.three-principles" data-layout-source="gallery" data-sample-focus-profile="content-only" data-sample-focus-members='[{"selector":"#g5-focus-title","role":"value"}]' data-sample-focus-ref="sample.g5.g5-focus" data-surface-source="catalog-theme-recipes-v1" data-xp-recipe-id="hermes-orange:g5" data-xp-surface-profile="open-paper-diagram-with-raised-focus" data-xp-recipe-status="recipe-ready" data-xp-frame-kind="recipe-generated">
+<html data-theme-id="hermes-orange" lang="zh-CN" data-runtime="wise-ppt-specimen" data-typography-mode="all-sans" data-page-id="gallery-ai-g5" data-page-role="explain" data-theme="paper-ink" data-layout="paper-ink.radial.three-principles" data-layout-source="gallery" data-emphasis-targets="[{&quot;target_id&quot;:&quot;focus.key-layer&quot;,&quot;label&quot;:&quot;分支 / 层级 / 局部&quot;,&quot;content_role&quot;:&quot;已审核的页面焦点对象&quot;,&quot;reason_hint&quot;:&quot;仅当该对象直接支撑本页 claim 时启用；不得为了配色而开启。&quot;,&quot;members&quot;:[{&quot;selector&quot;:&quot;#g5-focus-title&quot;,&quot;role&quot;:&quot;value&quot;,&quot;treatment&quot;:&quot;focus.text&quot;,&quot;expected_count&quot;:1}]}]" data-vnext-semantic-key-map="[]" data-catalog-legacy-emphasis-profile="content-only" data-catalog-legacy-emphasis-members="[{&quot;selector&quot;:&quot;#g5-focus-title&quot;,&quot;role&quot;:&quot;value&quot;}]" data-catalog-legacy-emphasis-foreground-members="[]" data-catalog-legacy-emphasis-ref="sample.g5.g5-focus" data-wise-catalog-fonts="true" data-surface-source="catalog-theme-recipes-v2" data-xp-recipe-id="hermes-orange:g5" data-xp-surface-profile="open-paper-diagram-with-raised-focus" data-xp-recipe-status="recipe-ready" data-xp-frame-kind="recipe-generated">
 <head>
 <meta charset="UTF-8">
 <title>layout-g5 · 三原则放射</title>
@@ -23,7 +23,7 @@
     z-index: 5;
   }
 </style>
-<link rel="stylesheet" href="../../catalog-surface.css" data-catalog-theme-surface="catalog-theme-recipes-v1">
+<link rel="stylesheet" href="../../catalog-surface.css" data-catalog-theme-surface="catalog-theme-recipes-v2">
 <link rel="stylesheet" href="../../title-furniture.css" data-catalog-title-furniture="black-first-theme-second-v1">
 </head>
 <body class="slide">
@@ -46,49 +46,48 @@ var INK80 = 'var(--ink-80)';
 var INK70 = 'var(--ink-70)';
 var INK45 = 'var(--ink-45)';
 var G = document.getElementById('draw');
-function el(tag, attrs) {
+function el(tag, attrs, parent) {
   var e = document.createElementNS(NS, tag);
   for (var k in attrs) e.setAttribute(k, attrs[k]);
-  G.appendChild(e); return e;
+  (parent || G).appendChild(e); return e;
 }
-function txt(x, y, str, attrs) {
-  var t = el('text', Object.assign({x:x, y:y}, attrs||{}));
+function txt(x, y, str, attrs, parent) {
+  var t = el('text', Object.assign({x:x, y:y}, attrs||{}), parent);
   t.textContent = str; return t;
 }
 var MONO = 'var(--mono)', SANS = 'var(--sans)';
 
-G = el('g', {transform:'translate(0 -36)'});
+G = el('g', {transform:'translate(8 -13)'});
 var CX=960,CY=386;
 function line(x1,y1,x2,y2,attrs){return el('line',Object.assign({x1:x1,y1:y1,x2:x2,y2:y2,stroke:INK,'stroke-width':1.1},attrs||{}));}
-line(478,CY,760,CY,{stroke:INK45,'stroke-width':1,'stroke-dasharray':'3 5'});
-line(1160,CY,1442,CY,{stroke:INK45,'stroke-width':1,'stroke-dasharray':'3 5'});
-line(CX,468,CX,656,{stroke:INK45,'stroke-width':1,'stroke-dasharray':'3 5'});
+line(478,CY,760,CY,{id:'g5-ray-left',stroke:INK45,'stroke-width':1,'stroke-dasharray':'3 5'});
+line(1160,CY,1442,CY,{id:'g5-ray-right',stroke:INK45,'stroke-width':1,'stroke-dasharray':'3 5'});
+line(CX,468,CX,656,{id:'g5-ray-bottom',stroke:INK45,'stroke-width':1,'stroke-dasharray':'3 5'});
 [[760,CY],[1160,CY],[CX,468]].forEach(function(p){el('circle',{cx:p[0],cy:p[1],r:3.2,fill:INK});});
 el('rect',{x:760,y:304,width:400,height:164,fill:'var(--paper-panel)',stroke:INK80,'stroke-width':1.4});
 el('rect',{x:767,y:311,width:386,height:150,fill:'none',stroke:INK,'stroke-width':.6,opacity:.35});
 txt(CX,354,'DESIGN INTENT',{'font-family':MONO,'font-size':'var(--type-label)','letter-spacing':2.8,'text-anchor':'middle',fill:INK70});
 txt(CX,406,'一页一个重心',{id:'g5-focus-title','font-family':SANS,'font-size':'var(--type-heading)','font-weight':300,'text-anchor':'middle',fill:INK});
 txt(CX,440,'先决定观众应该先看见什么',{'font-family':SANS,'font-size':'var(--type-body-small)','font-weight':300,'text-anchor':'middle',fill:INK70});
-/* 序号小字行(01 · CONTENT …)已删;左右标题墨迹中心对齐序号圆点(基线 396),底部标题收进原小字槽(710)保 54px 节奏 */
+/* 三个序号分别向左、向右、向下推出，使延长线只接到圆边；文字同步外移保留安全间距。 */
 function block(x,y,side,title,lines){
   var anchor=side==='left'?'end':side==='right'?'start':'middle';
   txt(x,y,title,{'font-family':SANS,'font-size':'var(--type-subheading)','font-weight':300,'text-anchor':anchor,fill:INK});
   lines.forEach(function(text,index){txt(x,y+38+index*28,text,{'font-family':SANS,'font-size':'var(--type-body-small)','font-weight':300,'text-anchor':anchor,fill:INK70});});
 }
-block(450,396,'left','内容先于装饰',['先回答这页要讲什么，','再决定它需要什么形式。']);
-block(1470,396,'right','颜色必须有语义',['大面积保持克制，','强调只服务关键信息。']);
-block(CX,710,'bottom','密度服从层级',['该留白的留白，该密集的有序；','让信息有进入和停留的位置。']);
-el('circle',{cx:478,cy:CY,r:18,fill:'var(--paper)',stroke:INK,'stroke-width':1.1});
-txt(478,CY+5,'01',{'font-family':MONO,'font-size':'var(--type-meta)','text-anchor':'middle',fill:INK});
-el('circle',{cx:1442,cy:CY,r:18,fill:'var(--paper)',stroke:INK,'stroke-width':1.1});
-txt(1442,CY+5,'02',{'font-family':MONO,'font-size':'var(--type-meta)','text-anchor':'middle',fill:INK});
-el('circle',{cx:CX,cy:656,r:18,fill:'var(--paper)',stroke:INK,'stroke-width':1.1});
-txt(CX,661,'03',{'font-family':MONO,'font-size':'var(--type-meta)','text-anchor':'middle',fill:INK});
+block(420,396,'left','内容先于装饰',['先回答这页要讲什么，','再决定它需要什么形式。']);
+block(1500,396,'right','颜色必须有语义',['大面积保持克制，','强调只服务关键信息。']);
+block(CX,730,'bottom','密度服从层级',['该留白的留白，该密集的有序；','让信息有进入和停留的位置。']);
+[[460,CY,'1'],[1460,CY,'2'],[CX,674,'3']].forEach(function(mark){
+  var marker=el('g',{id:'g5-number-'+mark[2],'data-number-kind':'circled','data-number-role':'structural','data-number-state':'outline','data-number-rings':'1'});
+  el('circle',{cx:mark[0],cy:mark[1],r:18,fill:'none',stroke:INK,'stroke-width':1.1,'data-number-part':'disc'},marker);
+  txt(mark[0],mark[1]+5,mark[2],{'data-number-part':'label','data-text-kind':'number','font-family':MONO,'font-size':'var(--type-meta)','text-anchor':'middle',fill:INK},marker);
+});
 
 stageFit();
 </script>
-<script type="application/json" id="xp-surface-recipe">{"theme":"hermes-orange","color_name":"orange","layout_code":"g5","title":"layout-g5 · 三原则放射","layout":"paper-ink.radial.three-principles","page_role":"explain","canvas":{"token":"paper","value":"#f2efe9","reason":"常规内容页在纸面上建立层级。"},"surface_profile":"open-paper-diagram-with-raised-focus","surfaces":[{"role":"base-layout","material":"paper-plane","fill":"#f2efe9","stack":0},{"role":"principle-focus","material":"top-white","fill":"#ffffff","stack":2,"border":{"color":"#1a1a1a","width":2},"shadow":"accent-hard"},{"role":"focus-marker","material":"accent","fill":"#d95e00","stack":3}],"accent":{"value":"#d95e00","semantic_channel":"中心概念、当前节点或最终输出","furniture":"左上第一行 doc-kicker 固定墨黑，第二行 doc-title 使用当前主题色；folio 继续按该页画布与原配方处理。","neutral_exceptions":["普通英文标签","轴名","层名","结构编号","MODEL","非当前数据"],"furniture_mode":"black-first-theme-second","folio_mode":"accent"},"border_policy":"主体 1px 墨线；唯一焦点可用 2px 橙线，所有容器方角。","shadow_policy":"无投影；轴线、轨道、节点属于同一纸面。","noise_policy":"由主题统一提供唯一一层约 6% 黑色 fractal-noise；页面不得自带 noise 节点；浅色页 multiply，墨面可 overlay。","reference_evidence":{"file":"ai_studio_code (12).html","cards":["card-2","card-3","card-5","card-6"],"rule":"关系线与节点直接属于纸面；强调色只落当前节点、终点或短标记。"},"acceptance":["强调色只落一个语义通道；同一序列可重复，但不得扩散到结构元数据。","纯白只用于 top-white，不能替代默认纸面。","缩略图必须从该主题独立 frame 的实际渲染重建。"],"status":"recipe-ready","surface_bindings":[{"selector":"#draw > g > rect[fill=\"var(--paper-panel)\"]","expected_count":1,"role":"principle-focus","material":"top-white","fill":"#ffffff","stack":2,"border":{"color":"#1a1a1a","width":2},"shadow":"accent-hard"}],"surface_binding_reason":"真实浏览器 DOM 审计后锁定的稳定 selector；expected_count 是逐页门禁。"}</script>
-<script src="../../catalog-surface.js" data-catalog-theme-surface="catalog-theme-recipes-v1"></script>
-<script src="../../catalog-typography.js" data-catalog-typography="accent-english-title-match-v1"></script>
+<script type="application/json" id="xp-surface-recipe">{"theme":"hermes-orange","color_name":"orange","layout_code":"g5","title":"layout-g5 · 三原则放射","layout":"paper-ink.radial.three-principles","page_role":"explain","canvas":{"token":"paper","value":"#f2efe9","reason":"常规内容页在纸面上建立层级。"},"surface_profile":"open-paper-diagram-with-raised-focus","surfaces":[{"role":"base-layout","material":"paper-plane","fill":"#f2efe9","stack":0},{"role":"principle-focus","material":"top-white","fill":"#ffffff","stack":2,"border":{"color":"#1a1a1a","width":2},"shadow":"accent-hard"},{"role":"focus-marker","material":"accent","fill":"#d95e00","stack":3}],"accent":{"value":"#d95e00","semantic_channel":"中心概念、当前节点或最终输出","furniture":"左上第一行 doc-kicker 固定墨黑，第二行 doc-title 使用当前主题色；folio 跟随元信息通道：墨色 45%（同英文章节标签），不使用主题色。","neutral_exceptions":["普通英文标签","轴名","层名","结构编号","MODEL","非当前数据"],"furniture_mode":"black-first-theme-second","folio_mode":"metadata-neutral"},"border_policy":"主体 1px 墨线；唯一焦点可用 2px 橙线，所有容器方角。","shadow_policy":"非强调态不绘制阴影；页面最终强调状态开启时，唯一被举起的主证据才按既有几何绘制一次 10px 零模糊主题色硬影；不得新增阴影或改变阴影几何。","noise_policy":"由主题统一提供唯一一层约 6% 黑色 fractal-noise；页面不得自带 noise 节点；浅色页 multiply，墨面可 overlay。","reference_evidence":{"file":"ai_studio_code (12).html","cards":["card-2","card-3","card-5","card-6"],"rule":"关系线与节点直接属于纸面；强调色只落当前节点、终点或短标记。"},"acceptance":["强调色只落一个语义通道；同一序列可重复，但不得扩散到结构元数据。","纯白只用于 top-white，不能替代默认纸面。","缩略图必须从该主题独立 frame 的实际渲染重建。"],"status":"recipe-ready","surface_bindings":[{"selector":"#draw > g > rect[fill=\"var(--paper-panel)\"]","expected_count":1,"role":"principle-focus","material":"top-white","fill":"#ffffff","stack":2,"border":{"color":"#1a1a1a","width":2},"shadow":"accent-hard"}],"surface_binding_reason":"真实浏览器 DOM 审计后锁定的稳定 selector；expected_count 是逐页门禁。","theme_identity":[{"group_id":"identity.focus-statement","label":"一页一个重心","members":[{"selector":"#g5-focus-title","treatment":"identity.text","expected_count":1}]}],"emphasis_targets":[{"target_id":"focus.key-layer","label":"分支 / 层级 / 局部","content_role":"已审核的页面焦点对象","reason_hint":"仅当该对象直接支撑本页 claim 时启用；不得为了配色而开启。","members":[{"selector":"#g5-focus-title","role":"value","treatment":"focus.text","expected_count":1}]}],"sample_target_id":"focus.key-layer"}</script>
+<script src="../../catalog-surface.js" data-catalog-theme-surface="catalog-theme-recipes-v2"></script>
+<script src="../../catalog-typography.js" data-catalog-typography="brand-latin-numeric-oswald-v1"></script>
 </body>
 </html>

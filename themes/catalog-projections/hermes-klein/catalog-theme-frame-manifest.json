@@ -1,26 +1,29 @@
 {
-  "version": 3,
-  "surface_version": "catalog-theme-recipes-v1",
+  "version": 5,
+  "surface_version": "catalog-theme-recipes-v2",
+  "icon_source_family": "tabler-original-v3.46.0",
+  "registered_icon_projection_count": 36,
   "page_count": 88,
   "preset_count": 2,
   "explicit_frame_count": 176,
-  "custom_frame_count": 22,
+  "custom_frame_count": 54,
   "surface_binding_totals": {
-    "generic_page_count": 154,
-    "bound_page_count": 84,
-    "explicit_open_paper_page_count": 70,
-    "binding_count": 156,
-    "expected_node_count": 404
+    "generic_page_count": 122,
+    "bound_page_count": 74,
+    "explicit_open_paper_page_count": 48,
+    "binding_count": 140,
+    "expected_node_count": 476
   },
   "recipe_ledger": {
     "path": "themes/catalog-projections/hermes-klein/catalog-page-recipes.json",
-    "sha256": "05fa9e96a734187d4987005de9fc02071156994cb9edb44ba77848abe641952a",
+    "sha256": "a8f2f9101e58d29bb57fcba96c72f0cc42e47835acade9a779a0e8dcd258dac6",
     "source_entry_count": 88,
     "projected_entry_count": 176
   },
   "status_counts": {
     "approved": 4,
-    "recipe-ready": 172
+    "recipe-ready": 170,
+    "user-correction-specified": 2
   },
   "pages": {
     "hermes-orange": {
@@ -42,8 +45,10 @@
         "status": "recipe-ready",
         "surface_binding_count": 1,
         "surface_binding_expected_node_count": 1,
-        "source_sha256": "1f9fc84c912ab5af25b8abde61f273218913d713f227284ef1ef4a4d5160fbda",
-        "frame_sha256": "12e33975ae69ca85d80dc72e8f07dc4aecdf9ec3df6c27ced01381ff192f343a"
+        "source_sha256": "e01d16127da54e4c545b9caf0e489113b689537be22bf283f5b0d113597f18a9",
+        "frame_sha256": "fa2ce4df3a017220caf9647f72a20c484db7234ca3fb7bbe52bda4a80c923009",
+        "icon_source_family": "tabler-original-v3.46.0",
+        "icon_count": 0
       },
       "a2": {
         "code": "a2",
@@ -63,8 +68,10 @@
         "status": "recipe-ready",
         "surface_binding_count": 1,
         "surface_binding_expected_node_count": 2,
-        "source_sha256": "c8b0e4549e9730c2d8e344c34d0df8230618ce44f7c15e458337f66646160add",
-        "frame_sha256": "6da4f668846d81954bf7e096d179656a115dfd95e7435015567896ae57b256f4"
+        "source_sha256": "273e86ec8ec7ec29885e4da74f7af364fd93800ef86537fd98dadd5daf77412d",
+        "frame_sha256": "4269e47fb5899c15b61e4f29794c5ee5e55cdf6c3a8e1fc6783722d32cefe935",
+        "icon_source_family": "tabler-original-v3.46.0",
+        "icon_count": 0
       },
       "a3": {
         "code": "a3",
@@ -84,16 +91,18 @@
         "status": "recipe-ready",
         "surface_binding_count": 1,
         "surface_binding_expected_node_count": 1,
-        "source_sha256": "7e824ea5c01e401e6f62aa10fe771fe213a17eb045ea48225ac9e6abf75fd47e",
-        "frame_sha256": "867bd37ae5e8c32704b6f1d93375937f29e3755dc18627a36c9c96b214c99ee2"
+        "source_sha256": "9fa4044afc6daa78dad3c9a4aff29f0e340e6d62f03c5b10e5b6634eee48c41a",
+        "frame_sha256": "edb12f93ccb38ad331c837eded223d95bb1d691a8f73e6ba47e629dd75afb39e",
+        "icon_source_family": "tabler-original-v3.46.0",
+        "icon_count": 0
       },
       "a4": {
         "code": "a4",
         "title": "layout-a4 · 左策略右证据墙 · Agent 工程化",
         "layout": "paper-ink.evidence.strategy-evidence-wall",
         "page_role": "prove",
-        "source_kind": "recipe-generated",
-        "source": "references/gallery-paper-ink/ai/frames/layout-a4.html",
+        "source_kind": "custom-redraw",
+        "source": "themes/catalog-projections/hermes-klein/masters/orange-a4.html",
         "frame": "themes/catalog-projections/hermes-klein/frames/hermes-orange/layout-a4.html",
         "recipe_id": "hermes-orange:a4",
         "surface_profile": "equal-evidence-wall",
@@ -103,10 +112,12 @@
           "reason": "常规内容页在纸面上建立层级。"
         },
         "status": "recipe-ready",
-        "surface_binding_count": 1,
-        "surface_binding_expected_node_count": 4,
-        "source_sha256": "3780a81290e0de060538c4e9a8a2e50e4e56395121eae2284ac0c99bd1756c13",
-        "frame_sha256": "05f26965bc4ae17333f2488e3bc5386f7b10193a2c440fc37b6104400ff32bd9"
+        "surface_binding_count": 0,
+        "surface_binding_expected_node_count": 0,
+        "source_sha256": "9e6e8adcfa52c530f70e6f6fbf74fd87a7a716e102e886eda536a325b569ae79",
+        "frame_sha256": "372843701d0f74effc69fa5b30fc357fa3af90ce2dfd33e415e549de6afafdae",
+        "icon_source_family": "tabler-original-v3.46.0",
+        "icon_count": 0
       },
       "a5": {
         "code": "a5",
@@ -126,16 +137,18 @@
         "status": "recipe-ready",
         "surface_binding_count": 0,
         "surface_binding_expected_node_count": 0,
-        "source_sha256": "6d7021c2bfe708c4bcc3f779184562ae628908fd59a59e79f60b9619796e72bf",
-        "frame_sha256": "d8e12ea12fe475c973aa0d4ca87b7c4a867d1ce1845d2846f29af7b72e565298"
+        "source_sha256": "f6f72a39411d469d031b78b4f6cea68dd239fd888d1c3fa14b79a364a2a758cd",
+        "frame_sha256": "898e5c47765925d153c34f42c6182b44b5603d0a48223108cd7b764006b4e7c7",
+        "icon_source_family": "tabler-original-v3.46.0",
+        "icon_count": 0
       },
       "a6": {
         "code": "a6",
         "title": "layout-a6 · 资质证书墙 · 模型 benchmark",
         "layout": "paper-ink.evidence.credential-wall",
         "page_role": "prove",
-        "source_kind": "recipe-generated",
-        "source": "references/gallery-paper-ink/ai/frames/layout-a6.html",
+        "source_kind": "custom-redraw",
+        "source": "themes/catalog-projections/hermes-klein/masters/orange-a6.html",
         "frame": "themes/catalog-projections/hermes-klein/frames/hermes-orange/layout-a6.html",
         "recipe_id": "hermes-orange:a6",
         "surface_profile": "editorial-specimen",
@@ -145,10 +158,12 @@
           "reason": "常规内容页在纸面上建立层级。"
         },
         "status": "recipe-ready",
-        "surface_binding_count": 2,
-        "surface_binding_expected_node_count": 13,
-        "source_sha256": "cc0ebbe94a0a88cb4031b418f20c802c85a4a1d0bb13b50520c36f105f728166",
-        "frame_sha256": "626d2da76f5e3cfbfc94bb314ae8a833ee975fda066cea634ee288a4616de9bf"
+        "surface_binding_count": 0,
+        "surface_binding_expected_node_count": 0,
+        "source_sha256": "51ed46b3e289c5e88c9893ceed0e3545cf82e5f96284021505ac0dfd0bfe8189",
+        "frame_sha256": "791c4cfb1045add9054f475efb1b74d85fbac65dd97509be7fc79c05a8577ffa",
+        "icon_source_family": "tabler-original-v3.46.0",
+        "icon_count": 0
       },
       "a8": {
         "code": "a8",
@@ -168,8 +183,10 @@
         "status": "recipe-ready",
         "surface_binding_count": 1,
         "surface_binding_expected_node_count": 1,
-        "source_sha256": "b916e77e4a505f6ac8af66a8c345785515e48cc676510e78df4dbee21efdd250",
-        "frame_sha256": "4ac82be798939ca843e4257a8c3be33b3d22826eb2b8ef4757f3b934a4ad993f"
+        "source_sha256": "78bf33443f7d2e9f3be39fb017382e23f0782ea12246e30494512e5e468b8dea",
+        "frame_sha256": "4f48aa72052004f4666d7471f38b9d532f795e9391adb487b55c98a1ba1cf66e",
+        "icon_source_family": "tabler-original-v3.46.0",
+        "icon_count": 0
       },
       "a9": {
         "code": "a9",
@@ -189,8 +206,10 @@
         "status": "recipe-ready",
         "surface_binding_count": 1,
         "surface_binding_expected_node_count": 4,
-        "source_sha256": "53a8eb85093c9978fb89e1c3665ec41dee90182eda4393fc987b5bdc9013642a",
-        "frame_sha256": "a821db49b0890acb953509328acc9bfdcfad0a65b876f83ca93010db126f4031"
+        "source_sha256": "2cb4c16d1272ca176cdca75582916630aa2250de65418aa58e137130ecc6ef81",
+        "frame_sha256": "46153c0d8b71053173759104965b89b8fb5c9a4f7c9998b82d32688ba4e3431a",
+        "icon_source_family": "tabler-original-v3.46.0",
+        "icon_count": 0
       },
       "b1": {
         "code": "b1",
@@ -210,8 +229,10 @@
         "status": "recipe-ready",
         "surface_binding_count": 0,
         "surface_binding_expected_node_count": 0,
-        "source_sha256": "eb83817d4b98a41cb3b48858a87b3f0d2900352a8d2ab1bc46a60a06b6addcca",
-        "frame_sha256": "13ef562650d680424a6d795b6506b0464d1746f0da8b12743a134573f8ded4a6"
+        "source_sha256": "0e1fa056204a335e76b860c8696245614e445f49f159db1ee3e8863c022f23e2",
+        "frame_sha256": "d150d4877e7fcfbe6f583892d957898a557cbe4fd2e1d4b745d323eb21e30216",
+        "icon_source_family": "tabler-original-v3.46.0",
+        "icon_count": 0
       },
       "b2": {
         "code": "b2",
@@ -231,8 +252,10 @@
         "status": "recipe-ready",
         "surface_binding_count": 0,
         "surface_binding_expected_node_count": 0,
-        "source_sha256": "a05bcb3941cd5ded03f5e674833b9a08be3cdf7708f3a76140aba80e66dbe5d0",
-        "frame_sha256": "ff511ad2e0603fd16c2815fb119f50a81dfd3e23a729143f0126ab40b6565594"
+        "source_sha256": "2b2abc45c444814bd76fbf17d9ce1d22cd20f0a015178f72e9cf5fbcd6af9349",
+        "frame_sha256": "8a75908c69bf22c55ea8178935b9bdf44255683d71a963253950dae9ebea98ce",
+        "icon_source_family": "tabler-original-v3.46.0",
+        "icon_count": 0
       },
       "b3": {
         "code": "b3",
@@ -252,16 +275,18 @@
         "status": "recipe-ready",
         "surface_binding_count": 1,
         "surface_binding_expected_node_count": 3,
-        "source_sha256": "e66981c98f3724e39cd307a4fd3b51762fbba440c1b2c9f93508a4d0256c0141",
-        "frame_sha256": "b1660a4d8155859cd0e460369323f351bebf0d1f35b15bb047c50da685f54e2d"
+        "source_sha256": "50dd4d5e77010717df9fc4c8de1ad1203f1775d55087d7be53365814d411092a",
+        "frame_sha256": "e1c632ddcb1bef5604c9cc5d15216c178ce1d20c957624b927f8c4b2f77e03a0",
+        "icon_source_family": "tabler-original-v3.46.0",
+        "icon_count": 0
       },
       "b4": {
         "code": "b4",
         "title": "layout-b4 · 时间轴垂挂画廊 · AI 里程碑",
         "layout": "paper-ink.temporal.timeline-evidence-gallery",
         "page_role": "sequence",
-        "source_kind": "recipe-generated",
-        "source": "references/gallery-paper-ink/ai/frames/layout-b4.html",
+        "source_kind": "custom-redraw",
+        "source": "themes/catalog-projections/hermes-klein/masters/orange-b4.html",
         "frame": "themes/catalog-projections/hermes-klein/frames/hermes-orange/layout-b4.html",
         "recipe_id": "hermes-orange:b4",
         "surface_profile": "evidence-card-timeline",
@@ -271,10 +296,12 @@
           "reason": "常规内容页在纸面上建立层级。"
         },
         "status": "recipe-ready",
-        "surface_binding_count": 2,
-        "surface_binding_expected_node_count": 5,
-        "source_sha256": "55380a6bcfbeaefadadea7cf22d1fbf780673a29fa536cb64bf246134108a7c8",
-        "frame_sha256": "900e492f8c703bfc44cdba54d79da346c12b57f8e30a2da361c813b215055626"
+        "surface_binding_count": 0,
+        "surface_binding_expected_node_count": 0,
+        "source_sha256": "0b4b1d4c1cebad020968f16cbc412cd9e11bb1ac1c3fdd34e4fdfc5a53485ff2",
+        "frame_sha256": "a233cd9c19973c11046509598d06494c29e3226e3676a2064ca0022057d63929",
+        "icon_source_family": "tabler-original-v3.46.0",
+        "icon_count": 0
       },
       "b5": {
         "code": "b5",
@@ -294,8 +321,10 @@
         "status": "recipe-ready",
         "surface_binding_count": 0,
         "surface_binding_expected_node_count": 0,
-        "source_sha256": "64aed5da9a86b018f57c5447e47196bcdcdcc90def31ba6cb0170ceaefad7f90",
-        "frame_sha256": "ee62309eca1f30a7a4c2b89098828715cc97f0ec714900c3d9d1dc520f93ae8b"
+        "source_sha256": "f41cd74feee9945d96bd12119efccf1bc7e23b19f59b310b447a916f1c4ee775",
+        "frame_sha256": "79b2b13358fff8df0ef51d968b43873588bfbd8c54c7c9b78951e52a540424f2",
+        "icon_source_family": "tabler-original-v3.46.0",
+        "icon_count": 0
       },
       "b6": {
         "code": "b6",
@@ -315,8 +344,10 @@
         "status": "recipe-ready",
         "surface_binding_count": 0,
         "surface_binding_expected_node_count": 0,
-        "source_sha256": "68631a4de56fdd7919ea4ad91f0fb27848931e73064402053dc59e492686a3ff",
-        "frame_sha256": "2c870c18625e41372d13d5f0e345d2d5d7bf60ea4de3a9b29285e0271cc67792"
+        "source_sha256": "1df894bfc7cec9ed8052220aaff33cfb08bfc0b4fb5f8dc3e0334076529e7130",
+        "frame_sha256": "8e26abdba59e8c04976bba6bbb66cdb05ea0c7b2fe24672ace663fe21bb1e60f",
+        "icon_source_family": "tabler-original-v3.46.0",
+        "icon_count": 0
       },
       "c1": {
         "code": "c1",
@@ -336,8 +367,10 @@
         "status": "recipe-ready",
         "surface_binding_count": 1,
         "surface_binding_expected_node_count": 1,
-        "source_sha256": "9efcfdec822575c37979620b76282450d36f3b31fad34bf65ae7828d45bfd507",
-        "frame_sha256": "98ff35b3984c7dd509449d7f35845a8990e2d485f77be07d80dbb8b7109dca91"
+        "source_sha256": "0271d0c69770d7e3472a93a143b49f10af92d93953c27d950435b3bfd5c748fa",
+        "frame_sha256": "26ae9afdcae3cd49d338d5c1916495d3d517c582d9520fdd94c602a489d91582",
+        "icon_source_family": "tabler-original-v3.46.0",
+        "icon_count": 0
       },
       "c2": {
         "code": "c2",
@@ -357,16 +390,18 @@
         "status": "recipe-ready",
         "surface_binding_count": 0,
         "surface_binding_expected_node_count": 0,
-        "source_sha256": "12e9203a2f02abcc1c28e8e71670a5293c15ecd62faffe0ad6cb5ba36a6dca5a",
-        "frame_sha256": "2615f48d1933b7f0ce7e88689794ab8256b652f1f90871fda21567e8fe7dd984"
+        "source_sha256": "cefc00ef5127f4a161f8b929e7be505bfdc7da34fa63a77880c6ca2c22b08496",
+        "frame_sha256": "cc0f4dcc62ac468c4b3f1024d93e7f567dc7308a316af102e15233ae266f19a8",
+        "icon_source_family": "tabler-original-v3.46.0",
+        "icon_count": 0
       },
       "c3": {
         "code": "c3",
         "title": "layout-c3 · 顶图卡列阵 · AI 案例",
         "layout": "paper-ink.data.profile-card-array",
         "page_role": "orient",
-        "source_kind": "recipe-generated",
-        "source": "references/gallery-paper-ink/ai/frames/layout-c3.html",
+        "source_kind": "custom-redraw",
+        "source": "themes/catalog-projections/hermes-klein/masters/orange-c3.html",
         "frame": "themes/catalog-projections/hermes-klein/frames/hermes-orange/layout-c3.html",
         "recipe_id": "hermes-orange:c3",
         "surface_profile": "data-evidence-board",
@@ -376,10 +411,12 @@
           "reason": "常规内容页在纸面上建立层级。"
         },
         "status": "recipe-ready",
-        "surface_binding_count": 1,
-        "surface_binding_expected_node_count": 3,
-        "source_sha256": "c8ec467e3ffc78a46b6187b3d46213a4376320e9dab76cd3efce4efbe8772abd",
-        "frame_sha256": "c40403ec1264427706190dae83609f464d25d03c44313b1f4cadb4025aa80a73"
+        "surface_binding_count": 0,
+        "surface_binding_expected_node_count": 0,
+        "source_sha256": "f0b2e47c06f441fb14462ba8922fb214fce2ee9fd3b15598ed8144098499679a",
+        "frame_sha256": "37e9d3489f448956ed651675b1f7a3fca73eabb162c8568cfc8d1d2f0a24d97a",
+        "icon_source_family": "tabler-original-v3.46.0",
+        "icon_count": 0
       },
       "c4": {
         "code": "c4",
@@ -399,8 +436,10 @@
         "status": "recipe-ready",
         "surface_binding_count": 0,
         "surface_binding_expected_node_count": 0,
-        "source_sha256": "0be5b85d94a86236f7d35a65c9f94d50446d194596464fff8b03ed55d22232bd",
-        "frame_sha256": "d707b6e2f36605bc37f55ef6ea2786c9b11d3a1a42c99c53e90a02e5e93b5188"
+        "source_sha256": "c825ab31f4ae364f055de2a02b2823c25c886facf6a15b84469f6b93eeb69f09",
+        "frame_sha256": "89e0e1dc7e1dca43a98bdc134a7660bec7aeeccb39cadc382ba7a5630a483172",
+        "icon_source_family": "tabler-original-v3.46.0",
+        "icon_count": 0
       },
       "c5": {
         "code": "c5",
@@ -420,8 +459,10 @@
         "status": "recipe-ready",
         "surface_binding_count": 0,
         "surface_binding_expected_node_count": 0,
-        "source_sha256": "08dfcfbcede467a9a3724102fe27e90bac6bb27d1d5d25292a09fa3e8e9e1ef5",
-        "frame_sha256": "33a706cb18f875a99ffaa12df54cd2439504cd775c5d5eea22619a7a7d399c92"
+        "source_sha256": "7fe27ad2e2849ba09ab9d51f4b73a5607e9234f3b861aa2eefe7067773d704ce",
+        "frame_sha256": "3cd8106c636ede60918150887c4665878b7af86e22f8c383ec3ea4e2c0a87a9c",
+        "icon_source_family": "tabler-original-v3.46.0",
+        "icon_count": 0
       },
       "c6": {
         "code": "c6",
@@ -441,16 +482,18 @@
         "status": "recipe-ready",
         "surface_binding_count": 0,
         "surface_binding_expected_node_count": 0,
-        "source_sha256": "9d82838fc168a644eb4c18c919a664f875d458c4ca9dc6f2363fc0caf32a7b43",
-        "frame_sha256": "8d616fe221fc80762c851e0cd39ab99d357492a09548e0d7e9620d813ed176e3"
+        "source_sha256": "40df69815bc89c0759a72d9dae4fde4729a04fc18773b8507db3425052da24c7",
+        "frame_sha256": "92f4e7c4184befc54c29c8d9b5ee7400b8fbbacec1d9f07df87abea68d4e1a76",
+        "icon_source_family": "tabler-original-v3.46.0",
+        "icon_count": 0
       },
       "c7": {
         "code": "c7",
         "title": "layout-c7 · 样本排行柱图 · 大模型 Benchmark 排行",
         "layout": "paper-ink.data.ranked-specimen-bars",
         "page_role": "prove",
-        "source_kind": "recipe-generated",
-        "source": "references/gallery-paper-ink/ai/frames/layout-c7.html",
+        "source_kind": "custom-redraw",
+        "source": "themes/catalog-projections/hermes-klein/masters/orange-c7.html",
         "frame": "themes/catalog-projections/hermes-klein/frames/hermes-orange/layout-c7.html",
         "recipe_id": "hermes-orange:c7",
         "surface_profile": "data-evidence-board",
@@ -460,10 +503,12 @@
           "reason": "常规内容页在纸面上建立层级。"
         },
         "status": "recipe-ready",
-        "surface_binding_count": 1,
-        "surface_binding_expected_node_count": 3,
-        "source_sha256": "e580898eb9d4f8532eed11d607952e014c5fcd79f67330e55454531ed0dad8fe",
-        "frame_sha256": "60a0fc5902ef98cd3d99c79c5475b8bafde0964c091c7c674e9ebe76ec48ba03"
+        "surface_binding_count": 0,
+        "surface_binding_expected_node_count": 0,
+        "source_sha256": "d132bca78bed283b8efc23c8c2f6ce3b7cc63b0591201c636094f0bc579f96b9",
+        "frame_sha256": "430e792ff665666dabdcd7c59ff1816754928819c2ef9afedf36e85a1352dc82",
+        "icon_source_family": "tabler-original-v3.46.0",
+        "icon_count": 0
       },
       "d1": {
         "code": "d1",
@@ -483,8 +528,10 @@
         "status": "recipe-ready",
         "surface_binding_count": 0,
         "surface_binding_expected_node_count": 0,
-        "source_sha256": "c89b522aa1b470d76ced58a47c3776889b538afb324e54aa204d9c06ad66f6fb",
-        "frame_sha256": "8b1a5a7301fa83d4d34f867769a490eb27019f345498491baee66ddd3d31811c"
+        "source_sha256": "7b376a65f9fe7e349006876742632a7edfaa7aaa1907718790d7f16367ca386a",
+        "frame_sha256": "be398ec0411b8fcda886ad6c8369aa5030bfe2f724aedcf89b2126310169a0f0",
+        "icon_source_family": "tabler-original-v3.46.0",
+        "icon_count": 0
       },
       "d2": {
         "code": "d2",
@@ -504,8 +551,10 @@
         "status": "recipe-ready",
         "surface_binding_count": 0,
         "surface_binding_expected_node_count": 0,
-        "source_sha256": "15c71c2fdaf943a0d6bbb1e554d8f0b0f1c58887715516809577da657c62e5bb",
-        "frame_sha256": "3b19aabb872e78f991599551d9f4b851b219dfa666e119cb567f8448a61b9bd6"
+        "source_sha256": "b384d9fc7497a35ef074a267dae30934bcb276f0332b2d6d6afb9574df425e72",
+        "frame_sha256": "4421b3bf159475de7f6b4bee332687917f63a49df85782f916f592516e61e580",
+        "icon_source_family": "tabler-original-v3.46.0",
+        "icon_count": 0
       },
       "d3": {
         "code": "d3",
@@ -525,8 +574,10 @@
         "status": "recipe-ready",
         "surface_binding_count": 0,
         "surface_binding_expected_node_count": 0,
-        "source_sha256": "7c6c7e5d89e732bdcf47168b6e403c925197db1bdbb2706f4f01349ac925b021",
-        "frame_sha256": "61a6cf8f2469e901ded9fa6464fd3dd10eaa621549ee645027de5b58483d4861"
+        "source_sha256": "bdee3f85b78b379f0e0f4d81db4e3feb11a119117699feef4194c289c65696ee",
+        "frame_sha256": "427723dbfd940a441fe5e4ae0fc065b497743239965dc9b908e1d911c09c9243",
+        "icon_source_family": "tabler-original-v3.46.0",
+        "icon_count": 0
       },
       "d4": {
         "code": "d4",
@@ -546,8 +597,10 @@
         "status": "recipe-ready",
         "surface_binding_count": 0,
         "surface_binding_expected_node_count": 0,
-        "source_sha256": "0dbaf3e168c9d3331639f093e9b1596fc9f4a035c6d7596ffecb19601765ce26",
-        "frame_sha256": "c1fd1412e2d4ff777a1dc2af768de5ec8c7dfc3ff087a3c4f14b5e58d8e98f5b"
+        "source_sha256": "960eaa7d634c6e6f8a84ec3f4848ecd0d177d3885d351884c0dac59f0546f36d",
+        "frame_sha256": "1165b79461de3fcf77c5618448d9cb9fe49d5bb700cc534cbdb8b8a96313c5f2",
+        "icon_source_family": "tabler-original-v3.46.0",
+        "icon_count": 0
       },
       "d5": {
         "code": "d5",
@@ -567,8 +620,10 @@
         "status": "recipe-ready",
         "surface_binding_count": 0,
         "surface_binding_expected_node_count": 0,
-        "source_sha256": "e513477338b36a5b6f72fdb8c53d8ab4c7af3eccc5d106754caf0f31bc08bc52",
-        "frame_sha256": "35e22ab1a8df53c6c4ca47dd4fbdea8ce902faae85cc3bfe9c8631a9aecd63ed"
+        "source_sha256": "d9d42df0b5303e03a0305f771f55d33bd728b2a5e11563aaf876ff56e6ac93c8",
+        "frame_sha256": "06a14765c284f936563d9f1df626a5d9f09a73f0923883a1f2a30b2eb1f34e0f",
+        "icon_source_family": "tabler-original-v3.46.0",
+        "icon_count": 0
       },
       "d6": {
         "code": "d6",
@@ -588,8 +643,10 @@
         "status": "recipe-ready",
         "surface_binding_count": 1,
         "surface_binding_expected_node_count": 1,
-        "source_sha256": "faec460ddc5f1456fab15869934562ec35914c20d4f5da4bbe41b8ab0b740b22",
-        "frame_sha256": "e9652048c2fb5a8972012dd1e758ab47e789476101015cbddd2beb0f418d8a72"
+        "source_sha256": "835c8bd3c51ea5a634482963ef4732d8421a099bf0dcf73c0071ba0946b0dfcc",
+        "frame_sha256": "4690939b138a96e6a04063d68c7774ea872f1b0a0d81ecf38a42962d84ec614c",
+        "icon_source_family": "tabler-original-v3.46.0",
+        "icon_count": 0
       },
       "d7": {
         "code": "d7",
@@ -609,8 +666,10 @@
         "status": "recipe-ready",
         "surface_binding_count": 0,
         "surface_binding_expected_node_count": 0,
-        "source_sha256": "474d1a48c17d239c93dbf9839e60b9b4dd0a040fa337af26a13bc49b01f414a2",
-        "frame_sha256": "f9d2fcb1b08eff3c6925ca765ef39a5d1b0ff91296b4749b5621120d26bf7eea"
+        "source_sha256": "fc21b18679a6236e3dbb2e4512b59740c8309cd4fdd6949e65929e6814220797",
+        "frame_sha256": "e1a248fc1683ba89476d79c1c1ce48e572126c412ff8599a2cc067f40ba33496",
+        "icon_source_family": "tabler-original-v3.46.0",
+        "icon_count": 0
       },
       "d8": {
         "code": "d8",
@@ -630,8 +689,10 @@
         "status": "recipe-ready",
         "surface_binding_count": 0,
         "surface_binding_expected_node_count": 0,
-        "source_sha256": "9f3c9c78a65496aafed0e999a5cbe6d24a3156d0e2780796ba24b6010a77c0c9",
-        "frame_sha256": "de8be2d76bcc7f0d8839571ff032d9c8ec0f698cd34c6304734016a92b3d7032"
+        "source_sha256": "b0c5bb75eb9a4fa5fd1fb2c35f64d8a0857269eaedc8db99b485a64d175b8d49",
+        "frame_sha256": "a1f03cdf2a7516db58d8c4fa075b551e5bde26c15c5f055b4134fae07ee1e7d2",
+        "icon_source_family": "tabler-original-v3.46.0",
+        "icon_count": 0
       },
       "d9": {
         "code": "d9",
@@ -651,8 +712,10 @@
         "status": "recipe-ready",
         "surface_binding_count": 0,
         "surface_binding_expected_node_count": 0,
-        "source_sha256": "9494db239718c914a58aac5069470b20c4b3bee12f2515872adeec52cd2cfdc9",
-        "frame_sha256": "e09ac5b2173900cc743ab0902a55f6d28c32414e6423852faa828791370448cd"
+        "source_sha256": "13a6d317ff8db545df199ee08819eddaa8cbb1ee59c0c0708aff9ec88fbde7d6",
+        "frame_sha256": "5d326839dd2be85fe1ab46b693dc28bca41d9d80329486abc07b1688653c0cdd",
+        "icon_source_family": "tabler-original-v3.46.0",
+        "icon_count": 0
       },
       "d10": {
         "code": "d10",
@@ -672,8 +735,10 @@
         "status": "recipe-ready",
         "surface_binding_count": 0,
         "surface_binding_expected_node_count": 0,
-        "source_sha256": "228c7dd2c73aea7a2ca7fd2432cce5bf736ca74431adfd7e76bd5f10d8146c20",
-        "frame_sha256": "65ba05f8be3e3369fcb3f2b8a4ea9ca9b70cf8fea48ee11cd9238628e1d4d98a"
+        "source_sha256": "38ff8bd250f279aa2fb9177facbb4d5ef365311b8030c8b7ad95c0d12cc92bf9",
+        "frame_sha256": "e27f7280d27ecf2431e91b96d0033bf61460fab0bbfe68a47239e09cae8a296d",
+        "icon_source_family": "tabler-original-v3.46.0",
+        "icon_count": 0
       },
       "d11": {
         "code": "d11",
@@ -693,8 +758,10 @@
         "status": "recipe-ready",
         "surface_binding_count": 0,
         "surface_binding_expected_node_count": 0,
-        "source_sha256": "3d225ead91d101f1b8dd63ce6d6983fdfabea33d1aa237d017ca1b5ae5e7add6",
-        "frame_sha256": "3387153242cf3d831126cc6ffeb1b20d0763c943dc95ff09d969d8171afbb284"
+        "source_sha256": "453d8b05b0a3a4210cbb1a6192264fd6607b22bc598f983ccd544f5b810272bd",
+        "frame_sha256": "2e1eb0da3b75558ae82149adbc62be770c86b93c00a6c38c9d6f9cbcfaa862b3",
+        "icon_source_family": "tabler-original-v3.46.0",
+        "icon_count": 0
       },
       "e1": {
         "code": "e1",
@@ -714,8 +781,10 @@
         "status": "recipe-ready",
         "surface_binding_count": 3,
         "surface_binding_expected_node_count": 3,
-        "source_sha256": "84f0c0eb2ab47fd64731dc8647348f830c79322cb2892bf641a4c10ef34bc7af",
-        "frame_sha256": "81c6a7d84ff02fa0aca3aa72c2e77220d61f998fd66b42989226a1e92c3b2040"
+        "source_sha256": "9ecbceb894febddeed8bda4deb44916cc127263ac0591207a8f84104e66bd3ed",
+        "frame_sha256": "cf64e9bfdd79c48dfacb016ad3f1cf38b86bff759ae5327289314a733a093cc5",
+        "icon_source_family": "tabler-original-v3.46.0",
+        "icon_count": 0
       },
       "e2": {
         "code": "e2",
@@ -735,16 +804,18 @@
         "status": "recipe-ready",
         "surface_binding_count": 0,
         "surface_binding_expected_node_count": 0,
-        "source_sha256": "f08c1e6977047938c2a0d13b14f2d879dc3acf09db92a5bbdf40ebf7273dba7d",
-        "frame_sha256": "eac8ecd94e2af26e0cfbf25e4e5fa7e659cf9b66b95b77b458b00ecde102df49"
+        "source_sha256": "15f00eb6ccdfb792918aa860cf60cf8c66a5f2d847ee3910dfab18ddea69ed9f",
+        "frame_sha256": "228ef6478f877f19f2d25123e4f38820637962d04c7350268d40dfe95e64a37f",
+        "icon_source_family": "tabler-original-v3.46.0",
+        "icon_count": 0
       },
       "e3": {
         "code": "e3",
         "title": "layout-e3 · 双带列阵 · Agent 4 坑 4 解",
         "layout": "paper-ink.comparison.paired-bands",
         "page_role": "compare",
-        "source_kind": "recipe-generated",
-        "source": "references/gallery-paper-ink/ai/frames/layout-e3.html",
+        "source_kind": "custom-redraw",
+        "source": "themes/catalog-projections/hermes-klein/masters/orange-e3.html",
         "frame": "themes/catalog-projections/hermes-klein/frames/hermes-orange/layout-e3.html",
         "recipe_id": "hermes-orange:e3",
         "surface_profile": "open-paper-paired-bands",
@@ -756,16 +827,18 @@
         "status": "recipe-ready",
         "surface_binding_count": 0,
         "surface_binding_expected_node_count": 0,
-        "source_sha256": "0f97993f53b4c4599f779f63fc71d7949ed0ef0f3ce17b2a464b041891e1ea30",
-        "frame_sha256": "9cb1aa3246730c2dce68b4da13ccd4fd66851cc9bd5102f149b7a7afa5ca9a5a"
+        "source_sha256": "bcd4cbc583dadb33b796c562f45d12725fe0ccf01262a4dc446579d44faedcdb",
+        "frame_sha256": "5c192e8535cce76ca2c4a368b4a5ad7e450590ab408c48b838aa7cc931b24ac9",
+        "icon_source_family": "tabler-original-v3.46.0",
+        "icon_count": 0
       },
       "e4": {
         "code": "e4",
         "title": "layout-e4 · 前后对比行矩阵 + KPI 底带 · AI Workflow",
         "layout": "paper-ink.comparison.before-after-matrix",
         "page_role": "compare",
-        "source_kind": "recipe-generated",
-        "source": "references/gallery-paper-ink/ai/frames/layout-e4.html",
+        "source_kind": "custom-redraw",
+        "source": "themes/catalog-projections/hermes-klein/masters/orange-e4.html",
         "frame": "themes/catalog-projections/hermes-klein/frames/hermes-orange/layout-e4.html",
         "recipe_id": "hermes-orange:e4",
         "surface_profile": "open-paper-before-after-rows",
@@ -777,8 +850,10 @@
         "status": "recipe-ready",
         "surface_binding_count": 0,
         "surface_binding_expected_node_count": 0,
-        "source_sha256": "4baf0305df3e19614601615ca0650d51b951070e5d466ab2d83eeb6b830093b6",
-        "frame_sha256": "5aab5be2d929a181e4e00a279c4af6794bcab2b13f3d339d8151a717816c5539"
+        "source_sha256": "9af452c3dc2daa7a74ec30b43954fc525acd9c7d161ef1aa50a01d78b6001a5e",
+        "frame_sha256": "862459d46423f6268c5b5400c0fa2bae12e711a5292e52c693d0eaf5d31dd8a2",
+        "icon_source_family": "tabler-original-v3.46.0",
+        "icon_count": 0
       },
       "e5": {
         "code": "e5",
@@ -796,10 +871,12 @@
           "reason": "常规内容页在纸面上建立层级。"
         },
         "status": "recipe-ready",
-        "surface_binding_count": 0,
-        "surface_binding_expected_node_count": 0,
-        "source_sha256": "5c1a28f5e073601181aa3833d5f2f91bcab7d191e6309a34f73292a0e8cb9c9d",
-        "frame_sha256": "50177b67d073b7c581cc3c8ea317c2197d67526482246b2005eb6d7411bd9856"
+        "surface_binding_count": 1,
+        "surface_binding_expected_node_count": 2,
+        "source_sha256": "37346875c10ef7ad9843da891c707549571ed693888896cd0a42c4b5ded2ca87",
+        "frame_sha256": "95aa657cb65c56bfbd8ee3d78b32b620cfaa65fbcfb1b4e455d1dbe4ef532837",
+        "icon_source_family": "tabler-original-v3.46.0",
+        "icon_count": 0
       },
       "e6": {
         "code": "e6",
@@ -810,17 +887,19 @@
         "source": "references/gallery-paper-ink/ai/frames/layout-e6.html",
         "frame": "themes/catalog-projections/hermes-klein/frames/hermes-orange/layout-e6.html",
         "recipe_id": "hermes-orange:e6",
-        "surface_profile": "vertical-before-after-bands",
+        "surface_profile": "white-over-ink-before-after",
         "canvas": {
           "token": "paper",
           "value": "#f2efe9",
           "reason": "常规内容页在纸面上建立层级。"
         },
-        "status": "recipe-ready",
-        "surface_binding_count": 2,
-        "surface_binding_expected_node_count": 2,
-        "source_sha256": "4a706e4d5b1d5918ba86b93781c274ad7acc47ace7ca7303dce2f7d5e6bd468a",
-        "frame_sha256": "5074b7c67d3a3cb9b754130604c4ca615376faeed63f7fd5d87fbf3c302f8413"
+        "status": "user-correction-specified",
+        "surface_binding_count": 3,
+        "surface_binding_expected_node_count": 74,
+        "source_sha256": "8d1efbdcf63653ec5528563c56550040f4ace8e55bf864697079c1982907c847",
+        "frame_sha256": "5841927c2e0fb32c3a0f15526248805a3831e28efe5bd385802d86758ddffffe",
+        "icon_source_family": "tabler-original-v3.46.0",
+        "icon_count": 0
       },
       "f2": {
         "code": "f2",
@@ -838,10 +917,12 @@
           "reason": "常规内容页在纸面上建立层级。"
         },
         "status": "recipe-ready",
-        "surface_binding_count": 0,
-        "surface_binding_expected_node_count": 0,
-        "source_sha256": "cc4e5792b9d30de1391fa207a9823b1a40fbff04a5a410203b6a6a341e276e4b",
-        "frame_sha256": "724726482fb8d5418f62908fddb9a5002149cbd2c104b7cf5071f49cbf4f666f"
+        "surface_binding_count": 1,
+        "surface_binding_expected_node_count": 1,
+        "source_sha256": "da4017976882aa928940a117943a8f07ed03e6afa4fcce1a9bb1eaeec09ac5cb",
+        "frame_sha256": "aff3c5fbe3a75d8d927793b470bf413be0879b2f3f9f282a25152fbbb47e63f7",
+        "icon_source_family": "tabler-original-v3.46.0",
+        "icon_count": 0
       },
       "f3": {
         "code": "f3",
@@ -861,8 +942,10 @@
         "status": "recipe-ready",
         "surface_binding_count": 0,
         "surface_binding_expected_node_count": 0,
-        "source_sha256": "a2bdba737e3592dbd8ccd16d11cb9b8d53702ac9226ebf906877460c4707f0ef",
-        "frame_sha256": "9724582b7b1f9c5cc640bcc3492c89ef1da24ca0f8cfdd9a352d9966ec8e88f2"
+        "source_sha256": "6fa0aab66c0294a4311859023e89dad81d33c7f9bdab2c7abe70138668724456",
+        "frame_sha256": "23a1d30d35840b60df8ef0257caa04e8d0229afa807556df07909b012087126c",
+        "icon_source_family": "tabler-original-v3.46.0",
+        "icon_count": 0
       },
       "g1": {
         "code": "g1",
@@ -882,16 +965,18 @@
         "status": "recipe-ready",
         "surface_binding_count": 1,
         "surface_binding_expected_node_count": 1,
-        "source_sha256": "a91cf104ea5dcd2e1f37e177f4465f0f727fcb61f720d0f43febbd7d0ff7022c",
-        "frame_sha256": "0157fc944acfcf20750b9225ace7fc4eeb968f9f690425ae510bd177e1376d81"
+        "source_sha256": "f6953159d8e5947a49180b74cd9404e8c31e4dea7324f2c6f4796e60c08bb6ba",
+        "frame_sha256": "fab2da7d1d85b53cce3b4ec57093b4ce6d44e060096f3f375e39ac91b8987cf3",
+        "icon_source_family": "tabler-original-v3.46.0",
+        "icon_count": 0
       },
       "g2": {
         "code": "g2",
         "title": "layout-g2 · 立绘标本 + 环绕引线标注 · AI 设备参数",
         "layout": "paper-ink.radial.annotated-hero",
         "page_role": "explain",
-        "source_kind": "recipe-generated",
-        "source": "references/gallery-paper-ink/ai/frames/layout-g2.html",
+        "source_kind": "custom-redraw",
+        "source": "themes/catalog-projections/hermes-klein/masters/orange-g2.html",
         "frame": "themes/catalog-projections/hermes-klein/frames/hermes-orange/layout-g2.html",
         "recipe_id": "hermes-orange:g2",
         "surface_profile": "open-paper-diagram",
@@ -903,8 +988,10 @@
         "status": "recipe-ready",
         "surface_binding_count": 0,
         "surface_binding_expected_node_count": 0,
-        "source_sha256": "3cd9de06576fdd039dda55b159ee1911109701655fd56cc863259b5ecae4c045",
-        "frame_sha256": "ea240e6a041287548ea10495b0e3ac03578e245af0a8e62cbf46a95c7b717786"
+        "source_sha256": "7704214ac0f2e18a0b28ce965122ae46c43a5322d06279c6f4567d92fd16fc92",
+        "frame_sha256": "d39a652dba5d893950fcdd3634324756e0f1f61e0a1800e99cc6d24626c214af",
+        "icon_source_family": "tabler-original-v3.46.0",
+        "icon_count": 0
       },
       "g4": {
         "code": "g4",
@@ -924,8 +1011,10 @@
         "status": "recipe-ready",
         "surface_binding_count": 4,
         "surface_binding_expected_node_count": 10,
-        "source_sha256": "528b5797c81680ea840e295fd5d6dbf55bdd2a23f3f9b560f024058cc1241276",
-        "frame_sha256": "41e47ae9b30b79355768044b954f724bbb0c0c8a5524457218b23df6c70f7220"
+        "source_sha256": "5dd9a9e9772ed26c6804d8847b2706219c5950f75997b2d265e75b9f6fefc3fb",
+        "frame_sha256": "280fefa29becc99217768eccf8a8f6b587450e2e9ab46894c7a4e3255a514d7b",
+        "icon_source_family": "tabler-original-v3.46.0",
+        "icon_count": 0
       },
       "g5": {
         "code": "g5",
@@ -945,8 +1034,10 @@
         "status": "recipe-ready",
         "surface_binding_count": 1,
         "surface_binding_expected_node_count": 1,
-        "source_sha256": "0c7e152c08f0a09678df8a41508339e509e422002ac9b7028a01a725eb95e3c2",
-        "frame_sha256": "9873106909b8021877fed0254b30e6970e1b090306fa9775b7d454fd7b41de4b"
+        "source_sha256": "8eef3dee1d2ffc517a58766fd03bfb5a634c5bd9f0f5754b6af4cd11ddb269be",
+        "frame_sha256": "07a5aa28b2bd7d42a4f04837c1943ada6b85d3763ac1678834ccfb940457e9b1",
+        "icon_source_family": "tabler-original-v3.46.0",
+        "icon_count": 0
       },
       "h1": {
         "code": "h1",
@@ -964,10 +1055,12 @@
           "reason": "常规内容页在纸面上建立层级。"
         },
         "status": "recipe-ready",
-        "surface_binding_count": 1,
-        "surface_binding_expected_node_count": 1,
-        "source_sha256": "aa612937ca35fccf3e5b1d4c42dcf80044318b703698fe71076b4b07beb9256b",
-        "frame_sha256": "dd3f50e44a4c6df117f26ab03907c6380cfcca8744ed1f0a636ba670154d0021"
+        "surface_binding_count": 2,
+        "surface_binding_expected_node_count": 2,
+        "source_sha256": "48ac00f7cec0c9f78c36c55d4421d3e8a3b8c48fb95ec685c8046082a9e3870d",
+        "frame_sha256": "8faa661837517b2037ae95836bb4b63f607c0bb0395485a4d9bbde99fe999d0e",
+        "icon_source_family": "tabler-original-v3.46.0",
+        "icon_count": 0
       },
       "h2": {
         "code": "h2",
@@ -985,10 +1078,12 @@
           "reason": "常规内容页在纸面上建立层级。"
         },
         "status": "recipe-ready",
-        "surface_binding_count": 0,
-        "surface_binding_expected_node_count": 0,
-        "source_sha256": "8f742cca96af5f1dbc51f193a33c22d543109b916d215411a8fd8eb45b224a45",
-        "frame_sha256": "9fed46ab8e711d9462b1fb0d5d52d94067c1e1926b0eed9f8a397bfdedf2ba5f"
+        "surface_binding_count": 1,
+        "surface_binding_expected_node_count": 1,
+        "source_sha256": "e8bd401a5819bf83028a2c8824d990960402302f8c67f02c757bed5d56cec942",
+        "frame_sha256": "c3fc113d11a8f6962c96cb5756a14cd87ae5bf8eb3559376a594186ee528de48",
+        "icon_source_family": "tabler-original-v3.46.0",
+        "icon_count": 0
       },
       "h3": {
         "code": "h3",
@@ -1001,15 +1096,17 @@
         "recipe_id": "hermes-orange:h3",
         "surface_profile": "approved-architecture-stack",
         "canvas": {
-          "token": "white",
-          "value": "#ffffff",
-          "reason": "custom-redraw 的已定设计意图；视觉由该页面源码独立实现，ledger 只如实登记。"
+          "token": "paper",
+          "value": "#f2efe9",
+          "reason": "恢复旧版米色纸面；四层架构表继续作为独立纯白前景面。"
         },
         "status": "approved",
         "surface_binding_count": 0,
         "surface_binding_expected_node_count": 0,
-        "source_sha256": "2a4990b455080e74c150dd8f0768f4f1633144855a3c07f54cd07bd31469a23a",
-        "frame_sha256": "a40c934734dbba306f8e96e87a039b1de951db6f725888604b160227e45148cb"
+        "source_sha256": "02c671523fc2d7de3369537a113a58d88be4324569ed74731e90f52a0a549481",
+        "frame_sha256": "9943bb85122bcd984b0f067a6d8f8b49aacaf0562ddd47444378a94e780dea66",
+        "icon_source_family": "tabler-original-v3.46.0",
+        "icon_count": 0
       },
       "h4": {
         "code": "h4",
@@ -1029,16 +1126,18 @@
         "status": "recipe-ready",
         "surface_binding_count": 1,
         "surface_binding_expected_node_count": 6,
-        "source_sha256": "8560fd6c7922329e97604e40158738f80e4387fb661b183113f1453c974f8875",
-        "frame_sha256": "c1607dc2f1933b705aaecd11ddc4225446374833cffc7383bf102e6018d2cc4a"
+        "source_sha256": "ed59f6b83defc4ee6fe0b06a950baf793d6de66910328933fed4c377107088ab",
+        "frame_sha256": "29c4b116be9c3893bd3d5ce1ce2e3c10a654313815288797287a5ded990e387c",
+        "icon_source_family": "tabler-original-v3.46.0",
+        "icon_count": 0
       },
       "i1": {
         "code": "i1",
         "title": "layout-i1 · 横向流水线 · RAG 检索流水线",
         "layout": "paper-ink.flow.pipeline",
         "page_role": "explain",
-        "source_kind": "recipe-generated",
-        "source": "references/gallery-paper-ink/ai/frames/layout-i1.html",
+        "source_kind": "custom-redraw",
+        "source": "themes/catalog-projections/hermes-klein/masters/orange-i1.html",
         "frame": "themes/catalog-projections/hermes-klein/frames/hermes-orange/layout-i1.html",
         "recipe_id": "hermes-orange:i1",
         "surface_profile": "process-axis",
@@ -1048,10 +1147,12 @@
           "reason": "常规内容页在纸面上建立层级。"
         },
         "status": "recipe-ready",
-        "surface_binding_count": 3,
-        "surface_binding_expected_node_count": 3,
-        "source_sha256": "beb0a4acb0b3fb69af8094425b39fb5fa0dcad295f1e81fb527af980c192421e",
-        "frame_sha256": "28ea0c38054bb7157196bda4e1ae53edefa594f3936b57320171696f8675082b"
+        "surface_binding_count": 0,
+        "surface_binding_expected_node_count": 0,
+        "source_sha256": "06a37710f21e27ae125f6a7bb5cfee9d7a07d32bd73d1407794dbf7fa9c17a2a",
+        "frame_sha256": "a4c5b8d3a9a3c59f0ae9d4f1a4ee7f0699dd0987937e730a7767da149fb37039",
+        "icon_source_family": "tabler-original-v3.46.0",
+        "icon_count": 0
       },
       "i2": {
         "code": "i2",
@@ -1071,8 +1172,10 @@
         "status": "recipe-ready",
         "surface_binding_count": 1,
         "surface_binding_expected_node_count": 2,
-        "source_sha256": "e912e27d1b2e03c56d818d122d52a3beb938117615d2b692f55b0a18ba54a4e3",
-        "frame_sha256": "709e1253639c748990f3e10ef97a5885e791fe81a612ea9d3cf780d4faca191a"
+        "source_sha256": "7de0af2b9488e8e1ab6b4560eb206c71e4865265b6c1539c1fd3be2b666070f4",
+        "frame_sha256": "e5f0a2eeaf950f3308a87e639448cb74ee4191bf5c8b4c28ddcbbf25d4c32a36",
+        "icon_source_family": "tabler-original-v3.46.0",
+        "icon_count": 0
       },
       "i3": {
         "code": "i3",
@@ -1092,8 +1195,10 @@
         "status": "recipe-ready",
         "surface_binding_count": 0,
         "surface_binding_expected_node_count": 0,
-        "source_sha256": "37d2e2d095d76e478bf76cd7d4f9e160ea10819e916e6eafbea011a805bede72",
-        "frame_sha256": "18904699277f242f7c2d0aec6ecb6d71bbae9193874f55e461749a6665e5f5e5"
+        "source_sha256": "4e06808600e423e2a4d68e1e45a35e820b86b9ae33081f63917a25d5b143ac62",
+        "frame_sha256": "f2637101bff796cb64bc4d1258b092fe639eba2f1e8196220faea6d0f2e94eb3",
+        "icon_source_family": "tabler-original-v3.46.0",
+        "icon_count": 0
       },
       "i4": {
         "code": "i4",
@@ -1113,8 +1218,10 @@
         "status": "recipe-ready",
         "surface_binding_count": 2,
         "surface_binding_expected_node_count": 2,
-        "source_sha256": "97d5af3708a4bbf1fbc288b6add477569da77076313267882cf951245d64ee04",
-        "frame_sha256": "dacfbcb04762a0cb0f1ef250e788e08f8d0ad25f13084eced2764b39e646171f"
+        "source_sha256": "dad3fa0a3da8b3e12218a1fa6814ee833de693dcbe7040200a57d2954cc9bcf7",
+        "frame_sha256": "2d075fb0dfee71b6d048fd977d7bbe85c359c497df3cd5c5a363326684cbce53",
+        "icon_source_family": "tabler-original-v3.46.0",
+        "icon_count": 0
       },
       "j1": {
         "code": "j1",
@@ -1132,18 +1239,20 @@
           "reason": "常规内容页在纸面上建立层级。"
         },
         "status": "recipe-ready",
-        "surface_binding_count": 1,
-        "surface_binding_expected_node_count": 4,
-        "source_sha256": "e3485ced1cc13510a059462de498a92dfbc172b86b37ca920be1a563548d6191",
-        "frame_sha256": "710c65a5d9db103ea8b021c8cfdf9b7d9eda76e370704047695c705f733014a5"
+        "surface_binding_count": 2,
+        "surface_binding_expected_node_count": 5,
+        "source_sha256": "59ce4de741b428948bfd2aecd12124130d999918b1edba11b780cb216b5d2eef",
+        "frame_sha256": "540edd15b7ac98a381615d89ef03890adfa0eb77c0f5ab9d926de3fa4e2df322",
+        "icon_source_family": "tabler-original-v3.46.0",
+        "icon_count": 0
       },
       "j2": {
         "code": "j2",
         "title": "layout-j2 · 蛇形回环 · Agent Loop Engineering",
         "layout": "paper-ink.cycle.serpentine-loop",
         "page_role": "explain",
-        "source_kind": "recipe-generated",
-        "source": "references/gallery-paper-ink/ai/frames/layout-j2.html",
+        "source_kind": "custom-redraw",
+        "source": "themes/catalog-projections/hermes-klein/masters/orange-j2.html",
         "frame": "themes/catalog-projections/hermes-klein/frames/hermes-orange/layout-j2.html",
         "recipe_id": "hermes-orange:j2",
         "surface_profile": "process-axis",
@@ -1153,10 +1262,12 @@
           "reason": "常规内容页在纸面上建立层级。"
         },
         "status": "recipe-ready",
-        "surface_binding_count": 2,
-        "surface_binding_expected_node_count": 8,
-        "source_sha256": "24741076cde37d63525ab9c6dbd8ab49690a88836185c44ad9649429ed8634e1",
-        "frame_sha256": "640a250f141d76b7732d27285b9505f80ab57238a88568b91b2289f4fba03da2"
+        "surface_binding_count": 0,
+        "surface_binding_expected_node_count": 0,
+        "source_sha256": "612b47454cd5758469e563a5a27c648ed578f9aa7331c708b63a97a5a005a039",
+        "frame_sha256": "a0a35fb580971fb50a13811ec7580299a5849266dcbdcb5b5108f04924680e12",
+        "icon_source_family": "tabler-original-v3.46.0",
+        "icon_count": 0
       },
       "j3": {
         "code": "j3",
@@ -1176,8 +1287,10 @@
         "status": "recipe-ready",
         "surface_binding_count": 1,
         "surface_binding_expected_node_count": 5,
-        "source_sha256": "cfcfca68d1dff5a2dc6c9c8e69491f1b2310725a0fa94cf3a8e3566f41a62016",
-        "frame_sha256": "9be27370d0235a39473b23165fac39531e1d1d607ed51b12178c887ff6394e78"
+        "source_sha256": "e3c20129820bb993a1a870d5edfefb9d88bd04f84b3de4d04e5b7cf615468782",
+        "frame_sha256": "3a29d715be81d82f225dc30fe3728670be730872f751eb6da3b8b4cc8737d49e",
+        "icon_source_family": "tabler-original-v3.46.0",
+        "icon_count": 0
       },
       "k1": {
         "code": "k1",
@@ -1196,9 +1309,11 @@
         },
         "status": "recipe-ready",
         "surface_binding_count": 1,
-        "surface_binding_expected_node_count": 1,
-        "source_sha256": "b9a724da68eba3069e383f3f6c7c17d3a6c8ca99fd62e2692dc5a8de8f78e12a",
-        "frame_sha256": "19b012f51e9f155aa30849aee8f22d16850b381b30042fe73f64aeed48864302"
+        "surface_binding_expected_node_count": 4,
+        "source_sha256": "58bfec2be729d3f2f6eb68b36b96d186355da69519547f0bb8c05bfeaa9dfac4",
+        "frame_sha256": "7ca6ddf1a551f92c656c6f4fb38c364387c899481c9b4b1e64d886841837dee5",
+        "icon_source_family": "tabler-original-v3.46.0",
+        "icon_count": 0
       },
       "k2": {
         "code": "k2",
@@ -1218,8 +1333,10 @@
         "status": "recipe-ready",
         "surface_binding_count": 3,
         "surface_binding_expected_node_count": 3,
-        "source_sha256": "8faa1d2c37e6860e40c85029c31488ac60fe29fed8d3b20cc99c5ddfecda5ae3",
-        "frame_sha256": "c940c395e63012584505a7a13bffa479d2e3b6e71afe9a118dc76455913c39b1"
+        "source_sha256": "b57bcdfd105d72aa7d95e5e2d6338ae87abb6fe5dfc4bfc6157797d6b7273726",
+        "frame_sha256": "4c4a630edb75e844e9edbf3ece513a1d9ef178ccbe580a71f34b04821c39a20c",
+        "icon_source_family": "tabler-original-v3.46.0",
+        "icon_count": 0
       },
       "k3": {
         "code": "k3",
@@ -1239,8 +1356,10 @@
         "status": "recipe-ready",
         "surface_binding_count": 2,
         "surface_binding_expected_node_count": 2,
-        "source_sha256": "adb765dc8c232ff040c1da1f509f503504010b08ba18b775c9f64976d705dc56",
-        "frame_sha256": "0bb5d2810f4255c4a7313a105edac3ccc59b071ce1049104fb3acec1d573b65f"
+        "source_sha256": "4c60d8775ca20687fc3a6648160c83be67e3b78f2e73b8fe8f4f777152e8f436",
+        "frame_sha256": "1bbf99b4611fa3cf8ad72273635f743a8352aaa1371309e53920e5a6ba5567d9",
+        "icon_source_family": "tabler-original-v3.46.0",
+        "icon_count": 0
       },
       "k4": {
         "code": "k4",
@@ -1260,8 +1379,10 @@
         "status": "recipe-ready",
         "surface_binding_count": 1,
         "surface_binding_expected_node_count": 3,
-        "source_sha256": "b0c00297a3fe6bbb745e27611c02179c9dfa570d61a429bd3bb1e17b59ab985d",
-        "frame_sha256": "b7ba8d26a16e003a1fdc3f614ae455d9e853c264cafc902fca6860f2f8c4466e"
+        "source_sha256": "76e8ffac3c321f9f4807615301549413108ad04ae0eb2746c617ba67e2f71790",
+        "frame_sha256": "689874acf815b5b826ab82de897a1b9d81b99556eac3f6686fb93fa608ccc613",
+        "icon_source_family": "tabler-original-v3.46.0",
+        "icon_count": 0
       },
       "l1": {
         "code": "l1",
@@ -1281,8 +1402,10 @@
         "status": "recipe-ready",
         "surface_binding_count": 1,
         "surface_binding_expected_node_count": 6,
-        "source_sha256": "098cf6f7f6ef4d4cacec74fa74d3ace712f5a4ec06c03810d656c40539419609",
-        "frame_sha256": "d7c1b3452530cd968160430a5b1674c8faaea1a2551241fdf98da9651aa943ca"
+        "source_sha256": "a2ae6df6a5d74158303ea1b22123d60a861b4c9dee5f1d11b2adbfd2ed86233f",
+        "frame_sha256": "7122582d05fb951abe33e9e8b6bcd1e5194c9dd9caba65c86d75a055bc354f93",
+        "icon_source_family": "tabler-original-v3.46.0",
+        "icon_count": 0
       },
       "l2": {
         "code": "l2",
@@ -1302,8 +1425,10 @@
         "status": "recipe-ready",
         "surface_binding_count": 0,
         "surface_binding_expected_node_count": 0,
-        "source_sha256": "5d941ec5bbce4e83dd0f4626a452c76262abc81a5e5695e3e380b751c6286d90",
-        "frame_sha256": "46156f4441d2a5252d20a96a00a7bc8c1afdf9bf32a0d60750c321828e232475"
+        "source_sha256": "f86cd1541b55c0dd3a6d73335751d202271c530bc235ec1700ad67ad650ad584",
+        "frame_sha256": "90f10f53b1d3515decc9a99e6a104bb734f8c3100a565337205c3935f6522d50",
+        "icon_source_family": "tabler-original-v3.46.0",
+        "icon_count": 0
       },
       "m1": {
         "code": "m1",
@@ -1323,8 +1448,10 @@
         "status": "recipe-ready",
         "surface_binding_count": 0,
         "surface_binding_expected_node_count": 0,
-        "source_sha256": "071beaddb187aa818f7e3d69c191b1d609ce2644600db528c2bafcf30ea16075",
-        "frame_sha256": "f9846b675aec6a4e8b2e4eef1f8992dacbd419dfe351410303feeb793807bd21"
+        "source_sha256": "977aced50e1bb5e25386b32fa2cfe868ab7736e9f381b75311df55fc0750facb",
+        "frame_sha256": "23bea6c9e835db1cc846c86adb287fd019d84d7d5e9d297bf0c90e0ac9a49d8a",
+        "icon_source_family": "tabler-original-v3.46.0",
+        "icon_count": 0
       },
       "m2": {
         "code": "m2",
@@ -1344,8 +1471,10 @@
         "status": "recipe-ready",
         "surface_binding_count": 0,
         "surface_binding_expected_node_count": 0,
-        "source_sha256": "a3f9bde4285abcef79ee72532d2eeab9667a4c3fb49f6b147f04a009a213a749",
-        "frame_sha256": "e7c047ba9aed189388e60a9d3b4626864e75c141756b2ae938a97220bb152d19"
+        "source_sha256": "a26717bc0118c6e4803422e3a33bed999dc96436d4c3b88521101ea9d07c3728",
+        "frame_sha256": "bef5f125a9d7be74bd4d023f39a7801a677000c5d726b9166efa6ade385364de",
+        "icon_source_family": "tabler-original-v3.46.0",
+        "icon_count": 0
       },
       "n1": {
         "code": "n1",
@@ -1363,10 +1492,12 @@
           "reason": "常规内容页在纸面上建立层级。"
         },
         "status": "recipe-ready",
-        "surface_binding_count": 0,
-        "surface_binding_expected_node_count": 0,
-        "source_sha256": "7b147b502a6904dce57df84467f43b751b72a388e94fe66c80930780d454ae56",
-        "frame_sha256": "0aa6b89a0e0c56ab76e6980898a80c6e635375668505fbd4174ff593e32fa053"
+        "surface_binding_count": 1,
+        "surface_binding_expected_node_count": 1,
+        "source_sha256": "1a3da0cad6d33c9ca9cc9bd1fb74d740bc8cce4c7f0482d132b73c8f46ead2c4",
+        "frame_sha256": "47a1e04b27ff9f987316070e39258f21d52509e8eff0279d7f08cb7072a787fc",
+        "icon_source_family": "tabler-original-v3.46.0",
+        "icon_count": 0
       },
       "o1": {
         "code": "o1",
@@ -1384,10 +1515,12 @@
           "reason": "常规内容页在纸面上建立层级。"
         },
         "status": "recipe-ready",
-        "surface_binding_count": 1,
-        "surface_binding_expected_node_count": 1,
-        "source_sha256": "26f17f9ee87120b9e72ed3369606d61c100f222de750c64ff67be2b7ca8382be",
-        "frame_sha256": "4e8f131091e57741ddb4666cefa9c901da10373fbcfedc28dddabd14bb4579bd"
+        "surface_binding_count": 2,
+        "surface_binding_expected_node_count": 2,
+        "source_sha256": "0bb6750bf5a2f0c20b72dce3c4a8193f2d2da9c3b6bdeb26bc1518fc6f06514c",
+        "frame_sha256": "1ae819108401cec58f3438a1bd39625da9dc4dc1c1122c1cc47a710846052d4e",
+        "icon_source_family": "tabler-original-v3.46.0",
+        "icon_count": 0
       },
       "p1": {
         "code": "p1",
@@ -1407,8 +1540,10 @@
         "status": "recipe-ready",
         "surface_binding_count": 1,
         "surface_binding_expected_node_count": 2,
-        "source_sha256": "62ef96dd24c59dee239f238489b840ba23fc7a9ec5662f61765653aac366e576",
-        "frame_sha256": "6138210ef876a8440f022f6bc697eadd2685f309fa615859b3bed37c8cb80b50"
+        "source_sha256": "9847b1da5049885ed20d1887065221e3c94403b4d954ef8fe2842c0f04cadae5",
+        "frame_sha256": "16b547b8aa3a388c8893ae1c3da82f66d6ce6fae690ecb0377b07d5591cdfcab",
+        "icon_source_family": "tabler-original-v3.46.0",
+        "icon_count": 0
       },
       "p2": {
         "code": "p2",
@@ -1426,10 +1561,12 @@
           "reason": "常规内容页在纸面上建立层级。"
         },
         "status": "recipe-ready",
-        "surface_binding_count": 0,
-        "surface_binding_expected_node_count": 0,
-        "source_sha256": "fc756683519640dc1004842e923970dff13e018855577e0b9b49aac9e19dc606",
-        "frame_sha256": "e5c702d846935c411d3f1ace501fa6d8a339688bd6d8e62281befef1c865c7db"
+        "surface_binding_count": 1,
+        "surface_binding_expected_node_count": 4,
+        "source_sha256": "8aa8146065bcc583169f0cdf5bb0f26c7b70d148366caa9e2b8ba06ec3c3dc19",
+        "frame_sha256": "e99dd28714264fed140d4a1db4d3082bf76a57da706b413b06d933c299fbbe24",
+        "icon_source_family": "tabler-original-v3.46.0",
+        "icon_count": 0
       },
       "q1": {
         "code": "q1",
@@ -1449,8 +1586,10 @@
         "status": "recipe-ready",
         "surface_binding_count": 0,
         "surface_binding_expected_node_count": 0,
-        "source_sha256": "1ceacaa2a8156e5adace89c11ebdf17607171cb6eed5d6de88aa1c59596cf049",
-        "frame_sha256": "90085ecaec5f2c03dcbeea9996bd317a2e4413812dafb6cbda18b6d6b8e6fc25"
+        "source_sha256": "57d0163e153db66bb3e70bf9b7e59d9a83ddbfc0b0d67e5160c1a46f49032b13",
+        "frame_sha256": "9f9734eaefcfb42c4a39e3df6c9c81c59e653ceb94e6d2fd20f5b3181bbfbce9",
+        "icon_source_family": "tabler-original-v3.46.0",
+        "icon_count": 0
       },
       "q2": {
         "code": "q2",
@@ -1470,8 +1609,10 @@
         "status": "recipe-ready",
         "surface_binding_count": 0,
         "surface_binding_expected_node_count": 0,
-        "source_sha256": "1efc1e93d8e21377028ed5a37c306c3170d8cab2e89661ea7798bbe1e5c79638",
-        "frame_sha256": "ff05f1e4aa9b7e3a792e62c4f8b564001efe9f55e054babc8057b230eed85554"
+        "source_sha256": "96c462e39e18017ec15efc42092040effa019014a7544ab2a4f95cc1b42b55c4",
+        "frame_sha256": "e99a456af0c04b7710474a270cb0642155c9b93d5c386a271d8d9a6d1262126c",
+        "icon_source_family": "tabler-original-v3.46.0",
+        "icon_count": 0
       },
       "q3": {
         "code": "q3",
@@ -1491,16 +1632,18 @@
         "status": "recipe-ready",
         "surface_binding_count": 3,
         "surface_binding_expected_node_count": 3,
-        "source_sha256": "8fb84d946c2522e0e6e3dfe8e9e51a67203bc94092722814f859a80629046061",
-        "frame_sha256": "86b9f6a2d755a0e0e92e739ffe092d66baf7d8f562003c1e077d010280e40be9"
+        "source_sha256": "c52d214508a6f4a2d4754cde7fa2221229227bee994f55481bfb2495ebf9e760",
+        "frame_sha256": "1b0f96fa3a2484df1a32ff67eb0e0449d990669fa8e52a550303769a3193a591",
+        "icon_source_family": "tabler-original-v3.46.0",
+        "icon_count": 7
       },
       "q4": {
         "code": "q4",
         "title": "layout-q4 · 四象限证据地图 · 一次回答的四类验收物",
         "layout": "paper-ink.evidence.panel-grid-2x2",
         "page_role": "prove",
-        "source_kind": "recipe-generated",
-        "source": "references/gallery-paper-ink/ai/frames/layout-q4.html",
+        "source_kind": "custom-redraw",
+        "source": "themes/catalog-projections/hermes-klein/masters/orange-q4.html",
         "frame": "themes/catalog-projections/hermes-klein/frames/hermes-orange/layout-q4.html",
         "recipe_id": "hermes-orange:q4",
         "surface_profile": "open-paper-diagram",
@@ -1512,8 +1655,10 @@
         "status": "recipe-ready",
         "surface_binding_count": 0,
         "surface_binding_expected_node_count": 0,
-        "source_sha256": "7d8090073ed00fc95147c995741a1a8cbf5580179f0bbf0e2cd0a98de242bff4",
-        "frame_sha256": "9a03262eb5006b73ff882e23cf267167dad536f29c8b35429b5dd66770722787"
+        "source_sha256": "a738efd017b4ffd2b1f85b5060ce93847c55fe49e0b5fb15c15e89ba88827dc4",
+        "frame_sha256": "d9d0c9190358277a4ece2793c85b920883dee02bf6ccd523aa77205c562583ce",
+        "icon_source_family": "tabler-original-v3.46.0",
+        "icon_count": 0
       },
       "r1": {
         "code": "r1",
@@ -1531,10 +1676,12 @@
           "reason": "常规内容页在纸面上建立层级。"
         },
         "status": "recipe-ready",
-        "surface_binding_count": 1,
+        "surface_binding_count": 2,
         "surface_binding_expected_node_count": 2,
-        "source_sha256": "7dcea0e5d76767277851a9b4fab89b35d510f25bde839ee99e0bb56b2ea50e1e",
-        "frame_sha256": "c74d69d6e9f4cab931224c84733a8aaad7b3638f24a55e18bdfaa1ad1198aa3a"
+        "source_sha256": "a81448ff829cb9685c7d3741265e3dc6042e7d5aa6f5475b808c1510dabdc5b9",
+        "frame_sha256": "729bd2d8fe26cd3466b2371e5d56855db4b80d13614dbcc97b9ffc2ab9657a56",
+        "icon_source_family": "tabler-original-v3.46.0",
+        "icon_count": 4
       },
       "r2": {
         "code": "r2",
@@ -1552,10 +1699,12 @@
           "reason": "常规内容页在纸面上建立层级。"
         },
         "status": "recipe-ready",
-        "surface_binding_count": 4,
-        "surface_binding_expected_node_count": 4,
-        "source_sha256": "b310954ce1f003d182cc8a3f034e002656ee5fcb73bd55a7ad30a2c310841a21",
-        "frame_sha256": "4b179dc1cdb40e289c1133e9309daaad197c17600e63120ca4ddeeb348e83c34"
+        "surface_binding_count": 6,
+        "surface_binding_expected_node_count": 6,
+        "source_sha256": "250d6d451ebc42e27fd21dcedfe588c4eb3bc13cf05decef6fc39465842619b8",
+        "frame_sha256": "cd61501f9312e892cc802125fd29a2c77f6109a2cb8407cac7911dc798a875be",
+        "icon_source_family": "tabler-original-v3.46.0",
+        "icon_count": 3
       },
       "r3": {
         "code": "r3",
@@ -1575,16 +1724,18 @@
         "status": "recipe-ready",
         "surface_binding_count": 0,
         "surface_binding_expected_node_count": 0,
-        "source_sha256": "04f4383ec9265451857d711fe3eec76bf27119f72e718603b2eed7ed3db69fdd",
-        "frame_sha256": "1b4fe9a1f993324cfff57f5662cd346de256dd0d3c3f77c3ea075b74e6934be9"
+        "source_sha256": "de55bba48c39f54fbaf0d565157ae6202aafc457384465663f34015d5af940f9",
+        "frame_sha256": "1ceadb6859621ab2a290f51912d6cd317302567bcd056867816a7cb7180c97a8",
+        "icon_source_family": "tabler-original-v3.46.0",
+        "icon_count": 0
       },
       "r4": {
         "code": "r4",
         "title": "layout-r4 · 权衡天平 · 速度与治理",
         "layout": "paper-ink.comparison.balance-tradeoff",
         "page_role": "compare",
-        "source_kind": "recipe-generated",
-        "source": "references/gallery-paper-ink/ai/frames/layout-r4.html",
+        "source_kind": "custom-redraw",
+        "source": "themes/catalog-projections/hermes-klein/masters/orange-r4.html",
         "frame": "themes/catalog-projections/hermes-klein/frames/hermes-orange/layout-r4.html",
         "recipe_id": "hermes-orange:r4",
         "surface_profile": "balanced-tradeoff",
@@ -1594,18 +1745,20 @@
           "reason": "常规内容页在纸面上建立层级。"
         },
         "status": "recipe-ready",
-        "surface_binding_count": 1,
-        "surface_binding_expected_node_count": 2,
-        "source_sha256": "0cfdee6ea9eaadcbb0dda3a1600f2f78adf8b5df66f0eb82f3b06e3ba7060441",
-        "frame_sha256": "3512eb41a6f5f93a62dd86051874bf79b395a5d178d5db2f90954b7cd7ca55f2"
+        "surface_binding_count": 0,
+        "surface_binding_expected_node_count": 0,
+        "source_sha256": "481a1ec1cf772ccf7f0b25a6163e66c4b1288e7e676ae9b915b336e47409c073",
+        "frame_sha256": "d6d894e824e74e8ac516167399cf40d2adca88b977025784756b4cc7fb122658",
+        "icon_source_family": "tabler-original-v3.46.0",
+        "icon_count": 0
       },
       "r5": {
         "code": "r5",
         "title": "layout-r5 · 互锁齿轮 · AI 系统协同",
         "layout": "paper-ink.network.interlocking-system",
         "page_role": "synthesize",
-        "source_kind": "recipe-generated",
-        "source": "references/gallery-paper-ink/ai/frames/layout-r5.html",
+        "source_kind": "custom-redraw",
+        "source": "themes/catalog-projections/hermes-klein/masters/orange-r5.html",
         "frame": "themes/catalog-projections/hermes-klein/frames/hermes-orange/layout-r5.html",
         "recipe_id": "hermes-orange:r5",
         "surface_profile": "open-paper-diagram",
@@ -1617,8 +1770,10 @@
         "status": "recipe-ready",
         "surface_binding_count": 0,
         "surface_binding_expected_node_count": 0,
-        "source_sha256": "dd2f2df7b865b33907a30425cba8a8136e57974f212eb93a331e2d322bdcb2ad",
-        "frame_sha256": "6e7d4585a5700980cea84f8daef76d5680dd45f7afa93e0ffed393f25a6f5395"
+        "source_sha256": "88fcea059ef4e4327bec364184645f9afb2ee708e7e4097c66aa477b0d0bdf91",
+        "frame_sha256": "5cef2a491a5f8363b1bcd7402f7b25b2bcedff3f5108956cbaab0b430c8255bc",
+        "icon_source_family": "tabler-original-v3.46.0",
+        "icon_count": 0
       },
       "r6": {
         "code": "r6",
@@ -1638,16 +1793,18 @@
         "status": "recipe-ready",
         "surface_binding_count": 8,
         "surface_binding_expected_node_count": 8,
-        "source_sha256": "cfde8dcbcb2421975858a8db87cbbb787167d48a216723913acf5393ca8c66de",
-        "frame_sha256": "825e660c3730f4f1a5b712b1e55afdd96ef28893ca7facd4f4b3a08188147def"
+        "source_sha256": "a5c7d28cf313459ee2fb21bade5eb1a3af169a50d780bcb02cb5edc12ec0451a",
+        "frame_sha256": "0c841b71d29e57dfcef7b9ecd1e3735e1372524fde2bfefbc0c3ecb31544a2da",
+        "icon_source_family": "tabler-original-v3.46.0",
+        "icon_count": 4
       },
       "r7": {
         "code": "r7",
         "title": "layout-r7 · 二十八品牌 Logo 墙 · 4×7 独立网格",
         "layout": "paper-ink.display.capability-grid-4x7",
         "page_role": "prove",
-        "source_kind": "recipe-generated",
-        "source": "references/gallery-paper-ink/ai/frames/layout-r7.html",
+        "source_kind": "custom-redraw",
+        "source": "themes/catalog-projections/hermes-klein/masters/orange-r7.html",
         "frame": "themes/catalog-projections/hermes-klein/frames/hermes-orange/layout-r7.html",
         "recipe_id": "hermes-orange:r7",
         "surface_profile": "open-paper-diagram",
@@ -1659,8 +1816,10 @@
         "status": "recipe-ready",
         "surface_binding_count": 0,
         "surface_binding_expected_node_count": 0,
-        "source_sha256": "f96c2864054b737b1b49f846d774817a0351c8e343d7b86d4fba4019b1709379",
-        "frame_sha256": "55ac835a82e42a38b3b3d67e2b4921ab3b0302009a95e8a6a4fa34e146f9edbc"
+        "source_sha256": "848173043931cdda13943b11d21bd09248daa8df27afac0865e0e154c2d5789f",
+        "frame_sha256": "c446ab0aaabdbc26c4f155e83aac8f9a88fb266b93da76c9dbc5ed220c4bbd9f",
+        "icon_source_family": "tabler-original-v3.46.0",
+        "icon_count": 0
       },
       "s1": {
         "code": "s1",
@@ -1680,8 +1839,10 @@
         "status": "recipe-ready",
         "surface_binding_count": 5,
         "surface_binding_expected_node_count": 57,
-        "source_sha256": "08ad37131e2cd1e7fda9cebb365fde77fd98a2f17a80e211d5bfa9f5583dba9c",
-        "frame_sha256": "b0e2ee3020c906164b4bfc3bc71bb6a79de92e430ed1821f81f94c25743b42fe"
+        "source_sha256": "fb7dd220e1c7bf56e3f90ac9cee77ba7e7738980802d43ee1a1b1b5520737917",
+        "frame_sha256": "603708c37fb39d387d1c86b79fd839a0d5d8b1eae26aa26bf569f0067b8a91f1",
+        "icon_source_family": "tabler-original-v3.46.0",
+        "icon_count": 0
       },
       "s2": {
         "code": "s2",
@@ -1701,16 +1862,18 @@
         "status": "recipe-ready",
         "surface_binding_count": 0,
         "surface_binding_expected_node_count": 0,
-        "source_sha256": "6f994e7a82074a7613092a5e19ca0b244349ec636d7be28408fd181d6bddb69a",
-        "frame_sha256": "13cfe5c86f2f335ff6137fde9554e6e9f9c8beb4ad8f05a23fa9dd58d495f991"
+        "source_sha256": "f5ce09d3fc23e75339ec5078f37f75e82ed32b82b0baa70aabd77d8be73675b6",
+        "frame_sha256": "60b6ef0d93f417c7c90b535b2896a1dc52854b104f857e60e9889b01e47ae22c",
+        "icon_source_family": "tabler-original-v3.46.0",
+        "icon_count": 0
       },
       "s3": {
         "code": "s3",
         "title": "layout-s3 · 左痛双卡右解复合 · 客服 Agent 升级",
         "layout": "paper-ink.causal.problem-solution-five-slot",
         "page_role": "synthesize",
-        "source_kind": "recipe-generated",
-        "source": "references/gallery-paper-ink/ai/frames/layout-s3.html",
+        "source_kind": "custom-redraw",
+        "source": "themes/catalog-projections/hermes-klein/masters/orange-s3.html",
         "frame": "themes/catalog-projections/hermes-klein/frames/hermes-orange/layout-s3.html",
         "recipe_id": "hermes-orange:s3",
         "surface_profile": "five-slot-problem-solution",
@@ -1720,10 +1883,12 @@
           "reason": "常规内容页在纸面上建立层级。"
         },
         "status": "recipe-ready",
-        "surface_binding_count": 5,
-        "surface_binding_expected_node_count": 5,
-        "source_sha256": "2619debb9df1174ab94a50177833ab596ccb9584b5d6ea7eed148b0baf7a61db",
-        "frame_sha256": "1816935be3fa54f0f1ef25431717c1f31ed0f966e5ad9ffe5ef9183010f0ea6f"
+        "surface_binding_count": 0,
+        "surface_binding_expected_node_count": 0,
+        "source_sha256": "2fcbc32389fbf483046bf66fb5fb69f58e03a6c5e935922d2210efeca49ac01d",
+        "frame_sha256": "96f929440372bd8fb00a10bc83389ac93a6f3a5a9d619e9fdac1b5864377233f",
+        "icon_source_family": "tabler-original-v3.46.0",
+        "icon_count": 0
       },
       "t1": {
         "code": "t1",
@@ -1736,15 +1901,17 @@
         "recipe_id": "hermes-orange:t1",
         "surface_profile": "approved-process-axis",
         "canvas": {
-          "token": "white",
-          "value": "#ffffff",
-          "reason": "custom-redraw 的已定设计意图；视觉由该页面源码独立实现，ledger 只如实登记。"
+          "token": "paper",
+          "value": "#f2efe9",
+          "reason": "恢复旧版实际画布底色；纯白只保留给顶层工件。"
         },
         "status": "approved",
         "surface_binding_count": 0,
         "surface_binding_expected_node_count": 0,
-        "source_sha256": "6812d77c540ea5c3cfeaecb5223448888eb6838a9157f039d58393fda0a155fe",
-        "frame_sha256": "29fff9d5663874538d9dcab56c868a0896906b33f68e700a86d5567002940d46"
+        "source_sha256": "42bf855ff5816e6e329c02063199e46ef77361f32fd45f52e8cdb2538a591991",
+        "frame_sha256": "4be49c747bd8c1b125ad2246c80cf7f7a9549e508fd1e2c6c61ed7de1399f6cf",
+        "icon_source_family": "tabler-original-v3.46.0",
+        "icon_count": 0
       },
       "t2": {
         "code": "t2",
@@ -1764,16 +1931,18 @@
         "status": "recipe-ready",
         "surface_binding_count": 1,
         "surface_binding_expected_node_count": 6,
-        "source_sha256": "54e6aaa77ddba17d6c2deeeb08cfe2723ef323025919ede6cce4cb31e7215a78",
-        "frame_sha256": "ca8715cb3afff124f62f25973818978bd3df8eb9580aff94088b0d13acfd963e"
+        "source_sha256": "5a5998a4532d8b0bfad00df27c152391d94850abe6afbd4c79d339e88648bb1b",
+        "frame_sha256": "61f47d85623ec3bddf9ce507e100e5667b49344af10c9b399315c51e88bde455",
+        "icon_source_family": "tabler-original-v3.46.0",
+        "icon_count": 0
       },
       "t3": {
         "code": "t3",
         "title": "layout-t3 · 组件调用决策与样本图册",
         "layout": "paper-ink.causal.component-decision-atlas",
         "page_role": "explain",
-        "source_kind": "recipe-generated",
-        "source": "references/gallery-paper-ink/ai/frames/layout-t3.html",
+        "source_kind": "custom-redraw",
+        "source": "themes/catalog-projections/hermes-klein/masters/orange-t3.html",
         "frame": "themes/catalog-projections/hermes-klein/frames/hermes-orange/layout-t3.html",
         "recipe_id": "hermes-orange:t3",
         "surface_profile": "decision-and-sample-gallery",
@@ -1783,10 +1952,12 @@
           "reason": "常规内容页在纸面上建立层级。"
         },
         "status": "recipe-ready",
-        "surface_binding_count": 2,
-        "surface_binding_expected_node_count": 7,
-        "source_sha256": "f76a3935d371747d14b2568c8fcb57136a0f7ad71cf56704d8c3a9528842c65f",
-        "frame_sha256": "fa33f56529518ddcbfaffc83f5656101d7bda843df3115f21d0c3b82bb04617a"
+        "surface_binding_count": 0,
+        "surface_binding_expected_node_count": 0,
+        "source_sha256": "f40165917fd4c4d2d7835ac56316147a4a874c54e5574bf0b15556d9bf429365",
+        "frame_sha256": "3b34d326d8ba95b2a46ad27a71d965b3dc7be845bbd0c474a32942c3f3fbf8b3",
+        "icon_source_family": "tabler-original-v3.46.0",
+        "icon_count": 0
       },
       "u1": {
         "code": "u1",
@@ -1806,8 +1977,10 @@
         "status": "recipe-ready",
         "surface_binding_count": 0,
         "surface_binding_expected_node_count": 0,
-        "source_sha256": "d6480e2627c442d5000d329ae76e039dfafacc2d8fd63b3e2806084f84d19955",
-        "frame_sha256": "2a59a31a64c9d69ce6bbc7565af38982cd286e2b106fcb747d5a62a10089d16f"
+        "source_sha256": "e0c95991b4f5d31c4af56e38119676315da8dc86c43206423f6c2ced16f6d5a1",
+        "frame_sha256": "957db64d5c215a9d04f77610c2349351953298e706b6b29e8422349ff139444b",
+        "icon_source_family": "tabler-original-v3.46.0",
+        "icon_count": 0
       },
       "u2": {
         "code": "u2",
@@ -1827,8 +2000,10 @@
         "status": "recipe-ready",
         "surface_binding_count": 0,
         "surface_binding_expected_node_count": 0,
-        "source_sha256": "f093e4cdd0b26cc6518325ed7e2f704c710c81d7c9db3f89ed8236b56d2001ad",
-        "frame_sha256": "6ff0ba8ee26ee148be715967cfbb13ed1c595abe1441ea2ec233df7b11b53a48"
+        "source_sha256": "21a728125864629cc7539780344cee322d5ce6da6bfa2f0ad9df5159416e3989",
+        "frame_sha256": "ec5f7699b23e9355a9313ee037f794fedc302db3cf3845845fad0aae24374324",
+        "icon_source_family": "tabler-original-v3.46.0",
+        "icon_count": 0
       },
       "u3": {
         "code": "u3",
@@ -1848,8 +2023,10 @@
         "status": "recipe-ready",
         "surface_binding_count": 0,
         "surface_binding_expected_node_count": 0,
-        "source_sha256": "eba3054bddc3822df2a21404f70bfeed83ffeaf240424d42a1728af8ae958b98",
-        "frame_sha256": "f735d32cc8b9a041f404269a921e770cc265b96c40a2f86e09f907a854415619"
+        "source_sha256": "e705d7508cd32c11bbe8b45da9a8e5cae617d5e27924ecf143e9d90a8fd7bb5a",
+        "frame_sha256": "02b7557855a5853ee2f1fd6bca105c14e9697660ad3206f8cb009df84f8f1ea9",
+        "icon_source_family": "tabler-original-v3.46.0",
+        "icon_count": 0
       },
       "w1": {
         "code": "w1",
@@ -1869,8 +2046,10 @@
         "status": "recipe-ready",
         "surface_binding_count": 0,
         "surface_binding_expected_node_count": 0,
-        "source_sha256": "a52e31b1d24ab5f45ff6e9823663445d07428e7c5c7db2ca36935330549e2e0c",
-        "frame_sha256": "5a4e8a3613534a6ed6806e5b756fe54e3d313d0f75249166b28ce4aafe4565a3"
+        "source_sha256": "206e43623218a06135a776e43c633c187673bccdd345ed70d8543acbbbe8b279",
+        "frame_sha256": "da36311b818bd706a1e56c2d1afaf7f8592a39f9dd6e28845e3d1449884fa74f",
+        "icon_source_family": "tabler-original-v3.46.0",
+        "icon_count": 0
       }
     },
     "klein-blue": {
@@ -1892,8 +2071,10 @@
         "status": "recipe-ready",
         "surface_binding_count": 1,
         "surface_binding_expected_node_count": 1,
-        "source_sha256": "1f9fc84c912ab5af25b8abde61f273218913d713f227284ef1ef4a4d5160fbda",
-        "frame_sha256": "66cca2003cba1288c27230e7a2f98469ac7fabc57d0730990ca7ad277c56ab57"
+        "source_sha256": "e01d16127da54e4c545b9caf0e489113b689537be22bf283f5b0d113597f18a9",
+        "frame_sha256": "91788350173346143b079d39c826c9655c5140c2c79a7b4c61ae17352c76f1b0",
+        "icon_source_family": "tabler-original-v3.46.0",
+        "icon_count": 0
       },
       "a2": {
         "code": "a2",
@@ -1913,8 +2094,10 @@
         "status": "recipe-ready",
         "surface_binding_count": 1,
         "surface_binding_expected_node_count": 2,
-        "source_sha256": "c8b0e4549e9730c2d8e344c34d0df8230618ce44f7c15e458337f66646160add",
-        "frame_sha256": "e9469920e14c6236b7a9c1c6f894a5b294474630f7c7376fd211f6c10f47be64"
+        "source_sha256": "273e86ec8ec7ec29885e4da74f7af364fd93800ef86537fd98dadd5daf77412d",
+        "frame_sha256": "3c33b00265b5175099f0b7e10a101f34a7af3c5920af757faadbdbbcd9fc2b44",
+        "icon_source_family": "tabler-original-v3.46.0",
+        "icon_count": 0
       },
       "a3": {
         "code": "a3",
@@ -1934,16 +2117,18 @@
         "status": "recipe-ready",
         "surface_binding_count": 1,
         "surface_binding_expected_node_count": 1,
-        "source_sha256": "7e824ea5c01e401e6f62aa10fe771fe213a17eb045ea48225ac9e6abf75fd47e",
-        "frame_sha256": "e96ab9ca124e3d1a3ef05939e97ef0f126527f3aa5fddb333aa5e5f33fec58b4"
+        "source_sha256": "9fa4044afc6daa78dad3c9a4aff29f0e340e6d62f03c5b10e5b6634eee48c41a",
+        "frame_sha256": "d27c22ca4f69cfa16674b3dbaf6f4f32241567e9d40bfe001b0b8937752800ca",
+        "icon_source_family": "tabler-original-v3.46.0",
+        "icon_count": 0
       },
       "a4": {
         "code": "a4",
         "title": "layout-a4 · 左策略右证据墙 · Agent 工程化",
         "layout": "paper-ink.evidence.strategy-evidence-wall",
         "page_role": "prove",
-        "source_kind": "recipe-generated",
-        "source": "references/gallery-paper-ink/ai/frames/layout-a4.html",
+        "source_kind": "custom-redraw",
+        "source": "themes/catalog-projections/hermes-klein/masters/orange-a4.html",
         "frame": "themes/catalog-projections/hermes-klein/frames/klein-blue/layout-a4.html",
         "recipe_id": "klein-blue:a4",
         "surface_profile": "equal-evidence-wall",
@@ -1953,10 +2138,12 @@
           "reason": "常规内容页在纸面上建立层级。"
         },
         "status": "recipe-ready",
-        "surface_binding_count": 1,
-        "surface_binding_expected_node_count": 4,
-        "source_sha256": "3780a81290e0de060538c4e9a8a2e50e4e56395121eae2284ac0c99bd1756c13",
-        "frame_sha256": "e84c76f7d28e4508374afd45d9d05522408e42f2f5c2e5b0e0de21e7c2c176b8"
+        "surface_binding_count": 0,
+        "surface_binding_expected_node_count": 0,
+        "source_sha256": "9e6e8adcfa52c530f70e6f6fbf74fd87a7a716e102e886eda536a325b569ae79",
+        "frame_sha256": "b0f790016d3d21a01c351d1ea81a77c5ae186bf62ae33183601ee133dacb5d75",
+        "icon_source_family": "tabler-original-v3.46.0",
+        "icon_count": 0
       },
       "a5": {
         "code": "a5",
@@ -1976,16 +2163,18 @@
         "status": "recipe-ready",
         "surface_binding_count": 0,
         "surface_binding_expected_node_count": 0,
-        "source_sha256": "6d7021c2bfe708c4bcc3f779184562ae628908fd59a59e79f60b9619796e72bf",
-        "frame_sha256": "ab88c65f028193205003394faf939100d26311fa243ad4cbdd04d73b83f0f289"
+        "source_sha256": "f6f72a39411d469d031b78b4f6cea68dd239fd888d1c3fa14b79a364a2a758cd",
+        "frame_sha256": "874132d6f71dedab2a5c7a5fb06577d3218127e6681f14c534254d6237b5b85d",
+        "icon_source_family": "tabler-original-v3.46.0",
+        "icon_count": 0
       },
       "a6": {
         "code": "a6",
         "title": "layout-a6 · 资质证书墙 · 模型 benchmark",
         "layout": "paper-ink.evidence.credential-wall",
         "page_role": "prove",
-        "source_kind": "recipe-generated",
-        "source": "references/gallery-paper-ink/ai/frames/layout-a6.html",
+        "source_kind": "custom-redraw",
+        "source": "themes/catalog-projections/hermes-klein/masters/orange-a6.html",
         "frame": "themes/catalog-projections/hermes-klein/frames/klein-blue/layout-a6.html",
         "recipe_id": "klein-blue:a6",
         "surface_profile": "editorial-specimen",
@@ -1995,10 +2184,12 @@
           "reason": "常规内容页在纸面上建立层级。"
         },
         "status": "recipe-ready",
-        "surface_binding_count": 2,
-        "surface_binding_expected_node_count": 13,
-        "source_sha256": "cc0ebbe94a0a88cb4031b418f20c802c85a4a1d0bb13b50520c36f105f728166",
-        "frame_sha256": "834c0cff86bcc1aa8cf06431856141af6a3647547f9f734149978736c3e3fca3"
+        "surface_binding_count": 0,
+        "surface_binding_expected_node_count": 0,
+        "source_sha256": "51ed46b3e289c5e88c9893ceed0e3545cf82e5f96284021505ac0dfd0bfe8189",
+        "frame_sha256": "62c819f009ff05b7c32b53d51b98fca05caf2bdfef2622854be86fe08f026d93",
+        "icon_source_family": "tabler-original-v3.46.0",
+        "icon_count": 0
       },
       "a8": {
         "code": "a8",
@@ -2018,8 +2209,10 @@
         "status": "recipe-ready",
         "surface_binding_count": 1,
         "surface_binding_expected_node_count": 1,
-        "source_sha256": "b916e77e4a505f6ac8af66a8c345785515e48cc676510e78df4dbee21efdd250",
-        "frame_sha256": "7f8672b6a5682910d3224622ba455e6c6f6ebef0ce22ae6e832bc7740561e869"
+        "source_sha256": "78bf33443f7d2e9f3be39fb017382e23f0782ea12246e30494512e5e468b8dea",
+        "frame_sha256": "2ea170497cdb7d49dcc6b87ff4200aeec6998636950fa45733d164a71651482b",
+        "icon_source_family": "tabler-original-v3.46.0",
+        "icon_count": 0
       },
       "a9": {
         "code": "a9",
@@ -2039,8 +2232,10 @@
         "status": "recipe-ready",
         "surface_binding_count": 1,
         "surface_binding_expected_node_count": 4,
-        "source_sha256": "53a8eb85093c9978fb89e1c3665ec41dee90182eda4393fc987b5bdc9013642a",
-        "frame_sha256": "f609c84eac53aead0e99286dcd1ae426d02768744940ebc3727bdadfa4f41f31"
+        "source_sha256": "2cb4c16d1272ca176cdca75582916630aa2250de65418aa58e137130ecc6ef81",
+        "frame_sha256": "ed8e499855a4706abce7cae69049d24eec060a6c2b3ce4df418823898ae48c36",
+        "icon_source_family": "tabler-original-v3.46.0",
+        "icon_count": 0
       },
       "b1": {
         "code": "b1",
@@ -2060,8 +2255,10 @@
         "status": "recipe-ready",
         "surface_binding_count": 0,
         "surface_binding_expected_node_count": 0,
-        "source_sha256": "eb83817d4b98a41cb3b48858a87b3f0d2900352a8d2ab1bc46a60a06b6addcca",
-        "frame_sha256": "ba68173ab1557b3ee387b2a1c54d76e639c11bfd9a6a992d4ae374ea391d5204"
+        "source_sha256": "0e1fa056204a335e76b860c8696245614e445f49f159db1ee3e8863c022f23e2",
+        "frame_sha256": "713f4dcb9e2b18e5494f9d79fd89189c8183a50d8e1c8b74d0ada9051cc0ad63",
+        "icon_source_family": "tabler-original-v3.46.0",
+        "icon_count": 0
       },
       "b2": {
         "code": "b2",
@@ -2081,8 +2278,10 @@
         "status": "recipe-ready",
         "surface_binding_count": 0,
         "surface_binding_expected_node_count": 0,
-        "source_sha256": "a05bcb3941cd5ded03f5e674833b9a08be3cdf7708f3a76140aba80e66dbe5d0",
-        "frame_sha256": "6010e9373811e9dfa8cbea4e286642e5bfdaeec1af3f51f3604233e838f25d9e"
+        "source_sha256": "2b2abc45c444814bd76fbf17d9ce1d22cd20f0a015178f72e9cf5fbcd6af9349",
+        "frame_sha256": "2a8c4d77af0142e410cec3684d5f5a87ce2b98720472c645993bfa286ef81e1e",
+        "icon_source_family": "tabler-original-v3.46.0",
+        "icon_count": 0
       },
       "b3": {
         "code": "b3",
@@ -2102,16 +2301,18 @@
         "status": "recipe-ready",
         "surface_binding_count": 1,
         "surface_binding_expected_node_count": 3,
-        "source_sha256": "e66981c98f3724e39cd307a4fd3b51762fbba440c1b2c9f93508a4d0256c0141",
-        "frame_sha256": "2a2d1426b2b49cd0987cebd509adfa013dcde09c4f69c755d6ff670fa3be0f56"
+        "source_sha256": "50dd4d5e77010717df9fc4c8de1ad1203f1775d55087d7be53365814d411092a",
+        "frame_sha256": "234ff6d67cc2e7352575342f5665218c0011a545282c36c2702c37607b9a8cb7",
+        "icon_source_family": "tabler-original-v3.46.0",
+        "icon_count": 0
       },
       "b4": {
         "code": "b4",
         "title": "layout-b4 · 时间轴垂挂画廊 · AI 里程碑",
         "layout": "paper-ink.temporal.timeline-evidence-gallery",
         "page_role": "sequence",
-        "source_kind": "recipe-generated",
-        "source": "references/gallery-paper-ink/ai/frames/layout-b4.html",
+        "source_kind": "custom-redraw",
+        "source": "themes/catalog-projections/hermes-klein/masters/orange-b4.html",
         "frame": "themes/catalog-projections/hermes-klein/frames/klein-blue/layout-b4.html",
         "recipe_id": "klein-blue:b4",
         "surface_profile": "evidence-card-timeline",
@@ -2121,10 +2322,12 @@
           "reason": "常规内容页在纸面上建立层级。"
         },
         "status": "recipe-ready",
-        "surface_binding_count": 2,
-        "surface_binding_expected_node_count": 5,
-        "source_sha256": "55380a6bcfbeaefadadea7cf22d1fbf780673a29fa536cb64bf246134108a7c8",
-        "frame_sha256": "dc247e8afba58e804ce561a6e827135ef8f170576851aca7ad5d569f013151e3"
+        "surface_binding_count": 0,
+        "surface_binding_expected_node_count": 0,
+        "source_sha256": "0b4b1d4c1cebad020968f16cbc412cd9e11bb1ac1c3fdd34e4fdfc5a53485ff2",
+        "frame_sha256": "f132f1e8af826b723db007d170f3af51bf1f6ad343607fe242f9b29c072f95cf",
+        "icon_source_family": "tabler-original-v3.46.0",
+        "icon_count": 0
       },
       "b5": {
         "code": "b5",
@@ -2144,8 +2347,10 @@
         "status": "recipe-ready",
         "surface_binding_count": 0,
         "surface_binding_expected_node_count": 0,
-        "source_sha256": "64aed5da9a86b018f57c5447e47196bcdcdcc90def31ba6cb0170ceaefad7f90",
-        "frame_sha256": "d1cd1e97e8de7134b49ece88c5d65a1c90c0fca1be333e2095bdd60e85467288"
+        "source_sha256": "f41cd74feee9945d96bd12119efccf1bc7e23b19f59b310b447a916f1c4ee775",
+        "frame_sha256": "7e8ef4197b2ae5f379b3113b6636b72e15e0171bf26902a41aee3f052738c10d",
+        "icon_source_family": "tabler-original-v3.46.0",
+        "icon_count": 0
       },
       "b6": {
         "code": "b6",
@@ -2165,8 +2370,10 @@
         "status": "recipe-ready",
         "surface_binding_count": 0,
         "surface_binding_expected_node_count": 0,
-        "source_sha256": "68631a4de56fdd7919ea4ad91f0fb27848931e73064402053dc59e492686a3ff",
-        "frame_sha256": "46cd024b8c7c8fb023f3c44a8d05551a5e1cc464ef61aec3b772224f576cceeb"
+        "source_sha256": "1df894bfc7cec9ed8052220aaff33cfb08bfc0b4fb5f8dc3e0334076529e7130",
+        "frame_sha256": "b548c1911ba5a2f5976180be3e7f89f6b2a69c9d934cf58f1005b45d8026ffc8",
+        "icon_source_family": "tabler-original-v3.46.0",
+        "icon_count": 0
       },
       "c1": {
         "code": "c1",
@@ -2186,8 +2393,10 @@
         "status": "recipe-ready",
         "surface_binding_count": 1,
         "surface_binding_expected_node_count": 1,
-        "source_sha256": "9efcfdec822575c37979620b76282450d36f3b31fad34bf65ae7828d45bfd507",
-        "frame_sha256": "2c94e2dea5b418c609d5378f519c831808e7c08c5f3f04f7767f4eec4654ddf8"
+        "source_sha256": "0271d0c69770d7e3472a93a143b49f10af92d93953c27d950435b3bfd5c748fa",
+        "frame_sha256": "2fa5649fadc84c8021845cce9b5c265aec0639827bd5cb7f86e77900cf0e863a",
+        "icon_source_family": "tabler-original-v3.46.0",
+        "icon_count": 0
       },
       "c2": {
         "code": "c2",
@@ -2207,16 +2416,18 @@
         "status": "recipe-ready",
         "surface_binding_count": 0,
         "surface_binding_expected_node_count": 0,
-        "source_sha256": "12e9203a2f02abcc1c28e8e71670a5293c15ecd62faffe0ad6cb5ba36a6dca5a",
-        "frame_sha256": "fc53db27ef574f574a376d1b65a6809a86937131fe1dc0d695e8b309ad81c28b"
+        "source_sha256": "cefc00ef5127f4a161f8b929e7be505bfdc7da34fa63a77880c6ca2c22b08496",
+        "frame_sha256": "25db9fec9b6840f0880b8616b4ff7bd560a5e52a0b2dd3e7a7d271eb35c588b7",
+        "icon_source_family": "tabler-original-v3.46.0",
+        "icon_count": 0
       },
       "c3": {
         "code": "c3",
         "title": "layout-c3 · 顶图卡列阵 · AI 案例",
         "layout": "paper-ink.data.profile-card-array",
         "page_role": "orient",
-        "source_kind": "recipe-generated",
-        "source": "references/gallery-paper-ink/ai/frames/layout-c3.html",
+        "source_kind": "custom-redraw",
+        "source": "themes/catalog-projections/hermes-klein/masters/orange-c3.html",
         "frame": "themes/catalog-projections/hermes-klein/frames/klein-blue/layout-c3.html",
         "recipe_id": "klein-blue:c3",
         "surface_profile": "data-evidence-board",
@@ -2226,10 +2437,12 @@
           "reason": "常规内容页在纸面上建立层级。"
         },
         "status": "recipe-ready",
-        "surface_binding_count": 1,
-        "surface_binding_expected_node_count": 3,
-        "source_sha256": "c8ec467e3ffc78a46b6187b3d46213a4376320e9dab76cd3efce4efbe8772abd",
-        "frame_sha256": "e090bb67b8e2c7f9ab38e72c73897c86795b29ac81d346b1b550fb2b8fc23f96"
+        "surface_binding_count": 0,
+        "surface_binding_expected_node_count": 0,
+        "source_sha256": "f0b2e47c06f441fb14462ba8922fb214fce2ee9fd3b15598ed8144098499679a",
+        "frame_sha256": "740ef9dcb5bbf1769b6901ffd5ad89d97dd5555d7e4bcd1355ef1ac388626b6f",
+        "icon_source_family": "tabler-original-v3.46.0",
+        "icon_count": 0
       },
       "c4": {
         "code": "c4",
@@ -2249,8 +2462,10 @@
         "status": "recipe-ready",
         "surface_binding_count": 0,
         "surface_binding_expected_node_count": 0,
-        "source_sha256": "0be5b85d94a86236f7d35a65c9f94d50446d194596464fff8b03ed55d22232bd",
-        "frame_sha256": "b29ea7bc710857d2f209a22eb88027cfff6768d84070d52882c63c55353d13d7"
+        "source_sha256": "c825ab31f4ae364f055de2a02b2823c25c886facf6a15b84469f6b93eeb69f09",
+        "frame_sha256": "80033446933fc1fbe5c4d04281dafeb3c27b06f2efff857172ebd4305a9bc60b",
+        "icon_source_family": "tabler-original-v3.46.0",
+        "icon_count": 0
       },
       "c5": {
         "code": "c5",
@@ -2270,8 +2485,10 @@
         "status": "recipe-ready",
         "surface_binding_count": 0,
         "surface_binding_expected_node_count": 0,
-        "source_sha256": "08dfcfbcede467a9a3724102fe27e90bac6bb27d1d5d25292a09fa3e8e9e1ef5",
-        "frame_sha256": "e176b2650f68b6565d79f9b426a4e9e2333261a8ea8a3b4864718016263efca7"
+        "source_sha256": "7fe27ad2e2849ba09ab9d51f4b73a5607e9234f3b861aa2eefe7067773d704ce",
+        "frame_sha256": "297f116e7e4ceb4d14713083cf18ce767b9929de05d6a0e8e8289cbef19569a9",
+        "icon_source_family": "tabler-original-v3.46.0",
+        "icon_count": 0
       },
       "c6": {
         "code": "c6",
@@ -2291,16 +2508,18 @@
         "status": "recipe-ready",
         "surface_binding_count": 0,
         "surface_binding_expected_node_count": 0,
-        "source_sha256": "9d82838fc168a644eb4c18c919a664f875d458c4ca9dc6f2363fc0caf32a7b43",
-        "frame_sha256": "62e7ac36ce06225b4f7d6814b9ff6427f6caee132bf9fddcd662b845545b868a"
+        "source_sha256": "40df69815bc89c0759a72d9dae4fde4729a04fc18773b8507db3425052da24c7",
+        "frame_sha256": "11234f7b601a31c69ae9a85a92191120d17736c049bff0fb664f837c6bf4573d",
+        "icon_source_family": "tabler-original-v3.46.0",
+        "icon_count": 0
       },
       "c7": {
         "code": "c7",
         "title": "layout-c7 · 样本排行柱图 · 大模型 Benchmark 排行",
         "layout": "paper-ink.data.ranked-specimen-bars",
         "page_role": "prove",
-        "source_kind": "recipe-generated",
-        "source": "references/gallery-paper-ink/ai/frames/layout-c7.html",
+        "source_kind": "custom-redraw",
+        "source": "themes/catalog-projections/hermes-klein/masters/orange-c7.html",
         "frame": "themes/catalog-projections/hermes-klein/frames/klein-blue/layout-c7.html",
         "recipe_id": "klein-blue:c7",
         "surface_profile": "data-evidence-board",
@@ -2310,10 +2529,12 @@
           "reason": "常规内容页在纸面上建立层级。"
         },
         "status": "recipe-ready",
-        "surface_binding_count": 1,
-        "surface_binding_expected_node_count": 3,
-        "source_sha256": "e580898eb9d4f8532eed11d607952e014c5fcd79f67330e55454531ed0dad8fe",
-        "frame_sha256": "5b7afe87bd76921e9e57d087017f26c122d8df898ecac0960ae0532e2fa4841f"
+        "surface_binding_count": 0,
+        "surface_binding_expected_node_count": 0,
+        "source_sha256": "d132bca78bed283b8efc23c8c2f6ce3b7cc63b0591201c636094f0bc579f96b9",
+        "frame_sha256": "11d7063f31c8ccc4a0928d096ac31737252310f2be3bdba3b4070e382044e54e",
+        "icon_source_family": "tabler-original-v3.46.0",
+        "icon_count": 0
       },
       "d1": {
         "code": "d1",
@@ -2333,8 +2554,10 @@
         "status": "recipe-ready",
         "surface_binding_count": 0,
         "surface_binding_expected_node_count": 0,
-        "source_sha256": "c89b522aa1b470d76ced58a47c3776889b538afb324e54aa204d9c06ad66f6fb",
-        "frame_sha256": "d44244edb77bccae1e85f8595f4e30bf77c2b1b112bcb71918285f7aed897928"
+        "source_sha256": "7b376a65f9fe7e349006876742632a7edfaa7aaa1907718790d7f16367ca386a",
+        "frame_sha256": "32ae33d79dc2fcfedd4afe26028fbf64de5d792a2229870a58c938223850daff",
+        "icon_source_family": "tabler-original-v3.46.0",
+        "icon_count": 0
       },
       "d2": {
         "code": "d2",
@@ -2354,8 +2577,10 @@
         "status": "recipe-ready",
         "surface_binding_count": 0,
         "surface_binding_expected_node_count": 0,
-        "source_sha256": "15c71c2fdaf943a0d6bbb1e554d8f0b0f1c58887715516809577da657c62e5bb",
-        "frame_sha256": "04a2078492ae28d5edf1205b0b0648187cee053e6df679e8b2ba96f9b0c7228b"
+        "source_sha256": "b384d9fc7497a35ef074a267dae30934bcb276f0332b2d6d6afb9574df425e72",
+        "frame_sha256": "82d7f13ed26b6fb82861220c2ee7d008aa5ccf7442f2fccc84bc2eb88aa64ae3",
+        "icon_source_family": "tabler-original-v3.46.0",
+        "icon_count": 0
       },
       "d3": {
         "code": "d3",
@@ -2375,8 +2600,10 @@
         "status": "recipe-ready",
         "surface_binding_count": 0,
         "surface_binding_expected_node_count": 0,
-        "source_sha256": "7c6c7e5d89e732bdcf47168b6e403c925197db1bdbb2706f4f01349ac925b021",
-        "frame_sha256": "a59e5a425c8ec9817e7a0a5b5e156226f92bb0778f5a3fa57eb90cb1fcb2ba14"
+        "source_sha256": "bdee3f85b78b379f0e0f4d81db4e3feb11a119117699feef4194c289c65696ee",
+        "frame_sha256": "25501c3e64d1421675911a6a78d87ebdab16688fd7562eab405b2c59bb5901f5",
+        "icon_source_family": "tabler-original-v3.46.0",
+        "icon_count": 0
       },
       "d4": {
         "code": "d4",
@@ -2396,8 +2623,10 @@
         "status": "recipe-ready",
         "surface_binding_count": 0,
         "surface_binding_expected_node_count": 0,
-        "source_sha256": "0dbaf3e168c9d3331639f093e9b1596fc9f4a035c6d7596ffecb19601765ce26",
-        "frame_sha256": "c71b126fe49ff029b17e2456c80e60aa91214e6a782f9866e94e56cee57845f5"
+        "source_sha256": "960eaa7d634c6e6f8a84ec3f4848ecd0d177d3885d351884c0dac59f0546f36d",
+        "frame_sha256": "195dbee78b62b916db1bb64bc72202adda39a784283350e935d90da880e3aee2",
+        "icon_source_family": "tabler-original-v3.46.0",
+        "icon_count": 0
       },
       "d5": {
         "code": "d5",
@@ -2417,8 +2646,10 @@
         "status": "recipe-ready",
         "surface_binding_count": 0,
         "surface_binding_expected_node_count": 0,
-        "source_sha256": "e513477338b36a5b6f72fdb8c53d8ab4c7af3eccc5d106754caf0f31bc08bc52",
-        "frame_sha256": "a577ad9471628fda100c7057df2ba0d3569660db8c03249bf740782a4eef0c97"
+        "source_sha256": "d9d42df0b5303e03a0305f771f55d33bd728b2a5e11563aaf876ff56e6ac93c8",
+        "frame_sha256": "e53b1eff7ca958f848ca111b0aafbdcb695dd32dab3f9618ea889d3f96a8268a",
+        "icon_source_family": "tabler-original-v3.46.0",
+        "icon_count": 0
       },
       "d6": {
         "code": "d6",
@@ -2438,8 +2669,10 @@
         "status": "recipe-ready",
         "surface_binding_count": 1,
         "surface_binding_expected_node_count": 1,
-        "source_sha256": "faec460ddc5f1456fab15869934562ec35914c20d4f5da4bbe41b8ab0b740b22",
-        "frame_sha256": "2d3e3679210c2660e71ab0f17e82b8b7606f7fe32086e1bef99c2784fd1d00bb"
+        "source_sha256": "835c8bd3c51ea5a634482963ef4732d8421a099bf0dcf73c0071ba0946b0dfcc",
+        "frame_sha256": "8b73d06337f91458cde57a7f6d92f82540fa8660da6a38e5f5419f468f5268fa",
+        "icon_source_family": "tabler-original-v3.46.0",
+        "icon_count": 0
       },
       "d7": {
         "code": "d7",
@@ -2459,8 +2692,10 @@
         "status": "recipe-ready",
         "surface_binding_count": 0,
         "surface_binding_expected_node_count": 0,
-        "source_sha256": "474d1a48c17d239c93dbf9839e60b9b4dd0a040fa337af26a13bc49b01f414a2",
-        "frame_sha256": "ab95c224057d7d2ab356748ef631fad27701213bc5bf42e78a4428a9e3d4e1c5"
+        "source_sha256": "fc21b18679a6236e3dbb2e4512b59740c8309cd4fdd6949e65929e6814220797",
+        "frame_sha256": "2a803cdcfcefc03233d8d0d68c52c2740c64af8a6710839fd2c8d4f7e49dbc3a",
+        "icon_source_family": "tabler-original-v3.46.0",
+        "icon_count": 0
       },
       "d8": {
         "code": "d8",
@@ -2480,8 +2715,10 @@
         "status": "recipe-ready",
         "surface_binding_count": 0,
         "surface_binding_expected_node_count": 0,
-        "source_sha256": "9f3c9c78a65496aafed0e999a5cbe6d24a3156d0e2780796ba24b6010a77c0c9",
-        "frame_sha256": "eca45ea646caf400b9bb07790b96e86df397419c7675e243c60af3c0cac81a8e"
+        "source_sha256": "b0c5bb75eb9a4fa5fd1fb2c35f64d8a0857269eaedc8db99b485a64d175b8d49",
+        "frame_sha256": "7aeef4e9c3ca78f3f7df0bd1c60e1c62f4e6cb4fca80ca9a634c932e547f87fc",
+        "icon_source_family": "tabler-original-v3.46.0",
+        "icon_count": 0
       },
       "d9": {
         "code": "d9",
@@ -2501,8 +2738,10 @@
         "status": "recipe-ready",
         "surface_binding_count": 0,
         "surface_binding_expected_node_count": 0,
-        "source_sha256": "9494db239718c914a58aac5069470b20c4b3bee12f2515872adeec52cd2cfdc9",
-        "frame_sha256": "d25a6a490824562bb21c978ad475fa177b23ead6f7b86f63a7c154fb311da0fa"
+        "source_sha256": "13a6d317ff8db545df199ee08819eddaa8cbb1ee59c0c0708aff9ec88fbde7d6",
+        "frame_sha256": "a41f6d3cc819ca6a9b14980f76440bac556b74b95c11ead88649393949a9aed8",
+        "icon_source_family": "tabler-original-v3.46.0",
+        "icon_count": 0
       },
       "d10": {
         "code": "d10",
@@ -2522,8 +2761,10 @@
         "status": "recipe-ready",
         "surface_binding_count": 0,
         "surface_binding_expected_node_count": 0,
-        "source_sha256": "228c7dd2c73aea7a2ca7fd2432cce5bf736ca74431adfd7e76bd5f10d8146c20",
-        "frame_sha256": "5cf4b0e6ebd88dd8b50bc84bf133b1cbb9873916231803b69f17218252fee873"
+        "source_sha256": "38ff8bd250f279aa2fb9177facbb4d5ef365311b8030c8b7ad95c0d12cc92bf9",
+        "frame_sha256": "919e2f40046cbb0a36079d382a9df5ae74762aec461f3a169b0571a85319cab0",
+        "icon_source_family": "tabler-original-v3.46.0",
+        "icon_count": 0
       },
       "d11": {
         "code": "d11",
@@ -2543,8 +2784,10 @@
         "status": "recipe-ready",
         "surface_binding_count": 0,
         "surface_binding_expected_node_count": 0,
-        "source_sha256": "3d225ead91d101f1b8dd63ce6d6983fdfabea33d1aa237d017ca1b5ae5e7add6",
-        "frame_sha256": "620b09c2c892ef958a550fc0514eec77d2df77cefb4b41f8e7f96080899b3303"
+        "source_sha256": "453d8b05b0a3a4210cbb1a6192264fd6607b22bc598f983ccd544f5b810272bd",
+        "frame_sha256": "073fc1199d6aa8126261743ffefa2d22f88b3a94dc0238cf2d367966871e75be",
+        "icon_source_family": "tabler-original-v3.46.0",
+        "icon_count": 0
       },
       "e1": {
         "code": "e1",
@@ -2564,8 +2807,10 @@
         "status": "recipe-ready",
         "surface_binding_count": 3,
         "surface_binding_expected_node_count": 3,
-        "source_sha256": "84f0c0eb2ab47fd64731dc8647348f830c79322cb2892bf641a4c10ef34bc7af",
-        "frame_sha256": "5a17afe929e7efdc1b5da8f0d3525cd0800de74b8899fdcb8ae6b1b9f2118400"
+        "source_sha256": "9ecbceb894febddeed8bda4deb44916cc127263ac0591207a8f84104e66bd3ed",
+        "frame_sha256": "61414f30fc0c8ceb64bdb9f0ca51a0bdff27208e7c79ab91e6a8b99839ab21a0",
+        "icon_source_family": "tabler-original-v3.46.0",
+        "icon_count": 0
       },
       "e2": {
         "code": "e2",
@@ -2585,16 +2830,18 @@
         "status": "recipe-ready",
         "surface_binding_count": 0,
         "surface_binding_expected_node_count": 0,
-        "source_sha256": "f08c1e6977047938c2a0d13b14f2d879dc3acf09db92a5bbdf40ebf7273dba7d",
-        "frame_sha256": "dc7d2c457f56d4122d8846c669bb32169733d9b92f2c93ceef9c8aaa00647084"
+        "source_sha256": "15f00eb6ccdfb792918aa860cf60cf8c66a5f2d847ee3910dfab18ddea69ed9f",
+        "frame_sha256": "5e835121de34abcc6808dfa5337ddd5f54dea9e5dc36fc7898118dd4649a2ce0",
+        "icon_source_family": "tabler-original-v3.46.0",
+        "icon_count": 0
       },
       "e3": {
         "code": "e3",
         "title": "layout-e3 · 双带列阵 · Agent 4 坑 4 解",
         "layout": "paper-ink.comparison.paired-bands",
         "page_role": "compare",
-        "source_kind": "recipe-generated",
-        "source": "references/gallery-paper-ink/ai/frames/layout-e3.html",
+        "source_kind": "custom-redraw",
+        "source": "themes/catalog-projections/hermes-klein/masters/orange-e3.html",
         "frame": "themes/catalog-projections/hermes-klein/frames/klein-blue/layout-e3.html",
         "recipe_id": "klein-blue:e3",
         "surface_profile": "open-paper-paired-bands",
@@ -2606,16 +2853,18 @@
         "status": "recipe-ready",
         "surface_binding_count": 0,
         "surface_binding_expected_node_count": 0,
-        "source_sha256": "0f97993f53b4c4599f779f63fc71d7949ed0ef0f3ce17b2a464b041891e1ea30",
-        "frame_sha256": "5d3dfd1e1a983463b7e206edaf032c2a9691728442a9abbef2b56645137addce"
+        "source_sha256": "bcd4cbc583dadb33b796c562f45d12725fe0ccf01262a4dc446579d44faedcdb",
+        "frame_sha256": "8232b27f16ecae008e52d09baa619b752bbcb2593ab544cca408c7bfaf96ffe9",
+        "icon_source_family": "tabler-original-v3.46.0",
+        "icon_count": 0
       },
       "e4": {
         "code": "e4",
         "title": "layout-e4 · 前后对比行矩阵 + KPI 底带 · AI Workflow",
         "layout": "paper-ink.comparison.before-after-matrix",
         "page_role": "compare",
-        "source_kind": "recipe-generated",
-        "source": "references/gallery-paper-ink/ai/frames/layout-e4.html",
+        "source_kind": "custom-redraw",
+        "source": "themes/catalog-projections/hermes-klein/masters/orange-e4.html",
         "frame": "themes/catalog-projections/hermes-klein/frames/klein-blue/layout-e4.html",
         "recipe_id": "klein-blue:e4",
         "surface_profile": "open-paper-before-after-rows",
@@ -2627,8 +2876,10 @@
         "status": "recipe-ready",
         "surface_binding_count": 0,
         "surface_binding_expected_node_count": 0,
-        "source_sha256": "4baf0305df3e19614601615ca0650d51b951070e5d466ab2d83eeb6b830093b6",
-        "frame_sha256": "f3e6f8a098ce5e79a7496fa533b436c2a3e1c8b0fd31d8cdeeb02a6cc2fde2af"
+        "source_sha256": "9af452c3dc2daa7a74ec30b43954fc525acd9c7d161ef1aa50a01d78b6001a5e",
+        "frame_sha256": "24f7227efa08adf0359fa4ba494181b2ecd77b3d2f469cb2661b1349c2a4aa6a",
+        "icon_source_family": "tabler-original-v3.46.0",
+        "icon_count": 0
       },
       "e5": {
         "code": "e5",
@@ -2646,10 +2897,12 @@
           "reason": "常规内容页在纸面上建立层级。"
         },
         "status": "recipe-ready",
-        "surface_binding_count": 0,
-        "surface_binding_expected_node_count": 0,
-        "source_sha256": "5c1a28f5e073601181aa3833d5f2f91bcab7d191e6309a34f73292a0e8cb9c9d",
-        "frame_sha256": "b7700e0a25615c5e6f71fdb023378e8c9d6828c63c173f932d907f13d092b9dc"
+        "surface_binding_count": 1,
+        "surface_binding_expected_node_count": 2,
+        "source_sha256": "37346875c10ef7ad9843da891c707549571ed693888896cd0a42c4b5ded2ca87",
+        "frame_sha256": "d97bebbb8a53dec16f96528604070f64c2d1644572d7c8b3c7db999e38853870",
+        "icon_source_family": "tabler-original-v3.46.0",
+        "icon_count": 0
       },
       "e6": {
         "code": "e6",
@@ -2660,17 +2913,19 @@
         "source": "references/gallery-paper-ink/ai/frames/layout-e6.html",
         "frame": "themes/catalog-projections/hermes-klein/frames/klein-blue/layout-e6.html",
         "recipe_id": "klein-blue:e6",
-        "surface_profile": "vertical-before-after-bands",
+        "surface_profile": "white-over-ink-before-after",
         "canvas": {
           "token": "paper",
           "value": "#f2efe9",
           "reason": "常规内容页在纸面上建立层级。"
         },
-        "status": "recipe-ready",
-        "surface_binding_count": 2,
-        "surface_binding_expected_node_count": 2,
-        "source_sha256": "4a706e4d5b1d5918ba86b93781c274ad7acc47ace7ca7303dce2f7d5e6bd468a",
-        "frame_sha256": "3c823c679d1473c8c9ff4d2c365ebddd7fd6dcf251a03984ed002d22d42cbcf7"
+        "status": "user-correction-specified",
+        "surface_binding_count": 3,
+        "surface_binding_expected_node_count": 74,
+        "source_sha256": "8d1efbdcf63653ec5528563c56550040f4ace8e55bf864697079c1982907c847",
+        "frame_sha256": "98fb23e1d6a7e0a9323b913625dd26bbdbaad625ccf78cffb7dbf528e7812529",
+        "icon_source_family": "tabler-original-v3.46.0",
+        "icon_count": 0
       },
       "f2": {
         "code": "f2",
@@ -2688,10 +2943,12 @@
           "reason": "常规内容页在纸面上建立层级。"
         },
         "status": "recipe-ready",
-        "surface_binding_count": 0,
-        "surface_binding_expected_node_count": 0,
-        "source_sha256": "cc4e5792b9d30de1391fa207a9823b1a40fbff04a5a410203b6a6a341e276e4b",
-        "frame_sha256": "07122ad7f9793c6d969b06e01d39124452e9abac5bf08d67a3db8fc4b69eac9b"
+        "surface_binding_count": 1,
+        "surface_binding_expected_node_count": 1,
+        "source_sha256": "da4017976882aa928940a117943a8f07ed03e6afa4fcce1a9bb1eaeec09ac5cb",
+        "frame_sha256": "2d3360a7a88693fc3064bd9122782589b17976cddf33609844bf1f69ec565795",
+        "icon_source_family": "tabler-original-v3.46.0",
+        "icon_count": 0
       },
       "f3": {
         "code": "f3",
@@ -2711,8 +2968,10 @@
         "status": "recipe-ready",
         "surface_binding_count": 0,
         "surface_binding_expected_node_count": 0,
-        "source_sha256": "a2bdba737e3592dbd8ccd16d11cb9b8d53702ac9226ebf906877460c4707f0ef",
-        "frame_sha256": "b3503ca3d338689a4ca615f780d894bf5f71474ecd0705a0afa0f563e0fd309e"
+        "source_sha256": "6fa0aab66c0294a4311859023e89dad81d33c7f9bdab2c7abe70138668724456",
+        "frame_sha256": "0c4926ac522b0e35ef4b4dcfa0acb61db4cb8e0af191897ff91ba64b27e543ff",
+        "icon_source_family": "tabler-original-v3.46.0",
+        "icon_count": 0
       },
       "g1": {
         "code": "g1",
@@ -2732,16 +2991,18 @@
         "status": "recipe-ready",
         "surface_binding_count": 1,
         "surface_binding_expected_node_count": 1,
-        "source_sha256": "a91cf104ea5dcd2e1f37e177f4465f0f727fcb61f720d0f43febbd7d0ff7022c",
-        "frame_sha256": "43a54db5e32eceb83b7e1b968e0e19edc971eb4cf1f36d691c818e984064b8a4"
+        "source_sha256": "f6953159d8e5947a49180b74cd9404e8c31e4dea7324f2c6f4796e60c08bb6ba",
+        "frame_sha256": "6f5a10eae7b36761a1b46c817c305a620b14e2bf1a4d1298b58e7a5d325b81e9",
+        "icon_source_family": "tabler-original-v3.46.0",
+        "icon_count": 0
       },
       "g2": {
         "code": "g2",
         "title": "layout-g2 · 立绘标本 + 环绕引线标注 · AI 设备参数",
         "layout": "paper-ink.radial.annotated-hero",
         "page_role": "explain",
-        "source_kind": "recipe-generated",
-        "source": "references/gallery-paper-ink/ai/frames/layout-g2.html",
+        "source_kind": "custom-redraw",
+        "source": "themes/catalog-projections/hermes-klein/masters/orange-g2.html",
         "frame": "themes/catalog-projections/hermes-klein/frames/klein-blue/layout-g2.html",
         "recipe_id": "klein-blue:g2",
         "surface_profile": "open-paper-diagram",
@@ -2753,8 +3014,10 @@
         "status": "recipe-ready",
         "surface_binding_count": 0,
         "surface_binding_expected_node_count": 0,
-        "source_sha256": "3cd9de06576fdd039dda55b159ee1911109701655fd56cc863259b5ecae4c045",
-        "frame_sha256": "6ddb38e76325e41c9716435a1cb67a866b5fa263ac221c1c502b0523b079843f"
+        "source_sha256": "7704214ac0f2e18a0b28ce965122ae46c43a5322d06279c6f4567d92fd16fc92",
+        "frame_sha256": "2e1ba500d54d547eab1c2a7f08aab054067fb3d43f1e2380e629fe700ebdf6a3",
+        "icon_source_family": "tabler-original-v3.46.0",
+        "icon_count": 0
       },
       "g4": {
         "code": "g4",
@@ -2774,8 +3037,10 @@
         "status": "recipe-ready",
         "surface_binding_count": 4,
         "surface_binding_expected_node_count": 10,
-        "source_sha256": "528b5797c81680ea840e295fd5d6dbf55bdd2a23f3f9b560f024058cc1241276",
-        "frame_sha256": "2390d94eb13ef7c725a56fd94314e00af9fd800d13442993eef37b8af7d0fe1f"
+        "source_sha256": "5dd9a9e9772ed26c6804d8847b2706219c5950f75997b2d265e75b9f6fefc3fb",
+        "frame_sha256": "20121526c43c95798bc6ca9a251619d96a4d30e91e653092d911becb09a259be",
+        "icon_source_family": "tabler-original-v3.46.0",
+        "icon_count": 0
       },
       "g5": {
         "code": "g5",
@@ -2795,8 +3060,10 @@
         "status": "recipe-ready",
         "surface_binding_count": 1,
         "surface_binding_expected_node_count": 1,
-        "source_sha256": "0c7e152c08f0a09678df8a41508339e509e422002ac9b7028a01a725eb95e3c2",
-        "frame_sha256": "49872b207eed27148ec9ad638d64723ee875f2a94112e403c912e9f1639487c7"
+        "source_sha256": "8eef3dee1d2ffc517a58766fd03bfb5a634c5bd9f0f5754b6af4cd11ddb269be",
+        "frame_sha256": "055d20b4fc61005e3b87ccc56382734b68fe9df7d5150fb149ae45e21846db36",
+        "icon_source_family": "tabler-original-v3.46.0",
+        "icon_count": 0
       },
       "h1": {
         "code": "h1",
@@ -2814,10 +3081,12 @@
           "reason": "常规内容页在纸面上建立层级。"
         },
         "status": "recipe-ready",
-        "surface_binding_count": 1,
-        "surface_binding_expected_node_count": 1,
-        "source_sha256": "aa612937ca35fccf3e5b1d4c42dcf80044318b703698fe71076b4b07beb9256b",
-        "frame_sha256": "028b8c2adda2e8d8e971e88311fae9007bc870dc091fef77ce0a8406a8d6d6b6"
+        "surface_binding_count": 2,
+        "surface_binding_expected_node_count": 2,
+        "source_sha256": "48ac00f7cec0c9f78c36c55d4421d3e8a3b8c48fb95ec685c8046082a9e3870d",
+        "frame_sha256": "e6995f3c90faade197d79e86b2f07203176c9ac13a7915faec84d7323a95591e",
+        "icon_source_family": "tabler-original-v3.46.0",
+        "icon_count": 0
       },
       "h2": {
         "code": "h2",
@@ -2835,10 +3104,12 @@
           "reason": "常规内容页在纸面上建立层级。"
         },
         "status": "recipe-ready",
-        "surface_binding_count": 0,
-        "surface_binding_expected_node_count": 0,
-        "source_sha256": "8f742cca96af5f1dbc51f193a33c22d543109b916d215411a8fd8eb45b224a45",
-        "frame_sha256": "8630578b29cd28d168fa6d695e9027cb923f83201df202d0ef8f0f54b2ef11fe"
+        "surface_binding_count": 1,
+        "surface_binding_expected_node_count": 1,
+        "source_sha256": "e8bd401a5819bf83028a2c8824d990960402302f8c67f02c757bed5d56cec942",
+        "frame_sha256": "7e7bc3ab28110e52efc79aadbc49c812e9193ca56766e01172024b1446966824",
+        "icon_source_family": "tabler-original-v3.46.0",
+        "icon_count": 0
       },
       "h3": {
         "code": "h3",
@@ -2851,15 +3122,17 @@
         "recipe_id": "klein-blue:h3",
         "surface_profile": "approved-architecture-stack",
         "canvas": {
-          "token": "white",
-          "value": "#ffffff",
-          "reason": "custom-redraw 的已定设计意图；视觉由该页面源码独立实现，ledger 只如实登记。"
+          "token": "paper",
+          "value": "#f2efe9",
+          "reason": "恢复旧版米色纸面；四层架构表继续作为独立纯白前景面。"
         },
         "status": "approved",
         "surface_binding_count": 0,
         "surface_binding_expected_node_count": 0,
-        "source_sha256": "2a4990b455080e74c150dd8f0768f4f1633144855a3c07f54cd07bd31469a23a",
-        "frame_sha256": "fc6c055f0a625dddf00b800029a14809a1b450abef9d124b8a32a6a8ba326b81"
+        "source_sha256": "02c671523fc2d7de3369537a113a58d88be4324569ed74731e90f52a0a549481",
+        "frame_sha256": "de766650f17014b7ce5a239164f4ee5f3aad365b697c1198e4492e3d33b950be",
+        "icon_source_family": "tabler-original-v3.46.0",
+        "icon_count": 0
       },
       "h4": {
         "code": "h4",
@@ -2879,16 +3152,18 @@
         "status": "recipe-ready",
         "surface_binding_count": 1,
         "surface_binding_expected_node_count": 6,
-        "source_sha256": "8560fd6c7922329e97604e40158738f80e4387fb661b183113f1453c974f8875",
-        "frame_sha256": "39f697abfd65c562c4d598ce161789c063b468c3896f11422e33c38465706499"
+        "source_sha256": "ed59f6b83defc4ee6fe0b06a950baf793d6de66910328933fed4c377107088ab",
+        "frame_sha256": "8106fdb82dc1ffb4cc0772fa7a1c99f3e093f170c0092b920dcbeaf496cd5cf3",
+        "icon_source_family": "tabler-original-v3.46.0",
+        "icon_count": 0
       },
       "i1": {
         "code": "i1",
         "title": "layout-i1 · 横向流水线 · RAG 检索流水线",
         "layout": "paper-ink.flow.pipeline",
         "page_role": "explain",
-        "source_kind": "recipe-generated",
-        "source": "references/gallery-paper-ink/ai/frames/layout-i1.html",
+        "source_kind": "custom-redraw",
+        "source": "themes/catalog-projections/hermes-klein/masters/orange-i1.html",
         "frame": "themes/catalog-projections/hermes-klein/frames/klein-blue/layout-i1.html",
         "recipe_id": "klein-blue:i1",
         "surface_profile": "process-axis",
@@ -2898,10 +3173,12 @@
           "reason": "常规内容页在纸面上建立层级。"
         },
         "status": "recipe-ready",
-        "surface_binding_count": 3,
-        "surface_binding_expected_node_count": 3,
-        "source_sha256": "beb0a4acb0b3fb69af8094425b39fb5fa0dcad295f1e81fb527af980c192421e",
-        "frame_sha256": "bf4e6a660addd2113d1c2edcace914ba6075f9a6e2454078c864b5c01c91256d"
+        "surface_binding_count": 0,
+        "surface_binding_expected_node_count": 0,
+        "source_sha256": "06a37710f21e27ae125f6a7bb5cfee9d7a07d32bd73d1407794dbf7fa9c17a2a",
+        "frame_sha256": "76b1f001ef0f70f9c3f43646b5c348f7432e958b174279d3dcac05d298ee5552",
+        "icon_source_family": "tabler-original-v3.46.0",
+        "icon_count": 0
       },
       "i2": {
         "code": "i2",
@@ -2921,8 +3198,10 @@
         "status": "recipe-ready",
         "surface_binding_count": 1,
         "surface_binding_expected_node_count": 2,
-        "source_sha256": "e912e27d1b2e03c56d818d122d52a3beb938117615d2b692f55b0a18ba54a4e3",
-        "frame_sha256": "c900c6ae30dd76ec5e72b401ce8227d05a27c628b7abcf24f594448a955e04d0"
+        "source_sha256": "7de0af2b9488e8e1ab6b4560eb206c71e4865265b6c1539c1fd3be2b666070f4",
+        "frame_sha256": "390d801851569ed0a81f49688dd8ae9873e2bb833b74a442fc6a10efe3e4169b",
+        "icon_source_family": "tabler-original-v3.46.0",
+        "icon_count": 0
       },
       "i3": {
         "code": "i3",
@@ -2942,8 +3221,10 @@
         "status": "recipe-ready",
         "surface_binding_count": 0,
         "surface_binding_expected_node_count": 0,
-        "source_sha256": "37d2e2d095d76e478bf76cd7d4f9e160ea10819e916e6eafbea011a805bede72",
-        "frame_sha256": "71e01c59c3df682a11e56e687351cb0fcc5842c525871df22d01a786f23d6aa6"
+        "source_sha256": "4e06808600e423e2a4d68e1e45a35e820b86b9ae33081f63917a25d5b143ac62",
+        "frame_sha256": "ea599fc1c9c1a986f2708c3a132fb868f768304d12e46166cfc4a8eb01e801a8",
+        "icon_source_family": "tabler-original-v3.46.0",
+        "icon_count": 0
       },
       "i4": {
         "code": "i4",
@@ -2963,8 +3244,10 @@
         "status": "recipe-ready",
         "surface_binding_count": 2,
         "surface_binding_expected_node_count": 2,
-        "source_sha256": "97d5af3708a4bbf1fbc288b6add477569da77076313267882cf951245d64ee04",
-        "frame_sha256": "508b785af24be118cdae4df9ec0b3bece8fb687f3f3e87d3f038c36ce3fda1e9"
+        "source_sha256": "dad3fa0a3da8b3e12218a1fa6814ee833de693dcbe7040200a57d2954cc9bcf7",
+        "frame_sha256": "588da0e431c15206bdbdc9c2f36551417d5f16688d84665a0caf234aaa6041f4",
+        "icon_source_family": "tabler-original-v3.46.0",
+        "icon_count": 0
       },
       "j1": {
         "code": "j1",
@@ -2982,18 +3265,20 @@
           "reason": "常规内容页在纸面上建立层级。"
         },
         "status": "recipe-ready",
-        "surface_binding_count": 1,
-        "surface_binding_expected_node_count": 4,
-        "source_sha256": "e3485ced1cc13510a059462de498a92dfbc172b86b37ca920be1a563548d6191",
-        "frame_sha256": "3cb321035fd4ff6ad9ecd3fd58a6aa8891efdaa4e69242eb6ffdae5f637c8b27"
+        "surface_binding_count": 2,
+        "surface_binding_expected_node_count": 5,
+        "source_sha256": "59ce4de741b428948bfd2aecd12124130d999918b1edba11b780cb216b5d2eef",
+        "frame_sha256": "e9bc42df8fc04c89d65105d80dcfce1a68400c3747fbc8dc5694461b66694130",
+        "icon_source_family": "tabler-original-v3.46.0",
+        "icon_count": 0
       },
       "j2": {
         "code": "j2",
         "title": "layout-j2 · 蛇形回环 · Agent Loop Engineering",
         "layout": "paper-ink.cycle.serpentine-loop",
         "page_role": "explain",
-        "source_kind": "recipe-generated",
-        "source": "references/gallery-paper-ink/ai/frames/layout-j2.html",
+        "source_kind": "custom-redraw",
+        "source": "themes/catalog-projections/hermes-klein/masters/orange-j2.html",
         "frame": "themes/catalog-projections/hermes-klein/frames/klein-blue/layout-j2.html",
         "recipe_id": "klein-blue:j2",
         "surface_profile": "process-axis",
@@ -3003,10 +3288,12 @@
           "reason": "常规内容页在纸面上建立层级。"
         },
         "status": "recipe-ready",
-        "surface_binding_count": 2,
-        "surface_binding_expected_node_count": 8,
-        "source_sha256": "24741076cde37d63525ab9c6dbd8ab49690a88836185c44ad9649429ed8634e1",
-        "frame_sha256": "897085b82dced3bec78c24e53adff6eb725691163838b737feb75456a5f271e3"
+        "surface_binding_count": 0,
+        "surface_binding_expected_node_count": 0,
+        "source_sha256": "612b47454cd5758469e563a5a27c648ed578f9aa7331c708b63a97a5a005a039",
+        "frame_sha256": "0da007720179905f650070a415968f55e710cabc8348e494dd6fa7473db17f35",
+        "icon_source_family": "tabler-original-v3.46.0",
+        "icon_count": 0
       },
       "j3": {
         "code": "j3",
@@ -3026,8 +3313,10 @@
         "status": "recipe-ready",
         "surface_binding_count": 1,
         "surface_binding_expected_node_count": 5,
-        "source_sha256": "cfcfca68d1dff5a2dc6c9c8e69491f1b2310725a0fa94cf3a8e3566f41a62016",
-        "frame_sha256": "67a2d72b0df7ea73150803e8343083dd232988c0fe9a2571fdcaa055eca1a2a1"
+        "source_sha256": "e3c20129820bb993a1a870d5edfefb9d88bd04f84b3de4d04e5b7cf615468782",
+        "frame_sha256": "4d46ff12eab62b548a94141ae4ca38a4e4d6e713044eda723b28825e0ddecb5b",
+        "icon_source_family": "tabler-original-v3.46.0",
+        "icon_count": 0
       },
       "k1": {
         "code": "k1",
@@ -3046,9 +3335,11 @@
         },
         "status": "recipe-ready",
         "surface_binding_count": 1,
-        "surface_binding_expected_node_count": 1,
-        "source_sha256": "b9a724da68eba3069e383f3f6c7c17d3a6c8ca99fd62e2692dc5a8de8f78e12a",
-        "frame_sha256": "4328c77e4fcc97ec3fe3994a4799ee113ef15a4c4870697f716ba299ef1797b7"
+        "surface_binding_expected_node_count": 4,
+        "source_sha256": "58bfec2be729d3f2f6eb68b36b96d186355da69519547f0bb8c05bfeaa9dfac4",
+        "frame_sha256": "fd9255fb6c8cad4642cc001beb9d7bc4088902a377470c171160984a011f5aed",
+        "icon_source_family": "tabler-original-v3.46.0",
+        "icon_count": 0
       },
       "k2": {
         "code": "k2",
@@ -3068,8 +3359,10 @@
         "status": "recipe-ready",
         "surface_binding_count": 3,
         "surface_binding_expected_node_count": 3,
-        "source_sha256": "8faa1d2c37e6860e40c85029c31488ac60fe29fed8d3b20cc99c5ddfecda5ae3",
-        "frame_sha256": "3666936dc35ef1e9dacb5c1eda12135b76646fe3dd6962c9704c372b8028d4e8"
+        "source_sha256": "b57bcdfd105d72aa7d95e5e2d6338ae87abb6fe5dfc4bfc6157797d6b7273726",
+        "frame_sha256": "d50bf40c747ac8ca825ef7a6a286bc7544c08fa7f61143e64b6c7b0746d0a862",
+        "icon_source_family": "tabler-original-v3.46.0",
+        "icon_count": 0
       },
       "k3": {
         "code": "k3",
@@ -3089,8 +3382,10 @@
         "status": "recipe-ready",
         "surface_binding_count": 2,
         "surface_binding_expected_node_count": 2,
-        "source_sha256": "adb765dc8c232ff040c1da1f509f503504010b08ba18b775c9f64976d705dc56",
-        "frame_sha256": "455451becf451f2bc5cd164b367754500ae79fb57feb54fe3fa8c7d254f8c7ed"
+        "source_sha256": "4c60d8775ca20687fc3a6648160c83be67e3b78f2e73b8fe8f4f777152e8f436",
+        "frame_sha256": "a06535f01901a5fa6ceaf4118c53734ccfcac8b31856d88904a2e2f01aa26856",
+        "icon_source_family": "tabler-original-v3.46.0",
+        "icon_count": 0
       },
       "k4": {
         "code": "k4",
@@ -3110,8 +3405,10 @@
         "status": "recipe-ready",
         "surface_binding_count": 1,
         "surface_binding_expected_node_count": 3,
-        "source_sha256": "b0c00297a3fe6bbb745e27611c02179c9dfa570d61a429bd3bb1e17b59ab985d",
-        "frame_sha256": "7c7a3be72acfa1020ee73a38976afe1558151d77421e588d02ca92ddac9447ca"
+        "source_sha256": "76e8ffac3c321f9f4807615301549413108ad04ae0eb2746c617ba67e2f71790",
+        "frame_sha256": "f7beb111d8b7cfc178d786697aec166b38526b36932a084ad71d641034948a2f",
+        "icon_source_family": "tabler-original-v3.46.0",
+        "icon_count": 0
       },
       "l1": {
         "code": "l1",
@@ -3131,8 +3428,10 @@
         "status": "recipe-ready",
         "surface_binding_count": 1,
         "surface_binding_expected_node_count": 6,
-        "source_sha256": "098cf6f7f6ef4d4cacec74fa74d3ace712f5a4ec06c03810d656c40539419609",
-        "frame_sha256": "621c979df529dee2aef2711386cbb0a333cdc7ebda89599b7187f038ca3dec28"
+        "source_sha256": "a2ae6df6a5d74158303ea1b22123d60a861b4c9dee5f1d11b2adbfd2ed86233f",
+        "frame_sha256": "305790ec95dc0256875006dae73d1144ce88d3340f032d3125a3c65220a63fbe",
+        "icon_source_family": "tabler-original-v3.46.0",
+        "icon_count": 0
       },
       "l2": {
         "code": "l2",
@@ -3152,8 +3451,10 @@
         "status": "recipe-ready",
         "surface_binding_count": 0,
         "surface_binding_expected_node_count": 0,
-        "source_sha256": "5d941ec5bbce4e83dd0f4626a452c76262abc81a5e5695e3e380b751c6286d90",
-        "frame_sha256": "19b1b559adc7784b41c4e03881893473514d14255f7e086fef974c43468ef211"
+        "source_sha256": "f86cd1541b55c0dd3a6d73335751d202271c530bc235ec1700ad67ad650ad584",
+        "frame_sha256": "817ba9307d92e6fb5c48cd11227510ad73dedf0d5b54e9469c722c769ece7394",
+        "icon_source_family": "tabler-original-v3.46.0",
+        "icon_count": 0
       },
       "m1": {
         "code": "m1",
@@ -3173,8 +3474,10 @@
         "status": "recipe-ready",
         "surface_binding_count": 0,
         "surface_binding_expected_node_count": 0,
-        "source_sha256": "071beaddb187aa818f7e3d69c191b1d609ce2644600db528c2bafcf30ea16075",
-        "frame_sha256": "d1ad7072ecb1e884e797e357893e4663b29f4ba5b5e85913c2cb599183936a4e"
+        "source_sha256": "977aced50e1bb5e25386b32fa2cfe868ab7736e9f381b75311df55fc0750facb",
+        "frame_sha256": "2cbd58e0103d8d83b3528381455029759ebd992e2b5d1411744992f45bebbe0c",
+        "icon_source_family": "tabler-original-v3.46.0",
+        "icon_count": 0
       },
       "m2": {
         "code": "m2",
@@ -3194,8 +3497,10 @@
         "status": "recipe-ready",
         "surface_binding_count": 0,
         "surface_binding_expected_node_count": 0,
-        "source_sha256": "a3f9bde4285abcef79ee72532d2eeab9667a4c3fb49f6b147f04a009a213a749",
-        "frame_sha256": "7f9560a9eca296999a88fe88bddf7c83148ba83268d5b67fa493c9ab2b6e6871"
+        "source_sha256": "a26717bc0118c6e4803422e3a33bed999dc96436d4c3b88521101ea9d07c3728",
+        "frame_sha256": "fad5160760ef8452e8177dbb882906ac0a17f496693509367f9dcf27f7aebf28",
+        "icon_source_family": "tabler-original-v3.46.0",
+        "icon_count": 0
       },
       "n1": {
         "code": "n1",
@@ -3213,10 +3518,12 @@
           "reason": "常规内容页在纸面上建立层级。"
         },
         "status": "recipe-ready",
-        "surface_binding_count": 0,
-        "surface_binding_expected_node_count": 0,
-        "source_sha256": "7b147b502a6904dce57df84467f43b751b72a388e94fe66c80930780d454ae56",
-        "frame_sha256": "aab846e007f59d5ae53da08ceead8725b8f10d62bfaa210b677fb01df00d537f"
+        "surface_binding_count": 1,
+        "surface_binding_expected_node_count": 1,
+        "source_sha256": "1a3da0cad6d33c9ca9cc9bd1fb74d740bc8cce4c7f0482d132b73c8f46ead2c4",
+        "frame_sha256": "ab9376a493e32cf67ea289adba7f63fb50e51e5c3f8c21a06649bc5045c23c40",
+        "icon_source_family": "tabler-original-v3.46.0",
+        "icon_count": 0
       },
       "o1": {
         "code": "o1",
@@ -3234,10 +3541,12 @@
           "reason": "常规内容页在纸面上建立层级。"
         },
         "status": "recipe-ready",
-        "surface_binding_count": 1,
-        "surface_binding_expected_node_count": 1,
-        "source_sha256": "26f17f9ee87120b9e72ed3369606d61c100f222de750c64ff67be2b7ca8382be",
-        "frame_sha256": "493c29dd5da447f37661c308e8c59fc8b1c19a8f962309e3c804b44751b0ac6f"
+        "surface_binding_count": 2,
+        "surface_binding_expected_node_count": 2,
+        "source_sha256": "0bb6750bf5a2f0c20b72dce3c4a8193f2d2da9c3b6bdeb26bc1518fc6f06514c",
+        "frame_sha256": "baf58e2a78f28bd81818ace7c48b44678130095c4cdd8fcf9dde27cc7a2edb1c",
+        "icon_source_family": "tabler-original-v3.46.0",
+        "icon_count": 0
       },
       "p1": {
         "code": "p1",
@@ -3257,8 +3566,10 @@
         "status": "recipe-ready",
         "surface_binding_count": 1,
         "surface_binding_expected_node_count": 2,
-        "source_sha256": "62ef96dd24c59dee239f238489b840ba23fc7a9ec5662f61765653aac366e576",
-        "frame_sha256": "9d4cb6d8de6c972e489814aaea9c1cfed823916870f2e69a32bd55098793509d"
+        "source_sha256": "9847b1da5049885ed20d1887065221e3c94403b4d954ef8fe2842c0f04cadae5",
+        "frame_sha256": "96cd32cc08539d46191b01974f9e0c7659e21662158668d75ea6067cdb8f0c18",
+        "icon_source_family": "tabler-original-v3.46.0",
+        "icon_count": 0
       },
       "p2": {
         "code": "p2",
@@ -3276,10 +3587,12 @@
           "reason": "常规内容页在纸面上建立层级。"
         },
         "status": "recipe-ready",
-        "surface_binding_count": 0,
-        "surface_binding_expected_node_count": 0,
-        "source_sha256": "fc756683519640dc1004842e923970dff13e018855577e0b9b49aac9e19dc606",
-        "frame_sha256": "fc8e015dcd09757af79d1e5c10e280ef1ea5b9b37dec00ce6ed956c806d1ae5a"
+        "surface_binding_count": 1,
+        "surface_binding_expected_node_count": 4,
+        "source_sha256": "8aa8146065bcc583169f0cdf5bb0f26c7b70d148366caa9e2b8ba06ec3c3dc19",
+        "frame_sha256": "6d6e86699dd33732ef351d3f42cad79698653305a449ec3f2f5a5f5d896f238e",
+        "icon_source_family": "tabler-original-v3.46.0",
+        "icon_count": 0
       },
       "q1": {
         "code": "q1",
@@ -3299,8 +3612,10 @@
         "status": "recipe-ready",
         "surface_binding_count": 0,
         "surface_binding_expected_node_count": 0,
-        "source_sha256": "1ceacaa2a8156e5adace89c11ebdf17607171cb6eed5d6de88aa1c59596cf049",
-        "frame_sha256": "31ea4307ae77d74eb76f7d42f54dc9ac12f6561a3dcc9919ddf971f0bca01d80"
+        "source_sha256": "57d0163e153db66bb3e70bf9b7e59d9a83ddbfc0b0d67e5160c1a46f49032b13",
+        "frame_sha256": "64c7ee265b1a131ebebeccd63bb1f2b0e238ae44acb516f451e5d64d39c07211",
+        "icon_source_family": "tabler-original-v3.46.0",
+        "icon_count": 0
       },
       "q2": {
         "code": "q2",
@@ -3320,8 +3635,10 @@
         "status": "recipe-ready",
         "surface_binding_count": 0,
         "surface_binding_expected_node_count": 0,
-        "source_sha256": "1efc1e93d8e21377028ed5a37c306c3170d8cab2e89661ea7798bbe1e5c79638",
-        "frame_sha256": "395cc73fecd4e76a69703330b6ff25e2ecaa86aaafcbee0a1fd00fd5aec372f1"
+        "source_sha256": "96c462e39e18017ec15efc42092040effa019014a7544ab2a4f95cc1b42b55c4",
+        "frame_sha256": "7e748b301aa42992405e2644357baa8a6285672ff568fd8b495e1554ff35a9ac",
+        "icon_source_family": "tabler-original-v3.46.0",
+        "icon_count": 0
       },
       "q3": {
         "code": "q3",
@@ -3341,16 +3658,18 @@
         "status": "recipe-ready",
         "surface_binding_count": 3,
         "surface_binding_expected_node_count": 3,
-        "source_sha256": "8fb84d946c2522e0e6e3dfe8e9e51a67203bc94092722814f859a80629046061",
-        "frame_sha256": "fb85946f62045a6f50fbaf4c3501ab5d66c9355fb0ce8eb1dd67b66ab4842c31"
+        "source_sha256": "c52d214508a6f4a2d4754cde7fa2221229227bee994f55481bfb2495ebf9e760",
+        "frame_sha256": "f774560696442c2def15ddc280e4f795b449c827848090b2b75196eb1d75ed21",
+        "icon_source_family": "tabler-original-v3.46.0",
+        "icon_count": 7
       },
       "q4": {
         "code": "q4",
         "title": "layout-q4 · 四象限证据地图 · 一次回答的四类验收物",
         "layout": "paper-ink.evidence.panel-grid-2x2",
         "page_role": "prove",
-        "source_kind": "recipe-generated",
-        "source": "references/gallery-paper-ink/ai/frames/layout-q4.html",
+        "source_kind": "custom-redraw",
+        "source": "themes/catalog-projections/hermes-klein/masters/orange-q4.html",
         "frame": "themes/catalog-projections/hermes-klein/frames/klein-blue/layout-q4.html",
         "recipe_id": "klein-blue:q4",
         "surface_profile": "open-paper-diagram",
@@ -3362,8 +3681,10 @@
         "status": "recipe-ready",
         "surface_binding_count": 0,
         "surface_binding_expected_node_count": 0,
-        "source_sha256": "7d8090073ed00fc95147c995741a1a8cbf5580179f0bbf0e2cd0a98de242bff4",
-        "frame_sha256": "10ef6d63ed5d5464e100fb0c8a2ac82191b1a9eea4f8df2027c525550e747d45"
+        "source_sha256": "a738efd017b4ffd2b1f85b5060ce93847c55fe49e0b5fb15c15e89ba88827dc4",
+        "frame_sha256": "1b85c8f3caeff26ae62ee2ab7698a62c53f80aa7a37b36e8060d386ccce69036",
+        "icon_source_family": "tabler-original-v3.46.0",
+        "icon_count": 0
       },
       "r1": {
         "code": "r1",
@@ -3381,10 +3702,12 @@
           "reason": "常规内容页在纸面上建立层级。"
         },
         "status": "recipe-ready",
-        "surface_binding_count": 1,
+        "surface_binding_count": 2,
         "surface_binding_expected_node_count": 2,
-        "source_sha256": "7dcea0e5d76767277851a9b4fab89b35d510f25bde839ee99e0bb56b2ea50e1e",
-        "frame_sha256": "932708314ae8c819994b53ae4eb6b383a7c323dcc551d686a1f2330648c7fa10"
+        "source_sha256": "a81448ff829cb9685c7d3741265e3dc6042e7d5aa6f5475b808c1510dabdc5b9",
+        "frame_sha256": "535c66fb54fd92838d50c3046ad8cd26a183467a95fc4dba873ce99c13f9920d",
+        "icon_source_family": "tabler-original-v3.46.0",
+        "icon_count": 4
       },
       "r2": {
         "code": "r2",
@@ -3402,10 +3725,12 @@
           "reason": "常规内容页在纸面上建立层级。"
         },
         "status": "recipe-ready",
-        "surface_binding_count": 4,
-        "surface_binding_expected_node_count": 4,
-        "source_sha256": "b310954ce1f003d182cc8a3f034e002656ee5fcb73bd55a7ad30a2c310841a21",
-        "frame_sha256": "cf517c4129e83253bd47714679f35b5582c3bb1e5b4d1dd4e95132f55997372a"
+        "surface_binding_count": 6,
+        "surface_binding_expected_node_count": 6,
+        "source_sha256": "250d6d451ebc42e27fd21dcedfe588c4eb3bc13cf05decef6fc39465842619b8",
+        "frame_sha256": "ddeca274a742f6881638e0d0c0b7ea82f641c7607e38c5c677a2ab36096c7a0a",
+        "icon_source_family": "tabler-original-v3.46.0",
+        "icon_count": 3
       },
       "r3": {
         "code": "r3",
@@ -3425,16 +3750,18 @@
         "status": "recipe-ready",
         "surface_binding_count": 0,
         "surface_binding_expected_node_count": 0,
-        "source_sha256": "04f4383ec9265451857d711fe3eec76bf27119f72e718603b2eed7ed3db69fdd",
-        "frame_sha256": "11791c8326ecec55e19b126c555dddcb5e9e5e426ff2e2ebc59aa7bed77cceaf"
+        "source_sha256": "de55bba48c39f54fbaf0d565157ae6202aafc457384465663f34015d5af940f9",
+        "frame_sha256": "97b40198b3a3eb47ff2229a0cd6d0390eb7a5f52753af185d5e2769d8708a0b3",
+        "icon_source_family": "tabler-original-v3.46.0",
+        "icon_count": 0
       },
       "r4": {
         "code": "r4",
         "title": "layout-r4 · 权衡天平 · 速度与治理",
         "layout": "paper-ink.comparison.balance-tradeoff",
         "page_role": "compare",
-        "source_kind": "recipe-generated",
-        "source": "references/gallery-paper-ink/ai/frames/layout-r4.html",
+        "source_kind": "custom-redraw",
+        "source": "themes/catalog-projections/hermes-klein/masters/orange-r4.html",
         "frame": "themes/catalog-projections/hermes-klein/frames/klein-blue/layout-r4.html",
         "recipe_id": "klein-blue:r4",
         "surface_profile": "balanced-tradeoff",
@@ -3444,18 +3771,20 @@
           "reason": "常规内容页在纸面上建立层级。"
         },
         "status": "recipe-ready",
-        "surface_binding_count": 1,
-        "surface_binding_expected_node_count": 2,
-        "source_sha256": "0cfdee6ea9eaadcbb0dda3a1600f2f78adf8b5df66f0eb82f3b06e3ba7060441",
-        "frame_sha256": "8e9c4d84d011b8615ff9ca8330dd3dc581870229292b5eae2274a9edce6696ca"
+        "surface_binding_count": 0,
+        "surface_binding_expected_node_count": 0,
+        "source_sha256": "481a1ec1cf772ccf7f0b25a6163e66c4b1288e7e676ae9b915b336e47409c073",
+        "frame_sha256": "7ff1ba7a6102bc85b2a6ccd7991f1e8fcdbb62ee13fde09797d48a1be73d712b",
+        "icon_source_family": "tabler-original-v3.46.0",
+        "icon_count": 0
       },
       "r5": {
         "code": "r5",
         "title": "layout-r5 · 互锁齿轮 · AI 系统协同",
         "layout": "paper-ink.network.interlocking-system",
         "page_role": "synthesize",
-        "source_kind": "recipe-generated",
-        "source": "references/gallery-paper-ink/ai/frames/layout-r5.html",
+        "source_kind": "custom-redraw",
+        "source": "themes/catalog-projections/hermes-klein/masters/orange-r5.html",
         "frame": "themes/catalog-projections/hermes-klein/frames/klein-blue/layout-r5.html",
         "recipe_id": "klein-blue:r5",
         "surface_profile": "open-paper-diagram",
@@ -3467,8 +3796,10 @@
         "status": "recipe-ready",
         "surface_binding_count": 0,
         "surface_binding_expected_node_count": 0,
-        "source_sha256": "dd2f2df7b865b33907a30425cba8a8136e57974f212eb93a331e2d322bdcb2ad",
-        "frame_sha256": "6353d3c772fd9b9965956c697c43bfb090b96ab9d7d6348e3244900180840752"
+        "source_sha256": "88fcea059ef4e4327bec364184645f9afb2ee708e7e4097c66aa477b0d0bdf91",
+        "frame_sha256": "b84ac6f70c7d1a77e1ed15399790efd8caa9defe2c4c5225a7b9fcd05f8304fa",
+        "icon_source_family": "tabler-original-v3.46.0",
+        "icon_count": 0
       },
       "r6": {
         "code": "r6",
@@ -3488,16 +3819,18 @@
         "status": "recipe-ready",
         "surface_binding_count": 8,
         "surface_binding_expected_node_count": 8,
-        "source_sha256": "cfde8dcbcb2421975858a8db87cbbb787167d48a216723913acf5393ca8c66de",
-        "frame_sha256": "b781fc9509faf3f00727809eaa404bbd84d58f0723264020a90844e2b00c6656"
+        "source_sha256": "a5c7d28cf313459ee2fb21bade5eb1a3af169a50d780bcb02cb5edc12ec0451a",
+        "frame_sha256": "59ee548ed290da0e7161e4645db6ddf90b4da1eb88615f9af34993200c74e553",
+        "icon_source_family": "tabler-original-v3.46.0",
+        "icon_count": 4
       },
       "r7": {
         "code": "r7",
         "title": "layout-r7 · 二十八品牌 Logo 墙 · 4×7 独立网格",
         "layout": "paper-ink.display.capability-grid-4x7",
         "page_role": "prove",
-        "source_kind": "recipe-generated",
-        "source": "references/gallery-paper-ink/ai/frames/layout-r7.html",
+        "source_kind": "custom-redraw",
+        "source": "themes/catalog-projections/hermes-klein/masters/orange-r7.html",
         "frame": "themes/catalog-projections/hermes-klein/frames/klein-blue/layout-r7.html",
         "recipe_id": "klein-blue:r7",
         "surface_profile": "open-paper-diagram",
@@ -3509,8 +3842,10 @@
         "status": "recipe-ready",
         "surface_binding_count": 0,
         "surface_binding_expected_node_count": 0,
-        "source_sha256": "f96c2864054b737b1b49f846d774817a0351c8e343d7b86d4fba4019b1709379",
-        "frame_sha256": "87b29ce510517f2a3ea1659bec15f0767990c565ac8593df6a1c197dd4d1f651"
+        "source_sha256": "848173043931cdda13943b11d21bd09248daa8df27afac0865e0e154c2d5789f",
+        "frame_sha256": "affef40c046a0e5a4dfefd9f5370d492fdfea62b8b90c10cbddb6c9719a043a8",
+        "icon_source_family": "tabler-original-v3.46.0",
+        "icon_count": 0
       },
       "s1": {
         "code": "s1",
@@ -3530,8 +3865,10 @@
         "status": "recipe-ready",
         "surface_binding_count": 5,
         "surface_binding_expected_node_count": 57,
-        "source_sha256": "08ad37131e2cd1e7fda9cebb365fde77fd98a2f17a80e211d5bfa9f5583dba9c",
-        "frame_sha256": "ac7e8fff85f48bc304ee23c080a39f4831f5e71ab1bc894403e56ce5045e28e6"
+        "source_sha256": "fb7dd220e1c7bf56e3f90ac9cee77ba7e7738980802d43ee1a1b1b5520737917",
+        "frame_sha256": "6f5a8143d5e6846a445a3c5d7bfa0808ac3f29217d67eed715a4c1432618cb3a",
+        "icon_source_family": "tabler-original-v3.46.0",
+        "icon_count": 0
       },
       "s2": {
         "code": "s2",
@@ -3551,16 +3888,18 @@
         "status": "recipe-ready",
         "surface_binding_count": 0,
         "surface_binding_expected_node_count": 0,
-        "source_sha256": "6f994e7a82074a7613092a5e19ca0b244349ec636d7be28408fd181d6bddb69a",
-        "frame_sha256": "5b2308762d1a09d71dd2eab4b5b4e3ab2f91b780149f41b3360378c1077481e7"
+        "source_sha256": "f5ce09d3fc23e75339ec5078f37f75e82ed32b82b0baa70aabd77d8be73675b6",
+        "frame_sha256": "e7763fee056de5abe2cbd0c62ae4399cff1b370468de716fda86f315e330988f",
+        "icon_source_family": "tabler-original-v3.46.0",
+        "icon_count": 0
       },
       "s3": {
         "code": "s3",
         "title": "layout-s3 · 左痛双卡右解复合 · 客服 Agent 升级",
         "layout": "paper-ink.causal.problem-solution-five-slot",
         "page_role": "synthesize",
-        "source_kind": "recipe-generated",
-        "source": "references/gallery-paper-ink/ai/frames/layout-s3.html",
+        "source_kind": "custom-redraw",
+        "source": "themes/catalog-projections/hermes-klein/masters/orange-s3.html",
         "frame": "themes/catalog-projections/hermes-klein/frames/klein-blue/layout-s3.html",
         "recipe_id": "klein-blue:s3",
         "surface_profile": "five-slot-problem-solution",
@@ -3570,10 +3909,12 @@
           "reason": "常规内容页在纸面上建立层级。"
         },
         "status": "recipe-ready",
-        "surface_binding_count": 5,
-        "surface_binding_expected_node_count": 5,
-        "source_sha256": "2619debb9df1174ab94a50177833ab596ccb9584b5d6ea7eed148b0baf7a61db",
-        "frame_sha256": "b6bacf4164dccb8a7f178b6dd9ee93d903f5e67c660f5e37c214604336890fb4"
+        "surface_binding_count": 0,
+        "surface_binding_expected_node_count": 0,
+        "source_sha256": "2fcbc32389fbf483046bf66fb5fb69f58e03a6c5e935922d2210efeca49ac01d",
+        "frame_sha256": "53c04aebac0721431f77fafdcc2a50bc02bb1fe0b37f0a417f8ebae711694dcd",
+        "icon_source_family": "tabler-original-v3.46.0",
+        "icon_count": 0
       },
       "t1": {
         "code": "t1",
@@ -3586,15 +3927,17 @@
         "recipe_id": "klein-blue:t1",
         "surface_profile": "approved-process-axis",
         "canvas": {
-          "token": "white",
-          "value": "#ffffff",
-          "reason": "custom-redraw 的已定设计意图；视觉由该页面源码独立实现，ledger 只如实登记。"
+          "token": "paper",
+          "value": "#f2efe9",
+          "reason": "恢复旧版实际画布底色；纯白只保留给顶层工件。"
         },
         "status": "approved",
         "surface_binding_count": 0,
         "surface_binding_expected_node_count": 0,
-        "source_sha256": "6812d77c540ea5c3cfeaecb5223448888eb6838a9157f039d58393fda0a155fe",
-        "frame_sha256": "9969be7e5f0a9f4f81b60d0e5d51492a386b423ee76282529fdc15bf1b1061f6"
+        "source_sha256": "42bf855ff5816e6e329c02063199e46ef77361f32fd45f52e8cdb2538a591991",
+        "frame_sha256": "c70c83dc7f350caad75f48072491bdc3db0cba634e60bfc89abc4d7d9e9b7f2d",
+        "icon_source_family": "tabler-original-v3.46.0",
+        "icon_count": 0
       },
       "t2": {
         "code": "t2",
@@ -3614,16 +3957,18 @@
         "status": "recipe-ready",
         "surface_binding_count": 1,
         "surface_binding_expected_node_count": 6,
-        "source_sha256": "54e6aaa77ddba17d6c2deeeb08cfe2723ef323025919ede6cce4cb31e7215a78",
-        "frame_sha256": "65682137841239c27cd067bcca50838d1046e3589fc554218649f3f5e5a07f3c"
+        "source_sha256": "5a5998a4532d8b0bfad00df27c152391d94850abe6afbd4c79d339e88648bb1b",
+        "frame_sha256": "401b7d10bc7ffd96fdb55b371b3aabc212913ebe04b9157dc52c08a76bb006ec",
+        "icon_source_family": "tabler-original-v3.46.0",
+        "icon_count": 0
       },
       "t3": {
         "code": "t3",
         "title": "layout-t3 · 组件调用决策与样本图册",
         "layout": "paper-ink.causal.component-decision-atlas",
         "page_role": "explain",
-        "source_kind": "recipe-generated",
-        "source": "references/gallery-paper-ink/ai/frames/layout-t3.html",
+        "source_kind": "custom-redraw",
+        "source": "themes/catalog-projections/hermes-klein/masters/orange-t3.html",
         "frame": "themes/catalog-projections/hermes-klein/frames/klein-blue/layout-t3.html",
         "recipe_id": "klein-blue:t3",
         "surface_profile": "decision-and-sample-gallery",
@@ -3633,10 +3978,12 @@
           "reason": "常规内容页在纸面上建立层级。"
         },
         "status": "recipe-ready",
-        "surface_binding_count": 2,
-        "surface_binding_expected_node_count": 7,
-        "source_sha256": "f76a3935d371747d14b2568c8fcb57136a0f7ad71cf56704d8c3a9528842c65f",
-        "frame_sha256": "cd3973efc57955c79edee8325c4b6a23bbbee586347cfa073995a7ce073e13ab"
+        "surface_binding_count": 0,
+        "surface_binding_expected_node_count": 0,
+        "source_sha256": "f40165917fd4c4d2d7835ac56316147a4a874c54e5574bf0b15556d9bf429365",
+        "frame_sha256": "6d992cfafc515a03e265005a592910c071fbe5b45ed1274be7d2cf16c5d7ae63",
+        "icon_source_family": "tabler-original-v3.46.0",
+        "icon_count": 0
       },
       "u1": {
         "code": "u1",
@@ -3656,8 +4003,10 @@
         "status": "recipe-ready",
         "surface_binding_count": 0,
         "surface_binding_expected_node_count": 0,
-        "source_sha256": "d6480e2627c442d5000d329ae76e039dfafacc2d8fd63b3e2806084f84d19955",
-        "frame_sha256": "efe454bd62a9c00232b7c77f8f6e999d8fa8f5a5306c57a30f7bcd2aa16323ba"
+        "source_sha256": "e0c95991b4f5d31c4af56e38119676315da8dc86c43206423f6c2ced16f6d5a1",
+        "frame_sha256": "90dd158a8cb1cc256c5e743d5159ffa356f7f3dd2673e8653b5cb2f0a2e792de",
+        "icon_source_family": "tabler-original-v3.46.0",
+        "icon_count": 0
       },
       "u2": {
         "code": "u2",
@@ -3677,8 +4026,10 @@
         "status": "recipe-ready",
         "surface_binding_count": 0,
         "surface_binding_expected_node_count": 0,
-        "source_sha256": "f093e4cdd0b26cc6518325ed7e2f704c710c81d7c9db3f89ed8236b56d2001ad",
-        "frame_sha256": "252d63d2f735d32ad26117b70f519ac0b534aadf3d8d209cf5aeabdf6e939323"
+        "source_sha256": "21a728125864629cc7539780344cee322d5ce6da6bfa2f0ad9df5159416e3989",
+        "frame_sha256": "4024198779e46d84e5eaf0696ffec5286cc18d37c8a7d4e5829ae7e99b6e7ec8",
+        "icon_source_family": "tabler-original-v3.46.0",
+        "icon_count": 0
       },
       "u3": {
         "code": "u3",
@@ -3698,8 +4049,10 @@
         "status": "recipe-ready",
         "surface_binding_count": 0,
         "surface_binding_expected_node_count": 0,
-        "source_sha256": "eba3054bddc3822df2a21404f70bfeed83ffeaf240424d42a1728af8ae958b98",
-        "frame_sha256": "7f88b7bd85f62c2e878c6329a9dd349ffad5db493a970974b3b174e26fcac6eb"
+        "source_sha256": "e705d7508cd32c11bbe8b45da9a8e5cae617d5e27924ecf143e9d90a8fd7bb5a",
+        "frame_sha256": "53ba45a6a43840da50882c25d0940e8cac60bb6130da19bae907d8e2385f9144",
+        "icon_source_family": "tabler-original-v3.46.0",
+        "icon_count": 0
       },
       "w1": {
         "code": "w1",
@@ -3719,8 +4072,10 @@
         "status": "recipe-ready",
         "surface_binding_count": 0,
         "surface_binding_expected_node_count": 0,
-        "source_sha256": "a52e31b1d24ab5f45ff6e9823663445d07428e7c5c7db2ca36935330549e2e0c",
-        "frame_sha256": "974d6e3c15bdc7eddbf92c8e6da7341142524e54a2bfa3def4c80280e9d0e446"
+        "source_sha256": "206e43623218a06135a776e43c633c187673bccdd345ed70d8543acbbbe8b279",
+        "frame_sha256": "f9329a95826a4fff76624a6bfb3ac38da46f26e266691ef856a147aec4117db4",
+        "icon_source_family": "tabler-original-v3.46.0",
+        "icon_count": 0
       }
     }
   }
