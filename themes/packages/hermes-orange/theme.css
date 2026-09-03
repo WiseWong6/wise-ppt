@@ -1,4 +1,4 @@
-/* Generated from wise-ppt-theme@3. One deck, one complete theme. Do not edit. */
+/* Generated from wise-ppt-theme@5. One deck, one complete theme. Do not edit. */
 :root[data-theme-id="hermes-orange"] {
   --wp-theme-id: hermes-orange;
   --wp-theme-default-typography-mode: mixed;
@@ -11,7 +11,7 @@
   --wp-color-chart-label: #1A1A1A;
   --wp-color-metadata: #1A1A1A;
   --wp-color-divider: rgba(26, 26, 26, .20);
-  --wp-color-construction: rgba(217, 94, 0, .12);
+  --wp-color-construction: rgba(26, 26, 26, .12);
   --wp-color-focus: #D95E00;
   --wp-color-focus-secondary: #B24D00;
   --wp-color-focus-peripheral: #8F3900;
@@ -24,7 +24,9 @@
   --wp-private-ink-60: rgba(26, 26, 26, .6);
   --wp-private-ink-30: rgba(26, 26, 26, .3);
   --wp-private-focus-text-small: #B24D00;
+  --wp-private-focus-graphic: #D95E00;
   --wp-private-identity-accent: #D95E00;
+  --wp-private-identity-on-accent: #FFFFFF;
   --wp-theme-line-hairline: 0.65;
   --wp-theme-line-detail: 0.9;
   --wp-theme-line-main: 1.3;
@@ -44,7 +46,6 @@
   --paper: #F2EFE9;
 }
 :root[data-theme-id="hermes-orange"] .slide[data-page-kind="relationship"] {
-  --wp-color-functional: #D95E00;
   --wp-page-accent: #D95E00;
 }
 
@@ -56,52 +57,52 @@
   --wp-theme-weight-bottom-left-folio: 400;
   --wp-theme-size-scale-bottom-left-folio: 1;
   --wp-theme-font-bottom-takeaway: var(--wp-font-han-sans);
-  --wp-theme-weight-bottom-takeaway: 300;
+  --wp-theme-weight-bottom-takeaway: 400;
   --wp-theme-size-scale-bottom-takeaway: 1;
   --wp-theme-font-zh-content-title: var(--wp-font-han-sans);
-  --wp-theme-weight-zh-content-title: 300;
+  --wp-theme-weight-zh-content-title: 400;
   --wp-theme-size-scale-zh-content-title: 1;
   --wp-theme-font-cover-title: var(--wp-font-han-sans);
-  --wp-theme-weight-cover-title: 300;
+  --wp-theme-weight-cover-title: 400;
   --wp-theme-size-scale-cover-title: 1;
   --wp-theme-font-chapter-title: var(--wp-font-han-sans);
-  --wp-theme-weight-chapter-title: 300;
+  --wp-theme-weight-chapter-title: 400;
   --wp-theme-size-scale-chapter-title: 1;
   --wp-theme-font-closing-statement: var(--wp-font-han-sans);
-  --wp-theme-weight-closing-statement: 300;
+  --wp-theme-weight-closing-statement: 400;
   --wp-theme-size-scale-closing-statement: 1;
   --wp-theme-font-en-content-title: var(--wp-font-han-sans);
-  --wp-theme-weight-en-content-title: 300;
+  --wp-theme-weight-en-content-title: 400;
   --wp-theme-size-scale-en-content-title: 1;
   --wp-theme-font-en-bold: var(--wp-font-han-sans);
-  --wp-theme-weight-en-bold: 300;
+  --wp-theme-weight-en-bold: 400;
   --wp-theme-size-scale-en-bold: 1;
   --wp-theme-font-body: var(--wp-font-han-sans);
-  --wp-theme-weight-body: 300;
+  --wp-theme-weight-body: 400;
   --wp-theme-size-scale-body: 1;
   --wp-theme-font-label: var(--wp-font-han-sans);
-  --wp-theme-weight-label: 300;
+  --wp-theme-weight-label: 400;
   --wp-theme-size-scale-label: 1;
   --wp-theme-font-number: var(--wp-font-han-sans);
-  --wp-theme-weight-number: 300;
+  --wp-theme-weight-number: 400;
   --wp-theme-size-scale-number: 1;
   --wp-theme-font-chart-text: var(--wp-font-han-sans);
-  --wp-theme-weight-chart-text: 300;
+  --wp-theme-weight-chart-text: 400;
   --wp-theme-size-scale-chart-text: 1;
 }
 :root[data-theme-id="hermes-orange"][data-typography-mode="all-sans"] [data-theme-type-role="top-left-kicker"] { font-family: var(--wp-font-mono) !important; font-weight: 400 !important; }
 :root[data-theme-id="hermes-orange"][data-typography-mode="all-sans"] [data-theme-type-role="bottom-left-folio"] { font-family: var(--wp-font-mono) !important; font-weight: 400 !important; }
-:root[data-theme-id="hermes-orange"][data-typography-mode="all-sans"] [data-theme-type-role="bottom-takeaway"] { font-family: var(--wp-font-han-sans) !important; font-weight: 300 !important; }
-:root[data-theme-id="hermes-orange"][data-typography-mode="all-sans"] [data-theme-type-role="zh-content-title"] { font-family: var(--wp-font-han-sans) !important; font-weight: 300 !important; }
-:root[data-theme-id="hermes-orange"][data-typography-mode="all-sans"] [data-theme-type-role="cover-title"] { font-family: var(--wp-font-han-sans) !important; font-weight: 300 !important; }
-:root[data-theme-id="hermes-orange"][data-typography-mode="all-sans"] [data-theme-type-role="chapter-title"] { font-family: var(--wp-font-han-sans) !important; font-weight: 300 !important; }
-:root[data-theme-id="hermes-orange"][data-typography-mode="all-sans"] [data-theme-type-role="closing-statement"] { font-family: var(--wp-font-han-sans) !important; font-weight: 300 !important; }
-:root[data-theme-id="hermes-orange"][data-typography-mode="all-sans"] [data-theme-type-role="en-content-title"] { font-family: var(--wp-font-han-sans) !important; font-weight: 300 !important; }
-:root[data-theme-id="hermes-orange"][data-typography-mode="all-sans"] [data-theme-type-role="en-bold"] { font-family: var(--wp-font-han-sans) !important; font-weight: 300 !important; }
-:root[data-theme-id="hermes-orange"][data-typography-mode="all-sans"] [data-theme-type-role="body"] { font-family: var(--wp-font-han-sans) !important; font-weight: 300 !important; }
-:root[data-theme-id="hermes-orange"][data-typography-mode="all-sans"] [data-theme-type-role="label"] { font-family: var(--wp-font-han-sans) !important; font-weight: 300 !important; }
-:root[data-theme-id="hermes-orange"][data-typography-mode="all-sans"] [data-theme-type-role="number"] { font-family: var(--wp-font-han-sans) !important; font-weight: 300 !important; }
-:root[data-theme-id="hermes-orange"][data-typography-mode="all-sans"] [data-theme-type-role="chart-text"] { font-family: var(--wp-font-han-sans) !important; font-weight: 300 !important; }
+:root[data-theme-id="hermes-orange"][data-typography-mode="all-sans"] [data-theme-type-role="bottom-takeaway"] { font-family: var(--wp-font-han-sans) !important; font-weight: 400 !important; }
+:root[data-theme-id="hermes-orange"][data-typography-mode="all-sans"] [data-theme-type-role="zh-content-title"] { font-family: var(--wp-font-han-sans) !important; font-weight: 400 !important; }
+:root[data-theme-id="hermes-orange"][data-typography-mode="all-sans"] [data-theme-type-role="cover-title"] { font-family: var(--wp-font-han-sans) !important; font-weight: 400 !important; }
+:root[data-theme-id="hermes-orange"][data-typography-mode="all-sans"] [data-theme-type-role="chapter-title"] { font-family: var(--wp-font-han-sans) !important; font-weight: 400 !important; }
+:root[data-theme-id="hermes-orange"][data-typography-mode="all-sans"] [data-theme-type-role="closing-statement"] { font-family: var(--wp-font-han-sans) !important; font-weight: 400 !important; }
+:root[data-theme-id="hermes-orange"][data-typography-mode="all-sans"] [data-theme-type-role="en-content-title"] { font-family: var(--wp-font-han-sans) !important; font-weight: 400 !important; }
+:root[data-theme-id="hermes-orange"][data-typography-mode="all-sans"] [data-theme-type-role="en-bold"] { font-family: var(--wp-font-han-sans) !important; font-weight: 400 !important; }
+:root[data-theme-id="hermes-orange"][data-typography-mode="all-sans"] [data-theme-type-role="body"] { font-family: var(--wp-font-han-sans) !important; font-weight: 400 !important; }
+:root[data-theme-id="hermes-orange"][data-typography-mode="all-sans"] [data-theme-type-role="label"] { font-family: var(--wp-font-han-sans) !important; font-weight: 400 !important; }
+:root[data-theme-id="hermes-orange"][data-typography-mode="all-sans"] [data-theme-type-role="number"] { font-family: var(--wp-font-han-sans) !important; font-weight: 400 !important; }
+:root[data-theme-id="hermes-orange"][data-typography-mode="all-sans"] [data-theme-type-role="chart-text"] { font-family: var(--wp-font-han-sans) !important; font-weight: 400 !important; }
 :root[data-theme-id="hermes-orange"][data-typography-mode="all-serif"] {
   --wp-theme-font-top-left-kicker: var(--wp-font-mono);
   --wp-theme-weight-top-left-kicker: 400;
@@ -110,7 +111,7 @@
   --wp-theme-weight-bottom-left-folio: 400;
   --wp-theme-size-scale-bottom-left-folio: 1;
   --wp-theme-font-bottom-takeaway: var(--wp-font-han-serif);
-  --wp-theme-weight-bottom-takeaway: 500;
+  --wp-theme-weight-bottom-takeaway: 700;
   --wp-theme-size-scale-bottom-takeaway: 1;
   --wp-theme-font-zh-content-title: var(--wp-font-han-serif);
   --wp-theme-weight-zh-content-title: 700;
@@ -145,7 +146,7 @@
 }
 :root[data-theme-id="hermes-orange"][data-typography-mode="all-serif"] [data-theme-type-role="top-left-kicker"] { font-family: var(--wp-font-mono) !important; font-weight: 400 !important; }
 :root[data-theme-id="hermes-orange"][data-typography-mode="all-serif"] [data-theme-type-role="bottom-left-folio"] { font-family: var(--wp-font-mono) !important; font-weight: 400 !important; }
-:root[data-theme-id="hermes-orange"][data-typography-mode="all-serif"] [data-theme-type-role="bottom-takeaway"] { font-family: var(--wp-font-han-serif) !important; font-weight: 500 !important; }
+:root[data-theme-id="hermes-orange"][data-typography-mode="all-serif"] [data-theme-type-role="bottom-takeaway"] { font-family: var(--wp-font-han-serif) !important; font-weight: 700 !important; }
 :root[data-theme-id="hermes-orange"][data-typography-mode="all-serif"] [data-theme-type-role="zh-content-title"] { font-family: var(--wp-font-han-serif) !important; font-weight: 700 !important; }
 :root[data-theme-id="hermes-orange"][data-typography-mode="all-serif"] [data-theme-type-role="cover-title"] { font-family: var(--wp-font-han-serif) !important; font-weight: 700 !important; }
 :root[data-theme-id="hermes-orange"][data-typography-mode="all-serif"] [data-theme-type-role="chapter-title"] { font-family: var(--wp-font-han-serif) !important; font-weight: 700 !important; }
@@ -164,7 +165,7 @@
   --wp-theme-weight-bottom-left-folio: 700;
   --wp-theme-size-scale-bottom-left-folio: 1;
   --wp-theme-font-bottom-takeaway: var(--wp-font-han-serif);
-  --wp-theme-weight-bottom-takeaway: 500;
+  --wp-theme-weight-bottom-takeaway: 700;
   --wp-theme-size-scale-bottom-takeaway: 1;
   --wp-theme-font-zh-content-title: var(--wp-font-han-sans);
   --wp-theme-weight-zh-content-title: 700;
@@ -201,7 +202,7 @@
 :root[data-theme-id="hermes-orange"][data-typography-mode="mixed"] svg [data-theme-type-role="top-left-kicker"] { font-family: 'Oswald', 'Han Sans', sans-serif !important; font-weight: 700 !important; }
 :root[data-theme-id="hermes-orange"][data-typography-mode="mixed"] [data-theme-type-role="bottom-left-folio"] { font-family: var(--wp-font-oswald) !important; font-weight: 700 !important; }
 :root[data-theme-id="hermes-orange"][data-typography-mode="mixed"] svg [data-theme-type-role="bottom-left-folio"] { font-family: 'Oswald', 'Han Sans', sans-serif !important; font-weight: 700 !important; }
-:root[data-theme-id="hermes-orange"][data-typography-mode="mixed"] [data-theme-type-role="bottom-takeaway"] { font-family: var(--wp-font-han-serif) !important; font-weight: 500 !important; }
+:root[data-theme-id="hermes-orange"][data-typography-mode="mixed"] [data-theme-type-role="bottom-takeaway"] { font-family: var(--wp-font-han-serif) !important; font-weight: 700 !important; }
 :root[data-theme-id="hermes-orange"][data-typography-mode="mixed"] [data-theme-type-role="zh-content-title"] { font-family: var(--wp-font-han-sans) !important; font-weight: 700 !important; }
 :root[data-theme-id="hermes-orange"][data-typography-mode="mixed"] [data-theme-type-role="cover-title"] { font-family: var(--wp-font-han-serif) !important; font-weight: 700 !important; }
 :root[data-theme-id="hermes-orange"][data-typography-mode="mixed"] [data-theme-type-role="chapter-title"] { font-family: var(--wp-font-han-serif) !important; font-weight: 700 !important; }
@@ -230,15 +231,15 @@
 :root[data-theme-id="hermes-orange"] svg[data-icon-source][data-theme-icon-verified="redraw-v3"] [data-theme-line="main"] { stroke-width: var(--wp-theme-line-main); }
 :root[data-theme-id="hermes-orange"] [data-theme-line="emphasis"] { border-width: calc(var(--wp-theme-line-emphasis) * 1px); outline-width: calc(var(--wp-theme-line-emphasis) * 1px); stroke-width: var(--wp-theme-line-emphasis); }
 :root[data-theme-id="hermes-orange"] svg[data-icon-source][data-theme-icon-verified="redraw-v3"] [data-theme-line="emphasis"] { stroke-width: var(--wp-theme-line-emphasis); }
-:root[data-theme-id="hermes-orange"] svg[data-icon-source][data-theme-icon-verified="redraw-v3"] { color: var(--wp-page-accent, var(--wp-color-functional)); stroke-linecap: var(--wp-theme-line-cap); stroke-linejoin: var(--wp-theme-line-join); }
+:root[data-theme-id="hermes-orange"] svg[data-icon-source][data-theme-icon-verified] { color: var(--wp-page-accent, var(--wp-color-functional)); stroke-linecap: var(--wp-theme-line-cap); stroke-linejoin: var(--wp-theme-line-join); }
 :root[data-theme-id="hermes-orange"] svg[data-icon-source][data-theme-icon-verified="redraw-v3"] [stroke]:not([stroke="none"]) { stroke-width: var(--wp-theme-line-main); }
 :root[data-theme-id="hermes-orange"] [data-theme-table-region="header"][data-theme-surface] { background-color: transparent; }
 :root[data-theme-id="hermes-orange"] [data-theme-table-region="body"][data-theme-surface] { background-color: transparent; }
 :root[data-theme-id="hermes-orange"] [data-theme-table-region="selected"] { outline-color: var(--wp-color-focus); }
-:root[data-theme-id="hermes-orange"] [data-theme-component="card"][data-theme-surface] { background-color: var(--wp-color-surface-panel); border-color: var(--wp-color-functional); }
-:root[data-theme-id="hermes-orange"] [data-theme-component="panel"][data-theme-surface] { background-color: var(--wp-color-surface-recessed); border-color: var(--wp-color-functional); }
-:root[data-theme-id="hermes-orange"] [data-theme-role="structural-outline"] { border-color: var(--wp-color-functional); outline-color: var(--wp-color-functional); }
-:root[data-theme-id="hermes-orange"] svg [data-theme-role="structural-outline"] { fill: none; stroke: var(--wp-color-functional); }
+:root[data-theme-id="hermes-orange"] [data-theme-component="card"][data-theme-surface] { background-color: var(--wp-color-surface-panel); border-color: var(--wp-color-primary); }
+:root[data-theme-id="hermes-orange"] [data-theme-component="panel"][data-theme-surface] { background-color: var(--wp-color-surface-recessed); border-color: var(--wp-color-primary); }
+:root[data-theme-id="hermes-orange"] [data-theme-role="structural-outline"] { border-color: var(--wp-color-primary); outline-color: var(--wp-color-primary); }
+:root[data-theme-id="hermes-orange"] svg [data-theme-role="structural-outline"] { fill: none; stroke: var(--wp-color-primary); }
 :root[data-theme-id="hermes-orange"] [data-theme-role="hollow-number"] { background: transparent; color: var(--wp-color-primary); border-color: var(--wp-color-primary); }
 :root[data-theme-id="hermes-orange"] [data-theme-role="reverse"] { background-color: var(--wp-color-primary); color: var(--wp-color-surface-canvas); }
 :root[data-theme-id="hermes-orange"] svg [data-theme-role="reverse"] { fill: var(--wp-color-surface-canvas); stroke: var(--wp-color-surface-canvas); }

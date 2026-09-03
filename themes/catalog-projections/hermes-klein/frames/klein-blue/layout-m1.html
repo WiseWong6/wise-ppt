@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="zh-CN" data-runtime="wise-ppt-specimen" data-typography-mode="all-sans" data-wise-catalog-fonts="true" data-page-id="gallery-ai-m1" data-catalog-source-marker="orange" data-page-role="hook" data-theme="paper-ink" data-layout="paper-ink.emotion.particle-hero" data-layout-source="gallery" data-theme-id="klein-blue" data-surface-source="catalog-theme-recipes-v1" data-xp-recipe-id="klein-blue:m1" data-xp-surface-profile="editorial-specimen" data-xp-recipe-status="recipe-ready" data-xp-frame-kind="custom-redraw" data-xp-title-furniture="white-on-dark">
+<html lang="zh-CN" data-runtime="wise-ppt-specimen" data-typography-mode="all-sans" data-wise-catalog-fonts="true" data-page-id="gallery-ai-m1" data-catalog-source-marker="orange" data-page-role="hook" data-theme="paper-ink" data-layout="paper-ink.emotion.particle-hero" data-layout-source="gallery" data-emphasis-targets="[]" data-vnext-semantic-key-map="[]" data-theme-id="klein-blue" data-surface-source="catalog-theme-recipes-v2" data-xp-recipe-id="klein-blue:m1" data-xp-surface-profile="editorial-specimen" data-xp-recipe-status="recipe-ready" data-xp-frame-kind="custom-redraw" data-xp-title-furniture="white-on-dark">
 <head>
 <meta charset="UTF-8">
 <title>layout-m1 · 粒子主角 + 对照提问 · 大模型黑盒</title>
@@ -30,7 +30,7 @@
     font-family: var(--serif); font-size: var(--type-heading);
     color: var(--ink); transform: translateY(2px);
   }
-  /* 方块刻字（纸色反色） */
+  /* 方块刻字 */
   .boxtext {
     position: absolute; z-index: 3;
     display: flex; flex-direction: column;
@@ -40,6 +40,7 @@
   .boxtext .t1 {
     font-family: var(--mono); font-size: var(--type-emphasis);
     letter-spacing: .16em; text-indent: .16em;
+    color: var(--xp-accent);
   }
   .boxtext .divi {
     width: 140px; height: 1px;
@@ -99,19 +100,18 @@
   #v3-m1-orange .doc-title,
   #v3-m1-orange .folio {
     font-family: 'Oswald Replica', 'Han Sans Catalog', 'Han Sans', 'PingFang SC', sans-serif;
-    font-size: var(--type-body-small);
     font-weight: 700;
     line-height: 1.25;
     letter-spacing: .15em;
     text-transform: uppercase;
   }
   #v3-m1-orange .doc-kicker { color: var(--xp-accent); }
-  #v3-m1-orange .doc-title,
-  #v3-m1-orange .folio { color: var(--xp-paper); }
+  #v3-m1-orange .doc-title { color: var(--xp-paper); }
+  #v3-m1-orange .folio { color: rgba(242, 239, 233, .45); }
   .compare .q { color: var(--xp-accent); }
 
 </style>
-<link rel="stylesheet" href="../../catalog-surface.css" data-catalog-theme-surface="catalog-theme-recipes-v1">
+<link rel="stylesheet" href="../../catalog-surface.css" data-catalog-theme-surface="catalog-theme-recipes-v2">
 <link rel="stylesheet" href="../../title-furniture.css" data-catalog-title-furniture="black-first-theme-second-v1">
 </head>
 <body class="slide">
@@ -235,8 +235,9 @@ G = el('g', {transform:'translate(0 0)'});
 
 stageFit();
 </script>
-<script type="application/json" id="xp-surface-recipe">{"theme":"klein-blue","color_name":"blue","layout_code":"m1","title":"layout-m1 · 粒子主角 + 对照提问 · 大模型黑盒","layout":"paper-ink.emotion.particle-hero","page_role":"hook","canvas":{"token":"ink","value":"#1a1a1a","reason":"M1 以墨面承载粒子黑盒；两套主题只替换同一强调通道。"},"surface_profile":"editorial-specimen","surfaces":[{"role":"impact-field","material":"canvas-bound","fill":"inherit","stack":1},{"role":"blackbox-core","material":"ink-core","fill":"#050505","stack":2},{"role":"inverse-label","material":"paper-contrast","fill":"#f2efe9","stack":3},{"role":"question-marker","material":"accent","fill":"#002fa7","stack":4}],"accent":{"value":"#002fa7","semantic_channel":"标题命题或唯一视觉主角","furniture":"墨底左上两行统一纯白；folio 保持纸白对比。","neutral_exceptions":["普通英文标签","轴名","层名","结构编号","MODEL","非当前数据"],"furniture_mode":"white-on-dark","folio_mode":"paper"},"border_policy":"主体 1px 墨线；唯一焦点可用 2px 橙线，所有容器方角。","shadow_policy":"默认无影；粒子黑盒靠墨面、纸白反字与精确橙色落点建立层级。","noise_policy":"由主题统一提供唯一一层约 6% 黑色 fractal-noise；页面不得自带 noise 节点；浅色页 multiply，墨面可 overlay。","reference_evidence":{"file":"所有文档都该重写一遍.html","cards":["card-2","card-5","card-7"],"rule":"M1 的结构与材料使用同一母版；两套主题只替换强调色，不另起一套布局。","user_feedback":"M1 跟随蓝色的。"},"acceptance":["强调色只落一个语义通道；同一序列可重复，但不得扩散到结构元数据。","纯白只用于 top-white，不能替代默认纸面。","缩略图必须从该主题独立 frame 的实际渲染重建。"],"status":"recipe-ready","surface_bindings":[],"surface_binding_reason":"custom-redraw 不加载共享 surface runtime；墨底、粒子黑盒与主题色问号已在蓝色母版源码内显式实现。"}</script>
-<script src="../../catalog-typography.js" data-catalog-typography="accent-english-title-match-v1"></script>
-<script data-xp-custom-page-ready="true">(function(){var r=document.documentElement,s=document.querySelector(".stage");r.dataset.xpRecipeReady="custom";r.dataset.catalogSurfaceReady="true";r.dataset.xpRecipeStatus="recipe-ready";r.dataset.xpSurfaceProfile="editorial-specimen";r.dataset.xpCanvas="ink";r.dataset.xpTitleFurniture="white-on-dark";if(s){s.dataset.surfaceRebuild="custom-page-v3";s.dataset.surfaceFocusCount="0";}})();</script>
+<script type="application/json" id="xp-surface-recipe">{"theme":"klein-blue","color_name":"blue","layout_code":"m1","title":"layout-m1 · 粒子主角 + 对照提问 · 大模型黑盒","layout":"paper-ink.emotion.particle-hero","page_role":"hook","canvas":{"token":"ink","value":"#1a1a1a","reason":"M1 以墨面承载粒子黑盒；两套主题只替换同一强调通道。"},"surface_profile":"editorial-specimen","surfaces":[{"role":"impact-field","material":"canvas-bound","fill":"inherit","stack":1},{"role":"blackbox-core","material":"ink-core","fill":"#050505","stack":2},{"role":"focus-label","material":"accent","fill":"#002fa7","stack":3},{"role":"question-marker","material":"accent","fill":"#002fa7","stack":4}],"accent":{"value":"#002fa7","semantic_channel":"标题命题或唯一视觉主角","furniture":"墨底左上第一行使用纯白，第二行仍使用当前主题色；folio 对称跟随元信息通道：纸色 45%，不使用主题色。","neutral_exceptions":["普通英文标签","轴名","层名","结构编号","MODEL","非当前数据"],"furniture_mode":"white-on-dark","folio_mode":"metadata-neutral"},"border_policy":"主体 1px 墨线；唯一焦点可用 2px 橙线，所有容器方角。","shadow_policy":"默认无影；粒子黑盒靠墨面、主题色 LLM 与其余纸白反字建立层级。","noise_policy":"由主题统一提供唯一一层约 6% 黑色 fractal-noise；页面不得自带 noise 节点；浅色页 multiply，墨面可 overlay。","reference_evidence":{"file":"所有文档都该重写一遍.html","cards":["card-2","card-5","card-7"],"rule":"M1 的结构与材料使用同一母版；两套主题只替换强调色，不另起一套布局。","user_feedback":"M1 跟随蓝色的。"},"acceptance":["强调色只落一个语义通道；同一序列可重复，但不得扩散到结构元数据。","纯白只用于 top-white，不能替代默认纸面。","缩略图必须从该主题独立 frame 的实际渲染重建。"],"status":"recipe-ready","surface_bindings":[],"surface_binding_reason":"custom-redraw 不加载共享 surface runtime；墨底、粒子黑盒、主题色问号与中心 LLM 已在同一母版源码内显式实现。","theme_identity":[{"group_id":"identity.compare-divider","label":"主角对比中线","members":[{"selector":".boxtext .divi","treatment":"identity.border","expected_count":1}]}],"emphasis_targets":[],"sample_target_id":null}</script>
+<script src="../../catalog-surface.js" data-catalog-theme-surface="catalog-theme-recipes-v2"></script>
+<script src="../../catalog-typography.js" data-catalog-typography="brand-latin-numeric-oswald-v1"></script>
+<script data-xp-custom-page-ready="true">(function(){var r=document.documentElement,s=document.querySelector(".stage");function ready(){if(r.dataset.catalogSurfaceReady!=="true")return;r.dataset.xpRecipeReady="custom";r.dataset.xpRecipeStatus="recipe-ready";r.dataset.xpSurfaceProfile="editorial-specimen";r.dataset.xpCanvas="ink";r.dataset.xpTitleFurniture="white-on-dark";if(s){s.dataset.surfaceRebuild="custom-page-v4";s.dataset.surfaceFocusCount=String(document.querySelectorAll("[data-content-ref][data-emphasis-role]").length);}}var o=new MutationObserver(ready);o.observe(r,{attributes:true,attributeFilter:["data-catalog-surface-ready"]});ready();document.addEventListener("wise-ppt:semantic-keys-ready",function(){requestAnimationFrame(ready);});})();</script>
 </body>
 </html>

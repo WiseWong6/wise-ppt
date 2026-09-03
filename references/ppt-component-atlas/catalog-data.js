@@ -673,15 +673,13 @@ window.SWISS_CATALOG_DATA = {
   );
 }
 
-/* #055 arch-platform: the production use case is a full-width S1 product
-   architecture slot, not the historical square specimen card.  Keep the five
-   owned layers and grouped capability cells, but make the component itself a
-   responsive 1620x528 architecture band. */
+/* #055 arch-platform: S1 的 16:9 关系主脊。五层语义与 3:4 版一致，
+   但横版不再把 39 个能力画成同权表格，也不采用已被回退的平台剖面。 */
 {
   const archPlatform = window.SWISS_CATALOG_DATA.entries.find(entry => entry.num === 55);
   if (archPlatform) {
-    archPlatform.description = 'Responsive five-layer product platform architecture.';
-    archPlatform.frame = { width: 1620, height: 528, fit: 'fixed' };
+    archPlatform.description = 'Five-layer relationship spine with open capability bands.';
+    archPlatform.frame = { width: 1620, height: 714, fit: 'fixed' };
     archPlatform.snippet = archPlatform.snippet.replace(
       '<div class="arch-platform">',
       '<div class="arch-platform" data-bind-root="record" data-architecture-variant="wide-product">'
@@ -692,7 +690,7 @@ window.SWISS_CATALOG_DATA = {
     let itemIndex = 0;
     let activeNodeIndex = -1;
     archPlatform.snippet = archPlatform.snippet.replace(
-      /<div class="(ap-label|ap-chip|ap-card-title|ap-item)([^"]*)">([^<]+)<\/div>/g,
+      /<div class="(ap-label|ap-chip|ap-card-title|ap-item)(?=\s|")([^"]*)">((?:[^<]|<br\s*\/?>)+)<\/div>/g,
       (source, role, classTail, label) => {
         let field;
         if (role === 'ap-label') {
@@ -717,43 +715,148 @@ window.SWISS_CATALOG_DATA = {
       }
     );
 
+    archPlatform.snippet = archPlatform.snippet.replace(
+      '<div class="arch-platform" data-bind-root="record" data-architecture-variant="wide-product">',
+      '<div class="arch-platform" data-bind-root="record" data-architecture-variant="wide-product"><i class="ap-spine arch-tone-rail" aria-hidden="true"></i>'
+    );
+    [
+      ['tone-a', 'application'],
+      ['tone-e', 'resource'],
+      ['tone-c', 'evaluation'],
+      ['tone-d', 'tracking'],
+      ['tone-b', 'infrastructure']
+    ].forEach(([tone, role]) => {
+      archPlatform.snippet = archPlatform.snippet.replace(
+        `class="ap-row ${tone}"`,
+        `class="ap-row ap-row--${role} ${tone}"`
+      );
+    });
+    archPlatform.snippet = archPlatform.snippet.replace(
+      'data-field="layers.4.label">基础<br>设施</div>',
+      'data-field="layers.4.label">基础设施</div>'
+    ).replace(
+      /(<div class="ap-label arch-tone-label" data-field="layers\.[0-4]\.label">(?:[^<]|<br\s*\/?>)+<\/div>)/g,
+      '$1<i class="ap-node arch-tone-node" aria-hidden="true"></i>'
+    );
+
     window.SWISS_CATALOG_DATA.componentCss += `
-/* #055 wide product architecture: 层名列窄列固定，chip 行 76 / 卡片行 128 */
-.swiss-card .arch-platform[data-architecture-variant="wide-product"] {
+/* #055 relationship spine: 1620×714 五层开放关系带。 */
+.swiss-card:has(.arch-platform[data-architecture-variant="wide-product"]) {
+  width: 1620px;
+  height: 714px;
+  min-height: 0;
+  overflow: visible;
+  background: transparent;
+  border: 0;
+}
+.swiss-card:has(.arch-platform[data-architecture-variant="wide-product"]) .swiss-card__content {
   width: 100%;
-  gap: 8px;
+  height: 100%;
+  min-height: 0;
+  padding: 0;
+  display: block;
+  background: transparent;
+}
+.swiss-card .arch-platform[data-architecture-variant="wide-product"] {
+  --arch-content-font-size: 16px;
+  position: relative;
+  isolation: isolate;
+  width: 100%;
+  height: 100%;
   margin: 0;
+  display: grid;
+  grid-template-rows: 88px 230px 88px 88px 220px;
+  gap: 0;
+  border: 0;
+  box-sizing: border-box;
+}
+.swiss-card .arch-platform[data-architecture-variant="wide-product"] .ap-spine {
+  position: absolute;
+  z-index: 3;
+  left: 183px;
+  top: 0;
+  bottom: 0;
+  width: 1px;
+  background: var(--arch-ink);
+  opacity: .26;
+  pointer-events: none;
 }
 .swiss-card .arch-platform[data-architecture-variant="wide-product"] .ap-row {
+  position: relative;
   display: grid;
-  grid-template-columns: minmax(88px, 108px) minmax(0, 1fr);
-  gap: 8px;
+  grid-template-columns: 184px minmax(0, 1fr);
+  gap: 0;
   align-items: stretch;
-  min-height: 56px;
+  min-height: 0;
+  height: auto;
+  border: 0;
+  box-sizing: border-box;
 }
-.swiss-card .arch-platform[data-architecture-variant="wide-product"] .ap-row:has(.ap-flat) {
-  min-height: 76px;
-}
-.swiss-card .arch-platform[data-architecture-variant="wide-product"] .ap-row:has(.ap-grid-wrap) {
-  min-height: 128px;
+.swiss-card .arch-platform[data-architecture-variant="wide-product"] .ap-row:not(:last-child)::after {
+  content: '';
+  position: absolute;
+  z-index: 1;
+  left: 184px;
+  right: 0;
+  bottom: 0;
+  height: .55px;
+  background: var(--arch-ink);
+  opacity: .18;
+  pointer-events: none;
 }
 .swiss-card .arch-platform[data-architecture-variant="wide-product"] .ap-label {
+  position: relative;
+  z-index: 5;
+  width: 100%;
+  height: 100%;
+  min-height: 0;
+  align-self: stretch;
   display: flex;
   align-items: center;
-  justify-content: center;
-  text-align: center;
-  padding: 8px;
-  font-size: 13px;
+  justify-content: flex-end;
+  text-align: right;
+  white-space: nowrap;
+  padding: 0 28px 0 0;
+  border: 0;
+  background: transparent;
+  color: var(--arch-ink);
+  font-size: 24px;
   font-weight: 700;
-  letter-spacing: 0.06em;
-  line-height: 1.35;
+  line-height: 1.2;
+  box-sizing: border-box;
+}
+.swiss-card .arch-platform[data-architecture-variant="wide-product"] .ap-node {
+  position: absolute;
+  z-index: 8;
+  top: 50%;
+  left: 179px;
+  width: 9px;
+  height: 9px;
+  transform: translateY(-50%);
+  border: 0;
+  border-radius: 50%;
+  background: var(--arch-ink);
+  box-sizing: border-box;
+  pointer-events: none;
+}
+.swiss-card .arch-platform[data-architecture-variant="wide-product"] .ap-flat,
+.swiss-card .arch-platform[data-architecture-variant="wide-product"] .ap-grid-wrap {
+  position: relative;
+  z-index: 2;
+  min-height: 0;
+  height: auto;
+  padding: 12px 0 12px 38px;
+  border: 0;
+  background: transparent;
+  box-shadow: none;
+  box-sizing: border-box;
 }
 .swiss-card .arch-platform[data-architecture-variant="wide-product"] .ap-flat {
   grid-auto-flow: row;
   grid-auto-columns: auto;
-  grid-template-columns: none;
-  padding: 8px;
-  align-content: center;
+  grid-template-rows: 1fr;
+  gap: 0;
+  align-content: stretch;
 }
 .swiss-card .arch-platform[data-architecture-variant="wide-product"] .ap-flat[data-count="3"] {
   grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -762,35 +865,109 @@ window.SWISS_CATALOG_DATA = {
   grid-template-columns: repeat(4, minmax(0, 1fr));
 }
 .swiss-card .arch-platform[data-architecture-variant="wide-product"] .ap-chip {
-  min-height: 52px;
-  padding: 8px;
+  position: relative;
+  min-height: 0;
+  padding: 0 24px 0 20px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  border: 0;
+  color: var(--arch-ink);
+  font-size: 18px;
+  font-weight: 400;
+  box-sizing: border-box;
+}
+.swiss-card .arch-platform[data-architecture-variant="wide-product"] .ap-chip::before {
+  content: '';
+  width: 5px;
+  height: 5px;
+  margin-right: 13px;
+  flex: 0 0 auto;
+  background: var(--arch-ink);
+  opacity: .44;
+}
+.swiss-card .arch-platform[data-architecture-variant="wide-product"] .ap-chip:not(:last-child)::after {
+  content: '';
+  position: absolute;
+  top: 13px;
+  right: 0;
+  bottom: 13px;
+  width: .55px;
+  background: var(--arch-ink);
+  opacity: .18;
 }
 .swiss-card .arch-platform[data-architecture-variant="wide-product"] .ap-grid-wrap {
-  padding: 8px;
+  padding-top: 18px;
+  padding-bottom: 18px;
 }
 .swiss-card .arch-platform[data-architecture-variant="wide-product"] .ap-grid {
   height: 100%;
-  min-height: 104px;
-  gap: 8px;
+  min-height: 0;
+  gap: 12px;
+  align-items: stretch;
 }
 .swiss-card .arch-platform[data-architecture-variant="wide-product"] .ap-card {
-  padding: 8px;
-  gap: 8px;
+  min-height: 0;
+  padding: 20px 22px 18px;
+  display: grid;
+  grid-template-rows: 24px minmax(0, 1fr);
+  gap: 14px;
+  border: 0;
+  box-sizing: border-box;
 }
 .swiss-card .arch-platform[data-architecture-variant="wide-product"] .ap-card-title {
-  min-height: 24px;
+  min-height: 0;
   display: flex;
   align-items: center;
-  justify-content: center;
-  padding: 0 4px 8px;
+  justify-content: flex-start;
+  padding: 0;
+  border-bottom: 0;
+  color: var(--arch-ink);
+  font-size: 18px;
+  font-weight: 700;
+  box-sizing: border-box;
+}
+.swiss-card .arch-platform[data-architecture-variant="wide-product"] .ap-card-title::after {
+  content: '';
+  height: .55px;
+  margin-left: 14px;
+  flex: 1 1 auto;
+  background: var(--arch-ink);
+  opacity: .18;
 }
 .swiss-card .arch-platform[data-architecture-variant="wide-product"] .ap-items {
+  min-height: 0;
+  padding: 0;
   grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 8px;
+  grid-template-rows: repeat(2, minmax(0, 1fr));
+  column-gap: 18px;
+  row-gap: 12px;
+  align-items: center;
+  box-sizing: border-box;
 }
 .swiss-card .arch-platform[data-architecture-variant="wide-product"] .ap-item {
-  min-height: 28px;
-  padding: 8px 4px;
+  position: relative;
+  min-height: 0;
+  padding: 4px 0 4px 17px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  border: 0;
+  color: var(--arch-ink);
+  font-size: var(--arch-content-font-size);
+  font-weight: 400;
+  text-align: left;
+  line-height: 1.35;
+  box-sizing: border-box;
+}
+.swiss-card .arch-platform[data-architecture-variant="wide-product"] .ap-item::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  width: 7px;
+  height: .55px;
+  background: var(--arch-ink);
+  opacity: .42;
 }`;
   }
 }

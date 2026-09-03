@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html data-theme-id="klein-blue" lang="zh-CN" data-runtime="wise-ppt-specimen" data-typography-mode="all-sans" data-page-id="gallery-ai-e6" data-page-role="compare" data-theme="paper-ink" data-layout="paper-ink.comparison.before-after-process-bands" data-layout-source="gallery" data-sample-focus-profile="content-only" data-sample-focus-members='[{"selector":"#e6-focus-badge","role":"outline"},{"selector":"#e6-focus-check","role":"outline"},{"selector":"#e6-focus-title","role":"value"}]' data-sample-focus-ref="sample.e6.e6-focus" data-surface-source="catalog-theme-recipes-v1" data-xp-recipe-id="klein-blue:e6" data-xp-surface-profile="vertical-before-after-bands" data-xp-recipe-status="recipe-ready" data-xp-frame-kind="recipe-generated">
+<html data-theme-id="klein-blue" lang="zh-CN" data-runtime="wise-ppt-specimen" data-typography-mode="all-sans" data-wise-catalog-fonts="true" data-page-id="gallery-ai-e6" data-page-role="compare" data-theme="paper-ink" data-layout="paper-ink.comparison.before-after-process-bands" data-layout-source="gallery" data-emphasis-targets="[{&quot;target_id&quot;:&quot;focus.decisive-difference&quot;,&quot;label&quot;:&quot;召回、重排与组装&quot;,&quot;content_role&quot;:&quot;底部总结中的三项关键动作&quot;,&quot;reason_hint&quot;:&quot;在默认主题身份上，只给召回、重排与组装增加强调色。&quot;,&quot;members&quot;:[{&quot;selector&quot;:&quot;#e6-focus-actions&quot;,&quot;role&quot;:&quot;annotation&quot;,&quot;treatment&quot;:&quot;focus.color&quot;,&quot;expected_count&quot;:1}]}]" data-vnext-semantic-key-map="[]" data-catalog-legacy-emphasis-profile="content-only" data-catalog-legacy-emphasis-members="[{&quot;selector&quot;:&quot;#e6-focus-badge&quot;,&quot;expected_count&quot;:1,&quot;role&quot;:&quot;symbol&quot;,&quot;paint&quot;:&quot;fill&quot;},{&quot;selector&quot;:&quot;#e6-focus-title&quot;,&quot;expected_count&quot;:1,&quot;role&quot;:&quot;value&quot;}]" data-catalog-legacy-emphasis-foreground-members="[]" data-catalog-legacy-emphasis-ref="sample.e6.e6-focus" data-surface-source="catalog-theme-recipes-v2" data-xp-recipe-id="klein-blue:e6" data-xp-surface-profile="white-over-ink-before-after" data-xp-recipe-status="user-correction-specified" data-xp-frame-kind="recipe-generated">
 <head>
 <meta charset="UTF-8">
 <title>layout-e6 · 前后双带演进页（AI 主题）</title>
@@ -12,6 +12,12 @@
 <link rel="stylesheet" href="../../../../../themes/engine/assets/slide-components.css">
 <link rel="stylesheet" href="../../../../../references/shell.css">
 <style>
+  :root:is([data-theme-id="hermes-orange"], [data-theme-id="klein-blue"])
+    .slide[data-emphasis-mode="semantic-focus"]
+    :is(text, tspan)[data-emphasis-off-color="inverse"][data-emphasis-role]:not([data-emphasis-active="true"]) {
+    --wp-emphasis-color: var(--xp-white, #fff);
+    fill: var(--wp-emphasis-color) !important;
+  }
   svg.scene { position: absolute; inset: 0; z-index: 1; }
   .caption {
     position: absolute; left: 0; right: 0; bottom: 118px;
@@ -22,7 +28,7 @@
     z-index: 5;
   }
 </style>
-<link rel="stylesheet" href="../../catalog-surface.css" data-catalog-theme-surface="catalog-theme-recipes-v1">
+<link rel="stylesheet" href="../../catalog-surface.css" data-catalog-theme-surface="catalog-theme-recipes-v2">
 <link rel="stylesheet" href="../../title-furniture.css" data-catalog-title-furniture="black-first-theme-second-v1">
 </head>
 <body class="slide">
@@ -34,7 +40,7 @@
     <g id="draw"></g>
   </svg>
 
-  <div class="caption">召回、重排与组装把文档散件变成可追溯上下文，答案稳定性随之提升。</div>
+  <div class="caption"><span id="e6-focus-actions" data-emphasis-candidate="true">召回、重排与组装</span>把文档散件变成可追溯上下文，答案稳定性随之提升。</div>
 </div>
 
 <script src="../../../../../themes/packages/paper-ink/assets/particles.js"></script>
@@ -126,7 +132,7 @@ el('rect', {x:155, y:505, width:1610, height:270, rx:3, fill:'none', stroke:INK,
 /* ✓ 徽章与 After 标题组成同一结果语义组 */
 el('circle', {id:'e6-focus-badge', cx:200, cy:542, r:15, fill:'var(--paper)', stroke:INK80, 'stroke-width':1.2});
 el('path', {id:'e6-focus-check', d:'M 193 542 L 198 548 L 208 535', fill:'none', stroke:INK, 'stroke-width':3, 'stroke-linecap':'round', 'stroke-linejoin':'round'});
-txt(232, 550, 'After：文档进入召回链路', {id:'e6-focus-title', 'font-family':SANS, 'font-weight':300, 'font-size':'var(--type-subheading)', fill:INK});
+txt(232, 550, 'After：文档进入召回链路', {id:'e6-focus-title', 'data-emphasis-off-color':'inverse', 'font-family':SANS, 'font-weight':300, 'font-size':'var(--type-subheading)', fill:INK});
 txt(1730, 548, 'PIPELINED', {'font-family':MONO, 'font-size':'var(--type-micro-secondary)', 'letter-spacing':3, 'text-anchor':'end', fill:INK45});
 
 /* 六步流水线 */
@@ -210,8 +216,8 @@ txt(1000, 742, '可被 Agent 调用', {'font-family':SANS, 'font-weight':300, 'f
 
 stageFit();
 </script>
-<script type="application/json" id="xp-surface-recipe">{"theme":"klein-blue","color_name":"blue","layout_code":"e6","title":"layout-e6 · 前后双带演进页（AI 主题）","layout":"paper-ink.comparison.before-after-process-bands","page_role":"compare","canvas":{"token":"paper","value":"#f2efe9","reason":"常规内容页在纸面上建立层级。"},"surface_profile":"vertical-before-after-bands","surfaces":[{"role":"base-layout","material":"paper-plane","fill":"#f2efe9","stack":0},{"role":"before","material":"recessed","fill":"#e8e5df","stack":1,"shadow":"none"},{"role":"after","material":"top-white","fill":"#ffffff","stack":2,"border":{"color":"#1a1a1a","width":2},"shadow":"accent-hard"},{"role":"focus-marker","material":"accent","fill":"#002fa7","stack":3}],"accent":{"value":"#002fa7","semantic_channel":"新方案、胜出侧或决定性差异","furniture":"左上第一行 doc-kicker 固定墨黑，第二行 doc-title 使用当前主题色；folio 继续按该页画布与原配方处理。","neutral_exceptions":["普通英文标签","轴名","层名","结构编号","MODEL","非当前数据"],"furniture_mode":"black-first-theme-second","folio_mode":"accent"},"border_policy":"主体 1px 墨线；唯一焦点可用 2px 橙线，所有容器方角。","shadow_policy":"默认无影；仅唯一被举起的主证据允许一次 10px 零模糊橙色硬影。","noise_policy":"由主题统一提供唯一一层约 6% 黑色 fractal-noise；页面不得自带 noise 节点；浅色页 multiply，墨面可 overlay。","reference_evidence":{"file":"ai_studio_code (8).html","cards":["card-5","card-6"],"rule":"旧侧后退为承托面，新侧只在真正的前景对象上使用不透明白面。"},"acceptance":["强调色只落一个语义通道；同一序列可重复，但不得扩散到结构元数据。","纯白只用于 top-white，不能替代默认纸面。","缩略图必须从该主题独立 frame 的实际渲染重建。"],"status":"recipe-ready","surface_bindings":[{"selector":"#draw rect[x=\"150\"][y=\"190\"][width=\"1620\"][height=\"280\"]","expected_count":1,"role":"before","material":"recessed","fill":"#e8e5df","stack":1,"shadow":"none"},{"selector":"#draw rect[x=\"150\"][y=\"500\"][width=\"1620\"][height=\"280\"]","expected_count":1,"role":"after","material":"top-white","fill":"#ffffff","stack":2,"border":{"color":"#1a1a1a","width":2},"shadow":"accent-hard"}],"surface_binding_reason":"真实浏览器 DOM 审计后锁定的稳定 selector；expected_count 是逐页门禁。"}</script>
-<script src="../../catalog-surface.js" data-catalog-theme-surface="catalog-theme-recipes-v1"></script>
-<script src="../../catalog-typography.js" data-catalog-typography="accent-english-title-match-v1"></script>
+<script type="application/json" id="xp-surface-recipe">{"theme":"klein-blue","color_name":"blue","layout_code":"e6","title":"layout-e6 · 前后双带演进页（AI 主题）","layout":"paper-ink.comparison.before-after-process-bands","page_role":"compare","canvas":{"token":"paper","value":"#f2efe9","reason":"常规内容页在纸面上建立层级。"},"surface_profile":"white-over-ink-before-after","surfaces":[{"role":"base-layout","material":"paper-plane","fill":"#f2efe9","stack":0},{"role":"before","material":"top-white","fill":"#ffffff","stack":2,"border":{"color":"#1a1a1a","width":2},"shadow":"none"},{"role":"after","material":"ink","fill":"#1a1a1a","stack":2,"border":{"color":"#1a1a1a","width":2},"shadow":"none"},{"role":"after-content","material":"inverse-paper","fill":"#f2efe9","stack":3,"shadow":"none"},{"role":"focus-marker","material":"accent","fill":"#002fa7","stack":3}],"accent":{"value":"#002fa7","semantic_channel":"新方案、胜出侧或决定性差异","furniture":"左上第一行 doc-kicker 固定墨黑，第二行 doc-title 使用当前主题色；folio 跟随元信息通道：墨色 45%（同英文章节标签），不使用主题色。","neutral_exceptions":["普通英文标签","轴名","层名","结构编号","MODEL","非当前数据"],"furniture_mode":"black-first-theme-second","folio_mode":"metadata-neutral"},"border_policy":"上下卡都使用 2px 墨线；上卡纯白，下卡墨黑，保持方角。","shadow_policy":"上下卡均无投影，靠白面与墨面建立前后对照。","noise_policy":"由主题统一提供唯一一层约 6% 黑色 fractal-noise；页面不得自带 noise 节点；浅色页 multiply，墨面可 overlay。","reference_evidence":{"file":"ai_studio_code (8).html","cards":["card-5 / layer-2","card-5 / layer-3"],"rule":"04 页下方第 2 卡为黑框白底，第 3 卡为墨底反白；主题色只保留在左上结果标记。"},"acceptance":["上卡必须为纯白底、2px 墨色边框。","下卡必须为墨黑底；六步名称、主图标轮廓、中段关键链路与勾使用纯白。","下卡的状态字、说明句、内框、连接符、辅助链路与图标内部细节使用当前淡灰。","下卡左上标题与勾选圆使用主题色，勾本身使用纯白。"],"status":"user-correction-specified","surface_bindings":[{"selector":"#draw rect[x=\"150\"][y=\"190\"][width=\"1620\"][height=\"280\"]","expected_count":1,"role":"before","material":"top-white","fill":"#ffffff","stack":2,"border":{"color":"#1a1a1a","width":2},"shadow":"none"},{"selector":"#draw rect[x=\"150\"][y=\"500\"][width=\"1620\"][height=\"280\"]","expected_count":1,"role":"after","material":"ink","fill":"#1a1a1a","stack":2,"border":{"color":"#1a1a1a","width":2},"shadow":"none"},{"selector":"#draw > g > rect[x=\"155\"][y=\"505\"][width=\"1610\"][height=\"270\"], #draw > g > rect[x=\"155\"][y=\"505\"][width=\"1610\"][height=\"270\"] ~ *","expected_count":72,"role":"after-content","material":"inverse-paper","fill":"preserve","stack":3,"shadow":"none","tokens":{"--ink":"#ffffff","--ink-80":"#ffffff","--ink-70":"rgba(242, 239, 233, .70)","--ink-45":"rgba(242, 239, 233, .45)","--paper":"#1a1a1a"}}],"surface_binding_reason":"上下卡外框按稳定坐标精确命中；下卡内框后的 72 个同级节点统一继承反白 token：ink 与 ink-80 承担纯白核心，ink-70 与 ink-45 承担淡灰辅助；数量漂移即失败。","theme_identity":[{"group_id":"identity.legacy-after","label":"After 文案与前置完成图标","members":[{"selector":"#e6-focus-badge","treatment":"identity.data-series","expected_count":1},{"selector":"#e6-focus-title","treatment":"identity.text","expected_count":1}]}],"emphasis_targets":[{"target_id":"focus.decisive-difference","label":"召回、重排与组装","content_role":"底部总结中的三项关键动作","reason_hint":"在默认主题身份上，只给召回、重排与组装增加强调色。","members":[{"selector":"#e6-focus-actions","role":"annotation","treatment":"focus.color","expected_count":1}]}],"sample_target_id":"focus.decisive-difference"}</script>
+<script src="../../catalog-surface.js" data-catalog-theme-surface="catalog-theme-recipes-v2"></script>
+<script src="../../catalog-typography.js" data-catalog-typography="brand-latin-numeric-oswald-v1"></script>
 </body>
 </html>

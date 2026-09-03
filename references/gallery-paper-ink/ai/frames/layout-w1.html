@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html data-theme-id="paper-ink" lang="zh-CN" data-runtime="wise-ppt-specimen" data-typography-mode="all-sans" data-page-id="gallery-ai-w1" data-page-role="explain" data-theme="paper-ink" data-layout="paper-ink.radial.hub-arc-detail" data-layout-source="gallery" data-sample-focus-profile="content-only" data-sample-focus-members='[{"selector":"#w1-focus-hub","role":"outline"},{"selector":"#w1-focus-hub-title","role":"value"}]' data-sample-focus-ref="sample.w1.w1-focus">
+<html data-theme-id="paper-ink" lang="zh-CN" data-runtime="wise-ppt-specimen" data-typography-mode="all-sans" data-page-id="gallery-ai-w1" data-page-role="explain" data-theme="paper-ink" data-layout="paper-ink.radial.hub-arc-detail" data-layout-source="gallery" data-emphasis-targets='[{"target_id":"focus.key-layer","members":[{"selector":"#w1-focus-data-loop, #w1-focus-ecosystem","role":"label","treatment":"focus.color","expected_count":2}]}]' data-catalog-legacy-emphasis-profile="content-only" data-catalog-legacy-emphasis-members='[{"selector":"#w1-focus-core","expected_count":1,"role":"symbol","paint":"fill"}]' data-catalog-legacy-emphasis-foreground-members='[{"selector":"#w1-focus-hub-title","expected_count":1,"neutral_tone":"preserve","active_tone":"white"},{"selector":"#w1-focus-hub-code","expected_count":1,"neutral_tone":"preserve","active_tone":"white"}]' data-catalog-legacy-emphasis-ref="sample.w1.colored-inner-hub" data-vnext-semantic-key-map='[{"key":"orbit.text.001","tag":"text","text":"制造中台","occurrence":0}]'>
 <head>
 <meta charset="UTF-8">
 <title>layout-w1 · 枢纽弧线 + 右列详情 · 制造中台</title>
@@ -39,7 +39,7 @@
     <g id="w1-details" data-slot-id="details"></g>
   </svg>
 
-  <div class="caption">中枢只讲一次，四条支线各证一面，左点名、右举证逐行对齐。</div>
+  <div class="caption">制造中台通过资质背书建立信任，以自有平台承接服务，再用<span id="w1-focus-data-loop" data-emphasis-candidate="true">数据闭环</span>与<span id="w1-focus-ecosystem" data-emphasis-candidate="true">生态协同</span>持续放大运营能力。</div>
 </div>
 
 <script>
@@ -66,11 +66,11 @@ function txt(parent, x, y, str, attrs) {
 /* CX=536 为整体水平居中校准值:构图包围盒 [536-112, 1226+270] 的中心 = 960 */
 var CX = 536, CY = 540, R = 420, HUB_R = 112;
 
-/* 中枢双圈墨核(墨字非反白) */
+/* 中枢双圈墨核；纸墨态保持墨字，彩色主题可按强调前景色切换。 */
 el(ORBIT, 'circle', {id:'w1-focus-hub', cx:CX, cy:CY, r:HUB_R, fill:'none', stroke:INK, 'stroke-width':.6, opacity:.45});
-el(ORBIT, 'circle', {cx:CX, cy:CY, r:100, fill:'none', stroke:INK, 'stroke-width':1.6});
+el(ORBIT, 'circle', {id:'w1-focus-core', cx:CX, cy:CY, r:100, fill:'none', stroke:INK, 'stroke-width':1.6});
 txt(ORBIT, CX, CY-6, '制造中台', {id:'w1-focus-hub-title', 'font-family':SANS, 'font-weight':400, 'font-size':'var(--type-emphasis)', 'letter-spacing':4, 'text-anchor':'middle', fill:INK});
-txt(ORBIT, CX, CY+34, 'OPS CORE', {'font-family':MONO, 'font-size':'var(--type-meta)', 'letter-spacing':4, 'text-anchor':'middle', fill:INK45});
+txt(ORBIT, CX, CY+34, 'OPS CORE', {id:'w1-focus-hub-code', 'font-family':MONO, 'font-size':'var(--type-meta)', 'letter-spacing':4, 'text-anchor':'middle', fill:INK45});
 
 /* 四条支线行位与点名(先定义行位,弧线只画到末条支线为止) */
 var ROWS = [280, 450, 620, 790];
@@ -86,8 +86,8 @@ var SATELLITES = [
 var R2 = R + 173;
 var BAND_EXT = Math.round((ROWS[3] - ROWS[0]) * 0.20);
 function arcX(radius, y) { return CX + Math.sqrt(radius*radius - (CY-y)*(CY-y)); }
-el(ORBIT, 'path', {d:'M ' + arcX(R, ROWS[0]) + ' ' + ROWS[0] + ' A ' + R + ' ' + R + ' 0 0 1 ' + arcX(R, ROWS[3]) + ' ' + ROWS[3], fill:'none', stroke:INK, 'stroke-width':.7, opacity:.4, 'stroke-dasharray':'4 7'});
-el(ORBIT, 'path', {d:'M ' + arcX(R2, ROWS[0]-BAND_EXT) + ' ' + (ROWS[0]-BAND_EXT) + ' A ' + R2 + ' ' + R2 + ' 0 0 1 ' + arcX(R2, ROWS[3]+BAND_EXT) + ' ' + (ROWS[3]+BAND_EXT), fill:'none', stroke:INK, 'stroke-width':.7, opacity:.4, 'stroke-dasharray':'4 7'});
+el(ORBIT, 'path', {id:'w1-inner-arc', 'data-theme-line':'main', d:'M ' + arcX(R, ROWS[0]) + ' ' + ROWS[0] + ' A ' + R + ' ' + R + ' 0 0 1 ' + arcX(R, ROWS[3]) + ' ' + ROWS[3], fill:'none', stroke:INK, 'stroke-width':1.2, opacity:.65, 'stroke-dasharray':'5 7'});
+el(ORBIT, 'path', {id:'w1-outer-arc', 'data-theme-line':'main', d:'M ' + arcX(R2, ROWS[0]-BAND_EXT) + ' ' + (ROWS[0]-BAND_EXT) + ' A ' + R2 + ' ' + R2 + ' 0 0 1 ' + arcX(R2, ROWS[3]+BAND_EXT) + ' ' + (ROWS[3]+BAND_EXT), fill:'none', stroke:INK, 'stroke-width':1.2, opacity:.65, 'stroke-dasharray':'5 7'});
 
 /* 四条支线:圆点挂外弧;标题贴内弧内侧;
    副题与标题视觉中线同高,并水平居中在两道圆弧之间 */
@@ -122,7 +122,7 @@ ROWS.forEach(function(y, i) {
   el(DETAILS, 'circle', {cx:anchorX, cy:y, r:2.2, fill:INK, opacity:.6});
   el(DETAILS, 'line', {x1:dividerX, y1:y-58, x2:dividerX, y2:y+42, stroke:INK, 'stroke-width':.8, opacity:.5});
   var block = el(DETAILS, 'g', {'data-layout-role':'detail-row'});
-  txt(block, DETAIL_TEXT_X, y-32, DETAILS_ROWS[i].tag, {'font-family':MONO, 'font-size':'var(--type-meta)', 'letter-spacing':2, fill:INK45});
+  txt(block, DETAIL_TEXT_X, y-32, DETAILS_ROWS[i].tag, {'data-number-kind':'plain', 'data-number-role':'structural', 'data-number-part':'label', 'data-text-kind':'number', 'font-family':MONO, 'font-size':'var(--type-meta)', 'letter-spacing':2, fill:'var(--wp-color-primary)'});
   txt(block, DETAIL_TEXT_X, y+2, DETAILS_ROWS[i].lines[0], {'font-family':SANS, 'font-weight':300, 'font-size':'var(--type-body-small)', fill:INK});
   txt(block, DETAIL_TEXT_X, y+30, DETAILS_ROWS[i].lines[1], {'font-family':SANS, 'font-weight':300, 'font-size':'var(--type-body-small)', fill:INK70});
 });

@@ -1,5 +1,5 @@
 {
-  "contract": "wise-ppt-theme@3",
+  "contract": "wise-ppt-theme@5",
   "theme_id": "moshu-platform",
   "name": "墨枢平台",
   "source": { "kind": "mixed", "label": "墨枢 runtime@4 代表页面、品牌锚点与重复组件" },
@@ -34,7 +34,7 @@
     }
   },
   "lines": { "tiers": { "hairline": 0.55, "detail": 0.8, "main": 1.2, "emphasis": 1.8 }, "colors": { "structural": "functional", "focus": "focus", "divider": "divider" }, "cap": "round", "join": "round", "minimum_contrast": 3 },
-  "icons": { "drawing": "outline", "stroke_tiers": ["hairline", "detail", "main", "emphasis"], "color_role": "functional", "carrier": "none", "grouping": "functional-neighbor", "rhythm": "compact", "capabilities": ["recolor", "stroke-tiers"], "unregistered": "preserve-and-report" },
+  "icons": { "source_family": "redraw-v3", "drawing": "outline", "stroke_tiers": ["hairline", "detail", "main", "emphasis"], "color_role": "functional", "carrier": "none", "grouping": "functional-neighbor", "rhythm": "compact", "capabilities": ["recolor", "stroke-tiers"], "unregistered": "preserve-and-report" },
   "components": { "table": { "header": "recessed", "body": "transparent", "selected": "focus-outline" }, "card": { "surface": "foreground", "border": "structural" }, "panel": { "surface": "recessed", "border": "structural" }, "application": "explicit-semantic-regions-only" },
   "exceptions": { "hollow_number": { "fill": "none", "stroke": "primary", "text": "primary" }, "reverse": { "surface": "ink", "text": "reverse" }, "unregistered_icon": "preserve", "undeclared_component_state": "preserve-and-report" }
 }

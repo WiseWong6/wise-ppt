@@ -1,4 +1,4 @@
-/* Generated from themes/registry.json and wise-ppt-theme@3 packages. Do not edit. */
+/* Generated from themes/registry.json and wise-ppt-theme@5 packages. Do not edit. */
 window.WISE_PPT_THEME_REGISTRY_DATA = {
   "contract": "wise-ppt-theme-catalog-projection@1",
   "default_theme_id": "paper-ink",
@@ -15,7 +15,8 @@ window.WISE_PPT_THEME_REGISTRY_DATA = {
       "theme_id": "paper-ink",
       "name": "纸墨",
       "description": "克制、理性、纸本编辑感",
-      "default_typography_mode": "mixed",
+      "default_typography_mode": "all-sans",
+      "icon_source_family": "redraw-v3",
       "catalog_aliases": [],
       "swatches": {
         "background": "#DFE0D9",
@@ -28,6 +29,7 @@ window.WISE_PPT_THEME_REGISTRY_DATA = {
       "name": "爱马仕橙",
       "description": "明快、编辑化、品牌感",
       "default_typography_mode": "mixed",
+      "icon_source_family": "tabler-original-v3.46.0",
       "catalog_aliases": [
         "scheme-k-hermes"
       ],
@@ -42,6 +44,7 @@ window.WISE_PPT_THEME_REGISTRY_DATA = {
       "name": "克莱因蓝",
       "description": "冷静、建筑化、品牌感",
       "default_typography_mode": "mixed",
+      "icon_source_family": "tabler-original-v3.46.0",
       "catalog_aliases": [
         "scheme-l-klein"
       ],

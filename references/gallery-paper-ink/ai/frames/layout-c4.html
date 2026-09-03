@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html data-theme-id="paper-ink" lang="zh-CN" data-runtime="wise-ppt-specimen" data-typography-mode="all-sans" data-render-pending="true" data-page-id="gallery-ai-c4" data-page-role="prove" data-theme="paper-ink" data-layout="paper-ink.data.geo-bubble-map" data-layout-source="gallery" data-sample-focus-profile="content-only" data-sample-focus-members='[{"selector":"#sample-focus","role":"value"},{"selector":"#c4-focus-city","role":"label"},{"selector":"#c4-focus-marker","role":"symbol","paint":"fill"}]' data-sample-focus-ref="sample.c4.c4-focus">
+<html data-theme-id="paper-ink" lang="zh-CN" data-runtime="wise-ppt-specimen" data-typography-mode="all-sans" data-render-pending="true" data-page-id="gallery-ai-c4" data-page-role="prove" data-theme="paper-ink" data-layout="paper-ink.data.geo-bubble-map" data-layout-source="gallery" data-emphasis-targets='[{"target_id":"focus.nodes-total","members":[{"selector":"[data-vnext-text-key=\"map.text.002\"], [data-vnext-text-key=\"map.text.003\"]","role":"value","treatment":"focus.text","expected_count":2}]},{"target_id":"focus.inference-instances","members":[{"selector":"[data-vnext-text-key=\"map.text.004\"], [data-vnext-text-key=\"map.text.005\"]","role":"value","treatment":"focus.text","expected_count":2}]},{"target_id":"focus.city-coverage","members":[{"selector":"[data-vnext-text-key=\"map.text.006\"], [data-vnext-text-key=\"map.text.007\"]","role":"value","treatment":"focus.text","expected_count":2}]},{"target_id":"focus.daily-calls","members":[{"selector":"[data-vnext-text-key=\"map.text.008\"], [data-vnext-text-key=\"map.text.009\"]","role":"value","treatment":"focus.text","expected_count":2}]}]' data-catalog-legacy-emphasis-profile="content-only" data-catalog-legacy-emphasis-members='[{"selector":"#sample-focus","role":"value"},{"selector":"#c4-focus-city","role":"label"},{"selector":"#c4-focus-marker","role":"symbol","paint":"fill"}]' data-catalog-legacy-emphasis-foreground-members='[]' data-catalog-legacy-emphasis-ref="sample.c4.c4-focus" data-vnext-semantic-key-map='[{"key":"map.text.001","tag":"text","text":"PROVINCE TOTALS","occurrence":0},{"key":"map.text.002","tag":"text","text":"117","occurrence":0},{"key":"map.text.003","tag":"text","text":"部署节点总数（个）","occurrence":0},{"key":"map.text.004","tag":"text","text":"3,842","occurrence":0},{"key":"map.text.005","tag":"text","text":"在线推理实例（路）","occurrence":0},{"key":"map.text.006","tag":"text","text":"21","occurrence":0},{"key":"map.text.007","tag":"text","text":"覆盖城市（个）","occurrence":0},{"key":"map.text.008","tag":"text","text":"96","occurrence":0},{"key":"map.text.009","tag":"text","text":"日均调用量（万次）","occurrence":0}]'>
 <head>
 <meta charset="UTF-8">
 <title>layout-c4 · 广东分布地图 · AI 覆盖</title>
@@ -58,7 +58,7 @@
 <script src="../../../../themes/packages/paper-ink/assets/particles.js"></script>
 <script>
 /* 外观属性先于绘制代码落地：地图色阶与图例在解析期就要取
-   --wp-private-identity-accent，不能等脚本末尾的 stageFit()。 */
+   默认身份通道，不能等脚本末尾的 stageFit()。 */
 (function(){
   var p=new URLSearchParams(location.search).get('preset');
   if(p)document.documentElement.dataset.themePreset=p;
@@ -86,11 +86,11 @@ var SANS = CATALOG_FONTS ? 'Han Sans Catalog Light' : 'Han Sans';
 /* ---------- 色阶配方：地图始终使用墨灰色阶 ----------
    未覆盖城市一律填深一度纸色（color-mix(in srgb, var(--paper-deep) 55%, transparent)，--paper-deep 系），仅覆盖城市按仓数分档上色。
    visualMap（地图）与左下角图例从同一 RAMP 生成，保证 1:1 对应。 */
-/* 墨灰色阶保持中性；主题焦点只落在显式登记的城市节点。
-   全色实验配色下（登记了 identity-accent 的），色阶跟随默认色。 */
+/* 纸墨的 functional 是中性墨灰；橙蓝的 functional 是主题色。
+   地图色阶只跟随默认身份通道，不读取语义强调色。 */
 var RAMP_RGB = (function(){
   try {
-    var v = getComputedStyle(document.documentElement).getPropertyValue('--wp-private-identity-accent').trim();
+    var v = getComputedStyle(document.documentElement).getPropertyValue('--wp-color-functional').trim();
     var m = /^#([0-9a-f]{6})$/i.exec(v);
     if (m) { var n = parseInt(m[1], 16); return ((n >> 16) & 255) + ',' + ((n >> 8) & 255) + ',' + (n & 255); }
   } catch (e) {}
@@ -201,9 +201,6 @@ Promise.all([
   echarts.registerMap('guangdong', geo);
 
   var chart = echarts.init(document.getElementById('chart'));
-  var accentOn = document.documentElement.classList.contains('accent');
-  var focusAreaColor = getComputedStyle(document.documentElement)
-    .getPropertyValue('--wp-color-focus-peripheral').trim();
   var neutralAreaColor = resolvedCssColor('color-mix(in srgb, var(--paper-deep) 55%, transparent)');
   var mapLabelColor = resolvedCssColor('color-mix(in srgb, var(--ink) 32%, transparent)');
   chart.setOption({
@@ -218,7 +215,7 @@ Promise.all([
         return {
           name: n.city,
           value: n.v,
-          itemStyle: { areaColor: accentOn && n.focus ? focusAreaColor : rampColor(n.v) }
+          itemStyle: { areaColor: rampColor(n.v) }
         };
       }),
       itemStyle: {

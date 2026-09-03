@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html data-theme-id="paper-ink" lang="zh-CN" data-runtime="wise-ppt-specimen" data-typography-mode="all-sans" data-page-id="gallery-ai-e3" data-page-role="compare" data-theme="paper-ink" data-layout="paper-ink.comparison.paired-bands" data-layout-source="gallery" data-sample-focus-profile="copy-only" data-sample-focus-members='[{"selector":"#focus-caption","role":"label"}]' data-sample-focus-ref="sample.e3.e3-focus">
+<html data-theme-id="paper-ink" lang="zh-CN" data-runtime="wise-ppt-specimen" data-typography-mode="all-sans" data-page-id="gallery-ai-e3" data-page-role="compare" data-theme="paper-ink" data-layout="paper-ink.comparison.paired-bands" data-layout-source="gallery" data-emphasis-targets='[{"target_id":"focus.decisive-difference","members":[{"selector":"[data-vnext-text-key=\"paired-items.text.001\"]","role":"value","treatment":"focus.text","expected_count":1}]}]' data-catalog-legacy-emphasis-profile="copy-only" data-catalog-legacy-emphasis-members='[{"selector":"#focus-caption","role":"label"}]' data-catalog-legacy-emphasis-foreground-members='[]' data-catalog-legacy-emphasis-ref="sample.e3.e3-focus" data-vnext-semantic-key-map='[{"key":"paired-items.text.001","tag":"text","text":"WHY","occurrence":0}]'>
 <head>
 <meta charset="UTF-8">
 <title>layout-e3 · 双带列阵 · Agent 4 坑 4 解</title>
@@ -81,7 +81,7 @@ var UY = 350;
 /* 因 1 · 峰值拥堵：窄门 + 排队小车 */
 (function(){
   var cx = COLS[0];
-  txt(cx, 270, '01 · RATE-LIMIT', {'font-family':MONO, 'font-size':'var(--type-micro-secondary)', 'letter-spacing':2, 'text-anchor':'middle', fill:INK45});
+  txt(cx, 270, '01 · RATE-LIMIT', {'data-number-kind':'plain', 'data-number-role':'structural', 'data-number-part':'label', 'data-text-kind':'number', 'font-family':MONO, 'font-size':'var(--type-micro-secondary)', 'letter-spacing':2, 'text-anchor':'middle', fill:'var(--wp-color-primary)'});
   el('rect', {x:cx-32, y:UY-34, width:11, height:68, fill:'url(#hatch23)', stroke:INK80, 'stroke-width':1});
   el('rect', {x:cx+21, y:UY-34, width:11, height:68, fill:'url(#hatch23)', stroke:INK80, 'stroke-width':1});
   el('rect', {x:cx-84, y:UY-26, width:20, height:20, fill:'none', stroke:INK80, 'stroke-width':1.1});
@@ -94,7 +94,7 @@ var UY = 350;
 /* 因 2 · 空驶返程：实线去、虚线回 */
 (function(){
   var cx = COLS[1];
-  txt(cx, 270, '02 · LOOP STUCK', {'font-family':MONO, 'font-size':'var(--type-micro-secondary)', 'letter-spacing':2, 'text-anchor':'middle', fill:INK45});
+  txt(cx, 270, '02 · LOOP STUCK', {'data-number-kind':'plain', 'data-number-role':'structural', 'data-number-part':'label', 'data-text-kind':'number', 'font-family':MONO, 'font-size':'var(--type-micro-secondary)', 'letter-spacing':2, 'text-anchor':'middle', fill:'var(--wp-color-primary)'});
   el('circle', {cx:cx-72, cy:UY+18, r:6, fill:'none', stroke:INK80, 'stroke-width':1.1});
   el('circle', {cx:cx-72, cy:UY+18, r:2.2, fill:INK});
   el('path', {d:'M '+(cx-66)+' '+(UY+14)+' L '+(cx+60)+' '+(UY-22), fill:'none', stroke:INK80, 'stroke-width':1.2});
@@ -110,7 +110,7 @@ var UY = 350;
 /* 因 3 · 错拣漏拣：吊牌 + ✕ */
 (function(){
   var cx = COLS[2];
-  txt(cx, 270, '03 · CTX OVERFLOW', {'font-family':MONO, 'font-size':'var(--type-micro-secondary)', 'letter-spacing':2, 'text-anchor':'middle', fill:INK45});
+  txt(cx, 270, '03 · CTX OVERFLOW', {'data-number-kind':'plain', 'data-number-role':'structural', 'data-number-part':'label', 'data-text-kind':'number', 'font-family':MONO, 'font-size':'var(--type-micro-secondary)', 'letter-spacing':2, 'text-anchor':'middle', fill:'var(--wp-color-primary)'});
   el('path', {d:'M '+(cx-52)+' '+(UY-30)+' L '+(cx+22)+' '+(UY-30)+' L '+(cx+52)+' '+(UY)+' L '+(cx+22)+' '+(UY+30)+' L '+(cx-52)+' '+(UY+30)+' Z',
     fill:'none', stroke:INK80, 'stroke-width':1.2});
   el('circle', {cx:cx+28, cy:UY, r:4.5, fill:'none', stroke:INK, 'stroke-width':.9, opacity:.7});
@@ -123,7 +123,7 @@ var UY = 350;
 /* 因 4 · 跨仓割裂：两仓 + 断口 */
 (function(){
   var cx = COLS[3];
-  txt(cx, 270, '04 · UNTRACEABLE', {'font-family':MONO, 'font-size':'var(--type-micro-secondary)', 'letter-spacing':2, 'text-anchor':'middle', fill:INK45});
+  txt(cx, 270, '04 · UNTRACEABLE', {'data-number-kind':'plain', 'data-number-role':'structural', 'data-number-part':'label', 'data-text-kind':'number', 'font-family':MONO, 'font-size':'var(--type-micro-secondary)', 'letter-spacing':2, 'text-anchor':'middle', fill:'var(--wp-color-primary)'});
   [[cx-64],[cx+64]].forEach(function(p){
     var bx = p[0];
     el('rect', {x:bx-24, y:UY-14, width:48, height:32, fill:'none', stroke:INK80, 'stroke-width':1.2});

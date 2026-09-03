@@ -1,18 +1,18 @@
 {
-  "contract": "wise-ppt-icon-slots@1",
+  "contract": "wise-ppt-icon-slots@2",
   "capability_id": "wise-ppt.icon-slots",
   "generated_from": {
     "layout_registry": {
       "path": "capabilities/layouts/layout-registry.json",
-      "sha256": "5a1d9cc5c985a98dad0612c4ae16362494ffb044a5aacc9d4093cbc6afde726b"
+      "sha256": "788e4b039788c542cf65dfe9f7aa600b9cecfda326ad71a4048943895adfe205"
     },
     "component_routing": {
       "path": "capabilities/components/routing-manifest.json",
-      "sha256": "0ec39bddf1427e93b5baa0514f3caf543aeb156152b040d873449422fd61b108"
+      "sha256": "7ff211966e0dc3146e3d454d8bc5aae05c7a1bce50a62a8aebe02b6319c58509"
     },
     "runtime_authority": {
       "path": "capabilities/runtime-authority-manifest.json",
-      "sha256": "567ad92590f6906475f920890cdbb43450a77ccb8d1cc9ecdcced699674ff8df"
+      "sha256": "61a321c326a9ba90ccc97efb94d8784afc31d0a0ba02cea690243d976babc8af"
     }
   },
   "policy": {
@@ -22,28 +22,50 @@
   },
   "allowed_icon_scope": {
     "authority": "capabilities/runtime-authority-manifest.json#icons.entries",
-    "source_family": "tabler-outline-redraw-v3",
     "selectable_count": 865,
     "names_sha256": "54ddafbd202f9dbbc896c4e54916d22e30a3b4aa62bee595c1a7f542e0d3e7ce",
-    "viewBox": "0 0 64 64",
-    "paint": [
-      "currentColor",
-      "none"
-    ],
-    "stroke_widths": [
-      0,
-      0.55,
-      0.8,
-      1.2,
-      1.6
-    ],
+    "seed_viewBox": "0 0 64 64",
+    "source_families": {
+      "redraw-v3": {
+        "viewBox": "0 0 64 64",
+        "paint": [
+          "currentColor",
+          "none"
+        ],
+        "stroke_widths": [
+          0,
+          0.55,
+          0.8,
+          1.2,
+          1.6
+        ],
+        "root_presentation": {}
+      },
+      "tabler-original-v3.46.0": {
+        "viewBox": "0 0 24 24",
+        "paint": [
+          "currentColor",
+          "none"
+        ],
+        "stroke_widths": [
+          2
+        ],
+        "root_presentation": {
+          "fill": "none",
+          "stroke": "currentColor",
+          "stroke-width": "2",
+          "stroke-linecap": "round",
+          "stroke-linejoin": "round"
+        }
+      }
+    },
     "source_hash_required": true
   },
   "counts": {
     "layouts": 88,
     "relationship_layouts": 75,
     "nonrelationship_layouts": 13,
-    "components": 125,
+    "components": 126,
     "registered_icon_slots": 18
   },
   "layouts": {
@@ -692,7 +714,7 @@
           },
           "visual_lock": {
             "size_and_position": "seed-locked",
-            "color": "var(--wp-color-functional)",
+            "color": "var(--ink)",
             "stroke_and_shape": "selected-authority-svg-locked"
           }
         },
@@ -716,7 +738,7 @@
           },
           "visual_lock": {
             "size_and_position": "seed-locked",
-            "color": "var(--wp-color-functional)",
+            "color": "var(--ink-70)",
             "stroke_and_shape": "selected-authority-svg-locked"
           }
         },
@@ -740,7 +762,7 @@
           },
           "visual_lock": {
             "size_and_position": "seed-locked",
-            "color": "var(--wp-color-functional)",
+            "color": "var(--ink-45)",
             "stroke_and_shape": "selected-authority-svg-locked"
           }
         }
@@ -789,7 +811,7 @@
           },
           "visual_lock": {
             "size_and_position": "seed-locked",
-            "color": "var(--wp-color-functional)",
+            "color": "var(--ink)",
             "stroke_and_shape": "selected-authority-svg-locked"
           }
         },
@@ -813,7 +835,7 @@
           },
           "visual_lock": {
             "size_and_position": "seed-locked",
-            "color": "var(--wp-color-functional)",
+            "color": "var(--ink-70)",
             "stroke_and_shape": "selected-authority-svg-locked"
           }
         },
@@ -837,7 +859,7 @@
           },
           "visual_lock": {
             "size_and_position": "seed-locked",
-            "color": "var(--wp-color-functional)",
+            "color": "var(--ink-45)",
             "stroke_and_shape": "selected-authority-svg-locked"
           }
         },
@@ -861,7 +883,7 @@
           },
           "visual_lock": {
             "size_and_position": "seed-locked",
-            "color": "var(--wp-color-functional)",
+            "color": "var(--ink-25)",
             "stroke_and_shape": "selected-authority-svg-locked"
           }
         }
@@ -1320,6 +1342,11 @@
     },
     "echarts.tree-lr": {
       "component_name": "从左到右树状图",
+      "icon_slot_count": 0,
+      "registered_placements": []
+    },
+    "native.wise-ppt.062.agenda-ink": {
+      "component_name": "档案目录",
       "icon_slot_count": 0,
       "registered_placements": []
     },

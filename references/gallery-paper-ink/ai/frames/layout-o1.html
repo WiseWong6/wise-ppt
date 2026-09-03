@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html data-theme-id="paper-ink" lang="zh-CN" data-runtime="wise-ppt-specimen" data-typography-mode="all-sans" data-page-id="gallery-ai-o1" data-page-role="explain" data-theme="paper-ink" data-layout="paper-ink.funnel.conversion" data-layout-source="gallery" data-sample-focus-profile="content-only" data-sample-focus-members='[{"selector":"#o1-focus-divider","role":"outline"},{"selector":"#o1-focus-side-left","role":"outline"},{"selector":"#o1-focus-side-right","role":"outline"},{"selector":"#o1-focus-number","role":"value"},{"selector":"#o1-focus-tag","role":"annotation"},{"selector":"#o1-focus-label","role":"label"},{"selector":"#o1-focus-top-k","role":"annotation"}]' data-sample-focus-ref="sample.o1.o1-focus">
+<html data-theme-id="paper-ink" lang="zh-CN" data-runtime="wise-ppt-specimen" data-typography-mode="all-sans" data-page-id="gallery-ai-o1" data-page-role="explain" data-theme="paper-ink" data-layout="paper-ink.funnel.conversion" data-layout-source="gallery" data-emphasis-targets='[{"target_id":"focus.key-step","members":[{"selector":"#o1-focus-side-left","role":"outline","treatment":"focus.outline-depth","expected_count":1},{"selector":"#o1-focus-side-right","role":"outline","treatment":"focus.outline-depth","expected_count":1},{"selector":"#o1-focus-number","role":"value","treatment":"focus.text","expected_count":1},{"selector":"#o1-focus-tag","role":"annotation","treatment":"focus.text","expected_count":1},{"selector":"#o1-focus-label","role":"label","treatment":"focus.text","expected_count":1},{"selector":"#o1-focus-top-k","role":"annotation","treatment":"focus.text","expected_count":1}]}]' data-catalog-legacy-emphasis-profile="content-only" data-catalog-legacy-emphasis-members='[{"selector":"#o1-focus-region","expected_count":1,"role":"symbol","paint":"fill"}]' data-catalog-legacy-emphasis-foreground-members='[{"selector":"#o1-focus-label","expected_count":1,"neutral_tone":"preserve","active_tone":"white"},{"selector":"#o1-focus-top-k","expected_count":1,"neutral_tone":"preserve","active_tone":"white"}]' data-catalog-legacy-emphasis-ref="sample.o1.colored-funnel" data-vnext-semantic-key-map='[{"key":"funnel-stages.text.025","tag":"text","text":"TO LLM","occurrence":0}]'>
 <head>
 <meta charset="UTF-8">
 <title>layout-o1 · 漏斗（连续收敛）· RAG 检索漏斗</title>
@@ -67,9 +67,14 @@ var cX = 660;                        /* 漏斗中轴 */
 var topW = 720;                      /* 顶宽 */
 function wAt(y) { return topW * (botY - y) / (botY - topY); }
 
+/* 彩色主题把完整漏斗提升为白色主体；纸墨保持开放纸面。 */
+el('path', {id:'o1-funnel-surface', d:'M '+(cX-topW/2)+' '+topY+' L '+(cX+topW/2)+' '+topY+' L '+cX+' '+botY+' Z', fill:'none', stroke:'none'});
+
 /* 外轮廓：顶线 + 两条连续侧边 */
 el('line', {x1:cX-topW/2, y1:topY, x2:cX+topW/2, y2:topY, stroke:INK80, 'stroke-width':1.4});
 var focusW = wAt(600);
+/* CANDIDATES 下方分隔线以下的完整漏斗段是最终收敛结果。 */
+el('path', {id:'o1-focus-region', d:'M '+(cX-focusW/2)+' 600 L '+(cX+focusW/2)+' 600 L '+cX+' '+botY+' Z', fill:'none', stroke:'none'});
 el('line', {x1:cX-topW/2, y1:topY, x2:cX-focusW/2, y2:600, stroke:INK80, 'stroke-width':1.4});
 el('line', {id:'o1-focus-side-left', x1:cX-focusW/2, y1:600, x2:cX, y2:botY, stroke:INK80, 'stroke-width':1.4});
 el('line', {x1:cX+topW/2, y1:topY, x2:cX+focusW/2, y2:600, stroke:INK80, 'stroke-width':1.4});
@@ -78,7 +83,7 @@ el('line', {id:'o1-focus-side-right', x1:cX+focusW/2, y1:600, x2:cX, y2:botY, st
 /* 两条横向分隔线切出三层 */
 [440, 600].forEach(function(sy){
   var w = wAt(sy);
-  el('line', {id:sy === 600 ? 'o1-focus-divider' : '', x1:cX-w/2, y1:sy, x2:cX+w/2, y2:sy, stroke:INK, 'stroke-width':.9, opacity:.55});
+  el('line', {'data-o1-divider':1, id:sy === 600 ? 'o1-focus-divider' : '', x1:cX-w/2, y1:sy, x2:cX+w/2, y2:sy, stroke:INK80, 'stroke-width':1.4, opacity:1});
 });
 
 /* 顶部刻度尺 */
@@ -123,7 +128,7 @@ txt(cX, botY+74, 'TO LLM', {'font-family':MONO, 'font-size':'var(--type-body-sma
 /* ---------- 右侧规格单：召回片段清单（标本面板） ---------- */
 (function(){
   var x = 1380, y = 330, w = 400;
-  el('rect', {x:x, y:y, width:w, height:330, fill:'var(--paper-panel)', stroke:INK80, 'stroke-width':1.2});
+  el('rect', {id:'o1-retrieval-card', x:x, y:y, width:w, height:330, fill:'var(--paper-panel)', stroke:INK80, 'stroke-width':1.2});
   el('rect', {x:x+5, y:y+5, width:w-10, height:320, fill:'none', stroke:INK, 'stroke-width':.6, opacity:.35});
   txt(x+26, y+42, 'RETRIEVED', {'font-family':MONO, 'font-size':'var(--type-body-small)', 'letter-spacing':2, fill:INK});
   el('line', {x1:x+26, y1:y+56, x2:x+90, y2:y+56, stroke:INK, 'stroke-width':1});

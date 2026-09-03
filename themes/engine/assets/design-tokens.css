@@ -93,7 +93,7 @@
   --paper-deep: var(--wp-color-surface-recessed);
   --paper-panel: var(--wp-color-surface-panel);
   --ink: var(--wp-color-primary);
-  --ink-80: var(--wp-color-functional);
+  --ink-80: color-mix(in srgb, var(--wp-color-primary) 80%, transparent);
   --ink-70: var(--wp-color-body);
   --ink-55: var(--wp-color-chart-label);
   --ink-45: var(--wp-color-metadata);
@@ -186,7 +186,7 @@
   --wp-adapter-pi-paper-deep: var(--wp-color-surface-recessed);
   --wp-adapter-pi-paper-panel: var(--wp-color-surface-panel);
   --wp-adapter-pi-ink: var(--wp-color-primary);
-  --wp-adapter-pi-ink-80: var(--wp-color-functional);
+  --wp-adapter-pi-ink-80: var(--ink-80);
   --wp-adapter-pi-ink-70: var(--wp-color-body);
   --wp-adapter-pi-ink-60: var(--wp-private-ink-60);
   --wp-adapter-pi-ink-55: var(--wp-color-chart-label);
@@ -209,7 +209,7 @@
   --wp-adapter-atlas-paper-deep: var(--wp-color-surface-recessed);
   --wp-adapter-atlas-paper-panel: var(--wp-color-surface-panel);
   --wp-adapter-atlas-ink: var(--wp-color-primary);
-  --wp-adapter-atlas-ink-80: var(--wp-color-functional);
+  --wp-adapter-atlas-ink-80: var(--ink-80);
   --wp-adapter-atlas-ink-70: var(--wp-color-body);
   --wp-adapter-atlas-ink-55: var(--wp-color-chart-label);
   --wp-adapter-atlas-ink-45: var(--wp-color-metadata);

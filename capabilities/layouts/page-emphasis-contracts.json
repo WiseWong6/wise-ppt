@@ -1,20 +1,20 @@
 {
-  "contract_version": 3,
+  "contract_version": 4,
   "capability_id": "wise-ppt.page-emphasis",
-  "description": "页面只声明语义焦点；主题决定焦点角色的具体颜色。组件源码与组件 Catalog 保持中性。",
+  "treatment_contract": "wise-ppt-visual-treatment-grammar@3",
+  "description": "页面登记多个语义强调候选；AI 只能按内容选择 target_id，具体成员与视觉处理固定。默认可以不强调。",
   "page_count": 88,
   "relationship_page_count": 75,
   "nonrelationship_page_count": 13,
-  "max_focus_groups_per_page": 1,
+  "registered_target_count": 99,
+  "max_active_focus_groups_per_page": 1,
   "production_target_contract": {
-    "relationship_target_id": "focus.primary",
-    "member_source_order": [
-      "production_focus_members",
-      "sample_focus_members"
-    ],
     "reason_required": true,
     "selector_visibility": "compiler-private",
-    "query_visibility": "target_id, label, focus_candidates and member_roles only"
+    "query_visibility": "target_id, label, content_role, reason_hint and member_roles only",
+    "selection": "semantic-target-id-only",
+    "members_fixed": true,
+    "none_allowed": true
   },
   "theme_roles": {
     "focus": "--wp-color-focus",
@@ -30,6 +30,18 @@
     "texture",
     "annotation"
   ],
+  "allowed_treatments": [
+    "focus.ink-weight",
+    "focus.color",
+    "focus.reverse-text",
+    "focus.text",
+    "focus.outline-depth",
+    "focus.solid-reverse",
+    "focus.hard-shadow",
+    "focus.texture",
+    "focus.path-depth",
+    "focus.contrast-isolation"
+  ],
   "render_plan_contract": {
     "none": {
       "requires": [
@@ -37,25 +49,28 @@
       ],
       "forbids": [
         "content_ref",
-        "member_roles"
+        "member_roles",
+        "members"
       ]
     },
     "semantic-focus": {
       "requires": [
+        "target",
         "content_ref",
         "reason",
-        "member_roles"
+        "member_roles",
+        "members"
       ],
       "content_ref_cardinality": 1,
       "member_roles_unique": true
     }
   },
   "activation_interfaces": [
-    "?accent",
-    ".accent",
-    "emphasis.mode=semantic-focus"
+    "emphasis.target",
+    "?emphasis=<target_id>",
+    "data-emphasis-target"
   ],
-  "component_policy": "组件源码、组件预览和组件缩略图不响应主题焦点开关；页面实例物化后才可附加 data-content-ref 与 data-emphasis-role。",
+  "component_policy": "组件源码与组件预览保持中性；identity 在页面实例投影，focus 在页面实例选择 target 后物化。",
   "relationship_family_policies": {
     "parallel": {
       "focus_candidates": [
@@ -158,20 +173,24 @@
         "outline",
         "symbol"
       ],
-      "sample_focus_ref": "sample.a1.a1-focus",
-      "sample_focus_reason": "Catalog 样张只激活逐项登记的精确焦点成员；正式 deck 必须按内容重新声明。",
-      "reason": "关系页具备内容驱动的焦点能力，但默认不上主题焦点色。",
-      "sample_focus_profile": "content-only",
-      "sample_focus_members": [
+      "targets": [
         {
-          "selector": "#wrong",
-          "role": "value"
-        },
-        {
-          "selector": "#a1-ring",
-          "role": "outline"
+          "target_id": "focus.main-evidence",
+          "label": "解释正确、计算错误",
+          "content_role": "底部结论中的错误类型",
+          "reason_hint": "只给底部“解释正确、计算错误”上色；上方标本卡、143 批注与圈线保持默认表现。",
+          "members": [
+            {
+              "selector": "#a1-focus-copy",
+              "role": "label",
+              "treatment": "focus.color",
+              "expected_count": 1
+            }
+          ]
         }
-      ]
+      ],
+      "sample_target_id": "focus.main-evidence",
+      "rationale": "Catalog 只预览登记目标；standard 与 experimental 必须按 claim/evidence 选择或明确不强调。"
     },
     "A2": {
       "page_kind": "relationship",
@@ -194,20 +213,30 @@
         "status",
         "annotation"
       ],
-      "sample_focus_ref": "sample.a2.a2-focus",
-      "sample_focus_reason": "Catalog 样张只激活逐项登记的精确焦点成员；正式 deck 必须按内容重新声明。",
-      "reason": "关系页具备内容驱动的焦点能力，但默认不上主题焦点色。",
-      "sample_focus_profile": "content-only",
-      "sample_focus_members": [
+      "targets": [
         {
-          "selector": "#accent-dialogue",
-          "role": "value"
-        },
-        {
-          "selector": "#accent-outline",
-          "role": "outline"
+          "target_id": "focus.key-step",
+          "label": "当前步骤 / 瓶颈 / 转折 / 出口 / 关键路径",
+          "content_role": "已审核的页面焦点对象",
+          "reason_hint": "仅当该对象直接支撑本页 claim 时启用；不得为了配色而开启。",
+          "members": [
+            {
+              "selector": "#accent-dialogue",
+              "role": "value",
+              "treatment": "focus.text",
+              "expected_count": 1
+            },
+            {
+              "selector": "#accent-outline",
+              "role": "outline",
+              "treatment": "focus.outline-depth",
+              "expected_count": 1
+            }
+          ]
         }
-      ]
+      ],
+      "sample_target_id": "focus.key-step",
+      "rationale": "Catalog 只预览登记目标；standard 与 experimental 必须按 claim/evidence 选择或明确不强调。"
     },
     "A3": {
       "page_kind": "relationship",
@@ -226,24 +255,36 @@
         "outline",
         "symbol"
       ],
-      "sample_focus_ref": "sample.a3.a3-focus",
-      "sample_focus_reason": "Catalog 样张只激活逐项登记的精确焦点成员；正式 deck 必须按内容重新声明。",
-      "reason": "关系页具备内容驱动的焦点能力，但默认不上主题焦点色。",
-      "sample_focus_profile": "content-only",
-      "sample_focus_members": [
+      "targets": [
         {
-          "selector": "#a3-compliance",
-          "role": "value"
-        },
-        {
-          "selector": "#a3-compliance-line-1",
-          "role": "outline"
-        },
-        {
-          "selector": "#a3-compliance-line-2",
-          "role": "outline"
+          "target_id": "focus.main-evidence",
+          "label": "主体内部的明确子对象",
+          "content_role": "已审核的页面焦点对象",
+          "reason_hint": "仅当该对象直接支撑本页 claim 时启用；不得为了配色而开启。",
+          "members": [
+            {
+              "selector": "#a3-compliance",
+              "role": "value",
+              "treatment": "focus.text",
+              "expected_count": 1
+            },
+            {
+              "selector": "#a3-compliance-line-1",
+              "role": "outline",
+              "treatment": "focus.outline-depth",
+              "expected_count": 1
+            },
+            {
+              "selector": "#a3-compliance-line-2",
+              "role": "outline",
+              "treatment": "focus.outline-depth",
+              "expected_count": 1
+            }
+          ]
         }
-      ]
+      ],
+      "sample_target_id": "focus.main-evidence",
+      "rationale": "Catalog 只预览登记目标；standard 与 experimental 必须按 claim/evidence 选择或明确不强调。"
     },
     "A4": {
       "page_kind": "relationship",
@@ -264,18 +305,27 @@
         "outline",
         "symbol",
         "texture",
-        "annotation"
+        "annotation",
+        "value"
       ],
-      "sample_focus_ref": "sample.a4.a4-focus",
-      "sample_focus_reason": "Catalog 样张只激活逐项登记的精确焦点成员；正式 deck 必须按内容重新声明。",
-      "reason": "关系页具备内容驱动的焦点能力，但默认不上主题焦点色。",
-      "sample_focus_profile": "copy-only",
-      "sample_focus_members": [
+      "targets": [
         {
-          "selector": "#focus-caption",
-          "role": "label"
+          "target_id": "focus.key-node",
+          "label": "上下文、评测、工具护栏与全链 Trace",
+          "content_role": "底部四项工程化方法结论",
+          "reason_hint": "在已恢复的旧版构图上，只给底部四项方法名称上色；不改变标题横线与正文粗细。",
+          "members": [
+            {
+              "selector": "#focus-caption",
+              "role": "label",
+              "treatment": "focus.color",
+              "expected_count": 1
+            }
+          ]
         }
-      ]
+      ],
+      "sample_target_id": "focus.key-node",
+      "rationale": "Catalog 只预览登记目标；standard 与 experimental 必须按 claim/evidence 选择或明确不强调。"
     },
     "A5": {
       "page_kind": "relationship",
@@ -296,20 +346,30 @@
         "label",
         "outline"
       ],
-      "sample_focus_ref": "sample.a5.a5-focus",
-      "sample_focus_reason": "Catalog 样张只激活逐项登记的精确焦点成员；正式 deck 必须按内容重新声明。",
-      "reason": "关系页具备内容驱动的焦点能力，但默认不上主题焦点色。",
-      "sample_focus_profile": "content-only",
-      "sample_focus_members": [
+      "targets": [
         {
-          "selector": "#a5-regulation-1",
-          "role": "value"
-        },
-        {
-          "selector": "#a5-regulation-2",
-          "role": "value"
+          "target_id": "focus.decisive-difference",
+          "label": "《互联网信息服务深度合成管理规定》",
+          "content_role": "右栏法规名称",
+          "reason_hint": "只给法规名称上色并加粗；其余法规、序号与说明保持默认色。",
+          "members": [
+            {
+              "selector": "#a5-regulation-1",
+              "role": "value",
+              "treatment": "focus.text",
+              "expected_count": 1
+            },
+            {
+              "selector": "#a5-regulation-2",
+              "role": "value",
+              "treatment": "focus.text",
+              "expected_count": 1
+            }
+          ]
         }
-      ]
+      ],
+      "sample_target_id": "focus.decisive-difference",
+      "rationale": "Catalog 只预览登记目标；standard 与 experimental 必须按 claim/evidence 选择或明确不强调。"
     },
     "A6": {
       "page_kind": "relationship",
@@ -330,16 +390,24 @@
         "label",
         "outline"
       ],
-      "sample_focus_ref": "sample.a6.a6-focus",
-      "sample_focus_reason": "Catalog 样张只激活逐项登记的精确焦点成员；正式 deck 必须按内容重新声明。",
-      "reason": "关系页具备内容驱动的焦点能力，但默认不上主题焦点色。",
-      "sample_focus_profile": "copy-only",
-      "sample_focus_members": [
+      "targets": [
         {
-          "selector": "#focus-caption",
-          "role": "label"
+          "target_id": "focus.decisive-difference",
+          "label": "胜出项 / 异常项 / 差异点 / 矩阵单元",
+          "content_role": "已审核的页面焦点对象",
+          "reason_hint": "仅当该对象直接支撑本页 claim 时启用；不得为了配色而开启。",
+          "members": [
+            {
+              "selector": "[data-vnext-text-key=\"credentials.text.001\"]",
+              "role": "value",
+              "treatment": "focus.text",
+              "expected_count": 1
+            }
+          ]
         }
-      ]
+      ],
+      "sample_target_id": "focus.decisive-difference",
+      "rationale": "Catalog 只预览登记目标；standard 与 experimental 必须按 claim/evidence 选择或明确不强调。"
     },
     "A8": {
       "page_kind": "relationship",
@@ -361,28 +429,42 @@
         "status",
         "texture"
       ],
-      "sample_focus_ref": "sample.a8.a8-focus",
-      "sample_focus_reason": "Catalog 样张只激活逐项登记的精确焦点成员；正式 deck 必须按内容重新声明。",
-      "reason": "关系页具备内容驱动的焦点能力，但默认不上主题焦点色。",
-      "sample_focus_profile": "content-only",
-      "sample_focus_members": [
+      "targets": [
         {
-          "selector": "#badstep",
-          "role": "outline"
-        },
-        {
-          "selector": "#badstep .accent-action",
-          "role": "value"
-        },
-        {
-          "selector": "#badstep .accent-role",
-          "role": "label"
-        },
-        {
-          "selector": "#badstep .st-err",
-          "role": "status"
+          "target_id": "focus.key-layer",
+          "label": "分支 / 层级 / 局部",
+          "content_role": "已审核的页面焦点对象",
+          "reason_hint": "仅当该对象直接支撑本页 claim 时启用；不得为了配色而开启。",
+          "members": [
+            {
+              "selector": "#badstep",
+              "role": "outline",
+              "treatment": "focus.outline-depth",
+              "expected_count": 1
+            },
+            {
+              "selector": "#badstep .accent-action",
+              "role": "value",
+              "treatment": "focus.text",
+              "expected_count": 1
+            },
+            {
+              "selector": "#badstep .accent-role",
+              "role": "label",
+              "treatment": "focus.text",
+              "expected_count": 1
+            },
+            {
+              "selector": "#badstep .st-err",
+              "role": "status",
+              "treatment": "focus.text",
+              "expected_count": 1
+            }
+          ]
         }
-      ]
+      ],
+      "sample_target_id": "focus.key-layer",
+      "rationale": "Catalog 只预览登记目标；standard 与 experimental 必须按 claim/evidence 选择或明确不强调。"
     },
     "A9": {
       "page_kind": "relationship",
@@ -403,18 +485,27 @@
         "label",
         "outline",
         "status",
-        "annotation"
+        "annotation",
+        "value"
       ],
-      "sample_focus_ref": "sample.a9.a9-focus",
-      "sample_focus_reason": "Catalog 样张只激活逐项登记的精确焦点成员；正式 deck 必须按内容重新声明。",
-      "reason": "关系页具备内容驱动的焦点能力，但默认不上主题焦点色。",
-      "sample_focus_profile": "copy-only",
-      "sample_focus_members": [
+      "targets": [
         {
-          "selector": "#focus-caption",
-          "role": "label"
+          "target_id": "focus.key-step",
+          "label": "当前步骤 / 瓶颈 / 转折 / 出口 / 关键路径",
+          "content_role": "已审核的页面焦点对象",
+          "reason_hint": "仅当该对象直接支撑本页 claim 时启用；不得为了配色而开启。",
+          "members": [
+            {
+              "selector": "[data-vnext-text-key=\"screens.text.001\"]",
+              "role": "value",
+              "treatment": "focus.text",
+              "expected_count": 1
+            }
+          ]
         }
-      ]
+      ],
+      "sample_target_id": "focus.key-step",
+      "rationale": "Catalog 只预览登记目标；standard 与 experimental 必须按 claim/evidence 选择或明确不强调。"
     },
     "B1": {
       "page_kind": "relationship",
@@ -439,53 +530,79 @@
         "symbol",
         "annotation"
       ],
-      "sample_focus_ref": "sample.b1.b1-focus",
-      "sample_focus_reason": "Catalog 样张只激活逐项登记的精确焦点成员；正式 deck 必须按内容重新声明。",
-      "reason": "关系页具备内容驱动的焦点能力，但默认不上主题焦点色。",
-      "sample_focus_profile": "content-only",
-      "sample_focus_members": [
+      "targets": [
         {
-          "selector": "#b1-hot-dot",
-          "role": "symbol",
-          "paint": "fill"
-        },
-        {
-          "selector": "#b1-hot-ring-1",
-          "role": "outline"
-        },
-        {
-          "selector": "#b1-hot-ring-2",
-          "role": "outline"
-        },
-        {
-          "selector": "#b1-hot-year",
-          "role": "value"
-        },
-        {
-          "selector": "#b1-hot-name",
-          "role": "value"
-        },
-        {
-          "selector": "#b1-hot-org",
-          "role": "label"
-        },
-        {
-          "selector": "#b1-hot-note",
-          "role": "label"
-        },
-        {
-          "selector": "#b1-hot-underline",
-          "role": "outline"
-        },
-        {
-          "selector": "#b1-hot-arc-1",
-          "role": "outline"
-        },
-        {
-          "selector": "#b1-hot-arc-2",
-          "role": "outline"
+          "target_id": "focus.key-step",
+          "label": "当前步骤 / 瓶颈 / 转折 / 出口 / 关键路径",
+          "content_role": "已审核的页面焦点对象",
+          "reason_hint": "仅当该对象直接支撑本页 claim 时启用；不得为了配色而开启。",
+          "members": [
+            {
+              "selector": "#b1-hot-dot",
+              "role": "symbol",
+              "treatment": "focus.solid-reverse",
+              "paint": "fill",
+              "expected_count": 1
+            },
+            {
+              "selector": "#b1-hot-ring-1",
+              "role": "outline",
+              "treatment": "focus.outline-depth",
+              "expected_count": 1
+            },
+            {
+              "selector": "#b1-hot-ring-2",
+              "role": "outline",
+              "treatment": "focus.outline-depth",
+              "expected_count": 1
+            },
+            {
+              "selector": "#b1-hot-year",
+              "role": "value",
+              "treatment": "focus.text",
+              "expected_count": 1
+            },
+            {
+              "selector": "#b1-hot-name",
+              "role": "value",
+              "treatment": "focus.text",
+              "expected_count": 1
+            },
+            {
+              "selector": "#b1-hot-org",
+              "role": "label",
+              "treatment": "focus.text",
+              "expected_count": 1
+            },
+            {
+              "selector": "#b1-hot-note",
+              "role": "label",
+              "treatment": "focus.text",
+              "expected_count": 1
+            },
+            {
+              "selector": "#b1-hot-underline",
+              "role": "outline",
+              "treatment": "focus.outline-depth",
+              "expected_count": 1
+            },
+            {
+              "selector": "#b1-hot-arc-1",
+              "role": "outline",
+              "treatment": "focus.outline-depth",
+              "expected_count": 1
+            },
+            {
+              "selector": "#b1-hot-arc-2",
+              "role": "outline",
+              "treatment": "focus.outline-depth",
+              "expected_count": 1
+            }
+          ]
         }
-      ]
+      ],
+      "sample_target_id": "focus.key-step",
+      "rationale": "Catalog 只预览登记目标；standard 与 experimental 必须按 claim/evidence 选择或明确不强调。"
     },
     "B2": {
       "page_kind": "relationship",
@@ -509,28 +626,42 @@
         "status",
         "annotation"
       ],
-      "sample_focus_ref": "sample.b2.b2-focus",
-      "sample_focus_reason": "Catalog 样张只激活逐项登记的精确焦点成员；正式 deck 必须按内容重新声明。",
-      "reason": "关系页具备内容驱动的焦点能力，但默认不上主题焦点色。",
-      "sample_focus_profile": "content-only",
-      "sample_focus_members": [
+      "targets": [
         {
-          "selector": "#b2-ring-1",
-          "role": "outline"
-        },
-        {
-          "selector": "#b2-ring-2",
-          "role": "outline"
-        },
-        {
-          "selector": "#sample-focus",
-          "role": "value"
-        },
-        {
-          "selector": "#b2-failure-note",
-          "role": "label"
+          "target_id": "focus.key-step",
+          "label": "当前步骤 / 瓶颈 / 转折 / 出口 / 关键路径",
+          "content_role": "已审核的页面焦点对象",
+          "reason_hint": "仅当该对象直接支撑本页 claim 时启用；不得为了配色而开启。",
+          "members": [
+            {
+              "selector": "#b2-ring-1",
+              "role": "outline",
+              "treatment": "focus.outline-depth",
+              "expected_count": 1
+            },
+            {
+              "selector": "#b2-ring-2",
+              "role": "outline",
+              "treatment": "focus.outline-depth",
+              "expected_count": 1
+            },
+            {
+              "selector": "#sample-focus",
+              "role": "value",
+              "treatment": "focus.text",
+              "expected_count": 1
+            },
+            {
+              "selector": "#b2-failure-note",
+              "role": "label",
+              "treatment": "focus.text",
+              "expected_count": 1
+            }
+          ]
         }
-      ]
+      ],
+      "sample_target_id": "focus.key-step",
+      "rationale": "Catalog 只预览登记目标；standard 与 experimental 必须按 claim/evidence 选择或明确不强调。"
     },
     "B3": {
       "page_kind": "relationship",
@@ -551,18 +682,27 @@
         "label",
         "outline",
         "status",
-        "annotation"
+        "annotation",
+        "value"
       ],
-      "sample_focus_ref": "sample.b3.b3-focus",
-      "sample_focus_reason": "Catalog 样张只激活逐项登记的精确焦点成员；正式 deck 必须按内容重新声明。",
-      "reason": "关系页具备内容驱动的焦点能力，但默认不上主题焦点色。",
-      "sample_focus_profile": "copy-only",
-      "sample_focus_members": [
+      "targets": [
         {
-          "selector": "#focus-caption",
-          "role": "label"
+          "target_id": "focus.key-step",
+          "label": "当前步骤 / 瓶颈 / 转折 / 出口 / 关键路径",
+          "content_role": "已审核的页面焦点对象",
+          "reason_hint": "仅当该对象直接支撑本页 claim 时启用；不得为了配色而开启。",
+          "members": [
+            {
+              "selector": "[data-vnext-text-key=\"roadmap.text.003\"]",
+              "role": "value",
+              "treatment": "focus.text",
+              "expected_count": 1
+            }
+          ]
         }
-      ]
+      ],
+      "sample_target_id": "focus.key-step",
+      "rationale": "Catalog 只预览登记目标；standard 与 experimental 必须按 claim/evidence 选择或明确不强调。"
     },
     "B4": {
       "page_kind": "relationship",
@@ -585,20 +725,42 @@
         "status",
         "annotation"
       ],
-      "sample_focus_ref": "sample.b4.b4-focus",
-      "sample_focus_reason": "Catalog 样张只激活逐项登记的精确焦点成员；正式 deck 必须按内容重新声明。",
-      "reason": "关系页具备内容驱动的焦点能力，但默认不上主题焦点色。",
-      "sample_focus_profile": "content-only",
-      "sample_focus_members": [
+      "targets": [
         {
-          "selector": "#b4-focus-date",
-          "role": "value"
-        },
-        {
-          "selector": "#b4-focus-card",
-          "role": "outline"
+          "target_id": "focus.key-step",
+          "label": "当前步骤 / 瓶颈 / 转折 / 出口 / 关键路径",
+          "content_role": "时间轴中的当前里程碑",
+          "reason_hint": "当某个里程碑直接支撑本页结论时，同时加强日期、节点、连接线与证据卡；其余里程碑保持同级。",
+          "members": [
+            {
+              "selector": "#b4-focus-date",
+              "role": "value",
+              "treatment": "focus.text",
+              "expected_count": 1
+            },
+            {
+              "selector": "#b4-focus-node",
+              "role": "status",
+              "treatment": "focus.solid-reverse",
+              "expected_count": 1
+            },
+            {
+              "selector": "#b4-focus-connector",
+              "role": "outline",
+              "treatment": "focus.outline-depth",
+              "expected_count": 1
+            },
+            {
+              "selector": "#b4-focus-card",
+              "role": "outline",
+              "treatment": "focus.hard-shadow",
+              "expected_count": 1
+            }
+          ]
         }
-      ]
+      ],
+      "sample_target_id": "focus.key-step",
+      "rationale": "Catalog 只预览登记目标；standard 与 experimental 必须按 claim/evidence 选择或明确不强调。"
     },
     "B5": {
       "page_kind": "relationship",
@@ -623,37 +785,55 @@
         "symbol",
         "annotation"
       ],
-      "sample_focus_ref": "sample.b5.b5-focus",
-      "sample_focus_reason": "Catalog 样张只激活逐项登记的精确焦点成员；正式 deck 必须按内容重新声明。",
-      "reason": "关系页具备内容驱动的焦点能力，但默认不上主题焦点色。",
-      "sample_focus_profile": "content-only",
-      "sample_focus_members": [
+      "targets": [
         {
-          "selector": "#b5-focus-node",
-          "role": "outline"
-        },
-        {
-          "selector": "#b5-focus-dot",
-          "role": "symbol",
-          "paint": "fill"
-        },
-        {
-          "selector": "#b5-focus-year",
-          "role": "value"
-        },
-        {
-          "selector": "#b5-focus-event",
-          "role": "value"
-        },
-        {
-          "selector": "#b5-focus-note",
-          "role": "label"
-        },
-        {
-          "selector": "#b5-focus-leader",
-          "role": "outline"
+          "target_id": "focus.key-step",
+          "label": "当前步骤 / 瓶颈 / 转折 / 出口 / 关键路径",
+          "content_role": "已审核的页面焦点对象",
+          "reason_hint": "仅当该对象直接支撑本页 claim 时启用；不得为了配色而开启。",
+          "members": [
+            {
+              "selector": "#b5-focus-node",
+              "role": "outline",
+              "treatment": "focus.outline-depth",
+              "expected_count": 1
+            },
+            {
+              "selector": "#b5-focus-dot",
+              "role": "symbol",
+              "treatment": "focus.solid-reverse",
+              "paint": "fill",
+              "expected_count": 1
+            },
+            {
+              "selector": "#b5-focus-year",
+              "role": "value",
+              "treatment": "focus.text",
+              "expected_count": 1
+            },
+            {
+              "selector": "#b5-focus-event",
+              "role": "value",
+              "treatment": "focus.text",
+              "expected_count": 1
+            },
+            {
+              "selector": "#b5-focus-note",
+              "role": "label",
+              "treatment": "focus.text",
+              "expected_count": 1
+            },
+            {
+              "selector": "#b5-focus-leader",
+              "role": "outline",
+              "treatment": "focus.outline-depth",
+              "expected_count": 1
+            }
+          ]
         }
-      ]
+      ],
+      "sample_target_id": "focus.key-step",
+      "rationale": "Catalog 只预览登记目标；standard 与 experimental 必须按 claim/evidence 选择或明确不强调。"
     },
     "B6": {
       "page_kind": "relationship",
@@ -678,50 +858,74 @@
         "symbol",
         "annotation"
       ],
-      "sample_focus_ref": "sample.b6.b6-focus",
-      "sample_focus_reason": "Catalog 样张只激活逐项登记的精确焦点成员；正式 deck 必须按内容重新声明。",
-      "reason": "关系页具备内容驱动的焦点能力，但默认不上主题焦点色。",
-      "sample_focus_profile": "content-only",
-      "sample_focus_members": [
+      "targets": [
         {
-          "selector": "#b6-focus-node",
-          "role": "outline"
-        },
-        {
-          "selector": "#b6-focus-node-inner",
-          "role": "outline"
-        },
-        {
-          "selector": "#b6-focus-node-core",
-          "role": "symbol",
-          "paint": "fill"
-        },
-        {
-          "selector": "#b6-focus-leader",
-          "role": "outline"
-        },
-        {
-          "selector": "#b6-focus-leader-dot",
-          "role": "symbol",
-          "paint": "fill"
-        },
-        {
-          "selector": "#b6-focus-en",
-          "role": "value"
-        },
-        {
-          "selector": "#b6-focus-year",
-          "role": "value"
-        },
-        {
-          "selector": "#b6-focus-title",
-          "role": "label"
-        },
-        {
-          "selector": "#b6-focus-note",
-          "role": "annotation"
+          "target_id": "focus.key-step",
+          "label": "当前步骤 / 瓶颈 / 转折 / 出口 / 关键路径",
+          "content_role": "已审核的页面焦点对象",
+          "reason_hint": "仅当该对象直接支撑本页 claim 时启用；不得为了配色而开启。",
+          "members": [
+            {
+              "selector": "#b6-focus-node",
+              "role": "outline",
+              "treatment": "focus.outline-depth",
+              "expected_count": 1
+            },
+            {
+              "selector": "#b6-focus-node-inner",
+              "role": "outline",
+              "treatment": "focus.outline-depth",
+              "expected_count": 1
+            },
+            {
+              "selector": "#b6-focus-node-core",
+              "role": "symbol",
+              "treatment": "focus.solid-reverse",
+              "paint": "fill",
+              "expected_count": 1
+            },
+            {
+              "selector": "#b6-focus-leader",
+              "role": "outline",
+              "treatment": "focus.outline-depth",
+              "expected_count": 1
+            },
+            {
+              "selector": "#b6-focus-leader-dot",
+              "role": "symbol",
+              "treatment": "focus.solid-reverse",
+              "paint": "fill",
+              "expected_count": 1
+            },
+            {
+              "selector": "#b6-focus-en",
+              "role": "value",
+              "treatment": "focus.text",
+              "expected_count": 1
+            },
+            {
+              "selector": "#b6-focus-year",
+              "role": "value",
+              "treatment": "focus.text",
+              "expected_count": 1
+            },
+            {
+              "selector": "#b6-focus-title",
+              "role": "label",
+              "treatment": "focus.text",
+              "expected_count": 1
+            },
+            {
+              "selector": "#b6-focus-note",
+              "role": "annotation",
+              "treatment": "focus.text",
+              "expected_count": 1
+            }
+          ]
         }
-      ]
+      ],
+      "sample_target_id": "focus.key-step",
+      "rationale": "Catalog 只预览登记目标；standard 与 experimental 必须按 claim/evidence 选择或明确不强调。"
     },
     "C1": {
       "page_kind": "relationship",
@@ -745,28 +949,42 @@
         "texture",
         "annotation"
       ],
-      "sample_focus_ref": "sample.c1.c1-focus",
-      "sample_focus_reason": "Catalog 样张只激活逐项登记的精确焦点成员；正式 deck 必须按内容重新声明。",
-      "reason": "关系页具备内容驱动的焦点能力，但默认不上主题焦点色。",
-      "sample_focus_profile": "content-only",
-      "sample_focus_members": [
+      "targets": [
         {
-          "selector": "#sample-focus",
-          "role": "value"
-        },
-        {
-          "selector": "#c1-focus-label",
-          "role": "label"
-        },
-        {
-          "selector": "#c1-focus-note",
-          "role": "annotation"
-        },
-        {
-          "selector": "#c1-focus-rule",
-          "role": "outline"
+          "target_id": "focus.key-node",
+          "label": "关键节点 / 边 / 交叠区 / 决定性证据",
+          "content_role": "已审核的页面焦点对象",
+          "reason_hint": "仅当该对象直接支撑本页 claim 时启用；不得为了配色而开启。",
+          "members": [
+            {
+              "selector": "#sample-focus",
+              "role": "value",
+              "treatment": "focus.text",
+              "expected_count": 1
+            },
+            {
+              "selector": "#c1-focus-label",
+              "role": "label",
+              "treatment": "focus.text",
+              "expected_count": 1
+            },
+            {
+              "selector": "#c1-focus-note",
+              "role": "annotation",
+              "treatment": "focus.text",
+              "expected_count": 1
+            },
+            {
+              "selector": "#c1-focus-rule",
+              "role": "outline",
+              "treatment": "focus.outline-depth",
+              "expected_count": 1
+            }
+          ]
         }
-      ]
+      ],
+      "sample_target_id": "focus.key-node",
+      "rationale": "Catalog 只预览登记目标；standard 与 experimental 必须按 claim/evidence 选择或明确不强调。"
     },
     "C2": {
       "page_kind": "relationship",
@@ -786,26 +1004,45 @@
         "value",
         "label",
         "outline",
-        "texture"
+        "texture",
+        "symbol"
       ],
-      "sample_focus_ref": "sample.c2.c2-focus",
-      "sample_focus_reason": "Catalog 样张只激活逐项登记的精确焦点成员；正式 deck 必须按内容重新声明。",
-      "reason": "关系页具备内容驱动的焦点能力，但默认不上主题焦点色。",
-      "sample_focus_profile": "content-only",
-      "sample_focus_members": [
+      "targets": [
         {
-          "selector": "#c2-focus-value",
-          "role": "value"
-        },
-        {
-          "selector": "#c2-focus-bar",
-          "role": "outline"
-        },
-        {
-          "selector": "#hatch92-line",
-          "role": "texture"
+          "target_id": "focus.decisive-difference",
+          "label": "MMLU 92% 与 CHART 03 圆环图",
+          "content_role": "任务基准焦点与调用构成圆环",
+          "reason_hint": "默认保留三张图题的主题色；强调态保留 MMLU 92% 的既有单色着色，不新增外框、阴影或线宽，并只给 CHART 03 的圆环扇区与环内分隔线上色。中心指标、扇区数字、中文标签、引线和三条图题下短线保持中性。",
+          "members": [
+            {
+              "selector": "#c2-focus-value",
+              "role": "value",
+              "treatment": "focus.color",
+              "expected_count": 1
+            },
+            {
+              "selector": "#c2-focus-bar",
+              "role": "outline",
+              "treatment": "focus.color",
+              "expected_count": 1
+            },
+            {
+              "selector": "#hatch92-line",
+              "role": "texture",
+              "treatment": "focus.color",
+              "expected_count": 1
+            },
+            {
+              "selector": "[data-c2-chart3-graphic]",
+              "role": "symbol",
+              "treatment": "focus.color",
+              "expected_count": 5
+            }
+          ]
         }
-      ]
+      ],
+      "sample_target_id": "focus.decisive-difference",
+      "rationale": "Catalog 只预览登记目标；standard 与 experimental 必须按 claim/evidence 选择或明确不强调。"
     },
     "C3": {
       "page_kind": "relationship",
@@ -825,16 +1062,36 @@
         "label",
         "outline"
       ],
-      "sample_focus_ref": "sample.c3.c3-focus",
-      "sample_focus_reason": "Catalog 样张只激活逐项登记的精确焦点成员；正式 deck 必须按内容重新声明。",
-      "reason": "关系页具备内容驱动的焦点能力，但默认不上主题焦点色。",
-      "sample_focus_profile": "copy-only",
-      "sample_focus_members": [
+      "targets": [
         {
-          "selector": "#focus-caption",
-          "role": "label"
+          "target_id": "focus.key-item",
+          "label": "AI 阅读系统案例与底部结论",
+          "content_role": "第一张案例卡与底部文案",
+          "reason_hint": "给 READER-R1 · 1.28 B、AI 阅读系统和底部文案上色；字体粗细保持原设计。",
+          "members": [
+            {
+              "selector": "[data-vnext-text-key=\"profiles.text.001\"]",
+              "role": "value",
+              "treatment": "focus.color",
+              "expected_count": 1
+            },
+            {
+              "selector": "#c3-focus-title",
+              "role": "value",
+              "treatment": "focus.color",
+              "expected_count": 1
+            },
+            {
+              "selector": "#focus-caption",
+              "role": "label",
+              "treatment": "focus.color",
+              "expected_count": 1
+            }
+          ]
         }
-      ]
+      ],
+      "sample_target_id": "focus.key-item",
+      "rationale": "Catalog 只预览登记目标；standard 与 experimental 必须按 claim/evidence 选择或明确不强调。"
     },
     "C4": {
       "page_kind": "relationship",
@@ -858,25 +1115,66 @@
         "texture",
         "annotation"
       ],
-      "sample_focus_ref": "sample.c4.c4-focus",
-      "sample_focus_reason": "Catalog 样张只激活逐项登记的精确焦点成员；正式 deck 必须按内容重新声明。",
-      "reason": "关系页具备内容驱动的焦点能力，但默认不上主题焦点色。",
-      "sample_focus_profile": "content-only",
-      "sample_focus_members": [
+      "targets": [
         {
-          "selector": "#sample-focus",
-          "role": "value"
+          "target_id": "focus.nodes-total",
+          "label": "部署节点总数",
+          "content_role": "右侧指标",
+          "reason_hint": "当节点规模支撑结论时，强调 117 及其指标名；地图保持主题身份而非强调。",
+          "members": [
+            {
+              "selector": "[data-vnext-text-key=\"map.text.002\"], [data-vnext-text-key=\"map.text.003\"]",
+              "role": "value",
+              "treatment": "focus.text",
+              "expected_count": 2
+            }
+          ]
         },
         {
-          "selector": "#c4-focus-city",
-          "role": "label"
+          "target_id": "focus.inference-instances",
+          "label": "在线推理实例",
+          "content_role": "右侧指标",
+          "reason_hint": "当在线承载能力支撑结论时，强调 3,842 及其指标名；地图保持中性。",
+          "members": [
+            {
+              "selector": "[data-vnext-text-key=\"map.text.004\"], [data-vnext-text-key=\"map.text.005\"]",
+              "role": "value",
+              "treatment": "focus.text",
+              "expected_count": 2
+            }
+          ]
         },
         {
-          "selector": "#c4-focus-marker",
-          "role": "symbol",
-          "paint": "fill"
+          "target_id": "focus.city-coverage",
+          "label": "覆盖城市",
+          "content_role": "右侧指标",
+          "reason_hint": "当覆盖范围支撑结论时，强调 21 及其指标名；地图保持中性。",
+          "members": [
+            {
+              "selector": "[data-vnext-text-key=\"map.text.006\"], [data-vnext-text-key=\"map.text.007\"]",
+              "role": "value",
+              "treatment": "focus.text",
+              "expected_count": 2
+            }
+          ]
+        },
+        {
+          "target_id": "focus.daily-calls",
+          "label": "日均调用量",
+          "content_role": "右侧指标",
+          "reason_hint": "当调用规模支撑结论时，强调 96 及其指标名；地图保持中性。",
+          "members": [
+            {
+              "selector": "[data-vnext-text-key=\"map.text.008\"], [data-vnext-text-key=\"map.text.009\"]",
+              "role": "value",
+              "treatment": "focus.text",
+              "expected_count": 2
+            }
+          ]
         }
-      ]
+      ],
+      "sample_target_id": "focus.nodes-total",
+      "rationale": "Catalog 只预览登记目标；standard 与 experimental 必须按 claim/evidence 选择或明确不强调。"
     },
     "C5": {
       "page_kind": "relationship",
@@ -897,20 +1195,30 @@
         "outline",
         "texture"
       ],
-      "sample_focus_ref": "sample.c5.c5-focus",
-      "sample_focus_reason": "Catalog 样张只激活逐项登记的精确焦点成员；正式 deck 必须按内容重新声明。",
-      "reason": "关系页具备内容驱动的焦点能力，但默认不上主题焦点色。",
-      "sample_focus_profile": "content-only",
-      "sample_focus_members": [
+      "targets": [
         {
-          "selector": "#sample-focus",
-          "role": "value"
-        },
-        {
-          "selector": "#c5-focus-label",
-          "role": "label"
+          "target_id": "focus.key-layer",
+          "label": "分支 / 层级 / 局部",
+          "content_role": "已审核的页面焦点对象",
+          "reason_hint": "仅当该对象直接支撑本页 claim 时启用；不得为了配色而开启。",
+          "members": [
+            {
+              "selector": "#sample-focus",
+              "role": "value",
+              "treatment": "focus.text",
+              "expected_count": 1
+            },
+            {
+              "selector": "#c5-focus-label",
+              "role": "label",
+              "treatment": "focus.text",
+              "expected_count": 1
+            }
+          ]
         }
-      ]
+      ],
+      "sample_target_id": "focus.key-layer",
+      "rationale": "Catalog 只预览登记目标；standard 与 experimental 必须按 claim/evidence 选择或明确不强调。"
     },
     "C6": {
       "page_kind": "relationship",
@@ -929,32 +1237,48 @@
         "outline",
         "symbol"
       ],
-      "sample_focus_ref": "sample.c6.c6-focus",
-      "sample_focus_reason": "Catalog 样张只激活逐项登记的精确焦点成员；正式 deck 必须按内容重新声明。",
-      "reason": "关系页具备内容驱动的焦点能力，但默认不上主题焦点色。",
-      "sample_focus_profile": "content-only",
-      "sample_focus_members": [
+      "targets": [
         {
-          "selector": "#sample-focus",
-          "role": "value"
-        },
-        {
-          "selector": "#c6-focus-unit",
-          "role": "value"
-        },
-        {
-          "selector": "#c6-focus-index",
-          "role": "label"
-        },
-        {
-          "selector": "#c6-focus-label",
-          "role": "label"
-        },
-        {
-          "selector": "#c6-focus-en",
-          "role": "label"
+          "target_id": "focus.main-evidence",
+          "label": "主体内部的明确子对象",
+          "content_role": "已审核的页面焦点对象",
+          "reason_hint": "仅当该对象直接支撑本页 claim 时启用；不得为了配色而开启。",
+          "members": [
+            {
+              "selector": "#sample-focus",
+              "role": "value",
+              "treatment": "focus.text",
+              "expected_count": 1
+            },
+            {
+              "selector": "#c6-focus-unit",
+              "role": "value",
+              "treatment": "focus.text",
+              "expected_count": 1
+            },
+            {
+              "selector": "#c6-focus-index",
+              "role": "label",
+              "treatment": "focus.text",
+              "expected_count": 1
+            },
+            {
+              "selector": "#c6-focus-label",
+              "role": "label",
+              "treatment": "focus.text",
+              "expected_count": 1
+            },
+            {
+              "selector": "#c6-focus-en",
+              "role": "label",
+              "treatment": "focus.text",
+              "expected_count": 1
+            }
+          ]
         }
-      ]
+      ],
+      "sample_target_id": "focus.main-evidence",
+      "rationale": "Catalog 只预览登记目标；standard 与 experimental 必须按 claim/evidence 选择或明确不强调。"
     },
     "C7": {
       "page_kind": "relationship",
@@ -976,199 +1300,42 @@
         "outline",
         "texture"
       ],
-      "sample_focus_ref": "sample.c7.c7-focus",
-      "sample_focus_reason": "Catalog 样张只激活逐项登记的精确焦点成员；正式 deck 必须按内容重新声明。",
-      "reason": "关系页具备内容驱动的焦点能力，但默认不上主题焦点色。",
-      "sample_focus_profile": "content-only",
-      "sample_focus_members": [
+      "targets": [
         {
-          "selector": "#c7-focus-name",
-          "role": "label"
-        },
-        {
-          "selector": "#c7-focus-value",
-          "role": "value"
-        },
-        {
-          "selector": "#c7-focus-bar",
-          "role": "outline"
-        },
-        {
-          "selector": "#c7-focus-hatch",
-          "role": "texture"
-        }
-      ]
-    },
-    "D1": {
-      "page_kind": "nonrelationship",
-      "page_name": "封面",
-      "access": "none",
-      "default_mode": "none",
-      "primary_relation": null,
-      "relationship_family": null,
-      "focus_candidates": [],
-      "normal_contrast": "页面构图、字阶、留白与墨阶。",
-      "theme_focus_carriers": [],
-      "sample_focus_ref": null,
-      "sample_focus_reason": null,
-      "reason": "封面本身已是唯一主角，保持无主题焦点色。"
-    },
-    "D2": {
-      "page_kind": "nonrelationship",
-      "page_name": "粒子大字尾卡",
-      "access": "none",
-      "default_mode": "none",
-      "primary_relation": null,
-      "relationship_family": null,
-      "focus_candidates": [],
-      "normal_contrast": "页面构图、字阶、留白与墨阶。",
-      "theme_focus_carriers": [],
-      "sample_focus_ref": null,
-      "sample_focus_reason": null,
-      "reason": "大字与留白已建立重心，保持无主题焦点色。"
-    },
-    "D3": {
-      "page_kind": "nonrelationship",
-      "page_name": "极简 Outro",
-      "access": "none",
-      "default_mode": "none",
-      "primary_relation": null,
-      "relationship_family": null,
-      "focus_candidates": [],
-      "normal_contrast": "页面构图、字阶、留白与墨阶。",
-      "theme_focus_carriers": [],
-      "sample_focus_ref": null,
-      "sample_focus_reason": null,
-      "reason": "单一收束语已建立重心，保持无主题焦点色。"
-    },
-    "D4": {
-      "page_kind": "nonrelationship",
-      "page_name": "目录导航页",
-      "access": "contrast-only",
-      "default_mode": "none",
-      "primary_relation": null,
-      "relationship_family": null,
-      "focus_candidates": [],
-      "normal_contrast": "当前章节使用墨阶、实心反白和粗线。",
-      "theme_focus_carriers": [],
-      "sample_focus_ref": null,
-      "sample_focus_reason": null,
-      "reason": "当前章节只用墨阶、实心反白和粗线做对比强调。"
-    },
-    "D5": {
-      "page_kind": "nonrelationship",
-      "page_name": "章节隔页",
-      "access": "none",
-      "default_mode": "none",
-      "primary_relation": null,
-      "relationship_family": null,
-      "focus_candidates": [],
-      "normal_contrast": "页面构图、字阶、留白与墨阶。",
-      "theme_focus_carriers": [],
-      "sample_focus_ref": null,
-      "sample_focus_reason": null,
-      "reason": "章节标题已是唯一主角，保持无主题焦点色。"
-    },
-    "D6": {
-      "page_kind": "nonrelationship",
-      "page_name": "联络尾页",
-      "access": "conditional-semantic-focus",
-      "default_mode": "none",
-      "primary_relation": null,
-      "relationship_family": null,
-      "focus_candidates": [
-        "唯一主要联络渠道"
-      ],
-      "normal_contrast": "页面构图、字阶、留白与墨阶。",
-      "theme_focus_carriers": [
-        "label",
-        "symbol",
-        "outline"
-      ],
-      "sample_focus_ref": null,
-      "sample_focus_reason": null,
-      "production_target_id": "contact.primary",
-      "production_focus_members": [
-        {
-          "selector": "text[x=\"1144\"][y=\"574\"]",
-          "role": "label"
-        },
-        {
-          "selector": "text[x=\"1250\"][y=\"574\"]",
-          "role": "label"
+          "target_id": "focus.decisive-difference",
+          "label": "胜出项 / 异常项 / 差异点 / 矩阵单元",
+          "content_role": "已审核的页面焦点对象",
+          "reason_hint": "仅当该对象直接支撑本页 claim 时启用；不得为了配色而开启。",
+          "members": [
+            {
+              "selector": "#c7-focus-name",
+              "role": "label",
+              "treatment": "focus.text",
+              "expected_count": 1
+            },
+            {
+              "selector": "#c7-focus-value",
+              "role": "value",
+              "treatment": "focus.text",
+              "expected_count": 1
+            },
+            {
+              "selector": "#c7-focus-bar",
+              "role": "outline",
+              "treatment": "focus.outline-depth",
+              "expected_count": 1
+            },
+            {
+              "selector": "#c7-focus-hatch",
+              "role": "texture",
+              "treatment": "focus.texture",
+              "expected_count": 1
+            }
+          ]
         }
       ],
-      "reason": "只有 Render Plan 明确唯一主要联络渠道时才可启用主题焦点；Catalog 样张不启用额外语义焦点。"
-    },
-    "D7": {
-      "page_kind": "nonrelationship",
-      "page_name": "全屏图文封面",
-      "access": "none",
-      "default_mode": "none",
-      "primary_relation": null,
-      "relationship_family": null,
-      "focus_candidates": [],
-      "normal_contrast": "页面构图、字阶、留白与墨阶。",
-      "theme_focus_carriers": [],
-      "sample_focus_ref": null,
-      "sample_focus_reason": null,
-      "reason": "封面主图与标题已建立重心，保持无主题焦点色。"
-    },
-    "D8": {
-      "page_kind": "nonrelationship",
-      "page_name": "大字封面",
-      "access": "none",
-      "default_mode": "none",
-      "primary_relation": null,
-      "relationship_family": null,
-      "focus_candidates": [],
-      "normal_contrast": "页面构图、字阶、留白与墨阶。",
-      "theme_focus_carriers": [],
-      "sample_focus_ref": null,
-      "sample_focus_reason": null,
-      "reason": "大字与留白已建立重心，保持无主题焦点色。"
-    },
-    "D9": {
-      "page_kind": "nonrelationship",
-      "page_name": "极简线框封面",
-      "access": "none",
-      "default_mode": "none",
-      "primary_relation": null,
-      "relationship_family": null,
-      "focus_candidates": [],
-      "normal_contrast": "页面构图、字阶、留白与墨阶。",
-      "theme_focus_carriers": [],
-      "sample_focus_ref": null,
-      "sample_focus_reason": null,
-      "reason": "标题与线框已建立重心，保持无主题焦点色。"
-    },
-    "D10": {
-      "page_kind": "nonrelationship",
-      "page_name": "大字封面（亮暗双区）",
-      "access": "none",
-      "default_mode": "none",
-      "primary_relation": null,
-      "relationship_family": null,
-      "focus_candidates": [],
-      "normal_contrast": "页面构图、字阶、留白与墨阶。",
-      "theme_focus_carriers": [],
-      "sample_focus_ref": null,
-      "sample_focus_reason": null,
-      "reason": "亮暗分区已建立重心，保持无主题焦点色。"
-    },
-    "D11": {
-      "page_kind": "nonrelationship",
-      "page_name": "画墙封面",
-      "access": "none",
-      "default_mode": "none",
-      "primary_relation": null,
-      "relationship_family": null,
-      "focus_candidates": [],
-      "normal_contrast": "页面构图、字阶、留白与墨阶。",
-      "theme_focus_carriers": [],
-      "sample_focus_ref": null,
-      "sample_focus_reason": null,
-      "reason": "全幅画墙与雾面已把标题压成唯一主角，保持无主题焦点色。"
+      "sample_target_id": "focus.decisive-difference",
+      "rationale": "Catalog 只预览登记目标；standard 与 experimental 必须按 claim/evidence 选择或明确不强调。"
     },
     "E1": {
       "page_kind": "relationship",
@@ -1189,20 +1356,30 @@
         "label",
         "outline"
       ],
-      "sample_focus_ref": "sample.e1.e1-focus",
-      "sample_focus_reason": "Catalog 样张只激活逐项登记的精确焦点成员；正式 deck 必须按内容重新声明。",
-      "reason": "关系页具备内容驱动的焦点能力，但默认不上主题焦点色。",
-      "sample_focus_profile": "content-only",
-      "sample_focus_members": [
+      "targets": [
         {
-          "selector": "#e1-focus-title",
-          "role": "value"
-        },
-        {
-          "selector": "#e1-focus-check",
-          "role": "outline"
+          "target_id": "focus.decisive-difference",
+          "label": "胜出项 / 异常项 / 差异点 / 矩阵单元",
+          "content_role": "已审核的页面焦点对象",
+          "reason_hint": "仅当该对象直接支撑本页 claim 时启用；不得为了配色而开启。",
+          "members": [
+            {
+              "selector": "#e1-focus-title",
+              "role": "value",
+              "treatment": "focus.text",
+              "expected_count": 1
+            },
+            {
+              "selector": "#e1-focus-check",
+              "role": "outline",
+              "treatment": "focus.outline-depth",
+              "expected_count": 1
+            }
+          ]
         }
-      ]
+      ],
+      "sample_target_id": "focus.decisive-difference",
+      "rationale": "Catalog 只预览登记目标；standard 与 experimental 必须按 claim/evidence 选择或明确不强调。"
     },
     "E2": {
       "page_kind": "relationship",
@@ -1223,16 +1400,24 @@
         "label",
         "outline"
       ],
-      "sample_focus_ref": "sample.e2.e2-focus",
-      "sample_focus_reason": "Catalog 样张只激活逐项登记的精确焦点成员；正式 deck 必须按内容重新声明。",
-      "reason": "关系页具备内容驱动的焦点能力，但默认不上主题焦点色。",
-      "sample_focus_profile": "copy-only",
-      "sample_focus_members": [
+      "targets": [
         {
-          "selector": "#focus-caption",
-          "role": "label"
+          "target_id": "focus.decisive-difference",
+          "label": "胜出项 / 异常项 / 差异点 / 矩阵单元",
+          "content_role": "已审核的页面焦点对象",
+          "reason_hint": "仅当该对象直接支撑本页 claim 时启用；不得为了配色而开启。",
+          "members": [
+            {
+              "selector": "[data-vnext-text-key=\"comparison-fields.text.001\"]",
+              "role": "value",
+              "treatment": "focus.text",
+              "expected_count": 1
+            }
+          ]
         }
-      ]
+      ],
+      "sample_target_id": "focus.decisive-difference",
+      "rationale": "Catalog 只预览登记目标；standard 与 experimental 必须按 claim/evidence 选择或明确不强调。"
     },
     "E3": {
       "page_kind": "relationship",
@@ -1253,16 +1438,24 @@
         "label",
         "outline"
       ],
-      "sample_focus_ref": "sample.e3.e3-focus",
-      "sample_focus_reason": "Catalog 样张只激活逐项登记的精确焦点成员；正式 deck 必须按内容重新声明。",
-      "reason": "关系页具备内容驱动的焦点能力，但默认不上主题焦点色。",
-      "sample_focus_profile": "copy-only",
-      "sample_focus_members": [
+      "targets": [
         {
-          "selector": "#focus-caption",
-          "role": "label"
+          "target_id": "focus.decisive-difference",
+          "label": "胜出项 / 异常项 / 差异点 / 矩阵单元",
+          "content_role": "已审核的页面焦点对象",
+          "reason_hint": "仅当该对象直接支撑本页 claim 时启用；不得为了配色而开启。",
+          "members": [
+            {
+              "selector": "[data-vnext-text-key=\"paired-items.text.001\"]",
+              "role": "value",
+              "treatment": "focus.text",
+              "expected_count": 1
+            }
+          ]
         }
-      ]
+      ],
+      "sample_target_id": "focus.decisive-difference",
+      "rationale": "Catalog 只预览登记目标；standard 与 experimental 必须按 claim/evidence 选择或明确不强调。"
     },
     "E4": {
       "page_kind": "relationship",
@@ -1283,48 +1476,52 @@
         "label",
         "outline"
       ],
-      "sample_focus_ref": "sample.e4.e4-focus",
-      "sample_focus_reason": "Catalog 样张只激活逐项登记的精确焦点成员；正式 deck 必须按内容重新声明。",
-      "reason": "关系页具备内容驱动的焦点能力，但默认不上主题焦点色。",
-      "sample_focus_profile": "content-only",
-      "sample_focus_members": [
+      "targets": [
         {
-          "selector": "#e4-kpi-num-1",
-          "role": "value"
+          "target_id": "focus.kpi.1",
+          "label": "指标 1",
+          "content_role": "三项指标中的一项",
+          "reason_hint": "只在第 1 项指标直接支撑本页结论时启用；另外两项保持同级。",
+          "members": [
+            {
+              "selector": "#e4-kpi-num-1, #e4-kpi-label-1, #e4-kpi-note-1",
+              "role": "value",
+              "treatment": "focus.text",
+              "expected_count": 3
+            }
+          ]
         },
         {
-          "selector": "#e4-kpi-num-2",
-          "role": "value"
+          "target_id": "focus.kpi.2",
+          "label": "指标 2",
+          "content_role": "三项指标中的一项",
+          "reason_hint": "只在第 2 项指标直接支撑本页结论时启用；另外两项保持同级。",
+          "members": [
+            {
+              "selector": "#e4-kpi-num-2, #e4-kpi-label-2, #e4-kpi-note-2",
+              "role": "value",
+              "treatment": "focus.text",
+              "expected_count": 3
+            }
+          ]
         },
         {
-          "selector": "#e4-kpi-num-3",
-          "role": "value"
-        },
-        {
-          "selector": "#e4-kpi-label-1",
-          "role": "label"
-        },
-        {
-          "selector": "#e4-kpi-label-2",
-          "role": "label"
-        },
-        {
-          "selector": "#e4-kpi-label-3",
-          "role": "label"
-        },
-        {
-          "selector": "#e4-kpi-note-1",
-          "role": "label"
-        },
-        {
-          "selector": "#e4-kpi-note-2",
-          "role": "label"
-        },
-        {
-          "selector": "#e4-kpi-note-3",
-          "role": "label"
+          "target_id": "focus.kpi.3",
+          "label": "指标 3",
+          "content_role": "三项指标中的一项",
+          "reason_hint": "只在第 3 项指标直接支撑本页结论时启用；另外两项保持同级。",
+          "members": [
+            {
+              "selector": "#e4-kpi-num-3, #e4-kpi-label-3, #e4-kpi-note-3",
+              "role": "value",
+              "treatment": "focus.text",
+              "expected_count": 3
+            }
+          ]
         }
-      ]
+      ],
+      "sample_target_id": "focus.kpi.1",
+      "rationale": "Catalog 只预览登记目标；standard 与 experimental 必须按 claim/evidence 选择或明确不强调。"
     },
     "E5": {
       "page_kind": "relationship",
@@ -1345,20 +1542,24 @@
         "outline",
         "annotation"
       ],
-      "sample_focus_ref": "sample.e5.e5-focus",
-      "sample_focus_reason": "Catalog 样张只激活逐项登记的精确焦点成员；正式 deck 必须按内容重新声明。",
-      "reason": "关系页具备内容驱动的焦点能力，但默认不上主题焦点色。",
-      "sample_focus_profile": "content-only",
-      "sample_focus_members": [
+      "targets": [
         {
-          "selector": "#sample-focus",
-          "role": "annotation"
-        },
-        {
-          "selector": "#e5-focus-edge",
-          "role": "outline"
+          "target_id": "focus.key-item",
+          "label": "模型、工具、编排与应用",
+          "content_role": "底部结论中的四项关键能力",
+          "reason_hint": "保留默认主题箭头与层级标签，只给底部结论中的模型、工具、编排与应用上色；后半句保持默认色。",
+          "members": [
+            {
+              "selector": "#e5-focus-capabilities",
+              "role": "label",
+              "treatment": "focus.color",
+              "expected_count": 1
+            }
+          ]
         }
-      ]
+      ],
+      "sample_target_id": "focus.key-item",
+      "rationale": "Catalog 只预览登记目标；standard 与 experimental 必须按 claim/evidence 选择或明确不强调。"
     },
     "E6": {
       "page_kind": "relationship",
@@ -1376,27 +1577,27 @@
       "normal_contrast": "墨阶差、实心反白、线宽或局部纹理",
       "theme_focus_carriers": [
         "value",
-        "label",
-        "outline"
+        "symbol",
+        "annotation"
       ],
-      "sample_focus_ref": "sample.e6.e6-focus",
-      "sample_focus_reason": "Catalog 样张只激活逐项登记的精确焦点成员；正式 deck 必须按内容重新声明。",
-      "reason": "关系页具备内容驱动的焦点能力，但默认不上主题焦点色。",
-      "sample_focus_profile": "content-only",
-      "sample_focus_members": [
+      "targets": [
         {
-          "selector": "#e6-focus-badge",
-          "role": "outline"
-        },
-        {
-          "selector": "#e6-focus-check",
-          "role": "outline"
-        },
-        {
-          "selector": "#e6-focus-title",
-          "role": "value"
+          "target_id": "focus.decisive-difference",
+          "label": "召回、重排与组装",
+          "content_role": "底部总结中的三项关键动作",
+          "reason_hint": "在默认主题身份上，只给召回、重排与组装增加强调色。",
+          "members": [
+            {
+              "selector": "#e6-focus-actions",
+              "role": "annotation",
+              "treatment": "focus.color",
+              "expected_count": 1
+            }
+          ]
         }
-      ]
+      ],
+      "sample_target_id": "focus.decisive-difference",
+      "rationale": "Catalog 只预览登记目标；standard 与 experimental 必须按 claim/evidence 选择或明确不强调。"
     },
     "F2": {
       "page_kind": "relationship",
@@ -1417,20 +1618,30 @@
         "status",
         "texture"
       ],
-      "sample_focus_ref": "sample.f2.f2-focus",
-      "sample_focus_reason": "Catalog 样张只激活逐项登记的精确焦点成员；正式 deck 必须按内容重新声明。",
-      "reason": "关系页具备内容驱动的焦点能力，但默认不上主题焦点色。",
-      "sample_focus_profile": "content-only",
-      "sample_focus_members": [
+      "targets": [
         {
-          "selector": "#sample-focus",
-          "role": "status"
-        },
-        {
-          "selector": "#f2-focus-frame",
-          "role": "outline"
+          "target_id": "focus.key-layer",
+          "label": "分支 / 层级 / 局部",
+          "content_role": "已审核的页面焦点对象",
+          "reason_hint": "仅当该对象直接支撑本页 claim 时启用；不得为了配色而开启。",
+          "members": [
+            {
+              "selector": "#sample-focus",
+              "role": "status",
+              "treatment": "focus.text",
+              "expected_count": 1
+            },
+            {
+              "selector": "#f2-focus-frame",
+              "role": "outline",
+              "treatment": "focus.outline-depth",
+              "expected_count": 1
+            }
+          ]
         }
-      ]
+      ],
+      "sample_target_id": "focus.key-layer",
+      "rationale": "Catalog 只预览登记目标；standard 与 experimental 必须按 claim/evidence 选择或明确不强调。"
     },
     "F3": {
       "page_kind": "relationship",
@@ -1452,41 +1663,61 @@
         "symbol",
         "texture"
       ],
-      "sample_focus_ref": "sample.f3.f3-focus",
-      "sample_focus_reason": "Catalog 样张只激活逐项登记的精确焦点成员；正式 deck 必须按内容重新声明。",
-      "reason": "关系页具备内容驱动的焦点能力，但默认不上主题焦点色。",
-      "sample_focus_profile": "copy+content",
-      "sample_focus_members": [
+      "targets": [
         {
-          "selector": "#f3-boundary-dot",
-          "role": "symbol",
-          "paint": "fill"
-        },
-        {
-          "selector": "#f3-boundary-title",
-          "role": "value"
-        },
-        {
-          "selector": "#f3-boundary-note",
-          "role": "label"
-        },
-        {
-          "selector": "[data-f3-icon=\"harness\"]",
-          "role": "outline"
-        },
-        {
-          "selector": "#f3-harness-title",
-          "role": "value"
-        },
-        {
-          "selector": "#f3-harness-note",
-          "role": "label"
-        },
-        {
-          "selector": "#focus-caption",
-          "role": "label"
+          "target_id": "focus.key-layer",
+          "label": "能力边界与 Harness 设计",
+          "content_role": "能力栈中的两个关键能力",
+          "reason_hint": "沿用旧强调成员；能力边界与 Harness 设计额外加粗，其余成员只上色。",
+          "members": [
+            {
+              "selector": "#f3-boundary-dot",
+              "role": "symbol",
+              "treatment": "focus.color",
+              "paint": "fill",
+              "expected_count": 1
+            },
+            {
+              "selector": "#f3-boundary-title",
+              "role": "value",
+              "treatment": "focus.text",
+              "expected_count": 1
+            },
+            {
+              "selector": "#f3-boundary-note",
+              "role": "label",
+              "treatment": "focus.color",
+              "expected_count": 1
+            },
+            {
+              "selector": "[data-f3-icon=\"harness\"]",
+              "role": "outline",
+              "treatment": "focus.color",
+              "expected_count": 3
+            },
+            {
+              "selector": "#f3-harness-title",
+              "role": "value",
+              "treatment": "focus.text",
+              "expected_count": 1
+            },
+            {
+              "selector": "#f3-harness-note",
+              "role": "label",
+              "treatment": "focus.color",
+              "expected_count": 1
+            },
+            {
+              "selector": "#focus-caption",
+              "role": "label",
+              "treatment": "focus.color",
+              "expected_count": 1
+            }
+          ]
         }
-      ]
+      ],
+      "sample_target_id": "focus.key-layer",
+      "rationale": "Catalog 只预览登记目标；standard 与 experimental 必须按 claim/evidence 选择或明确不强调。"
     },
     "G1": {
       "page_kind": "relationship",
@@ -1507,24 +1738,36 @@
         "outline",
         "texture"
       ],
-      "sample_focus_ref": "sample.g1.g1-focus",
-      "sample_focus_reason": "Catalog 样张只激活逐项登记的精确焦点成员；正式 deck 必须按内容重新声明。",
-      "reason": "关系页具备内容驱动的焦点能力，但默认不上主题焦点色。",
-      "sample_focus_profile": "content-only",
-      "sample_focus_members": [
+      "targets": [
         {
-          "selector": "#g1-focus-frame",
-          "role": "outline"
-        },
-        {
-          "selector": "#sample-focus",
-          "role": "value"
-        },
-        {
-          "selector": "#g1-focus-cn",
-          "role": "label"
+          "target_id": "focus.key-layer",
+          "label": "分支 / 层级 / 局部",
+          "content_role": "已审核的页面焦点对象",
+          "reason_hint": "仅当该对象直接支撑本页 claim 时启用；不得为了配色而开启。",
+          "members": [
+            {
+              "selector": "#g1-focus-frame",
+              "role": "outline",
+              "treatment": "focus.outline-depth",
+              "expected_count": 1
+            },
+            {
+              "selector": "#sample-focus",
+              "role": "value",
+              "treatment": "focus.text",
+              "expected_count": 1
+            },
+            {
+              "selector": "#g1-focus-cn",
+              "role": "label",
+              "treatment": "focus.text",
+              "expected_count": 1
+            }
+          ]
         }
-      ]
+      ],
+      "sample_target_id": "focus.key-layer",
+      "rationale": "Catalog 只预览登记目标；standard 与 experimental 必须按 claim/evidence 选择或明确不强调。"
     },
     "G2": {
       "page_kind": "relationship",
@@ -1543,16 +1786,24 @@
         "outline",
         "symbol"
       ],
-      "sample_focus_ref": "sample.g2.g2-focus",
-      "sample_focus_reason": "Catalog 样张只激活逐项登记的精确焦点成员；正式 deck 必须按内容重新声明。",
-      "reason": "关系页具备内容驱动的焦点能力，但默认不上主题焦点色。",
-      "sample_focus_profile": "copy-only",
-      "sample_focus_members": [
+      "targets": [
         {
-          "selector": "#focus-caption",
-          "role": "label"
+          "target_id": "focus.main-evidence",
+          "label": "主体内部的明确子对象",
+          "content_role": "已审核的页面焦点对象",
+          "reason_hint": "仅当该对象直接支撑本页 claim 时启用；不得为了配色而开启。",
+          "members": [
+            {
+              "selector": "[data-vnext-text-key=\"hero.text.001\"]",
+              "role": "value",
+              "treatment": "focus.text",
+              "expected_count": 1
+            }
+          ]
         }
-      ]
+      ],
+      "sample_target_id": "focus.main-evidence",
+      "rationale": "Catalog 只预览登记目标；standard 与 experimental 必须按 claim/evidence 选择或明确不强调。"
     },
     "G4": {
       "page_kind": "relationship",
@@ -1562,9 +1813,7 @@
       "primary_relation": "decomposition",
       "relationship_family": "include",
       "focus_candidates": [
-        "分支",
-        "层级",
-        "局部"
+        "模型、数据、工具与评测"
       ],
       "normal_contrast": "层级墨阶、边界线宽或局部纹理",
       "theme_focus_carriers": [
@@ -1574,28 +1823,24 @@
         "texture",
         "annotation"
       ],
-      "sample_focus_ref": "sample.g4.g4-focus",
-      "sample_focus_reason": "Catalog 样张只激活逐项登记的精确焦点成员；正式 deck 必须按内容重新声明。",
-      "reason": "关系页具备内容驱动的焦点能力，但默认不上主题焦点色。",
-      "sample_focus_profile": "content-only",
-      "sample_focus_members": [
+      "targets": [
         {
-          "selector": "#g4-focus-outer",
-          "role": "outline"
-        },
-        {
-          "selector": "#g4-focus-frame",
-          "role": "outline"
-        },
-        {
-          "selector": "#g4-focus-title",
-          "role": "value"
-        },
-        {
-          "selector": "#sample-focus",
-          "role": "annotation"
+          "target_id": "focus.key-layer",
+          "label": "模型、数据、工具与评测",
+          "content_role": "底部四项平台能力结论",
+          "reason_hint": "只给“模型、数据、工具与评测”上色；AI 平台中枢保持默认主题身份，MAAS CORE 保持辅助色。",
+          "members": [
+            {
+              "selector": "#g4-focus-capabilities",
+              "role": "label",
+              "treatment": "focus.color",
+              "expected_count": 1
+            }
+          ]
         }
-      ]
+      ],
+      "sample_target_id": "focus.key-layer",
+      "rationale": "Catalog 只预览登记目标；standard 与 experimental 必须按 claim/evidence 选择或明确不强调。"
     },
     "G5": {
       "page_kind": "relationship",
@@ -1616,16 +1861,24 @@
         "outline",
         "texture"
       ],
-      "sample_focus_ref": "sample.g5.g5-focus",
-      "sample_focus_reason": "Catalog 样张只激活逐项登记的精确焦点成员；正式 deck 必须按内容重新声明。",
-      "reason": "关系页具备内容驱动的焦点能力，但默认不上主题焦点色。",
-      "sample_focus_profile": "content-only",
-      "sample_focus_members": [
+      "targets": [
         {
-          "selector": "#g5-focus-title",
-          "role": "value"
+          "target_id": "focus.key-layer",
+          "label": "分支 / 层级 / 局部",
+          "content_role": "已审核的页面焦点对象",
+          "reason_hint": "仅当该对象直接支撑本页 claim 时启用；不得为了配色而开启。",
+          "members": [
+            {
+              "selector": "#g5-focus-title",
+              "role": "value",
+              "treatment": "focus.text",
+              "expected_count": 1
+            }
+          ]
         }
-      ]
+      ],
+      "sample_target_id": "focus.key-layer",
+      "rationale": "Catalog 只预览登记目标；standard 与 experimental 必须按 claim/evidence 选择或明确不强调。"
     },
     "H1": {
       "page_kind": "relationship",
@@ -1635,9 +1888,7 @@
       "primary_relation": "hierarchy",
       "relationship_family": "include",
       "focus_candidates": [
-        "分支",
-        "层级",
-        "局部"
+        "输入校验、输出防护与兜底接管"
       ],
       "normal_contrast": "层级墨阶、边界线宽或局部纹理",
       "theme_focus_carriers": [
@@ -1646,20 +1897,24 @@
         "outline",
         "texture"
       ],
-      "sample_focus_ref": "sample.h1.h1-focus",
-      "sample_focus_reason": "Catalog 样张只激活逐项登记的精确焦点成员；正式 deck 必须按内容重新声明。",
-      "reason": "关系页具备内容驱动的焦点能力，但默认不上主题焦点色。",
-      "sample_focus_profile": "content-only",
-      "sample_focus_members": [
+      "targets": [
         {
-          "selector": "#h1-focus-frame",
-          "role": "outline"
-        },
-        {
-          "selector": "#sample-focus",
-          "role": "value"
+          "target_id": "focus.key-layer",
+          "label": "输入校验、输出防护与兜底接管",
+          "content_role": "底部结论中的三层防护动作",
+          "reason_hint": "中心轮廓保持默认主题身份，LLM CORE 文字保持中性；开启强调后只给底部文案中的输入校验、输出防护与兜底接管上色。",
+          "members": [
+            {
+              "selector": "#h1-focus-input, #h1-focus-output, #h1-focus-fallback",
+              "role": "label",
+              "treatment": "focus.color",
+              "expected_count": 3
+            }
+          ]
         }
-      ]
+      ],
+      "sample_target_id": "focus.key-layer",
+      "rationale": "Catalog 只预览登记目标；standard 与 experimental 必须按 claim/evidence 选择或明确不强调。"
     },
     "H2": {
       "page_kind": "relationship",
@@ -1680,28 +1935,24 @@
         "outline",
         "texture"
       ],
-      "sample_focus_ref": "sample.h2.h2-focus",
-      "sample_focus_reason": "Catalog 样张只激活逐项登记的精确焦点成员；正式 deck 必须按内容重新声明。",
-      "reason": "关系页具备内容驱动的焦点能力，但默认不上主题焦点色。",
-      "sample_focus_profile": "content-only",
-      "sample_focus_members": [
+      "targets": [
         {
-          "selector": "#h2-focus-frame",
-          "role": "outline"
-        },
-        {
-          "selector": "#h2-focus-hatch",
-          "role": "texture"
-        },
-        {
-          "selector": "#h2-focus-code",
-          "role": "value"
-        },
-        {
-          "selector": "#h2-focus-cn",
-          "role": "label"
+          "target_id": "focus.outcome",
+          "label": "04 · OUTCOME",
+          "content_role": "最外层观察粒度编号",
+          "reason_hint": "只给 04 · OUTCOME 上色；外框、中文说明与其余三层保持旧版默认色。",
+          "members": [
+            {
+              "selector": "[data-vnext-text-key=\"zoom-levels.text.001\"]",
+              "role": "value",
+              "treatment": "focus.color",
+              "expected_count": 1
+            }
+          ]
         }
-      ]
+      ],
+      "sample_target_id": "focus.outcome",
+      "rationale": "Catalog 只预览登记目标；standard 与 experimental 必须按 claim/evidence 选择或明确不强调。"
     },
     "H3": {
       "page_kind": "relationship",
@@ -1719,18 +1970,27 @@
       "theme_focus_carriers": [
         "label",
         "outline",
-        "texture"
+        "texture",
+        "value"
       ],
-      "sample_focus_ref": "sample.h3.h3-focus",
-      "sample_focus_reason": "Catalog 样张只激活逐项登记的精确焦点成员；正式 deck 必须按内容重新声明。",
-      "reason": "关系页具备内容驱动的焦点能力，但默认不上主题焦点色。",
-      "sample_focus_profile": "copy-only",
-      "sample_focus_members": [
+      "targets": [
         {
-          "selector": "#focus-caption",
-          "role": "label"
+          "target_id": "focus.key-layer",
+          "label": "分支 / 层级 / 局部",
+          "content_role": "已审核的页面焦点对象",
+          "reason_hint": "仅当该对象直接支撑本页 claim 时启用；不得为了配色而开启。",
+          "members": [
+            {
+              "selector": "[data-vnext-text-key=\"architecture.text.001\"]",
+              "role": "value",
+              "treatment": "focus.text",
+              "expected_count": 1
+            }
+          ]
         }
-      ]
+      ],
+      "sample_target_id": "focus.key-layer",
+      "rationale": "Catalog 只预览登记目标；standard 与 experimental 必须按 claim/evidence 选择或明确不强调。"
     },
     "H4": {
       "page_kind": "relationship",
@@ -1748,26 +2008,40 @@
       "theme_focus_carriers": [
         "label",
         "outline",
-        "texture"
+        "texture",
+        "symbol",
+        "value"
       ],
-      "sample_focus_ref": "sample.h4.h4-focus",
-      "sample_focus_reason": "Catalog 样张只激活逐项登记的精确焦点成员；正式 deck 必须按内容重新声明。",
-      "reason": "关系页具备内容驱动的焦点能力，但默认不上主题焦点色。",
-      "sample_focus_profile": "content-only",
-      "sample_focus_members": [
+      "targets": [
         {
-          "selector": "#h4-focus-frame",
-          "role": "outline"
-        },
-        {
-          "selector": "#h4-focus-hatch",
-          "role": "texture"
-        },
-        {
-          "selector": "#h4-focus-label",
-          "role": "label"
+          "target_id": "focus.foundation-framework",
+          "label": "AI CORE — COMPUTE + TRAINING FRAMEWORK",
+          "content_role": "底部基础框架",
+          "reason_hint": "默认完整复用旧版；强调态只给 AI CORE — COMPUTE + TRAINING FRAMEWORK、内外双框和斜线上色，斜线跟随外框色。",
+          "members": [
+            {
+              "selector": "#h4-focus-framework-title",
+              "role": "value",
+              "treatment": "focus.color",
+              "expected_count": 1
+            },
+            {
+              "selector": "#h4-focus-frame, #h4-focus-frame-inner",
+              "role": "outline",
+              "treatment": "focus.color",
+              "expected_count": 2
+            },
+            {
+              "selector": "#h4-focus-hatch",
+              "role": "outline",
+              "treatment": "focus.color",
+              "expected_count": 1
+            }
+          ]
         }
-      ]
+      ],
+      "sample_target_id": "focus.foundation-framework",
+      "rationale": "Catalog 只预览登记目标；standard 与 experimental 必须按 claim/evidence 选择或明确不强调。"
     },
     "I1": {
       "page_kind": "relationship",
@@ -1788,18 +2062,27 @@
         "label",
         "outline",
         "status",
-        "annotation"
+        "annotation",
+        "value"
       ],
-      "sample_focus_ref": "sample.i1.i1-focus",
-      "sample_focus_reason": "Catalog 样张只激活逐项登记的精确焦点成员；正式 deck 必须按内容重新声明。",
-      "reason": "关系页具备内容驱动的焦点能力，但默认不上主题焦点色。",
-      "sample_focus_profile": "copy-only",
-      "sample_focus_members": [
+      "targets": [
         {
-          "selector": "#focus-caption",
-          "role": "label"
+          "target_id": "focus.key-step",
+          "label": "查询改写、向量召回与重排过滤",
+          "content_role": "底部总结中的三个关键步骤",
+          "reason_hint": "默认保留旧版重排表盘与反白序号；强调态叠加在当前默认色上，只给底部总结句中的查询改写、向量召回与重排过滤上色，序号下标题保持默认色不变。",
+          "members": [
+            {
+              "selector": ".i1-focus-summary-copy",
+              "role": "value",
+              "treatment": "focus.color",
+              "expected_count": 2
+            }
+          ]
         }
-      ]
+      ],
+      "sample_target_id": "focus.key-step",
+      "rationale": "Catalog 只预览登记目标；standard 与 experimental 必须按 claim/evidence 选择或明确不强调。"
     },
     "I2": {
       "page_kind": "relationship",
@@ -1821,21 +2104,24 @@
         "status",
         "annotation"
       ],
-      "sample_focus_ref": null,
-      "sample_focus_reason": "Catalog 样张不启用额外语义焦点；正式 deck 仍可由 Render Plan 提供新的语义焦点。",
-      "reason": "关系页具备内容驱动的焦点能力，但默认不上主题焦点色。",
-      "sample_focus_profile": "none",
-      "sample_focus_members": [],
-      "production_focus_members": [
+      "targets": [
         {
-          "selector": "[data-vnext-text-key=\"visible-steps.text.015\"]",
-          "role": "annotation"
-        },
-        {
-          "selector": "[data-vnext-text-key=\"visible-steps.text.020\"]",
-          "role": "status"
+          "target_id": "focus.external-trace",
+          "label": "外部轨迹",
+          "content_role": "底部总结中的外部可观测线索",
+          "reason_hint": "默认保留旧版黑盒轨道与框线主题色；强调态只给外部轨迹上色。",
+          "members": [
+            {
+              "selector": "#i2-focus-external-trace",
+              "role": "annotation",
+              "treatment": "focus.color",
+              "expected_count": 1
+            }
+          ]
         }
-      ]
+      ],
+      "sample_target_id": "focus.external-trace",
+      "rationale": "Catalog 只预览登记目标；standard 与 experimental 必须按 claim/evidence 选择或明确不强调。"
     },
     "I3": {
       "page_kind": "relationship",
@@ -1858,28 +2144,42 @@
         "status",
         "annotation"
       ],
-      "sample_focus_ref": "sample.i3.i3-focus",
-      "sample_focus_reason": "Catalog 样张只激活逐项登记的精确焦点成员；正式 deck 必须按内容重新声明。",
-      "reason": "关系页具备内容驱动的焦点能力，但默认不上主题焦点色。",
-      "sample_focus_profile": "content-only",
-      "sample_focus_members": [
+      "targets": [
         {
-          "selector": "#i3-focus-ring",
-          "role": "outline"
-        },
-        {
-          "selector": "#i3-focus-no",
-          "role": "value"
-        },
-        {
-          "selector": "#i3-focus-cn",
-          "role": "value"
-        },
-        {
-          "selector": "#i3-focus-en",
-          "role": "annotation"
+          "target_id": "focus.key-step",
+          "label": "当前步骤 / 瓶颈 / 转折 / 出口 / 关键路径",
+          "content_role": "已审核的页面焦点对象",
+          "reason_hint": "仅当该对象直接支撑本页 claim 时启用；不得为了配色而开启。",
+          "members": [
+            {
+              "selector": "#i3-focus-ring",
+              "role": "outline",
+              "treatment": "focus.outline-depth",
+              "expected_count": 1
+            },
+            {
+              "selector": "#i3-focus-no",
+              "role": "value",
+              "treatment": "focus.text",
+              "expected_count": 1
+            },
+            {
+              "selector": "#i3-focus-cn",
+              "role": "value",
+              "treatment": "focus.text",
+              "expected_count": 1
+            },
+            {
+              "selector": "#i3-focus-en",
+              "role": "annotation",
+              "treatment": "focus.text",
+              "expected_count": 1
+            }
+          ]
         }
-      ]
+      ],
+      "sample_target_id": "focus.key-step",
+      "rationale": "Catalog 只预览登记目标；standard 与 experimental 必须按 claim/evidence 选择或明确不强调。"
     },
     "I4": {
       "page_kind": "relationship",
@@ -1897,26 +2197,33 @@
       "theme_focus_carriers": [
         "value",
         "label",
-        "outline"
+        "outline",
+        "status"
       ],
-      "sample_focus_ref": "sample.i4.i4-focus",
-      "sample_focus_reason": "Catalog 样张只激活逐项登记的精确焦点成员；正式 deck 必须按内容重新声明。",
-      "reason": "关系页具备内容驱动的焦点能力，但默认不上主题焦点色。",
-      "sample_focus_profile": "content-only",
-      "sample_focus_members": [
+      "targets": [
         {
-          "selector": "#i4-focus-frame",
-          "role": "outline"
-        },
-        {
-          "selector": "#i4-focus-title",
-          "role": "value"
-        },
-        {
-          "selector": "#i4-focus-note",
-          "role": "label"
+          "target_id": "focus.fallback-decision",
+          "label": "异常兜底",
+          "content_role": "右侧异常兜底模块",
+          "reason_hint": "沿用旧强调色，只给异常兜底标题与外框上色；识别失败类型，给出降级路径不上色。",
+          "members": [
+            {
+              "selector": "#i4-focus-frame",
+              "role": "outline",
+              "treatment": "focus.color",
+              "expected_count": 1
+            },
+            {
+              "selector": "#i4-focus-title",
+              "role": "value",
+              "treatment": "focus.color",
+              "expected_count": 1
+            }
+          ]
         }
-      ]
+      ],
+      "sample_target_id": "focus.fallback-decision",
+      "rationale": "Catalog 只预览登记目标；standard 与 experimental 必须按 claim/evidence 选择或明确不强调。"
     },
     "J1": {
       "page_kind": "relationship",
@@ -1937,18 +2244,28 @@
         "label",
         "outline",
         "status",
-        "annotation"
+        "annotation",
+        "symbol",
+        "value"
       ],
-      "sample_focus_ref": "sample.j1.j1-focus",
-      "sample_focus_reason": "Catalog 样张只激活逐项登记的精确焦点成员；正式 deck 必须按内容重新声明。",
-      "reason": "关系页具备内容驱动的焦点能力，但默认不上主题焦点色。",
-      "sample_focus_profile": "copy-only",
-      "sample_focus_members": [
+      "targets": [
         {
-          "selector": "#focus-caption",
-          "role": "label"
+          "target_id": "focus.definition-score",
+          "label": "定义、调优和评分",
+          "content_role": "底部总结中的关键闭环动作",
+          "reason_hint": "默认保留旧版循环核心主题色；强调态在此基础上，只给底部总结中的“定义、调优和评分”增加强调色。",
+          "members": [
+            {
+              "selector": "#j1-focus-definition-score",
+              "role": "annotation",
+              "treatment": "focus.color",
+              "expected_count": 1
+            }
+          ]
         }
-      ]
+      ],
+      "sample_target_id": "focus.definition-score",
+      "rationale": "Catalog 只预览登记目标；standard 与 experimental 必须按 claim/evidence 选择或明确不强调。"
     },
     "J2": {
       "page_kind": "relationship",
@@ -1972,21 +2289,48 @@
         "status",
         "annotation"
       ],
-      "sample_focus_ref": null,
-      "sample_focus_reason": "Catalog 样张不启用额外语义焦点；正式 deck 仍可由 Render Plan 提供新的语义焦点。",
-      "reason": "关系页具备内容驱动的焦点能力，但默认不上主题焦点色。",
-      "sample_focus_profile": "none",
-      "sample_focus_members": [],
-      "production_focus_members": [
+      "targets": [
         {
-          "selector": "[data-vnext-text-key=\"loop-steps.text.017\"]",
-          "role": "status"
-        },
-        {
-          "selector": "[data-vnext-text-key=\"loop-steps.text.018\"]",
-          "role": "label"
+          "target_id": "focus.iteration-loop",
+          "label": "旧上线闸口 + ITERATE · W01 持续迭代",
+          "content_role": "上线闸口与持续迭代回环",
+          "reason_hint": "完整保留旧版上线闸口强调，再给持续迭代文案及其回环箭头增加强调色。",
+          "members": [
+            {
+              "selector": "#j2-focus-gate",
+              "role": "outline",
+              "treatment": "focus.color",
+              "expected_count": 1
+            },
+            {
+              "selector": "#sample-focus",
+              "role": "value",
+              "treatment": "focus.color",
+              "expected_count": 1
+            },
+            {
+              "selector": "#j2-focus-cn",
+              "role": "label",
+              "treatment": "focus.color",
+              "expected_count": 1
+            },
+            {
+              "selector": ".j2-focus-iterate-arrow",
+              "role": "outline",
+              "treatment": "focus.color",
+              "expected_count": 3
+            },
+            {
+              "selector": "#j2-focus-iterate-en, #j2-focus-iterate-cn",
+              "role": "label",
+              "treatment": "focus.color",
+              "expected_count": 2
+            }
+          ]
         }
-      ]
+      ],
+      "sample_target_id": "focus.iteration-loop",
+      "rationale": "Catalog 只预览登记目标；standard 与 experimental 必须按 claim/evidence 选择或明确不强调。"
     },
     "J3": {
       "page_kind": "relationship",
@@ -2008,35 +2352,243 @@
         "outline",
         "status",
         "symbol",
-        "annotation"
+        "annotation",
+        "label"
       ],
-      "sample_focus_ref": "sample.j3.j3-focus",
-      "sample_focus_reason": "Catalog 样张只激活逐项登记的精确焦点成员；正式 deck 必须按内容重新声明。",
-      "reason": "关系页具备内容驱动的焦点能力，但默认不上主题焦点色。",
-      "sample_focus_profile": "content-only",
-      "sample_focus_members": [
+      "targets": [
         {
-          "selector": "#j3-focus-node",
-          "role": "outline"
+          "target_id": "focus.onboard",
+          "label": "ONBOARD · 初次接触",
+          "content_role": "旅程中的关键阶段",
+          "reason_hint": "当“ONBOARD · 初次接触”是本页转折点时，同时加强阶段签、节点和整条旅程曲线的深度。",
+          "members": [
+            {
+              "selector": "#draw > g > path:nth-of-type(1)",
+              "role": "status",
+              "treatment": "focus.solid-reverse",
+              "paint": "fill",
+              "expected_count": 1
+            },
+            {
+              "selector": "[data-vnext-text-key=\"journey.text.001\"], [data-vnext-text-key=\"journey.text.002\"]",
+              "role": "label",
+              "treatment": "focus.text",
+              "expected_count": 2
+            },
+            {
+              "selector": "#draw circle[cx=\"300\"][cy=\"560\"][r=\"9\"]",
+              "role": "outline",
+              "treatment": "focus.outline-depth",
+              "expected_count": 1
+            },
+            {
+              "selector": "#draw circle[cx=\"300\"][cy=\"560\"][r=\"2.4\"]",
+              "role": "symbol",
+              "treatment": "focus.solid-reverse",
+              "paint": "fill",
+              "expected_count": 1
+            },
+            {
+              "selector": "[data-vnext-text-key=\"journey.text.012\"], [data-vnext-text-key=\"journey.text.013\"]",
+              "role": "value",
+              "treatment": "focus.text",
+              "expected_count": 2
+            },
+            {
+              "selector": "#draw > g > path:nth-of-type(6)",
+              "role": "outline",
+              "treatment": "focus.path-depth",
+              "expected_count": 1
+            }
+          ]
         },
         {
-          "selector": "#j3-focus-node-core",
-          "role": "symbol",
-          "paint": "fill"
+          "target_id": "focus.wow",
+          "label": "WOW · 上手使用",
+          "content_role": "旅程中的关键阶段",
+          "reason_hint": "当“WOW · 上手使用”是本页转折点时，同时加强阶段签、节点和整条旅程曲线的深度。",
+          "members": [
+            {
+              "selector": "#draw > g > path:nth-of-type(2)",
+              "role": "status",
+              "treatment": "focus.solid-reverse",
+              "paint": "fill",
+              "expected_count": 1
+            },
+            {
+              "selector": "[data-vnext-text-key=\"journey.text.003\"], [data-vnext-text-key=\"journey.text.004\"]",
+              "role": "label",
+              "treatment": "focus.text",
+              "expected_count": 2
+            },
+            {
+              "selector": "#draw circle[cx=\"590\"][cy=\"430\"][r=\"9\"]",
+              "role": "outline",
+              "treatment": "focus.outline-depth",
+              "expected_count": 1
+            },
+            {
+              "selector": "#draw circle[cx=\"590\"][cy=\"430\"][r=\"2.4\"]",
+              "role": "symbol",
+              "treatment": "focus.solid-reverse",
+              "paint": "fill",
+              "expected_count": 1
+            },
+            {
+              "selector": "[data-vnext-text-key=\"journey.text.014\"], [data-vnext-text-key=\"journey.text.015\"]",
+              "role": "value",
+              "treatment": "focus.text",
+              "expected_count": 2
+            },
+            {
+              "selector": "#draw > g > path:nth-of-type(6)",
+              "role": "outline",
+              "treatment": "focus.path-depth",
+              "expected_count": 1
+            }
+          ]
         },
         {
-          "selector": "#j3-focus-leader",
-          "role": "outline"
+          "target_id": "focus.depth",
+          "label": "DEPTH · 深度使用",
+          "content_role": "旅程中的关键阶段",
+          "reason_hint": "当“DEPTH · 深度使用”是本页转折点时，同时加强阶段签、节点和整条旅程曲线的深度。",
+          "members": [
+            {
+              "selector": "#draw > g > path:nth-of-type(3)",
+              "role": "status",
+              "treatment": "focus.solid-reverse",
+              "paint": "fill",
+              "expected_count": 1
+            },
+            {
+              "selector": "[data-vnext-text-key=\"journey.text.005\"], [data-vnext-text-key=\"journey.text.006\"]",
+              "role": "label",
+              "treatment": "focus.text",
+              "expected_count": 2
+            },
+            {
+              "selector": "#draw circle[cx=\"830\"][cy=\"700\"][r=\"9\"]",
+              "role": "outline",
+              "treatment": "focus.outline-depth",
+              "expected_count": 1
+            },
+            {
+              "selector": "#draw circle[cx=\"830\"][cy=\"700\"][r=\"2.4\"]",
+              "role": "symbol",
+              "treatment": "focus.solid-reverse",
+              "paint": "fill",
+              "expected_count": 1
+            },
+            {
+              "selector": "[data-vnext-text-key=\"journey.text.016\"], [data-vnext-text-key=\"journey.text.017\"]",
+              "role": "value",
+              "treatment": "focus.text",
+              "expected_count": 2
+            },
+            {
+              "selector": "#draw > g > path:nth-of-type(6)",
+              "role": "outline",
+              "treatment": "focus.path-depth",
+              "expected_count": 1
+            }
+          ]
         },
         {
-          "selector": "#j3-focus-cn",
-          "role": "value"
+          "target_id": "focus.stall",
+          "label": "STALL · 遇到瓶颈",
+          "content_role": "旅程中的关键阶段",
+          "reason_hint": "当“STALL · 遇到瓶颈”是本页转折点时，同时加强阶段签、节点和整条旅程曲线的深度。",
+          "members": [
+            {
+              "selector": "#draw > g > path:nth-of-type(4)",
+              "role": "status",
+              "treatment": "focus.solid-reverse",
+              "paint": "fill",
+              "expected_count": 1
+            },
+            {
+              "selector": "[data-vnext-text-key=\"journey.text.007\"], [data-vnext-text-key=\"journey.text.008\"]",
+              "role": "label",
+              "treatment": "focus.text",
+              "expected_count": 2
+            },
+            {
+              "selector": "#draw circle[cx=\"1330\"][cy=\"660\"][r=\"9\"]",
+              "role": "outline",
+              "treatment": "focus.outline-depth",
+              "expected_count": 1
+            },
+            {
+              "selector": "#draw circle[cx=\"1330\"][cy=\"660\"][r=\"2.4\"]",
+              "role": "symbol",
+              "treatment": "focus.solid-reverse",
+              "paint": "fill",
+              "expected_count": 1
+            },
+            {
+              "selector": "[data-vnext-text-key=\"journey.text.020\"], [data-vnext-text-key=\"journey.text.021\"]",
+              "role": "value",
+              "treatment": "focus.text",
+              "expected_count": 2
+            },
+            {
+              "selector": "#draw > g > path:nth-of-type(6)",
+              "role": "outline",
+              "treatment": "focus.path-depth",
+              "expected_count": 1
+            }
+          ]
         },
         {
-          "selector": "#j3-focus-score",
-          "role": "annotation"
+          "target_id": "focus.breakthrough",
+          "label": "BREAK · 突破理解",
+          "content_role": "旅程中的关键阶段",
+          "reason_hint": "当“BREAK · 突破理解”是本页转折点时，同时加强阶段签、节点和整条旅程曲线的深度。",
+          "members": [
+            {
+              "selector": "#draw > g > path:nth-of-type(5)",
+              "role": "status",
+              "treatment": "focus.solid-reverse",
+              "paint": "fill",
+              "expected_count": 1
+            },
+            {
+              "selector": "[data-vnext-text-key=\"journey.text.009\"], [data-vnext-text-key=\"journey.text.010\"]",
+              "role": "label",
+              "treatment": "focus.text",
+              "expected_count": 2
+            },
+            {
+              "selector": "#draw circle[cx=\"1090\"][cy=\"450\"][r=\"9\"]",
+              "role": "outline",
+              "treatment": "focus.outline-depth",
+              "expected_count": 1
+            },
+            {
+              "selector": "#draw circle[cx=\"1090\"][cy=\"450\"][r=\"2.4\"]",
+              "role": "symbol",
+              "treatment": "focus.solid-reverse",
+              "paint": "fill",
+              "expected_count": 1
+            },
+            {
+              "selector": "[data-vnext-text-key=\"journey.text.018\"], [data-vnext-text-key=\"journey.text.019\"]",
+              "role": "value",
+              "treatment": "focus.text",
+              "expected_count": 2
+            },
+            {
+              "selector": "#draw > g > path:nth-of-type(6)",
+              "role": "outline",
+              "treatment": "focus.path-depth",
+              "expected_count": 1
+            }
+          ]
         }
-      ]
+      ],
+      "sample_target_id": "focus.onboard",
+      "rationale": "Catalog 只预览登记目标；standard 与 experimental 必须按 claim/evidence 选择或明确不强调。"
     },
     "K1": {
       "page_kind": "relationship",
@@ -2060,36 +2612,54 @@
         "texture",
         "annotation"
       ],
-      "sample_focus_ref": "sample.k1.k1-focus",
-      "sample_focus_reason": "Catalog 样张只激活逐项登记的精确焦点成员；正式 deck 必须按内容重新声明。",
-      "reason": "关系页具备内容驱动的焦点能力，但默认不上主题焦点色。",
-      "sample_focus_profile": "content-only",
-      "sample_focus_members": [
+      "targets": [
         {
-          "selector": "#k1-focus-frame",
-          "role": "outline"
-        },
-        {
-          "selector": "#k1-focus-frame-inner",
-          "role": "outline"
-        },
-        {
-          "selector": "#k1-focus-no",
-          "role": "value"
-        },
-        {
-          "selector": "#k1-focus-en",
-          "role": "annotation"
-        },
-        {
-          "selector": "#k1-focus-divider",
-          "role": "outline"
-        },
-        {
-          "selector": "#k1-focus-cn",
-          "role": "label"
+          "target_id": "focus.key-node",
+          "label": "关键节点 / 边 / 交叠区 / 决定性证据",
+          "content_role": "已审核的页面焦点对象",
+          "reason_hint": "仅当该对象直接支撑本页 claim 时启用；不得为了配色而开启。",
+          "members": [
+            {
+              "selector": "#k1-focus-frame",
+              "role": "outline",
+              "treatment": "focus.outline-depth",
+              "expected_count": 1
+            },
+            {
+              "selector": "#k1-focus-frame-inner",
+              "role": "outline",
+              "treatment": "focus.outline-depth",
+              "expected_count": 1
+            },
+            {
+              "selector": "#k1-focus-no",
+              "role": "value",
+              "treatment": "focus.text",
+              "expected_count": 1
+            },
+            {
+              "selector": "#k1-focus-en",
+              "role": "annotation",
+              "treatment": "focus.text",
+              "expected_count": 1
+            },
+            {
+              "selector": "#k1-focus-divider",
+              "role": "outline",
+              "treatment": "focus.outline-depth",
+              "expected_count": 1
+            },
+            {
+              "selector": "#k1-focus-cn",
+              "role": "label",
+              "treatment": "focus.text",
+              "expected_count": 1
+            }
+          ]
         }
-      ]
+      ],
+      "sample_target_id": "focus.key-node",
+      "rationale": "Catalog 只预览登记目标；standard 与 experimental 必须按 claim/evidence 选择或明确不强调。"
     },
     "K2": {
       "page_kind": "relationship",
@@ -2113,24 +2683,36 @@
         "status",
         "annotation"
       ],
-      "sample_focus_ref": "sample.k2.k2-focus",
-      "sample_focus_reason": "Catalog 样张只激活逐项登记的精确焦点成员；正式 deck 必须按内容重新声明。",
-      "reason": "关系页具备内容驱动的焦点能力，但默认不上主题焦点色。",
-      "sample_focus_profile": "content-only",
-      "sample_focus_members": [
+      "targets": [
         {
-          "selector": "#k2-focus-kpi-code",
-          "role": "annotation"
-        },
-        {
-          "selector": "#sample-focus",
-          "role": "value"
-        },
-        {
-          "selector": "#k2-focus-kpi-label",
-          "role": "label"
+          "target_id": "focus.key-step",
+          "label": "当前步骤 / 瓶颈 / 转折 / 出口 / 关键路径",
+          "content_role": "已审核的页面焦点对象",
+          "reason_hint": "仅当该对象直接支撑本页 claim 时启用；不得为了配色而开启。",
+          "members": [
+            {
+              "selector": "#k2-focus-kpi-code",
+              "role": "annotation",
+              "treatment": "focus.text",
+              "expected_count": 1
+            },
+            {
+              "selector": "#sample-focus",
+              "role": "value",
+              "treatment": "focus.text",
+              "expected_count": 1
+            },
+            {
+              "selector": "#k2-focus-kpi-label",
+              "role": "label",
+              "treatment": "focus.text",
+              "expected_count": 1
+            }
+          ]
         }
-      ]
+      ],
+      "sample_target_id": "focus.key-step",
+      "rationale": "Catalog 只预览登记目标；standard 与 experimental 必须按 claim/evidence 选择或明确不强调。"
     },
     "K3": {
       "page_kind": "relationship",
@@ -2151,44 +2733,24 @@
         "outline",
         "texture"
       ],
-      "sample_focus_ref": "sample.k3.k3-focus",
-      "sample_focus_reason": "Catalog 样张只激活逐项登记的精确焦点成员；正式 deck 必须按内容重新声明。",
-      "reason": "关系页具备内容驱动的焦点能力，但默认不上主题焦点色。",
-      "sample_focus_profile": "content-only",
-      "sample_focus_members": [
+      "targets": [
         {
-          "selector": "#k3-num-0",
-          "role": "value"
-        },
-        {
-          "selector": "#k3-num-1",
-          "role": "value"
-        },
-        {
-          "selector": "#k3-num-2",
-          "role": "value"
-        },
-        {
-          "selector": "#k3-num-3",
-          "role": "value"
-        },
-        {
-          "selector": "#k3-label-0",
-          "role": "label"
-        },
-        {
-          "selector": "#k3-label-1",
-          "role": "label"
-        },
-        {
-          "selector": "#k3-label-2",
-          "role": "label"
-        },
-        {
-          "selector": "#k3-label-3",
-          "role": "label"
+          "target_id": "focus.recall-rate",
+          "label": "91% · 召回命中率",
+          "content_role": "右侧结果指标",
+          "reason_hint": "只给 91% 上色；Agent 基座平台与其余指标保持默认色。",
+          "members": [
+            {
+              "selector": "#k3-num-1",
+              "role": "value",
+              "treatment": "focus.color",
+              "expected_count": 1
+            }
+          ]
         }
-      ]
+      ],
+      "sample_target_id": "focus.recall-rate",
+      "rationale": "Catalog 只预览登记目标；standard 与 experimental 必须按 claim/evidence 选择或明确不强调。"
     },
     "K4": {
       "page_kind": "relationship",
@@ -2209,18 +2771,27 @@
         "outline",
         "symbol",
         "texture",
-        "annotation"
+        "annotation",
+        "value"
       ],
-      "sample_focus_ref": "sample.k4.k4-focus",
-      "sample_focus_reason": "Catalog 样张只激活逐项登记的精确焦点成员；正式 deck 必须按内容重新声明。",
-      "reason": "关系页具备内容驱动的焦点能力，但默认不上主题焦点色。",
-      "sample_focus_profile": "copy-only",
-      "sample_focus_members": [
+      "targets": [
         {
-          "selector": "#focus-caption",
-          "role": "label"
+          "target_id": "focus.main-evidence",
+          "label": "首答、命中率与采纳率",
+          "content_role": "底部三项结果结论",
+          "reason_hint": "在新版默认基准上，只给首答、命中率与采纳率上色，不采用此前的整组强调。",
+          "members": [
+            {
+              "selector": "#focus-caption",
+              "role": "label",
+              "treatment": "focus.color",
+              "expected_count": 1
+            }
+          ]
         }
-      ]
+      ],
+      "sample_target_id": "focus.main-evidence",
+      "rationale": "Catalog 只预览登记目标；standard 与 experimental 必须按 claim/evidence 选择或明确不强调。"
     },
     "L1": {
       "page_kind": "relationship",
@@ -2242,20 +2813,30 @@
         "texture",
         "annotation"
       ],
-      "sample_focus_ref": "sample.l1.l1-focus",
-      "sample_focus_reason": "Catalog 样张只激活逐项登记的精确焦点成员；正式 deck 必须按内容重新声明。",
-      "reason": "关系页具备内容驱动的焦点能力，但默认不上主题焦点色。",
-      "sample_focus_profile": "content-only",
-      "sample_focus_members": [
+      "targets": [
         {
-          "selector": "#l1-focus-edge",
-          "role": "outline"
-        },
-        {
-          "selector": "#l1-focus-label",
-          "role": "annotation"
+          "target_id": "focus.key-node",
+          "label": "关键节点 / 边 / 交叠区 / 决定性证据",
+          "content_role": "已审核的页面焦点对象",
+          "reason_hint": "仅当该对象直接支撑本页 claim 时启用；不得为了配色而开启。",
+          "members": [
+            {
+              "selector": "#l1-focus-edge",
+              "role": "outline",
+              "treatment": "focus.outline-depth",
+              "expected_count": 1
+            },
+            {
+              "selector": "#l1-focus-label",
+              "role": "annotation",
+              "treatment": "focus.text",
+              "expected_count": 1
+            }
+          ]
         }
-      ]
+      ],
+      "sample_target_id": "focus.key-node",
+      "rationale": "Catalog 只预览登记目标；standard 与 experimental 必须按 claim/evidence 选择或明确不强调。"
     },
     "L2": {
       "page_kind": "relationship",
@@ -2276,46 +2857,27 @@
         "outline",
         "symbol",
         "texture",
-        "annotation"
+        "annotation",
+        "value"
       ],
-      "sample_focus_ref": "sample.l2.l2-focus",
-      "sample_focus_reason": "Catalog 样张只激活逐项登记的精确焦点成员；正式 deck 必须按内容重新声明。",
-      "reason": "关系页具备内容驱动的焦点能力，但默认不上主题焦点色。",
-      "sample_focus_profile": "copy-only",
-      "sample_focus_members": [
+      "targets": [
         {
-          "selector": "#focus-caption",
-          "role": "label"
+          "target_id": "focus.key-node",
+          "label": "关键节点 / 边 / 交叠区 / 决定性证据",
+          "content_role": "已审核的页面焦点对象",
+          "reason_hint": "仅当该对象直接支撑本页 claim 时启用；不得为了配色而开启。",
+          "members": [
+            {
+              "selector": "[data-vnext-text-key=\"mapping-network.text.001\"]",
+              "role": "value",
+              "treatment": "focus.text",
+              "expected_count": 1
+            }
+          ]
         }
-      ]
-    },
-    "M1": {
-      "page_kind": "nonrelationship",
-      "page_name": "粒子主角",
-      "access": "none",
-      "default_mode": "none",
-      "primary_relation": null,
-      "relationship_family": null,
-      "focus_candidates": [],
-      "normal_contrast": "页面构图、字阶、留白与墨阶。",
-      "theme_focus_carriers": [],
-      "sample_focus_ref": null,
-      "sample_focus_reason": null,
-      "reason": "主体本身已足够强，保持无主题焦点色。"
-    },
-    "M2": {
-      "page_kind": "nonrelationship",
-      "page_name": "秩序环过渡页",
-      "access": "none",
-      "default_mode": "none",
-      "primary_relation": null,
-      "relationship_family": null,
-      "focus_candidates": [],
-      "normal_contrast": "页面构图、字阶、留白与墨阶。",
-      "theme_focus_carriers": [],
-      "sample_focus_ref": null,
-      "sample_focus_reason": null,
-      "reason": "过渡页以构图和动势建立重心，保持无主题焦点色。"
+      ],
+      "sample_target_id": "focus.key-node",
+      "rationale": "Catalog 只预览登记目标；standard 与 experimental 必须按 claim/evidence 选择或明确不强调。"
     },
     "N1": {
       "page_kind": "relationship",
@@ -2338,24 +2900,36 @@
         "status",
         "annotation"
       ],
-      "sample_focus_ref": "sample.n1.n1-focus",
-      "sample_focus_reason": "Catalog 样张只激活逐项登记的精确焦点成员；正式 deck 必须按内容重新声明。",
-      "reason": "关系页具备内容驱动的焦点能力，但默认不上主题焦点色。",
-      "sample_focus_profile": "content-only",
-      "sample_focus_members": [
+      "targets": [
         {
-          "selector": "#n1-focus-frame",
-          "role": "outline"
-        },
-        {
-          "selector": "#n1-focus-en",
-          "role": "annotation"
-        },
-        {
-          "selector": "#n1-focus-cn",
-          "role": "value"
+          "target_id": "focus.key-step",
+          "label": "当前步骤 / 瓶颈 / 转折 / 出口 / 关键路径",
+          "content_role": "已审核的页面焦点对象",
+          "reason_hint": "仅当该对象直接支撑本页 claim 时启用；不得为了配色而开启。",
+          "members": [
+            {
+              "selector": "#n1-focus-frame",
+              "role": "outline",
+              "treatment": "focus.outline-depth",
+              "expected_count": 1
+            },
+            {
+              "selector": "#n1-focus-en",
+              "role": "annotation",
+              "treatment": "focus.text",
+              "expected_count": 1
+            },
+            {
+              "selector": "#n1-focus-cn",
+              "role": "value",
+              "treatment": "focus.text",
+              "expected_count": 1
+            }
+          ]
         }
-      ]
+      ],
+      "sample_target_id": "focus.key-step",
+      "rationale": "Catalog 只预览登记目标；standard 与 experimental 必须按 claim/evidence 选择或明确不强调。"
     },
     "O1": {
       "page_kind": "relationship",
@@ -2379,40 +2953,54 @@
         "status",
         "annotation"
       ],
-      "sample_focus_ref": "sample.o1.o1-focus",
-      "sample_focus_reason": "Catalog 样张只激活逐项登记的精确焦点成员；正式 deck 必须按内容重新声明。",
-      "reason": "关系页具备内容驱动的焦点能力，但默认不上主题焦点色。",
-      "sample_focus_profile": "content-only",
-      "sample_focus_members": [
+      "targets": [
         {
-          "selector": "#o1-focus-divider",
-          "role": "outline"
-        },
-        {
-          "selector": "#o1-focus-side-left",
-          "role": "outline"
-        },
-        {
-          "selector": "#o1-focus-side-right",
-          "role": "outline"
-        },
-        {
-          "selector": "#o1-focus-number",
-          "role": "value"
-        },
-        {
-          "selector": "#o1-focus-tag",
-          "role": "annotation"
-        },
-        {
-          "selector": "#o1-focus-label",
-          "role": "label"
-        },
-        {
-          "selector": "#o1-focus-top-k",
-          "role": "annotation"
+          "target_id": "focus.key-step",
+          "label": "当前步骤 / 瓶颈 / 转折 / 出口 / 关键路径",
+          "content_role": "已审核的页面焦点对象",
+          "reason_hint": "仅当该对象直接支撑本页 claim 时启用；不得为了配色而开启。",
+          "members": [
+            {
+              "selector": "#o1-focus-side-left",
+              "role": "outline",
+              "treatment": "focus.outline-depth",
+              "expected_count": 1
+            },
+            {
+              "selector": "#o1-focus-side-right",
+              "role": "outline",
+              "treatment": "focus.outline-depth",
+              "expected_count": 1
+            },
+            {
+              "selector": "#o1-focus-number",
+              "role": "value",
+              "treatment": "focus.text",
+              "expected_count": 1
+            },
+            {
+              "selector": "#o1-focus-tag",
+              "role": "annotation",
+              "treatment": "focus.text",
+              "expected_count": 1
+            },
+            {
+              "selector": "#o1-focus-label",
+              "role": "label",
+              "treatment": "focus.text",
+              "expected_count": 1
+            },
+            {
+              "selector": "#o1-focus-top-k",
+              "role": "annotation",
+              "treatment": "focus.text",
+              "expected_count": 1
+            }
+          ]
         }
-      ]
+      ],
+      "sample_target_id": "focus.key-step",
+      "rationale": "Catalog 只预览登记目标；standard 与 experimental 必须按 claim/evidence 选择或明确不强调。"
     },
     "P1": {
       "page_kind": "relationship",
@@ -2435,16 +3023,24 @@
         "status",
         "annotation"
       ],
-      "sample_focus_ref": "sample.p1.p1-focus",
-      "sample_focus_reason": "Catalog 样张只激活逐项登记的精确焦点成员；正式 deck 必须按内容重新声明。",
-      "reason": "关系页具备内容驱动的焦点能力，但默认不上主题焦点色。",
-      "sample_focus_profile": "content-only",
-      "sample_focus_members": [
+      "targets": [
         {
-          "selector": "#sample-focus",
-          "role": "value"
+          "target_id": "focus.key-step",
+          "label": "当前步骤 / 瓶颈 / 转折 / 出口 / 关键路径",
+          "content_role": "已审核的页面焦点对象",
+          "reason_hint": "仅当该对象直接支撑本页 claim 时启用；不得为了配色而开启。",
+          "members": [
+            {
+              "selector": "#sample-focus",
+              "role": "value",
+              "treatment": "focus.text",
+              "expected_count": 1
+            }
+          ]
         }
-      ]
+      ],
+      "sample_target_id": "focus.key-step",
+      "rationale": "Catalog 只预览登记目标；standard 与 experimental 必须按 claim/evidence 选择或明确不强调。"
     },
     "P2": {
       "page_kind": "relationship",
@@ -2464,23 +3060,40 @@
         "outline",
         "symbol",
         "texture",
-        "annotation"
+        "annotation",
+        "value"
       ],
-      "sample_focus_ref": null,
-      "sample_focus_reason": "Catalog 样张不启用额外语义焦点；正式 deck 仍可由 Render Plan 提供新的语义焦点。",
-      "reason": "关系页具备内容驱动的焦点能力，但默认不上主题焦点色。",
-      "sample_focus_profile": "none",
-      "sample_focus_members": [],
-      "production_focus_members": [
+      "targets": [
         {
-          "selector": "[data-vnext-text-key=\"diamond-map.text.013\"]",
-          "role": "annotation"
-        },
-        {
-          "selector": "[data-vnext-text-key=\"diamond-map.text.014\"]",
-          "role": "annotation"
+          "target_id": "focus.key-node",
+          "label": "RETRIEVED CONTEXTS · 检索上下文",
+          "content_role": "菱形上方检索上下文节点",
+          "reason_hint": "沿用旧版反白强调，并让检索上下文卡片的内外两道边框同时跟随强调色。",
+          "members": [
+            {
+              "selector": "#p2-context-card",
+              "role": "symbol",
+              "treatment": "focus.solid-reverse",
+              "paint": "fill",
+              "expected_count": 1
+            },
+            {
+              "selector": "#p2-context-frame, #p2-context-frame-inner",
+              "role": "outline",
+              "treatment": "focus.path-depth",
+              "expected_count": 2
+            },
+            {
+              "selector": "#p2-context-en, #p2-context-cn",
+              "role": "value",
+              "treatment": "focus.reverse-text",
+              "expected_count": 2
+            }
+          ]
         }
-      ]
+      ],
+      "sample_target_id": "focus.key-node",
+      "rationale": "Catalog 只预览登记目标；standard 与 experimental 必须按 claim/evidence 选择或明确不强调。"
     },
     "Q1": {
       "page_kind": "relationship",
@@ -2503,16 +3116,24 @@
         "texture",
         "annotation"
       ],
-      "sample_focus_ref": "sample.q1.q1-focus",
-      "sample_focus_reason": "Catalog 样张只激活逐项登记的精确焦点成员；正式 deck 必须按内容重新声明。",
-      "reason": "关系页具备内容驱动的焦点能力，但默认不上主题焦点色。",
-      "sample_focus_profile": "content-only",
-      "sample_focus_members": [
+      "targets": [
         {
-          "selector": "#q1-focus-label",
-          "role": "value"
+          "target_id": "focus.key-node",
+          "label": "关键节点 / 边 / 交叠区 / 决定性证据",
+          "content_role": "已审核的页面焦点对象",
+          "reason_hint": "仅当该对象直接支撑本页 claim 时启用；不得为了配色而开启。",
+          "members": [
+            {
+              "selector": "#q1-focus-label",
+              "role": "value",
+              "treatment": "focus.text",
+              "expected_count": 1
+            }
+          ]
         }
-      ]
+      ],
+      "sample_target_id": "focus.key-node",
+      "rationale": "Catalog 只预览登记目标；standard 与 experimental 必须按 claim/evidence 选择或明确不强调。"
     },
     "Q2": {
       "page_kind": "relationship",
@@ -2533,24 +3154,90 @@
         "outline",
         "texture"
       ],
-      "sample_focus_ref": "sample.q2.q2-focus",
-      "sample_focus_reason": "Catalog 样张只激活逐项登记的精确焦点成员；正式 deck 必须按内容重新声明。",
-      "reason": "关系页具备内容驱动的焦点能力，但默认不上主题焦点色。",
-      "sample_focus_profile": "content-only",
-      "sample_focus_members": [
+      "targets": [
         {
-          "selector": "#q2-focus-period",
-          "role": "label"
+          "target_id": "focus.annotation",
+          "label": "人工标注 26%",
+          "content_role": "构成分项与证据行",
+          "reason_hint": "当人工标注是主因时，同时加强扇区和第一行证据。",
+          "members": [
+            {
+              "selector": "#q2-data-6",
+              "role": "outline",
+              "treatment": "focus.path-depth",
+              "expected_count": 1
+            },
+            {
+              "selector": "[data-vnext-text-key=\"parts.text.002\"], [data-vnext-text-key=\"parts.text.003\"], [data-vnext-text-key=\"parts.text.004\"], [data-vnext-text-key=\"parts.text.005\"]",
+              "role": "value",
+              "treatment": "focus.text",
+              "expected_count": 4
+            }
+          ]
         },
         {
-          "selector": "#q2-focus-total",
-          "role": "value"
+          "target_id": "focus.model-calls",
+          "label": "模型调用 20%",
+          "content_role": "构成分项与证据行",
+          "reason_hint": "当模型调用是主因时，同时加强扇区和第二行证据。",
+          "members": [
+            {
+              "selector": "#q2-data-5",
+              "role": "outline",
+              "treatment": "focus.path-depth",
+              "expected_count": 1
+            },
+            {
+              "selector": "[data-vnext-text-key=\"parts.text.006\"], [data-vnext-text-key=\"parts.text.007\"], [data-vnext-text-key=\"parts.text.008\"], [data-vnext-text-key=\"parts.text.009\"]",
+              "role": "value",
+              "treatment": "focus.text",
+              "expected_count": 4
+            }
+          ]
         },
         {
-          "selector": "#q2-focus-label",
-          "role": "label"
+          "target_id": "focus.tool-replay",
+          "label": "工具回放 16%",
+          "content_role": "构成分项与证据行",
+          "reason_hint": "当工具回放是主因时，同时加强扇区和第三行证据。",
+          "members": [
+            {
+              "selector": "#q2-data-4",
+              "role": "outline",
+              "treatment": "focus.path-depth",
+              "expected_count": 1
+            },
+            {
+              "selector": "[data-vnext-text-key=\"parts.text.010\"], [data-vnext-text-key=\"parts.text.011\"], [data-vnext-text-key=\"parts.text.012\"], [data-vnext-text-key=\"parts.text.013\"]",
+              "role": "value",
+              "treatment": "focus.text",
+              "expected_count": 4
+            }
+          ]
+        },
+        {
+          "target_id": "focus.governance",
+          "label": "平台与治理 38%",
+          "content_role": "构成分项与证据行",
+          "reason_hint": "当固定治理投入是主因时，同时加强扇区和第四行证据。",
+          "members": [
+            {
+              "selector": "#q2-data-3",
+              "role": "outline",
+              "treatment": "focus.path-depth",
+              "expected_count": 1
+            },
+            {
+              "selector": "[data-vnext-text-key=\"parts.text.014\"], [data-vnext-text-key=\"parts.text.015\"], [data-vnext-text-key=\"parts.text.016\"], [data-vnext-text-key=\"parts.text.017\"]",
+              "role": "value",
+              "treatment": "focus.text",
+              "expected_count": 4
+            }
+          ]
         }
-      ]
+      ],
+      "sample_target_id": "focus.annotation",
+      "rationale": "Catalog 只预览登记目标；standard 与 experimental 必须按 claim/evidence 选择或明确不强调。"
     },
     "Q3": {
       "page_kind": "relationship",
@@ -2572,20 +3259,30 @@
         "outline",
         "annotation"
       ],
-      "sample_focus_ref": "sample.q3.q3-focus",
-      "sample_focus_reason": "Catalog 样张只激活逐项登记的精确焦点成员；正式 deck 必须按内容重新声明。",
-      "reason": "关系页具备内容驱动的焦点能力，但默认不上主题焦点色。",
-      "sample_focus_profile": "content-only",
-      "sample_focus_members": [
+      "targets": [
         {
-          "selector": "#q3-focus-frame",
-          "role": "outline"
-        },
-        {
-          "selector": "#q3-focus-label",
-          "role": "annotation"
+          "target_id": "focus.decisive-difference",
+          "label": "胜出项 / 异常项 / 差异点 / 矩阵单元",
+          "content_role": "已审核的页面焦点对象",
+          "reason_hint": "仅当该对象直接支撑本页 claim 时启用；不得为了配色而开启。",
+          "members": [
+            {
+              "selector": "#q3-focus-frame",
+              "role": "outline",
+              "treatment": "focus.outline-depth",
+              "expected_count": 1
+            },
+            {
+              "selector": "#q3-focus-label",
+              "role": "annotation",
+              "treatment": "focus.text",
+              "expected_count": 1
+            }
+          ]
         }
-      ]
+      ],
+      "sample_target_id": "focus.decisive-difference",
+      "rationale": "Catalog 只预览登记目标；standard 与 experimental 必须按 claim/evidence 选择或明确不强调。"
     },
     "Q4": {
       "page_kind": "relationship",
@@ -2606,18 +3303,27 @@
         "outline",
         "symbol",
         "texture",
-        "annotation"
+        "annotation",
+        "value"
       ],
-      "sample_focus_ref": "sample.q4.q4-focus",
-      "sample_focus_reason": "Catalog 样张只激活逐项登记的精确焦点成员；正式 deck 必须按内容重新声明。",
-      "reason": "关系页具备内容驱动的焦点能力，但默认不上主题焦点色。",
-      "sample_focus_profile": "copy-only",
-      "sample_focus_members": [
+      "targets": [
         {
-          "selector": "#focus-caption",
-          "role": "label"
+          "target_id": "focus.key-node",
+          "label": "关键节点 / 边 / 交叠区 / 决定性证据",
+          "content_role": "已审核的页面焦点对象",
+          "reason_hint": "仅当该对象直接支撑本页 claim 时启用；不得为了配色而开启。",
+          "members": [
+            {
+              "selector": "[data-vnext-text-key=\"evidence-a.text.003\"]",
+              "role": "value",
+              "treatment": "focus.text",
+              "expected_count": 1
+            }
+          ]
         }
-      ]
+      ],
+      "sample_target_id": "focus.key-node",
+      "rationale": "Catalog 只预览登记目标；standard 与 experimental 必须按 claim/evidence 选择或明确不强调。"
     },
     "R1": {
       "page_kind": "relationship",
@@ -2637,16 +3343,24 @@
         "label",
         "outline"
       ],
-      "sample_focus_ref": "sample.r1.r1-focus",
-      "sample_focus_reason": "Catalog 样张只激活逐项登记的精确焦点成员；正式 deck 必须按内容重新声明。",
-      "reason": "关系页具备内容驱动的焦点能力，但默认不上主题焦点色。",
-      "sample_focus_profile": "content-only",
-      "sample_focus_members": [
+      "targets": [
         {
-          "selector": "#r1-focus-frame",
-          "role": "outline"
+          "target_id": "focus.key-item",
+          "label": "数据、模型、工具与治理",
+          "content_role": "底部四项能力结论",
+          "reason_hint": "只给“数据、模型、工具与治理”上色，后半句保持默认色。",
+          "members": [
+            {
+              "selector": "#r1-focus-caption",
+              "role": "label",
+              "treatment": "focus.color",
+              "expected_count": 1
+            }
+          ]
         }
-      ]
+      ],
+      "sample_target_id": "focus.key-item",
+      "rationale": "Catalog 只预览登记目标；standard 与 experimental 必须按 claim/evidence 选择或明确不强调。"
     },
     "R2": {
       "page_kind": "relationship",
@@ -2664,26 +3378,27 @@
       "theme_focus_carriers": [
         "label",
         "outline",
-        "texture"
+        "texture",
+        "value"
       ],
-      "sample_focus_ref": "sample.r2.r2-focus",
-      "sample_focus_reason": "Catalog 样张只激活逐项登记的精确焦点成员；正式 deck 必须按内容重新声明。",
-      "reason": "关系页具备内容驱动的焦点能力，但默认不上主题焦点色。",
-      "sample_focus_profile": "copy-only",
-      "sample_focus_members": [
+      "targets": [
         {
-          "selector": "#r2-focus-strategy",
-          "role": "label"
-        },
-        {
-          "selector": "#r2-focus-capability",
-          "role": "label"
-        },
-        {
-          "selector": "#r2-focus-execution",
-          "role": "label"
+          "target_id": "focus.key-layer",
+          "label": "分支 / 层级 / 局部",
+          "content_role": "已审核的页面焦点对象",
+          "reason_hint": "仅当该对象直接支撑本页 claim 时启用；不得为了配色而开启。",
+          "members": [
+            {
+              "selector": "[data-vnext-text-key=\"strategy.text.003\"]",
+              "role": "value",
+              "treatment": "focus.text",
+              "expected_count": 1
+            }
+          ]
         }
-      ]
+      ],
+      "sample_target_id": "focus.key-layer",
+      "rationale": "Catalog 只预览登记目标；standard 与 experimental 必须按 claim/evidence 选择或明确不强调。"
     },
     "R3": {
       "page_kind": "relationship",
@@ -2703,16 +3418,24 @@
         "label",
         "outline"
       ],
-      "sample_focus_ref": "sample.r3.r3-focus",
-      "sample_focus_reason": "Catalog 样张只激活逐项登记的精确焦点成员；正式 deck 必须按内容重新声明。",
-      "reason": "关系页具备内容驱动的焦点能力，但默认不上主题焦点色。",
-      "sample_focus_profile": "copy-only",
-      "sample_focus_members": [
+      "targets": [
         {
-          "selector": "#focus-caption",
-          "role": "label"
+          "target_id": "focus.key-item",
+          "label": "推理、记忆、工具、多模态、理解与生成",
+          "content_role": "底部六项能力结论",
+          "reason_hint": "只给六项能力名称上色，后半句保持默认色。",
+          "members": [
+            {
+              "selector": "#r3-focus-capabilities",
+              "role": "label",
+              "treatment": "focus.color",
+              "expected_count": 1
+            }
+          ]
         }
-      ]
+      ],
+      "sample_target_id": "focus.key-item",
+      "rationale": "Catalog 只预览登记目标；standard 与 experimental 必须按 claim/evidence 选择或明确不强调。"
     },
     "R4": {
       "page_kind": "relationship",
@@ -2733,16 +3456,24 @@
         "label",
         "outline"
       ],
-      "sample_focus_ref": "sample.r4.r4-focus",
-      "sample_focus_reason": "Catalog 样张只激活逐项登记的精确焦点成员；正式 deck 必须按内容重新声明。",
-      "reason": "关系页具备内容驱动的焦点能力，但默认不上主题焦点色。",
-      "sample_focus_profile": "copy-only",
-      "sample_focus_members": [
+      "targets": [
         {
-          "selector": "#focus-caption",
-          "role": "label"
+          "target_id": "focus.decisive-difference",
+          "label": "胜出项 / 异常项 / 差异点 / 矩阵单元",
+          "content_role": "已审核的页面焦点对象",
+          "reason_hint": "仅当该对象直接支撑本页 claim 时启用；不得为了配色而开启。",
+          "members": [
+            {
+              "selector": "[data-vnext-text-key=\"balance.text.003\"]",
+              "role": "value",
+              "treatment": "focus.text",
+              "expected_count": 1
+            }
+          ]
         }
-      ]
+      ],
+      "sample_target_id": "focus.decisive-difference",
+      "rationale": "Catalog 只预览登记目标；standard 与 experimental 必须按 claim/evidence 选择或明确不强调。"
     },
     "R5": {
       "page_kind": "relationship",
@@ -2765,28 +3496,42 @@
         "texture",
         "annotation"
       ],
-      "sample_focus_ref": "sample.r5.r5-focus",
-      "sample_focus_reason": "Catalog 样张只激活逐项登记的精确焦点成员；正式 deck 必须按内容重新声明。",
-      "reason": "关系页具备内容驱动的焦点能力，但默认不上主题焦点色。",
-      "sample_focus_profile": "content-only",
-      "sample_focus_members": [
+      "targets": [
         {
-          "selector": "#r5-focus-en",
-          "role": "annotation"
-        },
-        {
-          "selector": "#r5-focus-cn",
-          "role": "value"
-        },
-        {
-          "selector": "#r5-focus-line",
-          "role": "outline"
-        },
-        {
-          "selector": "#r5-focus-arrow",
-          "role": "outline"
+          "target_id": "focus.key-node",
+          "label": "关键节点 / 边 / 交叠区 / 决定性证据",
+          "content_role": "已审核的页面焦点对象",
+          "reason_hint": "仅当该对象直接支撑本页 claim 时启用；不得为了配色而开启。",
+          "members": [
+            {
+              "selector": "#r5-focus-en",
+              "role": "annotation",
+              "treatment": "focus.text",
+              "expected_count": 1
+            },
+            {
+              "selector": "#r5-focus-cn",
+              "role": "value",
+              "treatment": "focus.text",
+              "expected_count": 1
+            },
+            {
+              "selector": "#r5-focus-line",
+              "role": "outline",
+              "treatment": "focus.outline-depth",
+              "expected_count": 1
+            },
+            {
+              "selector": "#r5-focus-arrow",
+              "role": "outline",
+              "treatment": "focus.outline-depth",
+              "expected_count": 1
+            }
+          ]
         }
-      ]
+      ],
+      "sample_target_id": "focus.key-node",
+      "rationale": "Catalog 只预览登记目标；standard 与 experimental 必须按 claim/evidence 选择或明确不强调。"
     },
     "R6": {
       "page_kind": "relationship",
@@ -2804,18 +3549,27 @@
       "theme_focus_carriers": [
         "label",
         "outline",
-        "texture"
+        "texture",
+        "value"
       ],
-      "sample_focus_ref": "sample.r6.r6-focus",
-      "sample_focus_reason": "Catalog 样张只激活逐项登记的精确焦点成员；正式 deck 必须按内容重新声明。",
-      "reason": "关系页具备内容驱动的焦点能力，但默认不上主题焦点色。",
-      "sample_focus_profile": "copy-only",
-      "sample_focus_members": [
+      "targets": [
         {
-          "selector": "#focus-caption",
-          "role": "label"
+          "target_id": "focus.key-layer",
+          "label": "分支 / 层级 / 局部",
+          "content_role": "已审核的页面焦点对象",
+          "reason_hint": "仅当该对象直接支撑本页 claim 时启用；不得为了配色而开启。",
+          "members": [
+            {
+              "selector": "[data-vnext-text-key=\"input.text.003\"]",
+              "role": "value",
+              "treatment": "focus.text",
+              "expected_count": 1
+            }
+          ]
         }
-      ]
+      ],
+      "sample_target_id": "focus.key-layer",
+      "rationale": "Catalog 只预览登记目标；standard 与 experimental 必须按 claim/evidence 选择或明确不强调。"
     },
     "R7": {
       "page_kind": "relationship",
@@ -2835,16 +3589,24 @@
         "label",
         "outline"
       ],
-      "sample_focus_ref": "sample.r7.r7-focus",
-      "sample_focus_reason": "Catalog 样张只激活逐项登记的精确焦点成员；正式 deck 必须按内容重新声明。",
-      "reason": "关系页具备内容驱动的焦点能力，但默认不上主题焦点色。",
-      "sample_focus_profile": "copy-only",
-      "sample_focus_members": [
+      "targets": [
         {
-          "selector": "#focus-caption",
-          "role": "label"
+          "target_id": "focus.key-item",
+          "label": "五个国产模型品牌",
+          "content_role": "模型品牌名称",
+          "reason_hint": "只给 GLM、DEEPSEEK、KIMI、DOUBAO、QWEN 五个品牌名上色。",
+          "members": [
+            {
+              "selector": "[data-slot-id=\"capability-01\"] .brand-name, [data-slot-id=\"capability-04\"] .brand-name, [data-slot-id=\"capability-05\"] .brand-name, [data-slot-id=\"capability-06\"] .brand-name, [data-slot-id=\"capability-07\"] .brand-name",
+              "role": "value",
+              "treatment": "focus.color",
+              "expected_count": 5
+            }
+          ]
         }
-      ]
+      ],
+      "sample_target_id": "focus.key-item",
+      "rationale": "Catalog 只预览登记目标；standard 与 experimental 必须按 claim/evidence 选择或明确不强调。"
     },
     "S1": {
       "page_kind": "relationship",
@@ -2864,33 +3626,80 @@
         "outline",
         "texture"
       ],
-      "sample_focus_ref": null,
-      "sample_focus_reason": "Catalog 样张不启用额外语义焦点；正式 deck 仍可由 Render Plan 提供新的语义焦点。",
-      "reason": "关系页具备内容驱动的焦点能力，但默认不上主题焦点色。",
-      "sample_focus_profile": "none",
-      "sample_focus_members": [],
-      "production_focus_members": [
+      "targets": [
         {
-          "selector": "[data-vnext-text-key=\"architecture.text.024\"]",
-          "role": "label"
+          "target_id": "focus.layer.application",
+          "label": "应用层",
+          "content_role": "平台架构层",
+          "reason_hint": "当用户应用能力是本页重心时，举起应用层。",
+          "members": [
+            {
+              "selector": "#architecture-slot .arch-tone-wrap.tone-a",
+              "role": "outline",
+              "treatment": "focus.contrast-isolation",
+              "expected_count": 1
+            }
+          ]
         },
         {
-          "selector": "[data-vnext-text-key=\"architecture.text.025\"]",
-          "role": "label"
+          "target_id": "focus.layer.resource",
+          "label": "资源层",
+          "content_role": "平台架构层",
+          "reason_hint": "当资源配置能力是本页重心时，举起资源层。",
+          "members": [
+            {
+              "selector": "#architecture-slot .arch-tone-wrap.tone-e",
+              "role": "outline",
+              "treatment": "focus.contrast-isolation",
+              "expected_count": 1
+            }
+          ]
         },
         {
-          "selector": "[data-vnext-text-key=\"architecture.text.026\"]",
-          "role": "label"
+          "target_id": "focus.layer.automation",
+          "label": "自动化层",
+          "content_role": "平台架构层",
+          "reason_hint": "当工具与自动化能力是本页重心时，举起自动化层。",
+          "members": [
+            {
+              "selector": "#architecture-slot .arch-tone-wrap.tone-c",
+              "role": "outline",
+              "treatment": "focus.contrast-isolation",
+              "expected_count": 1
+            }
+          ]
         },
         {
-          "selector": "[data-vnext-text-key=\"architecture.text.027\"]",
-          "role": "label"
+          "target_id": "focus.layer.knowledge",
+          "label": "知识与评测层",
+          "content_role": "平台架构层",
+          "reason_hint": "当知识、评测与追踪能力是本页重心时，举起知识与评测层。",
+          "members": [
+            {
+              "selector": "#architecture-slot .arch-tone-wrap.tone-d",
+              "role": "outline",
+              "treatment": "focus.contrast-isolation",
+              "expected_count": 1
+            }
+          ]
         },
         {
-          "selector": "[data-vnext-text-key=\"architecture.text.028\"]",
-          "role": "label"
+          "target_id": "focus.layer.foundation",
+          "label": "基础设施层",
+          "content_role": "平台架构层",
+          "reason_hint": "当模型、治理或权限底座是本页重心时，举起基础设施层。",
+          "members": [
+            {
+              "selector": "#architecture-slot .arch-tone-wrap.tone-b",
+              "role": "outline",
+              "treatment": "focus.contrast-isolation",
+              "expected_count": 1
+            }
+          ]
         }
-      ]
+      ],
+      "sample_target_id": "focus.layer.application",
+      "rationale": "Catalog 只预览登记目标；standard 与 experimental 必须按 claim/evidence 选择或明确不强调。"
     },
     "S2": {
       "page_kind": "relationship",
@@ -2911,24 +3720,50 @@
         "outline",
         "texture"
       ],
-      "sample_focus_ref": "sample.s2.s2-focus",
-      "sample_focus_reason": "Catalog 样张只激活逐项登记的精确焦点成员；正式 deck 必须按内容重新声明。",
-      "reason": "关系页具备内容驱动的焦点能力，但默认不上主题焦点色。",
-      "sample_focus_profile": "content-only",
-      "sample_focus_members": [
+      "targets": [
         {
-          "selector": "#s2-focus-period",
-          "role": "label"
+          "target_id": "focus.variable-cost",
+          "label": "可变成本 62%",
+          "content_role": "整体分段与对应证据面板",
+          "reason_hint": "当可变成本是结论主因时，同时加强其扇区和上方证据面板。",
+          "members": [
+            {
+              "selector": "#s2-data-6",
+              "role": "outline",
+              "treatment": "focus.path-depth",
+              "expected_count": 1
+            },
+            {
+              "selector": "g[data-anchor-id=\"s2.upper\"]",
+              "role": "value",
+              "treatment": "focus.contrast-isolation",
+              "expected_count": 1
+            }
+          ]
         },
         {
-          "selector": "#s2-focus-value",
-          "role": "value"
-        },
-        {
-          "selector": "#s2-focus-label",
-          "role": "label"
+          "target_id": "focus.fixed-cost",
+          "label": "固定投入 38%",
+          "content_role": "整体分段与对应证据面板",
+          "reason_hint": "当固定投入是结论主因时，同时加强其扇区和下方证据面板。",
+          "members": [
+            {
+              "selector": "#s2-data-3",
+              "role": "outline",
+              "treatment": "focus.path-depth",
+              "expected_count": 1
+            },
+            {
+              "selector": "g[data-anchor-id=\"s2.lower\"]",
+              "role": "value",
+              "treatment": "focus.contrast-isolation",
+              "expected_count": 1
+            }
+          ]
         }
-      ]
+      ],
+      "sample_target_id": "focus.variable-cost",
+      "rationale": "Catalog 只预览登记目标；standard 与 experimental 必须按 claim/evidence 选择或明确不强调。"
     },
     "S3": {
       "page_kind": "relationship",
@@ -2952,44 +3787,66 @@
         "status",
         "annotation"
       ],
-      "sample_focus_ref": "sample.s3.s3-focus",
-      "sample_focus_reason": "Catalog 样张只激活逐项登记的精确焦点成员；正式 deck 必须按内容重新声明。",
-      "reason": "关系页具备内容驱动的焦点能力，但默认不上主题焦点色。",
-      "sample_focus_profile": "content-only",
-      "sample_focus_members": [
+      "targets": [
         {
-          "selector": "#s3-num-0",
-          "role": "value"
+          "target_id": "focus.metric.3",
+          "label": "结果指标 3",
+          "content_role": "底部结果指标",
+          "reason_hint": "仅当第 3 个结果指标直接支撑本页结论时启用。",
+          "members": [
+            {
+              "selector": "#s3-num-2",
+              "role": "value",
+              "treatment": "focus.color",
+              "expected_count": 1
+            }
+          ]
         },
         {
-          "selector": "#s3-num-1",
-          "role": "value"
+          "target_id": "focus.metric.1",
+          "label": "结果指标 1",
+          "content_role": "底部结果指标",
+          "reason_hint": "仅当第 1 个结果指标直接支撑本页结论时启用。",
+          "members": [
+            {
+              "selector": "#s3-num-0, #s3-label-0",
+              "role": "value",
+              "treatment": "focus.text",
+              "expected_count": 2
+            }
+          ]
         },
         {
-          "selector": "#s3-num-2",
-          "role": "value"
+          "target_id": "focus.metric.2",
+          "label": "结果指标 2",
+          "content_role": "底部结果指标",
+          "reason_hint": "仅当第 2 个结果指标直接支撑本页结论时启用。",
+          "members": [
+            {
+              "selector": "#s3-num-1, #s3-label-1",
+              "role": "value",
+              "treatment": "focus.text",
+              "expected_count": 2
+            }
+          ]
         },
         {
-          "selector": "#s3-num-3",
-          "role": "value"
-        },
-        {
-          "selector": "#s3-label-0",
-          "role": "label"
-        },
-        {
-          "selector": "#s3-label-1",
-          "role": "label"
-        },
-        {
-          "selector": "#s3-label-2",
-          "role": "label"
-        },
-        {
-          "selector": "#s3-label-3",
-          "role": "label"
+          "target_id": "focus.metric.4",
+          "label": "结果指标 4",
+          "content_role": "底部结果指标",
+          "reason_hint": "仅当第 4 个结果指标直接支撑本页结论时启用。",
+          "members": [
+            {
+              "selector": "#s3-num-3, #s3-label-3",
+              "role": "value",
+              "treatment": "focus.text",
+              "expected_count": 2
+            }
+          ]
         }
-      ]
+      ],
+      "sample_target_id": "focus.metric.3",
+      "rationale": "Catalog 只预览登记目标；standard 与 experimental 必须按 claim/evidence 选择或明确不强调。"
     },
     "T1": {
       "page_kind": "relationship",
@@ -3010,18 +3867,33 @@
         "label",
         "outline",
         "status",
-        "annotation"
+        "annotation",
+        "value"
       ],
-      "sample_focus_ref": "sample.t1.t1-focus",
-      "sample_focus_reason": "Catalog 样张只激活逐项登记的精确焦点成员；正式 deck 必须按内容重新声明。",
-      "reason": "关系页具备内容驱动的焦点能力，但默认不上主题焦点色。",
-      "sample_focus_profile": "copy-only",
-      "sample_focus_members": [
+      "targets": [
         {
-          "selector": "#t1-focus",
-          "role": "label"
+          "target_id": "focus.key-step",
+          "label": "旧强调 + ANALYSE",
+          "content_role": "旧版总结强调与首步英文名",
+          "reason_hint": "保留旧版重点、层级与关系的强调，同时给 ANALYSE 增加强调色。",
+          "members": [
+            {
+              "selector": "#t1-focus",
+              "role": "label",
+              "treatment": "focus.color",
+              "expected_count": 1
+            },
+            {
+              "selector": "#t1-focus-analyse",
+              "role": "value",
+              "treatment": "focus.color",
+              "expected_count": 1
+            }
+          ]
         }
-      ]
+      ],
+      "sample_target_id": "focus.key-step",
+      "rationale": "Catalog 只预览登记目标；standard 与 experimental 必须按 claim/evidence 选择或明确不强调。"
     },
     "T2": {
       "page_kind": "relationship",
@@ -3044,16 +3916,24 @@
         "texture",
         "annotation"
       ],
-      "sample_focus_ref": "sample.t2.t2-focus",
-      "sample_focus_reason": "Catalog 样张只激活逐项登记的精确焦点成员；正式 deck 必须按内容重新声明。",
-      "reason": "关系页具备内容驱动的焦点能力，但默认不上主题焦点色。",
-      "sample_focus_profile": "copy-only",
-      "sample_focus_members": [
+      "targets": [
         {
-          "selector": "#t2-focus",
-          "role": "label"
+          "target_id": "focus.layout.1",
+          "label": "版式样例 01",
+          "content_role": "六张版式样例中的第一张",
+          "reason_hint": "在六张右侧小图已点缀主题色的基础上，只给 01 卡增加新版硬阴影。",
+          "members": [
+            {
+              "selector": "[data-repeat-unit=\"layout-sample\"][data-bind-index=\"0\"]",
+              "role": "outline",
+              "treatment": "focus.hard-shadow",
+              "expected_count": 1
+            }
+          ]
         }
-      ]
+      ],
+      "sample_target_id": "focus.layout.1",
+      "rationale": "Catalog 只预览登记目标；standard 与 experimental 必须按 claim/evidence 选择或明确不强调。"
     },
     "T3": {
       "page_kind": "relationship",
@@ -3074,18 +3954,55 @@
         "label",
         "outline",
         "status",
-        "annotation"
+        "annotation",
+        "value"
       ],
-      "sample_focus_ref": "sample.t3.t3-focus",
-      "sample_focus_reason": "Catalog 样张只激活逐项登记的精确焦点成员；正式 deck 必须按内容重新声明。",
-      "reason": "关系页具备内容驱动的焦点能力，但默认不上主题焦点色。",
-      "sample_focus_profile": "copy-only",
-      "sample_focus_members": [
+      "targets": [
         {
-          "selector": "#t3-focus",
-          "role": "label"
+          "target_id": "focus.decision-card-shadow",
+          "label": "上方判断卡",
+          "content_role": "页面上方的调用判断卡",
+          "reason_hint": "只给上方判断卡增加主题色硬影；“成熟表达沉淀为单元”保持默认色。",
+          "members": [
+            {
+              "selector": "#t3-decision > rect:first-of-type",
+              "role": "outline",
+              "treatment": "focus.hard-shadow",
+              "expected_count": 1
+            }
+          ]
+        },
+        {
+          "target_id": "focus.metric-a",
+          "label": "METRIC A · 42",
+          "content_role": "统计卡片中的单项指标",
+          "reason_hint": "当绝对量 42 是主要证据时，只强化 METRIC A。",
+          "members": [
+            {
+              "selector": "[data-vnext-text-key=\"samples.text.020\"], [data-vnext-text-key=\"samples.text.021\"]",
+              "role": "value",
+              "treatment": "focus.text",
+              "expected_count": 2
+            }
+          ]
+        },
+        {
+          "target_id": "focus.metric-b",
+          "label": "METRIC B · 7%",
+          "content_role": "统计卡片中的单项指标",
+          "reason_hint": "当比例 7% 是主要证据时，只强化 METRIC B。",
+          "members": [
+            {
+              "selector": "[data-vnext-text-key=\"samples.text.022\"], [data-vnext-text-key=\"samples.text.023\"]",
+              "role": "value",
+              "treatment": "focus.text",
+              "expected_count": 2
+            }
+          ]
         }
-      ]
+      ],
+      "sample_target_id": "focus.decision-card-shadow",
+      "rationale": "Catalog 只预览登记目标；standard 与 experimental 必须按 claim/evidence 选择或明确不强调。"
     },
     "U1": {
       "page_kind": "relationship",
@@ -3103,20 +4020,30 @@
       "theme_focus_carriers": [
         "value"
       ],
-      "sample_focus_ref": "sample.u1.u1-focus",
-      "sample_focus_reason": "Catalog 样张只激活逐项登记的精确焦点成员；正式 deck 必须按内容重新声明。",
-      "reason": "关系页具备内容驱动的焦点能力，但默认不上主题焦点色。",
-      "sample_focus_profile": "content-only",
-      "sample_focus_members": [
+      "targets": [
         {
-          "selector": "#u1-kpi-a",
-          "role": "value"
-        },
-        {
-          "selector": "#u1-kpi-b",
-          "role": "value"
+          "target_id": "focus.decisive-difference",
+          "label": "胜出项 / 异常项 / 差异点",
+          "content_role": "已审核的页面焦点对象",
+          "reason_hint": "仅当该对象直接支撑本页 claim 时启用；不得为了配色而开启。",
+          "members": [
+            {
+              "selector": "#u1-kpi-a",
+              "role": "value",
+              "treatment": "focus.text",
+              "expected_count": 1
+            },
+            {
+              "selector": "#u1-kpi-b",
+              "role": "value",
+              "treatment": "focus.text",
+              "expected_count": 1
+            }
+          ]
         }
-      ]
+      ],
+      "sample_target_id": "focus.decisive-difference",
+      "rationale": "Catalog 只预览登记目标；standard 与 experimental 必须按 claim/evidence 选择或明确不强调。"
     },
     "U2": {
       "page_kind": "relationship",
@@ -3135,20 +4062,30 @@
         "value",
         "status"
       ],
-      "sample_focus_ref": "sample.u2.u2-focus",
-      "sample_focus_reason": "Catalog 样张只激活逐项登记的精确焦点成员；正式 deck 必须按内容重新声明。",
-      "reason": "关系页具备内容驱动的焦点能力，但默认不上主题焦点色。",
-      "sample_focus_profile": "content-only",
-      "sample_focus_members": [
+      "targets": [
         {
-          "selector": "#u2-focus-bar",
-          "role": "value"
-        },
-        {
-          "selector": "#u2-delta-row",
-          "role": "status"
+          "target_id": "focus.decisive-difference",
+          "label": "关键证据 / 涨幅徽记 / 异常项",
+          "content_role": "已审核的页面焦点对象",
+          "reason_hint": "仅当该对象直接支撑本页 claim 时启用；不得为了配色而开启。",
+          "members": [
+            {
+              "selector": "#u2-focus-bar",
+              "role": "value",
+              "treatment": "focus.text",
+              "expected_count": 1
+            },
+            {
+              "selector": "#u2-delta-row",
+              "role": "status",
+              "treatment": "focus.text",
+              "expected_count": 1
+            }
+          ]
         }
-      ]
+      ],
+      "sample_target_id": "focus.decisive-difference",
+      "rationale": "Catalog 只预览登记目标；standard 与 experimental 必须按 claim/evidence 选择或明确不强调。"
     },
     "U3": {
       "page_kind": "relationship",
@@ -3166,23 +4103,62 @@
       "theme_focus_carriers": [
         "label",
         "outline",
+        "symbol",
         "status",
         "annotation"
       ],
-      "sample_focus_ref": "sample.u3.u3-focus",
-      "sample_focus_reason": "Catalog 样张只激活转化动作与增量结果；正式 deck 必须按内容重新声明。",
-      "reason": "关系页具备内容驱动的焦点能力，但默认不上主题焦点色。",
-      "sample_focus_profile": "content-only",
-      "sample_focus_members": [
+      "targets": [
         {
-          "selector": "#lever-transform-label",
-          "role": "label"
+          "target_id": "focus.productized-fulcrum",
+          "label": "可复用的产品化支点",
+          "content_role": "底部结论中的产品化支点",
+          "reason_hint": "只给“可复用的产品化支点”上色，杠杆节点、横梁与支点保持默认色。",
+          "members": [
+            {
+              "selector": "#u3-focus-caption",
+              "role": "label",
+              "treatment": "focus.color",
+              "expected_count": 1
+            }
+          ]
         },
         {
-          "selector": "#lever-outcome-title",
-          "role": "label"
+          "target_id": "focus.lever-geometry",
+          "label": "杠杆转化结构",
+          "content_role": "杠杆两端节点、横梁与支点",
+          "reason_hint": "当杠杆结构本身是论证对象时，才强化两端节点、横梁与支点。",
+          "members": [
+            {
+              "selector": "#lever-stock-node",
+              "role": "symbol",
+              "treatment": "focus.solid-reverse",
+              "paint": "fill",
+              "expected_count": 1
+            },
+            {
+              "selector": "#lever-outcome-node",
+              "role": "symbol",
+              "treatment": "focus.solid-reverse",
+              "paint": "fill",
+              "expected_count": 1
+            },
+            {
+              "selector": "#lever-beam",
+              "role": "outline",
+              "treatment": "focus.outline-depth",
+              "expected_count": 1
+            },
+            {
+              "selector": "#lever-pivot",
+              "role": "outline",
+              "treatment": "focus.outline-depth",
+              "expected_count": 1
+            }
+          ]
         }
-      ]
+      ],
+      "sample_target_id": "focus.productized-fulcrum",
+      "rationale": "Catalog 只预览登记目标；standard 与 experimental 必须按 claim/evidence 选择或明确不强调。"
     },
     "W1": {
       "page_kind": "relationship",
@@ -3203,27 +4179,233 @@
         "outline",
         "annotation"
       ],
-      "sample_focus_ref": "sample.w1.w1-focus",
-      "sample_focus_reason": "Catalog 样张只激活逐项登记的精确焦点成员；正式 deck 必须按内容重新声明。",
-      "reason": "关系页具备内容驱动的焦点能力，但默认不上主题焦点色。",
-      "sample_focus_profile": "content-only",
-      "sample_focus_members": [
+      "targets": [
         {
-          "selector": "#w1-focus-hub",
-          "role": "outline"
-        },
-        {
-          "selector": "#w1-focus-hub-title",
-          "role": "value"
+          "target_id": "focus.key-layer",
+          "label": "数据闭环与生态协同",
+          "content_role": "底部结论中的两项制造中台能力",
+          "reason_hint": "制造中台保持默认主题身份；开启强调后只给底部文案中的数据闭环与生态协同上色。",
+          "members": [
+            {
+              "selector": "#w1-focus-data-loop, #w1-focus-ecosystem",
+              "role": "label",
+              "treatment": "focus.color",
+              "expected_count": 2
+            }
+          ]
         }
-      ]
+      ],
+      "sample_target_id": "focus.key-layer",
+      "rationale": "Catalog 只预览登记目标；standard 与 experimental 必须按 claim/evidence 选择或明确不强调。"
+    },
+    "D1": {
+      "page_kind": "nonrelationship",
+      "page_name": "封面",
+      "access": "none",
+      "default_mode": "none",
+      "primary_relation": null,
+      "relationship_family": null,
+      "focus_candidates": [],
+      "normal_contrast": "页面构图、字阶、留白与墨阶。",
+      "theme_focus_carriers": [],
+      "targets": [],
+      "sample_target_id": null,
+      "rationale": "该页不开放内容强调，但仍通过逐版式 identity group 呈现主题气质。"
+    },
+    "D10": {
+      "page_kind": "nonrelationship",
+      "page_name": "大字封面（亮暗双区）",
+      "access": "none",
+      "default_mode": "none",
+      "primary_relation": null,
+      "relationship_family": null,
+      "focus_candidates": [],
+      "normal_contrast": "页面构图、字阶、留白与墨阶。",
+      "theme_focus_carriers": [],
+      "targets": [],
+      "sample_target_id": null,
+      "rationale": "该页不开放内容强调，但仍通过逐版式 identity group 呈现主题气质。"
+    },
+    "D11": {
+      "page_kind": "nonrelationship",
+      "page_name": "画墙封面",
+      "access": "none",
+      "default_mode": "none",
+      "primary_relation": null,
+      "relationship_family": null,
+      "focus_candidates": [],
+      "normal_contrast": "页面构图、字阶、留白与墨阶。",
+      "theme_focus_carriers": [],
+      "targets": [],
+      "sample_target_id": null,
+      "rationale": "该页不开放内容强调，但仍通过逐版式 identity group 呈现主题气质。"
+    },
+    "D2": {
+      "page_kind": "nonrelationship",
+      "page_name": "粒子大字尾卡",
+      "access": "none",
+      "default_mode": "none",
+      "primary_relation": null,
+      "relationship_family": null,
+      "focus_candidates": [],
+      "normal_contrast": "页面构图、字阶、留白与墨阶。",
+      "theme_focus_carriers": [],
+      "targets": [],
+      "sample_target_id": null,
+      "rationale": "该页不开放内容强调，但仍通过逐版式 identity group 呈现主题气质。"
+    },
+    "D3": {
+      "page_kind": "nonrelationship",
+      "page_name": "极简 Outro",
+      "access": "none",
+      "default_mode": "none",
+      "primary_relation": null,
+      "relationship_family": null,
+      "focus_candidates": [],
+      "normal_contrast": "页面构图、字阶、留白与墨阶。",
+      "theme_focus_carriers": [],
+      "targets": [],
+      "sample_target_id": null,
+      "rationale": "该页不开放内容强调，但仍通过逐版式 identity group 呈现主题气质。"
+    },
+    "D4": {
+      "page_kind": "nonrelationship",
+      "page_name": "目录导航页",
+      "access": "contrast-only",
+      "default_mode": "none",
+      "primary_relation": null,
+      "relationship_family": null,
+      "focus_candidates": [],
+      "normal_contrast": "当前章节使用墨阶、实心反白和粗线。",
+      "theme_focus_carriers": [],
+      "targets": [],
+      "sample_target_id": null,
+      "rationale": "该页不开放内容强调，但仍通过逐版式 identity group 呈现主题气质。"
+    },
+    "D5": {
+      "page_kind": "nonrelationship",
+      "page_name": "章节隔页",
+      "access": "none",
+      "default_mode": "none",
+      "primary_relation": null,
+      "relationship_family": null,
+      "focus_candidates": [],
+      "normal_contrast": "页面构图、字阶、留白与墨阶。",
+      "theme_focus_carriers": [],
+      "targets": [],
+      "sample_target_id": null,
+      "rationale": "该页不开放内容强调，但仍通过逐版式 identity group 呈现主题气质。"
+    },
+    "D6": {
+      "page_kind": "nonrelationship",
+      "page_name": "联络尾页",
+      "access": "conditional-semantic-focus",
+      "default_mode": "none",
+      "primary_relation": null,
+      "relationship_family": null,
+      "focus_candidates": [
+        "唯一主要联络渠道"
+      ],
+      "normal_contrast": "页面构图、字阶、留白与墨阶。",
+      "theme_focus_carriers": [
+        "label",
+        "symbol",
+        "outline"
+      ],
+      "targets": [
+        {
+          "target_id": "contact.primary",
+          "label": "唯一主要联络渠道",
+          "content_role": "已审核的页面焦点对象",
+          "reason_hint": "仅当该对象直接支撑本页 claim 时启用；不得为了配色而开启。",
+          "members": [
+            {
+              "selector": "text[x=\"1144\"][y=\"574\"]",
+              "role": "label",
+              "treatment": "focus.text",
+              "expected_count": 1
+            },
+            {
+              "selector": "text[x=\"1250\"][y=\"574\"]",
+              "role": "label",
+              "treatment": "focus.text",
+              "expected_count": 1
+            }
+          ]
+        }
+      ],
+      "sample_target_id": "contact.primary",
+      "rationale": "Catalog 只预览登记目标；standard 与 experimental 必须按 claim/evidence 选择或明确不强调。"
+    },
+    "D7": {
+      "page_kind": "nonrelationship",
+      "page_name": "全屏图文封面",
+      "access": "none",
+      "default_mode": "none",
+      "primary_relation": null,
+      "relationship_family": null,
+      "focus_candidates": [],
+      "normal_contrast": "页面构图、字阶、留白与墨阶。",
+      "theme_focus_carriers": [],
+      "targets": [],
+      "sample_target_id": null,
+      "rationale": "该页不开放内容强调，但仍通过逐版式 identity group 呈现主题气质。"
+    },
+    "D8": {
+      "page_kind": "nonrelationship",
+      "page_name": "大字封面",
+      "access": "none",
+      "default_mode": "none",
+      "primary_relation": null,
+      "relationship_family": null,
+      "focus_candidates": [],
+      "normal_contrast": "页面构图、字阶、留白与墨阶。",
+      "theme_focus_carriers": [],
+      "targets": [],
+      "sample_target_id": null,
+      "rationale": "该页不开放内容强调，但仍通过逐版式 identity group 呈现主题气质。"
+    },
+    "D9": {
+      "page_kind": "nonrelationship",
+      "page_name": "极简线框封面",
+      "access": "none",
+      "default_mode": "none",
+      "primary_relation": null,
+      "relationship_family": null,
+      "focus_candidates": [],
+      "normal_contrast": "页面构图、字阶、留白与墨阶。",
+      "theme_focus_carriers": [],
+      "targets": [],
+      "sample_target_id": null,
+      "rationale": "该页不开放内容强调，但仍通过逐版式 identity group 呈现主题气质。"
+    },
+    "M1": {
+      "page_kind": "nonrelationship",
+      "page_name": "粒子主角",
+      "access": "none",
+      "default_mode": "none",
+      "primary_relation": null,
+      "relationship_family": null,
+      "focus_candidates": [],
+      "normal_contrast": "页面构图、字阶、留白与墨阶。",
+      "theme_focus_carriers": [],
+      "targets": [],
+      "sample_target_id": null,
+      "rationale": "该页不开放内容强调，但仍通过逐版式 identity group 呈现主题气质。"
+    },
+    "M2": {
+      "page_kind": "nonrelationship",
+      "page_name": "秩序环过渡页",
+      "access": "none",
+      "default_mode": "none",
+      "primary_relation": null,
+      "relationship_family": null,
+      "focus_candidates": [],
+      "normal_contrast": "页面构图、字阶、留白与墨阶。",
+      "theme_focus_carriers": [],
+      "targets": [],
+      "sample_target_id": null,
+      "rationale": "该页不开放内容强调，但仍通过逐版式 identity group 呈现主题气质。"
     }
-  },
-  "sample_focus_profiles": [
-    "copy-only",
-    "content-only",
-    "copy+content",
-    "none"
-  ],
-  "sample_fill_policy": "只有合同显式登记 paint=fill 的小面积状态符号可改变填色；页面背景、卡片背景与大面积几何保持中性。"
+  }
 }

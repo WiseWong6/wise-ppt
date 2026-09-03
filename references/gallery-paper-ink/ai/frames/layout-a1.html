@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html data-theme-id="paper-ink" lang="zh-CN" data-runtime="wise-ppt-specimen" data-typography-mode="all-sans" data-page-id="gallery-ai-a1" data-page-role="prove" data-theme="paper-ink" data-layout="paper-ink.evidence.specimen-card" data-layout-source="gallery" data-sample-focus-profile="content-only" data-sample-focus-members='[{"selector":"#wrong","role":"value"},{"selector":"#a1-ring","role":"outline"}]' data-sample-focus-ref="sample.a1.a1-focus">
+<html data-theme-id="paper-ink" lang="zh-CN" data-runtime="wise-ppt-specimen" data-typography-mode="all-sans" data-page-id="gallery-ai-a1" data-page-role="prove" data-theme="paper-ink" data-layout="paper-ink.evidence.specimen-card" data-layout-source="gallery" data-emphasis-targets='[{"target_id":"focus.main-evidence","members":[{"selector":"#a1-focus-copy","role":"label","treatment":"focus.color","expected_count":1}]}]' data-catalog-legacy-emphasis-profile="content-only" data-catalog-legacy-emphasis-members='[{"selector":"#wrong","role":"value"},{"selector":"#a1-ring","role":"outline"}]' data-catalog-legacy-emphasis-foreground-members='[]' data-catalog-legacy-emphasis-ref="sample.a1.a1-focus" data-vnext-semantic-key-map='[{"key":"evidence.text.001","tag":"span","text":"AI ASSISTANT · CONVERSATION NO.017","occurrence":0}]'>
 <head>
 <meta charset="UTF-8">
 <title>layout-a1 · 标本卡 · Agent 幻觉对话</title>
@@ -127,7 +127,7 @@
     <g id="anno"></g>
   </svg>
 
-  <div class="caption">语文满分 150，扣 17 分应得 133 分。143 暴露了模型“解释正确、计算错误”的幻觉。</div>
+  <div class="caption">语文满分 150，扣 17 分应得 133 分。143 暴露了模型“<span id="a1-focus-copy" data-emphasis-candidate="true">解释正确、计算错误</span>”的幻觉。</div>
 </div>
 
 <script src="../../../../themes/packages/paper-ink/assets/particles.js"></script>
@@ -161,9 +161,10 @@
       stroke:FUNCTIONAL, 'stroke-width':1, opacity:.45, transform:'rotate(6 '+cx+' '+cy+')'}, g);
     el('path', {d:'M '+(cx+6)+' '+(cy+36)+' C '+(cx+10)+' '+(cy+150)+' '+(nx-30)+' '+(ny-64)+' '+nx+' '+ny,
       fill:'none', stroke:FUNCTIONAL, 'stroke-width':1.4, 'stroke-linecap':'round', 'marker-end':'url(#a1-note-arrow)'}, g);
-    /* 批注节点会在字体就绪或 iframe 恢复可见时重建；重建后立即重新投影主题焦点，
-       避免 ResizeObserver 与主题 runtime 的先后顺序造成橙蓝结果不一致。 */
+    /* 批注节点会在字体就绪或 iframe 恢复可见时重建；重建后立即重新投影主题身份，
+       并让三套主题共用的强调 runtime 重新绑定动态生成的圈线。 */
     if (window.WisePPTCatalogSurface) window.WisePPTCatalogSurface.apply();
+    if (window.WisePPTStageFit) window.WisePPTStageFit.bindSpecimenEmphasis(document.documentElement);
   }
   drawAnnotation();
   if (document.fonts && document.fonts.ready) document.fonts.ready.then(drawAnnotation);

@@ -1,8 +1,8 @@
 <!DOCTYPE html>
-<html data-theme-id="hermes-orange" lang="zh-CN" data-runtime="wise-ppt-specimen" data-typography-mode="all-sans" data-page-id="gallery-ai-c3" data-page-role="orient" data-theme="paper-ink" data-layout="paper-ink.data.profile-card-array" data-layout-source="gallery" data-sample-focus-profile="copy-only" data-sample-focus-members='[{"selector":"#focus-caption","role":"label"}]' data-sample-focus-ref="sample.c3.c3-focus" data-surface-source="catalog-theme-recipes-v1" data-xp-recipe-id="hermes-orange:c3" data-xp-surface-profile="data-evidence-board" data-xp-recipe-status="recipe-ready" data-xp-frame-kind="recipe-generated">
+<html data-t1-illustration-code="c3" data-theme-id="hermes-orange" lang="zh-CN" data-runtime="wise-ppt-specimen" data-typography-mode="all-sans" data-page-id="gallery-ai-c3" data-page-role="orient" data-theme="paper-ink" data-layout="paper-ink.data.profile-card-array" data-layout-source="experimental-redraw" data-emphasis-targets="[{&quot;target_id&quot;:&quot;focus.key-item&quot;,&quot;label&quot;:&quot;AI 阅读系统案例与底部结论&quot;,&quot;content_role&quot;:&quot;第一张案例卡与底部文案&quot;,&quot;reason_hint&quot;:&quot;给 READER-R1 · 1.28 B、AI 阅读系统和底部文案上色；字体粗细保持原设计。&quot;,&quot;members&quot;:[{&quot;selector&quot;:&quot;[data-vnext-text-key=\&quot;profiles.text.001\&quot;]&quot;,&quot;role&quot;:&quot;value&quot;,&quot;treatment&quot;:&quot;focus.color&quot;,&quot;expected_count&quot;:1},{&quot;selector&quot;:&quot;#c3-focus-title&quot;,&quot;role&quot;:&quot;value&quot;,&quot;treatment&quot;:&quot;focus.color&quot;,&quot;expected_count&quot;:1},{&quot;selector&quot;:&quot;#focus-caption&quot;,&quot;role&quot;:&quot;label&quot;,&quot;treatment&quot;:&quot;focus.color&quot;,&quot;expected_count&quot;:1}]}]" data-vnext-semantic-key-map="[{&quot;key&quot;:&quot;profiles.text.001&quot;,&quot;tag&quot;:&quot;text&quot;,&quot;text&quot;:&quot;READER-R1 · 1.28 B&quot;,&quot;occurrence&quot;:0}]" data-catalog-legacy-emphasis-profile="copy-only" data-catalog-legacy-emphasis-members="[{&quot;selector&quot;:&quot;#focus-caption&quot;,&quot;role&quot;:&quot;label&quot;}]" data-catalog-legacy-emphasis-foreground-members="[]" data-catalog-legacy-emphasis-ref="sample.c3.c3-focus" data-wise-catalog-fonts="true" data-surface-source="catalog-theme-recipes-v2" data-xp-recipe-id="hermes-orange:c3" data-xp-surface-profile="data-evidence-board" data-xp-recipe-status="recipe-ready" data-xp-frame-kind="custom-redraw">
 <head>
 <meta charset="UTF-8">
-<title>layout-c3 · 顶图卡列阵 · AI 案例</title>
+<title>T1 插画重绘 · layout-c3 · 顶图卡列阵 · AI 案例</title>
 <script src="../../../../../runtime/stage-fit.js"></script>
 <link rel="stylesheet" href="../../../../../themes/engine/assets/design-tokens.css">
 <link rel="stylesheet" href="../../../../../themes/packages/paper-ink/theme.css">
@@ -22,11 +22,12 @@
     z-index: 5;
   }
 </style>
-<link rel="stylesheet" href="../../catalog-surface.css" data-catalog-theme-surface="catalog-theme-recipes-v1">
+<link rel="stylesheet" href="../../t1-illustration.css" data-t1-illustration-grammar="t1-v4-main-fonts">
+<link rel="stylesheet" href="../../catalog-surface.css" data-catalog-theme-surface="catalog-theme-recipes-v2">
 <link rel="stylesheet" href="../../title-furniture.css" data-catalog-title-furniture="black-first-theme-second-v1">
 </head>
 <body class="slide">
-<div class="stage" data-block-id="gallery-primary" data-renderer-kind="svg" data-component-source="native" data-component-id="native.wise-ppt.data.profile-card-array.profiles" data-content-ref="example.c3" data-catalog-source-marker="page-recipe">
+<div class="stage t1-illustration-page" data-t1-code="c3" data-baseline-layout-id="paper-ink.data.profile-card-array" data-block-id="gallery-primary" data-renderer-kind="svg" data-component-source="native" data-component-id="native.wise-ppt.data.profile-card-array.profiles" data-content-ref="example.c3" data-catalog-source-marker="page-recipe">
   <div class="doc tl"><span class="doc-kicker">PPT 标题</span><span class="doc-title">页面标题</span></div>
   <div class="folio">页码 / 总页数 — BY @歪斯Wise</div>
 
@@ -39,7 +40,7 @@
     <g id="draw"></g>
   </svg>
 
-  <div class="caption"><span id="focus-caption">阅读、Skills 与知识库</span>三个案例，在规模、延迟和召回精度上验证不同 AI 能力。</div>
+  <div class="caption"><span id="focus-caption" data-emphasis-candidate="true">阅读、Skills 与知识库</span>三个案例，在规模、延迟和召回精度上验证不同 AI 能力。</div>
 </div>
 
 <script src="../../../../../themes/packages/paper-ink/assets/particles.js"></script>
@@ -59,7 +60,7 @@ function txt(x, y, str, attrs) {
   var t = el('text', Object.assign({x:x, y:y}, attrs||{}));
   t.textContent = str; return t;
 }
-var MONO = 'var(--mono)', SANS = 'var(--sans)';
+var MONO = 'var(--mono)', SANS = 'var(--sans)', FOCUS = getComputedStyle(document.documentElement).getPropertyValue('--wp-color-focus').trim();
 
 G = el('g', {transform:'translate(0 -33.7)'});
 
@@ -79,8 +80,10 @@ cardX.forEach(function(px){
 function cardText(px, tag, side, name, rows, foot) {
   txt(px+36, CY+308, tag, {'font-family':MONO, 'font-size':'var(--type-meta)', 'letter-spacing':2, fill:INK45});
   txt(px+CW-36, CY+308, side, {'font-family':MONO, 'font-size':'var(--type-meta)', 'letter-spacing':2, 'text-anchor':'end', fill:INK45});
-  txt(px+36, CY+348, name, {'font-family':SANS, 'font-weight':300, 'font-size':'var(--type-subheading)', fill:INK});
-  el('line', {x1:px+36, y1:CY+368, x2:px+CW-36, y2:CY+368, stroke:INK, 'stroke-width':.8, opacity:.5});
+  var nameAttrs = {'font-family':SANS, 'font-weight':700, 'font-size':'var(--type-subheading)', fill:INK};
+  if (tag === 'CASE 01') nameAttrs.id = 'c3-focus-title';
+  txt(px+36, CY+348, name, nameAttrs);
+  el('line', {'data-title-rule':1, x1:px+36, y1:CY+368, x2:px+CW-36, y2:CY+368, stroke:FOCUS, 'stroke-width':2, opacity:1});
   rows.forEach(function(r, i){
     var y = CY + 404 + i * 42;
     el('circle', {cx:px+44, cy:y-6, r:3.2, fill:'none', stroke:INK, 'stroke-width':.9, opacity:.8});
@@ -194,8 +197,10 @@ cardText(1280, 'CASE 03', 'KNOWLEDGE', 'AI 名人知识库', [
 
 stageFit();
 </script>
-<script type="application/json" id="xp-surface-recipe">{"theme":"hermes-orange","color_name":"orange","layout_code":"c3","title":"layout-c3 · 顶图卡列阵 · AI 案例","layout":"paper-ink.data.profile-card-array","page_role":"orient","canvas":{"token":"paper","value":"#f2efe9","reason":"常规内容页在纸面上建立层级。"},"surface_profile":"data-evidence-board","surfaces":[{"role":"base-layout","material":"paper-plane","fill":"#f2efe9","stack":0},{"role":"profile-card","material":"top-white","fill":"#ffffff","stack":2,"shadow":"none"},{"role":"focus-marker","material":"accent","fill":"#d95e00","stack":3}],"accent":{"value":"#d95e00","semantic_channel":"当前章节或当前目录项","furniture":"左上第一行 doc-kicker 固定墨黑，第二行 doc-title 使用当前主题色；folio 继续按该页画布与原配方处理。","neutral_exceptions":["普通英文标签","轴名","层名","结构编号","MODEL","非当前数据"],"furniture_mode":"black-first-theme-second","folio_mode":"accent"},"border_policy":"主体 1px 墨线；唯一焦点可用 2px 橙线，所有容器方角。","shadow_policy":"默认无影；仅唯一被举起的主证据允许一次 10px 零模糊橙色硬影。","noise_policy":"由主题统一提供唯一一层约 6% 黑色 fractal-noise；页面不得自带 noise 节点；浅色页 multiply，墨面可 overlay。","reference_evidence":{"file":"ai_studio_code (7).html","cards":["card-4","card-7","card-9"],"rule":"数据基线和多数单元保持墨色，白面只用于需要被单独读取的证据块。"},"acceptance":["强调色只落一个语义通道；同一序列可重复，但不得扩散到结构元数据。","纯白只用于 top-white，不能替代默认纸面。","缩略图必须从该主题独立 frame 的实际渲染重建。"],"status":"recipe-ready","surface_bindings":[{"selector":"#draw > g > rect[fill=\"var(--paper-panel)\"]","expected_count":3,"role":"profile-card","material":"top-white","fill":"#ffffff","stack":2,"shadow":"none"}],"surface_binding_reason":"真实浏览器 DOM 审计后锁定的稳定 selector；expected_count 是逐页门禁。"}</script>
-<script src="../../catalog-surface.js" data-catalog-theme-surface="catalog-theme-recipes-v1"></script>
-<script src="../../catalog-typography.js" data-catalog-typography="accent-english-title-match-v1"></script>
+<script src="../../t1-illustration.js" data-t1-illustration-runtime="t1-v3-existing-materials"></script>
+<script type="application/json" id="xp-surface-recipe">{"theme":"hermes-orange","color_name":"orange","layout_code":"c3","title":"layout-c3 · 顶图卡列阵 · AI 案例","layout":"paper-ink.data.profile-card-array","page_role":"orient","canvas":{"token":"paper","value":"#f2efe9","reason":"常规内容页在纸面上建立层级。"},"surface_profile":"data-evidence-board","surfaces":[{"role":"base-layout","material":"paper-plane","fill":"#f2efe9","stack":0},{"role":"profile-card","material":"top-white","fill":"#ffffff","stack":2,"shadow":"none"},{"role":"focus-marker","material":"accent","fill":"#d95e00","stack":3}],"accent":{"value":"#d95e00","semantic_channel":"当前章节或当前目录项","furniture":"左上第一行 doc-kicker 固定墨黑，第二行 doc-title 使用当前主题色；folio 跟随元信息通道：墨色 45%（同英文章节标签），不使用主题色。","neutral_exceptions":["普通英文标签","轴名","层名","结构编号","MODEL","非当前数据"],"furniture_mode":"black-first-theme-second","folio_mode":"metadata-neutral"},"border_policy":"主体 1px 墨线；唯一焦点可用 2px 橙线，所有容器方角。","shadow_policy":"仅唯一被举起的主证据允许一次 10px 零模糊硬影；非强调态固定墨黑，页面语义焦点开启时使用当前主题色。","noise_policy":"由主题统一提供唯一一层约 6% 黑色 fractal-noise；页面不得自带 noise 节点；浅色页 multiply，墨面可 overlay。","reference_evidence":{"file":"ai_studio_code (7).html","cards":["card-4","card-7","card-9"],"rule":"数据基线和多数单元保持墨色，白面只用于需要被单独读取的证据块。"},"acceptance":["强调色只落一个语义通道；同一序列可重复，但不得扩散到结构元数据。","纯白只用于 top-white，不能替代默认纸面。","缩略图必须从该主题独立 frame 的实际渲染重建。"],"status":"recipe-ready","surface_bindings":[],"surface_binding_reason":"T1 v4 只在用户逐页确认的现有节点上重排材质与强调；字体、页码、原生 icon 和全局阴影合同继续继承 main。","theme_identity":[{"group_id":"identity.primary-label","label":"主体短标签","members":[{"selector":"[data-vnext-text-key=\"profiles.text.001\"]","treatment":"identity.text","expected_count":1}]}],"emphasis_targets":[{"target_id":"focus.key-item","label":"AI 阅读系统案例与底部结论","content_role":"第一张案例卡与底部文案","reason_hint":"给 READER-R1 · 1.28 B、AI 阅读系统和底部文案上色；字体粗细保持原设计。","members":[{"selector":"[data-vnext-text-key=\"profiles.text.001\"]","role":"value","treatment":"focus.color","expected_count":1},{"selector":"#c3-focus-title","role":"value","treatment":"focus.color","expected_count":1},{"selector":"#focus-caption","role":"label","treatment":"focus.color","expected_count":1}]}],"sample_target_id":"focus.key-item"}</script>
+<script src="../../catalog-surface.js" data-catalog-theme-surface="catalog-theme-recipes-v2"></script>
+<script src="../../catalog-typography.js" data-catalog-typography="brand-latin-numeric-oswald-v1"></script>
+<script data-xp-custom-page-ready="true">(function(){var r=document.documentElement,s=document.querySelector(".stage");function ready(){if(r.dataset.catalogSurfaceReady!=="true")return;r.dataset.xpRecipeReady="custom";r.dataset.xpRecipeStatus="recipe-ready";r.dataset.xpSurfaceProfile="data-evidence-board";r.dataset.xpCanvas="paper";r.dataset.xpTitleFurniture="black-first-theme-second";if(s){s.dataset.surfaceRebuild="custom-page-v4";s.dataset.surfaceFocusCount=String(document.querySelectorAll("[data-content-ref][data-emphasis-role]").length);}}var o=new MutationObserver(ready);o.observe(r,{attributes:true,attributeFilter:["data-catalog-surface-ready"]});ready();document.addEventListener("wise-ppt:semantic-keys-ready",function(){requestAnimationFrame(ready);});})();</script>
 </body>
 </html>

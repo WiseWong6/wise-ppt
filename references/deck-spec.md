@@ -58,7 +58,7 @@ standard 顶层不接受其他字段。
 - `title`：整副标题；
 - `thesis`：一句可被反对的中心判断；
 - `input_type`：`pdf`、`url`、`multi-doc`、`existing-deck`、`oral`、`short-text` 之一；
-- `theme`：整副唯一主题权威。固定主题使用 `{ "kind": "registered", "theme_id": "paper-ink|hermes-orange|klein-blue" }`；素材主题使用 `{ "kind": "inline", "definition": { ...完整 wise-ppt-theme@3... } }`。两种形态互斥，不能同时登记 ID 和内联定义。具体字段、取证方法与预览命令见 [themes.md](themes.md)。
+- `theme`：整副唯一主题权威。固定主题使用 `{ "kind": "registered", "theme_id": "paper-ink|hermes-orange|klein-blue" }`；素材主题或换色主题使用 `{ "kind": "inline", "definition": { ...完整 wise-ppt-theme@5... } }`。两种形态互斥，不能同时登记 ID 和内联定义。广义核心色或明确 HEX 先通过 `themes recolor` 生成完整对象；具体字段、取证方法与命令见 [themes.md](themes.md)。
 
 旧 `theme_preset`、`theme_family` 和旧主题 ID 不接受，也不建立生产 alias。
 
@@ -146,18 +146,18 @@ source-backed 页面必须有非空 `source_refs`，且 `source_evidence` 的 ke
 
 ## 逐页强调
 
-强调不是全局装饰开关。每页根据内容决定是否填写 `emphasis.target` 与 `reason`，主题不能替页面自动开启强调。
+强调不是全局装饰开关。每页根据内容决定是否填写 `emphasis.target` 与 `reason`：按 [颜色语义决策顺序](color-semantics.md) 先从 claim 找唯一决定性证据；找不到就不填写，主题不能替页面自动开启强调。
 
 先查询单个 `layout_id`。只有结果中的 `emphasis.targets` 非空时，该页才可声明：
 
 ```json
 "emphasis": {
-  "target": "focus.primary",
+  "target": "focus.main-evidence",
   "reason": "这一步是整页结论，观众需要先看到它"
 }
 ```
 
-`target` 必须原样取查询结果；`reason` 必须说明内容原因，不能写“更好看”。每页最多一个目标。编译器只强调该骨架已审核的对象，不接受选择器、颜色或样式。声明后，最终 `index.html` 和 `deck.pdf` 都呈现强调；normal/accent 只保留给机器做双态核对。
+`target` 必须原样取查询结果；同一骨架可以公开多个语义候选，但每页最多选择一个，也可以不填。只有候选对象比其余内容更直接支撑 claim 时才选择；辅助介绍、上下文地图、全部指标和固定家具不能充当重心。`reason` 必须说明内容原因，不能写“更好看”。查询只公开 target_id、标签、内容职责、理由提示和成员角色；选择器、成员数量与视觉动作由编译器私有锁定。声明后，最终 `index.html` 和 `deck.pdf` 都呈现强调。
 
 ## payload
 

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html data-theme-id="paper-ink" lang="zh-CN" data-runtime="wise-ppt-specimen" data-typography-mode="all-sans" data-page-id="gallery-ai-k3" data-page-role="synthesize" data-theme="paper-ink" data-layout="paper-ink.matrix.problem-solution-composite" data-layout-source="gallery" data-sample-focus-profile="content-only" data-sample-focus-members='[{"selector":"#k3-num-0","role":"value"},{"selector":"#k3-num-1","role":"value"},{"selector":"#k3-num-2","role":"value"},{"selector":"#k3-num-3","role":"value"},{"selector":"#k3-label-0","role":"label"},{"selector":"#k3-label-1","role":"label"},{"selector":"#k3-label-2","role":"label"},{"selector":"#k3-label-3","role":"label"}]' data-sample-focus-ref="sample.k3.k3-focus">
+<html data-theme-id="paper-ink" lang="zh-CN" data-runtime="wise-ppt-specimen" data-typography-mode="all-sans" data-page-id="gallery-ai-k3" data-page-role="synthesize" data-theme="paper-ink" data-layout="paper-ink.matrix.problem-solution-composite" data-layout-source="gallery" data-emphasis-targets='[{"target_id":"focus.recall-rate","members":[{"selector":"#k3-num-1","role":"value","treatment":"focus.color","expected_count":1}]}]' data-catalog-legacy-emphasis-profile="content-only" data-catalog-legacy-emphasis-members='[{"selector":"#k3-solution-rule","expected_count":1,"role":"outline"},{"selector":"#sample-focus","expected_count":1,"role":"value"}]' data-catalog-legacy-emphasis-foreground-members='[]' data-catalog-legacy-emphasis-ref="sample.k3.colored-solution" data-vnext-semantic-key-map='[{"key":"problem-solution.text.001","tag":"text","text":"WHY IT HURTS","occurrence":0}]'>
 <head>
 <meta charset="UTF-8">
 <title>layout-k3 · 左痛右解复合页（AI 主题）</title>
@@ -139,10 +139,13 @@ txt(250, 846, '检索、工具、生成链路黑盒，', {'font-family':SANS, 'f
 txt(250, 872, '坏例定位平均耗时 2.6 天。', {'font-family':SANS, 'font-weight':300, 'font-size':'var(--type-label)', fill:INK70});
 });
 
+/* 彩色主题把解法侧作为白色前景面；纸墨基线仍与纸面融为一体。 */
+el('rect', {id:'k3-solution-surface', x:690, y:210, width:1090, height:690, fill:'none', stroke:'none'});
+
 var solutionRegion = svgGroup({'data-arrow-region':'solution'}, function(){
 /* ============ 右栏：解法三层 ============ */
 txt(720, 246, 'THE FIX · AGENT PIPELINE', {'font-family':MONO, 'font-size':'var(--type-label)', 'letter-spacing':3, fill:INK45});
-el('line', {x1:720, y1:262, x2:820, y2:262, stroke:INK, 'stroke-width':.8, opacity:.5});
+el('line', {id:'k3-solution-rule', x1:720, y1:262, x2:820, y2:262, stroke:INK, 'stroke-width':.8, opacity:.5});
 txt(720, 300, 'Agent 基座平台', {id:'sample-focus', 'font-family':SANS, 'font-weight':300, 'font-size':'var(--type-subheading)', fill:INK});
 
 /* ---- 第一层：六步流水线（每步图元异形） ---- */

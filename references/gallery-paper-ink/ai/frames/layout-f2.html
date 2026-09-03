@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html data-theme-id="paper-ink" lang="zh-CN" data-runtime="wise-ppt-specimen" data-typography-mode="all-sans" data-page-id="gallery-ai-f2" data-page-role="explain" data-theme="paper-ink" data-layout="paper-ink.decomposition.structure-spec-split" data-layout-source="gallery" data-sample-focus-profile="content-only" data-sample-focus-members='[{"selector":"#sample-focus","role":"status"},{"selector":"#f2-focus-frame","role":"outline"}]' data-sample-focus-ref="sample.f2.f2-focus">
+<html data-theme-id="paper-ink" lang="zh-CN" data-runtime="wise-ppt-specimen" data-typography-mode="all-sans" data-page-id="gallery-ai-f2" data-page-role="explain" data-theme="paper-ink" data-layout="paper-ink.decomposition.structure-spec-split" data-layout-source="gallery" data-emphasis-targets='[{"target_id":"focus.key-layer","members":[{"selector":"#sample-focus","role":"status","treatment":"focus.text","expected_count":1},{"selector":"#f2-focus-frame","role":"outline","treatment":"focus.outline-depth","expected_count":1}]}]' data-catalog-legacy-emphasis-profile="content-only" data-catalog-legacy-emphasis-members='[{"selector":"#f2-spec-card","expected_count":1,"role":"outline"},{"selector":"#f2-spec-title","expected_count":1,"role":"value"}]' data-catalog-legacy-emphasis-foreground-members='[]' data-catalog-legacy-emphasis-ref="sample.f2.colored-spec-card" data-vnext-semantic-key-map='[{"key":"structure.text.001","tag":"text","text":"TASK RUN","occurrence":0}]'>
 <head>
 <meta charset="UTF-8">
 <title>layout-f2 · 环节树 + 规格单 · Agent 框架拆解</title>
@@ -100,9 +100,9 @@ txt(SX+SW-18, OY+26, 'OUTPUT', {'font-family':MONO, 'font-size':'var(--type-meta
 
 /* ============ 右区：字段规格单 ============ */
 var CX = 1130, CW = 620, CY0 = 250, CH = 620;
-el('rect', {x:CX, y:CY0, width:CW, height:CH, fill:'none', stroke:INK80, 'stroke-width':1.2});
+el('rect', {id:'f2-spec-card', x:CX, y:CY0, width:CW, height:CH, fill:'none', stroke:INK80, 'stroke-width':1.2});
 el('rect', {x:CX+5, y:CY0+5, width:CW-10, height:CH-10, fill:'none', stroke:INK, 'stroke-width':.6, opacity:.4});
-txt(CX+30, CY0+48, '每个环节的核心要素', {'font-family':SANS, 'font-weight':300, 'font-size':'var(--type-body)', fill:INK});
+txt(CX+30, CY0+48, '每个环节的核心要素', {id:'f2-spec-title', 'font-family':SANS, 'font-weight':300, 'font-size':'var(--type-body)', fill:INK});
 el('line', {x1:CX+30, y1:CY0+66, x2:CX+CW-30, y2:CY0+66, stroke:INK, 'stroke-width':.8, opacity:.5});
 
 var fields = [

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html data-theme-id="paper-ink" lang="zh-CN" data-runtime="wise-ppt-specimen" data-typography-mode="all-sans" data-page-id="gallery-ai-c7" data-page-role="prove" data-theme="paper-ink" data-layout="paper-ink.data.ranked-specimen-bars" data-layout-source="gallery" data-sample-focus-profile="content-only" data-sample-focus-members='[{"selector":"#c7-focus-name","role":"label"},{"selector":"#c7-focus-value","role":"value"},{"selector":"#c7-focus-bar","role":"outline"},{"selector":"#c7-focus-hatch","role":"texture"}]' data-sample-focus-ref="sample.c7.c7-focus">
+<html data-theme-id="paper-ink" lang="zh-CN" data-runtime="wise-ppt-specimen" data-typography-mode="all-sans" data-page-id="gallery-ai-c7" data-page-role="prove" data-theme="paper-ink" data-layout="paper-ink.data.ranked-specimen-bars" data-layout-source="gallery" data-emphasis-targets='[{"target_id":"focus.decisive-difference","members":[{"selector":"#c7-focus-name","role":"label","treatment":"focus.text","expected_count":1},{"selector":"#c7-focus-value","role":"value","treatment":"focus.text","expected_count":1},{"selector":"#c7-focus-bar","role":"outline","treatment":"focus.outline-depth","expected_count":1},{"selector":"#c7-focus-hatch","role":"texture","treatment":"focus.texture","expected_count":1}]}]' data-catalog-legacy-emphasis-profile="content-only" data-catalog-legacy-emphasis-members='[{"selector":"#c7-focus-name","role":"label"},{"selector":"#c7-focus-value","role":"value"},{"selector":"#c7-focus-bar","role":"outline"},{"selector":"#c7-focus-hatch","role":"texture"}]' data-catalog-legacy-emphasis-foreground-members='[]' data-catalog-legacy-emphasis-ref="sample.c7.c7-focus" data-vnext-semantic-key-map='[{"key":"ranking.text.032","tag":"text","text":"REASONING","occurrence":0},{"key":"ranking.text.035","tag":"text","text":"CODING","occurrence":0},{"key":"ranking.text.038","tag":"text","text":"MATH","occurrence":0}]'>
 <head>
 <meta charset="UTF-8">
 <title>layout-c7 · 样本排行柱图 · 大模型 Benchmark 排行</title>
@@ -140,7 +140,7 @@ rows.slice(0,3).forEach(function(r, i){
   el('rect', {x:fx, y:FY, width:FW, height:FH, fill:'var(--paper-panel)', stroke:INK80, 'stroke-width':1.2});
   el('rect', {x:fx+5, y:FY+5, width:FW-10, height:FH-10, fill:'none', stroke:INK, 'stroke-width':.6, opacity:.3});
   /* 排名徽章 + 领域标签 */
-  txt(fx+14, FY+24, '0'+(i+1), {'font-family':MONO, 'font-size':'var(--type-meta)', 'letter-spacing':2, fill:INK});
+  txt(fx+14, FY+24, '0'+(i+1), {'data-number-kind':'plain', 'data-number-role':'structural', 'data-number-part':'label', 'data-text-kind':'number', 'font-family':MONO, 'font-size':'var(--type-meta)', 'letter-spacing':2, fill:INK});
   txt(fx+FW-14, FY+24, ['REASONING','CODING','MATH'][i] || 'MODEL', {'font-family':MONO, 'font-size':'var(--type-micro-secondary)', 'letter-spacing':1, 'text-anchor':'end', fill:INK45});
   drawAvatar(cx, FY+64, r.bot);
   txt(cx, FY+FH-19, 'SAMPLE · '+r.code, {'font-family':MONO, 'font-size':'var(--type-micro-secondary)', 'text-anchor':'middle', fill:INK45});

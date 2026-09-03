@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html data-theme-id="paper-ink" lang="zh-CN" data-runtime="wise-ppt-specimen" data-typography-mode="all-sans" data-page-id="gallery-ai-h2" data-page-role="explain" data-theme="paper-ink" data-layout="paper-ink.nested.zoom-frames" data-layout-source="gallery" data-sample-focus-profile="content-only" data-sample-focus-members='[{"selector":"#h2-focus-frame","role":"outline"},{"selector":"#h2-focus-hatch","role":"texture"},{"selector":"#h2-focus-code","role":"value"},{"selector":"#h2-focus-cn","role":"label"}]' data-sample-focus-ref="sample.h2.h2-focus">
+<html data-theme-id="paper-ink" lang="zh-CN" data-runtime="wise-ppt-specimen" data-typography-mode="all-sans" data-page-id="gallery-ai-h2" data-page-role="explain" data-theme="paper-ink" data-layout="paper-ink.nested.zoom-frames" data-layout-source="gallery" data-emphasis-targets='[{"target_id":"focus.outcome","members":[{"selector":"[data-vnext-text-key=\"zoom-levels.text.001\"]","role":"value","treatment":"focus.color","expected_count":1}]}]' data-catalog-legacy-emphasis-profile="content-only" data-catalog-legacy-emphasis-members='[{"selector":"#h2-focus-frame","expected_count":1,"role":"outline"},{"selector":"#h2-level-SESSION","expected_count":1,"role":"outline"},{"selector":"#h2-level-TASK","expected_count":1,"role":"outline"},{"selector":"#h2-level-OUTCOME","expected_count":1,"role":"outline"}]' data-catalog-legacy-emphasis-foreground-members='[]' data-catalog-legacy-emphasis-ref="sample.h2.colored-call" data-vnext-semantic-key-map='[{"key":"zoom-levels.text.001","tag":"text","text":"04 · OUTCOME","occurrence":0}]'>
 <head>
 <meta charset="UTF-8">
 <title>layout-h2 · 嵌套变焦框 · AI 观察粒度</title>
@@ -71,6 +71,10 @@ var levels = [
   {no:'04', en:'OUTCOME', cn:'业务结果', note:'（最终的产出影响）', half:266, dash:'3 6',  w:1.1, op:.5}
 ];
 
+/* 彩色主题把完整四层观察系统提升为白色前景面；纸墨保持开放纸面。 */
+el('rect', {id:'h2-system-surface', x:CX-levels[3].half, y:CY-levels[3].half,
+  width:levels[3].half*2, height:levels[3].half*2, fill:'none', stroke:'none'});
+
 /* 构造线不擦除：十字基准（超出最外框） */
 el('line', {x1:CX-320, y1:CY, x2:CX+320, y2:CY, stroke:INK, 'stroke-width':.5, opacity:.22, 'stroke-dasharray':'2 6'});
 el('line', {x1:CX, y1:CY-320, x2:CX, y2:CY+320, stroke:INK, 'stroke-width':.5, opacity:.22, 'stroke-dasharray':'2 6'});
@@ -90,7 +94,6 @@ levels.slice().reverse().forEach(function(L){
 /* 内核观察点：双圈 + 实心核 */
 el('circle', {cx:CX, cy:CY, r:3, fill:INK});
 el('circle', {cx:CX, cy:CY, r:8, fill:'none', stroke:INK, 'stroke-width':.8, opacity:.6});
-
 /* ---------- 右侧标签栏（外→内 = 上→下，肘形引线不交叉） ---------- */
 var rail = [
   {L:levels[3], ly:280},   /* OUTCOME 最外 → 最上 */
@@ -108,7 +111,7 @@ rail.forEach(function(r){
     stroke:INK, 'stroke-width':.7, opacity:.45, 'stroke-dasharray':'3 5'});
   el('circle', {cx:ex, cy:r.ly, r:2.4, fill:INK, opacity:.6});
   el('line', {x1:ex, y1:r.ly, x2:lx-10, y2:r.ly, stroke:INK, 'stroke-width':.7, opacity:.45});
-  txt(lx, r.ly-2,  L.no + ' · ' + L.en, {id:L.focus?'h2-focus-code':'', 'font-family':MONO, 'font-size':'var(--type-body-small)', 'letter-spacing':2, fill:INK});
+  txt(lx, r.ly-2,  L.no + ' · ' + L.en, {id:L.focus?'h2-focus-code':'', 'data-number-kind':'plain', 'data-number-role':'structural', 'data-number-part':'label', 'data-text-kind':'number', 'font-family':MONO, 'font-size':'var(--type-body-small)', 'letter-spacing':2, fill:INK});
   txt(lx, r.ly+32, L.cn, {id:L.focus?'h2-focus-cn':'', 'font-family':SANS, 'font-weight':300, 'font-size':'var(--type-body)', fill:INK});
   txt(lx, r.ly+60, L.note, {'font-family':SANS, 'font-weight':300, 'font-size':'var(--type-body-small)', fill:INK70});
 });

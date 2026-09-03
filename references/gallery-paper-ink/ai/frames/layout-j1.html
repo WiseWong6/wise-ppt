@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html data-theme-id="paper-ink" lang="zh-CN" data-runtime="wise-ppt-specimen" data-typography-mode="all-sans" data-page-id="gallery-ai-j1" data-page-role="explain" data-theme="paper-ink" data-layout="paper-ink.cycle.ring" data-layout-source="gallery" data-sample-focus-profile="copy-only" data-sample-focus-members='[{"selector":"#focus-caption","role":"label"}]' data-sample-focus-ref="sample.j1.j1-focus">
+<html data-theme-id="paper-ink" lang="zh-CN" data-runtime="wise-ppt-specimen" data-typography-mode="all-sans" data-page-id="gallery-ai-j1" data-page-role="explain" data-theme="paper-ink" data-layout="paper-ink.cycle.ring" data-layout-source="gallery" data-emphasis-targets='[{"target_id":"focus.definition-score","members":[{"selector":"#j1-focus-definition-score","role":"annotation","treatment":"focus.color","expected_count":1}]}]' data-catalog-legacy-emphasis-profile="content-only" data-catalog-legacy-emphasis-members='[{"selector":"#j1-focus-loop","expected_count":1,"role":"label"},{"selector":"#j1-focus-cn","expected_count":1,"role":"label"}]' data-catalog-legacy-emphasis-foreground-members='[]' data-catalog-legacy-emphasis-ref="sample.j1.colored-loop-core" data-vnext-semantic-key-map='[]'>
 <head>
 <meta charset="UTF-8">
 <title>layout-j1 · 循环圆环 · AI 评测治理闭环</title>
@@ -38,7 +38,7 @@
     <g id="draw"></g>
   </svg>
 
-  <div class="caption">评测治理从目标定义、调优和评分回到上线监控，<span id="focus-caption">失败样本持续进入下一轮</span>。</div>
+  <div class="caption">评测治理从目标<span id="j1-focus-definition-score" data-emphasis-candidate="true">定义、调优和评分</span>回到上线监控，<span id="focus-caption">失败样本持续进入下一轮</span>。</div>
 </div>
 
 <script src="../../../../themes/packages/paper-ink/assets/particles.js"></script>
@@ -63,6 +63,8 @@ G = el('g', {transform:'translate(0 -8.7)'});
 
 /* ---------- 圆心主环 ---------- */
 var CX = 960, CY = 515, R = 240;
+/* 彩色主题把整套循环系统提升为白色前景圆；纸墨保持开放纸面。 */
+el('circle', {id:'j1-system-surface', cx:CX, cy:CY, r:R, fill:'none', stroke:'none'});
 el('circle', {cx:CX, cy:CY, r:R, fill:'none', stroke:INK80, 'stroke-width':1.4});
 el('circle', {cx:CX, cy:CY, r:R-14, fill:'none', stroke:INK, 'stroke-width':.6, 'stroke-dasharray':'2 6', opacity:.3});
 
@@ -91,11 +93,13 @@ function polar(deg, r) {
   });
 });
 
+/* 圆心定位圈保持不可见；彩色主题只强调中心中英文，不强调边框。 */
+el('circle', {id:'j1-focus-core', cx:CX, cy:CY, r:72, fill:'none', stroke:'none'});
 /* 圆心十字 + mono 主题字 */
 el('line', {x1:CX-16, y1:CY, x2:CX+16, y2:CY, stroke:INK, 'stroke-width':.5, opacity:.3});
 el('line', {x1:CX, y1:CY-16, x2:CX, y2:CY+16, stroke:INK, 'stroke-width':.5, opacity:.3});
-txt(CX, CY-10, 'LOOP', {'font-family':MONO, 'font-size':'var(--type-body-small)', 'letter-spacing':6, 'text-anchor':'middle', fill:INK});
-txt(CX, CY+22, '评测治理闭环', {'font-family':SANS, 'font-weight':300, 'font-size':'var(--type-body-small)', 'text-anchor':'middle', fill:'var(--ink-55)'});
+txt(CX, CY-10, 'LOOP', {id:'j1-focus-loop', 'font-family':MONO, 'font-size':'var(--type-body-small)', 'letter-spacing':6, 'text-anchor':'middle', fill:INK});
+txt(CX, CY+22, '评测治理闭环', {id:'j1-focus-cn', 'font-family':SANS, 'font-weight':300, 'font-size':'var(--type-body-small)', 'text-anchor':'middle', fill:'var(--ink-55)'});
 
 /* ---------- 四角双线卡（虚线引线挂到环上 45° 双圈节点） ---------- */
 var steps = [
@@ -123,7 +127,7 @@ steps.forEach(function(s){
   el('rect', {x:x, y:y, width:W, height:H, fill:'var(--paper-panel)', stroke:INK80, 'stroke-width':1.2});
   el('rect', {x:x+5, y:y+5, width:W-10, height:H-10, fill:'none', stroke:INK, 'stroke-width':.6, opacity:.35});
   /* 编号角标 + 短横 */
-  txt(x+30, y+46, s.no, {'font-family':MONO, 'font-size':'var(--type-body)', fill:INK});
+  txt(x+30, y+46, s.no, {'data-number-kind':'plain', 'data-number-role':'sequence', 'data-number-part':'label', 'data-text-kind':'number', 'font-family':MONO, 'font-size':'var(--type-body)', fill:'var(--wp-color-functional)'});
   el('line', {x1:x+30, y1:y+58, x2:x+62, y2:y+58, stroke:INK, 'stroke-width':1});
   /* EN 角标 */
   txt(x+W-30, y+44, s.en, {'font-family':MONO, 'font-size':'var(--type-meta)', 'letter-spacing':2, 'text-anchor':'end', fill:INK45});

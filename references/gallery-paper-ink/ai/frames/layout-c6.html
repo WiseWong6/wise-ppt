@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html data-theme-id="paper-ink" lang="zh-CN" data-runtime="wise-ppt-specimen" data-typography-mode="all-sans" data-page-id="gallery-ai-c6" data-page-role="prove" data-theme="paper-ink" data-layout="paper-ink.data.kpi-band" data-layout-source="gallery" data-sample-focus-profile="content-only" data-sample-focus-members='[{"selector":"#sample-focus","role":"value"},{"selector":"#c6-focus-unit","role":"value"},{"selector":"#c6-focus-index","role":"label"},{"selector":"#c6-focus-label","role":"label"},{"selector":"#c6-focus-en","role":"label"}]' data-sample-focus-ref="sample.c6.c6-focus">
+<html data-theme-id="paper-ink" lang="zh-CN" data-runtime="wise-ppt-specimen" data-typography-mode="all-sans" data-page-id="gallery-ai-c6" data-page-role="prove" data-theme="paper-ink" data-layout="paper-ink.data.kpi-band" data-layout-source="gallery" data-emphasis-targets='[{"target_id":"focus.main-evidence","members":[{"selector":"#sample-focus","role":"value","treatment":"focus.text","expected_count":1},{"selector":"#c6-focus-unit","role":"value","treatment":"focus.text","expected_count":1},{"selector":"#c6-focus-index","role":"label","treatment":"focus.text","expected_count":1},{"selector":"#c6-focus-label","role":"label","treatment":"focus.text","expected_count":1},{"selector":"#c6-focus-en","role":"label","treatment":"focus.text","expected_count":1}]}]' data-catalog-legacy-emphasis-profile="content-only" data-catalog-legacy-emphasis-members='[{"selector":"#sample-focus","role":"value"},{"selector":"#c6-focus-unit","role":"value"},{"selector":"#c6-focus-index","role":"label"},{"selector":"#c6-focus-label","role":"label"},{"selector":"#c6-focus-en","role":"label"}]' data-catalog-legacy-emphasis-foreground-members='[]' data-catalog-legacy-emphasis-ref="sample.c6.c6-focus" data-vnext-semantic-key-map='[{"key":"kpis.text.003","tag":"text","text":"No.01","occurrence":0},{"key":"kpis.text.008","tag":"text","text":"No.02","occurrence":0},{"key":"kpis.text.013","tag":"text","text":"No.03","occurrence":0},{"key":"kpis.text.018","tag":"text","text":"No.04","occurrence":0}]'>
 <head>
 <meta charset="UTF-8">
 <title>layout-c6 · KPI 大数字横带 · AI 成效</title>
@@ -47,13 +47,13 @@ if (location.search.indexOf('accent') >= 0) document.documentElement.classList.a
 var ACCENT = document.documentElement.classList.contains('accent');
 var FOCUS = getComputedStyle(document.documentElement).getPropertyValue('--wp-color-focus').trim();
 var G = document.getElementById('draw');
-function el(tag, attrs) {
+function el(tag, attrs, parent) {
   var e = document.createElementNS(NS, tag);
   for (var k in attrs) e.setAttribute(k, attrs[k]);
-  G.appendChild(e); return e;
+  (parent || G).appendChild(e); return e;
 }
-function txt(x, y, str, attrs) {
-  var t = el('text', Object.assign({x:x, y:y}, attrs||{}));
+function txt(x, y, str, attrs, parent) {
+  var t = el('text', Object.assign({x:x, y:y}, attrs||{}), parent);
   t.textContent = str; return t;
 }
 var MONO = 'var(--mono)', SANS = 'var(--sans)';
@@ -65,12 +65,11 @@ txt(960, 316, '上线 18 个月 · AI 产品成效总账', {'font-family':SANS, 
 txt(960, 350, 'AI IMPACT · 2026 H1', {'font-family':MONO, 'font-size':'var(--type-meta)', 'letter-spacing':3, 'text-anchor':'middle', fill:INK45});
 
 /* ---------- 主角：通栏大数字横带（x120–1800，y380–640，4 格均分） ---------- */
-var CW = 64.8;   /* mono 108px 单字符宽 */
 var cells = [
-  {num:'1.28',  unit:'M',    uw:24, label:'日均调用量', en:'DAILY CALLS'},
-  {num:'94.2',  unit:'%',    uw:24, label:'任务完成率', en:'TASK SUCCESS', focus:true},
-  {num:'280',   unit:'ms',   uw:30, label:'平均延迟',   en:'AVG LATENCY'},
-  {num:'86,400',unit:'人',   uw:24, label:'覆盖用户数', en:'ACTIVE USERS'}
+  {num:'1.28',  unit:'M',  label:'日均调用量', en:'DAILY CALLS'},
+  {num:'94.2',  unit:'%',  label:'任务完成率', en:'TASK SUCCESS', focus:true},
+  {num:'280',   unit:'ms', label:'平均延迟',   en:'AVG LATENCY'},
+  {num:'86,400',unit:'人', label:'覆盖用户数', en:'ACTIVE USERS'}
 ];
 cells.forEach(function(C, i){
   var cx = 120 + 420*i + 210;
@@ -79,10 +78,12 @@ cells.forEach(function(C, i){
   /* 格编号 */
   txt(cx, 408, 'No.0' + (i+1), {id:sampleFocus?'c6-focus-index':'', 'font-family':MONO, 'font-size':'var(--type-micro-secondary)', 'letter-spacing':2, 'text-anchor':'middle', fill: INK45});
   /* 超大数字 + 降级单位 */
-  var w = C.num.length * CW, gap = 16;
-  var numEnd = cx + w/2 - (C.uw + gap)/2;
-  txt(numEnd, 532, C.num, {id:sampleFocus?'sample-focus':'c6-kpi-'+i, 'font-family':MONO, 'font-size':'var(--type-display)', 'text-anchor':'end', fill:INK});
-  txt(numEnd + gap, 532, C.unit, {id:sampleFocus?'c6-focus-unit':'', 'data-text-kind':'label', 'font-family':SANS, 'font-weight':300, 'font-size':'var(--type-subheading)', 'text-anchor':'start', fill:INK70});
+  /* 数值与单位属于同一个居中文本块；混合字号由 SVG 自己量宽，避免按字符数估宽造成偏移。 */
+  var metric = el('text', {x:cx, y:532, 'text-anchor':'middle'});
+  var number = el('tspan', {id:sampleFocus?'sample-focus':'c6-kpi-'+i, 'font-family':MONO, 'font-size':'var(--type-display)', fill:INK}, metric);
+  number.textContent = C.num;
+  var unit = el('tspan', {id:sampleFocus?'c6-focus-unit':'', dx:16, 'data-text-kind':'label', 'font-family':SANS, 'font-weight':300, 'font-size':'var(--type-subheading)', fill:INK70}, metric);
+  unit.textContent = C.unit;
   /* 中文标签 + mono EN */
   txt(cx, 600, C.label, {id:sampleFocus?'c6-focus-label':'', 'data-text-kind':'label', 'font-family':SANS, 'font-weight':300, 'font-size':'var(--type-subheading)', 'text-anchor':'middle', fill:INK});
   txt(cx, 632, C.en, {id:sampleFocus?'c6-focus-en':'', 'font-family':MONO, 'font-size':'var(--type-meta)', 'letter-spacing':2, 'text-anchor':'middle', fill: INK45});

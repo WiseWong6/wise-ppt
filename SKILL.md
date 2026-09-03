@@ -39,7 +39,7 @@ node <skill>/bin/wise-ppt.mjs doctor
 | 内容分页 | [references/pagination.md](references/pagination.md) | claim 与页数 |
 | 判断页型和关系 | [references/page-routing.md](references/page-routing.md) | `page_kind → page_role → relation_key` |
 | 查询骨架 | [references/layouts.md](references/layouts.md) | 选择完整骨架 |
-| 选择主题 | [references/themes.md](references/themes.md) | deck 级外观 |
+| 选择主题与主次 | [references/themes.md](references/themes.md)、[颜色语义](references/color-semantics.md) | deck 外观与逐页主次 |
 | 写 standard JSON | [references/deck-spec.md](references/deck-spec.md) | `deck-spec@9` 与版式账本 |
 | 检查交付 | [references/checklist.md](references/checklist.md) | 验证边界 |
 | 申请/执行实验 | [references/experimental.md](references/experimental.md) | 授权与隔离重绘 |
@@ -62,13 +62,13 @@ node <skill>/bin/wise-ppt.mjs doctor
 
 ## 4. 选择整副主题
 
-读取主题文件，固定一套 deck 级完整主题和字体模式；主题不改路由、骨架或页面内容。
+读取主题与颜色语义文件，固定 deck 级主题和字体模式；主题不改路由、骨架或内容。
 
-沿用旧 PDF、PPT/PPTX、图片或 Logo 时，从代表页和主视觉取证；记录锚点、三个英文关键词、纸面、页面、字体、线条、Icon、组件和 5–8 色。仅有 Logo 时不虚构复杂轴。生成 `wise-ppt-theme@3` 后 resolve、preview。仅接管显式语义、登记线宽、支持主题的 Icon、反白和图表，其余保留并告警。封面纸面与关系页强调色只按 `page_role/page_kind` 投影。逐版式特例仅登记于 `themes/engine/contracts/layout-theme-bindings.json`，必须精确命中且结构哈希不变；禁用 layout ID 专属主题选择器。选定后将对象写入 `deck.theme.definition`。预览不改成品、不生成 PDF。
+沿用旧材料从代表页取证；仅有 Logo 不虚构复杂轴。生成 `wise-ppt-theme@5` 后 resolve、preview，只接管显式语义。换色先查 `themes/core-colors.json`：广义色用 `themes recolor --core`，明确 HEX 用 `--hex`，RGB 只等值转写；不吸附，表外名称无色值就询问。直接使用命令输出的完整 `deck.theme`；纸墨单独选择，橙蓝为 registered，其余为白底 inline。封面、身份、强调和锁定规则均按主题与颜色语义文件执行；不在本文件复制算法。
 
 ## 5. 一次写完 spec 和 payload
 
-前四步确定后一次写完整 `deck-spec.json`，只填公开槽。强调从 `emphasis.targets` 选一个并写原因；不得新增未登记能力。
+前四步确定后一次写完整 `deck-spec.json`，只填公开槽。仅当某候选更直接支撑 claim 时，从 `emphasis.targets` 选一并写内容原因；否则不填。不得新增能力。
 
 ## 6. 构建与交付
 
@@ -94,7 +94,7 @@ node <skill>/bin/wise-ppt.mjs themes preview <已有 deck 绝对目录> --theme 
 
 ## 7. 授权后的隔离实验
 
-用户批准页范围后才读取实验合同。获批页可改结构；页序、角色、claim、relation、source、must、主题和字体仍锁定。恢复 standard 回原目录。
+批准页范围后读取实验与颜色语义合同，以 prepare 简报为自由边界。获批页可改结构，其余内容与主题锁定；恢复 standard 回原目录。
 
 ## 交付回报
 

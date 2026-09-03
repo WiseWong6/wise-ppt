@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html data-theme-id="paper-ink" lang="zh-CN" data-runtime="wise-ppt-specimen" data-typography-mode="all-sans" data-page-id="gallery-ai-a4" data-page-role="prove" data-theme="paper-ink" data-layout="paper-ink.evidence.strategy-evidence-wall" data-layout-source="gallery" data-sample-focus-profile="copy-only" data-sample-focus-members='[{"selector":"#focus-caption","role":"label"}]' data-sample-focus-ref="sample.a4.a4-focus">
+<html data-theme-id="paper-ink" lang="zh-CN" data-runtime="wise-ppt-specimen" data-typography-mode="all-sans" data-page-id="gallery-ai-a4" data-page-role="prove" data-theme="paper-ink" data-layout="paper-ink.evidence.strategy-evidence-wall" data-layout-source="gallery" data-emphasis-targets='[{"target_id":"focus.key-node","members":[{"selector":"#focus-caption","role":"label","treatment":"focus.color","expected_count":1}]}]' data-catalog-legacy-emphasis-profile="copy-only" data-catalog-legacy-emphasis-members='[{"selector":"#focus-caption","role":"label"}]' data-catalog-legacy-emphasis-foreground-members='[]' data-catalog-legacy-emphasis-ref="sample.a4.a4-focus" data-vnext-semantic-key-map='[]'>
 <head>
 <meta charset="UTF-8">
 <title>layout-a4 · 左策略右证据墙 · Agent 工程化</title>
@@ -39,7 +39,7 @@
     <g id="draw"></g>
   </svg>
 
-  <div class="caption"><span id="focus-caption">上下文、评测、工具护栏与全链 Trace</span>，共同把 Agent 从演示推向可控工程。</div>
+  <div class="caption"><span id="focus-caption" data-emphasis-candidate="true">上下文、评测、工具护栏与全链 Trace</span>，共同把 Agent 从演示推向可控工程。</div>
 </div>
 
 <script src="../../../../themes/packages/paper-ink/assets/particles.js"></script>
@@ -77,7 +77,7 @@ var strategies = [
 ];
 strategies.forEach(function(s, i){
   var y = 372 + i * 139;
-  txt(150, y, s[0], {'font-family':MONO, 'font-size':'var(--type-body-small)', 'letter-spacing':2, fill:INK});
+  txt(150, y, s[0], {'data-number-kind':'plain', 'data-number-role':'structural', 'data-number-part':'label', 'data-text-kind':'number', 'font-family':MONO, 'font-size':'var(--type-body-small)', 'letter-spacing':2, fill:INK});
   el('line', {x1:150, y1:y+12, x2:186, y2:y+12, stroke:INK, 'stroke-width':.6, opacity:.3});
   txt(206, y, s[1], {'font-family':SANS, 'font-weight':300, 'font-size':'var(--type-subheading)', fill:INK});
   txt(206, y+34, s[2], {'font-family':SANS, 'font-weight':300, 'font-size':'var(--type-body-small)', fill:INK70});

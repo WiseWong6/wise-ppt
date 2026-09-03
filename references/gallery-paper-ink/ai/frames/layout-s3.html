@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html data-theme-id="paper-ink" lang="zh-CN" data-runtime="wise-ppt-specimen" data-typography-mode="all-sans" data-page-id="gallery-ai-s3" data-page-role="synthesize" data-theme="paper-ink" data-layout="paper-ink.causal.problem-solution-five-slot" data-layout-source="gallery" data-sample-focus-profile="content-only" data-sample-focus-members='[{"selector":"#s3-num-0","role":"value"},{"selector":"#s3-num-1","role":"value"},{"selector":"#s3-num-2","role":"value"},{"selector":"#s3-num-3","role":"value"},{"selector":"#s3-label-0","role":"label"},{"selector":"#s3-label-1","role":"label"},{"selector":"#s3-label-2","role":"label"},{"selector":"#s3-label-3","role":"label"}]' data-sample-focus-ref="sample.s3.s3-focus">
+<html data-theme-id="paper-ink" lang="zh-CN" data-runtime="wise-ppt-specimen" data-typography-mode="all-sans" data-page-id="gallery-ai-s3" data-page-role="synthesize" data-theme="paper-ink" data-layout="paper-ink.causal.problem-solution-five-slot" data-layout-source="gallery" data-emphasis-targets='[{"target_id":"focus.metric.3","members":[{"selector":"#s3-num-2","role":"value","treatment":"focus.color","expected_count":1}]},{"target_id":"focus.metric.1","members":[{"selector":"#s3-num-0, #s3-label-0","role":"value","treatment":"focus.text","expected_count":2}]},{"target_id":"focus.metric.2","members":[{"selector":"#s3-num-1, #s3-label-1","role":"value","treatment":"focus.text","expected_count":2}]},{"target_id":"focus.metric.4","members":[{"selector":"#s3-num-3, #s3-label-3","role":"value","treatment":"focus.text","expected_count":2}]}]' data-catalog-legacy-emphasis-profile="content-only" data-catalog-legacy-emphasis-members='[{"selector":"#s3-solution-rule","expected_count":1,"role":"outline"},{"selector":"#s3-solution-title","expected_count":1,"role":"value"}]' data-catalog-legacy-emphasis-foreground-members='[]' data-catalog-legacy-emphasis-ref="sample.s3.colored-solution" data-vnext-semantic-key-map='[{"key":"problem-list.text.001","tag":"text","text":"WHY IT HURTS","occurrence":0}]'>
 <head>
 <meta charset="UTF-8">
 <title>layout-s3 · 左痛双卡右解复合 · 客服 Agent 升级</title>
@@ -73,9 +73,12 @@ function svgGroup(id, draw) {
 }
 var MONO = 'var(--mono)', SANS = 'var(--sans)', SERIF = 'var(--serif)';
 
+/* 右侧解法在纸墨中保持透明；橙蓝主题将其解析为与 K3 一致的纯白前景面。 */
+el('rect', {id:'s3-solution-surface', x:660, y:132, width:1140, height:754, fill:'none', stroke:'none'});
+
 function sectionHead(x, y, en, cn) {
   txt(x, y, en, {'font-family':MONO, 'font-size':'var(--type-label)', 'letter-spacing':3, fill:INK45});
-  el('line', {x1:x, y1:y+16, x2:x+100, y2:y+16, stroke:INK, 'stroke-width':.8, opacity:.5});
+  el('line', {'data-title-rule':1, x1:x, y1:y+16, x2:x+100, y2:y+16, stroke:INK, 'stroke-width':.8, opacity:.5});
   txt(x, y+54, cn, {'font-family':SANS, 'font-weight':300, 'font-size':'var(--type-subheading)', fill:INK});
 }
 function drawMark(kind, y) {
@@ -175,8 +178,8 @@ function placeGutterArrow() {
 /* ========== 右边一整块解法：流程 / 证据 / 结果三层同列 ========== */
 svgGroup('s3-solution-flow', function(){
   txt(720, 176, 'THE FIX · AGENT PIPELINE', {'font-family':MONO, 'font-size':'var(--type-label)', 'letter-spacing':3, fill:INK45});
-  el('line', {x1:720, y1:192, x2:820, y2:192, stroke:INK, 'stroke-width':.8, opacity:.5});
-  txt(720, 230, 'Agent 基座五步', {'font-family':SANS, 'font-weight':300, 'font-size':'var(--type-subheading)', fill:INK});
+  el('line', {id:'s3-solution-rule', x1:720, y1:192, x2:820, y2:192, stroke:INK, 'stroke-width':.8, opacity:.5});
+  txt(720, 230, 'Agent 基座五步', {id:'s3-solution-title', 'font-family':SANS, 'font-weight':300, 'font-size':'var(--type-subheading)', fill:INK});
 
   var PX = [820, 1045, 1270, 1495, 1720];
   for (var i = 0; i < 4; i++) {
@@ -227,7 +230,7 @@ svgGroup('s3-solution-flow', function(){
   var codes = ['PARSE', 'RETRIEVE', 'ORCHESTRATE', 'VERIFY', 'CANARY'];
   var notes = ['三路信号汇入槽位', '当周口径一次对齐', '工具与回写交叠执行', '生成前拦下越界答案', '小流量观察再放量'];
   PX.forEach(function(x, i){
-    txt(x, 268, '0'+(i+1), {'font-family':MONO, 'font-size':'var(--type-meta)', 'letter-spacing':2, 'text-anchor':'middle', fill:INK45});
+    txt(x, 268, '0'+(i+1), {'data-number-kind':'plain', 'data-number-role':'sequence', 'data-number-part':'label', 'data-text-kind':'number', 'font-family':MONO, 'font-size':'var(--type-meta)', 'letter-spacing':2, 'text-anchor':'middle', fill:'var(--wp-color-functional)'});
     txt(x, 400, labels[i], {'font-family':SANS, 'font-weight':300, 'font-size':'var(--type-body)', 'text-anchor':'middle', fill:INK});
     txt(x, 424, codes[i], {'font-family':MONO, 'font-size':'var(--type-meta)', 'letter-spacing':2, 'text-anchor':'middle', fill:INK45});
     txt(x, 452, notes[i], {'font-family':SANS, 'font-weight':300, 'font-size':'var(--type-label)', 'text-anchor':'middle', fill:INK70});

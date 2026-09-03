@@ -41,7 +41,7 @@
 
 ## 资产目录
 
-当前版式、组件和图标以本地 Catalog 可见内容及机器 manifest 为准，不在 README 手抄动态数量。
+当前版式、组件和图标以本地 Catalog 可见内容为唯一权威，机器 manifest 只是它的确定性投影，不在 README 手抄动态数量。
 
 这是几张示例，完整画册请访问：[https://wisewong.com/projects/wise-ppt/](https://wisewong.com/projects/wise-ppt/)
 
@@ -142,8 +142,8 @@
 <table>
   <tr>
     <td width="33.33%" valign="top"><a href="references/catalog-thumbnails/page-gallery-paper-ink-ai-frames-layout-k2.webp"><img src="references/catalog-thumbnails/page-gallery-paper-ink-ai-frames-layout-k2.webp" alt="纸墨主题下的 K2 痛点→解法→成效页" width="100%"></a><sub><b>纸墨</b> · 默认；冷灰纸底、克制红色焦点，适合研究、分析、内部分享</sub></td>
-    <td width="33.33%" valign="top"><a href="references/catalog-thumbnails/palettes/hermes-orange/page-gallery-paper-ink-ai-frames-layout-k2.webp"><img src="references/catalog-thumbnails/palettes/hermes-orange/page-gallery-paper-ink-ai-frames-layout-k2.webp" alt="爱马仕橙主题下的 K2 痛点→解法→成效页" width="100%"></a><sub><b>爱马仕橙</b> · 正白纸、暖橙焦点，适合品牌、商业、编辑感内容</sub></td>
-    <td width="33.33%" valign="top"><a href="references/catalog-thumbnails/palettes/klein-blue/page-gallery-paper-ink-ai-frames-layout-k2.webp"><img src="references/catalog-thumbnails/palettes/klein-blue/page-gallery-paper-ink-ai-frames-layout-k2.webp" alt="克莱因蓝主题下的 K2 痛点→解法→成效页" width="100%"></a><sub><b>克莱因蓝</b> · 正白纸、克莱因蓝焦点，适合科技、产品、发布表达</sub></td>
+    <td width="33.33%" valign="top"><a href="references/catalog-thumbnails/palettes/hermes-orange/page-gallery-paper-ink-ai-frames-layout-k2.webp"><img src="references/catalog-thumbnails/palettes/hermes-orange/page-gallery-paper-ink-ai-frames-layout-k2.webp" alt="爱马仕橙主题下的 K2 痛点→解法→成效页" width="100%"></a><sub><b>爱马仕橙</b> · 米白纸面、纯白前景，暖橙焦点，适合品牌、商业、编辑感内容</sub></td>
+    <td width="33.33%" valign="top"><a href="references/catalog-thumbnails/palettes/klein-blue/page-gallery-paper-ink-ai-frames-layout-k2.webp"><img src="references/catalog-thumbnails/palettes/klein-blue/page-gallery-paper-ink-ai-frames-layout-k2.webp" alt="克莱因蓝主题下的 K2 痛点→解法→成效页" width="100%"></a><sub><b>克莱因蓝</b> · 米白纸面、纯白前景，克莱因蓝焦点，适合科技、产品、发布表达</sub></td>
   </tr>
 </table>
 

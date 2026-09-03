@@ -372,7 +372,7 @@
       flex: 1 1 0 !important;
     }
 
-    /* --- 055 平台架构：Catalog 预览与 S1 共用 1620×528 宽画布 --- */
+    /* --- 055 平台架构：Catalog 预览与 S1 共用 1620×714 宽画布 --- */
     .swiss-card:has(.arch-platform .ap-grid) {
       width: 1684px !important;
       min-height: 0 !important;
@@ -997,32 +997,109 @@
       font-weight: 400 !important;
     }
 
-    /* --- 055 宽版平台栈：模块格统一墨线细框，层底交替纸阶，标题靠字重不靠字号 --- */
+    /* --- 055 关系主脊：几何由组件源码唯一拥有；适配层只落纸墨材料、字体与线色。 --- */
+    .swiss-card:has(.arch-platform[data-architecture-variant="wide-product"]) {
+      width: 1620px !important;
+      height: 714px !important;
+      min-height: 0 !important;
+      overflow: visible !important;
+      background: transparent !important;
+      border: 0 !important;
+    }
+    .swiss-card:has(.arch-platform[data-architecture-variant="wide-product"]) .swiss-card__content {
+      width: 100% !important;
+      height: 100% !important;
+      min-height: 0 !important;
+      padding: 0 !important;
+      display: block !important;
+      background: transparent !important;
+    }
+    .swiss-card .arch-platform[data-architecture-variant="wide-product"] {
+      --arch-content-font-size: 16px;
+      --arch-paper: var(--wp-adapter-atlas-paper);
+      width: 100% !important;
+      height: 100% !important;
+      margin: 0 !important;
+      border: 0 !important;
+    }
+    .swiss-card .arch-platform[data-architecture-variant="wide-product"] .ap-spine {
+      background: var(--wp-adapter-atlas-ink-25) !important;
+      opacity: 1 !important;
+    }
+    .swiss-card .arch-platform[data-architecture-variant="wide-product"] .ap-row:not(:last-child)::after {
+      background: var(--wp-adapter-atlas-ink-12) !important;
+      opacity: 1 !important;
+    }
+    .swiss-card .arch-platform[data-architecture-variant="wide-product"] .ap-label {
+      background: transparent !important;
+      color: var(--wp-adapter-atlas-ink) !important;
+      font-size: 24px !important;
+      font-weight: 700 !important;
+    }
+    .swiss-card .arch-platform[data-architecture-variant="wide-product"] .ap-node {
+      display: block !important;
+      background: var(--wp-adapter-atlas-ink) !important;
+      border: 0 !important;
+      box-shadow: none !important;
+    }
     .swiss-card .arch-platform[data-architecture-variant="wide-product"] .ap-flat,
     .swiss-card .arch-platform[data-architecture-variant="wide-product"] .ap-grid-wrap {
+      background: var(--wp-s1-layer-fill, transparent) !important;
       border: 0 !important;
-      box-shadow: inset 0 0 0 .5px var(--wp-adapter-atlas-ink-25) !important;
+      box-shadow: none !important;
     }
-    .swiss-card .arch-platform[data-architecture-variant="wide-product"] .ap-row:nth-child(even) .arch-tone-wrap {
-      background: var(--wp-adapter-atlas-paper-panel) !important;
-    }
-    .swiss-card .arch-platform[data-architecture-variant="wide-product"] .ap-chip,
-    .swiss-card .arch-platform[data-architecture-variant="wide-product"] .ap-item {
+    .swiss-card .arch-platform[data-architecture-variant="wide-product"] .ap-chip {
+      justify-content: flex-start !important;
+      background: transparent !important;
       border: 0 !important;
-      box-shadow: inset 0 0 0 .5px var(--wp-adapter-atlas-ink-80) !important;
-      background: var(--wp-adapter-atlas-paper) !important;
+      box-shadow: none !important;
       color: var(--wp-adapter-atlas-ink) !important;
-      font-weight: 300 !important;
+      font-size: 18px !important;
+      font-weight: 400 !important;
+    }
+    .swiss-card .arch-platform[data-architecture-variant="wide-product"] .ap-chip::before {
+      display: block !important;
+      background: var(--wp-adapter-atlas-ink-55) !important;
+    }
+    .swiss-card .arch-platform[data-architecture-variant="wide-product"] .ap-chip::after {
+      display: block !important;
+      background: var(--wp-adapter-atlas-ink-12) !important;
     }
     .swiss-card .arch-platform[data-architecture-variant="wide-product"] .ap-card {
-      background: var(--wp-adapter-atlas-paper) !important;
+      background: var(--wp-adapter-atlas-paper-panel) !important;
       border: 0 !important;
-      box-shadow: inset 0 0 0 .5px var(--wp-adapter-atlas-ink-25) !important;
+      box-shadow: none !important;
     }
     .swiss-card .arch-platform[data-architecture-variant="wide-product"] .ap-card-title {
+      justify-content: flex-start !important;
       border: 0 !important;
-      box-shadow: inset 0 -.5px 0 var(--wp-adapter-atlas-ink-25) !important;
+      box-shadow: none !important;
       color: var(--wp-adapter-atlas-ink) !important;
+      font-size: 18px !important;
+      font-weight: 700 !important;
+    }
+    .swiss-card .arch-platform[data-architecture-variant="wide-product"] .ap-card-title::after {
+      display: block !important;
+      background: var(--wp-adapter-atlas-ink-12) !important;
+    }
+    .swiss-card .arch-platform[data-architecture-variant="wide-product"] .ap-item {
+      justify-content: flex-start !important;
+      background: transparent !important;
+      border: 0 !important;
+      box-shadow: none !important;
+      color: var(--wp-adapter-atlas-ink) !important;
+      font-size: var(--arch-content-font-size) !important;
+      font-weight: 400 !important;
+      text-align: left !important;
+    }
+    .swiss-card .arch-platform[data-architecture-variant="wide-product"] .ap-item::before {
+      display: block !important;
+      background: var(--wp-adapter-atlas-ink-55) !important;
+    }
+    :root:is([data-theme-id="hermes-orange"], [data-theme-id="klein-blue"])
+      .swiss-card .arch-platform[data-architecture-variant="wide-product"] .ap-card {
+      background: transparent !important;
+      background-color: transparent !important;
     }
     .swiss-card .arch-complex-v {
       border: 0 !important;

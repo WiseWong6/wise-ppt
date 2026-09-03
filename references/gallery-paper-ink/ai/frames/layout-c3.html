@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html data-theme-id="paper-ink" lang="zh-CN" data-runtime="wise-ppt-specimen" data-typography-mode="all-sans" data-page-id="gallery-ai-c3" data-page-role="orient" data-theme="paper-ink" data-layout="paper-ink.data.profile-card-array" data-layout-source="gallery" data-sample-focus-profile="copy-only" data-sample-focus-members='[{"selector":"#focus-caption","role":"label"}]' data-sample-focus-ref="sample.c3.c3-focus">
+<html data-theme-id="paper-ink" lang="zh-CN" data-runtime="wise-ppt-specimen" data-typography-mode="all-sans" data-page-id="gallery-ai-c3" data-page-role="orient" data-theme="paper-ink" data-layout="paper-ink.data.profile-card-array" data-layout-source="gallery" data-emphasis-targets='[{"target_id":"focus.key-item","members":[{"selector":"[data-vnext-text-key=\"profiles.text.001\"]","role":"value","treatment":"focus.color","expected_count":1},{"selector":"#c3-focus-title","role":"value","treatment":"focus.color","expected_count":1},{"selector":"#focus-caption","role":"label","treatment":"focus.color","expected_count":1}]}]' data-catalog-legacy-emphasis-profile="copy-only" data-catalog-legacy-emphasis-members='[{"selector":"#focus-caption","role":"label"}]' data-catalog-legacy-emphasis-foreground-members='[]' data-catalog-legacy-emphasis-ref="sample.c3.c3-focus" data-vnext-semantic-key-map='[{"key":"profiles.text.001","tag":"text","text":"READER-R1 · 1.28 B","occurrence":0}]'>
 <head>
 <meta charset="UTF-8">
 <title>layout-c3 · 顶图卡列阵 · AI 案例</title>
@@ -37,7 +37,7 @@
     <g id="draw"></g>
   </svg>
 
-  <div class="caption"><span id="focus-caption">阅读、Skills 与知识库</span>三个案例，在规模、延迟和召回精度上验证不同 AI 能力。</div>
+  <div class="caption"><span id="focus-caption" data-emphasis-candidate="true">阅读、Skills 与知识库</span>三个案例，在规模、延迟和召回精度上验证不同 AI 能力。</div>
 </div>
 
 <script src="../../../../themes/packages/paper-ink/assets/particles.js"></script>
@@ -77,7 +77,9 @@ cardX.forEach(function(px){
 function cardText(px, tag, side, name, rows, foot) {
   txt(px+36, CY+308, tag, {'font-family':MONO, 'font-size':'var(--type-meta)', 'letter-spacing':2, fill:INK45});
   txt(px+CW-36, CY+308, side, {'font-family':MONO, 'font-size':'var(--type-meta)', 'letter-spacing':2, 'text-anchor':'end', fill:INK45});
-  txt(px+36, CY+348, name, {'font-family':SANS, 'font-weight':300, 'font-size':'var(--type-subheading)', fill:INK});
+  var nameAttrs = {'font-family':SANS, 'font-weight':700, 'font-size':'var(--type-subheading)', fill:INK};
+  if (tag === 'CASE 01') nameAttrs.id = 'c3-focus-title';
+  txt(px+36, CY+348, name, nameAttrs);
   el('line', {x1:px+36, y1:CY+368, x2:px+CW-36, y2:CY+368, stroke:INK, 'stroke-width':.8, opacity:.5});
   rows.forEach(function(r, i){
     var y = CY + 404 + i * 42;
