@@ -687,6 +687,7 @@ function preflightCollector() {
   return { errors, add, check, checkAsync };
 }
 function forbiddenSpecPaths(value, current = "", found = []) {
+  if (current === "deck.theme.definition") return found;
   if (Array.isArray(value)) {
     value.forEach((child, index) => forbiddenSpecPaths(child, `${current}[${index}]`, found));
     return found;
