@@ -54,6 +54,8 @@ node wise-ppt/bin/wise-ppt.mjs doctor
 
 这两项是用户级资产，并受 `bundle-manifest.json` 的逐文件 SHA-256 保护。
 
+用户未指定且材料没有明确主题证据时，Skill 不会暂停要求选配色或字体；它使用主题 registry 的默认主题和该主题的默认字体模式。只有多个品牌方向同等可信时，Agent 才会带推荐一次询问。
+
 ## 命令
 
 统一入口：`node <skill>/bin/wise-ppt.mjs <command>`。
