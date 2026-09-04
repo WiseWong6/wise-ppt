@@ -91,12 +91,6 @@
     if (!slide || !root.classList.contains('accent')) return fallback;
     var roles = (slide.dataset.emphasisRoles || '').split(/\s+/).filter(Boolean);
     if (slide.dataset.emphasisMode !== 'semantic-focus' || slide.dataset.emphasisRef !== contentRef || !roles.includes(role)) return fallback;
-    var target = options && options.target;
-    var fontSize = options && Number.parseFloat(options.fontSize);
-    if (target === 'text' && Number.isFinite(fontSize) && fontSize < 24) {
-      var smallText = getComputedStyle(root).getPropertyValue('--wp-private-focus-text-small').trim();
-      if (smallText) return smallText;
-    }
     return color(emphasisThemeRole(role));
   }
 
@@ -280,10 +274,8 @@
   assertTheme();
 
   function resolvedEmphasisColor(target) {
-    if (target.dataset.emphasisTextSize === 'small') {
-      var override = getComputedStyle(target).getPropertyValue('--wp-private-focus-text-small').trim();
-      if (override) return override;
-    }
+    var resolved = getComputedStyle(target).getPropertyValue('--wp-emphasis-color').trim();
+    if (resolved) return resolved;
     return color(emphasisThemeRole(target.dataset.emphasisRole));
   }
 
