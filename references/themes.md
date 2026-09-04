@@ -12,6 +12,8 @@
 | `hermes-orange` | 爱马仕橙 | 米白纸面、纯白前景、暖灰凹层、强黑正文、橙色线稿 |
 | `klein-blue` | 克莱因蓝 | 米白纸面、纯白前景、暖灰凹层、强黑正文、蓝色线稿 |
 
+用户未指定且材料没有明确主题证据时，不暂停询问：主题读取 `themes/registry.json.default_theme_id`，字体模式读取所选主题的登记默认值。材料中有多个同等可信的品牌方向时，Agent 先给出推荐及理由，再一次询问。
+
 `source-derived` 不是第四个固定主题，也不是 preset。它是从旧 PDF、PPT/PPTX、图片、Logo 或组合证据生成完整 `wise-ppt-theme@5` 的 provider。
 
 deck 只能声明一个主题权威。固定主题写：
