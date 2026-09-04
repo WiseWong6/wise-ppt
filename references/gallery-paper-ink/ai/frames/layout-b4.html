@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html data-theme-id="paper-ink" lang="zh-CN" data-runtime="wise-ppt-specimen" data-typography-mode="all-sans" data-page-id="gallery-ai-b4" data-page-role="sequence" data-theme="paper-ink" data-layout="paper-ink.temporal.timeline-evidence-gallery" data-layout-source="gallery" data-emphasis-targets='[{"target_id":"focus.key-step","members":[{"selector":"#b4-focus-date","role":"value","treatment":"focus.text","expected_count":1},{"selector":"#b4-focus-node","role":"status","treatment":"focus.solid-reverse","expected_count":1},{"selector":"#b4-focus-connector","role":"outline","treatment":"focus.outline-depth","expected_count":1},{"selector":"#b4-focus-card","role":"outline","treatment":"focus.hard-shadow","expected_count":1}]}]' data-catalog-legacy-emphasis-profile="content-only" data-catalog-legacy-emphasis-members='[{"selector":"#b4-focus-date","role":"value"},{"selector":"#b4-focus-card","role":"outline"}]' data-catalog-legacy-emphasis-foreground-members='[]' data-catalog-legacy-emphasis-ref="sample.b4.b4-focus" data-vnext-semantic-key-map='[]'>
+<html data-theme-id="paper-ink" lang="zh-CN" data-runtime="wise-ppt-specimen" data-typography-mode="all-sans" data-page-id="gallery-ai-b4" data-page-role="sequence" data-theme="paper-ink" data-layout="paper-ink.temporal.timeline-evidence-gallery" data-layout-source="gallery" data-vnext-semantic-key-map='[]' data-emphasis-targets='[{"target_id":"focus.key-step","members":[{"selector":"#b4-focus-date","role":"value","treatment":"focus.color","expected_count":1},{"selector":"#b4-focus-card","role":"outline","treatment":"focus.color","expected_count":1}]}]'>
 <head>
 <meta charset="UTF-8">
 <title>layout-b4 · 时间轴垂挂画廊 · AI 里程碑</title>
@@ -139,7 +139,7 @@ var CW = 300, CH = 240;
 NODES.forEach(function(N, i){
   var top = (i % 2 === 0) ? 360 : 560;
   /* 轴上落点：双圈+实心核 */
-  el('circle', {id:N.focus?'b4-focus-node':'', cx:N.x, cy:290, r:7, fill:'var(--paper)', stroke:INK80, 'stroke-width':1.2});
+  el('circle', {id:N.focus?'b4-focus-node':'', 'data-vnext-visual-role':'b4.timeline-node', cx:N.x, cy:290, r:7, fill:'var(--paper)', stroke:INK80, 'stroke-width':1.2});
   el('circle', {id:N.focus?'b4-focus-node-core':'', cx:N.x, cy:290, r:2.6, fill:INK});
   txt(N.x, 264, N.date, {id:N.focus?'b4-focus-date':'', 'font-family':MONO, 'font-size':'var(--type-meta)', 'letter-spacing':2, 'text-anchor':'middle', fill:INK});
   /* 垂挂细线 + 中点小圆 */

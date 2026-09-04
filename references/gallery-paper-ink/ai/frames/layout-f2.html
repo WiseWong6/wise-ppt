@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html data-theme-id="paper-ink" lang="zh-CN" data-runtime="wise-ppt-specimen" data-typography-mode="all-sans" data-page-id="gallery-ai-f2" data-page-role="explain" data-theme="paper-ink" data-layout="paper-ink.decomposition.structure-spec-split" data-layout-source="gallery" data-emphasis-targets='[{"target_id":"focus.key-layer","members":[{"selector":"#sample-focus","role":"status","treatment":"focus.text","expected_count":1},{"selector":"#f2-focus-frame","role":"outline","treatment":"focus.outline-depth","expected_count":1}]}]' data-catalog-legacy-emphasis-profile="content-only" data-catalog-legacy-emphasis-members='[{"selector":"#f2-spec-card","expected_count":1,"role":"outline"},{"selector":"#f2-spec-title","expected_count":1,"role":"value"}]' data-catalog-legacy-emphasis-foreground-members='[]' data-catalog-legacy-emphasis-ref="sample.f2.colored-spec-card" data-vnext-semantic-key-map='[{"key":"structure.text.001","tag":"text","text":"TASK RUN","occurrence":0}]'>
+<html data-theme-id="paper-ink" lang="zh-CN" data-runtime="wise-ppt-specimen" data-typography-mode="all-sans" data-page-id="gallery-ai-f2" data-page-role="explain" data-theme="paper-ink" data-layout="paper-ink.decomposition.structure-spec-split" data-layout-source="gallery" data-vnext-semantic-key-map='[{"key":"structure.text.001","tag":"text","text":"TASK RUN","occurrence":0}]' data-emphasis-targets='[{"target_id":"focus.key-layer","members":[{"selector":"#f2-spec-card","role":"outline","treatment":"focus.color","expected_count":1},{"selector":"#f2-spec-title","role":"value","treatment":"focus.color","expected_count":1}]}]'>
 <head>
 <meta charset="UTF-8">
 <title>layout-f2 · 环节树 + 规格单 · Agent 框架拆解</title>
@@ -63,7 +63,7 @@ G = el('g', {transform:'translate(0 -53.7)'});
 /* ============ 左区：一次 Agent 任务的环节树 ============ */
 var RX = 180, RY = 250, RW = 640, RH = 64;
 el('rect', {x:RX, y:RY, width:RW, height:RH, fill:'url(#hatch)', stroke:INK80, 'stroke-width':1.4});
-txt(RX+RW/2-96, RY+40, 'TASK RUN', {'font-family':MONO, 'font-size':'var(--type-body)', 'text-anchor':'middle', fill:INK});
+  txt(RX+RW/2-96, RY+40, 'TASK RUN', {'data-vnext-visual-role':'f2.task-run-label', 'font-family':MONO, 'font-size':'var(--type-body)', 'text-anchor':'middle', fill:INK});
 txt(RX+RW/2-30, RY+40, '一次 Agent 执行', {'font-family':SANS, 'font-weight':300, 'font-size':'var(--type-body)', fill:INK});
 
 var spans = [

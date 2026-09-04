@@ -1,8 +1,8 @@
 <!DOCTYPE html>
-<html data-theme-id="klein-blue" lang="zh-CN" data-runtime="wise-ppt-specimen" data-typography-mode="all-sans" data-page-id="gallery-ai-i4" data-page-role="compare" data-theme="paper-ink" data-layout="paper-ink.flow.branching-solutions" data-layout-source="gallery" data-emphasis-targets="[{&quot;target_id&quot;:&quot;focus.fallback-decision&quot;,&quot;label&quot;:&quot;异常兜底&quot;,&quot;content_role&quot;:&quot;右侧异常兜底模块&quot;,&quot;reason_hint&quot;:&quot;沿用旧强调色，只给异常兜底标题与外框上色；识别失败类型，给出降级路径不上色。&quot;,&quot;members&quot;:[{&quot;selector&quot;:&quot;#i4-focus-frame&quot;,&quot;role&quot;:&quot;outline&quot;,&quot;treatment&quot;:&quot;focus.color&quot;,&quot;expected_count&quot;:1},{&quot;selector&quot;:&quot;#i4-focus-title&quot;,&quot;role&quot;:&quot;value&quot;,&quot;treatment&quot;:&quot;focus.color&quot;,&quot;expected_count&quot;:1}]}]" data-vnext-semantic-key-map="[]" data-catalog-legacy-emphasis-profile="content-only" data-catalog-legacy-emphasis-members="[{&quot;selector&quot;:&quot;#i4-focus-frame&quot;,&quot;role&quot;:&quot;outline&quot;},{&quot;selector&quot;:&quot;#i4-focus-title&quot;,&quot;role&quot;:&quot;value&quot;},{&quot;selector&quot;:&quot;#i4-focus-note&quot;,&quot;role&quot;:&quot;label&quot;}]" data-catalog-legacy-emphasis-foreground-members="[]" data-catalog-legacy-emphasis-ref="sample.i4.i4-focus" data-wise-catalog-fonts="true" data-surface-source="catalog-theme-recipes-v2" data-xp-recipe-id="klein-blue:i4" data-xp-surface-profile="left-context-right-complete-solution" data-xp-recipe-status="recipe-ready" data-xp-frame-kind="recipe-generated">
+<html lang="zh-CN" data-runtime="wise-ppt-specimen" data-theme-id="klein-blue" data-typography-mode="mixed" data-wise-catalog-fonts="true" data-page-id="gallery-ai-i4" data-page-role="compare" data-page-kind="relationship" data-layout-id="wise-ppt.layout.relationship.I4" data-layout-code="I4" data-layout-source="canonical-seed" data-layout-seed-sha256="cd115e8e87387a8a141dcd5ce3ef8a62d0e6ea5e383c3b81d78a1594ce41bf74" data-layout-structure-sha256="8d06d3d125c8b6470653f3db11e11c5d505d588cfdd9f6ae6acdbbe9019c6a0f" data-layout-visual-plan="3ef445ef0494638ed35ccf6590f5c755a0d5b88c59c3016d26a5f2b3261252f4" data-layout-visual-materialization="9b1a56f3377eaef39bc0aaddd5e0b129aac42c67725b165e18c213929430b2b6" data-resolved-theme-sha256="1f9ebea0e4bc84cd589274859d82014d71e42ea9c8055699808bbe7bc9298fe2" data-layout-visual-source="wise-ppt-layout-theme-bindings@3" data-catalog-frame-id="klein-blue:i4" data-catalog-frame-ready="true">
 <head>
 <meta charset="UTF-8">
-<title>layout-i4 · 双面板分支解法流（AI 主题）</title>
+<title>layout-i4 · 双面板分支解法流</title>
 <script src="../../../../../runtime/stage-fit.js"></script>
 <link rel="stylesheet" href="../../../../../themes/engine/assets/design-tokens.css">
 <link rel="stylesheet" href="../../../../../themes/packages/paper-ink/theme.css">
@@ -10,9 +10,12 @@
 <link rel="stylesheet" href="../../../../../themes/packages/klein-blue/theme.css">
 <link rel="stylesheet" href="../../../../../themes/engine/assets/catalog-fonts.css" data-wise-catalog-fonts="true">
 <link rel="stylesheet" href="../../../../../themes/engine/assets/slide-components.css">
+<link rel="stylesheet" href="../../../../../themes/engine/assets/component-theme.css">
+<link rel="stylesheet" href="../../../../../runtime/component-behavior.css">
+<link rel="stylesheet" href="../../../../../runtime/deck-component-contract.css">
 <link rel="stylesheet" href="../../../../../references/shell.css">
-<style>
-  svg.scene { position: absolute; inset: 0; z-index: 1; }
+<style data-layout-seed-css="cd115e8e87387a8a141dcd5ce3ef8a62d0e6ea5e383c3b81d78a1594ce41bf74">@scope (.slide[data-layout-id="wise-ppt.layout.relationship.I4"]) {
+svg.scene { position: absolute; inset: 0; z-index: 1; }
   .caption {
     position: absolute; left: 0; right: 0; bottom: 118px;
     text-align: center;
@@ -21,205 +24,51 @@
     color: var(--ink);
     z-index: 5;
   }
+}
 </style>
-<link rel="stylesheet" href="../../catalog-surface.css" data-catalog-theme-surface="catalog-theme-recipes-v2">
-<link rel="stylesheet" href="../../title-furniture.css" data-catalog-title-furniture="black-first-theme-second-v1">
+<style data-layout-visual-plan="3ef445ef0494638ed35ccf6590f5c755a0d5b88c59c3016d26a5f2b3261252f4">/* wise-ppt-layout-visual-plan@1 · wise-ppt.layout.relationship.I4 · 3ef445ef0494638ed35ccf6590f5c755a0d5b88c59c3016d26a5f2b3261252f4 */
+body.slide > .stage[data-theme-visual-plan="3ef445ef0494638ed35ccf6590f5c755a0d5b88c59c3016d26a5f2b3261252f4"], body.slide > .stage[data-theme-visual-plan="3ef445ef0494638ed35ccf6590f5c755a0d5b88c59c3016d26a5f2b3261252f4"] [data-component-theme-scope="true"] { --wp-layout-structural: var(--wp-color-primary); --wp-layout-functional: var(--wp-color-functional); --wp-color-body: color-mix(in srgb, var(--wp-color-primary) 70%, transparent); --wp-color-chart-label: color-mix(in srgb, var(--wp-color-primary) 55%, transparent); --wp-color-metadata: color-mix(in srgb, var(--wp-color-primary) 45%, transparent); --wp-color-divider: color-mix(in srgb, var(--wp-color-primary) 20%, transparent); --wp-color-construction: color-mix(in srgb, var(--wp-color-primary) 12%, transparent); --wp-private-ink-60: color-mix(in srgb, var(--wp-color-primary) 60%, transparent); --wp-private-ink-30: color-mix(in srgb, var(--wp-color-primary) 30%, transparent); --ink: var(--wp-color-primary); --ink-80: color-mix(in srgb, var(--wp-color-primary) 80%, transparent); --ink-70: color-mix(in srgb, var(--wp-color-primary) 70%, transparent); --ink-55: color-mix(in srgb, var(--wp-color-primary) 55%, transparent); --ink-45: color-mix(in srgb, var(--wp-color-primary) 45%, transparent); --ink-25: color-mix(in srgb, var(--wp-color-primary) 20%, transparent); --ink-12: color-mix(in srgb, var(--wp-color-primary) 12%, transparent); --wp-adapter-pi-ink: var(--wp-color-primary); --wp-adapter-pi-ink-80: color-mix(in srgb, var(--wp-color-primary) 80%, transparent); --wp-adapter-pi-ink-70: color-mix(in srgb, var(--wp-color-primary) 70%, transparent); --wp-adapter-pi-ink-60: color-mix(in srgb, var(--wp-color-primary) 60%, transparent); --wp-adapter-pi-ink-55: color-mix(in srgb, var(--wp-color-primary) 55%, transparent); --wp-adapter-pi-ink-45: color-mix(in srgb, var(--wp-color-primary) 45%, transparent); --wp-adapter-pi-ink-30: color-mix(in srgb, var(--wp-color-primary) 30%, transparent); --wp-adapter-atlas-ink: var(--wp-color-primary); --wp-adapter-atlas-ink-80: color-mix(in srgb, var(--wp-color-primary) 80%, transparent); --wp-adapter-atlas-ink-70: color-mix(in srgb, var(--wp-color-primary) 70%, transparent); --wp-adapter-atlas-ink-55: color-mix(in srgb, var(--wp-color-primary) 55%, transparent); --wp-adapter-atlas-ink-45: color-mix(in srgb, var(--wp-color-primary) 45%, transparent); --wp-adapter-atlas-ink-25: color-mix(in srgb, var(--wp-color-primary) 20%, transparent); --wp-adapter-atlas-ink-12: color-mix(in srgb, var(--wp-color-primary) 12%, transparent); --shadow-soft: none; --shadow-specimen: none; --data-ramp-1: color-mix(in srgb, var(--wp-color-primary) 8%, transparent); --wp-adapter-pi-data-1: color-mix(in srgb, var(--wp-color-primary) 8%, transparent); --wp-adapter-atlas-data-1: color-mix(in srgb, var(--wp-color-primary) 8%, transparent); --data-ramp-2: color-mix(in srgb, var(--wp-color-primary) 14%, transparent); --wp-adapter-pi-data-2: color-mix(in srgb, var(--wp-color-primary) 14%, transparent); --wp-adapter-atlas-data-2: color-mix(in srgb, var(--wp-color-primary) 14%, transparent); --data-ramp-3: color-mix(in srgb, var(--wp-color-primary) 22%, transparent); --wp-adapter-pi-data-3: color-mix(in srgb, var(--wp-color-primary) 22%, transparent); --wp-adapter-atlas-data-3: color-mix(in srgb, var(--wp-color-primary) 22%, transparent); --data-ramp-4: color-mix(in srgb, var(--wp-color-primary) 30%, transparent); --wp-adapter-pi-data-4: color-mix(in srgb, var(--wp-color-primary) 30%, transparent); --wp-adapter-atlas-data-4: color-mix(in srgb, var(--wp-color-primary) 30%, transparent); --data-ramp-5: color-mix(in srgb, var(--wp-color-primary) 40%, transparent); --wp-adapter-pi-data-5: color-mix(in srgb, var(--wp-color-primary) 40%, transparent); --wp-adapter-atlas-data-5: color-mix(in srgb, var(--wp-color-primary) 40%, transparent); --data-ramp-6: color-mix(in srgb, var(--wp-color-primary) 52%, transparent); --wp-adapter-pi-data-6: color-mix(in srgb, var(--wp-color-primary) 52%, transparent); --wp-adapter-atlas-data-6: color-mix(in srgb, var(--wp-color-primary) 52%, transparent); }
+:root[data-theme-id][data-typography-mode="mixed"] body.slide [data-theme-type-role="top-left-kicker"], :root[data-theme-id][data-typography-mode="mixed"] body.slide [data-theme-type-role="bottom-left-folio"] { font-family: var(--wp-font-oswald) !important; font-weight: 700 !important; }
+:root[data-theme-id][data-typography-mode="mixed"] body.slide [data-theme-type-role="bottom-takeaway"] { font-family: var(--wp-font-han-serif) !important; font-weight: 700 !important; }
+:root[data-theme-id][data-typography-mode="mixed"] body.slide [data-theme-type-role="zh-content-title"] { font-family: var(--wp-font-han-sans) !important; font-weight: 700 !important; }
+:root[data-theme-id][data-typography-mode="mixed"] body.slide :is([data-theme-type-role="body"], [data-theme-type-role="label"], [data-theme-type-role="number"], [data-theme-type-role="chart-text"]) { font-family: var(--wp-font-han-sans) !important; font-weight: 400 !important; }
+:root[data-theme-id][data-typography-mode="mixed"] body.slide [data-theme-language="en"]:not([data-theme-type-role="top-left-kicker"]):not([data-theme-type-role="bottom-left-folio"]):not([data-theme-type-role="bottom-takeaway"]) { font-family: var(--wp-font-oswald) !important; font-weight: 700 !important; }
+body.slide > .stage[data-theme-visual-plan="3ef445ef0494638ed35ccf6590f5c755a0d5b88c59c3016d26a5f2b3261252f4"] { background-color: var(--wp-color-surface-canvas) !important; }
+body.slide [data-theme-surface-binding-id="surface.context-panel"] { background-color: var(--wp-color-surface-recessed) !important; }
+body.slide svg [data-theme-surface-binding-id="surface.context-panel"],
+body.slide svg [data-theme-surface-binding-id="surface.context-panel"] :is(path, line, rect, circle, ellipse, polygon, polyline, use)[fill]:not([fill="none"]) { fill: var(--wp-color-surface-recessed) !important; }
+body.slide [data-theme-surface-binding-id="surface.context-panel"] { --wp-layout-surface-stack: 1; z-index: 1 !important; }
+body.slide [data-theme-surface-binding-id="surface.context-panel"]:not([data-emphasis-active="true"]) { box-shadow: none !important; }
+body.slide svg [data-theme-surface-binding-id="surface.context-panel"]:not([data-emphasis-active="true"]) { filter: none !important; }
+body.slide [data-theme-surface-binding-id="complete-solution"] { background-color: var(--wp-color-surface-panel) !important; }
+body.slide svg [data-theme-surface-binding-id="complete-solution"],
+body.slide svg [data-theme-surface-binding-id="complete-solution"] :is(path, line, rect, circle, ellipse, polygon, polyline, use)[fill]:not([fill="none"]) { fill: var(--wp-color-surface-panel) !important; }
+body.slide [data-theme-surface-binding-id="complete-solution"] { --wp-layout-surface-stack: 2; z-index: 2 !important; }
+body.slide [data-theme-surface-binding-id="complete-solution"]:not([data-emphasis-active="true"]) { box-shadow: none !important; }
+body.slide svg [data-theme-surface-binding-id="complete-solution"]:not([data-emphasis-active="true"]) { filter: none !important; }
+body.slide [data-theme-surface-binding-id="complete-solution"] { border-color: var(--wp-color-primary) !important; border-width: 2px !important; border-style: solid !important; }
+body.slide svg [data-theme-surface-binding-id="complete-solution"],
+body.slide svg [data-theme-surface-binding-id="complete-solution"] :is(path, line, rect, circle, ellipse, polygon, polyline, use)[stroke]:not([stroke="none"]) { stroke: var(--wp-color-primary) !important; stroke-width: 2px !important; }
+body.slide [data-theme-furniture-role="title"] { color: var(--wp-color-functional) !important; }
+body.slide svg [data-theme-furniture-role="title"] { fill: var(--wp-color-functional) !important; }
+body.slide [data-theme-furniture-role="folio"] { color: var(--wp-color-metadata) !important; }
+body.slide svg [data-theme-furniture-role="folio"] { fill: var(--wp-color-metadata) !important; }
+body.slide [data-theme-furniture-role="takeaway"] { color: var(--wp-color-primary) !important; }
+body.slide svg [data-theme-furniture-role="takeaway"] { fill: var(--wp-color-primary) !important; }
+body.slide [data-theme-furniture-role="title"]::first-line,
+body.slide [data-theme-furniture-role="title"] [data-theme-furniture-line="first"] { color: var(--wp-color-primary) !important; }
+body.slide [data-theme-furniture-role="title"] [data-theme-furniture-line="second"] { color: var(--wp-color-functional) !important; }
+</style>
 </head>
-<body class="slide">
-<div class="stage" data-block-id="gallery-primary" data-renderer-kind="svg" data-component-source="native" data-component-id="native.wise-ppt.flow.branching-solutions.solutions" data-content-ref="example.i4" data-catalog-source-marker="page-recipe">
-  <div class="doc tl"><span class="doc-kicker">PPT 标题</span><span class="doc-title">页面标题</span></div>
-  <div class="folio">页码 / 总页数 — BY @歪斯Wise</div>
-
-  <svg class="scene" width="1920" height="1080" viewBox="0 0 1920 1080">
-    <g id="draw"></g>
-  </svg>
-
-  <div class="caption">不止重试报错，更识别失败类型给出降级路径——减重试、守底线。</div>
+<body class="slide" data-page-id="gallery-ai-i4" data-page-role="compare" data-page-kind="relationship" data-layout-id="wise-ppt.layout.relationship.I4" data-layout-code="I4" data-layout-source="canonical-seed" data-layout-seed-sha256="cd115e8e87387a8a141dcd5ce3ef8a62d0e6ea5e383c3b81d78a1594ce41bf74" data-layout-structure-sha256="8d06d3d125c8b6470653f3db11e11c5d505d588cfdd9f6ae6acdbbe9019c6a0f" data-layout-visual-plan="3ef445ef0494638ed35ccf6590f5c755a0d5b88c59c3016d26a5f2b3261252f4" data-layout-visual-materialization="9b1a56f3377eaef39bc0aaddd5e0b129aac42c67725b165e18c213929430b2b6" data-resolved-theme-sha256="1f9ebea0e4bc84cd589274859d82014d71e42ea9c8055699808bbe7bc9298fe2" data-layout-visual-source="wise-ppt-layout-theme-bindings@3">
+<div class="stage" data-block-id="gallery-primary" data-component-id="native.wise-ppt.flow.branching-solutions.solutions" data-component-source="native" data-content-ref="example.i4" data-renderer-kind="svg" data-theme-visual-source="wise-ppt-layout-theme-bindings@3" data-theme-visual-plan="3ef445ef0494638ed35ccf6590f5c755a0d5b88c59c3016d26a5f2b3261252f4" data-theme-canvas-material="paper" data-theme-default-color-base-role="primary" data-theme-typography-resolution="structure-slots-and-explicit-language" data-theme-emphasis-target-count="1" data-theme-emphasis-sample-target="focus.fallback-decision">
+<div class="doc tl" data-theme-furniture-source="wise-ppt-layout-theme-bindings@3" data-theme-furniture-role="title" data-theme-furniture-variant="primary-first-functional-second" data-theme-type-role="top-left-kicker" data-theme-type-base-role="top-left-kicker" data-theme-color-role="functional" data-theme-color-alpha="1" data-theme-title-first-color-role="primary" data-theme-title-second-color-role="functional" data-theme-language="zh"><span class="vnext-text-node" data-vnext-fit-box="0,0,1920,1080" data-vnext-text-key="support.text.001" data-theme-furniture-line="first" data-theme-type-role="top-left-kicker" data-theme-type-base-role="top-left-kicker" data-theme-color-role="primary" data-theme-language="zh">PPT &#x6807;&#x9898;</span><br><span class="vnext-text-node" data-vnext-fit-box="0,0,1920,1080" data-vnext-text-key="support.text.002" data-theme-furniture-line="second" data-theme-type-role="top-left-kicker" data-theme-type-base-role="top-left-kicker" data-theme-color-role="functional" data-theme-language="zh">&#x9875;&#x9762;&#x6807;&#x9898;</span></div>
+<div class="folio" data-theme-furniture-source="wise-ppt-layout-theme-bindings@3" data-theme-furniture-role="folio" data-theme-type-role="bottom-left-folio" data-theme-type-base-role="bottom-left-folio" data-theme-color-role="metadata" data-theme-color-alpha="1" data-theme-language="zh">&#x9875;&#x7801; / &#x603b;&#x9875;&#x6570; &#x2014; BY @&#x6b6a;&#x65af;Wise</div>
+<svg class="scene" height="1080" viewBox="0 0 1920 1080" width="1920">
+<g id="draw"><g transform="translate(0 +6.3)"><rect data-vnext-visual-key="i4.context-panel" fill="var(--paper-panel)" height="560" id="" rx="4" stroke="var(--ink-80)" stroke-width="1" width="790" x="150" y="220" data-theme-binding-source="wise-ppt-layout-theme-bindings@3" data-theme-surface-binding-id="surface.context-panel" data-theme-surface-role="context-panel" data-theme-material="recessed" data-theme-stack="1" data-theme-base-shadow="none" data-theme-border="null" data-theme-role-overrides="[]"/><rect fill="none" height="550" opacity="0.3" rx="3" stroke="var(--ink)" stroke-width="0.6" width="780" x="155" y="225"/><text data-vnext-fit-box="152,228,938,785" data-vnext-text-key="solutions.text.001" data-vnext-type-slot="content-title" fill="var(--ink)" font-family="var(--sans)" font-size="var(--type-subheading)" font-weight="300" id="" x="190" y="272" data-theme-binding-source="wise-ppt-layout-theme-bindings@3" data-theme-type-binding-id="content-titles" data-theme-type-role="zh-content-title" data-theme-type-base-role="zh-content-title" data-theme-language="zh">&#x610f;&#x56fe;&#x8def;&#x7531;</text><text data-vnext-fit-box="152,228,938,785" data-vnext-text-key="solutions.text.002" fill="var(--ink-70)" font-family="var(--sans)" font-size="var(--type-label)" font-weight="300" id="" x="190" y="302" data-theme-type-role="body" data-theme-type-base-role="body" data-theme-language="zh">&#x628a;&#x95ee;&#x9898;&#x5206;&#x53d1;&#x7ed9;&#x5bf9;&#x7684;&#x4e13;&#x5bb6; Agent</text><rect data-vnext-visual-key="i4.solution-panel" fill="var(--paper-panel)" height="560" id="i4-focus-frame" rx="4" stroke="var(--ink-80)" stroke-width="1" width="790" x="980" y="220" data-theme-binding-source="wise-ppt-layout-theme-bindings@3" data-theme-surface-binding-id="complete-solution" data-theme-surface-role="complete-solution-panel" data-theme-material="foreground" data-theme-stack="2" data-theme-base-shadow="none" data-theme-border="{&quot;alpha&quot;:1,&quot;color_role&quot;:&quot;primary&quot;,&quot;width_px&quot;:2}" data-theme-role-overrides="[]" data-theme-emphasis-source="wise-ppt-layout-theme-bindings@3" data-theme-emphasis-members="[{&quot;role&quot;:&quot;outline&quot;,&quot;target_id&quot;:&quot;focus.fallback-decision&quot;,&quot;treatment&quot;:&quot;focus.color&quot;}]"/><rect fill="none" height="550" opacity="0.3" rx="3" stroke="var(--ink)" stroke-width="0.6" width="780" x="985" y="225"/><text data-vnext-fit-box="982,228,1768,785" data-vnext-text-key="solutions.text.003" data-vnext-type-slot="content-title" fill="var(--ink)" font-family="var(--sans)" font-size="var(--type-subheading)" font-weight="300" id="i4-focus-title" x="1020" y="272" data-theme-binding-source="wise-ppt-layout-theme-bindings@3" data-theme-type-binding-id="content-titles" data-theme-type-role="zh-content-title" data-theme-type-base-role="zh-content-title" data-theme-identity-source="wise-ppt-layout-theme-bindings@3" data-theme-identity-group="identity.fallback-title" data-theme-identity-treatment="identity.text" data-theme-emphasis-source="wise-ppt-layout-theme-bindings@3" data-theme-emphasis-members="[{&quot;role&quot;:&quot;value&quot;,&quot;target_id&quot;:&quot;focus.fallback-decision&quot;,&quot;treatment&quot;:&quot;focus.color&quot;}]" data-theme-language="zh">&#x5f02;&#x5e38;&#x515c;&#x5e95;</text><text data-vnext-fit-box="982,228,1768,785" data-vnext-text-key="solutions.text.004" fill="var(--ink-70)" font-family="var(--sans)" font-size="var(--type-label)" font-weight="300" id="i4-focus-note" x="1020" y="302" data-theme-type-role="body" data-theme-type-base-role="body" data-theme-language="zh">&#x8bc6;&#x522b;&#x5931;&#x8d25;&#x7c7b;&#x578b;&#xff0c;&#x7ed9;&#x51fa;&#x964d;&#x7ea7;&#x8def;&#x5f84;</text><path d="M 310.5 472 L 317.5 482 L 310.5 492" fill="none" opacity="0.5" stroke="var(--ink)" stroke-dasharray="3 3" stroke-width="0.9"/><path d="M 318.5 472 L 325.5 482 L 318.5 492" fill="none" opacity="0.5" stroke="var(--ink)" stroke-dasharray="3 3" stroke-width="0.9"/><path d="M 465.5 472 L 472.5 482 L 465.5 492" fill="none" opacity="0.5" stroke="var(--ink)" stroke-dasharray="3 3" stroke-width="0.9"/><path d="M 473.5 472 L 480.5 482 L 473.5 492" fill="none" opacity="0.5" stroke="var(--ink)" stroke-dasharray="3 3" stroke-width="0.9"/><path d="M 620.5 472 L 627.5 482 L 620.5 492" fill="none" opacity="0.5" stroke="var(--ink)" stroke-dasharray="3 3" stroke-width="0.9"/><path d="M 628.5 472 L 635.5 482 L 628.5 492" fill="none" opacity="0.5" stroke="var(--ink)" stroke-dasharray="3 3" stroke-width="0.9"/><path d="M 775.5 472 L 782.5 482 L 775.5 492" fill="none" opacity="0.5" stroke="var(--ink)" stroke-dasharray="3 3" stroke-width="0.9"/><path d="M 783.5 472 L 790.5 482 L 783.5 492" fill="none" opacity="0.5" stroke="var(--ink)" stroke-dasharray="3 3" stroke-width="0.9"/><path d="M 216 464 h 48 v 27 h -30 l -10 10 v -10 h -8 z" fill="none" stroke="var(--ink-80)" stroke-width="1.4"/><line opacity="0.55" stroke="var(--ink)" stroke-width="0.9" x1="227" x2="253" y1="475" y2="475"/><line opacity="0.55" stroke="var(--ink)" stroke-width="0.9" x1="227" x2="246" y1="484" y2="484"/><rect fill="none" height="54" stroke="var(--ink-80)" stroke-width="1.4" width="42" x="374" y="455"/><line opacity="0.55" stroke="var(--ink)" stroke-width="0.9" x1="383" x2="407" y1="469" y2="469"/><line opacity="0.55" stroke="var(--ink)" stroke-width="0.9" x1="383" x2="407" y1="481" y2="481"/><line opacity="0.55" stroke="var(--ink)" stroke-width="0.9" x1="383" x2="407" y1="493" y2="493"/><circle cx="412" cy="484" fill="var(--paper)" r="9" stroke="var(--ink-80)" stroke-width="1.3"/><line stroke="var(--ink-80)" stroke-width="1.3" x1="418" x2="427" y1="490" y2="499"/><path d="M 526 461 L 574 461 L 559 485 L 541 485 Z" fill="none" stroke="var(--ink-80)" stroke-width="1.4"/><line stroke="var(--ink-80)" stroke-width="1.4" x1="541" x2="541" y1="485" y2="503"/><line stroke="var(--ink-80)" stroke-width="1.4" x1="559" x2="559" y1="485" y2="503"/><circle cx="550" cy="510" fill="var(--ink)" r="2.5"/><rect fill="none" height="42" stroke="var(--ink-80)" stroke-width="1.4" width="48" x="681" y="461"/><circle cx="695" cy="475" fill="none" r="6" stroke="var(--ink)" stroke-width="1"/><line opacity="0.55" stroke="var(--ink)" stroke-width="0.9" x1="708" x2="720" y1="473" y2="473"/><line opacity="0.55" stroke="var(--ink)" stroke-width="0.9" x1="708" x2="720" y1="484" y2="484"/><path d="M 690 494 L 696 500 L 707 487" fill="none" stroke="var(--ink)" stroke-width="1.1"/><line opacity="0.5" stroke="var(--ink)" stroke-dasharray="3 4" stroke-width="0.8" x1="705" x2="705" y1="461" y2="398"/><line opacity="0.5" stroke="var(--ink)" stroke-dasharray="3 4" stroke-width="0.8" x1="705" x2="705" y1="503" y2="604"/><rect fill="none" height="36" stroke="var(--ink-80)" stroke-width="1.3" width="42" x="684" y="362"/><line opacity="0.5" stroke="var(--ink)" stroke-width="0.8" x1="684" x2="726" y1="362" y2="398"/><line opacity="0.5" stroke="var(--ink)" stroke-width="0.8" x1="726" x2="684" y1="362" y2="398"/><text data-vnext-fit-box="152,228,938,785" data-vnext-text-key="solutions.text.005" fill="var(--ink-70)" font-family="var(--sans)" font-size="var(--type-label)" font-weight="300" x="737" y="385" data-theme-type-role="body" data-theme-type-base-role="body" data-theme-language="zh">&#x6743;&#x9650;&#x6821;&#x9a8c;</text><path d="M 687 604 h 19 l 16 18 l -16 18 h -19 z" fill="none" stroke="var(--ink-80)" stroke-width="1.3"/><circle cx="696" cy="622" fill="none" r="2.5" stroke="var(--ink)" stroke-width="1"/><text data-vnext-fit-box="152,228,938,785" data-vnext-text-key="solutions.text.006" fill="var(--ink-70)" font-family="var(--sans)" font-size="var(--type-label)" font-weight="300" x="737" y="627" data-theme-type-role="body" data-theme-type-base-role="body" data-theme-language="zh">&#x914d;&#x989d;&#x6821;&#x9a8c;</text><rect fill="none" height="54" stroke="var(--ink-80)" stroke-width="1.4" width="42" x="839" y="455"/><path d="M 847 469 l 4 4 l 7 -9" fill="none" stroke="var(--ink)" stroke-width="1"/><line opacity="0.5" stroke="var(--ink)" stroke-width="0.8" x1="862" x2="873" y1="469" y2="469"/><path d="M 847 482 l 4 4 l 7 -9" fill="none" stroke="var(--ink)" stroke-width="1"/><line opacity="0.5" stroke="var(--ink)" stroke-width="0.8" x1="862" x2="873" y1="482" y2="482"/><path d="M 847 495 l 4 4 l 7 -9" fill="none" stroke="var(--ink)" stroke-width="1"/><line opacity="0.5" stroke="var(--ink)" stroke-width="0.8" x1="862" x2="873" y1="495" y2="495"/><text data-vnext-fit-box="152,228,938,785" data-vnext-text-key="solutions.text.007" fill="var(--ink)" font-family="var(--sans)" font-size="var(--type-body-small)" font-weight="300" text-anchor="middle" x="240" y="544" data-theme-type-role="body" data-theme-type-base-role="body" data-theme-language="zh">&#x7528;&#x6237;&#x8f93;&#x5165;</text><text data-vnext-fit-box="152,228,938,785" data-vnext-text-key="solutions.text.008" fill="var(--ink)" font-family="var(--sans)" font-size="var(--type-body-small)" font-weight="300" text-anchor="middle" x="395" y="544" data-theme-type-role="body" data-theme-type-base-role="body" data-theme-language="zh">&#x69fd;&#x4f4d;&#x63d0;&#x53d6;</text><text data-vnext-fit-box="152,228,938,785" data-vnext-text-key="solutions.text.009" fill="var(--ink)" font-family="var(--sans)" font-size="var(--type-body-small)" font-weight="300" text-anchor="middle" x="550" y="544" data-theme-type-role="body" data-theme-type-base-role="body" data-theme-language="zh">&#x5019;&#x9009;&#x8def;&#x7531;</text><text data-vnext-fit-box="152,228,938,785" data-vnext-text-key="solutions.text.010" fill="var(--ink)" font-family="var(--sans)" font-size="var(--type-body-small)" font-weight="300" text-anchor="middle" x="705" y="544" data-theme-type-role="body" data-theme-type-base-role="body" data-theme-language="zh">&#x6743;&#x9650;&#x914d;&#x989d;</text><text data-vnext-fit-box="152,228,938,785" data-vnext-text-key="solutions.text.011" fill="var(--ink)" font-family="var(--sans)" font-size="var(--type-body-small)" font-weight="300" text-anchor="middle" x="860" y="544" data-theme-type-role="body" data-theme-type-base-role="body" data-theme-language="zh">&#x4e13;&#x5bb6; Agent</text><rect fill="none" height="48" rx="4" stroke="var(--ink-80)" stroke-width="1" width="164" x="275" y="696"/><text data-vnext-fit-box="272,699,442,754" data-vnext-text-key="solutions.text.012" fill="var(--ink)" font-family="var(--sans)" font-size="var(--type-body-small)" font-weight="300" letter-spacing="2" text-anchor="middle" x="357" y="727" data-theme-type-role="body" data-theme-type-base-role="body" data-theme-language="zh">&#x66f4;&#x5feb;&#x54cd;&#x5e94;</text><rect fill="none" height="48" rx="4" stroke="var(--ink-80)" stroke-width="1" width="164" x="463" y="696"/><text data-vnext-fit-box="460,699,630,754" data-vnext-text-key="solutions.text.013" fill="var(--ink)" font-family="var(--sans)" font-size="var(--type-body-small)" font-weight="300" letter-spacing="2" text-anchor="middle" x="545" y="727" data-theme-type-role="body" data-theme-type-base-role="body" data-theme-language="zh">&#x51cf;&#x5c11;&#x5347;&#x7ea7;</text><rect fill="none" height="48" rx="4" stroke="var(--ink-80)" stroke-width="1" width="164" x="651" y="696"/><text data-vnext-fit-box="648,699,818,754" data-vnext-text-key="solutions.text.014" fill="var(--ink)" font-family="var(--sans)" font-size="var(--type-body-small)" font-weight="300" letter-spacing="2" text-anchor="middle" x="733" y="727" data-theme-type-role="body" data-theme-type-base-role="body" data-theme-language="zh">&#x6ee1;&#x610f;&#x515c;&#x5e95;</text><rect fill="none" height="132" opacity="0.55" stroke="var(--ink)" stroke-dasharray="5 5" stroke-width="1" width="710" x="1020" y="330"/><text data-vnext-fit-box="1017,333,1733,472" data-vnext-text-key="solutions.text.015" fill="var(--ink)" font-family="var(--sans)" font-size="var(--type-label)" font-weight="300" x="1044" y="362" data-theme-type-role="body" data-theme-type-base-role="body" data-theme-language="zh">&#x8fd0;&#x884c;&#x5931;&#x8d25;&#x56e0;&#x7d20;</text><rect fill="var(--paper-panel)" height="52" opacity="0.8" stroke="var(--ink)" stroke-dasharray="4 4" stroke-width="0.9" width="118" x="1044" y="380"/><text data-vnext-fit-box="1041,383,1165,442" data-vnext-text-key="solutions.text.016" fill="var(--ink-70)" font-family="var(--sans)" font-size="var(--type-label)" font-weight="300" text-anchor="middle" x="1103" y="412" data-theme-type-role="body" data-theme-type-base-role="body" data-theme-language="zh">&#x8d85;&#x65f6;</text><rect fill="var(--paper-panel)" height="52" opacity="0.8" stroke="var(--ink)" stroke-dasharray="4 4" stroke-width="0.9" width="118" x="1180" y="380"/><text data-vnext-fit-box="1177,383,1301,442" data-vnext-text-key="solutions.text.017" fill="var(--ink-70)" font-family="var(--sans)" font-size="var(--type-label)" font-weight="300" text-anchor="middle" x="1239" y="412" data-theme-type-role="body" data-theme-type-base-role="body" data-theme-language="zh">&#x5e7b;&#x89c9;</text><rect fill="var(--paper-panel)" height="52" opacity="0.8" stroke="var(--ink)" stroke-dasharray="4 4" stroke-width="0.9" width="118" x="1316" y="380"/><text data-vnext-fit-box="1313,383,1437,442" data-vnext-text-key="solutions.text.018" fill="var(--ink-70)" font-family="var(--sans)" font-size="var(--type-label)" font-weight="300" text-anchor="middle" x="1375" y="412" data-theme-type-role="body" data-theme-type-base-role="body" data-theme-language="zh">&#x5de5;&#x5177;&#x5931;&#x8d25;</text><rect fill="var(--paper-panel)" height="52" opacity="0.8" stroke="var(--ink)" stroke-dasharray="4 4" stroke-width="0.9" width="118" x="1452" y="380"/><text data-vnext-fit-box="1449,383,1573,442" data-vnext-text-key="solutions.text.019" fill="var(--ink-70)" font-family="var(--sans)" font-size="var(--type-label)" font-weight="300" text-anchor="middle" x="1511" y="412" data-theme-type-role="body" data-theme-type-base-role="body" data-theme-language="zh">&#x8d8a;&#x6743;</text><rect fill="var(--paper-panel)" height="52" opacity="0.8" stroke="var(--ink)" stroke-dasharray="4 4" stroke-width="0.9" width="118" x="1588" y="380"/><text data-vnext-fit-box="1585,383,1709,442" data-vnext-text-key="solutions.text.020" fill="var(--ink-70)" font-family="var(--sans)" font-size="var(--type-label)" font-weight="300" text-anchor="middle" x="1647" y="412" data-theme-type-role="body" data-theme-type-base-role="body" data-theme-language="zh">&#x9650;&#x6d41;</text><path d="M 1069 605 L 1087 587 L 1099 599" fill="none" opacity="0.6" stroke="var(--ink)" stroke-dasharray="4 4" stroke-width="1.1"/><circle cx="1111" cy="587" fill="var(--paper)" r="16" stroke="var(--ink-80)" stroke-width="1.4"/><line stroke="var(--ink-80)" stroke-width="1.6" x1="1122" x2="1134" y1="598" y2="610"/><text data-vnext-fit-box="982,228,1768,785" data-vnext-text-key="solutions.text.021" fill="var(--ink)" font-family="var(--sans)" font-size="var(--type-label)" font-weight="300" text-anchor="middle" x="1105" y="664" data-theme-type-role="body" data-theme-type-base-role="body" data-theme-language="zh">&#x65ad;&#x70b9;&#x8bc6;&#x522b;</text><path d="M 1170 580 L 1177 590 L 1170 600" fill="none" opacity="0.5" stroke="var(--ink)" stroke-dasharray="3 3" stroke-width="0.9"/><path d="M 1178 580 L 1185 590 L 1178 600" fill="none" opacity="0.5" stroke="var(--ink)" stroke-dasharray="3 3" stroke-width="0.9"/><path d="M 1224 590 L 1290 552 L 1356 590 L 1290 628 Z" fill="none" stroke="var(--ink-80)" stroke-width="1.4"/><text data-vnext-fit-box="982,228,1768,785" data-vnext-text-key="solutions.text.022" fill="var(--ink)" font-family="var(--sans)" font-size="var(--type-label)" font-weight="300" id="sample-focus" text-anchor="middle" x="1290" y="664" data-theme-type-role="body" data-theme-type-base-role="body" data-theme-language="zh">&#x662f;&#x5426;&#x53ef;&#x91cd;&#x8bd5;</text><line opacity="0.65" stroke="var(--ink)" stroke-width="1.1" x1="1356" x2="1420" y1="590" y2="590"/><line opacity="0.65" stroke="var(--ink)" stroke-width="1.1" x1="1420" x2="1420" y1="590" y2="540"/><line opacity="0.65" stroke="var(--ink)" stroke-width="1.1" x1="1420" x2="1420" y1="590" y2="640"/><line opacity="0.65" stroke="var(--ink)" stroke-width="1.1" x1="1420" x2="1492" y1="540" y2="540"/><line opacity="0.65" stroke="var(--ink)" stroke-width="1.1" x1="1484" x2="1492" y1="535" y2="540"/><line opacity="0.65" stroke="var(--ink)" stroke-width="1.1" x1="1484" x2="1492" y1="545" y2="540"/><line opacity="0.65" stroke="var(--ink)" stroke-width="1.1" x1="1420" x2="1492" y1="640" y2="640"/><line opacity="0.65" stroke="var(--ink)" stroke-width="1.1" x1="1484" x2="1492" y1="635" y2="640"/><line opacity="0.65" stroke="var(--ink)" stroke-width="1.1" x1="1484" x2="1492" y1="645" y2="640"/><rect fill="none" height="32" stroke="var(--ink-80)" stroke-width="1.3" width="32" x="1510" y="524"/><line stroke="var(--ink)" stroke-width="1.2" x1="1510" x2="1536" y1="556" y2="530"/><line stroke="var(--ink)" stroke-width="1.2" x1="1531" x2="1539" y1="535" y2="543"/><text data-vnext-fit-box="982,228,1768,785" data-vnext-text-key="solutions.text.023" fill="var(--ink-70)" font-family="var(--sans)" font-size="var(--type-label)" font-weight="300" x="1554" y="545" data-theme-type-role="body" data-theme-type-base-role="body" data-theme-language="zh">&#x9000;&#x907f;&#x91cd;&#x8bd5; / &#x6362;&#x53c2;&#x518d;&#x8bd5;</text><path d="M 1512 632 h 22 m -6 -6 l 6 6 l -6 6" fill="none" stroke="var(--ink-80)" stroke-width="1.3"/><path d="M 1540 648 h -22 m 6 -6 l -6 6 l 6 6" fill="none" stroke="var(--ink-80)" stroke-width="1.3"/><text data-vnext-fit-box="982,228,1768,785" data-vnext-text-key="solutions.text.024" fill="var(--ink-70)" font-family="var(--sans)" font-size="var(--type-label)" font-weight="300" x="1554" y="645" data-theme-type-role="body" data-theme-type-base-role="body" data-theme-language="zh">&#x964d;&#x7ea7;&#x515c;&#x5e95;&#x8bdd;&#x672f;</text><rect fill="none" height="48" rx="4" stroke="var(--ink-80)" stroke-width="1" width="164" x="1199" y="696"/><text data-vnext-fit-box="1196,699,1366,754" data-vnext-text-key="solutions.text.025" fill="var(--ink)" font-family="var(--sans)" font-size="var(--type-body-small)" font-weight="300" letter-spacing="2" text-anchor="middle" x="1281" y="727" data-theme-type-role="body" data-theme-type-base-role="body" data-theme-language="zh">&#x51cf;&#x5c11;&#x91cd;&#x8bd5;</text><rect fill="none" height="48" rx="4" stroke="var(--ink-80)" stroke-width="1" width="164" x="1387" y="696"/><text data-vnext-fit-box="1384,699,1554,754" data-vnext-text-key="solutions.text.026" fill="var(--ink)" font-family="var(--sans)" font-size="var(--type-body-small)" font-weight="300" letter-spacing="2" text-anchor="middle" x="1469" y="727" data-theme-type-role="body" data-theme-type-base-role="body" data-theme-language="zh">&#x5b88;&#x4f4f;&#x5e95;&#x7ebf;</text></g></g>
+</svg>
+<div class="caption" data-vnext-claim-key="claim.text.001" data-vnext-fit-box="0,0,1920,1080" data-theme-furniture-source="wise-ppt-layout-theme-bindings@3" data-theme-furniture-role="takeaway" data-theme-type-role="bottom-takeaway" data-theme-type-base-role="bottom-takeaway" data-theme-color-role="primary" data-theme-color-alpha="1" data-theme-language="zh">&#x4e0d;&#x6b62;&#x91cd;&#x8bd5;&#x62a5;&#x9519;&#xff0c;&#x66f4;&#x8bc6;&#x522b;&#x5931;&#x8d25;&#x7c7b;&#x578b;&#x7ed9;&#x51fa;&#x964d;&#x7ea7;&#x8def;&#x5f84;&#x2014;&#x2014;&#x51cf;&#x91cd;&#x8bd5;&#x3001;&#x5b88;&#x5e95;&#x7ebf;&#x3002;</div>
 </div>
-
-<script src="../../../../../themes/packages/paper-ink/assets/particles.js"></script>
-<script>
-var NS = 'http://www.w3.org/2000/svg';
-var INK = 'var(--ink)';
-var INK80 = 'var(--ink-80)';
-var INK70 = 'var(--ink-70)';
-var INK45 = 'var(--ink-45)';
-var PAPER = 'var(--paper)';
-if (location.search.indexOf('accent') >= 0) document.documentElement.classList.add('accent');
-var ACCENT = document.documentElement.classList.contains('accent');
-var FOCUS = getComputedStyle(document.documentElement).getPropertyValue('--wp-color-focus').trim();
-var G = document.getElementById('draw');
-function el(tag, attrs) {
-  var e = document.createElementNS(NS, tag);
-  for (var k in attrs) e.setAttribute(k, attrs[k]);
-  G.appendChild(e); return e;
-}
-function txt(x, y, str, attrs) {
-  var t = el('text', Object.assign({x:x, y:y}, attrs||{}));
-  t.textContent = str; return t;
-}
-var MONO = 'var(--mono)', SANS = 'var(--sans)';
-
-G = el('g', {transform:'translate(0 +6.3)'});
-
-
-/* ---------- 双面板骨架 ---------- */
-[[150, '意图路由', '把问题分发给对的专家 Agent'],
- [980, '异常兜底', '识别失败类型，给出降级路径']].forEach(function(p){
-  var focus = p[0] === 980;
-  el('rect', {id:focus?'i4-focus-frame':'', x:p[0], y:220, width:790, height:560, rx:4, fill:'var(--paper-panel)', stroke:INK80, 'stroke-width':1});
-  el('rect', {x:p[0]+5, y:225, width:780, height:550, rx:3, fill:'none', stroke:INK, 'stroke-width':.6, opacity:.3});
-  txt(p[0]+40, 272, p[1], {id:focus?'i4-focus-title':'', 'font-family':SANS, 'font-weight':300, 'font-size':'var(--type-subheading)', fill:INK});
-  txt(p[0]+40, 302, p[2], {id:focus?'i4-focus-note':'', 'font-family':SANS, 'font-weight':300, 'font-size':'var(--type-label)', fill:INK70});
-});
-
-/* ---------- 面板 A · 图标链 + 竖向分支 ---------- */
-var AX = [240, 395, 550, 705, 860], CY = 482;
-/* 步间虚线 chevron */
-for (var i = 0; i < 4; i++) {
-  var mx = (AX[i] + AX[i+1]) / 2;
-  [0, 8].forEach(function(dx){
-    el('path', {d:'M '+(mx-7+dx)+' '+(CY-10)+' L '+(mx+dx)+' '+CY+' L '+(mx-7+dx)+' '+(CY+10), fill:'none', stroke:INK, 'stroke-width':.9, opacity:.5, 'stroke-dasharray':'3 3'});
-  });
-}
-/* 1 用户输入 — 对话泡 */
-(function(){
-  var x = AX[0], y = CY;
-  el('path', {d:'M '+(x-24)+' '+(y-18)+' h 48 v 27 h -30 l -10 10 v -10 h -8 z', fill:'none', stroke:INK80, 'stroke-width':1.4});
-  el('line', {x1:x-13, y1:y-7, x2:x+13, y2:y-7, stroke:INK, 'stroke-width':.9, opacity:.55});
-  el('line', {x1:x-13, y1:y+2, x2:x+6, y2:y+2, stroke:INK, 'stroke-width':.9, opacity:.55});
-})();
-/* 2 槽位提取 — 文档 + 放大镜 */
-(function(){
-  var x = AX[1], y = CY;
-  el('rect', {x:x-21, y:y-27, width:42, height:54, fill:'none', stroke:INK80, 'stroke-width':1.4});
-  [y-13, y-1, y+11].forEach(function(yy){ el('line', {x1:x-12, y1:yy, x2:x+12, y2:yy, stroke:INK, 'stroke-width':.9, opacity:.55}); });
-  el('circle', {cx:x+17, cy:y+2, r:9, fill:PAPER, stroke:INK80, 'stroke-width':1.3});
-  el('line', {x1:x+23, y1:y+8, x2:x+32, y2:y+17, stroke:INK80, 'stroke-width':1.3});
-})();
-/* 3 候选路由 — 漏斗 */
-(function(){
-  var x = AX[2], y = CY;
-  el('path', {d:'M '+(x-24)+' '+(y-21)+' L '+(x+24)+' '+(y-21)+' L '+(x+9)+' '+(y+3)+' L '+(x-9)+' '+(y+3)+' Z', fill:'none', stroke:INK80, 'stroke-width':1.4});
-  el('line', {x1:x-9, y1:y+3, x2:x-9, y2:y+21, stroke:INK80, 'stroke-width':1.4});
-  el('line', {x1:x+9, y1:y+3, x2:x+9, y2:y+21, stroke:INK80, 'stroke-width':1.4});
-  el('circle', {cx:x, cy:y+28, r:2.5, fill:INK});
-})();
-/* 4 权限配额（分支锚点） */
-(function(){
-  var x = AX[3], y = CY;
-  el('rect', {x:x-24, y:y-21, width:48, height:42, fill:'none', stroke:INK80, 'stroke-width':1.4});
-  el('circle', {cx:x-10, cy:y-7, r:6, fill:'none', stroke:INK, 'stroke-width':1});
-  el('line', {x1:x+3, y1:y-9, x2:x+15, y2:y-9, stroke:INK, 'stroke-width':.9, opacity:.55});
-  el('line', {x1:x+3, y1:y+2, x2:x+15, y2:y+2, stroke:INK, 'stroke-width':.9, opacity:.55});
-  el('path', {d:'M '+(x-15)+' '+(y+12)+' L '+(x-9)+' '+(y+18)+' L '+(x+2)+' '+(y+5), fill:'none', stroke:INK, 'stroke-width':1.1});
-})();
-/* 分支：上 权限校验 / 下 配额校验 */
-el('line', {x1:AX[3], y1:CY-21, x2:AX[3], y2:398, stroke:INK, 'stroke-width':.8, opacity:.5, 'stroke-dasharray':'3 4'});
-el('line', {x1:AX[3], y1:CY+21, x2:AX[3], y2:604, stroke:INK, 'stroke-width':.8, opacity:.5, 'stroke-dasharray':'3 4'});
-(function(){
-  var x = AX[3], y = 380;
-  el('rect', {x:x-21, y:y-18, width:42, height:36, fill:'none', stroke:INK80, 'stroke-width':1.3});
-  el('line', {x1:x-21, y1:y-18, x2:x+21, y2:y+18, stroke:INK, 'stroke-width':.8, opacity:.5});
-  el('line', {x1:x+21, y1:y-18, x2:x-21, y2:y+18, stroke:INK, 'stroke-width':.8, opacity:.5});
-  txt(x+32, y+5, '权限校验', {'font-family':SANS, 'font-weight':300, 'font-size':'var(--type-label)', fill:INK70});
-})();
-(function(){
-  var x = AX[3], y = 622;
-  el('path', {d:'M '+(x-18)+' '+(y-18)+' h 19 l 16 18 l -16 18 h -19 z', fill:'none', stroke:INK80, 'stroke-width':1.3});
-  el('circle', {cx:x-9, cy:y, r:2.5, fill:'none', stroke:INK, 'stroke-width':1});
-  txt(x+32, y+5, '配额校验', {'font-family':SANS, 'font-weight':300, 'font-size':'var(--type-label)', fill:INK70});
-})();
-/* 5 专家 Agent — 勾选单 */
-(function(){
-  var x = AX[4], y = CY;
-  el('rect', {x:x-21, y:y-27, width:42, height:54, fill:'none', stroke:INK80, 'stroke-width':1.4});
-  [y-13, y, y+13].forEach(function(yy){
-    el('path', {d:'M '+(x-13)+' '+(yy)+' l 4 4 l 7 -9', fill:'none', stroke:INK, 'stroke-width':1});
-    el('line', {x1:x+2, y1:yy, x2:x+13, y2:yy, stroke:INK, 'stroke-width':.8, opacity:.5});
-  });
-})();
-['用户输入', '槽位提取', '候选路由', '权限配额', '专家 Agent'].forEach(function(s, i){
-  txt(AX[i], CY+62, s, {'font-family':SANS, 'font-weight':300, 'font-size':'var(--type-body-small)', 'text-anchor':'middle', fill:INK});
-});
-/* A · CTA 墨底 chip */
-(function(){
-  var labels = ['更快响应', '减少升级', '满意兜底'];
-  var w = 164, gap = 24, x = 150 + (790 - (labels.length*w + (labels.length-1)*gap)) / 2;
-  labels.forEach(function(s, i){
-    el('rect', {x:x, y:696, width:w, height:48, rx:4, fill:'none', stroke:INK80, 'stroke-width':1});
-    txt(x+w/2, 727, s, {'font-family':SANS, 'font-weight':300, 'font-size':'var(--type-body-small)', 'letter-spacing':2, 'text-anchor':'middle', fill:INK});
-    x += w + gap;
-  });
-})();
-
-/* ---------- 面板 B · 虚线阻断容器 + 判定分叉 ---------- */
-el('rect', {x:1020, y:330, width:710, height:132, fill:'none', stroke:INK, 'stroke-width':1, opacity:.55, 'stroke-dasharray':'5 5'});
-txt(1044, 362, '运行失败因素', {'font-family':SANS, 'font-weight':300, 'font-size':'var(--type-label)', fill:INK});
-(function(){
-  var labels = ['超时', '幻觉', '工具失败', '越权', '限流'];
-  var w = 118, gap = 18, bx = 1044;
-  labels.forEach(function(s){
-    el('rect', {x:bx, y:380, width:w, height:52, fill:'var(--paper-panel)', stroke:INK, 'stroke-width':.9, opacity:.8, 'stroke-dasharray':'4 4'});
-    txt(bx+w/2, 412, s, {'font-family':SANS, 'font-weight':300, 'font-size':'var(--type-label)', 'text-anchor':'middle', fill:INK70});
-    bx += w + gap;
-  });
-})();
-/* 断点识别 — 断线 + 放大镜 */
-(function(){
-  var x = 1105, y = 590;
-  el('path', {d:'M '+(x-36)+' '+(y+15)+' L '+(x-18)+' '+(y-3)+' L '+(x-6)+' '+(y+9), fill:'none', stroke:INK, 'stroke-width':1.1, 'stroke-dasharray':'4 4', opacity:.6});
-  el('circle', {cx:x+6, cy:y-3, r:16, fill:PAPER, stroke:INK80, 'stroke-width':1.4});
-  el('line', {x1:x+17, y1:y+8, x2:x+29, y2:y+20, stroke:INK80, 'stroke-width':1.6});
-  txt(x, 664, '断点识别', {'font-family':SANS, 'font-weight':300, 'font-size':'var(--type-label)', 'text-anchor':'middle', fill:INK});
-})();
-[0, 8].forEach(function(dx){
-  el('path', {d:'M '+(1170+dx)+' 580 L '+(1177+dx)+' 590 L '+(1170+dx)+' 600', fill:'none', stroke:INK, 'stroke-width':.9, opacity:.5, 'stroke-dasharray':'3 3'});
-});
-/* 判定菱形 */
-el('path', {d:'M 1224 590 L 1290 552 L 1356 590 L 1290 628 Z', fill:'none', stroke:INK80, 'stroke-width':1.4});
-txt(1290, 664, '是否可重试', {id:'sample-focus', 'font-family':SANS, 'font-weight':300, 'font-size':'var(--type-label)', 'text-anchor':'middle', fill:INK});
-/* 分叉 */
-var FORK = INK;
-el('line', {x1:1356, y1:590, x2:1420, y2:590, stroke:FORK, 'stroke-width':1.1, opacity:.65});
-el('line', {x1:1420, y1:590, x2:1420, y2:540, stroke:FORK, 'stroke-width':1.1, opacity:.65});
-el('line', {x1:1420, y1:590, x2:1420, y2:640, stroke:FORK, 'stroke-width':1.1, opacity:.65});
-el('line', {x1:1420, y1:540, x2:1492, y2:540, stroke:FORK, 'stroke-width':1.1, opacity:.65});
-el('line', {x1:1484, y1:535, x2:1492, y2:540, stroke:FORK, 'stroke-width':1.1, opacity:.65});
-el('line', {x1:1484, y1:545, x2:1492, y2:540, stroke:FORK, 'stroke-width':1.1, opacity:.65});
-el('line', {x1:1420, y1:640, x2:1492, y2:640, stroke:FORK, 'stroke-width':1.1, opacity:.65});
-el('line', {x1:1484, y1:635, x2:1492, y2:640, stroke:FORK, 'stroke-width':1.1, opacity:.65});
-el('line', {x1:1484, y1:645, x2:1492, y2:640, stroke:FORK, 'stroke-width':1.1, opacity:.65});
-/* 上分支：退避重试 */
-(function(){
-  var x = 1526, y = 540;
-  el('rect', {x:x-16, y:y-16, width:32, height:32, fill:'none', stroke:INK80, 'stroke-width':1.3});
-  el('line', {x1:x-16, y1:y+16, x2:x+10, y2:y-10, stroke:INK, 'stroke-width':1.2});
-  el('line', {x1:x+5, y1:y-5, x2:x+13, y2:y+3, stroke:INK, 'stroke-width':1.2});
-  txt(x+28, y+5, '退避重试 / 换参再试', {'font-family':SANS, 'font-weight':300, 'font-size':'var(--type-label)', fill:INK70});
-})();
-/* 下分支：降级兜底 */
-(function(){
-  var x = 1526, y = 640;
-  el('path', {d:'M '+(x-14)+' '+(y-8)+' h 22 m -6 -6 l 6 6 l -6 6', fill:'none', stroke:INK80, 'stroke-width':1.3});
-  el('path', {d:'M '+(x+14)+' '+(y+8)+' h -22 m 6 -6 l -6 6 l 6 6', fill:'none', stroke:INK80, 'stroke-width':1.3});
-  txt(x+28, y+5, '降级兜底话术', {'font-family':SANS, 'font-weight':300, 'font-size':'var(--type-label)', fill:INK70});
-})();
-/* B · CTA chip */
-(function(){
-  var labels = ['减少重试', '守住底线'];
-  var w = 164, gap = 24, x = 980 + (790 - (labels.length*w + (labels.length-1)*gap)) / 2;
-  labels.forEach(function(s, i){
-    el('rect', {x:x, y:696, width:w, height:48, rx:4, fill:'none', stroke:INK80, 'stroke-width':1});
-    txt(x+w/2, 727, s, {'font-family':SANS, 'font-weight':300, 'font-size':'var(--type-body-small)', 'letter-spacing':2, 'text-anchor':'middle', fill:INK});
-    x += w + gap;
-  });
-})();
-
-stageFit();
-</script>
-<script type="application/json" id="xp-surface-recipe">{"theme":"klein-blue","color_name":"blue","layout_code":"i4","title":"layout-i4 · 双面板分支解法流（AI 主题）","layout":"paper-ink.flow.branching-solutions","page_role":"compare","canvas":{"token":"paper","value":"#f2efe9","reason":"常规内容页在纸面上建立层级。"},"surface_profile":"left-context-right-complete-solution","surfaces":[{"role":"base-layout","material":"paper-plane","fill":"#f2efe9","stack":0},{"role":"context-panel","material":"recessed","fill":"#e8e5df","stack":1,"shadow":"none"},{"role":"complete-solution-panel","material":"top-white","fill":"#ffffff","stack":2,"border":{"color":"#1a1a1a","width":2},"shadow":"accent-hard"},{"role":"focus-marker","material":"accent","fill":"#002fa7","stack":3}],"accent":{"value":"#002fa7","semantic_channel":"新方案、胜出侧或决定性差异","furniture":"左上第一行 doc-kicker 固定墨黑，第二行 doc-title 使用当前主题色；folio 跟随元信息通道：墨色 45%（同英文章节标签），不使用主题色。","neutral_exceptions":["普通英文标签","轴名","层名","结构编号","MODEL","非当前数据"],"furniture_mode":"black-first-theme-second","folio_mode":"metadata-neutral"},"border_policy":"主体 1px 墨线；唯一焦点可用 2px 橙线，所有容器方角。","shadow_policy":"非强调态不绘制阴影；页面最终强调状态开启时，唯一被举起的主证据才按既有几何绘制一次 10px 零模糊主题色硬影；不得新增阴影或改变阴影几何。","noise_policy":"由主题统一提供唯一一层约 6% 黑色 fractal-noise；页面不得自带 noise 节点；浅色页 multiply，墨面可 overlay。","reference_evidence":{"file":"ai_studio_code (8).html","cards":["card-5","card-6"],"rule":"旧侧后退为承托面，新侧只在真正的前景对象上使用不透明白面。"},"acceptance":["强调色只落一个语义通道；同一序列可重复，但不得扩散到结构元数据。","纯白只用于 top-white，不能替代默认纸面。","缩略图必须从该主题独立 frame 的实际渲染重建。"],"status":"recipe-ready","surface_bindings":[{"selector":"#draw rect[x=\"150\"][y=\"220\"][width=\"790\"][height=\"560\"]","expected_count":1,"role":"context-panel","material":"recessed","fill":"#e8e5df","stack":1,"shadow":"none"},{"selector":"#i4-focus-frame","expected_count":1,"role":"complete-solution-panel","material":"top-white","fill":"#ffffff","stack":2,"border":{"color":"#1a1a1a","width":2},"shadow":"accent-hard"}],"surface_binding_reason":"真实浏览器 DOM 审计后锁定的稳定 selector；expected_count 是逐页门禁。","theme_identity":[{"group_id":"identity.fallback-title","label":"异常兜底标题","members":[{"selector":"#i4-focus-title","treatment":"identity.text","expected_count":1}]}],"emphasis_targets":[{"target_id":"focus.fallback-decision","label":"异常兜底","content_role":"右侧异常兜底模块","reason_hint":"沿用旧强调色，只给异常兜底标题与外框上色；识别失败类型，给出降级路径不上色。","members":[{"selector":"#i4-focus-frame","role":"outline","treatment":"focus.color","expected_count":1},{"selector":"#i4-focus-title","role":"value","treatment":"focus.color","expected_count":1}]}],"sample_target_id":"focus.fallback-decision"}</script>
-<script src="../../catalog-surface.js" data-catalog-theme-surface="catalog-theme-recipes-v2"></script>
-<script src="../../catalog-typography.js" data-catalog-typography="brand-latin-numeric-oswald-v1"></script>
+<script>stageFit();</script>
 </body>
 </html>

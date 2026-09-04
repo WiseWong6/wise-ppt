@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html data-theme-id="paper-ink" lang="zh-CN" data-runtime="wise-ppt-specimen" data-typography-mode="all-sans" data-page-id="gallery-ai-d6" data-page-role="act" data-theme="paper-ink" data-layout="paper-ink.scaffold.contact" data-layout-source="gallery" data-emphasis-targets='[{"target_id":"contact.primary","members":[{"selector":"text[x=\"1144\"][y=\"574\"]","role":"label","treatment":"focus.text","expected_count":1},{"selector":"text[x=\"1250\"][y=\"574\"]","role":"label","treatment":"focus.text","expected_count":1}]}]' data-vnext-semantic-key-map='[]'>
+<html data-theme-id="paper-ink" lang="zh-CN" data-runtime="wise-ppt-specimen" data-typography-mode="all-sans" data-page-id="gallery-ai-d6" data-page-role="act" data-theme="paper-ink" data-layout="paper-ink.scaffold.contact" data-layout-source="gallery" data-vnext-semantic-key-map='[]' data-emphasis-targets='[{"target_id":"contact.primary","members":[{"selector":"[data-vnext-visual-key=\"d6.contact-primary-label\"]","role":"label","treatment":"focus.text","expected_count":1},{"selector":"[data-vnext-visual-key=\"d6.contact-primary-value\"]","role":"label","treatment":"focus.text","expected_count":1}]}]' data-vnext-type-slot-map='[{"slot":"content-title","tag":"text","text":"歪斯 Wise","occurrence":0}]'>
 <head>
 <meta charset="UTF-8">
 <title>layout-d6 · 联络尾页 · @歪斯Wise</title>
@@ -106,7 +106,7 @@ contact.forEach(function(c, i){
 });
 
 /* ================= 右块：名片双线卡 x1100–1720, y220–850 ================= */
-el('rect', {x:KX, y:KY, width:KW, height:KH, fill:'var(--paper-panel)', stroke:INK80, 'stroke-width':1.3});
+el('rect', {'data-vnext-visual-key':'d6.contact-panel', x:KX, y:KY, width:KW, height:KH, fill:'var(--paper-panel)', stroke:INK80, 'stroke-width':1.3});
 el('rect', {x:KX+5, y:KY+5, width:KW-10, height:KH-10, fill:'none', stroke:INK, 'stroke-width':.6, opacity:.3});
 /* 卡头 */
 txt(KX+44, KY+64, 'WISE — CONTACT', {'font-family':MONO, 'font-size':'var(--type-label)', 'letter-spacing':3, fill:INK45});
@@ -124,8 +124,8 @@ var lines = [
 ];
 lines.forEach(function(L, i){
   var y = KY + 292 + i * 62;
-  txt(KX+44, y, L[0], {'font-family':MONO, 'font-size':'var(--type-meta)', 'letter-spacing':3, fill:INK45});
-  txt(KX+150, y, L[1], {'font-family':MONO, 'font-size':'var(--type-body-small)', 'letter-spacing':1, fill:INK});
+  txt(KX+44, y, L[0], Object.assign({}, i===1 ? {'data-vnext-visual-key':'d6.contact-primary-label'} : {}, {'font-family':MONO, 'font-size':'var(--type-meta)', 'letter-spacing':3, fill:INK45}));
+  txt(KX+150, y, L[1], Object.assign({}, i===1 ? {'data-vnext-visual-key':'d6.contact-primary-value'} : {}, {'font-family':MONO, 'font-size':'var(--type-body-small)', 'letter-spacing':1, fill:INK}));
   if (i < lines.length-1)
     el('line', {x1:KX+44, y1:y+22, x2:KX+KW-44, y2:y+22, stroke:INK, 'stroke-width':.6, opacity:.18});
 });

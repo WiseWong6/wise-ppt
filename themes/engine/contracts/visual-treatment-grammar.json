@@ -1,5 +1,5 @@
 {
-  "contract": "wise-ppt-visual-treatment-grammar@3",
+  "contract": "wise-ppt-visual-treatment-grammar@4",
   "description": "默认主题身份与内容强调共用一套视觉动作字典；颜色由主题 token 决定，语义差异不得依赖新增第四种颜色。",
   "color_channels": {
     "identity": "--wp-color-functional",
@@ -10,9 +10,10 @@
   },
   "constraints": {
     "identity_groups_per_page": {
-      "min": 1,
+      "min": 0,
       "max": 2
     },
+    "neutral_only_requires_provenance": true,
     "active_focus_groups_per_page": {
       "min": 0,
       "max": 1
@@ -143,6 +144,12 @@
       "channel": "focus_primary",
       "effect": [
         "outline-color",
+        "hard-shadow"
+      ]
+    },
+    "focus.shadow-only": {
+      "channel": "focus_primary",
+      "effect": [
         "hard-shadow"
       ]
     },

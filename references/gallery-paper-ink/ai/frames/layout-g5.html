@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html data-theme-id="paper-ink" lang="zh-CN" data-runtime="wise-ppt-specimen" data-typography-mode="all-sans" data-page-id="gallery-ai-g5" data-page-role="explain" data-theme="paper-ink" data-layout="paper-ink.radial.three-principles" data-layout-source="gallery" data-emphasis-targets='[{"target_id":"focus.key-layer","members":[{"selector":"#g5-focus-title","role":"value","treatment":"focus.text","expected_count":1}]}]' data-catalog-legacy-emphasis-profile="content-only" data-catalog-legacy-emphasis-members='[{"selector":"#g5-focus-title","role":"value"}]' data-catalog-legacy-emphasis-foreground-members='[]' data-catalog-legacy-emphasis-ref="sample.g5.g5-focus" data-vnext-semantic-key-map='[]'>
+<html data-theme-id="paper-ink" lang="zh-CN" data-runtime="wise-ppt-specimen" data-typography-mode="all-sans" data-page-id="gallery-ai-g5" data-page-role="explain" data-theme="paper-ink" data-layout="paper-ink.radial.three-principles" data-layout-source="gallery" data-vnext-semantic-key-map='[]' data-emphasis-targets='[{"target_id":"focus.key-layer","members":[{"selector":"#g5-focus-title","role":"value","treatment":"focus.color","expected_count":1},{"selector":"[data-vnext-visual-key=\"g5.principle-focus\"]","role":"outline","treatment":"focus.shadow-only","expected_count":1}]}]' data-vnext-type-slot-map='[{"slot":"content-title","tag":"text","text":"一页一个重心","occurrence":0},{"slot":"content-title","tag":"text","text":"内容先于装饰","occurrence":0},{"slot":"content-title","tag":"text","text":"颜色必须有语义","occurrence":0},{"slot":"content-title","tag":"text","text":"密度服从层级","occurrence":0}]'>
 <head>
 <meta charset="UTF-8">
 <title>layout-g5 · 三原则放射</title>
@@ -62,7 +62,7 @@ line(478,CY,760,CY,{id:'g5-ray-left',stroke:INK45,'stroke-width':1,'stroke-dasha
 line(1160,CY,1442,CY,{id:'g5-ray-right',stroke:INK45,'stroke-width':1,'stroke-dasharray':'3 5'});
 line(CX,468,CX,656,{id:'g5-ray-bottom',stroke:INK45,'stroke-width':1,'stroke-dasharray':'3 5'});
 [[760,CY],[1160,CY],[CX,468]].forEach(function(p){el('circle',{cx:p[0],cy:p[1],r:3.2,fill:INK});});
-el('rect',{x:760,y:304,width:400,height:164,fill:'var(--paper-panel)',stroke:INK80,'stroke-width':1.4});
+el('rect',{'data-vnext-visual-key':'g5.principle-focus',x:760,y:304,width:400,height:164,fill:'var(--paper-panel)',stroke:INK80,'stroke-width':1.4});
 el('rect',{x:767,y:311,width:386,height:150,fill:'none',stroke:INK,'stroke-width':.6,opacity:.35});
 txt(CX,354,'DESIGN INTENT',{'font-family':MONO,'font-size':'var(--type-label)','letter-spacing':2.8,'text-anchor':'middle',fill:INK70});
 txt(CX,406,'一页一个重心',{id:'g5-focus-title','font-family':SANS,'font-size':'var(--type-heading)','font-weight':300,'text-anchor':'middle',fill:INK});

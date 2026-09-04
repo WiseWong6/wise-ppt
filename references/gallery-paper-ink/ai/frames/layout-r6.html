@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html data-theme-id="paper-ink" lang="zh-CN" data-runtime="wise-ppt-specimen" data-typography-mode="all-sans" data-page-id="gallery-ai-r6" data-page-role="explain" data-theme="paper-ink" data-layout="paper-ink.hierarchy.four-independent-bands" data-layout-source="gallery" data-emphasis-targets='[{"target_id":"focus.key-layer","members":[{"selector":"[data-vnext-text-key=\"input.text.003\"]","role":"value","treatment":"focus.text","expected_count":1}]}]' data-catalog-legacy-emphasis-profile="copy-only" data-catalog-legacy-emphasis-members='[{"selector":"#focus-caption","role":"label"}]' data-catalog-legacy-emphasis-foreground-members='[]' data-catalog-legacy-emphasis-ref="sample.r6.r6-focus" data-vnext-semantic-key-map='[{"key":"input.text.003","tag":"text","text":"01 / INPUT","occurrence":0}]'>
+<html data-theme-id="paper-ink" lang="zh-CN" data-runtime="wise-ppt-specimen" data-typography-mode="all-sans" data-page-id="gallery-ai-r6" data-page-role="explain" data-theme="paper-ink" data-layout="paper-ink.hierarchy.four-independent-bands" data-layout-source="gallery" data-vnext-semantic-key-map='[{"key":"input.text.003","tag":"text","text":"01 / INPUT","occurrence":0}]' data-emphasis-targets='[{"target_id":"focus.key-layer","members":[{"selector":"#focus-caption","role":"label","treatment":"focus.color","expected_count":1}]}]' data-vnext-type-slot-map='[{"slot":"content-title","tag":"text","text":"输入边界","occurrence":0},{"slot":"content-title","tag":"text","text":"推理约束","occurrence":0},{"slot":"content-title","tag":"text","text":"结果评测","occurrence":0},{"slot":"content-title","tag":"text","text":"上线治理","occurrence":0}]'>
 <head><meta charset="UTF-8"><title>layout-r6 · 四层可信交付栈 · 从输入到治理</title><script src="../../../../runtime/stage-fit.js"></script><link rel="stylesheet" href="../../../../themes/engine/assets/design-tokens.css">
 <link rel="stylesheet" href="../../../../themes/packages/paper-ink/theme.css">
 <link rel="stylesheet" href="../../../../themes/packages/hermes-orange/theme.css">
@@ -15,12 +15,15 @@
   </g>
 </svg><div class="caption">输入边界、推理约束、结果评测与上线治理，共同构成<span id="focus-caption">可信交付</span>。</div></div><script>
 document.querySelectorAll('svg.scene text').forEach(function(node){
+  var ROW_FILLS = ['var(--wp-color-functional)', 'var(--ink)', 'var(--ink-45)', 'var(--ink-25)'];
   if (/^0[1-4]\s*\//.test(node.textContent.trim())) {
     node.setAttribute('data-number-kind', 'plain');
     node.setAttribute('data-number-role', 'sequence');
     node.setAttribute('data-number-part', 'label');
     node.setAttribute('data-text-kind', 'number');
-    node.style.setProperty('fill', 'var(--wp-color-functional)');
+    var row = /^0(\d)/.exec(node.textContent.trim());
+    node.setAttribute('data-vnext-visual-role', 'r6.row-title-ramp-' + row[1]);
+    node.style.setProperty('fill', ROW_FILLS[Number(row[1]) - 1]);
   }
 });
 stageFit();

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html data-theme-id="paper-ink" lang="zh-CN" data-runtime="wise-ppt-specimen" data-typography-mode="all-sans" data-page-id="gallery-ai-b2" data-page-role="sequence" data-theme="paper-ink" data-layout="paper-ink.temporal.gantt-waterfall" data-layout-source="gallery" data-emphasis-targets='[{"target_id":"focus.key-step","members":[{"selector":"#b2-ring-1","role":"outline","treatment":"focus.outline-depth","expected_count":1},{"selector":"#b2-ring-2","role":"outline","treatment":"focus.outline-depth","expected_count":1},{"selector":"#sample-focus","role":"value","treatment":"focus.text","expected_count":1},{"selector":"#b2-failure-note","role":"label","treatment":"focus.text","expected_count":1}]}]' data-catalog-legacy-emphasis-profile="content-only" data-catalog-legacy-emphasis-members='[{"selector":"#b2-ring-1","role":"outline"},{"selector":"#b2-ring-2","role":"outline"},{"selector":"#sample-focus","role":"value"},{"selector":"#b2-failure-note","role":"label"}]' data-catalog-legacy-emphasis-foreground-members='[]' data-catalog-legacy-emphasis-ref="sample.b2.b2-focus" data-vnext-semantic-key-map='[{"key":"durations.text.003","tag":"text","text":"0","occurrence":0}]'>
+<html data-theme-id="paper-ink" lang="zh-CN" data-runtime="wise-ppt-specimen" data-typography-mode="all-sans" data-page-id="gallery-ai-b2" data-page-role="sequence" data-theme="paper-ink" data-layout="paper-ink.temporal.gantt-waterfall" data-layout-source="gallery" data-vnext-semantic-key-map='[{"key":"durations.text.003","tag":"text","text":"0","occurrence":0}]' data-emphasis-targets='[{"target_id":"focus.key-step","members":[{"selector":"#b2-ring-1","role":"outline","treatment":"focus.color","expected_count":1},{"selector":"#b2-ring-2","role":"outline","treatment":"focus.color","expected_count":1},{"selector":"#sample-focus","role":"value","treatment":"focus.color","expected_count":1},{"selector":"#b2-failure-note","role":"label","treatment":"focus.color","expected_count":1}]}]'>
 <head>
 <meta charset="UTF-8">
 <title>layout-b2 · 甘特瀑布 · 模型训练耗时</title>
@@ -93,7 +93,7 @@ txt(X0 - 14, RY - 14, 'T0', {'font-family':MONO, 'font-size':'var(--type-meta)',
 /* ============ 四条甘特条带 ============ */
 var BARH = 54;
 function rowLabel(y, en, zh, idx){
-  txt(440, y + 26, en, {'font-family':MONO, 'font-size':'var(--type-body-small)', 'letter-spacing':2, 'text-anchor':'end', fill:'var(--ink-70)'});
+  txt(440, y + 26, en, {'data-vnext-visual-role':'b2.stage-label', 'font-family':MONO, 'font-size':'var(--type-body-small)', 'letter-spacing':2, 'text-anchor':'end', fill:'var(--ink-70)'});
   txt(440, y + 50, zh, {'font-family':SANS, 'font-weight':300, 'font-size':'var(--type-body)', 'text-anchor':'end', fill:'color-mix(in srgb, var(--ink) 50%, transparent)'});
   txt(140, y + 34, idx, {'font-family':MONO, 'font-size':'var(--type-meta)', fill:'color-mix(in srgb, var(--ink) 40%, transparent)'});
   el('line', {x1:140, y1:y + BARH + 22, x2:X1 + 14, y2:y + BARH + 22,

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html data-theme-id="paper-ink" lang="zh-CN" data-runtime="wise-ppt-specimen" data-typography-mode="all-sans" data-page-id="gallery-ai-b3" data-page-role="sequence" data-theme="paper-ink" data-layout="paper-ink.temporal.swimlane-roadmap" data-layout-source="gallery" data-emphasis-targets='[{"target_id":"focus.key-step","members":[{"selector":"[data-vnext-text-key=\"roadmap.text.003\"]","role":"value","treatment":"focus.text","expected_count":1}]}]' data-catalog-legacy-emphasis-profile="copy-only" data-catalog-legacy-emphasis-members='[{"selector":"#focus-caption","role":"label"}]' data-catalog-legacy-emphasis-foreground-members='[]' data-catalog-legacy-emphasis-ref="sample.b3.b3-focus" data-vnext-semantic-key-map='[{"key":"roadmap.text.003","tag":"text","text":"25Q3","occurrence":0}]'>
+<html data-theme-id="paper-ink" lang="zh-CN" data-runtime="wise-ppt-specimen" data-typography-mode="all-sans" data-page-id="gallery-ai-b3" data-page-role="sequence" data-theme="paper-ink" data-layout="paper-ink.temporal.swimlane-roadmap" data-layout-source="gallery" data-vnext-semantic-key-map='[{"key":"roadmap.text.003","tag":"text","text":"25Q3","occurrence":0}]' data-emphasis-targets='[{"target_id":"focus.key-step","members":[{"selector":"#focus-caption","role":"label","treatment":"focus.color","expected_count":1}]}]'>
 <head>
 <meta charset="UTF-8">
 <title>layout-b3 · 多泳道路线图 · AI 产品</title>
@@ -98,15 +98,15 @@ var LANES = [
   {no:'L3', en:'APPS',   cn:'应用层', cy:720}
 ];
 LANES.forEach(function(L){
-  txt(150, L.cy-8, L.no + ' · ' + L.en, {'font-family':MONO, 'font-size':'var(--type-meta)', 'letter-spacing':2, fill:INK});
+  txt(150, L.cy-8, L.no + ' · ' + L.en, {'data-vnext-visual-role':'b3.lane-label', 'font-family':MONO, 'font-size':'var(--type-meta)', 'letter-spacing':2, fill:INK});
   txt(150, L.cy+22, L.cn, {'font-family':SANS, 'font-weight':300, 'font-size':'var(--type-body-small)', fill:INK70});
   el('line', {x1:296, y1:L.cy, x2:328, y2:L.cy, stroke:INK, 'stroke-width':.8, opacity:.4});
 });
 
 /* ---------- span 条与里程碑 ---------- */
 function span(x1, x2, cy, en, cn, filled, cnDx) {
-  el('rect', {x:x1, y:cy-18, width:x2-x1, height:36,
-    fill: filled ? 'url(#hatch24)' : 'var(--paper-panel)', stroke:INK80, 'stroke-width':1.2});
+  el('rect', Object.assign({}, filled ? {} : {'data-vnext-visual-role':'b3.roadmap-span'}, {x:x1, y:cy-18, width:x2-x1, height:36,
+    fill: filled ? 'url(#hatch24)' : 'var(--paper-panel)', stroke:INK80, 'stroke-width':1.2}));
   el('line', {x1:x1, y1:cy-28, x2:x1, y2:cy+28, stroke:INK, 'stroke-width':1, opacity:.7});
   el('line', {x1:x2, y1:cy-28, x2:x2, y2:cy+28, stroke:INK, 'stroke-width':1, opacity:.7});
   txt((x1+x2)/2, cy+5, en, {'font-family':MONO, 'font-size':'var(--type-meta)', 'letter-spacing':2, 'text-anchor':'middle', fill:INK});

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html data-theme-id="paper-ink" lang="zh-CN" data-runtime="wise-ppt-specimen" data-typography-mode="all-sans" data-page-id="gallery-ai-i4" data-page-role="compare" data-theme="paper-ink" data-layout="paper-ink.flow.branching-solutions" data-layout-source="gallery" data-emphasis-targets='[{"target_id":"focus.fallback-decision","members":[{"selector":"#i4-focus-frame","role":"outline","treatment":"focus.color","expected_count":1},{"selector":"#i4-focus-title","role":"value","treatment":"focus.color","expected_count":1}]}]' data-catalog-legacy-emphasis-profile="content-only" data-catalog-legacy-emphasis-members='[{"selector":"#i4-focus-frame","role":"outline"},{"selector":"#i4-focus-title","role":"value"},{"selector":"#i4-focus-note","role":"label"}]' data-catalog-legacy-emphasis-foreground-members='[]' data-catalog-legacy-emphasis-ref="sample.i4.i4-focus" data-vnext-semantic-key-map='[]'>
+<html data-theme-id="paper-ink" lang="zh-CN" data-runtime="wise-ppt-specimen" data-typography-mode="all-sans" data-page-id="gallery-ai-i4" data-page-role="compare" data-theme="paper-ink" data-layout="paper-ink.flow.branching-solutions" data-layout-source="gallery" data-vnext-semantic-key-map='[]' data-emphasis-targets='[{"target_id":"focus.fallback-decision","members":[{"selector":"[data-vnext-visual-key=\"i4.solution-panel\"]","role":"outline","treatment":"focus.color","expected_count":1},{"selector":"#i4-focus-title","role":"value","treatment":"focus.color","expected_count":1}]}]' data-vnext-type-slot-map='[{"slot":"content-title","tag":"text","text":"意图路由","occurrence":0},{"slot":"content-title","tag":"text","text":"异常兜底","occurrence":0}]'>
 <head>
 <meta charset="UTF-8">
 <title>layout-i4 · 双面板分支解法流（AI 主题）</title>
@@ -65,7 +65,7 @@ G = el('g', {transform:'translate(0 +6.3)'});
 [[150, '意图路由', '把问题分发给对的专家 Agent'],
  [980, '异常兜底', '识别失败类型，给出降级路径']].forEach(function(p){
   var focus = p[0] === 980;
-  el('rect', {id:focus?'i4-focus-frame':'', x:p[0], y:220, width:790, height:560, rx:4, fill:'var(--paper-panel)', stroke:INK80, 'stroke-width':1});
+  el('rect', {id:focus?'i4-focus-frame':'', 'data-vnext-visual-key':focus?'i4.solution-panel':'i4.context-panel', x:p[0], y:220, width:790, height:560, rx:4, fill:'var(--paper-panel)', stroke:INK80, 'stroke-width':1});
   el('rect', {x:p[0]+5, y:225, width:780, height:550, rx:3, fill:'none', stroke:INK, 'stroke-width':.6, opacity:.3});
   txt(p[0]+40, 272, p[1], {id:focus?'i4-focus-title':'', 'font-family':SANS, 'font-weight':300, 'font-size':'var(--type-subheading)', fill:INK});
   txt(p[0]+40, 302, p[2], {id:focus?'i4-focus-note':'', 'font-family':SANS, 'font-weight':300, 'font-size':'var(--type-label)', fill:INK70});

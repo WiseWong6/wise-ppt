@@ -1888,6 +1888,7 @@ FAIL-SAFE · AUDITED PER CALL
   const r7LogoWall=data.entries.find(item=>Number(item.num)===67);
   if(r7LogoWall){
     r7LogoWall.sourceLayout='R7';
+    r7LogoWall.snippet=r7LogoWall.snippet.replace('>CLAUDEAI</text>', '>GLM</text>');
     const accentMarks=[
       {sourceStart:'<line x1="467.5" y1="340.55" x2="467.5" y2="361.45"',strokeWidth:'.8',opacity:'.55'},
       {sourceStart:'<line x1="1681.3" y1="363" x2="1703.7" y2="363"',strokeWidth:'.8',opacity:'.5'},

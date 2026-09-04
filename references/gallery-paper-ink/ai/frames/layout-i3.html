@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html data-theme-id="paper-ink" lang="zh-CN" data-runtime="wise-ppt-specimen" data-typography-mode="all-sans" data-page-id="gallery-ai-i3" data-page-role="compare" data-theme="paper-ink" data-layout="paper-ink.flow.dual-track" data-layout-source="gallery" data-emphasis-targets='[{"target_id":"focus.key-step","members":[{"selector":"#i3-focus-ring","role":"outline","treatment":"focus.outline-depth","expected_count":1},{"selector":"#i3-focus-no","role":"value","treatment":"focus.text","expected_count":1},{"selector":"#i3-focus-cn","role":"value","treatment":"focus.text","expected_count":1},{"selector":"#i3-focus-en","role":"annotation","treatment":"focus.text","expected_count":1}]}]' data-catalog-legacy-emphasis-profile="content-only" data-catalog-legacy-emphasis-members='[{"selector":"#i3-focus-ring","role":"outline"},{"selector":"#i3-focus-no","role":"value"},{"selector":"#i3-focus-cn","role":"value"},{"selector":"#i3-focus-en","role":"annotation"}]' data-catalog-legacy-emphasis-foreground-members='[]' data-catalog-legacy-emphasis-ref="sample.i3.i3-focus" data-vnext-semantic-key-map='[]'>
+<html data-theme-id="paper-ink" lang="zh-CN" data-runtime="wise-ppt-specimen" data-typography-mode="all-sans" data-page-id="gallery-ai-i3" data-page-role="compare" data-theme="paper-ink" data-layout="paper-ink.flow.dual-track" data-layout-source="gallery" data-vnext-semantic-key-map='[]' data-emphasis-targets='[{"target_id":"focus.key-step","members":[{"selector":"#i3-focus-ring","role":"outline","treatment":"focus.color","expected_count":1},{"selector":"#i3-focus-no","role":"value","treatment":"focus.color","expected_count":1},{"selector":"#i3-focus-cn","role":"value","treatment":"focus.color","expected_count":1},{"selector":"#i3-focus-en","role":"annotation","treatment":"focus.color","expected_count":1}]}]' data-vnext-type-slot-map='[{"slot":"content-title","tag":"text","text":"需求接入","occurrence":0},{"slot":"content-title","tag":"text","text":"需求接入","occurrence":1},{"slot":"content-title","tag":"text","text":"人工调研","occurrence":0},{"slot":"content-title","tag":"text","text":"AI 检索","occurrence":0},{"slot":"content-title","tag":"text","text":"手写文档","occurrence":0},{"slot":"content-title","tag":"text","text":"AI 生成","occurrence":0},{"slot":"content-title","tag":"text","text":"人工审阅","occurrence":0},{"slot":"content-title","tag":"text","text":"AI 校验","occurrence":0},{"slot":"content-title","tag":"text","text":"手动发布","occurrence":0},{"slot":"content-title","tag":"text","text":"一键发布","occurrence":0}]'>
 <head>
 <meta charset="UTF-8">
 <title>layout-i3 · 双轨转化路径对比 · 传统工作流 vs AI 工作流</title>
@@ -61,9 +61,9 @@ var XS = [320, 640, 960, 1280, 1600];
 
 /* ---------- 轨题 ---------- */
 txt(200, 306, 'OLD LINK — MANUAL OPS', {'font-family':MONO, 'font-size':'var(--type-label)', 'letter-spacing':3, fill:INK45});
-el('line', {x1:200, y1:318, x2:440, y2:318, stroke:INK, 'stroke-width':.6, opacity:.3});
+el('line', {'data-vnext-visual-role':'i3.track-title-rule', x1:200, y1:318, x2:440, y2:318, stroke:INK, 'stroke-width':2, opacity:1});
 txt(200, 636, 'NEW LINK — AI WORKFLOW', {'font-family':MONO, 'font-size':'var(--type-label)', 'letter-spacing':3, fill:INK});
-el('line', {x1:200, y1:648, x2:440, y2:648, stroke:INK, 'stroke-width':.6, opacity:.35});
+el('line', {'data-vnext-visual-role':'i3.track-title-rule', x1:200, y1:648, x2:440, y2:648, stroke:INK, 'stroke-width':2, opacity:1});
 
 /* ---------- 轨道基线（站间细线 + 刻度齿） ---------- */
 function rail(y, op) {

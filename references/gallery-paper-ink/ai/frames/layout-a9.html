@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html data-theme-id="paper-ink" lang="zh-CN" data-runtime="wise-ppt-specimen" data-typography-mode="all-sans" data-page-id="gallery-ai-a9" data-page-role="prove" data-theme="paper-ink" data-layout="paper-ink.evidence.mobile-screen-gallery" data-layout-source="gallery" data-emphasis-targets='[{"target_id":"focus.key-step","members":[{"selector":"[data-vnext-text-key=\"screens.text.001\"]","role":"value","treatment":"focus.text","expected_count":1}]}]' data-catalog-legacy-emphasis-profile="copy-only" data-catalog-legacy-emphasis-members='[{"selector":"#focus-caption","role":"label"}]' data-catalog-legacy-emphasis-foreground-members='[]' data-catalog-legacy-emphasis-ref="sample.a9.a9-focus" data-vnext-semantic-key-map='[{"key":"screens.text.001","tag":"text","text":"9:41","occurrence":0}]'>
+<html data-theme-id="paper-ink" lang="zh-CN" data-runtime="wise-ppt-specimen" data-typography-mode="all-sans" data-page-id="gallery-ai-a9" data-page-role="prove" data-theme="paper-ink" data-layout="paper-ink.evidence.mobile-screen-gallery" data-layout-source="gallery" data-vnext-semantic-key-map='[{"key":"screens.text.001","tag":"text","text":"9:41","occurrence":0}]' data-emphasis-targets='[{"target_id":"focus.key-step","members":[{"selector":"#focus-caption","role":"label","treatment":"focus.color","expected_count":1}]}]'>
 <head>
 <meta charset="UTF-8">
 <title>layout-a9 · 手机多屏画廊 · AI 助手</title>
@@ -185,7 +185,7 @@ function screen4(x) {
 var screens = [screen1, screen2, screen3, screen4];
 XS.forEach(function(x, i) {
   /* 机身：圆角外框 1.2px + 内圈 0.6px */
-  el('rect', {x:x, y:PY, width:PW, height:PH, rx:30, fill:'var(--paper-panel)', stroke:INK80, 'stroke-width':1.3});
+  el('rect', {'data-vnext-visual-role':'a9.device-surface', x:x, y:PY, width:PW, height:PH, rx:30, fill:'var(--paper-panel)', stroke:INK80, 'stroke-width':1.3});
   el('rect', {x:x+7, y:PY+7, width:PW-14, height:PH-14, rx:24, fill:'none', stroke:INK, 'stroke-width':.6, opacity:.3});
   /* 听筒暗示 */
   el('line', {x1:x+PW/2-22, y1:PY+14, x2:x+PW/2+22, y2:PY+14, stroke:INK, 'stroke-width':1.6, opacity:.5});
@@ -207,7 +207,7 @@ var steps = [['STEP 01 — ASK', '提问'], ['STEP 02 — GENERATE', '生成'],
              ['STEP 03 — EDIT', '润色'], ['STEP 04 — INSIGHTS', '统计']];
 steps.forEach(function(s, i) {
   var cx = XS[i] + PW/2;
-  txt(cx, 856, s[0], {'font-family':MONO, 'font-size':'var(--type-meta)', 'letter-spacing':2, fill:INK45, 'text-anchor':'middle'});
+  txt(cx, 856, s[0], {'data-vnext-visual-role':'a9.step-label', 'font-family':MONO, 'font-size':'var(--type-meta)', 'letter-spacing':2, fill:INK45, 'text-anchor':'middle'});
   txt(cx, 880, s[1], {'font-family':SANS, 'font-weight':300, 'font-size':'var(--type-meta)', fill:'var(--wp-adapter-pi-ink-60)', 'text-anchor':'middle'});
 });
 

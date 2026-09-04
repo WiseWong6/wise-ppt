@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html data-theme-id="paper-ink" lang="zh-CN" data-runtime="wise-ppt-specimen" data-typography-mode="all-sans" data-page-id="gallery-ai-r5" data-page-role="synthesize" data-theme="paper-ink" data-layout="paper-ink.network.interlocking-system" data-layout-source="gallery" data-emphasis-targets='[{"target_id":"focus.key-node","members":[{"selector":"#r5-focus-en","role":"annotation","treatment":"focus.text","expected_count":1},{"selector":"#r5-focus-cn","role":"value","treatment":"focus.text","expected_count":1},{"selector":"#r5-focus-line","role":"outline","treatment":"focus.outline-depth","expected_count":1},{"selector":"#r5-focus-arrow","role":"outline","treatment":"focus.outline-depth","expected_count":1}]}]' data-catalog-legacy-emphasis-profile="content-only" data-catalog-legacy-emphasis-members='[{"selector":"#r5-focus-en","role":"annotation"},{"selector":"#r5-focus-cn","role":"value"},{"selector":"#r5-focus-line","role":"outline"},{"selector":"#r5-focus-arrow","role":"outline"}]' data-catalog-legacy-emphasis-foreground-members='[]' data-catalog-legacy-emphasis-ref="sample.r5.r5-focus" data-vnext-semantic-key-map='[{"key":"system.text.004","tag":"text","text":"内容","occurrence":0},{"key":"system.text.006","tag":"text","text":"模型","occurrence":0},{"key":"system.text.008","tag":"text","text":"评测","occurrence":0}]'>
+<html data-theme-id="paper-ink" lang="zh-CN" data-runtime="wise-ppt-specimen" data-typography-mode="all-sans" data-page-id="gallery-ai-r5" data-page-role="synthesize" data-theme="paper-ink" data-layout="paper-ink.network.interlocking-system" data-layout-source="gallery" data-vnext-semantic-key-map='[{"key":"system.text.004","tag":"text","text":"内容","occurrence":0},{"key":"system.text.006","tag":"text","text":"模型","occurrence":0},{"key":"system.text.008","tag":"text","text":"评测","occurrence":0}]' data-emphasis-targets='[{"target_id":"focus.key-node","members":[{"selector":"#r5-focus-en","role":"annotation","treatment":"focus.color","expected_count":1},{"selector":"#r5-focus-cn","role":"value","treatment":"focus.color","expected_count":1},{"selector":"#r5-focus-line","role":"outline","treatment":"focus.color","expected_count":1},{"selector":"#r5-focus-arrow","role":"outline","treatment":"focus.color","expected_count":1}]}]'>
 <head>
 <meta charset="UTF-8">
 <title>layout-r5 · 互锁齿轮 · AI 系统协同</title>
@@ -42,6 +42,12 @@
   document.head.appendChild(style);
   const host=document.getElementById('gears-host');
   host.innerHTML=entry.snippet;
+  host.querySelectorAll('[data-repeat-unit="module"]').forEach(module=>{
+    const outline=module.querySelector('use[href="#pi-gear-outline"]');
+    const fill=Array.from(module.children).find(node=>node.tagName.toLowerCase()==='circle');
+    if(outline)outline.setAttribute('data-vnext-visual-role','r5.gear-white-fill');
+    if(fill)fill.setAttribute('data-vnext-visual-role','r5.gear-white-fill');
+  });
   const content={
     module_1:'内容',
     module_1_desc:'知识与任务',

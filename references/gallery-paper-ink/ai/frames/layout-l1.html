@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html data-theme-id="paper-ink" lang="zh-CN" data-runtime="wise-ppt-specimen" data-typography-mode="all-sans" data-page-id="gallery-ai-l1" data-page-role="explain" data-theme="paper-ink" data-layout="paper-ink.mapping.weighted-arcs" data-layout-source="gallery" data-emphasis-targets='[{"target_id":"focus.key-node","members":[{"selector":"#l1-focus-edge","role":"outline","treatment":"focus.outline-depth","expected_count":1},{"selector":"#l1-focus-label","role":"annotation","treatment":"focus.text","expected_count":1}]}]' data-catalog-legacy-emphasis-profile="content-only" data-catalog-legacy-emphasis-members='[{"selector":"#l1-focus-edge","role":"outline"},{"selector":"#l1-focus-label","role":"annotation"}]' data-catalog-legacy-emphasis-foreground-members='[]' data-catalog-legacy-emphasis-ref="sample.l1.l1-focus" data-vnext-semantic-key-map='[]'>
+<html data-theme-id="paper-ink" lang="zh-CN" data-runtime="wise-ppt-specimen" data-typography-mode="all-sans" data-page-id="gallery-ai-l1" data-page-role="explain" data-theme="paper-ink" data-layout="paper-ink.mapping.weighted-arcs" data-layout-source="gallery" data-vnext-semantic-key-map='[]' data-emphasis-targets='[{"target_id":"focus.key-node","members":[{"selector":"#l1-focus-edge","role":"outline","treatment":"focus.color","expected_count":1},{"selector":"#l1-focus-label","role":"annotation","treatment":"focus.color","expected_count":1}]}]'>
 <head>
 <meta charset="UTF-8">
 <title>layout-l1 · 权重弧线图 · Transformer 注意力</title>
@@ -74,7 +74,7 @@ var chips = [
 var TOP = 532, H = 56;
 chips.forEach(function(c, i){
   c.cx = c.x + c.w/2;
-  el('rect', {x:c.x, y:TOP, width:c.w, height:H, fill:'var(--paper-panel)',
+  el('rect', {'data-vnext-visual-role':'l1.token-box', x:c.x, y:TOP, width:c.w, height:H, fill:'var(--paper-panel)',
     stroke:INK80, 'stroke-width':1.2});
   el('rect', {x:c.x+4, y:TOP+4, width:c.w-8, height:H-8, fill:'none',
     stroke:INK, 'stroke-width':.7, opacity:.5});

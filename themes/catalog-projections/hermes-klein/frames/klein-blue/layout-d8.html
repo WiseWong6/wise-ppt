@@ -1,23 +1,21 @@
 <!DOCTYPE html>
-<html lang="zh-CN" data-runtime="wise-ppt-specimen" data-typography-mode="all-sans" data-wise-catalog-fonts="true" data-page-id="gallery-ai-d8" data-catalog-source-marker="orange" data-page-role="hook" data-theme="paper-ink" data-layout="paper-ink.scaffold.cover-wide" data-layout-source="gallery" data-emphasis-targets="[]" data-vnext-semantic-key-map="[]" data-theme-id="klein-blue" data-surface-source="catalog-theme-recipes-v2" data-xp-recipe-id="klein-blue:d8" data-xp-surface-profile="editorial-specimen" data-xp-recipe-status="recipe-ready" data-xp-frame-kind="custom-redraw" data-xp-page-kind="cover">
+<html lang="zh-CN" data-runtime="wise-ppt-specimen" data-theme-id="klein-blue" data-typography-mode="mixed" data-wise-catalog-fonts="true" data-page-id="gallery-ai-d8" data-page-role="cover" data-page-kind="nonrelationship" data-layout-id="wise-ppt.layout.nonrelationship.D8" data-layout-code="D8" data-layout-source="canonical-seed" data-layout-seed-sha256="b83fcfa07982db20119e187116a2a0e7b51cdabeb0d6c2916f153eba73f97446" data-layout-structure-sha256="bb85afe7140af604448b306ee5b1808cad3f421d55dd5b678194ae20c4081452" data-layout-visual-plan="bb4bc5c6d1264fdf8d1d2f7ff5b849893f7a110a853e31578cd452511ad2cb1e" data-layout-visual-materialization="ee70b6dfe74dd99cf0d5f16f31b7a3a81b86b4d632002d3ba70a0547dcce6c8c" data-resolved-theme-sha256="1f9ebea0e4bc84cd589274859d82014d71e42ea9c8055699808bbe7bc9298fe2" data-layout-visual-source="wise-ppt-layout-theme-bindings@3" data-catalog-frame-id="klein-blue:d8" data-catalog-frame-ready="true">
 <head>
 <meta charset="UTF-8">
-<title>layout-d8 · 封面 · 左图右题 · AI 工程化实战</title>
+<title>layout-d8 · 封面 · 左图右题</title>
 <script src="../../../../../runtime/stage-fit.js"></script>
-<!--
-  纸墨线稿样张 · D8 封面 · 左图右题·长标题
-  左侧:有主体、层次和连接关系的 Agent 工程工作台线稿;右侧:kicker → 通栏大标题(长标题也放得下) → 副题
-  版式纪律:不放讲者、日期、版本或关键词区块,也不留信息带横线;无 FIG、无 caption
--->
 <link rel="stylesheet" href="../../../../../themes/engine/assets/design-tokens.css">
 <link rel="stylesheet" href="../../../../../themes/packages/paper-ink/theme.css">
 <link rel="stylesheet" href="../../../../../themes/packages/hermes-orange/theme.css">
 <link rel="stylesheet" href="../../../../../themes/packages/klein-blue/theme.css">
 <link rel="stylesheet" href="../../../../../themes/engine/assets/catalog-fonts.css" data-wise-catalog-fonts="true">
 <link rel="stylesheet" href="../../../../../themes/engine/assets/slide-components.css">
+<link rel="stylesheet" href="../../../../../themes/engine/assets/component-theme.css">
+<link rel="stylesheet" href="../../../../../runtime/component-behavior.css">
+<link rel="stylesheet" href="../../../../../runtime/deck-component-contract.css">
 <link rel="stylesheet" href="../../../../../references/shell.css">
-<style>
-  svg.scene { position: absolute; inset: 0; z-index: 1; pointer-events: none; }
+<style data-layout-seed-css="b83fcfa07982db20119e187116a2a0e7b51cdabeb0d6c2916f153eba73f97446">@scope (.slide[data-layout-id="wise-ppt.layout.nonrelationship.D8"]) {
+svg.scene { position: absolute; inset: 0; z-index: 1; pointer-events: none; }
 
   /* 右侧落版文字块:与左侧工程工作台同轴居中 */
   .kicker {
@@ -38,200 +36,38 @@
     font-size: var(--type-subheading); letter-spacing: .1em;
     color: var(--ink-70); z-index: 2;
   }
-</style>
-
-<style data-catalog-source-style="v3-d8-orange">
-  @font-face {
-    font-family: 'Oswald Replica';
-    src: url('../../../../../themes/engine/fonts/catalog/Oswald-Bold-Latin.catalog.woff2') format('woff2');
-    font-style: normal;
-    font-weight: 700;
-    font-display: block;
-  }
-  :root,
-  :root[data-theme-id="klein-blue"] {
-    --xp-paper: #f2efe9;
-    --xp-outside: #e5e2dc;
-    --xp-ink: #1a1a1a;
-    --xp-accent: #002fa7;
-    --xp-top: #ffffff;
-    --xp-serif: 'Han Serif Catalog', 'Han Serif', serif;
-    --wp-color-surface-canvas: var(--xp-paper);
-    --wp-color-surface-recessed: #e4dfd5;
-    --wp-color-surface-panel: rgba(255,255,255,.4);
-    --wp-color-primary: var(--xp-ink);
-    --wp-color-functional: var(--xp-ink);
-    --wp-color-body: rgba(26,26,26,.72);
-    --wp-color-metadata: rgba(26,26,26,.45);
-    --wp-color-divider: rgba(26,26,26,.2);
-    --wp-color-construction: rgba(26,26,26,.12);
-    --wp-color-focus: var(--xp-accent);
-    --wp-private-identity-accent: var(--xp-ink);
-  }
-  body { background: var(--xp-outside); }
-  #v3-d8-orange.stage { background: var(--xp-paper); }
-  #v3-d8-orange .doc.tl {
-    display: flex; flex-direction: column; gap: 8px;
-    width: max-content; white-space: normal;
-    line-height: 1; letter-spacing: 0; text-transform: none;
-  }
-  #v3-d8-orange .doc-kicker,
-  #v3-d8-orange .doc-title,
-  #v3-d8-orange .folio {
-    font-family: 'Oswald Replica', 'Han Sans Catalog', 'Han Sans', 'PingFang SC', sans-serif;
-    font-weight: 700;
-    line-height: 1.25;
-    letter-spacing: .15em;
-    text-transform: uppercase;
-  }
-  #v3-d8-orange .folio { color: rgba(26, 26, 26, .45); }
-
-  .kicker { font-family: 'Oswald Replica', 'Han Sans Catalog', 'Han Sans', 'PingFang SC', sans-serif; font-weight: 700; color: var(--xp-ink); }
-  .title { font-weight: 700; color: var(--xp-ink); }
-  .subtitle { color: rgba(26,26,26,.72); }
-
-</style>
-<link rel="stylesheet" href="../../catalog-surface.css" data-catalog-theme-surface="catalog-theme-recipes-v2">
-<link rel="stylesheet" href="../../title-furniture.css" data-catalog-title-furniture="black-first-theme-second-v1">
-</head>
-<body class="slide">
-<div id="v3-d8-orange" class="stage" data-template-id="D8" data-block-id="gallery-primary" data-renderer-kind="typography" data-component-source="native" data-component-id="native.paper-ink.scaffold.cover-wide.long-lockup" data-content-ref="example.d8" data-catalog-source-marker="page-recipe">
-  <div class="doc tl" data-template-part="support" data-template-slot="support" data-template-slot-kind="text"><span class="doc-kicker">PPT 标题</span><span class="doc-title">页面标题</span></div>
-  <div class="folio" data-template-part="folio">页码 / 总页数 — BY @歪斯Wise</div>
-
-  <svg class="scene" data-template-part="illustration" data-template-slot="illustration" data-template-slot-kind="illustration" width="1920" height="1080" viewBox="0 0 1920 1080">
-    <g id="draw"></g>
-  </svg>
-
-  <div class="kicker" data-template-part="kicker" data-template-slot="kicker" data-template-slot-kind="text">AGENT ENGINEERING — 2026 SUMMER</div>
-  <div class="title" data-template-part="primary" data-template-slot="primary" data-template-slot-kind="text">AI 工程化实战</div>
-  <div class="subtitle" data-template-part="subtitle" data-template-slot="subtitle" data-template-slot-kind="text">从模型到产品的工程鸿沟 · Agent 实战第一课</div>
-</div>
-
-<script src="../../../../../themes/packages/paper-ink/assets/particles.js"></script>
-<script>
-var NS = 'http://www.w3.org/2000/svg';
-var INK80 = 'var(--ink-80)';
-var INK = 'var(--ink)';
-var TOP = 'var(--xp-top)';
-var ACCENT = 'var(--xp-accent)';
-var G = document.getElementById('draw');
-function el(tag, attrs) {
-  var e = document.createElementNS(NS, tag);
-  for (var k in attrs) e.setAttribute(k, attrs[k]);
-  G.appendChild(e); return e;
 }
-
-/* ===== 左侧 Agent 工程工作台:主机、双屏、工具舱与评测回路组成一个完整主体 ===== */
-(function(){
-  var X = 170, Y = 250;
-
-  /* 背景评测回路:用大弧线把整台设备串成一个系统 */
-  el('ellipse', {cx:X+342, cy:Y+285, rx:344, ry:286, fill:'none', stroke:INK,
-    'stroke-width':.65, opacity:.16, 'stroke-dasharray':'3 9'});
-  el('path', {d:'M '+(X+34)+' '+(Y+240)+' A 320 266 0 0 1 '+(X+520)+' '+(Y+48), fill:'none', stroke:INK,
-    'stroke-width':1.05, opacity:.4, 'stroke-linecap':'round'});
-  el('path', {d:'M '+(X+644)+' '+(Y+286)+' A 320 266 0 0 1 '+(X+178)+' '+(Y+532), fill:'none', stroke:INK,
-    'stroke-width':1.05, opacity:.4, 'stroke-linecap':'round'});
-
-  /* 主屏:双线框+顶栏+左导航+三个内部工程区 */
-  el('rect', {x:X+98, y:Y+70, width:472, height:300, fill:'none',
-    stroke:INK80, 'stroke-width':1.3});
-  el('rect', {x:X+106, y:Y+78, width:456, height:284, fill:'none',
-    stroke:INK, 'stroke-width':.55, opacity:.28});
-  el('line', {x1:X+98, y1:Y+118, x2:X+570, y2:Y+118, stroke:INK, 'stroke-width':.9, opacity:.58});
-  [0,1,2].forEach(function(i){
-    el('circle', {cx:X+122+i*18, cy:Y+94, r:3, fill:i===2?INK:'none', stroke:INK, 'stroke-width':.65, opacity:.58});
-  });
-  el('circle', {cx:X+542, cy:Y+94, r:7, fill:'none', stroke:INK, 'stroke-width':.8, opacity:.55});
-  el('circle', {cx:X+542, cy:Y+94, r:2.2, fill:INK, opacity:.7});
-  el('line', {x1:X+174, y1:Y+118, x2:X+174, y2:Y+370, stroke:INK, 'stroke-width':.8, opacity:.46});
-  [0,1,2,3,4].forEach(function(i){
-    el('rect', {x:X+122, y:Y+144+i*42, width:28, height:20, fill:'none', stroke:INK,
-      'stroke-width':.7, opacity:i===1?.68:.34});
-    /* 米色封面只保留一个橙色当前项。 */
-    if(i===1) el('circle', {cx:X+136, cy:Y+154+i*42, r:2.5, fill:'var(--xp-accent)', opacity:.9});
-  });
-
-  /* 左上任务链 */
-  el('rect', {x:X+202, y:Y+146, width:204, height:78, fill:'none', stroke:INK,
-    'stroke-width':1, opacity:.65});
-  [0,1,2].forEach(function(i){
-    el('circle', {cx:X+228+i*62, cy:Y+185, r:9, fill:TOP, stroke:INK, 'stroke-width':.85, opacity:.7});
-    if(i<2) el('line', {x1:X+238+i*62, y1:Y+185, x2:X+280+i*62, y2:Y+185, stroke:INK,
-      'stroke-width':.75, opacity:.45, 'stroke-dasharray':'4 4'});
-  });
-  /* 右上工具舱 */
-  el('rect', {x:X+428, y:Y+146, width:108, height:78, fill:'none', stroke:INK,
-    'stroke-width':1, opacity:.65});
-  el('circle', {cx:X+466, cy:Y+185, r:15, fill:'none', stroke:INK, 'stroke-width':.8, opacity:.55});
-  el('circle', {cx:X+466, cy:Y+185, r:4, fill:INK, opacity:.68});
-  el('line', {x1:X+490, y1:Y+173, x2:X+520, y2:Y+173, stroke:INK, 'stroke-width':.7, opacity:.4});
-  el('line', {x1:X+490, y1:Y+188, x2:X+512, y2:Y+188, stroke:INK, 'stroke-width':.7, opacity:.32});
-  /* 下方评测走势 */
-  el('rect', {x:X+202, y:Y+246, width:334, height:86, fill:'none', stroke:INK,
-    'stroke-width':1, opacity:.65});
-  el('polyline', {points:(X+222)+','+(Y+306)+' '+(X+268)+','+(Y+292)+' '+(X+316)+','+(Y+300)+' '+(X+368)+','+(Y+270)+' '+(X+420)+','+(Y+284)+' '+(X+470)+','+(Y+260)+' '+(X+516)+','+(Y+272),
-    fill:'none', stroke:INK, 'stroke-width':1.1, opacity:.68});
-  [0,1,2,3,4,5,6].forEach(function(i){
-    var pts=[[222,306],[268,292],[316,300],[368,270],[420,284],[470,260],[516,272]][i];
-    el('circle', {cx:X+pts[0], cy:Y+pts[1], r:2.6, fill:TOP, stroke:INK, 'stroke-width':.7, opacity:.72});
-  });
-
-  /* 两端悬浮的输入/输出卡,让工作台有明确的进出路径 */
-  [
-    {x:X+2,y:Y+186,w:116,h:70,side:1}, {x:X+588,y:Y+186,w:116,h:70,side:-1}
-  ].forEach(function(c, i){
-    el('rect', {x:c.x, y:c.y, width:c.w, height:c.h, fill:TOP, stroke:INK,
-      'stroke-width':1, opacity:.72});
-    el('rect', {x:c.x+7, y:c.y+7, width:c.w-14, height:c.h-14, fill:'none', stroke:INK,
-      'stroke-width':.5, opacity:.25});
-    el('circle', {cx:c.x+30, cy:c.y+35, r:8, fill:'none', stroke:INK, 'stroke-width':.8, opacity:.58});
-    el('circle', {cx:c.x+30, cy:c.y+35, r:2.3, fill:INK, opacity:.72});
-    el('line', {x1:c.x+50, y1:c.y+27, x2:c.x+92, y2:c.y+27, stroke:INK, 'stroke-width':.7, opacity:.42});
-    el('line', {x1:c.x+50, y1:c.y+43, x2:c.x+80, y2:c.y+43, stroke:INK, 'stroke-width':.7, opacity:.3});
-    el('path', {d:i===0 ? 'M '+(c.x+c.w)+' '+(c.y+35)+' C '+(c.x+150)+' '+(c.y+35)+' '+(X+70)+' '+(Y+220)+' '+(X+98)+' '+(Y+220)
-                         : 'M '+(X+570)+' '+(Y+220)+' C '+(X+600)+' '+(Y+220)+' '+(c.x-28)+' '+(c.y+35)+' '+c.x+' '+(c.y+35),
-      fill:'none', stroke:INK, 'stroke-width':.8, opacity:.4, 'stroke-dasharray':'4 5'});
-  });
-
-  /* 分层机座:形成透视深度,不让主屏像悬空框 */
-  el('path', {d:'M '+(X+84)+' '+(Y+396)+' L '+(X+584)+' '+(Y+396)+' L '+(X+646)+' '+(Y+450)+' L '+(X+20)+' '+(Y+450)+' Z',
-    fill:'none', stroke:INK, 'stroke-width':1.15, opacity:.68});
-  el('path', {d:'M '+(X+20)+' '+(Y+450)+' L '+(X+646)+' '+(Y+450)+' L '+(X+624)+' '+(Y+492)+' L '+(X+42)+' '+(Y+492)+' Z',
-    fill:'none', stroke:INK, 'stroke-width':.85, opacity:.46});
-  [0,1,2,3,4].forEach(function(i){
-    el('circle', {cx:X+222+i*54, cy:Y+443, r:4.5, fill:i===2?INK:'none', stroke:INK,
-      'stroke-width':.7, opacity:.58});
-  });
-
-  /* 机座下的记忆/工具模块:三张错层纸片把工程感补齐 */
-  [
-    {x:X+116,y:Y+520,w:150,h:74,sk:-16},
-    {x:X+286,y:Y+530,w:150,h:74,sk:0},
-    {x:X+456,y:Y+520,w:150,h:74,sk:16}
-  ].forEach(function(c, i){
-    el('rect', {x:c.x, y:c.y, width:c.w, height:c.h, fill:TOP, stroke:INK,
-      'stroke-width':.85, opacity:.5, transform:'rotate('+(c.sk/8)+' '+(c.x+c.w/2)+' '+(c.y+c.h/2)+')'});
-    el('line', {x1:c.x+18, y1:c.y+24, x2:c.x+c.w-18, y2:c.y+24, stroke:INK, 'stroke-width':.7, opacity:.34});
-    el('line', {x1:c.x+18, y1:c.y+44, x2:c.x+c.w-44, y2:c.y+44, stroke:INK, 'stroke-width':.7, opacity:.26});
-  });
-
-  /* 回路上的节点和套准线 */
-  [
-    {x:X+34,y:Y+240},{x:X+180,y:Y+56},{x:X+520,y:Y+48},
-    {x:X+644,y:Y+286},{x:X+496,y:Y+510},{x:X+178,y:Y+532}
-  ].forEach(function(n, i){
-    el('circle', {cx:n.x, cy:n.y, r:i%2?5:7, fill:TOP, stroke:INK, 'stroke-width':.85, opacity:.65});
-    el('circle', {cx:n.x, cy:n.y, r:1.8, fill:INK, opacity:.7});
-  });
-})();
-
-stageFit();
-</script>
-<script type="application/json" id="xp-surface-recipe">{"theme":"klein-blue","color_name":"blue","layout_code":"d8","title":"layout-d8 · 封面 · 左图右题 · AI 工程化实战","layout":"paper-ink.scaffold.cover-wide","page_role":"hook","canvas":{"token":"paper","value":"#f2efe9","reason":"封面在 Hermes / Klein 两套预设中统一使用米色纸面。"},"surface_profile":"editorial-specimen","surfaces":[{"role":"cover-field","material":"paper-plane","fill":"#f2efe9","stack":1},{"role":"editorial-wash","material":"translucent-white","fill":"rgba(255,255,255,.12)","stack":2},{"role":"primary-statement","material":"ink-contrast","fill":"#1a1a1a","stack":3}],"accent":{"value":"#002fa7","semantic_channel":"标题命题或唯一视觉主角","furniture":"左上第一行 doc-kicker 固定墨黑，第二行 doc-title 使用当前主题色；folio 跟随元信息通道：墨色 45%（同英文章节标签），不使用主题色。","neutral_exceptions":["普通英文标签","轴名","层名","结构编号","MODEL","非当前数据"],"furniture_mode":"black-first-theme-second","folio_mode":"metadata-neutral"},"border_policy":"主体 1px 墨线；唯一焦点可用 2px 橙线，所有容器方角。","shadow_policy":"仅唯一被举起的主证据允许一次 10px 零模糊硬影；非强调态固定墨黑，页面语义焦点开启时使用当前主题色。","noise_policy":"由主题统一提供唯一一层约 6% 黑色 fractal-noise；页面不得自带 noise 节点；浅色页 multiply，墨面可 overlay。","reference_evidence":{"file":"所有文档都该重写一遍.html","cards":["card-2","card-5","card-7"],"rule":"纸面承载版式，只有被举起的文献、标本或终端使用不透明白面。"},"acceptance":["强调色只落一个语义通道；同一序列可重复，但不得扩散到结构元数据。","纯白只用于 top-white，不能替代默认纸面。","缩略图必须从该主题独立 frame 的实际渲染重建。"],"status":"recipe-ready","surface_bindings":[],"surface_binding_reason":"custom-redraw 不加载共享 surface runtime；材料已在独立源码内显式实现。","theme_identity":[{"group_id":"identity.cover-kicker","label":"大字封面引题","members":[{"selector":"[data-template-part=\"kicker\"]","treatment":"identity.text","expected_count":1}]}],"emphasis_targets":[],"sample_target_id":null}</script>
-<script src="../../catalog-surface.js" data-catalog-theme-surface="catalog-theme-recipes-v2"></script>
-<script src="../../catalog-typography.js" data-catalog-typography="brand-latin-numeric-oswald-v1"></script>
-<script data-xp-custom-page-ready="true">(function(){var r=document.documentElement,s=document.querySelector(".stage");function ready(){if(r.dataset.catalogSurfaceReady!=="true")return;r.dataset.xpRecipeReady="custom";r.dataset.xpRecipeStatus="recipe-ready";r.dataset.xpSurfaceProfile="editorial-specimen";r.dataset.xpCanvas="paper";r.dataset.xpTitleFurniture="black-first-theme-second";if(s){s.dataset.surfaceRebuild="custom-page-v4";s.dataset.surfaceFocusCount=String(document.querySelectorAll("[data-content-ref][data-emphasis-role]").length);}}var o=new MutationObserver(ready);o.observe(r,{attributes:true,attributeFilter:["data-catalog-surface-ready"]});ready();document.addEventListener("wise-ppt:semantic-keys-ready",function(){requestAnimationFrame(ready);});})();</script>
+</style>
+<style data-layout-visual-plan="bb4bc5c6d1264fdf8d1d2f7ff5b849893f7a110a853e31578cd452511ad2cb1e">/* wise-ppt-layout-visual-plan@1 · wise-ppt.layout.nonrelationship.D8 · bb4bc5c6d1264fdf8d1d2f7ff5b849893f7a110a853e31578cd452511ad2cb1e */
+body.slide > .stage[data-theme-visual-plan="bb4bc5c6d1264fdf8d1d2f7ff5b849893f7a110a853e31578cd452511ad2cb1e"], body.slide > .stage[data-theme-visual-plan="bb4bc5c6d1264fdf8d1d2f7ff5b849893f7a110a853e31578cd452511ad2cb1e"] [data-component-theme-scope="true"] { --wp-layout-structural: var(--wp-color-primary); --wp-layout-functional: var(--wp-color-functional); --wp-color-body: color-mix(in srgb, var(--wp-color-primary) 70%, transparent); --wp-color-chart-label: color-mix(in srgb, var(--wp-color-primary) 55%, transparent); --wp-color-metadata: color-mix(in srgb, var(--wp-color-primary) 45%, transparent); --wp-color-divider: color-mix(in srgb, var(--wp-color-primary) 20%, transparent); --wp-color-construction: color-mix(in srgb, var(--wp-color-primary) 12%, transparent); --wp-private-ink-60: color-mix(in srgb, var(--wp-color-primary) 60%, transparent); --wp-private-ink-30: color-mix(in srgb, var(--wp-color-primary) 30%, transparent); --ink: var(--wp-color-primary); --ink-80: color-mix(in srgb, var(--wp-color-primary) 80%, transparent); --ink-70: color-mix(in srgb, var(--wp-color-primary) 70%, transparent); --ink-55: color-mix(in srgb, var(--wp-color-primary) 55%, transparent); --ink-45: color-mix(in srgb, var(--wp-color-primary) 45%, transparent); --ink-25: color-mix(in srgb, var(--wp-color-primary) 20%, transparent); --ink-12: color-mix(in srgb, var(--wp-color-primary) 12%, transparent); --wp-adapter-pi-ink: var(--wp-color-primary); --wp-adapter-pi-ink-80: color-mix(in srgb, var(--wp-color-primary) 80%, transparent); --wp-adapter-pi-ink-70: color-mix(in srgb, var(--wp-color-primary) 70%, transparent); --wp-adapter-pi-ink-60: color-mix(in srgb, var(--wp-color-primary) 60%, transparent); --wp-adapter-pi-ink-55: color-mix(in srgb, var(--wp-color-primary) 55%, transparent); --wp-adapter-pi-ink-45: color-mix(in srgb, var(--wp-color-primary) 45%, transparent); --wp-adapter-pi-ink-30: color-mix(in srgb, var(--wp-color-primary) 30%, transparent); --wp-adapter-atlas-ink: var(--wp-color-primary); --wp-adapter-atlas-ink-80: color-mix(in srgb, var(--wp-color-primary) 80%, transparent); --wp-adapter-atlas-ink-70: color-mix(in srgb, var(--wp-color-primary) 70%, transparent); --wp-adapter-atlas-ink-55: color-mix(in srgb, var(--wp-color-primary) 55%, transparent); --wp-adapter-atlas-ink-45: color-mix(in srgb, var(--wp-color-primary) 45%, transparent); --wp-adapter-atlas-ink-25: color-mix(in srgb, var(--wp-color-primary) 20%, transparent); --wp-adapter-atlas-ink-12: color-mix(in srgb, var(--wp-color-primary) 12%, transparent); --shadow-soft: none; --shadow-specimen: none; --data-ramp-1: color-mix(in srgb, var(--wp-color-primary) 8%, transparent); --wp-adapter-pi-data-1: color-mix(in srgb, var(--wp-color-primary) 8%, transparent); --wp-adapter-atlas-data-1: color-mix(in srgb, var(--wp-color-primary) 8%, transparent); --data-ramp-2: color-mix(in srgb, var(--wp-color-primary) 14%, transparent); --wp-adapter-pi-data-2: color-mix(in srgb, var(--wp-color-primary) 14%, transparent); --wp-adapter-atlas-data-2: color-mix(in srgb, var(--wp-color-primary) 14%, transparent); --data-ramp-3: color-mix(in srgb, var(--wp-color-primary) 22%, transparent); --wp-adapter-pi-data-3: color-mix(in srgb, var(--wp-color-primary) 22%, transparent); --wp-adapter-atlas-data-3: color-mix(in srgb, var(--wp-color-primary) 22%, transparent); --data-ramp-4: color-mix(in srgb, var(--wp-color-primary) 30%, transparent); --wp-adapter-pi-data-4: color-mix(in srgb, var(--wp-color-primary) 30%, transparent); --wp-adapter-atlas-data-4: color-mix(in srgb, var(--wp-color-primary) 30%, transparent); --data-ramp-5: color-mix(in srgb, var(--wp-color-primary) 40%, transparent); --wp-adapter-pi-data-5: color-mix(in srgb, var(--wp-color-primary) 40%, transparent); --wp-adapter-atlas-data-5: color-mix(in srgb, var(--wp-color-primary) 40%, transparent); --data-ramp-6: color-mix(in srgb, var(--wp-color-primary) 52%, transparent); --wp-adapter-pi-data-6: color-mix(in srgb, var(--wp-color-primary) 52%, transparent); --wp-adapter-atlas-data-6: color-mix(in srgb, var(--wp-color-primary) 52%, transparent); }
+:root[data-theme-id][data-typography-mode="mixed"] body.slide [data-theme-type-role="top-left-kicker"], :root[data-theme-id][data-typography-mode="mixed"] body.slide [data-theme-type-role="bottom-left-folio"] { font-family: var(--wp-font-oswald) !important; font-weight: 700 !important; }
+:root[data-theme-id][data-typography-mode="mixed"] body.slide [data-theme-type-role="bottom-takeaway"] { font-family: var(--wp-font-han-serif) !important; font-weight: 700 !important; }
+:root[data-theme-id][data-typography-mode="mixed"] body.slide [data-theme-type-role="zh-content-title"] { font-family: var(--wp-font-han-sans) !important; font-weight: 700 !important; }
+:root[data-theme-id][data-typography-mode="mixed"] body.slide :is([data-theme-type-role="body"], [data-theme-type-role="label"], [data-theme-type-role="number"], [data-theme-type-role="chart-text"]) { font-family: var(--wp-font-han-sans) !important; font-weight: 400 !important; }
+:root[data-theme-id][data-typography-mode="mixed"] body.slide [data-theme-language="en"]:not([data-theme-type-role="top-left-kicker"]):not([data-theme-type-role="bottom-left-folio"]):not([data-theme-type-role="bottom-takeaway"]) { font-family: var(--wp-font-oswald) !important; font-weight: 700 !important; }
+body.slide > .stage[data-theme-visual-plan="bb4bc5c6d1264fdf8d1d2f7ff5b849893f7a110a853e31578cd452511ad2cb1e"] { background-color: var(--wp-color-surface-canvas) !important; }
+body.slide [data-theme-furniture-role="title"] { color: var(--wp-color-functional) !important; }
+body.slide svg [data-theme-furniture-role="title"] { fill: var(--wp-color-functional) !important; }
+body.slide [data-theme-furniture-role="folio"] { color: var(--wp-color-metadata) !important; }
+body.slide svg [data-theme-furniture-role="folio"] { fill: var(--wp-color-metadata) !important; }
+body.slide [data-theme-furniture-role="takeaway"] { color: var(--wp-color-primary) !important; }
+body.slide svg [data-theme-furniture-role="takeaway"] { fill: var(--wp-color-primary) !important; }
+body.slide [data-theme-furniture-role="title"]::first-line,
+body.slide [data-theme-furniture-role="title"] [data-theme-furniture-line="first"] { color: var(--wp-color-primary) !important; }
+body.slide [data-theme-furniture-role="title"] [data-theme-furniture-line="second"] { color: var(--wp-color-functional) !important; }
+</style>
+</head>
+<body class="slide" data-page-id="gallery-ai-d8" data-page-role="cover" data-page-kind="nonrelationship" data-layout-id="wise-ppt.layout.nonrelationship.D8" data-layout-code="D8" data-layout-source="canonical-seed" data-layout-seed-sha256="b83fcfa07982db20119e187116a2a0e7b51cdabeb0d6c2916f153eba73f97446" data-layout-structure-sha256="bb85afe7140af604448b306ee5b1808cad3f421d55dd5b678194ae20c4081452" data-layout-visual-plan="bb4bc5c6d1264fdf8d1d2f7ff5b849893f7a110a853e31578cd452511ad2cb1e" data-layout-visual-materialization="ee70b6dfe74dd99cf0d5f16f31b7a3a81b86b4d632002d3ba70a0547dcce6c8c" data-resolved-theme-sha256="1f9ebea0e4bc84cd589274859d82014d71e42ea9c8055699808bbe7bc9298fe2" data-layout-visual-source="wise-ppt-layout-theme-bindings@3">
+<div class="stage" data-block-id="gallery-primary" data-component-id="native.wise-ppt.scaffold.cover-wide.long-lockup" data-component-source="native" data-content-ref="example.d8" data-renderer-kind="typography" data-template-id="D8" data-theme-visual-source="wise-ppt-layout-theme-bindings@3" data-theme-visual-plan="bb4bc5c6d1264fdf8d1d2f7ff5b849893f7a110a853e31578cd452511ad2cb1e" data-theme-canvas-material="paper" data-theme-default-color-base-role="primary" data-theme-typography-resolution="structure-slots-and-explicit-language" data-theme-emphasis-target-count="0" data-theme-emphasis-sample-target>
+<div class="doc tl" data-template-part="support" data-template-slot="support" data-template-slot-kind="text" data-vnext-fit-box="0,0,1920,1080" data-vnext-text-key="support.text.001" data-theme-furniture-source="wise-ppt-layout-theme-bindings@3" data-theme-furniture-role="title" data-theme-furniture-variant="primary-first-functional-second" data-theme-type-role="top-left-kicker" data-theme-type-base-role="top-left-kicker" data-theme-color-role="functional" data-theme-color-alpha="1" data-theme-title-first-color-role="primary" data-theme-title-second-color-role="functional" data-theme-language="zh">PPT &#x6807;&#x9898;<br>&#x9875;&#x9762;&#x6807;&#x9898;</div>
+<div class="folio" data-template-part="folio" data-theme-furniture-source="wise-ppt-layout-theme-bindings@3" data-theme-furniture-role="folio" data-theme-type-role="bottom-left-folio" data-theme-type-base-role="bottom-left-folio" data-theme-color-role="metadata" data-theme-color-alpha="1" data-theme-language="zh">&#x9875;&#x7801; / &#x603b;&#x9875;&#x6570; &#x2014; BY @&#x6b6a;&#x65af;Wise</div>
+<svg class="scene" data-template-part="illustration" data-template-slot="illustration" data-template-slot-kind="illustration" height="1080" viewBox="0 0 1920 1080" width="1920">
+<g id="draw"><ellipse cx="512" cy="535" fill="none" opacity="0.16" rx="344" ry="286" stroke="var(--ink)" stroke-dasharray="3 9" stroke-width="0.65"/><path d="M 204 490 A 320 266 0 0 1 690 298" fill="none" opacity="0.4" stroke="var(--ink)" stroke-linecap="round" stroke-width="1.05"/><path d="M 814 536 A 320 266 0 0 1 348 782" fill="none" opacity="0.4" stroke="var(--ink)" stroke-linecap="round" stroke-width="1.05"/><rect fill="none" height="300" stroke="var(--ink-80)" stroke-width="1.3" width="472" x="268" y="320"/><rect fill="none" height="284" opacity="0.28" stroke="var(--ink)" stroke-width="0.55" width="456" x="276" y="328"/><line opacity="0.58" stroke="var(--ink)" stroke-width="0.9" x1="268" x2="740" y1="368" y2="368"/><circle cx="292" cy="344" fill="none" opacity="0.58" r="3" stroke="var(--ink)" stroke-width="0.65"/><circle cx="310" cy="344" fill="none" opacity="0.58" r="3" stroke="var(--ink)" stroke-width="0.65"/><circle cx="328" cy="344" fill="var(--ink)" opacity="0.58" r="3" stroke="var(--ink)" stroke-width="0.65"/><circle cx="712" cy="344" fill="none" opacity="0.55" r="7" stroke="var(--ink)" stroke-width="0.8"/><circle cx="712" cy="344" fill="var(--ink)" opacity="0.7" r="2.2"/><line opacity="0.46" stroke="var(--ink)" stroke-width="0.8" x1="344" x2="344" y1="368" y2="620"/><rect fill="none" height="20" opacity="0.34" stroke="var(--ink)" stroke-width="0.7" width="28" x="292" y="394"/><rect fill="none" height="20" opacity="0.68" stroke="var(--ink)" stroke-width="0.7" width="28" x="292" y="436"/><circle cx="306" cy="446" data-vnext-visual-key="d8.current-nav-marker" fill="var(--wp-color-functional)" opacity="0.9" r="2.5" data-theme-identity-source="wise-ppt-layout-theme-bindings@3" data-theme-identity-group="identity.current-tool" data-theme-identity-treatment="identity.fill"/><rect fill="none" height="20" opacity="0.34" stroke="var(--ink)" stroke-width="0.7" width="28" x="292" y="478"/><rect fill="none" height="20" opacity="0.34" stroke="var(--ink)" stroke-width="0.7" width="28" x="292" y="520"/><rect fill="none" height="20" opacity="0.34" stroke="var(--ink)" stroke-width="0.7" width="28" x="292" y="562"/><rect fill="none" height="78" opacity="0.65" stroke="var(--ink)" stroke-width="1" width="204" x="372" y="396"/><circle cx="398" cy="435" fill="var(--wp-color-surface-panel)" opacity="0.7" r="9" stroke="var(--ink)" stroke-width="0.85"/><line opacity="0.45" stroke="var(--ink)" stroke-dasharray="4 4" stroke-width="0.75" x1="408" x2="450" y1="435" y2="435"/><circle cx="460" cy="435" fill="var(--wp-color-surface-panel)" opacity="0.7" r="9" stroke="var(--ink)" stroke-width="0.85"/><line opacity="0.45" stroke="var(--ink)" stroke-dasharray="4 4" stroke-width="0.75" x1="470" x2="512" y1="435" y2="435"/><circle cx="522" cy="435" fill="var(--wp-color-surface-panel)" opacity="0.7" r="9" stroke="var(--ink)" stroke-width="0.85"/><rect fill="none" height="78" opacity="0.65" stroke="var(--ink)" stroke-width="1" width="108" x="598" y="396"/><circle cx="636" cy="435" fill="none" opacity="0.55" r="15" stroke="var(--ink)" stroke-width="0.8"/><circle cx="636" cy="435" fill="var(--ink)" opacity="0.68" r="4"/><line opacity="0.4" stroke="var(--ink)" stroke-width="0.7" x1="660" x2="690" y1="423" y2="423"/><line opacity="0.32" stroke="var(--ink)" stroke-width="0.7" x1="660" x2="682" y1="438" y2="438"/><rect fill="none" height="86" opacity="0.65" stroke="var(--ink)" stroke-width="1" width="334" x="372" y="496"/><polyline fill="none" opacity="0.68" points="392,556 438,542 486,550 538,520 590,534 640,510 686,522" stroke="var(--ink)" stroke-width="1.1"/><circle cx="392" cy="556" fill="var(--wp-color-surface-panel)" opacity="0.72" r="2.6" stroke="var(--ink)" stroke-width="0.7"/><circle cx="438" cy="542" fill="var(--wp-color-surface-panel)" opacity="0.72" r="2.6" stroke="var(--ink)" stroke-width="0.7"/><circle cx="486" cy="550" fill="var(--wp-color-surface-panel)" opacity="0.72" r="2.6" stroke="var(--ink)" stroke-width="0.7"/><circle cx="538" cy="520" fill="var(--wp-color-surface-panel)" opacity="0.72" r="2.6" stroke="var(--ink)" stroke-width="0.7"/><circle cx="590" cy="534" fill="var(--wp-color-surface-panel)" opacity="0.72" r="2.6" stroke="var(--ink)" stroke-width="0.7"/><circle cx="640" cy="510" fill="var(--wp-color-surface-panel)" opacity="0.72" r="2.6" stroke="var(--ink)" stroke-width="0.7"/><circle cx="686" cy="522" fill="var(--wp-color-surface-panel)" opacity="0.72" r="2.6" stroke="var(--ink)" stroke-width="0.7"/><rect fill="var(--wp-color-surface-panel)" height="70" opacity="0.72" stroke="var(--ink)" stroke-width="1" width="116" x="172" y="436"/><rect fill="none" height="56" opacity="0.25" stroke="var(--ink)" stroke-width="0.5" width="102" x="179" y="443"/><circle cx="202" cy="471" fill="none" opacity="0.58" r="8" stroke="var(--ink)" stroke-width="0.8"/><circle cx="202" cy="471" fill="var(--ink)" opacity="0.72" r="2.3"/><line opacity="0.42" stroke="var(--ink)" stroke-width="0.7" x1="222" x2="264" y1="463" y2="463"/><line opacity="0.3" stroke="var(--ink)" stroke-width="0.7" x1="222" x2="252" y1="479" y2="479"/><path d="M 288 471 C 322 471 240 470 268 470" fill="none" opacity="0.4" stroke="var(--ink)" stroke-dasharray="4 5" stroke-width="0.8"/><rect fill="var(--wp-color-surface-panel)" height="70" opacity="0.72" stroke="var(--ink)" stroke-width="1" width="116" x="758" y="436"/><rect fill="none" height="56" opacity="0.25" stroke="var(--ink)" stroke-width="0.5" width="102" x="765" y="443"/><circle cx="788" cy="471" fill="none" opacity="0.58" r="8" stroke="var(--ink)" stroke-width="0.8"/><circle cx="788" cy="471" fill="var(--ink)" opacity="0.72" r="2.3"/><line opacity="0.42" stroke="var(--ink)" stroke-width="0.7" x1="808" x2="850" y1="463" y2="463"/><line opacity="0.3" stroke="var(--ink)" stroke-width="0.7" x1="808" x2="838" y1="479" y2="479"/><path d="M 740 470 C 770 470 730 471 758 471" fill="none" opacity="0.4" stroke="var(--ink)" stroke-dasharray="4 5" stroke-width="0.8"/><path d="M 254 646 L 754 646 L 816 700 L 190 700 Z" fill="none" opacity="0.68" stroke="var(--ink)" stroke-width="1.15"/><path d="M 190 700 L 816 700 L 794 742 L 212 742 Z" fill="none" opacity="0.46" stroke="var(--ink)" stroke-width="0.85"/><circle cx="392" cy="693" fill="none" opacity="0.58" r="4.5" stroke="var(--ink)" stroke-width="0.7"/><circle cx="446" cy="693" fill="none" opacity="0.58" r="4.5" stroke="var(--ink)" stroke-width="0.7"/><circle cx="500" cy="693" fill="var(--ink)" opacity="0.58" r="4.5" stroke="var(--ink)" stroke-width="0.7"/><circle cx="554" cy="693" fill="none" opacity="0.58" r="4.5" stroke="var(--ink)" stroke-width="0.7"/><circle cx="608" cy="693" fill="none" opacity="0.58" r="4.5" stroke="var(--ink)" stroke-width="0.7"/><rect fill="var(--wp-color-surface-panel)" height="74" opacity="0.5" stroke="var(--ink)" stroke-width="0.85" transform="rotate(-2 361 807)" width="150" x="286" y="770"/><line opacity="0.34" stroke="var(--ink)" stroke-width="0.7" x1="304" x2="418" y1="794" y2="794"/><line opacity="0.26" stroke="var(--ink)" stroke-width="0.7" x1="304" x2="392" y1="814" y2="814"/><rect fill="var(--wp-color-surface-panel)" height="74" opacity="0.5" stroke="var(--ink)" stroke-width="0.85" transform="rotate(0 531 817)" width="150" x="456" y="780"/><line opacity="0.34" stroke="var(--ink)" stroke-width="0.7" x1="474" x2="588" y1="804" y2="804"/><line opacity="0.26" stroke="var(--ink)" stroke-width="0.7" x1="474" x2="562" y1="824" y2="824"/><rect fill="var(--wp-color-surface-panel)" height="74" opacity="0.5" stroke="var(--ink)" stroke-width="0.85" transform="rotate(2 701 807)" width="150" x="626" y="770"/><line opacity="0.34" stroke="var(--ink)" stroke-width="0.7" x1="644" x2="758" y1="794" y2="794"/><line opacity="0.26" stroke="var(--ink)" stroke-width="0.7" x1="644" x2="732" y1="814" y2="814"/><circle cx="204" cy="490" fill="var(--wp-color-surface-panel)" opacity="0.65" r="7" stroke="var(--ink)" stroke-width="0.85"/><circle cx="204" cy="490" fill="var(--ink)" opacity="0.7" r="1.8"/><circle cx="350" cy="306" fill="var(--wp-color-surface-panel)" opacity="0.65" r="5" stroke="var(--ink)" stroke-width="0.85"/><circle cx="350" cy="306" fill="var(--ink)" opacity="0.7" r="1.8"/><circle cx="690" cy="298" fill="var(--wp-color-surface-panel)" opacity="0.65" r="7" stroke="var(--ink)" stroke-width="0.85"/><circle cx="690" cy="298" fill="var(--ink)" opacity="0.7" r="1.8"/><circle cx="814" cy="536" fill="var(--wp-color-surface-panel)" opacity="0.65" r="5" stroke="var(--ink)" stroke-width="0.85"/><circle cx="814" cy="536" fill="var(--ink)" opacity="0.7" r="1.8"/><circle cx="666" cy="760" fill="var(--wp-color-surface-panel)" opacity="0.65" r="7" stroke="var(--ink)" stroke-width="0.85"/><circle cx="666" cy="760" fill="var(--ink)" opacity="0.7" r="1.8"/><circle cx="348" cy="782" fill="var(--wp-color-surface-panel)" opacity="0.65" r="5" stroke="var(--ink)" stroke-width="0.85"/><circle cx="348" cy="782" fill="var(--ink)" opacity="0.7" r="1.8"/></g>
+</svg>
+<div class="kicker" data-template-part="kicker" data-template-slot="kicker" data-template-slot-kind="text" data-vnext-fit-box="0,0,1920,1080" data-vnext-text-key="kicker.text.001" data-theme-identity-source="wise-ppt-layout-theme-bindings@3" data-theme-identity-group="identity.cover-kicker" data-theme-identity-treatment="identity.text" data-theme-type-role="en-bold" data-theme-type-base-role="body" data-theme-language="en">AGENT ENGINEERING &#x2014; 2026 SUMMER</div>
+<div class="title" data-template-part="primary" data-template-slot="primary" data-template-slot-kind="text" data-vnext-fit-box="0,0,1920,1080" data-vnext-text-key="primary.text.001" data-theme-type-role="cover-title" data-theme-type-base-role="cover-title" data-theme-language="zh">AI &#x5de5;&#x7a0b;&#x5316;&#x5b9e;&#x6218;</div>
+<div class="subtitle" data-template-part="subtitle" data-template-slot="subtitle" data-template-slot-kind="text" data-vnext-fit-box="0,0,1920,1080" data-vnext-text-key="subtitle.text.001" data-vnext-type-slot="content-title" data-theme-binding-source="wise-ppt-layout-theme-bindings@3" data-theme-type-binding-id="content-titles" data-theme-type-role="zh-content-title" data-theme-type-base-role="zh-content-title" data-theme-language="zh">&#x4ece;&#x6a21;&#x578b;&#x5230;&#x4ea7;&#x54c1;&#x7684;&#x5de5;&#x7a0b;&#x9e3f;&#x6c9f; &#xb7; Agent &#x5b9e;&#x6218;&#x7b2c;&#x4e00;&#x8bfe;</div>
+</div>
+<script>stageFit();</script>
 </body>
 </html>

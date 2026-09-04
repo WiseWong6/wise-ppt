@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html data-theme-id="paper-ink" lang="zh-CN" data-runtime="wise-ppt-specimen" data-typography-mode="all-sans" data-page-id="gallery-ai-k2" data-page-role="synthesize" data-theme="paper-ink" data-layout="paper-ink.matrix.problem-solution-outcome" data-layout-source="gallery" data-emphasis-targets='[{"target_id":"focus.key-step","members":[{"selector":"#k2-focus-kpi-code","role":"annotation","treatment":"focus.text","expected_count":1},{"selector":"#sample-focus","role":"value","treatment":"focus.text","expected_count":1},{"selector":"#k2-focus-kpi-label","role":"label","treatment":"focus.text","expected_count":1}]}]' data-catalog-legacy-emphasis-profile="content-only" data-catalog-legacy-emphasis-members='[{"selector":"#k2-focus-kpi-code","role":"annotation"},{"selector":"#sample-focus","role":"value"},{"selector":"#k2-focus-kpi-label","role":"label"}]' data-catalog-legacy-emphasis-foreground-members='[]' data-catalog-legacy-emphasis-ref="sample.k2.k2-focus" data-vnext-semantic-key-map='[]'>
+<html data-theme-id="paper-ink" lang="zh-CN" data-runtime="wise-ppt-specimen" data-typography-mode="all-sans" data-page-id="gallery-ai-k2" data-page-role="synthesize" data-theme="paper-ink" data-layout="paper-ink.matrix.problem-solution-outcome" data-layout-source="gallery" data-vnext-semantic-key-map='[]' data-emphasis-targets='[{"target_id":"focus.key-step","members":[{"selector":"#k2-focus-kpi-code","role":"annotation","treatment":"focus.color","expected_count":1},{"selector":"#sample-focus","role":"value","treatment":"focus.color","expected_count":1},{"selector":"#k2-focus-kpi-label","role":"label","treatment":"focus.color","expected_count":1}]}]' data-vnext-type-slot-map='[{"slot":"content-title","tag":"text","text":"阅读痛点","occurrence":0},{"slot":"content-title","tag":"text","text":"AI 解法","occurrence":0},{"slot":"content-title","tag":"text","text":"真实成效","occurrence":0},{"slot":"content-title","tag":"text","text":"1分钟","occurrence":0}]'>
 <head>
 <meta charset="UTF-8">
 <title>layout-k2 · 痛点→解法→成效三栏 · AI 阅读系统</title>
@@ -76,7 +76,7 @@ var heads = [
 ];
 heads.forEach(function(h){
   txt(h.x, 238, h.en, {'font-family':MONO, 'font-size':'var(--type-label)', 'letter-spacing':3, fill:INK45});
-  el('line', {x1:h.x, y1:254, x2:h.x+100, y2:254, stroke:INK, 'stroke-width':.8, opacity:.5});
+  el('line', {'data-vnext-visual-role':'k2.column-heading-rule', x1:h.x, y1:254, x2:h.x+100, y2:254, stroke:INK, 'stroke-width':2, opacity:1});
   txt(h.x, 296, h.cn, {'font-family':SANS, 'font-weight':300, 'font-size':'var(--type-subheading)', fill:INK});
 });
 

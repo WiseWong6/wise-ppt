@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html data-theme-id="paper-ink" lang="zh-CN" data-runtime="wise-ppt-specimen" data-typography-mode="all-sans" data-page-id="gallery-ai-h3" data-page-role="explain" data-theme="paper-ink" data-layout="paper-ink.nested.architecture-stack" data-layout-source="gallery" data-emphasis-targets='[{"target_id":"focus.key-layer","members":[{"selector":"[data-vnext-text-key=\"architecture.text.001\"]","role":"value","treatment":"focus.text","expected_count":1}]}]' data-catalog-legacy-emphasis-profile="copy-only" data-catalog-legacy-emphasis-members='[{"selector":"#focus-caption","role":"label"}]' data-catalog-legacy-emphasis-foreground-members='[]' data-catalog-legacy-emphasis-ref="sample.h3.h3-focus" data-vnext-semantic-key-map='[{"key":"architecture.text.001","tag":"text","text":"L1","occurrence":0}]'>
+<html data-theme-id="paper-ink" lang="zh-CN" data-runtime="wise-ppt-specimen" data-typography-mode="all-sans" data-page-id="gallery-ai-h3" data-page-role="explain" data-theme="paper-ink" data-layout="paper-ink.nested.architecture-stack" data-layout-source="gallery" data-vnext-semantic-key-map='[{"key":"architecture.text.001","tag":"text","text":"L1","occurrence":0}]' data-emphasis-targets='[{"target_id":"focus.key-layer","members":[{"selector":"#focus-caption","role":"label","treatment":"focus.color","expected_count":1},{"selector":"[data-vnext-visual-key=\"h3.architecture-surface\"]","role":"outline","treatment":"focus.shadow-only","expected_count":1}]}]'>
 <head>
 <meta charset="UTF-8">
 <title>layout-h3 · 分层架构堆栈 · AI 产品四层栈</title>
@@ -32,7 +32,6 @@
   <svg class="scene" width="1920" height="1080" viewBox="0 0 1920 1080">
     <g id="draw"></g>
   </svg>
-  <canvas id="cv" width="1920" height="1080"></canvas>
 
   <div class="caption">应用、模型、数据与基础设施四层相互依赖，产品问题往往来自<span id="focus-caption">跨层断点</span>。</div>
 </div>
@@ -58,11 +57,12 @@ var MONO = 'var(--mono)', SANS = 'var(--sans)';
 
 G = el('g', {transform:'translate(0 +2.3)'});
 
-/* ---------- 骨架：4 层横带，层间 0.6px 贯通 ---------- */
+/* ---------- 骨架：定稿为一整块前景表面，内部四层用细线分隔 ---------- */
 var BT = 240, BH = 132, BB = BT + BH*4;      /* y240–768 */
-[BT, BT+BH, BT+BH*2, BT+BH*3, BB].forEach(function(y, i){
-  el('line', {x1:150, y1:y, x2:1770, y2:y, stroke:INK,
-    'stroke-width': (i===0||i===4) ? .8 : .6, opacity: (i===0||i===4) ? .45 : .3});
+el('rect', {'data-vnext-visual-key':'h3.architecture-surface', x:150, y:BT, width:1620, height:BB-BT,
+  fill:'var(--wp-color-surface-panel)', stroke:INK80, 'stroke-width':1.3});
+[BT+BH, BT+BH*2, BT+BH*3].forEach(function(y){
+  el('line', {x1:150, y1:y, x2:1770, y2:y, stroke:INK, 'stroke-width':.6, opacity:.3});
 });
 el('line', {x1:310, y1:BT, x2:310, y2:BB, stroke:INK, 'stroke-width':.6, opacity:.3});
 
@@ -213,12 +213,15 @@ layers.forEach(function(L, r){
   txt(160, midY+34, L.en, {'font-family':MONO, 'font-size':'var(--type-micro-secondary)', 'letter-spacing':2, fill:INK45});
   el('line', {x1:160, y1:midY+48, x2:230, y2:midY+48, stroke:INK, 'stroke-width':.6, opacity:.3});
   /* 带内能力件 */
+  var layerRoot = G;
+  G = el('g', {'data-vnext-visual-role':'h3.layer-content', 'data-vnext-visual-key':'h3.layer-content.'+L.no.toLowerCase()});
   L.items.forEach(function(it, i){
     var cx = IXS[i];
     it.g(cx-70, midY);
     txt(cx-16, midY-4, it.en, {'font-family':MONO, 'font-size':'var(--type-meta)', 'letter-spacing':1.5, fill:'var(--ink-55)'});
     txt(cx-16, midY+22, it.cn, {'font-family':SANS, 'font-weight':300, 'font-size':'var(--type-body-small)', fill:INK});
   });
+  G = layerRoot;
 });
 
 stageFit();

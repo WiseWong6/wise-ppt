@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html data-theme-id="paper-ink" lang="zh-CN" data-runtime="wise-ppt-specimen" data-typography-mode="all-sans" data-page-id="gallery-ai-u1" data-page-role="compare" data-theme="paper-ink" data-layout="paper-ink.comparison.diagonal-bands" data-layout-source="gallery" data-emphasis-targets='[{"target_id":"focus.decisive-difference","members":[{"selector":"#u1-kpi-a","role":"value","treatment":"focus.text","expected_count":1},{"selector":"#u1-kpi-b","role":"value","treatment":"focus.text","expected_count":1}]}]' data-catalog-legacy-emphasis-profile="content-only" data-catalog-legacy-emphasis-members='[{"selector":"#u1-kpi-a","role":"value"},{"selector":"#u1-kpi-b","role":"value"}]' data-catalog-legacy-emphasis-foreground-members='[]' data-catalog-legacy-emphasis-ref="sample.u1.u1-focus" data-vnext-semantic-key-map='[{"key":"band-a.text.003","tag":"text","text":"VERSION 1.6 / PORTAL","occurrence":0}]'>
+<html data-theme-id="paper-ink" lang="zh-CN" data-runtime="wise-ppt-specimen" data-typography-mode="all-sans" data-page-id="gallery-ai-u1" data-page-role="compare" data-theme="paper-ink" data-layout="paper-ink.comparison.diagonal-bands" data-layout-source="gallery" data-vnext-semantic-key-map='[{"key":"band-a.text.003","tag":"text","text":"VERSION 1.6 / PORTAL","occurrence":0}]' data-emphasis-targets='[{"target_id":"focus.decisive-difference","members":[{"selector":"#u1-kpi-a","role":"value","treatment":"focus.color","expected_count":1},{"selector":"#u1-kpi-b","role":"value","treatment":"focus.color","expected_count":1}]}]'>
 <head>
 <meta charset="UTF-8">
 <title>layout-u1 · 等高双区对照 · 双版本用户画像</title>
@@ -235,10 +235,13 @@ wrapRegion('u1-right-region', ['u1-right-profile', 'u1-band-b-group'], 1010, 165
 
 /* ---------- VS 锚点:对齐左右整体区域的几何中心 ---------- */
 G = ROOT;
+var VS_MARKER = el('g', {'data-vnext-visual-key':'u1.vs-marker'});
+G = VS_MARKER;
 el('circle', {id:'u1-vs-frame', cx:920, cy:469, r:31, fill:PAPER, stroke:FUNCTIONAL, 'stroke-width':1.1});
-el('circle', {cx:920, cy:469, r:24, fill:'none', stroke:INK, 'stroke-width':.6, opacity:.28});
-txt(920, 476, 'VS', {id:'u1-vs-text', 'font-family':MONO, 'font-size':18, 'text-anchor':'middle',
-  'letter-spacing':2, fill:INK});
+txt(920, 469, 'VS', {id:'u1-vs-text', 'data-vnext-visual-key':'u1.vs-label', 'font-family':MONO,
+  'font-weight':700, 'font-style':'italic', 'font-size':18, 'letter-spacing':0,
+  'text-anchor':'middle', 'dominant-baseline':'central', fill:PAPER});
+G = ROOT;
 
 stageFit();
 </script>

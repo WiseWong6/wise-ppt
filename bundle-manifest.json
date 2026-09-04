@@ -1,7 +1,12 @@
 {
-  "format": "wise-ppt-skill-bundle@2",
-  "source_commit": "5f024bee697c862f635efd227967be0854079390",
+  "format": "wise-ppt-skill-bundle@3",
+  "source_commit": "26875b8a5213ddddeb1658987eacc06b63c92272",
   "source_dirty": false,
+  "parity_receipt": {
+    "contract": "wise-ppt-catalog-standard-parity-receipt@1",
+    "path": "capabilities/layouts/catalog-standard-parity-receipt.json",
+    "sha256": "66f84cf43136248a8432ca6e94e4a066e605aa9d7ca00fc5adeea3edb07d2691"
+  },
   "supported_platforms": [
     "darwin",
     "win32"
@@ -42,7 +47,7 @@
     },
     {
       "path": "USER-GUIDE.md",
-      "sha256": "59cb6e906a6068837bca3eadbf6b6333f55d6a8a2255cc7ba14e41a27a4f2d61",
+      "sha256": "70ef54199c4939de72cc094a42c94536c5fce8f58f938583e28da3723ad4a7ea",
       "bytes": 7076
     },
     {
@@ -407,8 +412,8 @@
     },
     {
       "path": "bin/bundle.mjs",
-      "sha256": "438b36ca2115cbbe904a23e316cda3baa746531fff60d549433b0f4fb6ea83d3",
-      "bytes": 2043
+      "sha256": "85bef1c0db6475570bcc409e168c0f414ca88367a7531cbaf7199407687dd3b1",
+      "bytes": 15407
     },
     {
       "path": "bin/chrome.mjs",
@@ -422,13 +427,13 @@
     },
     {
       "path": "bin/constants.mjs",
-      "sha256": "7ebe31e551287492f2bf81bb2b1949eac15a6c3e8810907872b396073e37d2d4",
-      "bytes": 1780
+      "sha256": "3b9425ee2c0b3079a3af95761d8daae1618e4570588a618f66adb68cf6ca2f0c",
+      "bytes": 2027
     },
     {
       "path": "bin/deliver.mjs",
-      "sha256": "0dd530be76d1429f2e3476dee9568961f8d941db053ae62fefb1764079fb01c2",
-      "bytes": 2921
+      "sha256": "7aab5cbc1c140bd27af8ae10fee24bafb0e92e05ded4ff318fc9f1a845913a14",
+      "bytes": 2951
     },
     {
       "path": "bin/doctor.mjs",
@@ -437,12 +442,12 @@
     },
     {
       "path": "bin/experimental.mjs",
-      "sha256": "8788ab9662195914335a0639483b92b937de5e444072f899bae05e5784b75608",
-      "bytes": 53389
+      "sha256": "17b8d34e95fab5b69989915ebc9fe8ef88985898a0b100249fa312833626944c",
+      "bytes": 53434
     },
     {
       "path": "bin/export-deck.mjs",
-      "sha256": "a54ae3899914e19e5c1c748b3bd2fa468cfd32fc35f1a9a43f9ad5c56691a1d2",
+      "sha256": "1dbe9b7bde386cd83e1c9c30c53b59167ef7885770b389af5289f38e1b60c76a",
       "bytes": 46293
     },
     {
@@ -451,14 +456,19 @@
       "bytes": 12798
     },
     {
+      "path": "bin/layout-visual-projection.mjs",
+      "sha256": "b26c3f7f52b602710025ad4b30b51c40e4959c1845a43352ee1fb01bcf5667bd",
+      "bytes": 37029
+    },
+    {
       "path": "bin/package.json",
       "sha256": "0d4b60ece110b12e64db9807597bf094c8630ecc806ae1bb039afdb31406c894",
       "bytes": 180
     },
     {
       "path": "bin/standard.mjs",
-      "sha256": "7728dcaa0812e41f9e2430b5dcf79b5d4a712de7265892a197af3ceea867a567",
-      "bytes": 147161
+      "sha256": "6e379163067703c573ef1a1a956d747c725721e80a440bf753b1f3c42575902d",
+      "bytes": 132311
     },
     {
       "path": "bin/theme-preview.mjs",
@@ -487,472 +497,477 @@
     },
     {
       "path": "capabilities/components/routing-manifest.json",
-      "sha256": "7ff211966e0dc3146e3d454d8bc5aae05c7a1bce50a62a8aebe02b6319c58509",
+      "sha256": "34346d5e77ded7b0c618e87947883f6c84fec4c9ce44d536d1f8d1463a321e3f",
       "bytes": 1144771
     },
     {
+      "path": "capabilities/layouts/catalog-standard-parity-receipt.json",
+      "sha256": "66f84cf43136248a8432ca6e94e4a066e605aa9d7ca00fc5adeea3edb07d2691",
+      "bytes": 212057
+    },
+    {
       "path": "capabilities/layouts/icon-slot-contracts.json",
-      "sha256": "a0d6177513ac2b86cc076bac5009830e7efe5cdf5b96ea55eb7d6882025f16a5",
+      "sha256": "834e084ed4742304c924cc10b4766453cc3398069c69679528417065682cd0c8",
       "bytes": 53764
     },
     {
       "path": "capabilities/layouts/layout-registry.json",
-      "sha256": "64f1d7ea261caebd00ad7df331f314301dbe9f61af77f93cd1c967596386d96b",
-      "bytes": 1213679
+      "sha256": "e700ac1c2d6f041d5779f55c4c87d25ccc3c56a8a10ea96b559b6cd60f4a4661",
+      "bytes": 1213677
     },
     {
       "path": "capabilities/layouts/native-components.js",
-      "sha256": "76c9c1b4de45c6f8500c1796a54fc0ab861acafbca1e00dbb398752f7f0bf0ef",
-      "bytes": 696378
+      "sha256": "2d5875feb7cf5cc6c1a12f6f898d7710b1d8aeea85efe4e8fd180ca2633a445c",
+      "bytes": 696464
     },
     {
       "path": "capabilities/layouts/page-emphasis-contracts.json",
-      "sha256": "6eba01567d0c15c031f1ffa983e447f2839d7f4c1f1b2a40ecd234464fb47368",
-      "bytes": 145965
+      "sha256": "42b46c5e4adde7df7dc00a412c81b95eb6a59528e0c9eaf1a95bf48c1e989d8f",
+      "bytes": 147360
     },
     {
       "path": "capabilities/layouts/seeds/A1.json",
-      "sha256": "8982f1cd087e44b2d004e69a3c363c1c0abdf20007148b8b5d88435279f7e348",
-      "bytes": 17075
+      "sha256": "eb0178c7a3fb370e5fd6bcadd8bc16333f2a198619b8864b88351b61dd3a6555",
+      "bytes": 17146
     },
     {
       "path": "capabilities/layouts/seeds/A2.json",
-      "sha256": "633b231acd06d9b61bf670e01f5e95f64b1071f6b1e84024ac7728dee669ebf5",
-      "bytes": 29239
+      "sha256": "6dca00143596461cbc545452a46279e30791d015bc0613291c29cdcfe5de4ace",
+      "bytes": 29536
     },
     {
       "path": "capabilities/layouts/seeds/A3.json",
-      "sha256": "87ad0f96c87d6cd3f286a2028ee0dfc80671862d2d92025bc805e6f13398a62e",
-      "bytes": 14573
+      "sha256": "a8d847053b1076baa2ca7bde0466066f0a2803c975ae4d5a2a0f270fcf230abf",
+      "bytes": 14887
     },
     {
       "path": "capabilities/layouts/seeds/A4.json",
-      "sha256": "eb6e2ef49ff66d38613640b67405f3f69066503e09429aa5e0f9a569f0968779",
-      "bytes": 32369
+      "sha256": "0d40d56da6cfc5f7e512e11c95cd295460645c963a39a7ac7dff0b93cfa1c36a",
+      "bytes": 32616
     },
     {
       "path": "capabilities/layouts/seeds/A5.json",
-      "sha256": "f31074fe58648e7d613d0222a39709d89044a28819233ef9070199fed8d3f402",
-      "bytes": 44364
+      "sha256": "d4041a809e6454781ad0f446a9c0f95166ec38b2dfce936e9e04dcf608025216",
+      "bytes": 44751
     },
     {
       "path": "capabilities/layouts/seeds/A6.json",
-      "sha256": "a9e604d232d44b4fff33a23fcda865abff1fb90422263c660d67c8a482c2a21d",
-      "bytes": 40238
+      "sha256": "04a687e9583f01875c29e878d83a597a1121379c65f5b67d153d8b9b631824de",
+      "bytes": 40358
     },
     {
       "path": "capabilities/layouts/seeds/A8.json",
-      "sha256": "7680313c59151d9108f199d230c6a2dea4d1791591059222b1dd8885c585f469",
+      "sha256": "a6bc52dcedc00b8d0629100ad98cf21ae7c5a6826ed803ecb7cc208d7cd439f2",
       "bytes": 50913
     },
     {
       "path": "capabilities/layouts/seeds/A9.json",
-      "sha256": "a0c0dbc18658186ed2ff6df12a9f12a407c9b7d735672100d78c2fbb59a6d95e",
-      "bytes": 44064
+      "sha256": "82ddc71c6d9e900ecf93d8cdc4b1291b6af0ab00ea5ac382c53294c4ed2ca548",
+      "bytes": 44408
     },
     {
       "path": "capabilities/layouts/seeds/B1.json",
-      "sha256": "f85b070eafed455b1e603e747108849296e6d91150a239e81f619181f347b2a3",
-      "bytes": 24600
+      "sha256": "4bbf6bd3f6b6c8ab028b41133f72ac4119eafb421728eb5d88598ed672e17673",
+      "bytes": 24847
     },
     {
       "path": "capabilities/layouts/seeds/B2.json",
-      "sha256": "4425c172cfdc48dbf070e01646adbef9f37403b3c493c0fd48fea615322473c4",
-      "bytes": 100016
+      "sha256": "e51ab326f9885c78cf4cd1ce9a00b417f29bd1042a6cdbb0ee379eb258ff9795",
+      "bytes": 100184
     },
     {
       "path": "capabilities/layouts/seeds/B3.json",
-      "sha256": "92f966051335d1f887acf7f62a40d26aab0ae0ea89f8bdf333ec7766115e58fa",
-      "bytes": 30982
+      "sha256": "d47a32ca161d889e8b615a1005f38daa5b9194ab783809137d6db40f398d5822",
+      "bytes": 31234
     },
     {
       "path": "capabilities/layouts/seeds/B4.json",
-      "sha256": "04959d46fd3ba5e0191f168c866f5228a13342dda1c99222f3f8a777649ede8b",
-      "bytes": 24357
+      "sha256": "b7cd7e2a077b81c38dc899c2d666520ffc414005c8d37e078a2c7c965eeec313",
+      "bytes": 24577
     },
     {
       "path": "capabilities/layouts/seeds/B5.json",
-      "sha256": "f731c20ecc93f2670427ffb17e59eeb108d58c79d88b57dbf878b56a541d405f",
-      "bytes": 17160
+      "sha256": "1caf705ae88de2679e85fb6dc8ff24953107908cf80e6c45f1f339fde38cd891",
+      "bytes": 17575
     },
     {
       "path": "capabilities/layouts/seeds/B6.json",
-      "sha256": "10dcc65b688ee75c80a7ffdb1ac1c331a543553c722a01bf00fb53c7d2afefa3",
-      "bytes": 30941
+      "sha256": "67f0d8566deb4c58e5a925b9447b10985ec7818c8e45933b72d548bda4a68ae7",
+      "bytes": 30989
     },
     {
       "path": "capabilities/layouts/seeds/C1.json",
-      "sha256": "f2c61ce4fb75cf0519170fcdfe37d8df2f2c043d2e85915818c7a3378bd9b0bb",
-      "bytes": 21911
+      "sha256": "15a0bc65c241799c077f2fc0056e6211074be9c61cee952db791e5025cbf8c32",
+      "bytes": 22281
     },
     {
       "path": "capabilities/layouts/seeds/C2.json",
-      "sha256": "500cdcbfc1005bb64f28b68f9405d7282cdd6928e255774c2dd8a15182efd982",
-      "bytes": 33457
+      "sha256": "24d7671a4d3fbecef7b2a5a55dce8ad5aa2afeb47bf09654480807bfd1da75d5",
+      "bytes": 33510
     },
     {
       "path": "capabilities/layouts/seeds/C3.json",
-      "sha256": "fe12ee5632223cf21b66d70a129a6e1a3aa391272b6e3ba25bf8eb0189afd522",
-      "bytes": 44631
+      "sha256": "270a814e28df66efb0fec36485b5567e56df2be72fadba07b1b8434aa055b49b",
+      "bytes": 44748
     },
     {
       "path": "capabilities/layouts/seeds/C4.json",
-      "sha256": "253f6352b11dbeb4279e6ee767d573e246a00c7b0a54fcb24cd16d4292714768",
-      "bytes": 147894
+      "sha256": "dcf6d4cb6159f13a23cff263cd427c54a0bcc3d9195d9475f59c80d5da389770",
+      "bytes": 147142
     },
     {
       "path": "capabilities/layouts/seeds/C5.json",
-      "sha256": "26539914778b4caf46bb029283aa07fdc7a49d4ed3030a731f4e070e7b7b8a89",
-      "bytes": 27496
+      "sha256": "44c23fd1135cbaf1f9961ff7f77b2bde3cab3af26e84abc56df5b94b6317ea17",
+      "bytes": 27730
     },
     {
       "path": "capabilities/layouts/seeds/C6.json",
-      "sha256": "a48a8d3e7d5b79f03547f73b29f9dc2c767a6cf455b844ab90ce22e6cef2ade8",
+      "sha256": "ad448a64da47f34bff4b58ba95529004ef26273def148c598aaf597601ceb4c7",
       "bytes": 21318
     },
     {
       "path": "capabilities/layouts/seeds/C7.json",
-      "sha256": "d8b59c5b68a51b6719f3514aecc62dd551390ee76af654d7fcaeaef9b92bd3da",
+      "sha256": "7c8fce0e26c71a79555d66d3d4f37b332d686b0742c8637a937c1e4cb75ccade",
       "bytes": 36345
     },
     {
       "path": "capabilities/layouts/seeds/D1.json",
-      "sha256": "61db59fa97e58e3ad43ddcd33f1f0fb2c6c92e2d8fd47d0931fc2c2d4fc78ff8",
-      "bytes": 10199
+      "sha256": "6d0981c8d448edfc416782adff4ea2016a9319884fd01b86ce858779e808e958",
+      "bytes": 10238
     },
     {
       "path": "capabilities/layouts/seeds/D10.json",
-      "sha256": "e00877accdc6b00ee84d6b2e514c49dedc279ab219a3450e5c2c4b984f4dae62",
-      "bytes": 891892
+      "sha256": "aa38b220196517a9ba88a76d1ccb3b1f6f3b90f56c99dc1fd56fa499d84ab554",
+      "bytes": 891931
     },
     {
       "path": "capabilities/layouts/seeds/D11.json",
-      "sha256": "8a065ad1a85f785e2456e674a9057caa38b705a6d574d64a3d170a67d467b48e",
+      "sha256": "38b981f3b064f0d2e4314595a335c293c8f68e4f3e1083cfd8920f131a2882ab",
       "bytes": 20817
     },
     {
       "path": "capabilities/layouts/seeds/D2.json",
-      "sha256": "46792afcc747ded8fa964192cac4844e5c228abbb77cb7afc40bdb267062ad53",
-      "bytes": 166194
+      "sha256": "b40e55404b18d32e3c7105deb3ab7b4a8e443acf2dd3ae951a15363b2030fa54",
+      "bytes": 247510
     },
     {
       "path": "capabilities/layouts/seeds/D3.json",
-      "sha256": "bc17469ed3eada53fb18805bc82efd3a9746e509fce37d695b38a26815f7cba8",
+      "sha256": "95380c178d58c77606b75ebe73f2f9a9d67e293379986cfed072185a1656b7d2",
       "bytes": 4353
     },
     {
       "path": "capabilities/layouts/seeds/D4.json",
-      "sha256": "083bfcf23bab34a09d01b4d5ab1679303b770a5609d52afb5ed2817dd589aabe",
-      "bytes": 9570
+      "sha256": "b27db15c473cbeb31046db5d40119138781097fbcf56815b77d1deea974a0657",
+      "bytes": 9765
     },
     {
       "path": "capabilities/layouts/seeds/D5.json",
-      "sha256": "ea5301a686bcec205a907eb1abff999fa57cc26f45d0c780135d68d5ba9c89c1",
-      "bytes": 4355
+      "sha256": "5d4d5a42d88f49a8e0140566cdc36ba4167f3dbe915fc08c7aede1c997066aed",
+      "bytes": 4394
     },
     {
       "path": "capabilities/layouts/seeds/D6.json",
-      "sha256": "12ff2d370d36782dc7e5ac354781e3d9478ddc26048050a2a4675c6b31e2f799",
-      "bytes": 91325
+      "sha256": "a4e9bd8ec8bf663ff734d9ac849413e90a10719d3af72ec800249133dc12b743",
+      "bytes": 91509
     },
     {
       "path": "capabilities/layouts/seeds/D7.json",
-      "sha256": "14a05ce14825ee58a48f0b05cee858b45089df5ee2b4b566e550d7477df1c9c6",
-      "bytes": 19699
+      "sha256": "4ed2b5e8a1d50e1e791cea970dedd7ebaf6d0dde2b37f579b332db9de7b0a56b",
+      "bytes": 19738
     },
     {
       "path": "capabilities/layouts/seeds/D8.json",
-      "sha256": "91c2b80aa444d0f57e61d87e8b64cc4612feede8613393efebd15b17f9a382f0",
-      "bytes": 15400
+      "sha256": "0cc52acb6405ce9a984a2f8d2ca7697849e942f4716ca49645b7bb8f08f71efc",
+      "bytes": 15642
     },
     {
       "path": "capabilities/layouts/seeds/D9.json",
-      "sha256": "30304762f0239ae32bd493f13d953595588686ca1f515ef42ca85c74468ffe53",
-      "bytes": 7057
+      "sha256": "dd13a00d31c413160c26b793f51531b672bb6752fbc259027cf304a2d71fea87",
+      "bytes": 7291
     },
     {
       "path": "capabilities/layouts/seeds/E1.json",
-      "sha256": "7a3cabe8abba3a8ff7b62d7c474c003ca941c0d10613598cd988f564b1672521",
-      "bytes": 18929
+      "sha256": "9a337165f265fa2f4d9dc412146f7e0c5ab7c258c2042fae1ed773d6bd4b4337",
+      "bytes": 19135
     },
     {
       "path": "capabilities/layouts/seeds/E2.json",
-      "sha256": "d4716cccbd0ec08e6c5d4b4b7c6ddc9801c5da204834c68997ecd95b53d3e366",
-      "bytes": 34644
+      "sha256": "a1017f089d3d4956042074ea3fb700fb14af0b5ec18152278ff64c0ecaf950a2",
+      "bytes": 34904
     },
     {
       "path": "capabilities/layouts/seeds/E3.json",
-      "sha256": "acc4721710c00f93942de9bfc2bbf94991fdfbc22cd29a85621a13f7c2a09e81",
-      "bytes": 29618
+      "sha256": "6f93f7c33c9ff3e4607a83ddb99d44e18c656432c820120710748dadc1733edd",
+      "bytes": 29628
     },
     {
       "path": "capabilities/layouts/seeds/E4.json",
-      "sha256": "ea0f4ebc6d17c5fc68d5178b11223c1e5788e291f180f2f8b0c741a895aa5bb1",
-      "bytes": 38073
+      "sha256": "b26a9920d6c0bead61c0778e8ef38dc799e0183220f4c794bccaf4b1cbfa7660",
+      "bytes": 38229
     },
     {
       "path": "capabilities/layouts/seeds/E5.json",
-      "sha256": "21f5d0a770ee0da5d82cb5763865e319e256fda518c465113407a3f474cea48d",
-      "bytes": 29401
+      "sha256": "514bd8a50f04b2a5c08d7236aac997a4947ebebc6457ae7d48ac8ae2ba626080",
+      "bytes": 29524
     },
     {
       "path": "capabilities/layouts/seeds/E6.json",
-      "sha256": "779612b01b76a36534585ea7422940d98c751f6da6fdad9d746477509ee70473",
-      "bytes": 34781
+      "sha256": "8b006d36f238c8015958efb568f43f58f3768987144f46fdf0668bfe925f9f69",
+      "bytes": 37722
     },
     {
       "path": "capabilities/layouts/seeds/F2.json",
-      "sha256": "265413d7d5c2ddd518afb9711b639ef1b77f10db3dd554c2276337e236fb8b2c",
-      "bytes": 32678
+      "sha256": "b65136bd0c521289900e021689af63d6a796d4185e951a8b44d36b24b1cc5af2",
+      "bytes": 32723
     },
     {
       "path": "capabilities/layouts/seeds/F3.json",
-      "sha256": "1ff3ca30dbe5b82c73d709daf200ae04376a6ad2cf8ed3542b0e080c01671fd7",
-      "bytes": 37653
+      "sha256": "ad5521a3b094891f6081b889ee7f729f8f8d81f4ee9d0388ed2cbc73a6a39c30",
+      "bytes": 38040
     },
     {
       "path": "capabilities/layouts/seeds/G1.json",
-      "sha256": "ae0bcf9bb1c7c209a310586aacb85bb79f73dc8d56196f172c3f421b3041b269",
-      "bytes": 33000
+      "sha256": "33fdeffb960df414df22e5e22455c352afddd9feca88ea79f8208038707f7af4",
+      "bytes": 33156
     },
     {
       "path": "capabilities/layouts/seeds/G2.json",
-      "sha256": "e9b14ecdaf48cdd003d2f338fe01d2dc192c15aad11b946399f0aa6c76595263",
-      "bytes": 23404
+      "sha256": "59059492f57a6b10e6329bc00830ee8cdfeb9df5f1a4169d906200aa93b11387",
+      "bytes": 23638
     },
     {
       "path": "capabilities/layouts/seeds/G4.json",
-      "sha256": "22286b07335dbc6ad2e351aaba2131d894118936a0b0cd9f8885189bce07283f",
-      "bytes": 30153
+      "sha256": "8eae87d8479e0f159646e085666ecb8e35c1d382ab17a9e035c605c15a93bc1e",
+      "bytes": 30714
     },
     {
       "path": "capabilities/layouts/seeds/G5.json",
-      "sha256": "58465297eba3a1b5279c0a9a6fb192d990246e9afc19deff2608d526584ef24d",
-      "bytes": 15502
+      "sha256": "ddc1ee7161e05370dbf9bc1d7bef62cfc53217f1b1bb413a86beaf6d7cc4bd05",
+      "bytes": 15694
     },
     {
       "path": "capabilities/layouts/seeds/H1.json",
-      "sha256": "c69aa5d4ee2da13023dbd82b1e94a95f471e7975caa578bc3eb808543e2f6dd3",
+      "sha256": "ebbcb0d69288589d73ae7e13374ee07ce1236b3dcfb4129a3d451f5514194e32",
       "bytes": 27873
     },
     {
       "path": "capabilities/layouts/seeds/H2.json",
-      "sha256": "73ef361562d197e87657f4dd4595cca86397eb15eaa598a13580dea9310659b6",
+      "sha256": "c63dd6bf0d32f920352333cef6a572e8ac4b6cfc5810b5434bc83c74a12fcf12",
       "bytes": 16426
     },
     {
       "path": "capabilities/layouts/seeds/H3.json",
-      "sha256": "a597cdad6dbcdc9a2087fd051746a8ca6995ec5f4864832330b15753a03cb29f",
-      "bytes": 99195
+      "sha256": "616b31096daad4ed137361cab7ed234f09c08a882b6f3bb14d76ea9178fa81b6",
+      "bytes": 40663
     },
     {
       "path": "capabilities/layouts/seeds/H4.json",
-      "sha256": "0547e2ebaf4e136970990064e12955a225152c1a0e945a61f4e2500c427dabd9",
-      "bytes": 90014
+      "sha256": "af429fd237c798195122a8a021ee552052951f8f70b5888c567878e2fac6dee5",
+      "bytes": 91550
     },
     {
       "path": "capabilities/layouts/seeds/I1.json",
-      "sha256": "f5eadc3bec6ad836b6a4749cd3c7db0f774bfbc91d0abf93d149c23e984b0868",
-      "bytes": 37537
+      "sha256": "31920a4fde6c63be4f4e13f6d252bba1f1543f30b3ac89fe21630871145aa186",
+      "bytes": 37785
     },
     {
       "path": "capabilities/layouts/seeds/I2.json",
-      "sha256": "6b221011786d4f23542e24e351df5d4c65c10a84fbd76a106a4bf8062197e611",
-      "bytes": 19648
+      "sha256": "8b7c136ae9e41717741c255005534708f86761e08a7a8464e06b6af46cae2065",
+      "bytes": 19816
     },
     {
       "path": "capabilities/layouts/seeds/I3.json",
-      "sha256": "d867ca218a5186a8c344805879d3f8a3c94ff8ca65732f98c161113c663d87e6",
-      "bytes": 41518
+      "sha256": "35a115dbb0786673ba8837f14e95bf1ef76e0899653aeb2745bd2614c3e05ec4",
+      "bytes": 41993
     },
     {
       "path": "capabilities/layouts/seeds/I4.json",
-      "sha256": "ec0ad09f3d235a4d7eddaf5fb5c3c1b673b1df61890570db2abc897e0a77aec4",
-      "bytes": 30263
+      "sha256": "e7ecd4d848b1b13d6fc5ccb5d73587dfc3ab8223f5085ef8d5e95fdf00c71d0e",
+      "bytes": 30428
     },
     {
       "path": "capabilities/layouts/seeds/J1.json",
-      "sha256": "5c188b297df47429f3c92073e790db4dfe1250ceb75e95a0ac21dda5388a057b",
-      "bytes": 23302
+      "sha256": "1c344b5432bb1077bf361673bee34947a2b9af1b4ff38670086c4de7872b0f67",
+      "bytes": 23870
     },
     {
       "path": "capabilities/layouts/seeds/J2.json",
-      "sha256": "3ab1c13f376de67a6299dbac64944a22f4cf5f125ab8f5dcbded08224841064f",
-      "bytes": 37528
+      "sha256": "9570292f0b36fe9771907fe7d063f5ea2400243ec313d6dd382137f110cd09da",
+      "bytes": 37529
     },
     {
       "path": "capabilities/layouts/seeds/J3.json",
-      "sha256": "d812678d69005695556ee16ff53744b2252ede83c3144669021a83b2421fadea",
-      "bytes": 24658
+      "sha256": "f30f5453dc552f7007780b4f0b004facf9f364e22984c497bf1a9cf5e9ae2eea",
+      "bytes": 25700
     },
     {
       "path": "capabilities/layouts/seeds/K1.json",
-      "sha256": "b83b052cfc77b60b1693c72176572d82181c087a5a8edbe46955327950cc890e",
-      "bytes": 114873
+      "sha256": "26f4ea9c997893776a84ec66ab114f28a4763b3f7ec94ad90b9d8c400741c473",
+      "bytes": 115377
     },
     {
       "path": "capabilities/layouts/seeds/K2.json",
-      "sha256": "1b98770fcecfefcfbe9f08c333cc6c99056e2ba1781f844260292aad3a86cbc8",
-      "bytes": 90581
+      "sha256": "c7244bd7f2585d6bed75e65e882e51003bd0e35c55684423d3dc3af1d185e7c8",
+      "bytes": 90863
     },
     {
       "path": "capabilities/layouts/seeds/K3.json",
-      "sha256": "eb6c5b13901b6d2d64345e0b5222483b991d58986fe07e299f91c39ae9df0dea",
-      "bytes": 44049
+      "sha256": "3e0ebb0cc1533f6bad544e4f0a970c63e52f35d828e654d0183377ec381f0069",
+      "bytes": 44154
     },
     {
       "path": "capabilities/layouts/seeds/K4.json",
-      "sha256": "9a09eca9f97fe6cb777874fb04c2f838592af9d22ad184061ab7f9a93d6470b3",
-      "bytes": 46953
+      "sha256": "3167fc1eb04483e545a320acbaea99672df16a347177f725a46e0ec479c389ca",
+      "bytes": 47380
     },
     {
       "path": "capabilities/layouts/seeds/L1.json",
-      "sha256": "c4fbd5b3db52bb1614d617c1ccb4d3af180ecb4c50b75000d3131e007892edb2",
-      "bytes": 26624
+      "sha256": "e4ea659a9047007a804d48b443a1c01934878f351eac35503082e4bbdd427cc7",
+      "bytes": 26864
     },
     {
       "path": "capabilities/layouts/seeds/L2.json",
-      "sha256": "c20bc27021a69d8c7a51de81de83e4290ff803f7ab027f37115694cfe324ca31",
-      "bytes": 28055
+      "sha256": "1f158469643482d947bb38e9a6f0ff4e853563260fec8b654f54a349601776a6",
+      "bytes": 28143
     },
     {
       "path": "capabilities/layouts/seeds/M1.json",
-      "sha256": "a8a4402da6792d4334bdb0c32a5fa5a0904bdbf48b4c1d65c329f81d27bccef1",
-      "bytes": 338979
+      "sha256": "2f55ce887f1fb3b709afaa8b1a792670596c06bd71ed2bf2f80c8a2976e78da7",
+      "bytes": 339096
     },
     {
       "path": "capabilities/layouts/seeds/M2.json",
-      "sha256": "3a0a7a7d46aa0d1b9ed6703f20df1d17e5713ab84ef03255f1c61df87f9e635e",
-      "bytes": 81126
+      "sha256": "64245a56495cdab26c6bbfc7cbcde7deda775ab4cae2e17fb52ffaca1aafbc6e",
+      "bytes": 92243
     },
     {
       "path": "capabilities/layouts/seeds/N1.json",
-      "sha256": "1bfa138dd5160cab1ef1891bf8ebfad8bfb6ed270b98c38e7e36e278b28752c8",
-      "bytes": 40257
+      "sha256": "b91f9ea3f16938be50b32f14eaa93dc0c1ffe0d43fb7f551659a1270ddc53c4b",
+      "bytes": 40638
     },
     {
       "path": "capabilities/layouts/seeds/O1.json",
-      "sha256": "f7f871aea4ca8f62922e99c7beba33b124e8f67815ab33096ac73c7a7d699792",
-      "bytes": 37336
+      "sha256": "14243b77f5d7ccc73b8724a4feaa4c78bb9870c179c4e05b2b59518a7ca32e17",
+      "bytes": 37453
     },
     {
       "path": "capabilities/layouts/seeds/P1.json",
-      "sha256": "af8bbd68d47e071ae33ece290d83e05cd490cb6f59075e7b96a6e537fdb58eb9",
-      "bytes": 24411
+      "sha256": "5d3e96c5d3c2775a05ab8c2973090ac5818bc2b5e8e8804782323b81373c026d",
+      "bytes": 24661
     },
     {
       "path": "capabilities/layouts/seeds/P2.json",
-      "sha256": "9ad54743ff91d0a4e30dfbbfe6596bbdb909100203309e2ea7d87e8ca9a436b9",
-      "bytes": 17872
+      "sha256": "a90a7a0be14e0ea49b71fba31bac8499a213e7442e6bd116d77a33eb25a33344",
+      "bytes": 18028
     },
     {
       "path": "capabilities/layouts/seeds/Q1.json",
-      "sha256": "6cf25c1af8c6aec5a0ab412915ef35fda7806f050fc3b42e6904de6da57c7f2b",
-      "bytes": 14524
+      "sha256": "3990893ef75e145ffbe65e9a17c909f2895a308a006a7df723d1faab28b82cb3",
+      "bytes": 14563
     },
     {
       "path": "capabilities/layouts/seeds/Q2.json",
-      "sha256": "14953bbe598e8236b94eeb656ae5a78707d3ff78dbbfad1cecec2316fdb47a22",
-      "bytes": 18661
+      "sha256": "b6f4beab3be5f490c2ff99f9fd4eb220ca92f0a18ccd8fbcbf09ca6543682e0e",
+      "bytes": 18817
     },
     {
       "path": "capabilities/layouts/seeds/Q3.json",
-      "sha256": "dbfa5798ea0c37265819f845f68124b52b174aacf4d1381536a9562246d9d1c7",
-      "bytes": 20781
+      "sha256": "862ba4c267a294cdb9b1af2022890779952075f6b1f5c370255452ccc5e071ce",
+      "bytes": 21054
     },
     {
       "path": "capabilities/layouts/seeds/Q4.json",
-      "sha256": "e597ee8e18e1df2ac45159b85a99eb6dc8bce0783a4e59d4db648a45de15ee3d",
-      "bytes": 23132
+      "sha256": "5abe66978faea9799931d6acadf375dd70bd69e9620076c725610c1a15d1b676",
+      "bytes": 23524
     },
     {
       "path": "capabilities/layouts/seeds/R1.json",
-      "sha256": "530797c5c9d95c7362e39adb6dd0bd2262982408b7e836971e54d1926480aefc",
-      "bytes": 24266
+      "sha256": "fb6423bbbb1a40f9ab0fd7661f82fcf5dbe762b42fd41d09be901c8a641d94ee",
+      "bytes": 24693
     },
     {
       "path": "capabilities/layouts/seeds/R2.json",
-      "sha256": "1b16f3c003068ae754f92027319870da1bcdae90956ec89f1bec8780ce58f4a9",
-      "bytes": 14272
+      "sha256": "d50f095db7bed140f1319c435028b32ad39afbdf28b2646c82bf5b285cc95b2b",
+      "bytes": 14501
     },
     {
       "path": "capabilities/layouts/seeds/R3.json",
-      "sha256": "b1c864c1f1ce140d22452a63e82cfa29044b9fcad5282d96d7bd68968f7bb3c5",
-      "bytes": 23738
+      "sha256": "54c76e28926e61df15b3c4cc7f139496fbdd9dcd9b80e422f0664218c7ef17a8",
+      "bytes": 25849
     },
     {
       "path": "capabilities/layouts/seeds/R4.json",
-      "sha256": "818e4d28e5d9671e145ffdaeda2a02ae1b1b9288f1960c5b2848bac1d2723abe",
-      "bytes": 18741
+      "sha256": "1ee7312597480b11015458426de25e5cec570c342a86f143a0f1c19ee90a1985",
+      "bytes": 18819
     },
     {
       "path": "capabilities/layouts/seeds/R5.json",
-      "sha256": "534b71639319df44c789ee2efeeb37480b61282c26b567704a59acb3763d927e",
-      "bytes": 20193
+      "sha256": "847154ceb9f44ee8e1405e751b219ec41779d426130f3dfc0594f8bab0c9d7f6",
+      "bytes": 20469
     },
     {
       "path": "capabilities/layouts/seeds/R6.json",
-      "sha256": "aa965b33929d843944a97cbb89b47004bf166fdc11ca4bc38ae8959dc3f56387",
-      "bytes": 19036
+      "sha256": "abf4cefcbda00127a9ab5b69a226e006314f7ff813b4fe26a114fff3e0d71c74",
+      "bytes": 19338
     },
     {
       "path": "capabilities/layouts/seeds/R7.json",
-      "sha256": "02213b3f0087493bd467e9e1cf6b5a784717c9d6b129a219eaca908459824e9f",
-      "bytes": 28259
+      "sha256": "59381c470e160680b4f32c4d4ef90cb6a73ac285b6b431c22cadbbdbc483ba0a",
+      "bytes": 28175
     },
     {
       "path": "capabilities/layouts/seeds/S1.json",
-      "sha256": "82b3fd67aeba955f2818b17f6beb6ba7d6cf8bfa1f251303e4abdf59a571b88c",
-      "bytes": 218704
+      "sha256": "acd2eb23e684464ac981ebef673e8b898ad61eeb3cb196c9a6ae8c7df9d0637d",
+      "bytes": 218700
     },
     {
       "path": "capabilities/layouts/seeds/S2.json",
-      "sha256": "9077d4b9a63c4d7061dcacf2b882204232cd0cf95b783d9c2f86f59502c9e63e",
-      "bytes": 21009
+      "sha256": "d90f68c0f5a1be52888675f90c35c09d822b67fd925672570464e7ff05468599",
+      "bytes": 21087
     },
     {
       "path": "capabilities/layouts/seeds/S3.json",
-      "sha256": "4530461ec42916fc86702e48afac36ec4dab81e9c1fa200a99682e9e62309ebb",
-      "bytes": 50051
+      "sha256": "5b8b85e4cdbf7106c19a130f6aa26cddb3dcb2467be42f7e4c7180ce173136ed",
+      "bytes": 50206
     },
     {
       "path": "capabilities/layouts/seeds/T1.json",
-      "sha256": "773fbe8fecc49ea06ae7986e5cc49a98b88283bec68201ef8f9a80c95769b16c",
-      "bytes": 23940
+      "sha256": "bdcd70fc1bef7b2c1298f0150bcfa148fadf7f9c3e31d0705010e2a9d69c738e",
+      "bytes": 24897
     },
     {
       "path": "capabilities/layouts/seeds/T2.json",
-      "sha256": "914e0ea3e9bccc9ad6f94c277b886d704907c1938a8677aa6d05781ffb959c49",
-      "bytes": 36104
+      "sha256": "1d447e6255f6c9536d37552325847648cb2ae9c2ec0be4d0cb2e41aba75c059d",
+      "bytes": 36482
     },
     {
       "path": "capabilities/layouts/seeds/T3.json",
-      "sha256": "66c8c96f62edc446aac20d331e30ad3fe36b4c40dc101960aab79bb01e53e22d",
-      "bytes": 40829
+      "sha256": "02b02608e49170c0451bf95b996cd7a48ceb02141706d70219ba8bd714ea1832",
+      "bytes": 40958
     },
     {
       "path": "capabilities/layouts/seeds/U1.json",
-      "sha256": "d9244b0588ce6d9b530d4a5ae119248c94755a43e59d879e1abab5ce7902246e",
-      "bytes": 61090
+      "sha256": "d47d61bc2785a65079679082418272029c03a5d6bbc92564b3248e898257fb6d",
+      "bytes": 61126
     },
     {
       "path": "capabilities/layouts/seeds/U2.json",
-      "sha256": "05722ba925e77310ec805fe7e8f3b5e61093bd76fb94d5e38f5d9d8b1b0a3594",
+      "sha256": "bce3feafe29af383fd096af45999a273dcea11ea3514cafa9714eb04e4ffd4da",
       "bytes": 38222
     },
     {
       "path": "capabilities/layouts/seeds/U3.json",
-      "sha256": "af6e492789d3aeb8f87435e15e55ad6d88bc3ea41091d4193c048cbf00845d4d",
-      "bytes": 19303
+      "sha256": "201b3d4319a9652858581186c6a2a5bea66ce1d1078367d5ce3a3eddbd782bf3",
+      "bytes": 19381
     },
     {
       "path": "capabilities/layouts/seeds/W1.json",
-      "sha256": "405ee137c3d65fb0751edcbdbbb6bb1ae86bf7aa136517756ac9ad3416d88cf7",
-      "bytes": 22650
+      "sha256": "4291cf784ab47754f226d9cbc67be05001d4b3b24fdb18e7a46ea61bbdef003c",
+      "bytes": 23037
     },
     {
       "path": "capabilities/runtime-authority-manifest.json",
-      "sha256": "528cd375c2c499bbc9c934eb7f955c9982844b24228b178f72dfcfef966529c5",
+      "sha256": "39c3fc0d8a6e55bb29aed15a3899bf78f0a1f1121ee9c42a2873a066b3ed2326",
       "bytes": 464057
     },
     {
@@ -12497,8 +12512,8 @@
     },
     {
       "path": "references/catalog.html",
-      "sha256": "88b70466dae608ba144c56ad596eeae7e1a648976f8e9e8f4853b35589035f70",
-      "bytes": 187841
+      "sha256": "2f4c7bbbc0835a80a3a084185bb2489be47635ae3e302bf2ba45e8cc30e2f288",
+      "bytes": 184960
     },
     {
       "path": "references/checklist.md",
@@ -12507,8 +12522,8 @@
     },
     {
       "path": "references/color-semantics.md",
-      "sha256": "de7bda6818237cac1a14ba42ca631bbefa26ce4d6dedf73eb57d24759e5c7e5d",
-      "bytes": 3722
+      "sha256": "1b9b36473439f993127696e15380f6dd29d025cd1dda1cd0d7b627df20aa9361",
+      "bytes": 4591
     },
     {
       "path": "references/component-routing-data.js",
@@ -12517,8 +12532,8 @@
     },
     {
       "path": "references/component-theme-bindings-data.js",
-      "sha256": "43acca7ccc1509d0d12ca245539f865fec0b78e00b5ffa6e420c4fa342b93db8",
-      "bytes": 255892
+      "sha256": "7afa057213ab60268c6137f28c5ac3abe40584fd395d7f42c8aa0a5a1c818018",
+      "bytes": 260628
     },
     {
       "path": "references/deck-spec.md",
@@ -12542,443 +12557,443 @@
     },
     {
       "path": "references/gallery-paper-ink/ai/frames/layout-a1.html",
-      "sha256": "e01d16127da54e4c545b9caf0e489113b689537be22bf283f5b0d113597f18a9",
-      "bytes": 9231
+      "sha256": "d149f8a0a470ddd06a675a2a3d895f8548ccfd9f4595c407341ebc770f7c1811",
+      "bytes": 9057
     },
     {
       "path": "references/gallery-paper-ink/ai/frames/layout-a2.html",
-      "sha256": "273e86ec8ec7ec29885e4da74f7af364fd93800ef86537fd98dadd5daf77412d",
-      "bytes": 12812
+      "sha256": "908f730bec1ef7f892e7048f3816d6062462ca487412d7be68c77cfd1c76daa8",
+      "bytes": 12918
     },
     {
       "path": "references/gallery-paper-ink/ai/frames/layout-a3.html",
-      "sha256": "9fa4044afc6daa78dad3c9a4aff29f0e340e6d62f03c5b10e5b6634eee48c41a",
-      "bytes": 8075
+      "sha256": "e37f3a3febe4a58fb05e8765f33a21f64bd2c7b3ae2787a722501062b01ed8a5",
+      "bytes": 8408
     },
     {
       "path": "references/gallery-paper-ink/ai/frames/layout-a4.html",
-      "sha256": "50ee81e70bee78ec8b576c554eb33af3314e3c976f0a6e5d99e994c6879eba28",
-      "bytes": 11537
+      "sha256": "306e5eb7d28cefde29be0f9d237d80e46bd84a9c6603f114ee7872fbbb55cff8",
+      "bytes": 11769
     },
     {
       "path": "references/gallery-paper-ink/ai/frames/layout-a5.html",
-      "sha256": "f6f72a39411d469d031b78b4f6cea68dd239fd888d1c3fa14b79a364a2a758cd",
-      "bytes": 8373
+      "sha256": "e4190cf66a27ab8b1bb2696e04f9785bba4446e00ac36eaa487af44047256a58",
+      "bytes": 8435
     },
     {
       "path": "references/gallery-paper-ink/ai/frames/layout-a6.html",
-      "sha256": "99920743400431ba6eb1cd41fa21d71994af0707292302656d2f1be37bd86f96",
-      "bytes": 9739
+      "sha256": "a88b5e47a24948e3edc0c610accca8ac16171872a0119d459e15970ddf09ff19",
+      "bytes": 9697
     },
     {
       "path": "references/gallery-paper-ink/ai/frames/layout-a8.html",
-      "sha256": "78bf33443f7d2e9f3be39fb017382e23f0782ea12246e30494512e5e468b8dea",
-      "bytes": 13968
+      "sha256": "1ba0931a54cac0dd60da6dd85f6ec9649f3cff820f114b45e49df50caa0e8bc1",
+      "bytes": 13655
     },
     {
       "path": "references/gallery-paper-ink/ai/frames/layout-a9.html",
-      "sha256": "2cb4c16d1272ca176cdca75582916630aa2250de65418aa58e137130ecc6ef81",
-      "bytes": 12737
+      "sha256": "747d0900912023a20aa427773ae8db82d89a539709d9ef565cb00445906214f4",
+      "bytes": 12556
     },
     {
       "path": "references/gallery-paper-ink/ai/frames/layout-b1.html",
-      "sha256": "0e1fa056204a335e76b860c8696245614e445f49f159db1ee3e8863c022f23e2",
-      "bytes": 7685
+      "sha256": "b739e9f4e14db2c3654e805fb067b9ae0b62c5d5da9d563527113cca3d6088e1",
+      "bytes": 7018
     },
     {
       "path": "references/gallery-paper-ink/ai/frames/layout-b2.html",
-      "sha256": "2b2abc45c444814bd76fbf17d9ce1d22cd20f0a015178f72e9cf5fbcd6af9349",
-      "bytes": 9835
+      "sha256": "ff9de051ac82b22535e06ef102f3e3e92189f123cc164a0ee64c57e2cf293a54",
+      "bytes": 9487
     },
     {
       "path": "references/gallery-paper-ink/ai/frames/layout-b3.html",
-      "sha256": "50dd4d5e77010717df9fc4c8de1ad1203f1775d55087d7be53365814d411092a",
-      "bytes": 7508
+      "sha256": "2c650a518f5755f88fbc62da3493b52771a573e95f07c92a8a2e8e191f6db73e",
+      "bytes": 7360
     },
     {
       "path": "references/gallery-paper-ink/ai/frames/layout-b4.html",
-      "sha256": "b5be919fcad605bfcfebb14b5c1664ef9f2e47379e8bd23e61f54e707819c242",
-      "bytes": 10046
+      "sha256": "1a168996ca4adb49f7ae54ddf6bceb377f144e21392c8f0cc4cb23951f381df7",
+      "bytes": 9590
     },
     {
       "path": "references/gallery-paper-ink/ai/frames/layout-b5.html",
-      "sha256": "f41cd74feee9945d96bd12119efccf1bc7e23b19f59b310b447a916f1c4ee775",
-      "bytes": 7343
+      "sha256": "9f217db00304d4fc67a80d47f81e019658aac4a85faac87a24462187e04cad3f",
+      "bytes": 7291
     },
     {
       "path": "references/gallery-paper-ink/ai/frames/layout-b6.html",
-      "sha256": "1df894bfc7cec9ed8052220aaff33cfb08bfc0b4fb5f8dc3e0334076529e7130",
-      "bytes": 9798
+      "sha256": "d1b1e36a4175fb21854c23a785b869f381f3eda9ac0ef1553b6c6f01efef4d86",
+      "bytes": 9145
     },
     {
       "path": "references/gallery-paper-ink/ai/frames/layout-c1.html",
-      "sha256": "0271d0c69770d7e3472a93a143b49f10af92d93953c27d950435b3bfd5c748fa",
-      "bytes": 10630
+      "sha256": "b0bd34232b9450b88884a780878df46c4b130e77f6ba04f5fe6e13df15cc5a45",
+      "bytes": 10477
     },
     {
       "path": "references/gallery-paper-ink/ai/frames/layout-c2.html",
-      "sha256": "cefc00ef5127f4a161f8b929e7be505bfdc7da34fa63a77880c6ca2c22b08496",
-      "bytes": 10416
+      "sha256": "395f8675c5dfc03fda1f240fd5fff13d525bf4fca7a605d8bbf88c1e9e174725",
+      "bytes": 10128
     },
     {
       "path": "references/gallery-paper-ink/ai/frames/layout-c3.html",
-      "sha256": "7441833d8585421e19e860572b8e6ea56a1387cd4241b1b1c2121888067c860f",
-      "bytes": 11791
+      "sha256": "a6a75e1b16d576790a4d3e7e7e43b15f067ce4529c86c3d54bade00c9d02fedd",
+      "bytes": 11813
     },
     {
       "path": "references/gallery-paper-ink/ai/frames/layout-c4.html",
-      "sha256": "c825ab31f4ae364f055de2a02b2823c25c886facf6a15b84469f6b93eeb69f09",
-      "bytes": 15722
+      "sha256": "c80692a9e928b1f099bb7541222f17e465d553d7b95e9223fe851a0849cdb06a",
+      "bytes": 15413
     },
     {
       "path": "references/gallery-paper-ink/ai/frames/layout-c5.html",
-      "sha256": "7fe27ad2e2849ba09ab9d51f4b73a5607e9234f3b861aa2eefe7067773d704ce",
-      "bytes": 7558
+      "sha256": "ab762a78aebf4f04d526266e4f752facf88d921763d969cc66d94cb8f46c7968",
+      "bytes": 7683
     },
     {
       "path": "references/gallery-paper-ink/ai/frames/layout-c6.html",
-      "sha256": "40df69815bc89c0759a72d9dae4fde4729a04fc18773b8507db3425052da24c7",
-      "bytes": 7103
+      "sha256": "8085591c73536308311aeb25c1a39ffcaae61c88e6fb4047e50a5a815c86ac71",
+      "bytes": 6684
     },
     {
       "path": "references/gallery-paper-ink/ai/frames/layout-c7.html",
-      "sha256": "33f36898cea757ae7b443fc911c07f876d0eb634b99291ced79cda88c241c44f",
-      "bytes": 9424
+      "sha256": "2becaefb3d37716debf8eda43a53a517a983636c03d2eb76a6b2a8a7fd70a2f5",
+      "bytes": 9031
     },
     {
       "path": "references/gallery-paper-ink/ai/frames/layout-d1.html",
-      "sha256": "b20a4331ec2d5d2866b272d28b1d00cceb317559d059ccc492a0a0f4f90eadd1",
-      "bytes": 7528
+      "sha256": "2caf4d7da3fe13ed1b6c1f079272f41b0b0d987bfd34ecd914bcffb8ddf640e9",
+      "bytes": 7677
     },
     {
       "path": "references/gallery-paper-ink/ai/frames/layout-d10.html",
-      "sha256": "38ff8bd250f279aa2fb9177facbb4d5ef365311b8030c8b7ad95c0d12cc92bf9",
-      "bytes": 6942
+      "sha256": "3a57dd9a725b41468ec33243a207f472d02eb6df2afb24f31773ce527cb0d891",
+      "bytes": 7091
     },
     {
       "path": "references/gallery-paper-ink/ai/frames/layout-d11.html",
-      "sha256": "453d8b05b0a3a4210cbb1a6192264fd6607b22bc598f983ccd544f5b810272bd",
+      "sha256": "3a7a6a669b179a48339e40548843b44846ae293d3ab87db137f7058492fe8787",
       "bytes": 8908
     },
     {
       "path": "references/gallery-paper-ink/ai/frames/layout-d2.html",
-      "sha256": "0f20f07932f8e22ff7099b2f7bf8287556d97fd390179edb4029f7cb5f0b255c",
-      "bytes": 6399
+      "sha256": "cb4d545bdb7441d020e99629be1ba65d6c2a20ed88fbb54f02f0d4a28c0052bf",
+      "bytes": 6648
     },
     {
       "path": "references/gallery-paper-ink/ai/frames/layout-d3.html",
-      "sha256": "46a6b1ac2653d5c38fd629de13680b09d8eabb3549c5e7d222b08ce892c8ff29",
+      "sha256": "27b318800a90bf8955e548518b91e69ad396fe6f2ccb6029b84acf4af6c5e415",
       "bytes": 4228
     },
     {
       "path": "references/gallery-paper-ink/ai/frames/layout-d4.html",
-      "sha256": "09d26d0f7b617309d9887bca783087c1bcdde3ad28ae3273b0c52f153bd8d132",
-      "bytes": 6237
+      "sha256": "276adbce85034885b0be17268ff3fef9151979b854a520c67b2df93d32b02626",
+      "bytes": 6644
     },
     {
       "path": "references/gallery-paper-ink/ai/frames/layout-d5.html",
-      "sha256": "b1d970de2b9840b47ff30cb9c73990fc838ede4ec489083173f6a591ee568624",
-      "bytes": 3762
+      "sha256": "da26bce71bd115d8e0701997cd052c0b78566fc6260fdef55bc1210725278143",
+      "bytes": 3889
     },
     {
       "path": "references/gallery-paper-ink/ai/frames/layout-d6.html",
-      "sha256": "835c8bd3c51ea5a634482963ef4732d8421a099bf0dcf73c0071ba0946b0dfcc",
-      "bytes": 12212
+      "sha256": "07b4ed9a65054b9f607cabdba0e7998d7fc4a209ca9235c7346a3ddefde5a3b2",
+      "bytes": 12581
     },
     {
       "path": "references/gallery-paper-ink/ai/frames/layout-d7.html",
-      "sha256": "fc21b18679a6236e3dbb2e4512b59740c8309cd4fdd6949e65929e6814220797",
-      "bytes": 11298
+      "sha256": "11dff18291dd3b20b9d96b43c7c22a800fee2f87487de1a1389068f017694542",
+      "bytes": 11447
     },
     {
       "path": "references/gallery-paper-ink/ai/frames/layout-d8.html",
-      "sha256": "dbd6dd4e53b236a5013868ed29eb5146c94ad272e24c5cd3aadbbbebc50f4d57",
-      "bytes": 10109
+      "sha256": "dcc87a2a0c9b23ad1d942c6ace23ddd5441e6589f1055afe882f7aeef396b67a",
+      "bytes": 10249
     },
     {
       "path": "references/gallery-paper-ink/ai/frames/layout-d9.html",
-      "sha256": "13a6d317ff8db545df199ee08819eddaa8cbb1ee59c0c0708aff9ec88fbde7d6",
-      "bytes": 5019
+      "sha256": "85638ebc5d05496b4a4ced4adb06c0125386e5e9c6798d651acc9865891f37b7",
+      "bytes": 5495
     },
     {
       "path": "references/gallery-paper-ink/ai/frames/layout-e1.html",
-      "sha256": "9ecbceb894febddeed8bda4deb44916cc127263ac0591207a8f84104e66bd3ed",
-      "bytes": 9556
+      "sha256": "a0abd12185878593c3197206ac6f5923367c627608f1ab36eb86ae29a6a16bda",
+      "bytes": 9676
     },
     {
       "path": "references/gallery-paper-ink/ai/frames/layout-e2.html",
-      "sha256": "15f00eb6ccdfb792918aa860cf60cf8c66a5f2d847ee3910dfab18ddea69ed9f",
-      "bytes": 7366
+      "sha256": "d311fff7550322eec228254595343f1028c4268a352d170a3ecab089775f73e7",
+      "bytes": 7392
     },
     {
       "path": "references/gallery-paper-ink/ai/frames/layout-e3.html",
-      "sha256": "8d458bdc3aee2679affd1b499f5e2dd73c6a83d7bcd77af7f2a4a6c517930339",
-      "bytes": 14680
+      "sha256": "9c9170f69e3cd359e1d0fded08af6be63b566610dcf148da9589e571e8e423b5",
+      "bytes": 14406
     },
     {
       "path": "references/gallery-paper-ink/ai/frames/layout-e4.html",
-      "sha256": "ad25b4e701973dd953e9fc47fc603c46e9d541be71cf7858a81dc6ffe61f497e",
-      "bytes": 17076
+      "sha256": "742563c5d30525b4fa678a3a08e83fa0b86573e8efe0306b644aa3231dc6caf0",
+      "bytes": 16665
     },
     {
       "path": "references/gallery-paper-ink/ai/frames/layout-e5.html",
-      "sha256": "37346875c10ef7ad9843da891c707549571ed693888896cd0a42c4b5ded2ca87",
-      "bytes": 9453
+      "sha256": "53e7e60261ec5d7a0850b2977306e7c625dc690946d9d1c10505ef1483585d02",
+      "bytes": 9252
     },
     {
       "path": "references/gallery-paper-ink/ai/frames/layout-e6.html",
-      "sha256": "8d1efbdcf63653ec5528563c56550040f4ace8e55bf864697079c1982907c847",
-      "bytes": 14107
+      "sha256": "e7e10901c69a6c4da17889926505690cce08ce148e53bce97e7cbac41a014bb6",
+      "bytes": 14063
     },
     {
       "path": "references/gallery-paper-ink/ai/frames/layout-f2.html",
-      "sha256": "da4017976882aa928940a117943a8f07ed03e6afa4fcce1a9bb1eaeec09ac5cb",
-      "bytes": 7870
+      "sha256": "89895efd802915e77fd00d6080e77c2c31cf0f0dea44922afccbf2c5c39f48a3",
+      "bytes": 7571
     },
     {
       "path": "references/gallery-paper-ink/ai/frames/layout-f3.html",
-      "sha256": "6fa0aab66c0294a4311859023e89dad81d33c7f9bdab2c7abe70138668724456",
-      "bytes": 9680
+      "sha256": "84ba5f9e72e5799d3da89c071ed7e52ad8723fbee479de3b7a37776fbb26223f",
+      "bytes": 9471
     },
     {
       "path": "references/gallery-paper-ink/ai/frames/layout-g1.html",
-      "sha256": "f6953159d8e5947a49180b74cd9404e8c31e4dea7324f2c6f4796e60c08bb6ba",
-      "bytes": 7951
-    },
-    {
-      "path": "references/gallery-paper-ink/ai/frames/layout-g2.html",
-      "sha256": "61fe9280f436a190fd5059fa3137ce26e162e0059929e8834e8269a647671916",
-      "bytes": 9918
-    },
-    {
-      "path": "references/gallery-paper-ink/ai/frames/layout-g4.html",
-      "sha256": "5dd9a9e9772ed26c6804d8847b2706219c5950f75997b2d265e75b9f6fefc3fb",
-      "bytes": 8450
-    },
-    {
-      "path": "references/gallery-paper-ink/ai/frames/layout-g5.html",
-      "sha256": "8eef3dee1d2ffc517a58766fd03bfb5a634c5bd9f0f5754b6af4cd11ddb269be",
-      "bytes": 5720
-    },
-    {
-      "path": "references/gallery-paper-ink/ai/frames/layout-h1.html",
-      "sha256": "48ac00f7cec0c9f78c36c55d4421d3e8a3b8c48fb95ec685c8046082a9e3870d",
-      "bytes": 10359
-    },
-    {
-      "path": "references/gallery-paper-ink/ai/frames/layout-h2.html",
-      "sha256": "e8bd401a5819bf83028a2c8824d990960402302f8c67f02c757bed5d56cec942",
-      "bytes": 7196
-    },
-    {
-      "path": "references/gallery-paper-ink/ai/frames/layout-h3.html",
-      "sha256": "18db794d3c6ee7168022861626f007020dfc5de0a592a43adc89ea6e4de9c9b4",
-      "bytes": 12927
-    },
-    {
-      "path": "references/gallery-paper-ink/ai/frames/layout-h4.html",
-      "sha256": "ed59f6b83defc4ee6fe0b06a950baf793d6de66910328933fed4c377107088ab",
-      "bytes": 10603
-    },
-    {
-      "path": "references/gallery-paper-ink/ai/frames/layout-i1.html",
-      "sha256": "7d9fe3e488f9fc9e6e4cd5093fd797e1e3dbb6f1a2b14e4abbeb0bb437c9e285",
-      "bytes": 10848
-    },
-    {
-      "path": "references/gallery-paper-ink/ai/frames/layout-i2.html",
-      "sha256": "7de0af2b9488e8e1ab6b4560eb206c71e4865265b6c1539c1fd3be2b666070f4",
-      "bytes": 6785
-    },
-    {
-      "path": "references/gallery-paper-ink/ai/frames/layout-i3.html",
-      "sha256": "4e06808600e423e2a4d68e1e45a35e820b86b9ae33081f63917a25d5b143ac62",
-      "bytes": 7577
-    },
-    {
-      "path": "references/gallery-paper-ink/ai/frames/layout-i4.html",
-      "sha256": "dad3fa0a3da8b3e12218a1fa6814ee833de693dcbe7040200a57d2954cc9bcf7",
-      "bytes": 13105
-    },
-    {
-      "path": "references/gallery-paper-ink/ai/frames/layout-j1.html",
-      "sha256": "59ce4de741b428948bfd2aecd12124130d999918b1edba11b780cb216b5d2eef",
-      "bytes": 7964
-    },
-    {
-      "path": "references/gallery-paper-ink/ai/frames/layout-j2.html",
-      "sha256": "4861d142e2b0fb023a6bbc0cc59be482d6c2344ea84a5bde3b533909a8a606b0",
-      "bytes": 12074
-    },
-    {
-      "path": "references/gallery-paper-ink/ai/frames/layout-j3.html",
-      "sha256": "e3c20129820bb993a1a870d5edfefb9d88bd04f84b3de4d04e5b7cf615468782",
-      "bytes": 13625
-    },
-    {
-      "path": "references/gallery-paper-ink/ai/frames/layout-k1.html",
-      "sha256": "58bfec2be729d3f2f6eb68b36b96d186355da69519547f0bb8c05bfeaa9dfac4",
-      "bytes": 10425
-    },
-    {
-      "path": "references/gallery-paper-ink/ai/frames/layout-k2.html",
-      "sha256": "b57bcdfd105d72aa7d95e5e2d6338ae87abb6fe5dfc4bfc6157797d6b7273726",
-      "bytes": 9706
-    },
-    {
-      "path": "references/gallery-paper-ink/ai/frames/layout-k3.html",
-      "sha256": "4c60d8775ca20687fc3a6648160c83be67e3b78f2e73b8fe8f4f777152e8f436",
-      "bytes": 17114
-    },
-    {
-      "path": "references/gallery-paper-ink/ai/frames/layout-k4.html",
-      "sha256": "76e8ffac3c321f9f4807615301549413108ad04ae0eb2746c617ba67e2f71790",
-      "bytes": 13439
-    },
-    {
-      "path": "references/gallery-paper-ink/ai/frames/layout-l1.html",
-      "sha256": "a2ae6df6a5d74158303ea1b22123d60a861b4c9dee5f1d11b2adbfd2ed86233f",
-      "bytes": 7450
-    },
-    {
-      "path": "references/gallery-paper-ink/ai/frames/layout-l2.html",
-      "sha256": "f86cd1541b55c0dd3a6d73335751d202271c530bc235ec1700ad67ad650ad584",
-      "bytes": 7790
-    },
-    {
-      "path": "references/gallery-paper-ink/ai/frames/layout-m1.html",
-      "sha256": "041c997baabdb9fa6b50ef2b0d3c0498ec3fb586daeba895c2662f178b4ab93b",
-      "bytes": 8243
-    },
-    {
-      "path": "references/gallery-paper-ink/ai/frames/layout-m2.html",
-      "sha256": "d7c56be3b2733f5c19f665ac2506c3dcb2f408a135679acbef9803c886f4d1e2",
-      "bytes": 4818
-    },
-    {
-      "path": "references/gallery-paper-ink/ai/frames/layout-n1.html",
-      "sha256": "1a3da0cad6d33c9ca9cc9bd1fb74d740bc8cce4c7f0482d132b73c8f46ead2c4",
-      "bytes": 10428
-    },
-    {
-      "path": "references/gallery-paper-ink/ai/frames/layout-o1.html",
-      "sha256": "0bb6750bf5a2f0c20b72dce3c4a8193f2d2da9c3b6bdeb26bc1518fc6f06514c",
-      "bytes": 10034
-    },
-    {
-      "path": "references/gallery-paper-ink/ai/frames/layout-p1.html",
-      "sha256": "9847b1da5049885ed20d1887065221e3c94403b4d954ef8fe2842c0f04cadae5",
-      "bytes": 9155
-    },
-    {
-      "path": "references/gallery-paper-ink/ai/frames/layout-p2.html",
-      "sha256": "8aa8146065bcc583169f0cdf5bb0f26c7b70d148366caa9e2b8ba06ec3c3dc19",
-      "bytes": 8061
-    },
-    {
-      "path": "references/gallery-paper-ink/ai/frames/layout-q1.html",
-      "sha256": "57d0163e153db66bb3e70bf9b7e59d9a83ddbfc0b0d67e5160c1a46f49032b13",
-      "bytes": 10609
-    },
-    {
-      "path": "references/gallery-paper-ink/ai/frames/layout-q2.html",
-      "sha256": "96c462e39e18017ec15efc42092040effa019014a7544ab2a4f95cc1b42b55c4",
-      "bytes": 10017
-    },
-    {
-      "path": "references/gallery-paper-ink/ai/frames/layout-q3.html",
-      "sha256": "c52d214508a6f4a2d4754cde7fa2221229227bee994f55481bfb2495ebf9e760",
-      "bytes": 9887
-    },
-    {
-      "path": "references/gallery-paper-ink/ai/frames/layout-q4.html",
-      "sha256": "1e9c01a9a2f9d05901d98b6b2459a6788e69b714a095a5fb0c5fc80ff1817f4e",
+      "sha256": "2ec4713029439a3974b9b202c9dd2b369b10e821a43c2683a3f60d405ed4968b",
       "bytes": 7928
     },
     {
+      "path": "references/gallery-paper-ink/ai/frames/layout-g2.html",
+      "sha256": "1d2a5cc1a5c248f23683c83e0831429e89a6afbd7d05bf1eb8e9e69b0fcbcaad",
+      "bytes": 10134
+    },
+    {
+      "path": "references/gallery-paper-ink/ai/frames/layout-g4.html",
+      "sha256": "093b6ff344c1c8cee31eb1e22287740cd0a1fd06b58dae1b75b6f53536f6d328",
+      "bytes": 8532
+    },
+    {
+      "path": "references/gallery-paper-ink/ai/frames/layout-g5.html",
+      "sha256": "30c913172a25e5bfe87621668f57a7aabb5cee9d304178a8253fb2672e904003",
+      "bytes": 6006
+    },
+    {
+      "path": "references/gallery-paper-ink/ai/frames/layout-h1.html",
+      "sha256": "61e8bfe579c9fc4544b6c24dcfdadab3cf1e95080e0360383e21bdffc08643ee",
+      "bytes": 10021
+    },
+    {
+      "path": "references/gallery-paper-ink/ai/frames/layout-h2.html",
+      "sha256": "03602c1446e0c4d0ee892737bda704d8e9d1a358e5df6cf2dc782a56f538ddbc",
+      "bytes": 6721
+    },
+    {
+      "path": "references/gallery-paper-ink/ai/frames/layout-h3.html",
+      "sha256": "d71091c87d65687f7944b85aec963788d63aa1cfa13ee87b1c3a8b177e1ee302",
+      "bytes": 13040
+    },
+    {
+      "path": "references/gallery-paper-ink/ai/frames/layout-h4.html",
+      "sha256": "4aa6ffaede2a2a4988e88896f17d19a60c50d46a9ec360ced68434daa8cccf64",
+      "bytes": 11020
+    },
+    {
+      "path": "references/gallery-paper-ink/ai/frames/layout-i1.html",
+      "sha256": "0f3d1e6ee71502788c963526308b3459176d91c030e23aac0993827e6646b6f8",
+      "bytes": 10569
+    },
+    {
+      "path": "references/gallery-paper-ink/ai/frames/layout-i2.html",
+      "sha256": "cf8ad30a460874610aaf42bdfe4c51013b6ed32c9c4da59dd42cf834ef66872c",
+      "bytes": 6709
+    },
+    {
+      "path": "references/gallery-paper-ink/ai/frames/layout-i3.html",
+      "sha256": "fe8f4ec1d8deccf07513167968fcdb5c0fc64f73617b917dc14848657f0a1720",
+      "bytes": 8052
+    },
+    {
+      "path": "references/gallery-paper-ink/ai/frames/layout-i4.html",
+      "sha256": "8fa6a4288cce8870c25a92ee257c5fce9a46ad18a2ae4a6a79c0980a42389f9d",
+      "bytes": 13045
+    },
+    {
+      "path": "references/gallery-paper-ink/ai/frames/layout-j1.html",
+      "sha256": "6d3b800ae40d85715350b29e06ec493d885335a616715cf7647b8098466d9b54",
+      "bytes": 8036
+    },
+    {
+      "path": "references/gallery-paper-ink/ai/frames/layout-j2.html",
+      "sha256": "961b02e495c6746b4adca68c2f1a772cd506d590a1a5b8125c3cdd6183bced0b",
+      "bytes": 11676
+    },
+    {
+      "path": "references/gallery-paper-ink/ai/frames/layout-j3.html",
+      "sha256": "fd54f26415ba71650ed786f6070e3bd420f6f9d770a902fbcd43b54c40bb2fde",
+      "bytes": 13298
+    },
+    {
+      "path": "references/gallery-paper-ink/ai/frames/layout-k1.html",
+      "sha256": "8fc73aebb3c9704213117fa2e035724c3df63e2ed8cef0af78f42788a50b3283",
+      "bytes": 10240
+    },
+    {
+      "path": "references/gallery-paper-ink/ai/frames/layout-k2.html",
+      "sha256": "a6da32c3448b99d091b579c5b070841c77797d7b50b572eb40f21c7acd8b7489",
+      "bytes": 9731
+    },
+    {
+      "path": "references/gallery-paper-ink/ai/frames/layout-k3.html",
+      "sha256": "8c7f6ab6a119dfb3a16686f06c28c82a4cbc8836fa20398d4f2b3afc802f886e",
+      "bytes": 17041
+    },
+    {
+      "path": "references/gallery-paper-ink/ai/frames/layout-k4.html",
+      "sha256": "686c2d360d69fa24e2996a8ff5f614782ed227d230444de66d34412c30f9f0c4",
+      "bytes": 13589
+    },
+    {
+      "path": "references/gallery-paper-ink/ai/frames/layout-l1.html",
+      "sha256": "c943b96d4e2b588b5e241da60bf4e02084a4664ff8115385ea42571bfe5f2de0",
+      "bytes": 7186
+    },
+    {
+      "path": "references/gallery-paper-ink/ai/frames/layout-l2.html",
+      "sha256": "81afd8b17cd1206ba849b87a6198b30d3065f22442a9fa6c65a9d95ef76ac8cc",
+      "bytes": 7607
+    },
+    {
+      "path": "references/gallery-paper-ink/ai/frames/layout-m1.html",
+      "sha256": "bd19e14fdc319c6803c896dc1c780a2ed05140a337a459042f5ab9393e36a004",
+      "bytes": 8491
+    },
+    {
+      "path": "references/gallery-paper-ink/ai/frames/layout-m2.html",
+      "sha256": "a19aa4faec512f40bf4ae4c1d6ae3bd98f8f20a33049eb92eeed2927cf3df101",
+      "bytes": 5472
+    },
+    {
+      "path": "references/gallery-paper-ink/ai/frames/layout-n1.html",
+      "sha256": "34f4bbf80ae44f9d358dff4d27cd002dd3f89264d9f2deee597d4c7b4a4cea56",
+      "bytes": 10463
+    },
+    {
+      "path": "references/gallery-paper-ink/ai/frames/layout-o1.html",
+      "sha256": "31669a264b58cc0ad7f472b143cddfb963f58e633ecbe1e2f23432fcc8618e32",
+      "bytes": 9514
+    },
+    {
+      "path": "references/gallery-paper-ink/ai/frames/layout-p1.html",
+      "sha256": "bb2306b39411b83537fca2d525346634d168e382bfbf587300d6ba9fc6a10351",
+      "bytes": 9233
+    },
+    {
+      "path": "references/gallery-paper-ink/ai/frames/layout-p2.html",
+      "sha256": "7099189a32f1a994f856ffda727842fa8ed87c197fa1a06f60a51c394d56b788",
+      "bytes": 7906
+    },
+    {
+      "path": "references/gallery-paper-ink/ai/frames/layout-q1.html",
+      "sha256": "2efae43812926999f9fad6eb4c8b03c0822046df3e35ee83b8bbcb19575de53b",
+      "bytes": 10437
+    },
+    {
+      "path": "references/gallery-paper-ink/ai/frames/layout-q2.html",
+      "sha256": "59a542681b0505a7b13e8a7a5d27143a7d595a65aca00ae0e3d4909827778fa2",
+      "bytes": 9950
+    },
+    {
+      "path": "references/gallery-paper-ink/ai/frames/layout-q3.html",
+      "sha256": "2135d8cb5bb144faac86858057cf93874504ec28bcd40f8ac8c5d0050d79acde",
+      "bytes": 10100
+    },
+    {
+      "path": "references/gallery-paper-ink/ai/frames/layout-q4.html",
+      "sha256": "d35a207d7bead1bac759c5aee4c3fe81d5add1403767c7619d9a69540140ebfb",
+      "bytes": 8213
+    },
+    {
       "path": "references/gallery-paper-ink/ai/frames/layout-r1.html",
-      "sha256": "a81448ff829cb9685c7d3741265e3dc6042e7d5aa6f5475b808c1510dabdc5b9",
-      "bytes": 9210
+      "sha256": "c5fd0b24df067e5126797f5a0cdf5d74163d477220e8c7842e1c061729c29697",
+      "bytes": 9542
     },
     {
       "path": "references/gallery-paper-ink/ai/frames/layout-r2.html",
-      "sha256": "250d6d451ebc42e27fd21dcedfe588c4eb3bc13cf05decef6fc39465842619b8",
-      "bytes": 7543
+      "sha256": "a1978b9c7fb9ee68a699752c1b5e19f50a04cce059e2c8d21873fb3653bfc6ba",
+      "bytes": 7950
     },
     {
       "path": "references/gallery-paper-ink/ai/frames/layout-r3.html",
-      "sha256": "e039048154b9928658a8b176a93afb994286730565c71f5c0383a1ad8a6cd51a",
-      "bytes": 9951
+      "sha256": "d35aca689548b88a370afb712f9ac541fbc0e63229aff45f6a24302fab28ba74",
+      "bytes": 11978
     },
     {
       "path": "references/gallery-paper-ink/ai/frames/layout-r4.html",
-      "sha256": "9333a3dd5157c347dcd92d941a1840af6dbb14adef1d964b830e16088783cd84",
-      "bytes": 4019
+      "sha256": "1c35cbd90237a5e8eb8bb4e25074221170c580713901b0518a5b52252310750a",
+      "bytes": 3929
     },
     {
       "path": "references/gallery-paper-ink/ai/frames/layout-r5.html",
-      "sha256": "c6a0c5f009e9046f7cc818268fa1bb70cf3e0e21bb5aacd13b9e998280ad9c5e",
-      "bytes": 5065
+      "sha256": "f5d41abd7ea38c210be8d3ac013526d7bd6cabf77d344bbeb6dd82abd24ae0a0",
+      "bytes": 5072
     },
     {
       "path": "references/gallery-paper-ink/ai/frames/layout-r6.html",
-      "sha256": "a5c7d28cf313459ee2fb21bade5eb1a3af169a50d780bcb02cb5edc12ec0451a",
-      "bytes": 8211
+      "sha256": "1519cc8be812346b01e0db2529bfafeb1ec2df7cadc66853f1d59d04e38f997a",
+      "bytes": 8506
     },
     {
       "path": "references/gallery-paper-ink/ai/frames/layout-r7.html",
-      "sha256": "245a484cff87ae519070cb38695d32e983fdb9bee7f551733548fc84c2f1a012",
-      "bytes": 10982
+      "sha256": "f92500ce1c133e0f8b8d61a8b294136e3f8ff6e16bb7485a9af378543bfa0d2d",
+      "bytes": 10666
     },
     {
       "path": "references/gallery-paper-ink/ai/frames/layout-s1.html",
-      "sha256": "fb7dd220e1c7bf56e3f90ac9cee77ba7e7738980802d43ee1a1b1b5520737917",
-      "bytes": 4993
+      "sha256": "a2ce05f542b9fa829b0a3a3cb9e66b259d45a61240c7510de21b7dcef883f745",
+      "bytes": 4613
     },
     {
       "path": "references/gallery-paper-ink/ai/frames/layout-s2.html",
-      "sha256": "f5ce09d3fc23e75339ec5078f37f75e82ed32b82b0baa70aabd77d8be73675b6",
-      "bytes": 8175
+      "sha256": "5d4c8720b82849faa409b21effdd8dcebe551c2fcc6e3ce86d606c1bdde3a677",
+      "bytes": 8077
     },
     {
       "path": "references/gallery-paper-ink/ai/frames/layout-s3.html",
-      "sha256": "f1b529561129c270191685f50507b769264c05f1951de434f5ea8c6d2037fb1b",
-      "bytes": 16865
+      "sha256": "26ca05cf63d4061c91e73fcdc55943c6f6c15cb80c21af3d681d0ccf938a1d03",
+      "bytes": 16870
     },
     {
       "path": "references/gallery-paper-ink/ai/frames/layout-t1.html",
-      "sha256": "bf80bd0f1010c3c804f065ebb49985d1fa384c4efc8f584858c36692790709cf",
-      "bytes": 6979
+      "sha256": "e2dfa987914dccef6f2f6b7a19feee4acb177bc427637718404d584c12573724",
+      "bytes": 7560
     },
     {
       "path": "references/gallery-paper-ink/ai/frames/layout-t2.html",
-      "sha256": "5a5998a4532d8b0bfad00df27c152391d94850abe6afbd4c79d339e88648bb1b",
-      "bytes": 8701
+      "sha256": "e1091c2b2aac5c2e4a10e977102e08f6fe77fcdbe58c079544a60c00ecc32158",
+      "bytes": 8720
     },
     {
       "path": "references/gallery-paper-ink/ai/frames/layout-t3.html",
-      "sha256": "283e0404a760e1dd015d0aab5d7945f26b8b9104193eb8d32b158b60af4b7a2c",
-      "bytes": 9580
+      "sha256": "72e3c1886fd09d8ec626302a9ee05a6a3966251c9c0812bcde12ece7cbf74107",
+      "bytes": 9619
     },
     {
       "path": "references/gallery-paper-ink/ai/frames/layout-u1.html",
-      "sha256": "e0c95991b4f5d31c4af56e38119676315da8dc86c43206423f6c2ced16f6d5a1",
-      "bytes": 11899
+      "sha256": "e3e18e8cb979c570091c8ee736f40d382189e435958f208e29536a3bd6cbdde5",
+      "bytes": 11734
     },
     {
       "path": "references/gallery-paper-ink/ai/frames/layout-u2.html",
-      "sha256": "21a728125864629cc7539780344cee322d5ce6da6bfa2f0ad9df5159416e3989",
-      "bytes": 10124
+      "sha256": "9e32b5edf2da9b4a70587bafbe434e5a5e545c11e80a3a9144bc002a37730f9f",
+      "bytes": 9837
     },
     {
       "path": "references/gallery-paper-ink/ai/frames/layout-u3.html",
-      "sha256": "e705d7508cd32c11bbe8b45da9a8e5cae617d5e27924ecf143e9d90a8fd7bb5a",
-      "bytes": 4203
+      "sha256": "7910342ea53f43ae937f3f4301d6d099dc696db7ad9ddbd1ae090d683d07d489",
+      "bytes": 3886
     },
     {
       "path": "references/gallery-paper-ink/ai/frames/layout-w1.html",
-      "sha256": "206e43623218a06135a776e43c633c187673bccdd345ed70d8543acbbbe8b279",
-      "bytes": 8786
+      "sha256": "f5b310bcfc6413e79a43b64df5fde89420f325e3347ee92d683800dd32b3a1ec",
+      "bytes": 8748
     },
     {
       "path": "references/icon-catalog-data.js",
@@ -12992,8 +13007,8 @@
     },
     {
       "path": "references/page-emphasis-data.js",
-      "sha256": "1651387f4247d21cb13a619c2b47319e6153e12908122e0d339c02246910154b",
-      "bytes": 66748
+      "sha256": "534510f93ace1e948bff30d6de16a1544b08404ad989c2ed12d2d35092ef18ff",
+      "bytes": 61194
     },
     {
       "path": "references/page-routing.md",
@@ -13012,8 +13027,8 @@
     },
     {
       "path": "references/ppt-component-atlas/catalog-data.js",
-      "sha256": "0b497852f83cb73622c9ceb8db03ec8f8d8e51da1b8f1f578292ffb079871f1a",
-      "bytes": 299892
+      "sha256": "0fb8a020bb13304620d03c7aa031c41076000ca9609820a470c29e74354b62cd",
+      "bytes": 299888
     },
     {
       "path": "references/shell.css",
@@ -13162,8 +13177,8 @@
     },
     {
       "path": "references/themes.md",
-      "sha256": "7f930cf131f9e76c051be93e063b47a6e674636d2f31898fe8197e217a61745f",
-      "bytes": 11989
+      "sha256": "2fc124a4cbdbc85cc5f1f1c6c685ffdfb5b0e2fe20609fbcd2ea0a072d80f011",
+      "bytes": 12822
     },
     {
       "path": "runtime/app-template.html",
@@ -13187,8 +13202,8 @@
     },
     {
       "path": "runtime/deck-runtime.js",
-      "sha256": "1ec029cd750492bfeb6ff65380388900201685591f24a2f4d5eda54ea4ac3b6e",
-      "bytes": 137258
+      "sha256": "f28f6ac3dedf679b40803467fade12c39f4a52c4c7746fd0f9082985c72d09d7",
+      "bytes": 137900
     },
     {
       "path": "runtime/deck-shell.css",
@@ -13197,923 +13212,893 @@
     },
     {
       "path": "runtime/stage-fit.js",
-      "sha256": "819a8bfeb152faf470e1266f80b54a38b92f403c3e53a234e760b2bbdb7ed90d",
-      "bytes": 38857
-    },
-    {
-      "path": "themes/catalog-projections/hermes-klein/catalog-surface.css",
-      "sha256": "6a99b25d9b263615551c0af859c374e2e328839f2992a460103e0917b0c8de10",
-      "bytes": 27674
-    },
-    {
-      "path": "themes/catalog-projections/hermes-klein/catalog-surface.js",
-      "sha256": "509ac542b3d957c34e35d99fa9fe5610e78a835057178480e30719e72d4bc69f",
-      "bytes": 29905
+      "sha256": "515bb72d1e65789dffe0862f2efc48e3068871be57239d488942029cb73dddef",
+      "bytes": 21875
     },
     {
       "path": "themes/catalog-projections/hermes-klein/catalog-theme-frame-manifest.json",
-      "sha256": "b851ccc8ef5711e4015002fa36fb364330082c818e97a2dfad6c3ba7ecf6e948",
-      "bytes": 186565
-    },
-    {
-      "path": "themes/catalog-projections/hermes-klein/catalog-typography.js",
-      "sha256": "33f34ddf90ffbfc1ef45fa5f4ac5dcd164de60adb757152eddacb09cac9b46b2",
-      "bytes": 12752
+      "sha256": "0e82843e1cb9dc8e88813d8ab7885db2f6760e02c0e9757c12d4bce3faeba979",
+      "bytes": 295188
     },
     {
       "path": "themes/catalog-projections/hermes-klein/frames/hermes-orange/layout-a1.html",
-      "sha256": "fa2ce4df3a017220caf9647f72a20c484db7234ca3fb7bbe52bda4a80c923009",
-      "bytes": 13591
+      "sha256": "bbbf4beb63094c01808892cfc66161002c11e7b7445cd7ffc7ac0dcd30c35f4c",
+      "bytes": 22853
     },
     {
       "path": "themes/catalog-projections/hermes-klein/frames/hermes-orange/layout-a2.html",
-      "sha256": "4269e47fb5899c15b61e4f29794c5ee5e55cdf6c3a8e1fc6783722d32cefe935",
-      "bytes": 17231
+      "sha256": "2c3fc58eaf03f4a04115ae7cd73d43a99e18be3df8436269e6003d91c9fc604b",
+      "bytes": 35326
     },
     {
       "path": "themes/catalog-projections/hermes-klein/frames/hermes-orange/layout-a3.html",
-      "sha256": "edb12f93ccb38ad331c837eded223d95bb1d691a8f73e6ba47e629dd75afb39e",
-      "bytes": 12868
+      "sha256": "be2cc6e39e06e26aeb8156f557c2ab75a393ed7850494403c11bdb33d1a6427f",
+      "bytes": 23389
     },
     {
       "path": "themes/catalog-projections/hermes-klein/frames/hermes-orange/layout-a4.html",
-      "sha256": "372843701d0f74effc69fa5b30fc357fa3af90ce2dfd33e415e549de6afafdae",
-      "bytes": 16811
+      "sha256": "669e91a529eeb2171643f0ffa7e0731e6635bf6c9c1c3fd05c16a50e74542e8a",
+      "bytes": 32593
     },
     {
       "path": "themes/catalog-projections/hermes-klein/frames/hermes-orange/layout-a5.html",
-      "sha256": "898e5c47765925d153c34f42c6182b44b5603d0a48223108cd7b764006b4e7c7",
-      "bytes": 12614
+      "sha256": "8e99fd0258c3d6d9be1a2d267c91ae03fc71bc033417fcf5fe014f2048b9cd7a",
+      "bytes": 39181
     },
     {
       "path": "themes/catalog-projections/hermes-klein/frames/hermes-orange/layout-a6.html",
-      "sha256": "791c4cfb1045add9054f475efb1b74d85fbac65dd97509be7fc79c05a8577ffa",
-      "bytes": 15169
+      "sha256": "aa5e588b75924988839d9c3ebcff95ec8b2815d9d60d3c66a0a300f7b546a505",
+      "bytes": 37166
     },
     {
       "path": "themes/catalog-projections/hermes-klein/frames/hermes-orange/layout-a8.html",
-      "sha256": "4f48aa72052004f4666d7471f38b9d532f795e9391adb487b55c98a1ba1cf66e",
-      "bytes": 18872
+      "sha256": "30f0569b46986726b132f06cb8ef2777d8d9fd035f32c6f84d9b81b3e3aa0458",
+      "bytes": 38462
     },
     {
       "path": "themes/catalog-projections/hermes-klein/frames/hermes-orange/layout-a9.html",
-      "sha256": "46153c0d8b71053173759104965b89b8fb5c9a4f7c9998b82d32688ba4e3431a",
-      "bytes": 16992
+      "sha256": "7a0fa96150891ee457d2de764d0abba0cee0e43af72fcbe480437d13db150dca",
+      "bytes": 39948
     },
     {
       "path": "themes/catalog-projections/hermes-klein/frames/hermes-orange/layout-b1.html",
-      "sha256": "d150d4877e7fcfbe6f583892d957898a557cbe4fd2e1d4b745d323eb21e30216",
-      "bytes": 13517
+      "sha256": "943d4ce352c19f27aa8d58173b3db3d9195ed7d44a579ec72f68a231b9a41a9b",
+      "bytes": 29401
     },
     {
       "path": "themes/catalog-projections/hermes-klein/frames/hermes-orange/layout-b2.html",
-      "sha256": "8a75908c69bf22c55ea8178935b9bdf44255683d71a963253950dae9ebea98ce",
-      "bytes": 14383
+      "sha256": "75de60e7119c566a170a00ba08658f4be0f1e566634bf5277a482ce9960c6b51",
+      "bytes": 100744
     },
     {
       "path": "themes/catalog-projections/hermes-klein/frames/hermes-orange/layout-b3.html",
-      "sha256": "e1c632ddcb1bef5604c9cc5d15216c178ce1d20c957624b927f8c4b2f77e03a0",
-      "bytes": 11757
+      "sha256": "a5fcb92d0e0eeda4f76c8ebc4f4d8fe59b30f0f7822aa869d26168bad8217058",
+      "bytes": 31967
     },
     {
       "path": "themes/catalog-projections/hermes-klein/frames/hermes-orange/layout-b4.html",
-      "sha256": "a233cd9c19973c11046509598d06494c29e3226e3676a2064ca0022057d63929",
-      "bytes": 16554
+      "sha256": "79c6a1e8642236bea6729e3a9f49af84fda6a35965af5341d5d994cc2c60dbcd",
+      "bytes": 28435
     },
     {
       "path": "themes/catalog-projections/hermes-klein/frames/hermes-orange/layout-b5.html",
-      "sha256": "79b2b13358fff8df0ef51d968b43873588bfbd8c54c7c9b78951e52a540424f2",
-      "bytes": 12366
+      "sha256": "48d1bfb160bd8aa8dd6d1d2553f486e075f40e4c8f887dc92e71a4b95c434e44",
+      "bytes": 24207
     },
     {
       "path": "themes/catalog-projections/hermes-klein/frames/hermes-orange/layout-b6.html",
-      "sha256": "8e26abdba59e8c04976bba6bbb66cdb05ea0c7b2fe24672ace663fe21bb1e60f",
-      "bytes": 15533
+      "sha256": "0e8d684df84058a67b248fa1e346a190a4752467ab3b86a68544599b242ad725",
+      "bytes": 34004
     },
     {
       "path": "themes/catalog-projections/hermes-klein/frames/hermes-orange/layout-c1.html",
-      "sha256": "26ae9afdcae3cd49d338d5c1916495d3d517c582d9520fdd94c602a489d91582",
-      "bytes": 15634
+      "sha256": "7a8f97d8b1cb4cb428ad2df0d2bf439280d3d16f9168ad3970db00b1b0cea1c2",
+      "bytes": 28963
     },
     {
       "path": "themes/catalog-projections/hermes-klein/frames/hermes-orange/layout-c2.html",
-      "sha256": "cc0f4dcc62ac468c4b3f1024d93e7f567dc7308a316af102e15233ae266f19a8",
-      "bytes": 15280
+      "sha256": "b1a46233a19fd599fc38d851fb6b4e6b43dba25f2b85c16ba7ce0bea59174a72",
+      "bytes": 32610
     },
     {
       "path": "themes/catalog-projections/hermes-klein/frames/hermes-orange/layout-c3.html",
-      "sha256": "37e9d3489f448956ed651675b1f7a3fca73eabb162c8568cfc8d1d2f0a24d97a",
-      "bytes": 17472
+      "sha256": "7f27f3c7c100e8d0d25206581f67cef2347ce818c1491f81f463cadb44a8f536",
+      "bytes": 38956
     },
     {
       "path": "themes/catalog-projections/hermes-klein/frames/hermes-orange/layout-c4.html",
-      "sha256": "89e0e1dc7e1dca43a98bdc134a7660bec7aeeccb39cadc382ba7a5630a483172",
-      "bytes": 22616
+      "sha256": "bd2afb48ac114a55e9e84921be38c9137c5d876f6c949ce1b0b4b18dc8e03bce",
+      "bytes": 150341
     },
     {
       "path": "themes/catalog-projections/hermes-klein/frames/hermes-orange/layout-c5.html",
-      "sha256": "3cd8106c636ede60918150887c4665878b7af86e22f8c383ec3ea4e2c0a87a9c",
-      "bytes": 11714
+      "sha256": "ac9afaad5c9a44bbc1b38d8aa063e024e2f74468695d676fc22228f7df2de581",
+      "bytes": 30086
     },
     {
       "path": "themes/catalog-projections/hermes-klein/frames/hermes-orange/layout-c6.html",
-      "sha256": "92f4e7c4184befc54c29c8d9b5ee7400b8fbbacec1d9f07df87abea68d4e1a76",
-      "bytes": 12185
+      "sha256": "f84ecdd2f3bb6e3696f5486081548032f08bac16d8692fbf16ae85e6e021e175",
+      "bytes": 24236
     },
     {
       "path": "themes/catalog-projections/hermes-klein/frames/hermes-orange/layout-c7.html",
-      "sha256": "430e792ff665666dabdcd7c59ff1816754928819c2ef9afedf36e85a1352dc82",
-      "bytes": 15723
+      "sha256": "4514cca3cdd6f440b8ddf52294c70624f1da22865393948d03f33f7b5a04f8dd",
+      "bytes": 33148
     },
     {
       "path": "themes/catalog-projections/hermes-klein/frames/hermes-orange/layout-d1.html",
-      "sha256": "be398ec0411b8fcda886ad6c8369aa5030bfe2f724aedcf89b2126310169a0f0",
-      "bytes": 13512
+      "sha256": "40b671b40033ef4827f6730cfd8cd604a53c48c0b0fc4e012a0dec98cd5875f6",
+      "bytes": 18031
     },
     {
       "path": "themes/catalog-projections/hermes-klein/frames/hermes-orange/layout-d10.html",
-      "sha256": "e27f7280d27ecf2431e91b96d0033bf61460fab0bbfe68a47239e09cae8a296d",
-      "bytes": 10142
+      "sha256": "d899c4335b630e5383877982ec748840f06ab1aa1b74c5e0c510fb9ac1f74c77",
+      "bytes": 900364
     },
     {
       "path": "themes/catalog-projections/hermes-klein/frames/hermes-orange/layout-d11.html",
-      "sha256": "2e1eb0da3b75558ae82149adbc62be770c86b93c00a6c38c9d6f9cbcfaa862b3",
-      "bytes": 12108
+      "sha256": "65924f0f4f8cbecff2af6bfef09955d9c2b9e836475e7bc32d9a568437825a35",
+      "bytes": 28234
     },
     {
       "path": "themes/catalog-projections/hermes-klein/frames/hermes-orange/layout-d2.html",
-      "sha256": "4421b3bf159475de7f6b4bee332687917f63a49df85782f916f592516e61e580",
-      "bytes": 11028
+      "sha256": "7330f44c2667a4a4982005cdc24e5ad7a6c80d25c373fbb57ec817b8aafbb097",
+      "bytes": 257159
     },
     {
       "path": "themes/catalog-projections/hermes-klein/frames/hermes-orange/layout-d3.html",
-      "sha256": "427723dbfd940a441fe5e4ae0fc065b497743239965dc9b908e1d911c09c9243",
-      "bytes": 9979
+      "sha256": "8caa75b135495cf7e71f3b4ceb1a3ad844059114fbd17c75072eb11caabb7c70",
+      "bytes": 13657
     },
     {
       "path": "themes/catalog-projections/hermes-klein/frames/hermes-orange/layout-d4.html",
-      "sha256": "1165b79461de3fcf77c5618448d9cb9fe49d5bb700cc534cbdb8b8a96313c5f2",
-      "bytes": 11961
+      "sha256": "e05af5f49fe7cfd8a59f9a5c97fd195a2354252e825893d0d0e58355b9d4f21a",
+      "bytes": 22760
     },
     {
       "path": "themes/catalog-projections/hermes-klein/frames/hermes-orange/layout-d5.html",
-      "sha256": "06a14765c284f936563d9f1df626a5d9f09a73f0923883a1f2a30b2eb1f34e0f",
-      "bytes": 9297
+      "sha256": "b19646028dfda1d5c1b78e280e666578760405ef0e0117d2a587a9c8ae816e9b",
+      "bytes": 13493
     },
     {
       "path": "themes/catalog-projections/hermes-klein/frames/hermes-orange/layout-d6.html",
-      "sha256": "4690939b138a96e6a04063d68c7774ea872f1b0a0d81ecf38a42962d84ec614c",
-      "bytes": 16627
+      "sha256": "55673ded4d321eb99cb8a5208db545ba75aceedf8c193c2846154d9ae8ee0bc8",
+      "bytes": 93661
     },
     {
       "path": "themes/catalog-projections/hermes-klein/frames/hermes-orange/layout-d7.html",
-      "sha256": "e1a248fc1683ba89476d79c1c1ce48e572126c412ff8599a2cc067f40ba33496",
-      "bytes": 14497
+      "sha256": "7ebd1cdf8d1efecab69c7716f2f2c93471538d3fa6b36bf7530305e9e281ce53",
+      "bytes": 26477
     },
     {
       "path": "themes/catalog-projections/hermes-klein/frames/hermes-orange/layout-d8.html",
-      "sha256": "a1f03cdf2a7516db58d8c4fa075b551e5bde26c15c5f055b4134fae07ee1e7d2",
-      "bytes": 16055
+      "sha256": "c7be94b247a8c7535bf3ed0edecd3a36040882e12848b6c176c55cc7a9d0673d",
+      "bytes": 22677
     },
     {
       "path": "themes/catalog-projections/hermes-klein/frames/hermes-orange/layout-d9.html",
-      "sha256": "5d326839dd2be85fe1ab46b693dc28bca41d9d80329486abc07b1688653c0cdd",
-      "bytes": 8182
+      "sha256": "04fe4ec02cb1ac8c7b04fe99f887d0f1b11a5303366a06ac51f7686e08784582",
+      "bytes": 19503
     },
     {
       "path": "themes/catalog-projections/hermes-klein/frames/hermes-orange/layout-e1.html",
-      "sha256": "cf64e9bfdd79c48dfacb016ad3f1cf38b86bff759ae5327289314a733a093cc5",
-      "bytes": 14970
+      "sha256": "5e113172a382d1415465d792b2770ff74d766d46bb0478ccac74089e661af661",
+      "bytes": 28252
     },
     {
       "path": "themes/catalog-projections/hermes-klein/frames/hermes-orange/layout-e2.html",
-      "sha256": "228ef6478f877f19f2d25123e4f38820637962d04c7350268d40dfe95e64a37f",
-      "bytes": 11605
+      "sha256": "062b024140476b9d4151ec0f51533fbd3b19f8db867be6677a01f942108257d6",
+      "bytes": 32221
     },
     {
       "path": "themes/catalog-projections/hermes-klein/frames/hermes-orange/layout-e3.html",
-      "sha256": "5c192e8535cce76ca2c4a368b4a5ad7e450590ab408c48b838aa7cc931b24ac9",
-      "bytes": 19938
+      "sha256": "d408e573deefa1f1e0233f12002957dc5e6d17d3ce60893ffd412ba13f134f19",
+      "bytes": 30094
     },
     {
       "path": "themes/catalog-projections/hermes-klein/frames/hermes-orange/layout-e4.html",
-      "sha256": "862459d46423f6268c5b5400c0fa2bae12e711a5292e52c693d0eaf5d31dd8a2",
-      "bytes": 24060
+      "sha256": "77b2283cfa3c68d6238b7b285e65e2e50d05a72f7904c17076017fe02e9ca0d1",
+      "bytes": 37747
     },
     {
       "path": "themes/catalog-projections/hermes-klein/frames/hermes-orange/layout-e5.html",
-      "sha256": "95aa657cb65c56bfbd8ee3d78b32b620cfaa65fbcfb1b4e455d1dbe4ef532837",
-      "bytes": 14237
+      "sha256": "0f0cd45db63c0f6479f6446261e070d2dace1511b9ec38a54fc61a08858c3c08",
+      "bytes": 30585
     },
     {
       "path": "themes/catalog-projections/hermes-klein/frames/hermes-orange/layout-e6.html",
-      "sha256": "5841927c2e0fb32c3a0f15526248805a3831e28efe5bd385802d86758ddffffe",
-      "bytes": 19483
+      "sha256": "aa94ef2b226e1f163d9269d43cfc6745d31023caa248860d53052c456a838e1f",
+      "bytes": 103449
     },
     {
       "path": "themes/catalog-projections/hermes-klein/frames/hermes-orange/layout-f2.html",
-      "sha256": "aff3c5fbe3a75d8d927793b470bf413be0879b2f3f9f282a25152fbbb47e63f7",
-      "bytes": 12406
+      "sha256": "b4fdf300669d7016f4a2c3ad431bbd3951b911991a0d29be5d43467f76e5a835",
+      "bytes": 31449
     },
     {
       "path": "themes/catalog-projections/hermes-klein/frames/hermes-orange/layout-f3.html",
-      "sha256": "23a1d30d35840b60df8ef0257caa04e8d0229afa807556df07909b012087126c",
-      "bytes": 15134
+      "sha256": "3f10b0e32848d01cd90019c7832187957e91127f799e6f15d9a796116140d08a",
+      "bytes": 35697
     },
     {
       "path": "themes/catalog-projections/hermes-klein/frames/hermes-orange/layout-g1.html",
-      "sha256": "fab2da7d1d85b53cce3b4ec57093b4ce6d44e060096f3f375e39ac91b8987cf3",
-      "bytes": 12539
+      "sha256": "dc530c22cb91769f60b378d6b0aacce4d300f894161b2330c0e4c8fd5716d769",
+      "bytes": 31834
     },
     {
       "path": "themes/catalog-projections/hermes-klein/frames/hermes-orange/layout-g2.html",
-      "sha256": "d39a652dba5d893950fcdd3634324756e0f1f61e0a1800e99cc6d24626c214af",
-      "bytes": 16103
+      "sha256": "5dcab1da764ab76981f6290612362a7edd0d8ae9a1811ad103e8160d9daf6387",
+      "bytes": 29829
     },
     {
       "path": "themes/catalog-projections/hermes-klein/frames/hermes-orange/layout-g4.html",
-      "sha256": "280fefa29becc99217768eccf8a8f6b587450e2e9ab46894c7a4e3255a514d7b",
-      "bytes": 13530
+      "sha256": "86aede6fe80e8eb2972239e9cda3971814e15b1f04a9ca567502295dbcf6c160",
+      "bytes": 37277
     },
     {
       "path": "themes/catalog-projections/hermes-klein/frames/hermes-orange/layout-g5.html",
-      "sha256": "07a5aa28b2bd7d42a4f04837c1943ada6b85d3763ac1678834ccfb940457e9b1",
-      "bytes": 9931
+      "sha256": "77521e5ef74df7cee9762cd6896cd359993d9a59886f246d9ec4b564f89ec508",
+      "bytes": 22799
     },
     {
       "path": "themes/catalog-projections/hermes-klein/frames/hermes-orange/layout-h1.html",
-      "sha256": "8faa661837517b2037ae95836bb4b63f607c0bb0395485a4d9bbde99fe999d0e",
-      "bytes": 14915
+      "sha256": "bae46e9989896d9d26527f885ac14ea9e3fc438f274a1bbb430a2084d04e4168",
+      "bytes": 32154
     },
     {
       "path": "themes/catalog-projections/hermes-klein/frames/hermes-orange/layout-h2.html",
-      "sha256": "c3fc113d11a8f6962c96cb5756a14cd87ae5bf8eb3559376a594186ee528de48",
-      "bytes": 11527
+      "sha256": "ad0a58621ff197c448cb45c3d21600ae589ccb2e5d91ef8957ce0d305da86f98",
+      "bytes": 23076
     },
     {
       "path": "themes/catalog-projections/hermes-klein/frames/hermes-orange/layout-h3.html",
-      "sha256": "9943bb85122bcd984b0f067a6d8f8b49aacaf0562ddd47444378a94e780dea66",
-      "bytes": 21225
+      "sha256": "869f005ce35fd1f76df3d975d598ff973f4d4079ea0d7980f6c6e3dd31d9e475",
+      "bytes": 38915
     },
     {
       "path": "themes/catalog-projections/hermes-klein/frames/hermes-orange/layout-h4.html",
-      "sha256": "29c4b116be9c3893bd3d5ce1ce2e3c10a654313815288797287a5ded990e387c",
-      "bytes": 15222
+      "sha256": "ed4c14403befac5d0fd24ca104fcfdb89486ea83a5db965134f6ed4ee854244f",
+      "bytes": 99325
     },
     {
       "path": "themes/catalog-projections/hermes-klein/frames/hermes-orange/layout-i1.html",
-      "sha256": "a4c5b8d3a9a3c59f0ae9d4f1a4ee7f0699dd0987937e730a7767da149fb37039",
-      "bytes": 17242
+      "sha256": "2cc32dffc1216ca5849c41d4c18cba2db831cc03f5901d9559866a7ae66c3f86",
+      "bytes": 39599
     },
     {
       "path": "themes/catalog-projections/hermes-klein/frames/hermes-orange/layout-i2.html",
-      "sha256": "e5f0a2eeaf950f3308a87e639448cb74ee4191bf5c8b4c28ddcbbf25d4c32a36",
-      "bytes": 11030
+      "sha256": "1bacffac9ab58e2a4fef68e3c43079f7c6f80b6a3e0e4d4316d1e0f215b1c0b9",
+      "bytes": 25656
     },
     {
       "path": "themes/catalog-projections/hermes-klein/frames/hermes-orange/layout-i3.html",
-      "sha256": "f2637101bff796cb64bc4d1258b092fe639eba2f1e8196220faea6d0f2e94eb3",
-      "bytes": 12207
+      "sha256": "284901cf8d5a1d55a0979311100006ee52419e0b12742a876388e66701d568cc",
+      "bytes": 39752
     },
     {
       "path": "themes/catalog-projections/hermes-klein/frames/hermes-orange/layout-i4.html",
-      "sha256": "2d075fb0dfee71b6d048fd977d7bbe85c359c497df3cd5c5a363326684cbce53",
-      "bytes": 17865
+      "sha256": "c03066849ff0ef504c4cfce96dea8719639ca353cc7c3f4d0e8fbacbdf2a8da9",
+      "bytes": 33650
     },
     {
       "path": "themes/catalog-projections/hermes-klein/frames/hermes-orange/layout-j1.html",
-      "sha256": "540edd15b7ac98a381615d89ef03890adfa0eb77c0f5ab9d926de3fa4e2df322",
-      "bytes": 12559
+      "sha256": "46bf3346932350bd54392fc228d57ee667d03148b60fe872cb3f0a708da5a5ab",
+      "bytes": 31244
     },
     {
       "path": "themes/catalog-projections/hermes-klein/frames/hermes-orange/layout-j2.html",
-      "sha256": "a0a35fb580971fb50a13811ec7580299a5849266dcbdcb5b5108f04924680e12",
-      "bytes": 18026
+      "sha256": "eb107bec0f70f8f3e0919c18377e394b7f1746a5b84c48a7ea239f8aa5c5efcd",
+      "bytes": 35303
     },
     {
       "path": "themes/catalog-projections/hermes-klein/frames/hermes-orange/layout-j3.html",
-      "sha256": "3a29d715be81d82f225dc30fe3728670be730872f751eb6da3b8b4cc8737d49e",
-      "bytes": 28357
+      "sha256": "43be4afdbc95264d39a3e9afb0f0eb6e096c1cf025ebf9ff29cecba85912d533",
+      "bytes": 36860
     },
     {
       "path": "themes/catalog-projections/hermes-klein/frames/hermes-orange/layout-k1.html",
-      "sha256": "7ca6ddf1a551f92c656c6f4fb38c364387c899481c9b4b1e64d886841837dee5",
-      "bytes": 16137
+      "sha256": "7392fc2050cd7d511d3c1b434b0c2aeae7141db1170edbcbae66007e16df5f27",
+      "bytes": 109221
     },
     {
       "path": "themes/catalog-projections/hermes-klein/frames/hermes-orange/layout-k2.html",
-      "sha256": "4c4a630edb75e844e9edbf3ece513a1d9ef178ccbe580a71f34b04821c39a20c",
-      "bytes": 14804
+      "sha256": "42aa799a9cb2781ff84a1ba2c481a5047b32fe254b2f93fe59987e0a75f22202",
+      "bytes": 91837
     },
     {
       "path": "themes/catalog-projections/hermes-klein/frames/hermes-orange/layout-k3.html",
-      "sha256": "1bbf99b4611fa3cf8ad72273635f743a8352aaa1371309e53920e5a6ba5567d9",
-      "bytes": 21614
+      "sha256": "b219fcff20f1373ea82c619c13869b51ce1be98a679031c0d8edd5dd4d72e845",
+      "bytes": 41520
     },
     {
       "path": "themes/catalog-projections/hermes-klein/frames/hermes-orange/layout-k4.html",
-      "sha256": "689874acf815b5b826ab82de897a1b9d81b99556eac3f6686fb93fa608ccc613",
-      "bytes": 18099
+      "sha256": "43179144f69bdaf86cd54cc48ae79d1e54d49f6b42bd373ffa344bb167265d99",
+      "bytes": 42341
     },
     {
       "path": "themes/catalog-projections/hermes-klein/frames/hermes-orange/layout-l1.html",
-      "sha256": "7122582d05fb951abe33e9e8b6bcd1e5194c9dd9caba65c86d75a055bc354f93",
-      "bytes": 11699
+      "sha256": "3a57989ca315b1fc8cd4e141de90ba93936f551610272b7c0cfab063b2091551",
+      "bytes": 30404
     },
     {
       "path": "themes/catalog-projections/hermes-klein/frames/hermes-orange/layout-l2.html",
-      "sha256": "90f10f53b1d3515decc9a99e6a104bb734f8c3100a565337205c3935f6522d50",
-      "bytes": 11922
+      "sha256": "c148a81112dee0c4d092a476105779bffa976517da7fcbea1eb9a3cd346a41a9",
+      "bytes": 27853
     },
     {
       "path": "themes/catalog-projections/hermes-klein/frames/hermes-orange/layout-m1.html",
-      "sha256": "23bea6c9e835db1cc846c86adb287fd019d84d7d5e9d297bf0c90e0ac9a49d8a",
-      "bytes": 14559
+      "sha256": "fdd58a761c38b8a8967840eebdd97be12b256edf201cb3d0033d1fa4797b96d1",
+      "bytes": 349006
     },
     {
       "path": "themes/catalog-projections/hermes-klein/frames/hermes-orange/layout-m2.html",
-      "sha256": "bef5f125a9d7be74bd4d023f39a7801a677000c5d726b9166efa6ade385364de",
-      "bytes": 11154
+      "sha256": "ee2d55a36328e316471abf4b9a19cd9582f245b21f8bd46f2bc738f8a5beb1fa",
+      "bytes": 102093
     },
     {
       "path": "themes/catalog-projections/hermes-klein/frames/hermes-orange/layout-n1.html",
-      "sha256": "47a1e04b27ff9f987316070e39258f21d52509e8eff0279d7f08cb7072a787fc",
-      "bytes": 15275
+      "sha256": "2c9ffbfb4a4c443e1356c8a971bc68a60a8d75a92452a1aa013f6ac6073202e5",
+      "bytes": 38979
     },
     {
       "path": "themes/catalog-projections/hermes-klein/frames/hermes-orange/layout-o1.html",
-      "sha256": "1ae819108401cec58f3438a1bd39625da9dc4dc1c1122c1cc47a710846052d4e",
-      "bytes": 15465
+      "sha256": "a15d89a5eb99a0456074b41861a2d3de1c179db34c8d744ff06c4e89292e3ad9",
+      "bytes": 35427
     },
     {
       "path": "themes/catalog-projections/hermes-klein/frames/hermes-orange/layout-p1.html",
-      "sha256": "16b547b8aa3a388c8893ae1c3da82f66d6ce6fae690ecb0377b07d5591cdfcab",
-      "bytes": 13462
+      "sha256": "5abddd6c0a7db45fc0d284ccc21f45aeec0a4c8b2dedf2b6632351ec0b025061",
+      "bytes": 27532
     },
     {
       "path": "themes/catalog-projections/hermes-klein/frames/hermes-orange/layout-p2.html",
-      "sha256": "e99dd28714264fed140d4a1db4d3082bf76a57da706b413b06d933c299fbbe24",
-      "bytes": 13221
+      "sha256": "7de0d67d7297371d15e856b3f7b69bfc3f413bb38d1fb6aee050d16ecb73b748",
+      "bytes": 25517
     },
     {
       "path": "themes/catalog-projections/hermes-klein/frames/hermes-orange/layout-q1.html",
-      "sha256": "9f9734eaefcfb42c4a39e3df6c9c81c59e653ceb94e6d2fd20f5b3181bbfbce9",
-      "bytes": 14618
+      "sha256": "a6d37179abd6ad7027e7a5ae776e32cf213c2b4a567f295d9dade2a6f4069173",
+      "bytes": 22992
     },
     {
       "path": "themes/catalog-projections/hermes-klein/frames/hermes-orange/layout-q2.html",
-      "sha256": "e99a456af0c04b7710474a270cb0642155c9b93d5c386a271d8d9a6d1262126c",
-      "bytes": 18835
+      "sha256": "e68097100fd8f907cf9df199c3bb53eb4f8bf67749a2f77b1553e0cc7b7a9018",
+      "bytes": 29192
     },
     {
       "path": "themes/catalog-projections/hermes-klein/frames/hermes-orange/layout-q3.html",
-      "sha256": "1b0f96fa3a2484df1a32ff67eb0e0449d990669fa8e52a550303769a3193a591",
-      "bytes": 13418
+      "sha256": "fa2a07d8e095137a6d4d7c4183a879d70ca94038ba76744f18c06a829fcbfadc",
+      "bytes": 29823
     },
     {
       "path": "themes/catalog-projections/hermes-klein/frames/hermes-orange/layout-q4.html",
-      "sha256": "d9d0c9190358277a4ece2793c85b920883dee02bf6ccd523aa77205c562583ce",
-      "bytes": 13598
+      "sha256": "c6ab4d687bf9061e39f56adec20bc3394d54838d841b5f10e347879e76b618c2",
+      "bytes": 25147
     },
     {
       "path": "themes/catalog-projections/hermes-klein/frames/hermes-orange/layout-r1.html",
-      "sha256": "729bd2d8fe26cd3466b2371e5d56855db4b80d13614dbcc97b9ffc2ab9657a56",
-      "bytes": 12280
+      "sha256": "3b84e241876cb81fec1f75f621cfb46b59adae1355e649fbdb24274ba695cd0b",
+      "bytes": 28224
     },
     {
       "path": "themes/catalog-projections/hermes-klein/frames/hermes-orange/layout-r2.html",
-      "sha256": "cd61501f9312e892cc802125fd29a2c77f6109a2cb8407cac7911dc798a875be",
-      "bytes": 12621
+      "sha256": "b924a987eeece56ec36362cf47b40033071f8f70c417a61dc49e2761582005ef",
+      "bytes": 29245
     },
     {
       "path": "themes/catalog-projections/hermes-klein/frames/hermes-orange/layout-r3.html",
-      "sha256": "1ceadb6859621ab2a290f51912d6cd317302567bcd056867816a7cb7180c97a8",
-      "bytes": 17987
+      "sha256": "3fd5c3a9334b813dda5615885fcd7604e7d8af851d98a60205b9b7cc5f0c49b8",
+      "bytes": 29604
     },
     {
       "path": "themes/catalog-projections/hermes-klein/frames/hermes-orange/layout-r4.html",
-      "sha256": "d6d894e824e74e8ac516167399cf40d2adca88b977025784756b4cc7fb122658",
-      "bytes": 9489
+      "sha256": "85cd777458f591737941eb75f3492fafee15cb7f1fbc62b1d33d9fee9f53a52a",
+      "bytes": 25717
     },
     {
       "path": "themes/catalog-projections/hermes-klein/frames/hermes-orange/layout-r5.html",
-      "sha256": "5cef2a491a5f8363b1bcd7402f7b25b2bcedff3f5108956cbaab0b430c8255bc",
-      "bytes": 11351
+      "sha256": "2778ef660538c36ce681b5f3d602789de9666677900aae95093e6a2b595f71dc",
+      "bytes": 29013
     },
     {
       "path": "themes/catalog-projections/hermes-klein/frames/hermes-orange/layout-r6.html",
-      "sha256": "0c841b71d29e57dfcef7b9ecd1e3735e1372524fde2bfefbc0c3ecb31544a2da",
-      "bytes": 14786
+      "sha256": "215c5a1aaeb5ec50ea5ff1360a0e6298f303bf5c45564b3a639ca4fcf03d0341",
+      "bytes": 33461
     },
     {
       "path": "themes/catalog-projections/hermes-klein/frames/hermes-orange/layout-r7.html",
-      "sha256": "c446ab0aaabdbc26c4f155e83aac8f9a88fb266b93da76c9dbc5ed220c4bbd9f",
-      "bytes": 16282
+      "sha256": "3469676c4c6493ee0b384c512e1c539e52a549c80bf8ebd1523c48345f199179",
+      "bytes": 28194
     },
     {
       "path": "themes/catalog-projections/hermes-klein/frames/hermes-orange/layout-s1.html",
-      "sha256": "603708c37fb39d387d1c86b79fd839a0d5d8b1eae26aa26bf569f0067b8a91f1",
-      "bytes": 13754
+      "sha256": "79f45284e0bbc7cbe83eea8b656930081fe0e5649d07914210ff7ea2314cf5d2",
+      "bytes": 226519
     },
     {
       "path": "themes/catalog-projections/hermes-klein/frames/hermes-orange/layout-s2.html",
-      "sha256": "60b6ef0d93f417c7c90b535b2896a1dc52854b104f857e60e9889b01e47ae22c",
-      "bytes": 13646
+      "sha256": "5c842841b44a0400515ed9a4e72ccbc8258004820fa29075ecf418881cac1b20",
+      "bytes": 26216
     },
     {
       "path": "themes/catalog-projections/hermes-klein/frames/hermes-orange/layout-s3.html",
-      "sha256": "96f929440372bd8fb00a10bc83389ac93a6f3a5a9d619e9fdac1b5864377233f",
-      "bytes": 24784
+      "sha256": "7347ee0c013ffec5f3fc60d1c7d171de02bb7605892f950e02bcfb67a64167b4",
+      "bytes": 43120
     },
     {
       "path": "themes/catalog-projections/hermes-klein/frames/hermes-orange/layout-t1.html",
-      "sha256": "4be49c747bd8c1b125ad2246c80cf7f7a9549e508fd1e2c6c61ed7de1399f6cf",
-      "bytes": 15828
+      "sha256": "07f8b540c9ba079711ebcd8895318272e868796b4f77c314bd5199b6c9c4adaf",
+      "bytes": 31189
     },
     {
       "path": "themes/catalog-projections/hermes-klein/frames/hermes-orange/layout-t2.html",
-      "sha256": "61f47d85623ec3bddf9ce507e100e5667b49344af10c9b399315c51e88bde455",
-      "bytes": 12779
+      "sha256": "f1d3663ea45cce86cefc22c89bb11bda7af4fd1d6bc41654eac398fa5fceecb1",
+      "bytes": 37737
     },
     {
       "path": "themes/catalog-projections/hermes-klein/frames/hermes-orange/layout-t3.html",
-      "sha256": "3b34d326d8ba95b2a46ad27a71d965b3dc7be845bbd0c474a32942c3f3fbf8b3",
-      "bytes": 16892
+      "sha256": "1038e6bfe655caeb58e75cdf84439ac4c8fdbb509f742e215831bb2f4fa08645",
+      "bytes": 36920
     },
     {
       "path": "themes/catalog-projections/hermes-klein/frames/hermes-orange/layout-u1.html",
-      "sha256": "957db64d5c215a9d04f77610c2349351953298e706b6b29e8422349ff139444b",
-      "bytes": 16276
+      "sha256": "2db5f1a2bccc6eec7f16e8ba5e5689ff6d7a6b835b8f821865df5299a99fc8b0",
+      "bytes": 43825
     },
     {
       "path": "themes/catalog-projections/hermes-klein/frames/hermes-orange/layout-u2.html",
-      "sha256": "ec5f7699b23e9355a9313ee037f794fedc302db3cf3845845fad0aae24374324",
-      "bytes": 14693
+      "sha256": "8de6e296a0bf6750910be6d38bdb2603838ead95c54a382a83e0731604b18a34",
+      "bytes": 31885
     },
     {
       "path": "themes/catalog-projections/hermes-klein/frames/hermes-orange/layout-u3.html",
-      "sha256": "02b7557855a5853ee2f1fd6bca105c14e9697660ad3206f8cb009df84f8f1ea9",
-      "bytes": 9780
+      "sha256": "3a7ac88cb2cf53b92e336987232547792482c1b684856c46ab83cc20d87bb064",
+      "bytes": 27812
     },
     {
       "path": "themes/catalog-projections/hermes-klein/frames/hermes-orange/layout-w1.html",
-      "sha256": "da36311b818bd706a1e56c2d1afaf7f8592a39f9dd6e28845e3d1449884fa74f",
-      "bytes": 13126
+      "sha256": "62bac6d6421b725127ecb2cae4466e4b42383d711a8f16e915a2f68acb35a3c4",
+      "bytes": 27135
     },
     {
       "path": "themes/catalog-projections/hermes-klein/frames/klein-blue/layout-a1.html",
-      "sha256": "91788350173346143b079d39c826c9655c5140c2c79a7b4c61ae17352c76f1b0",
-      "bytes": 13580
+      "sha256": "10ef5d8ae8d1425e985c719cb0bf26ed4788200039c063fe9219e1c4571a8987",
+      "bytes": 22847
     },
     {
       "path": "themes/catalog-projections/hermes-klein/frames/klein-blue/layout-a2.html",
-      "sha256": "3c33b00265b5175099f0b7e10a101f34a7af3c5920af757faadbdbbcd9fc2b44",
-      "bytes": 17220
+      "sha256": "1a8900c579fce3bc22ad81333c753739fe10c3298e0343f382a738400971354c",
+      "bytes": 35320
     },
     {
       "path": "themes/catalog-projections/hermes-klein/frames/klein-blue/layout-a3.html",
-      "sha256": "d27c22ca4f69cfa16674b3dbaf6f4f32241567e9d40bfe001b0b8937752800ca",
-      "bytes": 12857
+      "sha256": "70a2dcc67aaa8979a7db8babdf3b247d2694bc78f61ecb503a7df93120328f73",
+      "bytes": 23383
     },
     {
       "path": "themes/catalog-projections/hermes-klein/frames/klein-blue/layout-a4.html",
-      "sha256": "b0f790016d3d21a01c351d1ea81a77c5ae186bf62ae33183601ee133dacb5d75",
-      "bytes": 16800
+      "sha256": "ef14c148904c0e1b67d56beb58ff4ef19b69f09ce87ac0acc71886e341a01164",
+      "bytes": 32587
     },
     {
       "path": "themes/catalog-projections/hermes-klein/frames/klein-blue/layout-a5.html",
-      "sha256": "874132d6f71dedab2a5c7a5fb06577d3218127e6681f14c534254d6237b5b85d",
-      "bytes": 12603
+      "sha256": "3c44ece4990d13f9e9f6ce397b0897bb74c326f602846fce6e55b3cbf1197ec2",
+      "bytes": 39175
     },
     {
       "path": "themes/catalog-projections/hermes-klein/frames/klein-blue/layout-a6.html",
-      "sha256": "62c819f009ff05b7c32b53d51b98fca05caf2bdfef2622854be86fe08f026d93",
-      "bytes": 15158
+      "sha256": "82f66276ba770419380df6b5ebe1b70aa6c27f0b1d5d00cd81b9144bbea2e80a",
+      "bytes": 37160
     },
     {
       "path": "themes/catalog-projections/hermes-klein/frames/klein-blue/layout-a8.html",
-      "sha256": "2ea170497cdb7d49dcc6b87ff4200aeec6998636950fa45733d164a71651482b",
-      "bytes": 18861
+      "sha256": "95fbe262d2f1ff1a270675e8de5ec24fa16e732e62125215166b1729a3c94a31",
+      "bytes": 38456
     },
     {
       "path": "themes/catalog-projections/hermes-klein/frames/klein-blue/layout-a9.html",
-      "sha256": "ed8e499855a4706abce7cae69049d24eec060a6c2b3ce4df418823898ae48c36",
-      "bytes": 16981
+      "sha256": "3e3f49508958e12496b502869f8e1effe5c56fbaae0561ced2d38aa20fa401f0",
+      "bytes": 39942
     },
     {
       "path": "themes/catalog-projections/hermes-klein/frames/klein-blue/layout-b1.html",
-      "sha256": "713f4dcb9e2b18e5494f9d79fd89189c8183a50d8e1c8b74d0ada9051cc0ad63",
-      "bytes": 13506
+      "sha256": "ae7a9da3c5b296c6c75079f2d442abfe90f3050fdca6f4dd112f6e8ca3a733a4",
+      "bytes": 29395
     },
     {
       "path": "themes/catalog-projections/hermes-klein/frames/klein-blue/layout-b2.html",
-      "sha256": "2a8c4d77af0142e410cec3684d5f5a87ce2b98720472c645993bfa286ef81e1e",
-      "bytes": 14372
+      "sha256": "3a7f87c0d75abb3505ac08212a03e6eb44715097c0ca5d056e9afebfd6db7713",
+      "bytes": 100738
     },
     {
       "path": "themes/catalog-projections/hermes-klein/frames/klein-blue/layout-b3.html",
-      "sha256": "234ff6d67cc2e7352575342f5665218c0011a545282c36c2702c37607b9a8cb7",
-      "bytes": 11746
+      "sha256": "6aabeecc906020330275e8c602ff383a9d67c3e0d89743d7484bc407e61733a3",
+      "bytes": 31961
     },
     {
       "path": "themes/catalog-projections/hermes-klein/frames/klein-blue/layout-b4.html",
-      "sha256": "f132f1e8af826b723db007d170f3af51bf1f6ad343607fe242f9b29c072f95cf",
-      "bytes": 16543
+      "sha256": "d1797bbf8ea47ce1317efa380b3a72ee5384668fd13f1d579a1d96afd8e06abd",
+      "bytes": 28429
     },
     {
       "path": "themes/catalog-projections/hermes-klein/frames/klein-blue/layout-b5.html",
-      "sha256": "7e8ef4197b2ae5f379b3113b6636b72e15e0171bf26902a41aee3f052738c10d",
-      "bytes": 12355
+      "sha256": "963e8cc17a64b8ddbad3bff9789b88785f04d1d1c9c9174191c7fd1cdf73687b",
+      "bytes": 24201
     },
     {
       "path": "themes/catalog-projections/hermes-klein/frames/klein-blue/layout-b6.html",
-      "sha256": "b548c1911ba5a2f5976180be3e7f89f6b2a69c9d934cf58f1005b45d8026ffc8",
-      "bytes": 15522
+      "sha256": "08d835833260e4bdd40a531710c87b5658c19884079422330883dc69f137951f",
+      "bytes": 33998
     },
     {
       "path": "themes/catalog-projections/hermes-klein/frames/klein-blue/layout-c1.html",
-      "sha256": "2fa5649fadc84c8021845cce9b5c265aec0639827bd5cb7f86e77900cf0e863a",
-      "bytes": 15623
+      "sha256": "8864ab2a878ebc875aa0d98d93ace1eefbb496cc1f23775b79ab98efb91ec726",
+      "bytes": 28957
     },
     {
       "path": "themes/catalog-projections/hermes-klein/frames/klein-blue/layout-c2.html",
-      "sha256": "25db9fec9b6840f0880b8616b4ff7bd560a5e52a0b2dd3e7a7d271eb35c588b7",
-      "bytes": 15269
+      "sha256": "ca16488cce7e5296a3cc870969d4b6d4a6254478b89e15ab8cac2afde60a9985",
+      "bytes": 32604
     },
     {
       "path": "themes/catalog-projections/hermes-klein/frames/klein-blue/layout-c3.html",
-      "sha256": "740ef9dcb5bbf1769b6901ffd5ad89d97dd5555d7e4bcd1355ef1ac388626b6f",
-      "bytes": 17461
+      "sha256": "fbf6d9999917fafcb95c6549388cbc51851e53cbf0f3d7f72e9819bb40409fd4",
+      "bytes": 38950
     },
     {
       "path": "themes/catalog-projections/hermes-klein/frames/klein-blue/layout-c4.html",
-      "sha256": "80033446933fc1fbe5c4d04281dafeb3c27b06f2efff857172ebd4305a9bc60b",
-      "bytes": 22605
+      "sha256": "0c34d5fb113f3f511c4d6a7fe54384fd6b4b052fb046cd8dfb71db38797117a2",
+      "bytes": 150335
     },
     {
       "path": "themes/catalog-projections/hermes-klein/frames/klein-blue/layout-c5.html",
-      "sha256": "297f116e7e4ceb4d14713083cf18ce767b9929de05d6a0e8e8289cbef19569a9",
-      "bytes": 11703
+      "sha256": "9266bf9b7cb68dcd9dcfa25a4db6db5b620b36b86a8470c2860edf40735c2d83",
+      "bytes": 30080
     },
     {
       "path": "themes/catalog-projections/hermes-klein/frames/klein-blue/layout-c6.html",
-      "sha256": "11234f7b601a31c69ae9a85a92191120d17736c049bff0fb664f837c6bf4573d",
-      "bytes": 12174
+      "sha256": "f51fd1c6a643bd7c6f73597d7b5f8040e11a3187a1dbb857b3b2e973a9ef999e",
+      "bytes": 24230
     },
     {
       "path": "themes/catalog-projections/hermes-klein/frames/klein-blue/layout-c7.html",
-      "sha256": "11d7063f31c8ccc4a0928d096ac31737252310f2be3bdba3b4070e382044e54e",
-      "bytes": 15712
+      "sha256": "16a3da1e22751f7ee563d82bb0883afd24149fb9d0776add98c47cc1053b45ca",
+      "bytes": 33142
     },
     {
       "path": "themes/catalog-projections/hermes-klein/frames/klein-blue/layout-d1.html",
-      "sha256": "32ae33d79dc2fcfedd4afe26028fbf64de5d792a2229870a58c938223850daff",
-      "bytes": 13498
+      "sha256": "462f291b6cbe934758f0a71e4bbe1de9f84328157bdd03ae08b60f697402a0d9",
+      "bytes": 18025
     },
     {
       "path": "themes/catalog-projections/hermes-klein/frames/klein-blue/layout-d10.html",
-      "sha256": "919e2f40046cbb0a36079d382a9df5ae74762aec461f3a169b0571a85319cab0",
-      "bytes": 10131
+      "sha256": "cad1eb2cc876e85c838b71b7226723f0a7550fe688bbc6e62688fdf778ab33b6",
+      "bytes": 900358
     },
     {
       "path": "themes/catalog-projections/hermes-klein/frames/klein-blue/layout-d11.html",
-      "sha256": "073fc1199d6aa8126261743ffefa2d22f88b3a94dc0238cf2d367966871e75be",
-      "bytes": 12097
+      "sha256": "f90080239cfbdd28aba89de2a003ddb11f6350ac786971a83b630252bf3054a6",
+      "bytes": 28228
     },
     {
       "path": "themes/catalog-projections/hermes-klein/frames/klein-blue/layout-d2.html",
-      "sha256": "82d7f13ed26b6fb82861220c2ee7d008aa5ccf7442f2fccc84bc2eb88aa64ae3",
-      "bytes": 11014
+      "sha256": "d238fad3f3bea4a8bfc754489883832dc961d171e51d4d650e148a2bab2748e2",
+      "bytes": 257153
     },
     {
       "path": "themes/catalog-projections/hermes-klein/frames/klein-blue/layout-d3.html",
-      "sha256": "25501c3e64d1421675911a6a78d87ebdab16688fd7562eab405b2c59bb5901f5",
-      "bytes": 9965
+      "sha256": "f846110c56c9f8139edbc25e02bb548129b3ab9d588e0f56c84d390a73ac8ec2",
+      "bytes": 13651
     },
     {
       "path": "themes/catalog-projections/hermes-klein/frames/klein-blue/layout-d4.html",
-      "sha256": "195dbee78b62b916db1bb64bc72202adda39a784283350e935d90da880e3aee2",
-      "bytes": 11947
+      "sha256": "062d441bb276b9da931be1299f180ab52c29effe6acb7cd0a6428b2f22be7e7e",
+      "bytes": 22754
     },
     {
       "path": "themes/catalog-projections/hermes-klein/frames/klein-blue/layout-d5.html",
-      "sha256": "e53b1eff7ca958f848ca111b0aafbdcb695dd32dab3f9618ea889d3f96a8268a",
-      "bytes": 9283
+      "sha256": "d63fa7f2299a66c234d5fbc9840545e18491535fb5c74207c5ebb71fbcc580eb",
+      "bytes": 13487
     },
     {
       "path": "themes/catalog-projections/hermes-klein/frames/klein-blue/layout-d6.html",
-      "sha256": "8b73d06337f91458cde57a7f6d92f82540fa8660da6a38e5f5419f468f5268fa",
-      "bytes": 16616
+      "sha256": "0d5175b728e061e4b8ce0fd31cb6174b19cd2de1bb5434771294e3d039ffbe4b",
+      "bytes": 93655
     },
     {
       "path": "themes/catalog-projections/hermes-klein/frames/klein-blue/layout-d7.html",
-      "sha256": "2a803cdcfcefc03233d8d0d68c52c2740c64af8a6710839fd2c8d4f7e49dbc3a",
-      "bytes": 14486
+      "sha256": "6164bbbecdeced108b39f6ba556e9927549257ff034f452f478b60c4ea6fcc6f",
+      "bytes": 26471
     },
     {
       "path": "themes/catalog-projections/hermes-klein/frames/klein-blue/layout-d8.html",
-      "sha256": "7aeef4e9c3ca78f3f7df0bd1c60e1c62f4e6cb4fca80ca9a634c932e547f87fc",
-      "bytes": 16041
+      "sha256": "c03d6994c698895ab153cec9084a352f6f8593048a8de6c39993806fc3a937cd",
+      "bytes": 22671
     },
     {
       "path": "themes/catalog-projections/hermes-klein/frames/klein-blue/layout-d9.html",
-      "sha256": "a41f6d3cc819ca6a9b14980f76440bac556b74b95c11ead88649393949a9aed8",
-      "bytes": 8171
+      "sha256": "ab0874fc5775a780b966ab155022e4fd48bf0132d8f6057865b3f611d24c9511",
+      "bytes": 19497
     },
     {
       "path": "themes/catalog-projections/hermes-klein/frames/klein-blue/layout-e1.html",
-      "sha256": "61414f30fc0c8ceb64bdb9f0ca51a0bdff27208e7c79ab91e6a8b99839ab21a0",
-      "bytes": 14951
+      "sha256": "23afb9bb8e61508ae349b7e222f3fb9e05fdd7d0ef14182ebf681c663065c582",
+      "bytes": 28246
     },
     {
       "path": "themes/catalog-projections/hermes-klein/frames/klein-blue/layout-e2.html",
-      "sha256": "5e835121de34abcc6808dfa5337ddd5f54dea9e5dc36fc7898118dd4649a2ce0",
-      "bytes": 11594
+      "sha256": "08290aa2270e9acea68c3d0a29d5d0ef8d14692638fd1f3f66cb1e2afe85ffaf",
+      "bytes": 32215
     },
     {
       "path": "themes/catalog-projections/hermes-klein/frames/klein-blue/layout-e3.html",
-      "sha256": "8232b27f16ecae008e52d09baa619b752bbcb2593ab544cca408c7bfaf96ffe9",
-      "bytes": 19927
+      "sha256": "d3e6e61aaf610ef12e0feb41cd29398075474370c4ed51976d55cb7d6afd8f65",
+      "bytes": 30088
     },
     {
       "path": "themes/catalog-projections/hermes-klein/frames/klein-blue/layout-e4.html",
-      "sha256": "24f7227efa08adf0359fa4ba494181b2ecd77b3d2f469cb2661b1349c2a4aa6a",
-      "bytes": 24049
+      "sha256": "c6dd260151529fa2c2fa015cef40a367f35754ebf80c9f2e17ca7f7bdf3732d2",
+      "bytes": 37741
     },
     {
       "path": "themes/catalog-projections/hermes-klein/frames/klein-blue/layout-e5.html",
-      "sha256": "d97bebbb8a53dec16f96528604070f64c2d1644572d7c8b3c7db999e38853870",
-      "bytes": 14226
+      "sha256": "1cd3a6cfd76f9a455f072c8750666112a18cdfac54070175cdcafc9ce435372b",
+      "bytes": 30579
     },
     {
       "path": "themes/catalog-projections/hermes-klein/frames/klein-blue/layout-e6.html",
-      "sha256": "98fb23e1d6a7e0a9323b913625dd26bbdbaad625ccf78cffb7dbf528e7812529",
-      "bytes": 19472
+      "sha256": "897a876dab60117f322974e524c543e886a38dac86587f110843e015b98adafd",
+      "bytes": 103443
     },
     {
       "path": "themes/catalog-projections/hermes-klein/frames/klein-blue/layout-f2.html",
-      "sha256": "2d3360a7a88693fc3064bd9122782589b17976cddf33609844bf1f69ec565795",
-      "bytes": 12395
+      "sha256": "eb9870a44b9dc209051769fe3663b23ec377d2e25e09684912aef9fbed0dbf26",
+      "bytes": 31443
     },
     {
       "path": "themes/catalog-projections/hermes-klein/frames/klein-blue/layout-f3.html",
-      "sha256": "0c4926ac522b0e35ef4b4dcfa0acb61db4cb8e0af191897ff91ba64b27e543ff",
-      "bytes": 15123
+      "sha256": "9ffa009c6c0d743781adb6a06f418de55c9926a99129ba3c5dea933d9ebbd8f4",
+      "bytes": 35691
     },
     {
       "path": "themes/catalog-projections/hermes-klein/frames/klein-blue/layout-g1.html",
-      "sha256": "6f5a10eae7b36761a1b46c817c305a620b14e2bf1a4d1298b58e7a5d325b81e9",
-      "bytes": 12528
+      "sha256": "9926bbe0fa30700519a0e8c5551e7e7a59ded7866f21cb1a4942e322ee49499a",
+      "bytes": 31828
     },
     {
       "path": "themes/catalog-projections/hermes-klein/frames/klein-blue/layout-g2.html",
-      "sha256": "2e1ba500d54d547eab1c2a7f08aab054067fb3d43f1e2380e629fe700ebdf6a3",
-      "bytes": 16092
+      "sha256": "ad5718a7c7aa5d9650dabaf029850e4afa730bbdbffe713e7aa45e2490bcf26d",
+      "bytes": 29823
     },
     {
       "path": "themes/catalog-projections/hermes-klein/frames/klein-blue/layout-g4.html",
-      "sha256": "20121526c43c95798bc6ca9a251619d96a4d30e91e653092d911becb09a259be",
-      "bytes": 13519
+      "sha256": "c4deeee1bf2a5c32379097c49309b5db7c48b4eb51b4f5d361394767c4781640",
+      "bytes": 37271
     },
     {
       "path": "themes/catalog-projections/hermes-klein/frames/klein-blue/layout-g5.html",
-      "sha256": "055d20b4fc61005e3b87ccc56382734b68fe9df7d5150fb149ae45e21846db36",
-      "bytes": 9920
+      "sha256": "13710101779c48027944a78dc12a91fda1a5a1ffbd489ffb81327af158d582df",
+      "bytes": 22793
     },
     {
       "path": "themes/catalog-projections/hermes-klein/frames/klein-blue/layout-h1.html",
-      "sha256": "e6995f3c90faade197d79e86b2f07203176c9ac13a7915faec84d7323a95591e",
-      "bytes": 14904
+      "sha256": "23b68c4635c14d327e0b83288dd55c4d873940768f165f2f1e22e55ab17bde6e",
+      "bytes": 32148
     },
     {
       "path": "themes/catalog-projections/hermes-klein/frames/klein-blue/layout-h2.html",
-      "sha256": "7e7bc3ab28110e52efc79aadbc49c812e9193ca56766e01172024b1446966824",
-      "bytes": 11516
+      "sha256": "68d6c6fc2d9dbb955cbe51707b9f00a589c77ffd6b965f652553e3640ef1a0a2",
+      "bytes": 23070
     },
     {
       "path": "themes/catalog-projections/hermes-klein/frames/klein-blue/layout-h3.html",
-      "sha256": "de766650f17014b7ce5a239164f4ee5f3aad365b697c1198e4492e3d33b950be",
-      "bytes": 21214
+      "sha256": "d12e7f09f10b018b48ea22aa106bf76b57d2cda32ccff504eff613af5ff4b47d",
+      "bytes": 38909
     },
     {
       "path": "themes/catalog-projections/hermes-klein/frames/klein-blue/layout-h4.html",
-      "sha256": "8106fdb82dc1ffb4cc0772fa7a1c99f3e093f170c0092b920dcbeaf496cd5cf3",
-      "bytes": 15211
+      "sha256": "a3ec8a6bc55d24009ceef1ad15f184ca13a41d4090111b9c7f1947d8dd28d88a",
+      "bytes": 99319
     },
     {
       "path": "themes/catalog-projections/hermes-klein/frames/klein-blue/layout-i1.html",
-      "sha256": "76b1f001ef0f70f9c3f43646b5c348f7432e958b174279d3dcac05d298ee5552",
-      "bytes": 17231
+      "sha256": "532edd2781437c352bc0c0a9632f4b42388efe83dfe305659c8d39c22908a97d",
+      "bytes": 39593
     },
     {
       "path": "themes/catalog-projections/hermes-klein/frames/klein-blue/layout-i2.html",
-      "sha256": "390d801851569ed0a81f49688dd8ae9873e2bb833b74a442fc6a10efe3e4169b",
-      "bytes": 11019
+      "sha256": "a58627f734d04c46ffe03ba916b8ec8a819e6a3e57f20923d7ac093d7ad663b8",
+      "bytes": 25650
     },
     {
       "path": "themes/catalog-projections/hermes-klein/frames/klein-blue/layout-i3.html",
-      "sha256": "ea599fc1c9c1a986f2708c3a132fb868f768304d12e46166cfc4a8eb01e801a8",
-      "bytes": 12196
+      "sha256": "f939db1e41754bc253cf5c0a2a03847842bbe334f6439353a9dae1de05db57c1",
+      "bytes": 39746
     },
     {
       "path": "themes/catalog-projections/hermes-klein/frames/klein-blue/layout-i4.html",
-      "sha256": "588da0e431c15206bdbdc9c2f36551417d5f16688d84665a0caf234aaa6041f4",
-      "bytes": 17854
+      "sha256": "1403e9e2c26f0d6e5adcbaea3bb46c42060d25da394492bdff08f25a30b50f1b",
+      "bytes": 33644
     },
     {
       "path": "themes/catalog-projections/hermes-klein/frames/klein-blue/layout-j1.html",
-      "sha256": "e9bc42df8fc04c89d65105d80dcfce1a68400c3747fbc8dc5694461b66694130",
-      "bytes": 12548
+      "sha256": "7421459b027485ae05ce819ac986a9e2ad2999f13485625d635f45307a6e6910",
+      "bytes": 31238
     },
     {
       "path": "themes/catalog-projections/hermes-klein/frames/klein-blue/layout-j2.html",
-      "sha256": "0da007720179905f650070a415968f55e710cabc8348e494dd6fa7473db17f35",
-      "bytes": 18015
+      "sha256": "ad7d842584050b132e787257298f324b9a0f3426ccd1606aeab22d491848ab34",
+      "bytes": 35297
     },
     {
       "path": "themes/catalog-projections/hermes-klein/frames/klein-blue/layout-j3.html",
-      "sha256": "4d46ff12eab62b548a94141ae4ca38a4e4d6e713044eda723b28825e0ddecb5b",
-      "bytes": 28346
+      "sha256": "7dcd86e737e0424f7f3ffb9cdd90272492ab2723346d688c9749d86b530f2f93",
+      "bytes": 36854
     },
     {
       "path": "themes/catalog-projections/hermes-klein/frames/klein-blue/layout-k1.html",
-      "sha256": "fd9255fb6c8cad4642cc001beb9d7bc4088902a377470c171160984a011f5aed",
-      "bytes": 16126
+      "sha256": "83010ad1cf2ecef57b67349ad38aa1ba5beeb22517b21f90bbfb347566b581e4",
+      "bytes": 109215
     },
     {
       "path": "themes/catalog-projections/hermes-klein/frames/klein-blue/layout-k2.html",
-      "sha256": "d50bf40c747ac8ca825ef7a6a286bc7544c08fa7f61143e64b6c7b0746d0a862",
-      "bytes": 14793
+      "sha256": "1e044f59f9456ac3eef1c493b3dc9d07c90451eb40bf684c9fe69286d4495800",
+      "bytes": 91831
     },
     {
       "path": "themes/catalog-projections/hermes-klein/frames/klein-blue/layout-k3.html",
-      "sha256": "a06535f01901a5fa6ceaf4118c53734ccfcac8b31856d88904a2e2f01aa26856",
-      "bytes": 21603
+      "sha256": "d72219a4eab2dd769651d3d9c97054f7b2051539baf158bd69955e3b515c27f7",
+      "bytes": 41514
     },
     {
       "path": "themes/catalog-projections/hermes-klein/frames/klein-blue/layout-k4.html",
-      "sha256": "f7beb111d8b7cfc178d786697aec166b38526b36932a084ad71d641034948a2f",
-      "bytes": 18088
+      "sha256": "51ecedff2a0d7c79ba954ba0de8500b6fea48bc2e0a19c2bd1081565990213df",
+      "bytes": 42335
     },
     {
       "path": "themes/catalog-projections/hermes-klein/frames/klein-blue/layout-l1.html",
-      "sha256": "305790ec95dc0256875006dae73d1144ce88d3340f032d3125a3c65220a63fbe",
-      "bytes": 11688
+      "sha256": "8f4df1a9a51a1bc2441ef16482b97104c20157aada033d4a15f192079f88d2db",
+      "bytes": 30398
     },
     {
       "path": "themes/catalog-projections/hermes-klein/frames/klein-blue/layout-l2.html",
-      "sha256": "817ba9307d92e6fb5c48cd11227510ad73dedf0d5b54e9469c722c769ece7394",
-      "bytes": 11911
+      "sha256": "51b8e595b0d33d029e4225e424f7da30bc5600c12c2b498e917129cad41856d8",
+      "bytes": 27847
     },
     {
       "path": "themes/catalog-projections/hermes-klein/frames/klein-blue/layout-m1.html",
-      "sha256": "2cbd58e0103d8d83b3528381455029759ebd992e2b5d1411744992f45bebbe0c",
-      "bytes": 14545
+      "sha256": "6a5e33ce56cddfe7b6007fb78965b6a701c912b59d22f5f9e8a32e3394d14e8d",
+      "bytes": 349000
     },
     {
       "path": "themes/catalog-projections/hermes-klein/frames/klein-blue/layout-m2.html",
-      "sha256": "fad5160760ef8452e8177dbb882906ac0a17f496693509367f9dcf27f7aebf28",
-      "bytes": 11140
+      "sha256": "5f9d8f5f91ce01d30b0f9cec0108e8f6350dd5b1a9c158839fea049e076d3d73",
+      "bytes": 102087
     },
     {
       "path": "themes/catalog-projections/hermes-klein/frames/klein-blue/layout-n1.html",
-      "sha256": "ab9376a493e32cf67ea289adba7f63fb50e51e5c3f8c21a06649bc5045c23c40",
-      "bytes": 15264
+      "sha256": "d978f4e6532d3d76b3c99b446b2472fd124100cb894b0152f3204297cb4e403a",
+      "bytes": 38973
     },
     {
       "path": "themes/catalog-projections/hermes-klein/frames/klein-blue/layout-o1.html",
-      "sha256": "baf58e2a78f28bd81818ace7c48b44678130095c4cdd8fcf9dde27cc7a2edb1c",
-      "bytes": 15454
+      "sha256": "65dd2d4d54fe7d6038d853dec817ba605f41b8235bf450c12e0b6f68a1d7290d",
+      "bytes": 35421
     },
     {
       "path": "themes/catalog-projections/hermes-klein/frames/klein-blue/layout-p1.html",
-      "sha256": "96cd32cc08539d46191b01974f9e0c7659e21662158668d75ea6067cdb8f0c18",
-      "bytes": 13451
+      "sha256": "55479dd07866df9265d44482233e2e17b426bcfc76e703d25d3da47d33d96560",
+      "bytes": 27526
     },
     {
       "path": "themes/catalog-projections/hermes-klein/frames/klein-blue/layout-p2.html",
-      "sha256": "6d6e86699dd33732ef351d3f42cad79698653305a449ec3f2f5a5f5d896f238e",
-      "bytes": 13210
+      "sha256": "c7e7de3ebadfc1e18f5f9cb3a1cdc6d7ff1f5c0ffcbd9ed17e695b2f4601c8bb",
+      "bytes": 25511
     },
     {
       "path": "themes/catalog-projections/hermes-klein/frames/klein-blue/layout-q1.html",
-      "sha256": "64c7ee265b1a131ebebeccd63bb1f2b0e238ae44acb516f451e5d64d39c07211",
-      "bytes": 14607
+      "sha256": "6e19cf1f0ce9238885d26658f6571fa9d89d67ac7c7d7d7ad12c4f16cb20d05a",
+      "bytes": 22986
     },
     {
       "path": "themes/catalog-projections/hermes-klein/frames/klein-blue/layout-q2.html",
-      "sha256": "7e748b301aa42992405e2644357baa8a6285672ff568fd8b495e1554ff35a9ac",
-      "bytes": 18824
+      "sha256": "f0209402e1f3f3d5c3cdc33c18553487b250bdd2c91fe8d4b0e9c6b41a60a7b1",
+      "bytes": 29186
     },
     {
       "path": "themes/catalog-projections/hermes-klein/frames/klein-blue/layout-q3.html",
-      "sha256": "f774560696442c2def15ddc280e4f795b449c827848090b2b75196eb1d75ed21",
-      "bytes": 13407
+      "sha256": "1a48dea9310fed88b250b34165b64ce0bfb443f1d9d71e7d929b60845e07efa8",
+      "bytes": 29817
     },
     {
       "path": "themes/catalog-projections/hermes-klein/frames/klein-blue/layout-q4.html",
-      "sha256": "1b85c8f3caeff26ae62ee2ab7698a62c53f80aa7a37b36e8060d386ccce69036",
-      "bytes": 13587
+      "sha256": "0f171dec843961d51c5620ecae2f6555bf3b91880609390b1064dc3ddbbd1ea6",
+      "bytes": 25141
     },
     {
       "path": "themes/catalog-projections/hermes-klein/frames/klein-blue/layout-r1.html",
-      "sha256": "535c66fb54fd92838d50c3046ad8cd26a183467a95fc4dba873ce99c13f9920d",
-      "bytes": 12269
+      "sha256": "03f31dd0899be1a455c9b43379e0a00966fd16a0a9f3b57e2a916fd4b264972f",
+      "bytes": 28218
     },
     {
       "path": "themes/catalog-projections/hermes-klein/frames/klein-blue/layout-r2.html",
-      "sha256": "ddeca274a742f6881638e0d0c0b7ea82f641c7607e38c5c677a2ab36096c7a0a",
-      "bytes": 12610
+      "sha256": "290e82a716898bd4dc2c8a131eacc65063698dd9502a59a308210baec4fde71c",
+      "bytes": 29239
     },
     {
       "path": "themes/catalog-projections/hermes-klein/frames/klein-blue/layout-r3.html",
-      "sha256": "97b40198b3a3eb47ff2229a0cd6d0390eb7a5f52753af185d5e2769d8708a0b3",
-      "bytes": 17973
+      "sha256": "30809f4d52c591c69326cac50e407e1850b6b5953fe58875891b46e6e6bd2ab7",
+      "bytes": 29598
     },
     {
       "path": "themes/catalog-projections/hermes-klein/frames/klein-blue/layout-r4.html",
-      "sha256": "7ff1ba7a6102bc85b2a6ccd7991f1e8fcdbb62ee13fde09797d48a1be73d712b",
-      "bytes": 9478
+      "sha256": "4109b96a8c65fb58b5bef0ae15b35e4d25ef16ca298a2690b8c8a17846750e4d",
+      "bytes": 25711
     },
     {
       "path": "themes/catalog-projections/hermes-klein/frames/klein-blue/layout-r5.html",
-      "sha256": "b84ac6f70c7d1a77e1ed15399790efd8caa9defe2c4c5225a7b9fcd05f8304fa",
-      "bytes": 11340
+      "sha256": "7bf0924544d530ede5feeb2573ca7ef45401918b758a2db6ff2f13d475c7a1a1",
+      "bytes": 29007
     },
     {
       "path": "themes/catalog-projections/hermes-klein/frames/klein-blue/layout-r6.html",
-      "sha256": "59ee548ed290da0e7161e4645db6ddf90b4da1eb88615f9af34993200c74e553",
-      "bytes": 14775
+      "sha256": "3c99d29d736b1a28f9e3c64ed27d28440b57c12ddd9414ffc9e3942bf841e43a",
+      "bytes": 33455
     },
     {
       "path": "themes/catalog-projections/hermes-klein/frames/klein-blue/layout-r7.html",
-      "sha256": "affef40c046a0e5a4dfefd9f5370d492fdfea62b8b90c10cbddb6c9719a043a8",
-      "bytes": 16271
+      "sha256": "c70ecba333e2d930f605929380d68a794457cef7a6c34e7507ee310fdd91d499",
+      "bytes": 28188
     },
     {
       "path": "themes/catalog-projections/hermes-klein/frames/klein-blue/layout-s1.html",
-      "sha256": "6f5a8143d5e6846a445a3c5d7bfa0808ac3f29217d67eed715a4c1432618cb3a",
-      "bytes": 13743
+      "sha256": "3c4db6360e8ea5655a9681afe11d940813fcbae7d90b9ba7e567f0124aa6900f",
+      "bytes": 226513
     },
     {
       "path": "themes/catalog-projections/hermes-klein/frames/klein-blue/layout-s2.html",
-      "sha256": "e7763fee056de5abe2cbd0c62ae4399cff1b370468de716fda86f315e330988f",
-      "bytes": 13635
+      "sha256": "74d73cfcacff4a9850320336ddde7346594cf6a8e1872cde40915cf1e12073fc",
+      "bytes": 26210
     },
     {
       "path": "themes/catalog-projections/hermes-klein/frames/klein-blue/layout-s3.html",
-      "sha256": "53c04aebac0721431f77fafdcc2a50bc02bb1fe0b37f0a417f8ebae711694dcd",
-      "bytes": 24773
+      "sha256": "8f9bb5eb6b85459f683a15a80325e783c5b39663e268742b595cdd7184be3452",
+      "bytes": 43114
     },
     {
       "path": "themes/catalog-projections/hermes-klein/frames/klein-blue/layout-t1.html",
-      "sha256": "c70c83dc7f350caad75f48072491bdc3db0cba634e60bfc89abc4d7d9e9b7f2d",
-      "bytes": 15817
+      "sha256": "b061822cc728b465f4f5cc524caa215a53fceede677376286e29b72f54a7d41a",
+      "bytes": 31183
     },
     {
       "path": "themes/catalog-projections/hermes-klein/frames/klein-blue/layout-t2.html",
-      "sha256": "401b7d10bc7ffd96fdb55b371b3aabc212913ebe04b9157dc52c08a76bb006ec",
-      "bytes": 12768
+      "sha256": "f2b0eaaad73ba8d21abaccaedce4ce6e4db7d7f02b27f37a5b3c5c1c17160721",
+      "bytes": 37731
     },
     {
       "path": "themes/catalog-projections/hermes-klein/frames/klein-blue/layout-t3.html",
-      "sha256": "6d992cfafc515a03e265005a592910c071fbe5b45ed1274be7d2cf16c5d7ae63",
-      "bytes": 16881
+      "sha256": "fc300ac18e5b4b16a858d0d131b69fa78b5de13e5c582d0fd1d38c7c04c462dc",
+      "bytes": 36914
     },
     {
       "path": "themes/catalog-projections/hermes-klein/frames/klein-blue/layout-u1.html",
-      "sha256": "90dd158a8cb1cc256c5e743d5159ffa356f7f3dd2673e8653b5cb2f0a2e792de",
-      "bytes": 16265
+      "sha256": "deaa4d1652cc5f6b12b26810d107789b6acd5f49803fc2f6e81dc83d966379e9",
+      "bytes": 43819
     },
     {
       "path": "themes/catalog-projections/hermes-klein/frames/klein-blue/layout-u2.html",
-      "sha256": "4024198779e46d84e5eaf0696ffec5286cc18d37c8a7d4e5829ae7e99b6e7ec8",
-      "bytes": 14682
+      "sha256": "84795ec84aebb448cd1e82f1c3d27f4d6286ec5d6840fc8c72d37336f25b2f75",
+      "bytes": 31879
     },
     {
       "path": "themes/catalog-projections/hermes-klein/frames/klein-blue/layout-u3.html",
-      "sha256": "53ba45a6a43840da50882c25d0940e8cac60bb6130da19bae907d8e2385f9144",
-      "bytes": 9769
+      "sha256": "0863447ea29936deecfbd432a9e23ed93e15a6049ccbe763b7367c2d0c9d8d8d",
+      "bytes": 27806
     },
     {
       "path": "themes/catalog-projections/hermes-klein/frames/klein-blue/layout-w1.html",
-      "sha256": "f9329a95826a4fff76624a6bfb3ac38da46f26e266691ef856a147aec4117db4",
-      "bytes": 13115
-    },
-    {
-      "path": "themes/catalog-projections/hermes-klein/t1-illustration.css",
-      "sha256": "07eeead40533976a676cda2edc0edc879bfdfdbb49c7e587a8754aa0e55736f8",
-      "bytes": 5262
-    },
-    {
-      "path": "themes/catalog-projections/hermes-klein/t1-illustration.js",
-      "sha256": "4216540408ab721163a904a18cf1e6b542423be089a37dbc4a310895d21ce82e",
-      "bytes": 8815
-    },
-    {
-      "path": "themes/catalog-projections/hermes-klein/title-furniture.css",
-      "sha256": "7e75147aedf126e83efe2162b28f8713be5fbc3a2c0d1c32c285b5706cd881f0",
-      "bytes": 4927
+      "sha256": "6100ccf3dfdf9570ad072516de527ec53b36874416fb13100665d81e1bfaa360",
+      "bytes": 27129
     },
     {
       "path": "themes/core-colors.json",
@@ -14142,8 +14127,8 @@
     },
     {
       "path": "themes/engine/assets/component-theme.css",
-      "sha256": "98c0b68aa360f0ef7e5aee6966b0dd93cc71f2011633553a34d447389bfec125",
-      "bytes": 49064
+      "sha256": "6b2f0922009bb7ec603ee3ee29f9a9c5fce12f04f0d9dc950920303fd3d7cbdc",
+      "bytes": 45761
     },
     {
       "path": "themes/engine/assets/design-tokens.css",
@@ -14152,8 +14137,8 @@
     },
     {
       "path": "themes/engine/assets/slide-components.css",
-      "sha256": "deee394596bbf403563ad801c065430cf71bf049958bce3c9875e2860a9a8abe",
-      "bytes": 27816
+      "sha256": "ba5f483e2e61840632871aa13678a47b6e18dd64818d9136c3afbe4c4042fc8f",
+      "bytes": 24954
     },
     {
       "path": "themes/engine/assets/theme-packages-manifest.json",
@@ -14162,13 +14147,13 @@
     },
     {
       "path": "themes/engine/contracts/component-theme-bindings.json",
-      "sha256": "0d8b9b49d46f86704ba20ea600d947261268ebf5ac466a6d549cf5eb221f20e9",
-      "bytes": 255678
+      "sha256": "01c7cdaf69abd333cdcf8058e2c4ed8ac9e8eff4d8e8b60b77cb3ef94473ab7c",
+      "bytes": 260414
     },
     {
       "path": "themes/engine/contracts/layout-theme-bindings.json",
-      "sha256": "1031b165915940b926a63f8e52055366c188717fcc948e4ea889aa9e9e5cf252",
-      "bytes": 63238
+      "sha256": "a6ca710d5c405bcd849d06dc95fe3e8be743a6d34f81ce0a7fade37977c0253b",
+      "bytes": 352350
     },
     {
       "path": "themes/engine/contracts/theme.schema.json",
@@ -14192,23 +14177,23 @@
     },
     {
       "path": "themes/engine/contracts/visual-treatment-grammar.json",
-      "sha256": "be921f44d3721d26b784e18b0e0af1a2640442766917c51579ad4cf3d6b3f7d2",
-      "bytes": 3712
+      "sha256": "b20e79f0459055661b6d388506a55cda13d579cc8d94a4a922b9993716be439b",
+      "bytes": 3874
     },
     {
       "path": "themes/engine/fonts/catalog/CourierPrime-Bold.catalog.woff2",
-      "sha256": "fd5476b2d8ad9f727d8df904f2a62846f0f6c4616001a44ba5288acc9e27df46",
-      "bytes": 15380
+      "sha256": "ecaf639fcbde7fce708216779fe7e3b8a13abba60c565b70d74f6e92a6f031d3",
+      "bytes": 15308
     },
     {
       "path": "themes/engine/fonts/catalog/CourierPrime-Regular.catalog.woff2",
-      "sha256": "8151d1244aea911c8ff4efc347388fe1250939fdaf5bdd80bfcf99a4f5d6dfff",
-      "bytes": 14852
+      "sha256": "5069f8e5557a5d8515d6cb3ad164332c7dbdb276d4e94fde3ee973400590999e",
+      "bytes": 14904
     },
     {
       "path": "themes/engine/fonts/catalog/LXGWWenKai-Regular.catalog.woff2",
-      "sha256": "0a7bb57928b8fae14051bb38361261601a9dd35ce695a6634ca0e8989bebe059",
-      "bytes": 332968
+      "sha256": "07117e2b1024797a0d619e24f2104b746b82a8b255c8db90db72305bf6d77c61",
+      "bytes": 332804
     },
     {
       "path": "themes/engine/fonts/catalog/Oswald-Bold-Latin.catalog.woff2",
@@ -14217,33 +14202,33 @@
     },
     {
       "path": "themes/engine/fonts/catalog/SourceHanSansCN-Bold.catalog.woff2",
-      "sha256": "b626b646130c643d118b0876ff3b4c2dc8f22e4b15d138eadced01b7eb58a127",
-      "bytes": 499168
+      "sha256": "6b2f1d3151db58cf3a84ca692bab072b213fdc54bf32da45921963d4ab4971a3",
+      "bytes": 500116
     },
     {
       "path": "themes/engine/fonts/catalog/SourceHanSansCN-Light.catalog.woff2",
-      "sha256": "5fb43dddecc2ac1351d50905585e04e62e7074fe305f49809712133427a15ade",
-      "bytes": 484900
+      "sha256": "fb1c87bac6b442ee3ea9b04799466f67c0e5452803cb0b96baba8cd40a490a00",
+      "bytes": 485196
     },
     {
       "path": "themes/engine/fonts/catalog/SourceHanSansCN-Medium.catalog.woff2",
-      "sha256": "032f82a0df6daed827ee4d4bd4181e75df5d2a4524ff48abdf546f7d1735ad67",
-      "bytes": 490768
+      "sha256": "fae9e35c16e17eff10f99874e9969b10166ac006473643d6efabb40caffafa69",
+      "bytes": 492000
     },
     {
       "path": "themes/engine/fonts/catalog/SourceHanSansCN-Regular.catalog.woff2",
-      "sha256": "eefc0dda639ca20a288706769671e426c1bf3c6b98b1f62bc72f69a3788a8c9f",
-      "bytes": 489548
+      "sha256": "6b2233c05ba7a5d3fa667974f30cc8dab9c02f444b0858cbfb804f1fbcdcdd95",
+      "bytes": 489740
     },
     {
       "path": "themes/engine/fonts/catalog/SourceHanSerifCN-Bold.catalog.woff2",
-      "sha256": "f8cb639ca6353a8b6db85a888987a46064b433253fda62ffb0a44d83bcdf1361",
-      "bytes": 664044
+      "sha256": "3b0d8366d1274ff34eef38619e76b012fc323ba3dd15e8eccb544e0e7dad0132",
+      "bytes": 664608
     },
     {
       "path": "themes/engine/fonts/catalog/SourceHanSerifCN-Medium.catalog.woff2",
-      "sha256": "31e37fffb3927ff753f7f91c1c96f85b61fe0901531c8e18e0016b3557c133f1",
-      "bytes": 644612
+      "sha256": "5719f5a11c3b30d5b5eb830acaf4ed8a1954f949fe190920e29ab53702fb4a60",
+      "bytes": 645244
     },
     {
       "path": "themes/engine/fonts/font-manifest.json",
@@ -14252,8 +14237,8 @@
     },
     {
       "path": "themes/engine/runtime/component-theme-projector.js",
-      "sha256": "8c413985709c21527d79610bd6b8207c6adebb53099fe00780861a83a4b362cf",
-      "bytes": 16734
+      "sha256": "28952a3b538c098592d582a5f95766f9e94d534e6efe7ab6909133e9c8c05a82",
+      "bytes": 16502
     },
     {
       "path": "themes/engine/runtime/component-typography-resolver.js",
@@ -14262,8 +14247,8 @@
     },
     {
       "path": "themes/examples/wise-ppt-story-six-page/assets/layouts.css",
-      "sha256": "954109b94ee67b33aa207f15f06e6710caab6868851513ee45380071eeb64d94",
-      "bytes": 2200
+      "sha256": "b19a697fea64b07216b242edd2487bf735cd9e5ebe4973221b2db68b1eb3e240",
+      "bytes": 54901
     },
     {
       "path": "themes/examples/wise-ppt-story-six-page/assets/theme.css",
@@ -14282,8 +14267,8 @@
     },
     {
       "path": "themes/examples/wise-ppt-story-six-page/index.html",
-      "sha256": "97a2eab3c9f5437bd68c7b2fa713e35a28905d2fff481163fdc775ee3eed17cb",
-      "bytes": 160742
+      "sha256": "3dcb85b2870f846950cec1b22f3843bf734edb852a808c92c7d4c975a4144282",
+      "bytes": 197325
     },
     {
       "path": "themes/examples/wise-ppt-story-six-page/theme-resolved.json",

@@ -1154,7 +1154,7 @@ window.SWISS_CATALOG_DATA = {
   gap: 6px;
   margin-top: auto;
 }
-  `;
+`;
 }
 
 /* 18-card square-slot repair: only the nine named Atlas specs are rewritten.
@@ -1217,5 +1217,5 @@ window.SWISS_CATALOG_DATA = {
 .swiss-card.wp-atlas-square-ready .wp-process-snake .link-b{right:calc(25% - 16px);top:calc(50% - 16px)}
 .swiss-card.wp-atlas-square-ready .wp-process-snake .link-c{left:calc(50% - 16px);bottom:calc(25% - 16px)}
 .swiss-card.wp-atlas-square-ready .wp-process-snake--arrow .step-node{clip-path:polygon(0 0,calc(100% - 22px) 0,100% 50%,calc(100% - 22px) 100%,0 100%,14px 50%);background:var(--wp-adapter-atlas-ink-80)!important;color:var(--wp-adapter-atlas-paper)!important}
-  `;
+`;
 }

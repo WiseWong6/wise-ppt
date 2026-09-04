@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html data-theme-id="paper-ink" lang="zh-CN" data-runtime="wise-ppt-specimen" data-typography-mode="all-sans" data-page-id="gallery-ai-e2" data-page-role="compare" data-theme="paper-ink" data-layout="paper-ink.comparison.watershed-columns" data-layout-source="gallery" data-emphasis-targets='[{"target_id":"focus.decisive-difference","members":[{"selector":"[data-vnext-text-key=\"comparison-fields.text.001\"]","role":"value","treatment":"focus.text","expected_count":1}]}]' data-catalog-legacy-emphasis-profile="copy-only" data-catalog-legacy-emphasis-members='[{"selector":"#focus-caption","role":"label"}]' data-catalog-legacy-emphasis-foreground-members='[]' data-catalog-legacy-emphasis-ref="sample.e2.e2-focus" data-vnext-semantic-key-map='[{"key":"comparison-fields.text.001","tag":"text","text":"VS","occurrence":0}]'>
+<html data-theme-id="paper-ink" lang="zh-CN" data-runtime="wise-ppt-specimen" data-typography-mode="all-sans" data-page-id="gallery-ai-e2" data-page-role="compare" data-theme="paper-ink" data-layout="paper-ink.comparison.watershed-columns" data-layout-source="gallery" data-vnext-semantic-key-map='[{"key":"comparison-fields.text.001","tag":"text","text":"VS","occurrence":0}]' data-emphasis-targets='[{"target_id":"focus.decisive-difference","members":[{"selector":"#focus-caption","role":"label","treatment":"focus.color","expected_count":1}]}]' data-vnext-type-slot-map='[{"slot":"content-title","tag":"text","text":"RAG · 来一条查一条","occurrence":0},{"slot":"content-title","tag":"text","text":"微调 · 攒一批训一次","occurrence":0}]'>
 <head>
 <meta charset="UTF-8">
 <title>layout-e2 · 分水岭双栏 · RAG vs 微调</title>
@@ -104,8 +104,8 @@ cols.forEach(function(c){
   /* 栏头：中文标题 + 右对齐 mono tag + 双线分隔 + 虚线引线到中轴 */
   txt(x, HY, c.title, {'font-family':SANS, 'font-weight':300, 'font-size':'var(--type-subheading)', fill:INK});
   txt(xr, HY, c.tag, {'font-family':MONO, 'font-size':'var(--type-meta)', 'letter-spacing':1.5, 'text-anchor':'end', fill:INK45});
-  el('line', {x1:x, y1:HY+22, x2:xr, y2:HY+22, stroke:INK, 'stroke-width':.8, opacity:.5});
-  el('line', {x1:x, y1:HY+27, x2:x+120, y2:HY+27, stroke:INK, 'stroke-width':.6, opacity:.3});
+  el('line', {'data-vnext-visual-role':'e2.column-title-rule', x1:x, y1:HY+22, x2:xr, y2:HY+22, stroke:INK, 'stroke-width':2, opacity:1});
+  el('line', {'data-vnext-visual-role':'e2.column-title-subrule', x1:x, y1:HY+27, x2:x+120, y2:HY+27, stroke:INK, 'stroke-width':1, opacity:1});
   var lx1 = (x < VX) ? xr : VX + 8, lx2 = (x < VX) ? VX - 8 : x;
   el('line', {x1:lx1, y1:HY+22, x2:lx2, y2:HY+22, stroke:INK, 'stroke-width':.6, opacity:.3, 'stroke-dasharray':'2 5'});
 

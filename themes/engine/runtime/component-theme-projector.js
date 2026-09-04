@@ -53,7 +53,6 @@
     componentRoot.setAttribute('data-component-theme-scope', 'true');
     componentRoot.setAttribute('data-component-theme-source', CONTRACT_ID);
     componentRoot.setAttribute('data-component-theme-mode', request.mode);
-    componentRoot.setAttribute('data-component-theme-profile', entry.source_layout?.default_profile || 'default-rule');
     if (entry.neutral_only) componentRoot.setAttribute('data-component-theme-neutral-only', 'true');
     if (entry.default_rule_profile) {
       componentRoot.setAttribute('data-component-theme-archetype', entry.default_rule_profile.archetype);
@@ -128,7 +127,6 @@
     set(componentRoot, 'data-component-theme-scope', 'true');
     set(componentRoot, 'data-component-theme-source', CONTRACT_ID);
     set(componentRoot, 'data-component-theme-mode', requestedEntry?.mode || entry.mode);
-    set(componentRoot, 'data-component-theme-profile', entry.source_layout?.default_profile || 'default-rule');
     if (entry.neutral_only) set(componentRoot, 'data-component-theme-neutral-only', 'true');
     if (entry.default_rule_profile) {
       set(componentRoot, 'data-component-theme-archetype', entry.default_rule_profile.archetype);
