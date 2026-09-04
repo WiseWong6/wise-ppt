@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html data-theme-id="paper-ink" lang="zh-CN" data-runtime="wise-ppt-specimen" data-typography-mode="all-sans" data-page-id="gallery-ai-r3" data-page-role="explain" data-theme="paper-ink" data-layout="paper-ink.display.capability-grid-2x3" data-layout-source="gallery" data-emphasis-targets='[{"target_id":"focus.key-item","members":[{"selector":"#r3-focus-capabilities","role":"label","treatment":"focus.color","expected_count":1}]}]' data-catalog-legacy-emphasis-profile="copy-only" data-catalog-legacy-emphasis-members='[{"selector":"#focus-caption","role":"label"}]' data-catalog-legacy-emphasis-foreground-members='[]' data-catalog-legacy-emphasis-ref="sample.r3.r3-focus" data-vnext-semantic-key-map='[]'>
+<html data-theme-id="paper-ink" lang="zh-CN" data-runtime="wise-ppt-specimen" data-typography-mode="all-sans" data-page-id="gallery-ai-r3" data-page-role="explain" data-theme="paper-ink" data-layout="paper-ink.display.capability-grid-2x3" data-layout-source="gallery" data-vnext-semantic-key-map='[]' data-emphasis-targets='[{"target_id":"focus.key-item","members":[{"selector":"#r3-focus-capabilities","role":"label","treatment":"focus.color","expected_count":1}]}]' data-vnext-type-slot-map='[{"slot":"content-title","tag":"text","text":"推理","occurrence":0},{"slot":"content-title","tag":"text","text":"记忆","occurrence":0},{"slot":"content-title","tag":"text","text":"工具","occurrence":0},{"slot":"content-title","tag":"text","text":"多模态","occurrence":0},{"slot":"content-title","tag":"text","text":"理解","occurrence":0},{"slot":"content-title","tag":"text","text":"生成","occurrence":0}]'>
 <head>
 <meta charset="UTF-8">
 <title>layout-r3 · 六宫格能力地图 · AI 六大能力</title>
@@ -18,6 +18,8 @@
   .slot-code{font-family:var(--mono);font-size:13px;letter-spacing:2.5px;text-anchor:middle;fill:var(--ink-45)}
   .slot-note{font-family:var(--sans);font-weight:300;font-size:15px;text-anchor:middle;fill:var(--ink-70)}
   .slot-note.secondary{fill:var(--ink-55)}
+  .slot-icon [opacity=".8"]{opacity:.95}.slot-icon [opacity=".55"]{opacity:.72}
+  .slot-icon [opacity=".5"]{opacity:.68}.slot-icon [opacity=".4"]{opacity:.56}.slot-icon [opacity=".3"]{opacity:.46}
 </style>
 </head>
 <body class="slide">
@@ -34,60 +36,78 @@
 
     <!-- R3 细线图标母板视觉；每一格仍是可独立换数据的页面槽位。 -->
     <g data-slot-id="cell-a" data-component-id="native.wise-ppt.semantic.icon-grid" transform="translate(460 196)">
+      <g class="slot-icon" transform="translate(0 70) scale(1.22) translate(0 -70)">
       <circle cx="-38" cy="70" r="6" fill="none" stroke="var(--ink)" stroke-width="1.2" opacity=".8"/>
       <circle cx="-38" cy="70" r="2" fill="var(--ink)"/>
       <circle cx="38" cy="44" r="5" fill="none" stroke="var(--ink)" stroke-width="1.1" opacity=".8"/>
       <circle cx="38" cy="96" r="5" fill="none" stroke="var(--ink)" stroke-width="1.1" opacity=".8"/>
       <path d="M-32 70 Q-2 70 2 70 Q14 70 20 54 L34 46 M-32 70 Q14 70 20 86 L34 94" fill="none" stroke="var(--ink)" stroke-width="1.3" opacity=".8"/>
       <circle cx="2" cy="70" r="3" fill="var(--ink)" opacity=".7"/>
+      </g>
       <text y="188" class="slot-title">推理</text><text y="212" class="slot-code">REASONING</text>
-      <line x1="-24" y1="224" x2="24" y2="224" stroke="var(--ink)" stroke-width=".6" opacity=".4"/>
+      <line data-vnext-visual-role="r3.title-rule-line" x1="-24" y1="224" x2="24" y2="224" stroke="var(--wp-color-functional)" stroke-width="2"/>
+      <rect data-vnext-visual-role="r3.title-rule-dot" x="32" y="216" width="10" height="10" fill="var(--wp-color-functional)"/>
       <text y="250" class="slot-note">思维链 · 多步规划</text><text y="272" class="slot-note secondary">复杂问题分步求解</text>
     </g>
 
     <g data-slot-id="cell-b" data-component-id="native.wise-ppt.semantic.icon-grid" transform="translate(960 196)">
+      <g class="slot-icon" transform="translate(0 72) scale(1.22) translate(0 -72)">
       <rect x="-34" y="50" width="60" height="40" fill="none" stroke="var(--ink)" stroke-width="1.3" opacity=".8"/>
       <rect x="26" y="60" width="6" height="20" fill="none" stroke="var(--ink)" stroke-width="1.2" opacity=".8"/>
       <rect x="-28" y="56" width="16" height="28" fill="url(#r3-hatch)"/><rect x="-10" y="56" width="16" height="28" fill="none" stroke="var(--ink)" stroke-width=".5" opacity=".3"/><rect x="8" y="56" width="16" height="28" fill="none" stroke="var(--ink)" stroke-width=".5" opacity=".3"/>
       <line x1="-34" y1="96" x2="-34" y2="102" stroke="var(--ink)" stroke-width=".6" opacity=".4"/><line x1="-19" y1="96" x2="-19" y2="102" stroke="var(--ink)" stroke-width=".6" opacity=".4"/><line x1="-4" y1="96" x2="-4" y2="102" stroke="var(--ink)" stroke-width=".6" opacity=".4"/><line x1="11" y1="96" x2="11" y2="102" stroke="var(--ink)" stroke-width=".6" opacity=".4"/>
+      </g>
       <text y="188" class="slot-title">记忆</text><text y="212" class="slot-code">MEMORY</text>
-      <line x1="-24" y1="224" x2="24" y2="224" stroke="var(--ink)" stroke-width=".6" opacity=".4"/>
+      <line data-vnext-visual-role="r3.title-rule-line" x1="-24" y1="224" x2="24" y2="224" stroke="var(--wp-color-functional)" stroke-width="2"/>
+      <rect data-vnext-visual-role="r3.title-rule-dot" x="32" y="216" width="10" height="10" fill="var(--wp-color-functional)"/>
       <text y="250" class="slot-note">上下文窗口与容量</text><text y="272" class="slot-note secondary">向量检索召回相关片段</text>
     </g>
 
     <g data-slot-id="cell-c" data-component-id="native.wise-ppt.semantic.icon-grid" transform="translate(1460 196)">
+      <g class="slot-icon" transform="translate(0 69) scale(1.22) translate(0 -69)">
       <g transform="translate(-33 37)" fill="none" stroke="var(--ink)" stroke-width=".9" opacity=".55">
         <rect x="0" y="0" width="19" height="19"/><rect x="22" y="0" width="19" height="19"/><rect x="44" y="0" width="19" height="19"/><rect x="0" y="22" width="19" height="19"/><rect x="44" y="22" width="19" height="19"/><rect x="0" y="44" width="19" height="19"/><rect x="22" y="44" width="19" height="19"/><rect x="44" y="44" width="19" height="19"/>
         <rect x="22" y="22" width="19" height="19" fill="url(#r3-hatch)" stroke-width="1" opacity="1"/>
       </g>
       <circle cx="-1.5" cy="68.5" r="2" fill="var(--ink)"/>
+      </g>
       <text y="188" class="slot-title">工具</text><text y="212" class="slot-code">TOOLS</text>
-      <line x1="-24" y1="224" x2="24" y2="224" stroke="var(--ink)" stroke-width=".6" opacity=".4"/>
+      <line data-vnext-visual-role="r3.title-rule-line" x1="-24" y1="224" x2="24" y2="224" stroke="var(--wp-color-functional)" stroke-width="2"/>
+      <rect data-vnext-visual-role="r3.title-rule-dot" x="32" y="216" width="10" height="10" fill="var(--wp-color-functional)"/>
       <text y="250" class="slot-note">函数调用 · API 编排</text><text y="272" class="slot-note secondary">多工具串行自动调度</text>
     </g>
 
     <g data-slot-id="cell-d" data-component-id="native.wise-ppt.semantic.icon-grid" transform="translate(460 506)">
+      <g class="slot-icon" transform="translate(0 72) scale(1.22) translate(0 -72)">
       <circle cx="0" cy="82" r="5" fill="none" stroke="var(--ink)" stroke-width="1.3" opacity=".8"/><circle cx="0" cy="82" r="2" fill="var(--ink)"/>
       <path d="M-16 72 A18 18 0 0 1 16 72 M-26 66 A30 30 0 0 1 26 66 M-36 60 A42 42 0 0 1 36 60" fill="none" stroke="var(--ink)" stroke-width="1.1" opacity=".55"/>
+      </g>
       <text y="188" class="slot-title">多模态</text><text y="212" class="slot-code">MULTIMODAL</text>
-      <line x1="-24" y1="224" x2="24" y2="224" stroke="var(--ink)" stroke-width=".6" opacity=".4"/>
+      <line data-vnext-visual-role="r3.title-rule-line" x1="-24" y1="224" x2="24" y2="224" stroke="var(--wp-color-functional)" stroke-width="2"/>
+      <rect data-vnext-visual-role="r3.title-rule-dot" x="32" y="216" width="10" height="10" fill="var(--wp-color-functional)"/>
       <text y="250" class="slot-note">图文音视融合理解</text><text y="272" class="slot-note secondary">跨模态对齐与检索</text>
     </g>
 
     <g data-slot-id="cell-e" data-component-id="native.wise-ppt.semantic.icon-grid" transform="translate(960 506)">
+      <g class="slot-icon" transform="translate(0 72) scale(1.22) translate(0 -72)">
       <path d="M-34 82 A34 34 0 0 1 34 82" fill="none" stroke="var(--ink)" stroke-width="1.3" opacity=".8"/>
       <line x1="-20" y1="57" x2="-24" y2="52" stroke="var(--ink)" stroke-width=".7" opacity=".5"/><line x1="-10" y1="51" x2="-12" y2="45" stroke="var(--ink)" stroke-width=".7" opacity=".5"/><line x1="0" y1="48" x2="0" y2="42" stroke="var(--ink)" stroke-width=".7" opacity=".5"/><line x1="10" y1="51" x2="12" y2="45" stroke="var(--ink)" stroke-width=".7" opacity=".5"/><line x1="20" y1="57" x2="24" y2="52" stroke="var(--ink)" stroke-width=".7" opacity=".5"/>
       <line x1="0" y1="82" x2="18" y2="56" stroke="var(--ink)" stroke-width="1.6"/><circle cx="0" cy="82" r="3" fill="var(--ink)"/>
+      </g>
       <text y="188" class="slot-title">理解</text><text y="212" class="slot-code">COMPREHEND</text>
-      <line x1="-24" y1="224" x2="24" y2="224" stroke="var(--ink)" stroke-width=".6" opacity=".4"/>
+      <line data-vnext-visual-role="r3.title-rule-line" x1="-24" y1="224" x2="24" y2="224" stroke="var(--wp-color-functional)" stroke-width="2"/>
+      <rect data-vnext-visual-role="r3.title-rule-dot" x="32" y="216" width="10" height="10" fill="var(--wp-color-functional)"/>
       <text y="250" class="slot-note">自然语言意图解析</text><text y="272" class="slot-note secondary">模糊提问精准定位</text>
     </g>
 
     <g data-slot-id="cell-f" data-component-id="native.wise-ppt.semantic.icon-grid" transform="translate(1460 506)">
+      <g class="slot-icon" transform="translate(0 74) scale(1.22) translate(0 -74)">
       <path d="M-26 42 H26 V76 Q26 100 0 106 Q-26 100 -26 76 Z" fill="none" stroke="var(--ink)" stroke-width="1.3" opacity=".8"/>
       <path d="M-26 50 H26 M-12 70 L-3 80 L14 58" fill="none" stroke="var(--ink)" stroke-width="1.6"/>
+      </g>
       <text y="188" class="slot-title">生成</text><text y="212" class="slot-code">GENERATE</text>
-      <line x1="-24" y1="224" x2="24" y2="224" stroke="var(--ink)" stroke-width=".6" opacity=".4"/>
+      <line data-vnext-visual-role="r3.title-rule-line" x1="-24" y1="224" x2="24" y2="224" stroke="var(--wp-color-functional)" stroke-width="2"/>
+      <rect data-vnext-visual-role="r3.title-rule-dot" x="32" y="216" width="10" height="10" fill="var(--wp-color-functional)"/>
       <text y="250" class="slot-note">文本 · 代码 · 图像产出</text><text y="272" class="slot-note secondary">一次成稿可读可运行</text>
     </g>
 

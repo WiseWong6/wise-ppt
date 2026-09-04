@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html data-theme-id="paper-ink" lang="zh-CN" data-runtime="wise-ppt-specimen" data-typography-mode="all-sans" data-page-id="gallery-ai-e5" data-page-role="compare" data-theme="paper-ink" data-layout="paper-ink.comparison.dual-pyramid-map" data-layout-source="gallery" data-emphasis-targets='[{"target_id":"focus.key-item","members":[{"selector":"#e5-focus-capabilities","role":"label","treatment":"focus.color","expected_count":1}]}]' data-catalog-legacy-emphasis-profile="content-only" data-catalog-legacy-emphasis-members='[{"selector":"#e5-focus-edge","expected_count":1,"role":"outline"},{"selector":"#sample-focus","expected_count":1,"role":"annotation"}]' data-catalog-legacy-emphasis-foreground-members='[]' data-catalog-legacy-emphasis-ref="sample.e5.colored-mapping" data-vnext-semantic-key-map='[{"key":"hierarchy-map.text.010","tag":"text","text":"LEGACY CAREER LADDER","occurrence":0},{"key":"hierarchy-map.text.020","tag":"text","text":"AI CAPABILITY TIERS","occurrence":0}]'>
+<html data-theme-id="paper-ink" lang="zh-CN" data-runtime="wise-ppt-specimen" data-typography-mode="all-sans" data-page-id="gallery-ai-e5" data-page-role="compare" data-theme="paper-ink" data-layout="paper-ink.comparison.dual-pyramid-map" data-layout-source="gallery" data-vnext-semantic-key-map='[{"key":"hierarchy-map.text.010","tag":"text","text":"LEGACY CAREER LADDER","occurrence":0},{"key":"hierarchy-map.text.020","tag":"text","text":"AI CAPABILITY TIERS","occurrence":0}]' data-emphasis-targets='[{"target_id":"focus.key-item","members":[{"selector":"#e5-focus-capabilities","role":"label","treatment":"focus.color","expected_count":1}]}]'>
 <head>
 <meta charset="UTF-8">
 <title>layout-e5 · 双金字塔对照映射 · 职级 vs AI 能力</title>
@@ -100,9 +100,10 @@ tower(RX, [
 
 /* ---------- 主角：层间映射箭头（线宽 = 映射强度） ---------- */
 function arrow(x1, y1, x2, y2, w, dash, op, focus){
-  el('line', {id:focus?'e5-focus-edge':'', x1:x1, y1:y1, x2:x2, y2:y2, stroke:INK, 'stroke-width':w, opacity:op||1, 'stroke-dasharray':dash||'none'});
-  el('line', {x1:x2, y1:y2, x2:x2-14, y2:y2-7, stroke:INK, 'stroke-width':1.2, opacity:.8});
-  el('line', {x1:x2, y1:y2, x2:x2-14, y2:y2+7, stroke:INK, 'stroke-width':1.2, opacity:.8});
+  var semantic=focus?{'data-vnext-visual-role':'e5.focus-edge'}:{};
+  el('line', Object.assign({id:focus?'e5-focus-edge':'', x1:x1, y1:y1, x2:x2, y2:y2, stroke:INK, 'stroke-width':w, opacity:op||1, 'stroke-dasharray':dash||'none'},semantic));
+  el('line', Object.assign({x1:x2, y1:y2, x2:x2-14, y2:y2-7, stroke:INK, 'stroke-width':1.2, opacity:.8},semantic));
+  el('line', Object.assign({x1:x2, y1:y2, x2:x2-14, y2:y2+7, stroke:INK, 'stroke-width':1.2, opacity:.8},semantic));
 }
 function edge(cx, y, dir){ return cx + dir * halfAt(y); }
 /* L4 → S4（弱，虚线） */

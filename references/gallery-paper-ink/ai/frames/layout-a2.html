@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html data-theme-id="paper-ink" lang="zh-CN" data-runtime="wise-ppt-specimen" data-typography-mode="all-sans" data-page-id="gallery-ai-a2" data-page-role="hook" data-theme="paper-ink" data-layout="paper-ink.evidence.scenario-illustration" data-layout-source="gallery" data-emphasis-targets='[{"target_id":"focus.key-step","members":[{"selector":"#accent-dialogue","role":"value","treatment":"focus.text","expected_count":1},{"selector":"#accent-outline","role":"outline","treatment":"focus.outline-depth","expected_count":1}]}]' data-catalog-legacy-emphasis-profile="content-only" data-catalog-legacy-emphasis-members='[{"selector":"#accent-dialogue","role":"value"},{"selector":"#accent-outline","role":"outline"}]' data-catalog-legacy-emphasis-foreground-members='[]' data-catalog-legacy-emphasis-ref="sample.a2.a2-focus" data-vnext-semantic-key-map='[{"key":"scene.text.001","tag":"div","text":"我 · 提问","occurrence":0}]'>
+<html data-theme-id="paper-ink" lang="zh-CN" data-runtime="wise-ppt-specimen" data-typography-mode="all-sans" data-page-id="gallery-ai-a2" data-page-role="hook" data-theme="paper-ink" data-layout="paper-ink.evidence.scenario-illustration" data-layout-source="gallery" data-vnext-semantic-key-map='[{"key":"scene.text.001","tag":"div","text":"我 · 提问","occurrence":0}]' data-emphasis-targets='[{"target_id":"focus.key-step","members":[{"selector":"#accent-dialogue","role":"value","treatment":"focus.color","expected_count":1},{"selector":"#accent-outline","role":"outline","treatment":"focus.color","expected_count":1}]}]' data-vnext-type-slot-map='[{"slot":"content-title","tag":"b","text":"50 米","occurrence":0},{"slot":"content-title","tag":"b","text":"走路","occurrence":0},{"slot":"content-title","tag":"text","text":"洗 车","occurrence":0},{"slot":"content-title","tag":"text","text":"车：那我呢？","occurrence":0}]'>
 <head>
 <meta charset="UTF-8">
 <title>layout-a2 · 场景画 · 洗车梗</title>
@@ -122,7 +122,7 @@ for (var gx = 180; gx < 1760; gx += 42) {
   [x+48, x+164].forEach(function(wx){
     el('circle', {cx:wx, cy:y-16, r:23, fill:'var(--paper)', stroke:INK, 'stroke-width':1.4});
     el('circle', {cx:wx, cy:y-16, r:9, fill:'none', stroke:INK, 'stroke-width':1.5});
-    el('circle', {cx:wx, cy:y-16, r:2.4, fill:INK});
+    el('circle', {'data-vnext-visual-role':'a2.scene-accent-dot', cx:wx, cy:y-16, r:2.4, fill:INK});
   });
   el('line', {x1:x+150, y1:y-74, x2:x+158, y2:y-84, stroke:INK, 'stroke-width':1.2});
   el('circle', {cx:x+202, cy:y-44, r:3.5, fill:'none', stroke:INK, 'stroke-width':1.5});
@@ -138,7 +138,7 @@ for (var gx = 180; gx < 1760; gx += 42) {
   el('path', {d:'M '+(x-26)+' '+(y-h)+' L '+(x+w+26)+' '+(y-h), stroke:INK, 'stroke-width':1.6});
   el('rect', {x:x+w-58, y:y-h-72, width:26, height:52, fill:'var(--paper-panel)', stroke:INK, 'stroke-width':1.2});
   el('rect', {x:x+34, y:y-96, width:52, height:96, fill:'none', stroke:INK, 'stroke-width':1.2});
-  el('circle', {cx:x+76, cy:y-48, r:3, fill:INK});
+  el('circle', {'data-vnext-visual-role':'a2.scene-accent-dot', cx:x+76, cy:y-48, r:3, fill:INK});
   el('rect', {x:x+126, y:y-130, width:72, height:60, fill:'none', stroke:INK, 'stroke-width':1.2});
   el('line', {x1:x+162, y1:y-130, x2:x+162, y2:y-70, stroke:INK, 'stroke-width':1.4});
   el('line', {x1:x+126, y1:y-100, x2:x+198, y2:y-100, stroke:INK, 'stroke-width':1.4});

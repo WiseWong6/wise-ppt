@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html data-theme-id="paper-ink" lang="zh-CN" data-runtime="wise-ppt-specimen" data-typography-mode="all-sans" data-page-id="gallery-ai-q4" data-page-role="prove" data-theme="paper-ink" data-layout="paper-ink.evidence.panel-grid-2x2" data-layout-source="gallery" data-emphasis-targets='[{"target_id":"focus.key-node","members":[{"selector":"[data-vnext-text-key=\"evidence-a.text.003\"]","role":"value","treatment":"focus.text","expected_count":1}]}]' data-catalog-legacy-emphasis-profile="copy-only" data-catalog-legacy-emphasis-members='[{"selector":"#focus-caption","role":"label"}]' data-catalog-legacy-emphasis-foreground-members='[]' data-catalog-legacy-emphasis-ref="sample.q4.q4-focus" data-vnext-semantic-key-map='[{"key":"evidence-a.text.003","tag":"text","text":"OUTPUT","occurrence":0}]'>
+<html data-theme-id="paper-ink" lang="zh-CN" data-runtime="wise-ppt-specimen" data-typography-mode="all-sans" data-page-id="gallery-ai-q4" data-page-role="prove" data-theme="paper-ink" data-layout="paper-ink.evidence.panel-grid-2x2" data-layout-source="gallery" data-vnext-semantic-key-map='[{"key":"evidence-a.text.003","tag":"text","text":"OUTPUT","occurrence":0}]' data-emphasis-targets='[{"target_id":"focus.key-node","members":[{"selector":"#focus-caption","role":"label","treatment":"focus.color","expected_count":1}]}]' data-vnext-type-slot-map='[{"slot":"content-title","tag":"text","text":"最终回答","occurrence":0},{"slot":"content-title","tag":"text","text":"校验收据","occurrence":0},{"slot":"content-title","tag":"text","text":"检索证据","occurrence":0},{"slot":"content-title","tag":"text","text":"工具轨迹","occurrence":0}]'>
 <head>
 <meta charset="UTF-8">
 <title>layout-q4 · 四象限证据地图 · 一次回答的四类验收物</title>
@@ -50,7 +50,7 @@
     <g data-slot-id="evidence-a" data-component-id="native.wise-ppt.semantic.evidence-panel" transform="translate(290 212)">
       <text x="0" y="40" class="quad-no">Q1</text>
       <text x="0" y="76" class="quad-code">ANSWER · CONTENT OUTPUT</text>
-      <line x1="0" y1="91" x2="64" y2="91" stroke="var(--ink)" stroke-width=".8" opacity=".5"/>
+      <line data-vnext-visual-role="q4.quadrant-rule.answer-retrieval" x1="0" y1="91" x2="64" y2="91" stroke="var(--ink)" stroke-width=".8" opacity=".5"/>
       <text x="0" y="137" class="quad-title" font-size="var(--type-subheading)" fill="var(--ink)">最终回答</text>
       <text x="0" y="180" class="quad-note">主张句完整，引用位置可定位</text>
       <text x="0" y="211" class="quad-note secondary">结论没有超出证据边界</text>
@@ -60,7 +60,7 @@
     <g data-slot-id="evidence-b" data-component-id="native.wise-ppt.semantic.evidence-panel" transform="translate(1129 212)">
       <text x="0" y="40" class="quad-no">Q2</text>
       <text x="0" y="76" class="quad-code">RECEIPT · SYSTEM OUTPUT</text>
-      <line x1="0" y1="91" x2="64" y2="91" stroke="var(--ink)" stroke-width=".8" opacity=".5"/>
+      <line data-vnext-visual-role="q4.quadrant-rule.receipt-tool" x1="0" y1="91" x2="64" y2="91" stroke="var(--ink)" stroke-width=".8" opacity=".5"/>
       <text x="0" y="137" class="quad-title" font-size="var(--type-subheading)" fill="var(--ink)">校验收据</text>
       <text x="0" y="180" class="quad-note">内容、结构、引用三项门禁通过</text>
       <text x="0" y="211" class="quad-note secondary">失败项为 0，生成时间已留档</text>
@@ -71,7 +71,7 @@
     <g data-slot-id="evidence-c" data-component-id="native.wise-ppt.semantic.evidence-panel" transform="translate(289 587)">
       <text x="0" y="40" class="quad-no">Q3</text>
       <text x="0" y="76" class="quad-code">RETRIEVAL · CONTENT TRACE</text>
-      <line x1="0" y1="91" x2="64" y2="91" stroke="var(--ink)" stroke-width=".8" opacity=".5"/>
+      <line data-vnext-visual-role="q4.quadrant-rule.answer-retrieval" x1="0" y1="91" x2="64" y2="91" stroke="var(--ink)" stroke-width=".8" opacity=".5"/>
       <text x="0" y="137" class="quad-title" font-size="var(--type-subheading)" fill="var(--ink)">检索证据</text>
       <text x="0" y="180" class="quad-note">命中文档 6 / 8，关键段落均覆盖</text>
       <text x="0" y="211" class="quad-note secondary">版本、权限与有效期均已核对</text>
@@ -83,7 +83,7 @@
     <g data-slot-id="evidence-d" data-component-id="native.wise-ppt.semantic.evidence-panel" transform="translate(1126 587)">
       <text x="0" y="40" class="quad-no">Q4</text>
       <text x="0" y="76" class="quad-code">TOOL TRACE · SYSTEM TRACE</text>
-      <line x1="0" y1="91" x2="64" y2="91" stroke="var(--ink)" stroke-width=".8" opacity=".5"/>
+      <line data-vnext-visual-role="q4.quadrant-rule.receipt-tool" x1="0" y1="91" x2="64" y2="91" stroke="var(--ink)" stroke-width=".8" opacity=".5"/>
       <text x="0" y="137" class="quad-title" font-size="var(--type-subheading)" fill="var(--ink)">工具轨迹</text>
       <text x="0" y="180" class="quad-note">路由、参数、返回值均可重放</text>
       <text x="0" y="211" class="quad-note secondary">无隐藏重试，也没有越权调用</text>

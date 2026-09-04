@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html data-theme-id="paper-ink" lang="zh-CN" data-runtime="wise-ppt-specimen" data-typography-mode="all-sans" data-page-id="gallery-ai-i1" data-page-role="explain" data-theme="paper-ink" data-layout="paper-ink.flow.pipeline" data-layout-source="gallery" data-emphasis-targets='[{"target_id":"focus.key-step","members":[{"selector":".i1-focus-summary-copy","role":"value","treatment":"focus.color","expected_count":2}]}]' data-catalog-legacy-emphasis-profile="content-only" data-catalog-legacy-emphasis-members='[{"selector":"#i1-focus-ring","expected_count":1,"role":"outline"},{"selector":"#i1-focus-needle","expected_count":1,"role":"outline"},{"selector":"#i1-focus-readout","expected_count":1,"role":"value"}]' data-catalog-legacy-emphasis-foreground-members='[]' data-catalog-legacy-emphasis-ref="sample.i1.colored-rerank" data-vnext-semantic-key-map='[]'>
+<html data-theme-id="paper-ink" lang="zh-CN" data-runtime="wise-ppt-specimen" data-typography-mode="all-sans" data-page-id="gallery-ai-i1" data-page-role="explain" data-theme="paper-ink" data-layout="paper-ink.flow.pipeline" data-layout-source="gallery" data-vnext-semantic-key-map='[]' data-emphasis-targets='[{"target_id":"focus.key-step","members":[{"selector":".i1-focus-summary-copy","role":"value","treatment":"focus.color","expected_count":2}]}]'>
 <head>
 <meta charset="UTF-8">
 <title>layout-i1 · 横向流水线 · RAG 检索流水线</title>
@@ -91,7 +91,7 @@ for (var i = 0; i < 3; i++) {
 /* 站位与图元的虚线吊点 */
 function hanger(c, yTop){
   el('line', {x1:c, y1:yTop, x2:c, y2:BY-12, stroke:INK, 'stroke-width':.6, opacity:.3, 'stroke-dasharray':'3 5'});
-  el('circle', {'data-scene-dot':1, cx:c, cy:yTop, r:2, fill:INK, opacity:.5});
+  el('circle', {'data-scene-dot':1, 'data-vnext-visual-role':'i1.hanger-dot', cx:c, cy:yTop, r:2, fill:INK, opacity:.5});
 }
 
 /* ---------- ① QUERY：单据纸（折角查询） ---------- */
@@ -145,7 +145,7 @@ function hanger(c, yTop){
   }
   /* 指针 + 轴心 */
   el('line', {id:'i1-focus-needle', x1:c, y1:cy, x2:c+Math.cos(-42*RAD)*66, y2:cy+Math.sin(-42*RAD)*66, stroke:INK, 'stroke-width':1.4});
-  el('circle', {'data-scene-dot':1, cx:c, cy:cy, r:3, fill:INK});
+  el('circle', {'data-scene-dot':1, 'data-vnext-visual-role':'i1.primary-dot', cx:c, cy:cy, r:3, fill:INK});
   el('circle', {cx:c, cy:cy, r:7, fill:'none', stroke:INK, 'stroke-width':.7, opacity:.6});
   /* 表盘读数 */
   txt(c, cy+r-34, '312 DOCS', {id:'i1-focus-readout', 'font-family':MONO, 'font-size':'var(--type-label)', 'letter-spacing':1.5, 'text-anchor':'middle', fill:INK45});
@@ -168,7 +168,7 @@ function hanger(c, yTop){
   el('rect', {x:x+6, y:y+6, width:s-12, height:s-12, fill:'none', stroke:INK, 'stroke-width':.6, opacity:.35});
   el('circle', {cx:c, cy:y+s/2, r:22, fill:'none', stroke:INK80, 'stroke-width':1.2});
   el('circle', {cx:c, cy:y+s/2, r:15, fill:'none', stroke:INK, 'stroke-width':.6, opacity:.45});
-  el('circle', {'data-scene-dot':1, cx:c, cy:y+s/2, r:2.4, fill:INK});
+  el('circle', {'data-scene-dot':1, 'data-vnext-visual-role':'i1.primary-dot', cx:c, cy:y+s/2, r:2.4, fill:INK});
   txt(c, y+s-16, 'RAG-V1', {'font-family':MONO, 'font-size':'var(--type-meta)', 'letter-spacing':2, 'text-anchor':'middle', fill:INK45});
   hanger(c, y+s+16);
 })();

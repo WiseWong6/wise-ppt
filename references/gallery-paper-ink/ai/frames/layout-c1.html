@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html data-theme-id="paper-ink" lang="zh-CN" data-runtime="wise-ppt-specimen" data-typography-mode="all-sans" data-page-id="gallery-ai-c1" data-page-role="prove" data-theme="paper-ink" data-layout="paper-ink.data.visual-kpi-split" data-layout-source="gallery" data-emphasis-targets='[{"target_id":"focus.key-node","members":[{"selector":"#sample-focus","role":"value","treatment":"focus.text","expected_count":1},{"selector":"#c1-focus-label","role":"label","treatment":"focus.text","expected_count":1},{"selector":"#c1-focus-note","role":"annotation","treatment":"focus.text","expected_count":1},{"selector":"#c1-focus-rule","role":"outline","treatment":"focus.outline-depth","expected_count":1}]}]' data-catalog-legacy-emphasis-profile="content-only" data-catalog-legacy-emphasis-members='[{"selector":"#sample-focus","role":"value"},{"selector":"#c1-focus-label","role":"label"},{"selector":"#c1-focus-note","role":"annotation"},{"selector":"#c1-focus-rule","role":"outline"}]' data-catalog-legacy-emphasis-foreground-members='[]' data-catalog-legacy-emphasis-ref="sample.c1.c1-focus" data-vnext-semantic-key-map='[{"key":"visual.text.001","tag":"text","text":"SPECIMEN 01 — AI-AGENT M1","occurrence":0}]'>
+<html data-theme-id="paper-ink" lang="zh-CN" data-runtime="wise-ppt-specimen" data-typography-mode="all-sans" data-page-id="gallery-ai-c1" data-page-role="prove" data-theme="paper-ink" data-layout="paper-ink.data.visual-kpi-split" data-layout-source="gallery" data-vnext-semantic-key-map='[{"key":"visual.text.001","tag":"text","text":"SPECIMEN 01 — AI-AGENT M1","occurrence":0}]' data-emphasis-targets='[{"target_id":"focus.key-node","members":[{"selector":"#sample-focus","role":"value","treatment":"focus.color","expected_count":1},{"selector":"#c1-focus-label","role":"label","treatment":"focus.color","expected_count":1},{"selector":"#c1-focus-note","role":"annotation","treatment":"focus.color","expected_count":1},{"selector":"#c1-focus-rule","role":"outline","treatment":"focus.color","expected_count":1}]}]'>
 <head>
 <meta charset="UTF-8">
 <title>layout-c1 · 左图右 2×2 数据格 · AI 立绘</title>
@@ -67,7 +67,7 @@ G = el('g', {transform:'translate(0 -22.7)'});
 
 /* ============ 左区：AI 产品立绘（虚构型号 AI-AGENT M1） ============ */
 var FX = 150, FY = 260, FW = 860, FH = 560;
-el('rect', {x:FX, y:FY, width:FW, height:FH, fill:'var(--paper-panel)', stroke:INK80, 'stroke-width':1.3});
+el('rect', {'data-vnext-visual-key':'c1.visual-specimen', x:FX, y:FY, width:FW, height:FH, fill:'var(--paper-panel)', stroke:INK80, 'stroke-width':1.3});
 el('rect', {x:FX+6, y:FY+6, width:FW-12, height:FH-12, fill:'none', stroke:INK, 'stroke-width':.6, opacity:.3});
 /* 编号牌（压框顶边） */
 el('rect', {x:190, y:238, width:330, height:44, fill:'var(--paper)', stroke:INK, 'stroke-width':1.2});
@@ -94,10 +94,10 @@ el('rect', {x:862, y:562, width:66, height:36, fill:'url(#hatch)', stroke:INK, '
 /* 主体外壳（侧视立绘） */
 el('circle', {cx:470, cy:706, r:28, fill:'none', stroke:INK80, 'stroke-width':1.3});
 el('circle', {cx:470, cy:706, r:19, fill:'none', stroke:INK, 'stroke-width':.7, opacity:.5});
-el('circle', {cx:470, cy:706, r:2.6, fill:INK});
+el('circle', {'data-vnext-visual-role':'c1.scene-accent-dot', cx:470, cy:706, r:2.6, fill:INK});
 el('circle', {cx:640, cy:706, r:28, fill:'none', stroke:INK80, 'stroke-width':1.3});
 el('circle', {cx:640, cy:706, r:19, fill:'none', stroke:INK, 'stroke-width':.7, opacity:.5});
-el('circle', {cx:640, cy:706, r:2.6, fill:INK});
+el('circle', {'data-vnext-visual-role':'c1.scene-accent-dot', cx:640, cy:706, r:2.6, fill:INK});
 el('rect', {x:442, y:668, width:226, height:12, fill:'none', stroke:INK, 'stroke-width':1.1, opacity:.8});
 /* 主壳体 */
 el('rect', {x:450, y:470, width:210, height:198, rx:12, fill:'none', stroke:INK80, 'stroke-width':1.4});
@@ -107,7 +107,7 @@ el('line', {x1:580, y1:520, x2:636, y2:520, stroke:INK, 'stroke-width':.7, opaci
 el('line', {x1:580, y1:538, x2:636, y2:538, stroke:INK, 'stroke-width':.7, opacity:.4});
 /* 前置深度相机 */
 el('circle', {cx:452, cy:520, r:9, fill:'var(--paper)', stroke:INK80, 'stroke-width':1.1});
-el('circle', {cx:452, cy:520, r:2.6, fill:INK});
+el('circle', {'data-vnext-visual-role':'c1.scene-accent-dot', cx:452, cy:520, r:2.6, fill:INK});
 /* 急停触边 */
 el('rect', {x:444, y:640, width:222, height:24, rx:12, fill:'none', stroke:INK, 'stroke-width':1.1, opacity:.75});
 /* 举升平台 + 周转箱 */
@@ -141,7 +141,7 @@ function cell(cx, ty, num, label, note, focus) {
   txt(cx, ty, num, {id:focus?'sample-focus':'c1-cell-'+label, 'font-family':SERIF, 'font-size':'var(--type-hero)', 'text-anchor':'middle', fill:INK});
   txt(cx, ty + 64, label, {id:focus?'c1-focus-label':'', 'data-text-kind':'label', 'font-family':SANS, 'font-weight':300, 'font-size':'var(--type-subheading)', 'text-anchor':'middle', fill:'var(--ink-70)'});
   txt(cx, ty + 96, note, {id:focus?'c1-focus-note':'', 'font-family':MONO, 'font-size':'var(--type-meta)', 'letter-spacing':2, 'text-anchor':'middle', fill:INK45});
-  el('line', {id:focus?'c1-focus-rule':'', x1:cx-30, y1:ty+114, x2:cx+30, y2:ty+114, stroke:INK, 'stroke-width':.7, opacity:.35});
+  el('line', {'data-vnext-visual-role':'c1.data-grid-title-rule', id:focus?'c1-focus-rule':'', x1:cx-30, y1:ty+114, x2:cx+30, y2:ty+114, stroke:INK, 'stroke-width':2, opacity:1});
 }
 cell(1260, 400, '94.2%',  '准确率',         'ACCURACY · 30D AVG', true);   /* 主角：准确率是 AI 交付焦点 */
 cell(1610, 400, '1,284',  '日均调用量（万）', 'DAILY CALLS · AVG');

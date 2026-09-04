@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html data-theme-id="paper-ink" lang="zh-CN" data-runtime="wise-ppt-specimen" data-typography-mode="all-sans" data-page-id="gallery-ai-n1" data-page-role="explain" data-theme="paper-ink" data-layout="paper-ink.convergence.multi-source" data-layout-source="gallery" data-emphasis-targets='[{"target_id":"focus.key-step","members":[{"selector":"#n1-focus-frame","role":"outline","treatment":"focus.outline-depth","expected_count":1},{"selector":"#n1-focus-en","role":"annotation","treatment":"focus.text","expected_count":1},{"selector":"#n1-focus-cn","role":"value","treatment":"focus.text","expected_count":1}]}]' data-catalog-legacy-emphasis-profile="content-only" data-catalog-legacy-emphasis-members='[{"selector":"#n1-focus-frame","expected_count":1,"role":"outline"},{"selector":"#n1-focus-en","expected_count":1,"role":"annotation"},{"selector":"#n1-focus-cn","expected_count":1,"role":"value"}]' data-catalog-legacy-emphasis-foreground-members='[]' data-catalog-legacy-emphasis-ref="sample.n1.colored-output-card" data-vnext-semantic-key-map='[{"key":"sources.text.001","tag":"text","text":"01","occurrence":0}]'>
+<html data-theme-id="paper-ink" lang="zh-CN" data-runtime="wise-ppt-specimen" data-typography-mode="all-sans" data-page-id="gallery-ai-n1" data-page-role="explain" data-theme="paper-ink" data-layout="paper-ink.convergence.multi-source" data-layout-source="gallery" data-vnext-semantic-key-map='[{"key":"sources.text.001","tag":"text","text":"01","occurrence":0}]' data-emphasis-targets='[{"target_id":"focus.key-step","members":[{"selector":"#n1-focus-frame","role":"outline","treatment":"focus.color","expected_count":1},{"selector":"#n1-focus-en","role":"annotation","treatment":"focus.color","expected_count":1},{"selector":"#n1-focus-cn","role":"value","treatment":"focus.color","expected_count":1}]}]' data-vnext-type-slot-map='[{"slot":"content-title","tag":"text","text":"系统设定","occurrence":0},{"slot":"content-title","tag":"text","text":"对话历史","occurrence":0},{"slot":"content-title","tag":"text","text":"组装后提示词","occurrence":0}]'>
 <head>
 <meta charset="UTF-8">
 <title>layout-n1 · 汇聚流 · Prompt 组装</title>
@@ -99,8 +99,8 @@ sources.forEach(function(c){
   /* 卡头 */
   txt(x+32, Y+44, c.en, {'font-family':MONO, 'font-size':'var(--type-meta)', 'letter-spacing':3, fill:'color-mix(in srgb, var(--ink) 50%, transparent)'});
   txt(x+32, Y+88, c.t, {'font-family':SANS, 'font-weight':300, 'font-size':'var(--type-subheading)', fill:INK});
-  el('line', {x1:x+32, y1:Y+HEADER, x2:x+W-32, y2:Y+HEADER, stroke:INK, 'stroke-width':.8, opacity:.5});
-  el('line', {x1:x+32, y1:Y+HEADER+4, x2:x+120, y2:Y+HEADER+4, stroke:INK, 'stroke-width':.6, opacity:.25});
+  el('line', {'data-vnext-visual-role':'n1.panel-title-rule', x1:x+32, y1:Y+HEADER, x2:x+W-32, y2:Y+HEADER, stroke:INK, 'stroke-width':2, opacity:1});
+  el('line', {'data-vnext-visual-role':'n1.panel-title-subrule', x1:x+32, y1:Y+HEADER+4, x2:x+120, y2:Y+HEADER+4, stroke:INK, 'stroke-width':1, opacity:1});
 
   /* 条目：圆点 + 中文 + 右侧 mono 字段码 */
   c.items.forEach(function(it, j){
@@ -156,8 +156,8 @@ el('rect', {x:RX0+5, y:RY+5, width:RW-10, height:RH-10, fill:'none', stroke:INK,
 
 txt(RX0+32, RY+44, 'COMPOSED PROMPT', {id:'n1-focus-en', 'font-family':MONO, 'font-size':'var(--type-meta)', 'letter-spacing':3, fill:'color-mix(in srgb, var(--ink) 50%, transparent)'});
 txt(RX0+32, RY+88, '组装后提示词', {id:'n1-focus-cn', 'font-family':SANS, 'font-weight':300, 'font-size':'var(--type-subheading)', fill:INK});
-el('line', {x1:RX0+32, y1:RY+RHEADER, x2:RX0+RW-32, y2:RY+RHEADER, stroke:INK, 'stroke-width':.8, opacity:.5});
-el('line', {x1:RX0+32, y1:RY+RHEADER+4, x2:RX0+120, y2:RY+RHEADER+4, stroke:INK, 'stroke-width':.6, opacity:.25});
+el('line', {'data-vnext-visual-role':'n1.panel-title-rule', x1:RX0+32, y1:RY+RHEADER, x2:RX0+RW-32, y2:RY+RHEADER, stroke:INK, 'stroke-width':2, opacity:1});
+el('line', {'data-vnext-visual-role':'n1.panel-title-subrule', x1:RX0+32, y1:RY+RHEADER+4, x2:RX0+120, y2:RY+RHEADER+4, stroke:INK, 'stroke-width':1, opacity:1});
 
 var msgs = [
   ['任务指令', 'INSTRUCTION'],

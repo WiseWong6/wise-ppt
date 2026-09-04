@@ -1,10 +1,8 @@
 <!DOCTYPE html>
-<html lang="zh-CN" data-runtime="wise-ppt-specimen" data-typography-mode="all-sans" data-theme="paper-ink" data-wise-catalog-fonts="true" data-page-id="gallery-ai-h3" data-page-role="explain" data-emphasis-targets="[{&quot;target_id&quot;:&quot;focus.key-layer&quot;,&quot;label&quot;:&quot;分支 / 层级 / 局部&quot;,&quot;content_role&quot;:&quot;已审核的页面焦点对象&quot;,&quot;reason_hint&quot;:&quot;仅当该对象直接支撑本页 claim 时启用；不得为了配色而开启。&quot;,&quot;members&quot;:[{&quot;selector&quot;:&quot;[data-vnext-text-key=\&quot;architecture.text.001\&quot;]&quot;,&quot;role&quot;:&quot;value&quot;,&quot;treatment&quot;:&quot;focus.text&quot;,&quot;expected_count&quot;:1}]}]" data-vnext-semantic-key-map="[{&quot;key&quot;:&quot;architecture.text.001&quot;,&quot;tag&quot;:&quot;text&quot;,&quot;text&quot;:&quot;L1&quot;,&quot;occurrence&quot;:0}]" data-catalog-legacy-emphasis-profile="copy-only" data-catalog-legacy-emphasis-members="[{&quot;selector&quot;:&quot;#focus-caption&quot;,&quot;role&quot;:&quot;label&quot;}]" data-catalog-legacy-emphasis-foreground-members="[]" data-catalog-legacy-emphasis-ref="sample.h3.h3-focus" data-theme-id="hermes-orange" data-surface-source="catalog-theme-recipes-v2" data-xp-recipe-id="hermes-orange:h3" data-xp-surface-profile="approved-architecture-stack" data-xp-recipe-status="approved" data-xp-frame-kind="custom-redraw">
+<html lang="zh-CN" data-runtime="wise-ppt-specimen" data-theme-id="hermes-orange" data-typography-mode="mixed" data-wise-catalog-fonts="true" data-page-id="gallery-ai-h3" data-page-role="explain" data-page-kind="relationship" data-layout-id="wise-ppt.layout.relationship.H3" data-layout-code="H3" data-layout-source="canonical-seed" data-layout-seed-sha256="584e411fd4efbfa1b539181437a97e080171f2543a18bddbb5c8c3968f0325fb" data-layout-structure-sha256="46b9f8df9363ec0b858520a9623b8da8165cc44750dbda435dc6aea742f6b6d9" data-layout-visual-plan="0a1f9188076caec9e5ecf0b2f6952b5311088fb2525d163345b0a0121c7a7f9d" data-layout-visual-materialization="b7c3cb9cd413228951fe25d9ca140b59df2fe2573bea138e9756b149574c6b91" data-resolved-theme-sha256="5adc40cf2a064bbf45005d722370884f41798a020723bcc73d57fdf508ba1921" data-layout-visual-source="wise-ppt-layout-theme-bindings@3" data-catalog-frame-id="hermes-orange:h3" data-catalog-frame-ready="true">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>v3 白橙 · H3 分层架构堆栈（规律版）</title>
-<link rel="icon" href="data:,">
+<title>layout-h3 · 分层架构堆栈</title>
 <script src="../../../../../runtime/stage-fit.js"></script>
 <link rel="stylesheet" href="../../../../../themes/engine/assets/design-tokens.css">
 <link rel="stylesheet" href="../../../../../themes/packages/paper-ink/theme.css">
@@ -12,234 +10,60 @@
 <link rel="stylesheet" href="../../../../../themes/packages/klein-blue/theme.css">
 <link rel="stylesheet" href="../../../../../themes/engine/assets/catalog-fonts.css" data-wise-catalog-fonts="true">
 <link rel="stylesheet" href="../../../../../themes/engine/assets/slide-components.css">
+<link rel="stylesheet" href="../../../../../themes/engine/assets/component-theme.css">
+<link rel="stylesheet" href="../../../../../runtime/component-behavior.css">
+<link rel="stylesheet" href="../../../../../runtime/deck-component-contract.css">
 <link rel="stylesheet" href="../../../../../references/shell.css">
-<style data-catalog-source-marker="hermes-h3">
-  @font-face {
-    font-family: 'Oswald Replica';
-    src: url('../../../../../themes/engine/fonts/catalog/Oswald-Bold-Latin.catalog.woff2') format('woff2');
-    font-style: normal;
-    font-weight: 700;
-    font-display: block;
+<style data-layout-seed-css="584e411fd4efbfa1b539181437a97e080171f2543a18bddbb5c8c3968f0325fb">@scope (.slide[data-layout-id="wise-ppt.layout.relationship.H3"]) {
+svg.scene { position: absolute; inset: 0; z-index: 1; }
+  canvas { position: absolute; inset: 0; z-index: 2; }
+  .caption {
+    position: absolute; left: 0; right: 0; bottom: 118px;
+    text-align: center;
+    font-family: var(--sans); font-weight: 400;
+    font-size: var(--type-caption); letter-spacing: .04em;
+    color: var(--ink);
+    z-index: 5;
   }
-
-  /* 白橙规律见 RULES.md：米色纸面上，四层共同组成一块白色前景表面；
-     L1–L4 是默认主题点缀，层名和 MODEL 仍是中性结构元数据。 */
-  :root {
-    --xp-paper: #f2efe9;
-    --xp-outside: #e5e2dc;
-    --xp-top: #ffffff;
-    --xp-ink: #1a1a1a;
-    --xp-accent: #d95e00;
-    --xp-shadow-hard: transparent;
-    --xp-serif: 'Han Serif Catalog', 'Han Serif', serif;
-    --wp-color-surface-canvas: var(--xp-paper);
-    --wp-color-primary: var(--xp-ink);
-    --wp-color-functional: var(--xp-ink);
-    --wp-color-body: rgba(26, 26, 26, 0.72);
-    --wp-color-metadata: rgba(26, 26, 26, 0.45);
-    --wp-color-divider: rgba(26, 26, 26, 0.2);
-    --wp-color-construction: rgba(26, 26, 26, 0.12);
-    --wp-color-focus: var(--xp-accent);
-    --wp-private-identity-accent: var(--xp-ink);
-  }
-  :root.accent { --xp-shadow-hard: var(--xp-accent); }
-  body { background: var(--xp-outside); }
-
-  #v3-h3 .doc.tl {
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
-    width: max-content;
-    white-space: normal;
-    line-height: 1;
-    letter-spacing: 0;
-    text-transform: none;
-  }
-  #v3-h3 .doc-kicker,
-  #v3-h3 .doc-title,
-  #v3-h3 .folio {
-    font-family: 'Oswald Replica', 'Han Sans Catalog', 'Han Sans', 'PingFang SC', sans-serif;
-    font-weight: 700;
-    line-height: 1.25;
-    letter-spacing: .15em;
-    text-transform: uppercase;
-  }
-  #v3-h3 .folio { color: rgba(26, 26, 26, .45); }
-
-  #v3-h3 .caption { font-family: var(--xp-serif); font-weight: 700; }
-
-  #v3-h3 .scene { position: absolute; inset: 0; z-index: 1; }
+}
 </style>
-<link rel="stylesheet" href="../../catalog-surface.css" data-catalog-theme-surface="catalog-theme-recipes-v2">
-<link rel="stylesheet" href="../../title-furniture.css" data-catalog-title-furniture="black-first-theme-second-v1">
+<style data-layout-visual-plan="0a1f9188076caec9e5ecf0b2f6952b5311088fb2525d163345b0a0121c7a7f9d">/* wise-ppt-layout-visual-plan@1 · wise-ppt.layout.relationship.H3 · 0a1f9188076caec9e5ecf0b2f6952b5311088fb2525d163345b0a0121c7a7f9d */
+body.slide > .stage[data-theme-visual-plan="0a1f9188076caec9e5ecf0b2f6952b5311088fb2525d163345b0a0121c7a7f9d"], body.slide > .stage[data-theme-visual-plan="0a1f9188076caec9e5ecf0b2f6952b5311088fb2525d163345b0a0121c7a7f9d"] [data-component-theme-scope="true"] { --wp-layout-structural: var(--wp-color-primary); --wp-layout-functional: var(--wp-color-functional); --wp-color-body: color-mix(in srgb, var(--wp-color-primary) 70%, transparent); --wp-color-chart-label: color-mix(in srgb, var(--wp-color-primary) 55%, transparent); --wp-color-metadata: color-mix(in srgb, var(--wp-color-primary) 45%, transparent); --wp-color-divider: color-mix(in srgb, var(--wp-color-primary) 20%, transparent); --wp-color-construction: color-mix(in srgb, var(--wp-color-primary) 12%, transparent); --wp-private-ink-60: color-mix(in srgb, var(--wp-color-primary) 60%, transparent); --wp-private-ink-30: color-mix(in srgb, var(--wp-color-primary) 30%, transparent); --ink: var(--wp-color-primary); --ink-80: color-mix(in srgb, var(--wp-color-primary) 80%, transparent); --ink-70: color-mix(in srgb, var(--wp-color-primary) 70%, transparent); --ink-55: color-mix(in srgb, var(--wp-color-primary) 55%, transparent); --ink-45: color-mix(in srgb, var(--wp-color-primary) 45%, transparent); --ink-25: color-mix(in srgb, var(--wp-color-primary) 20%, transparent); --ink-12: color-mix(in srgb, var(--wp-color-primary) 12%, transparent); --wp-adapter-pi-ink: var(--wp-color-primary); --wp-adapter-pi-ink-80: color-mix(in srgb, var(--wp-color-primary) 80%, transparent); --wp-adapter-pi-ink-70: color-mix(in srgb, var(--wp-color-primary) 70%, transparent); --wp-adapter-pi-ink-60: color-mix(in srgb, var(--wp-color-primary) 60%, transparent); --wp-adapter-pi-ink-55: color-mix(in srgb, var(--wp-color-primary) 55%, transparent); --wp-adapter-pi-ink-45: color-mix(in srgb, var(--wp-color-primary) 45%, transparent); --wp-adapter-pi-ink-30: color-mix(in srgb, var(--wp-color-primary) 30%, transparent); --wp-adapter-atlas-ink: var(--wp-color-primary); --wp-adapter-atlas-ink-80: color-mix(in srgb, var(--wp-color-primary) 80%, transparent); --wp-adapter-atlas-ink-70: color-mix(in srgb, var(--wp-color-primary) 70%, transparent); --wp-adapter-atlas-ink-55: color-mix(in srgb, var(--wp-color-primary) 55%, transparent); --wp-adapter-atlas-ink-45: color-mix(in srgb, var(--wp-color-primary) 45%, transparent); --wp-adapter-atlas-ink-25: color-mix(in srgb, var(--wp-color-primary) 20%, transparent); --wp-adapter-atlas-ink-12: color-mix(in srgb, var(--wp-color-primary) 12%, transparent); --shadow-soft: none; --shadow-specimen: none; --data-ramp-1: color-mix(in srgb, var(--wp-color-primary) 8%, transparent); --wp-adapter-pi-data-1: color-mix(in srgb, var(--wp-color-primary) 8%, transparent); --wp-adapter-atlas-data-1: color-mix(in srgb, var(--wp-color-primary) 8%, transparent); --data-ramp-2: color-mix(in srgb, var(--wp-color-primary) 14%, transparent); --wp-adapter-pi-data-2: color-mix(in srgb, var(--wp-color-primary) 14%, transparent); --wp-adapter-atlas-data-2: color-mix(in srgb, var(--wp-color-primary) 14%, transparent); --data-ramp-3: color-mix(in srgb, var(--wp-color-primary) 22%, transparent); --wp-adapter-pi-data-3: color-mix(in srgb, var(--wp-color-primary) 22%, transparent); --wp-adapter-atlas-data-3: color-mix(in srgb, var(--wp-color-primary) 22%, transparent); --data-ramp-4: color-mix(in srgb, var(--wp-color-primary) 30%, transparent); --wp-adapter-pi-data-4: color-mix(in srgb, var(--wp-color-primary) 30%, transparent); --wp-adapter-atlas-data-4: color-mix(in srgb, var(--wp-color-primary) 30%, transparent); --data-ramp-5: color-mix(in srgb, var(--wp-color-primary) 40%, transparent); --wp-adapter-pi-data-5: color-mix(in srgb, var(--wp-color-primary) 40%, transparent); --wp-adapter-atlas-data-5: color-mix(in srgb, var(--wp-color-primary) 40%, transparent); --data-ramp-6: color-mix(in srgb, var(--wp-color-primary) 52%, transparent); --wp-adapter-pi-data-6: color-mix(in srgb, var(--wp-color-primary) 52%, transparent); --wp-adapter-atlas-data-6: color-mix(in srgb, var(--wp-color-primary) 52%, transparent); }
+:root[data-theme-id][data-typography-mode="mixed"] body.slide [data-theme-type-role="top-left-kicker"], :root[data-theme-id][data-typography-mode="mixed"] body.slide [data-theme-type-role="bottom-left-folio"] { font-family: var(--wp-font-oswald) !important; font-weight: 700 !important; }
+:root[data-theme-id][data-typography-mode="mixed"] body.slide [data-theme-type-role="bottom-takeaway"] { font-family: var(--wp-font-han-serif) !important; font-weight: 700 !important; }
+:root[data-theme-id][data-typography-mode="mixed"] body.slide [data-theme-type-role="zh-content-title"] { font-family: var(--wp-font-han-sans) !important; font-weight: 700 !important; }
+:root[data-theme-id][data-typography-mode="mixed"] body.slide :is([data-theme-type-role="body"], [data-theme-type-role="label"], [data-theme-type-role="number"], [data-theme-type-role="chart-text"]) { font-family: var(--wp-font-han-sans) !important; font-weight: 400 !important; }
+:root[data-theme-id][data-typography-mode="mixed"] body.slide [data-theme-language="en"]:not([data-theme-type-role="top-left-kicker"]):not([data-theme-type-role="bottom-left-folio"]):not([data-theme-type-role="bottom-takeaway"]) { font-family: var(--wp-font-oswald) !important; font-weight: 700 !important; }
+body.slide > .stage[data-theme-visual-plan="0a1f9188076caec9e5ecf0b2f6952b5311088fb2525d163345b0a0121c7a7f9d"] { background-color: var(--wp-color-surface-canvas) !important; }
+body.slide [data-theme-surface-binding-id="surface.architecture-stack"] { background-color: var(--wp-color-surface-panel) !important; }
+body.slide svg [data-theme-surface-binding-id="surface.architecture-stack"],
+body.slide svg [data-theme-surface-binding-id="surface.architecture-stack"] :is(path, line, rect, circle, ellipse, polygon, polyline, use)[fill]:not([fill="none"]) { fill: var(--wp-color-surface-panel) !important; }
+body.slide [data-theme-surface-binding-id="surface.architecture-stack"] { --wp-layout-surface-stack: 1; z-index: 1 !important; }
+body.slide [data-theme-surface-binding-id="surface.architecture-stack"]:not([data-emphasis-active="true"]) { box-shadow: none !important; }
+body.slide svg [data-theme-surface-binding-id="surface.architecture-stack"]:not([data-emphasis-active="true"]) { filter: none !important; }
+body.slide [data-theme-surface-binding-id="surface.architecture-stack"] { border-color: color-mix(in srgb, var(--wp-color-primary) 80%, transparent) !important; border-width: 1.3px !important; border-style: solid !important; }
+body.slide svg [data-theme-surface-binding-id="surface.architecture-stack"],
+body.slide svg [data-theme-surface-binding-id="surface.architecture-stack"] :is(path, line, rect, circle, ellipse, polygon, polyline, use)[stroke]:not([stroke="none"]) { stroke: color-mix(in srgb, var(--wp-color-primary) 80%, transparent) !important; stroke-width: 1.3px !important; }
+body.slide [data-theme-furniture-role="title"] { color: var(--wp-color-functional) !important; }
+body.slide svg [data-theme-furniture-role="title"] { fill: var(--wp-color-functional) !important; }
+body.slide [data-theme-furniture-role="folio"] { color: var(--wp-color-metadata) !important; }
+body.slide svg [data-theme-furniture-role="folio"] { fill: var(--wp-color-metadata) !important; }
+body.slide [data-theme-furniture-role="takeaway"] { color: var(--wp-color-primary) !important; }
+body.slide svg [data-theme-furniture-role="takeaway"] { fill: var(--wp-color-primary) !important; }
+body.slide [data-theme-furniture-role="title"]::first-line,
+body.slide [data-theme-furniture-role="title"] [data-theme-furniture-line="first"] { color: var(--wp-color-primary) !important; }
+body.slide [data-theme-furniture-role="title"] [data-theme-furniture-line="second"] { color: var(--wp-color-functional) !important; }
+</style>
 </head>
-<body class="slide">
-<div id="v3-h3" class="stage" data-layout-source="experimental-redraw" data-baseline-layout-id="paper-ink.nested.architecture-stack" data-catalog-source-marker="page-recipe">
-  <div class="doc tl"><span class="doc-kicker">PPT 标题</span><span class="doc-title">页面标题</span></div>
-  <div class="folio">页码 / 总页数 — BY @歪斯Wise</div>
-
-  <svg class="scene" width="1920" height="1080" viewBox="0 0 1920 1080" role="img" aria-label="AI 产品四层栈">
-    <defs>
-      <filter id="xp-hard" x="-10%" y="-60%" width="120%" height="220%">
-        <feDropShadow dx="10" dy="10" stdDeviation="0" flood-color="var(--xp-shadow-hard)" flood-opacity="1"/>
-      </filter>
-    </defs>
-    <g id="draw"></g>
-  </svg>
-
-  <div class="caption">应用、模型、数据与基础设施四层相互依赖，产品问题往往来自<span id="focus-caption">跨层断点</span>。</div>
+<body class="slide" data-page-id="gallery-ai-h3" data-page-role="explain" data-page-kind="relationship" data-layout-id="wise-ppt.layout.relationship.H3" data-layout-code="H3" data-layout-source="canonical-seed" data-layout-seed-sha256="584e411fd4efbfa1b539181437a97e080171f2543a18bddbb5c8c3968f0325fb" data-layout-structure-sha256="46b9f8df9363ec0b858520a9623b8da8165cc44750dbda435dc6aea742f6b6d9" data-layout-visual-plan="0a1f9188076caec9e5ecf0b2f6952b5311088fb2525d163345b0a0121c7a7f9d" data-layout-visual-materialization="b7c3cb9cd413228951fe25d9ca140b59df2fe2573bea138e9756b149574c6b91" data-resolved-theme-sha256="5adc40cf2a064bbf45005d722370884f41798a020723bcc73d57fdf508ba1921" data-layout-visual-source="wise-ppt-layout-theme-bindings@3">
+<div class="stage" data-block-id="gallery-primary" data-component-id="native.wise-ppt.nested.architecture-stack.architecture" data-component-source="native" data-content-ref="example.h3" data-renderer-kind="svg" data-theme-visual-source="wise-ppt-layout-theme-bindings@3" data-theme-visual-plan="0a1f9188076caec9e5ecf0b2f6952b5311088fb2525d163345b0a0121c7a7f9d" data-theme-canvas-material="paper" data-theme-default-color-base-role="primary" data-theme-typography-resolution="structure-slots-and-explicit-language" data-theme-emphasis-target-count="1" data-theme-emphasis-sample-target="focus.key-layer">
+<div class="doc tl" data-theme-furniture-source="wise-ppt-layout-theme-bindings@3" data-theme-furniture-role="title" data-theme-furniture-variant="primary-first-functional-second" data-theme-type-role="top-left-kicker" data-theme-type-base-role="top-left-kicker" data-theme-color-role="functional" data-theme-color-alpha="1" data-theme-title-first-color-role="primary" data-theme-title-second-color-role="functional" data-theme-language="zh"><span class="vnext-text-node" data-vnext-fit-box="0,0,1920,1080" data-vnext-text-key="support.text.001" data-theme-furniture-line="first" data-theme-type-role="top-left-kicker" data-theme-type-base-role="top-left-kicker" data-theme-color-role="primary" data-theme-language="zh">PPT &#x6807;&#x9898;</span><br><span class="vnext-text-node" data-vnext-fit-box="0,0,1920,1080" data-vnext-text-key="support.text.002" data-theme-furniture-line="second" data-theme-type-role="top-left-kicker" data-theme-type-base-role="top-left-kicker" data-theme-color-role="functional" data-theme-language="zh">&#x9875;&#x9762;&#x6807;&#x9898;</span></div>
+<div class="folio" data-theme-furniture-source="wise-ppt-layout-theme-bindings@3" data-theme-furniture-role="folio" data-theme-type-role="bottom-left-folio" data-theme-type-base-role="bottom-left-folio" data-theme-color-role="metadata" data-theme-color-alpha="1" data-theme-language="zh">&#x9875;&#x7801; / &#x603b;&#x9875;&#x6570; &#x2014; BY @&#x6b6a;&#x65af;Wise</div>
+<svg class="scene" height="1080" viewBox="0 0 1920 1080" width="1920">
+<g id="draw"><g transform="translate(0 +2.3)"><rect data-vnext-visual-key="h3.architecture-surface" fill="var(--wp-color-surface-panel)" height="528" stroke="var(--ink-80)" stroke-width="1.3" width="1620" x="150" y="240" data-theme-binding-source="wise-ppt-layout-theme-bindings@3" data-theme-surface-binding-id="surface.architecture-stack" data-theme-surface-role="architecture-stack" data-theme-material="foreground" data-theme-stack="1" data-theme-base-shadow="none" data-theme-border="{&quot;alpha&quot;:0.8,&quot;color_role&quot;:&quot;primary&quot;,&quot;width_px&quot;:1.3}" data-theme-role-overrides="[]" data-theme-emphasis-source="wise-ppt-layout-theme-bindings@3" data-theme-emphasis-members="[{&quot;role&quot;:&quot;outline&quot;,&quot;target_id&quot;:&quot;focus.key-layer&quot;,&quot;treatment&quot;:&quot;focus.shadow-only&quot;}]"/><line opacity="0.3" stroke="var(--ink)" stroke-width="0.6" x1="150" x2="1770" y1="372" y2="372"/><line opacity="0.3" stroke="var(--ink)" stroke-width="0.6" x1="150" x2="1770" y1="504" y2="504"/><line opacity="0.3" stroke="var(--ink)" stroke-width="0.6" x1="150" x2="1770" y1="636" y2="636"/><line opacity="0.3" stroke="var(--ink)" stroke-width="0.6" x1="310" x2="310" y1="240" y2="768"/><text class="h3-layer-code" data-vnext-fit-box="147,239,1773,774" data-vnext-text-key="architecture.text.001" fill="var(--ink)" font-family="var(--mono)" font-size="var(--type-body)" letter-spacing="2" x="160" y="290" data-theme-identity-source="wise-ppt-layout-theme-bindings@3" data-theme-identity-group="identity.layer-codes" data-theme-identity-treatment="identity.text" data-theme-type-role="en-bold" data-theme-type-base-role="body" data-theme-language="en">L1</text><text data-vnext-fit-box="147,239,1773,774" data-vnext-text-key="architecture.text.002" fill="var(--ink)" font-family="var(--sans)" font-size="var(--type-body)" font-weight="300" id="h3-layer-L1" x="160" y="318" data-theme-type-role="body" data-theme-type-base-role="body" data-theme-language="zh">&#x5e94;&#x7528;&#x5c42;</text><text data-vnext-fit-box="147,239,1773,774" data-vnext-text-key="architecture.text.003" fill="var(--ink-45)" font-family="var(--mono)" font-size="var(--type-micro-secondary)" letter-spacing="2" x="160" y="340" data-theme-type-role="en-bold" data-theme-type-base-role="body" data-theme-language="en">APPLICATION</text><line opacity="0.3" stroke="var(--ink)" stroke-width="0.6" x1="160" x2="230" y1="354" y2="354"/><g data-vnext-visual-key="h3.layer-content.l1" data-vnext-visual-role="h3.layer-content"><rect fill="none" height="36" rx="8" ry="8" stroke="var(--ink-80)" stroke-width="1.2" width="60" x="520" y="284"/><path d="M 542 320 L 536 332 L 552 320" fill="none" stroke="var(--ink-80)" stroke-linejoin="round" stroke-width="1.2"/><circle cx="538" cy="302" fill="var(--ink)" r="2.2"/><circle cx="550" cy="302" fill="var(--ink)" r="2.2"/><circle cx="562" cy="302" fill="var(--ink)" r="2.2"/><text data-vnext-fit-box="147,239,1773,774" data-vnext-text-key="architecture.text.004" fill="var(--ink-55)" font-family="var(--mono)" font-size="var(--type-meta)" letter-spacing="1.5" x="604" y="302" data-theme-type-role="en-bold" data-theme-type-base-role="body" data-theme-language="en">CHAT</text><text data-vnext-fit-box="147,239,1773,774" data-vnext-text-key="architecture.text.005" fill="var(--ink)" font-family="var(--sans)" font-size="var(--type-body-small)" font-weight="300" x="604" y="328" data-theme-type-role="body" data-theme-type-base-role="body" data-theme-language="zh">&#x5bf9;&#x8bdd;&#x754c;&#x9762;</text><rect fill="none" height="44" rx="3" ry="3" stroke="var(--ink-80)" stroke-width="1.2" width="52" x="969" y="284"/><line opacity="0.45" stroke="var(--ink)" stroke-width="0.7" x1="969" x2="1021" y1="296" y2="296"/><circle cx="975" cy="290" fill="var(--ink)" r="1.8"/><circle cx="982" cy="290" fill="none" opacity="0.5" r="1.8" stroke="var(--ink)" stroke-width="0.7"/><rect fill="none" height="10" opacity="0.7" stroke="var(--ink)" stroke-width="0.8" width="12" x="983" y="300"/><rect fill="none" height="10" opacity="0.7" stroke="var(--ink)" stroke-width="0.8" width="12" x="1001" y="300"/><rect fill="none" height="10" opacity="0.7" stroke="var(--ink)" stroke-width="0.8" width="12" x="983" y="314"/><rect fill="none" height="10" opacity="0.7" stroke="var(--ink)" stroke-width="0.8" width="12" x="1001" y="314"/><text data-vnext-fit-box="147,239,1773,774" data-vnext-text-key="architecture.text.006" fill="var(--ink-55)" font-family="var(--mono)" font-size="var(--type-meta)" letter-spacing="1.5" x="1049" y="302" data-theme-type-role="en-bold" data-theme-type-base-role="body" data-theme-language="en">ASSIST</text><text data-vnext-fit-box="147,239,1773,774" data-vnext-text-key="architecture.text.007" fill="var(--ink)" font-family="var(--sans)" font-size="var(--type-body-small)" font-weight="300" x="1049" y="328" data-theme-type-role="body" data-theme-type-base-role="body" data-theme-language="zh">&#x52a9;&#x624b;&#x9762;&#x677f;</text><line stroke="var(--ink-80)" stroke-width="1.3" x1="1440" x2="1440" y1="330" y2="306"/><line stroke="var(--ink-80)" stroke-width="1.2" x1="1440" x2="1418" y1="306" y2="292"/><line stroke="var(--ink-80)" stroke-width="1.2" x1="1440" x2="1440" y1="306" y2="288"/><line stroke="var(--ink-80)" stroke-width="1.2" x1="1440" x2="1462" y1="306" y2="292"/><circle cx="1440" cy="332" fill="none" r="5" stroke="var(--ink-80)" stroke-width="1"/><circle cx="1440" cy="332" fill="var(--ink)" r="1.8"/><circle cx="1416" cy="291" fill="none" r="5" stroke="var(--ink-80)" stroke-width="1"/><circle cx="1416" cy="291" fill="var(--ink)" r="1.8"/><circle cx="1440" cy="286" fill="none" r="5" stroke="var(--ink-80)" stroke-width="1"/><circle cx="1440" cy="286" fill="var(--ink)" r="1.8"/><circle cx="1464" cy="291" fill="none" r="5" stroke="var(--ink-80)" stroke-width="1"/><circle cx="1464" cy="291" fill="var(--ink)" r="1.8"/><text data-vnext-fit-box="147,239,1773,774" data-vnext-text-key="architecture.text.008" fill="var(--ink-55)" font-family="var(--mono)" font-size="var(--type-meta)" letter-spacing="1.5" x="1494" y="302" data-theme-type-role="en-bold" data-theme-type-base-role="body" data-theme-language="en">API HUB</text><text data-vnext-fit-box="147,239,1773,774" data-vnext-text-key="architecture.text.009" fill="var(--ink)" font-family="var(--sans)" font-size="var(--type-body-small)" font-weight="300" x="1494" y="328" data-theme-type-role="body" data-theme-type-base-role="body" data-theme-language="zh">&#x5f00;&#x653e;&#x63a5;&#x53e3;</text></g><text class="h3-layer-code" data-vnext-fit-box="147,239,1773,774" data-vnext-text-key="architecture.text.010" fill="var(--ink)" font-family="var(--mono)" font-size="var(--type-body)" letter-spacing="2" x="160" y="422" data-theme-identity-source="wise-ppt-layout-theme-bindings@3" data-theme-identity-group="identity.layer-codes" data-theme-identity-treatment="identity.text" data-theme-type-role="en-bold" data-theme-type-base-role="body" data-theme-language="en">L2</text><text data-vnext-fit-box="147,239,1773,774" data-vnext-text-key="architecture.text.011" fill="var(--ink)" font-family="var(--sans)" font-size="var(--type-body)" font-weight="300" id="sample-focus" x="160" y="450" data-theme-type-role="body" data-theme-type-base-role="body" data-theme-language="zh">&#x6a21;&#x578b;&#x5c42;</text><text data-vnext-fit-box="147,239,1773,774" data-vnext-text-key="architecture.text.012" fill="var(--ink-45)" font-family="var(--mono)" font-size="var(--type-micro-secondary)" letter-spacing="2" x="160" y="472" data-theme-type-role="en-bold" data-theme-type-base-role="body" data-theme-language="en">MODEL</text><line opacity="0.3" stroke="var(--ink)" stroke-width="0.6" x1="160" x2="230" y1="486" y2="486"/><g data-vnext-visual-key="h3.layer-content.l2" data-vnext-visual-role="h3.layer-content"><circle cx="550" cy="438" fill="none" r="22" stroke="var(--ink-80)" stroke-width="1.3"/><circle cx="550" cy="438" fill="none" r="7" stroke="var(--ink-80)" stroke-width="1.1"/><line stroke="var(--ink-80)" stroke-width="1.6" x1="572" x2="579" y1="438" y2="438"/><line stroke="var(--ink-80)" stroke-width="1.6" x1="565.5563491861041" x2="570.5060966544099" y1="453.55634918610406" y2="458.5060966544099"/><line stroke="var(--ink-80)" stroke-width="1.6" x1="550" x2="550" y1="460" y2="467"/><line stroke="var(--ink-80)" stroke-width="1.6" x1="534.4436508138959" x2="529.4939033455901" y1="453.55634918610406" y2="458.5060966544099"/><line stroke="var(--ink-80)" stroke-width="1.6" x1="528" x2="521" y1="438" y2="438"/><line stroke="var(--ink-80)" stroke-width="1.6" x1="534.4436508138959" x2="529.4939033455901" y1="422.44365081389594" y2="417.4939033455901"/><line stroke="var(--ink-80)" stroke-width="1.6" x1="550" x2="550" y1="416" y2="409"/><line stroke="var(--ink-80)" stroke-width="1.6" x1="565.5563491861041" x2="570.5060966544099" y1="422.44365081389594" y2="417.4939033455901"/><text data-vnext-fit-box="147,239,1773,774" data-vnext-text-key="architecture.text.013" fill="var(--ink-55)" font-family="var(--mono)" font-size="var(--type-meta)" letter-spacing="1.5" x="604" y="434" data-theme-type-role="en-bold" data-theme-type-base-role="body" data-theme-language="en">LLM</text><text data-vnext-fit-box="147,239,1773,774" data-vnext-text-key="architecture.text.014" fill="var(--ink)" font-family="var(--sans)" font-size="var(--type-body-small)" font-weight="300" x="604" y="460" data-theme-type-role="body" data-theme-type-base-role="body" data-theme-language="zh">&#x5927;&#x8bed;&#x8a00;&#x6a21;&#x578b;</text><rect fill="none" height="34" stroke="var(--ink-80)" stroke-width="1.2" width="26" x="967" y="418"/><line opacity="0.6" stroke="var(--ink)" stroke-width="0.8" x1="972" x2="988" y1="426" y2="426"/><line opacity="0.6" stroke="var(--ink)" stroke-width="0.8" x1="972" x2="988" y1="433" y2="433"/><line opacity="0.6" stroke="var(--ink)" stroke-width="0.8" x1="972" x2="983" y1="440" y2="440"/><circle cx="1007" cy="436" fill="none" r="11" stroke="var(--ink-80)" stroke-width="1.3"/><line stroke="var(--ink-80)" stroke-linecap="round" stroke-width="1.8" x1="1015" x2="1023" y1="444" y2="452"/><text data-vnext-fit-box="147,239,1773,774" data-vnext-text-key="architecture.text.015" fill="var(--ink-55)" font-family="var(--mono)" font-size="var(--type-meta)" letter-spacing="1.5" x="1049" y="434" data-theme-type-role="en-bold" data-theme-type-base-role="body" data-theme-language="en">RAG</text><text data-vnext-fit-box="147,239,1773,774" data-vnext-text-key="architecture.text.016" fill="var(--ink)" font-family="var(--sans)" font-size="var(--type-body-small)" font-weight="300" x="1049" y="460" data-theme-type-role="body" data-theme-type-base-role="body" data-theme-language="zh">&#x68c0;&#x7d22;&#x589e;&#x5f3a;</text><circle cx="1440" cy="438" fill="none" r="5" stroke="var(--ink-80)" stroke-width="1"/><circle cx="1440" cy="438" fill="var(--ink)" r="1.8"/><line stroke="var(--ink-80)" stroke-width="1.1" x1="1440" x2="1414" y1="438" y2="424"/><circle cx="1414" cy="424" fill="none" r="5" stroke="var(--ink-80)" stroke-width="1"/><circle cx="1414" cy="424" fill="var(--ink)" r="1.8"/><line stroke="var(--ink-80)" stroke-width="1.1" x1="1440" x2="1466" y1="438" y2="424"/><circle cx="1466" cy="424" fill="none" r="5" stroke="var(--ink-80)" stroke-width="1"/><circle cx="1466" cy="424" fill="var(--ink)" r="1.8"/><line stroke="var(--ink-80)" stroke-width="1.1" x1="1440" x2="1414" y1="438" y2="454"/><circle cx="1414" cy="454" fill="none" r="5" stroke="var(--ink-80)" stroke-width="1"/><circle cx="1414" cy="454" fill="var(--ink)" r="1.8"/><line stroke="var(--ink-80)" stroke-width="1.1" x1="1440" x2="1466" y1="438" y2="454"/><circle cx="1466" cy="454" fill="none" r="5" stroke="var(--ink-80)" stroke-width="1"/><circle cx="1466" cy="454" fill="var(--ink)" r="1.8"/><line opacity="0.35" stroke="var(--ink)" stroke-dasharray="3 4" stroke-width="0.6" x1="1414" x2="1466" y1="424" y2="424"/><line opacity="0.35" stroke="var(--ink)" stroke-dasharray="3 4" stroke-width="0.6" x1="1414" x2="1466" y1="454" y2="454"/><text data-vnext-fit-box="147,239,1773,774" data-vnext-text-key="architecture.text.017" fill="var(--ink-55)" font-family="var(--mono)" font-size="var(--type-meta)" letter-spacing="1.5" x="1494" y="434" data-theme-type-role="en-bold" data-theme-type-base-role="body" data-theme-language="en">AGENT</text><text data-vnext-fit-box="147,239,1773,774" data-vnext-text-key="architecture.text.018" fill="var(--ink)" font-family="var(--sans)" font-size="var(--type-body-small)" font-weight="300" x="1494" y="460" data-theme-type-role="body" data-theme-type-base-role="body" data-theme-language="zh">&#x667a;&#x80fd;&#x4f53;</text></g><text class="h3-layer-code" data-vnext-fit-box="147,239,1773,774" data-vnext-text-key="architecture.text.019" fill="var(--ink)" font-family="var(--mono)" font-size="var(--type-body)" letter-spacing="2" x="160" y="554" data-theme-identity-source="wise-ppt-layout-theme-bindings@3" data-theme-identity-group="identity.layer-codes" data-theme-identity-treatment="identity.text" data-theme-type-role="en-bold" data-theme-type-base-role="body" data-theme-language="en">L3</text><text data-vnext-fit-box="147,239,1773,774" data-vnext-text-key="architecture.text.020" fill="var(--ink)" font-family="var(--sans)" font-size="var(--type-body)" font-weight="300" id="h3-layer-L3" x="160" y="582" data-theme-type-role="body" data-theme-type-base-role="body" data-theme-language="zh">&#x6570;&#x636e;&#x5c42;</text><text data-vnext-fit-box="147,239,1773,774" data-vnext-text-key="architecture.text.021" fill="var(--ink-45)" font-family="var(--mono)" font-size="var(--type-micro-secondary)" letter-spacing="2" x="160" y="604" data-theme-type-role="en-bold" data-theme-type-base-role="body" data-theme-language="en">DATA</text><line opacity="0.3" stroke="var(--ink)" stroke-width="0.6" x1="160" x2="230" y1="618" y2="618"/><g data-vnext-visual-key="h3.layer-content.l3" data-vnext-visual-role="h3.layer-content"><ellipse cx="550" cy="548" fill="none" rx="23" ry="8" stroke="var(--ink-80)" stroke-width="1.2"/><line stroke="var(--ink-80)" stroke-width="1.2" x1="527" x2="527" y1="548" y2="592"/><line stroke="var(--ink-80)" stroke-width="1.2" x1="573" x2="573" y1="548" y2="592"/><path d="M 527 592 A 23 8 0 0 0 573 592" fill="none" stroke="var(--ink-80)" stroke-width="1.2"/><text data-vnext-fit-box="147,239,1773,774" data-vnext-text-key="architecture.text.022" fill="var(--ink-55)" font-family="var(--mono)" font-size="var(--type-meta)" letter-spacing="1.5" x="604" y="566" data-theme-type-role="en-bold" data-theme-type-base-role="body" data-theme-language="en">VEC DB</text><text data-vnext-fit-box="147,239,1773,774" data-vnext-text-key="architecture.text.023" fill="var(--ink)" font-family="var(--sans)" font-size="var(--type-body-small)" font-weight="300" x="604" y="592" data-theme-type-role="body" data-theme-type-base-role="body" data-theme-language="zh">&#x5411;&#x91cf;&#x5e93;</text><path d="M 993 552 C 981 548, 965 550, 965 556 L 965 586 C 965 592, 981 594, 993 590" fill="none" stroke="var(--ink-80)" stroke-linejoin="round" stroke-width="1.2"/><path d="M 997 552 C 1009 548, 1025 550, 1025 556 L 1025 586 C 1025 592, 1009 594, 997 590" fill="none" stroke="var(--ink-80)" stroke-linejoin="round" stroke-width="1.2"/><line opacity="0.5" stroke="var(--ink-80)" stroke-width="1" x1="995" x2="995" y1="552" y2="590"/><line opacity="0.5" stroke="var(--ink)" stroke-width="0.6" x1="970" x2="988" y1="550" y2="550"/><line opacity="0.5" stroke="var(--ink)" stroke-width="0.6" x1="1002" x2="1020" y1="550" y2="550"/><line opacity="0.5" stroke="var(--ink)" stroke-width="0.6" x1="970" x2="988" y1="560" y2="560"/><line opacity="0.5" stroke="var(--ink)" stroke-width="0.6" x1="1002" x2="1020" y1="560" y2="560"/><line opacity="0.5" stroke="var(--ink)" stroke-width="0.6" x1="970" x2="988" y1="570" y2="570"/><line opacity="0.5" stroke="var(--ink)" stroke-width="0.6" x1="1002" x2="1020" y1="570" y2="570"/><line opacity="0.5" stroke="var(--ink)" stroke-width="0.6" x1="970" x2="988" y1="580" y2="580"/><line opacity="0.5" stroke="var(--ink)" stroke-width="0.6" x1="1002" x2="1020" y1="580" y2="580"/><text data-vnext-fit-box="147,239,1773,774" data-vnext-text-key="architecture.text.024" fill="var(--ink-55)" font-family="var(--mono)" font-size="var(--type-meta)" letter-spacing="1.5" x="1049" y="566" data-theme-type-role="en-bold" data-theme-type-base-role="body" data-theme-language="en">KNOWLEDGE</text><text data-vnext-fit-box="147,239,1773,774" data-vnext-text-key="architecture.text.025" fill="var(--ink)" font-family="var(--sans)" font-size="var(--type-body-small)" font-weight="300" x="1049" y="592" data-theme-type-role="body" data-theme-type-base-role="body" data-theme-language="zh">&#x77e5;&#x8bc6;&#x5e93;</text><path d="M 1462 561.2 A 22 22 0 1 1 1424.6 554.6" fill="none" stroke="var(--ink-80)" stroke-width="1.4"/><path d="M 1418 578.8 A 22 22 0 1 1 1455.4 585.4" fill="none" stroke="var(--ink-80)" stroke-width="1.4"/><path d="M 1462 561.2 L 1467 555.2 L 1456 558.2" fill="none" stroke="var(--ink-80)" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.4"/><path d="M 1418 578.8 L 1413 584.8 L 1424 581.8" fill="none" stroke="var(--ink-80)" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.4"/><text data-vnext-fit-box="147,239,1773,774" data-vnext-text-key="architecture.text.026" fill="var(--ink-55)" font-family="var(--mono)" font-size="var(--type-meta)" letter-spacing="1.5" x="1494" y="566" data-theme-type-role="en-bold" data-theme-type-base-role="body" data-theme-language="en">FEEDBACK</text><text data-vnext-fit-box="147,239,1773,774" data-vnext-text-key="architecture.text.027" fill="var(--ink)" font-family="var(--sans)" font-size="var(--type-body-small)" font-weight="300" x="1494" y="592" data-theme-type-role="body" data-theme-type-base-role="body" data-theme-language="zh">&#x53cd;&#x9988;&#x7ba1;&#x7ebf;</text></g><text class="h3-layer-code" data-vnext-fit-box="147,239,1773,774" data-vnext-text-key="architecture.text.028" fill="var(--ink)" font-family="var(--mono)" font-size="var(--type-body)" letter-spacing="2" x="160" y="686" data-theme-identity-source="wise-ppt-layout-theme-bindings@3" data-theme-identity-group="identity.layer-codes" data-theme-identity-treatment="identity.text" data-theme-type-role="en-bold" data-theme-type-base-role="body" data-theme-language="en">L4</text><text data-vnext-fit-box="147,239,1773,774" data-vnext-text-key="architecture.text.029" fill="var(--ink)" font-family="var(--sans)" font-size="var(--type-body)" font-weight="300" id="h3-layer-L4" x="160" y="714" data-theme-type-role="body" data-theme-type-base-role="body" data-theme-language="zh">&#x57fa;&#x7840;&#x5c42;</text><text data-vnext-fit-box="147,239,1773,774" data-vnext-text-key="architecture.text.030" fill="var(--ink-45)" font-family="var(--mono)" font-size="var(--type-micro-secondary)" letter-spacing="2" x="160" y="736" data-theme-type-role="en-bold" data-theme-type-base-role="body" data-theme-language="en">INFRA</text><line opacity="0.3" stroke="var(--ink)" stroke-width="0.6" x1="160" x2="230" y1="750" y2="750"/><g data-vnext-visual-key="h3.layer-content.l4" data-vnext-visual-role="h3.layer-content"><rect fill="none" height="14" opacity="1" stroke="var(--ink-80)" stroke-width="1.1" width="14" x="525" y="677"/><rect fill="none" height="8" opacity="0.5" stroke="var(--ink)" stroke-width="0.6" width="8" x="528" y="680"/><rect fill="none" height="14" opacity="0.5" stroke="var(--ink-80)" stroke-width="1.1" width="14" x="543" y="677"/><rect fill="none" height="14" opacity="1" stroke="var(--ink-80)" stroke-width="1.1" width="14" x="561" y="677"/><rect fill="none" height="8" opacity="0.5" stroke="var(--ink)" stroke-width="0.6" width="8" x="564" y="680"/><rect fill="none" height="14" opacity="0.5" stroke="var(--ink-80)" stroke-width="1.1" width="14" x="525" y="695"/><rect fill="none" height="14" opacity="1" stroke="var(--ink-80)" stroke-width="1.1" width="14" x="543" y="695"/><rect fill="none" height="8" opacity="0.5" stroke="var(--ink)" stroke-width="0.6" width="8" x="546" y="698"/><rect fill="none" height="14" opacity="0.5" stroke="var(--ink-80)" stroke-width="1.1" width="14" x="561" y="695"/><rect fill="none" height="14" opacity="1" stroke="var(--ink-80)" stroke-width="1.1" width="14" x="525" y="713"/><rect fill="none" height="8" opacity="0.5" stroke="var(--ink)" stroke-width="0.6" width="8" x="528" y="716"/><rect fill="none" height="14" opacity="0.5" stroke="var(--ink-80)" stroke-width="1.1" width="14" x="543" y="713"/><rect fill="none" height="14" opacity="1" stroke="var(--ink-80)" stroke-width="1.1" width="14" x="561" y="713"/><rect fill="none" height="8" opacity="0.5" stroke="var(--ink)" stroke-width="0.6" width="8" x="564" y="716"/><text data-vnext-fit-box="147,239,1773,774" data-vnext-text-key="architecture.text.031" fill="var(--ink-55)" font-family="var(--mono)" font-size="var(--type-meta)" letter-spacing="1.5" x="604" y="698" data-theme-type-role="en-bold" data-theme-type-base-role="body" data-theme-language="en">GPU POOL</text><text data-vnext-fit-box="147,239,1773,774" data-vnext-text-key="architecture.text.032" fill="var(--ink)" font-family="var(--sans)" font-size="var(--type-body-small)" font-weight="300" x="604" y="724" data-theme-type-role="body" data-theme-type-base-role="body" data-theme-language="zh">&#x7b97;&#x529b;&#x96c6;&#x7fa4;</text><line stroke="var(--ink-80)" stroke-width="1.3" x1="995" x2="995" y1="726" y2="702"/><line stroke="var(--ink-80)" stroke-width="1.2" x1="995" x2="973" y1="702" y2="688"/><line stroke="var(--ink-80)" stroke-width="1.2" x1="995" x2="995" y1="702" y2="684"/><line stroke="var(--ink-80)" stroke-width="1.2" x1="995" x2="1017" y1="702" y2="688"/><circle cx="995" cy="728" fill="none" r="5" stroke="var(--ink-80)" stroke-width="1"/><circle cx="995" cy="728" fill="var(--ink)" r="1.8"/><circle cx="971" cy="687" fill="none" r="5" stroke="var(--ink-80)" stroke-width="1"/><circle cx="971" cy="687" fill="var(--ink)" r="1.8"/><circle cx="995" cy="682" fill="none" r="5" stroke="var(--ink-80)" stroke-width="1"/><circle cx="995" cy="682" fill="var(--ink)" r="1.8"/><circle cx="1019" cy="687" fill="none" r="5" stroke="var(--ink-80)" stroke-width="1"/><circle cx="1019" cy="687" fill="var(--ink)" r="1.8"/><text data-vnext-fit-box="147,239,1773,774" data-vnext-text-key="architecture.text.033" fill="var(--ink-55)" font-family="var(--mono)" font-size="var(--type-meta)" letter-spacing="1.5" x="1049" y="698" data-theme-type-role="en-bold" data-theme-type-base-role="body" data-theme-language="en">GATEWAY</text><text data-vnext-fit-box="147,239,1773,774" data-vnext-text-key="architecture.text.034" fill="var(--ink)" font-family="var(--sans)" font-size="var(--type-body-small)" font-weight="300" x="1049" y="724" data-theme-type-role="body" data-theme-type-base-role="body" data-theme-language="zh">&#x7f51;&#x5173;</text><rect fill="none" height="20" opacity="1" stroke="var(--ink-80)" stroke-dasharray="none" stroke-width="1.1" width="20" x="1416.5" y="678.5"/><rect fill="none" height="20" opacity="1" stroke="var(--ink-80)" stroke-dasharray="none" stroke-width="1.1" width="20" x="1443.5" y="678.5"/><rect fill="none" height="20" opacity="1" stroke="var(--ink-80)" stroke-dasharray="none" stroke-width="1.1" width="20" x="1416.5" y="705.5"/><rect fill="none" height="20" opacity="0.45" stroke="var(--ink-80)" stroke-dasharray="3 3" stroke-width="1.1" width="20" x="1443.5" y="705.5"/><line opacity="0.4" stroke="var(--ink)" stroke-width="0.7" x1="1426.5" x2="1453.5" y1="702" y2="702"/><line opacity="0.4" stroke="var(--ink)" stroke-width="0.7" x1="1440" x2="1440" y1="688.5" y2="715.5"/><text data-vnext-fit-box="147,239,1773,774" data-vnext-text-key="architecture.text.035" fill="var(--ink-55)" font-family="var(--mono)" font-size="var(--type-meta)" letter-spacing="1.5" x="1494" y="698" data-theme-type-role="en-bold" data-theme-type-base-role="body" data-theme-language="en">MONITOR</text><text data-vnext-fit-box="147,239,1773,774" data-vnext-text-key="architecture.text.036" fill="var(--ink)" font-family="var(--sans)" font-size="var(--type-body-small)" font-weight="300" x="1494" y="724" data-theme-type-role="body" data-theme-type-base-role="body" data-theme-language="zh">&#x76d1;&#x63a7;&#x544a;&#x8b66;</text></g></g></g>
+</svg>
+<div class="caption" data-vnext-claim-key="claim.text.001" data-vnext-fit-box="0,0,1920,1080" data-theme-furniture-source="wise-ppt-layout-theme-bindings@3" data-theme-furniture-role="takeaway" data-theme-type-role="bottom-takeaway" data-theme-type-base-role="bottom-takeaway" data-theme-color-role="primary" data-theme-color-alpha="1" data-theme-language="zh">&#x5e94;&#x7528;&#x3001;&#x6a21;&#x578b;&#x3001;&#x6570;&#x636e;&#x4e0e;&#x57fa;&#x7840;&#x8bbe;&#x65bd;&#x56db;&#x5c42;&#x76f8;&#x4e92;&#x4f9d;&#x8d56;&#xff0c;&#x4ea7;&#x54c1;&#x95ee;&#x9898;&#x5f80;&#x5f80;&#x6765;&#x81ea;<span id="focus-caption" data-theme-emphasis-source="wise-ppt-layout-theme-bindings@3" data-theme-emphasis-members="[{&quot;role&quot;:&quot;label&quot;,&quot;target_id&quot;:&quot;focus.key-layer&quot;,&quot;treatment&quot;:&quot;focus.color&quot;}]" data-theme-type-role="bottom-takeaway" data-theme-type-base-role="bottom-takeaway" data-theme-language="zh">&#x8de8;&#x5c42;&#x65ad;&#x70b9;</span>&#x3002;</div>
 </div>
-
-<script src="../../../../../themes/packages/paper-ink/assets/particles.js"></script>
-<script>
-var NS = 'http://www.w3.org/2000/svg';
-var INK = 'var(--xp-ink)', INK45 = 'rgba(26,26,26,.45)', INK55 = 'rgba(26,26,26,.55)', INK80 = 'rgba(26,26,26,.8)';
-var TOP = 'var(--xp-top)', PAPER = 'var(--xp-paper)', ACCENT = 'var(--xp-accent)';
-var MONO = 'var(--mono)', SANS = 'var(--sans)', OSWALD = "'Oswald Replica', 'Arial Narrow', sans-serif", SERIF = 'var(--xp-serif)';
-var G = document.getElementById('draw');
-function el(tag, attrs, parent) { var e = document.createElementNS(NS, tag); Object.keys(attrs || {}).forEach(function (k) { e.setAttribute(k, attrs[k]); }); (parent || G).appendChild(e); return e; }
-function txt(x, y, str, attrs, parent) { var t = el('text', Object.assign({ x: x, y: y, fill: INK }, attrs || {}), parent); t.textContent = str; return t; }
-
-/* 基线坐标：layout-h3.html（paper-ink.nested.architecture-stack），全部保留。 */
-G = el('g', { transform: 'translate(0 2.3)' });
-var BT = 240, BH = 132, BB = BT + BH * 4;
-
-/* —— 整表 = 一整块白前景；硬影只在强调态出现；层间用细线分 —— */
-el('rect', { x: 150, y: BT, width: 1620, height: BB - BT, fill: TOP, stroke: INK, 'stroke-width': 1.3, filter: 'url(#xp-hard)' });
-[BT + BH, BT + BH * 2, BT + BH * 3].forEach(function (y) {
-  el('line', { x1: 150, y1: y, x2: 1770, y2: y, stroke: INK, 'stroke-width': .6, opacity: .3 });
-});
-el('line', { x1: 310, y1: BT, x2: 310, y2: BB, stroke: INK, 'stroke-width': .6, opacity: .3 });
-
-function nodeDot(cx, cy, parent) {
-  el('circle', { cx: cx, cy: cy, r: 5, fill: 'none', stroke: INK80, 'stroke-width': 1 }, parent);
-  el('circle', { cx: cx, cy: cy, r: 1.8, fill: INK }, parent);
-}
-function gSocket(cx, cy, parent) {
-  el('rect', { x: cx - 30, y: cy - 22, width: 60, height: 36, rx: 8, ry: 8, fill: 'none', stroke: INK80, 'stroke-width': 1.2 }, parent);
-  el('path', { d: 'M ' + (cx - 8) + ' ' + (cy + 14) + ' L ' + (cx - 14) + ' ' + (cy + 26) + ' L ' + (cx + 2) + ' ' + (cy + 14), fill: 'none', stroke: INK80, 'stroke-width': 1.2, 'stroke-linejoin': 'round' }, parent);
-  [-12, 0, 12].forEach(function (dx) { el('circle', { cx: cx + dx, cy: cy - 4, r: 2.2, fill: INK }, parent); });
-}
-function gPlug(cx, cy, parent) {
-  el('rect', { x: cx - 26, y: cy - 22, width: 52, height: 44, rx: 3, ry: 3, fill: 'none', stroke: INK80, 'stroke-width': 1.2 }, parent);
-  el('line', { x1: cx - 26, y1: cy - 10, x2: cx + 26, y2: cy - 10, stroke: INK, 'stroke-width': .7, opacity: .45 }, parent);
-  el('circle', { cx: cx - 20, cy: cy - 16, r: 1.8, fill: INK }, parent);
-  el('circle', { cx: cx - 13, cy: cy - 16, r: 1.8, fill: 'none', stroke: INK, 'stroke-width': .7, opacity: .5 }, parent);
-  [-6, 8].forEach(function (dy) { [-12, 6].forEach(function (dx) { el('rect', { x: cx + dx, y: cy + dy, width: 12, height: 10, fill: 'none', stroke: INK, 'stroke-width': .8, opacity: .7 }, parent); }); });
-}
-function gAntenna(cx, cy, parent) {
-  el('line', { x1: cx, y1: cy + 24, x2: cx, y2: cy, stroke: INK80, 'stroke-width': 1.3 }, parent);
-  el('line', { x1: cx, y1: cy, x2: cx - 22, y2: cy - 14, stroke: INK80, 'stroke-width': 1.2 }, parent);
-  el('line', { x1: cx, y1: cy, x2: cx, y2: cy - 18, stroke: INK80, 'stroke-width': 1.2 }, parent);
-  el('line', { x1: cx, y1: cy, x2: cx + 22, y2: cy - 14, stroke: INK80, 'stroke-width': 1.2 }, parent);
-  nodeDot(cx, cy + 26, parent); nodeDot(cx - 24, cy - 15, parent); nodeDot(cx, cy - 20, parent); nodeDot(cx + 24, cy - 15, parent);
-}
-function gGear(cx, cy, parent) {
-  el('circle', { cx: cx, cy: cy, r: 22, fill: 'none', stroke: INK80, 'stroke-width': 1.3 }, parent);
-  el('circle', { cx: cx, cy: cy, r: 7, fill: 'none', stroke: INK80, 'stroke-width': 1.1 }, parent);
-  for (var a = 0; a < 8; a++) { var t = a * Math.PI / 4; el('line', { x1: cx + Math.cos(t) * 22, y1: cy + Math.sin(t) * 22, x2: cx + Math.cos(t) * 29, y2: cy + Math.sin(t) * 29, stroke: INK80, 'stroke-width': 1.6 }, parent); }
-}
-function gDial(cx, cy, parent) {
-  el('rect', { x: cx - 28, y: cy - 20, width: 26, height: 34, fill: 'none', stroke: INK80, 'stroke-width': 1.2 }, parent);
-  el('line', { x1: cx - 23, y1: cy - 12, x2: cx - 7, y2: cy - 12, stroke: INK, 'stroke-width': .8, opacity: .6 }, parent);
-  el('line', { x1: cx - 23, y1: cy - 5, x2: cx - 7, y2: cy - 5, stroke: INK, 'stroke-width': .8, opacity: .6 }, parent);
-  el('line', { x1: cx - 23, y1: cy + 2, x2: cx - 12, y2: cy + 2, stroke: INK, 'stroke-width': .8, opacity: .6 }, parent);
-  el('circle', { cx: cx + 12, cy: cy - 2, r: 11, fill: 'none', stroke: INK80, 'stroke-width': 1.3 }, parent);
-  el('line', { x1: cx + 20, y1: cy + 6, x2: cx + 28, y2: cy + 14, stroke: INK80, 'stroke-width': 1.8, 'stroke-linecap': 'round' }, parent);
-}
-function gRoute(cx, cy, parent) {
-  nodeDot(cx, cy, parent);
-  [[-26, -14], [26, -14], [-26, 16], [26, 16]].forEach(function (p) {
-    el('line', { x1: cx, y1: cy, x2: cx + p[0], y2: cy + p[1], stroke: INK80, 'stroke-width': 1.1 }, parent);
-    nodeDot(cx + p[0], cy + p[1], parent);
-  });
-  el('line', { x1: cx - 26, y1: cy - 14, x2: cx + 26, y2: cy - 14, stroke: INK, 'stroke-width': .6, opacity: .35, 'stroke-dasharray': '3 4' }, parent);
-  el('line', { x1: cx - 26, y1: cy + 16, x2: cx + 26, y2: cy + 16, stroke: INK, 'stroke-width': .6, opacity: .35, 'stroke-dasharray': '3 4' }, parent);
-}
-function gCylinder(cx, cy, w, h, parent) {
-  el('ellipse', { cx: cx, cy: cy - h / 2, rx: w / 2, ry: 8, fill: 'none', stroke: INK80, 'stroke-width': 1.2 }, parent);
-  el('line', { x1: cx - w / 2, y1: cy - h / 2, x2: cx - w / 2, y2: cy + h / 2, stroke: INK80, 'stroke-width': 1.2 }, parent);
-  el('line', { x1: cx + w / 2, y1: cy - h / 2, x2: cx + w / 2, y2: cy + h / 2, stroke: INK80, 'stroke-width': 1.2 }, parent);
-  el('path', { d: 'M ' + (cx - w / 2) + ' ' + (cy + h / 2) + ' A ' + (w / 2) + ' 8 0 0 0 ' + (cx + w / 2) + ' ' + (cy + h / 2), fill: 'none', stroke: INK80, 'stroke-width': 1.2 }, parent);
-}
-function gDisks(cx, cy, parent) {
-  el('path', { d: 'M ' + (cx - 2) + ' ' + (cy - 18) + ' C ' + (cx - 14) + ' ' + (cy - 22) + ', ' + (cx - 30) + ' ' + (cy - 20) + ', ' + (cx - 30) + ' ' + (cy - 14) + ' L ' + (cx - 30) + ' ' + (cy + 16) + ' C ' + (cx - 30) + ' ' + (cy + 22) + ', ' + (cx - 14) + ' ' + (cy + 24) + ', ' + (cx - 2) + ' ' + (cy + 20), fill: 'none', stroke: INK80, 'stroke-width': 1.2, 'stroke-linejoin': 'round' }, parent);
-  el('path', { d: 'M ' + (cx + 2) + ' ' + (cy - 18) + ' C ' + (cx + 14) + ' ' + (cy - 22) + ', ' + (cx + 30) + ' ' + (cy - 20) + ', ' + (cx + 30) + ' ' + (cy - 14) + ' L ' + (cx + 30) + ' ' + (cy + 16) + ' C ' + (cx + 30) + ' ' + (cy + 22) + ', ' + (cx + 14) + ' ' + (cy + 24) + ', ' + (cx + 2) + ' ' + (cy + 20), fill: 'none', stroke: INK80, 'stroke-width': 1.2, 'stroke-linejoin': 'round' }, parent);
-  el('line', { x1: cx, y1: cy - 18, x2: cx, y2: cy + 20, stroke: INK80, 'stroke-width': 1, opacity: .5 }, parent);
-  [-20, -10, 0, 10].forEach(function (dy) {
-    el('line', { x1: cx - 25, y1: cy + dy, x2: cx - 7, y2: cy + dy, stroke: INK, 'stroke-width': .6, opacity: .5 }, parent);
-    el('line', { x1: cx + 7, y1: cy + dy, x2: cx + 25, y2: cy + dy, stroke: INK, 'stroke-width': .6, opacity: .5 }, parent);
-  });
-}
-function gChip(cx, cy, parent) {
-  var r = 22;
-  el('path', { d: 'M ' + (cx + r) + ' ' + (cy - r * .4) + ' A ' + r + ' ' + r + ' 0 1 1 ' + (cx - r * .7) + ' ' + (cy - r * .7), fill: 'none', stroke: INK80, 'stroke-width': 1.4 }, parent);
-  el('path', { d: 'M ' + (cx - r) + ' ' + (cy + r * .4) + ' A ' + r + ' ' + r + ' 0 1 1 ' + (cx + r * .7) + ' ' + (cy + r * .7), fill: 'none', stroke: INK80, 'stroke-width': 1.4 }, parent);
-  el('path', { d: 'M ' + (cx + r) + ' ' + (cy - r * .4) + ' L ' + (cx + r + 5) + ' ' + (cy - r * .4 - 6) + ' L ' + (cx + r - 6) + ' ' + (cy - r * .4 - 3), fill: 'none', stroke: INK80, 'stroke-width': 1.4, 'stroke-linejoin': 'round', 'stroke-linecap': 'round' }, parent);
-  el('path', { d: 'M ' + (cx - r) + ' ' + (cy + r * .4) + ' L ' + (cx - r - 5) + ' ' + (cy + r * .4 + 6) + ' L ' + (cx - r + 6) + ' ' + (cy + r * .4 + 3), fill: 'none', stroke: INK80, 'stroke-width': 1.4, 'stroke-linejoin': 'round', 'stroke-linecap': 'round' }, parent);
-}
-function gScope(cx, cy, parent) {
-  var s = 14, gap = 4;
-  for (var row = 0; row < 3; row++) for (var col = 0; col < 3; col++) {
-    var x = cx - (s * 3 + gap * 2) / 2 + col * (s + gap), y = cy - (s * 3 + gap * 2) / 2 + row * (s + gap);
-    var lit = (row + col) % 2 === 0;
-    el('rect', { x: x, y: y, width: s, height: s, fill: 'none', stroke: INK80, 'stroke-width': 1.1, opacity: lit ? 1 : .5 }, parent);
-    if (lit) el('rect', { x: x + 3, y: y + 3, width: s - 6, height: s - 6, fill: 'none', stroke: INK, 'stroke-width': .6, opacity: .5 }, parent);
-  }
-}
-function gCluster(cx, cy, parent) {
-  var s = 20, gap = 7;
-  [[-1, -1], [1, -1], [-1, 1], [1, 1]].forEach(function (p, i) {
-    var x = cx + p[0] * (s / 2 + gap / 2) - s / 2, y = cy + p[1] * (s / 2 + gap / 2) - s / 2;
-    el('rect', { x: x, y: y, width: s, height: s, fill: 'none', stroke: INK80, 'stroke-width': 1.1, opacity: i === 3 ? .45 : 1, 'stroke-dasharray': i === 3 ? '3 3' : 'none' }, parent);
-  });
-  el('line', { x1: cx - s - gap / 2 + 10, y1: cy, x2: cx + s + gap / 2 - 10, y2: cy, stroke: INK, 'stroke-width': .7, opacity: .4 }, parent);
-  el('line', { x1: cx, y1: cy - s - gap / 2 + 10, x2: cx, y2: cy + s + gap / 2 - 10, stroke: INK, 'stroke-width': .7, opacity: .4 }, parent);
-}
-
-/* —— 层定义：四层等权；L1–L4 承担默认主题身份，L2 / MODEL 不承担强调 —— */
-var layers = [
-  { no: 'L1', cn: '应用层', en: 'APPLICATION', items: [
-    { g: gSocket, en: 'CHAT', cn: '对话界面' },
-    { g: gPlug, en: 'ASSIST', cn: '助手面板' },
-    { g: gAntenna, en: 'API HUB', cn: '开放接口' } ] },
-  { no: 'L2', cn: '模型层', en: 'MODEL', items: [
-    { g: gGear, en: 'LLM', cn: '大语言模型' },
-    { g: gDial, en: 'RAG', cn: '检索增强' },
-    { g: gRoute, en: 'AGENT', cn: '智能体' } ] },
-  { no: 'L3', cn: '数据层', en: 'DATA', items: [
-    { g: function (cx, cy, p) { gCylinder(cx, cy, 46, 44, p); }, en: 'VEC DB', cn: '向量库' },
-    { g: gDisks, en: 'KNOWLEDGE', cn: '知识库' },
-    { g: gChip, en: 'FEEDBACK', cn: '反馈管线' } ] },
-  { no: 'L4', cn: '基础层', en: 'INFRA', items: [
-    { g: gScope, en: 'GPU POOL', cn: '算力集群' },
-    { g: gAntenna, en: 'GATEWAY', cn: '网关' },
-    { g: gCluster, en: 'MONITOR', cn: '监控告警' } ] }
-];
-
-var IXS = [620, 1065, 1510];
-layers.forEach(function (L, r) {
-  var midY = BT + r * BH + BH / 2;
-  /* 左列编号是主题身份；中文层名、英文层名与 MODEL 继续保持旧版中性层级。 */
-  txt(160, midY - 16, L.no, { class: 'h3-layer-code', 'font-family': MONO, 'font-weight': 700, 'font-size': 'var(--type-body)', 'letter-spacing': 2, fill: INK });
-  txt(160, midY + 12, L.cn, { 'font-family': SANS, 'font-weight': 300, 'font-size': 'var(--type-body)', fill: INK });
-  txt(160, midY + 34, L.en, { 'font-family': OSWALD, 'font-weight': 700, 'font-size': 'var(--type-micro-secondary)', 'letter-spacing': 2, fill: INK45 });
-  el('line', { x1: 160, y1: midY + 48, x2: 230, y2: midY + 48, stroke: INK, 'stroke-width': .6, opacity: .3 });
-  /* 带内能力件等权；层次只由图元自身的线宽和墨色浓淡表达。 */
-  var zone = el('g', {});
-  L.items.forEach(function (it, i) {
-    var cx = IXS[i];
-    it.g(cx - 70, midY, zone);
-    txt(cx - 16, midY - 4, it.en, { 'font-family': MONO, 'font-weight': 700, 'font-size': 'var(--type-meta)', 'letter-spacing': 1.5, fill: INK55 }, zone);
-    txt(cx - 16, midY + 22, it.cn, { 'font-family': SANS, 'font-weight': 300, 'font-size': 'var(--type-body-small)', fill: INK }, zone);
-  });
-});
-
-stageFit();
-</script>
-<script type="application/json" id="xp-surface-recipe">{"theme":"hermes-orange","color_name":"orange","layout_code":"h3","title":"layout-h3 · 分层架构堆栈 · AI 产品四层栈","layout":"paper-ink.nested.architecture-stack","page_role":"explain","canvas":{"token":"paper","value":"#f2efe9","reason":"恢复旧版米色纸面；四层架构表继续作为独立纯白前景面。"},"surface_profile":"approved-architecture-stack","surfaces":[{"role":"architecture-table","material":"top-white","fill":"#ffffff","stack":1,"shadow":"accent-hard"},{"role":"layer-structure-and-metadata","material":"ink-line","fill":"#1a1a1a","stack":2},{"role":"focus-marker","material":"accent","fill":"#d95e00","stack":3}],"accent":{"value":"#d95e00","semantic_channel":"默认主题身份落在 L1–L4；旧强调继续落在底部结论词“跨层断点”","furniture":"左上第一行 doc-kicker 固定墨黑，第二行 doc-title 使用当前主题色；folio 跟随元信息通道：墨色 45%（同英文章节标签），不使用主题色。","neutral_exceptions":["普通英文标签","轴名","层名","除 L1–L4 外的结构编号","MODEL","非当前数据"],"furniture_mode":"black-first-theme-second","folio_mode":"metadata-neutral"},"border_policy":"主体 1px 墨线；唯一焦点可用 2px 橙线，所有容器方角。","shadow_policy":"非强调态不绘制阴影；页面最终强调状态开启时，四层架构表才按既有几何绘制一次 10px 零模糊主题色 SVG 硬影；不得新增阴影或改变阴影几何。","noise_policy":"由主题统一提供唯一一层约 6% 黑色 fractal-noise；页面不得自带 noise 节点；浅色页 multiply，墨面可 overlay。","reference_evidence":{"file":"orange-h3.html","cards":["approved-current-render"],"rule":"米色纸面承托纯白架构表；L1–L4 是默认主题点缀；旧强调仅保留底部“跨层断点”和既有硬影。","user_feedback":"H3 默认色用旧版底色并给 L1–L4 上色；强调沿用旧版，L2、MODEL 都不要强调。"},"acceptance":["画布保持米色纸面，整块架构表保持纯白；默认无阴影，页面最终强调状态开启时仅绘制一个 10px 零模糊主题色硬影。","L1–L4 使用默认主题色；中文层名、L2、MODEL 保持墨色，英文层名使用中性弱墨。","唯一内容强调为底部结论词“跨层断点”。"],"status":"approved","surface_bindings":[],"surface_binding_reason":"custom-redraw 不加载共享 surface runtime；材料已在独立源码内显式实现。","theme_identity":[{"group_id":"identity.layer-codes","label":"L1–L4 层级编号","members":[{"selector":".h3-layer-code","treatment":"identity.text","expected_count":4}]}],"emphasis_targets":[{"target_id":"focus.key-layer","label":"分支 / 层级 / 局部","content_role":"已审核的页面焦点对象","reason_hint":"仅当该对象直接支撑本页 claim 时启用；不得为了配色而开启。","members":[{"selector":"[data-vnext-text-key=\"architecture.text.001\"]","role":"value","treatment":"focus.text","expected_count":1}]}],"sample_target_id":"focus.key-layer"}</script>
-<script src="../../catalog-surface.js" data-catalog-theme-surface="catalog-theme-recipes-v2"></script>
-<script src="../../catalog-typography.js" data-catalog-typography="brand-latin-numeric-oswald-v1"></script>
-<script data-xp-custom-page-ready="true">(function(){var r=document.documentElement,s=document.querySelector(".stage");function ready(){if(r.dataset.catalogSurfaceReady!=="true")return;r.dataset.xpRecipeReady="custom";r.dataset.xpRecipeStatus="approved";r.dataset.xpSurfaceProfile="approved-architecture-stack";r.dataset.xpCanvas="paper";r.dataset.xpTitleFurniture="black-first-theme-second";if(s){s.dataset.surfaceRebuild="custom-page-v4";s.dataset.surfaceFocusCount=String(document.querySelectorAll("[data-content-ref][data-emphasis-role]").length);}}var o=new MutationObserver(ready);o.observe(r,{attributes:true,attributeFilter:["data-catalog-surface-ready"]});ready();document.addEventListener("wise-ppt:semantic-keys-ready",function(){requestAnimationFrame(ready);});})();</script>
+<script>stageFit();</script>
 </body>
 </html>

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html data-theme-id="paper-ink" lang="zh-CN" data-runtime="wise-ppt-specimen" data-typography-mode="all-sans" data-page-id="gallery-ai-i2" data-page-role="explain" data-theme="paper-ink" data-layout="paper-ink.flow.known-unknown-chain" data-layout-source="gallery" data-emphasis-targets='[{"target_id":"focus.external-trace","members":[{"selector":"#i2-focus-external-trace","role":"annotation","treatment":"focus.color","expected_count":1}]}]' data-catalog-legacy-emphasis-profile="content-only" data-catalog-legacy-emphasis-members='[{"selector":".i2-unknown-frame","expected_count":4,"role":"outline"},{"selector":".i2-unknown-track","expected_count":5,"role":"outline"}]' data-catalog-legacy-emphasis-foreground-members='[]' data-catalog-legacy-emphasis-ref="sample.i2.colored-blackbox-segment" data-vnext-semantic-key-map='[]'>
+<html data-theme-id="paper-ink" lang="zh-CN" data-runtime="wise-ppt-specimen" data-typography-mode="all-sans" data-page-id="gallery-ai-i2" data-page-role="explain" data-theme="paper-ink" data-layout="paper-ink.flow.known-unknown-chain" data-layout-source="gallery" data-vnext-semantic-key-map='[]' data-emphasis-targets='[{"target_id":"focus.external-trace","members":[{"selector":"#i2-focus-external-trace","role":"annotation","treatment":"focus.color","expected_count":1}]}]' data-vnext-type-slot-map='[{"slot":"content-title","tag":"text","text":"prompt 已提交","occurrence":0},{"slot":"content-title","tag":"text","text":"答案已生成","occurrence":0}]'>
 <head>
 <meta charset="UTF-8">
 <title>layout-i2 · 虚实步骤串 · 大模型推理黑盒</title>
@@ -66,12 +66,12 @@ txt(960, 300, 'INVISIBLE · WHAT THE LLM DOES INSIDE', {'font-family':MONO, 'fon
 el('line', {x1:740, y1:316, x2:1180, y2:316, stroke:INK, 'stroke-width':.6, opacity:.3});
 
 /* ---------- 左：已知端点（实线气泡） ---------- */
-el('rect', {x:150, y:CY-64, width:330, height:128, rx:16, fill:'var(--paper-panel)', stroke:'var(--ink-55)', 'stroke-width':1.2});
+el('rect', {'data-vnext-visual-role':'i2.known-endpoint', x:150, y:CY-64, width:330, height:128, rx:16, fill:'var(--paper-panel)', stroke:'var(--ink-55)', 'stroke-width':1.2});
 txt(180, CY+8, 'prompt 已提交', {'font-family':SANS, 'font-weight':300, 'font-size':'var(--type-subheading)', fill:INK});
 txt(150, CY-90, '已知 · 输入', {'font-family':SANS, 'font-weight':300, 'font-size':'var(--type-body)', fill:INK45});
 
 /* ---------- 右：已知端点（实线气泡） ---------- */
-el('rect', {x:1440, y:CY-64, width:330, height:128, rx:16, fill:'var(--paper-panel)', stroke:'var(--ink-55)', 'stroke-width':1.2});
+el('rect', {'data-vnext-visual-role':'i2.known-endpoint', x:1440, y:CY-64, width:330, height:128, rx:16, fill:'var(--paper-panel)', stroke:'var(--ink-55)', 'stroke-width':1.2});
 txt(1470, CY+8, '答案已生成', {'font-family':SANS, 'font-weight':300, 'font-size':'var(--type-subheading)', fill:INK});
 txt(1440, CY-90, '已知 · 输出', {'font-family':SANS, 'font-weight':300, 'font-size':'var(--type-body)', fill:INK45});
 

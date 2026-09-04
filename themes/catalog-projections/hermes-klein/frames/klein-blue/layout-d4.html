@@ -1,158 +1,51 @@
 <!DOCTYPE html>
-<html lang="zh-CN" data-runtime="wise-ppt-specimen" data-typography-mode="all-sans" data-wise-catalog-fonts="true" data-page-id="gallery-ai-d4" data-catalog-source-marker="orange" data-page-role="orient" data-theme="paper-ink" data-layout="paper-ink.scaffold.agenda" data-layout-source="gallery" data-emphasis-targets="[]" data-vnext-semantic-key-map="[]" data-theme-id="klein-blue" data-surface-source="catalog-theme-recipes-v2" data-xp-recipe-id="klein-blue:d4" data-xp-surface-profile="editorial-specimen" data-xp-recipe-status="recipe-ready" data-xp-frame-kind="custom-redraw">
+<html lang="zh-CN" data-runtime="wise-ppt-specimen" data-theme-id="klein-blue" data-typography-mode="mixed" data-wise-catalog-fonts="true" data-page-id="gallery-ai-d4" data-page-role="agenda" data-page-kind="nonrelationship" data-layout-id="wise-ppt.layout.nonrelationship.D4" data-layout-code="D4" data-layout-source="canonical-seed" data-layout-seed-sha256="0ba21baecb0799729bb66d3abd25e890a9e5a10b0dd83d3b3ad25f760e2b9f49" data-layout-structure-sha256="54c1ac3306cf9f6667029acafc17d53f10ff7f278be7ecf023d6ccab935f1fcb" data-layout-visual-plan="0a5be3602a0599c90a85e6d7bace71f80797c8eed06db35e03c560689fc128b8" data-layout-visual-materialization="321789b0fdc4605351b54e13428d381a25abc532770323308c554e01e4e182aa" data-resolved-theme-sha256="1f9ebea0e4bc84cd589274859d82014d71e42ea9c8055699808bbe7bc9298fe2" data-layout-visual-source="wise-ppt-layout-theme-bindings@3" data-catalog-frame-id="klein-blue:d4" data-catalog-frame-ready="true">
 <head>
 <meta charset="UTF-8">
-<title>layout-d4 · 目录导航页 · AI Engineering</title>
+<title>layout-d4 · 目录导航</title>
 <script src="../../../../../runtime/stage-fit.js"></script>
-<!--
-  纸墨线稿样张 · C5 目录导航页
-  @歪斯Wise「AI 工程化实战」分享
-  版式纪律（layouts C5）：编号纵列 + 行间细线；当前章一处高亮，其余 45%；右侧一处小线稿；无 FIG
--->
 <link rel="stylesheet" href="../../../../../themes/engine/assets/design-tokens.css">
 <link rel="stylesheet" href="../../../../../themes/packages/paper-ink/theme.css">
 <link rel="stylesheet" href="../../../../../themes/packages/hermes-orange/theme.css">
 <link rel="stylesheet" href="../../../../../themes/packages/klein-blue/theme.css">
 <link rel="stylesheet" href="../../../../../themes/engine/assets/catalog-fonts.css" data-wise-catalog-fonts="true">
 <link rel="stylesheet" href="../../../../../themes/engine/assets/slide-components.css">
+<link rel="stylesheet" href="../../../../../themes/engine/assets/component-theme.css">
+<link rel="stylesheet" href="../../../../../runtime/component-behavior.css">
+<link rel="stylesheet" href="../../../../../runtime/deck-component-contract.css">
 <link rel="stylesheet" href="../../../../../references/shell.css">
-<style>
-  svg.scene { position: absolute; inset: 0; z-index: 1; }
+<style data-layout-seed-css="0ba21baecb0799729bb66d3abd25e890a9e5a10b0dd83d3b3ad25f760e2b9f49">@scope (.slide[data-layout-id="wise-ppt.layout.nonrelationship.D4"]) {
+svg.scene { position: absolute; inset: 0; z-index: 1; }
+  .doc.tl, .folio { color: var(--ink-45); }
+}
 </style>
-
-<style data-catalog-source-style="v3-d4-orange">
-  @font-face {
-    font-family: 'Oswald Replica';
-    src: url('../../../../../themes/engine/fonts/catalog/Oswald-Bold-Latin.catalog.woff2') format('woff2');
-    font-style: normal;
-    font-weight: 700;
-    font-display: block;
-  }
-  :root,
-  :root[data-theme-id="klein-blue"] {
-    --xp-paper: #f2efe9;
-    --xp-outside: #e5e2dc;
-    --xp-ink: #1a1a1a;
-    --xp-accent: #002fa7;
-    --xp-serif: 'Han Serif Catalog', 'Han Serif', serif;
-    --wp-color-surface-canvas: var(--xp-paper);
-    --wp-color-surface-recessed: #e4dfd5;
-    --wp-color-surface-panel: rgba(255,255,255,.4);
-    --wp-color-primary: var(--xp-ink);
-    --wp-color-functional: var(--xp-ink);
-    --wp-color-body: rgba(26,26,26,.72);
-    --wp-color-metadata: rgba(26,26,26,.45);
-    --wp-color-divider: rgba(26,26,26,.2);
-    --wp-color-construction: rgba(26,26,26,.12);
-    --wp-color-focus: var(--xp-accent);
-    --wp-private-identity-accent: var(--xp-ink);
-  }
-  body { background: var(--xp-outside); }
-  #v3-d4-orange.stage { background: var(--xp-paper); }
-  #v3-d4-orange .doc.tl {
-    display: flex; flex-direction: column; gap: 8px;
-    width: max-content; white-space: normal;
-    line-height: 1; letter-spacing: 0; text-transform: none;
-  }
-  #v3-d4-orange .doc-kicker,
-  #v3-d4-orange .doc-title,
-  #v3-d4-orange .folio {
-    font-family: 'Oswald Replica', 'Han Sans Catalog', 'Han Sans', 'PingFang SC', sans-serif;
-    font-weight: 700;
-    line-height: 1.25;
-    letter-spacing: .15em;
-    text-transform: uppercase;
-  }
-  #v3-d4-orange .folio { color: rgba(26, 26, 26, .45); }
+<style data-layout-visual-plan="0a5be3602a0599c90a85e6d7bace71f80797c8eed06db35e03c560689fc128b8">/* wise-ppt-layout-visual-plan@1 · wise-ppt.layout.nonrelationship.D4 · 0a5be3602a0599c90a85e6d7bace71f80797c8eed06db35e03c560689fc128b8 */
+body.slide > .stage[data-theme-visual-plan="0a5be3602a0599c90a85e6d7bace71f80797c8eed06db35e03c560689fc128b8"], body.slide > .stage[data-theme-visual-plan="0a5be3602a0599c90a85e6d7bace71f80797c8eed06db35e03c560689fc128b8"] [data-component-theme-scope="true"] { --wp-layout-structural: var(--wp-color-primary); --wp-layout-functional: var(--wp-color-functional); --wp-color-body: color-mix(in srgb, var(--wp-color-primary) 70%, transparent); --wp-color-chart-label: color-mix(in srgb, var(--wp-color-primary) 55%, transparent); --wp-color-metadata: color-mix(in srgb, var(--wp-color-primary) 45%, transparent); --wp-color-divider: color-mix(in srgb, var(--wp-color-primary) 20%, transparent); --wp-color-construction: color-mix(in srgb, var(--wp-color-primary) 12%, transparent); --wp-private-ink-60: color-mix(in srgb, var(--wp-color-primary) 60%, transparent); --wp-private-ink-30: color-mix(in srgb, var(--wp-color-primary) 30%, transparent); --ink: var(--wp-color-primary); --ink-80: color-mix(in srgb, var(--wp-color-primary) 80%, transparent); --ink-70: color-mix(in srgb, var(--wp-color-primary) 70%, transparent); --ink-55: color-mix(in srgb, var(--wp-color-primary) 55%, transparent); --ink-45: color-mix(in srgb, var(--wp-color-primary) 45%, transparent); --ink-25: color-mix(in srgb, var(--wp-color-primary) 20%, transparent); --ink-12: color-mix(in srgb, var(--wp-color-primary) 12%, transparent); --wp-adapter-pi-ink: var(--wp-color-primary); --wp-adapter-pi-ink-80: color-mix(in srgb, var(--wp-color-primary) 80%, transparent); --wp-adapter-pi-ink-70: color-mix(in srgb, var(--wp-color-primary) 70%, transparent); --wp-adapter-pi-ink-60: color-mix(in srgb, var(--wp-color-primary) 60%, transparent); --wp-adapter-pi-ink-55: color-mix(in srgb, var(--wp-color-primary) 55%, transparent); --wp-adapter-pi-ink-45: color-mix(in srgb, var(--wp-color-primary) 45%, transparent); --wp-adapter-pi-ink-30: color-mix(in srgb, var(--wp-color-primary) 30%, transparent); --wp-adapter-atlas-ink: var(--wp-color-primary); --wp-adapter-atlas-ink-80: color-mix(in srgb, var(--wp-color-primary) 80%, transparent); --wp-adapter-atlas-ink-70: color-mix(in srgb, var(--wp-color-primary) 70%, transparent); --wp-adapter-atlas-ink-55: color-mix(in srgb, var(--wp-color-primary) 55%, transparent); --wp-adapter-atlas-ink-45: color-mix(in srgb, var(--wp-color-primary) 45%, transparent); --wp-adapter-atlas-ink-25: color-mix(in srgb, var(--wp-color-primary) 20%, transparent); --wp-adapter-atlas-ink-12: color-mix(in srgb, var(--wp-color-primary) 12%, transparent); --shadow-soft: none; --shadow-specimen: none; --data-ramp-1: color-mix(in srgb, var(--wp-color-primary) 8%, transparent); --wp-adapter-pi-data-1: color-mix(in srgb, var(--wp-color-primary) 8%, transparent); --wp-adapter-atlas-data-1: color-mix(in srgb, var(--wp-color-primary) 8%, transparent); --data-ramp-2: color-mix(in srgb, var(--wp-color-primary) 14%, transparent); --wp-adapter-pi-data-2: color-mix(in srgb, var(--wp-color-primary) 14%, transparent); --wp-adapter-atlas-data-2: color-mix(in srgb, var(--wp-color-primary) 14%, transparent); --data-ramp-3: color-mix(in srgb, var(--wp-color-primary) 22%, transparent); --wp-adapter-pi-data-3: color-mix(in srgb, var(--wp-color-primary) 22%, transparent); --wp-adapter-atlas-data-3: color-mix(in srgb, var(--wp-color-primary) 22%, transparent); --data-ramp-4: color-mix(in srgb, var(--wp-color-primary) 30%, transparent); --wp-adapter-pi-data-4: color-mix(in srgb, var(--wp-color-primary) 30%, transparent); --wp-adapter-atlas-data-4: color-mix(in srgb, var(--wp-color-primary) 30%, transparent); --data-ramp-5: color-mix(in srgb, var(--wp-color-primary) 40%, transparent); --wp-adapter-pi-data-5: color-mix(in srgb, var(--wp-color-primary) 40%, transparent); --wp-adapter-atlas-data-5: color-mix(in srgb, var(--wp-color-primary) 40%, transparent); --data-ramp-6: color-mix(in srgb, var(--wp-color-primary) 52%, transparent); --wp-adapter-pi-data-6: color-mix(in srgb, var(--wp-color-primary) 52%, transparent); --wp-adapter-atlas-data-6: color-mix(in srgb, var(--wp-color-primary) 52%, transparent); }
+:root[data-theme-id][data-typography-mode="mixed"] body.slide [data-theme-type-role="top-left-kicker"], :root[data-theme-id][data-typography-mode="mixed"] body.slide [data-theme-type-role="bottom-left-folio"] { font-family: var(--wp-font-oswald) !important; font-weight: 700 !important; }
+:root[data-theme-id][data-typography-mode="mixed"] body.slide [data-theme-type-role="bottom-takeaway"] { font-family: var(--wp-font-han-serif) !important; font-weight: 700 !important; }
+:root[data-theme-id][data-typography-mode="mixed"] body.slide [data-theme-type-role="zh-content-title"] { font-family: var(--wp-font-han-sans) !important; font-weight: 700 !important; }
+:root[data-theme-id][data-typography-mode="mixed"] body.slide :is([data-theme-type-role="body"], [data-theme-type-role="label"], [data-theme-type-role="number"], [data-theme-type-role="chart-text"]) { font-family: var(--wp-font-han-sans) !important; font-weight: 400 !important; }
+:root[data-theme-id][data-typography-mode="mixed"] body.slide [data-theme-language="en"]:not([data-theme-type-role="top-left-kicker"]):not([data-theme-type-role="bottom-left-folio"]):not([data-theme-type-role="bottom-takeaway"]) { font-family: var(--wp-font-oswald) !important; font-weight: 700 !important; }
+body.slide > .stage[data-theme-visual-plan="0a5be3602a0599c90a85e6d7bace71f80797c8eed06db35e03c560689fc128b8"] { background-color: var(--wp-color-surface-canvas) !important; }
+body.slide [data-theme-furniture-role="title"] { color: var(--wp-color-functional) !important; }
+body.slide svg [data-theme-furniture-role="title"] { fill: var(--wp-color-functional) !important; }
+body.slide [data-theme-furniture-role="folio"] { color: var(--wp-color-metadata) !important; }
+body.slide svg [data-theme-furniture-role="folio"] { fill: var(--wp-color-metadata) !important; }
+body.slide [data-theme-furniture-role="takeaway"] { color: var(--wp-color-primary) !important; }
+body.slide svg [data-theme-furniture-role="takeaway"] { fill: var(--wp-color-primary) !important; }
+body.slide [data-theme-furniture-role="title"]::first-line,
+body.slide [data-theme-furniture-role="title"] [data-theme-furniture-line="first"] { color: var(--wp-color-primary) !important; }
+body.slide [data-theme-furniture-role="title"] [data-theme-furniture-line="second"] { color: var(--wp-color-functional) !important; }
 </style>
-<link rel="stylesheet" href="../../catalog-surface.css" data-catalog-theme-surface="catalog-theme-recipes-v2">
-<link rel="stylesheet" href="../../title-furniture.css" data-catalog-title-furniture="black-first-theme-second-v1">
 </head>
-<body class="slide">
-<div id="v3-d4-orange" class="stage" data-template-id="D4" data-block-id="gallery-primary" data-renderer-kind="svg" data-component-source="native" data-component-id="native.paper-ink.scaffold.agenda.agenda" data-content-ref="example.d4" data-catalog-source-marker="page-recipe">
-  <div class="doc tl" data-template-part="support" data-template-slot="support" data-template-slot-kind="text"><span class="doc-kicker">PPT 标题</span><span class="doc-title">页面标题</span></div>
-  <div class="folio" data-template-part="folio">页码 / 总页数 — BY @歪斯Wise</div>
-
-  <svg class="scene" data-template-part="illustration" data-template-slot="illustration" data-template-slot-kind="illustration" width="1920" height="1080" viewBox="0 0 1920 1080">
-    <g id="draw"></g>
-  </svg>
-
+<body class="slide" data-page-id="gallery-ai-d4" data-page-role="agenda" data-page-kind="nonrelationship" data-layout-id="wise-ppt.layout.nonrelationship.D4" data-layout-code="D4" data-layout-source="canonical-seed" data-layout-seed-sha256="0ba21baecb0799729bb66d3abd25e890a9e5a10b0dd83d3b3ad25f760e2b9f49" data-layout-structure-sha256="54c1ac3306cf9f6667029acafc17d53f10ff7f278be7ecf023d6ccab935f1fcb" data-layout-visual-plan="0a5be3602a0599c90a85e6d7bace71f80797c8eed06db35e03c560689fc128b8" data-layout-visual-materialization="321789b0fdc4605351b54e13428d381a25abc532770323308c554e01e4e182aa" data-resolved-theme-sha256="1f9ebea0e4bc84cd589274859d82014d71e42ea9c8055699808bbe7bc9298fe2" data-layout-visual-source="wise-ppt-layout-theme-bindings@3">
+<div class="stage" data-block-id="gallery-primary" data-component-id="native.wise-ppt.scaffold.agenda.agenda" data-component-source="native" data-content-ref="example.d4" data-renderer-kind="svg" data-template-id="D4" data-theme-visual-source="wise-ppt-layout-theme-bindings@3" data-theme-visual-plan="0a5be3602a0599c90a85e6d7bace71f80797c8eed06db35e03c560689fc128b8" data-theme-canvas-material="paper" data-theme-default-color-base-role="primary" data-theme-typography-resolution="structure-slots-and-explicit-language" data-theme-emphasis-target-count="0" data-theme-emphasis-sample-target>
+<div class="doc tl" data-template-part="support" data-template-slot="support" data-template-slot-kind="text" data-vnext-fit-box="0,0,1920,1080" data-vnext-text-key="support.text.001" data-theme-furniture-source="wise-ppt-layout-theme-bindings@3" data-theme-furniture-role="title" data-theme-furniture-variant="primary-first-functional-second" data-theme-type-role="top-left-kicker" data-theme-type-base-role="top-left-kicker" data-theme-color-role="functional" data-theme-color-alpha="1" data-theme-title-first-color-role="primary" data-theme-title-second-color-role="functional" data-theme-language="zh">PPT &#x6807;&#x9898;<br>&#x9875;&#x9762;&#x6807;&#x9898;</div>
+<div class="folio" data-template-part="folio" data-theme-furniture-source="wise-ppt-layout-theme-bindings@3" data-theme-furniture-role="folio" data-theme-type-role="bottom-left-folio" data-theme-type-base-role="bottom-left-folio" data-theme-color-role="metadata" data-theme-color-alpha="1" data-theme-language="zh">&#x9875;&#x7801; / &#x603b;&#x9875;&#x6570; &#x2014; BY @&#x6b6a;&#x65af;Wise</div>
+<svg class="scene" data-template-part="illustration" data-template-slot="illustration" data-template-slot-kind="illustration" height="1080" viewBox="0 0 1920 1080" width="1920">
+<g id="draw"><g transform="translate(0 -16.2)"><text fill="var(--ink-45)" font-family="var(--mono)" font-size="var(--type-label)" letter-spacing="4" x="300" y="218" data-theme-type-role="en-bold" data-theme-type-base-role="body" data-theme-language="en">CONTENTS</text><line opacity="0.3" stroke="var(--ink)" stroke-width="0.6" x1="438" x2="560" y1="212" y2="212"/><g data-number-kind="circled" data-number-rings="1" data-number-role="sequence" data-number-state="outline"><circle cx="334" cy="292" data-number-part="disc" fill="none" opacity="0.45" r="26" stroke="var(--wp-color-primary)" stroke-width="1" data-theme-identity-source="wise-ppt-layout-theme-bindings@3" data-theme-identity-group="identity.toc-markers" data-theme-identity-treatment="identity.stroke"/><text data-number-part="label" data-text-kind="number" fill="var(--wp-color-primary)" font-family="var(--mono)" font-size="var(--type-subheading)" opacity="0.45" text-anchor="middle" x="334" y="300" data-theme-type-role="en-bold" data-theme-type-base-role="number" data-theme-language="en">1</text></g><text data-vnext-type-slot="content-title" fill="var(--ink)" font-family="var(--sans)" font-size="var(--type-subheading)" font-weight="300" opacity="0.45" x="416" y="294" data-theme-binding-source="wise-ppt-layout-theme-bindings@3" data-theme-type-binding-id="content-titles" data-theme-type-role="zh-content-title" data-theme-type-base-role="zh-content-title" data-theme-language="zh">&#x8ba4;&#x77e5;&#x5960;&#x57fa;</text><text fill="var(--wp-adapter-pi-ink-60)" font-family="var(--mono)" font-size="var(--type-meta)" letter-spacing="3" opacity="0.45" x="570" y="291" data-theme-type-role="en-bold" data-theme-type-base-role="body" data-theme-language="en">FOUNDATIONS</text><text fill="var(--ink-70)" font-family="var(--sans)" font-size="var(--type-body-small)" font-weight="300" opacity="0.45" x="416" y="330" data-theme-type-role="body" data-theme-type-base-role="body" data-theme-language="zh">AI &#x4ea7;&#x54c1;&#x7684;&#x56db;&#x7c7b;&#x89d2;&#x8272;&#x4e0e;&#x80fd;&#x529b;&#x8fb9;&#x754c;</text><text fill="color-mix(in srgb, var(--ink) 50%, transparent)" font-family="var(--mono)" font-size="var(--type-meta)" letter-spacing="2" opacity="0.45" text-anchor="end" x="1620" y="294" data-theme-type-role="en-bold" data-theme-type-base-role="body" data-theme-language="en">P.3</text><line opacity="0.22" stroke="var(--ink)" stroke-width="0.6" x1="300" x2="1620" y1="350" y2="350"/><g data-number-kind="circled" data-number-rings="2" data-number-role="sequence" data-number-state="filled"><circle cx="334" cy="418" data-number-part="disc" fill="var(--wp-color-primary)" opacity="1" r="26" data-theme-identity-source="wise-ppt-layout-theme-bindings@3" data-theme-identity-group="identity.toc-markers" data-theme-identity-treatment="identity.stroke"/><circle cx="334" cy="418" data-number-part="outer-ring" fill="none" opacity="0.35" r="31" stroke="var(--wp-color-primary)" stroke-width="0.6" data-theme-identity-source="wise-ppt-layout-theme-bindings@3" data-theme-identity-group="identity.toc-markers" data-theme-identity-treatment="identity.stroke"/><text data-number-part="label" data-text-kind="number" fill="var(--wp-color-surface-panel)" font-family="var(--mono)" font-size="var(--type-subheading)" text-anchor="middle" x="334" y="427" data-theme-type-role="en-bold" data-theme-type-base-role="number" data-theme-language="en">2</text></g><line stroke="var(--ink)" stroke-width="1.8" x1="378" x2="406" y1="418" y2="418"/><text data-vnext-type-slot="content-title" fill="var(--ink)" font-family="var(--sans)" font-size="var(--type-subheading)" font-weight="300" opacity="1" x="416" y="420" data-theme-binding-source="wise-ppt-layout-theme-bindings@3" data-theme-type-binding-id="content-titles" data-theme-type-role="zh-content-title" data-theme-type-base-role="zh-content-title" data-theme-language="zh">&#x5de5;&#x7a0b;&#x5316;&#x601d;&#x7ef4;</text><text fill="var(--wp-adapter-pi-ink-60)" font-family="var(--mono)" font-size="var(--type-meta)" letter-spacing="3" opacity="1" x="602" y="417" data-theme-type-role="en-bold" data-theme-type-base-role="body" data-theme-language="en">HARNESS ENG</text><text fill="var(--ink-70)" font-family="var(--sans)" font-size="var(--type-body-small)" font-weight="300" opacity="1" x="416" y="456" data-theme-type-role="body" data-theme-type-base-role="body" data-theme-language="zh">&#x4ece;&#x6a21;&#x578b;&#x5230;&#x4ea7;&#x54c1;&#x7684;&#x5de5;&#x7a0b;&#x9e3f;&#x6c9f;</text><text fill="color-mix(in srgb, var(--ink) 50%, transparent)" font-family="var(--mono)" font-size="var(--type-meta)" letter-spacing="2" opacity="1" text-anchor="end" x="1620" y="420" data-theme-type-role="en-bold" data-theme-type-base-role="body" data-theme-language="en">P.7</text><line opacity="0.22" stroke="var(--ink)" stroke-width="0.6" x1="300" x2="1620" y1="476" y2="476"/><g data-number-kind="circled" data-number-rings="1" data-number-role="sequence" data-number-state="outline"><circle cx="334" cy="544" data-number-part="disc" fill="none" opacity="0.45" r="26" stroke="var(--wp-color-primary)" stroke-width="1" data-theme-identity-source="wise-ppt-layout-theme-bindings@3" data-theme-identity-group="identity.toc-markers" data-theme-identity-treatment="identity.stroke"/><text data-number-part="label" data-text-kind="number" fill="var(--wp-color-primary)" font-family="var(--mono)" font-size="var(--type-subheading)" opacity="0.45" text-anchor="middle" x="334" y="552" data-theme-type-role="en-bold" data-theme-type-base-role="number" data-theme-language="en">3</text></g><text data-vnext-type-slot="content-title" fill="var(--ink)" font-family="var(--sans)" font-size="var(--type-subheading)" font-weight="300" opacity="0.45" x="416" y="546" data-theme-binding-source="wise-ppt-layout-theme-bindings@3" data-theme-type-binding-id="content-titles" data-theme-type-role="zh-content-title" data-theme-type-base-role="zh-content-title" data-theme-language="zh">Agent &#x5b9e;&#x6218;</text><text fill="var(--wp-adapter-pi-ink-60)" font-family="var(--mono)" font-size="var(--type-meta)" letter-spacing="3" opacity="0.45" x="698" y="543" data-theme-type-role="en-bold" data-theme-type-base-role="body" data-theme-language="en">AGENT IN ACTION</text><text fill="var(--ink-70)" font-family="var(--sans)" font-size="var(--type-body-small)" font-weight="300" opacity="0.45" x="416" y="582" data-theme-type-role="body" data-theme-type-base-role="body" data-theme-language="zh">&#x5de5;&#x5177;&#x8c03;&#x7528;&#x3001;&#x72b6;&#x6001;&#x673a;&#x4e0e;&#x5931;&#x8d25;&#x6062;&#x590d;</text><text fill="color-mix(in srgb, var(--ink) 50%, transparent)" font-family="var(--mono)" font-size="var(--type-meta)" letter-spacing="2" opacity="0.45" text-anchor="end" x="1620" y="546" data-theme-type-role="en-bold" data-theme-type-base-role="body" data-theme-language="en">P.11</text><line opacity="0.22" stroke="var(--ink)" stroke-width="0.6" x1="300" x2="1620" y1="602" y2="602"/><g data-number-kind="circled" data-number-rings="1" data-number-role="sequence" data-number-state="outline"><circle cx="334" cy="670" data-number-part="disc" fill="none" opacity="0.45" r="26" stroke="var(--wp-color-primary)" stroke-width="1" data-theme-identity-source="wise-ppt-layout-theme-bindings@3" data-theme-identity-group="identity.toc-markers" data-theme-identity-treatment="identity.stroke"/><text data-number-part="label" data-text-kind="number" fill="var(--wp-color-primary)" font-family="var(--mono)" font-size="var(--type-subheading)" opacity="0.45" text-anchor="middle" x="334" y="678" data-theme-type-role="en-bold" data-theme-type-base-role="number" data-theme-language="en">4</text></g><text data-vnext-type-slot="content-title" fill="var(--ink)" font-family="var(--sans)" font-size="var(--type-subheading)" font-weight="300" opacity="0.45" x="416" y="672" data-theme-binding-source="wise-ppt-layout-theme-bindings@3" data-theme-type-binding-id="content-titles" data-theme-type-role="zh-content-title" data-theme-type-base-role="zh-content-title" data-theme-language="zh">&#x8bc4;&#x6d4b;&#x4f53;&#x7cfb;</text><text fill="var(--wp-adapter-pi-ink-60)" font-family="var(--mono)" font-size="var(--type-meta)" letter-spacing="3" opacity="0.45" x="570" y="669" data-theme-type-role="en-bold" data-theme-type-base-role="body" data-theme-language="en">EVAL FRAMEWORK</text><text fill="var(--ink-70)" font-family="var(--sans)" font-size="var(--type-body-small)" font-weight="300" opacity="0.45" x="416" y="708" data-theme-type-role="body" data-theme-type-base-role="body" data-theme-language="zh">&#x79bb;&#x7ebf;&#x6307;&#x6807;&#x4e0e;&#x5728;&#x7ebf;&#x5c3a;&#x5b50;&#x7684;&#x53cc;&#x5c42;&#x62a4;&#x680f;</text><text fill="color-mix(in srgb, var(--ink) 50%, transparent)" font-family="var(--mono)" font-size="var(--type-meta)" letter-spacing="2" opacity="0.45" text-anchor="end" x="1620" y="672" data-theme-type-role="en-bold" data-theme-type-base-role="body" data-theme-language="en">P.15</text><line opacity="0.22" stroke="var(--ink)" stroke-width="0.6" x1="300" x2="1620" y1="728" y2="728"/><g data-number-kind="circled" data-number-rings="1" data-number-role="sequence" data-number-state="outline"><circle cx="334" cy="796" data-number-part="disc" fill="none" opacity="0.45" r="26" stroke="var(--wp-color-primary)" stroke-width="1" data-theme-identity-source="wise-ppt-layout-theme-bindings@3" data-theme-identity-group="identity.toc-markers" data-theme-identity-treatment="identity.stroke"/><text data-number-part="label" data-text-kind="number" fill="var(--wp-color-primary)" font-family="var(--mono)" font-size="var(--type-subheading)" opacity="0.45" text-anchor="middle" x="334" y="804" data-theme-type-role="en-bold" data-theme-type-base-role="number" data-theme-language="en">5</text></g><text data-vnext-type-slot="content-title" fill="var(--ink)" font-family="var(--sans)" font-size="var(--type-subheading)" font-weight="300" opacity="0.45" x="416" y="798" data-theme-binding-source="wise-ppt-layout-theme-bindings@3" data-theme-type-binding-id="content-titles" data-theme-type-role="zh-content-title" data-theme-type-base-role="zh-content-title" data-theme-language="zh">&#x843d;&#x5730;&#x8def;&#x5f84;</text><text fill="var(--wp-adapter-pi-ink-60)" font-family="var(--mono)" font-size="var(--type-meta)" letter-spacing="3" opacity="0.45" x="570" y="795" data-theme-type-role="en-bold" data-theme-type-base-role="body" data-theme-language="en">ROLLOUT ROADMAP</text><text fill="var(--ink-70)" font-family="var(--sans)" font-size="var(--type-body-small)" font-weight="300" opacity="0.45" x="416" y="834" data-theme-type-role="body" data-theme-type-base-role="body" data-theme-language="zh">&#x4ece; Demo &#x5230;&#x751f;&#x4ea7;&#x7684;&#x6e10;&#x8fdb;&#x4e0a;&#x7ebf;&#x8ba1;&#x5212;</text><text fill="color-mix(in srgb, var(--ink) 50%, transparent)" font-family="var(--mono)" font-size="var(--type-meta)" letter-spacing="2" opacity="0.45" text-anchor="end" x="1620" y="798" data-theme-type-role="en-bold" data-theme-type-base-role="body" data-theme-language="en">P.19</text><line opacity="0.22" stroke="var(--ink)" stroke-width="0.6" x1="300" x2="1620" y1="224" y2="224"/></g></g>
+</svg>
 </div>
-
-<script src="../../../../../themes/packages/paper-ink/assets/particles.js"></script>
-<script>
-var NS = 'http://www.w3.org/2000/svg';
-var INK = 'var(--ink)';
-var G = document.getElementById('draw');
-function el(tag, attrs, parent) {
-  var e = document.createElementNS(NS, tag);
-  for (var k in attrs) e.setAttribute(k, attrs[k]);
-  (parent || G).appendChild(e); return e;
-}
-function txt(x, y, str, attrs, parent) {
-  var t = el('text', Object.assign({x:x, y:y}, attrs||{}), parent);
-  t.textContent = str; return t;
-}
-var MONO = 'var(--mono)', SANS = 'var(--sans)';
-var ACCENT = 'var(--xp-accent)';
-var OSWALD = "'Oswald Replica', 'Arial Narrow', sans-serif";
-
-G = el('g', {transform:'translate(0 -16.2)'});
-
-/* ===== 页头：mono 小标 + 短横 ===== */
-txt(300, 218, 'CONTENTS', {'font-family':OSWALD, 'font-weight':700, 'font-size':'var(--type-label)', 'letter-spacing':4, fill:ACCENT});
-el('line', {x1:438, y1:212, x2:560, y2:212, stroke:INK, 'stroke-width':.6, opacity:.3});
-
-/* ===== 条目纵列：x300–1500，y250 起，行高 126 ===== */
-var rows = [
-  {no:'1', cn:'认知奠基', en:'FOUNDATIONS',       note:'AI 产品的四类角色与能力边界',       cur:false},
-  {no:'2', cn:'工程化思维', en:'HARNESS ENG',     note:'从模型到产品的工程鸿沟',            cur:true},
-  {no:'3', cn:'Agent 实战', en:'AGENT IN ACTION', note:'工具调用、状态机与失败恢复',        cur:false},
-  {no:'4', cn:'评测体系', en:'EVAL FRAMEWORK',    note:'离线指标与在线尺子的双层护栏',      cur:false},
-  {no:'5', cn:'落地路径', en:'ROLLOUT ROADMAP',   note:'从 Demo 到生产的渐进上线计划',      cur:false}
-];
-var X0 = 300, X1 = 1620, Y0 = 250, GAP = 126;
-
-rows.forEach(function(r, i){
-  var y = Y0 + i * GAP;                 /* 行基线带顶部 */
-  var op = r.cur ? 1 : .45;             /* 非当前章整行淡墨 */
-
-  /* 序号：当前章实心墨圆反白，其余空心单圈 */
-  var cx = X0 + 34, cy = y + 42;
-  var marker = el('g', {'data-number-kind':'circled', 'data-number-role':'sequence', 'data-number-state':r.cur?'filled':'outline', 'data-number-rings':r.cur?'2':'1'});
-  if (r.cur) {
-    el('circle', {cx:cx, cy:cy, r:26, fill:'var(--wp-color-focus)', opacity:op, 'data-number-part':'disc'}, marker);
-    el('circle', {cx:cx, cy:cy, r:31, fill:'none', stroke:'var(--wp-color-focus)', 'stroke-width':.6, opacity:.35, 'data-number-part':'outer-ring'}, marker);
-    txt(cx, cy+9, r.no, {'data-number-part':'label', 'data-text-kind':'number', 'font-family':MONO, 'font-size':'var(--type-subheading)', 'text-anchor':'middle', fill:'#ffffff'}, marker);
-    /* 高亮短横引出（全页唯一强调线） */
-    el('line', {x1:cx+44, y1:cy, x2:cx+72, y2:cy, stroke:ACCENT, 'stroke-width':1.8});
-  } else {
-    el('circle', {cx:cx, cy:cy, r:26, fill:'none', stroke:'var(--wp-color-primary)', 'stroke-width':1, opacity:op, 'data-number-part':'disc'}, marker);
-    txt(cx, cy+8, r.no, {'data-number-part':'label', 'data-text-kind':'number', 'font-family':MONO, 'font-size':'var(--type-subheading)', 'text-anchor':'middle', fill:'var(--wp-color-primary)', opacity:op}, marker);
-  }
-
-  /* 中文章题 + EN 副题 + 内容预告 */
-  var tx = X0 + 116;
-  txt(tx, cy+2, r.cn, {'font-family':SANS, 'font-weight':300, 'font-size':'var(--type-subheading)', fill:INK, opacity:op});
-  var cnw = r.cn.length * 32 + 26;
-  txt(tx+cnw, cy-1, r.en, {'font-family':MONO, 'font-size':'var(--type-meta)', 'letter-spacing':3, fill:'var(--wp-adapter-pi-ink-60)', opacity:op});
-  txt(tx, cy+38, r.note, {'font-family':SANS, 'font-weight':300, 'font-size':'var(--type-body-small)', fill:'var(--ink-70)', opacity:op});
-
-  /* 行右端 mono 页码锚 */
-  txt(X1, cy+2, 'P.' + (i*4+3), {'font-family':MONO, 'font-size':'var(--type-meta)', 'letter-spacing':2, 'text-anchor':'end', fill:'color-mix(in srgb, var(--ink) 50%, transparent)', opacity:op});
-
-  /* 行间 0.6px 分隔线 */
-  if (i < rows.length-1)
-    el('line', {x1:X0, y1:y+GAP-26, x2:X1, y2:y+GAP-26, stroke:INK, 'stroke-width':.6, opacity:.22});
-});
-/* 首行上方分隔线 */
-el('line', {x1:X0, y1:Y0-26, x2:X1, y2:Y0-26, stroke:INK, 'stroke-width':.6, opacity:.22});
-
-stageFit();
-</script>
-<script type="application/json" id="xp-surface-recipe">{"theme":"klein-blue","color_name":"blue","layout_code":"d4","title":"layout-d4 · 目录导航页 · AI Engineering","layout":"paper-ink.scaffold.agenda","page_role":"orient","canvas":{"token":"paper","value":"#f2efe9","reason":"custom-redraw 的已定设计意图；视觉由该页面源码独立实现，ledger 只如实登记。"},"surface_profile":"editorial-specimen","surfaces":[{"role":"diagram-plane","material":"paper-plane","fill":"#f2efe9","stack":1},{"role":"structure","material":"ink-line","fill":"#1a1a1a","stack":2},{"role":"focus-marker","material":"accent","fill":"#002fa7","stack":3}],"accent":{"value":"#002fa7","semantic_channel":"当前章节或当前目录项","furniture":"左上第一行 doc-kicker 固定墨黑，第二行 doc-title 使用当前主题色；folio 跟随元信息通道：墨色 45%（同英文章节标签），不使用主题色。","neutral_exceptions":["普通英文标签","轴名","层名","结构编号","MODEL","非当前数据"],"furniture_mode":"black-first-theme-second","folio_mode":"metadata-neutral"},"border_policy":"主体 1px 墨线；唯一焦点可用 2px 橙线，所有容器方角。","shadow_policy":"仅唯一被举起的主证据允许一次 10px 零模糊硬影；非强调态固定墨黑，页面语义焦点开启时使用当前主题色。","noise_policy":"由主题统一提供唯一一层约 6% 黑色 fractal-noise；页面不得自带 noise 节点；浅色页 multiply，墨面可 overlay。","reference_evidence":{"file":"所有文档都该重写一遍.html","cards":["card-2","card-5","card-7"],"rule":"纸面承载版式，只有被举起的文献、标本或终端使用不透明白面。"},"acceptance":["强调色只落一个语义通道；同一序列可重复，但不得扩散到结构元数据。","纯白只用于 top-white，不能替代默认纸面。","缩略图必须从该主题独立 frame 的实际渲染重建。"],"status":"recipe-ready","surface_bindings":[],"surface_binding_reason":"custom-redraw 不加载共享 surface runtime；材料已在独立源码内显式实现。","theme_identity":[{"group_id":"identity.toc-markers","label":"目录序号圆环","members":[{"selector":"[data-number-part=\"disc\"], [data-number-part=\"outer-ring\"]","treatment":"identity.stroke","expected_count":6}]}],"emphasis_targets":[],"sample_target_id":null}</script>
-<script src="../../catalog-surface.js" data-catalog-theme-surface="catalog-theme-recipes-v2"></script>
-<script src="../../catalog-typography.js" data-catalog-typography="brand-latin-numeric-oswald-v1"></script>
-<script data-xp-custom-page-ready="true">(function(){var r=document.documentElement,s=document.querySelector(".stage");function ready(){if(r.dataset.catalogSurfaceReady!=="true")return;r.dataset.xpRecipeReady="custom";r.dataset.xpRecipeStatus="recipe-ready";r.dataset.xpSurfaceProfile="editorial-specimen";r.dataset.xpCanvas="paper";r.dataset.xpTitleFurniture="black-first-theme-second";if(s){s.dataset.surfaceRebuild="custom-page-v4";s.dataset.surfaceFocusCount=String(document.querySelectorAll("[data-content-ref][data-emphasis-role]").length);}}var o=new MutationObserver(ready);o.observe(r,{attributes:true,attributeFilter:["data-catalog-surface-ready"]});ready();document.addEventListener("wise-ppt:semantic-keys-ready",function(){requestAnimationFrame(ready);});})();</script>
+<script>stageFit();</script>
 </body>
 </html>

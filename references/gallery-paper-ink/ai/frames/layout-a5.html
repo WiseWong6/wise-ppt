@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html data-theme-id="paper-ink" lang="zh-CN" data-runtime="wise-ppt-specimen" data-typography-mode="all-sans" data-page-id="gallery-ai-a5" data-page-role="prove" data-theme="paper-ink" data-layout="paper-ink.evidence.policy-columns" data-layout-source="gallery" data-emphasis-targets='[{"target_id":"focus.decisive-difference","members":[{"selector":"#a5-regulation-1","role":"value","treatment":"focus.text","expected_count":1},{"selector":"#a5-regulation-2","role":"value","treatment":"focus.text","expected_count":1}]}]' data-catalog-legacy-emphasis-profile="content-only" data-catalog-legacy-emphasis-members='[{"selector":"#a5-regulation-1","role":"value"},{"selector":"#a5-regulation-2","role":"value"}]' data-catalog-legacy-emphasis-foreground-members='[]' data-catalog-legacy-emphasis-ref="sample.a5.a5-focus" data-vnext-semantic-key-map='[]'>
+<html data-theme-id="paper-ink" lang="zh-CN" data-runtime="wise-ppt-specimen" data-typography-mode="all-sans" data-page-id="gallery-ai-a5" data-page-role="prove" data-theme="paper-ink" data-layout="paper-ink.evidence.policy-columns" data-layout-source="gallery" data-vnext-semantic-key-map='[]' data-emphasis-targets='[{"target_id":"focus.decisive-difference","members":[{"selector":"#a5-regulation-1","role":"value","treatment":"focus.text","expected_count":1},{"selector":"#a5-regulation-2","role":"value","treatment":"focus.text","expected_count":1}]}]' data-vnext-type-slot-map='[{"slot":"content-title","tag":"text","text":"数据与训练","occurrence":0},{"slot":"content-title","tag":"text","text":"服务提供","occurrence":0},{"slot":"content-title","tag":"text","text":"内容与安全","occurrence":0}]'>
 <head>
 <meta charset="UTF-8">
 <title>layout-a5 · 条文陈列页 · AI 使用合规规范</title>
@@ -76,8 +76,8 @@ var cols = [
 cols.forEach(function(c){
   txt(c.x, 246, c.en, {'font-family':MONO, 'font-size':'var(--type-meta)', 'letter-spacing':3, fill:INK45});
   txt(c.x, 296, c.cn, {id:c.focus?'sample-focus':'a5-column-'+c.x, 'font-family':SANS, 'font-weight':300, 'font-size':'var(--type-subheading)', fill:INK});
-  el('line', {x1:c.x, y1:316, x2:c.x+150, y2:316, stroke:INK, 'stroke-width':.8, opacity:.5});
-  el('line', {x1:c.x, y1:321, x2:c.x+64, y2:321, stroke:INK, 'stroke-width':.6, opacity:.25});
+  el('line', {'data-vnext-visual-role':'a5.column-title-rule', x1:c.x, y1:316, x2:c.x+150, y2:316, stroke:INK, 'stroke-width':2, opacity:1});
+  el('line', {'data-vnext-visual-role':'a5.column-title-subrule', x1:c.x, y1:321, x2:c.x+64, y2:321, stroke:INK, 'stroke-width':1, opacity:1});
 });
 
 /* ---------- 栏间细分隔（0.6px，在两栏内容间隙正中，高度不超栏高） ---------- */

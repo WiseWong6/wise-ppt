@@ -1,8 +1,8 @@
 <!DOCTYPE html>
-<html data-theme-id="klein-blue" lang="zh-CN" data-runtime="wise-ppt-specimen" data-typography-mode="all-sans" data-page-id="gallery-ai-u3" data-page-role="explain" data-theme="paper-ink" data-layout="paper-ink.causal.leverage-transform" data-layout-source="gallery" data-emphasis-targets="[{&quot;target_id&quot;:&quot;focus.productized-fulcrum&quot;,&quot;label&quot;:&quot;可复用的产品化支点&quot;,&quot;content_role&quot;:&quot;底部结论中的产品化支点&quot;,&quot;reason_hint&quot;:&quot;只给“可复用的产品化支点”上色，杠杆节点、横梁与支点保持默认色。&quot;,&quot;members&quot;:[{&quot;selector&quot;:&quot;#u3-focus-caption&quot;,&quot;role&quot;:&quot;label&quot;,&quot;treatment&quot;:&quot;focus.color&quot;,&quot;expected_count&quot;:1}]},{&quot;target_id&quot;:&quot;focus.lever-geometry&quot;,&quot;label&quot;:&quot;杠杆转化结构&quot;,&quot;content_role&quot;:&quot;杠杆两端节点、横梁与支点&quot;,&quot;reason_hint&quot;:&quot;当杠杆结构本身是论证对象时，才强化两端节点、横梁与支点。&quot;,&quot;members&quot;:[{&quot;selector&quot;:&quot;#lever-stock-node&quot;,&quot;role&quot;:&quot;symbol&quot;,&quot;treatment&quot;:&quot;focus.solid-reverse&quot;,&quot;paint&quot;:&quot;fill&quot;,&quot;expected_count&quot;:1},{&quot;selector&quot;:&quot;#lever-outcome-node&quot;,&quot;role&quot;:&quot;symbol&quot;,&quot;treatment&quot;:&quot;focus.solid-reverse&quot;,&quot;paint&quot;:&quot;fill&quot;,&quot;expected_count&quot;:1},{&quot;selector&quot;:&quot;#lever-beam&quot;,&quot;role&quot;:&quot;outline&quot;,&quot;treatment&quot;:&quot;focus.outline-depth&quot;,&quot;expected_count&quot;:1},{&quot;selector&quot;:&quot;#lever-pivot&quot;,&quot;role&quot;:&quot;outline&quot;,&quot;treatment&quot;:&quot;focus.outline-depth&quot;,&quot;expected_count&quot;:1}]}]" data-vnext-semantic-key-map="[]" data-catalog-legacy-emphasis-profile="content-only" data-catalog-legacy-emphasis-members="[{&quot;selector&quot;:&quot;#lever-stock-node&quot;,&quot;expected_count&quot;:1,&quot;role&quot;:&quot;symbol&quot;,&quot;paint&quot;:&quot;fill&quot;},{&quot;selector&quot;:&quot;#lever-outcome-node&quot;,&quot;expected_count&quot;:1,&quot;role&quot;:&quot;symbol&quot;,&quot;paint&quot;:&quot;fill&quot;},{&quot;selector&quot;:&quot;#lever-beam&quot;,&quot;expected_count&quot;:1,&quot;role&quot;:&quot;outline&quot;},{&quot;selector&quot;:&quot;#lever-pivot&quot;,&quot;expected_count&quot;:1,&quot;role&quot;:&quot;outline&quot;}]" data-catalog-legacy-emphasis-foreground-members="[]" data-catalog-legacy-emphasis-ref="sample.u3.lever-geometry-accent" data-wise-catalog-fonts="true" data-surface-source="catalog-theme-recipes-v2" data-xp-recipe-id="klein-blue:u3" data-xp-surface-profile="open-paper-diagram" data-xp-recipe-status="recipe-ready" data-xp-frame-kind="recipe-generated">
+<html lang="zh-CN" data-runtime="wise-ppt-specimen" data-theme-id="klein-blue" data-typography-mode="mixed" data-wise-catalog-fonts="true" data-page-id="gallery-ai-u3" data-page-role="explain" data-page-kind="relationship" data-layout-id="wise-ppt.layout.relationship.U3" data-layout-code="U3" data-layout-source="canonical-seed" data-layout-seed-sha256="af52df1200f9a4c9b025874fbb1b1163f211c655c5c0f47581de87a3db47d617" data-layout-structure-sha256="4e68ede9a5bb6b6aef832e78737a8ef932f053fe01f5d1f8c1ee373629baaae6" data-layout-visual-plan="a0471e7466b6f6df31df5813435fca1d89b375ebf893379b89774cec52dffbdd" data-layout-visual-materialization="239476ca08f0755b84f3230663abcca2a89d94e325613fe6cd586ab851db0d0d" data-resolved-theme-sha256="1f9ebea0e4bc84cd589274859d82014d71e42ea9c8055699808bbe7bc9298fe2" data-layout-visual-source="wise-ppt-layout-theme-bindings@3" data-catalog-frame-id="klein-blue:u3" data-catalog-frame-ready="true">
 <head>
 <meta charset="UTF-8">
-<title>layout-u3 · 杠杆转化 · 存量能力到增量收入</title>
+<title>layout-u3 · 杠杆转化</title>
 <script src="../../../../../runtime/stage-fit.js"></script>
 <link rel="stylesheet" href="../../../../../themes/engine/assets/design-tokens.css">
 <link rel="stylesheet" href="../../../../../themes/packages/paper-ink/theme.css">
@@ -10,47 +10,353 @@
 <link rel="stylesheet" href="../../../../../themes/packages/klein-blue/theme.css">
 <link rel="stylesheet" href="../../../../../themes/engine/assets/catalog-fonts.css" data-wise-catalog-fonts="true">
 <link rel="stylesheet" href="../../../../../themes/engine/assets/slide-components.css">
+<link rel="stylesheet" href="../../../../../themes/engine/assets/component-theme.css">
+<link rel="stylesheet" href="../../../../../runtime/component-behavior.css">
+<link rel="stylesheet" href="../../../../../runtime/deck-component-contract.css">
 <link rel="stylesheet" href="../../../../../references/shell.css">
-<style>
-  .lever-host{position:absolute;left:250px;top:158px;width:1420px;height:700px;z-index:1}
+<style data-layout-seed-css="af52df1200f9a4c9b025874fbb1b1163f211c655c5c0f47581de87a3db47d617">:root {
+  --pi-paper: var(--wp-adapter-pi-paper);
+  --pi-paper-deep: var(--wp-adapter-pi-paper-deep);
+  --pi-paper-panel: var(--wp-adapter-pi-paper-panel);
+  --pi-ink: var(--wp-adapter-pi-ink);
+  --pi-ink-80: var(--wp-adapter-pi-ink-80);
+  --pi-ink-70: var(--wp-adapter-pi-ink-70);
+  --pi-ink-60: var(--wp-adapter-pi-ink-60);
+  --pi-ink-55: var(--wp-adapter-pi-ink-55);
+  --pi-ink-45: var(--wp-adapter-pi-ink-45);
+  --pi-ink-30: var(--wp-adapter-pi-ink-30);
+  --pi-data-1: var(--wp-adapter-pi-data-1);
+  --pi-data-2: var(--wp-adapter-pi-data-2);
+  --pi-data-3: var(--wp-adapter-pi-data-3);
+  --pi-data-4: var(--wp-adapter-pi-data-4);
+  --pi-data-5: var(--wp-adapter-pi-data-5);
+  --pi-data-6: var(--wp-adapter-pi-data-6);
+  --pi-sans: var(--wp-adapter-pi-font-sans);
+  --pi-serif: var(--wp-adapter-pi-font-serif);
+  --pi-mono: var(--wp-adapter-pi-font-mono);
+  --pi-brush: var(--wp-adapter-pi-font-brush);
+}
+
+@scope (.slide[data-layout-id="wise-ppt.layout.relationship.U3"]) {
+.lever-host{position:absolute;left:250px;top:158px;width:1420px;height:700px;z-index:1}
   .lever-host>.pi-card{background:transparent}
   .caption{position:absolute;left:150px;right:150px;bottom:82px;text-align:center;font-family:var(--sans);font-size:var(--type-caption);letter-spacing:.035em;color:var(--ink);z-index:5}
+.pi-card {
+  width: 600px;
+  min-height: 600px;
+  background: var(--pi-paper);
+  color: var(--pi-ink);
+  font-family: var(--pi-sans);
+  overflow: hidden;
+  position: relative;
+}
+.pi-card > svg.pi-art {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+.pi-card text { user-select: none; }
+.pi-metric-strip {
+  box-sizing: border-box;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  align-items: stretch;
+  width: min(1050px, 100%);
+  min-height: 140px;
+  border-top: 1.3px solid var(--pi-ink-80);
+  border-bottom: .6px solid color-mix(in srgb, var(--pi-ink) 30%, transparent);
+}
+.pi-metric-strip [data-repeat-unit="metric"] {
+  box-sizing: border-box;
+  display: grid;
+  align-content: center;
+  justify-items: center;
+  min-width: 0;
+  padding: 14px 22px 12px;
+  text-align: center;
+}
+.pi-metric-strip [data-repeat-unit="metric"] + [data-repeat-unit="metric"] {
+  border-left: .6px solid color-mix(in srgb, var(--pi-ink) 30%, transparent);
+}
+.pi-metric-strip .pi-metric-value {
+  font-family: var(--pi-serif);
+  font-size: 42px;
+  font-weight: var(--pi-weight-strong);
+  line-height: 1;
+}
+.pi-metric-strip .pi-metric-label {
+  margin-top: 10px;
+  font-family: var(--pi-sans);
+  font-size: 13px;
+  font-weight: var(--pi-weight-regular);
+  line-height: 1.2;
+}
+.pi-infra-kicker {
+  color: var(--pi-ink-45);
+  font-family: var(--pi-mono);
+  font-size: 9px;
+  letter-spacing: 2.6px;
+}
+.pi-infra-strip {
+  box-sizing: border-box;
+  display: grid;
+  grid-template-rows: 34px 1fr;
+  width: 1050px;
+  min-height: 260px;
+  padding: 12px 18px 14px;
+  border: 1px dashed var(--pi-ink-45);
+}
+.pi-infra-head {
+  display: flex;
+  align-items: start;
+  justify-content: space-between;
+  gap: 20px;
+}
+.pi-infra-count {
+  color: var(--pi-ink-45);
+  font-family: var(--pi-mono);
+  font-size: 8px;
+  letter-spacing: 1.6px;
+}
+.pi-infra-items {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(135px, 1fr));
+  gap: 12px;
+  align-items: stretch;
+}
+.pi-infra-strip [data-repeat-unit="item"] {
+  box-sizing: border-box;
+  display: grid;
+  grid-template-columns: 24px minmax(0, 1fr);
+  align-items: center;
+  min-width: 0;
+  padding: 8px 12px;
+  border: .8px dashed color-mix(in srgb, var(--pi-ink) 52%, transparent);
+  background: color-mix(in srgb, var(--pi-paper-panel) 52%, transparent);
+}
+.pi-infra-code {
+  color: var(--pi-ink-45);
+  font-family: var(--pi-mono);
+  font-size: 8px;
+  letter-spacing: .8px;
+}
+.pi-infra-label {
+  min-width: 0;
+  overflow: hidden;
+  color: var(--pi-ink-70);
+  font-family: var(--pi-sans);
+  font-size: 11px;
+  font-weight: 300;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+/* #061 对话标本：照 A1 源版 HTML/CSS，不用 SVG 描边冒充圆角。
+   流式填充行为宿主（.pi-card 100%×100%），不自带固定宽高 */
+.pi-chat-specimen {
+  box-sizing: border-box;
+  width: 100%;
+  min-height: 0;
+  background: var(--pi-paper-panel);
+  border: 1px solid color-mix(in srgb, var(--pi-ink) 32%, transparent);
+  border-radius: 18px;
+  overflow: hidden;
+}
+.pi-chat-bar {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 16px 24px;
+  border-bottom: 1px solid color-mix(in srgb, var(--pi-ink) 25%, transparent);
+}
+.pi-chat-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  border: 1px solid color-mix(in srgb, var(--pi-ink) 30%, transparent);
+}
+.pi-chat-bar-title {
+  margin-left: 12px;
+  color: var(--pi-ink-45);
+  font-family: var(--pi-mono);
+  font-size: 13px;
+  letter-spacing: .25em;
+}
+.pi-chat-body { padding: 28px 32px 24px; }
+.pi-chat-msg {
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+  margin-bottom: 24px;
+}
+.pi-chat-msg:last-child { margin-bottom: 0; }
+.pi-chat-msg.is-user { flex-direction: row-reverse; }
+.pi-chat-avatar {
+  flex: none;
+  display: grid;
+  place-items: center;
+  width: 52px;
+  height: 52px;
+  border: 1px solid color-mix(in srgb, var(--pi-ink) 38%, transparent);
+  border-radius: 50%;
+  background: var(--pi-paper-panel);
+  font-family: var(--pi-sans);
+  font-size: 15px;
+  font-weight: 400;
+}
+.pi-chat-bub {
+  max-width: 740px;
+  padding: 16px 24px;
+  border: 1px solid color-mix(in srgb, var(--pi-ink) 38%, transparent);
+  border-radius: 16px;
+  font-family: var(--pi-sans);
+  font-size: 22px;
+  font-weight: 300;
+  line-height: 1.8;
+}
+.pi-chat-msg.is-user .pi-chat-bub {
+  border-bottom-right-radius: 4px;
+  background: var(--pi-paper-panel);
+  font-weight: 400;
+}
+.pi-chat-msg.is-ai .pi-chat-bub { border-bottom-left-radius: 4px; }
+.pi-chat-item {
+  display: flex;
+  gap: 12px;
+  margin-top: 8px;
+}
+.pi-chat-pt {
+  flex: none;
+  padding-top: 12px;
+  color: var(--pi-ink-45);
+  font-size: 16px;
+}
+.pi-chat-score {
+  font-family: var(--pi-mono);
+  font-size: 26px;
+  color: var(--pi-ink);
+}
+.pi-chat-note {
+  color: var(--pi-ink-45);
+  font-size: 18px;
+}
+.pi-chat-wrong {
+  position: relative;
+  display: inline-block;
+  font-weight: 400;
+}
+.pi-chat-wrong::before,
+.pi-chat-wrong::after {
+  content: '';
+  position: absolute;
+  pointer-events: none;
+  border: 1.1px solid var(--pi-ink);
+  border-radius: 50%;
+}
+.pi-chat-wrong::before {
+  inset: -4px -11px;
+  transform: rotate(-4deg);
+}
+.pi-chat-wrong::after {
+  inset: -6px -14px;
+  border-width: .7px;
+  opacity: .45;
+  transform: rotate(6deg);
+}
+.pi-chat-specimen[data-message-count="5"] .pi-chat-body,
+.pi-chat-specimen[data-message-count="6"] .pi-chat-body,
+.pi-chat-specimen[data-message-count="7"] .pi-chat-body,
+.pi-chat-specimen[data-message-count="8"] .pi-chat-body {
+  padding: 18px 24px;
+}
+.pi-chat-specimen[data-message-count="5"] .pi-chat-msg,
+.pi-chat-specimen[data-message-count="6"] .pi-chat-msg,
+.pi-chat-specimen[data-message-count="7"] .pi-chat-msg,
+.pi-chat-specimen[data-message-count="8"] .pi-chat-msg {
+  gap: 12px;
+  margin-bottom: 10px;
+}
+.pi-chat-specimen[data-message-count="5"] .pi-chat-avatar,
+.pi-chat-specimen[data-message-count="6"] .pi-chat-avatar,
+.pi-chat-specimen[data-message-count="7"] .pi-chat-avatar,
+.pi-chat-specimen[data-message-count="8"] .pi-chat-avatar {
+  width: 40px;
+  height: 40px;
+  font-size: 13px;
+}
+.pi-chat-specimen[data-message-count="5"] .pi-chat-bub,
+.pi-chat-specimen[data-message-count="6"] .pi-chat-bub,
+.pi-chat-specimen[data-message-count="7"] .pi-chat-bub,
+.pi-chat-specimen[data-message-count="8"] .pi-chat-bub {
+  padding: 9px 16px;
+  font-size: 18px;
+  line-height: 1.45;
+}
+}
 </style>
-<link rel="stylesheet" href="../../catalog-surface.css" data-catalog-theme-surface="catalog-theme-recipes-v2">
-<link rel="stylesheet" href="../../title-furniture.css" data-catalog-title-furniture="black-first-theme-second-v1">
+<style data-layout-visual-plan="a0471e7466b6f6df31df5813435fca1d89b375ebf893379b89774cec52dffbdd">/* wise-ppt-layout-visual-plan@1 · wise-ppt.layout.relationship.U3 · a0471e7466b6f6df31df5813435fca1d89b375ebf893379b89774cec52dffbdd */
+body.slide > .stage[data-theme-visual-plan="a0471e7466b6f6df31df5813435fca1d89b375ebf893379b89774cec52dffbdd"], body.slide > .stage[data-theme-visual-plan="a0471e7466b6f6df31df5813435fca1d89b375ebf893379b89774cec52dffbdd"] [data-component-theme-scope="true"] { --wp-layout-structural: var(--wp-color-primary); --wp-layout-functional: var(--wp-color-functional); --wp-color-body: color-mix(in srgb, var(--wp-color-primary) 70%, transparent); --wp-color-chart-label: color-mix(in srgb, var(--wp-color-primary) 55%, transparent); --wp-color-metadata: color-mix(in srgb, var(--wp-color-primary) 45%, transparent); --wp-color-divider: color-mix(in srgb, var(--wp-color-primary) 20%, transparent); --wp-color-construction: color-mix(in srgb, var(--wp-color-primary) 12%, transparent); --wp-private-ink-60: color-mix(in srgb, var(--wp-color-primary) 60%, transparent); --wp-private-ink-30: color-mix(in srgb, var(--wp-color-primary) 30%, transparent); --ink: var(--wp-color-primary); --ink-80: color-mix(in srgb, var(--wp-color-primary) 80%, transparent); --ink-70: color-mix(in srgb, var(--wp-color-primary) 70%, transparent); --ink-55: color-mix(in srgb, var(--wp-color-primary) 55%, transparent); --ink-45: color-mix(in srgb, var(--wp-color-primary) 45%, transparent); --ink-25: color-mix(in srgb, var(--wp-color-primary) 20%, transparent); --ink-12: color-mix(in srgb, var(--wp-color-primary) 12%, transparent); --wp-adapter-pi-ink: var(--wp-color-primary); --wp-adapter-pi-ink-80: color-mix(in srgb, var(--wp-color-primary) 80%, transparent); --wp-adapter-pi-ink-70: color-mix(in srgb, var(--wp-color-primary) 70%, transparent); --wp-adapter-pi-ink-60: color-mix(in srgb, var(--wp-color-primary) 60%, transparent); --wp-adapter-pi-ink-55: color-mix(in srgb, var(--wp-color-primary) 55%, transparent); --wp-adapter-pi-ink-45: color-mix(in srgb, var(--wp-color-primary) 45%, transparent); --wp-adapter-pi-ink-30: color-mix(in srgb, var(--wp-color-primary) 30%, transparent); --wp-adapter-atlas-ink: var(--wp-color-primary); --wp-adapter-atlas-ink-80: color-mix(in srgb, var(--wp-color-primary) 80%, transparent); --wp-adapter-atlas-ink-70: color-mix(in srgb, var(--wp-color-primary) 70%, transparent); --wp-adapter-atlas-ink-55: color-mix(in srgb, var(--wp-color-primary) 55%, transparent); --wp-adapter-atlas-ink-45: color-mix(in srgb, var(--wp-color-primary) 45%, transparent); --wp-adapter-atlas-ink-25: color-mix(in srgb, var(--wp-color-primary) 20%, transparent); --wp-adapter-atlas-ink-12: color-mix(in srgb, var(--wp-color-primary) 12%, transparent); --shadow-soft: none; --shadow-specimen: none; --data-ramp-1: color-mix(in srgb, var(--wp-color-primary) 8%, transparent); --wp-adapter-pi-data-1: color-mix(in srgb, var(--wp-color-primary) 8%, transparent); --wp-adapter-atlas-data-1: color-mix(in srgb, var(--wp-color-primary) 8%, transparent); --data-ramp-2: color-mix(in srgb, var(--wp-color-primary) 14%, transparent); --wp-adapter-pi-data-2: color-mix(in srgb, var(--wp-color-primary) 14%, transparent); --wp-adapter-atlas-data-2: color-mix(in srgb, var(--wp-color-primary) 14%, transparent); --data-ramp-3: color-mix(in srgb, var(--wp-color-primary) 22%, transparent); --wp-adapter-pi-data-3: color-mix(in srgb, var(--wp-color-primary) 22%, transparent); --wp-adapter-atlas-data-3: color-mix(in srgb, var(--wp-color-primary) 22%, transparent); --data-ramp-4: color-mix(in srgb, var(--wp-color-primary) 30%, transparent); --wp-adapter-pi-data-4: color-mix(in srgb, var(--wp-color-primary) 30%, transparent); --wp-adapter-atlas-data-4: color-mix(in srgb, var(--wp-color-primary) 30%, transparent); --data-ramp-5: color-mix(in srgb, var(--wp-color-primary) 40%, transparent); --wp-adapter-pi-data-5: color-mix(in srgb, var(--wp-color-primary) 40%, transparent); --wp-adapter-atlas-data-5: color-mix(in srgb, var(--wp-color-primary) 40%, transparent); --data-ramp-6: color-mix(in srgb, var(--wp-color-primary) 52%, transparent); --wp-adapter-pi-data-6: color-mix(in srgb, var(--wp-color-primary) 52%, transparent); --wp-adapter-atlas-data-6: color-mix(in srgb, var(--wp-color-primary) 52%, transparent); }
+:root[data-theme-id][data-typography-mode="mixed"] body.slide [data-theme-type-role="top-left-kicker"], :root[data-theme-id][data-typography-mode="mixed"] body.slide [data-theme-type-role="bottom-left-folio"] { font-family: var(--wp-font-oswald) !important; font-weight: 700 !important; }
+:root[data-theme-id][data-typography-mode="mixed"] body.slide [data-theme-type-role="bottom-takeaway"] { font-family: var(--wp-font-han-serif) !important; font-weight: 700 !important; }
+:root[data-theme-id][data-typography-mode="mixed"] body.slide [data-theme-type-role="zh-content-title"] { font-family: var(--wp-font-han-sans) !important; font-weight: 700 !important; }
+:root[data-theme-id][data-typography-mode="mixed"] body.slide :is([data-theme-type-role="body"], [data-theme-type-role="label"], [data-theme-type-role="number"], [data-theme-type-role="chart-text"]) { font-family: var(--wp-font-han-sans) !important; font-weight: 400 !important; }
+:root[data-theme-id][data-typography-mode="mixed"] body.slide [data-theme-language="en"]:not([data-theme-type-role="top-left-kicker"]):not([data-theme-type-role="bottom-left-folio"]):not([data-theme-type-role="bottom-takeaway"]) { font-family: var(--wp-font-oswald) !important; font-weight: 700 !important; }
+body.slide > .stage[data-theme-visual-plan="a0471e7466b6f6df31df5813435fca1d89b375ebf893379b89774cec52dffbdd"] { background-color: var(--wp-color-surface-canvas) !important; }
+body.slide [data-theme-furniture-role="title"] { color: var(--wp-color-functional) !important; }
+body.slide svg [data-theme-furniture-role="title"] { fill: var(--wp-color-functional) !important; }
+body.slide [data-theme-furniture-role="folio"] { color: var(--wp-color-metadata) !important; }
+body.slide svg [data-theme-furniture-role="folio"] { fill: var(--wp-color-metadata) !important; }
+body.slide [data-theme-furniture-role="takeaway"] { color: var(--wp-color-primary) !important; }
+body.slide svg [data-theme-furniture-role="takeaway"] { fill: var(--wp-color-primary) !important; }
+body.slide [data-theme-furniture-role="title"]::first-line,
+body.slide [data-theme-furniture-role="title"] [data-theme-furniture-line="first"] { color: var(--wp-color-primary) !important; }
+body.slide [data-theme-furniture-role="title"] [data-theme-furniture-line="second"] { color: var(--wp-color-functional) !important; }
+</style>
 </head>
-<body class="slide">
-<div class="stage" data-block-id="gallery-primary" data-renderer-kind="native-html" data-component-source="native" data-component-id="native.wise-ppt.131.lever-balance" data-content-ref="example.u3" data-catalog-source-marker="page-recipe">
-  <div class="doc tl"><span class="doc-kicker">PPT 标题</span><span class="doc-title">页面标题</span></div>
-  <div class="folio">页码 / 总页数 — BY @歪斯Wise</div>
-  <div id="lever-host" class="lever-host" data-slot-id="lever" data-component-id="native.wise-ppt.131.lever-balance" aria-label="存量能力经产品化支点转成增量收入"></div>
-  <div class="caption">把已有能力变成增长，需要的不是继续堆资源，而是一个<span id="u3-focus-caption" data-emphasis-candidate="true">可复用的产品化支点</span>。</div>
+<body class="slide" data-page-id="gallery-ai-u3" data-page-role="explain" data-page-kind="relationship" data-layout-id="wise-ppt.layout.relationship.U3" data-layout-code="U3" data-layout-source="canonical-seed" data-layout-seed-sha256="af52df1200f9a4c9b025874fbb1b1163f211c655c5c0f47581de87a3db47d617" data-layout-structure-sha256="4e68ede9a5bb6b6aef832e78737a8ef932f053fe01f5d1f8c1ee373629baaae6" data-layout-visual-plan="a0471e7466b6f6df31df5813435fca1d89b375ebf893379b89774cec52dffbdd" data-layout-visual-materialization="239476ca08f0755b84f3230663abcca2a89d94e325613fe6cd586ab851db0d0d" data-resolved-theme-sha256="1f9ebea0e4bc84cd589274859d82014d71e42ea9c8055699808bbe7bc9298fe2" data-layout-visual-source="wise-ppt-layout-theme-bindings@3">
+<div class="stage" data-block-id="gallery-primary" data-component-id="native.wise-ppt.131.lever-balance" data-component-source="native" data-content-ref="example.u3" data-renderer-kind="native-html" data-theme-visual-source="wise-ppt-layout-theme-bindings@3" data-theme-visual-plan="a0471e7466b6f6df31df5813435fca1d89b375ebf893379b89774cec52dffbdd" data-theme-canvas-material="paper" data-theme-default-color-base-role="primary" data-theme-typography-resolution="structure-slots-and-explicit-language" data-theme-emphasis-target-count="2" data-theme-emphasis-sample-target="focus.productized-fulcrum">
+<div class="doc tl" data-theme-furniture-source="wise-ppt-layout-theme-bindings@3" data-theme-furniture-role="title" data-theme-furniture-variant="primary-first-functional-second" data-theme-type-role="top-left-kicker" data-theme-type-base-role="top-left-kicker" data-theme-color-role="functional" data-theme-color-alpha="1" data-theme-title-first-color-role="primary" data-theme-title-second-color-role="functional" data-theme-language="zh"><span class="vnext-text-node" data-vnext-fit-box="0,0,1920,1080" data-vnext-text-key="lever.text.001" data-theme-furniture-line="first" data-theme-type-role="top-left-kicker" data-theme-type-base-role="top-left-kicker" data-theme-color-role="primary" data-theme-language="zh">PPT &#x6807;&#x9898;</span><br><span class="vnext-text-node" data-vnext-fit-box="0,0,1920,1080" data-vnext-text-key="lever.text.002" data-theme-furniture-line="second" data-theme-type-role="top-left-kicker" data-theme-type-base-role="top-left-kicker" data-theme-color-role="functional" data-theme-language="zh">&#x9875;&#x9762;&#x6807;&#x9898;</span></div>
+<div class="folio" data-theme-furniture-source="wise-ppt-layout-theme-bindings@3" data-theme-furniture-role="folio" data-theme-type-role="bottom-left-folio" data-theme-type-base-role="bottom-left-folio" data-theme-color-role="metadata" data-theme-color-alpha="1" data-theme-language="zh">&#x9875;&#x7801; / &#x603b;&#x9875;&#x6570; &#x2014; BY @&#x6b6a;&#x65af;Wise</div>
+<div aria-label="&#x5b58;&#x91cf;&#x80fd;&#x529b;&#x7ecf;&#x4ea7;&#x54c1;&#x5316;&#x652f;&#x70b9;&#x8f6c;&#x6210;&#x589e;&#x91cf;&#x6536;&#x5165;" class="lever-host" data-component-id="native.wise-ppt.131.lever-balance" data-slot-id="lever" id="lever-host"><div class="pi-card" data-bind-root="record" style="width:auto;min-height:0;overflow:visible;background:transparent"><svg aria-label="&#x5b58;&#x91cf;&#x80fd;&#x529b;&#x7ecf;&#x52a8;&#x4f5c;&#x4e0e;&#x652f;&#x70b9;&#x8f6c;&#x6210;&#x589e;&#x91cf;&#x7ed3;&#x679c;&#x7684;&#x6760;&#x6746;&#x56fe;" class="pi-art" data-fixed-quantity="2" data-repeat-unit="end" viewBox="54 20 970 470" width="100%" xmlns="http://www.w3.org/2000/svg">
+<defs>
+<pattern height="8" id="lever-pivot-hatch" patternTransform="rotate(45)" patternUnits="userSpaceOnUse" width="8">
+<line opacity=".18" stroke="var(--pi-ink)" stroke-width=".7" x1="0" x2="0" y1="0" y2="8"/>
+</pattern>
+</defs>
+<g fill="var(--pi-ink)" font-family="var(--pi-sans)">
+<g data-item-index="0">
+<rect fill="var(--pi-paper)" height="104" width="274" x="68" y="344"/>
+<text data-vnext-fit-box="267,629,675,788" data-vnext-text-key="lever.text.003" fill="var(--pi-ink-45)" font-family="var(--pi-mono)" font-size="var(--type-meta)" letter-spacing="2" text-anchor="middle" x="148" y="373" data-theme-type-role="en-bold" data-theme-type-base-role="body" data-theme-language="en">STOCK</text>
+<text data-field="left_title" data-vnext-fit-box="267,629,675,788" data-vnext-text-key="lever.text.004" data-vnext-type-slot="content-title" font-size="var(--type-subheading)" font-weight="300" text-anchor="middle" x="148" y="412" data-theme-binding-source="wise-ppt-layout-theme-bindings@3" data-theme-type-binding-id="content-titles" data-theme-type-role="zh-content-title" data-theme-type-base-role="zh-content-title" data-theme-language="zh">&#x5185;&#x5bb9;&#x751f;&#x4ea7;&#x80fd;&#x529b;</text>
+<text data-field="annotation" data-vnext-fit-box="267,629,675,788" data-vnext-text-key="lever.text.005" fill="var(--pi-ink-60)" font-size="var(--type-label)" text-anchor="middle" x="148" y="437" data-theme-type-role="body" data-theme-type-base-role="body" data-theme-language="zh">&#x6a21;&#x578b;&#x3001;&#x6d41;&#x7a0b;&#x4e0e;&#x4ea4;&#x4ed8;&#x590d;&#x7528;</text>
+</g>
+<g data-item-index="1">
+<rect fill="var(--pi-paper)" height="112" width="246" x="742" y="63"/>
+<text data-vnext-fit-box="1254,217,1621,388" data-vnext-text-key="lever.text.006" fill="var(--pi-ink-45)" font-family="var(--pi-mono)" font-size="var(--type-meta)" letter-spacing="2" text-anchor="middle" x="897" y="94" data-theme-type-role="en-bold" data-theme-type-base-role="body" data-theme-language="en">OUTCOME</text>
+<text data-field="right_title" data-vnext-fit-box="1254,217,1621,388" data-vnext-text-key="lever.text.007" data-vnext-type-slot="content-title" font-size="var(--type-subheading)" font-weight="300" id="lever-outcome-title" text-anchor="middle" x="897" y="137" data-theme-binding-source="wise-ppt-layout-theme-bindings@3" data-theme-type-binding-id="content-titles" data-theme-type-role="zh-content-title" data-theme-type-base-role="zh-content-title" data-theme-language="zh">&#x65b0;&#x589e;&#x8ba2;&#x9605;&#x6536;&#x5165;</text>
+</g>
+<path d="M 144 337 L 895 166 L 899 184 L 148 355 Z" fill="var(--pi-paper-panel)" id="lever-beam" stroke="var(--pi-ink-80)" stroke-linejoin="round" stroke-width="1.2" data-theme-identity-source="wise-ppt-layout-theme-bindings@3" data-theme-identity-group="identity.lever" data-theme-identity-treatment="identity.stroke" data-theme-emphasis-source="wise-ppt-layout-theme-bindings@3" data-theme-emphasis-members="[{&quot;role&quot;:&quot;outline&quot;,&quot;target_id&quot;:&quot;focus.lever-geometry&quot;,&quot;treatment&quot;:&quot;focus.outline-depth&quot;}]"/>
+<circle cx="148" cy="346" fill="var(--pi-paper)" id="lever-stock-node" r="9" stroke="var(--pi-ink)" stroke-width="1.2" data-theme-identity-source="wise-ppt-layout-theme-bindings@3" data-theme-identity-group="identity.lever" data-theme-identity-treatment="identity.data-series" data-theme-emphasis-source="wise-ppt-layout-theme-bindings@3" data-theme-emphasis-members="[{&quot;paint&quot;:&quot;fill&quot;,&quot;role&quot;:&quot;symbol&quot;,&quot;target_id&quot;:&quot;focus.lever-geometry&quot;,&quot;treatment&quot;:&quot;focus.solid-reverse&quot;}]"/>
+<circle cx="897" cy="175" fill="var(--pi-paper)" id="lever-outcome-node" r="9" stroke="var(--pi-ink)" stroke-width="1.2" data-theme-identity-source="wise-ppt-layout-theme-bindings@3" data-theme-identity-group="identity.lever" data-theme-identity-treatment="identity.data-series" data-theme-emphasis-source="wise-ppt-layout-theme-bindings@3" data-theme-emphasis-members="[{&quot;paint&quot;:&quot;fill&quot;,&quot;role&quot;:&quot;symbol&quot;,&quot;target_id&quot;:&quot;focus.lever-geometry&quot;,&quot;treatment&quot;:&quot;focus.solid-reverse&quot;}]"/>
+<g aria-label="&#x8f6c;&#x5316;&#x52a8;&#x4f5c;">
+<rect fill="var(--pi-paper)" height="64" width="226" x="326" y="82"/>
+<text data-vnext-fit-box="645,245,983,346" data-vnext-text-key="lever.text.008" fill="var(--pi-ink-45)" font-family="var(--pi-mono)" font-size="var(--type-meta)" letter-spacing="2" x="347" y="105" data-theme-type-role="en-bold" data-theme-type-base-role="body" data-theme-language="en">ACTION</text>
+<text data-field="transform_label" data-vnext-fit-box="645,245,983,346" data-vnext-text-key="lever.text.009" font-size="var(--type-body)" font-weight="300" id="lever-transform-label" x="347" y="132" data-theme-type-role="body" data-theme-type-base-role="body" data-theme-language="zh">&#x573a;&#x666f;&#x5316;&#x5c01;&#x88c5;</text>
+<line stroke="var(--pi-ink)" stroke-dasharray="4 6" stroke-width="1.1" x1="439" x2="439" y1="146" y2="246"/>
+<path d="M 430 234 L 439 250 L 448 234" fill="none" stroke="var(--pi-ink)" stroke-linejoin="round" stroke-width="1.2"/>
+</g>
+<g aria-label="&#x6760;&#x6746;&#x652f;&#x70b9;">
+<path d="M 640 232 L 760 448 L 520 448 Z" fill="url(#lever-pivot-hatch)" id="lever-pivot" stroke="var(--pi-ink)" stroke-linejoin="round" stroke-width="1.1" data-theme-identity-source="wise-ppt-layout-theme-bindings@3" data-theme-identity-group="identity.lever" data-theme-identity-treatment="identity.stroke" data-theme-emphasis-source="wise-ppt-layout-theme-bindings@3" data-theme-emphasis-members="[{&quot;role&quot;:&quot;outline&quot;,&quot;target_id&quot;:&quot;focus.lever-geometry&quot;,&quot;treatment&quot;:&quot;focus.outline-depth&quot;}]"/>
+<circle cx="640" cy="232" fill="var(--pi-paper)" r="13" stroke="var(--pi-ink)" stroke-width="1.2"/>
+<circle cx="640" cy="232" fill="var(--pi-ink)" r="4"/>
+<text data-vnext-fit-box="929,465,1287,788" data-vnext-text-key="lever.text.010" fill="var(--pi-ink-45)" font-family="var(--pi-mono)" font-size="var(--type-meta)" letter-spacing="2" text-anchor="middle" x="640" y="382" data-theme-type-role="en-bold" data-theme-type-base-role="body" data-theme-language="en">PIVOT</text>
+<text data-field="pivot_title" data-vnext-fit-box="929,465,1287,788" data-vnext-text-key="lever.text.011" font-size="var(--type-body)" font-weight="300" text-anchor="middle" x="640" y="416" data-theme-type-role="body" data-theme-type-base-role="body" data-theme-language="zh">&#x4ea7;&#x54c1;&#x5316;&#x652f;&#x70b9;</text>
+</g>
+<line stroke="var(--pi-ink)" stroke-width="1" x1="1004" x2="1004" y1="176" y2="84"/>
+<path d="M 996 98 L 1004 82 L 1012 98" fill="none" stroke="var(--pi-ink)" stroke-linejoin="round" stroke-width="1.1"/>
+</g>
+</svg></div></div>
+<div class="caption" data-vnext-claim-key="claim.text.001" data-vnext-fit-box="0,0,1920,1080" data-theme-furniture-source="wise-ppt-layout-theme-bindings@3" data-theme-furniture-role="takeaway" data-theme-type-role="bottom-takeaway" data-theme-type-base-role="bottom-takeaway" data-theme-color-role="primary" data-theme-color-alpha="1" data-theme-language="zh">&#x628a;&#x5df2;&#x6709;&#x80fd;&#x529b;&#x53d8;&#x6210;&#x589e;&#x957f;&#xff0c;&#x9700;&#x8981;&#x7684;&#x4e0d;&#x662f;&#x7ee7;&#x7eed;&#x5806;&#x8d44;&#x6e90;&#xff0c;&#x800c;&#x662f;&#x4e00;&#x4e2a;<span data-emphasis-candidate="true" id="u3-focus-caption" data-theme-emphasis-source="wise-ppt-layout-theme-bindings@3" data-theme-emphasis-members="[{&quot;role&quot;:&quot;label&quot;,&quot;target_id&quot;:&quot;focus.productized-fulcrum&quot;,&quot;treatment&quot;:&quot;focus.color&quot;}]" data-theme-type-role="bottom-takeaway" data-theme-type-base-role="bottom-takeaway" data-theme-language="zh">&#x53ef;&#x590d;&#x7528;&#x7684;&#x4ea7;&#x54c1;&#x5316;&#x652f;&#x70b9;</span>&#x3002;</div>
 </div>
-<script src="../../../../../capabilities/layouts/native-components.js"></script>
-<script>
-  const catalog=window.WISE_PPT_NATIVE_COMPONENT_DATA;
-  const entry=catalog&&catalog.entries.find(item=>item.num===131);
-  if(!entry)throw new Error('缺少 native.wise-ppt.131.lever-balance');
-  const style=document.createElement('style');
-  style.textContent=catalog.componentCss||'';
-  document.head.appendChild(style);
-  const host=document.getElementById('lever-host');
-  host.innerHTML=entry.snippet;
-  const content={
-    left_title:'内容生产能力',
-    right_title:'新增订阅收入',
-    pivot_title:'产品化支点',
-    transform_label:'场景化封装',
-    annotation:'模型、流程与交付复用'
-  };
-  Object.entries(content).forEach(([field,value])=>{
-    const node=host.querySelector(`[data-field="${field}"]`);
-    if(node)node.textContent=value;
-  });
-  stageFit();
-</script>
-<script type="application/json" id="xp-surface-recipe">{"theme":"klein-blue","color_name":"blue","layout_code":"u3","title":"layout-u3 · 杠杆转化 · 存量能力到增量收入","layout":"paper-ink.causal.leverage-transform","page_role":"explain","canvas":{"token":"paper","value":"#f2efe9","reason":"杠杆组件直接落在开放纸面，保持结构线与留白关系。"},"surface_profile":"open-paper-diagram","surfaces":[{"role":"diagram-plane","material":"paper-plane","fill":"#f2efe9","stack":0},{"role":"structure","material":"ink-line","fill":"#1a1a1a","stack":1},{"role":"focus-marker","material":"accent","fill":"#002fa7","stack":2}],"accent":{"value":"#002fa7","semantic_channel":"杠杆两端圆点、斜梁边线与支点三角边线；动作箭头和文字保持中性","furniture":"左上第一行 doc-kicker 固定墨黑，第二行 doc-title 使用当前主题色；folio 跟随元信息通道：墨色 45%（同英文章节标签），不使用主题色。","neutral_exceptions":["存量输入","说明文字","结构线","普通标签"],"furniture_mode":"black-first-theme-second","folio_mode":"metadata-neutral"},"border_policy":"杠杆组件沿用登记线宽，不追加容器边框或圆角。","shadow_policy":"无影；结构关系由线条、支点和位置表达。","noise_policy":"由主题统一提供唯一一层约 6% 黑色 fractal-noise；页面不得自带 noise 节点；浅色页 multiply。","reference_evidence":{"file":"references/catalog.html","cards":["U3"],"rule":"正式 Catalog 的杠杆几何、文字位置和组件组织是视觉权威。"},"acceptance":["橙蓝 DOM 与几何完全一致，仅主题色映射。","左下与右上圆点使用主题色填充；斜梁和支点三角只给边线主题色。","动作箭头、结果箭头、标签和结果文字保持墨色，且不得因主题切换重排。","缩略图必须从该主题独立 frame 的实际渲染重建。"],"status":"recipe-ready","surface_bindings":[],"surface_binding_reason":"杠杆是组件自有开放纸面图形；不把其内部结构误分成页面材料层。","theme_identity":[{"group_id":"identity.lever-nodes","label":"杠杆两端节点","members":[{"selector":"#lever-stock-node, #lever-outcome-node","treatment":"identity.fill","expected_count":2}]},{"group_id":"identity.lever-structure","label":"杠杆横梁与支点","members":[{"selector":"#lever-beam, #lever-pivot","treatment":"identity.stroke","expected_count":2}]}],"emphasis_targets":[{"target_id":"focus.productized-fulcrum","label":"可复用的产品化支点","content_role":"底部结论中的产品化支点","reason_hint":"只给“可复用的产品化支点”上色，杠杆节点、横梁与支点保持默认色。","members":[{"selector":"#u3-focus-caption","role":"label","treatment":"focus.color","expected_count":1}]},{"target_id":"focus.lever-geometry","label":"杠杆转化结构","content_role":"杠杆两端节点、横梁与支点","reason_hint":"当杠杆结构本身是论证对象时，才强化两端节点、横梁与支点。","members":[{"selector":"#lever-stock-node","role":"symbol","treatment":"focus.solid-reverse","paint":"fill","expected_count":1},{"selector":"#lever-outcome-node","role":"symbol","treatment":"focus.solid-reverse","paint":"fill","expected_count":1},{"selector":"#lever-beam","role":"outline","treatment":"focus.outline-depth","expected_count":1},{"selector":"#lever-pivot","role":"outline","treatment":"focus.outline-depth","expected_count":1}]}],"sample_target_id":"focus.productized-fulcrum"}</script>
-<script src="../../catalog-surface.js" data-catalog-theme-surface="catalog-theme-recipes-v2"></script>
-<script src="../../catalog-typography.js" data-catalog-typography="brand-latin-numeric-oswald-v1"></script>
+<script>stageFit();</script>
 </body>
 </html>

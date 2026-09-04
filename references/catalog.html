@@ -938,8 +938,7 @@ function commitCatalogAppearance(eventName,detail,notify){
   if(!themeChanged&&!typographyChanged)return Promise.resolve().then(finalize);
   return warmCatalogTypography(targetTypographyId,targetThemeId).then(finalize);
 }
-/* 正式 Catalog 是唯一入口：中央逐页定稿决定每张版式使用 standard 或 legacy
-   默认色/强调档；legacy 只是一种已确认视觉基线，不再对应第二份 Catalog。 */
+/* 正式 Catalog 只消费中央逐页合同投影；页面不再选择第二套默认色或强调档。 */
 const catalogParams=new URLSearchParams(location.search);
 let catalogEmphasisEnabled=catalogParams.has('accent');
 const pageEmphasisOverrides=new Map();
@@ -1100,20 +1099,8 @@ function activeEmphasisEnabled(card=activeFocusCard){
 }
 function activeEmphasisTarget(card=activeFocusCard){
   if(!activeEmphasisEnabled(card))return '';
-  if(activeEmphasisProfile(card)==='legacy')return 'legacy.sample';
   const policy=pageEmphasisPolicy(card.dataset.layoutCode);
   return policy.sample_target_id||'';
-}
-function pageCatalogResolvedProfile(card=activeFocusCard){
-  if(!card?.dataset.layoutCode)return {default_color:'standard',emphasis:'standard'};
-  const policy=pageEmphasisPolicy(card.dataset.layoutCode);
-  return policy.catalog_comparison_profile||{default_color:'standard',emphasis:'standard'};
-}
-function activeDefaultColorProfile(card=activeFocusCard){
-  return pageCatalogResolvedProfile(card).default_color;
-}
-function activeEmphasisProfile(card=activeFocusCard){
-  return pageCatalogResolvedProfile(card).emphasis;
 }
 function thumbSlug(value){
   return String(value).toLowerCase().replace(/\.html$/,'').replace(/[^a-z0-9]+/g,'-').replace(/^-|-$/g,'');
@@ -1167,7 +1154,11 @@ function metaRowsMarkup(rows){
 /* 展示层裁剪:关系页焦点策略省去默认态前缀和「可选：」引导词,直接显示焦点候选(page-emphasis 合同数据原样,只裁关系页卡片显示) */
 function pageEmphasisPolicy(code){
   const key=String(code).toUpperCase();
-  const base=window.WISE_PPT_PAGE_EMPHASIS&&window.WISE_PPT_PAGE_EMPHASIS[key];
+  const registry=window.WISE_PPT_PAGE_EMPHASIS;
+  if(!registry||registry.contract_version!==5||!registry.pages||typeof registry.pages!=='object'){
+    throw new Error('页面强调公开投影只接受 page-emphasis-contracts v5');
+  }
+  const base=registry.pages[key];
   if(!base)throw new Error('页面缺主题焦点策略:'+key);
   return base;
 }
@@ -1479,8 +1470,12 @@ $('#c-ico').textContent='…';
   }
   function frameCacheKey(url){
     const keyUrl=new URL(url,location.href);
-    ['wise-ppt-embed','wise-ppt-frame-nonce','theme','typography','static','accent','emphasis','emphasis-profile','default-color-profile'].forEach(key=>keyUrl.searchParams.delete(key));
+    ['wise-ppt-embed','wise-ppt-frame-nonce','static','accent','emphasis'].forEach(key=>keyUrl.searchParams.delete(key));
     return keyUrl.href;
+  }
+  function projectedFrameIdentity(url){
+    const match=new URL(url,location.href).pathname.match(/\/frames\/(hermes-orange|klein-blue)\/layout-([^/]+)\.html$/);
+    return match?match[1]+':'+match[2]:'';
   }
   function evictFrameWrap(wrap){
     if(!wrap)return;
@@ -1495,13 +1490,7 @@ $('#c-ico').textContent='…';
     if(!frame||!frame.contentWindow)return Promise.reject(new Error('参考帧尚未就绪'));
     if(typeof frame._wiseCancelState==='function')frame._wiseCancelState();
     const requestId='catalog-state-'+(++frameStateSerial);
-    const requested={
-      themeId:activeThemeId,
-      typographyMode:activeTypographyId,
-      defaultColorProfile:activeDefaultColorProfile(),
-      emphasisTarget:activeEmphasisTarget(),
-      emphasisProfile:activeEmphasisProfile(),
-    };
+    const requested={emphasisTarget:activeEmphasisTarget()};
     return new Promise((resolve,reject)=>{
       let settled=false;
       const cleanup=()=>{
@@ -1522,29 +1511,21 @@ $('#c-ico').textContent='…';
         if(event.source!==frame.contentWindow)return;
         const data=event.data;
         if(!data||data.type!=='wise-ppt-frame-state-ready'||data.protocol!=='wise-ppt-frame/v1'||data.requestId!==requestId)return;
-        if(data.status==='reload-required')return finish(null,{reloadRequired:true});
         if(data.status==='fail')return finish(new Error('参考帧状态切换失败: '+(data.reason||frame.src)));
         if(data.status!=='ready')return;
-        if(data.themeId!==requested.themeId||data.typographyMode!==requested.typographyMode||String(data.defaultColorProfile||'standard')!==requested.defaultColorProfile||String(data.emphasisTarget||'')!==requested.emphasisTarget||String(data.emphasisProfile||'standard')!==requested.emphasisProfile){
+        if(String(data.emphasisTarget||'')!==requested.emphasisTarget){
           return finish(new Error('参考帧状态回报与请求不一致'));
         }
-        const recipeMatch=new URL(frame.src,location.href).pathname.match(/\/frames\/(hermes-orange|klein-blue)\/layout-([^/]+)\.html$/);
-        const expectedRecipe=recipeMatch?recipeMatch[1]+':'+recipeMatch[2]:'';
-        if(expectedRecipe&&(data.recipeId!==expectedRecipe||data.recipeComplete!==true||data.surfaceReady!=='true')){
-          return finish(new Error('参考帧 recipe 状态回报不完整: '+expectedRecipe));
+        const expectedFrameId=projectedFrameIdentity(frame.src);
+        if(expectedFrameId&&(data.frameId!==expectedFrameId||data.frameReady!==true||!/^[0-9a-f]{64}$/.test(String(data.layoutVisualPlan||'')))){
+          return finish(new Error('参考帧共享视觉 plan 状态回报不完整: '+expectedFrameId));
         }
         /* file:// 下父子文档是不同不透明源，测试与诊断不能读取 contentDocument；
            把已验证过的子页回报留在 iframe 元素自身，避免用猜测代替握手结果。 */
-        frame.dataset.wiseStateTheme=data.themeId;
-        frame.dataset.wiseStateTypography=data.typographyMode;
-        frame.dataset.wiseStateDefaultColorProfile=data.defaultColorProfile||'standard';
         frame.dataset.wiseStateEmphasis=data.emphasisTarget||'';
-        frame.dataset.wiseStateEmphasisProfile=data.emphasisProfile||'standard';
-        frame.dataset.wiseStateRecipe=data.recipeId||'';
-        frame.dataset.wiseStateRecipeStatus=data.recipeStatus||'';
-        frame.dataset.wiseStateRecipeReady=data.recipeReady||'';
-        frame.dataset.wiseStateRecipeComplete=String(data.recipeComplete===true);
-        frame.dataset.wiseStateSurfaceReady=data.surfaceReady||'';
+        frame.dataset.wiseStateFrameId=data.frameId||'';
+        frame.dataset.wiseStateVisualPlan=data.layoutVisualPlan||'';
+        frame.dataset.wiseStateFrameReady=String(data.frameReady===true);
         finish(null,{reloadRequired:false});
       };
       window.addEventListener('message',onMessage);
@@ -1554,9 +1535,7 @@ $('#c-ico').textContent='…';
       const send=()=>{
         if(frame.contentWindow)frame.contentWindow.postMessage({
           type:'wise-ppt-frame-state',protocol:'wise-ppt-frame/v1',requestId,
-          themeId:requested.themeId,typographyMode:requested.typographyMode,
-          defaultColorProfile:requested.defaultColorProfile,
-          emphasisTarget:requested.emphasisTarget,emphasisProfile:requested.emphasisProfile,
+          emphasisTarget:requested.emphasisTarget,
         },'*');
       };
       const resend=setInterval(send,400);
@@ -1593,8 +1572,7 @@ $('#c-ico').textContent='…';
     currentSrc:liveFrame?.src||'',themeId:activeThemeId,typographyMode:activeTypographyId,
     globalEmphasisEnabled:catalogEmphasisEnabled,effectiveEmphasisEnabled:activeEmphasisEnabled(),
     pageEmphasisOverride:pageEmphasisOverrideState(),
-    defaultColorProfile:activeDefaultColorProfile(),
-    emphasisTarget:activeEmphasisTarget(),emphasisProfile:activeEmphasisProfile(),
+    emphasisTarget:activeEmphasisTarget(),
   });
   window.WisePPTCatalogComponentState=()=>({
     slot:currentSlotId,
@@ -2022,18 +2000,13 @@ $('#c-ico').textContent='…';
     await twoFrames();
   }
   let frameReadySerial=0;
-  /* 新鲜加载的 URL 带当前状态；缓存键只由页面资源决定，nonce 只作握手凭证。 */
+  /* 新鲜加载的 URL 只携带强调目标；主题已经由 frame 路径固定，字体由共享 plan 固定。 */
   function frameRequestUrl(url,emphasisTarget){
     const frameUrl=new URL(url,location.href);
     frameUrl.searchParams.set('wise-ppt-embed','gallery');
-    frameUrl.searchParams.set('theme',activeThemeId);
-    /* 样张自身缺省是 all-sans，实时预览必须显式传解析后的字体档，白纸缺省的混合档才不会丢。 */
-    frameUrl.searchParams.set('typography',activeTypographyId);
     /* 静态冻结:浮层预览永远停在终态,入场动效不播,AI/人任何时刻截图看到的都是标称几何。 */
     frameUrl.searchParams.set('static','1');
     frameUrl.searchParams.delete('accent');
-    frameUrl.searchParams.set('default-color-profile',activeDefaultColorProfile());
-    frameUrl.searchParams.set('emphasis-profile',activeEmphasisProfile());
     if(emphasisTarget)frameUrl.searchParams.set('emphasis',emphasisTarget);
     else frameUrl.searchParams.delete('emphasis');
     return frameUrl;
@@ -2070,8 +2043,7 @@ $('#c-ico').textContent='…';
     const fit=()=>fitDeckPage(f,st);
     const frameCode=(frameUrl.pathname.match(/\/layout-([^/]+)\.html$/)||[])[1]||'';
     const expectedPageId=frameCode?'gallery-ai-'+frameCode:'';
-    const recipeMatch=frameUrl.pathname.match(/\/frames\/(hermes-orange|klein-blue)\/layout-([^/]+)\.html$/);
-    const expectedRecipeId=recipeMatch?recipeMatch[1]+':'+recipeMatch[2]:'';
+    const expectedFrameId=projectedFrameIdentity(frameUrl);
     const frameNonce='catalog-'+openToken+'-'+(++frameReadySerial);
     frameUrl.searchParams.set('wise-ppt-frame-nonce',frameNonce);
     const loaded=new Promise((resolve,reject)=>{
@@ -2097,14 +2069,12 @@ $('#c-ico').textContent='…';
         if(data.frameWidth!==1920||data.frameHeight!==1080)return finish(new Error('参考帧逻辑尺寸不是 1920×1080'));
         if(data.specimenFit!=='noop-in-gallery'||data.scaleOwner!=='gallery-runtime')return finish(new Error('参考帧发生二次缩放'));
         if(data.specimenStatic!=='true')return finish(new Error('参考帧未进入静态标称态'));
-        if(expectedRecipeId&&(data.recipeId!==expectedRecipeId||data.recipeComplete!==true||data.surfaceReady!=='true')){
-          return finish(new Error('参考帧 recipe 未完成: '+expectedRecipeId));
+        if(expectedFrameId&&(data.frameId!==expectedFrameId||data.frameReady!==true||!/^[0-9a-f]{64}$/.test(String(data.layoutVisualPlan||'')))){
+          return finish(new Error('参考帧共享视觉 plan 未完成: '+expectedFrameId));
         }
-        f.dataset.wiseStateRecipe=data.recipeId||'';
-        f.dataset.wiseStateRecipeStatus=data.recipeStatus||'';
-        f.dataset.wiseStateRecipeReady=data.recipeReady||'';
-        f.dataset.wiseStateRecipeComplete=String(data.recipeComplete===true);
-        f.dataset.wiseStateSurfaceReady=data.surfaceReady||'';
+        f.dataset.wiseStateFrameId=data.frameId||'';
+        f.dataset.wiseStateVisualPlan=data.layoutVisualPlan||'';
+        f.dataset.wiseStateFrameReady=String(data.frameReady===true);
         finish();
       };
       window.addEventListener('message',onMessage);
@@ -2119,11 +2089,7 @@ $('#c-ico').textContent='…';
     await twoFrames();
     /* 握手通过即写回与 requestFrameState 同源的状态指纹:开机 URL 带的就是已生效状态,
        翻回新鲜帧保持免门面快路径;停泊期间换过字体/换色的帧由 loadCard 退回门面路径。 */
-    f.dataset.wiseStateTheme=frameUrl.searchParams.get('theme')||'';
-    f.dataset.wiseStateTypography=frameUrl.searchParams.get('typography')||'';
-    f.dataset.wiseStateDefaultColorProfile=frameUrl.searchParams.get('default-color-profile')||'standard';
     f.dataset.wiseStateEmphasis=frameUrl.searchParams.get('emphasis')||'';
-    f.dataset.wiseStateEmphasisProfile=frameUrl.searchParams.get('emphasis-profile')||'standard';
     /* ready 校验通过的帧登记进缓存；之后的关闭/翻页只会把它停泊进隐藏宿主。超限按 LRU 淘汰：
        wrap 从宿主移出 DOM，文档随 browsing context 销毁，内存真正归还。 */
     wrap.dataset.wiseFrameCache=cacheKey;
@@ -2237,11 +2203,8 @@ $('#c-ico').textContent='…';
          过期帧翻回时子文档要现载字库、解冻期握手还可能丢消息,一律退回静态门面遮住过渡。 */
       const cachedWrap=d.frame?frameCache.get(frameCacheKey(d.frame)):null;
       const cachedFrame=cachedWrap?cachedWrap.querySelector('iframe'):null;
-      const fresh=cachedFrame&&cachedFrame.dataset.wiseStateTheme===activeThemeId
-        &&cachedFrame.dataset.wiseStateTypography===activeTypographyId
-        &&cachedFrame.dataset.wiseStateDefaultColorProfile===activeDefaultColorProfile()
-        &&cachedFrame.dataset.wiseStateEmphasis===activeEmphasisTarget(card)
-        &&cachedFrame.dataset.wiseStateEmphasisProfile===activeEmphasisProfile();
+      const fresh=cachedFrame&&cachedFrame.dataset.wiseStateFrameReady==='true'
+        &&cachedFrame.dataset.wiseStateEmphasis===activeEmphasisTarget(card);
       if(fresh)disposeLive();
       else prepareFacade(card);
     }

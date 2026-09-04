@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html data-theme-id="paper-ink" lang="zh-CN" data-runtime="wise-ppt-specimen" data-typography-mode="all-sans" data-wise-catalog-fonts="true" data-page-id="gallery-ai-e6" data-page-role="compare" data-theme="paper-ink" data-layout="paper-ink.comparison.before-after-process-bands" data-layout-source="gallery" data-emphasis-targets='[{"target_id":"focus.decisive-difference","members":[{"selector":"#e6-focus-actions","role":"annotation","treatment":"focus.color","expected_count":1}]}]' data-catalog-legacy-emphasis-profile="content-only" data-catalog-legacy-emphasis-members='[{"selector":"#e6-focus-badge","expected_count":1,"role":"symbol","paint":"fill"},{"selector":"#e6-focus-title","expected_count":1,"role":"value"}]' data-catalog-legacy-emphasis-foreground-members='[]' data-catalog-legacy-emphasis-ref="sample.e6.e6-focus" data-vnext-semantic-key-map='[]'>
+<html data-theme-id="paper-ink" lang="zh-CN" data-runtime="wise-ppt-specimen" data-typography-mode="all-sans" data-wise-catalog-fonts="true" data-page-id="gallery-ai-e6" data-page-role="compare" data-theme="paper-ink" data-layout="paper-ink.comparison.before-after-process-bands" data-layout-source="gallery" data-vnext-semantic-key-map='[]' data-emphasis-targets='[{"target_id":"focus.decisive-difference","members":[{"selector":"#e6-focus-badge","role":"symbol","treatment":"focus.color","paint":"fill","expected_count":1},{"selector":"#e6-focus-title","role":"value","treatment":"focus.color","expected_count":1},{"selector":"#e6-focus-actions","role":"annotation","treatment":"focus.color","expected_count":1}]}]' data-vnext-type-slot-map='[{"slot":"content-title","tag":"text","text":"Before：文档只是文档","occurrence":0},{"slot":"content-title","tag":"text","text":"After：文档进入召回链路","occurrence":0}]'>
 <head>
 <meta charset="UTF-8">
 <title>layout-e6 · 前后双带演进页（AI 主题）</title>
@@ -12,12 +12,6 @@
 <link rel="stylesheet" href="../../../../themes/engine/assets/slide-components.css">
 <link rel="stylesheet" href="../../../shell.css">
 <style>
-  :root:is([data-theme-id="hermes-orange"], [data-theme-id="klein-blue"])
-    .slide[data-emphasis-mode="semantic-focus"]
-    :is(text, tspan)[data-emphasis-off-color="inverse"][data-emphasis-role]:not([data-emphasis-active="true"]) {
-    --wp-emphasis-color: var(--xp-white, #fff);
-    fill: var(--wp-emphasis-color) !important;
-  }
   svg.scene { position: absolute; inset: 0; z-index: 1; }
   .caption {
     position: absolute; left: 0; right: 0; bottom: 118px;
@@ -53,8 +47,10 @@ if (location.search.indexOf('accent') >= 0) document.documentElement.classList.a
 var ACCENT = document.documentElement.classList.contains('accent');
 var FOCUS = getComputedStyle(document.documentElement).getPropertyValue('--wp-color-focus').trim();
 var G = document.getElementById('draw');
+var activeVisualRole = '';
 function el(tag, attrs) {
   var e = document.createElementNS(NS, tag);
+  if (activeVisualRole && !attrs['data-vnext-visual-role']) attrs['data-vnext-visual-role'] = activeVisualRole;
   for (var k in attrs) e.setAttribute(k, attrs[k]);
   G.appendChild(e); return e;
 }
@@ -68,7 +64,7 @@ G = el('g', {transform:'translate(0 +20)'});
 
 
 /* ============ 带一 · BEFORE ============ */
-el('rect', {x:150, y:190, width:1620, height:280, rx:4, fill:'var(--paper-panel)', stroke:INK80, 'stroke-width':1});
+el('rect', {'data-vnext-visual-key':'e6.before-band', x:150, y:190, width:1620, height:280, rx:4, fill:'var(--paper-panel)', stroke:INK80, 'stroke-width':1});
 el('rect', {x:155, y:195, width:1610, height:270, rx:3, fill:'none', stroke:INK, 'stroke-width':.6, opacity:.3});
 /* ✕ 徽章 */
 el('circle', {cx:200, cy:232, r:15, fill:'var(--paper)', stroke:INK80, 'stroke-width':1.2});
@@ -125,12 +121,13 @@ el('line', {x1:1190, y1:222, x2:1190, y2:425, stroke:INK, 'stroke-width':.6, opa
 });
 
 /* ============ 带二 · AFTER ============ */
-el('rect', {x:150, y:500, width:1620, height:280, rx:4, fill:'var(--paper-panel)', stroke:INK80, 'stroke-width':1});
+el('rect', {'data-vnext-visual-key':'e6.after-band', x:150, y:500, width:1620, height:280, rx:4, fill:'var(--paper-panel)', stroke:INK80, 'stroke-width':1});
+activeVisualRole = 'e6.after-content';
 el('rect', {x:155, y:505, width:1610, height:270, rx:3, fill:'none', stroke:INK, 'stroke-width':.6, opacity:.3});
 /* ✓ 徽章与 After 标题组成同一结果语义组 */
 el('circle', {id:'e6-focus-badge', cx:200, cy:542, r:15, fill:'var(--paper)', stroke:INK80, 'stroke-width':1.2});
 el('path', {id:'e6-focus-check', d:'M 193 542 L 198 548 L 208 535', fill:'none', stroke:INK, 'stroke-width':3, 'stroke-linecap':'round', 'stroke-linejoin':'round'});
-txt(232, 550, 'After：文档进入召回链路', {id:'e6-focus-title', 'data-emphasis-off-color':'inverse', 'font-family':SANS, 'font-weight':300, 'font-size':'var(--type-subheading)', fill:INK});
+txt(232, 550, 'After：文档进入召回链路', {id:'e6-focus-title', 'font-family':SANS, 'font-weight':300, 'font-size':'var(--type-subheading)', fill:INK});
 txt(1730, 548, 'PIPELINED', {'font-family':MONO, 'font-size':'var(--type-micro-secondary)', 'letter-spacing':3, 'text-anchor':'end', fill:INK45});
 
 /* 六步流水线 */

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html data-theme-id="paper-ink" lang="zh-CN" data-runtime="wise-ppt-specimen" data-typography-mode="all-sans" data-page-id="gallery-ai-c5" data-page-role="prove" data-theme="paper-ink" data-layout="paper-ink.data.radial-progress-array" data-layout-source="gallery" data-emphasis-targets='[{"target_id":"focus.key-layer","members":[{"selector":"#sample-focus","role":"value","treatment":"focus.text","expected_count":1},{"selector":"#c5-focus-label","role":"label","treatment":"focus.text","expected_count":1}]}]' data-catalog-legacy-emphasis-profile="content-only" data-catalog-legacy-emphasis-members='[{"selector":"#sample-focus","role":"value"},{"selector":"#c5-focus-label","role":"label"}]' data-catalog-legacy-emphasis-foreground-members='[]' data-catalog-legacy-emphasis-ref="sample.c5.c5-focus" data-vnext-semantic-key-map='[{"key":"progress-rings.text.001","tag":"text","text":"TOTAL COMPUTE BUDGET / FY2026","occurrence":0}]'>
+<html data-theme-id="paper-ink" lang="zh-CN" data-runtime="wise-ppt-specimen" data-typography-mode="all-sans" data-page-id="gallery-ai-c5" data-page-role="prove" data-theme="paper-ink" data-layout="paper-ink.data.radial-progress-array" data-layout-source="gallery" data-vnext-semantic-key-map='[{"key":"progress-rings.text.001","tag":"text","text":"TOTAL COMPUTE BUDGET / FY2026","occurrence":0}]' data-emphasis-targets='[{"target_id":"focus.key-layer","members":[{"selector":"#sample-focus","role":"value","treatment":"focus.color","expected_count":1},{"selector":"#c5-focus-label","role":"label","treatment":"focus.color","expected_count":1}]}]' data-vnext-type-slot-map='[{"slot":"content-title","tag":"text","text":"训练算力","occurrence":0},{"slot":"content-title","tag":"text","text":"推理服务","occurrence":0},{"slot":"content-title","tag":"text","text":"数据存储","occurrence":0},{"slot":"content-title","tag":"text","text":"人力研发","occurrence":0}]'>
 <head>
 <meta charset="UTF-8">
 <title>layout-c5 · 环形进度环列阵 · AI 预算</title>
@@ -64,8 +64,8 @@ G = el('g', {transform:'translate(0 -26.7)'});
 txt(960, 204, 'TOTAL COMPUTE BUDGET / FY2026', {'font-family':MONO, 'font-size':'var(--type-meta)', 'letter-spacing':3, 'text-anchor':'middle', fill:'color-mix(in srgb, var(--ink) 50%, transparent)'});
 txt(960, 294, '¥ 42,000,000', {id:'sample-focus', 'font-family':MONO, 'font-size':'var(--type-display)', 'letter-spacing':2, 'text-anchor':'middle', fill:INK});  /* 主角：总额是全页焦点 */
 txt(960, 359, '年度算力预算总额 · 按 AI 资源类别拆分为四份', {id:'c5-focus-label', 'font-family':SANS, 'font-weight':300, 'font-size':'var(--type-body)', 'text-anchor':'middle', fill:'var(--wp-adapter-pi-ink-60)'});
-el('line', {x1:560, y1:312, x2:660, y2:312, stroke:INK, 'stroke-width':.8, opacity:.45});
-el('line', {x1:1260, y1:312, x2:1360, y2:312, stroke:INK, 'stroke-width':.8, opacity:.45});
+el('line', {'data-vnext-visual-role':'c5.total-divider', x1:560, y1:312, x2:660, y2:312, stroke:INK, 'stroke-width':2, opacity:1});
+el('line', {'data-vnext-visual-role':'c5.total-divider', x1:1260, y1:312, x2:1360, y2:312, stroke:INK, 'stroke-width':2, opacity:1});
 el('circle', {cx:548, cy:312, r:2.4, fill:INK});
 el('circle', {cx:1372, cy:312, r:2.4, fill:INK});
 

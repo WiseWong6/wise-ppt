@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html data-theme-id="paper-ink" lang="zh-CN" data-runtime="wise-ppt-specimen" data-typography-mode="all-sans" data-page-id="gallery-ai-e1" data-page-role="compare" data-theme="paper-ink" data-layout="paper-ink.comparison.dual-panel" data-layout-source="gallery" data-emphasis-targets='[{"target_id":"focus.decisive-difference","members":[{"selector":"#e1-focus-title","role":"value","treatment":"focus.text","expected_count":1},{"selector":"#e1-focus-check","role":"outline","treatment":"focus.outline-depth","expected_count":1}]}]' data-catalog-legacy-emphasis-profile="content-only" data-catalog-legacy-emphasis-members='[{"selector":"#e1-focus-title","role":"value"},{"selector":"#e1-focus-check","role":"outline"}]' data-catalog-legacy-emphasis-foreground-members='[]' data-catalog-legacy-emphasis-ref="sample.e1.e1-focus" data-vnext-semantic-key-map='[{"key":"comparison.text.001","tag":"text","text":"传统软件","occurrence":0}]'>
+<html data-theme-id="paper-ink" lang="zh-CN" data-runtime="wise-ppt-specimen" data-typography-mode="all-sans" data-page-id="gallery-ai-e1" data-page-role="compare" data-theme="paper-ink" data-layout="paper-ink.comparison.dual-panel" data-layout-source="gallery" data-vnext-semantic-key-map='[{"key":"comparison.text.001","tag":"text","text":"传统软件","occurrence":0}]' data-emphasis-targets='[{"target_id":"focus.decisive-difference","members":[{"selector":"#e1-focus-title","role":"value","treatment":"focus.color","expected_count":1},{"selector":"#e1-focus-check","role":"outline","treatment":"focus.color","expected_count":1},{"selector":"[data-vnext-visual-key=\"e1.current-panel\"]","role":"outline","treatment":"focus.shadow-only","expected_count":1}]}]' data-vnext-type-slot-map='[{"slot":"content-title","tag":"text","text":"错了中断","occurrence":0},{"slot":"content-title","tag":"text","text":"错了继续","occurrence":0}]'>
 <head>
 <meta charset="UTF-8">
 <title>layout-e1 · 对比双面板 · 传统软件 vs Agent</title>
@@ -65,13 +65,13 @@ G = el('g', {transform:'translate(0 -32.7)'});
 var PY = 270, PH = 560, PW = 520;
 var LX = 300, RX = 1100;                 /* 面板左缘；中心 560 / 1360 */
 [LX, RX].forEach(function(px){
-  el('rect', {id:px===LX?'e1-functional-frame':'', x:px, y:PY, width:PW, height:PH, fill:'var(--paper-panel)', stroke:FUNCTIONAL, 'stroke-width':1.3});
+  el('rect', {id:px===LX?'e1-functional-frame':'', 'data-vnext-visual-key':px===RX?'e1.current-panel':'e1.previous-panel', x:px, y:PY, width:PW, height:PH, fill:'var(--paper-panel)', stroke:FUNCTIONAL, 'stroke-width':1.3});
   el('rect', {id:px===LX?'e1-divider-frame':'', x:px+5, y:PY+5, width:PW-10, height:PH-10, fill:'none', stroke:DIVIDER, 'stroke-width':.6});
 });
 el('rect', {x:560-160, y:248, width:320, height:44, fill:'var(--paper)', stroke:FUNCTIONAL, 'stroke-width':1.2});
 txt(486, 277, '传统软件', {'font-family':SANS, 'font-weight':300, 'font-size':'var(--type-label)', fill:INK});
 txt(555, 277, 'CLASSIC SOFTWARE', {'font-family':MONO, 'font-size':'var(--type-meta)', 'letter-spacing':2, fill:'var(--wp-adapter-pi-ink-60)'});
-el('rect', {x:1360-160, y:248, width:320, height:44, fill:'var(--paper)', stroke:FUNCTIONAL, 'stroke-width':1.2});
+el('rect', {'data-vnext-visual-key':'e1.current-tab', x:1360-160, y:248, width:320, height:44, fill:'var(--paper)', stroke:FUNCTIONAL, 'stroke-width':1.2});
 txt(1283, 277, 'Agent', {'font-family':SANS, 'font-weight':300, 'font-size':'var(--type-label)', fill:INK});
 txt(1353, 277, 'AGENTIC', {'font-family':MONO, 'font-size':'var(--type-meta)', 'letter-spacing':2, fill:'var(--wp-adapter-pi-ink-60)'});
 

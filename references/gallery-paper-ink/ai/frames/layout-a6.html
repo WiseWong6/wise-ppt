@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html data-theme-id="paper-ink" lang="zh-CN" data-runtime="wise-ppt-specimen" data-typography-mode="all-sans" data-page-id="gallery-ai-a6" data-page-role="prove" data-theme="paper-ink" data-layout="paper-ink.evidence.credential-wall" data-layout-source="gallery" data-emphasis-targets='[{"target_id":"focus.decisive-difference","members":[{"selector":"[data-vnext-text-key=\"credentials.text.001\"]","role":"value","treatment":"focus.text","expected_count":1}]}]' data-catalog-legacy-emphasis-profile="copy-only" data-catalog-legacy-emphasis-members='[{"selector":"#focus-caption","role":"label"}]' data-catalog-legacy-emphasis-foreground-members='[]' data-catalog-legacy-emphasis-ref="sample.a6.a6-focus" data-vnext-semantic-key-map='[{"key":"credentials.text.001","tag":"text","text":"CREDENTIALS / 12 ITEMS","occurrence":0}]'>
+<html data-theme-id="paper-ink" lang="zh-CN" data-runtime="wise-ppt-specimen" data-typography-mode="all-sans" data-page-id="gallery-ai-a6" data-page-role="prove" data-theme="paper-ink" data-layout="paper-ink.evidence.credential-wall" data-layout-source="gallery" data-vnext-semantic-key-map='[{"key":"credentials.text.001","tag":"text","text":"CREDENTIALS / 12 ITEMS","occurrence":0}]' data-emphasis-targets='[{"target_id":"focus.decisive-difference","members":[{"selector":"#focus-caption","role":"label","treatment":"focus.color","expected_count":1}]}]' data-vnext-type-slot-map='[{"slot":"content-title","tag":"text","text":"模型评测与合规背书","occurrence":0},{"slot":"content-title","tag":"text","text":"TIER S","occurrence":0}]'>
 <head>
 <meta charset="UTF-8">
 <title>layout-a6 · 资质证书墙 · 模型 benchmark</title>
@@ -59,7 +59,7 @@ G = el('g', {transform:'translate(0 -21.2)'});
 /* ============ 左侧：大徽章（同心圆 + 月桂枝线稿，AI 模型评测） ============ */
 txt(150, 221, 'CREDENTIALS / 12 ITEMS', {'font-family':MONO, 'font-size':'var(--type-meta)', 'letter-spacing':2, fill:'color-mix(in srgb, var(--ink) 50%, transparent)'});
 txt(150, 257, '模型评测与合规背书', {'font-family':SANS, 'font-weight':300, 'font-size':'var(--type-subheading)', fill:INK});
-el('line', {x1:150, y1:306, x2:330, y2:306, stroke:INK, 'stroke-width':.8, opacity:.5});
+el('line', {'data-vnext-visual-key':'a6.heading-rule', x1:150, y1:306, x2:330, y2:306, stroke:INK, 'stroke-width':.8, opacity:.5});
 
 /* 徽章垂直居中于「模型评测与合规背书」下划线(y=306)与 ARCHIVE 上沿线(y=776)的中点 */
 var BC = {x: 460, y: 541};

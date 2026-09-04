@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html data-theme-id="paper-ink" lang="zh-CN" data-runtime="wise-ppt-specimen" data-typography-mode="all-sans" data-page-id="gallery-ai-j1" data-page-role="explain" data-theme="paper-ink" data-layout="paper-ink.cycle.ring" data-layout-source="gallery" data-emphasis-targets='[{"target_id":"focus.definition-score","members":[{"selector":"#j1-focus-definition-score","role":"annotation","treatment":"focus.color","expected_count":1}]}]' data-catalog-legacy-emphasis-profile="content-only" data-catalog-legacy-emphasis-members='[{"selector":"#j1-focus-loop","expected_count":1,"role":"label"},{"selector":"#j1-focus-cn","expected_count":1,"role":"label"}]' data-catalog-legacy-emphasis-foreground-members='[]' data-catalog-legacy-emphasis-ref="sample.j1.colored-loop-core" data-vnext-semantic-key-map='[]'>
+<html data-theme-id="paper-ink" lang="zh-CN" data-runtime="wise-ppt-specimen" data-typography-mode="all-sans" data-page-id="gallery-ai-j1" data-page-role="explain" data-theme="paper-ink" data-layout="paper-ink.cycle.ring" data-layout-source="gallery" data-vnext-semantic-key-map='[]' data-emphasis-targets='[{"target_id":"focus.definition-score","members":[{"selector":"#j1-focus-definition-score","role":"annotation","treatment":"focus.color","expected_count":1}]}]' data-vnext-type-slot-map='[{"slot":"content-title","tag":"text","text":"定位","occurrence":0},{"slot":"content-title","tag":"text","text":"调优","occurrence":0},{"slot":"content-title","tag":"text","text":"评测","occurrence":0},{"slot":"content-title","tag":"text","text":"治理","occurrence":0}]'>
 <head>
 <meta charset="UTF-8">
 <title>layout-j1 · 循环圆环 · AI 评测治理闭环</title>
@@ -124,11 +124,11 @@ steps.forEach(function(s){
   el('circle', {cx:nx, cy:ny, r:10, fill:'none', stroke:INK80, 'stroke-width':1.2});
   el('circle', {cx:nx, cy:ny, r:3.5, fill:INK});
   /* 双线卡框 */
-  el('rect', {x:x, y:y, width:W, height:H, fill:'var(--paper-panel)', stroke:INK80, 'stroke-width':1.2});
+  el('rect', {'data-vnext-visual-role':'j1.cycle-card', x:x, y:y, width:W, height:H, fill:'var(--paper-panel)', stroke:INK80, 'stroke-width':1.2});
   el('rect', {x:x+5, y:y+5, width:W-10, height:H-10, fill:'none', stroke:INK, 'stroke-width':.6, opacity:.35});
   /* 编号角标 + 短横 */
   txt(x+30, y+46, s.no, {'data-number-kind':'plain', 'data-number-role':'sequence', 'data-number-part':'label', 'data-text-kind':'number', 'font-family':MONO, 'font-size':'var(--type-body)', fill:'var(--wp-color-functional)'});
-  el('line', {x1:x+30, y1:y+58, x2:x+62, y2:y+58, stroke:INK, 'stroke-width':1});
+  el('line', {'data-vnext-visual-role':'j1.card-heading-rule', x1:x+30, y1:y+58, x2:x+62, y2:y+58, stroke:INK, 'stroke-width':2, opacity:1});
   /* EN 角标 */
   txt(x+W-30, y+44, s.en, {'font-family':MONO, 'font-size':'var(--type-meta)', 'letter-spacing':2, 'text-anchor':'end', fill:INK45});
   /* 卡题 + 一行说明 */

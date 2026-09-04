@@ -1,7 +1,7 @@
 {
-  "contract_version": 4,
+  "contract_version": 5,
   "capability_id": "wise-ppt.page-emphasis",
-  "treatment_contract": "wise-ppt-visual-treatment-grammar@3",
+  "treatment_contract": "wise-ppt-visual-treatment-grammar@4",
   "description": "页面登记多个语义强调候选；AI 只能按内容选择 target_id，具体成员与视觉处理固定。默认可以不强调。",
   "page_count": 88,
   "relationship_page_count": 75,
@@ -16,11 +16,11 @@
     "members_fixed": true,
     "none_allowed": true
   },
-  "theme_roles": {
-    "focus": "--wp-color-focus",
-    "focus-secondary": "--wp-color-focus-secondary",
-    "focus-peripheral": "--wp-color-focus-peripheral"
-  },
+  "theme_roles": [
+    "focus",
+    "focus-secondary",
+    "focus-peripheral"
+  ],
   "allowed_member_roles": [
     "value",
     "label",
@@ -38,6 +38,7 @@
     "focus.outline-depth",
     "focus.solid-reverse",
     "focus.hard-shadow",
+    "focus.shadow-only",
     "focus.texture",
     "focus.path-depth",
     "focus.contrast-isolation"
@@ -223,13 +224,13 @@
             {
               "selector": "#accent-dialogue",
               "role": "value",
-              "treatment": "focus.text",
+              "treatment": "focus.color",
               "expected_count": 1
             },
             {
               "selector": "#accent-outline",
               "role": "outline",
-              "treatment": "focus.outline-depth",
+              "treatment": "focus.color",
               "expected_count": 1
             }
           ]
@@ -265,19 +266,25 @@
             {
               "selector": "#a3-compliance",
               "role": "value",
-              "treatment": "focus.text",
+              "treatment": "focus.color",
               "expected_count": 1
             },
             {
               "selector": "#a3-compliance-line-1",
               "role": "outline",
-              "treatment": "focus.outline-depth",
+              "treatment": "focus.color",
               "expected_count": 1
             },
             {
               "selector": "#a3-compliance-line-2",
               "role": "outline",
-              "treatment": "focus.outline-depth",
+              "treatment": "focus.color",
+              "expected_count": 1
+            },
+            {
+              "selector": "[data-vnext-visual-key=\"a3.document-specimen\"]",
+              "role": "outline",
+              "treatment": "focus.shadow-only",
               "expected_count": 1
             }
           ]
@@ -398,9 +405,9 @@
           "reason_hint": "仅当该对象直接支撑本页 claim 时启用；不得为了配色而开启。",
           "members": [
             {
-              "selector": "[data-vnext-text-key=\"credentials.text.001\"]",
-              "role": "value",
-              "treatment": "focus.text",
+              "selector": "#focus-caption",
+              "role": "label",
+              "treatment": "focus.color",
               "expected_count": 1
             }
           ]
@@ -439,25 +446,31 @@
             {
               "selector": "#badstep",
               "role": "outline",
-              "treatment": "focus.outline-depth",
+              "treatment": "focus.color",
               "expected_count": 1
             },
             {
               "selector": "#badstep .accent-action",
               "role": "value",
-              "treatment": "focus.text",
+              "treatment": "focus.color",
               "expected_count": 1
             },
             {
               "selector": "#badstep .accent-role",
               "role": "label",
-              "treatment": "focus.text",
+              "treatment": "focus.color",
               "expected_count": 1
             },
             {
               "selector": "#badstep .st-err",
               "role": "status",
-              "treatment": "focus.text",
+              "treatment": "focus.color",
+              "expected_count": 1
+            },
+            {
+              "selector": ".ui",
+              "role": "outline",
+              "treatment": "focus.shadow-only",
               "expected_count": 1
             }
           ]
@@ -496,9 +509,9 @@
           "reason_hint": "仅当该对象直接支撑本页 claim 时启用；不得为了配色而开启。",
           "members": [
             {
-              "selector": "[data-vnext-text-key=\"screens.text.001\"]",
-              "role": "value",
-              "treatment": "focus.text",
+              "selector": "#focus-caption",
+              "role": "label",
+              "treatment": "focus.color",
               "expected_count": 1
             }
           ]
@@ -540,62 +553,62 @@
             {
               "selector": "#b1-hot-dot",
               "role": "symbol",
-              "treatment": "focus.solid-reverse",
+              "treatment": "focus.color",
               "paint": "fill",
               "expected_count": 1
             },
             {
               "selector": "#b1-hot-ring-1",
               "role": "outline",
-              "treatment": "focus.outline-depth",
+              "treatment": "focus.color",
               "expected_count": 1
             },
             {
               "selector": "#b1-hot-ring-2",
               "role": "outline",
-              "treatment": "focus.outline-depth",
+              "treatment": "focus.color",
               "expected_count": 1
             },
             {
               "selector": "#b1-hot-year",
               "role": "value",
-              "treatment": "focus.text",
+              "treatment": "focus.color",
               "expected_count": 1
             },
             {
               "selector": "#b1-hot-name",
               "role": "value",
-              "treatment": "focus.text",
+              "treatment": "focus.color",
               "expected_count": 1
             },
             {
               "selector": "#b1-hot-org",
               "role": "label",
-              "treatment": "focus.text",
+              "treatment": "focus.color",
               "expected_count": 1
             },
             {
               "selector": "#b1-hot-note",
               "role": "label",
-              "treatment": "focus.text",
+              "treatment": "focus.color",
               "expected_count": 1
             },
             {
               "selector": "#b1-hot-underline",
               "role": "outline",
-              "treatment": "focus.outline-depth",
+              "treatment": "focus.color",
               "expected_count": 1
             },
             {
               "selector": "#b1-hot-arc-1",
               "role": "outline",
-              "treatment": "focus.outline-depth",
+              "treatment": "focus.color",
               "expected_count": 1
             },
             {
               "selector": "#b1-hot-arc-2",
               "role": "outline",
-              "treatment": "focus.outline-depth",
+              "treatment": "focus.color",
               "expected_count": 1
             }
           ]
@@ -636,25 +649,25 @@
             {
               "selector": "#b2-ring-1",
               "role": "outline",
-              "treatment": "focus.outline-depth",
+              "treatment": "focus.color",
               "expected_count": 1
             },
             {
               "selector": "#b2-ring-2",
               "role": "outline",
-              "treatment": "focus.outline-depth",
+              "treatment": "focus.color",
               "expected_count": 1
             },
             {
               "selector": "#sample-focus",
               "role": "value",
-              "treatment": "focus.text",
+              "treatment": "focus.color",
               "expected_count": 1
             },
             {
               "selector": "#b2-failure-note",
               "role": "label",
-              "treatment": "focus.text",
+              "treatment": "focus.color",
               "expected_count": 1
             }
           ]
@@ -693,9 +706,9 @@
           "reason_hint": "仅当该对象直接支撑本页 claim 时启用；不得为了配色而开启。",
           "members": [
             {
-              "selector": "[data-vnext-text-key=\"roadmap.text.003\"]",
-              "role": "value",
-              "treatment": "focus.text",
+              "selector": "#focus-caption",
+              "role": "label",
+              "treatment": "focus.color",
               "expected_count": 1
             }
           ]
@@ -735,25 +748,13 @@
             {
               "selector": "#b4-focus-date",
               "role": "value",
-              "treatment": "focus.text",
-              "expected_count": 1
-            },
-            {
-              "selector": "#b4-focus-node",
-              "role": "status",
-              "treatment": "focus.solid-reverse",
-              "expected_count": 1
-            },
-            {
-              "selector": "#b4-focus-connector",
-              "role": "outline",
-              "treatment": "focus.outline-depth",
+              "treatment": "focus.color",
               "expected_count": 1
             },
             {
               "selector": "#b4-focus-card",
               "role": "outline",
-              "treatment": "focus.hard-shadow",
+              "treatment": "focus.color",
               "expected_count": 1
             }
           ]
@@ -795,38 +796,38 @@
             {
               "selector": "#b5-focus-node",
               "role": "outline",
-              "treatment": "focus.outline-depth",
+              "treatment": "focus.color",
               "expected_count": 1
             },
             {
               "selector": "#b5-focus-dot",
               "role": "symbol",
-              "treatment": "focus.solid-reverse",
+              "treatment": "focus.color",
               "paint": "fill",
               "expected_count": 1
             },
             {
               "selector": "#b5-focus-year",
               "role": "value",
-              "treatment": "focus.text",
+              "treatment": "focus.color",
               "expected_count": 1
             },
             {
               "selector": "#b5-focus-event",
               "role": "value",
-              "treatment": "focus.text",
+              "treatment": "focus.color",
               "expected_count": 1
             },
             {
               "selector": "#b5-focus-note",
               "role": "label",
-              "treatment": "focus.text",
+              "treatment": "focus.color",
               "expected_count": 1
             },
             {
               "selector": "#b5-focus-leader",
               "role": "outline",
-              "treatment": "focus.outline-depth",
+              "treatment": "focus.color",
               "expected_count": 1
             }
           ]
@@ -868,57 +869,57 @@
             {
               "selector": "#b6-focus-node",
               "role": "outline",
-              "treatment": "focus.outline-depth",
+              "treatment": "focus.color",
               "expected_count": 1
             },
             {
               "selector": "#b6-focus-node-inner",
               "role": "outline",
-              "treatment": "focus.outline-depth",
+              "treatment": "focus.color",
               "expected_count": 1
             },
             {
               "selector": "#b6-focus-node-core",
               "role": "symbol",
-              "treatment": "focus.solid-reverse",
+              "treatment": "focus.color",
               "paint": "fill",
               "expected_count": 1
             },
             {
               "selector": "#b6-focus-leader",
               "role": "outline",
-              "treatment": "focus.outline-depth",
+              "treatment": "focus.color",
               "expected_count": 1
             },
             {
               "selector": "#b6-focus-leader-dot",
               "role": "symbol",
-              "treatment": "focus.solid-reverse",
+              "treatment": "focus.color",
               "paint": "fill",
               "expected_count": 1
             },
             {
               "selector": "#b6-focus-en",
               "role": "value",
-              "treatment": "focus.text",
+              "treatment": "focus.color",
               "expected_count": 1
             },
             {
               "selector": "#b6-focus-year",
               "role": "value",
-              "treatment": "focus.text",
+              "treatment": "focus.color",
               "expected_count": 1
             },
             {
               "selector": "#b6-focus-title",
               "role": "label",
-              "treatment": "focus.text",
+              "treatment": "focus.color",
               "expected_count": 1
             },
             {
               "selector": "#b6-focus-note",
               "role": "annotation",
-              "treatment": "focus.text",
+              "treatment": "focus.color",
               "expected_count": 1
             }
           ]
@@ -959,25 +960,25 @@
             {
               "selector": "#sample-focus",
               "role": "value",
-              "treatment": "focus.text",
+              "treatment": "focus.color",
               "expected_count": 1
             },
             {
               "selector": "#c1-focus-label",
               "role": "label",
-              "treatment": "focus.text",
+              "treatment": "focus.color",
               "expected_count": 1
             },
             {
               "selector": "#c1-focus-note",
               "role": "annotation",
-              "treatment": "focus.text",
+              "treatment": "focus.color",
               "expected_count": 1
             },
             {
               "selector": "#c1-focus-rule",
               "role": "outline",
-              "treatment": "focus.outline-depth",
+              "treatment": "focus.color",
               "expected_count": 1
             }
           ]
@@ -1205,13 +1206,13 @@
             {
               "selector": "#sample-focus",
               "role": "value",
-              "treatment": "focus.text",
+              "treatment": "focus.color",
               "expected_count": 1
             },
             {
               "selector": "#c5-focus-label",
               "role": "label",
-              "treatment": "focus.text",
+              "treatment": "focus.color",
               "expected_count": 1
             }
           ]
@@ -1247,31 +1248,31 @@
             {
               "selector": "#sample-focus",
               "role": "value",
-              "treatment": "focus.text",
+              "treatment": "focus.color",
               "expected_count": 1
             },
             {
               "selector": "#c6-focus-unit",
               "role": "value",
-              "treatment": "focus.text",
+              "treatment": "focus.color",
               "expected_count": 1
             },
             {
               "selector": "#c6-focus-index",
               "role": "label",
-              "treatment": "focus.text",
+              "treatment": "focus.color",
               "expected_count": 1
             },
             {
               "selector": "#c6-focus-label",
               "role": "label",
-              "treatment": "focus.text",
+              "treatment": "focus.color",
               "expected_count": 1
             },
             {
               "selector": "#c6-focus-en",
               "role": "label",
-              "treatment": "focus.text",
+              "treatment": "focus.color",
               "expected_count": 1
             }
           ]
@@ -1310,25 +1311,25 @@
             {
               "selector": "#c7-focus-name",
               "role": "label",
-              "treatment": "focus.text",
+              "treatment": "focus.color",
               "expected_count": 1
             },
             {
               "selector": "#c7-focus-value",
               "role": "value",
-              "treatment": "focus.text",
+              "treatment": "focus.color",
               "expected_count": 1
             },
             {
               "selector": "#c7-focus-bar",
               "role": "outline",
-              "treatment": "focus.outline-depth",
+              "treatment": "focus.color",
               "expected_count": 1
             },
             {
               "selector": "#c7-focus-hatch",
               "role": "texture",
-              "treatment": "focus.texture",
+              "treatment": "focus.color",
               "expected_count": 1
             }
           ]
@@ -1366,13 +1367,19 @@
             {
               "selector": "#e1-focus-title",
               "role": "value",
-              "treatment": "focus.text",
+              "treatment": "focus.color",
               "expected_count": 1
             },
             {
               "selector": "#e1-focus-check",
               "role": "outline",
-              "treatment": "focus.outline-depth",
+              "treatment": "focus.color",
+              "expected_count": 1
+            },
+            {
+              "selector": "[data-vnext-visual-key=\"e1.current-panel\"]",
+              "role": "outline",
+              "treatment": "focus.shadow-only",
               "expected_count": 1
             }
           ]
@@ -1408,9 +1415,9 @@
           "reason_hint": "仅当该对象直接支撑本页 claim 时启用；不得为了配色而开启。",
           "members": [
             {
-              "selector": "[data-vnext-text-key=\"comparison-fields.text.001\"]",
-              "role": "value",
-              "treatment": "focus.text",
+              "selector": "#focus-caption",
+              "role": "label",
+              "treatment": "focus.color",
               "expected_count": 1
             }
           ]
@@ -1446,9 +1453,9 @@
           "reason_hint": "仅当该对象直接支撑本页 claim 时启用；不得为了配色而开启。",
           "members": [
             {
-              "selector": "[data-vnext-text-key=\"paired-items.text.001\"]",
-              "role": "value",
-              "treatment": "focus.text",
+              "selector": "#focus-caption",
+              "role": "label",
+              "treatment": "focus.color",
               "expected_count": 1
             }
           ]
@@ -1583,10 +1590,23 @@
       "targets": [
         {
           "target_id": "focus.decisive-difference",
-          "label": "召回、重排与组装",
-          "content_role": "底部总结中的三项关键动作",
-          "reason_hint": "在默认主题身份上，只给召回、重排与组装增加强调色。",
+          "label": "After 结果与召回、重排、组装",
+          "content_role": "After 结果标记、标题与底部关键动作",
+          "reason_hint": "默认保持 After 标记和标题反白；只在该结果直接支撑本页结论时，将它们与底部关键动作一起强调。",
           "members": [
+            {
+              "selector": "#e6-focus-badge",
+              "role": "symbol",
+              "treatment": "focus.color",
+              "paint": "fill",
+              "expected_count": 1
+            },
+            {
+              "selector": "#e6-focus-title",
+              "role": "value",
+              "treatment": "focus.color",
+              "expected_count": 1
+            },
             {
               "selector": "#e6-focus-actions",
               "role": "annotation",
@@ -1616,7 +1636,8 @@
         "label",
         "outline",
         "status",
-        "texture"
+        "texture",
+        "value"
       ],
       "targets": [
         {
@@ -1626,15 +1647,15 @@
           "reason_hint": "仅当该对象直接支撑本页 claim 时启用；不得为了配色而开启。",
           "members": [
             {
-              "selector": "#sample-focus",
-              "role": "status",
-              "treatment": "focus.text",
+              "selector": "#f2-spec-card",
+              "role": "outline",
+              "treatment": "focus.color",
               "expected_count": 1
             },
             {
-              "selector": "#f2-focus-frame",
-              "role": "outline",
-              "treatment": "focus.outline-depth",
+              "selector": "#f2-spec-title",
+              "role": "value",
+              "treatment": "focus.color",
               "expected_count": 1
             }
           ]
@@ -1748,19 +1769,19 @@
             {
               "selector": "#g1-focus-frame",
               "role": "outline",
-              "treatment": "focus.outline-depth",
+              "treatment": "focus.hard-shadow",
               "expected_count": 1
             },
             {
               "selector": "#sample-focus",
               "role": "value",
-              "treatment": "focus.text",
+              "treatment": "focus.color",
               "expected_count": 1
             },
             {
               "selector": "#g1-focus-cn",
               "role": "label",
-              "treatment": "focus.text",
+              "treatment": "focus.color",
               "expected_count": 1
             }
           ]
@@ -1794,9 +1815,9 @@
           "reason_hint": "仅当该对象直接支撑本页 claim 时启用；不得为了配色而开启。",
           "members": [
             {
-              "selector": "[data-vnext-text-key=\"hero.text.001\"]",
-              "role": "value",
-              "treatment": "focus.text",
+              "selector": "#focus-caption",
+              "role": "label",
+              "treatment": "focus.color",
               "expected_count": 1
             }
           ]
@@ -1871,7 +1892,13 @@
             {
               "selector": "#g5-focus-title",
               "role": "value",
-              "treatment": "focus.text",
+              "treatment": "focus.color",
+              "expected_count": 1
+            },
+            {
+              "selector": "[data-vnext-visual-key=\"g5.principle-focus\"]",
+              "role": "outline",
+              "treatment": "focus.shadow-only",
               "expected_count": 1
             }
           ]
@@ -1981,9 +2008,15 @@
           "reason_hint": "仅当该对象直接支撑本页 claim 时启用；不得为了配色而开启。",
           "members": [
             {
-              "selector": "[data-vnext-text-key=\"architecture.text.001\"]",
-              "role": "value",
-              "treatment": "focus.text",
+              "selector": "#focus-caption",
+              "role": "label",
+              "treatment": "focus.color",
+              "expected_count": 1
+            },
+            {
+              "selector": "[data-vnext-visual-key=\"h3.architecture-surface\"]",
+              "role": "outline",
+              "treatment": "focus.shadow-only",
               "expected_count": 1
             }
           ]
@@ -2154,25 +2187,25 @@
             {
               "selector": "#i3-focus-ring",
               "role": "outline",
-              "treatment": "focus.outline-depth",
+              "treatment": "focus.color",
               "expected_count": 1
             },
             {
               "selector": "#i3-focus-no",
               "role": "value",
-              "treatment": "focus.text",
+              "treatment": "focus.color",
               "expected_count": 1
             },
             {
               "selector": "#i3-focus-cn",
               "role": "value",
-              "treatment": "focus.text",
+              "treatment": "focus.color",
               "expected_count": 1
             },
             {
               "selector": "#i3-focus-en",
               "role": "annotation",
-              "treatment": "focus.text",
+              "treatment": "focus.color",
               "expected_count": 1
             }
           ]
@@ -2208,7 +2241,7 @@
           "reason_hint": "沿用旧强调色，只给异常兜底标题与外框上色；识别失败类型，给出降级路径不上色。",
           "members": [
             {
-              "selector": "#i4-focus-frame",
+              "selector": "[data-vnext-visual-key=\"i4.solution-panel\"]",
               "role": "outline",
               "treatment": "focus.color",
               "expected_count": 1
@@ -2363,41 +2396,34 @@
           "reason_hint": "当“ONBOARD · 初次接触”是本页转折点时，同时加强阶段签、节点和整条旅程曲线的深度。",
           "members": [
             {
-              "selector": "#draw > g > path:nth-of-type(1)",
-              "role": "status",
-              "treatment": "focus.solid-reverse",
-              "paint": "fill",
-              "expected_count": 1
-            },
-            {
-              "selector": "[data-vnext-text-key=\"journey.text.001\"], [data-vnext-text-key=\"journey.text.002\"]",
-              "role": "label",
-              "treatment": "focus.text",
-              "expected_count": 2
-            },
-            {
-              "selector": "#draw circle[cx=\"300\"][cy=\"560\"][r=\"9\"]",
+              "selector": "#j3-focus-node",
               "role": "outline",
-              "treatment": "focus.outline-depth",
+              "treatment": "focus.color",
               "expected_count": 1
             },
             {
-              "selector": "#draw circle[cx=\"300\"][cy=\"560\"][r=\"2.4\"]",
+              "selector": "#j3-focus-node-core",
               "role": "symbol",
-              "treatment": "focus.solid-reverse",
+              "treatment": "focus.color",
               "paint": "fill",
               "expected_count": 1
             },
             {
-              "selector": "[data-vnext-text-key=\"journey.text.012\"], [data-vnext-text-key=\"journey.text.013\"]",
-              "role": "value",
-              "treatment": "focus.text",
-              "expected_count": 2
+              "selector": "#j3-focus-leader",
+              "role": "outline",
+              "treatment": "focus.color",
+              "expected_count": 1
             },
             {
-              "selector": "#draw > g > path:nth-of-type(6)",
-              "role": "outline",
-              "treatment": "focus.path-depth",
+              "selector": "#j3-focus-cn",
+              "role": "value",
+              "treatment": "focus.color",
+              "expected_count": 1
+            },
+            {
+              "selector": "#j3-focus-score",
+              "role": "annotation",
+              "treatment": "focus.color",
               "expected_count": 1
             }
           ]
@@ -2409,7 +2435,7 @@
           "reason_hint": "当“WOW · 上手使用”是本页转折点时，同时加强阶段签、节点和整条旅程曲线的深度。",
           "members": [
             {
-              "selector": "#draw > g > path:nth-of-type(2)",
+              "selector": "[data-vnext-visual-key=\"j3.stage.wow\"]",
               "role": "status",
               "treatment": "focus.solid-reverse",
               "paint": "fill",
@@ -2422,13 +2448,13 @@
               "expected_count": 2
             },
             {
-              "selector": "#draw circle[cx=\"590\"][cy=\"430\"][r=\"9\"]",
+              "selector": "[data-vnext-visual-key=\"j3.node.wow.outline\"]",
               "role": "outline",
               "treatment": "focus.outline-depth",
               "expected_count": 1
             },
             {
-              "selector": "#draw circle[cx=\"590\"][cy=\"430\"][r=\"2.4\"]",
+              "selector": "[data-vnext-visual-key=\"j3.node.wow.core\"]",
               "role": "symbol",
               "treatment": "focus.solid-reverse",
               "paint": "fill",
@@ -2441,7 +2467,7 @@
               "expected_count": 2
             },
             {
-              "selector": "#draw > g > path:nth-of-type(6)",
+              "selector": "[data-vnext-visual-key=\"j3.journey-curve\"]",
               "role": "outline",
               "treatment": "focus.path-depth",
               "expected_count": 1
@@ -2455,7 +2481,7 @@
           "reason_hint": "当“DEPTH · 深度使用”是本页转折点时，同时加强阶段签、节点和整条旅程曲线的深度。",
           "members": [
             {
-              "selector": "#draw > g > path:nth-of-type(3)",
+              "selector": "[data-vnext-visual-key=\"j3.stage.depth\"]",
               "role": "status",
               "treatment": "focus.solid-reverse",
               "paint": "fill",
@@ -2468,13 +2494,13 @@
               "expected_count": 2
             },
             {
-              "selector": "#draw circle[cx=\"830\"][cy=\"700\"][r=\"9\"]",
+              "selector": "[data-vnext-visual-key=\"j3.node.depth.outline\"]",
               "role": "outline",
               "treatment": "focus.outline-depth",
               "expected_count": 1
             },
             {
-              "selector": "#draw circle[cx=\"830\"][cy=\"700\"][r=\"2.4\"]",
+              "selector": "[data-vnext-visual-key=\"j3.node.depth.core\"]",
               "role": "symbol",
               "treatment": "focus.solid-reverse",
               "paint": "fill",
@@ -2487,7 +2513,7 @@
               "expected_count": 2
             },
             {
-              "selector": "#draw > g > path:nth-of-type(6)",
+              "selector": "[data-vnext-visual-key=\"j3.journey-curve\"]",
               "role": "outline",
               "treatment": "focus.path-depth",
               "expected_count": 1
@@ -2501,7 +2527,7 @@
           "reason_hint": "当“STALL · 遇到瓶颈”是本页转折点时，同时加强阶段签、节点和整条旅程曲线的深度。",
           "members": [
             {
-              "selector": "#draw > g > path:nth-of-type(4)",
+              "selector": "[data-vnext-visual-key=\"j3.stage.stall\"]",
               "role": "status",
               "treatment": "focus.solid-reverse",
               "paint": "fill",
@@ -2514,13 +2540,13 @@
               "expected_count": 2
             },
             {
-              "selector": "#draw circle[cx=\"1330\"][cy=\"660\"][r=\"9\"]",
+              "selector": "[data-vnext-visual-key=\"j3.node.stall.outline\"]",
               "role": "outline",
               "treatment": "focus.outline-depth",
               "expected_count": 1
             },
             {
-              "selector": "#draw circle[cx=\"1330\"][cy=\"660\"][r=\"2.4\"]",
+              "selector": "[data-vnext-visual-key=\"j3.node.stall.core\"]",
               "role": "symbol",
               "treatment": "focus.solid-reverse",
               "paint": "fill",
@@ -2533,7 +2559,7 @@
               "expected_count": 2
             },
             {
-              "selector": "#draw > g > path:nth-of-type(6)",
+              "selector": "[data-vnext-visual-key=\"j3.journey-curve\"]",
               "role": "outline",
               "treatment": "focus.path-depth",
               "expected_count": 1
@@ -2547,7 +2573,7 @@
           "reason_hint": "当“BREAK · 突破理解”是本页转折点时，同时加强阶段签、节点和整条旅程曲线的深度。",
           "members": [
             {
-              "selector": "#draw > g > path:nth-of-type(5)",
+              "selector": "[data-vnext-visual-key=\"j3.stage.breakthrough\"]",
               "role": "status",
               "treatment": "focus.solid-reverse",
               "paint": "fill",
@@ -2560,13 +2586,13 @@
               "expected_count": 2
             },
             {
-              "selector": "#draw circle[cx=\"1090\"][cy=\"450\"][r=\"9\"]",
+              "selector": "[data-vnext-visual-key=\"j3.node.breakthrough.outline\"]",
               "role": "outline",
               "treatment": "focus.outline-depth",
               "expected_count": 1
             },
             {
-              "selector": "#draw circle[cx=\"1090\"][cy=\"450\"][r=\"2.4\"]",
+              "selector": "[data-vnext-visual-key=\"j3.node.breakthrough.core\"]",
               "role": "symbol",
               "treatment": "focus.solid-reverse",
               "paint": "fill",
@@ -2579,7 +2605,7 @@
               "expected_count": 2
             },
             {
-              "selector": "#draw > g > path:nth-of-type(6)",
+              "selector": "[data-vnext-visual-key=\"j3.journey-curve\"]",
               "role": "outline",
               "treatment": "focus.path-depth",
               "expected_count": 1
@@ -2620,39 +2646,58 @@
           "reason_hint": "仅当该对象直接支撑本页 claim 时启用；不得为了配色而开启。",
           "members": [
             {
-              "selector": "#k1-focus-frame",
-              "role": "outline",
-              "treatment": "focus.outline-depth",
-              "expected_count": 1
-            },
-            {
-              "selector": "#k1-focus-frame-inner",
-              "role": "outline",
-              "treatment": "focus.outline-depth",
-              "expected_count": 1
-            },
-            {
-              "selector": "#k1-focus-no",
-              "role": "value",
-              "treatment": "focus.text",
-              "expected_count": 1
-            },
-            {
               "selector": "#k1-focus-en",
-              "role": "annotation",
-              "treatment": "focus.text",
+              "role": "value",
+              "treatment": "focus.color",
+              "expected_count": 1
+            },
+            {
+              "selector": "#k1-focus-frame",
+              "role": "symbol",
+              "treatment": "focus.color",
+              "paint": "fill",
               "expected_count": 1
             },
             {
               "selector": "#k1-focus-divider",
               "role": "outline",
-              "treatment": "focus.outline-depth",
+              "treatment": "focus.color",
               "expected_count": 1
             },
             {
               "selector": "#k1-focus-cn",
               "role": "label",
-              "treatment": "focus.text",
+              "treatment": "focus.color",
+              "expected_count": 1
+            },
+            {
+              "selector": ".k1-focus-column-value",
+              "role": "annotation",
+              "treatment": "focus.color",
+              "expected_count": 6
+            },
+            {
+              "selector": ".k1-focus-column-label",
+              "role": "label",
+              "treatment": "focus.color",
+              "expected_count": 6
+            },
+            {
+              "selector": "#k1-focus-chevron",
+              "role": "outline",
+              "treatment": "focus.color",
+              "expected_count": 1
+            },
+            {
+              "selector": "#k1-focus-chevron-text",
+              "role": "value",
+              "treatment": "focus.color",
+              "expected_count": 1
+            },
+            {
+              "selector": "#k1-focus-no",
+              "role": "label",
+              "treatment": "focus.reverse-text",
               "expected_count": 1
             }
           ]
@@ -2693,19 +2738,19 @@
             {
               "selector": "#k2-focus-kpi-code",
               "role": "annotation",
-              "treatment": "focus.text",
+              "treatment": "focus.color",
               "expected_count": 1
             },
             {
               "selector": "#sample-focus",
               "role": "value",
-              "treatment": "focus.text",
+              "treatment": "focus.color",
               "expected_count": 1
             },
             {
               "selector": "#k2-focus-kpi-label",
               "role": "label",
-              "treatment": "focus.text",
+              "treatment": "focus.color",
               "expected_count": 1
             }
           ]
@@ -2823,13 +2868,13 @@
             {
               "selector": "#l1-focus-edge",
               "role": "outline",
-              "treatment": "focus.outline-depth",
+              "treatment": "focus.color",
               "expected_count": 1
             },
             {
               "selector": "#l1-focus-label",
               "role": "annotation",
-              "treatment": "focus.text",
+              "treatment": "focus.color",
               "expected_count": 1
             }
           ]
@@ -2868,9 +2913,9 @@
           "reason_hint": "仅当该对象直接支撑本页 claim 时启用；不得为了配色而开启。",
           "members": [
             {
-              "selector": "[data-vnext-text-key=\"mapping-network.text.001\"]",
-              "role": "value",
-              "treatment": "focus.text",
+              "selector": "#focus-caption",
+              "role": "label",
+              "treatment": "focus.color",
               "expected_count": 1
             }
           ]
@@ -2910,19 +2955,19 @@
             {
               "selector": "#n1-focus-frame",
               "role": "outline",
-              "treatment": "focus.outline-depth",
+              "treatment": "focus.color",
               "expected_count": 1
             },
             {
               "selector": "#n1-focus-en",
               "role": "annotation",
-              "treatment": "focus.text",
+              "treatment": "focus.color",
               "expected_count": 1
             },
             {
               "selector": "#n1-focus-cn",
               "role": "value",
-              "treatment": "focus.text",
+              "treatment": "focus.color",
               "expected_count": 1
             }
           ]
@@ -2951,7 +2996,8 @@
         "label",
         "outline",
         "status",
-        "annotation"
+        "annotation",
+        "symbol"
       ],
       "targets": [
         {
@@ -2961,39 +3007,22 @@
           "reason_hint": "仅当该对象直接支撑本页 claim 时启用；不得为了配色而开启。",
           "members": [
             {
-              "selector": "#o1-focus-side-left",
-              "role": "outline",
-              "treatment": "focus.outline-depth",
-              "expected_count": 1
-            },
-            {
-              "selector": "#o1-focus-side-right",
-              "role": "outline",
-              "treatment": "focus.outline-depth",
-              "expected_count": 1
-            },
-            {
-              "selector": "#o1-focus-number",
-              "role": "value",
-              "treatment": "focus.text",
-              "expected_count": 1
-            },
-            {
-              "selector": "#o1-focus-tag",
-              "role": "annotation",
-              "treatment": "focus.text",
+              "selector": "#o1-focus-region",
+              "role": "symbol",
+              "treatment": "focus.color",
+              "paint": "fill",
               "expected_count": 1
             },
             {
               "selector": "#o1-focus-label",
               "role": "label",
-              "treatment": "focus.text",
+              "treatment": "focus.reverse-text",
               "expected_count": 1
             },
             {
               "selector": "#o1-focus-top-k",
-              "role": "annotation",
-              "treatment": "focus.text",
+              "role": "label",
+              "treatment": "focus.reverse-text",
               "expected_count": 1
             }
           ]
@@ -3114,7 +3143,8 @@
         "outline",
         "symbol",
         "texture",
-        "annotation"
+        "annotation",
+        "label"
       ],
       "targets": [
         {
@@ -3124,9 +3154,16 @@
           "reason_hint": "仅当该对象直接支撑本页 claim 时启用；不得为了配色而开启。",
           "members": [
             {
+              "selector": "#q1-focus-region",
+              "role": "symbol",
+              "treatment": "focus.color",
+              "paint": "fill",
+              "expected_count": 1
+            },
+            {
               "selector": "#q1-focus-label",
-              "role": "value",
-              "treatment": "focus.text",
+              "role": "label",
+              "treatment": "focus.reverse-text",
               "expected_count": 1
             }
           ]
@@ -3162,16 +3199,22 @@
           "reason_hint": "当人工标注是主因时，同时加强扇区和第一行证据。",
           "members": [
             {
-              "selector": "#q2-data-6",
-              "role": "outline",
-              "treatment": "focus.path-depth",
+              "selector": "#q2-focus-period",
+              "role": "label",
+              "treatment": "focus.color",
               "expected_count": 1
             },
             {
-              "selector": "[data-vnext-text-key=\"parts.text.002\"], [data-vnext-text-key=\"parts.text.003\"], [data-vnext-text-key=\"parts.text.004\"], [data-vnext-text-key=\"parts.text.005\"]",
+              "selector": "#q2-focus-total",
               "role": "value",
-              "treatment": "focus.text",
-              "expected_count": 4
+              "treatment": "focus.color",
+              "expected_count": 1
+            },
+            {
+              "selector": "#q2-focus-label",
+              "role": "label",
+              "treatment": "focus.color",
+              "expected_count": 1
             }
           ]
         },
@@ -3314,9 +3357,9 @@
           "reason_hint": "仅当该对象直接支撑本页 claim 时启用；不得为了配色而开启。",
           "members": [
             {
-              "selector": "[data-vnext-text-key=\"evidence-a.text.003\"]",
-              "role": "value",
-              "treatment": "focus.text",
+              "selector": "#focus-caption",
+              "role": "label",
+              "treatment": "focus.color",
               "expected_count": 1
             }
           ]
@@ -3389,9 +3432,21 @@
           "reason_hint": "仅当该对象直接支撑本页 claim 时启用；不得为了配色而开启。",
           "members": [
             {
-              "selector": "[data-vnext-text-key=\"strategy.text.003\"]",
-              "role": "value",
-              "treatment": "focus.text",
+              "selector": "#r2-focus-strategy",
+              "role": "label",
+              "treatment": "focus.color",
+              "expected_count": 1
+            },
+            {
+              "selector": "#r2-focus-capability",
+              "role": "label",
+              "treatment": "focus.color",
+              "expected_count": 1
+            },
+            {
+              "selector": "#r2-focus-execution",
+              "role": "label",
+              "treatment": "focus.color",
               "expected_count": 1
             }
           ]
@@ -3464,9 +3519,9 @@
           "reason_hint": "仅当该对象直接支撑本页 claim 时启用；不得为了配色而开启。",
           "members": [
             {
-              "selector": "[data-vnext-text-key=\"balance.text.003\"]",
-              "role": "value",
-              "treatment": "focus.text",
+              "selector": "#focus-caption",
+              "role": "label",
+              "treatment": "focus.color",
               "expected_count": 1
             }
           ]
@@ -3506,25 +3561,25 @@
             {
               "selector": "#r5-focus-en",
               "role": "annotation",
-              "treatment": "focus.text",
+              "treatment": "focus.color",
               "expected_count": 1
             },
             {
               "selector": "#r5-focus-cn",
               "role": "value",
-              "treatment": "focus.text",
+              "treatment": "focus.color",
               "expected_count": 1
             },
             {
               "selector": "#r5-focus-line",
               "role": "outline",
-              "treatment": "focus.outline-depth",
+              "treatment": "focus.color",
               "expected_count": 1
             },
             {
               "selector": "#r5-focus-arrow",
               "role": "outline",
-              "treatment": "focus.outline-depth",
+              "treatment": "focus.color",
               "expected_count": 1
             }
           ]
@@ -3560,9 +3615,9 @@
           "reason_hint": "仅当该对象直接支撑本页 claim 时启用；不得为了配色而开启。",
           "members": [
             {
-              "selector": "[data-vnext-text-key=\"input.text.003\"]",
-              "role": "value",
-              "treatment": "focus.text",
+              "selector": "#focus-caption",
+              "role": "label",
+              "treatment": "focus.color",
               "expected_count": 1
             }
           ]
@@ -3728,15 +3783,21 @@
           "reason_hint": "当可变成本是结论主因时，同时加强其扇区和上方证据面板。",
           "members": [
             {
-              "selector": "#s2-data-6",
-              "role": "outline",
-              "treatment": "focus.path-depth",
+              "selector": "#s2-focus-period",
+              "role": "label",
+              "treatment": "focus.color",
               "expected_count": 1
             },
             {
-              "selector": "g[data-anchor-id=\"s2.upper\"]",
+              "selector": "#s2-focus-value",
               "role": "value",
-              "treatment": "focus.contrast-isolation",
+              "treatment": "focus.color",
+              "expected_count": 1
+            },
+            {
+              "selector": "#s2-focus-label",
+              "role": "label",
+              "treatment": "focus.color",
               "expected_count": 1
             }
           ]
@@ -3888,6 +3949,12 @@
               "role": "value",
               "treatment": "focus.color",
               "expected_count": 1
+            },
+            {
+              "selector": "[data-vnext-visual-key=\"t1.raw-document\"]",
+              "role": "outline",
+              "treatment": "focus.shadow-only",
+              "expected_count": 1
             }
           ]
         }
@@ -3965,7 +4032,7 @@
           "reason_hint": "只给上方判断卡增加主题色硬影；“成熟表达沉淀为单元”保持默认色。",
           "members": [
             {
-              "selector": "#t3-decision > rect:first-of-type",
+              "selector": "[data-vnext-visual-key=\"t3.decision-card-surface\"]",
               "role": "outline",
               "treatment": "focus.hard-shadow",
               "expected_count": 1
@@ -4030,13 +4097,13 @@
             {
               "selector": "#u1-kpi-a",
               "role": "value",
-              "treatment": "focus.text",
+              "treatment": "focus.color",
               "expected_count": 1
             },
             {
               "selector": "#u1-kpi-b",
               "role": "value",
-              "treatment": "focus.text",
+              "treatment": "focus.color",
               "expected_count": 1
             }
           ]
@@ -4072,13 +4139,13 @@
             {
               "selector": "#u2-focus-bar",
               "role": "value",
-              "treatment": "focus.text",
+              "treatment": "focus.color",
               "expected_count": 1
             },
             {
               "selector": "#u2-delta-row",
               "role": "status",
-              "treatment": "focus.text",
+              "treatment": "focus.color",
               "expected_count": 1
             }
           ]
@@ -4320,13 +4387,13 @@
           "reason_hint": "仅当该对象直接支撑本页 claim 时启用；不得为了配色而开启。",
           "members": [
             {
-              "selector": "text[x=\"1144\"][y=\"574\"]",
+              "selector": "[data-vnext-visual-key=\"d6.contact-primary-label\"]",
               "role": "label",
               "treatment": "focus.text",
               "expected_count": 1
             },
             {
-              "selector": "text[x=\"1250\"][y=\"574\"]",
+              "selector": "[data-vnext-visual-key=\"d6.contact-primary-value\"]",
               "role": "label",
               "treatment": "focus.text",
               "expected_count": 1

@@ -107,7 +107,7 @@
   function assertEmphasisTreatment(treatment) {
     var allowed = [
       'focus.color', 'focus.reverse-text', 'focus.text', 'focus.outline-depth', 'focus.solid-reverse',
-      'focus.ink-weight', 'focus.hard-shadow', 'focus.texture', 'focus.path-depth',
+      'focus.ink-weight', 'focus.hard-shadow', 'focus.shadow-only', 'focus.texture', 'focus.path-depth',
       'focus.contrast-isolation'
     ];
     if (allowed.indexOf(treatment) < 0) throw new Error('未知强调视觉处理: ' + treatment);
@@ -130,36 +130,50 @@
     });
   }
 
-  function materializeRuntimeEmphasis(slide, contentRef) {
-    var raw = (slide.dataset.emphasisMembers || '').trim();
-    if (!raw) throw new Error('semantic-focus 页面缺少 data-emphasis-members');
-    var members;
-    try { members = JSON.parse(raw); } catch (_error) { throw new Error('data-emphasis-members 不是合法 JSON'); }
-    if (!Array.isArray(members) || !members.length) throw new Error('data-emphasis-members 必须是非空数组');
-    members.forEach(function (member) {
-      if (!member || typeof member.selector !== 'string' || !member.selector || typeof member.role !== 'string' || !member.role || typeof member.treatment !== 'string') {
-        throw new Error('data-emphasis-members 条目缺少 selector/role/treatment');
+  function materializeRuntimeEmphasis(slide, contentRef, targetId) {
+    var carriers = Array.prototype.slice.call(slide.querySelectorAll('[data-theme-emphasis-members]'));
+    if (!carriers.length) throw new Error('semantic-focus 页面缺少编译期强调载体');
+    var active = [];
+    carriers.forEach(function (node) {
+      if (node.dataset.themeEmphasisSource !== 'wise-ppt-layout-theme-bindings@3') {
+        throw new Error('编译期强调载体来源错误');
       }
-      emphasisThemeRole(member.role);
-      assertEmphasisTreatment(member.treatment);
-      if (!Number.isInteger(member.expected_count) || member.expected_count < 1) throw new Error('强调目标缺少正整数 expected_count');
-      var targets;
-      try { targets = slide.querySelectorAll(member.selector); } catch (_error) { throw new Error('强调目标选择器非法: ' + member.selector); }
-      if (targets.length !== member.expected_count) throw new Error('强调目标精确命中数量错误: ' + member.selector);
-      targets.forEach(function (node) {
-        ['content-ref', 'emphasis-role', 'emphasis-treatment', 'emphasis-paint'].forEach(function (name) {
-          var originalName = 'data-emphasis-runtime-original-' + name;
-          var current = node.getAttribute('data-' + name);
-          node.setAttribute(originalName, current === null ? '__missing__' : current);
-        });
-        node.dataset.contentRef = contentRef;
-        node.dataset.emphasisRole = member.role;
-        node.dataset.emphasisTreatment = member.treatment;
-        if (member.paint) node.dataset.emphasisPaint = member.paint;
-        else node.removeAttribute('data-emphasis-paint');
-        node.dataset.emphasisRuntimeApplied = 'true';
+      var memberships;
+      try { memberships = JSON.parse(node.dataset.themeEmphasisMembers || ''); }
+      catch (_error) { throw new Error('data-theme-emphasis-members 不是合法 JSON'); }
+      if (!Array.isArray(memberships) || !memberships.length) {
+        throw new Error('data-theme-emphasis-members 必须是非空数组');
+      }
+      memberships.forEach(function (member) {
+        if (!member || typeof member.target_id !== 'string' || !member.target_id ||
+          typeof member.role !== 'string' || !member.role || typeof member.treatment !== 'string') {
+          throw new Error('data-theme-emphasis-members 条目缺少 target_id/role/treatment');
+        }
+        emphasisThemeRole(member.role);
+        assertEmphasisTreatment(member.treatment);
+        if (member.paint !== undefined && member.paint !== 'fill' && member.paint !== 'stroke') {
+          throw new Error('data-theme-emphasis-members.paint 只能是 fill 或 stroke');
+        }
       });
+      var selected = memberships.filter(function (member) { return member.target_id === targetId; });
+      if (selected.length > 1) throw new Error('同一编译期强调载体不得对当前 target 声明多个处理');
+      if (!selected.length) return;
+      var member = selected[0];
+      ['content-ref', 'emphasis-role', 'emphasis-treatment', 'emphasis-paint'].forEach(function (name) {
+        var originalName = 'data-emphasis-runtime-original-' + name;
+        var current = node.getAttribute('data-' + name);
+        node.setAttribute(originalName, current === null ? '__missing__' : current);
+      });
+      node.dataset.contentRef = contentRef;
+      node.dataset.emphasisRole = member.role;
+      node.dataset.emphasisTreatment = member.treatment;
+      if (member.paint) node.dataset.emphasisPaint = member.paint;
+      else node.removeAttribute('data-emphasis-paint');
+      node.dataset.emphasisRuntimeApplied = 'true';
+      active.push(node);
     });
+    if (!active.length) throw new Error('semantic-focus target 没有编译期强调载体: ' + targetId);
+    return active;
   }
 
   function bindSemanticEmphasis(slide) {
@@ -173,19 +187,20 @@
     var mode = slide.dataset.emphasisMode || 'none';
     if (mode === 'none') return [];
     if (mode !== 'semantic-focus') throw new Error('未知页面强调模式: ' + mode);
+    var targetId = (slide.dataset.emphasisTarget || '').trim();
     var contentRef = (slide.dataset.emphasisRef || '').trim();
     var reason = (slide.dataset.emphasisReason || '').trim();
     var memberRoles = (slide.dataset.emphasisRoles || '').split(/\s+/).filter(Boolean);
+    if (!targetId) throw new Error('semantic-focus 页面缺少 data-emphasis-target');
     if (!contentRef) throw new Error('semantic-focus 页面缺少 data-emphasis-ref');
     if (!reason) throw new Error('semantic-focus 页面缺少 data-emphasis-reason');
     if (!memberRoles.length || new Set(memberRoles).size !== memberRoles.length) throw new Error('semantic-focus 页面成员角色缺失或重复');
     memberRoles.forEach(emphasisThemeRole);
-    materializeRuntimeEmphasis(slide, contentRef);
-    carriers = Array.prototype.slice.call(slide.querySelectorAll('[data-emphasis-role]'));
-    var active = carriers.filter(function (node) {
-      return node.dataset.contentRef === contentRef && memberRoles.includes(node.dataset.emphasisRole);
-    });
-    if (!active.length) throw new Error('semantic-focus 页面没有与 content_ref 和 member_roles 同时匹配的载体');
+    var active = materializeRuntimeEmphasis(slide, contentRef, targetId);
+    var activeRoles = Array.from(new Set(active.map(function (node) { return node.dataset.emphasisRole; }))).sort();
+    if (activeRoles.join(' ') !== memberRoles.slice().sort().join(' ')) {
+      throw new Error('semantic-focus 页面声明角色与编译期载体不一致');
+    }
     active.forEach(function (node) {
       if (root.classList.contains('accent')) node.dataset.emphasisActive = 'true';
       var shapeTags = ['PATH', 'LINE', 'POLYLINE', 'POLYGON', 'CIRCLE', 'ELLIPSE', 'RECT', 'USE'];

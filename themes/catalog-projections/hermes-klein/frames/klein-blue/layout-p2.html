@@ -1,8 +1,8 @@
 <!DOCTYPE html>
-<html data-theme-id="klein-blue" lang="zh-CN" data-runtime="wise-ppt-specimen" data-typography-mode="all-sans" data-page-id="gallery-ai-p2" data-page-role="explain" data-theme="paper-ink" data-layout="paper-ink.mapping.diamond-edge-labels" data-layout-source="gallery" data-emphasis-targets="[{&quot;target_id&quot;:&quot;focus.key-node&quot;,&quot;label&quot;:&quot;RETRIEVED CONTEXTS · 检索上下文&quot;,&quot;content_role&quot;:&quot;菱形上方检索上下文节点&quot;,&quot;reason_hint&quot;:&quot;沿用旧版反白强调，并让检索上下文卡片的内外两道边框同时跟随强调色。&quot;,&quot;members&quot;:[{&quot;selector&quot;:&quot;#p2-context-card&quot;,&quot;role&quot;:&quot;symbol&quot;,&quot;treatment&quot;:&quot;focus.solid-reverse&quot;,&quot;paint&quot;:&quot;fill&quot;,&quot;expected_count&quot;:1},{&quot;selector&quot;:&quot;#p2-context-frame, #p2-context-frame-inner&quot;,&quot;role&quot;:&quot;outline&quot;,&quot;treatment&quot;:&quot;focus.path-depth&quot;,&quot;expected_count&quot;:2},{&quot;selector&quot;:&quot;#p2-context-en, #p2-context-cn&quot;,&quot;role&quot;:&quot;value&quot;,&quot;treatment&quot;:&quot;focus.reverse-text&quot;,&quot;expected_count&quot;:2}]}]" data-vnext-semantic-key-map="[{&quot;key&quot;:&quot;diamond-map.text.009&quot;,&quot;tag&quot;:&quot;text&quot;,&quot;text&quot;:&quot;USER INPUT&quot;,&quot;occurrence&quot;:0},{&quot;key&quot;:&quot;diamond-map.text.011&quot;,&quot;tag&quot;:&quot;text&quot;,&quot;text&quot;:&quot;RETRIEVED CONTEXTS&quot;,&quot;occurrence&quot;:0},{&quot;key&quot;:&quot;diamond-map.text.013&quot;,&quot;tag&quot;:&quot;text&quot;,&quot;text&quot;:&quot;RESPONSE&quot;,&quot;occurrence&quot;:0},{&quot;key&quot;:&quot;diamond-map.text.015&quot;,&quot;tag&quot;:&quot;text&quot;,&quot;text&quot;:&quot;REFERENCE&quot;,&quot;occurrence&quot;:0}]" data-catalog-legacy-emphasis-profile="content-only" data-catalog-legacy-emphasis-members="[{&quot;selector&quot;:&quot;#p2-context-card&quot;,&quot;expected_count&quot;:1,&quot;role&quot;:&quot;symbol&quot;,&quot;paint&quot;:&quot;fill&quot;}]" data-catalog-legacy-emphasis-foreground-members="[{&quot;selector&quot;:&quot;#p2-context-en&quot;,&quot;expected_count&quot;:1,&quot;neutral_tone&quot;:&quot;preserve&quot;,&quot;active_tone&quot;:&quot;white&quot;},{&quot;selector&quot;:&quot;#p2-context-cn&quot;,&quot;expected_count&quot;:1,&quot;neutral_tone&quot;:&quot;preserve&quot;,&quot;active_tone&quot;:&quot;white&quot;}]" data-catalog-legacy-emphasis-ref="sample.p2.colored-context-card" data-wise-catalog-fonts="true" data-surface-source="catalog-theme-recipes-v2" data-xp-recipe-id="klein-blue:p2" data-xp-surface-profile="open-paper-diagram" data-xp-recipe-status="recipe-ready" data-xp-frame-kind="recipe-generated">
+<html lang="zh-CN" data-runtime="wise-ppt-specimen" data-theme-id="klein-blue" data-typography-mode="mixed" data-wise-catalog-fonts="true" data-page-id="gallery-ai-p2" data-page-role="explain" data-page-kind="relationship" data-layout-id="wise-ppt.layout.relationship.P2" data-layout-code="P2" data-layout-source="canonical-seed" data-layout-seed-sha256="8d6c3bb7396d4ec561730190189ffa7ab9cc2a7f852dfa40f49eb1fa810fef44" data-layout-structure-sha256="ad99cb9c4dab29b7a36b886df05640e81965557475463f203f1d1836a7091592" data-layout-visual-plan="b33d978c79bfedec1c95f84a232860b8a394fbfeed182223b68385276d298203" data-layout-visual-materialization="8d0827eb22cc895e8c386747e30ceb5d1ef96605f02f3151a23b12331a18322a" data-resolved-theme-sha256="1f9ebea0e4bc84cd589274859d82014d71e42ea9c8055699808bbe7bc9298fe2" data-layout-visual-source="wise-ppt-layout-theme-bindings@3" data-catalog-frame-id="klein-blue:p2" data-catalog-frame-ready="true">
 <head>
 <meta charset="UTF-8">
-<title>layout-p2 · 菱形四边标注 · RAG 四组证据对</title>
+<title>layout-p2 · 菱形四边标注</title>
 <script src="../../../../../runtime/stage-fit.js"></script>
 <link rel="stylesheet" href="../../../../../themes/engine/assets/design-tokens.css">
 <link rel="stylesheet" href="../../../../../themes/packages/paper-ink/theme.css">
@@ -10,9 +10,12 @@
 <link rel="stylesheet" href="../../../../../themes/packages/klein-blue/theme.css">
 <link rel="stylesheet" href="../../../../../themes/engine/assets/catalog-fonts.css" data-wise-catalog-fonts="true">
 <link rel="stylesheet" href="../../../../../themes/engine/assets/slide-components.css">
+<link rel="stylesheet" href="../../../../../themes/engine/assets/component-theme.css">
+<link rel="stylesheet" href="../../../../../runtime/component-behavior.css">
+<link rel="stylesheet" href="../../../../../runtime/deck-component-contract.css">
 <link rel="stylesheet" href="../../../../../references/shell.css">
-<style>
-  svg.scene { position: absolute; inset: 0; z-index: 1; }
+<style data-layout-seed-css="8d6c3bb7396d4ec561730190189ffa7ab9cc2a7f852dfa40f49eb1fa810fef44">@scope (.slide[data-layout-id="wise-ppt.layout.relationship.P2"]) {
+svg.scene { position: absolute; inset: 0; z-index: 1; }
   .caption {
     position: absolute; left: 0; right: 0; bottom: 118px;
     text-align: center;
@@ -21,128 +24,42 @@
     color: var(--ink);
     z-index: 5;
   }
+}
 </style>
-<link rel="stylesheet" href="../../catalog-surface.css" data-catalog-theme-surface="catalog-theme-recipes-v2">
-<link rel="stylesheet" href="../../title-furniture.css" data-catalog-title-furniture="black-first-theme-second-v1">
+<style data-layout-visual-plan="b33d978c79bfedec1c95f84a232860b8a394fbfeed182223b68385276d298203">/* wise-ppt-layout-visual-plan@1 · wise-ppt.layout.relationship.P2 · b33d978c79bfedec1c95f84a232860b8a394fbfeed182223b68385276d298203 */
+body.slide > .stage[data-theme-visual-plan="b33d978c79bfedec1c95f84a232860b8a394fbfeed182223b68385276d298203"], body.slide > .stage[data-theme-visual-plan="b33d978c79bfedec1c95f84a232860b8a394fbfeed182223b68385276d298203"] [data-component-theme-scope="true"] { --wp-layout-structural: var(--wp-color-primary); --wp-layout-functional: var(--wp-color-functional); --wp-color-body: color-mix(in srgb, var(--wp-color-primary) 70%, transparent); --wp-color-chart-label: color-mix(in srgb, var(--wp-color-primary) 55%, transparent); --wp-color-metadata: color-mix(in srgb, var(--wp-color-primary) 45%, transparent); --wp-color-divider: color-mix(in srgb, var(--wp-color-primary) 20%, transparent); --wp-color-construction: color-mix(in srgb, var(--wp-color-primary) 12%, transparent); --wp-private-ink-60: color-mix(in srgb, var(--wp-color-primary) 60%, transparent); --wp-private-ink-30: color-mix(in srgb, var(--wp-color-primary) 30%, transparent); --ink: var(--wp-color-primary); --ink-80: color-mix(in srgb, var(--wp-color-primary) 80%, transparent); --ink-70: color-mix(in srgb, var(--wp-color-primary) 70%, transparent); --ink-55: color-mix(in srgb, var(--wp-color-primary) 55%, transparent); --ink-45: color-mix(in srgb, var(--wp-color-primary) 45%, transparent); --ink-25: color-mix(in srgb, var(--wp-color-primary) 20%, transparent); --ink-12: color-mix(in srgb, var(--wp-color-primary) 12%, transparent); --wp-adapter-pi-ink: var(--wp-color-primary); --wp-adapter-pi-ink-80: color-mix(in srgb, var(--wp-color-primary) 80%, transparent); --wp-adapter-pi-ink-70: color-mix(in srgb, var(--wp-color-primary) 70%, transparent); --wp-adapter-pi-ink-60: color-mix(in srgb, var(--wp-color-primary) 60%, transparent); --wp-adapter-pi-ink-55: color-mix(in srgb, var(--wp-color-primary) 55%, transparent); --wp-adapter-pi-ink-45: color-mix(in srgb, var(--wp-color-primary) 45%, transparent); --wp-adapter-pi-ink-30: color-mix(in srgb, var(--wp-color-primary) 30%, transparent); --wp-adapter-atlas-ink: var(--wp-color-primary); --wp-adapter-atlas-ink-80: color-mix(in srgb, var(--wp-color-primary) 80%, transparent); --wp-adapter-atlas-ink-70: color-mix(in srgb, var(--wp-color-primary) 70%, transparent); --wp-adapter-atlas-ink-55: color-mix(in srgb, var(--wp-color-primary) 55%, transparent); --wp-adapter-atlas-ink-45: color-mix(in srgb, var(--wp-color-primary) 45%, transparent); --wp-adapter-atlas-ink-25: color-mix(in srgb, var(--wp-color-primary) 20%, transparent); --wp-adapter-atlas-ink-12: color-mix(in srgb, var(--wp-color-primary) 12%, transparent); --shadow-soft: none; --shadow-specimen: none; --data-ramp-1: color-mix(in srgb, var(--wp-color-primary) 8%, transparent); --wp-adapter-pi-data-1: color-mix(in srgb, var(--wp-color-primary) 8%, transparent); --wp-adapter-atlas-data-1: color-mix(in srgb, var(--wp-color-primary) 8%, transparent); --data-ramp-2: color-mix(in srgb, var(--wp-color-primary) 14%, transparent); --wp-adapter-pi-data-2: color-mix(in srgb, var(--wp-color-primary) 14%, transparent); --wp-adapter-atlas-data-2: color-mix(in srgb, var(--wp-color-primary) 14%, transparent); --data-ramp-3: color-mix(in srgb, var(--wp-color-primary) 22%, transparent); --wp-adapter-pi-data-3: color-mix(in srgb, var(--wp-color-primary) 22%, transparent); --wp-adapter-atlas-data-3: color-mix(in srgb, var(--wp-color-primary) 22%, transparent); --data-ramp-4: color-mix(in srgb, var(--wp-color-primary) 30%, transparent); --wp-adapter-pi-data-4: color-mix(in srgb, var(--wp-color-primary) 30%, transparent); --wp-adapter-atlas-data-4: color-mix(in srgb, var(--wp-color-primary) 30%, transparent); --data-ramp-5: color-mix(in srgb, var(--wp-color-primary) 40%, transparent); --wp-adapter-pi-data-5: color-mix(in srgb, var(--wp-color-primary) 40%, transparent); --wp-adapter-atlas-data-5: color-mix(in srgb, var(--wp-color-primary) 40%, transparent); --data-ramp-6: color-mix(in srgb, var(--wp-color-primary) 52%, transparent); --wp-adapter-pi-data-6: color-mix(in srgb, var(--wp-color-primary) 52%, transparent); --wp-adapter-atlas-data-6: color-mix(in srgb, var(--wp-color-primary) 52%, transparent); }
+:root[data-theme-id][data-typography-mode="mixed"] body.slide [data-theme-type-role="top-left-kicker"], :root[data-theme-id][data-typography-mode="mixed"] body.slide [data-theme-type-role="bottom-left-folio"] { font-family: var(--wp-font-oswald) !important; font-weight: 700 !important; }
+:root[data-theme-id][data-typography-mode="mixed"] body.slide [data-theme-type-role="bottom-takeaway"] { font-family: var(--wp-font-han-serif) !important; font-weight: 700 !important; }
+:root[data-theme-id][data-typography-mode="mixed"] body.slide [data-theme-type-role="zh-content-title"] { font-family: var(--wp-font-han-sans) !important; font-weight: 700 !important; }
+:root[data-theme-id][data-typography-mode="mixed"] body.slide :is([data-theme-type-role="body"], [data-theme-type-role="label"], [data-theme-type-role="number"], [data-theme-type-role="chart-text"]) { font-family: var(--wp-font-han-sans) !important; font-weight: 400 !important; }
+:root[data-theme-id][data-typography-mode="mixed"] body.slide [data-theme-language="en"]:not([data-theme-type-role="top-left-kicker"]):not([data-theme-type-role="bottom-left-folio"]):not([data-theme-type-role="bottom-takeaway"]) { font-family: var(--wp-font-oswald) !important; font-weight: 700 !important; }
+body.slide > .stage[data-theme-visual-plan="b33d978c79bfedec1c95f84a232860b8a394fbfeed182223b68385276d298203"] { background-color: var(--wp-color-surface-canvas) !important; }
+body.slide [data-theme-surface-binding-id="surface.evidence-nodes"] { background-color: var(--wp-color-surface-panel) !important; }
+body.slide svg [data-theme-surface-binding-id="surface.evidence-nodes"],
+body.slide svg [data-theme-surface-binding-id="surface.evidence-nodes"] :is(path, line, rect, circle, ellipse, polygon, polyline, use)[fill]:not([fill="none"]) { fill: var(--wp-color-surface-panel) !important; }
+body.slide [data-theme-surface-binding-id="surface.evidence-nodes"] { --wp-layout-surface-stack: 2; z-index: 2 !important; }
+body.slide [data-theme-surface-binding-id="surface.evidence-nodes"]:not([data-emphasis-active="true"]) { box-shadow: none !important; }
+body.slide svg [data-theme-surface-binding-id="surface.evidence-nodes"]:not([data-emphasis-active="true"]) { filter: none !important; }
+body.slide [data-theme-furniture-role="title"] { color: var(--wp-color-functional) !important; }
+body.slide svg [data-theme-furniture-role="title"] { fill: var(--wp-color-functional) !important; }
+body.slide [data-theme-furniture-role="folio"] { color: var(--wp-color-metadata) !important; }
+body.slide svg [data-theme-furniture-role="folio"] { fill: var(--wp-color-metadata) !important; }
+body.slide [data-theme-furniture-role="takeaway"] { color: var(--wp-color-primary) !important; }
+body.slide svg [data-theme-furniture-role="takeaway"] { fill: var(--wp-color-primary) !important; }
+body.slide [data-theme-furniture-role="title"]::first-line,
+body.slide [data-theme-furniture-role="title"] [data-theme-furniture-line="first"] { color: var(--wp-color-primary) !important; }
+body.slide [data-theme-furniture-role="title"] [data-theme-furniture-line="second"] { color: var(--wp-color-functional) !important; }
+</style>
 </head>
-<body class="slide">
-<div class="stage" data-block-id="gallery-primary" data-renderer-kind="svg" data-component-source="native" data-component-id="native.wise-ppt.mapping.diamond-edge-labels.diamond-map" data-content-ref="example.p2" data-catalog-source-marker="page-recipe">
-  <div class="doc tl"><span class="doc-kicker">PPT 标题</span><span class="doc-title">页面标题</span></div>
-  <div class="folio">页码 / 总页数 — BY @歪斯Wise</div>
-
-  <svg class="scene" width="1920" height="1080" viewBox="0 0 1920 1080">
-    <g id="draw"></g>
-  </svg>
-
-  <div class="caption">检索结果不仅要相似，还要把真正相关的内容排在前面。</div>
+<body class="slide" data-page-id="gallery-ai-p2" data-page-role="explain" data-page-kind="relationship" data-layout-id="wise-ppt.layout.relationship.P2" data-layout-code="P2" data-layout-source="canonical-seed" data-layout-seed-sha256="8d6c3bb7396d4ec561730190189ffa7ab9cc2a7f852dfa40f49eb1fa810fef44" data-layout-structure-sha256="ad99cb9c4dab29b7a36b886df05640e81965557475463f203f1d1836a7091592" data-layout-visual-plan="b33d978c79bfedec1c95f84a232860b8a394fbfeed182223b68385276d298203" data-layout-visual-materialization="8d0827eb22cc895e8c386747e30ceb5d1ef96605f02f3151a23b12331a18322a" data-resolved-theme-sha256="1f9ebea0e4bc84cd589274859d82014d71e42ea9c8055699808bbe7bc9298fe2" data-layout-visual-source="wise-ppt-layout-theme-bindings@3">
+<div class="stage" data-block-id="gallery-primary" data-component-id="native.wise-ppt.mapping.diamond-edge-labels.diamond-map" data-component-source="native" data-content-ref="example.p2" data-renderer-kind="svg" data-theme-visual-source="wise-ppt-layout-theme-bindings@3" data-theme-visual-plan="b33d978c79bfedec1c95f84a232860b8a394fbfeed182223b68385276d298203" data-theme-canvas-material="paper" data-theme-default-color-base-role="primary" data-theme-typography-resolution="structure-slots-and-explicit-language" data-theme-emphasis-target-count="1" data-theme-emphasis-sample-target="focus.key-node">
+<div class="doc tl" data-theme-furniture-source="wise-ppt-layout-theme-bindings@3" data-theme-furniture-role="title" data-theme-furniture-variant="primary-first-functional-second" data-theme-type-role="top-left-kicker" data-theme-type-base-role="top-left-kicker" data-theme-color-role="functional" data-theme-color-alpha="1" data-theme-title-first-color-role="primary" data-theme-title-second-color-role="functional" data-theme-language="zh"><span class="vnext-text-node" data-vnext-fit-box="0,0,1920,1080" data-vnext-text-key="support.text.001" data-theme-furniture-line="first" data-theme-type-role="top-left-kicker" data-theme-type-base-role="top-left-kicker" data-theme-color-role="primary" data-theme-language="zh">PPT &#x6807;&#x9898;</span><br><span class="vnext-text-node" data-vnext-fit-box="0,0,1920,1080" data-vnext-text-key="support.text.002" data-theme-furniture-line="second" data-theme-type-role="top-left-kicker" data-theme-type-base-role="top-left-kicker" data-theme-color-role="functional" data-theme-language="zh">&#x9875;&#x9762;&#x6807;&#x9898;</span></div>
+<div class="folio" data-theme-furniture-source="wise-ppt-layout-theme-bindings@3" data-theme-furniture-role="folio" data-theme-type-role="bottom-left-folio" data-theme-type-base-role="bottom-left-folio" data-theme-color-role="metadata" data-theme-color-alpha="1" data-theme-language="zh">&#x9875;&#x7801; / &#x603b;&#x9875;&#x6570; &#x2014; BY @&#x6b6a;&#x65af;Wise</div>
+<svg class="scene" height="1080" viewBox="0 0 1920 1080" width="1920">
+<g id="draw"><g transform="translate(0 -22)"><line opacity="0.5" stroke="var(--ink)" stroke-width="0.9" x1="480" x2="810" y1="474" y2="300"/><line opacity="0.5" stroke="var(--ink)" stroke-width="0.9" x1="480" x2="810" y1="566" y2="740"/><line opacity="0.5" stroke="var(--ink)" stroke-width="0.9" x1="960" x2="960" y1="694" y2="394"/><line opacity="0.5" stroke="var(--ink)" stroke-width="0.9" x1="1110" x2="1440" y1="300" y2="474"/><line opacity="0.5" stroke="var(--ink)" stroke-width="0.9" x1="1110" x2="1440" y1="740" y2="566"/><line opacity="0.5" stroke="var(--ink)" stroke-width="0.9" x1="630" x2="948" y1="520" y2="520"/><line opacity="0.5" stroke="var(--ink)" stroke-width="0.9" x1="972" x2="1290" y1="520" y2="520"/><text data-vnext-fit-box="320,222,1600,774" data-vnext-text-key="diamond-map.text.001" fill="var(--ink)" font-family="var(--mono)" font-size="var(--type-meta)" letter-spacing="1.5" text-anchor="end" x="605" y="355" data-theme-type-role="en-bold" data-theme-type-base-role="body" data-theme-language="en">CONTEXT RECALL / PRECISION</text><text data-vnext-fit-box="320,222,1600,774" data-vnext-text-key="diamond-map.text.002" fill="var(--wp-adapter-pi-ink-60)" font-family="var(--sans)" font-size="var(--type-label)" font-weight="400" text-anchor="end" x="605" y="379" data-theme-type-role="body" data-theme-type-base-role="body" data-theme-language="zh">&#x68c0;&#x7d22;&#x8986;&#x76d6;</text><path d="M 637 363 L 946 402" fill="none" opacity="0.4" stroke="var(--ink)" stroke-dasharray="2 4" stroke-width="0.6"/><circle cx="950" cy="404" fill="var(--ink)" opacity="0.5" r="2"/><circle cx="645" cy="387" fill="var(--ink)" opacity="0.7" r="2.4"/><text data-vnext-fit-box="320,222,1600,774" data-vnext-text-key="diamond-map.text.003" fill="var(--ink)" font-family="var(--mono)" font-size="var(--type-meta)" letter-spacing="1.5" text-anchor="start" x="1315" y="355" data-theme-type-role="en-bold" data-theme-type-base-role="body" data-theme-language="en">FAITHFULNESS</text><text data-vnext-fit-box="320,222,1600,774" data-vnext-text-key="diamond-map.text.004" fill="var(--wp-adapter-pi-ink-60)" font-family="var(--sans)" font-size="var(--type-label)" font-weight="400" text-anchor="start" x="1315" y="379" data-theme-type-role="body" data-theme-type-base-role="body" data-theme-language="zh">&#x5fe0;&#x5b9e;&#x5ea6;</text><circle cx="1275" cy="387" fill="var(--ink)" opacity="0.7" r="2.4"/><text data-vnext-fit-box="320,222,1600,774" data-vnext-text-key="diamond-map.text.005" fill="var(--ink)" font-family="var(--mono)" font-size="var(--type-meta)" letter-spacing="1.5" text-anchor="middle" x="720" y="552" data-theme-type-role="en-bold" data-theme-type-base-role="body" data-theme-language="en">RESPONSE RELEVANCY</text><text data-vnext-fit-box="320,222,1600,774" data-vnext-text-key="diamond-map.text.006" fill="var(--wp-adapter-pi-ink-60)" font-family="var(--sans)" font-size="var(--type-label)" font-weight="400" text-anchor="middle" x="720" y="576" data-theme-type-role="body" data-theme-type-base-role="body" data-theme-language="zh">&#x56de;&#x7b54;&#x76f8;&#x5173;</text><circle cx="720" cy="520" fill="var(--ink)" opacity="0.7" r="2.4"/><text data-vnext-fit-box="320,222,1600,774" data-vnext-text-key="diamond-map.text.007" fill="var(--ink)" font-family="var(--mono)" font-size="var(--type-meta)" letter-spacing="1.5" text-anchor="start" x="1315" y="687" data-theme-type-role="en-bold" data-theme-type-base-role="body" data-theme-language="en">FACTUAL CORRECTNESS</text><text data-vnext-fit-box="320,222,1600,774" data-vnext-text-key="diamond-map.text.008" fill="var(--wp-adapter-pi-ink-60)" font-family="var(--sans)" font-size="var(--type-label)" font-weight="400" text-anchor="start" x="1315" y="711" data-theme-type-role="body" data-theme-type-base-role="body" data-theme-language="zh">&#x4e8b;&#x5b9e;&#x6b63;&#x786e;</text><circle cx="1275" cy="653" fill="var(--ink)" opacity="0.7" r="2.4"/><rect class="p2-node-card" fill="var(--paper)" height="92" stroke="none" width="300" x="330" y="474" data-theme-binding-source="wise-ppt-layout-theme-bindings@3" data-theme-surface-binding-id="surface.evidence-nodes" data-theme-surface-role="evidence-nodes" data-theme-material="foreground" data-theme-stack="2" data-theme-base-shadow="none" data-theme-border="null" data-theme-role-overrides="[]"/><rect fill="none" height="92" stroke="var(--ink-80)" stroke-width="1.3" width="300" x="330" y="474"/><rect fill="none" height="82" opacity="0.35" stroke="var(--ink)" stroke-width="0.6" width="290" x="335" y="479"/><text data-vnext-fit-box="332,454,628,542" data-vnext-text-key="diamond-map.text.009" fill="var(--ink)" font-family="var(--mono)" font-size="var(--type-label)" letter-spacing="2" text-anchor="middle" x="480" y="516" data-theme-identity-source="wise-ppt-layout-theme-bindings@3" data-theme-identity-group="identity.node-headings" data-theme-identity-treatment="identity.text" data-theme-type-role="en-bold" data-theme-type-base-role="body" data-theme-language="en">USER INPUT</text><text data-vnext-fit-box="332,454,628,542" data-vnext-text-key="diamond-map.text.010" data-vnext-type-slot="content-title" fill="var(--ink)" font-family="var(--sans)" font-size="var(--type-subheading)" font-weight="400" text-anchor="middle" x="480" y="548" data-theme-binding-source="wise-ppt-layout-theme-bindings@3" data-theme-type-binding-id="content-titles" data-theme-type-role="zh-content-title" data-theme-type-base-role="zh-content-title" data-theme-language="zh">&#x7528;&#x6237;&#x95ee;&#x9898;</text><rect class="p2-node-card" fill="var(--paper)" height="92" id="p2-context-card" stroke="none" width="300" x="810" y="254" data-theme-binding-source="wise-ppt-layout-theme-bindings@3" data-theme-surface-binding-id="surface.evidence-nodes" data-theme-surface-role="evidence-nodes" data-theme-material="foreground" data-theme-stack="2" data-theme-base-shadow="none" data-theme-border="null" data-theme-role-overrides="[]" data-theme-emphasis-source="wise-ppt-layout-theme-bindings@3" data-theme-emphasis-members="[{&quot;paint&quot;:&quot;fill&quot;,&quot;role&quot;:&quot;symbol&quot;,&quot;target_id&quot;:&quot;focus.key-node&quot;,&quot;treatment&quot;:&quot;focus.solid-reverse&quot;}]"/><rect fill="none" height="92" id="p2-context-frame" stroke="var(--ink-80)" stroke-width="1.3" width="300" x="810" y="254" data-theme-emphasis-source="wise-ppt-layout-theme-bindings@3" data-theme-emphasis-members="[{&quot;role&quot;:&quot;outline&quot;,&quot;target_id&quot;:&quot;focus.key-node&quot;,&quot;treatment&quot;:&quot;focus.path-depth&quot;}]"/><rect fill="none" height="82" id="p2-context-frame-inner" opacity="0.35" stroke="var(--ink)" stroke-width="0.6" width="290" x="815" y="259" data-theme-emphasis-source="wise-ppt-layout-theme-bindings@3" data-theme-emphasis-members="[{&quot;role&quot;:&quot;outline&quot;,&quot;target_id&quot;:&quot;focus.key-node&quot;,&quot;treatment&quot;:&quot;focus.path-depth&quot;}]"/><text data-vnext-fit-box="812,234,1108,322" data-vnext-text-key="diamond-map.text.011" fill="var(--ink)" font-family="var(--mono)" font-size="var(--type-label)" id="p2-context-en" letter-spacing="2" text-anchor="middle" x="960" y="296" data-theme-identity-source="wise-ppt-layout-theme-bindings@3" data-theme-identity-group="identity.node-headings" data-theme-identity-treatment="identity.text" data-theme-emphasis-source="wise-ppt-layout-theme-bindings@3" data-theme-emphasis-members="[{&quot;role&quot;:&quot;value&quot;,&quot;target_id&quot;:&quot;focus.key-node&quot;,&quot;treatment&quot;:&quot;focus.reverse-text&quot;}]" data-theme-type-role="en-bold" data-theme-type-base-role="body" data-theme-language="en">RETRIEVED CONTEXTS</text><text data-vnext-fit-box="812,234,1108,322" data-vnext-text-key="diamond-map.text.012" data-vnext-type-slot="content-title" fill="var(--ink)" font-family="var(--sans)" font-size="var(--type-subheading)" font-weight="400" id="p2-context-cn" text-anchor="middle" x="960" y="328" data-theme-binding-source="wise-ppt-layout-theme-bindings@3" data-theme-type-binding-id="content-titles" data-theme-type-role="zh-content-title" data-theme-type-base-role="zh-content-title" data-theme-emphasis-source="wise-ppt-layout-theme-bindings@3" data-theme-emphasis-members="[{&quot;role&quot;:&quot;value&quot;,&quot;target_id&quot;:&quot;focus.key-node&quot;,&quot;treatment&quot;:&quot;focus.reverse-text&quot;}]" data-theme-language="zh">&#x68c0;&#x7d22;&#x4e0a;&#x4e0b;&#x6587;</text><rect class="p2-node-card" fill="var(--paper)" height="92" stroke="none" width="300" x="1290" y="474" data-theme-binding-source="wise-ppt-layout-theme-bindings@3" data-theme-surface-binding-id="surface.evidence-nodes" data-theme-surface-role="evidence-nodes" data-theme-material="foreground" data-theme-stack="2" data-theme-base-shadow="none" data-theme-border="null" data-theme-role-overrides="[]"/><rect fill="none" height="92" stroke="var(--ink-80)" stroke-width="1.3" width="300" x="1290" y="474"/><rect fill="none" height="82" opacity="0.35" stroke="var(--ink)" stroke-width="0.6" width="290" x="1295" y="479"/><text data-vnext-fit-box="1292,454,1588,542" data-vnext-text-key="diamond-map.text.013" fill="var(--ink)" font-family="var(--mono)" font-size="var(--type-label)" letter-spacing="2" text-anchor="middle" x="1440" y="516" data-theme-identity-source="wise-ppt-layout-theme-bindings@3" data-theme-identity-group="identity.node-headings" data-theme-identity-treatment="identity.text" data-theme-type-role="en-bold" data-theme-type-base-role="body" data-theme-language="en">RESPONSE</text><text data-vnext-fit-box="1292,454,1588,542" data-vnext-text-key="diamond-map.text.014" data-vnext-type-slot="content-title" fill="var(--ink)" font-family="var(--sans)" font-size="var(--type-subheading)" font-weight="400" text-anchor="middle" x="1440" y="548" data-theme-binding-source="wise-ppt-layout-theme-bindings@3" data-theme-type-binding-id="content-titles" data-theme-type-role="zh-content-title" data-theme-type-base-role="zh-content-title" data-theme-language="zh">&#x6a21;&#x578b;&#x56de;&#x7b54;</text><rect class="p2-node-card" fill="var(--paper)" height="92" stroke="none" width="300" x="810" y="694" data-theme-binding-source="wise-ppt-layout-theme-bindings@3" data-theme-surface-binding-id="surface.evidence-nodes" data-theme-surface-role="evidence-nodes" data-theme-material="foreground" data-theme-stack="2" data-theme-base-shadow="none" data-theme-border="null" data-theme-role-overrides="[]"/><rect fill="none" height="92" stroke="var(--ink-80)" stroke-width="1.3" width="300" x="810" y="694"/><rect fill="none" height="82" opacity="0.35" stroke="var(--ink)" stroke-width="0.6" width="290" x="815" y="699"/><text data-vnext-fit-box="812,674,1108,762" data-vnext-text-key="diamond-map.text.015" fill="var(--ink)" font-family="var(--mono)" font-size="var(--type-label)" letter-spacing="2" text-anchor="middle" x="960" y="736" data-theme-identity-source="wise-ppt-layout-theme-bindings@3" data-theme-identity-group="identity.node-headings" data-theme-identity-treatment="identity.text" data-theme-type-role="en-bold" data-theme-type-base-role="body" data-theme-language="en">REFERENCE</text><text data-vnext-fit-box="812,674,1108,762" data-vnext-text-key="diamond-map.text.016" data-vnext-type-slot="content-title" fill="var(--ink)" font-family="var(--sans)" font-size="var(--type-subheading)" font-weight="400" text-anchor="middle" x="960" y="768" data-theme-binding-source="wise-ppt-layout-theme-bindings@3" data-theme-type-binding-id="content-titles" data-theme-type-role="zh-content-title" data-theme-type-base-role="zh-content-title" data-theme-language="zh">&#x53c2;&#x8003;&#x7b54;&#x6848;</text><text data-vnext-fit-box="320,222,1600,774" data-vnext-text-key="diamond-map.text.017" fill="var(--ink-45)" font-family="var(--mono)" font-size="var(--type-meta)" id="sample-focus" letter-spacing="2" text-anchor="middle" x="960" y="376" data-theme-type-role="en-bold" data-theme-type-base-role="body" data-theme-language="en">RECALL@K &#xb7; PRECISION@K &#xb7; MRR &#xb7; NDCG@K</text></g></g>
+</svg>
+<div class="caption" data-vnext-claim-key="claim.text.001" data-vnext-fit-box="0,0,1920,1080" data-theme-furniture-source="wise-ppt-layout-theme-bindings@3" data-theme-furniture-role="takeaway" data-theme-type-role="bottom-takeaway" data-theme-type-base-role="bottom-takeaway" data-theme-color-role="primary" data-theme-color-alpha="1" data-theme-language="zh">&#x68c0;&#x7d22;&#x7ed3;&#x679c;&#x4e0d;&#x4ec5;&#x8981;&#x76f8;&#x4f3c;&#xff0c;&#x8fd8;&#x8981;&#x628a;&#x771f;&#x6b63;&#x76f8;&#x5173;&#x7684;&#x5185;&#x5bb9;&#x6392;&#x5728;&#x524d;&#x9762;&#x3002;</div>
 </div>
-
-<script>
-var NS = 'http://www.w3.org/2000/svg';
-var INK = 'var(--ink)';
-var G = document.getElementById('draw');
-function el(tag, attrs) {
-  var e = document.createElementNS(NS, tag);
-  for (var k in attrs) e.setAttribute(k, attrs[k]);
-  G.appendChild(e); return e;
-}
-function txt(x, y, str, attrs) {
-  var t = el('text', Object.assign({x:x, y:y}, attrs||{}));
-  t.textContent = str; return t;
-}
-var MONO = 'var(--mono)', SANS = 'var(--sans)';
-
-G = el('g', {transform:'translate(0 -22)'});
-
-/* ===== 四节点菱形布局 ===== */
-var NW = 300, NH = 92;
-var nodes = {
-  input:    {cx:480,  cy:520, en:'USER INPUT',          cn:'用户问题'},
-  contexts: {cx:960,  cy:300, en:'RETRIEVED CONTEXTS',  cn:'检索上下文'},
-  response: {cx:1440, cy:520, en:'RESPONSE',            cn:'模型回答'},
-  reference:{cx:960,  cy:740, en:'REFERENCE',           cn:'参考答案'}
-};
-function nodeRect(n){
-  return {x:n.cx - NW/2, y:n.cy - NH/2};
-}
-function edge(n, side){
-  if (side === 'l') return {x:n.cx - NW/2, y:n.cy};
-  if (side === 'r') return {x:n.cx + NW/2, y:n.cy};
-  if (side === 't') return {x:n.cx, y:n.cy - NH/2};
-  return {x:n.cx, y:n.cy + NH/2};
-}
-function line(a, b){
-  el('line', {x1:a.x, y1:a.y, x2:b.x, y2:b.y, stroke:INK, 'stroke-width':.9, opacity:.5});
-}
-function dot(p){ el('circle', {cx:p.x, cy:p.y, r:2.4, fill:INK, opacity:.7}); }
-
-/* --- 边：先画线，节点框后画压在线头上 --- */
-/* INPUT·REFERENCE ↔ CONTEXTS：Context Recall / Precision */
-line(edge(nodes.input, 't'), edge(nodes.contexts, 'l'));
-line(edge(nodes.input, 'b'), edge(nodes.reference, 'l'));   /* 补齐菱形左下边 */
-line(edge(nodes.reference, 't'), {x:960, y:394});           /* 竖边让位 mono 小注 */
-/* CONTEXTS ↔ RESPONSE：Faithfulness */
-line(edge(nodes.contexts, 'r'), edge(nodes.response, 't'));
-/* REFERENCE ↔ RESPONSE：Factual Correctness */
-line(edge(nodes.reference, 'r'), edge(nodes.response, 'b'));
-/* INPUT ↔ RESPONSE：Response Relevancy（中点让位竖边） */
-line(edge(nodes.input, 'r'), {x:948, y:520});
-line({x:972, y:520}, edge(nodes.response, 'l'));
-
-/* --- 指标标签（引线小字：mono EN + 中文注） --- */
-function label(x, y, en, cn, anchor){
-  txt(x, y, en, {'font-family':MONO, 'font-size':'var(--type-meta)', 'letter-spacing':1.5, 'text-anchor':anchor, fill:INK});
-  txt(x, y + 24, cn, {'font-family':SANS, 'font-weight':400, 'font-size':'var(--type-label)', 'text-anchor':anchor, fill:'var(--wp-adapter-pi-ink-60)'});
-}
-function mid(a, b){ return {x:(a.x+b.x)/2, y:(a.y+b.y)/2}; }
-
-/* Context Recall / Precision：挂在 INPUT↔CONTEXTS 边外侧，虚线引到竖边 */
-var m1 = mid(edge(nodes.input, 't'), edge(nodes.contexts, 'l'));
-label(m1.x - 40, m1.y - 32, 'CONTEXT RECALL / PRECISION', '检索覆盖', 'end');
-el('path', {d:'M ' + (m1.x - 8) + ' ' + (m1.y - 24) + ' L 946 402', stroke:INK, 'stroke-width':.6, opacity:.4, 'stroke-dasharray':'2 4', fill:'none'});
-el('circle', {cx:950, cy:404, r:2, fill:INK, opacity:.5});
-dot(m1);
-/* Faithfulness */
-var m2 = mid(edge(nodes.contexts, 'r'), edge(nodes.response, 't'));
-label(m2.x + 40, m2.y - 32, 'FAITHFULNESS', '忠实度', 'start');
-dot(m2);
-/* Response Relevancy：横边左半下方 */
-label(720, 552, 'RESPONSE RELEVANCY', '回答相关', 'middle');
-dot({x:720, y:520});
-/* Factual Correctness */
-var m4 = mid(edge(nodes.reference, 'r'), edge(nodes.response, 'b'));
-label(m4.x + 40, m4.y + 34, 'FACTUAL CORRECTNESS', '事实正确', 'start');
-dot(m4);
-
-/* --- 节点双线框 --- */
-Object.keys(nodes).forEach(function(k){
-  var n = nodes[k], r = nodeRect(n);
-  var cardAttrs = {class:'p2-node-card', x:r.x, y:r.y, width:NW, height:NH, fill:'var(--paper)', stroke:'none'};
-  var frameAttrs = {x:r.x, y:r.y, width:NW, height:NH, fill:'none', stroke:'var(--ink-80)', 'stroke-width':1.3};
-  var innerFrameAttrs = {x:r.x+5, y:r.y+5, width:NW-10, height:NH-10, fill:'none', stroke:INK, 'stroke-width':.6, opacity:.35};
-  var enAttrs = {'font-family':MONO, 'font-size':'var(--type-label)', 'letter-spacing':2, 'text-anchor':'middle', fill:INK};
-  var cnAttrs = {'font-family':SANS, 'font-weight':400, 'font-size':'var(--type-subheading)', 'text-anchor':'middle', fill:'var(--ink)'};
-  if (k === 'contexts') {
-    cardAttrs.id = 'p2-context-card';
-    frameAttrs.id = 'p2-context-frame';
-    innerFrameAttrs.id = 'p2-context-frame-inner';
-    enAttrs.id = 'p2-context-en';
-    cnAttrs.id = 'p2-context-cn';
-  }
-  el('rect', cardAttrs);
-  el('rect', frameAttrs);
-  el('rect', innerFrameAttrs);
-  txt(n.cx, n.cy - 4, n.en, enAttrs);
-  txt(n.cx, n.cy + 28, n.cn, cnAttrs);
-});
-
-/* RETRIEVED CONTEXTS 节点下方 mono 小注 */
-txt(960, 376, 'RECALL@K · PRECISION@K · MRR · NDCG@K', {id:'sample-focus', 'font-family':MONO, 'font-size':'var(--type-meta)', 'letter-spacing':2, 'text-anchor':'middle', fill:'var(--ink-45)'});
-
-stageFit();
-</script>
-<script type="application/json" id="xp-surface-recipe">{"theme":"klein-blue","color_name":"blue","layout_code":"p2","title":"layout-p2 · 菱形四边标注 · RAG 四组证据对","layout":"paper-ink.mapping.diamond-edge-labels","page_role":"explain","canvas":{"token":"paper","value":"#f2efe9","reason":"常规内容页在纸面上建立层级。"},"surface_profile":"open-paper-diagram","surfaces":[{"role":"diagram-plane","material":"paper-plane","fill":"#f2efe9","stack":1},{"role":"structure","material":"ink-line","fill":"#1a1a1a","stack":2},{"role":"evidence-nodes","material":"top-white","fill":"#ffffff","stack":2,"shadow":"none"},{"role":"focus-marker","material":"accent","fill":"#002fa7","stack":3}],"accent":{"value":"#002fa7","semantic_channel":"中心概念、当前节点或最终输出","furniture":"左上第一行 doc-kicker 固定墨黑，第二行 doc-title 使用当前主题色；folio 跟随元信息通道：墨色 45%（同英文章节标签），不使用主题色。","neutral_exceptions":["普通英文标签","轴名","层名","结构编号","MODEL","非当前数据"],"furniture_mode":"black-first-theme-second","folio_mode":"metadata-neutral"},"border_policy":"主体 1px 墨线；唯一焦点可用 2px 橙线，所有容器方角。","shadow_policy":"无投影；轴线、轨道、节点属于同一纸面。","noise_policy":"由主题统一提供唯一一层约 6% 黑色 fractal-noise；页面不得自带 noise 节点；浅色页 multiply，墨面可 overlay。","reference_evidence":{"file":"ai_studio_code (12).html","cards":["card-2","card-3","card-5","card-6"],"rule":"关系线与节点直接属于纸面；强调色只落当前节点、终点或短标记。"},"acceptance":["强调色只落一个语义通道；同一序列可重复，但不得扩散到结构元数据。","纯白只用于 top-white，不能替代默认纸面。","缩略图必须从该主题独立 frame 的实际渲染重建。"],"status":"recipe-ready","surface_bindings":[{"selector":".p2-node-card","expected_count":4,"role":"evidence-nodes","material":"top-white","fill":"#ffffff","stack":2,"shadow":"none"}],"surface_binding_reason":"四张证据节点卡统一使用纯白主体面且不加投影；焦点开启时只让 RETRIEVED CONTEXTS 整卡变色。","theme_identity":[{"group_id":"identity.node-headings","label":"菱形四节点英文标题","members":[{"selector":"[data-vnext-text-key=\"diamond-map.text.009\"], [data-vnext-text-key=\"diamond-map.text.011\"], [data-vnext-text-key=\"diamond-map.text.013\"], [data-vnext-text-key=\"diamond-map.text.015\"]","treatment":"identity.text","expected_count":4}]}],"emphasis_targets":[{"target_id":"focus.key-node","label":"RETRIEVED CONTEXTS · 检索上下文","content_role":"菱形上方检索上下文节点","reason_hint":"沿用旧版反白强调，并让检索上下文卡片的内外两道边框同时跟随强调色。","members":[{"selector":"#p2-context-card","role":"symbol","treatment":"focus.solid-reverse","paint":"fill","expected_count":1},{"selector":"#p2-context-frame, #p2-context-frame-inner","role":"outline","treatment":"focus.path-depth","expected_count":2},{"selector":"#p2-context-en, #p2-context-cn","role":"value","treatment":"focus.reverse-text","expected_count":2}]}],"sample_target_id":"focus.key-node"}</script>
-<script src="../../catalog-surface.js" data-catalog-theme-surface="catalog-theme-recipes-v2"></script>
-<script src="../../catalog-typography.js" data-catalog-typography="brand-latin-numeric-oswald-v1"></script>
+<script>stageFit();</script>
 </body>
 </html>

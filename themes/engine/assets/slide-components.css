@@ -136,7 +136,7 @@
 }
 .slide :is(path, circle, ellipse, rect, polygon, use)[data-theme-identity-treatment="identity.white-fill"],
 .slide [data-theme-identity-treatment="identity.white-fill"] :is(path, circle, ellipse, rect, polygon, use) {
-  fill: #fff !important;
+  fill: var(--wp-color-surface-canvas) !important;
 }
 .slide [data-theme-identity-treatment="identity.border"] {
   color: var(--wp-color-functional) !important;
@@ -183,23 +183,23 @@
 
 /* focus 只在页面选择了一个已登记 target 后激活。它不引入第四种颜色；
    与 identity 的层级差由反白、线宽、硬阴影、纹理和路径深度建立。 */
-.accent .slide[data-emphasis-mode="semantic-focus"] [data-emphasis-active="true"][data-emphasis-role="value"],
-.accent .slide[data-emphasis-mode="semantic-focus"] [data-emphasis-active="true"][data-emphasis-role="outline"],
-.accent .slide[data-emphasis-mode="semantic-focus"] [data-emphasis-active="true"][data-emphasis-role="status"],
-.accent .slide[data-emphasis-mode="semantic-focus"] [data-emphasis-active="true"][data-emphasis-role="symbol"] {
+.accent .slide[data-emphasis-mode="semantic-focus"] [data-emphasis-active="true"][data-emphasis-role="value"]:not([data-emphasis-treatment="focus.shadow-only"]),
+.accent .slide[data-emphasis-mode="semantic-focus"] [data-emphasis-active="true"][data-emphasis-role="outline"]:not([data-emphasis-treatment="focus.shadow-only"]),
+.accent .slide[data-emphasis-mode="semantic-focus"] [data-emphasis-active="true"][data-emphasis-role="status"]:not([data-emphasis-treatment="focus.shadow-only"]),
+.accent .slide[data-emphasis-mode="semantic-focus"] [data-emphasis-active="true"][data-emphasis-role="symbol"]:not([data-emphasis-treatment="focus.shadow-only"]) {
   --wp-emphasis-color: var(--wp-color-focus);
   color: var(--wp-emphasis-color) !important;
   border-color: var(--wp-emphasis-color) !important;
   outline-color: var(--wp-emphasis-color) !important;
 }
-.accent .slide[data-emphasis-mode="semantic-focus"] [data-emphasis-active="true"][data-emphasis-role="label"],
-.accent .slide[data-emphasis-mode="semantic-focus"] [data-emphasis-active="true"][data-emphasis-role="annotation"] {
+.accent .slide[data-emphasis-mode="semantic-focus"] [data-emphasis-active="true"][data-emphasis-role="label"]:not([data-emphasis-treatment="focus.shadow-only"]),
+.accent .slide[data-emphasis-mode="semantic-focus"] [data-emphasis-active="true"][data-emphasis-role="annotation"]:not([data-emphasis-treatment="focus.shadow-only"]) {
   --wp-emphasis-color: var(--wp-color-focus-secondary);
   color: var(--wp-emphasis-color) !important;
   border-color: var(--wp-emphasis-color) !important;
   outline-color: var(--wp-emphasis-color) !important;
 }
-.accent .slide[data-emphasis-mode="semantic-focus"] [data-emphasis-active="true"][data-emphasis-role="texture"] {
+.accent .slide[data-emphasis-mode="semantic-focus"] [data-emphasis-active="true"][data-emphasis-role="texture"]:not([data-emphasis-treatment="focus.shadow-only"]) {
   --wp-emphasis-color: var(--wp-color-focus-peripheral);
   color: var(--wp-emphasis-color) !important;
   border-color: var(--wp-emphasis-color) !important;
@@ -214,33 +214,6 @@
   .slide[data-emphasis-mode="semantic-focus"]
   :is(.caption, [data-theme-type-role="bottom-takeaway"]) [data-emphasis-active="true"] {
   --wp-emphasis-color: var(--wp-color-focus);
-}
-/* 正式 Catalog 的旧强调对比档：沿用标准化前“成员 + role + 可选 fill”着色，
-   不读取新合同的 treatment。只在显式 legacy profile 下生效，生产与新 Catalog 不受影响。 */
-:root[data-emphasis-profile="legacy"].accent .slide[data-emphasis-mode="semantic-focus"]
-  :is(text, tspan)[data-emphasis-active="true"][data-emphasis-role]:not([data-emphasis-treatment]),
-:root[data-emphasis-profile="legacy"].accent .slide[data-emphasis-mode="semantic-focus"]
-  [data-emphasis-active="true"][data-emphasis-role]:not([data-emphasis-treatment]) :is(text, tspan) {
-  fill: var(--wp-emphasis-color) !important;
-}
-:root[data-emphasis-profile="legacy"].accent .slide[data-emphasis-mode="semantic-focus"]
-  :is(path, line, polyline, polygon, circle, ellipse, rect, use)[data-emphasis-active="true"][data-emphasis-role]:not([data-emphasis-treatment])[stroke]:not([stroke="none"]),
-:root[data-emphasis-profile="legacy"].accent .slide[data-emphasis-mode="semantic-focus"]
-  [data-emphasis-active="true"][data-emphasis-role]:not([data-emphasis-treatment]) :is(path, line, polyline, polygon, circle, ellipse, rect, use)[stroke]:not([stroke="none"]) {
-  stroke: var(--wp-emphasis-color) !important;
-}
-:root[data-emphasis-profile="legacy"].accent .slide[data-emphasis-mode="semantic-focus"]
-  :is(path, circle, ellipse, rect, polygon, use)[data-emphasis-active="true"][data-emphasis-role]:not([data-emphasis-treatment])[data-emphasis-paint="fill"],
-:root[data-emphasis-profile="legacy"].accent .slide[data-emphasis-mode="semantic-focus"]
-  [data-emphasis-active="true"][data-emphasis-role]:not([data-emphasis-treatment])[data-emphasis-paint="fill"] :is(path, circle, ellipse, rect, polygon, use) {
-  fill: var(--wp-emphasis-color) !important;
-}
-:root[data-emphasis-profile="legacy"].accent .slide[data-emphasis-mode="semantic-focus"]
-  :is(path, circle, ellipse, rect, polygon, use):is([data-emphasis-active="true"][data-emphasis-role="value"], [data-emphasis-active="true"][data-emphasis-role="status"], [data-emphasis-active="true"][data-emphasis-role="symbol"]):not([data-emphasis-treatment])[fill]:not([fill="none"]):is(:not([stroke]), [stroke="none"]),
-:root[data-emphasis-profile="legacy"].accent .slide[data-emphasis-mode="semantic-focus"]
-  :is([data-emphasis-active="true"][data-emphasis-role="value"], [data-emphasis-active="true"][data-emphasis-role="status"], [data-emphasis-active="true"][data-emphasis-role="symbol"]):not([data-emphasis-treatment])
-  :is(path, circle, ellipse, rect, polygon, use)[fill]:not([fill="none"]):is(:not([stroke]), [stroke="none"]) {
-  fill: var(--wp-emphasis-color) !important;
 }
 .accent .slide[data-emphasis-mode="semantic-focus"] [data-emphasis-active="true"][data-emphasis-treatment="focus.ink-weight"] {
   --wp-emphasis-color: var(--wp-color-primary);
@@ -265,7 +238,7 @@
 }
 .accent .slide[data-emphasis-mode="semantic-focus"] :is(text, tspan)[data-emphasis-active="true"][data-emphasis-treatment="focus.reverse-text"],
 .accent .slide[data-emphasis-mode="semantic-focus"] [data-emphasis-active="true"][data-emphasis-treatment="focus.reverse-text"] :is(text, tspan) {
-  fill: #fff !important;
+  fill: var(--wp-color-surface-canvas) !important;
 }
 .accent .slide[data-emphasis-mode="semantic-focus"] [data-emphasis-active="true"][data-emphasis-treatment="focus.color"] {
   color: var(--wp-emphasis-color) !important;
@@ -320,6 +293,11 @@
      active 元数据而没有可见阴影（I4 即为回归基准）。 */
   filter: drop-shadow(5px 5px 0 var(--wp-emphasis-shadow-color)) !important;
 }
+/* E1 等前景面只抬高层级：阴影使用主题焦点色，但原有墨色边框保持不变。 */
+.accent .slide[data-emphasis-mode="semantic-focus"] [data-emphasis-active="true"][data-emphasis-treatment="focus.shadow-only"] {
+  box-shadow: 10px 10px 0 var(--wp-emphasis-shadow-color) !important;
+  filter: drop-shadow(10px 10px 0 var(--wp-emphasis-shadow-color)) !important;
+}
 .accent .slide[data-emphasis-mode="semantic-focus"] [data-emphasis-active="true"][data-emphasis-treatment="focus.texture"] {
   color: var(--wp-emphasis-color) !important;
   background-image: repeating-linear-gradient(135deg, transparent 0 7px, var(--wp-color-focus-peripheral) 7px 9px) !important;
@@ -337,29 +315,6 @@
   outline: 4px solid var(--wp-emphasis-color) !important;
   outline-offset: 5px;
   box-shadow: 8px 8px 0 var(--wp-emphasis-shadow-color) !important;
-}
-
-/* B4 的标准目标在三套主题中共享同一组可见动作。这里仅补足该节点组合所需的
-   精确线宽、10px 证据卡硬影与实心节点中心反白；旧强调档不进入本规则。 */
-:root[data-page-id="gallery-ai-b4"][data-emphasis-profile="standard"].accent
-  .slide #b4-focus-connector[data-emphasis-active="true"] {
-  stroke-width: 2px !important;
-  filter: drop-shadow(3px 3px 0 var(--wp-emphasis-shadow-color)) !important;
-  opacity: 1 !important;
-}
-
-:root[data-page-id="gallery-ai-b4"][data-emphasis-profile="standard"].accent
-  .slide #b4-focus-card[data-emphasis-active="true"] {
-  stroke: var(--wp-emphasis-color) !important;
-  stroke-width: 2px !important;
-  filter: drop-shadow(10px 10px 0 var(--wp-emphasis-color)) !important;
-}
-
-:root[data-page-id="gallery-ai-b4"][data-emphasis-profile="standard"].accent
-  .slide #b4-focus-node[data-emphasis-active="true"] + #b4-focus-node-core {
-  fill: #ffffff !important;
-  stroke: none !important;
-  opacity: 1 !important;
 }
 
 .slide .mono { font-family: var(--mono); font-weight: 400; }

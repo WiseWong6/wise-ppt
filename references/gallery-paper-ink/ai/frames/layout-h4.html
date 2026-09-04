@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html data-theme-id="paper-ink" lang="zh-CN" data-runtime="wise-ppt-specimen" data-typography-mode="all-sans" data-page-id="gallery-ai-h4" data-page-role="explain" data-theme="paper-ink" data-layout="paper-ink.nested.foundation-stack" data-layout-source="gallery" data-emphasis-targets='[{"target_id":"focus.foundation-framework","members":[{"selector":"#h4-focus-framework-title","role":"value","treatment":"focus.color","expected_count":1},{"selector":"#h4-focus-frame, #h4-focus-frame-inner","role":"outline","treatment":"focus.color","expected_count":2},{"selector":"#h4-focus-hatch","role":"outline","treatment":"focus.color","expected_count":1}]}]' data-catalog-legacy-emphasis-profile="content-only" data-catalog-legacy-emphasis-members='[{"selector":".h4-card-illustration","expected_count":6,"role":"outline"}]' data-catalog-legacy-emphasis-foreground-members='[]' data-catalog-legacy-emphasis-ref="sample.h4.illustration-accent" data-vnext-semantic-key-map='[{"key":"support-layers.text.001","tag":"text","text":"LIFT","occurrence":0}]'>
+<html data-theme-id="paper-ink" lang="zh-CN" data-runtime="wise-ppt-specimen" data-typography-mode="all-sans" data-page-id="gallery-ai-h4" data-page-role="explain" data-theme="paper-ink" data-layout="paper-ink.nested.foundation-stack" data-layout-source="gallery" data-vnext-semantic-key-map='[{"key":"support-layers.text.001","tag":"text","text":"LIFT","occurrence":0}]' data-emphasis-targets='[{"target_id":"focus.foundation-framework","members":[{"selector":"#h4-focus-framework-title","role":"value","treatment":"focus.color","expected_count":1},{"selector":"#h4-focus-frame, #h4-focus-frame-inner","role":"outline","treatment":"focus.color","expected_count":2},{"selector":"#h4-focus-hatch","role":"outline","treatment":"focus.color","expected_count":1}]}]' data-vnext-type-slot-map='[{"slot":"content-title","tag":"text","text":"Agent 平台","occurrence":0},{"slot":"content-title","tag":"text","text":"知识库","occurrence":0},{"slot":"content-title","tag":"text","text":"多模态助手","occurrence":0},{"slot":"content-title","tag":"text","text":"模型训练","occurrence":0},{"slot":"content-title","tag":"text","text":"推理服务","occurrence":0},{"slot":"content-title","tag":"text","text":"评测体系","occurrence":0}]'>
 <head>
 <meta charset="UTF-8">
 <title>layout-h4 · 底座托举三层 · AI Infra</title>
@@ -71,9 +71,9 @@ function nodeDot(cx, cy){
 
 /* ---------- 细线开放箭头（托举语义，自下而上） ---------- */
 function liftArrow(x, y1, y2, label){          /* y1 下 → y2 上 */
-  el('line', {'data-h4-lift-arrow':1, x1:x, y1:y1, x2:x, y2:y2, stroke:INK, 'stroke-width':1.2, opacity:.7});
-  el('line', {'data-h4-lift-arrow':1, x1:x-8, y1:y2+11, x2:x, y2:y2, stroke:INK, 'stroke-width':1.2, opacity:.7});
-  el('line', {'data-h4-lift-arrow':1, x1:x+8, y1:y2+11, x2:x, y2:y2, stroke:INK, 'stroke-width':1.2, opacity:.7});
+  el('line', {'data-h4-lift-arrow':1, 'data-vnext-visual-role':'h4.lift-arrow', x1:x, y1:y1, x2:x, y2:y2, stroke:INK, 'stroke-width':1.2, opacity:.7});
+  el('line', {'data-h4-lift-arrow':1, 'data-vnext-visual-role':'h4.lift-arrow', x1:x-8, y1:y2+11, x2:x, y2:y2, stroke:INK, 'stroke-width':1.2, opacity:.7});
+  el('line', {'data-h4-lift-arrow':1, 'data-vnext-visual-role':'h4.lift-arrow', x1:x+8, y1:y2+11, x2:x, y2:y2, stroke:INK, 'stroke-width':1.2, opacity:.7});
   if (label) txt(x+16, (y1+y2)/2+4, label, {'font-family':MONO, 'font-size':'var(--type-micro-secondary)', 'letter-spacing':2, fill:INK45});
 }
 /* 3 组箭头，每组对齐对应模块的水平中心（产品卡/能力卡中心 x=460/960/1460），自下而上逐级托举 */
@@ -132,10 +132,10 @@ function gDrone(cx, cy){
 
 /* ---------- 卡带（双线框卡） ---------- */
 function card(x, y, w, h, item){
-  el('rect', {x:x, y:y, width:w, height:h, fill:'var(--paper-panel)', stroke:INK80, 'stroke-width':1.2});
+  el('rect', {'data-vnext-visual-role':'h4.foundation-card', x:x, y:y, width:w, height:h, fill:'var(--paper-panel)', stroke:INK80, 'stroke-width':1.2});
   el('rect', {x:x+5, y:y+5, width:w-10, height:h-10, fill:'none', stroke:INK, 'stroke-width':.6, opacity:.3});
   var cardRoot = G;
-  G = el('g', {'class':'h4-card-illustration'});
+  G = el('g', {'class':'h4-card-illustration', 'data-vnext-visual-role':'h4.card-illustration'});
   item.g(x+62, y+h/2);
   G = cardRoot;
   txt(x+112, y+40, item.en, {'font-family':MONO, 'font-size':'var(--type-micro-secondary)', 'letter-spacing':2, fill:INK45});

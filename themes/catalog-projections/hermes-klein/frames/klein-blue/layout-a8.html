@@ -1,8 +1,8 @@
 <!DOCTYPE html>
-<html data-theme-id="klein-blue" lang="zh-CN" data-runtime="wise-ppt-specimen" data-typography-mode="all-sans" data-render-pending="true" data-page-id="gallery-ai-a8" data-page-role="prove" data-theme="paper-ink" data-layout="paper-ink.evidence.admin-ui" data-layout-source="gallery" data-emphasis-targets="[{&quot;target_id&quot;:&quot;focus.key-layer&quot;,&quot;label&quot;:&quot;分支 / 层级 / 局部&quot;,&quot;content_role&quot;:&quot;已审核的页面焦点对象&quot;,&quot;reason_hint&quot;:&quot;仅当该对象直接支撑本页 claim 时启用；不得为了配色而开启。&quot;,&quot;members&quot;:[{&quot;selector&quot;:&quot;#badstep&quot;,&quot;role&quot;:&quot;outline&quot;,&quot;treatment&quot;:&quot;focus.outline-depth&quot;,&quot;expected_count&quot;:1},{&quot;selector&quot;:&quot;#badstep .accent-action&quot;,&quot;role&quot;:&quot;value&quot;,&quot;treatment&quot;:&quot;focus.text&quot;,&quot;expected_count&quot;:1},{&quot;selector&quot;:&quot;#badstep .accent-role&quot;,&quot;role&quot;:&quot;label&quot;,&quot;treatment&quot;:&quot;focus.text&quot;,&quot;expected_count&quot;:1},{&quot;selector&quot;:&quot;#badstep .st-err&quot;,&quot;role&quot;:&quot;status&quot;,&quot;treatment&quot;:&quot;focus.text&quot;,&quot;expected_count&quot;:1}]}]" data-vnext-semantic-key-map="[{&quot;key&quot;:&quot;product-ui.text.001&quot;,&quot;tag&quot;:&quot;span&quot;,&quot;text&quot;:&quot;工作区&quot;,&quot;occurrence&quot;:0}]" data-catalog-legacy-emphasis-profile="content-only" data-catalog-legacy-emphasis-members="[{&quot;selector&quot;:&quot;#badstep&quot;,&quot;role&quot;:&quot;outline&quot;},{&quot;selector&quot;:&quot;#badstep .accent-action&quot;,&quot;role&quot;:&quot;value&quot;},{&quot;selector&quot;:&quot;#badstep .accent-role&quot;,&quot;role&quot;:&quot;label&quot;},{&quot;selector&quot;:&quot;#badstep .st-err&quot;,&quot;role&quot;:&quot;status&quot;}]" data-catalog-legacy-emphasis-foreground-members="[]" data-catalog-legacy-emphasis-ref="sample.a8.a8-focus" data-wise-catalog-fonts="true" data-surface-source="catalog-theme-recipes-v2" data-xp-recipe-id="klein-blue:a8" data-xp-surface-profile="application-artifact" data-xp-recipe-status="recipe-ready" data-xp-frame-kind="recipe-generated">
+<html lang="zh-CN" data-runtime="wise-ppt-specimen" data-theme-id="klein-blue" data-typography-mode="mixed" data-wise-catalog-fonts="true" data-page-id="gallery-ai-a8" data-page-role="prove" data-page-kind="relationship" data-layout-id="wise-ppt.layout.relationship.A8" data-layout-code="A8" data-layout-source="canonical-seed" data-layout-seed-sha256="38081b37a23fd8f9a18bce7d9c628e7cca7d4d656be32c7bb31d0ce2a3ede990" data-layout-structure-sha256="f5d533596ee036d73873cdb7b47a6c94b7d7e14b468677388e6c214be5b49917" data-layout-visual-plan="feacd176c341746e0cd6178e670a6af3ee3e22bf10e20098eaffacf60cdc79d3" data-layout-visual-materialization="55dcf1d4a5d31b57ae30b25954b2a0f533e1a8a397ef8c7c4a7f77d658341b25" data-resolved-theme-sha256="1f9ebea0e4bc84cd589274859d82014d71e42ea9c8055699808bbe7bc9298fe2" data-layout-visual-source="wise-ppt-layout-theme-bindings@3" data-catalog-frame-id="klein-blue:a8" data-catalog-frame-ready="true">
 <head>
 <meta charset="UTF-8">
-<title>layout-a8 · 后台界面 mock · Agent Trace</title>
+<title>layout-a8 · 后台任务追踪台</title>
 <script src="../../../../../runtime/stage-fit.js"></script>
 <link rel="stylesheet" href="../../../../../themes/engine/assets/design-tokens.css">
 <link rel="stylesheet" href="../../../../../themes/packages/paper-ink/theme.css">
@@ -10,9 +10,12 @@
 <link rel="stylesheet" href="../../../../../themes/packages/klein-blue/theme.css">
 <link rel="stylesheet" href="../../../../../themes/engine/assets/catalog-fonts.css" data-wise-catalog-fonts="true">
 <link rel="stylesheet" href="../../../../../themes/engine/assets/slide-components.css">
+<link rel="stylesheet" href="../../../../../themes/engine/assets/component-theme.css">
+<link rel="stylesheet" href="../../../../../runtime/component-behavior.css">
+<link rel="stylesheet" href="../../../../../runtime/deck-component-contract.css">
 <link rel="stylesheet" href="../../../../../references/shell.css">
-<style>
-  .ui { position: absolute; top: 118px; left: 100px; right: 100px; display: flex; flex-direction: column; z-index: 2;
+<style data-layout-seed-css="38081b37a23fd8f9a18bce7d9c628e7cca7d4d656be32c7bb31d0ce2a3ede990">@scope (.slide[data-layout-id="wise-ppt.layout.relationship.A8"]) {
+.ui { position: absolute; top: 118px; left: 100px; right: 100px; display: flex; flex-direction: column; z-index: 2;
         border: 1px solid color-mix(in srgb, var(--ink) 50%, transparent); }
 
   .filters {
@@ -96,127 +99,100 @@
   }
 
   /* accent：异常节点按“动作 + 角色 + 状态 + 外框”成组上色；运行 ID 圆点属于元数据，保持墨色 */
-</style>
-<link rel="stylesheet" href="../../catalog-surface.css" data-catalog-theme-surface="catalog-theme-recipes-v2">
-<link rel="stylesheet" href="../../title-furniture.css" data-catalog-title-furniture="black-first-theme-second-v1">
-</head>
-<body class="slide">
-<div class="stage" data-block-id="gallery-primary" data-renderer-kind="svg" data-component-source="native" data-component-id="native.wise-ppt.evidence.admin-ui.product-ui" data-content-ref="example.a8" data-catalog-source-marker="page-recipe">
-  <div class="doc tl"><span class="doc-kicker">PPT 标题</span><span class="doc-title">页面标题</span></div>
-  <div class="folio">页码 / 总页数 — BY @歪斯Wise</div>
-
-  <div class="ui" data-theme-surface="foreground" data-theme-layer="foreground" data-theme-corner="family" data-theme-line="main" data-theme-role="structural-outline">
-    <div class="filters">
-      <div class="f"><span class="dim">工作区</span>wise-ppt ▾</div>
-      <div class="f"><span class="dim">任务类型</span>全部 ▾</div>
-      <div class="f"><span class="dim">状态</span>全部 ▾</div>
-      <div class="f"><span class="dim">时段</span>近 12H ▾</div>
-      <div class="btn" data-theme-surface="ink" data-theme-line="main" data-theme-role="reverse">查询</div>
-    </div>
-    <div class="content">
-      <div class="table">
-        <div class="tr hd" data-theme-table-region="header" data-theme-surface="recessed" data-theme-line="detail"><span>创建时间</span><span>RUN ID</span><span>模型</span><span>指令 / 结果</span><span style="text-align:right">操作</span></div>
-        <div class="tr" data-theme-table-region="body" data-theme-surface="paper" data-theme-line="hairline">
-          <span>08-06 14:22:10</span><span class="run-id"><i class="dot"></i><span>t7f3a2****</span></span><span class="cn">glm-5.2</span>
-          <span class="cn">生成 A1 标本卡 · 估分梗 → 已完成</span>
-          <span class="ops"><span>任务详情</span><span>过程日志</span><span>轨迹回放</span></span>
-        </div>
-        <div class="tr" data-theme-table-region="body" data-theme-surface="paper" data-theme-line="hairline">
-          <span>08-06 13:58:44</span><span class="run-id"><i class="dot part"></i><span>k2d8e1****</span></span><span class="cn">claude-4.5</span>
-          <span class="cn">重构 B1 流水线 · 4 段 · 已挂起</span>
-          <span class="ops"><span>任务详情</span><span>过程日志</span><span>轨迹回放</span></span>
-        </div>
-        <div class="tr sel" id="selrow" data-theme-table-region="selected" data-theme-surface="foreground" data-theme-line="emphasis">
-          <span>08-06 13:41:07</span><span class="run-id"><i class="dot err"></i><span>a91c5e****</span></span><span class="cn">glm-5.2</span>
-          <span class="cn">工具调用 · 读 layout-c4 → 超时 · 未执行</span>
-          <span class="ops"><span>任务详情</span><span>过程日志</span><span>轨迹回放</span></span>
-        </div>
-        <div class="tr" data-theme-table-region="body" data-theme-surface="paper" data-theme-line="hairline">
-          <span>08-06 12:30:19</span><span class="run-id"><i class="dot"></i><span>f55b92****</span></span><span class="cn">deepseek-v3</span>
-          <span class="cn">批量改 D 族 6 页 → 已完成</span>
-          <span class="ops"><span>任务详情</span><span>过程日志</span><span>轨迹回放</span></span>
-        </div>
-        <div class="tr" data-theme-table-region="body" data-theme-surface="paper" data-theme-line="hairline">
-          <span>08-06 11:15:52</span><span class="run-id"><i class="dot"></i><span>b73e08****</span></span><span class="cn">glm-5.2</span>
-          <span class="cn">机检 shot-lint.py · 59 页 → 已完成</span>
-          <span class="ops"><span>任务详情</span><span>过程日志</span><span>轨迹回放</span></span>
-        </div>
-      </div>
-
-      <div class="detail">
-        <div class="dhead"><span>推理过程 · 节点树</span><span class="id">a91c5e****</span></div>
-        <div class="tree">
-          <div class="tnode"><span>▸ 读文件 layout-c4 · 任务树</span><span class="tag">ROOT</span><span class="mono st-ok">✓ 受理</span></div>
-          <div class="tnode" style="padding-left:var(--space-6)"><span>意图解析</span><span class="tag">PARSER</span><span class="mono st-ok">✓ 8ms</span></div>
-          <div class="tnode" style="padding-left:var(--space-6)"><span>路径解析</span><span class="tag">PLANNER</span><span class="mono st-ok">✓ 214ms</span></div>
-          <div class="tnode sel" id="badstep" style="margin-left:var(--space-2); padding-left:var(--space-3); padding-right:var(--space-3)"><span class="accent-action">read_file · layout-c4</span><span class="tag accent-role">TOOL</span><span class="mono st-err">✕ 60s 超时</span></div>
-          <div class="io">
-            <span class="lbl">ERROR</span>　<b>ToolTimeoutError</b>：工具调用超时（超过 60s）<br>
-            <span class="lbl">INPUT</span>　{ path: "gallery&#47;paper-ink/ai/frames/layout-c4.html" }<br>
-            <span class="lbl">OUTPUT</span>　无（调用未返回）
-          </div>
-          <div class="tnode off" style="padding-left:var(--space-6)"><span>任务挂起</span><span class="tag">SUSPEND</span><span class="mono">未执行</span></div>
-          <div class="tnode off" style="padding-left:var(--space-6)"><span>人工接管告警</span><span class="tag">ALERT</span><span class="mono">未执行</span></div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <svg class="elbow" width="1920" height="1080" viewBox="0 0 1920 1080">
-    <path id="elb" fill="none" stroke="var(--ink)" stroke-width="1.4"/>
-    <path id="elbA" fill="none" stroke="var(--ink)" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
-  </svg>
-
-  <div class="caption">每次推理的节点、耗时与输入输出都能回溯到同一会话。</div>
-</div>
-
-<script src="../../../../../themes/packages/paper-ink/assets/particles.js"></script>
-<script>
-function drawConnectors(){
-  var stageNode = document.querySelector('.stage');
-  var rowNode = document.getElementById('selrow');
-  var badNode = document.getElementById('badstep');
-  var elbow = document.getElementById('elb');
-  var arrow = document.getElementById('elbA');
-  if (!stageNode || !rowNode || !badNode || !elbow || !arrow) return false;
-  var stage = stageNode.getBoundingClientRect();
-  var k = stage.width / 1920;
-  /* Catalog 关闭/停泊 iframe 时舞台会短暂变成 0 宽；此时不再把 NaN 写进 SVG。 */
-  if (!Number.isFinite(k) || k <= 0) return false;
-  function P(e) {
-    var r = e.getBoundingClientRect();
-    return { l:(r.left-stage.left)/k, r:(r.right-stage.left)/k, h:((r.top+r.bottom)/2 - stage.top)/k };
-  }
-  var row = P(rowNode);
-  var bad = P(badNode);
-  var x1 = row.r + 2, y1 = row.h;
-  var x2 = bad.l - 4, y2 = bad.h;
-  var mx = (x1 + x2) / 2;
-  if (![x1, y1, x2, y2, mx].every(Number.isFinite)) return false;
-  elbow.setAttribute('d',
-    'M '+x1+' '+y1+' L '+mx+' '+y1+' L '+mx+' '+y2+' L '+x2+' '+y2);
-  arrow.setAttribute('d',
-    'M '+(x2-12)+' '+(y2-7)+' L '+x2+' '+y2+' L '+(x2-12)+' '+(y2+7));
-  return true;
 }
-
-stageFit();
-/* 连线依赖文字真实宽度：字体完成后再量一次并绘制，随后才允许 Catalog 淡入。 */
-Promise.race([
-  document.fonts&&document.fonts.ready?document.fonts.ready:Promise.resolve(),
-  new Promise(function(resolve){setTimeout(resolve,3000);})
-]).then(function(){
-  requestAnimationFrame(function(){
-    requestAnimationFrame(function(){
-      drawConnectors();
-      delete document.documentElement.dataset.renderPending;
-      markRenderReady();
-    });
-  });
-});
-</script>
-<script type="application/json" id="xp-surface-recipe">{"theme":"klein-blue","color_name":"blue","layout_code":"a8","title":"layout-a8 · 后台界面 mock · Agent Trace","layout":"paper-ink.evidence.admin-ui","page_role":"prove","canvas":{"token":"paper","value":"#f2efe9","reason":"常规内容页在纸面上建立层级。"},"surface_profile":"application-artifact","surfaces":[{"role":"base-layout","material":"paper-plane","fill":"#f2efe9","stack":0},{"role":"application-artifact","material":"top-white","fill":"#ffffff","stack":2,"border":{"color":"#1a1a1a","width":2},"shadow":"accent-hard"},{"role":"focus-marker","material":"accent","fill":"#002fa7","stack":3}],"accent":{"value":"#002fa7","semantic_channel":"决定性证据、关键数字或结论词","furniture":"左上第一行 doc-kicker 固定墨黑，第二行 doc-title 使用当前主题色；folio 跟随元信息通道：墨色 45%（同英文章节标签），不使用主题色。","neutral_exceptions":["普通英文标签","轴名","层名","结构编号","MODEL","非当前数据"],"furniture_mode":"black-first-theme-second","folio_mode":"metadata-neutral"},"border_policy":"主体 1px 墨线；唯一焦点可用 2px 橙线，所有容器方角。","shadow_policy":"非强调态不绘制阴影；页面最终强调状态开启时，唯一被举起的主证据才按既有几何绘制一次 10px 零模糊主题色硬影；不得新增阴影或改变阴影几何。","noise_policy":"由主题统一提供唯一一层约 6% 黑色 fractal-noise；页面不得自带 noise 节点；浅色页 multiply，墨面可 overlay。","reference_evidence":{"file":"拯救 AI 时代打工人的终端窗口强迫症.html","cards":["card-3","card-4","card-6"],"rule":"终端和软件截面是独立材质；白面、墨面和状态色由层级而非标签字体决定。"},"acceptance":["强调色只落一个语义通道；同一序列可重复，但不得扩散到结构元数据。","纯白只用于 top-white，不能替代默认纸面。","缩略图必须从该主题独立 frame 的实际渲染重建。"],"status":"recipe-ready","surface_bindings":[{"selector":".ui","expected_count":1,"role":"application-artifact","material":"top-white","fill":"#ffffff","stack":2,"border":{"color":"#1a1a1a","width":2},"shadow":"accent-hard"}],"surface_binding_reason":"真实浏览器 DOM 审计后锁定的稳定 selector；expected_count 是逐页门禁。","theme_identity":[{"group_id":"identity.primary-label","label":"主体短标签","members":[{"selector":"[data-vnext-text-key=\"product-ui.text.001\"]","treatment":"identity.text","expected_count":1}]}],"emphasis_targets":[{"target_id":"focus.key-layer","label":"分支 / 层级 / 局部","content_role":"已审核的页面焦点对象","reason_hint":"仅当该对象直接支撑本页 claim 时启用；不得为了配色而开启。","members":[{"selector":"#badstep","role":"outline","treatment":"focus.outline-depth","expected_count":1},{"selector":"#badstep .accent-action","role":"value","treatment":"focus.text","expected_count":1},{"selector":"#badstep .accent-role","role":"label","treatment":"focus.text","expected_count":1},{"selector":"#badstep .st-err","role":"status","treatment":"focus.text","expected_count":1}]}],"sample_target_id":"focus.key-layer"}</script>
-<script src="../../catalog-surface.js" data-catalog-theme-surface="catalog-theme-recipes-v2"></script>
-<script src="../../catalog-typography.js" data-catalog-typography="brand-latin-numeric-oswald-v1"></script>
+</style>
+<style data-layout-visual-plan="feacd176c341746e0cd6178e670a6af3ee3e22bf10e20098eaffacf60cdc79d3">/* wise-ppt-layout-visual-plan@1 · wise-ppt.layout.relationship.A8 · feacd176c341746e0cd6178e670a6af3ee3e22bf10e20098eaffacf60cdc79d3 */
+body.slide > .stage[data-theme-visual-plan="feacd176c341746e0cd6178e670a6af3ee3e22bf10e20098eaffacf60cdc79d3"], body.slide > .stage[data-theme-visual-plan="feacd176c341746e0cd6178e670a6af3ee3e22bf10e20098eaffacf60cdc79d3"] [data-component-theme-scope="true"] { --wp-layout-structural: var(--wp-color-primary); --wp-layout-functional: var(--wp-color-functional); --wp-color-body: color-mix(in srgb, var(--wp-color-primary) 70%, transparent); --wp-color-chart-label: color-mix(in srgb, var(--wp-color-primary) 55%, transparent); --wp-color-metadata: color-mix(in srgb, var(--wp-color-primary) 45%, transparent); --wp-color-divider: color-mix(in srgb, var(--wp-color-primary) 20%, transparent); --wp-color-construction: color-mix(in srgb, var(--wp-color-primary) 12%, transparent); --wp-private-ink-60: color-mix(in srgb, var(--wp-color-primary) 60%, transparent); --wp-private-ink-30: color-mix(in srgb, var(--wp-color-primary) 30%, transparent); --ink: var(--wp-color-primary); --ink-80: color-mix(in srgb, var(--wp-color-primary) 80%, transparent); --ink-70: color-mix(in srgb, var(--wp-color-primary) 70%, transparent); --ink-55: color-mix(in srgb, var(--wp-color-primary) 55%, transparent); --ink-45: color-mix(in srgb, var(--wp-color-primary) 45%, transparent); --ink-25: color-mix(in srgb, var(--wp-color-primary) 20%, transparent); --ink-12: color-mix(in srgb, var(--wp-color-primary) 12%, transparent); --wp-adapter-pi-ink: var(--wp-color-primary); --wp-adapter-pi-ink-80: color-mix(in srgb, var(--wp-color-primary) 80%, transparent); --wp-adapter-pi-ink-70: color-mix(in srgb, var(--wp-color-primary) 70%, transparent); --wp-adapter-pi-ink-60: color-mix(in srgb, var(--wp-color-primary) 60%, transparent); --wp-adapter-pi-ink-55: color-mix(in srgb, var(--wp-color-primary) 55%, transparent); --wp-adapter-pi-ink-45: color-mix(in srgb, var(--wp-color-primary) 45%, transparent); --wp-adapter-pi-ink-30: color-mix(in srgb, var(--wp-color-primary) 30%, transparent); --wp-adapter-atlas-ink: var(--wp-color-primary); --wp-adapter-atlas-ink-80: color-mix(in srgb, var(--wp-color-primary) 80%, transparent); --wp-adapter-atlas-ink-70: color-mix(in srgb, var(--wp-color-primary) 70%, transparent); --wp-adapter-atlas-ink-55: color-mix(in srgb, var(--wp-color-primary) 55%, transparent); --wp-adapter-atlas-ink-45: color-mix(in srgb, var(--wp-color-primary) 45%, transparent); --wp-adapter-atlas-ink-25: color-mix(in srgb, var(--wp-color-primary) 20%, transparent); --wp-adapter-atlas-ink-12: color-mix(in srgb, var(--wp-color-primary) 12%, transparent); --shadow-soft: none; --shadow-specimen: none; --data-ramp-1: color-mix(in srgb, var(--wp-color-primary) 8%, transparent); --wp-adapter-pi-data-1: color-mix(in srgb, var(--wp-color-primary) 8%, transparent); --wp-adapter-atlas-data-1: color-mix(in srgb, var(--wp-color-primary) 8%, transparent); --data-ramp-2: color-mix(in srgb, var(--wp-color-primary) 14%, transparent); --wp-adapter-pi-data-2: color-mix(in srgb, var(--wp-color-primary) 14%, transparent); --wp-adapter-atlas-data-2: color-mix(in srgb, var(--wp-color-primary) 14%, transparent); --data-ramp-3: color-mix(in srgb, var(--wp-color-primary) 22%, transparent); --wp-adapter-pi-data-3: color-mix(in srgb, var(--wp-color-primary) 22%, transparent); --wp-adapter-atlas-data-3: color-mix(in srgb, var(--wp-color-primary) 22%, transparent); --data-ramp-4: color-mix(in srgb, var(--wp-color-primary) 30%, transparent); --wp-adapter-pi-data-4: color-mix(in srgb, var(--wp-color-primary) 30%, transparent); --wp-adapter-atlas-data-4: color-mix(in srgb, var(--wp-color-primary) 30%, transparent); --data-ramp-5: color-mix(in srgb, var(--wp-color-primary) 40%, transparent); --wp-adapter-pi-data-5: color-mix(in srgb, var(--wp-color-primary) 40%, transparent); --wp-adapter-atlas-data-5: color-mix(in srgb, var(--wp-color-primary) 40%, transparent); --data-ramp-6: color-mix(in srgb, var(--wp-color-primary) 52%, transparent); --wp-adapter-pi-data-6: color-mix(in srgb, var(--wp-color-primary) 52%, transparent); --wp-adapter-atlas-data-6: color-mix(in srgb, var(--wp-color-primary) 52%, transparent); }
+:root[data-theme-id][data-typography-mode="mixed"] body.slide [data-theme-type-role="top-left-kicker"], :root[data-theme-id][data-typography-mode="mixed"] body.slide [data-theme-type-role="bottom-left-folio"] { font-family: var(--wp-font-oswald) !important; font-weight: 700 !important; }
+:root[data-theme-id][data-typography-mode="mixed"] body.slide [data-theme-type-role="bottom-takeaway"] { font-family: var(--wp-font-han-serif) !important; font-weight: 700 !important; }
+:root[data-theme-id][data-typography-mode="mixed"] body.slide [data-theme-type-role="zh-content-title"] { font-family: var(--wp-font-han-sans) !important; font-weight: 700 !important; }
+:root[data-theme-id][data-typography-mode="mixed"] body.slide :is([data-theme-type-role="body"], [data-theme-type-role="label"], [data-theme-type-role="number"], [data-theme-type-role="chart-text"]) { font-family: var(--wp-font-han-sans) !important; font-weight: 400 !important; }
+:root[data-theme-id][data-typography-mode="mixed"] body.slide [data-theme-language="en"]:not([data-theme-type-role="top-left-kicker"]):not([data-theme-type-role="bottom-left-folio"]):not([data-theme-type-role="bottom-takeaway"]) { font-family: var(--wp-font-oswald) !important; font-weight: 700 !important; }
+body.slide > .stage[data-theme-visual-plan="feacd176c341746e0cd6178e670a6af3ee3e22bf10e20098eaffacf60cdc79d3"] { background-color: var(--wp-color-surface-canvas) !important; }
+body.slide [data-theme-surface-binding-id="application-artifact"] { background-color: var(--wp-color-surface-panel) !important; }
+body.slide svg [data-theme-surface-binding-id="application-artifact"],
+body.slide svg [data-theme-surface-binding-id="application-artifact"] :is(path, line, rect, circle, ellipse, polygon, polyline, use)[fill]:not([fill="none"]) { fill: var(--wp-color-surface-panel) !important; }
+body.slide [data-theme-surface-binding-id="application-artifact"] { --wp-layout-surface-stack: 2; z-index: 2 !important; }
+body.slide [data-theme-surface-binding-id="application-artifact"]:not([data-emphasis-active="true"]) { box-shadow: none !important; }
+body.slide svg [data-theme-surface-binding-id="application-artifact"]:not([data-emphasis-active="true"]) { filter: none !important; }
+body.slide [data-theme-surface-binding-id="application-artifact"] { border-color: var(--wp-color-primary) !important; border-width: 2px !important; border-style: solid !important; }
+body.slide svg [data-theme-surface-binding-id="application-artifact"],
+body.slide svg [data-theme-surface-binding-id="application-artifact"] :is(path, line, rect, circle, ellipse, polygon, polyline, use)[stroke]:not([stroke="none"]) { stroke: var(--wp-color-primary) !important; stroke-width: 2px !important; }
+body.slide [data-theme-furniture-role="title"] { color: var(--wp-color-functional) !important; }
+body.slide svg [data-theme-furniture-role="title"] { fill: var(--wp-color-functional) !important; }
+body.slide [data-theme-furniture-role="folio"] { color: var(--wp-color-metadata) !important; }
+body.slide svg [data-theme-furniture-role="folio"] { fill: var(--wp-color-metadata) !important; }
+body.slide [data-theme-furniture-role="takeaway"] { color: var(--wp-color-primary) !important; }
+body.slide svg [data-theme-furniture-role="takeaway"] { fill: var(--wp-color-primary) !important; }
+body.slide [data-theme-furniture-role="title"]::first-line,
+body.slide [data-theme-furniture-role="title"] [data-theme-furniture-line="first"] { color: var(--wp-color-primary) !important; }
+body.slide [data-theme-furniture-role="title"] [data-theme-furniture-line="second"] { color: var(--wp-color-functional) !important; }
+</style>
+</head>
+<body class="slide" data-page-id="gallery-ai-a8" data-page-role="prove" data-page-kind="relationship" data-layout-id="wise-ppt.layout.relationship.A8" data-layout-code="A8" data-layout-source="canonical-seed" data-layout-seed-sha256="38081b37a23fd8f9a18bce7d9c628e7cca7d4d656be32c7bb31d0ce2a3ede990" data-layout-structure-sha256="f5d533596ee036d73873cdb7b47a6c94b7d7e14b468677388e6c214be5b49917" data-layout-visual-plan="feacd176c341746e0cd6178e670a6af3ee3e22bf10e20098eaffacf60cdc79d3" data-layout-visual-materialization="55dcf1d4a5d31b57ae30b25954b2a0f533e1a8a397ef8c7c4a7f77d658341b25" data-resolved-theme-sha256="1f9ebea0e4bc84cd589274859d82014d71e42ea9c8055699808bbe7bc9298fe2" data-layout-visual-source="wise-ppt-layout-theme-bindings@3">
+<div class="stage" data-block-id="gallery-primary" data-component-id="native.wise-ppt.evidence.admin-ui.product-ui" data-component-source="native" data-content-ref="example.a8" data-renderer-kind="svg" data-theme-visual-source="wise-ppt-layout-theme-bindings@3" data-theme-visual-plan="feacd176c341746e0cd6178e670a6af3ee3e22bf10e20098eaffacf60cdc79d3" data-theme-canvas-material="paper" data-theme-default-color-base-role="primary" data-theme-typography-resolution="structure-slots-and-explicit-language" data-theme-emphasis-target-count="1" data-theme-emphasis-sample-target="focus.key-layer">
+<div class="doc tl" data-theme-furniture-source="wise-ppt-layout-theme-bindings@3" data-theme-furniture-role="title" data-theme-furniture-variant="primary-first-functional-second" data-theme-type-role="top-left-kicker" data-theme-type-base-role="top-left-kicker" data-theme-color-role="functional" data-theme-color-alpha="1" data-theme-title-first-color-role="primary" data-theme-title-second-color-role="functional" data-theme-language="zh"><span class="vnext-text-node" data-vnext-fit-box="0,0,1920,1080" data-vnext-text-key="support.text.001" data-theme-furniture-line="first" data-theme-type-role="top-left-kicker" data-theme-type-base-role="top-left-kicker" data-theme-color-role="primary" data-theme-language="zh">PPT &#x6807;&#x9898;</span><br><span class="vnext-text-node" data-vnext-fit-box="0,0,1920,1080" data-vnext-text-key="support.text.002" data-theme-furniture-line="second" data-theme-type-role="top-left-kicker" data-theme-type-base-role="top-left-kicker" data-theme-color-role="functional" data-theme-language="zh">&#x9875;&#x9762;&#x6807;&#x9898;</span></div>
+<div class="folio" data-theme-furniture-source="wise-ppt-layout-theme-bindings@3" data-theme-furniture-role="folio" data-theme-type-role="bottom-left-folio" data-theme-type-base-role="bottom-left-folio" data-theme-color-role="metadata" data-theme-color-alpha="1" data-theme-language="zh">&#x9875;&#x7801; / &#x603b;&#x9875;&#x6570; &#x2014; BY @&#x6b6a;&#x65af;Wise</div>
+<div class="ui" data-theme-corner="family" data-theme-layer="foreground" data-theme-line="main" data-theme-role="structural-outline" data-theme-surface="foreground" data-theme-binding-source="wise-ppt-layout-theme-bindings@3" data-theme-surface-binding-id="application-artifact" data-theme-surface-role="application-artifact" data-theme-material="foreground" data-theme-stack="2" data-theme-base-shadow="none" data-theme-border="{&quot;alpha&quot;:1,&quot;color_role&quot;:&quot;primary&quot;,&quot;width_px&quot;:2}" data-theme-role-overrides="[]" data-theme-emphasis-source="wise-ppt-layout-theme-bindings@3" data-theme-emphasis-members="[{&quot;role&quot;:&quot;outline&quot;,&quot;target_id&quot;:&quot;focus.key-layer&quot;,&quot;treatment&quot;:&quot;focus.shadow-only&quot;}]">
+<div class="filters">
+<div class="f"><span class="dim" data-vnext-fit-box="99,117,1821,190" data-vnext-text-key="product-ui.text.001" data-theme-type-role="body" data-theme-type-base-role="body" data-theme-language="zh">&#x5de5;&#x4f5c;&#x533a;</span><span class="vnext-text-node" data-vnext-fit-box="99,117,1821,190" data-vnext-text-key="product-ui.text.002" data-theme-type-role="en-bold" data-theme-type-base-role="body" data-theme-language="en">wise-ppt &#x25be;</span></div>
+<div class="f"><span class="dim" data-vnext-fit-box="99,117,1821,190" data-vnext-text-key="product-ui.text.003" data-theme-type-role="body" data-theme-type-base-role="body" data-theme-language="zh">&#x4efb;&#x52a1;&#x7c7b;&#x578b;</span><span class="vnext-text-node" data-vnext-fit-box="99,117,1821,190" data-vnext-text-key="product-ui.text.004" data-theme-type-role="body" data-theme-type-base-role="body" data-theme-language="zh">&#x5168;&#x90e8; &#x25be;</span></div>
+<div class="f"><span class="dim" data-vnext-fit-box="99,117,1821,190" data-vnext-text-key="product-ui.text.005" data-theme-type-role="body" data-theme-type-base-role="body" data-theme-language="zh">&#x72b6;&#x6001;</span><span class="vnext-text-node" data-vnext-fit-box="99,117,1821,190" data-vnext-text-key="product-ui.text.006" data-theme-type-role="body" data-theme-type-base-role="body" data-theme-language="zh">&#x5168;&#x90e8; &#x25be;</span></div>
+<div class="f"><span class="dim" data-vnext-fit-box="99,117,1821,190" data-vnext-text-key="product-ui.text.007" data-theme-type-role="body" data-theme-type-base-role="body" data-theme-language="zh">&#x65f6;&#x6bb5;</span><span class="vnext-text-node" data-vnext-fit-box="99,117,1821,190" data-vnext-text-key="product-ui.text.008" data-theme-type-role="body" data-theme-type-base-role="body" data-theme-language="zh">&#x8fd1; 12H &#x25be;</span></div>
+<div class="btn" data-theme-line="main" data-theme-role="reverse" data-theme-surface="ink" data-vnext-fit-box="99,117,1821,190" data-vnext-text-key="product-ui.text.009" data-theme-type-role="body" data-theme-type-base-role="body" data-theme-language="zh">&#x67e5;&#x8be2;</div>
+</div>
+<div class="content">
+<div class="table">
+<div class="tr hd" data-theme-line="detail" data-theme-surface="recessed" data-theme-table-region="header"><span data-vnext-fit-box="123,202,1028,245" data-vnext-text-key="product-ui.text.010" data-theme-type-role="body" data-theme-type-base-role="body" data-theme-language="zh">&#x521b;&#x5efa;&#x65f6;&#x95f4;</span><span data-vnext-fit-box="123,202,1028,245" data-vnext-text-key="product-ui.text.011" data-theme-type-role="en-bold" data-theme-type-base-role="body" data-theme-language="en">RUN ID</span><span data-vnext-fit-box="123,202,1028,245" data-vnext-text-key="product-ui.text.012" data-theme-type-role="body" data-theme-type-base-role="body" data-theme-language="zh">&#x6a21;&#x578b;</span><span data-vnext-fit-box="123,202,1028,245" data-vnext-text-key="product-ui.text.013" data-theme-type-role="body" data-theme-type-base-role="body" data-theme-language="zh">&#x6307;&#x4ee4; / &#x7ed3;&#x679c;</span><span data-vnext-fit-box="123,202,1028,245" data-vnext-text-key="product-ui.text.014" style="text-align:right" data-theme-type-role="body" data-theme-type-base-role="body" data-theme-language="zh">&#x64cd;&#x4f5c;</span></div>
+<div class="tr" data-theme-line="hairline" data-theme-surface="paper" data-theme-table-region="body">
+<span data-vnext-fit-box="123,241,1028,366" data-vnext-text-key="product-ui.text.015" data-theme-type-role="en-bold" data-theme-type-base-role="body" data-theme-language="en">08-06 14:22:10</span><span class="run-id"><i class="dot"></i><span data-vnext-fit-box="123,241,1028,366" data-vnext-text-key="product-ui.text.016" data-theme-type-role="en-bold" data-theme-type-base-role="body" data-theme-language="en">t7f3a2****</span></span><span class="cn" data-vnext-fit-box="123,241,1028,366" data-vnext-text-key="product-ui.text.017" data-theme-type-role="en-bold" data-theme-type-base-role="body" data-theme-language="en">glm-5.2</span>
+<span class="cn" data-vnext-fit-box="123,241,1028,366" data-vnext-text-key="product-ui.text.018" data-theme-type-role="body" data-theme-type-base-role="body" data-theme-language="zh">&#x751f;&#x6210; A1 &#x6807;&#x672c;&#x5361; &#xb7; &#x4f30;&#x5206;&#x6897; &#x2192; &#x5df2;&#x5b8c;&#x6210;</span>
+<span class="ops"><span data-vnext-fit-box="0,0,1920,1080" data-vnext-text-key="product-ui.text.019" data-theme-type-role="body" data-theme-type-base-role="body" data-theme-language="zh">&#x4efb;&#x52a1;&#x8be6;&#x60c5;</span><span data-vnext-fit-box="0,0,1920,1080" data-vnext-text-key="product-ui.text.020" data-theme-type-role="body" data-theme-type-base-role="body" data-theme-language="zh">&#x8fc7;&#x7a0b;&#x65e5;&#x5fd7;</span><span data-vnext-fit-box="0,0,1920,1080" data-vnext-text-key="product-ui.text.021" data-theme-type-role="body" data-theme-type-base-role="body" data-theme-language="zh">&#x8f68;&#x8ff9;&#x56de;&#x653e;</span></span>
+</div>
+<div class="tr" data-theme-line="hairline" data-theme-surface="paper" data-theme-table-region="body">
+<span data-vnext-fit-box="123,362,1028,487" data-vnext-text-key="product-ui.text.022" data-theme-type-role="en-bold" data-theme-type-base-role="body" data-theme-language="en">08-06 13:58:44</span><span class="run-id"><i class="dot part"></i><span data-vnext-fit-box="123,362,1028,487" data-vnext-text-key="product-ui.text.023" data-theme-type-role="en-bold" data-theme-type-base-role="body" data-theme-language="en">k2d8e1****</span></span><span class="cn" data-vnext-fit-box="123,362,1028,487" data-vnext-text-key="product-ui.text.024" data-theme-type-role="en-bold" data-theme-type-base-role="body" data-theme-language="en">claude-4.5</span>
+<span class="cn" data-vnext-fit-box="123,362,1028,487" data-vnext-text-key="product-ui.text.025" data-theme-type-role="body" data-theme-type-base-role="body" data-theme-language="zh">&#x91cd;&#x6784; B1 &#x6d41;&#x6c34;&#x7ebf; &#xb7; 4 &#x6bb5; &#xb7; &#x5df2;&#x6302;&#x8d77;</span>
+<span class="ops"><span data-vnext-fit-box="0,0,1920,1080" data-vnext-text-key="product-ui.text.026" data-theme-type-role="body" data-theme-type-base-role="body" data-theme-language="zh">&#x4efb;&#x52a1;&#x8be6;&#x60c5;</span><span data-vnext-fit-box="0,0,1920,1080" data-vnext-text-key="product-ui.text.027" data-theme-type-role="body" data-theme-type-base-role="body" data-theme-language="zh">&#x8fc7;&#x7a0b;&#x65e5;&#x5fd7;</span><span data-vnext-fit-box="0,0,1920,1080" data-vnext-text-key="product-ui.text.028" data-theme-type-role="body" data-theme-type-base-role="body" data-theme-language="zh">&#x8f68;&#x8ff9;&#x56de;&#x653e;</span></span>
+</div>
+<div class="tr sel" data-theme-line="emphasis" data-theme-surface="foreground" data-theme-table-region="selected" id="selrow">
+<span data-vnext-fit-box="123,483,1028,608" data-vnext-text-key="product-ui.text.029" data-theme-type-role="en-bold" data-theme-type-base-role="body" data-theme-language="en">08-06 13:41:07</span><span class="run-id"><i class="dot err"></i><span data-vnext-fit-box="123,483,1028,608" data-vnext-text-key="product-ui.text.030" data-theme-type-role="en-bold" data-theme-type-base-role="body" data-theme-language="en">a91c5e****</span></span><span class="cn" data-vnext-fit-box="123,483,1028,608" data-vnext-text-key="product-ui.text.031" data-theme-type-role="en-bold" data-theme-type-base-role="body" data-theme-language="en">glm-5.2</span>
+<span class="cn" data-vnext-fit-box="123,483,1028,608" data-vnext-text-key="product-ui.text.032" data-theme-type-role="body" data-theme-type-base-role="body" data-theme-language="zh">&#x5de5;&#x5177;&#x8c03;&#x7528; &#xb7; &#x8bfb; layout-c4 &#x2192; &#x8d85;&#x65f6; &#xb7; &#x672a;&#x6267;&#x884c;</span>
+<span class="ops"><span data-vnext-fit-box="0,0,1920,1080" data-vnext-text-key="product-ui.text.033" data-theme-type-role="body" data-theme-type-base-role="body" data-theme-language="zh">&#x4efb;&#x52a1;&#x8be6;&#x60c5;</span><span data-vnext-fit-box="0,0,1920,1080" data-vnext-text-key="product-ui.text.034" data-theme-type-role="body" data-theme-type-base-role="body" data-theme-language="zh">&#x8fc7;&#x7a0b;&#x65e5;&#x5fd7;</span><span data-vnext-fit-box="0,0,1920,1080" data-vnext-text-key="product-ui.text.035" data-theme-type-role="body" data-theme-type-base-role="body" data-theme-language="zh">&#x8f68;&#x8ff9;&#x56de;&#x653e;</span></span>
+</div>
+<div class="tr" data-theme-line="hairline" data-theme-surface="paper" data-theme-table-region="body">
+<span data-vnext-fit-box="123,604,1028,729" data-vnext-text-key="product-ui.text.036" data-theme-type-role="en-bold" data-theme-type-base-role="body" data-theme-language="en">08-06 12:30:19</span><span class="run-id"><i class="dot"></i><span data-vnext-fit-box="123,604,1028,729" data-vnext-text-key="product-ui.text.037" data-theme-type-role="en-bold" data-theme-type-base-role="body" data-theme-language="en">f55b92****</span></span><span class="cn" data-vnext-fit-box="123,604,1028,729" data-vnext-text-key="product-ui.text.038" data-theme-type-role="en-bold" data-theme-type-base-role="body" data-theme-language="en">deepseek-v3</span>
+<span class="cn" data-vnext-fit-box="123,604,1028,729" data-vnext-text-key="product-ui.text.039" data-theme-type-role="body" data-theme-type-base-role="body" data-theme-language="zh">&#x6279;&#x91cf;&#x6539; D &#x65cf; 6 &#x9875; &#x2192; &#x5df2;&#x5b8c;&#x6210;</span>
+<span class="ops"><span data-vnext-fit-box="0,0,1920,1080" data-vnext-text-key="product-ui.text.040" data-theme-type-role="body" data-theme-type-base-role="body" data-theme-language="zh">&#x4efb;&#x52a1;&#x8be6;&#x60c5;</span><span data-vnext-fit-box="0,0,1920,1080" data-vnext-text-key="product-ui.text.041" data-theme-type-role="body" data-theme-type-base-role="body" data-theme-language="zh">&#x8fc7;&#x7a0b;&#x65e5;&#x5fd7;</span><span data-vnext-fit-box="0,0,1920,1080" data-vnext-text-key="product-ui.text.042" data-theme-type-role="body" data-theme-type-base-role="body" data-theme-language="zh">&#x8f68;&#x8ff9;&#x56de;&#x653e;</span></span>
+</div>
+<div class="tr" data-theme-line="hairline" data-theme-surface="paper" data-theme-table-region="body">
+<span data-vnext-fit-box="123,725,1028,850" data-vnext-text-key="product-ui.text.043" data-theme-type-role="en-bold" data-theme-type-base-role="body" data-theme-language="en">08-06 11:15:52</span><span class="run-id"><i class="dot"></i><span data-vnext-fit-box="123,725,1028,850" data-vnext-text-key="product-ui.text.044" data-theme-type-role="en-bold" data-theme-type-base-role="body" data-theme-language="en">b73e08****</span></span><span class="cn" data-vnext-fit-box="123,725,1028,850" data-vnext-text-key="product-ui.text.045" data-theme-type-role="en-bold" data-theme-type-base-role="body" data-theme-language="en">glm-5.2</span>
+<span class="cn" data-vnext-fit-box="123,725,1028,850" data-vnext-text-key="product-ui.text.046" data-theme-type-role="body" data-theme-type-base-role="body" data-theme-language="zh">&#x673a;&#x68c0; shot-lint.py &#xb7; 59 &#x9875; &#x2192; &#x5df2;&#x5b8c;&#x6210;</span>
+<span class="ops"><span data-vnext-fit-box="0,0,1920,1080" data-vnext-text-key="product-ui.text.047" data-theme-type-role="body" data-theme-type-base-role="body" data-theme-language="zh">&#x4efb;&#x52a1;&#x8be6;&#x60c5;</span><span data-vnext-fit-box="0,0,1920,1080" data-vnext-text-key="product-ui.text.048" data-theme-type-role="body" data-theme-type-base-role="body" data-theme-language="zh">&#x8fc7;&#x7a0b;&#x65e5;&#x5fd7;</span><span data-vnext-fit-box="0,0,1920,1080" data-vnext-text-key="product-ui.text.049" data-theme-type-role="body" data-theme-type-base-role="body" data-theme-language="zh">&#x8f68;&#x8ff9;&#x56de;&#x653e;</span></span>
+</div>
+</div>
+<div class="detail">
+<div class="dhead"><span data-vnext-fit-box="1047,186,1821,866" data-vnext-text-key="product-ui.text.050" data-theme-type-role="body" data-theme-type-base-role="body" data-theme-language="zh">&#x63a8;&#x7406;&#x8fc7;&#x7a0b; &#xb7; &#x8282;&#x70b9;&#x6811;</span><span class="id" data-vnext-fit-box="1072,202,1797,237" data-vnext-text-key="product-ui.text.051" data-theme-type-role="en-bold" data-theme-type-base-role="body" data-theme-language="en">a91c5e****</span></div>
+<div class="tree">
+<div class="tnode"><span data-vnext-fit-box="1072,241,1797,283" data-vnext-text-key="product-ui.text.052" data-theme-type-role="body" data-theme-type-base-role="body" data-theme-language="zh">&#x25b8; &#x8bfb;&#x6587;&#x4ef6; layout-c4 &#xb7; &#x4efb;&#x52a1;&#x6811;</span><span class="tag" data-vnext-fit-box="1072,241,1797,283" data-vnext-text-key="product-ui.text.053" data-theme-type-role="en-bold" data-theme-type-base-role="body" data-theme-language="en">ROOT</span><span class="mono st-ok" data-vnext-fit-box="1072,241,1797,283" data-vnext-text-key="product-ui.text.054" data-theme-type-role="body" data-theme-type-base-role="body" data-theme-language="zh">&#x2713; &#x53d7;&#x7406;</span></div>
+<div class="tnode" style="padding-left:var(--space-6)"><span data-vnext-fit-box="1072,279,1797,320" data-vnext-text-key="product-ui.text.055" data-theme-type-role="body" data-theme-type-base-role="body" data-theme-language="zh">&#x610f;&#x56fe;&#x89e3;&#x6790;</span><span class="tag" data-vnext-fit-box="1072,279,1797,320" data-vnext-text-key="product-ui.text.056" data-theme-type-role="en-bold" data-theme-type-base-role="body" data-theme-language="en">PARSER</span><span class="mono st-ok" data-vnext-fit-box="1072,279,1797,320" data-vnext-text-key="product-ui.text.057" data-theme-type-role="en-bold" data-theme-type-base-role="body" data-theme-language="en">&#x2713; 8ms</span></div>
+<div class="tnode" style="padding-left:var(--space-6)"><span data-vnext-fit-box="1072,316,1797,357" data-vnext-text-key="product-ui.text.058" data-theme-type-role="body" data-theme-type-base-role="body" data-theme-language="zh">&#x8def;&#x5f84;&#x89e3;&#x6790;</span><span class="tag" data-vnext-fit-box="1072,316,1797,357" data-vnext-text-key="product-ui.text.059" data-theme-type-role="en-bold" data-theme-type-base-role="body" data-theme-language="en">PLANNER</span><span class="mono st-ok" data-vnext-fit-box="1072,316,1797,357" data-vnext-text-key="product-ui.text.060" data-theme-type-role="en-bold" data-theme-type-base-role="body" data-theme-language="en">&#x2713; 214ms</span></div>
+<div class="tnode sel" id="badstep" style="margin-left:var(--space-2); padding-left:var(--space-3); padding-right:var(--space-3)" data-theme-emphasis-source="wise-ppt-layout-theme-bindings@3" data-theme-emphasis-members="[{&quot;role&quot;:&quot;outline&quot;,&quot;target_id&quot;:&quot;focus.key-layer&quot;,&quot;treatment&quot;:&quot;focus.color&quot;}]"><span class="accent-action" data-vnext-fit-box="1080,353,1797,395" data-vnext-text-key="product-ui.text.061" data-theme-emphasis-source="wise-ppt-layout-theme-bindings@3" data-theme-emphasis-members="[{&quot;role&quot;:&quot;value&quot;,&quot;target_id&quot;:&quot;focus.key-layer&quot;,&quot;treatment&quot;:&quot;focus.color&quot;}]" data-theme-type-role="en-bold" data-theme-type-base-role="body" data-theme-language="en">read_file &#xb7; layout-c4</span><span class="tag accent-role" data-vnext-fit-box="1080,353,1797,395" data-vnext-text-key="product-ui.text.062" data-theme-emphasis-source="wise-ppt-layout-theme-bindings@3" data-theme-emphasis-members="[{&quot;role&quot;:&quot;label&quot;,&quot;target_id&quot;:&quot;focus.key-layer&quot;,&quot;treatment&quot;:&quot;focus.color&quot;}]" data-theme-type-role="en-bold" data-theme-type-base-role="body" data-theme-language="en">TOOL</span><span class="mono st-err" data-vnext-fit-box="1080,353,1797,395" data-vnext-text-key="product-ui.text.063" data-theme-emphasis-source="wise-ppt-layout-theme-bindings@3" data-theme-emphasis-members="[{&quot;role&quot;:&quot;status&quot;,&quot;target_id&quot;:&quot;focus.key-layer&quot;,&quot;treatment&quot;:&quot;focus.color&quot;}]" data-theme-type-role="body" data-theme-type-base-role="body" data-theme-language="zh">&#x2715; 60s &#x8d85;&#x65f6;</span></div>
+<div class="io">
+<span class="lbl" data-vnext-fit-box="1047,186,1821,866" data-vnext-text-key="product-ui.text.064" data-theme-type-role="en-bold" data-theme-type-base-role="body" data-theme-language="en">ERROR</span>&#x3000;<b data-vnext-fit-box="1047,186,1821,866" data-vnext-text-key="product-ui.text.065" data-theme-type-role="en-bold" data-theme-type-base-role="body" data-theme-language="en">ToolTimeoutError</b><span class="vnext-text-node" data-vnext-fit-box="1047,186,1821,866" data-vnext-text-key="product-ui.text.066" data-theme-type-role="body" data-theme-type-base-role="body" data-theme-language="zh">&#xff1a;&#x5de5;&#x5177;&#x8c03;&#x7528;&#x8d85;&#x65f6;&#xff08;&#x8d85;&#x8fc7; 60s&#xff09;</span><br>
+<span class="lbl" data-vnext-fit-box="1047,186,1821,866" data-vnext-text-key="product-ui.text.067" data-theme-type-role="en-bold" data-theme-type-base-role="body" data-theme-language="en">INPUT</span><span class="vnext-text-node" data-vnext-fit-box="1047,186,1821,866" data-vnext-text-key="product-ui.text.068" data-theme-type-role="en-bold" data-theme-type-base-role="body" data-theme-language="en">{ path: &quot;gallery/paper-ink/ai/frames/layout-c4.html&quot; }</span><br>
+<span class="lbl" data-vnext-fit-box="1047,186,1821,866" data-vnext-text-key="product-ui.text.069" data-theme-type-role="en-bold" data-theme-type-base-role="body" data-theme-language="en">OUTPUT</span><span class="vnext-text-node" data-vnext-fit-box="1047,186,1821,866" data-vnext-text-key="product-ui.text.070" data-theme-type-role="body" data-theme-type-base-role="body" data-theme-language="zh">&#x65e0;&#xff08;&#x8c03;&#x7528;&#x672a;&#x8fd4;&#x56de;&#xff09;</span></div>
+<div class="tnode off" style="padding-left:var(--space-6)"><span data-vnext-fit-box="1072,517,1797,560" data-vnext-text-key="product-ui.text.071" data-theme-type-role="body" data-theme-type-base-role="body" data-theme-language="zh">&#x4efb;&#x52a1;&#x6302;&#x8d77;</span><span class="tag" data-vnext-fit-box="1072,517,1797,560" data-vnext-text-key="product-ui.text.072" data-theme-type-role="en-bold" data-theme-type-base-role="body" data-theme-language="en">SUSPEND</span><span class="mono" data-vnext-fit-box="1072,517,1797,560" data-vnext-text-key="product-ui.text.073" data-theme-type-role="body" data-theme-type-base-role="body" data-theme-language="zh">&#x672a;&#x6267;&#x884c;</span></div>
+<div class="tnode off" style="padding-left:var(--space-6)"><span data-vnext-fit-box="1072,555,1797,598" data-vnext-text-key="product-ui.text.074" data-theme-type-role="body" data-theme-type-base-role="body" data-theme-language="zh">&#x4eba;&#x5de5;&#x63a5;&#x7ba1;&#x544a;&#x8b66;</span><span class="tag" data-vnext-fit-box="1072,555,1797,598" data-vnext-text-key="product-ui.text.075" data-theme-type-role="en-bold" data-theme-type-base-role="body" data-theme-language="en">ALERT</span><span class="mono" data-vnext-fit-box="1072,555,1797,598" data-vnext-text-key="product-ui.text.076" data-theme-type-role="body" data-theme-type-base-role="body" data-theme-language="zh">&#x672a;&#x6267;&#x884c;</span></div>
+</div>
+</div>
+</div>
+</div>
+<svg class="elbow" height="1080" viewBox="0 0 1920 1080" width="1920">
+<path d="M 1027.5625 545.5 L 1053.0625 545.5 L 1053.0625 374 L 1078.5625 374" fill="none" id="elb" stroke="var(--ink)" stroke-width="1.4"/>
+<path d="M 1066.5625 367 L 1078.5625 374 L 1066.5625 381" fill="none" id="elbA" stroke="var(--ink)" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.4"/>
+</svg>
+<div class="caption" data-vnext-claim-key="claim.text.001" data-vnext-fit-box="0,0,1920,1080" data-theme-furniture-source="wise-ppt-layout-theme-bindings@3" data-theme-furniture-role="takeaway" data-theme-type-role="bottom-takeaway" data-theme-type-base-role="bottom-takeaway" data-theme-color-role="primary" data-theme-color-alpha="1" data-theme-language="zh">&#x6bcf;&#x6b21;&#x63a8;&#x7406;&#x7684;&#x8282;&#x70b9;&#x3001;&#x8017;&#x65f6;&#x4e0e;&#x8f93;&#x5165;&#x8f93;&#x51fa;&#x90fd;&#x80fd;&#x56de;&#x6eaf;&#x5230;&#x540c;&#x4e00;&#x4f1a;&#x8bdd;&#x3002;</div>
+</div>
+<script>stageFit();</script>
 </body>
 </html>

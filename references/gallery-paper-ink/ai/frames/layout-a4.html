@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html data-theme-id="paper-ink" lang="zh-CN" data-runtime="wise-ppt-specimen" data-typography-mode="all-sans" data-page-id="gallery-ai-a4" data-page-role="prove" data-theme="paper-ink" data-layout="paper-ink.evidence.strategy-evidence-wall" data-layout-source="gallery" data-emphasis-targets='[{"target_id":"focus.key-node","members":[{"selector":"#focus-caption","role":"label","treatment":"focus.color","expected_count":1}]}]' data-catalog-legacy-emphasis-profile="copy-only" data-catalog-legacy-emphasis-members='[{"selector":"#focus-caption","role":"label"}]' data-catalog-legacy-emphasis-foreground-members='[]' data-catalog-legacy-emphasis-ref="sample.a4.a4-focus" data-vnext-semantic-key-map='[]'>
+<html data-theme-id="paper-ink" lang="zh-CN" data-runtime="wise-ppt-specimen" data-typography-mode="all-sans" data-page-id="gallery-ai-a4" data-page-role="prove" data-theme="paper-ink" data-layout="paper-ink.evidence.strategy-evidence-wall" data-layout-source="gallery" data-vnext-semantic-key-map='[]' data-emphasis-targets='[{"target_id":"focus.key-node","members":[{"selector":"#focus-caption","role":"label","treatment":"focus.color","expected_count":1}]}]' data-vnext-type-slot-map='[{"slot":"content-title","tag":"text","text":"四条工程化打法，各有实据","occurrence":0},{"slot":"content-title","tag":"text","text":"上下文管控","occurrence":0},{"slot":"content-title","tag":"text","text":"评测前置","occurrence":0},{"slot":"content-title","tag":"text","text":"工具护栏","occurrence":0},{"slot":"content-title","tag":"text","text":"全链可溯","occurrence":0}]'>
 <head>
 <meta charset="UTF-8">
 <title>layout-a4 · 左策略右证据墙 · Agent 工程化</title>
@@ -67,7 +67,7 @@ G = el('g', {transform:'translate(0 -54.7)'});
 /* ---------- 左栏：策略列表（x150–670） ---------- */
 txt(150, 262, 'STRATEGY · HARNESS ENG', {'font-family':MONO, 'font-size':'var(--type-meta)', 'letter-spacing':3, fill:INK45});
 txt(150, 300, '四条工程化打法，各有实据', {'font-family':SANS, 'font-weight':300, 'font-size':'var(--type-subheading)', fill:INK});
-el('line', {x1:150, y1:320, x2:670, y2:320, stroke:INK, 'stroke-width':.8, opacity:.5});
+el('line', {'data-vnext-visual-key':'a4.heading-rule', x1:150, y1:320, x2:670, y2:320, stroke:INK, 'stroke-width':.8, opacity:.5});
 
 var strategies = [
   ['01', '上下文管控',   '摘要做成交接文档，窗口只留当下任务', '幻觉率比裸调下降一半'],

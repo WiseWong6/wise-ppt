@@ -3,6 +3,17 @@ window.WISE_PPT_COMPONENT_THEME_BINDINGS = Object.freeze({
   "contract": "wise-ppt-component-theme-bindings@1",
   "projection": "component-local-exact-count",
   "geometry_policy": "preserve-markup-data-and-bounds",
+  "source_comparison_policy": {
+    "scope": "structure-and-provenance-only",
+    "component_visual_owner": "wise-ppt-component-theme-bindings@1",
+    "page_visual_owner": "wise-ppt-layout-theme-bindings@3",
+    "page_instance_gate": "catalog-standard-parity",
+    "forbidden_comparisons": [
+      "component-to-page-computed-style",
+      "component-to-page-typography",
+      "component-to-page-material-paint"
+    ]
+  },
   "generated_by": "scripts/build_component_theme_bindings.mjs",
   "counts": {
     "concrete_catalog_specs": 102,
@@ -1978,7 +1989,9 @@ window.WISE_PPT_COMPONENT_THEME_BINDINGS = Object.freeze({
       "source_layout": {
         "layout_id": "wise-ppt.layout.relationship.Q1",
         "display_code": "Q1",
-        "default_profile": "standard",
+        "layout_contract": "wise-ppt-layout-theme-bindings@3",
+        "frame_contract": "wise-ppt-catalog-theme-frames@6",
+        "comparison_scope": "structure-and-provenance-only",
         "evidence": "layout-embeds-same-component",
         "source_ref": "references/gallery-paper-ink/ai/frames/layout-q1.html",
         "source_regions": [
@@ -1989,7 +2002,7 @@ window.WISE_PPT_COMPONENT_THEME_BINDINGS = Object.freeze({
           "hermes-orange": "themes/catalog-projections/hermes-klein/frames/hermes-orange/layout-q1.html",
           "klein-blue": "themes/catalog-projections/hermes-klein/frames/klein-blue/layout-q1.html"
         },
-        "identity_projection": "layout-contract-localized"
+        "identity_projection": "component-localized-from-source-region"
       },
       "material_bindings": [
         {
@@ -2010,8 +2023,8 @@ window.WISE_PPT_COMPONENT_THEME_BINDINGS = Object.freeze({
               "treatment": "identity.border",
               "expected_count": 3,
               "layout_selector": "#q1-component .circle.circle-a, #q1-component .circle.circle-b, #q1-component .circle.circle-c",
-              "selector": "[data-component-theme-group=\"identity.venn-outlines\"]",
-              "evidence": "layout-identity-localized"
+              "evidence": "source-region-identity-anchor",
+              "selector": "[data-component-theme-group=\"identity.venn-outlines\"]"
             }
           ]
         }
@@ -2023,8 +2036,8 @@ window.WISE_PPT_COMPONENT_THEME_BINDINGS = Object.freeze({
           "treatment": "source.identity-border-2",
           "expected_count": 3,
           "layout_selector": "#q1-component .circle.circle-a, #q1-component .circle.circle-b, #q1-component .circle.circle-c",
-          "selector": "[data-component-theme-appearance=\"source.identity-border-2\"]",
-          "evidence": "current-catalog-frame-appearance"
+          "evidence": "source-region-appearance-anchor",
+          "selector": "[data-component-theme-appearance=\"source.identity-border-2\"]"
         }
       ],
       "thumbnail_policy": "catalog-card"
@@ -2096,7 +2109,9 @@ window.WISE_PPT_COMPONENT_THEME_BINDINGS = Object.freeze({
       "source_layout": {
         "layout_id": "wise-ppt.layout.relationship.S1",
         "display_code": "S1",
-        "default_profile": "standard",
+        "layout_contract": "wise-ppt-layout-theme-bindings@3",
+        "frame_contract": "wise-ppt-catalog-theme-frames@6",
+        "comparison_scope": "structure-and-provenance-only",
         "evidence": "layout-embeds-same-component",
         "source_ref": "references/gallery-paper-ink/ai/frames/layout-s1.html",
         "source_regions": [
@@ -2107,7 +2122,7 @@ window.WISE_PPT_COMPONENT_THEME_BINDINGS = Object.freeze({
           "hermes-orange": "themes/catalog-projections/hermes-klein/frames/hermes-orange/layout-s1.html",
           "klein-blue": "themes/catalog-projections/hermes-klein/frames/klein-blue/layout-s1.html"
         },
-        "identity_projection": "layout-contract-localized"
+        "identity_projection": "component-localized-from-source-region"
       },
       "material_bindings": [
         {
@@ -2123,7 +2138,7 @@ window.WISE_PPT_COMPONENT_THEME_BINDINGS = Object.freeze({
           "material": "transparent",
           "expected_count": 1,
           "layout_selector": "#architecture-slot .arch-platform",
-          "evidence": "current-catalog-frame-material",
+          "evidence": "source-region-material-anchor",
           "selector": "[data-component-theme-material=\"transparent\"]"
         },
         {
@@ -2132,7 +2147,7 @@ window.WISE_PPT_COMPONENT_THEME_BINDINGS = Object.freeze({
           "material": "transparent",
           "expected_count": 5,
           "layout_selector": "#architecture-slot .arch-tone-label",
-          "evidence": "current-catalog-frame-material",
+          "evidence": "source-region-material-anchor",
           "selector": "[data-component-theme-material=\"transparent\"]"
         },
         {
@@ -2141,7 +2156,7 @@ window.WISE_PPT_COMPONENT_THEME_BINDINGS = Object.freeze({
           "material": "transparent",
           "expected_count": 5,
           "layout_selector": "#architecture-slot .arch-tone-wrap",
-          "evidence": "current-catalog-frame-material",
+          "evidence": "source-region-material-anchor",
           "selector": "[data-component-theme-material=\"transparent\"]"
         },
         {
@@ -2150,7 +2165,7 @@ window.WISE_PPT_COMPONENT_THEME_BINDINGS = Object.freeze({
           "material": "transparent",
           "expected_count": 7,
           "layout_selector": "#architecture-slot .arch-tone-card",
-          "evidence": "current-catalog-frame-material",
+          "evidence": "source-region-material-anchor",
           "selector": "[data-component-theme-material=\"transparent\"]"
         },
         {
@@ -2159,7 +2174,7 @@ window.WISE_PPT_COMPONENT_THEME_BINDINGS = Object.freeze({
           "material": "transparent",
           "expected_count": 39,
           "layout_selector": "#architecture-slot .arch-tone-fill",
-          "evidence": "current-catalog-frame-material",
+          "evidence": "source-region-material-anchor",
           "selector": "[data-component-theme-material=\"transparent\"]"
         }
       ],
@@ -2173,16 +2188,16 @@ window.WISE_PPT_COMPONENT_THEME_BINDINGS = Object.freeze({
               "treatment": "identity.fill",
               "expected_count": 5,
               "layout_selector": "#architecture-slot .arch-tone-node",
-              "selector": "[data-component-theme-group=\"identity.architecture-navigation\"]",
-              "evidence": "layout-identity-localized"
+              "evidence": "source-region-identity-anchor",
+              "selector": "[data-component-theme-group=\"identity.architecture-navigation\"]"
             },
             {
               "source_selector": ".arch-tone-title",
               "treatment": "identity.text",
               "expected_count": 7,
               "layout_selector": "#architecture-slot .arch-tone-title",
-              "selector": "[data-component-theme-group=\"identity.architecture-navigation\"]",
-              "evidence": "layout-identity-localized"
+              "evidence": "source-region-identity-anchor",
+              "selector": "[data-component-theme-group=\"identity.architecture-navigation\"]"
             }
           ]
         }
@@ -2593,7 +2608,9 @@ window.WISE_PPT_COMPONENT_THEME_BINDINGS = Object.freeze({
       "source_layout": {
         "layout_id": "wise-ppt.layout.relationship.C4",
         "display_code": "C4",
-        "default_profile": "standard",
+        "layout_contract": "wise-ppt-layout-theme-bindings@3",
+        "frame_contract": "wise-ppt-catalog-theme-frames@6",
+        "comparison_scope": "structure-and-provenance-only",
         "evidence": "user-confirmed-style-reference",
         "source_ref": "references/gallery-paper-ink/ai/frames/layout-c4.html",
         "source_regions": [
@@ -2984,7 +3001,9 @@ window.WISE_PPT_COMPONENT_THEME_BINDINGS = Object.freeze({
       "source_layout": {
         "layout_id": "wise-ppt.layout.nonrelationship.D4",
         "display_code": "D4",
-        "default_profile": "standard",
+        "layout_contract": "wise-ppt-layout-theme-bindings@3",
+        "frame_contract": "wise-ppt-catalog-theme-frames@6",
+        "comparison_scope": "structure-and-provenance-only",
         "evidence": "sourceLayout/sourceRegion",
         "source_ref": "references/gallery-paper-ink/ai/frames/layout-d4.html",
         "source_regions": [
@@ -2995,7 +3014,7 @@ window.WISE_PPT_COMPONENT_THEME_BINDINGS = Object.freeze({
           "hermes-orange": "themes/catalog-projections/hermes-klein/frames/hermes-orange/layout-d4.html",
           "klein-blue": "themes/catalog-projections/hermes-klein/frames/klein-blue/layout-d4.html"
         },
-        "identity_projection": "layout-contract-localized"
+        "identity_projection": "component-localized-from-source-region"
       },
       "material_bindings": [
         {
@@ -3016,7 +3035,7 @@ window.WISE_PPT_COMPONENT_THEME_BINDINGS = Object.freeze({
               "treatment": "identity.text",
               "expected_count": 1,
               "layout_selector": "#draw > g > text:first-of-type",
-              "evidence": "current-catalog-frame-identity",
+              "evidence": "source-region-identity-anchor",
               "selector": "[data-component-theme-group=\"identity.contents-heading\"]"
             }
           ]
@@ -3030,7 +3049,7 @@ window.WISE_PPT_COMPONENT_THEME_BINDINGS = Object.freeze({
               "treatment": "identity.stroke",
               "expected_count": 4,
               "layout_selector": "#draw > g > g[data-number-state=\"outline\"] > circle[data-number-part=\"disc\"]",
-              "evidence": "current-catalog-frame-identity",
+              "evidence": "source-region-identity-anchor",
               "selector": "[data-component-theme-group=\"identity.toc-markers\"]"
             },
             {
@@ -3038,7 +3057,7 @@ window.WISE_PPT_COMPONENT_THEME_BINDINGS = Object.freeze({
               "treatment": "identity.fill",
               "expected_count": 1,
               "layout_selector": "#draw > g > g[data-number-state=\"filled\"] > circle[data-number-part=\"disc\"]",
-              "evidence": "current-catalog-frame-identity",
+              "evidence": "source-region-identity-anchor",
               "selector": "[data-component-theme-group=\"identity.toc-markers\"]"
             },
             {
@@ -3046,7 +3065,7 @@ window.WISE_PPT_COMPONENT_THEME_BINDINGS = Object.freeze({
               "treatment": "identity.stroke",
               "expected_count": 1,
               "layout_selector": "#draw > g > g[data-number-state=\"filled\"] > circle[data-number-part=\"outer-ring\"]",
-              "evidence": "current-catalog-frame-identity",
+              "evidence": "source-region-identity-anchor",
               "selector": "[data-component-theme-group=\"identity.toc-markers\"]"
             },
             {
@@ -3054,7 +3073,7 @@ window.WISE_PPT_COMPONENT_THEME_BINDINGS = Object.freeze({
               "treatment": "identity.stroke",
               "expected_count": 1,
               "layout_selector": "#draw > g > line[x1=\"378\"][y1=\"418\"][x2=\"406\"][y2=\"418\"]",
-              "evidence": "current-catalog-frame-identity",
+              "evidence": "source-region-identity-anchor",
               "selector": "[data-component-theme-group=\"identity.toc-markers\"]"
             }
           ]
@@ -3067,8 +3086,8 @@ window.WISE_PPT_COMPONENT_THEME_BINDINGS = Object.freeze({
           "treatment": "source.surface-panel-text",
           "expected_count": 1,
           "layout_selector": "#draw > g > g[data-number-state=\"filled\"] > text[data-number-part=\"label\"]",
-          "selector": "[data-component-theme-appearance=\"source.surface-panel-text\"]",
-          "evidence": "current-catalog-frame-appearance"
+          "evidence": "source-region-appearance-anchor",
+          "selector": "[data-component-theme-appearance=\"source.surface-panel-text\"]"
         }
       ],
       "thumbnail_policy": "catalog-card"
@@ -3081,7 +3100,9 @@ window.WISE_PPT_COMPONENT_THEME_BINDINGS = Object.freeze({
       "source_layout": {
         "layout_id": "wise-ppt.layout.relationship.B5",
         "display_code": "B5",
-        "default_profile": "legacy",
+        "layout_contract": "wise-ppt-layout-theme-bindings@3",
+        "frame_contract": "wise-ppt-catalog-theme-frames@6",
+        "comparison_scope": "structure-and-provenance-only",
         "evidence": "sourceLayout/sourceRegion",
         "source_ref": "references/gallery-paper-ink/ai/frames/layout-b5.html",
         "source_regions": [
@@ -3092,7 +3113,7 @@ window.WISE_PPT_COMPONENT_THEME_BINDINGS = Object.freeze({
           "hermes-orange": "themes/catalog-projections/hermes-klein/frames/hermes-orange/layout-b5.html",
           "klein-blue": "themes/catalog-projections/hermes-klein/frames/klein-blue/layout-b5.html"
         },
-        "identity_projection": "approved-frame-localized"
+        "identity_projection": "component-localized-from-source-region"
       },
       "material_bindings": [
         {
@@ -3107,27 +3128,25 @@ window.WISE_PPT_COMPONENT_THEME_BINDINGS = Object.freeze({
           "source_selector": "circle[fill*=\"paper-deep\"]",
           "material": "canvas",
           "expected_count": 5,
-          "frame_selector": "#draw circle[r=\"5\"]",
-          "frame_expected_count": 5,
-          "frame_property": "fill",
-          "evidence": "current-catalog-frame-material",
+          "evidence": "source-region-material-anchor",
+          "layout_selector": "#draw circle[r=\"5\"]",
+          "layout_expected_count": 5,
           "selector": "[data-component-theme-material=\"canvas\"]"
         }
       ],
       "identity_groups": [
         {
-          "group_id": "legacy.stage-title-rules",
+          "group_id": "identity.stage-title-rules",
           "label": "五阶段标题短线",
           "members": [
             {
               "source_selector": "line[x1=\"250\"][x2=\"308\"][y1=\"712\"], line[x1=\"590\"][x2=\"648\"][y1=\"582\"], line[x1=\"930\"][x2=\"988\"][y1=\"452\"], line[x1=\"1270\"][x2=\"1328\"][y1=\"322\"], line[x1=\"1540\"][x2=\"1598\"][y1=\"198\"]",
               "treatment": "identity.stroke-strong",
               "expected_count": 5,
-              "frame_selector": "[data-title-rule]",
-              "frame_expected_count": 5,
-              "frame_property": "stroke",
-              "selector": "[data-component-theme-group=\"legacy.stage-title-rules\"]",
-              "evidence": "approved-catalog-frame-legacy-native"
+              "layout_selector": "#draw line[x1=\"250\"][x2=\"308\"][y1=\"712\"], #draw line[x1=\"590\"][x2=\"648\"][y1=\"582\"], #draw line[x1=\"930\"][x2=\"988\"][y1=\"452\"], #draw line[x1=\"1270\"][x2=\"1328\"][y1=\"322\"], #draw line[x1=\"1540\"][x2=\"1598\"][y1=\"198\"]",
+              "layout_expected_count": 5,
+              "evidence": "source-region-identity-anchor",
+              "selector": "[data-component-theme-group=\"identity.stage-title-rules\"]"
             }
           ]
         }
@@ -3143,7 +3162,9 @@ window.WISE_PPT_COMPONENT_THEME_BINDINGS = Object.freeze({
       "source_layout": {
         "layout_id": "wise-ppt.layout.relationship.A3",
         "display_code": "A3",
-        "default_profile": "legacy",
+        "layout_contract": "wise-ppt-layout-theme-bindings@3",
+        "frame_contract": "wise-ppt-catalog-theme-frames@6",
+        "comparison_scope": "structure-and-provenance-only",
         "evidence": "sourceLayout/sourceRegion",
         "source_ref": "references/gallery-paper-ink/ai/frames/layout-a3.html",
         "source_regions": [
@@ -3177,7 +3198,9 @@ window.WISE_PPT_COMPONENT_THEME_BINDINGS = Object.freeze({
       "source_layout": {
         "layout_id": "wise-ppt.layout.relationship.A3",
         "display_code": "A3",
-        "default_profile": "legacy",
+        "layout_contract": "wise-ppt-layout-theme-bindings@3",
+        "frame_contract": "wise-ppt-catalog-theme-frames@6",
+        "comparison_scope": "structure-and-provenance-only",
         "evidence": "sourceLayout/sourceRegion",
         "source_ref": "references/gallery-paper-ink/ai/frames/layout-a3.html",
         "source_regions": [
@@ -3188,7 +3211,7 @@ window.WISE_PPT_COMPONENT_THEME_BINDINGS = Object.freeze({
           "hermes-orange": "themes/catalog-projections/hermes-klein/frames/hermes-orange/layout-a3.html",
           "klein-blue": "themes/catalog-projections/hermes-klein/frames/klein-blue/layout-a3.html"
         },
-        "identity_projection": "approved-frame-localized"
+        "identity_projection": "component-localized-from-source-region"
       },
       "material_bindings": [
         {
@@ -3203,27 +3226,25 @@ window.WISE_PPT_COMPONENT_THEME_BINDINGS = Object.freeze({
           "source_selector": "rect[x=\"300\"][y=\"478\"][width=\"1320\"][height=\"396\"]",
           "material": "panel",
           "expected_count": 1,
-          "frame_selector": "#draw > g > rect[x=\"300\"][y=\"478\"][width=\"1320\"][height=\"396\"]",
-          "frame_expected_count": 1,
-          "frame_property": "fill",
-          "evidence": "current-catalog-frame-material",
+          "evidence": "source-region-material-anchor",
+          "layout_selector": "#draw > g > rect[x=\"300\"][y=\"478\"][width=\"1320\"][height=\"396\"]",
+          "layout_expected_count": 1,
           "selector": "[data-component-theme-material=\"panel\"]"
         }
       ],
       "identity_groups": [
         {
-          "group_id": "legacy.document-stamp",
+          "group_id": "identity.document-stamp",
           "label": "公文印章双圈与签记",
           "members": [
             {
               "source_selector": "circle[cx=\"1530\"][cy=\"816\"]:is([r=\"20\"],[r=\"14\"]), path[d=\"M 1524 816 L 1528.5 821 L 1537 810\"]",
               "treatment": "identity.stroke",
               "expected_count": 3,
-              "frame_selector": "#draw circle[cx=\"1530\"][cy=\"816\"]:is([r=\"20\"],[r=\"14\"]), #draw path[d=\"M 1524 816 L 1528.5 821 L 1537 810\"]",
-              "frame_expected_count": 3,
-              "frame_property": "stroke",
-              "selector": "[data-component-theme-group=\"legacy.document-stamp\"]",
-              "evidence": "approved-catalog-frame-legacy-native"
+              "layout_selector": "#draw circle[cx=\"1530\"][cy=\"816\"]:is([r=\"20\"],[r=\"14\"]), #draw path[d=\"M 1524 816 L 1528.5 821 L 1537 810\"]",
+              "layout_expected_count": 3,
+              "evidence": "source-region-identity-anchor",
+              "selector": "[data-component-theme-group=\"identity.document-stamp\"]"
             }
           ]
         }
@@ -3234,11 +3255,10 @@ window.WISE_PPT_COMPONENT_THEME_BINDINGS = Object.freeze({
           "source_selector": "rect[x=\"300\"][y=\"478\"][width=\"1320\"][height=\"396\"]",
           "treatment": "source.a3-document-outline",
           "expected_count": 1,
-          "frame_selector": "#draw > g > rect[x=\"300\"][y=\"478\"][width=\"1320\"][height=\"396\"]",
-          "frame_expected_count": 1,
-          "frame_property": "stroke",
-          "selector": "[data-component-theme-appearance=\"source.a3-document-outline\"]",
-          "evidence": "approved-catalog-frame-legacy-native"
+          "layout_selector": "#draw > g > rect[x=\"300\"][y=\"478\"][width=\"1320\"][height=\"396\"]",
+          "layout_expected_count": 1,
+          "evidence": "source-region-appearance-anchor",
+          "selector": "[data-component-theme-appearance=\"source.a3-document-outline\"]"
         },
         {
           "binding_id": "document-source-label",
@@ -3246,12 +3266,11 @@ window.WISE_PPT_COMPONENT_THEME_BINDINGS = Object.freeze({
           "text_pattern": "^SOURCE$",
           "treatment": "source.a3-source-label",
           "expected_count": 1,
-          "frame_selector": "#draw text",
-          "frame_text_pattern": "^SOURCE$",
-          "frame_expected_count": 1,
-          "frame_property": "fill",
-          "selector": "[data-component-theme-appearance=\"source.a3-source-label\"]",
-          "evidence": "approved-catalog-frame-legacy-native"
+          "layout_selector": "#draw text",
+          "layout_expected_count": 1,
+          "layout_text_pattern": "^SOURCE$",
+          "evidence": "source-region-appearance-anchor",
+          "selector": "[data-component-theme-appearance=\"source.a3-source-label\"]"
         }
       ],
       "thumbnail_policy": "catalog-card"
@@ -3264,7 +3283,9 @@ window.WISE_PPT_COMPONENT_THEME_BINDINGS = Object.freeze({
       "source_layout": {
         "layout_id": "wise-ppt.layout.relationship.A4",
         "display_code": "A4",
-        "default_profile": "standard",
+        "layout_contract": "wise-ppt-layout-theme-bindings@3",
+        "frame_contract": "wise-ppt-catalog-theme-frames@6",
+        "comparison_scope": "structure-and-provenance-only",
         "evidence": "sourceLayout/sourceRegion",
         "source_ref": "references/gallery-paper-ink/ai/frames/layout-a4.html",
         "source_regions": [
@@ -3291,8 +3312,8 @@ window.WISE_PPT_COMPONENT_THEME_BINDINGS = Object.freeze({
           "material": "panel",
           "expected_count": 4,
           "layout_selector": "#draw > g > rect[fill=\"var(--paper-panel)\"]",
-          "selector": "[data-component-theme-material=\"panel\"]",
-          "evidence": "layout-surface-localized"
+          "evidence": "source-region-material-anchor",
+          "selector": "[data-component-theme-material=\"panel\"]"
         }
       ],
       "identity_groups": [],
@@ -3303,8 +3324,8 @@ window.WISE_PPT_COMPONENT_THEME_BINDINGS = Object.freeze({
           "treatment": "source.ink-stroke",
           "expected_count": 4,
           "layout_selector": "#draw > g > rect[width=\"400\"][height=\"276\"]",
-          "selector": "[data-component-theme-appearance=\"source.ink-stroke\"]",
-          "evidence": "current-catalog-frame-appearance"
+          "evidence": "source-region-appearance-anchor",
+          "selector": "[data-component-theme-appearance=\"source.ink-stroke\"]"
         }
       ],
       "thumbnail_policy": "catalog-card"
@@ -3317,7 +3338,9 @@ window.WISE_PPT_COMPONENT_THEME_BINDINGS = Object.freeze({
       "source_layout": {
         "layout_id": "wise-ppt.layout.relationship.R7",
         "display_code": "R7",
-        "default_profile": "standard",
+        "layout_contract": "wise-ppt-layout-theme-bindings@3",
+        "frame_contract": "wise-ppt-catalog-theme-frames@6",
+        "comparison_scope": "structure-and-provenance-only",
         "evidence": "sourceLayout/sourceRegion",
         "source_ref": "references/gallery-paper-ink/ai/frames/layout-r7.html",
         "source_regions": [
@@ -3328,7 +3351,7 @@ window.WISE_PPT_COMPONENT_THEME_BINDINGS = Object.freeze({
           "hermes-orange": "themes/catalog-projections/hermes-klein/frames/hermes-orange/layout-r7.html",
           "klein-blue": "themes/catalog-projections/hermes-klein/frames/klein-blue/layout-r7.html"
         },
-        "identity_projection": "layout-contract-localized"
+        "identity_projection": "component-localized-from-source-region"
       },
       "material_bindings": [
         {
@@ -3349,9 +3372,8 @@ window.WISE_PPT_COMPONENT_THEME_BINDINGS = Object.freeze({
               "treatment": "identity.stroke",
               "expected_count": 8,
               "layout_selector": "[data-r7-accent-mark]",
-              "paper_comparison": "r7-source-use-composite",
-              "selector": "[data-component-theme-group=\"identity.logo-accent-lines\"]",
-              "evidence": "layout-identity-localized"
+              "evidence": "source-region-identity-anchor",
+              "selector": "[data-component-theme-group=\"identity.logo-accent-lines\"]"
             }
           ]
         }
@@ -3363,8 +3385,8 @@ window.WISE_PPT_COMPONENT_THEME_BINDINGS = Object.freeze({
           "treatment": "source.r7-brand-label",
           "expected_count": 28,
           "layout_selector": ".scene > g[data-slot-id] > .brand-name",
-          "selector": "[data-component-theme-appearance=\"source.r7-brand-label\"]",
-          "evidence": "current-catalog-frame-appearance"
+          "evidence": "source-region-appearance-anchor",
+          "selector": "[data-component-theme-appearance=\"source.r7-brand-label\"]"
         },
         {
           "binding_id": "r7-accent-mark-weight",
@@ -3372,9 +3394,8 @@ window.WISE_PPT_COMPONENT_THEME_BINDINGS = Object.freeze({
           "treatment": "source.r7-accent-mark",
           "expected_count": 8,
           "layout_selector": "[data-r7-accent-mark]",
-          "paper_comparison": "r7-source-use-composite",
-          "selector": "[data-component-theme-appearance=\"source.r7-accent-mark\"]",
-          "evidence": "current-catalog-frame-appearance"
+          "evidence": "source-region-appearance-anchor",
+          "selector": "[data-component-theme-appearance=\"source.r7-accent-mark\"]"
         }
       ],
       "thumbnail_policy": "catalog-card"
@@ -3387,7 +3408,9 @@ window.WISE_PPT_COMPONENT_THEME_BINDINGS = Object.freeze({
       "source_layout": {
         "layout_id": "wise-ppt.layout.relationship.A9",
         "display_code": "A9",
-        "default_profile": "legacy",
+        "layout_contract": "wise-ppt-layout-theme-bindings@3",
+        "frame_contract": "wise-ppt-catalog-theme-frames@6",
+        "comparison_scope": "structure-and-provenance-only",
         "evidence": "sourceLayout/sourceRegion",
         "source_ref": "references/gallery-paper-ink/ai/frames/layout-a9.html",
         "source_regions": [
@@ -3398,7 +3421,7 @@ window.WISE_PPT_COMPONENT_THEME_BINDINGS = Object.freeze({
           "hermes-orange": "themes/catalog-projections/hermes-klein/frames/hermes-orange/layout-a9.html",
           "klein-blue": "themes/catalog-projections/hermes-klein/frames/klein-blue/layout-a9.html"
         },
-        "identity_projection": "approved-frame-localized"
+        "identity_projection": "component-localized-from-source-region"
       },
       "material_bindings": [
         {
@@ -3419,7 +3442,7 @@ window.WISE_PPT_COMPONENT_THEME_BINDINGS = Object.freeze({
       ],
       "identity_groups": [
         {
-          "group_id": "legacy.step-labels",
+          "group_id": "identity.step-labels",
           "label": "四步标签",
           "members": [
             {
@@ -3427,11 +3450,11 @@ window.WISE_PPT_COMPONENT_THEME_BINDINGS = Object.freeze({
               "text_pattern": "^STEP 0[1-4] — ",
               "treatment": "identity.text",
               "expected_count": 4,
-              "frame_selector": "[data-step-label]",
-              "frame_expected_count": 4,
-              "frame_property": "fill",
-              "selector": "[data-component-theme-group=\"legacy.step-labels\"]",
-              "evidence": "approved-catalog-frame-legacy-native"
+              "layout_selector": "#draw text",
+              "layout_expected_count": 4,
+              "layout_text_pattern": "^STEP 0[1-4] — ",
+              "evidence": "source-region-identity-anchor",
+              "selector": "[data-component-theme-group=\"identity.step-labels\"]"
             }
           ]
         }
@@ -3447,7 +3470,9 @@ window.WISE_PPT_COMPONENT_THEME_BINDINGS = Object.freeze({
       "source_layout": {
         "layout_id": "wise-ppt.layout.relationship.A8",
         "display_code": "A8",
-        "default_profile": "legacy",
+        "layout_contract": "wise-ppt-layout-theme-bindings@3",
+        "frame_contract": "wise-ppt-catalog-theme-frames@6",
+        "comparison_scope": "structure-and-provenance-only",
         "evidence": "sourceLayout/sourceRegion",
         "source_ref": "references/gallery-paper-ink/ai/frames/layout-a8.html",
         "source_regions": [
@@ -3473,10 +3498,9 @@ window.WISE_PPT_COMPONENT_THEME_BINDINGS = Object.freeze({
           "source_selector": ".pi-a8-master .ui",
           "material": "panel",
           "expected_count": 1,
-          "frame_selector": ".ui",
-          "frame_expected_count": 1,
-          "frame_property": "backgroundColor",
-          "evidence": "current-catalog-frame-material",
+          "evidence": "source-region-material-anchor",
+          "layout_selector": ".ui",
+          "layout_expected_count": 1,
           "selector": "[data-component-theme-material=\"panel\"]"
         }
       ],
@@ -3487,11 +3511,10 @@ window.WISE_PPT_COMPONENT_THEME_BINDINGS = Object.freeze({
           "source_selector": ".pi-a8-master .ui",
           "treatment": "source.ink-border-2",
           "expected_count": 1,
-          "frame_selector": ".ui",
-          "frame_expected_count": 1,
-          "frame_property": "borderColor",
-          "selector": "[data-component-theme-appearance=\"source.ink-border-2\"]",
-          "evidence": "approved-catalog-frame-legacy-native"
+          "layout_selector": ".ui",
+          "layout_expected_count": 1,
+          "evidence": "source-region-appearance-anchor",
+          "selector": "[data-component-theme-appearance=\"source.ink-border-2\"]"
         }
       ],
       "thumbnail_policy": "catalog-card"
@@ -3504,7 +3527,9 @@ window.WISE_PPT_COMPONENT_THEME_BINDINGS = Object.freeze({
       "source_layout": {
         "layout_id": "wise-ppt.layout.relationship.B2",
         "display_code": "B2",
-        "default_profile": "legacy",
+        "layout_contract": "wise-ppt-layout-theme-bindings@3",
+        "frame_contract": "wise-ppt-catalog-theme-frames@6",
+        "comparison_scope": "structure-and-provenance-only",
         "evidence": "sourceLayout/sourceRegion",
         "source_ref": "references/gallery-paper-ink/ai/frames/layout-b2.html",
         "source_regions": [
@@ -3515,7 +3540,7 @@ window.WISE_PPT_COMPONENT_THEME_BINDINGS = Object.freeze({
           "hermes-orange": "themes/catalog-projections/hermes-klein/frames/hermes-orange/layout-b2.html",
           "klein-blue": "themes/catalog-projections/hermes-klein/frames/klein-blue/layout-b2.html"
         },
-        "identity_projection": "approved-frame-localized"
+        "identity_projection": "component-localized-from-source-region"
       },
       "material_bindings": [
         {
@@ -3528,7 +3553,7 @@ window.WISE_PPT_COMPONENT_THEME_BINDINGS = Object.freeze({
       ],
       "identity_groups": [
         {
-          "group_id": "legacy.stage-labels",
+          "group_id": "identity.stage-labels",
           "label": "四阶段英文标签",
           "members": [
             {
@@ -3536,11 +3561,11 @@ window.WISE_PPT_COMPONENT_THEME_BINDINGS = Object.freeze({
               "text_pattern": "^(?:DATA|PRETRAIN|SFT|RLHF)$",
               "treatment": "identity.text-source-70",
               "expected_count": 4,
-              "frame_selector": "[data-stage-en]",
-              "frame_expected_count": 4,
-              "frame_property": "fill",
-              "selector": "[data-component-theme-group=\"legacy.stage-labels\"]",
-              "evidence": "approved-catalog-frame-legacy-native"
+              "layout_selector": "#draw text",
+              "layout_expected_count": 4,
+              "layout_text_pattern": "^(?:DATA|PRETRAIN|SFT|RLHF)$",
+              "evidence": "source-region-identity-anchor",
+              "selector": "[data-component-theme-group=\"identity.stage-labels\"]"
             }
           ]
         }
@@ -3556,7 +3581,9 @@ window.WISE_PPT_COMPONENT_THEME_BINDINGS = Object.freeze({
       "source_layout": {
         "layout_id": "wise-ppt.layout.relationship.B4",
         "display_code": "B4",
-        "default_profile": "standard",
+        "layout_contract": "wise-ppt-layout-theme-bindings@3",
+        "frame_contract": "wise-ppt-catalog-theme-frames@6",
+        "comparison_scope": "structure-and-provenance-only",
         "evidence": "sourceLayout/sourceRegion",
         "source_ref": "references/gallery-paper-ink/ai/frames/layout-b4.html",
         "source_regions": [
@@ -3567,7 +3594,7 @@ window.WISE_PPT_COMPONENT_THEME_BINDINGS = Object.freeze({
           "hermes-orange": "themes/catalog-projections/hermes-klein/frames/hermes-orange/layout-b4.html",
           "klein-blue": "themes/catalog-projections/hermes-klein/frames/klein-blue/layout-b4.html"
         },
-        "identity_projection": "layout-contract-localized"
+        "identity_projection": "component-localized-from-source-region"
       },
       "material_bindings": [
         {
@@ -3583,8 +3610,8 @@ window.WISE_PPT_COMPONENT_THEME_BINDINGS = Object.freeze({
           "material": "panel",
           "expected_count": 5,
           "layout_selector": "#draw > g > rect[fill=\"var(--paper-panel)\"]",
-          "selector": "[data-component-theme-material=\"panel\"]",
-          "evidence": "layout-surface-localized"
+          "evidence": "source-region-material-anchor",
+          "selector": "[data-component-theme-material=\"panel\"]"
         },
         {
           "binding_id": "timeline-open-dots",
@@ -3592,7 +3619,7 @@ window.WISE_PPT_COMPONENT_THEME_BINDINGS = Object.freeze({
           "material": "canvas",
           "expected_count": 9,
           "layout_selector": "#draw circle[cy=\"290\"][r=\"7\"], #draw circle[cx=\"588\"][cy=\"702\"][r=\"3\"], #draw circle[cx=\"632\"][cy=\"680\"][r=\"3\"], #draw circle[cx=\"678\"][cy=\"658\"][r=\"3\"], #draw circle[cx=\"720\"][cy=\"636\"][r=\"3\"]",
-          "evidence": "current-catalog-frame-material",
+          "evidence": "source-region-material-anchor",
           "selector": "[data-component-theme-material=\"canvas\"]"
         }
       ],
@@ -3606,16 +3633,16 @@ window.WISE_PPT_COMPONENT_THEME_BINDINGS = Object.freeze({
               "treatment": "identity.stroke",
               "expected_count": 1,
               "layout_selector": "#sample-focus",
-              "selector": "[data-component-theme-group=\"identity.timeline-track\"]",
-              "evidence": "layout-identity-localized"
+              "evidence": "source-region-identity-anchor",
+              "selector": "[data-component-theme-group=\"identity.timeline-track\"]"
             },
             {
               "source_selector": "circle[cy=\"290\"][r=\"7\"]",
               "treatment": "identity.stroke",
               "expected_count": 5,
               "layout_selector": "#draw circle[cy=\"290\"][r=\"7\"]",
-              "selector": "[data-component-theme-group=\"identity.timeline-track\"]",
-              "evidence": "layout-identity-localized"
+              "evidence": "source-region-identity-anchor",
+              "selector": "[data-component-theme-group=\"identity.timeline-track\"]"
             }
           ]
         }
@@ -3627,8 +3654,8 @@ window.WISE_PPT_COMPONENT_THEME_BINDINGS = Object.freeze({
           "treatment": "source.ink-stroke",
           "expected_count": 5,
           "layout_selector": "#draw > g > rect[width=\"300\"][height=\"240\"]",
-          "selector": "[data-component-theme-appearance=\"source.ink-stroke\"]",
-          "evidence": "current-catalog-frame-appearance"
+          "evidence": "source-region-appearance-anchor",
+          "selector": "[data-component-theme-appearance=\"source.ink-stroke\"]"
         }
       ],
       "thumbnail_policy": "catalog-card"
@@ -3641,7 +3668,9 @@ window.WISE_PPT_COMPONENT_THEME_BINDINGS = Object.freeze({
       "source_layout": {
         "layout_id": "wise-ppt.layout.relationship.B6",
         "display_code": "B6",
-        "default_profile": "legacy",
+        "layout_contract": "wise-ppt-layout-theme-bindings@3",
+        "frame_contract": "wise-ppt-catalog-theme-frames@6",
+        "comparison_scope": "structure-and-provenance-only",
         "evidence": "sourceLayout/sourceRegion",
         "source_ref": "references/gallery-paper-ink/ai/frames/layout-b6.html",
         "source_regions": [
@@ -3652,7 +3681,7 @@ window.WISE_PPT_COMPONENT_THEME_BINDINGS = Object.freeze({
           "hermes-orange": "themes/catalog-projections/hermes-klein/frames/hermes-orange/layout-b6.html",
           "klein-blue": "themes/catalog-projections/hermes-klein/frames/klein-blue/layout-b6.html"
         },
-        "identity_projection": "approved-frame-localized"
+        "identity_projection": "component-localized-from-source-region"
       },
       "material_bindings": [
         {
@@ -3667,27 +3696,25 @@ window.WISE_PPT_COMPONENT_THEME_BINDINGS = Object.freeze({
           "source_selector": "circle[fill*=\"paper-deep\"][r=\"9\"]",
           "material": "canvas",
           "expected_count": 6,
-          "frame_selector": "#draw circle[r=\"9\"]",
-          "frame_expected_count": 6,
-          "frame_property": "fill",
-          "evidence": "current-catalog-frame-material",
+          "evidence": "source-region-material-anchor",
+          "layout_selector": "#draw circle[r=\"9\"]",
+          "layout_expected_count": 6,
           "selector": "[data-component-theme-material=\"canvas\"]"
         }
       ],
       "identity_groups": [
         {
-          "group_id": "legacy.road-midline",
+          "group_id": "identity.road-midline",
           "label": "路线主连接线",
           "members": [
             {
               "source_selector": "path[stroke-width=\"2.2\"]",
               "treatment": "identity.stroke",
               "expected_count": 1,
-              "frame_selector": "[data-road-midline]",
-              "frame_expected_count": 1,
-              "frame_property": "stroke",
-              "selector": "[data-component-theme-group=\"legacy.road-midline\"]",
-              "evidence": "approved-catalog-frame-legacy-native"
+              "layout_selector": "#draw path[stroke-width=\"2.2\"]",
+              "layout_expected_count": 1,
+              "evidence": "source-region-identity-anchor",
+              "selector": "[data-component-theme-group=\"identity.road-midline\"]"
             }
           ]
         }
@@ -3703,7 +3730,9 @@ window.WISE_PPT_COMPONENT_THEME_BINDINGS = Object.freeze({
       "source_layout": {
         "layout_id": "wise-ppt.layout.nonrelationship.D6",
         "display_code": "D6",
-        "default_profile": "standard",
+        "layout_contract": "wise-ppt-layout-theme-bindings@3",
+        "frame_contract": "wise-ppt-catalog-theme-frames@6",
+        "comparison_scope": "structure-and-provenance-only",
         "evidence": "sourceLayout/sourceRegion",
         "source_ref": "references/gallery-paper-ink/ai/frames/layout-d6.html",
         "source_regions": [
@@ -3730,8 +3759,8 @@ window.WISE_PPT_COMPONENT_THEME_BINDINGS = Object.freeze({
           "material": "panel",
           "expected_count": 1,
           "layout_selector": "#draw rect[x=\"1100\"][y=\"220\"][width=\"620\"][height=\"630\"]",
-          "selector": "[data-component-theme-material=\"panel\"]",
-          "evidence": "layout-surface-localized"
+          "evidence": "source-region-material-anchor",
+          "selector": "[data-component-theme-material=\"panel\"]"
         }
       ],
       "identity_groups": [],
@@ -3742,8 +3771,8 @@ window.WISE_PPT_COMPONENT_THEME_BINDINGS = Object.freeze({
           "treatment": "source.ink-stroke-2",
           "expected_count": 1,
           "layout_selector": "#draw rect[x=\"1100\"][y=\"220\"][width=\"620\"][height=\"630\"]",
-          "selector": "[data-component-theme-appearance=\"source.ink-stroke-2\"]",
-          "evidence": "current-catalog-frame-appearance"
+          "evidence": "source-region-appearance-anchor",
+          "selector": "[data-component-theme-appearance=\"source.ink-stroke-2\"]"
         }
       ],
       "thumbnail_policy": "catalog-card"
@@ -3756,7 +3785,9 @@ window.WISE_PPT_COMPONENT_THEME_BINDINGS = Object.freeze({
       "source_layout": {
         "layout_id": "wise-ppt.layout.nonrelationship.D6",
         "display_code": "D6",
-        "default_profile": "standard",
+        "layout_contract": "wise-ppt-layout-theme-bindings@3",
+        "frame_contract": "wise-ppt-catalog-theme-frames@6",
+        "comparison_scope": "structure-and-provenance-only",
         "evidence": "sourceLayout/sourceRegion",
         "source_ref": "references/gallery-paper-ink/ai/frames/layout-d6.html",
         "source_regions": [
@@ -3790,7 +3821,9 @@ window.WISE_PPT_COMPONENT_THEME_BINDINGS = Object.freeze({
       "source_layout": {
         "layout_id": "wise-ppt.layout.relationship.E3",
         "display_code": "E3",
-        "default_profile": "legacy",
+        "layout_contract": "wise-ppt-layout-theme-bindings@3",
+        "frame_contract": "wise-ppt-catalog-theme-frames@6",
+        "comparison_scope": "structure-and-provenance-only",
         "evidence": "sourceLayout/sourceRegion",
         "source_ref": "references/gallery-paper-ink/ai/frames/layout-e3.html",
         "source_regions": [
@@ -3801,7 +3834,7 @@ window.WISE_PPT_COMPONENT_THEME_BINDINGS = Object.freeze({
           "hermes-orange": "themes/catalog-projections/hermes-klein/frames/hermes-orange/layout-e3.html",
           "klein-blue": "themes/catalog-projections/hermes-klein/frames/klein-blue/layout-e3.html"
         },
-        "identity_projection": "approved-frame-localized"
+        "identity_projection": "component-localized-from-source-region"
       },
       "material_bindings": [
         {
@@ -3824,27 +3857,25 @@ window.WISE_PPT_COMPONENT_THEME_BINDINGS = Object.freeze({
           "source_selector": "rect[x=\"1549\"][y=\"343\"][width=\"22\"][height=\"18\"]",
           "material": "canvas",
           "expected_count": 1,
-          "frame_selector": "#draw rect[x=\"1549\"][y=\"343\"][width=\"22\"][height=\"18\"]",
-          "frame_expected_count": 1,
-          "frame_property": "fill",
-          "evidence": "current-catalog-frame-material",
+          "evidence": "source-region-material-anchor",
+          "layout_selector": "#draw rect[x=\"1549\"][y=\"343\"][width=\"22\"][height=\"18\"]",
+          "layout_expected_count": 1,
           "selector": "[data-component-theme-material=\"canvas\"]"
         }
       ],
       "identity_groups": [
         {
-          "group_id": "legacy.solution-glyphs",
+          "group_id": "identity.solution-glyphs",
           "label": "下半区四组解法图元",
           "members": [
             {
               "source_selector": "text[x=\"420\"][y=\"562\"] ~ :is(path,line,circle,rect)",
               "treatment": "identity.stroke",
               "expected_count": 36,
-              "frame_selector": "[data-t1-zone=\"solution\"]",
-              "frame_expected_count": 36,
-              "frame_property": "stroke",
-              "selector": "[data-component-theme-group=\"legacy.solution-glyphs\"]",
-              "evidence": "approved-catalog-frame-legacy-native"
+              "layout_selector": "#draw text[x=\"420\"][y=\"562\"] ~ :is(path,line,circle,rect)",
+              "layout_expected_count": 36,
+              "evidence": "source-region-identity-anchor",
+              "selector": "[data-component-theme-group=\"identity.solution-glyphs\"]"
             }
           ]
         }
@@ -3856,23 +3887,21 @@ window.WISE_PPT_COMPONENT_THEME_BINDINGS = Object.freeze({
           "text_pattern": "^0[1-4] · (?:RATE-LIMIT|LOOP STUCK|CTX OVERFLOW|UNTRACEABLE)$",
           "treatment": "source.ink-text",
           "expected_count": 4,
-          "frame_selector": "#draw text",
-          "frame_text_pattern": "^0[1-4] · (?:RATE-LIMIT|LOOP STUCK|CTX OVERFLOW|UNTRACEABLE)$",
-          "frame_expected_count": 4,
-          "frame_property": "fill",
-          "selector": "[data-component-theme-appearance=\"source.ink-text\"]",
-          "evidence": "approved-catalog-frame-legacy-native"
+          "layout_selector": "#draw text",
+          "layout_expected_count": 4,
+          "layout_text_pattern": "^0[1-4] · (?:RATE-LIMIT|LOOP STUCK|CTX OVERFLOW|UNTRACEABLE)$",
+          "evidence": "source-region-appearance-anchor",
+          "selector": "[data-component-theme-appearance=\"source.ink-text\"]"
         },
         {
           "binding_id": "solution-glyph-weight",
           "source_selector": "text[x=\"420\"][y=\"562\"] ~ :is(path,line,circle,rect)",
           "treatment": "source.solution-stroke",
           "expected_count": 36,
-          "frame_selector": "[data-t1-zone=\"solution\"]",
-          "frame_expected_count": 36,
-          "frame_property": "stroke",
-          "selector": "[data-component-theme-appearance=\"source.solution-stroke\"]",
-          "evidence": "approved-catalog-frame-legacy-native"
+          "layout_selector": "#draw text[x=\"420\"][y=\"562\"] ~ :is(path,line,circle,rect)",
+          "layout_expected_count": 36,
+          "evidence": "source-region-appearance-anchor",
+          "selector": "[data-component-theme-appearance=\"source.solution-stroke\"]"
         }
       ],
       "thumbnail_policy": "catalog-card"
@@ -3885,7 +3914,9 @@ window.WISE_PPT_COMPONENT_THEME_BINDINGS = Object.freeze({
       "source_layout": {
         "layout_id": "wise-ppt.layout.relationship.E6",
         "display_code": "E6",
-        "default_profile": "standard",
+        "layout_contract": "wise-ppt-layout-theme-bindings@3",
+        "frame_contract": "wise-ppt-catalog-theme-frames@6",
+        "comparison_scope": "structure-and-provenance-only",
         "evidence": "sourceLayout/sourceRegion",
         "source_ref": "references/gallery-paper-ink/ai/frames/layout-e6.html",
         "source_regions": [
@@ -3896,7 +3927,7 @@ window.WISE_PPT_COMPONENT_THEME_BINDINGS = Object.freeze({
           "hermes-orange": "themes/catalog-projections/hermes-klein/frames/hermes-orange/layout-e6.html",
           "klein-blue": "themes/catalog-projections/hermes-klein/frames/klein-blue/layout-e6.html"
         },
-        "identity_projection": "layout-contract-localized"
+        "identity_projection": "neutral-in-source-region"
       },
       "material_bindings": [
         {
@@ -3912,7 +3943,7 @@ window.WISE_PPT_COMPONENT_THEME_BINDINGS = Object.freeze({
           "material": "panel",
           "expected_count": 1,
           "layout_selector": "#draw rect[x=\"150\"][y=\"190\"][width=\"1620\"][height=\"280\"]",
-          "evidence": "current-catalog-frame-material",
+          "evidence": "source-region-material-anchor",
           "selector": "[data-component-theme-material=\"panel\"]"
         },
         {
@@ -3921,44 +3952,20 @@ window.WISE_PPT_COMPONENT_THEME_BINDINGS = Object.freeze({
           "material": "ink",
           "expected_count": 1,
           "layout_selector": "#draw rect[x=\"150\"][y=\"500\"][width=\"1620\"][height=\"280\"]",
-          "evidence": "current-catalog-frame-material",
+          "evidence": "source-region-material-anchor",
           "selector": "[data-component-theme-material=\"ink\"]"
         },
         {
-          "binding_id": "after-canvas-markers",
-          "source_selector": "circle[cx=\"200\"][cy=\"542\"][r=\"15\"], circle[cx=\"918\"][cy=\"616\"][r=\"10\"]",
+          "binding_id": "after-canvas-marker",
+          "source_selector": "circle[cx=\"918\"][cy=\"616\"][r=\"10\"]",
           "material": "canvas",
-          "expected_count": 2,
-          "layout_selector": "#e6-focus-badge, #draw circle[cx=\"918\"][cy=\"616\"][r=\"10\"]",
-          "evidence": "current-catalog-frame-material",
+          "expected_count": 1,
+          "layout_selector": "#draw circle[cx=\"918\"][cy=\"616\"][r=\"10\"]",
+          "evidence": "source-region-material-anchor",
           "selector": "[data-component-theme-material=\"canvas\"]"
         }
       ],
-      "identity_groups": [
-        {
-          "group_id": "identity.legacy-after",
-          "label": "After 文案与前置完成图标",
-          "members": [
-            {
-              "source_selector": "circle[cx=\"200\"][cy=\"542\"][r=\"15\"]",
-              "treatment": "identity.data-series",
-              "expected_count": 1,
-              "layout_selector": "#e6-focus-badge",
-              "selector": "[data-component-theme-group=\"identity.legacy-after\"]",
-              "evidence": "layout-identity-localized"
-            },
-            {
-              "source_selector": "text",
-              "text_pattern": "^After：文档进入召回链路$",
-              "treatment": "identity.text",
-              "expected_count": 1,
-              "layout_selector": "#e6-focus-title",
-              "selector": "[data-component-theme-group=\"identity.legacy-after\"]",
-              "evidence": "layout-identity-localized"
-            }
-          ]
-        }
-      ],
+      "identity_groups": [],
       "appearance_bindings": [
         {
           "binding_id": "comparison-band-outlines",
@@ -3966,17 +3973,8 @@ window.WISE_PPT_COMPONENT_THEME_BINDINGS = Object.freeze({
           "treatment": "source.ink-stroke-2-all",
           "expected_count": 2,
           "layout_selector": "#draw > g > rect[x=\"150\"][width=\"1620\"][height=\"280\"]",
-          "selector": "[data-component-theme-appearance=\"source.ink-stroke-2-all\"]",
-          "evidence": "current-catalog-frame-appearance"
-        },
-        {
-          "binding_id": "after-content",
-          "source_selector": "rect[x=\"155\"][y=\"505\"][width=\"1610\"][height=\"270\"], rect[x=\"155\"][y=\"505\"][width=\"1610\"][height=\"270\"] ~ *",
-          "treatment": "source.inverse-tokens",
-          "expected_count": 72,
-          "layout_selector": "#draw > g > rect[x=\"155\"][y=\"505\"][width=\"1610\"][height=\"270\"], #draw > g > rect[x=\"155\"][y=\"505\"][width=\"1610\"][height=\"270\"] ~ *",
-          "selector": "[data-component-theme-appearance=\"source.inverse-tokens\"]",
-          "evidence": "current-catalog-frame-appearance"
+          "evidence": "source-region-appearance-anchor",
+          "selector": "[data-component-theme-appearance=\"source.ink-stroke-2-all\"]"
         }
       ],
       "thumbnail_policy": "catalog-card"
@@ -3989,7 +3987,9 @@ window.WISE_PPT_COMPONENT_THEME_BINDINGS = Object.freeze({
       "source_layout": {
         "layout_id": "wise-ppt.layout.relationship.A1",
         "display_code": "A1",
-        "default_profile": "legacy",
+        "layout_contract": "wise-ppt-layout-theme-bindings@3",
+        "frame_contract": "wise-ppt-catalog-theme-frames@6",
+        "comparison_scope": "structure-and-provenance-only",
         "evidence": "sourceLayout/sourceRegion",
         "source_ref": "references/gallery-paper-ink/ai/frames/layout-a1.html",
         "source_regions": [
@@ -4000,7 +4000,7 @@ window.WISE_PPT_COMPONENT_THEME_BINDINGS = Object.freeze({
           "hermes-orange": "themes/catalog-projections/hermes-klein/frames/hermes-orange/layout-a1.html",
           "klein-blue": "themes/catalog-projections/hermes-klein/frames/klein-blue/layout-a1.html"
         },
-        "identity_projection": "approved-frame-localized"
+        "identity_projection": "component-localized-from-source-region"
       },
       "material_bindings": [
         {
@@ -4013,18 +4013,17 @@ window.WISE_PPT_COMPONENT_THEME_BINDINGS = Object.freeze({
       ],
       "identity_groups": [
         {
-          "group_id": "legacy.chat-rings",
+          "group_id": "identity.chat-rings",
           "label": "对话气泡环线",
           "members": [
             {
               "source_selector": "ellipse[stroke=\"var(--wp-color-functional)\"]",
               "treatment": "identity.stroke",
               "expected_count": 2,
-              "frame_selector": "#a1-ring, #a1-ring + ellipse",
-              "frame_expected_count": 2,
-              "frame_property": "stroke",
-              "selector": "[data-component-theme-group=\"legacy.chat-rings\"]",
-              "evidence": "approved-catalog-frame-legacy-native"
+              "layout_selector": "#a1-ring, #a1-ring + ellipse",
+              "layout_expected_count": 2,
+              "evidence": "source-region-identity-anchor",
+              "selector": "[data-component-theme-group=\"identity.chat-rings\"]"
             }
           ]
         }
@@ -4035,11 +4034,10 @@ window.WISE_PPT_COMPONENT_THEME_BINDINGS = Object.freeze({
           "source_selector": ".msg .avatar, .msg .bub",
           "treatment": "source.a1-message-border",
           "expected_count": 4,
-          "frame_selector": ".msg .avatar, .msg .bub",
-          "frame_expected_count": 4,
-          "frame_property": "borderColor",
-          "selector": "[data-component-theme-appearance=\"source.a1-message-border\"]",
-          "evidence": "approved-catalog-frame-legacy-native"
+          "layout_selector": ".msg .avatar, .msg .bub",
+          "layout_expected_count": 4,
+          "evidence": "source-region-appearance-anchor",
+          "selector": "[data-component-theme-appearance=\"source.a1-message-border\"]"
         }
       ],
       "thumbnail_policy": "catalog-card"
@@ -4052,7 +4050,9 @@ window.WISE_PPT_COMPONENT_THEME_BINDINGS = Object.freeze({
       "source_layout": {
         "layout_id": "wise-ppt.layout.relationship.G4",
         "display_code": "G4",
-        "default_profile": "standard",
+        "layout_contract": "wise-ppt-layout-theme-bindings@3",
+        "frame_contract": "wise-ppt-catalog-theme-frames@6",
+        "comparison_scope": "structure-and-provenance-only",
         "evidence": "sourceLayout/sourceRegion",
         "source_ref": "references/gallery-paper-ink/ai/frames/layout-g4.html",
         "source_regions": [
@@ -4063,7 +4063,7 @@ window.WISE_PPT_COMPONENT_THEME_BINDINGS = Object.freeze({
           "hermes-orange": "themes/catalog-projections/hermes-klein/frames/hermes-orange/layout-g4.html",
           "klein-blue": "themes/catalog-projections/hermes-klein/frames/klein-blue/layout-g4.html"
         },
-        "identity_projection": "layout-contract-localized"
+        "identity_projection": "component-localized-from-source-region"
       },
       "material_bindings": [
         {
@@ -4079,7 +4079,7 @@ window.WISE_PPT_COMPONENT_THEME_BINDINGS = Object.freeze({
           "material": "translucent-panel",
           "expected_count": 6,
           "layout_selector": "#draw circle[r=\"62\"]",
-          "evidence": "current-catalog-frame-material",
+          "evidence": "source-region-material-anchor",
           "selector": "[data-component-theme-material=\"translucent-panel\"]"
         },
         {
@@ -4088,7 +4088,7 @@ window.WISE_PPT_COMPONENT_THEME_BINDINGS = Object.freeze({
           "material": "panel",
           "expected_count": 1,
           "layout_selector": "#g4-focus-frame",
-          "evidence": "current-catalog-frame-material",
+          "evidence": "source-region-material-anchor",
           "selector": "[data-component-theme-material=\"panel\"]"
         }
       ],
@@ -4103,8 +4103,8 @@ window.WISE_PPT_COMPONENT_THEME_BINDINGS = Object.freeze({
               "treatment": "identity.text",
               "expected_count": 1,
               "layout_selector": "[data-vnext-text-key=\"capabilities.text.001\"]",
-              "selector": "[data-component-theme-group=\"identity.primary-label\"]",
-              "evidence": "layout-identity-localized"
+              "evidence": "source-region-identity-anchor",
+              "selector": "[data-component-theme-group=\"identity.primary-label\"]"
             }
           ]
         }
@@ -4116,8 +4116,8 @@ window.WISE_PPT_COMPONENT_THEME_BINDINGS = Object.freeze({
           "treatment": "source.ink-stroke-45",
           "expected_count": 1,
           "layout_selector": "#draw circle[cx=\"960\"][cy=\"540\"][r=\"134\"]",
-          "selector": "[data-component-theme-appearance=\"source.ink-stroke-45\"]",
-          "evidence": "current-catalog-frame-appearance"
+          "evidence": "source-region-appearance-anchor",
+          "selector": "[data-component-theme-appearance=\"source.ink-stroke-45\"]"
         }
       ],
       "thumbnail_policy": "catalog-card"
@@ -4130,7 +4130,9 @@ window.WISE_PPT_COMPONENT_THEME_BINDINGS = Object.freeze({
       "source_layout": {
         "layout_id": "wise-ppt.layout.relationship.N1",
         "display_code": "N1",
-        "default_profile": "legacy",
+        "layout_contract": "wise-ppt-layout-theme-bindings@3",
+        "frame_contract": "wise-ppt-catalog-theme-frames@6",
+        "comparison_scope": "structure-and-provenance-only",
         "evidence": "sourceLayout/sourceRegion",
         "source_ref": "references/gallery-paper-ink/ai/frames/layout-n1.html",
         "source_regions": [
@@ -4141,7 +4143,7 @@ window.WISE_PPT_COMPONENT_THEME_BINDINGS = Object.freeze({
           "hermes-orange": "themes/catalog-projections/hermes-klein/frames/hermes-orange/layout-n1.html",
           "klein-blue": "themes/catalog-projections/hermes-klein/frames/klein-blue/layout-n1.html"
         },
-        "identity_projection": "approved-frame-localized"
+        "identity_projection": "component-localized-from-source-region"
       },
       "material_bindings": [
         {
@@ -4156,37 +4158,34 @@ window.WISE_PPT_COMPONENT_THEME_BINDINGS = Object.freeze({
           "source_selector": "rect[x=\"1200\"][y=\"330\"][width=\"500\"][height=\"450\"]",
           "material": "panel",
           "expected_count": 1,
-          "frame_selector": "#n1-focus-frame",
-          "frame_expected_count": 1,
-          "frame_property": "fill",
-          "evidence": "current-catalog-frame-material",
+          "evidence": "source-region-material-anchor",
+          "layout_selector": "#n1-focus-frame",
+          "layout_expected_count": 1,
           "selector": "[data-component-theme-material=\"panel\"]"
         }
       ],
       "identity_groups": [
         {
-          "group_id": "legacy.node-title-rules",
+          "group_id": "identity.node-title-rules",
           "label": "三节点标题双线",
           "members": [
             {
               "source_selector": "line[x1=\"252\"][y1=\"384\"][x2=\"658\"][y2=\"384\"], line[x1=\"252\"][y1=\"714\"][x2=\"658\"][y2=\"714\"], line[x1=\"1232\"][y1=\"448\"][x2=\"1668\"][y2=\"448\"]",
               "treatment": "identity.stroke-strong",
               "expected_count": 3,
-              "frame_selector": "[data-title-rule]",
-              "frame_expected_count": 3,
-              "frame_property": "stroke",
-              "selector": "[data-component-theme-group=\"legacy.node-title-rules\"]",
-              "evidence": "approved-catalog-frame-legacy-native"
+              "layout_selector": "#draw line[x1=\"252\"][y1=\"384\"][x2=\"658\"][y2=\"384\"], #draw line[x1=\"252\"][y1=\"714\"][x2=\"658\"][y2=\"714\"], #draw line[x1=\"1232\"][y1=\"448\"][x2=\"1668\"][y2=\"448\"]",
+              "layout_expected_count": 3,
+              "evidence": "source-region-identity-anchor",
+              "selector": "[data-component-theme-group=\"identity.node-title-rules\"]"
             },
             {
               "source_selector": "line[x1=\"252\"][y1=\"388\"][x2=\"340\"][y2=\"388\"], line[x1=\"252\"][y1=\"718\"][x2=\"340\"][y2=\"718\"], line[x1=\"1232\"][y1=\"452\"][x2=\"1320\"][y2=\"452\"]",
               "treatment": "identity.stroke-detail",
               "expected_count": 3,
-              "frame_selector": "[data-title-subrule]",
-              "frame_expected_count": 3,
-              "frame_property": "stroke",
-              "selector": "[data-component-theme-group=\"legacy.node-title-rules\"]",
-              "evidence": "approved-catalog-frame-legacy-native"
+              "layout_selector": "#draw line[x1=\"252\"][y1=\"388\"][x2=\"340\"][y2=\"388\"], #draw line[x1=\"252\"][y1=\"718\"][x2=\"340\"][y2=\"718\"], #draw line[x1=\"1232\"][y1=\"452\"][x2=\"1320\"][y2=\"452\"]",
+              "layout_expected_count": 3,
+              "evidence": "source-region-identity-anchor",
+              "selector": "[data-component-theme-group=\"identity.node-title-rules\"]"
             }
           ]
         }
@@ -4197,11 +4196,10 @@ window.WISE_PPT_COMPONENT_THEME_BINDINGS = Object.freeze({
           "source_selector": "rect[x=\"1200\"][y=\"330\"][width=\"500\"][height=\"450\"]",
           "treatment": "source.ink-stroke-2",
           "expected_count": 1,
-          "frame_selector": "#n1-focus-frame",
-          "frame_expected_count": 1,
-          "frame_property": "stroke",
-          "selector": "[data-component-theme-appearance=\"source.ink-stroke-2\"]",
-          "evidence": "approved-catalog-frame-legacy-native"
+          "layout_selector": "#n1-focus-frame",
+          "layout_expected_count": 1,
+          "evidence": "source-region-appearance-anchor",
+          "selector": "[data-component-theme-appearance=\"source.ink-stroke-2\"]"
         },
         {
           "binding_id": "node-sequence-numbers",
@@ -4209,12 +4207,11 @@ window.WISE_PPT_COMPONENT_THEME_BINDINGS = Object.freeze({
           "text_pattern": "^0[12]$",
           "treatment": "source.ink-text",
           "expected_count": 2,
-          "frame_selector": "#draw text",
-          "frame_text_pattern": "^0[12]$",
-          "frame_expected_count": 2,
-          "frame_property": "fill",
-          "selector": "[data-component-theme-appearance=\"source.ink-text\"]",
-          "evidence": "approved-catalog-frame-legacy-native"
+          "layout_selector": "#draw text",
+          "layout_expected_count": 2,
+          "layout_text_pattern": "^0[12]$",
+          "evidence": "source-region-appearance-anchor",
+          "selector": "[data-component-theme-appearance=\"source.ink-text\"]"
         }
       ],
       "thumbnail_policy": "catalog-card"
@@ -4227,7 +4224,9 @@ window.WISE_PPT_COMPONENT_THEME_BINDINGS = Object.freeze({
       "source_layout": {
         "layout_id": "wise-ppt.layout.relationship.E2",
         "display_code": "E2",
-        "default_profile": "standard",
+        "layout_contract": "wise-ppt-layout-theme-bindings@3",
+        "frame_contract": "wise-ppt-catalog-theme-frames@6",
+        "comparison_scope": "structure-and-provenance-only",
         "evidence": "sourceLayout/sourceRegion",
         "source_ref": "references/gallery-paper-ink/ai/frames/layout-e2.html",
         "source_regions": [
@@ -4238,7 +4237,7 @@ window.WISE_PPT_COMPONENT_THEME_BINDINGS = Object.freeze({
           "hermes-orange": "themes/catalog-projections/hermes-klein/frames/hermes-orange/layout-e2.html",
           "klein-blue": "themes/catalog-projections/hermes-klein/frames/klein-blue/layout-e2.html"
         },
-        "identity_projection": "layout-contract-localized"
+        "identity_projection": "component-localized-from-source-region"
       },
       "material_bindings": [
         {
@@ -4260,8 +4259,8 @@ window.WISE_PPT_COMPONENT_THEME_BINDINGS = Object.freeze({
               "treatment": "identity.text",
               "expected_count": 1,
               "layout_selector": "[data-vnext-text-key=\"comparison-fields.text.001\"]",
-              "selector": "[data-component-theme-group=\"identity.vs-label\"]",
-              "evidence": "layout-identity-localized"
+              "evidence": "source-region-identity-anchor",
+              "selector": "[data-component-theme-group=\"identity.vs-label\"]"
             }
           ]
         },
@@ -4274,7 +4273,7 @@ window.WISE_PPT_COMPONENT_THEME_BINDINGS = Object.freeze({
               "treatment": "identity.stroke-strong",
               "expected_count": 2,
               "layout_selector": "#draw line[x1=\"200\"][y1=\"322\"], #draw line[x1=\"1040\"][y1=\"322\"]",
-              "evidence": "current-catalog-frame-identity",
+              "evidence": "source-region-identity-anchor",
               "selector": "[data-component-theme-group=\"identity.comparison-title-rules\"]"
             },
             {
@@ -4282,7 +4281,7 @@ window.WISE_PPT_COMPONENT_THEME_BINDINGS = Object.freeze({
               "treatment": "identity.stroke-detail",
               "expected_count": 2,
               "layout_selector": "#draw line[x1=\"200\"][y1=\"327\"], #draw line[x1=\"1040\"][y1=\"327\"]",
-              "evidence": "current-catalog-frame-identity",
+              "evidence": "source-region-identity-anchor",
               "selector": "[data-component-theme-group=\"identity.comparison-title-rules\"]"
             }
           ]
@@ -4299,7 +4298,9 @@ window.WISE_PPT_COMPONENT_THEME_BINDINGS = Object.freeze({
       "source_layout": {
         "layout_id": "wise-ppt.layout.relationship.H3",
         "display_code": "H3",
-        "default_profile": "standard",
+        "layout_contract": "wise-ppt-layout-theme-bindings@3",
+        "frame_contract": "wise-ppt-catalog-theme-frames@6",
+        "comparison_scope": "structure-and-provenance-only",
         "evidence": "sourceLayout/sourceRegion",
         "source_ref": "references/gallery-paper-ink/ai/frames/layout-h3.html",
         "source_regions": [
@@ -4310,7 +4311,7 @@ window.WISE_PPT_COMPONENT_THEME_BINDINGS = Object.freeze({
           "hermes-orange": "themes/catalog-projections/hermes-klein/frames/hermes-orange/layout-h3.html",
           "klein-blue": "themes/catalog-projections/hermes-klein/frames/klein-blue/layout-h3.html"
         },
-        "identity_projection": "layout-contract-localized"
+        "identity_projection": "component-localized-from-source-region"
       },
       "material_bindings": [
         {
@@ -4332,8 +4333,8 @@ window.WISE_PPT_COMPONENT_THEME_BINDINGS = Object.freeze({
               "treatment": "identity.text",
               "expected_count": 4,
               "layout_selector": ".h3-layer-code",
-              "selector": "[data-component-theme-group=\"identity.layer-codes\"]",
-              "evidence": "layout-identity-localized"
+              "evidence": "source-region-identity-anchor",
+              "selector": "[data-component-theme-group=\"identity.layer-codes\"]"
             }
           ]
         }
@@ -4349,7 +4350,9 @@ window.WISE_PPT_COMPONENT_THEME_BINDINGS = Object.freeze({
       "source_layout": {
         "layout_id": "wise-ppt.layout.relationship.B3",
         "display_code": "B3",
-        "default_profile": "legacy",
+        "layout_contract": "wise-ppt-layout-theme-bindings@3",
+        "frame_contract": "wise-ppt-catalog-theme-frames@6",
+        "comparison_scope": "structure-and-provenance-only",
         "evidence": "sourceLayout/sourceRegion",
         "source_ref": "references/gallery-paper-ink/ai/frames/layout-b3.html",
         "source_regions": [
@@ -4360,7 +4363,7 @@ window.WISE_PPT_COMPONENT_THEME_BINDINGS = Object.freeze({
           "hermes-orange": "themes/catalog-projections/hermes-klein/frames/hermes-orange/layout-b3.html",
           "klein-blue": "themes/catalog-projections/hermes-klein/frames/klein-blue/layout-b3.html"
         },
-        "identity_projection": "approved-frame-localized"
+        "identity_projection": "component-localized-from-source-region"
       },
       "material_bindings": [
         {
@@ -4383,16 +4386,15 @@ window.WISE_PPT_COMPONENT_THEME_BINDINGS = Object.freeze({
           "source_selector": "circle[fill*=\"paper-deep\"][r=\"8\"]",
           "material": "canvas",
           "expected_count": 3,
-          "frame_selector": "#draw circle[r=\"8\"]",
-          "frame_expected_count": 3,
-          "frame_property": "fill",
-          "evidence": "current-catalog-frame-material",
+          "evidence": "source-region-material-anchor",
+          "layout_selector": "#draw circle[r=\"8\"]",
+          "layout_expected_count": 3,
           "selector": "[data-component-theme-material=\"canvas\"]"
         }
       ],
       "identity_groups": [
         {
-          "group_id": "legacy.lane-labels",
+          "group_id": "identity.lane-labels",
           "label": "三泳道标签",
           "members": [
             {
@@ -4400,11 +4402,11 @@ window.WISE_PPT_COMPONENT_THEME_BINDINGS = Object.freeze({
               "text_pattern": "^L[1-3] · ",
               "treatment": "identity.text",
               "expected_count": 3,
-              "frame_selector": "[data-lane-label]",
-              "frame_expected_count": 3,
-              "frame_property": "fill",
-              "selector": "[data-component-theme-group=\"legacy.lane-labels\"]",
-              "evidence": "approved-catalog-frame-legacy-native"
+              "layout_selector": "#draw text",
+              "layout_expected_count": 3,
+              "layout_text_pattern": "^L[1-3] · ",
+              "evidence": "source-region-identity-anchor",
+              "selector": "[data-component-theme-group=\"identity.lane-labels\"]"
             }
           ]
         }
@@ -4420,7 +4422,9 @@ window.WISE_PPT_COMPONENT_THEME_BINDINGS = Object.freeze({
       "source_layout": {
         "layout_id": "wise-ppt.layout.relationship.C3",
         "display_code": "C3",
-        "default_profile": "legacy",
+        "layout_contract": "wise-ppt-layout-theme-bindings@3",
+        "frame_contract": "wise-ppt-catalog-theme-frames@6",
+        "comparison_scope": "structure-and-provenance-only",
         "evidence": "sourceLayout/sourceRegion",
         "source_ref": "references/gallery-paper-ink/ai/frames/layout-c3.html",
         "source_regions": [
@@ -4431,7 +4435,7 @@ window.WISE_PPT_COMPONENT_THEME_BINDINGS = Object.freeze({
           "hermes-orange": "themes/catalog-projections/hermes-klein/frames/hermes-orange/layout-c3.html",
           "klein-blue": "themes/catalog-projections/hermes-klein/frames/klein-blue/layout-c3.html"
         },
-        "identity_projection": "approved-frame-localized"
+        "identity_projection": "component-localized-from-source-region"
       },
       "material_bindings": [
         {
@@ -4452,18 +4456,17 @@ window.WISE_PPT_COMPONENT_THEME_BINDINGS = Object.freeze({
       ],
       "identity_groups": [
         {
-          "group_id": "legacy.profile-title-rule",
+          "group_id": "identity.persona-title-rule",
           "label": "首张画像卡标题线",
           "members": [
             {
               "source_selector": "line[x1=\"176\"][y1=\"578\"][x2=\"604\"]",
               "treatment": "identity.stroke-strong",
               "expected_count": 1,
-              "frame_selector": "[data-title-rule][x1=\"176\"]",
-              "frame_expected_count": 1,
-              "frame_property": "stroke",
-              "selector": "[data-component-theme-group=\"legacy.profile-title-rule\"]",
-              "evidence": "approved-catalog-frame-legacy-native"
+              "layout_selector": "#draw line[x1=\"176\"][y1=\"578\"][x2=\"604\"]",
+              "layout_expected_count": 1,
+              "evidence": "source-region-identity-anchor",
+              "selector": "[data-component-theme-group=\"identity.persona-title-rule\"]"
             }
           ]
         }
@@ -4474,11 +4477,10 @@ window.WISE_PPT_COMPONENT_THEME_BINDINGS = Object.freeze({
           "source_selector": "rect[x=\"140\"][y=\"210\"][width=\"500\"][height=\"660\"]",
           "treatment": "source.ink-stroke",
           "expected_count": 1,
-          "frame_selector": "#draw rect[x=\"140\"][y=\"210\"][width=\"500\"][height=\"660\"]",
-          "frame_expected_count": 1,
-          "frame_property": "stroke",
-          "selector": "[data-component-theme-appearance=\"source.ink-stroke\"]",
-          "evidence": "approved-catalog-frame-legacy-native"
+          "layout_selector": "#draw rect[x=\"140\"][y=\"210\"][width=\"500\"][height=\"660\"]",
+          "layout_expected_count": 1,
+          "evidence": "source-region-appearance-anchor",
+          "selector": "[data-component-theme-appearance=\"source.ink-stroke\"]"
         }
       ],
       "thumbnail_policy": "catalog-card"
@@ -4491,7 +4493,9 @@ window.WISE_PPT_COMPONENT_THEME_BINDINGS = Object.freeze({
       "source_layout": {
         "layout_id": "wise-ppt.layout.relationship.C5",
         "display_code": "C5",
-        "default_profile": "legacy",
+        "layout_contract": "wise-ppt-layout-theme-bindings@3",
+        "frame_contract": "wise-ppt-catalog-theme-frames@6",
+        "comparison_scope": "structure-and-provenance-only",
         "evidence": "sourceLayout/sourceRegion",
         "source_ref": "references/gallery-paper-ink/ai/frames/layout-c5.html",
         "source_regions": [
@@ -4528,7 +4532,9 @@ window.WISE_PPT_COMPONENT_THEME_BINDINGS = Object.freeze({
       "source_layout": {
         "layout_id": "wise-ppt.layout.relationship.O1",
         "display_code": "O1",
-        "default_profile": "standard",
+        "layout_contract": "wise-ppt-layout-theme-bindings@3",
+        "frame_contract": "wise-ppt-catalog-theme-frames@6",
+        "comparison_scope": "structure-and-provenance-only",
         "evidence": "sourceLayout/sourceRegion",
         "source_ref": "references/gallery-paper-ink/ai/frames/layout-o1.html",
         "source_regions": [
@@ -4539,7 +4545,7 @@ window.WISE_PPT_COMPONENT_THEME_BINDINGS = Object.freeze({
           "hermes-orange": "themes/catalog-projections/hermes-klein/frames/hermes-orange/layout-o1.html",
           "klein-blue": "themes/catalog-projections/hermes-klein/frames/klein-blue/layout-o1.html"
         },
-        "identity_projection": "layout-contract-localized"
+        "identity_projection": "component-localized-from-source-region"
       },
       "material_bindings": [
         {
@@ -4555,7 +4561,7 @@ window.WISE_PPT_COMPONENT_THEME_BINDINGS = Object.freeze({
           "material": "panel",
           "expected_count": 1,
           "layout_selector": "#o1-funnel-surface",
-          "evidence": "current-catalog-frame-material",
+          "evidence": "source-region-material-anchor",
           "selector": "[data-component-theme-material=\"panel\"]"
         }
       ],
@@ -4570,8 +4576,8 @@ window.WISE_PPT_COMPONENT_THEME_BINDINGS = Object.freeze({
               "treatment": "identity.text",
               "expected_count": 1,
               "layout_selector": "[data-vnext-text-key=\"funnel-stages.text.025\"]",
-              "selector": "[data-component-theme-group=\"identity.to-llm\"]",
-              "evidence": "layout-identity-localized"
+              "evidence": "source-region-identity-anchor",
+              "selector": "[data-component-theme-group=\"identity.to-llm\"]"
             }
           ]
         }
@@ -4583,8 +4589,8 @@ window.WISE_PPT_COMPONENT_THEME_BINDINGS = Object.freeze({
           "treatment": "source.ink-stroke-80-exact",
           "expected_count": 2,
           "layout_selector": "#draw [data-o1-divider]",
-          "selector": "[data-component-theme-appearance=\"source.ink-stroke-80-exact\"]",
-          "evidence": "current-catalog-frame-appearance"
+          "evidence": "source-region-appearance-anchor",
+          "selector": "[data-component-theme-appearance=\"source.ink-stroke-80-exact\"]"
         }
       ],
       "thumbnail_policy": "catalog-card"
@@ -4597,7 +4603,9 @@ window.WISE_PPT_COMPONENT_THEME_BINDINGS = Object.freeze({
       "source_layout": {
         "layout_id": "wise-ppt.layout.relationship.G2",
         "display_code": "G2",
-        "default_profile": "standard",
+        "layout_contract": "wise-ppt-layout-theme-bindings@3",
+        "frame_contract": "wise-ppt-catalog-theme-frames@6",
+        "comparison_scope": "structure-and-provenance-only",
         "evidence": "sourceLayout/sourceRegion",
         "source_ref": "references/gallery-paper-ink/ai/frames/layout-g2.html",
         "source_regions": [
@@ -4608,7 +4616,7 @@ window.WISE_PPT_COMPONENT_THEME_BINDINGS = Object.freeze({
           "hermes-orange": "themes/catalog-projections/hermes-klein/frames/hermes-orange/layout-g2.html",
           "klein-blue": "themes/catalog-projections/hermes-klein/frames/klein-blue/layout-g2.html"
         },
-        "identity_projection": "layout-contract-localized"
+        "identity_projection": "component-localized-from-source-region"
       },
       "material_bindings": [
         {
@@ -4624,7 +4632,7 @@ window.WISE_PPT_COMPONENT_THEME_BINDINGS = Object.freeze({
           "material": "canvas",
           "expected_count": 8,
           "layout_selector": "#draw circle[r=\"38\"], #draw circle[r=\"5\"]",
-          "evidence": "current-catalog-frame-material",
+          "evidence": "source-region-material-anchor",
           "selector": "[data-component-theme-material=\"canvas\"]"
         },
         {
@@ -4633,7 +4641,7 @@ window.WISE_PPT_COMPONENT_THEME_BINDINGS = Object.freeze({
           "material": "panel",
           "expected_count": 1,
           "layout_selector": "#draw rect[x=\"740\"][y=\"616\"][width=\"440\"][height=\"150\"]",
-          "evidence": "current-catalog-frame-material",
+          "evidence": "source-region-material-anchor",
           "selector": "[data-component-theme-material=\"panel\"]"
         },
         {
@@ -4642,7 +4650,7 @@ window.WISE_PPT_COMPONENT_THEME_BINDINGS = Object.freeze({
           "material": "recessed",
           "expected_count": 1,
           "layout_selector": "#draw rect[x=\"900\"][y=\"646\"][width=\"180\"][height=\"70\"]",
-          "evidence": "current-catalog-frame-material",
+          "evidence": "source-region-material-anchor",
           "selector": "[data-component-theme-material=\"recessed\"]"
         }
       ],
@@ -4657,8 +4665,8 @@ window.WISE_PPT_COMPONENT_THEME_BINDINGS = Object.freeze({
               "treatment": "identity.text",
               "expected_count": 6,
               "layout_selector": "[data-vnext-text-key=\"hero.text.001\"], [data-vnext-text-key=\"hero.text.004\"], [data-vnext-text-key=\"hero.text.007\"], [data-vnext-text-key=\"hero.text.010\"], [data-vnext-text-key=\"hero.text.013\"], [data-vnext-text-key=\"hero.text.016\"]",
-              "selector": "[data-component-theme-group=\"identity.part-labels\"]",
-              "evidence": "layout-identity-localized"
+              "evidence": "source-region-identity-anchor",
+              "selector": "[data-component-theme-group=\"identity.part-labels\"]"
             }
           ]
         },
@@ -4671,16 +4679,16 @@ window.WISE_PPT_COMPONENT_THEME_BINDINGS = Object.freeze({
               "treatment": "identity.fill",
               "expected_count": 6,
               "layout_selector": "circle[data-anchor-dot]",
-              "selector": "[data-component-theme-group=\"identity.annotation-dots\"]",
-              "evidence": "layout-identity-localized"
+              "evidence": "source-region-identity-anchor",
+              "selector": "[data-component-theme-group=\"identity.annotation-dots\"]"
             },
             {
               "source_selector": "circle[r=\"2.2\"]",
               "treatment": "identity.fill",
               "expected_count": 6,
               "layout_selector": "circle[data-elbow-dot]",
-              "selector": "[data-component-theme-group=\"identity.annotation-dots\"]",
-              "evidence": "layout-identity-localized"
+              "evidence": "source-region-identity-anchor",
+              "selector": "[data-component-theme-group=\"identity.annotation-dots\"]"
             }
           ]
         }
@@ -4692,8 +4700,8 @@ window.WISE_PPT_COMPONENT_THEME_BINDINGS = Object.freeze({
           "treatment": "source.ink-stroke",
           "expected_count": 1,
           "layout_selector": "#draw rect[x=\"740\"][y=\"616\"][width=\"440\"][height=\"150\"]",
-          "selector": "[data-component-theme-appearance=\"source.ink-stroke\"]",
-          "evidence": "current-catalog-frame-appearance"
+          "evidence": "source-region-appearance-anchor",
+          "selector": "[data-component-theme-appearance=\"source.ink-stroke\"]"
         }
       ],
       "thumbnail_policy": "catalog-card"
@@ -4706,7 +4714,9 @@ window.WISE_PPT_COMPONENT_THEME_BINDINGS = Object.freeze({
       "source_layout": {
         "layout_id": "wise-ppt.layout.relationship.K3",
         "display_code": "K3",
-        "default_profile": "legacy",
+        "layout_contract": "wise-ppt-layout-theme-bindings@3",
+        "frame_contract": "wise-ppt-catalog-theme-frames@6",
+        "comparison_scope": "structure-and-provenance-only",
         "evidence": "sourceLayout/sourceRegion",
         "source_ref": "references/gallery-paper-ink/ai/frames/layout-k3.html",
         "source_regions": [
@@ -4740,7 +4750,9 @@ window.WISE_PPT_COMPONENT_THEME_BINDINGS = Object.freeze({
       "source_layout": {
         "layout_id": "wise-ppt.layout.relationship.K4",
         "display_code": "K4",
-        "default_profile": "standard",
+        "layout_contract": "wise-ppt-layout-theme-bindings@3",
+        "frame_contract": "wise-ppt-catalog-theme-frames@6",
+        "comparison_scope": "structure-and-provenance-only",
         "evidence": "sourceLayout/sourceRegion",
         "source_ref": "references/gallery-paper-ink/ai/frames/layout-k4.html",
         "source_regions": [
@@ -4751,7 +4763,7 @@ window.WISE_PPT_COMPONENT_THEME_BINDINGS = Object.freeze({
           "hermes-orange": "themes/catalog-projections/hermes-klein/frames/hermes-orange/layout-k4.html",
           "klein-blue": "themes/catalog-projections/hermes-klein/frames/klein-blue/layout-k4.html"
         },
-        "identity_projection": "layout-contract-localized"
+        "identity_projection": "component-localized-from-source-region"
       },
       "material_bindings": [
         {
@@ -4767,9 +4779,8 @@ window.WISE_PPT_COMPONENT_THEME_BINDINGS = Object.freeze({
           "material": "panel",
           "expected_count": 1,
           "layout_selector": "#draw > g > rect[y=\"226\"][height=\"42\"][fill=\"var(--paper-panel)\"]",
-          "frame_expected_count": 3,
-          "uniform_source_style": true,
-          "evidence": "current-catalog-frame-material",
+          "evidence": "source-region-material-anchor",
+          "layout_expected_count": 3,
           "selector": "[data-component-theme-material=\"panel\"]"
         }
       ],
@@ -4784,8 +4795,8 @@ window.WISE_PPT_COMPONENT_THEME_BINDINGS = Object.freeze({
               "treatment": "identity.text",
               "expected_count": 1,
               "layout_selector": "[data-vnext-text-key=\"scenario-matrix.text.002\"]",
-              "selector": "[data-component-theme-group=\"identity.scene-labels\"]",
-              "evidence": "layout-identity-localized"
+              "evidence": "source-region-identity-anchor",
+              "selector": "[data-component-theme-group=\"identity.scene-labels\"]"
             }
           ]
         }
@@ -4801,7 +4812,9 @@ window.WISE_PPT_COMPONENT_THEME_BINDINGS = Object.freeze({
       "source_layout": {
         "layout_id": "wise-ppt.layout.relationship.H3",
         "display_code": "H3",
-        "default_profile": "standard",
+        "layout_contract": "wise-ppt-layout-theme-bindings@3",
+        "frame_contract": "wise-ppt-catalog-theme-frames@6",
+        "comparison_scope": "structure-and-provenance-only",
         "evidence": "sourceLayout/sourceRegion",
         "source_ref": "references/gallery-paper-ink/ai/frames/layout-h3.html",
         "source_regions": [
@@ -4812,7 +4825,7 @@ window.WISE_PPT_COMPONENT_THEME_BINDINGS = Object.freeze({
           "hermes-orange": "themes/catalog-projections/hermes-klein/frames/hermes-orange/layout-h3.html",
           "klein-blue": "themes/catalog-projections/hermes-klein/frames/klein-blue/layout-h3.html"
         },
-        "identity_projection": "layout-contract-localized"
+        "identity_projection": "component-localized-from-source-region"
       },
       "material_bindings": [
         {
@@ -4834,8 +4847,8 @@ window.WISE_PPT_COMPONENT_THEME_BINDINGS = Object.freeze({
               "treatment": "identity.text",
               "expected_count": 4,
               "layout_selector": ".h3-layer-code",
-              "selector": "[data-component-theme-group=\"identity.layer-codes\"]",
-              "evidence": "layout-identity-localized"
+              "evidence": "source-region-identity-anchor",
+              "selector": "[data-component-theme-group=\"identity.layer-codes\"]"
             }
           ]
         }
@@ -4851,7 +4864,9 @@ window.WISE_PPT_COMPONENT_THEME_BINDINGS = Object.freeze({
       "source_layout": {
         "layout_id": "wise-ppt.layout.relationship.L2",
         "display_code": "L2",
-        "default_profile": "legacy",
+        "layout_contract": "wise-ppt-layout-theme-bindings@3",
+        "frame_contract": "wise-ppt-catalog-theme-frames@6",
+        "comparison_scope": "structure-and-provenance-only",
         "evidence": "sourceLayout/sourceRegion",
         "source_ref": "references/gallery-paper-ink/ai/frames/layout-l2.html",
         "source_regions": [
@@ -4862,7 +4877,7 @@ window.WISE_PPT_COMPONENT_THEME_BINDINGS = Object.freeze({
           "hermes-orange": "themes/catalog-projections/hermes-klein/frames/hermes-orange/layout-l2.html",
           "klein-blue": "themes/catalog-projections/hermes-klein/frames/klein-blue/layout-l2.html"
         },
-        "identity_projection": "approved-frame-localized"
+        "identity_projection": "component-localized-from-source-region"
       },
       "material_bindings": [
         {
@@ -4875,18 +4890,17 @@ window.WISE_PPT_COMPONENT_THEME_BINDINGS = Object.freeze({
       ],
       "identity_groups": [
         {
-          "group_id": "legacy.mapping-title-rules",
+          "group_id": "identity.mapping-title-rules",
           "label": "左右标题短线",
           "members": [
             {
               "source_selector": "line[x1=\"192\"][x2=\"352\"][y1=\"258\"], line[x1=\"1404\"][x2=\"1530\"][y1=\"258\"]",
               "treatment": "identity.stroke-strong",
               "expected_count": 2,
-              "frame_selector": "[data-title-rule]",
-              "frame_expected_count": 2,
-              "frame_property": "stroke",
-              "selector": "[data-component-theme-group=\"legacy.mapping-title-rules\"]",
-              "evidence": "approved-catalog-frame-legacy-native"
+              "layout_selector": "#draw line[x1=\"192\"][x2=\"352\"][y1=\"258\"], #draw line[x1=\"1404\"][x2=\"1530\"][y1=\"258\"]",
+              "layout_expected_count": 2,
+              "evidence": "source-region-identity-anchor",
+              "selector": "[data-component-theme-group=\"identity.mapping-title-rules\"]"
             }
           ]
         }
@@ -4902,7 +4916,9 @@ window.WISE_PPT_COMPONENT_THEME_BINDINGS = Object.freeze({
       "source_layout": {
         "layout_id": "wise-ppt.layout.relationship.L1",
         "display_code": "L1",
-        "default_profile": "standard",
+        "layout_contract": "wise-ppt-layout-theme-bindings@3",
+        "frame_contract": "wise-ppt-catalog-theme-frames@6",
+        "comparison_scope": "structure-and-provenance-only",
         "evidence": "sourceLayout/sourceRegion",
         "source_ref": "references/gallery-paper-ink/ai/frames/layout-l1.html",
         "source_regions": [
@@ -4913,7 +4929,7 @@ window.WISE_PPT_COMPONENT_THEME_BINDINGS = Object.freeze({
           "hermes-orange": "themes/catalog-projections/hermes-klein/frames/hermes-orange/layout-l1.html",
           "klein-blue": "themes/catalog-projections/hermes-klein/frames/klein-blue/layout-l1.html"
         },
-        "identity_projection": "layout-contract-localized"
+        "identity_projection": "component-localized-from-source-region"
       },
       "material_bindings": [
         {
@@ -4929,8 +4945,8 @@ window.WISE_PPT_COMPONENT_THEME_BINDINGS = Object.freeze({
           "material": "panel",
           "expected_count": 6,
           "layout_selector": "#draw > g > rect[fill=\"var(--paper-panel)\"]",
-          "selector": "[data-component-theme-material=\"panel\"]",
-          "evidence": "layout-surface-localized"
+          "evidence": "source-region-material-anchor",
+          "selector": "[data-component-theme-material=\"panel\"]"
         }
       ],
       "identity_groups": [
@@ -4943,8 +4959,8 @@ window.WISE_PPT_COMPONENT_THEME_BINDINGS = Object.freeze({
               "treatment": "identity.border",
               "expected_count": 6,
               "layout_selector": "#draw > g > rect[fill=\"var(--paper-panel)\"]",
-              "selector": "[data-component-theme-group=\"identity.token-boxes\"]",
-              "evidence": "layout-identity-localized"
+              "evidence": "source-region-identity-anchor",
+              "selector": "[data-component-theme-group=\"identity.token-boxes\"]"
             }
           ]
         }
@@ -4958,8 +4974,8 @@ window.WISE_PPT_COMPONENT_THEME_BINDINGS = Object.freeze({
           "expected_count": 1,
           "layout_selector": "#draw text",
           "layout_text_pattern": "^w ≈ 0.46 · MID$",
-          "selector": "[data-component-theme-appearance=\"source.ink-text-60\"]",
-          "evidence": "current-catalog-frame-appearance"
+          "evidence": "source-region-appearance-anchor",
+          "selector": "[data-component-theme-appearance=\"source.ink-text-60\"]"
         },
         {
           "binding_id": "attention-strong-label",
@@ -4969,8 +4985,8 @@ window.WISE_PPT_COMPONENT_THEME_BINDINGS = Object.freeze({
           "expected_count": 1,
           "layout_selector": "#draw text",
           "layout_text_pattern": "^w ≈ 0.87 · STRONG ATTEND$",
-          "selector": "[data-component-theme-appearance=\"source.ink-text-85\"]",
-          "evidence": "current-catalog-frame-appearance"
+          "evidence": "source-region-appearance-anchor",
+          "selector": "[data-component-theme-appearance=\"source.ink-text-85\"]"
         },
         {
           "binding_id": "attention-break-label",
@@ -4980,8 +4996,8 @@ window.WISE_PPT_COMPONENT_THEME_BINDINGS = Object.freeze({
           "expected_count": 1,
           "layout_selector": "#draw text",
           "layout_text_pattern": "^w ≈ 0.04 · ATTENTION BREAK$",
-          "selector": "[data-component-theme-appearance=\"source.ink-text-75\"]",
-          "evidence": "current-catalog-frame-appearance"
+          "evidence": "source-region-appearance-anchor",
+          "selector": "[data-component-theme-appearance=\"source.ink-text-75\"]"
         }
       ],
       "thumbnail_policy": "catalog-card"
@@ -4994,7 +5010,9 @@ window.WISE_PPT_COMPONENT_THEME_BINDINGS = Object.freeze({
       "source_layout": {
         "layout_id": "wise-ppt.layout.relationship.G1",
         "display_code": "G1",
-        "default_profile": "standard",
+        "layout_contract": "wise-ppt-layout-theme-bindings@3",
+        "frame_contract": "wise-ppt-catalog-theme-frames@6",
+        "comparison_scope": "structure-and-provenance-only",
         "evidence": "sourceLayout/sourceRegion",
         "source_ref": "references/gallery-paper-ink/ai/frames/layout-g1.html",
         "source_regions": [
@@ -5005,7 +5023,7 @@ window.WISE_PPT_COMPONENT_THEME_BINDINGS = Object.freeze({
           "hermes-orange": "themes/catalog-projections/hermes-klein/frames/hermes-orange/layout-g1.html",
           "klein-blue": "themes/catalog-projections/hermes-klein/frames/klein-blue/layout-g1.html"
         },
-        "identity_projection": "layout-contract-localized"
+        "identity_projection": "component-localized-from-source-region"
       },
       "material_bindings": [
         {
@@ -5021,8 +5039,8 @@ window.WISE_PPT_COMPONENT_THEME_BINDINGS = Object.freeze({
           "material": "panel",
           "expected_count": 1,
           "layout_selector": "#g1-focus-frame",
-          "selector": "[data-component-theme-material=\"panel\"]",
-          "evidence": "layout-surface-localized"
+          "evidence": "source-region-material-anchor",
+          "selector": "[data-component-theme-material=\"panel\"]"
         }
       ],
       "identity_groups": [
@@ -5036,8 +5054,8 @@ window.WISE_PPT_COMPONENT_THEME_BINDINGS = Object.freeze({
               "treatment": "identity.text",
               "expected_count": 1,
               "layout_selector": "#sample-focus",
-              "selector": "[data-component-theme-group=\"identity.hub-label\"]",
-              "evidence": "layout-identity-localized"
+              "evidence": "source-region-identity-anchor",
+              "selector": "[data-component-theme-group=\"identity.hub-label\"]"
             }
           ]
         }
@@ -5049,8 +5067,8 @@ window.WISE_PPT_COMPONENT_THEME_BINDINGS = Object.freeze({
           "treatment": "source.g1-focus-outline",
           "expected_count": 1,
           "layout_selector": "#g1-focus-frame",
-          "selector": "[data-component-theme-appearance=\"source.g1-focus-outline\"]",
-          "evidence": "current-catalog-frame-appearance"
+          "evidence": "source-region-appearance-anchor",
+          "selector": "[data-component-theme-appearance=\"source.g1-focus-outline\"]"
         }
       ],
       "thumbnail_policy": "catalog-card"
@@ -5063,7 +5081,9 @@ window.WISE_PPT_COMPONENT_THEME_BINDINGS = Object.freeze({
       "source_layout": {
         "layout_id": "wise-ppt.layout.relationship.H2",
         "display_code": "H2",
-        "default_profile": "legacy",
+        "layout_contract": "wise-ppt-layout-theme-bindings@3",
+        "frame_contract": "wise-ppt-catalog-theme-frames@6",
+        "comparison_scope": "structure-and-provenance-only",
         "evidence": "sourceLayout/sourceRegion",
         "source_ref": "references/gallery-paper-ink/ai/frames/layout-h2.html",
         "source_regions": [
@@ -5074,7 +5094,7 @@ window.WISE_PPT_COMPONENT_THEME_BINDINGS = Object.freeze({
           "hermes-orange": "themes/catalog-projections/hermes-klein/frames/hermes-orange/layout-h2.html",
           "klein-blue": "themes/catalog-projections/hermes-klein/frames/klein-blue/layout-h2.html"
         },
-        "identity_projection": "approved-frame-localized"
+        "identity_projection": "component-localized-from-source-region"
       },
       "material_bindings": [
         {
@@ -5089,27 +5109,25 @@ window.WISE_PPT_COMPONENT_THEME_BINDINGS = Object.freeze({
           "source_selector": "[data-source-surface=\"h2-system\"]",
           "material": "panel",
           "expected_count": 1,
-          "frame_selector": "#h2-system-surface",
-          "frame_expected_count": 1,
-          "frame_property": "fill",
-          "evidence": "current-catalog-frame-material",
+          "evidence": "source-region-material-anchor",
+          "layout_selector": "#h2-system-surface",
+          "layout_expected_count": 1,
           "selector": "[data-component-theme-material=\"panel\"]"
         }
       ],
       "identity_groups": [
         {
-          "group_id": "legacy.zoom-level-outlines",
+          "group_id": "identity.zoom-level-outlines",
           "label": "四层缩放边界",
           "members": [
             {
               "source_selector": "rect[x=\"514\"][y=\"254\"][width=\"532\"][height=\"532\"]:not([data-source-surface]), rect[x=\"578\"][y=\"318\"][width=\"404\"][height=\"404\"], rect[x=\"642\"][y=\"382\"][width=\"276\"][height=\"276\"], rect[x=\"706\"][y=\"446\"][width=\"148\"][height=\"148\"]",
               "treatment": "identity.stroke",
               "expected_count": 4,
-              "frame_selector": "#h2-level-OUTCOME, #h2-level-TASK, #h2-level-SESSION, #h2-focus-frame",
-              "frame_expected_count": 4,
-              "frame_property": "stroke",
-              "selector": "[data-component-theme-group=\"legacy.zoom-level-outlines\"]",
-              "evidence": "approved-catalog-frame-legacy-native"
+              "layout_selector": "#h2-level-OUTCOME, #h2-level-TASK, #h2-level-SESSION, #h2-focus-frame",
+              "layout_expected_count": 4,
+              "evidence": "source-region-identity-anchor",
+              "selector": "[data-component-theme-group=\"identity.zoom-level-outlines\"]"
             }
           ]
         }
@@ -5125,7 +5143,9 @@ window.WISE_PPT_COMPONENT_THEME_BINDINGS = Object.freeze({
       "source_layout": {
         "layout_id": "wise-ppt.layout.relationship.C7",
         "display_code": "C7",
-        "default_profile": "standard",
+        "layout_contract": "wise-ppt-layout-theme-bindings@3",
+        "frame_contract": "wise-ppt-catalog-theme-frames@6",
+        "comparison_scope": "structure-and-provenance-only",
         "evidence": "sourceLayout/sourceRegion",
         "source_ref": "references/gallery-paper-ink/ai/frames/layout-c7.html",
         "source_regions": [
@@ -5136,7 +5156,7 @@ window.WISE_PPT_COMPONENT_THEME_BINDINGS = Object.freeze({
           "hermes-orange": "themes/catalog-projections/hermes-klein/frames/hermes-orange/layout-c7.html",
           "klein-blue": "themes/catalog-projections/hermes-klein/frames/klein-blue/layout-c7.html"
         },
-        "identity_projection": "layout-contract-localized"
+        "identity_projection": "component-localized-from-source-region"
       },
       "material_bindings": [
         {
@@ -5152,7 +5172,7 @@ window.WISE_PPT_COMPONENT_THEME_BINDINGS = Object.freeze({
           "material": "panel",
           "expected_count": 3,
           "layout_selector": "#draw > g > rect[fill=\"var(--paper-panel)\"]",
-          "evidence": "current-catalog-frame-material",
+          "evidence": "source-region-material-anchor",
           "selector": "[data-component-theme-material=\"panel\"]"
         }
       ],
@@ -5167,8 +5187,8 @@ window.WISE_PPT_COMPONENT_THEME_BINDINGS = Object.freeze({
               "treatment": "identity.text",
               "expected_count": 3,
               "layout_selector": "[data-vnext-text-key=\"ranking.text.032\"], [data-vnext-text-key=\"ranking.text.035\"], [data-vnext-text-key=\"ranking.text.038\"]",
-              "selector": "[data-component-theme-group=\"identity.selector-headers\"]",
-              "evidence": "layout-identity-localized"
+              "evidence": "source-region-identity-anchor",
+              "selector": "[data-component-theme-group=\"identity.selector-headers\"]"
             }
           ]
         }
@@ -5180,8 +5200,8 @@ window.WISE_PPT_COMPONENT_THEME_BINDINGS = Object.freeze({
           "treatment": "source.line-width-1_2",
           "expected_count": 1,
           "layout_selector": "#draw rect[x=\"268\"][width=\"64\"]",
-          "selector": "[data-component-theme-appearance=\"source.line-width-1_2\"]",
-          "evidence": "current-catalog-frame-appearance"
+          "evidence": "source-region-appearance-anchor",
+          "selector": "[data-component-theme-appearance=\"source.line-width-1_2\"]"
         },
         {
           "binding_id": "ranking-selector-outlines",
@@ -5189,8 +5209,8 @@ window.WISE_PPT_COMPONENT_THEME_BINDINGS = Object.freeze({
           "treatment": "source.ink-stroke",
           "expected_count": 3,
           "layout_selector": "#draw rect[y=\"180\"][width=\"182\"][height=\"118\"]",
-          "selector": "[data-component-theme-appearance=\"source.ink-stroke\"]",
-          "evidence": "current-catalog-frame-appearance"
+          "evidence": "source-region-appearance-anchor",
+          "selector": "[data-component-theme-appearance=\"source.ink-stroke\"]"
         },
         {
           "binding_id": "ranking-axis-ticks",
@@ -5200,8 +5220,8 @@ window.WISE_PPT_COMPONENT_THEME_BINDINGS = Object.freeze({
           "expected_count": 5,
           "layout_selector": "#draw text",
           "layout_text_pattern": "^(?:0|100|200|300|400)$",
-          "selector": "[data-component-theme-appearance=\"source.c7-axis-tick-text\"]",
-          "evidence": "current-catalog-frame-appearance"
+          "evidence": "source-region-appearance-anchor",
+          "selector": "[data-component-theme-appearance=\"source.c7-axis-tick-text\"]"
         },
         {
           "binding_id": "ranking-focus-hatch",
@@ -5209,10 +5229,9 @@ window.WISE_PPT_COMPONENT_THEME_BINDINGS = Object.freeze({
           "treatment": "source.c7-focus-hatch",
           "expected_count": 1,
           "layout_selector": "defs #c7-focus-hatch",
-          "frame_property": "stroke",
           "include_defs": true,
-          "selector": "[data-component-theme-appearance=\"source.c7-focus-hatch\"]",
-          "evidence": "current-catalog-frame-appearance"
+          "evidence": "source-region-appearance-anchor",
+          "selector": "[data-component-theme-appearance=\"source.c7-focus-hatch\"]"
         }
       ],
       "thumbnail_policy": "catalog-card"
@@ -5225,7 +5244,9 @@ window.WISE_PPT_COMPONENT_THEME_BINDINGS = Object.freeze({
       "source_layout": {
         "layout_id": "wise-ppt.layout.relationship.J2",
         "display_code": "J2",
-        "default_profile": "legacy",
+        "layout_contract": "wise-ppt-layout-theme-bindings@3",
+        "frame_contract": "wise-ppt-catalog-theme-frames@6",
+        "comparison_scope": "structure-and-provenance-only",
         "evidence": "sourceLayout/sourceRegion",
         "source_ref": "references/gallery-paper-ink/ai/frames/layout-j2.html",
         "source_regions": [
@@ -5236,7 +5257,7 @@ window.WISE_PPT_COMPONENT_THEME_BINDINGS = Object.freeze({
           "hermes-orange": "themes/catalog-projections/hermes-klein/frames/hermes-orange/layout-j2.html",
           "klein-blue": "themes/catalog-projections/hermes-klein/frames/klein-blue/layout-j2.html"
         },
-        "identity_projection": "approved-frame-localized"
+        "identity_projection": "component-localized-from-source-region"
       },
       "material_bindings": [
         {
@@ -5251,16 +5272,15 @@ window.WISE_PPT_COMPONENT_THEME_BINDINGS = Object.freeze({
           "source_selector": "rect[fill*=\"paper-panel\"]",
           "material": "panel",
           "expected_count": 8,
-          "frame_selector": "#draw rect[fill=\"var(--paper-panel)\"]",
-          "frame_expected_count": 8,
-          "frame_property": "fill",
-          "evidence": "current-catalog-frame-material",
+          "evidence": "source-region-material-anchor",
+          "layout_selector": "#draw rect[fill=\"var(--paper-panel)\"]",
+          "layout_expected_count": 8,
           "selector": "[data-component-theme-material=\"panel\"]"
         }
       ],
       "identity_groups": [
         {
-          "group_id": "legacy.sequence-numbers",
+          "group_id": "identity.sequence-numbers",
           "label": "01–08 全序列编号",
           "members": [
             {
@@ -5268,12 +5288,11 @@ window.WISE_PPT_COMPONENT_THEME_BINDINGS = Object.freeze({
               "text_pattern": "^0[1-8]$",
               "treatment": "identity.text-all-themes",
               "expected_count": 8,
-              "frame_selector": "#draw text",
-              "frame_text_pattern": "^0[1-8]$",
-              "frame_expected_count": 8,
-              "frame_property": "fill",
-              "selector": "[data-component-theme-group=\"legacy.sequence-numbers\"]",
-              "evidence": "approved-catalog-frame-legacy-native"
+              "layout_selector": "#draw text",
+              "layout_expected_count": 8,
+              "layout_text_pattern": "^0[1-8]$",
+              "evidence": "source-region-identity-anchor",
+              "selector": "[data-component-theme-group=\"identity.sequence-numbers\"]"
             }
           ]
         }
@@ -5284,11 +5303,10 @@ window.WISE_PPT_COMPONENT_THEME_BINDINGS = Object.freeze({
           "source_selector": "rect[fill*=\"paper-panel\"]",
           "treatment": "source.ink-stroke",
           "expected_count": 8,
-          "frame_selector": "#draw rect[fill=\"var(--paper-panel)\"]",
-          "frame_expected_count": 8,
-          "frame_property": "stroke",
-          "selector": "[data-component-theme-appearance=\"source.ink-stroke\"]",
-          "evidence": "approved-catalog-frame-legacy-native"
+          "layout_selector": "#draw rect[fill=\"var(--paper-panel)\"]",
+          "layout_expected_count": 8,
+          "evidence": "source-region-appearance-anchor",
+          "selector": "[data-component-theme-appearance=\"source.ink-stroke\"]"
         }
       ],
       "thumbnail_policy": "catalog-card"
@@ -5301,7 +5319,9 @@ window.WISE_PPT_COMPONENT_THEME_BINDINGS = Object.freeze({
       "source_layout": {
         "layout_id": "wise-ppt.layout.relationship.J1",
         "display_code": "J1",
-        "default_profile": "standard",
+        "layout_contract": "wise-ppt-layout-theme-bindings@3",
+        "frame_contract": "wise-ppt-catalog-theme-frames@6",
+        "comparison_scope": "structure-and-provenance-only",
         "evidence": "sourceLayout/sourceRegion",
         "source_ref": "references/gallery-paper-ink/ai/frames/layout-j1.html",
         "source_regions": [
@@ -5312,7 +5332,7 @@ window.WISE_PPT_COMPONENT_THEME_BINDINGS = Object.freeze({
           "hermes-orange": "themes/catalog-projections/hermes-klein/frames/hermes-orange/layout-j1.html",
           "klein-blue": "themes/catalog-projections/hermes-klein/frames/klein-blue/layout-j1.html"
         },
-        "identity_projection": "layout-contract-localized"
+        "identity_projection": "component-localized-from-source-region"
       },
       "material_bindings": [
         {
@@ -5328,7 +5348,7 @@ window.WISE_PPT_COMPONENT_THEME_BINDINGS = Object.freeze({
           "material": "canvas",
           "expected_count": 4,
           "layout_selector": "#draw > g > rect[fill=\"var(--paper-panel)\"]",
-          "evidence": "current-catalog-frame-material",
+          "evidence": "source-region-material-anchor",
           "selector": "[data-component-theme-material=\"canvas\"]"
         },
         {
@@ -5337,13 +5357,13 @@ window.WISE_PPT_COMPONENT_THEME_BINDINGS = Object.freeze({
           "material": "panel",
           "expected_count": 1,
           "layout_selector": "#j1-system-surface",
-          "evidence": "current-catalog-frame-material",
+          "evidence": "source-region-material-anchor",
           "selector": "[data-component-theme-material=\"panel\"]"
         }
       ],
       "identity_groups": [
         {
-          "group_id": "identity.legacy-loop-core",
+          "group_id": "identity.loop-core",
           "label": "循环核心",
           "members": [
             {
@@ -5352,8 +5372,8 @@ window.WISE_PPT_COMPONENT_THEME_BINDINGS = Object.freeze({
               "treatment": "identity.text",
               "expected_count": 2,
               "layout_selector": "#j1-focus-loop, #j1-focus-cn",
-              "selector": "[data-component-theme-group=\"identity.legacy-loop-core\"]",
-              "evidence": "layout-identity-localized"
+              "evidence": "source-region-identity-anchor",
+              "selector": "[data-component-theme-group=\"identity.loop-core\"]"
             }
           ]
         }
@@ -5365,8 +5385,8 @@ window.WISE_PPT_COMPONENT_THEME_BINDINGS = Object.freeze({
           "treatment": "source.j1-context-fill",
           "expected_count": 4,
           "layout_selector": "#draw > g > rect[fill=\"var(--paper-panel)\"]",
-          "selector": "[data-component-theme-appearance=\"source.j1-context-fill\"]",
-          "evidence": "current-catalog-frame-appearance"
+          "evidence": "source-region-appearance-anchor",
+          "selector": "[data-component-theme-appearance=\"source.j1-context-fill\"]"
         },
         {
           "binding_id": "cycle-numbers",
@@ -5375,8 +5395,8 @@ window.WISE_PPT_COMPONENT_THEME_BINDINGS = Object.freeze({
           "treatment": "source.sequence-text",
           "expected_count": 4,
           "layout_selector": "#draw text[data-number-role=\"sequence\"]",
-          "selector": "[data-component-theme-appearance=\"source.sequence-text\"]",
-          "evidence": "current-catalog-frame-appearance"
+          "evidence": "source-region-appearance-anchor",
+          "selector": "[data-component-theme-appearance=\"source.sequence-text\"]"
         },
         {
           "binding_id": "cycle-title-rules",
@@ -5384,8 +5404,8 @@ window.WISE_PPT_COMPONENT_THEME_BINDINGS = Object.freeze({
           "treatment": "source.functional-stroke-strong",
           "expected_count": 4,
           "layout_selector": "#draw line[x1=\"1270\"][y1=\"326\"][x2=\"1302\"][y2=\"326\"], #draw line[x1=\"1270\"][y1=\"668\"][x2=\"1302\"][y2=\"668\"], #draw line[x1=\"154\"][y1=\"668\"][x2=\"186\"][y2=\"668\"], #draw line[x1=\"154\"][y1=\"326\"][x2=\"186\"][y2=\"326\"]",
-          "selector": "[data-component-theme-appearance=\"source.functional-stroke-strong\"]",
-          "evidence": "current-catalog-frame-appearance"
+          "evidence": "source-region-appearance-anchor",
+          "selector": "[data-component-theme-appearance=\"source.functional-stroke-strong\"]"
         }
       ],
       "thumbnail_policy": "catalog-card"
@@ -5398,7 +5418,9 @@ window.WISE_PPT_COMPONENT_THEME_BINDINGS = Object.freeze({
       "source_layout": {
         "layout_id": "wise-ppt.layout.relationship.J3",
         "display_code": "J3",
-        "default_profile": "standard",
+        "layout_contract": "wise-ppt-layout-theme-bindings@3",
+        "frame_contract": "wise-ppt-catalog-theme-frames@6",
+        "comparison_scope": "structure-and-provenance-only",
         "evidence": "sourceLayout/sourceRegion",
         "source_ref": "references/gallery-paper-ink/ai/frames/layout-j3.html",
         "source_regions": [
@@ -5409,7 +5431,7 @@ window.WISE_PPT_COMPONENT_THEME_BINDINGS = Object.freeze({
           "hermes-orange": "themes/catalog-projections/hermes-klein/frames/hermes-orange/layout-j3.html",
           "klein-blue": "themes/catalog-projections/hermes-klein/frames/klein-blue/layout-j3.html"
         },
-        "identity_projection": "layout-contract-localized"
+        "identity_projection": "component-localized-from-source-region"
       },
       "material_bindings": [
         {
@@ -5425,8 +5447,8 @@ window.WISE_PPT_COMPONENT_THEME_BINDINGS = Object.freeze({
           "material": "panel",
           "expected_count": 5,
           "layout_selector": "#draw > g > path[fill=\"var(--paper-panel)\"]",
-          "selector": "[data-component-theme-material=\"panel\"]",
-          "evidence": "layout-surface-localized"
+          "evidence": "source-region-material-anchor",
+          "selector": "[data-component-theme-material=\"panel\"]"
         },
         {
           "binding_id": "journey-open-markers",
@@ -5434,7 +5456,7 @@ window.WISE_PPT_COMPONENT_THEME_BINDINGS = Object.freeze({
           "material": "canvas",
           "expected_count": 6,
           "layout_selector": "#draw circle[r=\"9\"]",
-          "evidence": "current-catalog-frame-material",
+          "evidence": "source-region-material-anchor",
           "selector": "[data-component-theme-material=\"canvas\"]"
         }
       ],
@@ -5448,8 +5470,8 @@ window.WISE_PPT_COMPONENT_THEME_BINDINGS = Object.freeze({
               "treatment": "identity.stroke",
               "expected_count": 1,
               "layout_selector": "#draw > g > path:nth-of-type(6)",
-              "selector": "[data-component-theme-group=\"identity.journey-curve\"]",
-              "evidence": "layout-identity-localized"
+              "evidence": "source-region-identity-anchor",
+              "selector": "[data-component-theme-group=\"identity.journey-curve\"]"
             }
           ]
         },
@@ -5464,7 +5486,7 @@ window.WISE_PPT_COMPONENT_THEME_BINDINGS = Object.freeze({
               "expected_count": 5,
               "layout_selector": "#draw text",
               "layout_text_pattern": "^0[1-5] (?:ONBOARD|WOW|DEPTH|STALL|BREAK)$",
-              "evidence": "current-catalog-frame-identity",
+              "evidence": "source-region-identity-anchor",
               "selector": "[data-component-theme-group=\"identity.journey-stage-codes\"]"
             }
           ]
@@ -5481,7 +5503,9 @@ window.WISE_PPT_COMPONENT_THEME_BINDINGS = Object.freeze({
       "source_layout": {
         "layout_id": "wise-ppt.layout.relationship.B1",
         "display_code": "B1",
-        "default_profile": "legacy",
+        "layout_contract": "wise-ppt-layout-theme-bindings@3",
+        "frame_contract": "wise-ppt-catalog-theme-frames@6",
+        "comparison_scope": "structure-and-provenance-only",
         "evidence": "sourceLayout/sourceRegion",
         "source_ref": "references/gallery-paper-ink/ai/frames/layout-b1.html",
         "source_regions": [
@@ -5492,7 +5516,7 @@ window.WISE_PPT_COMPONENT_THEME_BINDINGS = Object.freeze({
           "hermes-orange": "themes/catalog-projections/hermes-klein/frames/hermes-orange/layout-b1.html",
           "klein-blue": "themes/catalog-projections/hermes-klein/frames/klein-blue/layout-b1.html"
         },
-        "identity_projection": "approved-frame-localized"
+        "identity_projection": "component-localized-from-source-region"
       },
       "material_bindings": [
         {
@@ -5505,7 +5529,7 @@ window.WISE_PPT_COMPONENT_THEME_BINDINGS = Object.freeze({
       ],
       "identity_groups": [
         {
-          "group_id": "legacy.model-names",
+          "group_id": "identity.model-names",
           "label": "六个模型里程碑名称",
           "members": [
             {
@@ -5513,11 +5537,11 @@ window.WISE_PPT_COMPONENT_THEME_BINDINGS = Object.freeze({
               "text_pattern": "^(?:GPT-[1-4]|ChatGPT|o1 / o3)$",
               "treatment": "identity.text",
               "expected_count": 6,
-              "frame_selector": "[data-model-name]",
-              "frame_expected_count": 6,
-              "frame_property": "fill",
-              "selector": "[data-component-theme-group=\"legacy.model-names\"]",
-              "evidence": "approved-catalog-frame-legacy-native"
+              "layout_selector": "#draw text",
+              "layout_expected_count": 6,
+              "layout_text_pattern": "^(?:GPT-[1-4]|ChatGPT|o1 / o3)$",
+              "evidence": "source-region-identity-anchor",
+              "selector": "[data-component-theme-group=\"identity.model-names\"]"
             }
           ]
         }
@@ -5529,12 +5553,11 @@ window.WISE_PPT_COMPONENT_THEME_BINDINGS = Object.freeze({
           "text_pattern": "^(?:1.17 亿参数 · 证明可行性|思维链 · 自我反思)$",
           "treatment": "source.ink-text-60",
           "expected_count": 2,
-          "frame_selector": "#draw text",
-          "frame_text_pattern": "^(?:1.17 亿参数 · 证明可行性|思维链 · 自我反思)$",
-          "frame_expected_count": 2,
-          "frame_property": "fill",
-          "selector": "[data-component-theme-appearance=\"source.ink-text-60\"]",
-          "evidence": "approved-catalog-frame-legacy-native"
+          "layout_selector": "#draw text",
+          "layout_expected_count": 2,
+          "layout_text_pattern": "^(?:1.17 亿参数 · 证明可行性|思维链 · 自我反思)$",
+          "evidence": "source-region-appearance-anchor",
+          "selector": "[data-component-theme-appearance=\"source.ink-text-60\"]"
         }
       ],
       "thumbnail_policy": "catalog-card"
@@ -5547,7 +5570,9 @@ window.WISE_PPT_COMPONENT_THEME_BINDINGS = Object.freeze({
       "source_layout": {
         "layout_id": "wise-ppt.layout.relationship.H1",
         "display_code": "H1",
-        "default_profile": "standard",
+        "layout_contract": "wise-ppt-layout-theme-bindings@3",
+        "frame_contract": "wise-ppt-catalog-theme-frames@6",
+        "comparison_scope": "structure-and-provenance-only",
         "evidence": "sourceLayout/sourceRegion",
         "source_ref": "references/gallery-paper-ink/ai/frames/layout-h1.html",
         "source_regions": [
@@ -5558,7 +5583,7 @@ window.WISE_PPT_COMPONENT_THEME_BINDINGS = Object.freeze({
           "hermes-orange": "themes/catalog-projections/hermes-klein/frames/hermes-orange/layout-h1.html",
           "klein-blue": "themes/catalog-projections/hermes-klein/frames/klein-blue/layout-h1.html"
         },
-        "identity_projection": "layout-contract-localized"
+        "identity_projection": "component-localized-from-source-region"
       },
       "material_bindings": [
         {
@@ -5574,7 +5599,7 @@ window.WISE_PPT_COMPONENT_THEME_BINDINGS = Object.freeze({
           "material": "panel",
           "expected_count": 1,
           "layout_selector": "#h1-system-surface",
-          "evidence": "current-catalog-frame-material",
+          "evidence": "source-region-material-anchor",
           "selector": "[data-component-theme-material=\"panel\"]"
         }
       ],
@@ -5588,8 +5613,8 @@ window.WISE_PPT_COMPONENT_THEME_BINDINGS = Object.freeze({
               "treatment": "identity.stroke-detail",
               "expected_count": 1,
               "layout_selector": "#h1-focus-core",
-              "selector": "[data-component-theme-group=\"identity.core-outline\"]",
-              "evidence": "layout-identity-localized"
+              "evidence": "source-region-identity-anchor",
+              "selector": "[data-component-theme-group=\"identity.core-outline\"]"
             }
           ]
         }
@@ -5603,8 +5628,8 @@ window.WISE_PPT_COMPONENT_THEME_BINDINGS = Object.freeze({
           "expected_count": 2,
           "layout_selector": "#draw text",
           "layout_text_pattern": "^(?:OUTPUT · LAYER|INPUT · LAYER)$",
-          "selector": "[data-component-theme-appearance=\"source.ink-text-50\"]",
-          "evidence": "current-catalog-frame-appearance"
+          "evidence": "source-region-appearance-anchor",
+          "selector": "[data-component-theme-appearance=\"source.ink-text-50\"]"
         },
         {
           "binding_id": "defense-guardrail-copy",
@@ -5614,8 +5639,8 @@ window.WISE_PPT_COMPONENT_THEME_BINDINGS = Object.freeze({
           "expected_count": 8,
           "layout_selector": "#draw text",
           "layout_text_pattern": "^(?:SCHEMA|越狱拦截|注入检测|敏感词过滤|毒性过滤|PII 脱敏|事实核查|内容分级)$",
-          "selector": "[data-component-theme-appearance=\"source.ink-text-70\"]",
-          "evidence": "current-catalog-frame-appearance"
+          "evidence": "source-region-appearance-anchor",
+          "selector": "[data-component-theme-appearance=\"source.ink-text-70\"]"
         },
         {
           "binding_id": "defense-core-copy",
@@ -5625,8 +5650,8 @@ window.WISE_PPT_COMPONENT_THEME_BINDINGS = Object.freeze({
           "expected_count": 1,
           "layout_selector": "#draw text",
           "layout_text_pattern": "^LLM CORE$",
-          "selector": "[data-component-theme-appearance=\"source.ink-text-70-brand\"]",
-          "evidence": "current-catalog-frame-appearance"
+          "evidence": "source-region-appearance-anchor",
+          "selector": "[data-component-theme-appearance=\"source.ink-text-70-brand\"]"
         }
       ],
       "thumbnail_policy": "catalog-card"
@@ -5694,7 +5719,9 @@ window.WISE_PPT_COMPONENT_THEME_BINDINGS = Object.freeze({
       "source_layout": {
         "layout_id": "wise-ppt.layout.relationship.P2",
         "display_code": "P2",
-        "default_profile": "standard",
+        "layout_contract": "wise-ppt-layout-theme-bindings@3",
+        "frame_contract": "wise-ppt-catalog-theme-frames@6",
+        "comparison_scope": "structure-and-provenance-only",
         "evidence": "sourceLayout/sourceRegion",
         "source_ref": "references/gallery-paper-ink/ai/frames/layout-p2.html",
         "source_regions": [
@@ -5705,7 +5732,7 @@ window.WISE_PPT_COMPONENT_THEME_BINDINGS = Object.freeze({
           "hermes-orange": "themes/catalog-projections/hermes-klein/frames/hermes-orange/layout-p2.html",
           "klein-blue": "themes/catalog-projections/hermes-klein/frames/klein-blue/layout-p2.html"
         },
-        "identity_projection": "layout-contract-localized"
+        "identity_projection": "component-localized-from-source-region"
       },
       "material_bindings": [
         {
@@ -5721,7 +5748,7 @@ window.WISE_PPT_COMPONENT_THEME_BINDINGS = Object.freeze({
           "material": "panel",
           "expected_count": 4,
           "layout_selector": "#draw > g > rect[fill=\"var(--paper)\"][stroke=\"none\"]",
-          "evidence": "current-catalog-frame-material",
+          "evidence": "source-region-material-anchor",
           "selector": "[data-component-theme-material=\"panel\"]"
         }
       ],
@@ -5736,8 +5763,8 @@ window.WISE_PPT_COMPONENT_THEME_BINDINGS = Object.freeze({
               "treatment": "identity.text",
               "expected_count": 4,
               "layout_selector": "[data-vnext-text-key=\"diamond-map.text.009\"], [data-vnext-text-key=\"diamond-map.text.011\"], [data-vnext-text-key=\"diamond-map.text.013\"], [data-vnext-text-key=\"diamond-map.text.015\"]",
-              "selector": "[data-component-theme-group=\"identity.node-headings\"]",
-              "evidence": "layout-identity-localized"
+              "evidence": "source-region-identity-anchor",
+              "selector": "[data-component-theme-group=\"identity.node-headings\"]"
             }
           ]
         }
@@ -5751,8 +5778,8 @@ window.WISE_PPT_COMPONENT_THEME_BINDINGS = Object.freeze({
           "expected_count": 4,
           "layout_selector": "#draw text",
           "layout_text_pattern": "^(?:用户问题|检索上下文|模型回答|参考答案)$",
-          "selector": "[data-component-theme-appearance=\"source.ink-text\"]",
-          "evidence": "current-catalog-frame-appearance"
+          "evidence": "source-region-appearance-anchor",
+          "selector": "[data-component-theme-appearance=\"source.ink-text\"]"
         }
       ],
       "thumbnail_policy": "catalog-card"
@@ -5765,7 +5792,9 @@ window.WISE_PPT_COMPONENT_THEME_BINDINGS = Object.freeze({
       "source_layout": {
         "layout_id": "wise-ppt.layout.relationship.R4",
         "display_code": "R4",
-        "default_profile": "standard",
+        "layout_contract": "wise-ppt-layout-theme-bindings@3",
+        "frame_contract": "wise-ppt-catalog-theme-frames@6",
+        "comparison_scope": "structure-and-provenance-only",
         "evidence": "sourceLayout/sourceRegion",
         "source_ref": "capabilities/layouts/native-components.js#106",
         "source_regions": [
@@ -5776,7 +5805,7 @@ window.WISE_PPT_COMPONENT_THEME_BINDINGS = Object.freeze({
           "hermes-orange": "themes/catalog-projections/hermes-klein/frames/hermes-orange/layout-r4.html",
           "klein-blue": "themes/catalog-projections/hermes-klein/frames/klein-blue/layout-r4.html"
         },
-        "identity_projection": "layout-contract-localized"
+        "identity_projection": "component-localized-from-source-region"
       },
       "material_bindings": [
         {
@@ -5792,7 +5821,7 @@ window.WISE_PPT_COMPONENT_THEME_BINDINGS = Object.freeze({
           "material": "recessed",
           "expected_count": 1,
           "layout_selector": "#balance-host path[data-side-id=\"speed\"]",
-          "evidence": "current-catalog-frame-material",
+          "evidence": "source-region-material-anchor",
           "selector": "[data-component-theme-material=\"recessed\"]"
         },
         {
@@ -5801,7 +5830,7 @@ window.WISE_PPT_COMPONENT_THEME_BINDINGS = Object.freeze({
           "material": "panel",
           "expected_count": 1,
           "layout_selector": "#balance-host path[data-side-id=\"governance\"]",
-          "evidence": "current-catalog-frame-material",
+          "evidence": "source-region-material-anchor",
           "selector": "[data-component-theme-material=\"panel\"]"
         }
       ],
@@ -5815,10 +5844,10 @@ window.WISE_PPT_COMPONENT_THEME_BINDINGS = Object.freeze({
               "text_pattern": "^(?:增长速度|风险控制)$",
               "treatment": "identity.text",
               "expected_count": 2,
-              "layout_selector": "[data-vnext-text-key=\"balance.text.004\"], [data-vnext-text-key=\"balance.text.009\"]",
+              "layout_selector": "#balance-host text",
               "layout_text_pattern": "^(?:上线速度|治理强度)$",
-              "selector": "[data-component-theme-group=\"identity.balance-labels\"]",
-              "evidence": "layout-identity-localized"
+              "evidence": "source-region-identity-anchor",
+              "selector": "[data-component-theme-group=\"identity.balance-labels\"]"
             }
           ]
         }
@@ -5830,8 +5859,8 @@ window.WISE_PPT_COMPONENT_THEME_BINDINGS = Object.freeze({
           "treatment": "source.r4-speed-fill",
           "expected_count": 1,
           "layout_selector": "#balance-host path[data-side-id=\"speed\"]",
-          "selector": "[data-component-theme-appearance=\"source.r4-speed-fill\"]",
-          "evidence": "current-catalog-frame-appearance"
+          "evidence": "source-region-appearance-anchor",
+          "selector": "[data-component-theme-appearance=\"source.r4-speed-fill\"]"
         }
       ],
       "thumbnail_policy": "catalog-card"
@@ -5844,7 +5873,9 @@ window.WISE_PPT_COMPONENT_THEME_BINDINGS = Object.freeze({
       "source_layout": {
         "layout_id": "wise-ppt.layout.relationship.R5",
         "display_code": "R5",
-        "default_profile": "standard",
+        "layout_contract": "wise-ppt-layout-theme-bindings@3",
+        "frame_contract": "wise-ppt-catalog-theme-frames@6",
+        "comparison_scope": "structure-and-provenance-only",
         "evidence": "sourceLayout/sourceRegion",
         "source_ref": "capabilities/layouts/native-components.js#107",
         "source_regions": [
@@ -5855,7 +5886,7 @@ window.WISE_PPT_COMPONENT_THEME_BINDINGS = Object.freeze({
           "hermes-orange": "themes/catalog-projections/hermes-klein/frames/hermes-orange/layout-r5.html",
           "klein-blue": "themes/catalog-projections/hermes-klein/frames/klein-blue/layout-r5.html"
         },
-        "identity_projection": "layout-contract-localized"
+        "identity_projection": "component-localized-from-source-region"
       },
       "material_bindings": [
         {
@@ -5876,8 +5907,8 @@ window.WISE_PPT_COMPONENT_THEME_BINDINGS = Object.freeze({
               "treatment": "identity.white-fill",
               "expected_count": 6,
               "layout_selector": "#gears-host [data-repeat-unit=\"module\"] use[href=\"#pi-gear-outline\"], #gears-host [data-repeat-unit=\"module\"] > circle[r=\"57\"]",
-              "selector": "[data-component-theme-group=\"identity.gear-white-fill\"]",
-              "evidence": "layout-identity-localized"
+              "evidence": "source-region-identity-anchor",
+              "selector": "[data-component-theme-group=\"identity.gear-white-fill\"]"
             }
           ]
         },
@@ -5891,8 +5922,8 @@ window.WISE_PPT_COMPONENT_THEME_BINDINGS = Object.freeze({
               "treatment": "identity.text-bold",
               "expected_count": 3,
               "layout_selector": "[data-vnext-text-key=\"system.text.004\"], [data-vnext-text-key=\"system.text.006\"], [data-vnext-text-key=\"system.text.008\"]",
-              "selector": "[data-component-theme-group=\"identity.gear-labels\"]",
-              "evidence": "layout-identity-localized"
+              "evidence": "source-region-identity-anchor",
+              "selector": "[data-component-theme-group=\"identity.gear-labels\"]"
             }
           ]
         }
@@ -5908,7 +5939,9 @@ window.WISE_PPT_COMPONENT_THEME_BINDINGS = Object.freeze({
       "source_layout": {
         "layout_id": "wise-ppt.layout.relationship.G5",
         "display_code": "G5",
-        "default_profile": "standard",
+        "layout_contract": "wise-ppt-layout-theme-bindings@3",
+        "frame_contract": "wise-ppt-catalog-theme-frames@6",
+        "comparison_scope": "structure-and-provenance-only",
         "evidence": "sourceLayout/sourceRegion",
         "source_ref": "references/gallery-paper-ink/ai/frames/layout-g5.html",
         "source_regions": [
@@ -5919,7 +5952,7 @@ window.WISE_PPT_COMPONENT_THEME_BINDINGS = Object.freeze({
           "hermes-orange": "themes/catalog-projections/hermes-klein/frames/hermes-orange/layout-g5.html",
           "klein-blue": "themes/catalog-projections/hermes-klein/frames/klein-blue/layout-g5.html"
         },
-        "identity_projection": "layout-contract-localized"
+        "identity_projection": "component-localized-from-source-region"
       },
       "material_bindings": [
         {
@@ -5935,8 +5968,8 @@ window.WISE_PPT_COMPONENT_THEME_BINDINGS = Object.freeze({
           "material": "panel",
           "expected_count": 1,
           "layout_selector": "#draw > g > rect[fill=\"var(--paper-panel)\"]",
-          "selector": "[data-component-theme-material=\"panel\"]",
-          "evidence": "layout-surface-localized"
+          "evidence": "source-region-material-anchor",
+          "selector": "[data-component-theme-material=\"panel\"]"
         }
       ],
       "identity_groups": [
@@ -5950,8 +5983,8 @@ window.WISE_PPT_COMPONENT_THEME_BINDINGS = Object.freeze({
               "treatment": "identity.text",
               "expected_count": 1,
               "layout_selector": "#g5-focus-title",
-              "selector": "[data-component-theme-group=\"identity.focus-statement\"]",
-              "evidence": "layout-identity-localized"
+              "evidence": "source-region-identity-anchor",
+              "selector": "[data-component-theme-group=\"identity.focus-statement\"]"
             }
           ]
         }
@@ -5963,8 +5996,8 @@ window.WISE_PPT_COMPONENT_THEME_BINDINGS = Object.freeze({
           "treatment": "source.g5-principle-spokes",
           "expected_count": 3,
           "layout_selector": "#draw line[x1=\"478\"], #draw line[x1=\"1160\"], #draw line[x1=\"960\"][y1=\"468\"]",
-          "selector": "[data-component-theme-appearance=\"source.g5-principle-spokes\"]",
-          "evidence": "current-catalog-frame-appearance"
+          "evidence": "source-region-appearance-anchor",
+          "selector": "[data-component-theme-appearance=\"source.g5-principle-spokes\"]"
         },
         {
           "binding_id": "principle-focus-outline",
@@ -5972,8 +6005,8 @@ window.WISE_PPT_COMPONENT_THEME_BINDINGS = Object.freeze({
           "treatment": "source.g5-focus-outline",
           "expected_count": 1,
           "layout_selector": "#draw > g > rect[fill=\"var(--paper-panel)\"]",
-          "selector": "[data-component-theme-appearance=\"source.g5-focus-outline\"]",
-          "evidence": "current-catalog-frame-appearance"
+          "evidence": "source-region-appearance-anchor",
+          "selector": "[data-component-theme-appearance=\"source.g5-focus-outline\"]"
         }
       ],
       "thumbnail_policy": "catalog-card"
@@ -5986,7 +6019,9 @@ window.WISE_PPT_COMPONENT_THEME_BINDINGS = Object.freeze({
       "source_layout": {
         "layout_id": "wise-ppt.layout.relationship.A6",
         "display_code": "A6",
-        "default_profile": "standard",
+        "layout_contract": "wise-ppt-layout-theme-bindings@3",
+        "frame_contract": "wise-ppt-catalog-theme-frames@6",
+        "comparison_scope": "structure-and-provenance-only",
         "evidence": "sourceLayout/sourceRegion",
         "source_ref": "references/gallery-paper-ink/ai/frames/layout-a6.html",
         "source_regions": [
@@ -6013,8 +6048,8 @@ window.WISE_PPT_COMPONENT_THEME_BINDINGS = Object.freeze({
           "material": "panel",
           "expected_count": 12,
           "layout_selector": "#draw > g > rect[fill=\"var(--paper-panel)\"]",
-          "selector": "[data-component-theme-material=\"panel\"]",
-          "evidence": "layout-surface-localized"
+          "evidence": "source-region-material-anchor",
+          "selector": "[data-component-theme-material=\"panel\"]"
         }
       ],
       "identity_groups": [],
@@ -6029,7 +6064,9 @@ window.WISE_PPT_COMPONENT_THEME_BINDINGS = Object.freeze({
       "source_layout": {
         "layout_id": "wise-ppt.layout.relationship.R1",
         "display_code": "R1",
-        "default_profile": "legacy",
+        "layout_contract": "wise-ppt-layout-theme-bindings@3",
+        "frame_contract": "wise-ppt-catalog-theme-frames@6",
+        "comparison_scope": "structure-and-provenance-only",
         "evidence": "sourceLayout/sourceRegion",
         "source_ref": "references/gallery-paper-ink/ai/frames/layout-r1.html",
         "source_regions": [
@@ -6040,7 +6077,7 @@ window.WISE_PPT_COMPONENT_THEME_BINDINGS = Object.freeze({
           "hermes-orange": "themes/catalog-projections/hermes-klein/frames/hermes-orange/layout-r1.html",
           "klein-blue": "themes/catalog-projections/hermes-klein/frames/klein-blue/layout-r1.html"
         },
-        "identity_projection": "approved-frame-localized"
+        "identity_projection": "component-localized-from-source-region"
       },
       "material_bindings": [
         {
@@ -6055,37 +6092,34 @@ window.WISE_PPT_COMPONENT_THEME_BINDINGS = Object.freeze({
           "source_selector": "[data-slot-id=\"pillar-a\"] > rect",
           "material": "panel",
           "expected_count": 1,
-          "frame_selector": "#r1-focus-frame",
-          "frame_expected_count": 1,
-          "frame_property": "fill",
-          "evidence": "current-catalog-frame-material",
+          "evidence": "source-region-material-anchor",
+          "layout_selector": "#r1-focus-frame",
+          "layout_expected_count": 1,
           "selector": "[data-component-theme-material=\"panel\"]"
         }
       ],
       "identity_groups": [
         {
-          "group_id": "legacy.pillar-a",
+          "group_id": "identity.pillar-a",
           "label": "数据柱框与核心图标",
           "members": [
             {
               "source_selector": "[data-slot-id=\"pillar-a\"] > rect",
               "treatment": "identity.border-source-80",
               "expected_count": 1,
-              "frame_selector": "#r1-focus-frame",
-              "frame_expected_count": 1,
-              "frame_property": "stroke",
-              "selector": "[data-component-theme-group=\"legacy.pillar-a\"]",
-              "evidence": "approved-catalog-frame-legacy-native"
+              "layout_selector": "#r1-focus-frame",
+              "layout_expected_count": 1,
+              "evidence": "source-region-identity-anchor",
+              "selector": "[data-component-theme-group=\"identity.pillar-a\"]"
             },
             {
               "source_selector": "[data-slot-id=\"pillar-a\"] > svg[data-icon-source] > :is(path,line,polyline,polygon,circle,ellipse,rect,use)",
               "treatment": "identity.stroke-source-80",
               "expected_count": 3,
-              "frame_selector": "[data-slot-id=\"pillar-a\"] > svg[data-icon-source] > :is(path,line,polyline,polygon,circle,ellipse,rect,use)",
-              "frame_expected_count": 3,
-              "frame_property": "stroke",
-              "selector": "[data-component-theme-group=\"legacy.pillar-a\"]",
-              "evidence": "approved-catalog-frame-legacy-native"
+              "layout_selector": "[data-slot-id=\"pillar-a\"] > svg[data-icon-source] > :is(path,line,polyline,polygon,circle,ellipse,rect,use)",
+              "layout_expected_count": 3,
+              "evidence": "source-region-identity-anchor",
+              "selector": "[data-component-theme-group=\"identity.pillar-a\"]"
             }
           ]
         }
@@ -6096,22 +6130,20 @@ window.WISE_PPT_COMPONENT_THEME_BINDINGS = Object.freeze({
           "source_selector": "[data-slot-id=\"pillar-a\"] > svg[data-icon-source] > :is(path,line,polyline,polygon,circle,ellipse,rect,use)",
           "treatment": "source.pillar-a-icon",
           "expected_count": 3,
-          "frame_selector": "[data-slot-id=\"pillar-a\"] > svg[data-icon-source] > :is(path,line,polyline,polygon,circle,ellipse,rect,use)",
-          "frame_expected_count": 3,
-          "frame_property": "stroke",
-          "selector": "[data-component-theme-appearance=\"source.pillar-a-icon\"]",
-          "evidence": "approved-catalog-frame-legacy-native"
+          "layout_selector": "[data-slot-id=\"pillar-a\"] > svg[data-icon-source] > :is(path,line,polyline,polygon,circle,ellipse,rect,use)",
+          "layout_expected_count": 3,
+          "evidence": "source-region-appearance-anchor",
+          "selector": "[data-component-theme-appearance=\"source.pillar-a-icon\"]"
         },
         {
           "binding_id": "pillar-a-divider",
           "source_selector": "[data-slot-id=\"pillar-a\"] > line",
           "treatment": "source.ink-stroke-20",
           "expected_count": 1,
-          "frame_selector": "[data-slot-id=\"pillar-a\"] > line",
-          "frame_expected_count": 1,
-          "frame_property": "stroke",
-          "selector": "[data-component-theme-appearance=\"source.ink-stroke-20\"]",
-          "evidence": "approved-catalog-frame-legacy-native"
+          "layout_selector": "[data-slot-id=\"pillar-a\"] > line",
+          "layout_expected_count": 1,
+          "evidence": "source-region-appearance-anchor",
+          "selector": "[data-component-theme-appearance=\"source.ink-stroke-20\"]"
         }
       ],
       "thumbnail_policy": "catalog-card"
@@ -6124,7 +6156,9 @@ window.WISE_PPT_COMPONENT_THEME_BINDINGS = Object.freeze({
       "source_layout": {
         "layout_id": "wise-ppt.layout.relationship.K4",
         "display_code": "K4",
-        "default_profile": "standard",
+        "layout_contract": "wise-ppt-layout-theme-bindings@3",
+        "frame_contract": "wise-ppt-catalog-theme-frames@6",
+        "comparison_scope": "structure-and-provenance-only",
         "evidence": "sourceLayout/sourceRegion",
         "source_ref": "references/gallery-paper-ink/ai/frames/layout-k4.html",
         "source_regions": [
@@ -6135,7 +6169,7 @@ window.WISE_PPT_COMPONENT_THEME_BINDINGS = Object.freeze({
           "hermes-orange": "themes/catalog-projections/hermes-klein/frames/hermes-orange/layout-k4.html",
           "klein-blue": "themes/catalog-projections/hermes-klein/frames/klein-blue/layout-k4.html"
         },
-        "identity_projection": "layout-contract-localized"
+        "identity_projection": "component-localized-from-source-region"
       },
       "material_bindings": [
         {
@@ -6151,9 +6185,8 @@ window.WISE_PPT_COMPONENT_THEME_BINDINGS = Object.freeze({
           "material": "panel",
           "expected_count": 1,
           "layout_selector": "#draw > g > rect[y=\"226\"][height=\"42\"][fill=\"var(--paper-panel)\"]",
-          "frame_expected_count": 3,
-          "uniform_source_style": true,
-          "evidence": "current-catalog-frame-material",
+          "evidence": "source-region-material-anchor",
+          "layout_expected_count": 3,
           "selector": "[data-component-theme-material=\"panel\"]"
         }
       ],
@@ -6168,8 +6201,8 @@ window.WISE_PPT_COMPONENT_THEME_BINDINGS = Object.freeze({
               "treatment": "identity.text",
               "expected_count": 1,
               "layout_selector": "[data-vnext-text-key=\"scenario-matrix.text.004\"]",
-              "selector": "[data-component-theme-group=\"identity.scene-labels\"]",
-              "evidence": "layout-identity-localized"
+              "evidence": "source-region-identity-anchor",
+              "selector": "[data-component-theme-group=\"identity.scene-labels\"]"
             }
           ]
         }
@@ -6185,7 +6218,9 @@ window.WISE_PPT_COMPONENT_THEME_BINDINGS = Object.freeze({
       "source_layout": {
         "layout_id": "wise-ppt.layout.relationship.K4",
         "display_code": "K4",
-        "default_profile": "standard",
+        "layout_contract": "wise-ppt-layout-theme-bindings@3",
+        "frame_contract": "wise-ppt-catalog-theme-frames@6",
+        "comparison_scope": "structure-and-provenance-only",
         "evidence": "sourceLayout/sourceRegion",
         "source_ref": "references/gallery-paper-ink/ai/frames/layout-k4.html",
         "source_regions": [
@@ -6196,7 +6231,7 @@ window.WISE_PPT_COMPONENT_THEME_BINDINGS = Object.freeze({
           "hermes-orange": "themes/catalog-projections/hermes-klein/frames/hermes-orange/layout-k4.html",
           "klein-blue": "themes/catalog-projections/hermes-klein/frames/klein-blue/layout-k4.html"
         },
-        "identity_projection": "layout-contract-localized"
+        "identity_projection": "component-localized-from-source-region"
       },
       "material_bindings": [
         {
@@ -6212,9 +6247,8 @@ window.WISE_PPT_COMPONENT_THEME_BINDINGS = Object.freeze({
           "material": "panel",
           "expected_count": 1,
           "layout_selector": "#draw > g > rect[y=\"226\"][height=\"42\"][fill=\"var(--paper-panel)\"]",
-          "frame_expected_count": 3,
-          "uniform_source_style": true,
-          "evidence": "current-catalog-frame-material",
+          "evidence": "source-region-material-anchor",
+          "layout_expected_count": 3,
           "selector": "[data-component-theme-material=\"panel\"]"
         }
       ],
@@ -6229,8 +6263,8 @@ window.WISE_PPT_COMPONENT_THEME_BINDINGS = Object.freeze({
               "treatment": "identity.text",
               "expected_count": 1,
               "layout_selector": "[data-vnext-text-key=\"scenario-matrix.text.006\"]",
-              "selector": "[data-component-theme-group=\"identity.scene-labels\"]",
-              "evidence": "layout-identity-localized"
+              "evidence": "source-region-identity-anchor",
+              "selector": "[data-component-theme-group=\"identity.scene-labels\"]"
             }
           ]
         }
@@ -6246,7 +6280,9 @@ window.WISE_PPT_COMPONENT_THEME_BINDINGS = Object.freeze({
       "source_layout": {
         "layout_id": "wise-ppt.layout.relationship.R1",
         "display_code": "R1",
-        "default_profile": "legacy",
+        "layout_contract": "wise-ppt-layout-theme-bindings@3",
+        "frame_contract": "wise-ppt-catalog-theme-frames@6",
+        "comparison_scope": "structure-and-provenance-only",
         "evidence": "sourceLayout/sourceRegion",
         "source_ref": "references/gallery-paper-ink/ai/frames/layout-r1.html",
         "source_regions": [
@@ -6275,74 +6311,61 @@ window.WISE_PPT_COMPONENT_THEME_BINDINGS = Object.freeze({
           "source_selector": "[data-slot-id=\"pillar-b\"] > rect",
           "treatment": "source.pillar-b-outline",
           "expected_count": 1,
-          "frame_selector": "[data-slot-id=\"pillar-b\"] > rect",
-          "frame_expected_count": 1,
-          "frame_property": "stroke",
-          "selector": "[data-component-theme-appearance=\"source.pillar-b-outline\"]",
-          "evidence": "approved-catalog-frame-legacy-native"
+          "layout_selector": "[data-slot-id=\"pillar-b\"] > rect",
+          "layout_expected_count": 1,
+          "evidence": "source-region-appearance-anchor",
+          "selector": "[data-component-theme-appearance=\"source.pillar-b-outline\"]"
         },
         {
           "binding_id": "pillar-b-icon-outer",
           "source_selector": "[data-slot-id=\"pillar-b\"] > svg[data-icon-source] > :is(path,line,polyline,polygon,circle,ellipse,rect,use):nth-child(1)",
           "treatment": "source.pillar-b-icon",
           "expected_count": 1,
-          "frame_selector": "[data-slot-id=\"pillar-b\"] > svg[data-icon-source] > :is(path,line,polyline,polygon,circle,ellipse,rect,use):nth-child(1)",
-          "frame_expected_count": 1,
-          "frame_property": "stroke",
-          "uniform_source_style": true,
-          "selector": "[data-component-theme-appearance=\"source.pillar-b-icon\"]",
-          "evidence": "approved-catalog-frame-legacy-native"
+          "layout_selector": "[data-slot-id=\"pillar-b\"] > svg[data-icon-source] > :is(path,line,polyline,polygon,circle,ellipse,rect,use):nth-child(1)",
+          "layout_expected_count": 1,
+          "evidence": "source-region-appearance-anchor",
+          "selector": "[data-component-theme-appearance=\"source.pillar-b-icon\"]"
         },
         {
           "binding_id": "pillar-b-icon-core",
           "source_selector": "[data-slot-id=\"pillar-b\"] > svg[data-icon-source] > :is(path,line,polyline,polygon,circle,ellipse,rect,use):nth-child(2)",
           "treatment": "source.pillar-b-icon",
           "expected_count": 1,
-          "frame_selector": "[data-slot-id=\"pillar-b\"] > svg[data-icon-source] > :is(path,line,polyline,polygon,circle,ellipse,rect,use):nth-child(2)",
-          "frame_expected_count": 1,
-          "frame_property": "stroke",
-          "uniform_source_style": true,
-          "selector": "[data-component-theme-appearance=\"source.pillar-b-icon\"]",
-          "evidence": "approved-catalog-frame-legacy-native"
+          "layout_selector": "[data-slot-id=\"pillar-b\"] > svg[data-icon-source] > :is(path,line,polyline,polygon,circle,ellipse,rect,use):nth-child(2)",
+          "layout_expected_count": 1,
+          "evidence": "source-region-appearance-anchor",
+          "selector": "[data-component-theme-appearance=\"source.pillar-b-icon\"]"
         },
         {
           "binding_id": "pillar-b-icon-pins",
           "source_selector": "[data-slot-id=\"pillar-b\"] > svg[data-icon-source] > :is(path,line,polyline,polygon,circle,ellipse,rect,use):nth-child(n+3)",
           "treatment": "source.pillar-b-icon",
           "expected_count": 1,
-          "frame_selector": "[data-slot-id=\"pillar-b\"] > svg[data-icon-source] > :is(path,line,polyline,polygon,circle,ellipse,rect,use):nth-child(n+3)",
-          "frame_expected_counts": {
-            "paper-ink": 1,
-            "hermes-orange": 8,
-            "klein-blue": 8
-          },
-          "frame_property": "stroke",
-          "uniform_source_style": true,
-          "selector": "[data-component-theme-appearance=\"source.pillar-b-icon\"]",
-          "evidence": "approved-catalog-frame-legacy-native"
+          "layout_selector": "[data-slot-id=\"pillar-b\"] > svg[data-icon-source] > :is(path,line,polyline,polygon,circle,ellipse,rect,use):nth-child(n+3)",
+          "layout_expected_count": 1,
+          "evidence": "source-region-appearance-anchor",
+          "selector": "[data-component-theme-appearance=\"source.pillar-b-icon\"]"
         },
         {
           "binding_id": "pillar-b-divider",
           "source_selector": "[data-slot-id=\"pillar-b\"] > line",
           "treatment": "source.ink-stroke-20",
           "expected_count": 1,
-          "frame_selector": "[data-slot-id=\"pillar-b\"] > line",
-          "frame_expected_count": 1,
-          "frame_property": "stroke",
-          "selector": "[data-component-theme-appearance=\"source.ink-stroke-20\"]",
-          "evidence": "approved-catalog-frame-legacy-native"
+          "layout_selector": "[data-slot-id=\"pillar-b\"] > line",
+          "layout_expected_count": 1,
+          "evidence": "source-region-appearance-anchor",
+          "selector": "[data-component-theme-appearance=\"source.ink-stroke-20\"]"
         },
         {
           "binding_id": "pillar-b-hatch",
           "source_selector": "pattern[id^=\"r1-127-hatch\"] line",
           "treatment": "source.hatch-line",
           "expected_count": 1,
-          "frame_selector": "pattern#r1-hatch > line",
-          "frame_expected_count": 1,
-          "frame_property": "stroke",
           "include_defs": true,
-          "selector": "[data-component-theme-appearance=\"source.hatch-line\"]",
-          "evidence": "approved-catalog-frame-legacy-native"
+          "layout_selector": "pattern#r1-hatch > line",
+          "layout_expected_count": 1,
+          "evidence": "source-region-appearance-anchor",
+          "selector": "[data-component-theme-appearance=\"source.hatch-line\"]"
         }
       ],
       "thumbnail_policy": "catalog-card"
@@ -6355,7 +6378,9 @@ window.WISE_PPT_COMPONENT_THEME_BINDINGS = Object.freeze({
       "source_layout": {
         "layout_id": "wise-ppt.layout.relationship.U2",
         "display_code": "U2",
-        "default_profile": "standard",
+        "layout_contract": "wise-ppt-layout-theme-bindings@3",
+        "frame_contract": "wise-ppt-catalog-theme-frames@6",
+        "comparison_scope": "structure-and-provenance-only",
         "evidence": "sourceLayout/sourceRegion",
         "source_ref": "references/gallery-paper-ink/ai/frames/layout-u2.html",
         "source_regions": [
@@ -6386,8 +6411,8 @@ window.WISE_PPT_COMPONENT_THEME_BINDINGS = Object.freeze({
           "expected_count": 4,
           "layout_selector": "#scorecard > text",
           "layout_text_pattern": "^(?:指标|方案 A|方案 B|涨幅)$",
-          "selector": "[data-component-theme-appearance=\"source.u2-metric-header-text\"]",
-          "evidence": "current-catalog-frame-appearance"
+          "evidence": "source-region-appearance-anchor",
+          "selector": "[data-component-theme-appearance=\"source.u2-metric-header-text\"]"
         }
       ],
       "thumbnail_policy": "catalog-card"
@@ -6400,7 +6425,9 @@ window.WISE_PPT_COMPONENT_THEME_BINDINGS = Object.freeze({
       "source_layout": {
         "layout_id": "wise-ppt.layout.relationship.U3",
         "display_code": "U3",
-        "default_profile": "legacy",
+        "layout_contract": "wise-ppt-layout-theme-bindings@3",
+        "frame_contract": "wise-ppt-catalog-theme-frames@6",
+        "comparison_scope": "structure-and-provenance-only",
         "evidence": "sourceLayout/sourceRegion",
         "source_ref": "references/gallery-paper-ink/ai/frames/layout-u3.html",
         "source_regions": [
@@ -6411,7 +6438,7 @@ window.WISE_PPT_COMPONENT_THEME_BINDINGS = Object.freeze({
           "hermes-orange": "themes/catalog-projections/hermes-klein/frames/hermes-orange/layout-u3.html",
           "klein-blue": "themes/catalog-projections/hermes-klein/frames/klein-blue/layout-u3.html"
         },
-        "identity_projection": "approved-frame-localized"
+        "identity_projection": "component-localized-from-source-region"
       },
       "material_bindings": [
         {
@@ -6432,28 +6459,26 @@ window.WISE_PPT_COMPONENT_THEME_BINDINGS = Object.freeze({
       ],
       "identity_groups": [
         {
-          "group_id": "legacy.lever-nodes",
+          "group_id": "identity.lever-nodes",
           "label": "杠杆主线与两端节点",
           "members": [
             {
               "source_selector": "#lever-stock-node, #lever-outcome-node",
               "treatment": "identity.data-series",
               "expected_count": 2,
-              "frame_selector": "#lever-stock-node, #lever-outcome-node",
-              "frame_expected_count": 2,
-              "frame_property": "fill",
-              "selector": "[data-component-theme-group=\"legacy.lever-nodes\"]",
-              "evidence": "approved-catalog-frame-legacy-native"
+              "layout_selector": "#lever-stock-node, #lever-outcome-node",
+              "layout_expected_count": 2,
+              "evidence": "source-region-identity-anchor",
+              "selector": "[data-component-theme-group=\"identity.lever-nodes\"]"
             },
             {
               "source_selector": "#lever-beam, #lever-pivot",
               "treatment": "identity.stroke",
               "expected_count": 2,
-              "frame_selector": "#lever-beam, #lever-pivot",
-              "frame_expected_count": 2,
-              "frame_property": "stroke",
-              "selector": "[data-component-theme-group=\"legacy.lever-nodes\"]",
-              "evidence": "approved-catalog-frame-legacy-native"
+              "layout_selector": "#lever-beam, #lever-pivot",
+              "layout_expected_count": 2,
+              "evidence": "source-region-identity-anchor",
+              "selector": "[data-component-theme-group=\"identity.lever-nodes\"]"
             }
           ]
         }
@@ -6520,35 +6545,30 @@ window.WISE_PPT_COMPONENT_THEME_BINDINGS = Object.freeze({
           {
             "layout_id": "wise-ppt.layout.relationship.Q2",
             "display_code": "Q2",
-            "default_profile": "legacy",
             "evidence": "layout-embeds-same-component",
             "source_ref": "references/gallery-paper-ink/ai/frames/layout-q2.html"
           },
           {
             "layout_id": "wise-ppt.layout.relationship.Q4",
             "display_code": "Q4",
-            "default_profile": "standard",
             "evidence": "layout-embeds-same-component",
             "source_ref": "references/gallery-paper-ink/ai/frames/layout-q4.html"
           },
           {
             "layout_id": "wise-ppt.layout.relationship.R6",
             "display_code": "R6",
-            "default_profile": "legacy",
             "evidence": "layout-embeds-same-component",
             "source_ref": "references/gallery-paper-ink/ai/frames/layout-r6.html"
           },
           {
             "layout_id": "wise-ppt.layout.relationship.S2",
             "display_code": "S2",
-            "default_profile": "legacy",
             "evidence": "layout-embeds-same-component",
             "source_ref": "references/gallery-paper-ink/ai/frames/layout-s2.html"
           },
           {
             "layout_id": "wise-ppt.layout.relationship.S3",
             "display_code": "S3",
-            "default_profile": "legacy",
             "evidence": "layout-embeds-same-component",
             "source_ref": "references/gallery-paper-ink/ai/frames/layout-s3.html"
           }
@@ -6582,14 +6602,12 @@ window.WISE_PPT_COMPONENT_THEME_BINDINGS = Object.freeze({
           {
             "layout_id": "wise-ppt.layout.relationship.R3",
             "display_code": "R3",
-            "default_profile": "legacy",
             "evidence": "layout-embeds-same-component",
             "source_ref": "references/gallery-paper-ink/ai/frames/layout-r3.html"
           },
           {
             "layout_id": "wise-ppt.layout.relationship.R7",
             "display_code": "R7",
-            "default_profile": "standard",
             "evidence": "layout-embeds-same-component",
             "source_ref": "references/gallery-paper-ink/ai/frames/layout-r7.html"
           }
@@ -6612,21 +6630,18 @@ window.WISE_PPT_COMPONENT_THEME_BINDINGS = Object.freeze({
           {
             "layout_id": "wise-ppt.layout.relationship.R2",
             "display_code": "R2",
-            "default_profile": "legacy",
             "evidence": "layout-embeds-same-component",
             "source_ref": "references/gallery-paper-ink/ai/frames/layout-r2.html"
           },
           {
             "layout_id": "wise-ppt.layout.relationship.R6",
             "display_code": "R6",
-            "default_profile": "legacy",
             "evidence": "layout-embeds-same-component",
             "source_ref": "references/gallery-paper-ink/ai/frames/layout-r6.html"
           },
           {
             "layout_id": "wise-ppt.layout.relationship.S3",
             "display_code": "S3",
-            "default_profile": "legacy",
             "evidence": "layout-embeds-same-component",
             "source_ref": "references/gallery-paper-ink/ai/frames/layout-s3.html"
           }
@@ -6660,28 +6675,24 @@ window.WISE_PPT_COMPONENT_THEME_BINDINGS = Object.freeze({
           {
             "layout_id": "wise-ppt.layout.relationship.Q3",
             "display_code": "Q3",
-            "default_profile": "standard",
             "evidence": "layout-embeds-same-component",
             "source_ref": "references/gallery-paper-ink/ai/frames/layout-q3.html"
           },
           {
             "layout_id": "wise-ppt.layout.relationship.R2",
             "display_code": "R2",
-            "default_profile": "legacy",
             "evidence": "layout-embeds-same-component",
             "source_ref": "references/gallery-paper-ink/ai/frames/layout-r2.html"
           },
           {
             "layout_id": "wise-ppt.layout.relationship.R6",
             "display_code": "R6",
-            "default_profile": "legacy",
             "evidence": "layout-embeds-same-component",
             "source_ref": "references/gallery-paper-ink/ai/frames/layout-r6.html"
           },
           {
             "layout_id": "wise-ppt.layout.relationship.S3",
             "display_code": "S3",
-            "default_profile": "legacy",
             "evidence": "layout-embeds-same-component",
             "source_ref": "references/gallery-paper-ink/ai/frames/layout-s3.html"
           }
@@ -6704,12 +6715,10 @@ window.WISE_PPT_COMPONENT_THEME_BINDINGS = Object.freeze({
           {
             "layout_id": "wise-ppt.layout.relationship.R1",
             "display_code": "R1",
-            "default_profile": "legacy",
             "evidence": "layout-embeds-same-component",
             "source_ref": "references/gallery-paper-ink/ai/frames/layout-r1.html"
           }
         ],
-        "default_profile": "legacy",
         "instance_resolution": {
           "pillar-a": "native.wise-ppt.113.capability-pillar",
           "pillar-b": "native.wise-ppt.127.capability-pillar-model",
@@ -6734,14 +6743,12 @@ window.WISE_PPT_COMPONENT_THEME_BINDINGS = Object.freeze({
           {
             "layout_id": "wise-ppt.layout.relationship.R2",
             "display_code": "R2",
-            "default_profile": "legacy",
             "evidence": "layout-embeds-same-component",
             "source_ref": "references/gallery-paper-ink/ai/frames/layout-r2.html"
           },
           {
             "layout_id": "wise-ppt.layout.relationship.R6",
             "display_code": "R6",
-            "default_profile": "legacy",
             "evidence": "layout-embeds-same-component",
             "source_ref": "references/gallery-paper-ink/ai/frames/layout-r6.html"
           }
@@ -6761,5 +6768,5 @@ window.WISE_PPT_COMPONENT_THEME_BINDINGS = Object.freeze({
       "thumbnail_policy": "none-route-only"
     }
   },
-  "contract_sha256": "0d8b9b49d46f86704ba20ea600d947261268ebf5ac466a6d549cf5eb221f20e9"
+  "contract_sha256": "01c7cdaf69abd333cdcf8058e2c4ed8ac9e8eff4d8e8b60b77cb3ef94473ab7c"
 });

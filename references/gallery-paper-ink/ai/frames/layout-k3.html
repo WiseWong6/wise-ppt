@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html data-theme-id="paper-ink" lang="zh-CN" data-runtime="wise-ppt-specimen" data-typography-mode="all-sans" data-page-id="gallery-ai-k3" data-page-role="synthesize" data-theme="paper-ink" data-layout="paper-ink.matrix.problem-solution-composite" data-layout-source="gallery" data-emphasis-targets='[{"target_id":"focus.recall-rate","members":[{"selector":"#k3-num-1","role":"value","treatment":"focus.color","expected_count":1}]}]' data-catalog-legacy-emphasis-profile="content-only" data-catalog-legacy-emphasis-members='[{"selector":"#k3-solution-rule","expected_count":1,"role":"outline"},{"selector":"#sample-focus","expected_count":1,"role":"value"}]' data-catalog-legacy-emphasis-foreground-members='[]' data-catalog-legacy-emphasis-ref="sample.k3.colored-solution" data-vnext-semantic-key-map='[{"key":"problem-solution.text.001","tag":"text","text":"WHY IT HURTS","occurrence":0}]'>
+<html data-theme-id="paper-ink" lang="zh-CN" data-runtime="wise-ppt-specimen" data-typography-mode="all-sans" data-page-id="gallery-ai-k3" data-page-role="synthesize" data-theme="paper-ink" data-layout="paper-ink.matrix.problem-solution-composite" data-layout-source="gallery" data-vnext-semantic-key-map='[{"key":"problem-solution.text.001","tag":"text","text":"WHY IT HURTS","occurrence":0}]' data-emphasis-targets='[{"target_id":"focus.recall-rate","members":[{"selector":"#k3-num-1","role":"value","treatment":"focus.color","expected_count":1}]}]' data-vnext-type-slot-map='[{"slot":"content-title","tag":"text","text":"效果不稳的三个根因","occurrence":0},{"slot":"content-title","tag":"text","text":"Agent 基座平台","occurrence":0},{"slot":"content-title","tag":"text","text":"420万","occurrence":0}]'>
 <head>
 <meta charset="UTF-8">
 <title>layout-k3 · 左痛右解复合页（AI 主题）</title>
@@ -145,7 +145,7 @@ el('rect', {id:'k3-solution-surface', x:690, y:210, width:1090, height:690, fill
 var solutionRegion = svgGroup({'data-arrow-region':'solution'}, function(){
 /* ============ 右栏：解法三层 ============ */
 txt(720, 246, 'THE FIX · AGENT PIPELINE', {'font-family':MONO, 'font-size':'var(--type-label)', 'letter-spacing':3, fill:INK45});
-el('line', {id:'k3-solution-rule', x1:720, y1:262, x2:820, y2:262, stroke:INK, 'stroke-width':.8, opacity:.5});
+el('line', {id:'k3-solution-rule', x1:720, y1:262, x2:820, y2:262, stroke:INK, 'stroke-width':2, opacity:1});
 txt(720, 300, 'Agent 基座平台', {id:'sample-focus', 'font-family':SANS, 'font-weight':300, 'font-size':'var(--type-subheading)', fill:INK});
 
 /* ---- 第一层：六步流水线（每步图元异形） ---- */
