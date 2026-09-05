@@ -146,7 +146,7 @@ source-backed 页面必须有非空 `source_refs`，且 `source_evidence` 的 ke
 
 ## 逐页强调
 
-强调不是全局装饰开关。每页根据内容决定是否填写 `emphasis.target` 与 `reason`：按 [颜色语义决策顺序](color-semantics.md) 先从 claim 找唯一决定性证据；找不到就不填写，主题不能替页面自动开启强调。
+成品默认开启强调色显示，显示开关与逐页选对象分开。每页根据内容决定是否填写 `emphasis.target` 与 `reason`：按 [颜色语义决策顺序](color-semantics.md) 先从 claim 找唯一决定性证据；找不到就不填写，该页保持普通状态，主题不能替页面自动选择对象。
 
 先查询单个 `layout_id`。只有结果中的 `emphasis.targets` 非空时，该页才可声明：
 

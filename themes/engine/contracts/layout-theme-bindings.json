@@ -3439,11 +3439,11 @@
           "paint": "text"
         },
         {
-          "binding_id": "after-badge-off",
-          "selector": "#e6-focus-badge",
+          "binding_id": "after-check",
+          "selector": "#e6-focus-check",
           "expected_count": 1,
           "color_role": "foreground",
-          "paint": "fill"
+          "paint": "stroke"
         }
       ],
       "type_bindings": [
@@ -3483,7 +3483,19 @@
           "alpha": 1
         }
       },
-      "identity_groups": [],
+      "identity_groups": [
+        {
+          "group_id": "identity.after-badge",
+          "label": "After 结果圆标",
+          "members": [
+            {
+              "selector": "#e6-focus-badge",
+              "treatment": "identity.reverse-marker",
+              "expected_count": 1
+            }
+          ]
+        }
+      ],
       "emphasis": {
         "page_kind": "relationship",
         "page_name": "前后双带演进",
@@ -3506,17 +3518,10 @@
         "targets": [
           {
             "target_id": "focus.decisive-difference",
-            "label": "After 结果与召回、重排、组装",
-            "content_role": "After 结果标记、标题与底部关键动作",
-            "reason_hint": "默认保持 After 标记和标题反白；只在该结果直接支撑本页结论时，将它们与底部关键动作一起强调。",
+            "label": "After 标题与底部关键动作",
+            "content_role": "After 结果标题与底部关键动作",
+            "reason_hint": "After 圆标固定使用主题身份色、图标反白，不依赖内容强调；仅当该结果直接支撑本页结论时，强调标题与底部关键动作。",
             "members": [
-              {
-                "selector": "#e6-focus-badge",
-                "role": "symbol",
-                "treatment": "focus.color",
-                "paint": "fill",
-                "expected_count": 1
-              },
               {
                 "selector": "#e6-focus-title",
                 "role": "value",
@@ -3537,7 +3542,7 @@
       },
       "provenance": {
         "migration": "catalog-standard-parity-v1",
-        "identity_mode": "neutral-only",
+        "identity_mode": "theme-identity",
         "source_receipt": {
           "sha256": "2248ada3691404454ba673bf0283ef7a3dafce2a2e01ae16747ed394dc36c901"
         }

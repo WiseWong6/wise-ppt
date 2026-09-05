@@ -37,7 +37,7 @@ deliver 在同一个 Chrome/CDP 会话中执行 ready、normal/accent、screen/p
 - 文字碰撞只覆盖可见 `text/claim` 的大面积独立块；正常行内相邻文字和小面积墨迹相交不会触发该门禁；
 - source/must 属性与 spec、来源账本一致，登记证据仍可见；
 - normal screen、accent screen、normal print、accent print 四态证据齐全；
-- 最终 HTML 按 spec 呈现强调，PDF 从最终 accent print 状态导出；
+- 最终 HTML 默认开启强调色显示，仅激活 spec 已选择的逐页对象；未选对象的页面保持普通状态，PDF 从最终 accent print 状态导出；
 - screen/print 锚点误差不超过 1px，计算字体属性一致；
 - 逐页模糊栅格 RMSE 不超过 2.5%；
 - HTML、PDF 和 spec 页数相等；
