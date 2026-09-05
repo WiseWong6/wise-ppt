@@ -67,7 +67,13 @@
   .type-segment+.type-segment{border-left:1px solid var(--ink-45)}
   .type-segment:hover{color:var(--ink);background:var(--paper-panel)}
   .type-segment[aria-checked="true"]{background:var(--ink);color:var(--paper)}
-  .theme-card:focus-visible,.type-segment:focus-visible{outline:2px solid var(--ink);outline-offset:1px}
+  /* 比例轴与字体轴同款分段单选；3:4 为 Catalog 预览档。 */
+  .ratio-segments{display:grid;grid-template-columns:repeat(2,1fr);border:1px solid var(--ink-45)}
+  .ratio-segment{padding:7px 0;border:0;background:transparent;color:var(--ink-3);font:400 12px var(--wp-font-sans);text-align:center;cursor:pointer}
+  .ratio-segment+.ratio-segment{border-left:1px solid var(--ink-45)}
+  .ratio-segment:hover{color:var(--ink);background:var(--paper-panel)}
+  .ratio-segment[aria-checked="true"]{background:var(--ink);color:var(--paper)}
+  .theme-card:focus-visible,.type-segment:focus-visible,.ratio-segment:focus-visible{outline:2px solid var(--ink);outline-offset:1px}
   .focus-toggle{width:100%;margin-top:14px;padding:8px 10px;border:1px solid var(--ink-45);background:transparent;color:var(--ink-3);font:400 12px var(--wp-font-mono);cursor:pointer;display:flex;align-items:center;justify-content:space-between;gap:8px}
   .focus-toggle[hidden]{display:none}
   .focus-toggle:hover{color:var(--ink);border-color:var(--ink)}
@@ -106,6 +112,7 @@
   .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(310px,1fr));gap:18px}
   .card{background:var(--card);border:1px solid var(--line);break-inside:avoid;content-visibility:auto;contain-intrinsic-size:auto 320px}
   .frame-wrap{position:relative;box-sizing:content-box;aspect-ratio:16 / 9;overflow:hidden;background:var(--paper-deep)}
+  .frame-wrap.is-portrait{aspect-ratio:3 / 4}
   .frame-wrap{margin:10px 10px 0;border:0.5px solid var(--ink-45)}
   /* 空槽蓝图卡只有缩略图没有信息区,底边距跟着 .frame-wrap 的 margin-bottom:0 丢失;:last-child 只命中这类卡,补回与左右一致的 10px */
   .card > .frame-wrap:last-child{margin-bottom:10px}
@@ -337,6 +344,10 @@
 <body>
 <header>
   <h1>Wise-PPT · 资产目录</h1>
+  <div class="ctl" id="ratio-picker">
+    <div class="ctl-label"><span id="ratio-picker-label">比例</span></div>
+    <div class="ratio-segments" role="radiogroup" aria-labelledby="ratio-picker-label"></div>
+  </div>
   <div class="ctl" id="theme-picker">
     <div class="ctl-label" id="theme-picker-label">主题</div>
     <div class="theme-cards" role="radiogroup" aria-labelledby="theme-picker-label"></div>
@@ -430,6 +441,94 @@ document.querySelectorAll('.side-foot .repo-link[data-href]').forEach(function(a
 /* ============ 元数据 ============ */
 const PAPER_INK_FRAMES='gallery-paper-ink/ai/frames/';
 const CATALOG_THEME_FRAMES='../themes/catalog-projections/hermes-klein/frames/';
+const PORTRAIT_FRAMES='gallery-paper-ink-3x4/ai/frames/';
+const PORTRAIT_THEME_FRAMES='../themes/catalog-projections/hermes-klein/frames-3x4/';
+/* 3:4 橙/蓝投影页由生成器批量产出（themes/catalog-projections/hermes-klein/frames-3x4/，176 帧），
+   生成与 --check 门禁通过后置 true；false 时竖版一律回退纸墨页 + ?theme= 实时换肤。 */
+const PORTRAIT_PROJECTIONS_ENABLED=true;
+const CATALOG_RATIOS=Object.freeze([
+  Object.freeze({ratio_id:'16:9',query_value:'16x9',label:'16:9',production:true}),
+  Object.freeze({ratio_id:'3:4',query_value:'3x4',label:'3:4',production:false}),
+]);
+const DEFAULT_RATIO_ID='16:9';
+const PORTRAIT_LAYOUT_META=Object.freeze({
+  A5:Object.freeze({structure:'上下3等分',relation:'陈列'}),
+  C3:Object.freeze({structure:'上下3等分',relation:'陈列'}),
+  F3:Object.freeze({structure:'上下3等分 / 各区·网格2×2',relation:'拆解(并列面)'}),
+  I4:Object.freeze({structure:'上下2等分 / 各区·内含时序',relation:'并行(内含时序)'}),
+  R1:Object.freeze({structure:'网格2×2',relation:'陈列'}),
+  R3:Object.freeze({structure:'网格3×2',relation:'陈列'}),
+  R7:Object.freeze({structure:'网格7×4',relation:'陈列'}),
+  A9:Object.freeze({structure:'左右2等分 / 双屏端点 + 中轴时序',relation:'时序'}),
+  B1:Object.freeze({structure:'单区 / 纵向时间轴',relation:'时序'}),
+  B2:Object.freeze({structure:'单区 / 横向甘特轴',relation:'时序'}),
+  B3:Object.freeze({structure:'单区 / 内含3泳道',relation:'时序 + 并行'}),
+  B4:Object.freeze({structure:'单区 / 纵向垂挂画廊',relation:'时序 + 证据'}),
+  B5:Object.freeze({structure:'单区 / 纵向阶梯路径',relation:'时序'}),
+  B6:Object.freeze({structure:'单区 / 纵向蜿蜒道路',relation:'时序'}),
+  E3:Object.freeze({structure:'左右2列 × 四行 / 左·WHY / 右·HOW',relation:'因果'}),
+  E6:Object.freeze({structure:'上下2带 / 共用六列锚',relation:'对比 + 流动'}),
+  I1:Object.freeze({structure:'单区 / 纵向四站流水线',relation:'流动'}),
+  I2:Object.freeze({structure:'单区 / 横向已知—未知—已知链',relation:'流动'}),
+  I3:Object.freeze({structure:'左右2等分 / 双轨纵向对位',relation:'流动 + 对比'}),
+  J3:Object.freeze({structure:'单区 / 四阶段横向体验曲线',relation:'时序'}),
+  K2:Object.freeze({structure:'左右3段 / 痛点列 → 解法列 → 成效列',relation:'因果'}),
+  K3:Object.freeze({structure:'上下4段 / 根因1×3 / 横向6步链 / 底座 / 指标1×4',relation:'因果'}),
+  S3:Object.freeze({structure:'上下4段 / 问题2×2 / 横向5步链 / 证据1×3 / 指标1×4',relation:'因果'}),
+  N1:Object.freeze({structure:'上下3段 / 上·来源2×1 / 中·汇聚组装 / 下·输出端',relation:'汇聚'}),
+  P1:Object.freeze({structure:'上下2段 / 上·纵向输入—黑箱—输出 / 下·标注1×3',relation:'流动'}),
+  Q3:Object.freeze({structure:'上下2等分 / 上·流程1×3 / 下·流程1×4',relation:'对比 + 流动'}),
+  J1:Object.freeze({structure:'单区 / 中心循环环 + 四角步骤卡',relation:'循环'}),
+  J2:Object.freeze({structure:'单区 / 两列四行蛇形回环',relation:'循环'}),
+  F2:Object.freeze({structure:'左右2等分 / 左·环节树 / 右·规格单',relation:'拆解'}),
+  H3:Object.freeze({structure:'单区 / 四层纵向架构栈 / 各层·横向3等分',relation:'层级'}),
+  S1:Object.freeze({structure:'单区 / 五层纵向平台栈 / 资源·2×2 / 基础设施·1×3',relation:'层级'}),
+  H4:Object.freeze({structure:'单区 / 三层纵向托举 / 上中·横向3等分 / 下·通栏底座',relation:'层级'}),
+  R2:Object.freeze({structure:'上下3等分 / 纵向战略→能力→执行',relation:'层级'}),
+  R6:Object.freeze({structure:'上下4等分 / 输入→推理→评测→治理',relation:'层级'}),
+  G1:Object.freeze({structure:'单区 / 中心节点 + 上输入 / 左下参数 / 右下输出',relation:'拆解'}),
+  G5:Object.freeze({structure:'单区 / 中心意图 + 上一二下三原则放射',relation:'拆解'}),
+  G4:Object.freeze({structure:'单区 / 中心枢纽 + 等半径六卫星圆环',relation:'拆解 / 网络'}),
+  H1:Object.freeze({structure:'单区 / 中心内核 + 三层同心防线',relation:'嵌套'}),
+  H2:Object.freeze({structure:'单区 / 左侧四层嵌套框 + 右侧纵向标签栏',relation:'嵌套'}),
+  E1:Object.freeze({structure:'左右2等分 / 中央VS',relation:'对比'}),
+  E2:Object.freeze({structure:'左右2等分 / 中轴分水岭 / 四行字段对照',relation:'对比'}),
+  E5:Object.freeze({structure:'左右2等分 / 双四级金字塔 / 中央带权映射',relation:'映射'}),
+  L1:Object.freeze({structure:'单区 / 横向6 token / 上方10条带权弧网',relation:'网络'}),
+  L2:Object.freeze({structure:'单区 / 左右6节点列 / 中央14条多对多映射',relation:'映射'}),
+  P2:Object.freeze({structure:'单区 / 四节点菱形 / 中央纵横双轴 / 四组指标标注',relation:'映射'}),
+  Q1:Object.freeze({structure:'单区 / 三圆交叠 / 三种集合纹理 / 中心共同区域',relation:'交叠'}),
+  T1:Object.freeze({structure:'单区',relation:'流动'}),
+  T2:Object.freeze({structure:'上下1:2 / 下·网格3×2',relation:'映射'}),
+  T3:Object.freeze({structure:'上下1:2 / 下·网格3×2',relation:'因果'}),
+  R4:Object.freeze({structure:'单区 / 倾斜天平 / 双吊盘 / 中央支点',relation:'对比'}),
+  R5:Object.freeze({structure:'单区 / 三齿轮三角互锁 / 下方单一输出',relation:'网络'}),
+  C5:Object.freeze({structure:'上下1:2 / 下·网格2×2进度环',relation:'拆解'}),
+  E4:Object.freeze({structure:'上·四行双列前后矩阵 / 下·KPI 1×3',relation:'对比 + 矩阵'}),
+  K1:Object.freeze({structure:'单区 / 四阶段行 × 三维度列矩阵',relation:'矩阵'}),
+  K4:Object.freeze({structure:'单区 / 三场景行 × 现状·解法·落地三列矩阵',relation:'矩阵'}),
+  Q2:Object.freeze({structure:'上下2段 / 上·整体构成环 / 下·分项证据4行',relation:'部分整体 + 证据'}),
+  S2:Object.freeze({structure:'上下2段 / 上·整体双分环 / 下·左右双证据列',relation:'部分整体 + 证据'}),
+  O1:Object.freeze({structure:'上下2段 / 上·连续三层漏斗 / 下·检索结果5行',relation:'漏斗'}),
+  A1:Object.freeze({structure:'单区 / 对话标本居中 / 下·算术纠错批注',relation:'证据'}),
+  A2:Object.freeze({structure:'单区 / 上·纵向双对话 / 下·完整场景画',relation:'示意'}),
+  A3:Object.freeze({structure:'上下1:2 / 上·转述与双线重点 / 下·原文标本',relation:'证据'}),
+  A4:Object.freeze({structure:'上下1:2 / 上·四行策略 / 下·证据墙2×2',relation:'证据'}),
+  A6:Object.freeze({structure:'上下1:2 / 上·主徽章 / 下·证书墙3×4',relation:'证据'}),
+  A8:Object.freeze({structure:'单区 / 上·运行列表 / 下·节点树详情',relation:'示意'}),
+  C1:Object.freeze({structure:'上下2段 / 上·产品立绘 / 下·数据格2×2',relation:'证据'}),
+  G2:Object.freeze({structure:'单区 / 中央设备立绘 + 左右三行六标注',relation:'焦点 + 拆解'}),
+  Q4:Object.freeze({structure:'网格2×2 / 横轴·内容↔系统 / 纵轴·产物↔过程证据',relation:'证据 + 矩阵'}),
+  C2:Object.freeze({structure:'上下2段 / 上·八周折线 / 下·左右柱图与环图',relation:'证据'}),
+  C4:Object.freeze({structure:'上下2段 / 上·广东节点地图 / 下·KPI 2×2',relation:'分布'}),
+  C6:Object.freeze({structure:'网格2×2 / 四项大数字卡阵',relation:'指标'}),
+  C7:Object.freeze({structure:'上下2段 / 上·Top3 标本 / 下·八行横向排行',relation:'排名'}),
+  U1:Object.freeze({structure:'上下2等分 / 上·版本1.6画像 / 下·版本1.5画像',relation:'对比'}),
+  U2:Object.freeze({structure:'上下4段 / 三条图表带 + 汇总对比表',relation:'证据 + 对比'}),
+  U3:Object.freeze({structure:'单区 / 左下存量经支点撬向右上增量',relation:'因果'}),
+  W1:Object.freeze({structure:'左右2段 / 左·中枢双弧四支线 / 右·四行详情',relation:'拆解'}),
+});
+const PORTRAIT_LAYOUT_CODES=Object.freeze(Object.keys(PORTRAIT_LAYOUT_META));
 
 /* 非关系页按页面类型分五组:封面 / 目录 / 过渡 / 收尾 / 联络 */
 const NON_REL_GROUPS=[
@@ -861,6 +960,36 @@ function initialThemeId(){
 }
 let activeThemeId=initialThemeId();
 document.documentElement.dataset.themeId=activeThemeId;
+/* ============ 比例轴:顶层筛选,与主题/字体并列 ============ */
+const RATIO_BY_QUERY=new Map(CATALOG_RATIOS.map(item=>[item.query_value,item.ratio_id]));
+const RATIO_CAPABILITIES=Object.freeze({
+  '16:9':Object.freeze({appearance:true,typography:true,focus:true}),
+  '3:4':Object.freeze({appearance:true,typography:true,focus:true}),
+});
+function initialRatioId(){
+  const params=new URLSearchParams(location.search);
+  /* 兼容上一版错误地把 3:4 做成页签的链接，但立刻归一到顶层比例轴。 */
+  if(params.get('tab')==='vlt'){
+    params.set('tab','lyt');
+    params.set('ratio','3x4');
+    replaceCatalogQuery(params);
+    return '3:4';
+  }
+  const requested=params.get('ratio');
+  if(requested==='3:4'){
+    params.set('ratio','3x4');
+    replaceCatalogQuery(params);
+    return '3:4';
+  }
+  if(RATIO_BY_QUERY.has(requested))return RATIO_BY_QUERY.get(requested);
+  if(requested){
+    params.delete('ratio');
+    replaceCatalogQuery(params);
+  }
+  return DEFAULT_RATIO_ID;
+}
+let activeRatioId=initialRatioId();
+document.documentElement.dataset.catalogRatio=activeRatioId;
 /* 字体轴与外观轴独立；只有未显式选字体时才跟随外观缺省。 */
 function themeDefaultTypography(themeId=activeThemeId){
   const theme=THEME_BY_ID.get(themeId);
@@ -1002,6 +1131,50 @@ function setCatalogTheme(themeId,{syncUrl=true,notify=true}={}){
   refreshThemeThumbnails();
   return commitCatalogAppearance('wise-ppt:theme-change',{themeId},notify);
 }
+function syncRatioPicker(){
+  document.querySelectorAll('#ratio-picker [data-ratio-id]').forEach(option=>{
+    const on=option.dataset.ratioId===activeRatioId;
+    option.setAttribute('aria-checked',String(on));
+    option.tabIndex=on?0:-1;
+  });
+}
+function renderRatioPicker(){
+  const group=document.querySelector('#ratio-picker .ratio-segments');
+  const options=[];
+  CATALOG_RATIOS.forEach(ratio=>{
+    const segment=document.createElement('button');
+    segment.type='button';segment.className='ratio-segment';segment.dataset.ratioId=ratio.ratio_id;
+    segment.setAttribute('role','radio');
+    segment.setAttribute('aria-label','页面比例 '+ratio.label+(ratio.production?'':'，Catalog 预览，未登记生产'));
+    segment.textContent=ratio.label;
+    segment.addEventListener('click',()=>setCatalogRatio(ratio.ratio_id));
+    group.appendChild(segment);options.push(segment);
+  });
+  wireSegmentKeyboard(group,options);
+  syncRatioPicker();
+}
+function setCatalogRatio(ratioId,{syncUrl=true,notify=true}={}){
+  if(!CATALOG_RATIOS.some(item=>item.ratio_id===ratioId))throw new Error('非法 Catalog 比例: '+ratioId);
+  if(activeRatioId===ratioId){syncRatioPicker();return;}
+  const preferredStructureKey=currentStructureKey()||activeStructureKey;
+  activeRatioId=ratioId;
+  document.documentElement.dataset.catalogRatio=ratioId;
+  activeStructureKey=structureKeyForRatio(preferredStructureKey);
+  if(syncUrl){
+    const params=new URLSearchParams(location.search);
+    if(ratioId===DEFAULT_RATIO_ID)params.delete('ratio');else params.set('ratio','3x4');
+    replaceCatalogQuery(params);
+  }
+  renderRatioAwareCatalog();
+  syncRatioPicker();
+  syncThemePicker();
+  syncTypographyPicker();
+  syncCatalogEmphasisToggle();
+  if(document.querySelector('.tab.on')?.dataset.t==='str')setStructureOpen(activeStructureKey,{syncUrl});
+  refreshThemeThumbnails();
+  if(notify)document.dispatchEvent(new CustomEvent('wise-ppt:ratio-change',{detail:{ratioId}}));
+  requestAnimationFrame(()=>{syncStructureOffsets();scheduleFitAll();scheduleSectionNav();});
+}
 function setCatalogTypography(modeId,{syncUrl=true,notify=true,explicit=true}={}){
   if(!MODE_BY_ID.has(modeId))throw new Error('未登记 Wise PPT 字体模式: '+modeId);
   activeTypographyId=modeId;
@@ -1048,11 +1221,15 @@ function renderThemePicker(){
   syncThemePicker();
 }
 function syncTypographyPicker(){
+  const supported=RATIO_CAPABILITIES[activeRatioId].typography;
   document.querySelectorAll('[data-typography-id]').forEach(option=>{
     const on=option.dataset.typographyId===activeTypographyId;
     option.setAttribute('aria-checked',String(on));
-    option.tabIndex=on?0:-1;
+    option.disabled=!supported;
+    option.tabIndex=supported&&on?0:-1;
   });
+  const picker=document.getElementById('typography-picker');
+  if(picker)picker.title=supported?'':'当前比例尚未支持字体切换';
 }
 /* 字体分段短名:合同投影只有全名,侧栏窄列用两字短标签,全名进 aria-label。 */
 const TYPOGRAPHY_SHORT_NAMES=Object.freeze({'all-sans':'黑体','all-serif':'宋体','mixed':'混合'});
@@ -1077,7 +1254,8 @@ function syncCatalogEmphasisToggle(tabId=document.querySelector('.tab.on')?.data
   const layerOpen=document.getElementById('layer')?.classList.contains('on');
   const card=layerOpen?activeFocusCard:null;
   /* 侧栏只在强调合同适用的关系页与结构页出现；详情全屏覆盖侧栏时仍按当前卡片判定状态。 */
-  const applicable=(!layerOpen&&(tabId==='lyt'||tabId==='str'))||card?.dataset.focusState==='available';
+  const ratioFocus=RATIO_CAPABILITIES[activeRatioId].focus;
+  const applicable=ratioFocus&&((!layerOpen&&(tabId==='lyt'||tabId==='str'))||card?.dataset.focusState==='available');
   button.hidden=!applicable;
   button.disabled=!applicable;
   button.classList.toggle('on',catalogEmphasisEnabled);
@@ -1099,9 +1277,24 @@ function activeEmphasisEnabled(card=activeFocusCard){
 }
 function activeEmphasisTarget(card=activeFocusCard){
   if(!activeEmphasisEnabled(card))return '';
+  if(activeRatioId==='3:4'&&activeEmphasisProfile(card)==='legacy')return 'legacy.sample';
   const policy=pageEmphasisPolicy(card.dataset.layoutCode);
   return policy.sample_target_id||'';
 }
+/* PORTRAIT_DISPLAY_ONLY_BEGIN */
+const PORTRAIT_EMPHASIS={"A1":{"catalog_comparison_profile":{"default_color":"legacy","emphasis":"standard"},"sample_target_id":"focus.main-evidence"},"A2":{"catalog_comparison_profile":{"default_color":"legacy","emphasis":"legacy"},"sample_target_id":"focus.key-step"},"A3":{"catalog_comparison_profile":{"default_color":"legacy","emphasis":"legacy"},"sample_target_id":"focus.main-evidence"},"A4":{"catalog_comparison_profile":{"default_color":"standard","emphasis":"standard"},"sample_target_id":"focus.key-node"},"A5":{"catalog_comparison_profile":{"default_color":"legacy","emphasis":"standard"},"sample_target_id":"focus.decisive-difference"},"A6":{"catalog_comparison_profile":{"default_color":"standard","emphasis":"legacy"},"sample_target_id":"focus.decisive-difference"},"A8":{"catalog_comparison_profile":{"default_color":"legacy","emphasis":"legacy"},"sample_target_id":"focus.key-layer"},"A9":{"catalog_comparison_profile":{"default_color":"legacy","emphasis":"legacy"},"sample_target_id":"focus.key-step"},"B1":{"catalog_comparison_profile":{"default_color":"legacy","emphasis":"legacy"},"sample_target_id":"focus.key-step"},"B2":{"catalog_comparison_profile":{"default_color":"legacy","emphasis":"legacy"},"sample_target_id":"focus.key-step"},"B3":{"catalog_comparison_profile":{"default_color":"legacy","emphasis":"legacy"},"sample_target_id":"focus.key-step"},"B4":{"catalog_comparison_profile":{"default_color":"standard","emphasis":"legacy"},"sample_target_id":"focus.key-step"},"B5":{"catalog_comparison_profile":{"default_color":"legacy","emphasis":"legacy"},"sample_target_id":"focus.key-step"},"B6":{"catalog_comparison_profile":{"default_color":"legacy","emphasis":"legacy"},"sample_target_id":"focus.key-step"},"C1":{"catalog_comparison_profile":{"default_color":"legacy","emphasis":"legacy"},"sample_target_id":"focus.key-node"},"C2":{"catalog_comparison_profile":{"default_color":"standard","emphasis":"standard"},"sample_target_id":"focus.decisive-difference"},"C3":{"catalog_comparison_profile":{"default_color":"legacy","emphasis":"standard"},"sample_target_id":"focus.key-item"},"C4":{"catalog_comparison_profile":{"default_color":"standard","emphasis":"standard"},"sample_target_id":"focus.nodes-total"},"C5":{"catalog_comparison_profile":{"default_color":"legacy","emphasis":"legacy"},"sample_target_id":"focus.key-layer"},"C6":{"catalog_comparison_profile":{"default_color":"standard","emphasis":"legacy"},"sample_target_id":"focus.main-evidence"},"C7":{"catalog_comparison_profile":{"default_color":"standard","emphasis":"legacy"},"sample_target_id":"focus.decisive-difference"},"E1":{"catalog_comparison_profile":{"default_color":"legacy","emphasis":"legacy"},"sample_target_id":"focus.decisive-difference"},"E2":{"catalog_comparison_profile":{"default_color":"standard","emphasis":"legacy"},"sample_target_id":"focus.decisive-difference"},"E3":{"catalog_comparison_profile":{"default_color":"legacy","emphasis":"legacy"},"sample_target_id":"focus.decisive-difference"},"E4":{"catalog_comparison_profile":{"default_color":"standard","emphasis":"standard"},"sample_target_id":"focus.kpi.1"},"E5":{"catalog_comparison_profile":{"default_color":"standard","emphasis":"standard"},"sample_target_id":"focus.key-item"},"E6":{"catalog_comparison_profile":{"default_color":"standard","emphasis":"standard"},"sample_target_id":"focus.decisive-difference"},"F2":{"catalog_comparison_profile":{"default_color":"legacy","emphasis":"legacy"},"sample_target_id":"focus.key-layer"},"F3":{"catalog_comparison_profile":{"default_color":"legacy","emphasis":"standard"},"sample_target_id":"focus.key-layer"},"G1":{"catalog_comparison_profile":{"default_color":"standard","emphasis":"legacy"},"sample_target_id":"focus.key-layer"},"G2":{"catalog_comparison_profile":{"default_color":"standard","emphasis":"legacy"},"sample_target_id":"focus.main-evidence"},"G4":{"catalog_comparison_profile":{"default_color":"standard","emphasis":"standard"},"sample_target_id":"focus.key-layer"},"G5":{"catalog_comparison_profile":{"default_color":"standard","emphasis":"legacy"},"sample_target_id":"focus.key-layer"},"H1":{"catalog_comparison_profile":{"default_color":"standard","emphasis":"standard"},"sample_target_id":"focus.key-layer"},"H2":{"catalog_comparison_profile":{"default_color":"legacy","emphasis":"standard"},"sample_target_id":"focus.outcome"},"H3":{"catalog_comparison_profile":{"default_color":"standard","emphasis":"legacy"},"sample_target_id":"focus.key-layer"},"H4":{"catalog_comparison_profile":{"default_color":"legacy","emphasis":"standard"},"sample_target_id":"focus.foundation-framework"},"I1":{"catalog_comparison_profile":{"default_color":"standard","emphasis":"standard"},"sample_target_id":"focus.key-step"},"I2":{"catalog_comparison_profile":{"default_color":"standard","emphasis":"standard"},"sample_target_id":"focus.external-trace"},"I3":{"catalog_comparison_profile":{"default_color":"legacy","emphasis":"legacy"},"sample_target_id":"focus.key-step"},"I4":{"catalog_comparison_profile":{"default_color":"standard","emphasis":"standard"},"sample_target_id":"focus.fallback-decision"},"J1":{"catalog_comparison_profile":{"default_color":"standard","emphasis":"standard"},"sample_target_id":"focus.definition-score"},"J2":{"catalog_comparison_profile":{"default_color":"legacy","emphasis":"standard"},"sample_target_id":"focus.iteration-loop"},"J3":{"catalog_comparison_profile":{"default_color":"standard","emphasis":"legacy"},"sample_target_id":"focus.onboard"},"K1":{"catalog_comparison_profile":{"default_color":"legacy","emphasis":"legacy"},"sample_target_id":"focus.key-node"},"K2":{"catalog_comparison_profile":{"default_color":"legacy","emphasis":"legacy"},"sample_target_id":"focus.key-step"},"K3":{"catalog_comparison_profile":{"default_color":"legacy","emphasis":"standard"},"sample_target_id":"focus.recall-rate"},"K4":{"catalog_comparison_profile":{"default_color":"standard","emphasis":"standard"},"sample_target_id":"focus.main-evidence"},"L1":{"catalog_comparison_profile":{"default_color":"standard","emphasis":"legacy"},"sample_target_id":"focus.key-node"},"L2":{"catalog_comparison_profile":{"default_color":"legacy","emphasis":"legacy"},"sample_target_id":"focus.key-node"},"N1":{"catalog_comparison_profile":{"default_color":"legacy","emphasis":"legacy"},"sample_target_id":"focus.key-step"},"O1":{"catalog_comparison_profile":{"default_color":"standard","emphasis":"legacy"},"sample_target_id":"focus.key-step"},"P1":{"catalog_comparison_profile":{"default_color":"standard","emphasis":"standard"},"sample_target_id":"focus.key-step"},"P2":{"catalog_comparison_profile":{"default_color":"standard","emphasis":"standard"},"sample_target_id":"focus.key-node"},"Q1":{"catalog_comparison_profile":{"default_color":"standard","emphasis":"legacy"},"sample_target_id":"focus.key-node"},"Q2":{"catalog_comparison_profile":{"default_color":"legacy","emphasis":"legacy"},"sample_target_id":"focus.annotation"},"Q3":{"catalog_comparison_profile":{"default_color":"standard","emphasis":"standard"},"sample_target_id":"focus.decisive-difference"},"Q4":{"catalog_comparison_profile":{"default_color":"standard","emphasis":"legacy"},"sample_target_id":"focus.key-node"},"R1":{"catalog_comparison_profile":{"default_color":"legacy","emphasis":"standard"},"sample_target_id":"focus.key-item"},"R2":{"catalog_comparison_profile":{"default_color":"legacy","emphasis":"legacy"},"sample_target_id":"focus.key-layer"},"R3":{"catalog_comparison_profile":{"default_color":"legacy","emphasis":"standard"},"sample_target_id":"focus.key-item"},"R4":{"catalog_comparison_profile":{"default_color":"standard","emphasis":"legacy"},"sample_target_id":"focus.decisive-difference"},"R5":{"catalog_comparison_profile":{"default_color":"standard","emphasis":"legacy"},"sample_target_id":"focus.key-node"},"R6":{"catalog_comparison_profile":{"default_color":"legacy","emphasis":"legacy"},"sample_target_id":"focus.key-layer"},"R7":{"catalog_comparison_profile":{"default_color":"standard","emphasis":"standard"},"sample_target_id":"focus.key-item"},"S1":{"catalog_comparison_profile":{"default_color":"standard","emphasis":"standard"},"sample_target_id":"focus.layer.application"},"S2":{"catalog_comparison_profile":{"default_color":"legacy","emphasis":"legacy"},"sample_target_id":"focus.variable-cost"},"S3":{"catalog_comparison_profile":{"default_color":"legacy","emphasis":"standard"},"sample_target_id":"focus.metric.3"},"T1":{"catalog_comparison_profile":{"default_color":"legacy","emphasis":"standard"},"sample_target_id":"focus.key-step"},"T2":{"catalog_comparison_profile":{"default_color":"standard","emphasis":"standard"},"sample_target_id":"focus.layout.1"},"T3":{"catalog_comparison_profile":{"default_color":"legacy","emphasis":"standard"},"sample_target_id":"focus.decision-card-shadow"},"U1":{"catalog_comparison_profile":{"default_color":"legacy","emphasis":"legacy"},"sample_target_id":"focus.decisive-difference"},"U2":{"catalog_comparison_profile":{"default_color":"standard","emphasis":"legacy"},"sample_target_id":"focus.decisive-difference"},"U3":{"catalog_comparison_profile":{"default_color":"legacy","emphasis":"standard"},"sample_target_id":"focus.productized-fulcrum"},"W1":{"catalog_comparison_profile":{"default_color":"standard","emphasis":"standard"},"sample_target_id":"focus.key-layer"},"D1":{"catalog_comparison_profile":{"default_color":"standard","emphasis":"standard"},"sample_target_id":null},"D10":{"catalog_comparison_profile":{"default_color":"standard","emphasis":"standard"},"sample_target_id":null},"D11":{"catalog_comparison_profile":{"default_color":"standard","emphasis":"standard"},"sample_target_id":null},"D2":{"catalog_comparison_profile":{"default_color":"standard","emphasis":"standard"},"sample_target_id":null},"D3":{"catalog_comparison_profile":{"default_color":"standard","emphasis":"standard"},"sample_target_id":null},"D4":{"catalog_comparison_profile":{"default_color":"standard","emphasis":"standard"},"sample_target_id":null},"D5":{"catalog_comparison_profile":{"default_color":"standard","emphasis":"standard"},"sample_target_id":null},"D6":{"catalog_comparison_profile":{"default_color":"standard","emphasis":"standard"},"sample_target_id":"contact.primary"},"D7":{"catalog_comparison_profile":{"default_color":"standard","emphasis":"standard"},"sample_target_id":null},"D8":{"catalog_comparison_profile":{"default_color":"standard","emphasis":"standard"},"sample_target_id":null},"D9":{"catalog_comparison_profile":{"default_color":"standard","emphasis":"standard"},"sample_target_id":null},"M1":{"catalog_comparison_profile":{"default_color":"standard","emphasis":"standard"},"sample_target_id":null},"M2":{"catalog_comparison_profile":{"default_color":"standard","emphasis":"standard"},"sample_target_id":null}};
+function pageCatalogResolvedProfile(card=activeFocusCard){
+  if(!card?.dataset.layoutCode)return {default_color:'standard',emphasis:'standard'};
+  const policy=PORTRAIT_EMPHASIS[String(card.dataset.layoutCode).toUpperCase()]||{};
+  return policy.catalog_comparison_profile||{default_color:'standard',emphasis:'standard'};
+}
+function activeDefaultColorProfile(card=activeFocusCard){
+  return pageCatalogResolvedProfile(card).default_color;
+}
+function activeEmphasisProfile(card=activeFocusCard){
+  return pageCatalogResolvedProfile(card).emphasis;
+}
+/* PORTRAIT_DISPLAY_ONLY_END */
 function thumbSlug(value){
   return String(value).toLowerCase().replace(/\.html$/,'').replace(/[^a-z0-9]+/g,'-').replace(/^-|-$/g,'');
 }
@@ -1122,12 +1315,27 @@ function catalogLayoutFrame(code,themeId=activeThemeId){
 function catalogLayoutFamily(themeId=activeThemeId){
   return CATALOG_PROJECTED_THEME_IDS.has(themeId)?'catalog-theme-projection':'paper-ink-baseline';
 }
+function portraitLayoutThumbKey(code){
+  return pageThumbKey(PORTRAIT_FRAMES+'layout-'+catalogLayoutCode(code)+'.html');
+}
+function portraitProjectionActive(themeId=activeThemeId){
+  return PORTRAIT_PROJECTIONS_ENABLED&&CATALOG_PROJECTED_THEME_IDS.has(themeId);
+}
+function portraitLayoutFrame(code,themeId=activeThemeId){
+  const layoutCode=catalogLayoutCode(code);
+  return portraitProjectionActive(themeId)
+    ?PORTRAIT_THEME_FRAMES+themeId+'/layout-'+layoutCode+'.html'
+    :PORTRAIT_FRAMES+'layout-'+layoutCode+'.html';
+}
 function syncCatalogLayoutCards(themeId=activeThemeId){
   document.querySelectorAll('[data-layout-code]').forEach(card=>{
     const code=card.dataset.layoutCode;
-    card.dataset.frame=catalogLayoutFrame(code,themeId);
-    card.dataset.frameFamily=catalogLayoutFamily(themeId);
-    card.dataset.thumbKey=catalogLayoutThumbKey(code);
+    const portrait=card.dataset.frameRatio==='3x4';
+    card.dataset.frame=portrait?portraitLayoutFrame(code,themeId):catalogLayoutFrame(code,themeId);
+    card.dataset.frameFamily=portrait
+      ?(portraitProjectionActive(themeId)?'catalog-theme-projection':'paper-ink-baseline')
+      :catalogLayoutFamily(themeId);
+    card.dataset.thumbKey=portrait?portraitLayoutThumbKey(code):catalogLayoutThumbKey(code);
     const policy=pageEmphasisPolicy(code,themeId);
     const nonRel=policy.kind==='nonrelationship';
     const focusCapable=policy.targets.length>0&&['semantic-focus','conditional-semantic-focus'].includes(policy.access);
@@ -1144,7 +1352,8 @@ function syncCatalogLayoutCards(themeId=activeThemeId){
 }
 /* 缩略图直写 src + 原生 lazy:隐藏 tab(display:none)与收起章节不请求,滚到附近才加载。 */
 function thumbMarkup(thumb,alt,wrapClass='frame-wrap'){
-  return `<div class="${wrapClass}"><img class="catalog-thumb" src="${thumb}" loading="lazy" width="640" height="360" decoding="async" alt="${String(alt||'').replace(/"/g,'&quot;')}"></div>`;
+  const portrait=String(wrapClass).split(/\s+/).includes('is-portrait');
+  return `<div class="${wrapClass}"><img class="catalog-thumb" src="${thumb}" loading="lazy" width="${portrait?480:640}" height="${portrait?640:360}" decoding="async" alt="${String(alt||'').replace(/"/g,'&quot;')}"></div>`;
 }
 
 /* 有副信息的卡片统一走表单行:一行一字段(标签+值) */
@@ -1184,6 +1393,34 @@ function layoutCard([id,nm,struct,rel]){
     <div class="card-info">
       <div class="card-head"><span class="id">${id}</span><span class="nm">${nm}</span></div>
       ${metaMarkup}
+    </div></div>`;
+}
+function portraitLayoutCard([id,nm,struct,rel],scope='lyt'){
+  const code=catalogLayoutCode(id);
+  const full=portraitLayoutFrame(code);
+  const thumbKey=portraitLayoutThumbKey(code);
+  const thumb=thumbPath(thumbKey);
+  const policy=pageEmphasisPolicy(id);
+  const focusCapable=policy.targets.length>0&&['semantic-focus','conditional-semantic-focus'].includes(policy.access);
+  const focusState=focusCapable?'available':'no-sample';
+  const focus=focusStrategyText(policy);
+  return `<div class="card" id="${scope}-${id.toLowerCase()}" data-modal="1" data-focus-state="${focusState}"${focusCapable?' data-focus-capable="1"':''} data-frame-ratio="3x4" data-layout-code="${code}" data-frame-family="${portraitProjectionActive()?'catalog-theme-projection':'paper-ink-baseline'}" data-frame="${full}" data-frame-width="1080" data-frame-height="1440" data-thumb-width="480" data-thumb-height="640" data-thumb-key="${thumbKey}" data-thumb="${thumb}" data-mtitle="${id} ${nm} · 3:4" data-mtag="Catalog 预览 · 未登记 standard 生产 · 结构:${struct} · 关系:${rel} · 焦点:${focus} · 画布:1080×1440">
+    ${thumbMarkup(thumb,id+' '+nm+' 3:4','frame-wrap is-portrait')}
+    <div class="card-info">
+      <div class="card-head"><span class="id">${id}</span><span class="nm">${nm}</span></div>
+      <div class="meta">${metaRowsMarkup([['结构',struct],['关系',rel],['焦点',focus],['状态','Catalog 预览 · 未登记生产']])}</div>
+    </div></div>`;
+}
+function portraitTemplateCard([id,nm]){
+  const code=catalogLayoutCode(id);
+  const full=portraitLayoutFrame(code);
+  const thumbKey=portraitLayoutThumbKey(code);
+  const thumb=thumbPath(thumbKey);
+  return `<div class="card" id="tpl-${id.toLowerCase()}" data-modal="1" data-focus-state="nonrelationship" data-frame-ratio="3x4" data-layout-code="${code}" data-frame-family="${portraitProjectionActive()?'catalog-theme-projection':'paper-ink-baseline'}" data-frame="${full}" data-frame-width="1080" data-frame-height="1440" data-thumb-width="480" data-thumb-height="640" data-thumb-key="${thumbKey}" data-thumb="${thumb}" data-mtitle="${id} ${nm} · 3:4" data-mtag="Catalog 预览 · 未登记 standard 生产 · 非关系页 · 画布:1080×1440">
+    ${thumbMarkup(thumb,id+' '+nm+' 3:4','frame-wrap is-portrait')}
+    <div class="card-info">
+      <div class="card-head"><span class="id">${id}</span><span class="nm">${nm}</span></div>
+      <div class="meta">${metaRowsMarkup([['状态','Catalog 预览 · 未登记生产']])}</div>
     </div></div>`;
 }
 /* 详情路由:atlas/native → 画册 #/layout/N;echarts → #/component/{slug}-default */
@@ -1237,31 +1474,48 @@ function componentPageScale(spec){
 
 /* 非 tpl 页签的重卡片 DOM 首次切换才物化,首开只建默认落地的模板页。 */
 const TAB_RENDERERS={};
+const RENDERED_TABS=new Set(['tpl']);
 function ensureTabRendered(id){
   const render=TAB_RENDERERS[id];
-  if(render){delete TAB_RENDERERS[id];render();}
+  if(render){delete TAB_RENDERERS[id];render();RENDERED_TABS.add(id);}
 }
 
-/* 非关系页:五组职能分区,左栏二级目录与滚动高亮走通用逻辑 */
-$('#tpl-fams').innerHTML=NON_REL_GROUPS.map(g=>`
-  <div class="fam-section" id="tpl-fam-${g.id}" data-catalog-section>
-    <div class="fam-head"><h2>${g.cn}</h2><span class="desc">${g.role}</span></div>
-    <div class="grid">${g.items.map(layoutCard).join('')}</div>
-  </div>`).join('');
-$('#c-tpl').textContent=NON_REL.length;
-$('#tpl-nav').innerHTML=NON_REL_GROUPS.map(g=>`<button type="button" data-section-jump="tpl-fam-${g.id}"><span>${g.cn}</span><span class="subnav-count">${g.items.length}</span></button>`).join('');
+/* 非关系页沿用同一套分类与侧边菜单；比例只切换该分类下的 Catalog 页面资产。 */
+function renderTemplateTab(){
+  const portrait=activeRatioId==='3:4';
+  $('#tpl-fams').innerHTML=NON_REL_GROUPS.map(g=>`
+      <div class="fam-section" id="tpl-fam-${g.id}" data-catalog-section>
+        <div class="fam-head"><h2>${g.cn}</h2><span class="desc">${g.role}</span></div>
+        <div class="grid">${g.items.map(item=>portrait?portraitTemplateCard(item):layoutCard(item)).join('')}</div>
+      </div>`).join('');
+  $('#c-tpl').textContent=NON_REL.length;
+  $('#tpl-nav').innerHTML=NON_REL_GROUPS.map(g=>`<button type="button" data-section-jump="tpl-fam-${g.id}"><span>${g.cn}</span><span class="subnav-count">${g.items.length}</span></button>`).join('');
+}
 
+/* 3:4 仍使用同一套关系分类与卡片容器，只把结构元数据换成真实竖版拆法。 */
+const PORTRAIT_LAYOUT_TYPES=SMARTART_TYPES.map(f=>({
+  ...f,
+  items:f.items.filter(item=>PORTRAIT_LAYOUT_CODES.includes(item[0])).map(item=>{
+    const meta=PORTRAIT_LAYOUT_META[item[0]];
+    return [item[0],item[1],meta.structure,meta.relation];
+  }),
+})).filter(f=>f.items.length);
+function currentLayoutTypes(){return activeRatioId==='3:4'?PORTRAIT_LAYOUT_TYPES:SMARTART_TYPES;}
 /* 版式:SmartArt 语义入口 + Wise PPT 数据扩展(卡片 DOM 首次进页签才渲染) */
 function renderLayoutTab(){
-  $('#lyt-fams').innerHTML=SMARTART_TYPES.map(f=>`
+  const portrait=activeRatioId==='3:4',types=currentLayoutTypes();
+  $('#lyt-fams').innerHTML=types.map(f=>`
     <div class="fam-section" id="lyt-fam-${f.id}" data-catalog-section>
       <div class="fam-head"><h2>${f.cn}</h2><span class="tag">${f.id}</span><span class="desc">${f.desc} · ${f.items.length} 版式</span></div>
-      <div class="grid">${f.items.map(layoutCard).join('')}</div>
+      <div class="grid">${f.items.map(item=>portrait?portraitLayoutCard(item):layoutCard(item)).join('')}</div>
     </div>`).join('');
 }
+function syncLayoutNavigation(){
+  const types=currentLayoutTypes();
+  $('#c-lyt').textContent=types.reduce((sum,f)=>sum+f.items.length,0);
+  $('#lyt-nav').innerHTML=types.map(f=>`<button type="button" data-section-jump="lyt-fam-${f.id}"><span>${f.cn}</span><span class="subnav-count">${f.items.length}</span></button>`).join('');
+}
 TAB_RENDERERS.lyt=renderLayoutTab;
-$('#c-lyt').textContent=SMARTART_LAYOUT_COUNT;
-$('#lyt-nav').innerHTML=SMARTART_TYPES.map(f=>`<button type="button" data-section-jump="lyt-fam-${f.id}"><span>${f.cn}</span><span class="subnav-count">${f.items.length}</span></button>`).join('');
 
 /* 组件:与版式共用同一组 SmartArt 语义入口(卡片 DOM 首次进页签才渲染) */
 function renderComponentTab(){
@@ -1486,7 +1740,83 @@ $('#c-ico').textContent='…';
     if(frame===liveFrame)liveFrame=null;
     wrap.remove();
   }
+/* PORTRAIT_DISPLAY_ONLY_BEGIN */
+  function requestPortraitFrameState(frame){
+    if(!frame||!frame.contentWindow)return Promise.reject(new Error('参考帧尚未就绪'));
+    if(typeof frame._wiseCancelState==='function')frame._wiseCancelState();
+    const requestId='catalog-state-'+(++frameStateSerial);
+    const requested={
+      themeId:activeThemeId,
+      typographyMode:activeTypographyId,
+      defaultColorProfile:activeDefaultColorProfile(),
+      emphasisTarget:activeEmphasisTarget(),
+      emphasisProfile:activeEmphasisProfile(),
+    };
+    return new Promise((resolve,reject)=>{
+      let settled=false;
+      const cleanup=()=>{
+        clearTimeout(timer);
+        clearInterval(resend);
+        window.removeEventListener('message',onMessage);
+        if(frame._wiseCancelState===cancel)frame._wiseCancelState=null;
+      };
+      const finish=(error,result)=>{
+        if(settled)return;
+        settled=true;cleanup();
+        if(error)reject(error);else resolve(result);
+      };
+      const cancel=()=>{
+        const error=new Error('参考帧状态切换已取消');error.name='AbortError';finish(error);
+      };
+      const onMessage=event=>{
+        if(event.source!==frame.contentWindow)return;
+        const data=event.data;
+        if(!data||data.type!=='wise-ppt-frame-state-ready'||data.protocol!=='wise-ppt-frame/v1'||data.requestId!==requestId)return;
+        if(data.status==='reload-required')return finish(null,{reloadRequired:true});
+        if(data.status==='fail')return finish(new Error('参考帧状态切换失败: '+(data.reason||frame.src)));
+        if(data.status!=='ready')return;
+        if(data.themeId!==requested.themeId||data.typographyMode!==requested.typographyMode||String(data.defaultColorProfile||'standard')!==requested.defaultColorProfile||String(data.emphasisTarget||'')!==requested.emphasisTarget||String(data.emphasisProfile||'standard')!==requested.emphasisProfile){
+          return finish(new Error('参考帧状态回报与请求不一致'));
+        }
+        const recipeMatch=new URL(frame.src,location.href).pathname.match(/\/frames(?:-3x4)?\/(hermes-orange|klein-blue)\/layout-([^/]+)\.html$/);
+        const expectedRecipe=recipeMatch?recipeMatch[1]+':'+recipeMatch[2]:'';
+        if(expectedRecipe&&(data.recipeId!==expectedRecipe||data.recipeComplete!==true||data.surfaceReady!=='true')){
+          return finish(new Error('参考帧 recipe 状态回报不完整: '+expectedRecipe));
+        }
+        /* file:// 下父子文档是不同不透明源，测试与诊断不能读取 contentDocument；
+           把已验证过的子页回报留在 iframe 元素自身，避免用猜测代替握手结果。 */
+        frame.dataset.wiseStateTheme=data.themeId;
+        frame.dataset.wiseStateTypography=data.typographyMode;
+        frame.dataset.wiseStateDefaultColorProfile=data.defaultColorProfile||'standard';
+        frame.dataset.wiseStateEmphasis=data.emphasisTarget||'';
+        frame.dataset.wiseStateEmphasisProfile=data.emphasisProfile||'standard';
+        frame.dataset.wiseStateRecipe=data.recipeId||'';
+        frame.dataset.wiseStateRecipeStatus=data.recipeStatus||'';
+        frame.dataset.wiseStateRecipeReady=data.recipeReady||'';
+        frame.dataset.wiseStateRecipeComplete=String(data.recipeComplete===true);
+        frame.dataset.wiseStateSurfaceReady=data.surfaceReady||'';
+        finish(null,{reloadRequired:false});
+      };
+      window.addEventListener('message',onMessage);
+      const timer=setTimeout(()=>finish(new Error('参考帧 8s 内未完成状态切换')),8000);
+      /* 停泊帧刚搬回舞台时 browsing context 尚在解冻，postMessage 可能整条丢失；
+         同 requestId 周期重发，子页 serial 只认最后一次，重复投递天然幂等。 */
+      const send=()=>{
+        if(frame.contentWindow)frame.contentWindow.postMessage({
+          type:'wise-ppt-frame-state',protocol:'wise-ppt-frame/v1',requestId,
+          themeId:requested.themeId,typographyMode:requested.typographyMode,
+          defaultColorProfile:requested.defaultColorProfile,
+          emphasisTarget:requested.emphasisTarget,emphasisProfile:requested.emphasisProfile,
+        },'*');
+      };
+      const resend=setInterval(send,400);
+      frame._wiseCancelState=cancel;
+      send();
+    });
+  }
+/* PORTRAIT_DISPLAY_ONLY_END */
   function requestFrameState(frame){
+    if(frameCanvas(frame.src).width===1080)return requestPortraitFrameState(frame);
     if(!frame||!frame.contentWindow)return Promise.reject(new Error('参考帧尚未就绪'));
     if(typeof frame._wiseCancelState==='function')frame._wiseCancelState();
     const requestId='catalog-state-'+(++frameStateSerial);
@@ -1713,9 +2043,13 @@ $('#c-ico').textContent='…';
 
   /* Deck 式全屏只改变查看器外壳，不改变内容比例：页面、结构和组件都按完整
      1920×1080 画布 contain 到视口。组件槽内的生产适配仍由 behavior runtime 负责。 */
-  function fitDeckPage(node,stage){
-    const s=Math.min(stage.clientWidth/1920,stage.clientHeight/1080);
-    const dx=(stage.clientWidth-1920*s)/2,dy=(stage.clientHeight-1080*s)/2;
+  /* Deck 式全屏只改变查看器外壳，不改变内容比例；16:9 与 3:4 页面各按自身标称画布 contain。 */
+  function frameCanvas(url){
+    return /gallery-paper-ink-3x4\/|\/frames-3x4\//.test(String(url))?{width:1080,height:1440}:{width:1920,height:1080};
+  }
+  function fitDeckPage(node,stage,canvas={width:1920,height:1080}){
+    const s=Math.min(stage.clientWidth/canvas.width,stage.clientHeight/canvas.height);
+    const dx=(stage.clientWidth-canvas.width*s)/2,dy=(stage.clientHeight-canvas.height*s)/2;
     node.style.transform='translate('+dx+'px,'+dy+'px) scale('+s+')';
   }
   function settleVariantSwap(live,token){
@@ -2001,6 +2335,122 @@ $('#c-ico').textContent='…';
   }
   let frameReadySerial=0;
   /* 新鲜加载的 URL 只携带强调目标；主题已经由 frame 路径固定，字体由共享 plan 固定。 */
+/* PORTRAIT_DISPLAY_ONLY_BEGIN */
+  function portraitFrameRequestUrl(url,emphasisTarget){
+    const frameUrl=new URL(url,location.href);
+    frameUrl.searchParams.set('wise-ppt-embed','gallery');
+    frameUrl.searchParams.set('theme',activeThemeId);
+    /* 样张自身缺省是 all-sans，实时预览必须显式传解析后的字体档，白纸缺省的混合档才不会丢。 */
+    frameUrl.searchParams.set('typography',activeTypographyId);
+    /* 静态冻结:浮层预览永远停在终态,入场动效不播,AI/人任何时刻截图看到的都是标称几何。 */
+    frameUrl.searchParams.set('static','1');
+    frameUrl.searchParams.delete('accent');
+    frameUrl.searchParams.set('default-color-profile',activeDefaultColorProfile());
+    frameUrl.searchParams.set('emphasis-profile',activeEmphasisProfile());
+    if(emphasisTarget)frameUrl.searchParams.set('emphasis',emphasisTarget);
+    else frameUrl.searchParams.delete('emphasis');
+    return frameUrl;
+  }
+  async function renderPortraitFrame(url,st,emphasisTarget){
+    const frameUrl=portraitFrameRequestUrl(url,emphasisTarget);
+    const canvas=frameCanvas(frameUrl.href);
+    const cacheKey=frameCacheKey(frameUrl.href);
+    const cached=frameCache.get(cacheKey);
+    if(cached){
+      /* 命中页面缓存：先把存活文档搬回舞台，再原地同步当前配色/字体。 */
+      touchFrameCache(cacheKey,cached);
+      st.appendChild(cached);
+      liveFrame=cached.querySelector('iframe');
+      const refit=()=>fitDeckPage(liveFrame,st,canvas);
+      requestAnimationFrame(()=>{refit();requestAnimationFrame(refit);});
+      /* 从 display:none 停泊宿主搬回后先让浏览器恢复 browsing context，
+         否则同一任务里立刻 postMessage 在 Chromium 中可能丢失。 */
+      await twoFrames();
+      const state=await requestPortraitFrameState(liveFrame);
+      if(state.reloadRequired){
+        evictFrameWrap(cached);
+        return renderPortraitFrame(url,st,emphasisTarget);
+      }
+      await twoFrames();
+      return;
+    }
+    const wrap=document.createElement('div');
+    /* 等比缩放取 min(宽比,高比)并居中;补边染纸色,舞台的深一档底色(paper-deep)不能露出来 */
+    wrap.style.cssText='position:absolute;inset:0;overflow:hidden;background:var(--paper)';
+    const f=document.createElement('iframe');
+    f.style.cssText='width:'+canvas.width+'px;height:'+canvas.height+'px;border:0;transform-origin:0 0';
+    wrap.appendChild(f);st.appendChild(wrap);
+    liveFrame=f;
+    const fit=()=>fitDeckPage(f,st,canvas);
+    const frameCode=(frameUrl.pathname.match(/\/layout-([^/]+)\.html$/)||[])[1]||'';
+    const expectedPageId=frameCode?'gallery-ai-'+frameCode:'';
+    const recipeMatch=frameUrl.pathname.match(/\/frames(?:-3x4)?\/(hermes-orange|klein-blue)\/layout-([^/]+)\.html$/);
+    const expectedRecipeId=recipeMatch?recipeMatch[1]+':'+recipeMatch[2]:'';
+    const frameNonce='catalog-'+openToken+'-'+(++frameReadySerial);
+    frameUrl.searchParams.set('wise-ppt-frame-nonce',frameNonce);
+    const loaded=new Promise((resolve,reject)=>{
+      let settled=false;
+      const cleanup=()=>{
+        clearTimeout(timer);
+        window.removeEventListener('message',onMessage);
+        f._wiseCancelReady=null;
+      };
+      const finish=(error)=>{
+        if(settled)return;
+        settled=true;cleanup();
+        if(error)reject(error);else resolve();
+      };
+      const onMessage=e=>{
+        if(e.source!==f.contentWindow)return;
+        const data=e.data;
+        if(!data||data.type!=='wise-ppt-frame-ready'||data.nonce!==frameNonce)return;
+        if(data.protocol!=='wise-ppt-frame/v1')return finish(new Error('参考帧 ready 协议不兼容'));
+        if(data.status==='fail')return finish(new Error('参考帧渲染失败: '+(data.reason||frameCode||url)));
+        if(data.status!=='ready')return;
+        if(expectedPageId&&data.pageId!==expectedPageId)return finish(new Error('参考帧身份不匹配: '+data.pageId));
+        if(data.frameWidth!==canvas.width||data.frameHeight!==canvas.height)return finish(new Error('参考帧逻辑尺寸不是 '+canvas.width+'×'+canvas.height));
+        if(data.specimenFit!=='noop-in-gallery'||data.scaleOwner!=='gallery-runtime')return finish(new Error('参考帧发生二次缩放'));
+        if(data.specimenStatic!=='true')return finish(new Error('参考帧未进入静态标称态'));
+        if(expectedRecipeId&&(data.recipeId!==expectedRecipeId||data.recipeComplete!==true||data.surfaceReady!=='true')){
+          return finish(new Error('参考帧 recipe 未完成: '+expectedRecipeId));
+        }
+        f.dataset.wiseStateRecipe=data.recipeId||'';
+        f.dataset.wiseStateRecipeStatus=data.recipeStatus||'';
+        f.dataset.wiseStateRecipeReady=data.recipeReady||'';
+        f.dataset.wiseStateRecipeComplete=String(data.recipeComplete===true);
+        f.dataset.wiseStateSurfaceReady=data.surfaceReady||'';
+        finish();
+      };
+      window.addEventListener('message',onMessage);
+      const timer=setTimeout(()=>finish(new Error('参考帧 8s 内未回报真实 ready: '+(frameCode||url))),8000);
+      f._wiseCancelReady=()=>finish(new Error('参考帧加载已取消'));
+    });
+    f.src=frameUrl.href;
+    requestAnimationFrame(()=>{fit();requestAnimationFrame(fit);});
+    await loaded;
+    /* 子页完成字体、图像和业务绘制后，以 nonce 回报 ready；父页验证身份、尺寸、
+       缩放所有权与静态态，未通过时保留缩略图并显示明确错误。 */
+    await twoFrames();
+    /* 握手通过即写回与 requestFrameState 同源的状态指纹:开机 URL 带的就是已生效状态,
+       翻回新鲜帧保持免门面快路径;停泊期间换过字体/换色的帧由 loadCard 退回门面路径。 */
+    f.dataset.wiseStateTheme=frameUrl.searchParams.get('theme')||'';
+    f.dataset.wiseStateTypography=frameUrl.searchParams.get('typography')||'';
+    f.dataset.wiseStateDefaultColorProfile=frameUrl.searchParams.get('default-color-profile')||'standard';
+    f.dataset.wiseStateEmphasis=frameUrl.searchParams.get('emphasis')||'';
+    f.dataset.wiseStateEmphasisProfile=frameUrl.searchParams.get('emphasis-profile')||'standard';
+    /* ready 校验通过的帧登记进缓存；之后的关闭/翻页只会把它停泊进隐藏宿主。超限按 LRU 淘汰：
+       wrap 从宿主移出 DOM，文档随 browsing context 销毁，内存真正归还。 */
+    wrap.dataset.wiseFrameCache=cacheKey;
+    touchFrameCache(cacheKey,wrap);
+    while(frameCache.size>FRAME_CACHE_LIMIT){
+      const oldestKey=frameCache.keys().next().value;
+      const oldest=frameCache.get(oldestKey);
+      frameCache.delete(oldestKey);
+      if(oldest)oldest.remove();
+    }
+  }
+
+/* PORTRAIT_DISPLAY_ONLY_END */
   function frameRequestUrl(url,emphasisTarget){
     const frameUrl=new URL(url,location.href);
     frameUrl.searchParams.set('wise-ppt-embed','gallery');
@@ -2012,7 +2462,9 @@ $('#c-ico').textContent='…';
     return frameUrl;
   }
   async function renderFrame(url,st,emphasisTarget){
+    if(frameCanvas(url).width===1080)return renderPortraitFrame(url,st,emphasisTarget);
     const frameUrl=frameRequestUrl(url,emphasisTarget);
+    const canvas=frameCanvas(frameUrl.href);
     const cacheKey=frameCacheKey(frameUrl.href);
     const cached=frameCache.get(cacheKey);
     if(cached){
@@ -2020,7 +2472,7 @@ $('#c-ico').textContent='…';
       touchFrameCache(cacheKey,cached);
       st.appendChild(cached);
       liveFrame=cached.querySelector('iframe');
-      const refit=()=>fitDeckPage(liveFrame,st);
+      const refit=()=>fitDeckPage(liveFrame,st,canvas);
       requestAnimationFrame(()=>{refit();requestAnimationFrame(refit);});
       /* 从 display:none 停泊宿主搬回后先让浏览器恢复 browsing context，
          否则同一任务里立刻 postMessage 在 Chromium 中可能丢失。 */
@@ -2965,6 +3417,14 @@ STRUCTS.forEach(d=>{
   if(miss.length||dup.length||extra.length)
     throw new Error(d.cn+' 分点与版式未闭合: 漏='+miss+' 重='+dup+' 多='+extra);
 });
+const PORTRAIT_LAYOUT_ITEMS=PORTRAIT_LAYOUT_TYPES.flatMap(f=>f.items);
+const portraitByStruct={};
+PORTRAIT_LAYOUT_ITEMS.forEach(item=>{
+  const key=structKeyOf(item[2]);
+  (portraitByStruct[key]||(portraitByStruct[key]=[])).push(item);
+});
+if(portraitByStruct.other)throw new Error('未归入 3:4 结构的版式:'+portraitByStruct.other.map(item=>item[0]).join(','));
+const PORTRAIT_STRUCTS=STRUCTS.map(item=>({...item,items:portraitByStruct[item.key]||[]})).filter(item=>item.items.length);
 
 /* 结构页:每类结构 = 判断/怎么拆/备注三行 + 空槽蓝图与对应版式成对展示。 */
 function emptyCard(d,e){
@@ -3006,6 +3466,7 @@ function requestedStructureKey(){
   return STRUCTS[0].key;
 }
 const INITIAL_STRUCTURE_KEY=requestedStructureKey();
+let activeStructureKey=INITIAL_STRUCTURE_KEY;
 function structureVariant(d,e){
   const examples=examplesOf(d,e);
   const exampleGrid=examples.length
@@ -3022,16 +3483,48 @@ function structureVariant(d,e){
     </div>
   </section>`;
 }
-$('#struct-nav').innerHTML=STRUCTS.map(d=>{
-  const count=(byStruct[d.key]||[]).length;
-  const current=d.key===INITIAL_STRUCTURE_KEY;
-  return `<button type="button" data-struct-jump="${d.key}" class="${current?'on':''}" aria-current="${current?'true':'false'}"><span>${d.cn}</span><span class="subnav-count">${count}</span></button>`;
-}).join('');
+function currentStructureTypes(){return activeRatioId==='3:4'?PORTRAIT_STRUCTS:STRUCTS;}
+function structureKeyForRatio(preferredKey=activeStructureKey){
+  const types=currentStructureTypes();
+  return types.some(item=>item.key===preferredKey)?preferredKey:types[0]?.key||'';
+}
+function syncStructureNavigation(){
+  const types=currentStructureTypes(),selectedKey=structureKeyForRatio();
+  activeStructureKey=selectedKey;
+  $('#struct-nav').innerHTML=types.map(d=>{
+    const count=activeRatioId==='3:4'?d.items.length:(byStruct[d.key]||[]).length;
+    const current=d.key===selectedKey;
+    return `<button type="button" data-struct-jump="${d.key}" class="${current?'on':''}" aria-current="${current?'true':'false'}"><span>${d.cn}</span><span class="subnav-count">${count}</span></button>`;
+  }).join('');
+  $('#c-str').textContent=types.length;
+  wireStructureNav();
+}
 /* 结构页签 DOM 首次进页签才渲染;折叠头 handler 随 #str-list 一起挂,不提前绑空集。 */
 function renderStructureTab(){
+  const selectedKey=structureKeyForRatio();
+  activeStructureKey=selectedKey;
+  if(activeRatioId==='3:4'){
+    $('#str-list').innerHTML=PORTRAIT_STRUCTS.map(d=>{
+      const open=d.key===selectedKey,panelId='struct-panel-'+d.key,toggleId='struct-toggle-'+d.key;
+      return `<section class="struct-section${open?' is-open':''}" data-struct="${d.key}">
+        <h2 class="struct-toggle-head"><button class="struct-toggle" id="${toggleId}" type="button" aria-expanded="${open}" aria-controls="${panelId}">
+          <span class="struct-toggle-title">${d.cn}<span class="tag">${d.en}</span></span>
+          <span class="struct-toggle-meta">${d.items.length} 个 3:4 版式</span><span class="struct-toggle-mark" aria-hidden="true">▾</span>
+        </button></h2>
+        <div class="struct-panel" id="${panelId}" role="region" aria-labelledby="${toggleId}"${open?'':' hidden'}>
+          <div class="struct-info">
+            <div class="s-row"><b>判断</b><span>${d.judge}</span></div>
+            <div class="s-row"><b>怎么拆</b><span>${d.cut}</span></div>
+            <div class="s-row"><b>状态</b><span>当前只列出已完成 1080×1440 重排的 Catalog 预览；尚未登记 standard 生产合同与 3:4 空槽蓝图。</span></div>
+          </div>
+          <div class="grid">${d.items.map(item=>portraitLayoutCard(item,'str')).join('')}</div>
+        </div>
+      </section>`;
+    }).join('');
+  }else{
   $('#str-list').innerHTML=STRUCTS.map(d=>{
     const count=(byStruct[d.key]||[]).length;
-    const open=d.key===INITIAL_STRUCTURE_KEY;
+    const open=d.key===selectedKey;
     const panelId='struct-panel-'+d.key;
     const toggleId='struct-toggle-'+d.key;
     const gridNote=d.key==='grid'
@@ -3054,6 +3547,7 @@ function renderStructureTab(){
       </div>
     </section>`;
   }).join('');
+  }
   document.querySelectorAll('.struct-toggle').forEach(button=>button.onclick=()=>{
     const section=button.closest('.struct-section');
     const isOpen=section.classList.contains('is-open');
@@ -3061,7 +3555,19 @@ function renderStructureTab(){
   });
 }
 TAB_RENDERERS.str=renderStructureTab;
-$('#c-str').textContent=STRUCTS.length;
+
+function queueRatioAwareTab(id,render){
+  TAB_RENDERERS[id]=render;
+  if(RENDERED_TABS.has(id)||document.querySelector('.tab.on')?.dataset.t===id)ensureTabRendered(id);
+}
+function renderRatioAwareCatalog(){
+  renderTemplateTab();
+  syncLayoutNavigation();
+  syncStructureNavigation();
+  queueRatioAwareTab('lyt',renderLayoutTab);
+  queueRatioAwareTab('str',renderStructureTab);
+}
+renderRatioAwareCatalog();
 
 let fitAllRaf=0;
 
@@ -3079,6 +3585,7 @@ function setStructureOpen(key,{scroll=false,syncUrl=true}={}){
   const target=key?document.querySelector('.struct-section[data-struct="'+key+'"]'):null;
   if(key&&!target)return;
   const nextKey=target?target.dataset.struct:'';
+  activeStructureKey=nextKey||null;
   document.querySelectorAll('.struct-section').forEach(section=>{
     const open=section.dataset.struct===nextKey;
     section.classList.toggle('is-open',open);
@@ -3105,21 +3612,23 @@ function setStructureOpen(key,{scroll=false,syncUrl=true}={}){
     if(scroll&&target)target.scrollIntoView({block:'start'});
   });
 }
-const structureJumpButtons=[...document.querySelectorAll('[data-struct-jump]')];
-structureJumpButtons.forEach((button,index)=>{
-  button.onclick=()=>setStructureOpen(button.dataset.structJump,{scroll:true});
-  button.onkeydown=e=>{
-    let next=index;
-    if(e.key==='ArrowRight'||e.key==='ArrowDown')next=(index+1)%structureJumpButtons.length;
-    else if(e.key==='ArrowLeft'||e.key==='ArrowUp')next=(index-1+structureJumpButtons.length)%structureJumpButtons.length;
-    else if(e.key==='Home')next=0;
-    else if(e.key==='End')next=structureJumpButtons.length-1;
-    else return;
-    e.preventDefault();
-    structureJumpButtons[next].focus();
-    setStructureOpen(structureJumpButtons[next].dataset.structJump,{scroll:true});
-  };
-});
+function wireStructureNav(){
+  const buttons=[...document.querySelectorAll('[data-struct-jump]')];
+  buttons.forEach((button,index)=>{
+    button.onclick=()=>setStructureOpen(button.dataset.structJump,{scroll:true});
+    button.onkeydown=e=>{
+      let next=index;
+      if(e.key==='ArrowRight'||e.key==='ArrowDown')next=(index+1)%buttons.length;
+      else if(e.key==='ArrowLeft'||e.key==='ArrowUp')next=(index-1+buttons.length)%buttons.length;
+      else if(e.key==='Home')next=0;
+      else if(e.key==='End')next=buttons.length-1;
+      else return;
+      e.preventDefault();
+      buttons[next].focus();
+      setStructureOpen(buttons[next].dataset.structJump,{scroll:true});
+    };
+  });
+}
 
 /* 左栏二级目录:模板/版式/组件按当前滚动章节高亮;结构继续由展开态决定。 */
 let sectionNavRaf=0;
@@ -3210,6 +3719,7 @@ try{
   else if(q&&document.getElementById('m-'+q))switchTab(q);
 }catch(e){}
 syncCatalogEmphasisToggle();
+renderRatioPicker();
 renderThemePicker();
 renderTypographyPicker();
 /* 首屏不主动预热中文字体；打开详情时再按用户意图加载。 */
