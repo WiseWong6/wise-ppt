@@ -125,7 +125,7 @@ node <skill>/bin/wise-ppt.mjs themes recolor --hex <HEX> [--name <名称>]
 
 材料层、默认主题身份和内容强调都不是主题包里的 layout ID 页面 CSS。`themes/engine/contracts/layout-theme-bindings.json` 的 @3 是全部 88 个骨架的唯一逐页机器合同：它统一登记 canvas、surface、data、type、固定家具、正文身份、强调和来源，并锁定稳定 selector 与预期命中数量。`visual-treatment-grammar.json` 只规定动作，颜色由主题 token 解析。纸墨把已登记身份动作解析为中性墨阶；爱马仕橙与克莱因蓝用 functional 色做少量点缀。有效 Catalog 定稿没有持久正文身份的页面允许 0 组，但必须显式写 `provenance.identity_mode: neutral-only`；这不是漏迁，运行时也不得自动补色。`.doc`、`.folio`、`.caption` 只属于固定家具，不得冒充正文身份。
 
-内容强调随 @3 逐页登记，`page-emphasis-contracts.json` v5 只是它的确定性投影，不是第二套作者权威；`visual-treatment-grammar.json` @4 统一定义 identity/focus 动作。页面默认不强调；AI 只能按 claim/evidence 从查询结果选择一个 `target_id`，不能填写 selector、颜色或 treatment。一个骨架可以有多个候选，但同时最多激活一个；其成员和动作固定。默认身份与强调可命中同一语义对象，但 treatment 必须不同，也不得新增第四种颜色；只用主墨色和字重建立重心也是合法 treatment。`focus.shadow-only` 只投影硬影、不重涂面板材料。compiler 在 ID 隔离后精确投影并复核结构哈希；少命中、多命中、重复命中、命中固定家具或结构漂移都会终止 build。
+内容强调随 @3 逐页登记，`page-emphasis-contracts.json` v5 只是它的确定性投影，不是第二套作者权威；`visual-treatment-grammar.json` @4 统一定义 identity/focus 动作。成品默认开启强调色显示，逐页未选对象则保持普通状态；AI 只能按 claim/evidence 从查询结果选择一个 `target_id`，不能填写 selector、颜色或 treatment。一个骨架可以有多个候选，但同时最多激活一个；其成员和动作固定。默认身份与强调可命中同一语义对象，但 treatment 必须不同，也不得新增第四种颜色；只用主墨色和字重建立重心也是合法 treatment。`focus.shadow-only` 只投影硬影、不重涂面板材料。compiler 在 ID 隔离后精确投影并复核结构哈希；少命中、多命中、重复命中、命中固定家具或结构漂移都会终止 build。
 
 Catalog recipe、legacy default/emphasis 和 custom master 只是一轮迁移的冻结输入。迁移完成后，standard 不再同时读取它们来猜视觉结果；迁移边界与哈希见 `themes/engine/migrations/catalog-standard-parity-v1.receipt.json`，其 `recipe_status` 只照录，不代表 Catalog review 状态升级。
 

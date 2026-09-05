@@ -68,7 +68,7 @@ node <skill>/bin/wise-ppt.mjs doctor
 
 ## 5. 一次写完 spec 和 payload
 
-前四步确定后一次写完整 `deck-spec.json`，只填公开槽。标题概括内容，底部论点不重复。仅当某候选更直接支撑 claim 时，从 `emphasis.targets` 选一并写内容原因；否则不填。不得新增能力。
+填完 `deck-spec.json` 公开槽。标题、底部论点不重复。默认开启强调色；逐页从 `emphasis.targets` 选支撑 claim 的对象并写原因，无则不填。不得整副默认不选或强求每页都有，不得新增能力。
 
 ## 6. 构建与交付
 

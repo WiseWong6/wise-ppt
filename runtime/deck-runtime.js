@@ -8,8 +8,9 @@
   var tasks = new WeakMap();
   var registeredTasks = new WeakMap();
   var accentParam = query.get('accent');
+  // 强调显示默认开启；逐页是否有对象仍由 data-emphasis-mode 决定。
   var accentRequested = accentParam === null
-    ? root.dataset.finalEmphasis === 'semantic-focus'
+    ? true
     : accentParam === '' || accentParam === '1' || accentParam === 'true';
 
   if (accentRequested) root.classList.add('accent');

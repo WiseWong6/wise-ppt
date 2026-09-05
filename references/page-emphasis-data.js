@@ -550,16 +550,15 @@ window.WISE_PPT_PAGE_EMPHASIS = Object.freeze({
       "kind": "relationship",
       "access": "semantic-focus",
       "default_mode": "none",
-      "strategy": "默认不强调；可选：After 结果与召回、重排、组装",
+      "strategy": "默认不强调；可选：After 标题与底部关键动作",
       "sample_target_id": "focus.decisive-difference",
       "targets": [
         {
           "target_id": "focus.decisive-difference",
-          "label": "After 结果与召回、重排、组装",
-          "content_role": "After 结果标记、标题与底部关键动作",
-          "reason_hint": "默认保持 After 标记和标题反白；只在该结果直接支撑本页结论时，将它们与底部关键动作一起强调。",
+          "label": "After 标题与底部关键动作",
+          "content_role": "After 结果标题与底部关键动作",
+          "reason_hint": "After 圆标固定使用主题身份色、图标反白，不依赖内容强调；仅当该结果直接支撑本页结论时，强调标题与底部关键动作。",
           "member_roles": [
-            "symbol",
             "value",
             "annotation"
           ]
