@@ -68,7 +68,7 @@ node <skill>/bin/wise-ppt.mjs doctor
 
 ## 5. 一次写完 spec 和 payload
 
-前四步确定后一次写完整 `deck-spec.json`，只填公开槽。仅当某候选更直接支撑 claim 时，从 `emphasis.targets` 选一并写内容原因；否则不填。不得新增能力。
+前四步确定后一次写完整 `deck-spec.json`，只填公开槽。标题概括内容，底部论点不重复。仅当某候选更直接支撑 claim 时，从 `emphasis.targets` 选一并写内容原因；否则不填。不得新增能力。
 
 ## 6. 构建与交付
 
@@ -94,7 +94,7 @@ node <skill>/bin/wise-ppt.mjs themes preview <已有 deck 绝对目录> --theme 
 
 ## 7. 授权后的隔离实验
 
-批准页范围后读取实验与颜色语义合同，以 prepare 简报为自由边界。获批页可改结构，其余内容与主题锁定；恢复 standard 回原目录。
+按实验合同和 prepare 简报重绘获批正文；页眉、页码、底部论点与主题锁定。恢复 standard 回原目录。
 
 ## 交付回报
 

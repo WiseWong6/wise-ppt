@@ -1,11 +1,11 @@
 {
   "format": "wise-ppt-skill-bundle@3",
-  "source_commit": "f23b443f55ab0b803163277f1d01ccda8f62ed37",
+  "source_commit": "611288d9655f5f9b31f770a477ee0a0eabaf7951",
   "source_dirty": false,
   "parity_receipt": {
     "contract": "wise-ppt-catalog-standard-parity-receipt@1",
     "path": "capabilities/layouts/catalog-standard-parity-receipt.json",
-    "sha256": "1493e403183a51838cafe70a2cd1bcf07cbfda55250587d58503dd77c09e9edf"
+    "sha256": "4491915f6b302deccd4da19d762a0638bd04a7c313085b6b3b5438d8d5019996"
   },
   "supported_platforms": [
     "darwin",
@@ -32,8 +32,8 @@
     },
     {
       "path": "NOTICE",
-      "sha256": "6f5accb2519975192aab46c701839751f585c7de05a44416d9d91223d69fdd5a",
-      "bytes": 21395
+      "sha256": "aca27b448d7be91db8d996bb8778aad6662419ad651ab9bb8ea9fe824a7c8501",
+      "bytes": 21631
     },
     {
       "path": "README.md",
@@ -42,12 +42,12 @@
     },
     {
       "path": "SKILL.md",
-      "sha256": "1fb5662955d3bdc766995433adae327fe78477cfa47f2ba8af81d436ec9062d5",
-      "bytes": 6192
+      "sha256": "aaf2caff3c5b9a3c34eb2525ec71c97216ca55ae04c65161c44344a6c99d7010",
+      "bytes": 6195
     },
     {
       "path": "USER-GUIDE.md",
-      "sha256": "3e6499d116447736129515b5fe3abce81ec8fe9a19938d047f2fd05b80469083",
+      "sha256": "93ce5f1bd2362d1337f83515bc92da515b43df7fa1c3153175572dbe06d0ec48",
       "bytes": 7331
     },
     {
@@ -427,7 +427,7 @@
     },
     {
       "path": "bin/constants.mjs",
-      "sha256": "3b9425ee2c0b3079a3af95761d8daae1618e4570588a618f66adb68cf6ca2f0c",
+      "sha256": "c85128a29d332ccf17227af27c77d8a9a68af25246bffdd8b70a7efb19b1d69b",
       "bytes": 2027
     },
     {
@@ -442,13 +442,13 @@
     },
     {
       "path": "bin/experimental.mjs",
-      "sha256": "17b8d34e95fab5b69989915ebc9fe8ef88985898a0b100249fa312833626944c",
-      "bytes": 53434
+      "sha256": "98c0ebfdefb761d8c0a2d2f7bf012a3c40b89c61f6acf680eddb137fa8e5fc58",
+      "bytes": 56201
     },
     {
       "path": "bin/export-deck.mjs",
-      "sha256": "1dbe9b7bde386cd83e1c9c30c53b59167ef7885770b389af5289f38e1b60c76a",
-      "bytes": 46293
+      "sha256": "72a59485b9ef4a9f8538e9c2602c04625975caaa18a71068b14518a69a5a8784",
+      "bytes": 48412
     },
     {
       "path": "bin/fonts.mjs",
@@ -467,8 +467,8 @@
     },
     {
       "path": "bin/standard.mjs",
-      "sha256": "6e379163067703c573ef1a1a956d747c725721e80a440bf753b1f3c42575902d",
-      "bytes": 132311
+      "sha256": "4c44958607b09b88751925427da55e9eb4c8984de5498f6610a4fa73011ee58c",
+      "bytes": 132506
     },
     {
       "path": "bin/theme-preview.mjs",
@@ -502,8 +502,8 @@
     },
     {
       "path": "capabilities/layouts/catalog-standard-parity-receipt.json",
-      "sha256": "1493e403183a51838cafe70a2cd1bcf07cbfda55250587d58503dd77c09e9edf",
-      "bytes": 212057
+      "sha256": "4491915f6b302deccd4da19d762a0638bd04a7c313085b6b3b5438d8d5019996",
+      "bytes": 211955
     },
     {
       "path": "capabilities/layouts/icon-slot-contracts.json",
@@ -12517,8 +12517,8 @@
     },
     {
       "path": "references/checklist.md",
-      "sha256": "3511901284c2a9bb00bb903df49001a16a899503086cfe6590b8faeaae4144bd",
-      "bytes": 6573
+      "sha256": "b9a068b8b5d43866859142316d3697dcbe20796b4a4981c521fba6a3224ce257",
+      "bytes": 6965
     },
     {
       "path": "references/color-semantics.md",
@@ -12537,13 +12537,13 @@
     },
     {
       "path": "references/deck-spec.md",
-      "sha256": "a4bb1cfb16a5570845b30f80a0a20b4c151b3f34ae4994dad7520f83963f4300",
-      "bytes": 14332
+      "sha256": "8fec58f13c53e15bce1a0beb9f2404c18fecb7e6b859b6fb60db661afbbbac94",
+      "bytes": 14717
     },
     {
       "path": "references/experimental.md",
-      "sha256": "0630b80fe9586964072e03c7c4d8a9865f89fb1099e110060ed9bd2e4b109e9e",
-      "bytes": 6402
+      "sha256": "f34a0df087115f9d5a432356832e2a1248942d6d81a0843a897781eda687b537",
+      "bytes": 7548
     },
     {
       "path": "references/gallery-components/echarts-catalog-data.js",
@@ -14181,6 +14181,31 @@
       "bytes": 3874
     },
     {
+      "path": "themes/engine/fonts/OFL-CourierPrime.txt",
+      "sha256": "9a755af092b494944c99f471be6fddd19b006a448fefdc4717e4ee0aa09a97b0",
+      "bytes": 4403
+    },
+    {
+      "path": "themes/engine/fonts/OFL-LXGWWenKai.txt",
+      "sha256": "1a25e35da1031c6c3436fde545bb9cb5aca954e9873afe510c834b8b79bd21a0",
+      "bytes": 5171
+    },
+    {
+      "path": "themes/engine/fonts/OFL-Oswald.txt",
+      "sha256": "0b2472b17e950b9967818f169f2618b091c0c259d250d2dd8208961c7f5700e1",
+      "bytes": 4389
+    },
+    {
+      "path": "themes/engine/fonts/OFL-SourceHanSans.txt",
+      "sha256": "fcac737e761ec63dbfbdce11030a1780161920d80315edba9c8beff1c2bac5a2",
+      "bytes": 4463
+    },
+    {
+      "path": "themes/engine/fonts/OFL-SourceHanSerif.txt",
+      "sha256": "6a73f9541c2de74158c0e7cf6b0a58ef774f5a780bf191f2d7ec9cc53efe2bf2",
+      "bytes": 4301
+    },
+    {
       "path": "themes/engine/fonts/catalog/CourierPrime-Bold.catalog.woff2",
       "sha256": "ecaf639fcbde7fce708216779fe7e3b8a13abba60c565b70d74f6e92a6f031d3",
       "bytes": 15308
@@ -14236,6 +14261,11 @@
       "bytes": 9092
     },
     {
+      "path": "themes/engine/fonts/license-manifest.json",
+      "sha256": "fc0a02b352edf3d5d80d37788e332de5ad3c95788aaf456f25d135a845315b12",
+      "bytes": 3326
+    },
+    {
       "path": "themes/engine/runtime/component-theme-projector.js",
       "sha256": "28952a3b538c098592d582a5f95766f9e94d534e6efe7ab6909133e9c8c05a82",
       "bytes": 16502
@@ -14257,18 +14287,18 @@
     },
     {
       "path": "themes/examples/wise-ppt-story-six-page/deck-spec.json",
-      "sha256": "2e617d510e5bb4c48175a1fac60a3fac26e37a95d1d6dc3fad657941b6a3e2ef",
-      "bytes": 13100
+      "sha256": "0070f8a1520933e435202ca8ddaa73f5d7b677fb4c7c18c4ef52b7cbd73fc59b",
+      "bytes": 12864
     },
     {
       "path": "themes/examples/wise-ppt-story-six-page/deck.pdf",
-      "sha256": "4a1f977e8b476544c902132f0d5d3dd5763946cc8da93f68621f4ff7f166eb71",
-      "bytes": 734814
+      "sha256": "ffbd0e6072384ba94f86784e7f69a4c03ee5c9779d6f17db350c8e4eef8dd862",
+      "bytes": 681957
     },
     {
       "path": "themes/examples/wise-ppt-story-six-page/index.html",
-      "sha256": "52b3577e65e93593c12a4bf2007c4f5883f0be4f66b762d63dbf4e08df7ee1b1",
-      "bytes": 197325
+      "sha256": "fb5371c8ea7df85bac632ccd4a84dc095f559d6bce8117ba87829eb5838b13ff",
+      "bytes": 196473
     },
     {
       "path": "themes/examples/wise-ppt-story-six-page/theme-resolved.json",

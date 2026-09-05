@@ -44,13 +44,15 @@ PPT Component Atlas(61 个组件目录)
   Source:   https://datav.aliyun.com/portal/school/atlas/area_selector
   ——————————————————————————————————————————————————————
 
-字体(不进 git,交付 deck 时随包分发,均 SIL Open Font License 1.1)
+字体(完整字库不进 git；Catalog 子集随 Skill 分发，均 SIL Open Font License 1.1)
   思源宋体 Source Han Serif   Copyright © Adobe
   思源黑体 Source Han Sans    Copyright © Adobe
   霞鹜文楷 LXGW WenKai        Copyright © LXGW (https://github.com/lxgw/LxgwWenKai)
   Courier Prime               Copyright © Quote-Unquote Apps
   Oswald                      Copyright © The Oswald Project Authors
   Path:     themes/engine/fonts/(上游 URL 见 font-manifest.json)
+  Local:    themes/engine/fonts/license-manifest.json（逐字体归属与版权声明）
+  License:  themes/engine/fonts/OFL-*.txt（完整上游许可正文）
 
 The release bundle also includes compiled Node dependencies under their original licenses.
 
@@ -321,6 +323,7 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 
 ========================================================================
-Downloaded fonts
+Bundled fonts
 License: SIL Open Font License 1.1
-The authoritative font files and source URLs are recorded in themes/engine/fonts/font-manifest.json.
+Copyright notices, font-to-license coverage and license sources: themes/engine/fonts/license-manifest.json.
+Full license texts: themes/engine/fonts/OFL-*.txt.

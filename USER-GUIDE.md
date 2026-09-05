@@ -97,6 +97,6 @@ standard 成品输出后，Agent 会复核 claim、阅读顺序、主次和固�
 
 ## 交付边界
 
-整副规划输入/输出为 `wise-ppt-layout-plan-request@1` / `wise-ppt-layout-agent-brief@1`，全量预检为 `wise-ppt-preflight@1`。成品输入使用 `wise-ppt-deck@9`，构建计划使用 `wise-ppt-deck-plan@5`，构建使用 `wise-ppt-build@7`，运行时使用 `wise-ppt-runtime@8`；正式交付为 `wise-ppt-delivery@3`，实验交付为 `wise-ppt-experimental-delivery@7`。逐页声明的强调会进入最终 HTML 和 PDF；普通/强调四态只用于验证。实验 PDF 不叠加可见水印，通过文件名与 manifest 表明实验身份。
+整副规划输入/输出为 `wise-ppt-layout-plan-request@1` / `wise-ppt-layout-agent-brief@1`，全量预检为 `wise-ppt-preflight@1`。成品输入使用 `wise-ppt-deck@9`，构建计划使用 `wise-ppt-deck-plan@5`，构建使用 `wise-ppt-build@7`，运行时使用 `wise-ppt-runtime@8`；正式交付为 `wise-ppt-delivery@3`，实验交付为 `wise-ppt-experimental-delivery@8`。逐页声明的强调会进入最终 HTML 和 PDF；普通/强调四态只用于验证。实验 PDF 不叠加可见水印，通过文件名与 manifest 表明实验身份。
 
 `deck.pdf` 和 `delivery-manifest.json` 成对提交。任何导出或提交失败都不会破坏上一份正式交付物。
