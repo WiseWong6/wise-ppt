@@ -1,6 +1,6 @@
 # 3:4 standard 制作合同
 
-本合同为 `wise-ppt-portrait-deck@1`，画布 1080×1440。16:9 继续使用 `deck-spec@9`，不混用字段。内容分页、关系路由、整副版式轮换、来源与逐页主次仍按 SKILL 的前五阶段。当前登记 PDF 输入及 paper-ink、hermes-orange、klein-blue 三种主题。
+本合同为 `wise-ppt-portrait-deck@2`，画布 1080×1440。@2 起放映壳与 16:9 完全同源（画册总览 + 一屏一页自适应放映 + 底部居中控制条），并强制左上角两行标题各自单行。16:9 继续使用 `deck-spec@9`，不混用字段。内容分页、关系路由、整副版式轮换、来源与逐页主次仍按 SKILL 的前五阶段。当前登记 PDF 输入及 paper-ink、hermes-orange、klein-blue 三种主题。
 
 3:4 直接使用 Catalog 竖版的完整骨架。编译器在本机 Chrome 中读取已登记画面，把计算后的样式冻结为静态 DOM，再替换公开文字槽；不截图、不重新排版。使用者只能编辑 spec，不能写 HTML/CSS、改 Catalog、挪图形、复制 PDF 图片或使用外部媒体。每个槽对应原图的一个文本节点，图形数量及含义必须与内容相符；放不下先减字、换完整骨架或拆页。
 
@@ -29,7 +29,7 @@ node <skill>/bin/wise-ppt.mjs portrait deliver <deck绝对目录>
 
 顶层只有 `contract`、`mode`、`deck`、`layout_context`、`sources`、`must`、`slides`。
 
-- `contract`: `wise-ppt-portrait-deck@1`；`mode`: `standard`。
+- `contract`: `wise-ppt-portrait-deck@2`；`mode`: `standard`。
 - `deck`: `title`（30 字内）、`thesis`（160 字内）、`input_type: "pdf"`、`theme: {"kind":"registered","theme_id":"hermes-orange"}`。可选 `signature` 仅在用户提供时填写，默认不署名。
 - `layout_context`: 直接使用整副 plan 返回值。不能自行重置 usage 或重复生成 seed。
 - `sources`: 非空数组，每项仅 `source_id`、`title`。来源文件位置另保留在项目 brief 或原文抽取记录。
@@ -42,7 +42,7 @@ node <skill>/bin/wise-ppt.mjs portrait deliver <deck绝对目录>
 | `layout_id` | plan 的完整 ID，如 `wise-ppt.layout.relationship.E1` |
 | `page_kind`, `page_role`, `relation_key` | 按路由；非关系页省略 relation_key |
 | `layout_override` | 只有 rank>1 时填；沿用 main 的 basis/reason 规则 |
-| `title` | 32 字内的小标题 |
+| `title` | 32 字内的小标题；渲染为左上角第二行，必须单行放完（机器断言，换行即编译失败） |
 | `claim` | 64 字内的底部论点，不得重复标题 |
 | `source_refs` | 非空来源 ID 数组 |
 | `source_pages` | PDF 的正整数页码数组 |
@@ -55,6 +55,6 @@ node <skill>/bin/wise-ppt.mjs portrait deliver <deck绝对目录>
 
 ## 交付与边界
 
-生成 `index.html`、`deck.pdf`、spec、版式账本、来源清单、组件凭据及 build/validation/delivery manifest。HTML 可 file:// 直开，无需服务器。左右方向键或按钮翻页；浏览器原生缩放用于适配屏幕，打印始终为 3:4。
+生成 `index.html`、`deck.pdf`、spec、版式账本、来源清单、组件凭据、`runtime/` 放映壳及 build/validation/delivery manifest。HTML 可 file:// 直开，无需服务器。交互与 16:9 同一套：打开先进画册总览网格，点卡片进入放映；放映时整页缩放进视口（一屏一页），左右方向键、空格或触摸滑动翻页，Esc 或底部居中的画册按钮回总览；打印始终为 3:4。左上角两行标题（deck 标题与页面标题）各自单行，由编译门禁强制。
 
 验证检查来源、轮换规则、文字槽绑定和容量、画布范围、生成文件哈希及 PDF 页数；任何手改都使验证失败。机器检查不替代语义阅读或用户目视验收。最终提供 HTML/PDF 的完整路径，标注“PDF 原文转述／未独立核验”。不把门禁通过称为用户视觉验收。

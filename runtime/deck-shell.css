@@ -1,4 +1,6 @@
-/* Wise PPT deck application shell. Theme slide CSS owns no viewport selectors. */
+/* Wise PPT deck application shell. Theme slide CSS owns no viewport selectors.
+   Canvas size comes from --wise-canvas-w/--wise-canvas-h/--wise-canvas-ratio on
+   <html>; decks that declare nothing (16:9) get the 1920×1080 defaults. */
 [data-runtime="wise-ppt-deck"],
 [data-runtime="wise-ppt-deck"] body { min-height: 100%; }
 
@@ -13,14 +15,14 @@
 
 [data-runtime="wise-ppt-deck"] .slide {
   position: relative;
-  width: 1920px;
-  height: 1080px;
+  width: var(--wise-canvas-w, 1920px);
+  height: var(--wise-canvas-h, 1080px);
   flex: none;
   overflow: hidden;
 }
 [data-runtime="wise-ppt-deck"] .slide > .stage {
-  width: 1920px;
-  height: 1080px;
+  width: var(--wise-canvas-w, 1920px);
+  height: var(--wise-canvas-h, 1080px);
   transform: none !important;
   transform-origin: top left !important;
 }
@@ -37,7 +39,7 @@
 .section-label { margin-top: 34px; padding-bottom: 10px; border-bottom: 1px solid var(--ink-45); letter-spacing: .16em; }
 .board-grid { display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); gap: 24px; margin-top: 18px; }
 .board-card { appearance: none; border: 0; background: none; color: inherit; text-align: left; cursor: pointer; padding: 0; }
-.board-preview { position: relative; overflow: hidden; aspect-ratio: 16/9; border: 1px solid var(--ink-45); background: var(--paper); }
+.board-preview { position: relative; overflow: hidden; aspect-ratio: var(--wise-canvas-ratio, 16/9); border: 1px solid var(--ink-45); background: var(--paper); }
 .board-clone { position: absolute !important; inset: 0 !important; transform: scale(var(--board-scale)); transform-origin: top left; pointer-events: none; -webkit-user-select: none !important; user-select: none !important; }
 /* 画册卡标题/摘要锁单行:多行会把卡片撑高、章行高参差(v139);超预算文本省略号截断,全文在卡 title 悬停与页面题注 */
 .board-title { margin-top: 10px; font-size: var(--type-meta); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
@@ -59,14 +61,14 @@
   position: absolute;
   left: 50%;
   top: 50%;
-  width: 1920px;
-  height: 1080px;
-  margin-left: -960px;
-  margin-top: -540px;
+  width: var(--wise-canvas-w, 1920px);
+  height: var(--wise-canvas-h, 1080px);
+  margin-left: calc(var(--wise-canvas-w, 1920px) / -2);
+  margin-top: calc(var(--wise-canvas-h, 1080px) / -2);
   overflow: hidden;
   transform-origin: center center;
 }
-#track { display: flex; width: max-content; height: 1080px; transition: transform .25s ease; }
+#track { display: flex; width: max-content; height: var(--wise-canvas-h, 1080px); transition: transform .25s ease; }
 
 #presentation-controls {
   position: absolute;
@@ -108,18 +110,20 @@
 
 .mode-deck #board { display: none; }
 .mode-deck #deck { visibility: visible; }
+.mode-board #deck { display: none; }
 .mode-board #presentation-controls { display: none; }
 .print-mode .slide .folio,
 .mode-deck .slide .folio { display: block; }
 
-@page { size: 20in 11.25in; margin: 0; }
+/* @page size is deck-owned (16:9 inline in app-template.html, 3:4 inline in the
+   portrait compiler output); CSS variables are not allowed inside @page. */
 .print-mode,
 .print-mode body { background: #fff; }
 .print-mode #board,
 .print-mode #presentation-controls { display: none !important; }
-.print-mode #deck { position: static; display: block; visibility: visible; width: 1920px; height: auto; background: #fff; overflow: visible; }
-.print-mode #deck-stage { position: static; width: 1920px; height: auto; margin: 0; overflow: visible; transform: none !important; }
-.print-mode #track { display: block; width: 1920px; height: auto; transform: none !important; transition: none !important; }
+.print-mode #deck { position: static; display: block; visibility: visible; width: var(--wise-canvas-w, 1920px); height: auto; background: #fff; overflow: visible; }
+.print-mode #deck-stage { position: static; width: var(--wise-canvas-w, 1920px); height: auto; margin: 0; overflow: visible; transform: none !important; }
+.print-mode #track { display: block; width: var(--wise-canvas-w, 1920px); height: auto; transform: none !important; transition: none !important; }
 .print-mode .slide { break-after: page; page-break-after: always; }
 .print-mode .slide:last-child { break-after: auto; page-break-after: auto; }
 

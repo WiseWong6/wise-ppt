@@ -83,7 +83,7 @@ var CATALOG_FONTS = document.documentElement.dataset.wiseCatalogFonts === 'true'
 var MONO = CATALOG_FONTS ? 'Courier Prime Catalog' : 'Courier Prime';
 var SANS = CATALOG_FONTS ? 'Han Sans Catalog Light' : 'Han Sans';
 
-/* ---------- 色阶配方：地图始终使用墨灰色阶 ----------
+/* ---------- 色阶配方：地图使用主题身份色阶 ----------
    未覆盖城市一律填深一度纸色（color-mix(in srgb, var(--paper-deep) 55%, transparent)，--paper-deep 系），仅覆盖城市按仓数分档上色。
    visualMap（地图）与左下角图例从同一 RAMP 生成，保证 1:1 对应。 */
 /* 纸墨的 functional 是中性墨灰；橙蓝的 functional 是主题色。
@@ -151,7 +151,7 @@ var rampY = 845, rampX = 120, rampStep = 22, rampH = 12;
 txt(rampX, rampY + 6, '少', {'font-family':SANS, 'font-weight':300, 'font-size':'var(--type-micro-secondary)', fill:INK45});
 RAMP_LEGEND.forEach(function(a, i){
   el('rect', {x:rampX + 24 + i*rampStep, y:rampY - rampH/2, width:rampStep-2, height:rampH,
-    fill:'rgba('+RAMP_RGB+','+a+')', stroke:INK, 'stroke-width':.5, opacity:.9});
+    fill:'var(--wp-color-functional)', 'fill-opacity':a, stroke:INK, 'stroke-width':.5, opacity:.9});
 });
 txt(rampX + 24 + 5*rampStep + 8, rampY + 6, '多', {'font-family':SANS, 'font-weight':300, 'font-size':'var(--type-micro-secondary)', fill:INK45});
 
@@ -200,7 +200,7 @@ Promise.all([
   var geo = values[0];
   echarts.registerMap('guangdong', geo);
 
-  var chart = echarts.init(document.getElementById('chart'));
+  var chart = echarts.init(document.getElementById('chart'), null, {renderer: 'svg'});
   var neutralAreaColor = resolvedCssColor('color-mix(in srgb, var(--paper-deep) 55%, transparent)');
   var mapLabelColor = resolvedCssColor('color-mix(in srgb, var(--ink) 32%, transparent)');
   chart.setOption({
@@ -277,6 +277,22 @@ Promise.all([
   requestAnimationFrame(function(){
     requestAnimationFrame(function(){
       if (chart.getZr && chart.getZr().flush) chart.getZr().flush();
+      // Keep chart paint as theme tokens when the canonical seed is frozen.
+      // SVG retains geometry and labels without baking the paper-ink palette into PNG.
+      var mapSvg = document.querySelector('#chart svg');
+      mapSvg.setAttribute('data-contract-only', 'true');
+      mapSvg.querySelectorAll('path[fill]').forEach(function(shape){
+        var fill = shape.getAttribute('fill').replace(/\s/g, '');
+        if (fill === 'rgb(' + RAMP_RGB + ')') {
+          shape.setAttribute('fill', 'var(--wp-color-functional)');
+          shape.setAttribute('data-vnext-visual-role', 'c4.data-area');
+        } else if (shape.getAttribute('fill') === neutralAreaColor) {
+          shape.setAttribute('fill', 'color-mix(in srgb, var(--wp-color-surface-recessed) 55%, transparent)');
+        }
+      });
+      mapSvg.querySelectorAll('text').forEach(function(label){
+        label.setAttribute('fill', 'color-mix(in srgb, var(--ink) 32%, transparent)');
+      });
       drawCallouts();
       delete document.documentElement.dataset.renderPending;
       markRenderReady();

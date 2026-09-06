@@ -7670,7 +7670,15 @@
         "material": "paper"
       },
       "surface_bindings": [],
-      "data_bindings": [],
+      "data_bindings": [
+        {
+          "binding_id": "quadrant-number-identity",
+          "selector": ".quad-no",
+          "expected_count": 4,
+          "color_role": "functional",
+          "paint": "text"
+        }
+      ],
       "type_bindings": [
         {
           "binding_id": "content-titles",

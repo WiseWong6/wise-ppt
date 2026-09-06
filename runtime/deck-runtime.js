@@ -951,7 +951,7 @@
     }
     function syncScales() {
       board.querySelectorAll('.board-preview').forEach(function (preview) {
-        preview.style.setProperty('--board-scale', String(preview.clientWidth / 1920));
+        preview.style.setProperty('--board-scale', String(preview.clientWidth / global.WisePPTStageFit.width));
       });
     }
     function rebuildBoard() {
@@ -985,7 +985,7 @@
     }
     function go(index, updateHash) {
       current = clamp(index);
-      track.style.transform = 'translate3d(' + (-current * 1920) + 'px,0,0)';
+      track.style.transform = 'translate3d(' + (-current * global.WisePPTStageFit.width) + 'px,0,0)';
       if (pager) pager.textContent = (current + 1) + ' / ' + allSlides().length;
       if (updateHash !== false) history.replaceState(null, '', '#' + (current + 1));
     }
@@ -1070,7 +1070,7 @@
     function assertViewportFit() {
       var result = fit();
       if (!global.WisePPTStageFit.contains(result.bounds, result.rect, 1)) {
-        throw new Error('1920×1080 舞台超出可视视口: viewport=' + [result.bounds.left, result.bounds.top, result.bounds.width, result.bounds.height].join(',') + ' rect=' + [result.rect.left, result.rect.top, result.rect.width, result.rect.height].join(','));
+        throw new Error(global.WisePPTStageFit.width + '×' + global.WisePPTStageFit.height + ' 舞台超出可视视口: viewport=' + [result.bounds.left, result.bounds.top, result.bounds.width, result.bounds.height].join(',') + ' rect=' + [result.rect.left, result.rect.top, result.rect.width, result.rect.height].join(','));
       }
       allSlides().forEach(function (slide) {
         var stage = slide.querySelector(':scope>.stage');
