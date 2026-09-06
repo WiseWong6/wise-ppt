@@ -1,8 +1,12 @@
 (function (global) {
   'use strict';
 
-  var STAGE_WIDTH = 1920;
-  var STAGE_HEIGHT = 1080;
+  // Canvas size is declared per deck (data-canvas-width/height on <html>);
+  // 16:9 decks declare nothing and keep the 1920×1080 default.
+  var declaredWidth = Number(document.documentElement.dataset.canvasWidth);
+  var declaredHeight = Number(document.documentElement.dataset.canvasHeight);
+  var STAGE_WIDTH = declaredWidth > 0 ? declaredWidth : 1920;
+  var STAGE_HEIGHT = declaredHeight > 0 ? declaredHeight : 1080;
   var GALLERY_KEY_MESSAGE = 'wise-ppt-gallery-key';
   var GALLERY_ACTIVITY_MESSAGE = 'wise-ppt-gallery-activity';
   var FRAME_READY_MESSAGE = 'wise-ppt-frame-ready';
