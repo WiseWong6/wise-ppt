@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html data-theme-id="paper-ink" lang="zh-CN" data-runtime="wise-ppt-specimen" data-typography-mode="all-sans" data-page-id="gallery-ai-a3" data-page-role="prove" data-theme="paper-ink" data-layout="paper-ink.evidence.document-excerpt" data-layout-source="gallery" data-vnext-semantic-key-map='[{"key":"excerpt.text.001","tag":"tspan","text":"《xx 服务管理暂行办法》","occurrence":0}]' data-emphasis-targets='[{"target_id":"focus.main-evidence","members":[{"selector":"#a3-compliance","role":"value","treatment":"focus.color","expected_count":1},{"selector":"#a3-compliance-line-1","role":"outline","treatment":"focus.color","expected_count":1},{"selector":"#a3-compliance-line-2","role":"outline","treatment":"focus.color","expected_count":1},{"selector":"[data-vnext-visual-key=\"a3.document-specimen\"]","role":"outline","treatment":"focus.shadow-only","expected_count":1}]}]' data-vnext-type-slot-map='[{"slot":"content-title","tag":"text","text":"有效措施防范未成年人过度依赖，同时不得生成煽动颠覆国家政权的内容。","occurrence":0},{"slot":"content-title","tag":"text","text":"xx 行业主管办公室","occurrence":0},{"slot":"content-title","tag":"text","text":"xx 服务管理暂行办法","occurrence":0}]'>
+<html data-theme-id="paper-ink" lang="zh-CN" data-runtime="wise-ppt-specimen" data-typography-mode="all-sans" data-page-id="gallery-ai-a3" data-page-role="prove" data-theme="paper-ink" data-layout="paper-ink.evidence.document-excerpt" data-layout-source="gallery" data-vnext-semantic-key-map='[{"key":"excerpt.text.001","tag":"tspan","text":"《xx 项目交付管理办法》","occurrence":0}]' data-emphasis-targets='[{"target_id":"focus.main-evidence","members":[{"selector":"#a3-compliance","role":"value","treatment":"focus.color","expected_count":1},{"selector":"#a3-compliance-line-1","role":"outline","treatment":"focus.color","expected_count":1},{"selector":"#a3-compliance-line-2","role":"outline","treatment":"focus.color","expected_count":1},{"selector":"[data-vnext-visual-key=\"a3.document-specimen\"]","role":"outline","treatment":"focus.shadow-only","expected_count":1}]}]' data-vnext-type-slot-map='[{"slot":"content-title","tag":"text","text":"有效机制防范需求范围外的重复返工，同时不得引入未经评审的变更内容。","occurrence":0},{"slot":"content-title","tag":"text","text":"xx 项目管理办公室","occurrence":0},{"slot":"content-title","tag":"text","text":"xx 项目交付管理办法","occurrence":0}]'>
 <head>
 <meta charset="UTF-8">
 <title>layout-a3 · 文献摘引页</title>
@@ -32,7 +32,7 @@
     <g id="draw"></g>
   </svg>
 
-  <div class="caption">原始研究表明：模型能力只有进入可验证工作流，才会转化为稳定业务价值。</div>
+  <div class="caption">示例复盘：模型能力只有进入可验证工作流，才会转化为稳定业务价值。</div>
 </div>
 
 <script src="../../../../themes/packages/paper-ink/assets/particles.js"></script>
@@ -68,22 +68,22 @@ G = el('g', {transform:'translate(0 -34.2)'});
 
 /* ============ 上半部 · 转述摘要（整段 300/21，关键句双线 underline） ============ */
 var sourceLine = txt(200, 240, '', {'font-family':SANS, 'font-weight':300, 'font-size':'var(--type-body)', fill:INK});
-tspan(sourceLine, '《xx 服务管理暂行办法》', {fill:INK});
-tspan(sourceLine, '提出：提供者应当对训练数据来源的合法性负责，并采取', {fill:INK});
-txt(200, 282, '有效措施防范未成年人过度依赖，同时不得生成煽动颠覆国家政权的内容。',
+tspan(sourceLine, '《xx 项目交付管理办法》', {fill:INK});
+tspan(sourceLine, '提出：交付方应当对交付物质量的合规性负责，并建立', {fill:INK});
+txt(200, 282, '有效机制防范需求范围外的重复返工，同时不得引入未经评审的变更内容。',
   {'font-family':SANS, 'font-weight':300, 'font-size':'var(--type-subheading)', fill:INK});
 
 /* 关键句：升 400 + 双线 underline（不用彩色高亮） */
 var KX = 200, KY = 340, KW = 616;
-txt(KX, KY, '文件首次将「训练数据合规」与「生成内容可溯源」并列写入。',
+txt(KX, KY, '文件首次将「交付范围确认」与「验收结论可追溯」并列写入。',
   {id:'a3-compliance', 'font-family':SANS, 'font-weight':300, 'font-size':'var(--type-body)', fill:INK});
 el('line', {id:'a3-compliance-line-1', x1:KX, y1:KY+13, x2:KX+KW, y2:KY+13, stroke:INK, 'stroke-width':.8, opacity:.7});
 el('line', {id:'a3-compliance-line-2', x1:KX, y1:KY+18, x2:KX+KW, y2:KY+18, stroke:INK, 'stroke-width':.6, opacity:.35});
 
-txt(200, 402, '—— 每一个上线 AI 产品的合规清单，正来自这一条。',
+txt(200, 402, '—— 每一个交付项目的验收清单，正来自这一条。',
   {'font-family':SANS, 'font-weight':300, 'font-size':'var(--type-body)', fill:INK70});
 
-/* ============ 下半部 · 原文标本框（双线框模拟红头文件版式） ============ */
+/* ============ 下半部 · 交付文件框（双线框模拟红头文件版式） ============ */
 var FX = 300, FY = 478, FW = 1320, FH = 396;
 el('rect', {'data-vnext-visual-key':'a3.document-specimen', x:FX, y:FY, width:FW, height:FH, fill:'var(--paper-panel)', stroke:INK80, 'stroke-width':1.3});
 el('rect', {x:FX+5, y:FY+5, width:FW-10, height:FH-10, fill:'none', stroke:INK, 'stroke-width':.6, opacity:.35});
@@ -91,17 +91,17 @@ el('rect', {x:FX+5, y:FY+5, width:FW-10, height:FH-10, fill:'none', stroke:INK, 
 /* 顶部页签 */
 el('rect', {x:960-170, y:FY-22, width:340, height:44, fill:'var(--paper)', stroke:INK, 'stroke-width':1.2});
 txt(918, FY+7, 'SOURCE', {'data-xp-text-tone':'supporting', 'font-family':MONO, 'font-size':'var(--type-label)', 'letter-spacing':2, 'text-anchor':'end', fill:INK});
-txt(938, FY+7, '原文标本', {'font-family':SANS, 'font-weight':300, 'font-size':'var(--type-body-small)', fill:INK});
+txt(938, FY+7, '交付文件', {'font-family':SANS, 'font-weight':300, 'font-size':'var(--type-body-small)', fill:INK});
 
 /* 报头：机构名 + 文号 + 横线 */
-txt(960, FY+76, 'xx 行业主管办公室', {'font-family':SANS, 'font-weight':300, 'font-size':'var(--type-subheading)', 'letter-spacing':6, 'text-anchor':'middle', fill:INK});
+txt(960, FY+76, 'xx 项目管理办公室', {'font-family':SANS, 'font-weight':300, 'font-size':'var(--type-subheading)', 'letter-spacing':6, 'text-anchor':'middle', fill:INK});
 txt(960, FY+106, 'XX [2023] NO.7', {'font-family':MONO, 'font-size':'var(--type-meta)', 'letter-spacing':3, 'text-anchor':'middle', fill:INK45});
 el('line', {x1:FX+44, y1:FY+126, x2:FX+FW-44, y2:FY+126, stroke:INK80, 'stroke-width':1.4});
 el('line', {x1:FX+44, y1:FY+131, x2:FX+560, y2:FY+131, stroke:INK, 'stroke-width':.6, opacity:.3});
 
 /* 标题行 */
-txt(960, FY+176, 'xx 服务管理暂行办法', {'font-family':SANS, 'font-weight':300, 'font-size':'var(--type-subheading)', 'text-anchor':'middle', fill:INK});
-txt(960, FY+206, 'INTERIM MEASURES · CHAPTER IV', {'font-family':MONO, 'font-size':'var(--type-meta)', 'letter-spacing':3, 'text-anchor':'middle', fill:INK45});
+txt(960, FY+176, 'xx 项目交付管理办法', {'font-family':SANS, 'font-weight':300, 'font-size':'var(--type-subheading)', 'text-anchor':'middle', fill:INK});
+txt(960, FY+206, 'DELIVERY RULES · CHAPTER IV', {'font-family':MONO, 'font-size':'var(--type-meta)', 'letter-spacing':3, 'text-anchor':'middle', fill:INK45});
 
 /* 正文灰行暗示（条文号 + 圆点字段行） */
 txt(FX+80, FY+252, 'ART. 15', {'font-family':MONO, 'font-size':'var(--type-meta)', 'letter-spacing':2, fill:INK45});

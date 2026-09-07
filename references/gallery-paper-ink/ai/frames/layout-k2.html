@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html data-theme-id="paper-ink" lang="zh-CN" data-runtime="wise-ppt-specimen" data-typography-mode="all-sans" data-page-id="gallery-ai-k2" data-page-role="synthesize" data-theme="paper-ink" data-layout="paper-ink.matrix.problem-solution-outcome" data-layout-source="gallery" data-vnext-semantic-key-map='[]' data-emphasis-targets='[{"target_id":"focus.key-step","members":[{"selector":"#k2-focus-kpi-code","role":"annotation","treatment":"focus.color","expected_count":1},{"selector":"#sample-focus","role":"value","treatment":"focus.color","expected_count":1},{"selector":"#k2-focus-kpi-label","role":"label","treatment":"focus.color","expected_count":1}]}]' data-vnext-type-slot-map='[{"slot":"content-title","tag":"text","text":"阅读痛点","occurrence":0},{"slot":"content-title","tag":"text","text":"AI 解法","occurrence":0},{"slot":"content-title","tag":"text","text":"真实成效","occurrence":0},{"slot":"content-title","tag":"text","text":"1分钟","occurrence":0}]'>
+<html data-theme-id="paper-ink" lang="zh-CN" data-runtime="wise-ppt-specimen" data-typography-mode="all-sans" data-page-id="gallery-ai-k2" data-page-role="synthesize" data-theme="paper-ink" data-layout="paper-ink.matrix.problem-solution-outcome" data-layout-source="gallery" data-vnext-semantic-key-map='[]' data-emphasis-targets='[{"target_id":"focus.key-step","members":[{"selector":"#k2-focus-kpi-code","role":"annotation","treatment":"focus.color","expected_count":1},{"selector":"#sample-focus","role":"value","treatment":"focus.color","expected_count":1},{"selector":"#k2-focus-kpi-label","role":"label","treatment":"focus.color","expected_count":1}]}]' data-vnext-type-slot-map='[{"slot":"content-title","tag":"text","text":"阅读痛点","occurrence":0},{"slot":"content-title","tag":"text","text":"AI 解法","occurrence":0},{"slot":"content-title","tag":"text","text":"示例成效","occurrence":0},{"slot":"content-title","tag":"text","text":"1分钟","occurrence":0}]'>
 <head>
 <meta charset="UTF-8">
 <title>layout-k2 · 痛点→解法→成效三栏 · AI 阅读系统</title>
@@ -72,7 +72,7 @@ G = el('g', {id:'body', 'data-balance':'structural', transform:'translate(59 +95
 var heads = [
   {x:150,  en:'PAIN POINTS', cn:'阅读痛点'},
   {x:700,  en:'THE FIX',    cn:'AI 解法'},
-  {x:1330, en:'OUTCOME',    cn:'真实成效'}
+  {x:1330, en:'OUTCOME',    cn:'示例成效'}
 ];
 heads.forEach(function(h){
   txt(h.x, 238, h.en, {'font-family':MONO, 'font-size':'var(--type-label)', 'letter-spacing':3, fill:INK45});
@@ -122,11 +122,11 @@ function item(x, y, no, title, note1, note2, tag){
 
 var pains = [
   ['1', '收藏夹是坟场', '文章无限期积压，', '存了等于没看，越积越多。', 'BACKLOG↑'],
-  ['2', '读完就忘', '没有提炼与归档，', '一周后内容全忘光。', 'RETENTION↓'],
+  ['2', '读完就忘', '没有提炼与归档，', '一周后内容大多遗忘。', 'RETENTION↓'],
   ['3', '不会用', '不知道能问什么，', '拿到 AI 也只会查天气。', 'USAGE↓']
 ];
 var fixes = [
-  ['1', 'AI 阅读系统', '输入链接自动出卡片，', '收藏即整理，零负担归档。', 'AUTO READ'],
+  ['1', 'AI 阅读系统', '输入链接自动出卡片，', '收藏即整理，轻松归档。', 'AUTO READ'],
   ['2', '知识卡片', '结构化提炼要点，', '一篇长文压缩成 5 张卡。', 'KNOWLEDGE CARD'],
   ['3', '个人智能体', '基于知识库问答，', '随时反查、随时调用。', 'PERSONAL AGENT']
 ];

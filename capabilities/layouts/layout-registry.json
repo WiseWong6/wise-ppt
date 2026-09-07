@@ -3,7 +3,7 @@
   "registry_id": "wise-ppt.layouts",
   "generated_from": {
     "catalog_authority": {
-      "sha256": "d6d13a8bb39181f16fadf413cc88e31daefa0f68a4050aa9d14158ec06c2f4d1"
+      "sha256": "721593f974d3d92adcda4a46fe4df0803b146c8b8aaa9055a32be06e1321eea5"
     },
     "gallery_manifest": {
       "sha256": "1bcb1afdbfe3fe4679f9aa042730b3eddad0d8393c3594188e84b31c3579b10f"
@@ -13,13 +13,13 @@
     },
     "component_routing": {
       "path": "capabilities/components/routing-manifest.json",
-      "sha256": "cf701b5512c7d5c812800b5b6bf435669d5895f94f187991d6f3a65739917540"
+      "sha256": "29d5c8057fd4edb8057d2880f24538d5ba0346cbe283aa6ac7ce6c05c21fabd5"
     },
     "seeds": {
       "path": "capabilities/layouts/seeds",
       "contract": "wise-ppt-layout-seed@4",
       "count": 88,
-      "sha256": "be206546611560a7273b07f3f9d6f106c3a622d294af769939e2b44c0a543031"
+      "sha256": "0d531f26026094644f6ef51952816d5de0b38f89758ed6febf257f026f0748b3"
     }
   },
   "policy": {
@@ -143,7 +143,7 @@
       ],
       "source": {
         "path": "references/gallery-paper-ink/ai/frames/layout-a5.html",
-        "sha256": "e4190cf66a27ab8b1bb2696e04f9785bba4446e00ac36eaa487af44047256a58"
+        "sha256": "20054d3d1a4a2152949f3bb340118e09c77826df78a62ef8bc5796414fe1f727"
       },
       "structure": {
         "region_count": 3,
@@ -213,16 +213,16 @@
                 {
                   "key": "clauses.text.001",
                   "item_scope": "item",
-                  "example": "CH.1 · GENERAL RULES",
+                  "example": "CH.1 · SCHEDULE",
                   "item_index": 0,
-                  "max_chars": 23
+                  "max_chars": 18
                 },
                 {
                   "key": "clauses.text.002",
                   "item_scope": "item",
-                  "example": "数据与训练",
+                  "example": "进度与里程碑",
                   "item_index": 0,
-                  "max_chars": 7
+                  "max_chars": 9
                 },
                 {
                   "key": "clauses.text.003",
@@ -241,14 +241,14 @@
                 {
                   "key": "clauses.text.005",
                   "item_scope": "item",
-                  "example": "CH.3 · CONTENT & SAFETY",
+                  "example": "CH.3 · CONTENT & REVIEW",
                   "item_index": 0,
-                  "max_chars": 23
+                  "max_chars": 18
                 },
                 {
                   "key": "clauses.text.006",
                   "item_scope": "item",
-                  "example": "内容与安全",
+                  "example": "内容与质检",
                   "item_index": 0,
                   "max_chars": 7
                 },
@@ -262,16 +262,16 @@
                 {
                   "key": "clauses.text.008",
                   "item_scope": "item",
-                  "example": "训练数据处理活动应使用具有合法来源的",
+                  "example": "项目启动阶段应输出经过评审确认的",
                   "item_index": 0,
-                  "max_chars": 25
+                  "max_chars": 22
                 },
                 {
                   "key": "clauses.text.009",
                   "item_scope": "item",
-                  "example": "基础语料与标注数据，不得侵害他人民事权益。",
+                  "example": "里程碑计划与责任分工，明确到具体执行人。",
                   "item_index": 0,
-                  "max_chars": 29
+                  "max_chars": 27
                 },
                 {
                   "key": "clauses.text.010",
@@ -283,14 +283,14 @@
                 {
                   "key": "clauses.text.011",
                   "item_scope": "item",
-                  "example": "涉及个人信息的，须取得同意或符合法定",
+                  "example": "阶段成果进入评审队列后，评审意见",
                   "item_index": 0,
-                  "max_chars": 25
+                  "max_chars": 22
                 },
                 {
                   "key": "clauses.text.012",
                   "item_scope": "item",
-                  "example": "情形，并采取去标识化等脱敏措施。",
+                  "example": "须在两个工作日内闭环并留存记录。",
                   "item_index": 0,
                   "max_chars": 22
                 },
@@ -304,16 +304,16 @@
                 {
                   "key": "clauses.text.014",
                   "item_scope": "item",
-                  "example": "发现训练数据存在违法内容的，应及时",
+                  "example": "进度偏差超过计划百分之十的，应当",
                   "item_index": 0,
-                  "max_chars": 23
+                  "max_chars": 22
                 },
                 {
                   "key": "clauses.text.015",
                   "item_scope": "item",
-                  "example": "停止使用并采取处置措施。",
+                  "example": "书面说明原因并提出追赶方案。",
                   "item_index": 0,
-                  "max_chars": 17
+                  "max_chars": 19
                 },
                 {
                   "key": "clauses.text.016",
@@ -325,16 +325,16 @@
                 {
                   "key": "clauses.text.017",
                   "item_scope": "item",
-                  "example": "提供者应当提高训练数据质量，增强",
+                  "example": "交付团队应当持续改进交付质量，",
                   "item_index": 0,
-                  "max_chars": 22
+                  "max_chars": 21
                 },
                 {
                   "key": "clauses.text.018",
                   "item_scope": "item",
-                  "example": "训练数据的真实性、准确性、可靠性。",
+                  "example": "提升成果的完整性、一致性与可复用性。",
                   "item_index": 0,
-                  "max_chars": 23
+                  "max_chars": 25
                 },
                 {
                   "key": "clauses.text.019",
@@ -346,16 +346,16 @@
                 {
                   "key": "clauses.text.020",
                   "item_scope": "item",
-                  "example": "基础模型发生重大变更的，应重新履行",
+                  "example": "交付范围发生重大变更的，应重新进行",
                   "item_index": 0,
                   "max_chars": 23
                 },
                 {
                   "key": "clauses.text.021",
                   "item_scope": "item",
-                  "example": "备案与安全评估程序。",
+                  "example": "范围确认与计划评审程序。",
                   "item_index": 0,
-                  "max_chars": 14
+                  "max_chars": 17
                 },
                 {
                   "key": "clauses.text.022",
@@ -367,30 +367,30 @@
                 {
                   "key": "clauses.text.023",
                   "item_scope": "item",
-                  "example": "提供服务前应按照",
+                  "example": "服务启动前应完成",
                   "item_index": 0,
                   "max_chars": 11
                 },
                 {
                   "key": "clauses.text.024",
                   "item_scope": "item",
-                  "example": "《互联网信息服务",
+                  "example": "《xx 服务响应",
                   "item_index": 0,
-                  "max_chars": 11
+                  "max_chars": 10
                 },
                 {
                   "key": "clauses.text.025",
                   "item_scope": "item",
-                  "example": "深度合成管理规定》",
+                  "example": "与升级管理办法》",
                   "item_index": 0,
-                  "max_chars": 13
+                  "max_chars": 11
                 },
                 {
                   "key": "clauses.text.026",
                   "item_scope": "item",
-                  "example": "完成算法备案。",
+                  "example": "制度的宣贯培训。",
                   "item_index": 0,
-                  "max_chars": 10
+                  "max_chars": 11
                 },
                 {
                   "key": "clauses.text.027",
@@ -423,16 +423,16 @@
                 {
                   "key": "clauses.text.031",
                   "item_scope": "item",
-                  "example": "不得为未满十四周岁未成年人提供",
+                  "example": "紧急问题应按最高优先级响应，",
                   "item_index": 0,
-                  "max_chars": 21
+                  "max_chars": 19
                 },
                 {
                   "key": "clauses.text.032",
                   "item_scope": "item",
-                  "example": "单独的生成式服务，须获监护人同意。",
+                  "example": "并在处置后向全体相关方同步。",
                   "item_index": 0,
-                  "max_chars": 23
+                  "max_chars": 19
                 },
                 {
                   "key": "clauses.text.033",
@@ -444,16 +444,16 @@
                 {
                   "key": "clauses.text.034",
                   "item_scope": "item",
-                  "example": "应承担个人信息处理者责任，依法",
+                  "example": "每季度输出服务运行报告，内容",
                   "item_index": 0,
-                  "max_chars": 21
+                  "max_chars": 19
                 },
                 {
                   "key": "clauses.text.035",
                   "item_scope": "item",
-                  "example": "履行个人信息保护义务。",
+                  "example": "覆盖使用情况与改进计划。",
                   "item_index": 0,
-                  "max_chars": 15
+                  "max_chars": 17
                 },
                 {
                   "key": "clauses.text.036",
@@ -486,16 +486,16 @@
                 {
                   "key": "clauses.text.040",
                   "item_scope": "item",
-                  "example": "生成内容应体现社会主义核心价值观，",
+                  "example": "内容产出应遵循统一风格规范，",
                   "item_index": 0,
-                  "max_chars": 18
+                  "max_chars": 14
                 },
                 {
                   "key": "clauses.text.041",
                   "item_scope": "item",
-                  "example": "不得生成煽动颠覆国家政权的内容。",
+                  "example": "不得偏离确认过的选题与口径。",
                   "item_index": 0,
-                  "max_chars": 18
+                  "max_chars": 14
                 },
                 {
                   "key": "clauses.text.042",
@@ -507,16 +507,16 @@
                 {
                   "key": "clauses.text.043",
                   "item_scope": "item",
-                  "example": "应采取有效措施防范未成年人过度依赖，",
+                  "example": "引用外部数据时应核对来源，",
                   "item_index": 0,
-                  "max_chars": 18
+                  "max_chars": 14
                 },
                 {
                   "key": "clauses.text.044",
                   "item_scope": "item",
-                  "example": "并在显著位置标识 AI 生成。",
+                  "example": "并标注采集时间与口径。",
                   "item_index": 0,
-                  "max_chars": 18
+                  "max_chars": 14
                 },
                 {
                   "key": "clauses.text.045",
@@ -528,16 +528,16 @@
                 {
                   "key": "clauses.text.046",
                   "item_scope": "item",
-                  "example": "提供图片、视频等生成服务的，应在",
+                  "example": "使用图片、视频等素材的，应",
                   "item_index": 0,
-                  "max_chars": 18
+                  "max_chars": 14
                 },
                 {
                   "key": "clauses.text.047",
                   "item_scope": "item",
-                  "example": "生成内容中添加水印等可溯源标识。",
+                  "example": "确认授权状态并保留凭证备查。",
                   "item_index": 0,
-                  "max_chars": 18
+                  "max_chars": 14
                 },
                 {
                   "key": "clauses.text.048",
@@ -549,16 +549,16 @@
                 {
                   "key": "clauses.text.049",
                   "item_scope": "item",
-                  "example": "发现违法内容的，应立即采取处置措施，",
+                  "example": "质检抽检应覆盖全部交付页面，",
                   "item_index": 0,
-                  "max_chars": 18
+                  "max_chars": 14
                 },
                 {
                   "key": "clauses.text.050",
                   "item_scope": "item",
-                  "example": "保存记录并向有关主管部门报告。",
+                  "example": "发现问题当日退回并限期修正。",
                   "item_index": 0,
-                  "max_chars": 18
+                  "max_chars": 14
                 },
                 {
                   "key": "clauses.text.051",
@@ -570,16 +570,16 @@
                 {
                   "key": "clauses.text.052",
                   "item_scope": "item",
-                  "example": "违反规定的，由主管部门依法予以警告、",
+                  "example": "未通过质检的产出不计入交付，",
                   "item_index": 0,
-                  "max_chars": 18
+                  "max_chars": 14
                 },
                 {
                   "key": "clauses.text.053",
                   "item_scope": "item",
-                  "example": "罚款、暂停或关闭服务等处罚。",
+                  "example": "须整改后重新提交复检。",
                   "item_index": 0,
-                  "max_chars": 18
+                  "max_chars": 14
                 }
               ],
               "field_count": 53,
@@ -719,7 +719,7 @@
         "data"
       ],
       "locks": {
-        "dom_source_sha256": "e4190cf66a27ab8b1bb2696e04f9785bba4446e00ac36eaa487af44047256a58",
+        "dom_source_sha256": "20054d3d1a4a2152949f3bb340118e09c77826df78a62ef8bc5796414fe1f727",
         "structure_fingerprint": "sha256:d4135cbd4a30998f60217e4e84c8125d97cce73a1fee46e064f52bc385520a59",
         "core_primitives": [
           "peer-array"
@@ -3040,7 +3040,7 @@
       ],
       "source": {
         "path": "references/gallery-paper-ink/ai/frames/layout-r3.html",
-        "sha256": "d35aca689548b88a370afb712f9ac541fbc0e63229aff45f6a24302fab28ba74"
+        "sha256": "12f3d1d665723912f23d2671b8e9e358d0946cf048ddb4ba6236c936f05a371c"
       },
       "structure": {
         "region_count": 7,
@@ -3531,7 +3531,7 @@
                 {
                   "key": "cell-e.text.004",
                   "item_scope": "item",
-                  "example": "模糊提问精准定位",
+                  "example": "模糊提问辅助定位",
                   "item_index": 0,
                   "max_chars": 11
                 }
@@ -3614,7 +3614,7 @@
                 {
                   "key": "cell-f.text.004",
                   "item_scope": "item",
-                  "example": "一次成稿可读可运行",
+                  "example": "一次草稿可读可运行",
                   "item_index": 0,
                   "max_chars": 13
                 }
@@ -3695,7 +3695,7 @@
         "data"
       ],
       "locks": {
-        "dom_source_sha256": "d35aca689548b88a370afb712f9ac541fbc0e63229aff45f6a24302fab28ba74",
+        "dom_source_sha256": "12f3d1d665723912f23d2671b8e9e358d0946cf048ddb4ba6236c936f05a371c",
         "structure_fingerprint": "sha256:db7ee8eec27a6d9924f34265c9bd80b12883f62d2830aa76d8db476dbac8bd8e",
         "core_primitives": [
           "matrix-field",
@@ -3808,7 +3808,7 @@
       ],
       "source": {
         "path": "references/gallery-paper-ink/ai/frames/layout-r7.html",
-        "sha256": "f92500ce1c133e0f8b8d61a8b294136e3f8ff6e16bb7485a9af378543bfa0d2d"
+        "sha256": "52763b98a51654c647c13c3e65a44b6cd973b6dc93584be13503ea9b8845d160"
       },
       "structure": {
         "region_count": 29,
@@ -4202,7 +4202,7 @@
                 {
                   "key": "capability-02.text.001",
                   "item_scope": "item",
-                  "example": "GPT-4O",
+                  "example": "PTM-4O",
                   "item_index": 0,
                   "max_chars": 9
                 }
@@ -5917,7 +5917,7 @@
         "data"
       ],
       "locks": {
-        "dom_source_sha256": "f92500ce1c133e0f8b8d61a8b294136e3f8ff6e16bb7485a9af378543bfa0d2d",
+        "dom_source_sha256": "52763b98a51654c647c13c3e65a44b6cd973b6dc93584be13503ea9b8845d160",
         "structure_fingerprint": "sha256:3fa80e0601335b40e93b55ef93e70fa95686b1172d0c8147656c32b05bc89fd0",
         "core_primitives": [
           "matrix-field",
@@ -6181,7 +6181,7 @@
       ],
       "source": {
         "path": "references/gallery-paper-ink/ai/frames/layout-a9.html",
-        "sha256": "747d0900912023a20aa427773ae8db82d89a539709d9ef565cb00445906214f4"
+        "sha256": "f24fc82e0086945efee510eb504e249d89d3c2e3c1bad17018563131cb674441"
       },
       "structure": {
         "region_count": 3,
@@ -6328,9 +6328,9 @@
                 {
                   "key": "screens.text.011",
                   "item_scope": "item",
-                  "example": "GLM-5.2",
+                  "example": "DEMO-5.2",
                   "item_index": 0,
-                  "max_chars": 10
+                  "max_chars": 11
                 },
                 {
                   "key": "screens.text.012",
@@ -6447,14 +6447,14 @@
                 {
                   "key": "screens.text.028",
                   "item_scope": "item",
-                  "example": "TOKENS · 本周调用",
+                  "example": "CALLS · 本周调用",
                   "item_index": 0,
-                  "max_chars": 15
+                  "max_chars": 14
                 },
                 {
                   "key": "screens.text.029",
                   "item_scope": "item",
-                  "example": "提问次数",
+                  "example": "提问环比",
                   "item_index": 0,
                   "max_chars": 6
                 },
@@ -6468,7 +6468,7 @@
                 {
                   "key": "screens.text.031",
                   "item_scope": "item",
-                  "example": "生成字数",
+                  "example": "字数环比",
                   "item_index": 0,
                   "max_chars": 6
                 },
@@ -6711,7 +6711,7 @@
         "data"
       ],
       "locks": {
-        "dom_source_sha256": "747d0900912023a20aa427773ae8db82d89a539709d9ef565cb00445906214f4",
+        "dom_source_sha256": "f24fc82e0086945efee510eb504e249d89d3c2e3c1bad17018563131cb674441",
         "structure_fingerprint": "sha256:c76c6d4efb4896a25de297e7b8ff38641b0b9f73fb878e45f5ceb9d531b87f2b",
         "core_primitives": [
           "linear-sequence",
@@ -6757,7 +6757,7 @@
       ],
       "source": {
         "path": "references/gallery-paper-ink/ai/frames/layout-b1.html",
-        "sha256": "b739e9f4e14db2c3654e805fb067b9ae0b62c5d5da9d563527113cca3d6088e1"
+        "sha256": "8777c3044f7d511fe8696774f83a151cd3d7dd1abef10705d33b1905903d5a00"
       },
       "structure": {
         "region_count": 1,
@@ -6826,7 +6826,7 @@
                 {
                   "key": "milestones.text.004",
                   "item_scope": "item",
-                  "example": "GPT-1",
+                  "example": "PTM-1",
                   "item_index": 0,
                   "max_chars": 7
                 },
@@ -6840,9 +6840,9 @@
                 {
                   "key": "milestones.text.006",
                   "item_scope": "item",
-                  "example": "1.17 亿参数 · 证明可行性",
+                  "example": "亿级参数 · 证明可行性",
                   "item_index": 0,
-                  "max_chars": 18
+                  "max_chars": 14
                 },
                 {
                   "key": "milestones.text.007",
@@ -6854,7 +6854,7 @@
                 {
                   "key": "milestones.text.008",
                   "item_scope": "item",
-                  "example": "GPT-2",
+                  "example": "PTM-2",
                   "item_index": 0,
                   "max_chars": 7
                 },
@@ -6875,7 +6875,7 @@
                 {
                   "key": "milestones.text.011",
                   "item_scope": "item",
-                  "example": "GPT-3",
+                  "example": "PTM-3",
                   "item_index": 0,
                   "max_chars": 7
                 },
@@ -6896,9 +6896,9 @@
                 {
                   "key": "milestones.text.014",
                   "item_scope": "item",
-                  "example": "ChatGPT",
+                  "example": "CHAT-M",
                   "item_index": 0,
-                  "max_chars": 10
+                  "max_chars": 9
                 },
                 {
                   "key": "milestones.text.015",
@@ -6917,7 +6917,7 @@
                 {
                   "key": "milestones.text.017",
                   "item_scope": "item",
-                  "example": "GPT-4",
+                  "example": "PTM-4",
                   "item_index": 0,
                   "max_chars": 7
                 },
@@ -6945,7 +6945,7 @@
                 {
                   "key": "milestones.text.021",
                   "item_scope": "item",
-                  "example": "o1 / o3",
+                  "example": "R1 / R3",
                   "item_index": 0,
                   "max_chars": 7
                 },
@@ -7010,7 +7010,7 @@
         "data"
       ],
       "locks": {
-        "dom_source_sha256": "b739e9f4e14db2c3654e805fb067b9ae0b62c5d5da9d563527113cca3d6088e1",
+        "dom_source_sha256": "8777c3044f7d511fe8696774f83a151cd3d7dd1abef10705d33b1905903d5a00",
         "structure_fingerprint": "sha256:3122bebe3b87726c1cd3c326e9d30e406209e947818f9763ed72a41e00217dc4",
         "core_primitives": [
           "linear-sequence"
@@ -7775,7 +7775,7 @@
       ],
       "source": {
         "path": "references/gallery-paper-ink/ai/frames/layout-b4.html",
-        "sha256": "1a168996ca4adb49f7ae54ddf6bceb377f144e21392c8f0cc4cb23951f381df7"
+        "sha256": "7f4bbd88bd38a82bce93e32711a5d6571c0cab8279dddd886352898058581206"
       },
       "structure": {
         "region_count": 1,
@@ -7866,14 +7866,14 @@
                 {
                   "key": "milestone-evidence.text.007",
                   "item_scope": "item",
-                  "example": "V3 — GPT-3",
+                  "example": "V3 — PTM-3",
                   "item_index": 0,
                   "max_chars": 11
                 },
                 {
                   "key": "milestone-evidence.text.008",
                   "item_scope": "item",
-                  "example": "GPT-3 涌现",
+                  "example": "PTM-3 涌现",
                   "item_index": 0,
                   "max_chars": 10
                 },
@@ -7894,9 +7894,9 @@
                 {
                   "key": "milestone-evidence.text.011",
                   "item_scope": "item",
-                  "example": "ChatGPT 破圈",
+                  "example": "CHAT-M 破圈",
                   "item_index": 0,
-                  "max_chars": 13
+                  "max_chars": 11
                 },
                 {
                   "key": "milestone-evidence.text.012",
@@ -7908,14 +7908,14 @@
                 {
                   "key": "milestone-evidence.text.013",
                   "item_scope": "item",
-                  "example": "V5 — GPT-4",
+                  "example": "V5 — PTM-4",
                   "item_index": 0,
                   "max_chars": 11
                 },
                 {
                   "key": "milestone-evidence.text.014",
                   "item_scope": "item",
-                  "example": "GPT-4 多模态",
+                  "example": "PTM-4 多模态",
                   "item_index": 0,
                   "max_chars": 11
                 },
@@ -7929,14 +7929,14 @@
                 {
                   "key": "milestone-evidence.text.016",
                   "item_scope": "item",
-                  "example": "V6 — O1",
+                  "example": "V6 — R1",
                   "item_index": 0,
                   "max_chars": 7
                 },
                 {
                   "key": "milestone-evidence.text.017",
                   "item_scope": "item",
-                  "example": "推理模型 o1",
+                  "example": "推理模型 R1",
                   "item_index": 0,
                   "max_chars": 9
                 }
@@ -7988,7 +7988,7 @@
         "data"
       ],
       "locks": {
-        "dom_source_sha256": "1a168996ca4adb49f7ae54ddf6bceb377f144e21392c8f0cc4cb23951f381df7",
+        "dom_source_sha256": "7f4bbd88bd38a82bce93e32711a5d6571c0cab8279dddd886352898058581206",
         "structure_fingerprint": "sha256:c28d79e0d9df8293c8acb2eade2ff73d1467ecee7de4b1255377c5ff7784cfec",
         "core_primitives": [
           "linear-sequence",
@@ -8293,7 +8293,7 @@
       ],
       "source": {
         "path": "references/gallery-paper-ink/ai/frames/layout-b6.html",
-        "sha256": "d1b1e36a4175fb21854c23a785b869f381f3eda9ac0ef1553b6c6f01efef4d86"
+        "sha256": "eaf3efb2d72622e0ac0ba6a7ecf44cae51b9d2607e3f95b7683d9b86a2511b7c"
       },
       "structure": {
         "region_count": 1,
@@ -8432,9 +8432,9 @@
                 {
                   "key": "road-stages.text.014",
                   "item_scope": "item",
-                  "example": "BERT / GPT 双线登场，迁移学习爆发",
+                  "example": "自编码与自回归双线登场，迁移学习爆发",
                   "item_index": 0,
-                  "max_chars": 26
+                  "max_chars": 25
                 },
                 {
                   "key": "road-stages.text.015",
@@ -8567,7 +8567,7 @@
         "data"
       ],
       "locks": {
-        "dom_source_sha256": "d1b1e36a4175fb21854c23a785b869f381f3eda9ac0ef1553b6c6f01efef4d86",
+        "dom_source_sha256": "eaf3efb2d72622e0ac0ba6a7ecf44cae51b9d2607e3f95b7683d9b86a2511b7c",
         "structure_fingerprint": "sha256:41561d4844e60af6a7413261ce771daa37f2e29714f979bf9f82967128ae296f",
         "core_primitives": [
           "linear-sequence"
@@ -11515,7 +11515,7 @@
       ],
       "source": {
         "path": "references/gallery-paper-ink/ai/frames/layout-k2.html",
-        "sha256": "a6da32c3448b99d091b579c5b070841c77797d7b50b572eb40f21c7acd8b7489"
+        "sha256": "0be970f6e1db7ee49cca9a300a87cd43d60134055ac7046d928e0eb546ffd500"
       },
       "structure": {
         "region_count": 3,
@@ -11620,7 +11620,7 @@
                 {
                   "key": "story-loop.text.006",
                   "item_scope": "item",
-                  "example": "真实成效",
+                  "example": "示例成效",
                   "item_index": 0,
                   "max_chars": 6
                 },
@@ -11676,7 +11676,7 @@
                 {
                   "key": "story-loop.text.014",
                   "item_scope": "item",
-                  "example": "一周后内容全忘光。",
+                  "example": "一周后内容大多遗忘。",
                   "item_index": 0,
                   "max_chars": 12
                 },
@@ -11727,14 +11727,14 @@
                   "item_scope": "item",
                   "example": "输入链接自动出卡片，",
                   "item_index": 0,
-                  "max_chars": 12
+                  "max_chars": 11
                 },
                 {
                   "key": "story-loop.text.022",
                   "item_scope": "item",
-                  "example": "收藏即整理，零负担归档。",
+                  "example": "收藏即整理，轻松归档。",
                   "item_index": 0,
-                  "max_chars": 17
+                  "max_chars": 11
                 },
                 {
                   "key": "story-loop.text.023",
@@ -11762,7 +11762,7 @@
                   "item_scope": "item",
                   "example": "一篇长文压缩成 5 张卡。",
                   "item_index": 0,
-                  "max_chars": 12
+                  "max_chars": 15
                 },
                 {
                   "key": "story-loop.text.027",
@@ -11975,7 +11975,7 @@
         "data"
       ],
       "locks": {
-        "dom_source_sha256": "a6da32c3448b99d091b579c5b070841c77797d7b50b572eb40f21c7acd8b7489",
+        "dom_source_sha256": "0be970f6e1db7ee49cca9a300a87cd43d60134055ac7046d928e0eb546ffd500",
         "structure_fingerprint": "sha256:d1c3b38a076481c1d0c477fd1390a31616774caf56189888e7cb79875ca58651",
         "core_primitives": [
           "linear-sequence"
@@ -12573,7 +12573,7 @@
       ],
       "source": {
         "path": "references/gallery-paper-ink/ai/frames/layout-s3.html",
-        "sha256": "26ca05cf63d4061c91e73fcdc55943c6f6c15cb80c21af3d681d0ccf938a1d03"
+        "sha256": "ae699b03a617536f461b0f8bdd30cc2b8b8ae1a6c4631332a4da4c163343a4c7"
       },
       "structure": {
         "region_count": 6,
@@ -13137,9 +13137,9 @@
                 {
                   "key": "evidence-band.text.002",
                   "item_scope": "item",
-                  "example": "评测集 320 例 · 双人一致率 0.91",
+                  "example": "示例评测 320 例 · 一致率 0.91",
                   "item_index": 0,
-                  "max_chars": 23
+                  "max_chars": 22
                 },
                 {
                   "key": "evidence-band.text.003",
@@ -13165,9 +13165,9 @@
                 {
                   "key": "evidence-band.text.006",
                   "item_scope": "item",
-                  "example": "旧例通过率 100% · 零退化",
+                  "example": "示例：通过率 100% · 无退化",
                   "item_index": 0,
-                  "max_chars": 18
+                  "max_chars": 19
                 }
               ],
               "field_count": 6,
@@ -13358,7 +13358,7 @@
         "data"
       ],
       "locks": {
-        "dom_source_sha256": "26ca05cf63d4061c91e73fcdc55943c6f6c15cb80c21af3d681d0ccf938a1d03",
+        "dom_source_sha256": "ae699b03a617536f461b0f8bdd30cc2b8b8ae1a6c4631332a4da4c163343a4c7",
         "structure_fingerprint": "sha256:4e6f14bdca2c336faa8478842802844f81125b55be51f86f2c3629b85d258a7a",
         "core_primitives": [
           "bilateral-split",
@@ -20840,7 +20840,7 @@
       ],
       "source": {
         "path": "references/gallery-paper-ink/ai/frames/layout-w1.html",
-        "sha256": "f5b310bcfc6413e79a43b64df5fde89420f325e3347ee92d683800dd32b3a1ec"
+        "sha256": "66430febda750a512653c4e62525eee1b6fab6afc800fe0a1d9a98b9e3afaa29"
       },
       "structure": {
         "region_count": 4,
@@ -21038,16 +21038,16 @@
                 {
                   "key": "details.text.002",
                   "item_scope": "item",
-                  "example": "国家级认证与行业白名单资质齐备",
+                  "example": "行业资质认证与准入清单齐备",
                   "item_index": 0,
-                  "max_chars": 21
+                  "max_chars": 13
                 },
                 {
                   "key": "details.text.003",
                   "item_scope": "item",
-                  "example": "牵头两项行业标准起草",
+                  "example": "参与两项行业规范编制",
                   "item_index": 0,
-                  "max_chars": 14
+                  "max_chars": 13
                 },
                 {
                   "key": "details.text.004",
@@ -21059,7 +21059,7 @@
                 {
                   "key": "details.text.005",
                   "item_scope": "item",
-                  "example": "自营平台服务用户超过一亿",
+                  "example": "自有平台服务大规模用户",
                   "item_index": 0,
                   "max_chars": 12
                 },
@@ -21068,7 +21068,7 @@
                   "item_scope": "item",
                   "example": "四大线上系统支撑日常运营",
                   "item_index": 0,
-                  "max_chars": 15
+                  "max_chars": 13
                 },
                 {
                   "key": "details.text.007",
@@ -21082,14 +21082,14 @@
                   "item_scope": "item",
                   "example": "全链路数据回流沉淀业务资产",
                   "item_index": 0,
-                  "max_chars": 15
+                  "max_chars": 13
                 },
                 {
                   "key": "details.text.009",
                   "item_scope": "item",
                   "example": "关键指标次日即可回看",
                   "item_index": 0,
-                  "max_chars": 14
+                  "max_chars": 13
                 },
                 {
                   "key": "details.text.010",
@@ -21110,7 +21110,7 @@
                   "item_scope": "item",
                   "example": "覆盖生产到消费的完整闭环",
                   "item_index": 0,
-                  "max_chars": 15
+                  "max_chars": 13
                 }
               ],
               "field_count": 12,
@@ -21250,7 +21250,7 @@
         "data"
       ],
       "locks": {
-        "dom_source_sha256": "f5b310bcfc6413e79a43b64df5fde89420f325e3347ee92d683800dd32b3a1ec",
+        "dom_source_sha256": "66430febda750a512653c4e62525eee1b6fab6afc800fe0a1d9a98b9e3afaa29",
         "structure_fingerprint": "sha256:b318ca7fbf0aaffaf4245d3a6c149eb467e9b49bf6455296b9434a1913487681",
         "core_primitives": [
           "bilateral-split",
@@ -22349,7 +22349,7 @@
       ],
       "source": {
         "path": "references/gallery-paper-ink/ai/frames/layout-e2.html",
-        "sha256": "d311fff7550322eec228254595343f1028c4268a352d170a3ecab089775f73e7"
+        "sha256": "7bbf30689ad83f6d956d90d539a0165439c47c753f7d943608a6a0891c6606dc"
       },
       "structure": {
         "region_count": 3,
@@ -22490,7 +22490,7 @@
                 {
                   "key": "comparison-fields.text.012",
                   "item_scope": "item",
-                  "example": "无需重训、零额外算力",
+                  "example": "无需重训，算力开销小",
                   "item_index": 0,
                   "max_chars": 14
                 },
@@ -22518,9 +22518,9 @@
                 {
                   "key": "comparison-fields.text.016",
                   "item_scope": "item",
-                  "example": "永远是最新版本",
+                  "example": "始终保持较新版本",
                   "item_index": 0,
-                  "max_chars": 10
+                  "max_chars": 11
                 },
                 {
                   "key": "comparison-fields.text.017",
@@ -22814,7 +22814,7 @@
         "data"
       ],
       "locks": {
-        "dom_source_sha256": "d311fff7550322eec228254595343f1028c4268a352d170a3ecab089775f73e7",
+        "dom_source_sha256": "7bbf30689ad83f6d956d90d539a0165439c47c753f7d943608a6a0891c6606dc",
         "structure_fingerprint": "sha256:9f4aa3cee9fa24739e66bec6093e19433eaf15e9bd6da9d6a085c487d6bc6b5e",
         "core_primitives": [
           "bilateral-split"
@@ -22838,7 +22838,7 @@
       },
       "claim_binding": {
         "key": "claim.text.001",
-        "max_chars": 43
+        "max_chars": 44
       }
     },
     {
@@ -29877,7 +29877,7 @@
       ],
       "source": {
         "path": "references/gallery-paper-ink/ai/frames/layout-o1.html",
-        "sha256": "31669a264b58cc0ad7f472b143cddfb963f58e633ecbe1e2f23432fcc8618e32"
+        "sha256": "d2bdd31b2dede918c64b485346a927bf7cc5974639efe4320d4f181ca6bdb219"
       },
       "structure": {
         "region_count": 3,
@@ -30374,7 +30374,7 @@
         "data"
       ],
       "locks": {
-        "dom_source_sha256": "31669a264b58cc0ad7f472b143cddfb963f58e633ecbe1e2f23432fcc8618e32",
+        "dom_source_sha256": "d2bdd31b2dede918c64b485346a927bf7cc5974639efe4320d4f181ca6bdb219",
         "structure_fingerprint": "sha256:f0a79cdfffc4c4d53029b170e174178c0c5960d53d1670a67b6bc160ea7084ea",
         "core_primitives": [
           "converging-path"
@@ -30398,7 +30398,7 @@
       },
       "claim_binding": {
         "key": "claim.text.001",
-        "max_chars": 45
+        "max_chars": 41
       }
     },
     {
@@ -31109,7 +31109,7 @@
       ],
       "source": {
         "path": "references/gallery-paper-ink/ai/frames/layout-a3.html",
-        "sha256": "e37f3a3febe4a58fb05e8765f33a21f64bd2c7b3ae2787a722501062b01ed8a5"
+        "sha256": "38c0fcbf57d2df18b519c735d29d0178087ac815a79a90a8d3ab3dc709ff1dd8"
       },
       "structure": {
         "region_count": 3,
@@ -31173,37 +31173,37 @@
                 {
                   "key": "excerpt.text.001",
                   "item_scope": "item",
-                  "example": "《xx 服务管理暂行办法》",
+                  "example": "《xx 项目交付管理办法》",
                   "item_index": 0,
                   "max_chars": 17
                 },
                 {
                   "key": "excerpt.text.002",
                   "item_scope": "item",
-                  "example": "提出：提供者应当对训练数据来源的合法性负责，并采取",
+                  "example": "提出：交付方应当对交付物质量的合规性负责，并建立",
                   "item_index": 0,
-                  "max_chars": 34
+                  "max_chars": 33
                 },
                 {
                   "key": "excerpt.text.003",
                   "item_scope": "item",
-                  "example": "有效措施防范未成年人过度依赖，同时不得生成煽动颠覆国家政权的内容。",
+                  "example": "有效机制防范需求范围外的重复返工，同时不得引入未经评审的变更内容。",
                   "item_index": 0,
                   "max_chars": 45
                 },
                 {
                   "key": "excerpt.text.004",
                   "item_scope": "item",
-                  "example": "文件首次将「训练数据合规」与「生成内容可溯源」并列写入。",
+                  "example": "文件首次将「交付范围确认」与「验收结论可追溯」并列写入。",
                   "item_index": 0,
                   "max_chars": 38
                 },
                 {
                   "key": "excerpt.text.005",
                   "item_scope": "item",
-                  "example": "—— 每一个上线 AI 产品的合规清单，正来自这一条。",
+                  "example": "—— 每一个交付项目的验收清单，正来自这一条。",
                   "item_index": 0,
-                  "max_chars": 33
+                  "max_chars": 30
                 },
                 {
                   "key": "excerpt.text.006",
@@ -31215,14 +31215,14 @@
                 {
                   "key": "excerpt.text.007",
                   "item_scope": "item",
-                  "example": "原文标本",
+                  "example": "交付文件",
                   "item_index": 0,
                   "max_chars": 6
                 },
                 {
                   "key": "excerpt.text.008",
                   "item_scope": "item",
-                  "example": "xx 行业主管办公室",
+                  "example": "xx 项目管理办公室",
                   "item_index": 0,
                   "max_chars": 13
                 },
@@ -31236,16 +31236,16 @@
                 {
                   "key": "excerpt.text.010",
                   "item_scope": "item",
-                  "example": "xx 服务管理暂行办法",
+                  "example": "xx 项目交付管理办法",
                   "item_index": 0,
                   "max_chars": 14
                 },
                 {
                   "key": "excerpt.text.011",
                   "item_scope": "item",
-                  "example": "INTERIM MEASURES · CHAPTER IV",
+                  "example": "DELIVERY RULES · CHAPTER IV",
                   "item_index": 0,
-                  "max_chars": 34
+                  "max_chars": 32
                 },
                 {
                   "key": "excerpt.text.012",
@@ -31402,7 +31402,7 @@
         "data"
       ],
       "locks": {
-        "dom_source_sha256": "e37f3a3febe4a58fb05e8765f33a21f64bd2c7b3ae2787a722501062b01ed8a5",
+        "dom_source_sha256": "38c0fcbf57d2df18b519c735d29d0178087ac815a79a90a8d3ab3dc709ff1dd8",
         "structure_fingerprint": "sha256:4550cb9efc6862752674e3d6f84494887f2fd47224410478e294d0d427558180",
         "core_primitives": [
           "evidence-annotation"
@@ -31426,7 +31426,7 @@
       },
       "claim_binding": {
         "key": "claim.text.001",
-        "max_chars": 41
+        "max_chars": 38
       }
     },
     {
@@ -31890,7 +31890,7 @@
       ],
       "source": {
         "path": "references/gallery-paper-ink/ai/frames/layout-a6.html",
-        "sha256": "a88b5e47a24948e3edc0c610accca8ac16171872a0119d459e15970ddf09ff19"
+        "sha256": "77ade9e143c86d5a30b62b9a4e963baf2e6662a0afaecf835e818e137db8342f"
       },
       "structure": {
         "region_count": 3,
@@ -31962,7 +31962,7 @@
                 {
                   "key": "credentials.text.002",
                   "item_scope": "item",
-                  "example": "模型评测与合规背书",
+                  "example": "模型评测与认证记录",
                   "item_index": 0,
                   "max_chars": 13
                 },
@@ -31983,14 +31983,14 @@
                 {
                   "key": "credentials.text.005",
                   "item_scope": "item",
-                  "example": "综合能力 · 顶级",
+                  "example": "综合能力 · 领先",
                   "item_index": 0,
                   "max_chars": 8
                 },
                 {
                   "key": "credentials.text.006",
                   "item_scope": "item",
-                  "example": "WISE-BENCH",
+                  "example": "DEMO-BENCH",
                   "item_index": 0,
                   "max_chars": 10
                 },
@@ -32095,7 +32095,7 @@
                 {
                   "key": "credentials.text.021",
                   "item_scope": "item",
-                  "example": "ZL-7741-A",
+                  "example": "DEMO-0741-A",
                   "item_index": 0,
                   "max_chars": 12
                 },
@@ -32109,7 +32109,7 @@
                 {
                   "key": "credentials.text.023",
                   "item_scope": "item",
-                  "example": "ZL-8126-C",
+                  "example": "DEMO-8126-C",
                   "item_index": 0,
                   "max_chars": 12
                 },
@@ -32151,9 +32151,9 @@
                 {
                   "key": "credentials.text.029",
                   "item_scope": "item",
-                  "example": "ISO 27001",
+                  "example": "INFOSEC",
                   "item_index": 0,
-                  "max_chars": 11
+                  "max_chars": 10
                 },
                 {
                   "key": "credentials.text.030",
@@ -32324,7 +32324,7 @@
         "data"
       ],
       "locks": {
-        "dom_source_sha256": "a88b5e47a24948e3edc0c610accca8ac16171872a0119d459e15970ddf09ff19",
+        "dom_source_sha256": "77ade9e143c86d5a30b62b9a4e963baf2e6662a0afaecf835e818e137db8342f",
         "structure_fingerprint": "sha256:3dcec7d66945c8d13be7f8b2bb5edf671b7b7d6d54de8c98a34cac841af37706",
         "core_primitives": [
           "peer-array",
@@ -33220,7 +33220,7 @@
       ],
       "source": {
         "path": "references/gallery-paper-ink/ai/frames/layout-c1.html",
-        "sha256": "b0bd34232b9450b88884a780878df46c4b130e77f6ba04f5fe6e13df15cc5a45"
+        "sha256": "0954b4366c1e69de30adda25f230de5a74c43ddb8b7d136e8122111ff054277a"
       },
       "structure": {
         "region_count": 3,
@@ -33375,16 +33375,16 @@
                 {
                   "key": "visual.text.014",
                   "item_scope": "item",
-                  "example": "平均延迟",
+                  "example": "P95 延迟",
                   "item_index": 0,
-                  "max_chars": 6
+                  "max_chars": 7
                 },
                 {
                   "key": "visual.text.015",
                   "item_scope": "item",
-                  "example": "AVG LATENCY · P95",
+                  "example": "LATENCY · P95",
                   "item_index": 0,
-                  "max_chars": 19
+                  "max_chars": 15
                 }
               ],
               "field_count": 15,
@@ -33531,7 +33531,7 @@
         "data"
       ],
       "locks": {
-        "dom_source_sha256": "b0bd34232b9450b88884a780878df46c4b130e77f6ba04f5fe6e13df15cc5a45",
+        "dom_source_sha256": "0954b4366c1e69de30adda25f230de5a74c43ddb8b7d136e8122111ff054277a",
         "structure_fingerprint": "sha256:5614d71661a1a96e285db36fcd7f4de0d80858ba44fd628452519888ab3244a4",
         "core_primitives": [
           "bilateral-split"
@@ -33555,7 +33555,7 @@
       },
       "claim_binding": {
         "key": "claim.text.001",
-        "max_chars": 48
+        "max_chars": 49
       }
     },
     {
@@ -33942,7 +33942,7 @@
       ],
       "source": {
         "path": "references/gallery-paper-ink/ai/frames/layout-q4.html",
-        "sha256": "d35a207d7bead1bac759c5aee4c3fe81d5add1403767c7619d9a69540140ebfb"
+        "sha256": "98f35a787ba41adb7172a4c31d6d0e1b8945c0751be11d49e9480f7847f2325c"
       },
       "structure": {
         "region_count": 5,
@@ -34232,9 +34232,9 @@
                 {
                   "key": "evidence-b.text.005",
                   "item_scope": "item",
-                  "example": "失败项为 0，生成时间已留档",
+                  "example": "失败项与生成时间留档可查",
                   "item_index": 0,
-                  "max_chars": 18
+                  "max_chars": 17
                 }
               ],
               "field_count": 5,
@@ -34324,7 +34324,7 @@
                 {
                   "key": "evidence-c.text.005",
                   "item_scope": "item",
-                  "example": "版本、权限与有效期均已核对",
+                  "example": "版本、权限与有效期核对留痕",
                   "item_index": 0,
                   "max_chars": 18
                 }
@@ -34416,9 +34416,9 @@
                 {
                   "key": "evidence-d.text.005",
                   "item_scope": "item",
-                  "example": "无隐藏重试，也没有越权调用",
+                  "example": "重试与越权调用全程可审计",
                   "item_index": 0,
-                  "max_chars": 18
+                  "max_chars": 17
                 }
               ],
               "field_count": 5,
@@ -34497,7 +34497,7 @@
         "data"
       ],
       "locks": {
-        "dom_source_sha256": "d35a207d7bead1bac759c5aee4c3fe81d5add1403767c7619d9a69540140ebfb",
+        "dom_source_sha256": "98f35a787ba41adb7172a4c31d6d0e1b8945c0751be11d49e9480f7847f2325c",
         "structure_fingerprint": "sha256:15fcf6e0f732d80e791179baf493ce3b05859677b211cad6f4f31491cc2efc0c",
         "core_primitives": [
           "matrix-field",
@@ -35087,7 +35087,7 @@
       ],
       "source": {
         "path": "references/gallery-paper-ink/ai/frames/layout-c4.html",
-        "sha256": "7081130384f6fd8280489a13d7e1bb1da28afe2b92a285726aff6f1331ad4983"
+        "sha256": "4e87df6f496cd911438cb97211d3e48e93356026bada757577bdf46839b51ff0"
       },
       "structure": {
         "region_count": 3,
@@ -35151,9 +35151,9 @@
                 {
                   "key": "map.text.001",
                   "item_scope": "item",
-                  "example": "PROVINCE TOTALS",
+                  "example": "REGION TOTALS",
                   "item_index": 0,
-                  "max_chars": 19
+                  "max_chars": 17
                 },
                 {
                   "key": "map.text.002",
@@ -35228,7 +35228,7 @@
                 {
                   "key": "map.text.012",
                   "item_scope": "item",
-                  "example": "FILL INTENSITY = NODES · 112°E–115°E · MAP DATA © DATAV.GEOATLAS",
+                  "example": "FILL INTENSITY = NODES · SAMPLE REGION · MAP DATA © DATAV.GEOATLAS",
                   "item_index": 0,
                   "max_chars": 70
                 },
@@ -35237,14 +35237,14 @@
                   "item_scope": "item",
                   "example": "42 节点",
                   "item_index": 0,
-                  "max_chars": 5
+                  "max_chars": 4
                 },
                 {
                   "key": "map.text.014",
                   "item_scope": "item",
-                  "example": "广州 · GUANGZHOU",
+                  "example": "城市 A·CITY A",
                   "item_index": 0,
-                  "max_chars": 17
+                  "max_chars": 13
                 },
                 {
                   "key": "map.text.015",
@@ -35256,9 +35256,9 @@
                 {
                   "key": "map.text.016",
                   "item_scope": "item",
-                  "example": "深圳 · SHENZHEN",
+                  "example": "城市 B·CITY B",
                   "item_index": 0,
-                  "max_chars": 15
+                  "max_chars": 13
                 },
                 {
                   "key": "map.text.017",
@@ -35270,9 +35270,9 @@
                 {
                   "key": "map.text.018",
                   "item_scope": "item",
-                  "example": "佛山 · FOSHAN",
+                  "example": "城市 C·CITY C",
                   "item_index": 0,
-                  "max_chars": 12
+                  "max_chars": 9
                 },
                 {
                   "key": "map.text.019",
@@ -35284,9 +35284,9 @@
                 {
                   "key": "map.text.020",
                   "item_scope": "item",
-                  "example": "东莞 · DONGGUAN",
+                  "example": "城市 D·CITY D",
                   "item_index": 0,
-                  "max_chars": 15
+                  "max_chars": 13
                 },
                 {
                   "key": "map.text.021",
@@ -35298,7 +35298,7 @@
                 {
                   "key": "map.text.022",
                   "item_scope": "item",
-                  "example": "珠海 · ZHUHAI",
+                  "example": "城市 E·CITY E",
                   "item_index": 0,
                   "max_chars": 13
                 },
@@ -35307,14 +35307,14 @@
                   "item_scope": "item",
                   "example": "6 节点",
                   "item_index": 0,
-                  "max_chars": 5
+                  "max_chars": 4
                 },
                 {
                   "key": "map.text.024",
                   "item_scope": "item",
-                  "example": "汕头 · SHANTOU",
+                  "example": "城市 F·CITY F",
                   "item_index": 0,
-                  "max_chars": 14
+                  "max_chars": 13
                 }
               ],
               "field_count": 24,
@@ -35464,7 +35464,7 @@
         "data"
       ],
       "locks": {
-        "dom_source_sha256": "7081130384f6fd8280489a13d7e1bb1da28afe2b92a285726aff6f1331ad4983",
+        "dom_source_sha256": "4e87df6f496cd911438cb97211d3e48e93356026bada757577bdf46839b51ff0",
         "structure_fingerprint": "sha256:ca2abf402f95fc66302209f9008634a20f108e96139f6ef9a1c5c0caa198fb6e",
         "core_primitives": [
           "evidence-annotation"
@@ -35496,7 +35496,7 @@
       },
       "claim_binding": {
         "key": "claim.text.001",
-        "max_chars": 39
+        "max_chars": 42
       }
     },
     {
@@ -35520,7 +35520,7 @@
       ],
       "source": {
         "path": "references/gallery-paper-ink/ai/frames/layout-c6.html",
-        "sha256": "8085591c73536308311aeb25c1a39ffcaae61c88e6fb4047e50a5a815c86ac71"
+        "sha256": "00f3aa9a41481dee0e5c3163c00942d306d6120008dd82fd42556a6e96954561"
       },
       "structure": {
         "region_count": 3,
@@ -35892,7 +35892,7 @@
         "data"
       ],
       "locks": {
-        "dom_source_sha256": "8085591c73536308311aeb25c1a39ffcaae61c88e6fb4047e50a5a815c86ac71",
+        "dom_source_sha256": "00f3aa9a41481dee0e5c3163c00942d306d6120008dd82fd42556a6e96954561",
         "structure_fingerprint": "sha256:3167c6b65230fd05b05d624d7ad9f89f5e68885be5d9fe7d00c00eac0bbfc677",
         "core_primitives": [
           "peer-array",
@@ -35940,7 +35940,7 @@
       ],
       "source": {
         "path": "references/gallery-paper-ink/ai/frames/layout-c7.html",
-        "sha256": "2becaefb3d37716debf8eda43a53a517a983636c03d2eb76a6b2a8a7fd70a2f5"
+        "sha256": "14e4d77e74a8ffefee81d03a76fa95a6ab208584f7107f84f4b0625fe381fc9a"
       },
       "structure": {
         "region_count": 3,
@@ -36037,9 +36037,9 @@
                 {
                   "key": "ranking.text.008",
                   "item_scope": "item",
-                  "example": "GLM-X",
+                  "example": "LM-X",
                   "item_index": 0,
-                  "max_chars": 7
+                  "max_chars": 6
                 },
                 {
                   "key": "ranking.text.009",
@@ -36058,7 +36058,7 @@
                 {
                   "key": "ranking.text.011",
                   "item_scope": "item",
-                  "example": "GPT-X",
+                  "example": "PTM-X",
                   "item_index": 0,
                   "max_chars": 7
                 },
@@ -36399,7 +36399,7 @@
         "data"
       ],
       "locks": {
-        "dom_source_sha256": "2becaefb3d37716debf8eda43a53a517a983636c03d2eb76a6b2a8a7fd70a2f5",
+        "dom_source_sha256": "14e4d77e74a8ffefee81d03a76fa95a6ab208584f7107f84f4b0625fe381fc9a",
         "structure_fingerprint": "sha256:d40dbad61f2f94d67e74af8359270da377903515d42e404e7bd2d5870f812a3e",
         "core_primitives": [
           "peer-array"
@@ -36448,7 +36448,7 @@
       ],
       "source": {
         "path": "references/gallery-paper-ink/ai/frames/layout-u2.html",
-        "sha256": "9e32b5edf2da9b4a70587bafbe434e5a5e545c11e80a3a9144bc002a37730f9f"
+        "sha256": "f5d934569c598ab37265cef11ad5de5d589f3f9df90bb4372ea35f118c896eca"
       },
       "structure": {
         "region_count": 4,
@@ -36571,7 +36571,7 @@
                 {
                   "key": "chart-band.text.006",
                   "item_scope": "item",
-                  "example": "0.64%（↑128%）",
+                  "example": "0.64%（↑129%）",
                   "item_index": 0,
                   "max_chars": 17
                 },
@@ -36620,7 +36620,7 @@
                 {
                   "key": "chart-band.text.013",
                   "item_scope": "item",
-                  "example": "（↑52%）",
+                  "example": "（↑50%）",
                   "item_index": 0,
                   "max_chars": 9
                 },
@@ -36634,7 +36634,7 @@
                 {
                   "key": "chart-band.text.015",
                   "item_scope": "item",
-                  "example": "0.018（↑18%）",
+                  "example": "0.018（↑20%）",
                   "item_index": 0,
                   "max_chars": 15
                 },
@@ -36837,7 +36837,7 @@
                 {
                   "key": "scorecard.text.011",
                   "item_scope": "item",
-                  "example": "↑128%",
+                  "example": "↑129%",
                   "item_index": 0,
                   "max_chars": 7
                 },
@@ -36872,7 +36872,7 @@
                 {
                   "key": "scorecard.text.016",
                   "item_scope": "item",
-                  "example": "↑52%",
+                  "example": "↑50%",
                   "item_index": 0,
                   "max_chars": 6
                 },
@@ -36907,7 +36907,7 @@
                 {
                   "key": "scorecard.text.021",
                   "item_scope": "item",
-                  "example": "↑18%",
+                  "example": "↑20%",
                   "item_index": 0,
                   "max_chars": 6
                 },
@@ -37029,7 +37029,7 @@
         "data"
       ],
       "locks": {
-        "dom_source_sha256": "9e32b5edf2da9b4a70587bafbe434e5a5e545c11e80a3a9144bc002a37730f9f",
+        "dom_source_sha256": "f5d934569c598ab37265cef11ad5de5d589f3f9df90bb4372ea35f118c896eca",
         "structure_fingerprint": "sha256:03f1d95a49a406d6844c62ad7260ea2e6becb6562d89d4a22e038858c4af8dd7",
         "core_primitives": [
           "chart-band",
