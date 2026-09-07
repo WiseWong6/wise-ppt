@@ -344,10 +344,6 @@
 <body>
 <header>
   <h1>Wise-PPT · 资产目录</h1>
-  <div class="ctl" id="ratio-picker">
-    <div class="ctl-label"><span id="ratio-picker-label">比例</span></div>
-    <div class="ratio-segments" role="radiogroup" aria-labelledby="ratio-picker-label"></div>
-  </div>
   <div class="ctl" id="theme-picker">
     <div class="ctl-label" id="theme-picker-label">主题</div>
     <div class="theme-cards" role="radiogroup" aria-labelledby="theme-picker-label"></div>
@@ -3703,7 +3699,6 @@ try{
   else if(q&&document.getElementById('m-'+q))switchTab(q);
 }catch(e){}
 syncCatalogEmphasisToggle();
-renderRatioPicker();
 renderThemePicker();
 renderTypographyPicker();
 /* 首屏不主动预热中文字体；打开详情时再按用户意图加载。 */
