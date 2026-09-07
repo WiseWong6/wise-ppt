@@ -316,28 +316,17 @@
     return value;
   }
 
-  function visitRules(ruleList, output) {
-    Array.prototype.forEach.call(ruleList || [], function (rule) {
-      if (rule.type === CSSRule.FONT_FACE_RULE) {
-        var family = rule.style.getPropertyValue('font-family').trim().replace(/^['"]|['"]$/g, '');
-        if (family) output.push({
-          family: family,
-          style: rule.style.getPropertyValue('font-style').trim() || 'normal',
-          weight: rule.style.getPropertyValue('font-weight').trim() || '400'
-        });
-      } else if (rule.cssRules) {
-        visitRules(rule.cssRules, output);
-      } else if (rule.styleSheet) {
-        /* @import stylesheets may also declare the active font sources. */
-        try { visitRules(rule.styleSheet.cssRules, output); } catch (error) { /* local import not ready */ }
-      }
-    });
-  }
-
   function declaredFontFaces() {
     var faces = [];
-    Array.prototype.forEach.call(document.styleSheets, function (sheet) {
-      try { visitRules(sheet.cssRules, faces); } catch (error) { /* only local styles are required */ }
+    // FontFaceSet includes CSS-connected faces even when file:// prevents
+    // reading an external stylesheet's cssRules. Do not confuse CSSOM access
+    // restrictions with missing fonts, or require special Chrome flags.
+    document.fonts.forEach(function (face) {
+      faces.push({
+        family: face.family.replace(/^['"]|['"]$/g, ''),
+        style: face.style || 'normal',
+        weight: face.weight || '400'
+      });
     });
     var unique = new Map();
     faces.forEach(function (face) { unique.set([face.family, face.style, face.weight].join('|'), face); });
