@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html data-theme-id="paper-ink" lang="zh-CN" data-runtime="wise-ppt-specimen" data-typography-mode="all-sans" data-page-id="gallery-ai-a5" data-page-role="prove" data-theme="paper-ink" data-layout="paper-ink.evidence.policy-columns" data-layout-source="gallery" data-vnext-semantic-key-map='[]' data-emphasis-targets='[{"target_id":"focus.decisive-difference","members":[{"selector":"#a5-regulation-1","role":"value","treatment":"focus.text","expected_count":1},{"selector":"#a5-regulation-2","role":"value","treatment":"focus.text","expected_count":1}]}]' data-vnext-type-slot-map='[{"slot":"content-title","tag":"text","text":"数据与训练","occurrence":0},{"slot":"content-title","tag":"text","text":"服务提供","occurrence":0},{"slot":"content-title","tag":"text","text":"内容与安全","occurrence":0}]'>
+<html data-theme-id="paper-ink" lang="zh-CN" data-runtime="wise-ppt-specimen" data-typography-mode="all-sans" data-page-id="gallery-ai-a5" data-page-role="prove" data-theme="paper-ink" data-layout="paper-ink.evidence.policy-columns" data-layout-source="gallery" data-vnext-semantic-key-map='[]' data-emphasis-targets='[{"target_id":"focus.decisive-difference","members":[{"selector":"#a5-regulation-1","role":"value","treatment":"focus.text","expected_count":1},{"selector":"#a5-regulation-2","role":"value","treatment":"focus.text","expected_count":1}]}]' data-vnext-type-slot-map='[{"slot":"content-title","tag":"text","text":"进度与里程碑","occurrence":0},{"slot":"content-title","tag":"text","text":"服务提供","occurrence":0},{"slot":"content-title","tag":"text","text":"内容与质检","occurrence":0}]'>
 <head>
 <meta charset="UTF-8">
 <title>layout-a5 · 条文陈列页 · AI 使用合规规范</title>
@@ -32,7 +32,7 @@
     <g id="draw"></g>
   </svg>
 
-  <div class="caption">数据、服务与内容安全都必须有明确责任链，AI 上线不是只过一次模型测试。</div>
+  <div class="caption">进度、服务与内容质量都必须有明确责任链，项目交付不是只过一次验收测试。</div>
 </div>
 
 <script src="../../../../themes/packages/paper-ink/assets/particles.js"></script>
@@ -69,9 +69,9 @@ G = el('g', {transform:'translate(0 -40.2)'});
 /* ---------- 栏题带（mono EN + 中文栏题 + 短横） ---------- */
 /* v169:三栏等节距 572、整组居中(209 / 781 / 1353,组 bbox 心 960) */
 var cols = [
-  {x:209, en:'CH.1 · GENERAL RULES',   cn:'数据与训练'},
+  {x:209, en:'CH.1 · SCHEDULE',   cn:'进度与里程碑'},
   {x:781, en:'CH.2 · SERVICE PROVISION',   cn:'服务提供'},
-  {x:1353,en:'CH.3 · CONTENT & SAFETY', cn:'内容与安全', focus:true}
+  {x:1353,en:'CH.3 · CONTENT & REVIEW', cn:'内容与质检', focus:true}
 ];
 cols.forEach(function(c){
   txt(c.x, 246, c.en, {'font-family':MONO, 'font-size':'var(--type-meta)', 'letter-spacing':3, fill:INK45});
@@ -93,15 +93,15 @@ function clause(x, y, mark, lines) {
   txt(x+9, y-1, mark, {'data-number-part':'label', 'data-text-kind':'number', 'font-family':MONO, 'font-size':'var(--type-meta)', 'text-anchor':'middle', fill:INK}, marker);
   lines.forEach(function(ln, i){
     var attrs = {'font-family':SANS, 'font-weight':300, 'font-size':'var(--type-body-small)', fill:INK};
-    if (ln === '提供服务前应按照《互联网信息服务') {
+    if (ln === '服务启动前应完成《xx 服务响应') {
       txtSegments(x+34, y + i*40, [
-        {text:'提供服务前应按照'},
-        {id:'a5-regulation-1', text:'《互联网信息服务'}
+        {text:'服务启动前应完成'},
+        {id:'a5-regulation-1', text:'《xx 服务响应'}
       ], attrs);
-    } else if (ln === '深度合成管理规定》完成算法备案。') {
+    } else if (ln === '与升级管理办法》制度的宣贯培训。') {
       txtSegments(x+34, y + i*40, [
-        {id:'a5-regulation-2', text:'深度合成管理规定》'},
-        {text:'完成算法备案。'}
+        {id:'a5-regulation-2', text:'与升级管理办法》'},
+        {text:'制度的宣贯培训。'}
       ], attrs);
     } else {
       txt(x+34, y + i*40, ln, attrs);
@@ -115,29 +115,29 @@ function sub(x, y, mark, line) {
   return y + 34;
 }
 
-/* 栏一 · 数据与训练 */
+/* 栏一 · 进度与里程碑 */
 var y = 372;
-y = clause(209, y, '1', ['训练数据处理活动应使用具有合法来源的', '基础语料与标注数据，不得侵害他人民事权益。']);
-y = clause(209, y, '2', ['涉及个人信息的，须取得同意或符合法定', '情形，并采取去标识化等脱敏措施。']);
-y = clause(209, y, '3', ['发现训练数据存在违法内容的，应及时', '停止使用并采取处置措施。']);
-y = clause(209, y, '4', ['提供者应当提高训练数据质量，增强', '训练数据的真实性、准确性、可靠性。']);
-y = clause(209, y, '5', ['基础模型发生重大变更的，应重新履行', '备案与安全评估程序。']);
+y = clause(209, y, '1', ['项目启动阶段应输出经过评审确认的', '里程碑计划与责任分工，明确到具体执行人。']);
+y = clause(209, y, '2', ['阶段成果进入评审队列后，评审意见', '须在两个工作日内闭环并留存记录。']);
+y = clause(209, y, '3', ['进度偏差超过计划百分之十的，应当', '书面说明原因并提出追赶方案。']);
+y = clause(209, y, '4', ['交付团队应当持续改进交付质量，', '提升成果的完整性、一致性与可复用性。']);
+y = clause(209, y, '5', ['交付范围发生重大变更的，应重新进行', '范围确认与计划评审程序。']);
 
 /* 栏二 · 服务提供 */
 y = 372;
-y = clause(781, y, '1', ['提供服务前应按照《互联网信息服务', '深度合成管理规定》完成算法备案。']);
+y = clause(781, y, '1', ['服务启动前应完成《xx 服务响应', '与升级管理办法》制度的宣贯培训。']);
 y = clause(781, y, '2', ['应与注册使用者签订服务协议，明确', '双方权利义务与禁止内容。']);
-y = clause(781, y, '3', ['不得为未满十四周岁未成年人提供', '单独的生成式服务，须获监护人同意。']);
-y = clause(781, y, '4', ['应承担个人信息处理者责任，依法', '履行个人信息保护义务。']);
+y = clause(781, y, '3', ['紧急问题应按最高优先级响应，', '并在处置后向全体相关方同步。']);
+y = clause(781, y, '4', ['每季度输出服务运行报告，内容', '覆盖使用情况与改进计划。']);
 y = clause(781, y, '5', ['应建立公众投诉举报受理机制，及时', '处置并反馈处理情况。']);
 
-/* 栏三 · 内容与安全 */
+/* 栏三 · 内容与质检 */
 y = 372;
-y = clause(1353, y, '1', ['生成内容应体现社会主义核心价值观，', '不得生成煽动颠覆国家政权的内容。']);
-y = clause(1353, y, '2', ['应采取有效措施防范未成年人过度依赖，', '并在显著位置标识 AI 生成。']);
-y = clause(1353, y, '3', ['提供图片、视频等生成服务的，应在', '生成内容中添加水印等可溯源标识。']);
-y = clause(1353, y, '4', ['发现违法内容的，应立即采取处置措施，', '保存记录并向有关主管部门报告。']);
-y = clause(1353, y, '5', ['违反规定的，由主管部门依法予以警告、', '罚款、暂停或关闭服务等处罚。']);
+y = clause(1353, y, '1', ['内容产出应遵循统一风格规范，', '不得偏离确认过的选题与口径。']);
+y = clause(1353, y, '2', ['引用外部数据时应核对来源，', '并标注采集时间与口径。']);
+y = clause(1353, y, '3', ['使用图片、视频等素材的，应', '确认授权状态并保留凭证备查。']);
+y = clause(1353, y, '4', ['质检抽检应覆盖全部交付页面，', '发现问题当日退回并限期修正。']);
+y = clause(1353, y, '5', ['未通过质检的产出不计入交付，', '须整改后重新提交复检。']);
 
 stageFit();
 </script>

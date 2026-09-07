@@ -80,14 +80,14 @@ window.WISE_PPT_PAGE_EMPHASIS = Object.freeze({
       "kind": "relationship",
       "access": "semantic-focus",
       "default_mode": "none",
-      "strategy": "默认不强调；可选：《互联网信息服务深度合成管理规定》",
+      "strategy": "默认不强调；可选：《xx 服务响应与升级管理办法》",
       "sample_target_id": "focus.decisive-difference",
       "targets": [
         {
           "target_id": "focus.decisive-difference",
-          "label": "《互联网信息服务深度合成管理规定》",
-          "content_role": "右栏法规名称",
-          "reason_hint": "只给法规名称上色并加粗；其余法规、序号与说明保持默认色。",
+          "label": "《xx 服务响应与升级管理办法》",
+          "content_role": "右栏制度名称",
+          "reason_hint": "只给制度名称上色并加粗；其余条目、序号与说明保持默认色。",
           "member_roles": [
             "value"
           ]

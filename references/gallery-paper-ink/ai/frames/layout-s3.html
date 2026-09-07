@@ -240,9 +240,9 @@ svgGroup('s3-solution-flow', function(){
 svgGroup('s3-evidence-band', function(){
   el('line', {x1:720, y1:526, x2:1770, y2:526, stroke:INK, 'stroke-width':.7, opacity:.28});
   var cols = [
-    {x:720, title:'评测与复核', desc:'评测集 320 例 · 双人一致率 0.91'},
+    {x:720, title:'评测与复核', desc:'示例评测 320 例 · 一致率 0.91'},
     {x:1070, title:'灰度与采样', desc:'灰度 2 周 · Trace 采样 640 条'},
-    {x:1420, title:'回归保障', desc:'旧例通过率 100% · 零退化'}
+    {x:1420, title:'回归保障', desc:'示例：通过率 100% · 无退化'}
   ];
   cols.forEach(function(c){
     el('path', {d:'M '+c.x+' 578 L '+(c.x+8)+' 586 L '+(c.x+20)+' 568', fill:'none', stroke:INK80, 'stroke-width':1.2});

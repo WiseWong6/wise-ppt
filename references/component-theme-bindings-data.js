@@ -5534,12 +5534,12 @@ window.WISE_PPT_COMPONENT_THEME_BINDINGS = Object.freeze({
           "members": [
             {
               "source_selector": "text",
-              "text_pattern": "^(?:GPT-[1-4]|ChatGPT|o1 / o3)$",
+              "text_pattern": "^(?:PTM-[1-4]|CHAT-M|R1 / R3)$",
               "treatment": "identity.text",
               "expected_count": 6,
               "layout_selector": "#draw text",
               "layout_expected_count": 6,
-              "layout_text_pattern": "^(?:GPT-[1-4]|ChatGPT|o1 / o3)$",
+              "layout_text_pattern": "^(?:PTM-[1-4]|CHAT-M|R1 / R3)$",
               "evidence": "source-region-identity-anchor",
               "selector": "[data-component-theme-group=\"identity.model-names\"]"
             }
@@ -5550,12 +5550,12 @@ window.WISE_PPT_COMPONENT_THEME_BINDINGS = Object.freeze({
         {
           "binding_id": "edge-descriptions",
           "source_selector": "text",
-          "text_pattern": "^(?:1.17 亿参数 · 证明可行性|思维链 · 自我反思)$",
+          "text_pattern": "^(?:亿级参数 · 证明可行性|思维链 · 自我反思)$",
           "treatment": "source.ink-text-60",
           "expected_count": 2,
           "layout_selector": "#draw text",
           "layout_expected_count": 2,
-          "layout_text_pattern": "^(?:1.17 亿参数 · 证明可行性|思维链 · 自我反思)$",
+          "layout_text_pattern": "^(?:亿级参数 · 证明可行性|思维链 · 自我反思)$",
           "evidence": "source-region-appearance-anchor",
           "selector": "[data-component-theme-appearance=\"source.ink-text-60\"]"
         }
@@ -5674,14 +5674,14 @@ window.WISE_PPT_COMPONENT_THEME_BINDINGS = Object.freeze({
       "identity_groups": [
         {
           "group_id": "identity.key-milestone",
-          "label": "GPT-4 关键里程碑",
+          "label": "PTM-4 关键里程碑",
           "members": [
             {
               "source_selector": "text",
               "treatment": "identity.text",
               "expected_count": 1,
               "evidence": "derived-from-sourced-component-grammar",
-              "text_pattern": "^GPT-4$",
+              "text_pattern": "^PTM-4$",
               "selector": "[data-component-theme-group=\"identity.key-milestone\"]"
             }
           ]
@@ -5698,7 +5698,7 @@ window.WISE_PPT_COMPONENT_THEME_BINDINGS = Object.freeze({
             "observation": "同一序列的编号必须全部一致，不仅取第一个"
           }
         ],
-        "rule": "只将 GPT-4 作为已审查的关键里程碑，不根据 Catalog 分组伪造版式来源"
+        "rule": "只将 PTM-4 作为已审查的关键里程碑，不根据 Catalog 分组伪造版式来源"
       },
       "source_review": {
         "status": "reviewed-default-rule",
@@ -6768,5 +6768,5 @@ window.WISE_PPT_COMPONENT_THEME_BINDINGS = Object.freeze({
       "thumbnail_policy": "none-route-only"
     }
   },
-  "contract_sha256": "01c7cdaf69abd333cdcf8058e2c4ed8ac9e8eff4d8e8b60b77cb3ef94473ab7c"
+  "contract_sha256": "ba817c9d8a7e57bfb0347af46e5548860d469d23f36799fb36352228f93e5426"
 });

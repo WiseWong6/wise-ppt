@@ -130,10 +130,10 @@ function sceneLink(cx, cy) {                       /* 双仓连线 */
 /* ---------- 节点 + 垂挂证据卡 ---------- */
 var NODES = [
   {x:320,  date:'2017.06', ver:'V1 — TRANSFORMER', name:'Transformer 诞生', data:'WMT EN-DE 28.4 BLEU', scene:sceneSite},
-  {x:640,  date:'2020.05', ver:'V3 — GPT-3',       name:'GPT-3 涌现', data:'175B PARAMS · FEW-SHOT', scene:sceneCurve},
-  {x:960,  date:'2022.11', ver:'V4 — CHATGPT',     name:'ChatGPT 破圈', data:'5D · 100M USERS',       scene:sceneGantt, focus:true},
-  {x:1280, date:'2023.03', ver:'V5 — GPT-4',       name:'GPT-4 多模态', data:'MMLU 86.4%',             scene:sceneForecast},
-  {x:1600, date:'2024.12', ver:'V6 — O1',          name:'推理模型 o1', data:'GSM8K 96.4% · AIME 83%', scene:sceneLink}
+  {x:640,  date:'2020.05', ver:'V3 — PTM-3',       name:'PTM-3 涌现', data:'175B PARAMS · FEW-SHOT', scene:sceneCurve},
+  {x:960,  date:'2022.11', ver:'V4 — CHATGPT',     name:'CHAT-M 破圈', data:'5D · 100M USERS',       scene:sceneGantt, focus:true},
+  {x:1280, date:'2023.03', ver:'V5 — PTM-4',       name:'PTM-4 多模态', data:'MMLU 86.4%',             scene:sceneForecast},
+  {x:1600, date:'2024.12', ver:'V6 — R1',          name:'推理模型 R1', data:'GSM8K 96.4% · AIME 83%', scene:sceneLink}
 ];
 var CW = 300, CH = 240;
 NODES.forEach(function(N, i){

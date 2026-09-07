@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html data-theme-id="paper-ink" lang="zh-CN" data-runtime="wise-ppt-specimen" data-typography-mode="all-sans" data-page-id="gallery-ai-a6" data-page-role="prove" data-theme="paper-ink" data-layout="paper-ink.evidence.credential-wall" data-layout-source="gallery" data-vnext-semantic-key-map='[{"key":"credentials.text.001","tag":"text","text":"CREDENTIALS / 12 ITEMS","occurrence":0}]' data-emphasis-targets='[{"target_id":"focus.decisive-difference","members":[{"selector":"#focus-caption","role":"label","treatment":"focus.color","expected_count":1}]}]' data-vnext-type-slot-map='[{"slot":"content-title","tag":"text","text":"模型评测与合规背书","occurrence":0},{"slot":"content-title","tag":"text","text":"TIER S","occurrence":0}]'>
+<html data-theme-id="paper-ink" lang="zh-CN" data-runtime="wise-ppt-specimen" data-typography-mode="all-sans" data-page-id="gallery-ai-a6" data-page-role="prove" data-theme="paper-ink" data-layout="paper-ink.evidence.credential-wall" data-layout-source="gallery" data-vnext-semantic-key-map='[{"key":"credentials.text.001","tag":"text","text":"CREDENTIALS / 12 ITEMS","occurrence":0}]' data-emphasis-targets='[{"target_id":"focus.decisive-difference","members":[{"selector":"#focus-caption","role":"label","treatment":"focus.color","expected_count":1}]}]' data-vnext-type-slot-map='[{"slot":"content-title","tag":"text","text":"模型评测与认证记录","occurrence":0},{"slot":"content-title","tag":"text","text":"TIER S","occurrence":0}]'>
 <head>
 <meta charset="UTF-8">
 <title>layout-a6 · 资质证书墙 · 模型 benchmark</title>
@@ -58,10 +58,10 @@ G = el('g', {transform:'translate(0 -21.2)'});
 
 /* ============ 左侧：大徽章（同心圆 + 月桂枝线稿，AI 模型评测） ============ */
 txt(150, 221, 'CREDENTIALS / 12 ITEMS', {'font-family':MONO, 'font-size':'var(--type-meta)', 'letter-spacing':2, fill:'color-mix(in srgb, var(--ink) 50%, transparent)'});
-txt(150, 257, '模型评测与合规背书', {'font-family':SANS, 'font-weight':300, 'font-size':'var(--type-subheading)', fill:INK});
+txt(150, 257, '模型评测与认证记录', {'font-family':SANS, 'font-weight':300, 'font-size':'var(--type-subheading)', fill:INK});
 el('line', {'data-vnext-visual-key':'a6.heading-rule', x1:150, y1:306, x2:330, y2:306, stroke:INK, 'stroke-width':.8, opacity:.5});
 
-/* 徽章垂直居中于「模型评测与合规背书」下划线(y=306)与 ARCHIVE 上沿线(y=776)的中点 */
+/* 徽章垂直居中于「模型评测与认证记录」下划线(y=306)与 ARCHIVE 上沿线(y=776)的中点 */
 var BC = {x: 460, y: 541};
 el('circle', {cx:BC.x, cy:BC.y, r:182, fill:'none', stroke:INK, 'stroke-width':.5, 'stroke-dasharray':'2 6', opacity:.28});
 el('circle', {cx:BC.x, cy:BC.y, r:160, fill:'var(--paper-panel)', stroke:INK80, 'stroke-width':1.3});
@@ -84,8 +84,8 @@ txt(BC.x, BC.y - 112, 'MODEL EVALUATION', {'font-family':MONO, 'font-size':'var(
 el('line', {x1:BC.x - 52, y1:BC.y - 98, x2:BC.x + 52, y2:BC.y - 98, stroke:INK, 'stroke-width':.6, opacity:.4});
 el('path', {d:'M ' + BC.x + ' ' + (BC.y - 78) + ' l 7 12 l -7 12 l -7 -12 Z', fill:'none', stroke:INK80, 'stroke-width':1});
 txt(BC.x, BC.y + 8, 'TIER S', {id:'sample-focus', 'font-family':MONO, 'font-size':'var(--type-subheading)', 'letter-spacing':4, 'text-anchor':'middle', fill:INK});
-txt(BC.x, BC.y + 40, '综合能力 · 顶级', {'font-family':SANS, 'font-weight':300, 'font-size':'var(--type-body)', 'text-anchor':'middle', fill:INK});
-txt(BC.x, BC.y + 68, 'WISE-BENCH', {'font-family':MONO, 'font-size':'var(--type-micro-secondary)', 'letter-spacing':1.5, 'text-anchor':'middle', fill:'color-mix(in srgb, var(--ink) 50%, transparent)'});
+txt(BC.x, BC.y + 40, '综合能力 · 领先', {'font-family':SANS, 'font-weight':300, 'font-size':'var(--type-body)', 'text-anchor':'middle', fill:INK});
+txt(BC.x, BC.y + 68, 'DEMO-BENCH', {'font-family':MONO, 'font-size':'var(--type-micro-secondary)', 'letter-spacing':1.5, 'text-anchor':'middle', fill:'color-mix(in srgb, var(--ink) 50%, transparent)'});
 
 /* 左下微型档案字块 */
 txt(150, 800, 'ARCHIVE NO. HJ-Q-2026-018', {'font-family':MONO, 'font-size':'var(--type-micro-secondary)', 'letter-spacing':2, fill:INK45});
@@ -140,11 +140,11 @@ var WALL = [
   ['GSM8K',         'ACC 89.5',     2],
   ['MATH',          'ACC 52.7',     0],
   ['BBH',           'ACC 83.0',     3],
-  ['PATENT',        'ZL-7741-A',    2],
-  ['PATENT',        'ZL-8126-C',    1],
+  ['PATENT',        'DEMO-0741-A',    2],
+  ['PATENT',        'DEMO-8126-C',    1],
   ['SAFETY ALIGN',  'TIER III',     4],
   ['TOXICITY',      'FILTER V3',    0],
-  ['PRIVACY',       'ISO 27001',    3],
+  ['PRIVACY',       'INFOSEC',    3],
   ['MULTI-LANG',    '54 LANG',      2],
   ['CONTEXT',       '128K PASS',    4]
 ];

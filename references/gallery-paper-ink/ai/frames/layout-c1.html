@@ -37,7 +37,7 @@
     <g id="draw"></g>
   </svg>
 
-  <div class="caption">Agent 准确率达到 94.2%，仍要结合调用量、峰值 QPS 与平均延迟判断可用性。</div>
+  <div class="caption">Agent 准确率达到 94.2%，仍要结合调用量、峰值 QPS 与P95 延迟判断可用性。</div>
 </div>
 
 <script src="../../../../themes/packages/paper-ink/assets/particles.js"></script>
@@ -146,7 +146,7 @@ function cell(cx, ty, num, label, note, focus) {
 cell(1260, 400, '94.2%',  '准确率',         'ACCURACY · 30D AVG', true);   /* 主角：准确率是 AI 交付焦点 */
 cell(1610, 400, '1,284',  '日均调用量（万）', 'DAILY CALLS · AVG');
 cell(1260, 665, '3,200',  '峰值 QPS',        'PEAK QPS · RPS');
-cell(1610, 665, '280ms',  '平均延迟',        'AVG LATENCY · P95');
+cell(1610, 665, '280ms',  'P95 延迟',        'LATENCY · P95');
 
 stageFit();
 </script>

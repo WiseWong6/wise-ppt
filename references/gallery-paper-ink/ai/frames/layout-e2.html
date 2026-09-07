@@ -32,7 +32,7 @@
     <g id="draw"></g>
   </svg>
 
-  <div class="caption">RAG 适合频繁变化的知识，微调适合稳定重复的任务。<span id="focus-caption">更新频率决定技术选择</span>。</div>
+  <div class="caption">RAG 适合频繁变化的知识，微调适合稳定重复的任务。<span id="focus-caption">更新频率是选型关键输入</span>。</div>
 
 </div>
 
@@ -81,8 +81,8 @@ var cols = [
     tag: 'MODE: RETRIEVE · LATENCY: 200 MS',
     rows: [
       {label:'触发时机', code:'TRIGGER',  d:['每条提问实时检索，', '命中即拼进上下文']},
-      {label:'更新成本', code:'UPDATE',   d:['知识改了即生效，', '无需重训、零额外算力']},
-      {label:'知识时效', code:'FRESH',    d:['知识库可随时增删，', '永远是最新版本']},
+      {label:'更新成本', code:'UPDATE',   d:['知识改了即生效，', '无需重训，算力开销小']},
+      {label:'知识时效', code:'FRESH',    d:['知识库可随时增删，', '始终保持较新版本']},
       {label:'适用场景', code:'SCENE',    d:['动态知识库、文档', '频繁变动的业务']}
     ]
   },
