@@ -137,11 +137,11 @@ function seg(ang1, ang2, fill, stroke){
   var ex = CCX + RO * Math.cos(a2), ey = CCY - RO * Math.sin(a2);
   var ix2 = CCX + RI * Math.cos(a2), iy2 = CCY - RI * Math.sin(a2);
   var large = (a2 - a1) > Math.PI ? 1 : 0;
-  el('path', {'data-c2-chart3-graphic':1, d:'M '+ix+' '+iy+' L '+ox+' '+oy+' A '+RO+' '+RO+' 0 '+large+' 1 '+ex+' '+ey+
-             ' L '+ix2+' '+iy2+' A '+RI+' '+RI+' 0 '+large+' 0 '+ix+' '+iy+' Z',
+  el('path', {'data-c2-chart3-graphic':1, d:'M '+ix+' '+iy+' L '+ox+' '+oy+' A '+RO+' '+RO+' 0 '+large+' 0 '+ex+' '+ey+
+             ' L '+ix2+' '+iy2+' A '+RI+' '+RI+' 0 '+large+' 1 '+ix+' '+iy+' Z',
     fill:fill, stroke:stroke || INK80, 'stroke-width':stroke ? 1.4 : .9});
 }
-/* 三段：46% / 33% / 21%（从顶部 -90° 起顺时针） */
+/* 三段：46% / 33% / 21%（从底部 -90° 起counterclockwise，匹配 y = CCY - r·sin(a)） */
 seg(-90, 75.6, 'url(#hatch33)', null);      /* 推理 46% */
 seg(75.6, 194.4, 'none', null);             /* 训练 33% */
 seg(194.4, 270, 'none', null);              /* 嵌入 21% */

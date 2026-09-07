@@ -1,6 +1,6 @@
 ---
 name: wise-ppt
-description: 把 PDF、文章、链接、口语稿、提纲或现有演示材料整理成 16:9 或 3:4 离线网页 PPT 和同源 PDF，也用于诊断、重做或修改 Wise PPT。默认走已审核结构的 standard；只有用户明确批准突破该结构后，才在隔离副本中执行 experimental。
+description: 把 PDF、文章、链接、口语稿、提纲或现有演示材料整理成 16:9 离线网页 PPT 和同源 PDF，也用于诊断、重做或修改 Wise PPT。默认走已审核结构的 standard；只有用户明确批准突破该结构后，才在隔离副本中执行 experimental。
 ---
 
 # Wise PPT
@@ -38,7 +38,7 @@ node <skill>/bin/wise-ppt.mjs doctor
 | 判断页型和关系 | [references/page-routing.md](references/page-routing.md) | `page_kind → page_role → relation_key` |
 | 查询骨架 | [references/layouts.md](references/layouts.md) | 选择完整骨架 |
 | 选择主题与主次 | [references/themes.md](references/themes.md)、[颜色语义](references/color-semantics.md) | deck 外观与逐页主次 |
-| 写 standard JSON | [16:9](references/deck-spec.md)、[3:4](references/portrait-deck-spec.md) | 公开槽与版式账本 |
+| 写 standard JSON | [16:9](references/deck-spec.md) | 公开槽与版式账本 |
 | 检查交付 | [references/checklist.md](references/checklist.md) | 验证边界 |
 | 申请/执行实验 | [references/experimental.md](references/experimental.md) | 授权与隔离重绘 |
 
@@ -70,7 +70,7 @@ node <skill>/bin/wise-ppt.mjs doctor
 
 ## 6. 构建与交付
 
-16:9 命令（`<skill>` 为技能根目录）；3:4 命令见竖版合同：
+16:9 命令（`<skill>` 为技能根目录）：
 
 ```text
 node <skill>/bin/wise-ppt.mjs preflight <deck-spec.json 绝对路径> --all-errors

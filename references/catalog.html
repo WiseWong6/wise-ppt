@@ -448,7 +448,6 @@ const PORTRAIT_THEME_FRAMES='../themes/catalog-projections/hermes-klein/frames-3
 const PORTRAIT_PROJECTIONS_ENABLED=true;
 const CATALOG_RATIOS=Object.freeze([
   Object.freeze({ratio_id:'16:9',query_value:'16x9',label:'16:9',production:true}),
-  Object.freeze({ratio_id:'3:4',query_value:'3x4',label:'3:4',production:false}),
 ]);
 const DEFAULT_RATIO_ID='16:9';
 const PORTRAIT_LAYOUT_META=Object.freeze({
@@ -968,24 +967,9 @@ const RATIO_CAPABILITIES=Object.freeze({
 });
 function initialRatioId(){
   const params=new URLSearchParams(location.search);
-  /* 兼容上一版错误地把 3:4 做成页签的链接，但立刻归一到顶层比例轴。 */
-  if(params.get('tab')==='vlt'){
-    params.set('tab','lyt');
-    params.set('ratio','3x4');
-    replaceCatalogQuery(params);
-    return '3:4';
-  }
-  const requested=params.get('ratio');
-  if(requested==='3:4'){
-    params.set('ratio','3x4');
-    replaceCatalogQuery(params);
-    return '3:4';
-  }
-  if(RATIO_BY_QUERY.has(requested))return RATIO_BY_QUERY.get(requested);
-  if(requested){
-    params.delete('ratio');
-    replaceCatalogQuery(params);
-  }
+  params.delete('ratio');
+  if(params.get('tab')==='vlt')params.set('tab','lyt');
+  replaceCatalogQuery(params);
   return DEFAULT_RATIO_ID;
 }
 let activeRatioId=initialRatioId();
