@@ -30,13 +30,20 @@
   ];
   var stateSerial = 0;
 
+  function isSourceCatalog(root) {
+    return root.dataset.layoutSource === 'gallery' && root.hasAttribute('data-emphasis-targets') &&
+      !root.hasAttribute('data-layout-visual-plan');
+  }
+
   function bootstrapSpecimen() {
     var root = document.documentElement;
     if (!root || root.dataset.runtime !== 'wise-ppt-specimen') return;
     var params = new URLSearchParams(global.location.search);
     var emphasisTarget = params.get('emphasis') || '';
     root.dataset.emphasisTarget = emphasisTarget;
-    root.classList.toggle('accent', Boolean(emphasisTarget));
+    // Source pages draw their default geometry first. Applying accent before
+    // their drawing script runs can bake focus colors into permanent attributes.
+    root.classList.toggle('accent', Boolean(emphasisTarget) && !isSourceCatalog(root));
     if (params.get('wise-ppt-embed') === 'gallery') root.dataset.wiseCatalogFonts = 'true';
   }
 
@@ -214,16 +221,73 @@
     return { carriers: carriers, targets: targets, records: records };
   }
 
+  function sourceMemberships(root, requestedTarget) {
+    var targets = JSON.parse(root.dataset.emphasisTargets);
+    if (!Array.isArray(targets)) throw new Error('Catalog 强调对象名单必须是数组');
+    var selected = targets.filter(function (target) { return target.target_id === requestedTarget; });
+    if (selected.length !== 1) throw new Error('未登记或重复的强调目标: ' + requestedTarget);
+    var members = selected[0].members;
+    if (!Array.isArray(members) || !members.length) throw new Error('Catalog 强调目标缺少成员');
+    var stage = document.querySelector('.stage');
+    if (!stage) throw new Error('Catalog 缺少 stage');
+    var textMap = JSON.parse(root.dataset.vnextSemanticKeyMap || '[]');
+    var records = [];
+    var seen = new Set();
+    members.forEach(function (member) {
+      if (!member || typeof member.selector !== 'string' || !member.selector ||
+        typeof member.role !== 'string' || !member.role ||
+        FOCUS_TREATMENTS.indexOf(member.treatment) < 0 ||
+        !Number.isInteger(member.expected_count) || member.expected_count < 1 ||
+        (member.paint !== undefined && member.paint !== 'fill' && member.paint !== 'stroke')) {
+        throw new Error('Catalog 强调成员声明无效');
+      }
+      // The source already owns the exact text-to-key map. Add only the anchors
+      // requested by its selectors; never guess a replacement node or treatment.
+      var keyPattern = /\[data-vnext-text-key="([^"]+)"\]/g;
+      var match;
+      while ((match = keyPattern.exec(member.selector))) {
+        if (stage.querySelector(match[0])) continue;
+        var key = match[1];
+        var entries = textMap.filter(function (entry) { return entry.key === key; });
+        if (entries.length !== 1) throw new Error('Catalog 缺少唯一文字锚点: ' + key);
+        var entry = entries[0];
+        var normalize = function (text) { return String(text).replace(/\s+/g, ' ').trim(); };
+        var candidates = Array.prototype.filter.call(stage.querySelectorAll(entry.tag), function (node) {
+          return normalize(node.textContent) === normalize(entry.text);
+        });
+        var node = candidates[entry.occurrence];
+        if (!node || (node.dataset.vnextTextKey && node.dataset.vnextTextKey !== key)) {
+          throw new Error('Catalog 文字锚点不匹配: ' + key);
+        }
+        node.dataset.vnextTextKey = key;
+      }
+      var carriers = stage.querySelectorAll(member.selector);
+      if (carriers.length !== member.expected_count) {
+        throw new Error('Catalog 强调成员数量不符: ' + member.selector + ' expected=' + member.expected_count + ' actual=' + carriers.length);
+      }
+      Array.prototype.forEach.call(carriers, function (carrier) {
+        if (seen.has(carrier)) throw new Error('Catalog 强调成员重复命中: ' + member.selector);
+        seen.add(carrier);
+        records.push({ carrier: carrier, membership: Object.assign({}, member, { target_id: requestedTarget }) });
+      });
+    });
+    return { carriers: Array.from(seen), targets: new Set([requestedTarget]), records: records };
+  }
+
   function bindSpecimenEmphasis(root) {
     if (root.dataset.runtime !== 'wise-ppt-specimen') return false;
     restoreProjectedEmphasis();
     var requestedTarget = root.dataset.emphasisTarget || '';
+    root.classList.toggle('accent', Boolean(requestedTarget));
     var projected = projectedMemberships();
     if (!requestedTarget) {
       document.body.removeAttribute('data-emphasis-mode');
       root.dataset.sampleFocusBound = '0';
       delete root.dataset.sampleFocusRef;
       return true;
+    }
+    if (!projected.carriers.length && isSourceCatalog(root)) {
+      projected = sourceMemberships(root, requestedTarget);
     }
     if (!projected.carriers.length) {
       throw new Error('当前 frame 缺少编译期强调投影');
@@ -429,7 +493,18 @@
     root.dataset.renderProtocol = FRAME_PROTOCOL;
     if (root.dataset.frameReadyBridgeBound === 'true') return;
     root.dataset.frameReadyBridgeBound = 'true';
+    function finishSourceFrame() {
+      if (!isSourceCatalog(root) || root.dataset.renderReady !== 'true' || root.dataset.catalogFrameReady === 'true') return;
+      try {
+        bindSpecimenEmphasis(root);
+        root.dataset.catalogFrameReady = 'true';
+      } catch (error) {
+        root.dataset.catalogFrameError = error.message;
+        postSpecimenStatus(root, 'fail', error.message);
+      }
+    }
     var observer = new MutationObserver(function () {
+      finishSourceFrame();
       if (root.dataset.renderReady === 'true' && root.dataset.catalogFrameReady === 'true') {
         postSpecimenStatus(root, 'ready');
       }
@@ -438,6 +513,7 @@
       attributes: true,
       attributeFilter: ['data-render-ready', 'data-catalog-frame-ready']
     });
+    finishSourceFrame();
     global.addEventListener('error', function (event) {
       postSpecimenStatus(root, 'fail', event.message || 'frame error');
     });
@@ -480,7 +556,7 @@
     applySpecimenStaticFreeze(root);
     bindSpecimenReadiness(root);
     bindGalleryStateBridge(root);
-    bindSpecimenEmphasis(root);
+    if (!isSourceCatalog(root) || root.dataset.renderPending !== 'true') bindSpecimenEmphasis(root);
     bindGalleryKeyBridge(root);
     bindGalleryActivityBridge(root);
     var result = fitSpecimen();

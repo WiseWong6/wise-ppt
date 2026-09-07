@@ -1376,45 +1376,45 @@ window.WISE_PPT_PAGE_EMPHASIS = Object.freeze({
           "target_id": "focus.layer.application",
           "label": "应用层",
           "content_role": "平台架构层",
-          "reason_hint": "当用户应用能力是本页重心时，举起应用层。",
+          "reason_hint": "当应用层是本页重心时，只给左侧层级名称上色；不增加整行外框、底色或阴影。",
           "member_roles": [
-            "outline"
+            "label"
           ]
         },
         {
           "target_id": "focus.layer.resource",
           "label": "资源层",
           "content_role": "平台架构层",
-          "reason_hint": "当资源配置能力是本页重心时，举起资源层。",
+          "reason_hint": "当资源层是本页重心时，只给左侧层级名称上色；不增加整行外框、底色或阴影。",
           "member_roles": [
-            "outline"
+            "label"
           ]
         },
         {
           "target_id": "focus.layer.automation",
           "label": "自动化层",
           "content_role": "平台架构层",
-          "reason_hint": "当工具与自动化能力是本页重心时，举起自动化层。",
+          "reason_hint": "当自动化层是本页重心时，只给左侧层级名称上色；不增加整行外框、底色或阴影。",
           "member_roles": [
-            "outline"
+            "label"
           ]
         },
         {
           "target_id": "focus.layer.knowledge",
           "label": "知识与评测层",
           "content_role": "平台架构层",
-          "reason_hint": "当知识、评测与追踪能力是本页重心时，举起知识与评测层。",
+          "reason_hint": "当知识与评测层是本页重心时，只给左侧层级名称上色；不增加整行外框、底色或阴影。",
           "member_roles": [
-            "outline"
+            "label"
           ]
         },
         {
           "target_id": "focus.layer.foundation",
           "label": "基础设施层",
           "content_role": "平台架构层",
-          "reason_hint": "当模型、治理或权限底座是本页重心时，举起基础设施层。",
+          "reason_hint": "当基础设施层是本页重心时，只给左侧层级名称上色；不增加整行外框、底色或阴影。",
           "member_roles": [
-            "outline"
+            "label"
           ]
         }
       ]

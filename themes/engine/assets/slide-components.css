@@ -236,6 +236,10 @@
 .accent .slide[data-emphasis-mode="semantic-focus"] [data-emphasis-active="true"][data-emphasis-treatment="focus.color"] :is(text, tspan) {
   fill: var(--wp-emphasis-color) !important;
 }
+/* Catalog reverse labels use the same light ink on HTML and SVG text. */
+.accent .slide[data-emphasis-mode="semantic-focus"] [data-emphasis-active="true"][data-emphasis-role][data-emphasis-treatment="focus.reverse-text"] {
+  color: var(--wp-color-surface-canvas) !important;
+}
 .accent .slide[data-emphasis-mode="semantic-focus"] :is(text, tspan)[data-emphasis-active="true"][data-emphasis-treatment="focus.reverse-text"],
 .accent .slide[data-emphasis-mode="semantic-focus"] [data-emphasis-active="true"][data-emphasis-treatment="focus.reverse-text"] :is(text, tspan) {
   fill: var(--wp-color-surface-canvas) !important;
@@ -267,11 +271,8 @@
   stroke: var(--wp-emphasis-color) !important;
   filter: drop-shadow(3px 3px 0 var(--wp-emphasis-shadow-color));
 }
-.accent .slide[data-emphasis-mode="semantic-focus"] [data-emphasis-active="true"][data-emphasis-treatment="focus.outline-depth"] {
-  border-color: var(--wp-emphasis-color) !important;
-  outline: 3px solid var(--wp-emphasis-color);
-  outline-offset: 4px;
-}
+/* Catalog registers outline-depth only on SVG contours. Do not invent an extra
+   CSS box outline for this name; HTML emphasis keeps its own Catalog rules. */
 .accent .slide[data-emphasis-mode="semantic-focus"] [data-emphasis-active="true"][data-emphasis-treatment="focus.solid-reverse"] {
   color: var(--wp-color-surface-canvas) !important;
   background-color: var(--wp-emphasis-color) !important;
