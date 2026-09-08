@@ -35,6 +35,7 @@
   <canvas class="px" id="px" data-template-part="canvas" data-template-slot="canvas" data-template-slot-kind="illustration" width="1920" height="1080"></canvas>
 
   <svg class="marks" data-template-part="marks" width="1920" height="1080" viewBox="0 0 1920 1080">
+    <g id="order-dots"></g>
     <g id="draw"></g>
   </svg>
 
@@ -45,13 +46,14 @@
 <script>
 (function(){
   var ctx = document.getElementById('px').getContext('2d');
-  var FUNCTIONAL = getComputedStyle(document.documentElement).getPropertyValue('--wp-color-functional').trim();
-  if (!FUNCTIONAL) throw new Error('M2 缺少必需的 --wp-color-functional 语义色');
+  // Keep theme-colored dots editable after the background canvas is frozen.
+  var dots = document.getElementById('order-dots');
   function focusDot(x, y, r, a) {
-    ctx.globalAlpha = a;
-    ctx.fillStyle = FUNCTIONAL;
-    ctx.beginPath(); ctx.arc(x, y, r, 0, 6.2832); ctx.fill();
-    ctx.globalAlpha = 1;
+    var dot = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
+    var attrs = {'data-vnext-visual-key':'m2.order-dot', cx:x, cy:y, r:r,
+      fill:'var(--wp-color-functional)', opacity:a};
+    for (var key in attrs) dot.setAttribute(key, attrs[key]);
+    dots.appendChild(dot);
   }
 
   /* ---------- 四周稀疏静点氛围（避开中央主角与 caption 区） ---------- */
