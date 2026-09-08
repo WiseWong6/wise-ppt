@@ -19,6 +19,9 @@
 <style>
   svg.scene { position: absolute; inset: 0; z-index: 1; }
   .doc.tl, .folio { color: var(--ink-45); }
+
+/* 已确认横版样式；只作用于主题生成页。 */
+.stage[data-theme-visual-source] #d9-agenda-title { font-family: var(--wp-font-han-serif) !important; font-weight: 500 !important; }
 </style>
 </head>
 <body class="slide">
@@ -51,7 +54,7 @@ G = el('g', {transform:'translate(0 -16.2)'});
 
 /* ===== 左栏:大字题区(x150–700) ===== */
 txt(150, 268, 'CONTENTS', {'font-family':MONO, 'font-size':'var(--type-meta)', 'letter-spacing':4, fill:'var(--ink-45)'});
-txt(146, 386, '目录', {'font-family':SERIF, 'font-size':'var(--type-display)', 'letter-spacing':6, fill:INK});
+txt(146, 386, '目录', {id:'d9-agenda-title', 'font-family':SERIF, 'font-size':'var(--type-display)', 'letter-spacing':6, fill:INK});
 el('line', {x1:152, y1:438, x2:224, y2:438, stroke:INK, 'stroke-width':2});
 txt(150, 502, 'FIVE CHAPTERS — 2026', {'font-family':MONO, 'font-size':'var(--type-meta)', 'letter-spacing':3, fill:'var(--ink-45)'});
 /* 左栏底部一处极细装饰:短横 + 小圆(双圈+实心核) */

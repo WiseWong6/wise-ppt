@@ -2849,7 +2849,24 @@
           "alpha": 1
         }
       },
-      "identity_groups": [],
+      "identity_groups": [
+        {
+          "group_id": "identity.comparison-badge",
+          "label": "对比徽章与右侧短标题",
+          "members": [
+            {
+              "selector": "#e1-agent-title",
+              "treatment": "identity.text",
+              "expected_count": 1
+            },
+            {
+              "selector": "#e1-vs-disc",
+              "treatment": "identity.fill",
+              "expected_count": 1
+            }
+          ]
+        }
+      ],
       "emphasis": {
         "page_kind": "relationship",
         "page_name": "对比双面板",
@@ -2902,7 +2919,7 @@
       },
       "provenance": {
         "migration": "catalog-standard-parity-v1",
-        "identity_mode": "neutral-only",
+        "identity_mode": "theme-identity",
         "source_receipt": {
           "sha256": "5f4a1c7171fb387c0f4b0a4a4b33a06e039208e16aac17363885adfd26da0e87"
         }
@@ -9084,7 +9101,23 @@
       "canvas": {
         "material": "paper"
       },
-      "surface_bindings": [],
+      "surface_bindings": [
+        {
+          "binding_id": "surface.solution",
+          "selector": "#s3-solution-surface",
+          "expected_count": 1,
+          "surface_role": "solution",
+          "material": "foreground",
+          "stack": 2,
+          "base_shadow": "none",
+          "border": {
+            "color_role": "primary",
+            "alpha": 1,
+            "width_px": 2
+          },
+          "role_overrides": []
+        }
+      ],
       "data_bindings": [],
       "type_bindings": [
         {

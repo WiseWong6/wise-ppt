@@ -21,6 +21,10 @@
     color: var(--ink);
     z-index: 5;
   }
+
+/* 已确认横版样式；只作用于主题生成页。 */
+.stage[data-theme-visual-source] #e1-agent-title { font-size: 20px !important; letter-spacing: 2px !important; transform: translateX(-7px); }
+.stage[data-theme-visual-source] #e1-vs-label { fill: var(--paper) !important; font-style: italic; letter-spacing: 0 !important; dominant-baseline: central; transform: translateY(-8px); }
 </style>
 </head>
 <body class="slide">
@@ -72,7 +76,7 @@ el('rect', {x:560-160, y:248, width:320, height:44, fill:'var(--paper)', stroke:
 txt(486, 277, '传统软件', {'font-family':SANS, 'font-weight':300, 'font-size':'var(--type-label)', fill:INK});
 txt(555, 277, 'CLASSIC SOFTWARE', {'font-family':MONO, 'font-size':'var(--type-meta)', 'letter-spacing':2, fill:'var(--wp-adapter-pi-ink-60)'});
 el('rect', {'data-vnext-visual-key':'e1.current-tab', x:1360-160, y:248, width:320, height:44, fill:'var(--paper)', stroke:FUNCTIONAL, 'stroke-width':1.2});
-txt(1283, 277, 'Agent', {'font-family':SANS, 'font-weight':300, 'font-size':'var(--type-label)', fill:INK});
+txt(1283, 277, 'Agent', {id:'e1-agent-title', 'font-family':SANS, 'font-weight':300, 'font-size':'var(--type-label)', fill:INK});
 txt(1353, 277, 'AGENTIC', {'font-family':MONO, 'font-size':'var(--type-meta)', 'letter-spacing':2, fill:'var(--wp-adapter-pi-ink-60)'});
 
 /* ---------- 左面板：错了中断 ✗ ---------- */
@@ -127,9 +131,9 @@ txt(1360, 462, 'SELF-HEALING RELAY', {'font-family':MONO, 'font-size':'var(--typ
 txt(1360, 806, 'Agent 自己重试、自己修复', {'font-family':SANS, 'font-weight':300, 'font-size':'var(--type-body)', 'text-anchor':'middle', fill:'var(--wp-adapter-pi-ink-60)'});
 
 /* ---------- 中央 VS 双圈徽章 + 构造引线 ---------- */
-el('circle', {cx:960, cy:460, r:34, fill:'var(--paper)', stroke:FUNCTIONAL, 'stroke-width':1.2});
+el('circle', {id:'e1-vs-disc', cx:960, cy:460, r:34, fill:'var(--paper)', stroke:FUNCTIONAL, 'stroke-width':1.2});
 el('circle', {cx:960, cy:460, r:40, fill:'none', stroke:DIVIDER, 'stroke-width':.6});
-txt(960, 468, 'VS', {'font-family':MONO, 'font-size':'var(--type-body)', 'letter-spacing':2, 'text-anchor':'middle', fill:INK});
+txt(960, 468, 'VS', {id:'e1-vs-label', 'font-family':MONO, 'font-size':'var(--type-body)', 'letter-spacing':2, 'text-anchor':'middle', fill:INK});
 el('line', {id:'e1-construction-line', x1:LX+PW+14, y1:460, x2:960-46, y2:460, stroke:CONSTRUCTION, 'stroke-width':.6, 'stroke-dasharray':'2 5'});
 el('line', {x1:960+46, y1:460, x2:RX-14, y2:460, stroke:CONSTRUCTION, 'stroke-width':.6, 'stroke-dasharray':'2 5'});
 
