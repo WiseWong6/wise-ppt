@@ -43,7 +43,7 @@
 
 当前版式、组件和图标以本地 Catalog 可见内容为唯一权威，机器 manifest 只是它的确定性投影，不在 README 手抄动态数量。
 
-这是几张示例，完整画册见 [本地图册](references/catalog.html)。
+这是几张示例，完整画册请访问：[https://wisewong.com/projects/wise-ppt/](https://wisewong.com/projects/wise-ppt/)
 
 ### 非关系页
 
@@ -147,9 +147,11 @@
   </tr>
 </table>
 
-## 运行环境
+## 推荐模型
 
-建议使用支持本地文件操作、命令执行与浏览器检查的代码代理。
+- 建议环境：Codex、ZCode、Kimi CLI、Claude Code；
+- 适配模型：GLM-5.3 Flash、Qwen3.8-Flash或同级别及以上模型；
+- 创造力推荐：GPT 5.6 Sol High 及以上、GLM 5.3、Kimi K3、Qwen 3.8max。
 
 ## 安装
 
@@ -168,6 +170,18 @@
 ```
 
 建议先让 Agent 进入 plan 模式。
+
+## 关于作者
+
+全网同名 **@歪斯Wise**，持续分享 AI 创作、Agent 工作流、视觉设计与效率工具。
+
+<p>
+  <a href="https://x.com/killthewhys">X / Twitter</a> ·
+  <a href="https://www.xiaohongshu.com/user/profile/61f3ea4f000000001000db73">小红书</a> ·
+  <a href="https://github.com/WiseWong6/wise-skills">Wise Skills</a>
+</p>
+
+<p><img src="assets/social/xiaohongshu-card.jpg" width="220" alt="歪斯Wise 小红书名片，扫码在小红书找到我"></p>
 
 ## License
 
