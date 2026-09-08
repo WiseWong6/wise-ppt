@@ -85,6 +85,11 @@
     z-index: 5;
   }
 
+
+/* 已确认横版样式；只作用于主题生成页。 */
+.stage[data-theme-visual-source] .specimen { border-radius: 0 !important; }
+.stage[data-theme-visual-source] #a1-note .big, .stage[data-theme-visual-source] #a1-note .big *, .stage[data-theme-visual-source] #a1-note .sub { font-family: var(--brush) !important; font-weight: 300 !important; }
+.stage[data-theme-visual-source] #a1-answer-start { margin-right: .25em; }
 </style>
 </head>
 <body class="slide">
@@ -113,7 +118,7 @@
     </div>
   </div>
 
-  <div class="note">
+  <div class="note" id="a1-note">
     <div class="big"><span id="a1-answer-start">150</span> − 17 = 133</div>
     <div class="sub">不是 143。</div>
   </div>
