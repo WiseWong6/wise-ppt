@@ -2919,7 +2919,7 @@
           "binding_id": "content-titles",
           "selector": "[data-vnext-type-slot=\"content-title\"]",
           "expected_count": 2,
-          "type_role": "zh-content-title"
+          "type_role": "body"
         }
       ],
       "furniture": {
@@ -8773,7 +8773,14 @@
         }
       ],
       "data_bindings": [],
-      "type_bindings": [],
+      "type_bindings": [
+        {
+          "binding_id": "architecture-titles",
+          "selector": "#architecture-slot .arch-tone-title, #architecture-slot .arch-tone-label",
+          "expected_count": 12,
+          "type_role": "zh-content-title"
+        }
+      ],
       "furniture": {
         "title": {
           "selector": ".doc.tl",
@@ -10985,7 +10992,7 @@
           "binding_id": "content-titles",
           "selector": "[data-vnext-type-slot=\"content-title\"]",
           "expected_count": 3,
-          "type_role": "zh-content-title"
+          "type_role": "body"
         }
       ],
       "furniture": {
@@ -10995,7 +11002,7 @@
           "variant": "primary-first-functional-second",
           "first_line": {
             "type_role": "top-left-kicker",
-            "color_role": "primary"
+            "color_role": "foreground"
           },
           "second_line": {
             "type_role": "top-left-kicker",
@@ -11026,6 +11033,17 @@
               "selector": ".boxtext .divi",
               "treatment": "identity.border",
               "expected_count": 1
+            }
+          ]
+        },
+        {
+          "group_id": "identity.particle-labels",
+          "label": "粒子主角字母与问号",
+          "members": [
+            {
+              "selector": ".boxtext .t1, .compare .q",
+              "treatment": "identity.text",
+              "expected_count": 2
             }
           ]
         }
