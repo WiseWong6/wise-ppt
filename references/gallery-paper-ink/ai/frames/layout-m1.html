@@ -12,7 +12,7 @@
 <link rel="stylesheet" href="../../../../themes/engine/assets/slide-components.css">
 <link rel="stylesheet" href="../../../shell.css">
 <style>
-  canvas.scene { position: absolute; inset: 0; z-index: 1; }
+  canvas.scene, svg.scene { position: absolute; inset: 0; z-index: 1; }
   svg.overlay { position: absolute; inset: 0; z-index: 2; pointer-events: none; }
 
   /* 方块上方：对照行 */
@@ -50,6 +50,24 @@
     font-family: var(--mono); font-size: var(--type-meta);
     letter-spacing: .4em; text-indent: .4em;
     color: color-mix(in srgb, var(--paper) 80%, transparent);
+  }
+
+  .stage[data-theme-visual-source][data-template-id="M1"] {
+    --ink: var(--paper) !important;
+    --ink-80: color-mix(in srgb, var(--paper) 80%, transparent) !important;
+    --ink-70: color-mix(in srgb, var(--paper) 70%, transparent) !important;
+    --ink-45: color-mix(in srgb, var(--paper) 45%, transparent) !important;
+    --ink-25: color-mix(in srgb, var(--paper) 25%, transparent) !important;
+    --wp-adapter-pi-ink-60: color-mix(in srgb, var(--paper) 60%, transparent) !important;
+  }
+  .stage[data-theme-visual-source][data-template-id="M1"]::after {
+    mix-blend-mode: overlay;
+  }
+  .stage[data-theme-visual-source][data-template-id="M1"] .boxtext .t2 {
+    color: color-mix(in srgb, var(--wp-color-primary) 80%, transparent);
+  }
+  .stage[data-theme-visual-source][data-template-id="M1"] .boxtext .divi {
+    background: color-mix(in srgb, var(--wp-color-primary) 55%, transparent);
   }
 </style>
 </head>
@@ -121,6 +139,17 @@ boxText.style.height = HERO.size + 'px';
   }
   // 氛围尘埃（极淡，避开文字区）
   PART.dust(ctx, 320, HERO.y+25, 1280, 440, 110, .1);
+  // Preserve particle alpha while resolving its paint in the final theme.
+  var scene = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+  scene.setAttribute('class', 'scene');
+  scene.setAttribute('width', '1920'); scene.setAttribute('height', '1080');
+  scene.setAttribute('viewBox', '0 0 1920 1080');
+  scene.setAttribute('data-template-part', 'canvas');
+  scene.setAttribute('data-template-slot', 'canvas');
+  scene.setAttribute('data-template-slot-kind', 'illustration');
+  scene.innerHTML = '<defs><filter id="m1-particle-paint" color-interpolation-filters="sRGB" x="0" y="0" width="100%" height="100%"><feFlood flood-color="var(--ink)"/><feComposite in2="SourceAlpha" operator="in"/></filter></defs><image data-vnext-visual-key="m1.particles" width="1920" height="1080" filter="url(#m1-particle-paint)"/>';
+  scene.querySelector('image').setAttribute('href', ctx.canvas.toDataURL('image/png'));
+  ctx.canvas.replaceWith(scene);
 })();
 
 /* ============ SVG 构造线 / 尺寸标注 / 剖面影 ============ */
