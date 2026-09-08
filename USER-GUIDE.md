@@ -27,12 +27,33 @@ node wise-ppt/bin/wise-ppt.mjs doctor
 
 输出 `"status": "pass"` 才算安装完成。`doctor` 会读取 `bundle-manifest.json`，核对发行文件的字节数与 SHA-256，并检查 Node、Chrome 和字体环境。若输出里 `bundle_mode` 是 `development` 并附带 warnings，说明当前目录是开发仓而非发行包：这只验证了运行环境，不代表安装完成。
 
-Git 安装可在同一目录更新：
+Git 安装可在同一目录更新。更新期间暂停使用该 Skill，逐步执行；任一步失败就停止，不继续制作。
+
+1. 先确认旧版可用且目录干净：
+
+```text
+node wise-ppt/bin/wise-ppt.mjs doctor
+git -C wise-ppt status --porcelain
+git -C wise-ppt rev-parse HEAD
+```
+
+`doctor` 必须通过，`status` 必须没有输出。若有已修改或未跟踪文件，先保留并处理自己的修改，不强制覆盖、不自动删除。把 `rev-parse` 输出的完整提交标识记到 Skill 目录之外，作为本次更新的恢复点。
+
+2. 更新并检查新版：
 
 ```text
 git -C wise-ppt pull --ff-only
 node wise-ppt/bin/wise-ppt.mjs doctor
 ```
+
+3. 如果更新或新版检查失败，先运行 `git -C wise-ppt status --porcelain`。仅在目录仍干净时，把下面的占位符替换为本次更新前记录的完整提交标识，再恢复旧版：
+
+```text
+git -C wise-ppt reset --keep <更新前的完整提交标识>
+node wise-ppt/bin/wise-ppt.mjs doctor
+```
+
+这会把当前本地分支和文件恢复到更新前，不修改远端；旧版 `doctor` 通过后才能恢复使用。如果目录有改动、恢复命令失败或旧版检查仍失败，保留现场和错误信息，停止使用并排查；不要改用 `reset --hard` 或 `clean` 强行清理。故障版本修复前不要再次更新到同一版本。新版验证通过后也保留恢复点，便于后续发现问题时回退。
 
 如果现有安装不是 Git checkout，先把新版克隆到临时目录并运行 `doctor`；通过后再整目录替换旧版。验证或复制失败时保留旧目录，不要零散覆盖。普通用户建议保留独立 Git checkout；开发环境如使用符号链接，必须确认目标是正式发行仓而不是开发仓或临时 `dist/`，并理解源目录变更会立即生效。
 
@@ -82,7 +103,7 @@ node <skill>/bin/wise-ppt.mjs deliver <绝对 deck 目录>
 node <skill>/bin/wise-ppt.mjs experimental prepare|build|validate|preview|deliver ...
 ```
 
-standard 成品输出后，Agent 会复核 claim、阅读顺序、主次和固定组件语义。若发现语义与版式/组件不匹配，会点名页面和证据并询问是否进入 experimental；未经明确批准不会切换模式或修改成品。
+standard 成品输出后，Agent 会复核 claim、阅读顺序、主次和固定组件语义。若发现语义与版式/组件不匹配，会点名页面和证据，并按 [主说明的授权规则](SKILL.md#先决定模式) 核对：已有该范围有效授权时按实验合同继续，否则询问是否进入 experimental；未经明确批准不会切换模式或修改成品。
 
 ## 字体规则
 

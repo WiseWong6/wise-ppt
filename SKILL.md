@@ -5,7 +5,7 @@ description: 把 PDF、文章、链接、口语稿、提纲或现有演示材料
 
 # Wise PPT
 
-HTML 是渲染源，PDF 同源导出；Catalog 是资产选择唯一权威。
+HTML 渲染、PDF 同源；Catalog 是资产选择唯一权威。
 
 ## 运行前检查
 
@@ -24,7 +24,7 @@ node <skill>/bin/wise-ppt.mjs doctor
 3. 改结构、组件、分栏、阅读顺序或用未审核能力，获批后在副本执行 `experimental`。
 4. Catalog、registry、runtime、主题或资产有缺陷，停止并登记修复。
 
-沉默、模糊同意和历史授权都不算批准。
+本任务明确授权未撤销，同范围不重复确认；跨任务不沿用，沉默、模糊同意无效。
 
 ## 完成标准
 
@@ -88,9 +88,9 @@ node <skill>/bin/wise-ppt.mjs themes preview <已有 deck 绝对目录> --theme 
 
 `preflight` 问题须修完；任一步非零都未完成。改 spec 或资产后从头重来；禁改 HTML/PDF 或绕过 validate。
 
-成品输出后复核 claim、阅读顺序、主次与固定组件语义。不匹配时列出 `page_id` 和证据，询问用户是否进入 `experimental`；未批准不改成品。输出目录规则只认 deck-spec 合同。
+成品输出后复核 claim、阅读顺序、主次、固定组件语义；不匹配则列 `page_id` 及证据，依实验合同核对授权。未批准不改成品；目录见 deck-spec。
 
-## 7. 授权后的隔离实验
+## 7. 获批隔离实验
 
 按实验合同和 prepare 简报重绘获批正文；页眉、页码、底部论点与主题锁定。恢复 standard 回原目录。
 
