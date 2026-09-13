@@ -1,0 +1,140 @@
+/*
+ * Hermes / Klein 共用页面家具与 mixed 字体规则。
+ *
+ * 浅底：第一行（doc-kicker）固定为墨黑；第二行（doc-title）读取当前主题色。
+ * 墨底：第一行改用纯白保证可读，第二行仍读取当前主题色，不能简单整组反白。
+ * 页码继续由各页原有配方决定。
+ * mixed 档与纸墨相反：底部文案、封面主标题、D3 收尾主句、D5 章节标题与 D9 目录大字用思源宋体；
+ * 关系页等其他内容区标题类中文继续使用思源黑体 Bold。
+ * 品牌主题中不含中文、且含英文或数字的文字统一使用 Oswald Bold；中英夹杂保持中文字体。
+ */
+
+:root[data-theme-id='hermes-orange'] {
+  --xp-title-accent: #d95e00;
+}
+
+:root[data-theme-id='klein-blue'] {
+  --xp-title-accent: #002fa7;
+}
+
+/* 品牌主题的基础黑体统一使用真正的 Regular 字面与 400 字重。
+   Paper Ink 继续保留自己的 Light 角色；宋体、Oswald、mono 与 Bold 不参与。 */
+:root:is(
+    [data-theme-id='hermes-orange'],
+    [data-theme-id='klein-blue']
+  ) {
+  --font-sans-light-family: var(--font-sans-family);
+  --wp-weight-regular: 400;
+  --wp-weight-strong: 400;
+}
+
+:root:is(
+    [data-theme-id='hermes-orange'],
+    [data-theme-id='klein-blue']
+  ) .stage [data-xp-brand-sans-family='regular'] {
+  font-family: var(--font-sans-family) !important;
+}
+
+:root:is(
+    [data-theme-id='hermes-orange'],
+    [data-theme-id='klein-blue']
+  ) .stage [data-xp-brand-sans-weight='regular'] {
+  font-weight: 400 !important;
+}
+
+:root:is(
+    [data-theme-id='hermes-orange'],
+    [data-theme-id='klein-blue']
+  ) .stage .doc.tl .doc-kicker {
+  color: #1a1a1a !important;
+}
+
+:root:is(
+    [data-theme-id='hermes-orange'],
+    [data-theme-id='klein-blue']
+  ) .stage .doc.tl .doc-title {
+  color: var(--xp-title-accent) !important;
+}
+
+:root[data-xp-title-furniture='white-on-dark']:is(
+    [data-theme-id='hermes-orange'],
+    [data-theme-id='klein-blue']
+  ) .stage .doc.tl .doc-kicker {
+  color: #ffffff !important;
+}
+
+:root[data-xp-title-furniture='white-on-dark']:is(
+    [data-theme-id='hermes-orange'],
+    [data-theme-id='klein-blue']
+  ) .stage .doc.tl .doc-title {
+  color: var(--xp-title-accent) !important;
+}
+
+/* 第二项全局规则只属于 mixed；all-sans / all-serif 保持原样。 */
+:root[data-typography-mode='mixed']:is(
+    [data-theme-id='hermes-orange'],
+    [data-theme-id='klein-blue']
+  ) .stage :is(
+    .caption,
+    .caption *,
+    [data-template-part='takeaway'],
+    [data-template-part='takeaway'] *
+  ) {
+  font-family: var(--font-serif-family) !important;
+}
+
+/* 不存在的 ID 分支只提高优先级，用来覆盖纸墨 mixed 的旧粗宋规则。 */
+:root[data-typography-mode='mixed']:is(
+    [data-theme-id='hermes-orange'],
+    [data-theme-id='klein-blue']
+  ) .stage :is(#xp-mixed-han-title-specificity, [data-xp-mixed-han-title='true']) {
+  font-family: var(--font-sans-family) !important;
+  font-weight: 700 !important;
+}
+
+/* D5 的章节主标题在品牌主题 mixed 档保留宋体；all-serif 已由字体档统一接管，
+   all-sans 继续使用黑体，paper-ink-original 不参与这条例外。 */
+:root[data-typography-mode='mixed']:is(
+    [data-theme-id='hermes-orange'],
+    [data-theme-id='klein-blue']
+  ) .stage[data-template-id='D5'] :is(
+    #xp-d5-chapter-title-specificity,
+    [data-template-part='primary'][data-template-slot-kind='text']
+  ) {
+  font-family: var(--font-serif-family) !important;
+}
+
+/* D9 是目录页：左栏“目录”两个 display 大字在品牌主题 mixed 档转宋体；
+   右栏条目继续按内容标题走黑体 Bold。all-serif 已由字体档统一接管，
+   all-sans 继续使用黑体，paper-ink-original 不参与这条例外。 */
+:root[data-typography-mode='mixed']:is(
+    [data-theme-id='hermes-orange'],
+    [data-theme-id='klein-blue']
+  ) .stage[data-template-id='D9'] :is(
+    #xp-d9-toc-title-specificity,
+    text[font-size*='display'][data-xp-mixed-han-title='true']
+  ) {
+  font-family: var(--font-serif-family) !important;
+}
+
+/* 封面由生成器写入语义页型；只把主标题字体还原为宋体，其余计算样式不变。 */
+:root[data-typography-mode='mixed'][data-xp-page-kind='cover']:is(
+    [data-theme-id='hermes-orange'],
+    [data-theme-id='klein-blue']
+  ) .stage :is(
+    #xp-cover-main-title-specificity,
+    [data-template-part='primary'][data-template-slot-kind='text']
+  ) {
+  font-family: var(--font-serif-family) !important;
+}
+
+/* D3 是收尾页，不是内容页；中心主句沿用立论/仪式感的宋体角色。 */
+:root[data-typography-mode='mixed'][data-page-role='close']:is(
+    [data-theme-id='hermes-orange'],
+    [data-theme-id='klein-blue']
+  ) .stage[data-template-id='D3'] :is(
+    #xp-d3-closing-statement-specificity,
+    [data-template-part='primary'][data-template-slot-kind='text']
+  ) {
+  font-family: var(--font-serif-family) !important;
+}

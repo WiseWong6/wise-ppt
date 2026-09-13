@@ -1,0 +1,19 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<link rel="icon" href="data:,">
+<meta http-equiv="refresh" content="0;url=./catalog.html?ratio=3x4&amp;tab=lyt">
+<title>正在打开 Wise PPT 3:4 Catalog</title>
+</head>
+<body>
+<p><a href="./catalog.html?ratio=3x4&amp;tab=lyt">以 3:4 比例打开 Catalog 的“关系页版式”分类</a></p>
+<script>
+  const target = new URL('./catalog.html', location.href);
+  target.searchParams.set('ratio', '3x4');
+  target.searchParams.set('tab', 'lyt');
+  location.replace(target.href);
+</script>
+</body>
+</html>
