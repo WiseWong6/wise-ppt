@@ -147,9 +147,11 @@
   </tr>
 </table>
 
-## 运行环境
+## 推荐模型
 
-建议使用支持本地文件操作、命令执行与浏览器检查的代码代理。
+- 建议环境：Codex、ZCode、Kimi CLI、Claude Code；
+- 适配模型：GLM-5.3 Flash、Qwen3.8-Flash或同级别及以上模型；
+- 创造力推荐：GPT 5.6 Sol High 及以上、GLM 5.3、Kimi K3、Qwen 3.8max。
 
 ## 安装
 
