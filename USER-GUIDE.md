@@ -103,7 +103,7 @@ node <skill>/bin/wise-ppt.mjs deliver <绝对 deck 目录>
 node <skill>/bin/wise-ppt.mjs experimental prepare|build|validate|preview|deliver ...
 ```
 
-standard 成品输出后，Agent 会复核 claim、阅读顺序、主次和固定组件语义。若发现语义与版式/组件不匹配，会点名页面和证据，并按 [主说明的授权规则](SKILL.md#先决定模式) 核对：已有该范围有效授权时按实验合同继续，否则询问是否进入 experimental；未经明确批准不会切换模式或修改成品。
+standard 成品输出后，Agent 会复核 claim、阅读顺序、主次和固定组件语义。若发现语义与版式/组件不匹配，会点名页面和证据，并按[实验授权](references/experimental.md#授权)核对可执行范围。
 
 ## 字体规则
 

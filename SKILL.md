@@ -21,10 +21,8 @@ node <skill>/bin/wise-ppt.mjs doctor
 
 1. 诊断、审查、规划只分析。
 2. 不改已审核结构走 `standard`，只编辑 `deck-spec.json` 和公开槽；组件容量变更须 registry 已登记且用户批准。
-3. 改结构、组件、分栏、阅读顺序或用未审核能力，获批后在副本执行 `experimental`。
+3. 改结构、组件、分栏、阅读顺序或用未审核能力，按[实验授权](references/experimental.md#授权)核对范围，获批后在副本执行 `experimental`。
 4. Catalog、registry、runtime、主题或资产有缺陷，停止并登记修复。
-
-本任务明确授权未撤销，同范围不重复确认；跨任务不沿用，沉默、模糊同意无效。
 
 ## 完成标准
 
