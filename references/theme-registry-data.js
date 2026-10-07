@@ -1,7 +1,7 @@
 /* Generated from themes/registry.json and wise-ppt-theme@5 packages. Do not edit. */
 window.WISE_PPT_THEME_REGISTRY_DATA = {
   "contract": "wise-ppt-theme-catalog-projection@1",
-  "default_theme_id": "paper-ink",
+  "default_theme_id": "hermes-orange",
   "catalog_projection": {
     "contract": "wise-ppt-catalog-theme-projection@1",
     "path": "themes/catalog-projections/hermes-klein",
