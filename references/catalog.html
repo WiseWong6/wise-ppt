@@ -967,7 +967,8 @@ let catalogEmphasisEnabled=catalogParams.has('accent');
 const pageEmphasisOverrides=new Map();
 let activeFocusCard=null;
 function thumbPath(key,themeId=activeThemeId){
-  return themeId===DEFAULT_THEME_ID
+  /* 根目录固定保存纸墨缩略图，与界面默认主题无关。 */
+  return themeId==='paper-ink'
     ?THUMB_DIR+key+'.webp'
     /* 缩略图资产目录由构建器固定为 palettes。 */
     :THUMB_DIR+'palettes/'+themeId+'/'+key+'.webp';
